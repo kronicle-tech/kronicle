@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <springProperty name="appName" source="spring.application.name"/>
+
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>\${fqn} ${version} %d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="JSON" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder class="net.logstash.logback.encoder.LogstashEncoder">
+            <shortenedLoggerNameLength>36</shortenedLoggerNameLength>
+            <customFields>{"appName":"\${appName}","appVersion":"${version}"}</customFields>
+        </encoder>
+    </appender>
+
+    <!-- When running in "default" profile we turn on DEBUG for MSM code and only log to CONSOLE -->
+    <springProfile name="default">
+        <logger name="com.moneysupermarket" level="INFO"/>
+
+        <root level="INFO">
+            <appender-ref ref="CONSOLE"/>
+        </root>
+    </springProfile>
+
+    <springProfile name="!default">
+        <logger name="com.moneysupermarket.componentcatalog.service.repositories.ComponentRepository" level="INFO"/>
+        <logger name="com.moneysupermarket.componentcatalog.service.services.ScanEngine" level="INFO"/>
+        <logger name="com.moneysupermarket.componentcatalog.service.services.TestEngine" level="INFO"/>
+        <logger name="com.moneysupermarket.componentcatalog.service.scanners.zipkin.ZipkinService" level="INFO"/>
+
+        <root level="WARN">
+            <appender-ref ref="JSON"/>
+        </root>
+    </springProfile>
+</configuration>

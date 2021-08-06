@@ -1,0 +1,51 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ReadmeContent when readme prop is set to a readme with no \`.md\` file extension renders the readme content in a pre tag 1`] = `
+"<div>
+  <div><pre>Test Content</pre>
+  </div>
+</div>"
+`;
+
+exports[`ReadmeContent when readme prop is set to a readme with no \`.md\` file extension when readme content contains HTML renders the readme content with the HTML escaped 1`] = `
+"<div>
+  <div><pre>Text with &lt;span&gt;HTML&lt;/span&gt;</pre>
+  </div>
+</div>"
+`;
+
+exports[`ReadmeContent when readme prop is set to a readme with the file extension \`.md\` renders the readme content as Markdown 1`] = `
+"<div>
+  <div>
+    <div>
+      <h4 id=\\"user-content-table-of-contents\\">Table of Contents</h4>
+      <p>Test Content</p>
+    </div>
+  </div>
+</div>"
+`;
+
+exports[`ReadmeContent when readme prop is set to a readme with the file extension \`.md\` when readme content contains Markdown renders the readme content with Markdown converted to HTML 1`] = `
+"<div>
+  <div>
+    <div>
+      <h4 id=\\"user-content-table-of-contents\\">Table of Contents</h4>
+      <p>Text with <em>bold</em> formatting</p>
+    </div>
+  </div>
+</div>"
+`;
+
+exports[`ReadmeContent when readme prop is set to a readme with the file extension \`.md\` when readme content contains headings\` renders the readme content with a table of contents 1`] = `
+"<div>
+  <div>
+    <div>
+      <h4 id=\\"user-content-table-of-contents\\">Table of Contents</h4>
+      <ul>
+        <li><a href=\\"#user-content-test-heading\\">Test Heading</a></li>
+      </ul>
+      <h1 id=\\"user-content-test-heading\\">Test Heading</h1>
+    </div>
+  </div>
+</div>"
+`;

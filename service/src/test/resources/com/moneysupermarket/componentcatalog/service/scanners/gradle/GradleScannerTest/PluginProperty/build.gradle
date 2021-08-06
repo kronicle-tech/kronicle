@@ -1,0 +1,13 @@
+buildscript {
+    ext {
+        springBootVersion = "2.3.4.RELEASE"
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+plugins {
+    id "org.springframework.boot" version "$springBootVersion"
+}

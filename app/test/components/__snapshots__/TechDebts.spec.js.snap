@@ -1,0 +1,130 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TechDebts when techDebts prop is set to a tech debt with high priority renders the tech debt with a high priority badge 1`] = `
+"<ul>
+  <li><span><span class=\\"badge badge-warning\\">High</span></span>
+    <div>
+      <p>Test Description 1</p>
+    </div>
+    <div></div>
+    <!---->
+  </li>
+</ul>"
+`;
+
+exports[`TechDebts when techDebts prop is set to a tech debt with links renders the tech debt with the links 1`] = `
+"<ul>
+  <li><span><span class=\\"badge badge-success\\">Missing Priority</span></span>
+    <div>
+      <p>Test Description 1</p>
+    </div>
+    <div></div>
+    <ul>
+      <li><a href=\\"http://example.com/test-link-1\\" target=\\"_blank\\">http://example.com/test-link-1</a> <br>
+        <!---->
+      </li>
+      <li><a href=\\"http://example.com/test-link-2\\" target=\\"_blank\\">http://example.com/test-link-2</a> <br>
+        <!---->
+      </li>
+    </ul>
+  </li>
+</ul>"
+`;
+
+exports[`TechDebts when techDebts prop is set to a tech debt with low priority renders the tech debt with a low priority badge 1`] = `
+"<ul>
+  <li><span><span class=\\"badge badge-primary\\">Low</span></span>
+    <div>
+      <p>Test Description 1</p>
+    </div>
+    <div></div>
+    <!---->
+  </li>
+</ul>"
+`;
+
+exports[`TechDebts when techDebts prop is set to a tech debt with medium priority renders the tech debt with a medium priority badge 1`] = `
+"<ul>
+  <li><span><span class=\\"badge badge-info\\">Medium</span></span>
+    <div>
+      <p>Test Description 1</p>
+    </div>
+    <div></div>
+    <!---->
+  </li>
+</ul>"
+`;
+
+exports[`TechDebts when techDebts prop is set to a tech debt with no priority renders the tech debt with a missing priority badge 1`] = `
+"<ul>
+  <li><span><span class=\\"badge badge-success\\">Missing Priority</span></span>
+    <div>
+      <p>Test Description 1</p>
+    </div>
+    <div></div>
+    <!---->
+  </li>
+</ul>"
+`;
+
+exports[`TechDebts when techDebts prop is set to a tech debt with very high priority renders the tech debt with a very high priority badge 1`] = `
+"<ul>
+  <li><span><span class=\\"badge badge-danger\\">Very High</span></span>
+    <div>
+      <p>Test Description 1</p>
+    </div>
+    <div></div>
+    <!---->
+  </li>
+</ul>"
+`;
+
+exports[`TechDebts when techDebts prop is set to multiple tech debts renders an unordered list showing the tech debts 1`] = `
+"<ul>
+  <li><span><span class=\\"badge badge-success\\">Missing Priority</span></span>
+    <div>
+      <p>Test Description 1</p>
+    </div>
+    <div></div>
+    <!---->
+  </li>
+  <li><span><span class=\\"badge badge-success\\">Missing Priority</span></span>
+    <div>
+      <p>Test Description 2</p>
+    </div>
+    <div></div>
+    <!---->
+  </li>
+  <li><span><span class=\\"badge badge-success\\">Missing Priority</span></span>
+    <div>
+      <p>Test Description 3</p>
+    </div>
+    <div></div>
+    <!---->
+  </li>
+</ul>"
+`;
+
+exports[`TechDebts when techDebts prop is set to one tech debt renders an unordered list showing the tech debt 1`] = `
+"<ul>
+  <li><span><span class=\\"badge badge-success\\">Missing Priority</span></span>
+    <div>
+      <p>Test Description 1</p>
+    </div>
+    <div></div>
+    <!---->
+  </li>
+</ul>"
+`;
+
+exports[`TechDebts when techDebts prop is set to one tech debt with Markdown in the description renders the tech debt with the Markdown converted to HTML 1`] = `
+"<ul>
+  <li><span><span class=\\"badge badge-success\\">Missing Priority</span></span>
+    <div>
+      <p>Text with <em>bold</em> formatting</p>
+    </div>
+    <div></div>
+    <!---->
+  </li>
+</ul>"
+`;

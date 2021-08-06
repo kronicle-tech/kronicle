@@ -1,0 +1,97 @@
+{
+  "size": 2,
+  "limit": 100,
+  "isLastPage": false,
+  "values": [
+    {
+      "slug": "example-repo-1",
+      "id": 1,
+      "name": "example-repo-1",
+      "description": "Example repo",
+      "hierarchyId": "1",
+      "scmId": "git",
+      "state": "AVAILABLE",
+      "statusMessage": "Available",
+      "forkable": true,
+      "project": {
+        "key": "EXAMPLE-PROJECT-1",
+        "id": 1,
+        "name": "Example Project 1",
+        "description": "Example project",
+        "public": false,
+        "type": "NORMAL",
+        "links": {
+          "self": [
+            {
+              "href": "{{baseUrl}}/projects/EXAMPLE-PROJECT-1"
+            }
+          ]
+        }
+      },
+      "public": false,
+      "links": {
+        "clone": [
+          {
+            "href": "ssh://git@example.com:123/example-project-1/example-repo-1.git",
+            "name": "ssh"
+          },
+          {
+            "href": "{{baseUrl}}/scm/example-project-1/example-repo-1.git",
+            "name": "http"
+          }
+        ],
+        "self": [
+          {
+            "href": "{{baseUrl}}/projects/EXAMPLE-PROJECT-1/repos/example-repo-1/browse"
+          }
+        ]
+      }
+    },
+    {
+      "slug": "example-repo-2",
+      "id": 2,
+      "name": "example-repo-2",
+      "description": "Example repo",
+      "hierarchyId": "2",
+      "scmId": "git",
+      "state": "AVAILABLE",
+      "statusMessage": "Available",
+      "forkable": true,
+      "project": {
+        "key": "EXAMPLE-PROJECT-2",
+        "id": 2,
+        "name": "Example Project 2",
+        "description": "Example project",
+        "public": false,
+        "type": "NORMAL",
+        "links": {
+          "self": [
+            {
+              "href": "{{baseUrl}}/projects/EXAMPLE-PROJECT-2"
+            }
+          ]
+        }
+      },
+      "public": false,
+      "links": {
+        "clone": [
+          {
+            "href": "ssh://git@example.com:123/example-project-2/example-repo-2.git",
+            "name": "ssh"
+          },
+          {
+            "href": "{{baseUrl}}/scm/example-project-2/example-repo-2.git",
+            "name": "http"
+          }
+        ],
+        "self": [
+          {
+            "href": "{{baseUrl}}/projects/EXAMPLE-PROJECT-2/repos/example-repo-2/browse"
+          }
+        ]
+      }
+    }
+  ],
+  "start": 0,
+  "nextPageStart": 2
+}

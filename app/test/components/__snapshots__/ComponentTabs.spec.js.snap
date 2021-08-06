@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ComponentTabs renders the component 1`] = `
+"<div class=\\"my-3\\"><a href=\\"/components/test-component-id-1\\" target=\\"_self\\" class=\\"btn btn-secondary\\">Info</a> <a href=\\"/components/test-component-id-1/dependencies\\" target=\\"_self\\" class=\\"btn btn-secondary\\">
+    Dependencies
+  </a> <a href=\\"/components/test-component-id-1/response-times\\" target=\\"_self\\" class=\\"btn btn-secondary\\">
+    Response Times
+  </a> <a href=\\"/components/test-component-id-1/downstream-response-times\\" target=\\"_self\\" class=\\"btn btn-secondary\\">
+    Downstream Response Times
+  </a> <a href=\\"/components/test-component-id-1/call-graphs\\" target=\\"_self\\" class=\\"btn btn-secondary\\">
+    Call Graphs
+  </a> <a href=\\"/components/test-component-id-1/cross-functional-requirements\\" target=\\"_self\\" class=\\"btn btn-secondary\\">
+    Cross Functional Requirements
+  </a> <a href=\\"/components/test-component-id-1/tech-debts\\" target=\\"_self\\" class=\\"btn btn-secondary\\">
+    Tech Debts
+  </a> <a href=\\"/components/test-component-id-1/tests\\" target=\\"_self\\" class=\\"btn btn-secondary\\">Tests</a> <a href=\\"/components/test-component-id-1/errors\\" target=\\"_self\\" class=\\"btn btn-secondary\\">Errors</a> <a href=\\"/components/test-component-id-1/openapi-specs\\" target=\\"_self\\" class=\\"btn btn-secondary\\">
+    OpenAPI Specs
+  </a> <a href=\\"/components/test-component-id-1/repo\\" target=\\"_self\\" class=\\"btn btn-secondary\\">Repo</a> <a href=\\"/components/test-component-id-1/readme\\" target=\\"_self\\" class=\\"btn btn-secondary\\">README</a> <a href=\\"/components/test-component-id-1/to-dos\\" target=\\"_self\\" class=\\"btn btn-secondary\\">To Dos</a> <a href=\\"/components/test-component-id-1/lines-of-code\\" target=\\"_self\\" class=\\"btn btn-secondary\\">
+    Lines of Code
+  </a> <a href=\\"/components/test-component-id-1/software-repositories\\" target=\\"_self\\" class=\\"btn btn-secondary\\">
+    Software Repositories
+  </a> <a href=\\"/components/test-component-id-1/software\\" target=\\"_self\\" class=\\"btn btn-secondary\\">Software</a> <a href=\\"/components/test-component-id-1/imports\\" target=\\"_self\\" class=\\"btn btn-secondary\\">Imports</a></div>"
+`;

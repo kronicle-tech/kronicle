@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AllAreasTabs renders the component 1`] = `"<div class=\\"my-3\\"><a href=\\"/all-areas\\" target=\\"_self\\" class=\\"btn btn-secondary\\">Areas</a></div>"`;

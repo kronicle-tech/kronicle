@@ -1,0 +1,744 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ScannerErrorsView when components prop is set to an empty array renders no table 1`] = `
+"<div>
+  <div class=\\"main\\">
+    <div class=\\"card my-3\\">
+      <!---->
+      <!---->
+      <div class=\\"list-group\\">
+        <div class=\\"list-group-item list-group-item-success\\"><span class=\\"\\">0</span>
+          errors
+        </div>
+      </div>
+      <!---->
+      <!---->
+    </div>
+    <div class=\\"card my-3\\">
+      <!---->
+      <!---->
+      <div class=\\"card-body\\">
+        <h4 class=\\"card-title\\">0 Errors</h4>
+        <!---->
+        <p class=\\"card-text\\">
+          <!---->
+        </p>
+      </div>
+      <!---->
+      <!---->
+    </div>
+  </div>
+  <div class=\\"panel\\">
+    <!---->
+  </div>
+</div>"
+`;
+
+exports[`ScannerErrorsView when components prop is set to multiple components with scanner errors renders all the scanner errors in a table 1`] = `
+"<div>
+  <div class=\\"main\\">
+    <div class=\\"card my-3\\">
+      <!---->
+      <!---->
+      <div class=\\"list-group\\">
+        <div class=\\"list-group-item list-group-item-danger\\"><span class=\\"display-1\\">6</span>
+          errors
+        </div>
+      </div>
+      <!---->
+      <!---->
+    </div>
+    <div class=\\"card my-3\\">
+      <!---->
+      <!---->
+      <div class=\\"card-body\\">
+        <h4 class=\\"card-title\\">6 Errors</h4>
+        <!---->
+        <p class=\\"card-text\\">
+          <table class=\\"table table-dark\\">
+            <thead>
+              <tr>
+                <th class=\\"component table-primary\\">Component</th>
+                <th class=\\"scanner\\">Scanner</th>
+                <th class=\\"teams\\">Teams</th>
+                <th class=\\"error\\">Error</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class=\\"component table-primary\\"><a href=\\"/components/test-component-id-1\\">Test Component Name 1</a></td>
+                <td class=\\"scanner\\">test-scanner-id-1-1</td>
+                <td class=\\"teams\\">
+                  <ul>
+                    <li><a href=\\"/teams/test-team-id-1-1\\" class=\\"team-name\\">test-team-id-1-1</a>
+                      <!---->
+                      <!---->
+                    </li>
+                    <li><a href=\\"/teams/test-team-id-1-2\\" class=\\"team-name\\">test-team-id-1-2</a>
+                      <!---->
+                      <!---->
+                    </li>
+                  </ul>
+                </td>
+                <td class=\\"error\\">
+                  <ul>
+                    <li>
+                      Test Scanner Error Message 1 1
+                    </li>
+                    <li>
+                      Test Scanner Error Message 1 1 2
+                    </li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td class=\\"component table-primary\\"><a href=\\"/components/test-component-id-1\\">Test Component Name 1</a></td>
+                <td class=\\"scanner\\">test-scanner-id-1-2</td>
+                <td class=\\"teams\\">
+                  <ul>
+                    <li><a href=\\"/teams/test-team-id-1-1\\" class=\\"team-name\\">test-team-id-1-1</a>
+                      <!---->
+                      <!---->
+                    </li>
+                    <li><a href=\\"/teams/test-team-id-1-2\\" class=\\"team-name\\">test-team-id-1-2</a>
+                      <!---->
+                      <!---->
+                    </li>
+                  </ul>
+                </td>
+                <td class=\\"error\\">
+                  <ul>
+                    <li>
+                      Test Scanner Error Message 1 2
+                    </li>
+                    <li>
+                      Test Scanner Error Message 1 2 2
+                    </li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td class=\\"component table-primary\\"><a href=\\"/components/test-component-id-2\\">Test Component Name 2</a></td>
+                <td class=\\"scanner\\">test-scanner-id-2-1</td>
+                <td class=\\"teams\\">
+                  <ul>
+                    <li><a href=\\"/teams/test-team-id-2-1\\" class=\\"team-name\\">test-team-id-2-1</a>
+                      <!---->
+                      <!---->
+                    </li>
+                    <li><a href=\\"/teams/test-team-id-2-2\\" class=\\"team-name\\">test-team-id-2-2</a>
+                      <!---->
+                      <!---->
+                    </li>
+                  </ul>
+                </td>
+                <td class=\\"error\\">
+                  <ul>
+                    <li>
+                      Test Scanner Error Message 2 1
+                    </li>
+                    <li>
+                      Test Scanner Error Message 2 1 2
+                    </li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td class=\\"component table-primary\\"><a href=\\"/components/test-component-id-2\\">Test Component Name 2</a></td>
+                <td class=\\"scanner\\">test-scanner-id-2-2</td>
+                <td class=\\"teams\\">
+                  <ul>
+                    <li><a href=\\"/teams/test-team-id-2-1\\" class=\\"team-name\\">test-team-id-2-1</a>
+                      <!---->
+                      <!---->
+                    </li>
+                    <li><a href=\\"/teams/test-team-id-2-2\\" class=\\"team-name\\">test-team-id-2-2</a>
+                      <!---->
+                      <!---->
+                    </li>
+                  </ul>
+                </td>
+                <td class=\\"error\\">
+                  <ul>
+                    <li>
+                      Test Scanner Error Message 2 2
+                    </li>
+                    <li>
+                      Test Scanner Error Message 2 2 2
+                    </li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td class=\\"component table-primary\\"><a href=\\"/components/test-component-id-3\\">Test Component Name 3</a></td>
+                <td class=\\"scanner\\">test-scanner-id-3-1</td>
+                <td class=\\"teams\\">
+                  <ul>
+                    <li><a href=\\"/teams/test-team-id-3-1\\" class=\\"team-name\\">test-team-id-3-1</a>
+                      <!---->
+                      <!---->
+                    </li>
+                    <li><a href=\\"/teams/test-team-id-3-2\\" class=\\"team-name\\">test-team-id-3-2</a>
+                      <!---->
+                      <!---->
+                    </li>
+                  </ul>
+                </td>
+                <td class=\\"error\\">
+                  <ul>
+                    <li>
+                      Test Scanner Error Message 3 1
+                    </li>
+                    <li>
+                      Test Scanner Error Message 3 1 2
+                    </li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td class=\\"component table-primary\\"><a href=\\"/components/test-component-id-3\\">Test Component Name 3</a></td>
+                <td class=\\"scanner\\">test-scanner-id-3-2</td>
+                <td class=\\"teams\\">
+                  <ul>
+                    <li><a href=\\"/teams/test-team-id-3-1\\" class=\\"team-name\\">test-team-id-3-1</a>
+                      <!---->
+                      <!---->
+                    </li>
+                    <li><a href=\\"/teams/test-team-id-3-2\\" class=\\"team-name\\">test-team-id-3-2</a>
+                      <!---->
+                      <!---->
+                    </li>
+                  </ul>
+                </td>
+                <td class=\\"error\\">
+                  <ul>
+                    <li>
+                      Test Scanner Error Message 3 2
+                    </li>
+                    <li>
+                      Test Scanner Error Message 3 2 2
+                    </li>
+                  </ul>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </p>
+      </div>
+      <!---->
+      <!---->
+    </div>
+  </div>
+  <div class=\\"panel\\">
+    <div>
+      <!---->
+      <fieldset class=\\"form-group\\" id=\\"__BVID__38\\">
+        <legend tabindex=\\"-1\\" class=\\"bv-no-focus-ring col-form-label pt-0\\" id=\\"__BVID__38__BV_label_\\">Teams</legend>
+        <div>
+          <div role=\\"group\\" tabindex=\\"-1\\" class=\\"bv-no-focus-ring\\" id=\\"__BVID__39\\">
+            <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"team\\" class=\\"custom-control-input\\" value=\\"test-team-id-1-1\\" id=\\"__BVID__39_BV_option_0\\"><label class=\\"custom-control-label\\" for=\\"__BVID__39_BV_option_0\\"><span>test-team-id-1-1</span></label></div>
+            <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"team\\" class=\\"custom-control-input\\" value=\\"test-team-id-1-2\\" id=\\"__BVID__39_BV_option_1\\"><label class=\\"custom-control-label\\" for=\\"__BVID__39_BV_option_1\\"><span>test-team-id-1-2</span></label></div>
+            <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"team\\" class=\\"custom-control-input\\" value=\\"test-team-id-2-1\\" id=\\"__BVID__39_BV_option_2\\"><label class=\\"custom-control-label\\" for=\\"__BVID__39_BV_option_2\\"><span>test-team-id-2-1</span></label></div>
+            <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"team\\" class=\\"custom-control-input\\" value=\\"test-team-id-2-2\\" id=\\"__BVID__39_BV_option_3\\"><label class=\\"custom-control-label\\" for=\\"__BVID__39_BV_option_3\\"><span>test-team-id-2-2</span></label></div>
+            <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"team\\" class=\\"custom-control-input\\" value=\\"test-team-id-3-1\\" id=\\"__BVID__39_BV_option_4\\"><label class=\\"custom-control-label\\" for=\\"__BVID__39_BV_option_4\\"><span>test-team-id-3-1</span></label></div>
+            <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"team\\" class=\\"custom-control-input\\" value=\\"test-team-id-3-2\\" id=\\"__BVID__39_BV_option_5\\"><label class=\\"custom-control-label\\" for=\\"__BVID__39_BV_option_5\\"><span>test-team-id-3-2</span></label></div>
+          </div>
+          <!---->
+          <!---->
+          <!---->
+        </div>
+      </fieldset>
+      <fieldset class=\\"form-group\\" id=\\"__BVID__46\\">
+        <legend tabindex=\\"-1\\" class=\\"bv-no-focus-ring col-form-label pt-0\\" id=\\"__BVID__46__BV_label_\\">Tags</legend>
+        <div>
+          <div role=\\"group\\" tabindex=\\"-1\\" class=\\"bv-no-focus-ring\\" id=\\"__BVID__47\\">
+            <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"tag\\" class=\\"custom-control-input\\" value=\\"test-tag-1-1\\" id=\\"__BVID__47_BV_option_0\\"><label class=\\"custom-control-label\\" for=\\"__BVID__47_BV_option_0\\"><span>test-tag-1-1</span></label></div>
+            <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"tag\\" class=\\"custom-control-input\\" value=\\"test-tag-1-2\\" id=\\"__BVID__47_BV_option_1\\"><label class=\\"custom-control-label\\" for=\\"__BVID__47_BV_option_1\\"><span>test-tag-1-2</span></label></div>
+            <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"tag\\" class=\\"custom-control-input\\" value=\\"test-tag-2-1\\" id=\\"__BVID__47_BV_option_2\\"><label class=\\"custom-control-label\\" for=\\"__BVID__47_BV_option_2\\"><span>test-tag-2-1</span></label></div>
+            <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"tag\\" class=\\"custom-control-input\\" value=\\"test-tag-2-2\\" id=\\"__BVID__47_BV_option_3\\"><label class=\\"custom-control-label\\" for=\\"__BVID__47_BV_option_3\\"><span>test-tag-2-2</span></label></div>
+            <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"tag\\" class=\\"custom-control-input\\" value=\\"test-tag-3-1\\" id=\\"__BVID__47_BV_option_4\\"><label class=\\"custom-control-label\\" for=\\"__BVID__47_BV_option_4\\"><span>test-tag-3-1</span></label></div>
+            <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"tag\\" class=\\"custom-control-input\\" value=\\"test-tag-3-2\\" id=\\"__BVID__47_BV_option_5\\"><label class=\\"custom-control-label\\" for=\\"__BVID__47_BV_option_5\\"><span>test-tag-3-2</span></label></div>
+          </div>
+          <!---->
+          <!---->
+          <!---->
+        </div>
+      </fieldset>
+      <fieldset class=\\"form-group\\" id=\\"__BVID__54\\">
+        <legend tabindex=\\"-1\\" class=\\"bv-no-focus-ring col-form-label pt-0\\" id=\\"__BVID__54__BV_label_\\">Component Types</legend>
+        <div>
+          <div role=\\"group\\" tabindex=\\"-1\\" class=\\"bv-no-focus-ring\\" id=\\"__BVID__55\\">
+            <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"componentTypeId\\" class=\\"custom-control-input\\" value=\\"test-component-type-id-1\\" id=\\"__BVID__55_BV_option_0\\"><label class=\\"custom-control-label\\" for=\\"__BVID__55_BV_option_0\\"><span>test-component-type-id-1</span></label></div>
+            <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"componentTypeId\\" class=\\"custom-control-input\\" value=\\"test-component-type-id-2\\" id=\\"__BVID__55_BV_option_1\\"><label class=\\"custom-control-label\\" for=\\"__BVID__55_BV_option_1\\"><span>test-component-type-id-2</span></label></div>
+            <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"componentTypeId\\" class=\\"custom-control-input\\" value=\\"test-component-type-id-3\\" id=\\"__BVID__55_BV_option_2\\"><label class=\\"custom-control-label\\" for=\\"__BVID__55_BV_option_2\\"><span>test-component-type-id-3</span></label></div>
+          </div>
+          <!---->
+          <!---->
+          <!---->
+        </div>
+      </fieldset>
+      <fieldset class=\\"form-group\\" id=\\"__BVID__59\\">
+        <legend tabindex=\\"-1\\" class=\\"bv-no-focus-ring col-form-label pt-0\\" id=\\"__BVID__59__BV_label_\\">Platforms</legend>
+        <div>
+          <div role=\\"group\\" tabindex=\\"-1\\" class=\\"bv-no-focus-ring\\" id=\\"__BVID__60\\">
+            <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"platformId\\" class=\\"custom-control-input\\" value=\\"undefined\\" id=\\"__BVID__60_BV_option_0\\"><label class=\\"custom-control-label\\" for=\\"__BVID__60_BV_option_0\\"><span>undefined</span></label></div>
+          </div>
+          <!---->
+          <!---->
+          <!---->
+        </div>
+      </fieldset>
+      <div role=\\"group\\" class=\\"form-group\\" id=\\"__BVID__62\\"><label for=\\"component-filter\\" class=\\"d-block\\" id=\\"__BVID__62__BV_label_\\">Component</label>
+        <div><select id=\\"component-filter\\" class=\\"custom-select custom-select-sm\\">
+            <option value=\\"\\">Please select a component</option>
+            <option value=\\"test-component-id-1\\">test-component-id-1</option>
+            <option value=\\"test-component-id-2\\">test-component-id-2</option>
+            <option value=\\"test-component-id-3\\">test-component-id-3</option>
+          </select>
+          <!---->
+          <!---->
+          <!---->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>"
+`;
+
+exports[`ScannerErrorsView when components prop is set to multiple components with scanner errors when selecting a filter, the filter is applied to the scanner errors in the table 1`] = `
+"<div>
+  <div class=\\"main\\">
+    <div class=\\"card my-3\\">
+      <!---->
+      <!---->
+      <div class=\\"list-group\\">
+        <div class=\\"list-group-item list-group-item-danger\\"><span class=\\"display-1\\">6</span>
+          errors
+        </div>
+      </div>
+      <!---->
+      <!---->
+    </div>
+    <div class=\\"card my-3\\">
+      <!---->
+      <!---->
+      <div class=\\"card-body\\">
+        <h4 class=\\"card-title\\">6 Errors</h4>
+        <!---->
+        <p class=\\"card-text\\">
+          <table class=\\"table table-dark\\">
+            <thead>
+              <tr>
+                <th class=\\"component table-primary\\">Component</th>
+                <th class=\\"scanner\\">Scanner</th>
+                <th class=\\"teams\\">Teams</th>
+                <th class=\\"error\\">Error</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class=\\"component table-primary\\"><a href=\\"/components/test-component-id-1\\">Test Component Name 1</a></td>
+                <td class=\\"scanner\\">test-scanner-id-1-1</td>
+                <td class=\\"teams\\">
+                  <ul>
+                    <li><a href=\\"/teams/test-team-id-1-1\\" class=\\"team-name\\">test-team-id-1-1</a>
+                      <!---->
+                      <!---->
+                    </li>
+                    <li><a href=\\"/teams/test-team-id-1-2\\" class=\\"team-name\\">test-team-id-1-2</a>
+                      <!---->
+                      <!---->
+                    </li>
+                  </ul>
+                </td>
+                <td class=\\"error\\">
+                  <ul>
+                    <li>
+                      Test Scanner Error Message 1 1
+                    </li>
+                    <li>
+                      Test Scanner Error Message 1 1 2
+                    </li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td class=\\"component table-primary\\"><a href=\\"/components/test-component-id-1\\">Test Component Name 1</a></td>
+                <td class=\\"scanner\\">test-scanner-id-1-2</td>
+                <td class=\\"teams\\">
+                  <ul>
+                    <li><a href=\\"/teams/test-team-id-1-1\\" class=\\"team-name\\">test-team-id-1-1</a>
+                      <!---->
+                      <!---->
+                    </li>
+                    <li><a href=\\"/teams/test-team-id-1-2\\" class=\\"team-name\\">test-team-id-1-2</a>
+                      <!---->
+                      <!---->
+                    </li>
+                  </ul>
+                </td>
+                <td class=\\"error\\">
+                  <ul>
+                    <li>
+                      Test Scanner Error Message 1 2
+                    </li>
+                    <li>
+                      Test Scanner Error Message 1 2 2
+                    </li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td class=\\"component table-primary\\"><a href=\\"/components/test-component-id-2\\">Test Component Name 2</a></td>
+                <td class=\\"scanner\\">test-scanner-id-2-1</td>
+                <td class=\\"teams\\">
+                  <ul>
+                    <li><a href=\\"/teams/test-team-id-2-1\\" class=\\"team-name\\">test-team-id-2-1</a>
+                      <!---->
+                      <!---->
+                    </li>
+                    <li><a href=\\"/teams/test-team-id-2-2\\" class=\\"team-name\\">test-team-id-2-2</a>
+                      <!---->
+                      <!---->
+                    </li>
+                  </ul>
+                </td>
+                <td class=\\"error\\">
+                  <ul>
+                    <li>
+                      Test Scanner Error Message 2 1
+                    </li>
+                    <li>
+                      Test Scanner Error Message 2 1 2
+                    </li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td class=\\"component table-primary\\"><a href=\\"/components/test-component-id-2\\">Test Component Name 2</a></td>
+                <td class=\\"scanner\\">test-scanner-id-2-2</td>
+                <td class=\\"teams\\">
+                  <ul>
+                    <li><a href=\\"/teams/test-team-id-2-1\\" class=\\"team-name\\">test-team-id-2-1</a>
+                      <!---->
+                      <!---->
+                    </li>
+                    <li><a href=\\"/teams/test-team-id-2-2\\" class=\\"team-name\\">test-team-id-2-2</a>
+                      <!---->
+                      <!---->
+                    </li>
+                  </ul>
+                </td>
+                <td class=\\"error\\">
+                  <ul>
+                    <li>
+                      Test Scanner Error Message 2 2
+                    </li>
+                    <li>
+                      Test Scanner Error Message 2 2 2
+                    </li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td class=\\"component table-primary\\"><a href=\\"/components/test-component-id-3\\">Test Component Name 3</a></td>
+                <td class=\\"scanner\\">test-scanner-id-3-1</td>
+                <td class=\\"teams\\">
+                  <ul>
+                    <li><a href=\\"/teams/test-team-id-3-1\\" class=\\"team-name\\">test-team-id-3-1</a>
+                      <!---->
+                      <!---->
+                    </li>
+                    <li><a href=\\"/teams/test-team-id-3-2\\" class=\\"team-name\\">test-team-id-3-2</a>
+                      <!---->
+                      <!---->
+                    </li>
+                  </ul>
+                </td>
+                <td class=\\"error\\">
+                  <ul>
+                    <li>
+                      Test Scanner Error Message 3 1
+                    </li>
+                    <li>
+                      Test Scanner Error Message 3 1 2
+                    </li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td class=\\"component table-primary\\"><a href=\\"/components/test-component-id-3\\">Test Component Name 3</a></td>
+                <td class=\\"scanner\\">test-scanner-id-3-2</td>
+                <td class=\\"teams\\">
+                  <ul>
+                    <li><a href=\\"/teams/test-team-id-3-1\\" class=\\"team-name\\">test-team-id-3-1</a>
+                      <!---->
+                      <!---->
+                    </li>
+                    <li><a href=\\"/teams/test-team-id-3-2\\" class=\\"team-name\\">test-team-id-3-2</a>
+                      <!---->
+                      <!---->
+                    </li>
+                  </ul>
+                </td>
+                <td class=\\"error\\">
+                  <ul>
+                    <li>
+                      Test Scanner Error Message 3 2
+                    </li>
+                    <li>
+                      Test Scanner Error Message 3 2 2
+                    </li>
+                  </ul>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </p>
+      </div>
+      <!---->
+      <!---->
+    </div>
+  </div>
+  <div class=\\"panel\\">
+    <div>
+      <!---->
+      <fieldset class=\\"form-group\\" id=\\"__BVID__94\\">
+        <legend tabindex=\\"-1\\" class=\\"bv-no-focus-ring col-form-label pt-0\\" id=\\"__BVID__94__BV_label_\\">Teams</legend>
+        <div>
+          <div role=\\"group\\" tabindex=\\"-1\\" class=\\"bv-no-focus-ring\\" id=\\"__BVID__95\\">
+            <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"team\\" class=\\"custom-control-input\\" value=\\"test-team-id-1-1\\" id=\\"__BVID__95_BV_option_0\\"><label class=\\"custom-control-label\\" for=\\"__BVID__95_BV_option_0\\"><span>test-team-id-1-1</span></label></div>
+            <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"team\\" class=\\"custom-control-input\\" value=\\"test-team-id-1-2\\" id=\\"__BVID__95_BV_option_1\\"><label class=\\"custom-control-label\\" for=\\"__BVID__95_BV_option_1\\"><span>test-team-id-1-2</span></label></div>
+            <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"team\\" class=\\"custom-control-input\\" value=\\"test-team-id-2-1\\" id=\\"__BVID__95_BV_option_2\\"><label class=\\"custom-control-label\\" for=\\"__BVID__95_BV_option_2\\"><span>test-team-id-2-1</span></label></div>
+            <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"team\\" class=\\"custom-control-input\\" value=\\"test-team-id-2-2\\" id=\\"__BVID__95_BV_option_3\\"><label class=\\"custom-control-label\\" for=\\"__BVID__95_BV_option_3\\"><span>test-team-id-2-2</span></label></div>
+            <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"team\\" class=\\"custom-control-input\\" value=\\"test-team-id-3-1\\" id=\\"__BVID__95_BV_option_4\\"><label class=\\"custom-control-label\\" for=\\"__BVID__95_BV_option_4\\"><span>test-team-id-3-1</span></label></div>
+            <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"team\\" class=\\"custom-control-input\\" value=\\"test-team-id-3-2\\" id=\\"__BVID__95_BV_option_5\\"><label class=\\"custom-control-label\\" for=\\"__BVID__95_BV_option_5\\"><span>test-team-id-3-2</span></label></div>
+          </div>
+          <!---->
+          <!---->
+          <!---->
+        </div>
+      </fieldset>
+      <fieldset class=\\"form-group\\" id=\\"__BVID__102\\">
+        <legend tabindex=\\"-1\\" class=\\"bv-no-focus-ring col-form-label pt-0\\" id=\\"__BVID__102__BV_label_\\">Tags</legend>
+        <div>
+          <div role=\\"group\\" tabindex=\\"-1\\" class=\\"bv-no-focus-ring\\" id=\\"__BVID__103\\">
+            <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"tag\\" class=\\"custom-control-input\\" value=\\"test-tag-1-1\\" id=\\"__BVID__103_BV_option_0\\"><label class=\\"custom-control-label\\" for=\\"__BVID__103_BV_option_0\\"><span>test-tag-1-1</span></label></div>
+            <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"tag\\" class=\\"custom-control-input\\" value=\\"test-tag-1-2\\" id=\\"__BVID__103_BV_option_1\\"><label class=\\"custom-control-label\\" for=\\"__BVID__103_BV_option_1\\"><span>test-tag-1-2</span></label></div>
+            <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"tag\\" class=\\"custom-control-input\\" value=\\"test-tag-2-1\\" id=\\"__BVID__103_BV_option_2\\"><label class=\\"custom-control-label\\" for=\\"__BVID__103_BV_option_2\\"><span>test-tag-2-1</span></label></div>
+            <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"tag\\" class=\\"custom-control-input\\" value=\\"test-tag-2-2\\" id=\\"__BVID__103_BV_option_3\\"><label class=\\"custom-control-label\\" for=\\"__BVID__103_BV_option_3\\"><span>test-tag-2-2</span></label></div>
+            <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"tag\\" class=\\"custom-control-input\\" value=\\"test-tag-3-1\\" id=\\"__BVID__103_BV_option_4\\"><label class=\\"custom-control-label\\" for=\\"__BVID__103_BV_option_4\\"><span>test-tag-3-1</span></label></div>
+            <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"tag\\" class=\\"custom-control-input\\" value=\\"test-tag-3-2\\" id=\\"__BVID__103_BV_option_5\\"><label class=\\"custom-control-label\\" for=\\"__BVID__103_BV_option_5\\"><span>test-tag-3-2</span></label></div>
+          </div>
+          <!---->
+          <!---->
+          <!---->
+        </div>
+      </fieldset>
+      <fieldset class=\\"form-group\\" id=\\"__BVID__110\\">
+        <legend tabindex=\\"-1\\" class=\\"bv-no-focus-ring col-form-label pt-0\\" id=\\"__BVID__110__BV_label_\\">Component Types</legend>
+        <div>
+          <div role=\\"group\\" tabindex=\\"-1\\" class=\\"bv-no-focus-ring\\" id=\\"__BVID__111\\">
+            <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"componentTypeId\\" class=\\"custom-control-input\\" value=\\"test-component-type-id-1\\" id=\\"__BVID__111_BV_option_0\\"><label class=\\"custom-control-label\\" for=\\"__BVID__111_BV_option_0\\"><span>test-component-type-id-1</span></label></div>
+            <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"componentTypeId\\" class=\\"custom-control-input\\" value=\\"test-component-type-id-2\\" id=\\"__BVID__111_BV_option_1\\"><label class=\\"custom-control-label\\" for=\\"__BVID__111_BV_option_1\\"><span>test-component-type-id-2</span></label></div>
+            <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"componentTypeId\\" class=\\"custom-control-input\\" value=\\"test-component-type-id-3\\" id=\\"__BVID__111_BV_option_2\\"><label class=\\"custom-control-label\\" for=\\"__BVID__111_BV_option_2\\"><span>test-component-type-id-3</span></label></div>
+          </div>
+          <!---->
+          <!---->
+          <!---->
+        </div>
+      </fieldset>
+      <fieldset class=\\"form-group\\" id=\\"__BVID__115\\">
+        <legend tabindex=\\"-1\\" class=\\"bv-no-focus-ring col-form-label pt-0\\" id=\\"__BVID__115__BV_label_\\">Platforms</legend>
+        <div>
+          <div role=\\"group\\" tabindex=\\"-1\\" class=\\"bv-no-focus-ring\\" id=\\"__BVID__116\\">
+            <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"platformId\\" class=\\"custom-control-input\\" value=\\"undefined\\" id=\\"__BVID__116_BV_option_0\\"><label class=\\"custom-control-label\\" for=\\"__BVID__116_BV_option_0\\"><span>undefined</span></label></div>
+          </div>
+          <!---->
+          <!---->
+          <!---->
+        </div>
+      </fieldset>
+      <div role=\\"group\\" class=\\"form-group\\" id=\\"__BVID__118\\"><label for=\\"component-filter\\" class=\\"d-block\\" id=\\"__BVID__118__BV_label_\\">Component</label>
+        <div><select id=\\"component-filter\\" class=\\"custom-select custom-select-sm\\">
+            <option value=\\"\\">Please select a component</option>
+            <option value=\\"test-component-id-1\\">test-component-id-1</option>
+            <option value=\\"test-component-id-2\\">test-component-id-2</option>
+            <option value=\\"test-component-id-3\\">test-component-id-3</option>
+          </select>
+          <!---->
+          <!---->
+          <!---->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>"
+`;
+
+exports[`ScannerErrorsView when components prop is set to multiple components with scanner errors when selecting a filter, the filter is applied to the scanner errors in the table 2`] = `
+"<div>
+  <div class=\\"main\\">
+    <div class=\\"card my-3\\">
+      <!---->
+      <!---->
+      <div class=\\"list-group\\">
+        <div class=\\"list-group-item list-group-item-danger\\"><span class=\\"display-1\\">2</span>
+          errors
+        </div>
+      </div>
+      <!---->
+      <!---->
+    </div>
+    <div class=\\"card my-3\\">
+      <!---->
+      <!---->
+      <div class=\\"card-body\\">
+        <h4 class=\\"card-title\\">2 Errors</h4>
+        <!---->
+        <p class=\\"card-text\\">
+          <table class=\\"table table-dark\\">
+            <thead>
+              <tr>
+                <th class=\\"component table-primary\\">Component</th>
+                <th class=\\"scanner\\">Scanner</th>
+                <th class=\\"teams\\">Teams</th>
+                <th class=\\"error\\">Error</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class=\\"component table-primary\\"><a href=\\"/components/test-component-id-1\\">Test Component Name 1</a></td>
+                <td class=\\"scanner\\">test-scanner-id-1-1</td>
+                <td class=\\"teams\\">
+                  <ul>
+                    <li><a href=\\"/teams/test-team-id-1-1\\" class=\\"team-name\\">test-team-id-1-1</a>
+                      <!---->
+                      <!---->
+                    </li>
+                    <li><a href=\\"/teams/test-team-id-1-2\\" class=\\"team-name\\">test-team-id-1-2</a>
+                      <!---->
+                      <!---->
+                    </li>
+                  </ul>
+                </td>
+                <td class=\\"error\\">
+                  <ul>
+                    <li>
+                      Test Scanner Error Message 1 1
+                    </li>
+                    <li>
+                      Test Scanner Error Message 1 1 2
+                    </li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td class=\\"component table-primary\\"><a href=\\"/components/test-component-id-1\\">Test Component Name 1</a></td>
+                <td class=\\"scanner\\">test-scanner-id-1-2</td>
+                <td class=\\"teams\\">
+                  <ul>
+                    <li><a href=\\"/teams/test-team-id-1-1\\" class=\\"team-name\\">test-team-id-1-1</a>
+                      <!---->
+                      <!---->
+                    </li>
+                    <li><a href=\\"/teams/test-team-id-1-2\\" class=\\"team-name\\">test-team-id-1-2</a>
+                      <!---->
+                      <!---->
+                    </li>
+                  </ul>
+                </td>
+                <td class=\\"error\\">
+                  <ul>
+                    <li>
+                      Test Scanner Error Message 1 2
+                    </li>
+                    <li>
+                      Test Scanner Error Message 1 2 2
+                    </li>
+                  </ul>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </p>
+      </div>
+      <!---->
+      <!---->
+    </div>
+  </div>
+  <div class=\\"panel\\">
+    <div>
+      <!---->
+      <fieldset class=\\"form-group\\" id=\\"__BVID__94\\">
+        <legend tabindex=\\"-1\\" class=\\"bv-no-focus-ring col-form-label pt-0\\" id=\\"__BVID__94__BV_label_\\">Teams</legend>
+        <div>
+          <div role=\\"group\\" tabindex=\\"-1\\" class=\\"bv-no-focus-ring\\" id=\\"__BVID__95\\">
+            <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"team\\" class=\\"custom-control-input\\" value=\\"test-team-id-1-1\\" id=\\"__BVID__95_BV_option_0\\"><label class=\\"custom-control-label\\" for=\\"__BVID__95_BV_option_0\\"><span>test-team-id-1-1</span></label></div>
+            <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"team\\" class=\\"custom-control-input\\" value=\\"test-team-id-1-2\\" id=\\"__BVID__95_BV_option_1\\"><label class=\\"custom-control-label\\" for=\\"__BVID__95_BV_option_1\\"><span>test-team-id-1-2</span></label></div>
+            <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"team\\" class=\\"custom-control-input\\" value=\\"test-team-id-2-1\\" id=\\"__BVID__95_BV_option_2\\"><label class=\\"custom-control-label\\" for=\\"__BVID__95_BV_option_2\\"><span>test-team-id-2-1</span></label></div>
+            <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"team\\" class=\\"custom-control-input\\" value=\\"test-team-id-2-2\\" id=\\"__BVID__95_BV_option_3\\"><label class=\\"custom-control-label\\" for=\\"__BVID__95_BV_option_3\\"><span>test-team-id-2-2</span></label></div>
+            <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"team\\" class=\\"custom-control-input\\" value=\\"test-team-id-3-1\\" id=\\"__BVID__95_BV_option_4\\"><label class=\\"custom-control-label\\" for=\\"__BVID__95_BV_option_4\\"><span>test-team-id-3-1</span></label></div>
+            <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"team\\" class=\\"custom-control-input\\" value=\\"test-team-id-3-2\\" id=\\"__BVID__95_BV_option_5\\"><label class=\\"custom-control-label\\" for=\\"__BVID__95_BV_option_5\\"><span>test-team-id-3-2</span></label></div>
+          </div>
+          <!---->
+          <!---->
+          <!---->
+        </div>
+      </fieldset>
+      <fieldset class=\\"form-group\\" id=\\"__BVID__102\\">
+        <legend tabindex=\\"-1\\" class=\\"bv-no-focus-ring col-form-label pt-0\\" id=\\"__BVID__102__BV_label_\\">Tags</legend>
+        <div>
+          <div role=\\"group\\" tabindex=\\"-1\\" class=\\"bv-no-focus-ring\\" id=\\"__BVID__103\\">
+            <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"tag\\" class=\\"custom-control-input\\" value=\\"test-tag-1-1\\" id=\\"__BVID__103_BV_option_0\\"><label class=\\"custom-control-label\\" for=\\"__BVID__103_BV_option_0\\"><span>test-tag-1-1</span></label></div>
+            <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"tag\\" class=\\"custom-control-input\\" value=\\"test-tag-1-2\\" id=\\"__BVID__103_BV_option_1\\"><label class=\\"custom-control-label\\" for=\\"__BVID__103_BV_option_1\\"><span>test-tag-1-2</span></label></div>
+            <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"tag\\" class=\\"custom-control-input\\" value=\\"test-tag-2-1\\" id=\\"__BVID__103_BV_option_2\\"><label class=\\"custom-control-label\\" for=\\"__BVID__103_BV_option_2\\"><span>test-tag-2-1</span></label></div>
+            <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"tag\\" class=\\"custom-control-input\\" value=\\"test-tag-2-2\\" id=\\"__BVID__103_BV_option_3\\"><label class=\\"custom-control-label\\" for=\\"__BVID__103_BV_option_3\\"><span>test-tag-2-2</span></label></div>
+            <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"tag\\" class=\\"custom-control-input\\" value=\\"test-tag-3-1\\" id=\\"__BVID__103_BV_option_4\\"><label class=\\"custom-control-label\\" for=\\"__BVID__103_BV_option_4\\"><span>test-tag-3-1</span></label></div>
+            <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"tag\\" class=\\"custom-control-input\\" value=\\"test-tag-3-2\\" id=\\"__BVID__103_BV_option_5\\"><label class=\\"custom-control-label\\" for=\\"__BVID__103_BV_option_5\\"><span>test-tag-3-2</span></label></div>
+          </div>
+          <!---->
+          <!---->
+          <!---->
+        </div>
+      </fieldset>
+      <fieldset class=\\"form-group\\" id=\\"__BVID__110\\">
+        <legend tabindex=\\"-1\\" class=\\"bv-no-focus-ring col-form-label pt-0\\" id=\\"__BVID__110__BV_label_\\">Component Types</legend>
+        <div>
+          <div role=\\"group\\" tabindex=\\"-1\\" class=\\"bv-no-focus-ring\\" id=\\"__BVID__111\\">
+            <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"componentTypeId\\" class=\\"custom-control-input\\" value=\\"test-component-type-id-1\\" id=\\"__BVID__111_BV_option_0\\"><label class=\\"custom-control-label\\" for=\\"__BVID__111_BV_option_0\\"><span>test-component-type-id-1</span></label></div>
+            <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"componentTypeId\\" class=\\"custom-control-input\\" value=\\"test-component-type-id-2\\" id=\\"__BVID__111_BV_option_1\\"><label class=\\"custom-control-label\\" for=\\"__BVID__111_BV_option_1\\"><span>test-component-type-id-2</span></label></div>
+            <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"componentTypeId\\" class=\\"custom-control-input\\" value=\\"test-component-type-id-3\\" id=\\"__BVID__111_BV_option_2\\"><label class=\\"custom-control-label\\" for=\\"__BVID__111_BV_option_2\\"><span>test-component-type-id-3</span></label></div>
+          </div>
+          <!---->
+          <!---->
+          <!---->
+        </div>
+      </fieldset>
+      <fieldset class=\\"form-group\\" id=\\"__BVID__115\\">
+        <legend tabindex=\\"-1\\" class=\\"bv-no-focus-ring col-form-label pt-0\\" id=\\"__BVID__115__BV_label_\\">Platforms</legend>
+        <div>
+          <div role=\\"group\\" tabindex=\\"-1\\" class=\\"bv-no-focus-ring\\" id=\\"__BVID__116\\">
+            <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"platformId\\" class=\\"custom-control-input\\" value=\\"undefined\\" id=\\"__BVID__116_BV_option_0\\"><label class=\\"custom-control-label\\" for=\\"__BVID__116_BV_option_0\\"><span>undefined</span></label></div>
+          </div>
+          <!---->
+          <!---->
+          <!---->
+        </div>
+      </fieldset>
+      <div role=\\"group\\" class=\\"form-group\\" id=\\"__BVID__118\\"><label for=\\"component-filter\\" class=\\"d-block\\" id=\\"__BVID__118__BV_label_\\">Component</label>
+        <div><select id=\\"component-filter\\" class=\\"custom-select custom-select-sm\\">
+            <option value=\\"\\">Please select a component</option>
+            <option value=\\"test-component-id-1\\">test-component-id-1</option>
+            <option value=\\"test-component-id-2\\">test-component-id-2</option>
+            <option value=\\"test-component-id-3\\">test-component-id-3</option>
+          </select>
+          <!---->
+          <!---->
+          <!---->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>"
+`;

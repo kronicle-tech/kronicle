@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Index when Get Component service endpoint returns a component with OpenAPI specs renders the page with the details of the correct OpenAPI spec 1`] = `
+<div
+  id="openapi-spec"
+/>
+`;

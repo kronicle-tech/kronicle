@@ -1,0 +1,251 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CrossFunctionalRequirementTable when components is set to multiple components with multiple cross functional requirements renders the cross functional requirements 1`] = `
+"<table class=\\"table table-dark\\">
+  <thead>
+    <tr>
+      <th class=\\"component\\">Component</th>
+      <th class=\\"teams\\">Teams</th>
+      <th class=\\"description\\">Description</th>
+      <th class=\\"notes\\">Notes</th>
+      <th class=\\"links\\">Links</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class=\\"component table-primary\\"><a href=\\"/components/test-component-id-1\\">Test Component Name 1</a></td>
+      <td class=\\"teams\\">
+        <ul>
+          <li><a href=\\"/teams/test-team-id-1-1\\" class=\\"team-name\\">test-team-id-1-1</a>
+            <!---->
+            <!---->
+          </li>
+          <li><a href=\\"/teams/test-team-id-1-2\\" class=\\"team-name\\">test-team-id-1-2</a>
+            <!---->
+            <!---->
+          </li>
+        </ul>
+      </td>
+      <td class=\\"description\\">
+        <div>
+          <p>Test CFR Description 1 1</p>
+        </div>
+      </td>
+      <td class=\\"notes\\">
+        <div>
+          <p>Test CFR Notes 1 1</p>
+        </div>
+      </td>
+      <td class=\\"links\\">
+        <ul>
+          <li><a href=\\"https://example.com/test-cfr-link-1-1-1\\" target=\\"_blank\\">https://example.com/test-cfr-link-1-1-1</a> <br>
+            <div>
+              <p>Test CFR Link Description 1 1 1</p>
+            </div>
+          </li>
+          <li><a href=\\"https://example.com/test-cfr-link-1-1-2\\" target=\\"_blank\\">https://example.com/test-cfr-link-1-1-2</a> <br>
+            <div>
+              <p>Test CFR Link Description 1 1 2</p>
+            </div>
+          </li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td class=\\"component table-primary\\"><a href=\\"/components/test-component-id-1\\">Test Component Name 1</a></td>
+      <td class=\\"teams\\">
+        <ul>
+          <li><a href=\\"/teams/test-team-id-1-1\\" class=\\"team-name\\">test-team-id-1-1</a>
+            <!---->
+            <!---->
+          </li>
+          <li><a href=\\"/teams/test-team-id-1-2\\" class=\\"team-name\\">test-team-id-1-2</a>
+            <!---->
+            <!---->
+          </li>
+        </ul>
+      </td>
+      <td class=\\"description\\">
+        <div>
+          <p>Test CFR Description 1 2</p>
+        </div>
+      </td>
+      <td class=\\"notes\\">
+        <div>
+          <p>Test CFR Notes 1 2</p>
+        </div>
+      </td>
+      <td class=\\"links\\">
+        <ul>
+          <li><a href=\\"https://example.com/test-cfr-link-1-2-1\\" target=\\"_blank\\">https://example.com/test-cfr-link-1-2-1</a> <br>
+            <div>
+              <p>Test CFR Link Description 1 2 1</p>
+            </div>
+          </li>
+          <li><a href=\\"https://example.com/test-cfr-link-1-2-2\\" target=\\"_blank\\">https://example.com/test-cfr-link-1-2-2</a> <br>
+            <div>
+              <p>Test CFR Link Description 1 2 2</p>
+            </div>
+          </li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td class=\\"component table-primary\\"><a href=\\"/components/test-component-id-2\\">Test Component Name 2</a></td>
+      <td class=\\"teams\\">
+        <ul>
+          <li><a href=\\"/teams/test-team-id-2-1\\" class=\\"team-name\\">test-team-id-2-1</a>
+            <!---->
+            <!---->
+          </li>
+          <li><a href=\\"/teams/test-team-id-2-2\\" class=\\"team-name\\">test-team-id-2-2</a>
+            <!---->
+            <!---->
+          </li>
+        </ul>
+      </td>
+      <td class=\\"description\\">
+        <div>
+          <p>Test CFR Description 2 1</p>
+        </div>
+      </td>
+      <td class=\\"notes\\">
+        <div>
+          <p>Test CFR Notes 2 1</p>
+        </div>
+      </td>
+      <td class=\\"links\\">
+        <ul>
+          <li><a href=\\"https://example.com/test-cfr-link-2-1-1\\" target=\\"_blank\\">https://example.com/test-cfr-link-2-1-1</a> <br>
+            <div>
+              <p>Test CFR Link Description 2 1 1</p>
+            </div>
+          </li>
+          <li><a href=\\"https://example.com/test-cfr-link-2-1-2\\" target=\\"_blank\\">https://example.com/test-cfr-link-2-1-2</a> <br>
+            <div>
+              <p>Test CFR Link Description 2 1 2</p>
+            </div>
+          </li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td class=\\"component table-primary\\"><a href=\\"/components/test-component-id-2\\">Test Component Name 2</a></td>
+      <td class=\\"teams\\">
+        <ul>
+          <li><a href=\\"/teams/test-team-id-2-1\\" class=\\"team-name\\">test-team-id-2-1</a>
+            <!---->
+            <!---->
+          </li>
+          <li><a href=\\"/teams/test-team-id-2-2\\" class=\\"team-name\\">test-team-id-2-2</a>
+            <!---->
+            <!---->
+          </li>
+        </ul>
+      </td>
+      <td class=\\"description\\">
+        <div>
+          <p>Test CFR Description 2 2</p>
+        </div>
+      </td>
+      <td class=\\"notes\\">
+        <div>
+          <p>Test CFR Notes 2 2</p>
+        </div>
+      </td>
+      <td class=\\"links\\">
+        <ul>
+          <li><a href=\\"https://example.com/test-cfr-link-2-2-1\\" target=\\"_blank\\">https://example.com/test-cfr-link-2-2-1</a> <br>
+            <div>
+              <p>Test CFR Link Description 2 2 1</p>
+            </div>
+          </li>
+          <li><a href=\\"https://example.com/test-cfr-link-2-2-2\\" target=\\"_blank\\">https://example.com/test-cfr-link-2-2-2</a> <br>
+            <div>
+              <p>Test CFR Link Description 2 2 2</p>
+            </div>
+          </li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td class=\\"component table-primary\\"><a href=\\"/components/test-component-id-3\\">Test Component Name 3</a></td>
+      <td class=\\"teams\\">
+        <ul>
+          <li><a href=\\"/teams/test-team-id-3-1\\" class=\\"team-name\\">test-team-id-3-1</a>
+            <!---->
+            <!---->
+          </li>
+          <li><a href=\\"/teams/test-team-id-3-2\\" class=\\"team-name\\">test-team-id-3-2</a>
+            <!---->
+            <!---->
+          </li>
+        </ul>
+      </td>
+      <td class=\\"description\\">
+        <div>
+          <p>Test CFR Description 3 1</p>
+        </div>
+      </td>
+      <td class=\\"notes\\">
+        <div>
+          <p>Test CFR Notes 3 1</p>
+        </div>
+      </td>
+      <td class=\\"links\\">
+        <ul>
+          <li><a href=\\"https://example.com/test-cfr-link-3-1-1\\" target=\\"_blank\\">https://example.com/test-cfr-link-3-1-1</a> <br>
+            <div>
+              <p>Test CFR Link Description 3 1 1</p>
+            </div>
+          </li>
+          <li><a href=\\"https://example.com/test-cfr-link-3-1-2\\" target=\\"_blank\\">https://example.com/test-cfr-link-3-1-2</a> <br>
+            <div>
+              <p>Test CFR Link Description 3 1 2</p>
+            </div>
+          </li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td class=\\"component table-primary\\"><a href=\\"/components/test-component-id-3\\">Test Component Name 3</a></td>
+      <td class=\\"teams\\">
+        <ul>
+          <li><a href=\\"/teams/test-team-id-3-1\\" class=\\"team-name\\">test-team-id-3-1</a>
+            <!---->
+            <!---->
+          </li>
+          <li><a href=\\"/teams/test-team-id-3-2\\" class=\\"team-name\\">test-team-id-3-2</a>
+            <!---->
+            <!---->
+          </li>
+        </ul>
+      </td>
+      <td class=\\"description\\">
+        <div>
+          <p>Test CFR Description 3 2</p>
+        </div>
+      </td>
+      <td class=\\"notes\\">
+        <div>
+          <p>Test CFR Notes 3 2</p>
+        </div>
+      </td>
+      <td class=\\"links\\">
+        <ul>
+          <li><a href=\\"https://example.com/test-cfr-link-3-2-1\\" target=\\"_blank\\">https://example.com/test-cfr-link-3-2-1</a> <br>
+            <div>
+              <p>Test CFR Link Description 3 2 1</p>
+            </div>
+          </li>
+          <li><a href=\\"https://example.com/test-cfr-link-3-2-2\\" target=\\"_blank\\">https://example.com/test-cfr-link-3-2-2</a> <br>
+            <div>
+              <p>Test CFR Link Description 3 2 2</p>
+            </div>
+          </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>"
+`;

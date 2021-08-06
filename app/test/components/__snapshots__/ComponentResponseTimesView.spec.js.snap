@@ -1,0 +1,826 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ComponentResponseTimesView when a matching sub component dependency has tags the tags are rendered in alphabetical order 1`] = `
+"<div>
+  <div>
+    <transition-stub name=\\"\\" css=\\"true\\" enterclass=\\"\\" leaveclass=\\"show\\" entertoclass=\\"show\\" leavetoclass=\\"\\" enteractiveclass=\\"\\" leaveactiveclass=\\"\\" class=\\"my-3\\">
+      <div role=\\"alert\\" aria-live=\\"polite\\" aria-atomic=\\"true\\" class=\\"alert alert-dismissible alert-info\\"><button type=\\"button\\" aria-label=\\"Close\\" class=\\"close\\">×</button>
+        The dependencies on this page come from Zipkin. The visualisation is not
+        out-of-the-box Zipkin functionality and is bespoke to the Component
+        Catalog.
+      </div>
+    </transition-stub>
+    <table class=\\"table table-dark\\">
+      <thead>
+        <tr>
+          <th>Source Component</th>
+          <th>Source Span</th>
+          <th>Source Tags</th>
+          <th>Target Component</th>
+          <th>Target Span</th>
+          <th>Target Tags</th>
+          <th>Sample Size</th>
+          <th>Sample Start</th>
+          <th>Sample End</th>
+          <th>Min</th>
+          <th>p50</th>
+          <th>p90</th>
+          <th>p99</th>
+          <th>p99.9</th>
+          <th>Max</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class=\\"\\"><span>
+              test-component-id-2
+              <span class=\\"badge badge-warning\\">Unrecognised Component</span></span></td>
+          <td><span>test-component-id-2-span-1</span></td>
+          <td>
+            <ul>
+              <li>
+                test-component-id-2-span-1-tag-1: test-value-1
+              </li>
+              <li>
+                test-component-id-2-span-1-tag-2: test-value-2
+              </li>
+            </ul>
+          </td>
+          <td class=\\"table-primary\\"><span>
+              test-component-id-1
+              <span class=\\"badge badge-warning\\">Unrecognised Component</span></span></td>
+          <td>
+            test-component-id-1-span-1
+          </td>
+          <td>
+            <ul>
+              <li>
+                test-component-id-1-span-1-tag-1: test-value-1
+              </li>
+              <li>
+                test-component-id-1-span-1-tag-2: test-value-2
+              </li>
+            </ul>
+          </td>
+          <td><span>123</span> spans</td>
+          <td><span>2021-01-01 02:03</span></td>
+          <td><span>2021-01-02 03:04</span></td>
+          <td><span><span>11</span>ms
+            </span></td>
+          <td><span><span>13</span>ms
+            </span></td>
+          <td><span><span>14</span>ms
+            </span></td>
+          <td><span><span>15</span>ms
+            </span></td>
+          <td><span><span>16</span>ms
+            </span></td>
+          <td><span><span>12</span>ms
+            </span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>"
+`;
+
+exports[`ComponentResponseTimesView when a sub component dependency's source matches a known component renders the component's name instead of the component's id and an \`unrecognised component\` badge 1`] = `
+"<div>
+  <div>
+    <transition-stub name=\\"\\" css=\\"true\\" enterclass=\\"\\" leaveclass=\\"show\\" entertoclass=\\"show\\" leavetoclass=\\"\\" enteractiveclass=\\"\\" leaveactiveclass=\\"\\" class=\\"my-3\\">
+      <div role=\\"alert\\" aria-live=\\"polite\\" aria-atomic=\\"true\\" class=\\"alert alert-dismissible alert-info\\"><button type=\\"button\\" aria-label=\\"Close\\" class=\\"close\\">×</button>
+        The dependencies on this page come from Zipkin. The visualisation is not
+        out-of-the-box Zipkin functionality and is bespoke to the Component
+        Catalog.
+      </div>
+    </transition-stub>
+    <table class=\\"table table-dark\\">
+      <thead>
+        <tr>
+          <th>Source Component</th>
+          <th>Source Span</th>
+          <th>Source Tags</th>
+          <th>Target Component</th>
+          <th>Target Span</th>
+          <th>Target Tags</th>
+          <th>Sample Size</th>
+          <th>Sample Start</th>
+          <th>Sample End</th>
+          <th>Min</th>
+          <th>p50</th>
+          <th>p90</th>
+          <th>p99</th>
+          <th>p99.9</th>
+          <th>Max</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class=\\"\\"><a href=\\"/components/test-component-id-2\\">Test Component Name 2</a></td>
+          <td><span>test-component-id-2-span-1</span></td>
+          <td>
+            <!---->
+          </td>
+          <td class=\\"table-primary\\"><span>
+              test-component-id-1
+              <span class=\\"badge badge-warning\\">Unrecognised Component</span></span></td>
+          <td>
+            test-component-id-1-span-1
+          </td>
+          <td>
+            <!---->
+          </td>
+          <td><span>123</span> spans</td>
+          <td><span>2021-01-01 02:03</span></td>
+          <td><span>2021-01-02 03:04</span></td>
+          <td><span><span>11</span>ms
+            </span></td>
+          <td><span><span>13</span>ms
+            </span></td>
+          <td><span><span>14</span>ms
+            </span></td>
+          <td><span><span>15</span>ms
+            </span></td>
+          <td><span><span>16</span>ms
+            </span></td>
+          <td><span><span>12</span>ms
+            </span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>"
+`;
+
+exports[`ComponentResponseTimesView when a sub component dependency's target matches a known component renders the component's name instead of the component's id and an \`unrecognised component\` badge 1`] = `
+"<div>
+  <div>
+    <transition-stub name=\\"\\" css=\\"true\\" enterclass=\\"\\" leaveclass=\\"show\\" entertoclass=\\"show\\" leavetoclass=\\"\\" enteractiveclass=\\"\\" leaveactiveclass=\\"\\" class=\\"my-3\\">
+      <div role=\\"alert\\" aria-live=\\"polite\\" aria-atomic=\\"true\\" class=\\"alert alert-dismissible alert-info\\"><button type=\\"button\\" aria-label=\\"Close\\" class=\\"close\\">×</button>
+        The dependencies on this page come from Zipkin. The visualisation is not
+        out-of-the-box Zipkin functionality and is bespoke to the Component
+        Catalog.
+      </div>
+    </transition-stub>
+    <table class=\\"table table-dark\\">
+      <thead>
+        <tr>
+          <th>Source Component</th>
+          <th>Source Span</th>
+          <th>Source Tags</th>
+          <th>Target Component</th>
+          <th>Target Span</th>
+          <th>Target Tags</th>
+          <th>Sample Size</th>
+          <th>Sample Start</th>
+          <th>Sample End</th>
+          <th>Min</th>
+          <th>p50</th>
+          <th>p90</th>
+          <th>p99</th>
+          <th>p99.9</th>
+          <th>Max</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class=\\"\\"><span>
+              test-component-id-2
+              <span class=\\"badge badge-warning\\">Unrecognised Component</span></span></td>
+          <td><span>test-component-id-2-span-1</span></td>
+          <td>
+            <!---->
+          </td>
+          <td class=\\"table-primary\\"><a href=\\"/components/test-component-id-1\\">Test Component Name 1</a></td>
+          <td>
+            test-component-id-1-span-1
+          </td>
+          <td>
+            <!---->
+          </td>
+          <td><span>123</span> spans</td>
+          <td><span>2021-01-01 02:03</span></td>
+          <td><span>2021-01-02 03:04</span></td>
+          <td><span><span>11</span>ms
+            </span></td>
+          <td><span><span>13</span>ms
+            </span></td>
+          <td><span><span>14</span>ms
+            </span></td>
+          <td><span><span>15</span>ms
+            </span></td>
+          <td><span><span>16</span>ms
+            </span></td>
+          <td><span><span>12</span>ms
+            </span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>"
+`;
+
+exports[`ComponentResponseTimesView when direction prop is set to downstream when a sub component dependency's source is undefined and target matches the componentId prop renders a message saying there are no response times available 1`] = `
+"<div>
+  <div>
+    <transition-stub name=\\"\\" css=\\"true\\" enterclass=\\"\\" leaveclass=\\"show\\" entertoclass=\\"show\\" leavetoclass=\\"\\" enteractiveclass=\\"\\" leaveactiveclass=\\"\\" class=\\"my-3\\">
+      <div role=\\"alert\\" aria-live=\\"polite\\" aria-atomic=\\"true\\" class=\\"alert alert-info\\">
+        <!---->
+        No response times are available for this component. Possibly the
+        component may not have been integrated with Zipkin yet.
+      </div>
+    </transition-stub>
+  </div>
+</div>"
+`;
+
+exports[`ComponentResponseTimesView when direction prop is set to downstream when no source of a sub component dependency matches the componentId prop renders a message saying there are no response times available 1`] = `
+"<div>
+  <div>
+    <transition-stub name=\\"\\" css=\\"true\\" enterclass=\\"\\" leaveclass=\\"show\\" entertoclass=\\"show\\" leavetoclass=\\"\\" enteractiveclass=\\"\\" leaveactiveclass=\\"\\" class=\\"my-3\\">
+      <div role=\\"alert\\" aria-live=\\"polite\\" aria-atomic=\\"true\\" class=\\"alert alert-info\\">
+        <!---->
+        No response times are available for this component. Possibly the
+        component may not have been integrated with Zipkin yet.
+      </div>
+    </transition-stub>
+  </div>
+</div>"
+`;
+
+exports[`ComponentResponseTimesView when direction prop is set to downstream when no sub component dependencies match the componentId prop renders a message saying there are no response times available 1`] = `
+"<div>
+  <div>
+    <transition-stub name=\\"\\" css=\\"true\\" enterclass=\\"\\" leaveclass=\\"show\\" entertoclass=\\"show\\" leavetoclass=\\"\\" enteractiveclass=\\"\\" leaveactiveclass=\\"\\" class=\\"my-3\\">
+      <div role=\\"alert\\" aria-live=\\"polite\\" aria-atomic=\\"true\\" class=\\"alert alert-info\\">
+        <!---->
+        No response times are available for this component. Possibly the
+        component may not have been integrated with Zipkin yet.
+      </div>
+    </transition-stub>
+  </div>
+</div>"
+`;
+
+exports[`ComponentResponseTimesView when direction prop is set to downstream when the source of a sub component dependency matches the componentId prop renders the details of the sub component dependency 1`] = `
+"<div>
+  <div>
+    <transition-stub name=\\"\\" css=\\"true\\" enterclass=\\"\\" leaveclass=\\"show\\" entertoclass=\\"show\\" leavetoclass=\\"\\" enteractiveclass=\\"\\" leaveactiveclass=\\"\\" class=\\"my-3\\">
+      <div role=\\"alert\\" aria-live=\\"polite\\" aria-atomic=\\"true\\" class=\\"alert alert-dismissible alert-info\\"><button type=\\"button\\" aria-label=\\"Close\\" class=\\"close\\">×</button>
+        The dependencies on this page come from Zipkin. The visualisation is not
+        out-of-the-box Zipkin functionality and is bespoke to the Component
+        Catalog.
+      </div>
+    </transition-stub>
+    <table class=\\"table table-dark\\">
+      <thead>
+        <tr>
+          <th>Source Component</th>
+          <th>Source Span</th>
+          <th>Source Tags</th>
+          <th>Target Component</th>
+          <th>Target Span</th>
+          <th>Target Tags</th>
+          <th>Sample Size</th>
+          <th>Sample Start</th>
+          <th>Sample End</th>
+          <th>Min</th>
+          <th>p50</th>
+          <th>p90</th>
+          <th>p99</th>
+          <th>p99.9</th>
+          <th>Max</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class=\\"table-primary\\"><span>
+              test-component-id-1
+              <span class=\\"badge badge-warning\\">Unrecognised Component</span></span></td>
+          <td><span>test-component-id-1-span-1</span></td>
+          <td>
+            <!---->
+          </td>
+          <td class=\\"\\"><span>
+              test-component-id-2
+              <span class=\\"badge badge-warning\\">Unrecognised Component</span></span></td>
+          <td>
+            test-component-id-2-span-1
+          </td>
+          <td>
+            <!---->
+          </td>
+          <td><span>123</span> spans</td>
+          <td><span>2021-01-01 02:03</span></td>
+          <td><span>2021-01-02 03:04</span></td>
+          <td><span><span>11</span>ms
+            </span></td>
+          <td><span><span>13</span>ms
+            </span></td>
+          <td><span><span>14</span>ms
+            </span></td>
+          <td><span><span>15</span>ms
+            </span></td>
+          <td><span><span>16</span>ms
+            </span></td>
+          <td><span><span>12</span>ms
+            </span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>"
+`;
+
+exports[`ComponentResponseTimesView when direction prop is set to downstream when the sources of multiple sub component dependencies match the componentId prop renders the details of the sub component dependencies 1`] = `
+"<div>
+  <div>
+    <transition-stub name=\\"\\" css=\\"true\\" enterclass=\\"\\" leaveclass=\\"show\\" entertoclass=\\"show\\" leavetoclass=\\"\\" enteractiveclass=\\"\\" leaveactiveclass=\\"\\" class=\\"my-3\\">
+      <div role=\\"alert\\" aria-live=\\"polite\\" aria-atomic=\\"true\\" class=\\"alert alert-dismissible alert-info\\"><button type=\\"button\\" aria-label=\\"Close\\" class=\\"close\\">×</button>
+        The dependencies on this page come from Zipkin. The visualisation is not
+        out-of-the-box Zipkin functionality and is bespoke to the Component
+        Catalog.
+      </div>
+    </transition-stub>
+    <table class=\\"table table-dark\\">
+      <thead>
+        <tr>
+          <th>Source Component</th>
+          <th>Source Span</th>
+          <th>Source Tags</th>
+          <th>Target Component</th>
+          <th>Target Span</th>
+          <th>Target Tags</th>
+          <th>Sample Size</th>
+          <th>Sample Start</th>
+          <th>Sample End</th>
+          <th>Min</th>
+          <th>p50</th>
+          <th>p90</th>
+          <th>p99</th>
+          <th>p99.9</th>
+          <th>Max</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class=\\"table-primary\\"><span>
+              test-component-id-1
+              <span class=\\"badge badge-warning\\">Unrecognised Component</span></span></td>
+          <td><span>test-component-id-1-span-1</span></td>
+          <td>
+            <!---->
+          </td>
+          <td class=\\"\\"><span>
+              test-component-id-2
+              <span class=\\"badge badge-warning\\">Unrecognised Component</span></span></td>
+          <td>
+            test-component-id-2-span-1
+          </td>
+          <td>
+            <!---->
+          </td>
+          <td><span>123</span> spans</td>
+          <td><span>2021-01-01 02:03</span></td>
+          <td><span>2021-01-02 03:04</span></td>
+          <td><span><span>11</span>ms
+            </span></td>
+          <td><span><span>13</span>ms
+            </span></td>
+          <td><span><span>14</span>ms
+            </span></td>
+          <td><span><span>15</span>ms
+            </span></td>
+          <td><span><span>16</span>ms
+            </span></td>
+          <td><span><span>12</span>ms
+            </span></td>
+        </tr>
+        <tr>
+          <td class=\\"table-primary\\"><span>
+              test-component-id-1
+              <span class=\\"badge badge-warning\\">Unrecognised Component</span></span></td>
+          <td><span>test-component-id-1-span-1</span></td>
+          <td>
+            <!---->
+          </td>
+          <td class=\\"\\"><span>
+              test-component-id-3
+              <span class=\\"badge badge-warning\\">Unrecognised Component</span></span></td>
+          <td>
+            test-component-id-3-span-1
+          </td>
+          <td>
+            <!---->
+          </td>
+          <td><span>123</span> spans</td>
+          <td><span>2021-01-01 02:03</span></td>
+          <td><span>2021-01-02 03:04</span></td>
+          <td><span><span>11</span>ms
+            </span></td>
+          <td><span><span>13</span>ms
+            </span></td>
+          <td><span><span>14</span>ms
+            </span></td>
+          <td><span><span>15</span>ms
+            </span></td>
+          <td><span><span>16</span>ms
+            </span></td>
+          <td><span><span>12</span>ms
+            </span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>"
+`;
+
+exports[`ComponentResponseTimesView when direction prop is set to upstream when a sub component dependency's source is undefined and target matches the componentId prop renders the details of the sub component dependency 1`] = `
+"<div>
+  <div>
+    <transition-stub name=\\"\\" css=\\"true\\" enterclass=\\"\\" leaveclass=\\"show\\" entertoclass=\\"show\\" leavetoclass=\\"\\" enteractiveclass=\\"\\" leaveactiveclass=\\"\\" class=\\"my-3\\">
+      <div role=\\"alert\\" aria-live=\\"polite\\" aria-atomic=\\"true\\" class=\\"alert alert-dismissible alert-info\\"><button type=\\"button\\" aria-label=\\"Close\\" class=\\"close\\">×</button>
+        The dependencies on this page come from Zipkin. The visualisation is not
+        out-of-the-box Zipkin functionality and is bespoke to the Component
+        Catalog.
+      </div>
+    </transition-stub>
+    <table class=\\"table table-dark\\">
+      <thead>
+        <tr>
+          <th>Source Component</th>
+          <th>Source Span</th>
+          <th>Source Tags</th>
+          <th>Target Component</th>
+          <th>Target Span</th>
+          <th>Target Tags</th>
+          <th>Sample Size</th>
+          <th>Sample Start</th>
+          <th>Sample End</th>
+          <th>Min</th>
+          <th>p50</th>
+          <th>p90</th>
+          <th>p99</th>
+          <th>p99.9</th>
+          <th>Max</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class=\\"\\"><span class=\\"badge badge-danger\\">Unknown Component</span></td>
+          <td>
+            <!---->
+          </td>
+          <td>
+            <!---->
+          </td>
+          <td class=\\"table-primary\\"><span>
+              test-component-id-1
+              <span class=\\"badge badge-warning\\">Unrecognised Component</span></span></td>
+          <td>
+            test-component-id-1-span-1
+          </td>
+          <td>
+            <!---->
+          </td>
+          <td><span>123</span> spans</td>
+          <td><span>2021-01-01 02:03</span></td>
+          <td><span>2021-01-02 03:04</span></td>
+          <td><span><span>11</span>ms
+            </span></td>
+          <td><span><span>13</span>ms
+            </span></td>
+          <td><span><span>14</span>ms
+            </span></td>
+          <td><span><span>15</span>ms
+            </span></td>
+          <td><span><span>16</span>ms
+            </span></td>
+          <td><span><span>12</span>ms
+            </span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>"
+`;
+
+exports[`ComponentResponseTimesView when direction prop is set to upstream when no sub component dependencies match the componentId prop renders a message saying there are no response times available 1`] = `
+"<div>
+  <div>
+    <transition-stub name=\\"\\" css=\\"true\\" enterclass=\\"\\" leaveclass=\\"show\\" entertoclass=\\"show\\" leavetoclass=\\"\\" enteractiveclass=\\"\\" leaveactiveclass=\\"\\" class=\\"my-3\\">
+      <div role=\\"alert\\" aria-live=\\"polite\\" aria-atomic=\\"true\\" class=\\"alert alert-info\\">
+        <!---->
+        No response times are available for this component. Possibly the
+        component may not have been integrated with Zipkin yet.
+      </div>
+    </transition-stub>
+  </div>
+</div>"
+`;
+
+exports[`ComponentResponseTimesView when direction prop is set to upstream when no target of a sub component dependency matches the componentId prop renders a message saying there are no response times available 1`] = `
+"<div>
+  <div>
+    <transition-stub name=\\"\\" css=\\"true\\" enterclass=\\"\\" leaveclass=\\"show\\" entertoclass=\\"show\\" leavetoclass=\\"\\" enteractiveclass=\\"\\" leaveactiveclass=\\"\\" class=\\"my-3\\">
+      <div role=\\"alert\\" aria-live=\\"polite\\" aria-atomic=\\"true\\" class=\\"alert alert-info\\">
+        <!---->
+        No response times are available for this component. Possibly the
+        component may not have been integrated with Zipkin yet.
+      </div>
+    </transition-stub>
+  </div>
+</div>"
+`;
+
+exports[`ComponentResponseTimesView when direction prop is set to upstream when the source and target of a sub component dependency matches the componentId prop renders a message saying there are no response times available 1`] = `
+"<div>
+  <div>
+    <transition-stub name=\\"\\" css=\\"true\\" enterclass=\\"\\" leaveclass=\\"show\\" entertoclass=\\"show\\" leavetoclass=\\"\\" enteractiveclass=\\"\\" leaveactiveclass=\\"\\" class=\\"my-3\\">
+      <div role=\\"alert\\" aria-live=\\"polite\\" aria-atomic=\\"true\\" class=\\"alert alert-info\\">
+        <!---->
+        No response times are available for this component. Possibly the
+        component may not have been integrated with Zipkin yet.
+      </div>
+    </transition-stub>
+  </div>
+</div>"
+`;
+
+exports[`ComponentResponseTimesView when direction prop is set to upstream when the target of a sub component dependency matches the componentId prop renders the details of the sub component dependency 1`] = `
+"<div>
+  <div>
+    <transition-stub name=\\"\\" css=\\"true\\" enterclass=\\"\\" leaveclass=\\"show\\" entertoclass=\\"show\\" leavetoclass=\\"\\" enteractiveclass=\\"\\" leaveactiveclass=\\"\\" class=\\"my-3\\">
+      <div role=\\"alert\\" aria-live=\\"polite\\" aria-atomic=\\"true\\" class=\\"alert alert-dismissible alert-info\\"><button type=\\"button\\" aria-label=\\"Close\\" class=\\"close\\">×</button>
+        The dependencies on this page come from Zipkin. The visualisation is not
+        out-of-the-box Zipkin functionality and is bespoke to the Component
+        Catalog.
+      </div>
+    </transition-stub>
+    <table class=\\"table table-dark\\">
+      <thead>
+        <tr>
+          <th>Source Component</th>
+          <th>Source Span</th>
+          <th>Source Tags</th>
+          <th>Target Component</th>
+          <th>Target Span</th>
+          <th>Target Tags</th>
+          <th>Sample Size</th>
+          <th>Sample Start</th>
+          <th>Sample End</th>
+          <th>Min</th>
+          <th>p50</th>
+          <th>p90</th>
+          <th>p99</th>
+          <th>p99.9</th>
+          <th>Max</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class=\\"\\"><span>
+              test-component-id-2
+              <span class=\\"badge badge-warning\\">Unrecognised Component</span></span></td>
+          <td><span>test-component-id-2-span-1</span></td>
+          <td>
+            <!---->
+          </td>
+          <td class=\\"table-primary\\"><span>
+              test-component-id-1
+              <span class=\\"badge badge-warning\\">Unrecognised Component</span></span></td>
+          <td>
+            test-component-id-1-span-1
+          </td>
+          <td>
+            <!---->
+          </td>
+          <td><span>123</span> spans</td>
+          <td><span>2021-01-01 02:03</span></td>
+          <td><span>2021-01-02 03:04</span></td>
+          <td><span><span>11</span>ms
+            </span></td>
+          <td><span><span>13</span>ms
+            </span></td>
+          <td><span><span>14</span>ms
+            </span></td>
+          <td><span><span>15</span>ms
+            </span></td>
+          <td><span><span>16</span>ms
+            </span></td>
+          <td><span><span>12</span>ms
+            </span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>"
+`;
+
+exports[`ComponentResponseTimesView when direction prop is set to upstream when the targets of multiple sub component dependencies match the componentId prop renders the details of the sub component dependencies 1`] = `
+"<div>
+  <div>
+    <transition-stub name=\\"\\" css=\\"true\\" enterclass=\\"\\" leaveclass=\\"show\\" entertoclass=\\"show\\" leavetoclass=\\"\\" enteractiveclass=\\"\\" leaveactiveclass=\\"\\" class=\\"my-3\\">
+      <div role=\\"alert\\" aria-live=\\"polite\\" aria-atomic=\\"true\\" class=\\"alert alert-dismissible alert-info\\"><button type=\\"button\\" aria-label=\\"Close\\" class=\\"close\\">×</button>
+        The dependencies on this page come from Zipkin. The visualisation is not
+        out-of-the-box Zipkin functionality and is bespoke to the Component
+        Catalog.
+      </div>
+    </transition-stub>
+    <table class=\\"table table-dark\\">
+      <thead>
+        <tr>
+          <th>Source Component</th>
+          <th>Source Span</th>
+          <th>Source Tags</th>
+          <th>Target Component</th>
+          <th>Target Span</th>
+          <th>Target Tags</th>
+          <th>Sample Size</th>
+          <th>Sample Start</th>
+          <th>Sample End</th>
+          <th>Min</th>
+          <th>p50</th>
+          <th>p90</th>
+          <th>p99</th>
+          <th>p99.9</th>
+          <th>Max</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class=\\"\\"><span>
+              test-component-id-2
+              <span class=\\"badge badge-warning\\">Unrecognised Component</span></span></td>
+          <td><span>test-component-id-2-span-1</span></td>
+          <td>
+            <!---->
+          </td>
+          <td class=\\"table-primary\\"><span>
+              test-component-id-1
+              <span class=\\"badge badge-warning\\">Unrecognised Component</span></span></td>
+          <td>
+            test-component-id-1-span-1
+          </td>
+          <td>
+            <!---->
+          </td>
+          <td><span>123</span> spans</td>
+          <td><span>2021-01-01 02:03</span></td>
+          <td><span>2021-01-02 03:04</span></td>
+          <td><span><span>11</span>ms
+            </span></td>
+          <td><span><span>13</span>ms
+            </span></td>
+          <td><span><span>14</span>ms
+            </span></td>
+          <td><span><span>15</span>ms
+            </span></td>
+          <td><span><span>16</span>ms
+            </span></td>
+          <td><span><span>12</span>ms
+            </span></td>
+        </tr>
+        <tr>
+          <td class=\\"\\"><span>
+              test-component-id-3
+              <span class=\\"badge badge-warning\\">Unrecognised Component</span></span></td>
+          <td><span>test-component-id-3-span-1</span></td>
+          <td>
+            <!---->
+          </td>
+          <td class=\\"table-primary\\"><span>
+              test-component-id-1
+              <span class=\\"badge badge-warning\\">Unrecognised Component</span></span></td>
+          <td>
+            test-component-id-1-span-1
+          </td>
+          <td>
+            <!---->
+          </td>
+          <td><span>123</span> spans</td>
+          <td><span>2021-01-01 02:03</span></td>
+          <td><span>2021-01-02 03:04</span></td>
+          <td><span><span>11</span>ms
+            </span></td>
+          <td><span><span>13</span>ms
+            </span></td>
+          <td><span><span>14</span>ms
+            </span></td>
+          <td><span><span>15</span>ms
+            </span></td>
+          <td><span><span>16</span>ms
+            </span></td>
+          <td><span><span>12</span>ms
+            </span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>"
+`;
+
+exports[`ComponentResponseTimesView when subComponentDependencies prop is not set renders a message saying there are no response times available 1`] = `
+"<div>
+  <div>
+    <transition-stub name=\\"\\" css=\\"true\\" enterclass=\\"\\" leaveclass=\\"show\\" entertoclass=\\"show\\" leavetoclass=\\"\\" enteractiveclass=\\"\\" leaveactiveclass=\\"\\" class=\\"my-3\\">
+      <div role=\\"alert\\" aria-live=\\"polite\\" aria-atomic=\\"true\\" class=\\"alert alert-info\\">
+        <!---->
+        No response times are available for this component. Possibly the
+        component may not have been integrated with Zipkin yet.
+      </div>
+    </transition-stub>
+  </div>
+</div>"
+`;
+
+exports[`ComponentResponseTimesView when there is no duration object for multiple sub component dependencies renders the word \`unknown\` for each duration stat 1`] = `
+"<div>
+  <div>
+    <transition-stub name=\\"\\" css=\\"true\\" enterclass=\\"\\" leaveclass=\\"show\\" entertoclass=\\"show\\" leavetoclass=\\"\\" enteractiveclass=\\"\\" leaveactiveclass=\\"\\" class=\\"my-3\\">
+      <div role=\\"alert\\" aria-live=\\"polite\\" aria-atomic=\\"true\\" class=\\"alert alert-dismissible alert-info\\"><button type=\\"button\\" aria-label=\\"Close\\" class=\\"close\\">×</button>
+        The dependencies on this page come from Zipkin. The visualisation is not
+        out-of-the-box Zipkin functionality and is bespoke to the Component
+        Catalog.
+      </div>
+    </transition-stub>
+    <table class=\\"table table-dark\\">
+      <thead>
+        <tr>
+          <th>Source Component</th>
+          <th>Source Span</th>
+          <th>Source Tags</th>
+          <th>Target Component</th>
+          <th>Target Span</th>
+          <th>Target Tags</th>
+          <th>Sample Size</th>
+          <th>Sample Start</th>
+          <th>Sample End</th>
+          <th>Min</th>
+          <th>p50</th>
+          <th>p90</th>
+          <th>p99</th>
+          <th>p99.9</th>
+          <th>Max</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class=\\"\\"><span>
+              test-component-id-2
+              <span class=\\"badge badge-warning\\">Unrecognised Component</span></span></td>
+          <td><span>test-component-id-2-span-1</span></td>
+          <td>
+            <!---->
+          </td>
+          <td class=\\"table-primary\\"><span>
+              test-component-id-1
+              <span class=\\"badge badge-warning\\">Unrecognised Component</span></span></td>
+          <td>
+            test-component-id-1-span-1
+          </td>
+          <td>
+            <!---->
+          </td>
+          <td><span>123</span> spans</td>
+          <td><span>2021-01-01 02:03</span></td>
+          <td><span>2021-01-02 03:04</span></td>
+          <td><span>Unknown</span></td>
+          <td><span>Unknown</span></td>
+          <td><span>Unknown</span></td>
+          <td><span>Unknown</span></td>
+          <td><span>Unknown</span></td>
+          <td><span>Unknown</span></td>
+        </tr>
+        <tr>
+          <td class=\\"\\"><span>
+              test-component-id-3
+              <span class=\\"badge badge-warning\\">Unrecognised Component</span></span></td>
+          <td><span>test-component-id-3-span-1</span></td>
+          <td>
+            <!---->
+          </td>
+          <td class=\\"table-primary\\"><span>
+              test-component-id-1
+              <span class=\\"badge badge-warning\\">Unrecognised Component</span></span></td>
+          <td>
+            test-component-id-1-span-1
+          </td>
+          <td>
+            <!---->
+          </td>
+          <td><span>123</span> spans</td>
+          <td><span>2021-01-01 02:03</span></td>
+          <td><span>2021-01-02 03:04</span></td>
+          <td><span>Unknown</span></td>
+          <td><span>Unknown</span></td>
+          <td><span>Unknown</span></td>
+          <td><span>Unknown</span></td>
+          <td><span>Unknown</span></td>
+          <td><span>Unknown</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>"
+`;

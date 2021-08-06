@@ -1,0 +1,447 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TestResultTable when areaId prop is set renders links to tests that include areaId prop value in the URL 1`] = `
+"<table class=\\"table table-dark\\">
+  <thead>
+    <tr>
+      <th>Component</th>
+      <th>Test</th>
+      <th>Teams</th>
+      <th>Priority</th>
+      <th>Outcome</th>
+      <th>Message</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class=\\"test-id\\"><a href=\\"/areas/test-area-id-0/tests/test-test-id-2\\">test-test-id-2</a></td>
+      <td class=\\"test-component table-primary\\"><a href=\\"/components/test-component-id-1\\">Test Component Name 1</a></td>
+      <td>
+        <ul>
+          <li><a href=\\"/teams/test-team-id-1-a\\" class=\\"team-name\\">test-team-id-1-a</a>
+            <!---->
+            <!---->
+          </li>
+          <li><a href=\\"/teams/test-team-id-1-b\\" class=\\"team-name\\">test-team-id-1-b</a>
+            <!---->
+            <!---->
+          </li>
+        </ul>
+      </td>
+      <td class=\\"test-priority\\"><span class=\\"badge badge-info\\">
+          Medium
+        </span></td>
+      <td class=\\"test-outcome table-danger\\">
+        failing
+      </td>
+      <td class=\\"test-message\\">
+        <div>
+          <p>Test Message 2</p>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td class=\\"test-id\\"><a href=\\"/areas/test-area-id-0/tests/test-test-id-4\\">test-test-id-4</a></td>
+      <td class=\\"test-component table-primary\\"><a href=\\"/components/test-component-id-3\\">Test Component Name 3</a></td>
+      <td>
+        <ul>
+          <li><a href=\\"/teams/test-team-id-3-a\\" class=\\"team-name\\">test-team-id-3-a</a>
+            <!---->
+            <!---->
+          </li>
+          <li><a href=\\"/teams/test-team-id-3-b\\" class=\\"team-name\\">test-team-id-3-b</a>
+            <!---->
+            <!---->
+          </li>
+        </ul>
+      </td>
+      <td class=\\"test-priority\\"><span class=\\"badge badge-info\\">
+          Medium
+        </span></td>
+      <td class=\\"test-outcome table-danger\\">
+        failing
+      </td>
+      <td class=\\"test-message\\">
+        <div>
+          <p>Test Message 4</p>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td class=\\"test-id\\"><a href=\\"/areas/test-area-id-0/tests/test-test-id-1\\">test-test-id-1</a></td>
+      <td class=\\"test-component table-primary\\"><a href=\\"/components/test-component-id-1\\">Test Component Name 1</a></td>
+      <td>
+        <ul>
+          <li><a href=\\"/teams/test-team-id-1-a\\" class=\\"team-name\\">test-team-id-1-a</a>
+            <!---->
+            <!---->
+          </li>
+          <li><a href=\\"/teams/test-team-id-1-b\\" class=\\"team-name\\">test-team-id-1-b</a>
+            <!---->
+            <!---->
+          </li>
+        </ul>
+      </td>
+      <td class=\\"test-priority\\"><span class=\\"badge badge-primary\\">
+          Low
+        </span></td>
+      <td class=\\"test-outcome table-success\\">
+        passing
+      </td>
+      <td class=\\"test-message\\">
+        <div>
+          <p>Test Message 1</p>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td class=\\"test-id\\"><a href=\\"/areas/test-area-id-0/tests/test-test-id-3\\">test-test-id-3</a></td>
+      <td class=\\"test-component table-primary\\"><a href=\\"/components/test-component-id-3\\">Test Component Name 3</a></td>
+      <td>
+        <ul>
+          <li><a href=\\"/teams/test-team-id-3-a\\" class=\\"team-name\\">test-team-id-3-a</a>
+            <!---->
+            <!---->
+          </li>
+          <li><a href=\\"/teams/test-team-id-3-b\\" class=\\"team-name\\">test-team-id-3-b</a>
+            <!---->
+            <!---->
+          </li>
+        </ul>
+      </td>
+      <td class=\\"test-priority\\"><span class=\\"badge badge-primary\\">
+          Low
+        </span></td>
+      <td class=\\"test-outcome table-success\\">
+        passing
+      </td>
+      <td class=\\"test-message\\">
+        <div>
+          <p>Test Message 3</p>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>"
+`;
+
+exports[`TestResultTable when components prop is set to multiple components with multiple test results renders a table showing the test results and the test results are sorted by outcome, then testId 1`] = `
+"<table class=\\"table table-dark\\">
+  <thead>
+    <tr>
+      <th>Component</th>
+      <th>Test</th>
+      <th>Teams</th>
+      <th>Priority</th>
+      <th>Outcome</th>
+      <th>Message</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class=\\"test-id\\"><a href=\\"/tests/test-test-id-2\\">test-test-id-2</a></td>
+      <td class=\\"test-component table-primary\\"><a href=\\"/components/test-component-id-1\\">Test Component Name 1</a></td>
+      <td>
+        <ul>
+          <li><a href=\\"/teams/test-team-id-1-a\\" class=\\"team-name\\">test-team-id-1-a</a>
+            <!---->
+            <!---->
+          </li>
+          <li><a href=\\"/teams/test-team-id-1-b\\" class=\\"team-name\\">test-team-id-1-b</a>
+            <!---->
+            <!---->
+          </li>
+        </ul>
+      </td>
+      <td class=\\"test-priority\\"><span class=\\"badge badge-info\\">
+          Medium
+        </span></td>
+      <td class=\\"test-outcome table-danger\\">
+        failing
+      </td>
+      <td class=\\"test-message\\">
+        <div>
+          <p>Test Message 2</p>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td class=\\"test-id\\"><a href=\\"/tests/test-test-id-4\\">test-test-id-4</a></td>
+      <td class=\\"test-component table-primary\\"><a href=\\"/components/test-component-id-3\\">Test Component Name 3</a></td>
+      <td>
+        <ul>
+          <li><a href=\\"/teams/test-team-id-3-a\\" class=\\"team-name\\">test-team-id-3-a</a>
+            <!---->
+            <!---->
+          </li>
+          <li><a href=\\"/teams/test-team-id-3-b\\" class=\\"team-name\\">test-team-id-3-b</a>
+            <!---->
+            <!---->
+          </li>
+        </ul>
+      </td>
+      <td class=\\"test-priority\\"><span class=\\"badge badge-info\\">
+          Medium
+        </span></td>
+      <td class=\\"test-outcome table-danger\\">
+        failing
+      </td>
+      <td class=\\"test-message\\">
+        <div>
+          <p>Test Message 4</p>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td class=\\"test-id\\"><a href=\\"/tests/test-test-id-1\\">test-test-id-1</a></td>
+      <td class=\\"test-component table-primary\\"><a href=\\"/components/test-component-id-1\\">Test Component Name 1</a></td>
+      <td>
+        <ul>
+          <li><a href=\\"/teams/test-team-id-1-a\\" class=\\"team-name\\">test-team-id-1-a</a>
+            <!---->
+            <!---->
+          </li>
+          <li><a href=\\"/teams/test-team-id-1-b\\" class=\\"team-name\\">test-team-id-1-b</a>
+            <!---->
+            <!---->
+          </li>
+        </ul>
+      </td>
+      <td class=\\"test-priority\\"><span class=\\"badge badge-primary\\">
+          Low
+        </span></td>
+      <td class=\\"test-outcome table-success\\">
+        passing
+      </td>
+      <td class=\\"test-message\\">
+        <div>
+          <p>Test Message 1</p>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td class=\\"test-id\\"><a href=\\"/tests/test-test-id-3\\">test-test-id-3</a></td>
+      <td class=\\"test-component table-primary\\"><a href=\\"/components/test-component-id-3\\">Test Component Name 3</a></td>
+      <td>
+        <ul>
+          <li><a href=\\"/teams/test-team-id-3-a\\" class=\\"team-name\\">test-team-id-3-a</a>
+            <!---->
+            <!---->
+          </li>
+          <li><a href=\\"/teams/test-team-id-3-b\\" class=\\"team-name\\">test-team-id-3-b</a>
+            <!---->
+            <!---->
+          </li>
+        </ul>
+      </td>
+      <td class=\\"test-priority\\"><span class=\\"badge badge-primary\\">
+          Low
+        </span></td>
+      <td class=\\"test-outcome table-success\\">
+        passing
+      </td>
+      <td class=\\"test-message\\">
+        <div>
+          <p>Test Message 3</p>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>"
+`;
+
+exports[`TestResultTable when teamId prop is set renders links to tests that include teamId prop value in the URL 1`] = `
+"<table class=\\"table table-dark\\">
+  <thead>
+    <tr>
+      <th>Component</th>
+      <th>Test</th>
+      <th>Teams</th>
+      <th>Priority</th>
+      <th>Outcome</th>
+      <th>Message</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class=\\"test-id\\"><a href=\\"/teams/test-team-id-0/tests/test-test-id-2\\">test-test-id-2</a></td>
+      <td class=\\"test-component table-primary\\"><a href=\\"/components/test-component-id-1\\">Test Component Name 1</a></td>
+      <td>
+        <ul>
+          <li><a href=\\"/teams/test-team-id-1-a\\" class=\\"team-name\\">test-team-id-1-a</a>
+            <!---->
+            <!---->
+          </li>
+          <li><a href=\\"/teams/test-team-id-1-b\\" class=\\"team-name\\">test-team-id-1-b</a>
+            <!---->
+            <!---->
+          </li>
+        </ul>
+      </td>
+      <td class=\\"test-priority\\"><span class=\\"badge badge-info\\">
+          Medium
+        </span></td>
+      <td class=\\"test-outcome table-danger\\">
+        failing
+      </td>
+      <td class=\\"test-message\\">
+        <div>
+          <p>Test Message 2</p>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td class=\\"test-id\\"><a href=\\"/teams/test-team-id-0/tests/test-test-id-4\\">test-test-id-4</a></td>
+      <td class=\\"test-component table-primary\\"><a href=\\"/components/test-component-id-3\\">Test Component Name 3</a></td>
+      <td>
+        <ul>
+          <li><a href=\\"/teams/test-team-id-3-a\\" class=\\"team-name\\">test-team-id-3-a</a>
+            <!---->
+            <!---->
+          </li>
+          <li><a href=\\"/teams/test-team-id-3-b\\" class=\\"team-name\\">test-team-id-3-b</a>
+            <!---->
+            <!---->
+          </li>
+        </ul>
+      </td>
+      <td class=\\"test-priority\\"><span class=\\"badge badge-info\\">
+          Medium
+        </span></td>
+      <td class=\\"test-outcome table-danger\\">
+        failing
+      </td>
+      <td class=\\"test-message\\">
+        <div>
+          <p>Test Message 4</p>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td class=\\"test-id\\"><a href=\\"/teams/test-team-id-0/tests/test-test-id-1\\">test-test-id-1</a></td>
+      <td class=\\"test-component table-primary\\"><a href=\\"/components/test-component-id-1\\">Test Component Name 1</a></td>
+      <td>
+        <ul>
+          <li><a href=\\"/teams/test-team-id-1-a\\" class=\\"team-name\\">test-team-id-1-a</a>
+            <!---->
+            <!---->
+          </li>
+          <li><a href=\\"/teams/test-team-id-1-b\\" class=\\"team-name\\">test-team-id-1-b</a>
+            <!---->
+            <!---->
+          </li>
+        </ul>
+      </td>
+      <td class=\\"test-priority\\"><span class=\\"badge badge-primary\\">
+          Low
+        </span></td>
+      <td class=\\"test-outcome table-success\\">
+        passing
+      </td>
+      <td class=\\"test-message\\">
+        <div>
+          <p>Test Message 1</p>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td class=\\"test-id\\"><a href=\\"/teams/test-team-id-0/tests/test-test-id-3\\">test-test-id-3</a></td>
+      <td class=\\"test-component table-primary\\"><a href=\\"/components/test-component-id-3\\">Test Component Name 3</a></td>
+      <td>
+        <ul>
+          <li><a href=\\"/teams/test-team-id-3-a\\" class=\\"team-name\\">test-team-id-3-a</a>
+            <!---->
+            <!---->
+          </li>
+          <li><a href=\\"/teams/test-team-id-3-b\\" class=\\"team-name\\">test-team-id-3-b</a>
+            <!---->
+            <!---->
+          </li>
+        </ul>
+      </td>
+      <td class=\\"test-priority\\"><span class=\\"badge badge-primary\\">
+          Low
+        </span></td>
+      <td class=\\"test-outcome table-success\\">
+        passing
+      </td>
+      <td class=\\"test-message\\">
+        <div>
+          <p>Test Message 3</p>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>"
+`;
+
+exports[`TestResultTable when testId prop is set renders only test results with matching testId 1`] = `
+"<table class=\\"table table-dark\\">
+  <thead>
+    <tr>
+      <th>Component</th>
+      <th>Test</th>
+      <th>Teams</th>
+      <th>Priority</th>
+      <th>Outcome</th>
+      <th>Message</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class=\\"test-id\\"><a href=\\"/tests/test-test-id-1\\">test-test-id-1</a></td>
+      <td class=\\"test-component table-primary\\"><a href=\\"/components/test-component-id-1\\">Test Component Name 1</a></td>
+      <td>
+        <ul>
+          <li><a href=\\"/teams/test-team-id-1-a\\" class=\\"team-name\\">test-team-id-1-a</a>
+            <!---->
+            <!---->
+          </li>
+          <li><a href=\\"/teams/test-team-id-1-b\\" class=\\"team-name\\">test-team-id-1-b</a>
+            <!---->
+            <!---->
+          </li>
+        </ul>
+      </td>
+      <td class=\\"test-priority\\"><span class=\\"badge badge-primary\\">
+          Low
+        </span></td>
+      <td class=\\"test-outcome table-success\\">
+        passing
+      </td>
+      <td class=\\"test-message\\">
+        <div>
+          <p>Test Message 1</p>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td class=\\"test-id\\"><a href=\\"/tests/test-test-id-1\\">test-test-id-1</a></td>
+      <td class=\\"test-component table-primary\\"><a href=\\"/components/test-component-id-3\\">Test Component Name 3</a></td>
+      <td>
+        <ul>
+          <li><a href=\\"/teams/test-team-id-3-a\\" class=\\"team-name\\">test-team-id-3-a</a>
+            <!---->
+            <!---->
+          </li>
+          <li><a href=\\"/teams/test-team-id-3-b\\" class=\\"team-name\\">test-team-id-3-b</a>
+            <!---->
+            <!---->
+          </li>
+        </ul>
+      </td>
+      <td class=\\"test-priority\\"><span class=\\"badge badge-primary\\">
+          Low
+        </span></td>
+      <td class=\\"test-outcome table-success\\">
+        passing
+      </td>
+      <td class=\\"test-message\\">
+        <div>
+          <p>Test Message 3</p>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>"
+`;

@@ -1,0 +1,1766 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Index when Get Teams service endpoint returns a component with no test results renders the page 1`] = `
+<div>
+  <div
+    class="my-3"
+  >
+    <a
+      class="btn btn-secondary"
+      href="/all-teams"
+      target="_self"
+    >
+      Teams
+    </a>
+     
+    <a
+      class="btn btn-secondary"
+      href="/all-teams/components"
+      target="_self"
+    >
+      Components
+    </a>
+     
+    <a
+      class="btn btn-secondary"
+      href="/all-teams/tech-debts"
+      target="_self"
+    >
+      Tech Debts
+    </a>
+     
+    <a
+      class="btn btn-secondary"
+      href="/all-teams/tests"
+      target="_self"
+    >
+      Tests
+    </a>
+  </div>
+   
+  <div
+    class="card-deck"
+  >
+    <div
+      class="card my-3 bg-dark text-white"
+    >
+      <!---->
+      <!---->
+      <div
+        class="card-body"
+      >
+        <!---->
+        <!---->
+      </div>
+      <!---->
+      <!---->
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Index when Get Teams service endpoint returns an array of multiple teams renders the page 1`] = `
+<div>
+  <div
+    class="my-3"
+  >
+    <a
+      class="btn btn-secondary"
+      href="/all-teams"
+      target="_self"
+    >
+      Teams
+    </a>
+     
+    <a
+      class="btn btn-secondary"
+      href="/all-teams/components"
+      target="_self"
+    >
+      Components
+    </a>
+     
+    <a
+      class="btn btn-secondary"
+      href="/all-teams/tech-debts"
+      target="_self"
+    >
+      Tech Debts
+    </a>
+     
+    <a
+      class="btn btn-secondary"
+      href="/all-teams/tests"
+      target="_self"
+    >
+      Tests
+    </a>
+  </div>
+   
+  <div
+    class="card-deck"
+  >
+    <div
+      class="card my-3 bg-dark text-white"
+    >
+      <!---->
+      <!---->
+      <div
+        class="card-body"
+      >
+        <!---->
+        <!---->
+        <div
+          class="card mt-1"
+        >
+          <!---->
+          <!---->
+          <header
+            class="card-header p-1"
+            role="tab"
+          >
+            <button
+              aria-controls="accordion-0-0-low"
+              aria-expanded="true"
+              class="btn btn-info btn-block not-collapsed"
+              type="button"
+            >
+              Low (4)
+            </button>
+          </header>
+           
+          <transition-stub
+            css="true"
+            enteractiveclass="collapsing"
+            enterclass=""
+            entertoclass="collapse show"
+            leaveactiveclass="collapsing"
+            leaveclass="collapse show"
+            leavetoclass="collapse"
+            role="tabpanel"
+          >
+            <div
+              class="collapse show"
+              id="accordion-0-0-low"
+            >
+              <div
+                class="card-body"
+              >
+                <!---->
+                <!---->
+                <table
+                  class="table table-dark table-bordered table-striped mt-2"
+                  style="width: 100%;"
+                >
+                  <thead>
+                    <tr>
+                      <th>
+                        Name
+                      </th>
+                       
+                      <!---->
+                       
+                      <th>
+                        Test Results
+                      </th>
+                    </tr>
+                  </thead>
+                   
+                  <tbody>
+                    <tr>
+                      <td
+                        class="component-name table-primary"
+                      >
+                        <a
+                          href="/components/test-id-1"
+                        >
+                          Test Name 1
+                        </a>
+                      </td>
+                       
+                      <!---->
+                       
+                      <td>
+                        <table
+                          class="table table-dark"
+                        >
+                          <thead>
+                            <tr>
+                              <th>
+                                Test
+                              </th>
+                               
+                              <th>
+                                Priority
+                              </th>
+                               
+                              <th>
+                                Outcome
+                              </th>
+                               
+                              <th>
+                                Message
+                              </th>
+                            </tr>
+                          </thead>
+                           
+                          <tbody>
+                            <tr>
+                              <td
+                                class="test-id"
+                              >
+                                <a
+                                  href="/tests/test-test-id-1a"
+                                >
+                                  test-test-id-1a
+                                </a>
+                              </td>
+                               
+                              <td
+                                class="test-priority"
+                              >
+                                
+        low
+      
+                              </td>
+                               
+                              <td
+                                class="test-outcome table-danger"
+                              >
+                                
+        fail
+      
+                              </td>
+                               
+                              <td
+                                class="test-message"
+                              >
+                                <div>
+                                  
+
+                                  <p>
+                                    Test Message 1a
+                                  </p>
+                                  
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td
+                                class="test-id"
+                              >
+                                <a
+                                  href="/tests/test-test-id-1b"
+                                >
+                                  test-test-id-1b
+                                </a>
+                              </td>
+                               
+                              <td
+                                class="test-priority"
+                              >
+                                
+        low
+      
+                              </td>
+                               
+                              <td
+                                class="test-outcome table-danger"
+                              >
+                                
+        fail
+      
+                              </td>
+                               
+                              <td
+                                class="test-message"
+                              >
+                                <div>
+                                  
+
+                                  <p>
+                                    Test Message 1b
+                                  </p>
+                                  
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td
+                        class="component-name table-primary"
+                      >
+                        <a
+                          href="/components/test-id-2"
+                        >
+                          Test Name 2
+                        </a>
+                      </td>
+                       
+                      <!---->
+                       
+                      <td>
+                        <table
+                          class="table table-dark"
+                        >
+                          <thead>
+                            <tr>
+                              <th>
+                                Test
+                              </th>
+                               
+                              <th>
+                                Priority
+                              </th>
+                               
+                              <th>
+                                Outcome
+                              </th>
+                               
+                              <th>
+                                Message
+                              </th>
+                            </tr>
+                          </thead>
+                           
+                          <tbody>
+                            <tr>
+                              <td
+                                class="test-id"
+                              >
+                                <a
+                                  href="/tests/test-test-id-2a"
+                                >
+                                  test-test-id-2a
+                                </a>
+                              </td>
+                               
+                              <td
+                                class="test-priority"
+                              >
+                                
+        low
+      
+                              </td>
+                               
+                              <td
+                                class="test-outcome table-danger"
+                              >
+                                
+        fail
+      
+                              </td>
+                               
+                              <td
+                                class="test-message"
+                              >
+                                <div>
+                                  
+
+                                  <p>
+                                    Test Message 2a
+                                  </p>
+                                  
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td
+                                class="test-id"
+                              >
+                                <a
+                                  href="/tests/test-test-id-2b"
+                                >
+                                  test-test-id-2b
+                                </a>
+                              </td>
+                               
+                              <td
+                                class="test-priority"
+                              >
+                                
+        low
+      
+                              </td>
+                               
+                              <td
+                                class="test-outcome table-danger"
+                              >
+                                
+        fail
+      
+                              </td>
+                               
+                              <td
+                                class="test-message"
+                              >
+                                <div>
+                                  
+
+                                  <p>
+                                    Test Message 2b
+                                  </p>
+                                  
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </transition-stub>
+          <!---->
+          <!---->
+        </div>
+      </div>
+      <!---->
+      <!---->
+    </div>
+    <div
+      class="card my-3 bg-dark text-white"
+    >
+      <!---->
+      <!---->
+      <div
+        class="card-body"
+      >
+        <!---->
+        <!---->
+        <div
+          class="card mt-1"
+        >
+          <!---->
+          <!---->
+          <header
+            class="card-header p-1"
+            role="tab"
+          >
+            <button
+              aria-controls="accordion-0-1-low"
+              aria-expanded="true"
+              class="btn btn-info btn-block not-collapsed"
+              type="button"
+            >
+              Low (4)
+            </button>
+          </header>
+           
+          <transition-stub
+            css="true"
+            enteractiveclass="collapsing"
+            enterclass=""
+            entertoclass="collapse show"
+            leaveactiveclass="collapsing"
+            leaveclass="collapse show"
+            leavetoclass="collapse"
+            role="tabpanel"
+          >
+            <div
+              class="collapse show"
+              id="accordion-0-1-low"
+            >
+              <div
+                class="card-body"
+              >
+                <!---->
+                <!---->
+                <table
+                  class="table table-dark table-bordered table-striped mt-2"
+                  style="width: 100%;"
+                >
+                  <thead>
+                    <tr>
+                      <th>
+                        Name
+                      </th>
+                       
+                      <!---->
+                       
+                      <th>
+                        Test Results
+                      </th>
+                    </tr>
+                  </thead>
+                   
+                  <tbody>
+                    <tr>
+                      <td
+                        class="component-name table-primary"
+                      >
+                        <a
+                          href="/components/test-id-3"
+                        >
+                          Test Name 3
+                        </a>
+                      </td>
+                       
+                      <!---->
+                       
+                      <td>
+                        <table
+                          class="table table-dark"
+                        >
+                          <thead>
+                            <tr>
+                              <th>
+                                Test
+                              </th>
+                               
+                              <th>
+                                Priority
+                              </th>
+                               
+                              <th>
+                                Outcome
+                              </th>
+                               
+                              <th>
+                                Message
+                              </th>
+                            </tr>
+                          </thead>
+                           
+                          <tbody>
+                            <tr>
+                              <td
+                                class="test-id"
+                              >
+                                <a
+                                  href="/tests/test-test-id-3a"
+                                >
+                                  test-test-id-3a
+                                </a>
+                              </td>
+                               
+                              <td
+                                class="test-priority"
+                              >
+                                
+        low
+      
+                              </td>
+                               
+                              <td
+                                class="test-outcome table-danger"
+                              >
+                                
+        fail
+      
+                              </td>
+                               
+                              <td
+                                class="test-message"
+                              >
+                                <div>
+                                  
+
+                                  <p>
+                                    Test Message 3a
+                                  </p>
+                                  
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td
+                                class="test-id"
+                              >
+                                <a
+                                  href="/tests/test-test-id-3b"
+                                >
+                                  test-test-id-3b
+                                </a>
+                              </td>
+                               
+                              <td
+                                class="test-priority"
+                              >
+                                
+        low
+      
+                              </td>
+                               
+                              <td
+                                class="test-outcome table-danger"
+                              >
+                                
+        fail
+      
+                              </td>
+                               
+                              <td
+                                class="test-message"
+                              >
+                                <div>
+                                  
+
+                                  <p>
+                                    Test Message 3b
+                                  </p>
+                                  
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td
+                        class="component-name table-primary"
+                      >
+                        <a
+                          href="/components/test-id-4"
+                        >
+                          Test Name 4
+                        </a>
+                      </td>
+                       
+                      <!---->
+                       
+                      <td>
+                        <table
+                          class="table table-dark"
+                        >
+                          <thead>
+                            <tr>
+                              <th>
+                                Test
+                              </th>
+                               
+                              <th>
+                                Priority
+                              </th>
+                               
+                              <th>
+                                Outcome
+                              </th>
+                               
+                              <th>
+                                Message
+                              </th>
+                            </tr>
+                          </thead>
+                           
+                          <tbody>
+                            <tr>
+                              <td
+                                class="test-id"
+                              >
+                                <a
+                                  href="/tests/test-test-id-4a"
+                                >
+                                  test-test-id-4a
+                                </a>
+                              </td>
+                               
+                              <td
+                                class="test-priority"
+                              >
+                                
+        low
+      
+                              </td>
+                               
+                              <td
+                                class="test-outcome table-danger"
+                              >
+                                
+        fail
+      
+                              </td>
+                               
+                              <td
+                                class="test-message"
+                              >
+                                <div>
+                                  
+
+                                  <p>
+                                    Test Message 4a
+                                  </p>
+                                  
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td
+                                class="test-id"
+                              >
+                                <a
+                                  href="/tests/test-test-id-4b"
+                                >
+                                  test-test-id-4b
+                                </a>
+                              </td>
+                               
+                              <td
+                                class="test-priority"
+                              >
+                                
+        low
+      
+                              </td>
+                               
+                              <td
+                                class="test-outcome table-danger"
+                              >
+                                
+        fail
+      
+                              </td>
+                               
+                              <td
+                                class="test-message"
+                              >
+                                <div>
+                                  
+
+                                  <p>
+                                    Test Message 4b
+                                  </p>
+                                  
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </transition-stub>
+          <!---->
+          <!---->
+        </div>
+      </div>
+      <!---->
+      <!---->
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Index when Get Teams service endpoint returns an empty array renders the page 1`] = `
+<div>
+  <div
+    class="my-3"
+  >
+    <a
+      class="btn btn-secondary"
+      href="/all-teams"
+      target="_self"
+    >
+      Teams
+    </a>
+     
+    <a
+      class="btn btn-secondary"
+      href="/all-teams/components"
+      target="_self"
+    >
+      Components
+    </a>
+     
+    <a
+      class="btn btn-secondary"
+      href="/all-teams/tech-debts"
+      target="_self"
+    >
+      Tech Debts
+    </a>
+     
+    <a
+      class="btn btn-secondary"
+      href="/all-teams/tests"
+      target="_self"
+    >
+      Tests
+    </a>
+  </div>
+   
+</div>
+`;
+
+exports[`Index when Get Teams service endpoint returns failed test results for all priorities renders all priorities 1`] = `
+<div>
+  <div
+    class="my-3"
+  >
+    <a
+      class="btn btn-secondary"
+      href="/all-teams"
+      target="_self"
+    >
+      Teams
+    </a>
+     
+    <a
+      class="btn btn-secondary"
+      href="/all-teams/components"
+      target="_self"
+    >
+      Components
+    </a>
+     
+    <a
+      class="btn btn-secondary"
+      href="/all-teams/tech-debts"
+      target="_self"
+    >
+      Tech Debts
+    </a>
+     
+    <a
+      class="btn btn-secondary"
+      href="/all-teams/tests"
+      target="_self"
+    >
+      Tests
+    </a>
+  </div>
+   
+  <div
+    class="card-deck"
+  >
+    <div
+      class="card my-3 bg-dark text-white"
+    >
+      <!---->
+      <!---->
+      <div
+        class="card-body"
+      >
+        <!---->
+        <!---->
+        <div
+          class="card mt-1"
+        >
+          <!---->
+          <!---->
+          <header
+            class="card-header p-1"
+            role="tab"
+          >
+            <button
+              aria-controls="accordion-0-0-very-high"
+              aria-expanded="true"
+              class="btn btn-info btn-block not-collapsed"
+              type="button"
+            >
+              Very High (1)
+            </button>
+          </header>
+           
+          <transition-stub
+            css="true"
+            enteractiveclass="collapsing"
+            enterclass=""
+            entertoclass="collapse show"
+            leaveactiveclass="collapsing"
+            leaveclass="collapse show"
+            leavetoclass="collapse"
+            role="tabpanel"
+          >
+            <div
+              class="collapse show"
+              id="accordion-0-0-very-high"
+            >
+              <div
+                class="card-body"
+              >
+                <!---->
+                <!---->
+                <table
+                  class="table table-dark table-bordered table-striped mt-2"
+                  style="width: 100%;"
+                >
+                  <thead>
+                    <tr>
+                      <th>
+                        Name
+                      </th>
+                       
+                      <!---->
+                       
+                      <th>
+                        Test Results
+                      </th>
+                    </tr>
+                  </thead>
+                   
+                  <tbody>
+                    <tr>
+                      <td
+                        class="component-name table-primary"
+                      >
+                        <a
+                          href="/components/test-id-1"
+                        >
+                          Test Name 1
+                        </a>
+                      </td>
+                       
+                      <!---->
+                       
+                      <td>
+                        <table
+                          class="table table-dark"
+                        >
+                          <thead>
+                            <tr>
+                              <th>
+                                Test
+                              </th>
+                               
+                              <th>
+                                Priority
+                              </th>
+                               
+                              <th>
+                                Outcome
+                              </th>
+                               
+                              <th>
+                                Message
+                              </th>
+                            </tr>
+                          </thead>
+                           
+                          <tbody>
+                            <tr>
+                              <td
+                                class="test-id"
+                              >
+                                <a
+                                  href="/tests/test-test-id-1a"
+                                >
+                                  test-test-id-1a
+                                </a>
+                              </td>
+                               
+                              <td
+                                class="test-priority"
+                              >
+                                
+        very-high
+      
+                              </td>
+                               
+                              <td
+                                class="test-outcome table-danger"
+                              >
+                                
+        fail
+      
+                              </td>
+                               
+                              <td
+                                class="test-message"
+                              >
+                                <div>
+                                  
+
+                                  <p>
+                                    Test Message 1a
+                                  </p>
+                                  
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </transition-stub>
+          <!---->
+          <!---->
+        </div>
+        <div
+          class="card mt-1"
+        >
+          <!---->
+          <!---->
+          <header
+            class="card-header p-1"
+            role="tab"
+          >
+            <button
+              aria-controls="accordion-0-0-high"
+              aria-expanded="false"
+              class="btn btn-info btn-block collapsed"
+              type="button"
+            >
+              High (1)
+            </button>
+          </header>
+           
+          <transition-stub
+            css="true"
+            enteractiveclass="collapsing"
+            enterclass=""
+            entertoclass="collapse show"
+            leaveactiveclass="collapsing"
+            leaveclass="collapse show"
+            leavetoclass="collapse"
+            role="tabpanel"
+          >
+            <div
+              class="collapse"
+              id="accordion-0-0-high"
+              style="display: none;"
+            >
+              <div
+                class="card-body"
+              >
+                <!---->
+                <!---->
+                <table
+                  class="table table-dark table-bordered table-striped mt-2"
+                  style="width: 100%;"
+                >
+                  <thead>
+                    <tr>
+                      <th>
+                        Name
+                      </th>
+                       
+                      <!---->
+                       
+                      <th>
+                        Test Results
+                      </th>
+                    </tr>
+                  </thead>
+                   
+                  <tbody>
+                    <tr>
+                      <td
+                        class="component-name table-primary"
+                      >
+                        <a
+                          href="/components/test-id-1"
+                        >
+                          Test Name 1
+                        </a>
+                      </td>
+                       
+                      <!---->
+                       
+                      <td>
+                        <table
+                          class="table table-dark"
+                        >
+                          <thead>
+                            <tr>
+                              <th>
+                                Test
+                              </th>
+                               
+                              <th>
+                                Priority
+                              </th>
+                               
+                              <th>
+                                Outcome
+                              </th>
+                               
+                              <th>
+                                Message
+                              </th>
+                            </tr>
+                          </thead>
+                           
+                          <tbody>
+                            <tr>
+                              <td
+                                class="test-id"
+                              >
+                                <a
+                                  href="/tests/test-test-id-1b"
+                                >
+                                  test-test-id-1b
+                                </a>
+                              </td>
+                               
+                              <td
+                                class="test-priority"
+                              >
+                                
+        high
+      
+                              </td>
+                               
+                              <td
+                                class="test-outcome table-danger"
+                              >
+                                
+        fail
+      
+                              </td>
+                               
+                              <td
+                                class="test-message"
+                              >
+                                <div>
+                                  
+
+                                  <p>
+                                    Test Message 1b
+                                  </p>
+                                  
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </transition-stub>
+          <!---->
+          <!---->
+        </div>
+        <div
+          class="card mt-1"
+        >
+          <!---->
+          <!---->
+          <header
+            class="card-header p-1"
+            role="tab"
+          >
+            <button
+              aria-controls="accordion-0-0-medium"
+              aria-expanded="false"
+              class="btn btn-info btn-block collapsed"
+              type="button"
+            >
+              Medium (1)
+            </button>
+          </header>
+           
+          <transition-stub
+            css="true"
+            enteractiveclass="collapsing"
+            enterclass=""
+            entertoclass="collapse show"
+            leaveactiveclass="collapsing"
+            leaveclass="collapse show"
+            leavetoclass="collapse"
+            role="tabpanel"
+          >
+            <div
+              class="collapse"
+              id="accordion-0-0-medium"
+              style="display: none;"
+            >
+              <div
+                class="card-body"
+              >
+                <!---->
+                <!---->
+                <table
+                  class="table table-dark table-bordered table-striped mt-2"
+                  style="width: 100%;"
+                >
+                  <thead>
+                    <tr>
+                      <th>
+                        Name
+                      </th>
+                       
+                      <!---->
+                       
+                      <th>
+                        Test Results
+                      </th>
+                    </tr>
+                  </thead>
+                   
+                  <tbody>
+                    <tr>
+                      <td
+                        class="component-name table-primary"
+                      >
+                        <a
+                          href="/components/test-id-1"
+                        >
+                          Test Name 1
+                        </a>
+                      </td>
+                       
+                      <!---->
+                       
+                      <td>
+                        <table
+                          class="table table-dark"
+                        >
+                          <thead>
+                            <tr>
+                              <th>
+                                Test
+                              </th>
+                               
+                              <th>
+                                Priority
+                              </th>
+                               
+                              <th>
+                                Outcome
+                              </th>
+                               
+                              <th>
+                                Message
+                              </th>
+                            </tr>
+                          </thead>
+                           
+                          <tbody>
+                            <tr>
+                              <td
+                                class="test-id"
+                              >
+                                <a
+                                  href="/tests/test-test-id-1c"
+                                >
+                                  test-test-id-1c
+                                </a>
+                              </td>
+                               
+                              <td
+                                class="test-priority"
+                              >
+                                
+        medium
+      
+                              </td>
+                               
+                              <td
+                                class="test-outcome table-danger"
+                              >
+                                
+        fail
+      
+                              </td>
+                               
+                              <td
+                                class="test-message"
+                              >
+                                <div>
+                                  
+
+                                  <p>
+                                    Test Message 1c
+                                  </p>
+                                  
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </transition-stub>
+          <!---->
+          <!---->
+        </div>
+        <div
+          class="card mt-1"
+        >
+          <!---->
+          <!---->
+          <header
+            class="card-header p-1"
+            role="tab"
+          >
+            <button
+              aria-controls="accordion-0-0-low"
+              aria-expanded="false"
+              class="btn btn-info btn-block collapsed"
+              type="button"
+            >
+              Low (1)
+            </button>
+          </header>
+           
+          <transition-stub
+            css="true"
+            enteractiveclass="collapsing"
+            enterclass=""
+            entertoclass="collapse show"
+            leaveactiveclass="collapsing"
+            leaveclass="collapse show"
+            leavetoclass="collapse"
+            role="tabpanel"
+          >
+            <div
+              class="collapse"
+              id="accordion-0-0-low"
+              style="display: none;"
+            >
+              <div
+                class="card-body"
+              >
+                <!---->
+                <!---->
+                <table
+                  class="table table-dark table-bordered table-striped mt-2"
+                  style="width: 100%;"
+                >
+                  <thead>
+                    <tr>
+                      <th>
+                        Name
+                      </th>
+                       
+                      <!---->
+                       
+                      <th>
+                        Test Results
+                      </th>
+                    </tr>
+                  </thead>
+                   
+                  <tbody>
+                    <tr>
+                      <td
+                        class="component-name table-primary"
+                      >
+                        <a
+                          href="/components/test-id-1"
+                        >
+                          Test Name 1
+                        </a>
+                      </td>
+                       
+                      <!---->
+                       
+                      <td>
+                        <table
+                          class="table table-dark"
+                        >
+                          <thead>
+                            <tr>
+                              <th>
+                                Test
+                              </th>
+                               
+                              <th>
+                                Priority
+                              </th>
+                               
+                              <th>
+                                Outcome
+                              </th>
+                               
+                              <th>
+                                Message
+                              </th>
+                            </tr>
+                          </thead>
+                           
+                          <tbody>
+                            <tr>
+                              <td
+                                class="test-id"
+                              >
+                                <a
+                                  href="/tests/test-test-id-1d"
+                                >
+                                  test-test-id-1d
+                                </a>
+                              </td>
+                               
+                              <td
+                                class="test-priority"
+                              >
+                                
+        low
+      
+                              </td>
+                               
+                              <td
+                                class="test-outcome table-danger"
+                              >
+                                
+        fail
+      
+                              </td>
+                               
+                              <td
+                                class="test-message"
+                              >
+                                <div>
+                                  
+
+                                  <p>
+                                    Test Message 1d
+                                  </p>
+                                  
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </transition-stub>
+          <!---->
+          <!---->
+        </div>
+      </div>
+      <!---->
+      <!---->
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Index when Get Teams service endpoint returns more than 3 teams renders 3 teams per row 1`] = `
+<div>
+  <div
+    class="my-3"
+  >
+    <a
+      class="btn btn-secondary"
+      href="/all-teams"
+      target="_self"
+    >
+      Teams
+    </a>
+     
+    <a
+      class="btn btn-secondary"
+      href="/all-teams/components"
+      target="_self"
+    >
+      Components
+    </a>
+     
+    <a
+      class="btn btn-secondary"
+      href="/all-teams/tech-debts"
+      target="_self"
+    >
+      Tech Debts
+    </a>
+     
+    <a
+      class="btn btn-secondary"
+      href="/all-teams/tests"
+      target="_self"
+    >
+      Tests
+    </a>
+  </div>
+   
+  <div
+    class="card-deck"
+  >
+    <div
+      class="card my-3 bg-dark text-white"
+    >
+      <!---->
+      <!---->
+      <div
+        class="card-body"
+      >
+        <!---->
+        <!---->
+      </div>
+      <!---->
+      <!---->
+    </div>
+    <div
+      class="card my-3 bg-dark text-white"
+    >
+      <!---->
+      <!---->
+      <div
+        class="card-body"
+      >
+        <!---->
+        <!---->
+      </div>
+      <!---->
+      <!---->
+    </div>
+  </div>
+  <div
+    class="card-deck"
+  >
+    <div
+      class="card my-3 bg-dark text-white"
+    >
+      <!---->
+      <!---->
+      <div
+        class="card-body"
+      >
+        <!---->
+        <!---->
+      </div>
+      <!---->
+      <!---->
+    </div>
+    <div
+      class="card my-3 bg-dark text-white"
+    >
+      <!---->
+      <!---->
+      <div
+        class="card-body"
+      >
+        <!---->
+        <!---->
+      </div>
+      <!---->
+      <!---->
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Index when there are test results for each outcome renders only failed test results 1`] = `
+<div>
+  <div
+    class="my-3"
+  >
+    <a
+      class="btn btn-secondary"
+      href="/all-teams"
+      target="_self"
+    >
+      Teams
+    </a>
+     
+    <a
+      class="btn btn-secondary"
+      href="/all-teams/components"
+      target="_self"
+    >
+      Components
+    </a>
+     
+    <a
+      class="btn btn-secondary"
+      href="/all-teams/tech-debts"
+      target="_self"
+    >
+      Tech Debts
+    </a>
+     
+    <a
+      class="btn btn-secondary"
+      href="/all-teams/tests"
+      target="_self"
+    >
+      Tests
+    </a>
+  </div>
+   
+  <div
+    class="card-deck"
+  >
+    <div
+      class="card my-3 bg-dark text-white"
+    >
+      <!---->
+      <!---->
+      <div
+        class="card-body"
+      >
+        <!---->
+        <!---->
+        <div
+          class="card mt-1"
+        >
+          <!---->
+          <!---->
+          <header
+            class="card-header p-1"
+            role="tab"
+          >
+            <button
+              aria-controls="accordion-0-0-low"
+              aria-expanded="true"
+              class="btn btn-info btn-block not-collapsed"
+              type="button"
+            >
+              Low (1)
+            </button>
+          </header>
+           
+          <transition-stub
+            css="true"
+            enteractiveclass="collapsing"
+            enterclass=""
+            entertoclass="collapse show"
+            leaveactiveclass="collapsing"
+            leaveclass="collapse show"
+            leavetoclass="collapse"
+            role="tabpanel"
+          >
+            <div
+              class="collapse show"
+              id="accordion-0-0-low"
+            >
+              <div
+                class="card-body"
+              >
+                <!---->
+                <!---->
+                <table
+                  class="table table-dark table-bordered table-striped mt-2"
+                  style="width: 100%;"
+                >
+                  <thead>
+                    <tr>
+                      <th>
+                        Name
+                      </th>
+                       
+                      <!---->
+                       
+                      <th>
+                        Test Results
+                      </th>
+                    </tr>
+                  </thead>
+                   
+                  <tbody>
+                    <tr>
+                      <td
+                        class="component-name table-primary"
+                      >
+                        <a
+                          href="/components/test-id-1"
+                        >
+                          Test Name 1
+                        </a>
+                      </td>
+                       
+                      <!---->
+                       
+                      <td>
+                        <table
+                          class="table table-dark"
+                        >
+                          <thead>
+                            <tr>
+                              <th>
+                                Test
+                              </th>
+                               
+                              <th>
+                                Priority
+                              </th>
+                               
+                              <th>
+                                Outcome
+                              </th>
+                               
+                              <th>
+                                Message
+                              </th>
+                            </tr>
+                          </thead>
+                           
+                          <tbody>
+                            <tr>
+                              <td
+                                class="test-id"
+                              >
+                                <a
+                                  href="/tests/test-test-id-1b"
+                                >
+                                  test-test-id-1b
+                                </a>
+                              </td>
+                               
+                              <td
+                                class="test-priority"
+                              >
+                                
+        low
+      
+                              </td>
+                               
+                              <td
+                                class="test-outcome table-danger"
+                              >
+                                
+        fail
+      
+                              </td>
+                               
+                              <td
+                                class="test-message"
+                              >
+                                <div>
+                                  
+
+                                  <p>
+                                    Test Message 1b
+                                  </p>
+                                  
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </transition-stub>
+          <!---->
+          <!---->
+        </div>
+      </div>
+      <!---->
+      <!---->
+    </div>
+  </div>
+</div>
+`;

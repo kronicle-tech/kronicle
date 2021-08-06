@@ -1,0 +1,2 @@
+First line
+Second line is followed by new line, giving the file three lines

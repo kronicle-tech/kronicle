@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TeamTabs renders the component 1`] = `
+"<div class=\\"my-3\\"><a href=\\"/teams/test-team-id\\" target=\\"_self\\" class=\\"btn btn-secondary\\">Info</a> <a href=\\"/teams/test-team-id/dependencies\\" target=\\"_self\\" class=\\"btn btn-secondary\\">Dependencies</a> <a href=\\"/teams/test-team-id/components\\" target=\\"_self\\" class=\\"btn btn-secondary\\">Components</a> <a href=\\"/teams/test-team-id/cross-functional-requirements\\" target=\\"_self\\" class=\\"btn btn-secondary\\">
+    Cross Functional Requirements
+  </a> <a href=\\"/teams/test-team-id/tech-debts\\" target=\\"_self\\" class=\\"btn btn-secondary\\">Tech Debts</a> <a href=\\"/teams/test-team-id/tests\\" target=\\"_self\\" class=\\"btn btn-secondary\\">Tests</a> <a href=\\"/teams/test-team-id/errors\\" target=\\"_self\\" class=\\"btn btn-secondary\\">Errors</a> <a href=\\"/teams/test-team-id/openapi-specs\\" target=\\"_self\\" class=\\"btn btn-secondary\\">OpenAPI Specs</a></div>"
+`;

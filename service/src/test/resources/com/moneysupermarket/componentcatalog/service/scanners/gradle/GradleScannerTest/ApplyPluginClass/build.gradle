@@ -1,0 +1,10 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.owasp:dependency-check-gradle:6.0.2")
+    }
+}
+
+apply plugin: org.owasp.dependencycheck.gradle.DependencyCheckPlugin

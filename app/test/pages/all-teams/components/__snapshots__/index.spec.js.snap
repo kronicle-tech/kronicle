@@ -1,0 +1,820 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Index when Get Teams service endpoint returns an array of multiple teams renders the page 1`] = `
+<div>
+  <div
+    class="my-3"
+  >
+    <a
+      class="btn btn-secondary"
+      href="/all-teams"
+      target="_self"
+    >
+      Teams
+    </a>
+     
+    <a
+      class="btn btn-secondary"
+      href="/all-teams/components"
+      target="_self"
+    >
+      Components
+    </a>
+     
+    <a
+      class="btn btn-secondary"
+      href="/all-teams/tech-debts"
+      target="_self"
+    >
+      Tech Debts
+    </a>
+     
+    <a
+      class="btn btn-secondary"
+      href="/all-teams/tests"
+      target="_self"
+    >
+      Tests
+    </a>
+  </div>
+   
+  <div
+    class="card-deck"
+  >
+    <div
+      class="card my-3 bg-dark text-white"
+    >
+      <!---->
+      <!---->
+      <div
+        class="card-body"
+      >
+        <!---->
+        <!---->
+        <div
+          class="card mt-1"
+        >
+          <!---->
+          <!---->
+          <header
+            class="card-header p-1"
+            role="tab"
+          >
+            <button
+              aria-controls="accordion-0-0-test-id-1"
+              aria-expanded="true"
+              class="btn btn-info btn-block not-collapsed"
+              type="button"
+            >
+              Test Name 1
+            </button>
+          </header>
+           
+          <transition-stub
+            css="true"
+            enteractiveclass="collapsing"
+            enterclass=""
+            entertoclass="collapse show"
+            leaveactiveclass="collapsing"
+            leaveclass="collapse show"
+            leavetoclass="collapse"
+            role="tabpanel"
+          >
+            <div
+              class="collapse show"
+              id="accordion-0-0-test-id-1"
+            >
+              <div
+                class="card-body"
+              >
+                <!---->
+                <!---->
+                <div>
+                  <h4>
+                    <a
+                      href="/components/test-id-1"
+                    >
+                      Test Name 1
+                    </a>
+                  </h4>
+                   
+                  <div>
+                    <h5>
+                      Teams
+                    </h5>
+                     
+                    <ul>
+                      <li>
+                        <a
+                          class="team-name"
+                          href="/teams/test-team-id-1"
+                        >
+                          test-team-id-1
+                        </a>
+                         
+                        <!---->
+                         
+                        <!---->
+                      </li>
+                    </ul>
+                  </div>
+                   
+                  <!---->
+                   
+                  <!---->
+                   
+                  <!---->
+                   
+                  <!---->
+                   
+                  <!---->
+                   
+                  <!---->
+                   
+                  <!---->
+                </div>
+              </div>
+            </div>
+          </transition-stub>
+          <!---->
+          <!---->
+        </div>
+        <div
+          class="card mt-1"
+        >
+          <!---->
+          <!---->
+          <header
+            class="card-header p-1"
+            role="tab"
+          >
+            <button
+              aria-controls="accordion-0-0-test-id-2"
+              aria-expanded="false"
+              class="btn btn-info btn-block collapsed"
+              type="button"
+            >
+              Test Name 2
+            </button>
+          </header>
+           
+          <transition-stub
+            css="true"
+            enteractiveclass="collapsing"
+            enterclass=""
+            entertoclass="collapse show"
+            leaveactiveclass="collapsing"
+            leaveclass="collapse show"
+            leavetoclass="collapse"
+            role="tabpanel"
+          >
+            <div
+              class="collapse"
+              id="accordion-0-0-test-id-2"
+              style="display: none;"
+            >
+              <div
+                class="card-body"
+              >
+                <!---->
+                <!---->
+                <div>
+                  <h4>
+                    <a
+                      href="/components/test-id-2"
+                    >
+                      Test Name 2
+                    </a>
+                  </h4>
+                   
+                  <div>
+                    <h5>
+                      Teams
+                    </h5>
+                     
+                    <ul>
+                      <li>
+                        <a
+                          class="team-name"
+                          href="/teams/test-team-id-1"
+                        >
+                          test-team-id-1
+                        </a>
+                         
+                        <!---->
+                         
+                        <!---->
+                      </li>
+                    </ul>
+                  </div>
+                   
+                  <!---->
+                   
+                  <!---->
+                   
+                  <!---->
+                   
+                  <!---->
+                   
+                  <!---->
+                   
+                  <!---->
+                   
+                  <!---->
+                </div>
+              </div>
+            </div>
+          </transition-stub>
+          <!---->
+          <!---->
+        </div>
+      </div>
+      <!---->
+      <!---->
+    </div>
+    <div
+      class="card my-3 bg-dark text-white"
+    >
+      <!---->
+      <!---->
+      <div
+        class="card-body"
+      >
+        <!---->
+        <!---->
+        <div
+          class="card mt-1"
+        >
+          <!---->
+          <!---->
+          <header
+            class="card-header p-1"
+            role="tab"
+          >
+            <button
+              aria-controls="accordion-0-1-test-id-3"
+              aria-expanded="true"
+              class="btn btn-info btn-block not-collapsed"
+              type="button"
+            >
+              Test Name 3
+            </button>
+          </header>
+           
+          <transition-stub
+            css="true"
+            enteractiveclass="collapsing"
+            enterclass=""
+            entertoclass="collapse show"
+            leaveactiveclass="collapsing"
+            leaveclass="collapse show"
+            leavetoclass="collapse"
+            role="tabpanel"
+          >
+            <div
+              class="collapse show"
+              id="accordion-0-1-test-id-3"
+            >
+              <div
+                class="card-body"
+              >
+                <!---->
+                <!---->
+                <div>
+                  <h4>
+                    <a
+                      href="/components/test-id-3"
+                    >
+                      Test Name 3
+                    </a>
+                  </h4>
+                   
+                  <div>
+                    <h5>
+                      Teams
+                    </h5>
+                     
+                    <ul>
+                      <li>
+                        <a
+                          class="team-name"
+                          href="/teams/test-team-id-2"
+                        >
+                          test-team-id-2
+                        </a>
+                         
+                        <!---->
+                         
+                        <!---->
+                      </li>
+                    </ul>
+                  </div>
+                   
+                  <!---->
+                   
+                  <!---->
+                   
+                  <!---->
+                   
+                  <!---->
+                   
+                  <!---->
+                   
+                  <!---->
+                   
+                  <!---->
+                </div>
+              </div>
+            </div>
+          </transition-stub>
+          <!---->
+          <!---->
+        </div>
+        <div
+          class="card mt-1"
+        >
+          <!---->
+          <!---->
+          <header
+            class="card-header p-1"
+            role="tab"
+          >
+            <button
+              aria-controls="accordion-0-1-test-id-4"
+              aria-expanded="false"
+              class="btn btn-info btn-block collapsed"
+              type="button"
+            >
+              Test Name 4
+            </button>
+          </header>
+           
+          <transition-stub
+            css="true"
+            enteractiveclass="collapsing"
+            enterclass=""
+            entertoclass="collapse show"
+            leaveactiveclass="collapsing"
+            leaveclass="collapse show"
+            leavetoclass="collapse"
+            role="tabpanel"
+          >
+            <div
+              class="collapse"
+              id="accordion-0-1-test-id-4"
+              style="display: none;"
+            >
+              <div
+                class="card-body"
+              >
+                <!---->
+                <!---->
+                <div>
+                  <h4>
+                    <a
+                      href="/components/test-id-4"
+                    >
+                      Test Name 4
+                    </a>
+                  </h4>
+                   
+                  <div>
+                    <h5>
+                      Teams
+                    </h5>
+                     
+                    <ul>
+                      <li>
+                        <a
+                          class="team-name"
+                          href="/teams/test-team-id-2"
+                        >
+                          test-team-id-2
+                        </a>
+                         
+                        <!---->
+                         
+                        <!---->
+                      </li>
+                    </ul>
+                  </div>
+                   
+                  <!---->
+                   
+                  <!---->
+                   
+                  <!---->
+                   
+                  <!---->
+                   
+                  <!---->
+                   
+                  <!---->
+                   
+                  <!---->
+                </div>
+              </div>
+            </div>
+          </transition-stub>
+          <!---->
+          <!---->
+        </div>
+      </div>
+      <!---->
+      <!---->
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Index when Get Teams service endpoint returns an empty array renders the page 1`] = `
+<div>
+  <div
+    class="my-3"
+  >
+    <a
+      class="btn btn-secondary"
+      href="/all-teams"
+      target="_self"
+    >
+      Teams
+    </a>
+     
+    <a
+      class="btn btn-secondary"
+      href="/all-teams/components"
+      target="_self"
+    >
+      Components
+    </a>
+     
+    <a
+      class="btn btn-secondary"
+      href="/all-teams/tech-debts"
+      target="_self"
+    >
+      Tech Debts
+    </a>
+     
+    <a
+      class="btn btn-secondary"
+      href="/all-teams/tests"
+      target="_self"
+    >
+      Tests
+    </a>
+  </div>
+   
+</div>
+`;
+
+exports[`Index when Get Teams service endpoint returns more than 3 teams renders 3 teams per row 1`] = `
+<div>
+  <div
+    class="my-3"
+  >
+    <a
+      class="btn btn-secondary"
+      href="/all-teams"
+      target="_self"
+    >
+      Teams
+    </a>
+     
+    <a
+      class="btn btn-secondary"
+      href="/all-teams/components"
+      target="_self"
+    >
+      Components
+    </a>
+     
+    <a
+      class="btn btn-secondary"
+      href="/all-teams/tech-debts"
+      target="_self"
+    >
+      Tech Debts
+    </a>
+     
+    <a
+      class="btn btn-secondary"
+      href="/all-teams/tests"
+      target="_self"
+    >
+      Tests
+    </a>
+  </div>
+   
+  <div
+    class="card-deck"
+  >
+    <div
+      class="card my-3 bg-dark text-white"
+    >
+      <!---->
+      <!---->
+      <div
+        class="card-body"
+      >
+        <!---->
+        <!---->
+        <div
+          class="card mt-1"
+        >
+          <!---->
+          <!---->
+          <header
+            class="card-header p-1"
+            role="tab"
+          >
+            <button
+              aria-controls="accordion-0-0-test-id-1"
+              aria-expanded="true"
+              class="btn btn-info btn-block not-collapsed"
+              type="button"
+            >
+              Test Name 1
+            </button>
+          </header>
+           
+          <transition-stub
+            css="true"
+            enteractiveclass="collapsing"
+            enterclass=""
+            entertoclass="collapse show"
+            leaveactiveclass="collapsing"
+            leaveclass="collapse show"
+            leavetoclass="collapse"
+            role="tabpanel"
+          >
+            <div
+              class="collapse show"
+              id="accordion-0-0-test-id-1"
+            >
+              <div
+                class="card-body"
+              >
+                <!---->
+                <!---->
+                <div>
+                  <h4>
+                    <a
+                      href="/components/test-id-1"
+                    >
+                      Test Name 1
+                    </a>
+                  </h4>
+                   
+                  <div>
+                    <h5>
+                      Teams
+                    </h5>
+                     
+                    <ul>
+                      <li>
+                        <a
+                          class="team-name"
+                          href="/teams/test-team-id-1"
+                        >
+                          test-team-id-1
+                        </a>
+                         
+                        <!---->
+                         
+                        <!---->
+                      </li>
+                    </ul>
+                  </div>
+                   
+                  <!---->
+                   
+                  <!---->
+                   
+                  <!---->
+                   
+                  <!---->
+                   
+                  <!---->
+                   
+                  <!---->
+                   
+                  <!---->
+                </div>
+              </div>
+            </div>
+          </transition-stub>
+          <!---->
+          <!---->
+        </div>
+      </div>
+      <!---->
+      <!---->
+    </div>
+    <div
+      class="card my-3 bg-dark text-white"
+    >
+      <!---->
+      <!---->
+      <div
+        class="card-body"
+      >
+        <!---->
+        <!---->
+        <div
+          class="card mt-1"
+        >
+          <!---->
+          <!---->
+          <header
+            class="card-header p-1"
+            role="tab"
+          >
+            <button
+              aria-controls="accordion-0-1-test-id-2"
+              aria-expanded="true"
+              class="btn btn-info btn-block not-collapsed"
+              type="button"
+            >
+              Test Name 2
+            </button>
+          </header>
+           
+          <transition-stub
+            css="true"
+            enteractiveclass="collapsing"
+            enterclass=""
+            entertoclass="collapse show"
+            leaveactiveclass="collapsing"
+            leaveclass="collapse show"
+            leavetoclass="collapse"
+            role="tabpanel"
+          >
+            <div
+              class="collapse show"
+              id="accordion-0-1-test-id-2"
+            >
+              <div
+                class="card-body"
+              >
+                <!---->
+                <!---->
+                <div>
+                  <h4>
+                    <a
+                      href="/components/test-id-2"
+                    >
+                      Test Name 2
+                    </a>
+                  </h4>
+                   
+                  <div>
+                    <h5>
+                      Teams
+                    </h5>
+                     
+                    <ul>
+                      <li>
+                        <a
+                          class="team-name"
+                          href="/teams/test-team-id-2"
+                        >
+                          test-team-id-2
+                        </a>
+                         
+                        <!---->
+                         
+                        <!---->
+                      </li>
+                    </ul>
+                  </div>
+                   
+                  <!---->
+                   
+                  <!---->
+                   
+                  <!---->
+                   
+                  <!---->
+                   
+                  <!---->
+                   
+                  <!---->
+                   
+                  <!---->
+                </div>
+              </div>
+            </div>
+          </transition-stub>
+          <!---->
+          <!---->
+        </div>
+      </div>
+      <!---->
+      <!---->
+    </div>
+    <div
+      class="card my-3 bg-dark text-white"
+    >
+      <!---->
+      <!---->
+      <div
+        class="card-body"
+      >
+        <!---->
+        <!---->
+        <div
+          class="card mt-1"
+        >
+          <!---->
+          <!---->
+          <header
+            class="card-header p-1"
+            role="tab"
+          >
+            <button
+              aria-controls="accordion-0-2-test-id-3"
+              aria-expanded="true"
+              class="btn btn-info btn-block not-collapsed"
+              type="button"
+            >
+              Test Name 3
+            </button>
+          </header>
+           
+          <transition-stub
+            css="true"
+            enteractiveclass="collapsing"
+            enterclass=""
+            entertoclass="collapse show"
+            leaveactiveclass="collapsing"
+            leaveclass="collapse show"
+            leavetoclass="collapse"
+            role="tabpanel"
+          >
+            <div
+              class="collapse show"
+              id="accordion-0-2-test-id-3"
+            >
+              <div
+                class="card-body"
+              >
+                <!---->
+                <!---->
+                <div>
+                  <h4>
+                    <a
+                      href="/components/test-id-3"
+                    >
+                      Test Name 3
+                    </a>
+                  </h4>
+                   
+                  <div>
+                    <h5>
+                      Teams
+                    </h5>
+                     
+                    <ul>
+                      <li>
+                        <a
+                          class="team-name"
+                          href="/teams/test-team-id-3"
+                        >
+                          test-team-id-3
+                        </a>
+                         
+                        <!---->
+                         
+                        <!---->
+                      </li>
+                    </ul>
+                  </div>
+                   
+                  <!---->
+                   
+                  <!---->
+                   
+                  <!---->
+                   
+                  <!---->
+                   
+                  <!---->
+                   
+                  <!---->
+                   
+                  <!---->
+                </div>
+              </div>
+            </div>
+          </transition-stub>
+          <!---->
+          <!---->
+        </div>
+      </div>
+      <!---->
+      <!---->
+    </div>
+  </div>
+</div>
+`;

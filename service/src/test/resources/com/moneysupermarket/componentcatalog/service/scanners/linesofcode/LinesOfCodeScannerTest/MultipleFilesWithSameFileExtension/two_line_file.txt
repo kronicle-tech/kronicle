@@ -1,0 +1,1 @@
+First line is followed by new line, giving the file two lines

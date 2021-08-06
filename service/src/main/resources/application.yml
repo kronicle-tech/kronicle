@@ -1,0 +1,115 @@
+server:
+  port: 8090
+  servlet:
+    context-path: /
+
+spring:
+  application:
+    name: component-catalog-service
+  main:
+    bannerMode: "OFF"
+    allow-bean-definition-overriding: true
+  codec:
+    # Avoid WebClient throwing DataBufferLimitException with message "Exceeded limit on max bytes to buffer : 262144"
+    max-in-memory-size: 10485760
+  jackson:
+    serialization:
+      INDENT_OUTPUT: true
+      WRITE_DATES_AS_TIMESTAMPS: false
+    deserialization:
+      FAIL_ON_UNKNOWN_PROPERTIES: false
+      USE_BIG_DECIMAL_FOR_FLOATS: true
+    default-property-inclusion: non_null
+  cloud:
+    discovery:
+      client:
+        composite-indicator:
+          enabled: false
+  sleuth:
+    enabled: ${ZIPKIN_ENABLED:true}
+    sampler:
+      probability: ${ZIPKIN_SAMPLE_RATE:0.01}
+    trace-id128: true
+  zipkin:
+    base-url: ${ZIPKIN_BASE_URL:http://localhost:9411}
+
+management:
+  metrics:
+    web:
+      server:
+        request:
+          autotime:
+            enabled: true
+  server:
+    port: 8091
+  endpoint:
+    health:
+      show-details: always
+  endpoints:
+    web:
+      base-path: /management
+      exposure:
+        include: info, health, metrics, prometheus
+
+resilience4j:
+  retry:
+    instances:
+      http-request-maker:
+        maxAttempts: 5
+        waitDuration: 10s
+        enableExponentialBackoff: true
+        exponentialBackoffMultiplier: 2
+      zipkin-client:
+        maxAttempts: 10
+        waitDuration: 10s
+        enableExponentialBackoff: true
+        exponentialBackoffMultiplier: 2
+        retryExceptions:
+          - com.moneysupermarket.componentcatalog.service.scanners.zipkin.client.ZipkinClientException
+
+bitbucket-server:
+  timeout: 30s
+
+downloader:
+  timeout: 2m
+
+download-cache:
+  dir: /data/download-cache
+
+url-exists-cache:
+  dir: /data/url-exists-cache
+
+git:
+  repos-dir: /data/git/repos
+
+gradle:
+  pom-cache-dir: /data/gradle/pom-cache
+
+zipkin:
+  base-url: http://localhost:9411
+  timeout: 2m
+  trace-limit: 1000
+
+sonarqube:
+  base-url: http://localhost:9000
+
+key-software:
+  rules:
+    - softwareNamePattern: "^gradle-wrapper$"
+      name: gradle
+    - softwareNamePattern: "^org.springframework.boot:"
+      name: spring-boot
+    - softwareNamePattern: "^com.google.guava:guava$"
+      name: guava
+    - softwareNamePattern: "^io.zipkin.brave:brave$"
+      name: zipkin-brave
+    - softwareNamePattern: "^io.dropwizard:dropwizard-core$"
+      name: dropwizard
+    - softwareNamePattern: "^org.mongodb:(mongodb-driver|mongo-java-driver)$"
+      name: mongodb-driver
+    - softwareNamePattern: "^com.fasterxml.jackson.core:"
+      name: jackson
+    - softwareNamePattern: "^org.springframework.cloud:spring-cloud-dependencies$"
+      name: spring-cloud
+    - softwareNamePattern: "^org.projectlombok:lombok$"
+      name: lombok

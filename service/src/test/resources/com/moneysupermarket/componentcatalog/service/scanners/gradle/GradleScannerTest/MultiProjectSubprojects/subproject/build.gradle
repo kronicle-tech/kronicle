@@ -1,0 +1,3 @@
+project.ext {
+    hibernateValidatorVersion = "6.1.6.Final"
+}

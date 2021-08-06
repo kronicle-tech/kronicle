@@ -1,0 +1,139 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ComponentTable when a component has no description renders the component without a description 1`] = `
+"<table class=\\"table table-dark\\">
+  <thead>
+    <tr>
+      <th class=\\"type\\">Type</th>
+      <th class=\\"name\\">Name</th>
+      <th>Tags</th>
+      <th>Teams</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class=\\"type\\">test-component-type-id-undefined</td>
+      <td class=\\"name table-primary\\"><a href=\\"/components/test-component-id-undefined\\">Test Component Name undefined</a></td>
+      <td>
+        <ul>
+          <li>test-tag-undefined-1</li>
+          <li>test-tag-undefined-2</li>
+        </ul>
+      </td>
+      <td>
+        <ul>
+          <li><a href=\\"/teams/test-team-id-undefined-1\\" class=\\"team-name\\">test-team-id-undefined-1</a>
+            <!---->
+            <!---->
+          </li>
+          <li><a href=\\"/teams/test-team-id-undefined-2\\" class=\\"team-name\\">test-team-id-undefined-2</a>
+            <!---->
+            <!---->
+          </li>
+        </ul>
+      </td>
+      <td class=\\"description\\">
+        <!---->
+      </td>
+    </tr>
+    <tr>
+      <td class=\\"type\\">test-component-type-id-undefined</td>
+      <td class=\\"name table-primary\\"><a href=\\"/components/test-component-id-undefined\\">Test Component Name undefined</a></td>
+      <td>
+        <ul>
+          <li>test-tag-undefined-1</li>
+          <li>test-tag-undefined-2</li>
+        </ul>
+      </td>
+      <td>
+        <ul>
+          <li><a href=\\"/teams/test-team-id-undefined-1\\" class=\\"team-name\\">test-team-id-undefined-1</a>
+            <!---->
+            <!---->
+          </li>
+          <li><a href=\\"/teams/test-team-id-undefined-2\\" class=\\"team-name\\">test-team-id-undefined-2</a>
+            <!---->
+            <!---->
+          </li>
+        </ul>
+      </td>
+      <td class=\\"description\\">
+        <div>
+          <p>Test Component Description undefined</p>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>"
+`;
+
+exports[`ComponentTable when components is set to multiple components renders the components 1`] = `
+"<table class=\\"table table-dark\\">
+  <thead>
+    <tr>
+      <th class=\\"type\\">Type</th>
+      <th class=\\"name\\">Name</th>
+      <th>Tags</th>
+      <th>Teams</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class=\\"type\\">test-component-type-id-1</td>
+      <td class=\\"name table-primary\\"><a href=\\"/components/test-component-id-1\\">Test Component Name 1</a></td>
+      <td>
+        <ul>
+          <li>test-tag-1-1</li>
+          <li>test-tag-1-2</li>
+        </ul>
+      </td>
+      <td>
+        <ul>
+          <li><a href=\\"/teams/test-team-id-1-1\\" class=\\"team-name\\">test-team-id-1-1</a>
+            <!---->
+            <!---->
+          </li>
+          <li><a href=\\"/teams/test-team-id-1-2\\" class=\\"team-name\\">test-team-id-1-2</a>
+            <!---->
+            <!---->
+          </li>
+        </ul>
+      </td>
+      <td class=\\"description\\">
+        <div>
+          <p>Test Component Description 1</p>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td class=\\"type\\">test-component-type-id-2</td>
+      <td class=\\"name table-primary\\"><a href=\\"/components/test-component-id-2\\">Test Component Name 2</a></td>
+      <td>
+        <ul>
+          <li>test-tag-2-1</li>
+          <li>test-tag-2-2</li>
+        </ul>
+      </td>
+      <td>
+        <ul>
+          <li><a href=\\"/teams/test-team-id-2-1\\" class=\\"team-name\\">test-team-id-2-1</a>
+            <!---->
+            <!---->
+          </li>
+          <li><a href=\\"/teams/test-team-id-2-2\\" class=\\"team-name\\">test-team-id-2-2</a>
+            <!---->
+            <!---->
+          </li>
+        </ul>
+      </td>
+      <td class=\\"description\\">
+        <div>
+          <p>Test Component Description 2</p>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>"
+`;

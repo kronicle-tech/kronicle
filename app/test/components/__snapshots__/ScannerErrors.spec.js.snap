@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ScannerErrors when ScannerErrors prop is set to multiple ScannerErrors renders an unordered list showing the ScannerErrors 1`] = `
+"<ul>
+  <li>Test Message 1</li>
+  <li>Test Message 2</li>
+  <li>Test Message 3</li>
+</ul>"
+`;
+
+exports[`ScannerErrors when ScannerErrors prop is set to one scanner error renders an unordered list showing the scanner error 1`] = `
+"<ul>
+  <li>Test Message 1</li>
+</ul>"
+`;
+
+exports[`ScannerErrors when ScannerErrors prop is set to one scanner error when the scanner error has a cause renders the scanner error including the cause 1`] = `
+"<ul>
+  <li>Test Message 1 | Test Cause Message 1</li>
+</ul>"
+`;
+
+exports[`ScannerErrors when ScannerErrors prop is set to one scanner error when the scanner error has a cause when the cause has its own cause renders the scanner error including both causes 1`] = `
+"<ul>
+  <li>Test Message 1 | Test Cause Message 1 | Test Cause of Cause Message 1</li>
+</ul>"
+`;

@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Teams when teams prop is set to a team with a description renders the team with a description 1`] = `""`;
+
+exports[`Teams when teams prop is set to a team with type of previous renders the team with a previous team badge 1`] = `""`;
+
+exports[`Teams when teams prop is set to a team with type of primary and a description renders the team with a primary team badge and a description 1`] = `""`;
+
+exports[`Teams when teams prop is set to a team with type of primary renders the team with a primary team badge 1`] = `""`;
+
+exports[`Teams when teams prop is set to multiple teams renders an unordered list showing the teams 1`] = `""`;
+
+exports[`Teams when teams prop is set to one team renders an unordered list showing the team 1`] = `""`;
+
+exports[`Teams when teams prop is set to one team with Markdown in the description renders the team with the Markdown converted to HTML 1`] = `""`;

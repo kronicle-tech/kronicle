@@ -1,0 +1,111 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ComponentTestResultTable when componentsAndTestResults is set to multiple components with multiple test results renders the components and their test results 1`] = `
+"<table class=\\"table table-dark table-bordered table-striped mt-2\\" style=\\"width: 100%;\\">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Teams</th>
+      <th>Test Results</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class=\\"component-name table-primary\\"><a href=\\"/components/test-id-1\\">Test Name 1</a></td>
+      <td>
+        <!---->
+      </td>
+      <td>
+        <table class=\\"table table-dark\\">
+          <thead>
+            <tr>
+              <th>Test</th>
+              <th>Priority</th>
+              <th>Outcome</th>
+              <th>Message</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class=\\"test-id\\"><a href=\\"/tests/test-test-id-1\\">test-test-id-1</a></td>
+              <td class=\\"test-priority\\">
+                low
+              </td>
+              <td class=\\"test-outcome table-danger\\">
+                fail
+              </td>
+              <td class=\\"test-message\\">
+                <div>
+                  <p>test-message-1</p>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class=\\"test-id\\"><a href=\\"/tests/test-test-id-2\\">test-test-id-2</a></td>
+              <td class=\\"test-priority\\">
+                medium
+              </td>
+              <td class=\\"test-outcome table-primary\\">
+                pass
+              </td>
+              <td class=\\"test-message\\">
+                <div>
+                  <p>test-message-2</p>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <td class=\\"component-name table-primary\\"><a href=\\"/components/test-id-2\\">Test Name 2</a></td>
+      <td>
+        <!---->
+      </td>
+      <td>
+        <table class=\\"table table-dark\\">
+          <thead>
+            <tr>
+              <th>Test</th>
+              <th>Priority</th>
+              <th>Outcome</th>
+              <th>Message</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class=\\"test-id\\"><a href=\\"/tests/test-test-id-4\\">test-test-id-4</a></td>
+              <td class=\\"test-priority\\">
+                very-high
+              </td>
+              <td class=\\"test-outcome table-danger\\">
+                fail
+              </td>
+              <td class=\\"test-message\\">
+                <div>
+                  <p>test-message-4</p>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class=\\"test-id\\"><a href=\\"/tests/test-test-id-3\\">test-test-id-3</a></td>
+              <td class=\\"test-priority\\">
+                high
+              </td>
+              <td class=\\"test-outcome table-light\\">
+                not-applicable
+              </td>
+              <td class=\\"test-message\\">
+                <div>
+                  <p>test-message-4</p>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+  </tbody>
+</table>"
+`;

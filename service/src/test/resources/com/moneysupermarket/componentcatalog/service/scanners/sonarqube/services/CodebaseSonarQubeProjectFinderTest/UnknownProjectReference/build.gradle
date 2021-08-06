@@ -1,0 +1,10 @@
+plugins {
+    id 'java'
+    id 'org.sonarqube'
+}
+
+sonarqube {
+    properties {
+        property 'sonar.projectKey', 'unknown-project-key-1'
+    }
+}

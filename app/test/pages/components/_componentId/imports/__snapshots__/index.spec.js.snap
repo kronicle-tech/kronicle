@@ -1,0 +1,552 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Index when Get Component service endpoint returns a component when the component has imports renders the details of the imports 1`] = `
+<div>
+  <h1
+    class="text-info my-3"
+  >
+    Test Component Name 1 - Imports
+  </h1>
+   
+  <div
+    class="my-3"
+  >
+    <a
+      class="btn btn-secondary"
+      href="/components/test-component-id-1"
+      target="_self"
+    >
+      Info
+    </a>
+     
+    <a
+      class="btn btn-secondary"
+      href="/components/test-component-id-1/dependencies"
+      target="_self"
+    >
+      
+    Dependencies
+  
+    </a>
+     
+    <a
+      class="btn btn-secondary"
+      href="/components/test-component-id-1/response-times"
+      target="_self"
+    >
+      
+    Response Times
+  
+    </a>
+     
+    <a
+      class="btn btn-secondary"
+      href="/components/test-component-id-1/downstream-response-times"
+      target="_self"
+    >
+      
+    Downstream Response Times
+  
+    </a>
+     
+    <a
+      class="btn btn-secondary"
+      href="/components/test-component-id-1/call-graphs"
+      target="_self"
+    >
+      
+    Call Graphs
+  
+    </a>
+     
+    <a
+      class="btn btn-secondary"
+      href="/components/test-component-id-1/cross-functional-requirements"
+      target="_self"
+    >
+      
+    Cross Functional Requirements
+  
+    </a>
+     
+    <a
+      class="btn btn-secondary"
+      href="/components/test-component-id-1/tech-debts"
+      target="_self"
+    >
+      
+    Tech Debts
+  
+    </a>
+     
+    <a
+      class="btn btn-secondary"
+      href="/components/test-component-id-1/tests"
+      target="_self"
+    >
+      Tests
+    </a>
+     
+    <a
+      class="btn btn-secondary"
+      href="/components/test-component-id-1/errors"
+      target="_self"
+    >
+      Errors
+    </a>
+     
+    <a
+      class="btn btn-secondary"
+      href="/components/test-component-id-1/openapi-specs"
+      target="_self"
+    >
+      
+    OpenAPI Specs
+  
+    </a>
+     
+    <a
+      class="btn btn-secondary"
+      href="/components/test-component-id-1/repo"
+      target="_self"
+    >
+      Repo
+    </a>
+     
+    <a
+      class="btn btn-secondary"
+      href="/components/test-component-id-1/readme"
+      target="_self"
+    >
+      README
+    </a>
+     
+    <a
+      class="btn btn-secondary"
+      href="/components/test-component-id-1/to-dos"
+      target="_self"
+    >
+      To Dos
+    </a>
+     
+    <a
+      class="btn btn-secondary"
+      href="/components/test-component-id-1/lines-of-code"
+      target="_self"
+    >
+      
+    Lines of Code
+  
+    </a>
+     
+    <a
+      class="btn btn-secondary"
+      href="/components/test-component-id-1/software-repositories"
+      target="_self"
+    >
+      
+    Software Repositories
+  
+    </a>
+     
+    <a
+      class="btn btn-secondary"
+      href="/components/test-component-id-1/software"
+      target="_self"
+    >
+      Software
+    </a>
+     
+    <a
+      class="btn btn-secondary"
+      href="/components/test-component-id-1/imports"
+      target="_self"
+    >
+      Imports
+    </a>
+  </div>
+   
+  <div
+    class="row"
+  >
+    <div
+      class="col-sm-12"
+    >
+      <div
+        class="card"
+      >
+        <!---->
+        <!---->
+        <div
+          class="card-body"
+        >
+          <h4
+            class="card-title"
+          >
+            Total Imports
+          </h4>
+          <!---->
+          <div
+            class="list-group"
+          >
+            <div
+              class="list-group-item list-group-item-success"
+            >
+              <span
+                class="display-1"
+              >
+                <span>
+                  2
+                </span>
+              </span>
+              
+            imports
+          
+            </div>
+          </div>
+        </div>
+        <!---->
+        <!---->
+      </div>
+    </div>
+  </div>
+   
+  <div
+    class="row"
+  >
+    <div
+      class="col-sm-12"
+    >
+      <div
+        class="card"
+      >
+        <!---->
+        <!---->
+        <div
+          class="card-body"
+        >
+          <h4
+            class="card-title"
+          >
+            Imports
+          </h4>
+          <!---->
+          <table
+            class="table table-dark table-bordered table-striped mt-2"
+            style="width: 100%;"
+          >
+            <thead>
+              <tr>
+                <th>
+                  Scanner
+                </th>
+                 
+                <th>
+                  Type
+                </th>
+                 
+                <th>
+                  Name
+                </th>
+              </tr>
+            </thead>
+             
+            <tbody>
+              <tr>
+                <td>
+                  test-scanner-id-1-1
+                </td>
+                 
+                <td>
+                  java
+                </td>
+                 
+                <td>
+                  test.import.Name_1_1
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  test-scanner-id-1-2
+                </td>
+                 
+                <td>
+                  java
+                </td>
+                 
+                <td>
+                  test.import.Name_1_2
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <!---->
+        <!---->
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Index when Get Component service endpoint returns a component when the component has no imports renders no imports 1`] = `
+<div>
+  <h1
+    class="text-info my-3"
+  >
+    Test Component Name 1 - Imports
+  </h1>
+   
+  <div
+    class="my-3"
+  >
+    <a
+      class="btn btn-secondary"
+      href="/components/test-component-id-1"
+      target="_self"
+    >
+      Info
+    </a>
+     
+    <a
+      class="btn btn-secondary"
+      href="/components/test-component-id-1/dependencies"
+      target="_self"
+    >
+      
+    Dependencies
+  
+    </a>
+     
+    <a
+      class="btn btn-secondary"
+      href="/components/test-component-id-1/response-times"
+      target="_self"
+    >
+      
+    Response Times
+  
+    </a>
+     
+    <a
+      class="btn btn-secondary"
+      href="/components/test-component-id-1/downstream-response-times"
+      target="_self"
+    >
+      
+    Downstream Response Times
+  
+    </a>
+     
+    <a
+      class="btn btn-secondary"
+      href="/components/test-component-id-1/call-graphs"
+      target="_self"
+    >
+      
+    Call Graphs
+  
+    </a>
+     
+    <a
+      class="btn btn-secondary"
+      href="/components/test-component-id-1/cross-functional-requirements"
+      target="_self"
+    >
+      
+    Cross Functional Requirements
+  
+    </a>
+     
+    <a
+      class="btn btn-secondary"
+      href="/components/test-component-id-1/tech-debts"
+      target="_self"
+    >
+      
+    Tech Debts
+  
+    </a>
+     
+    <a
+      class="btn btn-secondary"
+      href="/components/test-component-id-1/tests"
+      target="_self"
+    >
+      Tests
+    </a>
+     
+    <a
+      class="btn btn-secondary"
+      href="/components/test-component-id-1/errors"
+      target="_self"
+    >
+      Errors
+    </a>
+     
+    <a
+      class="btn btn-secondary"
+      href="/components/test-component-id-1/openapi-specs"
+      target="_self"
+    >
+      
+    OpenAPI Specs
+  
+    </a>
+     
+    <a
+      class="btn btn-secondary"
+      href="/components/test-component-id-1/repo"
+      target="_self"
+    >
+      Repo
+    </a>
+     
+    <a
+      class="btn btn-secondary"
+      href="/components/test-component-id-1/readme"
+      target="_self"
+    >
+      README
+    </a>
+     
+    <a
+      class="btn btn-secondary"
+      href="/components/test-component-id-1/to-dos"
+      target="_self"
+    >
+      To Dos
+    </a>
+     
+    <a
+      class="btn btn-secondary"
+      href="/components/test-component-id-1/lines-of-code"
+      target="_self"
+    >
+      
+    Lines of Code
+  
+    </a>
+     
+    <a
+      class="btn btn-secondary"
+      href="/components/test-component-id-1/software-repositories"
+      target="_self"
+    >
+      
+    Software Repositories
+  
+    </a>
+     
+    <a
+      class="btn btn-secondary"
+      href="/components/test-component-id-1/software"
+      target="_self"
+    >
+      Software
+    </a>
+     
+    <a
+      class="btn btn-secondary"
+      href="/components/test-component-id-1/imports"
+      target="_self"
+    >
+      Imports
+    </a>
+  </div>
+   
+  <div
+    class="row"
+  >
+    <div
+      class="col-sm-12"
+    >
+      <div
+        class="card"
+      >
+        <!---->
+        <!---->
+        <div
+          class="card-body"
+        >
+          <h4
+            class="card-title"
+          >
+            Total Imports
+          </h4>
+          <!---->
+          <div
+            class="list-group"
+          >
+            <div
+              class="list-group-item list-group-item-success"
+            >
+              <span
+                class="display-1"
+              >
+                <span>
+                  0
+                </span>
+              </span>
+              
+            imports
+          
+            </div>
+          </div>
+        </div>
+        <!---->
+        <!---->
+      </div>
+    </div>
+  </div>
+   
+  <div
+    class="row"
+  >
+    <div
+      class="col-sm-12"
+    >
+      <div
+        class="card"
+      >
+        <!---->
+        <!---->
+        <div
+          class="card-body"
+        >
+          <h4
+            class="card-title"
+          >
+            Imports
+          </h4>
+          <!---->
+          <table
+            class="table table-dark table-bordered table-striped mt-2"
+            style="width: 100%;"
+          >
+            <thead>
+              <tr>
+                <th>
+                  Scanner
+                </th>
+                 
+                <th>
+                  Type
+                </th>
+                 
+                <th>
+                  Name
+                </th>
+              </tr>
+            </thead>
+             
+            <tbody />
+          </table>
+        </div>
+        <!---->
+        <!---->
+      </div>
+    </div>
+  </div>
+</div>
+`;

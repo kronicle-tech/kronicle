@@ -1,0 +1,32 @@
+[
+  {
+    "parent": "test-upstream-service-1",
+    "child": "test-service-1",
+    "callCount": 10,
+    "errorCount": 11
+  },
+  {
+    "parent": "test-upstream-service-2",
+    "child": "test-service-1",
+    "callCount": 12,
+    "errorCount": 13
+  },
+  {
+    "parent": "test-service-1",
+    "child": "test-downstream-service-1",
+    "callCount": 20,
+    "errorCount": 21
+  },
+  {
+    "parent": "test-service-1",
+    "child": "test-downstream-service-2",
+    "callCount": 22,
+    "errorCount": 23
+  },
+  {
+    "parent": "unrelated-service-1",
+    "child": "unrelated-service-2",
+    "callCount": 30,
+    "errorCount": 31
+  }
+]

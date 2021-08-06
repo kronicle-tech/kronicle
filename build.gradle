@@ -1,0 +1,32 @@
+plugins {
+    id "com.jfrog.artifactory" apply false
+    id "org.sonarqube"
+    id "jacoco"
+    id "com.github.spotbugs"
+    id "org.owasp.dependencycheck"
+}
+
+apply from: "$rootDir/gradle/sonarqube.gradle"
+
+subprojects {
+    buildscript {
+        apply from: "$rootDir/gradle/repos.gradle", to: buildscript
+    }
+
+    apply from: "$rootDir/gradle/repos.gradle"
+    apply from: "$rootDir/gradle/jacoco.gradle"
+    apply from: "$rootDir/gradle/code-analysis.gradle"
+
+    compileJava {
+        options.release = javaMajorVersion.toInteger()
+    }
+
+    java {
+        sourceCompatibility = JavaVersion.toVersion(javaVersion)
+        targetCompatibility = JavaVersion.toVersion(javaVersion)
+    }
+
+    [compileJava, compileTestJava]*.options*.encoding = "UTF-8"
+
+    version = rootProject.version
+}

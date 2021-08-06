@@ -1,0 +1,192 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`OpenApiSpecTable when an OpenAPI spec has a URL but no spec renders the OpenAPI spec with a URL and includes badge saying \`missing\` 1`] = `
+"<table class=\\"table table-dark\\">
+  <thead>
+    <tr>
+      <th class=\\"component\\">Component</th>
+      <th class=\\"teams\\">Teams</th>
+      <th class=\\"link\\">Link</th>
+      <th class=\\"description\\">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class=\\"component table-primary\\"><a href=\\"/components/test-id-1\\">Test Name 1</a></td>
+      <td class=\\"teams table-primary\\">
+        <!---->
+      </td>
+      <td class=\\"link\\">
+        <div>
+          https://example.com/openapi-spec-1-1
+          <span class=\\"badge badge-danger\\">Missing</span></div>
+      </td>
+      <td class=\\"description\\">
+        <div>
+          <p>Test OpenAPI Spec Description 1 1</p>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>"
+`;
+
+exports[`OpenApiSpecTable when an OpenAPI spec has a file but no spec renders the OpenAPI spec with a file and includes badge saying \`missing\` 1`] = `
+"<table class=\\"table table-dark\\">
+  <thead>
+    <tr>
+      <th class=\\"component\\">Component</th>
+      <th class=\\"teams\\">Teams</th>
+      <th class=\\"link\\">Link</th>
+      <th class=\\"description\\">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class=\\"component table-primary\\"><a href=\\"/components/test-id-1\\">Test Name 1</a></td>
+      <td class=\\"teams table-primary\\">
+        <!---->
+      </td>
+      <td class=\\"link\\">
+        <div>
+          /openapi-spec-1-1.yaml
+          <span class=\\"badge badge-danger\\">Missing</span></div>
+      </td>
+      <td class=\\"description\\">
+        <div>
+          <p>Test OpenAPI Spec Description 1 1</p>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>"
+`;
+
+exports[`OpenApiSpecTable when an OpenAPI spec has a spec and a URL renders the OpenAPI spec with a URL 1`] = `
+"<table class=\\"table table-dark\\">
+  <thead>
+    <tr>
+      <th class=\\"component\\">Component</th>
+      <th class=\\"teams\\">Teams</th>
+      <th class=\\"link\\">Link</th>
+      <th class=\\"description\\">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class=\\"component table-primary\\"><a href=\\"/components/test-id-1\\">Test Name 1</a></td>
+      <td class=\\"teams table-primary\\">
+        <!---->
+      </td>
+      <td class=\\"link\\"><a href=\\"/components/test-id-1/openapi-specs/1\\" target=\\"_self\\" class=\\"\\">
+          https://example.com/openapi-spec-1-1
+        </a></td>
+      <td class=\\"description\\">
+        <div>
+          <p>Test OpenAPI Spec Description 1 1</p>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>"
+`;
+
+exports[`OpenApiSpecTable when an OpenAPI spec has a spec and a file renders the OpenAPI spec with a file 1`] = `
+"<table class=\\"table table-dark\\">
+  <thead>
+    <tr>
+      <th class=\\"component\\">Component</th>
+      <th class=\\"teams\\">Teams</th>
+      <th class=\\"link\\">Link</th>
+      <th class=\\"description\\">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class=\\"component table-primary\\"><a href=\\"/components/test-id-1\\">Test Name 1</a></td>
+      <td class=\\"teams table-primary\\">
+        <!---->
+      </td>
+      <td class=\\"link\\"><a href=\\"/components/test-id-1/openapi-specs/1\\" target=\\"_self\\" class=\\"\\">
+          /openapi-spec-1-1.yaml
+        </a></td>
+      <td class=\\"description\\">
+        <div>
+          <p>Test OpenAPI Spec Description 1 1</p>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>"
+`;
+
+exports[`OpenApiSpecTable when components is set to multiple components with multiple OpenAPI specs renders the OpenAPI specs 1`] = `
+"<table class=\\"table table-dark\\">
+  <thead>
+    <tr>
+      <th class=\\"component\\">Component</th>
+      <th class=\\"teams\\">Teams</th>
+      <th class=\\"link\\">Link</th>
+      <th class=\\"description\\">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class=\\"component table-primary\\"><a href=\\"/components/test-id-1\\">Test Name 1</a></td>
+      <td class=\\"teams table-primary\\">
+        <!---->
+      </td>
+      <td class=\\"link\\"><a href=\\"/components/test-id-1/openapi-specs/1\\" target=\\"_self\\" class=\\"\\">
+          https://example.com/openapi-spec-1-1
+        </a></td>
+      <td class=\\"description\\">
+        <div>
+          <p>Test OpenAPI Spec Description 1 1</p>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td class=\\"component table-primary\\"><a href=\\"/components/test-id-1\\">Test Name 1</a></td>
+      <td class=\\"teams table-primary\\">
+        <!---->
+      </td>
+      <td class=\\"link\\"><a href=\\"/components/test-id-1/openapi-specs/2\\" target=\\"_self\\" class=\\"\\">
+          https://example.com/openapi-spec-1-2
+        </a></td>
+      <td class=\\"description\\">
+        <div>
+          <p>Test OpenAPI Spec Description 1 2</p>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td class=\\"component table-primary\\"><a href=\\"/components/test-id-2\\">Test Name 2</a></td>
+      <td class=\\"teams table-primary\\">
+        <!---->
+      </td>
+      <td class=\\"link\\"><a href=\\"/components/test-id-2/openapi-specs/1\\" target=\\"_self\\" class=\\"\\">
+          https://example.com/openapi-spec-2-1
+        </a></td>
+      <td class=\\"description\\">
+        <div>
+          <p>Test OpenAPI Spec Description 2 1</p>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td class=\\"component table-primary\\"><a href=\\"/components/test-id-2\\">Test Name 2</a></td>
+      <td class=\\"teams table-primary\\">
+        <!---->
+      </td>
+      <td class=\\"link\\"><a href=\\"/components/test-id-2/openapi-specs/2\\" target=\\"_self\\" class=\\"\\">
+          https://example.com/openapi-spec-2-2
+        </a></td>
+      <td class=\\"description\\">
+        <div>
+          <p>Test OpenAPI Spec Description 2 2</p>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>"
+`;

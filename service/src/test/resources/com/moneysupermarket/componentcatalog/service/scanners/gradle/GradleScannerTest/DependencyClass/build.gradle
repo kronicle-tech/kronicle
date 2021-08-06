@@ -1,0 +1,17 @@
+plugins {
+    id "java"
+}
+
+repositories {
+    mavenCentral()
+}
+
+class CustomRule implements ComponentMetadataRule {
+    void execute(ComponentMetadataContext ctx) {
+    }
+}
+
+dependencies {
+    components.all(CustomRule)
+    compile "org.springframework.boot:spring-boot-starter-web:2.3.4.RELEASE"
+}

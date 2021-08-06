@@ -1,0 +1,10 @@
+get:
+  summary: Example
+  description: Example GET in referenced file
+  responses:
+    '200':
+      description: Example
+      content:
+        application/json:
+          schema:
+            type: object

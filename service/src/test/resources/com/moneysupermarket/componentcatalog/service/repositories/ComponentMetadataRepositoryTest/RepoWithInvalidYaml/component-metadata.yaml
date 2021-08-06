@@ -1,0 +1,2 @@
+# YAML is deliberately missing a closing "]" to make the YAML invalid
+components: [

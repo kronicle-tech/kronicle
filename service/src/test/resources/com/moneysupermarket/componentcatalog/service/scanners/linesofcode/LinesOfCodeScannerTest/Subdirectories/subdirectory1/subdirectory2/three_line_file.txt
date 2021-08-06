@@ -1,0 +1,3 @@
+First line
+Second line
+Third line is not followed by new line, giving the file three lines

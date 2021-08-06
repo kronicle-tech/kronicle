@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TeamTable when a team has no description renders the team without a description 1`] = `""`;
+
+exports[`TeamTable when teams is set to multiple teams renders the teams 1`] = `""`;

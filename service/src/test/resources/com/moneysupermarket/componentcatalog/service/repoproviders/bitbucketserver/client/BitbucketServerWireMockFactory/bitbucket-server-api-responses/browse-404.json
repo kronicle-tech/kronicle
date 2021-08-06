@@ -1,0 +1,9 @@
+{
+  "errors": [
+    {
+      "context": null,
+      "message": "The path \"component-metadata.yaml\" does not exist at revision \"refs/heads/master\"",
+      "exceptionName": "com.atlassian.bitbucket.content.NoSuchPathException"
+    }
+  ]
+}

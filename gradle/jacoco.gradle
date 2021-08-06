@@ -1,0 +1,25 @@
+apply plugin: "java"
+apply plugin: "jacoco"
+
+jacocoTestReport {
+    dependsOn test
+    reports {
+        csv.enabled true
+        xml.enabled true
+        html.destination file("${buildDir}/reports/jacoco")
+    }
+}
+
+test.finalizedBy jacocoTestReport
+
+jacocoTestCoverageVerification {
+    violationRules {
+        rule {
+            limit {
+                minimum = 0.8
+            }
+        }
+    }
+}
+
+test.finalizedBy jacocoTestCoverageVerification

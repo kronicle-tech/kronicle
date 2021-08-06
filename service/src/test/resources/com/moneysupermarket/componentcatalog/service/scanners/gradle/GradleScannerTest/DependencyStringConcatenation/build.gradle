@@ -1,0 +1,15 @@
+plugins {
+    id "java"
+}
+
+project.ext {
+    springBootVersion = "2.3.4.RELEASE"
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile "org.springframework.boot:spring-boot-starter-web:" + springBootVersion
+}

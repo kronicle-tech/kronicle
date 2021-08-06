@@ -1,0 +1,176 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Index when Get Areas service endpoint returns an array of multiple areas renders the page 1`] = `
+<div>
+  <div
+    class="my-3"
+  >
+    <a
+      class="btn btn-secondary"
+      href="/all-areas"
+      target="_self"
+    >
+      Areas
+    </a>
+  </div>
+   
+  <transition-stub
+    class="my-3"
+    css="true"
+    enteractiveclass=""
+    enterclass=""
+    entertoclass="show"
+    leaveactiveclass=""
+    leaveclass="show"
+    leavetoclass=""
+    name=""
+  >
+    <div
+      aria-atomic="true"
+      aria-live="polite"
+      class="alert alert-dismissible alert-info"
+      role="alert"
+    >
+      <button
+        aria-label="Close"
+        class="close"
+        type="button"
+      >
+        ×
+      </button>
+      
+    Click an area's name in the table below to view more information about
+    that area
+  
+    </div>
+  </transition-stub>
+   
+  <table
+    class="table table-dark table-bordered table-striped mt-2"
+    style="width: 100%;"
+  >
+    <thead>
+      <tr>
+        <th
+          class="area-name"
+        >
+          Name
+        </th>
+         
+        <th>
+          Description
+        </th>
+      </tr>
+    </thead>
+     
+    <tbody>
+      <tr>
+        <td
+          class="area-name table-primary"
+        >
+          <a
+            href="/areas/test-area-id-1"
+          >
+            Test Area Name 1
+          </a>
+        </td>
+         
+        <td>
+          <div />
+        </td>
+      </tr>
+      <tr>
+        <td
+          class="area-name table-primary"
+        >
+          <a
+            href="/areas/test-area-id-2"
+          >
+            Test Area Name 2
+          </a>
+        </td>
+         
+        <td>
+          <div>
+            
+
+            <p>
+              Test Area Description 2
+            </p>
+            
+
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+`;
+
+exports[`Index when Get Areas service endpoint returns an empty array renders the page 1`] = `
+<div>
+  <div
+    class="my-3"
+  >
+    <a
+      class="btn btn-secondary"
+      href="/all-areas"
+      target="_self"
+    >
+      Areas
+    </a>
+  </div>
+   
+  <transition-stub
+    class="my-3"
+    css="true"
+    enteractiveclass=""
+    enterclass=""
+    entertoclass="show"
+    leaveactiveclass=""
+    leaveclass="show"
+    leavetoclass=""
+    name=""
+  >
+    <div
+      aria-atomic="true"
+      aria-live="polite"
+      class="alert alert-dismissible alert-info"
+      role="alert"
+    >
+      <button
+        aria-label="Close"
+        class="close"
+        type="button"
+      >
+        ×
+      </button>
+      
+    Click an area's name in the table below to view more information about
+    that area
+  
+    </div>
+  </transition-stub>
+   
+  <table
+    class="table table-dark table-bordered table-striped mt-2"
+    style="width: 100%;"
+  >
+    <thead>
+      <tr>
+        <th
+          class="area-name"
+        >
+          Name
+        </th>
+         
+        <th>
+          Description
+        </th>
+      </tr>
+    </thead>
+     
+    <tbody />
+  </table>
+</div>
+`;

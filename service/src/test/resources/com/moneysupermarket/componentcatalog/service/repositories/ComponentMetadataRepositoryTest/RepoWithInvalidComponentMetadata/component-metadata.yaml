@@ -1,0 +1,7 @@
+components:
+  # This id is deliberately invalid.  It is invalid because it is not in kebab case as it includes upper case letters
+  - id: Not-Valid-Id
+    name: Test Component 6
+    typeId: test-component-type-1
+    repo:
+      url: https://example.com/test-component-5.git

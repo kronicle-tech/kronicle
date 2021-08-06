@@ -1,0 +1,1420 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Index when Get Summary service endpoint returns an array of multiple component dependencies renders the page 1`] = `
+<div>
+  <h1
+    class="text-info my-3"
+  >
+    Test Area Name 1 Area - Dependencies
+  </h1>
+   
+  <div
+    class="my-3"
+  >
+    <a
+      class="btn btn-secondary"
+      href="/areas/test-area-id-1"
+      target="_self"
+    >
+      Info
+    </a>
+     
+    <a
+      class="btn btn-secondary"
+      href="/areas/test-area-id-1/dependencies"
+      target="_self"
+    >
+      Dependencies
+    </a>
+     
+    <a
+      class="btn btn-secondary"
+      href="/areas/test-area-id-1/components"
+      target="_self"
+    >
+      Components
+    </a>
+     
+    <a
+      class="btn btn-secondary"
+      href="/areas/test-area-id-1/cross-functional-requirements"
+      target="_self"
+    >
+      
+    Cross Functional Requirements
+  
+    </a>
+     
+    <a
+      class="btn btn-secondary"
+      href="/areas/test-area-id-1/tech-debts"
+      target="_self"
+    >
+      Tech Debts
+    </a>
+     
+    <a
+      class="btn btn-secondary"
+      href="/areas/test-area-id-1/tests"
+      target="_self"
+    >
+      Tests
+    </a>
+     
+    <a
+      class="btn btn-secondary"
+      href="/areas/test-area-id-1/errors"
+      target="_self"
+    >
+      Errors
+    </a>
+     
+    <a
+      class="btn btn-secondary"
+      href="/areas/test-area-id-1/openapi-specs"
+      target="_self"
+    >
+      OpenAPI Specs
+    </a>
+  </div>
+   
+  <div>
+    <transition-stub
+      class="my-3"
+      css="true"
+      enteractiveclass=""
+      enterclass=""
+      entertoclass="show"
+      leaveactiveclass=""
+      leaveclass="show"
+      leavetoclass=""
+      name=""
+    >
+      <div
+        aria-atomic="true"
+        aria-live="polite"
+        class="alert alert-dismissible alert-info"
+        role="alert"
+      >
+        <button
+          aria-label="Close"
+          class="close"
+          type="button"
+        >
+          ×
+        </button>
+        
+    The dependencies on this page come from a combination of Zipkin traces and
+    dependencies manually specified in the catalog's metadata YAML files. The
+    visualisation is not out-of-the-box Zipkin functionality and is bespoke to
+    the Component Catalog. The other data on the page like descriptions,
+    teams, tags etc. come from the Component Catalog and not from Zipkin.
+  
+      </div>
+    </transition-stub>
+     
+    <div
+      class="graph"
+    >
+      <svg
+        height="1200"
+        id="component-dependency-graph"
+        overflow="auto"
+        width="100%"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <rect
+          class="component-dependency-graph-background"
+          fill-opacity="0"
+        />
+         
+        <defs>
+          <marker
+            class="dependency-marker all-dependency-marker"
+            id="component-dependency-graph-dependency-marker-all"
+            markerHeight="11.5"
+            markerUnits="userSpaceOnUse"
+            markerWidth="7.1"
+            orient="auto-start-reverse"
+            refX="10"
+            refY="5.75"
+            viewBox="0 0 7.1 11.5"
+          >
+            <path
+              d="M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5"
+            />
+          </marker>
+          <marker
+            class="dependency-marker manual-dependency-marker"
+            id="component-dependency-graph-dependency-marker-manual"
+            markerHeight="11.5"
+            markerUnits="userSpaceOnUse"
+            markerWidth="7.1"
+            orient="auto-start-reverse"
+            refX="10"
+            refY="5.75"
+            viewBox="0 0 7.1 11.5"
+          >
+            <path
+              d="M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5"
+            />
+          </marker>
+          <marker
+            class="dependency-marker scope-related-dependency-marker"
+            id="component-dependency-graph-dependency-marker-scope-related"
+            markerHeight="11.5"
+            markerUnits="userSpaceOnUse"
+            markerWidth="7.1"
+            orient="auto-start-reverse"
+            refX="10"
+            refY="5.75"
+            viewBox="0 0 7.1 11.5"
+          >
+            <path
+              d="M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5"
+            />
+          </marker>
+          <marker
+            class="dependency-marker scoped-dependency-marker"
+            id="component-dependency-graph-dependency-marker-scoped"
+            markerHeight="11.5"
+            markerUnits="userSpaceOnUse"
+            markerWidth="7.1"
+            orient="auto-start-reverse"
+            refX="10"
+            refY="5.75"
+            viewBox="0 0 7.1 11.5"
+          >
+            <path
+              d="M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5"
+            />
+          </marker>
+          <marker
+            class="dependency-marker related-dependency-marker"
+            id="component-dependency-graph-dependency-marker-related"
+            markerHeight="11.5"
+            markerUnits="userSpaceOnUse"
+            markerWidth="7.1"
+            orient="auto-start-reverse"
+            refX="10"
+            refY="5.75"
+            viewBox="0 0 7.1 11.5"
+          >
+            <path
+              d="M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5"
+            />
+          </marker>
+          <marker
+            class="dependency-marker direct-dependency-marker"
+            id="component-dependency-graph-dependency-marker-direct"
+            markerHeight="11.5"
+            markerUnits="userSpaceOnUse"
+            markerWidth="7.1"
+            orient="auto-start-reverse"
+            refX="10"
+            refY="5.75"
+            viewBox="0 0 7.1 11.5"
+          >
+            <path
+              d="M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5"
+            />
+          </marker>
+          <marker
+            class="dependency-marker selected-dependency-marker"
+            id="component-dependency-graph-dependency-marker-selected"
+            markerHeight="11.5"
+            markerUnits="userSpaceOnUse"
+            markerWidth="7.1"
+            orient="auto-start-reverse"
+            refX="10"
+            refY="5.75"
+            viewBox="0 0 7.1 11.5"
+          >
+            <path
+              d="M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5"
+            />
+          </marker>
+        </defs>
+         
+        <g />
+        <g />
+        <g />
+        <g />
+        <g />
+        <g />
+        <g />
+         
+        <g />
+        <g />
+        <g />
+        <g />
+        <g />
+        <g />
+        <g />
+         
+        <g />
+        <g />
+        <g />
+        <g />
+        <g />
+        <g />
+        <g />
+      </svg>
+    </div>
+     
+    <div
+      class="panel"
+    >
+      <transition-stub
+        css="true"
+        enteractiveclass=""
+        enterclass=""
+        entertoclass="show"
+        leaveactiveclass=""
+        leaveclass="show"
+        leavetoclass=""
+        name=""
+      >
+        <div
+          aria-atomic="true"
+          aria-live="polite"
+          class="alert alert-dismissible alert-info"
+          role="alert"
+        >
+          <button
+            aria-label="Close"
+            class="close"
+            type="button"
+          >
+            ×
+          </button>
+          
+      Hover over or click a component's dot in the dependencies diagram to see
+      more information about it
+    
+        </div>
+      </transition-stub>
+       
+      <div
+        class="my-3"
+      >
+        <!---->
+         
+        <div
+          class="form-row form-group my-3 mr-2"
+          id="__BVID__72"
+          role="group"
+        >
+          <label
+            class="col-6 col-form-label col-form-label-sm"
+            for="graph-scope-related-radius"
+            id="__BVID__72__BV_label_"
+          >
+            Radius:
+          </label>
+          <div
+            class="col"
+          >
+            <select
+              class="custom-select custom-select-sm"
+              id="graph-scope-related-radius"
+            >
+              <option
+                value="0"
+              >
+                0
+              </option>
+              <option
+                value="1"
+              >
+                1
+              </option>
+              <option
+                value="2"
+              >
+                2
+              </option>
+              <option
+                value="3"
+              >
+                3
+              </option>
+              <option
+                value="4"
+              >
+                4
+              </option>
+              <option
+                value="5"
+              >
+                5
+              </option>
+              <option
+                value="6"
+              >
+                6
+              </option>
+              <option
+                value="7"
+              >
+                7
+              </option>
+              <option
+                value="8"
+              >
+                8
+              </option>
+              <option
+                value="9"
+              >
+                9
+              </option>
+              <option
+                value="10"
+              >
+                10
+              </option>
+            </select>
+            <!---->
+            <!---->
+            <!---->
+          </div>
+        </div>
+         
+        <div
+          class="form-row form-group my-3 mr-2"
+          id="__BVID__74"
+          role="group"
+        >
+          <label
+            class="col-6 col-form-label col-form-label-sm"
+            for="graph-zoom"
+            id="__BVID__74__BV_label_"
+          >
+            Zoom:
+          </label>
+          <div
+            class="col"
+          >
+            <select
+              class="custom-select custom-select-sm"
+              id="graph-zoom"
+            >
+              <option
+                value="25"
+              >
+                25%
+              </option>
+              <option
+                value="50"
+              >
+                50%
+              </option>
+              <option
+                value="75"
+              >
+                75%
+              </option>
+              <option
+                value="100"
+              >
+                100%
+              </option>
+              <option
+                value="125"
+              >
+                125%
+              </option>
+              <option
+                value="150"
+              >
+                150%
+              </option>
+              <option
+                value="200"
+              >
+                200%
+              </option>
+              <option
+                value="400"
+              >
+                400%
+              </option>
+            </select>
+            <!---->
+            <!---->
+            <!---->
+          </div>
+        </div>
+         
+        <div
+          class="custom-control custom-checkbox"
+        >
+          <input
+            class="custom-control-input"
+            id="detailed-dependencies"
+            type="checkbox"
+            value="true"
+          />
+          <label
+            class="custom-control-label"
+            for="detailed-dependencies"
+          >
+            
+        Detailed dependencies
+      
+          </label>
+        </div>
+      </div>
+    </div>
+     
+    <!---->
+  </div>
+</div>
+`;
+
+exports[`Index when Get Summary service endpoint returns an array of multiple component dependencies when the detailed checkbox is checked shows detailed dependencies in graph 1`] = `
+<div>
+  <h1
+    class="text-info my-3"
+  >
+    Test Area Name 1 Area - Dependencies
+  </h1>
+   
+  <div
+    class="my-3"
+  >
+    <a
+      class="btn btn-secondary"
+      href="/areas/test-area-id-1"
+      target="_self"
+    >
+      Info
+    </a>
+     
+    <a
+      class="btn btn-secondary"
+      href="/areas/test-area-id-1/dependencies"
+      target="_self"
+    >
+      Dependencies
+    </a>
+     
+    <a
+      class="btn btn-secondary"
+      href="/areas/test-area-id-1/components"
+      target="_self"
+    >
+      Components
+    </a>
+     
+    <a
+      class="btn btn-secondary"
+      href="/areas/test-area-id-1/cross-functional-requirements"
+      target="_self"
+    >
+      
+    Cross Functional Requirements
+  
+    </a>
+     
+    <a
+      class="btn btn-secondary"
+      href="/areas/test-area-id-1/tech-debts"
+      target="_self"
+    >
+      Tech Debts
+    </a>
+     
+    <a
+      class="btn btn-secondary"
+      href="/areas/test-area-id-1/tests"
+      target="_self"
+    >
+      Tests
+    </a>
+     
+    <a
+      class="btn btn-secondary"
+      href="/areas/test-area-id-1/errors"
+      target="_self"
+    >
+      Errors
+    </a>
+     
+    <a
+      class="btn btn-secondary"
+      href="/areas/test-area-id-1/openapi-specs"
+      target="_self"
+    >
+      OpenAPI Specs
+    </a>
+  </div>
+   
+  <div>
+    <transition-stub
+      class="my-3"
+      css="true"
+      enteractiveclass=""
+      enterclass=""
+      entertoclass="show"
+      leaveactiveclass=""
+      leaveclass="show"
+      leavetoclass=""
+      name=""
+    >
+      <div
+        aria-atomic="true"
+        aria-live="polite"
+        class="alert alert-dismissible alert-info"
+        role="alert"
+      >
+        <button
+          aria-label="Close"
+          class="close"
+          type="button"
+        >
+          ×
+        </button>
+        
+    The dependencies on this page come from a combination of Zipkin traces and
+    dependencies manually specified in the catalog's metadata YAML files. The
+    visualisation is not out-of-the-box Zipkin functionality and is bespoke to
+    the Component Catalog. The other data on the page like descriptions,
+    teams, tags etc. come from the Component Catalog and not from Zipkin.
+  
+      </div>
+    </transition-stub>
+     
+    <div
+      class="graph"
+    >
+      <svg
+        height="1200"
+        id="component-dependency-graph"
+        overflow="auto"
+        width="100%"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <rect
+          class="component-dependency-graph-background"
+          fill-opacity="0"
+        />
+         
+        <defs>
+          <marker
+            class="dependency-marker all-dependency-marker"
+            id="component-dependency-graph-dependency-marker-all"
+            markerHeight="11.5"
+            markerUnits="userSpaceOnUse"
+            markerWidth="7.1"
+            orient="auto-start-reverse"
+            refX="10"
+            refY="5.75"
+            viewBox="0 0 7.1 11.5"
+          >
+            <path
+              d="M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5"
+            />
+          </marker>
+          <marker
+            class="dependency-marker manual-dependency-marker"
+            id="component-dependency-graph-dependency-marker-manual"
+            markerHeight="11.5"
+            markerUnits="userSpaceOnUse"
+            markerWidth="7.1"
+            orient="auto-start-reverse"
+            refX="10"
+            refY="5.75"
+            viewBox="0 0 7.1 11.5"
+          >
+            <path
+              d="M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5"
+            />
+          </marker>
+          <marker
+            class="dependency-marker scope-related-dependency-marker"
+            id="component-dependency-graph-dependency-marker-scope-related"
+            markerHeight="11.5"
+            markerUnits="userSpaceOnUse"
+            markerWidth="7.1"
+            orient="auto-start-reverse"
+            refX="10"
+            refY="5.75"
+            viewBox="0 0 7.1 11.5"
+          >
+            <path
+              d="M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5"
+            />
+          </marker>
+          <marker
+            class="dependency-marker scoped-dependency-marker"
+            id="component-dependency-graph-dependency-marker-scoped"
+            markerHeight="11.5"
+            markerUnits="userSpaceOnUse"
+            markerWidth="7.1"
+            orient="auto-start-reverse"
+            refX="10"
+            refY="5.75"
+            viewBox="0 0 7.1 11.5"
+          >
+            <path
+              d="M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5"
+            />
+          </marker>
+          <marker
+            class="dependency-marker related-dependency-marker"
+            id="component-dependency-graph-dependency-marker-related"
+            markerHeight="11.5"
+            markerUnits="userSpaceOnUse"
+            markerWidth="7.1"
+            orient="auto-start-reverse"
+            refX="10"
+            refY="5.75"
+            viewBox="0 0 7.1 11.5"
+          >
+            <path
+              d="M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5"
+            />
+          </marker>
+          <marker
+            class="dependency-marker direct-dependency-marker"
+            id="component-dependency-graph-dependency-marker-direct"
+            markerHeight="11.5"
+            markerUnits="userSpaceOnUse"
+            markerWidth="7.1"
+            orient="auto-start-reverse"
+            refX="10"
+            refY="5.75"
+            viewBox="0 0 7.1 11.5"
+          >
+            <path
+              d="M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5"
+            />
+          </marker>
+          <marker
+            class="dependency-marker selected-dependency-marker"
+            id="component-dependency-graph-dependency-marker-selected"
+            markerHeight="11.5"
+            markerUnits="userSpaceOnUse"
+            markerWidth="7.1"
+            orient="auto-start-reverse"
+            refX="10"
+            refY="5.75"
+            viewBox="0 0 7.1 11.5"
+          >
+            <path
+              d="M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5"
+            />
+          </marker>
+        </defs>
+         
+        <g />
+        <g />
+        <g />
+        <g />
+        <g />
+        <g />
+        <g />
+         
+        <g />
+        <g />
+        <g />
+        <g />
+        <g />
+        <g />
+        <g />
+         
+        <g />
+        <g />
+        <g />
+        <g />
+        <g />
+        <g />
+        <g />
+      </svg>
+    </div>
+     
+    <div
+      class="panel"
+    >
+      <transition-stub
+        css="true"
+        enteractiveclass=""
+        enterclass=""
+        entertoclass="show"
+        leaveactiveclass=""
+        leaveclass="show"
+        leavetoclass=""
+        name=""
+      >
+        <div
+          aria-atomic="true"
+          aria-live="polite"
+          class="alert alert-dismissible alert-info"
+          role="alert"
+        >
+          <button
+            aria-label="Close"
+            class="close"
+            type="button"
+          >
+            ×
+          </button>
+          
+      Hover over or click a component's dot in the dependencies diagram to see
+      more information about it
+    
+        </div>
+      </transition-stub>
+       
+      <div
+        class="my-3"
+      >
+        <!---->
+         
+        <div
+          class="form-row form-group my-3 mr-2"
+          id="__BVID__97"
+          role="group"
+        >
+          <label
+            class="col-6 col-form-label col-form-label-sm"
+            for="graph-scope-related-radius"
+            id="__BVID__97__BV_label_"
+          >
+            Radius:
+          </label>
+          <div
+            class="col"
+          >
+            <select
+              class="custom-select custom-select-sm"
+              id="graph-scope-related-radius"
+            >
+              <option
+                value="0"
+              >
+                0
+              </option>
+              <option
+                value="1"
+              >
+                1
+              </option>
+              <option
+                value="2"
+              >
+                2
+              </option>
+              <option
+                value="3"
+              >
+                3
+              </option>
+              <option
+                value="4"
+              >
+                4
+              </option>
+              <option
+                value="5"
+              >
+                5
+              </option>
+              <option
+                value="6"
+              >
+                6
+              </option>
+              <option
+                value="7"
+              >
+                7
+              </option>
+              <option
+                value="8"
+              >
+                8
+              </option>
+              <option
+                value="9"
+              >
+                9
+              </option>
+              <option
+                value="10"
+              >
+                10
+              </option>
+            </select>
+            <!---->
+            <!---->
+            <!---->
+          </div>
+        </div>
+         
+        <div
+          class="form-row form-group my-3 mr-2"
+          id="__BVID__99"
+          role="group"
+        >
+          <label
+            class="col-6 col-form-label col-form-label-sm"
+            for="graph-zoom"
+            id="__BVID__99__BV_label_"
+          >
+            Zoom:
+          </label>
+          <div
+            class="col"
+          >
+            <select
+              class="custom-select custom-select-sm"
+              id="graph-zoom"
+            >
+              <option
+                value="25"
+              >
+                25%
+              </option>
+              <option
+                value="50"
+              >
+                50%
+              </option>
+              <option
+                value="75"
+              >
+                75%
+              </option>
+              <option
+                value="100"
+              >
+                100%
+              </option>
+              <option
+                value="125"
+              >
+                125%
+              </option>
+              <option
+                value="150"
+              >
+                150%
+              </option>
+              <option
+                value="200"
+              >
+                200%
+              </option>
+              <option
+                value="400"
+              >
+                400%
+              </option>
+            </select>
+            <!---->
+            <!---->
+            <!---->
+          </div>
+        </div>
+         
+        <div
+          class="custom-control custom-checkbox"
+        >
+          <input
+            class="custom-control-input"
+            id="detailed-dependencies"
+            type="checkbox"
+            value="true"
+          />
+          <label
+            class="custom-control-label"
+            for="detailed-dependencies"
+          >
+            
+        Detailed dependencies
+      
+          </label>
+        </div>
+      </div>
+    </div>
+     
+    <!---->
+  </div>
+</div>
+`;
+
+exports[`Index when Get Summary service endpoint returns no dependencies renders the page 1`] = `
+<div>
+  <h1
+    class="text-info my-3"
+  >
+    Test Area Name 1 Area - Dependencies
+  </h1>
+   
+  <div
+    class="my-3"
+  >
+    <a
+      class="btn btn-secondary"
+      href="/areas/test-area-id-1"
+      target="_self"
+    >
+      Info
+    </a>
+     
+    <a
+      class="btn btn-secondary"
+      href="/areas/test-area-id-1/dependencies"
+      target="_self"
+    >
+      Dependencies
+    </a>
+     
+    <a
+      class="btn btn-secondary"
+      href="/areas/test-area-id-1/components"
+      target="_self"
+    >
+      Components
+    </a>
+     
+    <a
+      class="btn btn-secondary"
+      href="/areas/test-area-id-1/cross-functional-requirements"
+      target="_self"
+    >
+      
+    Cross Functional Requirements
+  
+    </a>
+     
+    <a
+      class="btn btn-secondary"
+      href="/areas/test-area-id-1/tech-debts"
+      target="_self"
+    >
+      Tech Debts
+    </a>
+     
+    <a
+      class="btn btn-secondary"
+      href="/areas/test-area-id-1/tests"
+      target="_self"
+    >
+      Tests
+    </a>
+     
+    <a
+      class="btn btn-secondary"
+      href="/areas/test-area-id-1/errors"
+      target="_self"
+    >
+      Errors
+    </a>
+     
+    <a
+      class="btn btn-secondary"
+      href="/areas/test-area-id-1/openapi-specs"
+      target="_self"
+    >
+      OpenAPI Specs
+    </a>
+  </div>
+   
+  <div>
+    <transition-stub
+      class="my-3"
+      css="true"
+      enteractiveclass=""
+      enterclass=""
+      entertoclass="show"
+      leaveactiveclass=""
+      leaveclass="show"
+      leavetoclass=""
+      name=""
+    >
+      <div
+        aria-atomic="true"
+        aria-live="polite"
+        class="alert alert-dismissible alert-info"
+        role="alert"
+      >
+        <button
+          aria-label="Close"
+          class="close"
+          type="button"
+        >
+          ×
+        </button>
+        
+    The dependencies on this page come from a combination of Zipkin traces and
+    dependencies manually specified in the catalog's metadata YAML files. The
+    visualisation is not out-of-the-box Zipkin functionality and is bespoke to
+    the Component Catalog. The other data on the page like descriptions,
+    teams, tags etc. come from the Component Catalog and not from Zipkin.
+  
+      </div>
+    </transition-stub>
+     
+    <div
+      class="graph"
+    >
+      <svg
+        height="1200"
+        id="component-dependency-graph"
+        overflow="auto"
+        width="100%"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <rect
+          class="component-dependency-graph-background"
+          fill-opacity="0"
+        />
+         
+        <defs>
+          <marker
+            class="dependency-marker all-dependency-marker"
+            id="component-dependency-graph-dependency-marker-all"
+            markerHeight="11.5"
+            markerUnits="userSpaceOnUse"
+            markerWidth="7.1"
+            orient="auto-start-reverse"
+            refX="10"
+            refY="5.75"
+            viewBox="0 0 7.1 11.5"
+          >
+            <path
+              d="M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5"
+            />
+          </marker>
+          <marker
+            class="dependency-marker manual-dependency-marker"
+            id="component-dependency-graph-dependency-marker-manual"
+            markerHeight="11.5"
+            markerUnits="userSpaceOnUse"
+            markerWidth="7.1"
+            orient="auto-start-reverse"
+            refX="10"
+            refY="5.75"
+            viewBox="0 0 7.1 11.5"
+          >
+            <path
+              d="M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5"
+            />
+          </marker>
+          <marker
+            class="dependency-marker scope-related-dependency-marker"
+            id="component-dependency-graph-dependency-marker-scope-related"
+            markerHeight="11.5"
+            markerUnits="userSpaceOnUse"
+            markerWidth="7.1"
+            orient="auto-start-reverse"
+            refX="10"
+            refY="5.75"
+            viewBox="0 0 7.1 11.5"
+          >
+            <path
+              d="M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5"
+            />
+          </marker>
+          <marker
+            class="dependency-marker scoped-dependency-marker"
+            id="component-dependency-graph-dependency-marker-scoped"
+            markerHeight="11.5"
+            markerUnits="userSpaceOnUse"
+            markerWidth="7.1"
+            orient="auto-start-reverse"
+            refX="10"
+            refY="5.75"
+            viewBox="0 0 7.1 11.5"
+          >
+            <path
+              d="M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5"
+            />
+          </marker>
+          <marker
+            class="dependency-marker related-dependency-marker"
+            id="component-dependency-graph-dependency-marker-related"
+            markerHeight="11.5"
+            markerUnits="userSpaceOnUse"
+            markerWidth="7.1"
+            orient="auto-start-reverse"
+            refX="10"
+            refY="5.75"
+            viewBox="0 0 7.1 11.5"
+          >
+            <path
+              d="M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5"
+            />
+          </marker>
+          <marker
+            class="dependency-marker direct-dependency-marker"
+            id="component-dependency-graph-dependency-marker-direct"
+            markerHeight="11.5"
+            markerUnits="userSpaceOnUse"
+            markerWidth="7.1"
+            orient="auto-start-reverse"
+            refX="10"
+            refY="5.75"
+            viewBox="0 0 7.1 11.5"
+          >
+            <path
+              d="M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5"
+            />
+          </marker>
+          <marker
+            class="dependency-marker selected-dependency-marker"
+            id="component-dependency-graph-dependency-marker-selected"
+            markerHeight="11.5"
+            markerUnits="userSpaceOnUse"
+            markerWidth="7.1"
+            orient="auto-start-reverse"
+            refX="10"
+            refY="5.75"
+            viewBox="0 0 7.1 11.5"
+          >
+            <path
+              d="M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5"
+            />
+          </marker>
+        </defs>
+         
+        <g />
+        <g />
+        <g />
+        <g />
+        <g />
+        <g />
+        <g />
+         
+        <g />
+        <g />
+        <g />
+        <g />
+        <g />
+        <g />
+        <g />
+         
+        <g />
+        <g />
+        <g />
+        <g />
+        <g />
+        <g />
+        <g />
+      </svg>
+    </div>
+     
+    <div
+      class="panel"
+    >
+      <transition-stub
+        css="true"
+        enteractiveclass=""
+        enterclass=""
+        entertoclass="show"
+        leaveactiveclass=""
+        leaveclass="show"
+        leavetoclass=""
+        name=""
+      >
+        <div
+          aria-atomic="true"
+          aria-live="polite"
+          class="alert alert-dismissible alert-info"
+          role="alert"
+        >
+          <button
+            aria-label="Close"
+            class="close"
+            type="button"
+          >
+            ×
+          </button>
+          
+      Hover over or click a component's dot in the dependencies diagram to see
+      more information about it
+    
+        </div>
+      </transition-stub>
+       
+      <div
+        class="my-3"
+      >
+        <!---->
+         
+        <div
+          class="form-row form-group my-3 mr-2"
+          id="__BVID__47"
+          role="group"
+        >
+          <label
+            class="col-6 col-form-label col-form-label-sm"
+            for="graph-scope-related-radius"
+            id="__BVID__47__BV_label_"
+          >
+            Radius:
+          </label>
+          <div
+            class="col"
+          >
+            <select
+              class="custom-select custom-select-sm"
+              id="graph-scope-related-radius"
+            >
+              <option
+                value="0"
+              >
+                0
+              </option>
+              <option
+                value="1"
+              >
+                1
+              </option>
+              <option
+                value="2"
+              >
+                2
+              </option>
+              <option
+                value="3"
+              >
+                3
+              </option>
+              <option
+                value="4"
+              >
+                4
+              </option>
+              <option
+                value="5"
+              >
+                5
+              </option>
+              <option
+                value="6"
+              >
+                6
+              </option>
+              <option
+                value="7"
+              >
+                7
+              </option>
+              <option
+                value="8"
+              >
+                8
+              </option>
+              <option
+                value="9"
+              >
+                9
+              </option>
+              <option
+                value="10"
+              >
+                10
+              </option>
+            </select>
+            <!---->
+            <!---->
+            <!---->
+          </div>
+        </div>
+         
+        <div
+          class="form-row form-group my-3 mr-2"
+          id="__BVID__49"
+          role="group"
+        >
+          <label
+            class="col-6 col-form-label col-form-label-sm"
+            for="graph-zoom"
+            id="__BVID__49__BV_label_"
+          >
+            Zoom:
+          </label>
+          <div
+            class="col"
+          >
+            <select
+              class="custom-select custom-select-sm"
+              id="graph-zoom"
+            >
+              <option
+                value="25"
+              >
+                25%
+              </option>
+              <option
+                value="50"
+              >
+                50%
+              </option>
+              <option
+                value="75"
+              >
+                75%
+              </option>
+              <option
+                value="100"
+              >
+                100%
+              </option>
+              <option
+                value="125"
+              >
+                125%
+              </option>
+              <option
+                value="150"
+              >
+                150%
+              </option>
+              <option
+                value="200"
+              >
+                200%
+              </option>
+              <option
+                value="400"
+              >
+                400%
+              </option>
+            </select>
+            <!---->
+            <!---->
+            <!---->
+          </div>
+        </div>
+         
+        <div
+          class="custom-control custom-checkbox"
+        >
+          <input
+            class="custom-control-input"
+            id="detailed-dependencies"
+            type="checkbox"
+            value="true"
+          />
+          <label
+            class="custom-control-label"
+            for="detailed-dependencies"
+          >
+            
+        Detailed dependencies
+      
+          </label>
+        </div>
+      </div>
+    </div>
+     
+    <!---->
+  </div>
+</div>
+`;

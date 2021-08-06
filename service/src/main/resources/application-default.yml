@@ -1,0 +1,16 @@
+spring:
+  sleuth:
+    sampler:
+      probability: ${ZIPKIN_SAMPLERATE:1.0}
+
+download-cache:
+  dir: ${TMPDIR}component-catalog-service/data/download-cache
+
+url-exists-cache:
+  dir: ${TMPDIR}component-catalog-service/data/url-exists-cache
+
+git:
+  repos-dir: ${TMPDIR}component-catalog-service/data/git/repos
+
+gradle:
+  pom-cache-dir: ${TMPDIR}component-catalog-service/data/gradle/pom-cache

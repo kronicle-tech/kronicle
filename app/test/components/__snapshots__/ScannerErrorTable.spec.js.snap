@@ -1,0 +1,172 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ScannerErrorTable when components is set to multiple components with multiple scanner errors renders the scanner errors 1`] = `
+"<table class=\\"table table-dark\\">
+  <thead>
+    <tr>
+      <th class=\\"component table-primary\\">Component</th>
+      <th class=\\"scanner\\">Scanner</th>
+      <th class=\\"teams\\">Teams</th>
+      <th class=\\"error\\">Error</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class=\\"component table-primary\\"><a href=\\"/components/test-component-id-1\\">Test Component Name 1</a></td>
+      <td class=\\"scanner\\">test-scanner-id-1-1</td>
+      <td class=\\"teams\\">
+        <ul>
+          <li><a href=\\"/teams/test-team-id-1-1\\" class=\\"team-name\\">test-team-id-1-1</a>
+            <!---->
+            <!---->
+          </li>
+          <li><a href=\\"/teams/test-team-id-1-2\\" class=\\"team-name\\">test-team-id-1-2</a>
+            <!---->
+            <!---->
+          </li>
+        </ul>
+      </td>
+      <td class=\\"error\\">
+        <ul>
+          <li>
+            Test Scanner Error Message 1 1
+          </li>
+          <li>
+            Test Scanner Error Message 1 1 2
+          </li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td class=\\"component table-primary\\"><a href=\\"/components/test-component-id-1\\">Test Component Name 1</a></td>
+      <td class=\\"scanner\\">test-scanner-id-1-2</td>
+      <td class=\\"teams\\">
+        <ul>
+          <li><a href=\\"/teams/test-team-id-1-1\\" class=\\"team-name\\">test-team-id-1-1</a>
+            <!---->
+            <!---->
+          </li>
+          <li><a href=\\"/teams/test-team-id-1-2\\" class=\\"team-name\\">test-team-id-1-2</a>
+            <!---->
+            <!---->
+          </li>
+        </ul>
+      </td>
+      <td class=\\"error\\">
+        <ul>
+          <li>
+            Test Scanner Error Message 1 2
+          </li>
+          <li>
+            Test Scanner Error Message 1 2 2
+          </li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td class=\\"component table-primary\\"><a href=\\"/components/test-component-id-2\\">Test Component Name 2</a></td>
+      <td class=\\"scanner\\">test-scanner-id-2-1</td>
+      <td class=\\"teams\\">
+        <ul>
+          <li><a href=\\"/teams/test-team-id-2-1\\" class=\\"team-name\\">test-team-id-2-1</a>
+            <!---->
+            <!---->
+          </li>
+          <li><a href=\\"/teams/test-team-id-2-2\\" class=\\"team-name\\">test-team-id-2-2</a>
+            <!---->
+            <!---->
+          </li>
+        </ul>
+      </td>
+      <td class=\\"error\\">
+        <ul>
+          <li>
+            Test Scanner Error Message 2 1
+          </li>
+          <li>
+            Test Scanner Error Message 2 1 2
+          </li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td class=\\"component table-primary\\"><a href=\\"/components/test-component-id-2\\">Test Component Name 2</a></td>
+      <td class=\\"scanner\\">test-scanner-id-2-2</td>
+      <td class=\\"teams\\">
+        <ul>
+          <li><a href=\\"/teams/test-team-id-2-1\\" class=\\"team-name\\">test-team-id-2-1</a>
+            <!---->
+            <!---->
+          </li>
+          <li><a href=\\"/teams/test-team-id-2-2\\" class=\\"team-name\\">test-team-id-2-2</a>
+            <!---->
+            <!---->
+          </li>
+        </ul>
+      </td>
+      <td class=\\"error\\">
+        <ul>
+          <li>
+            Test Scanner Error Message 2 2
+          </li>
+          <li>
+            Test Scanner Error Message 2 2 2
+          </li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td class=\\"component table-primary\\"><a href=\\"/components/test-component-id-3\\">Test Component Name 3</a></td>
+      <td class=\\"scanner\\">test-scanner-id-3-1</td>
+      <td class=\\"teams\\">
+        <ul>
+          <li><a href=\\"/teams/test-team-id-3-1\\" class=\\"team-name\\">test-team-id-3-1</a>
+            <!---->
+            <!---->
+          </li>
+          <li><a href=\\"/teams/test-team-id-3-2\\" class=\\"team-name\\">test-team-id-3-2</a>
+            <!---->
+            <!---->
+          </li>
+        </ul>
+      </td>
+      <td class=\\"error\\">
+        <ul>
+          <li>
+            Test Scanner Error Message 3 1
+          </li>
+          <li>
+            Test Scanner Error Message 3 1 2
+          </li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td class=\\"component table-primary\\"><a href=\\"/components/test-component-id-3\\">Test Component Name 3</a></td>
+      <td class=\\"scanner\\">test-scanner-id-3-2</td>
+      <td class=\\"teams\\">
+        <ul>
+          <li><a href=\\"/teams/test-team-id-3-1\\" class=\\"team-name\\">test-team-id-3-1</a>
+            <!---->
+            <!---->
+          </li>
+          <li><a href=\\"/teams/test-team-id-3-2\\" class=\\"team-name\\">test-team-id-3-2</a>
+            <!---->
+            <!---->
+          </li>
+        </ul>
+      </td>
+      <td class=\\"error\\">
+        <ul>
+          <li>
+            Test Scanner Error Message 3 2
+          </li>
+          <li>
+            Test Scanner Error Message 3 2 2
+          </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>"
+`;

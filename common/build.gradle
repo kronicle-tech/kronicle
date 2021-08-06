@@ -1,0 +1,46 @@
+plugins {
+    id "java-library"
+}
+
+group = "com.moneysupermarket.componentcatalog"
+archivesBaseName = "component-catalog-$name"
+
+apply from: "$rootDir/gradle/publish.gradle"
+
+dependencies {
+    ["org.springframework.boot:spring-boot-dependencies:$springBootVersion",
+     "org.springframework.cloud:spring-cloud-dependencies:$springCloudVersion"].each {
+        annotationProcessor platform(it)
+        implementation platform(it)
+        compileOnly platform(it)
+        testAnnotationProcessor platform(it)
+        testImplementation platform(it)
+    }
+
+    annotationProcessor "org.projectlombok:lombok"
+    compileOnly "org.projectlombok:lombok"
+    compileOnly "com.github.spotbugs:spotbugs-annotations:$spotBugsVersion"
+    annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
+
+    implementation "javax.validation:validation-api"
+    implementation "org.springframework:spring-context"
+
+    testAnnotationProcessor "org.projectlombok:lombok"
+    testCompileOnly "org.projectlombok:lombok"
+    testCompileOnly "com.github.spotbugs:spotbugs-annotations:$spotBugsVersion"
+
+    testImplementation "org.springframework.boot:spring-boot-starter-test", {
+        exclude group: "junit", module: "junit"
+        exclude group: "org.junit.vintage", module: "junit-vintage-engine"
+    }
+    testImplementation "org.junit.jupiter:junit-jupiter-engine"
+    testImplementation "org.assertj:assertj-core"
+    testImplementation "org.mockito:mockito-core"
+    testImplementation "org.mockito:mockito-junit-jupiter"
+    testImplementation "org.hibernate.validator:hibernate-validator"
+}
+
+test {
+    useJUnitPlatform()
+    maxParallelForks = Runtime.runtime.availableProcessors().intdiv(2) ?: 1
+}

@@ -1,0 +1,31 @@
+areas:
+  - id: test-area-3
+    name: Test Area 3
+  - id: test-area-4
+    name: Test Area 4
+
+teams:
+  - id: test-team-3
+    name: Test Team 3
+    areaId: test-area-3
+    emailAddress: test-team-3@example.com
+  - id: test-team-4
+    name: Test Team 4
+    areaId: test-area-4
+    emailAddress: test-team-4@example.com
+
+components:
+  - id: test-component-3
+    name: Test Component 3
+    typeId: test-component-type-1
+    repo:
+      url: https://example.com/test-component-3.git
+    teams:
+      - teamId: test-team-3
+  - id: test-component-4
+    name: Test Component 4
+    typeId: test-component-type-2
+    repo:
+      url: https://example.com/test-component-4.git
+    teams:
+      - teamId: test-team-4

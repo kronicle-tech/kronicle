@@ -1,0 +1,8 @@
+openapi: 3.0.0
+info:
+  title: Example
+  description: Example
+  version: 0.0.0
+paths:
+  /example:
+    $ref: example-path.yaml

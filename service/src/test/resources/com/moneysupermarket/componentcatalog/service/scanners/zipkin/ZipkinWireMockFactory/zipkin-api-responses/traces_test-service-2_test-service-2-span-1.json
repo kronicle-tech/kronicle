@@ -1,0 +1,54 @@
+[
+  [
+    {
+      "name": "test-service-2-span-1",
+      "timestamp": 1609459200000000,
+      "duration": 123,
+      "localEndpoint": {
+        "serviceName": "test-service-2"
+      },
+      "tags": {
+        "ignored": "test-value",
+        "http.path_template": "/test-service-2-span-1"
+      }
+    },
+    {
+      "name": "test-service-2b-span-1b",
+      "timestamp": 1609459200000000,
+      "duration": 123,
+      "localEndpoint": {
+        "serviceName": "test-service-2b"
+      },
+      "tags": {
+        "ignored": "test-value",
+        "http.path_template": "/test-service-2b-span-1b"
+      }
+    }
+  ],
+  [
+    {
+      "name": "test-service-2c-span-1c",
+      "timestamp": 1609459200000000,
+      "duration": 123,
+      "localEndpoint": {
+        "serviceName": "test-service-2c"
+      },
+      "tags": {
+        "ignored": "test-value",
+        "http.path_template": "/test-service-2c-span-1c"
+      }
+    },
+    {
+      "name": "test-service-2-span-1",
+      "timestamp": 1609459200000000,
+      "duration": 123,
+      "localEndpoint": {
+        "serviceName": "test-service-2"
+      },
+      "tags": {
+        "ignored": "test-value",
+        "http.path_template": "/test-service-2-span-1"
+      }
+    }
+  ]
+]

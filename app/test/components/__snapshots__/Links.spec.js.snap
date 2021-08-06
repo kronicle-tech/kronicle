@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Links when links prop is set to a link with a description renders the link with a description 1`] = `
+"<ul>
+  <li><a href=\\"test-url-1\\" target=\\"_blank\\">test-url-1</a> <br>
+    <div>
+      <p>Test Description 1</p>
+    </div>
+  </li>
+</ul>"
+`;
+
+exports[`Links when links prop is set to multiple links renders an unordered list showing the links 1`] = `
+"<ul>
+  <li><a href=\\"test-url-1\\" target=\\"_blank\\">test-url-1</a> <br>
+    <!---->
+  </li>
+  <li><a href=\\"test-url-2\\" target=\\"_blank\\">test-url-2</a> <br>
+    <!---->
+  </li>
+  <li><a href=\\"test-url-3\\" target=\\"_blank\\">test-url-3</a> <br>
+    <!---->
+  </li>
+</ul>"
+`;
+
+exports[`Links when links prop is set to one link renders an unordered list showing the link 1`] = `
+"<ul>
+  <li><a href=\\"test-url-1\\" target=\\"_blank\\">test-url-1</a> <br>
+    <!---->
+  </li>
+</ul>"
+`;
+
+exports[`Links when links prop is set to one link with Markdown in the description renders the link with the Markdown converted to HTML 1`] = `
+"<ul>
+  <li><a href=\\"test-url-1\\" target=\\"_blank\\">test-url-1</a> <br>
+    <div>
+      <p>Text with <em>bold</em> formatting</p>
+    </div>
+  </li>
+</ul>"
+`;

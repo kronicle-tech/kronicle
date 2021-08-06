@@ -1,0 +1,7 @@
+plugins {
+    id "java"
+}
+
+project.ext {
+    hibernateValidatorVersion = "6.0.0.Final"
+}

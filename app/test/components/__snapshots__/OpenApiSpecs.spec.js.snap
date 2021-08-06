@@ -1,0 +1,103 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`OpenApiSpecs when openApiSpecs array is set to an OpenAPI spec with a description renders the OpenAPI spec with a description 1`] = `
+"<ul componentid=\\"test-component-id\\">
+  <li><a href=\\"/components/undefined/openapi-specs/1\\" target=\\"_self\\" class=\\"\\">
+      https://example.com/
+    </a>
+    <div>
+      <p>Test Description 1</p>
+    </div>
+  </li>
+</ul>"
+`;
+
+exports[`OpenApiSpecs when openApiSpecs array is set to an OpenAPI spec with a file renders the OpenAPI spec showing the file as the spec name 1`] = `
+"<ul>
+  <li><a href=\\"/components/undefined/openapi-specs/1\\" target=\\"_self\\" class=\\"\\">
+      test/file.yaml
+    </a>
+    <div>
+      <p>Test Description 1</p>
+    </div>
+  </li>
+</ul>"
+`;
+
+exports[`OpenApiSpecs when openApiSpecs array is set to an OpenAPI spec with a url renders the OpenAPI spec showing the URL as the spec name 1`] = `
+"<ul>
+  <li><a href=\\"/components/undefined/openapi-specs/1\\" target=\\"_self\\" class=\\"\\">
+      https://example.com/
+    </a>
+    <div>
+      <p>Test Description 1</p>
+    </div>
+  </li>
+</ul>"
+`;
+
+exports[`OpenApiSpecs when openApiSpecs array is set to an OpenAPI spec with no description renders the OpenAPI spec without a description 1`] = `
+"<ul>
+  <li><a href=\\"/components/undefined/openapi-specs/1\\" target=\\"_self\\" class=\\"\\">
+      https://example.com/
+    </a>
+    <div></div>
+  </li>
+</ul>"
+`;
+
+exports[`OpenApiSpecs when openApiSpecs array is set to an OpenAPI spec with no spec renders the OpenAPI spec with a \`missing\` badge 1`] = `
+"<ul>
+  <li>
+    <div>
+      https://example.com/
+      <span class=\\"badge badge-danger\\">Missing</span></div>
+    <div>
+      <p>Test Description 1</p>
+    </div>
+  </li>
+</ul>"
+`;
+
+exports[`OpenApiSpecs when openApiSpecs array is set to multiple OpenAPI specs renders an unordered list showing the OpenAPI specs 1`] = `
+"<ul>
+  <li><a href=\\"/components/undefined/openapi-specs/1\\" target=\\"_self\\" class=\\"\\">
+      https://example.com/
+    </a>
+    <div>
+      <p>Test Description 2</p>
+    </div>
+  </li>
+  <li><a href=\\"/components/undefined/openapi-specs/2\\" target=\\"_self\\" class=\\"\\">
+      https://example.com/
+    </a>
+    <div>
+      <p>Test Description 2</p>
+    </div>
+  </li>
+</ul>"
+`;
+
+exports[`OpenApiSpecs when openApiSpecs array is set to one OpenAPI spec renders an unordered list showing the OpenAPI spec 1`] = `
+"<ul>
+  <li><a href=\\"/components/undefined/openapi-specs/1\\" target=\\"_self\\" class=\\"\\">
+      https://example.com/
+    </a>
+    <div>
+      <p>Test Description 1</p>
+    </div>
+  </li>
+</ul>"
+`;
+
+exports[`OpenApiSpecs when openApiSpecs array is set to one OpenAPI spec with Markdown in the description renders the OpenAPI spec with the Markdown converted to HTML 1`] = `
+"<ul>
+  <li><a href=\\"/components/undefined/openapi-specs/1\\" target=\\"_self\\" class=\\"\\">
+      https://example.com/
+    </a>
+    <div>
+      <p>Text with <em>bold</em> formatting</p>
+    </div>
+  </li>
+</ul>"
+`;

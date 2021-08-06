@@ -1,0 +1,29 @@
+apply plugin: "maven-publish"
+apply plugin: "com.jfrog.artifactory"
+
+java {
+    withSourcesJar()
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            artifactId = project.archivesBaseName
+            from components.java
+        }
+    }
+}
+
+artifactory {
+    publish {
+        contextUrl = "https://example.com"
+        repository {
+            repoKey = "example"
+            username = System.getenv("EXAMPLE_USERNAME")
+            password = System.getenv("EXAMPLE_PASSWORD")
+        }
+        defaults {
+            publications("mavenJava")
+        }
+    }
+}

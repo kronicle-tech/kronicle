@@ -1,0 +1,96 @@
+{
+  "size": 4,
+  "limit": 300,
+  "isLastPage": true,
+  "values": [
+    {
+      "slug": "example-repo-3",
+      "id": 3,
+      "name": "example-repo-3",
+      "description": "Example repo",
+      "hierarchyId": "3",
+      "scmId": "git",
+      "state": "AVAILABLE",
+      "statusMessage": "Available",
+      "forkable": true,
+      "project": {
+        "key": "EXAMPLE-PROJECT-3",
+        "id": 3,
+        "name": "Example Project 3",
+        "description": "Example project",
+        "public": false,
+        "type": "NORMAL",
+        "links": {
+          "self": [
+            {
+              "href": "{{baseUrl}}/projects/EXAMPLE-PROJECT-3"
+            }
+          ]
+        }
+      },
+      "public": false,
+      "links": {
+        "clone": [
+          {
+            "href": "ssh://git@example.com:123/example-project-3/example-repo-3.git",
+            "name": "ssh"
+          },
+          {
+            "href": "{{baseUrl}}/scm/example-project-3/example-repo-3.git",
+            "name": "http"
+          }
+        ],
+        "self": [
+          {
+            "href": "{{baseUrl}}/projects/EXAMPLE-PROJECT-3/repos/example-repo-3/browse"
+          }
+        ]
+      }
+    },
+    {
+      "slug": "example-repo-4",
+      "id": 4,
+      "name": "example-repo-4",
+      "description": "Example repo",
+      "hierarchyId": "4",
+      "scmId": "git",
+      "state": "AVAILABLE",
+      "statusMessage": "Available",
+      "forkable": true,
+      "project": {
+        "key": "EXAMPLE-PROJECT-4",
+        "id": 4,
+        "name": "Example Project 4",
+        "description": "Example project",
+        "public": false,
+        "type": "NORMAL",
+        "links": {
+          "self": [
+            {
+              "href": "{{baseUrl}}/projects/EXAMPLE-PROJECT-4"
+            }
+          ]
+        }
+      },
+      "public": false,
+      "links": {
+        "clone": [
+          {
+            "href": "ssh://git@example.com:123/example-project-4/example-repo-4.git",
+            "name": "ssh"
+          },
+          {
+            "href": "{{baseUrl}}/scm/example-project-4/example-repo-4.git",
+            "name": "http"
+          }
+        ],
+        "self": [
+          {
+            "href": "{{baseUrl}}/projects/EXAMPLE-PROJECT-4/repos/example-repo-4/browse"
+          }
+        ]
+      }
+    }
+  ],
+  "start": 2
+}

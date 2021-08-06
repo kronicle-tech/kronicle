@@ -1,0 +1,1049 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Index when Get Components service endpoint returns an array of multiple components renders the page 1`] = `
+<div>
+  <div
+    class="my-3"
+  >
+    <a
+      class="btn btn-secondary"
+      href="#"
+      target="_self"
+    >
+      Components
+    </a>
+     
+    <a
+      class="btn btn-secondary"
+      href="?testOutcome=fail"
+      target="_self"
+    >
+      
+    Tests
+  
+    </a>
+     
+    <a
+      class="btn btn-secondary"
+      href="#"
+      target="_self"
+    >
+      
+    Cross Functional Requirements
+  
+    </a>
+     
+    <a
+      class="btn btn-secondary"
+      href="#"
+      target="_self"
+    >
+      Tech Debts
+    </a>
+     
+    <a
+      class="btn btn-secondary"
+      href="#"
+      target="_self"
+    >
+      
+    Dependencies
+  
+    </a>
+     
+    <a
+      class="btn btn-secondary"
+      href="#"
+      target="_self"
+    >
+      
+    OpenAPI Specs
+  
+    </a>
+     
+    <a
+      class="btn btn-secondary"
+      href="#"
+      target="_self"
+    >
+      
+    Key Software
+  
+    </a>
+     
+    <a
+      class="btn btn-secondary"
+      href="#"
+      target="_self"
+    >
+      Repos
+    </a>
+     
+    <a
+      class="btn btn-secondary"
+      href="#"
+      target="_self"
+    >
+      Errors
+    </a>
+  </div>
+   
+  <transition-stub
+    class="my-3"
+    css="true"
+    enteractiveclass=""
+    enterclass=""
+    entertoclass="show"
+    leaveactiveclass=""
+    leaveclass="show"
+    leavetoclass=""
+    name=""
+  >
+    <div
+      aria-atomic="true"
+      aria-live="polite"
+      class="alert alert-dismissible alert-info"
+      role="alert"
+    >
+      <button
+        aria-label="Close"
+        class="close"
+        type="button"
+      >
+        ×
+      </button>
+      
+    Click a component's name in the table below to view more information about
+    that component
+  
+    </div>
+  </transition-stub>
+   
+  <div>
+    <div
+      class="main"
+    >
+      <div
+        class="card"
+      >
+        <!---->
+        <!---->
+        <div
+          class="card-body"
+        >
+          <h4
+            class="card-title"
+          >
+            3 Components
+          </h4>
+          <!---->
+          <p
+            class="card-text"
+          >
+            <table
+              class="table table-dark"
+            >
+              <thead>
+                <tr>
+                  <th
+                    class="type"
+                  >
+                    Type
+                  </th>
+                   
+                  <th
+                    class="name"
+                  >
+                    Name
+                  </th>
+                   
+                  <th>
+                    Tags
+                  </th>
+                   
+                  <th>
+                    Teams
+                  </th>
+                   
+                  <th>
+                    Description
+                  </th>
+                </tr>
+              </thead>
+               
+              <tbody>
+                <tr>
+                  <td
+                    class="type"
+                  >
+                    test-component-type-id-1
+                  </td>
+                   
+                  <td
+                    class="name table-primary"
+                  >
+                    <a
+                      href="/components/test-component-id-1"
+                    >
+                      Test Component Name 1
+                    </a>
+                  </td>
+                   
+                  <td>
+                    <ul>
+                      <li>
+                        test-tag-1-1
+                      </li>
+                      <li>
+                        test-tag-1-2
+                      </li>
+                    </ul>
+                  </td>
+                   
+                  <td>
+                    <ul>
+                      <li>
+                        <a
+                          class="team-name"
+                          href="/teams/test-team-id-1-1"
+                        >
+                          test-team-id-1-1
+                        </a>
+                         
+                        <!---->
+                         
+                        <!---->
+                      </li>
+                      <li>
+                        <a
+                          class="team-name"
+                          href="/teams/test-team-id-1-2"
+                        >
+                          test-team-id-1-2
+                        </a>
+                         
+                        <!---->
+                         
+                        <!---->
+                      </li>
+                    </ul>
+                  </td>
+                   
+                  <td
+                    class="description"
+                  >
+                    <div>
+                      
+
+                      <p>
+                        Test Component Description 1
+                      </p>
+                      
+
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td
+                    class="type"
+                  >
+                    test-component-type-id-2
+                  </td>
+                   
+                  <td
+                    class="name table-primary"
+                  >
+                    <a
+                      href="/components/test-component-id-2"
+                    >
+                      Test Component Name 2
+                    </a>
+                  </td>
+                   
+                  <td>
+                    <ul>
+                      <li>
+                        test-tag-2-1
+                      </li>
+                      <li>
+                        test-tag-2-2
+                      </li>
+                    </ul>
+                  </td>
+                   
+                  <td>
+                    <ul>
+                      <li>
+                        <a
+                          class="team-name"
+                          href="/teams/test-team-id-2-1"
+                        >
+                          test-team-id-2-1
+                        </a>
+                         
+                        <!---->
+                         
+                        <!---->
+                      </li>
+                      <li>
+                        <a
+                          class="team-name"
+                          href="/teams/test-team-id-2-2"
+                        >
+                          test-team-id-2-2
+                        </a>
+                         
+                        <!---->
+                         
+                        <!---->
+                      </li>
+                    </ul>
+                  </td>
+                   
+                  <td
+                    class="description"
+                  >
+                    <div>
+                      
+
+                      <p>
+                        Test Component Description 2
+                      </p>
+                      
+
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td
+                    class="type"
+                  >
+                    test-component-type-id-3
+                  </td>
+                   
+                  <td
+                    class="name table-primary"
+                  >
+                    <a
+                      href="/components/test-component-id-3"
+                    >
+                      Test Component Name 3
+                    </a>
+                  </td>
+                   
+                  <td>
+                    <ul>
+                      <li>
+                        test-tag-3-1
+                      </li>
+                      <li>
+                        test-tag-3-2
+                      </li>
+                    </ul>
+                  </td>
+                   
+                  <td>
+                    <ul>
+                      <li>
+                        <a
+                          class="team-name"
+                          href="/teams/test-team-id-3-1"
+                        >
+                          test-team-id-3-1
+                        </a>
+                         
+                        <!---->
+                         
+                        <!---->
+                      </li>
+                      <li>
+                        <a
+                          class="team-name"
+                          href="/teams/test-team-id-3-2"
+                        >
+                          test-team-id-3-2
+                        </a>
+                         
+                        <!---->
+                         
+                        <!---->
+                      </li>
+                    </ul>
+                  </td>
+                   
+                  <td
+                    class="description"
+                  >
+                    <div>
+                      
+
+                      <p>
+                        Test Component Description 3
+                      </p>
+                      
+
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </p>
+        </div>
+        <!---->
+        <!---->
+      </div>
+    </div>
+     
+    <div
+      class="panel"
+    >
+      <div>
+        <!---->
+         
+        <fieldset
+          class="form-group"
+          id="__BVID__77"
+        >
+          <legend
+            class="bv-no-focus-ring col-form-label pt-0"
+            id="__BVID__77__BV_label_"
+            tabindex="-1"
+          >
+            Teams
+          </legend>
+          <div>
+            <div
+              class="bv-no-focus-ring"
+              id="__BVID__78"
+              role="group"
+              tabindex="-1"
+            >
+              <div
+                class="custom-control custom-checkbox"
+              >
+                <input
+                  class="custom-control-input"
+                  id="__BVID__78_BV_option_0"
+                  name="team"
+                  type="checkbox"
+                  value="test-team-id-1-1"
+                />
+                <label
+                  class="custom-control-label"
+                  for="__BVID__78_BV_option_0"
+                >
+                  <span>
+                    test-team-id-1-1
+                  </span>
+                </label>
+              </div>
+              <div
+                class="custom-control custom-checkbox"
+              >
+                <input
+                  class="custom-control-input"
+                  id="__BVID__78_BV_option_1"
+                  name="team"
+                  type="checkbox"
+                  value="test-team-id-1-2"
+                />
+                <label
+                  class="custom-control-label"
+                  for="__BVID__78_BV_option_1"
+                >
+                  <span>
+                    test-team-id-1-2
+                  </span>
+                </label>
+              </div>
+              <div
+                class="custom-control custom-checkbox"
+              >
+                <input
+                  class="custom-control-input"
+                  id="__BVID__78_BV_option_2"
+                  name="team"
+                  type="checkbox"
+                  value="test-team-id-2-1"
+                />
+                <label
+                  class="custom-control-label"
+                  for="__BVID__78_BV_option_2"
+                >
+                  <span>
+                    test-team-id-2-1
+                  </span>
+                </label>
+              </div>
+              <div
+                class="custom-control custom-checkbox"
+              >
+                <input
+                  class="custom-control-input"
+                  id="__BVID__78_BV_option_3"
+                  name="team"
+                  type="checkbox"
+                  value="test-team-id-2-2"
+                />
+                <label
+                  class="custom-control-label"
+                  for="__BVID__78_BV_option_3"
+                >
+                  <span>
+                    test-team-id-2-2
+                  </span>
+                </label>
+              </div>
+              <div
+                class="custom-control custom-checkbox"
+              >
+                <input
+                  class="custom-control-input"
+                  id="__BVID__78_BV_option_4"
+                  name="team"
+                  type="checkbox"
+                  value="test-team-id-3-1"
+                />
+                <label
+                  class="custom-control-label"
+                  for="__BVID__78_BV_option_4"
+                >
+                  <span>
+                    test-team-id-3-1
+                  </span>
+                </label>
+              </div>
+              <div
+                class="custom-control custom-checkbox"
+              >
+                <input
+                  class="custom-control-input"
+                  id="__BVID__78_BV_option_5"
+                  name="team"
+                  type="checkbox"
+                  value="test-team-id-3-2"
+                />
+                <label
+                  class="custom-control-label"
+                  for="__BVID__78_BV_option_5"
+                >
+                  <span>
+                    test-team-id-3-2
+                  </span>
+                </label>
+              </div>
+            </div>
+            <!---->
+            <!---->
+            <!---->
+          </div>
+        </fieldset>
+         
+        <fieldset
+          class="form-group"
+          id="__BVID__85"
+        >
+          <legend
+            class="bv-no-focus-ring col-form-label pt-0"
+            id="__BVID__85__BV_label_"
+            tabindex="-1"
+          >
+            Tags
+          </legend>
+          <div>
+            <div
+              class="bv-no-focus-ring"
+              id="__BVID__86"
+              role="group"
+              tabindex="-1"
+            >
+              <div
+                class="custom-control custom-checkbox"
+              >
+                <input
+                  class="custom-control-input"
+                  id="__BVID__86_BV_option_0"
+                  name="tag"
+                  type="checkbox"
+                  value="test-tag-1-1"
+                />
+                <label
+                  class="custom-control-label"
+                  for="__BVID__86_BV_option_0"
+                >
+                  <span>
+                    test-tag-1-1
+                  </span>
+                </label>
+              </div>
+              <div
+                class="custom-control custom-checkbox"
+              >
+                <input
+                  class="custom-control-input"
+                  id="__BVID__86_BV_option_1"
+                  name="tag"
+                  type="checkbox"
+                  value="test-tag-1-2"
+                />
+                <label
+                  class="custom-control-label"
+                  for="__BVID__86_BV_option_1"
+                >
+                  <span>
+                    test-tag-1-2
+                  </span>
+                </label>
+              </div>
+              <div
+                class="custom-control custom-checkbox"
+              >
+                <input
+                  class="custom-control-input"
+                  id="__BVID__86_BV_option_2"
+                  name="tag"
+                  type="checkbox"
+                  value="test-tag-2-1"
+                />
+                <label
+                  class="custom-control-label"
+                  for="__BVID__86_BV_option_2"
+                >
+                  <span>
+                    test-tag-2-1
+                  </span>
+                </label>
+              </div>
+              <div
+                class="custom-control custom-checkbox"
+              >
+                <input
+                  class="custom-control-input"
+                  id="__BVID__86_BV_option_3"
+                  name="tag"
+                  type="checkbox"
+                  value="test-tag-2-2"
+                />
+                <label
+                  class="custom-control-label"
+                  for="__BVID__86_BV_option_3"
+                >
+                  <span>
+                    test-tag-2-2
+                  </span>
+                </label>
+              </div>
+              <div
+                class="custom-control custom-checkbox"
+              >
+                <input
+                  class="custom-control-input"
+                  id="__BVID__86_BV_option_4"
+                  name="tag"
+                  type="checkbox"
+                  value="test-tag-3-1"
+                />
+                <label
+                  class="custom-control-label"
+                  for="__BVID__86_BV_option_4"
+                >
+                  <span>
+                    test-tag-3-1
+                  </span>
+                </label>
+              </div>
+              <div
+                class="custom-control custom-checkbox"
+              >
+                <input
+                  class="custom-control-input"
+                  id="__BVID__86_BV_option_5"
+                  name="tag"
+                  type="checkbox"
+                  value="test-tag-3-2"
+                />
+                <label
+                  class="custom-control-label"
+                  for="__BVID__86_BV_option_5"
+                >
+                  <span>
+                    test-tag-3-2
+                  </span>
+                </label>
+              </div>
+            </div>
+            <!---->
+            <!---->
+            <!---->
+          </div>
+        </fieldset>
+         
+        <fieldset
+          class="form-group"
+          id="__BVID__93"
+        >
+          <legend
+            class="bv-no-focus-ring col-form-label pt-0"
+            id="__BVID__93__BV_label_"
+            tabindex="-1"
+          >
+            Component Types
+          </legend>
+          <div>
+            <div
+              class="bv-no-focus-ring"
+              id="__BVID__94"
+              role="group"
+              tabindex="-1"
+            >
+              <div
+                class="custom-control custom-checkbox"
+              >
+                <input
+                  class="custom-control-input"
+                  id="__BVID__94_BV_option_0"
+                  name="componentTypeId"
+                  type="checkbox"
+                  value="test-component-type-id-1"
+                />
+                <label
+                  class="custom-control-label"
+                  for="__BVID__94_BV_option_0"
+                >
+                  <span>
+                    test-component-type-id-1
+                  </span>
+                </label>
+              </div>
+              <div
+                class="custom-control custom-checkbox"
+              >
+                <input
+                  class="custom-control-input"
+                  id="__BVID__94_BV_option_1"
+                  name="componentTypeId"
+                  type="checkbox"
+                  value="test-component-type-id-2"
+                />
+                <label
+                  class="custom-control-label"
+                  for="__BVID__94_BV_option_1"
+                >
+                  <span>
+                    test-component-type-id-2
+                  </span>
+                </label>
+              </div>
+              <div
+                class="custom-control custom-checkbox"
+              >
+                <input
+                  class="custom-control-input"
+                  id="__BVID__94_BV_option_2"
+                  name="componentTypeId"
+                  type="checkbox"
+                  value="test-component-type-id-3"
+                />
+                <label
+                  class="custom-control-label"
+                  for="__BVID__94_BV_option_2"
+                >
+                  <span>
+                    test-component-type-id-3
+                  </span>
+                </label>
+              </div>
+            </div>
+            <!---->
+            <!---->
+            <!---->
+          </div>
+        </fieldset>
+         
+        <fieldset
+          class="form-group"
+          id="__BVID__98"
+        >
+          <legend
+            class="bv-no-focus-ring col-form-label pt-0"
+            id="__BVID__98__BV_label_"
+            tabindex="-1"
+          >
+            Platforms
+          </legend>
+          <div>
+            <div
+              class="bv-no-focus-ring"
+              id="__BVID__99"
+              role="group"
+              tabindex="-1"
+            >
+              <div
+                class="custom-control custom-checkbox"
+              >
+                <input
+                  class="custom-control-input"
+                  id="__BVID__99_BV_option_0"
+                  name="platformId"
+                  type="checkbox"
+                  value="test-platform-id-1"
+                />
+                <label
+                  class="custom-control-label"
+                  for="__BVID__99_BV_option_0"
+                >
+                  <span>
+                    test-platform-id-1
+                  </span>
+                </label>
+              </div>
+              <div
+                class="custom-control custom-checkbox"
+              >
+                <input
+                  class="custom-control-input"
+                  id="__BVID__99_BV_option_1"
+                  name="platformId"
+                  type="checkbox"
+                  value="test-platform-id-3"
+                />
+                <label
+                  class="custom-control-label"
+                  for="__BVID__99_BV_option_1"
+                >
+                  <span>
+                    test-platform-id-3
+                  </span>
+                </label>
+              </div>
+              <div
+                class="custom-control custom-checkbox"
+              >
+                <input
+                  class="custom-control-input"
+                  id="__BVID__99_BV_option_2"
+                  name="platformId"
+                  type="checkbox"
+                  value="undefined"
+                />
+                <label
+                  class="custom-control-label"
+                  for="__BVID__99_BV_option_2"
+                >
+                  <span>
+                    undefined
+                  </span>
+                </label>
+              </div>
+            </div>
+            <!---->
+            <!---->
+            <!---->
+          </div>
+        </fieldset>
+         
+        <div
+          class="form-group"
+          id="__BVID__103"
+          role="group"
+        >
+          <label
+            class="d-block"
+            for="component-filter"
+            id="__BVID__103__BV_label_"
+          >
+            Component
+          </label>
+          <div>
+            <select
+              class="custom-select custom-select-sm"
+              id="component-filter"
+            >
+              <option
+                value=""
+              >
+                Please select a component
+              </option>
+              <option
+                value="test-component-id-1"
+              >
+                test-component-id-1
+              </option>
+              <option
+                value="test-component-id-2"
+              >
+                test-component-id-2
+              </option>
+              <option
+                value="test-component-id-3"
+              >
+                test-component-id-3
+              </option>
+            </select>
+            <!---->
+            <!---->
+            <!---->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Index when Get Components service endpoint returns an empty array renders the page 1`] = `
+<div>
+  <div
+    class="my-3"
+  >
+    <a
+      class="btn btn-secondary"
+      href="#"
+      target="_self"
+    >
+      Components
+    </a>
+     
+    <a
+      class="btn btn-secondary"
+      href="?testOutcome=fail"
+      target="_self"
+    >
+      
+    Tests
+  
+    </a>
+     
+    <a
+      class="btn btn-secondary"
+      href="#"
+      target="_self"
+    >
+      
+    Cross Functional Requirements
+  
+    </a>
+     
+    <a
+      class="btn btn-secondary"
+      href="#"
+      target="_self"
+    >
+      Tech Debts
+    </a>
+     
+    <a
+      class="btn btn-secondary"
+      href="#"
+      target="_self"
+    >
+      
+    Dependencies
+  
+    </a>
+     
+    <a
+      class="btn btn-secondary"
+      href="#"
+      target="_self"
+    >
+      
+    OpenAPI Specs
+  
+    </a>
+     
+    <a
+      class="btn btn-secondary"
+      href="#"
+      target="_self"
+    >
+      
+    Key Software
+  
+    </a>
+     
+    <a
+      class="btn btn-secondary"
+      href="#"
+      target="_self"
+    >
+      Repos
+    </a>
+     
+    <a
+      class="btn btn-secondary"
+      href="#"
+      target="_self"
+    >
+      Errors
+    </a>
+  </div>
+   
+  <transition-stub
+    class="my-3"
+    css="true"
+    enteractiveclass=""
+    enterclass=""
+    entertoclass="show"
+    leaveactiveclass=""
+    leaveclass="show"
+    leavetoclass=""
+    name=""
+  >
+    <div
+      aria-atomic="true"
+      aria-live="polite"
+      class="alert alert-dismissible alert-info"
+      role="alert"
+    >
+      <button
+        aria-label="Close"
+        class="close"
+        type="button"
+      >
+        ×
+      </button>
+      
+    Click a component's name in the table below to view more information about
+    that component
+  
+    </div>
+  </transition-stub>
+   
+  <div>
+    <div
+      class="main"
+    >
+      <div
+        class="card"
+      >
+        <!---->
+        <!---->
+        <div
+          class="card-body"
+        >
+          <h4
+            class="card-title"
+          >
+            0 Components
+          </h4>
+          <!---->
+          <p
+            class="card-text"
+          >
+            <!---->
+          </p>
+        </div>
+        <!---->
+        <!---->
+      </div>
+    </div>
+     
+    <div
+      class="panel"
+    >
+      <!---->
+    </div>
+  </div>
+</div>
+`;

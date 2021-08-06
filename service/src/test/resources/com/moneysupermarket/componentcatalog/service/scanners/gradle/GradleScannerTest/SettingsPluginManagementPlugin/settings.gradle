@@ -1,0 +1,9 @@
+pluginManagement {
+    repositories {
+        mavenCentral()
+    }
+
+    plugins {
+        id "org.springframework.boot" version "$springBootVersion"
+    }
+}

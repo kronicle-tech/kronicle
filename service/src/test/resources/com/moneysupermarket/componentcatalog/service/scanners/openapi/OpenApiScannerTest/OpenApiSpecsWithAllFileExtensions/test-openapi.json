@@ -1,0 +1,28 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Example",
+    "description": "Example",
+    "version": "0.0.0"
+  },
+  "paths": {
+    "/example": {
+      "get": {
+        "summary": "Example",
+        "description": "Example",
+        "responses": {
+          "200": {
+            "description": "Example",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

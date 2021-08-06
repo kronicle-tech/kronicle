@@ -1,0 +1,303 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TestResults when a test result has a \`fail\` outcome renders the outcome table cell with a \`danger\` background colour 1`] = `
+"<table class=\\"table table-dark\\">
+  <thead>
+    <tr>
+      <th>Test</th>
+      <th>Priority</th>
+      <th>Outcome</th>
+      <th>Message</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class=\\"test-id\\"><a href=\\"/tests/test-test-id\\">test-test-id</a></td>
+      <td class=\\"test-priority\\">
+        low
+      </td>
+      <td class=\\"test-outcome table-danger\\">
+        fail
+      </td>
+      <td class=\\"test-message\\">
+        <div>
+          <p>Test Message 1</p>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>"
+`;
+
+exports[`TestResults when a test result has a \`message\` containing Markdown renders the test result with the Markdown converted to HTML 1`] = `
+"<table class=\\"table table-dark\\">
+  <thead>
+    <tr>
+      <th>Test</th>
+      <th>Priority</th>
+      <th>Outcome</th>
+      <th>Message</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class=\\"test-id\\"><a href=\\"/tests/test-test-id\\">test-test-id</a></td>
+      <td class=\\"test-priority\\">
+        low
+      </td>
+      <td class=\\"test-outcome table-primary\\">
+        pass
+      </td>
+      <td class=\\"test-message\\">
+        <div>
+          <p>Text with <strong>bold</strong> formatting</p>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>"
+`;
+
+exports[`TestResults when a test result has a \`not-applicable\` outcome renders the outcome table cell with a \`light\` background colour 1`] = `
+"<table class=\\"table table-dark\\">
+  <thead>
+    <tr>
+      <th>Test</th>
+      <th>Priority</th>
+      <th>Outcome</th>
+      <th>Message</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class=\\"test-id\\"><a href=\\"/tests/test-test-id\\">test-test-id</a></td>
+      <td class=\\"test-priority\\">
+        low
+      </td>
+      <td class=\\"test-outcome table-light\\">
+        not-applicable
+      </td>
+      <td class=\\"test-message\\">
+        <div>
+          <p>Test Message 1</p>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>"
+`;
+
+exports[`TestResults when a test result has a \`pass\` outcome renders the outcome table cell with a \`primary\` background colour 1`] = `
+"<table class=\\"table table-dark\\">
+  <thead>
+    <tr>
+      <th>Test</th>
+      <th>Priority</th>
+      <th>Outcome</th>
+      <th>Message</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class=\\"test-id\\"><a href=\\"/tests/test-test-id\\">test-test-id</a></td>
+      <td class=\\"test-priority\\">
+        low
+      </td>
+      <td class=\\"test-outcome table-primary\\">
+        pass
+      </td>
+      <td class=\\"test-message\\">
+        <div>
+          <p>Test Message 1</p>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>"
+`;
+
+exports[`TestResults when testResults prop is set to multiple test results renders a table showing the test results 1`] = `
+"<table class=\\"table table-dark\\">
+  <thead>
+    <tr>
+      <th>Test</th>
+      <th>Priority</th>
+      <th>Outcome</th>
+      <th>Message</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class=\\"test-id\\"><a href=\\"/tests/test-test-id-2\\">test-test-id-2</a></td>
+      <td class=\\"test-priority\\">
+        medium
+      </td>
+      <td class=\\"test-outcome table-danger\\">
+        fail
+      </td>
+      <td class=\\"test-message\\">
+        <div>
+          <p>Test Message 2</p>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td class=\\"test-id\\"><a href=\\"/tests/test-test-id-1\\">test-test-id-1</a></td>
+      <td class=\\"test-priority\\">
+        low
+      </td>
+      <td class=\\"test-outcome table-primary\\">
+        pass
+      </td>
+      <td class=\\"test-message\\">
+        <div>
+          <p>Test Message 1</p>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td class=\\"test-id\\"><a href=\\"/tests/test-test-id-3\\">test-test-id-3</a></td>
+      <td class=\\"test-priority\\">
+        high
+      </td>
+      <td class=\\"test-outcome table-light\\">
+        not-applicable
+      </td>
+      <td class=\\"test-message\\">
+        <div>
+          <p>Test Message 3</p>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>"
+`;
+
+exports[`TestResults when testResults prop is set to one test result renders a table showing the test result 1`] = `
+"<table class=\\"table table-dark\\">
+  <thead>
+    <tr>
+      <th>Test</th>
+      <th>Priority</th>
+      <th>Outcome</th>
+      <th>Message</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class=\\"test-id\\"><a href=\\"/tests/test-test-id\\">test-test-id</a></td>
+      <td class=\\"test-priority\\">
+        low
+      </td>
+      <td class=\\"test-outcome table-primary\\">
+        pass
+      </td>
+      <td class=\\"test-message\\">
+        <div>
+          <p>Test Message 1</p>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>"
+`;
+
+exports[`TestResults when there are test results that have different outcomes renders the test results sorted by outcome, with \`fail\` first, then \`pass\`, then \`not-applicable\` 1`] = `
+"<table class=\\"table table-dark\\">
+  <thead>
+    <tr>
+      <th>Test</th>
+      <th>Priority</th>
+      <th>Outcome</th>
+      <th>Message</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class=\\"test-id\\"><a href=\\"/tests/test-test-id-3\\">test-test-id-3</a></td>
+      <td class=\\"test-priority\\">
+        medium
+      </td>
+      <td class=\\"test-outcome table-danger\\">
+        fail
+      </td>
+      <td class=\\"test-message\\">
+        <div>
+          <p>Test Message 3</p>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td class=\\"test-id\\"><a href=\\"/tests/test-test-id-2\\">test-test-id-2</a></td>
+      <td class=\\"test-priority\\">
+        medium
+      </td>
+      <td class=\\"test-outcome table-primary\\">
+        pass
+      </td>
+      <td class=\\"test-message\\">
+        <div>
+          <p>Test Message 2</p>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td class=\\"test-id\\"><a href=\\"/tests/test-test-id-1\\">test-test-id-1</a></td>
+      <td class=\\"test-priority\\">
+        low
+      </td>
+      <td class=\\"test-outcome table-light\\">
+        not-applicable
+      </td>
+      <td class=\\"test-message\\">
+        <div>
+          <p>Test Message 1</p>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>"
+`;
+
+exports[`TestResults when there are two test results with the same outcome renders the test results sorted by test-id 1`] = `
+"<table class=\\"table table-dark\\">
+  <thead>
+    <tr>
+      <th>Test</th>
+      <th>Priority</th>
+      <th>Outcome</th>
+      <th>Message</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class=\\"test-id\\"><a href=\\"/tests/test-test-id-1\\">test-test-id-1</a></td>
+      <td class=\\"test-priority\\">
+        low
+      </td>
+      <td class=\\"test-outcome table-primary\\">
+        pass
+      </td>
+      <td class=\\"test-message\\">
+        <div>
+          <p>Test Message</p>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td class=\\"test-id\\"><a href=\\"/tests/test-test-id-2\\">test-test-id-2</a></td>
+      <td class=\\"test-priority\\">
+        low
+      </td>
+      <td class=\\"test-outcome table-primary\\">
+        pass
+      </td>
+      <td class=\\"test-message\\">
+        <div>
+          <p>Test Message</p>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>"
+`;

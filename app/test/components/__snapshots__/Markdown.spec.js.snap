@@ -1,0 +1,53 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Markdown when markdown prop contains HTML renders markdown prop as HTML 1`] = `
+"<div>
+  <p>Content</p>
+</div>"
+`;
+
+exports[`Markdown when markdown prop contains HTML toc prop when true renders Table of Contents section 1`] = `
+"<div>
+  <h4 id=\\"user-content-table-of-contents\\">Table of Contents</h4>
+  <p>Content</p>
+</div>"
+`;
+
+exports[`Markdown when markdown prop contains HTML toc prop when true renders Table of Contents section including headings 1`] = `
+"<div>
+  <h4 id=\\"user-content-table-of-contents\\">Table of Contents</h4>
+  <ul>
+    <li>
+      <p><a href=\\"#user-content-main-heading\\">Main Heading</a></p>
+      <ul>
+        <li><a href=\\"#user-content-subheading\\">Subheading</a></li>
+      </ul>
+    </li>
+  </ul>
+  <h1 id=\\"user-content-main-heading\\">Main Heading</h1>
+  <h2 id=\\"user-content-subheading\\">Subheading</h2>
+</div>"
+`;
+
+exports[`Markdown when markdown prop contains HTML when markdown prop contains code renders an error for an unknown code language 1`] = `
+"<div><pre>Error: Unknown language: \`unknown\` is not registered
+</pre>
+  <br>
+</div>"
+`;
+
+exports[`Markdown when markdown prop contains HTML when markdown prop contains code renders highlighted code 1`] = `
+"<div>
+  <pre><code class=\\"hljs language-javascript\\"><span class=\\"hljs-built_in\\">console</span>.log()</code></pre>
+</div>"
+`;
+
+exports[`Markdown when markdown prop contains HTML when markdown prop fails linting renders an error above HTML 1`] = `
+"<div><pre>  1:1-1:33  warning  Found unused definition  no-unused-definitions  remark-lint
+
+⚠ 1 warning
+</pre>
+  <br>
+
+</div>"
+`;
