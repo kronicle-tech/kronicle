@@ -106,4 +106,12 @@
         <packageUrl regex="true">^pkg:npm/color\-string@.*$</packageUrl>
         <cve>CVE-2021-29060</cve>
     </suppress>
+    <!-- Suppress a `Resource Exhaustion` vulnerability in an NPM package -->
+    <suppress>
+        <notes><![CDATA[
+   file name: glob-parent:3.1.0
+   ]]></notes>
+        <packageUrl regex="true">^pkg:npm/glob\-parent@.*$</packageUrl>
+        <vulnerabilityName>CWE-400: Uncontrolled Resource Consumption ('Resource Exhaustion')</vulnerabilityName>
+    </suppress>
 </suppressions>
