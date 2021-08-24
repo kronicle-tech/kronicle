@@ -27,5 +27,4 @@ module.exports = {
       statements: 80,
     },
   },
-  testResultsProcessor: '@digitalroute/jest-jenkins-reporter',
 }
