@@ -1,5 +1,3 @@
-import org.siouan.frontendgradleplugin.infrastructure.gradle.RunNpmYarn
-
 buildscript {
   repositories {
     mavenCentral()
@@ -19,8 +17,6 @@ apply plugin: "cz.habarta.typescript-generator"
 
 frontend {
   nodeDistributionProvided = true
-  yarnEnabled = true
-  yarnVersion = "1.22.10"
   assembleScript = "run build"
   cleanScript = "run clean"
   checkScript = "run test"
@@ -56,13 +52,6 @@ checkFrontend.dependsOn assembleFrontend
 
 assembleFrontend.dependsOn generateTypeScript
 
-tasks.register("generateNpmPackageLock", RunNpmYarn) {
-  dependsOn tasks.named("installFrontend")
-  script = "synp --source-file yarn.lock --force"
-}
-
-dependencyCheckAnalyze.dependsOn generateNpmPackageLock
-
 docker {
   name "component-catalog-app:$version"
 
@@ -77,6 +66,7 @@ docker {
     exclude "build"
     exclude "build.gradle"
     exclude "coverage"
+    exclude "Dockerfile"
     exclude "node_modules"
     exclude "README.md"
   }

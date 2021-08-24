@@ -10,17 +10,17 @@
 
 ```bash
 # install dependencies
-$ yarn install
+$ npm install
 
 # serve with hot reload at localhost:3000
-$ ../gradlew generateTypeScript && yarn dev
+$ ../gradlew generateTypeScript && npm run dev
 
 # build for production and launch server
-$ yarn build
-$ yarn start
+$ npm run build
+$ npm run start
 
 # generate static project
-$ yarn generate
+$ npm run generate
 ```
 
 For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
@@ -30,7 +30,7 @@ For detailed explanation on how things work, check out [Nuxt.js docs](https://nu
 The following command will run Jest in watch mode, automatically re-running relevant tests when you change code: 
 
 ```bash
-$ ../gradlew generateTypeScript && yarn jest-watch
+$ ../gradlew generateTypeScript && npm run jest-watch
 ```
 
 ## Running Jest unit tests without watching for changes
@@ -38,7 +38,7 @@ $ ../gradlew generateTypeScript && yarn jest-watch
 The following command will run Jest just once: 
 
 ```bash
-$ ../gradlew generateTypeScript && yarn test
+$ ../gradlew generateTypeScript && npm run test
 ```
 
 ## Running Jest unit tests without watching for changes
@@ -47,7 +47,7 @@ The following command is similar the one above, except it will automatically upd
 [Jest snapshots](https://jestjs.io/docs/en/snapshot-testing) that have changed: 
 
 ```bash
-$ ../gradlew generateTypeScript && yarn test -u
+$ ../gradlew generateTypeScript && npm run test -u
 ```
 
 Make you check the changes in any updated Jest snapshot files before committing them.  
