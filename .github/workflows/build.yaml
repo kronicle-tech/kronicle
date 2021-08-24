@@ -4,4 +4,5 @@ jobs:
   Build:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v2
       - run: ./gradlew clean service:downloadGradleLibs app:docker service:test app:assembleFrontend build
