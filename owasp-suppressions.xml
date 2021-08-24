@@ -114,4 +114,12 @@
         <packageUrl regex="true">^pkg:npm/glob\-parent@.*$</packageUrl>
         <vulnerabilityName>CWE-400: Uncontrolled Resource Consumption ('Resource Exhaustion')</vulnerabilityName>
     </suppress>
+    <!-- Suppress a `Regular Expression Denial of Service` vulnerability in an NPM package -->
+    <suppress>
+        <notes><![CDATA[
+   file name: ansi-html:0.0.7
+   ]]></notes>
+        <packageUrl regex="true">^pkg:npm/ansi\-html@.*$</packageUrl>
+        <cve>CVE-2021-23424</cve>
+    </suppress>
 </suppressions>
