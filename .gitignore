@@ -2,7 +2,5 @@
 .idea/
 build/
 out/
-yarn/
-package-lock.json
 dependencies.txt
 *.log

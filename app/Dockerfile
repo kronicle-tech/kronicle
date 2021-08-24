@@ -9,8 +9,8 @@ ENV VERSION=$VERSION
 RUN mkdir -p $APP_DIR
 WORKDIR $APP_DIR
 COPY . $APP_DIR
-RUN yarn install
-RUN yarn build
+RUN npm install
+RUN npm run build
 
 EXPOSE $PORT
 
