@@ -62,7 +62,7 @@ public class ToDoScannerTest extends BaseCodebaseScannerTest {
 
         // Then
         assertThat(returnValue.getErrors()).isEmpty();
-        List<ToDo> toDos = getMutatedComponent(returnValue).getToDos();
+        List<ToDo> toDos = getToDos(returnValue);
         assertThat(toDos).hasSize(3);
         ToDo toDo;
         toDo = toDos.get(0);
@@ -91,9 +91,7 @@ public class ToDoScannerTest extends BaseCodebaseScannerTest {
 
         // Then
         assertThat(returnValue.getErrors()).isEmpty();
-        List<ToDo> toDos = getMutatedComponent(returnValue).getToDos().stream()
-                .sorted(Comparator.comparing(ToDo::getFile))
-                .collect(Collectors.toList());
+        List<ToDo> toDos = getToDos(returnValue);
         assertThat(toDos).hasSize(malformed ? 1 : 2);
         ToDo toDo;
         int toDoIndex = 0;
@@ -108,5 +106,11 @@ public class ToDoScannerTest extends BaseCodebaseScannerTest {
         assertThat(toDo.getFile()).isEqualTo("regular_file.txt");
         assertThat(toDo.getDescription()).isEqualTo("This should be found");
         assertThat(returnValue.getErrors()).isEmpty();
+    }
+
+    private List<ToDo> getToDos(Output<Void> returnValue) {
+        return getMutatedComponent(returnValue).getToDos().stream()
+          .sorted(Comparator.comparing(ToDo::getFile))
+          .collect(Collectors.toList());
     }
 }
