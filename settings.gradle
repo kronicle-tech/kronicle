@@ -11,6 +11,7 @@ pluginManagement {
         id "com.github.spotbugs" version "$spotbugsVersion" apply false
         id "com.palantir.docker" version "$palantirDockerVersion" apply false
         id "org.owasp.dependencycheck" version "$dependencyCheckVersion" apply false
+        id "pl.allegro.tech.build.axion-release" version "$axionReleaseVersion" apply false
     }
 }
 

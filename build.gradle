@@ -4,6 +4,7 @@ plugins {
     id "jacoco"
     id "com.github.spotbugs"
     id "org.owasp.dependencycheck"
+    id "pl.allegro.tech.build.axion-release"
 }
 
 apply from: "$rootDir/gradle/sonarqube.gradle"
@@ -28,5 +29,5 @@ subprojects {
 
     [compileJava, compileTestJava]*.options*.encoding = "UTF-8"
 
-    version = rootProject.version
+    version = scmVersion.version
 }
