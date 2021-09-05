@@ -17,6 +17,6 @@ pluginManagement {
 
 include "common"
 include "sdk"
-include "component-metadata"
+include "metadata"
 include "app"
 include "service"
