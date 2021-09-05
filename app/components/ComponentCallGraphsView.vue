@@ -4,7 +4,7 @@
       <p>
         The call graphs on this page come from a combination of Zipkin traces.
         The visualisation is not out-of-the-box Zipkin functionality and is
-        bespoke to the Kronicle.
+        bespoke to Kronicle.
       </p>
 
       <p class="mb-0">
@@ -20,8 +20,8 @@
         <ol>
           <li>The component is not integrated with Zipkin yet or</li>
           <li>
-            The Kronicle may have restarted recently and not have
-            loaded Zipkin data yet
+            Kronicle may have restarted recently and not have loaded Zipkin data
+            yet
           </li>
         </ol>
       </b-alert>

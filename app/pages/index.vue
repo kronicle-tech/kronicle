@@ -2,8 +2,8 @@
   <div>
     <b-jumbotron header="Kronicle" class="my-3">
       <p>
-        The Kronicle contains information on the organisation's
-        components, teams and areas.
+        Kronicle contains information on the organisation's components, teams
+        and areas.
       </p>
     </b-jumbotron>
 
@@ -114,8 +114,8 @@
           <b-list-group-item
             class="d-flex justify-content-between align-items-center text-muted"
           >
-            Tests evaluate the data associated with components in Kronicle
-            and return outcomes of pass, fail and not applicable
+            Tests evaluate the data associated with components in Kronicle and
+            return outcomes of pass, fail and not applicable
           </b-list-group-item>
 
           <b-list-group-item
@@ -255,13 +255,7 @@ import {
   BListGroupItem,
 } from 'bootstrap-vue'
 import { MetaInfo } from 'vue-meta'
-import {
-  Area,
-  Component,
-  Scanner,
-  Team,
-  Test,
-} from '~/types/kronicle-service'
+import { Area, Component, Scanner, Team, Test } from '~/types/kronicle-service'
 import { ItemCount, itemCounts } from '~/src/arrayUtils'
 import Markdown from '~/components/Markdown.vue'
 

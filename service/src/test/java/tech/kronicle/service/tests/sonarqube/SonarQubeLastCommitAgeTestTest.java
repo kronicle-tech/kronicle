@@ -111,7 +111,7 @@ public class SonarQubeLastCommitAgeTestTest {
                         .testId("sonar-qube-last-commit-age")
                         .outcome(TestOutcome.FAIL)
                         .priority(Priority.HIGH)
-                        .message("At least one of the component's SonarQube project(s) have not been updated with the results of at least 1 commit in the last 7 months. Is the component's build job still configured to send metrics to the SonarQube server? If not, the project(s) metrics in the Kronicle will be out-of-date. \n"
+                        .message("At least one of the component's SonarQube project(s) have not been updated with the results of at least 1 commit in the last 7 months. Is the component's build job still configured to send metrics to the SonarQube server? If not, the project(s) metrics in Kronicle will be out-of-date. \n"
                                 + "\n"
                                 + "* [test-project-key-1](https://example.com/test-project-key-1) was last updated with a commit 7 months ago")
                         .build());
@@ -179,7 +179,7 @@ public class SonarQubeLastCommitAgeTestTest {
                         .testId("sonar-qube-last-commit-age")
                         .outcome(TestOutcome.FAIL)
                         .priority(Priority.HIGH)
-                        .message("At least one of the component's SonarQube project(s) have not been updated with the results of at least 1 commit in the last 7 months. Is the component's build job still configured to send metrics to the SonarQube server? If not, the project(s) metrics in the Kronicle will be out-of-date. \n"
+                        .message("At least one of the component's SonarQube project(s) have not been updated with the results of at least 1 commit in the last 7 months. Is the component's build job still configured to send metrics to the SonarQube server? If not, the project(s) metrics in Kronicle will be out-of-date. \n"
                                 + "\n"
                                 + "* [test-project-key-1](https://example.com/test-project-key-1) was last updated with a commit 5 months ago\n"
                                 + "* [test-project-key-2](https://example.com/test-project-key-2) was last updated with a commit 7 months ago")
