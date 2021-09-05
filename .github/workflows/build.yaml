@@ -38,6 +38,7 @@ jobs:
       - name: Build with Gradle
         run: ./gradlew service:downloadGradleLibs app:docker service:test app:assembleFrontend build
       - name: Tag build
+        if: ${{ github.ref == 'refs/heads/main' }}
         # Based on https://axion-release-plugin.readthedocs.io/en/latest/configuration/ci_servers/#github-actions
         run: ./gradlew release -Prelease.customUsername=${{ github.actor }} -Prelease.customPassword=${{ github.token }}
       - name: Clean up Gradle Cache
