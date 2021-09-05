@@ -60,7 +60,7 @@ import {
   VBToggle,
 } from 'bootstrap-vue'
 import { MetaInfo } from 'vue-meta'
-import { Component, Team, Priority } from '~/types/component-catalog-service'
+import { Component, Team, Priority } from '~/types/kronicle-service'
 import AllTeamsTabs from '~/components/AllTeamsTabs.vue'
 import ComponentTechDebtTable from '~/components/ComponentTechDebtTable.vue'
 import { ComponentAndTechDebts } from '~/types/component-tech-debts'
@@ -211,7 +211,7 @@ export default Vue.extend({
   },
   head(): MetaInfo {
     return {
-      title: 'Component Catalog - All Teams - Tech Debts',
+      title: 'Kronicle - All Teams - Tech Debts',
     }
   },
 })

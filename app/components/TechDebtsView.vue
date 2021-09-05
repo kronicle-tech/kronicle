@@ -55,7 +55,7 @@ import {
   Component,
   Priority,
   TechDebt,
-} from '~/types/component-catalog-service'
+} from '~/types/kronicle-service'
 import {
   getPriorityCountClass,
   getPriorityText,

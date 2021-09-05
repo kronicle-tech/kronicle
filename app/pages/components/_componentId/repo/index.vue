@@ -141,7 +141,7 @@ import {
   BListGroup,
   BListGroupItem,
 } from 'bootstrap-vue'
-import { Component, Identity } from '~/types/component-catalog-service'
+import { Component, Identity } from '~/types/kronicle-service'
 import ComponentTabs from '~/components/ComponentTabs.vue'
 import EmailAddress from '~/components/EmailAddress.vue'
 import FormattedAge from '~/components/FormattedAge.vue'
@@ -188,7 +188,7 @@ export default Vue.extend({
   },
   head(): MetaInfo {
     return {
-      title: `Component Catalog - ${this.component.name} - Repo`,
+      title: `Kronicle - ${this.component.name} - Repo`,
     }
   },
 })

@@ -1,4 +1,4 @@
-import { Component } from '~/types/component-catalog-service'
+import { Component } from '~/types/kronicle-service'
 
 export interface ObjectWithComponent {
   component?: Component

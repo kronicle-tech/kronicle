@@ -1,4 +1,4 @@
-import { Component, Priority } from '~/types/component-catalog-service'
+import { Component, Priority } from '~/types/kronicle-service'
 import { compareObjectsWithComponents } from '~/src/objectWithComponentComparator'
 
 export interface ObjectWithPriorityAndComponent {

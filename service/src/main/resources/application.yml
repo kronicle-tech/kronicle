@@ -5,7 +5,7 @@ server:
 
 spring:
   application:
-    name: component-catalog-service
+    name: kronicle-service
   main:
     bannerMode: "OFF"
     allow-bean-definition-overriding: true
@@ -65,7 +65,7 @@ resilience4j:
         enableExponentialBackoff: true
         exponentialBackoffMultiplier: 2
         retryExceptions:
-          - com.moneysupermarket.componentcatalog.service.scanners.zipkin.client.ZipkinClientException
+          - tech.kronicle.service.scanners.zipkin.client.ZipkinClientException
 
 bitbucket-server:
   timeout: 30s

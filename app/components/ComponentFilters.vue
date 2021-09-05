@@ -83,7 +83,7 @@
 <script lang="ts">
 import { Component as VueComponent, Prop, Vue } from 'vue-property-decorator'
 import { BFormCheckboxGroup, BFormGroup, BFormSelect } from 'bootstrap-vue'
-import { Component } from '~/types/component-catalog-service'
+import { Component } from '~/types/kronicle-service'
 import { distinctArrayElements } from '~/src/arrayUtils'
 
 interface Option {

@@ -1,4 +1,4 @@
-# Component Catalog App
+# Kronicle App
 
 ## Install Node.js
 

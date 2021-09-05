@@ -33,7 +33,7 @@
 import Vue from 'vue'
 import { MetaInfo } from 'vue-meta'
 import { BCard } from 'bootstrap-vue'
-import { Team } from '~/types/component-catalog-service'
+import { Team } from '~/types/kronicle-service'
 import AreaName from '~/components/AreaName.vue'
 import EmailAddress from '~/components/EmailAddress.vue'
 import Links from '~/components/Links.vue'
@@ -67,7 +67,7 @@ export default Vue.extend({
   },
   head(): MetaInfo {
     return {
-      title: `Component Catalog - ${this.team.name} Team`,
+      title: `Kronicle - ${this.team.name} Team`,
     }
   },
 })

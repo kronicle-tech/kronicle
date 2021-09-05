@@ -1,6 +1,6 @@
 import { Module, Mutation, VuexModule } from 'vuex-module-decorators'
 import { Route } from 'vue-router'
-import { Component } from '~/types/component-catalog-service'
+import { Component } from '~/types/kronicle-service'
 
 // TODO: This module can be simplified when https://github.com/championswimmer/vuex-module-decorators/issues/335 is fixed
 

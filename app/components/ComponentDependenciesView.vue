@@ -2,10 +2,10 @@
   <div>
     <b-alert show="30" dismissible variant="info" class="my-3">
       The dependencies on this page come from a combination of Zipkin traces and
-      dependencies manually specified in the catalog's metadata YAML files. The
+      dependencies manually specified in Kronicle's metadata YAML files. The
       visualisation is not out-of-the-box Zipkin functionality and is bespoke to
-      the Component Catalog. The other data on the page like descriptions,
-      teams, tags etc. come from the Component Catalog and not from Zipkin.
+      the Kronicle. The other data on the page like descriptions,
+      teams, tags etc. come from the Kronicle and not from Zipkin.
     </b-alert>
     <div class="graph">
       <ComponentDependencyGraph
@@ -111,7 +111,7 @@ import {
   SummaryComponentDependencyNode,
   SummarySubComponentDependencies,
   SummarySubComponentDependencyNode,
-} from '~/types/component-catalog-service'
+} from '~/types/kronicle-service'
 import { Network } from '~/types/component-dependency-graph'
 import { intRange } from '~/src/arrayUtils'
 import ComponentDependencyGraph from '~/components/ComponentDependencyGraph.vue'

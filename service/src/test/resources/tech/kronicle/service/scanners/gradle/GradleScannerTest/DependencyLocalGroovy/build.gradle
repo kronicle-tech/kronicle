@@ -1,0 +1,9 @@
+package tech.kronicle.service.scanners.gradle.GradleScannerTest.DependencyLocalGroovy
+
+plugins {
+    id "groovy"
+}
+
+dependencies {
+    compile localGroovy()
+}

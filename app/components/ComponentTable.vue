@@ -44,7 +44,7 @@
 <script lang="ts">
 import Vue, { PropType } from 'vue'
 import { compareComponents } from '~/src/componentComparator'
-import { Component } from '~/types/component-catalog-service'
+import { Component } from '~/types/kronicle-service'
 import ComponentName from '~/components/ComponentName.vue'
 import Markdown from '~/components/Markdown.vue'
 import Tags from '~/components/Tags.vue'

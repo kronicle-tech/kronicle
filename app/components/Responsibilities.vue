@@ -10,7 +10,7 @@
 
 <script lang="ts">
 import Vue, { PropType } from 'vue'
-import { Responsibility } from '~/types/component-catalog-service'
+import { Responsibility } from '~/types/kronicle-service'
 import Markdown from '~/components/Markdown.vue'
 
 export default Vue.extend({

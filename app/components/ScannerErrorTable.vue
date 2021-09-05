@@ -40,7 +40,7 @@
 
 <script lang="ts">
 import Vue, { PropType } from 'vue'
-import { Component, ScannerError } from '~/types/component-catalog-service'
+import { Component, ScannerError } from '~/types/kronicle-service'
 import { compareScannerErrors } from '~/src/scannerErrorComparator'
 import ComponentName from '~/components/ComponentName.vue'
 import ComponentTeams from '~/components/ComponentTeams.vue'

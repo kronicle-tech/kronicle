@@ -1,0 +1,17 @@
+package tech.kronicle.service.scanners.gradle.GradleScannerTest.DependencyVariable
+
+plugins {
+    id "java"
+}
+
+String springBootVersion = "2.3.4.RELEASE"
+String hibernateValidatorVersion = "6.1.6.Final"
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile "org.springframework.boot:spring-boot-starter-web:" + springBootVersion
+    compile "org.hibernate.validator:hibernate-validator:$hibernateValidatorVersion"
+}

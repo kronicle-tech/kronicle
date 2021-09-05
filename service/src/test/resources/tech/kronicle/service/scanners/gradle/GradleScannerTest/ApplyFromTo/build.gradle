@@ -1,0 +1,5 @@
+package tech.kronicle.service.scanners.gradle.GradleScannerTest.ApplyFromTo
+
+buildscript {
+    apply from: "$rootDir/gradle/repos.gradle", to: buildscript
+}

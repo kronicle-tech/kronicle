@@ -1,4 +1,4 @@
-import { Component, TestResult } from '~/types/component-catalog-service'
+import { Component, TestResult } from '~/types/kronicle-service'
 
 interface ComponentAndTestResults {
   component: Component

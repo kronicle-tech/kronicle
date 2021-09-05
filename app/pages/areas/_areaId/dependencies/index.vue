@@ -16,7 +16,7 @@ import Vue from 'vue'
 import { MetaInfo } from 'vue-meta'
 import AreaTabs from '~/components/AreaTabs.vue'
 import ComponentDependenciesView from '~/components/ComponentDependenciesView.vue'
-import { Area, Component, Summary } from '~/types/component-catalog-service'
+import { Area, Component, Summary } from '~/types/kronicle-service'
 
 export default Vue.extend({
   components: {
@@ -62,7 +62,7 @@ export default Vue.extend({
   },
   head(): MetaInfo {
     return {
-      title: `Component Catalog - ${this.area.name} Area - Dependencies`,
+      title: `Kronicle - ${this.area.name} Area - Dependencies`,
     }
   },
 })

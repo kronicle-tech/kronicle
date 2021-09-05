@@ -31,7 +31,7 @@
 
 <script lang="ts">
 import Vue, { PropType } from 'vue'
-import { Team } from '~/types/component-catalog-service'
+import { Team } from '~/types/kronicle-service'
 import Links from '~/components/Links.vue'
 import Markdown from '~/components/Markdown.vue'
 import TeamName from '~/components/TeamName.vue'

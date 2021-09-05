@@ -13,7 +13,7 @@
 <script lang="ts">
 import Vue from 'vue'
 import { MetaInfo } from 'vue-meta'
-import { Area } from '~/types/component-catalog-service'
+import { Area } from '~/types/kronicle-service'
 import AreaTabs from '~/components/AreaTabs.vue'
 import TestResultsView from '~/components/TestResultsView.vue'
 
@@ -45,7 +45,7 @@ export default Vue.extend({
   },
   head(): MetaInfo {
     return {
-      title: `Component Catalog - ${this.area.name} Area - Tests`,
+      title: `Kronicle - ${this.area.name} Area - Tests`,
     }
   },
 })

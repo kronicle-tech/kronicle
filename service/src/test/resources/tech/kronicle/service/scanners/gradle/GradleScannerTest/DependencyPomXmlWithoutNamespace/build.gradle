@@ -1,0 +1,14 @@
+package tech.kronicle.service.scanners.gradle.GradleScannerTest.DependencyPomXmlWithoutNamespace
+
+plugins {
+    id "java"
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // The POM XML for this dependency is an XML document that lacks the Maven XML namespace
+    compile "net.sourceforge.jtds:jtds:1.3.1"
+}

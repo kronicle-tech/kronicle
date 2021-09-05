@@ -25,7 +25,7 @@ describe('Index', () => {
 
   test('has the right page title', async () => {
     await createWrapper()
-    expect(wrapper.vm.$metaInfo.title).toBe('Component Catalog - All Areas')
+    expect(wrapper.vm.$metaInfo.title).toBe('Kronicle - All Areas')
   })
 
   describe('when Get Areas service endpoint returns an empty array', () => {

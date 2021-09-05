@@ -1,4 +1,4 @@
-import { Component, TechDebt } from '~/types/component-catalog-service'
+import { Component, TechDebt } from '~/types/kronicle-service'
 
 interface ComponentAndTechDebts {
   component: Component

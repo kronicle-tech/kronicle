@@ -1,0 +1,12 @@
+package tech.kronicle.service.scanners.sonarqube.services.CodebaseSonarQubeProjectFinderTest.OneProjectReference
+
+plugins {
+    id 'java'
+    id 'org.sonarqube'
+}
+
+sonarqube {
+    properties {
+        property 'sonar.projectKey', 'test-project-key-1'
+    }
+}

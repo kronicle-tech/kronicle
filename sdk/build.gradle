@@ -2,8 +2,8 @@ plugins {
     id "java-library"
 }
 
-group = "com.moneysupermarket.componentcatalog"
-archivesBaseName = "component-catalog-$name"
+group = "tech.kronicle"
+archivesBaseName = "kronicle-$name"
 
 apply from: "$rootDir/gradle/publish.gradle"
 

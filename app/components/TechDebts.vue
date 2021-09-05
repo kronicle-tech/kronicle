@@ -26,7 +26,7 @@
 <script lang="ts">
 import Vue, { PropType } from 'vue'
 import { BBadge } from 'bootstrap-vue'
-import { TechDebt } from '~/types/component-catalog-service'
+import { TechDebt } from '~/types/kronicle-service'
 import Links from '~/components/Links.vue'
 import Markdown from '~/components/Markdown.vue'
 

@@ -44,7 +44,7 @@ describe('Index', () => {
     wrapper = null
   })
 
-  describe('when the catalog contains no information', () => {
+  describe('when Kronicle contains no information', () => {
     beforeEach(() => {
       areas = []
       teams = []
@@ -64,7 +64,7 @@ describe('Index', () => {
     })
   })
 
-  describe('when the catalog contains information', () => {
+  describe('when Kronicle contains information', () => {
     beforeEach(() => {
       areas = [
         createArea({ areaNumber: 1 }),
@@ -109,7 +109,7 @@ describe('Index', () => {
 
     test('has the right page title', async () => {
       await createWrapper()
-      expect(wrapper.vm.$metaInfo.title).toBe('Component Catalog')
+      expect(wrapper.vm.$metaInfo.title).toBe('Kronicle')
     })
 
     test('renders the page showing the information', async () => {

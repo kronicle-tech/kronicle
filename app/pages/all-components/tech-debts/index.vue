@@ -8,7 +8,7 @@
 <script lang="ts">
 import Vue from 'vue'
 import { MetaInfo } from 'vue-meta'
-import { Component } from '~/types/component-catalog-service'
+import { Component } from '~/types/kronicle-service'
 import AllComponentsTabs from '~/components/AllComponentsTabs.vue'
 import TechDebtsView from '~/components/TechDebtsView.vue'
 
@@ -40,7 +40,7 @@ export default Vue.extend({
   },
   head(): MetaInfo {
     return {
-      title: 'Component Catalog - All Components - Tech Debts',
+      title: 'Kronicle - All Components - Tech Debts',
     }
   },
 })

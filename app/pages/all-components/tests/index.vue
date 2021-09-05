@@ -11,7 +11,7 @@
 <script lang="ts">
 import Vue from 'vue'
 import { MetaInfo } from 'vue-meta'
-import { Component } from '~/types/component-catalog-service'
+import { Component } from '~/types/kronicle-service'
 import AllComponentsTabs from '~/components/AllComponentsTabs.vue'
 import TestResultsView from '~/components/TestResultsView.vue'
 
@@ -43,7 +43,7 @@ export default Vue.extend({
   },
   head(): MetaInfo {
     return {
-      title: 'Component Catalog - All Components - Tests',
+      title: 'Kronicle - All Components - Tests',
     }
   },
 })

@@ -1,4 +1,4 @@
-import { Priority } from '~/types/component-catalog-service'
+import { Priority } from '~/types/kronicle-service'
 
 export function getPriorityVariant(priority: Priority) {
   switch (priority) {

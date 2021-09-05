@@ -1,4 +1,4 @@
-import { Component, ScannerError } from '~/types/component-catalog-service'
+import { Component, ScannerError } from '~/types/kronicle-service'
 import { compareObjectsWithComponents } from '~/src/objectWithComponentComparator'
 
 interface ScannerErrorWithComponent extends ScannerError {

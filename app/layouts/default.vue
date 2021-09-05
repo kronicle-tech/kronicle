@@ -1,7 +1,7 @@
 <template>
   <div>
     <b-navbar class="navbar navbar-dark bg-primary">
-      <b-navbar-brand to="/">Component Catalog</b-navbar-brand>
+      <b-navbar-brand to="/">Kronicle</b-navbar-brand>
       <b-navbar-nav>
         <b-nav-item to="/all-components">Components</b-nav-item>
         <b-nav-item to="/all-teams">Teams</b-nav-item>

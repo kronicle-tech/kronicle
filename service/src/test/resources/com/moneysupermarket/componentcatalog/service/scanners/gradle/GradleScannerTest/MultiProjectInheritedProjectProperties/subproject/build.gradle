@@ -1,7 +1,0 @@
-repositories {
-    mavenCentral()
-}
-
-dependencies {
-    compile "org.hibernate.validator:hibernate-validator:$hibernateValidatorVersion"
-}

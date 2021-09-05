@@ -1,0 +1,9 @@
+package tech.kronicle.service.scanners.gradle.GradleScannerTest.DependencyFiles
+
+plugins {
+    id "groovy"
+}
+
+dependencies {
+    compile files("libs/example.jar")
+}

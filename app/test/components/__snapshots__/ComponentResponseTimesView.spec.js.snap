@@ -6,8 +6,7 @@ exports[`ComponentResponseTimesView when a matching sub component dependency has
     <transition-stub name=\\"\\" css=\\"true\\" enterclass=\\"\\" leaveclass=\\"show\\" entertoclass=\\"show\\" leavetoclass=\\"\\" enteractiveclass=\\"\\" leaveactiveclass=\\"\\" class=\\"my-3\\">
       <div role=\\"alert\\" aria-live=\\"polite\\" aria-atomic=\\"true\\" class=\\"alert alert-dismissible alert-info\\"><button type=\\"button\\" aria-label=\\"Close\\" class=\\"close\\">×</button>
         The dependencies on this page come from Zipkin. The visualisation is not
-        out-of-the-box Zipkin functionality and is bespoke to the Component
-        Catalog.
+        out-of-the-box Zipkin functionality and is bespoke to Kronicle.
       </div>
     </transition-stub>
     <table class=\\"table table-dark\\">
@@ -90,8 +89,7 @@ exports[`ComponentResponseTimesView when a sub component dependency's source mat
     <transition-stub name=\\"\\" css=\\"true\\" enterclass=\\"\\" leaveclass=\\"show\\" entertoclass=\\"show\\" leavetoclass=\\"\\" enteractiveclass=\\"\\" leaveactiveclass=\\"\\" class=\\"my-3\\">
       <div role=\\"alert\\" aria-live=\\"polite\\" aria-atomic=\\"true\\" class=\\"alert alert-dismissible alert-info\\"><button type=\\"button\\" aria-label=\\"Close\\" class=\\"close\\">×</button>
         The dependencies on this page come from Zipkin. The visualisation is not
-        out-of-the-box Zipkin functionality and is bespoke to the Component
-        Catalog.
+        out-of-the-box Zipkin functionality and is bespoke to Kronicle.
       </div>
     </transition-stub>
     <table class=\\"table table-dark\\">
@@ -158,8 +156,7 @@ exports[`ComponentResponseTimesView when a sub component dependency's target mat
     <transition-stub name=\\"\\" css=\\"true\\" enterclass=\\"\\" leaveclass=\\"show\\" entertoclass=\\"show\\" leavetoclass=\\"\\" enteractiveclass=\\"\\" leaveactiveclass=\\"\\" class=\\"my-3\\">
       <div role=\\"alert\\" aria-live=\\"polite\\" aria-atomic=\\"true\\" class=\\"alert alert-dismissible alert-info\\"><button type=\\"button\\" aria-label=\\"Close\\" class=\\"close\\">×</button>
         The dependencies on this page come from Zipkin. The visualisation is not
-        out-of-the-box Zipkin functionality and is bespoke to the Component
-        Catalog.
+        out-of-the-box Zipkin functionality and is bespoke to Kronicle.
       </div>
     </transition-stub>
     <table class=\\"table table-dark\\">
@@ -268,8 +265,7 @@ exports[`ComponentResponseTimesView when direction prop is set to downstream whe
     <transition-stub name=\\"\\" css=\\"true\\" enterclass=\\"\\" leaveclass=\\"show\\" entertoclass=\\"show\\" leavetoclass=\\"\\" enteractiveclass=\\"\\" leaveactiveclass=\\"\\" class=\\"my-3\\">
       <div role=\\"alert\\" aria-live=\\"polite\\" aria-atomic=\\"true\\" class=\\"alert alert-dismissible alert-info\\"><button type=\\"button\\" aria-label=\\"Close\\" class=\\"close\\">×</button>
         The dependencies on this page come from Zipkin. The visualisation is not
-        out-of-the-box Zipkin functionality and is bespoke to the Component
-        Catalog.
+        out-of-the-box Zipkin functionality and is bespoke to Kronicle.
       </div>
     </transition-stub>
     <table class=\\"table table-dark\\">
@@ -338,8 +334,7 @@ exports[`ComponentResponseTimesView when direction prop is set to downstream whe
     <transition-stub name=\\"\\" css=\\"true\\" enterclass=\\"\\" leaveclass=\\"show\\" entertoclass=\\"show\\" leavetoclass=\\"\\" enteractiveclass=\\"\\" leaveactiveclass=\\"\\" class=\\"my-3\\">
       <div role=\\"alert\\" aria-live=\\"polite\\" aria-atomic=\\"true\\" class=\\"alert alert-dismissible alert-info\\"><button type=\\"button\\" aria-label=\\"Close\\" class=\\"close\\">×</button>
         The dependencies on this page come from Zipkin. The visualisation is not
-        out-of-the-box Zipkin functionality and is bespoke to the Component
-        Catalog.
+        out-of-the-box Zipkin functionality and is bespoke to Kronicle.
       </div>
     </transition-stub>
     <table class=\\"table table-dark\\">
@@ -441,8 +436,7 @@ exports[`ComponentResponseTimesView when direction prop is set to upstream when 
     <transition-stub name=\\"\\" css=\\"true\\" enterclass=\\"\\" leaveclass=\\"show\\" entertoclass=\\"show\\" leavetoclass=\\"\\" enteractiveclass=\\"\\" leaveactiveclass=\\"\\" class=\\"my-3\\">
       <div role=\\"alert\\" aria-live=\\"polite\\" aria-atomic=\\"true\\" class=\\"alert alert-dismissible alert-info\\"><button type=\\"button\\" aria-label=\\"Close\\" class=\\"close\\">×</button>
         The dependencies on this page come from Zipkin. The visualisation is not
-        out-of-the-box Zipkin functionality and is bespoke to the Component
-        Catalog.
+        out-of-the-box Zipkin functionality and is bespoke to Kronicle.
       </div>
     </transition-stub>
     <table class=\\"table table-dark\\">
@@ -553,8 +547,7 @@ exports[`ComponentResponseTimesView when direction prop is set to upstream when 
     <transition-stub name=\\"\\" css=\\"true\\" enterclass=\\"\\" leaveclass=\\"show\\" entertoclass=\\"show\\" leavetoclass=\\"\\" enteractiveclass=\\"\\" leaveactiveclass=\\"\\" class=\\"my-3\\">
       <div role=\\"alert\\" aria-live=\\"polite\\" aria-atomic=\\"true\\" class=\\"alert alert-dismissible alert-info\\"><button type=\\"button\\" aria-label=\\"Close\\" class=\\"close\\">×</button>
         The dependencies on this page come from Zipkin. The visualisation is not
-        out-of-the-box Zipkin functionality and is bespoke to the Component
-        Catalog.
+        out-of-the-box Zipkin functionality and is bespoke to Kronicle.
       </div>
     </transition-stub>
     <table class=\\"table table-dark\\">
@@ -623,8 +616,7 @@ exports[`ComponentResponseTimesView when direction prop is set to upstream when 
     <transition-stub name=\\"\\" css=\\"true\\" enterclass=\\"\\" leaveclass=\\"show\\" entertoclass=\\"show\\" leavetoclass=\\"\\" enteractiveclass=\\"\\" leaveactiveclass=\\"\\" class=\\"my-3\\">
       <div role=\\"alert\\" aria-live=\\"polite\\" aria-atomic=\\"true\\" class=\\"alert alert-dismissible alert-info\\"><button type=\\"button\\" aria-label=\\"Close\\" class=\\"close\\">×</button>
         The dependencies on this page come from Zipkin. The visualisation is not
-        out-of-the-box Zipkin functionality and is bespoke to the Component
-        Catalog.
+        out-of-the-box Zipkin functionality and is bespoke to Kronicle.
       </div>
     </transition-stub>
     <table class=\\"table table-dark\\">
@@ -740,8 +732,7 @@ exports[`ComponentResponseTimesView when there is no duration object for multipl
     <transition-stub name=\\"\\" css=\\"true\\" enterclass=\\"\\" leaveclass=\\"show\\" entertoclass=\\"show\\" leavetoclass=\\"\\" enteractiveclass=\\"\\" leaveactiveclass=\\"\\" class=\\"my-3\\">
       <div role=\\"alert\\" aria-live=\\"polite\\" aria-atomic=\\"true\\" class=\\"alert alert-dismissible alert-info\\"><button type=\\"button\\" aria-label=\\"Close\\" class=\\"close\\">×</button>
         The dependencies on this page come from Zipkin. The visualisation is not
-        out-of-the-box Zipkin functionality and is bespoke to the Component
-        Catalog.
+        out-of-the-box Zipkin functionality and is bespoke to Kronicle.
       </div>
     </transition-stub>
     <table class=\\"table table-dark\\">

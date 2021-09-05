@@ -132,7 +132,7 @@ task realCodebaseTest(type: Test) {
 }
 
 docker {
-    name "component-catalog-service:$version"
+    name "kronicle-service:$version"
 
     if (project.pushImage.toBoolean()) {
         name = "$dockerRegistry/$name"

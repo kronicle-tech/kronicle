@@ -3,8 +3,7 @@
     <div v-if="rows && rows.length > 0">
       <b-alert show="30" dismissible variant="info" class="my-3">
         The dependencies on this page come from Zipkin. The visualisation is not
-        out-of-the-box Zipkin functionality and is bespoke to the Component
-        Catalog.
+        out-of-the-box Zipkin functionality and is bespoke to Kronicle.
       </b-alert>
 
       <table class="table table-dark">
@@ -133,7 +132,7 @@ import {
   SummaryComponentDependencyNode,
   SummarySubComponentDependencies,
   SummarySubComponentDependencyNode,
-} from '~/types/component-catalog-service'
+} from '~/types/kronicle-service'
 import ComponentName from '~/components/ComponentName.vue'
 import FormattedNumber from '~/components/FormattedNumber.vue'
 import FormattedDateTime from '~/components/FormattedDateTime.vue'

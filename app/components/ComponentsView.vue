@@ -31,7 +31,7 @@
 <script lang="ts">
 import Vue, { PropType } from 'vue'
 import { BCard, BCardText } from 'bootstrap-vue'
-import { Component } from '~/types/component-catalog-service'
+import { Component } from '~/types/kronicle-service'
 import ComponentFilters from '~/components/ComponentFilters.vue'
 import ComponentTable from '~/components/ComponentTable.vue'
 

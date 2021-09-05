@@ -24,7 +24,7 @@
 <script lang="ts">
 import Vue, { PropType } from 'vue'
 import { BBadge, BLink } from 'bootstrap-vue'
-import { Component } from '~/types/component-catalog-service'
+import { Component } from '~/types/kronicle-service'
 import Markdown from '~/components/Markdown.vue'
 
 export default Vue.extend({

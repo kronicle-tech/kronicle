@@ -54,7 +54,7 @@
 
 <script lang="ts">
 import Vue, { PropType } from 'vue'
-import { TestResult } from '~/types/component-catalog-service'
+import { TestResult } from '~/types/kronicle-service'
 import Markdown from '~/components/Markdown.vue'
 import TestId from '~/components/TestId.vue'
 import { compareTestResults } from '~/src/testResultComparator'

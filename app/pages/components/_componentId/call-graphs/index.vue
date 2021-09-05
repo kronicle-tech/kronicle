@@ -17,7 +17,7 @@ import {
   Component,
   SummarySubComponentDependencies,
   SummarySubComponentDependencyNode,
-} from '~/types/component-catalog-service'
+} from '~/types/kronicle-service'
 import ComponentTabs from '~/components/ComponentTabs.vue'
 import ComponentCallGraphsView from '~/components/ComponentCallGraphsView.vue'
 
@@ -60,7 +60,7 @@ export default Vue.extend({
   },
   head(): MetaInfo {
     return {
-      title: `Component Catalog - ${this.component.name} - Call Graphs`,
+      title: `Kronicle - ${this.component.name} - Call Graphs`,
     }
   },
 })

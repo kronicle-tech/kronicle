@@ -63,7 +63,7 @@ import {
   VBToggle,
 } from 'bootstrap-vue'
 import { MetaInfo } from 'vue-meta'
-import { Component, Team, Priority } from '~/types/component-catalog-service'
+import { Component, Team, Priority } from '~/types/kronicle-service'
 import { ComponentAndTestResults } from '~/types/component-test-results'
 import AllTeamsTabs from '~/components/AllTeamsTabs.vue'
 import ComponentTestResultTable from '~/components/ComponentTestResultTable.vue'
@@ -222,7 +222,7 @@ export default Vue.extend({
   },
   head(): MetaInfo {
     return {
-      title: 'Component Catalog - All Teams - Tests',
+      title: 'Kronicle - All Teams - Tests',
     }
   },
 })

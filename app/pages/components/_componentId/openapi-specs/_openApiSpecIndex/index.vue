@@ -5,7 +5,7 @@
 <script lang="ts">
 import Vue from 'vue'
 import { MetaInfo } from 'vue-meta'
-import { OpenApiSpec } from '~/types/component-catalog-service'
+import { OpenApiSpec } from '~/types/kronicle-service'
 
 export default Vue.extend({
   layout: 'Redoc',
@@ -47,7 +47,7 @@ export default Vue.extend({
   },
   head(): MetaInfo {
     return {
-      title: `Component Catalog - Component ${
+      title: `Kronicle - Component ${
         this.$route.params.componentId
       } - OpenAPI Spec ${parseInt(this.$route.params.openApiSpecIndex, 10)}`,
       link: [],

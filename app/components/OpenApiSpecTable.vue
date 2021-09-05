@@ -47,7 +47,7 @@
 <script lang="ts">
 import Vue, { PropType } from 'vue'
 import { BBadge, BLink } from 'bootstrap-vue'
-import { Component, OpenApiSpec } from '~/types/component-catalog-service'
+import { Component, OpenApiSpec } from '~/types/kronicle-service'
 import { compareOpenApiSpecs } from '~/src/openApiSpecComparator'
 import ComponentName from '~/components/ComponentName.vue'
 import ComponentTeams from '~/components/ComponentTeams.vue'

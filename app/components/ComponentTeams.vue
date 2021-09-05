@@ -28,7 +28,7 @@
 <script lang="ts">
 import Vue, { PropType } from 'vue'
 import { BBadge } from 'bootstrap-vue'
-import { ComponentTeam } from '~/types/component-catalog-service'
+import { ComponentTeam } from '~/types/kronicle-service'
 import Markdown from '~/components/Markdown.vue'
 import TeamName from '~/components/TeamName.vue'
 

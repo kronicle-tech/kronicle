@@ -1,4 +1,4 @@
-import { Priority, TestOutcome } from '~/types/component-catalog-service'
+import { Priority, TestOutcome } from '~/types/kronicle-service'
 import { compareObjectsWithPriorities } from '~/src/objectWithPriorityComparator'
 import { compareTestOutcomes } from '~/src/testOutcomeComparator'
 

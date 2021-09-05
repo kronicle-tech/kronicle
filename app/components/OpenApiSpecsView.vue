@@ -38,7 +38,7 @@
 <script lang="ts">
 import Vue, { PropType } from 'vue'
 import { BCard, BCardText, BListGroup, BListGroupItem } from 'bootstrap-vue'
-import { Component, OpenApiSpec } from '~/types/component-catalog-service'
+import { Component, OpenApiSpec } from '~/types/kronicle-service'
 import ComponentFilters from '~/components/ComponentFilters.vue'
 import OpenApiSpecTable from '~/components/OpenApiSpecTable.vue'
 

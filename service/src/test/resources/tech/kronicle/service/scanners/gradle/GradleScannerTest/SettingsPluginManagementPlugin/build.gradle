@@ -1,0 +1,9 @@
+package tech.kronicle.service.scanners.gradle.GradleScannerTest.SettingsPluginManagementPlugin
+
+plugins {
+    id "org.springframework.boot"
+}
+
+repositories {
+    mavenCentral()
+}

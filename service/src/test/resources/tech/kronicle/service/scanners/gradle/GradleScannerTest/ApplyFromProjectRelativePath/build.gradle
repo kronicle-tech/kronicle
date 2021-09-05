@@ -1,0 +1,5 @@
+package tech.kronicle.service.scanners.gradle.GradleScannerTest.ApplyFromProjectRelativePath
+
+plugins {
+    id "java"
+}

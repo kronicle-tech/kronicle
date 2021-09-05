@@ -7,7 +7,7 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import { Component } from '~/types/component-catalog-service'
+import { Component } from '~/types/kronicle-service'
 import AllComponentsTabs from '~/components/AllComponentsTabs.vue'
 import OpenApiSpecsView from '~/components/OpenApiSpecsView.vue'
 
@@ -39,7 +39,7 @@ export default Vue.extend({
   },
   head() {
     return {
-      title: 'Component Catalog - All Components - OpenAPI Specs',
+      title: 'Kronicle - All Components - OpenAPI Specs',
     }
   },
 })

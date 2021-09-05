@@ -17,7 +17,7 @@
 import Vue from 'vue'
 import { MetaInfo } from 'vue-meta'
 import { BCard, BCardText } from 'bootstrap-vue'
-import { Component } from '~/types/component-catalog-service'
+import { Component } from '~/types/kronicle-service'
 import ComponentTabs from '~/components/ComponentTabs.vue'
 import ReadmeContent from '~/components/ReadmeContent.vue'
 
@@ -46,7 +46,7 @@ export default Vue.extend({
   },
   head(): MetaInfo {
     return {
-      title: `Component Catalog - ${this.component.name} - README`,
+      title: `Kronicle - ${this.component.name} - README`,
     }
   },
 })
