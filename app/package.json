@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "clean": "rm -rf package-lock.json .nuxt/ coverage/",
+    "clean": "rm -rf .nuxt/ coverage/",
     "dev": "nuxt",
     "build": "nuxt build",
     "start": "nuxt start",
