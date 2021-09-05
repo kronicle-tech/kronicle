@@ -7,8 +7,8 @@ exports[`ComponentDependenciesView when components prop contains multiple compon
       The dependencies on this page come from a combination of Zipkin traces and
       dependencies manually specified in Kronicle's metadata YAML files. The
       visualisation is not out-of-the-box Zipkin functionality and is bespoke to
-      the Kronicle. The other data on the page like descriptions,
-      teams, tags etc. come from the Kronicle and not from Zipkin.
+      Kronicle. The other data on the page like descriptions, teams, tags etc.
+      come from Kronicle and not from Zipkin.
     </div>
   </transition-stub>
   <div class=\\"graph\\"><svg xmlns=\\"http://www.w3.org/2000/svg\\" overflow=\\"auto\\" width=\\"100%\\" height=\\"1200\\" id=\\"component-dependency-graph\\">
@@ -320,8 +320,8 @@ exports[`ComponentDependenciesView when components prop contains multiple compon
       The dependencies on this page come from a combination of Zipkin traces and
       dependencies manually specified in Kronicle's metadata YAML files. The
       visualisation is not out-of-the-box Zipkin functionality and is bespoke to
-      the Kronicle. The other data on the page like descriptions,
-      teams, tags etc. come from the Kronicle and not from Zipkin.
+      Kronicle. The other data on the page like descriptions, teams, tags etc.
+      come from Kronicle and not from Zipkin.
     </div>
   </transition-stub>
   <div class=\\"graph\\"><svg xmlns=\\"http://www.w3.org/2000/svg\\" overflow=\\"auto\\" width=\\"100%\\" height=\\"1200\\" id=\\"component-dependency-graph\\">
@@ -593,8 +593,8 @@ exports[`ComponentDependenciesView when components prop contains multiple compon
       The dependencies on this page come from a combination of Zipkin traces and
       dependencies manually specified in Kronicle's metadata YAML files. The
       visualisation is not out-of-the-box Zipkin functionality and is bespoke to
-      the Kronicle. The other data on the page like descriptions,
-      teams, tags etc. come from the Kronicle and not from Zipkin.
+      Kronicle. The other data on the page like descriptions, teams, tags etc.
+      come from Kronicle and not from Zipkin.
     </div>
   </transition-stub>
   <div class=\\"graph\\"><svg xmlns=\\"http://www.w3.org/2000/svg\\" overflow=\\"auto\\" width=\\"100%\\" height=\\"1200\\" id=\\"component-dependency-graph\\">
@@ -906,8 +906,8 @@ exports[`ComponentDependenciesView when components prop contains multiple compon
       The dependencies on this page come from a combination of Zipkin traces and
       dependencies manually specified in Kronicle's metadata YAML files. The
       visualisation is not out-of-the-box Zipkin functionality and is bespoke to
-      the Kronicle. The other data on the page like descriptions,
-      teams, tags etc. come from the Kronicle and not from Zipkin.
+      Kronicle. The other data on the page like descriptions, teams, tags etc.
+      come from Kronicle and not from Zipkin.
     </div>
   </transition-stub>
   <div class=\\"graph\\"><svg xmlns=\\"http://www.w3.org/2000/svg\\" overflow=\\"auto\\" width=\\"100%\\" height=\\"1200\\" id=\\"component-dependency-graph\\">
@@ -1133,8 +1133,8 @@ exports[`ComponentDependenciesView when components prop contains multiple compon
       The dependencies on this page come from a combination of Zipkin traces and
       dependencies manually specified in Kronicle's metadata YAML files. The
       visualisation is not out-of-the-box Zipkin functionality and is bespoke to
-      the Kronicle. The other data on the page like descriptions,
-      teams, tags etc. come from the Kronicle and not from Zipkin.
+      Kronicle. The other data on the page like descriptions, teams, tags etc.
+      come from Kronicle and not from Zipkin.
     </div>
   </transition-stub>
   <div class=\\"graph\\"><svg xmlns=\\"http://www.w3.org/2000/svg\\" overflow=\\"auto\\" width=\\"100%\\" height=\\"1200\\" id=\\"component-dependency-graph\\">
@@ -1348,8 +1348,8 @@ exports[`ComponentDependenciesView when components prop contains multiple compon
       The dependencies on this page come from a combination of Zipkin traces and
       dependencies manually specified in Kronicle's metadata YAML files. The
       visualisation is not out-of-the-box Zipkin functionality and is bespoke to
-      the Kronicle. The other data on the page like descriptions,
-      teams, tags etc. come from the Kronicle and not from Zipkin.
+      Kronicle. The other data on the page like descriptions, teams, tags etc.
+      come from Kronicle and not from Zipkin.
     </div>
   </transition-stub>
   <div class=\\"graph\\"><svg xmlns=\\"http://www.w3.org/2000/svg\\" overflow=\\"auto\\" width=\\"100%\\" height=\\"1200\\" id=\\"component-dependency-graph\\">
@@ -1565,8 +1565,8 @@ exports[`ComponentDependenciesView when components prop contains multiple compon
       The dependencies on this page come from a combination of Zipkin traces and
       dependencies manually specified in Kronicle's metadata YAML files. The
       visualisation is not out-of-the-box Zipkin functionality and is bespoke to
-      the Kronicle. The other data on the page like descriptions,
-      teams, tags etc. come from the Kronicle and not from Zipkin.
+      Kronicle. The other data on the page like descriptions, teams, tags etc.
+      come from Kronicle and not from Zipkin.
     </div>
   </transition-stub>
   <div class=\\"graph\\"><svg xmlns=\\"http://www.w3.org/2000/svg\\" overflow=\\"auto\\" width=\\"100%\\" height=\\"1200\\" id=\\"component-dependency-graph\\">
@@ -1780,8 +1780,8 @@ exports[`ComponentDependenciesView when components prop contains multiple compon
       The dependencies on this page come from a combination of Zipkin traces and
       dependencies manually specified in Kronicle's metadata YAML files. The
       visualisation is not out-of-the-box Zipkin functionality and is bespoke to
-      the Kronicle. The other data on the page like descriptions,
-      teams, tags etc. come from the Kronicle and not from Zipkin.
+      Kronicle. The other data on the page like descriptions, teams, tags etc.
+      come from Kronicle and not from Zipkin.
     </div>
   </transition-stub>
   <div class=\\"graph\\"><svg xmlns=\\"http://www.w3.org/2000/svg\\" overflow=\\"auto\\" width=\\"100%\\" height=\\"1200\\" id=\\"component-dependency-graph\\">
@@ -1997,8 +1997,8 @@ exports[`ComponentDependenciesView when components prop is set to an empty array
       The dependencies on this page come from a combination of Zipkin traces and
       dependencies manually specified in Kronicle's metadata YAML files. The
       visualisation is not out-of-the-box Zipkin functionality and is bespoke to
-      the Kronicle. The other data on the page like descriptions,
-      teams, tags etc. come from the Kronicle and not from Zipkin.
+      Kronicle. The other data on the page like descriptions, teams, tags etc.
+      come from Kronicle and not from Zipkin.
     </div>
   </transition-stub>
   <div class=\\"graph\\"><svg xmlns=\\"http://www.w3.org/2000/svg\\" overflow=\\"auto\\" width=\\"100%\\" height=\\"1200\\" id=\\"component-dependency-graph\\">

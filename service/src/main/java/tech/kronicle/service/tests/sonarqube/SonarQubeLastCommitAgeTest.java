@@ -62,7 +62,7 @@ public class SonarQubeLastCommitAgeTest extends BaseSonarQubeTest {
                     String.format(
                             "At least one of the component's SonarQube project(s) have not been updated with the results of at least 1 commit in the last %d "
                             + "months. Is the component's build job still configured to send metrics to the SonarQube server? If not, the project(s) metrics "
-                            + "in the Kronicle will be out-of-date. ",
+                            + "in Kronicle will be out-of-date. ",
                             maxLastCommitAgeInMonths),
                     projectOutcomes,
                     this::formatProjectOutcomeMessage));
