@@ -11,7 +11,7 @@
 <script lang="ts">
 import Vue from 'vue'
 import { MetaInfo } from 'vue-meta'
-import { Team, Test } from '~/types/component-catalog-service'
+import { Team, Test } from '~/types/kronicle-service'
 import TestView from '~/components/TestView.vue'
 import TeamTabs from '~/components/TeamTabs.vue'
 
@@ -51,7 +51,7 @@ export default Vue.extend({
   },
   head(): MetaInfo {
     return {
-      title: `Component Catalog - ${this.team.name} Team - ${this.$route.params.testId} Test`,
+      title: `Kronicle - ${this.team.name} Team - ${this.$route.params.testId} Test`,
     }
   },
 })

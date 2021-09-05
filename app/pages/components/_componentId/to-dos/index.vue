@@ -41,7 +41,7 @@ import Vue from 'vue'
 import { MetaInfo } from 'vue-meta'
 import { BCard, BListGroup, BListGroupItem } from 'bootstrap-vue'
 import ComponentTabs from '~/components/ComponentTabs.vue'
-import { Component } from '~/types/component-catalog-service'
+import { Component } from '~/types/kronicle-service'
 
 export default Vue.extend({
   components: {
@@ -79,7 +79,7 @@ export default Vue.extend({
   },
   head(): MetaInfo {
     return {
-      title: `Component Catalog - ${this.component.name} - To Dos`,
+      title: `Kronicle - ${this.component.name} - To Dos`,
     }
   },
 })

@@ -1,15 +1,15 @@
 <template>
   <div>
-    <b-jumbotron header="Component Catalog" class="my-3">
+    <b-jumbotron header="Kronicle" class="my-3">
       <p>
-        The Component Catalog contains information on the organisation's
+        The Kronicle contains information on the organisation's
         components, teams and areas.
       </p>
     </b-jumbotron>
 
     <b-card-group columns>
       <b-card
-        header="Component Catalog"
+        header="Kronicle"
         header-bg-variant="info"
         header-class="lead"
         no-body
@@ -18,7 +18,7 @@
           <b-list-group-item
             class="d-flex justify-content-between align-items-center text-muted"
           >
-            The Catalog contains the following:
+            Kronicle contains the following:
           </b-list-group-item>
 
           <b-list-group-item
@@ -93,7 +93,7 @@
           <b-list-group-item
             class="d-flex justify-content-between align-items-center text-muted"
           >
-            Scanners dynamically add data to the Catalog at runtime:
+            Scanners dynamically add data to Kronicle at runtime:
           </b-list-group-item>
 
           <b-list-group-item v-for="scanner in scanners" :key="scanner.id">
@@ -114,7 +114,7 @@
           <b-list-group-item
             class="d-flex justify-content-between align-items-center text-muted"
           >
-            Tests evaluate the data associated with components in the Catalog
+            Tests evaluate the data associated with components in Kronicle
             and return outcomes of pass, fail and not applicable
           </b-list-group-item>
 
@@ -142,7 +142,7 @@
         <b-list-group-item
           class="d-flex justify-content-between align-items-center text-muted"
         >
-          The following platforms are associated with components in the Catalog:
+          The following platforms are associated with components in Kronicle:
         </b-list-group-item>
 
         <b-list-group flush>
@@ -175,7 +175,7 @@
           <b-list-group-item
             class="d-flex justify-content-between align-items-center text-muted"
           >
-            The components in the Catalog are tagged with the following:
+            The components in Kronicle are tagged with the following:
           </b-list-group-item>
 
           <b-list-group-item
@@ -207,7 +207,7 @@
           <b-list-group-item
             class="d-flex justify-content-between align-items-center text-muted"
           >
-            There are the following types of components in the Catalog:
+            There are the following types of components in Kronicle:
           </b-list-group-item>
 
           <b-list-group-item
@@ -261,7 +261,7 @@ import {
   Scanner,
   Team,
   Test,
-} from '~/types/component-catalog-service'
+} from '~/types/kronicle-service'
 import { ItemCount, itemCounts } from '~/src/arrayUtils'
 import Markdown from '~/components/Markdown.vue'
 
@@ -357,7 +357,7 @@ export default Vue.extend({
   },
   head(): MetaInfo {
     return {
-      title: 'Component Catalog',
+      title: 'Kronicle',
     }
   },
 })

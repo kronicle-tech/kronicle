@@ -34,7 +34,7 @@
 import Vue from 'vue'
 import { MetaInfo } from 'vue-meta'
 import { BAlert } from 'bootstrap-vue'
-import { Area } from '~/types/component-catalog-service'
+import { Area } from '~/types/kronicle-service'
 import AllAreasTabs from '~/components/AllAreasTabs.vue'
 import AreaName from '~/components/AreaName.vue'
 import Markdown from '~/components/Markdown.vue'
@@ -64,7 +64,7 @@ export default Vue.extend({
   },
   head(): MetaInfo {
     return {
-      title: 'Component Catalog - All Areas',
+      title: 'Kronicle - All Areas',
     }
   },
 })

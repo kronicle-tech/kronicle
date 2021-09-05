@@ -30,7 +30,7 @@ describe('Index', () => {
 
   test('has the right page title', async () => {
     await createWrapper()
-    expect(wrapper.vm.$metaInfo.title).toBe('Component Catalog - All Tests')
+    expect(wrapper.vm.$metaInfo.title).toBe('Kronicle - All Tests')
   })
 
   describe('when Get Tests service endpoint returns an empty array', () => {

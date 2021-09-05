@@ -166,7 +166,7 @@ import {
   SummaryComponentDependencyNode,
   SummarySubComponentDependencies,
   SummarySubComponentDependencyNode,
-} from '~/types/component-catalog-service'
+} from '~/types/kronicle-service'
 import {
   Dependency,
   DependencyType,

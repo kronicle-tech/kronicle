@@ -594,8 +594,7 @@ exports[`Index when Get Component service endpoint returns a component when Get 
           </button>
           
       The dependencies on this page come from Zipkin. The visualisation is not
-      out-of-the-box Zipkin functionality and is bespoke to the Component
-      Catalog.
+      out-of-the-box Zipkin functionality and is bespoke to Kronicle.
     
         </div>
       </transition-stub>

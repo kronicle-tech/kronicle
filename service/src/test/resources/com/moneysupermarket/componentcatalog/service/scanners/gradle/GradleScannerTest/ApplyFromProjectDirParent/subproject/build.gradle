@@ -1,5 +1,0 @@
-repositories {
-    mavenCentral()
-}
-
-apply from: "$projectDir.parent/dependencies.gradle"

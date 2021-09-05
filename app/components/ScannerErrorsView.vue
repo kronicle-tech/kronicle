@@ -38,7 +38,7 @@
 <script lang="ts">
 import Vue, { PropType } from 'vue'
 import { BCard, BCardText, BListGroup, BListGroupItem } from 'bootstrap-vue'
-import { Component, ScannerError } from '~/types/component-catalog-service'
+import { Component, ScannerError } from '~/types/kronicle-service'
 import ComponentFilters from '~/components/ComponentFilters.vue'
 import ScannerErrorTable from '~/components/ScannerErrorTable.vue'
 

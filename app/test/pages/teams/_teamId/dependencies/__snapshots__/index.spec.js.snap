@@ -105,10 +105,10 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
         </button>
         
     The dependencies on this page come from a combination of Zipkin traces and
-    dependencies manually specified in the catalog's metadata YAML files. The
+    dependencies manually specified in Kronicle's metadata YAML files. The
     visualisation is not out-of-the-box Zipkin functionality and is bespoke to
-    the Component Catalog. The other data on the page like descriptions,
-    teams, tags etc. come from the Component Catalog and not from Zipkin.
+    the Kronicle. The other data on the page like descriptions,
+    teams, tags etc. come from the Kronicle and not from Zipkin.
   
       </div>
     </transition-stub>
@@ -578,10 +578,10 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
         </button>
         
     The dependencies on this page come from a combination of Zipkin traces and
-    dependencies manually specified in the catalog's metadata YAML files. The
+    dependencies manually specified in Kronicle's metadata YAML files. The
     visualisation is not out-of-the-box Zipkin functionality and is bespoke to
-    the Component Catalog. The other data on the page like descriptions,
-    teams, tags etc. come from the Component Catalog and not from Zipkin.
+    the Kronicle. The other data on the page like descriptions,
+    teams, tags etc. come from the Kronicle and not from Zipkin.
   
       </div>
     </transition-stub>
@@ -1051,10 +1051,10 @@ exports[`Index when Get Summary service endpoint returns no dependencies renders
         </button>
         
     The dependencies on this page come from a combination of Zipkin traces and
-    dependencies manually specified in the catalog's metadata YAML files. The
+    dependencies manually specified in Kronicle's metadata YAML files. The
     visualisation is not out-of-the-box Zipkin functionality and is bespoke to
-    the Component Catalog. The other data on the page like descriptions,
-    teams, tags etc. come from the Component Catalog and not from Zipkin.
+    the Kronicle. The other data on the page like descriptions,
+    teams, tags etc. come from the Kronicle and not from Zipkin.
   
       </div>
     </transition-stub>

@@ -1,0 +1,9 @@
+package tech.kronicle.service.scanners.gradle.GradleScannerTest.DependencyFileTree
+
+plugins {
+    id "groovy"
+}
+
+dependencies {
+    compile fileTree(dir: "${rootDir}/libs", include: ["*.jar"])
+}

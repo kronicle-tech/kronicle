@@ -1,4 +1,4 @@
-import { TestOutcome } from '~/types/component-catalog-service'
+import { TestOutcome } from '~/types/kronicle-service'
 
 export interface ObjectWithTestOutcome {
   outcome: TestOutcome

@@ -34,7 +34,7 @@
 import Vue from 'vue'
 import { MetaInfo } from 'vue-meta'
 import { BAlert } from 'bootstrap-vue'
-import { Team } from '~/types/component-catalog-service'
+import { Team } from '~/types/kronicle-service'
 import AllTeamsTabs from '~/components/AllTeamsTabs.vue'
 import TeamName from '~/components/TeamName.vue'
 import Markdown from '~/components/Markdown.vue'
@@ -64,7 +64,7 @@ export default Vue.extend({
   },
   head(): MetaInfo {
     return {
-      title: 'Component Catalog - All Teams',
+      title: 'Kronicle - All Teams',
     }
   },
 })

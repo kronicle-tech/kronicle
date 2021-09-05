@@ -51,7 +51,7 @@ describe('Index', () => {
     test('has the right page title', async () => {
       await createWrapper()
       expect(wrapper.vm.$metaInfo.title).toBe(
-        'Component Catalog - Test Team Name 1 Team - test-test-id-1 Test'
+        'Kronicle - Test Team Name 1 Team - test-test-id-1 Test'
       )
     })
 

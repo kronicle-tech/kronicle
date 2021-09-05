@@ -19,7 +19,7 @@
 <script lang="ts">
 import Vue, { PropType } from 'vue'
 import { BCard } from 'bootstrap-vue'
-import { Component, Test } from '~/types/component-catalog-service'
+import { Component, Test } from '~/types/kronicle-service'
 import { getPriorityText } from '~/src/priorityHelper'
 import Markdown from '~/components/Markdown.vue'
 import TestResultsView from '~/components/TestResultsView.vue'

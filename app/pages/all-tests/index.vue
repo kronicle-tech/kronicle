@@ -50,7 +50,7 @@
 import Vue from 'vue'
 import { BAlert } from 'bootstrap-vue'
 import { MetaInfo } from 'vue-meta'
-import { Component, Test, TestOutcome } from '~/types/component-catalog-service'
+import { Component, Test, TestOutcome } from '~/types/kronicle-service'
 import AllTestsTabs from '~/components/AllTestsTabs.vue'
 import FormattedNumber from '~/components/FormattedNumber.vue'
 import Markdown from '~/components/Markdown.vue'
@@ -143,7 +143,7 @@ export default Vue.extend({
   },
   head(): MetaInfo {
     return {
-      title: 'Component Catalog - All Tests',
+      title: 'Kronicle - All Tests',
     }
   },
 })

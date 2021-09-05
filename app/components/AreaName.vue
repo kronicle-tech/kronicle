@@ -6,7 +6,7 @@
 
 <script lang="ts">
 import Vue, { PropType } from 'vue'
-import { Area } from '~/types/component-catalog-service'
+import { Area } from '~/types/kronicle-service'
 
 export default Vue.extend({
   props: {

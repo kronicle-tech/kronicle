@@ -1,3 +1,0 @@
-buildscript {
-    apply from: "$rootDir/gradle/repos.gradle", to: buildscript
-}

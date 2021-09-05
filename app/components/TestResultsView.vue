@@ -66,7 +66,7 @@ import {
   Component,
   TestOutcome,
   TestResult,
-} from '~/types/component-catalog-service'
+} from '~/types/kronicle-service'
 import {
   getTestOutcomeCountClass,
   getTestOutcomeText,

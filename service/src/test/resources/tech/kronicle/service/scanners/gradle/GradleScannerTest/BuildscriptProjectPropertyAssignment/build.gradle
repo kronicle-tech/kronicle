@@ -1,0 +1,13 @@
+package tech.kronicle.service.scanners.gradle.GradleScannerTest.BuildscriptProjectPropertyAssignment
+
+buildscript {
+    ext.springBootVersion = "2.3.4.RELEASE"
+
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath "org.springframework.boot:spring-boot-gradle-plugin:$springBootVersion"
+    }
+}

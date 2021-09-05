@@ -9,7 +9,7 @@
 <script lang="ts">
 import Vue from 'vue'
 import { MetaInfo } from 'vue-meta'
-import { Component, Test } from '~/types/component-catalog-service'
+import { Component, Test } from '~/types/kronicle-service'
 import TestView from '~/components/TestView.vue'
 
 export default Vue.extend({
@@ -47,7 +47,7 @@ export default Vue.extend({
   },
   head(): MetaInfo {
     return {
-      title: `Component Catalog - ${this.$route.params.testId} Test`,
+      title: `Kronicle - ${this.$route.params.testId} Test`,
     }
   },
 })

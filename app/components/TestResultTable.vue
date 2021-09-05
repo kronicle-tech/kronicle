@@ -65,7 +65,7 @@
 <script lang="ts">
 import Vue, { PropType } from 'vue'
 import { BBadge } from 'bootstrap-vue'
-import { Component, TestResult } from '~/types/component-catalog-service'
+import { Component, TestResult } from '~/types/kronicle-service'
 import { getPriorityText, getPriorityVariant } from '~/src/priorityHelper'
 import {
   getTestOutcomeText,

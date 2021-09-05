@@ -3,8 +3,8 @@ apply plugin: "org.sonarqube"
 
 sonarqube {
     properties {
-        property 'sonar.projectKey', 'com.moneysupermarket:component-catalog'
-        property 'sonar.projectName', 'Component Catalog'
+        property 'sonar.projectKey', 'tech.kronicle:kronicle'
+        property 'sonar.projectName', 'Kronicle'
         property 'sonar.projectVersion', version
         property 'sonar.language', 'java'
         property 'sonar.java.source', javaVersion

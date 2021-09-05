@@ -2,7 +2,7 @@ import {
   SummaryComponentDependency,
   SummaryComponentDependencyNode,
   SummarySubComponentDependencyNode,
-} from '~/types/component-catalog-service'
+} from '~/types/kronicle-service'
 
 export interface Node {
   index: number

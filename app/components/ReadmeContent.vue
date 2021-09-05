@@ -11,7 +11,7 @@
 
 <script lang="ts">
 import Vue, { PropType } from 'vue'
-import { Readme } from '~/types/component-catalog-service'
+import { Readme } from '~/types/kronicle-service'
 import Markdown from '~/components/Markdown.vue'
 
 export default Vue.extend({

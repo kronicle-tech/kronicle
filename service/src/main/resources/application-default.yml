@@ -4,13 +4,13 @@ spring:
       probability: ${ZIPKIN_SAMPLERATE:1.0}
 
 download-cache:
-  dir: ${TMPDIR}component-catalog-service/data/download-cache
+  dir: ${TMPDIR}kronicle-service/data/download-cache
 
 url-exists-cache:
-  dir: ${TMPDIR}component-catalog-service/data/url-exists-cache
+  dir: ${TMPDIR}kronicle-service/data/url-exists-cache
 
 git:
-  repos-dir: ${TMPDIR}component-catalog-service/data/git/repos
+  repos-dir: ${TMPDIR}kronicle-service/data/git/repos
 
 gradle:
-  pom-cache-dir: ${TMPDIR}component-catalog-service/data/gradle/pom-cache
+  pom-cache-dir: ${TMPDIR}kronicle-service/data/gradle/pom-cache

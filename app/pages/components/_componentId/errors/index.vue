@@ -9,7 +9,7 @@
 <script lang="ts">
 import Vue from 'vue'
 import { MetaInfo } from 'vue-meta'
-import { Component } from '~/types/component-catalog-service'
+import { Component } from '~/types/kronicle-service'
 import ComponentTabs from '~/components/ComponentTabs.vue'
 import ScannerErrorsView from '~/components/ScannerErrorsView.vue'
 
@@ -41,7 +41,7 @@ export default Vue.extend({
   },
   head(): MetaInfo {
     return {
-      title: `Component Catalog - ${this.component.name} - Errors`,
+      title: `Kronicle - ${this.component.name} - Errors`,
     }
   },
 })

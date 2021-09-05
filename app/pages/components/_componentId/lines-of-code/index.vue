@@ -43,7 +43,7 @@ import { BBadge, BCard, BListGroup, BListGroupItem } from 'bootstrap-vue'
 import {
   Component,
   FileExtensionCount,
-} from '~/types/component-catalog-service'
+} from '~/types/kronicle-service'
 import ComponentTabs from '~/components/ComponentTabs.vue'
 import FormattedNumber from '~/components/FormattedNumber.vue'
 
@@ -96,7 +96,7 @@ export default Vue.extend({
   },
   head(): MetaInfo {
     return {
-      title: `Component Catalog - ${this.component.name} - Lines of Code`,
+      title: `Kronicle - ${this.component.name} - Lines of Code`,
     }
   },
 })

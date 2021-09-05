@@ -7,7 +7,7 @@ exports[`ComponentCallGraphsView when a call graph's node has a different number
       <p>
         The call graphs on this page come from a combination of Zipkin traces.
         The visualisation is not out-of-the-box Zipkin functionality and is
-        bespoke to the Component Catalog.
+        bespoke to the Kronicle.
       </p>
       <p class=\\"mb-0\\">
         A maximum of 20 call graphs are displayed on this
@@ -122,7 +122,7 @@ exports[`ComponentCallGraphsView when a call graph's node has the same number of
       <p>
         The call graphs on this page come from a combination of Zipkin traces.
         The visualisation is not out-of-the-box Zipkin functionality and is
-        bespoke to the Component Catalog.
+        bespoke to the Kronicle.
       </p>
       <p class=\\"mb-0\\">
         A maximum of 20 call graphs are displayed on this
@@ -243,7 +243,7 @@ exports[`ComponentCallGraphsView when nodes prop is set to an empty array render
       <p>
         The call graphs on this page come from a combination of Zipkin traces.
         The visualisation is not out-of-the-box Zipkin functionality and is
-        bespoke to the Component Catalog.
+        bespoke to the Kronicle.
       </p>
       <p class=\\"mb-0\\">
         A maximum of 20 call graphs are displayed on this
@@ -260,7 +260,7 @@ exports[`ComponentCallGraphsView when nodes prop is set to an empty array render
         <ol>
           <li>The component is not integrated with Zipkin yet or</li>
           <li>
-            The Component Catalog may have restarted recently and not have
+            The Kronicle may have restarted recently and not have
             loaded Zipkin data yet
           </li>
         </ol>
@@ -281,7 +281,7 @@ exports[`ComponentCallGraphsView when there are 2 nodes and the first node has 1
       <p>
         The call graphs on this page come from a combination of Zipkin traces.
         The visualisation is not out-of-the-box Zipkin functionality and is
-        bespoke to the Component Catalog.
+        bespoke to the Kronicle.
       </p>
       <p class=\\"mb-0\\">
         A maximum of 20 call graphs are displayed on this
@@ -382,7 +382,7 @@ exports[`ComponentCallGraphsView when there are 2 nodes and the first node has 1
       <p>
         The call graphs on this page come from a combination of Zipkin traces.
         The visualisation is not out-of-the-box Zipkin functionality and is
-        bespoke to the Component Catalog.
+        bespoke to the Kronicle.
       </p>
       <p class=\\"mb-0\\">
         A maximum of 20 call graphs are displayed on this
@@ -556,7 +556,7 @@ exports[`ComponentCallGraphsView when there is 1 node and the node has a call gr
       <p>
         The call graphs on this page come from a combination of Zipkin traces.
         The visualisation is not out-of-the-box Zipkin functionality and is
-        bespoke to the Component Catalog.
+        bespoke to the Kronicle.
       </p>
       <p class=\\"mb-0\\">
         A maximum of 20 call graphs are displayed on this

@@ -10,7 +10,7 @@
 
 <script lang="ts">
 import Vue, { PropType } from 'vue'
-import { Link } from '~/types/component-catalog-service'
+import { Link } from '~/types/kronicle-service'
 import Markdown from '~/components/Markdown.vue'
 
 export default Vue.extend({

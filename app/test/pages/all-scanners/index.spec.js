@@ -25,7 +25,7 @@ describe('Index', () => {
 
   test('has the right page title', async () => {
     await createWrapper()
-    expect(wrapper.vm.$metaInfo.title).toBe('Component Catalog - All Scanners')
+    expect(wrapper.vm.$metaInfo.title).toBe('Kronicle - All Scanners')
   })
 
   describe('when Get Scanners service endpoint returns an empty array', () => {

@@ -195,7 +195,7 @@ exports[`Index when Get Component Nodes service endpoint returns no nodes render
           
       The call graphs on this page come from a combination of Zipkin traces.
       The visualisation is not out-of-the-box Zipkin functionality and is
-      bespoke to the Component Catalog.
+      bespoke to the Kronicle.
     
         </p>
          
@@ -240,7 +240,7 @@ exports[`Index when Get Component Nodes service endpoint returns no nodes render
              
             <li>
               
-          The Component Catalog may have restarted recently and not have
+          The Kronicle may have restarted recently and not have
           loaded Zipkin data yet
         
             </li>
@@ -460,7 +460,7 @@ exports[`Index when Get Component Nodes service endpoints returns nodes and Get 
           
       The call graphs on this page come from a combination of Zipkin traces.
       The visualisation is not out-of-the-box Zipkin functionality and is
-      bespoke to the Component Catalog.
+      bespoke to the Kronicle.
     
         </p>
          

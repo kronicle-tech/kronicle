@@ -17,7 +17,7 @@
 
     <!-- When running in "default" profile we turn on DEBUG for MSM code and only log to CONSOLE -->
     <springProfile name="default">
-        <logger name="com.moneysupermarket" level="INFO"/>
+        <logger name="tech.kronicle" level="INFO"/>
 
         <root level="INFO">
             <appender-ref ref="CONSOLE"/>
@@ -25,10 +25,10 @@
     </springProfile>
 
     <springProfile name="!default">
-        <logger name="com.moneysupermarket.componentcatalog.service.repositories.ComponentRepository" level="INFO"/>
-        <logger name="com.moneysupermarket.componentcatalog.service.services.ScanEngine" level="INFO"/>
-        <logger name="com.moneysupermarket.componentcatalog.service.services.TestEngine" level="INFO"/>
-        <logger name="com.moneysupermarket.componentcatalog.service.scanners.zipkin.ZipkinService" level="INFO"/>
+        <logger name="tech.kronicle.service.repositories.ComponentRepository" level="INFO"/>
+        <logger name="tech.kronicle.service.services.ScanEngine" level="INFO"/>
+        <logger name="tech.kronicle.service.services.TestEngine" level="INFO"/>
+        <logger name="tech.kronicle.service.scanners.zipkin.ZipkinService" level="INFO"/>
 
         <root level="WARN">
             <appender-ref ref="JSON"/>

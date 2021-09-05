@@ -8,7 +8,7 @@
 <script lang="ts">
 import Vue from 'vue'
 import { MetaInfo } from 'vue-meta'
-import { Component } from '~/types/component-catalog-service'
+import { Component } from '~/types/kronicle-service'
 import AllComponentsTabs from '~/components/AllComponentsTabs.vue'
 import CrossFunctionalRequirementsView from '~/components/CrossFunctionalRequirementsView.vue'
 
@@ -41,7 +41,7 @@ export default Vue.extend({
   head(): MetaInfo {
     return {
       title:
-        'Component Catalog - All Components - Cross Functional Requirements',
+        'Kronicle - All Components - Cross Functional Requirements',
     }
   },
 })

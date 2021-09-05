@@ -8,7 +8,7 @@
 
 <script lang="ts">
 import Vue, { PropType } from 'vue'
-import { ScannerError } from '~/types/component-catalog-service'
+import { ScannerError } from '~/types/kronicle-service'
 
 function formatScannerError(value: ScannerError) {
   let text = value.message

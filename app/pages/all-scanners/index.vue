@@ -33,7 +33,7 @@
 <script lang="ts">
 import Vue from 'vue'
 import { MetaInfo } from 'vue-meta'
-import { Scanner } from '~/types/component-catalog-service'
+import { Scanner } from '~/types/kronicle-service'
 import AllScannersTabs from '~/components/AllScannersTabs.vue'
 import Markdown from '~/components/Markdown.vue'
 
@@ -60,7 +60,7 @@ export default Vue.extend({
   },
   head(): MetaInfo {
     return {
-      title: 'Component Catalog - All Scanners',
+      title: 'Kronicle - All Scanners',
     }
   },
 })

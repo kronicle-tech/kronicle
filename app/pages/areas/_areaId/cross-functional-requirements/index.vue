@@ -11,7 +11,7 @@
 <script lang="ts">
 import Vue from 'vue'
 import { MetaInfo } from 'vue-meta'
-import { Area } from '~/types/component-catalog-service'
+import { Area } from '~/types/kronicle-service'
 import AreaTabs from '~/components/AreaTabs.vue'
 import CrossFunctionalRequirementsView from '~/components/CrossFunctionalRequirementsView.vue'
 
@@ -43,7 +43,7 @@ export default Vue.extend({
   },
   head(): MetaInfo {
     return {
-      title: `Component Catalog - ${this.area.name} Area - Cross Functional Requirements`,
+      title: `Kronicle - ${this.area.name} Area - Cross Functional Requirements`,
     }
   },
 })

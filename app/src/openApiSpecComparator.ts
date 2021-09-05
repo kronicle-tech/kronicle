@@ -1,4 +1,4 @@
-import { Component, OpenApiSpec } from '~/types/component-catalog-service'
+import { Component, OpenApiSpec } from '~/types/kronicle-service'
 import { compareObjectsWithComponents } from '~/src/objectWithComponentComparator'
 
 interface OpenApiSpecWithComponent extends OpenApiSpec {

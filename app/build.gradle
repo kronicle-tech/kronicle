@@ -38,10 +38,10 @@ dependencies {
 
 generateTypeScript {
   jsonLibrary = "jackson2"
-  classPatterns = ["com.moneysupermarket.componentcatalog.sdk.models.*"]
+  classPatterns = ["tech.kronicle.sdk.models.*"]
   optionalAnnotations = ["org.springframework.lang.Nullable"]
   mapDate = "asString"
-  outputFile = "types/component-catalog-service/index.d.ts"
+  outputFile = "types/kronicle-service/index.d.ts"
   outputKind = "module"
 }
 
@@ -53,7 +53,7 @@ checkFrontend.dependsOn assembleFrontend
 assembleFrontend.dependsOn generateTypeScript
 
 docker {
-  name "component-catalog-app:$version"
+  name "kronicle-app:$version"
 
   if (project.pushImage.toBoolean()) {
     name = "$dockerRegistry/$name"

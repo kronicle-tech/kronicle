@@ -13,7 +13,7 @@
 <script lang="ts">
 import Vue from 'vue'
 import { MetaInfo } from 'vue-meta'
-import { Component, Summary } from '~/types/component-catalog-service'
+import { Component, Summary } from '~/types/kronicle-service'
 import AllComponentsTabs from '~/components/AllComponentsTabs.vue'
 import ComponentDependenciesView from '~/components/ComponentDependenciesView.vue'
 
@@ -53,7 +53,7 @@ export default Vue.extend({
   },
   head(): MetaInfo {
     return {
-      title: 'Component Catalog - All Components - Dependencies',
+      title: 'Kronicle - All Components - Dependencies',
     }
   },
 })

@@ -33,7 +33,7 @@ import {
   Component,
   Priority,
   CrossFunctionalRequirement,
-} from '~/types/component-catalog-service'
+} from '~/types/kronicle-service'
 import ComponentFilters from '~/components/ComponentFilters.vue'
 import CrossFunctionalRequirementTable from '~/components/CrossFunctionalRequirementTable.vue'
 

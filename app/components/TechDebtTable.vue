@@ -40,7 +40,7 @@
 <script lang="ts">
 import Vue, { PropType } from 'vue'
 import { BBadge } from 'bootstrap-vue'
-import { Component, TechDebt } from '~/types/component-catalog-service'
+import { Component, TechDebt } from '~/types/kronicle-service'
 import { getPriorityText, getPriorityVariant } from '~/src/priorityHelper'
 import ComponentName from '~/components/ComponentName.vue'
 import Links from '~/components/Links.vue'

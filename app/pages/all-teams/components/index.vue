@@ -52,7 +52,7 @@ import {
   VBToggle,
 } from 'bootstrap-vue'
 import { MetaInfo } from 'vue-meta'
-import { Component, Team } from '~/types/component-catalog-service'
+import { Component, Team } from '~/types/kronicle-service'
 import AllTeamsTabs from '~/components/AllTeamsTabs.vue'
 import ComponentPanel from '~/components/ComponentPanel.vue'
 
@@ -133,7 +133,7 @@ export default Vue.extend({
   },
   head(): MetaInfo {
     return {
-      title: 'Component Catalog - All Teams',
+      title: 'Kronicle - All Teams',
     }
   },
 })
