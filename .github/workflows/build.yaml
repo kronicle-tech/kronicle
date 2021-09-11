@@ -35,7 +35,7 @@ jobs:
             ${{ runner.os }}-node-
       - name: Validate Gradle wrapper
         uses: gradle/wrapper-validation-action@e6e38bacfdf1a337459f332974bb2327a31aaf4b
-      - name: Build with Gradle
+      - name: Build
         run: ./gradlew service:downloadGradleLibs app:docker service:test app:assembleFrontend build
       - name: Tag build
         if: ${{ github.ref == 'refs/heads/main' }}
