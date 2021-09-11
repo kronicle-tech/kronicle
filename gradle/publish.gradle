@@ -1,23 +1,24 @@
+apply plugin: "base"
 apply plugin: "maven-publish"
 apply plugin: "signing"
 
 java {
+    withJavadocJar()
     withSourcesJar()
 }
 
 publishing {
     publications {
         mavenJava(MavenPublication) {
-            artifactId project.archivesBaseName
             from components.java
             artifact sourcesJar
             artifact javadocJar
 
             pom {
                 scm {
-                    connection "scm:git:$repoUrl"
-                    developerConnection "scm:git:$repoUrl"
-                    url websiteUrl
+                    connection = "scm:git:$repoUrl"
+                    developerConnection = "scm:git:$repoUrl"
+                    url = websiteUrl
                 }
             }
         }

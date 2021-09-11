@@ -3,7 +3,7 @@ plugins {
 }
 
 group "tech.kronicle"
-archivesBaseName "kronicle-$name"
+archivesBaseName = "kronicle-$name"
 description "Kronicle sdk library that contains Kronicle's data classes"
 
 apply from: "$rootDir/gradle/publish.gradle"
