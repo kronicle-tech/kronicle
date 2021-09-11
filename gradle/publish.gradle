@@ -11,8 +11,6 @@ publishing {
     publications {
         mavenJava(MavenPublication) {
             from components.java
-            artifact sourcesJar
-            artifact javadocJar
 
             pom {
                 scm {
@@ -37,6 +35,6 @@ publishing {
 }
 
 signing {
-    sign publishing.publications.mavenJava
     useInMemoryPgpKeys System.getenv("SIGNING_KEY"), System.getenv("SIGNING_PASSWORD")
+    sign publishing.publications.mavenJava
 }
