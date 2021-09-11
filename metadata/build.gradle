@@ -2,8 +2,9 @@ plugins {
     id "java-library"
 }
 
-group = "tech.kronicle"
+group "tech.kronicle"
 archivesBaseName = "kronicle-$name"
+description "Kronicle metadata library used for verifying that the contents of a Kronicle metdata YAML file is valid"
 
 apply from: "$rootDir/gradle/publish.gradle"
 
