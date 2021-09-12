@@ -13,6 +13,22 @@ publishing {
             from components.java
 
             pom {
+                name = archivesBaseName
+                description = project.description
+                url = websiteUrl
+                licenses {
+                    license {
+                        name = "MIT License"
+                        url = "https://github.com/kronicle-tech/kronicle/blob/main/LICENSE"
+                    }
+                }
+                developers {
+                    developer {
+                        id = "simondean"
+                        name = "Simon Dean"
+                        email = "simon@simondean.org"
+                    }
+                }
                 scm {
                     connection = "scm:git:$repoUrl"
                     developerConnection = "scm:git:$repoUrl"
