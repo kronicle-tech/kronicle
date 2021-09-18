@@ -1,4 +1,4 @@
-name: Publish artifacts to the Maven Central repository
+name: Publish JARs and Docker images
 on:
   release:
     types: [created]
@@ -47,16 +47,17 @@ jobs:
       - name: Checkout kronicle-argocd-config repo
         uses: actions/checkout@v2
         with:
-          repository: kronicle/kronicle-argocd-config
+          repository: kronicle-tech/kronicle-argocd-config
           token: ${{ secrets.ARGOCD_CONFIG_TOKEN }}
           path: kronicle-argocd-config
-      - name: Set image versions in Argo CD config
+      - name: Set image tags in Argo CD config
         run: |
-          sed -i -r "s/(ghcr.io\/kronicle-tech\/kronicle-(?:app|service)):\d+\.\d+\.\d+/\$1:${GITHUB_REF:1}" kronicle/templates/deployment.yaml
+          sed -i -r "s/kronicleAppImageTag: \d+\.\d+\.\d+/kronicleAppImageTag: ${GITHUB_REF:1}" kronicle/values.yaml
+          sed -i -r "s/kronicleServiceImageTag: \d+\.\d+\.\d+/kronicleServiceImageTag: ${GITHUB_REF:1}" kronicle/values.yaml
         working-directory: kronicle-argocd-config
       - name: Commit change to Argo CD config
         run: |
-          git add kronicle/templates/deployment.yaml
+          git add kronicle/values.yaml
           git commit -m "Set Kronicle app and service images to ${GITHUB_REF}"
           git push
         working-directory: kronicle-argocd-config
