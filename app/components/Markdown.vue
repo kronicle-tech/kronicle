@@ -43,7 +43,10 @@ function generateMarkdownHtml(markdown: String, toc: Boolean): VFile {
     } as any)
     processor = processor.use(remarkSlug)
   }
-  return processor.use(remarkHighlightJs).use(RemarkHtml).processSync(markdown)
+  return processor
+    .use(remarkHighlightJs)
+    .use(RemarkHtml, { sanitize: false })
+    .processSync(markdown)
 }
 
 function sanitizeHtml(html: VFile): VFile {

@@ -11,6 +11,8 @@ jobs:
       contents: read
     steps:
       - uses: actions/checkout@v2
+        with:
+          path: repo
       - name: Set up JDK 11
         uses: actions/setup-java@v2
         with:
@@ -24,8 +26,10 @@ jobs:
         uses: gradle/wrapper-validation-action@e6e38bacfdf1a337459f332974bb2327a31aaf4b
       - name: Build
         run: ./gradlew build
+        working-directory: repo
       - name: Publish JARs to Maven Central
         run: ./gradlew --no-parallel publish
+        working-directory: repo
         env:
           OSSRH_USERNAME: ${{ secrets.OSSRH_USERNAME }}
           OSSRH_PASSWORD: ${{ secrets.OSSRH_PASSWORD }}
@@ -39,3 +43,20 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: Build and push Docker images to GitHub Container Registry
         run: ./gradlew -PpushImage=true dockerPush
+        working-directory: repo
+      - name: Checkout kronicle-argocd-config repo
+        uses: actions/checkout@v2
+        with:
+          repository: kronicle/kronicle-argocd-config
+          token: ${{ secrets.ARGOCD_CONFIG_TOKEN }}
+          path: kronicle-argocd-config
+      - name: Set image versions in Argo CD config
+        run: |
+          sed -i -r "s/(ghcr.io\/kronicle-tech\/kronicle-(?:app|service)):\d+\.\d+\.\d+/\$1:${GITHUB_REF:1}" kronicle/templates/deployment.yaml
+        working-directory: kronicle-argocd-config
+      - name: Commit change to Argo CD config
+        run: |
+          git add kronicle/templates/deployment.yaml
+          git commit -m "Set Kronicle app and service images to ${GITHUB_REF}"
+          git push
+        working-directory: kronicle-argocd-config
