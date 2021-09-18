@@ -52,7 +52,8 @@ jobs:
           path: kronicle-argocd-config
       - name: Set image tags in Argo CD config
         run: |
-          sed -i -r "s/tag: \d+\.\d+\.\d+/tag: ${GITHUB_REF:1}" kronicle/values.yaml
+          sed -i -r "s/kronicleAppImageTag: \d+\.\d+\.\d+/kronicleAppImageTag: ${GITHUB_REF:1}" kronicle/values.yaml
+          sed -i -r "s/kronicleServiceImageTag: \d+\.\d+\.\d+/kronicleServiceImageTag: ${GITHUB_REF:1}" kronicle/values.yaml
         working-directory: kronicle-argocd-config
       - name: Commit change to Argo CD config
         run: |
