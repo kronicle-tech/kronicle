@@ -1,7 +1,7 @@
 package tech.kronicle.service.services;
 
 import tech.kronicle.service.models.ApiRepo;
-import tech.kronicle.service.repoproviders.RepoProvider;
+import tech.kronicle.service.repofinders.RepoProvider;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;

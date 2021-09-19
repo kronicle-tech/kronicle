@@ -1,6 +1,6 @@
 package tech.kronicle.service.services;
 
-import tech.kronicle.service.repoproviders.RepoProvider;
+import tech.kronicle.service.repofinders.RepoProvider;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

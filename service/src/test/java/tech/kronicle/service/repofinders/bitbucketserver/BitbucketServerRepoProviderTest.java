@@ -1,7 +1,7 @@
-package tech.kronicle.service.repoproviders.bitbucketserver;
+package tech.kronicle.service.repofinders.bitbucketserver;
 
 import tech.kronicle.service.models.ApiRepo;
-import tech.kronicle.service.repoproviders.bitbucketserver.client.BitbucketServerClient;
+import tech.kronicle.service.repofinders.bitbucketserver.client.BitbucketServerClient;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

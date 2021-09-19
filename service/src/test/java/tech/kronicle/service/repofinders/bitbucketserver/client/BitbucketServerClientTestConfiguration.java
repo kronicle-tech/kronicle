@@ -1,4 +1,4 @@
-package tech.kronicle.service.repoproviders.bitbucketserver.client;
+package tech.kronicle.service.repofinders.bitbucketserver.client;
 
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.Bean;

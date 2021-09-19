@@ -1,4 +1,4 @@
-package tech.kronicle.service.repoproviders.bitbucketserver.models.api;
+package tech.kronicle.service.repofinders.bitbucketserver.models.api;
 
 import lombok.Value;
 

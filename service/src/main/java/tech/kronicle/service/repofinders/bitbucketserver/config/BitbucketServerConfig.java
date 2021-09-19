@@ -1,4 +1,4 @@
-package tech.kronicle.service.repoproviders.bitbucketserver.config;
+package tech.kronicle.service.repofinders.bitbucketserver.config;
 
 import lombok.Value;
 import lombok.experimental.NonFinal;

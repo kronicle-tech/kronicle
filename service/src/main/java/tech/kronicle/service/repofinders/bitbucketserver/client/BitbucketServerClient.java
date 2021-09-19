@@ -1,13 +1,13 @@
-package tech.kronicle.service.repoproviders.bitbucketserver.client;
+package tech.kronicle.service.repofinders.bitbucketserver.client;
 
 import tech.kronicle.service.models.ApiRepo;
-import tech.kronicle.service.repoproviders.bitbucketserver.config.BitbucketServerConfig;
-import tech.kronicle.service.repoproviders.bitbucketserver.config.BitbucketServerHostConfig;
-import tech.kronicle.service.repoproviders.bitbucketserver.constants.BitbucketServerApiPaths;
-import tech.kronicle.service.repoproviders.bitbucketserver.models.api.BrowseResponse;
-import tech.kronicle.service.repoproviders.bitbucketserver.models.api.Link;
-import tech.kronicle.service.repoproviders.bitbucketserver.models.api.PageResponse;
-import tech.kronicle.service.repoproviders.bitbucketserver.models.api.Repo;
+import tech.kronicle.service.repofinders.bitbucketserver.config.BitbucketServerConfig;
+import tech.kronicle.service.repofinders.bitbucketserver.config.BitbucketServerHostConfig;
+import tech.kronicle.service.repofinders.bitbucketserver.constants.BitbucketServerApiPaths;
+import tech.kronicle.service.repofinders.bitbucketserver.models.api.BrowseResponse;
+import tech.kronicle.service.repofinders.bitbucketserver.models.api.Link;
+import tech.kronicle.service.repofinders.bitbucketserver.models.api.PageResponse;
+import tech.kronicle.service.repofinders.bitbucketserver.models.api.Repo;
 import tech.kronicle.service.services.UriVariablesBuilder;
 import tech.kronicle.service.spring.stereotypes.Client;
 import lombok.RequiredArgsConstructor;

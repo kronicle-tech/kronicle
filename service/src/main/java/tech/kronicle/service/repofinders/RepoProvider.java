@@ -1,4 +1,4 @@
-package tech.kronicle.service.repoproviders;
+package tech.kronicle.service.repofinders;
 
 import tech.kronicle.service.models.ApiRepo;
 

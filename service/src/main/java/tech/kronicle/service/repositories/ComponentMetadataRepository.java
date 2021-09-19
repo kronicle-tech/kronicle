@@ -3,7 +3,7 @@ package tech.kronicle.service.repositories;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.dataformat.yaml.YAMLMapper;
 import tech.kronicle.componentmetadata.models.ComponentMetadata;
-import tech.kronicle.service.repoproviders.RepoProvider;
+import tech.kronicle.service.repofinders.RepoProvider;
 import tech.kronicle.service.exceptions.ValidationException;
 import tech.kronicle.service.models.ApiRepo;
 import tech.kronicle.service.models.RepoDirAndGit;

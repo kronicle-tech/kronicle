@@ -1,9 +1,9 @@
-package tech.kronicle.service.repoproviders.bitbucketserver.client;
+package tech.kronicle.service.repofinders.bitbucketserver.client;
 
 import com.github.tomakehurst.wiremock.WireMockServer;
 import tech.kronicle.service.models.ApiRepo;
-import tech.kronicle.service.repoproviders.bitbucketserver.config.BitbucketServerConfig;
-import tech.kronicle.service.repoproviders.bitbucketserver.config.BitbucketServerHostConfig;
+import tech.kronicle.service.repofinders.bitbucketserver.config.BitbucketServerConfig;
+import tech.kronicle.service.repofinders.bitbucketserver.config.BitbucketServerHostConfig;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

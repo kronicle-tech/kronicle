@@ -1,4 +1,4 @@
-package tech.kronicle.service.repoproviders.bitbucketserver.constants;
+package tech.kronicle.service.repofinders.bitbucketserver.constants;
 
 public final class BitbucketServerApiPaths {
 
