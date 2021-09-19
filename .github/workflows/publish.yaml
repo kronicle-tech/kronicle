@@ -58,8 +58,10 @@ jobs:
           sed -i -r "s/kronicleAppImageTag: \d+\.\d+\.\d+/kronicleAppImageTag: ${{ steps.get_version.outputs.VERSION }}/g" kronicle/values.yaml
           sed -i -r "s/kronicleServiceImageTag: \d+\.\d+\.\d+/kronicleServiceImageTag: ${{ steps.get_version.outputs.VERSION }}/g" kronicle/values.yaml
         working-directory: kronicle-argocd-config
-      - name: Commit change to Argo CD config
+      - name: Commit and push change to Argo CD config
         run: |
+          git config user.email "deploy@kronicle.tech"
+          git config user.name "Kronicle Deploy"
           git add kronicle/values.yaml
           git commit -m "Set Kronicle app and service image tags to v${{ steps.get_version.outputs.VERSION }}"
           git push
