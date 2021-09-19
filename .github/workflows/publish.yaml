@@ -52,12 +52,12 @@ jobs:
           path: kronicle-argocd-config
       - name: Set image tags in Argo CD config
         run: |
-          sed -i -r "s/kronicleAppImageTag: \d+\.\d+\.\d+/kronicleAppImageTag: ${GITHUB_REF:1}" kronicle/values.yaml
-          sed -i -r "s/kronicleServiceImageTag: \d+\.\d+\.\d+/kronicleServiceImageTag: ${GITHUB_REF:1}" kronicle/values.yaml
+          sed -i -r "s/kronicleAppImageTag: \d+\.\d+\.\d+/kronicleAppImageTag: ${GITHUB_REF:1}/g" kronicle/values.yaml
+          sed -i -r "s/kronicleServiceImageTag: \d+\.\d+\.\d+/kronicleServiceImageTag: ${GITHUB_REF:1}/g" kronicle/values.yaml
         working-directory: kronicle-argocd-config
       - name: Commit change to Argo CD config
         run: |
           git add kronicle/values.yaml
-          git commit -m "Set Kronicle app and service images to ${GITHUB_REF}"
+          git commit -m "Set Kronicle app and service image tags to ${GITHUB_REF}"
           git push
         working-directory: kronicle-argocd-config
