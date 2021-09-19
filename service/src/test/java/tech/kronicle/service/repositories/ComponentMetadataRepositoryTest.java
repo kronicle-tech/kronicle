@@ -9,9 +9,9 @@ import tech.kronicle.sdk.models.Team;
 import tech.kronicle.service.BaseTest;
 import tech.kronicle.service.models.ApiRepo;
 import tech.kronicle.service.models.RepoDirAndGit;
-import tech.kronicle.service.repofinders.RepoProvider;
+import tech.kronicle.service.repofinders.RepoFinder;
 import tech.kronicle.service.services.GitCloner;
-import tech.kronicle.service.services.RepoProviderFinder;
+import tech.kronicle.service.services.RepoFinderProvider;
 import tech.kronicle.service.services.ValidatorService;
 import tech.kronicle.service.testutils.LogCaptor;
 import lombok.RequiredArgsConstructor;
@@ -42,7 +42,7 @@ public class ComponentMetadataRepositoryTest extends BaseTest {
     private static final String REPO_URL_4 = "https://example.com/repo-4.git";
 
     @Mock
-    private RepoProviderFinder mockFinder;
+    private RepoFinderProvider mockFinder;
     @Mock
     private GitCloner mockGitCloner;
     private final ValidatorService validatorService = ValidatorServiceFactory.createValidationService();
@@ -280,14 +280,14 @@ public class ComponentMetadataRepositoryTest extends BaseTest {
     }
 
     private void mockRepoProviders(List<ApiRepo>... repos) {
-        List<RepoProvider> repoProviders = Arrays.stream(repos)
-                .map(FakeRepoProvider::new)
+        List<RepoFinder> repoFinders = Arrays.stream(repos)
+                .map(FakeRepoFinder::new)
                 .collect(Collectors.toList());
-        when(mockFinder.getRepoProviders()).thenReturn(repoProviders);
+        when(mockFinder.getRepoFinders()).thenReturn(repoFinders);
     }
 
     @RequiredArgsConstructor
-    private static class FakeRepoProvider extends RepoProvider {
+    private static class FakeRepoFinder extends RepoFinder {
 
         private final List<ApiRepo> apiRepos;
 

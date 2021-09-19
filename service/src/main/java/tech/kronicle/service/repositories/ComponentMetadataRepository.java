@@ -3,11 +3,11 @@ package tech.kronicle.service.repositories;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.dataformat.yaml.YAMLMapper;
 import tech.kronicle.componentmetadata.models.ComponentMetadata;
-import tech.kronicle.service.repofinders.RepoProvider;
+import tech.kronicle.service.repofinders.RepoFinder;
 import tech.kronicle.service.exceptions.ValidationException;
 import tech.kronicle.service.models.ApiRepo;
 import tech.kronicle.service.models.RepoDirAndGit;
-import tech.kronicle.service.services.RepoProviderFinder;
+import tech.kronicle.service.services.RepoFinderProvider;
 import tech.kronicle.service.services.GitCloner;
 import tech.kronicle.service.services.ValidatorService;
 import lombok.AllArgsConstructor;
@@ -34,7 +34,7 @@ public class ComponentMetadataRepository {
 
     private static final String DEFAULT_COMPONENT_METADATA_PATH = "component-metadata.yaml";
 
-    private final RepoProviderFinder finder;
+    private final RepoFinderProvider finder;
     private final GitCloner gitCloner;
     private final YAMLMapper yamlMapper;
     private final ValidatorService validatorService;
@@ -57,8 +57,8 @@ public class ComponentMetadataRepository {
     }
 
     private List<ComponentMetadata> getComponentMetadataList() {
-        return finder.getRepoProviders().stream()
-                .map(RepoProvider::getApiRepos)
+        return finder.getRepoFinders().stream()
+                .map(RepoFinder::getApiRepos)
                 .flatMap(Collection::stream)
                 .filter(this::repoHasComponentMetadataFile)
                 .map(this::cloneOrPullRepo)

@@ -14,15 +14,15 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
-public class BitbucketServerRepoProviderTest {
+public class BitbucketServerRepoFinderTest {
 
-    private BitbucketServerRepoProvider underTest;
+    private BitbucketServerRepoFinder underTest;
     @Mock
     private BitbucketServerClient mockClient;
 
     @BeforeEach
     public void beforeEach() {
-        underTest = new BitbucketServerRepoProvider(mockClient);
+        underTest = new BitbucketServerRepoFinder(mockClient);
     }
 
     @Test

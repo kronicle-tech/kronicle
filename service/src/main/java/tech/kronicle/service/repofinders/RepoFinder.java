@@ -4,7 +4,7 @@ import tech.kronicle.service.models.ApiRepo;
 
 import java.util.List;
 
-public abstract class RepoProvider {
+public abstract class RepoFinder {
 
     public abstract List<ApiRepo> getApiRepos();
 }
