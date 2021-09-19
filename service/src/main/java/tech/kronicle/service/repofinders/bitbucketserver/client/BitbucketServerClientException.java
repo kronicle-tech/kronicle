@@ -1,4 +1,4 @@
-package tech.kronicle.service.repoproviders.bitbucketserver.client;
+package tech.kronicle.service.repofinders.bitbucketserver.client;
 
 import lombok.Getter;
 

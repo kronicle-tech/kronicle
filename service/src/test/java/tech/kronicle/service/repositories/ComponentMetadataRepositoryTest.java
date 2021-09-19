@@ -9,7 +9,7 @@ import tech.kronicle.sdk.models.Team;
 import tech.kronicle.service.BaseTest;
 import tech.kronicle.service.models.ApiRepo;
 import tech.kronicle.service.models.RepoDirAndGit;
-import tech.kronicle.service.repoproviders.RepoProvider;
+import tech.kronicle.service.repofinders.RepoProvider;
 import tech.kronicle.service.services.GitCloner;
 import tech.kronicle.service.services.RepoProviderFinder;
 import tech.kronicle.service.services.ValidatorService;

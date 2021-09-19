@@ -1,4 +1,4 @@
-package tech.kronicle.service.repoproviders.bitbucketserver.models.api;
+package tech.kronicle.service.repofinders.bitbucketserver.models.api;
 
 import lombok.Value;
 
@@ -6,9 +6,8 @@ import lombok.Value;
  * This class only contains a subset of the fields returned by the Bitbucket Server API
  */
 @Value
-public class Project {
+public class Link {
 
-    String key;
+    String href;
     String name;
-    String type;
 }

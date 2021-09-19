@@ -1,13 +1,14 @@
-package tech.kronicle.service.repoproviders.bitbucketserver.models.api;
+package tech.kronicle.service.repofinders.bitbucketserver.models.api;
 
 import lombok.Value;
-import lombok.extern.jackson.Jacksonized;
 
 /**
  * This class only contains a subset of the fields returned by the Bitbucket Server API
  */
 @Value
-public class BrowseResponse {
+public class Project {
 
+    String key;
+    String name;
     String type;
 }
