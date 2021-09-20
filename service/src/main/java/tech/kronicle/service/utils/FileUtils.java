@@ -94,6 +94,10 @@ public class FileUtils {
         return findFileContents(start, DEFAULT_MAX_DEPTH, matcher);
     }
 
+    public boolean fileExists(Path file) {
+        return Files.exists(file);
+    }
+
     public Stream<FileContent> findFileContents(Path start, int maxDepth, BiPredicate<Path, BasicFileAttributes> matcher) {
         return findFiles(start, maxDepth, matcher)
                 .map(file -> new FileContent(file, readFileContent(file)))

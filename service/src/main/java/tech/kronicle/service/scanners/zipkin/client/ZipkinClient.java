@@ -26,6 +26,7 @@ import java.util.List;
 import java.util.Map;
 
 import static java.util.Objects.nonNull;
+import static tech.kronicle.service.utils.UriTemplateUtils.expandUriTemplate;
 
 @Client
 @RequiredArgsConstructor
@@ -111,10 +112,6 @@ public class ZipkinClient {
             log.warn(exception.getMessage());
             throw exception;
         }
-    }
-
-    private String expandUriTemplate(String uriTemplate, Map<String, String> uriVariables) {
-        return new UriTemplate(uriTemplate).expand(uriVariables).toString();
     }
 
     private String getCookieHeaderValue() {

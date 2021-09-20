@@ -67,6 +67,9 @@ resilience4j:
         retryExceptions:
           - tech.kronicle.service.scanners.zipkin.client.ZipkinClientException
 
+github:
+  timeout: 30s
+
 bitbucket-server:
   timeout: 30s
 
