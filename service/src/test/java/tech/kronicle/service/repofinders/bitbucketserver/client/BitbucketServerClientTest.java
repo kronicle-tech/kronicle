@@ -43,7 +43,20 @@ public class BitbucketServerClientTest {
     }
 
     @Test
-    public void getNormalReposShouldReturnAnEmptyListWhenNoReposAreFound() {
+    public void getNormalReposShouldReturnAnEmptyListWhenHostsListInConfigIsNull() {
+        // Given
+        BitbucketServerConfig config = new BitbucketServerConfig(null, TEST_DURATION);
+        underTest = new BitbucketServerClient(webClient, config);
+
+        // When
+        List<ApiRepo> returnValue = underTest.getNormalRepos();
+
+        // Then
+        assertThat(returnValue).isEmpty();
+    }
+
+    @Test
+    public void getNormalReposShouldReturnAnEmptyListWhenHostsListInConfigIsEmpty() {
         // Given
         BitbucketServerConfig config = new BitbucketServerConfig(List.of(), TEST_DURATION);
         underTest = new BitbucketServerClient(webClient, config);
