@@ -29,6 +29,8 @@ import java.util.Optional;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
+import static java.util.Objects.isNull;
+
 @Repository
 @RequiredArgsConstructor
 @Slf4j
@@ -105,8 +107,8 @@ public class ComponentMetadataRepository {
         if (file.isPresent()) {
             return fileUtils.readFileContent(file.get());
         }
-        throw new RuntimeException(String.format("Could not find Kronicle metadata file in repo %s",
-          repoAndRepoDir.repo.getUrl()));
+        throw new RuntimeException(String.format("Could not find Kronicle metadata file in repo \"%s\"",
+            repoAndRepoDir.repo.getUrl()));
     }
 
     private RepoAndComponentMetadata readComponentMetadataYaml(RepoAndYaml repoAndYaml) {
