@@ -32,7 +32,7 @@ public class BitbucketServerRepoFinderTest {
         when(mockClient.getNormalRepos()).thenReturn(apiRepos);
 
         // When
-        List<ApiRepo> returnValue = underTest.getApiRepos();
+        List<ApiRepo> returnValue = underTest.findApiRepos();
 
         // Then
         assertThat(returnValue).isSameAs(apiRepos);
@@ -45,7 +45,7 @@ public class BitbucketServerRepoFinderTest {
         when(mockClient.getNormalRepos()).thenReturn(apiRepos);
 
         // When
-        List<ApiRepo> returnValue = underTest.getApiRepos();
+        List<ApiRepo> returnValue = underTest.findApiRepos();
 
         // Then
         assertThat(returnValue).isSameAs(apiRepos);

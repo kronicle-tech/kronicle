@@ -14,7 +14,7 @@ public class BitbucketServerRepoFinder extends RepoFinder {
     private final BitbucketServerClient client;
 
     @Override
-    public List<ApiRepo> getApiRepos() {
+    public List<ApiRepo> findApiRepos() {
         return client.getNormalRepos();
     }
 }

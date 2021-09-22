@@ -1,4 +1,4 @@
-package tech.kronicle.service.repofinders.github.config;
+package tech.kronicle.service.repofinders.bitbucketserver.config;
 
 import lombok.Value;
 import lombok.experimental.NonFinal;
@@ -11,13 +11,13 @@ import java.time.Duration;
 import java.util.List;
 
 @Validated
-@ConfigurationProperties("github")
+@ConfigurationProperties("repo-finders.bitbucket-server")
 @ConstructorBinding
 @Value
 @NonFinal
-public class GitHubConfig {
+public class BitbucketServerRepoFinderConfig {
 
-  List<GitHubUser> users;
-  @NotNull
-  Duration timeout;
+    List<BitbucketServerRepoFinderHostConfig> hosts;
+    @NotNull
+    Duration timeout;
 }

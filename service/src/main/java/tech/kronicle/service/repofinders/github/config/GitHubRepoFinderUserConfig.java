@@ -11,7 +11,7 @@ import javax.validation.constraints.NotEmpty;
 @ConstructorBinding
 @Value
 @NonFinal
-public class GitHubUser {
+public class GitHubRepoFinderUserConfig {
 
   @NotEmpty
   String username;

@@ -6,8 +6,8 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import tech.kronicle.service.models.ApiRepo;
 import tech.kronicle.service.repofinders.github.client.GitHubClient;
-import tech.kronicle.service.repofinders.github.config.GitHubConfig;
-import tech.kronicle.service.repofinders.github.config.GitHubUser;
+import tech.kronicle.service.repofinders.github.config.GitHubRepoFinderConfig;
+import tech.kronicle.service.repofinders.github.config.GitHubRepoFinderUserConfig;
 
 import java.time.Duration;
 import java.util.Collection;
@@ -21,9 +21,9 @@ import static org.mockito.Mockito.when;
 @ExtendWith(MockitoExtension.class)
 public class GitHubRepoFinderTest {
 
-    private static final GitHubUser USER_1 = new GitHubUser("test-user-1", "test-personal-access-token-1");
-    private static final GitHubUser USER_2 = new GitHubUser("test-user-2", "test-personal-access-token-2");
-    private static final GitHubUser USER_3 = new GitHubUser("test-user-3", "test-personal-access-token-3");
+    private static final GitHubRepoFinderUserConfig USER_1 = new GitHubRepoFinderUserConfig("test-user-1", "test-personal-access-token-1");
+    private static final GitHubRepoFinderUserConfig USER_2 = new GitHubRepoFinderUserConfig("test-user-2", "test-personal-access-token-2");
+    private static final GitHubRepoFinderUserConfig USER_3 = new GitHubRepoFinderUserConfig("test-user-3", "test-personal-access-token-3");
     private static final Duration TIMEOUT = Duration.ofSeconds(1);
 
     private GitHubRepoFinder underTest;
@@ -33,11 +33,11 @@ public class GitHubRepoFinderTest {
     @Test
     public void getApiReposShouldReturnAnEmptyListWhenUsersListInConfigIsNull() {
         // Given
-        GitHubConfig config = new GitHubConfig(null, TIMEOUT);
+        GitHubRepoFinderConfig config = new GitHubRepoFinderConfig(null, TIMEOUT);
         underTest = new GitHubRepoFinder(config, mockClient);
 
         // When
-        List<ApiRepo> returnValue = underTest.getApiRepos();
+        List<ApiRepo> returnValue = underTest.findApiRepos();
 
         // Then
         assertThat(returnValue).isEmpty();
@@ -46,11 +46,11 @@ public class GitHubRepoFinderTest {
     @Test
     public void getApiReposShouldReturnAnEmptyListWhenUsersListInConfigIsEmpty() {
         // Given
-        GitHubConfig config = new GitHubConfig(List.of(), TIMEOUT);
+        GitHubRepoFinderConfig config = new GitHubRepoFinderConfig(List.of(), TIMEOUT);
         underTest = new GitHubRepoFinder(config, mockClient);
 
         // When
-        List<ApiRepo> returnValue = underTest.getApiRepos();
+        List<ApiRepo> returnValue = underTest.findApiRepos();
 
         // Then
         assertThat(returnValue).isEmpty();
@@ -59,13 +59,13 @@ public class GitHubRepoFinderTest {
     @Test
     public void getApiReposShouldCallClientForAUserInConfig() {
         // Given
-        GitHubConfig config = new GitHubConfig(List.of(USER_1), TIMEOUT);
+        GitHubRepoFinderConfig config = new GitHubRepoFinderConfig(List.of(USER_1), TIMEOUT);
         List<ApiRepo> apiRepos1 = List.of(new ApiRepo("https://example.com/repo-1-a.git", true), new ApiRepo("https://example.com/repo-1-b.git", false));
         when(mockClient.getRepos(USER_1)).thenReturn(apiRepos1);
         underTest = new GitHubRepoFinder(config, mockClient);
 
         // When
-        List<ApiRepo> returnValue = underTest.getApiRepos();
+        List<ApiRepo> returnValue = underTest.findApiRepos();
 
         // Then
         assertThat(returnValue).isEqualTo(apiRepos1);
@@ -74,7 +74,7 @@ public class GitHubRepoFinderTest {
     @Test
     public void getApiReposShouldCallClientForMultipleUsersInConfig() {
         // Given
-        GitHubConfig config = new GitHubConfig(List.of(USER_1, USER_2, USER_3), TIMEOUT);
+        GitHubRepoFinderConfig config = new GitHubRepoFinderConfig(List.of(USER_1, USER_2, USER_3), TIMEOUT);
         List<ApiRepo> apiRepos1 = List.of(new ApiRepo("https://example.com/repo-1-a.git", true), new ApiRepo("https://example.com/repo-1-b.git", false));
         List<ApiRepo> apiRepos2 = List.of(new ApiRepo("https://example.com/repo-2-a.git", true), new ApiRepo("https://example.com/repo-2-b.git", false));
         List<ApiRepo> apiRepos3 = List.of(new ApiRepo("https://example.com/repo-3-a.git", true), new ApiRepo("https://example.com/repo-3-b.git", false));
@@ -83,7 +83,7 @@ public class GitHubRepoFinderTest {
         when(mockClient.getRepos(USER_3)).thenReturn(apiRepos3);
         underTest = new GitHubRepoFinder(config, mockClient);
         // When
-        List<ApiRepo> returnValue = underTest.getApiRepos();
+        List<ApiRepo> returnValue = underTest.findApiRepos();
 
         // Then
         List<ApiRepo> allApiRepos = Stream.of(apiRepos1, apiRepos2, apiRepos3)
@@ -95,13 +95,13 @@ public class GitHubRepoFinderTest {
     @Test
     public void getApiReposShouldCallClientAndReturnAnEmptyListOfApiReposWhenClientReturnsAnEmptyList() {
         // Given
-        GitHubConfig config = new GitHubConfig(List.of(USER_1), TIMEOUT);
+        GitHubRepoFinderConfig config = new GitHubRepoFinderConfig(List.of(USER_1), TIMEOUT);
         List<ApiRepo> apiRepos1 = List.of();
         when(mockClient.getRepos(USER_1)).thenReturn(apiRepos1);
         underTest = new GitHubRepoFinder(config, mockClient);
 
         // When
-        List<ApiRepo> returnValue = underTest.getApiRepos();
+        List<ApiRepo> returnValue = underTest.findApiRepos();
 
         // Then
         assertThat(returnValue).isEqualTo(apiRepos1);
@@ -110,7 +110,7 @@ public class GitHubRepoFinderTest {
     @Test
     public void getApiReposShouldDeduplicateIdenticalApiRepos() {
         // Given
-        GitHubConfig config = new GitHubConfig(List.of(USER_1, USER_2), TIMEOUT);
+        GitHubRepoFinderConfig config = new GitHubRepoFinderConfig(List.of(USER_1, USER_2), TIMEOUT);
         ApiRepo apiRepo1 = new ApiRepo("https://example.com/repo-1.git", true);
         ApiRepo apiRepo2 = new ApiRepo("https://example.com/repo-2.git", false);
         ApiRepo apiRepo3 = new ApiRepo("https://example.com/repo-3.git", false);
@@ -120,7 +120,7 @@ public class GitHubRepoFinderTest {
         when(mockClient.getRepos(USER_2)).thenReturn(apiRepos2);
         underTest = new GitHubRepoFinder(config, mockClient);
         // When
-        List<ApiRepo> returnValue = underTest.getApiRepos();
+        List<ApiRepo> returnValue = underTest.findApiRepos();
 
         // Then
         assertThat(returnValue).hasSize(3);

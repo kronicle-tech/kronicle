@@ -14,8 +14,8 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.web.reactive.function.client.WebClient;
 import tech.kronicle.service.models.ApiRepo;
-import tech.kronicle.service.repofinders.github.config.GitHubConfig;
-import tech.kronicle.service.repofinders.github.config.GitHubUser;
+import tech.kronicle.service.repofinders.github.config.GitHubRepoFinderConfig;
+import tech.kronicle.service.repofinders.github.config.GitHubRepoFinderUserConfig;
 import tech.kronicle.service.repofinders.github.models.ApiResponseCacheEntry;
 import tech.kronicle.service.repofinders.github.models.api.ContentEntry;
 import tech.kronicle.service.repofinders.github.models.api.UserRepo;
@@ -64,7 +64,7 @@ public class GitHubClientTest {
     public void getReposShouldReturnAListOfReposWithVaryingHasComponentMetadataFileValues() {
         // Given
         GitHubApiWireMockFactory.Scenario scenario = GitHubApiWireMockFactory.Scenario.SIMPLE;
-        GitHubConfig config = new GitHubConfig(null, TEST_DURATION);
+        GitHubRepoFinderConfig config = new GitHubRepoFinderConfig(null, TEST_DURATION);
         underTest = new GitHubClient(webClient, config, mockCache, baseUrl);
 
         // When
@@ -134,7 +134,7 @@ public class GitHubClientTest {
     public void getReposShouldLogRateLimitResponseHeadersInGitHubApiResponses() {
         // Given
         GitHubApiWireMockFactory.Scenario scenario = GitHubApiWireMockFactory.Scenario.RATE_LIMIT_RESPONSE_HEADERS;
-        GitHubConfig config = new GitHubConfig(null, TEST_DURATION);
+        GitHubRepoFinderConfig config = new GitHubRepoFinderConfig(null, TEST_DURATION);
         underTest = new GitHubClient(webClient, config, mockCache, baseUrl);
 
         // When
@@ -169,7 +169,7 @@ public class GitHubClientTest {
     public void getReposShouldReturnCachedUserReposIfETagHasNotChanged() {
         // Given
         GitHubApiWireMockFactory.Scenario scenario = GitHubApiWireMockFactory.Scenario.ETAG_USER_REPOS_NOT_MODIFIED;
-        GitHubConfig config = new GitHubConfig(null, TEST_DURATION);
+        GitHubRepoFinderConfig config = new GitHubRepoFinderConfig(null, TEST_DURATION);
         underTest = new GitHubClient(webClient, config, mockCache, baseUrl);
         ApiResponseCacheEntry<List<UserRepo>> userReposCacheEntry = new ApiResponseCacheEntry<>(
                 "test-etag-1",
@@ -191,7 +191,7 @@ public class GitHubClientTest {
     public void getReposShouldReturnCachedRepoRootContentsIfETagHasNotChanged() {
         // Given
         GitHubApiWireMockFactory.Scenario scenario = GitHubApiWireMockFactory.Scenario.ETAG_REPO_2_NOT_MODIFIED;
-        GitHubConfig config = new GitHubConfig(null, TEST_DURATION);
+        GitHubRepoFinderConfig config = new GitHubRepoFinderConfig(null, TEST_DURATION);
         underTest = new GitHubClient(webClient, config, mockCache, baseUrl);
         ApiResponseCacheEntry<List<ContentEntry>> userReposCacheEntry = new ApiResponseCacheEntry<>("test-etag-3", List.of(new ContentEntry("kronicle.yaml")));
         when(mockCache.getEntry(scenario.getUsername(), baseUrl + "/user/repos")).thenReturn(null);
@@ -216,7 +216,7 @@ public class GitHubClientTest {
     public void getReposShouldThrowAnExceptionWhenGitHubReturnsAnUnexpectedStatusCode() {
         // Given
         GitHubApiWireMockFactory.Scenario scenario = GitHubApiWireMockFactory.Scenario.NOT_FOUND;
-        GitHubConfig config = new GitHubConfig(null, TEST_DURATION);
+        GitHubRepoFinderConfig config = new GitHubRepoFinderConfig(null, TEST_DURATION);
         underTest = new GitHubClient(webClient, config, mockCache, baseUrl);
 
         // When
@@ -231,7 +231,7 @@ public class GitHubClientTest {
         assertThat(exception.getResponseBody()).isEqualTo("User does not exist");
     }
 
-    private GitHubUser createUser(GitHubApiWireMockFactory.Scenario scenario) {
-        return new GitHubUser(scenario.getUsername(), TEST_PERSONAL_ACCESS_TOKEN);
+    private GitHubRepoFinderUserConfig createUser(GitHubApiWireMockFactory.Scenario scenario) {
+        return new GitHubRepoFinderUserConfig(scenario.getUsername(), TEST_PERSONAL_ACCESS_TOKEN);
     }
 }

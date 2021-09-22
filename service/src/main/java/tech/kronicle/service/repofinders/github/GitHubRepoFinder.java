@@ -4,7 +4,7 @@ import lombok.RequiredArgsConstructor;
 import tech.kronicle.service.models.ApiRepo;
 import tech.kronicle.service.repofinders.RepoFinder;
 import tech.kronicle.service.repofinders.github.client.GitHubClient;
-import tech.kronicle.service.repofinders.github.config.GitHubConfig;
+import tech.kronicle.service.repofinders.github.config.GitHubRepoFinderConfig;
 
 import java.util.Collection;
 import java.util.List;
@@ -16,11 +16,11 @@ import static java.util.Objects.isNull;
 @RequiredArgsConstructor
 public class GitHubRepoFinder extends RepoFinder {
 
-  private final GitHubConfig config;
+  private final GitHubRepoFinderConfig config;
   private final GitHubClient client;
 
   @Override
-  public List<ApiRepo> getApiRepos() {
+  public List<ApiRepo> findApiRepos() {
     if (isNull(config.getUsers())) {
       return List.of();
     }

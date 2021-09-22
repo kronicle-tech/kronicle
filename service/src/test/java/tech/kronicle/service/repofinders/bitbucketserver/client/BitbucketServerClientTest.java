@@ -2,8 +2,8 @@ package tech.kronicle.service.repofinders.bitbucketserver.client;
 
 import com.github.tomakehurst.wiremock.WireMockServer;
 import tech.kronicle.service.models.ApiRepo;
-import tech.kronicle.service.repofinders.bitbucketserver.config.BitbucketServerConfig;
-import tech.kronicle.service.repofinders.bitbucketserver.config.BitbucketServerHostConfig;
+import tech.kronicle.service.repofinders.bitbucketserver.config.BitbucketServerRepoFinderConfig;
+import tech.kronicle.service.repofinders.bitbucketserver.config.BitbucketServerRepoFinderHostConfig;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -45,7 +45,7 @@ public class BitbucketServerClientTest {
     @Test
     public void getNormalReposShouldReturnAnEmptyListWhenHostsListInConfigIsNull() {
         // Given
-        BitbucketServerConfig config = new BitbucketServerConfig(null, TEST_DURATION);
+        BitbucketServerRepoFinderConfig config = new BitbucketServerRepoFinderConfig(null, TEST_DURATION);
         underTest = new BitbucketServerClient(webClient, config);
 
         // When
@@ -58,7 +58,7 @@ public class BitbucketServerClientTest {
     @Test
     public void getNormalReposShouldReturnAnEmptyListWhenHostsListInConfigIsEmpty() {
         // Given
-        BitbucketServerConfig config = new BitbucketServerConfig(List.of(), TEST_DURATION);
+        BitbucketServerRepoFinderConfig config = new BitbucketServerRepoFinderConfig(List.of(), TEST_DURATION);
         underTest = new BitbucketServerClient(webClient, config);
 
         // When
@@ -71,10 +71,10 @@ public class BitbucketServerClientTest {
     @Test
     public void getNormalReposShouldReturnAListOfReposWithVaryingHasComponentMetadataFileValues() {
         // Given
-        BitbucketServerConfig config = new BitbucketServerConfig(
+        BitbucketServerRepoFinderConfig config = new BitbucketServerRepoFinderConfig(
                 List.of(
-                    new BitbucketServerHostConfig(createBaseUrl("/server-1"), "test-username-1", "test-password-1"),
-                    new BitbucketServerHostConfig(createBaseUrl("/server-2"), "test-username-2", "test-password-2")),
+                    new BitbucketServerRepoFinderHostConfig(createBaseUrl("/server-1"), "test-username-1", "test-password-1"),
+                    new BitbucketServerRepoFinderHostConfig(createBaseUrl("/server-2"), "test-username-2", "test-password-2")),
                 TEST_DURATION);
         underTest = new BitbucketServerClient(webClient, config);
 
@@ -97,8 +97,8 @@ public class BitbucketServerClientTest {
     @Test
     public void getNormalReposShouldThrowAnExceptionWhenBitbucketServerReturnsAnUnexpectedStatusCode() {
         // Given
-        BitbucketServerConfig config = new BitbucketServerConfig(
-                List.of(new BitbucketServerHostConfig(createBaseUrl("/server-does-not-exist"), "test-username-1", "test-password-1")),
+        BitbucketServerRepoFinderConfig config = new BitbucketServerRepoFinderConfig(
+                List.of(new BitbucketServerRepoFinderHostConfig(createBaseUrl("/server-does-not-exist"), "test-username-1", "test-password-1")),
                 TEST_DURATION);
         underTest = new BitbucketServerClient(webClient, config);
 
