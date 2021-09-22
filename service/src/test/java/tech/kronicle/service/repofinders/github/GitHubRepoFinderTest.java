@@ -21,9 +21,9 @@ import static org.mockito.Mockito.when;
 @ExtendWith(MockitoExtension.class)
 public class GitHubRepoFinderTest {
 
-    public static final GitHubUser USER_1 = new GitHubUser("test-user-1", "test-personal-access-token-1");
-    public static final GitHubUser USER_2 = new GitHubUser("test-user-2", "test-personal-access-token-2");
-    public static final GitHubUser USER_3 = new GitHubUser("test-user-3", "test-personal-access-token-3");
+    private static final GitHubUser USER_1 = new GitHubUser("test-user-1", "test-personal-access-token-1");
+    private static final GitHubUser USER_2 = new GitHubUser("test-user-2", "test-personal-access-token-2");
+    private static final GitHubUser USER_3 = new GitHubUser("test-user-3", "test-personal-access-token-3");
     private static final Duration TIMEOUT = Duration.ofSeconds(1);
 
     private GitHubRepoFinder underTest;
@@ -87,8 +87,8 @@ public class GitHubRepoFinderTest {
 
         // Then
         List<ApiRepo> allApiRepos = Stream.of(apiRepos1, apiRepos2, apiRepos3)
-            .flatMap(Collection::stream)
-            .collect(Collectors.toList());
+                .flatMap(Collection::stream)
+                .collect(Collectors.toList());
         assertThat(returnValue).containsExactlyInAnyOrderElementsOf(allApiRepos);
     }
 

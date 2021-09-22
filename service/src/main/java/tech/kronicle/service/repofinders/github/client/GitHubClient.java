@@ -1,7 +1,7 @@
 package tech.kronicle.service.repofinders.github.client;
 
-import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -31,11 +31,11 @@ import java.util.Objects;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
+import static java.util.Objects.isNull;
 import static java.util.Objects.nonNull;
 import static tech.kronicle.service.utils.UriTemplateUtils.expandUriTemplate;
 
 @Client
-@RequiredArgsConstructor
 @Slf4j
 public class GitHubClient {
 
@@ -44,15 +44,24 @@ public class GitHubClient {
   private final WebClient webClient;
   private final GitHubConfig config;
   private final ApiResponseCache cache;
+  private final String gitHubApiBaseUrl;
+
+  public GitHubClient(WebClient webClient, GitHubConfig config, ApiResponseCache cache,
+                      @Value(GitHubApiBaseUrls.API_DOT_GITHUB_DOT_COM) String gitHubApiBaseUrl) {
+    this.webClient = webClient;
+    this.config = config;
+    this.cache = cache;
+    this.gitHubApiBaseUrl = gitHubApiBaseUrl;
+  }
 
   public List<ApiRepo> getRepos(GitHubUser user) {
     return getUserRepos(user).stream()
-      .map(addHasComponentMetadataFile(user))
-      .collect(Collectors.toList());
+            .map(addHasComponentMetadataFile(user))
+            .collect(Collectors.toList());
   }
 
   private List<UserRepo> getUserRepos(GitHubUser user) {
-    String uri = GitHubApiBaseUrls.API_DOT_GITHUB_DOT_COM + GitHubApiPaths.USER_REPOS;
+    String uri = gitHubApiBaseUrl + GitHubApiPaths.USER_REPOS;
     return getResource(user, uri, new ParameterizedTypeReference<>() {});
   }
 
@@ -63,12 +72,12 @@ public class GitHubClient {
   private boolean hasComponentMetadataFile(GitHubUser user, UserRepo userRepo) {
     String uriTemplate = userRepo.getContents_url();
     Map<String, String> uriVariables = UriVariablesBuilder.builder()
-      .addUriVariable("+path", "")
-      .build();
+            .addUriVariable("+path", "")
+            .build();
     List<ContentEntry> contentEntries = getResource(user, expandUriTemplate(uriTemplate, uriVariables),
-      new ParameterizedTypeReference<>() {});
+            new ParameterizedTypeReference<>() {});
     return contentEntries.stream()
-      .anyMatch(contentEntry -> KronicleMetadataFilePaths.ALL.contains(contentEntry.getName()));
+            .anyMatch(contentEntry -> KronicleMetadataFilePaths.ALL.contains(contentEntry.getName()));
   }
 
   private <T> T getResource(GitHubUser user, String uri, ParameterizedTypeReference<T> responseBodyTypeRef) {
@@ -83,8 +92,8 @@ public class GitHubClient {
     }
     logWasModifiedResponse(user, uri);
     T responseBody = response
-      .bodyToMono(responseBodyTypeRef)
-      .block(config.getTimeout());
+            .bodyToMono(responseBodyTypeRef)
+            .block(config.getTimeout());
     cache.putEntry(user.getUsername(), uri, createCacheEntry(response, responseBody));
     return responseBody;
   }
@@ -92,13 +101,13 @@ public class GitHubClient {
   private void logRateLimitDetails(GitHubUser user, String uri, ClientResponse response) {
     if (log.isInfoEnabled()) {
       log.info("Request limits after call {} for user {}: rate limit {}, remaining {}, reset {}, used {}, resource {}",
-        uri,
-        user.getUsername(),
-        getResponseHeader(response, GitHubApiHeaders.RATE_LIMIT_LIMIT),
-        getResponseHeader(response, GitHubApiHeaders.RATE_LIMIT_REMAINING),
-        epochSecondsToIsoDateTime(Long.parseLong(getResponseHeader(response, GitHubApiHeaders.RATE_LIMIT_RESET))),
-        getResponseHeader(response, GitHubApiHeaders.RATE_LIMIT_USED),
-        getResponseHeader(response, GitHubApiHeaders.RATE_LIMIT_RESOURCE));
+              uri,
+              user.getUsername(),
+              getResponseHeader(response, GitHubApiHeaders.RATE_LIMIT_LIMIT),
+              getResponseHeader(response, GitHubApiHeaders.RATE_LIMIT_REMAINING),
+              formatRateLimitResetTimestamp(getResponseHeader(response, GitHubApiHeaders.RATE_LIMIT_RESET)),
+              getResponseHeader(response, GitHubApiHeaders.RATE_LIMIT_USED),
+              getResponseHeader(response, GitHubApiHeaders.RATE_LIMIT_RESOURCE));
     }
   }
 
@@ -114,8 +123,15 @@ public class GitHubClient {
     }
   }
 
-  private String epochSecondsToIsoDateTime(long value) {
-    return DateTimeFormatter.ISO_INSTANT.format(ZonedDateTime.ofInstant(Instant.ofEpochSecond(value), ZoneOffset.UTC));
+  private String formatRateLimitResetTimestamp(String value) {
+    if (isNull(value)) {
+      return null;
+    }
+    return DateTimeFormatter.ISO_INSTANT.format(epochSecondsToZonedDateTime(Long.parseLong(value)));
+  }
+
+  private ZonedDateTime epochSecondsToZonedDateTime(long epochSeconds) {
+    return ZonedDateTime.ofInstant(Instant.ofEpochSecond(epochSeconds), ZoneOffset.UTC);
   }
 
   private <T> ApiResponseCacheEntry<T> createCacheEntry(ClientResponse clientResponse, T responseBody) {
@@ -127,7 +143,8 @@ public class GitHubClient {
   }
 
   private String getResponseHeader(ClientResponse response, String headerName) {
-    return response.headers().header(headerName).get(0);
+    List<String> headerValues = response.headers().header(headerName);
+    return headerValues.isEmpty() ? null : headerValues.get(0);
   }
 
   private void logWebCall(GitHubUser user, String uri) {
@@ -139,14 +156,14 @@ public class GitHubClient {
   private ClientResponse makeRequest(GitHubUser user, WebClient.RequestHeadersSpec<?> requestHeadersSpec,
                                      ApiResponseCacheEntry<?> cacheEntry) {
     return requestHeadersSpec
-      .headers(headers -> {
-        headers.setBasicAuth(user.getUsername(), user.getPersonalAccessToken());
-        if (nonNull(cacheEntry)) {
-          headers.add(HttpHeaders.IF_NONE_MATCH, cacheEntry.getETag());
-        }
-      })
-      .exchange()
-      .block(config.getTimeout());
+            .headers(headers -> {
+              headers.setBasicAuth(user.getUsername(), user.getPersonalAccessToken());
+              if (nonNull(cacheEntry)) {
+                headers.add(HttpHeaders.IF_NONE_MATCH, cacheEntry.getETag());
+              }
+            })
+            .exchange()
+            .block(config.getTimeout());
   }
 
   private void checkResponseStatus(ClientResponse clientResponse, String uri) {
@@ -154,7 +171,7 @@ public class GitHubClient {
       String responseBody = clientResponse.bodyToMono(String.class).block(config.getTimeout());
 
       GitHubClientException exception = new GitHubClientException(uri, clientResponse.rawStatusCode(),
-        responseBody);
+              responseBody);
       log.warn(exception.getMessage());
       throw exception;
     }
