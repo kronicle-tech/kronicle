@@ -4,11 +4,10 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.dataformat.yaml.YAMLMapper;
 import tech.kronicle.componentmetadata.models.ComponentMetadata;
 import tech.kronicle.service.constants.KronicleMetadataFilePaths;
-import tech.kronicle.service.repofinders.RepoFinder;
 import tech.kronicle.service.exceptions.ValidationException;
 import tech.kronicle.service.models.ApiRepo;
 import tech.kronicle.service.models.RepoDirAndGit;
-import tech.kronicle.service.services.RepoFinderProvider;
+import tech.kronicle.service.repofinders.services.RepoFinderService;
 import tech.kronicle.service.services.GitCloner;
 import tech.kronicle.service.services.ValidatorService;
 import lombok.AllArgsConstructor;
@@ -29,14 +28,12 @@ import java.util.Optional;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
-import static java.util.Objects.isNull;
-
 @Repository
 @RequiredArgsConstructor
 @Slf4j
 public class ComponentMetadataRepository {
 
-    private final RepoFinderProvider finder;
+    private final RepoFinderService repoFinderService;
     private final GitCloner gitCloner;
     private final FileUtils fileUtils;
     private final YAMLMapper yamlMapper;
@@ -60,9 +57,7 @@ public class ComponentMetadataRepository {
     }
 
     private List<ComponentMetadata> getComponentMetadataList() {
-        return finder.getRepoFinders().stream()
-                .map(RepoFinder::getApiRepos)
-                .flatMap(Collection::stream)
+        return repoFinderService.findApiRepos().stream()
                 .filter(this::repoHasComponentMetadataFile)
                 .map(this::cloneOrPullRepo)
                 .filter(Objects::nonNull)

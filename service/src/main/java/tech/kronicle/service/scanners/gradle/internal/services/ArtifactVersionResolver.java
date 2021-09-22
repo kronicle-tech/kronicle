@@ -28,7 +28,7 @@ public class ArtifactVersionResolver {
     private Comparator<Version> versionComparator;
 
     @PostConstruct
-    public void initialise() {
+    public void initialize() {
         DefaultVersionSelectorScheme defaultVersionSelectorScheme = new DefaultVersionSelectorScheme(new DefaultVersionComparator(), new VersionParser());
         versionSelectorScheme = new CachingVersionSelectorScheme(defaultVersionSelectorScheme);
         versionParser = new VersionParser();

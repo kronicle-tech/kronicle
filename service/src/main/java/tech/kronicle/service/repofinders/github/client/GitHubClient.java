@@ -9,8 +9,8 @@ import org.springframework.web.reactive.function.client.ClientResponse;
 import org.springframework.web.reactive.function.client.WebClient;
 import tech.kronicle.service.constants.KronicleMetadataFilePaths;
 import tech.kronicle.service.models.ApiRepo;
-import tech.kronicle.service.repofinders.github.config.GitHubConfig;
-import tech.kronicle.service.repofinders.github.config.GitHubUser;
+import tech.kronicle.service.repofinders.github.config.GitHubRepoFinderConfig;
+import tech.kronicle.service.repofinders.github.config.GitHubRepoFinderUserConfig;
 import tech.kronicle.service.repofinders.github.constants.GitHubApiBaseUrls;
 import tech.kronicle.service.repofinders.github.constants.GitHubApiHeaders;
 import tech.kronicle.service.repofinders.github.constants.GitHubApiPaths;
@@ -42,11 +42,11 @@ public class GitHubClient {
   private static final List<HttpStatus> EXPECTED_STATUS_CODES = List.of(HttpStatus.OK, HttpStatus.NOT_MODIFIED);
 
   private final WebClient webClient;
-  private final GitHubConfig config;
+  private final GitHubRepoFinderConfig config;
   private final ApiResponseCache cache;
   private final String gitHubApiBaseUrl;
 
-  public GitHubClient(WebClient webClient, GitHubConfig config, ApiResponseCache cache,
+  public GitHubClient(WebClient webClient, GitHubRepoFinderConfig config, ApiResponseCache cache,
                       @Value(GitHubApiBaseUrls.API_DOT_GITHUB_DOT_COM) String gitHubApiBaseUrl) {
     this.webClient = webClient;
     this.config = config;
@@ -54,22 +54,22 @@ public class GitHubClient {
     this.gitHubApiBaseUrl = gitHubApiBaseUrl;
   }
 
-  public List<ApiRepo> getRepos(GitHubUser user) {
+  public List<ApiRepo> getRepos(GitHubRepoFinderUserConfig user) {
     return getUserRepos(user).stream()
             .map(addHasComponentMetadataFile(user))
             .collect(Collectors.toList());
   }
 
-  private List<UserRepo> getUserRepos(GitHubUser user) {
+  private List<UserRepo> getUserRepos(GitHubRepoFinderUserConfig user) {
     String uri = gitHubApiBaseUrl + GitHubApiPaths.USER_REPOS;
     return getResource(user, uri, new ParameterizedTypeReference<>() {});
   }
 
-  private Function<UserRepo, ApiRepo> addHasComponentMetadataFile(GitHubUser user) {
+  private Function<UserRepo, ApiRepo> addHasComponentMetadataFile(GitHubRepoFinderUserConfig user) {
     return userRepo -> new ApiRepo(userRepo.getClone_url(), hasComponentMetadataFile(user, userRepo));
   }
 
-  private boolean hasComponentMetadataFile(GitHubUser user, UserRepo userRepo) {
+  private boolean hasComponentMetadataFile(GitHubRepoFinderUserConfig user, UserRepo userRepo) {
     String uriTemplate = userRepo.getContents_url();
     Map<String, String> uriVariables = UriVariablesBuilder.builder()
             .addUriVariable("+path", "")
@@ -80,7 +80,7 @@ public class GitHubClient {
             .anyMatch(contentEntry -> KronicleMetadataFilePaths.ALL.contains(contentEntry.getName()));
   }
 
-  private <T> T getResource(GitHubUser user, String uri, ParameterizedTypeReference<T> responseBodyTypeRef) {
+  private <T> T getResource(GitHubRepoFinderUserConfig user, String uri, ParameterizedTypeReference<T> responseBodyTypeRef) {
     logWebCall(user, uri);
     ApiResponseCacheEntry<T> cacheEntry = cache.getEntry(user.getUsername(), uri);
     ClientResponse response = makeRequest(user, webClient.get().uri(uri), cacheEntry);
@@ -98,7 +98,7 @@ public class GitHubClient {
     return responseBody;
   }
 
-  private void logRateLimitDetails(GitHubUser user, String uri, ClientResponse response) {
+  private void logRateLimitDetails(GitHubRepoFinderUserConfig user, String uri, ClientResponse response) {
     if (log.isInfoEnabled()) {
       log.info("Request limits after call {} for user {}: rate limit {}, remaining {}, reset {}, used {}, resource {}",
               uri,
@@ -111,13 +111,13 @@ public class GitHubClient {
     }
   }
 
-  private void logNotModifiedResponse(GitHubUser user, String uri) {
+  private void logNotModifiedResponse(GitHubRepoFinderUserConfig user, String uri) {
     if (log.isInfoEnabled()) {
       log.info("Response for {} for user {} was same as last call", uri, user.getUsername());
     }
   }
 
-  private void logWasModifiedResponse(GitHubUser user, String uri) {
+  private void logWasModifiedResponse(GitHubRepoFinderUserConfig user, String uri) {
     if (log.isInfoEnabled()) {
       log.info("Response for {} for user {} was different to last call", uri, user.getUsername());
     }
@@ -147,13 +147,13 @@ public class GitHubClient {
     return headerValues.isEmpty() ? null : headerValues.get(0);
   }
 
-  private void logWebCall(GitHubUser user, String uri) {
+  private void logWebCall(GitHubRepoFinderUserConfig user, String uri) {
     if (log.isInfoEnabled()) {
       log.info("Calling {} for user {}", uri, user.getUsername());
     }
   }
 
-  private ClientResponse makeRequest(GitHubUser user, WebClient.RequestHeadersSpec<?> requestHeadersSpec,
+  private ClientResponse makeRequest(GitHubRepoFinderUserConfig user, WebClient.RequestHeadersSpec<?> requestHeadersSpec,
                                      ApiResponseCacheEntry<?> cacheEntry) {
     return requestHeadersSpec
             .headers(headers -> {

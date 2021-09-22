@@ -1,8 +1,8 @@
 package tech.kronicle.service.repofinders.bitbucketserver.client;
 
 import tech.kronicle.service.models.ApiRepo;
-import tech.kronicle.service.repofinders.bitbucketserver.config.BitbucketServerConfig;
-import tech.kronicle.service.repofinders.bitbucketserver.config.BitbucketServerHostConfig;
+import tech.kronicle.service.repofinders.bitbucketserver.config.BitbucketServerRepoFinderConfig;
+import tech.kronicle.service.repofinders.bitbucketserver.config.BitbucketServerRepoFinderHostConfig;
 import tech.kronicle.service.repofinders.bitbucketserver.constants.BitbucketServerApiPaths;
 import tech.kronicle.service.repofinders.bitbucketserver.models.api.BrowseResponse;
 import tech.kronicle.service.repofinders.bitbucketserver.models.api.Link;
@@ -17,7 +17,6 @@ import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.reactive.function.client.ClientResponse;
 import org.springframework.web.reactive.function.client.WebClient;
-import org.springframework.web.util.UriTemplate;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -46,7 +45,7 @@ public class BitbucketServerClient {
     private static final Comparator<RepoAndApiRepo> REPO_AND_API_REPO_COMPARATOR = Comparator.comparing(repoAndApiRepo -> repoAndApiRepo.getApiRepo().getUrl());
 
     private final WebClient webClient;
-    private final BitbucketServerConfig config;
+    private final BitbucketServerRepoFinderConfig config;
 
     public List<ApiRepo> getNormalRepos() {
         if (isNull(config.getHosts())) {
@@ -59,7 +58,7 @@ public class BitbucketServerClient {
                 .collect(Collectors.toList());
     }
 
-    private List<ApiRepo> getNormalRepos(BitbucketServerHostConfig host) {
+    private List<ApiRepo> getNormalRepos(BitbucketServerRepoFinderHostConfig host) {
         List<Repo> normalRepos = new ArrayList<>();
         Optional<Integer> start = Optional.empty();
 
@@ -82,7 +81,7 @@ public class BitbucketServerClient {
                 .collect(Collectors.toList());
     }
 
-    private PageResponse<Repo> getReposPage(BitbucketServerHostConfig host, Optional<Integer> start) {
+    private PageResponse<Repo> getReposPage(BitbucketServerRepoFinderHostConfig host, Optional<Integer> start) {
         String uriTemplate = host.getBaseUrl() + BitbucketServerApiPaths.REPOS;
         UriVariablesBuilder uriVariablesBuilder = UriVariablesBuilder.builder();
         if (start.isPresent()) {
@@ -125,11 +124,11 @@ public class BitbucketServerClient {
         return link.getName().equals("http");
     }
 
-    private Function<RepoAndApiRepo, ApiRepo> addHasComponentMetadataFileToApiRepo(BitbucketServerHostConfig host) {
+    private Function<RepoAndApiRepo, ApiRepo> addHasComponentMetadataFileToApiRepo(BitbucketServerRepoFinderHostConfig host) {
         return repoAndApiRepo -> repoAndApiRepo.getApiRepo().withHasComponentMetadataFile(hasComponentMetadataFile(host, repoAndApiRepo.getRepo()));
     }
 
-    private boolean hasComponentMetadataFile(BitbucketServerHostConfig host, Repo repo) {
+    private boolean hasComponentMetadataFile(BitbucketServerRepoFinderHostConfig host, Repo repo) {
         String uriTemplate = host.getBaseUrl() + BitbucketServerApiPaths.BROWSE + "/component-metadata.yaml?type=true";
         Map<String, String> uriVariables = UriVariablesBuilder.builder()
                 .addUriVariable("projectKey", repo.getProject().getKey())
@@ -148,7 +147,7 @@ public class BitbucketServerClient {
                 .orElse(false);
     }
 
-    private ClientResponse makeRequest(BitbucketServerHostConfig host, WebClient.RequestHeadersSpec<?> requestHeadersSpec) {
+    private ClientResponse makeRequest(BitbucketServerRepoFinderHostConfig host, WebClient.RequestHeadersSpec<?> requestHeadersSpec) {
         return requestHeadersSpec
                 .headers(headers -> headers.setBasicAuth(host.getUsername(), host.getPassword()))
                 .exchange()

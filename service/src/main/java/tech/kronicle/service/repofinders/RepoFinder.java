@@ -6,5 +6,5 @@ import java.util.List;
 
 public abstract class RepoFinder {
 
-    public abstract List<ApiRepo> getApiRepos();
+    public abstract List<ApiRepo> findApiRepos();
 }

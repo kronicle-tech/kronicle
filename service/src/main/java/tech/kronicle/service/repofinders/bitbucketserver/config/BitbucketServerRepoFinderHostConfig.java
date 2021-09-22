@@ -13,7 +13,7 @@ import javax.validation.constraints.Pattern;
 @ConstructorBinding
 @Value
 @NonFinal
-public class BitbucketServerHostConfig {
+public class BitbucketServerRepoFinderHostConfig {
 
     @NotNull
     @Pattern(regexp = "https://.+[^/]")
