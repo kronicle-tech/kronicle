@@ -3,6 +3,7 @@ package tech.kronicle.service.repositories;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.dataformat.yaml.YAMLMapper;
 import tech.kronicle.componentmetadata.models.ComponentMetadata;
+import tech.kronicle.service.constants.KronicleMetadataFilePaths;
 import tech.kronicle.service.repofinders.RepoFinder;
 import tech.kronicle.service.exceptions.ValidationException;
 import tech.kronicle.service.models.ApiRepo;
@@ -16,26 +17,28 @@ import lombok.extern.slf4j.Slf4j;
 import org.eclipse.jgit.api.errors.GitAPIException;
 import org.springframework.stereotype.Repository;
 import tech.kronicle.common.utils.StringEscapeUtils;
+import tech.kronicle.service.utils.FileUtils;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
-import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Collection;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.function.Function;
 import java.util.stream.Collectors;
+
+import static java.util.Objects.isNull;
 
 @Repository
 @RequiredArgsConstructor
 @Slf4j
 public class ComponentMetadataRepository {
 
-    private static final String DEFAULT_COMPONENT_METADATA_PATH = "component-metadata.yaml";
-
     private final RepoFinderProvider finder;
     private final GitCloner gitCloner;
+    private final FileUtils fileUtils;
     private final YAMLMapper yamlMapper;
     private final ValidatorService validatorService;
 
@@ -63,7 +66,7 @@ public class ComponentMetadataRepository {
                 .filter(this::repoHasComponentMetadataFile)
                 .map(this::cloneOrPullRepo)
                 .filter(Objects::nonNull)
-                .map(this::readComponentMetadataFile)
+                .map(this::readKronicleMetadataFile)
                 .filter(Objects::nonNull)
                 .map(this::readComponentMetadataYaml)
                 .filter(Objects::nonNull)
@@ -86,17 +89,26 @@ public class ComponentMetadataRepository {
         }
     }
 
-    private RepoAndYaml readComponentMetadataFile(RepoAndRepoDir repoAndRepoDir) {
+    private RepoAndYaml readKronicleMetadataFile(RepoAndRepoDir repoAndRepoDir) {
         try {
-            return new RepoAndYaml(repoAndRepoDir.repo, Files.readString(getComponentMetadataFile(repoAndRepoDir)));
-        } catch (IOException e) {
+            return new RepoAndYaml(repoAndRepoDir.repo, findAndReadKronicleMetadataFile(repoAndRepoDir));
+        } catch (RuntimeException e) {
             logError(repoAndRepoDir.repo, e);
             return null;
         }
     }
 
-    private Path getComponentMetadataFile(RepoAndRepoDir repoAndRepoDir) {
-        return repoAndRepoDir.repoDir.resolve(DEFAULT_COMPONENT_METADATA_PATH);
+    private String findAndReadKronicleMetadataFile(RepoAndRepoDir repoAndRepoDir) {
+        Path repoDir = repoAndRepoDir.repoDir;
+        Optional<Path> file = KronicleMetadataFilePaths.ALL.stream()
+            .map(repoDir::resolve)
+            .filter(fileUtils::fileExists)
+            .findFirst();
+        if (file.isPresent()) {
+            return fileUtils.readFileContent(file.get());
+        }
+        throw new RuntimeException(String.format("Could not find Kronicle metadata file in repo \"%s\"",
+            repoAndRepoDir.repo.getUrl()));
     }
 
     private RepoAndComponentMetadata readComponentMetadataYaml(RepoAndYaml repoAndYaml) {

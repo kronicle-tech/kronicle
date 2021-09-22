@@ -28,6 +28,9 @@ import java.util.Optional;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
+import static java.util.Objects.isNull;
+import static tech.kronicle.service.utils.UriTemplateUtils.expandUriTemplate;
+
 /**
  * See https://docs.atlassian.com/bitbucket-server/rest/7.11.1/bitbucket-rest.html
  * for a description of the API endpoints for Bitbucket Server.  Bitbucket Service
@@ -46,6 +49,10 @@ public class BitbucketServerClient {
     private final BitbucketServerConfig config;
 
     public List<ApiRepo> getNormalRepos() {
+        if (isNull(config.getHosts())) {
+            return List.of();
+        }
+
         return config.getHosts().stream()
                 .map(this::getNormalRepos)
                 .flatMap(Collection::stream)
@@ -163,10 +170,6 @@ public class BitbucketServerClient {
         if (log.isInfoEnabled()) {
             log.info("Calling {}", expandUriTemplate(uriTemplate, uriVariables));
         }
-    }
-
-    private String expandUriTemplate(String uriTemplate, Map<String, String> uriVariables) {
-        return new UriTemplate(uriTemplate).expand(uriVariables).toString();
     }
 
     @Value

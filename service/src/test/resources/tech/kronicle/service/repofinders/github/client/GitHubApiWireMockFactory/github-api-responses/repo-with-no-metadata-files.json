@@ -1,0 +1,10 @@
+[
+  {
+    "test-unknown-field": "This field should be ignored by Jackson when deserialised, if Jackson is configured correctly",
+    "name": ".gitignore"
+  },
+  {
+    "test-unknown-field": "This field should be ignored by Jackson when deserialised, if Jackson is configured correctly",
+    "name": "README.md"
+  }
+]
