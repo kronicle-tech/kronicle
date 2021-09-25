@@ -17,6 +17,8 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: '12'
+      - name: Upgrade npm
+        run: npm install -g npm@latest
       - name: Cache Gradle packages
         uses: actions/cache@v2
         with:
