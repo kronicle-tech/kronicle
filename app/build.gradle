@@ -62,12 +62,13 @@ docker {
   buildArgs([VERSION: version])
   tag "latest", name
   copySpec.from(".") {
+    exclude "node_modules"
     exclude ".nuxt"
+    exclude "dist"
     exclude "build"
     exclude "build.gradle"
     exclude "coverage"
     exclude "Dockerfile"
-    exclude "node_modules"
     exclude "README.md"
   }
   network "host"

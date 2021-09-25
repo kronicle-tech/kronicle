@@ -6,14 +6,15 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import remark from 'remark'
+import deepmerge from 'deepmerge'
+import remarkParse from 'remark-parse'
 import remarkGfm from 'remark-gfm'
 import remarkToc from 'remark-toc'
-import RemarkHtml from 'remark-html'
-import rehype from 'rehype'
-import RehypeSanitize from 'rehype-sanitize'
-import deepmerge from 'deepmerge'
-import vfile, { VFile } from 'vfile'
+import rehypeParse from 'rehype-parse'
+import rehypeSanitize from 'rehype-sanitize'
+import rehypeStringify from 'rehype-stringify'
+import {unified} from 'unified'
+import vfile, {VFile} from 'vfile'
 
 const remarkHighlightJs = require('remark-highlight.js')
 const remarkLintPlugins = [
@@ -34,25 +35,33 @@ const rehypeSanitizeSchema = deepmerge(rehypeSanitizeGitHubSchema, {
   attributes: { code: ['className'], span: ['className'] },
 })
 
-function generateMarkdownHtml(markdown: String, toc: Boolean): VFile {
-  let processor = remark().use(remarkLintPlugins).use(remarkGfm)
+function generateSanitizedMarkdownHtml(markdown: String, toc: Boolean): VFile {
+  let processor = unified()
+    .use(remarkParse)
+    .use(remarkLintPlugins)
+    .use(remarkGfm)
   if (toc) {
     processor = processor.use(remarkToc, {
-      maxDepth: 3,
-      prefix: 'user-content-',
-    } as any)
-    processor = processor.use(remarkSlug)
+        maxDepth: 3,
+        prefix: 'user-content-',
+      } as any)
+      .use(remarkSlug)
   }
-  return processor
+  return sanitizeHtml(processor
     .use(remarkHighlightJs)
-    .use(RemarkHtml, { sanitize: false })
-    .processSync(markdown)
+    .use(rehypeParse)
+    .data('settings', { fragment: true })
+    .use(rehypeSanitize, rehypeSanitizeSchema)
+    .use(rehypeStringify)
+    .processSync(markdown))
 }
 
 function sanitizeHtml(html: VFile): VFile {
-  return rehype()
+  return unified()
+    .use(rehypeParse)
     .data('settings', { fragment: true })
-    .use(RehypeSanitize, rehypeSanitizeSchema)
+    .use(rehypeSanitize, rehypeSanitizeSchema)
+    .use(rehypeStringify)
     .processSync(html)
 }
 
@@ -88,13 +97,10 @@ export default Vue.extend({
         modifiedMarkdown = '#### Table of Contents\n\n' + modifiedMarkdown
       }
       try {
-        const html = generateMarkdownHtml(modifiedMarkdown, this.toc)
-        const sanitizedHtml = sanitizeHtml(html)
-        const output =
-          String(generateReportHtml(sanitizedHtml)) +
+        const sanitizedHtml = generateSanitizedMarkdownHtml(modifiedMarkdown, this.toc)
+        return String(generateReportHtml(sanitizedHtml)) +
           '\n' +
           String(sanitizedHtml)
-        return output
       } catch (e) {
         return String(createReportPreTagHtml(e.toString()))
       }

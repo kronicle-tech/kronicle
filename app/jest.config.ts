@@ -1,20 +1,14 @@
 export default {
-  testPathIgnorePatterns: [
-    '/node_modules/',
-    '/build/'
-  ],
+  testPathIgnorePatterns: ['/node_modules/', '/build/'],
   moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/$1',
     '^~/(.*)$': '<rootDir>/$1',
-    '^vue$': 'vue/dist/vue.common.js'
+    '^vue$': 'vue/dist/vue.common.js',
   },
-  moduleFileExtensions: [
-    'js',
-    'vue',
-    'json'
-  ],
+  moduleFileExtensions: ['ts', 'js', 'vue', 'json'],
   transform: {
-    '.*\\.(vue)$': 'vue-jest'
+    '^.+\\.ts$': 'ts-jest',
+    '.*\\.(vue)$': 'vue-jest',
   },
   collectCoverage: true,
   collectCoverageFrom: [
@@ -23,11 +17,7 @@ export default {
     '<rootDir>/src/**/*.ts',
     '<rootDir>/store/**/*.ts',
   ],
-  coverageReporters: [
-    'text',
-    'lcov',
-    'cobertura'
-  ],
+  coverageReporters: ['text', 'lcov', 'cobertura'],
   coverageThreshold: {
     global: {
       branches: 80,
