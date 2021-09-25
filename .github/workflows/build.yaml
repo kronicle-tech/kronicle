@@ -37,6 +37,8 @@ jobs:
         uses: gradle/wrapper-validation-action@e6e38bacfdf1a337459f332974bb2327a31aaf4b
       - name: Build
         run: ./gradlew app:build -x app:dependencyCheckAnalyze
+      - name: Temporary dependency check
+        run: ./gradlew app:dependencyCheckAnalyze
       - name: Tag build
         if: ${{ github.ref == 'refs/heads/main' }}
         # Based on https://axion-release-plugin.readthedocs.io/en/latest/configuration/ci_servers/#github-actions
