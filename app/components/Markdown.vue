@@ -86,7 +86,7 @@ export default Vue.extend({
           String(sanitizedHtml)
         return output
       } catch (e) {
-        return String(createReportPreTagHtml(e.toString()))
+        return String(createReportPreTagHtml(JSON.stringify(e)))
       }
     },
   },
