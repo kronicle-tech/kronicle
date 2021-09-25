@@ -41,13 +41,3 @@ exports[`Markdown when markdown prop contains HTML when markdown prop contains c
   <pre><code class=\\"hljs language-javascript\\"><span class=\\"hljs-built_in\\">console</span>.log()</code></pre>
 </div>"
 `;
-
-exports[`Markdown when markdown prop contains HTML when markdown prop fails linting renders an error above HTML 1`] = `
-"<div><pre>  1:1-1:33  warning  Found unused definition  no-unused-definitions  remark-lint
-
-⚠ 1 warning
-</pre>
-  <br>
-
-</div>"
-`;
