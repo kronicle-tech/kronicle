@@ -86,7 +86,7 @@ export default Vue.extend({
           String(sanitizedHtml)
         return output
       } catch (e) {
-        const text = (e !== null && typeof e ==='object' && 'toString' in e)
+        const text = (typeof e === 'object' && e !== null && 'toString' in e)
           ? e.toString()
           : 'Error: ' + JSON.stringify(e)
         return String(createReportPreTagHtml(text))
