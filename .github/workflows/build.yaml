@@ -28,11 +28,17 @@ jobs:
           key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
           restore-keys: |
             ${{ runner.os }}-gradle-
+      - name: Get Node.js version
+        run: |
+          echo "$(node -v)" > node-version.txt
+      - name: Get npm version
+        run: |
+          echo "$(npm -v)" > npm-version.txt
       - name: Cache the NPM Cache
         uses: actions/cache@v2
         with:
           path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          key: ${{ runner.os }}-node-${{ hashFiles('node-version.txt', 'npm-version.txt', '**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-node-
       - name: Validate Gradle wrapper
