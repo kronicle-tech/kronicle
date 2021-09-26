@@ -47,7 +47,6 @@ management:
       show-details: always
   endpoints:
     web:
-      base-path: /management
       exposure:
         include: info, health, metrics, prometheus
 
@@ -67,11 +66,11 @@ resilience4j:
         retryExceptions:
           - tech.kronicle.service.scanners.zipkin.client.ZipkinClientException
 
-github:
-  timeout: 30s
-
-bitbucket-server:
-  timeout: 30s
+repo-finders:
+  github:
+    timeout: 30s
+  bitbucket-server:
+    timeout: 30s
 
 downloader:
   timeout: 2m
