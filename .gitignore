@@ -4,3 +4,6 @@ build/
 out/
 dependencies.txt
 *.log
+
+# Files produced by GitHub Actions workflows
+*-version.txt
