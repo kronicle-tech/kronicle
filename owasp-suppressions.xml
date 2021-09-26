@@ -122,4 +122,12 @@
         <packageUrl regex="true">^pkg:npm/ansi\-html@.*$</packageUrl>
         <cve>CVE-2021-23424</cve>
     </suppress>
+    <!-- Time-limited suppression waiting for Nuxt.js to upgrade to Webpack 5.x.x.  See https://github.com/nuxt/nuxt.js/issues/9798 -->
+    <suppress until="2021-10-02Z">
+        <notes><![CDATA[
+   file name: set-value:2.0.1
+   ]]></notes>
+        <packageUrl regex="true">^pkg:npm/set\-value@.*$</packageUrl>
+        <cve>CVE-2021-23440</cve>
+    </suppress>
 </suppressions>

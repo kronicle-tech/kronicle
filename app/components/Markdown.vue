@@ -16,16 +16,6 @@ import deepmerge from 'deepmerge'
 import vfile, { VFile } from 'vfile'
 
 const remarkHighlightJs = require('remark-highlight.js')
-const remarkLintPlugins = [
-  require('remark-lint-hard-break-spaces'),
-  require('remark-lint-no-duplicate-definitions'),
-  require('remark-lint-no-heading-content-indent'),
-  require('remark-lint-no-inline-padding'),
-  require('remark-lint-no-shortcut-reference-image'),
-  require('remark-lint-no-shortcut-reference-link'),
-  require('remark-lint-no-undefined-references'),
-  require('remark-lint-no-unused-definitions'),
-]
 const remarkSlug = require('remark-slug')
 const vFileReporter = require('vfile-reporter')
 const rehypeSanitizeGitHubSchema = require('hast-util-sanitize/lib/github.json')
@@ -35,7 +25,7 @@ const rehypeSanitizeSchema = deepmerge(rehypeSanitizeGitHubSchema, {
 })
 
 function generateMarkdownHtml(markdown: String, toc: Boolean): VFile {
-  let processor = remark().use(remarkLintPlugins).use(remarkGfm)
+  let processor = remark().use(remarkGfm)
   if (toc) {
     processor = processor.use(remarkToc, {
       maxDepth: 3,
@@ -96,7 +86,10 @@ export default Vue.extend({
           String(sanitizedHtml)
         return output
       } catch (e) {
-        return String(createReportPreTagHtml(e.toString()))
+        const text = (typeof e === 'object' && e !== null && 'toString' in e)
+          ? e.toString()
+          : 'Error: ' + JSON.stringify(e)
+        return String(createReportPreTagHtml(text))
       }
     },
   },

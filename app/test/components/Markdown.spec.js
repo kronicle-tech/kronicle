@@ -85,16 +85,5 @@ console.log()
 </div>`)
       })
     })
-
-    describe('when markdown prop fails linting', () => {
-      beforeEach(() => {
-        propsData.markdown = `[undefined]: https://example.com`
-      })
-
-      test('renders an error above HTML', () => {
-        createWrapper()
-        expect(wrapper.html()).toMatchSnapshot()
-      })
-    })
   })
 })
