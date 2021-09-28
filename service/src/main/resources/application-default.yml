@@ -1,7 +1,7 @@
 spring:
   sleuth:
     sampler:
-      probability: ${ZIPKIN_SAMPLERATE:1.0}
+      probability: ${ZIPKIN_SAMPLE_RATE:1.0}
 
 download-cache:
   dir: ${TMPDIR}kronicle-service/data/download-cache
