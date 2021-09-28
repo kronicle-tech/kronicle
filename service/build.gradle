@@ -88,6 +88,7 @@ dependencies {
     implementation "org.springframework.boot:spring-boot-starter-actuator"
     implementation "org.springframework.boot:spring-boot-starter-webflux"
     implementation "org.springframework.boot:spring-boot-starter-aop"
+    implementation "org.springframework.cloud:spring-cloud-starter-sleuth"
     implementation "io.github.resilience4j:resilience4j-spring-boot2:$resilience4jVersion"
     implementation "io.github.resilience4j:resilience4j-reactor:$resilience4jVersion"
     implementation "org.springframework.cloud:spring-cloud-sleuth-zipkin"
