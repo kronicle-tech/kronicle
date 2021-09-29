@@ -4,7 +4,7 @@ sonarqube {
     properties {
         property 'sonar.projectKey', 'kronicle-tech_kronicle'
         property 'sonar.projectName', 'kronicle-tech'
-        property 'sonar.host.url', 'https://sonarcloud.io'
+        property 'sonar.host.url', sonarQubeHostUrl
         property 'sonar.projectVersion', version
         property 'sonar.language', 'java'
         property 'sonar.java.source', javaVersion
