@@ -32,7 +32,7 @@
     "nuxt-healthcheck": "^1.0.1",
     "nuxt-winston-log": "^1.2.0",
     "rehype": "^11.0.0",
-    "rehype-sanitize": "^4.0.0",
+    "rehype-sanitize": "^5.0.0",
     "remark": "^13.0.0",
     "remark-gfm": "^1.0.0",
     "remark-highlight.js": "^6.0.0",
