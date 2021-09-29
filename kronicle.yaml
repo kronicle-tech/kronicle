@@ -18,7 +18,7 @@ components:
     tags:
       - frontend
     teams:
-      - teamId: kronicle
+      - teamId: kronicle-project
     platform: kubernetes
     responsibilities:
       - description: |
@@ -52,7 +52,7 @@ components:
     tags:
       - frontend
     teams:
-      - teamId: kronicle
+      - teamId: kronicle-project
     platform: kubernetes
     responsibilities:
       - description: |
