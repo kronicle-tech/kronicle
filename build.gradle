@@ -1,4 +1,5 @@
 plugins {
+    id "base"
     id "com.jfrog.artifactory" apply false
     id "org.sonarqube"
     id "jacoco"
@@ -7,18 +8,19 @@ plugins {
     id "pl.allegro.tech.build.axion-release"
 }
 
-apply from: "$rootDir/gradle/sonarqube.gradle"
+apply from: "gradle/kronicle-metadata.gradle"
+apply from: "gradle/sonarqube.gradle"
 
 subprojects {
     buildscript {
-        apply from: "$rootDir/gradle/repos.gradle", to: buildscript
+        apply from: "gradle/repos.gradle", to: buildscript
     }
 
     apply plugin: 'java'
-    apply from: "$rootDir/gradle/repos.gradle"
-    apply from: "$rootDir/gradle/dependency-check.gradle"
-    apply from: "$rootDir/gradle/jacoco.gradle"
-    apply from: "$rootDir/gradle/sonarqube.gradle"
+    apply from: "gradle/repos.gradle"
+    apply from: "gradle/dependency-check.gradle"
+    apply from: "gradle/jacoco.gradle"
+    apply from: "gradle/sonarqube.gradle"
 
     version = scmVersion.version
 
