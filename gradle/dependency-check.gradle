@@ -1,4 +1,4 @@
-apply plugin: "org.owasp.dependencycheck"
+apply plugin: 'org.owasp.dependencycheck'
 
 dependencyCheck {
     failBuildOnCVSS = 2

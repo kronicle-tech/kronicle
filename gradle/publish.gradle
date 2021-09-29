@@ -1,6 +1,5 @@
-apply plugin: "base"
-apply plugin: "maven-publish"
-apply plugin: "signing"
+apply plugin: 'maven-publish'
+apply plugin: 'signing'
 
 java {
     withJavadocJar()

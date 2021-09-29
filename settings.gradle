@@ -7,7 +7,7 @@ pluginManagement {
         id "com.jfrog.artifactory" version "$artifactoryPluginVersion" apply false
         id "org.springframework.boot" version "$springBootVersion" apply false
         id "org.siouan.frontend-jdk11" version "$frontendPluginVersion" apply false
-        id "org.sonarqube" version "$sonarqubeVersion" apply false
+        id "org.sonarqube" version "$sonarQubeVersion" apply false
         id "com.github.spotbugs" version "$spotbugsVersion" apply false
         id "com.palantir.docker" version "$palantirDockerVersion" apply false
         id "org.owasp.dependencycheck" version "$dependencyCheckVersion" apply false
