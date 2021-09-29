@@ -1,0 +1,101 @@
+# This file is read automatically by Kronicle https://kronicle.tech
+
+components:
+  - id: kronicle-app
+    name: Kronicle App
+    type: spa
+    repo:
+      url: https://github.com/kronicle-tech/kronicle.git
+    description: |
+      The [Single Page App (SPA)](https://en.wikipedia.org/wiki/Single-page_application) for
+      [Kronicle's UI](https://kronicle.tech).  kronicle-app hosts the whole web UI for Kroncile
+    notes: |
+      The SPA is built with [Nuxt](https://nuxtjs.org) and [Vue.js](https://vuejs.org).  Nuxt is an awesome
+      framework for building Vue.js apps that removes a lot of the boiler plate code needed and introduces a lot of
+      helpful conventions and patterns.  Nuxt supports both Server Side Rendering (SSR) and static generation.
+      kronicle-app uses Nuxt with Server Side Rendering.  Inital page renders are done server-side with further page
+      renders performed client-side.
+    tags:
+      - frontend
+    teams:
+      - teamId: kronicle
+    platform: kubernetes
+    responsibilities:
+      - description: |
+          Rendering a web UI that visualises all the data in Kronicle.  Data is a combination of data from
+          kronicle.yaml files store in Git repos and data pulled in by Scanners from external data sources like Git
+          repos, Zipkin, SonarQube etc.  The Kronicle App uses the Konricle Service's RESTful API to retrieve all this
+          data.
+    links:
+      - url: https://kronicle.tech
+        description: |
+          The Kronicle website
+      - url: https://demo.kronicle.tech
+        description: |
+          The Kronicle live demo
+    dependencies:
+      - targetComponentId: kronicle-service
+    crossFunctionalRequirements: []
+    techDebts: []
+
+  - id: kronicle-service
+    name: Kronicle Service
+    type: microservice
+    repo:
+      url: https://github.com/kronicle-tech/kronicle.git
+    description: |
+      The microservice that powers [Kronicle](https://kronicle.tech).  All the data collection (scanning) and
+      processing is performed in this microservice, with [kronicle-app](/components/kronicle-app) then responsible
+      for placing a web UI on top of that
+    notes: |
+      The microservice is built with Java and [Spring Boot](https://spring.io/projects/spring-boot)
+    tags:
+      - frontend
+    teams:
+      - teamId: kronicle
+    platform: kubernetes
+    responsibilities:
+      - description: |
+          Uses `Repo Finders` to discover Git repos that belong to an organisation. Also detects the presense of
+          `kronicle.yaml` metadata files in any of the Git repos that are found.  Currently there are Repo Finders for
+          GitHub and Bitbucket Server.  Bitbucket Server is the self-hosted version of Bitbucket and not the cloud
+          version.  This happens once every 15 minutes.
+      - description: |
+          Loads the metadata from any Git repos that contain a `kronicle.yaml` file.  This happens once every 15
+          minutes.
+      - description: |
+          Executes `Scanners` that use the metadata from `kronicle.yaml` files to fetch additional data from sources
+          like the Git repos themselves (finding dependencies in Gradle projects, counting lines of code, finding
+          the names of frequent code committers), [Zipkin](https://zipkin.io), [SonarQube](https://www.sonarqube.org/)
+          etc. The data found by the Scanners is combined with the metadata from the `kronicle.yaml` files.  
+          This happens once every 15 minutes.
+      - description: |
+          Executes `Tests` against the data found from `kronicle.yaml` files and Scanners.  Knonicle includes built-in
+          tests for things like minimum 80% code coverage (using coverage data from SonarQube).  This happens once 
+          every 15 minutes.
+      - description: |
+          Provides an web API for querying all the data held by the Kronicle Service.  The Kronicle App is powered by
+          the Kronicle Service's API.
+    links:
+      - url: https://kronicle.tech
+        description: |
+          The Kronicle website
+      - url: https://demo.kronicle.tech
+        description: |
+          The Kronicle live demo
+    dependencies:
+      - targetComponentId: zipkin
+      - targetComponentId: sonarqube-cloud
+      - targetComponentId: github
+    crossFunctionalRequirements: []
+    techDebts:
+      - description: |
+          Currently Kronicle Service refreshing its data on a schedule.  Data is reloaded every 15 minutes.  This means
+          that external services like Git repos, Zipkin, SonarQube are hit every 15 minutes.  It would probably be
+          better to replace this approach with a combination of webhooks for Git repos and less frequent refresh
+          intervals for data sources like Zipkin and SonarQube.
+        priority: medium
+    openApiSpecs:
+      - url: http://kronicle-server.kronicle.svc.cluster.local:81
+        description: |
+          OpenAPI spec for the Kronicle Service
