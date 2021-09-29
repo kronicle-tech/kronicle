@@ -14,10 +14,13 @@ subprojects {
         apply from: "$rootDir/gradle/repos.gradle", to: buildscript
     }
 
+    apply plugin: 'java'
     apply from: "$rootDir/gradle/repos.gradle"
     apply from: "$rootDir/gradle/dependency-check.gradle"
     apply from: "$rootDir/gradle/jacoco.gradle"
     apply from: "$rootDir/gradle/sonarqube.gradle"
+
+    version = scmVersion.version
 
     compileJava {
         options.release = javaMajorVersion.toInteger()
@@ -29,6 +32,4 @@ subprojects {
     }
 
     [compileJava, compileTestJava]*.options*.encoding = "UTF-8"
-
-    version = scmVersion.version
 }
