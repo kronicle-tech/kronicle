@@ -96,6 +96,6 @@ components:
           intervals for data sources like Zipkin and SonarQube.
         priority: medium
     openApiSpecs:
-      - url: http://kronicle-server.kronicle.svc.cluster.local:81/actuator/openapi
+      - url: http://kronicle-service.kronicle.svc.cluster.local:81/actuator/openapi
         description: |
           OpenAPI spec for the Kronicle Service
