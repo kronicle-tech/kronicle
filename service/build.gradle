@@ -93,6 +93,7 @@ dependencies {
     implementation "io.github.resilience4j:resilience4j-reactor:$resilience4jVersion"
     implementation "org.springframework.cloud:spring-cloud-sleuth-zipkin"
     implementation "io.micrometer:micrometer-registry-prometheus"
+    implementation "org.springdoc:springdoc-openapi-webmvc-core:$springdocVersion"
 
     implementation "com.fasterxml.jackson.datatype:jackson-datatype-jsr310:$jacksonVersion"
     implementation "com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:$jacksonVersion"

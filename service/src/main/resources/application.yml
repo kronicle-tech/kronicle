@@ -48,7 +48,13 @@ management:
   endpoints:
     web:
       exposure:
-        include: info, health, metrics, prometheus
+        include: info, health, metrics, prometheus, openapi
+
+springdoc:
+  use-management-port: true
+  writer-with-default-pretty-printer: true
+  swagger-ui:
+    enabled: false
 
 resilience4j:
   retry:
