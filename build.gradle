@@ -15,8 +15,9 @@ subprojects {
     }
 
     apply from: "$rootDir/gradle/repos.gradle"
+    apply from: "$rootDir/gradle/dependency-check.gradle"
     apply from: "$rootDir/gradle/jacoco.gradle"
-    apply from: "$rootDir/gradle/code-analysis.gradle"
+    apply from: "$rootDir/gradle/sonarqube.gradle"
 
     compileJava {
         options.release = javaMajorVersion.toInteger()
