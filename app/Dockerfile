@@ -1,5 +1,4 @@
 FROM library/node:12.22.6-alpine
-LABEL msm-app="true"
 
 ENV APP_DIR=/opt/app
 ENV PORT=3000
@@ -10,7 +9,7 @@ RUN npm install -g npm@latest
 RUN mkdir -p $APP_DIR
 WORKDIR $APP_DIR
 COPY . $APP_DIR
-RUN npm install
+RUN npm ci
 RUN npm run build
 
 EXPOSE $PORT

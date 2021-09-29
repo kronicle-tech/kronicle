@@ -28,6 +28,12 @@ jobs:
           key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
           restore-keys: |
             ${{ runner.os }}-gradle-
+      - name: Cache SonarCloud packages
+        uses: actions/cache@v2
+        with:
+          path: ~/.sonar/cache
+          key: ${{ runner.os }}-sonar
+          restore-keys: ${{ runner.os }}-sonar
       - name: Get Node.js version
         run: |
           echo "$(node -v)" > node-version.txt
@@ -44,7 +50,10 @@ jobs:
       - name: Validate Gradle wrapper
         uses: gradle/wrapper-validation-action@e6e38bacfdf1a337459f332974bb2327a31aaf4b
       - name: Build
-        run: ./gradlew service:downloadGradleLibs app:docker service:test app:assembleFrontend build
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information for SonarQube, if any
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        run: ./gradlew service:downloadGradleLibs app:docker service:test app:assembleFrontend sonarqube build
       - name: Tag build
         if: ${{ github.ref == 'refs/heads/main' }}
         # Based on https://axion-release-plugin.readthedocs.io/en/latest/configuration/ci_servers/#github-actions
