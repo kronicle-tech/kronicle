@@ -10,10 +10,12 @@ java {
 publishing {
     publications {
         mavenJava(MavenPublication) {
+            artifactId archivesBaseName
+
             from components.java
 
             pom {
-                name = archivesBaseName
+                name = "$group:$archivesBaseName"
                 description = project.description
                 url = websiteUrl
                 licenses {
