@@ -2,9 +2,11 @@ apply plugin: 'org.sonarqube'
 
 sonarqube {
     properties {
-        property 'sonar.projectKey', 'kronicle-tech_kronicle'
-        property 'sonar.projectName', 'kronicle-tech'
+        property "sonar.projectKey", "kronicle-tech_kronicle"
+        property "sonar.organization", "kronicle-tech"
         property 'sonar.host.url', sonarQubeHostUrl
+
+        property 'sonar.projectName', 'kronicle-tech'
         property 'sonar.projectVersion', version
         property 'sonar.language', 'java'
         property 'sonar.java.source', javaVersion
