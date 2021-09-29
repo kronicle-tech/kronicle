@@ -6,20 +6,24 @@ sonarqube {
         property "sonar.organization", "kronicle-tech"
         property 'sonar.host.url', sonarQubeHostUrl
 
-        property 'sonar.projectName', 'kronicle-tech'
+        property 'sonar.projectName', 'kronicle'
         property 'sonar.projectVersion', version
-        property 'sonar.language', 'java'
-        property 'sonar.java.source', javaVersion
+        property 'sonar.links.homepage', websiteUrl
+
         property 'sonar.sourceEncoding', 'UTF-8'
-        property 'sonar.java.coveragePlugin', 'jacoco'
-        property 'sonar.core.codeCoveragePlugin', 'jacoco'
-        property 'sonar.issuesReport.html.enable', true
-        property 'sonar.issuesReport.console.enable', true
-        property 'sonar.sources', 'src/main/java'
-        property 'sonar.tests', 'src/test/java'
-        property 'sonar.java.binaries', 'build/classes/java/main'
-        property 'sonar.junit.reportsPath', 'build/test-results'
-        property 'sonar.coverage.jacoco.xmlReportPaths', 'build/reports/jacoco/test/jacocoTestReport.xml'
-        property 'sonar.cobertura.reportPath', 'coverage/cobertura-coverage.xml'
+
+//        if (project.name != "app") {
+//            property 'sonar.language', 'java'
+//            property 'sonar.java.source', javaVersion
+//            property 'sonar.core.codeCoveragePlugin', 'jacoco'
+//            property 'sonar.java.coveragePlugin', 'jacoco'
+//            property 'sonar.sources', 'src/main/java'
+//            property 'sonar.tests', 'src/test/java'
+//            property 'sonar.java.binaries', 'build/classes/java/main'
+//            property 'sonar.junit.reportsPath', 'build/test-results'
+//            property 'sonar.coverage.jacoco.xmlReportPaths', 'build/reports/jacoco/test/jacocoTestReport.xml'
+//        } else {
+//            property 'sonar.cobertura.reportPath', 'coverage/cobertura-coverage.xml'
+//        }
     }
 }
