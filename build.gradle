@@ -16,11 +16,11 @@ subprojects {
         apply from: "gradle/repos.gradle", to: buildscript
     }
 
-    apply plugin: 'java'
-    apply from: "gradle/repos.gradle"
-    apply from: "gradle/dependency-check.gradle"
-    apply from: "gradle/jacoco.gradle"
-    apply from: "gradle/sonarqube.gradle"
+    apply plugin: "java"
+    apply from: "$rootDir/gradle/repos.gradle"
+    apply from: "$rootDir/gradle/dependency-check.gradle"
+    apply from: "$rootDir/gradle/jacoco.gradle"
+    apply from: "$rootDir/gradle/sonarqube.gradle"
 
     version = scmVersion.version
 
