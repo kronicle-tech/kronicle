@@ -13,7 +13,7 @@ apply from: "gradle/sonarqube.gradle"
 
 subprojects {
     buildscript {
-        apply from: "gradle/repos.gradle", to: buildscript
+        apply from: "$rootDir/gradle/repos.gradle", to: buildscript
     }
 
     apply plugin: "java"
