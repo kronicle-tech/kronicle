@@ -146,4 +146,12 @@
         <packageUrl regex="true">^pkg:npm/nth\-check@.*$</packageUrl>
         <cve>CVE-2021-3803</cve>
     </suppress>
+    <!-- Time-limited suppression -->
+    <suppress until="2021-10-02Z">
+        <notes><![CDATA[
+   file name: lodash:4.17.21
+   ]]></notes>
+        <packageUrl regex="true">^pkg:npm/lodash@.*$</packageUrl>
+        <cve>CVE-2021-41720</cve>
+    </suppress>
 </suppressions>
