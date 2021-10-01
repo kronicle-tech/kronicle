@@ -47,7 +47,7 @@ export default {
         crossorigin: 'anonymous',
       },
     ],
-    script: headScript()
+    script: headScript(),
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
