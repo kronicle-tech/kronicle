@@ -7,47 +7,45 @@ const customFields = format((info) => {
   return info
 })
 
-function headScript() {
-  const script = []
-  if (process.env.ANALYTICS_PLAUSIBLE_ENABLED === 'true') {
-    script.push({
-      src: process.env.ANALYTICS_PLAUSIBLE_SCRIPT_URL ?? 'https://plausible.io/js/plausible.js',
-      defer: true,
-      'data-domain': process.env.ANALYTICS_PLAUSIBLE_DATA_DOMAIN,
-    })
-  }
-  return script
-}
-
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
-  head: {
-    htmlAttrs: {
-      lang: 'en'
-    },
-    meta: [
-      { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: '' },
-    ],
-    link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-      {
-        rel: 'stylesheet',
-        href: 'https://cdnjs.cloudflare.com/ajax/libs/bootswatch/4.5.3/darkly/bootstrap.min.css',
-        integrity:
-          'sha512-U4WaRm7u3LeQy69FgQcz1CBxA32VsI/OeUdcCC5iBbwdjbfRcE+9E2wnJjXPO/bRfrClPTDYTLgBOekcTiBEgQ==',
-        crossorigin: 'anonymous',
+  head() {
+    const script = []
+    if (process.env.ANALYTICS_PLAUSIBLE_ENABLED === 'true') {
+      script.push({
+        src: process.env.ANALYTICS_PLAUSIBLE_SCRIPT_URL ?? 'https://plausible.io/js/plausible.js',
+        defer: true,
+        'data-domain': process.env.ANALYTICS_PLAUSIBLE_DATA_DOMAIN,
+      })
+    }
+    return {
+      htmlAttrs: {
+        lang: 'en'
       },
-      {
-        rel: 'stylesheet',
-        href: 'https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.3.2/styles/darcula.min.css',
-        integrity:
-          'sha512-0+Gq7jQLhuoMdL8EednGo8delKMhKim1t3XrvVGTqbJPfyv5f4HUJ0DTEN+3E+aM4RGEEfmVJOiomnP9olm4iw==',
-        crossorigin: 'anonymous',
-      },
-    ],
-    script: headScript(),
+      meta: [
+        {charset: 'utf-8'},
+        {name: 'viewport', content: 'width=device-width, initial-scale=1'},
+        {hid: 'description', name: 'description', content: ''},
+      ],
+      link: [
+        {rel: 'icon', type: 'image/x-icon', href: '/favicon.ico'},
+        {
+          rel: 'stylesheet',
+          href: 'https://cdnjs.cloudflare.com/ajax/libs/bootswatch/4.5.3/darkly/bootstrap.min.css',
+          integrity:
+            'sha512-U4WaRm7u3LeQy69FgQcz1CBxA32VsI/OeUdcCC5iBbwdjbfRcE+9E2wnJjXPO/bRfrClPTDYTLgBOekcTiBEgQ==',
+          crossorigin: 'anonymous',
+        },
+        {
+          rel: 'stylesheet',
+          href: 'https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.3.2/styles/darcula.min.css',
+          integrity:
+            'sha512-0+Gq7jQLhuoMdL8EednGo8delKMhKim1t3XrvVGTqbJPfyv5f4HUJ0DTEN+3E+aM4RGEEfmVJOiomnP9olm4iw==',
+          crossorigin: 'anonymous',
+        },
+      ],
+      script,
+    }
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
