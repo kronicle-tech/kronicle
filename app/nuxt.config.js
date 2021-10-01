@@ -7,6 +7,18 @@ const customFields = format((info) => {
   return info
 })
 
+function headScript() {
+  const script = []
+  if (process.env.ANALYTICS_PLAUSIBLE_ENABLED === 'true') {
+    script.push({
+      src: process.env.ANALYTICS_PLAUSIBLE_SCRIPT_URL ?? 'https://plausible.io/js/plausible.js',
+      defer: true,
+      'data-domain': process.env.ANALYTICS_PLAUSIBLE_DATA_DOMAIN,
+    })
+  }
+  return script
+}
+
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
@@ -35,6 +47,7 @@ export default {
         crossorigin: 'anonymous',
       },
     ],
+    script: headScript(),
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
