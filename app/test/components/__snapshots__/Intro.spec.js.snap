@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Intro when all intro config is set renders the whole custom intro 1`] = `
+exports[`Intro when all props are set renders the whole custom intro 1`] = `
 "<div class=\\"jumbotron my-3\\">
   <h1 class=\\"display-3\\">Test Title</h1>
   <!---->
@@ -10,27 +10,7 @@ exports[`Intro when all intro config is set renders the whole custom intro 1`] =
 </div>"
 `;
 
-exports[`Intro when intro config is not set renders default intro 1`] = `
-"<div class=\\"jumbotron my-3\\">
-  <h1 class=\\"display-3\\">Kronicle</h1>
-  <!---->
-  <div>
-    <p>Kronicle contains information on the organisation's components, teams and areas.</p>
-  </div>
-</div>"
-`;
-
-exports[`Intro when intro config is set to undefined renders default intro 1`] = `
-"<div class=\\"jumbotron my-3\\">
-  <h1 class=\\"display-3\\">Kronicle</h1>
-  <!---->
-  <div>
-    <p>Kronicle contains information on the organisation's components, teams and areas.</p>
-  </div>
-</div>"
-`;
-
-exports[`Intro when intro.markdown config is set renders the custom intro markdown with default title 1`] = `
+exports[`Intro when markdown prop is set renders the custom intro markdown with default title 1`] = `
 "<div class=\\"jumbotron my-3\\">
   <h1 class=\\"display-3\\">Kronicle</h1>
   <!---->
@@ -40,7 +20,17 @@ exports[`Intro when intro.markdown config is set renders the custom intro markdo
 </div>"
 `;
 
-exports[`Intro when intro.title config is set renders the custom intro title with default markdown 1`] = `
+exports[`Intro when no props are set renders default intro 1`] = `
+"<div class=\\"jumbotron my-3\\">
+  <h1 class=\\"display-3\\">Kronicle</h1>
+  <!---->
+  <div>
+    <p>Kronicle contains information on the organisation's components, teams and areas.</p>
+  </div>
+</div>"
+`;
+
+exports[`Intro when title prop is set renders the custom intro title with default markdown 1`] = `
 "<div class=\\"jumbotron my-3\\">
   <h1 class=\\"display-3\\">Test Title</h1>
   <!---->

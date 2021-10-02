@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Intro />
+    <Intro :title="introTitle" :markdown="introMarkdown" />
 
     <b-card-group columns>
       <b-card
@@ -305,6 +305,8 @@ export default Vue.extend({
   },
   data() {
     return {
+      introTitle: this.$config.introTitle as String | undefined,
+      introMarkdown: this.$config.introMarkdown as String | undefined,
       areas: [] as Area[],
       teams: [] as Team[],
       components: [] as Component[],

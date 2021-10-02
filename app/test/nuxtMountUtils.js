@@ -24,7 +24,7 @@ export async function mountWithAsyncData(
   const wrapper = mountFunction(component, {
     ...options,
     store,
-    mocks: { $route: route },
+    mocks: { $route: route, $config: config },
     data: () => data,
   })
   return wrapper
