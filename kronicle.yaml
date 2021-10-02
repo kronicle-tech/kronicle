@@ -92,13 +92,8 @@ components:
       - description: |
           Kronicle Service stores all of its data in-memory.  This means:
 
-          1. Only 1 instance of the service can run at a time (not including a few seconds of dual running during a\
-          deployment).  Due to this, it is not possible to run multiple instances of the service (horizontal scaling)\
-          for availability or processing capacity.
-          2. Kronicle Service stores all of its data in-memory.  This means the data has to be recreated (via Repo\
-          Finders, Scanners, Tests) every time the service restarts.  This means that when the service restarts,\
-          it can take from seconds to many minutes for data to be available in the service and during this time the\
-          Kronicle App dashboards will appear to contain no data.
+          1. Only 1 instance of the service can run at a time (not including a few seconds of dual running during a deployment).  Due to this, it is not possible to run multiple instances of the service (horizontal scaling) for availability or processing capacity.
+          2. Kronicle Service stores all of its data in-memory.  This means the data has to be recreated (via Repo Finders, Scanners, Tests) every time the service restarts.  This means that when the service restarts, it can take from seconds to many minutes for data to be available in the service and during this time the Kronicle App dashboards will appear to contain no data.
         priority: medium
       - description: |
           Currently Kronicle Service refreshing its data on a schedule.  Data is reloaded every 15 minutes.  This means
