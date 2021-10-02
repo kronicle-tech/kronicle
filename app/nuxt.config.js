@@ -92,12 +92,23 @@ export default {
       process.env.SERVER_SIDE_SERVICE_BASE_URL || 'http://localhost:8090',
   },
 
-  publicRuntimeConfig: {
-    serviceBaseUrl:
-      process.env.CLIENT_SIDE_SERVICE_BASE_URL || 'http://localhost:8090',
-    messageMarkdown: process.env.MESSAGE_MARKDOWN,
-    messageVariant: process.env.MESSAGE_VARIANT,
-    version: process.env.VERSION,
+  publicRuntimeConfig() {
+    function messageRuntimeConfig() {
+      if (!process.env.MESSAGE_MARKDOWN) {
+        return undefined
+      }
+
+      return {
+        markdown: process.env.MESSAGE_MARKDOWN,
+        variant: process.env.MESSAGE_VARIANT,
+      }
+    }
+
+    return {
+      serviceBaseUrl: process.env.CLIENT_SIDE_SERVICE_BASE_URL || 'http://localhost:8090',
+      message: messageRuntimeConfig(),
+      version: process.env.VERSION,
+    }
   },
 
   winstonLog: {

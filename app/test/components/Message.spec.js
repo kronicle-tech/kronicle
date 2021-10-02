@@ -21,16 +21,18 @@ describe('Message', () => {
     wrapper = null
   })
 
-  describe('when messageMarkdown config is not set', () => {
+  describe('when message.markdown config is not set', () => {
     test('renders nothing', () => {
       createWrapper()
       expect(wrapper.html()).toEqual('')
     })
   })
 
-  describe('when messageMarkdown config is set', () => {
+  describe('when message.markdown config is set', () => {
     beforeEach(() => {
-      config.messageMarkdown = '# Test Message'
+      config.message = {
+        markdown: '# Test Message',
+      }
     })
 
     test('renders an info alert showing the message as markdown', () => {
@@ -42,9 +44,9 @@ describe('Message', () => {
       expect(wrapper.get('div[role="alert"]').classes()).toContain('alert-info')
     })
 
-    describe('when messageVariant config is set', () => {
+    describe('when message.variant config is set', () => {
       beforeEach(() => {
-        config.messageVariant = 'warning'
+        config.message.variant = 'warning'
       })
 
       test('renders the alert with the specified variant', () => {
