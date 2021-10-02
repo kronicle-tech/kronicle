@@ -123,7 +123,7 @@
         <cve>CVE-2021-23424</cve>
     </suppress>
     <!-- Time-limited suppression waiting for Nuxt.js to upgrade to Webpack 5.x.x.  See https://github.com/nuxt/nuxt.js/issues/9798 -->
-    <suppress until="2021-10-02Z">
+    <suppress until="2021-10-11Z">
         <notes><![CDATA[
    file name: set-value:2.0.1
    ]]></notes>
@@ -147,7 +147,7 @@
         <cve>CVE-2021-3803</cve>
     </suppress>
     <!-- Time-limited suppression -->
-    <suppress until="2021-10-02Z">
+    <suppress until="2021-10-11Z">
         <notes><![CDATA[
    file name: lodash:4.17.21
    ]]></notes>

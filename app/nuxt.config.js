@@ -97,6 +97,7 @@ export default {
       process.env.CLIENT_SIDE_SERVICE_BASE_URL || 'http://localhost:8090',
     messageMarkdown: process.env.MESSAGE_MARKDOWN,
     messageVariant: process.env.MESSAGE_VARIANT,
+    version: process.env.VERSION,
   },
 
   winstonLog: {

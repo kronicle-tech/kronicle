@@ -1,11 +1,11 @@
 import { mount } from '@vue/test-utils'
-import AllAreasTabs from '@/components/Message.vue'
+import Message from '@/components/Message.vue'
 
 describe('Message', () => {
   let config
   let wrapper
   const createWrapper = () => {
-    wrapper = mount(AllAreasTabs, {
+    wrapper = mount(Message, {
       mocks: {
         $config: config,
       },
