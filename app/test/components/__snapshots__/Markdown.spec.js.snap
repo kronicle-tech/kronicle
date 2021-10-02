@@ -8,14 +8,14 @@ exports[`Markdown when markdown prop contains HTML renders markdown prop as HTML
 
 exports[`Markdown when markdown prop contains HTML toc prop when true renders Table of Contents section 1`] = `
 "<div>
-  <h4 id=\\"user-content-table-of-contents\\">Table of Contents</h4>
+  <h1 id=\\"user-content-table-of-contents\\">Table of Contents</h1>
   <p>Content</p>
 </div>"
 `;
 
 exports[`Markdown when markdown prop contains HTML toc prop when true renders Table of Contents section including headings 1`] = `
 "<div>
-  <h4 id=\\"user-content-table-of-contents\\">Table of Contents</h4>
+  <h1 id=\\"user-content-table-of-contents\\">Table of Contents</h1>
   <ul>
     <li>
       <p><a href=\\"#user-content-main-heading\\">Main Heading</a></p>

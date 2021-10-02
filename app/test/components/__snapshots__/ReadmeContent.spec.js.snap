@@ -18,7 +18,7 @@ exports[`ReadmeContent when readme prop is set to a readme with the file extensi
 "<div>
   <div>
     <div>
-      <h4 id=\\"user-content-table-of-contents\\">Table of Contents</h4>
+      <h1 id=\\"user-content-table-of-contents\\">Table of Contents</h1>
       <p>Test Content</p>
     </div>
   </div>
@@ -29,7 +29,7 @@ exports[`ReadmeContent when readme prop is set to a readme with the file extensi
 "<div>
   <div>
     <div>
-      <h4 id=\\"user-content-table-of-contents\\">Table of Contents</h4>
+      <h1 id=\\"user-content-table-of-contents\\">Table of Contents</h1>
       <p>Text with <em>bold</em> formatting</p>
     </div>
   </div>
@@ -40,7 +40,7 @@ exports[`ReadmeContent when readme prop is set to a readme with the file extensi
 "<div>
   <div>
     <div>
-      <h4 id=\\"user-content-table-of-contents\\">Table of Contents</h4>
+      <h1 id=\\"user-content-table-of-contents\\">Table of Contents</h1>
       <ul>
         <li><a href=\\"#user-content-test-heading\\">Test Heading</a></li>
       </ul>

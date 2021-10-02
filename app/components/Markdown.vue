@@ -5,6 +5,10 @@
 </template>
 
 <style scoped>
+div >>> h1#user-content-table-of-contents {
+  display: none;
+}
+
 div >>> p:last-child {
   margin-bottom: 0;
 }
@@ -81,7 +85,7 @@ export default Vue.extend({
       }
       let modifiedMarkdown = this.markdown
       if (this.toc) {
-        modifiedMarkdown = '#### Table of Contents\n\n' + modifiedMarkdown
+        modifiedMarkdown = '# Table of Contents\n\n' + modifiedMarkdown
       }
       try {
         const html = generateMarkdownHtml(modifiedMarkdown, this.toc)
