@@ -10,7 +10,7 @@ exports[`Message when messageMarkdown config is set renders an info alert showin
 </transition-stub>"
 `;
 
-exports[`Message when messageMarkdown config is set when messageVariant config is set renders the alert with the specified variant 1`] = `
+exports[`Message when messageMarkdown config is set when message.variant config is set renders the alert with the specified variant 1`] = `
 "<transition-stub name=\\"\\" css=\\"true\\" enterclass=\\"\\" leaveclass=\\"show\\" entertoclass=\\"show\\" leavetoclass=\\"\\" enteractiveclass=\\"\\" leaveactiveclass=\\"\\">
   <div role=\\"alert\\" aria-live=\\"polite\\" aria-atomic=\\"true\\" class=\\"alert alert-dismissible alert-warning\\"><button type=\\"button\\" aria-label=\\"Close\\" class=\\"close\\">×</button>
     <div>

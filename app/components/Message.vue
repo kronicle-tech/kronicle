@@ -16,8 +16,8 @@ export default Vue.extend({
   },
   data() {
     return {
-      markdown: this.$config.messageMarkdown as string | undefined,
-      variant: (this.$config.messageVariant || 'info') as string | undefined,
+      markdown: this.$config.messageMarkdown,
+      variant: this.$config.messageVariant,
     }
   },
 })

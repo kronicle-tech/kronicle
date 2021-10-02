@@ -4,6 +4,16 @@
   <!-- eslint-enable -->
 </template>
 
+<style scoped>
+div >>> h1#user-content-table-of-contents {
+  display: none;
+}
+
+div >>> p:last-child {
+  margin-bottom: 0;
+}
+</style>
+
 <script lang="ts">
 import Vue from 'vue'
 import remark from 'remark'
@@ -75,7 +85,7 @@ export default Vue.extend({
       }
       let modifiedMarkdown = this.markdown
       if (this.toc) {
-        modifiedMarkdown = '#### Table of Contents\n\n' + modifiedMarkdown
+        modifiedMarkdown = '# Table of Contents\n\n' + modifiedMarkdown
       }
       try {
         const html = generateMarkdownHtml(modifiedMarkdown, this.toc)

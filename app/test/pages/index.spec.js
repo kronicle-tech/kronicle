@@ -18,6 +18,10 @@ describe('Index', () => {
   let wrapper
   async function createWrapper() {
     wrapper = await createPageWrapper(Index, {
+      config: {
+        introTitle: 'Test Intro Title',
+        introMarkdown: 'Test Intro *Markdown*',
+      },
       serviceRequests: {
         '/v1/areas?fields=areas(id)': {
           responseBody: { areas },

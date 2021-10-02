@@ -93,11 +93,12 @@ export default {
   },
 
   publicRuntimeConfig: {
-    serviceBaseUrl:
-      process.env.CLIENT_SIDE_SERVICE_BASE_URL || 'http://localhost:8090',
+    serviceBaseUrl: process.env.CLIENT_SIDE_SERVICE_BASE_URL || 'http://localhost:8090',
+    version: process.env.VERSION,
     messageMarkdown: process.env.MESSAGE_MARKDOWN,
     messageVariant: process.env.MESSAGE_VARIANT,
-    version: process.env.VERSION,
+    introTitle: process.env.INTRO_TITLE,
+    introMarkdown: process.env.INTRO_MARKDOWN,
   },
 
   winstonLog: {

@@ -42,7 +42,7 @@ describe('Message', () => {
       expect(wrapper.get('div[role="alert"]').classes()).toContain('alert-info')
     })
 
-    describe('when messageVariant config is set', () => {
+    describe('when message.variant config is set', () => {
       beforeEach(() => {
         config.messageVariant = 'warning'
       })

@@ -8,15 +8,21 @@ exports[`Index when Kronicle contains information renders the page showing the i
     <h1
       class="display-3"
     >
-      Kronicle
+      Test Intro Title
     </h1>
     <!---->
-    <p>
+    <div>
       
-      Kronicle contains information on the organisation's components, teams
-      and areas.
-    
-    </p>
+
+      <p>
+        Test Intro 
+        <em>
+          Markdown
+        </em>
+      </p>
+      
+
+    </div>
   </div>
    
   <div
@@ -703,15 +709,21 @@ exports[`Index when Kronicle contains no information renders the page with no in
     <h1
       class="display-3"
     >
-      Kronicle
+      Test Intro Title
     </h1>
     <!---->
-    <p>
+    <div>
       
-      Kronicle contains information on the organisation's components, teams
-      and areas.
-    
-    </p>
+
+      <p>
+        Test Intro 
+        <em>
+          Markdown
+        </em>
+      </p>
+      
+
+    </div>
   </div>
    
   <div
