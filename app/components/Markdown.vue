@@ -4,6 +4,12 @@
   <!-- eslint-enable -->
 </template>
 
+<style scoped>
+div >>> p:last-child {
+  margin-bottom: 0;
+}
+</style>
+
 <script lang="ts">
 import Vue from 'vue'
 import remark from 'remark'
