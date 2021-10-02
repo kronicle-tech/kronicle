@@ -16,6 +16,7 @@
     <div id="content" class="mx-3">
       <Nuxt />
     </div>
+    <Version />
   </div>
 </template>
 

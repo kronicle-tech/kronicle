@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Version when version config is set renders the version 1`] = `
+"<div class=\\"mx-3 my-2 text-right\\">
+  Kronicle App v1.2.3
+</div>"
+`;
