@@ -1,11 +1,6 @@
 <template>
   <div>
-    <b-jumbotron header="Kronicle" class="my-3">
-      <p>
-        Kronicle contains information on the organisation's components, teams
-        and areas.
-      </p>
-    </b-jumbotron>
+    <Intro />
 
     <b-card-group columns>
       <b-card
@@ -250,23 +245,23 @@ import {
   BBadge,
   BCard,
   BCardGroup,
-  BJumbotron,
   BListGroup,
   BListGroupItem,
 } from 'bootstrap-vue'
 import { MetaInfo } from 'vue-meta'
 import { Area, Component, Scanner, Team, Test } from '~/types/kronicle-service'
 import { ItemCount, itemCounts } from '~/src/arrayUtils'
+import Intro from '~/components/Intro.vue'
 import Markdown from '~/components/Markdown.vue'
 
 export default Vue.extend({
   components: {
-    'b-jumbotron': BJumbotron,
     'b-badge': BBadge,
     'b-card': BCard,
     'b-card-group': BCardGroup,
     'b-list-group': BListGroup,
     'b-list-group-item': BListGroupItem,
+    Intro,
     Markdown,
   },
   async asyncData({ $config }) {
@@ -317,6 +312,11 @@ export default Vue.extend({
       tests: [] as Test[],
     }
   },
+  head(): MetaInfo {
+    return {
+      title: 'Kronicle',
+    }
+  },
   computed: {
     areaCount(): number {
       return this.areas.length
@@ -348,11 +348,6 @@ export default Vue.extend({
       return this.components.flatMap((component) => component.testResults ?? [])
         .length
     },
-  },
-  head(): MetaInfo {
-    return {
-      title: 'Kronicle',
-    }
   },
 })
 </script>

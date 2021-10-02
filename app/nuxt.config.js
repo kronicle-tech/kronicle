@@ -104,10 +104,18 @@ export default {
       }
     }
 
+    function introRuntimeConfig() {
+      return {
+        title: process.env.INTRO_TITLE,
+        markdown: process.env.INTRO_MARKDOWN,
+      }
+    }
+
     return {
       serviceBaseUrl: process.env.CLIENT_SIDE_SERVICE_BASE_URL || 'http://localhost:8090',
-      message: messageRuntimeConfig(),
       version: process.env.VERSION,
+      message: messageRuntimeConfig(),
+      intro: introRuntimeConfig(),
     }
   },
 
