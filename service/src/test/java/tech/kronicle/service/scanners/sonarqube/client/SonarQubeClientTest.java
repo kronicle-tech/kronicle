@@ -15,6 +15,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.util.List;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -59,17 +60,37 @@ public class SonarQubeClientTest {
     }
 
     @Test
-    public void getProjectsShouldReturnAllProjects() {
+    public void getProjectsShouldReturnAllProjectsWhenNoOrganizationIsSpecified() {
         // Given
         wireMockServer = SonarQubeWireMockFactory.createWithRealResponses();
+        String organization = null;
 
         // When
-        List<Project> returnValue = underTest.getProjects();
+        List<Project> returnValue = underTest.getProjects(organization);
 
         // Then
         assertThat(returnValue).hasSize(105);
-        IntStream.range(1, 106).forEach(projectNumber -> assertThat(returnValue).contains(
-                new Project("test-component-key-" + projectNumber, "Test Component Name " + projectNumber)));
+        List<Project> expectedProjects = IntStream.range(1, 106)
+                .mapToObj(projectNumber -> new Project("test-component-key-" + projectNumber, "Test Component Name " + projectNumber + " with no organization"))
+                .collect(Collectors.toList());
+        assertThat(returnValue).containsExactlyElementsOf(expectedProjects);
+    }
+
+    @Test
+    public void getProjectsShouldReturnAllProjectsWhenAnOrganizationIsSpecified() {
+        // Given
+        wireMockServer = SonarQubeWireMockFactory.createWithRealResponses();
+        String organization = "test-organization";
+
+        // When
+        List<Project> returnValue = underTest.getProjects(organization);
+
+        // Then
+        assertThat(returnValue).hasSize(105);
+        List<Project> expectedProjects = IntStream.range(1, 106)
+                .mapToObj(projectNumber -> new Project("test-component-key-" + projectNumber, "Test Component Name " + projectNumber + " with organization test-organization"))
+                .collect(Collectors.toList());
+        assertThat(returnValue).containsExactlyElementsOf(expectedProjects);
     }
 
     @Test

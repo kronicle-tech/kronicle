@@ -31,6 +31,8 @@ import java.util.Map;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
+import static java.util.Objects.nonNull;
+
 @Client
 @RequiredArgsConstructor
 public class SonarQubeClient {
@@ -46,10 +48,10 @@ public class SonarQubeClient {
                 "Search Metrics", "metrics", new HashMap<>(), SummarySonarQubeMetric.class);
     }
 
-    public List<Project> getProjects() {
+    public List<Project> getProjects(String organization) {
         return getAllResourcePages(uriVariables -> webClient.get().uri(
-                config.getBaseUrl() + ApiPaths.SEARCH_COMPONENTS + "?qualifiers={qualifiers}&p={pageNumber}", uriVariables),
-                "Search Components", "components", createProjectsUriVariables(), Component.class)
+                        config.getBaseUrl() + ApiPaths.SEARCH_COMPONENTS + createProjectsUriTemplate(organization), uriVariables),
+                "Search Components", "components", createProjectsUriVariables(organization), Component.class)
                 .stream()
                 .map(component -> new Project(component.getKey(), component.getName()))
                 .collect(Collectors.toList());
@@ -74,9 +76,20 @@ public class SonarQubeClient {
         }
     }
 
-    private Map<String, String> createProjectsUriVariables() {
+    private String createProjectsUriTemplate(String organization) {
+        StringBuilder builder = new StringBuilder("?qualifiers={qualifiers}&p={pageNumber}");
+        if (nonNull(organization)) {
+            builder.append("&organization={organization}");
+        }
+        return builder.toString();
+    }
+
+    private Map<String, String> createProjectsUriVariables(String organization) {
         Map<String, String> uriVariables = new HashMap<>();
         uriVariables.put("qualifiers", ComponentQualifier.TRK.toString());
+        if (nonNull(organization)) {
+            uriVariables.put("organization", organization);
+        }
         return uriVariables;
     }
 

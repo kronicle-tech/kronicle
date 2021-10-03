@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.github.tomakehurst.wiremock.WireMockServer;
+import com.github.tomakehurst.wiremock.client.MappingBuilder;
 
 import java.util.function.Consumer;
 import java.util.stream.IntStream;
@@ -13,10 +14,12 @@ import static com.github.tomakehurst.wiremock.client.WireMock.aResponse;
 import static com.github.tomakehurst.wiremock.client.WireMock.equalTo;
 import static com.github.tomakehurst.wiremock.client.WireMock.get;
 import static com.github.tomakehurst.wiremock.client.WireMock.urlPathEqualTo;
+import static java.util.Objects.nonNull;
 
 public class SonarQubeWireMockFactory {
 
     public static final int PORT = 36202;
+    public static final String TEST_ORGANIZATION = "test-organization";
 
     private static final int PAGE_SIZE = 100;
     private static final int ITEM_COUNT = 105;
@@ -32,13 +35,8 @@ public class SonarQubeWireMockFactory {
                             .withHeader("Content-Type", "application/json")
                             .withBody(createMetricsBody(pageNumber, objectMapper)))));
 
-            IntStream.range(1, 4).forEach(pageNumber -> wireMockServer.stubFor(get(urlPathEqualTo("/api/components/search"))
-                    .withQueryParam("qualifiers", equalTo("TRK"))
-                    .withQueryParam("p", equalTo(Integer.toString(pageNumber)))
-                    .willReturn(aResponse()
-                            .withStatus(200)
-                            .withHeader("Content-Type", "application/json")
-                            .withBody(createComponentsBody(pageNumber, objectMapper)))));
+            stubProjectRequests(wireMockServer, objectMapper, null);
+            stubProjectRequests(wireMockServer, objectMapper, TEST_ORGANIZATION);
 
             wireMockServer.stubFor(get(urlPathEqualTo("/api/measures/component"))
                     .withQueryParam("component", equalTo("test-component-key-1"))
@@ -47,6 +45,22 @@ public class SonarQubeWireMockFactory {
                             .withStatus(200)
                             .withHeader("Content-Type", "application/json")
                             .withBody(createComponentMeasuresBody(objectMapper))));
+        });
+    }
+
+    private static void stubProjectRequests(WireMockServer wireMockServer, ObjectMapper objectMapper, String organization) {
+        IntStream.range(1, 4).forEach(pageNumber -> {
+            MappingBuilder requestBuilder = get(urlPathEqualTo("/api/components/search"))
+                    .withQueryParam("qualifiers", equalTo("TRK"))
+                    .withQueryParam("p", equalTo(Integer.toString(pageNumber)));
+            if (nonNull(organization)) {
+                requestBuilder.withQueryParam("organization", equalTo(organization));
+            }
+            wireMockServer.stubFor(requestBuilder
+                    .willReturn(aResponse()
+                            .withStatus(200)
+                            .withHeader("Content-Type", "application/json")
+                            .withBody(createComponentsBody(pageNumber, objectMapper, organization))));
         });
     }
 
@@ -78,7 +92,7 @@ public class SonarQubeWireMockFactory {
         }
     }
 
-    private static String createComponentsBody(int pageNumber, ObjectMapper objectMapper) {
+    private static String createComponentsBody(int pageNumber, ObjectMapper objectMapper, String organization) {
         ObjectNode rootJson = objectMapper.createObjectNode();
         ObjectNode pagingJson = rootJson.putObject("paging");
         pagingJson.put("pageIndex", pageNumber);
@@ -88,10 +102,10 @@ public class SonarQubeWireMockFactory {
         // Components are deliberately spread over two pages with a third page that is empty
         getItemNumbers(pageNumber).forEach(componentNumber -> {
             ObjectNode component = objectMapper.createObjectNode();
-            component.put("organisation", "test-organisation-" + componentNumber);
+            component.put("organization", "test-organization-" + componentNumber);
             component.put("id", "test-component-id-" + (1000 + componentNumber));
             component.put("key", "test-component-key-" + componentNumber);
-            component.put("name", "Test Component Name " + componentNumber);
+            component.put("name", createComponentName(componentNumber, organization));
             component.put("qualifier", "TRK");
             component.put("project", "test-project-" + componentNumber);
             componentsJson.add(component);
@@ -101,6 +115,11 @@ public class SonarQubeWireMockFactory {
         } catch (JsonProcessingException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    private static String createComponentName(int componentNumber, String organization) {
+        return "Test Component Name " + componentNumber + " with "
+                + (nonNull(organization) ? "organization " + organization : "no organization");
     }
 
     private static String createComponentMeasuresBody(ObjectMapper objectMapper) {
