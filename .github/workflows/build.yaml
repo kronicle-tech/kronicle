@@ -1,7 +1,7 @@
 name: Build
 on: [push]
 jobs:
-  Build:
+  build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
