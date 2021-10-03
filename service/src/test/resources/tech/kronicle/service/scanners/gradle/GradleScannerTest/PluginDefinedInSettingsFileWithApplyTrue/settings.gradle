@@ -6,6 +6,6 @@ pluginManagement {
     }
 
     plugins {
-        id "org.springframework.boot" version "$springBootVersion"
+        id "org.springframework.boot" version "$springBootVersion" apply true
     }
 }
