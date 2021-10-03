@@ -20,5 +20,6 @@ public class SonarQubeConfig {
     @NotEmpty
     @Pattern(regexp = "https?://.+[^/]")
     String baseUrl;
+    List<String> organizations;
     List<String> expectedComponentTypeIds;
 }

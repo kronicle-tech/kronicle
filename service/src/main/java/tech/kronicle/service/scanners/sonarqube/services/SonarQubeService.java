@@ -5,6 +5,7 @@ import tech.kronicle.sdk.models.sonarqube.SonarQubeMeasure;
 import tech.kronicle.sdk.models.sonarqube.SonarQubeProject;
 import tech.kronicle.sdk.models.sonarqube.SummarySonarQubeMetric;
 import tech.kronicle.service.scanners.sonarqube.client.SonarQubeClient;
+import tech.kronicle.service.scanners.sonarqube.config.SonarQubeConfig;
 import tech.kronicle.service.scanners.sonarqube.models.Project;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -14,14 +15,16 @@ import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static java.util.Objects.isNull;
 import static java.util.Objects.nonNull;
 
 @Service
 @RequiredArgsConstructor
 public class SonarQubeService {
 
-    private final CodebaseSonarQubeProjectFinder projectFinder;
+    private final SonarQubeConfig config;
     private final SonarQubeClient client;
+    private final CodebaseSonarQubeProjectFinder projectFinder;
     private final SonarQubeProjectCache projectCache;
     private final SonarQubeProjectCreator projectCreator;
     private final SonarQubeMissingComponentCollator missingComponentCollator;
@@ -31,7 +34,7 @@ public class SonarQubeService {
     public void refresh() {
         projectCache.clear();
         metrics = client.getMetrics();
-        projects = client.getProjects();
+        projects = getProjects();
     }
 
     public List<SummarySonarQubeMetric> getMetrics() {
@@ -57,5 +60,18 @@ public class SonarQubeService {
 
     public Collection<SummaryMissingComponent> getMissingComponents(String scannerId) {
         return missingComponentCollator.getMissingComponents(scannerId, projects, projectCache.getUsedProjectKeys());
+    }
+
+    private List<Project> getProjects() {
+        List<String> organizations = config.getOrganizations();
+
+        if (isNull(organizations) || organizations.isEmpty()) {
+            return client.getProjects(null);
+        }
+
+        return organizations.stream()
+                .map(client::getProjects)
+                .flatMap(Collection::stream)
+                .collect(Collectors.toList());
     }
 }
