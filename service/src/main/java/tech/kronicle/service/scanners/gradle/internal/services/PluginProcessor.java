@@ -46,7 +46,7 @@ public class PluginProcessor {
 
     public Optional<Software> getPlugin(String name, Set<Software> software) {
         return software.stream()
-                .filter(item -> PLUGIN_SOFTWARE_TYPES.contains(item.getType()) && Objects.equals(item.getName(), name))
+                .filter(item -> nonNull(item.getType()) && PLUGIN_SOFTWARE_TYPES.contains(item.getType()) && Objects.equals(item.getName(), name))
                 .findFirst();
     }
 
