@@ -1,4 +1,4 @@
-package tech.kronicle.componentmetadata.services;
+package tech.kronicle;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
@@ -10,7 +10,7 @@ import java.nio.file.Path;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.catchThrowable;
 
-public class ComponentMetadataValidatorTest {
+public class KronicleMetadataValidatorTest {
 
     @TempDir
     public Path tempDir;
@@ -28,7 +28,7 @@ public class ComponentMetadataValidatorTest {
                 + "      url: https://example.com/repo\n");
 
         // When
-        ComponentMetadataValidator.validate(file.toFile());
+        KronicleMetadataValidator.validate(file.toFile());
 
         // Then
         // No exception has been raised
@@ -43,7 +43,7 @@ public class ComponentMetadataValidatorTest {
                 + "  - id: test-component-id\n");
 
         // When
-        Throwable thrown = catchThrowable(() -> ComponentMetadataValidator.validate(file.toFile()));
+        Throwable thrown = catchThrowable(() -> KronicleMetadataValidator.validate(file.toFile()));
 
         // Then
         assertThat(thrown).isInstanceOf(RuntimeException.class);
