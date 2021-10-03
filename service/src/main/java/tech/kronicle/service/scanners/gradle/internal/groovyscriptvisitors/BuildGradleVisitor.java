@@ -107,22 +107,26 @@ public class BuildGradleVisitor extends BaseBuildFileVisitor {
         int count = getPluginCount();
         String name = values.get("plugin");
 
+        pluginProcessor.processPlugin(visitorState().getScannerId(), name, getPluginVersion(name), true, visitorState().getSoftware());
+
+        log.debug("Found {} plugins", getPluginCount() - count);
+    }
+
+    private String getPluginVersion(String name) {
         if (Objects.equals(name, "org.springframework.boot")) {
             Optional<Software> springBootPlugin = pluginProcessor.getSpringBootPlugin(visitorState().getSoftware());
 
-            if (springBootPlugin.isEmpty()) {
-                Optional<Software> springBootPluginDependency = pluginProcessor.getSpringBootPluginDependency(visitorState().getSoftware());
-
-                if (springBootPluginDependency.isEmpty()) {
-                    throw new RuntimeException("Could not find dependency for Spring Boot Plugin");
-                }
-
-                pluginProcessor.processPlugin(visitorState().getScannerId(), name, springBootPluginDependency.get().getVersion(), visitorState().getSoftware());
+            if (springBootPlugin.isPresent()) {
+                return springBootPlugin.get().getVersion();
             }
-        } else {
-            pluginProcessor.processPlugin(visitorState().getScannerId(), name, null, visitorState().getSoftware());
+
+            Optional<Software> springBootPluginDependency = pluginProcessor.getSpringBootPluginDependency(visitorState().getSoftware());
+
+            if (springBootPluginDependency.isPresent()) {
+                return springBootPluginDependency.get().getVersion();
+            }
         }
 
-        log.debug("Found {} plugins", getPluginCount() - count);
+        return null;
     }
 }

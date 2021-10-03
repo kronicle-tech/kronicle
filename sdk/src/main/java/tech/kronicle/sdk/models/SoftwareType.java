@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 public enum SoftwareType {
 
     GRADLE_PLUGIN,
+    GRADLE_PLUGIN_VERSION,
     JVM,
     TOOL;
 

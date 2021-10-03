@@ -562,9 +562,29 @@ public class GradleScannerTest extends BaseCodebaseScannerTest {
     }
 
     @Test
-    public void shouldScanSettingsPluginManagementPluginBuild() {
+    public void shouldScanPluginDefinedInSettingsFileWithApplyFalseBuild() {
         // Given
-        Codebase codebase = new Codebase(getTestRepo(), getCodebaseDir("SettingsPluginManagementPlugin"));
+        Codebase codebase = new Codebase(getTestRepo(), getCodebaseDir("PluginDefinedInSettingsFileWithApplyFalse"));
+
+        // When
+        Output<Void> output = underTest.scan(codebase);
+
+        // Then
+        Component component = getMutatedComponent(output);
+        assertThatGradleIsUsed(component);
+        assertThat(getSoftwareRepositories(component)).containsExactlyInAnyOrder(
+                MAVEN_CENTRAL_REPOSITORY.withScope(SoftwareRepositoryScope.BUILDSCRIPT));
+        Map<SoftwareGroup, List<Software>> softwareGroups = getSoftwareGroups(component);
+        assertThat(softwareGroups.get(SoftwareGroup.DIRECT)).containsExactlyInAnyOrder(
+                SPRING_BOOT_PLUGIN_2_3_4_RELEASE.withType(SoftwareType.GRADLE_PLUGIN_VERSION));
+        assertThat(softwareGroups.get(SoftwareGroup.TRANSITIVE)).isNull();
+        assertThat(softwareGroups.get(SoftwareGroup.BOM)).isNull();
+    }
+
+    @Test
+    public void shouldScanPluginDefinedInSettingsFileWithApplyFalseAndAppliedInBuildFileBuild() {
+        // Given
+        Codebase codebase = new Codebase(getTestRepo(), getCodebaseDir("PluginDefinedInSettingsFileWithApplyFalseAndAppliedInBuildFile"));
 
         // When
         Output<Void> output = underTest.scan(codebase);
@@ -577,8 +597,51 @@ public class GradleScannerTest extends BaseCodebaseScannerTest {
                 MAVEN_CENTRAL_REPOSITORY);
         Map<SoftwareGroup, List<Software>> softwareGroups = getSoftwareGroups(component);
         assertThat(softwareGroups.get(SoftwareGroup.DIRECT)).containsExactlyInAnyOrder(
-                SPRING_BOOT_PLUGIN_2_3_4_RELEASE,
-                SPRING_BOOT_PLUGIN);
+                SPRING_BOOT_PLUGIN_2_3_4_RELEASE.withType(SoftwareType.GRADLE_PLUGIN_VERSION),
+                SPRING_BOOT_PLUGIN_2_3_4_RELEASE);
+        assertThat(softwareGroups.get(SoftwareGroup.TRANSITIVE)).isNull();
+        assertThat(softwareGroups.get(SoftwareGroup.BOM)).hasSize(29);
+    }
+
+    @Test
+    public void shouldScanPluginDefinedInSettingsFileWithApplyFalseAndDefinedAgainInBuildFileBuild() {
+        // Given
+        Codebase codebase = new Codebase(getTestRepo(), getCodebaseDir("PluginDefinedInSettingsFileWithApplyFalseAndAppliedInBuildFile"));
+
+        // When
+        Output<Void> output = underTest.scan(codebase);
+
+        // Then
+        Component component = getMutatedComponent(output);
+        assertThatGradleIsUsed(component);
+        assertThat(getSoftwareRepositories(component)).containsExactlyInAnyOrder(
+                MAVEN_CENTRAL_REPOSITORY.withScope(SoftwareRepositoryScope.BUILDSCRIPT),
+                MAVEN_CENTRAL_REPOSITORY);
+        Map<SoftwareGroup, List<Software>> softwareGroups = getSoftwareGroups(component);
+        assertThat(softwareGroups.get(SoftwareGroup.DIRECT)).containsExactlyInAnyOrder(
+                SPRING_BOOT_PLUGIN_2_3_4_RELEASE.withType(SoftwareType.GRADLE_PLUGIN_VERSION),
+                SPRING_BOOT_PLUGIN_2_3_4_RELEASE);
+        assertThat(softwareGroups.get(SoftwareGroup.TRANSITIVE)).isNull();
+        assertThat(softwareGroups.get(SoftwareGroup.BOM)).hasSize(29);
+    }
+
+    @Test
+    public void shouldScanPluginDefinedInSettingsFileWithApplyTrueBuild() {
+        // Given
+        Codebase codebase = new Codebase(getTestRepo(), getCodebaseDir("PluginDefinedInSettingsFileWithApplyTrue"));
+
+        // When
+        Output<Void> output = underTest.scan(codebase);
+
+        // Then
+        Component component = getMutatedComponent(output);
+        assertThatGradleIsUsed(component);
+        assertThat(getSoftwareRepositories(component)).containsExactlyInAnyOrder(
+                MAVEN_CENTRAL_REPOSITORY.withScope(SoftwareRepositoryScope.BUILDSCRIPT),
+                MAVEN_CENTRAL_REPOSITORY);
+        Map<SoftwareGroup, List<Software>> softwareGroups = getSoftwareGroups(component);
+        assertThat(softwareGroups.get(SoftwareGroup.DIRECT)).containsExactlyInAnyOrder(
+                SPRING_BOOT_PLUGIN_2_3_4_RELEASE);
         assertThat(softwareGroups.get(SoftwareGroup.TRANSITIVE)).isNull();
         assertThat(softwareGroups.get(SoftwareGroup.BOM)).hasSize(29);
     }
@@ -1264,8 +1327,7 @@ public class GradleScannerTest extends BaseCodebaseScannerTest {
         assertThat(softwareGroups.get(SoftwareGroup.DIRECT)).containsExactlyInAnyOrder(
                 SPRING_BOOT_STARTER_WEB_2_3_4_RELEASE,
                 JAVA_PLUGIN,
-                SPRING_BOOT_PLUGIN_2_3_4_RELEASE,
-                SPRING_BOOT_PLUGIN);
+                SPRING_BOOT_PLUGIN_2_3_4_RELEASE);
         assertThat(softwareGroups.get(SoftwareGroup.TRANSITIVE)).hasSize(5);
         assertThat(softwareGroups.get(SoftwareGroup.BOM)).hasSize(29);
     }
@@ -1289,8 +1351,8 @@ public class GradleScannerTest extends BaseCodebaseScannerTest {
         assertThat(softwareGroups.get(SoftwareGroup.DIRECT)).containsExactlyInAnyOrder(
                 SPRING_BOOT_STARTER_WEB_2_3_4_RELEASE,
                 JAVA_PLUGIN,
-                SPRING_BOOT_PLUGIN_2_3_4_RELEASE,
-                SPRING_BOOT_PLUGIN);
+                SPRING_BOOT_PLUGIN_2_3_4_RELEASE.withType(SoftwareType.GRADLE_PLUGIN_VERSION),
+                SPRING_BOOT_PLUGIN_2_3_4_RELEASE);
         assertThat(softwareGroups.get(SoftwareGroup.TRANSITIVE)).hasSize(5);
         assertThat(softwareGroups.get(SoftwareGroup.BOM)).hasSize(29);
     }

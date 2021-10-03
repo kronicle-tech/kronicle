@@ -15,7 +15,9 @@ import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
+import static java.util.Objects.isNull;
 import static java.util.Objects.nonNull;
 
 @Component
@@ -55,8 +57,20 @@ public class PluginsVisitor extends BaseVisitor {
         Map<String, String> values = getValues(call);
         String name = values.get("id");
         String version = values.get("version");
+        boolean apply = getApplyValue(values);
 
-        pluginProcessor.processPlugin(visitorState().getScannerId(), name, version, visitorState().getSoftware());
+        pluginProcessor.processPlugin(visitorState().getScannerId(), name, version, apply, visitorState().getSoftware());
+    }
+
+    private boolean getApplyValue(Map<String, String> values) {
+        String text = values.get("apply");
+        if (isNull(text) || Objects.equals(text, "true")) {
+            return true;
+        } else if (Objects.equals(text, "false")) {
+            return false;
+        } else {
+            throw new RuntimeException(String.format("Unexpected value \"%s\" for apply argument to plugin call", text));
+        }
     }
 
     private Map<String, String> getValues(MethodCallExpression call) {
