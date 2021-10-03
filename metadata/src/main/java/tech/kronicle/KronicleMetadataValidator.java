@@ -1,4 +1,4 @@
-package tech.kronicle.componentmetadata.services;
+package tech.kronicle;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
@@ -19,7 +19,7 @@ import java.util.Set;
  * This class is used by the build scripts of the PR build jobs and master build jobs for "component-metadata" repos that contain "component-metadata.yaml"
  * files that define components, teams, areas etc.
  */
-public class ComponentMetadataValidator {
+public class KronicleMetadataValidator {
 
     private static final YAMLMapper YAML_MAPPER = new YAMLMapper(new YAMLFactory());
     private static final Validator VALIDATOR = Validation.buildDefaultValidatorFactory().getValidator();
@@ -29,7 +29,7 @@ public class ComponentMetadataValidator {
         YAML_MAPPER.configure(DeserializationFeature. FAIL_ON_UNKNOWN_PROPERTIES, true);
     }
 
-    private ComponentMetadataValidator() {
+    private KronicleMetadataValidator() {
     }
 
     public static void validate(File componentMetadataFile) throws IOException {
