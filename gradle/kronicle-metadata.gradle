@@ -4,16 +4,16 @@ buildscript {
     }
 
     dependencies {
-        classpath 'tech.kronicle:kronicle-metadata:0.1.32'
+        classpath "tech.kronicle:kronicle-metadata:0.1.45"
     }
 }
 
-import tech.kronicle.componentmetadata.services.ComponentMetadataValidator
+import tech.kronicle.KronicleMetadataValidator
 
-tasks.register('validateKronicleMetadata') {
+tasks.register("validateKronicleMetadata") {
     doLast {
-        ComponentMetadataValidator.validate(file('kronicle.yaml'))
+        KronicleMetadataValidator.validate(file("kronicle.yaml"))
     }
 }
 
-tasks.named('build') { dependsOn('validateKronicleMetadata') }
+tasks.named("build") { dependsOn("validateKronicleMetadata") }
