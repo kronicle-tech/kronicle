@@ -9,14 +9,16 @@ description "Kronicle sdk library that contains Kronicle's data classes"
 apply from: "$rootDir/gradle/publish.gradle"
 
 dependencies {
-    ["org.springframework.boot:spring-boot-dependencies:$springBootVersion",
-     "org.springframework.cloud:spring-cloud-dependencies:$springCloudVersion"].each {
-        annotationProcessor platform(it)
-        implementation platform(it)
-        compileOnly platform(it)
-        testAnnotationProcessor platform(it)
-        testImplementation platform(it)
-    }
+    annotationProcessor platform("org.springframework.boot:spring-boot-dependencies:$springBootVersion")
+    annotationProcessor platform("org.springframework.cloud:spring-cloud-dependencies:$springCloudVersion")
+    implementation platform("org.springframework.boot:spring-boot-dependencies:$springBootVersion")
+    implementation platform("org.springframework.cloud:spring-cloud-dependencies:$springCloudVersion")
+    compileOnly platform("org.springframework.boot:spring-boot-dependencies:$springBootVersion")
+    compileOnly platform("org.springframework.cloud:spring-cloud-dependencies:$springCloudVersion")
+    testAnnotationProcessor platform("org.springframework.boot:spring-boot-dependencies:$springBootVersion")
+    testAnnotationProcessor platform("org.springframework.cloud:spring-cloud-dependencies:$springCloudVersion")
+    testImplementation platform("org.springframework.boot:spring-boot-dependencies:$springBootVersion")
+    testImplementation platform("org.springframework.cloud:spring-cloud-dependencies:$springCloudVersion")
 
     annotationProcessor "org.projectlombok:lombok"
     compileOnly "org.projectlombok:lombok"
