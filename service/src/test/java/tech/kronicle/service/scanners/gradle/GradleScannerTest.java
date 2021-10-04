@@ -121,6 +121,14 @@ public class GradleScannerTest extends BaseCodebaseScannerTest {
             .name("org.projectlombok:lombok")
             .version("1.18.16")
             .build();
+    private static final Software SPRING_BOOT_DEPENDENCIES_2_3_4_RELEASE = Software
+            .builder()
+            .scannerId(SCANNER_ID)
+            .type(SoftwareType.JVM)
+            .dependencyType(SoftwareDependencyType.DIRECT)
+            .name("org.springframework.boot:spring-boot-dependencies")
+            .version("2.3.4.RELEASE")
+            .build();
     private static final Software SPRING_BOOT_STARTER_WEB_2_3_4_RELEASE = Software
             .builder()
             .scannerId(SCANNER_ID)
@@ -1468,6 +1476,29 @@ public class GradleScannerTest extends BaseCodebaseScannerTest {
                 SPRING_BOOT_STARTER_WEB_2_3_4_RELEASE,
                 JAVA_PLUGIN,
                 SPRING_BOOT_PLUGIN_2_3_4_RELEASE);
+        assertThat(softwareGroups.get(SoftwareGroup.TRANSITIVE)).hasSize(5);
+        assertThat(softwareGroups.get(SoftwareGroup.BOM)).hasSize(29);
+    }
+
+    @Test
+    public void shouldScanPlatformDependencyBuild() {
+        // Given
+        Codebase codebase = new Codebase(getTestRepo(), getCodebaseDir("PlatformDependency"));
+
+        // When
+        Output<Void> output = underTest.scan(codebase);
+
+        // Then
+        assertThat(output.getOutput()).isNull();
+        Component component = getMutatedComponent(output);
+        assertThatGradleIsUsed(component);
+        assertThat(getSoftwareRepositories(component)).containsExactlyInAnyOrder(
+                GRADLE_PLUGIN_PORTAL_REPOSITORY.withScope(SoftwareRepositoryScope.BUILDSCRIPT),
+                MAVEN_CENTRAL_REPOSITORY);
+        Map<SoftwareGroup, List<Software>> softwareGroups = getSoftwareGroups(component);
+        assertThat(softwareGroups.get(SoftwareGroup.DIRECT)).containsExactlyInAnyOrder(
+                JAVA_PLUGIN,
+                SPRING_BOOT_STARTER_WEB_2_3_4_RELEASE);
         assertThat(softwareGroups.get(SoftwareGroup.TRANSITIVE)).hasSize(5);
         assertThat(softwareGroups.get(SoftwareGroup.BOM)).hasSize(29);
     }
