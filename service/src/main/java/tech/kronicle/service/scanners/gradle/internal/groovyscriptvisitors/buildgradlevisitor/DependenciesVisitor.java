@@ -1,17 +1,19 @@
 package tech.kronicle.service.scanners.gradle.internal.groovyscriptvisitors.buildgradlevisitor;
 
+import org.codehaus.groovy.ast.expr.MethodCallExpression;
 import tech.kronicle.sdk.models.Software;
 import tech.kronicle.sdk.models.SoftwareDependencyType;
 import tech.kronicle.sdk.models.SoftwareScope;
+import tech.kronicle.service.scanners.gradle.internal.groovyscriptvisitors.BaseVisitor;
 import tech.kronicle.service.scanners.gradle.internal.groovyscriptvisitors.ProcessPhase;
 import tech.kronicle.service.scanners.gradle.internal.models.PomOutcome;
 import tech.kronicle.service.scanners.gradle.internal.services.ArtifactVersionResolver;
+import tech.kronicle.service.scanners.gradle.internal.services.BillOfMaterialsLogger;
 import tech.kronicle.service.scanners.gradle.internal.services.BuildFileLoader;
 import tech.kronicle.service.scanners.gradle.internal.services.BuildFileProcessor;
+import tech.kronicle.service.scanners.gradle.internal.services.DependencyVersionFetcher;
 import tech.kronicle.service.scanners.gradle.internal.services.ExpressionEvaluator;
 import tech.kronicle.service.scanners.gradle.internal.services.PomFetcher;
-import tech.kronicle.service.scanners.gradle.internal.services.PropertyExpander;
-import tech.kronicle.service.scanners.gradle.internal.services.PropertyRetriever;
 import tech.kronicle.service.scanners.gradle.internal.services.SoftwareRepositoryFactory;
 import tech.kronicle.service.scanners.gradle.internal.utils.ArtifactUtils;
 import tech.kronicle.service.scanners.gradle.internal.utils.InheritingHashSet;
@@ -33,11 +35,14 @@ public class DependenciesVisitor extends BaseArtifactVisitor {
 
     private final ArtifactVersionResolver artifactVersionResolver;
     private final PomFetcher pomFetcher;
+    private final PlatformVisitor platformVisitor;
 
-    public DependenciesVisitor(BuildFileLoader buildFileLoader, BuildFileProcessor buildFileProcessor, ExpressionEvaluator expressionEvaluator, PropertyExpander propertyExpander, PropertyRetriever propertyRetriever,
-                               ArtifactUtils artifactUtils, ArtifactVersionResolver artifactVersionResolver, PomFetcher pomFetcher,
-                               SoftwareRepositoryFactory softwareRepositoryFactory) {
-        super(buildFileLoader, buildFileProcessor, expressionEvaluator, propertyExpander, propertyRetriever, artifactUtils, softwareRepositoryFactory);
+    public DependenciesVisitor(BuildFileLoader buildFileLoader, BuildFileProcessor buildFileProcessor, ExpressionEvaluator expressionEvaluator,
+                               SoftwareRepositoryFactory softwareRepositoryFactory, ArtifactUtils artifactUtils, DependencyVersionFetcher dependencyVersionFetcher,
+                               BillOfMaterialsLogger billOfMaterialsLogger, PlatformVisitor platformVisitor, ArtifactVersionResolver artifactVersionResolver,
+                               PomFetcher pomFetcher) {
+        super(buildFileLoader, buildFileProcessor, expressionEvaluator, softwareRepositoryFactory, artifactUtils, dependencyVersionFetcher, billOfMaterialsLogger);
+        this.platformVisitor = platformVisitor;
         this.artifactVersionResolver = artifactVersionResolver;
         this.pomFetcher = pomFetcher;
     }
@@ -45,6 +50,12 @@ public class DependenciesVisitor extends BaseArtifactVisitor {
     @Override
     protected Logger log() {
         return log;
+    }
+
+    @Override
+    protected void processPlatform(MethodCallExpression call) {
+        log().debug("Found platform");
+        visit(call, platformVisitor);
     }
 
     @Override

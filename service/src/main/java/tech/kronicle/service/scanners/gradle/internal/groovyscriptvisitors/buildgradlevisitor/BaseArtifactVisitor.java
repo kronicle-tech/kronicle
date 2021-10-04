@@ -4,9 +4,9 @@ import tech.kronicle.service.scanners.gradle.internal.groovyscriptvisitors.BaseV
 import tech.kronicle.service.scanners.gradle.internal.groovyscriptvisitors.ExpressionVisitOutcome;
 import tech.kronicle.service.scanners.gradle.internal.services.BuildFileLoader;
 import tech.kronicle.service.scanners.gradle.internal.services.BuildFileProcessor;
+import tech.kronicle.service.scanners.gradle.internal.services.BillOfMaterialsLogger;
+import tech.kronicle.service.scanners.gradle.internal.services.DependencyVersionFetcher;
 import tech.kronicle.service.scanners.gradle.internal.services.ExpressionEvaluator;
-import tech.kronicle.service.scanners.gradle.internal.services.PropertyExpander;
-import tech.kronicle.service.scanners.gradle.internal.services.PropertyRetriever;
 import tech.kronicle.service.scanners.gradle.internal.services.SoftwareRepositoryFactory;
 import tech.kronicle.service.scanners.gradle.internal.utils.ArtifactUtils;
 import tech.kronicle.service.utils.ObjectReference;
@@ -26,11 +26,16 @@ import java.util.Objects;
 public abstract class BaseArtifactVisitor extends BaseVisitor {
 
     private final ArtifactUtils artifactUtils;
+    private final DependencyVersionFetcher dependencyVersionFetcher;
+    private final BillOfMaterialsLogger billOfMaterialsLogger;
 
-    public BaseArtifactVisitor(BuildFileLoader buildFileLoader, BuildFileProcessor buildFileProcessor, ExpressionEvaluator expressionEvaluator, PropertyExpander propertyExpander, PropertyRetriever propertyRetriever,
-                               ArtifactUtils artifactUtils, SoftwareRepositoryFactory softwareRepositoryFactory) {
+    public BaseArtifactVisitor(BuildFileLoader buildFileLoader, BuildFileProcessor buildFileProcessor, ExpressionEvaluator expressionEvaluator,
+                               SoftwareRepositoryFactory softwareRepositoryFactory, ArtifactUtils artifactUtils,
+                               DependencyVersionFetcher dependencyVersionFetcher, BillOfMaterialsLogger billOfMaterialsLogger) {
         super(buildFileLoader, buildFileProcessor, expressionEvaluator, softwareRepositoryFactory);
         this.artifactUtils = artifactUtils;
+        this.dependencyVersionFetcher = dependencyVersionFetcher;
+        this.billOfMaterialsLogger = billOfMaterialsLogger;
     }
 
     protected ArtifactUtils artifactUtils() {
@@ -66,9 +71,12 @@ public abstract class BaseArtifactVisitor extends BaseVisitor {
                         } else if (argument instanceof ListExpression) {
                             processArtifact((ListExpression) argument);
                         } else if (argument instanceof MethodCallExpression) {
-                            String methodName = ((MethodCallExpression) argument).getMethodAsString();
+                            MethodCallExpression methodCallExpression = (MethodCallExpression) argument;
+                            String methodName = methodCallExpression.getMethodAsString();
 
-                            if (methodName.equals("project") || methodName.equals("localGroovy") || methodName.equals("gradleApi")
+                            if (methodName.equals("platform")) {
+                                processPlatform(methodCallExpression);
+                            } else if (methodName.equals("project") || methodName.equals("localGroovy") || methodName.equals("gradleApi")
                                     || methodName.equals("files") || methodName.equals("fileTree")) {
                                 // Do nothing
                             } else {
@@ -87,7 +95,22 @@ public abstract class BaseArtifactVisitor extends BaseVisitor {
         }
     }
 
+    protected void processPlatform(MethodCallExpression call) {
+    }
+
     protected abstract void addArtifact(String groupId, String artifactId, String version, String packaging);
+    
+    protected void addBillOfMaterialsArtifact(String groupId, String artifactId, String version, String packaging) {
+        billOfMaterialsLogger.logManagedDependencies(visitorState(), () -> {
+            String artifact = artifactUtils().createArtifact(groupId, artifactId, version, packaging);
+            dependencyVersionFetcher.findDependencyVersions(
+                    visitorState().getScannerId(),
+                    artifact,
+                    getSoftwareRepositories(),
+                    visitorState().getDependencyVersions(),
+                    visitorState().getSoftware());
+        });
+    }
 
     private void processArtifact(ConstantExpression constant) {
         processArtifact(evaluateExpression(constant));
