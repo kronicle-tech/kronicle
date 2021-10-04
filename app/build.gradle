@@ -35,6 +35,9 @@ dependencies {
 
   implementation project(":sdk")
   implementation "org.springframework:spring-core"
+
+  // TODO: Remove
+  testImplementation "org.owasp:dependency-check-gradle:6.3.2"
 }
 
 generateTypeScript {
