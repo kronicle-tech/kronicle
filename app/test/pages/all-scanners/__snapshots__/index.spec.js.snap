@@ -6,7 +6,7 @@ exports[`Index when Get Scanners service endpoint returns an array of multiple s
     class="my-3"
   >
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="#"
       target="_self"
     >
@@ -118,7 +118,7 @@ exports[`Index when Get Scanners service endpoint returns an empty array renders
     class="my-3"
   >
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="#"
       target="_self"
     >

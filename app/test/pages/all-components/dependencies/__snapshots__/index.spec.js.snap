@@ -6,7 +6,7 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
     class="my-3"
   >
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="#"
       target="_self"
     >
@@ -24,7 +24,7 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
     </a>
      
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="#"
       target="_self"
     >
@@ -34,7 +34,7 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
     </a>
      
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="#"
       target="_self"
     >
@@ -42,7 +42,7 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
     </a>
      
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="#"
       target="_self"
     >
@@ -52,7 +52,7 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
     </a>
      
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="#"
       target="_self"
     >
@@ -62,7 +62,7 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
     </a>
      
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="#"
       target="_self"
     >
@@ -72,7 +72,7 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
     </a>
      
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="#"
       target="_self"
     >
@@ -80,7 +80,7 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
     </a>
      
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="#"
       target="_self"
     >
@@ -1026,7 +1026,7 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
     class="my-3"
   >
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="#"
       target="_self"
     >
@@ -1044,7 +1044,7 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
     </a>
      
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="#"
       target="_self"
     >
@@ -1054,7 +1054,7 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
     </a>
      
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="#"
       target="_self"
     >
@@ -1062,7 +1062,7 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
     </a>
      
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="#"
       target="_self"
     >
@@ -1072,7 +1072,7 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
     </a>
      
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="#"
       target="_self"
     >
@@ -1082,7 +1082,7 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
     </a>
      
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="#"
       target="_self"
     >
@@ -1092,7 +1092,7 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
     </a>
      
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="#"
       target="_self"
     >
@@ -1100,7 +1100,7 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
     </a>
      
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="#"
       target="_self"
     >
@@ -1511,7 +1511,7 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
     class="my-3"
   >
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="#"
       target="_self"
     >
@@ -1529,7 +1529,7 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
     </a>
      
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="#"
       target="_self"
     >
@@ -1539,7 +1539,7 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
     </a>
      
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="#"
       target="_self"
     >
@@ -1547,7 +1547,7 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
     </a>
      
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="#"
       target="_self"
     >
@@ -1557,7 +1557,7 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
     </a>
      
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="#"
       target="_self"
     >
@@ -1567,7 +1567,7 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
     </a>
      
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="#"
       target="_self"
     >
@@ -1577,7 +1577,7 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
     </a>
      
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="#"
       target="_self"
     >
@@ -1585,7 +1585,7 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
     </a>
      
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="#"
       target="_self"
     >
@@ -1996,7 +1996,7 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
     class="my-3"
   >
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="#"
       target="_self"
     >
@@ -2014,7 +2014,7 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
     </a>
      
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="#"
       target="_self"
     >
@@ -2024,7 +2024,7 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
     </a>
      
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="#"
       target="_self"
     >
@@ -2032,7 +2032,7 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
     </a>
      
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="#"
       target="_self"
     >
@@ -2042,7 +2042,7 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
     </a>
      
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="#"
       target="_self"
     >
@@ -2052,7 +2052,7 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
     </a>
      
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="#"
       target="_self"
     >
@@ -2062,7 +2062,7 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
     </a>
      
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="#"
       target="_self"
     >
@@ -2070,7 +2070,7 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
     </a>
      
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="#"
       target="_self"
     >
@@ -2480,7 +2480,7 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
     class="my-3"
   >
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="#"
       target="_self"
     >
@@ -2498,7 +2498,7 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
     </a>
      
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="#"
       target="_self"
     >
@@ -2508,7 +2508,7 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
     </a>
      
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="#"
       target="_self"
     >
@@ -2516,7 +2516,7 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
     </a>
      
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="#"
       target="_self"
     >
@@ -2526,7 +2526,7 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
     </a>
      
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="#"
       target="_self"
     >
@@ -2536,7 +2536,7 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
     </a>
      
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="#"
       target="_self"
     >
@@ -2546,7 +2546,7 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
     </a>
      
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="#"
       target="_self"
     >
@@ -2554,7 +2554,7 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
     </a>
      
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="#"
       target="_self"
     >
@@ -3500,7 +3500,7 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
     class="my-3"
   >
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="#"
       target="_self"
     >
@@ -3518,7 +3518,7 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
     </a>
      
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="#"
       target="_self"
     >
@@ -3528,7 +3528,7 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
     </a>
      
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="#"
       target="_self"
     >
@@ -3536,7 +3536,7 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
     </a>
      
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="#"
       target="_self"
     >
@@ -3546,7 +3546,7 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
     </a>
      
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="#"
       target="_self"
     >
@@ -3556,7 +3556,7 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
     </a>
      
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="#"
       target="_self"
     >
@@ -3566,7 +3566,7 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
     </a>
      
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="#"
       target="_self"
     >
@@ -3574,7 +3574,7 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
     </a>
      
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="#"
       target="_self"
     >
@@ -3984,7 +3984,7 @@ exports[`Index when Get Summary service endpoint returns no dependencies renders
     class="my-3"
   >
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="#"
       target="_self"
     >
@@ -4002,7 +4002,7 @@ exports[`Index when Get Summary service endpoint returns no dependencies renders
     </a>
      
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="#"
       target="_self"
     >
@@ -4012,7 +4012,7 @@ exports[`Index when Get Summary service endpoint returns no dependencies renders
     </a>
      
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="#"
       target="_self"
     >
@@ -4020,7 +4020,7 @@ exports[`Index when Get Summary service endpoint returns no dependencies renders
     </a>
      
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="#"
       target="_self"
     >
@@ -4030,7 +4030,7 @@ exports[`Index when Get Summary service endpoint returns no dependencies renders
     </a>
      
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="#"
       target="_self"
     >
@@ -4040,7 +4040,7 @@ exports[`Index when Get Summary service endpoint returns no dependencies renders
     </a>
      
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="#"
       target="_self"
     >
@@ -4050,7 +4050,7 @@ exports[`Index when Get Summary service endpoint returns no dependencies renders
     </a>
      
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="#"
       target="_self"
     >
@@ -4058,7 +4058,7 @@ exports[`Index when Get Summary service endpoint returns no dependencies renders
     </a>
      
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="#"
       target="_self"
     >

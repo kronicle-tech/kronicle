@@ -6,7 +6,7 @@ exports[`Index when Get Tests service endpoint returns an array of multiple test
     class="my-3"
   >
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="/all-tests"
       target="_self"
     >
@@ -193,7 +193,7 @@ exports[`Index when Get Tests service endpoint returns an empty array renders th
     class="my-3"
   >
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="/all-tests"
       target="_self"
     >
@@ -277,7 +277,7 @@ exports[`Index when there are tests with different amounts of outcome counts ren
     class="my-3"
   >
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="/all-tests"
       target="_self"
     >
@@ -515,7 +515,7 @@ exports[`Index when there is a test and a component with no test results renders
     class="my-3"
   >
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="/all-tests"
       target="_self"
     >

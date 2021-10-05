@@ -6,7 +6,7 @@ exports[`Index when Get Components service endpoint returns an array of multiple
     class="my-3"
   >
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="#"
       target="_self"
     >
@@ -24,7 +24,7 @@ exports[`Index when Get Components service endpoint returns an array of multiple
     </a>
      
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="#"
       target="_self"
     >
@@ -34,7 +34,7 @@ exports[`Index when Get Components service endpoint returns an array of multiple
     </a>
      
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="#"
       target="_self"
     >
@@ -42,7 +42,7 @@ exports[`Index when Get Components service endpoint returns an array of multiple
     </a>
      
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="#"
       target="_self"
     >
@@ -52,7 +52,7 @@ exports[`Index when Get Components service endpoint returns an array of multiple
     </a>
      
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="#"
       target="_self"
     >
@@ -62,7 +62,7 @@ exports[`Index when Get Components service endpoint returns an array of multiple
     </a>
      
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="#"
       target="_self"
     >
@@ -72,7 +72,7 @@ exports[`Index when Get Components service endpoint returns an array of multiple
     </a>
      
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="#"
       target="_self"
     >
@@ -80,7 +80,7 @@ exports[`Index when Get Components service endpoint returns an array of multiple
     </a>
      
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="#"
       target="_self"
     >
@@ -766,7 +766,7 @@ exports[`Index when Get Components service endpoint returns an empty array rende
     class="my-3"
   >
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="#"
       target="_self"
     >
@@ -784,7 +784,7 @@ exports[`Index when Get Components service endpoint returns an empty array rende
     </a>
      
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="#"
       target="_self"
     >
@@ -794,7 +794,7 @@ exports[`Index when Get Components service endpoint returns an empty array rende
     </a>
      
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="#"
       target="_self"
     >
@@ -802,7 +802,7 @@ exports[`Index when Get Components service endpoint returns an empty array rende
     </a>
      
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="#"
       target="_self"
     >
@@ -812,7 +812,7 @@ exports[`Index when Get Components service endpoint returns an empty array rende
     </a>
      
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="#"
       target="_self"
     >
@@ -822,7 +822,7 @@ exports[`Index when Get Components service endpoint returns an empty array rende
     </a>
      
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="#"
       target="_self"
     >
@@ -832,7 +832,7 @@ exports[`Index when Get Components service endpoint returns an empty array rende
     </a>
      
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="#"
       target="_self"
     >
@@ -840,7 +840,7 @@ exports[`Index when Get Components service endpoint returns an empty array rende
     </a>
      
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="#"
       target="_self"
     >

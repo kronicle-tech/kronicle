@@ -14,7 +14,7 @@ exports[`Index when Get Component service endpoint returns a component when the 
     class="my-3"
   >
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="/components/test-component-id-1"
       target="_self"
     >
@@ -22,7 +22,7 @@ exports[`Index when Get Component service endpoint returns a component when the 
     </a>
      
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="/components/test-component-id-1/dependencies"
       target="_self"
     >
@@ -32,7 +32,7 @@ exports[`Index when Get Component service endpoint returns a component when the 
     </a>
      
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="/components/test-component-id-1/response-times"
       target="_self"
     >
@@ -42,7 +42,7 @@ exports[`Index when Get Component service endpoint returns a component when the 
     </a>
      
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="/components/test-component-id-1/downstream-response-times"
       target="_self"
     >
@@ -52,7 +52,7 @@ exports[`Index when Get Component service endpoint returns a component when the 
     </a>
      
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="/components/test-component-id-1/call-graphs"
       target="_self"
     >
@@ -62,7 +62,7 @@ exports[`Index when Get Component service endpoint returns a component when the 
     </a>
      
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="/components/test-component-id-1/cross-functional-requirements"
       target="_self"
     >
@@ -72,7 +72,7 @@ exports[`Index when Get Component service endpoint returns a component when the 
     </a>
      
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="/components/test-component-id-1/tech-debts"
       target="_self"
     >
@@ -82,7 +82,7 @@ exports[`Index when Get Component service endpoint returns a component when the 
     </a>
      
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="/components/test-component-id-1/tests"
       target="_self"
     >
@@ -90,7 +90,7 @@ exports[`Index when Get Component service endpoint returns a component when the 
     </a>
      
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="/components/test-component-id-1/errors"
       target="_self"
     >
@@ -98,7 +98,7 @@ exports[`Index when Get Component service endpoint returns a component when the 
     </a>
      
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="/components/test-component-id-1/openapi-specs"
       target="_self"
     >
@@ -108,7 +108,7 @@ exports[`Index when Get Component service endpoint returns a component when the 
     </a>
      
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="/components/test-component-id-1/repo"
       target="_self"
     >
@@ -116,7 +116,7 @@ exports[`Index when Get Component service endpoint returns a component when the 
     </a>
      
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="/components/test-component-id-1/readme"
       target="_self"
     >
@@ -124,7 +124,7 @@ exports[`Index when Get Component service endpoint returns a component when the 
     </a>
      
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="/components/test-component-id-1/to-dos"
       target="_self"
     >
@@ -132,7 +132,7 @@ exports[`Index when Get Component service endpoint returns a component when the 
     </a>
      
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="/components/test-component-id-1/lines-of-code"
       target="_self"
     >
@@ -142,7 +142,7 @@ exports[`Index when Get Component service endpoint returns a component when the 
     </a>
      
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="/components/test-component-id-1/software-repositories"
       target="_self"
     >
@@ -152,7 +152,7 @@ exports[`Index when Get Component service endpoint returns a component when the 
     </a>
      
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="/components/test-component-id-1/software"
       target="_self"
     >
@@ -160,7 +160,7 @@ exports[`Index when Get Component service endpoint returns a component when the 
     </a>
      
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="/components/test-component-id-1/imports"
       target="_self"
     >
@@ -743,7 +743,7 @@ exports[`Index when Get Component service endpoint returns a component when the 
     class="my-3"
   >
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="/components/test-component-id-1"
       target="_self"
     >
@@ -751,7 +751,7 @@ exports[`Index when Get Component service endpoint returns a component when the 
     </a>
      
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="/components/test-component-id-1/dependencies"
       target="_self"
     >
@@ -761,7 +761,7 @@ exports[`Index when Get Component service endpoint returns a component when the 
     </a>
      
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="/components/test-component-id-1/response-times"
       target="_self"
     >
@@ -771,7 +771,7 @@ exports[`Index when Get Component service endpoint returns a component when the 
     </a>
      
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="/components/test-component-id-1/downstream-response-times"
       target="_self"
     >
@@ -781,7 +781,7 @@ exports[`Index when Get Component service endpoint returns a component when the 
     </a>
      
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="/components/test-component-id-1/call-graphs"
       target="_self"
     >
@@ -791,7 +791,7 @@ exports[`Index when Get Component service endpoint returns a component when the 
     </a>
      
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="/components/test-component-id-1/cross-functional-requirements"
       target="_self"
     >
@@ -801,7 +801,7 @@ exports[`Index when Get Component service endpoint returns a component when the 
     </a>
      
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="/components/test-component-id-1/tech-debts"
       target="_self"
     >
@@ -811,7 +811,7 @@ exports[`Index when Get Component service endpoint returns a component when the 
     </a>
      
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="/components/test-component-id-1/tests"
       target="_self"
     >
@@ -819,7 +819,7 @@ exports[`Index when Get Component service endpoint returns a component when the 
     </a>
      
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="/components/test-component-id-1/errors"
       target="_self"
     >
@@ -827,7 +827,7 @@ exports[`Index when Get Component service endpoint returns a component when the 
     </a>
      
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="/components/test-component-id-1/openapi-specs"
       target="_self"
     >
@@ -837,7 +837,7 @@ exports[`Index when Get Component service endpoint returns a component when the 
     </a>
      
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="/components/test-component-id-1/repo"
       target="_self"
     >
@@ -845,7 +845,7 @@ exports[`Index when Get Component service endpoint returns a component when the 
     </a>
      
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="/components/test-component-id-1/readme"
       target="_self"
     >
@@ -853,7 +853,7 @@ exports[`Index when Get Component service endpoint returns a component when the 
     </a>
      
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="/components/test-component-id-1/to-dos"
       target="_self"
     >
@@ -861,7 +861,7 @@ exports[`Index when Get Component service endpoint returns a component when the 
     </a>
      
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="/components/test-component-id-1/lines-of-code"
       target="_self"
     >
@@ -871,7 +871,7 @@ exports[`Index when Get Component service endpoint returns a component when the 
     </a>
      
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="/components/test-component-id-1/software-repositories"
       target="_self"
     >
@@ -881,7 +881,7 @@ exports[`Index when Get Component service endpoint returns a component when the 
     </a>
      
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="/components/test-component-id-1/software"
       target="_self"
     >
@@ -889,7 +889,7 @@ exports[`Index when Get Component service endpoint returns a component when the 
     </a>
      
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="/components/test-component-id-1/imports"
       target="_self"
     >
