@@ -6,7 +6,7 @@ exports[`Index when Get Areas service endpoint returns an array of multiple area
     class="my-3"
   >
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="/all-areas"
       target="_self"
     >
@@ -113,7 +113,7 @@ exports[`Index when Get Areas service endpoint returns an empty array renders th
     class="my-3"
   >
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="/all-areas"
       target="_self"
     >

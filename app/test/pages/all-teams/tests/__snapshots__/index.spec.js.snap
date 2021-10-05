@@ -6,7 +6,7 @@ exports[`Index when Get Teams service endpoint returns a component with no test 
     class="my-3"
   >
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="/all-teams"
       target="_self"
     >
@@ -14,7 +14,7 @@ exports[`Index when Get Teams service endpoint returns a component with no test 
     </a>
      
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="/all-teams/components"
       target="_self"
     >
@@ -22,7 +22,7 @@ exports[`Index when Get Teams service endpoint returns a component with no test 
     </a>
      
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="/all-teams/tech-debts"
       target="_self"
     >
@@ -30,7 +30,7 @@ exports[`Index when Get Teams service endpoint returns a component with no test 
     </a>
      
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="/all-teams/tests"
       target="_self"
     >
@@ -65,7 +65,7 @@ exports[`Index when Get Teams service endpoint returns an array of multiple team
     class="my-3"
   >
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="/all-teams"
       target="_self"
     >
@@ -73,7 +73,7 @@ exports[`Index when Get Teams service endpoint returns an array of multiple team
     </a>
      
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="/all-teams/components"
       target="_self"
     >
@@ -81,7 +81,7 @@ exports[`Index when Get Teams service endpoint returns an array of multiple team
     </a>
      
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="/all-teams/tech-debts"
       target="_self"
     >
@@ -89,7 +89,7 @@ exports[`Index when Get Teams service endpoint returns an array of multiple team
     </a>
      
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="/all-teams/tests"
       target="_self"
     >
@@ -764,7 +764,7 @@ exports[`Index when Get Teams service endpoint returns an empty array renders th
     class="my-3"
   >
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="/all-teams"
       target="_self"
     >
@@ -772,7 +772,7 @@ exports[`Index when Get Teams service endpoint returns an empty array renders th
     </a>
      
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="/all-teams/components"
       target="_self"
     >
@@ -780,7 +780,7 @@ exports[`Index when Get Teams service endpoint returns an empty array renders th
     </a>
      
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="/all-teams/tech-debts"
       target="_self"
     >
@@ -788,7 +788,7 @@ exports[`Index when Get Teams service endpoint returns an empty array renders th
     </a>
      
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="/all-teams/tests"
       target="_self"
     >
@@ -805,7 +805,7 @@ exports[`Index when Get Teams service endpoint returns failed test results for a
     class="my-3"
   >
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="/all-teams"
       target="_self"
     >
@@ -813,7 +813,7 @@ exports[`Index when Get Teams service endpoint returns failed test results for a
     </a>
      
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="/all-teams/components"
       target="_self"
     >
@@ -821,7 +821,7 @@ exports[`Index when Get Teams service endpoint returns failed test results for a
     </a>
      
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="/all-teams/tech-debts"
       target="_self"
     >
@@ -829,7 +829,7 @@ exports[`Index when Get Teams service endpoint returns failed test results for a
     </a>
      
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="/all-teams/tests"
       target="_self"
     >
@@ -1459,7 +1459,7 @@ exports[`Index when Get Teams service endpoint returns more than 3 teams renders
     class="my-3"
   >
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="/all-teams"
       target="_self"
     >
@@ -1467,7 +1467,7 @@ exports[`Index when Get Teams service endpoint returns more than 3 teams renders
     </a>
      
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="/all-teams/components"
       target="_self"
     >
@@ -1475,7 +1475,7 @@ exports[`Index when Get Teams service endpoint returns more than 3 teams renders
     </a>
      
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="/all-teams/tech-debts"
       target="_self"
     >
@@ -1483,7 +1483,7 @@ exports[`Index when Get Teams service endpoint returns more than 3 teams renders
     </a>
      
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="/all-teams/tests"
       target="_self"
     >
@@ -1564,7 +1564,7 @@ exports[`Index when there are test results for each outcome renders only failed 
     class="my-3"
   >
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="/all-teams"
       target="_self"
     >
@@ -1572,7 +1572,7 @@ exports[`Index when there are test results for each outcome renders only failed 
     </a>
      
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="/all-teams/components"
       target="_self"
     >
@@ -1580,7 +1580,7 @@ exports[`Index when there are test results for each outcome renders only failed 
     </a>
      
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="/all-teams/tech-debts"
       target="_self"
     >
@@ -1588,7 +1588,7 @@ exports[`Index when there are test results for each outcome renders only failed 
     </a>
      
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="/all-teams/tests"
       target="_self"
     >

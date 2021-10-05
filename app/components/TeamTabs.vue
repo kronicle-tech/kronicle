@@ -1,15 +1,15 @@
 <template>
   <div class="my-3">
-    <b-button :to="`/teams/${teamId}`">Info</b-button>
-    <b-button :to="`/teams/${teamId}/dependencies`">Dependencies</b-button>
-    <b-button :to="`/teams/${teamId}/components`">Components</b-button>
-    <b-button :to="`/teams/${teamId}/cross-functional-requirements`">
+    <b-button class="my-1" :to="`/teams/${teamId}`">Info</b-button>
+    <b-button class="my-1" :to="`/teams/${teamId}/dependencies`">Dependencies</b-button>
+    <b-button class="my-1" :to="`/teams/${teamId}/components`">Components</b-button>
+    <b-button class="my-1" :to="`/teams/${teamId}/cross-functional-requirements`">
       Cross Functional Requirements
     </b-button>
-    <b-button :to="`/teams/${teamId}/tech-debts`">Tech Debts</b-button>
-    <b-button :to="`/teams/${teamId}/tests`">Tests</b-button>
-    <b-button :to="`/teams/${teamId}/errors`">Errors</b-button>
-    <b-button :to="`/teams/${teamId}/openapi-specs`">OpenAPI Specs</b-button>
+    <b-button class="my-1" :to="`/teams/${teamId}/tech-debts`">Tech Debts</b-button>
+    <b-button class="my-1" :to="`/teams/${teamId}/tests`">Tests</b-button>
+    <b-button class="my-1" :to="`/teams/${teamId}/errors`">Errors</b-button>
+    <b-button class="my-1" :to="`/teams/${teamId}/openapi-specs`">OpenAPI Specs</b-button>
   </div>
 </template>
 

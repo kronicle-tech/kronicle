@@ -1,6 +1,6 @@
 <template>
   <div class="my-3">
-    <b-button :to="{ name: 'all-scanners' }">Scanners</b-button>
+    <b-button class="my-1" :to="{ name: 'all-scanners' }">Scanners</b-button>
   </div>
 </template>
 

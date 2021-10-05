@@ -1,15 +1,15 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`AllComponentsTabs renders the component 1`] = `
-"<div class=\\"my-3\\"><a href=\\"#\\" target=\\"_self\\" class=\\"btn btn-secondary\\">Components</a> <a href=\\"?testOutcome=fail\\" target=\\"_self\\" class=\\"btn btn-secondary\\">
+"<div class=\\"my-3\\"><a href=\\"#\\" target=\\"_self\\" class=\\"btn my-1 btn-secondary\\">Components</a> <a href=\\"?testOutcome=fail\\" target=\\"_self\\" class=\\"btn btn-secondary\\">
     Tests
-  </a> <a href=\\"#\\" target=\\"_self\\" class=\\"btn btn-secondary\\">
+  </a> <a href=\\"#\\" target=\\"_self\\" class=\\"btn my-1 btn-secondary\\">
     Cross Functional Requirements
-  </a> <a href=\\"#\\" target=\\"_self\\" class=\\"btn btn-secondary\\">Tech Debts</a> <a href=\\"#\\" target=\\"_self\\" class=\\"btn btn-secondary\\">
+  </a> <a href=\\"#\\" target=\\"_self\\" class=\\"btn my-1 btn-secondary\\">Tech Debts</a> <a href=\\"#\\" target=\\"_self\\" class=\\"btn my-1 btn-secondary\\">
     Dependencies
-  </a> <a href=\\"#\\" target=\\"_self\\" class=\\"btn btn-secondary\\">
+  </a> <a href=\\"#\\" target=\\"_self\\" class=\\"btn my-1 btn-secondary\\">
     OpenAPI Specs
-  </a> <a href=\\"#\\" target=\\"_self\\" class=\\"btn btn-secondary\\">
+  </a> <a href=\\"#\\" target=\\"_self\\" class=\\"btn my-1 btn-secondary\\">
     Key Software
-  </a> <a href=\\"#\\" target=\\"_self\\" class=\\"btn btn-secondary\\">Repos</a> <a href=\\"#\\" target=\\"_self\\" class=\\"btn btn-secondary\\">Errors</a></div>"
+  </a> <a href=\\"#\\" target=\\"_self\\" class=\\"btn my-1 btn-secondary\\">Repos</a> <a href=\\"#\\" target=\\"_self\\" class=\\"btn my-1 btn-secondary\\">Errors</a></div>"
 `;

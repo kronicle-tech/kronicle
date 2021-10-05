@@ -12,7 +12,7 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
     class="my-3"
   >
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="/teams/test-team-id-1"
       target="_self"
     >
@@ -20,7 +20,7 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
     </a>
      
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="/teams/test-team-id-1/dependencies"
       target="_self"
     >
@@ -28,7 +28,7 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
     </a>
      
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="/teams/test-team-id-1/components"
       target="_self"
     >
@@ -36,7 +36,7 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
     </a>
      
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="/teams/test-team-id-1/cross-functional-requirements"
       target="_self"
     >
@@ -46,7 +46,7 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
     </a>
      
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="/teams/test-team-id-1/tech-debts"
       target="_self"
     >
@@ -54,7 +54,7 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
     </a>
      
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="/teams/test-team-id-1/tests"
       target="_self"
     >
@@ -62,7 +62,7 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
     </a>
      
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="/teams/test-team-id-1/errors"
       target="_self"
     >
@@ -70,7 +70,7 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
     </a>
      
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="/teams/test-team-id-1/openapi-specs"
       target="_self"
     >
@@ -485,7 +485,7 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
     class="my-3"
   >
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="/teams/test-team-id-1"
       target="_self"
     >
@@ -493,7 +493,7 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
     </a>
      
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="/teams/test-team-id-1/dependencies"
       target="_self"
     >
@@ -501,7 +501,7 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
     </a>
      
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="/teams/test-team-id-1/components"
       target="_self"
     >
@@ -509,7 +509,7 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
     </a>
      
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="/teams/test-team-id-1/cross-functional-requirements"
       target="_self"
     >
@@ -519,7 +519,7 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
     </a>
      
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="/teams/test-team-id-1/tech-debts"
       target="_self"
     >
@@ -527,7 +527,7 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
     </a>
      
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="/teams/test-team-id-1/tests"
       target="_self"
     >
@@ -535,7 +535,7 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
     </a>
      
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="/teams/test-team-id-1/errors"
       target="_self"
     >
@@ -543,7 +543,7 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
     </a>
      
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="/teams/test-team-id-1/openapi-specs"
       target="_self"
     >
@@ -958,7 +958,7 @@ exports[`Index when Get Summary service endpoint returns no dependencies renders
     class="my-3"
   >
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="/teams/test-team-id-1"
       target="_self"
     >
@@ -966,7 +966,7 @@ exports[`Index when Get Summary service endpoint returns no dependencies renders
     </a>
      
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="/teams/test-team-id-1/dependencies"
       target="_self"
     >
@@ -974,7 +974,7 @@ exports[`Index when Get Summary service endpoint returns no dependencies renders
     </a>
      
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="/teams/test-team-id-1/components"
       target="_self"
     >
@@ -982,7 +982,7 @@ exports[`Index when Get Summary service endpoint returns no dependencies renders
     </a>
      
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="/teams/test-team-id-1/cross-functional-requirements"
       target="_self"
     >
@@ -992,7 +992,7 @@ exports[`Index when Get Summary service endpoint returns no dependencies renders
     </a>
      
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="/teams/test-team-id-1/tech-debts"
       target="_self"
     >
@@ -1000,7 +1000,7 @@ exports[`Index when Get Summary service endpoint returns no dependencies renders
     </a>
      
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="/teams/test-team-id-1/tests"
       target="_self"
     >
@@ -1008,7 +1008,7 @@ exports[`Index when Get Summary service endpoint returns no dependencies renders
     </a>
      
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="/teams/test-team-id-1/errors"
       target="_self"
     >
@@ -1016,7 +1016,7 @@ exports[`Index when Get Summary service endpoint returns no dependencies renders
     </a>
      
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="/teams/test-team-id-1/openapi-specs"
       target="_self"
     >

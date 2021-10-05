@@ -1,6 +1,6 @@
 <template>
   <div class="my-3">
-    <b-button to="/all-areas">Areas</b-button>
+    <b-button class="my-1" to="/all-areas">Areas</b-button>
   </div>
 </template>
 

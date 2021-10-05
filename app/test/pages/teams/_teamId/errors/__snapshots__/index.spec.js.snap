@@ -12,7 +12,7 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
     class="my-3"
   >
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="/teams/test-team-id-1"
       target="_self"
     >
@@ -20,7 +20,7 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
     </a>
      
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="/teams/test-team-id-1/dependencies"
       target="_self"
     >
@@ -28,7 +28,7 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
     </a>
      
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="/teams/test-team-id-1/components"
       target="_self"
     >
@@ -36,7 +36,7 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
     </a>
      
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="/teams/test-team-id-1/cross-functional-requirements"
       target="_self"
     >
@@ -46,7 +46,7 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
     </a>
      
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="/teams/test-team-id-1/tech-debts"
       target="_self"
     >
@@ -54,7 +54,7 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
     </a>
      
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="/teams/test-team-id-1/tests"
       target="_self"
     >
@@ -62,7 +62,7 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
     </a>
      
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="/teams/test-team-id-1/errors"
       target="_self"
     >
@@ -70,7 +70,7 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
     </a>
      
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="/teams/test-team-id-1/openapi-specs"
       target="_self"
     >
@@ -896,7 +896,7 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
     class="my-3"
   >
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="/teams/test-team-id-1"
       target="_self"
     >
@@ -904,7 +904,7 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
     </a>
      
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="/teams/test-team-id-1/dependencies"
       target="_self"
     >
@@ -912,7 +912,7 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
     </a>
      
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="/teams/test-team-id-1/components"
       target="_self"
     >
@@ -920,7 +920,7 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
     </a>
      
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="/teams/test-team-id-1/cross-functional-requirements"
       target="_self"
     >
@@ -930,7 +930,7 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
     </a>
      
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="/teams/test-team-id-1/tech-debts"
       target="_self"
     >
@@ -938,7 +938,7 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
     </a>
      
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="/teams/test-team-id-1/tests"
       target="_self"
     >
@@ -946,7 +946,7 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
     </a>
      
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="/teams/test-team-id-1/errors"
       target="_self"
     >
@@ -954,7 +954,7 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
     </a>
      
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="/teams/test-team-id-1/openapi-specs"
       target="_self"
     >
@@ -1487,7 +1487,7 @@ exports[`Index when Get Team service endpoint returns a team when the team has n
     class="my-3"
   >
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="/teams/test-team-id-1"
       target="_self"
     >
@@ -1495,7 +1495,7 @@ exports[`Index when Get Team service endpoint returns a team when the team has n
     </a>
      
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="/teams/test-team-id-1/dependencies"
       target="_self"
     >
@@ -1503,7 +1503,7 @@ exports[`Index when Get Team service endpoint returns a team when the team has n
     </a>
      
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="/teams/test-team-id-1/components"
       target="_self"
     >
@@ -1511,7 +1511,7 @@ exports[`Index when Get Team service endpoint returns a team when the team has n
     </a>
      
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="/teams/test-team-id-1/cross-functional-requirements"
       target="_self"
     >
@@ -1521,7 +1521,7 @@ exports[`Index when Get Team service endpoint returns a team when the team has n
     </a>
      
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="/teams/test-team-id-1/tech-debts"
       target="_self"
     >
@@ -1529,7 +1529,7 @@ exports[`Index when Get Team service endpoint returns a team when the team has n
     </a>
      
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="/teams/test-team-id-1/tests"
       target="_self"
     >
@@ -1537,7 +1537,7 @@ exports[`Index when Get Team service endpoint returns a team when the team has n
     </a>
      
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="/teams/test-team-id-1/errors"
       target="_self"
     >
@@ -1545,7 +1545,7 @@ exports[`Index when Get Team service endpoint returns a team when the team has n
     </a>
      
     <a
-      class="btn btn-secondary"
+      class="btn my-1 btn-secondary"
       href="/teams/test-team-id-1/openapi-specs"
       target="_self"
     >
