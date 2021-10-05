@@ -6,6 +6,7 @@ import tech.kronicle.service.scanners.models.Codebase;
 import tech.kronicle.service.scanners.models.Output;
 import tech.kronicle.service.scanners.todos.internal.services.ToDoFinder;
 import tech.kronicle.service.testutils.MalformedFileCreator;
+import tech.kronicle.service.utils.AntStyleIgnoreFileLoader;
 import tech.kronicle.service.utils.FileUtils;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -23,7 +24,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 @ExtendWith(MockitoExtension.class)
 public class ToDoScannerTest extends BaseCodebaseScannerTest {
 
-    private final ToDoScanner underTest = new ToDoScanner(new FileUtils(), new ToDoFinder());
+    private final ToDoScanner underTest = new ToDoScanner(new FileUtils(new AntStyleIgnoreFileLoader()), new ToDoFinder());
 
     @Test
     public void idShouldReturnTheIdOfTheScanner() {

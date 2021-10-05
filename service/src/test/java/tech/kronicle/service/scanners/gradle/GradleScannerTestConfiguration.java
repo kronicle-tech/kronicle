@@ -8,6 +8,7 @@ import tech.kronicle.service.services.DownloadCache;
 import tech.kronicle.service.services.Downloader;
 import tech.kronicle.service.services.HttpRequestMaker;
 import tech.kronicle.service.services.UrlExistsCache;
+import tech.kronicle.service.utils.AntStyleIgnoreFileLoader;
 import tech.kronicle.service.utils.FileUtils;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.Bean;
@@ -23,7 +24,7 @@ public class GradleScannerTestConfiguration {
 
     @Bean
     public FileUtils fileUtils() {
-        return new FileUtils();
+        return new FileUtils(new AntStyleIgnoreFileLoader());
     }
 
     @Bean

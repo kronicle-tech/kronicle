@@ -15,6 +15,7 @@ import tech.kronicle.service.scanners.models.Output;
 import tech.kronicle.service.scanners.openapi.services.SpecDiscoverer;
 import tech.kronicle.service.scanners.openapi.services.SpecErrorProcessor;
 import tech.kronicle.service.scanners.openapi.services.SpecParser;
+import tech.kronicle.service.utils.AntStyleIgnoreFileLoader;
 import tech.kronicle.service.utils.FileUtils;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
@@ -349,7 +350,7 @@ public class OpenApiScannerTest extends BaseCodebaseScannerTest {
     }
 
     private OpenApiScanner createOpenApiScanner() {
-        SpecDiscoverer specDiscoverer = new SpecDiscoverer(new FileUtils());
+        SpecDiscoverer specDiscoverer = new SpecDiscoverer(new FileUtils(new AntStyleIgnoreFileLoader()));
         SpecErrorProcessor specErrorProcessor = new SpecErrorProcessor(new ThrowableToScannerErrorMapper());
         SpecParser specParser = new SpecParser(new ObjectMapper(), specErrorProcessor);
         return new OpenApiScanner(specDiscoverer, specParser);
