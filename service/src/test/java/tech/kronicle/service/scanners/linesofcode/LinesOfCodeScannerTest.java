@@ -7,6 +7,7 @@ import tech.kronicle.service.scanners.BaseCodebaseScannerTest;
 import tech.kronicle.service.scanners.linesofcode.services.LinesOfCodeCounter;
 import tech.kronicle.service.scanners.models.Codebase;
 import tech.kronicle.service.scanners.models.Output;
+import tech.kronicle.service.utils.AntStyleIgnoreFileLoader;
 import tech.kronicle.service.utils.FileUtils;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -22,7 +23,7 @@ public class LinesOfCodeScannerTest extends BaseCodebaseScannerTest {
 
     @BeforeEach
     public void beforeEach() {
-        underTest = new LinesOfCodeScanner(new FileUtils(), new LinesOfCodeCounter());
+        underTest = new LinesOfCodeScanner(new FileUtils(new AntStyleIgnoreFileLoader()), new LinesOfCodeCounter());
     }
 
     @Test

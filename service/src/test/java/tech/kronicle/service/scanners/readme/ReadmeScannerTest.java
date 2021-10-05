@@ -5,6 +5,7 @@ import tech.kronicle.service.scanners.BaseCodebaseScannerTest;
 import tech.kronicle.service.scanners.models.Codebase;
 import tech.kronicle.service.scanners.models.Output;
 import tech.kronicle.service.scanners.readme.services.ReadmeFileNameChecker;
+import tech.kronicle.service.utils.AntStyleIgnoreFileLoader;
 import tech.kronicle.service.utils.FileUtils;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -17,7 +18,7 @@ public class ReadmeScannerTest extends BaseCodebaseScannerTest {
 
     @BeforeEach
     public void beforeEach() {
-        underTest = new ReadmeScanner(new FileUtils(), new ReadmeFileNameChecker());
+        underTest = new ReadmeScanner(new FileUtils(new AntStyleIgnoreFileLoader()), new ReadmeFileNameChecker());
     }
 
     @Test

@@ -6,6 +6,7 @@ import tech.kronicle.service.scanners.BaseCodebaseScannerTest;
 import tech.kronicle.service.scanners.javaimports.internal.services.JavaImportFinder;
 import tech.kronicle.service.scanners.models.Codebase;
 import tech.kronicle.service.scanners.models.Output;
+import tech.kronicle.service.utils.AntStyleIgnoreFileLoader;
 import tech.kronicle.service.utils.FileUtils;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -23,7 +24,7 @@ public class JavaImportScannerTest extends BaseCodebaseScannerTest {
 
     @BeforeEach
     public void beforeEach() {
-        underTest = new JavaImportScanner(new FileUtils(), new JavaImportFinder());
+        underTest = new JavaImportScanner(new FileUtils(new AntStyleIgnoreFileLoader()), new JavaImportFinder());
     }
 
     @Test

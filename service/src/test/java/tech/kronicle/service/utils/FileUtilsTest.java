@@ -1,6 +1,10 @@
 package tech.kronicle.service.utils;
 
 import com.google.common.io.CharStreams;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
 import tech.kronicle.service.BaseTest;
 import tech.kronicle.service.testutils.MalformedFileCreator;
 import lombok.Value;
@@ -40,7 +44,7 @@ public class FileUtilsTest extends BaseTest {
     public static final FilesScenario FILES_SCENARIO_WITH_MATCHER = new FilesScenario(Optional.empty(), Optional.of(ALWAYS_TRUE_MATCHER), null, null);
     public static final FilesScenario FILES_SCENARIO_WITH_MAX_DEPTH_AND_MATCHER = new FilesScenario(Optional.of(2), Optional.of(ALWAYS_TRUE_MATCHER), null, null);
 
-    private final FileUtils underTest = new FileUtils();
+    private FileUtils underTest = new FileUtils(new AntStyleIgnoreFileLoader());
     @TempDir
     public Path tempDir;
 
@@ -226,7 +230,7 @@ public class FileUtilsTest extends BaseTest {
 
     @ParameterizedTest
     @MethodSource("provideFilesScenariosWithoutMaxDepth")
-    public void fileFilesShouldReturnAllNonGitFiles(FilesScenario filesScenario) throws IOException {
+    public void findFilesShouldReturnAllNonGitFiles(FilesScenario filesScenario) throws IOException {
         // Given
         List<FileUtils.FileContent> fileContents = createFilesInSubdirectories();
         CreateGitFiles createGitFiles = new CreateGitFiles(tempDir).invoke();
@@ -241,7 +245,7 @@ public class FileUtilsTest extends BaseTest {
 
     @ParameterizedTest
     @MethodSource("provideFilesScenariosWithMaxDepth")
-    public void fileFilesWithMaxDepthShouldReturnAllNonGitFilesUpToMaxDepth(FilesScenario filesScenario) throws IOException {
+    public void findFilesWithMaxDepthShouldReturnAllNonGitFilesUpToMaxDepth(FilesScenario filesScenario) throws IOException {
         // Given
         List<FileUtils.FileContent> fileContents = createFilesInSubdirectories();
         CreateGitFiles createGitFiles = new CreateGitFiles(tempDir).invoke();
@@ -253,6 +257,26 @@ public class FileUtilsTest extends BaseTest {
         fileContents.removeIf(fileContent -> fileContent.getFile().toString().contains("/subdirectory2/"));
         assertThat(returnValue).containsExactlyInAnyOrder(convertFileContentListToPathArray(fileContents));
         assertThat(returnValue).doesNotContain(createGitFiles.getIgnoredFile1(), createGitFiles.getIgnoredFile2(), createGitFiles.getIgnoredFile3());
+    }
+
+    @ParameterizedTest
+    @MethodSource("provideFilesScenariosWithoutMaxDepth")
+    public void findFilesShouldIgnoreFilePathsInKronicleignoreFile(FilesScenario filesScenario) throws IOException {
+        // Given
+        Path file1 = tempDir.resolve("file1.txt");
+        Files.writeString(file1, "test1");
+        Path file2 = tempDir.resolve("file2.txt");
+        Files.writeString(file2, "test2");
+        Path file3 = tempDir.resolve("file3.txt");
+        Files.writeString(file3, "test3");
+        Path kronicleignoreFile = tempDir.resolve(".kronicleignore");
+        Files.writeString(kronicleignoreFile, "file2.txt");
+
+        // When
+        List<Path> returnValue = filesScenario.findFilesInvoker.apply(underTest, tempDir).collect(Collectors.toList());
+
+        // Then
+        assertThat(returnValue).containsExactlyInAnyOrder(file1, file3, kronicleignoreFile);
     }
 
     @ParameterizedTest
@@ -362,6 +386,29 @@ public class FileUtilsTest extends BaseTest {
         fileContents.removeIf(fileContent -> fileContent.getFile().toString().contains("/subdirectory2/"));
         assertThat(returnValue).containsExactlyInAnyOrder(convertFileContentListToFileContentArray(fileContents));
         assertThat(convertFileContentListToPathArray(returnValue)).doesNotContain(createGitFiles.getIgnoredFile1(), createGitFiles.getIgnoredFile2(), createGitFiles.getIgnoredFile3());
+    }
+
+    @ParameterizedTest
+    @MethodSource("provideFilesScenariosWithoutMaxDepth")
+    public void findFileContentsShouldIgnoreFilePathsInKronicleignoreFile(FilesScenario filesScenario) throws IOException {
+        // Given
+        Path file1 = tempDir.resolve("file1.txt");
+        Files.writeString(file1, "test1");
+        Path file2 = tempDir.resolve("file2.txt");
+        Files.writeString(file2, "test2");
+        Path file3 = tempDir.resolve("file3.txt");
+        Files.writeString(file3, "test3");
+        Path kronicleignoreFile = tempDir.resolve(".kronicleignore");
+        Files.writeString(kronicleignoreFile, "file2.txt");
+
+        // When
+        List<FileUtils.FileContent> returnValue = filesScenario.findFileContentsInvoker.apply(underTest, tempDir).collect(Collectors.toList());
+
+        // Then
+        assertThat(returnValue).containsExactlyInAnyOrder(
+                new FileUtils.FileContent(file1, "test1"),
+                new FileUtils.FileContent(file3, "test3"),
+                new FileUtils.FileContent(kronicleignoreFile, "file2.txt"));
     }
 
     @ParameterizedTest

@@ -2,6 +2,7 @@ package tech.kronicle.service.scanners.sonarqube.services;
 
 import tech.kronicle.service.scanners.BaseCodebaseScannerTest;
 import tech.kronicle.service.scanners.sonarqube.models.Project;
+import tech.kronicle.service.utils.AntStyleIgnoreFileLoader;
 import tech.kronicle.service.utils.FileUtils;
 import org.junit.jupiter.api.Test;
 
@@ -12,7 +13,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class CodebaseSonarQubeProjectFinderTest extends BaseCodebaseScannerTest {
 
-    private final CodebaseSonarQubeProjectFinder underTest = new CodebaseSonarQubeProjectFinder(new FileUtils());
+    private final CodebaseSonarQubeProjectFinder underTest = new CodebaseSonarQubeProjectFinder(new FileUtils(new AntStyleIgnoreFileLoader()));
 
     @Test
     public void findProjectsShouldHandleACodebaseWithNoProjectReferences() {
