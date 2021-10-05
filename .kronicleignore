@@ -1,0 +1,4 @@
+# This file uses Ant-style glob patterns not .gitignore syntax
+# See https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/util/AntPathMatcher.html for more info
+
+service/src/test/resources/**
