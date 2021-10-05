@@ -1,14 +1,17 @@
 <template>
   <div>
-    <b-navbar class="navbar navbar-dark bg-primary">
+    <b-navbar toggleable="sm" class="navbar navbar-dark bg-primary">
       <b-navbar-brand to="/">Kronicle</b-navbar-brand>
-      <b-navbar-nav>
-        <b-nav-item to="/all-components">Components</b-nav-item>
-        <b-nav-item to="/all-teams">Teams</b-nav-item>
-        <b-nav-item to="/all-areas">Areas</b-nav-item>
-        <b-nav-item to="/all-tests">Tests</b-nav-item>
-        <b-nav-item :to="{ name: 'all-scanners' }">Scanners</b-nav-item>
-      </b-navbar-nav>
+      <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
+      <b-collapse id="nav-collapse" is-nav>
+        <b-navbar-nav>
+          <b-nav-item to="/all-components">Components</b-nav-item>
+          <b-nav-item to="/all-teams">Teams</b-nav-item>
+          <b-nav-item to="/all-areas">Areas</b-nav-item>
+          <b-nav-item to="/all-tests">Tests</b-nav-item>
+          <b-nav-item :to="{ name: 'all-scanners' }">Scanners</b-nav-item>
+        </b-navbar-nav>
+      </b-collapse>
     </b-navbar>
     <div class="mx-1 my-2">
       <Message />
