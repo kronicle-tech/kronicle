@@ -7,7 +7,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import tech.kronicle.service.models.ApiRepo;
 import tech.kronicle.service.repofinders.github.client.GitHubClient;
 import tech.kronicle.service.repofinders.github.config.GitHubRepoFinderConfig;
-import tech.kronicle.service.repofinders.github.config.GitHubRepoFinderUserConfig;
+import tech.kronicle.service.repofinders.github.config.GitHubRepoFinderPersonalAccessTokenConfig;
 
 import java.time.Duration;
 import java.util.Collection;
@@ -21,9 +21,9 @@ import static org.mockito.Mockito.when;
 @ExtendWith(MockitoExtension.class)
 public class GitHubRepoFinderTest {
 
-    private static final GitHubRepoFinderUserConfig USER_1 = new GitHubRepoFinderUserConfig("test-user-1", "test-personal-access-token-1");
-    private static final GitHubRepoFinderUserConfig USER_2 = new GitHubRepoFinderUserConfig("test-user-2", "test-personal-access-token-2");
-    private static final GitHubRepoFinderUserConfig USER_3 = new GitHubRepoFinderUserConfig("test-user-3", "test-personal-access-token-3");
+    private static final GitHubRepoFinderPersonalAccessTokenConfig USER_1 = new GitHubRepoFinderPersonalAccessTokenConfig("test-user-1", "test-personal-access-token-1");
+    private static final GitHubRepoFinderPersonalAccessTokenConfig USER_2 = new GitHubRepoFinderPersonalAccessTokenConfig("test-user-2", "test-personal-access-token-2");
+    private static final GitHubRepoFinderPersonalAccessTokenConfig USER_3 = new GitHubRepoFinderPersonalAccessTokenConfig("test-user-3", "test-personal-access-token-3");
     private static final Duration TIMEOUT = Duration.ofSeconds(1);
 
     private GitHubRepoFinder underTest;

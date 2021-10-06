@@ -15,10 +15,10 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.web.reactive.function.client.WebClient;
 import tech.kronicle.service.models.ApiRepo;
 import tech.kronicle.service.repofinders.github.config.GitHubRepoFinderConfig;
-import tech.kronicle.service.repofinders.github.config.GitHubRepoFinderUserConfig;
+import tech.kronicle.service.repofinders.github.config.GitHubRepoFinderPersonalAccessTokenConfig;
 import tech.kronicle.service.repofinders.github.models.ApiResponseCacheEntry;
-import tech.kronicle.service.repofinders.github.models.api.ContentEntry;
-import tech.kronicle.service.repofinders.github.models.api.UserRepo;
+import tech.kronicle.service.repofinders.github.models.api.GitHubContentEntry;
+import tech.kronicle.service.repofinders.github.models.api.GitHubRepo;
 import tech.kronicle.service.repofinders.github.services.ApiResponseCache;
 import tech.kronicle.service.testutils.LogCaptor;
 import tech.kronicle.service.testutils.SimplifiedLogEvent;
@@ -77,34 +77,34 @@ public class GitHubClientTest {
                 // Note: The instance of Jetty that is bundled with WireMock adds "--gzip" to the end of the ETag HTTP response
                 // header.  See http://wiremock.org/docs/extending-wiremock/ for confirmation
                 new ApiResponseCacheEntry<>("test-modified-etag-1--gzip", List.of(
-                        new UserRepo("https://github.com/" + scenario.getUsername() + "/test-repo-1.git", baseUrl + "/repos/" + scenario.getUsername() + "/test-repo-1/contents/{+path}"),
-                        new UserRepo("https://github.com/" + scenario.getUsername() + "/test-repo-2.git", baseUrl + "/repos/" + scenario.getUsername() + "/test-repo-2/contents/{+path}"),
-                        new UserRepo("https://github.com/" + scenario.getUsername() + "/test-repo-3.git", baseUrl + "/repos/" + scenario.getUsername() + "/test-repo-3/contents/{+path}"),
-                        new UserRepo("https://github.com/" + scenario.getUsername() + "/test-repo-4.git", baseUrl + "/repos/" + scenario.getUsername() + "/test-repo-4/contents/{+path}"))));
+                        new GitHubRepo("https://github.com/" + scenario.getUsername() + "/test-repo-1.git", baseUrl + "/repos/" + scenario.getUsername() + "/test-repo-1/contents/{+path}"),
+                        new GitHubRepo("https://github.com/" + scenario.getUsername() + "/test-repo-2.git", baseUrl + "/repos/" + scenario.getUsername() + "/test-repo-2/contents/{+path}"),
+                        new GitHubRepo("https://github.com/" + scenario.getUsername() + "/test-repo-3.git", baseUrl + "/repos/" + scenario.getUsername() + "/test-repo-3/contents/{+path}"),
+                        new GitHubRepo("https://github.com/" + scenario.getUsername() + "/test-repo-4.git", baseUrl + "/repos/" + scenario.getUsername() + "/test-repo-4/contents/{+path}"))));
         verify(mockCache).putEntry(
                 scenario.getUsername(),
                 baseUrl + "/repos/" + scenario.getUsername() + "/test-repo-1/contents/",
                 // Note: The instance of Jetty that is bundled with WireMock adds "--gzip" to the end of the ETag HTTP response
                 // header.  See http://wiremock.org/docs/extending-wiremock/ for confirmation
-                new ApiResponseCacheEntry<>("test-modified-etag-2--gzip", List.of(new ContentEntry(".gitignore"), new ContentEntry("kronicle.yaml"), new ContentEntry("README.md"))));
+                new ApiResponseCacheEntry<>("test-modified-etag-2--gzip", List.of(new GitHubContentEntry(".gitignore"), new GitHubContentEntry("kronicle.yaml"), new GitHubContentEntry("README.md"))));
         verify(mockCache).putEntry(
                 scenario.getUsername(),
                 baseUrl + "/repos/" + scenario.getUsername() + "/test-repo-2/contents/",
                 // Note: The instance of Jetty that is bundled with WireMock adds "--gzip" to the end of the ETag HTTP response
                 // header.  See http://wiremock.org/docs/extending-wiremock/ for confirmation
-                new ApiResponseCacheEntry<>("test-modified-etag-3--gzip", List.of(new ContentEntry(".gitignore"), new ContentEntry("README.md"))));
+                new ApiResponseCacheEntry<>("test-modified-etag-3--gzip", List.of(new GitHubContentEntry(".gitignore"), new GitHubContentEntry("README.md"))));
         verify(mockCache).putEntry(
                 scenario.getUsername(),
                 baseUrl + "/repos/" + scenario.getUsername() + "/test-repo-3/contents/",
                 // Note: The instance of Jetty that is bundled with WireMock adds "--gzip" to the end of the ETag HTTP response
                 // header.  See http://wiremock.org/docs/extending-wiremock/ for confirmation
-                new ApiResponseCacheEntry<>("test-modified-etag-4--gzip", List.of(new ContentEntry(".gitignore"), new ContentEntry("component-metadata.yaml"), new ContentEntry("README.md"))));
+                new ApiResponseCacheEntry<>("test-modified-etag-4--gzip", List.of(new GitHubContentEntry(".gitignore"), new GitHubContentEntry("component-metadata.yaml"), new GitHubContentEntry("README.md"))));
         verify(mockCache).putEntry(
                 scenario.getUsername(),
                 baseUrl + "/repos/" + scenario.getUsername() + "/test-repo-4/contents/",
                 // Note: The instance of Jetty that is bundled with WireMock adds "--gzip" to the end of the ETag HTTP response
                 // header.  See http://wiremock.org/docs/extending-wiremock/ for confirmation
-                new ApiResponseCacheEntry<>("test-modified-etag-5--gzip", List.of(new ContentEntry(".gitignore"), new ContentEntry("README.md"))));
+                new ApiResponseCacheEntry<>("test-modified-etag-5--gzip", List.of(new GitHubContentEntry(".gitignore"), new GitHubContentEntry("README.md"))));
 
         assertThat(returnValue).containsExactly(
                 new ApiRepo("https://github.com/" + scenario.getUsername() + "/test-repo-" + 1 + ".git", true),
@@ -171,11 +171,11 @@ public class GitHubClientTest {
         GitHubApiWireMockFactory.Scenario scenario = GitHubApiWireMockFactory.Scenario.ETAG_USER_REPOS_NOT_MODIFIED;
         GitHubRepoFinderConfig config = new GitHubRepoFinderConfig(null, TEST_DURATION);
         underTest = new GitHubClient(webClient, config, mockCache, baseUrl);
-        ApiResponseCacheEntry<List<UserRepo>> userReposCacheEntry = new ApiResponseCacheEntry<>(
+        ApiResponseCacheEntry<List<GitHubRepo>> userReposCacheEntry = new ApiResponseCacheEntry<>(
                 "test-etag-1",
                 List.of(
-                        new UserRepo("https://example.com/cached-clone-url-1", baseUrl + "/repos/" + scenario.getUsername() + "/test-repo-" + 1 + "/contents/{+path}"),
-                        new UserRepo("https://example.com/cached-clone-url-2", baseUrl + "/repos/" + scenario.getUsername() + "/test-repo-" + 2 + "/contents/{+path}")));
+                        new GitHubRepo("https://example.com/cached-clone-url-1", baseUrl + "/repos/" + scenario.getUsername() + "/test-repo-" + 1 + "/contents/{+path}"),
+                        new GitHubRepo("https://example.com/cached-clone-url-2", baseUrl + "/repos/" + scenario.getUsername() + "/test-repo-" + 2 + "/contents/{+path}")));
         doReturn(userReposCacheEntry).when(mockCache).getEntry(scenario.getUsername(), baseUrl + "/user/repos");
 
         // When
@@ -193,7 +193,7 @@ public class GitHubClientTest {
         GitHubApiWireMockFactory.Scenario scenario = GitHubApiWireMockFactory.Scenario.ETAG_REPO_2_NOT_MODIFIED;
         GitHubRepoFinderConfig config = new GitHubRepoFinderConfig(null, TEST_DURATION);
         underTest = new GitHubClient(webClient, config, mockCache, baseUrl);
-        ApiResponseCacheEntry<List<ContentEntry>> userReposCacheEntry = new ApiResponseCacheEntry<>("test-etag-3", List.of(new ContentEntry("kronicle.yaml")));
+        ApiResponseCacheEntry<List<GitHubContentEntry>> userReposCacheEntry = new ApiResponseCacheEntry<>("test-etag-3", List.of(new GitHubContentEntry("kronicle.yaml")));
         when(mockCache.getEntry(scenario.getUsername(), baseUrl + "/user/repos")).thenReturn(null);
         when(mockCache.getEntry(scenario.getUsername(), baseUrl + "/repos/" + scenario.getUsername() + "/test-repo-" + 1 + "/contents/")).thenReturn(null);
         doReturn(userReposCacheEntry).when(mockCache).getEntry(scenario.getUsername(), baseUrl + "/repos/" + scenario.getUsername() + "/test-repo-" + 2 + "/contents/");
@@ -231,7 +231,7 @@ public class GitHubClientTest {
         assertThat(exception.getResponseBody()).isEqualTo("User does not exist");
     }
 
-    private GitHubRepoFinderUserConfig createUser(GitHubApiWireMockFactory.Scenario scenario) {
-        return new GitHubRepoFinderUserConfig(scenario.getUsername(), TEST_PERSONAL_ACCESS_TOKEN);
+    private GitHubRepoFinderPersonalAccessTokenConfig createUser(GitHubApiWireMockFactory.Scenario scenario) {
+        return new GitHubRepoFinderPersonalAccessTokenConfig(scenario.getUsername(), TEST_PERSONAL_ACCESS_TOKEN);
     }
 }

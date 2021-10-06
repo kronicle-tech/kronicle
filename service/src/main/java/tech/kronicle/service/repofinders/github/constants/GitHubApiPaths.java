@@ -1,8 +1,10 @@
 package tech.kronicle.service.repofinders.github.constants;
 
-public class GitHubApiPaths {
+public final class GitHubApiPaths {
 
-  public static final String USER_REPOS = "/user/repos";
+  public static final String AUTHENTICATED_USER_REPOS = "/user/repos";
+  public static final String USER_REPOS = "/users/{username}/repos";
+  public static final String ORGANIZATION_REPOS = "/orgs/{org}/repos";
 
   private GitHubApiPaths() {
   }

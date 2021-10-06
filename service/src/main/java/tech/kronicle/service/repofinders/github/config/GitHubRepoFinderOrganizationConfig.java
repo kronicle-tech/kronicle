@@ -9,7 +9,7 @@ import org.springframework.validation.annotation.Validated;
 @ConstructorBinding
 @Value
 @NonFinal
-public class GitHubRepoFinderUserConfig {
+public class GitHubRepoFinderOrganizationConfig {
 
     String accountName;
 }

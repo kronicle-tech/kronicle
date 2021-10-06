@@ -17,7 +17,9 @@ import java.util.List;
 @NonFinal
 public class GitHubRepoFinderConfig {
 
+  List<GitHubRepoFinderPersonalAccessTokenConfig> personalAccessTokens;
   List<GitHubRepoFinderUserConfig> users;
+  List<GitHubRepoFinderOrganizationConfig> organizations;
   @NotNull
   Duration timeout;
 }
