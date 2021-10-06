@@ -25,7 +25,7 @@ public class SpringdocConfig {
         return new QueryParameter()
                 .in("query")
                 .name("fields")
-                .description("Supports the Partial Responses feature that Google use on some of their APIs.  See " +
+                .description("Supports the Partial Responses feature that Google uses on some of their APIs.  See " +
                         PARTIAL_RESPONSES_ARTICLE_URL + " for more information")
                 .schema(new Schema<String>()
                         .type("string")

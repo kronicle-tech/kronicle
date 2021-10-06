@@ -1,5 +1,6 @@
 package tech.kronicle.service.controllers;
 
+import io.swagger.v3.oas.annotations.Operation;
 import tech.kronicle.sdk.models.GetComponentResponse;
 import tech.kronicle.sdk.models.GetComponentsResponse;
 import tech.kronicle.sdk.models.TestOutcome;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import tech.kronicle.service.utils.EnumUtils;
+import tech.kronicle.springdoc.Texts;
 
 import java.util.List;
 import java.util.Optional;
@@ -23,6 +25,12 @@ public class ComponentController {
 
     private final ComponentService componentService;
 
+    @Operation(
+            tags = {"Components"},
+            summary = "Get Components",
+            description = "Retrieves a list of all components.  " + Texts.USING_FIELDS_QUERY_PARAM,
+            operationId = "get-components"
+    )
     @GetMapping
     @PartialResponse
     public GetComponentsResponse getComponents(@RequestParam(required = false) Optional<Integer> offset,
@@ -30,6 +38,12 @@ public class ComponentController {
         return new GetComponentsResponse(componentService.getComponents(offset, limit, EnumUtils.getEnumListFromJsonValues(TestOutcome.class, testOutcome)));
     }
 
+    @Operation(
+            tags = {"Components"},
+            summary = "Get Component",
+            description = "Retrieves a component.  " + Texts.USING_FIELDS_QUERY_PARAM,
+            operationId = "get-component"
+    )
     @GetMapping("/{componentId}")
     @PartialResponse
     public GetComponentResponse getComponent(@PathVariable String componentId) {
