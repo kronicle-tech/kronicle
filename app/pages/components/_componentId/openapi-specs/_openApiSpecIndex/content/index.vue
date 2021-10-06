@@ -1,14 +1,5 @@
 <template>
-  <div>
-    <h1 class="text-info my-3">{{ component.name }} - OpenAPI Spec {{ openApiSpecIndex }}</h1>
-    <ComponentTabs :component-id="component.id" />
-    <div class="mb-3 text-center">
-      <NuxtLink :to="`/components/${component.id}/openapi-specs/${openApiSpecIndex}/content`">
-        View Full Screen
-      </NuxtLink>
-    </div>
-    <OpenApiSpecView :component="component" :open-api-spec-index="openApiSpecIndex" />
-  </div>
+  <OpenApiSpecView :component="component" :open-api-spec-index="openApiSpecIndex" />
 </template>
 
 <script lang="ts">
@@ -21,6 +12,7 @@ export default Vue.extend({
   components: {
     OpenApiSpecView,
   },
+  layout: 'Redoc',
   async asyncData({ $config, route }) {
     const component = await fetch(
       `${$config.serviceBaseUrl}/v1/components/${route.params.componentId}?fields=component(id,name,teams,openApiSpecs)`

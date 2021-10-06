@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`OpenApiSpecView renders the details of the correct OpenAPI spec 1`] = `
+<div
+  class="openapi-spec"
+/>
+`;
