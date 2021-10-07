@@ -138,6 +138,14 @@
         <packageUrl regex="true">^pkg:npm/set\-value@.*$</packageUrl>
         <vulnerabilityName>5267</vulnerabilityName>
     </suppress>
+    <!-- Time-limited suppression waiting for Nuxt.js to upgrade to Webpack 5.x.x.  See https://github.com/nuxt/nuxt.js/issues/9798 -->
+    <suppress>
+        <notes><![CDATA[
+   file name: set-value:2.0.1
+   ]]></notes>
+        <packageUrl regex="true">^pkg:npm/set\-value@.*$</packageUrl>
+        <vulnerabilityName>1002475</vulnerabilityName>
+    </suppress>
     <!-- Suppress a "Inefficient Regular Expression Complexity" vulnerability in an npm package -->
     <suppress>
         <notes><![CDATA[
@@ -145,6 +153,14 @@
    ]]></notes>
         <packageUrl regex="true">^pkg:npm/ansi\-regex@.*$</packageUrl>
         <cve>CVE-2021-3807</cve>
+    </suppress>
+    <!-- Suppress a "Inefficient Regular Expression Complexity" vulnerability in an npm package -->
+    <suppress>
+        <notes><![CDATA[
+   file name: ansi-regex:2.1.1
+   ]]></notes>
+        <packageUrl regex="true">^pkg:npm/ansi\-regex@.*$</packageUrl>
+        <vulnerabilityName>1002401</vulnerabilityName>
     </suppress>
     <!-- Suppress a "Inefficient Regular Expression Complexity" vulnerability in an npm package -->
     <suppress>
@@ -178,6 +194,14 @@
         <packageUrl regex="true">^pkg:npm/glob\-parent@.*$</packageUrl>
         <vulnerabilityName>1838</vulnerabilityName>
     </suppress>
+    <!-- Suppress a "Regular Expression Denial of Service" vulnerability in an npm package -->
+    <suppress>
+        <notes><![CDATA[
+   file name: glob-parent:3.1.0
+   ]]></notes>
+        <packageUrl regex="true">^pkg:npm/glob\-parent@.*$</packageUrl>
+        <vulnerabilityName>1002627</vulnerabilityName>
+    </suppress>
     <!-- Suppress a "Inefficient Regular Expression Complexity" vulnerability in an npm package -->
     <suppress>
         <notes><![CDATA[
@@ -185,5 +209,13 @@
    ]]></notes>
         <packageUrl regex="true">^pkg:npm/nth\-check@.*$</packageUrl>
         <vulnerabilityName>5101</vulnerabilityName>
+    </suppress>
+    <!-- Suppress a "Inefficient Regular Expression Complexity" vulnerability in an npm package -->
+    <suppress>
+        <notes><![CDATA[
+   file name: nth-check:1.0.2
+   ]]></notes>
+        <packageUrl regex="true">^pkg:npm/nth\-check@.*$</packageUrl>
+        <vulnerabilityName>1002423</vulnerabilityName>
     </suppress>
 </suppressions>
