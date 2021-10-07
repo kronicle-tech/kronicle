@@ -53,7 +53,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information for SonarQube, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        run: ./gradlew service:downloadGradleLibs app:docker service:test app:assembleFrontend sonarqubeIfTokenAvailable build
+        run: ./gradlew service:downloadGradleLibs app:docker service:test app:assembleFrontend $([[ -v SONAR_TOKEN ]] && "sonarqube" || "") build
       - name: Tag build
         if: ${{ github.ref == 'refs/heads/main' }}
         # Based on https://axion-release-plugin.readthedocs.io/en/latest/configuration/ci_servers/#github-actions

@@ -34,10 +34,4 @@ subprojects {
     }
 
     [compileJava, compileTestJava]*.options*.encoding = "UTF-8"
-
-    tasks.register('sonarqubeIfTokenAvailable') {
-        if (System.env['SONAR_TOKEN'] != null) {
-            dependsOn('sonarqube')
-        }
-    }
 }
