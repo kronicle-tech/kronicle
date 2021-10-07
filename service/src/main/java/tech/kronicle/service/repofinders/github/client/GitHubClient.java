@@ -62,11 +62,11 @@ public class GitHubClient {
   }
 
   public List<ApiRepo> getRepos(GitHubRepoFinderUserConfig user) {
-    return getRepos(null, getUserReposUri(user));
+    return getRepos(user.getPersonalAccessToken(), getUserReposUri(user));
   }
 
   public List<ApiRepo> getRepos(GitHubRepoFinderOrganizationConfig organization) {
-    return getRepos(null, getOrganizationReposUri(organization));
+    return getRepos(organization.getPersonalAccessToken(), getOrganizationReposUri(organization));
   }
 
   private String getAuthenticatedUserReposUri() {

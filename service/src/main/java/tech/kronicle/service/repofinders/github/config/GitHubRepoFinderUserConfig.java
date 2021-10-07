@@ -12,4 +12,5 @@ import org.springframework.validation.annotation.Validated;
 public class GitHubRepoFinderUserConfig {
 
     String accountName;
+    GitHubRepoFinderPersonalAccessTokenConfig personalAccessToken;
 }
