@@ -64,15 +64,15 @@ public class GitHubClientTest {
     public void getReposShouldReturnAListOfReposWithVaryingHasComponentMetadataFileValues() {
         // Given
         GitHubApiWireMockFactory.Scenario scenario = GitHubApiWireMockFactory.Scenario.SIMPLE;
-        GitHubRepoFinderConfig config = new GitHubRepoFinderConfig(null, TEST_DURATION);
+        GitHubRepoFinderConfig config = new GitHubRepoFinderConfig(null, null, null, TEST_DURATION);
         underTest = new GitHubClient(webClient, config, mockCache, baseUrl);
 
         // When
-        List<ApiRepo> returnValue = underTest.getRepos(createUser(scenario));
+        List<ApiRepo> returnValue = underTest.getRepos(scenario.getPersonalAccessToken());
 
         // Then
         verify(mockCache).putEntry(
-                scenario.getUsername(),
+                scenario.getPersonalAccessToken(),
                 baseUrl + "/user/repos",
                 // Note: The instance of Jetty that is bundled with WireMock adds "--gzip" to the end of the ETag HTTP response
                 // header.  See http://wiremock.org/docs/extending-wiremock/ for confirmation
@@ -82,25 +82,25 @@ public class GitHubClientTest {
                         new GitHubRepo("https://github.com/" + scenario.getUsername() + "/test-repo-3.git", baseUrl + "/repos/" + scenario.getUsername() + "/test-repo-3/contents/{+path}"),
                         new GitHubRepo("https://github.com/" + scenario.getUsername() + "/test-repo-4.git", baseUrl + "/repos/" + scenario.getUsername() + "/test-repo-4/contents/{+path}"))));
         verify(mockCache).putEntry(
-                scenario.getUsername(),
+                scenario.getPersonalAccessToken(),
                 baseUrl + "/repos/" + scenario.getUsername() + "/test-repo-1/contents/",
                 // Note: The instance of Jetty that is bundled with WireMock adds "--gzip" to the end of the ETag HTTP response
                 // header.  See http://wiremock.org/docs/extending-wiremock/ for confirmation
                 new ApiResponseCacheEntry<>("test-modified-etag-2--gzip", List.of(new GitHubContentEntry(".gitignore"), new GitHubContentEntry("kronicle.yaml"), new GitHubContentEntry("README.md"))));
         verify(mockCache).putEntry(
-                scenario.getUsername(),
+                scenario.getPersonalAccessToken(),
                 baseUrl + "/repos/" + scenario.getUsername() + "/test-repo-2/contents/",
                 // Note: The instance of Jetty that is bundled with WireMock adds "--gzip" to the end of the ETag HTTP response
                 // header.  See http://wiremock.org/docs/extending-wiremock/ for confirmation
                 new ApiResponseCacheEntry<>("test-modified-etag-3--gzip", List.of(new GitHubContentEntry(".gitignore"), new GitHubContentEntry("README.md"))));
         verify(mockCache).putEntry(
-                scenario.getUsername(),
+                scenario.getPersonalAccessToken(),
                 baseUrl + "/repos/" + scenario.getUsername() + "/test-repo-3/contents/",
                 // Note: The instance of Jetty that is bundled with WireMock adds "--gzip" to the end of the ETag HTTP response
                 // header.  See http://wiremock.org/docs/extending-wiremock/ for confirmation
                 new ApiResponseCacheEntry<>("test-modified-etag-4--gzip", List.of(new GitHubContentEntry(".gitignore"), new GitHubContentEntry("component-metadata.yaml"), new GitHubContentEntry("README.md"))));
         verify(mockCache).putEntry(
-                scenario.getUsername(),
+                scenario.getPersonalAccessToken(),
                 baseUrl + "/repos/" + scenario.getUsername() + "/test-repo-4/contents/",
                 // Note: The instance of Jetty that is bundled with WireMock adds "--gzip" to the end of the ETag HTTP response
                 // header.  See http://wiremock.org/docs/extending-wiremock/ for confirmation
@@ -134,11 +134,11 @@ public class GitHubClientTest {
     public void getReposShouldLogRateLimitResponseHeadersInGitHubApiResponses() {
         // Given
         GitHubApiWireMockFactory.Scenario scenario = GitHubApiWireMockFactory.Scenario.RATE_LIMIT_RESPONSE_HEADERS;
-        GitHubRepoFinderConfig config = new GitHubRepoFinderConfig(null, TEST_DURATION);
+        GitHubRepoFinderConfig config = new GitHubRepoFinderConfig(null, null, null, TEST_DURATION);
         underTest = new GitHubClient(webClient, config, mockCache, baseUrl);
 
         // When
-        List<ApiRepo> returnValue = underTest.getRepos(createUser(scenario));
+        List<ApiRepo> returnValue = underTest.getRepos(scenario.getPersonalAccessToken());
 
         // Then
         assertThat(returnValue).containsExactly(
@@ -169,17 +169,17 @@ public class GitHubClientTest {
     public void getReposShouldReturnCachedUserReposIfETagHasNotChanged() {
         // Given
         GitHubApiWireMockFactory.Scenario scenario = GitHubApiWireMockFactory.Scenario.ETAG_USER_REPOS_NOT_MODIFIED;
-        GitHubRepoFinderConfig config = new GitHubRepoFinderConfig(null, TEST_DURATION);
+        GitHubRepoFinderConfig config = new GitHubRepoFinderConfig(null, null, null, TEST_DURATION);
         underTest = new GitHubClient(webClient, config, mockCache, baseUrl);
         ApiResponseCacheEntry<List<GitHubRepo>> userReposCacheEntry = new ApiResponseCacheEntry<>(
                 "test-etag-1",
                 List.of(
                         new GitHubRepo("https://example.com/cached-clone-url-1", baseUrl + "/repos/" + scenario.getUsername() + "/test-repo-" + 1 + "/contents/{+path}"),
                         new GitHubRepo("https://example.com/cached-clone-url-2", baseUrl + "/repos/" + scenario.getUsername() + "/test-repo-" + 2 + "/contents/{+path}")));
-        doReturn(userReposCacheEntry).when(mockCache).getEntry(scenario.getUsername(), baseUrl + "/user/repos");
+        doReturn(userReposCacheEntry).when(mockCache).getEntry(scenario.getPersonalAccessToken(), baseUrl + "/user/repos");
 
         // When
-        List<ApiRepo> returnValue = underTest.getRepos(createUser(scenario));
+        List<ApiRepo> returnValue = underTest.getRepos(scenario.getPersonalAccessToken());
 
         // Then
         assertThat(returnValue).containsExactly(
@@ -191,17 +191,17 @@ public class GitHubClientTest {
     public void getReposShouldReturnCachedRepoRootContentsIfETagHasNotChanged() {
         // Given
         GitHubApiWireMockFactory.Scenario scenario = GitHubApiWireMockFactory.Scenario.ETAG_REPO_2_NOT_MODIFIED;
-        GitHubRepoFinderConfig config = new GitHubRepoFinderConfig(null, TEST_DURATION);
+        GitHubRepoFinderConfig config = new GitHubRepoFinderConfig(null, null, null, TEST_DURATION);
         underTest = new GitHubClient(webClient, config, mockCache, baseUrl);
         ApiResponseCacheEntry<List<GitHubContentEntry>> userReposCacheEntry = new ApiResponseCacheEntry<>("test-etag-3", List.of(new GitHubContentEntry("kronicle.yaml")));
-        when(mockCache.getEntry(scenario.getUsername(), baseUrl + "/user/repos")).thenReturn(null);
-        when(mockCache.getEntry(scenario.getUsername(), baseUrl + "/repos/" + scenario.getUsername() + "/test-repo-" + 1 + "/contents/")).thenReturn(null);
-        doReturn(userReposCacheEntry).when(mockCache).getEntry(scenario.getUsername(), baseUrl + "/repos/" + scenario.getUsername() + "/test-repo-" + 2 + "/contents/");
-        when(mockCache.getEntry(scenario.getUsername(), baseUrl + "/repos/" + scenario.getUsername() + "/test-repo-" + 3 + "/contents/")).thenReturn(null);
-        when(mockCache.getEntry(scenario.getUsername(), baseUrl + "/repos/" + scenario.getUsername() + "/test-repo-" + 4 + "/contents/")).thenReturn(null);
+        when(mockCache.getEntry(scenario.getPersonalAccessToken(), baseUrl + "/user/repos")).thenReturn(null);
+        when(mockCache.getEntry(scenario.getPersonalAccessToken(), baseUrl + "/repos/" + scenario.getUsername() + "/test-repo-" + 1 + "/contents/")).thenReturn(null);
+        doReturn(userReposCacheEntry).when(mockCache).getEntry(scenario.getPersonalAccessToken(), baseUrl + "/repos/" + scenario.getUsername() + "/test-repo-" + 2 + "/contents/");
+        when(mockCache.getEntry(scenario.getPersonalAccessToken(), baseUrl + "/repos/" + scenario.getUsername() + "/test-repo-" + 3 + "/contents/")).thenReturn(null);
+        when(mockCache.getEntry(scenario.getPersonalAccessToken(), baseUrl + "/repos/" + scenario.getUsername() + "/test-repo-" + 4 + "/contents/")).thenReturn(null);
 
         // When
-        List<ApiRepo> returnValue = underTest.getRepos(createUser(scenario));
+        List<ApiRepo> returnValue = underTest.getRepos(scenario.getPersonalAccessToken());
 
         // Then
         assertThat(returnValue).containsExactly(
@@ -215,23 +215,19 @@ public class GitHubClientTest {
     @Test
     public void getReposShouldThrowAnExceptionWhenGitHubReturnsAnUnexpectedStatusCode() {
         // Given
-        GitHubApiWireMockFactory.Scenario scenario = GitHubApiWireMockFactory.Scenario.NOT_FOUND;
-        GitHubRepoFinderConfig config = new GitHubRepoFinderConfig(null, TEST_DURATION);
+        GitHubApiWireMockFactory.Scenario scenario = GitHubApiWireMockFactory.Scenario.INTERNAL_SERVER_ERROR;
+        GitHubRepoFinderConfig config = new GitHubRepoFinderConfig(null, null, null, TEST_DURATION);
         underTest = new GitHubClient(webClient, config, mockCache, baseUrl);
 
         // When
-        Throwable thrown = catchThrowable(() -> underTest.getRepos(createUser(scenario)));
+        Throwable thrown = catchThrowable(() -> underTest.getRepos(scenario.getPersonalAccessToken()));
 
         // Then
         assertThat(thrown).isInstanceOf(GitHubClientException.class);
         GitHubClientException exception = (GitHubClientException) thrown;
-        assertThat(exception).hasMessage("Call to 'http://localhost:36208/user/repos' failed with status 404");
+        assertThat(exception).hasMessage("Call to 'http://localhost:36208/user/repos' failed with status 500");
         assertThat(exception.getUri()).isEqualTo("http://localhost:36208/user/repos");
-        assertThat(exception.getStatusCode()).isEqualTo(404);
-        assertThat(exception.getResponseBody()).isEqualTo("User does not exist");
-    }
-
-    private GitHubRepoFinderPersonalAccessTokenConfig createUser(GitHubApiWireMockFactory.Scenario scenario) {
-        return new GitHubRepoFinderPersonalAccessTokenConfig(scenario.getUsername(), TEST_PERSONAL_ACCESS_TOKEN);
+        assertThat(exception.getStatusCode()).isEqualTo(500);
+        assertThat(exception.getResponseBody()).isEqualTo("Internal Server Error");
     }
 }

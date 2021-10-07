@@ -2,13 +2,17 @@ package tech.kronicle.service.repofinders.github.services;
 
 import lombok.Value;
 import org.junit.jupiter.api.Test;
+import tech.kronicle.service.repofinders.github.config.GitHubRepoFinderPersonalAccessTokenConfig;
 import tech.kronicle.service.repofinders.github.models.ApiResponseCacheEntry;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class ApiResponseCacheTest {
 
-    private static final String USERNAME = "test-user";
+    private static final GitHubRepoFinderPersonalAccessTokenConfig PERSONAL_ACCESS_TOKEN =
+            new GitHubRepoFinderPersonalAccessTokenConfig("test-user", "test-personal-access-token");
+    private static final GitHubRepoFinderPersonalAccessTokenConfig DIFFERENT_PERSONAL_ACCESS_TOKEN =
+            new GitHubRepoFinderPersonalAccessTokenConfig("different-user", "different-personal-access-token");
     private static final String URI = "http://example.com/test-uri";
     private static final String ETAG = "test-etag";
     private static final TestResponse TEST_RESPONSE = new TestResponse("test-response");
@@ -17,7 +21,7 @@ public class ApiResponseCacheTest {
     @Test
     public void getEntryShouldReturnNullWhenEntryIsNotCached() {
         // When
-        ApiResponseCacheEntry<TestResponse> returnValue = underTest.getEntry(USERNAME, URI);
+        ApiResponseCacheEntry<TestResponse> returnValue = underTest.getEntry(PERSONAL_ACCESS_TOKEN, URI);
 
         // Then
         assertThat(returnValue).isNull();
@@ -27,10 +31,10 @@ public class ApiResponseCacheTest {
     public void getEntryShouldReturnExistingEntryWhenAlreadyCached() {
         // Given
         ApiResponseCacheEntry<TestResponse> entry = new ApiResponseCacheEntry<>(ETAG, TEST_RESPONSE);
-        underTest.putEntry(USERNAME, URI, entry);
+        underTest.putEntry(PERSONAL_ACCESS_TOKEN, URI, entry);
 
         // When
-        ApiResponseCacheEntry<TestResponse> returnValue = underTest.getEntry(USERNAME, URI);
+        ApiResponseCacheEntry<TestResponse> returnValue = underTest.getEntry(PERSONAL_ACCESS_TOKEN, URI);
 
         // Then
         assertThat(returnValue).isSameAs(entry);
@@ -40,10 +44,10 @@ public class ApiResponseCacheTest {
     public void getEntryShouldNotReturnExistingEntryWhenUsernameIsDifferent() {
         // Given
         ApiResponseCacheEntry<TestResponse> entry = new ApiResponseCacheEntry<>(ETAG, TEST_RESPONSE);
-        underTest.putEntry(USERNAME, URI, entry);
+        underTest.putEntry(PERSONAL_ACCESS_TOKEN, URI, entry);
 
         // When
-        ApiResponseCacheEntry<TestResponse> returnValue = underTest.getEntry("different-user", URI);
+        ApiResponseCacheEntry<TestResponse> returnValue = underTest.getEntry(DIFFERENT_PERSONAL_ACCESS_TOKEN, URI);
 
         // Then
         assertThat(returnValue).isNull();
@@ -53,10 +57,10 @@ public class ApiResponseCacheTest {
     public void getEntryShouldNotReturnExistingEntryWhenUriIsDifferent() {
         // Given
         ApiResponseCacheEntry<TestResponse> entry = new ApiResponseCacheEntry<>(ETAG, TEST_RESPONSE);
-        underTest.putEntry(USERNAME, URI, entry);
+        underTest.putEntry(PERSONAL_ACCESS_TOKEN, URI, entry);
 
         // When
-        ApiResponseCacheEntry<TestResponse> returnValue = underTest.getEntry(USERNAME, "https://example.com/different-uri");
+        ApiResponseCacheEntry<TestResponse> returnValue = underTest.getEntry(PERSONAL_ACCESS_TOKEN, "https://example.com/different-uri");
 
         // Then
         assertThat(returnValue).isNull();

@@ -4,6 +4,7 @@ import com.github.tomakehurst.wiremock.WireMockServer;
 import com.github.tomakehurst.wiremock.client.MappingBuilder;
 import com.github.tomakehurst.wiremock.client.ResponseDefinitionBuilder;
 import lombok.Getter;
+import tech.kronicle.service.repofinders.github.config.GitHubRepoFinderPersonalAccessTokenConfig;
 import tech.kronicle.service.repofinders.github.constants.GitHubApiHeaders;
 import tech.kronicle.service.testutils.TestFileHelper;
 
@@ -28,12 +29,12 @@ public class GitHubApiWireMockFactory {
         RequestNumber requestNumber = new RequestNumber();
         int userReposRequestNumber = requestNumber.getNext();
         MappingBuilder request = createUserReposRequest(scenario, userReposRequestNumber);
-        if (scenario.allResourcesNotFound) {
+        if (scenario.internalServerError) {
             wireMockServer.stubFor(request
                     .willReturn(aResponse()
-                            .withStatus(404)
+                            .withStatus(500)
                             .withHeader("Content-Type", "text/plain")
-                            .withBody("User does not exist")));
+                            .withBody("Internal Server Error")));
         } else {
             wireMockServer.stubFor(request
                     .willReturn(createUserReposResponse(baseUrl, scenario, userReposRequestNumber)));
@@ -47,7 +48,7 @@ public class GitHubApiWireMockFactory {
 
     private static MappingBuilder createUserReposRequest(Scenario scenario, int requestNumber) {
         MappingBuilder builder = get(urlPathEqualTo("/user/repos"))
-                .withBasicAuth(scenario.username, "test-personal-access-token");
+                .withBasicAuth(scenario.username, scenario.personalAccessToken.getPersonalAccessToken());
         if (scenario.eTag && scenario.userReposNotModified) {
             builder.withHeader("If-None-Match", equalTo(createRequestETag(requestNumber)));
         }
@@ -73,7 +74,7 @@ public class GitHubApiWireMockFactory {
     private static MappingBuilder createRepoRootContentsRequest(Scenario scenario, int repoNumber, int requestNumber) {
         MappingBuilder builder = get(urlPathEqualTo(
                 "/repos/" + scenario.username + "/test-repo-" + repoNumber + "/contents/"))
-                .withBasicAuth(scenario.username, "test-personal-access-token");
+                .withBasicAuth(scenario.username, scenario.personalAccessToken.getPersonalAccessToken());
         if (scenario.eTag && scenario.repo2NotModified && repoNumber == 2) {
             builder.withHeader("If-None-Match", equalTo(createRequestETag(requestNumber)));
         }
@@ -161,11 +162,12 @@ public class GitHubApiWireMockFactory {
         RATE_LIMIT_RESPONSE_HEADERS("rate-limit-response-headers", false, true, false, false, false),
         ETAG_USER_REPOS_NOT_MODIFIED("etag-user-repos-not-modified", false, false, true, true, false),
         ETAG_REPO_2_NOT_MODIFIED("etag-repo-2-not-modified", false, false, true, false, true),
-        NOT_FOUND("not-found", true, false, false, false, false);
+        INTERNAL_SERVER_ERROR("internal-server-error", true, false, false, false, false);
 
-        Scenario(String username, Boolean allResourcesNotFound, Boolean rateLimitResponseHeaders, Boolean eTag, Boolean userReposNotModified, Boolean repo2NotModified) {
+        Scenario(String username, Boolean internalServerError, Boolean rateLimitResponseHeaders, Boolean eTag, Boolean userReposNotModified, Boolean repo2NotModified) {
             this.username = username;
-            this.allResourcesNotFound = allResourcesNotFound;
+            this.personalAccessToken = new GitHubRepoFinderPersonalAccessTokenConfig(username, username + "-personal-access-token");
+            this.internalServerError = internalServerError;
             this.rateLimitResponseHeaders = rateLimitResponseHeaders;
             this.eTag = eTag;
             this.userReposNotModified = userReposNotModified;
@@ -173,7 +175,8 @@ public class GitHubApiWireMockFactory {
         }
 
         private final String username;
-        private final Boolean allResourcesNotFound;
+        private final GitHubRepoFinderPersonalAccessTokenConfig personalAccessToken;
+        private final Boolean internalServerError;
         private final Boolean rateLimitResponseHeaders;
         private final Boolean eTag;
         private final Boolean userReposNotModified;
