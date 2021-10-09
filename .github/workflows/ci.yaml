@@ -1,24 +1,33 @@
-name: Build
+name: CI
+
 on: [push]
+
 jobs:
-  build:
+
+  ci:
     runs-on: ubuntu-latest
+
     steps:
+
       - uses: actions/checkout@v2
         # Based on https://axion-release-plugin.readthedocs.io/en/latest/configuration/ci_servers/#github-actions
         with:
           fetch-depth: 0
+
       - name: Set up JDK 11
         uses: actions/setup-java@v2
         with:
           java-version: '11'
           distribution: 'adopt'
+
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
           node-version: '12'
+
       - name: Upgrade npm
         run: npm install -g npm@latest
+
       - name: Cache Gradle packages
         uses: actions/cache@v2
         with:
@@ -28,18 +37,22 @@ jobs:
           key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
           restore-keys: |
             ${{ runner.os }}-gradle-
+
       - name: Cache SonarCloud packages
         uses: actions/cache@v2
         with:
           path: ~/.sonar/cache
           key: ${{ runner.os }}-sonar
           restore-keys: ${{ runner.os }}-sonar
+
       - name: Get Node.js version
         run: |
           echo "$(node -v)" > node-version.txt
+
       - name: Get npm version
         run: |
           echo "$(npm -v)" > npm-version.txt
+
       - name: Cache the NPM Cache
         uses: actions/cache@v2
         with:
@@ -47,29 +60,35 @@ jobs:
           key: ${{ runner.os }}-node-${{ hashFiles('node-version.txt', 'npm-version.txt', '**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-node-
+
       - name: Validate Gradle wrapper
         uses: gradle/wrapper-validation-action@e6e38bacfdf1a337459f332974bb2327a31aaf4b
+
       - name: Build
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information for SonarQube, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: ./gradlew service:downloadGradleLibs app:docker service:test app:assembleFrontend $([[ -v SONAR_TOKEN ]] && "echo sonarqube" || "echo ''") build
+
       - name: Archive Dependency Check report 🗄️
         uses: actions/upload-artifact@v2
         if: success() || failure()
         with:
           name: dependency-check-report
           path: '**/build/reports/dependency-check-report.html'
+
       - name: Archive JUnit test reports 🗄️
         uses: actions/upload-artifact@v2
         if: success() || failure()
         with:
           name: dependency-check-report
           path: '**/build/reports/tests/test/**'
+
       - name: Tag build
         if: ${{ github.ref == 'refs/heads/main' }}
         # Based on https://axion-release-plugin.readthedocs.io/en/latest/configuration/ci_servers/#github-actions
         run: ./gradlew release -Prelease.customUsername=${{ github.actor }} -Prelease.customPassword=${{ github.token }}
+
       - name: Clean up Gradle Cache
         # Remove some files from the Gradle cache, so they aren't cached by GitHub Actions.
         # Restoring these files from a GitHub Actions cache might cause problems for future builds.
