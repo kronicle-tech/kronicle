@@ -1,4 +1,4 @@
-package tech.kronicle.springdoc;
+package tech.kronicle.service.springdoc;
 
 public class Texts {
 
