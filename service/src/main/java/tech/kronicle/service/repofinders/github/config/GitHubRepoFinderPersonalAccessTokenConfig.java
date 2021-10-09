@@ -16,5 +16,5 @@ public class GitHubRepoFinderPersonalAccessTokenConfig {
   @NotEmpty
   String username;
   @NotEmpty
-  String personalAccessToken;
+  String value;
 }

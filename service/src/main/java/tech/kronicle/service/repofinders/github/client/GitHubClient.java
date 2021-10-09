@@ -200,7 +200,7 @@ public class GitHubClient {
     return requestHeadersSpec
             .headers(headers -> {
               if (nonNull(personalAccessToken)) {
-                headers.setBasicAuth(personalAccessToken.getUsername(), personalAccessToken.getPersonalAccessToken());
+                headers.setBasicAuth(personalAccessToken.getUsername(), personalAccessToken.getValue());
               }
               if (nonNull(cacheEntry)) {
                 headers.add(HttpHeaders.IF_NONE_MATCH, cacheEntry.getETag());
