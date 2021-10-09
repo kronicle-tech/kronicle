@@ -16,7 +16,6 @@ div >>> p:last-child {
 
 <script lang="ts">
 import Vue from 'vue'
-import remarkDirective from 'remark-directive'
 import remarkParse from 'remark-parse'
 import remarkGfm from 'remark-gfm'
 import remarkRehype from 'remark-rehype'
@@ -41,7 +40,6 @@ const rehypeSanitizeSchema = deepmerge(rehypeSanitizeGitHubSchema, {
 function generateMarkdownHtml(markdown: String, toc: Boolean): VFile {
   let processor = unified()
     .use(remarkParse)
-    .use(remarkDirective)
     .use(remarkGfm)
   if (toc) {
     processor = processor.use(remarkToc, {
