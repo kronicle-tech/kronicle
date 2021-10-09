@@ -3,8 +3,8 @@ package tech.kronicle.service.repofinders.github.client;
 import com.github.tomakehurst.wiremock.WireMockServer;
 import com.github.tomakehurst.wiremock.client.MappingBuilder;
 import com.github.tomakehurst.wiremock.client.ResponseDefinitionBuilder;
-import lombok.Getter;
-import lombok.ToString;
+import lombok.Builder;
+import lombok.Value;
 import tech.kronicle.service.repofinders.github.config.GitHubRepoFinderPersonalAccessTokenConfig;
 import tech.kronicle.service.repofinders.github.constants.GitHubApiHeaders;
 import tech.kronicle.service.testutils.TestFileHelper;
@@ -38,9 +38,15 @@ public class GitHubApiWireMockFactory {
                             .withStatus(500)
                             .withHeader("Content-Type", "text/plain")
                             .withBody("Internal Server Error")));
+        } else if (scenario.repoListNotFound) {
+            wireMockServer.stubFor(request
+                    .willReturn(aResponse()
+                            .withStatus(404)
+                            .withHeader("Content-Type", "text/plain")
+                            .withBody("Not Found")));
         } else {
             wireMockServer.stubFor(request
-                    .willReturn(createReposResponse(baseUrl, scenario, reposRequestNumber)));
+                    .willReturn(createRepoListResponse(baseUrl, scenario, reposRequestNumber)));
             IntStream.range(1, 5).forEach(repoNumber -> {
                 int repoRootContentsRequestNumber = requestNumber.getNext();
                 wireMockServer.stubFor(createRepoRootContentsRequest(scenario, repoNumber, repoRootContentsRequestNumber)
@@ -56,7 +62,7 @@ public class GitHubApiWireMockFactory {
     private static MappingBuilder createReposRequest(Scenario scenario, int requestNumber) {
         MappingBuilder builder = get(urlPathEqualTo(getReposUrl(scenario)));
         addBasicAuthIfNeeded(scenario, builder);
-        if (scenario.eTag && scenario.userReposNotModified) {
+        if (scenario.eTag && scenario.repoListNotModified) {
             builder.withHeader("If-None-Match", equalTo(createRequestETag(requestNumber)));
         }
         return builder;
@@ -75,9 +81,9 @@ public class GitHubApiWireMockFactory {
         }
     }
 
-    private static ResponseDefinitionBuilder createReposResponse(String baseUrl, Scenario scenario, int requestNumber) {
+    private static ResponseDefinitionBuilder createRepoListResponse(String baseUrl, Scenario scenario, int requestNumber) {
         ResponseDefinitionBuilder builder = aResponse();
-        if (scenario.eTag && scenario.userReposNotModified) {
+        if (scenario.eTag && scenario.repoListNotModified) {
             builder.withStatus(304);
         } else {
             builder.withStatus(200)
@@ -104,7 +110,9 @@ public class GitHubApiWireMockFactory {
     private static ResponseDefinitionBuilder createRepoRootContentsResponse(Scenario scenario, int repoNumber, int requestNumber) {
         ResponseDefinitionBuilder builder = aResponse();
         if (isRepo3AndRepo3HasNoContent(scenario, repoNumber)) {
-            builder.withStatus(404);
+            builder.withStatus(404)
+                    .withHeader("Content-Type", "text/plain")
+                    .withBody("Not Found");
         } else {
             if (scenario.eTag && scenario.repo2NotModified && repoNumber == 2) {
                 builder.withStatus(304);
@@ -139,7 +147,7 @@ public class GitHubApiWireMockFactory {
     }
 
     private static boolean shouldResponseBeModified(Scenario scenario, int requestNumber) {
-        return !((requestNumber == 1 && scenario.userReposNotModified) || (requestNumber == 3 && scenario.repo2NotModified));
+        return !((requestNumber == 1 && scenario.repoListNotModified) || (requestNumber == 3 && scenario.repo2NotModified));
     }
 
     private static String getRepoContentsFileName(int repoNumber) {
@@ -191,75 +199,57 @@ public class GitHubApiWireMockFactory {
         ORGANIZATION
     }
 
-    @Getter
-    @ToString
-    public static final class Scenario {
+    @Value
+    @Builder
+    public static class Scenario {
 
         public static final List<Scenario> ALL_SCENARIOS = new ArrayList<>();
-        public static final Scenario PERSONAL_ACCESS_TOKEN = personalAccessTokenScenario("personal-access-token", false, false, false, false, false, false);
-        public static final Scenario RATE_LIMIT_RESPONSE_HEADERS = personalAccessTokenScenario("rate-limit-response-headers", false, true, false, false, false, false);
-        public static final Scenario ETAG_USER_REPOS_NOT_MODIFIED = personalAccessTokenScenario("etag-user-repos-not-modified", false, false, true, true, false, false);
-        public static final Scenario ETAG_REPO_2_NOT_MODIFIED = personalAccessTokenScenario("etag-repo-2-not-modified", false, false, true, false, true, false);
-        public static final Scenario REPO_2_NO_CONTENT = personalAccessTokenScenario("repo-2-no-content", false, false, false, false, false, true);
-        public static final Scenario INTERNAL_SERVER_ERROR = personalAccessTokenScenario("internal-server-error", true, false, false, false, false, false);
+        public static final Scenario PERSONAL_ACCESS_TOKEN = personalAccessTokenScenario("personal-access-token", scenarioBuilder -> {});
+        public static final Scenario RATE_LIMIT_RESPONSE_HEADERS = personalAccessTokenScenario("rate-limit-response-headers", scenarioBuilder -> scenarioBuilder.rateLimitResponseHeaders(true));
+        public static final Scenario ETAG_USER_REPOS_NOT_MODIFIED = personalAccessTokenScenario("etag-user-repos-not-modified", scenarioBuilder -> scenarioBuilder.eTag(true).repoListNotModified(true));
+        public static final Scenario ETAG_REPO_2_NOT_MODIFIED = personalAccessTokenScenario("etag-repo-2-not-modified", scenarioBuilder -> scenarioBuilder.eTag(true).repo2NotModified(true));
+        public static final Scenario REPO_3_NO_CONTENT = personalAccessTokenScenario("repo-3-no-content", scenarioBuilder -> scenarioBuilder.repo3NoContent(true));
+        public static final Scenario INTERNAL_SERVER_ERROR = personalAccessTokenScenario("internal-server-error", scenarioBuilder -> scenarioBuilder.internalServerError(true));
+        public static final Scenario REPO_LIST_NOT_FOUND = personalAccessTokenScenario("repo-list-not-found", scenarioBuilder -> scenarioBuilder.repoListNotFound(true));
         public static final Scenario USER = scenario(ReposResourceType.USER, "user", false);
         public static final Scenario USER_WITH_PERSONAL_ACCESS_TOKEN = scenario(ReposResourceType.USER, "user-with-personal-access-token", true);
         public static final Scenario ORGANIZATION = scenario(ReposResourceType.ORGANIZATION, "organization", false);
         public static final Scenario ORGANIZATION_WITH_PERSONAL_ACCESS_TOKEN = scenario(ReposResourceType.ORGANIZATION, "organization-with-personal-access-token", true);
 
-        private final ReposResourceType reposResourceType;
-        private final String name;
-        private final GitHubRepoFinderPersonalAccessTokenConfig personalAccessToken;
-        private final Boolean internalServerError;
-        private final Boolean rateLimitResponseHeaders;
-        private final Boolean eTag;
-        private final Boolean userReposNotModified;
-        private final Boolean repo2NotModified;
-        private final Boolean repo3NoContent;
+        ReposResourceType reposResourceType;
+        String name;
+        GitHubRepoFinderPersonalAccessTokenConfig personalAccessToken;
+        boolean internalServerError;
+        boolean rateLimitResponseHeaders;
+        boolean eTag;
+        boolean repoListNotModified;
+        boolean repo2NotModified;
+        boolean repo3NoContent;
+        boolean repoListNotFound;
 
-        private static Scenario personalAccessTokenScenario(String name, Boolean internalServerError, Boolean rateLimitResponseHeaders, Boolean eTag, Boolean userReposNotModified, Boolean repo2NotModified, Boolean repo3NoContent) {
-            Scenario scenario = new Scenario(
-                    ReposResourceType.AUTHENTICATED_USER,
-                    name,
-                    createPersonalAccessToken(name),
-                    internalServerError,
-                    rateLimitResponseHeaders,
-                    eTag,
-                    userReposNotModified,
-                    repo2NotModified,
-                    repo3NoContent);
+        private static Scenario personalAccessTokenScenario(String name, Consumer<ScenarioBuilder> builderConsumer) {
+            ScenarioBuilder builder = new ScenarioBuilder()
+                    .reposResourceType(ReposResourceType.AUTHENTICATED_USER)
+                    .name(name)
+                    .personalAccessToken(createPersonalAccessToken(name));
+            builderConsumer.accept(builder);
+            Scenario scenario = builder.build();
             ALL_SCENARIOS.add(scenario);
             return scenario;
         }
 
         private static Scenario scenario(ReposResourceType reposResourceType, String name, boolean hasPersonalAccessToken) {
-            Scenario scenario = new Scenario(
-                    reposResourceType,
-                    name,
-                    hasPersonalAccessToken ? createPersonalAccessToken(name) : null,
-                    false,
-                    false,
-                    false,
-                    false,
-                    false, false);
+            Scenario scenario = new ScenarioBuilder()
+                    .reposResourceType(reposResourceType)
+                    .name(name)
+                    .personalAccessToken(hasPersonalAccessToken ? createPersonalAccessToken(name) : null)
+                    .build();
             ALL_SCENARIOS.add(scenario);
             return scenario;
         }
 
         private static GitHubRepoFinderPersonalAccessTokenConfig createPersonalAccessToken(String name) {
             return new GitHubRepoFinderPersonalAccessTokenConfig(name + "-auth-username", name + "-personal-access-token");
-        }
-
-        private Scenario(ReposResourceType reposResourceType, String name, GitHubRepoFinderPersonalAccessTokenConfig personalAccessToken, Boolean internalServerError, Boolean rateLimitResponseHeaders, Boolean eTag, Boolean userReposNotModified, Boolean repo2NotModified, Boolean repo3NoContent) {
-            this.reposResourceType = reposResourceType;
-            this.name = name;
-            this.personalAccessToken = personalAccessToken;
-            this.internalServerError = internalServerError;
-            this.rateLimitResponseHeaders = rateLimitResponseHeaders;
-            this.eTag = eTag;
-            this.userReposNotModified = userReposNotModified;
-            this.repo2NotModified = repo2NotModified;
-            this.repo3NoContent = repo3NoContent;
         }
 
         public String getBasicAuthUsername() {

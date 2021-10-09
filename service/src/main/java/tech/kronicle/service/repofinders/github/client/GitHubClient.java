@@ -82,7 +82,11 @@ public class GitHubClient {
   }
 
   private List<ApiRepo> getRepos(GitHubRepoFinderPersonalAccessTokenConfig personalAccessToken, String uri) {
-    return getGitHubRepos(personalAccessToken, uri).stream()
+    List<GitHubRepo> repos = getGitHubRepos(personalAccessToken, uri);
+    if (isNull(repos)) {
+      return List.of();
+    }
+    return repos.stream()
             .map(addHasComponentMetadataFile(personalAccessToken))
             .collect(Collectors.toList());
   }
@@ -145,11 +149,11 @@ public class GitHubClient {
   }
 
   private void logNotModifiedResponse(GitHubRepoFinderPersonalAccessTokenConfig personalAccessToken, String uri) {
-    log.info("Not found response for {} for user {}", uri, getUsername(personalAccessToken));
+    log.info("Response for {} for user {} was same as last call", uri, getUsername(personalAccessToken));
   }
 
   private void logNotFoundResponse(GitHubRepoFinderPersonalAccessTokenConfig personalAccessToken, String uri) {
-    log.info("Response for {} for user {} was same as last call", uri, getUsername(personalAccessToken));
+    log.info("Not found response for {} for user {}", uri, getUsername(personalAccessToken));
   }
 
   private void logWasModifiedResponse(GitHubRepoFinderPersonalAccessTokenConfig personalAccessToken, String uri) {

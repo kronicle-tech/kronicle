@@ -7,7 +7,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
@@ -247,7 +246,7 @@ public class GitHubClientTest {
     @Test
     public void getReposShouldHandleARepoWithNoContent() {
         // Given
-        GitHubApiWireMockFactory.Scenario scenario = GitHubApiWireMockFactory.Scenario.REPO_2_NO_CONTENT;
+        GitHubApiWireMockFactory.Scenario scenario = GitHubApiWireMockFactory.Scenario.REPO_3_NO_CONTENT;
         GitHubRepoFinderConfig config = new GitHubRepoFinderConfig(null, null, null, TEST_DURATION);
         underTest = new GitHubClient(webClient, config, mockCache, baseUrl);
 
@@ -280,6 +279,25 @@ public class GitHubClientTest {
         assertThat(exception.getUri()).isEqualTo("http://localhost:36208/user/repos");
         assertThat(exception.getStatusCode()).isEqualTo(500);
         assertThat(exception.getResponseBody()).isEqualTo("Internal Server Error");
+    }
+
+    @Test
+    public void getReposShouldHandleANotFoundResponseForGetReposRequest() {
+        // Given
+        GitHubApiWireMockFactory.Scenario scenario = GitHubApiWireMockFactory.Scenario.REPO_LIST_NOT_FOUND;
+        GitHubRepoFinderConfig config = new GitHubRepoFinderConfig(null, null, null, TEST_DURATION);
+        underTest = new GitHubClient(webClient, config, mockCache, baseUrl);
+
+        // When
+        List<ApiRepo> returnValue = underTest.getRepos(scenario.getPersonalAccessToken());
+
+        // Then
+        assertThat(returnValue).isEmpty();
+        List<SimplifiedLogEvent> events = logCaptor.getSimplifiedEvents();
+        assertThat(events).containsExactly(
+                new SimplifiedLogEvent(Level.INFO, "Calling " + baseUrl + "/user/repos for user " + scenario.getBasicAuthUsername()),
+                new SimplifiedLogEvent(Level.INFO, "Request limits after call " + baseUrl + "/user/repos for user " + scenario.getBasicAuthUsername() + ": rate limit null, remaining null, reset null, used null, resource null"),
+                new SimplifiedLogEvent(Level.INFO, "Not found response for " + baseUrl + "/user/repos for user " + scenario.getBasicAuthUsername()));
     }
 
     public static Stream<GitHubApiWireMockFactory.Scenario> provideReposResponseTypeScenarios() {
