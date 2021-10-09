@@ -60,7 +60,7 @@ jobs:
         with:
           name: dependency-check-report
           path: '**/build/reports/dependency-check-report.html'
-      - name: Archive test reports 🗄️
+      - name: Archive JUnit test reports 🗄️
         uses: actions/upload-artifact@v2
         if: success() || failure()
         with:
