@@ -197,8 +197,6 @@ exports[`Index when Get Area service endpoint returns an area when the area has 
                       <p>
                         Test Component Description 1
                       </p>
-                      
-
                     </div>
                   </td>
                 </tr>
@@ -268,8 +266,6 @@ exports[`Index when Get Area service endpoint returns an area when the area has 
                       <p>
                         Test Component Description 2
                       </p>
-                      
-
                     </div>
                   </td>
                 </tr>
@@ -339,8 +335,6 @@ exports[`Index when Get Area service endpoint returns an area when the area has 
                       <p>
                         Test Component Description 3
                       </p>
-                      
-
                     </div>
                   </td>
                 </tr>

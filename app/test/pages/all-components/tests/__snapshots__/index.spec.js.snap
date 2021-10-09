@@ -269,8 +269,6 @@ exports[`Index when Get Components service endpoint returns an array of multiple
                       <p>
                         Test Test Message 1 1
                       </p>
-                      
-
                     </div>
                   </td>
                 </tr>
@@ -353,8 +351,6 @@ exports[`Index when Get Components service endpoint returns an array of multiple
                       <p>
                         Test Test Message 3 1
                       </p>
-                      
-
                     </div>
                   </td>
                 </tr>
@@ -437,8 +433,6 @@ exports[`Index when Get Components service endpoint returns an array of multiple
                       <p>
                         Test Test Message 1 2
                       </p>
-                      
-
                     </div>
                   </td>
                 </tr>
@@ -521,8 +515,6 @@ exports[`Index when Get Components service endpoint returns an array of multiple
                       <p>
                         Test Test Message 3 2
                       </p>
-                      
-
                     </div>
                   </td>
                 </tr>

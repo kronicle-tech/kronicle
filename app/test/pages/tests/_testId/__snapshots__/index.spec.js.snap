@@ -29,8 +29,6 @@ exports[`Index when Get Test service endpoint returns a test renders the page 1`
           <p>
             Test Test Description 1
           </p>
-          
-
         </div>
       </div>
       <!---->
@@ -57,8 +55,6 @@ exports[`Index when Get Test service endpoint returns a test renders the page 1`
           <p>
             Test Test Notes 1
           </p>
-          
-
         </div>
       </div>
       <!---->
@@ -308,8 +304,6 @@ exports[`Index when Get Test service endpoint returns a test when there are test
           <p>
             Test Test Description 1
           </p>
-          
-
         </div>
       </div>
       <!---->
@@ -336,8 +330,6 @@ exports[`Index when Get Test service endpoint returns a test when there are test
           <p>
             Test Test Notes 1
           </p>
-          
-
         </div>
       </div>
       <!---->
@@ -522,8 +514,6 @@ exports[`Index when Get Test service endpoint returns a test when there are test
                         <p>
                           Test Test Message 2a
                         </p>
-                        
-
                       </div>
                     </td>
                   </tr>
@@ -581,8 +571,6 @@ exports[`Index when Get Test service endpoint returns a test when there are test
                         <p>
                           Test Test Message 1a
                         </p>
-                        
-
                       </div>
                     </td>
                   </tr>

@@ -309,8 +309,6 @@ exports[`Index when Get Component service endpoint returns a component when the 
                       <p>
                         Test OpenAPI Spec Description 1 1
                       </p>
-                      
-
                     </div>
                   </td>
                 </tr>
@@ -379,8 +377,6 @@ exports[`Index when Get Component service endpoint returns a component when the 
                       <p>
                         Test OpenAPI Spec Description 1 2
                       </p>
-                      
-
                     </div>
                   </td>
                 </tr>

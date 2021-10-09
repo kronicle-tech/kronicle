@@ -133,8 +133,6 @@ exports[`Index when Get Team service endpoint returns an team renders the page 1
             <p>
               Test Link Description 1 1
             </p>
-            
-
           </div>
         </li>
         <li>
@@ -153,8 +151,6 @@ exports[`Index when Get Team service endpoint returns an team renders the page 1
             <p>
               Test Link Description 1 2
             </p>
-            
-
           </div>
         </li>
       </ul>
@@ -183,8 +179,6 @@ exports[`Index when Get Team service endpoint returns an team renders the page 1
         <p>
           Test Area Description 1
         </p>
-        
-
       </div>
     </div>
     <!---->
@@ -242,8 +236,6 @@ exports[`Index when Get Team service endpoint returns an team renders the page 1
         <p>
           Test Area Notes 1
         </p>
-        
-
       </div>
     </div>
     <!---->

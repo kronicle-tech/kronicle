@@ -20,8 +20,6 @@ exports[`Index when Kronicle contains information renders the page showing the i
           Markdown
         </em>
       </p>
-      
-
     </div>
   </div>
    
@@ -191,8 +189,6 @@ exports[`Index when Kronicle contains information renders the page showing the i
             <p>
               Test Scanner Description 1
             </p>
-            
-
           </div>
         </div>
         <div
@@ -214,8 +210,6 @@ exports[`Index when Kronicle contains information renders the page showing the i
             <p>
               Test Scanner Description 2
             </p>
-            
-
           </div>
         </div>
         <div
@@ -237,8 +231,6 @@ exports[`Index when Kronicle contains information renders the page showing the i
             <p>
               Test Scanner Description 3
             </p>
-            
-
           </div>
         </div>
       </div>
@@ -288,8 +280,6 @@ exports[`Index when Kronicle contains information renders the page showing the i
             <p>
               Test Test Description 1
             </p>
-            
-
           </div>
         </a>
         <a
@@ -313,8 +303,6 @@ exports[`Index when Kronicle contains information renders the page showing the i
             <p>
               Test Test Description 2
             </p>
-            
-
           </div>
         </a>
         <a
@@ -338,8 +326,6 @@ exports[`Index when Kronicle contains information renders the page showing the i
             <p>
               Test Test Description 3
             </p>
-            
-
           </div>
         </a>
       </div>
@@ -721,8 +707,6 @@ exports[`Index when Kronicle contains no information renders the page with no in
           Markdown
         </em>
       </p>
-      
-
     </div>
   </div>
    

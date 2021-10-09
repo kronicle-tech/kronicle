@@ -818,8 +818,6 @@ exports[`Index when Get Component service endpoint returns a component when the 
                       <p>
                         Test Tech Debt Description 1 2
                       </p>
-                      
-
                     </div>
                   </td>
                    
@@ -832,8 +830,6 @@ exports[`Index when Get Component service endpoint returns a component when the 
                       <p>
                         Test Tech Debt Notes 1 2
                       </p>
-                      
-
                     </div>
                   </td>
                    
@@ -857,8 +853,6 @@ exports[`Index when Get Component service endpoint returns a component when the 
                           <p>
                             Test Tech Debt Link Description 1 2 1
                           </p>
-                          
-
                         </div>
                       </li>
                       <li>
@@ -877,8 +871,6 @@ exports[`Index when Get Component service endpoint returns a component when the 
                           <p>
                             Test Tech Debt Link Description 1 2 2
                           </p>
-                          
-
                         </div>
                       </li>
                     </ul>
@@ -947,8 +939,6 @@ exports[`Index when Get Component service endpoint returns a component when the 
                       <p>
                         Test Tech Debt Description 1 1
                       </p>
-                      
-
                     </div>
                   </td>
                    
@@ -961,8 +951,6 @@ exports[`Index when Get Component service endpoint returns a component when the 
                       <p>
                         Test Tech Debt Notes 1 1
                       </p>
-                      
-
                     </div>
                   </td>
                    
@@ -986,8 +974,6 @@ exports[`Index when Get Component service endpoint returns a component when the 
                           <p>
                             Test Tech Debt Link Description 1 1 1
                           </p>
-                          
-
                         </div>
                       </li>
                       <li>
@@ -1006,8 +992,6 @@ exports[`Index when Get Component service endpoint returns a component when the 
                           <p>
                             Test Tech Debt Link Description 1 1 2
                           </p>
-                          
-
                         </div>
                       </li>
                     </ul>

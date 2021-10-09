@@ -16,26 +16,31 @@ div >>> p:last-child {
 
 <script lang="ts">
 import Vue from 'vue'
-import remark from 'remark'
+import remarkParse from 'remark-parse'
 import remarkGfm from 'remark-gfm'
+import remarkRehype from 'remark-rehype'
+import remarkSlug from 'remark-slug'
+import rehypeStringify from 'rehype-stringify'
 import remarkToc from 'remark-toc'
-import RemarkHtml from 'remark-html'
 import rehype from 'rehype'
-import RehypeSanitize from 'rehype-sanitize'
+import rehypeRaw from 'rehype-raw'
+import rehypeSanitize from 'rehype-sanitize'
 import deepmerge from 'deepmerge'
+import unified from 'unified'
 import vfile, { VFile } from 'vfile'
 
 const remarkHighlightJs = require('remark-highlight.js')
-const remarkSlug = require('remark-slug')
 const vFileReporter = require('vfile-reporter')
 const rehypeSanitizeGitHubSchema = require('hast-util-sanitize/lib/github.json')
 
 const rehypeSanitizeSchema = deepmerge(rehypeSanitizeGitHubSchema, {
-  attributes: { code: ['className'], span: ['className'] },
+  attributes: { '*': ['className'] },
 })
 
 function generateMarkdownHtml(markdown: String, toc: Boolean): VFile {
-  let processor = remark().use(remarkGfm)
+  let processor = unified()
+    .use(remarkParse)
+    .use(remarkGfm)
   if (toc) {
     processor = processor.use(remarkToc, {
       maxDepth: 3,
@@ -45,14 +50,16 @@ function generateMarkdownHtml(markdown: String, toc: Boolean): VFile {
   }
   return processor
     .use(remarkHighlightJs)
-    .use(RemarkHtml, { sanitize: false })
+    .use(remarkRehype, {allowDangerousHtml: true})
+    .use(rehypeRaw)
+    .use(rehypeStringify)
     .processSync(markdown)
 }
 
 function sanitizeHtml(html: VFile): VFile {
   return rehype()
     .data('settings', { fragment: true })
-    .use(RehypeSanitize, rehypeSanitizeSchema)
+    .use(rehypeSanitize, rehypeSanitizeSchema)
     .processSync(html)
 }
 

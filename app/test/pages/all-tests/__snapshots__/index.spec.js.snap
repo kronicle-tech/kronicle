@@ -96,8 +96,6 @@ exports[`Index when Get Tests service endpoint returns an array of multiple test
             <p>
               Test Description 1
             </p>
-            
-
           </div>
         </td>
          
@@ -147,8 +145,6 @@ exports[`Index when Get Tests service endpoint returns an array of multiple test
             <p>
               Test Description 2
             </p>
-            
-
           </div>
         </td>
          
@@ -367,8 +363,6 @@ exports[`Index when there are tests with different amounts of outcome counts ren
             <p>
               Test Description 1
             </p>
-            
-
           </div>
         </td>
          
@@ -418,8 +412,6 @@ exports[`Index when there are tests with different amounts of outcome counts ren
             <p>
               Test Description 2
             </p>
-            
-
           </div>
         </td>
          
@@ -469,8 +461,6 @@ exports[`Index when there are tests with different amounts of outcome counts ren
             <p>
               Test Description 3
             </p>
-            
-
           </div>
         </td>
          
@@ -605,8 +595,6 @@ exports[`Index when there is a test and a component with no test results renders
             <p>
               Test Description 1
             </p>
-            
-
           </div>
         </td>
          

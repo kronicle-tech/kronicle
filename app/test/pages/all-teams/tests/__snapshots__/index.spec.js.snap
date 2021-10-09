@@ -241,8 +241,6 @@ exports[`Index when Get Teams service endpoint returns an array of multiple team
                                   <p>
                                     Test Message 1a
                                   </p>
-                                  
-
                                 </div>
                               </td>
                             </tr>
@@ -282,8 +280,6 @@ exports[`Index when Get Teams service endpoint returns an array of multiple team
                                   <p>
                                     Test Message 1b
                                   </p>
-                                  
-
                                 </div>
                               </td>
                             </tr>
@@ -365,8 +361,6 @@ exports[`Index when Get Teams service endpoint returns an array of multiple team
                                   <p>
                                     Test Message 2a
                                   </p>
-                                  
-
                                 </div>
                               </td>
                             </tr>
@@ -406,8 +400,6 @@ exports[`Index when Get Teams service endpoint returns an array of multiple team
                                   <p>
                                     Test Message 2b
                                   </p>
-                                  
-
                                 </div>
                               </td>
                             </tr>
@@ -568,8 +560,6 @@ exports[`Index when Get Teams service endpoint returns an array of multiple team
                                   <p>
                                     Test Message 3a
                                   </p>
-                                  
-
                                 </div>
                               </td>
                             </tr>
@@ -609,8 +599,6 @@ exports[`Index when Get Teams service endpoint returns an array of multiple team
                                   <p>
                                     Test Message 3b
                                   </p>
-                                  
-
                                 </div>
                               </td>
                             </tr>
@@ -692,8 +680,6 @@ exports[`Index when Get Teams service endpoint returns an array of multiple team
                                   <p>
                                     Test Message 4a
                                   </p>
-                                  
-
                                 </div>
                               </td>
                             </tr>
@@ -733,8 +719,6 @@ exports[`Index when Get Teams service endpoint returns an array of multiple team
                                   <p>
                                     Test Message 4b
                                   </p>
-                                  
-
                                 </div>
                               </td>
                             </tr>
@@ -981,8 +965,6 @@ exports[`Index when Get Teams service endpoint returns failed test results for a
                                   <p>
                                     Test Message 1a
                                   </p>
-                                  
-
                                 </div>
                               </td>
                             </tr>
@@ -1130,8 +1112,6 @@ exports[`Index when Get Teams service endpoint returns failed test results for a
                                   <p>
                                     Test Message 1b
                                   </p>
-                                  
-
                                 </div>
                               </td>
                             </tr>
@@ -1279,8 +1259,6 @@ exports[`Index when Get Teams service endpoint returns failed test results for a
                                   <p>
                                     Test Message 1c
                                   </p>
-                                  
-
                                 </div>
                               </td>
                             </tr>
@@ -1428,8 +1406,6 @@ exports[`Index when Get Teams service endpoint returns failed test results for a
                                   <p>
                                     Test Message 1d
                                   </p>
-                                  
-
                                 </div>
                               </td>
                             </tr>
@@ -1740,8 +1716,6 @@ exports[`Index when there are test results for each outcome renders only failed 
                                   <p>
                                     Test Message 1b
                                   </p>
-                                  
-
                                 </div>
                               </td>
                             </tr>

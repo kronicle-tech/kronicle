@@ -826,8 +826,6 @@ exports[`Index when Get Component service endpoint returns a component when the 
                       <p>
                         Test Test Message 1 1
                       </p>
-                      
-
                     </div>
                   </td>
                 </tr>
@@ -910,8 +908,6 @@ exports[`Index when Get Component service endpoint returns a component when the 
                       <p>
                         Test Test Message 1 2
                       </p>
-                      
-
                     </div>
                   </td>
                 </tr>

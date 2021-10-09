@@ -313,8 +313,6 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
                       <p>
                         Test Component Description 1
                       </p>
-                      
-
                     </div>
                   </td>
                 </tr>
@@ -384,8 +382,6 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
                       <p>
                         Test Component Description 2
                       </p>
-                      
-
                     </div>
                   </td>
                 </tr>
@@ -455,8 +451,6 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
                       <p>
                         Test Component Description 3
                       </p>
-                      
-
                     </div>
                   </td>
                 </tr>

@@ -238,8 +238,6 @@ exports[`Index when Get Components service endpoint returns an array of multiple
                       <p>
                         Test Component Description 1
                       </p>
-                      
-
                     </div>
                   </td>
                 </tr>
@@ -309,8 +307,6 @@ exports[`Index when Get Components service endpoint returns an array of multiple
                       <p>
                         Test Component Description 2
                       </p>
-                      
-
                     </div>
                   </td>
                 </tr>
@@ -380,8 +376,6 @@ exports[`Index when Get Components service endpoint returns an array of multiple
                       <p>
                         Test Component Description 3
                       </p>
-                      
-
                     </div>
                   </td>
                 </tr>

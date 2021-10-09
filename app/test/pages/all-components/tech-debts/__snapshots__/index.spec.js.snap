@@ -261,8 +261,6 @@ exports[`Index when Get Components service endpoint returns an array of multiple
                       <p>
                         Test Tech Debt Description 1 2
                       </p>
-                      
-
                     </div>
                   </td>
                    
@@ -275,8 +273,6 @@ exports[`Index when Get Components service endpoint returns an array of multiple
                       <p>
                         Test Tech Debt Notes 1 2
                       </p>
-                      
-
                     </div>
                   </td>
                    
@@ -300,8 +296,6 @@ exports[`Index when Get Components service endpoint returns an array of multiple
                           <p>
                             Test Tech Debt Link Description 1 2 1
                           </p>
-                          
-
                         </div>
                       </li>
                       <li>
@@ -320,8 +314,6 @@ exports[`Index when Get Components service endpoint returns an array of multiple
                           <p>
                             Test Tech Debt Link Description 1 2 2
                           </p>
-                          
-
                         </div>
                       </li>
                     </ul>
@@ -390,8 +382,6 @@ exports[`Index when Get Components service endpoint returns an array of multiple
                       <p>
                         Test Tech Debt Description 3 2
                       </p>
-                      
-
                     </div>
                   </td>
                    
@@ -404,8 +394,6 @@ exports[`Index when Get Components service endpoint returns an array of multiple
                       <p>
                         Test Tech Debt Notes 3 2
                       </p>
-                      
-
                     </div>
                   </td>
                    
@@ -429,8 +417,6 @@ exports[`Index when Get Components service endpoint returns an array of multiple
                           <p>
                             Test Tech Debt Link Description 3 2 1
                           </p>
-                          
-
                         </div>
                       </li>
                       <li>
@@ -449,8 +435,6 @@ exports[`Index when Get Components service endpoint returns an array of multiple
                           <p>
                             Test Tech Debt Link Description 3 2 2
                           </p>
-                          
-
                         </div>
                       </li>
                     </ul>
@@ -519,8 +503,6 @@ exports[`Index when Get Components service endpoint returns an array of multiple
                       <p>
                         Test Tech Debt Description 1 1
                       </p>
-                      
-
                     </div>
                   </td>
                    
@@ -533,8 +515,6 @@ exports[`Index when Get Components service endpoint returns an array of multiple
                       <p>
                         Test Tech Debt Notes 1 1
                       </p>
-                      
-
                     </div>
                   </td>
                    
@@ -558,8 +538,6 @@ exports[`Index when Get Components service endpoint returns an array of multiple
                           <p>
                             Test Tech Debt Link Description 1 1 1
                           </p>
-                          
-
                         </div>
                       </li>
                       <li>
@@ -578,8 +556,6 @@ exports[`Index when Get Components service endpoint returns an array of multiple
                           <p>
                             Test Tech Debt Link Description 1 1 2
                           </p>
-                          
-
                         </div>
                       </li>
                     </ul>
@@ -648,8 +624,6 @@ exports[`Index when Get Components service endpoint returns an array of multiple
                       <p>
                         Test Tech Debt Description 3 1
                       </p>
-                      
-
                     </div>
                   </td>
                    
@@ -662,8 +636,6 @@ exports[`Index when Get Components service endpoint returns an array of multiple
                       <p>
                         Test Tech Debt Notes 3 1
                       </p>
-                      
-
                     </div>
                   </td>
                    
@@ -687,8 +659,6 @@ exports[`Index when Get Components service endpoint returns an array of multiple
                           <p>
                             Test Tech Debt Link Description 3 1 1
                           </p>
-                          
-
                         </div>
                       </li>
                       <li>
@@ -707,8 +677,6 @@ exports[`Index when Get Components service endpoint returns an array of multiple
                           <p>
                             Test Tech Debt Link Description 3 1 2
                           </p>
-                          
-
                         </div>
                       </li>
                     </ul>

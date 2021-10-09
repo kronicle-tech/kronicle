@@ -73,6 +73,19 @@ console.log()
       })
     })
 
+    describe('when markdown prop contains a CSS class', () => {
+      beforeEach(() => {
+        propsData.markdown = `<h1 class="example">Main Heading</h1>`
+      })
+
+      test('renders the CSS class', () => {
+        createWrapper()
+        expect(wrapper.html()).toEqual(`<div>
+  <h1 class="example">Main Heading</h1>
+</div>`)
+      })
+    })
+
     describe('when markdown prop contains unsafe HTML', () => {
       beforeEach(() => {
         propsData.markdown = `<img src="x" onerror="alert('charlie')">`
@@ -81,8 +94,7 @@ console.log()
       test('sanitizes unsafe HTML', () => {
         createWrapper()
         expect(wrapper.html()).toEqual(`<div>
-  <img src="x">
-</div>`)
+  <img src="x"></div>`)
       })
     })
   })
