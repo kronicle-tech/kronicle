@@ -131,7 +131,7 @@ public class GitHubApiWireMockFactory {
 
     private static void addBasicAuthIfNeeded(Scenario scenario, MappingBuilder builder) {
         if (nonNull(scenario.personalAccessToken)) {
-            builder.withBasicAuth(scenario.personalAccessToken.getUsername(), scenario.personalAccessToken.getPersonalAccessToken());
+            builder.withBasicAuth(scenario.personalAccessToken.getUsername(), scenario.personalAccessToken.getValue());
         }
     }
 
