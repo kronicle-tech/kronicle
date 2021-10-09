@@ -3,15 +3,19 @@ package tech.kronicle.service.repofinders.github.client;
 import com.github.tomakehurst.wiremock.WireMockServer;
 import com.github.tomakehurst.wiremock.client.MappingBuilder;
 import com.github.tomakehurst.wiremock.client.ResponseDefinitionBuilder;
-import lombok.Getter;
+import lombok.Builder;
+import lombok.Value;
+import tech.kronicle.service.repofinders.github.config.GitHubRepoFinderPersonalAccessTokenConfig;
 import tech.kronicle.service.repofinders.github.constants.GitHubApiHeaders;
 import tech.kronicle.service.testutils.TestFileHelper;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.function.Consumer;
 import java.util.stream.IntStream;
-import java.util.stream.Stream;
 
 import static com.github.tomakehurst.wiremock.client.WireMock.*;
+import static java.util.Objects.nonNull;
 
 public class GitHubApiWireMockFactory {
 
@@ -20,23 +24,29 @@ public class GitHubApiWireMockFactory {
     public static WireMockServer create() {
         return create(wireMockServer -> {
             String baseUrl = "http://localhost:" + PORT;
-            Stream.of(Scenario.values()).forEach(scenario -> stubUserSpecificResponses(wireMockServer, baseUrl, scenario));
+            Scenario.ALL_SCENARIOS.forEach(scenario -> stubScenarioSpecificResponses(wireMockServer, baseUrl, scenario));
         });
     }
 
-    private static void stubUserSpecificResponses(WireMockServer wireMockServer, String baseUrl, Scenario scenario) {
+    private static void stubScenarioSpecificResponses(WireMockServer wireMockServer, String baseUrl, Scenario scenario) {
         RequestNumber requestNumber = new RequestNumber();
-        int userReposRequestNumber = requestNumber.getNext();
-        MappingBuilder request = createUserReposRequest(scenario, userReposRequestNumber);
-        if (scenario.allResourcesNotFound) {
+        int reposRequestNumber = requestNumber.getNext();
+        MappingBuilder request = createReposRequest(scenario, reposRequestNumber);
+        if (scenario.internalServerError) {
+            wireMockServer.stubFor(request
+                    .willReturn(aResponse()
+                            .withStatus(500)
+                            .withHeader("Content-Type", "text/plain")
+                            .withBody("Internal Server Error")));
+        } else if (scenario.repoListNotFound) {
             wireMockServer.stubFor(request
                     .willReturn(aResponse()
                             .withStatus(404)
                             .withHeader("Content-Type", "text/plain")
-                            .withBody("User does not exist")));
+                            .withBody("Not Found")));
         } else {
             wireMockServer.stubFor(request
-                    .willReturn(createUserReposResponse(baseUrl, scenario, userReposRequestNumber)));
+                    .willReturn(createRepoListResponse(baseUrl, scenario, reposRequestNumber)));
             IntStream.range(1, 5).forEach(repoNumber -> {
                 int repoRootContentsRequestNumber = requestNumber.getNext();
                 wireMockServer.stubFor(createRepoRootContentsRequest(scenario, repoNumber, repoRootContentsRequestNumber)
@@ -45,23 +55,40 @@ public class GitHubApiWireMockFactory {
         }
     }
 
-    private static MappingBuilder createUserReposRequest(Scenario scenario, int requestNumber) {
-        MappingBuilder builder = get(urlPathEqualTo("/user/repos"))
-                .withBasicAuth(scenario.username, "test-personal-access-token");
-        if (scenario.eTag && scenario.userReposNotModified) {
+    private static boolean isRepo3AndRepo3HasNoContent(Scenario scenario, int repoNumber) {
+        return repoNumber == 3 && scenario.repo3NoContent;
+    }
+
+    private static MappingBuilder createReposRequest(Scenario scenario, int requestNumber) {
+        MappingBuilder builder = get(urlPathEqualTo(getReposUrl(scenario)));
+        addBasicAuthIfNeeded(scenario, builder);
+        if (scenario.eTag && scenario.repoListNotModified) {
             builder.withHeader("If-None-Match", equalTo(createRequestETag(requestNumber)));
         }
         return builder;
     }
 
-    private static ResponseDefinitionBuilder createUserReposResponse(String baseUrl, Scenario scenario, int requestNumber) {
+    private static String getReposUrl(Scenario scenario) {
+        switch (scenario.reposResourceType) {
+            case AUTHENTICATED_USER:
+                return "/user/repos";
+            case USER:
+                return "/users/" + scenario.name + "/repos";
+            case ORGANIZATION:
+                return "/orgs/" + scenario.name + "/repos";
+            default:
+                throw new RuntimeException("Unexpected repos resource type " + scenario.reposResourceType);
+        }
+    }
+
+    private static ResponseDefinitionBuilder createRepoListResponse(String baseUrl, Scenario scenario, int requestNumber) {
         ResponseDefinitionBuilder builder = aResponse();
-        if (scenario.eTag && scenario.userReposNotModified) {
+        if (scenario.eTag && scenario.repoListNotModified) {
             builder.withStatus(304);
         } else {
             builder.withStatus(200)
                     .withHeader("Content-Type", "application/json")
-                    .withBody(replaceVars(readTestFile("github-api-responses/user-repos.json"), baseUrl, scenario.username));
+                    .withBody(replaceVars(readTestFile("github-api-responses/user-repos.json"), baseUrl, scenario.name));
         }
         builder.withHeader("ETag", createResponseETag(scenario, requestNumber));
         if (scenario.rateLimitResponseHeaders) {
@@ -72,8 +99,8 @@ public class GitHubApiWireMockFactory {
 
     private static MappingBuilder createRepoRootContentsRequest(Scenario scenario, int repoNumber, int requestNumber) {
         MappingBuilder builder = get(urlPathEqualTo(
-                "/repos/" + scenario.username + "/test-repo-" + repoNumber + "/contents/"))
-                .withBasicAuth(scenario.username, "test-personal-access-token");
+                "/repos/" + scenario.name + "/test-repo-" + repoNumber + "/contents/"));
+        addBasicAuthIfNeeded(scenario, builder);
         if (scenario.eTag && scenario.repo2NotModified && repoNumber == 2) {
             builder.withHeader("If-None-Match", equalTo(createRequestETag(requestNumber)));
         }
@@ -82,18 +109,30 @@ public class GitHubApiWireMockFactory {
 
     private static ResponseDefinitionBuilder createRepoRootContentsResponse(Scenario scenario, int repoNumber, int requestNumber) {
         ResponseDefinitionBuilder builder = aResponse();
-        if (scenario.eTag && scenario.repo2NotModified && repoNumber == 2) {
-            builder.withStatus(304);
+        if (isRepo3AndRepo3HasNoContent(scenario, repoNumber)) {
+            builder.withStatus(404)
+                    .withHeader("Content-Type", "text/plain")
+                    .withBody("Not Found");
         } else {
-            builder.withStatus(200)
-                    .withHeader("Content-Type", "application/json")
-                    .withBody(readTestFile(getRepoContentsFileName(repoNumber)));
-        }
-        builder.withHeader("ETag", createResponseETag(scenario, requestNumber));
-        if (scenario.rateLimitResponseHeaders) {
-            createRateLimitResponseHeaders(builder, requestNumber);
+            if (scenario.eTag && scenario.repo2NotModified && repoNumber == 2) {
+                builder.withStatus(304);
+            } else {
+                builder.withStatus(200)
+                        .withHeader("Content-Type", "application/json")
+                        .withBody(readTestFile(getRepoContentsFileName(repoNumber)));
+            }
+            builder.withHeader("ETag", createResponseETag(scenario, requestNumber));
+            if (scenario.rateLimitResponseHeaders) {
+                createRateLimitResponseHeaders(builder, requestNumber);
+            }
         }
         return builder;
+    }
+
+    private static void addBasicAuthIfNeeded(Scenario scenario, MappingBuilder builder) {
+        if (nonNull(scenario.personalAccessToken)) {
+            builder.withBasicAuth(scenario.personalAccessToken.getUsername(), scenario.personalAccessToken.getPersonalAccessToken());
+        }
     }
 
     private static String createRequestETag(int requestNumber) {
@@ -108,7 +147,7 @@ public class GitHubApiWireMockFactory {
     }
 
     private static boolean shouldResponseBeModified(Scenario scenario, int requestNumber) {
-        return !((requestNumber == 1 && scenario.userReposNotModified) || (requestNumber == 3 && scenario.repo2NotModified));
+        return !((requestNumber == 1 && scenario.repoListNotModified) || (requestNumber == 3 && scenario.repo2NotModified));
     }
 
     private static String getRepoContentsFileName(int repoNumber) {
@@ -154,32 +193,70 @@ public class GitHubApiWireMockFactory {
         return wireMockServer;
     }
 
-    @Getter
-    public enum Scenario {
-
-        SIMPLE("simple", false, false, false, false, false), 
-        RATE_LIMIT_RESPONSE_HEADERS("rate-limit-response-headers", false, true, false, false, false),
-        ETAG_USER_REPOS_NOT_MODIFIED("etag-user-repos-not-modified", false, false, true, true, false),
-        ETAG_REPO_2_NOT_MODIFIED("etag-repo-2-not-modified", false, false, true, false, true),
-        NOT_FOUND("not-found", true, false, false, false, false);
-
-        Scenario(String username, Boolean allResourcesNotFound, Boolean rateLimitResponseHeaders, Boolean eTag, Boolean userReposNotModified, Boolean repo2NotModified) {
-            this.username = username;
-            this.allResourcesNotFound = allResourcesNotFound;
-            this.rateLimitResponseHeaders = rateLimitResponseHeaders;
-            this.eTag = eTag;
-            this.userReposNotModified = userReposNotModified;
-            this.repo2NotModified = repo2NotModified;
-        }
-
-        private final String username;
-        private final Boolean allResourcesNotFound;
-        private final Boolean rateLimitResponseHeaders;
-        private final Boolean eTag;
-        private final Boolean userReposNotModified;
-        private final Boolean repo2NotModified;
+    public enum ReposResourceType {
+        AUTHENTICATED_USER,
+        USER,
+        ORGANIZATION
     }
 
+    @Value
+    @Builder
+    public static class Scenario {
+
+        public static final List<Scenario> ALL_SCENARIOS = new ArrayList<>();
+        public static final Scenario PERSONAL_ACCESS_TOKEN = personalAccessTokenScenario("personal-access-token", scenarioBuilder -> {});
+        public static final Scenario RATE_LIMIT_RESPONSE_HEADERS = personalAccessTokenScenario("rate-limit-response-headers", scenarioBuilder -> scenarioBuilder.rateLimitResponseHeaders(true));
+        public static final Scenario ETAG_USER_REPOS_NOT_MODIFIED = personalAccessTokenScenario("etag-user-repos-not-modified", scenarioBuilder -> scenarioBuilder.eTag(true).repoListNotModified(true));
+        public static final Scenario ETAG_REPO_2_NOT_MODIFIED = personalAccessTokenScenario("etag-repo-2-not-modified", scenarioBuilder -> scenarioBuilder.eTag(true).repo2NotModified(true));
+        public static final Scenario REPO_3_NO_CONTENT = personalAccessTokenScenario("repo-3-no-content", scenarioBuilder -> scenarioBuilder.repo3NoContent(true));
+        public static final Scenario INTERNAL_SERVER_ERROR = personalAccessTokenScenario("internal-server-error", scenarioBuilder -> scenarioBuilder.internalServerError(true));
+        public static final Scenario REPO_LIST_NOT_FOUND = personalAccessTokenScenario("repo-list-not-found", scenarioBuilder -> scenarioBuilder.repoListNotFound(true));
+        public static final Scenario USER = scenario(ReposResourceType.USER, "user", false);
+        public static final Scenario USER_WITH_PERSONAL_ACCESS_TOKEN = scenario(ReposResourceType.USER, "user-with-personal-access-token", true);
+        public static final Scenario ORGANIZATION = scenario(ReposResourceType.ORGANIZATION, "organization", false);
+        public static final Scenario ORGANIZATION_WITH_PERSONAL_ACCESS_TOKEN = scenario(ReposResourceType.ORGANIZATION, "organization-with-personal-access-token", true);
+
+        ReposResourceType reposResourceType;
+        String name;
+        GitHubRepoFinderPersonalAccessTokenConfig personalAccessToken;
+        boolean internalServerError;
+        boolean rateLimitResponseHeaders;
+        boolean eTag;
+        boolean repoListNotModified;
+        boolean repo2NotModified;
+        boolean repo3NoContent;
+        boolean repoListNotFound;
+
+        private static Scenario personalAccessTokenScenario(String name, Consumer<ScenarioBuilder> builderConsumer) {
+            ScenarioBuilder builder = new ScenarioBuilder()
+                    .reposResourceType(ReposResourceType.AUTHENTICATED_USER)
+                    .name(name)
+                    .personalAccessToken(createPersonalAccessToken(name));
+            builderConsumer.accept(builder);
+            Scenario scenario = builder.build();
+            ALL_SCENARIOS.add(scenario);
+            return scenario;
+        }
+
+        private static Scenario scenario(ReposResourceType reposResourceType, String name, boolean hasPersonalAccessToken) {
+            Scenario scenario = new ScenarioBuilder()
+                    .reposResourceType(reposResourceType)
+                    .name(name)
+                    .personalAccessToken(hasPersonalAccessToken ? createPersonalAccessToken(name) : null)
+                    .build();
+            ALL_SCENARIOS.add(scenario);
+            return scenario;
+        }
+
+        private static GitHubRepoFinderPersonalAccessTokenConfig createPersonalAccessToken(String name) {
+            return new GitHubRepoFinderPersonalAccessTokenConfig(name + "-auth-username", name + "-personal-access-token");
+        }
+
+        public String getBasicAuthUsername() {
+            return nonNull(personalAccessToken) ? personalAccessToken.getUsername() : "anonymous";
+        }
+    }
+    
     private static class RequestNumber {
 
         private int number;

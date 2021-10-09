@@ -3,7 +3,8 @@ package tech.kronicle.service.repofinders.github.models.api;
 import lombok.Value;
 
 @Value
-public class ContentEntry {
+public class GitHubRepo {
 
-  String name;
+  String clone_url;
+  String contents_url;
 }

@@ -10,17 +10,20 @@ import org.springframework.web.reactive.function.client.WebClient;
 import tech.kronicle.service.constants.KronicleMetadataFilePaths;
 import tech.kronicle.service.models.ApiRepo;
 import tech.kronicle.service.repofinders.github.config.GitHubRepoFinderConfig;
+import tech.kronicle.service.repofinders.github.config.GitHubRepoFinderOrganizationConfig;
+import tech.kronicle.service.repofinders.github.config.GitHubRepoFinderPersonalAccessTokenConfig;
 import tech.kronicle.service.repofinders.github.config.GitHubRepoFinderUserConfig;
 import tech.kronicle.service.repofinders.github.constants.GitHubApiBaseUrls;
 import tech.kronicle.service.repofinders.github.constants.GitHubApiHeaders;
 import tech.kronicle.service.repofinders.github.constants.GitHubApiPaths;
 import tech.kronicle.service.repofinders.github.models.ApiResponseCacheEntry;
-import tech.kronicle.service.repofinders.github.models.api.ContentEntry;
-import tech.kronicle.service.repofinders.github.models.api.UserRepo;
+import tech.kronicle.service.repofinders.github.models.api.GitHubContentEntry;
+import tech.kronicle.service.repofinders.github.models.api.GitHubRepo;
 import tech.kronicle.service.repofinders.github.services.ApiResponseCache;
 import tech.kronicle.service.services.UriVariablesBuilder;
 import tech.kronicle.service.spring.stereotypes.Client;
 
+import javax.validation.constraints.NotEmpty;
 import java.time.Instant;
 import java.time.ZoneOffset;
 import java.time.ZonedDateTime;
@@ -39,7 +42,7 @@ import static tech.kronicle.service.utils.UriTemplateUtils.expandUriTemplate;
 @Slf4j
 public class GitHubClient {
 
-  private static final List<HttpStatus> EXPECTED_STATUS_CODES = List.of(HttpStatus.OK, HttpStatus.NOT_MODIFIED);
+  private static final List<HttpStatus> EXPECTED_STATUS_CODES = List.of(HttpStatus.OK, HttpStatus.NOT_MODIFIED, HttpStatus.NOT_FOUND);
 
   private final WebClient webClient;
   private final GitHubRepoFinderConfig config;
@@ -54,55 +57,89 @@ public class GitHubClient {
     this.gitHubApiBaseUrl = gitHubApiBaseUrl;
   }
 
+  public List<ApiRepo> getRepos(GitHubRepoFinderPersonalAccessTokenConfig personalAccessToken) {
+    return getRepos(personalAccessToken, getAuthenticatedUserReposUri());
+  }
+
   public List<ApiRepo> getRepos(GitHubRepoFinderUserConfig user) {
-    return getUserRepos(user).stream()
-            .map(addHasComponentMetadataFile(user))
+    return getRepos(user.getPersonalAccessToken(), getUserReposUri(user));
+  }
+
+  public List<ApiRepo> getRepos(GitHubRepoFinderOrganizationConfig organization) {
+    return getRepos(organization.getPersonalAccessToken(), getOrganizationReposUri(organization));
+  }
+
+  private String getAuthenticatedUserReposUri() {
+    return gitHubApiBaseUrl + GitHubApiPaths.AUTHENTICATED_USER_REPOS;
+  }
+
+  private String getUserReposUri(GitHubRepoFinderUserConfig user) {
+    return expandUriTemplate(gitHubApiBaseUrl + GitHubApiPaths.USER_REPOS, Map.of("username", user.getAccountName()));
+  }
+
+  private String getOrganizationReposUri(GitHubRepoFinderOrganizationConfig organization) {
+    return expandUriTemplate(gitHubApiBaseUrl + GitHubApiPaths.ORGANIZATION_REPOS, Map.of("org", organization.getAccountName()));
+  }
+
+  private List<ApiRepo> getRepos(GitHubRepoFinderPersonalAccessTokenConfig personalAccessToken, String uri) {
+    List<GitHubRepo> repos = getGitHubRepos(personalAccessToken, uri);
+    if (isNull(repos)) {
+      return List.of();
+    }
+    return repos.stream()
+            .map(addHasComponentMetadataFile(personalAccessToken))
             .collect(Collectors.toList());
   }
 
-  private List<UserRepo> getUserRepos(GitHubRepoFinderUserConfig user) {
-    String uri = gitHubApiBaseUrl + GitHubApiPaths.USER_REPOS;
-    return getResource(user, uri, new ParameterizedTypeReference<>() {});
+  private List<GitHubRepo> getGitHubRepos(GitHubRepoFinderPersonalAccessTokenConfig personalAccessToken, String uri) {
+    return getResource(personalAccessToken, uri, new ParameterizedTypeReference<>() {});
   }
 
-  private Function<UserRepo, ApiRepo> addHasComponentMetadataFile(GitHubRepoFinderUserConfig user) {
-    return userRepo -> new ApiRepo(userRepo.getClone_url(), hasComponentMetadataFile(user, userRepo));
+  private Function<GitHubRepo, ApiRepo> addHasComponentMetadataFile(GitHubRepoFinderPersonalAccessTokenConfig personalAccessToken) {
+    return gitHubRepo -> new ApiRepo(gitHubRepo.getClone_url(), hasComponentMetadataFile(personalAccessToken, gitHubRepo));
   }
 
-  private boolean hasComponentMetadataFile(GitHubRepoFinderUserConfig user, UserRepo userRepo) {
-    String uriTemplate = userRepo.getContents_url();
+  private boolean hasComponentMetadataFile(GitHubRepoFinderPersonalAccessTokenConfig personalAccessToken, GitHubRepo repo) {
+    String uriTemplate = repo.getContents_url();
     Map<String, String> uriVariables = UriVariablesBuilder.builder()
             .addUriVariable("+path", "")
             .build();
-    List<ContentEntry> contentEntries = getResource(user, expandUriTemplate(uriTemplate, uriVariables),
+    List<GitHubContentEntry> contentEntries = getResource(personalAccessToken, expandUriTemplate(uriTemplate, uriVariables),
             new ParameterizedTypeReference<>() {});
+    if (isNull(contentEntries)) {
+      return false;
+    }
     return contentEntries.stream()
             .anyMatch(contentEntry -> KronicleMetadataFilePaths.ALL.contains(contentEntry.getName()));
   }
 
-  private <T> T getResource(GitHubRepoFinderUserConfig user, String uri, ParameterizedTypeReference<T> responseBodyTypeRef) {
-    logWebCall(user, uri);
-    ApiResponseCacheEntry<T> cacheEntry = cache.getEntry(user.getUsername(), uri);
-    ClientResponse response = makeRequest(user, webClient.get().uri(uri), cacheEntry);
+  private <T> T getResource(GitHubRepoFinderPersonalAccessTokenConfig personalAccessToken, String uri, ParameterizedTypeReference<T> responseBodyTypeRef) {
+    logWebCall(personalAccessToken, uri);
+    ApiResponseCacheEntry<T> cacheEntry = cache.getEntry(personalAccessToken, uri);
+    ClientResponse response = makeRequest(personalAccessToken, webClient.get().uri(uri), cacheEntry);
     checkResponseStatus(response, uri);
-    logRateLimitDetails(user, uri, response);
+    logRateLimitDetails(personalAccessToken, uri, response);
     if (Objects.equals(response.statusCode(), HttpStatus.NOT_MODIFIED)) {
-      logNotModifiedResponse(user, uri);
+      logNotModifiedResponse(personalAccessToken, uri);
       return cacheEntry.getResponseBody();
+    } else if (Objects.equals(response.statusCode(), HttpStatus.NOT_FOUND)) {
+      logNotFoundResponse(personalAccessToken, uri);
+      return null;
+    } else {
+      logWasModifiedResponse(personalAccessToken, uri);
+      T responseBody = response
+              .bodyToMono(responseBodyTypeRef)
+              .block(config.getTimeout());
+      cache.putEntry(personalAccessToken, uri, createCacheEntry(response, responseBody));
+      return responseBody;
     }
-    logWasModifiedResponse(user, uri);
-    T responseBody = response
-            .bodyToMono(responseBodyTypeRef)
-            .block(config.getTimeout());
-    cache.putEntry(user.getUsername(), uri, createCacheEntry(response, responseBody));
-    return responseBody;
   }
 
-  private void logRateLimitDetails(GitHubRepoFinderUserConfig user, String uri, ClientResponse response) {
+  private void logRateLimitDetails(GitHubRepoFinderPersonalAccessTokenConfig personalAccessToken, String uri, ClientResponse response) {
     if (log.isInfoEnabled()) {
       log.info("Request limits after call {} for user {}: rate limit {}, remaining {}, reset {}, used {}, resource {}",
               uri,
-              user.getUsername(),
+              getUsername(personalAccessToken),
               getResponseHeader(response, GitHubApiHeaders.RATE_LIMIT_LIMIT),
               getResponseHeader(response, GitHubApiHeaders.RATE_LIMIT_REMAINING),
               formatRateLimitResetTimestamp(getResponseHeader(response, GitHubApiHeaders.RATE_LIMIT_RESET)),
@@ -111,16 +148,21 @@ public class GitHubClient {
     }
   }
 
-  private void logNotModifiedResponse(GitHubRepoFinderUserConfig user, String uri) {
-    if (log.isInfoEnabled()) {
-      log.info("Response for {} for user {} was same as last call", uri, user.getUsername());
-    }
+  private void logNotModifiedResponse(GitHubRepoFinderPersonalAccessTokenConfig personalAccessToken, String uri) {
+    log.info("Response for {} for user {} was same as last call", uri, getUsername(personalAccessToken));
   }
 
-  private void logWasModifiedResponse(GitHubRepoFinderUserConfig user, String uri) {
-    if (log.isInfoEnabled()) {
-      log.info("Response for {} for user {} was different to last call", uri, user.getUsername());
-    }
+  private void logNotFoundResponse(GitHubRepoFinderPersonalAccessTokenConfig personalAccessToken, String uri) {
+    log.info("Not found response for {} for user {}", uri, getUsername(personalAccessToken));
+  }
+
+  private void logWasModifiedResponse(GitHubRepoFinderPersonalAccessTokenConfig personalAccessToken, String uri) {
+    log.info("Response for {} for user {} was different to last call", uri, getUsername(personalAccessToken));
+  }
+
+  @NotEmpty
+  private String getUsername(GitHubRepoFinderPersonalAccessTokenConfig personalAccessToken) {
+    return nonNull(personalAccessToken) ? personalAccessToken.getUsername() : "anonymous";
   }
 
   private String formatRateLimitResetTimestamp(String value) {
@@ -147,17 +189,19 @@ public class GitHubClient {
     return headerValues.isEmpty() ? null : headerValues.get(0);
   }
 
-  private void logWebCall(GitHubRepoFinderUserConfig user, String uri) {
+  private void logWebCall(GitHubRepoFinderPersonalAccessTokenConfig personalAccessToken, String uri) {
     if (log.isInfoEnabled()) {
-      log.info("Calling {} for user {}", uri, user.getUsername());
+      log.info("Calling {} for user {}", uri, getUsername(personalAccessToken));
     }
   }
 
-  private ClientResponse makeRequest(GitHubRepoFinderUserConfig user, WebClient.RequestHeadersSpec<?> requestHeadersSpec,
+  private ClientResponse makeRequest(GitHubRepoFinderPersonalAccessTokenConfig personalAccessToken, WebClient.RequestHeadersSpec<?> requestHeadersSpec,
                                      ApiResponseCacheEntry<?> cacheEntry) {
     return requestHeadersSpec
             .headers(headers -> {
-              headers.setBasicAuth(user.getUsername(), user.getPersonalAccessToken());
+              if (nonNull(personalAccessToken)) {
+                headers.setBasicAuth(personalAccessToken.getUsername(), personalAccessToken.getPersonalAccessToken());
+              }
               if (nonNull(cacheEntry)) {
                 headers.add(HttpHeaders.IF_NONE_MATCH, cacheEntry.getETag());
               }
