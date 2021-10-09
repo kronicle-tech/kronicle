@@ -198,8 +198,6 @@ exports[`Index when Get Components service endpoint returns an array of multiple
                       <p>
                         Test CFR Description 1 1
                       </p>
-                      
-
                     </div>
                   </td>
                    
@@ -212,8 +210,6 @@ exports[`Index when Get Components service endpoint returns an array of multiple
                       <p>
                         Test CFR Notes 1 1
                       </p>
-                      
-
                     </div>
                   </td>
                    
@@ -237,8 +233,6 @@ exports[`Index when Get Components service endpoint returns an array of multiple
                           <p>
                             Test CFR Link Description 1 1 1
                           </p>
-                          
-
                         </div>
                       </li>
                       <li>
@@ -257,8 +251,6 @@ exports[`Index when Get Components service endpoint returns an array of multiple
                           <p>
                             Test CFR Link Description 1 1 2
                           </p>
-                          
-
                         </div>
                       </li>
                     </ul>
@@ -315,8 +307,6 @@ exports[`Index when Get Components service endpoint returns an array of multiple
                       <p>
                         Test CFR Description 1 2
                       </p>
-                      
-
                     </div>
                   </td>
                    
@@ -329,8 +319,6 @@ exports[`Index when Get Components service endpoint returns an array of multiple
                       <p>
                         Test CFR Notes 1 2
                       </p>
-                      
-
                     </div>
                   </td>
                    
@@ -354,8 +342,6 @@ exports[`Index when Get Components service endpoint returns an array of multiple
                           <p>
                             Test CFR Link Description 1 2 1
                           </p>
-                          
-
                         </div>
                       </li>
                       <li>
@@ -374,8 +360,6 @@ exports[`Index when Get Components service endpoint returns an array of multiple
                           <p>
                             Test CFR Link Description 1 2 2
                           </p>
-                          
-
                         </div>
                       </li>
                     </ul>
@@ -432,8 +416,6 @@ exports[`Index when Get Components service endpoint returns an array of multiple
                       <p>
                         Test CFR Description 3 1
                       </p>
-                      
-
                     </div>
                   </td>
                    
@@ -446,8 +428,6 @@ exports[`Index when Get Components service endpoint returns an array of multiple
                       <p>
                         Test CFR Notes 3 1
                       </p>
-                      
-
                     </div>
                   </td>
                    
@@ -471,8 +451,6 @@ exports[`Index when Get Components service endpoint returns an array of multiple
                           <p>
                             Test CFR Link Description 3 1 1
                           </p>
-                          
-
                         </div>
                       </li>
                       <li>
@@ -491,8 +469,6 @@ exports[`Index when Get Components service endpoint returns an array of multiple
                           <p>
                             Test CFR Link Description 3 1 2
                           </p>
-                          
-
                         </div>
                       </li>
                     </ul>
@@ -549,8 +525,6 @@ exports[`Index when Get Components service endpoint returns an array of multiple
                       <p>
                         Test CFR Description 3 2
                       </p>
-                      
-
                     </div>
                   </td>
                    
@@ -563,8 +537,6 @@ exports[`Index when Get Components service endpoint returns an array of multiple
                       <p>
                         Test CFR Notes 3 2
                       </p>
-                      
-
                     </div>
                   </td>
                    
@@ -588,8 +560,6 @@ exports[`Index when Get Components service endpoint returns an array of multiple
                           <p>
                             Test CFR Link Description 3 2 1
                           </p>
-                          
-
                         </div>
                       </li>
                       <li>
@@ -608,8 +578,6 @@ exports[`Index when Get Components service endpoint returns an array of multiple
                           <p>
                             Test CFR Link Description 3 2 2
                           </p>
-                          
-
                         </div>
                       </li>
                     </ul>

@@ -287,8 +287,6 @@ exports[`Index when Get Component service endpoint returns a component renders t
         <p>
           Test Component Description 1
         </p>
-        
-
       </div>
     </div>
     <!---->

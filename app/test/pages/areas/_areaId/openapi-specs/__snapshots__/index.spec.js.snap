@@ -221,8 +221,6 @@ exports[`Index when Get Area service endpoint returns an area when the area has 
                       <p>
                         Test OpenAPI Spec Description 1 1
                       </p>
-                      
-
                     </div>
                   </td>
                 </tr>
@@ -291,8 +289,6 @@ exports[`Index when Get Area service endpoint returns an area when the area has 
                       <p>
                         Test OpenAPI Spec Description 1 2
                       </p>
-                      
-
                     </div>
                   </td>
                 </tr>
@@ -361,8 +357,6 @@ exports[`Index when Get Area service endpoint returns an area when the area has 
                       <p>
                         Test OpenAPI Spec Description 3 1
                       </p>
-                      
-
                     </div>
                   </td>
                 </tr>
@@ -431,8 +425,6 @@ exports[`Index when Get Area service endpoint returns an area when the area has 
                       <p>
                         Test OpenAPI Spec Description 3 2
                       </p>
-                      
-
                     </div>
                   </td>
                 </tr>

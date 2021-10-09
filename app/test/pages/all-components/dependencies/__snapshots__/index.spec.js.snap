@@ -1483,8 +1483,6 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
             <p>
               Test Component Description 1
             </p>
-            
-
           </div>
         </div>
          
@@ -1968,8 +1966,6 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
             <p>
               Test Component Description 3
             </p>
-            
-
           </div>
         </div>
          
@@ -2452,8 +2448,6 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
             <p>
               Test Component Description 2
             </p>
-            
-
           </div>
         </div>
          
@@ -3956,8 +3950,6 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
             <p>
               Test Component Description 2
             </p>
-            
-
           </div>
         </div>
          
@@ -5011,8 +5003,6 @@ exports[`Index when Get Summary service endpoint returns no dependencies renders
                 <p>
                   Test Component Description 1
                 </p>
-                
-
               </div>
             </td>
           </tr>
@@ -5082,8 +5072,6 @@ exports[`Index when Get Summary service endpoint returns no dependencies renders
                 <p>
                   Test Component Description 2
                 </p>
-                
-
               </div>
             </td>
           </tr>
@@ -5153,8 +5141,6 @@ exports[`Index when Get Summary service endpoint returns no dependencies renders
                 <p>
                   Test Component Description 3
                 </p>
-                
-
               </div>
             </td>
           </tr>

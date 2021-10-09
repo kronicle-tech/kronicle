@@ -123,8 +123,6 @@ exports[`Index when Get Teams service endpoint returns an array of multiple team
             <p>
               Test Team Description 2
             </p>
-            
-
           </div>
         </td>
       </tr>

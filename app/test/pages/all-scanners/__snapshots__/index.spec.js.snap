@@ -59,8 +59,6 @@ exports[`Index when Get Scanners service endpoint returns an array of multiple s
             <p>
               Test Scanner Description 1
             </p>
-            
-
           </div>
         </td>
          
@@ -73,8 +71,6 @@ exports[`Index when Get Scanners service endpoint returns an array of multiple s
             <p>
               Test Scanner Notes 1
             </p>
-            
-
           </div>
         </td>
       </tr>
@@ -96,8 +92,6 @@ exports[`Index when Get Scanners service endpoint returns an array of multiple s
             <p>
               Test Scanner Description 2
             </p>
-            
-
           </div>
         </td>
          
