@@ -68,7 +68,10 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information for SonarQube, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        run: ./gradlew service:downloadGradleLibs app:docker service:test app:assembleFrontend $([[ -v SONAR_TOKEN ]] && "echo sonarqube" || "echo ''") build
+        run: |
+          extra_tasks=()
+          if [[ -v SONAR_TOKEN ]]; then extra_tasks+=('sonarqube'); fi
+          ./gradlew service:downloadGradleLibs app:docker service:test app:assembleFrontend "${extra_tasks}" build
 
       - name: Archive Dependency Check report 🗄️
         uses: actions/upload-artifact@v2
