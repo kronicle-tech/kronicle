@@ -37,7 +37,7 @@
 <script lang="ts">
 import Vue from 'vue'
 import { MetaInfo } from 'vue-meta'
-import { BCard } from 'bootstrap-vue'
+import { BCard, BCardGroup } from 'bootstrap-vue'
 import { Team } from '~/types/kronicle-service'
 import AreaName from '~/components/AreaName.vue'
 import EmailAddress from '~/components/EmailAddress.vue'
@@ -49,6 +49,7 @@ export default Vue.extend({
   components: {
     AreaName,
     'b-card': BCard,
+    'b-card-group': BCardGroup,
     EmailAddress,
     Links,
     Markdown,

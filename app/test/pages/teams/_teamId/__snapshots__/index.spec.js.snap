@@ -78,8 +78,8 @@ exports[`Index when Get Team service endpoint returns an team renders the page 1
     </a>
   </div>
    
-  <b-card-group
-    columns=""
+  <div
+    class="card-columns"
   >
     <div
       class="card"
@@ -266,6 +266,6 @@ exports[`Index when Get Team service endpoint returns an team renders the page 1
       <!---->
       <!---->
     </div>
-  </b-card-group>
+  </div>
 </div>
 `;
