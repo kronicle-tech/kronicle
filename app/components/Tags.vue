@@ -1,9 +1,11 @@
 <template>
-  <!-- eslint-disable vue/require-v-for-key -->
   <ul v-if="tags && tags.length > 0">
-    <li v-for="tag in tags">{{ tag }}</li>
+    <li v-for="(tag, tagIndex) in tags"
+        :key="tagIndex"
+    >
+      {{ tag }}
+    </li>
   </ul>
-  <!-- eslint-enable -->
 </template>
 
 <script lang="ts">

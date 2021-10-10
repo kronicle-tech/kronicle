@@ -3,57 +3,65 @@
     <h1 class="text-info my-3">{{ component.name }}</h1>
     <ComponentTabs :component-id="component.id" />
 
-    <b-card title="Type" class="my-3">
-      <b-card-text>
-        {{ component.typeId }}
-      </b-card-text>
-    </b-card>
+    <b-card-group columns>
+      <b-card title="Component Name">
+        <b-card-text>
+          {{ component.name }}
+        </b-card-text>
+      </b-card>
 
-    <b-card title="Platform" class="my-3">
-      <b-card-text>
-        {{ component.platformId }}
-      </b-card-text>
-    </b-card>
+      <b-card title="Component Type">
+        <b-card-text>
+          {{ component.typeId }}
+        </b-card-text>
+      </b-card>
 
-    <b-card
-      v-if="component.tags && component.tags > 0"
-      title="Tags"
-      class="my-3"
-    >
-      <Links :tags="component.tags" />
-    </b-card>
+      <b-card title="Platform">
+        <b-card-text>
+          {{ component.platformId }}
+        </b-card-text>
+      </b-card>
 
-    <b-card
-      v-if="component.teams && component.teams.length > 0"
-      title="Teams"
-      class="my-3"
-    >
-      <ComponentTeams :component-teams="component.teams" />
-    </b-card>
+      <b-card
+        v-if="component.tags && component.tags > 0"
+        title="Tags"
+      >
+        <Links :tags="component.tags" />
+      </b-card>
 
-    <b-card
-      v-if="component.links && component.links.length > 0"
-      title="Links"
-      class="my-3"
-    >
-      <Links :links="component.links" />
-    </b-card>
+      <b-card
+        v-if="component.teams && component.teams.length > 0"
+        title="Teams"
+      >
+        <ComponentTeams :component-teams="component.teams" />
+      </b-card>
 
-    <b-card v-if="component.description" title="Description" class="my-3">
-      <Markdown :markdown="component.description" />
-    </b-card>
+      <b-card v-if="component.keySoftware" title="Key Software">
+        <KeySoftwareBadges :key-software="component.keySoftware" />
+      </b-card>
 
-    <b-card v-if="component.notes" title="Notes" class="my-3">
-      <Markdown :markdown="component.notes" :toc="true" />
-    </b-card>
+      <b-card v-if="component.description" title="Description">
+        <Markdown :markdown="component.description" />
+      </b-card>
 
-    <b-card
-      v-if="component.responsibilities && component.responsibilities.length > 0"
-      title="Responsibilities"
-      class="my-3"
-    >
-      <Responsibilities :responsibilities="component.responsibilities" />
-    </b-card>
+      <b-card v-if="component.notes" title="Notes">
+        <Markdown :markdown="component.notes" :toc="true" />
+      </b-card>
+
+      <b-card
+        v-if="component.links && component.links.length > 0"
+        title="Links"
+      >
+        <Links :links="component.links" />
+      </b-card>
+
+      <b-card
+        v-if="component.responsibilities && component.responsibilities.length > 0"
+        title="Responsibilities"
+      >
+        <Responsibilities :responsibilities="component.responsibilities" />
+      </b-card>
+    </b-card-group>
   </div>
 </template>
 
@@ -80,7 +88,7 @@ export default Vue.extend({
   },
   async asyncData({ $config, route }) {
     const component = await fetch(
-      `${$config.serviceBaseUrl}/v1/components/${route.params.componentId}?fields=component(id,name,typeId,platformId,tags,teams,links,description,notes,responsibilities)`
+      `${$config.serviceBaseUrl}/v1/components/${route.params.componentId}?fields=component(id,name,typeId,platformId,tags,teams,links,description,notes,responsibilities,keySoftware)`
     )
       .then((res) => res.json())
       .then((json) => json.component)
