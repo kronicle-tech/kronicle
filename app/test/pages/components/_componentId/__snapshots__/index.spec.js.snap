@@ -166,135 +166,167 @@ exports[`Index when Get Component service endpoint returns a component renders t
     </a>
   </div>
    
-  <div
-    class="card my-3"
+  <b-card-group
+    columns=""
   >
-    <!---->
-    <!---->
     <div
-      class="card-body"
+      class="card"
     >
-      <h4
-        class="card-title"
-      >
-        Type
-      </h4>
       <!---->
-      <p
-        class="card-text"
-      >
-        
-      test-component-type-id-1
-    
-      </p>
-    </div>
-    <!---->
-    <!---->
-  </div>
-   
-  <div
-    class="card my-3"
-  >
-    <!---->
-    <!---->
-    <div
-      class="card-body"
-    >
-      <h4
-        class="card-title"
-      >
-        Platform
-      </h4>
       <!---->
-      <p
-        class="card-text"
+      <div
+        class="card-body"
       >
-        
+        <h4
+          class="card-title"
+        >
+          Component Name
+        </h4>
+        <!---->
+        <p
+          class="card-text"
+        >
+          
+        Test Component Name 1
       
-    
-      </p>
-    </div>
-    <!---->
-    <!---->
-  </div>
-   
-  <!---->
-   
-  <div
-    class="card my-3"
-  >
-    <!---->
-    <!---->
-    <div
-      class="card-body"
-    >
-      <h4
-        class="card-title"
-      >
-        Teams
-      </h4>
-      <!---->
-      <ul>
-        <li>
-          <a
-            class="team-name"
-            href="/teams/test-team-id-1-1"
-          >
-            test-team-id-1-1
-          </a>
-           
-          <!---->
-           
-          <!---->
-        </li>
-        <li>
-          <a
-            class="team-name"
-            href="/teams/test-team-id-1-2"
-          >
-            test-team-id-1-2
-          </a>
-           
-          <!---->
-           
-          <!---->
-        </li>
-      </ul>
-    </div>
-    <!---->
-    <!---->
-  </div>
-   
-  <!---->
-   
-  <div
-    class="card my-3"
-  >
-    <!---->
-    <!---->
-    <div
-      class="card-body"
-    >
-      <h4
-        class="card-title"
-      >
-        Description
-      </h4>
-      <!---->
-      <div>
-        
-
-        <p>
-          Test Component Description 1
         </p>
       </div>
+      <!---->
+      <!---->
     </div>
+     
+    <div
+      class="card"
+    >
+      <!---->
+      <!---->
+      <div
+        class="card-body"
+      >
+        <h4
+          class="card-title"
+        >
+          Component Type
+        </h4>
+        <!---->
+        <p
+          class="card-text"
+        >
+          
+        test-component-type-id-1
+      
+        </p>
+      </div>
+      <!---->
+      <!---->
+    </div>
+     
+    <div
+      class="card"
+    >
+      <!---->
+      <!---->
+      <div
+        class="card-body"
+      >
+        <h4
+          class="card-title"
+        >
+          Platform
+        </h4>
+        <!---->
+        <p
+          class="card-text"
+        >
+          
+        
+      
+        </p>
+      </div>
+      <!---->
+      <!---->
+    </div>
+     
     <!---->
+     
+    <div
+      class="card"
+    >
+      <!---->
+      <!---->
+      <div
+        class="card-body"
+      >
+        <h4
+          class="card-title"
+        >
+          Teams
+        </h4>
+        <!---->
+        <ul>
+          <li>
+            <a
+              class="team-name"
+              href="/teams/test-team-id-1-1"
+            >
+              test-team-id-1-1
+            </a>
+             
+            <!---->
+             
+            <!---->
+          </li>
+          <li>
+            <a
+              class="team-name"
+              href="/teams/test-team-id-1-2"
+            >
+              test-team-id-1-2
+            </a>
+             
+            <!---->
+             
+            <!---->
+          </li>
+        </ul>
+      </div>
+      <!---->
+      <!---->
+    </div>
+     
     <!---->
-  </div>
-   
-  <!---->
-   
-  <!---->
+     
+    <div
+      class="card"
+    >
+      <!---->
+      <!---->
+      <div
+        class="card-body"
+      >
+        <h4
+          class="card-title"
+        >
+          Description
+        </h4>
+        <!---->
+        <div>
+          
+
+          <p>
+            Test Component Description 1
+          </p>
+        </div>
+      </div>
+      <!---->
+      <!---->
+    </div>
+     
+    <!---->
+     
+    <!---->
+     
+    <!---->
+  </b-card-group>
 </div>
 `;

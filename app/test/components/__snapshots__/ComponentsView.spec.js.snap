@@ -49,8 +49,12 @@ exports[`ComponentsView when components prop is set to multiple components rende
                 <td class=\\"name table-primary\\"><a href=\\"/components/test-component-id-1\\">Test Component Name 1</a></td>
                 <td>
                   <ul>
-                    <li>test-tag-1-1</li>
-                    <li>test-tag-1-2</li>
+                    <li>
+                      test-tag-1-1
+                    </li>
+                    <li>
+                      test-tag-1-2
+                    </li>
                   </ul>
                 </td>
                 <td>
@@ -76,8 +80,12 @@ exports[`ComponentsView when components prop is set to multiple components rende
                 <td class=\\"name table-primary\\"><a href=\\"/components/test-component-id-2\\">Test Component Name 2</a></td>
                 <td>
                   <ul>
-                    <li>test-tag-2-1</li>
-                    <li>test-tag-2-2</li>
+                    <li>
+                      test-tag-2-1
+                    </li>
+                    <li>
+                      test-tag-2-2
+                    </li>
                   </ul>
                 </td>
                 <td>
@@ -103,8 +111,12 @@ exports[`ComponentsView when components prop is set to multiple components rende
                 <td class=\\"name table-primary\\"><a href=\\"/components/test-component-id-3\\">Test Component Name 3</a></td>
                 <td>
                   <ul>
-                    <li>test-tag-3-1</li>
-                    <li>test-tag-3-2</li>
+                    <li>
+                      test-tag-3-1
+                    </li>
+                    <li>
+                      test-tag-3-2
+                    </li>
                   </ul>
                 </td>
                 <td>
@@ -235,8 +247,12 @@ exports[`ComponentsView when components prop is set to multiple components when 
                 <td class=\\"name table-primary\\"><a href=\\"/components/test-component-id-1\\">Test Component Name 1</a></td>
                 <td>
                   <ul>
-                    <li>test-tag-1-1</li>
-                    <li>test-tag-1-2</li>
+                    <li>
+                      test-tag-1-1
+                    </li>
+                    <li>
+                      test-tag-1-2
+                    </li>
                   </ul>
                 </td>
                 <td>
@@ -262,8 +278,12 @@ exports[`ComponentsView when components prop is set to multiple components when 
                 <td class=\\"name table-primary\\"><a href=\\"/components/test-component-id-2\\">Test Component Name 2</a></td>
                 <td>
                   <ul>
-                    <li>test-tag-2-1</li>
-                    <li>test-tag-2-2</li>
+                    <li>
+                      test-tag-2-1
+                    </li>
+                    <li>
+                      test-tag-2-2
+                    </li>
                   </ul>
                 </td>
                 <td>
@@ -289,8 +309,12 @@ exports[`ComponentsView when components prop is set to multiple components when 
                 <td class=\\"name table-primary\\"><a href=\\"/components/test-component-id-3\\">Test Component Name 3</a></td>
                 <td>
                   <ul>
-                    <li>test-tag-3-1</li>
-                    <li>test-tag-3-2</li>
+                    <li>
+                      test-tag-3-1
+                    </li>
+                    <li>
+                      test-tag-3-2
+                    </li>
                   </ul>
                 </td>
                 <td>
@@ -421,8 +445,12 @@ exports[`ComponentsView when components prop is set to multiple components when 
                 <td class=\\"name table-primary\\"><a href=\\"/components/test-component-id-1\\">Test Component Name 1</a></td>
                 <td>
                   <ul>
-                    <li>test-tag-1-1</li>
-                    <li>test-tag-1-2</li>
+                    <li>
+                      test-tag-1-1
+                    </li>
+                    <li>
+                      test-tag-1-2
+                    </li>
                   </ul>
                 </td>
                 <td>
