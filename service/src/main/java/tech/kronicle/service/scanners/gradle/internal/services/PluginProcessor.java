@@ -56,6 +56,14 @@ public class PluginProcessor {
                 .count();
     }
 
+    public Optional<Software> getMicronautApplicationPlugin(InheritingHashSet<Software> software) {
+        return software.stream()
+                .filter(item -> Objects.equals(item.getType(), SoftwareType.GRADLE_PLUGIN)
+                        && Objects.equals(item.getName(), GradlePlugins.MICRONAUT_APPLICATION)
+                        && nonNull(item.getVersion()))
+                .findFirst();
+    }
+
     public Optional<Software> getSpringBootPlugin(Set<Software> software) {
         return software.stream()
                 .filter(item -> Objects.equals(item.getType(), SoftwareType.GRADLE_PLUGIN)
