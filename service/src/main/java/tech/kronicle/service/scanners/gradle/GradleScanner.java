@@ -1,5 +1,9 @@
 package tech.kronicle.service.scanners.gradle;
 
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.codehaus.groovy.ast.ASTNode;
+import tech.kronicle.common.utils.StringEscapeUtils;
 import tech.kronicle.sdk.models.ScannerError;
 import tech.kronicle.sdk.models.Software;
 import tech.kronicle.sdk.models.SoftwareDependencyType;
@@ -10,6 +14,9 @@ import tech.kronicle.sdk.models.gradle.Gradle;
 import tech.kronicle.service.constants.Comparators;
 import tech.kronicle.service.mappers.ThrowableToScannerErrorMapper;
 import tech.kronicle.service.scanners.CodebaseScanner;
+import tech.kronicle.service.scanners.gradle.internal.constants.ArtifactNames;
+import tech.kronicle.service.scanners.gradle.internal.constants.GradlePlugins;
+import tech.kronicle.service.scanners.gradle.internal.constants.GradlePropertyNames;
 import tech.kronicle.service.scanners.gradle.internal.constants.SoftwareRepositoryUrls;
 import tech.kronicle.service.scanners.gradle.internal.groovyscriptvisitors.BaseVisitor;
 import tech.kronicle.service.scanners.gradle.internal.groovyscriptvisitors.BuildGradleVisitor;
@@ -30,10 +37,6 @@ import tech.kronicle.service.scanners.models.Codebase;
 import tech.kronicle.service.scanners.models.Output;
 import tech.kronicle.service.spring.stereotypes.Scanner;
 import tech.kronicle.service.utils.FileUtils;
-import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
-import org.codehaus.groovy.ast.ASTNode;
-import tech.kronicle.common.utils.StringEscapeUtils;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -42,23 +45,25 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
-import java.util.Optional;
 import java.util.Properties;
 import java.util.Set;
+import java.util.function.Function;
 import java.util.function.Supplier;
 import java.util.function.UnaryOperator;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
+import static java.util.Objects.isNull;
+import static java.util.Objects.requireNonNull;
 import static tech.kronicle.service.scanners.gradle.internal.constants.GradleFileNames.BUILD_GRADLE;
 import static tech.kronicle.service.scanners.gradle.internal.constants.GradleFileNames.GRADLE_PROPERTIES;
 import static tech.kronicle.service.scanners.gradle.internal.constants.GradleFileNames.GRADLE_WRAPPER_PROPERTIES;
 import static tech.kronicle.service.scanners.gradle.internal.constants.GradleFileNames.SETTINGS_GRADLE;
 import static tech.kronicle.service.scanners.gradle.internal.constants.GradleWrapperPropertyNames.DISTRIBUTION_URL;
 import static tech.kronicle.service.scanners.gradle.internal.constants.ToolNames.GRADLE_WRAPPER;
-import static java.util.Objects.requireNonNull;
 
 @Scanner
 @RequiredArgsConstructor
@@ -192,17 +197,9 @@ public class GradleScanner extends CodebaseScanner {
                                 }
                             } else {
                                 if (processPhase == ProcessPhase.DEPENDENCIES && projectMode != ProjectMode.SETTINGS) {
-                                    Optional<Software> optionalSpringBootPlugin = pluginProcessor.getSpringBootPlugin(currentSoftware);
-
-                                    optionalSpringBootPlugin.ifPresent(springBootPlugin ->
-                                        dependencyVersionFetcher.findDependencyVersions(
-                                                id(),
-                                                artifactUtils.createArtifactFromNameAndVersion(
-                                                        "org.springframework.boot:spring-boot-dependencies",
-                                                        springBootPlugin.getVersion()),
-                                                currentSoftwareRepositories,
-                                                currentDependencyVersions,
-                                                currentSoftware));
+                                    emulateSpringBootPlugin(currentSoftwareRepositories, currentSoftware, currentDependencyVersions);
+                                    emulateMicronautApplicationPlugin(currentProperties, currentSoftwareRepositories, currentSoftware, currentDependencyVersions);
+                                    emulateMicronautLibraryPlugin(currentProperties, currentSoftwareRepositories, currentSoftware, currentDependencyVersions);
                                 }
 
                                 if (Files.exists(currentBuildFile)) {
@@ -252,6 +249,74 @@ public class GradleScanner extends CodebaseScanner {
         return Output.of(component -> component.withGradle(gradle)
                 .withSoftwareRepositories(replaceScannerItemsInList(component.getSoftwareRepositories(), allSoftwareRepositoriesList))
                 .withSoftware(replaceScannerItemsInList(component.getSoftware(), allSoftwareList)));
+    }
+
+    private void emulateSpringBootPlugin(
+            InheritingHashSet<SoftwareRepository> softwareRepositories,
+            InheritingHashSet<Software> software,
+            InheritingHashMap<String, Set<String>> dependencyVersions) {
+
+        emulateBomPlugin(
+                GradlePlugins.SPRING_BOOT,
+                ArtifactNames.SPRING_BOOT_DEPENDENCIES,
+                springBootPlugin -> springBootPlugin.getVersion(),
+                softwareRepositories,
+                software,
+                dependencyVersions);
+    }
+
+    private void emulateMicronautApplicationPlugin(
+            InheritingHashMap<String, String> properties,
+            InheritingHashSet<SoftwareRepository> softwareRepositories,
+            InheritingHashSet<Software> software,
+            InheritingHashMap<String, Set<String>> dependencyVersions) {
+
+        emulateBomPlugin(
+                GradlePlugins.MICRONAUT_APPLICATION,
+                ArtifactNames.MICRONAUT_BOM,
+                ignored -> getMicronautVersion(properties),
+                softwareRepositories,
+                software,
+                dependencyVersions);
+    }
+
+    private void emulateMicronautLibraryPlugin(
+            InheritingHashMap<String, String> properties,
+            InheritingHashSet<SoftwareRepository> softwareRepositories,
+            InheritingHashSet<Software> software,
+            InheritingHashMap<String, Set<String>> dependencyVersions) {
+
+        emulateBomPlugin(
+                GradlePlugins.MICRONAUT_LIBRARY,
+                ArtifactNames.MICRONAUT_BOM,
+                ignored -> getMicronautVersion(properties),
+                softwareRepositories,
+                software,
+                dependencyVersions);
+    }
+
+    private void emulateBomPlugin(String pluginName,
+                                  String bomCoordinates,
+                                  Function<Software, String> versionGetter,
+                                  Set<SoftwareRepository> softwareRepositories,
+                                  Set<Software> software,
+                                  Map<String, Set<String>> dependencyVersions) {
+
+        pluginProcessor.getPlugin(pluginName, software).ifPresent(plugin ->
+                dependencyVersionFetcher.findDependencyVersions(
+                        id(),
+                        artifactUtils.createArtifactFromNameAndVersion(bomCoordinates, versionGetter.apply(plugin)),
+                        softwareRepositories,
+                        dependencyVersions,
+                        software));
+    }
+
+    private String getMicronautVersion(InheritingHashMap<String, String> currentProperties) {
+        String micronautVersion = currentProperties.get(GradlePropertyNames.MICRONAUT_VERSION);
+        if (isNull(micronautVersion)) {
+            throw new RuntimeException("Micronaut version not set. Use micronaut { version '..'} or 'micronautVersion' in gradle.properties to set the version");
+        }
+        return micronautVersion;
     }
 
     private ProjectMode getProjectMode(List<Path> buildFileChain, int index) {
