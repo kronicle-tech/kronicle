@@ -1,5 +1,9 @@
 package tech.kronicle.service.scanners.gradle;
 
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.web.reactive.function.client.WebClient;
 import tech.kronicle.service.config.DownloadCacheConfig;
 import tech.kronicle.service.config.DownloaderConfig;
 import tech.kronicle.service.config.UrlExistsCacheConfig;
@@ -10,10 +14,6 @@ import tech.kronicle.service.services.HttpRequestMaker;
 import tech.kronicle.service.services.UrlExistsCache;
 import tech.kronicle.service.utils.AntStyleIgnoreFileLoader;
 import tech.kronicle.service.utils.FileUtils;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.web.reactive.function.client.WebClient;
 
 import java.io.IOException;
 import java.time.Duration;

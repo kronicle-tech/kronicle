@@ -1,10 +1,10 @@
 package tech.kronicle.service.scanners.gradle.internal;
 
-import tech.kronicle.service.scanners.gradle.internal.services.PropertyExpander;
-import tech.kronicle.service.scanners.gradle.internal.services.PropertyRetriever;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+import tech.kronicle.service.scanners.gradle.internal.services.PropertyExpander;
+import tech.kronicle.service.scanners.gradle.internal.services.PropertyRetriever;
 
 import java.util.HashMap;
 import java.util.Map;

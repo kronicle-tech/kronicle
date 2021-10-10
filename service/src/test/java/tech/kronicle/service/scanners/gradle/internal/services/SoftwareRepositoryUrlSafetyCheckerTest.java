@@ -1,9 +1,9 @@
 package tech.kronicle.service.scanners.gradle.internal.services;
 
-import tech.kronicle.service.scanners.gradle.config.GradleConfig;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+import tech.kronicle.service.scanners.gradle.config.GradleConfig;
 import tech.kronicle.service.scanners.gradle.internal.constants.SoftwareRepositoryUrls;
 
 import java.util.List;

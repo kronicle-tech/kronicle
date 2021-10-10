@@ -1,16 +1,6 @@
 package tech.kronicle.service.scanners.gradle.internal.groovyscriptvisitors;
 
 import ch.qos.logback.classic.spi.ILoggingEvent;
-import tech.kronicle.sdk.models.Software;
-import tech.kronicle.sdk.models.SoftwareType;
-import tech.kronicle.service.config.DownloadCacheConfig;
-import tech.kronicle.service.config.UrlExistsCacheConfig;
-import tech.kronicle.service.constants.Comparators;
-import tech.kronicle.service.scanners.gradle.GradleScannerTestConfiguration;
-import tech.kronicle.service.scanners.gradle.config.GradleConfig;
-import tech.kronicle.service.scanners.gradle.internal.utils.InheritingHashMap;
-import tech.kronicle.service.scanners.gradle.internal.utils.InheritingHashSet;
-import tech.kronicle.service.testutils.LogCaptor;
 import org.codehaus.groovy.ast.ASTNode;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -22,6 +12,16 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
+import tech.kronicle.sdk.models.Software;
+import tech.kronicle.sdk.models.SoftwareType;
+import tech.kronicle.service.config.DownloadCacheConfig;
+import tech.kronicle.service.config.UrlExistsCacheConfig;
+import tech.kronicle.service.constants.Comparators;
+import tech.kronicle.service.scanners.gradle.GradleScannerTestConfiguration;
+import tech.kronicle.service.scanners.gradle.config.GradleConfig;
+import tech.kronicle.service.scanners.gradle.internal.utils.InheritingHashMap;
+import tech.kronicle.service.scanners.gradle.internal.utils.InheritingHashSet;
+import tech.kronicle.service.testutils.LogCaptor;
 
 import java.util.ArrayList;
 import java.util.List;
