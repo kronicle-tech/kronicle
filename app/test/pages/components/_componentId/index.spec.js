@@ -34,7 +34,7 @@ describe('Index', () => {
 
   describe('when Get Component service endpoint returns a component', () => {
     beforeEach(() => {
-      component = createComponent({ componentNumber: 1 })
+      component = createComponent({ componentNumber: 1, hasMainDetails: true })
     })
 
     test('has the right page title', async () => {

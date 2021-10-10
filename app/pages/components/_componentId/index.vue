@@ -71,6 +71,7 @@ import { MetaInfo } from 'vue-meta'
 import { BCard, BCardGroup, BCardText } from 'bootstrap-vue'
 import { Component } from '~/types/kronicle-service'
 import ComponentTabs from '~/components/ComponentTabs.vue'
+import KeySoftwareBadges from "~/components/KeySoftwareBadges.vue";
 import Links from '~/components/Links.vue'
 import Markdown from '~/components/Markdown.vue'
 import ComponentTeams from '~/components/ComponentTeams.vue'
@@ -82,6 +83,7 @@ export default Vue.extend({
     'b-card-group': BCardGroup,
     'b-card-text': BCardText,
     ComponentTabs,
+    KeySoftwareBadges,
     Links,
     Markdown,
     ComponentTeams,
