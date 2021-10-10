@@ -91,12 +91,12 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
           class="list-group"
         >
           <div
-            class="list-group-item list-group-item-danger"
+            class="list-group-item list-group-item-success"
           >
             <span
-              class="display-1"
+              class=""
             >
-              0
+              4
             </span>
             
           OpenAPI specs
@@ -118,13 +118,318 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
           <h4
             class="card-title"
           >
-            0 OpenAPI Specs
+            4 OpenAPI Specs
           </h4>
           <!---->
           <p
             class="card-text"
           >
-            <!---->
+            <table
+              class="table table-dark"
+            >
+              <thead>
+                <tr>
+                  <th
+                    class="component"
+                  >
+                    Component
+                  </th>
+                   
+                  <th
+                    class="teams"
+                  >
+                    Teams
+                  </th>
+                   
+                  <th
+                    class="link"
+                  >
+                    Link
+                  </th>
+                   
+                  <th
+                    class="description"
+                  >
+                    Description
+                  </th>
+                </tr>
+              </thead>
+               
+              <tbody>
+                <tr>
+                  <td
+                    class="component table-primary"
+                  >
+                    <a
+                      href="/components/test-component-id-1"
+                    >
+                      Test Component Name 1
+                    </a>
+                  </td>
+                   
+                  <td
+                    class="teams table-primary"
+                  >
+                    <ul>
+                      <li>
+                        <a
+                          class="team-name"
+                          href="/teams/test-team-id-1-1"
+                        >
+                          test-team-id-1-1
+                        </a>
+                         
+                        <!---->
+                         
+                        <!---->
+                      </li>
+                      <li>
+                        <a
+                          class="team-name"
+                          href="/teams/test-team-id-1-2"
+                        >
+                          test-team-id-1-2
+                        </a>
+                         
+                        <!---->
+                         
+                        <!---->
+                      </li>
+                    </ul>
+                  </td>
+                   
+                  <td
+                    class="link"
+                  >
+                    <a
+                      class=""
+                      href="/components/test-component-id-1/openapi-specs/1"
+                      target="_self"
+                    >
+                      
+          https://example.com/test-openapi-spec-1-1
+        
+                    </a>
+                  </td>
+                   
+                  <td
+                    class="description"
+                  >
+                    <div>
+                      
+
+                      <p>
+                        Test OpenAPI Spec Description 1 1
+                      </p>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td
+                    class="component table-primary"
+                  >
+                    <a
+                      href="/components/test-component-id-1"
+                    >
+                      Test Component Name 1
+                    </a>
+                  </td>
+                   
+                  <td
+                    class="teams table-primary"
+                  >
+                    <ul>
+                      <li>
+                        <a
+                          class="team-name"
+                          href="/teams/test-team-id-1-1"
+                        >
+                          test-team-id-1-1
+                        </a>
+                         
+                        <!---->
+                         
+                        <!---->
+                      </li>
+                      <li>
+                        <a
+                          class="team-name"
+                          href="/teams/test-team-id-1-2"
+                        >
+                          test-team-id-1-2
+                        </a>
+                         
+                        <!---->
+                         
+                        <!---->
+                      </li>
+                    </ul>
+                  </td>
+                   
+                  <td
+                    class="link"
+                  >
+                    <a
+                      class=""
+                      href="/components/test-component-id-1/openapi-specs/2"
+                      target="_self"
+                    >
+                      
+          https://example.com/test-openapi-spec-1-2
+        
+                    </a>
+                  </td>
+                   
+                  <td
+                    class="description"
+                  >
+                    <div>
+                      
+
+                      <p>
+                        Test OpenAPI Spec Description 1 2
+                      </p>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td
+                    class="component table-primary"
+                  >
+                    <a
+                      href="/components/test-component-id-3"
+                    >
+                      Test Component Name 3
+                    </a>
+                  </td>
+                   
+                  <td
+                    class="teams table-primary"
+                  >
+                    <ul>
+                      <li>
+                        <a
+                          class="team-name"
+                          href="/teams/test-team-id-3-1"
+                        >
+                          test-team-id-3-1
+                        </a>
+                         
+                        <!---->
+                         
+                        <!---->
+                      </li>
+                      <li>
+                        <a
+                          class="team-name"
+                          href="/teams/test-team-id-3-2"
+                        >
+                          test-team-id-3-2
+                        </a>
+                         
+                        <!---->
+                         
+                        <!---->
+                      </li>
+                    </ul>
+                  </td>
+                   
+                  <td
+                    class="link"
+                  >
+                    <a
+                      class=""
+                      href="/components/test-component-id-3/openapi-specs/1"
+                      target="_self"
+                    >
+                      
+          https://example.com/test-openapi-spec-3-1
+        
+                    </a>
+                  </td>
+                   
+                  <td
+                    class="description"
+                  >
+                    <div>
+                      
+
+                      <p>
+                        Test OpenAPI Spec Description 3 1
+                      </p>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td
+                    class="component table-primary"
+                  >
+                    <a
+                      href="/components/test-component-id-3"
+                    >
+                      Test Component Name 3
+                    </a>
+                  </td>
+                   
+                  <td
+                    class="teams table-primary"
+                  >
+                    <ul>
+                      <li>
+                        <a
+                          class="team-name"
+                          href="/teams/test-team-id-3-1"
+                        >
+                          test-team-id-3-1
+                        </a>
+                         
+                        <!---->
+                         
+                        <!---->
+                      </li>
+                      <li>
+                        <a
+                          class="team-name"
+                          href="/teams/test-team-id-3-2"
+                        >
+                          test-team-id-3-2
+                        </a>
+                         
+                        <!---->
+                         
+                        <!---->
+                      </li>
+                    </ul>
+                  </td>
+                   
+                  <td
+                    class="link"
+                  >
+                    <a
+                      class=""
+                      href="/components/test-component-id-3/openapi-specs/2"
+                      target="_self"
+                    >
+                      
+          https://example.com/test-openapi-spec-3-2
+        
+                    </a>
+                  </td>
+                   
+                  <td
+                    class="description"
+                  >
+                    <div>
+                      
+
+                      <p>
+                        Test OpenAPI Spec Description 3 2
+                      </p>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
           </p>
         </div>
         <!---->
@@ -140,11 +445,11 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
          
         <fieldset
           class="form-group"
-          id="__BVID__92"
+          id="__BVID__116"
         >
           <legend
             class="bv-no-focus-ring col-form-label pt-0"
-            id="__BVID__92__BV_label_"
+            id="__BVID__116__BV_label_"
             tabindex="-1"
           >
             Teams
@@ -152,7 +457,7 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
           <div>
             <div
               class="bv-no-focus-ring"
-              id="__BVID__93"
+              id="__BVID__117"
               role="group"
               tabindex="-1"
             >
@@ -161,14 +466,14 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
               >
                 <input
                   class="custom-control-input"
-                  id="__BVID__93_BV_option_0"
+                  id="__BVID__117_BV_option_0"
                   name="team"
                   type="checkbox"
                   value="test-team-id-1-1"
                 />
                 <label
                   class="custom-control-label"
-                  for="__BVID__93_BV_option_0"
+                  for="__BVID__117_BV_option_0"
                 >
                   <span>
                     test-team-id-1-1
@@ -180,14 +485,14 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
               >
                 <input
                   class="custom-control-input"
-                  id="__BVID__93_BV_option_1"
+                  id="__BVID__117_BV_option_1"
                   name="team"
                   type="checkbox"
                   value="test-team-id-1-2"
                 />
                 <label
                   class="custom-control-label"
-                  for="__BVID__93_BV_option_1"
+                  for="__BVID__117_BV_option_1"
                 >
                   <span>
                     test-team-id-1-2
@@ -199,14 +504,14 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
               >
                 <input
                   class="custom-control-input"
-                  id="__BVID__93_BV_option_2"
+                  id="__BVID__117_BV_option_2"
                   name="team"
                   type="checkbox"
                   value="test-team-id-2-1"
                 />
                 <label
                   class="custom-control-label"
-                  for="__BVID__93_BV_option_2"
+                  for="__BVID__117_BV_option_2"
                 >
                   <span>
                     test-team-id-2-1
@@ -218,14 +523,14 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
               >
                 <input
                   class="custom-control-input"
-                  id="__BVID__93_BV_option_3"
+                  id="__BVID__117_BV_option_3"
                   name="team"
                   type="checkbox"
                   value="test-team-id-2-2"
                 />
                 <label
                   class="custom-control-label"
-                  for="__BVID__93_BV_option_3"
+                  for="__BVID__117_BV_option_3"
                 >
                   <span>
                     test-team-id-2-2
@@ -237,14 +542,14 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
               >
                 <input
                   class="custom-control-input"
-                  id="__BVID__93_BV_option_4"
+                  id="__BVID__117_BV_option_4"
                   name="team"
                   type="checkbox"
                   value="test-team-id-3-1"
                 />
                 <label
                   class="custom-control-label"
-                  for="__BVID__93_BV_option_4"
+                  for="__BVID__117_BV_option_4"
                 >
                   <span>
                     test-team-id-3-1
@@ -256,14 +561,14 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
               >
                 <input
                   class="custom-control-input"
-                  id="__BVID__93_BV_option_5"
+                  id="__BVID__117_BV_option_5"
                   name="team"
                   type="checkbox"
                   value="test-team-id-3-2"
                 />
                 <label
                   class="custom-control-label"
-                  for="__BVID__93_BV_option_5"
+                  for="__BVID__117_BV_option_5"
                 >
                   <span>
                     test-team-id-3-2
@@ -279,11 +584,11 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
          
         <fieldset
           class="form-group"
-          id="__BVID__100"
+          id="__BVID__124"
         >
           <legend
             class="bv-no-focus-ring col-form-label pt-0"
-            id="__BVID__100__BV_label_"
+            id="__BVID__124__BV_label_"
             tabindex="-1"
           >
             Tags
@@ -291,7 +596,7 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
           <div>
             <div
               class="bv-no-focus-ring"
-              id="__BVID__101"
+              id="__BVID__125"
               role="group"
               tabindex="-1"
             >
@@ -300,14 +605,14 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
               >
                 <input
                   class="custom-control-input"
-                  id="__BVID__101_BV_option_0"
+                  id="__BVID__125_BV_option_0"
                   name="tag"
                   type="checkbox"
                   value="test-tag-1-1"
                 />
                 <label
                   class="custom-control-label"
-                  for="__BVID__101_BV_option_0"
+                  for="__BVID__125_BV_option_0"
                 >
                   <span>
                     test-tag-1-1
@@ -319,14 +624,14 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
               >
                 <input
                   class="custom-control-input"
-                  id="__BVID__101_BV_option_1"
+                  id="__BVID__125_BV_option_1"
                   name="tag"
                   type="checkbox"
                   value="test-tag-1-2"
                 />
                 <label
                   class="custom-control-label"
-                  for="__BVID__101_BV_option_1"
+                  for="__BVID__125_BV_option_1"
                 >
                   <span>
                     test-tag-1-2
@@ -338,14 +643,14 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
               >
                 <input
                   class="custom-control-input"
-                  id="__BVID__101_BV_option_2"
+                  id="__BVID__125_BV_option_2"
                   name="tag"
                   type="checkbox"
                   value="test-tag-2-1"
                 />
                 <label
                   class="custom-control-label"
-                  for="__BVID__101_BV_option_2"
+                  for="__BVID__125_BV_option_2"
                 >
                   <span>
                     test-tag-2-1
@@ -357,14 +662,14 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
               >
                 <input
                   class="custom-control-input"
-                  id="__BVID__101_BV_option_3"
+                  id="__BVID__125_BV_option_3"
                   name="tag"
                   type="checkbox"
                   value="test-tag-2-2"
                 />
                 <label
                   class="custom-control-label"
-                  for="__BVID__101_BV_option_3"
+                  for="__BVID__125_BV_option_3"
                 >
                   <span>
                     test-tag-2-2
@@ -376,14 +681,14 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
               >
                 <input
                   class="custom-control-input"
-                  id="__BVID__101_BV_option_4"
+                  id="__BVID__125_BV_option_4"
                   name="tag"
                   type="checkbox"
                   value="test-tag-3-1"
                 />
                 <label
                   class="custom-control-label"
-                  for="__BVID__101_BV_option_4"
+                  for="__BVID__125_BV_option_4"
                 >
                   <span>
                     test-tag-3-1
@@ -395,14 +700,14 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
               >
                 <input
                   class="custom-control-input"
-                  id="__BVID__101_BV_option_5"
+                  id="__BVID__125_BV_option_5"
                   name="tag"
                   type="checkbox"
                   value="test-tag-3-2"
                 />
                 <label
                   class="custom-control-label"
-                  for="__BVID__101_BV_option_5"
+                  for="__BVID__125_BV_option_5"
                 >
                   <span>
                     test-tag-3-2
@@ -418,11 +723,11 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
          
         <fieldset
           class="form-group"
-          id="__BVID__108"
+          id="__BVID__132"
         >
           <legend
             class="bv-no-focus-ring col-form-label pt-0"
-            id="__BVID__108__BV_label_"
+            id="__BVID__132__BV_label_"
             tabindex="-1"
           >
             Component Types
@@ -430,7 +735,7 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
           <div>
             <div
               class="bv-no-focus-ring"
-              id="__BVID__109"
+              id="__BVID__133"
               role="group"
               tabindex="-1"
             >
@@ -439,14 +744,14 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
               >
                 <input
                   class="custom-control-input"
-                  id="__BVID__109_BV_option_0"
+                  id="__BVID__133_BV_option_0"
                   name="componentTypeId"
                   type="checkbox"
                   value="test-component-type-id-1"
                 />
                 <label
                   class="custom-control-label"
-                  for="__BVID__109_BV_option_0"
+                  for="__BVID__133_BV_option_0"
                 >
                   <span>
                     test-component-type-id-1
@@ -458,14 +763,14 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
               >
                 <input
                   class="custom-control-input"
-                  id="__BVID__109_BV_option_1"
+                  id="__BVID__133_BV_option_1"
                   name="componentTypeId"
                   type="checkbox"
                   value="test-component-type-id-2"
                 />
                 <label
                   class="custom-control-label"
-                  for="__BVID__109_BV_option_1"
+                  for="__BVID__133_BV_option_1"
                 >
                   <span>
                     test-component-type-id-2
@@ -477,14 +782,14 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
               >
                 <input
                   class="custom-control-input"
-                  id="__BVID__109_BV_option_2"
+                  id="__BVID__133_BV_option_2"
                   name="componentTypeId"
                   type="checkbox"
                   value="test-component-type-id-3"
                 />
                 <label
                   class="custom-control-label"
-                  for="__BVID__109_BV_option_2"
+                  for="__BVID__133_BV_option_2"
                 >
                   <span>
                     test-component-type-id-3
@@ -500,11 +805,11 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
          
         <fieldset
           class="form-group"
-          id="__BVID__113"
+          id="__BVID__137"
         >
           <legend
             class="bv-no-focus-ring col-form-label pt-0"
-            id="__BVID__113__BV_label_"
+            id="__BVID__137__BV_label_"
             tabindex="-1"
           >
             Platforms
@@ -512,7 +817,7 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
           <div>
             <div
               class="bv-no-focus-ring"
-              id="__BVID__114"
+              id="__BVID__138"
               role="group"
               tabindex="-1"
             >
@@ -521,14 +826,14 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
               >
                 <input
                   class="custom-control-input"
-                  id="__BVID__114_BV_option_0"
+                  id="__BVID__138_BV_option_0"
                   name="platformId"
                   type="checkbox"
                   value="undefined"
                 />
                 <label
                   class="custom-control-label"
-                  for="__BVID__114_BV_option_0"
+                  for="__BVID__138_BV_option_0"
                 >
                   <span>
                     undefined
@@ -544,13 +849,13 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
          
         <div
           class="form-group"
-          id="__BVID__116"
+          id="__BVID__140"
           role="group"
         >
           <label
             class="d-block"
             for="component-filter"
-            id="__BVID__116__BV_label_"
+            id="__BVID__140__BV_label_"
           >
             Component
           </label>
