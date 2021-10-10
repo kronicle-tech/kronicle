@@ -239,7 +239,7 @@ exports[`Index when Get Component service endpoint returns a component renders t
           class="card-text"
         >
           
-        
+        test-platform-id-1
       
         </p>
       </div>
@@ -294,7 +294,42 @@ exports[`Index when Get Component service endpoint returns a component renders t
       <!---->
     </div>
      
-    <!---->
+    <div
+      class="card"
+    >
+      <!---->
+      <!---->
+      <div
+        class="card-body"
+      >
+        <h4
+          class="card-title"
+        >
+          Key Software
+        </h4>
+        <!---->
+        <div
+          class="h5"
+        >
+          <span
+            class="badge mr-2 mb-2 badge-info"
+          >
+            
+    Test Key Software 1 1 1.1.1
+  
+          </span>
+          <span
+            class="badge mr-2 mb-2 badge-info"
+          >
+            
+    Test Key Software 1 2 1.1.2
+  
+          </span>
+        </div>
+      </div>
+      <!---->
+      <!---->
+    </div>
      
     <div
       class="card"
@@ -322,11 +357,134 @@ exports[`Index when Get Component service endpoint returns a component renders t
       <!---->
     </div>
      
-    <!---->
+    <div
+      class="card"
+    >
+      <!---->
+      <!---->
+      <div
+        class="card-body"
+      >
+        <h4
+          class="card-title"
+        >
+          Notes
+        </h4>
+        <!---->
+        <div>
+          
+
+          <h1
+            id="user-content-table-of-contents"
+          >
+            Table of Contents
+          </h1>
+          
+
+          <p>
+            Test Component Notes 1
+          </p>
+        </div>
+      </div>
+      <!---->
+      <!---->
+    </div>
      
-    <!---->
+    <div
+      class="card"
+    >
+      <!---->
+      <!---->
+      <div
+        class="card-body"
+      >
+        <h4
+          class="card-title"
+        >
+          Links
+        </h4>
+        <!---->
+        <ul>
+          <li>
+            <a
+              href="https://example.com/test-link-1-1"
+              target="_blank"
+            >
+              https://example.com/test-link-1-1
+            </a>
+             
+            <br />
+             
+            <div>
+              
+
+              <p>
+                Test Link Description 1 1
+              </p>
+            </div>
+          </li>
+          <li>
+            <a
+              href="https://example.com/test-link-1-2"
+              target="_blank"
+            >
+              https://example.com/test-link-1-2
+            </a>
+             
+            <br />
+             
+            <div>
+              
+
+              <p>
+                Test Link Description 1 2
+              </p>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <!---->
+      <!---->
+    </div>
      
-    <!---->
+    <div
+      class="card"
+    >
+      <!---->
+      <!---->
+      <div
+        class="card-body"
+      >
+        <h4
+          class="card-title"
+        >
+          Responsibilities
+        </h4>
+        <!---->
+        <ul>
+          <li>
+            <div>
+              
+
+              <p>
+                Test Responsibility Description 1 1
+              </p>
+            </div>
+          </li>
+          <li>
+            <div>
+              
+
+              <p>
+                Test Responsibility Description 1 2
+              </p>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <!---->
+      <!---->
+    </div>
   </div>
 </div>
 `;

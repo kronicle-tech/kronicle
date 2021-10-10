@@ -14,6 +14,7 @@
 
 <script lang="ts">
 import Vue, { PropType } from 'vue'
+import { BBadge } from "bootstrap-vue";
 import { KeySoftware } from "~/types/kronicle-service";
 
 interface Item {
@@ -22,6 +23,9 @@ interface Item {
 }
 
 export default Vue.extend({
+  components: {
+    'b-badge': BBadge,
+  },
   props: {
     keySoftware: {
       type: Array as PropType<KeySoftware[]>,

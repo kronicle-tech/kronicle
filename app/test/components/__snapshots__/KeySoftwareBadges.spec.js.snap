@@ -1,31 +1,23 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`KeySoftwareBadges when keySoftware prop is set to multiple key software items renders 3 badges 1`] = `
-"<div class=\\"h5\\">
-  <b-badge variant=\\"info\\" class=\\"mr-2 mb-2\\">
+"<div class=\\"h5\\"><span class=\\"badge mr-2 mb-2 badge-info\\">
     Test Key Software 1 1.0.0, 1.1.0, 1.2.0
-  </b-badge>
-  <b-badge variant=\\"info\\" class=\\"mr-2 mb-2\\">
+  </span><span class=\\"badge mr-2 mb-2 badge-info\\">
     Test Key Software 2 2.0.0, 2.1.0, 2.2.0
-  </b-badge>
-  <b-badge variant=\\"info\\" class=\\"mr-2 mb-2\\">
+  </span><span class=\\"badge mr-2 mb-2 badge-info\\">
     Test Key Software 3 3.0.0, 3.1.0, 3.2.0
-  </b-badge>
-</div>"
+  </span></div>"
 `;
 
 exports[`KeySoftwareBadges when keySoftware prop is set to one key software item with 1 version renders 1 badge containing 1 version 1`] = `
-"<div class=\\"h5\\">
-  <b-badge variant=\\"info\\" class=\\"mr-2 mb-2\\">
+"<div class=\\"h5\\"><span class=\\"badge mr-2 mb-2 badge-info\\">
     Test Key Software 1.2.3
-  </b-badge>
-</div>"
+  </span></div>"
 `;
 
 exports[`KeySoftwareBadges when keySoftware prop is set to one key software item with multiple versions renders 1 badge containing all the versions 1`] = `
-"<div class=\\"h5\\">
-  <b-badge variant=\\"info\\" class=\\"mr-2 mb-2\\">
+"<div class=\\"h5\\"><span class=\\"badge mr-2 mb-2 badge-info\\">
     Test Key Software 1.0.0, 1.1.0, 1.2.0
-  </b-badge>
-</div>"
+  </span></div>"
 `;
