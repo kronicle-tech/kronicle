@@ -18,12 +18,17 @@ export default Vue.extend({
     OpenApiSpecsView,
     TeamTabs,
   },
-  async asyncData({ $config, route }) {
+  async asyncData({ $config, route, store }) {
     const team = await fetch(
       `${$config.serviceBaseUrl}/v1/teams/${route.params.teamId}?fields=team(id,name,components(id,name,typeId,tags,teams,platformId,openApiSpecs))`
     )
       .then((res) => res.json())
       .then((json) => json.team as Team)
+
+    store.commit('componentFilters/initialize', {
+      components: team.components,
+      route,
+    })
 
     return {
       team,
