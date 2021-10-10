@@ -1,16 +1,16 @@
 package tech.kronicle.service.scanners.gradle.internal.services;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import tech.kronicle.sdk.models.SoftwareRepository;
-import tech.kronicle.service.scanners.gradle.internal.constants.MavenPackagings;
-import tech.kronicle.service.scanners.gradle.internal.models.Pom;
-import tech.kronicle.service.scanners.gradle.internal.models.PomOutcome;
-import tech.kronicle.service.scanners.gradle.internal.utils.ArtifactUtils;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import tech.kronicle.sdk.models.SoftwareRepository;
+import tech.kronicle.service.scanners.gradle.internal.constants.MavenPackagings;
+import tech.kronicle.service.scanners.gradle.internal.models.Pom;
+import tech.kronicle.service.scanners.gradle.internal.models.PomOutcome;
+import tech.kronicle.service.scanners.gradle.internal.utils.ArtifactUtils;
 
 import javax.xml.bind.JAXBException;
 import java.util.List;

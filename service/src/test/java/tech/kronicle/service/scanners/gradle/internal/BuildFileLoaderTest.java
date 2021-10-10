@@ -1,10 +1,5 @@
 package tech.kronicle.service.scanners.gradle.internal;
 
-import tech.kronicle.service.scanners.gradle.internal.services.BuildFileCache;
-import tech.kronicle.service.scanners.gradle.internal.services.BuildFileLoader;
-import tech.kronicle.service.scanners.gradle.internal.services.PropertyExpander;
-import tech.kronicle.service.scanners.gradle.internal.services.PropertyRetriever;
-import tech.kronicle.service.utils.FileUtils;
 import org.codehaus.groovy.ast.ASTNode;
 import org.codehaus.groovy.ast.ClassNode;
 import org.codehaus.groovy.ast.stmt.BlockStatement;
@@ -13,6 +8,11 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import tech.kronicle.service.scanners.gradle.internal.services.BuildFileCache;
+import tech.kronicle.service.scanners.gradle.internal.services.BuildFileLoader;
+import tech.kronicle.service.scanners.gradle.internal.services.PropertyExpander;
+import tech.kronicle.service.scanners.gradle.internal.services.PropertyRetriever;
+import tech.kronicle.service.utils.FileUtils;
 
 import java.nio.file.Path;
 import java.util.HashMap;

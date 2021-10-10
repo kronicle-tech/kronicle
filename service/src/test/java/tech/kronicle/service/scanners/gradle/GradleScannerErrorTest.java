@@ -1,12 +1,5 @@
 package tech.kronicle.service.scanners.gradle;
 
-import tech.kronicle.sdk.models.ScannerError;
-import tech.kronicle.service.config.DownloadCacheConfig;
-import tech.kronicle.service.config.UrlExistsCacheConfig;
-import tech.kronicle.service.scanners.BaseCodebaseScannerTest;
-import tech.kronicle.service.scanners.gradle.config.GradleConfig;
-import tech.kronicle.service.scanners.models.Codebase;
-import tech.kronicle.service.scanners.models.Output;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +7,12 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
+import tech.kronicle.sdk.models.ScannerError;
+import tech.kronicle.service.config.DownloadCacheConfig;
+import tech.kronicle.service.config.UrlExistsCacheConfig;
+import tech.kronicle.service.scanners.gradle.config.GradleConfig;
+import tech.kronicle.service.scanners.models.Codebase;
+import tech.kronicle.service.scanners.models.Output;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
