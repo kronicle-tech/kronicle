@@ -239,7 +239,7 @@ public class GradleScannerTest extends BaseCodebaseScannerTest {
     }
 
     @Test
-    public void shouldScanNoneBuild() {
+    public void shouldHandleNone() {
         // Given
         Codebase codebase = new Codebase(getTestRepo(), getCodebaseDir("None"));
 
@@ -311,7 +311,7 @@ public class GradleScannerTest extends BaseCodebaseScannerTest {
     }
 
     @Test
-    public void shouldScanEmptyBuild() {
+    public void shouldHandleEmpty() {
         // Given
         Codebase codebase = new Codebase(getTestRepo(), getCodebaseDir("Empty"));
 
@@ -335,7 +335,7 @@ public class GradleScannerTest extends BaseCodebaseScannerTest {
     }
 
     @Test
-    public void shouldScanRootProjectBuiltInPropertiesBuild() {
+    public void shouldHandleRootProjectBuiltInProperties() {
         // Given
         Codebase codebase = new Codebase(getTestRepo(), getCodebaseDir("RootProjectBuiltInProperties"));
 
@@ -354,7 +354,7 @@ public class GradleScannerTest extends BaseCodebaseScannerTest {
     }
 
     @Test
-    public void shouldScanProjectBuiltInPropertiesBuild() {
+    public void shouldHandleProjectBuiltInProperties() {
         // Given
         Codebase codebase = new Codebase(getTestRepo(), getCodebaseDir("ProjectBuiltInProperties"));
 
@@ -373,7 +373,7 @@ public class GradleScannerTest extends BaseCodebaseScannerTest {
     }
 
     @Test
-    public void shouldScanDependencyClassBuild() {
+    public void shouldHandleDependencyClass() {
         // Given
         Codebase codebase = new Codebase(getTestRepo(), getCodebaseDir("DependencyClass"));
 
@@ -395,7 +395,7 @@ public class GradleScannerTest extends BaseCodebaseScannerTest {
     }
 
     @Test
-    public void shouldScanDependencyBuild() {
+    public void shouldHandleDependency() {
         // Given
         Codebase codebase = new Codebase(getTestRepo(), getCodebaseDir("Dependency"));
 
@@ -417,7 +417,7 @@ public class GradleScannerTest extends BaseCodebaseScannerTest {
     }
 
     @Test
-    public void shouldScanDependencyPackagingBuild() {
+    public void shouldHandleDependencyPackaging() {
         // Given
         Codebase codebase = new Codebase(getTestRepo(), getCodebaseDir("DependencyPackaging"));
 
@@ -439,7 +439,7 @@ public class GradleScannerTest extends BaseCodebaseScannerTest {
     }
 
     @Test
-    public void shouldScanDependencyDynamicVersionBuild() {
+    public void shouldHandleDependencyDynamicVersion() {
         // Given
         Codebase codebase = new Codebase(getTestRepo(), getCodebaseDir("DependencyDynamicVersion"));
 
@@ -461,7 +461,7 @@ public class GradleScannerTest extends BaseCodebaseScannerTest {
     }
 
     @Test
-    public void shouldScanDependencyPomXmlWithoutNamespaceBuild() {
+    public void shouldHandleDependencyPomXmlWithoutNamespace() {
         // Given
         Codebase codebase = new Codebase(getTestRepo(), getCodebaseDir("DependencyPomXmlWithoutNamespace"));
 
@@ -483,7 +483,7 @@ public class GradleScannerTest extends BaseCodebaseScannerTest {
     }
 
     @Test
-    public void shouldScanDependencyFollowRedirectBuild() {
+    public void shouldHandleDependencyFollowRedirect() {
         // Given
         Codebase codebase = new Codebase(getTestRepo(), getCodebaseDir("DependencyFollowRedirect"));
 
@@ -505,7 +505,7 @@ public class GradleScannerTest extends BaseCodebaseScannerTest {
     }
 
     @Test
-    public void shouldScanDependencyListBuild() {
+    public void shouldHandleDependencyList() {
         // Given
         Codebase codebase = new Codebase(getTestRepo(), getCodebaseDir("DependencyList"));
 
@@ -528,7 +528,7 @@ public class GradleScannerTest extends BaseCodebaseScannerTest {
     }
 
     @Test
-    public void shouldScanApplyPluginBuild() {
+    public void shouldHandleApplyPlugin() {
         // Given
         Codebase codebase = new Codebase(getTestRepo(), getCodebaseDir("ApplyPlugin"));
 
@@ -551,7 +551,7 @@ public class GradleScannerTest extends BaseCodebaseScannerTest {
     }
 
     @Test
-    public void shouldScanApplyPluginClassBuild() {
+    public void shouldHandleApplyPluginClass() {
         // Given
         Codebase codebase = new Codebase(getTestRepo(), getCodebaseDir("ApplyPluginClass"));
 
@@ -572,7 +572,7 @@ public class GradleScannerTest extends BaseCodebaseScannerTest {
     }
 
     @Test
-    public void shouldScanApplyPluginImportedClassBuild() {
+    public void shouldHandleApplyPluginImportedClass() {
         // Given
         Codebase codebase = new Codebase(getTestRepo(), getCodebaseDir("ApplyPluginImportedClass"));
 
@@ -593,7 +593,7 @@ public class GradleScannerTest extends BaseCodebaseScannerTest {
     }
 
     @Test
-    public void shouldScanPluginPropertyBuild() {
+    public void shouldHandlePluginProperty() {
         // Given
         Codebase codebase = new Codebase(getTestRepo(), getCodebaseDir("PluginProperty"));
 
@@ -614,7 +614,7 @@ public class GradleScannerTest extends BaseCodebaseScannerTest {
     }
 
     @Test
-    public void shouldScanPluginDefinedInSettingsFileWithApplyFalseBuild() {
+    public void shouldHandlePluginDefinedInSettingsFileWithApplyFalse() {
         // Given
         Codebase codebase = new Codebase(getTestRepo(), getCodebaseDir("PluginDefinedInSettingsFileWithApplyFalse"));
 
@@ -634,7 +634,7 @@ public class GradleScannerTest extends BaseCodebaseScannerTest {
     }
 
     @Test
-    public void shouldScanPluginDefinedInSettingsFileWithApplyFalseAndAppliedInBuildFileBuild() {
+    public void shouldHandlePluginDefinedInSettingsFileWithApplyFalseAndAppliedInBuildFile() {
         // Given
         Codebase codebase = new Codebase(getTestRepo(), getCodebaseDir("PluginDefinedInSettingsFileWithApplyFalseAndAppliedInBuildFile"));
 
@@ -656,7 +656,7 @@ public class GradleScannerTest extends BaseCodebaseScannerTest {
     }
 
     @Test
-    public void shouldScanPluginDefinedInSettingsFileWithApplyFalseAndDefinedAgainInBuildFileBuild() {
+    public void shouldHandlePluginDefinedInSettingsFileWithApplyFalseAndDefinedAgainInBuildFile() {
         // Given
         Codebase codebase = new Codebase(getTestRepo(), getCodebaseDir("PluginDefinedInSettingsFileWithApplyFalseAndAppliedInBuildFile"));
 
@@ -678,7 +678,7 @@ public class GradleScannerTest extends BaseCodebaseScannerTest {
     }
 
     @Test
-    public void shouldScanPluginDefinedInSettingsFileWithApplyTrueBuild() {
+    public void shouldHandlePluginDefinedInSettingsFileWithApplyTrue() {
         // Given
         Codebase codebase = new Codebase(getTestRepo(), getCodebaseDir("PluginDefinedInSettingsFileWithApplyTrue"));
 
@@ -699,7 +699,7 @@ public class GradleScannerTest extends BaseCodebaseScannerTest {
     }
 
     @Test
-    public void shouldScanSpringBootPluginBuild() {
+    public void shouldHandleSpringBootPlugin() {
         // Given
         Codebase codebase = new Codebase(getTestRepo(), getCodebaseDir("SpringBootPlugin"));
 
@@ -722,7 +722,7 @@ public class GradleScannerTest extends BaseCodebaseScannerTest {
     }
 
     @Test
-    public void shouldScanSpringBootPluginApplyPluginBuild() {
+    public void shouldHandleSpringBootPluginApplyPlugin() {
         // Given
         Codebase codebase = new Codebase(getTestRepo(), getCodebaseDir("SpringBootPluginApplyPlugin"));
 
@@ -746,7 +746,7 @@ public class GradleScannerTest extends BaseCodebaseScannerTest {
     }
 
     @Test
-    public void shouldScanSpringBootPluginPluginsAndApplyPluginBuild() {
+    public void shouldHandleSpringBootPluginPluginsAndApplyPlugin() {
         // Given
         Codebase codebase = new Codebase(getTestRepo(), getCodebaseDir("SpringBootPluginPluginsAndApplyPlugin"));
 
@@ -769,7 +769,7 @@ public class GradleScannerTest extends BaseCodebaseScannerTest {
     }
 
     @Test
-    public void shouldScanGradleWrapperBuild() {
+    public void shouldHandleGradleWrapper() {
         // Given
         Codebase codebase = new Codebase(getTestRepo(), getCodebaseDir("GradleWrapper"));
 
@@ -793,7 +793,7 @@ public class GradleScannerTest extends BaseCodebaseScannerTest {
     }
 
     @Test
-    public void shouldScanDependencyNamedPartsBuild() {
+    public void shouldHandleDependencyNamedParts() {
         // Given
         Codebase codebase = new Codebase(getTestRepo(), getCodebaseDir("DependencyNamedParts"));
 
@@ -816,7 +816,7 @@ public class GradleScannerTest extends BaseCodebaseScannerTest {
     }
 
     @Test
-    public void shouldScanDependencyNamedPartsWithClassifierAndExtBuild() {
+    public void shouldHandleDependencyNamedPartsWithClassifierAndExt() {
         // Given
         Codebase codebase = new Codebase(getTestRepo(), getCodebaseDir("DependencyNamedPartsWithClassifierAndExt"));
 
@@ -839,7 +839,7 @@ public class GradleScannerTest extends BaseCodebaseScannerTest {
     }
 
     @Test
-    public void shouldScanDependencyMultipleInOneCallBuild() {
+    public void shouldHandleDependencyMultipleInOneCall() {
         // Given
         Codebase codebase = new Codebase(getTestRepo(), getCodebaseDir("DependencyMultipleInOneCall"));
 
@@ -863,7 +863,7 @@ public class GradleScannerTest extends BaseCodebaseScannerTest {
     }
 
     @Test
-    public void shouldScanDependencyMultipleWithNamedPartsInOneCallBuild() {
+    public void shouldHandleDependencyMultipleWithNamedPartsInOneCall() {
         // Given
         Codebase codebase = new Codebase(getTestRepo(), getCodebaseDir("DependencyMultipleWithNamedPartsInOneCall"));
 
@@ -887,7 +887,7 @@ public class GradleScannerTest extends BaseCodebaseScannerTest {
     }
 
     @Test
-    public void shouldScanDependencyStringConcatenationBuild() {
+    public void shouldHandleDependencyStringConcatenation() {
         // Given
         Codebase codebase = new Codebase(getTestRepo(), getCodebaseDir("DependencyStringConcatenation"));
 
@@ -910,7 +910,7 @@ public class GradleScannerTest extends BaseCodebaseScannerTest {
     }
 
     @Test
-    public void shouldScanDependencyProjectBuild() {
+    public void shouldHandleDependencyProject() {
         // Given
         Codebase codebase = new Codebase(getTestRepo(), getCodebaseDir("DependencyProject"));
 
@@ -931,7 +931,7 @@ public class GradleScannerTest extends BaseCodebaseScannerTest {
     }
 
     @Test
-    public void shouldScanDependencyLocalGroovyBuild() {
+    public void shouldHandleDependencyLocalGroovy() {
         // Given
         Codebase codebase = new Codebase(getTestRepo(), getCodebaseDir("DependencyLocalGroovy"));
 
@@ -952,7 +952,7 @@ public class GradleScannerTest extends BaseCodebaseScannerTest {
     }
 
     @Test
-    public void shouldScanDependencyGradleApiBuild() {
+    public void shouldHandleDependencyGradleApi() {
         // Given
         Codebase codebase = new Codebase(getTestRepo(), getCodebaseDir("DependencyGradleApi"));
 
@@ -973,7 +973,7 @@ public class GradleScannerTest extends BaseCodebaseScannerTest {
     }
 
     @Test
-    public void shouldScanDependencyFileTreeBuild() {
+    public void shouldHandleDependencyFileTree() {
         // Given
         Codebase codebase = new Codebase(getTestRepo(), getCodebaseDir("DependencyFileTree"));
 
@@ -994,7 +994,7 @@ public class GradleScannerTest extends BaseCodebaseScannerTest {
     }
 
     @Test
-    public void shouldScanDependencyFilesBuild() {
+    public void shouldHandleDependencyFiles() {
         // Given
         Codebase codebase = new Codebase(getTestRepo(), getCodebaseDir("DependencyFiles"));
 
@@ -1015,7 +1015,7 @@ public class GradleScannerTest extends BaseCodebaseScannerTest {
     }
 
     @Test
-    public void shouldScanDependencyVariableBuild() {
+    public void shouldHandleDependencyVariable() {
         // Given
         Codebase codebase = new Codebase(getTestRepo(), getCodebaseDir("DependencyVariable"));
 
@@ -1039,7 +1039,7 @@ public class GradleScannerTest extends BaseCodebaseScannerTest {
     }
 
     @Test
-    public void shouldScanDependencyVariableInDependenciesBuild() {
+    public void shouldHandleDependencyVariableInDependencies() {
         // Given
         Codebase codebase = new Codebase(getTestRepo(), getCodebaseDir("DependencyVariableInDependencies"));
 
@@ -1063,7 +1063,7 @@ public class GradleScannerTest extends BaseCodebaseScannerTest {
     }
 
     @Test
-    public void shouldScanDependencyDuplicatesBuild() {
+    public void shouldHandleDependencyDuplicates() {
         // Given
         Codebase codebase = new Codebase(getTestRepo(), getCodebaseDir("DependencyDuplicates"));
 
@@ -1084,7 +1084,7 @@ public class GradleScannerTest extends BaseCodebaseScannerTest {
     }
 
     @Test
-    public void shouldScanDependencyExclusionBuild() {
+    public void shouldHandleDependencyExclusion() {
         // Given
         Codebase codebase = new Codebase(getTestRepo(), getCodebaseDir("DependencyExclusion"));
 
@@ -1108,7 +1108,7 @@ public class GradleScannerTest extends BaseCodebaseScannerTest {
     }
 
     @Test
-    public void shouldScanProjectPropertiesBuild() {
+    public void shouldHandleProjectProperties() {
         // Given
         Codebase codebase = new Codebase(getTestRepo(), getCodebaseDir("ProjectProperties"));
 
@@ -1132,7 +1132,7 @@ public class GradleScannerTest extends BaseCodebaseScannerTest {
     }
 
     @Test
-    public void shouldScanProjectPropertyAssignmentBuild() {
+    public void shouldHandleProjectPropertyAssignment() {
         // Given
         Codebase codebase = new Codebase(getTestRepo(), getCodebaseDir("ProjectPropertyAssignment"));
 
@@ -1155,7 +1155,7 @@ public class GradleScannerTest extends BaseCodebaseScannerTest {
     }
 
     @Test
-    public void shouldScanProjectPropertySetMethodBuild() {
+    public void shouldHandleProjectPropertySetMethod() {
         // Given
         Codebase codebase = new Codebase(getTestRepo(), getCodebaseDir("ProjectPropertySetMethod"));
 
@@ -1178,7 +1178,7 @@ public class GradleScannerTest extends BaseCodebaseScannerTest {
     }
 
     @Test
-    public void shouldScanBuildscriptProjectPropertyBuild() {
+    public void shouldHandleBuildscriptProjectProperty() {
         // Given
         Codebase codebase = new Codebase(getTestRepo(), getCodebaseDir("BuildscriptProjectProperty"));
 
@@ -1201,7 +1201,7 @@ public class GradleScannerTest extends BaseCodebaseScannerTest {
     }
 
     @Test
-    public void shouldScanBuildscriptProjectPropertyAssignmentBuild() {
+    public void shouldHandleBuildscriptProjectPropertyAssignment() {
         // Given
         Codebase codebase = new Codebase(getTestRepo(), getCodebaseDir("BuildscriptProjectPropertyAssignment"));
 
@@ -1222,7 +1222,7 @@ public class GradleScannerTest extends BaseCodebaseScannerTest {
     }
 
     @Test
-    public void shouldScanBuildscriptDependencyWithNoBuildscriptRepositoryBuild() {
+    public void shouldHandleBuildscriptDependencyWithNoBuildscriptRepository() {
         // Given
         Codebase codebase = new Codebase(getTestRepo(), getCodebaseDir("BuildscriptDependencyWithNoBuildscriptRepository"));
 
@@ -1244,7 +1244,7 @@ public class GradleScannerTest extends BaseCodebaseScannerTest {
     }
 
     @Test
-    public void shouldScanGradlePropertiesBuild() {
+    public void shouldHandleGradleProperties() {
         // Given
         Codebase codebase = new Codebase(getTestRepo(), getCodebaseDir("GradleProperties"));
 
@@ -1267,7 +1267,7 @@ public class GradleScannerTest extends BaseCodebaseScannerTest {
     }
 
     @Test
-    public void shouldScanGradlePropertiesAndProjectPropertiesBuild() {
+    public void shouldHandleGradlePropertiesAndProjectProperties() {
         // Given
         Codebase codebase = new Codebase(getTestRepo(), getCodebaseDir("GradlePropertiesAndProjectProperties"));
 
@@ -1290,7 +1290,7 @@ public class GradleScannerTest extends BaseCodebaseScannerTest {
     }
 
     @Test
-    public void shouldScanMultiProjectBuild() {
+    public void shouldHandleMultiProject() {
         // Given
         Codebase codebase = new Codebase(getTestRepo(), getCodebaseDir("MultiProject"));
 
@@ -1314,7 +1314,7 @@ public class GradleScannerTest extends BaseCodebaseScannerTest {
     }
 
     @Test
-    public void shouldScanMultiProjectNestedGradlePropertiesBuild() {
+    public void shouldHandleMultiProjectNestedGradleProperties() {
         // Given
         Codebase codebase = new Codebase(getTestRepo(), getCodebaseDir("MultiProjectNestedGradleProperties"));
 
@@ -1338,7 +1338,7 @@ public class GradleScannerTest extends BaseCodebaseScannerTest {
     }
 
     @Test
-    public void shouldScanMultiProjectMissingBuildFileBuild() {
+    public void shouldHandleMultiProjectMissingBuildFile() {
         // Given
         Codebase codebase = new Codebase(getTestRepo(), getCodebaseDir("MultiProjectMissingBuildFile"));
 
@@ -1361,7 +1361,7 @@ public class GradleScannerTest extends BaseCodebaseScannerTest {
     }
 
     @Test
-    public void shouldScanMultiProjectSpringBootPluginBuild() {
+    public void shouldHandleMultiProjectSpringBootPlugin() {
         // Given
         Codebase codebase = new Codebase(getTestRepo(), getCodebaseDir("MultiProjectSpringBootPlugin"));
 
@@ -1385,7 +1385,7 @@ public class GradleScannerTest extends BaseCodebaseScannerTest {
     }
 
     @Test
-    public void shouldScanMultiProjectSpringBootPluginApplyFalseBuild() {
+    public void shouldHandleMultiProjectSpringBootPluginApplyFalse() {
         // Given
         Codebase codebase = new Codebase(getTestRepo(), getCodebaseDir("MultiProjectSpringBootPluginApplyFalse"));
 
@@ -1410,7 +1410,7 @@ public class GradleScannerTest extends BaseCodebaseScannerTest {
     }
 
     @Test
-    public void shouldScanMultiProjectInheritedProjectPropertiesBuild() {
+    public void shouldHandleMultiProjectInheritedProjectProperties() {
         // Given
         Codebase codebase = new Codebase(getTestRepo(), getCodebaseDir("MultiProjectInheritedProjectProperties"));
 
@@ -1433,7 +1433,7 @@ public class GradleScannerTest extends BaseCodebaseScannerTest {
     }
 
     @Test
-    public void shouldScanMultiProjectOverriddenProjectPropertiesBuild() {
+    public void shouldHandleMultiProjectOverriddenProjectProperties() {
         // Given
         Codebase codebase = new Codebase(getTestRepo(), getCodebaseDir("MultiProjectOverriddenProjectProperties"));
 
@@ -1457,7 +1457,7 @@ public class GradleScannerTest extends BaseCodebaseScannerTest {
     }
 
     @Test
-    public void shouldScanMultiProjectAllprojectsBuild() {
+    public void shouldHandleMultiProjectAllprojects() {
         // Given
         Codebase codebase = new Codebase(getTestRepo(), getCodebaseDir("MultiProjectAllprojects"));
 
@@ -1479,7 +1479,7 @@ public class GradleScannerTest extends BaseCodebaseScannerTest {
     }
 
     @Test
-    public void shouldScanMultiProjectSubprojectsBuild() {
+    public void shouldHandleMultiProjectSubprojects() {
         // Given
         Codebase codebase = new Codebase(getTestRepo(), getCodebaseDir("MultiProjectSubprojects"));
 
@@ -1501,7 +1501,7 @@ public class GradleScannerTest extends BaseCodebaseScannerTest {
     }
 
     @Test
-    public void shouldScanMultiProjectSubprojectsRepositoriesBuild() {
+    public void shouldHandleMultiProjectSubprojectsRepositories() {
         // Given
         Codebase codebase = new Codebase(getTestRepo(), getCodebaseDir("MultiProjectSubprojectsRepositories"));
 
@@ -1525,7 +1525,7 @@ public class GradleScannerTest extends BaseCodebaseScannerTest {
     }
 
     @Test
-    public void shouldScanPlatformDependencyBuild() {
+    public void shouldHandlePlatformDependency() {
         // Given
         Codebase codebase = new Codebase(getTestRepo(), getCodebaseDir("PlatformDependency"));
 
@@ -1548,7 +1548,7 @@ public class GradleScannerTest extends BaseCodebaseScannerTest {
     }
 
     @Test
-    public void shouldScanApplyFromBuild() {
+    public void shouldHandleApplyFrom() {
         // Given
         Codebase codebase = new Codebase(getTestRepo(), getCodebaseDir("ApplyFrom"));
 
@@ -1570,7 +1570,7 @@ public class GradleScannerTest extends BaseCodebaseScannerTest {
     }
 
     @Test
-    public void shouldScanApplyFromRootDirBuild() {
+    public void shouldHandleApplyFromRootDir() {
         // Given
         Codebase codebase = new Codebase(getTestRepo(), getCodebaseDir("ApplyFromRootDir"));
 
@@ -1592,7 +1592,7 @@ public class GradleScannerTest extends BaseCodebaseScannerTest {
     }
 
     @Test
-    public void shouldScanApplyFromRootProjectProjectDirBuild() {
+    public void shouldHandleApplyFromRootProjectProjectDir() {
         // Given
         Codebase codebase = new Codebase(getTestRepo(), getCodebaseDir("ApplyFromRootProjectProjectDir"));
 
@@ -1614,7 +1614,7 @@ public class GradleScannerTest extends BaseCodebaseScannerTest {
     }
 
     @Test
-    public void shouldScanApplyFromProjectDirBuild() {
+    public void shouldHandleApplyFromProjectDir() {
         // Given
         Codebase codebase = new Codebase(getTestRepo(), getCodebaseDir("ApplyFromProjectDir"));
 
@@ -1636,7 +1636,7 @@ public class GradleScannerTest extends BaseCodebaseScannerTest {
     }
 
     @Test
-    public void shouldScanApplyFromProjectDirParentBuild() {
+    public void shouldHandleApplyFromProjectDirParent() {
         // Given
         Codebase codebase = new Codebase(getTestRepo(), getCodebaseDir("ApplyFromProjectDirParent"));
 
@@ -1658,7 +1658,7 @@ public class GradleScannerTest extends BaseCodebaseScannerTest {
     }
 
     @Test
-    public void shouldScanApplyFromProjectRelativePathBuild() {
+    public void shouldHandleApplyFromProjectRelativePath() {
         // Given
         Codebase codebase = new Codebase(getTestRepo(), getCodebaseDir("ApplyFromProjectRelativePath"));
 
@@ -1680,7 +1680,7 @@ public class GradleScannerTest extends BaseCodebaseScannerTest {
     }
 
     @Test
-    public void shouldScanApplyFromToBuild() {
+    public void shouldHandleApplyFromTo() {
         // Given
         Codebase codebase = new Codebase(getTestRepo(), getCodebaseDir("ApplyFromTo"));
 
@@ -1699,7 +1699,7 @@ public class GradleScannerTest extends BaseCodebaseScannerTest {
     }
 
     @Test
-    public void shouldScanSpringDependencyManagementPluginBuild() {
+    public void shouldHandleSpringDependencyManagementPlugin() {
         // Given
         Codebase codebase = new Codebase(getTestRepo(), getCodebaseDir("SpringDependencyManagementPlugin"));
 
@@ -1722,7 +1722,7 @@ public class GradleScannerTest extends BaseCodebaseScannerTest {
     }
 
     @Test
-    public void shouldScanSpringDependencyManagementPluginStringConcatenationBuild() {
+    public void shouldHandleSpringDependencyManagementPluginStringConcatenation() {
         // Given
         Codebase codebase = new Codebase(getTestRepo(), getCodebaseDir("SpringDependencyManagementPluginStringConcatenation"));
 
@@ -1745,7 +1745,7 @@ public class GradleScannerTest extends BaseCodebaseScannerTest {
     }
 
     @Test
-    public void shouldScanImportBuild() {
+    public void shouldHandleImport() {
         // Given
         Codebase codebase = new Codebase(getTestRepo(), getCodebaseDir("Import"));
 
@@ -1763,7 +1763,7 @@ public class GradleScannerTest extends BaseCodebaseScannerTest {
     }
 
     @Test
-    public void shouldScanRepositoryMavenUrlMethodCallBuild() {
+    public void shouldHandleRepositoryMavenUrlMethodCall() {
         // Given
         Codebase codebase = new Codebase(getTestRepo(), getCodebaseDir("RepositoryMavenUrlMethodCall"));
 
@@ -1782,7 +1782,7 @@ public class GradleScannerTest extends BaseCodebaseScannerTest {
     }
 
     @Test
-    public void shouldScanRepositoryMavenUrlMethodCallGStringBuild() {
+    public void shouldHandleRepositoryMavenUrlMethodCallGString() {
         // Given
         Codebase codebase = new Codebase(getTestRepo(), getCodebaseDir("RepositoryMavenUrlMethodCallGString"));
 
@@ -1801,7 +1801,7 @@ public class GradleScannerTest extends BaseCodebaseScannerTest {
     }
 
     @Test
-    public void shouldScanRepositoryMavenUrlPropertyBuild() {
+    public void shouldHandleRepositoryMavenUrlProperty() {
         // Given
         Codebase codebase = new Codebase(getTestRepo(), getCodebaseDir("RepositoryMavenUrlProperty"));
 
@@ -1820,7 +1820,7 @@ public class GradleScannerTest extends BaseCodebaseScannerTest {
     }
 
     @Test
-    public void shouldScanRepositoryMavenUrlPropertyGStringBuild() {
+    public void shouldHandleRepositoryMavenUrlPropertyGString() {
         // Given
         Codebase codebase = new Codebase(getTestRepo(), getCodebaseDir("RepositoryMavenUrlPropertyGString"));
 
@@ -1839,7 +1839,7 @@ public class GradleScannerTest extends BaseCodebaseScannerTest {
     }
 
     @Test
-    public void shouldScanRepositoryMavenCentralBuild() {
+    public void shouldHandleRepositoryMavenCentral() {
         // Given
         Codebase codebase = new Codebase(getTestRepo(), getCodebaseDir("RepositoryMavenCentral"));
 
@@ -1858,7 +1858,7 @@ public class GradleScannerTest extends BaseCodebaseScannerTest {
     }
 
     @Test
-    public void shouldScanRepositoryJCenterBuild() {
+    public void shouldHandleRepositoryJCenter() {
         // Given
         Codebase codebase = new Codebase(getTestRepo(), getCodebaseDir("RepositoryJCenter"));
 
@@ -1877,7 +1877,7 @@ public class GradleScannerTest extends BaseCodebaseScannerTest {
     }
 
     @Test
-    public void shouldScanRepositoryGoogleBuild() {
+    public void shouldHandleRepositoryGoogle() {
         // Given
         Codebase codebase = new Codebase(getTestRepo(), getCodebaseDir("RepositoryGoogle"));
 
