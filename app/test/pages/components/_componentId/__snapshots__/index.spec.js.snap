@@ -166,8 +166,8 @@ exports[`Index when Get Component service endpoint returns a component renders t
     </a>
   </div>
    
-  <b-card-group
-    columns=""
+  <div
+    class="card-columns"
   >
     <div
       class="card"
@@ -327,6 +327,6 @@ exports[`Index when Get Component service endpoint returns a component renders t
     <!---->
      
     <!---->
-  </b-card-group>
+  </div>
 </div>
 `;
