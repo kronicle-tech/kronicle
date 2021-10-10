@@ -1,9 +1,10 @@
 # This file is read automatically by Kronicle https://kronicle.tech
 
 components:
+
   - id: kronicle-app
     name: Kronicle App
-    type: spa
+    typeId: spa
     repo:
       url: https://github.com/kronicle-tech/kronicle.git
     description: |
@@ -40,7 +41,7 @@ components:
 
   - id: kronicle-service
     name: Kronicle Service
-    type: microservice
+    typeId: microservice
     repo:
       url: https://github.com/kronicle-tech/kronicle.git
     description: |
@@ -85,7 +86,7 @@ components:
           The Kronicle live demo
     dependencies:
       - targetComponentId: zipkin
-      - targetComponentId: sonarqube-cloud
+      - targetComponentId: sonarcloud
       - targetComponentId: github
     crossFunctionalRequirements: []
     techDebts:
