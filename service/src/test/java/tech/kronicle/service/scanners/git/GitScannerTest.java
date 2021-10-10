@@ -1,5 +1,11 @@
 package tech.kronicle.service.scanners.git;
 
+import org.eclipse.jgit.api.errors.GitAPIException;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.io.TempDir;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.MethodSource;
 import tech.kronicle.sdk.models.Component;
 import tech.kronicle.sdk.models.Repo;
 import tech.kronicle.sdk.models.git.Identity;
@@ -13,12 +19,6 @@ import tech.kronicle.service.testutils.CreateRemoteRepoOutcome;
 import tech.kronicle.service.testutils.GitRepoHelper;
 import tech.kronicle.service.testutils.RepoOperationOption;
 import tech.kronicle.service.testutils.UpdateRemoteRepoOutcome;
-import org.eclipse.jgit.api.errors.GitAPIException;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.io.TempDir;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.MethodSource;
 
 import java.io.IOException;
 import java.nio.file.Path;
@@ -31,7 +31,7 @@ public class GitScannerTest extends BaseScannerTest {
 
     @TempDir
     public Path tempDir;
-    private GitRepoHelper gitRepoHelper; 
+    private GitRepoHelper gitRepoHelper;
     private GitScanner underTest;
 
     @BeforeEach
