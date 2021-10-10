@@ -86,7 +86,7 @@ components:
           The Kronicle live demo
     dependencies:
       - targetComponentId: zipkin
-      - targetComponentId: sonarqube-cloud
+      - targetComponentId: sonarcloud
       - targetComponentId: github
     crossFunctionalRequirements: []
     techDebts:
