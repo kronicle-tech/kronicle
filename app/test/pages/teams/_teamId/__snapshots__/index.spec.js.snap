@@ -79,167 +79,193 @@ exports[`Index when Get Team service endpoint returns an team renders the page 1
   </div>
    
   <div
-    class="card my-3"
+    class="card-columns"
   >
-    <!---->
-    <!---->
     <div
-      class="card-body"
+      class="card"
     >
-      <h4
-        class="card-title"
-      >
-        Area
-      </h4>
       <!---->
-      <a
-        href="/areas/test-area-id-1"
-      >
-        test-area-id-1
-      </a>
-    </div>
-    <!---->
-    <!---->
-  </div>
-   
-  <div
-    class="card my-3"
-  >
-    <!---->
-    <!---->
-    <div
-      class="card-body"
-    >
-      <h4
-        class="card-title"
-      >
-        Links
-      </h4>
       <!---->
-      <ul>
-        <li>
-          <a
-            href="https://example.com/test-link-1-1"
-            target="_blank"
-          >
-            https://example.com/test-link-1-1
-          </a>
-           
-          <br />
-           
-          <div>
-            
-
-            <p>
-              Test Link Description 1 1
-            </p>
-          </div>
-        </li>
-        <li>
-          <a
-            href="https://example.com/test-link-1-2"
-            target="_blank"
-          >
-            https://example.com/test-link-1-2
-          </a>
-           
-          <br />
-           
-          <div>
-            
-
-            <p>
-              Test Link Description 1 2
-            </p>
-          </div>
-        </li>
-      </ul>
-    </div>
-    <!---->
-    <!---->
-  </div>
-   
-  <div
-    class="card my-3"
-  >
-    <!---->
-    <!---->
-    <div
-      class="card-body"
-    >
-      <h4
-        class="card-title"
+      <div
+        class="card-body"
       >
-        Description
-      </h4>
-      <!---->
-      <div>
-        
-
-        <p>
-          Test Area Description 1
-        </p>
-      </div>
-    </div>
-    <!---->
-    <!---->
-  </div>
-   
-  <div
-    class="card my-3"
-  >
-    <!---->
-    <!---->
-    <div
-      class="card-body"
-    >
-      <h4
-        class="card-title"
-      >
-        Email Address
-      </h4>
-      <!---->
-      <a
-        href="mailto:test-team-email-1ddress-1@example.com"
-      >
-        test-team-email-1ddress-1@example.com
-      </a>
-    </div>
-    <!---->
-    <!---->
-  </div>
-   
-  <div
-    class="card my-3"
-  >
-    <!---->
-    <!---->
-    <div
-      class="card-body"
-    >
-      <h4
-        class="card-title"
-      >
-        Notes
-      </h4>
-      <!---->
-      <div>
-        
-
-        <h1
-          id="user-content-table-of-contents"
+        <h4
+          class="card-title"
         >
-          Table of Contents
-        </h1>
+          Team Name
+        </h4>
+        <!---->
         
-
-        <p>
-          Test Area Notes 1
-        </p>
+      Test Team Name 1
+    
       </div>
+      <!---->
+      <!---->
     </div>
-    <!---->
-    <!---->
+     
+    <div
+      class="card"
+    >
+      <!---->
+      <!---->
+      <div
+        class="card-body"
+      >
+        <h4
+          class="card-title"
+        >
+          Area
+        </h4>
+        <!---->
+        <a
+          href="/areas/test-area-id-1"
+        >
+          test-area-id-1
+        </a>
+      </div>
+      <!---->
+      <!---->
+    </div>
+     
+    <div
+      class="card"
+    >
+      <!---->
+      <!---->
+      <div
+        class="card-body"
+      >
+        <h4
+          class="card-title"
+        >
+          Links
+        </h4>
+        <!---->
+        <ul>
+          <li>
+            <a
+              href="https://example.com/test-link-1-1"
+              target="_blank"
+            >
+              https://example.com/test-link-1-1
+            </a>
+             
+            <br />
+             
+            <div>
+              
+
+              <p>
+                Test Link Description 1 1
+              </p>
+            </div>
+          </li>
+          <li>
+            <a
+              href="https://example.com/test-link-1-2"
+              target="_blank"
+            >
+              https://example.com/test-link-1-2
+            </a>
+             
+            <br />
+             
+            <div>
+              
+
+              <p>
+                Test Link Description 1 2
+              </p>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <!---->
+      <!---->
+    </div>
+     
+    <div
+      class="card"
+    >
+      <!---->
+      <!---->
+      <div
+        class="card-body"
+      >
+        <h4
+          class="card-title"
+        >
+          Description
+        </h4>
+        <!---->
+        <div>
+          
+
+          <p>
+            Test Area Description 1
+          </p>
+        </div>
+      </div>
+      <!---->
+      <!---->
+    </div>
+     
+    <div
+      class="card"
+    >
+      <!---->
+      <!---->
+      <div
+        class="card-body"
+      >
+        <h4
+          class="card-title"
+        >
+          Notes
+        </h4>
+        <!---->
+        <div>
+          
+
+          <h1
+            id="user-content-table-of-contents"
+          >
+            Table of Contents
+          </h1>
+          
+
+          <p>
+            Test Area Notes 1
+          </p>
+        </div>
+      </div>
+      <!---->
+      <!---->
+    </div>
+     
+    <div
+      class="card"
+    >
+      <!---->
+      <!---->
+      <div
+        class="card-body"
+      >
+        <h4
+          class="card-title"
+        >
+          Email Address
+        </h4>
+        <!---->
+        <a
+          href="mailto:test-team-email-1ddress-1@example.com"
+        >
+          test-team-email-1ddress-1@example.com
+        </a>
+      </div>
+      <!---->
+      <!---->
+    </div>
   </div>
 </div>
 `;
