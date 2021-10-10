@@ -88,7 +88,17 @@ components:
       - targetComponentId: zipkin
       - targetComponentId: sonarcloud
       - targetComponentId: github
-    crossFunctionalRequirements: []
+    crossFunctionalRequirements:
+      - description: |
+          When refreshing the data in Kronicle, either on start up or on scheduled, if an individual scanner fails when
+          scanning a component, the refresh should continue
+        notes: |
+          Other scanners should not be affected and if possible the failed scanner should continue to process other
+          components
+      - description: |
+          The Gradle Scanner needs to be able to discover dependencies in `*.gradle` Groovy based Gradle build files
+        notes: |
+          The scanner does not need to be able to handle `*.gradle.kts` Kotlin based Gradle build files for now
     techDebts:
       - description: |
           Kronicle Service stores all of its data in-memory.  This means:
