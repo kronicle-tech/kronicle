@@ -2,14 +2,22 @@
 
 exports[`Tags when tags prop is set to multiple tags renders an unordered list showing the tags 1`] = `
 "<ul>
-  <li>test-tag-1</li>
-  <li>test-tag-2</li>
-  <li>test-tag-3</li>
+  <li>
+    test-tag-1
+  </li>
+  <li>
+    test-tag-2
+  </li>
+  <li>
+    test-tag-3
+  </li>
 </ul>"
 `;
 
 exports[`Tags when tags prop is set to one tag renders an unordered list showing the tag 1`] = `
 "<ul>
-  <li>test-tag-1</li>
+  <li>
+    test-tag-1
+  </li>
 </ul>"
 `;

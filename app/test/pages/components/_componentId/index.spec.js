@@ -19,7 +19,7 @@ describe('Index', () => {
     wrapper = await createPageWrapper(Index, {
       route,
       serviceRequests: {
-        '/v1/components/test-component-id-1?fields=component(id,name,typeId,platformId,tags,teams,links,description,notes,responsibilities)':
+        '/v1/components/test-component-id-1?fields=component(id,name,typeId,platformId,tags,teams,links,description,notes,responsibilities,keySoftware)':
           {
             responseBody: { component },
           },

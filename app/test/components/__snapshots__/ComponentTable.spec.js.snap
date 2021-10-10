@@ -17,8 +17,12 @@ exports[`ComponentTable when a component has no description renders the componen
       <td class=\\"name table-primary\\"><a href=\\"/components/test-component-id-undefined\\">Test Component Name undefined</a></td>
       <td>
         <ul>
-          <li>test-tag-undefined-1</li>
-          <li>test-tag-undefined-2</li>
+          <li>
+            test-tag-undefined-1
+          </li>
+          <li>
+            test-tag-undefined-2
+          </li>
         </ul>
       </td>
       <td>
@@ -42,8 +46,12 @@ exports[`ComponentTable when a component has no description renders the componen
       <td class=\\"name table-primary\\"><a href=\\"/components/test-component-id-undefined\\">Test Component Name undefined</a></td>
       <td>
         <ul>
-          <li>test-tag-undefined-1</li>
-          <li>test-tag-undefined-2</li>
+          <li>
+            test-tag-undefined-1
+          </li>
+          <li>
+            test-tag-undefined-2
+          </li>
         </ul>
       </td>
       <td>
@@ -85,8 +93,12 @@ exports[`ComponentTable when components is set to multiple components renders th
       <td class=\\"name table-primary\\"><a href=\\"/components/test-component-id-1\\">Test Component Name 1</a></td>
       <td>
         <ul>
-          <li>test-tag-1-1</li>
-          <li>test-tag-1-2</li>
+          <li>
+            test-tag-1-1
+          </li>
+          <li>
+            test-tag-1-2
+          </li>
         </ul>
       </td>
       <td>
@@ -112,8 +124,12 @@ exports[`ComponentTable when components is set to multiple components renders th
       <td class=\\"name table-primary\\"><a href=\\"/components/test-component-id-2\\">Test Component Name 2</a></td>
       <td>
         <ul>
-          <li>test-tag-2-1</li>
-          <li>test-tag-2-2</li>
+          <li>
+            test-tag-2-1
+          </li>
+          <li>
+            test-tag-2-2
+          </li>
         </ul>
       </td>
       <td>

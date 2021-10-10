@@ -43,6 +43,10 @@ export function createComponent({
       createResponsibility({ componentNumber, responsibilityNumber: 1 }),
       createResponsibility({ componentNumber, responsibilityNumber: 2 }),
     ]
+    fields.keySoftware = [
+      createKeySoftware({ componentNumber, keySoftwareItemNumber: 1 }),
+      createKeySoftware({ componentNumber, keySoftwareItemNumber: 2 }),
+    ]
     if (platformNumber === undefined) {
       platformNumber = componentNumber
     }
@@ -472,6 +476,15 @@ function createFileExtensionCount({
   return {
     fileExtension: `extension-${fileExtensionCountNumber}`,
     count: 100 + componentNumber + fileExtensionCountNumber,
+  }
+}
+
+function createKeySoftware({ componentNumber, keySoftwareItemNumber }) {
+  return {
+    name: `Test Key Software ${componentNumber} ${keySoftwareItemNumber}`,
+    versions: [
+      `1.${componentNumber}.${keySoftwareItemNumber}`,
+    ]
   }
 }
 

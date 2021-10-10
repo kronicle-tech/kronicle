@@ -7,7 +7,7 @@
              variant="info"
              class="mr-2 mb-2"
     >
-      {{ item.name }} {{ item.version }}
+      {{ item.name }} {{ item.versions }}
     </b-badge>
   </div>
 </template>
@@ -18,7 +18,7 @@ import { KeySoftware } from "~/types/kronicle-service";
 
 interface Item {
   name: String
-  version: String
+  versions: String
 }
 
 export default Vue.extend({
@@ -31,10 +31,10 @@ export default Vue.extend({
   computed: {
     items(): Item[] {
       return (this.keySoftware || [] as KeySoftware[])
-        .flatMap(entry => entry.versions.map(version => ({
+        .map(entry => ({
           name: entry.name,
-          version,
-        }) as Item))
+          versions: entry.versions.sort().join(', '),
+        }) as Item)
     }
   }
 })

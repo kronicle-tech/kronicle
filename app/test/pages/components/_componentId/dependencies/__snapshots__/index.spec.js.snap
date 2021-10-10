@@ -2605,10 +2605,14 @@ exports[`Index when Get Summary service endpoint returns no dependencies renders
             <td>
               <ul>
                 <li>
-                  test-tag-1-1
+                  
+    test-tag-1-1
+  
                 </li>
                 <li>
-                  test-tag-1-2
+                  
+    test-tag-1-2
+  
                 </li>
               </ul>
             </td>
