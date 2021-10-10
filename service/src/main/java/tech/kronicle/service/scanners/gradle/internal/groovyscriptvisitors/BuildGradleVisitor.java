@@ -1,6 +1,7 @@
 package tech.kronicle.service.scanners.gradle.internal.groovyscriptvisitors;
 
 import tech.kronicle.sdk.models.Software;
+import tech.kronicle.service.scanners.gradle.internal.constants.GradlePlugins;
 import tech.kronicle.service.scanners.gradle.internal.groovyscriptvisitors.buildgradlevisitor.BuildscriptVisitor;
 import tech.kronicle.service.scanners.gradle.internal.groovyscriptvisitors.buildgradlevisitor.DependenciesVisitor;
 import tech.kronicle.service.scanners.gradle.internal.groovyscriptvisitors.buildgradlevisitor.DependencyManagementVisitor;
@@ -122,7 +123,7 @@ public class BuildGradleVisitor extends BaseBuildFileVisitor {
 
     private String getPluginVersion(String name) {
         if (Objects.equals(name, "org.springframework.boot")) {
-            Optional<Software> springBootPlugin = pluginProcessor.getSpringBootPlugin(visitorState().getSoftware());
+            Optional<Software> springBootPlugin = pluginProcessor.getPlugin(GradlePlugins.SPRING_BOOT, visitorState().getSoftware());
 
             if (springBootPlugin.isPresent()) {
                 return springBootPlugin.get().getVersion();

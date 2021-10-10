@@ -204,6 +204,14 @@ public class GradleScannerCodebaseTest extends BaseGradleScannerTest {
             .name("io.micronaut.application")
             .version("2.0.6")
             .build();
+    private static final Software MICRONAUT_LIBRARY_PLUGIN_2_0_6 = Software
+            .builder()
+            .scannerId(SCANNER_ID)
+            .type(SoftwareType.GRADLE_PLUGIN)
+            .dependencyType(SoftwareDependencyType.DIRECT)
+            .name("io.micronaut.library")
+            .version("2.0.6")
+            .build();
     private static final Software MICRONAUT_RUNTIME_3_0_0 = Software
             .builder()
             .scannerId(SCANNER_ID)
@@ -1750,6 +1758,72 @@ public class GradleScannerCodebaseTest extends BaseGradleScannerTest {
         Map<SoftwareGroup, List<Software>> softwareGroups = getSoftwareGroups(component);
         assertThat(softwareGroups.get(SoftwareGroup.DIRECT)).containsExactlyInAnyOrder(
                 MICRONAUT_APPLICATION_PLUGIN_2_0_6,
+                MICRONAUT_RUNTIME_3_1_0);
+        assertThat(softwareGroups.get(SoftwareGroup.TRANSITIVE)).hasSize(9);
+        assertThat(softwareGroups.get(SoftwareGroup.BOM)).hasSize(28);
+    }
+
+    @Test
+    public void shouldHandleMicronautLibraryPluginWithGradleProperty() {
+        // Given
+        Codebase codebase = new Codebase(getTestRepo(), getCodebaseDir("MicronautLibraryPluginWithGradleProperty"));
+
+        // When
+        Output<Void> output = underTest.scan(codebase);
+
+        // Then
+        Component component = getMutatedComponent(output);
+        assertThatGradleIsUsed(component);
+        assertThat(getSoftwareRepositories(component)).containsExactlyInAnyOrder(
+                GRADLE_PLUGIN_PORTAL_REPOSITORY.withScope(SoftwareRepositoryScope.BUILDSCRIPT),
+                MAVEN_CENTRAL_REPOSITORY);
+        Map<SoftwareGroup, List<Software>> softwareGroups = getSoftwareGroups(component);
+        assertThat(softwareGroups.get(SoftwareGroup.DIRECT)).containsExactlyInAnyOrder(
+                MICRONAUT_LIBRARY_PLUGIN_2_0_6,
+                MICRONAUT_RUNTIME_3_1_0);
+        assertThat(softwareGroups.get(SoftwareGroup.TRANSITIVE)).hasSize(9);
+        assertThat(softwareGroups.get(SoftwareGroup.BOM)).hasSize(28);
+    }
+
+    @Test
+    public void shouldHandleMicronautLibraryPluginWithGradlePropertyAndMicronautBlock() {
+        // Given
+        Codebase codebase = new Codebase(getTestRepo(), getCodebaseDir("MicronautLibraryPluginWithGradlePropertyAndMicronautBlock"));
+
+        // When
+        Output<Void> output = underTest.scan(codebase);
+
+        // Then
+        Component component = getMutatedComponent(output);
+        assertThatGradleIsUsed(component);
+        assertThat(getSoftwareRepositories(component)).containsExactlyInAnyOrder(
+                GRADLE_PLUGIN_PORTAL_REPOSITORY.withScope(SoftwareRepositoryScope.BUILDSCRIPT),
+                MAVEN_CENTRAL_REPOSITORY);
+        Map<SoftwareGroup, List<Software>> softwareGroups = getSoftwareGroups(component);
+        assertThat(softwareGroups.get(SoftwareGroup.DIRECT)).containsExactlyInAnyOrder(
+                MICRONAUT_LIBRARY_PLUGIN_2_0_6,
+                MICRONAUT_RUNTIME_3_0_0);
+        assertThat(softwareGroups.get(SoftwareGroup.TRANSITIVE)).hasSize(11);
+        assertThat(softwareGroups.get(SoftwareGroup.BOM)).hasSize(28);
+    }
+
+    @Test
+    public void shouldHandleMicronautLibraryPluginWithMicronautBlock() {
+        // Given
+        Codebase codebase = new Codebase(getTestRepo(), getCodebaseDir("MicronautLibraryPluginWithMicronautBlock"));
+
+        // When
+        Output<Void> output = underTest.scan(codebase);
+
+        // Then
+        Component component = getMutatedComponent(output);
+        assertThatGradleIsUsed(component);
+        assertThat(getSoftwareRepositories(component)).containsExactlyInAnyOrder(
+                GRADLE_PLUGIN_PORTAL_REPOSITORY.withScope(SoftwareRepositoryScope.BUILDSCRIPT),
+                MAVEN_CENTRAL_REPOSITORY);
+        Map<SoftwareGroup, List<Software>> softwareGroups = getSoftwareGroups(component);
+        assertThat(softwareGroups.get(SoftwareGroup.DIRECT)).containsExactlyInAnyOrder(
+                MICRONAUT_LIBRARY_PLUGIN_2_0_6,
                 MICRONAUT_RUNTIME_3_1_0);
         assertThat(softwareGroups.get(SoftwareGroup.TRANSITIVE)).hasSize(9);
         assertThat(softwareGroups.get(SoftwareGroup.BOM)).hasSize(28);
