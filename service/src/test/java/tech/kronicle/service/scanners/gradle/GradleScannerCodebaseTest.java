@@ -1,7 +1,12 @@
 package tech.kronicle.service.scanners.gradle;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 import tech.kronicle.sdk.models.Component;
 import tech.kronicle.sdk.models.Software;
 import tech.kronicle.sdk.models.SoftwareDependencyType;
@@ -10,6 +15,9 @@ import tech.kronicle.sdk.models.SoftwareRepositoryScope;
 import tech.kronicle.sdk.models.SoftwareRepositoryType;
 import tech.kronicle.sdk.models.SoftwareScope;
 import tech.kronicle.sdk.models.SoftwareType;
+import tech.kronicle.service.config.DownloadCacheConfig;
+import tech.kronicle.service.config.UrlExistsCacheConfig;
+import tech.kronicle.service.scanners.gradle.config.GradleConfig;
 import tech.kronicle.service.scanners.models.Codebase;
 import tech.kronicle.service.scanners.models.Output;
 
@@ -18,6 +26,14 @@ import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+@ExtendWith(SpringExtension.class)
+@SpringBootTest(properties = {
+        "download-cache.dir=build/test-data/tech.kronicle.service.scanners.gradle.GradleScannerTest/download-cache",
+        "url-exists-cache.dir=build/test-data/tech.kronicle.service.scanners.gradle.GradleScannerTest/url-exists-cache",
+        "gradle.pom-cache-dir=build/test-data/tech.kronicle.service.scanners.gradle.GradleScannerTest/gradle/pom-cache"
+})
+@ContextConfiguration(classes = GradleScannerTestConfiguration.class)
+@EnableConfigurationProperties(value = {DownloadCacheConfig.class, UrlExistsCacheConfig.class, GradleConfig.class})
 public class GradleScannerCodebaseTest extends BaseGradleScannerTest {
 
     private static final String SCANNER_ID = "gradle";

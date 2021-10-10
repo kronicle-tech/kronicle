@@ -1,5 +1,6 @@
 package tech.kronicle.service.scanners.gradle;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,18 +14,14 @@ import tech.kronicle.service.scanners.gradle.config.GradleConfig;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-@ExtendWith(SpringExtension.class)
-@SpringBootTest(properties = {
-        "download-cache.dir=build/test-data/tech.kronicle.service.scanners.gradle.GradleScannerTest/download-cache",
-        "url-exists-cache.dir=build/test-data/tech.kronicle.service.scanners.gradle.GradleScannerTest/url-exists-cache",
-        "gradle.pom-cache-dir=build/test-data/tech.kronicle.service.scanners.gradle.GradleScannerTest/gradle/pom-cache"
-})
-@ContextConfiguration(classes = GradleScannerTestConfiguration.class)
-@EnableConfigurationProperties(value = {DownloadCacheConfig.class, UrlExistsCacheConfig.class, GradleConfig.class})
 public class GradleScannerTest extends BaseGradleScannerTest {
 
-    @Autowired
     private GradleScanner underTest;
+
+    @BeforeEach
+    public void beforeEach() {
+        underTest = new GradleScanner(null, null, null, null, null, null, null, null, null, null);
+    }
 
     @Test
     public void idShouldReturnTheIdOfTheScanner() {
