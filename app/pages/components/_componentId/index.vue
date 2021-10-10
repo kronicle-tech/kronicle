@@ -68,7 +68,7 @@
 <script lang="ts">
 import Vue from 'vue'
 import { MetaInfo } from 'vue-meta'
-import { BCard, BCardText } from 'bootstrap-vue'
+import { BCard, BCardGroup, BCardText } from 'bootstrap-vue'
 import { Component } from '~/types/kronicle-service'
 import ComponentTabs from '~/components/ComponentTabs.vue'
 import Links from '~/components/Links.vue'
@@ -79,6 +79,7 @@ import Responsibilities from '~/components/Responsibilities.vue'
 export default Vue.extend({
   components: {
     'b-card': BCard,
+    'b-card-group': BCardGroup,
     'b-card-text': BCardText,
     ComponentTabs,
     Links,
