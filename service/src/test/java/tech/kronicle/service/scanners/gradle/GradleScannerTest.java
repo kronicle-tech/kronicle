@@ -1,5 +1,12 @@
 package tech.kronicle.service.scanners.gradle;
 
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 import tech.kronicle.sdk.models.Component;
 import tech.kronicle.sdk.models.Software;
 import tech.kronicle.sdk.models.SoftwareDependencyType;
@@ -16,13 +23,6 @@ import tech.kronicle.service.scanners.gradle.config.GradleConfig;
 import tech.kronicle.service.scanners.gradle.internal.constants.MavenPackagings;
 import tech.kronicle.service.scanners.models.Codebase;
 import tech.kronicle.service.scanners.models.Output;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.context.properties.EnableConfigurationProperties;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.util.List;
 import java.util.Map;
@@ -34,8 +34,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest(properties = {
-        "download-cache.dir=build/test-data/tech.kronicle.service.scanners.gradle.GradleScannerTest/download-cache", 
-        "url-exists-cache.dir=build/test-data/tech.kronicle.service.scanners.gradle.GradleScannerTest/url-exists-cache", 
+        "download-cache.dir=build/test-data/tech.kronicle.service.scanners.gradle.GradleScannerTest/download-cache",
+        "url-exists-cache.dir=build/test-data/tech.kronicle.service.scanners.gradle.GradleScannerTest/url-exists-cache",
         "gradle.pom-cache-dir=build/test-data/tech.kronicle.service.scanners.gradle.GradleScannerTest/gradle/pom-cache"
 })
 @ContextConfiguration(classes = GradleScannerTestConfiguration.class)
@@ -121,14 +121,6 @@ public class GradleScannerTest extends BaseCodebaseScannerTest {
             .name("org.projectlombok:lombok")
             .version("1.18.16")
             .build();
-    private static final Software SPRING_BOOT_DEPENDENCIES_2_3_4_RELEASE = Software
-            .builder()
-            .scannerId(SCANNER_ID)
-            .type(SoftwareType.JVM)
-            .dependencyType(SoftwareDependencyType.DIRECT)
-            .name("org.springframework.boot:spring-boot-dependencies")
-            .version("2.3.4.RELEASE")
-            .build();
     private static final Software SPRING_BOOT_STARTER_WEB_2_3_4_RELEASE = Software
             .builder()
             .scannerId(SCANNER_ID)
@@ -194,13 +186,6 @@ public class GradleScannerTest extends BaseCodebaseScannerTest {
             .dependencyType(SoftwareDependencyType.DIRECT)
             .name("io.spring.dependency-management")
             .version("1.0.10.RELEASE")
-            .build();
-    private static final Software SPRING_BOOT_PLUGIN = Software
-            .builder()
-            .scannerId(SCANNER_ID)
-            .type(SoftwareType.GRADLE_PLUGIN)
-            .dependencyType(SoftwareDependencyType.DIRECT)
-            .name("org.springframework.boot")
             .build();
     private static final Software SPRING_BOOT_PLUGIN_2_3_4_RELEASE = Software
             .builder()
@@ -271,6 +256,60 @@ public class GradleScannerTest extends BaseCodebaseScannerTest {
         assertThat(softwareGroups.get(SoftwareGroup.BOM)).isNull();
     }
 
+    private void assertThatGradleIsNotUsed(Component component) {
+        assertThat(component.getGradle()).isNotNull();
+        assertThat(component.getGradle().getUsed()).isFalse();
+    }
+
+    private List<SoftwareRepository> getSoftwareRepositories(Component component) {
+        return component.getSoftwareRepositories().stream()
+                .sorted(Comparators.SOFTWARE_REPOSITORIES)
+                .collect(Collectors.toList());
+    }
+
+    private Map<SoftwareGroup, List<Software>> getSoftwareGroups(Component component) {
+        Map<SoftwareGroup, List<Software>> softwareGroups = component
+                .getSoftware()
+                .stream()
+                .sorted(Comparators.SOFTWARE)
+                .collect(Collectors.groupingBy(this::softwareClassifier));
+
+        List<Software> bomSoftware = softwareGroups.get(SoftwareGroup.BOM);
+
+        if (nonNull(bomSoftware)) {
+            bomSoftware.forEach(this::assertSoftwareFieldsAreValid);
+        }
+
+        List<Software> transitiveSoftware = softwareGroups.get(SoftwareGroup.TRANSITIVE);
+
+        if (nonNull(transitiveSoftware)) {
+            transitiveSoftware.forEach(this::assertSoftwareFieldsAreValid);
+        }
+
+        return softwareGroups;
+    }
+
+    private SoftwareGroup softwareClassifier(Software software) {
+        if (Objects.equals(software.getPackaging(), MavenPackagings.BOM)) {
+            return SoftwareGroup.BOM;
+        } else if (Objects.equals(software.getDependencyType(), SoftwareDependencyType.DIRECT)) {
+            return SoftwareGroup.DIRECT;
+        } else if (Objects.equals(software.getDependencyType(), SoftwareDependencyType.TRANSITIVE)) {
+            return SoftwareGroup.TRANSITIVE;
+        } else {
+            throw new RuntimeException("Unexpected software dependency type " + software.getDependencyType());
+        }
+    }
+
+    private void assertSoftwareFieldsAreValid(Software item) {
+        assertThat(item.getScannerId()).isNotEmpty();
+        assertThat(item.getType()).isNotNull();
+        assertThat(item.getDependencyType()).isNotNull();
+        assertThat(item.getName()).isNotEmpty();
+        assertThat(item.getVersion()).isNotEmpty();
+        assertThat(item.getVersion()).doesNotContain("$");
+    }
+
     @Test
     public void shouldScanEmptyBuild() {
         // Given
@@ -288,6 +327,11 @@ public class GradleScannerTest extends BaseCodebaseScannerTest {
         assertThat(softwareGroups.get(SoftwareGroup.DIRECT)).isNull();
         assertThat(softwareGroups.get(SoftwareGroup.TRANSITIVE)).isNull();
         assertThat(softwareGroups.get(SoftwareGroup.BOM)).isNull();
+    }
+
+    private void assertThatGradleIsUsed(Component component) {
+        assertThat(component.getGradle()).isNotNull();
+        assertThat(component.getGradle().getUsed()).isTrue();
     }
 
     @Test
@@ -476,7 +520,7 @@ public class GradleScannerTest extends BaseCodebaseScannerTest {
                 MAVEN_CENTRAL_REPOSITORY);
         Map<SoftwareGroup, List<Software>> softwareGroups = getSoftwareGroups(component);
         assertThat(softwareGroups.get(SoftwareGroup.DIRECT)).containsExactlyInAnyOrder(
-        SPRING_BOOT_STARTER_ACTUATOR_2_3_4_RELEASE,
+                SPRING_BOOT_STARTER_ACTUATOR_2_3_4_RELEASE,
                 SPRING_BOOT_STARTER_WEB_2_3_4_RELEASE,
                 JAVA_PLUGIN);
         assertThat(softwareGroups.get(SoftwareGroup.TRANSITIVE)).hasSize(7);
@@ -1851,69 +1895,10 @@ public class GradleScannerTest extends BaseCodebaseScannerTest {
         assertThat(softwareGroups.get(SoftwareGroup.BOM)).isNull();
     }
 
-    private void assertThatGradleIsUsed(Component component) {
-        assertThat(component.getGradle()).isNotNull();
-        assertThat(component.getGradle().getUsed()).isTrue();
-    }
-
-    private void assertThatGradleIsNotUsed(Component component) {
-        assertThat(component.getGradle()).isNotNull();
-        assertThat(component.getGradle().getUsed()).isFalse();
-    }
-
-    private List<SoftwareRepository> getSoftwareRepositories(Component component) {
-        return component.getSoftwareRepositories().stream()
-                .sorted(Comparators.SOFTWARE_REPOSITORIES)
-                .collect(Collectors.toList());
-    }
-
-    private Map<SoftwareGroup, List<Software>> getSoftwareGroups(Component component) {
-        Map<SoftwareGroup, List<Software>> softwareGroups = component
-                .getSoftware()
-                .stream()
-                .sorted(Comparators.SOFTWARE)
-                .collect(Collectors.groupingBy(this::softwareClassifier));
-
-        List<Software> bomSoftware = softwareGroups.get(SoftwareGroup.BOM);
-
-        if (nonNull(bomSoftware)) {
-            bomSoftware.forEach(this::assertSoftwareFieldsAreValid);
-        }
-
-        List<Software> transitiveSoftware = softwareGroups.get(SoftwareGroup.TRANSITIVE);
-
-        if (nonNull(transitiveSoftware)) {
-            transitiveSoftware.forEach(this::assertSoftwareFieldsAreValid);
-        }
-
-        return softwareGroups;
-    }
-
-    private void assertSoftwareFieldsAreValid(Software item) {
-        assertThat(item.getScannerId()).isNotEmpty();
-        assertThat(item.getType()).isNotNull();
-        assertThat(item.getDependencyType()).isNotNull();
-        assertThat(item.getName()).isNotEmpty();
-        assertThat(item.getVersion()).isNotEmpty();
-        assertThat(item.getVersion()).doesNotContain("$");
-    }
-
-    private SoftwareGroup softwareClassifier(Software software) {
-        if (Objects.equals(software.getPackaging(), MavenPackagings.BOM)) {
-            return SoftwareGroup.BOM;
-        } else if (Objects.equals(software.getDependencyType(), SoftwareDependencyType.DIRECT)) {
-            return SoftwareGroup.DIRECT;
-        } else if (Objects.equals(software.getDependencyType(), SoftwareDependencyType.TRANSITIVE)) {
-            return SoftwareGroup.TRANSITIVE;
-        } else {
-            throw new RuntimeException("Unexpected software dependency type " + software.getDependencyType());
-        }
-    }
-
     private enum SoftwareGroup {
-        
+
         BOM,
         DIRECT, TRANSITIVE
-        
+
     }
 }
