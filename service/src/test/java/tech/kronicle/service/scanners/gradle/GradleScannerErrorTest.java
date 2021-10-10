@@ -25,9 +25,10 @@ import static org.assertj.core.api.Assertions.assertThat;
 })
 @ContextConfiguration(classes = GradleScannerTestConfiguration.class)
 @EnableConfigurationProperties(value = {DownloadCacheConfig.class, UrlExistsCacheConfig.class, GradleConfig.class})
-public class GradleScannerErrorTest extends BaseCodebaseScannerTest {
+public class GradleScannerErrorTest extends BaseGradleScannerTest {
 
     private static final String SCANNER_ID = "gradle";
+
     @Autowired
     private GradleScanner underTest;
 
