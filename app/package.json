@@ -37,7 +37,7 @@
     "rehype-stringify": "^8.0.0",
     "remark-gfm": "^1.0.0",
     "remark-highlight.js": "^6.0.0",
-    "remark-parse": "^9.0.0",
+    "remark-parse": "^10.0.0",
     "remark-rehype": "^8.1.0",
     "remark-slug": "^6.1.0",
     "remark-toc": "^7.2.0",
