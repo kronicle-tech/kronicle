@@ -57,10 +57,9 @@ public class KeySoftwareScannerTest extends BaseScannerTest {
         // Given
         KeySoftwareConfig config = new KeySoftwareConfig(List.of(new KeySoftwareRule("test", "test")));
         KeySoftwareScanner underTest = new KeySoftwareScanner(config);
-        Component component = Component.builder().build();
 
         // When
-        Output<Void> returnValue = underTest.scan(component);
+        Output<Void> returnValue = underTest.scan(createComponent(List.of()));
 
         // Then
         assertThat(returnValue.getErrors()).isEmpty();
@@ -73,12 +72,24 @@ public class KeySoftwareScannerTest extends BaseScannerTest {
         // Given
         KeySoftwareConfig config = new KeySoftwareConfig(List.of());
         KeySoftwareScanner underTest = new KeySoftwareScanner(config);
-        Component component = Component.builder()
-                .software(List.of(Software.builder().build()))
-                .build();
 
         // When
-        Output<Void> returnValue = underTest.scan(component);
+        Output<Void> returnValue = underTest.scan(createComponent(List.of(Software.builder().build())));
+
+        // Then
+        assertThat(returnValue.getErrors()).isEmpty();
+        List<KeySoftware> keySoftware = getMutatedComponent(returnValue).getKeySoftware();
+        assertThat(keySoftware).isEmpty();
+    }
+
+    @Test
+    public void scanShouldHandleNullRules() {
+        // Given
+        KeySoftwareConfig config = new KeySoftwareConfig(null);
+        KeySoftwareScanner underTest = new KeySoftwareScanner(config);
+
+        // When
+        Output<Void> returnValue = underTest.scan(createComponent(List.of(Software.builder().build())));
 
         // Then
         assertThat(returnValue.getErrors()).isEmpty();
@@ -91,12 +102,9 @@ public class KeySoftwareScannerTest extends BaseScannerTest {
         // Given
         KeySoftwareConfig config = new KeySoftwareConfig(List.of(new KeySoftwareRule("test-software-name", "test-key-software-name")));
         KeySoftwareScanner underTest = new KeySoftwareScanner(config);
-        Component component = Component.builder()
-                .software(List.of(Software.builder().name("other-software-name").build()))
-                .build();
 
         // When
-        Output<Void> returnValue = underTest.scan(component);
+        Output<Void> returnValue = underTest.scan(createComponent(List.of(Software.builder().name("other-software-name").build())));
 
         // Then
         assertThat(returnValue.getErrors()).isEmpty();
@@ -113,12 +121,9 @@ public class KeySoftwareScannerTest extends BaseScannerTest {
                 .name("test-software-name")
                 .version("1.2.3")
                 .build();
-        Component component = Component.builder()
-                .software(List.of(softwareItem))
-                .build();
 
         // When
-        Output<Void> returnValue = underTest.scan(component);
+        Output<Void> returnValue = underTest.scan(createComponent(List.of(softwareItem)));
 
         // Then
         assertThat(returnValue.getErrors()).isEmpty();
@@ -143,12 +148,9 @@ public class KeySoftwareScannerTest extends BaseScannerTest {
                 .name("test-software-name")
                 .version("1.2.3")
                 .build();
-        Component component = Component.builder()
-                .software(List.of(softwareItem1, softwareItem2))
-                .build();
 
         // When
-        Output<Void> returnValue = underTest.scan(component);
+        Output<Void> returnValue = underTest.scan(createComponent(List.of(softwareItem1, softwareItem2)));
 
         // Then
         assertThat(returnValue.getErrors()).isEmpty();
@@ -173,12 +175,9 @@ public class KeySoftwareScannerTest extends BaseScannerTest {
                 .name("test-software-name")
                 .version("4.5.6")
                 .build();
-        Component component = Component.builder()
-                .software(List.of(softwareItem1, softwareItem2))
-                .build();
 
         // When
-        Output<Void> returnValue = underTest.scan(component);
+        Output<Void> returnValue = underTest.scan(createComponent(List.of(softwareItem1, softwareItem2)));
 
         // Then
         assertThat(returnValue.getErrors()).isEmpty();
@@ -203,12 +202,9 @@ public class KeySoftwareScannerTest extends BaseScannerTest {
                 .name("test-software-name")
                 .version("1.2.3")
                 .build();
-        Component component = Component.builder()
-                .software(List.of(softwareItem1, softwareItem2))
-                .build();
 
         // When
-        Output<Void> returnValue = underTest.scan(component);
+        Output<Void> returnValue = underTest.scan(createComponent(List.of(softwareItem1, softwareItem2)));
 
         // Then
         assertThat(returnValue.getErrors()).isEmpty();
@@ -235,12 +231,9 @@ public class KeySoftwareScannerTest extends BaseScannerTest {
                 .name("test-software-name-2")
                 .version("4.5.6")
                 .build();
-        Component component = Component.builder()
-                .software(List.of(softwareItem1, softwareItem2))
-                .build();
 
         // When
-        Output<Void> returnValue = underTest.scan(component);
+        Output<Void> returnValue = underTest.scan(createComponent(List.of(softwareItem1, softwareItem2)));
 
         // Then
         assertThat(returnValue.getErrors()).isEmpty();
@@ -253,5 +246,11 @@ public class KeySoftwareScannerTest extends BaseScannerTest {
         keySoftwareItem = keySoftware.get(1);
         assertThat(keySoftwareItem.getName()).isEqualTo("test-key-software-name-2");
         assertThat(keySoftwareItem.getVersions()).containsExactly("4.5.6");
+    }
+
+    private Component createComponent(List<Software> software) {
+        return Component.builder()
+                .software(software)
+                .build();
     }
 }

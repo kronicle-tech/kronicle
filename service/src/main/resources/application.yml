@@ -100,24 +100,3 @@ zipkin:
 
 sonarqube:
   base-url: http://localhost:9000
-
-key-software:
-  rules:
-    - softwareNamePattern: "^gradle-wrapper$"
-      name: gradle
-    - softwareNamePattern: "^org.springframework.boot:"
-      name: spring-boot
-    - softwareNamePattern: "^com.google.guava:guava$"
-      name: guava
-    - softwareNamePattern: "^io.zipkin.brave:brave$"
-      name: zipkin-brave
-    - softwareNamePattern: "^io.dropwizard:dropwizard-core$"
-      name: dropwizard
-    - softwareNamePattern: "^org.mongodb:(mongodb-driver|mongo-java-driver)$"
-      name: mongodb-driver
-    - softwareNamePattern: "^com.fasterxml.jackson.core:"
-      name: jackson
-    - softwareNamePattern: "^org.springframework.cloud:spring-cloud-dependencies$"
-      name: spring-cloud
-    - softwareNamePattern: "^org.projectlombok:lombok$"
-      name: lombok
