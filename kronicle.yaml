@@ -51,7 +51,7 @@ components:
     notes: |
       The microservice is built with Java and [Spring Boot](https://spring.io/projects/spring-boot)
     tags:
-      - frontend
+      - backend
     teams:
       - teamId: kronicle-project
     platform: kubernetes
