@@ -1,50 +1,57 @@
 <template>
   <div>
-    <AllTeamsTabs />
-    <b-card-group v-for="(row, rowIndex) in rows" :key="rowIndex" deck>
-      <b-card
-        v-for="(item, itemIndex) in row"
-        :key="itemIndex"
-        bg-variant="dark"
-        :header="item.team.name"
-        text-variant="white"
-        class="my-3"
-      >
-        <b-card
-          v-for="itemPriority in item.priorities"
-          :key="itemPriority.priority"
-          no-body
-          class="mt-1"
-        >
-          <b-card-header header-tag="header" class="p-1" role="tab">
-            <b-button
-              v-b-toggle="
+    <b-container fluid>
+      <b-row>
+        <b-col>
+          <AllTeamsTabs />
+
+          <b-card-group v-for="(row, rowIndex) in rows" :key="rowIndex" deck>
+            <b-card
+              v-for="(item, itemIndex) in row"
+              :key="itemIndex"
+              bg-variant="dark"
+              :header="item.team.name"
+              text-variant="white"
+              class="my-3"
+            >
+              <b-card
+                v-for="itemPriority in item.priorities"
+                :key="itemPriority.priority"
+                no-body
+                class="mt-1"
+              >
+                <b-card-header header-tag="header" class="p-1" role="tab">
+                  <b-button
+                    v-b-toggle="
                 `accordion-${rowIndex}-${itemIndex}-${itemPriority.priority}`
               "
-              block
-              variant="info"
-              >{{
-                `${priorityName(
-                  itemPriority.priority
-                )} (${getItemPriorityTechDebtCount(itemPriority)})`
-              }}</b-button
-            >
-          </b-card-header>
-          <b-collapse
-            :id="`accordion-${rowIndex}-${itemIndex}-${itemPriority.priority}`"
-            visible
-            :accordion="`accordion-${rowIndex}-${itemIndex}`"
-            role="tabpanel"
-          >
-            <b-card-body>
-              <ComponentTechDebtTable
-                :components-and-tech-debts="itemPriority.componentsAndTechDebts"
-              />
-            </b-card-body>
-          </b-collapse>
-        </b-card>
-      </b-card>
-    </b-card-group>
+                    block
+                    variant="info"
+                  >{{
+                      `${priorityName(
+                        itemPriority.priority
+                      )} (${getItemPriorityTechDebtCount(itemPriority)})`
+                    }}</b-button
+                  >
+                </b-card-header>
+                <b-collapse
+                  :id="`accordion-${rowIndex}-${itemIndex}-${itemPriority.priority}`"
+                  visible
+                  :accordion="`accordion-${rowIndex}-${itemIndex}`"
+                  role="tabpanel"
+                >
+                  <b-card-body>
+                    <ComponentTechDebtTable
+                      :components-and-tech-debts="itemPriority.componentsAndTechDebts"
+                    />
+                  </b-card-body>
+                </b-collapse>
+              </b-card>
+            </b-card>
+          </b-card-group>
+        </b-col>
+      </b-row>
+    </b-container>
   </div>
 </template>
 
@@ -55,8 +62,8 @@ import {
   BCard,
   BCardBody,
   BCardGroup,
-  BCardHeader,
-  BCollapse,
+  BCardHeader, BCol,
+  BCollapse, BContainer, BRow,
   VBToggle,
 } from 'bootstrap-vue'
 import { MetaInfo } from 'vue-meta'
@@ -83,7 +90,10 @@ export default Vue.extend({
     'b-card-body': BCardBody,
     'b-card-group': BCardGroup,
     'b-card-header': BCardHeader,
+    'b-col': BCol,
     'b-collapse': BCollapse,
+    'b-container': BContainer,
+    'b-row': BRow,
     ComponentTechDebtTable,
   },
   directives: {
@@ -118,6 +128,11 @@ export default Vue.extend({
         'low',
         undefined,
       ] as Priority[],
+    }
+  },
+  head(): MetaInfo {
+    return {
+      title: 'Kronicle - All Teams - Tech Debts',
     }
   },
   computed: {
@@ -208,11 +223,6 @@ export default Vue.extend({
         .map((componentAndTechDebts) => componentAndTechDebts.techDebts.length)
         .reduce((previousValue, currentValue) => previousValue + currentValue)
     },
-  },
-  head(): MetaInfo {
-    return {
-      title: 'Kronicle - All Teams - Tech Debts',
-    }
   },
 })
 </script>

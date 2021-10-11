@@ -1,22 +1,29 @@
 <template>
   <div>
-    <h1 class="text-info my-3">{{ component.name }} - README</h1>
-    <ComponentTabs :component-id="component.id" />
+    <b-container fluid>
+      <b-row>
+        <b-col>
+          <h1 class="text-info my-3">{{ component.name }} - README</h1>
 
-    <b-card v-if="component.readme" :title="component.readme.fileName">
-      <ReadmeContent :readme="component.readme" />
-    </b-card>
+          <ComponentTabs :component-id="component.id" />
 
-    <b-card v-else title="No README">
-      <b-card-text>This component's repo has no README</b-card-text>
-    </b-card>
+          <b-card v-if="component.readme" :title="component.readme.fileName">
+            <ReadmeContent :readme="component.readme" />
+          </b-card>
+
+          <b-card v-else title="No README">
+            <b-card-text>This component's repo has no README</b-card-text>
+          </b-card>
+        </b-col>
+      </b-row>
+    </b-container>
   </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
 import { MetaInfo } from 'vue-meta'
-import { BCard, BCardText } from 'bootstrap-vue'
+import {BCard, BCardText, BCol, BContainer, BRow} from 'bootstrap-vue'
 import { Component } from '~/types/kronicle-service'
 import ComponentTabs from '~/components/ComponentTabs.vue'
 import ReadmeContent from '~/components/ReadmeContent.vue'
@@ -25,6 +32,9 @@ export default Vue.extend({
   components: {
     'b-card': BCard,
     'b-card-text': BCardText,
+    'b-col': BCol,
+    'b-container': BContainer,
+    'b-row': BRow,
     ComponentTabs,
     ReadmeContent,
   },

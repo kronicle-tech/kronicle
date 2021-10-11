@@ -3,150 +3,174 @@
 exports[`Index when Get Scanners service endpoint returns an array of multiple scanners renders the page with a table showing the details of the scanners 1`] = `
 <div>
   <div
-    class="my-3"
+    class="container-fluid"
   >
-    <a
-      class="btn my-1 btn-secondary"
-      href="#"
-      target="_self"
+    <div
+      class="row"
     >
-      Scanners
-    </a>
+      <div
+        class="col"
+      >
+        <div
+          class="my-3"
+        >
+          <a
+            class="btn my-1 btn-secondary"
+            href="#"
+            target="_self"
+          >
+            Scanners
+          </a>
+        </div>
+         
+        <table
+          class="table table-dark table-bordered table-striped mt-2"
+          style="width: 100%;"
+        >
+          <thead>
+            <tr>
+              <th
+                class="scanner-id"
+              >
+                Id
+              </th>
+               
+              <th
+                class="scanner-description"
+              >
+                Description
+              </th>
+               
+              <th
+                class="scanner-notes"
+              >
+                Notes
+              </th>
+            </tr>
+          </thead>
+           
+          <tbody>
+            <tr>
+              <td
+                class="scanner-id"
+              >
+                
+              test-scanner-id-1
+            
+              </td>
+               
+              <td
+                class="scanner-description"
+              >
+                <div>
+                  
+
+                  <p>
+                    Test Scanner Description 1
+                  </p>
+                </div>
+              </td>
+               
+              <td
+                class="scanner-notes"
+              >
+                <div>
+                  
+
+                  <p>
+                    Test Scanner Notes 1
+                  </p>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td
+                class="scanner-id"
+              >
+                
+              test-scanner-id-2
+            
+              </td>
+               
+              <td
+                class="scanner-description"
+              >
+                <div>
+                  
+
+                  <p>
+                    Test Scanner Description 2
+                  </p>
+                </div>
+              </td>
+               
+              <td
+                class="scanner-notes"
+              >
+                <div />
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
   </div>
-   
-  <table
-    class="table table-dark table-bordered table-striped mt-2"
-    style="width: 100%;"
-  >
-    <thead>
-      <tr>
-        <th
-          class="scanner-id"
-        >
-          Id
-        </th>
-         
-        <th
-          class="scanner-description"
-        >
-          Description
-        </th>
-         
-        <th
-          class="scanner-notes"
-        >
-          Notes
-        </th>
-      </tr>
-    </thead>
-     
-    <tbody>
-      <tr>
-        <td
-          class="scanner-id"
-        >
-          
-          test-scanner-id-1
-        
-        </td>
-         
-        <td
-          class="scanner-description"
-        >
-          <div>
-            
-
-            <p>
-              Test Scanner Description 1
-            </p>
-          </div>
-        </td>
-         
-        <td
-          class="scanner-notes"
-        >
-          <div>
-            
-
-            <p>
-              Test Scanner Notes 1
-            </p>
-          </div>
-        </td>
-      </tr>
-      <tr>
-        <td
-          class="scanner-id"
-        >
-          
-          test-scanner-id-2
-        
-        </td>
-         
-        <td
-          class="scanner-description"
-        >
-          <div>
-            
-
-            <p>
-              Test Scanner Description 2
-            </p>
-          </div>
-        </td>
-         
-        <td
-          class="scanner-notes"
-        >
-          <div />
-        </td>
-      </tr>
-    </tbody>
-  </table>
 </div>
 `;
 
 exports[`Index when Get Scanners service endpoint returns an empty array renders the page with an empty table 1`] = `
 <div>
   <div
-    class="my-3"
+    class="container-fluid"
   >
-    <a
-      class="btn my-1 btn-secondary"
-      href="#"
-      target="_self"
+    <div
+      class="row"
     >
-      Scanners
-    </a>
+      <div
+        class="col"
+      >
+        <div
+          class="my-3"
+        >
+          <a
+            class="btn my-1 btn-secondary"
+            href="#"
+            target="_self"
+          >
+            Scanners
+          </a>
+        </div>
+         
+        <table
+          class="table table-dark table-bordered table-striped mt-2"
+          style="width: 100%;"
+        >
+          <thead>
+            <tr>
+              <th
+                class="scanner-id"
+              >
+                Id
+              </th>
+               
+              <th
+                class="scanner-description"
+              >
+                Description
+              </th>
+               
+              <th
+                class="scanner-notes"
+              >
+                Notes
+              </th>
+            </tr>
+          </thead>
+           
+          <tbody />
+        </table>
+      </div>
+    </div>
   </div>
-   
-  <table
-    class="table table-dark table-bordered table-striped mt-2"
-    style="width: 100%;"
-  >
-    <thead>
-      <tr>
-        <th
-          class="scanner-id"
-        >
-          Id
-        </th>
-         
-        <th
-          class="scanner-description"
-        >
-          Description
-        </th>
-         
-        <th
-          class="scanner-notes"
-        >
-          Notes
-        </th>
-      </tr>
-    </thead>
-     
-    <tbody />
-  </table>
 </div>
 `;

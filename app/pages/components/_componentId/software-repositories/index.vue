@@ -1,30 +1,31 @@
 <template>
   <div>
-    <h1 class="text-info my-3">{{ component.name }} - Software Repositories</h1>
-    <ComponentTabs :component-id="component.id" />
+    <b-container fluid>
+      <b-row>
+        <b-col>
+          <h1 class="text-info my-3">{{ component.name }} - Software Repositories</h1>
 
-    <div class="row">
-      <div class="col-sm-6">
-        <b-card title="Total Software Repositories">
-          <b-list-group>
-            <b-list-group-item variant="success">
-              <span class="display-1">
-                <FormattedNumber :value="softwareRepositoryCount" />
-              </span>
-              software repositor{{
-                softwareRepositoryCount === 1 ? 'y' : 'ies'
-              }}
-            </b-list-group-item>
-          </b-list-group>
-        </b-card>
-      </div>
-      <div class="col-sm-6">
-        <b-card title="Software Repositories">
-          <table
-            class="table table-dark table-bordered table-striped mt-2"
-            style="width: 100%"
-          >
-            <thead>
+          <ComponentTabs :component-id="component.id" />
+
+          <b-card title="Total Software Repositories" class="my-3">
+            <b-list-group>
+              <b-list-group-item variant="success">
+                <span class="display-1">
+                  <FormattedNumber :value="softwareRepositoryCount" />
+                </span>
+                software repositor{{
+                  softwareRepositoryCount === 1 ? 'y' : 'ies'
+                }}
+              </b-list-group-item>
+            </b-list-group>
+          </b-card>
+
+          <b-card title="Software Repositories">
+            <table
+              class="table table-dark table-bordered table-striped mt-2"
+              style="width: 100%"
+            >
+              <thead>
               <tr>
                 <th>Scanner</th>
                 <th>Type</th>
@@ -32,12 +33,12 @@
                 <th>Safe</th>
                 <th>Scope</th>
               </tr>
-            </thead>
-            <tbody>
+              </thead>
+              <tbody>
               <tr
                 v-for="(
-                  softwareRepository, softwareRepositoryIndex
-                ) in component.softwareRepositories"
+              softwareRepository, softwareRepositoryIndex
+            ) in component.softwareRepositories"
                 :key="softwareRepositoryIndex"
               >
                 <td>{{ softwareRepository.scannerId }}</td>
@@ -50,18 +51,19 @@
                 <td>{{ softwareRepository.safe }}</td>
                 <td>{{ softwareRepository.scope }}</td>
               </tr>
-            </tbody>
-          </table>
-        </b-card>
-      </div>
-    </div>
+              </tbody>
+            </table>
+          </b-card>
+        </b-col>
+      </b-row>
+    </b-container>
   </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
 import { MetaInfo } from 'vue-meta'
-import { BCard, BListGroup, BListGroupItem } from 'bootstrap-vue'
+import {BCard, BCol, BContainer, BListGroup, BListGroupItem, BRow} from 'bootstrap-vue'
 import { Component } from '~/types/kronicle-service'
 import ComponentTabs from '~/components/ComponentTabs.vue'
 import FormattedNumber from '~/components/FormattedNumber.vue'
@@ -69,8 +71,11 @@ import FormattedNumber from '~/components/FormattedNumber.vue'
 export default Vue.extend({
   components: {
     'b-card': BCard,
+    'b-col': BCol,
+    'b-container': BContainer,
     'b-list-group': BListGroup,
     'b-list-group-item': BListGroupItem,
+    'b-row': BRow,
     ComponentTabs,
     FormattedNumber,
   },
@@ -90,15 +95,15 @@ export default Vue.extend({
       component: {} as Component,
     }
   },
-  computed: {
-    softwareRepositoryCount(): number {
-      return this.component.softwareRepositories?.length ?? 0
-    },
-  },
   head(): MetaInfo {
     return {
       title: `Kronicle - ${this.component.name} - Software Repositories`,
     }
+  },
+  computed: {
+    softwareRepositoryCount(): number {
+      return this.component.softwareRepositories?.length ?? 0
+    },
   },
 })
 </script>

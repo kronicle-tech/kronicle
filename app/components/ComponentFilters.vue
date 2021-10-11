@@ -1,5 +1,6 @@
 <template>
-  <div v-if="components && components.length > 0">
+  <div v-if="components && components.length > 0"
+       class="mt-3">
     <b-form-group
       v-if="
         testOutcomesFilterEnabled &&

@@ -1,18 +1,27 @@
 <template>
   <div>
-    <h1 class="text-info my-3">{{ component.name }} - Call Graphs</h1>
-    <ComponentTabs :component-id="component.id" />
-    <ComponentCallGraphsView
-      :component="component"
-      :nodes="nodes"
-      :call-graphs="callGraphs"
-    />
+    <b-container fluid>
+      <b-row>
+        <b-col>
+          <h1 class="text-info my-3">{{ component.name }} - Call Graphs</h1>
+
+          <ComponentTabs :component-id="component.id" />
+
+          <ComponentCallGraphsView
+            :component="component"
+            :nodes="nodes"
+            :call-graphs="callGraphs"
+          />
+        </b-col>
+      </b-row>
+    </b-container>
   </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
 import { MetaInfo } from 'vue-meta'
+import {BCol, BContainer, BRow} from "bootstrap-vue";
 import {
   Component,
   SummarySubComponentDependencies,
@@ -23,6 +32,9 @@ import ComponentCallGraphsView from '~/components/ComponentCallGraphsView.vue'
 
 export default Vue.extend({
   components: {
+    'b-col': BCol,
+    'b-container': BContainer,
+    'b-row': BRow,
     ComponentCallGraphsView,
     ComponentTabs,
   },

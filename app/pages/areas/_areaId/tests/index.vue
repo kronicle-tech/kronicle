@@ -1,7 +1,15 @@
 <template>
   <div>
-    <h1 class="text-info my-3">{{ area.name }} Area - Tests</h1>
-    <AreaTabs :area-id="area.id" />
+    <b-container fluid>
+      <b-row>
+        <b-col>
+          <h1 class="text-info my-3">{{ area.name }} Area - Tests</h1>
+
+          <AreaTabs :area-id="area.id" />
+        </b-col>
+      </b-row>
+    </b-container>
+
     <TestResultsView
       :area-id="area.id"
       :components="area.components"
@@ -13,6 +21,7 @@
 <script lang="ts">
 import Vue from 'vue'
 import { MetaInfo } from 'vue-meta'
+import {BCol, BContainer, BRow} from "bootstrap-vue";
 import { Area } from '~/types/kronicle-service'
 import AreaTabs from '~/components/AreaTabs.vue'
 import TestResultsView from '~/components/TestResultsView.vue'
@@ -20,6 +29,9 @@ import TestResultsView from '~/components/TestResultsView.vue'
 export default Vue.extend({
   components: {
     AreaTabs,
+    'b-col': BCol,
+    'b-container': BContainer,
+    'b-row': BRow,
     TestResultsView,
   },
   async asyncData({ $config, route, store }) {

@@ -1,43 +1,34 @@
 <template>
   <div>
-    <div class="main">
-      <b-card no-body class="my-3">
-        <b-list-group>
-          <b-list-group-item :variant="countVariant">
-            <span :class="countClass">{{ count }}</span>
-            OpenAPI spec{{ count === 1 ? '' : 's' }}
-          </b-list-group-item>
-        </b-list-group>
-      </b-card>
+    <b-container fluid>
+      <b-row>
+        <b-col>
+          <b-card no-body>
+            <b-list-group>
+              <b-list-group-item :variant="countVariant">
+                <span :class="countClass">{{ count }}</span>
+                OpenAPI spec{{ count === 1 ? '' : 's' }}
+              </b-list-group-item>
+            </b-list-group>
+          </b-card>
 
-      <b-card :title="`${count} OpenAPI Specs`" class="my-3">
-        <b-card-text>
-          <OpenApiSpecTable :components="filteredComponents" />
-        </b-card-text>
-      </b-card>
-    </div>
-
-    <div class="panel">
-      <ComponentFilters :components="components" />
-    </div>
+          <b-card no-body class="my-3">
+            <b-card-text>
+              <OpenApiSpecTable :components="filteredComponents" />
+            </b-card-text>
+          </b-card>
+        </b-col>
+        <b-col md="3">
+          <ComponentFilters :components="components" />
+        </b-col>
+      </b-row>
+    </b-container>
   </div>
 </template>
 
-<style scoped>
-.main {
-  float: left;
-  width: calc(100% - 275px);
-}
-
-.panel {
-  float: right;
-  width: 250px;
-}
-</style>
-
 <script lang="ts">
 import Vue, { PropType } from 'vue'
-import { BCard, BCardText, BListGroup, BListGroupItem } from 'bootstrap-vue'
+import {BCard, BCardText, BCol, BContainer, BListGroup, BListGroupItem, BRow} from 'bootstrap-vue'
 import { Component, OpenApiSpec } from '~/types/kronicle-service'
 import ComponentFilters from '~/components/ComponentFilters.vue'
 import OpenApiSpecTable from '~/components/OpenApiSpecTable.vue'
@@ -48,6 +39,9 @@ export default Vue.extend({
     'b-card-text': BCardText,
     'b-list-group': BListGroup,
     'b-list-group-item': BListGroupItem,
+    'b-col': BCol,
+    'b-container': BContainer,
+    'b-row': BRow,
     ComponentFilters,
     OpenApiSpecTable,
   },

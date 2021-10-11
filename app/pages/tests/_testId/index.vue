@@ -1,6 +1,12 @@
 <template>
   <div>
-    <h1 class="text-info my-3">{{ test.id }} Test</h1>
+    <b-container fluid>
+      <b-row>
+        <b-col>
+          <h1 class="text-info my-3">{{ test.id }} Test</h1>
+        </b-col>
+      </b-row>
+    </b-container>
 
     <TestView :test="test" :components="components" />
   </div>
@@ -9,11 +15,15 @@
 <script lang="ts">
 import Vue from 'vue'
 import { MetaInfo } from 'vue-meta'
+import {BCol, BContainer, BRow} from "bootstrap-vue";
 import { Component, Test } from '~/types/kronicle-service'
 import TestView from '~/components/TestView.vue'
 
 export default Vue.extend({
   components: {
+    'b-col': BCol,
+    'b-container': BContainer,
+    'b-row': BRow,
     TestView,
   },
   async asyncData({ $config, route, store }) {

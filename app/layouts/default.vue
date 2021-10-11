@@ -13,10 +13,10 @@
         </b-navbar-nav>
       </b-collapse>
     </b-navbar>
-    <div class="mx-1 my-2">
+    <div class="mx-2 mt-2">
       <Message />
     </div>
-    <div id="content" class="mx-3">
+    <div id="content">
       <Nuxt />
     </div>
     <Version />

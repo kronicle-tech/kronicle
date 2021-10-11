@@ -1,27 +1,39 @@
 <template>
   <div>
-    <h1 class="text-info my-3">
-      {{ component.name }} - Downstream Response Times
-    </h1>
-    <ComponentTabs :component-id="component.id" />
-    <ComponentResponseTimesView
-      :component-id="component.id"
-      direction="downstream"
-      :all-components="allComponents"
-      :sub-component-dependencies="summary.subComponentDependencies"
-    />
+    <b-container fluid>
+      <b-row>
+        <b-col>
+          <h1 class="text-info my-3">
+            {{ component.name }} - Downstream Response Times
+          </h1>
+
+          <ComponentTabs :component-id="component.id" />
+
+          <ComponentResponseTimesView
+            :component-id="component.id"
+            direction="downstream"
+            :all-components="allComponents"
+            :sub-component-dependencies="summary.subComponentDependencies"
+          />
+        </b-col>
+      </b-row>
+    </b-container>
   </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
 import { MetaInfo } from 'vue-meta'
+import {BCol, BContainer, BRow} from "bootstrap-vue";
 import { Component, Summary } from '~/types/kronicle-service'
 import ComponentTabs from '~/components/ComponentTabs.vue'
 import ComponentResponseTimesView from '~/components/ComponentResponseTimesView.vue'
 
 export default Vue.extend({
   components: {
+    'b-col': BCol,
+    'b-container': BContainer,
+    'b-row': BRow,
     ComponentResponseTimesView,
     ComponentTabs,
   },

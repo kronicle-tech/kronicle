@@ -2,414 +2,438 @@
 
 exports[`Index when Get Component service endpoint returns a component when the component has a readme renders the content of the readme 1`] = `
 <div>
-  <h1
-    class="text-info my-3"
-  >
-    Test Component Name 1 - README
-  </h1>
-   
   <div
-    class="my-3"
+    class="container-fluid"
   >
-    <a
-      class="btn my-1 btn-secondary"
-      href="/components/test-component-id-1"
-      target="_self"
+    <div
+      class="row"
     >
-      Info
-    </a>
-     
-    <a
-      class="btn my-1 btn-secondary"
-      href="/components/test-component-id-1/dependencies"
-      target="_self"
-    >
-      
+      <div
+        class="col"
+      >
+        <h1
+          class="text-info my-3"
+        >
+          Test Component Name 1 - README
+        </h1>
+         
+        <div
+          class="my-3"
+        >
+          <a
+            class="btn my-1 btn-secondary"
+            href="/components/test-component-id-1"
+            target="_self"
+          >
+            Info
+          </a>
+           
+          <a
+            class="btn my-1 btn-secondary"
+            href="/components/test-component-id-1/dependencies"
+            target="_self"
+          >
+            
     Dependencies
   
-    </a>
-     
-    <a
-      class="btn my-1 btn-secondary"
-      href="/components/test-component-id-1/response-times"
-      target="_self"
-    >
-      
+          </a>
+           
+          <a
+            class="btn my-1 btn-secondary"
+            href="/components/test-component-id-1/response-times"
+            target="_self"
+          >
+            
     Response Times
   
-    </a>
-     
-    <a
-      class="btn my-1 btn-secondary"
-      href="/components/test-component-id-1/downstream-response-times"
-      target="_self"
-    >
-      
+          </a>
+           
+          <a
+            class="btn my-1 btn-secondary"
+            href="/components/test-component-id-1/downstream-response-times"
+            target="_self"
+          >
+            
     Downstream Response Times
   
-    </a>
-     
-    <a
-      class="btn my-1 btn-secondary"
-      href="/components/test-component-id-1/call-graphs"
-      target="_self"
-    >
-      
+          </a>
+           
+          <a
+            class="btn my-1 btn-secondary"
+            href="/components/test-component-id-1/call-graphs"
+            target="_self"
+          >
+            
     Call Graphs
   
-    </a>
-     
-    <a
-      class="btn my-1 btn-secondary"
-      href="/components/test-component-id-1/cross-functional-requirements"
-      target="_self"
-    >
-      
+          </a>
+           
+          <a
+            class="btn my-1 btn-secondary"
+            href="/components/test-component-id-1/cross-functional-requirements"
+            target="_self"
+          >
+            
     Cross Functional Requirements
   
-    </a>
-     
-    <a
-      class="btn my-1 btn-secondary"
-      href="/components/test-component-id-1/tech-debts"
-      target="_self"
-    >
-      
+          </a>
+           
+          <a
+            class="btn my-1 btn-secondary"
+            href="/components/test-component-id-1/tech-debts"
+            target="_self"
+          >
+            
     Tech Debts
   
-    </a>
-     
-    <a
-      class="btn my-1 btn-secondary"
-      href="/components/test-component-id-1/tests"
-      target="_self"
-    >
-      Tests
-    </a>
-     
-    <a
-      class="btn my-1 btn-secondary"
-      href="/components/test-component-id-1/errors"
-      target="_self"
-    >
-      Errors
-    </a>
-     
-    <a
-      class="btn my-1 btn-secondary"
-      href="/components/test-component-id-1/openapi-specs"
-      target="_self"
-    >
-      
+          </a>
+           
+          <a
+            class="btn my-1 btn-secondary"
+            href="/components/test-component-id-1/tests"
+            target="_self"
+          >
+            Tests
+          </a>
+           
+          <a
+            class="btn my-1 btn-secondary"
+            href="/components/test-component-id-1/errors"
+            target="_self"
+          >
+            Errors
+          </a>
+           
+          <a
+            class="btn my-1 btn-secondary"
+            href="/components/test-component-id-1/openapi-specs"
+            target="_self"
+          >
+            
     OpenAPI Specs
   
-    </a>
-     
-    <a
-      class="btn my-1 btn-secondary"
-      href="/components/test-component-id-1/repo"
-      target="_self"
-    >
-      Repo
-    </a>
-     
-    <a
-      class="btn my-1 btn-secondary"
-      href="/components/test-component-id-1/readme"
-      target="_self"
-    >
-      README
-    </a>
-     
-    <a
-      class="btn my-1 btn-secondary"
-      href="/components/test-component-id-1/to-dos"
-      target="_self"
-    >
-      To Dos
-    </a>
-     
-    <a
-      class="btn my-1 btn-secondary"
-      href="/components/test-component-id-1/lines-of-code"
-      target="_self"
-    >
-      
+          </a>
+           
+          <a
+            class="btn my-1 btn-secondary"
+            href="/components/test-component-id-1/repo"
+            target="_self"
+          >
+            Repo
+          </a>
+           
+          <a
+            class="btn my-1 btn-secondary"
+            href="/components/test-component-id-1/readme"
+            target="_self"
+          >
+            README
+          </a>
+           
+          <a
+            class="btn my-1 btn-secondary"
+            href="/components/test-component-id-1/to-dos"
+            target="_self"
+          >
+            To Dos
+          </a>
+           
+          <a
+            class="btn my-1 btn-secondary"
+            href="/components/test-component-id-1/lines-of-code"
+            target="_self"
+          >
+            
     Lines of Code
   
-    </a>
-     
-    <a
-      class="btn my-1 btn-secondary"
-      href="/components/test-component-id-1/software-repositories"
-      target="_self"
-    >
-      
+          </a>
+           
+          <a
+            class="btn my-1 btn-secondary"
+            href="/components/test-component-id-1/software-repositories"
+            target="_self"
+          >
+            
     Software Repositories
   
-    </a>
-     
-    <a
-      class="btn my-1 btn-secondary"
-      href="/components/test-component-id-1/software"
-      target="_self"
-    >
-      Software
-    </a>
-     
-    <a
-      class="btn my-1 btn-secondary"
-      href="/components/test-component-id-1/imports"
-      target="_self"
-    >
-      Imports
-    </a>
-  </div>
-   
-  <div
-    class="card"
-  >
-    <!---->
-    <!---->
-    <div
-      class="card-body"
-    >
-      <h4
-        class="card-title"
-      >
-        README-1.md
-      </h4>
-      <!---->
-      <div>
-        <div>
-          <div>
-            
-
-            <h1
-              id="user-content-table-of-contents"
+          </a>
+           
+          <a
+            class="btn my-1 btn-secondary"
+            href="/components/test-component-id-1/software"
+            target="_self"
+          >
+            Software
+          </a>
+           
+          <a
+            class="btn my-1 btn-secondary"
+            href="/components/test-component-id-1/imports"
+            target="_self"
+          >
+            Imports
+          </a>
+        </div>
+         
+        <div
+          class="card"
+        >
+          <!---->
+          <!---->
+          <div
+            class="card-body"
+          >
+            <h4
+              class="card-title"
             >
-              Table of Contents
-            </h1>
-            
+              README-1.md
+            </h4>
+            <!---->
+            <div>
+              <div>
+                <div>
+                  
 
-            <ul>
-              
+                  <h1
+                    id="user-content-table-of-contents"
+                  >
+                    Table of Contents
+                  </h1>
+                  
 
-              <li>
-                <a
-                  href="#user-content-test-readme-content-1"
-                >
-                  Test Readme Content 1
-                </a>
-              </li>
-              
+                  <ul>
+                    
 
-            </ul>
-            
+                    <li>
+                      <a
+                        href="#user-content-test-readme-content-1"
+                      >
+                        Test Readme Content 1
+                      </a>
+                    </li>
+                    
 
-            <h1
-              id="user-content-test-readme-content-1"
-            >
-              Test Readme Content 1
-            </h1>
+                  </ul>
+                  
+
+                  <h1
+                    id="user-content-test-readme-content-1"
+                  >
+                    Test Readme Content 1
+                  </h1>
+                </div>
+              </div>
+            </div>
           </div>
+          <!---->
+          <!---->
         </div>
       </div>
     </div>
-    <!---->
-    <!---->
   </div>
 </div>
 `;
 
 exports[`Index when Get Component service endpoint returns a component when the component has no readme renders a message saying there is no readme 1`] = `
 <div>
-  <h1
-    class="text-info my-3"
-  >
-    Test Component Name 1 - README
-  </h1>
-   
   <div
-    class="my-3"
+    class="container-fluid"
   >
-    <a
-      class="btn my-1 btn-secondary"
-      href="/components/test-component-id-1"
-      target="_self"
+    <div
+      class="row"
     >
-      Info
-    </a>
-     
-    <a
-      class="btn my-1 btn-secondary"
-      href="/components/test-component-id-1/dependencies"
-      target="_self"
-    >
-      
+      <div
+        class="col"
+      >
+        <h1
+          class="text-info my-3"
+        >
+          Test Component Name 1 - README
+        </h1>
+         
+        <div
+          class="my-3"
+        >
+          <a
+            class="btn my-1 btn-secondary"
+            href="/components/test-component-id-1"
+            target="_self"
+          >
+            Info
+          </a>
+           
+          <a
+            class="btn my-1 btn-secondary"
+            href="/components/test-component-id-1/dependencies"
+            target="_self"
+          >
+            
     Dependencies
   
-    </a>
-     
-    <a
-      class="btn my-1 btn-secondary"
-      href="/components/test-component-id-1/response-times"
-      target="_self"
-    >
-      
+          </a>
+           
+          <a
+            class="btn my-1 btn-secondary"
+            href="/components/test-component-id-1/response-times"
+            target="_self"
+          >
+            
     Response Times
   
-    </a>
-     
-    <a
-      class="btn my-1 btn-secondary"
-      href="/components/test-component-id-1/downstream-response-times"
-      target="_self"
-    >
-      
+          </a>
+           
+          <a
+            class="btn my-1 btn-secondary"
+            href="/components/test-component-id-1/downstream-response-times"
+            target="_self"
+          >
+            
     Downstream Response Times
   
-    </a>
-     
-    <a
-      class="btn my-1 btn-secondary"
-      href="/components/test-component-id-1/call-graphs"
-      target="_self"
-    >
-      
+          </a>
+           
+          <a
+            class="btn my-1 btn-secondary"
+            href="/components/test-component-id-1/call-graphs"
+            target="_self"
+          >
+            
     Call Graphs
   
-    </a>
-     
-    <a
-      class="btn my-1 btn-secondary"
-      href="/components/test-component-id-1/cross-functional-requirements"
-      target="_self"
-    >
-      
+          </a>
+           
+          <a
+            class="btn my-1 btn-secondary"
+            href="/components/test-component-id-1/cross-functional-requirements"
+            target="_self"
+          >
+            
     Cross Functional Requirements
   
-    </a>
-     
-    <a
-      class="btn my-1 btn-secondary"
-      href="/components/test-component-id-1/tech-debts"
-      target="_self"
-    >
-      
+          </a>
+           
+          <a
+            class="btn my-1 btn-secondary"
+            href="/components/test-component-id-1/tech-debts"
+            target="_self"
+          >
+            
     Tech Debts
   
-    </a>
-     
-    <a
-      class="btn my-1 btn-secondary"
-      href="/components/test-component-id-1/tests"
-      target="_self"
-    >
-      Tests
-    </a>
-     
-    <a
-      class="btn my-1 btn-secondary"
-      href="/components/test-component-id-1/errors"
-      target="_self"
-    >
-      Errors
-    </a>
-     
-    <a
-      class="btn my-1 btn-secondary"
-      href="/components/test-component-id-1/openapi-specs"
-      target="_self"
-    >
-      
+          </a>
+           
+          <a
+            class="btn my-1 btn-secondary"
+            href="/components/test-component-id-1/tests"
+            target="_self"
+          >
+            Tests
+          </a>
+           
+          <a
+            class="btn my-1 btn-secondary"
+            href="/components/test-component-id-1/errors"
+            target="_self"
+          >
+            Errors
+          </a>
+           
+          <a
+            class="btn my-1 btn-secondary"
+            href="/components/test-component-id-1/openapi-specs"
+            target="_self"
+          >
+            
     OpenAPI Specs
   
-    </a>
-     
-    <a
-      class="btn my-1 btn-secondary"
-      href="/components/test-component-id-1/repo"
-      target="_self"
-    >
-      Repo
-    </a>
-     
-    <a
-      class="btn my-1 btn-secondary"
-      href="/components/test-component-id-1/readme"
-      target="_self"
-    >
-      README
-    </a>
-     
-    <a
-      class="btn my-1 btn-secondary"
-      href="/components/test-component-id-1/to-dos"
-      target="_self"
-    >
-      To Dos
-    </a>
-     
-    <a
-      class="btn my-1 btn-secondary"
-      href="/components/test-component-id-1/lines-of-code"
-      target="_self"
-    >
-      
+          </a>
+           
+          <a
+            class="btn my-1 btn-secondary"
+            href="/components/test-component-id-1/repo"
+            target="_self"
+          >
+            Repo
+          </a>
+           
+          <a
+            class="btn my-1 btn-secondary"
+            href="/components/test-component-id-1/readme"
+            target="_self"
+          >
+            README
+          </a>
+           
+          <a
+            class="btn my-1 btn-secondary"
+            href="/components/test-component-id-1/to-dos"
+            target="_self"
+          >
+            To Dos
+          </a>
+           
+          <a
+            class="btn my-1 btn-secondary"
+            href="/components/test-component-id-1/lines-of-code"
+            target="_self"
+          >
+            
     Lines of Code
   
-    </a>
-     
-    <a
-      class="btn my-1 btn-secondary"
-      href="/components/test-component-id-1/software-repositories"
-      target="_self"
-    >
-      
+          </a>
+           
+          <a
+            class="btn my-1 btn-secondary"
+            href="/components/test-component-id-1/software-repositories"
+            target="_self"
+          >
+            
     Software Repositories
   
-    </a>
-     
-    <a
-      class="btn my-1 btn-secondary"
-      href="/components/test-component-id-1/software"
-      target="_self"
-    >
-      Software
-    </a>
-     
-    <a
-      class="btn my-1 btn-secondary"
-      href="/components/test-component-id-1/imports"
-      target="_self"
-    >
-      Imports
-    </a>
-  </div>
-   
-  <div
-    class="card"
-  >
-    <!---->
-    <!---->
-    <div
-      class="card-body"
-    >
-      <h4
-        class="card-title"
-      >
-        No README
-      </h4>
-      <!---->
-      <p
-        class="card-text"
-      >
-        This component's repo has no README
-      </p>
+          </a>
+           
+          <a
+            class="btn my-1 btn-secondary"
+            href="/components/test-component-id-1/software"
+            target="_self"
+          >
+            Software
+          </a>
+           
+          <a
+            class="btn my-1 btn-secondary"
+            href="/components/test-component-id-1/imports"
+            target="_self"
+          >
+            Imports
+          </a>
+        </div>
+         
+        <div
+          class="card"
+        >
+          <!---->
+          <!---->
+          <div
+            class="card-body"
+          >
+            <h4
+              class="card-title"
+            >
+              No README
+            </h4>
+            <!---->
+            <p
+              class="card-text"
+            >
+              This component's repo has no README
+            </p>
+          </div>
+          <!---->
+          <!---->
+        </div>
+      </div>
     </div>
-    <!---->
-    <!---->
   </div>
 </div>
 `;

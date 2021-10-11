@@ -40,149 +40,153 @@ exports[`TestView when components is set to multiple components with multiple te
     <!---->
   </div>
   <div>
-    <div class=\\"main\\">
-      <div class=\\"card my-3\\">
-        <!---->
-        <!---->
-        <div class=\\"list-group\\">
-          <!---->
-          <div class=\\"list-group-item list-group-item-danger fail-count\\"><span class=\\"display-1\\">
+    <div class=\\"container-fluid\\">
+      <div class=\\"row\\">
+        <div class=\\"col\\">
+          <div class=\\"card my-3\\">
+            <!---->
+            <!---->
+            <div class=\\"list-group\\">
+              <!---->
+              <div class=\\"list-group-item list-group-item-danger fail-count\\"><span class=\\"display-1\\">
             3
           </span> <b>failing</b> tests
+              </div>
+            </div>
+            <!---->
+            <!---->
+          </div>
+          <div class=\\"card my-3\\">
+            <!---->
+            <!---->
+            <div class=\\"card-body\\">
+              <h4 class=\\"card-title\\">3 Test Results</h4>
+              <!---->
+              <p class=\\"card-text\\">
+                <table class=\\"table table-dark\\">
+                  <thead>
+                    <tr>
+                      <th>Component</th>
+                      <th>Test</th>
+                      <th>Teams</th>
+                      <th>Priority</th>
+                      <th>Outcome</th>
+                      <th>Message</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class=\\"test-id\\"><a href=\\"/tests/test-test-id-1\\">test-test-id-1</a></td>
+                      <td class=\\"test-component table-primary\\"><a href=\\"/components/test-component-id-1\\">Test Component Name 1</a></td>
+                      <td>
+                        <!---->
+                      </td>
+                      <td class=\\"test-priority\\"><span class=\\"badge badge-danger\\">
+          Very High
+        </span></td>
+                      <td class=\\"test-outcome table-danger\\">
+                        failing
+                      </td>
+                      <td class=\\"test-message\\">
+                        <div>
+                          <p>Test Message 1a</p>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class=\\"test-id\\"><a href=\\"/tests/test-test-id-1\\">test-test-id-1</a></td>
+                      <td class=\\"test-component table-primary\\"><a href=\\"/components/test-component-id-2\\">Test Component Name 2</a></td>
+                      <td>
+                        <!---->
+                      </td>
+                      <td class=\\"test-priority\\"><span class=\\"badge badge-danger\\">
+          Very High
+        </span></td>
+                      <td class=\\"test-outcome table-danger\\">
+                        failing
+                      </td>
+                      <td class=\\"test-message\\">
+                        <div>
+                          <p>Test Message 2a</p>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class=\\"test-id\\"><a href=\\"/tests/test-test-id-1\\">test-test-id-1</a></td>
+                      <td class=\\"test-component table-primary\\"><a href=\\"/components/test-component-id-3\\">Test Component Name 3</a></td>
+                      <td>
+                        <!---->
+                      </td>
+                      <td class=\\"test-priority\\"><span class=\\"badge badge-danger\\">
+          Very High
+        </span></td>
+                      <td class=\\"test-outcome table-danger\\">
+                        failing
+                      </td>
+                      <td class=\\"test-message\\">
+                        <div>
+                          <p>Test Message 3a</p>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </p>
+            </div>
+            <!---->
+            <!---->
           </div>
         </div>
-        <!---->
-        <!---->
-      </div>
-      <div class=\\"card my-3\\">
-        <!---->
-        <!---->
-        <div class=\\"card-body\\">
-          <h4 class=\\"card-title\\">3 Test Results</h4>
-          <!---->
-          <p class=\\"card-text\\">
-            <table class=\\"table table-dark\\">
-              <thead>
-                <tr>
-                  <th>Component</th>
-                  <th>Test</th>
-                  <th>Teams</th>
-                  <th>Priority</th>
-                  <th>Outcome</th>
-                  <th>Message</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td class=\\"test-id\\"><a href=\\"/tests/test-test-id-1\\">test-test-id-1</a></td>
-                  <td class=\\"test-component table-primary\\"><a href=\\"/components/test-component-id-1\\">Test Component Name 1</a></td>
-                  <td>
-                    <!---->
-                  </td>
-                  <td class=\\"test-priority\\"><span class=\\"badge badge-danger\\">
-          Very High
-        </span></td>
-                  <td class=\\"test-outcome table-danger\\">
-                    failing
-                  </td>
-                  <td class=\\"test-message\\">
-                    <div>
-                      <p>Test Message 1a</p>
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td class=\\"test-id\\"><a href=\\"/tests/test-test-id-1\\">test-test-id-1</a></td>
-                  <td class=\\"test-component table-primary\\"><a href=\\"/components/test-component-id-2\\">Test Component Name 2</a></td>
-                  <td>
-                    <!---->
-                  </td>
-                  <td class=\\"test-priority\\"><span class=\\"badge badge-danger\\">
-          Very High
-        </span></td>
-                  <td class=\\"test-outcome table-danger\\">
-                    failing
-                  </td>
-                  <td class=\\"test-message\\">
-                    <div>
-                      <p>Test Message 2a</p>
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td class=\\"test-id\\"><a href=\\"/tests/test-test-id-1\\">test-test-id-1</a></td>
-                  <td class=\\"test-component table-primary\\"><a href=\\"/components/test-component-id-3\\">Test Component Name 3</a></td>
-                  <td>
-                    <!---->
-                  </td>
-                  <td class=\\"test-priority\\"><span class=\\"badge badge-danger\\">
-          Very High
-        </span></td>
-                  <td class=\\"test-outcome table-danger\\">
-                    failing
-                  </td>
-                  <td class=\\"test-message\\">
-                    <div>
-                      <p>Test Message 3a</p>
-                    </div>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </p>
-        </div>
-        <!---->
-        <!---->
-      </div>
-    </div>
-    <div class=\\"panel\\">
-      <div>
-        <fieldset class=\\"form-group\\" id=\\"__BVID__23\\">
-          <legend tabindex=\\"-1\\" class=\\"bv-no-focus-ring col-form-label pt-0\\" id=\\"__BVID__23__BV_label_\\">Test Outcomes</legend>
-          <div>
-            <div role=\\"group\\" tabindex=\\"-1\\" class=\\"bv-no-focus-ring\\" id=\\"__BVID__24\\">
-              <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"testOutcome\\" class=\\"custom-control-input\\" value=\\"fail\\" id=\\"__BVID__24_BV_option_0\\"><label class=\\"custom-control-label\\" for=\\"__BVID__24_BV_option_0\\"><span>fail</span></label></div>
-              <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"testOutcome\\" class=\\"custom-control-input\\" value=\\"success\\" id=\\"__BVID__24_BV_option_1\\"><label class=\\"custom-control-label\\" for=\\"__BVID__24_BV_option_1\\"><span>success</span></label></div>
+        <div class=\\"col-md-3\\">
+          <div class=\\"mt-3\\">
+            <fieldset class=\\"form-group\\" id=\\"__BVID__23\\">
+              <legend tabindex=\\"-1\\" class=\\"bv-no-focus-ring col-form-label pt-0\\" id=\\"__BVID__23__BV_label_\\">Test Outcomes</legend>
+              <div>
+                <div role=\\"group\\" tabindex=\\"-1\\" class=\\"bv-no-focus-ring\\" id=\\"__BVID__24\\">
+                  <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"testOutcome\\" class=\\"custom-control-input\\" value=\\"fail\\" id=\\"__BVID__24_BV_option_0\\"><label class=\\"custom-control-label\\" for=\\"__BVID__24_BV_option_0\\"><span>fail</span></label></div>
+                  <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"testOutcome\\" class=\\"custom-control-input\\" value=\\"success\\" id=\\"__BVID__24_BV_option_1\\"><label class=\\"custom-control-label\\" for=\\"__BVID__24_BV_option_1\\"><span>success</span></label></div>
+                </div>
+                <!---->
+                <!---->
+                <!---->
+              </div>
+            </fieldset>
+            <!---->
+            <!---->
+            <fieldset class=\\"form-group\\" id=\\"__BVID__27\\">
+              <legend tabindex=\\"-1\\" class=\\"bv-no-focus-ring col-form-label pt-0\\" id=\\"__BVID__27__BV_label_\\">Component Types</legend>
+              <div>
+                <div role=\\"group\\" tabindex=\\"-1\\" class=\\"bv-no-focus-ring\\" id=\\"__BVID__28\\">
+                  <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"componentTypeId\\" class=\\"custom-control-input\\" value=\\"\\" id=\\"__BVID__28_BV_option_0\\"><label class=\\"custom-control-label\\" for=\\"__BVID__28_BV_option_0\\"><span>null</span></label></div>
+                </div>
+                <!---->
+                <!---->
+                <!---->
+              </div>
+            </fieldset>
+            <fieldset class=\\"form-group\\" id=\\"__BVID__30\\">
+              <legend tabindex=\\"-1\\" class=\\"bv-no-focus-ring col-form-label pt-0\\" id=\\"__BVID__30__BV_label_\\">Platforms</legend>
+              <div>
+                <div role=\\"group\\" tabindex=\\"-1\\" class=\\"bv-no-focus-ring\\" id=\\"__BVID__31\\">
+                  <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"platformId\\" class=\\"custom-control-input\\" value=\\"undefined\\" id=\\"__BVID__31_BV_option_0\\"><label class=\\"custom-control-label\\" for=\\"__BVID__31_BV_option_0\\"><span>undefined</span></label></div>
+                </div>
+                <!---->
+                <!---->
+                <!---->
+              </div>
+            </fieldset>
+            <div role=\\"group\\" class=\\"form-group\\" id=\\"__BVID__33\\"><label for=\\"component-filter\\" class=\\"d-block\\" id=\\"__BVID__33__BV_label_\\">Component</label>
+              <div><select id=\\"component-filter\\" class=\\"custom-select custom-select-sm\\">
+                  <option value=\\"\\">Please select a component</option>
+                  <option value=\\"test-component-id-1\\">test-component-id-1</option>
+                  <option value=\\"test-component-id-2\\">test-component-id-2</option>
+                  <option value=\\"test-component-id-3\\">test-component-id-3</option>
+                </select>
+                <!---->
+                <!---->
+                <!---->
+              </div>
             </div>
-            <!---->
-            <!---->
-            <!---->
-          </div>
-        </fieldset>
-        <!---->
-        <!---->
-        <fieldset class=\\"form-group\\" id=\\"__BVID__27\\">
-          <legend tabindex=\\"-1\\" class=\\"bv-no-focus-ring col-form-label pt-0\\" id=\\"__BVID__27__BV_label_\\">Component Types</legend>
-          <div>
-            <div role=\\"group\\" tabindex=\\"-1\\" class=\\"bv-no-focus-ring\\" id=\\"__BVID__28\\">
-              <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"componentTypeId\\" class=\\"custom-control-input\\" value=\\"\\" id=\\"__BVID__28_BV_option_0\\"><label class=\\"custom-control-label\\" for=\\"__BVID__28_BV_option_0\\"><span>null</span></label></div>
-            </div>
-            <!---->
-            <!---->
-            <!---->
-          </div>
-        </fieldset>
-        <fieldset class=\\"form-group\\" id=\\"__BVID__30\\">
-          <legend tabindex=\\"-1\\" class=\\"bv-no-focus-ring col-form-label pt-0\\" id=\\"__BVID__30__BV_label_\\">Platforms</legend>
-          <div>
-            <div role=\\"group\\" tabindex=\\"-1\\" class=\\"bv-no-focus-ring\\" id=\\"__BVID__31\\">
-              <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"platformId\\" class=\\"custom-control-input\\" value=\\"undefined\\" id=\\"__BVID__31_BV_option_0\\"><label class=\\"custom-control-label\\" for=\\"__BVID__31_BV_option_0\\"><span>undefined</span></label></div>
-            </div>
-            <!---->
-            <!---->
-            <!---->
-          </div>
-        </fieldset>
-        <div role=\\"group\\" class=\\"form-group\\" id=\\"__BVID__33\\"><label for=\\"component-filter\\" class=\\"d-block\\" id=\\"__BVID__33__BV_label_\\">Component</label>
-          <div><select id=\\"component-filter\\" class=\\"custom-select custom-select-sm\\">
-              <option value=\\"\\">Please select a component</option>
-              <option value=\\"test-component-id-1\\">test-component-id-1</option>
-              <option value=\\"test-component-id-2\\">test-component-id-2</option>
-              <option value=\\"test-component-id-3\\">test-component-id-3</option>
-            </select>
-            <!---->
-            <!---->
-            <!---->
           </div>
         </div>
       </div>

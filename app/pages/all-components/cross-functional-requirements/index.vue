@@ -1,6 +1,13 @@
 <template>
   <div>
-    <AllComponentsTabs />
+    <b-container fluid>
+      <b-row>
+        <b-col>
+          <AllComponentsTabs />
+        </b-col>
+      </b-row>
+    </b-container>
+
     <CrossFunctionalRequirementsView :components="components" />
   </div>
 </template>
@@ -8,6 +15,7 @@
 <script lang="ts">
 import Vue from 'vue'
 import { MetaInfo } from 'vue-meta'
+import {BCol, BContainer, BRow} from "bootstrap-vue";
 import { Component } from '~/types/kronicle-service'
 import AllComponentsTabs from '~/components/AllComponentsTabs.vue'
 import CrossFunctionalRequirementsView from '~/components/CrossFunctionalRequirementsView.vue'
@@ -15,6 +23,9 @@ import CrossFunctionalRequirementsView from '~/components/CrossFunctionalRequire
 export default Vue.extend({
   components: {
     AllComponentsTabs,
+    'b-col': BCol,
+    'b-container': BContainer,
+    'b-row': BRow,
     CrossFunctionalRequirementsView,
   },
   async asyncData({ $config, route, store }) {

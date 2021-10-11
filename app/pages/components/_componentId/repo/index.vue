@@ -1,101 +1,114 @@
 <template>
   <div>
-    <h1 class="text-info my-3">{{ component.name }} - Errors</h1>
-    <ComponentTabs :component-id="component.id" />
+    <b-container fluid>
+      <b-row>
+        <b-col>
+          <h1 class="text-info my-3">{{ component.name }} - Errors</h1>
 
-    <div class="row">
-      <div class="col-sm-6">
-        <b-card title="Repo">
-          <Repo :repo="component.repo" />
-        </b-card>
+          <ComponentTabs :component-id="component.id" />
 
-        <b-list-group v-if="component.gitRepo" class="my-3">
-          <b-list-group-item
-            class="d-flex justify-content-between align-items-center"
-          >
-            Repo Age
-            <b-badge variant="primary" pill>
-              <FormattedAge
-                :value="
-                  component.gitRepo
-                    ? component.gitRepo.firstCommitTimestamp
-                    : null
-                "
-              />
-            </b-badge>
-          </b-list-group-item>
+          <b-card-group deck class="my-3">
 
-          <b-list-group-item
-            class="d-flex justify-content-between align-items-center"
-          >
-            Time Since Last Commit
-            <b-badge variant="primary" pill>
-              <FormattedAge
-                :value="
-                  component.gitRepo
-                    ? component.gitRepo.lastCommitTimestamp
-                    : null
-                "
-              />
-            </b-badge>
-          </b-list-group-item>
+            <b-card title="Repo">
+              <Repo :repo="component.repo" />
+            </b-card>
 
-          <b-list-group-item
-            class="d-flex justify-content-between align-items-center"
-          >
-            Commit Count
-            <b-badge variant="primary" pill>
-              <FormattedNumber
-                :value="
-                  component.gitRepo ? component.gitRepo.commitCount : null
-                "
-              />
-            </b-badge>
-          </b-list-group-item>
+            <b-card v-if="component.gitRepo" title="Stats">
+              <b-list-group>
+                <b-list-group-item
+                  variant="secondary"
+                  class="d-flex justify-content-between align-items-center"
+                >
+                  Repo Age
+                  <b-badge variant="primary" pill>
+                    <FormattedAge
+                      :value="
+                    component.gitRepo
+                      ? component.gitRepo.firstCommitTimestamp
+                      : null
+                  "
+                    />
+                  </b-badge>
+                </b-list-group-item>
 
-          <b-list-group-item
-            class="d-flex justify-content-between align-items-center"
-          >
-            Author Count
-            <b-badge variant="primary" pill>
-              <FormattedNumber
-                :value="
-                  component.gitRepo ? component.gitRepo.authorCount : null
-                "
-              />
-            </b-badge>
-          </b-list-group-item>
+                <b-list-group-item
+                  variant="secondary"
+                  class="d-flex justify-content-between align-items-center"
+                >
+                  Time Since Last Commit
+                  <b-badge variant="primary" pill>
+                    <FormattedAge
+                      :value="
+                    component.gitRepo
+                      ? component.gitRepo.lastCommitTimestamp
+                      : null
+                  "
+                    />
+                  </b-badge>
+                </b-list-group-item>
 
-          <b-list-group-item
-            class="d-flex justify-content-between align-items-center"
-          >
-            Committer Count
-            <b-badge variant="primary" pill>
-              <FormattedNumber
-                :value="
-                  component.gitRepo ? component.gitRepo.committerCount : null
-                "
-              />
-            </b-badge>
-          </b-list-group-item>
-        </b-list-group>
-      </div>
+                <b-list-group-item
+                  variant="secondary"
+                  class="d-flex justify-content-between align-items-center"
+                >
+                  Commit Count
+                  <b-badge variant="primary" pill>
+                    <FormattedNumber
+                      :value="
+                    component.gitRepo ? component.gitRepo.commitCount : null
+                  "
+                    />
+                  </b-badge>
+                </b-list-group-item>
 
-      <div v-if="component.gitRepo" class="col-sm-6">
-        <b-card title="Authors">
-          <table class="table table-dark">
-            <thead>
-              <tr>
-                <th>Names</th>
-                <th>Email Address</th>
-                <th>Commits</th>
-                <th>First Commit</th>
-                <th>Last Commit</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr v-for="(author, authorIndex) in authors" :key="authorIndex">
-                <td>
+                <b-list-group-item
+                  variant="secondary"
+                  class="d-flex justify-content-between align-items-center"
+                >
+                  Author Count
+                  <b-badge variant="primary" pill>
+                    <FormattedNumber
+                      :value="
+                    component.gitRepo ? component.gitRepo.authorCount : null
+                  "
+                    />
+                  </b-badge>
+                </b-list-group-item>
+
+                <b-list-group-item
+                  variant="secondary"
+                  class="d-flex justify-content-between align-items-center"
+                >
+                  Committer Count
+                  <b-badge variant="primary" pill>
+                    <FormattedNumber
+                      :value="
+                    component.gitRepo ? component.gitRepo.committerCount : null
+                  "
+                    />
+                  </b-badge>
+                </b-list-group-item>
+              </b-list-group>
+            </b-card>
+
+          </b-card-group>
+
+          <b-card-group deck>
+
+            <b-card v-if="component.gitRepo" title="Authors">
+              <table class="table table-dark">
+                <thead>
+                <tr>
+                  <th>Names</th>
+                  <th>Email Address</th>
+                  <th>Commits</th>
+                  <th>First Commit</th>
+                  <th>Last Commit</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr v-for="(author, authorIndex) in authors" :key="authorIndex">
+                  <td>
                   <span
                     v-for="(authorName, authorNameIndex) in author.names"
                     :key="authorNameIndex"
@@ -103,31 +116,33 @@
                     {{ authorName }}
                     <br />
                   </span>
-                </td>
-                <td>
-                  <EmailAddress :email-address="author.emailAddress" />
-                </td>
-                <td>
-                  <FormattedNumber :value="author.commitCount" />
-                </td>
-                <td>
-                  <FormattedDate :value="author.firstCommitTimestamp" />
-                </td>
-                <td>
-                  <FormattedDate :value="author.lastCommitTimestamp" />
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </b-card>
-      </div>
+                  </td>
+                  <td>
+                    <EmailAddress :email-address="author.emailAddress" />
+                  </td>
+                  <td>
+                    <FormattedNumber :value="author.commitCount" />
+                  </td>
+                  <td>
+                    <FormattedDate :value="author.firstCommitTimestamp" />
+                  </td>
+                  <td>
+                    <FormattedDate :value="author.lastCommitTimestamp" />
+                  </td>
+                </tr>
+                </tbody>
+              </table>
+            </b-card>
 
-      <b-card v-if="!component.gitRepo" title="No Git information">
-        <b-card-text>
-          Not git-based information is available for this component
-        </b-card-text>
-      </b-card>
-    </div>
+            <b-card v-if="!component.gitRepo" title="No Git information">
+              <b-card-text>
+                Not git-based information is available for this component
+              </b-card-text>
+            </b-card>
+          </b-card-group>
+        </b-col>
+      </b-row>
+    </b-container>
   </div>
 </template>
 
@@ -136,10 +151,10 @@ import Vue from 'vue'
 import { MetaInfo } from 'vue-meta'
 import {
   BBadge,
-  BCard,
-  BCardText,
+  BCard, BCardGroup,
+  BCardText, BCol, BContainer,
   BListGroup,
-  BListGroupItem,
+  BListGroupItem, BRow,
 } from 'bootstrap-vue'
 import { Component, Identity } from '~/types/kronicle-service'
 import ComponentTabs from '~/components/ComponentTabs.vue'
@@ -153,9 +168,13 @@ export default Vue.extend({
   components: {
     'b-badge': BBadge,
     'b-card': BCard,
+    'b-card-group': BCardGroup,
     'b-card-text': BCardText,
+    'b-col': BCol,
+    'b-container': BContainer,
     'b-list-group': BListGroup,
     'b-list-group-item': BListGroupItem,
+    'b-row': BRow,
     ComponentTabs,
     EmailAddress,
     FormattedAge,
@@ -179,17 +198,17 @@ export default Vue.extend({
       component: {} as Component,
     }
   },
+  head(): MetaInfo {
+    return {
+      title: `Kronicle - ${this.component.name} - Repo`,
+    }
+  },
   computed: {
     authors(): Identity[] {
       return this.component.gitRepo.authors.slice().sort((a, b) => {
         return -a.lastCommitTimestamp.localeCompare(b.lastCommitTimestamp)
       })
     },
-  },
-  head(): MetaInfo {
-    return {
-      title: `Kronicle - ${this.component.name} - Repo`,
-    }
   },
 })
 </script>
