@@ -49,7 +49,7 @@ public class KeySoftwareScanner extends LateComponentScanner {
 
     @Override
     public Output<Void> scan(Component input) {
-        if (isNull(input.getSoftware())) {
+        if (isNull(config.getRules()) || isNull(input.getSoftware())) {
             return Output.of(UnaryOperator.identity());
         }
 
