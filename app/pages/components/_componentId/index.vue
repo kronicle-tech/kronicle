@@ -1,74 +1,81 @@
 <template>
   <div>
-    <h1 class="text-info my-3">{{ component.name }}</h1>
-    <ComponentTabs :component-id="component.id" />
+    <b-container fluid>
+      <b-row>
+        <b-col>
+          <h1 class="text-info my-3">{{ component.name }}</h1>
 
-    <b-card-group columns>
-      <b-card title="Component Name">
-        <b-card-text>
-          {{ component.name }}
-        </b-card-text>
-      </b-card>
+          <ComponentTabs :component-id="component.id" />
 
-      <b-card title="Component Type">
-        <b-card-text>
-          {{ component.typeId }}
-        </b-card-text>
-      </b-card>
+          <b-card-group columns>
+            <b-card title="Component Name">
+              <b-card-text>
+                {{ component.name }}
+              </b-card-text>
+            </b-card>
 
-      <b-card title="Platform">
-        <b-card-text>
-          {{ component.platformId }}
-        </b-card-text>
-      </b-card>
+            <b-card title="Component Type">
+              <b-card-text>
+                {{ component.typeId }}
+              </b-card-text>
+            </b-card>
 
-      <b-card
-        v-if="component.tags && component.tags > 0"
-        title="Tags"
-      >
-        <Links :tags="component.tags" />
-      </b-card>
+            <b-card title="Platform">
+              <b-card-text>
+                {{ component.platformId }}
+              </b-card-text>
+            </b-card>
 
-      <b-card
-        v-if="component.teams && component.teams.length > 0"
-        title="Teams"
-      >
-        <ComponentTeams :component-teams="component.teams" />
-      </b-card>
+            <b-card
+              v-if="component.tags && component.tags > 0"
+              title="Tags"
+            >
+              <Links :tags="component.tags" />
+            </b-card>
 
-      <b-card v-if="component.keySoftware" title="Key Software">
-        <KeySoftwareBadges :key-software="component.keySoftware" />
-      </b-card>
+            <b-card
+              v-if="component.teams && component.teams.length > 0"
+              title="Teams"
+            >
+              <ComponentTeams :component-teams="component.teams" />
+            </b-card>
 
-      <b-card v-if="component.description" title="Description">
-        <Markdown :markdown="component.description" />
-      </b-card>
+            <b-card v-if="component.keySoftware" title="Key Software">
+              <KeySoftwareBadges :key-software="component.keySoftware" />
+            </b-card>
 
-      <b-card v-if="component.notes" title="Notes">
-        <Markdown :markdown="component.notes" :toc="true" />
-      </b-card>
+            <b-card v-if="component.description" title="Description">
+              <Markdown :markdown="component.description" />
+            </b-card>
 
-      <b-card
-        v-if="component.links && component.links.length > 0"
-        title="Links"
-      >
-        <Links :links="component.links" />
-      </b-card>
+            <b-card v-if="component.notes" title="Notes">
+              <Markdown :markdown="component.notes" :toc="true" />
+            </b-card>
 
-      <b-card
-        v-if="component.responsibilities && component.responsibilities.length > 0"
-        title="Responsibilities"
-      >
-        <Responsibilities :responsibilities="component.responsibilities" />
-      </b-card>
-    </b-card-group>
+            <b-card
+              v-if="component.links && component.links.length > 0"
+              title="Links"
+            >
+              <Links :links="component.links" />
+            </b-card>
+
+            <b-card
+              v-if="component.responsibilities && component.responsibilities.length > 0"
+              title="Responsibilities"
+            >
+              <Responsibilities :responsibilities="component.responsibilities" />
+            </b-card>
+          </b-card-group>
+        </b-col>
+      </b-row>
+    </b-container>
   </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
 import { MetaInfo } from 'vue-meta'
-import { BCard, BCardGroup, BCardText } from 'bootstrap-vue'
+import {BCard, BCardGroup, BCardText, BCol, BContainer, BRow} from 'bootstrap-vue'
 import { Component } from '~/types/kronicle-service'
 import ComponentTabs from '~/components/ComponentTabs.vue'
 import KeySoftwareBadges from "~/components/KeySoftwareBadges.vue";
@@ -82,6 +89,9 @@ export default Vue.extend({
     'b-card': BCard,
     'b-card-group': BCardGroup,
     'b-card-text': BCardText,
+    'b-col': BCol,
+    'b-container': BContainer,
+    'b-row': BRow,
     ComponentTabs,
     KeySoftwareBadges,
     Links,

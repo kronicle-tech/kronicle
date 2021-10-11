@@ -1,9 +1,17 @@
 <template>
   <div>
-    <h1 class="text-info my-3">
-      {{ area.name }} Area - Cross Functional Requirements
-    </h1>
-    <AreaTabs :area-id="area.id" />
+    <b-container fluid>
+      <b-row>
+        <b-col>
+          <h1 class="text-info my-3">
+            {{ area.name }} Area - Cross Functional Requirements
+          </h1>
+
+          <AreaTabs :area-id="area.id" />
+        </b-col>
+      </b-row>
+    </b-container>
+
     <CrossFunctionalRequirementsView :components="area.components" />
   </div>
 </template>
@@ -11,6 +19,7 @@
 <script lang="ts">
 import Vue from 'vue'
 import { MetaInfo } from 'vue-meta'
+import {BCol, BContainer, BRow} from "bootstrap-vue";
 import { Area } from '~/types/kronicle-service'
 import AreaTabs from '~/components/AreaTabs.vue'
 import CrossFunctionalRequirementsView from '~/components/CrossFunctionalRequirementsView.vue'
@@ -18,6 +27,9 @@ import CrossFunctionalRequirementsView from '~/components/CrossFunctionalRequire
 export default Vue.extend({
   components: {
     AreaTabs,
+    'b-col': BCol,
+    'b-container': BContainer,
+    'b-row': BRow,
     CrossFunctionalRequirementsView,
   },
   async asyncData({ $config, route, store }) {

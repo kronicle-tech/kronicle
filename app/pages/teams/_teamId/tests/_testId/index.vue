@@ -1,9 +1,17 @@
 <template>
   <div>
-    <h1 class="text-info my-3">
-      {{ team.name }} Team - {{ this.$route.params.testId }} Test
-    </h1>
-    <TeamTabs :team-id="team.id" />
+    <b-container fluid>
+      <b-row>
+        <b-col>
+          <h1 class="text-info my-3">
+            {{ team.name }} Team - {{ $route.params.testId }} Test
+          </h1>
+
+          <TeamTabs :team-id="team.id" />
+        </b-col>
+      </b-row>
+    </b-container>
+
     <TestView :test="test" :components="team.components" />
   </div>
 </template>
@@ -11,12 +19,16 @@
 <script lang="ts">
 import Vue from 'vue'
 import { MetaInfo } from 'vue-meta'
+import {BCol, BContainer, BRow} from "bootstrap-vue";
 import { Team, Test } from '~/types/kronicle-service'
 import TestView from '~/components/TestView.vue'
 import TeamTabs from '~/components/TeamTabs.vue'
 
 export default Vue.extend({
   components: {
+    'b-col': BCol,
+    'b-container': BContainer,
+    'b-row': BRow,
     TeamTabs,
     TestView,
   },

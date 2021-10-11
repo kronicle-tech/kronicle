@@ -3,172 +3,196 @@
 exports[`Index when Get Areas service endpoint returns an array of multiple areas renders the page 1`] = `
 <div>
   <div
-    class="my-3"
-  >
-    <a
-      class="btn my-1 btn-secondary"
-      href="/all-areas"
-      target="_self"
-    >
-      Areas
-    </a>
-  </div>
-   
-  <transition-stub
-    class="my-3"
-    css="true"
-    enteractiveclass=""
-    enterclass=""
-    entertoclass="show"
-    leaveactiveclass=""
-    leaveclass="show"
-    leavetoclass=""
-    name=""
+    class="container-fluid"
   >
     <div
-      aria-atomic="true"
-      aria-live="polite"
-      class="alert alert-dismissible alert-info"
-      role="alert"
+      class="row"
     >
-      <button
-        aria-label="Close"
-        class="close"
-        type="button"
+      <div
+        class="col"
       >
-        ×
-      </button>
-      
-    Click an area's name in the table below to view more information about
-    that area
-  
-    </div>
-  </transition-stub>
-   
-  <table
-    class="table table-dark table-bordered table-striped mt-2"
-    style="width: 100%;"
-  >
-    <thead>
-      <tr>
-        <th
-          class="area-name"
-        >
-          Name
-        </th>
-         
-        <th>
-          Description
-        </th>
-      </tr>
-    </thead>
-     
-    <tbody>
-      <tr>
-        <td
-          class="area-name table-primary"
+        <div
+          class="my-3"
         >
           <a
-            href="/areas/test-area-id-1"
+            class="btn my-1 btn-secondary"
+            href="/all-areas"
+            target="_self"
           >
-            Test Area Name 1
+            Areas
           </a>
-        </td>
+        </div>
          
-        <td>
-          <div />
-        </td>
-      </tr>
-      <tr>
-        <td
-          class="area-name table-primary"
+        <transition-stub
+          class="my-3"
+          css="true"
+          enteractiveclass=""
+          enterclass=""
+          entertoclass="show"
+          leaveactiveclass=""
+          leaveclass="show"
+          leavetoclass=""
+          name=""
         >
-          <a
-            href="/areas/test-area-id-2"
+          <div
+            aria-atomic="true"
+            aria-live="polite"
+            class="alert alert-dismissible alert-info"
+            role="alert"
           >
-            Test Area Name 2
-          </a>
-        </td>
-         
-        <td>
-          <div>
+            <button
+              aria-label="Close"
+              class="close"
+              type="button"
+            >
+              ×
+            </button>
             
-
-            <p>
-              Test Area Description 2
-            </p>
+          Click an area's name in the table below to view more information about
+          that area
+        
           </div>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+        </transition-stub>
+         
+        <table
+          class="table table-dark table-bordered table-striped mt-2"
+          style="width: 100%;"
+        >
+          <thead>
+            <tr>
+              <th
+                class="area-name"
+              >
+                Name
+              </th>
+               
+              <th>
+                Description
+              </th>
+            </tr>
+          </thead>
+           
+          <tbody>
+            <tr>
+              <td
+                class="area-name table-primary"
+              >
+                <a
+                  href="/areas/test-area-id-1"
+                >
+                  Test Area Name 1
+                </a>
+              </td>
+               
+              <td>
+                <div />
+              </td>
+            </tr>
+            <tr>
+              <td
+                class="area-name table-primary"
+              >
+                <a
+                  href="/areas/test-area-id-2"
+                >
+                  Test Area Name 2
+                </a>
+              </td>
+               
+              <td>
+                <div>
+                  
+
+                  <p>
+                    Test Area Description 2
+                  </p>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
 </div>
 `;
 
 exports[`Index when Get Areas service endpoint returns an empty array renders the page 1`] = `
 <div>
   <div
-    class="my-3"
-  >
-    <a
-      class="btn my-1 btn-secondary"
-      href="/all-areas"
-      target="_self"
-    >
-      Areas
-    </a>
-  </div>
-   
-  <transition-stub
-    class="my-3"
-    css="true"
-    enteractiveclass=""
-    enterclass=""
-    entertoclass="show"
-    leaveactiveclass=""
-    leaveclass="show"
-    leavetoclass=""
-    name=""
+    class="container-fluid"
   >
     <div
-      aria-atomic="true"
-      aria-live="polite"
-      class="alert alert-dismissible alert-info"
-      role="alert"
+      class="row"
     >
-      <button
-        aria-label="Close"
-        class="close"
-        type="button"
+      <div
+        class="col"
       >
-        ×
-      </button>
-      
-    Click an area's name in the table below to view more information about
-    that area
-  
-    </div>
-  </transition-stub>
-   
-  <table
-    class="table table-dark table-bordered table-striped mt-2"
-    style="width: 100%;"
-  >
-    <thead>
-      <tr>
-        <th
-          class="area-name"
+        <div
+          class="my-3"
         >
-          Name
-        </th>
+          <a
+            class="btn my-1 btn-secondary"
+            href="/all-areas"
+            target="_self"
+          >
+            Areas
+          </a>
+        </div>
          
-        <th>
-          Description
-        </th>
-      </tr>
-    </thead>
-     
-    <tbody />
-  </table>
+        <transition-stub
+          class="my-3"
+          css="true"
+          enteractiveclass=""
+          enterclass=""
+          entertoclass="show"
+          leaveactiveclass=""
+          leaveclass="show"
+          leavetoclass=""
+          name=""
+        >
+          <div
+            aria-atomic="true"
+            aria-live="polite"
+            class="alert alert-dismissible alert-info"
+            role="alert"
+          >
+            <button
+              aria-label="Close"
+              class="close"
+              type="button"
+            >
+              ×
+            </button>
+            
+          Click an area's name in the table below to view more information about
+          that area
+        
+          </div>
+        </transition-stub>
+         
+        <table
+          class="table table-dark table-bordered table-striped mt-2"
+          style="width: 100%;"
+        >
+          <thead>
+            <tr>
+              <th
+                class="area-name"
+              >
+                Name
+              </th>
+               
+              <th>
+                Description
+              </th>
+            </tr>
+          </thead>
+           
+          <tbody />
+        </table>
+      </div>
+    </div>
+  </div>
 </div>
 `;

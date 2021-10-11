@@ -2,475 +2,497 @@
 
 exports[`Index when Get Component service endpoint returns a component when the component has no tech debts renders no tech debts 1`] = `
 <div>
-  <h1
-    class="text-info my-3"
-  >
-    Test Component Name 1 - Tech Debts
-  </h1>
-   
   <div
-    class="my-3"
+    class="container-fluid"
   >
-    <a
-      class="btn my-1 btn-secondary"
-      href="/components/test-component-id-1"
-      target="_self"
+    <div
+      class="row"
     >
-      Info
-    </a>
-     
-    <a
-      class="btn my-1 btn-secondary"
-      href="/components/test-component-id-1/dependencies"
-      target="_self"
-    >
-      
+      <div
+        class="col"
+      >
+        <h1
+          class="text-info my-3"
+        >
+          Test Component Name 1 - Tech Debts
+        </h1>
+         
+        <div
+          class="my-3"
+        >
+          <a
+            class="btn my-1 btn-secondary"
+            href="/components/test-component-id-1"
+            target="_self"
+          >
+            Info
+          </a>
+           
+          <a
+            class="btn my-1 btn-secondary"
+            href="/components/test-component-id-1/dependencies"
+            target="_self"
+          >
+            
     Dependencies
   
-    </a>
-     
-    <a
-      class="btn my-1 btn-secondary"
-      href="/components/test-component-id-1/response-times"
-      target="_self"
-    >
-      
+          </a>
+           
+          <a
+            class="btn my-1 btn-secondary"
+            href="/components/test-component-id-1/response-times"
+            target="_self"
+          >
+            
     Response Times
   
-    </a>
-     
-    <a
-      class="btn my-1 btn-secondary"
-      href="/components/test-component-id-1/downstream-response-times"
-      target="_self"
-    >
-      
+          </a>
+           
+          <a
+            class="btn my-1 btn-secondary"
+            href="/components/test-component-id-1/downstream-response-times"
+            target="_self"
+          >
+            
     Downstream Response Times
   
-    </a>
-     
-    <a
-      class="btn my-1 btn-secondary"
-      href="/components/test-component-id-1/call-graphs"
-      target="_self"
-    >
-      
+          </a>
+           
+          <a
+            class="btn my-1 btn-secondary"
+            href="/components/test-component-id-1/call-graphs"
+            target="_self"
+          >
+            
     Call Graphs
   
-    </a>
-     
-    <a
-      class="btn my-1 btn-secondary"
-      href="/components/test-component-id-1/cross-functional-requirements"
-      target="_self"
-    >
-      
+          </a>
+           
+          <a
+            class="btn my-1 btn-secondary"
+            href="/components/test-component-id-1/cross-functional-requirements"
+            target="_self"
+          >
+            
     Cross Functional Requirements
   
-    </a>
-     
-    <a
-      class="btn my-1 btn-secondary"
-      href="/components/test-component-id-1/tech-debts"
-      target="_self"
-    >
-      
+          </a>
+           
+          <a
+            class="btn my-1 btn-secondary"
+            href="/components/test-component-id-1/tech-debts"
+            target="_self"
+          >
+            
     Tech Debts
   
-    </a>
-     
-    <a
-      class="btn my-1 btn-secondary"
-      href="/components/test-component-id-1/tests"
-      target="_self"
-    >
-      Tests
-    </a>
-     
-    <a
-      class="btn my-1 btn-secondary"
-      href="/components/test-component-id-1/errors"
-      target="_self"
-    >
-      Errors
-    </a>
-     
-    <a
-      class="btn my-1 btn-secondary"
-      href="/components/test-component-id-1/openapi-specs"
-      target="_self"
-    >
-      
+          </a>
+           
+          <a
+            class="btn my-1 btn-secondary"
+            href="/components/test-component-id-1/tests"
+            target="_self"
+          >
+            Tests
+          </a>
+           
+          <a
+            class="btn my-1 btn-secondary"
+            href="/components/test-component-id-1/errors"
+            target="_self"
+          >
+            Errors
+          </a>
+           
+          <a
+            class="btn my-1 btn-secondary"
+            href="/components/test-component-id-1/openapi-specs"
+            target="_self"
+          >
+            
     OpenAPI Specs
   
-    </a>
-     
-    <a
-      class="btn my-1 btn-secondary"
-      href="/components/test-component-id-1/repo"
-      target="_self"
-    >
-      Repo
-    </a>
-     
-    <a
-      class="btn my-1 btn-secondary"
-      href="/components/test-component-id-1/readme"
-      target="_self"
-    >
-      README
-    </a>
-     
-    <a
-      class="btn my-1 btn-secondary"
-      href="/components/test-component-id-1/to-dos"
-      target="_self"
-    >
-      To Dos
-    </a>
-     
-    <a
-      class="btn my-1 btn-secondary"
-      href="/components/test-component-id-1/lines-of-code"
-      target="_self"
-    >
-      
+          </a>
+           
+          <a
+            class="btn my-1 btn-secondary"
+            href="/components/test-component-id-1/repo"
+            target="_self"
+          >
+            Repo
+          </a>
+           
+          <a
+            class="btn my-1 btn-secondary"
+            href="/components/test-component-id-1/readme"
+            target="_self"
+          >
+            README
+          </a>
+           
+          <a
+            class="btn my-1 btn-secondary"
+            href="/components/test-component-id-1/to-dos"
+            target="_self"
+          >
+            To Dos
+          </a>
+           
+          <a
+            class="btn my-1 btn-secondary"
+            href="/components/test-component-id-1/lines-of-code"
+            target="_self"
+          >
+            
     Lines of Code
   
-    </a>
-     
-    <a
-      class="btn my-1 btn-secondary"
-      href="/components/test-component-id-1/software-repositories"
-      target="_self"
-    >
-      
+          </a>
+           
+          <a
+            class="btn my-1 btn-secondary"
+            href="/components/test-component-id-1/software-repositories"
+            target="_self"
+          >
+            
     Software Repositories
   
-    </a>
-     
-    <a
-      class="btn my-1 btn-secondary"
-      href="/components/test-component-id-1/software"
-      target="_self"
-    >
-      Software
-    </a>
-     
-    <a
-      class="btn my-1 btn-secondary"
-      href="/components/test-component-id-1/imports"
-      target="_self"
-    >
-      Imports
-    </a>
+          </a>
+           
+          <a
+            class="btn my-1 btn-secondary"
+            href="/components/test-component-id-1/software"
+            target="_self"
+          >
+            Software
+          </a>
+           
+          <a
+            class="btn my-1 btn-secondary"
+            href="/components/test-component-id-1/imports"
+            target="_self"
+          >
+            Imports
+          </a>
+        </div>
+      </div>
+    </div>
   </div>
    
   <div>
     <div
-      class="main"
+      class="container-fluid"
     >
       <div
-        class="card my-3"
+        class="row"
       >
-        <!---->
-        <!---->
         <div
-          class="list-group"
+          class="col"
         >
           <div
-            class="list-group-item list-group-item-success"
+            class="card my-3"
           >
-            <span
-              class="display-1"
+            <!---->
+            <!---->
+            <div
+              class="list-group"
             >
-              0
-            </span>
-             tech debts
-        
+              <div
+                class="list-group-item list-group-item-success"
+              >
+                <span
+                  class="display-1"
+                >
+                  0
+                </span>
+                 tech debts
+            
+              </div>
+               
+            </div>
+            <!---->
+            <!---->
           </div>
            
+          <div
+            class="card my-3"
+          >
+            <!---->
+            <!---->
+            <div
+              class="card-body"
+            >
+              <h4
+                class="card-title"
+              >
+                0 Tech Debts
+              </h4>
+              <!---->
+              <p
+                class="card-text"
+              >
+                <!---->
+              </p>
+            </div>
+            <!---->
+            <!---->
+          </div>
         </div>
-        <!---->
-        <!---->
-      </div>
-       
-      <div
-        class="card my-3"
-      >
-        <!---->
-        <!---->
-        <div
-          class="card-body"
-        >
-          <h4
-            class="card-title"
-          >
-            0 Tech Debts
-          </h4>
-          <!---->
-          <p
-            class="card-text"
-          >
-            <!---->
-          </p>
-        </div>
-        <!---->
-        <!---->
-      </div>
-    </div>
-     
-    <div
-      class="panel"
-    >
-      <div>
-        <!---->
-         
-        <fieldset
-          class="form-group"
-          id="__BVID__68"
-        >
-          <legend
-            class="bv-no-focus-ring col-form-label pt-0"
-            id="__BVID__68__BV_label_"
-            tabindex="-1"
-          >
-            Teams
-          </legend>
-          <div>
-            <div
-              class="bv-no-focus-ring"
-              id="__BVID__69"
-              role="group"
-              tabindex="-1"
-            >
-              <div
-                class="custom-control custom-checkbox"
-              >
-                <input
-                  class="custom-control-input"
-                  id="__BVID__69_BV_option_0"
-                  name="team"
-                  type="checkbox"
-                  value="test-team-id-1-1"
-                />
-                <label
-                  class="custom-control-label"
-                  for="__BVID__69_BV_option_0"
-                >
-                  <span>
-                    test-team-id-1-1
-                  </span>
-                </label>
-              </div>
-              <div
-                class="custom-control custom-checkbox"
-              >
-                <input
-                  class="custom-control-input"
-                  id="__BVID__69_BV_option_1"
-                  name="team"
-                  type="checkbox"
-                  value="test-team-id-1-2"
-                />
-                <label
-                  class="custom-control-label"
-                  for="__BVID__69_BV_option_1"
-                >
-                  <span>
-                    test-team-id-1-2
-                  </span>
-                </label>
-              </div>
-            </div>
-            <!---->
-            <!---->
-            <!---->
-          </div>
-        </fieldset>
-         
-        <fieldset
-          class="form-group"
-          id="__BVID__72"
-        >
-          <legend
-            class="bv-no-focus-ring col-form-label pt-0"
-            id="__BVID__72__BV_label_"
-            tabindex="-1"
-          >
-            Tags
-          </legend>
-          <div>
-            <div
-              class="bv-no-focus-ring"
-              id="__BVID__73"
-              role="group"
-              tabindex="-1"
-            >
-              <div
-                class="custom-control custom-checkbox"
-              >
-                <input
-                  class="custom-control-input"
-                  id="__BVID__73_BV_option_0"
-                  name="tag"
-                  type="checkbox"
-                  value="test-tag-1-1"
-                />
-                <label
-                  class="custom-control-label"
-                  for="__BVID__73_BV_option_0"
-                >
-                  <span>
-                    test-tag-1-1
-                  </span>
-                </label>
-              </div>
-              <div
-                class="custom-control custom-checkbox"
-              >
-                <input
-                  class="custom-control-input"
-                  id="__BVID__73_BV_option_1"
-                  name="tag"
-                  type="checkbox"
-                  value="test-tag-1-2"
-                />
-                <label
-                  class="custom-control-label"
-                  for="__BVID__73_BV_option_1"
-                >
-                  <span>
-                    test-tag-1-2
-                  </span>
-                </label>
-              </div>
-            </div>
-            <!---->
-            <!---->
-            <!---->
-          </div>
-        </fieldset>
-         
-        <fieldset
-          class="form-group"
-          id="__BVID__76"
-        >
-          <legend
-            class="bv-no-focus-ring col-form-label pt-0"
-            id="__BVID__76__BV_label_"
-            tabindex="-1"
-          >
-            Component Types
-          </legend>
-          <div>
-            <div
-              class="bv-no-focus-ring"
-              id="__BVID__77"
-              role="group"
-              tabindex="-1"
-            >
-              <div
-                class="custom-control custom-checkbox"
-              >
-                <input
-                  class="custom-control-input"
-                  id="__BVID__77_BV_option_0"
-                  name="componentTypeId"
-                  type="checkbox"
-                  value="test-component-type-id-1"
-                />
-                <label
-                  class="custom-control-label"
-                  for="__BVID__77_BV_option_0"
-                >
-                  <span>
-                    test-component-type-id-1
-                  </span>
-                </label>
-              </div>
-            </div>
-            <!---->
-            <!---->
-            <!---->
-          </div>
-        </fieldset>
-         
-        <fieldset
-          class="form-group"
-          id="__BVID__79"
-        >
-          <legend
-            class="bv-no-focus-ring col-form-label pt-0"
-            id="__BVID__79__BV_label_"
-            tabindex="-1"
-          >
-            Platforms
-          </legend>
-          <div>
-            <div
-              class="bv-no-focus-ring"
-              id="__BVID__80"
-              role="group"
-              tabindex="-1"
-            >
-              <div
-                class="custom-control custom-checkbox"
-              >
-                <input
-                  class="custom-control-input"
-                  id="__BVID__80_BV_option_0"
-                  name="platformId"
-                  type="checkbox"
-                  value="undefined"
-                />
-                <label
-                  class="custom-control-label"
-                  for="__BVID__80_BV_option_0"
-                >
-                  <span>
-                    undefined
-                  </span>
-                </label>
-              </div>
-            </div>
-            <!---->
-            <!---->
-            <!---->
-          </div>
-        </fieldset>
          
         <div
-          class="form-group"
-          id="__BVID__82"
-          role="group"
+          class="col-md-3"
         >
-          <label
-            class="d-block"
-            for="component-filter"
-            id="__BVID__82__BV_label_"
+          <div
+            class="mt-3"
           >
-            Component
-          </label>
-          <div>
-            <select
-              class="custom-select custom-select-sm"
-              id="component-filter"
+            <!---->
+             
+            <fieldset
+              class="form-group"
+              id="__BVID__68"
             >
-              <option
-                value=""
+              <legend
+                class="bv-no-focus-ring col-form-label pt-0"
+                id="__BVID__68__BV_label_"
+                tabindex="-1"
               >
-                Please select a component
-              </option>
-              <option
-                value="test-component-id-1"
+                Teams
+              </legend>
+              <div>
+                <div
+                  class="bv-no-focus-ring"
+                  id="__BVID__69"
+                  role="group"
+                  tabindex="-1"
+                >
+                  <div
+                    class="custom-control custom-checkbox"
+                  >
+                    <input
+                      class="custom-control-input"
+                      id="__BVID__69_BV_option_0"
+                      name="team"
+                      type="checkbox"
+                      value="test-team-id-1-1"
+                    />
+                    <label
+                      class="custom-control-label"
+                      for="__BVID__69_BV_option_0"
+                    >
+                      <span>
+                        test-team-id-1-1
+                      </span>
+                    </label>
+                  </div>
+                  <div
+                    class="custom-control custom-checkbox"
+                  >
+                    <input
+                      class="custom-control-input"
+                      id="__BVID__69_BV_option_1"
+                      name="team"
+                      type="checkbox"
+                      value="test-team-id-1-2"
+                    />
+                    <label
+                      class="custom-control-label"
+                      for="__BVID__69_BV_option_1"
+                    >
+                      <span>
+                        test-team-id-1-2
+                      </span>
+                    </label>
+                  </div>
+                </div>
+                <!---->
+                <!---->
+                <!---->
+              </div>
+            </fieldset>
+             
+            <fieldset
+              class="form-group"
+              id="__BVID__72"
+            >
+              <legend
+                class="bv-no-focus-ring col-form-label pt-0"
+                id="__BVID__72__BV_label_"
+                tabindex="-1"
               >
-                test-component-id-1
-              </option>
-            </select>
-            <!---->
-            <!---->
-            <!---->
+                Tags
+              </legend>
+              <div>
+                <div
+                  class="bv-no-focus-ring"
+                  id="__BVID__73"
+                  role="group"
+                  tabindex="-1"
+                >
+                  <div
+                    class="custom-control custom-checkbox"
+                  >
+                    <input
+                      class="custom-control-input"
+                      id="__BVID__73_BV_option_0"
+                      name="tag"
+                      type="checkbox"
+                      value="test-tag-1-1"
+                    />
+                    <label
+                      class="custom-control-label"
+                      for="__BVID__73_BV_option_0"
+                    >
+                      <span>
+                        test-tag-1-1
+                      </span>
+                    </label>
+                  </div>
+                  <div
+                    class="custom-control custom-checkbox"
+                  >
+                    <input
+                      class="custom-control-input"
+                      id="__BVID__73_BV_option_1"
+                      name="tag"
+                      type="checkbox"
+                      value="test-tag-1-2"
+                    />
+                    <label
+                      class="custom-control-label"
+                      for="__BVID__73_BV_option_1"
+                    >
+                      <span>
+                        test-tag-1-2
+                      </span>
+                    </label>
+                  </div>
+                </div>
+                <!---->
+                <!---->
+                <!---->
+              </div>
+            </fieldset>
+             
+            <fieldset
+              class="form-group"
+              id="__BVID__76"
+            >
+              <legend
+                class="bv-no-focus-ring col-form-label pt-0"
+                id="__BVID__76__BV_label_"
+                tabindex="-1"
+              >
+                Component Types
+              </legend>
+              <div>
+                <div
+                  class="bv-no-focus-ring"
+                  id="__BVID__77"
+                  role="group"
+                  tabindex="-1"
+                >
+                  <div
+                    class="custom-control custom-checkbox"
+                  >
+                    <input
+                      class="custom-control-input"
+                      id="__BVID__77_BV_option_0"
+                      name="componentTypeId"
+                      type="checkbox"
+                      value="test-component-type-id-1"
+                    />
+                    <label
+                      class="custom-control-label"
+                      for="__BVID__77_BV_option_0"
+                    >
+                      <span>
+                        test-component-type-id-1
+                      </span>
+                    </label>
+                  </div>
+                </div>
+                <!---->
+                <!---->
+                <!---->
+              </div>
+            </fieldset>
+             
+            <fieldset
+              class="form-group"
+              id="__BVID__79"
+            >
+              <legend
+                class="bv-no-focus-ring col-form-label pt-0"
+                id="__BVID__79__BV_label_"
+                tabindex="-1"
+              >
+                Platforms
+              </legend>
+              <div>
+                <div
+                  class="bv-no-focus-ring"
+                  id="__BVID__80"
+                  role="group"
+                  tabindex="-1"
+                >
+                  <div
+                    class="custom-control custom-checkbox"
+                  >
+                    <input
+                      class="custom-control-input"
+                      id="__BVID__80_BV_option_0"
+                      name="platformId"
+                      type="checkbox"
+                      value="undefined"
+                    />
+                    <label
+                      class="custom-control-label"
+                      for="__BVID__80_BV_option_0"
+                    >
+                      <span>
+                        undefined
+                      </span>
+                    </label>
+                  </div>
+                </div>
+                <!---->
+                <!---->
+                <!---->
+              </div>
+            </fieldset>
+             
+            <div
+              class="form-group"
+              id="__BVID__82"
+              role="group"
+            >
+              <label
+                class="d-block"
+                for="component-filter"
+                id="__BVID__82__BV_label_"
+              >
+                Component
+              </label>
+              <div>
+                <select
+                  class="custom-select custom-select-sm"
+                  id="component-filter"
+                >
+                  <option
+                    value=""
+                  >
+                    Please select a component
+                  </option>
+                  <option
+                    value="test-component-id-1"
+                  >
+                    test-component-id-1
+                  </option>
+                </select>
+                <!---->
+                <!---->
+                <!---->
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -481,782 +503,804 @@ exports[`Index when Get Component service endpoint returns a component when the 
 
 exports[`Index when Get Component service endpoint returns a component when the component has tech debts renders the details of the tech debts 1`] = `
 <div>
-  <h1
-    class="text-info my-3"
-  >
-    Test Component Name 1 - Tech Debts
-  </h1>
-   
   <div
-    class="my-3"
+    class="container-fluid"
   >
-    <a
-      class="btn my-1 btn-secondary"
-      href="/components/test-component-id-1"
-      target="_self"
+    <div
+      class="row"
     >
-      Info
-    </a>
-     
-    <a
-      class="btn my-1 btn-secondary"
-      href="/components/test-component-id-1/dependencies"
-      target="_self"
-    >
-      
+      <div
+        class="col"
+      >
+        <h1
+          class="text-info my-3"
+        >
+          Test Component Name 1 - Tech Debts
+        </h1>
+         
+        <div
+          class="my-3"
+        >
+          <a
+            class="btn my-1 btn-secondary"
+            href="/components/test-component-id-1"
+            target="_self"
+          >
+            Info
+          </a>
+           
+          <a
+            class="btn my-1 btn-secondary"
+            href="/components/test-component-id-1/dependencies"
+            target="_self"
+          >
+            
     Dependencies
   
-    </a>
-     
-    <a
-      class="btn my-1 btn-secondary"
-      href="/components/test-component-id-1/response-times"
-      target="_self"
-    >
-      
+          </a>
+           
+          <a
+            class="btn my-1 btn-secondary"
+            href="/components/test-component-id-1/response-times"
+            target="_self"
+          >
+            
     Response Times
   
-    </a>
-     
-    <a
-      class="btn my-1 btn-secondary"
-      href="/components/test-component-id-1/downstream-response-times"
-      target="_self"
-    >
-      
+          </a>
+           
+          <a
+            class="btn my-1 btn-secondary"
+            href="/components/test-component-id-1/downstream-response-times"
+            target="_self"
+          >
+            
     Downstream Response Times
   
-    </a>
-     
-    <a
-      class="btn my-1 btn-secondary"
-      href="/components/test-component-id-1/call-graphs"
-      target="_self"
-    >
-      
+          </a>
+           
+          <a
+            class="btn my-1 btn-secondary"
+            href="/components/test-component-id-1/call-graphs"
+            target="_self"
+          >
+            
     Call Graphs
   
-    </a>
-     
-    <a
-      class="btn my-1 btn-secondary"
-      href="/components/test-component-id-1/cross-functional-requirements"
-      target="_self"
-    >
-      
+          </a>
+           
+          <a
+            class="btn my-1 btn-secondary"
+            href="/components/test-component-id-1/cross-functional-requirements"
+            target="_self"
+          >
+            
     Cross Functional Requirements
   
-    </a>
-     
-    <a
-      class="btn my-1 btn-secondary"
-      href="/components/test-component-id-1/tech-debts"
-      target="_self"
-    >
-      
+          </a>
+           
+          <a
+            class="btn my-1 btn-secondary"
+            href="/components/test-component-id-1/tech-debts"
+            target="_self"
+          >
+            
     Tech Debts
   
-    </a>
-     
-    <a
-      class="btn my-1 btn-secondary"
-      href="/components/test-component-id-1/tests"
-      target="_self"
-    >
-      Tests
-    </a>
-     
-    <a
-      class="btn my-1 btn-secondary"
-      href="/components/test-component-id-1/errors"
-      target="_self"
-    >
-      Errors
-    </a>
-     
-    <a
-      class="btn my-1 btn-secondary"
-      href="/components/test-component-id-1/openapi-specs"
-      target="_self"
-    >
-      
+          </a>
+           
+          <a
+            class="btn my-1 btn-secondary"
+            href="/components/test-component-id-1/tests"
+            target="_self"
+          >
+            Tests
+          </a>
+           
+          <a
+            class="btn my-1 btn-secondary"
+            href="/components/test-component-id-1/errors"
+            target="_self"
+          >
+            Errors
+          </a>
+           
+          <a
+            class="btn my-1 btn-secondary"
+            href="/components/test-component-id-1/openapi-specs"
+            target="_self"
+          >
+            
     OpenAPI Specs
   
-    </a>
-     
-    <a
-      class="btn my-1 btn-secondary"
-      href="/components/test-component-id-1/repo"
-      target="_self"
-    >
-      Repo
-    </a>
-     
-    <a
-      class="btn my-1 btn-secondary"
-      href="/components/test-component-id-1/readme"
-      target="_self"
-    >
-      README
-    </a>
-     
-    <a
-      class="btn my-1 btn-secondary"
-      href="/components/test-component-id-1/to-dos"
-      target="_self"
-    >
-      To Dos
-    </a>
-     
-    <a
-      class="btn my-1 btn-secondary"
-      href="/components/test-component-id-1/lines-of-code"
-      target="_self"
-    >
-      
+          </a>
+           
+          <a
+            class="btn my-1 btn-secondary"
+            href="/components/test-component-id-1/repo"
+            target="_self"
+          >
+            Repo
+          </a>
+           
+          <a
+            class="btn my-1 btn-secondary"
+            href="/components/test-component-id-1/readme"
+            target="_self"
+          >
+            README
+          </a>
+           
+          <a
+            class="btn my-1 btn-secondary"
+            href="/components/test-component-id-1/to-dos"
+            target="_self"
+          >
+            To Dos
+          </a>
+           
+          <a
+            class="btn my-1 btn-secondary"
+            href="/components/test-component-id-1/lines-of-code"
+            target="_self"
+          >
+            
     Lines of Code
   
-    </a>
-     
-    <a
-      class="btn my-1 btn-secondary"
-      href="/components/test-component-id-1/software-repositories"
-      target="_self"
-    >
-      
+          </a>
+           
+          <a
+            class="btn my-1 btn-secondary"
+            href="/components/test-component-id-1/software-repositories"
+            target="_self"
+          >
+            
     Software Repositories
   
-    </a>
-     
-    <a
-      class="btn my-1 btn-secondary"
-      href="/components/test-component-id-1/software"
-      target="_self"
-    >
-      Software
-    </a>
-     
-    <a
-      class="btn my-1 btn-secondary"
-      href="/components/test-component-id-1/imports"
-      target="_self"
-    >
-      Imports
-    </a>
+          </a>
+           
+          <a
+            class="btn my-1 btn-secondary"
+            href="/components/test-component-id-1/software"
+            target="_self"
+          >
+            Software
+          </a>
+           
+          <a
+            class="btn my-1 btn-secondary"
+            href="/components/test-component-id-1/imports"
+            target="_self"
+          >
+            Imports
+          </a>
+        </div>
+      </div>
+    </div>
   </div>
    
   <div>
     <div
-      class="main"
+      class="container-fluid"
     >
       <div
-        class="card my-3"
+        class="row"
       >
-        <!---->
-        <!---->
         <div
-          class="list-group"
+          class="col"
         >
-          <!---->
+          <div
+            class="card my-3"
+          >
+            <!---->
+            <!---->
+            <div
+              class="list-group"
+            >
+              <!---->
+               
+              <div
+                class="list-group-item list-group-item-warning"
+              >
+                <span
+                  class="display-2"
+                >
+                  1
+                </span>
+                 
+                <b>
+                  High
+                </b>
+                 tech debt
+            
+              </div>
+              <div
+                class="list-group-item list-group-item-info"
+              >
+                <span
+                  class="display-3"
+                >
+                  1
+                </span>
+                 
+                <b>
+                  Medium
+                </b>
+                 tech debt
+            
+              </div>
+            </div>
+            <!---->
+            <!---->
+          </div>
            
           <div
-            class="list-group-item list-group-item-warning"
+            class="card my-3"
           >
-            <span
-              class="display-2"
+            <!---->
+            <!---->
+            <div
+              class="card-body"
             >
-              1
-            </span>
-             
-            <b>
-              High
-            </b>
-             tech debt
-        
-          </div>
-          <div
-            class="list-group-item list-group-item-info"
-          >
-            <span
-              class="display-3"
-            >
-              1
-            </span>
-             
-            <b>
-              Medium
-            </b>
-             tech debt
-        
-          </div>
-        </div>
-        <!---->
-        <!---->
-      </div>
-       
-      <div
-        class="card my-3"
-      >
-        <!---->
-        <!---->
-        <div
-          class="card-body"
-        >
-          <h4
-            class="card-title"
-          >
-            2 Tech Debts
-          </h4>
-          <!---->
-          <p
-            class="card-text"
-          >
-            <table
-              class="table table-dark"
-            >
-              <thead>
-                <tr>
-                  <th
-                    class="component"
-                  >
-                    Component
-                  </th>
+              <h4
+                class="card-title"
+              >
+                2 Tech Debts
+              </h4>
+              <!---->
+              <p
+                class="card-text"
+              >
+                <table
+                  class="table table-dark"
+                >
+                  <thead>
+                    <tr>
+                      <th
+                        class="component"
+                      >
+                        Component
+                      </th>
+                       
+                      <th
+                        class="priority"
+                      >
+                        Priority
+                      </th>
+                       
+                      <th
+                        class="teams"
+                      >
+                        Teams
+                      </th>
+                       
+                      <th
+                        class="description"
+                      >
+                        Description
+                      </th>
+                       
+                      <th
+                        class="notes"
+                      >
+                        Notes
+                      </th>
+                       
+                      <th
+                        class="links"
+                      >
+                        Links
+                      </th>
+                    </tr>
+                  </thead>
                    
-                  <th
-                    class="priority"
-                  >
-                    Priority
-                  </th>
-                   
-                  <th
-                    class="teams"
-                  >
-                    Teams
-                  </th>
-                   
-                  <th
-                    class="description"
-                  >
-                    Description
-                  </th>
-                   
-                  <th
-                    class="notes"
-                  >
-                    Notes
-                  </th>
-                   
-                  <th
-                    class="links"
-                  >
-                    Links
-                  </th>
-                </tr>
-              </thead>
-               
-              <tbody>
-                <tr>
-                  <td
-                    class="component table-primary"
-                  >
-                    <a
-                      href="/components/test-component-id-1"
-                    >
-                      Test Component Name 1
-                    </a>
-                  </td>
-                   
-                  <td
-                    class="priority"
-                  >
-                    <span
-                      class="badge badge-warning"
-                    >
-                      
+                  <tbody>
+                    <tr>
+                      <td
+                        class="component table-primary"
+                      >
+                        <a
+                          href="/components/test-component-id-1"
+                        >
+                          Test Component Name 1
+                        </a>
+                      </td>
+                       
+                      <td
+                        class="priority"
+                      >
+                        <span
+                          class="badge badge-warning"
+                        >
+                          
           High
         
-                    </span>
-                  </td>
-                   
-                  <td
-                    class="teams"
-                  >
-                    <ul>
-                      <li>
-                        <a
-                          class="team-name"
-                          href="/teams/test-team-id-1-1"
-                        >
-                          test-team-id-1-1
-                        </a>
-                         
-                        <!---->
-                         
-                        <!---->
-                      </li>
-                      <li>
-                        <a
-                          class="team-name"
-                          href="/teams/test-team-id-1-2"
-                        >
-                          test-team-id-1-2
-                        </a>
-                         
-                        <!---->
-                         
-                        <!---->
-                      </li>
-                    </ul>
-                  </td>
-                   
-                  <td
-                    class="description"
-                  >
-                    <div>
-                      
-
-                      <p>
-                        Test Tech Debt Description 1 2
-                      </p>
-                    </div>
-                  </td>
-                   
-                  <td
-                    class="notes"
-                  >
-                    <div>
-                      
-
-                      <p>
-                        Test Tech Debt Notes 1 2
-                      </p>
-                    </div>
-                  </td>
-                   
-                  <td
-                    class="links"
-                  >
-                    <ul>
-                      <li>
-                        <a
-                          href="https://example.com/test-tech-debt-link-1-2-1"
-                          target="_blank"
-                        >
-                          https://example.com/test-tech-debt-link-1-2-1
-                        </a>
-                         
-                        <br />
-                         
+                        </span>
+                      </td>
+                       
+                      <td
+                        class="teams"
+                      >
+                        <ul>
+                          <li>
+                            <a
+                              class="team-name"
+                              href="/teams/test-team-id-1-1"
+                            >
+                              test-team-id-1-1
+                            </a>
+                             
+                            <!---->
+                             
+                            <!---->
+                          </li>
+                          <li>
+                            <a
+                              class="team-name"
+                              href="/teams/test-team-id-1-2"
+                            >
+                              test-team-id-1-2
+                            </a>
+                             
+                            <!---->
+                             
+                            <!---->
+                          </li>
+                        </ul>
+                      </td>
+                       
+                      <td
+                        class="description"
+                      >
                         <div>
                           
 
                           <p>
-                            Test Tech Debt Link Description 1 2 1
+                            Test Tech Debt Description 1 2
                           </p>
                         </div>
-                      </li>
-                      <li>
-                        <a
-                          href="https://example.com/test-tech-debt-link-1-2-2"
-                          target="_blank"
-                        >
-                          https://example.com/test-tech-debt-link-1-2-2
-                        </a>
-                         
-                        <br />
-                         
+                      </td>
+                       
+                      <td
+                        class="notes"
+                      >
                         <div>
                           
 
                           <p>
-                            Test Tech Debt Link Description 1 2 2
+                            Test Tech Debt Notes 1 2
                           </p>
                         </div>
-                      </li>
-                    </ul>
-                  </td>
-                </tr>
-                <tr>
-                  <td
-                    class="component table-primary"
-                  >
-                    <a
-                      href="/components/test-component-id-1"
-                    >
-                      Test Component Name 1
-                    </a>
-                  </td>
-                   
-                  <td
-                    class="priority"
-                  >
-                    <span
-                      class="badge badge-info"
-                    >
-                      
+                      </td>
+                       
+                      <td
+                        class="links"
+                      >
+                        <ul>
+                          <li>
+                            <a
+                              href="https://example.com/test-tech-debt-link-1-2-1"
+                              target="_blank"
+                            >
+                              https://example.com/test-tech-debt-link-1-2-1
+                            </a>
+                             
+                            <br />
+                             
+                            <div>
+                              
+
+                              <p>
+                                Test Tech Debt Link Description 1 2 1
+                              </p>
+                            </div>
+                          </li>
+                          <li>
+                            <a
+                              href="https://example.com/test-tech-debt-link-1-2-2"
+                              target="_blank"
+                            >
+                              https://example.com/test-tech-debt-link-1-2-2
+                            </a>
+                             
+                            <br />
+                             
+                            <div>
+                              
+
+                              <p>
+                                Test Tech Debt Link Description 1 2 2
+                              </p>
+                            </div>
+                          </li>
+                        </ul>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td
+                        class="component table-primary"
+                      >
+                        <a
+                          href="/components/test-component-id-1"
+                        >
+                          Test Component Name 1
+                        </a>
+                      </td>
+                       
+                      <td
+                        class="priority"
+                      >
+                        <span
+                          class="badge badge-info"
+                        >
+                          
           Medium
         
-                    </span>
-                  </td>
-                   
-                  <td
-                    class="teams"
-                  >
-                    <ul>
-                      <li>
-                        <a
-                          class="team-name"
-                          href="/teams/test-team-id-1-1"
-                        >
-                          test-team-id-1-1
-                        </a>
-                         
-                        <!---->
-                         
-                        <!---->
-                      </li>
-                      <li>
-                        <a
-                          class="team-name"
-                          href="/teams/test-team-id-1-2"
-                        >
-                          test-team-id-1-2
-                        </a>
-                         
-                        <!---->
-                         
-                        <!---->
-                      </li>
-                    </ul>
-                  </td>
-                   
-                  <td
-                    class="description"
-                  >
-                    <div>
-                      
-
-                      <p>
-                        Test Tech Debt Description 1 1
-                      </p>
-                    </div>
-                  </td>
-                   
-                  <td
-                    class="notes"
-                  >
-                    <div>
-                      
-
-                      <p>
-                        Test Tech Debt Notes 1 1
-                      </p>
-                    </div>
-                  </td>
-                   
-                  <td
-                    class="links"
-                  >
-                    <ul>
-                      <li>
-                        <a
-                          href="https://example.com/test-tech-debt-link-1-1-1"
-                          target="_blank"
-                        >
-                          https://example.com/test-tech-debt-link-1-1-1
-                        </a>
-                         
-                        <br />
-                         
+                        </span>
+                      </td>
+                       
+                      <td
+                        class="teams"
+                      >
+                        <ul>
+                          <li>
+                            <a
+                              class="team-name"
+                              href="/teams/test-team-id-1-1"
+                            >
+                              test-team-id-1-1
+                            </a>
+                             
+                            <!---->
+                             
+                            <!---->
+                          </li>
+                          <li>
+                            <a
+                              class="team-name"
+                              href="/teams/test-team-id-1-2"
+                            >
+                              test-team-id-1-2
+                            </a>
+                             
+                            <!---->
+                             
+                            <!---->
+                          </li>
+                        </ul>
+                      </td>
+                       
+                      <td
+                        class="description"
+                      >
                         <div>
                           
 
                           <p>
-                            Test Tech Debt Link Description 1 1 1
+                            Test Tech Debt Description 1 1
                           </p>
                         </div>
-                      </li>
-                      <li>
-                        <a
-                          href="https://example.com/test-tech-debt-link-1-1-2"
-                          target="_blank"
-                        >
-                          https://example.com/test-tech-debt-link-1-1-2
-                        </a>
-                         
-                        <br />
-                         
+                      </td>
+                       
+                      <td
+                        class="notes"
+                      >
                         <div>
                           
 
                           <p>
-                            Test Tech Debt Link Description 1 1 2
+                            Test Tech Debt Notes 1 1
                           </p>
                         </div>
-                      </li>
-                    </ul>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </p>
+                      </td>
+                       
+                      <td
+                        class="links"
+                      >
+                        <ul>
+                          <li>
+                            <a
+                              href="https://example.com/test-tech-debt-link-1-1-1"
+                              target="_blank"
+                            >
+                              https://example.com/test-tech-debt-link-1-1-1
+                            </a>
+                             
+                            <br />
+                             
+                            <div>
+                              
+
+                              <p>
+                                Test Tech Debt Link Description 1 1 1
+                              </p>
+                            </div>
+                          </li>
+                          <li>
+                            <a
+                              href="https://example.com/test-tech-debt-link-1-1-2"
+                              target="_blank"
+                            >
+                              https://example.com/test-tech-debt-link-1-1-2
+                            </a>
+                             
+                            <br />
+                             
+                            <div>
+                              
+
+                              <p>
+                                Test Tech Debt Link Description 1 1 2
+                              </p>
+                            </div>
+                          </li>
+                        </ul>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </p>
+            </div>
+            <!---->
+            <!---->
+          </div>
         </div>
-        <!---->
-        <!---->
-      </div>
-    </div>
-     
-    <div
-      class="panel"
-    >
-      <div>
-        <!---->
-         
-        <fieldset
-          class="form-group"
-          id="__BVID__127"
-        >
-          <legend
-            class="bv-no-focus-ring col-form-label pt-0"
-            id="__BVID__127__BV_label_"
-            tabindex="-1"
-          >
-            Teams
-          </legend>
-          <div>
-            <div
-              class="bv-no-focus-ring"
-              id="__BVID__128"
-              role="group"
-              tabindex="-1"
-            >
-              <div
-                class="custom-control custom-checkbox"
-              >
-                <input
-                  class="custom-control-input"
-                  id="__BVID__128_BV_option_0"
-                  name="team"
-                  type="checkbox"
-                  value="test-team-id-1-1"
-                />
-                <label
-                  class="custom-control-label"
-                  for="__BVID__128_BV_option_0"
-                >
-                  <span>
-                    test-team-id-1-1
-                  </span>
-                </label>
-              </div>
-              <div
-                class="custom-control custom-checkbox"
-              >
-                <input
-                  class="custom-control-input"
-                  id="__BVID__128_BV_option_1"
-                  name="team"
-                  type="checkbox"
-                  value="test-team-id-1-2"
-                />
-                <label
-                  class="custom-control-label"
-                  for="__BVID__128_BV_option_1"
-                >
-                  <span>
-                    test-team-id-1-2
-                  </span>
-                </label>
-              </div>
-            </div>
-            <!---->
-            <!---->
-            <!---->
-          </div>
-        </fieldset>
-         
-        <fieldset
-          class="form-group"
-          id="__BVID__131"
-        >
-          <legend
-            class="bv-no-focus-ring col-form-label pt-0"
-            id="__BVID__131__BV_label_"
-            tabindex="-1"
-          >
-            Tags
-          </legend>
-          <div>
-            <div
-              class="bv-no-focus-ring"
-              id="__BVID__132"
-              role="group"
-              tabindex="-1"
-            >
-              <div
-                class="custom-control custom-checkbox"
-              >
-                <input
-                  class="custom-control-input"
-                  id="__BVID__132_BV_option_0"
-                  name="tag"
-                  type="checkbox"
-                  value="test-tag-1-1"
-                />
-                <label
-                  class="custom-control-label"
-                  for="__BVID__132_BV_option_0"
-                >
-                  <span>
-                    test-tag-1-1
-                  </span>
-                </label>
-              </div>
-              <div
-                class="custom-control custom-checkbox"
-              >
-                <input
-                  class="custom-control-input"
-                  id="__BVID__132_BV_option_1"
-                  name="tag"
-                  type="checkbox"
-                  value="test-tag-1-2"
-                />
-                <label
-                  class="custom-control-label"
-                  for="__BVID__132_BV_option_1"
-                >
-                  <span>
-                    test-tag-1-2
-                  </span>
-                </label>
-              </div>
-            </div>
-            <!---->
-            <!---->
-            <!---->
-          </div>
-        </fieldset>
-         
-        <fieldset
-          class="form-group"
-          id="__BVID__135"
-        >
-          <legend
-            class="bv-no-focus-ring col-form-label pt-0"
-            id="__BVID__135__BV_label_"
-            tabindex="-1"
-          >
-            Component Types
-          </legend>
-          <div>
-            <div
-              class="bv-no-focus-ring"
-              id="__BVID__136"
-              role="group"
-              tabindex="-1"
-            >
-              <div
-                class="custom-control custom-checkbox"
-              >
-                <input
-                  class="custom-control-input"
-                  id="__BVID__136_BV_option_0"
-                  name="componentTypeId"
-                  type="checkbox"
-                  value="test-component-type-id-1"
-                />
-                <label
-                  class="custom-control-label"
-                  for="__BVID__136_BV_option_0"
-                >
-                  <span>
-                    test-component-type-id-1
-                  </span>
-                </label>
-              </div>
-            </div>
-            <!---->
-            <!---->
-            <!---->
-          </div>
-        </fieldset>
-         
-        <fieldset
-          class="form-group"
-          id="__BVID__138"
-        >
-          <legend
-            class="bv-no-focus-ring col-form-label pt-0"
-            id="__BVID__138__BV_label_"
-            tabindex="-1"
-          >
-            Platforms
-          </legend>
-          <div>
-            <div
-              class="bv-no-focus-ring"
-              id="__BVID__139"
-              role="group"
-              tabindex="-1"
-            >
-              <div
-                class="custom-control custom-checkbox"
-              >
-                <input
-                  class="custom-control-input"
-                  id="__BVID__139_BV_option_0"
-                  name="platformId"
-                  type="checkbox"
-                  value="undefined"
-                />
-                <label
-                  class="custom-control-label"
-                  for="__BVID__139_BV_option_0"
-                >
-                  <span>
-                    undefined
-                  </span>
-                </label>
-              </div>
-            </div>
-            <!---->
-            <!---->
-            <!---->
-          </div>
-        </fieldset>
          
         <div
-          class="form-group"
-          id="__BVID__141"
-          role="group"
+          class="col-md-3"
         >
-          <label
-            class="d-block"
-            for="component-filter"
-            id="__BVID__141__BV_label_"
+          <div
+            class="mt-3"
           >
-            Component
-          </label>
-          <div>
-            <select
-              class="custom-select custom-select-sm"
-              id="component-filter"
+            <!---->
+             
+            <fieldset
+              class="form-group"
+              id="__BVID__127"
             >
-              <option
-                value=""
+              <legend
+                class="bv-no-focus-ring col-form-label pt-0"
+                id="__BVID__127__BV_label_"
+                tabindex="-1"
               >
-                Please select a component
-              </option>
-              <option
-                value="test-component-id-1"
+                Teams
+              </legend>
+              <div>
+                <div
+                  class="bv-no-focus-ring"
+                  id="__BVID__128"
+                  role="group"
+                  tabindex="-1"
+                >
+                  <div
+                    class="custom-control custom-checkbox"
+                  >
+                    <input
+                      class="custom-control-input"
+                      id="__BVID__128_BV_option_0"
+                      name="team"
+                      type="checkbox"
+                      value="test-team-id-1-1"
+                    />
+                    <label
+                      class="custom-control-label"
+                      for="__BVID__128_BV_option_0"
+                    >
+                      <span>
+                        test-team-id-1-1
+                      </span>
+                    </label>
+                  </div>
+                  <div
+                    class="custom-control custom-checkbox"
+                  >
+                    <input
+                      class="custom-control-input"
+                      id="__BVID__128_BV_option_1"
+                      name="team"
+                      type="checkbox"
+                      value="test-team-id-1-2"
+                    />
+                    <label
+                      class="custom-control-label"
+                      for="__BVID__128_BV_option_1"
+                    >
+                      <span>
+                        test-team-id-1-2
+                      </span>
+                    </label>
+                  </div>
+                </div>
+                <!---->
+                <!---->
+                <!---->
+              </div>
+            </fieldset>
+             
+            <fieldset
+              class="form-group"
+              id="__BVID__131"
+            >
+              <legend
+                class="bv-no-focus-ring col-form-label pt-0"
+                id="__BVID__131__BV_label_"
+                tabindex="-1"
               >
-                test-component-id-1
-              </option>
-            </select>
-            <!---->
-            <!---->
-            <!---->
+                Tags
+              </legend>
+              <div>
+                <div
+                  class="bv-no-focus-ring"
+                  id="__BVID__132"
+                  role="group"
+                  tabindex="-1"
+                >
+                  <div
+                    class="custom-control custom-checkbox"
+                  >
+                    <input
+                      class="custom-control-input"
+                      id="__BVID__132_BV_option_0"
+                      name="tag"
+                      type="checkbox"
+                      value="test-tag-1-1"
+                    />
+                    <label
+                      class="custom-control-label"
+                      for="__BVID__132_BV_option_0"
+                    >
+                      <span>
+                        test-tag-1-1
+                      </span>
+                    </label>
+                  </div>
+                  <div
+                    class="custom-control custom-checkbox"
+                  >
+                    <input
+                      class="custom-control-input"
+                      id="__BVID__132_BV_option_1"
+                      name="tag"
+                      type="checkbox"
+                      value="test-tag-1-2"
+                    />
+                    <label
+                      class="custom-control-label"
+                      for="__BVID__132_BV_option_1"
+                    >
+                      <span>
+                        test-tag-1-2
+                      </span>
+                    </label>
+                  </div>
+                </div>
+                <!---->
+                <!---->
+                <!---->
+              </div>
+            </fieldset>
+             
+            <fieldset
+              class="form-group"
+              id="__BVID__135"
+            >
+              <legend
+                class="bv-no-focus-ring col-form-label pt-0"
+                id="__BVID__135__BV_label_"
+                tabindex="-1"
+              >
+                Component Types
+              </legend>
+              <div>
+                <div
+                  class="bv-no-focus-ring"
+                  id="__BVID__136"
+                  role="group"
+                  tabindex="-1"
+                >
+                  <div
+                    class="custom-control custom-checkbox"
+                  >
+                    <input
+                      class="custom-control-input"
+                      id="__BVID__136_BV_option_0"
+                      name="componentTypeId"
+                      type="checkbox"
+                      value="test-component-type-id-1"
+                    />
+                    <label
+                      class="custom-control-label"
+                      for="__BVID__136_BV_option_0"
+                    >
+                      <span>
+                        test-component-type-id-1
+                      </span>
+                    </label>
+                  </div>
+                </div>
+                <!---->
+                <!---->
+                <!---->
+              </div>
+            </fieldset>
+             
+            <fieldset
+              class="form-group"
+              id="__BVID__138"
+            >
+              <legend
+                class="bv-no-focus-ring col-form-label pt-0"
+                id="__BVID__138__BV_label_"
+                tabindex="-1"
+              >
+                Platforms
+              </legend>
+              <div>
+                <div
+                  class="bv-no-focus-ring"
+                  id="__BVID__139"
+                  role="group"
+                  tabindex="-1"
+                >
+                  <div
+                    class="custom-control custom-checkbox"
+                  >
+                    <input
+                      class="custom-control-input"
+                      id="__BVID__139_BV_option_0"
+                      name="platformId"
+                      type="checkbox"
+                      value="undefined"
+                    />
+                    <label
+                      class="custom-control-label"
+                      for="__BVID__139_BV_option_0"
+                    >
+                      <span>
+                        undefined
+                      </span>
+                    </label>
+                  </div>
+                </div>
+                <!---->
+                <!---->
+                <!---->
+              </div>
+            </fieldset>
+             
+            <div
+              class="form-group"
+              id="__BVID__141"
+              role="group"
+            >
+              <label
+                class="d-block"
+                for="component-filter"
+                id="__BVID__141__BV_label_"
+              >
+                Component
+              </label>
+              <div>
+                <select
+                  class="custom-select custom-select-sm"
+                  id="component-filter"
+                >
+                  <option
+                    value=""
+                  >
+                    Please select a component
+                  </option>
+                  <option
+                    value="test-component-id-1"
+                  >
+                    test-component-id-1
+                  </option>
+                </select>
+                <!---->
+                <!---->
+                <!---->
+              </div>
+            </div>
           </div>
         </div>
       </div>

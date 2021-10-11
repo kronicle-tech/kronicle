@@ -1,12 +1,20 @@
 <template>
   <div>
-    <AllComponentsTabs />
+    <b-container fluid>
+      <b-row>
+        <b-col>
+          <AllComponentsTabs />
+        </b-col>
+      </b-row>
+    </b-container>
+
     <OpenApiSpecsView :components="components" />
   </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
+import {BCol, BContainer, BRow} from "bootstrap-vue";
 import { Component } from '~/types/kronicle-service'
 import AllComponentsTabs from '~/components/AllComponentsTabs.vue'
 import OpenApiSpecsView from '~/components/OpenApiSpecsView.vue'
@@ -14,6 +22,9 @@ import OpenApiSpecsView from '~/components/OpenApiSpecsView.vue'
 export default Vue.extend({
   components: {
     AllComponentsTabs,
+    'b-col': BCol,
+    'b-container': BContainer,
+    'b-row': BRow,
     OpenApiSpecsView,
   },
   async asyncData({ $config, route, store }) {

@@ -1,54 +1,61 @@
 <template>
   <div>
-    <AllTestsTabs />
-    <b-alert show="10" dismissible variant="info" class="my-3">
-      Click a test's id in the table below to view more information about that
-      test
-    </b-alert>
+    <b-container fluid>
+      <b-row>
+        <b-col>
+          <AllTestsTabs />
 
-    <table
-      class="table table-dark table-bordered table-striped mt-2"
-      style="width: 100%"
-    >
-      <thead>
-        <tr>
-          <th class="test-id">Id</th>
-          <th>Description</th>
-          <th>Priority</th>
-          <th>Pass Count</th>
-          <th>Fail Count</th>
-          <th>Not Applicable Count</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr v-for="testSummary in testSummaries" :key="testSummary.id">
-          <td>
-            <TestId :test-id="testSummary.id" />
-          </td>
-          <td>
-            <Markdown :markdown="testSummary.description" />
-          </td>
-          <td>
-            {{ testSummary.priority }}
-          </td>
-          <td :class="testSummary.passCount > 0 ? 'table-primary' : ''">
-            <FormattedNumber :value="testSummary.passCount" />
-          </td>
-          <td :class="testSummary.failCount > 0 ? 'table-danger' : ''">
-            <FormattedNumber :value="testSummary.failCount" />
-          </td>
-          <td :class="testSummary.notApplicableCount > 0 ? 'table-light' : ''">
-            <FormattedNumber :value="testSummary.notApplicableCount" />
-          </td>
-        </tr>
-      </tbody>
-    </table>
+          <b-alert show="10" dismissible variant="info" class="my-3">
+            Click a test's id in the table below to view more information about that
+            test
+          </b-alert>
+
+          <table
+            class="table table-dark table-bordered table-striped mt-2"
+            style="width: 100%"
+          >
+            <thead>
+              <tr>
+                <th class="test-id">Id</th>
+                <th>Description</th>
+                <th>Priority</th>
+                <th>Pass Count</th>
+                <th>Fail Count</th>
+                <th>Not Applicable Count</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="testSummary in testSummaries" :key="testSummary.id">
+                <td>
+                  <TestId :test-id="testSummary.id" />
+                </td>
+                <td>
+                  <Markdown :markdown="testSummary.description" />
+                </td>
+                <td>
+                  {{ testSummary.priority }}
+                </td>
+                <td :class="testSummary.passCount > 0 ? 'table-primary' : ''">
+                  <FormattedNumber :value="testSummary.passCount" />
+                </td>
+                <td :class="testSummary.failCount > 0 ? 'table-danger' : ''">
+                  <FormattedNumber :value="testSummary.failCount" />
+                </td>
+                <td :class="testSummary.notApplicableCount > 0 ? 'table-light' : ''">
+                  <FormattedNumber :value="testSummary.notApplicableCount" />
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </b-col>
+      </b-row>
+    </b-container>
   </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
-import { BAlert } from 'bootstrap-vue'
+import {BAlert, BCol, BContainer, BRow} from 'bootstrap-vue'
 import { MetaInfo } from 'vue-meta'
 import { Component, Test, TestOutcome } from '~/types/kronicle-service'
 import AllTestsTabs from '~/components/AllTestsTabs.vue'
@@ -68,6 +75,9 @@ export default Vue.extend({
   components: {
     AllTestsTabs,
     'b-alert': BAlert,
+    'b-col': BCol,
+    'b-container': BContainer,
+    'b-row': BRow,
     FormattedNumber,
     Markdown,
     TestId,
@@ -94,6 +104,11 @@ export default Vue.extend({
     return {
       tests: [] as Test[],
       components: [] as Component[],
+    }
+  },
+  head(): MetaInfo {
+    return {
+      title: 'Kronicle - All Tests',
     }
   },
   computed: {
@@ -140,11 +155,6 @@ export default Vue.extend({
         return outcomeCounts.get(outcome)
       }
     },
-  },
-  head(): MetaInfo {
-    return {
-      title: 'Kronicle - All Tests',
-    }
   },
 })
 </script>

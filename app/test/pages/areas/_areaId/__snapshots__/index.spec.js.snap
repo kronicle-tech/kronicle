@@ -2,228 +2,248 @@
 
 exports[`Index when Get Area service endpoint returns an area renders the page 1`] = `
 <div>
-  <h1
-    class="text-info my-3"
-  >
-    Test Area Name 1 Area
-  </h1>
-   
   <div
-    class="my-3"
+    class="container-fluid"
   >
-    <a
-      class="btn my-1 btn-secondary"
-      href="/areas/test-area-id-1"
-      target="_self"
+    <div
+      class="row"
     >
-      Info
-    </a>
-     
-    <a
-      class="btn my-1 btn-secondary"
-      href="/areas/test-area-id-1/dependencies"
-      target="_self"
-    >
-      Dependencies
-    </a>
-     
-    <a
-      class="btn my-1 btn-secondary"
-      href="/areas/test-area-id-1/components"
-      target="_self"
-    >
-      Components
-    </a>
-     
-    <a
-      class="btn my-1 btn-secondary"
-      href="/areas/test-area-id-1/cross-functional-requirements"
-      target="_self"
-    >
-      
+      <div
+        class="col"
+      >
+        <h1
+          class="text-info my-3"
+        >
+          Test Area Name 1 Area
+        </h1>
+         
+        <div
+          class="my-3"
+        >
+          <a
+            class="btn my-1 btn-secondary"
+            href="/areas/test-area-id-1"
+            target="_self"
+          >
+            Info
+          </a>
+           
+          <a
+            class="btn my-1 btn-secondary"
+            href="/areas/test-area-id-1/dependencies"
+            target="_self"
+          >
+            Dependencies
+          </a>
+           
+          <a
+            class="btn my-1 btn-secondary"
+            href="/areas/test-area-id-1/components"
+            target="_self"
+          >
+            Components
+          </a>
+           
+          <a
+            class="btn my-1 btn-secondary"
+            href="/areas/test-area-id-1/cross-functional-requirements"
+            target="_self"
+          >
+            
     Cross Functional Requirements
   
-    </a>
-     
-    <a
-      class="btn my-1 btn-secondary"
-      href="/areas/test-area-id-1/tech-debts"
-      target="_self"
-    >
-      Tech Debts
-    </a>
-     
-    <a
-      class="btn my-1 btn-secondary"
-      href="/areas/test-area-id-1/tests"
-      target="_self"
-    >
-      Tests
-    </a>
-     
-    <a
-      class="btn my-1 btn-secondary"
-      href="/areas/test-area-id-1/errors"
-      target="_self"
-    >
-      Errors
-    </a>
-     
-    <a
-      class="btn my-1 btn-secondary"
-      href="/areas/test-area-id-1/openapi-specs"
-      target="_self"
-    >
-      OpenAPI Specs
-    </a>
-  </div>
-   
-  <div
-    class="card-columns"
-  >
-    <div
-      class="card"
-    >
-      <!---->
-      <!---->
-      <div
-        class="card-body"
-      >
-        <h4
-          class="card-title"
-        >
-          Area Name
-        </h4>
-        <!---->
-        
-      Test Area Name 1
-    
-      </div>
-      <!---->
-      <!---->
-    </div>
-     
-    <div
-      class="card"
-    >
-      <!---->
-      <!---->
-      <div
-        class="card-body"
-      >
-        <h4
-          class="card-title"
-        >
-          Description
-        </h4>
-        <!---->
-        <div>
-          
-
-          <p>
-            Test Area Description 1
-          </p>
-        </div>
-      </div>
-      <!---->
-      <!---->
-    </div>
-     
-    <div
-      class="card"
-    >
-      <!---->
-      <!---->
-      <div
-        class="card-body"
-      >
-        <h4
-          class="card-title"
-        >
-          Notes
-        </h4>
-        <!---->
-        <div>
-          
-
-          <h1
-            id="user-content-table-of-contents"
+          </a>
+           
+          <a
+            class="btn my-1 btn-secondary"
+            href="/areas/test-area-id-1/tech-debts"
+            target="_self"
           >
-            Table of Contents
-          </h1>
-          
-
-          <p>
-            Test Area Notes 1
-          </p>
+            Tech Debts
+          </a>
+           
+          <a
+            class="btn my-1 btn-secondary"
+            href="/areas/test-area-id-1/tests"
+            target="_self"
+          >
+            Tests
+          </a>
+           
+          <a
+            class="btn my-1 btn-secondary"
+            href="/areas/test-area-id-1/errors"
+            target="_self"
+          >
+            Errors
+          </a>
+           
+          <a
+            class="btn my-1 btn-secondary"
+            href="/areas/test-area-id-1/openapi-specs"
+            target="_self"
+          >
+            OpenAPI Specs
+          </a>
         </div>
       </div>
-      <!---->
-      <!---->
     </div>
      
     <div
-      class="card"
+      class="row"
     >
-      <!---->
-      <!---->
       <div
-        class="card-body"
+        class="col"
       >
-        <h4
-          class="card-title"
+        <div
+          class="card-columns"
         >
-          Links
-        </h4>
-        <!---->
-        <ul>
-          <li>
-            <a
-              href="https://example.com/test-link-1-1"
-              target="_blank"
+          <div
+            class="card"
+          >
+            <!---->
+            <!---->
+            <div
+              class="card-body"
             >
-              https://example.com/test-link-1-1
-            </a>
-             
-            <br />
-             
-            <div>
+              <h4
+                class="card-title"
+              >
+                Area Name
+              </h4>
+              <!---->
               
-
-              <p>
-                Test Link Description 1 1
-              </p>
+            Test Area Name 1
+          
             </div>
-          </li>
-          <li>
-            <a
-              href="https://example.com/test-link-1-2"
-              target="_blank"
+            <!---->
+            <!---->
+          </div>
+           
+          <div
+            class="card"
+          >
+            <!---->
+            <!---->
+            <div
+              class="card-body"
             >
-              https://example.com/test-link-1-2
-            </a>
-             
-            <br />
-             
-            <div>
-              
+              <h4
+                class="card-title"
+              >
+                Description
+              </h4>
+              <!---->
+              <div>
+                
 
-              <p>
-                Test Link Description 1 2
-              </p>
+                <p>
+                  Test Area Description 1
+                </p>
+              </div>
             </div>
-          </li>
-        </ul>
+            <!---->
+            <!---->
+          </div>
+           
+          <div
+            class="card"
+          >
+            <!---->
+            <!---->
+            <div
+              class="card-body"
+            >
+              <h4
+                class="card-title"
+              >
+                Notes
+              </h4>
+              <!---->
+              <div>
+                
+
+                <h1
+                  id="user-content-table-of-contents"
+                >
+                  Table of Contents
+                </h1>
+                
+
+                <p>
+                  Test Area Notes 1
+                </p>
+              </div>
+            </div>
+            <!---->
+            <!---->
+          </div>
+           
+          <div
+            class="card"
+          >
+            <!---->
+            <!---->
+            <div
+              class="card-body"
+            >
+              <h4
+                class="card-title"
+              >
+                Links
+              </h4>
+              <!---->
+              <ul>
+                <li>
+                  <a
+                    href="https://example.com/test-link-1-1"
+                    target="_blank"
+                  >
+                    https://example.com/test-link-1-1
+                  </a>
+                   
+                  <br />
+                   
+                  <div>
+                    
+
+                    <p>
+                      Test Link Description 1 1
+                    </p>
+                  </div>
+                </li>
+                <li>
+                  <a
+                    href="https://example.com/test-link-1-2"
+                    target="_blank"
+                  >
+                    https://example.com/test-link-1-2
+                  </a>
+                   
+                  <br />
+                   
+                  <div>
+                    
+
+                    <p>
+                      Test Link Description 1 2
+                    </p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <!---->
+            <!---->
+          </div>
+        </div>
+         
+        <div
+          class="card-group"
+        >
+          <!---->
+        </div>
       </div>
-      <!---->
-      <!---->
     </div>
-  </div>
-   
-  <div
-    class="card-group"
-  >
-    <!---->
   </div>
 </div>
 `;

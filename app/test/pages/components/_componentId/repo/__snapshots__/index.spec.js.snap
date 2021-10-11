@@ -2,745 +2,783 @@
 
 exports[`Index when Get Component service endpoint returns a component when the component has a git repo renders information about the repo 1`] = `
 <div>
-  <h1
-    class="text-info my-3"
-  >
-    Test Component Name 1 - Errors
-  </h1>
-   
   <div
-    class="my-3"
+    class="container-fluid"
   >
-    <a
-      class="btn my-1 btn-secondary"
-      href="/components/test-component-id-1"
-      target="_self"
+    <div
+      class="row"
     >
-      Info
-    </a>
-     
-    <a
-      class="btn my-1 btn-secondary"
-      href="/components/test-component-id-1/dependencies"
-      target="_self"
-    >
-      
+      <div
+        class="col"
+      >
+        <h1
+          class="text-info my-3"
+        >
+          Test Component Name 1 - Errors
+        </h1>
+         
+        <div
+          class="my-3"
+        >
+          <a
+            class="btn my-1 btn-secondary"
+            href="/components/test-component-id-1"
+            target="_self"
+          >
+            Info
+          </a>
+           
+          <a
+            class="btn my-1 btn-secondary"
+            href="/components/test-component-id-1/dependencies"
+            target="_self"
+          >
+            
     Dependencies
   
-    </a>
-     
-    <a
-      class="btn my-1 btn-secondary"
-      href="/components/test-component-id-1/response-times"
-      target="_self"
-    >
-      
+          </a>
+           
+          <a
+            class="btn my-1 btn-secondary"
+            href="/components/test-component-id-1/response-times"
+            target="_self"
+          >
+            
     Response Times
   
-    </a>
-     
-    <a
-      class="btn my-1 btn-secondary"
-      href="/components/test-component-id-1/downstream-response-times"
-      target="_self"
-    >
-      
+          </a>
+           
+          <a
+            class="btn my-1 btn-secondary"
+            href="/components/test-component-id-1/downstream-response-times"
+            target="_self"
+          >
+            
     Downstream Response Times
   
-    </a>
-     
-    <a
-      class="btn my-1 btn-secondary"
-      href="/components/test-component-id-1/call-graphs"
-      target="_self"
-    >
-      
+          </a>
+           
+          <a
+            class="btn my-1 btn-secondary"
+            href="/components/test-component-id-1/call-graphs"
+            target="_self"
+          >
+            
     Call Graphs
   
-    </a>
-     
-    <a
-      class="btn my-1 btn-secondary"
-      href="/components/test-component-id-1/cross-functional-requirements"
-      target="_self"
-    >
-      
+          </a>
+           
+          <a
+            class="btn my-1 btn-secondary"
+            href="/components/test-component-id-1/cross-functional-requirements"
+            target="_self"
+          >
+            
     Cross Functional Requirements
   
-    </a>
-     
-    <a
-      class="btn my-1 btn-secondary"
-      href="/components/test-component-id-1/tech-debts"
-      target="_self"
-    >
-      
+          </a>
+           
+          <a
+            class="btn my-1 btn-secondary"
+            href="/components/test-component-id-1/tech-debts"
+            target="_self"
+          >
+            
     Tech Debts
   
-    </a>
-     
-    <a
-      class="btn my-1 btn-secondary"
-      href="/components/test-component-id-1/tests"
-      target="_self"
-    >
-      Tests
-    </a>
-     
-    <a
-      class="btn my-1 btn-secondary"
-      href="/components/test-component-id-1/errors"
-      target="_self"
-    >
-      Errors
-    </a>
-     
-    <a
-      class="btn my-1 btn-secondary"
-      href="/components/test-component-id-1/openapi-specs"
-      target="_self"
-    >
-      
+          </a>
+           
+          <a
+            class="btn my-1 btn-secondary"
+            href="/components/test-component-id-1/tests"
+            target="_self"
+          >
+            Tests
+          </a>
+           
+          <a
+            class="btn my-1 btn-secondary"
+            href="/components/test-component-id-1/errors"
+            target="_self"
+          >
+            Errors
+          </a>
+           
+          <a
+            class="btn my-1 btn-secondary"
+            href="/components/test-component-id-1/openapi-specs"
+            target="_self"
+          >
+            
     OpenAPI Specs
   
-    </a>
-     
-    <a
-      class="btn my-1 btn-secondary"
-      href="/components/test-component-id-1/repo"
-      target="_self"
-    >
-      Repo
-    </a>
-     
-    <a
-      class="btn my-1 btn-secondary"
-      href="/components/test-component-id-1/readme"
-      target="_self"
-    >
-      README
-    </a>
-     
-    <a
-      class="btn my-1 btn-secondary"
-      href="/components/test-component-id-1/to-dos"
-      target="_self"
-    >
-      To Dos
-    </a>
-     
-    <a
-      class="btn my-1 btn-secondary"
-      href="/components/test-component-id-1/lines-of-code"
-      target="_self"
-    >
-      
-    Lines of Code
-  
-    </a>
-     
-    <a
-      class="btn my-1 btn-secondary"
-      href="/components/test-component-id-1/software-repositories"
-      target="_self"
-    >
-      
-    Software Repositories
-  
-    </a>
-     
-    <a
-      class="btn my-1 btn-secondary"
-      href="/components/test-component-id-1/software"
-      target="_self"
-    >
-      Software
-    </a>
-     
-    <a
-      class="btn my-1 btn-secondary"
-      href="/components/test-component-id-1/imports"
-      target="_self"
-    >
-      Imports
-    </a>
-  </div>
-   
-  <div
-    class="row"
-  >
-    <div
-      class="col-sm-6"
-    >
-      <div
-        class="card"
-      >
-        <!---->
-        <!---->
-        <div
-          class="card-body"
-        >
-          <h4
-            class="card-title"
+          </a>
+           
+          <a
+            class="btn my-1 btn-secondary"
+            href="/components/test-component-id-1/repo"
+            target="_self"
           >
             Repo
-          </h4>
-          <!---->
+          </a>
+           
           <a
-            href="https://example.com/test-repo-1"
-            target="_blank"
+            class="btn my-1 btn-secondary"
+            href="/components/test-component-id-1/readme"
+            target="_self"
           >
-            https://example.com/test-repo-1
+            README
+          </a>
+           
+          <a
+            class="btn my-1 btn-secondary"
+            href="/components/test-component-id-1/to-dos"
+            target="_self"
+          >
+            To Dos
+          </a>
+           
+          <a
+            class="btn my-1 btn-secondary"
+            href="/components/test-component-id-1/lines-of-code"
+            target="_self"
+          >
+            
+    Lines of Code
+  
+          </a>
+           
+          <a
+            class="btn my-1 btn-secondary"
+            href="/components/test-component-id-1/software-repositories"
+            target="_self"
+          >
+            
+    Software Repositories
+  
+          </a>
+           
+          <a
+            class="btn my-1 btn-secondary"
+            href="/components/test-component-id-1/software"
+            target="_self"
+          >
+            Software
+          </a>
+           
+          <a
+            class="btn my-1 btn-secondary"
+            href="/components/test-component-id-1/imports"
+            target="_self"
+          >
+            Imports
           </a>
         </div>
-        <!---->
-        <!---->
-      </div>
-       
-      <div
-        class="list-group my-3"
-      >
+         
         <div
-          class="list-group-item d-flex justify-content-between align-items-center"
+          class="my-3 card-deck"
         >
-          
-          Repo Age
-          
-          <span
-            class="badge badge-primary badge-pill"
+          <div
+            class="card"
           >
-            <span>
-              50 years
-            </span>
-          </span>
+            <!---->
+            <!---->
+            <div
+              class="card-body"
+            >
+              <h4
+                class="card-title"
+              >
+                Repo
+              </h4>
+              <!---->
+              <a
+                href="https://example.com/test-repo-1"
+                target="_blank"
+              >
+                https://example.com/test-repo-1
+              </a>
+            </div>
+            <!---->
+            <!---->
+          </div>
+           
+          <div
+            class="card"
+          >
+            <!---->
+            <!---->
+            <div
+              class="card-body"
+            >
+              <h4
+                class="card-title"
+              >
+                Stats
+              </h4>
+              <!---->
+              <div
+                class="list-group"
+              >
+                <div
+                  class="list-group-item d-flex justify-content-between align-items-center list-group-item-secondary"
+                >
+                  
+                Repo Age
+                
+                  <span
+                    class="badge badge-primary badge-pill"
+                  >
+                    <span>
+                      50 years
+                    </span>
+                  </span>
+                </div>
+                 
+                <div
+                  class="list-group-item d-flex justify-content-between align-items-center list-group-item-secondary"
+                >
+                  
+                Time Since Last Commit
+                
+                  <span
+                    class="badge badge-primary badge-pill"
+                  >
+                    <span>
+                      40 years
+                    </span>
+                  </span>
+                </div>
+                 
+                <div
+                  class="list-group-item d-flex justify-content-between align-items-center list-group-item-secondary"
+                >
+                  
+                Commit Count
+                
+                  <span
+                    class="badge badge-primary badge-pill"
+                  >
+                    <span>
+                      101
+                    </span>
+                  </span>
+                </div>
+                 
+                <div
+                  class="list-group-item d-flex justify-content-between align-items-center list-group-item-secondary"
+                >
+                  
+                Author Count
+                
+                  <span
+                    class="badge badge-primary badge-pill"
+                  >
+                    <span>
+                      4
+                    </span>
+                  </span>
+                </div>
+                 
+                <div
+                  class="list-group-item d-flex justify-content-between align-items-center list-group-item-secondary"
+                >
+                  
+                Committer Count
+                
+                  <span
+                    class="badge badge-primary badge-pill"
+                  >
+                    <span>
+                      5
+                    </span>
+                  </span>
+                </div>
+              </div>
+            </div>
+            <!---->
+            <!---->
+          </div>
         </div>
          
         <div
-          class="list-group-item d-flex justify-content-between align-items-center"
+          class="card-deck"
         >
-          
-          Time Since Last Commit
-          
-          <span
-            class="badge badge-primary badge-pill"
+          <div
+            class="card"
           >
-            <span>
-              40 years
-            </span>
-          </span>
-        </div>
-         
-        <div
-          class="list-group-item d-flex justify-content-between align-items-center"
-        >
-          
-          Commit Count
-          
-          <span
-            class="badge badge-primary badge-pill"
-          >
-            <span>
-              101
-            </span>
-          </span>
-        </div>
-         
-        <div
-          class="list-group-item d-flex justify-content-between align-items-center"
-        >
-          
-          Author Count
-          
-          <span
-            class="badge badge-primary badge-pill"
-          >
-            <span>
-              4
-            </span>
-          </span>
-        </div>
-         
-        <div
-          class="list-group-item d-flex justify-content-between align-items-center"
-        >
-          
-          Committer Count
-          
-          <span
-            class="badge badge-primary badge-pill"
-          >
-            <span>
-              5
-            </span>
-          </span>
-        </div>
-      </div>
-    </div>
-     
-    <div
-      class="col-sm-6"
-    >
-      <div
-        class="card"
-      >
-        <!---->
-        <!---->
-        <div
-          class="card-body"
-        >
-          <h4
-            class="card-title"
-          >
-            Authors
-          </h4>
-          <!---->
-          <table
-            class="table table-dark"
-          >
-            <thead>
-              <tr>
-                <th>
-                  Names
-                </th>
+            <!---->
+            <!---->
+            <div
+              class="card-body"
+            >
+              <h4
+                class="card-title"
+              >
+                Authors
+              </h4>
+              <!---->
+              <table
+                class="table table-dark"
+              >
+                <thead>
+                  <tr>
+                    <th>
+                      Names
+                    </th>
+                     
+                    <th>
+                      Email Address
+                    </th>
+                     
+                    <th>
+                      Commits
+                    </th>
+                     
+                    <th>
+                      First Commit
+                    </th>
+                     
+                    <th>
+                      Last Commit
+                    </th>
+                  </tr>
+                </thead>
                  
-                <th>
-                  Email Address
-                </th>
-                 
-                <th>
-                  Commits
-                </th>
-                 
-                <th>
-                  First Commit
-                </th>
-                 
-                <th>
-                  Last Commit
-                </th>
-              </tr>
-            </thead>
-             
-            <tbody>
-              <tr>
-                <td>
-                  <span>
-                    
+                <tbody>
+                  <tr>
+                    <td>
+                      <span>
+                        
                   Test Identity Name 1 1 1
                   
-                    <br />
-                  </span>
-                </td>
-                 
-                <td>
-                  <a
-                    href="mailto:test-identity-1-1@example.com"
-                  >
-                    test-identity-1-1@example.com
-                  </a>
-                </td>
-                 
-                <td>
-                  <span>
-                    1
-                  </span>
-                </td>
-                 
-                <td>
-                  <span>
-                    1970-01-01
-                  </span>
-                </td>
-                 
-                <td>
-                  <span>
-                    1980-01-01
-                  </span>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <span>
-                    
+                        <br />
+                      </span>
+                    </td>
+                     
+                    <td>
+                      <a
+                        href="mailto:test-identity-1-1@example.com"
+                      >
+                        test-identity-1-1@example.com
+                      </a>
+                    </td>
+                     
+                    <td>
+                      <span>
+                        1
+                      </span>
+                    </td>
+                     
+                    <td>
+                      <span>
+                        1970-01-01
+                      </span>
+                    </td>
+                     
+                    <td>
+                      <span>
+                        1980-01-01
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <span>
+                        
                   Test Identity Name 1 2 1
                   
-                    <br />
-                  </span>
-                  <span>
-                    
+                        <br />
+                      </span>
+                      <span>
+                        
                   Test Identity Name 1 2 2
                   
-                    <br />
-                  </span>
-                </td>
-                 
-                <td>
-                  <a
-                    href="mailto:test-identity-1-2@example.com"
-                  >
-                    test-identity-1-2@example.com
-                  </a>
-                </td>
-                 
-                <td>
-                  <span>
-                    2
-                  </span>
-                </td>
-                 
-                <td>
-                  <span>
-                    1970-01-01
-                  </span>
-                </td>
-                 
-                <td>
-                  <span>
-                    1980-01-01
-                  </span>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <span>
-                    
+                        <br />
+                      </span>
+                    </td>
+                     
+                    <td>
+                      <a
+                        href="mailto:test-identity-1-2@example.com"
+                      >
+                        test-identity-1-2@example.com
+                      </a>
+                    </td>
+                     
+                    <td>
+                      <span>
+                        2
+                      </span>
+                    </td>
+                     
+                    <td>
+                      <span>
+                        1970-01-01
+                      </span>
+                    </td>
+                     
+                    <td>
+                      <span>
+                        1980-01-01
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <span>
+                        
                   Test Identity Name 1 3 1
                   
-                    <br />
-                  </span>
-                  <span>
-                    
+                        <br />
+                      </span>
+                      <span>
+                        
                   Test Identity Name 1 3 2
                   
-                    <br />
-                  </span>
-                  <span>
-                    
+                        <br />
+                      </span>
+                      <span>
+                        
                   Test Identity Name 1 3 3
                   
-                    <br />
-                  </span>
-                </td>
-                 
-                <td>
-                  <a
-                    href="mailto:test-identity-1-3@example.com"
-                  >
-                    test-identity-1-3@example.com
-                  </a>
-                </td>
-                 
-                <td>
-                  <span>
-                    3
-                  </span>
-                </td>
-                 
-                <td>
-                  <span>
-                    1970-01-01
-                  </span>
-                </td>
-                 
-                <td>
-                  <span>
-                    1980-01-01
-                  </span>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <span>
-                    
+                        <br />
+                      </span>
+                    </td>
+                     
+                    <td>
+                      <a
+                        href="mailto:test-identity-1-3@example.com"
+                      >
+                        test-identity-1-3@example.com
+                      </a>
+                    </td>
+                     
+                    <td>
+                      <span>
+                        3
+                      </span>
+                    </td>
+                     
+                    <td>
+                      <span>
+                        1970-01-01
+                      </span>
+                    </td>
+                     
+                    <td>
+                      <span>
+                        1980-01-01
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <span>
+                        
                   Test Identity Name 1 4 1
                   
-                    <br />
-                  </span>
-                  <span>
-                    
+                        <br />
+                      </span>
+                      <span>
+                        
                   Test Identity Name 1 4 2
                   
-                    <br />
-                  </span>
-                  <span>
-                    
+                        <br />
+                      </span>
+                      <span>
+                        
                   Test Identity Name 1 4 3
                   
-                    <br />
-                  </span>
-                  <span>
-                    
+                        <br />
+                      </span>
+                      <span>
+                        
                   Test Identity Name 1 4 4
                   
-                    <br />
-                  </span>
-                </td>
-                 
-                <td>
-                  <a
-                    href="mailto:test-identity-1-4@example.com"
-                  >
-                    test-identity-1-4@example.com
-                  </a>
-                </td>
-                 
-                <td>
-                  <span>
-                    4
-                  </span>
-                </td>
-                 
-                <td>
-                  <span>
-                    1970-01-01
-                  </span>
-                </td>
-                 
-                <td>
-                  <span>
-                    1980-01-01
-                  </span>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+                        <br />
+                      </span>
+                    </td>
+                     
+                    <td>
+                      <a
+                        href="mailto:test-identity-1-4@example.com"
+                      >
+                        test-identity-1-4@example.com
+                      </a>
+                    </td>
+                     
+                    <td>
+                      <span>
+                        4
+                      </span>
+                    </td>
+                     
+                    <td>
+                      <span>
+                        1970-01-01
+                      </span>
+                    </td>
+                     
+                    <td>
+                      <span>
+                        1980-01-01
+                      </span>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <!---->
+            <!---->
+          </div>
+           
+          <!---->
         </div>
-        <!---->
-        <!---->
       </div>
     </div>
-     
-    <!---->
   </div>
 </div>
 `;
 
 exports[`Index when Get Component service endpoint returns a component when the component has no git repo renders a message saying there is no repo 1`] = `
 <div>
-  <h1
-    class="text-info my-3"
-  >
-    Test Component Name 1 - Errors
-  </h1>
-   
   <div
-    class="my-3"
+    class="container-fluid"
   >
-    <a
-      class="btn my-1 btn-secondary"
-      href="/components/test-component-id-1"
-      target="_self"
+    <div
+      class="row"
     >
-      Info
-    </a>
-     
-    <a
-      class="btn my-1 btn-secondary"
-      href="/components/test-component-id-1/dependencies"
-      target="_self"
-    >
-      
+      <div
+        class="col"
+      >
+        <h1
+          class="text-info my-3"
+        >
+          Test Component Name 1 - Errors
+        </h1>
+         
+        <div
+          class="my-3"
+        >
+          <a
+            class="btn my-1 btn-secondary"
+            href="/components/test-component-id-1"
+            target="_self"
+          >
+            Info
+          </a>
+           
+          <a
+            class="btn my-1 btn-secondary"
+            href="/components/test-component-id-1/dependencies"
+            target="_self"
+          >
+            
     Dependencies
   
-    </a>
-     
-    <a
-      class="btn my-1 btn-secondary"
-      href="/components/test-component-id-1/response-times"
-      target="_self"
-    >
-      
+          </a>
+           
+          <a
+            class="btn my-1 btn-secondary"
+            href="/components/test-component-id-1/response-times"
+            target="_self"
+          >
+            
     Response Times
   
-    </a>
-     
-    <a
-      class="btn my-1 btn-secondary"
-      href="/components/test-component-id-1/downstream-response-times"
-      target="_self"
-    >
-      
+          </a>
+           
+          <a
+            class="btn my-1 btn-secondary"
+            href="/components/test-component-id-1/downstream-response-times"
+            target="_self"
+          >
+            
     Downstream Response Times
   
-    </a>
-     
-    <a
-      class="btn my-1 btn-secondary"
-      href="/components/test-component-id-1/call-graphs"
-      target="_self"
-    >
-      
+          </a>
+           
+          <a
+            class="btn my-1 btn-secondary"
+            href="/components/test-component-id-1/call-graphs"
+            target="_self"
+          >
+            
     Call Graphs
   
-    </a>
-     
-    <a
-      class="btn my-1 btn-secondary"
-      href="/components/test-component-id-1/cross-functional-requirements"
-      target="_self"
-    >
-      
+          </a>
+           
+          <a
+            class="btn my-1 btn-secondary"
+            href="/components/test-component-id-1/cross-functional-requirements"
+            target="_self"
+          >
+            
     Cross Functional Requirements
   
-    </a>
-     
-    <a
-      class="btn my-1 btn-secondary"
-      href="/components/test-component-id-1/tech-debts"
-      target="_self"
-    >
-      
+          </a>
+           
+          <a
+            class="btn my-1 btn-secondary"
+            href="/components/test-component-id-1/tech-debts"
+            target="_self"
+          >
+            
     Tech Debts
   
-    </a>
-     
-    <a
-      class="btn my-1 btn-secondary"
-      href="/components/test-component-id-1/tests"
-      target="_self"
-    >
-      Tests
-    </a>
-     
-    <a
-      class="btn my-1 btn-secondary"
-      href="/components/test-component-id-1/errors"
-      target="_self"
-    >
-      Errors
-    </a>
-     
-    <a
-      class="btn my-1 btn-secondary"
-      href="/components/test-component-id-1/openapi-specs"
-      target="_self"
-    >
-      
+          </a>
+           
+          <a
+            class="btn my-1 btn-secondary"
+            href="/components/test-component-id-1/tests"
+            target="_self"
+          >
+            Tests
+          </a>
+           
+          <a
+            class="btn my-1 btn-secondary"
+            href="/components/test-component-id-1/errors"
+            target="_self"
+          >
+            Errors
+          </a>
+           
+          <a
+            class="btn my-1 btn-secondary"
+            href="/components/test-component-id-1/openapi-specs"
+            target="_self"
+          >
+            
     OpenAPI Specs
   
-    </a>
-     
-    <a
-      class="btn my-1 btn-secondary"
-      href="/components/test-component-id-1/repo"
-      target="_self"
-    >
-      Repo
-    </a>
-     
-    <a
-      class="btn my-1 btn-secondary"
-      href="/components/test-component-id-1/readme"
-      target="_self"
-    >
-      README
-    </a>
-     
-    <a
-      class="btn my-1 btn-secondary"
-      href="/components/test-component-id-1/to-dos"
-      target="_self"
-    >
-      To Dos
-    </a>
-     
-    <a
-      class="btn my-1 btn-secondary"
-      href="/components/test-component-id-1/lines-of-code"
-      target="_self"
-    >
-      
-    Lines of Code
-  
-    </a>
-     
-    <a
-      class="btn my-1 btn-secondary"
-      href="/components/test-component-id-1/software-repositories"
-      target="_self"
-    >
-      
-    Software Repositories
-  
-    </a>
-     
-    <a
-      class="btn my-1 btn-secondary"
-      href="/components/test-component-id-1/software"
-      target="_self"
-    >
-      Software
-    </a>
-     
-    <a
-      class="btn my-1 btn-secondary"
-      href="/components/test-component-id-1/imports"
-      target="_self"
-    >
-      Imports
-    </a>
-  </div>
-   
-  <div
-    class="row"
-  >
-    <div
-      class="col-sm-6"
-    >
-      <div
-        class="card"
-      >
-        <!---->
-        <!---->
-        <div
-          class="card-body"
-        >
-          <h4
-            class="card-title"
+          </a>
+           
+          <a
+            class="btn my-1 btn-secondary"
+            href="/components/test-component-id-1/repo"
+            target="_self"
           >
             Repo
-          </h4>
-          <!---->
+          </a>
+           
           <a
-            href="https://example.com/test-repo-1"
-            target="_blank"
+            class="btn my-1 btn-secondary"
+            href="/components/test-component-id-1/readme"
+            target="_self"
           >
-            https://example.com/test-repo-1
+            README
+          </a>
+           
+          <a
+            class="btn my-1 btn-secondary"
+            href="/components/test-component-id-1/to-dos"
+            target="_self"
+          >
+            To Dos
+          </a>
+           
+          <a
+            class="btn my-1 btn-secondary"
+            href="/components/test-component-id-1/lines-of-code"
+            target="_self"
+          >
+            
+    Lines of Code
+  
+          </a>
+           
+          <a
+            class="btn my-1 btn-secondary"
+            href="/components/test-component-id-1/software-repositories"
+            target="_self"
+          >
+            
+    Software Repositories
+  
+          </a>
+           
+          <a
+            class="btn my-1 btn-secondary"
+            href="/components/test-component-id-1/software"
+            target="_self"
+          >
+            Software
+          </a>
+           
+          <a
+            class="btn my-1 btn-secondary"
+            href="/components/test-component-id-1/imports"
+            target="_self"
+          >
+            Imports
           </a>
         </div>
-        <!---->
-        <!---->
-      </div>
-       
-      <!---->
-    </div>
-     
-    <!---->
-     
-    <div
-      class="card"
-    >
-      <!---->
-      <!---->
-      <div
-        class="card-body"
-      >
-        <h4
-          class="card-title"
+         
+        <div
+          class="my-3 card-deck"
         >
-          No Git information
-        </h4>
-        <!---->
-        <p
-          class="card-text"
+          <div
+            class="card"
+          >
+            <!---->
+            <!---->
+            <div
+              class="card-body"
+            >
+              <h4
+                class="card-title"
+              >
+                Repo
+              </h4>
+              <!---->
+              <a
+                href="https://example.com/test-repo-1"
+                target="_blank"
+              >
+                https://example.com/test-repo-1
+              </a>
+            </div>
+            <!---->
+            <!---->
+          </div>
+           
+          <!---->
+        </div>
+         
+        <div
+          class="card-deck"
         >
-          
-        Not git-based information is available for this component
-      
-        </p>
+          <!---->
+           
+          <div
+            class="card"
+          >
+            <!---->
+            <!---->
+            <div
+              class="card-body"
+            >
+              <h4
+                class="card-title"
+              >
+                No Git information
+              </h4>
+              <!---->
+              <p
+                class="card-text"
+              >
+                
+              Not git-based information is available for this component
+            
+              </p>
+            </div>
+            <!---->
+            <!---->
+          </div>
+        </div>
       </div>
-      <!---->
-      <!---->
     </div>
   </div>
 </div>

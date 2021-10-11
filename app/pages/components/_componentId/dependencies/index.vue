@@ -1,7 +1,15 @@
 <template>
   <div>
-    <h1 class="text-info my-3">{{ component.name }} - Dependencies</h1>
-    <ComponentTabs :component-id="component.id" />
+    <b-container fluid>
+      <b-row>
+        <b-col>
+          <h1 class="text-info my-3">{{ component.name }} - Dependencies</h1>
+
+          <ComponentTabs :component-id="component.id" />
+        </b-col>
+      </b-row>
+    </b-container>
+
     <ComponentDependenciesView
       :all-components="allComponents"
       :components="[component]"
@@ -16,12 +24,16 @@
 <script lang="ts">
 import Vue from 'vue'
 import { MetaInfo } from 'vue-meta'
+import {BCol, BContainer, BRow} from "bootstrap-vue";
 import { Component, Summary } from '~/types/kronicle-service'
 import ComponentTabs from '~/components/ComponentTabs.vue'
 import ComponentDependenciesView from '~/components/ComponentDependenciesView.vue'
 
 export default Vue.extend({
   components: {
+    'b-col': BCol,
+    'b-container': BContainer,
+    'b-row': BRow,
     ComponentDependenciesView,
     ComponentTabs,
   },

@@ -1,110 +1,109 @@
 <template>
   <div>
-    <b-alert show="30" dismissible variant="info" class="my-3">
-      The dependencies on this page come from a combination of Zipkin traces and
-      dependencies manually specified in Kronicle's metadata YAML files. The
-      visualisation is not out-of-the-box Zipkin functionality and is bespoke to
-      Kronicle. The other data on the page like descriptions, teams, tags etc.
-      come from Kronicle and not from Zipkin.
-    </b-alert>
-    <div class="graph">
-      <ComponentDependencyGraph
-        id="component-dependency-graph"
-        :dependencies="dependencies"
-        dependency-type="scope-related"
-        :zoom="zoom"
-        :selected-component-id="selectedComponentId"
-        :scoped-component-ids="filteredComponentIds"
-        :fixed-scope="true"
-        :scope-related-radius="parseInt(selectedScopeRelatedRadius, 10)"
-        @networkChange="networkChange"
-        @selectedNodeChange="selectedNodeChange"
-      />
-    </div>
-    <div class="panel">
-      <b-alert show="60" dismissible variant="info">
-        Hover over or click a component's dot in the dependencies diagram to see
-        more information about it
-      </b-alert>
-
-      <ComponentPanel v-if="selectedComponent" :component="selectedComponent" />
-
-      <div v-else class="my-3">
-        <ComponentFilters :components="components" />
-
-        <b-form-group
-          label-cols="6"
-          label-size="sm"
-          label="Radius:"
-          label-for="graph-scope-related-radius"
-          class="my-3 mr-2"
-        >
-          <b-form-select
-            id="graph-scope-related-radius"
-            v-model="selectedScopeRelatedRadius"
-            :options="scopeRelatedRadiusOptions"
-            size="sm"
+    <b-container fluid>
+      <b-row>
+        <b-col class="graph">
+          <ComponentDependencyGraph
+            id="component-dependency-graph"
+            :dependencies="dependencies"
+            dependency-type="scope-related"
+            :zoom="zoom"
+            :selected-component-id="selectedComponentId"
+            :scoped-component-ids="filteredComponentIds"
+            :fixed-scope="true"
+            :scope-related-radius="parseInt(selectedScopeRelatedRadius, 10)"
+            @networkChange="networkChange"
+            @selectedNodeChange="selectedNodeChange"
           />
-        </b-form-group>
+        </b-col>
+        <b-col md="3">
+          <b-alert show="60" dismissible variant="info">
+            Hover over or click a component's dot in the dependencies diagram to see
+            more information about it
+          </b-alert>
 
-        <b-form-group
-          label-cols="6"
-          label-size="sm"
-          label="Zoom:"
-          label-for="graph-zoom"
-          class="my-3 mr-2"
-        >
-          <b-form-select
-            id="graph-zoom"
-            v-model="zoom"
-            :options="zoomOptions"
-            size="sm"
-          />
-        </b-form-group>
+          <ComponentPanel v-if="selectedComponent" :component="selectedComponent" />
 
-        <b-form-checkbox
-          id="detailed-dependencies"
-          v-model="detailed"
-          :value="true"
-          :unchecked-value="false"
-        >
-          Detailed dependencies
-        </b-form-checkbox>
-      </div>
-    </div>
+          <div v-else class="my-3">
+            <ComponentFilters :components="components" />
 
-    <div
-      v-if="excludedComponents && excludedComponents.length > 0"
-      class="excluded-components my-3"
-    >
-      <h2>Excluded Components</h2>
-      <ComponentTable :components="excludedComponents" />
-    </div>
+            <b-form-group
+              label-cols="6"
+              label-size="sm"
+              label="Radius:"
+              label-for="graph-scope-related-radius"
+              class="my-3 mr-2"
+            >
+              <b-form-select
+                id="graph-scope-related-radius"
+                v-model="selectedScopeRelatedRadius"
+                :options="scopeRelatedRadiusOptions"
+                size="sm"
+              />
+            </b-form-group>
+
+            <b-form-group
+              label-cols="6"
+              label-size="sm"
+              label="Zoom:"
+              label-for="graph-zoom"
+              class="my-3 mr-2"
+            >
+              <b-form-select
+                id="graph-zoom"
+                v-model="zoom"
+                :options="zoomOptions"
+                size="sm"
+              />
+            </b-form-group>
+
+            <b-form-checkbox
+              id="detailed-dependencies"
+              v-model="detailed"
+              :value="true"
+              :unchecked-value="false"
+            >
+              Detailed dependencies
+            </b-form-checkbox>
+          </div>
+        </b-col>
+      </b-row>
+    </b-container>
+
+    <b-container fluid>
+      <b-row>
+        <b-col>
+          <div
+            v-if="excludedComponents && excludedComponents.length > 0"
+            class="excluded-components my-3"
+          >
+            <h2>Excluded Components</h2>
+            <ComponentTable :components="excludedComponents" />
+          </div>
+        </b-col>
+      </b-row>
+    </b-container>
   </div>
 </template>
 
 <style scoped>
 .graph {
-  float: left;
-  width: calc(100% - 275px);
   overflow-x: scroll;
   scrollbar-color: #444 #111;
-}
-
-.panel {
-  float: right;
-  width: 250px;
-}
-
-.excluded-components {
-  float: left;
-  width: calc(100% - 275px);
 }
 </style>
 
 <script lang="ts">
 import Vue, { PropType } from 'vue'
-import { BAlert, BFormCheckbox, BFormGroup, BFormSelect } from 'bootstrap-vue'
+import {
+  BAlert,
+  BCol,
+  BContainer,
+  BFormCheckbox,
+  BFormGroup,
+  BFormSelect,
+  BRow
+} from 'bootstrap-vue'
 import {
   Component,
   SummaryComponentDependencies,
@@ -127,9 +126,12 @@ interface Option {
 export default Vue.extend({
   components: {
     'b-alert': BAlert,
+    'b-col': BCol,
+    'b-container': BContainer,
     'b-form-checkbox': BFormCheckbox,
     'b-form-group': BFormGroup,
     'b-form-select': BFormSelect,
+    'b-row': BRow,
     ComponentDependencyGraph,
     ComponentFilters,
     ComponentPanel,

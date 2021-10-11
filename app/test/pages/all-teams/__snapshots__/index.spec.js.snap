@@ -3,222 +3,246 @@
 exports[`Index when Get Teams service endpoint returns an array of multiple teams renders the page 1`] = `
 <div>
   <div
-    class="my-3"
-  >
-    <a
-      class="btn my-1 btn-secondary"
-      href="/all-teams"
-      target="_self"
-    >
-      Teams
-    </a>
-     
-    <a
-      class="btn my-1 btn-secondary"
-      href="/all-teams/components"
-      target="_self"
-    >
-      Components
-    </a>
-     
-    <a
-      class="btn my-1 btn-secondary"
-      href="/all-teams/tech-debts"
-      target="_self"
-    >
-      Tech Debts
-    </a>
-     
-    <a
-      class="btn my-1 btn-secondary"
-      href="/all-teams/tests"
-      target="_self"
-    >
-      Tests
-    </a>
-  </div>
-   
-  <transition-stub
-    class="my-3"
-    css="true"
-    enteractiveclass=""
-    enterclass=""
-    entertoclass="show"
-    leaveactiveclass=""
-    leaveclass="show"
-    leavetoclass=""
-    name=""
+    class="container-fluid"
   >
     <div
-      aria-atomic="true"
-      aria-live="polite"
-      class="alert alert-dismissible alert-info"
-      role="alert"
+      class="row"
     >
-      <button
-        aria-label="Close"
-        class="close"
-        type="button"
+      <div
+        class="col"
       >
-        ×
-      </button>
-      
-    Click a team's name in the table below to view more information about that
-    team
-  
-    </div>
-  </transition-stub>
-   
-  <table
-    class="table table-dark table-bordered table-striped mt-2"
-    style="width: 100%;"
-  >
-    <thead>
-      <tr>
-        <th
-          class="team-name"
-        >
-          Name
-        </th>
-         
-        <th>
-          Description
-        </th>
-      </tr>
-    </thead>
-     
-    <tbody>
-      <tr>
-        <td
-          class="team-name table-primary"
+        <div
+          class="my-3"
         >
           <a
-            class="team-name"
-            href="/teams/test-team-id-1"
+            class="btn my-1 btn-secondary"
+            href="/all-teams"
+            target="_self"
           >
-            Test Team Name 1
+            Teams
           </a>
-        </td>
-         
-        <td>
-          <div />
-        </td>
-      </tr>
-      <tr>
-        <td
-          class="team-name table-primary"
-        >
+           
           <a
-            class="team-name"
-            href="/teams/test-team-id-2"
+            class="btn my-1 btn-secondary"
+            href="/all-teams/components"
+            target="_self"
           >
-            Test Team Name 2
+            Components
           </a>
-        </td>
+           
+          <a
+            class="btn my-1 btn-secondary"
+            href="/all-teams/tech-debts"
+            target="_self"
+          >
+            Tech Debts
+          </a>
+           
+          <a
+            class="btn my-1 btn-secondary"
+            href="/all-teams/tests"
+            target="_self"
+          >
+            Tests
+          </a>
+        </div>
          
-        <td>
-          <div>
+        <transition-stub
+          class="my-3"
+          css="true"
+          enteractiveclass=""
+          enterclass=""
+          entertoclass="show"
+          leaveactiveclass=""
+          leaveclass="show"
+          leavetoclass=""
+          name=""
+        >
+          <div
+            aria-atomic="true"
+            aria-live="polite"
+            class="alert alert-dismissible alert-info"
+            role="alert"
+          >
+            <button
+              aria-label="Close"
+              class="close"
+              type="button"
+            >
+              ×
+            </button>
             
-
-            <p>
-              Test Team Description 2
-            </p>
+          Click a team's name in the table below to view more information about that
+          team
+        
           </div>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+        </transition-stub>
+         
+        <table
+          class="table table-dark table-bordered table-striped mt-2"
+          style="width: 100%;"
+        >
+          <thead>
+            <tr>
+              <th
+                class="team-name"
+              >
+                Name
+              </th>
+               
+              <th>
+                Description
+              </th>
+            </tr>
+          </thead>
+           
+          <tbody>
+            <tr>
+              <td
+                class="team-name table-primary"
+              >
+                <a
+                  class="team-name"
+                  href="/teams/test-team-id-1"
+                >
+                  Test Team Name 1
+                </a>
+              </td>
+               
+              <td>
+                <div />
+              </td>
+            </tr>
+            <tr>
+              <td
+                class="team-name table-primary"
+              >
+                <a
+                  class="team-name"
+                  href="/teams/test-team-id-2"
+                >
+                  Test Team Name 2
+                </a>
+              </td>
+               
+              <td>
+                <div>
+                  
+
+                  <p>
+                    Test Team Description 2
+                  </p>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
 </div>
 `;
 
 exports[`Index when Get Teams service endpoint returns an empty array renders the page 1`] = `
 <div>
   <div
-    class="my-3"
-  >
-    <a
-      class="btn my-1 btn-secondary"
-      href="/all-teams"
-      target="_self"
-    >
-      Teams
-    </a>
-     
-    <a
-      class="btn my-1 btn-secondary"
-      href="/all-teams/components"
-      target="_self"
-    >
-      Components
-    </a>
-     
-    <a
-      class="btn my-1 btn-secondary"
-      href="/all-teams/tech-debts"
-      target="_self"
-    >
-      Tech Debts
-    </a>
-     
-    <a
-      class="btn my-1 btn-secondary"
-      href="/all-teams/tests"
-      target="_self"
-    >
-      Tests
-    </a>
-  </div>
-   
-  <transition-stub
-    class="my-3"
-    css="true"
-    enteractiveclass=""
-    enterclass=""
-    entertoclass="show"
-    leaveactiveclass=""
-    leaveclass="show"
-    leavetoclass=""
-    name=""
+    class="container-fluid"
   >
     <div
-      aria-atomic="true"
-      aria-live="polite"
-      class="alert alert-dismissible alert-info"
-      role="alert"
+      class="row"
     >
-      <button
-        aria-label="Close"
-        class="close"
-        type="button"
+      <div
+        class="col"
       >
-        ×
-      </button>
-      
-    Click a team's name in the table below to view more information about that
-    team
-  
-    </div>
-  </transition-stub>
-   
-  <table
-    class="table table-dark table-bordered table-striped mt-2"
-    style="width: 100%;"
-  >
-    <thead>
-      <tr>
-        <th
-          class="team-name"
+        <div
+          class="my-3"
         >
-          Name
-        </th>
+          <a
+            class="btn my-1 btn-secondary"
+            href="/all-teams"
+            target="_self"
+          >
+            Teams
+          </a>
+           
+          <a
+            class="btn my-1 btn-secondary"
+            href="/all-teams/components"
+            target="_self"
+          >
+            Components
+          </a>
+           
+          <a
+            class="btn my-1 btn-secondary"
+            href="/all-teams/tech-debts"
+            target="_self"
+          >
+            Tech Debts
+          </a>
+           
+          <a
+            class="btn my-1 btn-secondary"
+            href="/all-teams/tests"
+            target="_self"
+          >
+            Tests
+          </a>
+        </div>
          
-        <th>
-          Description
-        </th>
-      </tr>
-    </thead>
-     
-    <tbody />
-  </table>
+        <transition-stub
+          class="my-3"
+          css="true"
+          enteractiveclass=""
+          enterclass=""
+          entertoclass="show"
+          leaveactiveclass=""
+          leaveclass="show"
+          leavetoclass=""
+          name=""
+        >
+          <div
+            aria-atomic="true"
+            aria-live="polite"
+            class="alert alert-dismissible alert-info"
+            role="alert"
+          >
+            <button
+              aria-label="Close"
+              class="close"
+              type="button"
+            >
+              ×
+            </button>
+            
+          Click a team's name in the table below to view more information about that
+          team
+        
+          </div>
+        </transition-stub>
+         
+        <table
+          class="table table-dark table-bordered table-striped mt-2"
+          style="width: 100%;"
+        >
+          <thead>
+            <tr>
+              <th
+                class="team-name"
+              >
+                Name
+              </th>
+               
+              <th>
+                Description
+              </th>
+            </tr>
+          </thead>
+           
+          <tbody />
+        </table>
+      </div>
+    </div>
+  </div>
 </div>
 `;

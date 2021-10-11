@@ -1,6 +1,13 @@
 <template>
   <div>
-    <AllComponentsTabs />
+    <b-container fluid>
+      <b-row>
+        <b-col>
+          <AllComponentsTabs />
+        </b-col>
+      </b-row>
+    </b-container>
+
     <ComponentDependenciesView
       :all-components="components"
       :components="components"
@@ -13,6 +20,7 @@
 <script lang="ts">
 import Vue from 'vue'
 import { MetaInfo } from 'vue-meta'
+import {BCol, BContainer, BRow} from "bootstrap-vue";
 import { Component, Summary } from '~/types/kronicle-service'
 import AllComponentsTabs from '~/components/AllComponentsTabs.vue'
 import ComponentDependenciesView from '~/components/ComponentDependenciesView.vue'
@@ -20,6 +28,9 @@ import ComponentDependenciesView from '~/components/ComponentDependenciesView.vu
 export default Vue.extend({
   components: {
     AllComponentsTabs,
+    'b-col': BCol,
+    'b-container': BContainer,
+    'b-row': BRow,
     ComponentDependenciesView,
   },
   async asyncData({ $config, route, store }) {

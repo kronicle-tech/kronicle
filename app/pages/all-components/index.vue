@@ -1,10 +1,17 @@
 <template>
   <div>
-    <AllComponentsTabs />
-    <b-alert show="10" dismissible variant="info" class="my-3">
-      Click a component's name in the table below to view more information about
-      that component
-    </b-alert>
+    <b-container fluid>
+      <b-row>
+        <b-col>
+          <AllComponentsTabs />
+
+          <b-alert show="10" dismissible variant="info" class="my-3">
+            Click a component's name in the table below to view more information about
+            that component
+          </b-alert>
+        </b-col>
+      </b-row>
+    </b-container>
 
     <ComponentsView :components="components" />
   </div>
@@ -12,7 +19,7 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import { BAlert } from 'bootstrap-vue'
+import {BAlert, BCol, BContainer, BRow} from 'bootstrap-vue'
 import { MetaInfo } from 'vue-meta'
 import { Component } from '~/types/kronicle-service'
 import AllComponentsTabs from '~/components/AllComponentsTabs.vue'
@@ -22,6 +29,9 @@ export default Vue.extend({
   components: {
     AllComponentsTabs,
     'b-alert': BAlert,
+    'b-col': BCol,
+    'b-container': BContainer,
+    'b-row': BRow,
     ComponentsView,
   },
   async asyncData({ $config, route, store }) {
