@@ -84,7 +84,7 @@ jobs:
         uses: actions/upload-artifact@v2
         if: success() || failure()
         with:
-          name: dependency-check-report
+          name: junit-test-reports
           path: '**/build/reports/tests/test/**'
 
       - name: Tag build
