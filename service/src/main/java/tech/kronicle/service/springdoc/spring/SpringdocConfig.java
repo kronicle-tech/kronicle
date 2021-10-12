@@ -23,7 +23,7 @@ public class SpringdocConfig {
             "https://dev.to/andersonjoseph/what-they-want-is-what-they-get-the-partial-response-strategy-5a0m";
 
     @Bean
-    public OpenApiCustomiser openApiCustomiser(OpenApiSpecConfig config, @Value(" ${info.app.version") String version) {
+    public OpenApiCustomiser openApiCustomiser(OpenApiSpecConfig config, @Value("${info.app.version}") String version) {
         return openApi -> {
             openApi.info(new Info()
                     .title("Kronicle Service")
