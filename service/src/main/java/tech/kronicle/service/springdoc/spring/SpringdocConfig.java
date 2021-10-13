@@ -37,6 +37,10 @@ public class SpringdocConfig {
                             PARTIAL_RESPONSES_ARTICLE_URL + " for more information.  ")
                     .version(version));
 
+            if (nonNull(config.getClearExistingServers()) && config.getClearExistingServers()) {
+                openApi.servers(null);
+            }
+
             if (nonNull(config.getServers())) {
                 config.getServers().forEach(server -> openApi.addServersItem(new Server()
                         .url(server.getUrl())

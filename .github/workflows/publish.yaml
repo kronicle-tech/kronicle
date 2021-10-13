@@ -1,37 +1,49 @@
 name: Publish JARs and Docker images
+
 on:
   release:
     types: [created]
+
 jobs:
+
   publish:
     runs-on: ubuntu-latest
     environment: publish
     permissions:
       packages: write
       contents: read
+
     steps:
+
       - name: Get version
         id: get_version
         run: echo ::set-output name=VERSION::${GITHUB_REF/refs\/tags\/v/}
+
       - uses: actions/checkout@v2
         with:
           path: repo
+
       - name: Set up JDK 11
         uses: actions/setup-java@v2
         with:
           java-version: '11'
           distribution: 'adopt'
+
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
           node-version: '12'
+
       - name: Upgrade npm
         run: npm install -g npm@latest
+
       - name: Validate Gradle wrapper
         uses: gradle/wrapper-validation-action@e6e38bacfdf1a337459f332974bb2327a31aaf4b
+
       - name: Build
         run: ./gradlew build
         working-directory: repo
+
       - name: Publish JARs to Maven Central
         run: ./gradlew --no-parallel publish
         working-directory: repo
@@ -40,30 +52,36 @@ jobs:
           OSSRH_PASSWORD: ${{ secrets.OSSRH_PASSWORD }}
           SIGNING_KEY: ${{ secrets.SIGNING_KEY }}
           SIGNING_PASSWORD: ${{ secrets.SIGNING_PASSWORD }}
+
       - name: Log in to GitHub Container Registry
         uses: docker/login-action@f054a8b539a109f9f41c372932f1ae047eff08c9
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Build and push Docker images to GitHub Container Registry
         run: ./gradlew -PpushImage=true dockerPush
         working-directory: repo
+
       - name: Checkout kronicle-argocd-config repo
         uses: actions/checkout@v2
         with:
           repository: kronicle-tech/kronicle-argocd-config
           token: ${{ secrets.ARGOCD_CONFIG_TOKEN }}
           path: kronicle-argocd-config
+
       - name: Set image tags in Argo CD config
         run: |
           sed -i -r "s/version: [0-9]+\.[0-9]+\.[0-9]+/version: ${{ steps.get_version.outputs.VERSION }}/g" kronicle/values.yaml
+          sed -i -r "s/version: [0-9]+\.[0-9]+\.[0-9]+/version: ${{ steps.get_version.outputs.VERSION }}/g" kronicle-empty/values.yaml
         working-directory: kronicle-argocd-config
+
       - name: Commit and push change to Argo CD config
         run: |
           git config user.email "deploy@kronicle.tech"
           git config user.name "Kronicle Deploy"
-          git add kronicle/values.yaml
+          git add kronicle/values.yaml kronicle-empty/values.yaml
           git commit -m "Set Kronicle app and service image tags to v${{ steps.get_version.outputs.VERSION }}"
           git push
         working-directory: kronicle-argocd-config

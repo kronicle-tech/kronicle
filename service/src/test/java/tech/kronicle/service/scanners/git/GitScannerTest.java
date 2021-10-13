@@ -136,6 +136,7 @@ public class GitScannerTest extends BaseScannerTest {
         CreateRemoteRepoOutcome createOutcome = gitRepoHelper.createRemoteRepo();
         waitForNextCommitTimestampToBeForDifferentSecond();
         UpdateRemoteRepoOutcome updateOutcome = gitRepoHelper.updateRemoteGitRepo(createOutcome.getRepoDir(), getDifferentIdentityOption(identityType));
+        waitForNextCommitTimestampToBeForDifferentSecond();
         UpdateRemoteRepoOutcome updateOutcome2 = gitRepoHelper.updateRemoteGitRepo(createOutcome.getRepoDir(), getDifferentIdentityOption(identityType));
         Repo testRepo = new Repo(createOutcome.getRepoDir().toString());
 
@@ -152,7 +153,7 @@ public class GitScannerTest extends BaseScannerTest {
         assertThat(codebase.getDir()).isNotEmptyDirectory();
         assertThat(component.getGitRepo()).isNotNull();
         assertThat(component.getGitRepo().getFirstCommitTimestamp()).isBetween(createOutcome.getBeforeCommit(), createOutcome.getAfterCommit());
-        assertThat(component.getGitRepo().getLastCommitTimestamp()).isBetween(updateOutcome.getBeforeCommit(), updateOutcome.getAfterCommit());
+        assertThat(component.getGitRepo().getLastCommitTimestamp()).isBetween(updateOutcome2.getBeforeCommit(), updateOutcome2.getAfterCommit());
         assertThat(component.getGitRepo().getCommitCount()).isEqualTo(3);
         Identity identity;
 
