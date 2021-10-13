@@ -15,5 +15,6 @@ import java.util.List;
 @NonFinal
 public class OpenApiSpecConfig {
 
+    Boolean clearExistingServers;
     List<OpenApiSpecServerConfig> servers;
 }
