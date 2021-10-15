@@ -1,7 +1,9 @@
 # Kronicle
 
-Kronicle is a web-based dashboard that displays a list of the components in a technology stack and shows various 
-information about those components.
+Kronicle is an open source tool and dashboard for development teams and tech organizations to document and visualise
+the components in their tech stack and teams in their organization.
+
+See the [documentation](https://kronicle.tech) for more information on deploying and using Kronicle.
 
 
 ## Component Metadata YAML
