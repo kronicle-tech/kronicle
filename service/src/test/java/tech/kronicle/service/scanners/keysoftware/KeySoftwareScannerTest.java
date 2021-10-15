@@ -36,8 +36,10 @@ public class KeySoftwareScannerTest extends BaseScannerTest {
         String returnValue = underTest.description();
 
         // Then
-        assertThat(returnValue).isEqualTo("Processes all software found by other scanners and looks for certain configured `key software` to find what "
-                + "version(s) if any of those key software a component uses.  Key software is typically things like Gradle and Spring Boot");
+        assertThat(returnValue).isEqualTo(
+                "Processes all software found by other scanners and looks for certain configured `key software` to "
+                + "find what version(s), if any, a component uses.  Key software is typically things like Gradle "
+                + "and Spring Boot");
     }
 
     @Test
