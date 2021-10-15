@@ -29,7 +29,7 @@ public class GradleScannerTest extends BaseGradleScannerTest {
         String returnValue = underTest.description();
 
         // Then
-        assertThat(returnValue).isEqualTo("Scans a component's codebase for any Gradle build scripts.  Collections information like Gradle version and "
+        assertThat(returnValue).isEqualTo("Scans a component's codebase for any Gradle build scripts and collects information like Gradle version and "
                 + "software used");
     }
 

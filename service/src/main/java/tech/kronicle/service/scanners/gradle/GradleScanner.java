@@ -100,7 +100,7 @@ public class GradleScanner extends CodebaseScanner {
 
     @Override
     public String description() {
-        return "Scans a component's codebase for any Gradle build scripts.  Collections information like Gradle version and software used";
+        return "Scans a component's codebase for any Gradle build scripts and collects information like Gradle version and software used";
     }
 
     @Override
