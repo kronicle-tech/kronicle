@@ -122,31 +122,7 @@
         <packageUrl regex="true">^pkg:npm/ansi\-html@.*$</packageUrl>
         <cve>CVE-2021-23424</cve>
     </suppress>
-    <!-- Time-limited suppression waiting for Nuxt.js to upgrade to Webpack 5.x.x.  See https://github.com/nuxt/nuxt.js/issues/9798 -->
-    <suppress until="2021-10-18Z">
-        <notes><![CDATA[
-   file name: set-value:2.0.1
-   ]]></notes>
-        <packageUrl regex="true">^pkg:npm/set\-value@.*$</packageUrl>
-        <cve>CVE-2021-23440</cve>
-    </suppress>
-    <!-- Time-limited suppression waiting for Nuxt.js to upgrade to Webpack 5.x.x.  See https://github.com/nuxt/nuxt.js/issues/9798 -->
-    <suppress until="2021-10-18Z">
-        <notes><![CDATA[
-   file name: set-value:2.0.1
-   ]]></notes>
-        <packageUrl regex="true">^pkg:npm/set\-value@.*$</packageUrl>
-        <vulnerabilityName>5267</vulnerabilityName>
-    </suppress>
-    <!-- Time-limited suppression waiting for Nuxt.js to upgrade to Webpack 5.x.x.  See https://github.com/nuxt/nuxt.js/issues/9798 -->
-    <suppress>
-        <notes><![CDATA[
-   file name: set-value:2.0.1
-   ]]></notes>
-        <packageUrl regex="true">^pkg:npm/set\-value@.*$</packageUrl>
-        <vulnerabilityName>1002475</vulnerabilityName>
-    </suppress>
-    <!-- Suppress a "Inefficient Regular Expression Complexity" vulnerability in an npm package -->
+    <!-- Suppress an "Inefficient Regular Expression Complexity" vulnerability in an npm package -->
     <suppress>
         <notes><![CDATA[
    file name: ansi-regex:2.1.1, ansi-regex:3.0.0, ansi-regex:4.1.0
@@ -154,7 +130,7 @@
         <packageUrl regex="true">^pkg:npm/ansi\-regex@.*$</packageUrl>
         <cve>CVE-2021-3807</cve>
     </suppress>
-    <!-- Suppress a "Inefficient Regular Expression Complexity" vulnerability in an npm package -->
+    <!-- Suppress an "Inefficient Regular Expression Complexity" vulnerability in an npm package -->
     <suppress>
         <notes><![CDATA[
    file name: ansi-regex:2.1.1
@@ -162,7 +138,7 @@
         <packageUrl regex="true">^pkg:npm/ansi\-regex@.*$</packageUrl>
         <vulnerabilityName>1002401</vulnerabilityName>
     </suppress>
-    <!-- Suppress a "Inefficient Regular Expression Complexity" vulnerability in an npm package -->
+    <!-- Suppress an "Inefficient Regular Expression Complexity" vulnerability in an npm package -->
     <suppress>
         <notes><![CDATA[
    file name: nth-check:1.0.2
@@ -170,15 +146,7 @@
         <packageUrl regex="true">^pkg:npm/nth\-check@.*$</packageUrl>
         <cve>CVE-2021-3803</cve>
     </suppress>
-    <!-- Time-limited suppression -->
-    <suppress until="2021-10-18Z">
-        <notes><![CDATA[
-   file name: lodash:4.17.21
-   ]]></notes>
-        <packageUrl regex="true">^pkg:npm/lodash@.*$</packageUrl>
-        <cve>CVE-2021-41720</cve>
-    </suppress>
-    <!-- Suppress a "Inefficient Regular Expression Complexity" vulnerability in an npm package -->
+    <!-- Suppress an "Inefficient Regular Expression Complexity" vulnerability in an npm package -->
     <suppress>
         <notes><![CDATA[
    file name: ansi-regex:2.1.1
@@ -202,7 +170,7 @@
         <packageUrl regex="true">^pkg:npm/glob\-parent@.*$</packageUrl>
         <vulnerabilityName>1002627</vulnerabilityName>
     </suppress>
-    <!-- Suppress a "Inefficient Regular Expression Complexity" vulnerability in an npm package -->
+    <!-- Suppress an "Inefficient Regular Expression Complexity" vulnerability in an npm package -->
     <suppress>
         <notes><![CDATA[
    file name: nth-check:1.0.2
@@ -210,12 +178,132 @@
         <packageUrl regex="true">^pkg:npm/nth\-check@.*$</packageUrl>
         <vulnerabilityName>5101</vulnerabilityName>
     </suppress>
-    <!-- Suppress a "Inefficient Regular Expression Complexity" vulnerability in an npm package -->
+    <!-- Suppress an "Inefficient Regular Expression Complexity" vulnerability in an npm package -->
     <suppress>
         <notes><![CDATA[
    file name: nth-check:1.0.2
    ]]></notes>
         <packageUrl regex="true">^pkg:npm/nth\-check@.*$</packageUrl>
         <vulnerabilityName>1002423</vulnerabilityName>
+    </suppress>
+    <!-- Suppress a vulnerability that has been fixed in v2.6.7. See https://github.com/node-fetch/node-fetch/issues/1467 -->
+    <suppress>
+        <notes><![CDATA[
+   file name: node-fetch:2.6.7
+   ]]></notes>
+        <packageUrl regex="true">^pkg:npm/node\-fetch@.*$</packageUrl>
+        <cve>CVE-2022-0235</cve>
+    </suppress>
+    <!-- Suppress a "Regular Expression Denial of Service" vulnerability in an npm package -->
+    <suppress>
+        <notes><![CDATA[
+   file name: glob-parent:3.1.0
+   ]]></notes>
+        <packageUrl regex="true">^pkg:npm/glob\-parent@.*$</packageUrl>
+        <vulnerabilityName>1005154</vulnerabilityName>
+    </suppress>
+    <!-- Suppress an "Inefficient Regular Expression Complexity" vulnerability in an npm package -->
+    <suppress>
+        <notes><![CDATA[
+   file name: nth-check:1.0.2
+   ]]></notes>
+        <packageUrl regex="true">^pkg:npm/nth\-check@.*$</packageUrl>
+        <vulnerabilityName>1004967</vulnerabilityName>
+    </suppress>
+    <!-- Suppress a "Regular Expression Denial of Service" vulnerability in an npm package -->
+    <suppress>
+        <notes><![CDATA[
+   file name: postcss:7.0.39
+   ]]></notes>
+        <packageUrl regex="true">^pkg:npm/postcss@.*$</packageUrl>
+        <vulnerabilityName>1006846</vulnerabilityName>
+    </suppress>
+    <!-- Suppress a vulnerability that is incorrectly reported against netty-tcnative-classes -->
+    <suppress>
+        <notes><![CDATA[
+   file name: netty-tcnative-classes-2.0.46.Final.jar
+   ]]></notes>
+        <packageUrl regex="true">^pkg:maven/io\.netty/netty\-tcnative\-classes@.*$</packageUrl>
+        <cve>CVE-2014-3488</cve>
+    </suppress>
+    <!-- Suppress a vulnerability that is incorrectly reported against netty-tcnative-classes -->
+    <suppress>
+        <notes><![CDATA[
+   file name: netty-tcnative-classes-2.0.46.Final.jar
+   ]]></notes>
+        <packageUrl regex="true">^pkg:maven/io\.netty/netty\-tcnative\-classes@.*$</packageUrl>
+        <cve>CVE-2015-2156</cve>
+    </suppress>
+    <!-- Suppress a vulnerability that is incorrectly reported against netty-tcnative-classes -->
+    <suppress>
+        <notes><![CDATA[
+   file name: netty-tcnative-classes-2.0.46.Final.jar
+   ]]></notes>
+        <packageUrl regex="true">^pkg:maven/io\.netty/netty\-tcnative\-classes@.*$</packageUrl>
+        <cve>CVE-2019-16869</cve>
+    </suppress>
+    <!-- Suppress a vulnerability that is incorrectly reported against netty-tcnative-classes -->
+    <suppress>
+        <notes><![CDATA[
+   file name: netty-tcnative-classes-2.0.46.Final.jar
+   ]]></notes>
+        <packageUrl regex="true">^pkg:maven/io\.netty/netty\-tcnative\-classes@.*$</packageUrl>
+        <cve>CVE-2019-20444</cve>
+    </suppress>
+    <!-- Suppress a vulnerability that is incorrectly reported against netty-tcnative-classes -->
+    <suppress>
+        <notes><![CDATA[
+   file name: netty-tcnative-classes-2.0.46.Final.jar
+   ]]></notes>
+        <packageUrl regex="true">^pkg:maven/io\.netty/netty\-tcnative\-classes@.*$</packageUrl>
+        <cve>CVE-2019-20445</cve>
+    </suppress>
+    <!-- Suppress a vulnerability that is incorrectly reported against netty-tcnative-classes -->
+    <suppress>
+        <notes><![CDATA[
+   file name: netty-tcnative-classes-2.0.46.Final.jar
+   ]]></notes>
+        <packageUrl regex="true">^pkg:maven/io\.netty/netty\-tcnative\-classes@.*$</packageUrl>
+        <cve>CVE-2021-21290</cve>
+    </suppress>
+    <!-- Suppress a vulnerability that is incorrectly reported against netty-tcnative-classes -->
+    <suppress>
+        <notes><![CDATA[
+   file name: netty-tcnative-classes-2.0.46.Final.jar
+   ]]></notes>
+        <packageUrl regex="true">^pkg:maven/io\.netty/netty\-tcnative\-classes@.*$</packageUrl>
+        <cve>CVE-2021-21295</cve>
+    </suppress>
+    <!-- Suppress a vulnerability that is incorrectly reported against netty-tcnative-classes -->
+    <suppress>
+        <notes><![CDATA[
+   file name: netty-tcnative-classes-2.0.46.Final.jar
+   ]]></notes>
+        <packageUrl regex="true">^pkg:maven/io\.netty/netty\-tcnative\-classes@.*$</packageUrl>
+        <cve>CVE-2021-21409</cve>
+    </suppress>
+    <!-- Suppress a vulnerability that is incorrectly reported against netty-tcnative-classes -->
+    <suppress>
+        <notes><![CDATA[
+   file name: netty-tcnative-classes-2.0.46.Final.jar
+   ]]></notes>
+        <packageUrl regex="true">^pkg:maven/io\.netty/netty\-tcnative\-classes@.*$</packageUrl>
+        <cve>CVE-2021-37136</cve>
+    </suppress>
+    <!-- Suppress a vulnerability that is incorrectly reported against netty-tcnative-classes -->
+    <suppress>
+        <notes><![CDATA[
+   file name: netty-tcnative-classes-2.0.46.Final.jar
+   ]]></notes>
+        <packageUrl regex="true">^pkg:maven/io\.netty/netty\-tcnative\-classes@.*$</packageUrl>
+        <cve>CVE-2021-37137</cve>
+    </suppress>
+    <!-- Suppress a vulnerability that is incorrectly reported against netty-tcnative-classes -->
+    <suppress>
+        <notes><![CDATA[
+   file name: netty-tcnative-classes-2.0.46.Final.jar
+   ]]></notes>
+        <packageUrl regex="true">^pkg:maven/io\.netty/netty\-tcnative\-classes@.*$</packageUrl>
+        <cve>CVE-2021-43797</cve>
     </suppress>
 </suppressions>
