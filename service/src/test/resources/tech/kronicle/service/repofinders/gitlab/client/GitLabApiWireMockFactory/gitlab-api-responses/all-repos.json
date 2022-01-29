@@ -1,0 +1,22 @@
+[
+  {
+    "test-unknown-field": "This field should be ignored by Jackson when deserialised, if Jackson is configured correctly",
+    "contents_url": "{{baseUrl}}/repos/{{username}}/test-repo-1/contents/{+path}",
+    "clone_url": "https://github.com/{{username}}/test-repo-1.git"
+  },
+  {
+    "test-unknown-field": "This field should be ignored by Jackson when deserialised, if Jackson is configured correctly",
+    "contents_url": "{{baseUrl}}/repos/{{username}}/test-repo-2/contents/{+path}",
+    "clone_url": "https://github.com/{{username}}/test-repo-2.git"
+  },
+  {
+    "test-unknown-field": "This field should be ignored by Jackson when deserialised, if Jackson is configured correctly",
+    "contents_url": "{{baseUrl}}/repos/{{username}}/test-repo-3/contents/{+path}",
+    "clone_url": "https://github.com/{{username}}/test-repo-3.git"
+  },
+  {
+    "test-unknown-field": "This field should be ignored by Jackson when deserialised, if Jackson is configured correctly",
+    "contents_url": "{{baseUrl}}/repos/{{username}}/test-repo-4/contents/{+path}",
+    "clone_url": "https://github.com/{{username}}/test-repo-4.git"
+  }
+]

@@ -1,4 +1,4 @@
-package tech.kronicle.service.repofinders.github.config;
+package tech.kronicle.service.repofinders.gitlab.config;
 
 import lombok.Value;
 import lombok.experimental.NonFinal;
@@ -9,8 +9,8 @@ import org.springframework.validation.annotation.Validated;
 @ConstructorBinding
 @Value
 @NonFinal
-public class GitHubRepoFinderUserConfig {
+public class GitLabRepoFinderUserConfig {
 
-    String accountName;
-    GitHubRepoFinderAccessTokenConfig accessToken;
+    String username;
+    GitLabRepoFinderAccessTokenConfig accessToken;
 }
