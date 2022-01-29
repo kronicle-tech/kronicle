@@ -6,9 +6,6 @@ import tech.kronicle.service.models.ApiRepo;
 import tech.kronicle.service.repofinders.RepoFinder;
 import tech.kronicle.service.repofinders.github.client.GitHubClient;
 import tech.kronicle.service.repofinders.github.config.GitHubRepoFinderConfig;
-import tech.kronicle.service.repofinders.github.config.GitHubRepoFinderOrganizationConfig;
-import tech.kronicle.service.repofinders.github.config.GitHubRepoFinderPersonalAccessTokenConfig;
-import tech.kronicle.service.repofinders.github.config.GitHubRepoFinderUserConfig;
 
 import java.util.Collection;
 import java.util.List;

@@ -8,7 +8,7 @@ import tech.kronicle.service.models.ApiRepo;
 import tech.kronicle.service.repofinders.github.client.GitHubClient;
 import tech.kronicle.service.repofinders.github.config.GitHubRepoFinderConfig;
 import tech.kronicle.service.repofinders.github.config.GitHubRepoFinderOrganizationConfig;
-import tech.kronicle.service.repofinders.github.config.GitHubRepoFinderPersonalAccessTokenConfig;
+import tech.kronicle.service.repofinders.github.config.GitHubRepoFinderAccessTokenConfig;
 import tech.kronicle.service.repofinders.github.config.GitHubRepoFinderUserConfig;
 
 import java.time.Duration;
@@ -23,21 +23,21 @@ import static org.mockito.Mockito.when;
 @ExtendWith(MockitoExtension.class)
 public class GitHubRepoFinderTest {
 
-    private static final GitHubRepoFinderPersonalAccessTokenConfig PERSONAL_ACCESS_TOKEN_1 = createPersonalAccessToken(1);
-    private static final GitHubRepoFinderPersonalAccessTokenConfig PERSONAL_ACCESS_TOKEN_2 = createPersonalAccessToken(2);
-    private static final GitHubRepoFinderPersonalAccessTokenConfig PERSONAL_ACCESS_TOKEN_3 = createPersonalAccessToken(3);
-    private static final GitHubRepoFinderPersonalAccessTokenConfig PERSONAL_ACCESS_TOKEN_4 = createPersonalAccessToken(4);
-    private static final GitHubRepoFinderPersonalAccessTokenConfig PERSONAL_ACCESS_TOKEN_5 = createPersonalAccessToken(5);
-    private static final GitHubRepoFinderPersonalAccessTokenConfig PERSONAL_ACCESS_TOKEN_6 = createPersonalAccessToken(6);
-    private static final GitHubRepoFinderPersonalAccessTokenConfig PERSONAL_ACCESS_TOKEN_7 = createPersonalAccessToken(7);
-    private static final GitHubRepoFinderPersonalAccessTokenConfig PERSONAL_ACCESS_TOKEN_8 = createPersonalAccessToken(8);
-    private static final GitHubRepoFinderPersonalAccessTokenConfig PERSONAL_ACCESS_TOKEN_9 = createPersonalAccessToken(9);
-    private static final GitHubRepoFinderUserConfig USER_1 = new GitHubRepoFinderUserConfig("test-user-1", PERSONAL_ACCESS_TOKEN_4);
-    private static final GitHubRepoFinderUserConfig USER_2 = new GitHubRepoFinderUserConfig("test-user-2", PERSONAL_ACCESS_TOKEN_5);
-    private static final GitHubRepoFinderUserConfig USER_3 = new GitHubRepoFinderUserConfig("test-user-3", PERSONAL_ACCESS_TOKEN_6);
-    private static final GitHubRepoFinderOrganizationConfig ORGANIZATION_1 = new GitHubRepoFinderOrganizationConfig("test-organization-1",PERSONAL_ACCESS_TOKEN_7);
-    private static final GitHubRepoFinderOrganizationConfig ORGANIZATION_2 = new GitHubRepoFinderOrganizationConfig("test-organization-2", PERSONAL_ACCESS_TOKEN_8);
-    private static final GitHubRepoFinderOrganizationConfig ORGANIZATION_3 = new GitHubRepoFinderOrganizationConfig("test-organization-3", PERSONAL_ACCESS_TOKEN_9);
+    private static final GitHubRepoFinderAccessTokenConfig ACCESS_TOKEN_1 = createAccessToken(1);
+    private static final GitHubRepoFinderAccessTokenConfig ACCESS_TOKEN_2 = createAccessToken(2);
+    private static final GitHubRepoFinderAccessTokenConfig ACCESS_TOKEN_3 = createAccessToken(3);
+    private static final GitHubRepoFinderAccessTokenConfig ACCESS_TOKEN_4 = createAccessToken(4);
+    private static final GitHubRepoFinderAccessTokenConfig ACCESS_TOKEN_5 = createAccessToken(5);
+    private static final GitHubRepoFinderAccessTokenConfig ACCESS_TOKEN_6 = createAccessToken(6);
+    private static final GitHubRepoFinderAccessTokenConfig ACCESS_TOKEN_7 = createAccessToken(7);
+    private static final GitHubRepoFinderAccessTokenConfig ACCESS_TOKEN_8 = createAccessToken(8);
+    private static final GitHubRepoFinderAccessTokenConfig ACCESS_TOKEN_9 = createAccessToken(9);
+    private static final GitHubRepoFinderUserConfig USER_1 = new GitHubRepoFinderUserConfig("test-user-1", ACCESS_TOKEN_4);
+    private static final GitHubRepoFinderUserConfig USER_2 = new GitHubRepoFinderUserConfig("test-user-2", ACCESS_TOKEN_5);
+    private static final GitHubRepoFinderUserConfig USER_3 = new GitHubRepoFinderUserConfig("test-user-3", ACCESS_TOKEN_6);
+    private static final GitHubRepoFinderOrganizationConfig ORGANIZATION_1 = new GitHubRepoFinderOrganizationConfig("test-organization-1",ACCESS_TOKEN_7);
+    private static final GitHubRepoFinderOrganizationConfig ORGANIZATION_2 = new GitHubRepoFinderOrganizationConfig("test-organization-2", ACCESS_TOKEN_8);
+    private static final GitHubRepoFinderOrganizationConfig ORGANIZATION_3 = new GitHubRepoFinderOrganizationConfig("test-organization-3", ACCESS_TOKEN_9);
     private static final Duration TIMEOUT = Duration.ofSeconds(1);
 
     private GitHubRepoFinder underTest;
@@ -73,11 +73,11 @@ public class GitHubRepoFinderTest {
     @Test
     public void getApiReposShouldCallClientForAnItemInEachConfigList() {
         // Given
-        GitHubRepoFinderConfig config = new GitHubRepoFinderConfig(List.of(PERSONAL_ACCESS_TOKEN_1), List.of(USER_1), List.of(ORGANIZATION_1), TIMEOUT);
+        GitHubRepoFinderConfig config = new GitHubRepoFinderConfig(List.of(ACCESS_TOKEN_1), List.of(USER_1), List.of(ORGANIZATION_1), TIMEOUT);
         List<ApiRepo> apiRepos1 = createApiRepos(1);
         List<ApiRepo> apiRepos2 = createApiRepos(2);
         List<ApiRepo> apiRepos3 = createApiRepos(3);
-        when(mockClient.getRepos(PERSONAL_ACCESS_TOKEN_1)).thenReturn(apiRepos1);
+        when(mockClient.getRepos(ACCESS_TOKEN_1)).thenReturn(apiRepos1);
         when(mockClient.getRepos(USER_1)).thenReturn(apiRepos2);
         when(mockClient.getRepos(ORGANIZATION_1)).thenReturn(apiRepos3);
         underTest = new GitHubRepoFinder(config, mockClient);
@@ -96,7 +96,7 @@ public class GitHubRepoFinderTest {
     public void getApiReposShouldCallClientForItemsInEachConfigList() {
         // Given
         GitHubRepoFinderConfig config = new GitHubRepoFinderConfig(
-                List.of(PERSONAL_ACCESS_TOKEN_1, PERSONAL_ACCESS_TOKEN_2, PERSONAL_ACCESS_TOKEN_3),
+                List.of(ACCESS_TOKEN_1, ACCESS_TOKEN_2, ACCESS_TOKEN_3),
                 List.of(USER_1, USER_2, USER_3),
                 List.of(ORGANIZATION_1, ORGANIZATION_2, ORGANIZATION_3),
                 TIMEOUT);
@@ -109,9 +109,9 @@ public class GitHubRepoFinderTest {
         List<ApiRepo> apiRepos7 = createApiRepos(7);
         List<ApiRepo> apiRepos8 = createApiRepos(8);
         List<ApiRepo> apiRepos9 = createApiRepos(9);
-        when(mockClient.getRepos(PERSONAL_ACCESS_TOKEN_1)).thenReturn(apiRepos1);
-        when(mockClient.getRepos(PERSONAL_ACCESS_TOKEN_2)).thenReturn(apiRepos2);
-        when(mockClient.getRepos(PERSONAL_ACCESS_TOKEN_3)).thenReturn(apiRepos3);
+        when(mockClient.getRepos(ACCESS_TOKEN_1)).thenReturn(apiRepos1);
+        when(mockClient.getRepos(ACCESS_TOKEN_2)).thenReturn(apiRepos2);
+        when(mockClient.getRepos(ACCESS_TOKEN_3)).thenReturn(apiRepos3);
         when(mockClient.getRepos(USER_1)).thenReturn(apiRepos4);
         when(mockClient.getRepos(USER_2)).thenReturn(apiRepos5);
         when(mockClient.getRepos(USER_3)).thenReturn(apiRepos6);
@@ -132,8 +132,8 @@ public class GitHubRepoFinderTest {
     @Test
     public void getApiReposShouldCallClientAndReturnAnEmptyListOfApiReposWhenClientReturnsEmptyLists() {
         // Given
-        GitHubRepoFinderConfig config = new GitHubRepoFinderConfig(List.of(PERSONAL_ACCESS_TOKEN_1), List.of(USER_1), List.of(ORGANIZATION_1), TIMEOUT);
-        when(mockClient.getRepos(PERSONAL_ACCESS_TOKEN_1)).thenReturn(List.of());
+        GitHubRepoFinderConfig config = new GitHubRepoFinderConfig(List.of(ACCESS_TOKEN_1), List.of(USER_1), List.of(ORGANIZATION_1), TIMEOUT);
+        when(mockClient.getRepos(ACCESS_TOKEN_1)).thenReturn(List.of());
         when(mockClient.getRepos(USER_1)).thenReturn(List.of());
         when(mockClient.getRepos(ORGANIZATION_1)).thenReturn(List.of());
         underTest = new GitHubRepoFinder(config, mockClient);
@@ -149,7 +149,7 @@ public class GitHubRepoFinderTest {
     public void getApiReposShouldDeduplicateIdenticalApiRepos() {
         // Given
         GitHubRepoFinderConfig config = new GitHubRepoFinderConfig(
-                List.of(PERSONAL_ACCESS_TOKEN_1, PERSONAL_ACCESS_TOKEN_2),
+                List.of(ACCESS_TOKEN_1, ACCESS_TOKEN_2),
                 List.of(USER_1, USER_2),
                 List.of(ORGANIZATION_1, ORGANIZATION_2),
                 TIMEOUT);
@@ -158,8 +158,8 @@ public class GitHubRepoFinderTest {
         ApiRepo apiRepo3 = new ApiRepo("https://example.com/repo-3.git", false);
         List<ApiRepo> apiRepos1 = List.of(apiRepo1, apiRepo2);
         List<ApiRepo> apiRepos2 = List.of(apiRepo2, apiRepo3);
-        when(mockClient.getRepos(PERSONAL_ACCESS_TOKEN_1)).thenReturn(apiRepos1);
-        when(mockClient.getRepos(PERSONAL_ACCESS_TOKEN_2)).thenReturn(apiRepos2);
+        when(mockClient.getRepos(ACCESS_TOKEN_1)).thenReturn(apiRepos1);
+        when(mockClient.getRepos(ACCESS_TOKEN_2)).thenReturn(apiRepos2);
         when(mockClient.getRepos(USER_1)).thenReturn(apiRepos1);
         when(mockClient.getRepos(USER_2)).thenReturn(apiRepos2);
         when(mockClient.getRepos(ORGANIZATION_1)).thenReturn(apiRepos1);
@@ -173,8 +173,8 @@ public class GitHubRepoFinderTest {
         assertThat(returnValue).containsExactly(apiRepo1, apiRepo2, apiRepo3);
     }
 
-    private static GitHubRepoFinderPersonalAccessTokenConfig createPersonalAccessToken(int number) {
-        return new GitHubRepoFinderPersonalAccessTokenConfig("test-personal-access-token-username-" + number, "test-personal-access-token-" + number);
+    private static GitHubRepoFinderAccessTokenConfig createAccessToken(int number) {
+        return new GitHubRepoFinderAccessTokenConfig("test-personal-access-token-username-" + number, "test-personal-access-token-" + number);
     }
 
     private static List<ApiRepo> createApiRepos(int number) {

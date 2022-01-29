@@ -75,6 +75,9 @@ resilience4j:
 repo-finders:
   github:
     timeout: 30s
+  gitlab:
+    projectPageSize: 100
+    timeout: 30s
   bitbucket-server:
     timeout: 30s
 

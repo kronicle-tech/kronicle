@@ -1,5 +1,6 @@
-package tech.kronicle.service.repofinders.github.config;
+package tech.kronicle.service.repofinders.gitlab.config;
 
+import lombok.NonNull;
 import lombok.Value;
 import lombok.experimental.NonFinal;
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -11,15 +12,15 @@ import java.time.Duration;
 import java.util.List;
 
 @Validated
-@ConfigurationProperties("repo-finders.github")
+@ConfigurationProperties("repo-finders.gitlab")
 @ConstructorBinding
 @Value
 @NonFinal
-public class GitHubRepoFinderConfig {
+public class GitLabRepoFinderConfig {
 
-  List<GitHubRepoFinderAccessTokenConfig> personalAccessTokens;
-  List<GitHubRepoFinderUserConfig> users;
-  List<GitHubRepoFinderOrganizationConfig> organizations;
+  List<GitLabRepoFinderHostConfig> hosts;
+  @NonNull
+  Integer projectPageSize;
   @NotNull
   Duration timeout;
 }
