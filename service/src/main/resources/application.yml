@@ -26,7 +26,7 @@ spring:
         composite-indicator:
           enabled: false
   sleuth:
-    enabled: ${ZIPKIN_ENABLED:true}
+    enabled: ${ZIPKIN_ENABLED:false}
     sampler:
       probability: ${ZIPKIN_SAMPLE_RATE:0.01}
     trace-id128: true
