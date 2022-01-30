@@ -98,5 +98,5 @@ jobs:
         uses: aws-actions/amazon-ecr-login@v1
 
       - name: Push Docker images to Amazon ECR
-        run: ./gradlew -PpushImage=true -PdockerRegistry=${{ steps.login-ecr.outputs.registry }} dockerPush
+        run: ./gradlew -PpushImage=true -PdockerRegistry=${{ secrets.AMAZON_ECR_REGISTRY }} dockerPush
         working-directory: repo
