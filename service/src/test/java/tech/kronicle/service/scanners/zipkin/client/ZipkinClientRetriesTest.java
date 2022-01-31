@@ -37,6 +37,7 @@ public class ZipkinClientRetriesTest extends BaseZipkinClientTest {
     private ZipkinClient underTest;
     private LogCaptor logCaptor;
     private WireMockServer wireMockServer;
+    private ZipkinWireMockFactory zipkinWireMockFactory = new ZipkinWireMockFactory();;
 
     @BeforeEach
     public void beforeEach() {
@@ -53,7 +54,7 @@ public class ZipkinClientRetriesTest extends BaseZipkinClientTest {
     @MethodSource("provideZipkinClientMethods")
     public void zipkinClientMethodShouldRetryFailures(ZipkinClientMethod zipkinClientMethod) throws URISyntaxException {
         // Given
-        wireMockServer = ZipkinWireMockFactory.createWithErrorResponses(PORT);
+        wireMockServer = zipkinWireMockFactory.createWithErrorResponses(PORT);
 
         // When
         Timer timer = new Timer();

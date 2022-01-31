@@ -42,6 +42,7 @@ public class GitHubClientTest {
 
     private static final Duration TEST_DURATION = Duration.ofSeconds(30);
 
+    private final GitHubApiWireMockFactory gitHubApiWireMockFactory = new GitHubApiWireMockFactory();
     private GitHubClient underTest;
     @Autowired
     private WebClient webClient;
@@ -53,7 +54,6 @@ public class GitHubClientTest {
 
     @BeforeEach
     public void beforeEach() {
-        wireMockServer = GitHubApiWireMockFactory.create();
         baseUrl = "http://localhost:" + GitHubApiWireMockFactory.PORT;
         logCaptor = new LogCaptor(GitHubClient.class);
     }
@@ -67,6 +67,7 @@ public class GitHubClientTest {
     @MethodSource("provideReposResponseTypeScenarios")
     public void getReposShouldReturnAListOfReposWithVaryingHasComponentMetadataFileValues(GitHubApiWireMockFactory.Scenario scenario) {
         // Given
+        wireMockServer = gitHubApiWireMockFactory.create(scenario);
         GitHubRepoFinderConfig config = new GitHubRepoFinderConfig(null, null, null, TEST_DURATION);
         underTest = new GitHubClient(webClient, config, mockCache, baseUrl);
 
@@ -165,6 +166,7 @@ public class GitHubClientTest {
     public void getReposShouldLogRateLimitResponseHeadersInGitHubApiResponses() {
         // Given
         GitHubApiWireMockFactory.Scenario scenario = GitHubApiWireMockFactory.Scenario.RATE_LIMIT_RESPONSE_HEADERS;
+        wireMockServer = gitHubApiWireMockFactory.create(scenario);
         GitHubRepoFinderConfig config = new GitHubRepoFinderConfig(null, null, null, TEST_DURATION);
         underTest = new GitHubClient(webClient, config, mockCache, baseUrl);
 
@@ -200,6 +202,7 @@ public class GitHubClientTest {
     public void getReposShouldReturnCachedUserReposIfETagHasNotChanged() {
         // Given
         GitHubApiWireMockFactory.Scenario scenario = GitHubApiWireMockFactory.Scenario.ETAG_USER_REPOS_NOT_MODIFIED;
+        wireMockServer = gitHubApiWireMockFactory.create(scenario);
         GitHubRepoFinderConfig config = new GitHubRepoFinderConfig(null, null, null, TEST_DURATION);
         underTest = new GitHubClient(webClient, config, mockCache, baseUrl);
         ApiResponseCacheEntry<List<GitHubRepo>> userReposCacheEntry = new ApiResponseCacheEntry<>(
@@ -222,6 +225,7 @@ public class GitHubClientTest {
     public void getReposShouldReturnCachedRepoRootContentsIfETagHasNotChanged() {
         // Given
         GitHubApiWireMockFactory.Scenario scenario = GitHubApiWireMockFactory.Scenario.ETAG_REPO_2_NOT_MODIFIED;
+        wireMockServer = gitHubApiWireMockFactory.create(scenario);
         GitHubRepoFinderConfig config = new GitHubRepoFinderConfig(null, null, null, TEST_DURATION);
         underTest = new GitHubClient(webClient, config, mockCache, baseUrl);
         ApiResponseCacheEntry<List<GitHubContentEntry>> userReposCacheEntry = new ApiResponseCacheEntry<>("test-etag-3", List.of(new GitHubContentEntry("kronicle.yaml")));
@@ -247,6 +251,7 @@ public class GitHubClientTest {
     public void getReposShouldHandleARepoWithNoContent() {
         // Given
         GitHubApiWireMockFactory.Scenario scenario = GitHubApiWireMockFactory.Scenario.REPO_3_NO_CONTENT;
+        wireMockServer = gitHubApiWireMockFactory.create(scenario);
         GitHubRepoFinderConfig config = new GitHubRepoFinderConfig(null, null, null, TEST_DURATION);
         underTest = new GitHubClient(webClient, config, mockCache, baseUrl);
 
@@ -266,6 +271,7 @@ public class GitHubClientTest {
     public void getReposShouldThrowAnExceptionWhenGitHubReturnsAnUnexpectedStatusCode() {
         // Given
         GitHubApiWireMockFactory.Scenario scenario = GitHubApiWireMockFactory.Scenario.INTERNAL_SERVER_ERROR;
+        wireMockServer = gitHubApiWireMockFactory.create(scenario);
         GitHubRepoFinderConfig config = new GitHubRepoFinderConfig(null, null, null, TEST_DURATION);
         underTest = new GitHubClient(webClient, config, mockCache, baseUrl);
 
@@ -285,6 +291,7 @@ public class GitHubClientTest {
     public void getReposShouldHandleANotFoundResponseForGetReposRequest() {
         // Given
         GitHubApiWireMockFactory.Scenario scenario = GitHubApiWireMockFactory.Scenario.REPO_LIST_NOT_FOUND;
+        wireMockServer = gitHubApiWireMockFactory.create(scenario);
         GitHubRepoFinderConfig config = new GitHubRepoFinderConfig(null, null, null, TEST_DURATION);
         underTest = new GitHubClient(webClient, config, mockCache, baseUrl);
 

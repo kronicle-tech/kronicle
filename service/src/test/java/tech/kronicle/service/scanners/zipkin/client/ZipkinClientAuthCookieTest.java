@@ -36,6 +36,7 @@ public class ZipkinClientAuthCookieTest extends BaseZipkinClientTest {
     private ZipkinClient underTest;
     private LogCaptor logCaptor;
     private WireMockServer wireMockServer;
+    private ZipkinWireMockFactory zipkinWireMockFactory = new ZipkinWireMockFactory();
 
     @BeforeEach
     public void beforeEach() {
@@ -52,7 +53,7 @@ public class ZipkinClientAuthCookieTest extends BaseZipkinClientTest {
     @MethodSource("provideZipkinClientMethods")
     public void zipkinClientMethodShouldPassAuthCookie(ZipkinClientRetriesTest.ZipkinClientMethod zipkinClientMethod) throws URISyntaxException {
         // Given
-        wireMockServer = ZipkinWireMockFactory.createWithAuthCookie(PORT);
+        wireMockServer = zipkinWireMockFactory.createWithAuthCookie(PORT);
 
         // When
         Timer timer = new Timer();

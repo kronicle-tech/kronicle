@@ -19,11 +19,11 @@ public class ZipkinWireMockFactory {
 
     private static final long LOOKBACK = TimeUnit.DAYS.toMillis(1);
 
-    public static WireMockServer createWithRealResponses(int port) {
+    public WireMockServer createWithRealResponses(int port) {
         return createWithRealResponses(port, UnaryOperator.identity());
     }
 
-    public static WireMockServer createWithErrorResponses(int port) {
+    public WireMockServer createWithErrorResponses(int port) {
         return create(port, wireMockServer -> {
             wireMockServer.stubFor(get(urlPathEqualTo("/zipkin/api/v2/dependencies"))
                     .willReturn(aResponse().withStatus(500)));
@@ -36,15 +36,15 @@ public class ZipkinWireMockFactory {
         });
     }
 
-    public static WireMockServer createWithAuthCookie(int port) {
+    public WireMockServer createWithAuthCookie(int port) {
         return createWithRealResponses(port, mappingBuilder -> mappingBuilder.withHeader("Cookie", equalTo("test-name=test-value")));
     }
 
-    public static WireMockServer createWithAuthCookieWithSpecialCharacters(int port) {
+    public WireMockServer createWithAuthCookieWithSpecialCharacters(int port) {
         return createWithRealResponses(port, mappingBuilder -> mappingBuilder.withHeader("Cookie", equalTo("test-name%25=test-value%25")));
     }
 
-    private static WireMockServer createWithRealResponses(int port, UnaryOperator<MappingBuilder> enhancer) {
+    private WireMockServer createWithRealResponses(int port, UnaryOperator<MappingBuilder> enhancer) {
         return create(port, wireMockServer -> {
             wireMockServer.stubFor(enhancer.apply(get(urlPathEqualTo("/zipkin/api/v2/dependencies"))
                     .withQueryParam("endTs", matching("[1-9][0-9]*"))
@@ -80,7 +80,7 @@ public class ZipkinWireMockFactory {
         });
     }
 
-    private static WireMockServer create(int port, Consumer<WireMockServer> initializer) {
+    private WireMockServer create(int port, Consumer<WireMockServer> initializer) {
         WireMockServer wireMockServer = new WireMockServer(port);
         initializer.accept(wireMockServer);
         wireMockServer.start();

@@ -36,20 +36,15 @@ import static org.assertj.core.api.Assertions.catchThrowable;
 @ContextConfiguration(classes = {GitLabClientTestConfiguration.class})
 public class GitLabClientTest {
 
+    private static final String baseUrl = "http://localhost:" + GitLabApiWireMockFactory.PORT;
     private static final int PAGE_SIZE = 5;
     private static final Duration TIMEOUT = Duration.ofSeconds(30);
 
+    private final GitLabApiWireMockFactory gitLabApiWireMockFactory = new GitLabApiWireMockFactory();
     private GitLabClient underTest;
     @Autowired
     private WebClient webClient;
     private WireMockServer wireMockServer;
-    private String baseUrl;
-
-    @BeforeEach
-    public void beforeEach() {
-        wireMockServer = new GitLabApiWireMockFactory(new ObjectMapper()).create();
-        baseUrl = "http://localhost:" + GitLabApiWireMockFactory.PORT;
-    }
 
     @AfterEach
     public void afterEach() {
@@ -60,6 +55,7 @@ public class GitLabClientTest {
     @MethodSource("provideReposResponseTypeScenarios")
     public void getReposShouldReturnAListOfReposWithVaryingHasComponentMetadataFileValues(GitLabApiWireMockFactory.Scenario scenario) {
         // Given
+        wireMockServer = gitLabApiWireMockFactory.create(scenario);
         GitLabRepoFinderConfig config = new GitLabRepoFinderConfig(
                 List.of(new GitLabRepoFinderHostConfig(baseUrl, null, null, null)),
                 PAGE_SIZE,
@@ -96,6 +92,7 @@ public class GitLabClientTest {
     public void getReposShouldThrowAnExceptionWhenGitLabReturnsAnUnexpectedStatusCode() {
         // Given
         GitLabApiWireMockFactory.Scenario scenario = GitLabApiWireMockFactory.Scenario.INTERNAL_SERVER_ERROR;
+        wireMockServer = gitLabApiWireMockFactory.create(scenario);
         GitLabRepoFinderConfig config = new GitLabRepoFinderConfig(null, PAGE_SIZE, TIMEOUT);
         underTest = new GitLabClient(webClient, config);
 
@@ -110,9 +107,7 @@ public class GitLabClientTest {
     }
 
     public static Stream<GitLabApiWireMockFactory.Scenario> provideReposResponseTypeScenarios() {
-        return Stream.of(
-                GitLabApiWireMockFactory.Scenario.ALL,
-                GitLabApiWireMockFactory.Scenario.USER,
-                GitLabApiWireMockFactory.Scenario.GROUP);
+        return GitLabApiWireMockFactory.Scenario.ALL_SCENARIOS.stream()
+                .filter(scenario -> !scenario.equals(GitLabApiWireMockFactory.Scenario.INTERNAL_SERVER_ERROR));
     }
 }

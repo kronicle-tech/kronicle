@@ -48,12 +48,13 @@ public class ZipkinScannerTest extends BaseScannerTest {
     private static final LocalDateTime TIMESTAMP = LocalDateTime.of(2021, 1, 1, 0, 0);
     private static final SummaryComponentDependencyDuration DURATION = new SummaryComponentDependencyDuration(123L, 123L, 123L, 123L, 123L, 123L);
 
+    private final ZipkinWireMockFactory zipkinWireMockFactory = new ZipkinWireMockFactory();
     private ZipkinScanner underTest;
     private WireMockServer wireMockServer;
 
     @BeforeEach
     public void beforeEach() {
-        wireMockServer = ZipkinWireMockFactory.createWithRealResponses(PORT);
+        wireMockServer = zipkinWireMockFactory.createWithRealResponses(PORT);
         createZipkinScanner();
     }
 
