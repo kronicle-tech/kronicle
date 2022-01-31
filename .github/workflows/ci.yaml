@@ -98,7 +98,6 @@ jobs:
       - name: Publish JARs to Maven Central
         if: ${{ github.ref == 'refs/heads/main' }}
         run: ./gradlew --no-parallel publish
-        working-directory: repo
         env:
           OSSRH_USERNAME: ${{ secrets.OSSRH_USERNAME }}
           OSSRH_PASSWORD: ${{ secrets.OSSRH_PASSWORD }}
@@ -116,7 +115,6 @@ jobs:
       - name: Build and push Docker images to GitHub Container Registry
         if: ${{ github.ref == 'refs/heads/main' }}
         run: ./gradlew -PdockerPushImage=true -PdockerRegistry=ghcr.io/kronicle-tech -PdockerTagSuffix=-pre-release dockerPush
-        working-directory: repo
 
       - name: Clean up Gradle Cache
         if: ${{ github.ref != 'refs/heads/main' }}
