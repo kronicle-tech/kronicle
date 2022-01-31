@@ -133,12 +133,19 @@ public class GitLabClient {
 
   private boolean doesResourceExist(GitLabRepoFinderAccessTokenConfig accessToken, String uri) {
     logWebCall(uri);
-    Boolean exists = makeRequest(accessToken, webClient.head().uri(uri))
-            .toBodilessEntity()
-            .onErrorResume(WebClientResponseException.class, ex -> ex.getStatusCode() == HttpStatus.NOT_FOUND ? Mono.empty() : Mono.error(ex))
-            .map(responseEntity -> responseEntity.getStatusCode() == HttpStatus.OK)
-            .switchIfEmpty(Mono.just(false))
-            .block(config.getTimeout());
+    boolean exists;
+    try {
+      makeRequest(accessToken, webClient.head().uri(uri))
+              .toBodilessEntity()
+              .block(config.getTimeout());
+      exists = true;
+    } catch (WebClientResponseException ex) {
+      if (ex.getStatusCode() == HttpStatus.NOT_FOUND) {
+        exists = false;
+      } else {
+        throw ex;
+      }
+    }
     log.info("Resource exists: {}", exists);
     return exists;
   }
