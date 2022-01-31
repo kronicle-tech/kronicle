@@ -82,20 +82,18 @@ jobs:
           git config user.email "deploy@kronicle.tech"
           git config user.name "Kronicle Deploy"
           git add kronicle/values.yaml kronicle-empty/values.yaml
-          git commit -m "Set Kronicle app and service image tags to v${{ steps.get_version.outputs.VERSION }}"
+          git commit --allow-empty -m "Set Kronicle app and service image tags to v${{ steps.get_version.outputs.VERSION }}"
           git push
         working-directory: kronicle-argocd-config
 
-      - name: Configure AWS credentials
-        uses: aws-actions/configure-aws-credentials@v1
+      - name: Log in to Amazon ECR Public
+        uses: docker/login-action@v1
         with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: ${{ secrets.AWS_REGION }}
-
-      - name: Log in to Amazon ECR
-        id: login-ecr
-        uses: aws-actions/amazon-ecr-login@v1
+          registry: public.ecr.aws
+          username: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          password: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        env:
+          AWS_REGION: ${{ secrets.AWS_REGION }}
 
       - name: Push Docker images to Amazon ECR
         run: ./gradlew -PpushImage=true -PdockerRegistry=${{ secrets.AMAZON_ECR_REGISTRY }} dockerPush
