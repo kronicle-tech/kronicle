@@ -19,10 +19,6 @@ jobs:
         id: get_version
         run: echo ::set-output name=VERSION::${GITHUB_REF/refs\/tags\/v/}
 
-      - uses: actions/checkout@v2
-        with:
-          path: repo
-
       - name: Log in to GitHub Container Registry
         uses: docker/login-action@f054a8b539a109f9f41c372932f1ae047eff08c9
         with:
@@ -74,11 +70,11 @@ jobs:
 
       - name: Push Docker images to Amazon ECR Public
         run: |
-          docker pull ghcr.io/kronicle-tech/kronicle-app:${{ steps.get_version.outputs.VERSION }}-pre-release
-          docker tag ghcr.io/kronicle-tech/kronicle-app:${{ steps.get_version.outputs.VERSION }}-pre-release ${{ secrets.AMAZON_ECR_REGISTRY }}/kronicle-app:${{ steps.get_version.outputs.VERSION }}
+          docker pull ghcr.io/kronicle-tech/kronicle-app:${{ steps.get_version.outputs.VERSION }}
+          docker tag ghcr.io/kronicle-tech/kronicle-app:${{ steps.get_version.outputs.VERSION }} ${{ secrets.AMAZON_ECR_REGISTRY }}/kronicle-app:${{ steps.get_version.outputs.VERSION }}
           docker push ${{ secrets.AMAZON_ECR_REGISTRY }}/kronicle-app:${{ steps.get_version.outputs.VERSION }}
           
-          docker pull ghcr.io/kronicle-tech/kronicle-service:${{ steps.get_version.outputs.VERSION }}-pre-release
-          docker tag ghcr.io/kronicle-tech/kronicle-service:${{ steps.get_version.outputs.VERSION }}-pre-release ${{ secrets.AMAZON_ECR_REGISTRY }}/kronicle-service:${{ steps.get_version.outputs.VERSION }}
+          docker pull ghcr.io/kronicle-tech/kronicle-service:${{ steps.get_version.outputs.VERSION }}
+          docker tag ghcr.io/kronicle-tech/kronicle-service:${{ steps.get_version.outputs.VERSION }} ${{ secrets.AMAZON_ECR_REGISTRY }}/kronicle-service:${{ steps.get_version.outputs.VERSION }}
           docker push ${{ secrets.AMAZON_ECR_REGISTRY }}/kronicle-service:${{ steps.get_version.outputs.VERSION }}
         working-directory: repo

@@ -15,7 +15,7 @@
         </encoder>
     </appender>
 
-    <!-- When running in "default" profile we turn on DEBUG for MSM code and only log to CONSOLE -->
+    <!-- When running in "default" profile we turn on DEBUG for Kronicle code and only log to CONSOLE -->
     <springProfile name="default">
         <logger name="tech.kronicle" level="INFO"/>
 
