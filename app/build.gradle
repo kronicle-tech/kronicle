@@ -54,9 +54,9 @@ checkFrontend.dependsOn assembleFrontend
 assembleFrontend.dependsOn generateTypeScript
 
 docker {
-  name "kronicle-app:$version"
+  name "kronicle-app:$version$dockerTagSuffix"
 
-  if (project.pushImage.toBoolean()) {
+  if (project.dockerPushImage.toBoolean()) {
     name = "$dockerRegistry/$name"
   }
 
