@@ -122,7 +122,7 @@ public class GitLabClient {
       return null;
     }
     String uriWithQueryParams = uri + "?page=" + page + "&per_page=" + config.getProjectPageSize();
-    logWebCall(uri);
+    logWebCall(uriWithQueryParams);
     ResponseEntity<List<T>> responseEntity = makeRequest(
             accessToken, webClient.get().uri(uriWithQueryParams)
     )
@@ -133,18 +133,18 @@ public class GitLabClient {
 
   private boolean doesResourceExist(GitLabRepoFinderAccessTokenConfig accessToken, String uri) {
     logWebCall(uri);
-    return makeRequest(accessToken, webClient.head().uri(uri))
+    Boolean exists = makeRequest(accessToken, webClient.head().uri(uri))
             .toBodilessEntity()
             .onErrorResume(WebClientResponseException.class, ex -> ex.getStatusCode() == HttpStatus.NOT_FOUND ? Mono.empty() : Mono.error(ex))
             .map(responseEntity -> responseEntity.getStatusCode() == HttpStatus.OK)
             .switchIfEmpty(Mono.just(false))
             .block(config.getTimeout());
+    log.info("Resource exists: {}", exists);
+    return exists;
   }
 
   private void logWebCall(String uri) {
-    if (log.isInfoEnabled()) {
-      log.info("Calling {}", uri);
-    }
+    log.info("Calling {}", uri);
   }
 
   private WebClient.ResponseSpec makeRequest(GitLabRepoFinderAccessTokenConfig accessToken, WebClient.RequestHeadersSpec<?> requestHeadersSpec) {
