@@ -122,7 +122,7 @@ public class GitLabClient {
       return null;
     }
     String uriWithQueryParams = uri + "?page=" + page + "&per_page=" + config.getProjectPageSize();
-    logWebCall(uri);
+    logWebCall(uriWithQueryParams);
     ResponseEntity<List<T>> responseEntity = makeRequest(
             accessToken, webClient.get().uri(uriWithQueryParams)
     )
