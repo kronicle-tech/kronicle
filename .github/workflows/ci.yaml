@@ -30,6 +30,7 @@ jobs:
 
       - name: Cache Gradle packages
         uses: actions/cache@v2
+        if: ${{ github.ref != 'refs/heads/main' }}
         with:
           path: |
             ~/.gradle/caches
@@ -40,6 +41,7 @@ jobs:
 
       - name: Cache SonarCloud packages
         uses: actions/cache@v2
+        if: ${{ github.ref != 'refs/heads/main' }}
         with:
           path: ~/.sonar/cache
           key: ${{ runner.os }}-sonar
@@ -55,6 +57,7 @@ jobs:
 
       - name: Cache the NPM Cache
         uses: actions/cache@v2
+        if: ${{ github.ref != 'refs/heads/main' }}
         with:
           path: ~/.npm
           key: ${{ runner.os }}-node-${{ hashFiles('node-version.txt', 'npm-version.txt', '**/package-lock.json') }}
@@ -92,7 +95,31 @@ jobs:
         # Based on https://axion-release-plugin.readthedocs.io/en/latest/configuration/ci_servers/#github-actions
         run: ./gradlew release -Prelease.customUsername=${{ github.actor }} -Prelease.customPassword=${{ github.token }}
 
+      - name: Publish JARs to Maven Central
+        if: ${{ github.ref == 'refs/heads/main' }}
+        run: ./gradlew --no-parallel publish
+        working-directory: repo
+        env:
+          OSSRH_USERNAME: ${{ secrets.OSSRH_USERNAME }}
+          OSSRH_PASSWORD: ${{ secrets.OSSRH_PASSWORD }}
+          SIGNING_KEY: ${{ secrets.SIGNING_KEY }}
+          SIGNING_PASSWORD: ${{ secrets.SIGNING_PASSWORD }}
+
+      - name: Log in to GitHub Container Registry
+        if: ${{ github.ref == 'refs/heads/main' }}
+        uses: docker/login-action@f054a8b539a109f9f41c372932f1ae047eff08c9
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build and push Docker images to GitHub Container Registry
+        if: ${{ github.ref == 'refs/heads/main' }}
+        run: ./gradlew -PdockerPushImage=true -PdockerRegistry=ghcr.io/kronicle-tech -PdockerTagSuffix=-pre-release dockerPush
+        working-directory: repo
+
       - name: Clean up Gradle Cache
+        if: ${{ github.ref != 'refs/heads/main' }}
         # Remove some files from the Gradle cache, so they aren't cached by GitHub Actions.
         # Restoring these files from a GitHub Actions cache might cause problems for future builds.
         run: |

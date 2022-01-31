@@ -137,9 +137,9 @@ task realCodebaseTest(type: Test) {
 }
 
 docker {
-    name "kronicle-service:$version"
+    name "kronicle-service:$version$dockerTagSuffix"
 
-    if (project.pushImage.toBoolean()) {
+    if (project.dockerPushImage.toBoolean()) {
         name = "$dockerRegistry/$name"
     }
 
