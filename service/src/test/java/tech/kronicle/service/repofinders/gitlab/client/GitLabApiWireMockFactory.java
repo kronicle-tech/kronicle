@@ -22,8 +22,8 @@ import static com.github.tomakehurst.wiremock.client.WireMock.get;
 import static com.github.tomakehurst.wiremock.client.WireMock.head;
 import static com.github.tomakehurst.wiremock.client.WireMock.urlEqualTo;
 import static com.github.tomakehurst.wiremock.client.WireMock.urlPathEqualTo;
+import static java.util.Objects.nonNull;
 
-@RequiredArgsConstructor
 public class GitLabApiWireMockFactory {
 
     public static final int PORT = 36209;
@@ -31,16 +31,13 @@ public class GitLabApiWireMockFactory {
     public static final int PAGE_SIZE = 5;
     private static final int REPO_COUNT = 8;
 
-    private final ObjectMapper objectMapper;
+    private final ObjectMapper objectMapper = new ObjectMapper();
 
-    public WireMockServer create() {
-        return create(wireMockServer -> {
-            String baseUrl = "http://localhost:" + PORT;
-            Scenario.ALL_SCENARIOS.forEach(scenario -> stubScenarioSpecificResponses(wireMockServer, baseUrl, scenario));
-        });
+    public WireMockServer create(Scenario scenario) {
+        return create(wireMockServer -> stubScenarioSpecificResponses(wireMockServer, scenario));
     }
 
-    private void stubScenarioSpecificResponses(WireMockServer wireMockServer, String baseUrl, Scenario scenario) {
+    private void stubScenarioSpecificResponses(WireMockServer wireMockServer, Scenario scenario) {
         if (scenario.reposResourceType == ReposResourceType.INTERNAL_SERVER_ERROR) {
             MappingBuilder request = createReposRequest(scenario, 1);
             wireMockServer.stubFor(request
@@ -99,7 +96,7 @@ public class GitLabApiWireMockFactory {
         MappingBuilder builder = get(urlPathEqualTo(getReposUrl(scenario)));
         builder.withQueryParam("page", equalTo(Integer.toString(pageNumber)))
                 .withQueryParam("per_page", equalTo(Integer.toString(PAGE_SIZE)));
-        addAccessTokenHeader(scenario, builder);
+        addAccessTokenHeaderIfWanted(scenario, builder);
         return builder;
     }
 
@@ -121,9 +118,10 @@ public class GitLabApiWireMockFactory {
         ResponseDefinitionBuilder builder = aResponse();
         builder.withStatus(200)
                 .withHeader("Content-Type", "application/json");
-        if (pageNumber < PAGE_COUNT) {
-            builder.withHeader("X-Next-Page", Integer.toString(pageNumber + 1));
-        }
+        builder.withHeader(
+                "X-Next-Page",
+                (pageNumber < PAGE_COUNT) ? Integer.toString(pageNumber + 1) : ""
+        );
         builder.withBody(createRepoListResponseBody(pageNumber));
         return builder;
     }
@@ -160,7 +158,7 @@ public class GitLabApiWireMockFactory {
                 "/api/v4/projects/" + repoNumber +
                 "/repository/files/" + getMetadataFilename(repoMetadataScenario) +
                 "?ref=branch-" + repoNumber));
-        addAccessTokenHeader(scenario, builder);
+        addAccessTokenHeaderIfWanted(scenario, builder);
         return builder;
     }
 
@@ -187,8 +185,10 @@ public class GitLabApiWireMockFactory {
         }
     }
 
-    private void addAccessTokenHeader(Scenario scenario, MappingBuilder builder) {
-        builder.withHeader("PRIVATE-TOKEN", equalTo(scenario.accessToken.getValue()));
+    private void addAccessTokenHeaderIfWanted(Scenario scenario, MappingBuilder builder) {
+        if (nonNull(scenario.getAccessToken())) {
+            builder.withHeader("PRIVATE-TOKEN", equalTo(scenario.accessToken.getValue()));
+        }
     }
 
     private WireMockServer create(Consumer<WireMockServer> initializer) {
@@ -215,17 +215,24 @@ public class GitLabApiWireMockFactory {
     public static class Scenario {
 
         public static final List<Scenario> ALL_SCENARIOS = new ArrayList<>();
-        public static final Scenario INTERNAL_SERVER_ERROR = new Scenario(ReposResourceType.INTERNAL_SERVER_ERROR);
-        public static final Scenario ALL = new Scenario(ReposResourceType.ALL);
-        public static final Scenario USER = new Scenario(ReposResourceType.USER);
-        public static final Scenario GROUP = new Scenario(ReposResourceType.GROUP);
+        public static final Scenario INTERNAL_SERVER_ERROR = new Scenario(ReposResourceType.INTERNAL_SERVER_ERROR, true);
+        public static final Scenario ALL_WITH_ACCESS_TOKEN = new Scenario(ReposResourceType.ALL, true);
+        public static final Scenario USER_WITH_ACCESS_TOKEN = new Scenario(ReposResourceType.USER, true);
+        public static final Scenario GROUP_WITH_ACCESS_TOKEN = new Scenario(ReposResourceType.GROUP, true);
+        public static final Scenario ALL_WITHOUT_ACCESS_TOKEN = new Scenario(ReposResourceType.ALL, false);
+        public static final Scenario USER_WITHOUT_ACCESS_TOKEN = new Scenario(ReposResourceType.USER, false);
+        public static final Scenario GROUP_WITHOUT_ACCESS_TOKEN = new Scenario(ReposResourceType.GROUP, false);
 
         ReposResourceType reposResourceType;
         GitLabRepoFinderAccessTokenConfig accessToken;
 
-        private Scenario(ReposResourceType reposResourceType) {
+        private Scenario(ReposResourceType reposResourceType, boolean hasAccessToken) {
             this.reposResourceType = reposResourceType;
-            accessToken = new GitLabRepoFinderAccessTokenConfig("access-token-" + reposResourceType.name());
+            if (hasAccessToken) {
+                accessToken = new GitLabRepoFinderAccessTokenConfig("access-token-" + reposResourceType.name());
+            } else {
+                accessToken = null;
+            }
             ALL_SCENARIOS.add(this);
         }
     }

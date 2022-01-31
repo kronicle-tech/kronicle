@@ -34,7 +34,7 @@ public class BitbucketServerClientTest {
 
     @BeforeEach
     public void beforeEach() {
-        wireMockServer = BitbucketServerWireMockFactory.create();
+        wireMockServer = new BitbucketServerWireMockFactory().create();
     }
 
     @AfterEach

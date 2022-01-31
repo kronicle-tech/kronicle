@@ -16,7 +16,7 @@ public class BitbucketServerWireMockFactory {
 
     public static final int PORT = 36201;
 
-    public static WireMockServer create() {
+    public WireMockServer create() {
         return create(wireMockServer -> {
             IntStream.range(1, 3).forEach(serverNumber -> {
                 String baseUrl = "http://localhost:" + PORT + "/server-" + serverNumber;
@@ -64,19 +64,19 @@ public class BitbucketServerWireMockFactory {
         });
     }
 
-    private static boolean isOddNumber(int serverNumber) {
+    private boolean isOddNumber(int serverNumber) {
         return serverNumber % 2 == 1;
     }
 
-    private static String replaceVars(String value, String baseUrl) {
+    private String replaceVars(String value, String baseUrl) {
         return value.replaceAll("\\{\\{baseUrl}}", baseUrl);
     }
 
-    private static String readTestFile(String name) {
+    private String readTestFile(String name) {
         return TestFileHelper.readTestFile(name, BitbucketServerWireMockFactory.class);
     }
 
-    private static WireMockServer create(Consumer<WireMockServer> initializer) {
+    private WireMockServer create(Consumer<WireMockServer> initializer) {
         WireMockServer wireMockServer = new WireMockServer(PORT);
         initializer.accept(wireMockServer);
         wireMockServer.start();

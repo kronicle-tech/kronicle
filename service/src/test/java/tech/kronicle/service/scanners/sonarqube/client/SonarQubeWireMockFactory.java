@@ -24,10 +24,10 @@ public class SonarQubeWireMockFactory {
     private static final int PAGE_SIZE = 100;
     private static final int ITEM_COUNT = 105;
 
-    public static WireMockServer createWithRealResponses() {
-        return create(wireMockServer -> {
-            ObjectMapper objectMapper = new ObjectMapper();
+    private final ObjectMapper objectMapper = new ObjectMapper();
 
+    public WireMockServer createWithRealResponses() {
+        return create(wireMockServer -> {
             IntStream.range(1, 4).forEach(pageNumber -> wireMockServer.stubFor(get(urlPathEqualTo("/api/metrics/search"))
                     .withQueryParam("p", equalTo(Integer.toString(pageNumber)))
                     .willReturn(aResponse()
@@ -48,7 +48,7 @@ public class SonarQubeWireMockFactory {
         });
     }
 
-    private static void stubProjectRequests(WireMockServer wireMockServer, ObjectMapper objectMapper, String organization) {
+    private void stubProjectRequests(WireMockServer wireMockServer, ObjectMapper objectMapper, String organization) {
         IntStream.range(1, 4).forEach(pageNumber -> {
             MappingBuilder requestBuilder = get(urlPathEqualTo("/api/components/search"))
                     .withQueryParam("qualifiers", equalTo("TRK"))
@@ -64,7 +64,7 @@ public class SonarQubeWireMockFactory {
         });
     }
 
-    private static String createMetricsBody(int pageNumber, ObjectMapper objectMapper) {
+    private String createMetricsBody(int pageNumber, ObjectMapper objectMapper) {
         ObjectNode metrics = objectMapper.createObjectNode();
         ArrayNode metricsArray = metrics.putArray("metrics");
         // Metrics are deliberately spread over two pages with a third page that is empty
@@ -92,7 +92,7 @@ public class SonarQubeWireMockFactory {
         }
     }
 
-    private static String createComponentsBody(int pageNumber, ObjectMapper objectMapper, String organization) {
+    private String createComponentsBody(int pageNumber, ObjectMapper objectMapper, String organization) {
         ObjectNode rootJson = objectMapper.createObjectNode();
         ObjectNode pagingJson = rootJson.putObject("paging");
         pagingJson.put("pageIndex", pageNumber);
@@ -117,12 +117,12 @@ public class SonarQubeWireMockFactory {
         }
     }
 
-    private static String createComponentName(int componentNumber, String organization) {
+    private String createComponentName(int componentNumber, String organization) {
         return "Test Component Name " + componentNumber + " with "
                 + (nonNull(organization) ? "organization " + organization : "no organization");
     }
 
-    private static String createComponentMeasuresBody(ObjectMapper objectMapper) {
+    private String createComponentMeasuresBody(ObjectMapper objectMapper) {
         ObjectNode rootJson = objectMapper.createObjectNode();
         ObjectNode componentJson = rootJson.putObject("component");
         componentJson.put("id", "test-component-id-1001");
@@ -143,11 +143,11 @@ public class SonarQubeWireMockFactory {
         }
     }
 
-    private static IntStream getItemNumbers(int pageNumber) {
+    private IntStream getItemNumbers(int pageNumber) {
         return IntStream.range(1 + ((pageNumber - 1) * PAGE_SIZE), Math.min(pageNumber * PAGE_SIZE, ITEM_COUNT) + 1);
     }
 
-    private static WireMockServer create(Consumer<WireMockServer> initializer) {
+    private WireMockServer create(Consumer<WireMockServer> initializer) {
         WireMockServer wireMockServer = new WireMockServer(PORT);
         initializer.accept(wireMockServer);
         wireMockServer.start();

@@ -29,6 +29,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import static java.util.Objects.isNull;
+import static java.util.Objects.nonNull;
 import static tech.kronicle.service.utils.UriTemplateUtils.expandUriTemplate;
 
 @Client
@@ -147,9 +148,11 @@ public class GitLabClient {
   }
 
   private WebClient.ResponseSpec makeRequest(GitLabRepoFinderAccessTokenConfig accessToken, WebClient.RequestHeadersSpec<?> requestHeadersSpec) {
-    return requestHeadersSpec
-            .headers(headers -> headers.add(GitLabApiHeaders.PRIVATE_TOKEN, accessToken.getValue()))
-            .retrieve();
+    if (nonNull(accessToken)) {
+      requestHeadersSpec
+              .headers(headers -> headers.add(GitLabApiHeaders.PRIVATE_TOKEN, accessToken.getValue()));
+    }
+    return requestHeadersSpec.retrieve();
   }
 
   private static class PagedResource<T> {
@@ -167,7 +170,9 @@ public class GitLabClient {
     }
 
     private Optional<String> getOptionalNextPage(ResponseEntity<List<T>> responseEntity) {
-      return Optional.ofNullable(responseEntity.getHeaders().getFirst(GitLabApiHeaders.X_NEXT_PAGE));
+      return Optional.ofNullable(responseEntity.getHeaders()
+              .getFirst(GitLabApiHeaders.X_NEXT_PAGE))
+              .filter(value -> !value.isEmpty());
     }
 
     public boolean isNotEmpty() {

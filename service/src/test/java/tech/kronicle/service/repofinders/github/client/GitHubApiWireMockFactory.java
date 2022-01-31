@@ -21,14 +21,14 @@ public class GitHubApiWireMockFactory {
 
     public static final int PORT = 36208;
 
-    public static WireMockServer create() {
+    public WireMockServer create(Scenario scenario) {
         return create(wireMockServer -> {
             String baseUrl = "http://localhost:" + PORT;
-            Scenario.ALL_SCENARIOS.forEach(scenario -> stubScenarioSpecificResponses(wireMockServer, baseUrl, scenario));
+            stubScenarioSpecificResponses(wireMockServer, baseUrl, scenario);
         });
     }
 
-    private static void stubScenarioSpecificResponses(WireMockServer wireMockServer, String baseUrl, Scenario scenario) {
+    private void stubScenarioSpecificResponses(WireMockServer wireMockServer, String baseUrl, Scenario scenario) {
         RequestNumber requestNumber = new RequestNumber();
         int reposRequestNumber = requestNumber.getNext();
         MappingBuilder request = createReposRequest(scenario, reposRequestNumber);
@@ -55,11 +55,11 @@ public class GitHubApiWireMockFactory {
         }
     }
 
-    private static boolean isRepo3AndRepo3HasNoContent(Scenario scenario, int repoNumber) {
+    private boolean isRepo3AndRepo3HasNoContent(Scenario scenario, int repoNumber) {
         return repoNumber == 3 && scenario.repo3NoContent;
     }
 
-    private static MappingBuilder createReposRequest(Scenario scenario, int requestNumber) {
+    private MappingBuilder createReposRequest(Scenario scenario, int requestNumber) {
         MappingBuilder builder = get(urlPathEqualTo(getReposUrl(scenario)));
         addBasicAuthIfNeeded(scenario, builder);
         if (scenario.eTag && scenario.repoListNotModified) {
@@ -68,7 +68,7 @@ public class GitHubApiWireMockFactory {
         return builder;
     }
 
-    private static String getReposUrl(Scenario scenario) {
+    private String getReposUrl(Scenario scenario) {
         switch (scenario.reposResourceType) {
             case AUTHENTICATED_USER:
                 return "/user/repos";
@@ -81,7 +81,7 @@ public class GitHubApiWireMockFactory {
         }
     }
 
-    private static ResponseDefinitionBuilder createRepoListResponse(String baseUrl, Scenario scenario, int requestNumber) {
+    private ResponseDefinitionBuilder createRepoListResponse(String baseUrl, Scenario scenario, int requestNumber) {
         ResponseDefinitionBuilder builder = aResponse();
         if (scenario.eTag && scenario.repoListNotModified) {
             builder.withStatus(304);
@@ -97,7 +97,7 @@ public class GitHubApiWireMockFactory {
         return builder;
     }
 
-    private static MappingBuilder createRepoRootContentsRequest(Scenario scenario, int repoNumber, int requestNumber) {
+    private MappingBuilder createRepoRootContentsRequest(Scenario scenario, int repoNumber, int requestNumber) {
         MappingBuilder builder = get(urlPathEqualTo(
                 "/repos/" + scenario.name + "/test-repo-" + repoNumber + "/contents/"));
         addBasicAuthIfNeeded(scenario, builder);
@@ -107,7 +107,7 @@ public class GitHubApiWireMockFactory {
         return builder;
     }
 
-    private static ResponseDefinitionBuilder createRepoRootContentsResponse(Scenario scenario, int repoNumber, int requestNumber) {
+    private ResponseDefinitionBuilder createRepoRootContentsResponse(Scenario scenario, int repoNumber, int requestNumber) {
         ResponseDefinitionBuilder builder = aResponse();
         if (isRepo3AndRepo3HasNoContent(scenario, repoNumber)) {
             builder.withStatus(404)
@@ -129,28 +129,28 @@ public class GitHubApiWireMockFactory {
         return builder;
     }
 
-    private static void addBasicAuthIfNeeded(Scenario scenario, MappingBuilder builder) {
+    private void addBasicAuthIfNeeded(Scenario scenario, MappingBuilder builder) {
         if (nonNull(scenario.accessToken)) {
             builder.withBasicAuth(scenario.accessToken.getUsername(), scenario.accessToken.getValue());
         }
     }
 
-    private static String createRequestETag(int requestNumber) {
+    private String createRequestETag(int requestNumber) {
         return "test-etag-" + requestNumber;
     }
 
-    private static String createResponseETag(Scenario scenario, int requestNumber) {
+    private String createResponseETag(Scenario scenario, int requestNumber) {
         if (shouldResponseBeModified(scenario, requestNumber)) {
             return "test-modified-etag-" + requestNumber;
         }
         return "test-etag-" + requestNumber;
     }
 
-    private static boolean shouldResponseBeModified(Scenario scenario, int requestNumber) {
+    private boolean shouldResponseBeModified(Scenario scenario, int requestNumber) {
         return !((requestNumber == 1 && scenario.repoListNotModified) || (requestNumber == 3 && scenario.repo2NotModified));
     }
 
-    private static String getRepoContentsFileName(int repoNumber) {
+    private String getRepoContentsFileName(int repoNumber) {
         switch (repoNumber) {
             case 1:
                 return "github-api-responses/repo-with-kronicle-yaml-file.json";
@@ -164,7 +164,7 @@ public class GitHubApiWireMockFactory {
         }
     }
 
-    private static void createRateLimitResponseHeaders(ResponseDefinitionBuilder builder, int requestNumber) {
+    private void createRateLimitResponseHeaders(ResponseDefinitionBuilder builder, int requestNumber) {
         int limit = 5_000 + requestNumber * 2;
         int used = 1_000 + requestNumber;
         int remaining = limit - used;
@@ -177,16 +177,16 @@ public class GitHubApiWireMockFactory {
                 .withHeader(GitHubApiHeaders.RATE_LIMIT_RESOURCE, resource);
     }
 
-    private static String replaceVars(String value, String baseUrl, String username) {
+    private String replaceVars(String value, String baseUrl, String username) {
         return value.replaceAll("\\{\\{baseUrl}}", baseUrl)
                 .replaceAll("\\{\\{username}}", username);
     }
 
-    private static String readTestFile(String name) {
+    private String readTestFile(String name) {
         return TestFileHelper.readTestFile(name, GitHubApiWireMockFactory.class);
     }
 
-    private static WireMockServer create(Consumer<WireMockServer> initializer) {
+    private WireMockServer create(Consumer<WireMockServer> initializer) {
         WireMockServer wireMockServer = new WireMockServer(PORT);
         initializer.accept(wireMockServer);
         wireMockServer.start();

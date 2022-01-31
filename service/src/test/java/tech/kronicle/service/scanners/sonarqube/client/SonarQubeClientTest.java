@@ -29,6 +29,7 @@ public class SonarQubeClientTest {
     @Autowired
     private SonarQubeClient underTest;
     private WireMockServer wireMockServer;
+    private final SonarQubeWireMockFactory sonarQubeWireMockFactory = new SonarQubeWireMockFactory();
 
     @AfterEach
     public void afterEach() {
@@ -38,7 +39,7 @@ public class SonarQubeClientTest {
     @Test
     public void getMetricsShouldReturnAllMetrics() {
         // Given
-        wireMockServer = SonarQubeWireMockFactory.createWithRealResponses();
+        wireMockServer = sonarQubeWireMockFactory.createWithRealResponses();
 
         // When
         List<SummarySonarQubeMetric> returnValue = underTest.getMetrics();
@@ -62,7 +63,7 @@ public class SonarQubeClientTest {
     @Test
     public void getProjectsShouldReturnAllProjectsWhenNoOrganizationIsSpecified() {
         // Given
-        wireMockServer = SonarQubeWireMockFactory.createWithRealResponses();
+        wireMockServer = sonarQubeWireMockFactory.createWithRealResponses();
         String organization = null;
 
         // When
@@ -79,7 +80,7 @@ public class SonarQubeClientTest {
     @Test
     public void getProjectsShouldReturnAllProjectsWhenAnOrganizationIsSpecified() {
         // Given
-        wireMockServer = SonarQubeWireMockFactory.createWithRealResponses();
+        wireMockServer = sonarQubeWireMockFactory.createWithRealResponses();
         String organization = "test-organization";
 
         // When
@@ -96,7 +97,7 @@ public class SonarQubeClientTest {
     @Test
     public void getProjectMeasuresShouldReturnAllMeasuresForSpecifiedMetricsForAProject() {
         // Given
-        wireMockServer = SonarQubeWireMockFactory.createWithRealResponses();
+        wireMockServer = sonarQubeWireMockFactory.createWithRealResponses();
 
         // When
         List<SonarQubeMeasure> returnValue = underTest.getProjectMeasures("test-component-key-1", List.of(

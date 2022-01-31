@@ -36,6 +36,7 @@ public class ZipkinClientAuthCookieWithSpecialCharactersTest extends BaseZipkinC
     private ZipkinClient underTest;
     private LogCaptor logCaptor;
     private WireMockServer wireMockServer;
+    private ZipkinWireMockFactory zipkinWireMockFactory = new ZipkinWireMockFactory();
 
     @BeforeEach
     public void beforeEach() {
@@ -52,7 +53,7 @@ public class ZipkinClientAuthCookieWithSpecialCharactersTest extends BaseZipkinC
     @MethodSource("provideZipkinClientMethods")
     public void zipkinClientMethodShouldPassAuthCookieWithNameAndValuePercentEncoded(ZipkinClientMethod zipkinClientMethod) throws URISyntaxException {
         // Given
-        wireMockServer = ZipkinWireMockFactory.createWithAuthCookieWithSpecialCharacters(PORT);
+        wireMockServer = zipkinWireMockFactory.createWithAuthCookieWithSpecialCharacters(PORT);
 
         // When
         Timer timer = new Timer();
