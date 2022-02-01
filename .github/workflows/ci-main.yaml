@@ -89,3 +89,23 @@ jobs:
 
       - name: Build and push Docker images to GitHub Container Registry
         run: ./gradlew -PdockerPushImage=true -PdockerRegistry=ghcr.io/kronicle-tech -PdockerTagSuffix=-pre-release dockerPush
+
+      - name: Log in to Amazon ECR Public
+        uses: docker/login-action@v1
+        with:
+          registry: public.ecr.aws
+          username: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          password: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        env:
+          AWS_REGION: ${{ secrets.AWS_REGION }}
+
+      - name: Push Docker images to Amazon ECR Public
+        run: |
+          docker pull ghcr.io/kronicle-tech/kronicle-app:${{ steps.get_version.outputs.VERSION }}-pre-release
+          docker tag ghcr.io/kronicle-tech/kronicle-app:${{ steps.get_version.outputs.VERSION }}-pre-release ${{ secrets.AMAZON_ECR_REGISTRY }}/kronicle-app:${{ steps.get_version.outputs.VERSION }}-pre-release
+          docker push ${{ secrets.AMAZON_ECR_REGISTRY }}/kronicle-app:${{ steps.get_version.outputs.VERSION }}-pre-release
+          
+          docker pull ghcr.io/kronicle-tech/kronicle-service:${{ steps.get_version.outputs.VERSION }}-pre-release
+          docker tag ghcr.io/kronicle-tech/kronicle-service:${{ steps.get_version.outputs.VERSION }}-pre-release ${{ secrets.AMAZON_ECR_REGISTRY }}/kronicle-service:${{ steps.get_version.outputs.VERSION }}-pre-release
+          docker push ${{ secrets.AMAZON_ECR_REGISTRY }}/kronicle-service:${{ steps.get_version.outputs.VERSION }}-pre-release
+        working-directory: repo
