@@ -4,10 +4,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.reactive.function.client.ClientResponse;
 import org.springframework.web.reactive.function.client.WebClient;
 import org.springframework.web.reactive.function.client.WebClientResponseException;
-import reactor.core.publisher.Mono;
 import tech.kronicle.service.constants.KronicleMetadataFilePaths;
 import tech.kronicle.service.models.ApiRepo;
 import tech.kronicle.service.repofinders.gitlab.config.GitLabRepoFinderAccessTokenConfig;
@@ -135,7 +133,7 @@ public class GitLabClient {
     logWebCall(uri);
     boolean exists;
     try {
-      makeRequest(accessToken, webClient.head().uri(uri))
+      makeRequest(accessToken, webClient.get().uri(uri))
               .toBodilessEntity()
               .block(config.getTimeout());
       exists = true;
