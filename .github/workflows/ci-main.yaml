@@ -72,6 +72,10 @@ jobs:
         # Based on https://axion-release-plugin.readthedocs.io/en/latest/configuration/ci_servers/#github-actions
         run: ./gradlew release -Prelease.customUsername=${{ github.actor }} -Prelease.customPassword=${{ github.token }}
 
+      - name: Get version
+        id: get_version
+        run: echo ::set-output name=VERSION::$(./gradlew currentVersion -q -Prelease.quiet)
+
       - name: Publish JARs to Maven Central
         run: ./gradlew --no-parallel publish
         env:
