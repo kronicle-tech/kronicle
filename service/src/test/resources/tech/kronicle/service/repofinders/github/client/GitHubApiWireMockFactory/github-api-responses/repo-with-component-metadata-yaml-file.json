@@ -5,7 +5,7 @@
   },
   {
     "test-unknown-field": "This field should be ignored by Jackson when deserialised, if Jackson is configured correctly",
-    "name": "component-metadata.yaml"
+    "name": "kronicle.yaml"
   },
   {
     "test-unknown-field": "This field should be ignored by Jackson when deserialised, if Jackson is configured correctly",

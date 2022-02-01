@@ -61,13 +61,8 @@ public class GitLabApiWireMockFactory {
                             case KRONICLE_YAML:
                                 stubRepoMetadataFileRequest(wireMockServer, scenario, repoNumber.get(), RepoMetadataScenario.KRONICLE_YAML, true);
                                 break;
-                            case COMPONENT_METADATA_YAML:
-                                stubRepoMetadataFileRequest(wireMockServer, scenario, repoNumber.get(), RepoMetadataScenario.KRONICLE_YAML, false);
-                                stubRepoMetadataFileRequest(wireMockServer, scenario, repoNumber.get(), RepoMetadataScenario.COMPONENT_METADATA_YAML, true);
-                                break;
                             case NONE:
                                 stubRepoMetadataFileRequest(wireMockServer, scenario, repoNumber.get(), RepoMetadataScenario.KRONICLE_YAML, false);
-                                stubRepoMetadataFileRequest(wireMockServer, scenario, repoNumber.get(), RepoMetadataScenario.COMPONENT_METADATA_YAML, false);
                                 break;
                         }
                     }
@@ -86,7 +81,7 @@ public class GitLabApiWireMockFactory {
             case 1:
                 return RepoMetadataScenario.KRONICLE_YAML;
             case 2:
-                return RepoMetadataScenario.COMPONENT_METADATA_YAML;
+                return RepoMetadataScenario.KRONICLE_YAML;
         }
 
         return RepoMetadataScenario.NONE;
@@ -166,8 +161,6 @@ public class GitLabApiWireMockFactory {
         switch (repoMetadataScenario) {
             case KRONICLE_YAML:
                 return "kronicle.yaml";
-            case COMPONENT_METADATA_YAML:
-                return "component-metadata.yaml";
             default:
                 throw new RuntimeException("Unexpected repo metadata scenario");
         }
@@ -200,8 +193,7 @@ public class GitLabApiWireMockFactory {
 
     public enum RepoMetadataScenario {
         NONE,
-        KRONICLE_YAML,
-        COMPONENT_METADATA_YAML
+        KRONICLE_YAML
     }
 
     public enum ReposResourceType {

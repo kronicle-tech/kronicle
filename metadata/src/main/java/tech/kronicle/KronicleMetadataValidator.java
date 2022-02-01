@@ -16,7 +16,7 @@ import java.nio.file.Files;
 import java.util.Set;
 
 /**
- * This class is used by the build scripts of the PR build jobs and master build jobs for "component-metadata" repos that contain "component-metadata.yaml"
+ * This class is used by the build scripts of the PR build jobs and master build jobs for "component-metadata" repos that contain "kronicle.yaml"
  * files that define components, teams, areas etc.
  */
 public class KronicleMetadataValidator {
