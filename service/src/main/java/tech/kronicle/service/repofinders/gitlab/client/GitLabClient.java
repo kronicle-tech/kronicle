@@ -97,6 +97,9 @@ public class GitLabClient {
           String baseUrl,
           GitLabRepo repo
   ) {
+    if (isNull(repo.getDefault_branch())) {
+      return false;
+    }
     return KronicleMetadataFilePaths.ALL.stream().anyMatch(kronicleMetadataFilePath -> {
       Map<String, String> uriVariables = UriVariablesBuilder.builder()
               .addUriVariable("projectId", repo.getId())
