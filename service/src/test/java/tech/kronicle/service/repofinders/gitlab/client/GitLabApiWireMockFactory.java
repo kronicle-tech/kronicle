@@ -7,7 +7,6 @@ import com.github.tomakehurst.wiremock.WireMockServer;
 import com.github.tomakehurst.wiremock.client.MappingBuilder;
 import com.github.tomakehurst.wiremock.client.ResponseDefinitionBuilder;
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
 import tech.kronicle.service.repofinders.gitlab.config.GitLabRepoFinderAccessTokenConfig;
 
 import java.util.ArrayList;
@@ -19,7 +18,6 @@ import java.util.stream.IntStream;
 import static com.github.tomakehurst.wiremock.client.WireMock.aResponse;
 import static com.github.tomakehurst.wiremock.client.WireMock.equalTo;
 import static com.github.tomakehurst.wiremock.client.WireMock.get;
-import static com.github.tomakehurst.wiremock.client.WireMock.head;
 import static com.github.tomakehurst.wiremock.client.WireMock.urlEqualTo;
 import static com.github.tomakehurst.wiremock.client.WireMock.urlPathEqualTo;
 import static java.util.Objects.nonNull;
@@ -79,7 +77,6 @@ public class GitLabApiWireMockFactory {
     private RepoMetadataScenario getRepoMetadataScenario(int repoNumber) {
         switch (repoNumber) {
             case 1:
-                return RepoMetadataScenario.KRONICLE_YAML;
             case 2:
                 return RepoMetadataScenario.KRONICLE_YAML;
         }
@@ -149,7 +146,7 @@ public class GitLabApiWireMockFactory {
             int repoNumber,
             RepoMetadataScenario repoMetadataScenario
     ) {
-        MappingBuilder builder = head(urlEqualTo(
+        MappingBuilder builder = get(urlEqualTo(
                 "/api/v4/projects/" + repoNumber +
                 "/repository/files/" + getMetadataFilename(repoMetadataScenario) +
                 "?ref=branch-" + repoNumber));
@@ -158,12 +155,10 @@ public class GitLabApiWireMockFactory {
     }
 
     private String getMetadataFilename(RepoMetadataScenario repoMetadataScenario) {
-        switch (repoMetadataScenario) {
-            case KRONICLE_YAML:
-                return "kronicle.yaml";
-            default:
-                throw new RuntimeException("Unexpected repo metadata scenario");
+        if (repoMetadataScenario == RepoMetadataScenario.KRONICLE_YAML) {
+            return "kronicle.yaml";
         }
+        throw new RuntimeException("Unexpected repo metadata scenario");
     }
 
     private ResponseDefinitionBuilder createRepoRootContentsResponse(boolean hasContent) {
