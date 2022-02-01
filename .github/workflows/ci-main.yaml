@@ -108,4 +108,3 @@ jobs:
           docker pull ghcr.io/kronicle-tech/kronicle-service:${{ steps.get_version.outputs.VERSION }}-pre-release
           docker tag ghcr.io/kronicle-tech/kronicle-service:${{ steps.get_version.outputs.VERSION }}-pre-release ${{ secrets.AMAZON_ECR_REGISTRY }}/kronicle-service:${{ steps.get_version.outputs.VERSION }}-pre-release
           docker push ${{ secrets.AMAZON_ECR_REGISTRY }}/kronicle-service:${{ steps.get_version.outputs.VERSION }}-pre-release
-        working-directory: repo
