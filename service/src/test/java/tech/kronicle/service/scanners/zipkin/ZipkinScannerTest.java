@@ -3,6 +3,8 @@ package tech.kronicle.service.scanners.zipkin;
 import com.github.tomakehurst.wiremock.WireMockServer;
 import tech.kronicle.componentmetadata.models.ComponentMetadata;
 import tech.kronicle.sdk.models.Component;
+import tech.kronicle.sdk.models.ComponentDependency;
+import tech.kronicle.sdk.models.DependencyDirection;
 import tech.kronicle.sdk.models.Summary;
 import tech.kronicle.sdk.models.SummaryCallGraph;
 import tech.kronicle.sdk.models.SummaryComponentDependency;
@@ -26,7 +28,6 @@ import tech.kronicle.service.scanners.zipkin.services.ZipkinService;
 import tech.kronicle.service.scanners.zipkin.spring.ZipkinConfiguration;
 import tech.kronicle.service.services.MapComparator;
 import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
@@ -38,7 +39,9 @@ import java.time.LocalDateTime;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
+import static java.util.Objects.nonNull;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @ExtendWith(MockitoExtension.class)
@@ -52,19 +55,18 @@ public class ZipkinScannerTest extends BaseScannerTest {
     private ZipkinScanner underTest;
     private WireMockServer wireMockServer;
 
-    @BeforeEach
-    public void beforeEach() {
-        wireMockServer = zipkinWireMockFactory.createWithRealResponses(PORT);
-        createZipkinScanner();
-    }
-
     @AfterEach
     public void afterEach() {
-        wireMockServer.stop();
+        if (nonNull(wireMockServer)) {
+            wireMockServer.stop();
+        }
     }
 
     @Test
     public void idShouldReturnTheIdOfTheScanner() {
+        // Given
+        createZipkinScanner();
+
         // When
         String returnValue = underTest.id();
 
@@ -74,6 +76,9 @@ public class ZipkinScannerTest extends BaseScannerTest {
 
     @Test
     public void descriptionShouldReturnTheDescriptionOfTheScanner() {
+        // Given
+        createZipkinScanner();
+
         // When
         String returnValue = underTest.description();
 
@@ -83,6 +88,9 @@ public class ZipkinScannerTest extends BaseScannerTest {
 
     @Test
     public void notesShouldReturnTheNotesForTheScanner() {
+        // Given
+        createZipkinScanner();
+
         // When
         String returnValue = underTest.notes();
 
@@ -99,6 +107,9 @@ public class ZipkinScannerTest extends BaseScannerTest {
     @Test
     public void refreshShouldSucceed() {
         // Given
+        createZipkinScanner();
+
+        // Given
         ComponentMetadata componentMetadata = ComponentMetadata.builder().build();
 
         // When
@@ -109,11 +120,13 @@ public class ZipkinScannerTest extends BaseScannerTest {
     @Test
     public void scanShouldReturnUpstreamAndDownstreamDependenciesOfAService() {
         // Given
-        ComponentMetadata componentMetadata = ComponentMetadata.builder().build();
-        underTest.refresh(componentMetadata);
+        wireMockServer = zipkinWireMockFactory.createWithRealResponses(PORT);
+        createZipkinScanner();
         Component component = Component.builder()
                 .id("test-service-1")
                 .build();
+        ComponentMetadata componentMetadata = ComponentMetadata.builder().components(List.of(component)).build();
+        underTest.refresh(componentMetadata);
 
         // When
         Output<Void> returnValue = underTest.scan(component);
@@ -134,11 +147,13 @@ public class ZipkinScannerTest extends BaseScannerTest {
     @Test
     public void scanShouldReturnUsesFalseIfAServiceIsNotKnownToZipkin() {
         // Given
-        ComponentMetadata componentMetadata = ComponentMetadata.builder().build();
-        underTest.refresh(componentMetadata);
+        wireMockServer = zipkinWireMockFactory.createWithRealResponses(PORT);
+        createZipkinScanner();
         Component component = Component.builder()
                 .id("unknown-service")
                 .build();
+        ComponentMetadata componentMetadata = ComponentMetadata.builder().components(List.of(component)).build();
+        underTest.refresh(componentMetadata);
 
         // When
         Output<Void> returnValue = underTest.scan(component);
@@ -155,6 +170,8 @@ public class ZipkinScannerTest extends BaseScannerTest {
     @Test
     public void scanShouldTransformSummaryWithComponentDependencies() {
         // Given
+        wireMockServer = zipkinWireMockFactory.createWithRealResponses(PORT);
+        createZipkinScanner();
         ComponentMetadata componentMetadata = ComponentMetadata.builder().build();
         underTest.refresh(componentMetadata);
         Summary summary = Summary.EMPTY;
@@ -175,12 +192,82 @@ public class ZipkinScannerTest extends BaseScannerTest {
                 new SummaryComponentDependency(0, 1, List.of(), false, 2, TIMESTAMP, TIMESTAMP, DURATION),
                 new SummaryComponentDependency(2, 0, List.of(), false, 2, TIMESTAMP, TIMESTAMP, DURATION),
                 new SummaryComponentDependency(3, 4, List.of(), false, 2, TIMESTAMP, TIMESTAMP, DURATION),
-                        new SummaryComponentDependency(5, 3, List.of(), false, 2, TIMESTAMP, TIMESTAMP, DURATION));
+                new SummaryComponentDependency(5, 3, List.of(), false, 2, TIMESTAMP, TIMESTAMP, DURATION));
+    }
+
+    @Test
+    public void scanShouldReturnManualDependencies() {
+        // Given
+        wireMockServer = zipkinWireMockFactory.createWithRealResponses(PORT);
+        createZipkinScanner();
+        Component component = Component.builder()
+                .id("test-unknown-service-1")
+                .dependencies(List.of(
+                        new ComponentDependency("test-unknown-service-2", null, null),
+                        new ComponentDependency("test-unknown-service-3", DependencyDirection.INBOUND, null)))
+                .build();
+        ComponentMetadata componentMetadata = ComponentMetadata.builder().components(List.of(component)).build();
+        underTest.refresh(componentMetadata);
+        Summary summary = Summary.EMPTY;
+
+        // When
+        Summary returnValue = underTest.transformSummary(summary);
+
+        // Then
+        assertThat(returnValue.getComponentDependencies()).isNotNull();
+        assertThat(returnValue.getComponentDependencies().getNodes()).containsExactly(
+                new SummaryComponentDependencyNode("test-service-1"),
+                new SummaryComponentDependencyNode("test-service-1b"),
+                new SummaryComponentDependencyNode("test-service-1c"),
+                new SummaryComponentDependencyNode("test-service-2"),
+                new SummaryComponentDependencyNode("test-service-2b"),
+                new SummaryComponentDependencyNode("test-service-2c"),
+                new SummaryComponentDependencyNode("test-unknown-service-1"),
+                new SummaryComponentDependencyNode("test-unknown-service-2"),
+                new SummaryComponentDependencyNode("test-unknown-service-3"));
+        assertThat(returnValue.getComponentDependencies().getDependencies()).containsExactly(
+                new SummaryComponentDependency(0, 1, List.of(), false, 2, TIMESTAMP, TIMESTAMP, DURATION),
+                new SummaryComponentDependency(2, 0, List.of(), false, 2, TIMESTAMP, TIMESTAMP, DURATION),
+                new SummaryComponentDependency(3, 4, List.of(), false, 2, TIMESTAMP, TIMESTAMP, DURATION),
+                new SummaryComponentDependency(5, 3, List.of(), false, 2, TIMESTAMP, TIMESTAMP, DURATION),
+                new SummaryComponentDependency(6, 7, List.of(), true, 0, null, null, null),
+                new SummaryComponentDependency(8, 6, List.of(), true, 0, null, null, null));
+    }
+
+    @Test
+    public void scanShouldStillReturnManualDependenciesIfACallToZipkinServerFails() {
+        // Given
+        wireMockServer = zipkinWireMockFactory.createWithErrorResponses(PORT);
+        createZipkinScanner();
+        Component component = Component.builder()
+                .id("test-unknown-service-1")
+                .dependencies(List.of(
+                        new ComponentDependency("test-unknown-service-2", null, null),
+                        new ComponentDependency("test-unknown-service-3", DependencyDirection.INBOUND, null)))
+                .build();
+        ComponentMetadata componentMetadata = ComponentMetadata.builder().components(List.of(component)).build();
+        underTest.refresh(componentMetadata);
+        Summary summary = Summary.EMPTY;
+
+        // When
+        Summary returnValue = underTest.transformSummary(summary);
+
+        // Then
+        assertThat(returnValue.getComponentDependencies()).isNotNull();
+        assertThat(returnValue.getComponentDependencies().getNodes()).containsExactly(
+                new SummaryComponentDependencyNode("test-unknown-service-1"),
+                new SummaryComponentDependencyNode("test-unknown-service-2"),
+                new SummaryComponentDependencyNode("test-unknown-service-3"));
+        assertThat(returnValue.getComponentDependencies().getDependencies()).containsExactly(
+                new SummaryComponentDependency(0, 1, List.of(), true, 0, null, null, null),
+                new SummaryComponentDependency(2, 0, List.of(), true, 0, null, null, null));
     }
 
     @Test
     public void scanShouldTransformSummaryWithSubComponentDependencies() {
         // Given
+        wireMockServer = zipkinWireMockFactory.createWithRealResponses(PORT);
+        createZipkinScanner();
         ComponentMetadata componentMetadata = ComponentMetadata.builder().build();
         underTest.refresh(componentMetadata);
         Summary summary = Summary.EMPTY;
@@ -216,6 +303,8 @@ public class ZipkinScannerTest extends BaseScannerTest {
     @Test
     public void scanShouldTransformSummaryWithCallGraphs() {
         // Given
+        wireMockServer = zipkinWireMockFactory.createWithRealResponses(PORT);
+        createZipkinScanner();
         ComponentMetadata componentMetadata = ComponentMetadata.builder().build();
         underTest.refresh(componentMetadata);
         Summary summary = Summary.EMPTY;
@@ -236,7 +325,8 @@ public class ZipkinScannerTest extends BaseScannerTest {
     }
     
     private void createZipkinScanner() {
-        ZipkinConfig config = new ZipkinConfig(wireMockServer.baseUrl(), Duration.ofMinutes(2), null, null, 100, null);
+        String zipkinBaseUrl = Optional.ofNullable(wireMockServer).map(WireMockServer::baseUrl).orElse("http://localhost:" + PORT);
+        ZipkinConfig config = new ZipkinConfig(zipkinBaseUrl, Duration.ofMinutes(2), null, null, 100, null);
         GenericDependencyCollator genericDependencyCollator = new GenericDependencyCollator();
         ZipkinConfiguration configuration = new ZipkinConfiguration();
         DependencyDurationCalculator dependencyDurationCalculator = new DependencyDurationCalculator();

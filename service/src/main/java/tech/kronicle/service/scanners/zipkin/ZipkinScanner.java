@@ -65,6 +65,9 @@ public class ZipkinScanner extends ComponentScanner {
 
     @Override
     public void refresh(ComponentMetadata componentMetadata) {
+        dependencies = List.of();
+        List<List<Span>> traces = List.of();
+
         try {
             log.info("Getting Zipkin dependencies");
             dependencies = zipkinService.getDependencies();
@@ -73,20 +76,21 @@ public class ZipkinScanner extends ComponentScanner {
             List<Service> services = zipkinService.getServices();
             log.info("Retrieved {} Zipkin services", services.size());
             log.info("Getting Zipkin traces");
-            List<List<Span>> traces = zipkinService.getTraces(services);
+            traces = zipkinService.getTraces(services);
             log.info("Retrieved {} Zipkin traces", traces.size());
             log.info("Getting Zipkin component dependencies");
-            componentDependencies = componentDependencyCollator.collateDependencies(traces, componentMetadata.getComponents());
-            log.info("Retrieved {} Zipkin component dependencies", componentDependencies.getDependencies().size());
-            log.info("Getting Zipkin sub-component dependencies");
-            subComponentDependencies = subComponentDependencyCollator.collateDependencies(traces);
-            log.info("Retrieved {} Zipkin sub-component dependencies", subComponentDependencies.getDependencies().size());
-            log.info("Getting Zipkin call graphs");
-            callGraphs = callGraphCollator.collateCallGraphs(traces);
-            log.info("Retrieved {} Zipkin call graphs", callGraphs.size());
         } catch (Exception e) {
-            throw new RuntimeException("Could not fetch information from Zipkin", e);
+            log.error("Could not fetch information from Zipkin", e);
         }
+
+        componentDependencies = componentDependencyCollator.collateDependencies(traces, componentMetadata.getComponents());
+        log.info("Retrieved {} Zipkin component dependencies", componentDependencies.getDependencies().size());
+        log.info("Getting Zipkin sub-component dependencies");
+        subComponentDependencies = subComponentDependencyCollator.collateDependencies(traces);
+        log.info("Retrieved {} Zipkin sub-component dependencies", subComponentDependencies.getDependencies().size());
+        log.info("Getting Zipkin call graphs");
+        callGraphs = callGraphCollator.collateCallGraphs(traces);
+        log.info("Retrieved {} Zipkin call graphs", callGraphs.size());
     }
 
     @Override
