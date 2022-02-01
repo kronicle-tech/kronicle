@@ -45,14 +45,22 @@ jobs:
       - name: Validate Gradle wrapper
         uses: gradle/wrapper-validation-action@e6e38bacfdf1a337459f332974bb2327a31aaf4b
 
-      - name: Build
+      - name: Log in to GitHub Container Registry
+        uses: docker/login-action@f054a8b539a109f9f41c372932f1ae047eff08c9
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build and push Docker images to GitHub Container Registry
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information for SonarQube, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: |
           extra_tasks=()
           if [[ -v SONAR_TOKEN ]]; then extra_tasks+=('sonarqube'); fi
-          ./gradlew service:downloadGradleLibs app:docker service:test app:assembleFrontend "${extra_tasks[@]}" build
+          ./gradlew -PdockerPushImage=true -PdockerRegistry=ghcr.io/kronicle-tech -PdockerTagSuffix=-pre-release\
+            service:downloadGradleLibs app:docker service:test app:assembleFrontend "${extra_tasks[@]}" build dockerPush
 
       - name: Archive Dependency Check report 🗄️
         uses: actions/upload-artifact@v2
@@ -83,16 +91,6 @@ jobs:
           OSSRH_PASSWORD: ${{ secrets.OSSRH_PASSWORD }}
           SIGNING_KEY: ${{ secrets.SIGNING_KEY }}
           SIGNING_PASSWORD: ${{ secrets.SIGNING_PASSWORD }}
-
-      - name: Log in to GitHub Container Registry
-        uses: docker/login-action@f054a8b539a109f9f41c372932f1ae047eff08c9
-        with:
-          registry: ghcr.io
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Build and push Docker images to GitHub Container Registry
-        run: ./gradlew -PdockerPushImage=true -PdockerRegistry=ghcr.io/kronicle-tech -PdockerTagSuffix=-pre-release dockerPush
 
       - name: Log in to Amazon ECR Public
         uses: docker/login-action@v1
