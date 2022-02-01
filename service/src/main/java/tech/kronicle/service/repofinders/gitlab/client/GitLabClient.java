@@ -135,7 +135,7 @@ public class GitLabClient {
     logWebCall(uri);
     boolean exists;
     try {
-      makeRequest(accessToken, webClient.head().uri(uri))
+      makeRequest(accessToken, webClient.get().uri(uri))
               .toBodilessEntity()
               .block(config.getTimeout());
       exists = true;
