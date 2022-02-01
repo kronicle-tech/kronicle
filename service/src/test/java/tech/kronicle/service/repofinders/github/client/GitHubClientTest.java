@@ -130,7 +130,7 @@ public class GitHubClientTest {
                 baseUrl + "/repos/" + scenario.getName() + "/test-repo-3/contents/",
                 // Note: The instance of Jetty that is bundled with WireMock adds "--gzip" to the end of the ETag HTTP response
                 // header.  See http://wiremock.org/docs/extending-wiremock/ for confirmation
-                new ApiResponseCacheEntry<>("test-modified-etag-4--gzip", List.of(new GitHubContentEntry(".gitignore"), new GitHubContentEntry("component-metadata.yaml"), new GitHubContentEntry("README.md"))));
+                new ApiResponseCacheEntry<>("test-modified-etag-4--gzip", List.of(new GitHubContentEntry(".gitignore"), new GitHubContentEntry("kronicle.yaml"), new GitHubContentEntry("README.md"))));
         verify(mockCache).putEntry(
                 scenario.getAccessToken(),
                 baseUrl + "/repos/" + scenario.getName() + "/test-repo-4/contents/",

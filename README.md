@@ -10,7 +10,7 @@ See the [documentation](https://kronicle.tech) for more information on deploying
 
 The metadata that powers Kronicle can be found the `kronicle.yaml` files in various Git repos. 
 
-There are two template repos for creating repos with component-metadata.yaml files:
+There are two template repos for creating repos with kronicle.yaml files:
 
 | Repo | Notes |
 |---|---|
