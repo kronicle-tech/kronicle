@@ -3,6 +3,7 @@ package tech.kronicle.service.repofinders.gitlab.client;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ArrayNode;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.github.tomakehurst.wiremock.WireMockServer;
 import com.github.tomakehurst.wiremock.client.MappingBuilder;
 import com.github.tomakehurst.wiremock.client.ResponseDefinitionBuilder;
@@ -79,6 +80,8 @@ public class GitLabApiWireMockFactory {
             case 1:
             case 2:
                 return RepoMetadataScenario.KRONICLE_YAML;
+            case 3:
+                return RepoMetadataScenario.NO_DEFAULT_BRANCH;
         }
 
         return RepoMetadataScenario.NONE;
@@ -122,12 +125,16 @@ public class GitLabApiWireMockFactory {
         ArrayNode responseBody = objectMapper.createArrayNode();
         IntStream.range(1, PAGE_SIZE + 1).forEach(pageItemNumber -> {
             int repoNumber = getRepoNumber(pageNumber, pageItemNumber);
+            RepoMetadataScenario repoMetadataScenario = getRepoMetadataScenario(repoNumber);
             if (repoNumber <= REPO_COUNT) {
-                responseBody.add(objectMapper.createObjectNode()
+                ObjectNode repo = objectMapper.createObjectNode()
                         .put("id", repoNumber)
-                        .put("default_branch", "branch-" + repoNumber)
-                        .put("http_url_to_repo", "https://example.com/repo-" + repoNumber + ".git")
-                        .put("unknown", true));
+                        .put("http_url_to_repo", "https://example.com/repo-" + repoNumber + "-" + repoMetadataScenario + ".git")
+                        .put("unknown", true);
+                if (repoMetadataScenario != RepoMetadataScenario.NO_DEFAULT_BRANCH) {
+                    repo.put("default_branch", "branch-" + repoNumber);
+                }
+                responseBody.add(repo);
             }
         });
         try {
@@ -188,7 +195,8 @@ public class GitLabApiWireMockFactory {
 
     public enum RepoMetadataScenario {
         NONE,
-        KRONICLE_YAML
+        KRONICLE_YAML,
+        NO_DEFAULT_BRANCH
     }
 
     public enum ReposResourceType {

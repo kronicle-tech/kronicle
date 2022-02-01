@@ -22,7 +22,6 @@ import tech.kronicle.service.repofinders.gitlab.config.GitLabRepoFinderUserConfi
 
 import java.time.Duration;
 import java.util.List;
-import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -78,12 +77,16 @@ public class GitLabClientTest {
         }
 
         // Then
-        assertThat(returnValue).hasSize(8);
-        assertThat(returnValue.get(0)).isEqualTo(new ApiRepo("https://example.com/repo-1.git", true));
-        assertThat(returnValue.get(1)).isEqualTo(new ApiRepo("https://example.com/repo-2.git", true));
-        IntStream.range(2, returnValue.size()).forEach(index ->
-                assertThat(returnValue.get(index)).isEqualTo(
-                        new ApiRepo("https://example.com/repo-" + (index + 1) + ".git", false)));
+        assertThat(returnValue).containsExactly(
+                new ApiRepo("https://example.com/repo-1-KRONICLE_YAML.git", true),
+                new ApiRepo("https://example.com/repo-2-KRONICLE_YAML.git", true),
+                new ApiRepo("https://example.com/repo-3-NO_DEFAULT_BRANCH.git", false),
+                new ApiRepo("https://example.com/repo-4-NONE.git", false),
+                new ApiRepo("https://example.com/repo-5-NONE.git", false),
+                new ApiRepo("https://example.com/repo-6-NONE.git", false),
+                new ApiRepo("https://example.com/repo-7-NONE.git", false),
+                new ApiRepo("https://example.com/repo-8-NONE.git", false)
+        );
     }
 
     @Test
