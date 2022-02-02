@@ -34,7 +34,6 @@ jobs:
           docker pull ghcr.io/kronicle-tech/kronicle-service:${{ steps.get_version.outputs.VERSION }}-pre-release
           docker tag ghcr.io/kronicle-tech/kronicle-service:${{ steps.get_version.outputs.VERSION }}-pre-release ghcr.io/kronicle-tech/kronicle-service:${{ steps.get_version.outputs.VERSION }}
           docker push ghcr.io/kronicle-tech/kronicle-service:${{ steps.get_version.outputs.VERSION }}
-        working-directory: repo
 
       - name: Checkout kronicle-argocd-config repo
         uses: actions/checkout@v2
