@@ -17,7 +17,7 @@ EXPOSE $PORT
 HEALTHCHECK --interval=60s --timeout=15s \
   CMD curl --fail "http://localhost:$PORT" || exit 1
 
-ENV NUXT_HOST=0.0.0.0
-ENV NUXT_PORT=$PORT
+ENV HOST=0.0.0.0
+ENV PORT=$PORT
 
 CMD ["npm", "start"]
