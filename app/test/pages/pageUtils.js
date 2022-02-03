@@ -11,7 +11,7 @@ const defaultConfig = {
   serviceBaseUrl: 'https://example.com/service',
 }
 
-export async function createPageWrapper(page, { serviceRequests, route, config }) {
+export async function createPageWrapper(page, { serviceRequests, route, config, hasAsyncData = true }) {
   const Store = await import('~/.nuxt/store.js')
   const store = Store.createStore()
   const fetch = createFetch(serviceRequests)
@@ -26,6 +26,7 @@ export async function createPageWrapper(page, { serviceRequests, route, config }
 
   return await mountWithAsyncData(page, {
     localVue,
+    hasAsyncData,
     store,
     asyncDataGlobal: {
       fetch,
