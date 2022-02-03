@@ -306,4 +306,20 @@
         <packageUrl regex="true">^pkg:maven/io\.netty/netty\-tcnative\-classes@.*$</packageUrl>
         <cve>CVE-2021-43797</cve>
     </suppress>
+    <!-- Suppress a vulnerability that does not affect Kronicle.  This issue is only exploitable when Tomcat is configured to persist sessions using the FileStore -->
+    <suppress>
+        <notes><![CDATA[
+   file name: tomcat-embed-core-9.0.56.jar
+   ]]></notes>
+        <packageUrl regex="true">^pkg:maven/org\.apache\.tomcat\.embed/tomcat\-embed\-core@.*$</packageUrl>
+        <cve>CVE-2022-23181</cve>
+    </suppress>
+    <!-- Suppress a vulnerability that does not affect Kronicle.  This issue is only exploitable when Tomcat is configured to persist sessions using the FileStore -->
+    <suppress>
+        <notes><![CDATA[
+   file name: tomcat-embed-websocket-9.0.56.jar
+   ]]></notes>
+        <packageUrl regex="true">^pkg:maven/org\.apache\.tomcat\.embed/tomcat\-embed\-websocket@.*$</packageUrl>
+        <cve>CVE-2022-23181</cve>
+    </suppress>
 </suppressions>

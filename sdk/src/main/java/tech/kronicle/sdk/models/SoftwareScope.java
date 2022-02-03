@@ -4,7 +4,8 @@ import com.fasterxml.jackson.annotation.JsonValue;
 
 public enum SoftwareScope {
 
-    BUILDSCRIPT;
+    BUILDSCRIPT,
+    DEV;
 
     @JsonValue
     public String value() {
