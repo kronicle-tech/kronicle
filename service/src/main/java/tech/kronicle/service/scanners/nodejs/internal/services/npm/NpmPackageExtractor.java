@@ -3,6 +3,7 @@ package tech.kronicle.service.scanners.nodejs.internal.services.npm;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 import tech.kronicle.sdk.models.Software;
 import tech.kronicle.sdk.models.SoftwareDependencyType;
 import tech.kronicle.sdk.models.SoftwareScope;
@@ -23,6 +24,7 @@ import java.util.stream.Stream;
 import static java.util.Objects.isNull;
 import static java.util.Objects.nonNull;
 
+@Service
 @RequiredArgsConstructor
 public class NpmPackageExtractor {
 
