@@ -7,6 +7,8 @@ const customFields = format((info) => {
   return info
 })
 
+const serverSideServiceBaseUrl = process.env.SERVER_SIDE_SERVICE_BASE_URL || 'http://localhost:8090';
+
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head() {
@@ -72,6 +74,7 @@ export default {
     // https://go.nuxtjs.dev/bootstrap
     ['bootstrap-vue/nuxt', { css: false }],
     '@nuxtjs/redirect-module',
+    '@nuxtjs/proxy',
     'nuxt-healthcheck',
     'nuxt-winston-log',
   ],
@@ -87,13 +90,21 @@ export default {
 
   redirect: [{ from: '^/components/?$', to: '/all-components' }],
 
+  proxy: {
+    '/api': {
+      target: serverSideServiceBaseUrl,
+      pathRewrite: {
+        '^/api($|/)': '/',
+      },
+    },
+  },
+
   privateRuntimeConfig: {
-    serviceBaseUrl:
-      process.env.SERVER_SIDE_SERVICE_BASE_URL || 'http://localhost:8090',
+    serviceBaseUrl: serverSideServiceBaseUrl,
   },
 
   publicRuntimeConfig: {
-    serviceBaseUrl: process.env.CLIENT_SIDE_SERVICE_BASE_URL || 'http://localhost:8090',
+    serviceBaseUrl: '/api',
     version: process.env.VERSION,
     messageMarkdown: process.env.MESSAGE_MARKDOWN,
     messageVariant: process.env.MESSAGE_VARIANT,
