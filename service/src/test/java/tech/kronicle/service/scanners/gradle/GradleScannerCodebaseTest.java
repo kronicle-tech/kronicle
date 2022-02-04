@@ -30,7 +30,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 @SpringBootTest(properties = {
         "download-cache.dir=build/test-data/tech.kronicle.service.scanners.gradle.GradleScannerTest/download-cache",
         "url-exists-cache.dir=build/test-data/tech.kronicle.service.scanners.gradle.GradleScannerTest/url-exists-cache",
-        "gradle.pom-cache-dir=build/test-data/tech.kronicle.service.scanners.gradle.GradleScannerTest/gradle/pom-cache"
+        "gradle.pom-cache-dir=build/test-data/tech.kronicle.service.scanners.gradle.GradleScannerTest/gradle/pom-cache",
+        "gradle.custom-repositories.0.name=someCustomRepository",
+        "gradle.custom-repositories.0.url=https://example.com/maven2/"
 })
 @ContextConfiguration(classes = GradleScannerTestConfiguration.class)
 @EnableConfigurationProperties(value = {DownloadCacheConfig.class, UrlExistsCacheConfig.class, GradleConfig.class})
@@ -1956,6 +1958,32 @@ public class GradleScannerCodebaseTest extends BaseGradleScannerTest {
         assertThatGradleIsUsed(component);
         assertThat(getSoftwareRepositories(component)).containsExactlyInAnyOrder(
                 GOOGLE_REPOSITORY);
+        Map<SoftwareGroup, List<Software>> softwareGroups = getSoftwareGroups(component);
+        assertThat(softwareGroups.get(SoftwareGroup.DIRECT)).isNull();
+        assertThat(softwareGroups.get(SoftwareGroup.TRANSITIVE)).isNull();
+        assertThat(softwareGroups.get(SoftwareGroup.BOM)).isNull();
+    }
+
+
+    @Test
+    public void shouldHandleRepositoryCustom() {
+        // Given
+        Codebase codebase = new Codebase(getTestRepo(), getCodebaseDir("RepositoryCustom"));
+
+        // When
+        Output<Void> output = underTest.scan(codebase);
+
+        // Then
+        Component component = getMutatedComponent(output);
+        assertThatGradleIsUsed(component);
+        assertThat(getSoftwareRepositories(component)).containsExactlyInAnyOrder(
+                SoftwareRepository
+                        .builder()
+                        .scannerId(SCANNER_ID)
+                        .type(SoftwareRepositoryType.MAVEN)
+                        .url("https://example.com/maven2/")
+                        .safe(false)
+                        .build());
         Map<SoftwareGroup, List<Software>> softwareGroups = getSoftwareGroups(component);
         assertThat(softwareGroups.get(SoftwareGroup.DIRECT)).isNull();
         assertThat(softwareGroups.get(SoftwareGroup.TRANSITIVE)).isNull();

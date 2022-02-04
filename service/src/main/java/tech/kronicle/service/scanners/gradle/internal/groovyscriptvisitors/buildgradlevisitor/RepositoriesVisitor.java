@@ -5,6 +5,7 @@ import tech.kronicle.service.scanners.gradle.internal.groovyscriptvisitors.BaseV
 import tech.kronicle.service.scanners.gradle.internal.groovyscriptvisitors.ExpressionVisitOutcome;
 import tech.kronicle.service.scanners.gradle.internal.services.BuildFileLoader;
 import tech.kronicle.service.scanners.gradle.internal.services.BuildFileProcessor;
+import tech.kronicle.service.scanners.gradle.internal.services.CustomRepositoryRegistry;
 import tech.kronicle.service.scanners.gradle.internal.services.ExpressionEvaluator;
 import tech.kronicle.service.scanners.gradle.internal.services.SoftwareRepositoryFactory;
 import lombok.extern.slf4j.Slf4j;
@@ -12,16 +13,26 @@ import org.codehaus.groovy.ast.expr.MethodCallExpression;
 import org.slf4j.Logger;
 import org.springframework.stereotype.Component;
 
+import static java.util.Objects.nonNull;
+
 @Component
 @Slf4j
 public class RepositoriesVisitor extends BaseVisitor {
 
     private final MavenRepositoryVisitor mavenRepositoryVisitor;
+    private final CustomRepositoryRegistry customRepositoryRegistry;
 
-    public RepositoriesVisitor(BuildFileLoader buildFileLoader, BuildFileProcessor buildFileProcessor, ExpressionEvaluator expressionEvaluator,
-                               MavenRepositoryVisitor mavenRepositoryVisitor, SoftwareRepositoryFactory softwareRepositoryFactory) {
+    public RepositoriesVisitor(
+            BuildFileLoader buildFileLoader, 
+            BuildFileProcessor buildFileProcessor, 
+            ExpressionEvaluator expressionEvaluator, 
+            MavenRepositoryVisitor mavenRepositoryVisitor, 
+            SoftwareRepositoryFactory softwareRepositoryFactory, 
+            CustomRepositoryRegistry customRepositoryRegistry
+    ) {
         super(buildFileLoader, buildFileProcessor, expressionEvaluator, softwareRepositoryFactory);
         this.mavenRepositoryVisitor = mavenRepositoryVisitor;
+        this.customRepositoryRegistry = customRepositoryRegistry;
     }
 
     @Override
@@ -31,23 +42,34 @@ public class RepositoriesVisitor extends BaseVisitor {
 
     @Override
     protected ExpressionVisitOutcome processMethodCallExpression(MethodCallExpression call) {
-        if (call.getMethodAsString().equals("maven")) {
+        String methodName = call.getMethodAsString();
+
+        if (methodName.equals("maven")) {
             visit(call.getArguments(), mavenRepositoryVisitor);
             return ExpressionVisitOutcome.PROCESSED;
-        } if (call.getMethodAsString().equals("gradlePluginPortal")) {
-            addSoftwareRepository(SoftwareRepositoryUrls.GRADLE_PLUGIN_PORTAL);
-            return ExpressionVisitOutcome.PROCESSED;
-        } if (call.getMethodAsString().equals("mavenCentral")) {
-            addSoftwareRepository(SoftwareRepositoryUrls.MAVEN_CENTRAL);
-            return ExpressionVisitOutcome.PROCESSED;
-        } if (call.getMethodAsString().equals("jcenter")) {
-            addSoftwareRepository(SoftwareRepositoryUrls.JCENTER);
-            return ExpressionVisitOutcome.PROCESSED;
-        } if (call.getMethodAsString().equals("google")) {
-            addSoftwareRepository(SoftwareRepositoryUrls.GOOGLE);
+        }
+
+        String url = getRepositoryUrl(methodName);
+
+        if (nonNull(url)) {
+            addSoftwareRepository(url);
             return ExpressionVisitOutcome.PROCESSED;
         }
 
         return ExpressionVisitOutcome.IGNORED;
+    }
+
+    private String getRepositoryUrl(String methodName) {
+        if (methodName.equals("gradlePluginPortal")) {
+            return SoftwareRepositoryUrls.GRADLE_PLUGIN_PORTAL;
+        } else if (methodName.equals("mavenCentral")) {
+            return SoftwareRepositoryUrls.MAVEN_CENTRAL;
+        } else if (methodName.equals("jcenter")) {
+            return SoftwareRepositoryUrls.JCENTER;
+        } else if (methodName.equals("google")) {
+            return SoftwareRepositoryUrls.GOOGLE;
+        } else {
+            return customRepositoryRegistry.getCustomRepositoryUrl(methodName);
+        }
     }
 }

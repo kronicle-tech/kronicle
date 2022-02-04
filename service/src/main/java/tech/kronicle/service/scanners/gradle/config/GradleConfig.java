@@ -17,6 +17,7 @@ import java.util.List;
 public class GradleConfig {
 
     List<String> additionalSafeSoftwareRepositoryUrls;
+    List<GradleCustomRepository> customRepositories;
     @NotEmpty
     String pomCacheDir;
 }

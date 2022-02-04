@@ -15,7 +15,7 @@ public class SoftwareRepositoryUrlSafetyCheckerTest {
     private static final String CUSTOM_SAFE_REPO_URL = "https://repo.example.com/test-1/";
     private static final String UNSAFE_REPO_URL = "https://repo.example.com/test-2/";
 
-    private final SoftwareRepositoryUrlSafetyChecker underTest = new SoftwareRepositoryUrlSafetyChecker(new GradleConfig(List.of(CUSTOM_SAFE_REPO_URL), null));
+    private final SoftwareRepositoryUrlSafetyChecker underTest = new SoftwareRepositoryUrlSafetyChecker(new GradleConfig(List.of(CUSTOM_SAFE_REPO_URL), null, null));
     
     @Test
     public void isSoftwareRepositorySafeShouldMatchSafeUrlWithTrailingSlash() {
