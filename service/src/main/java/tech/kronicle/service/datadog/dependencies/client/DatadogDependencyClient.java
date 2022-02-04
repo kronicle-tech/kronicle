@@ -16,6 +16,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+import static java.util.Objects.isNull;
 import static tech.kronicle.service.utils.UriTemplateUtils.expandUriTemplate;
 
 @Client
@@ -51,6 +52,9 @@ public class DatadogDependencyClient {
   }
 
   private List<Dependency> createDependencies(ServiceDependenciesResponse serviceDependenciesResponse) {
+    if (isNull(serviceDependenciesResponse)) {
+      return List.of();
+    }
     return serviceDependenciesResponse.getServices().entrySet().stream()
             .flatMap(entry -> entry.getValue().getCalls().stream().map(call -> new Dependency(entry.getKey(), call)))
             .collect(Collectors.toList());
