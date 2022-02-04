@@ -20,13 +20,13 @@ import java.util.function.UnaryOperator;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.catchThrowable;
 
-public class ScannerFinderTest {
+public class ScannerRegistryTest {
 
     @Test
     public void getRepoScannerShouldReturnTheRepoScanner() {
         // Given
         TestRepoScanner repoScanner1 = new TestRepoScanner();
-        ScannerFinder underTest = new ScannerFinder(List.of(repoScanner1));
+        ScannerRegistry underTest = new ScannerRegistry(List.of(repoScanner1));
 
         // When
         RepoScanner returnValue = underTest.getRepoScanner();
@@ -40,7 +40,7 @@ public class ScannerFinderTest {
         // Given
         TestComponentScanner componentScanner1 = new TestComponentScanner();
         TestRepoScanner repoScanner1 = new TestRepoScanner();
-        ScannerFinder underTest = new ScannerFinder(List.of(componentScanner1, repoScanner1));
+        ScannerRegistry underTest = new ScannerRegistry(List.of(componentScanner1, repoScanner1));
 
         // When
         RepoScanner returnValue = underTest.getRepoScanner();
@@ -52,7 +52,7 @@ public class ScannerFinderTest {
     @Test
     public void getRepoScannerWhenThereIsNoRepoScannerShouldThrowARuntimeException() {
         // Given
-        ScannerFinder underTest = new ScannerFinder(List.of());
+        ScannerRegistry underTest = new ScannerRegistry(List.of());
 
         // When
         Throwable thrown = catchThrowable(underTest::getRepoScanner);
@@ -65,7 +65,7 @@ public class ScannerFinderTest {
     @Test
     public void getRepoScannerWhenThereIsMoreThanOneRepoScannerShouldThrowARuntimeException() {
         // Given
-        ScannerFinder underTest = new ScannerFinder(List.of(new TestRepoScanner(), new TestRepoScanner()));
+        ScannerRegistry underTest = new ScannerRegistry(List.of(new TestRepoScanner(), new TestRepoScanner()));
 
         // When
         Throwable thrown = catchThrowable(underTest::getRepoScanner);
@@ -80,7 +80,7 @@ public class ScannerFinderTest {
         // Given
         TestComponentScanner componentScanner1 = new TestComponentScanner();
         TestComponentScanner componentScanner2 = new TestComponentScanner();
-        ScannerFinder underTest = new ScannerFinder(List.of(componentScanner1, componentScanner2));
+        ScannerRegistry underTest = new ScannerRegistry(List.of(componentScanner1, componentScanner2));
 
         // When
         List<ComponentScanner> returnValue = underTest.getComponentScanners();
@@ -94,7 +94,7 @@ public class ScannerFinderTest {
         // Given
         TestRepoScanner repoScanner1 = new TestRepoScanner();
         TestComponentScanner componentScanner1 = new TestComponentScanner();
-        ScannerFinder underTest = new ScannerFinder(List.of(repoScanner1, componentScanner1));
+        ScannerRegistry underTest = new ScannerRegistry(List.of(repoScanner1, componentScanner1));
 
         // When
         List<ComponentScanner> returnValue = underTest.getComponentScanners();
@@ -108,7 +108,7 @@ public class ScannerFinderTest {
         // Given
         TestCodebaseScanner codebaseScanner1 = new TestCodebaseScanner();
         TestCodebaseScanner codebaseScanner2 = new TestCodebaseScanner();
-        ScannerFinder underTest = new ScannerFinder(List.of(codebaseScanner1, codebaseScanner2));
+        ScannerRegistry underTest = new ScannerRegistry(List.of(codebaseScanner1, codebaseScanner2));
 
         // When
         List<CodebaseScanner> returnValue = underTest.getCodebaseScanners();
@@ -122,7 +122,7 @@ public class ScannerFinderTest {
         // Given
         TestRepoScanner repoScanner1 = new TestRepoScanner();
         TestCodebaseScanner codebaseScanner1 = new TestCodebaseScanner();
-        ScannerFinder underTest = new ScannerFinder(List.of(repoScanner1, codebaseScanner1));
+        ScannerRegistry underTest = new ScannerRegistry(List.of(repoScanner1, codebaseScanner1));
 
         // When
         List<CodebaseScanner> returnValue = underTest.getCodebaseScanners();
@@ -136,7 +136,7 @@ public class ScannerFinderTest {
         // Given
         TestComponentAndCodebaseScanner componentAndCodebaseScanner1 = new TestComponentAndCodebaseScanner();
         TestComponentAndCodebaseScanner componentAndCodebaseScanner2 = new TestComponentAndCodebaseScanner();
-        ScannerFinder underTest = new ScannerFinder(List.of(componentAndCodebaseScanner1, componentAndCodebaseScanner2));
+        ScannerRegistry underTest = new ScannerRegistry(List.of(componentAndCodebaseScanner1, componentAndCodebaseScanner2));
 
         // When
         List<ComponentAndCodebaseScanner> returnValue = underTest.getComponentAndCodebaseScanners();
@@ -150,7 +150,7 @@ public class ScannerFinderTest {
         // Given
         TestRepoScanner repoScanner1 = new TestRepoScanner();
         TestComponentAndCodebaseScanner componentAndCodebaseScanner1 = new TestComponentAndCodebaseScanner();
-        ScannerFinder underTest = new ScannerFinder(List.of(repoScanner1, componentAndCodebaseScanner1));
+        ScannerRegistry underTest = new ScannerRegistry(List.of(repoScanner1, componentAndCodebaseScanner1));
 
         // When
         List<ComponentAndCodebaseScanner> returnValue = underTest.getComponentAndCodebaseScanners();
@@ -164,7 +164,7 @@ public class ScannerFinderTest {
         // Given
         TestLateComponentScanner lateComponentScanner1 = new TestLateComponentScanner();
         TestLateComponentScanner lateComponentScanner2 = new TestLateComponentScanner();
-        ScannerFinder underTest = new ScannerFinder(List.of(lateComponentScanner1, lateComponentScanner2));
+        ScannerRegistry underTest = new ScannerRegistry(List.of(lateComponentScanner1, lateComponentScanner2));
 
         // When
         List<LateComponentScanner> returnValue = underTest.getLateComponentScanners();
@@ -178,7 +178,7 @@ public class ScannerFinderTest {
         // Given
         TestRepoScanner repoScanner1 = new TestRepoScanner();
         TestLateComponentScanner lateComponentScanner1 = new TestLateComponentScanner();
-        ScannerFinder underTest = new ScannerFinder(List.of(repoScanner1, lateComponentScanner1));
+        ScannerRegistry underTest = new ScannerRegistry(List.of(repoScanner1, lateComponentScanner1));
 
         // When
         List<LateComponentScanner> returnValue = underTest.getLateComponentScanners();
@@ -201,10 +201,10 @@ public class ScannerFinderTest {
         TestLateComponentScanner lateComponentScanner2 = new TestLateComponentScanner();
         List<Scanner<?, ?>> scanners = List.of(repoScanner1, componentScanner1, componentScanner2, codebaseScanner1, codebaseScanner2,
                 componentAndCodebaseScanner1, componentAndCodebaseScanner2, lateComponentScanner1, lateComponentScanner2);
-        ScannerFinder underTest = new ScannerFinder(scanners);
+        ScannerRegistry underTest = new ScannerRegistry(scanners);
 
         // When
-        List<Scanner<?, ?>> returnValue = underTest.getAllScanners();
+        List<Scanner<?, ?>> returnValue = underTest.getAllItems();
 
         // Then
         assertThat(returnValue).isEqualTo(scanners);
@@ -215,10 +215,10 @@ public class ScannerFinderTest {
         // Given
         TestComponentScanner componentScanner1 = new TestComponentScanner();
         TestComponentScanner componentScanner2 = new TestComponentScanner();
-        ScannerFinder underTest = new ScannerFinder(List.of(componentScanner1, componentScanner2));
+        ScannerRegistry underTest = new ScannerRegistry(List.of(componentScanner1, componentScanner2));
 
         // When
-        Scanner<?, ?> returnValue = underTest.getScanner(componentScanner1.id());
+        Scanner<?, ?> returnValue = underTest.getItem(componentScanner1.id());
 
         // Then
         assertThat(returnValue).isSameAs(componentScanner1);
@@ -229,10 +229,10 @@ public class ScannerFinderTest {
         // Given
         String componentId = "unknown";
         TestComponentScanner componentScanner1 = new TestComponentScanner();
-        ScannerFinder underTest = new ScannerFinder(List.of(componentScanner1));
+        ScannerRegistry underTest = new ScannerRegistry(List.of(componentScanner1));
 
         // When
-        Scanner<?, ?> returnValue = underTest.getScanner(componentId);
+        Scanner<?, ?> returnValue = underTest.getItem(componentId);
 
         // Then
         assertThat(returnValue).isNull();

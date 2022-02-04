@@ -31,13 +31,13 @@ public class NpmPackageExtractor {
     private final FileUtils fileUtils;
     private final ObjectMapper objectMapper;
 
-    public Stream<Software> extractPackages(Path file) {
+    public Stream<Software> extractPackages(String scannerId, Path file) {
         PackageJson packageJson = readPackageJsonFile(getPackageJsonFile(file));
         if (isNull(packageJson)) {
             return Stream.empty();
         }
         NpmPackageLock npmPackageLock = readNpmPackageLockFile(file);
-        return extractSoftware(npmPackageLock, getDirectDependencyNames(packageJson), SoftwareDependencyType.DIRECT);
+        return extractSoftware(scannerId, npmPackageLock, getDirectDependencyNames(packageJson), SoftwareDependencyType.DIRECT);
     }
 
     private Path getPackageJsonFile(Path packageLock) {
@@ -70,18 +70,19 @@ public class NpmPackageExtractor {
                 .collect(Collectors.toSet());
     }
 
-    private Stream<Software> extractSoftware(NpmDependencies npmDependencies, Set<String> directDependencyNames, SoftwareDependencyType dependencyType) {
+    private Stream<Software> extractSoftware(String scannerId, NpmDependencies npmDependencies, Set<String> directDependencyNames, SoftwareDependencyType dependencyType) {
         if (isNull(npmDependencies.getDependencies())) {
             return Stream.empty();
         }
         return npmDependencies.getDependencies().entrySet().stream()
                 .flatMap(entry -> Stream.concat(
-                        Stream.of(createSoftwareItem(entry, directDependencyNames, dependencyType)),
-                        extractSoftware(entry.getValue(), directDependencyNames, SoftwareDependencyType.TRANSITIVE)));
+                        Stream.of(createSoftwareItem(scannerId, entry, directDependencyNames, dependencyType)),
+                        extractSoftware(scannerId, entry.getValue(), directDependencyNames, SoftwareDependencyType.TRANSITIVE)));
     }
 
-    private Software createSoftwareItem(Map.Entry<String, NpmDependency> entry, Set<String> directDependencyNames, SoftwareDependencyType dependencyType) {
+    private Software createSoftwareItem(String scannerId, Map.Entry<String, NpmDependency> entry, Set<String> directDependencyNames, SoftwareDependencyType dependencyType) {
         return Software.builder()
+                .scannerId(scannerId)
                 .name(entry.getKey())
                 .packaging(NpmPackagings.NPM_PACKAGE)
                 .version(entry.getValue().getVersion())

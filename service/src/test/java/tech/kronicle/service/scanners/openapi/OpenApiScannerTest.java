@@ -86,7 +86,7 @@ public class OpenApiScannerTest extends BaseCodebaseScannerTest {
         Codebase codebase = new Codebase(getTestRepo(), getCodebaseDir("NoOpenApiSpecs"));
         ComponentAndCodebase componentAndCodebase = new ComponentAndCodebase(component, codebase);
         ComponentMetadata componentMetadata = ComponentMetadata.builder().build();
-        underTest.refresh(componentMetadata);
+        underTest.refresh(componentMetadata, null);
 
         // When
         Output<Void> returnValue = underTest.scan(componentAndCodebase);
@@ -99,7 +99,7 @@ public class OpenApiScannerTest extends BaseCodebaseScannerTest {
 
         // Given
         changeWireMockHostedOpenApiSpec();
-        underTest.refresh(componentMetadata);
+        underTest.refresh(componentMetadata, null);
 
         // When
         returnValue = underTest.scan(componentAndCodebase);

@@ -1,5 +1,6 @@
 package tech.kronicle.service.repofinders.gitlab.client;
 
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpStatus;
@@ -32,15 +33,11 @@ import static tech.kronicle.service.utils.UriTemplateUtils.expandUriTemplate;
 
 @Client
 @Slf4j
+@RequiredArgsConstructor
 public class GitLabClient {
 
   private final WebClient webClient;
   private final GitLabRepoFinderConfig config;
-
-  public GitLabClient(WebClient webClient, GitLabRepoFinderConfig config) {
-    this.webClient = webClient;
-    this.config = config;
-  }
 
   public List<ApiRepo> getRepos(String baseUrl, GitLabRepoFinderAccessTokenConfig accessToken) {
     return getRepos(accessToken, baseUrl, getAllProjectsUri());

@@ -1,6 +1,7 @@
 package tech.kronicle.service.scanners.openapi;
 
 import tech.kronicle.componentmetadata.models.ComponentMetadata;
+import tech.kronicle.sdk.models.Dependency;
 import tech.kronicle.sdk.models.ScannerError;
 import tech.kronicle.sdk.models.openapi.OpenApiSpec;
 import tech.kronicle.service.scanners.ComponentAndCodebaseScanner;
@@ -41,7 +42,7 @@ public class OpenApiScanner extends ComponentAndCodebaseScanner {
     }
 
     @Override
-    public void refresh(ComponentMetadata componentMetadata) {
+    public void refresh(ComponentMetadata componentMetadata, List<Dependency> dependencies) {
         specParser.clearCache();
     }
 

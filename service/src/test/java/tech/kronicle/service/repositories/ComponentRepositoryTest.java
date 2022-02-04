@@ -20,7 +20,7 @@ import tech.kronicle.service.scanners.models.Output;
 import tech.kronicle.service.services.ComponentMetadataAssembler;
 import tech.kronicle.service.services.ComponentMetadataLoader;
 import tech.kronicle.service.services.ScanEngine;
-import tech.kronicle.service.services.ScannerFinder;
+import tech.kronicle.service.services.ScannerRegistry;
 import tech.kronicle.service.services.TestEngine;
 import tech.kronicle.service.services.TestFinder;
 import tech.kronicle.service.services.ValidatorService;
@@ -67,7 +67,7 @@ public class ComponentRepositoryTest {
     @Mock
     private ScanEngine mockScanEngine;
     @Mock
-    private ScannerFinder mockScannerFinder;
+    private ScannerRegistry mockScannerRegistry;
     @Mock
     private TestEngine mockTestEngine;
     @Mock
@@ -79,7 +79,7 @@ public class ComponentRepositoryTest {
         ValidatorService validatorService = ValidatorServiceFactory.createValidationService();
         componentMetadataLoaderSpy = Mockito.spy(new ComponentMetadataLoader(validatorService));
         underTest = new ComponentRepository(mockComponentMetadataRepository, componentMetadataLoaderSpy, new ComponentMetadataAssembler(), mockScanEngine,
-                mockScannerFinder, mockTestEngine, mockTestFinder);
+                mockScannerRegistry, mockTestEngine, mockTestFinder);
     }
 
     @ParameterizedTest
@@ -585,7 +585,7 @@ public class ComponentRepositoryTest {
     @Test
     public void getScannersShouldHandleAnEmptyListOfScanners() {
         // Given
-        when(mockScannerFinder.getAllScanners()).thenReturn(List.of());
+        when(mockScannerRegistry.getAllItems()).thenReturn(List.of());
 
         // When
         List<Scanner> returnValue = underTest.getScanners();
@@ -597,7 +597,7 @@ public class ComponentRepositoryTest {
     @Test
     public void getScannersShouldConvertAListOfScannersAndSortThenById() {
         // Given
-        when(mockScannerFinder.getAllScanners()).thenReturn(List.of(
+        when(mockScannerRegistry.getAllItems()).thenReturn(List.of(
                 new TestScanner("test-id-c", "Test Description 1", "Test Notes 1"),
                 new TestScanner("test-id-a", "Test Description 2", "Test Notes 2"),
                 new TestScanner("test-id-b", "Test Description 3", "Test Notes 3")));
@@ -617,7 +617,7 @@ public class ComponentRepositoryTest {
         // Given
         TestScanner scanner = new TestScanner("test-id-1", "Test Description 1", "Test Notes 1");
         // Had to use doReturn() syntax for Mockito due to getScanner method returning a generic type with a "wildcard capture"
-        doReturn(scanner).when(mockScannerFinder).getScanner(scanner.id());
+        doReturn(scanner).when(mockScannerRegistry).getItem(scanner.id());
 
         // When
         Scanner returnValue = underTest.getScanner(scanner.id());
@@ -630,7 +630,7 @@ public class ComponentRepositoryTest {
     public void getScannerShouldNotReturnAScannerWhenScannerIdIsUnknown() {
         // Given
         String scannerId = "unknown";
-        when(mockScannerFinder.getScanner(scannerId)).thenReturn(null);
+        when(mockScannerRegistry.getItem(scannerId)).thenReturn(null);
 
         // When
         Scanner returnValue = underTest.getScanner(scannerId);

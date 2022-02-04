@@ -43,7 +43,7 @@ public class ScannerTest {
         ExampleScanner underTest = new ExampleScanner();
 
         // When
-        underTest.refresh(componentMetadata);
+        underTest.refresh(componentMetadata, null);
     }
 
     @Test

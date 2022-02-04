@@ -1,6 +1,7 @@
 package tech.kronicle.service.scanners.sonarqube;
 
 import tech.kronicle.componentmetadata.models.ComponentMetadata;
+import tech.kronicle.sdk.models.Dependency;
 import tech.kronicle.sdk.models.ScannerError;
 import tech.kronicle.sdk.models.Summary;
 import tech.kronicle.sdk.models.SummaryMissingComponent;
@@ -34,7 +35,7 @@ public class SonarQubeScanner extends ComponentAndCodebaseScanner {
     }
 
     @Override
-    public void refresh(ComponentMetadata componentMetadata) {
+    public void refresh(ComponentMetadata componentMetadata, List<Dependency> dependencies) {
         service.refresh();
     }
 

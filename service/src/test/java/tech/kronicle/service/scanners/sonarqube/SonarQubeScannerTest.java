@@ -67,7 +67,7 @@ public class SonarQubeScannerTest {
     @Test
     public void refreshShouldRefreshTheService() {
         // When
-        underTest.refresh(ComponentMetadata.builder().build());
+        underTest.refresh(ComponentMetadata.builder().build(), null);
 
         // Then
         verify(mockService).refresh();

@@ -2,6 +2,7 @@ package tech.kronicle.service.scanners.zipkin;
 
 import tech.kronicle.componentmetadata.models.ComponentMetadata;
 import tech.kronicle.sdk.models.Component;
+import tech.kronicle.sdk.models.Dependency;
 import tech.kronicle.sdk.models.Summary;
 import tech.kronicle.sdk.models.SummaryCallGraph;
 import tech.kronicle.sdk.models.SummaryComponentDependencies;
@@ -64,14 +65,14 @@ public class ZipkinScanner extends ComponentScanner {
     }
 
     @Override
-    public void refresh(ComponentMetadata componentMetadata) {
-        dependencies = List.of();
+    public void refresh(ComponentMetadata componentMetadata, List<Dependency> dependencies) {
+        this.dependencies = List.of();
         List<List<Span>> traces = List.of();
 
         try {
             log.info("Getting Zipkin dependencies");
-            dependencies = zipkinService.getDependencies();
-            log.info("Retrieved {} Zipkin dependencies", dependencies.size());
+            this.dependencies = zipkinService.getDependencies();
+            log.info("Retrieved {} Zipkin dependencies", this.dependencies.size());
             log.info("Getting Zipkin services");
             List<Service> services = zipkinService.getServices();
             log.info("Retrieved {} Zipkin services", services.size());
@@ -83,7 +84,7 @@ public class ZipkinScanner extends ComponentScanner {
             log.error("Could not fetch information from Zipkin", e);
         }
 
-        componentDependencies = componentDependencyCollator.collateDependencies(traces, componentMetadata.getComponents());
+        componentDependencies = componentDependencyCollator.collateDependencies(traces, dependencies);
         log.info("Retrieved {} Zipkin component dependencies", componentDependencies.getDependencies().size());
         log.info("Getting Zipkin sub-component dependencies");
         subComponentDependencies = subComponentDependencyCollator.collateDependencies(traces);

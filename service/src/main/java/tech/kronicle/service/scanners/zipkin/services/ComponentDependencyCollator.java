@@ -2,6 +2,7 @@ package tech.kronicle.service.scanners.zipkin.services;
 
 import tech.kronicle.sdk.models.Component;
 import tech.kronicle.sdk.models.ComponentDependency;
+import tech.kronicle.sdk.models.Dependency;
 import tech.kronicle.sdk.models.DependencyDirection;
 import tech.kronicle.sdk.models.ObjectWithReference;
 import tech.kronicle.sdk.models.SummaryComponentDependencies;
@@ -35,11 +36,10 @@ public class ComponentDependencyCollator {
     private final Comparator<SummaryComponentDependencyNode> componentNodeComparator;
     private final DependencyHelper dependencyHelper;
 
-    public SummaryComponentDependencies collateDependencies(List<List<Span>> traces, List<Component> components) {
+    public SummaryComponentDependencies collateDependencies(List<List<Span>> traces, List<Dependency> otherDependencies) {
         NodesAndDependencies<SummaryComponentDependencyNode, SummaryComponentDependency> nodesAndDependencies = genericDependencyCollator.createDependencies(
                 traces, this::createComponentDependencyNode, componentNodeComparator, dependencyHelper::mergeDuplicateDependencies);
-        addManualComponentDependencies(nodesAndDependencies.getNodes(), nodesAndDependencies.getDependencies(),
-                getManualComponentDependencies(components));
+        addOtherComponentDependencies(nodesAndDependencies.getNodes(), nodesAndDependencies.getDependencies(), otherDependencies);
         return createComponentDependencies(nodesAndDependencies);
     }
 
@@ -47,50 +47,35 @@ public class ComponentDependencyCollator {
         return new SummaryComponentDependencyNode(span.getLocalEndpoint().getServiceName());
     }
 
-    private List<CollatorManualComponentDependency> getManualComponentDependencies(List<Component> components) {
-        return components.stream()
-                .flatMap(component -> component.getDependencies().stream()
-                        .map(dependency -> createManualComponentDependency(component, dependency)))
-                .distinct()
-                .collect(Collectors.toList());
-    }
-
-    private CollatorManualComponentDependency createManualComponentDependency(Component component, ComponentDependency dependency) {
-        if (Objects.equals(dependency.getDirection(), DependencyDirection.INBOUND)) {
-            return new CollatorManualComponentDependency(dependency.getTargetComponentId(), component.getId());
-        } else {
-            return new CollatorManualComponentDependency(component.getId(), dependency.getTargetComponentId());
-        }
-    }
-
     private SummaryComponentDependencies createComponentDependencies(
             NodesAndDependencies<SummaryComponentDependencyNode, SummaryComponentDependency> nodesAndDependencies) {
         return new SummaryComponentDependencies(nodesAndDependencies.getNodes(), nodesAndDependencies.getDependencies());
     }
 
-    private void addManualComponentDependencies(List<SummaryComponentDependencyNode> nodes, List<SummaryComponentDependency> dependencies,
-            List<CollatorManualComponentDependency> manualComponentDependencies) {
-        Map<Boolean, List<CollatorManualComponentDependency>> grouped = manualComponentDependencies.stream()
-                .collect(Collectors.groupingBy(manualComponentDependency ->
-                        dependencyAlreadyExists(nodes, dependencies, manualComponentDependency)));
+    private void addOtherComponentDependencies(List<SummaryComponentDependencyNode> nodes, List<SummaryComponentDependency> dependencies,
+            List<Dependency> otherComponentDependencies) {
+        Map<Boolean, List<Dependency>> grouped = otherComponentDependencies.stream()
+                .distinct()
+                .collect(Collectors.groupingBy(otherComponentDependency ->
+                        dependencyAlreadyExists(nodes, dependencies, otherComponentDependency)));
 
-        Optional.ofNullable(grouped.get(true)).ifPresent(duplicateDependencies -> duplicateDependencies.forEach(manualComponentDependency ->
-                log.warn("Manual component dependency \"{}\" is a duplicate of a dependency in Zipkin and should be removed",
-                        manualComponentDependency.reference())));
+        Optional.ofNullable(grouped.get(true)).ifPresent(duplicateDependencies -> duplicateDependencies.forEach(otherComponentDependency ->
+                log.warn("Other component dependency \"{}\" is a duplicate of a dependency in Zipkin and should be removed",
+                        otherComponentDependency.reference())));
 
-        Optional.ofNullable(grouped.get(false)).ifPresent(newDependencies -> createDependenciesForManualDependencies(nodes, newDependencies)
+        Optional.ofNullable(grouped.get(false)).ifPresent(newDependencies -> createDependenciesForOtherDependencies(nodes, newDependencies)
                 .forEach(dependencies::add));
     }
 
-    private Stream<SummaryComponentDependency> createDependenciesForManualDependencies(List<SummaryComponentDependencyNode> nodes,
-            List<CollatorManualComponentDependency> newDependencies) {
-        return newDependencies.stream().map(manualComponentDependency -> createDependencyForManualDependency(nodes, manualComponentDependency));
+    private Stream<SummaryComponentDependency> createDependenciesForOtherDependencies(List<SummaryComponentDependencyNode> nodes,
+            List<Dependency> newDependencies) {
+        return newDependencies.stream().map(otherComponentDependency -> createDependencyForOtherDependency(nodes, otherComponentDependency));
     }
 
-    private SummaryComponentDependency createDependencyForManualDependency(List<SummaryComponentDependencyNode> nodes,
-            CollatorManualComponentDependency manualComponentDependency) {
-        return new SummaryComponentDependency(getOrAddNode(nodes, manualComponentDependency.sourceComponentId),
-                getOrAddNode(nodes, manualComponentDependency.targetComponentId), List.of(), true, 0, null, null, null);
+    private SummaryComponentDependency createDependencyForOtherDependency(List<SummaryComponentDependencyNode> nodes,
+            Dependency otherComponentDependency) {
+        return new SummaryComponentDependency(getOrAddNode(nodes, otherComponentDependency.getSourceComponentId()),
+                getOrAddNode(nodes, otherComponentDependency.getTargetComponentId()), List.of(), true, 0, null, null, null);
     }
 
     private int getOrAddNode(List<SummaryComponentDependencyNode> nodes, String componentId) {
@@ -107,10 +92,10 @@ public class ComponentDependencyCollator {
     }
 
     private boolean dependencyAlreadyExists(List<SummaryComponentDependencyNode> nodes, List<SummaryComponentDependency> dependencies,
-            CollatorManualComponentDependency manualComponentDependency) {
+            Dependency otherComponentDependency) {
         return dependencies.stream()
-                .anyMatch(dependency -> nodeComponentIdEqualsComponentId(nodes, dependency.getSourceIndex(), manualComponentDependency.sourceComponentId)
-                        && nodeComponentIdEqualsComponentId(nodes, dependency.getTargetIndex(), manualComponentDependency.targetComponentId));
+                .anyMatch(dependency -> nodeComponentIdEqualsComponentId(nodes, dependency.getSourceIndex(), otherComponentDependency.getSourceComponentId())
+                        && nodeComponentIdEqualsComponentId(nodes, dependency.getTargetIndex(), otherComponentDependency.getTargetComponentId()));
     }
 
     private boolean nodeComponentIdEqualsComponentId(List<SummaryComponentDependencyNode> nodes, Integer index, String componentId) {
@@ -119,16 +104,5 @@ public class ComponentDependencyCollator {
 
     private String getNodeComponentIdByIndex(List<SummaryComponentDependencyNode> nodes, int index) {
         return nodes.get(index).getComponentId();
-    }
-
-    @Value
-    private static class CollatorManualComponentDependency implements ObjectWithReference {
-
-        String sourceComponentId;
-        String targetComponentId;
-
-        public String reference() {
-            return sourceComponentId + " to " + targetComponentId;
-        }
     }
 }
