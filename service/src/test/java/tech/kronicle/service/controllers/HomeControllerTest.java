@@ -2,7 +2,6 @@ package tech.kronicle.service.controllers;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import tech.kronicle.sdk.models.GetHomeResponse;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -18,9 +17,9 @@ public class HomeControllerTest {
     @Test
     public void getHomeShouldReturnHome() {
         // When
-        GetHomeResponse returnValue = underTest.getHome();
+        String returnValue = underTest.getHome();
 
         // Then
-        assertThat(returnValue).isNotNull();
+        assertThat(returnValue).isEqualTo("OK");
     }
 }

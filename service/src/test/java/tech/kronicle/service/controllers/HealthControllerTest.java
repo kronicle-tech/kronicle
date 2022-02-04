@@ -2,7 +2,6 @@ package tech.kronicle.service.controllers;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import tech.kronicle.sdk.models.GetHealthResponse;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -18,9 +17,9 @@ public class HealthControllerTest {
     @Test
     public void getHealthShouldReturnHealth() {
         // When
-        GetHealthResponse returnValue = underTest.getHealth();
+        String returnValue = underTest.getHealth();
 
         // Then
-        assertThat(returnValue).isNotNull();
+        assertThat(returnValue).isEqualTo("OK");
     }
 }

@@ -5,7 +5,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import tech.kronicle.sdk.models.GetHomeResponse;
 import tech.kronicle.service.partialresponse.PartialResponse;
 
 @RestController
@@ -16,12 +15,12 @@ public class HomeController {
     @Operation(
             tags = {"Home"},
             summary = "Get Home",
-            description = "Returns a 200 status code.  ",
+            description = "Returns the word OK.  ",
             operationId = "get-home"
     )
     @GetMapping
     @PartialResponse
-    public GetHomeResponse getHome() {
-        return new GetHomeResponse();
+    public String getHome() {
+        return "OK";
     }
 }
