@@ -1,8 +1,6 @@
 package tech.kronicle.service.scanners.zipkin.services;
 
-import tech.kronicle.sdk.models.Component;
-import tech.kronicle.sdk.models.ComponentDependency;
-import tech.kronicle.sdk.models.DependencyDirection;
+import tech.kronicle.sdk.models.Dependency;
 import tech.kronicle.sdk.models.SummaryComponentDependencies;
 import tech.kronicle.sdk.models.SummaryComponentDependency;
 import tech.kronicle.sdk.models.SummaryComponentDependencyNode;
@@ -10,7 +8,6 @@ import tech.kronicle.service.scanners.zipkin.models.api.Span;
 import tech.kronicle.service.scanners.zipkin.spring.ZipkinConfiguration;
 import tech.kronicle.service.scanners.zipkin.testutils.ZipkinApiModelTestHelper;
 import org.junit.jupiter.api.Test;
-import tech.kronicle.service.scanners.zipkin.ComponentDependencyHelper;
 
 import java.util.List;
 
@@ -20,16 +17,16 @@ public class ComponentDependencyCollatorTest {
     
     private final ZipkinApiModelTestHelper testHelper = new ZipkinApiModelTestHelper();
     private final ComponentDependencyCollator underTest = new ComponentDependencyCollator(new GenericDependencyCollator(), new ZipkinConfiguration().componentNodeComparator(),
-            new DependencyHelper(new DependencyDurationCalculator(), new SubComponentDependencyTagFilter()));;
+            new DependencyHelper(new DependencyDurationCalculator(), new SubComponentDependencyTagFilter()));
 
     @Test
     public void collateDependenciesWhenThereANoTracesShouldReturnNoDependencies() {
         // Given
         List<List<Span>> traces = List.of();
-        List<Component> components = List.of();
+        List<Dependency> dependencies = List.of();
 
         // When
-        SummaryComponentDependencies returnValue = underTest.collateDependencies(traces, components);
+        SummaryComponentDependencies returnValue = underTest.collateDependencies(traces, dependencies);
 
         // Then
         assertThat(returnValue.getNodes()).isEmpty();
@@ -47,10 +44,10 @@ public class ComponentDependencyCollatorTest {
                 .build();
         List<List<Span>> traces = List.of(
                 List.of(trace1Span1));
-        List<Component> components = List.of();
+        List<Dependency> dependencies = List.of();
 
         // When
-        SummaryComponentDependencies returnValue = underTest.collateDependencies(traces, components);
+        SummaryComponentDependencies returnValue = underTest.collateDependencies(traces, dependencies);
 
         // Then
         assertThat(returnValue.getNodes()).containsExactly(
@@ -77,10 +74,10 @@ public class ComponentDependencyCollatorTest {
                 .build();
         List<List<Span>> traces = List.of(
                 List.of(trace1Span1, trace1Span2));
-        List<Component> components = List.of();
+        List<Dependency> dependencies = List.of();
 
         // When
-        SummaryComponentDependencies returnValue = underTest.collateDependencies(traces, components);
+        SummaryComponentDependencies returnValue = underTest.collateDependencies(traces, dependencies);
 
         // Then
         assertThat(returnValue.getNodes()).containsExactly(
@@ -123,10 +120,10 @@ public class ComponentDependencyCollatorTest {
         List<List<Span>> traces = List.of(
                 List.of(trace1Span1, trace1Span2),
                 List.of(trace2Span1, trace2Span2));
-        List<Component> components = List.of();
+        List<Dependency> dependencies = List.of();
 
         // When
-        SummaryComponentDependencies returnValue = underTest.collateDependencies(traces, components);
+        SummaryComponentDependencies returnValue = underTest.collateDependencies(traces, dependencies);
 
         // Then
         assertThat(returnValue.getNodes()).containsExactly(
@@ -173,10 +170,10 @@ public class ComponentDependencyCollatorTest {
                 .build();
         List<List<Span>> traces = List.of(
                 List.of(trace1Span1, trace1Span2, trace1Span3, trace1Span4));
-        List<Component> components = List.of();
+        List<Dependency> dependencies = List.of();
 
         // When
-        SummaryComponentDependencies returnValue = underTest.collateDependencies(traces, components);
+        SummaryComponentDependencies returnValue = underTest.collateDependencies(traces, dependencies);
 
         // Then
         assertThat(returnValue.getNodes()).containsExactly(
@@ -223,10 +220,10 @@ public class ComponentDependencyCollatorTest {
                 .build();
         List<List<Span>> traces = List.of(
                 List.of(trace1Span1, trace1Span2, trace1Span3, trace1Span4));
-        List<Component> components = List.of();
+        List<Dependency> dependencies = List.of();
 
         // When
-        SummaryComponentDependencies returnValue = underTest.collateDependencies(traces, components);
+        SummaryComponentDependencies returnValue = underTest.collateDependencies(traces, dependencies);
 
         // Then
         assertThat(returnValue.getNodes()).containsExactly(
@@ -270,10 +267,10 @@ public class ComponentDependencyCollatorTest {
                 .build();
         List<List<Span>> traces = List.of(
                 List.of(trace1Span1, trace1Span2, trace1Span3, trace1Span4));
-        List<Component> components = List.of();
+        List<Dependency> dependencies = List.of();
 
         // When
-        SummaryComponentDependencies returnValue = underTest.collateDependencies(traces, components);
+        SummaryComponentDependencies returnValue = underTest.collateDependencies(traces, dependencies);
 
         // Then
         assertThat(returnValue.getNodes()).containsExactly(
@@ -316,10 +313,10 @@ public class ComponentDependencyCollatorTest {
         List<List<Span>> traces = List.of(
                 List.of(trace1Span1, trace1Span2),
                 List.of(trace2Span1, trace2Span2));
-        List<Component> components = List.of();
+        List<Dependency> dependencies = List.of();
 
         // When
-        SummaryComponentDependencies returnValue = underTest.collateDependencies(traces, components);
+        SummaryComponentDependencies returnValue = underTest.collateDependencies(traces, dependencies);
 
         // Then
         assertThat(returnValue.getNodes()).containsExactly(
@@ -361,10 +358,10 @@ public class ComponentDependencyCollatorTest {
                 .build();
         List<List<Span>> traces = List.of(
                 List.of(trace1Span1, trace1Span2, trace1Span3, trace1Span4));
-        List<Component> components = List.of();
+        List<Dependency> dependencies = List.of();
 
         // When
-        SummaryComponentDependencies returnValue = underTest.collateDependencies(traces, components);
+        SummaryComponentDependencies returnValue = underTest.collateDependencies(traces, dependencies);
 
         // Then
         assertThat(returnValue.getNodes()).containsExactly(
@@ -395,10 +392,10 @@ public class ComponentDependencyCollatorTest {
                 .build();
         List<List<Span>> traces = List.of(
                 List.of(trace1Span1, trace1Span2));
-        List<Component> components = List.of();
+        List<Dependency> dependencies = List.of();
 
         // When
-        SummaryComponentDependencies returnValue = underTest.collateDependencies(traces, components);
+        SummaryComponentDependencies returnValue = underTest.collateDependencies(traces, dependencies);
 
         // Then
         assertThat(returnValue.getNodes()).containsExactly(
@@ -425,11 +422,11 @@ public class ComponentDependencyCollatorTest {
                 .build();
         List<List<Span>> traces = List.of(
                 List.of(trace1Span1, trace1Span2));
-        List<Component> components = List.of(
-                ComponentDependencyHelper.createComponentWithDependencies("test-service-3", "test-service-4"));
+        List<Dependency> dependencies = List.of(
+                new Dependency("test-service-3", "test-service-4"));
 
         // When
-        SummaryComponentDependencies returnValue = underTest.collateDependencies(traces, components);
+        SummaryComponentDependencies returnValue = underTest.collateDependencies(traces, dependencies);
 
         // Then
         assertThat(returnValue.getNodes()).containsExactly(
@@ -468,12 +465,12 @@ public class ComponentDependencyCollatorTest {
                 .build();
         List<List<Span>> traces = List.of(
                 List.of(trace1Span1, trace1Span2, trace1Span3));
-        List<Component> components = List.of(
-                ComponentDependencyHelper.createComponentWithDependencies("test-service-2", "test-service-3"),
-                ComponentDependencyHelper.createComponentWithDependencies("test-service-3", "test-service-4"));
+        List<Dependency> dependencies = List.of(
+                new Dependency("test-service-2", "test-service-3"),
+                new Dependency("test-service-3", "test-service-4"));
 
         // When
-        SummaryComponentDependencies returnValue = underTest.collateDependencies(traces, components);
+        SummaryComponentDependencies returnValue = underTest.collateDependencies(traces, dependencies);
 
         // Then
         assertThat(returnValue.getNodes()).containsExactly(
@@ -492,18 +489,11 @@ public class ComponentDependencyCollatorTest {
     public void collateDependenciesWhenThereIsAnInboundManualDependencyShouldCorrectlyHandleTheDirectionOfTheDependency() {
         // Given
         List<List<Span>> traces = List.of();
-        List<Component> components = List.of(
-                Component.builder()
-                        .id("test-service-1")
-                        .dependencies(List.of(
-                                ComponentDependency.builder()
-                                        .targetComponentId("test-service-2")
-                                        .direction(DependencyDirection.INBOUND)
-                                        .build()))
-                        .build());
+        List<Dependency> dependencies = List.of(
+                new Dependency("test-service-2", "test-service-1"));
 
         // When
-        SummaryComponentDependencies returnValue = underTest.collateDependencies(traces, components);
+        SummaryComponentDependencies returnValue = underTest.collateDependencies(traces, dependencies);
 
         // Then
         assertThat(returnValue.getNodes()).containsExactly(
@@ -517,25 +507,12 @@ public class ComponentDependencyCollatorTest {
     public void collateDependenciesWhenThereAre2IdenticalManualDependenciesShouldCorrectlyHandleThem() {
         // Given
         List<List<Span>> traces = List.of();
-        List<Component> components = List.of(
-                Component.builder()
-                        .id("test-service-1")
-                        .dependencies(List.of(
-                                ComponentDependency.builder()
-                                        .targetComponentId("test-service-2")
-                                        .build()))
-                        .build(),
-                Component.builder()
-                        .id("test-service-2")
-                        .dependencies(List.of(
-                                ComponentDependency.builder()
-                                        .targetComponentId("test-service-1")
-                                        .direction(DependencyDirection.INBOUND)
-                                        .build()))
-                        .build());
+        List<Dependency> dependencies = List.of(
+                new Dependency("test-service-1", "test-service-2"),
+                new Dependency("test-service-1", "test-service-2"));
 
         // When
-        SummaryComponentDependencies returnValue = underTest.collateDependencies(traces, components);
+        SummaryComponentDependencies returnValue = underTest.collateDependencies(traces, dependencies);
 
         // Then
         assertThat(returnValue.getNodes()).containsExactly(
@@ -571,10 +548,10 @@ public class ComponentDependencyCollatorTest {
         // Span 3 is deliberately before span 2 to check that start and end timestamps are calculated correctly
         List<List<Span>> traces = List.of(
                 List.of(trace1Span1, trace1Span3, trace1Span2));
-        List<Component> components = List.of();
+        List<Dependency> dependencies = List.of();
 
         // When
-        SummaryComponentDependencies returnValue = underTest.collateDependencies(traces, components);
+        SummaryComponentDependencies returnValue = underTest.collateDependencies(traces, dependencies);
 
         // Then
         assertThat(returnValue.getNodes()).containsExactly(
@@ -611,11 +588,11 @@ public class ComponentDependencyCollatorTest {
         // Span 3 is deliberately before span 2 to check that start and end timestamps are calculated correctly
         List<List<Span>> traces = List.of(
                 List.of(trace1Span1, trace1Span3, trace1Span2));
-        List<Component> components = List.of(
-                ComponentDependencyHelper.createComponentWithDependencies("test-service-1", "test-service-2"));
+        List<Dependency> dependencies = List.of(
+                new Dependency("test-service-1", "test-service-2"));
 
         // When
-        SummaryComponentDependencies returnValue = underTest.collateDependencies(traces, components);
+        SummaryComponentDependencies returnValue = underTest.collateDependencies(traces, dependencies);
 
         // Then
         assertThat(returnValue.getNodes()).containsExactly(
@@ -652,11 +629,11 @@ public class ComponentDependencyCollatorTest {
         // Span 3 is deliberately before span 2 to check that start and end timestamps are calculated correctly
         List<List<Span>> traces = List.of(
                 List.of(trace1Span1, trace1Span3, trace1Span2));
-        List<Component> components = List.of(
-                ComponentDependencyHelper.createComponentWithDependencies("test-service-1", "test-service-2"));
+        List<Dependency> dependencies = List.of(
+                new Dependency("test-service-1", "test-service-2"));
 
         // When
-        SummaryComponentDependencies returnValue = underTest.collateDependencies(traces, components);
+        SummaryComponentDependencies returnValue = underTest.collateDependencies(traces, dependencies);
 
         // Then
         assertThat(returnValue.getNodes()).containsExactly(
@@ -693,11 +670,11 @@ public class ComponentDependencyCollatorTest {
         // Span 3 is deliberately before span 2 to check that start and end timestamps are calculated correctly
         List<List<Span>> traces = List.of(
                 List.of(trace1Span1, trace1Span3, trace1Span2));
-        List<Component> components = List.of(
-                ComponentDependencyHelper.createComponentWithDependencies("test-service-1", "test-service-2"));
+        List<Dependency> dependencies = List.of(
+                new Dependency("test-service-1", "test-service-2"));
 
         // When
-        SummaryComponentDependencies returnValue = underTest.collateDependencies(traces, components);
+        SummaryComponentDependencies returnValue = underTest.collateDependencies(traces, dependencies);
 
         // Then
         assertThat(returnValue.getNodes()).containsExactly(
@@ -734,11 +711,11 @@ public class ComponentDependencyCollatorTest {
         // Span 3 is deliberately before span 2 to check that start and end timestamps are calculated correctly
         List<List<Span>> traces = List.of(
                 List.of(trace1Span1, trace1Span3, trace1Span2));
-        List<Component> components = List.of(
-                ComponentDependencyHelper.createComponentWithDependencies("test-service-1", "test-service-2"));
+        List<Dependency> dependencies = List.of(
+                new Dependency("test-service-1", "test-service-2"));
 
         // When
-        SummaryComponentDependencies returnValue = underTest.collateDependencies(traces, components);
+        SummaryComponentDependencies returnValue = underTest.collateDependencies(traces, dependencies);
 
         // Then
         assertThat(returnValue.getNodes()).containsExactly(

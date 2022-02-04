@@ -44,7 +44,7 @@ public class NodeJsScanner  extends CodebaseScanner {
         List<Path> npmLockFiles = fileUtils.findFiles(input.getDir(), (file, ignored) -> file.endsWith(NodeJsFileNames.NPM_PACKAGE_LOCK_JSON))
                 .collect(Collectors.toList());
         List<Software> software = npmLockFiles.stream()
-                .flatMap(npmPackageExtractor::extractPackages)
+                .flatMap(file -> npmPackageExtractor.extractPackages(id(), file))
                 .collect(Collectors.toList());
         return Output.of(component -> component
                 .withNodeJs(new NodeJs(!npmLockFiles.isEmpty()))

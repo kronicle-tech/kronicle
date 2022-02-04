@@ -1,10 +1,14 @@
 package tech.kronicle.service.scanners.zipkin;
 
 import com.github.tomakehurst.wiremock.WireMockServer;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.web.reactive.function.client.WebClient;
 import tech.kronicle.componentmetadata.models.ComponentMetadata;
 import tech.kronicle.sdk.models.Component;
-import tech.kronicle.sdk.models.ComponentDependency;
-import tech.kronicle.sdk.models.DependencyDirection;
+import tech.kronicle.sdk.models.Dependency;
 import tech.kronicle.sdk.models.Summary;
 import tech.kronicle.sdk.models.SummaryCallGraph;
 import tech.kronicle.sdk.models.SummaryComponentDependency;
@@ -27,11 +31,6 @@ import tech.kronicle.service.scanners.zipkin.services.SubComponentDependencyTagF
 import tech.kronicle.service.scanners.zipkin.services.ZipkinService;
 import tech.kronicle.service.scanners.zipkin.spring.ZipkinConfiguration;
 import tech.kronicle.service.services.MapComparator;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.web.reactive.function.client.WebClient;
 
 import java.time.Clock;
 import java.time.Duration;
@@ -114,7 +113,7 @@ public class ZipkinScannerTest extends BaseScannerTest {
 
         // When
         // No exception should be raised
-        underTest.refresh(componentMetadata);
+        underTest.refresh(componentMetadata, List.of());
     }
 
     @Test
@@ -126,7 +125,7 @@ public class ZipkinScannerTest extends BaseScannerTest {
                 .id("test-service-1")
                 .build();
         ComponentMetadata componentMetadata = ComponentMetadata.builder().components(List.of(component)).build();
-        underTest.refresh(componentMetadata);
+        underTest.refresh(componentMetadata, List.of());
 
         // When
         Output<Void> returnValue = underTest.scan(component);
@@ -153,7 +152,7 @@ public class ZipkinScannerTest extends BaseScannerTest {
                 .id("unknown-service")
                 .build();
         ComponentMetadata componentMetadata = ComponentMetadata.builder().components(List.of(component)).build();
-        underTest.refresh(componentMetadata);
+        underTest.refresh(componentMetadata, List.of());
 
         // When
         Output<Void> returnValue = underTest.scan(component);
@@ -173,7 +172,7 @@ public class ZipkinScannerTest extends BaseScannerTest {
         wireMockServer = zipkinWireMockFactory.createWithRealResponses(PORT);
         createZipkinScanner();
         ComponentMetadata componentMetadata = ComponentMetadata.builder().build();
-        underTest.refresh(componentMetadata);
+        underTest.refresh(componentMetadata, List.of());
         Summary summary = Summary.EMPTY;
 
         // When
@@ -202,12 +201,13 @@ public class ZipkinScannerTest extends BaseScannerTest {
         createZipkinScanner();
         Component component = Component.builder()
                 .id("test-unknown-service-1")
-                .dependencies(List.of(
-                        new ComponentDependency("test-unknown-service-2", null, null),
-                        new ComponentDependency("test-unknown-service-3", DependencyDirection.INBOUND, null)))
                 .build();
         ComponentMetadata componentMetadata = ComponentMetadata.builder().components(List.of(component)).build();
-        underTest.refresh(componentMetadata);
+        List<Dependency> dependencies = List.of(
+                new Dependency("test-unknown-service-1", "test-unknown-service-2"),
+                new Dependency("test-unknown-service-3", "test-unknown-service-1")
+        );
+        underTest.refresh(componentMetadata, dependencies);
         Summary summary = Summary.EMPTY;
 
         // When
@@ -241,12 +241,13 @@ public class ZipkinScannerTest extends BaseScannerTest {
         createZipkinScanner();
         Component component = Component.builder()
                 .id("test-unknown-service-1")
-                .dependencies(List.of(
-                        new ComponentDependency("test-unknown-service-2", null, null),
-                        new ComponentDependency("test-unknown-service-3", DependencyDirection.INBOUND, null)))
                 .build();
         ComponentMetadata componentMetadata = ComponentMetadata.builder().components(List.of(component)).build();
-        underTest.refresh(componentMetadata);
+        List<Dependency> dependencies = List.of(
+                new Dependency("test-unknown-service-1", "test-unknown-service-2"),
+                new Dependency("test-unknown-service-3", "test-unknown-service-1")
+        );
+        underTest.refresh(componentMetadata, dependencies);
         Summary summary = Summary.EMPTY;
 
         // When
@@ -269,7 +270,7 @@ public class ZipkinScannerTest extends BaseScannerTest {
         wireMockServer = zipkinWireMockFactory.createWithRealResponses(PORT);
         createZipkinScanner();
         ComponentMetadata componentMetadata = ComponentMetadata.builder().build();
-        underTest.refresh(componentMetadata);
+        underTest.refresh(componentMetadata, List.of());
         Summary summary = Summary.EMPTY;
 
         // When
@@ -306,7 +307,7 @@ public class ZipkinScannerTest extends BaseScannerTest {
         wireMockServer = zipkinWireMockFactory.createWithRealResponses(PORT);
         createZipkinScanner();
         ComponentMetadata componentMetadata = ComponentMetadata.builder().build();
-        underTest.refresh(componentMetadata);
+        underTest.refresh(componentMetadata, List.of());
         Summary summary = Summary.EMPTY;
 
         // When

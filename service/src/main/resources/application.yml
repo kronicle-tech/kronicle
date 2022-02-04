@@ -81,6 +81,11 @@ repo-finders:
   bitbucket-server:
     timeout: 30s
 
+datadog:
+  baseUrl: "https://api.datadoghq.com"
+  dependencies:
+    timeout: 30s
+
 downloader:
   timeout: 2m
 

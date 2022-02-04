@@ -13,7 +13,7 @@ import tech.kronicle.sdk.models.Test;
 import tech.kronicle.service.services.ComponentMetadataAssembler;
 import tech.kronicle.service.services.ComponentMetadataLoader;
 import tech.kronicle.service.services.ScanEngine;
-import tech.kronicle.service.services.ScannerFinder;
+import tech.kronicle.service.services.ScannerRegistry;
 import tech.kronicle.service.services.TestEngine;
 import tech.kronicle.service.services.TestFinder;
 import tech.kronicle.service.utils.ObjectReference;
@@ -43,7 +43,7 @@ public class ComponentRepository extends RefreshingRepository {
     private final ComponentMetadataLoader loader;
     private final ComponentMetadataAssembler assembler;
     private final ScanEngine scanEngine;
-    private final ScannerFinder scannerFinder;
+    private final ScannerRegistry scannerRegistry;
     private final TestEngine testEngine;
     private final TestFinder testFinder;
     private volatile ConcurrentHashMap<String, Area> areas = new ConcurrentHashMap<>();
@@ -136,14 +136,14 @@ public class ComponentRepository extends RefreshingRepository {
     }
 
     public List<Scanner> getScanners() {
-        return scannerFinder.getAllScanners().stream()
+        return scannerRegistry.getAllItems().stream()
                 .map(this::mapScanner)
                 .sorted(Comparator.comparing(Scanner::getId))
                 .collect(Collectors.toList());
     }
 
     public Scanner getScanner(String scannerId) {
-        return mapScanner(scannerFinder.getScanner(scannerId));
+        return mapScanner(scannerRegistry.getItem(scannerId));
     }
 
     public List<Test> getTests() {

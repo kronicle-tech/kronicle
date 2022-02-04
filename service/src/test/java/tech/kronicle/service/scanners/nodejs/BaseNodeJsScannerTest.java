@@ -46,7 +46,7 @@ public abstract class BaseNodeJsScannerTest extends BaseCodebaseScannerTest {
     private void logSoftware(List<Software> software) {
         log().info(software.stream()
                 .map(it -> {
-                    StringBuilder builder = new StringBuilder().append("\nSoftware.builder().name(\"")
+                    StringBuilder builder = new StringBuilder().append("\nSoftware.builder().scannerId(\"nodejs\").name(\"")
                             .append(it.getName())
                             .append("\").version(\"")
                             .append(it.getVersion())
