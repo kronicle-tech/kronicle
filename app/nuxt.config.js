@@ -12,6 +12,13 @@ const serverSideServiceBaseUrl = process.env.SERVER_SIDE_SERVICE_BASE_URL || 'ht
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head() {
+    const style = []
+    if (process.env.CSS_OVERRIDES !== undefined) {
+      style.push({
+        cssText: process.env.CSS_OVERRIDES,
+        type: 'text/css',
+      })
+    }
     const script = []
     if (process.env.ANALYTICS_PLAUSIBLE_ENABLED === 'true') {
       script.push({
@@ -46,6 +53,7 @@ export default {
           crossorigin: 'anonymous',
         },
       ],
+      style,
       script,
     }
   },
