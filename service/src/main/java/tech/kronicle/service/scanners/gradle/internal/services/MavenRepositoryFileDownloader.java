@@ -22,6 +22,7 @@ public class MavenRepositoryFileDownloader {
     private static final int MAX_REDIRECT_COUNT = 1;
     private final ArtifactUtils artifactUtils;
     private final Downloader downloader;
+    private final RepositoryAuthHeadersRegistry repositoryAuthHeadersRegistry;
 
     public MavenFileRequestOutcome<String> downloadArtifact(String artifactCoordinates, String packaging, Set<SoftwareRepository> softwareRepositories) {
         return downloadMavenRepositoryFile(getArtifactPath(artifactCoordinates, packaging), softwareRepositories);
@@ -36,11 +37,19 @@ public class MavenRepositoryFileDownloader {
     }
 
     private MavenFileRequestOutcome<String> downloadMavenRepositoryFile(String filePath, Set<SoftwareRepository> softwareRepositories) {
-        return makeMavenRepositoryFileRequest(filePath, softwareRepositories, url -> downloader.download(url, MAX_REDIRECT_COUNT));
+        return makeMavenRepositoryFileRequest(filePath, softwareRepositories, url -> downloader.download(
+                url,
+                repositoryAuthHeadersRegistry.getRepositoryAuthHeaders(url),
+                MAX_REDIRECT_COUNT
+        ));
     }
 
     private MavenFileRequestOutcome<Boolean> checkMavenRepositoryFileExists(String filePath, Set<SoftwareRepository> softwareRepositories) {
-        return makeMavenRepositoryFileRequest(filePath, softwareRepositories, url -> downloader.exists(url, MAX_REDIRECT_COUNT));
+        return makeMavenRepositoryFileRequest(filePath, softwareRepositories, url -> downloader.exists(
+                url,
+                repositoryAuthHeadersRegistry.getRepositoryAuthHeaders(url),
+                MAX_REDIRECT_COUNT
+        ));
     }
 
     private <T> MavenFileRequestOutcome<T> makeMavenRepositoryFileRequest(String filePath, Set<SoftwareRepository> softwareRepositories,

@@ -1,5 +1,7 @@
 package tech.kronicle.service.scanners.gradle;
 
+import com.github.tomakehurst.wiremock.WireMockServer;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,12 +20,14 @@ import tech.kronicle.sdk.models.SoftwareType;
 import tech.kronicle.service.config.DownloadCacheConfig;
 import tech.kronicle.service.config.UrlExistsCacheConfig;
 import tech.kronicle.service.scanners.gradle.config.GradleConfig;
+import tech.kronicle.service.scanners.gradle.internal.constants.MavenPackagings;
 import tech.kronicle.service.scanners.models.Codebase;
 import tech.kronicle.service.scanners.models.Output;
 
 import java.util.List;
 import java.util.Map;
 
+import static java.util.Objects.nonNull;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @ExtendWith(SpringExtension.class)
@@ -31,8 +35,15 @@ import static org.assertj.core.api.Assertions.assertThat;
         "download-cache.dir=build/test-data/tech.kronicle.service.scanners.gradle.GradleScannerTest/download-cache",
         "url-exists-cache.dir=build/test-data/tech.kronicle.service.scanners.gradle.GradleScannerTest/url-exists-cache",
         "gradle.pom-cache-dir=build/test-data/tech.kronicle.service.scanners.gradle.GradleScannerTest/gradle/pom-cache",
+        "gradle.additional-safe-software-repository-urls.0=http://localhost:36211/repo-with-authentication/",
         "gradle.custom-repositories.0.name=someCustomRepository",
-        "gradle.custom-repositories.0.url=https://example.com/maven2/"
+        "gradle.custom-repositories.0.url=https://example.com/repo/",
+        "gradle.custom-repositories.1.name=someCustomRepositoryWithAuthentication",
+        "gradle.custom-repositories.1.url=http://localhost:36211/repo-with-authentication/",
+        "gradle.custom-repositories.1.http-headers.0.name=test-header-1",
+        "gradle.custom-repositories.1.http-headers.0.value=test-value-1",
+        "gradle.custom-repositories.1.http-headers.1.name=test-header-2",
+        "gradle.custom-repositories.1.http-headers.1.value=test-value-2"
 })
 @ContextConfiguration(classes = GradleScannerTestConfiguration.class)
 @EnableConfigurationProperties(value = {DownloadCacheConfig.class, UrlExistsCacheConfig.class, GradleConfig.class})
@@ -233,6 +244,15 @@ public class GradleScannerCodebaseTest extends BaseGradleScannerTest {
 
     @Autowired
     private GradleScanner underTest;
+    WireMockServer wireMockServer;
+
+    @AfterEach
+    public void afterEach() {
+        if (nonNull(wireMockServer)) {
+            wireMockServer.stop();
+            wireMockServer = null;
+        }
+    }
 
     @Test
     public void shouldHandleNone() {
@@ -1981,11 +2001,47 @@ public class GradleScannerCodebaseTest extends BaseGradleScannerTest {
                         .builder()
                         .scannerId(SCANNER_ID)
                         .type(SoftwareRepositoryType.MAVEN)
-                        .url("https://example.com/maven2/")
+                        .url("https://example.com/repo/")
                         .safe(false)
                         .build());
         Map<SoftwareGroup, List<Software>> softwareGroups = getSoftwareGroups(component);
         assertThat(softwareGroups.get(SoftwareGroup.DIRECT)).isNull();
+        assertThat(softwareGroups.get(SoftwareGroup.TRANSITIVE)).isNull();
+        assertThat(softwareGroups.get(SoftwareGroup.BOM)).isNull();
+    }
+
+    @Test
+    public void shouldHandleRepositoryCustomWithAuthenticationHeader() {
+        // Given
+        wireMockServer = new MavenRepositoryWireMockFactory().create();
+        Codebase codebase = new Codebase(getTestRepo(), getCodebaseDir("RepositoryCustomWithAuthenticationHeader"));
+
+        // When
+        Output<Void> output = underTest.scan(codebase);
+
+        // Then
+        Component component = getMutatedComponent(output);
+        assertThatGradleIsUsed(component);
+        assertThat(getSoftwareRepositories(component)).containsExactlyInAnyOrder(
+                GRADLE_PLUGIN_PORTAL_REPOSITORY.withScope(SoftwareRepositoryScope.BUILDSCRIPT),
+                SoftwareRepository
+                        .builder()
+                        .scannerId(SCANNER_ID)
+                        .type(SoftwareRepositoryType.MAVEN)
+                        .url("http://localhost:36211/repo-with-authentication/")
+                        .safe(true)
+                        .build());
+        Map<SoftwareGroup, List<Software>> softwareGroups = getSoftwareGroups(component);
+        assertThat(softwareGroups.get(SoftwareGroup.DIRECT)).containsExactly(
+                JAVA_PLUGIN,
+                Software.builder()
+                        .scannerId(SCANNER_ID)
+                        .type(SoftwareType.JVM)
+                        .dependencyType(SoftwareDependencyType.DIRECT)
+                        .name("test.group.id:test-artifact-id")
+                        .version("test-version")
+                        .build()
+        );
         assertThat(softwareGroups.get(SoftwareGroup.TRANSITIVE)).isNull();
         assertThat(softwareGroups.get(SoftwareGroup.BOM)).isNull();
     }
