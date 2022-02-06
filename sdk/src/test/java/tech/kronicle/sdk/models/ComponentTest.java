@@ -39,6 +39,20 @@ public class ComponentTest {
     }
 
     @Test
+    public void constructorShouldMakeAliasesAnUnmodifiableList() {
+        // Given
+        Component underTest = Component.builder().aliases(new ArrayList<>()).build();
+
+        // When
+        Throwable thrown = catchThrowable(() -> underTest.getAliases().add(
+                new Alias("test-alias-id", null, null)
+        ));
+
+        // Then
+        assertThat(thrown).isInstanceOf(UnsupportedOperationException.class);
+    }
+
+    @Test
     public void constructorShouldMakeTagsAnUnmodifiableList() {
         // Given
         Component underTest = Component.builder().tags(new ArrayList<>()).build();

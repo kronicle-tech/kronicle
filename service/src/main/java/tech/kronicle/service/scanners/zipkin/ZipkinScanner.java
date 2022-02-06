@@ -1,5 +1,7 @@
 package tech.kronicle.service.scanners.zipkin;
 
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import tech.kronicle.componentmetadata.models.ComponentMetadata;
 import tech.kronicle.sdk.models.Component;
 import tech.kronicle.sdk.models.Dependency;
@@ -18,8 +20,6 @@ import tech.kronicle.service.scanners.zipkin.services.ComponentDependencyCollato
 import tech.kronicle.service.scanners.zipkin.services.SubComponentDependencyCollator;
 import tech.kronicle.service.scanners.zipkin.services.ZipkinService;
 import tech.kronicle.service.spring.stereotypes.Scanner;
-import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 
 import javax.validation.Valid;
 import java.util.List;

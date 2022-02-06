@@ -9,6 +9,8 @@ import tech.kronicle.service.finders.DependencyFinder;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -17,13 +19,27 @@ import java.util.stream.Collectors;
 public class MasterDependencyFinder {
 
     private final FinderRegistry finderRegistry;
+    private final ComponentAliasResolver componentAliasResolver;
 
     public List<Dependency> getDependencies(ComponentMetadata componentMetadata) {
+        Map<String, String> componentAliasMap = componentAliasResolver.createComponentAliasMap(componentMetadata);
         return finderRegistry.getDependencyFinders().stream()
                 .map(finder -> executeFinder(finder, componentMetadata))
                 .flatMap(Collection::stream)
+                .map(dependency -> resolveComponentAliases(dependency, componentAliasMap))
                 .distinct()
                 .collect(Collectors.toList());
+    }
+
+    private Dependency resolveComponentAliases(Dependency dependency, Map<String, String> componentAliasMap) {
+        return new Dependency(
+                resolveComponentAliases(dependency.getSourceComponentId(), componentAliasMap),
+                resolveComponentAliases(dependency.getTargetComponentId(), componentAliasMap)
+        );
+    }
+
+    private String resolveComponentAliases(String componentId, Map<String, String> componentAliasMap) {
+        return Optional.ofNullable(componentAliasMap.get(componentId)).orElse(componentId);
     }
 
     private List<Dependency> executeFinder(DependencyFinder finder, ComponentMetadata componentMetadata) {
