@@ -1,0 +1,11 @@
+plugins {
+    id "java"
+}
+
+repositories {
+    someCustomRepositoryWithAuthentication()
+}
+
+dependencies {
+    compile "test.group.id:test-artifact-id:test-version"
+}

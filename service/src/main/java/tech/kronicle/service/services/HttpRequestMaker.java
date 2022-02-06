@@ -1,5 +1,8 @@
 package tech.kronicle.service.services;
 
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.reactive.function.client.WebClient;
+import reactor.core.publisher.Mono;
 import tech.kronicle.service.constants.Resilience4JInstanceNames;
 import io.github.resilience4j.retry.annotation.Retry;
 import org.springframework.stereotype.Service;
@@ -11,7 +14,7 @@ import java.util.function.Function;
 public class HttpRequestMaker {
 
     @Retry(name = Resilience4JInstanceNames.HTTP_REQUEST_MAKER)
-    public ClientResponse makeHttpRequest(Function<String, ClientResponse> httpRequest, String url) {
+    public ResponseEntity<String> makeHttpRequest(Function<String, ResponseEntity<String>> httpRequest, String url) {
         return httpRequest.apply(url);
     }
 }

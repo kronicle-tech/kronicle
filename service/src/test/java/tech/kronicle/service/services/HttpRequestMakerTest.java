@@ -1,15 +1,14 @@
 package tech.kronicle.service.services;
 
-import tech.kronicle.service.testutils.Timer;
-import tech.kronicle.service.utils.ObjectReference;
-import org.assertj.core.api.AbstractIntegerAssert;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
-import org.springframework.web.reactive.function.client.ClientResponse;
+import tech.kronicle.service.testutils.Timer;
+import tech.kronicle.service.utils.ObjectReference;
 
 import java.util.function.Function;
 
@@ -28,14 +27,14 @@ public class HttpRequestMakerTest {
     public void makeHttpRequestShouldRetryWhenHttpRequestThrowsAnException() {
         // Given
         ObjectReference<Integer> counter = new ObjectReference<>(0);
-        Function<String, ClientResponse> httpRequest = ignored -> {
+        Function<String, ResponseEntity<String>> httpRequest = ignored -> {
             counter.set(counter.get() + 1);
             throw new RuntimeException("test");
         };
 
         // When
         Timer timer = new Timer();
-        Throwable thrown = catchThrowable(() -> underTest.makeHttpRequest(httpRequest, "http://example.com"));
+        Throwable thrown = catchThrowable(() -> underTest.makeHttpRequest(httpRequest, "https://example.com"));
         timer.stop();
 
         // Then
@@ -45,8 +44,8 @@ public class HttpRequestMakerTest {
         ensureRetriesDoNotSlowDownTestExecution(timer);
     }
 
-    private AbstractIntegerAssert<?> ensureRetriesDoNotSlowDownTestExecution(Timer timer) {
+    private void ensureRetriesDoNotSlowDownTestExecution(Timer timer) {
         // The retries should execute quickly due to waitDuration config being overridden via @SpringBootTest annotation on this class
-        return assertThat(timer.getDurationInSeconds()).isLessThan(10);
+        assertThat(timer.getDurationInSeconds()).isLessThan(10);
     }
 }

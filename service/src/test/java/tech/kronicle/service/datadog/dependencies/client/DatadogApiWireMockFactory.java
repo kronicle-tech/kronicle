@@ -12,7 +12,7 @@ import static com.github.tomakehurst.wiremock.client.WireMock.equalTo;
 import static com.github.tomakehurst.wiremock.client.WireMock.get;
 import static com.github.tomakehurst.wiremock.client.WireMock.urlPathEqualTo;
 
-public class  DatadogApiWireMockFactory {
+public class DatadogApiWireMockFactory {
 
     public static final int PORT = 36210;
     public static final String API_KEY = "test-api-key";
