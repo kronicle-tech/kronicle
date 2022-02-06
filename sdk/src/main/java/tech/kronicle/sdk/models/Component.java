@@ -1,6 +1,7 @@
 package tech.kronicle.sdk.models;
 
 import com.fasterxml.jackson.annotation.JsonAlias;
+import org.hibernate.validator.constraints.UniqueElements;
 import tech.kronicle.sdk.models.git.GitRepo;
 import tech.kronicle.sdk.models.gradle.Gradle;
 import tech.kronicle.sdk.models.linesofcode.LinesOfCode;
@@ -31,6 +32,8 @@ public class Component implements ObjectWithId, ObjectWithReference {
     @NotBlank
     @Pattern(regexp = "[a-z][a-z0-9]*(-[a-z0-9]+)*")
     String id;
+    @UniqueElements
+    List<Alias> aliases;
     @NotBlank
     String name;
     @NotBlank
@@ -68,13 +71,40 @@ public class Component implements ObjectWithId, ObjectWithReference {
     List<@Valid ScannerError> scannerErrors;
     List<@Valid TestResult> testResults;
 
-    public Component(String id, String name, String typeId, List<String> tags, Repo repo, String description, List<Responsibility> responsibilities,
-            String notes, List<Link> links, List<ComponentTeam> teams, String platformId, List<ComponentDependency> dependencies,
-            List<CrossFunctionalRequirement> crossFunctionalRequirements, List<TechDebt> techDebts, GitRepo gitRepo, Gradle gradle, NodeJs nodeJs,
-            List<SoftwareRepository> softwareRepositories, List<Software> software, List<Import> imports, List<KeySoftware> keySoftware,
-            LinesOfCode linesOfCode, List<ToDo> toDos, Readme readme, Zipkin zipkin, List<OpenApiSpec> openApiSpecs, List<SonarQubeProject> sonarQubeProjects,
-            List<ScannerError> scannerErrors, List<TestResult> testResults) {
+    public Component(
+            String id,
+            List<Alias> aliases,
+            String name,
+            String typeId,
+            List<String> tags,
+            Repo repo,
+            String description,
+            List<Responsibility> responsibilities,
+            String notes,
+            List<Link> links,
+            List<ComponentTeam> teams,
+            String platformId,
+            List<ComponentDependency> dependencies,
+            List<CrossFunctionalRequirement> crossFunctionalRequirements,
+            List<TechDebt> techDebts,
+            GitRepo gitRepo,
+            Gradle gradle,
+            NodeJs nodeJs,
+            List<SoftwareRepository> softwareRepositories,
+            List<Software> software,
+            List<Import> imports,
+            List<KeySoftware> keySoftware,
+            LinesOfCode linesOfCode,
+            List<ToDo> toDos,
+            Readme readme,
+            Zipkin zipkin,
+            List<OpenApiSpec> openApiSpecs,
+            List<SonarQubeProject> sonarQubeProjects,
+            List<ScannerError> scannerErrors,
+            List<TestResult> testResults
+    ) {
         this.id = id;
+        this.aliases = ListUtils.createUnmodifiableList(aliases);
         this.name = name;
         this.typeId = typeId;
         this.tags = ListUtils.createUnmodifiableList(tags);

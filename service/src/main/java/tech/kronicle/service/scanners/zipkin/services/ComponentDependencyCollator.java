@@ -1,19 +1,14 @@
 package tech.kronicle.service.scanners.zipkin.services;
 
-import tech.kronicle.sdk.models.Component;
-import tech.kronicle.sdk.models.ComponentDependency;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Service;
 import tech.kronicle.sdk.models.Dependency;
-import tech.kronicle.sdk.models.DependencyDirection;
-import tech.kronicle.sdk.models.ObjectWithReference;
 import tech.kronicle.sdk.models.SummaryComponentDependencies;
 import tech.kronicle.sdk.models.SummaryComponentDependency;
 import tech.kronicle.sdk.models.SummaryComponentDependencyNode;
 import tech.kronicle.service.scanners.zipkin.models.NodesAndDependencies;
 import tech.kronicle.service.scanners.zipkin.models.api.Span;
-import lombok.RequiredArgsConstructor;
-import lombok.Value;
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.stereotype.Service;
 
 import java.util.Comparator;
 import java.util.List;

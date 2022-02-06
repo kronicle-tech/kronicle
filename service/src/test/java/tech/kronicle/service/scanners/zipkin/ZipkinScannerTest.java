@@ -30,6 +30,7 @@ import tech.kronicle.service.scanners.zipkin.services.SubComponentDependencyColl
 import tech.kronicle.service.scanners.zipkin.services.SubComponentDependencyTagFilter;
 import tech.kronicle.service.scanners.zipkin.services.ZipkinService;
 import tech.kronicle.service.scanners.zipkin.spring.ZipkinConfiguration;
+import tech.kronicle.service.services.ComponentAliasResolver;
 import tech.kronicle.service.services.MapComparator;
 
 import java.time.Clock;
@@ -337,7 +338,8 @@ public class ZipkinScannerTest extends BaseScannerTest {
                 new ZipkinService(new ZipkinClient(WebClient.create(), config, Clock.systemUTC()), config),
                 new ComponentDependencyCollator(genericDependencyCollator, configuration.componentNodeComparator(), dependencyHelper),
                 new SubComponentDependencyCollator(genericDependencyCollator, subComponentNodeComparator, dependencyHelper),
-                new CallGraphCollator(genericDependencyCollator, subComponentNodeComparator, dependencyHelper, dependencyDurationCalculator));
+                new CallGraphCollator(genericDependencyCollator, subComponentNodeComparator, dependencyHelper, dependencyDurationCalculator)
+        );
     }
 
     private SummaryCallGraph createTestCallGraph(String componentId1, String spanName1, String componentId2, String spanName2, int sourceIndex, int targetIndex) {
