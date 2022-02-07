@@ -3,7 +3,7 @@
     <b-container fluid>
       <b-row>
         <b-col>
-          <Intro :title="introTitle" :markdown="introMarkdown" />
+          <Intro id="intro" :title="introTitle" :markdown="introMarkdown" />
 
           <b-card-group columns>
             <b-card
