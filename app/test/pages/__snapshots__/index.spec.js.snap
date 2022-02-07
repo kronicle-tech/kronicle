@@ -13,6 +13,7 @@ exports[`Index when Kronicle contains information renders the page showing the i
       >
         <div
           class="jumbotron my-3"
+          id="intro"
         >
           <h1
             class="display-3"
@@ -712,6 +713,7 @@ exports[`Index when Kronicle contains no information renders the page with no in
       >
         <div
           class="jumbotron my-3"
+          id="intro"
         >
           <h1
             class="display-3"
