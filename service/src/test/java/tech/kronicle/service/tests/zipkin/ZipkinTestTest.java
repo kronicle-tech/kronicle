@@ -15,7 +15,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class ZipkinTestTest {
 
-    private final ZipkinTest underTest = new ZipkinTest(new ZipkinConfig(null, null, null, null, null, List.of(CommonComponentTypeIds.SERVICE)));
+    private final ZipkinTest underTest = new ZipkinTest(new ZipkinConfig(null, null, null, null, null, null, List.of(CommonComponentTypeIds.SERVICE)));
 
     @Test
     public void descriptionShouldReturnTheDescriptionOfTheTest() {

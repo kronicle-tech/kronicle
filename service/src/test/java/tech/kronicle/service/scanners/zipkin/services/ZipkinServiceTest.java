@@ -37,7 +37,7 @@ public class ZipkinServiceTest {
 
     @BeforeEach
     public void beforeEach() {
-        ZipkinConfig config = new ZipkinConfig(null, null, null, null, TEST_TRACE_LIMIT, null);
+        ZipkinConfig config = new ZipkinConfig(null, null, null, null, null, TEST_TRACE_LIMIT, null);
         underTest = new ZipkinService(client, config);
         logCaptor = new LogCaptor(underTest.getClass());
     }

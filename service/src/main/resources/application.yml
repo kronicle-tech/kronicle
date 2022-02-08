@@ -102,6 +102,7 @@ gradle:
   pom-cache-dir: /data/gradle/pom-cache
 
 zipkin:
+  enabled: false
   base-url: http://localhost:9411
   timeout: 2m
   trace-limit: 1000
