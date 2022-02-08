@@ -14,7 +14,7 @@ exports[`Index when Get Component service endpoint returns a component when the 
         <h1
           class="text-info my-3"
         >
-          Test Component Name 1 - Errors
+          Test Component Name 1 - Repo
         </h1>
          
         <div
@@ -555,7 +555,7 @@ exports[`Index when Get Component service endpoint returns a component when the 
         <h1
           class="text-info my-3"
         >
-          Test Component Name 1 - Errors
+          Test Component Name 1 - Repo
         </h1>
          
         <div

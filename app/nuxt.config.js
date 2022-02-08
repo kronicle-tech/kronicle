@@ -1,7 +1,6 @@
 import { format, transports } from 'winston'
 const { combine, timestamp, json } = format
 const customFields = format((info) => {
-  info.logsource = process.env.FQN
   info.appName = 'kronicle-app'
   info.appVersion = process.env.VERSION
   return info

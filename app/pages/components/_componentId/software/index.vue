@@ -11,13 +11,13 @@
             <b-list-group>
               <b-list-group-item variant="success">
                 <span class="display-1">
-                  <FormattedNumber :value="softwareCount" />
+                  <FormattedNumber :value="softwareItemCount" />
                 </span>
-                software item{{ softwareCount === 1 ? '' : 's' }}
+                software item{{ softwareItemCount === 1 ? '' : 's' }}
               </b-list-group-item>
             </b-list-group>
           </b-card>
-          <b-card v-if="softwareCount > 0" title="Software">
+          <b-card v-if="softwareItemCount > 0" title="Software">
             <table
               class="table table-dark table-bordered table-striped mt-2"
               style="width: 100%"
@@ -36,17 +36,17 @@
               </thead>
               <tbody>
               <tr
-                v-for="(software, softwareIndex) in component.software"
+                v-for="(softwareItem, softwareIndex) in softwareItems"
                 :key="softwareIndex"
               >
-                <td>{{ software.scannerId }}</td>
-                <td>{{ software.type }}</td>
-                <td>{{ software.dependencyType }}</td>
-                <td>{{ software.name }}</td>
-                <td>{{ software.version }}</td>
-                <td>{{ software.versionSelector }}</td>
-                <td>{{ software.packaging }}</td>
-                <td>{{ software.scope }}</td>
+                <td>{{ softwareItem.scannerId }}</td>
+                <td>{{ softwareItem.type }}</td>
+                <td>{{ softwareItem.dependencyType }}</td>
+                <td>{{ softwareItem.name }}</td>
+                <td>{{ softwareItem.version }}</td>
+                <td>{{ softwareItem.versionSelector }}</td>
+                <td>{{ softwareItem.packaging }}</td>
+                <td>{{ softwareItem.scope }}</td>
               </tr>
               </tbody>
             </table>
@@ -62,7 +62,7 @@
 import Vue from 'vue'
 import { MetaInfo } from 'vue-meta'
 import {BCard, BCol, BContainer, BListGroup, BListGroupItem, BRow} from 'bootstrap-vue'
-import { Component } from '~/types/kronicle-service'
+import {Component, Software} from '~/types/kronicle-service'
 import ComponentTabs from '~/components/ComponentTabs.vue'
 import FormattedNumber from '~/components/FormattedNumber.vue'
 
@@ -99,8 +99,14 @@ export default Vue.extend({
     }
   },
   computed: {
-    softwareCount(): number {
-      return this.component.software?.length ?? 0
+    softwareItems(): Software[] {
+      return [...(this.component.software ?? [])]
+      .sort((a: Software, b: Software) =>
+        a.scannerId.localeCompare(b.scannerId) || a.name.localeCompare((b.name)) || a.version.localeCompare(b.version)
+      )
+    },
+    softwareItemCount(): number {
+      return this.softwareItems.length
     },
   },
 })

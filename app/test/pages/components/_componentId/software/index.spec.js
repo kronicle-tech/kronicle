@@ -59,5 +59,17 @@ describe('Index', () => {
         expect(wrapper.element).toMatchSnapshot()
       })
     })
+
+    describe('when the component has software that are not sorted', () => {
+      beforeEach(() => {
+        component = createComponentWithSoftwareItems({ componentNumber: 1 })
+        component.software.reverse()
+      })
+
+      test('sorts the software before rending the software', async () => {
+        await createWrapper()
+        expect(wrapper.element).toMatchSnapshot()
+      })
+    })
   })
 })
