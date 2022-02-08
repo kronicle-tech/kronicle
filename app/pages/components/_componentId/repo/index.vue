@@ -3,7 +3,7 @@
     <b-container fluid>
       <b-row>
         <b-col>
-          <h1 class="text-info my-3">{{ component.name }} - Errors</h1>
+          <h1 class="text-info my-3">{{ component.name }} - Repo</h1>
 
           <ComponentTabs :component-id="component.id" />
 
