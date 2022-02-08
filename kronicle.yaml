@@ -1,7 +1,6 @@
 # This file is read automatically by Kronicle https://kronicle.tech
 
 components:
-
   - id: kronicle-app
     name: Kronicle App
     typeId: spa
