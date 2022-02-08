@@ -13,6 +13,7 @@ import tech.kronicle.sdk.models.zipkin.Zipkin;
 import tech.kronicle.sdk.models.zipkin.ZipkinDependency;
 import tech.kronicle.service.scanners.ComponentScanner;
 import tech.kronicle.service.scanners.models.Output;
+import tech.kronicle.service.scanners.zipkin.config.ZipkinConfig;
 import tech.kronicle.service.scanners.zipkin.models.api.Service;
 import tech.kronicle.service.scanners.zipkin.models.api.Span;
 import tech.kronicle.service.scanners.zipkin.services.CallGraphCollator;
@@ -34,6 +35,7 @@ import static java.util.Objects.isNull;
 @RequiredArgsConstructor
 public class ZipkinScanner extends ComponentScanner {
 
+    private final ZipkinConfig config;
     private final ZipkinService zipkinService;
     private final ComponentDependencyCollator componentDependencyCollator;
     private final SubComponentDependencyCollator subComponentDependencyCollator;
@@ -69,19 +71,21 @@ public class ZipkinScanner extends ComponentScanner {
         this.dependencies = List.of();
         List<List<Span>> traces = List.of();
 
-        try {
-            log.info("Getting Zipkin dependencies");
-            this.dependencies = zipkinService.getDependencies();
-            log.info("Retrieved {} Zipkin dependencies", this.dependencies.size());
-            log.info("Getting Zipkin services");
-            List<Service> services = zipkinService.getServices();
-            log.info("Retrieved {} Zipkin services", services.size());
-            log.info("Getting Zipkin traces");
-            traces = zipkinService.getTraces(services);
-            log.info("Retrieved {} Zipkin traces", traces.size());
-            log.info("Getting Zipkin component dependencies");
-        } catch (Exception e) {
-            log.error("Could not fetch information from Zipkin", e);
+        if (config.getEnabled()) {
+            try {
+                log.info("Getting Zipkin dependencies");
+                this.dependencies = zipkinService.getDependencies();
+                log.info("Retrieved {} Zipkin dependencies", this.dependencies.size());
+                log.info("Getting Zipkin services");
+                List<Service> services = zipkinService.getServices();
+                log.info("Retrieved {} Zipkin services", services.size());
+                log.info("Getting Zipkin traces");
+                traces = zipkinService.getTraces(services);
+                log.info("Retrieved {} Zipkin traces", traces.size());
+                log.info("Getting Zipkin component dependencies");
+            } catch (Exception e) {
+                log.error("Could not fetch information from Zipkin", e);
+            }
         }
 
         componentDependencies = componentDependencyCollator.collateDependencies(traces, dependencies);

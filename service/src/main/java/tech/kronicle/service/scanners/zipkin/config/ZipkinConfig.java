@@ -19,6 +19,8 @@ import java.util.List;
 @NonFinal
 public class ZipkinConfig {
 
+    @NotNull
+    Boolean enabled;
     @NotEmpty
     @Pattern(regexp = "https?://.+[^/]")
     String baseUrl;
