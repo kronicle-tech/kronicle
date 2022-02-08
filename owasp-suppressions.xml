@@ -322,4 +322,12 @@
         <packageUrl regex="true">^pkg:maven/org\.apache\.tomcat\.embed/tomcat\-embed\-websocket@.*$</packageUrl>
         <cve>CVE-2022-23181</cve>
     </suppress>
+    <!-- Suppress a "Denial of Service" vulnerability in an npm package -->
+    <suppress>
+        <notes><![CDATA[
+   file name: glob-parent:3.1.0
+   ]]></notes>
+        <packageUrl regex="true">^pkg:npm/glob\-parent@.*$</packageUrl>
+        <vulnerabilityName>1006947</vulnerabilityName>
+    </suppress>
 </suppressions>
