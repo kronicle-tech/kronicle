@@ -233,12 +233,7 @@ public class OpenApiScannerTest extends BaseCodebaseScannerTest {
         Output<Void> returnValue = underTest.scan(componentAndCodebase);
 
         // Then
-        assertThat(returnValue.getErrors()).hasSize(1);
-        ScannerError error;
-        error = returnValue.getErrors().get(0);
-        assertThat(error.getScannerId()).isEqualTo("openapi");
-        assertThat(sanitizeErrorMessage(error.getMessage())).isEqualTo("Issue while parsing OpenAPI spec \"InvalidOpenApiSpec/test-openapi.yaml\": "
-                + "attribute paths./invalid is not of type `object`");
+        assertThat(returnValue.getErrors()).isEmpty();
         List<OpenApiSpec> returnOpenApiSpecs = getMutatedComponentIgnoringErrors(returnValue).getOpenApiSpecs();
         assertThat(returnOpenApiSpecs).hasSize(1);
         OpenApiSpec returnOpenApiSpec;
@@ -297,6 +292,27 @@ public class OpenApiScannerTest extends BaseCodebaseScannerTest {
         Output<Void> returnValue = underTest.scan(componentAndCodebase);
 
         // Then
+        assertThat(returnValue.getErrors()).isEmpty();
+        List<OpenApiSpec> returnOpenApiSpecs = getMutatedComponentIgnoringErrors(returnValue).getOpenApiSpecs();
+        assertThat(returnOpenApiSpecs).isEmpty();
+    }
+
+    @Test
+    public void scanShouldHandleAManualInvalidYamlFile() {
+        // Given
+        OpenApiSpec openApiSpec = OpenApiSpec.builder()
+                .file("test-openapi.yaml")
+                .build();
+        Component component = Component.builder()
+                .openApiSpecs(List.of(openApiSpec))
+                .build();
+        Codebase codebase = new Codebase(getTestRepo(), getCodebaseDir("InvalidYamlFile"));
+        ComponentAndCodebase componentAndCodebase = new ComponentAndCodebase(component, codebase);
+
+        // When
+        Output<Void> returnValue = underTest.scan(componentAndCodebase);
+
+        // Then
         assertThat(returnValue.getErrors()).hasSize(1);
         ScannerError error;
         error = returnValue.getErrors().get(0);
@@ -304,7 +320,13 @@ public class OpenApiScannerTest extends BaseCodebaseScannerTest {
         assertThat(sanitizeErrorMessage(error.getMessage())).isEqualTo("Issue while parsing OpenAPI spec \"InvalidYamlFile/test-openapi.yaml\": "
                 + "Expected a field name (Scalar value in YAML), got this instead: <org.yaml.snakeyaml.events.MappingStartEvent(anchor=null, tag=null, implicit=true)>");
         List<OpenApiSpec> returnOpenApiSpecs = getMutatedComponentIgnoringErrors(returnValue).getOpenApiSpecs();
-        assertThat(returnOpenApiSpecs).isEmpty();
+        assertThat(returnOpenApiSpecs).hasSize(1);
+        OpenApiSpec returnOpenApiSpec;
+        returnOpenApiSpec = returnOpenApiSpecs.get(0);
+        assertThat(returnOpenApiSpec.getScannerId()).isNull();
+        assertThat(returnOpenApiSpec.getFile()).isEqualTo("test-openapi.yaml");
+        assertThat(returnOpenApiSpec.getUrl()).isNull();
+        assertThat(returnOpenApiSpec.getSpec()).isNull();
     }
 
     @Test

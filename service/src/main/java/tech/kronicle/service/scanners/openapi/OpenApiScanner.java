@@ -1,5 +1,8 @@
 package tech.kronicle.service.scanners.openapi;
 
+import lombok.RequiredArgsConstructor;
+import lombok.Value;
+import lombok.extern.slf4j.Slf4j;
 import tech.kronicle.componentmetadata.models.ComponentMetadata;
 import tech.kronicle.sdk.models.Dependency;
 import tech.kronicle.sdk.models.ScannerError;
@@ -10,17 +13,15 @@ import tech.kronicle.service.scanners.models.Output;
 import tech.kronicle.service.scanners.openapi.models.SpecAndErrors;
 import tech.kronicle.service.scanners.openapi.services.SpecDiscoverer;
 import tech.kronicle.service.scanners.openapi.services.SpecParser;
+import tech.kronicle.service.scanners.openapi.utils.OpenApiSpecUtils;
 import tech.kronicle.service.spring.stereotypes.Scanner;
-import lombok.RequiredArgsConstructor;
-import lombok.Value;
-import lombok.extern.slf4j.Slf4j;
 
 import java.util.Collection;
 import java.util.List;
-import java.util.Objects;
 import java.util.stream.Collectors;
 
 import static java.util.Objects.nonNull;
+import static tech.kronicle.service.scanners.openapi.utils.OpenApiSpecUtils.isManualSpec;
 
 @Scanner
 @RequiredArgsConstructor
@@ -66,7 +67,7 @@ public class OpenApiScanner extends ComponentAndCodebaseScanner {
 
     private List<OpenApiSpec> getManualSpecs(ComponentAndCodebase input) {
         return input.getComponent().getOpenApiSpecs().stream()
-                .filter(this::isManualSpec)
+                .filter(OpenApiSpecUtils::isManualSpec)
                 .collect(Collectors.toList());
     }
 
@@ -79,6 +80,7 @@ public class OpenApiScanner extends ComponentAndCodebaseScanner {
 
     private List<ScannerError> getErrors(List<SpecAndErrors> specAndErrors) {
         return specAndErrors.stream()
+                .filter(OpenApiSpecUtils::isManualSpec)
                 .map(SpecAndErrors::getErrors)
                 .flatMap(Collection::stream)
                 .collect(Collectors.toList());
@@ -94,14 +96,6 @@ public class OpenApiScanner extends ComponentAndCodebaseScanner {
 
     private boolean wasParsedSuccessfully(OpenApiSpec spec) {
         return nonNull(spec.getSpec());
-    }
-
-    private boolean isManualSpec(SpecAndErrors specAndErrors) {
-        return isManualSpec(specAndErrors.getSpec());
-    }
-
-    private boolean isManualSpec(OpenApiSpec spec) {
-        return !Objects.equals(spec.getScannerId(), id());
     }
 
     private int countSuccessfullyParsedSpecs(List<OpenApiSpec> newSpecs) {

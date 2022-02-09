@@ -36,13 +36,13 @@ public class SpecParser {
         swaggerParseResultCache.clear();
     }
 
-    public List<SpecAndErrors> parseSpecs(Scanner scanner, ComponentAndCodebase input, List<OpenApiSpec> specs) {
+    public List<SpecAndErrors> parseSpecs(Scanner<?, ?> scanner, ComponentAndCodebase input, List<OpenApiSpec> specs) {
         return specs.stream()
                 .map(parsePossibleSpec(scanner, input))
                 .collect(Collectors.toList());
     }
 
-    private Function<OpenApiSpec, SpecAndErrors> parsePossibleSpec(Scanner scanner, ComponentAndCodebase input) {
+    private Function<OpenApiSpec, SpecAndErrors> parsePossibleSpec(Scanner<?, ?> scanner, ComponentAndCodebase input) {
         return spec -> {
             String location = nonNull(spec.getUrl()) ? spec.getUrl() : resolveFileRelativeToCodebase(input, spec);
             SwaggerParseResult swaggerParseResult = swaggerParseResultCache.get(location);
