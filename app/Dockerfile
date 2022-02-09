@@ -1,4 +1,4 @@
-FROM gcr.io/distroless/base as build
+FROM node:16 as build
 
 ARG VERSION
 ENV VERSION=$VERSION
