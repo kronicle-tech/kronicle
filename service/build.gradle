@@ -145,7 +145,7 @@ docker {
 
     buildArgs([VERSION: version])
     tag "latest", name
-    copySpec.from("build/libs", "src/test/main")
+    copySpec.from("build/libs", "src/test/java")
             .include("service-${version}.jar")
             .include("Healthcheck.java")
             .rename(/service-.*\.jar/, "app.jar")
