@@ -3,6 +3,10 @@ server:
   servlet:
     context-path: /
 
+info:
+  app:
+    version: ${VERSION:0.0.0}
+
 spring:
   application:
     name: kronicle-service

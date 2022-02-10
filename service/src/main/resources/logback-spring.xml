@@ -36,7 +36,8 @@
     </springProfile>
 
     <springProfile name="!default &amp; !docker-compose">
-        <logger name="tech.kronicle.service.repofinders.github.GitHubRepoFinder" level="INFO"/>
+        <logger name="io.swagger.v3.parser.OpenAPIV3Parser" level="ERROR"/>
+        <logger name="tech.kronicle.service.repofinders" level="INFO"/>
         <logger name="tech.kronicle.service.repositories.ComponentRepository" level="INFO"/>
         <logger name="tech.kronicle.service.services.ScanEngine" level="INFO"/>
         <logger name="tech.kronicle.service.services.TestEngine" level="INFO"/>
