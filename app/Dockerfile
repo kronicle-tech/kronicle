@@ -23,6 +23,6 @@ COPY --from=build /app  .
 
 EXPOSE $PORT
 HEALTHCHECK --interval=60s --timeout=15s \
-  CMD curl --fail "http://localhost:$PORT" || exit 1
+  CMD ["node", "bin/healthcheck.js"]
 
-CMD ["npm", "start"]
+CMD ["node", "node_modules/.bin/nuxt", "start"]
