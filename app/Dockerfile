@@ -1,23 +1,28 @@
-FROM library/node:12.22.6-alpine
+FROM node:12 as build
 
-ENV APP_DIR=/opt/app
-ENV PORT=3000
 ARG VERSION
 ENV VERSION=$VERSION
 
+WORKDIR /app
+COPY . .
 RUN npm install -g npm@latest
-RUN mkdir -p $APP_DIR
-WORKDIR $APP_DIR
-COPY . $APP_DIR
-RUN npm ci
-RUN npm run build
+RUN npm ci --ignore-scripts
+RUN npm run build --ignore-scripts
+RUN rm -rf node_modules/
+RUN npm ci --production --ignore-scripts
+
+FROM gcr.io/distroless/nodejs:12
+
+ARG VERSION
+ENV VERSION=$VERSION
+ENV HOST=0.0.0.0
+ENV PORT=3000
+
+WORKDIR /app
+COPY --from=build /app  .
 
 EXPOSE $PORT
-
 HEALTHCHECK --interval=60s --timeout=15s \
   CMD curl --fail "http://localhost:$PORT" || exit 1
-
-ENV HOST=0.0.0.0
-ENV PORT=$PORT
 
 CMD ["npm", "start"]

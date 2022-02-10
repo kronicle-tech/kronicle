@@ -1,7 +1,11 @@
 server:
-  port: 8090
+  port: ${PORT:8090}
   servlet:
     context-path: /
+
+info:
+  app:
+    version: ${VERSION:0.0.0}
 
 spring:
   application:
