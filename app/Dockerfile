@@ -6,10 +6,10 @@ ENV VERSION=$VERSION
 WORKDIR /app
 COPY . .
 RUN npm install -g npm@latest
-RUN npm ci
-RUN npm run build
+RUN npm ci --ignore-scripts
+RUN npm run build --ignore-scripts
 RUN rm -rf node_modules/
-RUN npm ci --production
+RUN npm ci --production --ignore-scripts
 
 FROM gcr.io/distroless/nodejs:12
 
