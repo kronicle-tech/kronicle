@@ -44,7 +44,10 @@
     "remark-toc": "^7.2.0",
     "unified": "^9.2.2",
     "vfile": "^4.2.1",
-    "vfile-reporter": "^6.0.2"
+    "vfile-reporter": "^6.0.2",
+    "vue-class-component": "^7.2.6",
+    "vue-property-decorator": "^9.1.2",
+    "vuex-module-decorators": "^1.0.1"
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.15.7",
@@ -70,9 +73,6 @@
     "stylelint-config-prettier": "^8.0.2",
     "stylelint-config-standard": "^22.0.0",
     "ts-jest": "^27.0.5",
-    "vue-class-component": "^7.2.6",
-    "vue-jest": "^3.0.7",
-    "vue-property-decorator": "^9.1.2",
-    "vuex-module-decorators": "^1.0.1"
+    "vue-jest": "^3.0.7"
   }
 }
