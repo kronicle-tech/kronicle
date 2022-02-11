@@ -8,9 +8,9 @@ import static java.util.Optional.ofNullable;
 public class Healthcheck {
     public static void main(String[] args) {
         var host = ofNullable(System.getenv("HOST"))
-                .orElse("localhost");
+                .orElse("0.0.0.0");
         var port = ofNullable(System.getenv("PORT"))
-                .map(Integer::parseInt).orElse(80);
+                .map(Integer::parseInt).orElse(8090);
         var client = HttpClient.newHttpClient();
         var request = HttpRequest.newBuilder()
                 .uri(URI.create("http://" + host + ":" + port + "/health"))

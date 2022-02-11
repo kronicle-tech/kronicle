@@ -1,8 +1,8 @@
 const http = require("http");
 const options = {
-  host: process.env.HOST,
-  port: process.env.PORT,
-  timeout: process.env.HEALTHCHECK_TIMEOUT || 10_000,
+  host: process.env.HOST ?? "0.0.0.0",
+  port: process.env.PORT ?? 3000,
+  timeout: process.env.HEALTHCHECK_TIMEOUT ?? 10_000,
 };
 
 const request = http.request(options, res => {
