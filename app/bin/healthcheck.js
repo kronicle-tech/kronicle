@@ -1,8 +1,8 @@
 const http = require("http");
 const options = {
-  host: process.env.HOST ?? "0.0.0.0",
-  port: process.env.PORT ?? 3000,
-  timeout: process.env.HEALTHCHECK_TIMEOUT ?? 10_000,
+  host: process.env.HOST || "0.0.0.0",
+  port: process.env.PORT || 3000,
+  timeout: process.env.HEALTHCHECK_TIMEOUT || 10_000,
 };
 
 const request = http.request(options, res => {
@@ -15,6 +15,6 @@ const request = http.request(options, res => {
 });
 
 request.on("error", err => {
-  console.error(`Error ${("message" in err) ? err.message : "{no err.message}"}`);
+  console.error(`Error: ${("message" in err) ? err.message : "{no err.message}"}`);
   process.exit(1);
 });
