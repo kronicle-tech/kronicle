@@ -54,62 +54,92 @@ management:
       exposure:
         include: info, health, metrics, prometheus, openapi
 
+plugin-manager:
+  mode: deployment
+  plugin-root-dirs:
+    - plugins
+  disabled-plugins:
+    - example
+
+plugins:
+  bitbucket-server:
+    timeout: 30s
+
+  datadog:
+    baseUrl: "https://api.datadoghq.com"
+    dependencies:
+      timeout: 30s
+
+  git:
+    repos-dir: /data/git/repos
+
+  github:
+    apiBaseUrl: https://api.github.com
+    timeout: 30s
+
+  gitlab:
+    projectPageSize: 100
+    timeout: 30s
+
+  gradle:
+    downloader:
+      timeout: 2m
+    download-cache:
+      dir: /data/download-cache
+    url-exists-cache:
+      dir: /data/url-exists-cache
+    pom-cache:
+      dir: /data/gradle/pom-cache
+
+  key-software:
+    default-rules-enabled: true
+    default-rules:
+      - name: "Gradle"
+        software-name-pattern: "^gradle-wrapper$$"
+      - name: "Spring Boot"
+        software-name-pattern: "^org.springframework.boot:"
+      - name: "Guava"
+        software-name-pattern: "^com.google.guava:guava$$"
+      - name: "Zipkin Brave"
+        software-name-pattern: "^io.zipkin.brave:brave$$"
+      - name: "Dropwizard"
+        software-name-pattern: "^io.dropwizard:dropwizard-core$$"
+      - name: "Jackson"
+        software-name-pattern: "^com.fasterxml.jackson.core:"
+      - name: "Spring Cloud"
+        software-name-pattern: "^org.springframework.cloud:spring-cloud-dependencies$$"
+      - name: "Lombok"
+        software-name-pattern: "^org.projectlombok:lombok$$"
+      - name: "Kotlin"
+        software-name-pattern: "^org.jetbrains.kotlin:kotlin-bom$$"
+      - name: "Micronaut"
+        software-name-pattern: "^io.micronaut:micronaut-bom$$"
+      - name: "AWS CDK"
+        software-name-pattern: "^aws-cdk$$"
+      - name: "AWS SDK"
+        software-name-pattern: "^aws-sdk$$"
+      - name: "Vue"
+        software-name-pattern: "^vue$$"
+      - name: "Nuxt"
+        software-name-pattern: "^nuxt$$"
+      - name: "React"
+        software-name-pattern: "^react$$"
+      - name: "Next.js"
+        software-name-pattern: "^next$$"
+      - name: "Angular"
+        software-name-pattern: "^@angular/core$$"
+
+  sonarqube:
+    base-url: http://localhost:9000
+
+  zipkin:
+    enabled: false
+    base-url: http://localhost:9411
+    timeout: 2m
+    trace-limit: 1000
+
 springdoc:
   use-management-port: true
   writer-with-default-pretty-printer: true
   swagger-ui:
     enabled: false
-
-resilience4j:
-  retry:
-    instances:
-      http-request-maker:
-        maxAttempts: 5
-        waitDuration: 10s
-        enableExponentialBackoff: true
-        exponentialBackoffMultiplier: 2
-      zipkin-client:
-        maxAttempts: 10
-        waitDuration: 10s
-        enableExponentialBackoff: true
-        exponentialBackoffMultiplier: 2
-        retryExceptions:
-          - tech.kronicle.service.scanners.zipkin.client.ZipkinClientException
-
-repo-finders:
-  github:
-    timeout: 30s
-  gitlab:
-    projectPageSize: 100
-    timeout: 30s
-  bitbucket-server:
-    timeout: 30s
-
-datadog:
-  baseUrl: "https://api.datadoghq.com"
-  dependencies:
-    timeout: 30s
-
-downloader:
-  timeout: 2m
-
-download-cache:
-  dir: /data/download-cache
-
-url-exists-cache:
-  dir: /data/url-exists-cache
-
-git:
-  repos-dir: /data/git/repos
-
-gradle:
-  pom-cache-dir: /data/gradle/pom-cache
-
-zipkin:
-  enabled: false
-  base-url: http://localhost:9411
-  timeout: 2m
-  trace-limit: 1000
-
-sonarqube:
-  base-url: http://localhost:9000

@@ -1,6 +1,10 @@
 package tech.kronicle.sdk.models;
 
 import com.fasterxml.jackson.annotation.JsonAlias;
+import lombok.Builder;
+import lombok.Value;
+import lombok.With;
+import lombok.extern.jackson.Jacksonized;
 import org.hibernate.validator.constraints.UniqueElements;
 import tech.kronicle.sdk.models.git.GitRepo;
 import tech.kronicle.sdk.models.gradle.Gradle;
@@ -11,10 +15,6 @@ import tech.kronicle.sdk.models.readme.Readme;
 import tech.kronicle.sdk.models.sonarqube.SonarQubeProject;
 import tech.kronicle.sdk.models.todos.ToDo;
 import tech.kronicle.sdk.models.zipkin.Zipkin;
-import lombok.Builder;
-import lombok.Value;
-import lombok.With;
-import lombok.extern.jackson.Jacksonized;
 import tech.kronicle.sdk.utils.ListUtils;
 
 import javax.validation.Valid;

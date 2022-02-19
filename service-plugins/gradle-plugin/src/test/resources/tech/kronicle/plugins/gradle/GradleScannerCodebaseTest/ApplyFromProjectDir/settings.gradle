@@ -1,0 +1,3 @@
+package tech.kronicle.plugins.gradle.GradleScannerCodebaseTest.ApplyFromProjectDir
+
+include "subproject"

@@ -1,7 +1,21 @@
 package tech.kronicle.service.repositories;
 
 import ch.qos.logback.classic.spi.ILoggingEvent;
+import lombok.RequiredArgsConstructor;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.MethodSource;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.invocation.InvocationOnMock;
+import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.scheduling.annotation.Scheduled;
 import tech.kronicle.componentmetadata.models.ComponentMetadata;
+import tech.kronicle.pluginapi.scanners.models.Output;
+import tech.kronicle.plugintestutils.testutils.LogCaptor;
+import tech.kronicle.pluginutils.utils.ObjectReference;
 import tech.kronicle.sdk.models.Area;
 import tech.kronicle.sdk.models.Component;
 import tech.kronicle.sdk.models.ComponentTeam;
@@ -16,28 +30,14 @@ import tech.kronicle.sdk.models.SummarySubComponentDependencies;
 import tech.kronicle.sdk.models.SummarySubComponentDependencyNode;
 import tech.kronicle.sdk.models.Team;
 import tech.kronicle.sdk.models.TestResult;
-import tech.kronicle.service.scanners.models.Output;
 import tech.kronicle.service.services.ComponentMetadataAssembler;
 import tech.kronicle.service.services.ComponentMetadataLoader;
 import tech.kronicle.service.services.ScanEngine;
-import tech.kronicle.service.services.ScannerRegistry;
+import tech.kronicle.service.services.ScannerExtensionRegistry;
 import tech.kronicle.service.services.TestEngine;
 import tech.kronicle.service.services.TestFinder;
 import tech.kronicle.service.services.ValidatorService;
 import tech.kronicle.service.tests.models.TestContext;
-import tech.kronicle.service.testutils.LogCaptor;
-import tech.kronicle.service.utils.ObjectReference;
-import lombok.RequiredArgsConstructor;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.MethodSource;
-import org.mockito.Mock;
-import org.mockito.Mockito;
-import org.mockito.invocation.InvocationOnMock;
-import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.scheduling.annotation.Scheduled;
 import tech.kronicle.service.testutils.ValidatorServiceFactory;
 
 import java.lang.reflect.Method;
@@ -67,7 +67,7 @@ public class ComponentRepositoryTest {
     @Mock
     private ScanEngine mockScanEngine;
     @Mock
-    private ScannerRegistry mockScannerRegistry;
+    private ScannerExtensionRegistry mockScannerRegistry;
     @Mock
     private TestEngine mockTestEngine;
     @Mock
@@ -861,7 +861,7 @@ public class ComponentRepositoryTest {
     }
 
     @RequiredArgsConstructor
-    private static class TestScanner extends tech.kronicle.service.scanners.Scanner<ObjectWithReference, Object> {
+    private static class TestScanner extends tech.kronicle.pluginapi.scanners.Scanner<ObjectWithReference, Object> {
 
         private final String id;
         private final String description;

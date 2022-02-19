@@ -2,15 +2,14 @@ package tech.kronicle.service.tests.readme;
 
 import tech.kronicle.sdk.models.Component;
 import tech.kronicle.sdk.models.Priority;
-import tech.kronicle.sdk.models.readme.Readme;
 import tech.kronicle.sdk.models.TestResult;
-import tech.kronicle.service.spring.stereotypes.Test;
+import tech.kronicle.sdk.models.readme.Readme;
 import tech.kronicle.service.tests.ComponentTest;
 import tech.kronicle.service.tests.models.TestContext;
 
 import static java.util.Objects.isNull;
 
-@Test
+@org.springframework.stereotype.Component
 public class ReadmeTest extends ComponentTest {
 
     @Override

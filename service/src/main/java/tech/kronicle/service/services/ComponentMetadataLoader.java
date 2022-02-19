@@ -1,5 +1,9 @@
 package tech.kronicle.service.services;
 
+import lombok.RequiredArgsConstructor;
+import lombok.Value;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Service;
 import tech.kronicle.common.utils.CaseUtils;
 import tech.kronicle.componentmetadata.models.ComponentMetadata;
 import tech.kronicle.sdk.models.Area;
@@ -9,10 +13,6 @@ import tech.kronicle.sdk.models.ObjectWithId;
 import tech.kronicle.sdk.models.Platform;
 import tech.kronicle.sdk.models.Team;
 import tech.kronicle.service.exceptions.ValidationException;
-import lombok.RequiredArgsConstructor;
-import lombok.Value;
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Set;
@@ -71,10 +71,6 @@ public class ComponentMetadataLoader {
         }
 
         itemMap.put(item.getId(), item);
-    }
-
-    private Consumer<Platform> validatePlatform() {
-        return validatorService::validate;
     }
 
     private Consumer<Team> validateTeam(ConcurrentHashMap<String, Area> areas) {

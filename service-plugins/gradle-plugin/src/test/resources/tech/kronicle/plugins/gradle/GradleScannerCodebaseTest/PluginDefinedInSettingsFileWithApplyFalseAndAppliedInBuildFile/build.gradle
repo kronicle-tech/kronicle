@@ -1,0 +1,9 @@
+package tech.kronicle.plugins.gradle.GradleScannerCodebaseTest.PluginDefinedInSettingsFileWithApplyFalseAndAppliedInBuildFile
+
+plugins {
+    id "org.springframework.boot"
+}
+
+repositories {
+    mavenCentral()
+}

@@ -4,14 +4,16 @@ pluginManagement {
     }
 
     plugins {
-        id "com.jfrog.artifactory" version "$artifactoryPluginVersion" apply false
-        id "org.springframework.boot" version "$springBootVersion" apply false
-        id "org.siouan.frontend-jdk11" version "$frontendPluginVersion" apply false
-        id "org.sonarqube" version "$sonarQubeVersion" apply false
-        id "com.github.spotbugs" version "$spotbugsVersion" apply false
-        id "com.palantir.docker" version "$palantirDockerVersion" apply false
-        id "org.owasp.dependencycheck" version "$dependencyCheckVersion" apply false
-        id "pl.allegro.tech.build.axion-release" version "$axionReleaseVersion" apply false
+        id "io.freefair.lombok" version lombokPluginVersion apply false
+        id "com.github.johnrengelman.shadow" version shadowPluginVersion apply false
+        id "com.github.spotbugs" version spotbugsVersion apply false
+        id "com.jfrog.artifactory" version artifactoryPluginVersion apply false
+        id "com.palantir.docker" version palantirDockerVersion apply false
+        id "org.owasp.dependencycheck" version dependencyCheckVersion apply false
+        id "org.siouan.frontend-jdk11" version frontendPluginVersion apply false
+        id "org.sonarqube" version sonarQubeVersion apply false
+        id "org.springframework.boot" version springBootVersion apply false
+        id "pl.allegro.tech.build.axion-release" version axionReleaseVersion apply false
     }
 }
 
@@ -19,4 +21,24 @@ include "common"
 include "sdk"
 include "metadata"
 include "app"
+include "service-plugin-api"
+include "service-plugin-utils"
+include "service-plugin-test-utils"
 include "service"
+include "service-plugins:bitbucket-server-plugin"
+include "service-plugins:example-plugin"
+include "service-plugins:datadog-plugin"
+include "service-plugins:git-plugin"
+include "service-plugins:github-plugin"
+include "service-plugins:gitlab-plugin"
+include "service-plugins:gradle-plugin"
+include "service-plugins:java-import-plugin"
+include "service-plugins:key-software-plugin"
+include "service-plugins:lines-of-code-plugin"
+include "service-plugins:manual-dependency-plugin"
+include "service-plugins:nodejs-plugin"
+include "service-plugins:openapi-plugin"
+include "service-plugins:readme-plugin"
+include "service-plugins:sonarqube-plugin"
+include "service-plugins:todo-plugin"
+include "service-plugins:zipkin-plugin"

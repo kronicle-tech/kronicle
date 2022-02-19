@@ -4,8 +4,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import tech.kronicle.componentmetadata.models.ComponentMetadata;
+import tech.kronicle.pluginapi.finders.DependencyFinder;
 import tech.kronicle.sdk.models.Dependency;
-import tech.kronicle.service.finders.DependencyFinder;
 
 import java.util.Collection;
 import java.util.List;
@@ -18,7 +18,7 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class MasterDependencyFinder {
 
-    private final FinderRegistry finderRegistry;
+    private final FinderExtensionRegistry finderRegistry;
     private final ComponentAliasResolver componentAliasResolver;
 
     public List<Dependency> getDependencies(ComponentMetadata componentMetadata) {

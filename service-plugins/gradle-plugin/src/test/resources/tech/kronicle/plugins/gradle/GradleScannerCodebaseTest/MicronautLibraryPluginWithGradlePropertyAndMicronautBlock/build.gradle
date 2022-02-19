@@ -1,0 +1,17 @@
+package tech.kronicle.plugins.gradle.GradleScannerCodebaseTest.MicronautLibraryPluginWithGradlePropertyAndMicronautBlock
+
+plugins {
+    id("io.micronaut.library") version "2.0.6"
+}
+
+micronaut {
+    version "3.0.0"
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation("io.micronaut:micronaut-runtime")
+}

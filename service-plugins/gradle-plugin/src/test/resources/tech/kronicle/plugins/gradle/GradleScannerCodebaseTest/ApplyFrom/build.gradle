@@ -1,0 +1,11 @@
+package tech.kronicle.plugins.gradle.GradleScannerCodebaseTest.ApplyFrom
+
+plugins {
+    id "java"
+}
+
+repositories {
+    mavenCentral()
+}
+
+apply from: "dependencies.gradle"

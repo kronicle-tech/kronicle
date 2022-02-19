@@ -1,11 +1,11 @@
 package tech.kronicle.service.tests;
 
+import tech.kronicle.common.utils.CaseUtils;
 import tech.kronicle.sdk.models.ObjectWithReference;
 import tech.kronicle.sdk.models.Priority;
 import tech.kronicle.sdk.models.TestOutcome;
 import tech.kronicle.sdk.models.TestResult;
 import tech.kronicle.service.tests.models.TestContext;
-import tech.kronicle.common.utils.CaseUtils;
 
 public abstract class Test<I extends ObjectWithReference> {
 

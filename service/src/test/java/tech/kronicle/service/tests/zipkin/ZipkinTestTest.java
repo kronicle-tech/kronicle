@@ -1,13 +1,13 @@
 package tech.kronicle.service.tests.zipkin;
 
+import org.junit.jupiter.api.Test;
 import tech.kronicle.sdk.models.Component;
 import tech.kronicle.sdk.models.Priority;
 import tech.kronicle.sdk.models.TestOutcome;
 import tech.kronicle.sdk.models.TestResult;
 import tech.kronicle.sdk.models.zipkin.Zipkin;
 import tech.kronicle.service.constants.CommonComponentTypeIds;
-import tech.kronicle.service.scanners.zipkin.config.ZipkinConfig;
-import org.junit.jupiter.api.Test;
+import tech.kronicle.service.tests.zipkin.config.ZipkinTestConfig;
 
 import java.util.List;
 
@@ -15,7 +15,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class ZipkinTestTest {
 
-    private final ZipkinTest underTest = new ZipkinTest(new ZipkinConfig(null, null, null, null, null, null, List.of(CommonComponentTypeIds.SERVICE)));
+    private final ZipkinTest underTest = new ZipkinTest(new ZipkinTestConfig(List.of(CommonComponentTypeIds.SERVICE)));
 
     @Test
     public void descriptionShouldReturnTheDescriptionOfTheTest() {

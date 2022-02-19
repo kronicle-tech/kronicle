@@ -2,10 +2,10 @@ package tech.kronicle.sdk.models;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.junit.jupiter.api.Test;
 import tech.kronicle.sdk.models.openapi.OpenApiSpec;
 import tech.kronicle.sdk.models.sonarqube.SonarQubeProject;
 import tech.kronicle.sdk.models.todos.ToDo;
-import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 

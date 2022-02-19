@@ -1,0 +1,7 @@
+package tech.kronicle.plugins.gradle.GradleScannerErrorTest.BuildscriptMissingRepository
+
+buildscript {
+    dependencies {
+        classpath "org.springframework.boot:spring-boot-gradle-plugin:2.3.4.RELEASE"
+    }
+}

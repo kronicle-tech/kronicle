@@ -1,15 +1,15 @@
 package tech.kronicle.componentmetadata.models;
 
+import lombok.Builder;
+import lombok.Value;
+import lombok.With;
+import lombok.extern.jackson.Jacksonized;
 import tech.kronicle.sdk.models.Area;
 import tech.kronicle.sdk.models.Component;
 import tech.kronicle.sdk.models.ComponentType;
 import tech.kronicle.sdk.models.ObjectWithReference;
 import tech.kronicle.sdk.models.Platform;
 import tech.kronicle.sdk.models.Team;
-import lombok.Builder;
-import lombok.Value;
-import lombok.With;
-import lombok.extern.jackson.Jacksonized;
 
 import javax.validation.Valid;
 import java.util.List;

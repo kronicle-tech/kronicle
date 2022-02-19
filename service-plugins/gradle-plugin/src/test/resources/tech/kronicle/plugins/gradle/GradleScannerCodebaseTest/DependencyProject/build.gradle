@@ -1,0 +1,9 @@
+package tech.kronicle.plugins.gradle.GradleScannerCodebaseTest.DependencyProject
+
+plugins {
+    id "java"
+}
+
+dependencies {
+    compile project(":subproject")
+}

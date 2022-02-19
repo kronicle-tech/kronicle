@@ -3,14 +3,14 @@ spring:
     sampler:
       probability: ${ZIPKIN_SAMPLE_RATE:1.0}
 
-download-cache:
-  dir: ${TMPDIR}kronicle-service/data/download-cache
+plugins:
+  git:
+    repos-dir: ${TMPDIR}kronicle-service/data/git/repos
 
-url-exists-cache:
-  dir: ${TMPDIR}kronicle-service/data/url-exists-cache
-
-git:
-  repos-dir: ${TMPDIR}kronicle-service/data/git/repos
-
-gradle:
-  pom-cache-dir: ${TMPDIR}kronicle-service/data/gradle/pom-cache
+  gradle:
+    download-cache:
+      dir: ${TMPDIR}kronicle-service/data/download-cache
+    url-exists-cache:
+      dir: ${TMPDIR}kronicle-service/data/url-exists-cache
+    pom-cache:
+      dir: ${TMPDIR}kronicle-service/data/gradle/pom-cache

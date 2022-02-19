@@ -1,11 +1,11 @@
 package tech.kronicle.service.services;
 
+import org.springframework.stereotype.Service;
 import tech.kronicle.sdk.models.Area;
 import tech.kronicle.sdk.models.Component;
 import tech.kronicle.sdk.models.ComponentTeam;
 import tech.kronicle.sdk.models.ComponentTeamType;
 import tech.kronicle.sdk.models.Team;
-import org.springframework.stereotype.Service;
 
 import java.util.Comparator;
 import java.util.List;

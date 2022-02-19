@@ -1,10 +1,10 @@
 package tech.kronicle.service.services;
 
+import lombok.Value;
+import org.junit.jupiter.api.Test;
 import tech.kronicle.common.services.ValidationConstraintViolationTransformer;
 import tech.kronicle.sdk.models.ObjectWithReference;
 import tech.kronicle.service.exceptions.ValidationException;
-import lombok.Value;
-import org.junit.jupiter.api.Test;
 
 import javax.validation.Validation;
 import javax.validation.Validator;

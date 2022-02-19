@@ -1,24 +1,23 @@
 package tech.kronicle.service.tests.zipkin;
 
+import lombok.RequiredArgsConstructor;
 import tech.kronicle.sdk.models.Component;
 import tech.kronicle.sdk.models.Priority;
 import tech.kronicle.sdk.models.TestResult;
 import tech.kronicle.sdk.models.zipkin.Zipkin;
-import tech.kronicle.service.scanners.zipkin.config.ZipkinConfig;
-import tech.kronicle.service.spring.stereotypes.Test;
 import tech.kronicle.service.tests.ComponentTest;
 import tech.kronicle.service.tests.models.TestContext;
-import lombok.RequiredArgsConstructor;
+import tech.kronicle.service.tests.zipkin.config.ZipkinTestConfig;
 
 import java.util.Optional;
 
 import static java.util.Objects.isNull;
 
-@Test
+@org.springframework.stereotype.Component
 @RequiredArgsConstructor
 public class ZipkinTest extends ComponentTest {
 
-    private final ZipkinConfig config;
+    private final ZipkinTestConfig config;
 
     @Override
     public String description() {

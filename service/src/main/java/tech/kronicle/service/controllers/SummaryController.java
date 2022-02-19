@@ -1,13 +1,13 @@
 package tech.kronicle.service.controllers;
 
 import io.swagger.v3.oas.annotations.Operation;
-import tech.kronicle.sdk.models.GetSummaryResponse;
-import tech.kronicle.service.partialresponse.PartialResponse;
-import tech.kronicle.service.services.ComponentService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import tech.kronicle.sdk.models.GetSummaryResponse;
+import tech.kronicle.service.partialresponse.PartialResponse;
+import tech.kronicle.service.services.ComponentService;
 import tech.kronicle.service.springdoc.Texts;
 
 @RestController

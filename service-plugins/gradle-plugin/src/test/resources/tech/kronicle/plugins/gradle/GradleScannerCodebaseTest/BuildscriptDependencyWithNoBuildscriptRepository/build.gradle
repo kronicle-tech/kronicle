@@ -1,0 +1,17 @@
+package tech.kronicle.plugins.gradle.GradleScannerCodebaseTest.BuildscriptDependencyWithNoBuildscriptRepository
+
+buildscript {
+    dependencies {
+        classpath "org.springframework.boot:spring-boot-gradle-plugin:2.3.4.RELEASE"
+    }
+}
+
+plugins {
+    // Gradle automatically adds the gradlePluginPortal() repository as a
+    // buildscript repository if 1 or more plugins are defined in the plugins
+    // block.  It is not enough to have just the plugins block, a plugin
+    // needs to defined in that block as well.  When added, the gradlePluginPortal
+    // repository is automatically available for resolving buildscript
+    // classpath dependencies
+    id "java"
+}
