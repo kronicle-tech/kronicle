@@ -1,5 +1,6 @@
 package tech.kronicle.service.scanners.gradle.internal.services;
 
+import tech.kronicle.service.spring.stereotypes.SpringComponent;
 import tech.kronicle.service.utils.FileUtils;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -8,14 +9,13 @@ import org.codehaus.groovy.ast.builder.AstBuilder;
 import org.codehaus.groovy.control.CompilePhase;
 import tech.kronicle.common.utils.StringEscapeUtils;
 
-import javax.inject.Singleton;
 import java.nio.file.Path;
 import java.util.List;
 import java.util.Map;
 
 import static java.util.Objects.nonNull;
 
-@Singleton
+@SpringComponent
 @RequiredArgsConstructor
 @Slf4j
 public class BuildFileLoader {

@@ -10,10 +10,9 @@ import tech.kronicle.service.scanners.gradle.internal.services.DependencyVersion
 import tech.kronicle.service.scanners.gradle.internal.services.ExpressionEvaluator;
 import tech.kronicle.service.scanners.gradle.internal.services.SoftwareRepositoryFactory;
 import tech.kronicle.service.scanners.gradle.internal.utils.ArtifactUtils;
+import tech.kronicle.service.spring.stereotypes.SpringComponent;
 
-import javax.inject.Singleton;
-
-@Singleton
+@SpringComponent
 @Slf4j
 public class PlatformVisitor extends BaseArtifactVisitor {
 

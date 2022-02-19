@@ -2,14 +2,14 @@ package tech.kronicle.service.scanners.gradle.internal.services;
 
 import tech.kronicle.service.scanners.gradle.config.UrlExistsCacheConfig;
 import tech.kronicle.service.services.BaseFileCache;
+import tech.kronicle.service.spring.stereotypes.SpringComponent;
 import tech.kronicle.service.utils.FileUtils;
 
-import javax.inject.Singleton;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.util.Optional;
 
-@Singleton
+@SpringComponent
 public class UrlExistsCache extends BaseFileCache {
 
     public UrlExistsCache(FileUtils fileUtils, UrlExistsCacheConfig config) throws IOException {

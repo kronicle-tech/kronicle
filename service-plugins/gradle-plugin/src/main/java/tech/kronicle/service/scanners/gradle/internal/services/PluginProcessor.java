@@ -5,8 +5,8 @@ import tech.kronicle.sdk.models.SoftwareDependencyType;
 import tech.kronicle.sdk.models.SoftwareType;
 import tech.kronicle.service.scanners.gradle.internal.utils.InheritingHashSet;
 import lombok.RequiredArgsConstructor;
+import tech.kronicle.service.spring.stereotypes.SpringComponent;
 
-import javax.inject.Singleton;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -15,7 +15,7 @@ import java.util.Set;
 import static java.util.Objects.nonNull;
 import static java.util.Objects.requireNonNull;
 
-@Singleton
+@SpringComponent
 @RequiredArgsConstructor
 public class PluginProcessor {
 

@@ -3,7 +3,7 @@ package tech.kronicle.service.scanners.gradle;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.codehaus.groovy.ast.ASTNode;
-import org.pf4j.Extension;
+import org.springframework.stereotype.Component;
 import tech.kronicle.common.utils.StringEscapeUtils;
 import tech.kronicle.sdk.models.ScannerError;
 import tech.kronicle.sdk.models.Software;
@@ -36,9 +36,9 @@ import tech.kronicle.service.scanners.gradle.internal.utils.InheritingHashSet;
 import tech.kronicle.service.scanners.models.Codebase;
 import tech.kronicle.service.scanners.models.Output;
 import tech.kronicle.service.scanners.services.ThrowableToScannerErrorMapper;
+import tech.kronicle.service.spring.stereotypes.KronicleExtension;
 import tech.kronicle.service.utils.FileUtils;
 
-import javax.inject.Singleton;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.attribute.BasicFileAttributes;
@@ -66,9 +66,8 @@ import static tech.kronicle.service.scanners.gradle.internal.constants.GradleFil
 import static tech.kronicle.service.scanners.gradle.internal.constants.GradleWrapperPropertyNames.DISTRIBUTION_URL;
 import static tech.kronicle.service.scanners.gradle.internal.constants.ToolNames.GRADLE_WRAPPER;
 
-@Extension
-@Singleton
-
+@KronicleExtension
+@Component
 @RequiredArgsConstructor
 @Slf4j
 public class GradleScanner extends CodebaseScanner {

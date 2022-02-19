@@ -2,13 +2,13 @@ package tech.kronicle.service.scanners.gradle.internal.services;
 
 import tech.kronicle.service.scanners.gradle.config.GradleConfig;
 import tech.kronicle.service.scanners.gradle.config.GradleCustomRepository;
+import tech.kronicle.service.spring.stereotypes.SpringComponent;
 
-import javax.inject.Singleton;
 import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-@Singleton
+@SpringComponent
 public class CustomRepositoryRegistry {
 
     private final Map<String, String> customRepositoryUrls;

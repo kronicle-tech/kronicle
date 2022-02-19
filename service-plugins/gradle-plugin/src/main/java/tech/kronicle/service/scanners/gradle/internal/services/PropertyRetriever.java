@@ -1,9 +1,10 @@
 package tech.kronicle.service.scanners.gradle.internal.services;
 
-import javax.inject.Singleton;
+import tech.kronicle.service.spring.stereotypes.SpringComponent;
+
 import java.util.Map;
 
-@Singleton
+@SpringComponent
 public class PropertyRetriever {
 
     public String getPropertyValue(String propertyName, Map<String, String> properties) {

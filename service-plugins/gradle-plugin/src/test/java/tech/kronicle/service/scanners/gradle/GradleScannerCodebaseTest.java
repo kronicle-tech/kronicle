@@ -1,10 +1,14 @@
 package tech.kronicle.service.scanners.gradle;
 
 import com.github.tomakehurst.wiremock.WireMockServer;
-import io.micronaut.context.annotation.Bean;
-import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 import tech.kronicle.sdk.models.Component;
 import tech.kronicle.sdk.models.Software;
 import tech.kronicle.sdk.models.SoftwareDependencyType;
@@ -12,11 +16,11 @@ import tech.kronicle.sdk.models.SoftwareRepository;
 import tech.kronicle.sdk.models.SoftwareRepositoryScope;
 import tech.kronicle.sdk.models.SoftwareRepositoryType;
 import tech.kronicle.sdk.models.SoftwareType;
+import tech.kronicle.service.scanners.gradle.testbeans.GradleScannerTestConfiguration;
 import tech.kronicle.service.scanners.gradle.testbeans.TestDataDir;
 import tech.kronicle.service.scanners.models.Codebase;
 import tech.kronicle.service.scanners.models.Output;
 
-import javax.inject.Inject;
 import java.util.List;
 import java.util.Map;
 
@@ -49,17 +53,13 @@ import static tech.kronicle.service.scanners.gradle.internal.testconstants.Softw
 import static tech.kronicle.service.scanners.gradle.internal.testconstants.SoftwareRepositories.JCENTER_REPOSITORY;
 import static tech.kronicle.service.scanners.gradle.internal.testconstants.SoftwareRepositories.MAVEN_CENTRAL_REPOSITORY;
 
-@MicronautTest
+@ExtendWith(SpringExtension.class)
+@SpringBootTest(properties = "test-name=GradleScannerCodebaseTest", classes = GradleScannerTestConfiguration.class)
 public class GradleScannerCodebaseTest extends BaseGradleScannerTest {
 
-    @Inject
+    @Autowired
     private GradleScanner underTest;
     WireMockServer wireMockServer;
-
-    @Bean
-    public TestDataDir testDataDir() {
-        return new TestDataDir(this.getClass());
-    }
 
     @AfterEach
     public void afterEach() {
@@ -1798,7 +1798,6 @@ public class GradleScannerCodebaseTest extends BaseGradleScannerTest {
         assertThat(softwareGroups.get(SoftwareGroup.TRANSITIVE)).isNull();
         assertThat(softwareGroups.get(SoftwareGroup.BOM)).isNull();
     }
-
 
     @Test
     public void shouldHandleRepositoryCustom() {

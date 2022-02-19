@@ -1,39 +1,35 @@
 package tech.kronicle.service.scanners.gradle.internal.groovyscriptvisitors;
 
 import ch.qos.logback.classic.spi.ILoggingEvent;
-import io.micronaut.context.annotation.Bean;
-import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
 import org.codehaus.groovy.ast.ASTNode;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 import tech.kronicle.sdk.models.Software;
 import tech.kronicle.sdk.models.SoftwareType;
 import tech.kronicle.service.constants.Comparators;
 import tech.kronicle.service.scanners.gradle.internal.utils.InheritingHashMap;
 import tech.kronicle.service.scanners.gradle.internal.utils.InheritingHashSet;
-import tech.kronicle.service.scanners.gradle.testbeans.TestDataDir;
+import tech.kronicle.service.scanners.gradle.testbeans.GradleScannerTestConfiguration;
 import tech.kronicle.service.testutils.LogCaptor;
 
-import javax.inject.Inject;
 import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-@MicronautTest
+@ExtendWith(SpringExtension.class)
+@SpringBootTest(properties = "test-name=BuildGradleVisitorTest", classes = GradleScannerTestConfiguration.class)
 public class BuildGradleVisitorTest {
 
-    @Inject
+    @Autowired
     private BuildGradleVisitor underTest;
-    @Inject
-    private GroovyParser groovyParser;
+    private GroovyParser groovyParser = new GroovyParser();
     private LogCaptor logCaptor;
-
-    @Bean
-    public TestDataDir testDataDir() {
-        return new TestDataDir(this.getClass());
-    }
 
     @BeforeEach
     public void beforeEach() {

@@ -3,15 +3,15 @@ package tech.kronicle.service.scanners.gradle.internal.services;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import tech.kronicle.common.utils.StringEscapeUtils;
+import tech.kronicle.service.spring.stereotypes.SpringComponent;
 import tech.kronicle.service.utils.StringUtils;
 
-import javax.inject.Singleton;
 import java.util.Map;
 
 import static java.util.Objects.nonNull;
 import static java.util.Objects.requireNonNull;
 
-@Singleton
+@SpringComponent
 @RequiredArgsConstructor
 @Slf4j
 public class PropertyExpander {

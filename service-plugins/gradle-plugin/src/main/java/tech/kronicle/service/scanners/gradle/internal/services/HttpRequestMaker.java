@@ -3,11 +3,11 @@ package tech.kronicle.service.scanners.gradle.internal.services;
 import io.github.resilience4j.retry.Retry;
 import io.github.resilience4j.retry.RetryRegistry;
 import org.springframework.http.ResponseEntity;
+import tech.kronicle.service.spring.stereotypes.SpringComponent;
 
-import javax.inject.Singleton;
 import java.util.function.Function;
 
-@Singleton
+@SpringComponent
 public class HttpRequestMaker {
 
     private static final String RETRY_NAME = "http-request-maker";

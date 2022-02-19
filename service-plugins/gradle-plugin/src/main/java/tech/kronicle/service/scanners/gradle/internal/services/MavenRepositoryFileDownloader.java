@@ -6,15 +6,15 @@ import tech.kronicle.service.scanners.gradle.internal.services.Downloader;
 import lombok.RequiredArgsConstructor;
 import lombok.Value;
 import lombok.extern.slf4j.Slf4j;
+import tech.kronicle.service.spring.stereotypes.SpringComponent;
 
-import javax.inject.Singleton;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
-@Singleton
+@SpringComponent
 @RequiredArgsConstructor
 @Slf4j
 public class MavenRepositoryFileDownloader {

@@ -5,11 +5,11 @@ import tech.kronicle.sdk.models.SoftwareDependencyType;
 import tech.kronicle.sdk.models.SoftwareType;
 import tech.kronicle.service.scanners.gradle.internal.constants.MavenPackagings;
 import tech.kronicle.service.scanners.gradle.internal.groovyscriptvisitors.VisitorState;
+import tech.kronicle.service.spring.stereotypes.SpringComponent;
 
-import javax.inject.Singleton;
 import java.util.Objects;
 
-@Singleton
+@SpringComponent
 @Slf4j
 public class BillOfMaterialsLogger {
 

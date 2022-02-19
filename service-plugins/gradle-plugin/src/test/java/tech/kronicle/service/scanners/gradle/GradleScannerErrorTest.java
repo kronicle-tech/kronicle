@@ -1,33 +1,25 @@
 package tech.kronicle.service.scanners.gradle;
 
-import io.micronaut.context.annotation.Bean;
-import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 import tech.kronicle.sdk.models.ScannerError;
-import tech.kronicle.service.scanners.gradle.config.DownloadCacheConfig;
-import tech.kronicle.service.scanners.gradle.config.GradleConfig;
-import tech.kronicle.service.scanners.gradle.config.PomCacheConfig;
-import tech.kronicle.service.scanners.gradle.config.UrlExistsCacheConfig;
-import tech.kronicle.service.scanners.gradle.testbeans.TestDataDir;
+import tech.kronicle.service.scanners.gradle.testbeans.GradleScannerTestConfiguration;
 import tech.kronicle.service.scanners.models.Codebase;
 import tech.kronicle.service.scanners.models.Output;
 
-import javax.inject.Inject;
-
 import static org.assertj.core.api.Assertions.assertThat;
 
-@MicronautTest
+@ExtendWith(SpringExtension.class)
+@SpringBootTest(properties = "test-name=GradleScannerErrorTest", classes = GradleScannerTestConfiguration.class)
 public class GradleScannerErrorTest extends BaseGradleScannerTest {
 
     private static final String SCANNER_ID = "gradle";
 
-    @Inject
+    @Autowired
     private GradleScanner underTest;
-
-    @Bean
-    public TestDataDir testDataDir() {
-        return new TestDataDir(this.getClass());
-    }
 
     @Test
     public void shouldScanBuildscriptMissingRepositoryBuild() {

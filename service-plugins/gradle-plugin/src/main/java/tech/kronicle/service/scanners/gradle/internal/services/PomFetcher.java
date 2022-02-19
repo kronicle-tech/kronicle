@@ -19,10 +19,10 @@ import tech.kronicle.service.scanners.gradle.internal.utils.ArtifactUtils;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import tech.kronicle.common.utils.StringEscapeUtils;
+import tech.kronicle.service.spring.stereotypes.SpringComponent;
 import tech.kronicle.service.utils.StringUtils;
 
 import javax.annotation.PostConstruct;
-import javax.inject.Singleton;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
@@ -43,7 +43,7 @@ import static tech.kronicle.service.scanners.gradle.internal.constants.MavenPack
 import static java.util.Objects.nonNull;
 import static java.util.Objects.requireNonNull;
 
-@Singleton
+@SpringComponent
 @RequiredArgsConstructor
 @Slf4j
 public class PomFetcher {

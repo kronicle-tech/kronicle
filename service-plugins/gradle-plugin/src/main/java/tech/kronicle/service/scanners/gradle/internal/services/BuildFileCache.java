@@ -3,14 +3,14 @@ package tech.kronicle.service.scanners.gradle.internal.services;
 import com.google.common.hash.HashFunction;
 import com.google.common.hash.Hashing;
 import org.codehaus.groovy.ast.ASTNode;
+import tech.kronicle.service.spring.stereotypes.SpringComponent;
 
-import javax.inject.Singleton;
 import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@Singleton
+@SpringComponent
 public class BuildFileCache {
 
     private static final HashFunction HASH_FUNCTION = Hashing.md5();

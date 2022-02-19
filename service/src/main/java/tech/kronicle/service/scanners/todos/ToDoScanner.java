@@ -5,7 +5,7 @@ import tech.kronicle.service.scanners.CodebaseScanner;
 import tech.kronicle.service.scanners.models.Codebase;
 import tech.kronicle.service.scanners.models.Output;
 import tech.kronicle.service.scanners.todos.internal.services.ToDoFinder;
-import tech.kronicle.service.spring.stereotypes.SpringExtension;
+import tech.kronicle.service.spring.stereotypes.KronicleExtension;
 import tech.kronicle.service.utils.FileUtils;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -14,7 +14,7 @@ import java.nio.file.Path;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@SpringExtension
+@KronicleExtension
 @RequiredArgsConstructor
 @Slf4j
 public class ToDoScanner extends CodebaseScanner {

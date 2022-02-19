@@ -12,8 +12,8 @@ import reactor.core.publisher.Mono;
 import tech.kronicle.common.utils.StringEscapeUtils;
 import tech.kronicle.service.models.HttpHeader;
 import tech.kronicle.service.scanners.gradle.config.DownloaderConfig;
+import tech.kronicle.service.spring.stereotypes.SpringComponent;
 
-import javax.inject.Singleton;
 import java.util.List;
 import java.util.Optional;
 import java.util.function.BiConsumer;
@@ -22,7 +22,7 @@ import java.util.function.Function;
 import static java.util.Objects.isNull;
 import static java.util.Objects.nonNull;
 
-@Singleton
+@SpringComponent
 @RequiredArgsConstructor
 @Slf4j
 public class Downloader {

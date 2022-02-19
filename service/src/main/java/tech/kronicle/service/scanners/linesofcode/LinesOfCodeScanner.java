@@ -6,7 +6,7 @@ import tech.kronicle.service.scanners.CodebaseScanner;
 import tech.kronicle.service.scanners.linesofcode.services.LinesOfCodeCounter;
 import tech.kronicle.service.scanners.models.Codebase;
 import tech.kronicle.service.scanners.models.Output;
-import tech.kronicle.service.spring.stereotypes.SpringExtension;
+import tech.kronicle.service.spring.stereotypes.KronicleExtension;
 import tech.kronicle.service.utils.FileUtils;
 import tech.kronicle.service.utils.ObjectReference;
 import lombok.RequiredArgsConstructor;
@@ -24,7 +24,7 @@ import java.util.stream.Collectors;
 
 import static java.util.Objects.isNull;
 
-@SpringExtension
+@KronicleExtension
 @RequiredArgsConstructor
 @Slf4j
 public class LinesOfCodeScanner extends CodebaseScanner {

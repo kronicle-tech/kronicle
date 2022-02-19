@@ -10,14 +10,14 @@ import org.gradle.api.internal.artifacts.ivyservice.ivyresolve.strategy.Version;
 import org.gradle.api.internal.artifacts.ivyservice.ivyresolve.strategy.VersionParser;
 import org.gradle.api.internal.artifacts.ivyservice.ivyresolve.strategy.VersionSelector;
 import tech.kronicle.common.utils.StringEscapeUtils;
+import tech.kronicle.service.spring.stereotypes.SpringComponent;
 
 import javax.annotation.PostConstruct;
-import javax.inject.Singleton;
 import java.util.Comparator;
 import java.util.Optional;
 import java.util.Set;
 
-@Singleton
+@SpringComponent
 @RequiredArgsConstructor
 public class ArtifactVersionResolver {
 

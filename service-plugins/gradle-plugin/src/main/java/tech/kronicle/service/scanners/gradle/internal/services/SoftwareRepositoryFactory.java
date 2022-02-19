@@ -4,10 +4,9 @@ import tech.kronicle.sdk.models.SoftwareRepository;
 import tech.kronicle.sdk.models.SoftwareRepositoryScope;
 import tech.kronicle.sdk.models.SoftwareRepositoryType;
 import lombok.RequiredArgsConstructor;
+import tech.kronicle.service.spring.stereotypes.SpringComponent;
 
-import javax.inject.Singleton;
-
-@Singleton
+@SpringComponent
 @RequiredArgsConstructor
 public class SoftwareRepositoryFactory {
 

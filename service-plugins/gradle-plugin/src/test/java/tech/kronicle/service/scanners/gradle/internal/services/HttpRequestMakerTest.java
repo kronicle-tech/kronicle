@@ -2,12 +2,10 @@ package tech.kronicle.service.scanners.gradle.internal.services;
 
 import io.github.resilience4j.retry.RetryConfig;
 import io.github.resilience4j.retry.RetryRegistry;
-import io.micronaut.context.annotation.Bean;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.http.ResponseEntity;
-import tech.kronicle.service.scanners.gradle.testbeans.TestDataDir;
 import tech.kronicle.service.testutils.Timer;
 import tech.kronicle.service.utils.ObjectReference;
 
@@ -27,11 +25,6 @@ public class HttpRequestMakerTest {
             .addRetryConfig("http-request-maker", retryConfig)
             .build();
     private final HttpRequestMaker underTest = new HttpRequestMaker(retryRegistry);
-
-    @Bean
-    public TestDataDir testDataDir() {
-        return new TestDataDir(this.getClass());
-    }
 
     @BeforeEach
     public void beforeEach() {

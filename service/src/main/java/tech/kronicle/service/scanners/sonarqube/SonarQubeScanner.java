@@ -12,12 +12,12 @@ import tech.kronicle.service.scanners.models.Output;
 import tech.kronicle.service.scanners.sonarqube.exceptions.SonarQubeScannerException;
 import tech.kronicle.service.scanners.sonarqube.services.SonarQubeService;
 import lombok.RequiredArgsConstructor;
-import tech.kronicle.service.spring.stereotypes.SpringExtension;
+import tech.kronicle.service.spring.stereotypes.KronicleExtension;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@SpringExtension
+@KronicleExtension
 @RequiredArgsConstructor
 public class SonarQubeScanner extends ComponentAndCodebaseScanner {
 

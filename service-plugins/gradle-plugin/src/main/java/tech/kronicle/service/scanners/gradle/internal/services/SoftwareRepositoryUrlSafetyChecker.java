@@ -1,8 +1,8 @@
 package tech.kronicle.service.scanners.gradle.internal.services;
 
 import tech.kronicle.service.scanners.gradle.config.GradleConfig;
+import tech.kronicle.service.spring.stereotypes.SpringComponent;
 
-import javax.inject.Singleton;
 import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
@@ -11,7 +11,7 @@ import java.util.stream.Stream;
 
 import static tech.kronicle.service.scanners.gradle.internal.constants.SoftwareRepositoryUrls.SAFE_REPOSITORY_URLS;
 
-@Singleton
+@SpringComponent
 public class SoftwareRepositoryUrlSafetyChecker {
 
     private final List<String> safeSoftwareRepositoryUrls;

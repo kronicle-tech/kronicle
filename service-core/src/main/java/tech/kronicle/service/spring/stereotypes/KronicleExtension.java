@@ -15,7 +15,7 @@ import java.lang.annotation.Target;
 @Documented
 @Component
 @Extension
-public @interface SpringExtension {
+public @interface KronicleExtension {
 
     /**
      * The value may indicate a suggestion for a logical component name,

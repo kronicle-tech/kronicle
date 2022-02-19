@@ -17,13 +17,13 @@ import tech.kronicle.service.scanners.gradle.internal.services.SoftwareRepositor
 import lombok.extern.slf4j.Slf4j;
 import org.codehaus.groovy.ast.expr.MethodCallExpression;
 import org.slf4j.Logger;
+import tech.kronicle.service.spring.stereotypes.SpringComponent;
 
-import javax.inject.Singleton;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 
-@Singleton
+@SpringComponent
 @Slf4j
 public class BuildGradleVisitor extends BaseBuildFileVisitor {
 

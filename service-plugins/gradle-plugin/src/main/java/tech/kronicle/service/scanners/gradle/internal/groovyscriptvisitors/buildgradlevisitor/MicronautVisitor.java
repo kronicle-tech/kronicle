@@ -13,10 +13,9 @@ import tech.kronicle.service.scanners.gradle.internal.services.BuildFileProcesso
 import tech.kronicle.service.scanners.gradle.internal.services.ExpressionEvaluator;
 import tech.kronicle.service.scanners.gradle.internal.services.PluginProcessor;
 import tech.kronicle.service.scanners.gradle.internal.services.SoftwareRepositoryFactory;
+import tech.kronicle.service.spring.stereotypes.SpringComponent;
 
-import javax.inject.Singleton;
-
-@Singleton
+@SpringComponent
 @Slf4j
 public class MicronautVisitor extends BaseBuildFileVisitor {
 

@@ -7,9 +7,9 @@ import tech.kronicle.service.scanners.gradle.internal.models.mavenxml.metadata.V
 import tech.kronicle.service.scanners.gradle.internal.utils.ArtifactUtils;
 import lombok.RequiredArgsConstructor;
 import tech.kronicle.common.utils.StringEscapeUtils;
+import tech.kronicle.service.spring.stereotypes.SpringComponent;
 
 import javax.annotation.PostConstruct;
-import javax.inject.Singleton;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
@@ -20,7 +20,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
-@Singleton
+@SpringComponent
 @RequiredArgsConstructor
 public class ArtifactVersionsFetcher {
 

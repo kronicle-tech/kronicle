@@ -9,8 +9,8 @@ import tech.kronicle.service.scanners.gradle.internal.models.Pom;
 import tech.kronicle.service.scanners.gradle.internal.models.PomOutcome;
 import tech.kronicle.service.scanners.gradle.internal.utils.ArtifactUtils;
 import lombok.RequiredArgsConstructor;
+import tech.kronicle.service.spring.stereotypes.SpringComponent;
 
-import javax.inject.Singleton;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
@@ -18,7 +18,7 @@ import java.util.Set;
 import static java.util.Objects.isNull;
 import static java.util.Objects.nonNull;
 
-@Singleton
+@SpringComponent
 @RequiredArgsConstructor
 public class DependencyVersionFetcher {
 

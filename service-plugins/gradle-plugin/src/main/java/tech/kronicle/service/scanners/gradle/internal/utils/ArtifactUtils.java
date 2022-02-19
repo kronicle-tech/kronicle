@@ -1,12 +1,12 @@
 package tech.kronicle.service.scanners.gradle.internal.utils;
 
-import javax.inject.Singleton;
 import lombok.Value;
+import tech.kronicle.service.spring.stereotypes.SpringComponent;
 
 import static java.util.Objects.nonNull;
 import static java.util.Objects.requireNonNull;
 
-@Singleton
+@SpringComponent
 public class ArtifactUtils {
 
     private static final String ARTIFACT_DELIMITER = ":";

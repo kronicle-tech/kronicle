@@ -20,8 +20,8 @@ import tech.kronicle.service.scanners.gradle.internal.utils.InheritingHashSet;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import tech.kronicle.common.utils.StringEscapeUtils;
+import tech.kronicle.service.spring.stereotypes.SpringComponent;
 
-import javax.inject.Singleton;
 import java.util.Objects;
 import java.util.Set;
 
@@ -29,7 +29,7 @@ import static tech.kronicle.sdk.models.SoftwareType.JVM;
 import static java.util.Objects.isNull;
 import static java.util.Objects.nonNull;
 
-@Singleton
+@SpringComponent
 @Slf4j
 public class DependenciesVisitor extends BaseArtifactVisitor {
 

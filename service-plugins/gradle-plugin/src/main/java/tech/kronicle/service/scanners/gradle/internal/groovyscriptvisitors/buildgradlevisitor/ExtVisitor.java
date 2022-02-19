@@ -12,10 +12,9 @@ import org.codehaus.groovy.ast.expr.ArgumentListExpression;
 import org.codehaus.groovy.ast.expr.BinaryExpression;
 import org.codehaus.groovy.ast.expr.MethodCallExpression;
 import org.slf4j.Logger;
+import tech.kronicle.service.spring.stereotypes.SpringComponent;
 
-import javax.inject.Singleton;
-
-@Singleton
+@SpringComponent
 @Slf4j
 public class ExtVisitor extends BaseVisitor {
 

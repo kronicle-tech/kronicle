@@ -4,13 +4,13 @@ import tech.kronicle.service.scanners.gradle.internal.groovyscriptvisitors.BaseV
 import tech.kronicle.service.scanners.gradle.internal.models.Import;
 import org.codehaus.groovy.ast.ASTNode;
 import org.codehaus.groovy.ast.ClassNode;
+import tech.kronicle.service.spring.stereotypes.SpringComponent;
 
-import javax.inject.Singleton;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-@Singleton
+@SpringComponent
 public class BuildFileProcessor {
 
     public Set<Import> getImports(List<ASTNode> nodes) {

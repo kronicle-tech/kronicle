@@ -1,12 +1,12 @@
 package tech.kronicle.service.scanners.gradle.internal.services;
 
 import tech.kronicle.service.scanners.gradle.internal.models.Import;
+import tech.kronicle.service.spring.stereotypes.SpringComponent;
 
-import javax.inject.Singleton;
 import java.util.Objects;
 import java.util.Set;
 
-@Singleton
+@SpringComponent
 public class ImportResolver {
 
     public Import importResolver(String value, Set<Import> imports) {

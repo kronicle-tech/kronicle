@@ -11,11 +11,11 @@ import org.codehaus.groovy.ast.expr.Expression;
 import org.codehaus.groovy.ast.expr.MethodCallExpression;
 import org.codehaus.groovy.ast.expr.VariableExpression;
 import org.slf4j.Logger;
+import tech.kronicle.service.spring.stereotypes.SpringComponent;
 
-import javax.inject.Singleton;
 import java.util.Objects;
 
-@Singleton
+@SpringComponent
 @Slf4j
 public class ExtOuterVisitor extends BaseVisitor {
 

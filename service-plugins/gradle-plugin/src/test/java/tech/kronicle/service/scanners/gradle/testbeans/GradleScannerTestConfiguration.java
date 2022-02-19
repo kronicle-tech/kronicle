@@ -1,11 +1,16 @@
 package tech.kronicle.service.scanners.gradle.testbeans;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import io.github.resilience4j.retry.RetryConfig;
 import io.github.resilience4j.retry.RetryRegistry;
-import io.micronaut.context.annotation.Bean;
-import io.micronaut.context.annotation.Factory;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.http.converter.json.Jackson2ObjectMapperBuilder;
 import org.springframework.web.reactive.function.client.WebClient;
 import tech.kronicle.service.models.HttpHeader;
+import tech.kronicle.service.scanners.gradle.GradleScanner;
 import tech.kronicle.service.scanners.gradle.config.DownloadCacheConfig;
 import tech.kronicle.service.scanners.gradle.config.DownloaderConfig;
 import tech.kronicle.service.scanners.gradle.config.GradleConfig;
@@ -19,13 +24,18 @@ import tech.kronicle.service.utils.FileUtils;
 import java.time.Duration;
 import java.util.List;
 
-@Factory
-public class GradleScannerTestFactory {
+@Configuration
+@ComponentScan(basePackageClasses = GradleScanner.class)
+public class GradleScannerTestConfiguration {
 
-    private final TestDataDir testDataDir;
+    @Bean
+    public TestDataDir testDataDir(@Value("${test-name}") String testName) {
+        return new TestDataDir(testName);
+    }
 
-    public GradleScannerTestFactory(TestDataDir testDataDir) {
-        this.testDataDir = testDataDir;
+    @Bean
+    public ObjectMapper objectMapper() {
+        return Jackson2ObjectMapperBuilder.json().build();
     }
 
     @Bean
@@ -34,17 +44,17 @@ public class GradleScannerTestFactory {
     }
 
     @Bean
-    public DownloadCacheConfig downloadCacheConfig() {
+    public DownloadCacheConfig downloadCacheConfig(TestDataDir testDataDir) {
         return new DownloadCacheConfig(testDataDir.getValue() + "/download-cache");
     }
 
     @Bean
-    public UrlExistsCacheConfig urlExistsCacheConfig() {
+    public UrlExistsCacheConfig urlExistsCacheConfig(TestDataDir testDataDir) {
         return new UrlExistsCacheConfig(testDataDir.getValue() + "/url-exists-cache");
     }
 
     @Bean
-    public PomCacheConfig pomCacheConfig() {
+    public PomCacheConfig pomCacheConfig(TestDataDir testDataDir) {
         return new PomCacheConfig(testDataDir.getValue() + "/gradle/pom-cache");
     }
 
