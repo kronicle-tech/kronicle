@@ -5,7 +5,7 @@ import tech.kronicle.sdk.models.Priority;
 import tech.kronicle.sdk.models.TestResult;
 import tech.kronicle.sdk.models.sonarqube.SonarQubeProject;
 import tech.kronicle.service.scanners.sonarqube.config.SonarQubeConfig;
-import tech.kronicle.service.spring.stereotypes.Test;
+import tech.kronicle.service.spring.stereotypes.SpringComponent;
 import tech.kronicle.service.tests.models.TestContext;
 import lombok.RequiredArgsConstructor;
 
@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
 import static java.util.Objects.isNull;
 import static java.util.Objects.nonNull;
 
-@Test
+@SpringComponent
 @RequiredArgsConstructor
 public class SonarQubeTest extends BaseSonarQubeTest {
 

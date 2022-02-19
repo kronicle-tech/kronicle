@@ -1,6 +1,9 @@
 package tech.kronicle.service.services;
 
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.DependsOn;
 import org.springframework.stereotype.Service;
+import tech.kronicle.service.constants.SpringBeanNames;
 import tech.kronicle.service.scanners.CodebaseScanner;
 import tech.kronicle.service.scanners.ComponentAndCodebaseScanner;
 import tech.kronicle.service.scanners.ComponentScanner;
@@ -11,6 +14,7 @@ import tech.kronicle.service.scanners.Scanner;
 import java.util.List;
 
 @Service
+@DependsOn(SpringBeanNames.PLUGIN_MANAGER)
 public class ScannerRegistry extends BaseRegistry<Scanner<?, ?>> {
 
     public ScannerRegistry(List<Scanner<?, ?>> items) {

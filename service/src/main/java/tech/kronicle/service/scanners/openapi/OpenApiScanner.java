@@ -14,7 +14,7 @@ import tech.kronicle.service.scanners.openapi.models.SpecAndErrors;
 import tech.kronicle.service.scanners.openapi.services.SpecDiscoverer;
 import tech.kronicle.service.scanners.openapi.services.SpecParser;
 import tech.kronicle.service.scanners.openapi.utils.OpenApiSpecUtils;
-import tech.kronicle.service.spring.stereotypes.Scanner;
+import tech.kronicle.service.spring.stereotypes.SpringExtension;
 
 import java.util.Collection;
 import java.util.List;
@@ -23,7 +23,7 @@ import java.util.stream.Collectors;
 import static java.util.Objects.nonNull;
 import static tech.kronicle.service.scanners.openapi.utils.OpenApiSpecUtils.isManualSpec;
 
-@Extension
+@SpringExtension
 @RequiredArgsConstructor
 @Slf4j
 public class OpenApiScanner extends ComponentAndCodebaseScanner {

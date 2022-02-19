@@ -6,14 +6,14 @@ import tech.kronicle.sdk.models.Dependency;
 import tech.kronicle.service.datadog.dependencies.client.DatadogDependencyClient;
 import tech.kronicle.service.datadog.dependencies.config.DatadogDependenciesConfig;
 import tech.kronicle.service.finders.DependencyFinder;
-import tech.kronicle.service.spring.stereotypes.Finder;
+import tech.kronicle.service.spring.stereotypes.SpringComponent;
 
 import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-@Finder
+@SpringComponent
 @RequiredArgsConstructor
 public class DatadogDependencyFinder extends DependencyFinder {
 

@@ -14,7 +14,6 @@ import tech.kronicle.service.scanners.sonarqube.models.Project;
 import tech.kronicle.service.scanners.sonarqube.models.api.Component;
 import tech.kronicle.service.scanners.sonarqube.models.api.ComponentQualifier;
 import tech.kronicle.service.scanners.sonarqube.models.api.GetComponentMeasuresResponse;
-import tech.kronicle.service.spring.stereotypes.Client;
 import lombok.RequiredArgsConstructor;
 import lombok.Value;
 import org.springframework.http.HttpStatus;
@@ -22,6 +21,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.reactive.function.client.WebClient;
 import org.springframework.web.reactive.function.client.WebClientResponseException;
 import reactor.core.publisher.Mono;
+import tech.kronicle.service.spring.stereotypes.SpringComponent;
 
 import java.time.Duration;
 import java.util.ArrayList;
@@ -33,7 +33,7 @@ import java.util.stream.Collectors;
 
 import static java.util.Objects.nonNull;
 
-@Client
+@SpringComponent
 @RequiredArgsConstructor
 public class SonarQubeClient {
 

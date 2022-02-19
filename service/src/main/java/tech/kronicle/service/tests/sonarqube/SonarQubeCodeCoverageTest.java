@@ -4,7 +4,7 @@ import tech.kronicle.sdk.models.Component;
 import tech.kronicle.sdk.models.Priority;
 import tech.kronicle.sdk.models.sonarqube.SonarQubeProject;
 import tech.kronicle.sdk.models.TestResult;
-import tech.kronicle.service.spring.stereotypes.Test;
+import tech.kronicle.service.spring.stereotypes.SpringComponent;
 import tech.kronicle.service.tests.models.TestContext;
 import lombok.Value;
 
@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
 import static java.util.Objects.isNull;
 import static java.util.Objects.nonNull;
 
-@Test
+@SpringComponent
 public class SonarQubeCodeCoverageTest extends BaseSonarQubeTest {
 
     private static final String COVERAGE_METRIC_KEY = "coverage";

@@ -54,6 +54,11 @@ management:
       exposure:
         include: info, health, metrics, prometheus, openapi
 
+pf4j:
+  runtime-mode: deployment
+  plugin-root-dirs:
+    - plugins
+
 springdoc:
   use-management-port: true
   writer-with-default-pretty-printer: true

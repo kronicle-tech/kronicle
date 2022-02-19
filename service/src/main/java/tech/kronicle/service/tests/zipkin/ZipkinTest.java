@@ -5,7 +5,7 @@ import tech.kronicle.sdk.models.Priority;
 import tech.kronicle.sdk.models.TestResult;
 import tech.kronicle.sdk.models.zipkin.Zipkin;
 import tech.kronicle.service.scanners.zipkin.config.ZipkinConfig;
-import tech.kronicle.service.spring.stereotypes.Test;
+import tech.kronicle.service.spring.stereotypes.SpringComponent;
 import tech.kronicle.service.tests.ComponentTest;
 import tech.kronicle.service.tests.models.TestContext;
 import lombok.RequiredArgsConstructor;
@@ -14,7 +14,7 @@ import java.util.Optional;
 
 import static java.util.Objects.isNull;
 
-@Test
+@SpringComponent
 @RequiredArgsConstructor
 public class ZipkinTest extends ComponentTest {
 

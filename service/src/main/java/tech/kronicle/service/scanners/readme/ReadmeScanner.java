@@ -5,7 +5,7 @@ import tech.kronicle.service.scanners.CodebaseScanner;
 import tech.kronicle.service.scanners.models.Codebase;
 import tech.kronicle.service.scanners.models.Output;
 import tech.kronicle.service.scanners.readme.services.ReadmeFileNameChecker;
-import tech.kronicle.service.spring.stereotypes.Scanner;
+import tech.kronicle.service.spring.stereotypes.SpringExtension;
 import tech.kronicle.service.utils.FileUtils;
 import lombok.RequiredArgsConstructor;
 
@@ -14,7 +14,7 @@ import java.nio.file.attribute.BasicFileAttributes;
 import java.util.Comparator;
 import java.util.Optional;
 
-@Extension
+@SpringExtension
 @RequiredArgsConstructor
 public class ReadmeScanner extends CodebaseScanner {
 

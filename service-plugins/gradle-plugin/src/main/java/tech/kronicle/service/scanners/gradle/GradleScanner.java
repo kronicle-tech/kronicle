@@ -68,6 +68,7 @@ import static tech.kronicle.service.scanners.gradle.internal.constants.ToolNames
 
 @Extension
 @Singleton
+
 @RequiredArgsConstructor
 @Slf4j
 public class GradleScanner extends CodebaseScanner {

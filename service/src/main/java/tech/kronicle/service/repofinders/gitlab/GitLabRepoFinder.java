@@ -7,6 +7,7 @@ import tech.kronicle.service.repofinders.RepoFinder;
 import tech.kronicle.service.repofinders.gitlab.client.GitLabClient;
 import tech.kronicle.service.repofinders.gitlab.config.GitLabRepoFinderConfig;
 import tech.kronicle.service.repofinders.gitlab.config.GitLabRepoFinderHostConfig;
+import tech.kronicle.service.spring.stereotypes.SpringComponent;
 
 import java.util.Collection;
 import java.util.List;
@@ -16,7 +17,7 @@ import java.util.function.Supplier;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-@tech.kronicle.service.spring.stereotypes.RepoFinder
+@SpringComponent
 @RequiredArgsConstructor
 @Slf4j
 public class GitLabRepoFinder extends RepoFinder {

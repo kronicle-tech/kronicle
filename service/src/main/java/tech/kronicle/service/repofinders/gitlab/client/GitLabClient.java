@@ -17,7 +17,7 @@ import tech.kronicle.service.repofinders.gitlab.constants.GitLabApiHeaders;
 import tech.kronicle.service.repofinders.gitlab.constants.GitLabApiPaths;
 import tech.kronicle.service.repofinders.gitlab.models.api.GitLabRepo;
 import tech.kronicle.service.services.UriVariablesBuilder;
-import tech.kronicle.service.spring.stereotypes.Client;
+import tech.kronicle.service.spring.stereotypes.SpringComponent;
 
 import java.util.List;
 import java.util.Map;
@@ -31,7 +31,7 @@ import static java.util.Objects.isNull;
 import static java.util.Objects.nonNull;
 import static tech.kronicle.service.utils.UriTemplateUtils.expandUriTemplate;
 
-@Client
+@SpringComponent
 @Slf4j
 @RequiredArgsConstructor
 public class GitLabClient {

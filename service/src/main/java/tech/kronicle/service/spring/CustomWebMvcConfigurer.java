@@ -1,4 +1,4 @@
-package tech.kronicle.service.spring.config;
+package tech.kronicle.service.spring;
 
 import tech.kronicle.service.partialresponse.PartialResponseHandlerInterceptor;
 import lombok.RequiredArgsConstructor;

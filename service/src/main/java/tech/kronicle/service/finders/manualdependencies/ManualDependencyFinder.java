@@ -6,7 +6,7 @@ import tech.kronicle.sdk.models.ComponentDependency;
 import tech.kronicle.sdk.models.Dependency;
 import tech.kronicle.sdk.models.DependencyDirection;
 import tech.kronicle.service.finders.DependencyFinder;
-import tech.kronicle.service.spring.stereotypes.Finder;
+import tech.kronicle.service.spring.stereotypes.SpringComponent;
 
 import java.util.Collection;
 import java.util.List;
@@ -14,7 +14,7 @@ import java.util.Objects;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-@Finder
+@SpringComponent
 public class ManualDependencyFinder extends DependencyFinder {
     @Override
     public String description() {

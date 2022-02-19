@@ -4,7 +4,7 @@ import tech.kronicle.sdk.models.Component;
 import tech.kronicle.sdk.models.Priority;
 import tech.kronicle.sdk.models.TestResult;
 import tech.kronicle.service.constants.CommonComponentTypeIds;
-import tech.kronicle.service.spring.stereotypes.Test;
+import tech.kronicle.service.spring.stereotypes.SpringComponent;
 import tech.kronicle.service.tests.ComponentTest;
 import tech.kronicle.service.tests.models.TestContext;
 
@@ -13,7 +13,7 @@ import java.util.Optional;
 
 import static java.util.Objects.isNull;
 
-@Test
+@SpringComponent
 public class BackendForFrontendDependencyTest extends ComponentTest {
 
     @Override

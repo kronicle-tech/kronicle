@@ -9,7 +9,6 @@ import tech.kronicle.service.repofinders.bitbucketserver.models.api.Link;
 import tech.kronicle.service.repofinders.bitbucketserver.models.api.PageResponse;
 import tech.kronicle.service.repofinders.bitbucketserver.models.api.Repo;
 import tech.kronicle.service.services.UriVariablesBuilder;
-import tech.kronicle.service.spring.stereotypes.Client;
 import lombok.RequiredArgsConstructor;
 import lombok.Value;
 import lombok.extern.slf4j.Slf4j;
@@ -17,6 +16,7 @@ import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.reactive.function.client.ClientResponse;
 import org.springframework.web.reactive.function.client.WebClient;
+import tech.kronicle.service.spring.stereotypes.SpringComponent;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -35,7 +35,7 @@ import static tech.kronicle.service.utils.UriTemplateUtils.expandUriTemplate;
  * for a description of the API endpoints for Bitbucket Server.  Bitbucket Service
  * is a distinct product from Bitbucket Cloud.
  */
-@Client
+@SpringComponent
 @RequiredArgsConstructor
 @Slf4j
 public class BitbucketServerClient {

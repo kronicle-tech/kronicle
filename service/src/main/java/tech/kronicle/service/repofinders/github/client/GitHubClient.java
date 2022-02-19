@@ -21,7 +21,7 @@ import tech.kronicle.service.repofinders.github.models.api.GitHubContentEntry;
 import tech.kronicle.service.repofinders.github.models.api.GitHubRepo;
 import tech.kronicle.service.repofinders.github.services.ApiResponseCache;
 import tech.kronicle.service.services.UriVariablesBuilder;
-import tech.kronicle.service.spring.stereotypes.Client;
+import tech.kronicle.service.spring.stereotypes.SpringComponent;
 
 import javax.validation.constraints.NotEmpty;
 import java.time.Instant;
@@ -38,7 +38,7 @@ import static java.util.Objects.isNull;
 import static java.util.Objects.nonNull;
 import static tech.kronicle.service.utils.UriTemplateUtils.expandUriTemplate;
 
-@Client
+@SpringComponent
 @Slf4j
 public class GitHubClient {
 

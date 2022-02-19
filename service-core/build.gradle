@@ -21,8 +21,11 @@ dependencies {
 
     api project(":common")
     api project(":metadata")
-    implementation "org.hibernate.validator:hibernate-validator"
-    api "org.pf4j:pf4j:$pf4jVersion"
+    api "org.hibernate.validator:hibernate-validator"
+    api("org.pf4j:pf4j:$pf4jVersion") {
+        exclude group: 'org.apache.logging.log4j'
+    }
+    implementation "org.springframework:spring-context"
     implementation "org.springframework:spring-webflux"
 //    api "jakarta.annotation:jakarta.annotation-api"
 

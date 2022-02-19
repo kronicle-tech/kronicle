@@ -3,6 +3,9 @@ spring:
     sampler:
       probability: ${ZIPKIN_SAMPLE_RATE:1.0}
 
+pf4j:
+  runtime-mode: development
+
 download-cache:
   dir: ${TMPDIR}kronicle-service/data/download-cache
 

@@ -10,7 +10,7 @@ import tech.kronicle.service.datadog.constants.DatadogHttpHeaderNames;
 import tech.kronicle.service.datadog.dependencies.config.DatadogDependenciesConfig;
 import tech.kronicle.service.datadog.dependencies.models.ServiceDependenciesResponse;
 import tech.kronicle.service.services.UriVariablesBuilder;
-import tech.kronicle.service.spring.stereotypes.Client;
+import tech.kronicle.service.spring.stereotypes.SpringComponent;
 
 import java.util.List;
 import java.util.Map;
@@ -19,7 +19,7 @@ import java.util.stream.Collectors;
 import static java.util.Objects.isNull;
 import static tech.kronicle.service.utils.UriTemplateUtils.expandUriTemplate;
 
-@Client
+@SpringComponent
 @Slf4j
 @RequiredArgsConstructor
 public class DatadogDependencyClient {

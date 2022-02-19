@@ -8,14 +8,14 @@ import tech.kronicle.service.scanners.models.Codebase;
 import tech.kronicle.service.scanners.models.Output;
 import tech.kronicle.service.scanners.nodejs.internal.constants.NodeJsFileNames;
 import tech.kronicle.service.scanners.nodejs.internal.services.npm.NpmPackageExtractor;
-import tech.kronicle.service.spring.stereotypes.Scanner;
+import tech.kronicle.service.spring.stereotypes.SpringExtension;
 import tech.kronicle.service.utils.FileUtils;
 
 import java.nio.file.Path;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Extension
+@SpringExtension
 @RequiredArgsConstructor
 public class NodeJsScanner  extends CodebaseScanner {
 

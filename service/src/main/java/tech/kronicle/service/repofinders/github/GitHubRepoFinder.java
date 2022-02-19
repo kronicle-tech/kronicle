@@ -6,6 +6,7 @@ import tech.kronicle.service.models.ApiRepo;
 import tech.kronicle.service.repofinders.RepoFinder;
 import tech.kronicle.service.repofinders.github.client.GitHubClient;
 import tech.kronicle.service.repofinders.github.config.GitHubRepoFinderConfig;
+import tech.kronicle.service.spring.stereotypes.SpringComponent;
 
 import java.util.Collection;
 import java.util.List;
@@ -15,7 +16,7 @@ import java.util.function.Supplier;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-@tech.kronicle.service.spring.stereotypes.RepoFinder
+@SpringComponent
 @RequiredArgsConstructor
 @Slf4j
 public class GitHubRepoFinder extends RepoFinder {

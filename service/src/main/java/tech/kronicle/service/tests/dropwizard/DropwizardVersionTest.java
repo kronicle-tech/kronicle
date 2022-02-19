@@ -5,7 +5,7 @@ import tech.kronicle.sdk.models.KeySoftware;
 import tech.kronicle.sdk.models.Priority;
 import tech.kronicle.sdk.models.TestOutcome;
 import tech.kronicle.sdk.models.TestResult;
-import tech.kronicle.service.spring.stereotypes.Test;
+import tech.kronicle.service.spring.stereotypes.SpringComponent;
 import tech.kronicle.service.tests.ComponentTest;
 import tech.kronicle.service.tests.models.TestContext;
 import lombok.RequiredArgsConstructor;
@@ -20,7 +20,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-@Test
+@SpringComponent
 @RequiredArgsConstructor
 public class DropwizardVersionTest extends ComponentTest {
 

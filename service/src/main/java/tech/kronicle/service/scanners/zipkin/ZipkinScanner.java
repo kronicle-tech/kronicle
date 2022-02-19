@@ -20,7 +20,7 @@ import tech.kronicle.service.scanners.zipkin.services.CallGraphCollator;
 import tech.kronicle.service.scanners.zipkin.services.ComponentDependencyCollator;
 import tech.kronicle.service.scanners.zipkin.services.SubComponentDependencyCollator;
 import tech.kronicle.service.scanners.zipkin.services.ZipkinService;
-import tech.kronicle.service.spring.stereotypes.Scanner;
+import tech.kronicle.service.spring.stereotypes.SpringExtension;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -30,7 +30,7 @@ import java.util.stream.Collectors;
 
 import static java.util.Objects.isNull;
 
-@Extension
+@SpringExtension
 @Slf4j
 @RequiredArgsConstructor
 public class ZipkinScanner extends ComponentScanner {
