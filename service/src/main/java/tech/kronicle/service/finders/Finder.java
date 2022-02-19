@@ -2,8 +2,7 @@ package tech.kronicle.service.finders;
 
 import tech.kronicle.common.utils.CaseUtils;
 import tech.kronicle.componentmetadata.models.ComponentMetadata;
-import tech.kronicle.service.models.ApiRepo;
-import tech.kronicle.service.services.RegistryItem;
+import tech.kronicle.service.models.RegistryItem;
 
 import java.util.List;
 

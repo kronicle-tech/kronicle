@@ -24,7 +24,7 @@ import java.util.stream.Collectors;
 
 import static java.util.Objects.isNull;
 
-@Scanner
+@Extension
 @RequiredArgsConstructor
 @Slf4j
 public class LinesOfCodeScanner extends CodebaseScanner {

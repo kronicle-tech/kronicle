@@ -8,7 +8,7 @@ import tech.kronicle.sdk.models.Repo;
 import tech.kronicle.sdk.models.ScannerError;
 import tech.kronicle.sdk.models.Summary;
 import tech.kronicle.service.exceptions.ValidationException;
-import tech.kronicle.service.mappers.ThrowableToScannerErrorMapper;
+import tech.kronicle.service.scanners.services.ThrowableToScannerErrorMapper;
 import tech.kronicle.service.scanners.Scanner;
 import tech.kronicle.service.scanners.models.Codebase;
 import tech.kronicle.service.scanners.models.ComponentAndCodebase;

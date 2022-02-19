@@ -23,7 +23,7 @@ import java.util.stream.Collectors;
 import static java.util.Objects.nonNull;
 import static tech.kronicle.service.scanners.openapi.utils.OpenApiSpecUtils.isManualSpec;
 
-@Scanner
+@Extension
 @RequiredArgsConstructor
 @Slf4j
 public class OpenApiScanner extends ComponentAndCodebaseScanner {

@@ -7,7 +7,7 @@ import tech.kronicle.componentmetadata.models.ComponentMetadata;
 import tech.kronicle.sdk.models.Component;
 import tech.kronicle.sdk.models.ScannerError;
 import tech.kronicle.sdk.models.openapi.OpenApiSpec;
-import tech.kronicle.service.mappers.ThrowableToScannerErrorMapper;
+import tech.kronicle.service.scanners.services.ThrowableToScannerErrorMapper;
 import tech.kronicle.service.scanners.BaseCodebaseScannerTest;
 import tech.kronicle.service.scanners.models.Codebase;
 import tech.kronicle.service.scanners.models.ComponentAndCodebase;

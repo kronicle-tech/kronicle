@@ -4,14 +4,15 @@ pluginManagement {
     }
 
     plugins {
-        id "com.jfrog.artifactory" version "$artifactoryPluginVersion" apply false
-        id "org.springframework.boot" version "$springBootVersion" apply false
-        id "org.siouan.frontend-jdk11" version "$frontendPluginVersion" apply false
-        id "org.sonarqube" version "$sonarQubeVersion" apply false
-        id "com.github.spotbugs" version "$spotbugsVersion" apply false
-        id "com.palantir.docker" version "$palantirDockerVersion" apply false
-        id "org.owasp.dependencycheck" version "$dependencyCheckVersion" apply false
-        id "pl.allegro.tech.build.axion-release" version "$axionReleaseVersion" apply false
+        id "com.jfrog.artifactory" version artifactoryPluginVersion apply false
+        id "org.springframework.boot" version springBootVersion apply false
+        id "io.micronaut.library" version micronautLibraryPluginVersion apply false
+        id "org.siouan.frontend-jdk11" version frontendPluginVersion apply false
+        id "org.sonarqube" version sonarQubeVersion apply false
+        id "com.github.spotbugs" version spotbugsVersion apply false
+        id "com.palantir.docker" version palantirDockerVersion apply false
+        id "org.owasp.dependencycheck" version dependencyCheckVersion apply false
+        id "pl.allegro.tech.build.axion-release" version axionReleaseVersion apply false
     }
 }
 
@@ -19,4 +20,7 @@ include "common"
 include "sdk"
 include "metadata"
 include "app"
+include "service-core"
+include "service-core-tests"
 include "service"
+include "service-plugins:gradle-plugin"

@@ -1,6 +1,7 @@
 package tech.kronicle.service.services;
 
 import lombok.RequiredArgsConstructor;
+import tech.kronicle.service.models.RegistryItem;
 
 import java.util.List;
 import java.util.Objects;

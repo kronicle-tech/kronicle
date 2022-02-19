@@ -14,7 +14,7 @@ import java.nio.file.attribute.BasicFileAttributes;
 import java.util.Comparator;
 import java.util.Optional;
 
-@Scanner
+@Extension
 @RequiredArgsConstructor
 public class ReadmeScanner extends CodebaseScanner {
 

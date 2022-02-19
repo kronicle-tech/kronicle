@@ -1,6 +1,7 @@
 package tech.kronicle.service.services;
 
 import org.junit.jupiter.api.Test;
+import tech.kronicle.service.models.RegistryItem;
 
 import java.util.List;
 

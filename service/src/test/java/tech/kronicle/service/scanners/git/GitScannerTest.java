@@ -10,7 +10,7 @@ import tech.kronicle.sdk.models.Component;
 import tech.kronicle.sdk.models.Repo;
 import tech.kronicle.sdk.models.git.Identity;
 import tech.kronicle.service.config.GitConfig;
-import tech.kronicle.service.mappers.ThrowableToScannerErrorMapper;
+import tech.kronicle.service.scanners.services.ThrowableToScannerErrorMapper;
 import tech.kronicle.service.scanners.BaseScannerTest;
 import tech.kronicle.service.scanners.models.Codebase;
 import tech.kronicle.service.scanners.models.Output;

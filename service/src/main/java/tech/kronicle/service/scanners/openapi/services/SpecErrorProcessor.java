@@ -1,7 +1,7 @@
 package tech.kronicle.service.scanners.openapi.services;
 
 import tech.kronicle.sdk.models.ScannerError;
-import tech.kronicle.service.mappers.ThrowableToScannerErrorMapper;
+import tech.kronicle.service.scanners.services.ThrowableToScannerErrorMapper;
 import tech.kronicle.service.scanners.Scanner;
 import io.swagger.v3.parser.core.models.SwaggerParseResult;
 import lombok.RequiredArgsConstructor;

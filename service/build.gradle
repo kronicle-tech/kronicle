@@ -20,47 +20,6 @@ configurations {
     realCodebaseTestRuntimeOnly.extendsFrom testRuntimeOnly
 }
 
-task downloadGradleLibs {
-    def gradleLibsDir = file("$buildDir/gradle-libs")
-
-    ext {
-        downloadUrl = "https://services.gradle.org/distributions/gradle-$gradleLibsVersion-bin.zip"
-        jarPatterns = [
-                "**/gradle-core-${gradleLibsVersion}.jar",
-                "**/gradle-core-api-${gradleLibsVersion}.jar",
-                "**/gradle-base-services-${gradleLibsVersion}.jar",
-                "**/gradle-dependency-management-${gradleLibsVersion}.jar"
-        ]
-        extractedJars = fileTree(gradleLibsDir) {
-            include jarPatterns
-            builtBy "downloadGradleLibs"
-        }
-    }
-
-    inputs.property "downloadUrl", downloadUrl
-    inputs.property "jarPatterns", jarPatterns
-    outputs.files extractedJars
-
-    doLast {
-        gradleLibsDir.mkdirs()
-
-        File downloadFile = file("$temporaryDir/download.zip")
-        new URL(downloadUrl).withInputStream { is ->
-            downloadFile.withOutputStream { it << is }
-        }
-
-        project.copy {
-            from zipTree(downloadFile)
-            into gradleLibsDir
-            include jarPatterns
-            includeEmptyDirs false
-            eachFile {
-                path = name
-            }
-        }
-    }
-}
-
 dependencies {
     annotationProcessor platform("org.springframework.boot:spring-boot-dependencies:$springBootVersion")
     annotationProcessor platform("org.springframework.cloud:spring-cloud-dependencies:$springCloudVersion")
@@ -86,6 +45,7 @@ dependencies {
 
     implementation project(":common")
     implementation project(":metadata")
+    implementation project(":service-core")
     implementation "org.springframework.boot:spring-boot-starter-web"
     developmentOnly "org.springframework.boot:spring-boot-devtools"
     implementation "org.springframework.boot:spring-boot-starter-actuator"
@@ -101,11 +61,7 @@ dependencies {
     implementation "com.fasterxml.jackson.datatype:jackson-datatype-jsr310:$jacksonVersion"
     implementation "com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:$jacksonVersion"
     implementation "org.simondean.partial-response:matcher:$partialResponseVersion"
-    implementation "jakarta.xml.bind:jakarta.xml.bind-api:$jakartaXmlBindVersion"
-    implementation "com.sun.xml.bind:jaxb-impl:$jakartaXmlBindVersion"
-    implementation "org.hibernate.validator:hibernate-validator"
     implementation "org.codehaus.groovy:groovy:$groovyVersion"
-    implementation files(downloadGradleLibs)
     implementation "io.swagger.parser.v3:swagger-parser:$swaggerParserVersion"
     implementation "com.google.guava:guava:$guavaVersion"
     implementation "org.apache.commons:commons-lang3:$commonsLang3Version"
@@ -114,6 +70,7 @@ dependencies {
     implementation "org.eclipse.jgit:org.eclipse.jgit:$jgitVersion"
     implementation "net.logstash.logback:logstash-logback-encoder:$logstashLogbackEncoder"
 
+    testImplementation project(":service-core-tests")
     testImplementation "org.springframework.boot:spring-boot-starter-test", {
         exclude group: "junit", module: "junit"
         exclude group: "org.junit.vintage", module: "junit-vintage-engine"

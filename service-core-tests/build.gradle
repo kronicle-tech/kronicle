@@ -1,0 +1,39 @@
+plugins {
+    id "java-library"
+}
+
+dependencies {
+    annotationProcessor platform("org.springframework.boot:spring-boot-dependencies:$springBootVersion")
+    implementation platform("org.springframework.boot:spring-boot-dependencies:$springBootVersion")
+    compileOnly platform("org.springframework.boot:spring-boot-dependencies:$springBootVersion")
+    testAnnotationProcessor platform("org.springframework.boot:spring-boot-dependencies:$springBootVersion")
+    testImplementation platform("org.springframework.boot:spring-boot-dependencies:$springBootVersion")
+
+    annotationProcessor "org.projectlombok:lombok"
+    compileOnly "org.projectlombok:lombok"
+    compileOnly "javax.inject:javax.inject:$javaxInjectApiVersion"
+    compileOnly "com.github.spotbugs:spotbugs-annotations:$spotBugsVersion"
+
+    testAnnotationProcessor "org.projectlombok:lombok"
+    testCompileOnly "org.projectlombok:lombok"
+    testCompileOnly "javax.inject:javax.inject:$javaxInjectApiVersion"
+    testCompileOnly "com.github.spotbugs:spotbugs-annotations:$spotBugsVersion"
+
+    api project(":service-core")
+    api "ch.qos.logback:logback-classic"
+    api "org.assertj:assertj-core"
+
+    testImplementation "org.springframework.boot:spring-boot-starter-test", {
+        exclude group: "junit", module: "junit"
+        exclude group: "org.junit.vintage", module: "junit-vintage-engine"
+    }
+    testImplementation "org.junit.jupiter:junit-jupiter-engine"
+    testImplementation "org.assertj:assertj-core"
+    testImplementation "org.mockito:mockito-core"
+    testImplementation "org.mockito:mockito-junit-jupiter"
+}
+
+test {
+    useJUnitPlatform()
+    maxParallelForks = Runtime.runtime.availableProcessors().intdiv(2) ?: 1
+}

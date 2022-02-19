@@ -14,7 +14,7 @@ import java.nio.file.Path;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Scanner
+@Extension
 @RequiredArgsConstructor
 @Slf4j
 public class ToDoScanner extends CodebaseScanner {

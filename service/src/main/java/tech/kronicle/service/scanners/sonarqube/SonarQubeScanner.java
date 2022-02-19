@@ -17,7 +17,7 @@ import lombok.RequiredArgsConstructor;
 import java.util.ArrayList;
 import java.util.List;
 
-@Scanner
+@Extension
 @RequiredArgsConstructor
 public class SonarQubeScanner extends ComponentAndCodebaseScanner {
 

@@ -1,5 +1,6 @@
 package tech.kronicle.service.scanners.keysoftware;
 
+import org.pf4j.Extension;
 import tech.kronicle.sdk.models.Component;
 import tech.kronicle.sdk.models.KeySoftware;
 import tech.kronicle.sdk.models.Software;
@@ -7,7 +8,6 @@ import tech.kronicle.service.scanners.LateComponentScanner;
 import tech.kronicle.service.scanners.keysoftware.config.KeySoftwareConfig;
 import tech.kronicle.service.scanners.keysoftware.config.KeySoftwareRule;
 import tech.kronicle.service.scanners.models.Output;
-import tech.kronicle.service.spring.stereotypes.Scanner;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.gradle.api.internal.artifacts.ivyservice.ivyresolve.strategy.DefaultVersionComparator;
@@ -26,7 +26,7 @@ import java.util.stream.Collectors;
 
 import static java.util.Objects.isNull;
 
-@Scanner
+@Extension
 @RequiredArgsConstructor
 @Slf4j
 public class KeySoftwareScanner extends LateComponentScanner {

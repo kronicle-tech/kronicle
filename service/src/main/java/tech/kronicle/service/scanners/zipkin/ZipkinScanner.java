@@ -30,7 +30,7 @@ import java.util.stream.Collectors;
 
 import static java.util.Objects.isNull;
 
-@Scanner
+@Extension
 @Slf4j
 @RequiredArgsConstructor
 public class ZipkinScanner extends ComponentScanner {

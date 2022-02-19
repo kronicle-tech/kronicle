@@ -15,7 +15,7 @@ import java.nio.file.Path;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Scanner
+@Extension
 @RequiredArgsConstructor
 public class NodeJsScanner  extends CodebaseScanner {
 

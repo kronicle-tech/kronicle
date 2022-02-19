@@ -7,7 +7,7 @@
     </appender>
 
     <logger name="tech.kronicle" level="INFO"/>
-    <logger name="tech.kronicle.service.services.Downloader" level="DEBUG"/>
+    <logger name="tech.kronicle.service.scanners.gradle.internal.services.Downloader" level="DEBUG"/>
 
     <root level="INFO">
         <appender-ref ref="CONSOLE"/>
