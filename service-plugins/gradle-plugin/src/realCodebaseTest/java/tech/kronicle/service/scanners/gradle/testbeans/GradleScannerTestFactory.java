@@ -1,5 +1,7 @@
 package tech.kronicle.service.scanners.gradle.testbeans;
 
+import io.github.resilience4j.retry.RetryConfig;
+import io.github.resilience4j.retry.RetryRegistry;
 import io.micronaut.context.annotation.Bean;
 import io.micronaut.context.annotation.Factory;
 import org.springframework.web.reactive.function.client.WebClient;
@@ -10,7 +12,6 @@ import tech.kronicle.service.scanners.gradle.config.GradleConfig;
 import tech.kronicle.service.scanners.gradle.config.GradleCustomRepository;
 import tech.kronicle.service.scanners.gradle.config.PomCacheConfig;
 import tech.kronicle.service.scanners.gradle.config.UrlExistsCacheConfig;
-import tech.kronicle.service.scanners.gradle.internal.services.HttpRequestMaker;
 import tech.kronicle.service.scanners.services.ThrowableToScannerErrorMapper;
 import tech.kronicle.service.utils.AntStyleIgnoreFileLoader;
 import tech.kronicle.service.utils.FileUtils;
@@ -76,8 +77,10 @@ public class GradleScannerTestFactory {
     }
 
     @Bean
-    public HttpRequestMaker httpRequestMaker() {
-        return new HttpRequestMaker();
+    public RetryRegistry retryRegistry() {
+        return RetryRegistry.custom()
+                .addRetryConfig("http-request-maker", RetryConfig.ofDefaults())
+                .build();
     }
 
     @Bean
