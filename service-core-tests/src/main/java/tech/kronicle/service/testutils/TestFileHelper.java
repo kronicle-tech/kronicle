@@ -25,20 +25,19 @@ public class TestFileHelper {
     }
 
     private static Path getResourcesDir(Class<?> type) {
-        return getRootDir()
-                .resolve("service")
+        return getProjectDir()
                 .resolve("src/test/resources")
                 .resolve(String.join("/", type.getName().split("\\.")));
     }
 
-    public static Path getRootDir() {
+    public static Path getProjectDir() {
         Path dir = Path.of("").toAbsolutePath();
 
-        while (!Files.exists(dir.resolve("settings.gradle"))) {
+        while (!Files.exists(dir.resolve("build.gradle"))) {
             dir = dir.getParent();
 
             if (isNull(dir)) {
-                throw new RuntimeException("Cannot find root directory of codebase");
+                throw new RuntimeException("Cannot find project directory");
             }
         }
 

@@ -26,8 +26,9 @@ dependencies {
         exclude group: 'org.apache.logging.log4j'
     }
     api "org.springframework:spring-context"
+    api "jakarta.annotation:jakarta.annotation-api"
+    api "jakarta.validation:jakarta.validation-api"
     implementation "org.springframework:spring-webflux"
-//    api "jakarta.annotation:jakarta.annotation-api"
 
     testImplementation project(":service-core-tests")
     testImplementation "org.springframework.boot:spring-boot-starter-test", {
@@ -41,7 +42,7 @@ dependencies {
     testImplementation "com.github.tomakehurst:wiremock-jre8:$wireMockVersion"
 }
 
-test {
+tasks.withType(Test).configureEach {
     useJUnitPlatform()
-    maxParallelForks = Runtime.runtime.availableProcessors().intdiv(2) ?: 1
+    maxParallelForks = Math.min(2, Runtime.runtime.availableProcessors().intdiv(2) ?: 1)
 }

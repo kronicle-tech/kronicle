@@ -1,0 +1,19 @@
+package tech.kronicle.service.scanners.gradle.GradleScannerCodebaseTest.BuildscriptProjectProperty
+
+buildscript {
+    ext {
+        hibernateValidatorVersion = "6.1.6.Final"
+    }
+}
+
+plugins {
+    id "java"
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile "org.hibernate.validator:hibernate-validator:$hibernateValidatorVersion"
+}

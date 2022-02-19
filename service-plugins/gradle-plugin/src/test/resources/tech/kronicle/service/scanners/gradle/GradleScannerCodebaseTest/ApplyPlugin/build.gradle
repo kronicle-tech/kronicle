@@ -1,0 +1,17 @@
+package tech.kronicle.service.scanners.gradle.GradleScannerCodebaseTest.ApplyPlugin
+
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath "org.springframework.boot:spring-boot-gradle-plugin:2.3.4.RELEASE"
+    }
+}
+
+apply plugin: "java"
+apply plugin: "org.springframework.boot"
+
+repositories {
+    mavenCentral()
+}

@@ -1,0 +1,11 @@
+package tech.kronicle.service.scanners.gradle.GradleScannerCodebaseTest.RepositoryMavenUrlPropertyGString
+
+ext {
+    repositoryName = "android/maven2/"
+}
+
+repositories {
+    maven {
+        url = "https://dl.google.com/dl/$repositoryName"
+    }
+}

@@ -1,0 +1,4 @@
+package tech.kronicle.service.scanners.gradle.GradleScannerCodebaseTest.ProjectBuiltInProperties
+
+def variable1 = project.name
+def variable2 = "$project.name"

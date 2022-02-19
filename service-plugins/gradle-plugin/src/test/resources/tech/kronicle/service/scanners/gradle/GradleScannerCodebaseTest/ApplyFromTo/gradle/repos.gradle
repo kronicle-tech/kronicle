@@ -1,0 +1,5 @@
+package tech.kronicle.service.scanners.gradle.GradleScannerCodebaseTest.ApplyFromTo.gradle
+
+repositories {
+    mavenCentral()
+}

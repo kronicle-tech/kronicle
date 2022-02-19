@@ -1,0 +1,10 @@
+package tech.kronicle.service.scanners.gradle.GradleScannerCodebaseTest.MultiProjectSpringBootPluginApplyFalse
+
+plugins {
+    id "java"
+    id "org.springframework.boot" version "2.3.4.RELEASE" apply false
+}
+
+repositories {
+    mavenCentral()
+}

@@ -39,17 +39,8 @@ dependencies {
     testAnnotationProcessor platform("org.springframework.boot:spring-boot-dependencies:$springBootVersion")
     testImplementation platform("org.springframework.boot:spring-boot-dependencies:$springBootVersion")
 
-    annotationProcessor "org.projectlombok:lombok"
-    compileOnly "org.projectlombok:lombok"
     compileOnly "com.github.spotbugs:spotbugs-annotations:$spotBugsVersion"
-    testAnnotationProcessor "org.projectlombok:lombok"
-    testCompileOnly "org.projectlombok:lombok"
     testCompileOnly "com.github.spotbugs:spotbugs-annotations:$spotBugsVersion"
-
-    compileOnly "javax.inject:javax.inject:$javaxInjectApiVersion"
-    compileOnly "jakarta.annotation:jakarta.annotation-api"
-    compileOnly "jakarta.validation:jakarta.validation-api"
-    testCompileOnly "javax.inject:javax.inject:$javaxInjectApiVersion"
 
     implementation project(":service-core")
     implementation "tech.kronicle:gradle-version-logic:$gradleVersionLogicVersion"
@@ -77,12 +68,6 @@ dependencies {
 }
 
 tasks.withType(Test).configureEach {
-    maxParallelForks = Runtime.runtime.availableProcessors().intdiv(2) ?: 1
-}
-
-tasks.withType(JavaCompile) {
-    options.compilerArgs = [
-            '-Amicronaut.processing.incremental=true',
-            '-Amicronaut.processing.annotations=tech.kronicle.service.*',
-    ]
+    useJUnitPlatform()
+    maxParallelForks = Math.min(2, Runtime.runtime.availableProcessors().intdiv(2) ?: 1)
 }

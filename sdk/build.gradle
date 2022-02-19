@@ -46,7 +46,7 @@ dependencies {
     testImplementation "com.github.tomakehurst:wiremock-jre8:$wireMockVersion"
 }
 
-test {
+tasks.withType(Test).configureEach {
     useJUnitPlatform()
-    maxParallelForks = Runtime.runtime.availableProcessors().intdiv(2) ?: 1
+    maxParallelForks = Math.min(2, Runtime.runtime.availableProcessors().intdiv(2) ?: 1)
 }

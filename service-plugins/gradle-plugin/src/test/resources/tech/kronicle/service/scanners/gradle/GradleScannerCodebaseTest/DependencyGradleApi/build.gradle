@@ -1,0 +1,9 @@
+package tech.kronicle.service.scanners.gradle.GradleScannerCodebaseTest.DependencyGradleApi
+
+plugins {
+    id "groovy"
+}
+
+dependencies {
+    compile gradleApi()
+}

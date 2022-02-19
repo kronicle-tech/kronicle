@@ -1,0 +1,7 @@
+package tech.kronicle.service.scanners.gradle.GradleScannerCodebaseTest.ApplyFromProjectDirParent.subproject
+
+repositories {
+    mavenCentral()
+}
+
+apply from: "$projectDir.parent/dependencies.gradle"

@@ -1,9 +1,0 @@
-package tech.kronicle.service.scanners.gradle.GradleScannerTest.MultiProject.subproject
-
-repositories {
-    mavenCentral()
-}
-
-dependencies {
-    annotationProcessor "org.projectlombok:lombok:1.18.16"
-}

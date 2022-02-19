@@ -1,0 +1,5 @@
+package tech.kronicle.service.scanners.gradle.GradleScannerCodebaseTest.ApplyFromRootProjectProjectDir
+
+plugins {
+    id "java"
+}

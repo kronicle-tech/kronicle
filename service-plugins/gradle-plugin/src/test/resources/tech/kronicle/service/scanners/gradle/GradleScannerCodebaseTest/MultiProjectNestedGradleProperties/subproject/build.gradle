@@ -1,0 +1,9 @@
+package tech.kronicle.service.scanners.gradle.GradleScannerCodebaseTest.MultiProjectNestedGradleProperties.subproject
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    annotationProcessor "org.projectlombok:lombok:$lombokVersion"
+}

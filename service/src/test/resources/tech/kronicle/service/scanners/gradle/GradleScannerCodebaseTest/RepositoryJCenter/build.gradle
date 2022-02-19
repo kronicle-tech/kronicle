@@ -1,5 +1,0 @@
-package tech.kronicle.service.scanners.gradle.GradleScannerTest.RepositoryJCenter
-
-repositories {
-    jcenter()
-}

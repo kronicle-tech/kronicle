@@ -39,7 +39,7 @@ public class GradleScannerErrorTest extends BaseGradleScannerTest {
         assertThat(error.getMessage()).isEqualTo("Failed to scan codebase");
         assertThat(error.getCause()).isNotNull();
         assertThat(error.getCause().getScannerId()).isEqualTo(SCANNER_ID);
-        assertThat(error.getCause().getMessage()).containsPattern("^Failed to process build file \\\"[^\\\"]+/service/src/test/resources/tech/kronicle/service/scanners/gradle/GradleScannerErrorTest/BuildscriptMissingRepository/build.gradle\\\" for THIS_PROJECT project mode and BUILDSCRIPT_DEPENDENCIES process phase$");
+        assertThat(error.getCause().getMessage()).containsPattern("^Failed to process build file \\\"[^\\\"]+/src/test/resources/tech/kronicle/service/scanners/gradle/GradleScannerErrorTest/BuildscriptMissingRepository/build.gradle\\\" for THIS_PROJECT project mode and BUILDSCRIPT_DEPENDENCIES process phase$");
         assertThat(error.getCause().getCause()).isNotNull();
         assertThat(error.getCause().getCause().getScannerId()).isEqualTo(SCANNER_ID);
         assertThat(error.getCause().getCause().getMessage()).isEqualTo("Failed to create software item for artifact");
@@ -67,7 +67,7 @@ public class GradleScannerErrorTest extends BaseGradleScannerTest {
         assertThat(error.getMessage()).isEqualTo("Failed to scan codebase");
         assertThat(error.getCause()).isNotNull();
         assertThat(error.getCause().getScannerId()).isEqualTo(SCANNER_ID);
-        assertThat(error.getCause().getMessage()).containsPattern("^Failed to process build file \\\"[^\\\"]+/service/src/test/resources/tech/kronicle/service/scanners/gradle/GradleScannerErrorTest/BuildscriptMissingRepositoryWithEmptyPlugins/build.gradle\\\" for THIS_PROJECT project mode and BUILDSCRIPT_DEPENDENCIES process phase$");
+        assertThat(error.getCause().getMessage()).containsPattern("^Failed to process build file \\\"[^\\\"]+/src/test/resources/tech/kronicle/service/scanners/gradle/GradleScannerErrorTest/BuildscriptMissingRepositoryWithEmptyPlugins/build.gradle\\\" for THIS_PROJECT project mode and BUILDSCRIPT_DEPENDENCIES process phase$");
         assertThat(error.getCause().getCause()).isNotNull();
         assertThat(error.getCause().getCause().getScannerId()).isEqualTo(SCANNER_ID);
         assertThat(error.getCause().getCause().getMessage()).isEqualTo("Failed to create software item for artifact");
