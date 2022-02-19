@@ -64,7 +64,7 @@ jobs:
           extra_tasks=()
           if [[ -v SONAR_TOKEN ]]; then extra_tasks+=('sonarqube'); fi
           ./gradlew -PdockerPushImage=true -PdockerRegistry=ghcr.io/kronicle-tech -PdockerTagSuffix=-pre-release\
-            service:downloadGradleLibs app:docker service:test app:assembleFrontend "${extra_tasks[@]}" build dockerPush
+            app:docker service:test app:assembleFrontend "${extra_tasks[@]}" build dockerPush
 
       - name: Archive Dependency Check report 🗄️
         uses: actions/upload-artifact@v2
