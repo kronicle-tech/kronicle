@@ -1,5 +1,10 @@
 package tech.kronicle.service.scanners.keysoftware;
 
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.gradle.api.internal.artifacts.ivyservice.ivyresolve.strategy.DefaultVersionComparator;
+import org.gradle.api.internal.artifacts.ivyservice.ivyresolve.strategy.Version;
+import org.gradle.api.internal.artifacts.ivyservice.ivyresolve.strategy.VersionParser;
 import org.pf4j.Extension;
 import tech.kronicle.sdk.models.Component;
 import tech.kronicle.sdk.models.KeySoftware;
@@ -8,11 +13,7 @@ import tech.kronicle.service.scanners.LateComponentScanner;
 import tech.kronicle.service.scanners.keysoftware.config.KeySoftwareConfig;
 import tech.kronicle.service.scanners.keysoftware.config.KeySoftwareRule;
 import tech.kronicle.service.scanners.models.Output;
-import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
-import org.gradle.api.internal.artifacts.ivyservice.ivyresolve.strategy.DefaultVersionComparator;
-import org.gradle.api.internal.artifacts.ivyservice.ivyresolve.strategy.Version;
-import org.gradle.api.internal.artifacts.ivyservice.ivyresolve.strategy.VersionParser;
+import tech.kronicle.service.spring.stereotypes.SpringComponent;
 
 import java.util.Comparator;
 import java.util.HashMap;
@@ -27,6 +28,7 @@ import java.util.stream.Collectors;
 import static java.util.Objects.isNull;
 
 @Extension
+@SpringComponent
 @RequiredArgsConstructor
 @Slf4j
 public class KeySoftwareScanner extends LateComponentScanner {

@@ -4,31 +4,18 @@ import io.micronaut.context.annotation.Bean;
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
 import javax.inject.Inject;
 
-import org.springframework.web.reactive.function.client.WebClient;
+import tech.kronicle.plugins.gradle.GradleScanner;
 import tech.kronicle.sdk.models.Repo;
-import tech.kronicle.service.scanners.gradle.config.DownloadCacheConfig;
-import tech.kronicle.service.scanners.gradle.config.DownloaderConfig;
-import tech.kronicle.service.scanners.gradle.config.GradleConfig;
-import tech.kronicle.service.scanners.gradle.config.PomCacheConfig;
-import tech.kronicle.service.scanners.gradle.config.UrlExistsCacheConfig;
-import tech.kronicle.service.scanners.gradle.internal.services.DownloadCache;
-import tech.kronicle.service.scanners.gradle.internal.services.Downloader;
-import tech.kronicle.service.scanners.gradle.internal.services.HttpRequestMaker;
-import tech.kronicle.service.scanners.gradle.internal.services.UrlExistsCache;
 import tech.kronicle.service.scanners.gradle.testbeans.TestDataDir;
 import tech.kronicle.service.scanners.models.Codebase;
 import tech.kronicle.service.scanners.models.Output;
 import org.junit.jupiter.api.DynamicTest;
 import org.junit.jupiter.api.TestFactory;
-import tech.kronicle.service.scanners.services.ThrowableToScannerErrorMapper;
-import tech.kronicle.service.utils.AntStyleIgnoreFileLoader;
-import tech.kronicle.service.utils.FileUtils;
 
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.attribute.BasicFileAttributes;
-import java.time.Duration;
 import java.util.function.BiPredicate;
 import java.util.stream.Stream;
 

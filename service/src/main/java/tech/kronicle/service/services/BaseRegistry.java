@@ -1,16 +1,29 @@
 package tech.kronicle.service.services;
 
-import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import tech.kronicle.service.models.RegistryItem;
 
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
-@RequiredArgsConstructor
+@Slf4j
 public class BaseRegistry<T extends RegistryItem> {
 
     private final List<T> items;
+
+    public BaseRegistry(List<T> items) {
+        this.items = items;
+        if (log.isInfoEnabled()) {
+            log.info(
+                    "{} found: {}",
+                    this.getClass().getSimpleName(),
+                    items.stream()
+                            .map(T::id)
+                            .collect(Collectors.joining(", "))
+            );
+        }
+    }
 
     public List<T> getAllItems() {
         return List.copyOf(items);

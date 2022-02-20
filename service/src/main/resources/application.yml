@@ -54,10 +54,22 @@ management:
       exposure:
         include: info, health, metrics, prometheus, openapi
 
-pf4j:
-  runtime-mode: deployment
+plugins:
+  mode: deployment
   plugin-root-dirs:
     - plugins
+  gradle-plugin:
+    downloader:
+      timeout: 2m
+
+    download-cache:
+      dir: /data/download-cache
+
+    url-exists-cache:
+      dir: /data/url-exists-cache
+
+    pom-cache:
+      dir: /data/gradle/pom-cache
 
 springdoc:
   use-management-port: true
@@ -68,11 +80,6 @@ springdoc:
 resilience4j:
   retry:
     instances:
-      http-request-maker:
-        maxAttempts: 5
-        waitDuration: 10s
-        enableExponentialBackoff: true
-        exponentialBackoffMultiplier: 2
       zipkin-client:
         maxAttempts: 10
         waitDuration: 10s
@@ -95,20 +102,9 @@ datadog:
   dependencies:
     timeout: 30s
 
-downloader:
-  timeout: 2m
-
-download-cache:
-  dir: /data/download-cache
-
-url-exists-cache:
-  dir: /data/url-exists-cache
-
 git:
   repos-dir: /data/git/repos
 
-gradle:
-  pom-cache-dir: /data/gradle/pom-cache
 
 zipkin:
   enabled: false

@@ -1,12 +1,11 @@
 package tech.kronicle.service.scanners.services;
 
 import tech.kronicle.sdk.models.ScannerError;
-
-import javax.inject.Singleton;
+import tech.kronicle.service.spring.stereotypes.SpringComponent;
 
 import static java.util.Objects.nonNull;
 
-@Singleton
+@SpringComponent
 public class ThrowableToScannerErrorMapper {
 
     public ScannerError map(String scannerId, Throwable throwable) {

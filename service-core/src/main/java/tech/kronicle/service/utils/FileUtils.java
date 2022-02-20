@@ -3,8 +3,8 @@ package tech.kronicle.service.utils;
 import lombok.RequiredArgsConstructor;
 import lombok.Value;
 import org.springframework.util.AntPathMatcher;
+import tech.kronicle.service.spring.stereotypes.SpringComponent;
 
-import javax.inject.Singleton;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.MalformedInputException;
@@ -21,7 +21,7 @@ import java.util.stream.Stream;
 
 import static java.util.Objects.nonNull;
 
-@Singleton
+@SpringComponent
 @RequiredArgsConstructor
 public class FileUtils {
 

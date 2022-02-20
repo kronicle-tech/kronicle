@@ -1,5 +1,7 @@
 package tech.kronicle.service.scanners.sonarqube;
 
+import lombok.RequiredArgsConstructor;
+import org.pf4j.Extension;
 import tech.kronicle.componentmetadata.models.ComponentMetadata;
 import tech.kronicle.sdk.models.Dependency;
 import tech.kronicle.sdk.models.ScannerError;
@@ -11,13 +13,13 @@ import tech.kronicle.service.scanners.models.ComponentAndCodebase;
 import tech.kronicle.service.scanners.models.Output;
 import tech.kronicle.service.scanners.sonarqube.exceptions.SonarQubeScannerException;
 import tech.kronicle.service.scanners.sonarqube.services.SonarQubeService;
-import lombok.RequiredArgsConstructor;
-import tech.kronicle.service.spring.stereotypes.KronicleExtension;
+import tech.kronicle.service.spring.stereotypes.SpringComponent;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@KronicleExtension
+@Extension
+@SpringComponent
 @RequiredArgsConstructor
 public class SonarQubeScanner extends ComponentAndCodebaseScanner {
 

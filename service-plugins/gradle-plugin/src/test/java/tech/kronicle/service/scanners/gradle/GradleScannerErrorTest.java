@@ -5,6 +5,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
+import tech.kronicle.plugins.gradle.GradleScanner;
 import tech.kronicle.sdk.models.ScannerError;
 import tech.kronicle.service.scanners.gradle.testbeans.GradleScannerTestConfiguration;
 import tech.kronicle.service.scanners.models.Codebase;

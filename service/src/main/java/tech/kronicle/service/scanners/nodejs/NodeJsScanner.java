@@ -1,6 +1,7 @@
 package tech.kronicle.service.scanners.nodejs;
 
 import lombok.RequiredArgsConstructor;
+import org.pf4j.Extension;
 import tech.kronicle.sdk.models.Software;
 import tech.kronicle.sdk.models.nodejs.NodeJs;
 import tech.kronicle.service.scanners.CodebaseScanner;
@@ -8,14 +9,15 @@ import tech.kronicle.service.scanners.models.Codebase;
 import tech.kronicle.service.scanners.models.Output;
 import tech.kronicle.service.scanners.nodejs.internal.constants.NodeJsFileNames;
 import tech.kronicle.service.scanners.nodejs.internal.services.npm.NpmPackageExtractor;
-import tech.kronicle.service.spring.stereotypes.KronicleExtension;
+import tech.kronicle.service.spring.stereotypes.SpringComponent;
 import tech.kronicle.service.utils.FileUtils;
 
 import java.nio.file.Path;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@KronicleExtension
+@Extension
+@SpringComponent
 @RequiredArgsConstructor
 public class NodeJsScanner  extends CodebaseScanner {
 

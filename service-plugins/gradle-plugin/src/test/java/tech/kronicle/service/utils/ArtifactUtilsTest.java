@@ -1,6 +1,6 @@
 package tech.kronicle.service.utils;
 
-import tech.kronicle.service.scanners.gradle.internal.utils.ArtifactUtils;
+import tech.kronicle.plugins.gradle.internal.utils.ArtifactUtils;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;

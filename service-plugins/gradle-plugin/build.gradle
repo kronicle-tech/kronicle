@@ -2,6 +2,7 @@ plugins {
     id "java-library"
     id 'jvm-test-suite'
     id "io.freefair.lombok"
+    id "com.github.johnrengelman.shadow"
 }
 
 testing {
@@ -38,13 +39,18 @@ dependencies {
     compileOnly platform("org.springframework.boot:spring-boot-dependencies:$springBootVersion")
     testAnnotationProcessor platform("org.springframework.boot:spring-boot-dependencies:$springBootVersion")
     testImplementation platform("org.springframework.boot:spring-boot-dependencies:$springBootVersion")
+    shadow platform("org.springframework.boot:spring-boot-dependencies:$springBootVersion")
+
+    annotationProcessor "org.pf4j:pf4j:$pf4jVersion"
 
     compileOnly "com.github.spotbugs:spotbugs-annotations:$spotBugsVersion"
     testCompileOnly "com.github.spotbugs:spotbugs-annotations:$spotBugsVersion"
 
     implementation project(":service-core")
+    implementation "jakarta.validation:jakarta.validation-api"
     implementation "tech.kronicle:gradle-version-logic:$gradleVersionLogicVersion"
     implementation "org.slf4j:slf4j-api"
+    implementation "org.springframework.boot:spring-boot"
     implementation "org.springframework:spring-webflux"
     implementation "io.projectreactor.netty:reactor-netty-http"
     implementation "io.github.resilience4j:resilience4j-retry:$resilience4jVersion"
@@ -65,6 +71,22 @@ dependencies {
     testImplementation "org.mockito:mockito-core"
     testImplementation "org.mockito:mockito-junit-jupiter"
     testImplementation "com.github.tomakehurst:wiremock-jre8:$wireMockVersion"
+}
+
+shadowJar {
+    dependencies {
+//        exclude(project(":service-core"))
+//        exclude(dependency("^org\\.pf4j:"))
+//        exclude(dependency("^org\\.springframework:"))
+//        exclude(dependency("^org\\.springframework\\.boot:"))
+//        exclude(dependency("^javax\\.validation:"))
+//        exclude(dependency("^jakarta\\.validation:"))
+//        exclude(dependency("^org\\.slf4j:"))
+//        include(dependency("^jakarta\\.xml\\.bind:jakarta\\.xml\\.bind-api:"))
+//        include(dependency("^com\\.sun\\.xml\\.bind:jaxb-impl:"))
+//        include(dependency("^jakarta.*:"))
+//        include(dependency("^com\\.sun.*:"))
+    }
 }
 
 tasks.withType(Test).configureEach {

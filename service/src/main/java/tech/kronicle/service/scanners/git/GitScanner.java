@@ -1,17 +1,5 @@
 package tech.kronicle.service.scanners.git;
 
-import org.pf4j.Extension;
-import tech.kronicle.sdk.models.Repo;
-import tech.kronicle.sdk.models.ScannerError;
-import tech.kronicle.sdk.models.git.Identity;
-import tech.kronicle.sdk.models.git.GitRepo;
-import tech.kronicle.service.config.GitConfig;
-import tech.kronicle.service.scanners.services.ThrowableToScannerErrorMapper;
-import tech.kronicle.service.models.RepoDirAndGit;
-import tech.kronicle.service.scanners.RepoScanner;
-import tech.kronicle.service.scanners.models.Codebase;
-import tech.kronicle.service.scanners.models.Output;
-import tech.kronicle.service.services.GitCloner;
 import lombok.RequiredArgsConstructor;
 import lombok.Value;
 import org.eclipse.jgit.api.Git;
@@ -23,6 +11,19 @@ import org.eclipse.jgit.lib.Repository;
 import org.eclipse.jgit.revwalk.RevCommit;
 import org.eclipse.jgit.revwalk.RevSort;
 import org.eclipse.jgit.revwalk.RevWalk;
+import org.pf4j.Extension;
+import tech.kronicle.sdk.models.Repo;
+import tech.kronicle.sdk.models.ScannerError;
+import tech.kronicle.sdk.models.git.GitRepo;
+import tech.kronicle.sdk.models.git.Identity;
+import tech.kronicle.service.config.GitConfig;
+import tech.kronicle.service.models.RepoDirAndGit;
+import tech.kronicle.service.scanners.RepoScanner;
+import tech.kronicle.service.scanners.models.Codebase;
+import tech.kronicle.service.scanners.models.Output;
+import tech.kronicle.service.scanners.services.ThrowableToScannerErrorMapper;
+import tech.kronicle.service.services.GitCloner;
+import tech.kronicle.service.spring.stereotypes.SpringComponent;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -42,6 +43,7 @@ import static java.util.Objects.isNull;
 import static java.util.Objects.nonNull;
 
 @Extension
+@SpringComponent
 @RequiredArgsConstructor
 public class GitScanner extends RepoScanner {
 

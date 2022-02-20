@@ -3,6 +3,7 @@ package tech.kronicle.service.scanners.openapi;
 import lombok.RequiredArgsConstructor;
 import lombok.Value;
 import lombok.extern.slf4j.Slf4j;
+import org.pf4j.Extension;
 import tech.kronicle.componentmetadata.models.ComponentMetadata;
 import tech.kronicle.sdk.models.Dependency;
 import tech.kronicle.sdk.models.ScannerError;
@@ -14,7 +15,7 @@ import tech.kronicle.service.scanners.openapi.models.SpecAndErrors;
 import tech.kronicle.service.scanners.openapi.services.SpecDiscoverer;
 import tech.kronicle.service.scanners.openapi.services.SpecParser;
 import tech.kronicle.service.scanners.openapi.utils.OpenApiSpecUtils;
-import tech.kronicle.service.spring.stereotypes.KronicleExtension;
+import tech.kronicle.service.spring.stereotypes.SpringComponent;
 
 import java.util.Collection;
 import java.util.List;
@@ -23,7 +24,8 @@ import java.util.stream.Collectors;
 import static java.util.Objects.nonNull;
 import static tech.kronicle.service.scanners.openapi.utils.OpenApiSpecUtils.isManualSpec;
 
-@KronicleExtension
+@Extension
+@SpringComponent
 @RequiredArgsConstructor
 @Slf4j
 public class OpenApiScanner extends ComponentAndCodebaseScanner {

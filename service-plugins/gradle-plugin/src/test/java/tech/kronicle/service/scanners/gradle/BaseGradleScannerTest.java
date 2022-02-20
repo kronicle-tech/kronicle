@@ -6,7 +6,7 @@ import tech.kronicle.sdk.models.SoftwareDependencyType;
 import tech.kronicle.sdk.models.SoftwareRepository;
 import tech.kronicle.service.constants.Comparators;
 import tech.kronicle.service.scanners.BaseCodebaseScannerTest;
-import tech.kronicle.service.scanners.gradle.internal.constants.MavenPackagings;
+import tech.kronicle.plugins.gradle.internal.constants.MavenPackagings;
 
 import java.util.List;
 import java.util.Map;

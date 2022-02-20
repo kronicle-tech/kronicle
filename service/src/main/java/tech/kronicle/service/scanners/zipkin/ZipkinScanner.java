@@ -2,6 +2,7 @@ package tech.kronicle.service.scanners.zipkin;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.pf4j.Extension;
 import tech.kronicle.componentmetadata.models.ComponentMetadata;
 import tech.kronicle.sdk.models.Component;
 import tech.kronicle.sdk.models.Dependency;
@@ -20,7 +21,7 @@ import tech.kronicle.service.scanners.zipkin.services.CallGraphCollator;
 import tech.kronicle.service.scanners.zipkin.services.ComponentDependencyCollator;
 import tech.kronicle.service.scanners.zipkin.services.SubComponentDependencyCollator;
 import tech.kronicle.service.scanners.zipkin.services.ZipkinService;
-import tech.kronicle.service.spring.stereotypes.KronicleExtension;
+import tech.kronicle.service.spring.stereotypes.SpringComponent;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -30,7 +31,8 @@ import java.util.stream.Collectors;
 
 import static java.util.Objects.isNull;
 
-@KronicleExtension
+@Extension
+@SpringComponent
 @Slf4j
 @RequiredArgsConstructor
 public class ZipkinScanner extends ComponentScanner {

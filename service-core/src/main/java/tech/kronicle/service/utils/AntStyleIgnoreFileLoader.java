@@ -1,12 +1,13 @@
 package tech.kronicle.service.utils;
 
-import javax.inject.Singleton;
+import tech.kronicle.service.spring.stereotypes.SpringComponent;
+
 import java.util.List;
 import java.util.function.Predicate;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
-@Singleton
+@SpringComponent
 public class AntStyleIgnoreFileLoader {
 
     // "\\R" matches any Unicode line-break sequence on Java 8+

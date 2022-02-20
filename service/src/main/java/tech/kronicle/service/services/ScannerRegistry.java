@@ -1,9 +1,7 @@
 package tech.kronicle.service.services;
 
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.DependsOn;
+import org.pf4j.PluginManager;
 import org.springframework.stereotype.Service;
-import tech.kronicle.service.constants.SpringBeanNames;
 import tech.kronicle.service.scanners.CodebaseScanner;
 import tech.kronicle.service.scanners.ComponentAndCodebaseScanner;
 import tech.kronicle.service.scanners.ComponentScanner;
@@ -12,13 +10,19 @@ import tech.kronicle.service.scanners.RepoScanner;
 import tech.kronicle.service.scanners.Scanner;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
-@DependsOn(SpringBeanNames.PLUGIN_MANAGER)
 public class ScannerRegistry extends BaseRegistry<Scanner<?, ?>> {
 
-    public ScannerRegistry(List<Scanner<?, ?>> items) {
-        super(items);
+    public ScannerRegistry(PluginManager pluginManager) {
+        super(getScanners(pluginManager));
+    }
+
+    private static List<Scanner<?, ?>> getScanners(PluginManager pluginManager) {
+        return pluginManager.getExtensions(Scanner.class).stream()
+                .map(it -> (Scanner<?, ?>) it)
+                .collect(Collectors.toList());
     }
 
     public RepoScanner getRepoScanner() {
