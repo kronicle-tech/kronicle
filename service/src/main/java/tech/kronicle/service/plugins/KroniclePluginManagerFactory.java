@@ -5,12 +5,15 @@ import org.pf4j.PluginFactory;
 import org.pf4j.PluginLoader;
 import org.pf4j.PluginManager;
 import org.pf4j.RuntimeMode;
+import org.pf4j.spring.ExtensionsInjector;
 import org.pf4j.spring.SpringPluginManager;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory;
 import org.springframework.context.ConfigurableApplicationContext;
 import tech.kronicle.service.plugins.config.PluginsConfig;
 import tech.kronicle.service.spring.stereotypes.SpringComponent;
 
+import javax.annotation.PostConstruct;
 import java.nio.file.Path;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -50,6 +53,17 @@ public class KroniclePluginManagerFactory {
             @Override
             protected PluginLoader createPluginLoader() {
                 return new KronicleJarPluginLoader(this);
+            }
+
+            /**
+             * Override init() method to prevent behaviour of registering extensions as beans in the main
+             * applicationContext
+             */
+            @PostConstruct
+            @Override
+            public void init() {
+                loadPlugins();
+                startPlugins();
             }
         };
     }

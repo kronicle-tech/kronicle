@@ -330,4 +330,12 @@
         <packageUrl regex="true">^pkg:npm/glob\-parent@.*$</packageUrl>
         <vulnerabilityName>1006947</vulnerabilityName>
     </suppress>
+    <!-- Suppress vulnerability in Sonatype Nexus Repository Manager that has been incorrectly flagged against the PF4J library -->
+    <suppress>
+        <notes><![CDATA[
+   file name: pf4j-3.6.0.jar
+   ]]></notes>
+        <packageUrl regex="true">^pkg:maven/org\.pf4j/pf4j@.*$</packageUrl>
+        <cpe>cpe:/a:sonatype:nexus</cpe>
+    </suppress>
 </suppressions>

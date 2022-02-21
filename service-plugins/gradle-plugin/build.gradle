@@ -75,15 +75,19 @@ dependencies {
 
 shadowJar {
     dependencies {
-//        exclude(project(":service-core"))
-//        exclude(dependency("^org\\.pf4j:"))
-//        exclude(dependency("^org\\.springframework:"))
-//        exclude(dependency("^org\\.springframework\\.boot:"))
-//        exclude(dependency("^javax\\.validation:"))
-//        exclude(dependency("^jakarta\\.validation:"))
-//        exclude(dependency("^org\\.slf4j:"))
-//        include(dependency("^jakarta\\.xml\\.bind:jakarta\\.xml\\.bind-api:"))
-//        include(dependency("^com\\.sun\\.xml\\.bind:jaxb-impl:"))
+        exclude(project(":common"))
+        exclude(project(":sdk"))
+        exclude(project(":metadata"))
+        exclude(project(":service-core"))
+        exclude(dependency("^org\\.pf4j:"))
+        exclude(dependency("^org\\.springframework:"))
+        exclude(dependency("^org\\.springframework\\.boot:"))
+        exclude(dependency("^javax\\.validation:"))
+        exclude(dependency("^jakarta\\.validation:"))
+        exclude(dependency("^org\\.slf4j:"))
+//        include(dependency("jakarta.xml.bind:jakarta.xml.bind-api:"))
+//        include(dependency("com.sun.xml.bind:jaxb-impl:"))
+//        include(dependency("tech.kronicle:gradle-version-logic:"))
 //        include(dependency("^jakarta.*:"))
 //        include(dependency("^com\\.sun.*:"))
     }
