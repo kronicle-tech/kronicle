@@ -1,28 +1,40 @@
 package tech.kronicle.service.services;
 
 import lombok.extern.slf4j.Slf4j;
+import org.pf4j.PluginManager;
 import tech.kronicle.service.models.RegistryItem;
+import tech.kronicle.service.scanners.Scanner;
 
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
 @Slf4j
-public class BaseRegistry<T extends RegistryItem> {
+public abstract class BaseRegistry<T extends RegistryItem> {
 
     private final List<T> items;
 
-    public BaseRegistry(List<T> items) {
-        this.items = items;
+    public BaseRegistry(PluginManager pluginManager) {
+        this.items = getItemsFromPluginManager(pluginManager);
         if (log.isInfoEnabled()) {
             log.info(
                     "{} found: {}",
                     this.getClass().getSimpleName(),
-                    items.stream()
-                            .map(T::id)
-                            .collect(Collectors.joining(", "))
+                    getCommaSeparatedItemIds()
             );
         }
+    }
+
+    protected abstract Class<T> getItemType();
+
+    private List<T> getItemsFromPluginManager(PluginManager pluginManager) {
+        return pluginManager.getExtensions(getItemType());
+    }
+
+    private String getCommaSeparatedItemIds() {
+        return items.stream()
+                .map(T::id)
+                .collect(Collectors.joining(", "));
     }
 
     public List<T> getAllItems() {

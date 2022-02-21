@@ -13,16 +13,15 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-public class ScannerRegistry extends BaseRegistry<Scanner<?, ?>> {
+public class ScannerRegistry extends BaseRegistry<Scanner> {
 
     public ScannerRegistry(PluginManager pluginManager) {
-        super(getScanners(pluginManager));
+        super(pluginManager);
     }
 
-    private static List<Scanner<?, ?>> getScanners(PluginManager pluginManager) {
-        return pluginManager.getExtensions(Scanner.class).stream()
-                .map(it -> (Scanner<?, ?>) it)
-                .collect(Collectors.toList());
+    @Override
+    protected Class<Scanner> getItemType() {
+        return Scanner.class;
     }
 
     public RepoScanner getRepoScanner() {

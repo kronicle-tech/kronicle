@@ -1,7 +1,9 @@
 package tech.kronicle.service.services;
 
 import org.junit.jupiter.api.Test;
+import org.pf4j.PluginManager;
 import tech.kronicle.service.models.RegistryItem;
+import tech.kronicle.service.services.testutils.FakePluginManager;
 
 import java.util.List;
 
@@ -9,7 +11,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class BaseRegistryTest {
 
-    private BaseRegistry<RegistryItem> underTest;
+    private TestBaseRegistry underTest;
 
     @Test
     public void getAllItemsReturnsAllItems() {
@@ -20,13 +22,25 @@ public class BaseRegistryTest {
                 new TestRegistryItemB("test-item-3"),
                 new TestRegistryItemB("test-item-4")
         );
-        underTest = new BaseRegistry<>(items);
+        underTest = new TestBaseRegistry(new FakePluginManager<>(items, RegistryItem.class));
 
         // When
         List<RegistryItem> returnValue = underTest.getAllItems();
 
         // Then
         assertThat(returnValue).containsExactlyElementsOf(items);
+    }
+
+    private static class TestBaseRegistry extends BaseRegistry<RegistryItem> {
+
+        public TestBaseRegistry(PluginManager pluginManager) {
+            super(pluginManager);
+        }
+
+        @Override
+        protected Class<RegistryItem> getItemType() {
+            return RegistryItem.class;
+        }
     }
 
     private static class TestRegistryItemA implements RegistryItem {
