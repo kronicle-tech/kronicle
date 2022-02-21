@@ -57,7 +57,7 @@ public class ScanEngineTest {
     @Mock
     private MasterDependencyFinder masterDependencyFinder;
     @Mock
-    private ScannerRegistry mockScannerRegistry;
+    private ScannerExtensionRegistry mockScannerRegistry;
     @Mock
     private ValidatorService mockValidatorService;
     private ScanEngine underTest;

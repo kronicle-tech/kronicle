@@ -1,0 +1,13 @@
+package tech.kronicle.plugins.gradle.GradleScannerCodebaseTest.MultiProjectNestedGradleProperties
+
+plugins {
+    id "java"
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile "org.hibernate.validator:hibernate-validator:$hibernateValidatorVersion"
+}

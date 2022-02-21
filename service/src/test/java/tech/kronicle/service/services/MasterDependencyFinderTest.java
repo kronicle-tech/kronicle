@@ -24,7 +24,7 @@ public class MasterDependencyFinderTest {
 
     private MasterDependencyFinder underTest;
     @Mock
-    private FinderRegistry finderRegistry;
+    private FinderExtensionRegistry finderRegistry;
     @Mock
     private ComponentAliasResolver componentAliasResolver;
     @Mock

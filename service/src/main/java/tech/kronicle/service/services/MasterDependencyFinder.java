@@ -18,7 +18,7 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class MasterDependencyFinder {
 
-    private final FinderRegistry finderRegistry;
+    private final FinderExtensionRegistry finderRegistry;
     private final ComponentAliasResolver componentAliasResolver;
 
     public List<Dependency> getDependencies(ComponentMetadata componentMetadata) {

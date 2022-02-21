@@ -1,0 +1,13 @@
+package tech.kronicle.plugins.gradle.GradleScannerCodebaseTest.MultiProjectMissingBuildFile.subproject
+
+plugins {
+    id "java"
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    annotationProcessor "org.projectlombok:lombok:1.18.16"
+}

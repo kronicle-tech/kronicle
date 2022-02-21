@@ -13,7 +13,7 @@ import tech.kronicle.sdk.models.Test;
 import tech.kronicle.service.services.ComponentMetadataAssembler;
 import tech.kronicle.service.services.ComponentMetadataLoader;
 import tech.kronicle.service.services.ScanEngine;
-import tech.kronicle.service.services.ScannerRegistry;
+import tech.kronicle.service.services.ScannerExtensionRegistry;
 import tech.kronicle.service.services.TestEngine;
 import tech.kronicle.service.services.TestFinder;
 import tech.kronicle.service.utils.ObjectReference;
@@ -43,7 +43,7 @@ public class ComponentRepository extends RefreshingRepository {
     private final ComponentMetadataLoader loader;
     private final ComponentMetadataAssembler assembler;
     private final ScanEngine scanEngine;
-    private final ScannerRegistry scannerRegistry;
+    private final ScannerExtensionRegistry scannerRegistry;
     private final TestEngine testEngine;
     private final TestFinder testFinder;
     private volatile ConcurrentHashMap<String, Area> areas = new ConcurrentHashMap<>();

@@ -20,7 +20,7 @@ import tech.kronicle.service.scanners.models.Output;
 import tech.kronicle.service.services.ComponentMetadataAssembler;
 import tech.kronicle.service.services.ComponentMetadataLoader;
 import tech.kronicle.service.services.ScanEngine;
-import tech.kronicle.service.services.ScannerRegistry;
+import tech.kronicle.service.services.ScannerExtensionRegistry;
 import tech.kronicle.service.services.TestEngine;
 import tech.kronicle.service.services.TestFinder;
 import tech.kronicle.service.services.ValidatorService;
@@ -67,7 +67,7 @@ public class ComponentRepositoryTest {
     @Mock
     private ScanEngine mockScanEngine;
     @Mock
-    private ScannerRegistry mockScannerRegistry;
+    private ScannerExtensionRegistry mockScannerRegistry;
     @Mock
     private TestEngine mockTestEngine;
     @Mock

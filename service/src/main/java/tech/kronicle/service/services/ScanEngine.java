@@ -39,7 +39,7 @@ import static java.util.Objects.nonNull;
 public class ScanEngine {
 
     private final MasterDependencyFinder masterDependencyFinder;
-    private final ScannerRegistry scannerRegistry;
+    private final ScannerExtensionRegistry scannerRegistry;
     private final ValidatorService validatorService;
     private final ThrowableToScannerErrorMapper throwableToScannerErrorMapper;
 

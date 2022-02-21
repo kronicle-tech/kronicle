@@ -1,5 +1,0 @@
-package tech.kronicle.service.scanners.gradle.GradleScannerCodebaseTest.ApplyFromRootDir
-
-dependencies {
-    compile "org.springframework.boot:spring-boot-starter-web:2.3.4.RELEASE"
-}

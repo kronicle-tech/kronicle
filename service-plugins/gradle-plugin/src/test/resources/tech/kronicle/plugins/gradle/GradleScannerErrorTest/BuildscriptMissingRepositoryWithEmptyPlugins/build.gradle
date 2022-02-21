@@ -1,0 +1,12 @@
+package tech.kronicle.plugins.gradle.GradleScannerErrorTest.BuildscriptMissingRepositoryWithEmptyPlugins
+
+buildscript {
+    dependencies {
+        classpath "org.springframework.boot:spring-boot-gradle-plugin:2.3.4.RELEASE"
+    }
+}
+
+// Gradle does not automatically add the gradlePluginPortal() repository when
+// the plugins block is empty
+plugins {
+}

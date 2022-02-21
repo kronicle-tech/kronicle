@@ -27,7 +27,7 @@ public class ScannerRegistryTest {
     public void getRepoScannerShouldReturnTheRepoScanner() {
         // Given
         TestRepoScanner repoScanner1 = new TestRepoScanner();
-        ScannerRegistry underTest = createUnderTest(List.of(repoScanner1));
+        ScannerExtensionRegistry underTest = createUnderTest(List.of(repoScanner1));
 
         // When
         RepoScanner returnValue = underTest.getRepoScanner();
@@ -41,7 +41,7 @@ public class ScannerRegistryTest {
         // Given
         TestComponentScanner componentScanner1 = new TestComponentScanner();
         TestRepoScanner repoScanner1 = new TestRepoScanner();
-        ScannerRegistry underTest = createUnderTest(List.of(componentScanner1, repoScanner1));
+        ScannerExtensionRegistry underTest = createUnderTest(List.of(componentScanner1, repoScanner1));
 
         // When
         RepoScanner returnValue = underTest.getRepoScanner();
@@ -53,7 +53,7 @@ public class ScannerRegistryTest {
     @Test
     public void getRepoScannerWhenThereIsNoRepoScannerShouldThrowARuntimeException() {
         // Given
-        ScannerRegistry underTest = createUnderTest(List.of());
+        ScannerExtensionRegistry underTest = createUnderTest(List.of());
 
         // When
         Throwable thrown = catchThrowable(underTest::getRepoScanner);
@@ -66,7 +66,7 @@ public class ScannerRegistryTest {
     @Test
     public void getRepoScannerWhenThereIsMoreThanOneRepoScannerShouldThrowARuntimeException() {
         // Given
-        ScannerRegistry underTest = createUnderTest(List.of(new TestRepoScanner(), new TestRepoScanner()));
+        ScannerExtensionRegistry underTest = createUnderTest(List.of(new TestRepoScanner(), new TestRepoScanner()));
 
         // When
         Throwable thrown = catchThrowable(underTest::getRepoScanner);
@@ -81,7 +81,7 @@ public class ScannerRegistryTest {
         // Given
         TestComponentScanner componentScanner1 = new TestComponentScanner();
         TestComponentScanner componentScanner2 = new TestComponentScanner();
-        ScannerRegistry underTest = createUnderTest(List.of(componentScanner1, componentScanner2));
+        ScannerExtensionRegistry underTest = createUnderTest(List.of(componentScanner1, componentScanner2));
 
         // When
         List<ComponentScanner> returnValue = underTest.getComponentScanners();
@@ -95,7 +95,7 @@ public class ScannerRegistryTest {
         // Given
         TestRepoScanner repoScanner1 = new TestRepoScanner();
         TestComponentScanner componentScanner1 = new TestComponentScanner();
-        ScannerRegistry underTest = createUnderTest(List.of(repoScanner1, componentScanner1));
+        ScannerExtensionRegistry underTest = createUnderTest(List.of(repoScanner1, componentScanner1));
 
         // When
         List<ComponentScanner> returnValue = underTest.getComponentScanners();
@@ -109,7 +109,7 @@ public class ScannerRegistryTest {
         // Given
         TestCodebaseScanner codebaseScanner1 = new TestCodebaseScanner();
         TestCodebaseScanner codebaseScanner2 = new TestCodebaseScanner();
-        ScannerRegistry underTest = createUnderTest(List.of(codebaseScanner1, codebaseScanner2));
+        ScannerExtensionRegistry underTest = createUnderTest(List.of(codebaseScanner1, codebaseScanner2));
 
         // When
         List<CodebaseScanner> returnValue = underTest.getCodebaseScanners();
@@ -123,7 +123,7 @@ public class ScannerRegistryTest {
         // Given
         TestRepoScanner repoScanner1 = new TestRepoScanner();
         TestCodebaseScanner codebaseScanner1 = new TestCodebaseScanner();
-        ScannerRegistry underTest = createUnderTest(List.of(repoScanner1, codebaseScanner1));
+        ScannerExtensionRegistry underTest = createUnderTest(List.of(repoScanner1, codebaseScanner1));
 
         // When
         List<CodebaseScanner> returnValue = underTest.getCodebaseScanners();
@@ -137,7 +137,7 @@ public class ScannerRegistryTest {
         // Given
         TestComponentAndCodebaseScanner componentAndCodebaseScanner1 = new TestComponentAndCodebaseScanner();
         TestComponentAndCodebaseScanner componentAndCodebaseScanner2 = new TestComponentAndCodebaseScanner();
-        ScannerRegistry underTest = createUnderTest(List.of(componentAndCodebaseScanner1, componentAndCodebaseScanner2));
+        ScannerExtensionRegistry underTest = createUnderTest(List.of(componentAndCodebaseScanner1, componentAndCodebaseScanner2));
 
         // When
         List<ComponentAndCodebaseScanner> returnValue = underTest.getComponentAndCodebaseScanners();
@@ -151,7 +151,7 @@ public class ScannerRegistryTest {
         // Given
         TestRepoScanner repoScanner1 = new TestRepoScanner();
         TestComponentAndCodebaseScanner componentAndCodebaseScanner1 = new TestComponentAndCodebaseScanner();
-        ScannerRegistry underTest = createUnderTest(List.of(repoScanner1, componentAndCodebaseScanner1));
+        ScannerExtensionRegistry underTest = createUnderTest(List.of(repoScanner1, componentAndCodebaseScanner1));
 
         // When
         List<ComponentAndCodebaseScanner> returnValue = underTest.getComponentAndCodebaseScanners();
@@ -165,7 +165,7 @@ public class ScannerRegistryTest {
         // Given
         TestLateComponentScanner lateComponentScanner1 = new TestLateComponentScanner();
         TestLateComponentScanner lateComponentScanner2 = new TestLateComponentScanner();
-        ScannerRegistry underTest = createUnderTest(List.of(lateComponentScanner1, lateComponentScanner2));
+        ScannerExtensionRegistry underTest = createUnderTest(List.of(lateComponentScanner1, lateComponentScanner2));
 
         // When
         List<LateComponentScanner> returnValue = underTest.getLateComponentScanners();
@@ -179,7 +179,7 @@ public class ScannerRegistryTest {
         // Given
         TestRepoScanner repoScanner1 = new TestRepoScanner();
         TestLateComponentScanner lateComponentScanner1 = new TestLateComponentScanner();
-        ScannerRegistry underTest = createUnderTest(List.of(repoScanner1, lateComponentScanner1));
+        ScannerExtensionRegistry underTest = createUnderTest(List.of(repoScanner1, lateComponentScanner1));
 
         // When
         List<LateComponentScanner> returnValue = underTest.getLateComponentScanners();
@@ -202,7 +202,7 @@ public class ScannerRegistryTest {
         TestLateComponentScanner lateComponentScanner2 = new TestLateComponentScanner();
         List<Scanner> scanners = List.of(repoScanner1, componentScanner1, componentScanner2, codebaseScanner1, codebaseScanner2,
                 componentAndCodebaseScanner1, componentAndCodebaseScanner2, lateComponentScanner1, lateComponentScanner2);
-        ScannerRegistry underTest = createUnderTest(scanners);
+        ScannerExtensionRegistry underTest = createUnderTest(scanners);
 
         // When
         List<Scanner> returnValue = underTest.getAllItems();
@@ -216,7 +216,7 @@ public class ScannerRegistryTest {
         // Given
         TestComponentScanner componentScanner1 = new TestComponentScanner();
         TestComponentScanner componentScanner2 = new TestComponentScanner();
-        ScannerRegistry underTest = createUnderTest(List.of(componentScanner1, componentScanner2));
+        ScannerExtensionRegistry underTest = createUnderTest(List.of(componentScanner1, componentScanner2));
 
         // When
         Scanner<?, ?> returnValue = underTest.getItem(componentScanner1.id());
@@ -230,7 +230,7 @@ public class ScannerRegistryTest {
         // Given
         String componentId = "unknown";
         TestComponentScanner componentScanner1 = new TestComponentScanner();
-        ScannerRegistry underTest = createUnderTest(List.of(componentScanner1));
+        ScannerExtensionRegistry underTest = createUnderTest(List.of(componentScanner1));
 
         // When
         Scanner<?, ?> returnValue = underTest.getItem(componentId);
@@ -239,8 +239,8 @@ public class ScannerRegistryTest {
         assertThat(returnValue).isNull();
     }
 
-    private ScannerRegistry createUnderTest(List<Scanner> scanners) {
-        return new ScannerRegistry(new FakePluginManager(scanners, Scanner.class));
+    private ScannerExtensionRegistry createUnderTest(List<Scanner> scanners) {
+        return new ScannerExtensionRegistry(new FakePluginManager(scanners, Scanner.class));
     }
 
     private static class TestRepoScanner extends RepoScanner {

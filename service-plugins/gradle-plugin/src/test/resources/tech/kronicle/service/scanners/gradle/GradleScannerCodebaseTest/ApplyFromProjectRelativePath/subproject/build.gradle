@@ -1,7 +1,0 @@
-package tech.kronicle.service.scanners.gradle.GradleScannerCodebaseTest.ApplyFromProjectRelativePath.subproject
-
-repositories {
-    mavenCentral()
-}
-
-apply from: "dependencies.gradle"

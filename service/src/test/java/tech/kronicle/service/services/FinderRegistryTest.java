@@ -18,7 +18,7 @@ public class FinderRegistryTest {
         // Given
         TestDependencyFinder dependencyFinder1 = new TestDependencyFinder();
         TestDependencyFinder dependencyFinder2 = new TestDependencyFinder();
-        FinderRegistry underTest = createUnderTest(List.of(dependencyFinder1, dependencyFinder2));
+        FinderExtensionRegistry underTest = createUnderTest(List.of(dependencyFinder1, dependencyFinder2));
 
         // When
         List<DependencyFinder> returnValue = underTest.getDependencyFinders();
@@ -32,7 +32,7 @@ public class FinderRegistryTest {
         // Given
         TestOtherFinder otherFinder1 = new TestOtherFinder();
         TestDependencyFinder dependencyFinder1 = new TestDependencyFinder();
-        FinderRegistry underTest = createUnderTest(List.of(otherFinder1, dependencyFinder1));
+        FinderExtensionRegistry underTest = createUnderTest(List.of(otherFinder1, dependencyFinder1));
 
         // When
         List<DependencyFinder> returnValue = underTest.getDependencyFinders();
@@ -41,8 +41,8 @@ public class FinderRegistryTest {
         assertThat(returnValue).containsExactly(dependencyFinder1);
     }
 
-    private FinderRegistry createUnderTest(List<Finder> finders) {
-        return new FinderRegistry(new FakePluginManager<>(finders, Finder.class));
+    private FinderExtensionRegistry createUnderTest(List<Finder> finders) {
+        return new FinderExtensionRegistry(new FakePluginManager<>(finders, Finder.class));
     }
 
     private static class TestDependencyFinder extends DependencyFinder {

@@ -1,0 +1,23 @@
+package tech.kronicle.plugins.gradle.GradleScannerCodebaseTest.ProjectProperties
+
+plugins {
+    id "java"
+}
+
+ext {
+    lombokVersion = "1.18.16"
+}
+
+project.ext {
+    hibernateValidatorVersion = "6.1.6.Final"
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    annotationProcessor "org.projectlombok:lombok:${lombokVersion}"
+    compileOnly "org.projectlombok:lombok:${lombokVersion}"
+    compile "org.hibernate.validator:hibernate-validator:$hibernateValidatorVersion"
+}

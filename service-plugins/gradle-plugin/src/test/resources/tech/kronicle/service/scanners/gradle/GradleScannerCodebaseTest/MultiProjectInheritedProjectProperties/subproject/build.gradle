@@ -1,9 +1,0 @@
-package tech.kronicle.service.scanners.gradle.GradleScannerCodebaseTest.MultiProjectInheritedProjectProperties.subproject
-
-repositories {
-    mavenCentral()
-}
-
-dependencies {
-    compile "org.hibernate.validator:hibernate-validator:$hibernateValidatorVersion"
-}

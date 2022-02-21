@@ -14,7 +14,7 @@ import tech.kronicle.sdk.models.SoftwareType;
 import tech.kronicle.service.constants.Comparators;
 import tech.kronicle.plugins.gradle.internal.utils.InheritingHashMap;
 import tech.kronicle.plugins.gradle.internal.utils.InheritingHashSet;
-import tech.kronicle.service.scanners.gradle.testbeans.GradleScannerTestConfiguration;
+import tech.kronicle.plugins.gradle.GradleScannerTestConfiguration;
 import tech.kronicle.service.testutils.LogCaptor;
 
 import java.util.ArrayList;

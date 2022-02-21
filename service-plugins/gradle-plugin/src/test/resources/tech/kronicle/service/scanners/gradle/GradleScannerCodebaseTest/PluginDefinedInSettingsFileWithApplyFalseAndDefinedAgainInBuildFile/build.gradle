@@ -1,7 +1,0 @@
-package tech.kronicle.service.scanners.gradle.GradleScannerCodebaseTest.PluginDefinedInSettingsFileWithApplyFalseAndDefinedAgainInBuildFile
-
-apply plugin: 'org.springframework.boot'
-
-repositories {
-    mavenCentral()
-}

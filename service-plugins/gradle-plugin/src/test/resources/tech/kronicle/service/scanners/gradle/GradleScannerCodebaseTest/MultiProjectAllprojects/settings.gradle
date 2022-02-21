@@ -1,3 +1,0 @@
-package tech.kronicle.service.scanners.gradle.GradleScannerCodebaseTest.MultiProjectAllprojects
-
-include "subproject"

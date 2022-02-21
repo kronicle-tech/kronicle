@@ -1,0 +1,10 @@
+package tech.kronicle.plugins.gradle.GradleScannerCodebaseTest.DependencyDuplicates
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    annotationProcessor "org.projectlombok:lombok:1.18.16"
+    compileOnly "org.projectlombok:lombok:1.18.16"
+}

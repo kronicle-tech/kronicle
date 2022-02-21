@@ -1,0 +1,5 @@
+package tech.kronicle.plugins.gradle.GradleScannerCodebaseTest.MultiProjectSubprojectsRepositories.subproject
+
+dependencies {
+    compile "org.springframework.boot:spring-boot-starter-web"
+}

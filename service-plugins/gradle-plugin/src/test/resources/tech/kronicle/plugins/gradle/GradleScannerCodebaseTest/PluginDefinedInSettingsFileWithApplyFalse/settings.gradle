@@ -1,0 +1,11 @@
+package tech.kronicle.plugins.gradle.GradleScannerCodebaseTest.PluginDefinedInSettingsFileWithApplyFalse
+
+pluginManagement {
+    repositories {
+        mavenCentral()
+    }
+
+    plugins {
+        id "org.springframework.boot" version "$springBootVersion" apply false
+    }
+}

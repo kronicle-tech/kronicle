@@ -1,7 +1,0 @@
-package tech.kronicle.service.scanners.gradle.GradleScannerCodebaseTest.ApplyFromRootDir.gradle
-
-repositories {
-    mavenCentral()
-}
-
-apply from: "$rootDir/dependencies.gradle"
