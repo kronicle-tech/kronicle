@@ -1,5 +1,6 @@
 plugins {
     id "java-library"
+    id "io.freefair.lombok"
 }
 
 group "tech.kronicle"
@@ -20,10 +21,10 @@ dependencies {
     testImplementation platform("org.springframework.boot:spring-boot-dependencies:$springBootVersion")
     testImplementation platform("org.springframework.cloud:spring-cloud-dependencies:$springCloudVersion")
 
-    annotationProcessor "org.projectlombok:lombok"
-    compileOnly "org.projectlombok:lombok"
-    compileOnly "com.github.spotbugs:spotbugs-annotations:$spotBugsVersion"
     annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
+
+    compileOnly "com.github.spotbugs:spotbugs-annotations:$spotBugsVersion"
+    testCompileOnly "com.github.spotbugs:spotbugs-annotations:$spotBugsVersion"
 
     api project(':sdk')
     implementation project(':common')
@@ -32,10 +33,6 @@ dependencies {
     implementation "com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:$jacksonVersion"
     implementation "org.hibernate.validator:hibernate-validator"
     implementation "org.glassfish:javax.el:$expressionLanguageVersion"
-
-    testAnnotationProcessor "org.projectlombok:lombok"
-    testCompileOnly "org.projectlombok:lombok"
-    testCompileOnly "com.github.spotbugs:spotbugs-annotations:$spotBugsVersion"
 
     testImplementation "org.junit.jupiter:junit-jupiter-engine"
     testImplementation "org.assertj:assertj-core"

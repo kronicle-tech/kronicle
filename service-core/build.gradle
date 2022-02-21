@@ -1,5 +1,6 @@
 plugins {
     id "java-library"
+    id "io.freefair.lombok"
 }
 
 dependencies {
@@ -9,15 +10,11 @@ dependencies {
     testAnnotationProcessor platform("org.springframework.boot:spring-boot-dependencies:$springBootVersion")
     testImplementation platform("org.springframework.boot:spring-boot-dependencies:$springBootVersion")
 
-    annotationProcessor "org.projectlombok:lombok"
-    compileOnly "org.projectlombok:lombok"
-    compileOnly "javax.inject:javax.inject:$javaxInjectApiVersion"
     compileOnly "com.github.spotbugs:spotbugs-annotations:$spotBugsVersion"
-
-    testAnnotationProcessor "org.projectlombok:lombok"
-    testCompileOnly "org.projectlombok:lombok"
-    testCompileOnly "javax.inject:javax.inject:$javaxInjectApiVersion"
     testCompileOnly "com.github.spotbugs:spotbugs-annotations:$spotBugsVersion"
+    compileOnly "javax.inject:javax.inject:$javaxInjectApiVersion"
+    testCompileOnly "javax.inject:javax.inject:$javaxInjectApiVersion"
+
 
     api project(":common")
     api project(":metadata")

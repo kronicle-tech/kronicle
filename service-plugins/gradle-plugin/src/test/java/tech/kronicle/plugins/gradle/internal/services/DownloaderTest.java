@@ -4,7 +4,6 @@ import com.github.tomakehurst.wiremock.WireMockServer;
 import io.github.resilience4j.retry.RetryConfig;
 import io.github.resilience4j.retry.RetryRegistry;
 import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
@@ -32,22 +31,12 @@ public class DownloaderTest {
     private static final Duration TWO_MINUTE_DURATION = Duration.ofMinutes(2);
 
     @Mock
-    private DownloaderConfig config;
-    @Mock
     private DownloadCache downloadCache;
     @Mock
     private UrlExistsCache urlExistsCache;
     private final DownloaderWireMockFactory wireMockFactory = new DownloaderWireMockFactory();
     private WireMockServer wireMockServer;
     private Downloader underTest;
-
-    @BeforeEach
-    public void beforeEach() {
-        RetryRegistry retryRegistry = RetryRegistry.custom()
-                .addRetryConfig("http-request-maker", RetryConfig.ofDefaults())
-                .build();
-        underTest = new Downloader(config, WebClient.create(), downloadCache, urlExistsCache, new HttpRequestMaker(retryRegistry));
-    }
 
     @AfterEach
     public void afterEach() {
@@ -60,7 +49,7 @@ public class DownloaderTest {
         // Given
         wireMockServer = wireMockFactory.create(DownloaderWireMockFactory.Scenario.DOWNLOAD, HttpMethod.GET);
         String url = wireMockServer.baseUrl() + "/download";
-        when(config.getTimeout()).thenReturn(TWO_MINUTE_DURATION);
+        createUnderTest(TWO_MINUTE_DURATION);
 
         // When
         Downloader.HttpRequestOutcome<String> returnValue = underTest.download(url, null, 0);
@@ -79,7 +68,7 @@ public class DownloaderTest {
         // Given
         wireMockServer = wireMockFactory.create(DownloaderWireMockFactory.Scenario.DOWNLOAD_WITH_HEADERS, HttpMethod.GET);
         String url = wireMockServer.baseUrl() + "/download-with-headers";
-        when(config.getTimeout()).thenReturn(TWO_MINUTE_DURATION);
+        createUnderTest(TWO_MINUTE_DURATION);
 
         // When
         Downloader.HttpRequestOutcome<String> returnValue = underTest.download(
@@ -105,7 +94,7 @@ public class DownloaderTest {
         // Given
         wireMockServer = wireMockFactory.create(DownloaderWireMockFactory.Scenario.DELAYED, HttpMethod.GET);
         String url = wireMockServer.baseUrl() + "/delayed";
-        when(config.getTimeout()).thenReturn(Duration.ofSeconds(1));
+        createUnderTest(Duration.ofSeconds(1));
 
         // When
         Downloader.HttpRequestOutcome<String> returnValue = underTest.download(url, null, 0);
@@ -129,6 +118,7 @@ public class DownloaderTest {
         wireMockServer = wireMockFactory.createWithNoStubs();
         String url = wireMockServer.baseUrl() + "/download";
         when(downloadCache.getContent(url)).thenReturn(Optional.of("cached-output"));
+        createUnderTest(TWO_MINUTE_DURATION);
 
         // When
         Downloader.HttpRequestOutcome<String> returnValue = underTest.download(url, null, 0);
@@ -147,7 +137,7 @@ public class DownloaderTest {
         // Given
         wireMockServer = wireMockFactory.create(DownloaderWireMockFactory.Scenario.NOT_FOUND, HttpMethod.GET);
         String url = wireMockServer.baseUrl() + "/not-found";
-        when(config.getTimeout()).thenReturn(TWO_MINUTE_DURATION);
+        createUnderTest(TWO_MINUTE_DURATION);
 
         // When
         Downloader.HttpRequestOutcome<String> returnValue = underTest.download(url, null, 0);
@@ -166,7 +156,7 @@ public class DownloaderTest {
         // Given
         wireMockServer = wireMockFactory.create(DownloaderWireMockFactory.Scenario.MOVED_PERMANENTLY, HttpMethod.GET);
         String url = wireMockServer.baseUrl() + "/moved-permanently";
-        when(config.getTimeout()).thenReturn(TWO_MINUTE_DURATION);
+        createUnderTest(TWO_MINUTE_DURATION);
 
         // When
         Downloader.HttpRequestOutcome<String> returnValue = underTest.download(url, null, 1);
@@ -185,7 +175,7 @@ public class DownloaderTest {
         // Given
         wireMockServer = wireMockFactory.create(DownloaderWireMockFactory.Scenario.FOUND, HttpMethod.GET);
         String url = wireMockServer.baseUrl() + "/found";
-        when(config.getTimeout()).thenReturn(TWO_MINUTE_DURATION);
+        createUnderTest(TWO_MINUTE_DURATION);
 
         // When
         Downloader.HttpRequestOutcome<String> returnValue = underTest.download(url, null, 1);
@@ -204,7 +194,7 @@ public class DownloaderTest {
         // Given
         wireMockServer = wireMockFactory.create(DownloaderWireMockFactory.Scenario.SEE_OTHER, HttpMethod.GET);
         String url = wireMockServer.baseUrl() + "/see-other";
-        when(config.getTimeout()).thenReturn(TWO_MINUTE_DURATION);
+        createUnderTest(TWO_MINUTE_DURATION);
 
         // When
         Downloader.HttpRequestOutcome<String> returnValue = underTest.download(url, null, 1);
@@ -223,7 +213,7 @@ public class DownloaderTest {
         // Given
         wireMockServer = wireMockFactory.create(DownloaderWireMockFactory.Scenario.REDIRECT_ONCE, HttpMethod.GET);
         String url = wireMockServer.baseUrl() + "/redirect-once";
-        when(config.getTimeout()).thenReturn(TWO_MINUTE_DURATION);
+        createUnderTest(TWO_MINUTE_DURATION);
 
         // When
         Downloader.HttpRequestOutcome<String> returnValue = underTest.download(url, null, 0);
@@ -241,7 +231,7 @@ public class DownloaderTest {
         // Given
         wireMockServer = wireMockFactory.create(DownloaderWireMockFactory.Scenario.REDIRECT_TWO, HttpMethod.GET);
         String url = wireMockServer.baseUrl() + "/redirect-twice";
-        when(config.getTimeout()).thenReturn(TWO_MINUTE_DURATION);
+        createUnderTest(TWO_MINUTE_DURATION);
 
         // When
         Downloader.HttpRequestOutcome<String> returnValue = underTest.download(url, null, 1);
@@ -259,7 +249,7 @@ public class DownloaderTest {
         // Given
         wireMockServer = wireMockFactory.create(DownloaderWireMockFactory.Scenario.REDIRECT_WITH_NO_LOCATION_HEADER, HttpMethod.GET);
         String url = wireMockServer.baseUrl() + "/redirect-with-no-location-header";
-        when(config.getTimeout()).thenReturn(TWO_MINUTE_DURATION);
+        createUnderTest(TWO_MINUTE_DURATION);
 
         // When
         Downloader.HttpRequestOutcome<String> returnValue = underTest.download(url, null, 1);
@@ -277,7 +267,7 @@ public class DownloaderTest {
         // Given
         wireMockServer = wireMockFactory.create(DownloaderWireMockFactory.Scenario.INTERNAL_SERVER_ERROR, HttpMethod.GET);
         String url = wireMockServer.baseUrl() + "/internal-server-error";
-        when(config.getTimeout()).thenReturn(TWO_MINUTE_DURATION);
+        createUnderTest(TWO_MINUTE_DURATION);
 
         // When
         Downloader.HttpRequestOutcome<String> returnValue = underTest.download(url, null, 0);
@@ -298,7 +288,7 @@ public class DownloaderTest {
         // Given
         wireMockServer = wireMockFactory.create(DownloaderWireMockFactory.Scenario.DOWNLOAD, HttpMethod.HEAD);
         String url = wireMockServer.baseUrl() + "/download";
-        when(config.getTimeout()).thenReturn(TWO_MINUTE_DURATION);
+        createUnderTest(TWO_MINUTE_DURATION);
 
         // When
         Downloader.HttpRequestOutcome<Boolean> returnValue = underTest.exists(
@@ -324,7 +314,7 @@ public class DownloaderTest {
         // Given
         wireMockServer = wireMockFactory.create(DownloaderWireMockFactory.Scenario.DOWNLOAD_WITH_HEADERS, HttpMethod.HEAD);
         String url = wireMockServer.baseUrl() + "/download-with-headers";
-        when(config.getTimeout()).thenReturn(TWO_MINUTE_DURATION);
+        createUnderTest(TWO_MINUTE_DURATION);
 
         // When
         Downloader.HttpRequestOutcome<Boolean> returnValue = underTest.exists(
@@ -350,7 +340,7 @@ public class DownloaderTest {
         // Given
         wireMockServer = wireMockFactory.create(DownloaderWireMockFactory.Scenario.DELAYED, HttpMethod.HEAD);
         String url = wireMockServer.baseUrl() + "/delayed";
-        when(config.getTimeout()).thenReturn(Duration.ofSeconds(1));
+        createUnderTest(Duration.ofSeconds(1));
 
         // When
         Downloader.HttpRequestOutcome<Boolean> returnValue = underTest.exists(url, null, 0);
@@ -374,6 +364,7 @@ public class DownloaderTest {
         wireMockServer = wireMockFactory.createWithNoStubs();
         String url = wireMockServer.baseUrl() + "/download";
         when(urlExistsCache.getExists(url)).thenReturn(Optional.of(true));
+        createUnderTest(TWO_MINUTE_DURATION);
 
         // When
         Downloader.HttpRequestOutcome<Boolean> returnValue = underTest.exists(url, null, 0);
@@ -392,7 +383,7 @@ public class DownloaderTest {
         // Given
         wireMockServer = wireMockFactory.create(DownloaderWireMockFactory.Scenario.NOT_FOUND, HttpMethod.HEAD);
         String url = wireMockServer.baseUrl() + "/not-found";
-        when(config.getTimeout()).thenReturn(TWO_MINUTE_DURATION);
+        createUnderTest(TWO_MINUTE_DURATION);
 
         // When
         Downloader.HttpRequestOutcome<Boolean> returnValue = underTest.exists(url, null, 0);
@@ -411,7 +402,7 @@ public class DownloaderTest {
         // Given
         wireMockServer = wireMockFactory.create(DownloaderWireMockFactory.Scenario.MOVED_PERMANENTLY, HttpMethod.HEAD);
         String url = wireMockServer.baseUrl() + "/moved-permanently";
-        when(config.getTimeout()).thenReturn(TWO_MINUTE_DURATION);
+        createUnderTest(TWO_MINUTE_DURATION);
 
         // When
         Downloader.HttpRequestOutcome<Boolean> returnValue = underTest.exists(url, null, 1);
@@ -430,7 +421,7 @@ public class DownloaderTest {
         // Given
         wireMockServer = wireMockFactory.create(DownloaderWireMockFactory.Scenario.FOUND, HttpMethod.HEAD);
         String url = wireMockServer.baseUrl() + "/found";
-        when(config.getTimeout()).thenReturn(TWO_MINUTE_DURATION);
+        createUnderTest(TWO_MINUTE_DURATION);
 
         // When
         Downloader.HttpRequestOutcome<Boolean> returnValue = underTest.exists(url, null, 1);
@@ -449,7 +440,7 @@ public class DownloaderTest {
         // Given
         wireMockServer = wireMockFactory.create(DownloaderWireMockFactory.Scenario.SEE_OTHER, HttpMethod.HEAD);
         String url = wireMockServer.baseUrl() + "/see-other";
-        when(config.getTimeout()).thenReturn(TWO_MINUTE_DURATION);
+        createUnderTest(TWO_MINUTE_DURATION);
 
         // When
         Downloader.HttpRequestOutcome<Boolean> returnValue = underTest.exists(url, null, 1);
@@ -468,7 +459,7 @@ public class DownloaderTest {
         // Given
         wireMockServer = wireMockFactory.create(DownloaderWireMockFactory.Scenario.REDIRECT_ONCE, HttpMethod.HEAD);
         String url = wireMockServer.baseUrl() + "/redirect-once";
-        when(config.getTimeout()).thenReturn(TWO_MINUTE_DURATION);
+        createUnderTest(TWO_MINUTE_DURATION);
 
         // When
         Downloader.HttpRequestOutcome<Boolean> returnValue = underTest.exists(url, null, 0);
@@ -486,7 +477,7 @@ public class DownloaderTest {
         // Given
         wireMockServer = wireMockFactory.create(DownloaderWireMockFactory.Scenario.REDIRECT_TWO, HttpMethod.HEAD);
         String url = wireMockServer.baseUrl() + "/redirect-twice";
-        when(config.getTimeout()).thenReturn(TWO_MINUTE_DURATION);
+        createUnderTest(TWO_MINUTE_DURATION);
 
         // When
         Downloader.HttpRequestOutcome<Boolean> returnValue = underTest.exists(url, null, 1);
@@ -504,7 +495,7 @@ public class DownloaderTest {
         // Given
         wireMockServer = wireMockFactory.create(DownloaderWireMockFactory.Scenario.REDIRECT_WITH_NO_LOCATION_HEADER, HttpMethod.HEAD);
         String url = wireMockServer.baseUrl() + "/redirect-with-no-location-header";
-        when(config.getTimeout()).thenReturn(TWO_MINUTE_DURATION);
+        createUnderTest(TWO_MINUTE_DURATION);
 
         // When
         Downloader.HttpRequestOutcome<Boolean> returnValue = underTest.exists(url, null, 1);
@@ -522,7 +513,7 @@ public class DownloaderTest {
         // Given
         wireMockServer = wireMockFactory.create(DownloaderWireMockFactory.Scenario.INTERNAL_SERVER_ERROR, HttpMethod.HEAD);
         String url = wireMockServer.baseUrl() + "/internal-server-error";
-        when(config.getTimeout()).thenReturn(TWO_MINUTE_DURATION);
+        createUnderTest(TWO_MINUTE_DURATION);
 
         // When
         Downloader.HttpRequestOutcome<Boolean> returnValue = underTest.exists(url, null, 0);
@@ -536,5 +527,12 @@ public class DownloaderTest {
         assertThat(returnValue.getExceptions().get(0))
                 .isInstanceOf(WebClientResponseException.InternalServerError.class)
                 .hasMessage("500 Internal Server Error from HEAD %s/internal-server-error", wireMockServer.baseUrl());
+    }
+
+    private void createUnderTest(Duration timeout) {
+        RetryRegistry retryRegistry = RetryRegistry.custom()
+                .addRetryConfig("http-request-maker", RetryConfig.ofDefaults())
+                .build();
+        underTest = new Downloader(new DownloaderConfig(timeout), WebClient.create(), downloadCache, urlExistsCache, new HttpRequestMaker(retryRegistry));
     }
 }
