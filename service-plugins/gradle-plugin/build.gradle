@@ -91,6 +91,17 @@ shadowJar {
     }
 }
 
+tasks.register("copyPlugin", Copy) {
+    dependsOn(shadowJar)
+
+    from shadowJar
+    into project(':service').file('plugins')
+}
+
+project(":service").tasks.named("copyPlugins") {
+    dependsOn(copyPlugin)
+}
+
 tasks.withType(Test).configureEach {
     useJUnitPlatform()
     maxParallelForks = Math.min(2, Runtime.runtime.availableProcessors().intdiv(2) ?: 1)

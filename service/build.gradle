@@ -69,15 +69,6 @@ dependencies {
     testImplementation "com.github.tomakehurst:wiremock-jre8:$wireMockVersion"
 }
 
-tasks.register("copyPlugins", Copy) {
-    from project(":service-plugins:gradle-plugin").shadowJar
-    into file("plugins")
-}
-
-tasks.named("bootRun") {
-    dependsOn tasks.named("copyPlugins")
-}
-
 docker {
     name "kronicle-service:$version$dockerTagSuffix"
 
@@ -87,15 +78,27 @@ docker {
 
     buildArgs([VERSION: version])
     tag "latest", name
-    copySpec.from("build/libs", "src/test/java")
+    copySpec.from("build/libs", "plugins", "src/test/java")
             .include("service-${version}.jar")
+            .include("plugins/*.jar")
             .include("Healthcheck.java")
             .rename(/service-.*\.jar/, "app.jar")
     network "host"
 }
 
-dockerPrepare.dependsOn tasks.bootJar
-build.dependsOn tasks.docker
+tasks.register("copyPlugins") {}
+
+tasks.named("bootRun") {
+    dependsOn tasks.named("copyPlugins")
+}
+
+tasks.named("dockerPrepare") {
+    dependsOn tasks.named("copyPlugins")
+}
+
+tasks.named("build") {
+    dependsOn tasks.named("docker")
+}
 
 processResources {
     filesMatching("logback-spring.xml") {
