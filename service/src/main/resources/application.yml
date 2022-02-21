@@ -58,6 +58,9 @@ plugins:
   mode: deployment
   plugin-root-dirs:
     - plugins
+  git-plugin:
+    git:
+      repos-dir: /data/git/repos
   gradle-plugin:
     downloader:
       timeout: 2m
@@ -101,10 +104,6 @@ datadog:
   baseUrl: "https://api.datadoghq.com"
   dependencies:
     timeout: 30s
-
-git:
-  repos-dir: /data/git/repos
-
 
 zipkin:
   enabled: false

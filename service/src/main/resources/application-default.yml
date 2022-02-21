@@ -7,6 +7,8 @@ plugins:
   mode: deployment
   plugin-root-dirs:
     - plugins
+  git-plugin:
+    repos-dir: ${TMPDIR}kronicle-service/data/git/repos
   gradle-plugin:
     download-cache:
       dir: ${TMPDIR}kronicle-service/data/download-cache
@@ -16,6 +18,3 @@ plugins:
 
     pom-cache:
       dir: ${TMPDIR}kronicle-service/data/gradle/pom-cache
-
-git:
-  repos-dir: ${TMPDIR}kronicle-service/data/git/repos

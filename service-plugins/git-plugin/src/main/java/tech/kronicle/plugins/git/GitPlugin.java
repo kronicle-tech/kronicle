@@ -1,21 +1,21 @@
-package tech.kronicle.plugins.gradle;
+package tech.kronicle.plugins.git;
 
 import org.pf4j.PluginWrapper;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import tech.kronicle.plugins.git.config.GitConfig;
+import tech.kronicle.plugins.git.internal.spring.SpringConfiguration;
 import tech.kronicle.service.plugins.KroniclePlugin;
-import tech.kronicle.plugins.gradle.config.GradleConfig;
-import tech.kronicle.plugins.gradle.internal.spring.SpringConfiguration;
 
-public class GradlePlugin extends KroniclePlugin {
+public class GitPlugin extends KroniclePlugin {
 
-    public GradlePlugin(PluginWrapper wrapper) {
+    public GitPlugin(PluginWrapper wrapper) {
         super(wrapper);
     }
 
     @Override
     public Class<?> getConfigType() {
-        return GradleConfig.class;
+        return GitConfig.class;
     }
 
     @Override

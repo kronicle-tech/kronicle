@@ -1,6 +1,7 @@
 package tech.kronicle.plugins.git;
 
 import lombok.SneakyThrows;
+import org.pf4j.Extension;
 import tech.kronicle.plugins.git.config.GitConfig;
 import tech.kronicle.plugins.git.config.GitHost;
 import tech.kronicle.service.extensions.GitCloner;
@@ -11,9 +12,9 @@ import org.eclipse.jgit.api.errors.GitAPIException;
 import org.eclipse.jgit.lib.Ref;
 import org.eclipse.jgit.transport.CredentialsProvider;
 import org.eclipse.jgit.transport.UsernamePasswordCredentialsProvider;
-import org.springframework.stereotype.Service;
 import org.springframework.util.FileSystemUtils;
 import tech.kronicle.common.utils.StringEscapeUtils;
+import tech.kronicle.service.spring.stereotypes.SpringComponent;
 
 import javax.annotation.PostConstruct;
 import java.io.IOException;
@@ -32,7 +33,8 @@ import java.util.function.Predicate;
 import static java.util.Objects.isNull;
 import static java.util.Objects.nonNull;
 
-@Service
+@SpringComponent
+@Extension
 @RequiredArgsConstructor
 @Slf4j
 public class GitClonerImpl implements GitCloner {
