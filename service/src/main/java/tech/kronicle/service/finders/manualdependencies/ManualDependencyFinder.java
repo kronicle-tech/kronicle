@@ -1,5 +1,6 @@
 package tech.kronicle.service.finders.manualdependencies;
 
+import org.pf4j.Extension;
 import tech.kronicle.componentmetadata.models.ComponentMetadata;
 import tech.kronicle.sdk.models.Component;
 import tech.kronicle.sdk.models.ComponentDependency;
@@ -15,6 +16,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 @SpringComponent
+@Extension
 public class ManualDependencyFinder extends DependencyFinder {
     @Override
     public String description() {

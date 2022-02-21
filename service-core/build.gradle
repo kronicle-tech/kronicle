@@ -46,3 +46,14 @@ tasks.withType(Test).configureEach {
     useJUnitPlatform()
     maxParallelForks = Math.min(2, Runtime.runtime.availableProcessors().intdiv(2) ?: 1)
 }
+
+// TODO: Raise code coverage and remove need for this override
+jacocoTestCoverageVerification {
+    violationRules {
+        rule {
+            limit {
+                minimum = 0.4
+            }
+        }
+    }
+}

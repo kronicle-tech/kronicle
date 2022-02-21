@@ -2,7 +2,7 @@ package tech.kronicle.service.services;
 
 import org.junit.jupiter.api.Test;
 import org.pf4j.PluginManager;
-import tech.kronicle.service.models.RegistryItem;
+import tech.kronicle.service.models.ExtensionPointWithId;
 import tech.kronicle.service.services.testutils.FakePluginManager;
 
 import java.util.List;
@@ -16,38 +16,38 @@ public class BaseRegistryTest {
     @Test
     public void getAllItemsReturnsAllItems() {
         // Given
-        List<RegistryItem> items = List.of(
-                new TestRegistryItemA("test-item-1"),
-                new TestRegistryItemA("test-item-2"),
-                new TestRegistryItemB("test-item-3"),
-                new TestRegistryItemB("test-item-4")
+        List<ExtensionPointWithId> items = List.of(
+                new TestExtensionPointWithIdA("test-item-1"),
+                new TestExtensionPointWithIdA("test-item-2"),
+                new TestExtensionPointWithIdB("test-item-3"),
+                new TestExtensionPointWithIdB("test-item-4")
         );
-        underTest = new TestBaseRegistry(new FakePluginManager<>(items, RegistryItem.class));
+        underTest = new TestBaseRegistry(new FakePluginManager<>(items, ExtensionPointWithId.class));
 
         // When
-        List<RegistryItem> returnValue = underTest.getAllItems();
+        List<ExtensionPointWithId> returnValue = underTest.getAllItems();
 
         // Then
         assertThat(returnValue).containsExactlyElementsOf(items);
     }
 
-    private static class TestBaseRegistry extends BaseRegistry<RegistryItem> {
+    private static class TestBaseRegistry extends BaseRegistry<ExtensionPointWithId> {
 
         public TestBaseRegistry(PluginManager pluginManager) {
             super(pluginManager);
         }
 
         @Override
-        protected Class<RegistryItem> getItemType() {
-            return RegistryItem.class;
+        protected Class<ExtensionPointWithId> getItemType() {
+            return ExtensionPointWithId.class;
         }
     }
 
-    private static class TestRegistryItemA implements RegistryItem {
+    private static class TestExtensionPointWithIdA implements ExtensionPointWithId {
 
         private String id;
 
-        public TestRegistryItemA(String id) {
+        public TestExtensionPointWithIdA(String id) {
             this.id = id;
         }
 
@@ -57,11 +57,11 @@ public class BaseRegistryTest {
         }
     }
 
-    private static class TestRegistryItemB implements RegistryItem {
+    private static class TestExtensionPointWithIdB implements ExtensionPointWithId {
 
         private String id;
 
-        public TestRegistryItemB(String id) {
+        public TestExtensionPointWithIdB(String id) {
             this.id = id;
         }
 

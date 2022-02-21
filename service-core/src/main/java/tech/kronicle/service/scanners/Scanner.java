@@ -1,6 +1,5 @@
 package tech.kronicle.service.scanners;
 
-import org.pf4j.ExtensionPoint;
 import tech.kronicle.componentmetadata.models.ComponentMetadata;
 import tech.kronicle.sdk.models.Dependency;
 import tech.kronicle.sdk.models.ObjectWithReference;
@@ -8,12 +7,12 @@ import tech.kronicle.sdk.models.ObjectWithScannerId;
 import tech.kronicle.sdk.models.Summary;
 import tech.kronicle.service.scanners.models.Output;
 import tech.kronicle.common.utils.CaseUtils;
-import tech.kronicle.service.models.RegistryItem;
+import tech.kronicle.service.models.ExtensionPointWithId;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class Scanner<I extends ObjectWithReference, O> implements RegistryItem, ExtensionPoint {
+public abstract class Scanner<I extends ObjectWithReference, O> implements ExtensionPointWithId {
 
     public String id() {
         return CaseUtils.toKebabCase(getClass().getSimpleName()).replaceFirst("-scanner$", "");
