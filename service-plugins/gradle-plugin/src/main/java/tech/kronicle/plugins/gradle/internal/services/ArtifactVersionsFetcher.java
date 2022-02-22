@@ -1,5 +1,8 @@
 package tech.kronicle.plugins.gradle.internal.services;
 
+import jakarta.xml.bind.JAXBContext;
+import jakarta.xml.bind.JAXBException;
+import jakarta.xml.bind.Unmarshaller;
 import tech.kronicle.sdk.models.SoftwareRepository;
 import tech.kronicle.plugins.gradle.internal.models.mavenxml.Metadata;
 import tech.kronicle.plugins.gradle.internal.models.mavenxml.metadata.Versioning;
@@ -10,9 +13,6 @@ import tech.kronicle.common.utils.StringEscapeUtils;
 import tech.kronicle.service.spring.stereotypes.SpringComponent;
 
 import javax.annotation.PostConstruct;
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBException;
-import javax.xml.bind.Unmarshaller;
 import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.XMLStreamException;
 import java.io.StringReader;

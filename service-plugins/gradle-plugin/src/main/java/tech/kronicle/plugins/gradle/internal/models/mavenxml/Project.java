@@ -1,15 +1,14 @@
 package tech.kronicle.plugins.gradle.internal.models.mavenxml;
 
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlRootElement;
 import tech.kronicle.plugins.gradle.internal.models.mavenxml.project.Dependencies;
 import tech.kronicle.plugins.gradle.internal.models.mavenxml.project.DependencyManagement;
 import tech.kronicle.plugins.gradle.internal.models.mavenxml.project.Parent;
 import tech.kronicle.plugins.gradle.internal.models.mavenxml.project.Properties;
 import lombok.Data;
-
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
 
 @Data
 @XmlRootElement

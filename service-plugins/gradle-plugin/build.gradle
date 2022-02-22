@@ -54,8 +54,9 @@ dependencies {
     implementation "io.github.resilience4j:resilience4j-retry:$resilience4jVersion"
     implementation "com.fasterxml.jackson.core:jackson-core"
     implementation "com.fasterxml.jackson.core:jackson-databind"
+    // See https://stackoverflow.com/a/43574427
     implementation "jakarta.xml.bind:jakarta.xml.bind-api:$jakartaXmlBindVersion"
-    implementation "com.sun.xml.bind:jaxb-impl:$jakartaXmlBindVersion"
+    implementation "com.sun.xml.bind:jaxb-impl:$eclipseJaxbVersion"
     implementation "org.codehaus.groovy:groovy:$groovyVersion"
     implementation "com.google.guava:guava:$guavaVersion"
 
