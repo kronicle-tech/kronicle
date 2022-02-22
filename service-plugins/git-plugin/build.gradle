@@ -33,21 +33,6 @@ dependencies {
     testImplementation "org.mockito:mockito-junit-jupiter"
 }
 
-shadowJar {
-    dependencies {
-        exclude(project(":common"))
-        exclude(project(":sdk"))
-        exclude(project(":metadata"))
-        exclude(project(":service-core"))
-        exclude(dependency("^org\\.pf4j:"))
-        exclude(dependency("^org\\.springframework:"))
-        exclude(dependency("^org\\.springframework\\.boot:"))
-        exclude(dependency("^javax\\.validation:"))
-        exclude(dependency("^jakarta\\.validation:"))
-        exclude(dependency("^org\\.slf4j:"))
-    }
-}
-
 tasks.register("copyPlugin", Copy) {
     dependsOn(shadowJar)
 

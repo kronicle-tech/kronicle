@@ -51,6 +51,10 @@ dependencies {
     implementation "org.springframework.boot:spring-boot"
     implementation "org.springframework:spring-webflux"
     implementation "io.projectreactor.netty:reactor-netty-http"
+    // Needed by org.springframework.http.converter.json.Jackson2ObjectMapperBuilder
+    implementation "com.fasterxml.jackson.datatype:jackson-datatype-jdk8"
+    // Needed by org.springframework.http.converter.json.Jackson2ObjectMapperBuilder
+    implementation "com.fasterxml.jackson.datatype:jackson-datatype-jsr310"
     implementation "io.github.resilience4j:resilience4j-retry:$resilience4jVersion"
     implementation "com.fasterxml.jackson.core:jackson-core"
     implementation "com.fasterxml.jackson.core:jackson-databind"
@@ -72,25 +76,19 @@ dependencies {
     testImplementation "com.github.tomakehurst:wiremock-jre8:$wireMockVersion"
 }
 
-shadowJar {
-    dependencies {
-        exclude(project(":common"))
-        exclude(project(":sdk"))
-        exclude(project(":metadata"))
-        exclude(project(":service-core"))
-        exclude(dependency("^org\\.pf4j:"))
-        exclude(dependency("^org\\.springframework:"))
-        exclude(dependency("^org\\.springframework\\.boot:"))
-        exclude(dependency("^javax\\.validation:"))
-        exclude(dependency("^jakarta\\.validation:"))
-        exclude(dependency("^org\\.slf4j:"))
-//        include(dependency("jakarta.xml.bind:jakarta.xml.bind-api:"))
-//        include(dependency("com.sun.xml.bind:jaxb-impl:"))
-//        include(dependency("tech.kronicle:gradle-version-logic:"))
-//        include(dependency("^jakarta.*:"))
-//        include(dependency("^com\\.sun.*:"))
-    }
-}
+//shadowJar {
+//    dependencies {
+//    exclude(project(":common"))
+//    exclude(project(":sdk"))
+//    exclude(project(":metadata"))
+//    exclude(project(":service-core"))
+//    exclude(dependency("^org\\.pf4j:"))
+//    exclude(dependency("^org\\.springframework:"))
+//    exclude(dependency("^org\\.springframework\\.boot:"))
+//    exclude(dependency("^javax\\.validation:"))
+//    exclude(dependency("^jakarta\\.validation:"))
+//    exclude(dependency("^org\\.slf4j:"))
+//}
 
 tasks.register("copyPlugin", Copy) {
     dependsOn(shadowJar)
