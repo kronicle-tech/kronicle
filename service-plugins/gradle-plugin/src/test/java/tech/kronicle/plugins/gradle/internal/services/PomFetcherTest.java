@@ -1,6 +1,7 @@
 package tech.kronicle.plugins.gradle.internal.services;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import jakarta.xml.bind.JAXBException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -12,7 +13,6 @@ import tech.kronicle.plugins.gradle.internal.models.Pom;
 import tech.kronicle.plugins.gradle.internal.models.PomOutcome;
 import tech.kronicle.plugins.gradle.internal.utils.ArtifactUtils;
 
-import javax.xml.bind.JAXBException;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
