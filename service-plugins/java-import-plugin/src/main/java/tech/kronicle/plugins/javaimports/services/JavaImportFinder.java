@@ -1,4 +1,4 @@
-package tech.kronicle.service.scanners.javaimports.internal.services;
+package tech.kronicle.plugins.javaimports.services;
 
 import tech.kronicle.sdk.models.Import;
 import tech.kronicle.sdk.models.ImportType;

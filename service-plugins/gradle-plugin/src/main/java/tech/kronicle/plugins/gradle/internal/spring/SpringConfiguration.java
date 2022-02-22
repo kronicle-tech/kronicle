@@ -8,7 +8,7 @@ import io.github.resilience4j.retry.RetryRegistry;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.web.reactive.function.client.WebClient;
-import tech.kronicle.plugins.gradle.KronicleGradlePluginPackage;
+import tech.kronicle.plugins.gradle.PluginPackage;
 import tech.kronicle.plugins.gradle.config.DownloadCacheConfig;
 import tech.kronicle.plugins.gradle.config.DownloaderConfig;
 import tech.kronicle.plugins.gradle.config.GradleConfig;
@@ -19,7 +19,7 @@ import tech.kronicle.service.utils.FileUtils;
 
 import java.time.Duration;
 
-@ComponentScan(basePackageClasses = KronicleGradlePluginPackage.class)
+@ComponentScan(basePackageClasses = PluginPackage.class)
 public class SpringConfiguration {
 
     @Bean

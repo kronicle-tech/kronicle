@@ -19,6 +19,7 @@ dependencies {
 
     implementation project(":service-core")
     implementation "org.springframework.boot:spring-boot"
+    implementation "commons-io:commons-io:$commonsIoVersion"
 
     testImplementation project(":service-core-tests")
     testImplementation "org.springframework.boot:spring-boot-starter-test", {

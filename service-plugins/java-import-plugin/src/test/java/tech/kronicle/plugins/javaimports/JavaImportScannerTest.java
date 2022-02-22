@@ -1,9 +1,9 @@
-package tech.kronicle.service.scanners.javaimports;
+package tech.kronicle.plugins.javaimports;
 
+import tech.kronicle.plugins.javaimports.services.JavaImportFinder;
 import tech.kronicle.sdk.models.Import;
 import tech.kronicle.sdk.models.ImportType;
 import tech.kronicle.service.scanners.BaseCodebaseScannerTest;
-import tech.kronicle.service.scanners.javaimports.internal.services.JavaImportFinder;
 import tech.kronicle.service.scanners.models.Codebase;
 import tech.kronicle.service.scanners.models.Output;
 import tech.kronicle.service.utils.AntStyleIgnoreFileLoader;

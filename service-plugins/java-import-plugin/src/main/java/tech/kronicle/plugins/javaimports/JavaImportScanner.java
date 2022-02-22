@@ -1,12 +1,12 @@
-package tech.kronicle.service.scanners.javaimports;
+package tech.kronicle.plugins.javaimports;
 
 import lombok.RequiredArgsConstructor;
 import org.apache.commons.io.FilenameUtils;
 import org.pf4j.Extension;
+import tech.kronicle.plugins.javaimports.services.JavaImportFinder;
 import tech.kronicle.sdk.models.Import;
 import tech.kronicle.service.constants.Comparators;
 import tech.kronicle.service.scanners.CodebaseScanner;
-import tech.kronicle.service.scanners.javaimports.internal.services.JavaImportFinder;
 import tech.kronicle.service.scanners.models.Codebase;
 import tech.kronicle.service.scanners.models.Output;
 import tech.kronicle.service.spring.stereotypes.SpringComponent;

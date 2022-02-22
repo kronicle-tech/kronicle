@@ -32,7 +32,7 @@ describe('EmailAddress', () => {
     test('renders an `a` tag with href pointing at the email address', () => {
       createWrapper()
       expect(wrapper.html()).toEqual(
-        `<a href="mailto:example@example.com">example@example.com</a>`
+        `<a href="mailto:example@example.com">example@javaimports.com</a>`
       )
     })
   })
