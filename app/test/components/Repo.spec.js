@@ -34,7 +34,7 @@ describe('Repo', () => {
     test("renders an `a` tag with href pointing at the repo's url", () => {
       createWrapper()
       expect(wrapper.html()).toEqual(
-        `<a href="https://example.com/repo.git" target="_blank">https://javaimports.com/repo.git</a>`
+        `<a href="https://example.com/repo.git" target="_blank">https://example.com/repo.git</a>`
       )
     })
   })
