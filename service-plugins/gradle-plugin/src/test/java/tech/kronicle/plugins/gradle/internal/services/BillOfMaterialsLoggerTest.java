@@ -11,8 +11,8 @@ import tech.kronicle.plugins.gradle.internal.constants.MavenPackagings;
 import tech.kronicle.plugins.gradle.internal.groovyscriptvisitors.VisitorState;
 import tech.kronicle.plugins.gradle.internal.utils.InheritingHashMap;
 import tech.kronicle.plugins.gradle.internal.utils.InheritingHashSet;
-import tech.kronicle.service.testutils.LogCaptor;
-import tech.kronicle.service.testutils.SimplifiedLogEvent;
+import tech.kronicle.plugintestutils.testutils.LogCaptor;
+import tech.kronicle.plugintestutils.testutils.SimplifiedLogEvent;
 
 import java.util.Set;
 

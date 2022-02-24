@@ -1,5 +1,6 @@
 package tech.kronicle.plugins.gradle.internal.groovyscriptvisitors;
 
+import org.springframework.stereotype.Component;
 import tech.kronicle.sdk.models.Software;
 import tech.kronicle.plugins.gradle.internal.constants.GradlePlugins;
 import tech.kronicle.plugins.gradle.internal.groovyscriptvisitors.buildgradlevisitor.BuildscriptVisitor;
@@ -17,13 +18,12 @@ import tech.kronicle.plugins.gradle.internal.services.SoftwareRepositoryFactory;
 import lombok.extern.slf4j.Slf4j;
 import org.codehaus.groovy.ast.expr.MethodCallExpression;
 import org.slf4j.Logger;
-import tech.kronicle.service.spring.stereotypes.SpringComponent;
 
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 
-@SpringComponent
+@Component
 @Slf4j
 public class BuildGradleVisitor extends BaseBuildFileVisitor {
 

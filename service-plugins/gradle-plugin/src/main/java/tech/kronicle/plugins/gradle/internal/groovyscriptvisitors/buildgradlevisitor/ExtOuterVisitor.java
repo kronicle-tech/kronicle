@@ -1,5 +1,6 @@
 package tech.kronicle.plugins.gradle.internal.groovyscriptvisitors.buildgradlevisitor;
 
+import org.springframework.stereotype.Component;
 import tech.kronicle.plugins.gradle.internal.groovyscriptvisitors.BaseVisitor;
 import tech.kronicle.plugins.gradle.internal.groovyscriptvisitors.ExpressionVisitOutcome;
 import tech.kronicle.plugins.gradle.internal.services.BuildFileLoader;
@@ -11,11 +12,10 @@ import org.codehaus.groovy.ast.expr.Expression;
 import org.codehaus.groovy.ast.expr.MethodCallExpression;
 import org.codehaus.groovy.ast.expr.VariableExpression;
 import org.slf4j.Logger;
-import tech.kronicle.service.spring.stereotypes.SpringComponent;
 
 import java.util.Objects;
 
-@SpringComponent
+@Component
 @Slf4j
 public class ExtOuterVisitor extends BaseVisitor {
 

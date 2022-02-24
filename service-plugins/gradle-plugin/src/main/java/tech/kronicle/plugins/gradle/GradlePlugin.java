@@ -3,7 +3,7 @@ package tech.kronicle.plugins.gradle;
 import org.pf4j.PluginWrapper;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import tech.kronicle.service.plugins.KroniclePlugin;
+import tech.kronicle.pluginapi.KroniclePlugin;
 import tech.kronicle.plugins.gradle.config.GradleConfig;
 import tech.kronicle.plugins.gradle.internal.spring.SpringConfiguration;
 

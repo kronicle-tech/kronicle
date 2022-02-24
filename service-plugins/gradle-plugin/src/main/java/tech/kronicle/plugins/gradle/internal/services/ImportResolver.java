@@ -1,12 +1,12 @@
 package tech.kronicle.plugins.gradle.internal.services;
 
+import org.springframework.stereotype.Component;
 import tech.kronicle.plugins.gradle.internal.models.Import;
-import tech.kronicle.service.spring.stereotypes.SpringComponent;
 
 import java.util.Objects;
 import java.util.Set;
 
-@SpringComponent
+@Component
 public class ImportResolver {
 
     public Import importResolver(String value, Set<Import> imports) {

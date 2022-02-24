@@ -1,14 +1,14 @@
 package tech.kronicle.plugins.gradle.internal.services;
 
+import org.springframework.stereotype.Component;
 import tech.kronicle.plugins.gradle.config.GradleConfig;
 import tech.kronicle.plugins.gradle.config.GradleCustomRepository;
-import tech.kronicle.service.spring.stereotypes.SpringComponent;
 
 import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-@SpringComponent
+@Component
 public class CustomRepositoryRegistry {
 
     private final Map<String, String> customRepositoryUrls;

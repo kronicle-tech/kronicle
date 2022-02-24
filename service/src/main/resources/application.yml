@@ -54,25 +54,49 @@ management:
       exposure:
         include: info, health, metrics, prometheus, openapi
 
-plugins:
+plugin-manager:
   mode: deployment
   plugin-root-dirs:
     - plugins
+
+plugins:
   git-plugin:
     git:
       repos-dir: /data/git/repos
+
   gradle-plugin:
     downloader:
       timeout: 2m
-
     download-cache:
       dir: /data/download-cache
-
     url-exists-cache:
       dir: /data/url-exists-cache
-
     pom-cache:
       dir: /data/gradle/pom-cache
+
+  github-plugin:
+    timeout: 30s
+
+  gitlab-plugin:
+    projectPageSize: 100
+    timeout: 30s
+
+  bitbucket-server-plugin:
+    timeout: 30s
+
+  datadog-plugin:
+    baseUrl: "https://api.datadoghq.com"
+    dependencies:
+      timeout: 30s
+
+  zipkin-plugin:
+    enabled: false
+    base-url: http://localhost:9411
+    timeout: 2m
+    trace-limit: 1000
+
+  sonarqube-plugin:
+    base-url: http://localhost:9000
 
 springdoc:
   use-management-port: true
@@ -90,26 +114,3 @@ resilience4j:
         exponentialBackoffMultiplier: 2
         retryExceptions:
           - tech.kronicle.service.scanners.zipkin.client.ZipkinClientException
-
-repo-finders:
-  github:
-    timeout: 30s
-  gitlab:
-    projectPageSize: 100
-    timeout: 30s
-  bitbucket-server:
-    timeout: 30s
-
-datadog:
-  baseUrl: "https://api.datadoghq.com"
-  dependencies:
-    timeout: 30s
-
-zipkin:
-  enabled: false
-  base-url: http://localhost:9411
-  timeout: 2m
-  trace-limit: 1000
-
-sonarqube:
-  base-url: http://localhost:9000

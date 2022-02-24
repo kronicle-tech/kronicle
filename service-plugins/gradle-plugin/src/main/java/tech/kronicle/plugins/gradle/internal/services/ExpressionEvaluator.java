@@ -1,5 +1,6 @@
 package tech.kronicle.plugins.gradle.internal.services;
 
+import org.springframework.stereotype.Component;
 import tech.kronicle.plugins.gradle.internal.models.Import;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -9,7 +10,6 @@ import org.codehaus.groovy.ast.expr.Expression;
 import org.codehaus.groovy.ast.expr.GStringExpression;
 import org.codehaus.groovy.ast.expr.PropertyExpression;
 import org.codehaus.groovy.ast.expr.VariableExpression;
-import tech.kronicle.service.spring.stereotypes.SpringComponent;
 
 import java.util.Map;
 import java.util.Objects;
@@ -17,7 +17,7 @@ import java.util.Set;
 
 import static java.util.Objects.nonNull;
 
-@SpringComponent
+@Component
 @RequiredArgsConstructor
 @Slf4j
 public class ExpressionEvaluator {

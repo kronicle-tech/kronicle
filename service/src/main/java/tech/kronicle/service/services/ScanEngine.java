@@ -1,6 +1,10 @@
 package tech.kronicle.service.services;
 
 import tech.kronicle.componentmetadata.models.ComponentMetadata;
+import tech.kronicle.pluginapi.scanners.Scanner;
+import tech.kronicle.pluginapi.scanners.models.Codebase;
+import tech.kronicle.pluginapi.scanners.models.ComponentAndCodebase;
+import tech.kronicle.pluginapi.scanners.models.Output;
 import tech.kronicle.sdk.models.Component;
 import tech.kronicle.sdk.models.Dependency;
 import tech.kronicle.sdk.models.ObjectWithReference;
@@ -8,13 +12,9 @@ import tech.kronicle.sdk.models.Repo;
 import tech.kronicle.sdk.models.ScannerError;
 import tech.kronicle.sdk.models.Summary;
 import tech.kronicle.service.exceptions.ValidationException;
-import tech.kronicle.service.scanners.services.ThrowableToScannerErrorMapper;
-import tech.kronicle.service.scanners.Scanner;
-import tech.kronicle.service.scanners.models.Codebase;
-import tech.kronicle.service.scanners.models.ComponentAndCodebase;
-import tech.kronicle.service.scanners.models.Output;
-import tech.kronicle.service.utils.MapCollectors;
-import tech.kronicle.service.utils.ObjectReference;
+import tech.kronicle.pluginutils.scanners.services.ThrowableToScannerErrorMapper;
+import tech.kronicle.pluginutils.utils.MapCollectors;
+import tech.kronicle.pluginutils.utils.ObjectReference;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;

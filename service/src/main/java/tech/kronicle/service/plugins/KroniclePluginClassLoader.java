@@ -11,7 +11,7 @@ public class KroniclePluginClassLoader extends PluginClassLoader {
     private static final List<String> PREFIXES_FOR_PARENT = List.of(
             "javax.annotation.",
             "tech.kronicle.sdk.",
-            "tech.kronicle.service.",
+            "tech.kronicle.pluginapi.",
             "org.springframework.context.",
 //            "org.springframework.boot.context.",
 //            "org.springframework.validation.",

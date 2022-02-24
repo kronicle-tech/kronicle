@@ -1,0 +1,36 @@
+plugins {
+    id "java-library"
+    id "io.freefair.lombok"
+}
+
+dependencies {
+    annotationProcessor platform("org.springframework.boot:spring-boot-dependencies:$springBootVersion")
+    implementation platform("org.springframework.boot:spring-boot-dependencies:$springBootVersion")
+    compileOnly platform("org.springframework.boot:spring-boot-dependencies:$springBootVersion")
+    testAnnotationProcessor platform("org.springframework.boot:spring-boot-dependencies:$springBootVersion")
+    testImplementation platform("org.springframework.boot:spring-boot-dependencies:$springBootVersion")
+
+    compileOnly "com.github.spotbugs:spotbugs-annotations:$spotBugsVersion"
+    testCompileOnly "com.github.spotbugs:spotbugs-annotations:$spotBugsVersion"
+    compileOnly "javax.inject:javax.inject:$javaxInjectApiVersion"
+    testCompileOnly "javax.inject:javax.inject:$javaxInjectApiVersion"
+
+    api project(":service-plugin-api")
+    api project(":service-plugin-utils")
+    api "ch.qos.logback:logback-classic"
+    api "org.assertj:assertj-core"
+
+    testImplementation "org.springframework.boot:spring-boot-starter-test", {
+        exclude group: "junit", module: "junit"
+        exclude group: "org.junit.vintage", module: "junit-vintage-engine"
+    }
+    testImplementation "org.junit.jupiter:junit-jupiter-engine"
+    testImplementation "org.assertj:assertj-core"
+    testImplementation "org.mockito:mockito-core"
+    testImplementation "org.mockito:mockito-junit-jupiter"
+}
+
+tasks.withType(Test).configureEach {
+    useJUnitPlatform()
+    maxParallelForks = Math.min(2, Runtime.runtime.availableProcessors().intdiv(2) ?: 1)
+}

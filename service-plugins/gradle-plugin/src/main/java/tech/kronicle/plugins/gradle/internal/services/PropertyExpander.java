@@ -2,16 +2,16 @@ package tech.kronicle.plugins.gradle.internal.services;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Component;
 import tech.kronicle.common.utils.StringEscapeUtils;
-import tech.kronicle.service.spring.stereotypes.SpringComponent;
-import tech.kronicle.service.utils.StringUtils;
+import tech.kronicle.pluginutils.utils.StringUtils;
 
 import java.util.Map;
 
 import static java.util.Objects.nonNull;
 import static java.util.Objects.requireNonNull;
 
-@SpringComponent
+@Component
 @RequiredArgsConstructor
 @Slf4j
 public class PropertyExpander {

@@ -12,17 +12,17 @@ import org.eclipse.jgit.revwalk.RevCommit;
 import org.eclipse.jgit.revwalk.RevSort;
 import org.eclipse.jgit.revwalk.RevWalk;
 import org.pf4j.Extension;
+import org.springframework.stereotype.Component;
 import tech.kronicle.sdk.models.Repo;
 import tech.kronicle.sdk.models.ScannerError;
 import tech.kronicle.sdk.models.git.GitRepo;
 import tech.kronicle.sdk.models.git.Identity;
 import tech.kronicle.plugins.git.config.GitConfig;
-import tech.kronicle.service.extensions.GitCloner;
-import tech.kronicle.service.scanners.RepoScanner;
-import tech.kronicle.service.scanners.models.Codebase;
-import tech.kronicle.service.scanners.models.Output;
-import tech.kronicle.service.scanners.services.ThrowableToScannerErrorMapper;
-import tech.kronicle.service.spring.stereotypes.SpringComponent;
+import tech.kronicle.pluginapi.git.GitCloner;
+import tech.kronicle.pluginapi.scanners.RepoScanner;
+import tech.kronicle.pluginapi.scanners.models.Codebase;
+import tech.kronicle.pluginapi.scanners.models.Output;
+import tech.kronicle.pluginutils.scanners.services.ThrowableToScannerErrorMapper;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -41,8 +41,8 @@ import java.util.stream.Collectors;
 import static java.util.Objects.isNull;
 import static java.util.Objects.nonNull;
 
+@Component
 @Extension
-@SpringComponent
 @RequiredArgsConstructor
 public class GitScanner extends RepoScanner {
 

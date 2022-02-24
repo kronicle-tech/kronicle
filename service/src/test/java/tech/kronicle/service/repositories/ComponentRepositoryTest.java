@@ -16,7 +16,7 @@ import tech.kronicle.sdk.models.SummarySubComponentDependencies;
 import tech.kronicle.sdk.models.SummarySubComponentDependencyNode;
 import tech.kronicle.sdk.models.Team;
 import tech.kronicle.sdk.models.TestResult;
-import tech.kronicle.service.scanners.models.Output;
+import tech.kronicle.pluginapi.scanners.models.Output;
 import tech.kronicle.service.services.ComponentMetadataAssembler;
 import tech.kronicle.service.services.ComponentMetadataLoader;
 import tech.kronicle.service.services.ScanEngine;
@@ -25,8 +25,8 @@ import tech.kronicle.service.services.TestEngine;
 import tech.kronicle.service.services.TestFinder;
 import tech.kronicle.service.services.ValidatorService;
 import tech.kronicle.service.tests.models.TestContext;
-import tech.kronicle.service.testutils.LogCaptor;
-import tech.kronicle.service.utils.ObjectReference;
+import tech.kronicle.plugintestutils.testutils.LogCaptor;
+import tech.kronicle.pluginutils.utils.ObjectReference;
 import lombok.RequiredArgsConstructor;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -861,7 +861,7 @@ public class ComponentRepositoryTest {
     }
 
     @RequiredArgsConstructor
-    private static class TestScanner extends tech.kronicle.service.scanners.Scanner<ObjectWithReference, Object> {
+    private static class TestScanner extends tech.kronicle.pluginapi.scanners.Scanner<ObjectWithReference, Object> {
 
         private final String id;
         private final String description;

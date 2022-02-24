@@ -11,7 +11,7 @@ import tech.kronicle.sdk.models.Test;
 import tech.kronicle.sdk.models.TestOutcome;
 import tech.kronicle.sdk.models.TestResult;
 import tech.kronicle.service.repositories.ComponentRepository;
-import tech.kronicle.service.utils.ObjectReference;
+import tech.kronicle.pluginutils.utils.ObjectReference;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

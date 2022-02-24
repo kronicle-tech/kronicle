@@ -4,8 +4,8 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import tech.kronicle.service.models.ApiRepo;
-import tech.kronicle.service.repofinders.RepoFinder;
+import tech.kronicle.pluginapi.finders.models.ApiRepo;
+import tech.kronicle.pluginapi.finders.RepoFinder;
 
 import java.util.List;
 

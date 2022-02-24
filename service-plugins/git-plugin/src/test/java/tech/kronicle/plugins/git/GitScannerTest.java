@@ -14,10 +14,10 @@ import tech.kronicle.plugins.git.testutils.UpdateRemoteRepoOutcome;
 import tech.kronicle.sdk.models.Component;
 import tech.kronicle.sdk.models.Repo;
 import tech.kronicle.sdk.models.git.Identity;
-import tech.kronicle.service.scanners.BaseScannerTest;
-import tech.kronicle.service.scanners.models.Codebase;
-import tech.kronicle.service.scanners.models.Output;
-import tech.kronicle.service.scanners.services.ThrowableToScannerErrorMapper;
+import tech.kronicle.plugintestutils.scanners.BaseScannerTest;
+import tech.kronicle.pluginapi.scanners.models.Codebase;
+import tech.kronicle.pluginapi.scanners.models.Output;
+import tech.kronicle.pluginutils.scanners.services.ThrowableToScannerErrorMapper;
 
 import java.nio.file.Path;
 import java.util.List;

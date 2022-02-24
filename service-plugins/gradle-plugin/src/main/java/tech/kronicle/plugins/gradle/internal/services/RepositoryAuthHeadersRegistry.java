@@ -1,18 +1,18 @@
 package tech.kronicle.plugins.gradle.internal.services;
 
+import org.springframework.stereotype.Component;
 import tech.kronicle.plugins.gradle.config.GradleConfig;
-import tech.kronicle.service.models.HttpHeader;
-import tech.kronicle.service.spring.stereotypes.SpringComponent;
+import tech.kronicle.plugins.gradle.config.HttpHeaderConfig;
 
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-@SpringComponent
+@Component
 public class RepositoryAuthHeadersRegistry {
 
-    private final Map<String, List<HttpHeader>> customRepositories;
+    private final Map<String, List<HttpHeaderConfig>> customRepositories;
 
     public RepositoryAuthHeadersRegistry(GradleConfig config) {
         this.customRepositories = Optional.ofNullable(config.getCustomRepositories())
@@ -25,7 +25,7 @@ public class RepositoryAuthHeadersRegistry {
                 ));
     }
 
-    public List<HttpHeader> getRepositoryAuthHeaders(String url) {
+    public List<HttpHeaderConfig> getRepositoryAuthHeaders(String url) {
         return customRepositories.entrySet().stream()
                 .filter(it -> url.startsWith(it.getKey()))
                 .findFirst()

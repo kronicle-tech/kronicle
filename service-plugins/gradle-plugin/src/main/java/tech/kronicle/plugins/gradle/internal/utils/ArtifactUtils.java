@@ -1,12 +1,12 @@
 package tech.kronicle.plugins.gradle.internal.utils;
 
 import lombok.Value;
-import tech.kronicle.service.spring.stereotypes.SpringComponent;
+import org.springframework.stereotype.Component;
 
 import static java.util.Objects.nonNull;
 import static java.util.Objects.requireNonNull;
 
-@SpringComponent
+@Component
 public class ArtifactUtils {
 
     private static final String ARTIFACT_DELIMITER = ":";

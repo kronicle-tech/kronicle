@@ -2,8 +2,8 @@ package tech.kronicle.service.repofinders.services;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import tech.kronicle.service.models.ApiRepo;
-import tech.kronicle.service.repofinders.RepoFinder;
+import tech.kronicle.pluginapi.finders.RepoFinder;
+import tech.kronicle.pluginapi.finders.models.ApiRepo;
 
 import java.util.Collection;
 import java.util.List;

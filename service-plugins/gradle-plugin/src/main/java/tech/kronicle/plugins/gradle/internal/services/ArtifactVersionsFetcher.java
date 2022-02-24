@@ -3,6 +3,7 @@ package tech.kronicle.plugins.gradle.internal.services;
 import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.JAXBException;
 import jakarta.xml.bind.Unmarshaller;
+import org.springframework.stereotype.Component;
 import tech.kronicle.sdk.models.SoftwareRepository;
 import tech.kronicle.plugins.gradle.internal.models.mavenxml.Metadata;
 import tech.kronicle.plugins.gradle.internal.models.mavenxml.metadata.Versioning;
@@ -10,7 +11,6 @@ import tech.kronicle.plugins.gradle.internal.models.mavenxml.metadata.Versions;
 import tech.kronicle.plugins.gradle.internal.utils.ArtifactUtils;
 import lombok.RequiredArgsConstructor;
 import tech.kronicle.common.utils.StringEscapeUtils;
-import tech.kronicle.service.spring.stereotypes.SpringComponent;
 
 import javax.annotation.PostConstruct;
 import javax.xml.stream.XMLInputFactory;
@@ -20,7 +20,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
-@SpringComponent
+@Component
 @RequiredArgsConstructor
 public class ArtifactVersionsFetcher {
 

@@ -73,10 +73,6 @@ public class ComponentMetadataLoader {
         itemMap.put(item.getId(), item);
     }
 
-    private Consumer<Platform> validatePlatform() {
-        return validatorService::validate;
-    }
-
     private Consumer<Team> validateTeam(ConcurrentHashMap<String, Area> areas) {
         return team -> {
             validatorService.validate(team);

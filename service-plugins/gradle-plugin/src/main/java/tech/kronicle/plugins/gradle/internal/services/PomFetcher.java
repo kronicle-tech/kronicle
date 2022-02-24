@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.JAXBException;
 import jakarta.xml.bind.Unmarshaller;
+import org.springframework.stereotype.Component;
 import tech.kronicle.sdk.models.Software;
 import tech.kronicle.sdk.models.SoftwareDependencyType;
 import tech.kronicle.sdk.models.SoftwareRepository;
@@ -22,8 +23,7 @@ import tech.kronicle.plugins.gradle.internal.utils.ArtifactUtils;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import tech.kronicle.common.utils.StringEscapeUtils;
-import tech.kronicle.service.spring.stereotypes.SpringComponent;
-import tech.kronicle.service.utils.StringUtils;
+import tech.kronicle.pluginutils.utils.StringUtils;
 
 import javax.annotation.PostConstruct;
 import javax.xml.stream.XMLInputFactory;
@@ -43,7 +43,7 @@ import static tech.kronicle.plugins.gradle.internal.constants.MavenPackagings.PO
 import static java.util.Objects.nonNull;
 import static java.util.Objects.requireNonNull;
 
-@SpringComponent
+@Component
 @RequiredArgsConstructor
 @Slf4j
 public class PomFetcher {

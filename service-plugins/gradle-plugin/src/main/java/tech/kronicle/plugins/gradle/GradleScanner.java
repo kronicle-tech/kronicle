@@ -13,8 +13,8 @@ import tech.kronicle.sdk.models.SoftwareRepository;
 import tech.kronicle.sdk.models.SoftwareRepositoryScope;
 import tech.kronicle.sdk.models.SoftwareType;
 import tech.kronicle.sdk.models.gradle.Gradle;
-import tech.kronicle.service.constants.Comparators;
-import tech.kronicle.service.scanners.CodebaseScanner;
+import tech.kronicle.pluginutils.constants.Comparators;
+import tech.kronicle.pluginapi.scanners.CodebaseScanner;
 import tech.kronicle.plugins.gradle.internal.constants.ArtifactNames;
 import tech.kronicle.plugins.gradle.internal.constants.GradlePlugins;
 import tech.kronicle.plugins.gradle.internal.constants.GradlePropertyNames;
@@ -34,10 +34,10 @@ import tech.kronicle.plugins.gradle.internal.services.SoftwareRepositoryFactory;
 import tech.kronicle.plugins.gradle.internal.utils.ArtifactUtils;
 import tech.kronicle.plugins.gradle.internal.utils.InheritingHashMap;
 import tech.kronicle.plugins.gradle.internal.utils.InheritingHashSet;
-import tech.kronicle.service.scanners.models.Codebase;
-import tech.kronicle.service.scanners.models.Output;
-import tech.kronicle.service.scanners.services.ThrowableToScannerErrorMapper;
-import tech.kronicle.service.utils.FileUtils;
+import tech.kronicle.pluginapi.scanners.models.Codebase;
+import tech.kronicle.pluginapi.scanners.models.Output;
+import tech.kronicle.pluginutils.scanners.services.ThrowableToScannerErrorMapper;
+import tech.kronicle.pluginutils.utils.FileUtils;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -66,8 +66,8 @@ import static tech.kronicle.plugins.gradle.internal.constants.GradleFileNames.SE
 import static tech.kronicle.plugins.gradle.internal.constants.GradleWrapperPropertyNames.DISTRIBUTION_URL;
 import static tech.kronicle.plugins.gradle.internal.constants.ToolNames.GRADLE_WRAPPER;
 
-@Extension
 @Component
+@Extension
 @RequiredArgsConstructor
 @Slf4j
 public class GradleScanner extends CodebaseScanner {

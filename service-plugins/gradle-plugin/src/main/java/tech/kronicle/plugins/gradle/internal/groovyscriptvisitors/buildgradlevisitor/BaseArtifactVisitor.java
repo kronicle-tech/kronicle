@@ -9,7 +9,7 @@ import tech.kronicle.plugins.gradle.internal.services.DependencyVersionFetcher;
 import tech.kronicle.plugins.gradle.internal.services.ExpressionEvaluator;
 import tech.kronicle.plugins.gradle.internal.services.SoftwareRepositoryFactory;
 import tech.kronicle.plugins.gradle.internal.utils.ArtifactUtils;
-import tech.kronicle.service.utils.ObjectReference;
+import tech.kronicle.pluginutils.utils.ObjectReference;
 import org.codehaus.groovy.ast.expr.ArgumentListExpression;
 import org.codehaus.groovy.ast.expr.BinaryExpression;
 import org.codehaus.groovy.ast.expr.ClosureExpression;

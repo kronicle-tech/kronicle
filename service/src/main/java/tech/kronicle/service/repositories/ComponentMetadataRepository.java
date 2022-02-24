@@ -8,13 +8,13 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Repository;
 import tech.kronicle.common.utils.StringEscapeUtils;
 import tech.kronicle.componentmetadata.models.ComponentMetadata;
-import tech.kronicle.service.constants.KronicleMetadataFilePaths;
+import tech.kronicle.pluginapi.constants.KronicleMetadataFilePaths;
+import tech.kronicle.pluginapi.finders.models.ApiRepo;
+import tech.kronicle.pluginapi.git.GitCloner;
 import tech.kronicle.service.exceptions.ValidationException;
-import tech.kronicle.service.extensions.GitCloner;
-import tech.kronicle.service.models.ApiRepo;
 import tech.kronicle.service.repofinders.services.RepoFinderService;
 import tech.kronicle.service.services.ValidatorService;
-import tech.kronicle.service.utils.FileUtils;
+import tech.kronicle.pluginutils.utils.FileUtils;
 
 import java.nio.file.Path;
 import java.util.Collection;

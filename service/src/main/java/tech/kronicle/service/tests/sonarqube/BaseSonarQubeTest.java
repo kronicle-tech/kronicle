@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
-import static tech.kronicle.service.utils.MarkdownHelper.createMarkdownLink;
+import static tech.kronicle.pluginutils.utils.MarkdownHelper.createMarkdownLink;
 import static java.util.Objects.isNull;
 import static java.util.Objects.nonNull;
 

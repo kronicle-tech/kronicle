@@ -14,8 +14,8 @@ import tech.kronicle.sdk.models.SoftwareRepository;
 import tech.kronicle.sdk.models.SoftwareRepositoryScope;
 import tech.kronicle.sdk.models.SoftwareRepositoryType;
 import tech.kronicle.sdk.models.SoftwareType;
-import tech.kronicle.service.scanners.models.Codebase;
-import tech.kronicle.service.scanners.models.Output;
+import tech.kronicle.pluginapi.scanners.models.Codebase;
+import tech.kronicle.pluginapi.scanners.models.Output;
 
 import java.util.List;
 import java.util.Map;

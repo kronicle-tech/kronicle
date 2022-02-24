@@ -1,5 +1,6 @@
 package tech.kronicle.plugins.gradle.internal.services;
 
+import org.springframework.stereotype.Component;
 import tech.kronicle.sdk.models.SoftwareRepository;
 import tech.kronicle.plugins.gradle.internal.utils.ArtifactUtils;
 import lombok.RequiredArgsConstructor;
@@ -10,14 +11,13 @@ import org.gradle.api.internal.artifacts.ivyservice.ivyresolve.strategy.Version;
 import org.gradle.api.internal.artifacts.ivyservice.ivyresolve.strategy.VersionParser;
 import org.gradle.api.internal.artifacts.ivyservice.ivyresolve.strategy.VersionSelector;
 import tech.kronicle.common.utils.StringEscapeUtils;
-import tech.kronicle.service.spring.stereotypes.SpringComponent;
 
 import javax.annotation.PostConstruct;
 import java.util.Comparator;
 import java.util.Optional;
 import java.util.Set;
 
-@SpringComponent
+@Component
 @RequiredArgsConstructor
 public class ArtifactVersionResolver {
 

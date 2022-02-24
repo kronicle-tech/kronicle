@@ -1,0 +1,48 @@
+plugins {
+    id "java-library"
+    id "io.freefair.lombok"
+    id "com.github.johnrengelman.shadow"
+}
+
+dependencies {
+    annotationProcessor platform("org.springframework.boot:spring-boot-dependencies:$springBootVersion")
+    implementation platform("org.springframework.boot:spring-boot-dependencies:$springBootVersion")
+    compileOnly platform("org.springframework.boot:spring-boot-dependencies:$springBootVersion")
+    testAnnotationProcessor platform("org.springframework.boot:spring-boot-dependencies:$springBootVersion")
+    testImplementation platform("org.springframework.boot:spring-boot-dependencies:$springBootVersion")
+
+    annotationProcessor "org.pf4j:pf4j:$pf4jVersion"
+
+    compileOnly "com.github.spotbugs:spotbugs-annotations:$spotBugsVersion"
+    testCompileOnly "com.github.spotbugs:spotbugs-annotations:$spotBugsVersion"
+
+    implementation project(":service-plugin-api")
+    implementation project(":service-plugin-utils")
+    implementation "org.springframework.boot:spring-boot"
+
+    testImplementation project(":service-plugin-test-utils")
+    testImplementation "org.springframework.boot:spring-boot-starter-test", {
+        exclude group: "junit", module: "junit"
+        exclude group: "org.junit.vintage", module: "junit-vintage-engine"
+    }
+    testImplementation "org.junit.jupiter:junit-jupiter-engine"
+    testImplementation "org.assertj:assertj-core"
+    testImplementation "org.mockito:mockito-core"
+    testImplementation "org.mockito:mockito-junit-jupiter"
+}
+
+tasks.register("copyPlugin", Copy) {
+    dependsOn(shadowJar)
+
+    from shadowJar
+    into project(':service').file('plugins')
+}
+
+project(":service").tasks.named("copyPlugins") {
+    dependsOn(copyPlugin)
+}
+
+tasks.withType(Test).configureEach {
+    useJUnitPlatform()
+    maxParallelForks = Math.min(2, Runtime.runtime.availableProcessors().intdiv(2) ?: 1)
+}

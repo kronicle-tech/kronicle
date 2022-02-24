@@ -16,7 +16,7 @@ import tech.kronicle.service.services.ScanEngine;
 import tech.kronicle.service.services.ScannerExtensionRegistry;
 import tech.kronicle.service.services.TestEngine;
 import tech.kronicle.service.services.TestFinder;
-import tech.kronicle.service.utils.ObjectReference;
+import tech.kronicle.pluginutils.utils.ObjectReference;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
@@ -159,7 +159,7 @@ public class ComponentRepository extends RefreshingRepository {
                 .orElse(null);
     }
 
-    private Scanner mapScanner(tech.kronicle.service.scanners.Scanner<?, ?> scanner) {
+    private Scanner mapScanner(tech.kronicle.pluginapi.scanners.Scanner<?, ?> scanner) {
         if (isNull(scanner)) {
             return null;
         }

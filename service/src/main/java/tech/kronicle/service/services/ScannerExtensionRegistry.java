@@ -2,12 +2,12 @@ package tech.kronicle.service.services;
 
 import org.pf4j.PluginManager;
 import org.springframework.stereotype.Service;
-import tech.kronicle.service.scanners.CodebaseScanner;
-import tech.kronicle.service.scanners.ComponentAndCodebaseScanner;
-import tech.kronicle.service.scanners.ComponentScanner;
-import tech.kronicle.service.scanners.LateComponentScanner;
-import tech.kronicle.service.scanners.RepoScanner;
-import tech.kronicle.service.scanners.Scanner;
+import tech.kronicle.pluginapi.scanners.CodebaseScanner;
+import tech.kronicle.pluginapi.scanners.ComponentAndCodebaseScanner;
+import tech.kronicle.pluginapi.scanners.ComponentScanner;
+import tech.kronicle.pluginapi.scanners.LateComponentScanner;
+import tech.kronicle.pluginapi.scanners.RepoScanner;
+import tech.kronicle.pluginapi.scanners.Scanner;
 
 import java.util.List;
 

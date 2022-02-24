@@ -1,5 +1,6 @@
 package tech.kronicle.plugins.gradle.internal.groovyscriptvisitors.buildgradlevisitor;
 
+import org.springframework.stereotype.Component;
 import tech.kronicle.plugins.gradle.internal.groovyscriptvisitors.BaseVisitor;
 import tech.kronicle.plugins.gradle.internal.groovyscriptvisitors.ExpressionVisitOutcome;
 import tech.kronicle.plugins.gradle.internal.services.BuildFileLoader;
@@ -9,9 +10,8 @@ import tech.kronicle.plugins.gradle.internal.services.SoftwareRepositoryFactory;
 import lombok.extern.slf4j.Slf4j;
 import org.codehaus.groovy.ast.expr.MethodCallExpression;
 import org.slf4j.Logger;
-import tech.kronicle.service.spring.stereotypes.SpringComponent;
 
-@SpringComponent
+@Component
 @Slf4j
 public class DependencyManagementVisitor extends BaseVisitor {
 

@@ -1,6 +1,7 @@
 package tech.kronicle.plugins.gradle.internal.groovyscriptvisitors.buildgradlevisitor;
 
 import org.codehaus.groovy.ast.expr.MethodCallExpression;
+import org.springframework.stereotype.Component;
 import tech.kronicle.sdk.models.Software;
 import tech.kronicle.sdk.models.SoftwareDependencyType;
 import tech.kronicle.sdk.models.SoftwareScope;
@@ -19,7 +20,6 @@ import tech.kronicle.plugins.gradle.internal.utils.InheritingHashSet;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import tech.kronicle.common.utils.StringEscapeUtils;
-import tech.kronicle.service.spring.stereotypes.SpringComponent;
 
 import java.util.Objects;
 import java.util.Set;
@@ -28,7 +28,7 @@ import static tech.kronicle.sdk.models.SoftwareType.JVM;
 import static java.util.Objects.isNull;
 import static java.util.Objects.nonNull;
 
-@SpringComponent
+@Component
 @Slf4j
 public class DependenciesVisitor extends BaseArtifactVisitor {
 

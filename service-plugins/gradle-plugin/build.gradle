@@ -39,18 +39,18 @@ dependencies {
     compileOnly platform("org.springframework.boot:spring-boot-dependencies:$springBootVersion")
     testAnnotationProcessor platform("org.springframework.boot:spring-boot-dependencies:$springBootVersion")
     testImplementation platform("org.springframework.boot:spring-boot-dependencies:$springBootVersion")
-    shadow platform("org.springframework.boot:spring-boot-dependencies:$springBootVersion")
 
     annotationProcessor "org.pf4j:pf4j:$pf4jVersion"
 
     compileOnly "com.github.spotbugs:spotbugs-annotations:$spotBugsVersion"
     testCompileOnly "com.github.spotbugs:spotbugs-annotations:$spotBugsVersion"
 
-    implementation project(":service-core")
-    implementation "tech.kronicle:gradle-version-logic:$gradleVersionLogicVersion"
+    implementation project(":service-plugin-api")
+    implementation project(":service-plugin-utils")
     implementation "org.springframework.boot:spring-boot"
     implementation "org.springframework:spring-webflux"
     implementation "io.projectreactor.netty:reactor-netty-http"
+    implementation "tech.kronicle:gradle-version-logic:$gradleVersionLogicVersion"
     // Needed by org.springframework.http.converter.json.Jackson2ObjectMapperBuilder
     implementation "com.fasterxml.jackson.datatype:jackson-datatype-jdk8"
     // Needed by org.springframework.http.converter.json.Jackson2ObjectMapperBuilder
@@ -64,7 +64,7 @@ dependencies {
     implementation "org.codehaus.groovy:groovy:$groovyVersion"
     implementation "com.google.guava:guava:$guavaVersion"
 
-    testImplementation project(":service-core-tests")
+    testImplementation project(":service-plugin-test-utils")
     testImplementation "org.springframework.boot:spring-boot-starter-test", {
         exclude group: "junit", module: "junit"
         exclude group: "org.junit.vintage", module: "junit-vintage-engine"
@@ -81,7 +81,7 @@ dependencies {
 //    exclude(project(":common"))
 //    exclude(project(":sdk"))
 //    exclude(project(":metadata"))
-//    exclude(project(":service-core"))
+//    exclude(project(":service-plugin-utils"))
 //    exclude(dependency("^org\\.pf4j:"))
 //    exclude(dependency("^org\\.springframework:"))
 //    exclude(dependency("^org\\.springframework\\.boot:"))

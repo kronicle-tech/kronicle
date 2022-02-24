@@ -9,16 +9,16 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.converter.json.Jackson2ObjectMapperBuilder;
 import org.springframework.web.reactive.function.client.WebClient;
-import tech.kronicle.service.models.HttpHeader;
+import tech.kronicle.plugins.gradle.config.HttpHeaderConfig;
 import tech.kronicle.plugins.gradle.config.DownloadCacheConfig;
 import tech.kronicle.plugins.gradle.config.DownloaderConfig;
 import tech.kronicle.plugins.gradle.config.GradleConfig;
 import tech.kronicle.plugins.gradle.config.GradleCustomRepository;
 import tech.kronicle.plugins.gradle.config.PomCacheConfig;
 import tech.kronicle.plugins.gradle.config.UrlExistsCacheConfig;
-import tech.kronicle.service.scanners.services.ThrowableToScannerErrorMapper;
-import tech.kronicle.service.utils.AntStyleIgnoreFileLoader;
-import tech.kronicle.service.utils.FileUtils;
+import tech.kronicle.pluginutils.scanners.services.ThrowableToScannerErrorMapper;
+import tech.kronicle.pluginutils.utils.AntStyleIgnoreFileLoader;
+import tech.kronicle.pluginutils.utils.FileUtils;
 
 import java.time.Duration;
 import java.util.List;
@@ -64,8 +64,8 @@ public class GradleScannerTestConfiguration {
                 List.of(
                         new GradleCustomRepository("someCustomRepository", "https://example.com/repo/", List.of()),
                         new GradleCustomRepository("someCustomRepositoryWithAuthentication", "http://localhost:36211/repo-with-authentication/", List.of(
-                                new HttpHeader("test-header-1", "test-value-1"),
-                                new HttpHeader("test-header-2", "test-value-2")
+                                new HttpHeaderConfig("test-header-1", "test-value-1"),
+                                new HttpHeaderConfig("test-header-2", "test-value-2")
                         ))
                 ),
                 downloaderConfig,

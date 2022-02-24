@@ -1,12 +1,12 @@
 package tech.kronicle.plugins.gradle.internal.services;
 
+import org.springframework.stereotype.Component;
 import tech.kronicle.sdk.models.SoftwareRepository;
 import tech.kronicle.sdk.models.SoftwareRepositoryScope;
 import tech.kronicle.sdk.models.SoftwareRepositoryType;
 import lombok.RequiredArgsConstructor;
-import tech.kronicle.service.spring.stereotypes.SpringComponent;
 
-@SpringComponent
+@Component
 @RequiredArgsConstructor
 public class SoftwareRepositoryFactory {
 

@@ -1,15 +1,15 @@
 package tech.kronicle.plugins.gradle.internal.services;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Component;
 import tech.kronicle.sdk.models.SoftwareDependencyType;
 import tech.kronicle.sdk.models.SoftwareType;
 import tech.kronicle.plugins.gradle.internal.constants.MavenPackagings;
 import tech.kronicle.plugins.gradle.internal.groovyscriptvisitors.VisitorState;
-import tech.kronicle.service.spring.stereotypes.SpringComponent;
 
 import java.util.Objects;
 
-@SpringComponent
+@Component
 @Slf4j
 public class BillOfMaterialsLogger {
 

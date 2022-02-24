@@ -6,8 +6,8 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.http.ResponseEntity;
-import tech.kronicle.service.testutils.Timer;
-import tech.kronicle.service.utils.ObjectReference;
+import tech.kronicle.plugintestutils.testutils.Timer;
+import tech.kronicle.pluginutils.utils.ObjectReference;
 
 import java.time.Duration;
 import java.util.function.Function;

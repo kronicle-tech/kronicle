@@ -2,7 +2,7 @@ package tech.kronicle.service.services;
 
 import org.junit.jupiter.api.Test;
 import org.pf4j.PluginManager;
-import tech.kronicle.service.models.ExtensionPointWithId;
+import tech.kronicle.pluginapi.ExtensionPointWithId;
 import tech.kronicle.service.services.testutils.FakePluginManager;
 
 import java.util.List;

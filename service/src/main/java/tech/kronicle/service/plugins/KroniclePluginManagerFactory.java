@@ -1,30 +1,26 @@
 package tech.kronicle.service.plugins;
 
-import org.pf4j.JarPluginLoader;
 import org.pf4j.PluginFactory;
 import org.pf4j.PluginLoader;
 import org.pf4j.PluginManager;
 import org.pf4j.RuntimeMode;
-import org.pf4j.spring.ExtensionsInjector;
 import org.pf4j.spring.SpringPluginManager;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory;
 import org.springframework.context.ConfigurableApplicationContext;
-import tech.kronicle.service.plugins.config.PluginsConfig;
-import tech.kronicle.service.spring.stereotypes.SpringComponent;
+import org.springframework.stereotype.Component;
+import tech.kronicle.service.plugins.config.PluginManagerConfig;
 
 import javax.annotation.PostConstruct;
 import java.nio.file.Path;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@SpringComponent
+@Component
 public class KroniclePluginManagerFactory {
 
     public PluginManager create(
             ConfigurableApplicationContext applicationContext,
             String version,
-            PluginsConfig pluginsConfig
+            PluginManagerConfig pluginManagerConfig
     ) {
         return new SpringPluginManager() {
 
@@ -35,12 +31,12 @@ public class KroniclePluginManagerFactory {
 
             @Override
             public RuntimeMode getRuntimeMode() {
-                return RuntimeMode.byName(pluginsConfig.getMode());
+                return RuntimeMode.byName(pluginManagerConfig.getMode());
             }
 
             @Override
             public List<Path> getPluginsRoots() {
-                return pluginsConfig.getPluginRootDirs().stream()
+                return pluginManagerConfig.getPluginRootDirs().stream()
                         .map(Path::of)
                         .collect(Collectors.toList());
             }

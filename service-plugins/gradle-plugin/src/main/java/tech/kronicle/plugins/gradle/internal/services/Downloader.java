@@ -6,13 +6,13 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.client.WebClient;
 import org.springframework.web.reactive.function.client.WebClientResponseException;
 import reactor.core.publisher.Mono;
 import tech.kronicle.common.utils.StringEscapeUtils;
-import tech.kronicle.service.models.HttpHeader;
+import tech.kronicle.plugins.gradle.config.HttpHeaderConfig;
 import tech.kronicle.plugins.gradle.config.DownloaderConfig;
-import tech.kronicle.service.spring.stereotypes.SpringComponent;
 
 import java.util.List;
 import java.util.Optional;
@@ -22,7 +22,7 @@ import java.util.function.Function;
 import static java.util.Objects.isNull;
 import static java.util.Objects.nonNull;
 
-@SpringComponent
+@Component
 @RequiredArgsConstructor
 @Slf4j
 public class Downloader {
@@ -33,7 +33,7 @@ public class Downloader {
     private final UrlExistsCache urlExistsCache;
     private final HttpRequestMaker httpRequestMaker;
 
-    public HttpRequestOutcome<String> download(String url, List<HttpHeader> headers, int maxRedirectCount) {
+    public HttpRequestOutcome<String> download(String url, List<HttpHeaderConfig> headers, int maxRedirectCount) {
         log.debug("Downloading from URL \"" + StringEscapeUtils.escapeString(url) + "\"");
 
         return makeRequestFollowingRedirects(url, maxRedirectCount,
@@ -45,7 +45,7 @@ public class Downloader {
                 downloadCache::putContent);
     }
 
-    private ResponseEntity<String> makeRequest(WebClient.RequestHeadersUriSpec<?> requestSpec, String originalUrlOrRedirectUrl, List<HttpHeader> headers) {
+    private ResponseEntity<String> makeRequest(WebClient.RequestHeadersUriSpec<?> requestSpec, String originalUrlOrRedirectUrl, List<HttpHeaderConfig> headers) {
         return addHeaders(requestSpec.uri(originalUrlOrRedirectUrl), headers)
                 .retrieve()
                 .toEntity(String.class)
@@ -58,7 +58,7 @@ public class Downloader {
                 .block(config.getTimeout());
     }
 
-    private WebClient.RequestHeadersSpec<?> addHeaders(WebClient.RequestHeadersSpec<?> requestSpec, List<HttpHeader> headers) {
+    private WebClient.RequestHeadersSpec<?> addHeaders(WebClient.RequestHeadersSpec<?> requestSpec, List<HttpHeaderConfig> headers) {
         if (nonNull(headers) && !headers.isEmpty()) {
             return requestSpec.headers(headersSpec -> headers.forEach(
                     header -> headersSpec.add(header.getName(), header.getValue())));
@@ -66,7 +66,7 @@ public class Downloader {
         return requestSpec;
     }
 
-    public HttpRequestOutcome<Boolean> exists(String url, List<HttpHeader> headers, int maxRedirectCount) {
+    public HttpRequestOutcome<Boolean> exists(String url, List<HttpHeaderConfig> headers, int maxRedirectCount) {
         log.debug("Checking whether URL \"" + StringEscapeUtils.escapeString(url) + "\" exists");
 
         return makeRequestFollowingRedirects(

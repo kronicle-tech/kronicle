@@ -12,18 +12,16 @@ import tech.kronicle.componentmetadata.models.ComponentMetadata;
 import tech.kronicle.sdk.models.Area;
 import tech.kronicle.sdk.models.Component;
 import tech.kronicle.sdk.models.Team;
-import tech.kronicle.service.BaseTest;
-import tech.kronicle.service.extensions.GitCloner;
-import tech.kronicle.service.models.ApiRepo;
+import tech.kronicle.plugintestutils.BaseTest;
+import tech.kronicle.pluginapi.git.GitCloner;
+import tech.kronicle.pluginapi.finders.models.ApiRepo;
 import tech.kronicle.service.repofinders.services.RepoFinderService;
 import tech.kronicle.service.services.ValidatorService;
-import tech.kronicle.service.testutils.LogCaptor;
+import tech.kronicle.plugintestutils.testutils.LogCaptor;
 import tech.kronicle.service.testutils.ValidatorServiceFactory;
-import tech.kronicle.service.utils.AntStyleIgnoreFileLoader;
-import tech.kronicle.service.utils.FileUtils;
+import tech.kronicle.pluginutils.utils.AntStyleIgnoreFileLoader;
+import tech.kronicle.pluginutils.utils.FileUtils;
 
-import java.io.IOException;
-import java.net.URISyntaxException;
 import java.util.List;
 import java.util.stream.Collectors;
 

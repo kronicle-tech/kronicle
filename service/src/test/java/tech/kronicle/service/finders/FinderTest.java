@@ -2,6 +2,7 @@ package tech.kronicle.service.finders;
 
 import org.junit.jupiter.api.Test;
 import tech.kronicle.componentmetadata.models.ComponentMetadata;
+import tech.kronicle.pluginapi.finders.Finder;
 import tech.kronicle.sdk.models.ObjectWithReference;
 
 import java.util.List;

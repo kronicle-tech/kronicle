@@ -1,13 +1,13 @@
 package tech.kronicle.plugins.gradle.internal.services;
 
-import tech.kronicle.service.spring.stereotypes.SpringComponent;
-import tech.kronicle.service.utils.FileUtils;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.codehaus.groovy.ast.ASTNode;
 import org.codehaus.groovy.ast.builder.AstBuilder;
 import org.codehaus.groovy.control.CompilePhase;
+import org.springframework.stereotype.Component;
 import tech.kronicle.common.utils.StringEscapeUtils;
+import tech.kronicle.pluginutils.utils.FileUtils;
 
 import java.nio.file.Path;
 import java.util.List;
@@ -15,7 +15,7 @@ import java.util.Map;
 
 import static java.util.Objects.nonNull;
 
-@SpringComponent
+@Component
 @RequiredArgsConstructor
 @Slf4j
 public class BuildFileLoader {

@@ -11,11 +11,11 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import tech.kronicle.sdk.models.Software;
 import tech.kronicle.sdk.models.SoftwareType;
-import tech.kronicle.service.constants.Comparators;
+import tech.kronicle.pluginutils.constants.Comparators;
 import tech.kronicle.plugins.gradle.internal.utils.InheritingHashMap;
 import tech.kronicle.plugins.gradle.internal.utils.InheritingHashSet;
 import tech.kronicle.plugins.gradle.GradleScannerTestConfiguration;
-import tech.kronicle.service.testutils.LogCaptor;
+import tech.kronicle.plugintestutils.testutils.LogCaptor;
 
 import java.util.ArrayList;
 import java.util.List;

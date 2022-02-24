@@ -1,16 +1,16 @@
 package tech.kronicle.plugins.gradle.internal.services;
 
+import org.springframework.stereotype.Component;
 import tech.kronicle.plugins.gradle.internal.groovyscriptvisitors.BaseVisitor;
 import tech.kronicle.plugins.gradle.internal.models.Import;
 import org.codehaus.groovy.ast.ASTNode;
 import org.codehaus.groovy.ast.ClassNode;
-import tech.kronicle.service.spring.stereotypes.SpringComponent;
 
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-@SpringComponent
+@Component
 public class BuildFileProcessor {
 
     public Set<Import> getImports(List<ASTNode> nodes) {

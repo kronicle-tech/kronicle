@@ -10,19 +10,19 @@ dependencies {
     compileOnly platform("org.springframework.boot:spring-boot-dependencies:$springBootVersion")
     testAnnotationProcessor platform("org.springframework.boot:spring-boot-dependencies:$springBootVersion")
     testImplementation platform("org.springframework.boot:spring-boot-dependencies:$springBootVersion")
-    shadow platform("org.springframework.boot:spring-boot-dependencies:$springBootVersion")
 
     annotationProcessor "org.pf4j:pf4j:$pf4jVersion"
 
     compileOnly "com.github.spotbugs:spotbugs-annotations:$spotBugsVersion"
     testCompileOnly "com.github.spotbugs:spotbugs-annotations:$spotBugsVersion"
 
-    implementation project(":service-core")
+    implementation project(":service-plugin-api")
+    implementation project(":service-plugin-utils")
     implementation "org.springframework.boot:spring-boot"
     implementation "com.google.guava:guava:$guavaVersion"
     implementation "org.eclipse.jgit:org.eclipse.jgit:$jgitVersion"
 
-    testImplementation project(":service-core-tests")
+    testImplementation project(":service-plugin-test-utils")
     testImplementation "org.springframework.boot:spring-boot-starter-test", {
         exclude group: "junit", module: "junit"
         exclude group: "org.junit.vintage", module: "junit-vintage-engine"

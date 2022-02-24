@@ -1,19 +1,20 @@
 package tech.kronicle.plugins.gradle.internal.services;
 
+import org.springframework.stereotype.Component;
 import tech.kronicle.plugins.gradle.config.GradleConfig;
-import tech.kronicle.service.services.BaseFileCache;
-import tech.kronicle.service.spring.stereotypes.SpringComponent;
-import tech.kronicle.service.utils.FileUtils;
+import tech.kronicle.plugins.gradle.config.PomCacheConfig;
+import tech.kronicle.pluginutils.services.BaseFileCache;
+import tech.kronicle.pluginutils.utils.FileUtils;
 
 import java.io.IOException;
 import java.nio.file.Path;
 import java.util.Optional;
 
-@SpringComponent
+@Component
 public class PomCache extends BaseFileCache {
 
-    public PomCache(FileUtils fileUtils, GradleConfig config) throws IOException {
-        super(fileUtils, Path.of(config.getPomCache().getDir()));
+    public PomCache(FileUtils fileUtils, PomCacheConfig config) throws IOException {
+        super(fileUtils, Path.of(config.getDir()));
     }
 
     public Optional<String> get(String url) {

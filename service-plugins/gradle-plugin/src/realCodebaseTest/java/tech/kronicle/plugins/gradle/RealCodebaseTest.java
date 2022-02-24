@@ -4,11 +4,10 @@ import io.micronaut.context.annotation.Bean;
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
 import javax.inject.Inject;
 
-import tech.kronicle.plugins.gradle.GradleScanner;
 import tech.kronicle.sdk.models.Repo;
 import tech.kronicle.plugins.gradle.testbeans.TestDataDir;
-import tech.kronicle.service.scanners.models.Codebase;
-import tech.kronicle.service.scanners.models.Output;
+import tech.kronicle.pluginapi.scanners.models.Codebase;
+import tech.kronicle.pluginapi.scanners.models.Output;
 import org.junit.jupiter.api.DynamicTest;
 import org.junit.jupiter.api.TestFactory;
 

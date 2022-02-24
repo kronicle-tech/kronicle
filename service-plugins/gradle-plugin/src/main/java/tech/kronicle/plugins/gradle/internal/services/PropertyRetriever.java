@@ -1,10 +1,10 @@
 package tech.kronicle.plugins.gradle.internal.services;
 
-import tech.kronicle.service.spring.stereotypes.SpringComponent;
+import org.springframework.stereotype.Component;
 
 import java.util.Map;
 
-@SpringComponent
+@Component
 public class PropertyRetriever {
 
     public String getPropertyValue(String propertyName, Map<String, String> properties) {

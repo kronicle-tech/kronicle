@@ -5,7 +5,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import tech.kronicle.plugins.git.config.GitConfig;
 import tech.kronicle.plugins.git.internal.spring.SpringConfiguration;
-import tech.kronicle.service.plugins.KroniclePlugin;
+import tech.kronicle.pluginapi.KroniclePlugin;
 
 public class GitPlugin extends KroniclePlugin {
 

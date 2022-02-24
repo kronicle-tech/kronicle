@@ -1,11 +1,11 @@
 package tech.kronicle.plugins.gradle.internal.services;
 
+import org.springframework.stereotype.Component;
 import tech.kronicle.sdk.models.Software;
 import tech.kronicle.sdk.models.SoftwareDependencyType;
 import tech.kronicle.sdk.models.SoftwareType;
 import tech.kronicle.plugins.gradle.internal.utils.InheritingHashSet;
 import lombok.RequiredArgsConstructor;
-import tech.kronicle.service.spring.stereotypes.SpringComponent;
 
 import java.util.List;
 import java.util.Objects;
@@ -15,7 +15,7 @@ import java.util.Set;
 import static java.util.Objects.nonNull;
 import static java.util.Objects.requireNonNull;
 
-@SpringComponent
+@Component
 @RequiredArgsConstructor
 public class PluginProcessor {
 

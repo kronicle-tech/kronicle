@@ -2,8 +2,8 @@ package tech.kronicle.service.services;
 
 import org.pf4j.PluginManager;
 import org.springframework.stereotype.Service;
-import tech.kronicle.service.finders.DependencyFinder;
-import tech.kronicle.service.finders.Finder;
+import tech.kronicle.pluginapi.finders.DependencyFinder;
+import tech.kronicle.pluginapi.finders.Finder;
 
 import java.util.List;
 

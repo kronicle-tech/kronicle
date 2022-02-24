@@ -11,7 +11,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.http.HttpMethod;
 import org.springframework.web.reactive.function.client.WebClient;
 import org.springframework.web.reactive.function.client.WebClientResponseException;
-import tech.kronicle.service.models.HttpHeader;
+import tech.kronicle.plugins.gradle.config.HttpHeaderConfig;
 import tech.kronicle.plugins.gradle.config.DownloaderConfig;
 
 import java.time.Duration;
@@ -74,8 +74,8 @@ public class DownloaderTest {
         Downloader.HttpRequestOutcome<String> returnValue = underTest.download(
                 url,
                 List.of(
-                        new HttpHeader("test-header-1", "test-value-1"),
-                        new HttpHeader("test-header-2", "test-value-2")
+                        new HttpHeaderConfig("test-header-1", "test-value-1"),
+                        new HttpHeaderConfig("test-header-2", "test-value-2")
                 ),
                 0
         );
@@ -294,8 +294,8 @@ public class DownloaderTest {
         Downloader.HttpRequestOutcome<Boolean> returnValue = underTest.exists(
                 url,
                 List.of(
-                        new HttpHeader("test-header-1", "test-value-1"),
-                        new HttpHeader("test-header-2", "test-value-2")
+                        new HttpHeaderConfig("test-header-1", "test-value-1"),
+                        new HttpHeaderConfig("test-header-2", "test-value-2")
                 ),
                 0
         );
@@ -320,8 +320,8 @@ public class DownloaderTest {
         Downloader.HttpRequestOutcome<Boolean> returnValue = underTest.exists(
                 url,
                 List.of(
-                        new HttpHeader("test-header-1", "test-value-1"),
-                        new HttpHeader("test-header-2", "test-value-2")
+                        new HttpHeaderConfig("test-header-1", "test-value-1"),
+                        new HttpHeaderConfig("test-header-2", "test-value-2")
                 ),
                 0
         );

@@ -3,22 +3,22 @@ package tech.kronicle.plugins.javaimports;
 import lombok.RequiredArgsConstructor;
 import org.apache.commons.io.FilenameUtils;
 import org.pf4j.Extension;
+import org.springframework.stereotype.Component;
 import tech.kronicle.plugins.javaimports.services.JavaImportFinder;
 import tech.kronicle.sdk.models.Import;
-import tech.kronicle.service.constants.Comparators;
-import tech.kronicle.service.scanners.CodebaseScanner;
-import tech.kronicle.service.scanners.models.Codebase;
-import tech.kronicle.service.scanners.models.Output;
-import tech.kronicle.service.spring.stereotypes.SpringComponent;
-import tech.kronicle.service.utils.FileUtils;
+import tech.kronicle.pluginutils.constants.Comparators;
+import tech.kronicle.pluginapi.scanners.CodebaseScanner;
+import tech.kronicle.pluginapi.scanners.models.Codebase;
+import tech.kronicle.pluginapi.scanners.models.Output;
+import tech.kronicle.pluginutils.utils.FileUtils;
 
 import java.nio.file.Path;
 import java.nio.file.attribute.BasicFileAttributes;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Component
 @Extension
-@SpringComponent
 @RequiredArgsConstructor
 public class JavaImportScanner extends CodebaseScanner {
 

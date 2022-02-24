@@ -12,10 +12,11 @@ import tech.kronicle.plugins.gradle.PluginPackage;
 import tech.kronicle.plugins.gradle.config.DownloadCacheConfig;
 import tech.kronicle.plugins.gradle.config.DownloaderConfig;
 import tech.kronicle.plugins.gradle.config.GradleConfig;
+import tech.kronicle.plugins.gradle.config.PomCacheConfig;
 import tech.kronicle.plugins.gradle.config.UrlExistsCacheConfig;
-import tech.kronicle.service.scanners.services.ThrowableToScannerErrorMapper;
-import tech.kronicle.service.utils.AntStyleIgnoreFileLoader;
-import tech.kronicle.service.utils.FileUtils;
+import tech.kronicle.pluginutils.scanners.services.ThrowableToScannerErrorMapper;
+import tech.kronicle.pluginutils.utils.AntStyleIgnoreFileLoader;
+import tech.kronicle.pluginutils.utils.FileUtils;
 
 import java.time.Duration;
 
@@ -35,6 +36,11 @@ public class SpringConfiguration {
     @Bean
     public UrlExistsCacheConfig urlExistsCacheConfig(GradleConfig gradleConfig) {
         return gradleConfig.getUrlExistsCache();
+    }
+
+    @Bean
+    public PomCacheConfig pomCacheConfig(GradleConfig gradleConfig) {
+        return gradleConfig.getPomCache();
     }
 
     @Bean

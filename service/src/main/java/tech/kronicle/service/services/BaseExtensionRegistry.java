@@ -2,7 +2,7 @@ package tech.kronicle.service.services;
 
 import lombok.extern.slf4j.Slf4j;
 import org.pf4j.PluginManager;
-import tech.kronicle.service.models.ExtensionPointWithId;
+import tech.kronicle.pluginapi.ExtensionPointWithId;
 
 import java.util.List;
 import java.util.Objects;
