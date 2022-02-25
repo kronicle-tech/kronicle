@@ -338,4 +338,12 @@
         <packageUrl regex="true">^pkg:maven/org\.pf4j/pf4j@.*$</packageUrl>
         <cpe>cpe:/a:sonatype:nexus</cpe>
     </suppress>
+    <!-- Suppress a "temp directory creation vulnerability" that is not relevant to a JVM process running in a Docker container -->
+    <suppress>
+        <notes><![CDATA[
+   file name: guava-28.2-android.jar
+   ]]></notes>
+        <packageUrl regex="true">^pkg:maven/com\.google\.guava/guava@.*$</packageUrl>
+        <cve>CVE-2020-8908</cve>
+    </suppress>
 </suppressions>
