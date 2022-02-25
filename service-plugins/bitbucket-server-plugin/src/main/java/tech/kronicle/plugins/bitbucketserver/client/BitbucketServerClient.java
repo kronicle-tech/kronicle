@@ -1,5 +1,6 @@
 package tech.kronicle.plugins.bitbucketserver.client;
 
+import org.springframework.stereotype.Component;
 import tech.kronicle.plugins.bitbucketserver.config.BitbucketServerConfig;
 import tech.kronicle.plugins.bitbucketserver.config.BitbucketServerHostConfig;
 import tech.kronicle.pluginapi.finders.models.ApiRepo;
@@ -16,7 +17,6 @@ import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.reactive.function.client.ClientResponse;
 import org.springframework.web.reactive.function.client.WebClient;
-import tech.kronicle.service.spring.stereotypes.SpringComponent;
 
 import java.util.ArrayList;
 import java.util.Collection;
