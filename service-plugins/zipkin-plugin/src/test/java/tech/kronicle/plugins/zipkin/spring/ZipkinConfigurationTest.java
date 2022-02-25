@@ -12,7 +12,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class ZipkinConfigurationTest {
 
     private final MapComparator<String, String> mapComparator = new MapComparator<>();
-    private final ZipkinConfiguration underTest = new ZipkinConfiguration();
+    private final SpringConfiguration underTest = new SpringConfiguration();
 
     @Test
     public void componentNodeComparatorShouldReturnMinusOneWhenComponentId1IsLessThanComponentId2() {

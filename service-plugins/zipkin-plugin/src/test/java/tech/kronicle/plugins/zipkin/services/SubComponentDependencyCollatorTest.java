@@ -1,11 +1,11 @@
 package tech.kronicle.plugins.zipkin.services;
 
+import tech.kronicle.plugins.zipkin.spring.SpringConfiguration;
 import tech.kronicle.plugins.zipkin.testutils.ZipkinApiModelTestHelper;
 import tech.kronicle.sdk.models.SummaryComponentDependency;
 import tech.kronicle.sdk.models.SummarySubComponentDependencies;
 import tech.kronicle.sdk.models.SummarySubComponentDependencyNode;
 import tech.kronicle.plugins.zipkin.models.api.Span;
-import tech.kronicle.plugins.zipkin.spring.ZipkinConfiguration;
 import tech.kronicle.pluginutils.services.MapComparator;
 import org.junit.jupiter.api.Test;
 
@@ -774,7 +774,10 @@ public class SubComponentDependencyCollatorTest {
     }
 
     private SubComponentDependencyCollator createSubComponentDependencyCollator() {
-        return new SubComponentDependencyCollator(new GenericDependencyCollator(), new ZipkinConfiguration().subComponentNodeComparator(new MapComparator<>()),
-                new DependencyHelper(new DependencyDurationCalculator(), new SubComponentDependencyTagFilter()));
+        return new SubComponentDependencyCollator(
+                new GenericDependencyCollator(),
+                new SpringConfiguration().subComponentNodeComparator(new MapComparator<>()),
+                new DependencyHelper(new DependencyDurationCalculator(), new SubComponentDependencyTagFilter())
+        );
     }
 }

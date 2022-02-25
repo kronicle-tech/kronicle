@@ -1,12 +1,12 @@
 package tech.kronicle.plugins.zipkin.services;
 
+import tech.kronicle.plugins.zipkin.spring.SpringConfiguration;
 import tech.kronicle.plugins.zipkin.testutils.ZipkinApiModelTestHelper;
 import tech.kronicle.sdk.models.Dependency;
 import tech.kronicle.sdk.models.SummaryComponentDependencies;
 import tech.kronicle.sdk.models.SummaryComponentDependency;
 import tech.kronicle.sdk.models.SummaryComponentDependencyNode;
 import tech.kronicle.plugins.zipkin.models.api.Span;
-import tech.kronicle.plugins.zipkin.spring.ZipkinConfiguration;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -16,8 +16,11 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class ComponentDependencyCollatorTest {
     
     private final ZipkinApiModelTestHelper testHelper = new ZipkinApiModelTestHelper();
-    private final ComponentDependencyCollator underTest = new ComponentDependencyCollator(new GenericDependencyCollator(), new ZipkinConfiguration().componentNodeComparator(),
-            new DependencyHelper(new DependencyDurationCalculator(), new SubComponentDependencyTagFilter()));
+    private final ComponentDependencyCollator underTest = new ComponentDependencyCollator(
+            new GenericDependencyCollator(),
+            new SpringConfiguration().componentNodeComparator(),
+            new DependencyHelper(new DependencyDurationCalculator(), new SubComponentDependencyTagFilter())
+    );
 
     @Test
     public void collateDependenciesWhenThereANoTracesShouldReturnNoDependencies() {

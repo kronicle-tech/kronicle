@@ -9,6 +9,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.web.reactive.function.client.WebClient;
 import tech.kronicle.componentmetadata.models.ComponentMetadata;
+import tech.kronicle.plugins.zipkin.spring.SpringConfiguration;
 import tech.kronicle.sdk.models.Component;
 import tech.kronicle.sdk.models.Dependency;
 import tech.kronicle.sdk.models.Summary;
@@ -31,7 +32,6 @@ import tech.kronicle.plugins.zipkin.services.GenericDependencyCollator;
 import tech.kronicle.plugins.zipkin.services.SubComponentDependencyCollator;
 import tech.kronicle.plugins.zipkin.services.SubComponentDependencyTagFilter;
 import tech.kronicle.plugins.zipkin.services.ZipkinService;
-import tech.kronicle.plugins.zipkin.spring.ZipkinConfiguration;
 import tech.kronicle.pluginutils.services.MapComparator;
 
 import java.time.Clock;
@@ -371,7 +371,7 @@ public class ZipkinScannerTest extends BaseScannerTest {
         String zipkinBaseUrl = Optional.ofNullable(wireMockServer).map(WireMockServer::baseUrl).orElse("http://localhost:" + PORT);
         ZipkinConfig config = new ZipkinConfig(zipkinEnabled, zipkinBaseUrl, Duration.ofMinutes(2), null, null, 100);
         GenericDependencyCollator genericDependencyCollator = new GenericDependencyCollator();
-        ZipkinConfiguration configuration = new ZipkinConfiguration();
+        SpringConfiguration configuration = new SpringConfiguration();
         DependencyDurationCalculator dependencyDurationCalculator = new DependencyDurationCalculator();
         DependencyHelper dependencyHelper = new DependencyHelper(dependencyDurationCalculator, new SubComponentDependencyTagFilter());
         Comparator<SummarySubComponentDependencyNode> subComponentNodeComparator = configuration.subComponentNodeComparator(new MapComparator<>());
