@@ -54,7 +54,7 @@ public class EnumUtilsTest {
 
         // Then
         assertThat(thrown).isInstanceOf(IllegalArgumentException.class);
-        assertThat(thrown).hasMessage("No enum constant tech.kronicle.service.utils.EnumUtilsTest.TestEnum.UNEXPECTED");
+        assertThat(thrown).hasMessage("No enum constant tech.kronicle.pluginutils.utils.EnumUtilsTest.TestEnum.UNEXPECTED");
     }
 
     @Test
@@ -83,7 +83,7 @@ public class EnumUtilsTest {
 
         // Then
         assertThat(thrown).isInstanceOf(IllegalArgumentException.class);
-        assertThat(thrown).hasMessage("No enum constant tech.kronicle.service.utils.EnumUtilsTest.TestEnum.UNEXPECTED");
+        assertThat(thrown).hasMessage("No enum constant tech.kronicle.pluginutils.utils.EnumUtilsTest.TestEnum.UNEXPECTED");
     }
 
     @Test

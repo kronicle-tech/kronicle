@@ -47,7 +47,7 @@ public class GitHubRepoFinderTest {
     @Test
     public void getApiReposShouldReturnAnEmptyListWhenConfigListsAreNull() {
         // Given
-        GitHubConfig config = new GitHubConfig(null, null, null, TIMEOUT);
+        GitHubConfig config = new GitHubConfig(null, null, null, null, TIMEOUT);
         underTest = new GitHubRepoFinder(config, mockClient);
 
         // When
@@ -60,7 +60,7 @@ public class GitHubRepoFinderTest {
     @Test
     public void getApiReposShouldReturnAnEmptyListWhenConfigListsAreEmpty() {
         // Given
-        GitHubConfig config = new GitHubConfig(List.of(), List.of(), List.of(), TIMEOUT);
+        GitHubConfig config = new GitHubConfig(null, List.of(), List.of(), List.of(), TIMEOUT);
         underTest = new GitHubRepoFinder(config, mockClient);
 
         // When
@@ -73,7 +73,7 @@ public class GitHubRepoFinderTest {
     @Test
     public void getApiReposShouldCallClientForAnItemInEachConfigList() {
         // Given
-        GitHubConfig config = new GitHubConfig(List.of(ACCESS_TOKEN_1), List.of(USER_1), List.of(ORGANIZATION_1), TIMEOUT);
+        GitHubConfig config = new GitHubConfig(null, List.of(ACCESS_TOKEN_1), List.of(USER_1), List.of(ORGANIZATION_1), TIMEOUT);
         List<ApiRepo> apiRepos1 = createApiRepos(1);
         List<ApiRepo> apiRepos2 = createApiRepos(2);
         List<ApiRepo> apiRepos3 = createApiRepos(3);
@@ -95,7 +95,7 @@ public class GitHubRepoFinderTest {
     @Test
     public void getApiReposShouldCallClientForItemsInEachConfigList() {
         // Given
-        GitHubConfig config = new GitHubConfig(
+        GitHubConfig config = new GitHubConfig(null, 
                 List.of(ACCESS_TOKEN_1, ACCESS_TOKEN_2, ACCESS_TOKEN_3),
                 List.of(USER_1, USER_2, USER_3),
                 List.of(ORGANIZATION_1, ORGANIZATION_2, ORGANIZATION_3),
@@ -132,7 +132,7 @@ public class GitHubRepoFinderTest {
     @Test
     public void getApiReposShouldCallClientAndReturnAnEmptyListOfApiReposWhenClientReturnsEmptyLists() {
         // Given
-        GitHubConfig config = new GitHubConfig(List.of(ACCESS_TOKEN_1), List.of(USER_1), List.of(ORGANIZATION_1), TIMEOUT);
+        GitHubConfig config = new GitHubConfig(null, List.of(ACCESS_TOKEN_1), List.of(USER_1), List.of(ORGANIZATION_1), TIMEOUT);
         when(mockClient.getRepos(ACCESS_TOKEN_1)).thenReturn(List.of());
         when(mockClient.getRepos(USER_1)).thenReturn(List.of());
         when(mockClient.getRepos(ORGANIZATION_1)).thenReturn(List.of());
@@ -148,7 +148,7 @@ public class GitHubRepoFinderTest {
     @Test
     public void getApiReposShouldDeduplicateIdenticalApiRepos() {
         // Given
-        GitHubConfig config = new GitHubConfig(
+        GitHubConfig config = new GitHubConfig(null, 
                 List.of(ACCESS_TOKEN_1, ACCESS_TOKEN_2),
                 List.of(USER_1, USER_2),
                 List.of(ORGANIZATION_1, ORGANIZATION_2),

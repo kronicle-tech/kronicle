@@ -3,6 +3,7 @@ package tech.kronicle.plugins.sonarqube;
 import org.pf4j.PluginWrapper;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import tech.kronicle.plugins.sonarqube.config.SonarQubeConfig;
 import tech.kronicle.plugins.sonarqube.spring.SpringConfiguration;
 import tech.kronicle.pluginapi.KroniclePlugin;
 
@@ -14,7 +15,7 @@ public class SonarQubePlugin extends KroniclePlugin {
 
     @Override
     public Class<?> getConfigType() {
-        return null;
+        return SonarQubeConfig.class;
     }
 
     @Override

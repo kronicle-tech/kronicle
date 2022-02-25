@@ -3,16 +3,11 @@ spring:
     sampler:
       probability: ${ZIPKIN_SAMPLE_RATE:1.0}
 
-plugin-manager:
-  mode: deployment
-  plugin-root-dirs:
-    - plugins
-
 plugins:
-  git-plugin:
+  git:
     repos-dir: ${TMPDIR}kronicle-service/data/git/repos
 
-  gradle-plugin:
+  gradle:
     download-cache:
       dir: ${TMPDIR}kronicle-service/data/download-cache
     url-exists-cache:

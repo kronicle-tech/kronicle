@@ -2,6 +2,7 @@ package tech.kronicle.service.plugins;
 
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
+import lombok.extern.slf4j.Slf4j;
 import org.pf4j.DefaultPluginFactory;
 import org.pf4j.Plugin;
 import org.pf4j.PluginWrapper;
@@ -19,6 +20,7 @@ import java.util.Objects;
 import static java.util.Objects.nonNull;
 
 @RequiredArgsConstructor
+@Slf4j
 public class KroniclePluginFactory extends DefaultPluginFactory {
 
     private final ConfigurableApplicationContext applicationContext;

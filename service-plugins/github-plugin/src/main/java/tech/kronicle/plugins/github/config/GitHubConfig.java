@@ -15,6 +15,7 @@ import java.util.List;
 @NonFinal
 public class GitHubConfig {
 
+  String apiBaseUrl;
   List<GitHubAccessTokenConfig> personalAccessTokens;
   List<GitHubUserConfig> users;
   List<GitHubOrganizationConfig> organizations;

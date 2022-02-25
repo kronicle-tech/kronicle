@@ -6,13 +6,13 @@ import org.gradle.api.internal.artifacts.ivyservice.ivyresolve.strategy.DefaultV
 import org.gradle.api.internal.artifacts.ivyservice.ivyresolve.strategy.Version;
 import org.gradle.api.internal.artifacts.ivyservice.ivyresolve.strategy.VersionParser;
 import org.pf4j.Extension;
-import tech.kronicle.plugins.keysoftware.config.KeySoftwareConfig;
-import tech.kronicle.plugins.keysoftware.config.KeySoftwareRule;
+import tech.kronicle.pluginapi.scanners.LateComponentScanner;
+import tech.kronicle.pluginapi.scanners.models.Output;
+import tech.kronicle.plugins.keysoftware.config.KeySoftwareRuleConfig;
+import tech.kronicle.plugins.keysoftware.services.KeySoftwareRuleProvider;
 import tech.kronicle.sdk.models.Component;
 import tech.kronicle.sdk.models.KeySoftware;
 import tech.kronicle.sdk.models.Software;
-import tech.kronicle.pluginapi.scanners.LateComponentScanner;
-import tech.kronicle.pluginapi.scanners.models.Output;
 
 import java.util.Comparator;
 import java.util.HashMap;
@@ -28,14 +28,17 @@ import static java.util.Objects.isNull;
 
 @Extension
 @org.springframework.stereotype.Component
-@RequiredArgsConstructor
 @Slf4j
 public class KeySoftwareScanner extends LateComponentScanner {
 
     private final Map<String, Pattern> patternCache = new HashMap<>();
     private final VersionParser versionParser = new VersionParser();
     private final Comparator<Version> versionComparator = new DefaultVersionComparator().asVersionComparator().reversed();
-    private final KeySoftwareConfig config;
+    private final List<KeySoftwareRuleConfig> rules;
+
+    public KeySoftwareScanner(KeySoftwareRuleProvider ruleProvider) {
+        this.rules = ruleProvider.getRules();
+    }
 
     @Override
     public String id() {
@@ -51,7 +54,7 @@ public class KeySoftwareScanner extends LateComponentScanner {
 
     @Override
     public Output<Void> scan(Component input) {
-        if (isNull(config.getRules()) || isNull(input.getSoftware())) {
+        if (rules.isEmpty() || isNull(input.getSoftware())) {
             return Output.of(UnaryOperator.identity());
         }
 
@@ -60,14 +63,14 @@ public class KeySoftwareScanner extends LateComponentScanner {
     }
 
     private List<KeySoftware> getKeySoftware(Component input) {
-        return config.getRules().stream()
+        return rules.stream()
                 .map(applyRule(input))
                 .filter(Objects::nonNull)
                 .collect(Collectors.toList());
     }
 
-    private Function<KeySoftwareRule, KeySoftware> applyRule(Component component) {
-        return (KeySoftwareRule rule) -> {
+    private Function<KeySoftwareRuleConfig, KeySoftware> applyRule(Component component) {
+        return (KeySoftwareRuleConfig rule) -> {
             List<String> versions = applyRule(component, rule);
 
             if (versions.isEmpty()) {
@@ -78,7 +81,7 @@ public class KeySoftwareScanner extends LateComponentScanner {
         };
     }
 
-    private List<String> applyRule(Component component, KeySoftwareRule rule) {
+    private List<String> applyRule(Component component, KeySoftwareRuleConfig rule) {
         Pattern softwareNamePattern = getCachedPattern(rule.getSoftwareNamePattern());
         return component.getSoftware().stream()
                 .filter(software -> softwareNamePattern.matcher(software.getName()).find())

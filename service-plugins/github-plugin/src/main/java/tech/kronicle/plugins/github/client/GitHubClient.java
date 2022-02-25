@@ -1,26 +1,24 @@
 package tech.kronicle.plugins.github.client;
 
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.client.ClientResponse;
 import org.springframework.web.reactive.function.client.WebClient;
+import tech.kronicle.pluginapi.constants.KronicleMetadataFilePaths;
+import tech.kronicle.pluginapi.finders.models.ApiRepo;
 import tech.kronicle.plugins.github.config.GitHubAccessTokenConfig;
 import tech.kronicle.plugins.github.config.GitHubConfig;
 import tech.kronicle.plugins.github.config.GitHubOrganizationConfig;
 import tech.kronicle.plugins.github.config.GitHubUserConfig;
-import tech.kronicle.plugins.github.constants.GitHubApiBaseUrls;
 import tech.kronicle.plugins.github.constants.GitHubApiHeaders;
 import tech.kronicle.plugins.github.constants.GitHubApiPaths;
 import tech.kronicle.plugins.github.models.ApiResponseCacheEntry;
 import tech.kronicle.plugins.github.models.api.GitHubContentEntry;
 import tech.kronicle.plugins.github.models.api.GitHubRepo;
 import tech.kronicle.plugins.github.services.ApiResponseCache;
-import tech.kronicle.pluginapi.constants.KronicleMetadataFilePaths;
-import tech.kronicle.pluginapi.finders.models.ApiRepo;
 import tech.kronicle.pluginutils.services.UriVariablesBuilder;
 
 import javax.validation.constraints.NotEmpty;
@@ -47,14 +45,15 @@ public class GitHubClient {
   private final WebClient webClient;
   private final GitHubConfig config;
   private final ApiResponseCache cache;
-  private final String gitHubApiBaseUrl;
 
-  public GitHubClient(WebClient webClient, GitHubConfig config, ApiResponseCache cache,
-                      @Value(GitHubApiBaseUrls.API_DOT_GITHUB_DOT_COM) String gitHubApiBaseUrl) {
+  public GitHubClient(
+          WebClient webClient,
+          GitHubConfig config,
+          ApiResponseCache cache
+  ) {
     this.webClient = webClient;
     this.config = config;
     this.cache = cache;
-    this.gitHubApiBaseUrl = gitHubApiBaseUrl;
   }
 
   public List<ApiRepo> getRepos(GitHubAccessTokenConfig accessToken) {
@@ -70,15 +69,15 @@ public class GitHubClient {
   }
 
   private String getAuthenticatedUserReposUri() {
-    return gitHubApiBaseUrl + GitHubApiPaths.AUTHENTICATED_USER_REPOS;
+    return config.getApiBaseUrl() + GitHubApiPaths.AUTHENTICATED_USER_REPOS;
   }
 
   private String getUserReposUri(GitHubUserConfig user) {
-    return expandUriTemplate(gitHubApiBaseUrl + GitHubApiPaths.USER_REPOS, Map.of("username", user.getAccountName()));
+    return expandUriTemplate(config.getApiBaseUrl() + GitHubApiPaths.USER_REPOS, Map.of("username", user.getAccountName()));
   }
 
   private String getOrganizationReposUri(GitHubOrganizationConfig organization) {
-    return expandUriTemplate(gitHubApiBaseUrl + GitHubApiPaths.ORGANIZATION_REPOS, Map.of("org", organization.getAccountName()));
+    return expandUriTemplate(config.getApiBaseUrl() + GitHubApiPaths.ORGANIZATION_REPOS, Map.of("org", organization.getAccountName()));
   }
 
   private List<ApiRepo> getRepos(GitHubAccessTokenConfig accessToken, String uri) {

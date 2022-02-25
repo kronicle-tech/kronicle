@@ -21,5 +21,7 @@ public class PluginManagerConfig {
     String mode;
     @NotEmpty
     List<String> pluginRootDirs;
+    List<String> enabledPlugins;
+    List<String> disabledPlugins;
 
 }
