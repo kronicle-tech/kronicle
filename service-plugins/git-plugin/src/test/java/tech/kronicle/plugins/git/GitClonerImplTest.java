@@ -1,16 +1,16 @@
 package tech.kronicle.plugins.git;
 
 import org.eclipse.jgit.api.Git;
-import tech.kronicle.plugins.git.config.GitConfig;
-import tech.kronicle.plugins.git.testutils.CreateBranchInRemoteRepoOutcome;
-import tech.kronicle.plugins.git.testutils.CreateRemoteRepoOutcome;
-import tech.kronicle.plugins.git.testutils.GitRepoHelper;
-import tech.kronicle.plugins.git.testutils.UpdateRemoteRepoOutcome;
 import org.eclipse.jgit.api.errors.GitAPIException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 import org.springframework.util.FileSystemUtils;
+import tech.kronicle.plugins.git.config.GitConfig;
+import tech.kronicle.plugins.git.testutils.CreateBranchInRemoteRepoOutcome;
+import tech.kronicle.plugins.git.testutils.CreateRemoteRepoOutcome;
+import tech.kronicle.plugins.git.testutils.GitRepoHelper;
+import tech.kronicle.plugins.git.testutils.UpdateRemoteRepoOutcome;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;

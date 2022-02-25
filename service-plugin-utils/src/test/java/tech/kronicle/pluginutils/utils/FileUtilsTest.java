@@ -1,11 +1,6 @@
 package tech.kronicle.pluginutils.utils;
 
 import com.google.common.io.CharStreams;
-import tech.kronicle.pluginutils.utils.AntStyleIgnoreFileLoader;
-import tech.kronicle.pluginutils.utils.FileUtils;
-import tech.kronicle.pluginutils.utils.ObjectReference;
-import tech.kronicle.plugintestutils.BaseTest;
-import tech.kronicle.plugintestutils.testutils.MalformedFileCreator;
 import lombok.Value;
 import lombok.With;
 import org.junit.jupiter.api.Test;
@@ -13,6 +8,8 @@ import org.junit.jupiter.api.io.TempDir;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.springframework.util.FileSystemUtils;
+import tech.kronicle.plugintestutils.BaseTest;
+import tech.kronicle.plugintestutils.testutils.MalformedFileCreator;
 
 import java.io.IOException;
 import java.io.InputStream;

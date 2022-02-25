@@ -1,10 +1,10 @@
 package tech.kronicle.plugins.zipkin.services;
 
-import tech.kronicle.sdk.models.SummarySubComponentDependencies;
-import tech.kronicle.sdk.models.SummarySubComponentDependencyNode;
-import tech.kronicle.plugins.zipkin.models.api.Span;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import tech.kronicle.plugins.zipkin.models.api.Span;
+import tech.kronicle.sdk.models.SummarySubComponentDependencies;
+import tech.kronicle.sdk.models.SummarySubComponentDependencyNode;
 
 import java.util.Comparator;
 import java.util.List;

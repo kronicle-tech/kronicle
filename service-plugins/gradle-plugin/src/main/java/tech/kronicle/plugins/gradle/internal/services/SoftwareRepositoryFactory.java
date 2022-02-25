@@ -1,10 +1,10 @@
 package tech.kronicle.plugins.gradle.internal.services;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import tech.kronicle.sdk.models.SoftwareRepository;
 import tech.kronicle.sdk.models.SoftwareRepositoryScope;
 import tech.kronicle.sdk.models.SoftwareRepositoryType;
-import lombok.RequiredArgsConstructor;
 
 @Component
 @RequiredArgsConstructor

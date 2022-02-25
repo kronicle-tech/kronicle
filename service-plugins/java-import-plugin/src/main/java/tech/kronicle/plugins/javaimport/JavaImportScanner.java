@@ -4,13 +4,13 @@ import lombok.RequiredArgsConstructor;
 import org.apache.commons.io.FilenameUtils;
 import org.pf4j.Extension;
 import org.springframework.stereotype.Component;
-import tech.kronicle.plugins.javaimport.services.JavaImportFinder;
-import tech.kronicle.sdk.models.Import;
-import tech.kronicle.pluginutils.constants.Comparators;
 import tech.kronicle.pluginapi.scanners.CodebaseScanner;
 import tech.kronicle.pluginapi.scanners.models.Codebase;
 import tech.kronicle.pluginapi.scanners.models.Output;
+import tech.kronicle.plugins.javaimport.services.JavaImportFinder;
+import tech.kronicle.pluginutils.constants.Comparators;
 import tech.kronicle.pluginutils.utils.FileUtils;
+import tech.kronicle.sdk.models.Import;
 
 import java.nio.file.Path;
 import java.nio.file.attribute.BasicFileAttributes;

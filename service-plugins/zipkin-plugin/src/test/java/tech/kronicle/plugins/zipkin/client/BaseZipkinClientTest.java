@@ -3,11 +3,11 @@ package tech.kronicle.plugins.zipkin.client;
 import ch.qos.logback.classic.spi.ILoggingEvent;
 import io.github.resilience4j.retry.RetryConfig;
 import io.github.resilience4j.retry.RetryRegistry;
+import lombok.RequiredArgsConstructor;
+import lombok.Value;
 import org.springframework.web.reactive.function.client.WebClient;
 import tech.kronicle.plugins.zipkin.config.ZipkinConfig;
 import tech.kronicle.plugintestutils.testutils.LogCaptor;
-import lombok.RequiredArgsConstructor;
-import lombok.Value;
 
 import java.time.Clock;
 import java.time.Duration;

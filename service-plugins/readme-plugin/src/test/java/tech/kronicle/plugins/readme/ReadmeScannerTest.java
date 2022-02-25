@@ -1,14 +1,14 @@
 package tech.kronicle.plugins.readme;
 
-import tech.kronicle.sdk.models.readme.Readme;
-import tech.kronicle.plugintestutils.scanners.BaseCodebaseScannerTest;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import tech.kronicle.pluginapi.scanners.models.Codebase;
 import tech.kronicle.pluginapi.scanners.models.Output;
 import tech.kronicle.plugins.readme.services.ReadmeFileNameChecker;
+import tech.kronicle.plugintestutils.scanners.BaseCodebaseScannerTest;
 import tech.kronicle.pluginutils.utils.AntStyleIgnoreFileLoader;
 import tech.kronicle.pluginutils.utils.FileUtils;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import tech.kronicle.sdk.models.readme.Readme;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

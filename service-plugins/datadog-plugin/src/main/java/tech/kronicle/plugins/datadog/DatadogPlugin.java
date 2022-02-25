@@ -3,9 +3,9 @@ package tech.kronicle.plugins.datadog;
 import org.pf4j.PluginWrapper;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import tech.kronicle.pluginapi.KroniclePlugin;
 import tech.kronicle.plugins.datadog.config.DatadogConfig;
 import tech.kronicle.plugins.datadog.spring.SpringConfiguration;
-import tech.kronicle.pluginapi.KroniclePlugin;
 
 public class DatadogPlugin extends KroniclePlugin {
 

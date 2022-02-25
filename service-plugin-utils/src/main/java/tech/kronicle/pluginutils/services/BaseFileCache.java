@@ -1,7 +1,7 @@
 package tech.kronicle.pluginutils.services;
 
-import tech.kronicle.pluginutils.utils.FileUtils;
 import tech.kronicle.common.utils.StringEscapeUtils;
+import tech.kronicle.pluginutils.utils.FileUtils;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;

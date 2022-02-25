@@ -2,7 +2,6 @@ package tech.kronicle.plugins.linesofcode.services;
 
 import com.google.common.base.Ascii;
 import org.junit.jupiter.api.Test;
-import tech.kronicle.plugins.linesofcode.services.LinesOfCodeCounter;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;

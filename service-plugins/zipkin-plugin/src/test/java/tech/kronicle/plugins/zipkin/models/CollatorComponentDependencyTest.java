@@ -1,7 +1,6 @@
 package tech.kronicle.plugins.zipkin.models;
 
 import org.junit.jupiter.api.Test;
-import tech.kronicle.plugins.zipkin.models.CollatorComponentDependency;
 
 import java.util.List;
 

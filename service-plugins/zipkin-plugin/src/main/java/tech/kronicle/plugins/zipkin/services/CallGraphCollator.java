@@ -1,9 +1,8 @@
 package tech.kronicle.plugins.zipkin.services;
 
-import tech.kronicle.sdk.models.ObjectWithSourceIndexAndTargetIndex;
-import tech.kronicle.sdk.models.SummaryCallGraph;
-import tech.kronicle.sdk.models.SummaryComponentDependency;
-import tech.kronicle.sdk.models.SummarySubComponentDependencyNode;
+import lombok.RequiredArgsConstructor;
+import lombok.Value;
+import org.springframework.stereotype.Service;
 import tech.kronicle.plugins.zipkin.models.CollatorComponentDependency;
 import tech.kronicle.plugins.zipkin.models.NodesAndDependencies;
 import tech.kronicle.plugins.zipkin.models.ObjectWithDurations;
@@ -11,9 +10,10 @@ import tech.kronicle.plugins.zipkin.models.ObjectWithTimestamps;
 import tech.kronicle.plugins.zipkin.models.SourceIndexAndTargetIndex;
 import tech.kronicle.plugins.zipkin.models.TimestampsForDependency;
 import tech.kronicle.plugins.zipkin.models.api.Span;
-import lombok.RequiredArgsConstructor;
-import lombok.Value;
-import org.springframework.stereotype.Service;
+import tech.kronicle.sdk.models.ObjectWithSourceIndexAndTargetIndex;
+import tech.kronicle.sdk.models.SummaryCallGraph;
+import tech.kronicle.sdk.models.SummaryComponentDependency;
+import tech.kronicle.sdk.models.SummarySubComponentDependencyNode;
 
 import java.util.Comparator;
 import java.util.List;

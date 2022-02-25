@@ -1,12 +1,12 @@
 package tech.kronicle.service.partialresponse;
 
 import com.google.common.base.Joiner;
-import tech.kronicle.service.partialresponse.internal.QueryParamNames;
-import tech.kronicle.service.partialresponse.internal.RequestAttributeNames;
 import com.pressassociation.pr.match.Matcher;
 import org.springframework.stereotype.Component;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.HandlerInterceptor;
+import tech.kronicle.service.partialresponse.internal.QueryParamNames;
+import tech.kronicle.service.partialresponse.internal.RequestAttributeNames;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

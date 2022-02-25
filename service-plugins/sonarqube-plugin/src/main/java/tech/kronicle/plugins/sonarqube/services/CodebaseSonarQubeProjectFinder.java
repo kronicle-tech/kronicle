@@ -1,9 +1,9 @@
 package tech.kronicle.plugins.sonarqube.services;
 
-import tech.kronicle.plugins.sonarqube.models.Project;
-import tech.kronicle.pluginutils.utils.FileUtils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import tech.kronicle.plugins.sonarqube.models.Project;
+import tech.kronicle.pluginutils.utils.FileUtils;
 
 import java.nio.file.Path;
 import java.util.List;

@@ -6,9 +6,9 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import tech.kronicle.pluginapi.finders.models.ApiRepo;
 import tech.kronicle.plugins.github.client.GitHubClient;
+import tech.kronicle.plugins.github.config.GitHubAccessTokenConfig;
 import tech.kronicle.plugins.github.config.GitHubConfig;
 import tech.kronicle.plugins.github.config.GitHubOrganizationConfig;
-import tech.kronicle.plugins.github.config.GitHubAccessTokenConfig;
 import tech.kronicle.plugins.github.config.GitHubUserConfig;
 
 import java.time.Duration;

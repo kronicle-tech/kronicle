@@ -1,5 +1,9 @@
 package tech.kronicle.service.tests.dropwizard;
 
+import lombok.RequiredArgsConstructor;
+import org.gradle.api.internal.artifacts.ivyservice.ivyresolve.strategy.DefaultVersionComparator;
+import org.gradle.api.internal.artifacts.ivyservice.ivyresolve.strategy.Version;
+import org.gradle.api.internal.artifacts.ivyservice.ivyresolve.strategy.VersionParser;
 import tech.kronicle.sdk.models.Component;
 import tech.kronicle.sdk.models.KeySoftware;
 import tech.kronicle.sdk.models.Priority;
@@ -7,10 +11,6 @@ import tech.kronicle.sdk.models.TestOutcome;
 import tech.kronicle.sdk.models.TestResult;
 import tech.kronicle.service.tests.ComponentTest;
 import tech.kronicle.service.tests.models.TestContext;
-import lombok.RequiredArgsConstructor;
-import org.gradle.api.internal.artifacts.ivyservice.ivyresolve.strategy.DefaultVersionComparator;
-import org.gradle.api.internal.artifacts.ivyservice.ivyresolve.strategy.Version;
-import org.gradle.api.internal.artifacts.ivyservice.ivyresolve.strategy.VersionParser;
 
 import java.util.Comparator;
 import java.util.List;

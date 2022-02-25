@@ -1,22 +1,22 @@
 package tech.kronicle.plugins.bitbucketserver.client;
 
+import lombok.RequiredArgsConstructor;
+import lombok.Value;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
+import org.springframework.web.reactive.function.client.ClientResponse;
+import org.springframework.web.reactive.function.client.WebClient;
+import tech.kronicle.pluginapi.finders.models.ApiRepo;
 import tech.kronicle.plugins.bitbucketserver.config.BitbucketServerConfig;
 import tech.kronicle.plugins.bitbucketserver.config.BitbucketServerHostConfig;
-import tech.kronicle.pluginapi.finders.models.ApiRepo;
 import tech.kronicle.plugins.bitbucketserver.constants.BitbucketServerApiPaths;
 import tech.kronicle.plugins.bitbucketserver.models.api.BrowseResponse;
 import tech.kronicle.plugins.bitbucketserver.models.api.Link;
 import tech.kronicle.plugins.bitbucketserver.models.api.PageResponse;
 import tech.kronicle.plugins.bitbucketserver.models.api.Repo;
 import tech.kronicle.pluginutils.services.UriVariablesBuilder;
-import lombok.RequiredArgsConstructor;
-import lombok.Value;
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.core.ParameterizedTypeReference;
-import org.springframework.http.HttpStatus;
-import org.springframework.web.reactive.function.client.ClientResponse;
-import org.springframework.web.reactive.function.client.WebClient;
 
 import java.util.ArrayList;
 import java.util.Collection;

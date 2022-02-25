@@ -3,8 +3,8 @@ package tech.kronicle.plugins.readme;
 import org.pf4j.PluginWrapper;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import tech.kronicle.plugins.readme.spring.SpringConfiguration;
 import tech.kronicle.pluginapi.KroniclePlugin;
+import tech.kronicle.plugins.readme.spring.SpringConfiguration;
 
 public class ReadmePlugin extends KroniclePlugin {
 

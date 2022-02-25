@@ -4,13 +4,13 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.client.WebClient;
-import tech.kronicle.sdk.models.Dependency;
 import tech.kronicle.plugins.datadog.config.DatadogConfig;
 import tech.kronicle.plugins.datadog.constants.DatadogApiPaths;
 import tech.kronicle.plugins.datadog.constants.DatadogHttpHeaderNames;
 import tech.kronicle.plugins.datadog.dependencies.config.DatadogDependenciesConfig;
 import tech.kronicle.plugins.datadog.dependencies.models.ServiceDependenciesResponse;
 import tech.kronicle.pluginutils.services.UriVariablesBuilder;
+import tech.kronicle.sdk.models.Dependency;
 
 import java.util.List;
 import java.util.Map;

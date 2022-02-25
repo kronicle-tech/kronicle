@@ -5,14 +5,14 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.FilenameUtils;
 import org.pf4j.Extension;
 import org.springframework.stereotype.Component;
-import tech.kronicle.plugins.linesofcode.services.LinesOfCodeCounter;
-import tech.kronicle.sdk.models.linesofcode.FileExtensionCount;
-import tech.kronicle.sdk.models.linesofcode.LinesOfCode;
 import tech.kronicle.pluginapi.scanners.CodebaseScanner;
 import tech.kronicle.pluginapi.scanners.models.Codebase;
 import tech.kronicle.pluginapi.scanners.models.Output;
+import tech.kronicle.plugins.linesofcode.services.LinesOfCodeCounter;
 import tech.kronicle.pluginutils.utils.FileUtils;
 import tech.kronicle.pluginutils.utils.ObjectReference;
+import tech.kronicle.sdk.models.linesofcode.FileExtensionCount;
+import tech.kronicle.sdk.models.linesofcode.LinesOfCode;
 
 import java.io.IOException;
 import java.io.InputStream;

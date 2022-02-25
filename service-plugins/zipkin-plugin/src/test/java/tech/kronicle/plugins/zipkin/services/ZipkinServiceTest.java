@@ -1,14 +1,6 @@
 package tech.kronicle.plugins.zipkin.services;
 
 import ch.qos.logback.classic.Level;
-import tech.kronicle.sdk.models.zipkin.ZipkinDependency;
-import tech.kronicle.plugins.zipkin.client.ZipkinClient;
-import tech.kronicle.plugins.zipkin.client.ZipkinClientException;
-import tech.kronicle.plugins.zipkin.config.ZipkinConfig;
-import tech.kronicle.plugins.zipkin.models.api.Service;
-import tech.kronicle.plugins.zipkin.models.api.Span;
-import tech.kronicle.plugintestutils.testutils.LogCaptor;
-import tech.kronicle.plugintestutils.testutils.SimplifiedLogEvent;
 import lombok.RequiredArgsConstructor;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -16,6 +8,14 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import tech.kronicle.plugins.zipkin.client.ZipkinClient;
+import tech.kronicle.plugins.zipkin.client.ZipkinClientException;
+import tech.kronicle.plugins.zipkin.config.ZipkinConfig;
+import tech.kronicle.plugins.zipkin.models.api.Service;
+import tech.kronicle.plugins.zipkin.models.api.Span;
+import tech.kronicle.plugintestutils.testutils.LogCaptor;
+import tech.kronicle.plugintestutils.testutils.SimplifiedLogEvent;
+import tech.kronicle.sdk.models.zipkin.ZipkinDependency;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,8 +1,8 @@
 package tech.kronicle.pluginapi.scanners.models;
 
+import lombok.Value;
 import tech.kronicle.sdk.models.Component;
 import tech.kronicle.sdk.models.ObjectWithReference;
-import lombok.Value;
 
 @Value
 public class ComponentAndCodebase implements ObjectWithReference {

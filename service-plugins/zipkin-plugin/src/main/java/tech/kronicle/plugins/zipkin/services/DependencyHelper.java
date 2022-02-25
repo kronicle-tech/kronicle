@@ -1,15 +1,15 @@
 package tech.kronicle.plugins.zipkin.services;
 
-import tech.kronicle.sdk.models.SummaryComponentDependency;
-import tech.kronicle.sdk.models.SummarySubComponentDependencies;
-import tech.kronicle.sdk.models.SummarySubComponentDependencyNode;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 import tech.kronicle.plugins.zipkin.models.CollatorComponentDependency;
 import tech.kronicle.plugins.zipkin.models.NodesAndDependencies;
 import tech.kronicle.plugins.zipkin.models.ObjectWithTimestamps;
 import tech.kronicle.plugins.zipkin.models.TimestampsForDependency;
 import tech.kronicle.plugins.zipkin.models.api.Span;
-import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
+import tech.kronicle.sdk.models.SummaryComponentDependency;
+import tech.kronicle.sdk.models.SummarySubComponentDependencies;
+import tech.kronicle.sdk.models.SummarySubComponentDependencyNode;
 
 import java.time.Instant;
 import java.time.LocalDateTime;

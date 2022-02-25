@@ -4,15 +4,15 @@ import ch.qos.logback.classic.Level;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import tech.kronicle.sdk.models.Software;
-import tech.kronicle.sdk.models.SoftwareDependencyType;
-import tech.kronicle.sdk.models.SoftwareType;
 import tech.kronicle.plugins.gradle.internal.constants.MavenPackagings;
 import tech.kronicle.plugins.gradle.internal.groovyscriptvisitors.VisitorState;
 import tech.kronicle.plugins.gradle.internal.utils.InheritingHashMap;
 import tech.kronicle.plugins.gradle.internal.utils.InheritingHashSet;
 import tech.kronicle.plugintestutils.testutils.LogCaptor;
 import tech.kronicle.plugintestutils.testutils.SimplifiedLogEvent;
+import tech.kronicle.sdk.models.Software;
+import tech.kronicle.sdk.models.SoftwareDependencyType;
+import tech.kronicle.sdk.models.SoftwareType;
 
 import java.util.Set;
 

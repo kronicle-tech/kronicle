@@ -1,11 +1,9 @@
 package tech.kronicle.service.plugins;
 
-import org.pf4j.ClassLoadingStrategy;
 import org.pf4j.PluginClassLoader;
 import org.pf4j.PluginDescriptor;
 import org.pf4j.PluginManager;
 
-import java.util.Arrays;
 import java.util.List;
 
 public class KroniclePluginClassLoader extends PluginClassLoader {

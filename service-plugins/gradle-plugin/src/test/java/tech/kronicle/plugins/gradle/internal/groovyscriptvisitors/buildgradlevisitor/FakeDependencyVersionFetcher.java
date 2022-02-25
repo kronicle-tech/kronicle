@@ -1,10 +1,10 @@
 package tech.kronicle.plugins.gradle.internal.groovyscriptvisitors.buildgradlevisitor;
 
+import tech.kronicle.plugins.gradle.internal.services.DependencyVersionFetcher;
 import tech.kronicle.sdk.models.Software;
 import tech.kronicle.sdk.models.SoftwareDependencyType;
 import tech.kronicle.sdk.models.SoftwareRepository;
 import tech.kronicle.sdk.models.SoftwareType;
-import tech.kronicle.plugins.gradle.internal.services.DependencyVersionFetcher;
 
 import java.util.Map;
 import java.util.Set;

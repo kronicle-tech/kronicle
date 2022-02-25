@@ -1,13 +1,13 @@
 package tech.kronicle.plugins.zipkin.services;
 
-import tech.kronicle.sdk.models.zipkin.ZipkinDependency;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import tech.kronicle.plugins.zipkin.client.ZipkinClient;
 import tech.kronicle.plugins.zipkin.client.ZipkinClientException;
 import tech.kronicle.plugins.zipkin.config.ZipkinConfig;
 import tech.kronicle.plugins.zipkin.models.api.Service;
 import tech.kronicle.plugins.zipkin.models.api.Span;
-import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
+import tech.kronicle.sdk.models.zipkin.ZipkinDependency;
 
 import java.util.List;
 import java.util.stream.Collectors;

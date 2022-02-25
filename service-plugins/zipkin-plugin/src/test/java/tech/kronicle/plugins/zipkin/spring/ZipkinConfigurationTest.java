@@ -1,9 +1,9 @@
 package tech.kronicle.plugins.zipkin.spring;
 
+import org.junit.jupiter.api.Test;
+import tech.kronicle.pluginutils.services.MapComparator;
 import tech.kronicle.sdk.models.SummaryComponentDependencyNode;
 import tech.kronicle.sdk.models.SummarySubComponentDependencyNode;
-import tech.kronicle.pluginutils.services.MapComparator;
-import org.junit.jupiter.api.Test;
 
 import java.util.Map;
 

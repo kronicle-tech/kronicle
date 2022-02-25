@@ -1,13 +1,5 @@
 package tech.kronicle.plugins.gradle.internal.groovyscriptvisitors;
 
-import tech.kronicle.sdk.models.SoftwareRepository;
-import tech.kronicle.sdk.models.SoftwareRepositoryScope;
-import tech.kronicle.plugins.gradle.internal.services.BuildFileLoader;
-import tech.kronicle.plugins.gradle.internal.services.BuildFileProcessor;
-import tech.kronicle.plugins.gradle.internal.services.ExpressionEvaluator;
-import tech.kronicle.plugins.gradle.internal.services.SoftwareRepositoryFactory;
-import tech.kronicle.plugins.gradle.internal.utils.InheritingHashMap;
-import tech.kronicle.plugins.gradle.internal.utils.InheritingHashSet;
 import lombok.RequiredArgsConstructor;
 import org.codehaus.groovy.ast.ASTNode;
 import org.codehaus.groovy.ast.CodeVisitorSupport;
@@ -70,6 +62,14 @@ import org.codehaus.groovy.ast.stmt.WhileStatement;
 import org.codehaus.groovy.classgen.BytecodeExpression;
 import org.slf4j.Logger;
 import tech.kronicle.common.utils.StringEscapeUtils;
+import tech.kronicle.plugins.gradle.internal.services.BuildFileLoader;
+import tech.kronicle.plugins.gradle.internal.services.BuildFileProcessor;
+import tech.kronicle.plugins.gradle.internal.services.ExpressionEvaluator;
+import tech.kronicle.plugins.gradle.internal.services.SoftwareRepositoryFactory;
+import tech.kronicle.plugins.gradle.internal.utils.InheritingHashMap;
+import tech.kronicle.plugins.gradle.internal.utils.InheritingHashSet;
+import tech.kronicle.sdk.models.SoftwareRepository;
+import tech.kronicle.sdk.models.SoftwareRepositoryScope;
 
 import java.nio.file.Path;
 import java.util.List;

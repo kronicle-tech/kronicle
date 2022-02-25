@@ -5,11 +5,10 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.JAXBException;
 import jakarta.xml.bind.Unmarshaller;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
-import tech.kronicle.sdk.models.Software;
-import tech.kronicle.sdk.models.SoftwareDependencyType;
-import tech.kronicle.sdk.models.SoftwareRepository;
-import tech.kronicle.sdk.models.SoftwareType;
+import tech.kronicle.common.utils.StringEscapeUtils;
 import tech.kronicle.plugins.gradle.internal.models.Pom;
 import tech.kronicle.plugins.gradle.internal.models.PomOutcome;
 import tech.kronicle.plugins.gradle.internal.models.mavenxml.DependenciesContainer;
@@ -20,10 +19,11 @@ import tech.kronicle.plugins.gradle.internal.models.mavenxml.project.Dependency;
 import tech.kronicle.plugins.gradle.internal.models.mavenxml.project.Parent;
 import tech.kronicle.plugins.gradle.internal.models.mavenxml.project.Properties;
 import tech.kronicle.plugins.gradle.internal.utils.ArtifactUtils;
-import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
-import tech.kronicle.common.utils.StringEscapeUtils;
 import tech.kronicle.pluginutils.utils.StringUtils;
+import tech.kronicle.sdk.models.Software;
+import tech.kronicle.sdk.models.SoftwareDependencyType;
+import tech.kronicle.sdk.models.SoftwareRepository;
+import tech.kronicle.sdk.models.SoftwareType;
 
 import javax.annotation.PostConstruct;
 import javax.xml.stream.XMLInputFactory;
@@ -38,10 +38,10 @@ import java.util.Set;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
-import static tech.kronicle.plugins.gradle.internal.constants.MavenPackagings.JAR;
-import static tech.kronicle.plugins.gradle.internal.constants.MavenPackagings.POM;
 import static java.util.Objects.nonNull;
 import static java.util.Objects.requireNonNull;
+import static tech.kronicle.plugins.gradle.internal.constants.MavenPackagings.JAR;
+import static tech.kronicle.plugins.gradle.internal.constants.MavenPackagings.POM;
 
 @Component
 @RequiredArgsConstructor

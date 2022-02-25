@@ -1,20 +1,20 @@
 package tech.kronicle.plugins.git;
 
-import lombok.SneakyThrows;
-import org.pf4j.Extension;
-import org.springframework.stereotype.Component;
-import tech.kronicle.plugins.git.config.GitConfig;
-import tech.kronicle.plugins.git.config.GitHost;
-import tech.kronicle.pluginapi.git.GitCloner;
 import lombok.RequiredArgsConstructor;
+import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.eclipse.jgit.api.Git;
 import org.eclipse.jgit.api.errors.GitAPIException;
 import org.eclipse.jgit.lib.Ref;
 import org.eclipse.jgit.transport.CredentialsProvider;
 import org.eclipse.jgit.transport.UsernamePasswordCredentialsProvider;
+import org.pf4j.Extension;
+import org.springframework.stereotype.Component;
 import org.springframework.util.FileSystemUtils;
 import tech.kronicle.common.utils.StringEscapeUtils;
+import tech.kronicle.pluginapi.git.GitCloner;
+import tech.kronicle.plugins.git.config.GitConfig;
+import tech.kronicle.plugins.git.config.GitHost;
 
 import javax.annotation.PostConstruct;
 import java.io.IOException;

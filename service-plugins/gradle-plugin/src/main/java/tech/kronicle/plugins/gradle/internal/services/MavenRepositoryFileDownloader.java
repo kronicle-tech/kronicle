@@ -1,11 +1,11 @@
 package tech.kronicle.plugins.gradle.internal.services;
 
-import org.springframework.stereotype.Component;
-import tech.kronicle.sdk.models.SoftwareRepository;
-import tech.kronicle.plugins.gradle.internal.utils.ArtifactUtils;
 import lombok.RequiredArgsConstructor;
 import lombok.Value;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Component;
+import tech.kronicle.plugins.gradle.internal.utils.ArtifactUtils;
+import tech.kronicle.sdk.models.SoftwareRepository;
 
 import java.util.ArrayList;
 import java.util.List;

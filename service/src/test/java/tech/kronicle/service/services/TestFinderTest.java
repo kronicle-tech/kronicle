@@ -1,12 +1,12 @@
 package tech.kronicle.service.services;
 
+import org.junit.jupiter.api.Test;
 import tech.kronicle.sdk.models.Component;
 import tech.kronicle.sdk.models.ObjectWithReference;
 import tech.kronicle.sdk.models.Priority;
 import tech.kronicle.sdk.models.TestResult;
 import tech.kronicle.service.tests.ComponentTest;
 import tech.kronicle.service.tests.models.TestContext;
-import org.junit.jupiter.api.Test;
 
 import java.util.List;
 

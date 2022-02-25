@@ -1,6 +1,12 @@
 package tech.kronicle.service.repositories;
 
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.stereotype.Repository;
 import tech.kronicle.componentmetadata.models.ComponentMetadata;
+import tech.kronicle.pluginutils.utils.ObjectReference;
 import tech.kronicle.sdk.models.Area;
 import tech.kronicle.sdk.models.Component;
 import tech.kronicle.sdk.models.Scanner;
@@ -16,12 +22,6 @@ import tech.kronicle.service.services.ScanEngine;
 import tech.kronicle.service.services.ScannerExtensionRegistry;
 import tech.kronicle.service.services.TestEngine;
 import tech.kronicle.service.services.TestFinder;
-import tech.kronicle.pluginutils.utils.ObjectReference;
-import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
-import org.slf4j.Logger;
-import org.springframework.scheduling.annotation.Scheduled;
-import org.springframework.stereotype.Repository;
 
 import java.util.Comparator;
 import java.util.List;

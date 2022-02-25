@@ -1,14 +1,14 @@
 package tech.kronicle.plugins.sonarqube.services;
 
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 import tech.kronicle.plugins.sonarqube.client.SonarQubeClient;
+import tech.kronicle.plugins.sonarqube.config.SonarQubeConfig;
+import tech.kronicle.plugins.sonarqube.models.Project;
 import tech.kronicle.sdk.models.SummaryMissingComponent;
 import tech.kronicle.sdk.models.sonarqube.SonarQubeMeasure;
 import tech.kronicle.sdk.models.sonarqube.SonarQubeProject;
 import tech.kronicle.sdk.models.sonarqube.SummarySonarQubeMetric;
-import tech.kronicle.plugins.sonarqube.config.SonarQubeConfig;
-import tech.kronicle.plugins.sonarqube.models.Project;
-import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
 
 import java.nio.file.Path;
 import java.util.Collection;

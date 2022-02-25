@@ -2,8 +2,8 @@ package tech.kronicle.service.tests.readme;
 
 import tech.kronicle.sdk.models.Component;
 import tech.kronicle.sdk.models.Priority;
-import tech.kronicle.sdk.models.readme.Readme;
 import tech.kronicle.sdk.models.TestResult;
+import tech.kronicle.sdk.models.readme.Readme;
 import tech.kronicle.service.tests.ComponentTest;
 import tech.kronicle.service.tests.models.TestContext;
 

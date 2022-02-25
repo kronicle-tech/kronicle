@@ -1,9 +1,9 @@
 package tech.kronicle.plugins.gradle.internal.models;
 
-import tech.kronicle.sdk.models.Software;
 import lombok.Builder;
 import lombok.Singular;
 import lombok.Value;
+import tech.kronicle.sdk.models.Software;
 
 import java.util.Map;
 import java.util.Set;

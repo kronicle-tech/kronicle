@@ -1,11 +1,11 @@
 package tech.kronicle.plugins.gradle.internal.services;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
+import tech.kronicle.plugins.gradle.internal.utils.InheritingHashSet;
 import tech.kronicle.sdk.models.Software;
 import tech.kronicle.sdk.models.SoftwareDependencyType;
 import tech.kronicle.sdk.models.SoftwareType;
-import tech.kronicle.plugins.gradle.internal.utils.InheritingHashSet;
-import lombok.RequiredArgsConstructor;
 
 import java.util.List;
 import java.util.Objects;

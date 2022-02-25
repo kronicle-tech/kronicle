@@ -3,9 +3,9 @@ package tech.kronicle.plugins.github;
 import org.pf4j.PluginWrapper;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import tech.kronicle.pluginapi.KroniclePlugin;
 import tech.kronicle.plugins.github.config.GitHubConfig;
 import tech.kronicle.plugins.github.spring.SpringConfiguration;
-import tech.kronicle.pluginapi.KroniclePlugin;
 
 public class GitHubPlugin extends KroniclePlugin {
 

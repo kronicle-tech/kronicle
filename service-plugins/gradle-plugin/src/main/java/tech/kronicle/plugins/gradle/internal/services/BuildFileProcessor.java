@@ -1,10 +1,10 @@
 package tech.kronicle.plugins.gradle.internal.services;
 
+import org.codehaus.groovy.ast.ASTNode;
+import org.codehaus.groovy.ast.ClassNode;
 import org.springframework.stereotype.Component;
 import tech.kronicle.plugins.gradle.internal.groovyscriptvisitors.BaseVisitor;
 import tech.kronicle.plugins.gradle.internal.models.Import;
-import org.codehaus.groovy.ast.ASTNode;
-import org.codehaus.groovy.ast.ClassNode;
 
 import java.util.HashSet;
 import java.util.List;

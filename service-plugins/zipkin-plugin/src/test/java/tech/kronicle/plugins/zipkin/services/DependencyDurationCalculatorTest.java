@@ -1,10 +1,9 @@
 package tech.kronicle.plugins.zipkin.services;
 
-import tech.kronicle.plugins.zipkin.services.DependencyDurationCalculator;
-import tech.kronicle.sdk.models.SummaryComponentDependencyDuration;
-import tech.kronicle.plugins.zipkin.models.ObjectWithDurations;
 import lombok.Value;
 import org.junit.jupiter.api.Test;
+import tech.kronicle.plugins.zipkin.models.ObjectWithDurations;
+import tech.kronicle.sdk.models.SummaryComponentDependencyDuration;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,7 +1,6 @@
 package tech.kronicle.plugins.zipkin.models.api;
 
 import org.junit.jupiter.api.Test;
-import tech.kronicle.plugins.zipkin.models.api.Service;
 
 import java.util.ArrayList;
 

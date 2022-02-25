@@ -1,9 +1,9 @@
 package tech.kronicle.plugins.zipkin.testutils;
 
-import tech.kronicle.sdk.models.SummaryComponentDependencyDuration;
+import org.apache.commons.lang3.RandomStringUtils;
 import tech.kronicle.plugins.zipkin.models.api.Endpoint;
 import tech.kronicle.plugins.zipkin.models.api.Span;
-import org.apache.commons.lang3.RandomStringUtils;
+import tech.kronicle.sdk.models.SummaryComponentDependencyDuration;
 
 import java.time.Instant;
 import java.time.LocalDateTime;

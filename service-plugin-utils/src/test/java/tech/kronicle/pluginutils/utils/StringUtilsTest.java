@@ -1,7 +1,6 @@
 package tech.kronicle.pluginutils.utils;
 
 import org.junit.jupiter.api.Test;
-import tech.kronicle.pluginutils.utils.StringUtils;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.catchThrowable;

@@ -1,12 +1,12 @@
 package tech.kronicle.plugins.openapi.services;
 
-import tech.kronicle.sdk.models.openapi.OpenApiSpec;
-import tech.kronicle.pluginapi.scanners.Scanner;
-import tech.kronicle.pluginapi.scanners.models.ComponentAndCodebase;
-import tech.kronicle.pluginutils.utils.FileUtils;
 import lombok.RequiredArgsConstructor;
 import org.apache.commons.io.FilenameUtils;
 import org.springframework.stereotype.Service;
+import tech.kronicle.pluginapi.scanners.Scanner;
+import tech.kronicle.pluginapi.scanners.models.ComponentAndCodebase;
+import tech.kronicle.pluginutils.utils.FileUtils;
+import tech.kronicle.sdk.models.openapi.OpenApiSpec;
 
 import java.nio.file.Path;
 import java.nio.file.attribute.BasicFileAttributes;

@@ -1,7 +1,6 @@
 package tech.kronicle.pluginutils.services;
 
 import org.junit.jupiter.api.Test;
-import tech.kronicle.pluginutils.services.UriVariablesBuilder;
 
 import java.util.Map;
 

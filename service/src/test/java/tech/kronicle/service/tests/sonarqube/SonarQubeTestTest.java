@@ -1,11 +1,11 @@
 package tech.kronicle.service.tests.sonarqube;
 
+import org.junit.jupiter.api.Test;
 import tech.kronicle.sdk.models.Component;
 import tech.kronicle.sdk.models.Priority;
 import tech.kronicle.sdk.models.TestOutcome;
 import tech.kronicle.sdk.models.TestResult;
 import tech.kronicle.sdk.models.sonarqube.SonarQubeProject;
-import org.junit.jupiter.api.Test;
 import tech.kronicle.service.tests.sonarqube.config.SonarQubeTestConfig;
 
 import java.util.List;

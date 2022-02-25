@@ -1,11 +1,11 @@
 package tech.kronicle.plugins.zipkin.models;
 
-import tech.kronicle.sdk.models.ObjectWithSourceIndexAndTargetIndex;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Value;
 import lombok.With;
 import lombok.extern.jackson.Jacksonized;
+import tech.kronicle.sdk.models.ObjectWithSourceIndexAndTargetIndex;
 
 import java.util.List;
 

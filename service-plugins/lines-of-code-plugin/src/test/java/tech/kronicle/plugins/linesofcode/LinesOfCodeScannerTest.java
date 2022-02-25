@@ -1,16 +1,16 @@
 package tech.kronicle.plugins.linesofcode;
 
 import com.google.common.base.Ascii;
-import tech.kronicle.sdk.models.linesofcode.FileExtensionCount;
-import tech.kronicle.sdk.models.linesofcode.LinesOfCode;
-import tech.kronicle.plugintestutils.scanners.BaseCodebaseScannerTest;
-import tech.kronicle.plugins.linesofcode.services.LinesOfCodeCounter;
-import tech.kronicle.pluginapi.scanners.models.Codebase;
-import tech.kronicle.pluginapi.scanners.models.Output;
-import tech.kronicle.pluginutils.utils.AntStyleIgnoreFileLoader;
-import tech.kronicle.pluginutils.utils.FileUtils;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import tech.kronicle.pluginapi.scanners.models.Codebase;
+import tech.kronicle.pluginapi.scanners.models.Output;
+import tech.kronicle.plugins.linesofcode.services.LinesOfCodeCounter;
+import tech.kronicle.plugintestutils.scanners.BaseCodebaseScannerTest;
+import tech.kronicle.pluginutils.utils.AntStyleIgnoreFileLoader;
+import tech.kronicle.pluginutils.utils.FileUtils;
+import tech.kronicle.sdk.models.linesofcode.FileExtensionCount;
+import tech.kronicle.sdk.models.linesofcode.LinesOfCode;
 
 import java.io.IOException;
 import java.nio.file.Files;

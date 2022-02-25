@@ -1,7 +1,7 @@
 package tech.kronicle.plugins.zipkin.models;
 
-import tech.kronicle.sdk.models.ObjectWithSourceIndexAndTargetIndex;
 import lombok.Value;
+import tech.kronicle.sdk.models.ObjectWithSourceIndexAndTargetIndex;
 
 @Value
 public class SourceIndexAndTargetIndex {

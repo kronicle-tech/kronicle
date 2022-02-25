@@ -1,12 +1,12 @@
 package tech.kronicle.plugins.gradle;
 
+import tech.kronicle.plugins.gradle.internal.constants.MavenPackagings;
+import tech.kronicle.plugintestutils.scanners.BaseCodebaseScannerTest;
+import tech.kronicle.pluginutils.constants.Comparators;
 import tech.kronicle.sdk.models.Component;
 import tech.kronicle.sdk.models.Software;
 import tech.kronicle.sdk.models.SoftwareDependencyType;
 import tech.kronicle.sdk.models.SoftwareRepository;
-import tech.kronicle.pluginutils.constants.Comparators;
-import tech.kronicle.plugintestutils.scanners.BaseCodebaseScannerTest;
-import tech.kronicle.plugins.gradle.internal.constants.MavenPackagings;
 
 import java.util.List;
 import java.util.Map;

@@ -3,9 +3,9 @@ package tech.kronicle.plugins.zipkin;
 import org.pf4j.PluginWrapper;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import tech.kronicle.pluginapi.KroniclePlugin;
 import tech.kronicle.plugins.zipkin.config.ZipkinConfig;
 import tech.kronicle.plugins.zipkin.spring.SpringConfiguration;
-import tech.kronicle.pluginapi.KroniclePlugin;
 
 public class ZipkinPlugin extends KroniclePlugin {
 

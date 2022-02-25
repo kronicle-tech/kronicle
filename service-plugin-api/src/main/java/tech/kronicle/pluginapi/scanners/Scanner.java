@@ -1,13 +1,13 @@
 package tech.kronicle.pluginapi.scanners;
 
+import tech.kronicle.common.utils.CaseUtils;
 import tech.kronicle.componentmetadata.models.ComponentMetadata;
+import tech.kronicle.pluginapi.ExtensionPointWithId;
+import tech.kronicle.pluginapi.scanners.models.Output;
 import tech.kronicle.sdk.models.Dependency;
 import tech.kronicle.sdk.models.ObjectWithReference;
 import tech.kronicle.sdk.models.ObjectWithScannerId;
 import tech.kronicle.sdk.models.Summary;
-import tech.kronicle.pluginapi.scanners.models.Output;
-import tech.kronicle.common.utils.CaseUtils;
-import tech.kronicle.pluginapi.ExtensionPointWithId;
 
 import java.util.ArrayList;
 import java.util.List;

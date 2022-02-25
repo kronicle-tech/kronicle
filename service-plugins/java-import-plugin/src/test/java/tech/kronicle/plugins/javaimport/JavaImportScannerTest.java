@@ -1,17 +1,17 @@
 package tech.kronicle.plugins.javaimport;
 
-import tech.kronicle.plugins.javaimport.services.JavaImportFinder;
-import tech.kronicle.sdk.models.Import;
-import tech.kronicle.sdk.models.ImportType;
-import tech.kronicle.plugintestutils.scanners.BaseCodebaseScannerTest;
-import tech.kronicle.pluginapi.scanners.models.Codebase;
-import tech.kronicle.pluginapi.scanners.models.Output;
-import tech.kronicle.pluginutils.utils.AntStyleIgnoreFileLoader;
-import tech.kronicle.pluginutils.utils.FileUtils;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
+import tech.kronicle.pluginapi.scanners.models.Codebase;
+import tech.kronicle.pluginapi.scanners.models.Output;
+import tech.kronicle.plugins.javaimport.services.JavaImportFinder;
+import tech.kronicle.plugintestutils.scanners.BaseCodebaseScannerTest;
+import tech.kronicle.pluginutils.utils.AntStyleIgnoreFileLoader;
+import tech.kronicle.pluginutils.utils.FileUtils;
+import tech.kronicle.sdk.models.Import;
+import tech.kronicle.sdk.models.ImportType;
 
 import java.util.List;
 

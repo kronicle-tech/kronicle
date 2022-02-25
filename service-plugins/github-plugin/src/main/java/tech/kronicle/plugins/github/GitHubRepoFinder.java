@@ -3,10 +3,10 @@ package tech.kronicle.plugins.github;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
+import tech.kronicle.pluginapi.finders.RepoFinder;
+import tech.kronicle.pluginapi.finders.models.ApiRepo;
 import tech.kronicle.plugins.github.client.GitHubClient;
 import tech.kronicle.plugins.github.config.GitHubConfig;
-import tech.kronicle.pluginapi.finders.models.ApiRepo;
-import tech.kronicle.pluginapi.finders.RepoFinder;
 
 import java.util.Collection;
 import java.util.List;

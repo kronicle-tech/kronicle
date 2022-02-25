@@ -1,9 +1,8 @@
 package tech.kronicle.plugins.sonarqube.services;
 
-import tech.kronicle.plugins.sonarqube.services.SonarQubeMissingComponentCollator;
-import tech.kronicle.sdk.models.SummaryMissingComponent;
-import tech.kronicle.plugins.sonarqube.models.Project;
 import org.junit.jupiter.api.Test;
+import tech.kronicle.plugins.sonarqube.models.Project;
+import tech.kronicle.sdk.models.SummaryMissingComponent;
 
 import java.util.List;
 import java.util.Set;

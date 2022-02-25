@@ -1,11 +1,11 @@
 package tech.kronicle.service.tests.sonarqube;
 
+import lombok.RequiredArgsConstructor;
 import tech.kronicle.sdk.models.Component;
 import tech.kronicle.sdk.models.Priority;
 import tech.kronicle.sdk.models.TestResult;
 import tech.kronicle.sdk.models.sonarqube.SonarQubeProject;
 import tech.kronicle.service.tests.models.TestContext;
-import lombok.RequiredArgsConstructor;
 import tech.kronicle.service.tests.sonarqube.config.SonarQubeTestConfig;
 
 import java.util.List;

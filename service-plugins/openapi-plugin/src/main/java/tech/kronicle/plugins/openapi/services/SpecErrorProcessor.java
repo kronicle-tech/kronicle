@@ -1,12 +1,12 @@
 package tech.kronicle.plugins.openapi.services;
 
-import tech.kronicle.sdk.models.ScannerError;
-import tech.kronicle.pluginutils.scanners.services.ThrowableToScannerErrorMapper;
-import tech.kronicle.pluginapi.scanners.Scanner;
 import io.swagger.v3.parser.core.models.SwaggerParseResult;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import tech.kronicle.common.utils.StringEscapeUtils;
+import tech.kronicle.pluginapi.scanners.Scanner;
+import tech.kronicle.pluginutils.scanners.services.ThrowableToScannerErrorMapper;
+import tech.kronicle.sdk.models.ScannerError;
 
 import java.util.List;
 import java.util.function.Function;

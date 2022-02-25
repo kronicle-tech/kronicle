@@ -7,11 +7,11 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import tech.kronicle.sdk.models.SoftwareRepository;
 import tech.kronicle.plugins.gradle.internal.constants.MavenPackagings;
 import tech.kronicle.plugins.gradle.internal.models.Pom;
 import tech.kronicle.plugins.gradle.internal.models.PomOutcome;
 import tech.kronicle.plugins.gradle.internal.utils.ArtifactUtils;
+import tech.kronicle.sdk.models.SoftwareRepository;
 
 import java.util.List;
 import java.util.Map;

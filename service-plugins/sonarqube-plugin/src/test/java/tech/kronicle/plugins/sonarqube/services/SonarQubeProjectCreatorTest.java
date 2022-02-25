@@ -1,11 +1,10 @@
 package tech.kronicle.plugins.sonarqube.services;
 
-import tech.kronicle.plugins.sonarqube.services.SonarQubeProjectCreator;
-import tech.kronicle.sdk.models.sonarqube.SonarQubeMeasure;
-import tech.kronicle.sdk.models.sonarqube.SonarQubeProject;
+import org.junit.jupiter.api.Test;
 import tech.kronicle.plugins.sonarqube.config.SonarQubeConfig;
 import tech.kronicle.plugins.sonarqube.models.Project;
-import org.junit.jupiter.api.Test;
+import tech.kronicle.sdk.models.sonarqube.SonarQubeMeasure;
+import tech.kronicle.sdk.models.sonarqube.SonarQubeProject;
 
 import java.time.LocalDateTime;
 import java.util.List;

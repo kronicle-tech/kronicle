@@ -1,7 +1,5 @@
 package tech.kronicle.plugins.gradle.internal.services;
 
-import org.springframework.stereotype.Component;
-import tech.kronicle.plugins.gradle.internal.models.Import;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.codehaus.groovy.ast.expr.BinaryExpression;
@@ -10,6 +8,8 @@ import org.codehaus.groovy.ast.expr.Expression;
 import org.codehaus.groovy.ast.expr.GStringExpression;
 import org.codehaus.groovy.ast.expr.PropertyExpression;
 import org.codehaus.groovy.ast.expr.VariableExpression;
+import org.springframework.stereotype.Component;
+import tech.kronicle.plugins.gradle.internal.models.Import;
 
 import java.util.Map;
 import java.util.Objects;

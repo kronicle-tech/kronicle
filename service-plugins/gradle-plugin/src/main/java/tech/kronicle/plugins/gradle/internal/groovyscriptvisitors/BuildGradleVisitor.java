@@ -1,7 +1,9 @@
 package tech.kronicle.plugins.gradle.internal.groovyscriptvisitors;
 
+import lombok.extern.slf4j.Slf4j;
+import org.codehaus.groovy.ast.expr.MethodCallExpression;
+import org.slf4j.Logger;
 import org.springframework.stereotype.Component;
-import tech.kronicle.sdk.models.Software;
 import tech.kronicle.plugins.gradle.internal.constants.GradlePlugins;
 import tech.kronicle.plugins.gradle.internal.groovyscriptvisitors.buildgradlevisitor.BuildscriptVisitor;
 import tech.kronicle.plugins.gradle.internal.groovyscriptvisitors.buildgradlevisitor.DependenciesVisitor;
@@ -15,9 +17,7 @@ import tech.kronicle.plugins.gradle.internal.services.BuildFileProcessor;
 import tech.kronicle.plugins.gradle.internal.services.ExpressionEvaluator;
 import tech.kronicle.plugins.gradle.internal.services.PluginProcessor;
 import tech.kronicle.plugins.gradle.internal.services.SoftwareRepositoryFactory;
-import lombok.extern.slf4j.Slf4j;
-import org.codehaus.groovy.ast.expr.MethodCallExpression;
-import org.slf4j.Logger;
+import tech.kronicle.sdk.models.Software;
 
 import java.util.Map;
 import java.util.Objects;

@@ -1,12 +1,12 @@
 package tech.kronicle.service.tests.zipkin;
 
+import org.junit.jupiter.api.Test;
 import tech.kronicle.sdk.models.Component;
 import tech.kronicle.sdk.models.Priority;
 import tech.kronicle.sdk.models.TestOutcome;
 import tech.kronicle.sdk.models.TestResult;
 import tech.kronicle.sdk.models.zipkin.Zipkin;
 import tech.kronicle.service.constants.CommonComponentTypeIds;
-import org.junit.jupiter.api.Test;
 import tech.kronicle.service.tests.zipkin.config.ZipkinTestConfig;
 
 import java.util.List;

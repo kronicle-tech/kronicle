@@ -1,14 +1,14 @@
 package tech.kronicle.plugins.sonarqube.services;
 
-import tech.kronicle.plugins.sonarqube.constants.MetricKeys;
-import tech.kronicle.plugins.sonarqube.constants.WebPaths;
-import tech.kronicle.sdk.models.sonarqube.SonarQubeMeasure;
-import tech.kronicle.sdk.models.sonarqube.SonarQubeProject;
-import tech.kronicle.plugins.sonarqube.config.SonarQubeConfig;
-import tech.kronicle.plugins.sonarqube.models.Project;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.web.util.UriComponentsBuilder;
+import tech.kronicle.plugins.sonarqube.config.SonarQubeConfig;
+import tech.kronicle.plugins.sonarqube.constants.MetricKeys;
+import tech.kronicle.plugins.sonarqube.constants.WebPaths;
+import tech.kronicle.plugins.sonarqube.models.Project;
+import tech.kronicle.sdk.models.sonarqube.SonarQubeMeasure;
+import tech.kronicle.sdk.models.sonarqube.SonarQubeProject;
 
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;

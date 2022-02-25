@@ -1,9 +1,9 @@
 package tech.kronicle.plugins.zipkin.services;
 
+import org.springframework.stereotype.Service;
 import tech.kronicle.plugins.zipkin.constants.TagKeys;
 import tech.kronicle.plugins.zipkin.models.api.Span;
 import tech.kronicle.pluginutils.utils.MapCollectors;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Map;

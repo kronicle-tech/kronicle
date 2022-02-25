@@ -1,8 +1,6 @@
 package tech.kronicle.plugins.zipkin.models.api;
 
 import org.junit.jupiter.api.Test;
-import tech.kronicle.plugins.zipkin.models.api.Annotation;
-import tech.kronicle.plugins.zipkin.models.api.Span;
 
 import java.util.ArrayList;
 import java.util.HashMap;

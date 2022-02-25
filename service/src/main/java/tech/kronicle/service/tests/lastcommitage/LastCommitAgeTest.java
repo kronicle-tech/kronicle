@@ -1,11 +1,11 @@
 package tech.kronicle.service.tests.lastcommitage;
 
+import lombok.RequiredArgsConstructor;
 import tech.kronicle.sdk.models.Component;
 import tech.kronicle.sdk.models.Priority;
 import tech.kronicle.sdk.models.TestResult;
 import tech.kronicle.service.tests.ComponentTest;
 import tech.kronicle.service.tests.models.TestContext;
-import lombok.RequiredArgsConstructor;
 
 import java.time.Clock;
 import java.time.LocalDate;

@@ -1,10 +1,9 @@
 package tech.kronicle.pluginapi.scanners.models;
 
-import tech.kronicle.sdk.models.Component;
-import tech.kronicle.sdk.models.ScannerError;
 import lombok.Value;
 import org.junit.jupiter.api.Test;
-import tech.kronicle.pluginapi.scanners.models.Output;
+import tech.kronicle.sdk.models.Component;
+import tech.kronicle.sdk.models.ScannerError;
 
 import javax.validation.constraints.NotNull;
 import java.util.List;

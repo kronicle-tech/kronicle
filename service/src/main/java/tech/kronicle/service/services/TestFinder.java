@@ -1,9 +1,9 @@
 package tech.kronicle.service.services;
 
-import tech.kronicle.service.tests.ComponentTest;
-import tech.kronicle.service.tests.Test;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import tech.kronicle.service.tests.ComponentTest;
+import tech.kronicle.service.tests.Test;
 
 import java.util.List;
 import java.util.Objects;

@@ -1,11 +1,10 @@
 package tech.kronicle.plugins.zipkin.services;
 
-import tech.kronicle.plugins.zipkin.constants.TagKeys;
-import tech.kronicle.plugins.zipkin.models.api.Span;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-import tech.kronicle.plugins.zipkin.services.SubComponentDependencyTagFilter;
+import tech.kronicle.plugins.zipkin.constants.TagKeys;
+import tech.kronicle.plugins.zipkin.models.api.Span;
 
 import java.util.Map;
 

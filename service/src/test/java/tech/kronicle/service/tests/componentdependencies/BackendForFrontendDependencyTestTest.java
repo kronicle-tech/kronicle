@@ -1,5 +1,6 @@
 package tech.kronicle.service.tests.componentdependencies;
 
+import org.junit.jupiter.api.Test;
 import tech.kronicle.sdk.models.Component;
 import tech.kronicle.sdk.models.Priority;
 import tech.kronicle.sdk.models.TestOutcome;
@@ -8,7 +9,6 @@ import tech.kronicle.sdk.models.zipkin.Zipkin;
 import tech.kronicle.sdk.models.zipkin.ZipkinDependency;
 import tech.kronicle.service.constants.CommonComponentTypeIds;
 import tech.kronicle.service.tests.models.TestContext;
-import org.junit.jupiter.api.Test;
 
 import java.util.List;
 import java.util.Map;

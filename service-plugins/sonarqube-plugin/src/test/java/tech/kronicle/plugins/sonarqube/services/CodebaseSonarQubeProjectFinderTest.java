@@ -1,10 +1,10 @@
 package tech.kronicle.plugins.sonarqube.services;
 
-import tech.kronicle.plugintestutils.scanners.BaseCodebaseScannerTest;
+import org.junit.jupiter.api.Test;
 import tech.kronicle.plugins.sonarqube.models.Project;
+import tech.kronicle.plugintestutils.scanners.BaseCodebaseScannerTest;
 import tech.kronicle.pluginutils.utils.AntStyleIgnoreFileLoader;
 import tech.kronicle.pluginutils.utils.FileUtils;
-import org.junit.jupiter.api.Test;
 
 import java.nio.file.Path;
 import java.util.List;

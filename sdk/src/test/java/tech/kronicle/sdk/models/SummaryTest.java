@@ -2,8 +2,8 @@ package tech.kronicle.sdk.models;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import tech.kronicle.sdk.models.sonarqube.SummarySonarQubeMetric;
 import org.junit.jupiter.api.Test;
+import tech.kronicle.sdk.models.sonarqube.SummarySonarQubeMetric;
 
 import java.util.ArrayList;
 

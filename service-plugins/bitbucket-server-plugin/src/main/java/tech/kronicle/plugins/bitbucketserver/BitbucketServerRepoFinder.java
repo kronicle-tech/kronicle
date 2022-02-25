@@ -1,10 +1,10 @@
 package tech.kronicle.plugins.bitbucketserver;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
-import tech.kronicle.plugins.bitbucketserver.client.BitbucketServerClient;
 import tech.kronicle.pluginapi.finders.RepoFinder;
 import tech.kronicle.pluginapi.finders.models.ApiRepo;
-import lombok.RequiredArgsConstructor;
+import tech.kronicle.plugins.bitbucketserver.client.BitbucketServerClient;
 
 import java.util.List;
 

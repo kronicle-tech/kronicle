@@ -10,9 +10,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.web.reactive.function.client.WebClient;
-import tech.kronicle.sdk.models.Dependency;
 import tech.kronicle.plugins.datadog.config.DatadogConfig;
 import tech.kronicle.plugins.datadog.dependencies.config.DatadogDependenciesConfig;
+import tech.kronicle.sdk.models.Dependency;
 
 import java.time.Duration;
 import java.util.List;

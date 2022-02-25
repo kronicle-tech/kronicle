@@ -2,16 +2,16 @@ package tech.kronicle.plugins.openapi.services;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
-import tech.kronicle.sdk.models.openapi.OpenApiSpec;
-import tech.kronicle.pluginapi.scanners.Scanner;
-import tech.kronicle.pluginapi.scanners.models.ComponentAndCodebase;
-import tech.kronicle.plugins.openapi.models.SpecAndErrors;
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.parser.OpenAPIV3Parser;
 import io.swagger.v3.parser.core.models.ParseOptions;
 import io.swagger.v3.parser.core.models.SwaggerParseResult;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import tech.kronicle.pluginapi.scanners.Scanner;
+import tech.kronicle.pluginapi.scanners.models.ComponentAndCodebase;
+import tech.kronicle.plugins.openapi.models.SpecAndErrors;
+import tech.kronicle.sdk.models.openapi.OpenApiSpec;
 
 import java.util.HashMap;
 import java.util.List;

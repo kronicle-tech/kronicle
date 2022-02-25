@@ -1,8 +1,8 @@
 package tech.kronicle.plugins.javaimport.services;
 
+import org.springframework.stereotype.Service;
 import tech.kronicle.sdk.models.Import;
 import tech.kronicle.sdk.models.ImportType;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.regex.Pattern;

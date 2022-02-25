@@ -1,7 +1,7 @@
 package tech.kronicle.plugins.sonarqube.services;
 
-import tech.kronicle.sdk.models.sonarqube.SonarQubeProject;
 import org.springframework.stereotype.Service;
+import tech.kronicle.sdk.models.sonarqube.SonarQubeProject;
 
 import java.nio.file.Path;
 import java.util.Collection;

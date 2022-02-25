@@ -3,9 +3,9 @@ package tech.kronicle.plugins.gitlab;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
-import tech.kronicle.plugins.gitlab.client.GitLabClient;
-import tech.kronicle.pluginapi.finders.models.ApiRepo;
 import tech.kronicle.pluginapi.finders.RepoFinder;
+import tech.kronicle.pluginapi.finders.models.ApiRepo;
+import tech.kronicle.plugins.gitlab.client.GitLabClient;
 import tech.kronicle.plugins.gitlab.config.GitLabConfig;
 import tech.kronicle.plugins.gitlab.config.GitLabHostConfig;
 

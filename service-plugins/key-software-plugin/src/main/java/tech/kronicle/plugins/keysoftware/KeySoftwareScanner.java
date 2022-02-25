@@ -1,6 +1,5 @@
 package tech.kronicle.plugins.keysoftware;
 
-import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.gradle.api.internal.artifacts.ivyservice.ivyresolve.strategy.DefaultVersionComparator;
 import org.gradle.api.internal.artifacts.ivyservice.ivyresolve.strategy.Version;

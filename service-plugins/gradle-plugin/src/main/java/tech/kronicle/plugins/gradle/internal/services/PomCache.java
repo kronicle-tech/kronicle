@@ -1,7 +1,6 @@
 package tech.kronicle.plugins.gradle.internal.services;
 
 import org.springframework.stereotype.Component;
-import tech.kronicle.plugins.gradle.config.GradleConfig;
 import tech.kronicle.plugins.gradle.config.PomCacheConfig;
 import tech.kronicle.pluginutils.services.BaseFileCache;
 import tech.kronicle.pluginutils.utils.FileUtils;

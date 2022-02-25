@@ -1,15 +1,15 @@
 package tech.kronicle.plugins.keysoftware;
 
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
+import tech.kronicle.pluginapi.scanners.models.Output;
+import tech.kronicle.plugins.keysoftware.config.KeySoftwareRuleConfig;
 import tech.kronicle.plugins.keysoftware.services.KeySoftwareRuleProvider;
+import tech.kronicle.plugintestutils.scanners.BaseScannerTest;
 import tech.kronicle.sdk.models.Component;
 import tech.kronicle.sdk.models.KeySoftware;
 import tech.kronicle.sdk.models.Software;
-import tech.kronicle.plugintestutils.scanners.BaseScannerTest;
-import tech.kronicle.plugins.keysoftware.config.KeySoftwareRuleConfig;
-import tech.kronicle.pluginapi.scanners.models.Output;
-import org.junit.jupiter.api.Test;
 
 import java.util.List;
 

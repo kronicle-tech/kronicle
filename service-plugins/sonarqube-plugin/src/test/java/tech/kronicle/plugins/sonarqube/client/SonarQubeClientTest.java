@@ -1,18 +1,15 @@
 package tech.kronicle.plugins.sonarqube.client;
 
 import com.github.tomakehurst.wiremock.WireMockServer;
-import tech.kronicle.sdk.models.sonarqube.SonarQubeMeasure;
-import tech.kronicle.sdk.models.sonarqube.SummarySonarQubeMetric;
-import tech.kronicle.plugins.sonarqube.config.SonarQubeConfig;
-import tech.kronicle.plugins.sonarqube.models.Project;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.context.properties.EnableConfigurationProperties;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
+import tech.kronicle.plugins.sonarqube.models.Project;
+import tech.kronicle.sdk.models.sonarqube.SonarQubeMeasure;
+import tech.kronicle.sdk.models.sonarqube.SummarySonarQubeMetric;
 
 import java.util.List;
 import java.util.stream.Collectors;

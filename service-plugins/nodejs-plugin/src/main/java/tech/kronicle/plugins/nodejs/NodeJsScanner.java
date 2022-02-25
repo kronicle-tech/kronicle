@@ -3,14 +3,14 @@ package tech.kronicle.plugins.nodejs;
 import lombok.RequiredArgsConstructor;
 import org.pf4j.Extension;
 import org.springframework.stereotype.Component;
-import tech.kronicle.sdk.models.Software;
-import tech.kronicle.sdk.models.nodejs.NodeJs;
 import tech.kronicle.pluginapi.scanners.CodebaseScanner;
 import tech.kronicle.pluginapi.scanners.models.Codebase;
 import tech.kronicle.pluginapi.scanners.models.Output;
 import tech.kronicle.plugins.nodejs.internal.constants.NodeJsFileNames;
 import tech.kronicle.plugins.nodejs.internal.services.npm.NpmPackageExtractor;
 import tech.kronicle.pluginutils.utils.FileUtils;
+import tech.kronicle.sdk.models.Software;
+import tech.kronicle.sdk.models.nodejs.NodeJs;
 
 import java.nio.file.Path;
 import java.util.List;

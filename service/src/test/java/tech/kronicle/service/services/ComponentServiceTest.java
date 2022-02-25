@@ -1,5 +1,12 @@
 package tech.kronicle.service.services;
 
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.MethodSource;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
 import tech.kronicle.sdk.models.Area;
 import tech.kronicle.sdk.models.Component;
 import tech.kronicle.sdk.models.Scanner;
@@ -10,13 +17,6 @@ import tech.kronicle.sdk.models.Team;
 import tech.kronicle.sdk.models.TestOutcome;
 import tech.kronicle.sdk.models.TestResult;
 import tech.kronicle.service.repositories.ComponentRepository;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.MethodSource;
-import org.mockito.Mock;
-import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.List;
 import java.util.Optional;

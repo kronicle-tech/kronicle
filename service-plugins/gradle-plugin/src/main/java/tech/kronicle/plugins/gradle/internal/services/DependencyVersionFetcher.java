@@ -1,15 +1,15 @@
 package tech.kronicle.plugins.gradle.internal.services;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
-import tech.kronicle.sdk.models.Software;
-import tech.kronicle.sdk.models.SoftwareDependencyType;
-import tech.kronicle.sdk.models.SoftwareRepository;
-import tech.kronicle.sdk.models.SoftwareType;
 import tech.kronicle.plugins.gradle.internal.constants.MavenPackagings;
 import tech.kronicle.plugins.gradle.internal.models.Pom;
 import tech.kronicle.plugins.gradle.internal.models.PomOutcome;
 import tech.kronicle.plugins.gradle.internal.utils.ArtifactUtils;
-import lombok.RequiredArgsConstructor;
+import tech.kronicle.sdk.models.Software;
+import tech.kronicle.sdk.models.SoftwareDependencyType;
+import tech.kronicle.sdk.models.SoftwareRepository;
+import tech.kronicle.sdk.models.SoftwareType;
 
 import java.util.HashSet;
 import java.util.Map;

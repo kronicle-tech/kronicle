@@ -14,7 +14,10 @@ import java.util.List;
 import java.util.function.Consumer;
 import java.util.stream.IntStream;
 
-import static com.github.tomakehurst.wiremock.client.WireMock.*;
+import static com.github.tomakehurst.wiremock.client.WireMock.aResponse;
+import static com.github.tomakehurst.wiremock.client.WireMock.equalTo;
+import static com.github.tomakehurst.wiremock.client.WireMock.get;
+import static com.github.tomakehurst.wiremock.client.WireMock.urlPathEqualTo;
 import static java.util.Objects.nonNull;
 
 public class GitHubApiWireMockFactory {

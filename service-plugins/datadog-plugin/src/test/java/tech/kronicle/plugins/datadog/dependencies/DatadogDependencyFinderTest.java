@@ -5,9 +5,9 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import tech.kronicle.plugins.datadog.DatadogDependencyFinder;
-import tech.kronicle.sdk.models.Dependency;
 import tech.kronicle.plugins.datadog.dependencies.client.DatadogDependencyClient;
 import tech.kronicle.plugins.datadog.dependencies.config.DatadogDependenciesConfig;
+import tech.kronicle.sdk.models.Dependency;
 
 import java.util.List;
 

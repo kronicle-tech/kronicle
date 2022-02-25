@@ -4,8 +4,8 @@ import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlRootElement;
-import tech.kronicle.plugins.gradle.internal.models.mavenxml.metadata.Versioning;
 import lombok.Data;
+import tech.kronicle.plugins.gradle.internal.models.mavenxml.metadata.Versioning;
 
 @Data
 @XmlRootElement

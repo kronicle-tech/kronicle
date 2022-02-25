@@ -2,11 +2,11 @@ package tech.kronicle.plugins.manualdependencies;
 
 import org.pf4j.Extension;
 import tech.kronicle.componentmetadata.models.ComponentMetadata;
+import tech.kronicle.pluginapi.finders.DependencyFinder;
 import tech.kronicle.sdk.models.Component;
 import tech.kronicle.sdk.models.ComponentDependency;
 import tech.kronicle.sdk.models.Dependency;
 import tech.kronicle.sdk.models.DependencyDirection;
-import tech.kronicle.pluginapi.finders.DependencyFinder;
 
 import java.util.Collection;
 import java.util.List;

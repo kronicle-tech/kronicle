@@ -11,8 +11,8 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.http.HttpMethod;
 import org.springframework.web.reactive.function.client.WebClient;
 import org.springframework.web.reactive.function.client.WebClientResponseException;
-import tech.kronicle.plugins.gradle.config.HttpHeaderConfig;
 import tech.kronicle.plugins.gradle.config.DownloaderConfig;
+import tech.kronicle.plugins.gradle.config.HttpHeaderConfig;
 
 import java.time.Duration;
 import java.util.List;

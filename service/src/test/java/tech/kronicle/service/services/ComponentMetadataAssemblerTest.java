@@ -1,14 +1,14 @@
 package tech.kronicle.service.services;
 
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.MethodSource;
 import tech.kronicle.sdk.models.Area;
 import tech.kronicle.sdk.models.Component;
 import tech.kronicle.sdk.models.ComponentTeam;
 import tech.kronicle.sdk.models.ComponentTeamType;
 import tech.kronicle.sdk.models.ObjectWithId;
 import tech.kronicle.sdk.models.Team;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.LinkedHashMap;
 import java.util.List;

@@ -3,8 +3,8 @@ package tech.kronicle.plugins.manualdependencies;
 import org.pf4j.PluginWrapper;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import tech.kronicle.plugins.manualdependencies.spring.SpringConfiguration;
 import tech.kronicle.pluginapi.KroniclePlugin;
+import tech.kronicle.plugins.manualdependencies.spring.SpringConfiguration;
 
 public class ManualDependencyPlugin extends KroniclePlugin {
 

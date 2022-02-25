@@ -1,21 +1,21 @@
 package tech.kronicle.plugins.sonarqube;
 
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
 import tech.kronicle.componentmetadata.models.ComponentMetadata;
+import tech.kronicle.pluginapi.scanners.models.Codebase;
+import tech.kronicle.pluginapi.scanners.models.ComponentAndCodebase;
+import tech.kronicle.pluginapi.scanners.models.Output;
+import tech.kronicle.plugins.sonarqube.services.SonarQubeService;
 import tech.kronicle.sdk.models.Component;
 import tech.kronicle.sdk.models.Repo;
 import tech.kronicle.sdk.models.Summary;
 import tech.kronicle.sdk.models.SummaryMissingComponent;
 import tech.kronicle.sdk.models.sonarqube.SonarQubeProject;
 import tech.kronicle.sdk.models.sonarqube.SummarySonarQubeMetric;
-import tech.kronicle.pluginapi.scanners.models.Codebase;
-import tech.kronicle.pluginapi.scanners.models.ComponentAndCodebase;
-import tech.kronicle.pluginapi.scanners.models.Output;
-import tech.kronicle.plugins.sonarqube.services.SonarQubeService;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.Mock;
-import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.nio.file.Path;
 import java.util.List;

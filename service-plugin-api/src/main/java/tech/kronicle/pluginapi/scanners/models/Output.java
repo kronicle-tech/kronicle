@@ -1,8 +1,8 @@
 package tech.kronicle.pluginapi.scanners.models;
 
+import lombok.Value;
 import tech.kronicle.sdk.models.Component;
 import tech.kronicle.sdk.models.ScannerError;
-import lombok.Value;
 
 import javax.validation.constraints.NotNull;
 import java.util.List;

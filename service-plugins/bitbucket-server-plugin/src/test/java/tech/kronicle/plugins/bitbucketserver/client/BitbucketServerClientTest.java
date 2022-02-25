@@ -1,9 +1,6 @@
 package tech.kronicle.plugins.bitbucketserver.client;
 
 import com.github.tomakehurst.wiremock.WireMockServer;
-import tech.kronicle.pluginapi.finders.models.ApiRepo;
-import tech.kronicle.plugins.bitbucketserver.config.BitbucketServerConfig;
-import tech.kronicle.plugins.bitbucketserver.config.BitbucketServerHostConfig;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -13,6 +10,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.web.reactive.function.client.WebClient;
+import tech.kronicle.pluginapi.finders.models.ApiRepo;
+import tech.kronicle.plugins.bitbucketserver.config.BitbucketServerConfig;
+import tech.kronicle.plugins.bitbucketserver.config.BitbucketServerHostConfig;
 
 import java.time.Duration;
 import java.util.List;

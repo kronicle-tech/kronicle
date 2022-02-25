@@ -2,18 +2,18 @@ package tech.kronicle.plugins.zipkin.client;
 
 import io.github.resilience4j.retry.Retry;
 import io.github.resilience4j.retry.RetryRegistry;
-import org.springframework.stereotype.Component;
-import tech.kronicle.plugins.zipkin.config.ZipkinConfig;
-import tech.kronicle.plugins.zipkin.constants.ZipkinApiPaths;
-import tech.kronicle.plugins.zipkin.models.api.Span;
-import tech.kronicle.sdk.models.zipkin.ZipkinDependency;
-import tech.kronicle.pluginutils.services.UriVariablesBuilder;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.client.ClientResponse;
 import org.springframework.web.reactive.function.client.WebClient;
+import tech.kronicle.plugins.zipkin.config.ZipkinConfig;
+import tech.kronicle.plugins.zipkin.constants.ZipkinApiPaths;
+import tech.kronicle.plugins.zipkin.models.api.Span;
+import tech.kronicle.pluginutils.services.UriVariablesBuilder;
+import tech.kronicle.sdk.models.zipkin.ZipkinDependency;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;

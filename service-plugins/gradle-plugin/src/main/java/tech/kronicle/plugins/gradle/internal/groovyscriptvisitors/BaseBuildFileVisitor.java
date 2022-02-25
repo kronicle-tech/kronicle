@@ -1,5 +1,10 @@
 package tech.kronicle.plugins.gradle.internal.groovyscriptvisitors;
 
+import org.codehaus.groovy.ast.expr.BinaryExpression;
+import org.codehaus.groovy.ast.expr.Expression;
+import org.codehaus.groovy.ast.expr.MethodCallExpression;
+import org.codehaus.groovy.ast.expr.PropertyExpression;
+import org.codehaus.groovy.ast.expr.VariableExpression;
 import tech.kronicle.plugins.gradle.internal.groovyscriptvisitors.buildgradlevisitor.PluginsVisitor;
 import tech.kronicle.plugins.gradle.internal.groovyscriptvisitors.buildgradlevisitor.RepositoriesVisitor;
 import tech.kronicle.plugins.gradle.internal.services.BuildFileLoader;
@@ -7,11 +12,6 @@ import tech.kronicle.plugins.gradle.internal.services.BuildFileProcessor;
 import tech.kronicle.plugins.gradle.internal.services.ExpressionEvaluator;
 import tech.kronicle.plugins.gradle.internal.services.PluginProcessor;
 import tech.kronicle.plugins.gradle.internal.services.SoftwareRepositoryFactory;
-import org.codehaus.groovy.ast.expr.BinaryExpression;
-import org.codehaus.groovy.ast.expr.Expression;
-import org.codehaus.groovy.ast.expr.MethodCallExpression;
-import org.codehaus.groovy.ast.expr.PropertyExpression;
-import org.codehaus.groovy.ast.expr.VariableExpression;
 
 public abstract class BaseBuildFileVisitor extends BaseVisitor {
 

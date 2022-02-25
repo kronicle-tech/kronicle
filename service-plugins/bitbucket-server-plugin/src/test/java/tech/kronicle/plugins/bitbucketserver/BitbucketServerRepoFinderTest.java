@@ -1,12 +1,12 @@
 package tech.kronicle.plugins.bitbucketserver;
 
-import tech.kronicle.pluginapi.finders.models.ApiRepo;
-import tech.kronicle.plugins.bitbucketserver.client.BitbucketServerClient;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import tech.kronicle.pluginapi.finders.models.ApiRepo;
+import tech.kronicle.plugins.bitbucketserver.client.BitbucketServerClient;
 
 import java.util.List;
 

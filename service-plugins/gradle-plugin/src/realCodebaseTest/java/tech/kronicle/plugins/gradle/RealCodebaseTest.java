@@ -2,15 +2,14 @@ package tech.kronicle.plugins.gradle;
 
 import io.micronaut.context.annotation.Bean;
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
-import javax.inject.Inject;
-
-import tech.kronicle.sdk.models.Repo;
-import tech.kronicle.plugins.gradle.testbeans.TestDataDir;
-import tech.kronicle.pluginapi.scanners.models.Codebase;
-import tech.kronicle.pluginapi.scanners.models.Output;
 import org.junit.jupiter.api.DynamicTest;
 import org.junit.jupiter.api.TestFactory;
+import tech.kronicle.pluginapi.scanners.models.Codebase;
+import tech.kronicle.pluginapi.scanners.models.Output;
+import tech.kronicle.plugins.gradle.testbeans.TestDataDir;
+import tech.kronicle.sdk.models.Repo;
 
+import javax.inject.Inject;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;

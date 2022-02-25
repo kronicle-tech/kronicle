@@ -4,7 +4,6 @@ import lombok.Value;
 import org.junit.jupiter.api.Test;
 import tech.kronicle.plugins.github.config.GitHubAccessTokenConfig;
 import tech.kronicle.plugins.github.models.ApiResponseCacheEntry;
-import tech.kronicle.plugins.github.services.ApiResponseCache;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

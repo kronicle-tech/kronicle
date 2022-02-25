@@ -1,7 +1,6 @@
 package tech.kronicle.pluginutils.utils;
 
 import org.junit.jupiter.api.Test;
-import tech.kronicle.pluginutils.utils.MapCollectors;
 
 import java.util.Map;
 import java.util.stream.Stream;

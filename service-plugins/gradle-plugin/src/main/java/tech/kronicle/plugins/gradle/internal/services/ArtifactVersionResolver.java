@@ -1,8 +1,5 @@
 package tech.kronicle.plugins.gradle.internal.services;
 
-import org.springframework.stereotype.Component;
-import tech.kronicle.sdk.models.SoftwareRepository;
-import tech.kronicle.plugins.gradle.internal.utils.ArtifactUtils;
 import lombok.RequiredArgsConstructor;
 import org.gradle.api.internal.artifacts.ivyservice.ivyresolve.strategy.CachingVersionSelectorScheme;
 import org.gradle.api.internal.artifacts.ivyservice.ivyresolve.strategy.DefaultVersionComparator;
@@ -10,7 +7,10 @@ import org.gradle.api.internal.artifacts.ivyservice.ivyresolve.strategy.DefaultV
 import org.gradle.api.internal.artifacts.ivyservice.ivyresolve.strategy.Version;
 import org.gradle.api.internal.artifacts.ivyservice.ivyresolve.strategy.VersionParser;
 import org.gradle.api.internal.artifacts.ivyservice.ivyresolve.strategy.VersionSelector;
+import org.springframework.stereotype.Component;
 import tech.kronicle.common.utils.StringEscapeUtils;
+import tech.kronicle.plugins.gradle.internal.utils.ArtifactUtils;
+import tech.kronicle.sdk.models.SoftwareRepository;
 
 import javax.annotation.PostConstruct;
 import java.util.Comparator;

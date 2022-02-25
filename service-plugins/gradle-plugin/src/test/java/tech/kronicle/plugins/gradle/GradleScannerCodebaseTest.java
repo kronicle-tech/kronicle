@@ -7,6 +7,8 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
+import tech.kronicle.pluginapi.scanners.models.Codebase;
+import tech.kronicle.pluginapi.scanners.models.Output;
 import tech.kronicle.sdk.models.Component;
 import tech.kronicle.sdk.models.Software;
 import tech.kronicle.sdk.models.SoftwareDependencyType;
@@ -14,8 +16,6 @@ import tech.kronicle.sdk.models.SoftwareRepository;
 import tech.kronicle.sdk.models.SoftwareRepositoryScope;
 import tech.kronicle.sdk.models.SoftwareRepositoryType;
 import tech.kronicle.sdk.models.SoftwareType;
-import tech.kronicle.pluginapi.scanners.models.Codebase;
-import tech.kronicle.pluginapi.scanners.models.Output;
 
 import java.util.List;
 import java.util.Map;

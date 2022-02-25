@@ -3,9 +3,9 @@ package tech.kronicle.plugins.bitbucketserver;
 import org.pf4j.PluginWrapper;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import tech.kronicle.pluginapi.KroniclePlugin;
 import tech.kronicle.plugins.bitbucketserver.config.BitbucketServerConfig;
 import tech.kronicle.plugins.bitbucketserver.spring.SpringConfiguration;
-import tech.kronicle.pluginapi.KroniclePlugin;
 
 public class BitbucketServerPlugin extends KroniclePlugin {
 

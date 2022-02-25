@@ -4,6 +4,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.pf4j.Extension;
 import tech.kronicle.componentmetadata.models.ComponentMetadata;
+import tech.kronicle.pluginapi.scanners.ComponentScanner;
+import tech.kronicle.pluginapi.scanners.models.Output;
 import tech.kronicle.plugins.zipkin.config.ZipkinConfig;
 import tech.kronicle.plugins.zipkin.models.api.Service;
 import tech.kronicle.plugins.zipkin.models.api.Span;
@@ -19,8 +21,6 @@ import tech.kronicle.sdk.models.SummaryComponentDependencies;
 import tech.kronicle.sdk.models.SummarySubComponentDependencies;
 import tech.kronicle.sdk.models.zipkin.Zipkin;
 import tech.kronicle.sdk.models.zipkin.ZipkinDependency;
-import tech.kronicle.pluginapi.scanners.ComponentScanner;
-import tech.kronicle.pluginapi.scanners.models.Output;
 
 import javax.validation.Valid;
 import java.util.List;

@@ -1,9 +1,9 @@
 package tech.kronicle.plugins.javaimport.internals.services;
 
+import org.junit.jupiter.api.Test;
 import tech.kronicle.plugins.javaimport.services.JavaImportFinder;
 import tech.kronicle.sdk.models.Import;
 import tech.kronicle.sdk.models.ImportType;
-import org.junit.jupiter.api.Test;
 
 import java.util.List;
 

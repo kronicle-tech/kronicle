@@ -3,8 +3,8 @@ package tech.kronicle.plugins.gradle.internal.models.mavenxml.project;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
-import tech.kronicle.plugins.gradle.internal.models.mavenxml.ProjectCoordinates;
 import lombok.Data;
+import tech.kronicle.plugins.gradle.internal.models.mavenxml.ProjectCoordinates;
 
 @Data
 @XmlAccessorType(XmlAccessType.FIELD)

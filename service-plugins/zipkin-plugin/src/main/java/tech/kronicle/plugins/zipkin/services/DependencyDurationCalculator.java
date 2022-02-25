@@ -1,9 +1,9 @@
 package tech.kronicle.plugins.zipkin.services;
 
-import tech.kronicle.sdk.models.SummaryComponentDependencyDuration;
-import tech.kronicle.plugins.zipkin.models.ObjectWithDurations;
 import org.apache.commons.math3.stat.descriptive.rank.Percentile;
 import org.springframework.stereotype.Service;
+import tech.kronicle.plugins.zipkin.models.ObjectWithDurations;
+import tech.kronicle.sdk.models.SummaryComponentDependencyDuration;
 
 import java.util.Collection;
 import java.util.List;

@@ -1,7 +1,6 @@
 package tech.kronicle.service.services;
 
-import tech.kronicle.sdk.models.Component;
-import tech.kronicle.sdk.models.Repo;
+import org.junit.jupiter.api.Test;
 import tech.kronicle.pluginapi.scanners.CodebaseScanner;
 import tech.kronicle.pluginapi.scanners.ComponentAndCodebaseScanner;
 import tech.kronicle.pluginapi.scanners.ComponentScanner;
@@ -11,7 +10,8 @@ import tech.kronicle.pluginapi.scanners.Scanner;
 import tech.kronicle.pluginapi.scanners.models.Codebase;
 import tech.kronicle.pluginapi.scanners.models.ComponentAndCodebase;
 import tech.kronicle.pluginapi.scanners.models.Output;
-import org.junit.jupiter.api.Test;
+import tech.kronicle.sdk.models.Component;
+import tech.kronicle.sdk.models.Repo;
 import tech.kronicle.service.services.testutils.FakePluginManager;
 
 import java.nio.file.Path;

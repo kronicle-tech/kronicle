@@ -1,7 +1,6 @@
 package tech.kronicle.pluginutils.utils;
 
 import org.junit.jupiter.api.Test;
-import tech.kronicle.pluginutils.utils.AntStyleIgnoreFileLoader;
 
 import java.util.List;
 

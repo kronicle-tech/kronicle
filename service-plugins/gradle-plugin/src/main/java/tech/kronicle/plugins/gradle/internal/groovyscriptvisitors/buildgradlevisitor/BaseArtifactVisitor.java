@@ -1,15 +1,5 @@
 package tech.kronicle.plugins.gradle.internal.groovyscriptvisitors.buildgradlevisitor;
 
-import tech.kronicle.plugins.gradle.internal.groovyscriptvisitors.BaseVisitor;
-import tech.kronicle.plugins.gradle.internal.groovyscriptvisitors.ExpressionVisitOutcome;
-import tech.kronicle.plugins.gradle.internal.services.BuildFileLoader;
-import tech.kronicle.plugins.gradle.internal.services.BuildFileProcessor;
-import tech.kronicle.plugins.gradle.internal.services.BillOfMaterialsLogger;
-import tech.kronicle.plugins.gradle.internal.services.DependencyVersionFetcher;
-import tech.kronicle.plugins.gradle.internal.services.ExpressionEvaluator;
-import tech.kronicle.plugins.gradle.internal.services.SoftwareRepositoryFactory;
-import tech.kronicle.plugins.gradle.internal.utils.ArtifactUtils;
-import tech.kronicle.pluginutils.utils.ObjectReference;
 import org.codehaus.groovy.ast.expr.ArgumentListExpression;
 import org.codehaus.groovy.ast.expr.BinaryExpression;
 import org.codehaus.groovy.ast.expr.ClosureExpression;
@@ -20,6 +10,16 @@ import org.codehaus.groovy.ast.expr.MapExpression;
 import org.codehaus.groovy.ast.expr.MethodCallExpression;
 import org.codehaus.groovy.ast.expr.PropertyExpression;
 import org.codehaus.groovy.ast.expr.TupleExpression;
+import tech.kronicle.plugins.gradle.internal.groovyscriptvisitors.BaseVisitor;
+import tech.kronicle.plugins.gradle.internal.groovyscriptvisitors.ExpressionVisitOutcome;
+import tech.kronicle.plugins.gradle.internal.services.BillOfMaterialsLogger;
+import tech.kronicle.plugins.gradle.internal.services.BuildFileLoader;
+import tech.kronicle.plugins.gradle.internal.services.BuildFileProcessor;
+import tech.kronicle.plugins.gradle.internal.services.DependencyVersionFetcher;
+import tech.kronicle.plugins.gradle.internal.services.ExpressionEvaluator;
+import tech.kronicle.plugins.gradle.internal.services.SoftwareRepositoryFactory;
+import tech.kronicle.plugins.gradle.internal.utils.ArtifactUtils;
+import tech.kronicle.pluginutils.utils.ObjectReference;
 
 import java.util.Objects;
 

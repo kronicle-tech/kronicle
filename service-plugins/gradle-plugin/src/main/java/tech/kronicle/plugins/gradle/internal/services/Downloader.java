@@ -11,8 +11,8 @@ import org.springframework.web.reactive.function.client.WebClient;
 import org.springframework.web.reactive.function.client.WebClientResponseException;
 import reactor.core.publisher.Mono;
 import tech.kronicle.common.utils.StringEscapeUtils;
-import tech.kronicle.plugins.gradle.config.HttpHeaderConfig;
 import tech.kronicle.plugins.gradle.config.DownloaderConfig;
+import tech.kronicle.plugins.gradle.config.HttpHeaderConfig;
 
 import java.util.List;
 import java.util.Optional;

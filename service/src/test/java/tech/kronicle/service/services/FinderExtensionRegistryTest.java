@@ -2,9 +2,9 @@ package tech.kronicle.service.services;
 
 import org.junit.jupiter.api.Test;
 import tech.kronicle.componentmetadata.models.ComponentMetadata;
-import tech.kronicle.sdk.models.Dependency;
 import tech.kronicle.pluginapi.finders.DependencyFinder;
 import tech.kronicle.pluginapi.finders.Finder;
+import tech.kronicle.sdk.models.Dependency;
 import tech.kronicle.service.services.testutils.FakePluginManager;
 
 import java.util.List;
