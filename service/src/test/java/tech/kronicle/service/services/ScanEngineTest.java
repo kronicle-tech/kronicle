@@ -1,6 +1,24 @@
 package tech.kronicle.service.services;
 
+import lombok.Builder;
+import lombok.RequiredArgsConstructor;
+import lombok.Value;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
 import tech.kronicle.componentmetadata.models.ComponentMetadata;
+import tech.kronicle.pluginapi.scanners.CodebaseScanner;
+import tech.kronicle.pluginapi.scanners.ComponentAndCodebaseScanner;
+import tech.kronicle.pluginapi.scanners.ComponentScanner;
+import tech.kronicle.pluginapi.scanners.LateComponentScanner;
+import tech.kronicle.pluginapi.scanners.RepoScanner;
+import tech.kronicle.pluginapi.scanners.Scanner;
+import tech.kronicle.pluginapi.scanners.models.Codebase;
+import tech.kronicle.pluginapi.scanners.models.ComponentAndCodebase;
+import tech.kronicle.pluginapi.scanners.models.Output;
+import tech.kronicle.pluginutils.scanners.services.ThrowableToScannerErrorMapper;
 import tech.kronicle.sdk.models.Component;
 import tech.kronicle.sdk.models.Dependency;
 import tech.kronicle.sdk.models.ObjectWithReference;
@@ -11,24 +29,6 @@ import tech.kronicle.sdk.models.SummaryComponentDependencies;
 import tech.kronicle.sdk.models.SummaryComponentDependencyNode;
 import tech.kronicle.sdk.models.TechDebt;
 import tech.kronicle.service.exceptions.ValidationException;
-import tech.kronicle.service.mappers.ThrowableToScannerErrorMapper;
-import tech.kronicle.service.scanners.CodebaseScanner;
-import tech.kronicle.service.scanners.ComponentAndCodebaseScanner;
-import tech.kronicle.service.scanners.ComponentScanner;
-import tech.kronicle.service.scanners.LateComponentScanner;
-import tech.kronicle.service.scanners.RepoScanner;
-import tech.kronicle.service.scanners.Scanner;
-import tech.kronicle.service.scanners.models.Codebase;
-import tech.kronicle.service.scanners.models.ComponentAndCodebase;
-import tech.kronicle.service.scanners.models.Output;
-import lombok.Builder;
-import lombok.RequiredArgsConstructor;
-import lombok.Value;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.Mock;
-import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.nio.file.Path;
 import java.util.ArrayList;
@@ -57,7 +57,7 @@ public class ScanEngineTest {
     @Mock
     private MasterDependencyFinder masterDependencyFinder;
     @Mock
-    private ScannerRegistry mockScannerRegistry;
+    private ScannerExtensionRegistry mockScannerRegistry;
     @Mock
     private ValidatorService mockValidatorService;
     private ScanEngine underTest;

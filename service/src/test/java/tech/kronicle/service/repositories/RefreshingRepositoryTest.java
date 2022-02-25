@@ -3,11 +3,11 @@ package tech.kronicle.service.repositories;
 import ch.qos.logback.classic.Level;
 import ch.qos.logback.classic.spi.ILoggingEvent;
 import ch.qos.logback.classic.spi.IThrowableProxy;
-import tech.kronicle.service.testutils.LogCaptor;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
+import tech.kronicle.plugintestutils.testutils.LogCaptor;
 
 import java.util.ArrayList;
 import java.util.List;

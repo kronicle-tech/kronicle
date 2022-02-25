@@ -2,7 +2,6 @@ package tech.kronicle.service.repositories;
 
 import ch.qos.logback.classic.spi.ILoggingEvent;
 import com.fasterxml.jackson.dataformat.yaml.YAMLMapper;
-import org.eclipse.jgit.api.errors.GitAPIException;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -10,22 +9,19 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import tech.kronicle.componentmetadata.models.ComponentMetadata;
+import tech.kronicle.pluginapi.finders.models.ApiRepo;
+import tech.kronicle.pluginapi.git.GitCloner;
+import tech.kronicle.plugintestutils.BaseTest;
+import tech.kronicle.plugintestutils.testutils.LogCaptor;
+import tech.kronicle.pluginutils.utils.AntStyleIgnoreFileLoader;
+import tech.kronicle.pluginutils.utils.FileUtils;
 import tech.kronicle.sdk.models.Area;
 import tech.kronicle.sdk.models.Component;
 import tech.kronicle.sdk.models.Team;
-import tech.kronicle.service.BaseTest;
-import tech.kronicle.service.models.ApiRepo;
-import tech.kronicle.service.models.RepoDirAndGit;
 import tech.kronicle.service.repofinders.services.RepoFinderService;
-import tech.kronicle.service.services.GitCloner;
 import tech.kronicle.service.services.ValidatorService;
-import tech.kronicle.service.testutils.LogCaptor;
 import tech.kronicle.service.testutils.ValidatorServiceFactory;
-import tech.kronicle.service.utils.AntStyleIgnoreFileLoader;
-import tech.kronicle.service.utils.FileUtils;
 
-import java.io.IOException;
-import java.net.URISyntaxException;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -59,12 +55,12 @@ public class ComponentMetadataRepositoryTest extends BaseTest {
     }
 
     @Test
-    public void getComponentMetadataShouldGetComponentMetadataFromMultipleRepos() throws IOException, GitAPIException, URISyntaxException {
+    public void getComponentMetadataShouldGetComponentMetadataFromMultipleRepos() {
         // Given
-        when(mockGitCloner.cloneOrPullRepo(REPO_URL_1)).thenReturn(RepoDirAndGit.builder().repoDir(getResourcesDir("Repo1")).build());
-        when(mockGitCloner.cloneOrPullRepo(REPO_URL_2)).thenReturn(RepoDirAndGit.builder().repoDir(getResourcesDir("Repo2")).build());
-        when(mockGitCloner.cloneOrPullRepo(REPO_URL_3)).thenReturn(RepoDirAndGit.builder().repoDir(getResourcesDir("Repo3")).build());
-        when(mockGitCloner.cloneOrPullRepo(REPO_URL_4)).thenReturn(RepoDirAndGit.builder().repoDir(getResourcesDir("Repo4")).build());
+        when(mockGitCloner.cloneOrPullRepo(REPO_URL_1)).thenReturn(getResourcesDir("Repo1"));
+        when(mockGitCloner.cloneOrPullRepo(REPO_URL_2)).thenReturn(getResourcesDir("Repo2"));
+        when(mockGitCloner.cloneOrPullRepo(REPO_URL_3)).thenReturn(getResourcesDir("Repo3"));
+        when(mockGitCloner.cloneOrPullRepo(REPO_URL_4)).thenReturn(getResourcesDir("Repo4"));
         mockRepoFinderService(
                 new ApiRepo(REPO_URL_1, true),
                 new ApiRepo(REPO_URL_2, true),
@@ -109,9 +105,9 @@ public class ComponentMetadataRepositoryTest extends BaseTest {
     }
 
     @Test
-    public void getComponentMetadataShouldIgnoreARepoWithNoComponentMetadataFile() throws IOException, GitAPIException, URISyntaxException {
+    public void getComponentMetadataShouldIgnoreARepoWithNoComponentMetadataFile() {
         // Given
-        when(mockGitCloner.cloneOrPullRepo(REPO_URL_2)).thenReturn(RepoDirAndGit.builder().repoDir(getResourcesDir("Repo2")).build());
+        when(mockGitCloner.cloneOrPullRepo(REPO_URL_2)).thenReturn(getResourcesDir("Repo2"));
         mockRepoFinderService(new ApiRepo(REPO_URL_1, false), new ApiRepo(REPO_URL_2, true));
         underTest = new ComponentMetadataRepository(mockRepoFinderService, mockGitCloner, new FileUtils(new AntStyleIgnoreFileLoader()), new YAMLMapper(), validatorService);
 
@@ -134,10 +130,10 @@ public class ComponentMetadataRepositoryTest extends BaseTest {
     }
 
     @Test
-    public void getComponentMetadataShouldSkipARepoIfCloningOrPullingTheRepoFails() throws IOException, GitAPIException, URISyntaxException {
+    public void getComponentMetadataShouldSkipARepoIfCloningOrPullingTheRepoFails() {
         // Given
-        when(mockGitCloner.cloneOrPullRepo(REPO_URL_1)).thenReturn(RepoDirAndGit.builder().repoDir(getResourcesDir("Repo1")).build());
-        when(mockGitCloner.cloneOrPullRepo(REPO_URL_2)).thenThrow(new IOException("Test Exception"));
+        when(mockGitCloner.cloneOrPullRepo(REPO_URL_1)).thenReturn(getResourcesDir("Repo1"));
+        when(mockGitCloner.cloneOrPullRepo(REPO_URL_2)).thenThrow(new RuntimeException("Test Exception"));
         mockRepoFinderService(new ApiRepo(REPO_URL_1, true), new ApiRepo(REPO_URL_2, true));
         underTest = new ComponentMetadataRepository(mockRepoFinderService, mockGitCloner, new FileUtils(new AntStyleIgnoreFileLoader()), new YAMLMapper(), validatorService);
 
@@ -150,7 +146,7 @@ public class ComponentMetadataRepositoryTest extends BaseTest {
         ILoggingEvent event;
         event = events.get(0);
         assertThat(event.getFormattedMessage()).isEqualTo("Could not read Component Metadata file from repo \"https://example.com/repo-2.git\"");
-        assertThat(event.getThrowableProxy().getClassName()).isEqualTo("java.io.IOException");
+        assertThat(event.getThrowableProxy().getClassName()).isEqualTo("java.lang.RuntimeException");
         assertThat(event.getThrowableProxy().getMessage()).isEqualTo("Test Exception");
 
         assertThat(returnValue.getAreas()).hasSize(2);
@@ -168,10 +164,10 @@ public class ComponentMetadataRepositoryTest extends BaseTest {
     }
 
     @Test
-    public void getComponentMetadataShouldSkipARepoIfItSaysItContainsAComponentMetadataButActuallyDoesNotContainOne() throws IOException, GitAPIException, URISyntaxException {
+    public void getComponentMetadataShouldSkipARepoIfItSaysItContainsAComponentMetadataButActuallyDoesNotContainOne() {
         // Given
-        when(mockGitCloner.cloneOrPullRepo(REPO_URL_1)).thenReturn(RepoDirAndGit.builder().repoDir(getResourcesDir("Repo1")).build());
-        when(mockGitCloner.cloneOrPullRepo(REPO_URL_2)).thenReturn(RepoDirAndGit.builder().repoDir(getResourcesDir("RepoWithNoComponentMetadata")).build());
+        when(mockGitCloner.cloneOrPullRepo(REPO_URL_1)).thenReturn(getResourcesDir("Repo1"));
+        when(mockGitCloner.cloneOrPullRepo(REPO_URL_2)).thenReturn(getResourcesDir("RepoWithNoComponentMetadata"));
         mockRepoFinderService(new ApiRepo(REPO_URL_1, true), new ApiRepo(REPO_URL_2, true));
         underTest = new ComponentMetadataRepository(mockRepoFinderService, mockGitCloner, new FileUtils(new AntStyleIgnoreFileLoader()), new YAMLMapper(), validatorService);
 
@@ -203,10 +199,10 @@ public class ComponentMetadataRepositoryTest extends BaseTest {
     }
 
     @Test
-    public void getComponentMetadataShouldSkipARepoIfItContainsInvalidYaml() throws IOException, GitAPIException, URISyntaxException {
+    public void getComponentMetadataShouldSkipARepoIfItContainsInvalidYaml() {
         // Given
-        when(mockGitCloner.cloneOrPullRepo(REPO_URL_1)).thenReturn(RepoDirAndGit.builder().repoDir(getResourcesDir("Repo1")).build());
-        when(mockGitCloner.cloneOrPullRepo(REPO_URL_2)).thenReturn(RepoDirAndGit.builder().repoDir(getResourcesDir("RepoWithInvalidYaml")).build());
+        when(mockGitCloner.cloneOrPullRepo(REPO_URL_1)).thenReturn(getResourcesDir("Repo1"));
+        when(mockGitCloner.cloneOrPullRepo(REPO_URL_2)).thenReturn(getResourcesDir("RepoWithInvalidYaml"));
         mockRepoFinderService(new ApiRepo(REPO_URL_1, true), new ApiRepo(REPO_URL_2, true));
         underTest = new ComponentMetadataRepository(mockRepoFinderService, mockGitCloner, new FileUtils(new AntStyleIgnoreFileLoader()), new YAMLMapper(), validatorService);
 
@@ -246,10 +242,10 @@ public class ComponentMetadataRepositoryTest extends BaseTest {
     }
 
     @Test
-    public void getComponentMetadataShouldSkipARepoIfValidationFailsForItsComponentMetadata() throws IOException, GitAPIException, URISyntaxException {
+    public void getComponentMetadataShouldSkipARepoIfValidationFailsForItsComponentMetadata() {
         // Given
-        when(mockGitCloner.cloneOrPullRepo(REPO_URL_1)).thenReturn(RepoDirAndGit.builder().repoDir(getResourcesDir("Repo1")).build());
-        when(mockGitCloner.cloneOrPullRepo(REPO_URL_2)).thenReturn(RepoDirAndGit.builder().repoDir(getResourcesDir("RepoWithInvalidComponentMetadata")).build());
+        when(mockGitCloner.cloneOrPullRepo(REPO_URL_1)).thenReturn(getResourcesDir("Repo1"));
+        when(mockGitCloner.cloneOrPullRepo(REPO_URL_2)).thenReturn(getResourcesDir("RepoWithInvalidComponentMetadata"));
         mockRepoFinderService(new ApiRepo(REPO_URL_1, true), new ApiRepo(REPO_URL_2, true));
         underTest = new ComponentMetadataRepository(mockRepoFinderService, mockGitCloner, new FileUtils(new AntStyleIgnoreFileLoader()), new YAMLMapper(), validatorService);
 

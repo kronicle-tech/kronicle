@@ -1,17 +1,17 @@
 package tech.kronicle.service.services;
 
-import tech.kronicle.sdk.models.Component;
-import tech.kronicle.sdk.models.Priority;
-import tech.kronicle.sdk.models.TestOutcome;
-import tech.kronicle.sdk.models.TestResult;
-import tech.kronicle.service.tests.ComponentTest;
-import tech.kronicle.service.tests.models.TestContext;
 import lombok.RequiredArgsConstructor;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import tech.kronicle.sdk.models.Component;
+import tech.kronicle.sdk.models.Priority;
+import tech.kronicle.sdk.models.TestOutcome;
+import tech.kronicle.sdk.models.TestResult;
+import tech.kronicle.service.tests.ComponentTest;
+import tech.kronicle.service.tests.models.TestContext;
 
 import java.util.Arrays;
 import java.util.List;

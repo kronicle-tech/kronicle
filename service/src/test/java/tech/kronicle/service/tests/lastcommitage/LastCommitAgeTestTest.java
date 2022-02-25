@@ -1,11 +1,11 @@
 package tech.kronicle.service.tests.lastcommitage;
 
+import org.junit.jupiter.api.Test;
 import tech.kronicle.sdk.models.Component;
 import tech.kronicle.sdk.models.Priority;
 import tech.kronicle.sdk.models.TestOutcome;
 import tech.kronicle.sdk.models.TestResult;
 import tech.kronicle.sdk.models.git.GitRepo;
-import org.junit.jupiter.api.Test;
 
 import java.time.Clock;
 import java.time.Instant;

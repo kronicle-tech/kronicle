@@ -1,15 +1,15 @@
 package tech.kronicle.service.controllers;
 
-import tech.kronicle.sdk.models.Component;
-import tech.kronicle.sdk.models.GetComponentResponse;
-import tech.kronicle.sdk.models.GetComponentsResponse;
-import tech.kronicle.sdk.models.TestOutcome;
-import tech.kronicle.service.services.ComponentService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import tech.kronicle.sdk.models.Component;
+import tech.kronicle.sdk.models.GetComponentResponse;
+import tech.kronicle.sdk.models.GetComponentsResponse;
+import tech.kronicle.sdk.models.TestOutcome;
+import tech.kronicle.service.services.ComponentService;
 
 import java.util.List;
 import java.util.Optional;

@@ -2,24 +2,20 @@ package tech.kronicle.service.repositories;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.dataformat.yaml.YAMLMapper;
-import tech.kronicle.componentmetadata.models.ComponentMetadata;
-import tech.kronicle.service.constants.KronicleMetadataFilePaths;
-import tech.kronicle.service.exceptions.ValidationException;
-import tech.kronicle.service.models.ApiRepo;
-import tech.kronicle.service.models.RepoDirAndGit;
-import tech.kronicle.service.repofinders.services.RepoFinderService;
-import tech.kronicle.service.services.GitCloner;
-import tech.kronicle.service.services.ValidatorService;
 import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.eclipse.jgit.api.errors.GitAPIException;
 import org.springframework.stereotype.Repository;
 import tech.kronicle.common.utils.StringEscapeUtils;
-import tech.kronicle.service.utils.FileUtils;
+import tech.kronicle.componentmetadata.models.ComponentMetadata;
+import tech.kronicle.pluginapi.constants.KronicleMetadataFilePaths;
+import tech.kronicle.pluginapi.finders.models.ApiRepo;
+import tech.kronicle.pluginapi.git.GitCloner;
+import tech.kronicle.pluginutils.utils.FileUtils;
+import tech.kronicle.service.exceptions.ValidationException;
+import tech.kronicle.service.repofinders.services.RepoFinderService;
+import tech.kronicle.service.services.ValidatorService;
 
-import java.io.IOException;
-import java.net.URISyntaxException;
 import java.nio.file.Path;
 import java.util.Collection;
 import java.util.List;
@@ -76,10 +72,10 @@ public class ComponentMetadataRepository {
 
     private RepoAndRepoDir cloneOrPullRepo(ApiRepo apiRepo) throws RuntimeException {
         try {
-            RepoDirAndGit repoDirAndGit = gitCloner.cloneOrPullRepo(apiRepo.getUrl());
-            return new RepoAndRepoDir(apiRepo, repoDirAndGit.getRepoDir());
-        } catch (GitAPIException | IOException | URISyntaxException e) {
-            logError(apiRepo, e);
+            Path repoDir = gitCloner.cloneOrPullRepo(apiRepo.getUrl());
+            return new RepoAndRepoDir(apiRepo, repoDir);
+        } catch (Exception ex) {
+            logError(apiRepo, ex);
             return null;
         }
     }

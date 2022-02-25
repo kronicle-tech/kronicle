@@ -1,10 +1,10 @@
 package tech.kronicle.sdk.models;
 
-import tech.kronicle.sdk.models.sonarqube.SummarySonarQubeMetric;
 import lombok.Builder;
 import lombok.Value;
 import lombok.With;
 import lombok.extern.jackson.Jacksonized;
+import tech.kronicle.sdk.models.sonarqube.SummarySonarQubeMetric;
 import tech.kronicle.sdk.utils.ListUtils;
 
 import java.util.List;

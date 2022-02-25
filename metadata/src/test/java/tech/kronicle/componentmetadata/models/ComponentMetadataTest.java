@@ -2,12 +2,12 @@ package tech.kronicle.componentmetadata.models;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.junit.jupiter.api.Test;
 import tech.kronicle.sdk.models.Area;
 import tech.kronicle.sdk.models.Component;
 import tech.kronicle.sdk.models.ComponentType;
 import tech.kronicle.sdk.models.Platform;
 import tech.kronicle.sdk.models.Team;
-import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 

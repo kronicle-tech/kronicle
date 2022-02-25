@@ -1,6 +1,12 @@
 package tech.kronicle.service.repositories;
 
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.stereotype.Repository;
 import tech.kronicle.componentmetadata.models.ComponentMetadata;
+import tech.kronicle.pluginutils.utils.ObjectReference;
 import tech.kronicle.sdk.models.Area;
 import tech.kronicle.sdk.models.Component;
 import tech.kronicle.sdk.models.Scanner;
@@ -13,15 +19,9 @@ import tech.kronicle.sdk.models.Test;
 import tech.kronicle.service.services.ComponentMetadataAssembler;
 import tech.kronicle.service.services.ComponentMetadataLoader;
 import tech.kronicle.service.services.ScanEngine;
-import tech.kronicle.service.services.ScannerRegistry;
+import tech.kronicle.service.services.ScannerExtensionRegistry;
 import tech.kronicle.service.services.TestEngine;
 import tech.kronicle.service.services.TestFinder;
-import tech.kronicle.service.utils.ObjectReference;
-import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
-import org.slf4j.Logger;
-import org.springframework.scheduling.annotation.Scheduled;
-import org.springframework.stereotype.Repository;
 
 import java.util.Comparator;
 import java.util.List;
@@ -43,7 +43,7 @@ public class ComponentRepository extends RefreshingRepository {
     private final ComponentMetadataLoader loader;
     private final ComponentMetadataAssembler assembler;
     private final ScanEngine scanEngine;
-    private final ScannerRegistry scannerRegistry;
+    private final ScannerExtensionRegistry scannerRegistry;
     private final TestEngine testEngine;
     private final TestFinder testFinder;
     private volatile ConcurrentHashMap<String, Area> areas = new ConcurrentHashMap<>();
@@ -159,7 +159,7 @@ public class ComponentRepository extends RefreshingRepository {
                 .orElse(null);
     }
 
-    private Scanner mapScanner(tech.kronicle.service.scanners.Scanner<?, ?> scanner) {
+    private Scanner mapScanner(tech.kronicle.pluginapi.scanners.Scanner<?, ?> scanner) {
         if (isNull(scanner)) {
             return null;
         }

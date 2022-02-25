@@ -1,13 +1,12 @@
 package tech.kronicle.service.tests.sonarqube;
 
+import lombok.RequiredArgsConstructor;
 import tech.kronicle.sdk.models.Component;
 import tech.kronicle.sdk.models.Priority;
 import tech.kronicle.sdk.models.TestResult;
 import tech.kronicle.sdk.models.sonarqube.SonarQubeProject;
-import tech.kronicle.service.scanners.sonarqube.config.SonarQubeConfig;
-import tech.kronicle.service.spring.stereotypes.Test;
 import tech.kronicle.service.tests.models.TestContext;
-import lombok.RequiredArgsConstructor;
+import tech.kronicle.service.tests.sonarqube.config.SonarQubeTestConfig;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -15,11 +14,11 @@ import java.util.stream.Collectors;
 import static java.util.Objects.isNull;
 import static java.util.Objects.nonNull;
 
-@Test
+@org.springframework.stereotype.Component
 @RequiredArgsConstructor
 public class SonarQubeTest extends BaseSonarQubeTest {
 
-    private final SonarQubeConfig config;
+    private final SonarQubeTestConfig config;
 
     @Override
     public String description() {

@@ -1,7 +1,7 @@
 package tech.kronicle.service.tests.models;
 
-import tech.kronicle.sdk.models.Component;
 import org.junit.jupiter.api.Test;
+import tech.kronicle.sdk.models.Component;
 
 import java.util.HashMap;
 

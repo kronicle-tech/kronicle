@@ -1,8 +1,8 @@
 package tech.kronicle.service.tests.models;
 
-import tech.kronicle.sdk.models.Component;
 import lombok.Builder;
 import lombok.Value;
+import tech.kronicle.sdk.models.Component;
 
 import java.util.Map;
 

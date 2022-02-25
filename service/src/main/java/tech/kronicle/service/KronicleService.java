@@ -4,7 +4,6 @@ import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
 import com.fasterxml.jackson.dataformat.yaml.YAMLMapper;
-import tech.kronicle.common.services.ValidationConstraintViolationTransformer;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.ConfigurationPropertiesScan;
@@ -15,6 +14,10 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.web.reactive.function.client.WebClient;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import tech.kronicle.common.services.ValidationConstraintViolationTransformer;
+import tech.kronicle.pluginutils.scanners.services.ThrowableToScannerErrorMapper;
+import tech.kronicle.pluginutils.utils.AntStyleIgnoreFileLoader;
+import tech.kronicle.pluginutils.utils.FileUtils;
 
 import java.time.Clock;
 
@@ -30,6 +33,16 @@ public class KronicleService {
     @Bean
     public Clock clock() {
         return Clock.systemUTC();
+    }
+
+    @Bean
+    public FileUtils fileUtils() {
+        return new FileUtils(new AntStyleIgnoreFileLoader());
+    }
+
+    @Bean
+    public ThrowableToScannerErrorMapper throwableToScannerErrorMapper() {
+        return new ThrowableToScannerErrorMapper();
     }
 
     @Bean

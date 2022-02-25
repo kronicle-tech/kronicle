@@ -1,20 +1,20 @@
 package tech.kronicle.service.tests.sonarqube;
 
-import tech.kronicle.sdk.models.Component;
-import tech.kronicle.sdk.models.sonarqube.SonarQubeProject;
-import tech.kronicle.sdk.models.TestResult;
-import tech.kronicle.service.tests.ComponentTest;
-import tech.kronicle.service.tests.models.TestContext;
 import lombok.RequiredArgsConstructor;
 import lombok.Value;
+import tech.kronicle.sdk.models.Component;
+import tech.kronicle.sdk.models.TestResult;
+import tech.kronicle.sdk.models.sonarqube.SonarQubeProject;
+import tech.kronicle.service.tests.ComponentTest;
+import tech.kronicle.service.tests.models.TestContext;
 
 import java.util.List;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
-import static tech.kronicle.service.utils.MarkdownHelper.createMarkdownLink;
 import static java.util.Objects.isNull;
 import static java.util.Objects.nonNull;
+import static tech.kronicle.pluginutils.utils.MarkdownHelper.createMarkdownLink;
 
 @RequiredArgsConstructor
 public abstract class BaseSonarQubeTest extends ComponentTest {

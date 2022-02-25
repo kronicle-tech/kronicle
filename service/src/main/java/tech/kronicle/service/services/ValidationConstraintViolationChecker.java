@@ -1,11 +1,11 @@
 package tech.kronicle.service.services;
 
-import tech.kronicle.common.services.ValidationConstraintViolationTransformer;
-import tech.kronicle.sdk.models.ObjectWithReference;
-import tech.kronicle.service.exceptions.ValidationException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import tech.kronicle.common.services.ValidationConstraintViolationTransformer;
 import tech.kronicle.common.utils.StringEscapeUtils;
+import tech.kronicle.sdk.models.ObjectWithReference;
+import tech.kronicle.service.exceptions.ValidationException;
 
 import javax.validation.ConstraintViolation;
 import java.util.Set;

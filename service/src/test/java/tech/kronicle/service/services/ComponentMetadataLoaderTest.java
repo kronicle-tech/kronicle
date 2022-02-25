@@ -1,7 +1,12 @@
 package tech.kronicle.service.services;
 
 import ch.qos.logback.classic.Level;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import tech.kronicle.componentmetadata.models.ComponentMetadata;
+import tech.kronicle.plugintestutils.testutils.LogCaptor;
+import tech.kronicle.plugintestutils.testutils.SimplifiedLogEvent;
 import tech.kronicle.sdk.models.Area;
 import tech.kronicle.sdk.models.Component;
 import tech.kronicle.sdk.models.ComponentDependency;
@@ -10,17 +15,12 @@ import tech.kronicle.sdk.models.ComponentType;
 import tech.kronicle.sdk.models.Platform;
 import tech.kronicle.sdk.models.Repo;
 import tech.kronicle.sdk.models.Team;
-import tech.kronicle.service.testutils.LogCaptor;
-import tech.kronicle.service.testutils.SimplifiedLogEvent;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 
 import java.util.List;
 import java.util.Map;
 
-import static tech.kronicle.service.testutils.ValidatorServiceFactory.createValidationService;
 import static org.assertj.core.api.Assertions.assertThat;
+import static tech.kronicle.service.testutils.ValidatorServiceFactory.createValidationService;
 
 public class ComponentMetadataLoaderTest {
 

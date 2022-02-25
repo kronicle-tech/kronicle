@@ -1,8 +1,8 @@
 package tech.kronicle.service.services;
 
-import tech.kronicle.sdk.models.ObjectWithReference;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import tech.kronicle.sdk.models.ObjectWithReference;
 
 import javax.validation.ConstraintViolation;
 import javax.validation.Validator;

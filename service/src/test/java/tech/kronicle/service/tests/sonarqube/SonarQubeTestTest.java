@@ -1,12 +1,12 @@
 package tech.kronicle.service.tests.sonarqube;
 
+import org.junit.jupiter.api.Test;
 import tech.kronicle.sdk.models.Component;
 import tech.kronicle.sdk.models.Priority;
 import tech.kronicle.sdk.models.TestOutcome;
 import tech.kronicle.sdk.models.TestResult;
 import tech.kronicle.sdk.models.sonarqube.SonarQubeProject;
-import tech.kronicle.service.scanners.sonarqube.config.SonarQubeConfig;
-import org.junit.jupiter.api.Test;
+import tech.kronicle.service.tests.sonarqube.config.SonarQubeTestConfig;
 
 import java.util.List;
 
@@ -16,7 +16,7 @@ public class SonarQubeTestTest {
 
     public static final String COMPONENT_TEST_ID_EXPECTED_TO_USE_SONARQUBE = "component-test-id-expected-to-use-sonarqube";
     public static final String COMPONENT_TEST_ID_NOT_EXPECTED_TO_USE_SONARQUBE = "component-test-id-not-expected-to-use-sonarqube";
-    private final SonarQubeTest underTest = new SonarQubeTest(new SonarQubeConfig(null, null, List.of(COMPONENT_TEST_ID_EXPECTED_TO_USE_SONARQUBE)));
+    private final SonarQubeTest underTest = new SonarQubeTest(new SonarQubeTestConfig(List.of(COMPONENT_TEST_ID_EXPECTED_TO_USE_SONARQUBE)));
 
     @Test
     public void descriptionShouldReturnTheDescriptionOfTheTest() {
