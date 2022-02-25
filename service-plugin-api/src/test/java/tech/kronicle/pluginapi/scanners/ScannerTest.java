@@ -1,9 +1,8 @@
-package tech.kronicle.pluginutils.scanners;
+package tech.kronicle.pluginapi.scanners;
 
 import tech.kronicle.componentmetadata.models.ComponentMetadata;
 import tech.kronicle.sdk.models.ObjectWithReference;
 import tech.kronicle.sdk.models.Summary;
-import tech.kronicle.pluginapi.scanners.Scanner;
 import tech.kronicle.pluginapi.scanners.models.Output;
 import org.junit.jupiter.api.Test;
 

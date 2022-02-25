@@ -1,8 +1,7 @@
-package tech.kronicle.pluginutils.scanners.models;
+package tech.kronicle.pluginapi.scanners.models;
 
 import tech.kronicle.sdk.models.Repo;
 import org.junit.jupiter.api.Test;
-import tech.kronicle.pluginapi.scanners.models.Codebase;
 
 import java.nio.file.Path;
 

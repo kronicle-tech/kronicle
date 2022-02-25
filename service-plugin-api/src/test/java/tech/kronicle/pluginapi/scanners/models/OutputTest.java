@@ -1,4 +1,4 @@
-package tech.kronicle.pluginutils.scanners.models;
+package tech.kronicle.pluginapi.scanners.models;
 
 import tech.kronicle.sdk.models.Component;
 import tech.kronicle.sdk.models.ScannerError;
