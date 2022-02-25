@@ -18,7 +18,6 @@ dependencies {
 
     implementation project(":service-plugin-api")
     implementation project(":service-plugin-utils")
-    implementation "org.springframework.boot:spring-boot"
     implementation "commons-io:commons-io:$commonsIoVersion"
 
     testImplementation project(":service-plugin-test-utils")

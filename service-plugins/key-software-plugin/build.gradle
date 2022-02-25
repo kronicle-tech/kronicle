@@ -17,7 +17,6 @@ dependencies {
     testCompileOnly "com.github.spotbugs:spotbugs-annotations:$spotBugsVersion"
 
     implementation project(":service-plugin-api")
-    implementation "org.springframework.boot:spring-boot"
     implementation "tech.kronicle:gradle-version-logic:$gradleVersionLogicVersion"
 
     testImplementation project(":service-plugin-test-utils")
