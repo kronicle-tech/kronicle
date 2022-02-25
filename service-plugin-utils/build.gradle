@@ -15,20 +15,9 @@ dependencies {
     compileOnly "javax.inject:javax.inject:$javaxInjectApiVersion"
     testCompileOnly "javax.inject:javax.inject:$javaxInjectApiVersion"
 
-    api project(":common")
-    api project(":metadata")
-    api "org.hibernate.validator:hibernate-validator"
-    api("org.pf4j:pf4j:$pf4jVersion") {
-        exclude group: 'org.apache.logging.log4j'
-    }
-    api ("org.pf4j:pf4j-spring:$pf4jSpringVersion") {
-        exclude group: "org.slf4j", module: "slf4j-log4j12"
-    }
-    api "org.springframework:spring-context"
-    api "jakarta.annotation:jakarta.annotation-api"
-    api "jakarta.validation:jakarta.validation-api"
-    api "org.slf4j:slf4j-api"
+    api project(":service-plugin-api")
     implementation "org.springframework:spring-webflux"
+    implementation "com.google.guava:guava:$guavaVersion"
 
     testImplementation project(":service-plugin-test-utils")
     testImplementation "org.springframework.boot:spring-boot-starter-test", {
@@ -39,7 +28,6 @@ dependencies {
     testImplementation "org.assertj:assertj-core"
     testImplementation "org.mockito:mockito-core"
     testImplementation "org.mockito:mockito-junit-jupiter"
-    testImplementation "com.github.tomakehurst:wiremock-jre8:$wireMockVersion"
 }
 
 tasks.withType(Test).configureEach {

@@ -41,11 +41,13 @@ public class KroniclePluginFactory extends DefaultPluginFactory {
                     Method getConfigTypeMethod = pluginClass.getMethod("getConfigType");
                     Class<?> configType = (Class<?>) getConfigTypeMethod.invoke(plugin);
 
-                    Binder binder = Binder.get(applicationContext.getEnvironment());
-                    Object config = binder.bind("plugins." + pluginWrapper.getPluginId(), Bindable.of(configType)).get();
+                    if (nonNull(configType)) {
+                        Binder binder = Binder.get(applicationContext.getEnvironment());
+                        Object config = binder.bind("plugins." + pluginWrapper.getPluginId(), Bindable.of(configType)).get();
 
-                    ConfigurableListableBeanFactory pluginBeanFactory = pluginApplicationContext.getBeanFactory();
-                    pluginBeanFactory.registerSingleton("pluginConfig", config);
+                        ConfigurableListableBeanFactory pluginBeanFactory = pluginApplicationContext.getBeanFactory();
+                        pluginBeanFactory.registerSingleton("pluginConfig", config);
+                    }
                 }
 
                 pluginApplicationContext.refresh();
