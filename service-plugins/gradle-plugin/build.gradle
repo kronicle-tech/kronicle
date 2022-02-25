@@ -50,11 +50,11 @@ dependencies {
     implementation "org.springframework.boot:spring-boot"
     implementation "org.springframework:spring-webflux"
     implementation "io.projectreactor.netty:reactor-netty-http"
-    implementation "tech.kronicle:gradle-version-logic:$gradleVersionLogicVersion"
-    // Needed by org.springframework.http.converter.json.Jackson2ObjectMapperBuilder
+    // Needed by org.springframework.http.converter.json.Jackson2ObjectMapperBuilder for WebClient
     implementation "com.fasterxml.jackson.datatype:jackson-datatype-jdk8"
-    // Needed by org.springframework.http.converter.json.Jackson2ObjectMapperBuilder
+    // Needed by org.springframework.http.converter.json.Jackson2ObjectMapperBuilder for WebClient
     implementation "com.fasterxml.jackson.datatype:jackson-datatype-jsr310"
+    implementation "tech.kronicle:gradle-version-logic:$gradleVersionLogicVersion"
     implementation "io.github.resilience4j:resilience4j-retry:$resilience4jVersion"
     implementation "com.fasterxml.jackson.core:jackson-core"
     implementation "com.fasterxml.jackson.core:jackson-databind"

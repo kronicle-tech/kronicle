@@ -22,14 +22,7 @@ public class KroniclePluginClassLoader extends PluginClassLoader {
     );
 
     public KroniclePluginClassLoader(PluginManager pluginManager, PluginDescriptor pluginDescriptor, ClassLoader parent) {
-        super(
-                pluginManager,
-                pluginDescriptor,
-                parent,
-                new ClassLoadingStrategy(
-                        List.of(ClassLoadingStrategy.Source.PLUGIN, ClassLoadingStrategy.Source.DEPENDENCIES)
-                )
-        );
+        super(pluginManager, pluginDescriptor, parent);
     }
 
     @Override

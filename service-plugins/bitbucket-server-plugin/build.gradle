@@ -21,6 +21,10 @@ dependencies {
     implementation "org.springframework.boot:spring-boot"
     implementation "org.springframework:spring-webflux"
     implementation "io.projectreactor.netty:reactor-netty-http"
+    // Needed by org.springframework.http.converter.json.Jackson2ObjectMapperBuilder for WebClient
+    implementation "com.fasterxml.jackson.datatype:jackson-datatype-jdk8"
+    // Needed by org.springframework.http.converter.json.Jackson2ObjectMapperBuilder for WebClient
+    implementation "com.fasterxml.jackson.datatype:jackson-datatype-jsr310"
 
     testImplementation project(":service-plugin-test-utils")
     testImplementation "org.springframework.boot:spring-boot-starter-test", {
