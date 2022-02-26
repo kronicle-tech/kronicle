@@ -34,7 +34,7 @@ public class GitHubRepoFinder extends RepoFinder {
   @Override
   public List<ApiRepo> find(Void ignored) {
     return Stream.of(
-            findApiRepos(config::getPersonalAccessTokens, client::getRepos, "personal access tokens"),
+            findApiRepos(config::getAccessTokens, client::getRepos, "personal access tokens"),
             findApiRepos(config::getUsers, client::getRepos, "users"),
             findApiRepos(config::getOrganizations, client::getRepos, "organizations"))
             .flatMap(Collection::stream)
