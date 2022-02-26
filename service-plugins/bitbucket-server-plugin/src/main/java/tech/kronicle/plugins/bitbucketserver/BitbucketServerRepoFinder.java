@@ -1,6 +1,7 @@
 package tech.kronicle.plugins.bitbucketserver;
 
 import lombok.RequiredArgsConstructor;
+import org.pf4j.Extension;
 import org.springframework.stereotype.Component;
 import tech.kronicle.pluginapi.finders.RepoFinder;
 import tech.kronicle.pluginapi.finders.models.ApiRepo;
@@ -8,6 +9,7 @@ import tech.kronicle.plugins.bitbucketserver.client.BitbucketServerClient;
 
 import java.util.List;
 
+@Extension
 @Component
 @RequiredArgsConstructor
 public class BitbucketServerRepoFinder extends RepoFinder {

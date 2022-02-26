@@ -2,6 +2,7 @@ package tech.kronicle.plugins.gitlab;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.pf4j.Extension;
 import org.springframework.stereotype.Component;
 import tech.kronicle.pluginapi.finders.RepoFinder;
 import tech.kronicle.pluginapi.finders.models.ApiRepo;
@@ -17,6 +18,7 @@ import java.util.function.Supplier;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+@Extension
 @Component
 @RequiredArgsConstructor
 @Slf4j
