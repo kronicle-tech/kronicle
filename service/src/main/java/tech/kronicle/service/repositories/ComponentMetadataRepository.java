@@ -53,7 +53,7 @@ public class ComponentMetadataRepository {
     }
 
     private List<ComponentMetadata> getComponentMetadataList() {
-        return repoFinderService.findApiRepos().stream()
+        return repoFinderService.findRepos().stream()
                 .filter(this::repoHasComponentMetadataFile)
                 .map(this::cloneOrPullRepo)
                 .filter(Objects::nonNull)

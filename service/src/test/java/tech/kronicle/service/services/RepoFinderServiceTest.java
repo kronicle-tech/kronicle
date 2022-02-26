@@ -1,4 +1,4 @@
-package tech.kronicle.service.repofinders.services;
+package tech.kronicle.service.services;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -35,13 +35,13 @@ public class RepoFinderServiceTest {
     public void getRepoProvidersShouldUseTheRepoFindersToFindRepos() {
         // Given
         when(mockFinderExtensionRegistry.getRepoFinders()).thenReturn(List.of(mockRepoFinder1, mockRepoFinder2));
-        when(mockRepoFinder1.findApiRepos()).thenReturn(List.of(TEST_REPO_1, TEST_REPO_2));
-        when(mockRepoFinder2.findApiRepos()).thenReturn(List.of(TEST_REPO_3, TEST_REPO_4));
+        when(mockRepoFinder1.find(null)).thenReturn(List.of(TEST_REPO_1, TEST_REPO_2));
+        when(mockRepoFinder2.find(null)).thenReturn(List.of(TEST_REPO_3, TEST_REPO_4));
         when(mockRepoFilterService.keepRepo(any())).thenReturn(true);
         underTest = new RepoFinderService(mockFinderExtensionRegistry, mockRepoFilterService);
 
         // When
-        List<ApiRepo> returnValue = underTest.findApiRepos();
+        List<ApiRepo> returnValue = underTest.findRepos();
 
         // Then
         assertThat(returnValue).containsExactly(TEST_REPO_1, TEST_REPO_2, TEST_REPO_3, TEST_REPO_4);
@@ -51,13 +51,13 @@ public class RepoFinderServiceTest {
     public void getRepoProvidersShouldDeduplicateIdenticalReposFromDifferentRepoFinders() {
         // Given
         when(mockFinderExtensionRegistry.getRepoFinders()).thenReturn(List.of(mockRepoFinder1, mockRepoFinder2));
-        when(mockRepoFinder1.findApiRepos()).thenReturn(List.of(TEST_REPO_1));
-        when(mockRepoFinder2.findApiRepos()).thenReturn(List.of(TEST_REPO_1));
+        when(mockRepoFinder1.find(null)).thenReturn(List.of(TEST_REPO_1));
+        when(mockRepoFinder2.find(null)).thenReturn(List.of(TEST_REPO_1));
         when(mockRepoFilterService.keepRepo(any())).thenReturn(true);
         underTest = new RepoFinderService(mockFinderExtensionRegistry, mockRepoFilterService);
 
         // When
-        List<ApiRepo> returnValue = underTest.findApiRepos();
+        List<ApiRepo> returnValue = underTest.findRepos();
 
         // Then
         assertThat(returnValue).containsExactly(TEST_REPO_1);
@@ -67,12 +67,12 @@ public class RepoFinderServiceTest {
     public void getRepoProvidersShouldDeduplicateIdenticalReposFromTheSameRepoFinder() {
         // Given
         when(mockFinderExtensionRegistry.getRepoFinders()).thenReturn(List.of(mockRepoFinder1));
-        when(mockRepoFinder1.findApiRepos()).thenReturn(List.of(TEST_REPO_1, TEST_REPO_1));
+        when(mockRepoFinder1.find(null)).thenReturn(List.of(TEST_REPO_1, TEST_REPO_1));
         when(mockRepoFilterService.keepRepo(any())).thenReturn(true);
         underTest = new RepoFinderService(mockFinderExtensionRegistry, mockRepoFilterService);
 
         // When
-        List<ApiRepo> returnValue = underTest.findApiRepos();
+        List<ApiRepo> returnValue = underTest.findRepos();
 
         // Then
         assertThat(returnValue).containsExactly(TEST_REPO_1);
@@ -82,14 +82,14 @@ public class RepoFinderServiceTest {
     public void getRepoProvidersShouldUseRepoFilterServiceToFilterTheRepos() {
         // Given
         when(mockFinderExtensionRegistry.getRepoFinders()).thenReturn(List.of(mockRepoFinder1));
-        when(mockRepoFinder1.findApiRepos()).thenReturn(List.of(TEST_REPO_1, TEST_REPO_2, TEST_REPO_3));
+        when(mockRepoFinder1.find(null)).thenReturn(List.of(TEST_REPO_1, TEST_REPO_2, TEST_REPO_3));
         when(mockRepoFilterService.keepRepo(TEST_REPO_1)).thenReturn(true);
         when(mockRepoFilterService.keepRepo(TEST_REPO_2)).thenReturn(false);
         when(mockRepoFilterService.keepRepo(TEST_REPO_3)).thenReturn(true);
         underTest = new RepoFinderService(mockFinderExtensionRegistry, mockRepoFilterService);
 
         // When
-        List<ApiRepo> returnValue = underTest.findApiRepos();
+        List<ApiRepo> returnValue = underTest.findRepos();
 
         // Then
         // Test repo 2 should be filtered out
