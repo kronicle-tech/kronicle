@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import tech.kronicle.pluginapi.finders.RepoFinder;
 import tech.kronicle.pluginapi.finders.models.ApiRepo;
+import tech.kronicle.service.services.FinderExtensionRegistry;
 
 import java.util.Collection;
 import java.util.List;
@@ -13,11 +14,11 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class RepoFinderService {
 
-    private final List<RepoFinder> repoFinders;
+    private final FinderExtensionRegistry extensionRegistry;
     private final RepoFilterService repoFilterService;
 
     public List<ApiRepo> findApiRepos() {
-        return repoFinders.stream()
+        return extensionRegistry.getRepoFinders().stream()
                 .map(RepoFinder::findApiRepos)
                 .flatMap(Collection::stream)
                 .distinct()

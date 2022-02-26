@@ -6,19 +6,18 @@ import tech.kronicle.pluginapi.finders.DependencyFinder;
 import tech.kronicle.pluginapi.finders.Finder;
 import tech.kronicle.pluginapi.finders.RepoFinder;
 
-import java.util.Collection;
 import java.util.List;
 
 @Service
-public class FinderExtensionRegistry extends BaseExtensionRegistry<Finder> {
+public class RepoFinderExtensionRegistry extends BaseExtensionRegistry<RepoFinder> {
 
-    public FinderExtensionRegistry(PluginManager pluginManager) {
+    public RepoFinderExtensionRegistry(PluginManager pluginManager) {
         super(pluginManager);
     }
 
     @Override
-    protected Class<Finder> getItemType() {
-        return Finder.class;
+    protected Class<RepoFinder> getItemType() {
+        return RepoFinder.class;
     }
 
     public List<DependencyFinder> getDependencyFinders() {
