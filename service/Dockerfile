@@ -7,7 +7,7 @@ ENV HOST=0.0.0.0
 ENV PORT=8090
 
 WORKDIR /app
-COPY app.jar Healthcheck.java ./
+COPY app.jar plugins Healthcheck.java ./
 
 EXPOSE $PORT
 HEALTHCHECK --interval=60s --timeout=15s \

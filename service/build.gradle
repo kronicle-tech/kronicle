@@ -69,11 +69,18 @@ docker {
 
     buildArgs([VERSION: version])
     tag "latest", name
-    copySpec.from("build/libs", "plugins", "src/test/java")
-            .include("service-${version}.jar")
-            .include("plugins/*.jar")
-            .include("Healthcheck.java")
-            .rename(/service-.*\.jar/, "app.jar")
+    copySpec
+            .from("build/libs") {
+                include("service-${version}.jar")
+                rename("service-${version}.jar", "app.jar")
+            }
+            .from("src/test/java") {
+                include("Healthcheck.java")
+            }
+            .from("plugins") {
+                include("*.jar")
+                into("plugins")
+            }
     network "host"
 }
 
@@ -84,6 +91,7 @@ tasks.named("bootRun") {
 }
 
 tasks.named("dockerPrepare") {
+    dependsOn tasks.named("bootJar")
     dependsOn tasks.named("copyPlugins")
 }
 
