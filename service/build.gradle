@@ -78,7 +78,7 @@ docker {
                 include("Healthcheck.java")
             }
             .from("plugins") {
-                include("*.jar")
+                include("*-${version}-all.jar")
                 into("plugins")
             }
     network "host"
