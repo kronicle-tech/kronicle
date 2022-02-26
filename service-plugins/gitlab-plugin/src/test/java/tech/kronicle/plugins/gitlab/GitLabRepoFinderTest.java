@@ -48,33 +48,45 @@ public class GitLabRepoFinderTest {
     private GitLabClient mockClient;
 
     @Test
-    public void getApiReposShouldReturnAnEmptyListWhenHostsListIsNull() {
+    public void descriptionShouldReturnTheDescriptionOfTheFinder() {
+        // Given
+        underTest = new GitLabRepoFinder(null, null);
+
+        // When
+        String returnValue = underTest.description();
+
+        // Then
+        assertThat(returnValue).isEqualTo("Find repositories hosted by GitLab.  ");
+    }
+
+    @Test
+    public void findShouldReturnAnEmptyListWhenHostsListIsNull() {
         // Given
         GitLabConfig config = new GitLabConfig(null, PAGE_SIZE, TIMEOUT);
         underTest = new GitLabRepoFinder(config, mockClient);
 
         // When
-        List<ApiRepo> returnValue = underTest.findApiRepos();
+        List<ApiRepo> returnValue = underTest.find(null);
 
         // Then
         assertThat(returnValue).isEmpty();
     }
 
     @Test
-    public void getApiReposShouldReturnAnEmptyListWhenHostsListIsEmpty() {
+    public void findShouldReturnAnEmptyListWhenHostsListIsEmpty() {
         // Given
         GitLabConfig config = new GitLabConfig(List.of(), PAGE_SIZE, TIMEOUT);
         underTest = new GitLabRepoFinder(config, mockClient);
 
         // When
-        List<ApiRepo> returnValue = underTest.findApiRepos();
+        List<ApiRepo> returnValue = underTest.find(null);
 
         // Then
         assertThat(returnValue).isEmpty();
     }
 
     @Test
-    public void getApiReposShouldCallClientForAnItemInEachListOfAHost() {
+    public void findShouldCallClientForAnItemInEachListOfAHost() {
         // Given
         GitLabConfig config = new GitLabConfig(
                 List.of(new GitLabHostConfig(BASE_URL,
@@ -92,7 +104,7 @@ public class GitLabRepoFinderTest {
         underTest = new GitLabRepoFinder(config, mockClient);
 
         // When
-        List<ApiRepo> returnValue = underTest.findApiRepos();
+        List<ApiRepo> returnValue = underTest.find(null);
 
         // Then
         List<ApiRepo> allApiRepos = Stream.of(apiRepos1, apiRepos2, apiRepos3)
@@ -102,7 +114,7 @@ public class GitLabRepoFinderTest {
     }
 
     @Test
-    public void getApiReposShouldCallClientForItemsInEachConfigListOfAHost() {
+    public void findShouldCallClientForItemsInEachConfigListOfAHost() {
         // Given
         GitLabConfig config = new GitLabConfig(
                 List.of(new GitLabHostConfig(BASE_URL,
@@ -131,7 +143,7 @@ public class GitLabRepoFinderTest {
         when(mockClient.getRepos(BASE_URL, GROUP_3)).thenReturn(apiRepos9);
         underTest = new GitLabRepoFinder(config, mockClient);
         // When
-        List<ApiRepo> returnValue = underTest.findApiRepos();
+        List<ApiRepo> returnValue = underTest.find(null);
 
         // Then
         List<ApiRepo> allApiRepos = Stream.of(apiRepos1, apiRepos2, apiRepos3, apiRepos4, apiRepos5, apiRepos6, apiRepos7, apiRepos8, apiRepos9)
@@ -141,7 +153,7 @@ public class GitLabRepoFinderTest {
     }
 
     @Test
-    public void getApiReposShouldCallClientAndReturnAnEmptyListOfApiReposWhenClientReturnsEmptyLists() {
+    public void findShouldCallClientAndReturnAnEmptyListOfApiReposWhenClientReturnsEmptyLists() {
         // Given
         GitLabConfig config = new GitLabConfig(
                 List.of(new GitLabHostConfig(BASE_URL,
@@ -156,14 +168,14 @@ public class GitLabRepoFinderTest {
         underTest = new GitLabRepoFinder(config, mockClient);
 
         // When
-        List<ApiRepo> returnValue = underTest.findApiRepos();
+        List<ApiRepo> returnValue = underTest.find(null);
 
         // Then
         assertThat(returnValue).isEmpty();
     }
 
     @Test
-    public void getApiReposShouldDeduplicateIdenticalApiRepos() {
+    public void findShouldDeduplicateIdenticalApiRepos() {
         // Given
         GitLabConfig config = new GitLabConfig(
                 List.of(new GitLabHostConfig(BASE_URL,
@@ -185,7 +197,7 @@ public class GitLabRepoFinderTest {
         when(mockClient.getRepos(BASE_URL, GROUP_2)).thenReturn(apiRepos2);
         underTest = new GitLabRepoFinder(config, mockClient);
         // When
-        List<ApiRepo> returnValue = underTest.findApiRepos();
+        List<ApiRepo> returnValue = underTest.find(null);
 
         // Then
         assertThat(returnValue).containsExactly(apiRepo1, apiRepo2, apiRepo3);

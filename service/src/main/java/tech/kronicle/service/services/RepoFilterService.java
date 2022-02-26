@@ -1,9 +1,9 @@
-package tech.kronicle.service.repofinders.services;
+package tech.kronicle.service.services;
 
 import org.springframework.stereotype.Service;
 import tech.kronicle.pluginapi.finders.models.ApiRepo;
-import tech.kronicle.service.repofinders.config.RepoFindersConfig;
-import tech.kronicle.service.repofinders.config.RepoFindersIgnoredRepoConfig;
+import tech.kronicle.service.config.RepoFindersConfig;
+import tech.kronicle.service.config.RepoFindersIgnoredRepoConfig;
 
 import java.util.Collection;
 import java.util.Optional;

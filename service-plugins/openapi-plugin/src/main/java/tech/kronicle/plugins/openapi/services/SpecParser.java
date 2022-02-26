@@ -1,12 +1,12 @@
 package tech.kronicle.plugins.openapi.services;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.node.ObjectNode;
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.parser.OpenAPIV3Parser;
 import io.swagger.v3.parser.core.models.ParseOptions;
 import io.swagger.v3.parser.core.models.SwaggerParseResult;
 import lombok.RequiredArgsConstructor;
+import lombok.SneakyThrows;
 import org.springframework.stereotype.Service;
 import tech.kronicle.pluginapi.scanners.Scanner;
 import tech.kronicle.pluginapi.scanners.models.ComponentAndCodebase;
@@ -61,7 +61,7 @@ public class SpecParser {
                 swaggerParseResultCache.put(location, swaggerParseResult);
             }
 
-            return new SpecAndErrors(spec.withSpec(convertSwaggerSpecToObjectNode(swaggerParseResult)), specErrorProcessor.getErrors(scanner, location, swaggerParseResult));
+            return new SpecAndErrors(spec.withSpec(convertSwaggerSpecToRawJson(swaggerParseResult)), specErrorProcessor.getErrors(scanner, location, swaggerParseResult));
         };
     }
 
@@ -69,13 +69,14 @@ public class SpecParser {
         return input.getCodebase().getDir().resolve(spec.getFile()).toString();
     }
 
-    private ObjectNode convertSwaggerSpecToObjectNode(SwaggerParseResult swaggerParseResult) {
+    @SneakyThrows
+    private String convertSwaggerSpecToRawJson(SwaggerParseResult swaggerParseResult) {
         OpenAPI openApi = swaggerParseResult.getOpenAPI();
 
         if (isNull(openApi)) {
             return null;
         }
 
-        return objectMapper.valueToTree(openApi);
+        return objectMapper.writeValueAsString(openApi);
     }
 }

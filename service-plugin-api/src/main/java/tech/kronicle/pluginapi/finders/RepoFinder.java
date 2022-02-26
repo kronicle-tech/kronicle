@@ -5,7 +5,7 @@ import tech.kronicle.pluginapi.finders.models.ApiRepo;
 
 import java.util.List;
 
-public abstract class RepoFinder implements ExtensionPoint {
+public abstract class RepoFinder extends Finder<Void, ApiRepo> {
 
-    public abstract List<ApiRepo> findApiRepos();
+    public abstract List<ApiRepo> find(Void ignored);
 }

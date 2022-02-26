@@ -6,7 +6,7 @@ import tech.kronicle.pluginapi.ExtensionPointWithId;
 
 import java.util.List;
 
-public abstract class Finder<T> implements ExtensionPointWithId {
+public abstract class Finder<I, O> implements ExtensionPointWithId {
 
     public String id() {
         return CaseUtils.toKebabCase(getClass().getSimpleName()).replaceFirst("-finder$", "");
@@ -18,5 +18,5 @@ public abstract class Finder<T> implements ExtensionPointWithId {
         return null;
     }
 
-    public abstract List<T> find(ComponentMetadata componentMetadata);
+    public abstract List<O> find(I input);
 }
