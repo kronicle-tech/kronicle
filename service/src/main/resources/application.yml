@@ -143,3 +143,8 @@ springdoc:
   writer-with-default-pretty-printer: true
   swagger-ui:
     enabled: false
+
+openapi-spec:
+  clear-existing-servers: true
+  servers:
+    - description: Kronicle Service
