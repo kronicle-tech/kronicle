@@ -14,8 +14,7 @@ public class KroniclePluginClassLoader extends PluginClassLoader {
             "tech.kronicle.componentmetadata.",
             "tech.kronicle.pluginapi.",
             "org.springframework.context.",
-//            "org.springframework.boot.context.",
-//            "org.springframework.validation.",
+            "com.fasterxml.jackson.databind.node.",
             "org.slf4j."
     );
 
