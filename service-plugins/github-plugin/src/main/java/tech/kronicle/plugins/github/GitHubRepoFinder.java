@@ -25,7 +25,12 @@ public class GitHubRepoFinder extends RepoFinder {
   private final GitHubClient client;
 
   @Override
-  public List<ApiRepo> findApiRepos() {
+  public String description() {
+      return "Find repositories hosted by GitHub.  ";
+  }
+
+  @Override
+  public List<ApiRepo> find(Void ignored) {
     return Stream.of(
             findApiRepos(config::getPersonalAccessTokens, client::getRepos, "personal access tokens"),
             findApiRepos(config::getUsers, client::getRepos, "users"),

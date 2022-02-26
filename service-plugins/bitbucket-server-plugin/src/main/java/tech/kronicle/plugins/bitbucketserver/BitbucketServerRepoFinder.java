@@ -15,7 +15,12 @@ public class BitbucketServerRepoFinder extends RepoFinder {
     private final BitbucketServerClient client;
 
     @Override
-    public List<ApiRepo> findApiRepos() {
+    public String description() {
+        return "Find repositories hosted by Bitbucket Server.  ";
+    }
+
+    @Override
+    public List<ApiRepo> find(Void ignored) {
         return client.getNormalRepos();
     }
 }

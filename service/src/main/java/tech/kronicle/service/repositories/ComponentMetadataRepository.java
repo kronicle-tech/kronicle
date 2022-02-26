@@ -13,7 +13,7 @@ import tech.kronicle.pluginapi.finders.models.ApiRepo;
 import tech.kronicle.pluginapi.git.GitCloner;
 import tech.kronicle.pluginutils.utils.FileUtils;
 import tech.kronicle.service.exceptions.ValidationException;
-import tech.kronicle.service.repofinders.services.RepoFinderService;
+import tech.kronicle.service.services.RepoFinderService;
 import tech.kronicle.service.services.ValidatorService;
 
 import java.nio.file.Path;

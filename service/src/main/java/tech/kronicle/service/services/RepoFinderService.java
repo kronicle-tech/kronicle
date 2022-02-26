@@ -1,4 +1,4 @@
-package tech.kronicle.service.repofinders.services;
+package tech.kronicle.service.services;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -13,12 +13,12 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class RepoFinderService {
 
-    private final List<RepoFinder> repoFinders;
+    private final FinderExtensionRegistry extensionRegistry;
     private final RepoFilterService repoFilterService;
 
     public List<ApiRepo> findApiRepos() {
-        return repoFinders.stream()
-                .map(RepoFinder::findApiRepos)
+        return extensionRegistry.getRepoFinders().stream()
+                .map(repoFinder -> repoFinder.find(null))
                 .flatMap(Collection::stream)
                 .distinct()
                 .filter(repoFilterService::keepRepo)

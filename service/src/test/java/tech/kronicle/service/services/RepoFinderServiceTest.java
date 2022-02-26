@@ -23,6 +23,8 @@ public class RepoFinderServiceTest {
 
     private RepoFinderService underTest;
     @Mock
+    private FinderExtensionRegistry mockFinderExtensionRegistry;
+    @Mock
     private RepoFilterService mockRepoFilterService;
     @Mock
     private RepoFinder mockRepoFinder1;
@@ -32,10 +34,11 @@ public class RepoFinderServiceTest {
     @Test
     public void getRepoProvidersShouldUseTheRepoFindersToFindRepos() {
         // Given
+        when(mockFinderExtensionRegistry.getRepoFinders()).thenReturn(List.of(mockRepoFinder1, mockRepoFinder2));
         when(mockRepoFinder1.findApiRepos()).thenReturn(List.of(TEST_REPO_1, TEST_REPO_2));
         when(mockRepoFinder2.findApiRepos()).thenReturn(List.of(TEST_REPO_3, TEST_REPO_4));
         when(mockRepoFilterService.keepRepo(any())).thenReturn(true);
-        underTest = new RepoFinderService(List.of(mockRepoFinder1, mockRepoFinder2), mockRepoFilterService);
+        underTest = new RepoFinderService(mockFinderExtensionRegistry, mockRepoFilterService);
 
         // When
         List<ApiRepo> returnValue = underTest.findApiRepos();
@@ -47,10 +50,11 @@ public class RepoFinderServiceTest {
     @Test
     public void getRepoProvidersShouldDeduplicateIdenticalReposFromDifferentRepoFinders() {
         // Given
+        when(mockFinderExtensionRegistry.getRepoFinders()).thenReturn(List.of(mockRepoFinder1, mockRepoFinder2));
         when(mockRepoFinder1.findApiRepos()).thenReturn(List.of(TEST_REPO_1));
         when(mockRepoFinder2.findApiRepos()).thenReturn(List.of(TEST_REPO_1));
         when(mockRepoFilterService.keepRepo(any())).thenReturn(true);
-        underTest = new RepoFinderService(List.of(mockRepoFinder1, mockRepoFinder2), mockRepoFilterService);
+        underTest = new RepoFinderService(mockFinderExtensionRegistry, mockRepoFilterService);
 
         // When
         List<ApiRepo> returnValue = underTest.findApiRepos();
@@ -62,9 +66,10 @@ public class RepoFinderServiceTest {
     @Test
     public void getRepoProvidersShouldDeduplicateIdenticalReposFromTheSameRepoFinder() {
         // Given
+        when(mockFinderExtensionRegistry.getRepoFinders()).thenReturn(List.of(mockRepoFinder1));
         when(mockRepoFinder1.findApiRepos()).thenReturn(List.of(TEST_REPO_1, TEST_REPO_1));
         when(mockRepoFilterService.keepRepo(any())).thenReturn(true);
-        underTest = new RepoFinderService(List.of(mockRepoFinder1), mockRepoFilterService);
+        underTest = new RepoFinderService(mockFinderExtensionRegistry, mockRepoFilterService);
 
         // When
         List<ApiRepo> returnValue = underTest.findApiRepos();
@@ -76,11 +81,12 @@ public class RepoFinderServiceTest {
     @Test
     public void getRepoProvidersShouldUseRepoFilterServiceToFilterTheRepos() {
         // Given
+        when(mockFinderExtensionRegistry.getRepoFinders()).thenReturn(List.of(mockRepoFinder1));
         when(mockRepoFinder1.findApiRepos()).thenReturn(List.of(TEST_REPO_1, TEST_REPO_2, TEST_REPO_3));
         when(mockRepoFilterService.keepRepo(TEST_REPO_1)).thenReturn(true);
         when(mockRepoFilterService.keepRepo(TEST_REPO_2)).thenReturn(false);
         when(mockRepoFilterService.keepRepo(TEST_REPO_3)).thenReturn(true);
-        underTest = new RepoFinderService(List.of(mockRepoFinder1), mockRepoFilterService);
+        underTest = new RepoFinderService(mockFinderExtensionRegistry, mockRepoFilterService);
 
         // When
         List<ApiRepo> returnValue = underTest.findApiRepos();

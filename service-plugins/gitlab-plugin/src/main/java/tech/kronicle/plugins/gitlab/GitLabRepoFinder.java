@@ -26,7 +26,12 @@ public class GitLabRepoFinder extends RepoFinder {
     private final GitLabClient client;
 
     @Override
-    public List<ApiRepo> findApiRepos() {
+    public String description() {
+        return "Find repositories hosted by GitLab.  ";
+    }
+
+    @Override
+    public List<ApiRepo> find(Void ignored) {
         return getHosts().stream()
                 .flatMap(host -> Stream.of(
                         findApiRepos(host, host::getAccessTokens, client::getRepos, "access tokens"),
