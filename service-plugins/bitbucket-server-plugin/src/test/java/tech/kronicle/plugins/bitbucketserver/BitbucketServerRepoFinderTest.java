@@ -27,9 +27,6 @@ public class BitbucketServerRepoFinderTest {
 
     @Test
     public void descriptionShouldReturnTheDescriptionOfTheFinder() {
-        // Given
-        underTest = new GitLabRepoFinder(null, null);
-
         // When
         String returnValue = underTest.description();
 

@@ -46,7 +46,7 @@ public class GitHubRepoFinderTest {
     @Test
     public void descriptionShouldReturnTheDescriptionOfTheFinder() {
         // Given
-        underTest = new GitLabRepoFinder(null, null);
+        underTest = new GitHubRepoFinder(null, null);
 
         // When
         String returnValue = underTest.description();
