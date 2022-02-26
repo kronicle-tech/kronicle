@@ -4,6 +4,8 @@ import org.junit.jupiter.api.Test;
 import tech.kronicle.componentmetadata.models.ComponentMetadata;
 import tech.kronicle.pluginapi.finders.DependencyFinder;
 import tech.kronicle.pluginapi.finders.Finder;
+import tech.kronicle.pluginapi.finders.RepoFinder;
+import tech.kronicle.pluginapi.finders.models.ApiRepo;
 import tech.kronicle.sdk.models.Dependency;
 import tech.kronicle.service.services.testutils.FakePluginManager;
 
@@ -92,12 +94,12 @@ public class FinderExtensionRegistryTest {
         }
 
         @Override
-        public List<Repo> find(Void ignored) {
+        public List<ApiRepo> find(Void ignored) {
             return null;
         }
     }
 
-    private static class TestOtherFinder extends Finder<Object> {
+    private static class TestOtherFinder extends Finder<ComponentMetadata, Object> {
         @Override
         public String description() {
             return null;

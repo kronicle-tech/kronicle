@@ -17,6 +17,7 @@ import java.util.stream.Collectors;
 @org.springframework.stereotype.Component
 @Extension
 public class ManualDependencyFinder extends DependencyFinder {
+
     @Override
     public String description() {
         return "Finds dependencies manually specified in kronicle.yaml files.  ";
