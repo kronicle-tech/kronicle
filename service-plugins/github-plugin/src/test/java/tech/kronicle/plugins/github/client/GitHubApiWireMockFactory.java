@@ -7,7 +7,7 @@ import lombok.Builder;
 import lombok.Value;
 import tech.kronicle.plugins.github.config.GitHubAccessTokenConfig;
 import tech.kronicle.plugins.github.constants.GitHubApiHeaders;
-import tech.kronicle.plugintestutils.testutils.TestFileHelper;
+import tech.kronicle.plugintestutils.TestFileHelper;
 
 import java.util.ArrayList;
 import java.util.List;

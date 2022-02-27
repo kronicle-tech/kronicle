@@ -1,13 +1,13 @@
 package tech.kronicle.plugins.gradle.internal.services;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Component;
 import tech.kronicle.sdk.models.SoftwareRepository;
 import tech.kronicle.sdk.models.SoftwareRepositoryScope;
 import tech.kronicle.sdk.models.SoftwareRepositoryType;
 
-@Component
-@RequiredArgsConstructor
+import javax.inject.Inject;
+
+@RequiredArgsConstructor(onConstructor = @__({@Inject}))
 public class SoftwareRepositoryFactory {
 
     private final SoftwareRepositoryUrlSafetyChecker urlSafetyChecker;

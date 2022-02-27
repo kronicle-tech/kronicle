@@ -1,6 +1,6 @@
 package tech.kronicle.service.testutils;
 
-import tech.kronicle.common.services.ValidationConstraintViolationTransformer;
+import tech.kronicle.common.ValidationConstraintViolationTransformer;
 import tech.kronicle.service.services.ValidationConstraintViolationChecker;
 import tech.kronicle.service.services.ValidatorService;
 

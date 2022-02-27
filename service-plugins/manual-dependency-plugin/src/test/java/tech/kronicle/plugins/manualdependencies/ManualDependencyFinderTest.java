@@ -2,9 +2,9 @@ package tech.kronicle.plugins.manualdependencies;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import tech.kronicle.componentmetadata.models.ComponentMetadata;
 import tech.kronicle.sdk.models.Component;
 import tech.kronicle.sdk.models.ComponentDependency;
+import tech.kronicle.sdk.models.ComponentMetadata;
 import tech.kronicle.sdk.models.Dependency;
 import tech.kronicle.sdk.models.DependencyDirection;
 

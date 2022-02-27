@@ -48,7 +48,7 @@ public class DatadogDependencyFinderTest {
     @Test
     public void findShouldHandleEnvironmentsConfigBeingNull() {
         // Given
-        underTest = new DatadogDependencyFinder(new DatadogDependenciesConfig(null, null), client);
+        underTest = new DatadogDependencyFinder(new DatadogDependenciesConfig(null), client);
 
         // When
         List<Dependency> returnValue = underTest.find(null);
@@ -65,7 +65,7 @@ public class DatadogDependencyFinderTest {
                 new Dependency("test-service-3", "test-service-4")
         );
         when(client.getDependencies("test-environment-1")).thenReturn(dependencies);
-        underTest = new DatadogDependencyFinder(new DatadogDependenciesConfig(null, List.of("test-environment-1")), client);
+        underTest = new DatadogDependencyFinder(new DatadogDependenciesConfig(List.of("test-environment-1")), client);
 
         // When
         List<Dependency> returnValue = underTest.find(null);
@@ -85,7 +85,7 @@ public class DatadogDependencyFinderTest {
                 new Dependency("test-service-5", "test-service-6"),
                 new Dependency("test-service-7", "test-service-8")
         ));
-        underTest = new DatadogDependencyFinder(new DatadogDependenciesConfig(null, List.of("test-environment-1", "test-environment-2")), client);
+        underTest = new DatadogDependencyFinder(new DatadogDependenciesConfig(List.of("test-environment-1", "test-environment-2")), client);
 
         // When
         List<Dependency> returnValue = underTest.find(null);
@@ -111,7 +111,7 @@ public class DatadogDependencyFinderTest {
                 new Dependency("test-service-3", "test-service-4"),
                 new Dependency("test-service-5", "test-service-6")
         ));
-        underTest = new DatadogDependencyFinder(new DatadogDependenciesConfig(null, List.of("test-environment-1", "test-environment-2")), client);
+        underTest = new DatadogDependencyFinder(new DatadogDependenciesConfig(List.of("test-environment-1", "test-environment-2")), client);
 
         // When
         List<Dependency> returnValue = underTest.find(null);

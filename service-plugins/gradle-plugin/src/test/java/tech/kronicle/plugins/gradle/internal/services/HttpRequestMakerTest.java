@@ -5,10 +5,10 @@ import io.github.resilience4j.retry.RetryRegistry;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.springframework.http.ResponseEntity;
-import tech.kronicle.plugintestutils.testutils.Timer;
-import tech.kronicle.pluginutils.utils.ObjectReference;
+import tech.kronicle.plugintestutils.Timer;
+import tech.kronicle.pluginutils.ObjectReference;
 
+import java.net.http.HttpResponse;
 import java.time.Duration;
 import java.util.function.Function;
 
@@ -35,7 +35,7 @@ public class HttpRequestMakerTest {
     public void makeHttpRequestShouldRetryWhenHttpRequestThrowsAnException() {
         // Given
         ObjectReference<Integer> counter = new ObjectReference<>(0);
-        Function<String, ResponseEntity<String>> httpRequest = ignored -> {
+        Function<String, HttpResponse<String>> httpRequest = ignored -> {
             counter.set(counter.get() + 1);
             throw new RuntimeException("test");
         };

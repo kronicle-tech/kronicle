@@ -14,7 +14,7 @@ import java.util.stream.Collectors;
 
 import static java.util.Objects.isNull;
 import static java.util.Objects.nonNull;
-import static tech.kronicle.pluginutils.utils.MarkdownHelper.createMarkdownLink;
+import static tech.kronicle.pluginutils.MarkdownHelper.createMarkdownLink;
 
 @RequiredArgsConstructor
 public abstract class BaseSonarQubeTest extends ComponentTest {

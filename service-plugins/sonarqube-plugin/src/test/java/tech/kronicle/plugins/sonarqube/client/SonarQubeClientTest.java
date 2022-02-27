@@ -3,26 +3,27 @@ package tech.kronicle.plugins.sonarqube.client;
 import com.github.tomakehurst.wiremock.WireMockServer;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit.jupiter.SpringExtension;
+import tech.kronicle.plugins.sonarqube.config.SonarQubeConfig;
 import tech.kronicle.plugins.sonarqube.models.Project;
 import tech.kronicle.sdk.models.sonarqube.SonarQubeMeasure;
 import tech.kronicle.sdk.models.sonarqube.SummarySonarQubeMetric;
 
+import java.time.Duration;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static tech.kronicle.pluginutils.HttpClientFactory.createHttpClient;
+import static tech.kronicle.pluginutils.JsonMapperFactory.createJsonMapper;
 
-@ExtendWith(SpringExtension.class)
-@ContextConfiguration(classes = { SonarQubeClientTestConfiguration.class})
 public class SonarQubeClientTest {
 
-    @Autowired
-    private SonarQubeClient underTest;
+    private SonarQubeClient underTest = new SonarQubeClient(
+            createHttpClient(),
+            new SonarQubeConfig("http://localhost:36202", Duration.ofSeconds(60), List.of()),
+            createJsonMapper()
+    );
     private WireMockServer wireMockServer;
     private final SonarQubeWireMockFactory sonarQubeWireMockFactory = new SonarQubeWireMockFactory();
 

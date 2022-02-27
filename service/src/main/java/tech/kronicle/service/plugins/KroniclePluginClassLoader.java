@@ -13,7 +13,6 @@ public class KroniclePluginClassLoader extends PluginClassLoader {
             "tech.kronicle.sdk.",
             "tech.kronicle.componentmetadata.",
             "tech.kronicle.pluginapi.",
-            "org.springframework.context.",
             "org.slf4j."
     );
 

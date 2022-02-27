@@ -3,10 +3,6 @@ package tech.kronicle.plugins.gradle;
 import com.github.tomakehurst.wiremock.WireMockServer;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit.jupiter.SpringExtension;
 import tech.kronicle.pluginapi.scanners.models.Codebase;
 import tech.kronicle.pluginapi.scanners.models.Output;
 import tech.kronicle.sdk.models.Component;
@@ -22,6 +18,7 @@ import java.util.Map;
 
 import static java.util.Objects.nonNull;
 import static org.assertj.core.api.Assertions.assertThat;
+import static tech.kronicle.plugins.gradle.TestDependencyFactory.createGradleScanner;
 import static tech.kronicle.plugins.gradle.internal.testconstants.ScannerIds.SCANNER_ID;
 import static tech.kronicle.plugins.gradle.internal.testconstants.SoftwareItems.DEPENDENCY_CHECK_GRADLE_6_0_2_BUILDSCRIPT;
 import static tech.kronicle.plugins.gradle.internal.testconstants.SoftwareItems.DEPENDENCY_CHECK_PLUGIN;
@@ -49,13 +46,10 @@ import static tech.kronicle.plugins.gradle.internal.testconstants.SoftwareReposi
 import static tech.kronicle.plugins.gradle.internal.testconstants.SoftwareRepositories.JCENTER_REPOSITORY;
 import static tech.kronicle.plugins.gradle.internal.testconstants.SoftwareRepositories.MAVEN_CENTRAL_REPOSITORY;
 
-@ExtendWith(SpringExtension.class)
-@SpringBootTest(properties = "test-name=GradleScannerCodebaseTest", classes = GradleScannerTestConfiguration.class)
 public class GradleScannerCodebaseTest extends BaseGradleScannerTest {
 
-    @Autowired
-    private GradleScanner underTest;
-    WireMockServer wireMockServer;
+    private final GradleScanner underTest = createGradleScanner(this.getClass());
+    private WireMockServer wireMockServer;
 
     @AfterEach
     public void afterEach() {

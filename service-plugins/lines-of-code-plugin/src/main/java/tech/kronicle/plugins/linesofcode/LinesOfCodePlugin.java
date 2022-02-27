@@ -1,28 +1,25 @@
 package tech.kronicle.plugins.linesofcode;
 
+import com.google.inject.Module;
 import org.pf4j.PluginWrapper;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import tech.kronicle.pluginapi.KroniclePlugin;
-import tech.kronicle.plugins.linesofcode.spring.SpringConfiguration;
+import tech.kronicle.pluginguice.KronicleGuicePlugin;
+import tech.kronicle.plugins.linesofcode.guice.GuiceModule;
 
-public class LinesOfCodePlugin extends KroniclePlugin {
+import java.util.List;
+
+public class LinesOfCodePlugin extends KronicleGuicePlugin {
 
     public LinesOfCodePlugin(PluginWrapper wrapper) {
         super(wrapper);
     }
 
     @Override
-    public Class<?> getConfigType() {
-        return null;
+    protected List<Module> getGuiceModules() {
+        return List.of(new GuiceModule());
     }
 
     @Override
-    protected ApplicationContext createApplicationContext() {
-        AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext();
-        applicationContext.setClassLoader(getWrapper().getPluginClassLoader());
-        applicationContext.register(SpringConfiguration.class);
-        return applicationContext;
+    public Class<?> getConfigType() {
+        return null;
     }
-
 }

@@ -1,29 +1,26 @@
 package tech.kronicle.plugins.gradle;
 
+import com.google.inject.Module;
 import org.pf4j.PluginWrapper;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import tech.kronicle.pluginapi.KroniclePlugin;
+import tech.kronicle.pluginguice.KronicleGuicePlugin;
 import tech.kronicle.plugins.gradle.config.GradleConfig;
-import tech.kronicle.plugins.gradle.internal.spring.SpringConfiguration;
+import tech.kronicle.plugins.gradle.guice.GuiceModule;
 
-public class GradlePlugin extends KroniclePlugin {
+import java.util.List;
+
+public class GradlePlugin extends KronicleGuicePlugin {
 
     public GradlePlugin(PluginWrapper wrapper) {
         super(wrapper);
     }
 
     @Override
-    public Class<?> getConfigType() {
-        return GradleConfig.class;
+    protected List<Module> getGuiceModules() {
+        return List.of(new GuiceModule());
     }
 
     @Override
-    protected ApplicationContext createApplicationContext() {
-        AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext();
-        applicationContext.setClassLoader(getWrapper().getPluginClassLoader());
-        applicationContext.register(SpringConfiguration.class);
-        return applicationContext;
+    public Class<?> getConfigType() {
+        return GradleConfig.class;
     }
-
 }

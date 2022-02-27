@@ -1,29 +1,26 @@
 package tech.kronicle.plugins.gitlab;
 
+import com.google.inject.Module;
 import org.pf4j.PluginWrapper;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import tech.kronicle.pluginapi.KroniclePlugin;
+import tech.kronicle.pluginguice.KronicleGuicePlugin;
 import tech.kronicle.plugins.gitlab.config.GitLabConfig;
-import tech.kronicle.plugins.gitlab.spring.SpringConfiguration;
+import tech.kronicle.plugins.gitlab.guice.GuiceModule;
 
-public class GitLabPlugin extends KroniclePlugin {
+import java.util.List;
+
+public class GitLabPlugin extends KronicleGuicePlugin {
 
     public GitLabPlugin(PluginWrapper wrapper) {
         super(wrapper);
     }
 
     @Override
-    public Class<?> getConfigType() {
-        return GitLabConfig.class;
+    protected List<Module> getGuiceModules() {
+        return List.of(new GuiceModule());
     }
 
     @Override
-    protected ApplicationContext createApplicationContext() {
-        AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext();
-        applicationContext.setClassLoader(getWrapper().getPluginClassLoader());
-        applicationContext.register(SpringConfiguration.class);
-        return applicationContext;
+    public Class<?> getConfigType() {
+        return GitLabConfig.class;
     }
-
 }

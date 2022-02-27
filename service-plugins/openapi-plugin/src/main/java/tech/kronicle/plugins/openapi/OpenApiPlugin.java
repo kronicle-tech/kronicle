@@ -1,28 +1,25 @@
 package tech.kronicle.plugins.openapi;
 
+import com.google.inject.Module;
 import org.pf4j.PluginWrapper;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import tech.kronicle.pluginapi.KroniclePlugin;
-import tech.kronicle.plugins.openapi.spring.SpringConfiguration;
+import tech.kronicle.pluginguice.KronicleGuicePlugin;
+import tech.kronicle.plugins.openapi.guice.GuiceModule;
 
-public class OpenApiPlugin extends KroniclePlugin {
+import java.util.List;
+
+public class OpenApiPlugin extends KronicleGuicePlugin {
 
     public OpenApiPlugin(PluginWrapper wrapper) {
         super(wrapper);
     }
 
     @Override
-    public Class<?> getConfigType() {
-        return null;
+    protected List<Module> getGuiceModules() {
+        return List.of(new GuiceModule());
     }
 
     @Override
-    protected ApplicationContext createApplicationContext() {
-        AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext();
-        applicationContext.setClassLoader(getWrapper().getPluginClassLoader());
-        applicationContext.register(SpringConfiguration.class);
-        return applicationContext;
+    public Class<?> getConfigType() {
+        return null;
     }
-
 }

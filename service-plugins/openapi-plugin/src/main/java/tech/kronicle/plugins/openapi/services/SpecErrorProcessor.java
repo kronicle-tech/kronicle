@@ -2,18 +2,17 @@ package tech.kronicle.plugins.openapi.services;
 
 import io.swagger.v3.parser.core.models.SwaggerParseResult;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
-import tech.kronicle.common.utils.StringEscapeUtils;
+import tech.kronicle.common.StringEscapeUtils;
 import tech.kronicle.pluginapi.scanners.Scanner;
-import tech.kronicle.pluginutils.scanners.services.ThrowableToScannerErrorMapper;
+import tech.kronicle.pluginutils.ThrowableToScannerErrorMapper;
 import tech.kronicle.sdk.models.ScannerError;
 
+import javax.inject.Inject;
 import java.util.List;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
-@Service
-@RequiredArgsConstructor
+@RequiredArgsConstructor(onConstructor = @__({@Inject}))
 public class SpecErrorProcessor {
 
     private static final List<String> OK_MESSAGES = List.of("attribute openapi is missing", "attribute openapi is not of type `object`");

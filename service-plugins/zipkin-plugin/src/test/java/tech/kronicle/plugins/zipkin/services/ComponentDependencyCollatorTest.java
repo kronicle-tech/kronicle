@@ -2,7 +2,6 @@ package tech.kronicle.plugins.zipkin.services;
 
 import org.junit.jupiter.api.Test;
 import tech.kronicle.plugins.zipkin.models.api.Span;
-import tech.kronicle.plugins.zipkin.spring.SpringConfiguration;
 import tech.kronicle.plugins.zipkin.testutils.ZipkinApiModelTestHelper;
 import tech.kronicle.sdk.models.Dependency;
 import tech.kronicle.sdk.models.SummaryComponentDependencies;
@@ -18,7 +17,6 @@ public class ComponentDependencyCollatorTest {
     private final ZipkinApiModelTestHelper testHelper = new ZipkinApiModelTestHelper();
     private final ComponentDependencyCollator underTest = new ComponentDependencyCollator(
             new GenericDependencyCollator(),
-            new SpringConfiguration().componentNodeComparator(),
             new DependencyHelper(new DependencyDurationCalculator(), new SubComponentDependencyTagFilter())
     );
 

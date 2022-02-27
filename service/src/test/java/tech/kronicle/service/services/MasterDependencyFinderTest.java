@@ -7,10 +7,10 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import tech.kronicle.componentmetadata.models.ComponentMetadata;
+import tech.kronicle.sdk.models.ComponentMetadata;
 import tech.kronicle.pluginapi.finders.DependencyFinder;
-import tech.kronicle.plugintestutils.testutils.LogCaptor;
-import tech.kronicle.plugintestutils.testutils.SimplifiedLogEvent;
+import tech.kronicle.plugintestutils.LogCaptor;
+import tech.kronicle.plugintestutils.SimplifiedLogEvent;
 import tech.kronicle.sdk.models.Dependency;
 
 import java.util.List;

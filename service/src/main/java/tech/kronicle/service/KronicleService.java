@@ -14,12 +14,13 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.web.reactive.function.client.WebClient;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
-import tech.kronicle.common.services.ValidationConstraintViolationTransformer;
-import tech.kronicle.pluginutils.scanners.services.ThrowableToScannerErrorMapper;
-import tech.kronicle.pluginutils.utils.AntStyleIgnoreFileLoader;
-import tech.kronicle.pluginutils.utils.FileUtils;
+import tech.kronicle.common.ValidationConstraintViolationTransformer;
+import tech.kronicle.pluginutils.FileUtils;
+import tech.kronicle.pluginutils.ThrowableToScannerErrorMapper;
 
 import java.time.Clock;
+
+import static tech.kronicle.pluginutils.FileUtilsFactory.createFileUtils;
 
 @SpringBootApplication
 @ConfigurationPropertiesScan
@@ -37,7 +38,7 @@ public class KronicleService {
 
     @Bean
     public FileUtils fileUtils() {
-        return new FileUtils(new AntStyleIgnoreFileLoader());
+        return createFileUtils();
     }
 
     @Bean

@@ -4,7 +4,6 @@ import lombok.Builder;
 import lombok.Value;
 import lombok.With;
 import lombok.extern.jackson.Jacksonized;
-import org.springframework.lang.Nullable;
 import tech.kronicle.sdk.utils.ListUtils;
 
 import javax.validation.constraints.Min;
@@ -18,7 +17,6 @@ import java.util.List;
 @Jacksonized
 public class SummaryComponentDependency implements ObjectWithSourceIndexAndTargetIndex {
 
-    @Nullable
     @Min(0)
     Integer sourceIndex;
     @NotNull

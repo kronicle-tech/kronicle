@@ -3,18 +3,17 @@ package tech.kronicle.plugins.gradle.internal.services;
 import lombok.RequiredArgsConstructor;
 import lombok.Value;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.stereotype.Component;
 import tech.kronicle.plugins.gradle.internal.utils.ArtifactUtils;
 import tech.kronicle.sdk.models.SoftwareRepository;
 
+import javax.inject.Inject;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
-@Component
-@RequiredArgsConstructor
+@RequiredArgsConstructor(onConstructor = @__({@Inject}))
 @Slf4j
 public class MavenRepositoryFileDownloader {
 

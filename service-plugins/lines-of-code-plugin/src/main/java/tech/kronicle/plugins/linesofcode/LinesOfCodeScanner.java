@@ -4,16 +4,16 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.FilenameUtils;
 import org.pf4j.Extension;
-import org.springframework.stereotype.Component;
 import tech.kronicle.pluginapi.scanners.CodebaseScanner;
 import tech.kronicle.pluginapi.scanners.models.Codebase;
 import tech.kronicle.pluginapi.scanners.models.Output;
 import tech.kronicle.plugins.linesofcode.services.LinesOfCodeCounter;
-import tech.kronicle.pluginutils.utils.FileUtils;
-import tech.kronicle.pluginutils.utils.ObjectReference;
+import tech.kronicle.pluginutils.FileUtils;
+import tech.kronicle.pluginutils.ObjectReference;
 import tech.kronicle.sdk.models.linesofcode.FileExtensionCount;
 import tech.kronicle.sdk.models.linesofcode.LinesOfCode;
 
+import javax.inject.Inject;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Path;
@@ -25,9 +25,8 @@ import java.util.stream.Collectors;
 
 import static java.util.Objects.isNull;
 
-@Component
 @Extension
-@RequiredArgsConstructor
+@RequiredArgsConstructor(onConstructor = @__({@Inject}))
 @Slf4j
 public class LinesOfCodeScanner extends CodebaseScanner {
 

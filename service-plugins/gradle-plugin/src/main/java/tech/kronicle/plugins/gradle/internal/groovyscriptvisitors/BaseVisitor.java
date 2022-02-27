@@ -61,7 +61,7 @@ import org.codehaus.groovy.ast.stmt.TryCatchStatement;
 import org.codehaus.groovy.ast.stmt.WhileStatement;
 import org.codehaus.groovy.classgen.BytecodeExpression;
 import org.slf4j.Logger;
-import tech.kronicle.common.utils.StringEscapeUtils;
+import tech.kronicle.common.StringEscapeUtils;
 import tech.kronicle.plugins.gradle.internal.services.BuildFileLoader;
 import tech.kronicle.plugins.gradle.internal.services.BuildFileProcessor;
 import tech.kronicle.plugins.gradle.internal.services.ExpressionEvaluator;

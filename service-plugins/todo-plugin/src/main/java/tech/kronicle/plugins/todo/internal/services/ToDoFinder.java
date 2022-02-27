@@ -1,12 +1,10 @@
 package tech.kronicle.plugins.todo.internal.services;
 
-import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
-@Component
 public class ToDoFinder {
 
     private static final Pattern toDoPattern = Pattern.compile("(?i)(?://|/\\*|#)\\s*TO\\s*DO\\s*[-:]?(.+)");

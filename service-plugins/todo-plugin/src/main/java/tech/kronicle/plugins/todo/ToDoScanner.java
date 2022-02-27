@@ -3,21 +3,20 @@ package tech.kronicle.plugins.todo;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.pf4j.Extension;
-import org.springframework.stereotype.Component;
 import tech.kronicle.pluginapi.scanners.CodebaseScanner;
 import tech.kronicle.pluginapi.scanners.models.Codebase;
 import tech.kronicle.pluginapi.scanners.models.Output;
 import tech.kronicle.plugins.todo.internal.services.ToDoFinder;
-import tech.kronicle.pluginutils.utils.FileUtils;
+import tech.kronicle.pluginutils.FileUtils;
 import tech.kronicle.sdk.models.todos.ToDo;
 
+import javax.inject.Inject;
 import java.nio.file.Path;
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Extension
-@Component
-@RequiredArgsConstructor
+@RequiredArgsConstructor(onConstructor = @__({@Inject}))
 @Slf4j
 public class ToDoScanner extends CodebaseScanner {
 

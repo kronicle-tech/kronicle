@@ -3,17 +3,16 @@ package tech.kronicle.plugins.sonarqube.services;
 import org.junit.jupiter.api.Test;
 import tech.kronicle.plugins.sonarqube.models.Project;
 import tech.kronicle.plugintestutils.scanners.BaseCodebaseScannerTest;
-import tech.kronicle.pluginutils.utils.AntStyleIgnoreFileLoader;
-import tech.kronicle.pluginutils.utils.FileUtils;
 
 import java.nio.file.Path;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static tech.kronicle.pluginutils.FileUtilsFactory.createFileUtils;
 
 public class CodebaseSonarQubeProjectFinderTest extends BaseCodebaseScannerTest {
 
-    private final CodebaseSonarQubeProjectFinder underTest = new CodebaseSonarQubeProjectFinder(new FileUtils(new AntStyleIgnoreFileLoader()));
+    private final CodebaseSonarQubeProjectFinder underTest = new CodebaseSonarQubeProjectFinder(createFileUtils());
 
     @Test
     public void findProjectsShouldHandleACodebaseWithNoProjectReferences() {

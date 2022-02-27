@@ -3,20 +3,21 @@ package tech.kronicle.plugins.nodejs.internal.services.npm;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
 import tech.kronicle.plugins.nodejs.internal.constants.NodeJsFileNames;
 import tech.kronicle.plugins.nodejs.internal.constants.NpmPackagings;
 import tech.kronicle.plugins.nodejs.internal.models.PackageJson;
 import tech.kronicle.plugins.nodejs.internal.models.npm.NpmDependencies;
 import tech.kronicle.plugins.nodejs.internal.models.npm.NpmDependency;
 import tech.kronicle.plugins.nodejs.internal.models.npm.NpmPackageLock;
-import tech.kronicle.pluginutils.utils.FileUtils;
+import tech.kronicle.pluginutils.FileUtils;
 import tech.kronicle.sdk.models.Software;
 import tech.kronicle.sdk.models.SoftwareDependencyType;
 import tech.kronicle.sdk.models.SoftwareScope;
 
+import javax.inject.Inject;
 import java.nio.file.Path;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -24,8 +25,7 @@ import java.util.stream.Stream;
 import static java.util.Objects.isNull;
 import static java.util.Objects.nonNull;
 
-@Service
-@RequiredArgsConstructor
+@RequiredArgsConstructor(onConstructor = @__({@Inject}))
 public class NpmPackageExtractor {
 
     private final FileUtils fileUtils;
@@ -65,7 +65,7 @@ public class NpmPackageExtractor {
 
     private Set<String> getDirectDependencyNames(PackageJson packageJson) {
         return Stream.of(packageJson.getDependencies(), packageJson.getDevDependencies())
-                .filter(it -> nonNull(it))
+                .filter(Objects::nonNull)
                 .flatMap(it -> it.keySet().stream())
                 .collect(Collectors.toSet());
     }

@@ -1,15 +1,11 @@
 package tech.kronicle.plugins.gradle;
 
-import io.micronaut.context.annotation.Bean;
-import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
 import org.junit.jupiter.api.DynamicTest;
 import org.junit.jupiter.api.TestFactory;
 import tech.kronicle.pluginapi.scanners.models.Codebase;
 import tech.kronicle.pluginapi.scanners.models.Output;
-import tech.kronicle.plugins.gradle.testbeans.TestDataDir;
 import tech.kronicle.sdk.models.Repo;
 
-import javax.inject.Inject;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -20,18 +16,12 @@ import java.util.stream.Stream;
 import static java.util.Objects.isNull;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.DynamicTest.dynamicTest;
+import static tech.kronicle.plugins.gradle.TestDependencyFactory.createGradleScanner;
 
-@MicronautTest
 public class RealCodebaseTest {
 
     private static final Repo TEST_REPO = new Repo("test");
-    @Inject
-    private GradleScanner underTest;
-
-    @Bean
-    public TestDataDir testDataDir() {
-        return new TestDataDir(this.getClass());
-    }
+    private final GradleScanner underTest = createGradleScanner(this.getClass());
 
     @TestFactory
     Stream<DynamicTest> shouldSuccessfullyScanCodebases() throws IOException {

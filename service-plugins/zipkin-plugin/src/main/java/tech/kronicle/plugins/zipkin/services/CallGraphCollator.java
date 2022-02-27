@@ -2,7 +2,6 @@ package tech.kronicle.plugins.zipkin.services;
 
 import lombok.RequiredArgsConstructor;
 import lombok.Value;
-import org.springframework.stereotype.Service;
 import tech.kronicle.plugins.zipkin.models.CollatorComponentDependency;
 import tech.kronicle.plugins.zipkin.models.NodesAndDependencies;
 import tech.kronicle.plugins.zipkin.models.ObjectWithDurations;
@@ -15,24 +14,26 @@ import tech.kronicle.sdk.models.SummaryCallGraph;
 import tech.kronicle.sdk.models.SummaryComponentDependency;
 import tech.kronicle.sdk.models.SummarySubComponentDependencyNode;
 
-import java.util.Comparator;
+import javax.inject.Inject;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-@Service
-@RequiredArgsConstructor
+@RequiredArgsConstructor(onConstructor = @__({@Inject}))
 public class CallGraphCollator {
 
     private final GenericDependencyCollator genericDependencyCollator;
-    private final Comparator<SummarySubComponentDependencyNode> subComponentNodeComparator;
     private final DependencyHelper dependencyHelper;
     private final DependencyDurationCalculator dependencyDurationCalculator;
 
     public List<SummaryCallGraph> collateCallGraphs(List<List<Span>> traces) {
         return traces.stream()
-                .map(trace -> genericDependencyCollator.createDependencies(List.of(trace), dependencyHelper::createSubComponentDependencyNode,
-                        subComponentNodeComparator, this::mergeDuplicateDependencies))
+                .map(trace -> genericDependencyCollator.createDependencies(
+                        List.of(trace),
+                        dependencyHelper::createSubComponentDependencyNode,
+                        NodeComparators.SUB_COMPONENT_NODE_COMPARATOR,
+                        this::mergeDuplicateDependencies
+                ))
                 .map(this::createCallGraphs)
                 .collect(Collectors.groupingBy(this::createSimpleCallGraph))
                 .values()

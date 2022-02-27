@@ -1,13 +1,14 @@
 package tech.kronicle.plugins.datadog;
 
+import com.google.inject.Module;
 import org.pf4j.PluginWrapper;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import tech.kronicle.pluginapi.KroniclePlugin;
+import tech.kronicle.pluginguice.KronicleGuicePlugin;
 import tech.kronicle.plugins.datadog.config.DatadogConfig;
-import tech.kronicle.plugins.datadog.spring.SpringConfiguration;
+import tech.kronicle.plugins.datadog.guice.GuiceModule;
 
-public class DatadogPlugin extends KroniclePlugin {
+import java.util.List;
+
+public class DatadogPlugin extends KronicleGuicePlugin {
 
     public DatadogPlugin(PluginWrapper wrapper) {
         super(wrapper);
@@ -19,11 +20,7 @@ public class DatadogPlugin extends KroniclePlugin {
     }
 
     @Override
-    protected ApplicationContext createApplicationContext() {
-        AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext();
-        applicationContext.setClassLoader(getWrapper().getPluginClassLoader());
-        applicationContext.register(SpringConfiguration.class);
-        return applicationContext;
+    protected List<Module> getGuiceModules() {
+        return List.of(new GuiceModule());
     }
-
 }

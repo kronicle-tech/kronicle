@@ -1,14 +1,12 @@
 package tech.kronicle.plugins.zipkin.services;
 
-import org.springframework.stereotype.Service;
 import tech.kronicle.plugins.zipkin.constants.TagKeys;
 import tech.kronicle.plugins.zipkin.models.api.Span;
-import tech.kronicle.pluginutils.utils.MapCollectors;
+import tech.kronicle.pluginutils.MapCollectors;
 
 import java.util.List;
 import java.util.Map;
 
-@Service
 public class SubComponentDependencyTagFilter {
 
     private static final List<String> IDENTITY_TAG_KEYS = List.of(

@@ -1,7 +1,7 @@
 package tech.kronicle.service.services;
 
 import org.junit.jupiter.api.Test;
-import tech.kronicle.componentmetadata.models.ComponentMetadata;
+import tech.kronicle.sdk.models.ComponentMetadata;
 import tech.kronicle.pluginapi.finders.DependencyFinder;
 import tech.kronicle.pluginapi.finders.Finder;
 import tech.kronicle.pluginapi.finders.RepoFinder;

@@ -7,12 +7,12 @@ import io.swagger.v3.parser.core.models.ParseOptions;
 import io.swagger.v3.parser.core.models.SwaggerParseResult;
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
-import org.springframework.stereotype.Service;
 import tech.kronicle.pluginapi.scanners.Scanner;
 import tech.kronicle.pluginapi.scanners.models.ComponentAndCodebase;
 import tech.kronicle.plugins.openapi.models.SpecAndErrors;
 import tech.kronicle.sdk.models.openapi.OpenApiSpec;
 
+import javax.inject.Inject;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -22,8 +22,7 @@ import java.util.stream.Collectors;
 import static java.util.Objects.isNull;
 import static java.util.Objects.nonNull;
 
-@Service
-@RequiredArgsConstructor
+@RequiredArgsConstructor(onConstructor = @__({@Inject}))
 public class SpecParser {
 
     private final Map<String, SwaggerParseResult> swaggerParseResultCache = new HashMap<>();

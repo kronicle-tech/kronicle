@@ -1,7 +1,6 @@
 package tech.kronicle.plugins.github.services;
 
 import lombok.Value;
-import org.springframework.stereotype.Service;
 import tech.kronicle.plugins.github.config.GitHubAccessTokenConfig;
 import tech.kronicle.plugins.github.models.ApiResponseCacheEntry;
 
@@ -10,7 +9,6 @@ import java.util.Map;
 
 import static java.util.Objects.nonNull;
 
-@Service
 public class ApiResponseCache {
 
   private final Map<Key, ApiResponseCacheEntry<?>> cache = new HashMap<>();

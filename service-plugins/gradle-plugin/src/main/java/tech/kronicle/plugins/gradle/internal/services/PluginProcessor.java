@@ -1,7 +1,5 @@
 package tech.kronicle.plugins.gradle.internal.services;
 
-import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Component;
 import tech.kronicle.plugins.gradle.internal.utils.InheritingHashSet;
 import tech.kronicle.sdk.models.Software;
 import tech.kronicle.sdk.models.SoftwareDependencyType;
@@ -15,8 +13,6 @@ import java.util.Set;
 import static java.util.Objects.nonNull;
 import static java.util.Objects.requireNonNull;
 
-@Component
-@RequiredArgsConstructor
 public class PluginProcessor {
 
     private static final List<SoftwareType> PLUGIN_AND_PLUGIN_VERSION = List.of(SoftwareType.GRADLE_PLUGIN, SoftwareType.GRADLE_PLUGIN_VERSION);

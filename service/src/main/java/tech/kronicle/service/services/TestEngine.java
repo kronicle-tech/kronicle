@@ -3,7 +3,7 @@ package tech.kronicle.service.services;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
-import tech.kronicle.common.utils.StringEscapeUtils;
+import tech.kronicle.common.StringEscapeUtils;
 import tech.kronicle.sdk.models.Component;
 import tech.kronicle.sdk.models.TestOutcome;
 import tech.kronicle.sdk.models.TestResult;

@@ -1,8 +1,8 @@
 package tech.kronicle.plugins.gradle.internal.services;
 
-import org.springframework.stereotype.Component;
 import tech.kronicle.plugins.gradle.config.GradleConfig;
 
+import javax.inject.Inject;
 import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
@@ -11,11 +11,11 @@ import java.util.stream.Stream;
 
 import static tech.kronicle.plugins.gradle.internal.constants.SoftwareRepositoryUrls.SAFE_REPOSITORY_URLS;
 
-@Component
 public class SoftwareRepositoryUrlSafetyChecker {
 
     private final List<String> safeSoftwareRepositoryUrls;
 
+    @Inject
     public SoftwareRepositoryUrlSafetyChecker(GradleConfig config) {
         safeSoftwareRepositoryUrls = createSafeSoftwareRepositoryUrls(config);
     }

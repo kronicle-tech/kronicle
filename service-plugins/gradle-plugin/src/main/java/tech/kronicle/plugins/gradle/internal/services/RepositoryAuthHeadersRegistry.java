@@ -1,19 +1,19 @@
 package tech.kronicle.plugins.gradle.internal.services;
 
-import org.springframework.stereotype.Component;
 import tech.kronicle.plugins.gradle.config.GradleConfig;
 import tech.kronicle.plugins.gradle.config.HttpHeaderConfig;
 
+import javax.inject.Inject;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-@Component
 public class RepositoryAuthHeadersRegistry {
 
     private final Map<String, List<HttpHeaderConfig>> customRepositories;
 
+    @Inject
     public RepositoryAuthHeadersRegistry(GradleConfig config) {
         this.customRepositories = Optional.ofNullable(config.getCustomRepositories())
                 .orElse(List.of())

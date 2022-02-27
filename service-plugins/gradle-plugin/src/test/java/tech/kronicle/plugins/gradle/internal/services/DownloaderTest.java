@@ -3,17 +3,16 @@ package tech.kronicle.plugins.gradle.internal.services;
 import com.github.tomakehurst.wiremock.WireMockServer;
 import io.github.resilience4j.retry.RetryConfig;
 import io.github.resilience4j.retry.RetryRegistry;
+import org.eclipse.jetty.http.HttpMethod;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.http.HttpMethod;
-import org.springframework.web.reactive.function.client.WebClient;
-import org.springframework.web.reactive.function.client.WebClientResponseException;
 import tech.kronicle.plugins.gradle.config.DownloaderConfig;
 import tech.kronicle.plugins.gradle.config.HttpHeaderConfig;
 
+import java.net.http.HttpTimeoutException;
 import java.time.Duration;
 import java.util.List;
 import java.util.Optional;
@@ -24,6 +23,7 @@ import static org.mockito.ArgumentMatchers.anyBoolean;
 import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
+import static tech.kronicle.pluginutils.HttpClientFactory.createHttpClient;
 
 @ExtendWith(MockitoExtension.class)
 public class DownloaderTest {
@@ -108,8 +108,8 @@ public class DownloaderTest {
         assertThat(returnValue.getExceptions()).hasSize(1);
         Exception exception;
         exception = returnValue.getExceptions().get(0);
-        assertThat(exception).isInstanceOf(IllegalStateException.class);
-        assertThat(exception).hasMessage("Timeout on blocking read for 1000000000 NANOSECONDS");
+        assertThat(exception).isInstanceOf(HttpTimeoutException.class);
+        assertThat(exception).hasMessage("request timed out");
     }
 
     @Test
@@ -279,8 +279,8 @@ public class DownloaderTest {
         assertThat(returnValue.getOutput()).isNull();
         assertThat(returnValue.getExceptions()).hasSize(1);
         assertThat(returnValue.getExceptions().get(0))
-                .isInstanceOf(WebClientResponseException.InternalServerError.class)
-                .hasMessage("500 Internal Server Error from GET %s/internal-server-error", wireMockServer.baseUrl());
+                .isInstanceOf(RuntimeException.class)
+                .hasMessage("GET call to '%s/internal-server-error' failed with status 500", wireMockServer.baseUrl());
     }
 
     @Test
@@ -354,8 +354,8 @@ public class DownloaderTest {
         assertThat(returnValue.getExceptions()).hasSize(1);
         Exception exception;
         exception = returnValue.getExceptions().get(0);
-        assertThat(exception).isInstanceOf(IllegalStateException.class);
-        assertThat(exception).hasMessage("Timeout on blocking read for 1000000000 NANOSECONDS");
+        assertThat(exception).isInstanceOf(HttpTimeoutException.class);
+        assertThat(exception).hasMessage("request timed out");
     }
 
     @Test
@@ -525,14 +525,20 @@ public class DownloaderTest {
         assertThat(returnValue.getOutput()).isNull();
         assertThat(returnValue.getExceptions()).hasSize(1);
         assertThat(returnValue.getExceptions().get(0))
-                .isInstanceOf(WebClientResponseException.InternalServerError.class)
-                .hasMessage("500 Internal Server Error from HEAD %s/internal-server-error", wireMockServer.baseUrl());
+                .isInstanceOf(RuntimeException.class)
+                .hasMessage("HEAD call to '%s/internal-server-error' failed with status 500", wireMockServer.baseUrl());
     }
 
     private void createUnderTest(Duration timeout) {
         RetryRegistry retryRegistry = RetryRegistry.custom()
                 .addRetryConfig("http-request-maker", RetryConfig.ofDefaults())
                 .build();
-        underTest = new Downloader(new DownloaderConfig(timeout), WebClient.create(), downloadCache, urlExistsCache, new HttpRequestMaker(retryRegistry));
+        underTest = new Downloader(
+                createHttpClient(timeout),
+                new DownloaderConfig(timeout),
+                downloadCache,
+                urlExistsCache,
+                new HttpRequestMaker(retryRegistry)
+        );
     }
 }

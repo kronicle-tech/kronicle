@@ -1,12 +1,11 @@
 package tech.kronicle.plugins.zipkin.services;
 
 import lombok.Value;
-import org.springframework.stereotype.Service;
 import tech.kronicle.plugins.zipkin.models.CollatorComponentDependency;
 import tech.kronicle.plugins.zipkin.models.NodesAndDependencies;
 import tech.kronicle.plugins.zipkin.models.SourceIndexAndTargetIndex;
 import tech.kronicle.plugins.zipkin.models.api.Span;
-import tech.kronicle.pluginutils.utils.MapCollectors;
+import tech.kronicle.pluginutils.MapCollectors;
 import tech.kronicle.sdk.models.ObjectWithComponentId;
 import tech.kronicle.sdk.models.ObjectWithSourceIndexAndTargetIndex;
 
@@ -22,7 +21,6 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
-@Service
 public class GenericDependencyCollator {
 
     public <N extends ObjectWithComponentId, D extends ObjectWithSourceIndexAndTargetIndex> NodesAndDependencies<N, D> createDependencies(

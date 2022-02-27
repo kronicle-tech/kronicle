@@ -1,17 +1,12 @@
 package tech.kronicle.plugins.sonarqube.client;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.google.common.collect.Streams;
 import lombok.RequiredArgsConstructor;
+import lombok.SneakyThrows;
 import lombok.Value;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.reactive.function.client.WebClient;
-import org.springframework.web.reactive.function.client.WebClientResponseException;
-import reactor.core.publisher.Mono;
 import tech.kronicle.plugins.sonarqube.config.SonarQubeConfig;
 import tech.kronicle.plugins.sonarqube.constants.ApiPaths;
 import tech.kronicle.plugins.sonarqube.constants.MetricKeys;
@@ -19,60 +14,70 @@ import tech.kronicle.plugins.sonarqube.models.Project;
 import tech.kronicle.plugins.sonarqube.models.api.Component;
 import tech.kronicle.plugins.sonarqube.models.api.ComponentQualifier;
 import tech.kronicle.plugins.sonarqube.models.api.GetComponentMeasuresResponse;
+import tech.kronicle.pluginutils.HttpStatuses;
 import tech.kronicle.sdk.models.sonarqube.SonarQubeMeasure;
 import tech.kronicle.sdk.models.sonarqube.SummarySonarQubeMetric;
 
-import java.time.Duration;
+import javax.inject.Inject;
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.function.Function;
 import java.util.stream.Collectors;
 
 import static java.util.Objects.nonNull;
+import static tech.kronicle.pluginutils.HttpClientFactory.createHttpRequestBuilder;
+import static tech.kronicle.pluginutils.UriTemplateUtils.expandUriTemplate;
 
-@org.springframework.stereotype.Component
-@RequiredArgsConstructor
+@RequiredArgsConstructor(onConstructor = @__({@Inject}))
 public class SonarQubeClient {
 
-    private static final Duration TIMEOUT = Duration.ofMinutes(2);
-
-    private final WebClient webClient;
+    private final HttpClient httpClient;
     private final SonarQubeConfig config;
     private final ObjectMapper objectMapper;
 
     public List<SummarySonarQubeMetric> getMetrics() {
-        return getAllResourcePages(uriVariables -> webClient.get().uri(config.getBaseUrl() + ApiPaths.SEARCH_METRICS + "?p={pageNumber}", uriVariables),
-                "Search Metrics", "metrics", new HashMap<>(), SummarySonarQubeMetric.class);
+        return getAllResourcePages(
+                config.getBaseUrl() + ApiPaths.SEARCH_METRICS + "?p={pageNumber}",
+                "Search Metrics",
+                "metrics",
+                new HashMap<>(),
+                SummarySonarQubeMetric.class
+        );
     }
 
     public List<Project> getProjects(String organization) {
-        return getAllResourcePages(uriVariables -> webClient.get().uri(
-                        config.getBaseUrl() + ApiPaths.SEARCH_COMPONENTS + createProjectsUriTemplate(organization), uriVariables),
-                "Search Components", "components", createProjectsUriVariables(organization), Component.class)
+        return getAllResourcePages(
+                config.getBaseUrl() + ApiPaths.SEARCH_COMPONENTS + createProjectsUriTemplate(organization),
+                "Search Components",
+                "components",
+                createProjectsUriVariables(organization),
+                Component.class
+        )
                 .stream()
                 .map(component -> new Project(component.getKey(), component.getName()))
                 .collect(Collectors.toList());
     }
 
+    @SneakyThrows
     public List<SonarQubeMeasure> getProjectMeasures(String projectKey, List<SummarySonarQubeMetric> metrics) {
-        WebClient.RequestHeadersSpec<?> requestHeadersSpec = webClient
-                .get()
-                .uri(config.getBaseUrl() + ApiPaths.GET_COMPONENT_MEASURES + "?component={component}&metricKeys={metricKeys}",
-                        projectKey,
-                        getMetricKeys(metrics));
+        Response response = makeRequest(
+                config.getBaseUrl() + ApiPaths.GET_COMPONENT_MEASURES + "?component={component}&metricKeys={metricKeys}",
+                Map.ofEntries(
+                        Map.entry("component", projectKey),
+                        Map.entry("metricKeys", getMetricKeys(metrics))
+                )
+        );
+        checkResponseStatus(response, "Get Component Measures");
 
-        Response response = makeRequest(requestHeadersSpec);
-        checkResponseStatus(response, HttpStatus.OK, "Get Component Measures");
-
-        try {
-            return objectMapper.readValue(response.getBody(), GetComponentMeasuresResponse.class)
-                    .getComponent()
-                    .getMeasures();
-        } catch (JsonProcessingException e) {
-            throw new RuntimeException(e);
-        }
+        return objectMapper.readValue(response.getBody(), GetComponentMeasuresResponse.class)
+                .getComponent()
+                .getMeasures();
     }
 
     private String createProjectsUriTemplate(String organization) {
@@ -92,13 +97,18 @@ public class SonarQubeClient {
         return uriVariables;
     }
 
-    private <T> List<T> getAllResourcePages(Function<Map<String, String>, WebClient.RequestHeadersSpec<?>> requestHeadersSpecSupplier, String endpointName,
-            String itemsFieldName, Map<String, String> uriVariables, Class<T> type) {
+    private <T> List<T> getAllResourcePages(
+            String uri,
+            String endpointName,
+            String itemsFieldName,
+            Map<String, String> uriVariables,
+            Class<T> type
+    ) {
         int pageNumber = 1;
         List<T> allResources = new ArrayList<>();
 
         while (true) {
-            List<T> page = getResourcePage(requestHeadersSpecSupplier, endpointName, itemsFieldName, uriVariables, pageNumber, type);
+            List<T> page = getResourcePage(uri, endpointName, itemsFieldName, uriVariables, pageNumber, type);
 
             if (page.isEmpty()) {
                 break;
@@ -111,38 +121,41 @@ public class SonarQubeClient {
         return allResources;
     }
 
-    private <T> List<T> getResourcePage(Function<Map<String, String>, WebClient.RequestHeadersSpec<?>> requestHeadersSpecSupplier, String endpointName, String itemsFieldName,
-            Map<String, String> uriVariables, int pageNumber, Class<T> type) {
+    @SneakyThrows
+    private <T> List<T> getResourcePage(
+            String uri,
+            String endpointName,
+            String itemsFieldName,
+            Map<String, String> uriVariables,
+            int pageNumber,
+            Class<T> type
+    ) {
         uriVariables.put("pageNumber", Integer.toString(pageNumber));
-        Response response = makeRequest(requestHeadersSpecSupplier.apply(uriVariables));
-        checkResponseStatus(response, HttpStatus.OK, endpointName);
+        Response response = makeRequest(uri, uriVariables);
+        checkResponseStatus(response, endpointName);
 
-        try {
-            ObjectNode responseBody = (ObjectNode) objectMapper.readTree(response.getBody());
-            ArrayNode itemJsons = (ArrayNode) responseBody.get(itemsFieldName);
-            return Streams.stream(itemJsons.elements())
-                    .map(itemJson -> objectMapper.convertValue(itemJson, type))
-                    .collect(Collectors.toList());
-        } catch (JsonProcessingException e) {
-            throw new RuntimeException(e);
-        }
+        ObjectNode responseBody = (ObjectNode) objectMapper.readTree(response.getBody());
+        ArrayNode itemJsons = (ArrayNode) responseBody.get(itemsFieldName);
+        return Streams.stream(itemJsons.elements())
+                .map(itemJson -> objectMapper.convertValue(itemJson, type))
+                .collect(Collectors.toList());
     }
 
-    private Response makeRequest(WebClient.RequestHeadersSpec<?> requestHeadersSpec) {
-        Mono<ResponseEntity<String>> responseEntityMono = requestHeadersSpec
-                .retrieve()
-                .toEntity(String.class);
-        try {
-            ResponseEntity<String> responseEntity = responseEntityMono.block(TIMEOUT);
-            return new Response(responseEntity.getStatusCode(), responseEntity.getBody());
-        } catch (WebClientResponseException e) {
-            return new Response(e.getStatusCode(), e.getResponseBodyAsString());
-        }
+    @SneakyThrows
+    private Response makeRequest(String uri, Map<String, String> uriVariables) {
+        HttpRequest request = createHttpRequestBuilder(config.getTimeout())
+                .uri(URI.create(expandUriTemplate(uri, uriVariables)))
+                .build();
+        HttpResponse<String> response = httpClient.send(
+                request,
+                HttpResponse.BodyHandlers.ofString(StandardCharsets.UTF_8)
+        );
+        return new Response(response.statusCode(), response.body());
     }
 
-    private void checkResponseStatus(Response response, HttpStatus expectedStatusCode, String endpointName) {
-        if (response.getStatusCode() != expectedStatusCode) {
-            throw new SonarQubeClientException(endpointName, response.getStatusCode().value(), response.getBody());
+    private void checkResponseStatus(Response response, String endpointName) {
+        if (response.getStatusCode() != HttpStatuses.OK) {
+            throw new SonarQubeClientException(endpointName, response.getStatusCode(), response.getBody());
         }
     }
 
@@ -154,11 +167,11 @@ public class SonarQubeClient {
     }
 
     /**
-     * This can be removed once we upgrade to SonarQube 8.1 or higher.
+     * This can be removed when supporting a minimum version of SonarQube 8.1 or higher.
      * See https://jira.sonarsource.com/browse/SONAR-12728 for more information.
      *
-     * @param metricKey
-     * @return
+     * @param metricKey The metric key
+     * @return A boolean indicating whether metric key is affected by the SonarQube bug.
      */
     private boolean metricKeyIsNotAffectedBySonarQubeBug(String metricKey) {
         return !MetricKeys.AFFECTED_BY_SONARQUBE_BUG.contains(metricKey);
@@ -167,7 +180,7 @@ public class SonarQubeClient {
     @Value
     private static class Response {
 
-        HttpStatus statusCode;
+        Integer statusCode;
         String body;
     }
 }

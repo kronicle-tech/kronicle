@@ -3,7 +3,6 @@ package tech.kronicle.plugins.zipkin;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.pf4j.Extension;
-import tech.kronicle.componentmetadata.models.ComponentMetadata;
 import tech.kronicle.pluginapi.scanners.ComponentScanner;
 import tech.kronicle.pluginapi.scanners.models.Output;
 import tech.kronicle.plugins.zipkin.config.ZipkinConfig;
@@ -14,6 +13,7 @@ import tech.kronicle.plugins.zipkin.services.ComponentDependencyCollator;
 import tech.kronicle.plugins.zipkin.services.SubComponentDependencyCollator;
 import tech.kronicle.plugins.zipkin.services.ZipkinService;
 import tech.kronicle.sdk.models.Component;
+import tech.kronicle.sdk.models.ComponentMetadata;
 import tech.kronicle.sdk.models.Dependency;
 import tech.kronicle.sdk.models.Summary;
 import tech.kronicle.sdk.models.SummaryCallGraph;
@@ -22,6 +22,7 @@ import tech.kronicle.sdk.models.SummarySubComponentDependencies;
 import tech.kronicle.sdk.models.zipkin.Zipkin;
 import tech.kronicle.sdk.models.zipkin.ZipkinDependency;
 
+import javax.inject.Inject;
 import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
@@ -31,9 +32,8 @@ import java.util.stream.Collectors;
 import static java.util.Objects.isNull;
 
 @Extension
-@org.springframework.stereotype.Component
 @Slf4j
-@RequiredArgsConstructor
+@RequiredArgsConstructor(onConstructor = @__({@Inject}))
 public class ZipkinScanner extends ComponentScanner {
 
     private final ZipkinConfig config;

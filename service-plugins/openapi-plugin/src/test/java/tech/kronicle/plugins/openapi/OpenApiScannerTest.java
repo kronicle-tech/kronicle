@@ -1,14 +1,12 @@
 package tech.kronicle.plugins.openapi;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.json.JsonMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.github.tomakehurst.wiremock.WireMockServer;
 import com.github.tomakehurst.wiremock.client.MappingBuilder;
 import lombok.SneakyThrows;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
-import tech.kronicle.componentmetadata.models.ComponentMetadata;
 import tech.kronicle.pluginapi.scanners.models.Codebase;
 import tech.kronicle.pluginapi.scanners.models.ComponentAndCodebase;
 import tech.kronicle.pluginapi.scanners.models.Output;
@@ -16,10 +14,9 @@ import tech.kronicle.plugins.openapi.services.SpecDiscoverer;
 import tech.kronicle.plugins.openapi.services.SpecErrorProcessor;
 import tech.kronicle.plugins.openapi.services.SpecParser;
 import tech.kronicle.plugintestutils.scanners.BaseCodebaseScannerTest;
-import tech.kronicle.pluginutils.scanners.services.ThrowableToScannerErrorMapper;
-import tech.kronicle.pluginutils.utils.AntStyleIgnoreFileLoader;
-import tech.kronicle.pluginutils.utils.FileUtils;
+import tech.kronicle.pluginutils.ThrowableToScannerErrorMapper;
 import tech.kronicle.sdk.models.Component;
+import tech.kronicle.sdk.models.ComponentMetadata;
 import tech.kronicle.sdk.models.ScannerError;
 import tech.kronicle.sdk.models.openapi.OpenApiSpec;
 
@@ -33,12 +30,14 @@ import static com.github.tomakehurst.wiremock.client.WireMock.urlPathEqualTo;
 import static com.github.tomakehurst.wiremock.core.WireMockConfiguration.options;
 import static java.util.Objects.nonNull;
 import static org.assertj.core.api.Assertions.assertThat;
+import static tech.kronicle.pluginutils.FileUtilsFactory.createFileUtils;
+import static tech.kronicle.pluginutils.JsonMapperFactory.createJsonMapper;
 
 public class OpenApiScannerTest extends BaseCodebaseScannerTest {
 
     private WireMockServer wireMockServer;
     private final OpenApiScanner underTest = createOpenApiScanner();
-    private final ObjectMapper objectMapper = new JsonMapper();
+    private final ObjectMapper objectMapper = createJsonMapper();
     private MappingBuilder openApiSpecWireMockStub;
 
     @AfterEach
@@ -376,7 +375,7 @@ public class OpenApiScannerTest extends BaseCodebaseScannerTest {
     }
 
     private OpenApiScanner createOpenApiScanner() {
-        SpecDiscoverer specDiscoverer = new SpecDiscoverer(new FileUtils(new AntStyleIgnoreFileLoader()));
+        SpecDiscoverer specDiscoverer = new SpecDiscoverer(createFileUtils());
         SpecErrorProcessor specErrorProcessor = new SpecErrorProcessor(new ThrowableToScannerErrorMapper());
         SpecParser specParser = new SpecParser(new ObjectMapper(), specErrorProcessor);
         return new OpenApiScanner(specDiscoverer, specParser);

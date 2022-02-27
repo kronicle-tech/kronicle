@@ -46,7 +46,7 @@ public class SonarQubeServiceTest {
 
     @BeforeEach
     public void beforeEach() {
-        underTest = createUnderTest(new SonarQubeConfig(null, null));
+        underTest = createUnderTest(new SonarQubeConfig(null, null, null));
     }
 
     @Test
@@ -297,7 +297,7 @@ public class SonarQubeServiceTest {
     }
 
     private SonarQubeConfig createConfig(List<String> organizations) {
-        return new SonarQubeConfig(null, organizations);
+        return new SonarQubeConfig(null, null, organizations);
     }
 
     @Value

@@ -1,7 +1,6 @@
 package tech.kronicle.plugins.sonarqube.services;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
 import tech.kronicle.plugins.sonarqube.client.SonarQubeClient;
 import tech.kronicle.plugins.sonarqube.config.SonarQubeConfig;
 import tech.kronicle.plugins.sonarqube.models.Project;
@@ -10,6 +9,7 @@ import tech.kronicle.sdk.models.sonarqube.SonarQubeMeasure;
 import tech.kronicle.sdk.models.sonarqube.SonarQubeProject;
 import tech.kronicle.sdk.models.sonarqube.SummarySonarQubeMetric;
 
+import javax.inject.Inject;
 import java.nio.file.Path;
 import java.util.Collection;
 import java.util.List;
@@ -18,8 +18,7 @@ import java.util.stream.Collectors;
 import static java.util.Objects.isNull;
 import static java.util.Objects.nonNull;
 
-@Service
-@RequiredArgsConstructor
+@RequiredArgsConstructor(onConstructor = @__({@Inject}))
 public class SonarQubeService {
 
     private final SonarQubeConfig config;

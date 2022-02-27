@@ -1,7 +1,7 @@
 package tech.kronicle.service.services;
 
 import org.springframework.stereotype.Service;
-import tech.kronicle.componentmetadata.models.ComponentMetadata;
+import tech.kronicle.sdk.models.ComponentMetadata;
 
 import java.util.List;
 import java.util.Map;

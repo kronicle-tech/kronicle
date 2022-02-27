@@ -27,7 +27,7 @@ public class RepositoryAuthHeadersRegistryTest {
     @Test
     void getSoftwareRepositoryAuthHeadersWhenCustomRepositoriesListIsEmptyShouldReturnNull() {
         // Given
-        GradleConfig config = new GradleConfig(null, List.of(), null, null, null, null);
+        GradleConfig config = new GradleConfig(List.of(), null, null, null, null, null);
         RepositoryAuthHeadersRegistry underTest = new RepositoryAuthHeadersRegistry(config);
 
         // When

@@ -3,13 +3,13 @@ package tech.kronicle.plugins.gitlab;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.pf4j.Extension;
-import org.springframework.stereotype.Component;
 import tech.kronicle.pluginapi.finders.RepoFinder;
 import tech.kronicle.pluginapi.finders.models.ApiRepo;
 import tech.kronicle.plugins.gitlab.client.GitLabClient;
 import tech.kronicle.plugins.gitlab.config.GitLabConfig;
 import tech.kronicle.plugins.gitlab.config.GitLabHostConfig;
 
+import javax.inject.Inject;
 import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
@@ -19,8 +19,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 @Extension
-@Component
-@RequiredArgsConstructor
+@RequiredArgsConstructor(onConstructor = @__({@Inject}))
 @Slf4j
 public class GitLabRepoFinder extends RepoFinder {
 

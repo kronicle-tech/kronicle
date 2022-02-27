@@ -12,18 +12,18 @@ import org.eclipse.jgit.revwalk.RevCommit;
 import org.eclipse.jgit.revwalk.RevSort;
 import org.eclipse.jgit.revwalk.RevWalk;
 import org.pf4j.Extension;
-import org.springframework.stereotype.Component;
 import tech.kronicle.pluginapi.git.GitCloner;
 import tech.kronicle.pluginapi.scanners.RepoScanner;
 import tech.kronicle.pluginapi.scanners.models.Codebase;
 import tech.kronicle.pluginapi.scanners.models.Output;
 import tech.kronicle.plugins.git.config.GitConfig;
-import tech.kronicle.pluginutils.scanners.services.ThrowableToScannerErrorMapper;
+import tech.kronicle.pluginutils.ThrowableToScannerErrorMapper;
 import tech.kronicle.sdk.models.Repo;
 import tech.kronicle.sdk.models.ScannerError;
 import tech.kronicle.sdk.models.git.GitRepo;
 import tech.kronicle.sdk.models.git.Identity;
 
+import javax.inject.Inject;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -41,9 +41,8 @@ import java.util.stream.Collectors;
 import static java.util.Objects.isNull;
 import static java.util.Objects.nonNull;
 
-@Component
 @Extension
-@RequiredArgsConstructor
+@RequiredArgsConstructor(onConstructor = @__({@Inject}))
 public class GitScanner extends RepoScanner {
 
     private final GitCloner gitCloner;
