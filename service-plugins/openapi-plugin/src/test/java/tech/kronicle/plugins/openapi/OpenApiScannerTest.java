@@ -1,8 +1,11 @@
 package tech.kronicle.plugins.openapi;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.json.JsonMapper;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.github.tomakehurst.wiremock.WireMockServer;
 import com.github.tomakehurst.wiremock.client.MappingBuilder;
+import lombok.SneakyThrows;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import tech.kronicle.componentmetadata.models.ComponentMetadata;
@@ -35,6 +38,7 @@ public class OpenApiScannerTest extends BaseCodebaseScannerTest {
 
     private WireMockServer wireMockServer;
     private final OpenApiScanner underTest = createOpenApiScanner();
+    private final ObjectMapper objectMapper = new JsonMapper();
     private MappingBuilder openApiSpecWireMockStub;
 
     @AfterEach
@@ -95,7 +99,7 @@ public class OpenApiScannerTest extends BaseCodebaseScannerTest {
         assertThat(returnValue.getErrors()).isEmpty();
         List<OpenApiSpec> returnOpenApiSpecs = getMutatedComponent(returnValue).getOpenApiSpecs();
         assertThat(returnOpenApiSpecs).hasSize(1);
-        assertThat(returnOpenApiSpecs.get(0).getSpec().get("info").get("title").textValue()).isEqualTo("Example");
+        assertThat(getSpecAsJsonTree(returnOpenApiSpecs.get(0)).get("info").get("title").textValue()).isEqualTo("Example");
 
         // Given
         changeWireMockHostedOpenApiSpec();
@@ -108,7 +112,7 @@ public class OpenApiScannerTest extends BaseCodebaseScannerTest {
         assertThat(returnValue.getErrors()).isEmpty();
         returnOpenApiSpecs = getMutatedComponent(returnValue).getOpenApiSpecs();
         assertThat(returnOpenApiSpecs).hasSize(1);
-        assertThat(returnOpenApiSpecs.get(0).getSpec().get("info").get("title").textValue()).isEqualTo("Example - Changed");
+        assertThat(getSpecAsJsonTree(returnOpenApiSpecs.get(0)).get("info").get("title").textValue()).isEqualTo("Example - Changed");
     }
 
     @Test
@@ -154,7 +158,7 @@ public class OpenApiScannerTest extends BaseCodebaseScannerTest {
         assertThat(returnOpenApiSpec.getFile()).isNull();
         assertThat(returnOpenApiSpec.getUrl()).isEqualTo(openApiSpecUrl);
         assertThat(returnOpenApiSpec.getSpec()).isNotNull();
-        assertThat(returnOpenApiSpec.getSpec().has("openapi")).isTrue();
+        assertThat(getSpecAsJsonTree(returnOpenApiSpec).has("openapi")).isTrue();
     }
 
     @Test
@@ -178,19 +182,19 @@ public class OpenApiScannerTest extends BaseCodebaseScannerTest {
         assertThat(returnOpenApiSpec.getFile()).isEqualTo("test-openapi.json");
         assertThat(returnOpenApiSpec.getUrl()).isNull();
         assertThat(returnOpenApiSpec.getSpec()).isNotNull();
-        assertThat(returnOpenApiSpec.getSpec().has("openapi")).isTrue();
+        assertThat(getSpecAsJsonTree(returnOpenApiSpec).has("openapi")).isTrue();
         returnOpenApiSpec = returnOpenApiSpecs.get(1);
         assertThat(returnOpenApiSpec.getScannerId()).isEqualTo("openapi");
         assertThat(returnOpenApiSpec.getFile()).isEqualTo("test-openapi.yaml");
         assertThat(returnOpenApiSpec.getUrl()).isNull();
         assertThat(returnOpenApiSpec.getSpec()).isNotNull();
-        assertThat(returnOpenApiSpec.getSpec().has("openapi")).isTrue();
+        assertThat(getSpecAsJsonTree(returnOpenApiSpec).has("openapi")).isTrue();
         returnOpenApiSpec = returnOpenApiSpecs.get(2);
         assertThat(returnOpenApiSpec.getScannerId()).isEqualTo("openapi");
         assertThat(returnOpenApiSpec.getFile()).isEqualTo("test-openapi.yml");
         assertThat(returnOpenApiSpec.getUrl()).isNull();
         assertThat(returnOpenApiSpec.getSpec()).isNotNull();
-        assertThat(returnOpenApiSpec.getSpec().has("openapi")).isTrue();
+        assertThat(getSpecAsJsonTree(returnOpenApiSpec).has("openapi")).isTrue();
     }
 
     @Test
@@ -218,7 +222,7 @@ public class OpenApiScannerTest extends BaseCodebaseScannerTest {
         assertThat(returnOpenApiSpec.getFile()).isEqualTo("test-openapi.yaml");
         assertThat(returnOpenApiSpec.getUrl()).isNull();
         assertThat(returnOpenApiSpec.getSpec()).isNotNull();
-        assertThat(returnOpenApiSpec.getSpec().has("openapi")).isTrue();
+        assertThat(getSpecAsJsonTree(returnOpenApiSpec).has("openapi")).isTrue();
     }
 
     @Test
@@ -242,8 +246,8 @@ public class OpenApiScannerTest extends BaseCodebaseScannerTest {
         assertThat(returnOpenApiSpec.getFile()).isEqualTo("test-openapi.yaml");
         assertThat(returnOpenApiSpec.getUrl()).isNull();
         assertThat(returnOpenApiSpec.getSpec()).isNotNull();
-        assertThat(returnOpenApiSpec.getSpec().has("openapi")).isTrue();
-        assertThat(returnOpenApiSpec.getSpec().path("paths").path("/example").path("get").path("description").textValue()).isEqualTo("Example");
+        assertThat(getSpecAsJsonTree(returnOpenApiSpec).has("openapi")).isTrue();
+        assertThat(getSpecAsJsonTree(returnOpenApiSpec).path("paths").path("/example").path("get").path("description").textValue()).isEqualTo("Example");
     }
 
     @Test
@@ -276,8 +280,8 @@ public class OpenApiScannerTest extends BaseCodebaseScannerTest {
         assertThat(returnOpenApiSpec.getFile()).isEqualTo("test-openapi.yaml");
         assertThat(returnOpenApiSpec.getUrl()).isNull();
         assertThat(returnOpenApiSpec.getSpec()).isNotNull();
-        assertThat(returnOpenApiSpec.getSpec().has("openapi")).isTrue();
-        assertThat(returnOpenApiSpec.getSpec().path("paths").path("/example").path("get").path("description").textValue()).isEqualTo("Example");
+        assertThat(getSpecAsJsonTree(returnOpenApiSpec).has("openapi")).isTrue();
+        assertThat(getSpecAsJsonTree(returnOpenApiSpec).path("paths").path("/example").path("get").path("description").textValue()).isEqualTo("Example");
     }
 
     @Test
@@ -350,8 +354,8 @@ public class OpenApiScannerTest extends BaseCodebaseScannerTest {
         assertThat(returnOpenApiSpec.getFile()).isEqualTo("test-openapi.yaml");
         assertThat(returnOpenApiSpec.getUrl()).isNull();
         assertThat(returnOpenApiSpec.getSpec()).isNotNull();
-        assertThat(returnOpenApiSpec.getSpec().has("openapi")).isTrue();
-        assertThat(returnOpenApiSpec.getSpec().path("paths").path("/example").path("get").path("description").textValue()).isEqualTo("Example GET in referenced file");
+        assertThat(getSpecAsJsonTree(returnOpenApiSpec).has("openapi")).isTrue();
+        assertThat(getSpecAsJsonTree(returnOpenApiSpec).path("paths").path("/example").path("get").path("description").textValue()).isEqualTo("Example GET in referenced file");
     }
 
     @Test
@@ -399,40 +403,43 @@ public class OpenApiScannerTest extends BaseCodebaseScannerTest {
     }
 
     private String createOpenApiSpecString(String suffix) {
-        return new StringBuilder()
-                .append("openapi: 3.0.0\n")
-                .append("info:\n")
-                .append("  title: Example")
-                .append(suffix)
-                .append("\n")
-                .append("  description: Example")
-                .append(suffix)
-                .append("\n")
-                .append("  version: 0.0.0\n")
-                .append("paths:\n")
-                .append("  /example:\n")
-                .append("    get:\n")
-                .append("      summary: Example")
-                .append(suffix)
-                .append("\n")
-                .append("      description: Example")
-                .append(suffix)
-                .append("\n")
-                .append("      responses:\n")
-                .append("        '200':\n")
-                .append("          description: Example")
-                .append(suffix)
-                .append("\n")
-                .append("          content:\n")
-                .append("            application/json:\n")
-                .append("              schema: \n")
-                .append("                type: object")
-                .toString();
+        return "openapi: 3.0.0\n" +
+                "info:\n" +
+                "  title: Example" +
+                suffix +
+                "\n" +
+                "  description: Example" +
+                suffix +
+                "\n" +
+                "  version: 0.0.0\n" +
+                "paths:\n" +
+                "  /example:\n" +
+                "    get:\n" +
+                "      summary: Example" +
+                suffix +
+                "\n" +
+                "      description: Example" +
+                suffix +
+                "\n" +
+                "      responses:\n" +
+                "        '200':\n" +
+                "          description: Example" +
+                suffix +
+                "\n" +
+                "          content:\n" +
+                "            application/json:\n" +
+                "              schema: \n" +
+                "                type: object";
     }
 
     private String sanitizeErrorMessage(String message) {
         return message.replaceAll(
                 "\"[^\"]*src/test/resources/tech/kronicle/plugins/openapi/OpenApiScannerTest/",
                 "\"");
+    }
+
+    @SneakyThrows
+    private ObjectNode getSpecAsJsonTree(OpenApiSpec openApiSpec) {
+        return (ObjectNode) objectMapper.readTree(openApiSpec.getSpec());
     }
 }

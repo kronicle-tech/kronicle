@@ -18,7 +18,7 @@ import tech.kronicle.pluginutils.utils.FileUtils;
 import tech.kronicle.sdk.models.Area;
 import tech.kronicle.sdk.models.Component;
 import tech.kronicle.sdk.models.Team;
-import tech.kronicle.service.repofinders.services.RepoFinderService;
+import tech.kronicle.service.services.RepoFinderService;
 import tech.kronicle.service.services.ValidatorService;
 import tech.kronicle.service.testutils.ValidatorServiceFactory;
 
@@ -278,6 +278,6 @@ public class ComponentMetadataRepositoryTest extends BaseTest {
     }
 
     private void mockRepoFinderService(ApiRepo... repos) {
-        when(mockRepoFinderService.findApiRepos()).thenReturn(List.of(repos));
+        when(mockRepoFinderService.findRepos()).thenReturn(List.of(repos));
     }
 }

@@ -4,6 +4,7 @@ import org.pf4j.PluginManager;
 import org.springframework.stereotype.Service;
 import tech.kronicle.pluginapi.finders.DependencyFinder;
 import tech.kronicle.pluginapi.finders.Finder;
+import tech.kronicle.pluginapi.finders.RepoFinder;
 
 import java.util.List;
 
@@ -17,6 +18,10 @@ public class FinderExtensionRegistry extends BaseExtensionRegistry<Finder> {
     @Override
     protected Class<Finder> getItemType() {
         return Finder.class;
+    }
+
+    public List<RepoFinder> getRepoFinders() {
+        return getItems(RepoFinder.class);
     }
 
     public List<DependencyFinder> getDependencyFinders() {

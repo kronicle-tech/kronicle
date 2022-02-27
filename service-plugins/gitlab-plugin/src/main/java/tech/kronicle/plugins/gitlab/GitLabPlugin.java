@@ -7,9 +7,9 @@ import tech.kronicle.pluginapi.KroniclePlugin;
 import tech.kronicle.plugins.gitlab.config.GitLabConfig;
 import tech.kronicle.plugins.gitlab.spring.SpringConfiguration;
 
-public class ExamplePlugin extends KroniclePlugin {
+public class GitLabPlugin extends KroniclePlugin {
 
-    public ExamplePlugin(PluginWrapper wrapper) {
+    public GitLabPlugin(PluginWrapper wrapper) {
         super(wrapper);
     }
 

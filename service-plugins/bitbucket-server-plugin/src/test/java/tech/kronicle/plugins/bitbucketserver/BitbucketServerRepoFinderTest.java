@@ -26,26 +26,35 @@ public class BitbucketServerRepoFinderTest {
     }
 
     @Test
-    public void getApiReposShouldCallClientAndReturnApiRepos() {
+    public void descriptionShouldReturnTheDescriptionOfTheFinder() {
+        // When
+        String returnValue = underTest.description();
+
+        // Then
+        assertThat(returnValue).isEqualTo("Find repositories hosted by Bitbucket Server.  ");
+    }
+
+    @Test
+    public void findShouldCallClientAndReturnApiRepos() {
         // Given
         List<ApiRepo> apiRepos = List.of(new ApiRepo("https://example.com/repo-1.git", true), new ApiRepo("https://example.com/repo-2.git", false));
         when(mockClient.getNormalRepos()).thenReturn(apiRepos);
 
         // When
-        List<ApiRepo> returnValue = underTest.findApiRepos();
+        List<ApiRepo> returnValue = underTest.find(null);
 
         // Then
         assertThat(returnValue).isSameAs(apiRepos);
     }
 
     @Test
-    public void getApiReposShouldCallClientAndReturnAnEmptyListOfApiReposWhenClientReturnsAnEmptyList() {
+    public void findShouldCallClientAndReturnAnEmptyListOfApiReposWhenClientReturnsAnEmptyList() {
         // Given
         List<ApiRepo> apiRepos = List.of();
         when(mockClient.getNormalRepos()).thenReturn(apiRepos);
 
         // When
-        List<ApiRepo> returnValue = underTest.findApiRepos();
+        List<ApiRepo> returnValue = underTest.find(null);
 
         // Then
         assertThat(returnValue).isSameAs(apiRepos);

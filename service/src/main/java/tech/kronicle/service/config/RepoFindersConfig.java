@@ -1,4 +1,4 @@
-package tech.kronicle.service.repofinders.config;
+package tech.kronicle.service.config;
 
 import lombok.Value;
 import lombok.experimental.NonFinal;

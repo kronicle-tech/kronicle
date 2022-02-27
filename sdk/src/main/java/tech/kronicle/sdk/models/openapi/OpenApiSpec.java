@@ -1,6 +1,6 @@
 package tech.kronicle.sdk.models.openapi;
 
-import com.fasterxml.jackson.databind.node.ObjectNode;
+import com.fasterxml.jackson.annotation.JsonRawValue;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Value;
@@ -16,5 +16,6 @@ public class OpenApiSpec {
     String url;
     String file;
     String description;
-    ObjectNode spec;
+    @JsonRawValue
+    String spec;
 }
