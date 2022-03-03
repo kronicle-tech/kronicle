@@ -43,7 +43,7 @@
     "remark-slug": "^6.1.0",
     "remark-toc": "^7.2.0",
     "unified": "^9.2.2",
-    "vfile": "^4.2.1",
+    "vfile": "^5.3.1",
     "vfile-reporter": "^6.0.2",
     "vue-class-component": "^7.2.6",
     "vue-property-decorator": "^9.1.2",
