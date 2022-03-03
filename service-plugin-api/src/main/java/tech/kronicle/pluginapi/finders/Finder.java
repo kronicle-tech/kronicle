@@ -1,7 +1,6 @@
 package tech.kronicle.pluginapi.finders;
 
-import tech.kronicle.common.utils.CaseUtils;
-import tech.kronicle.componentmetadata.models.ComponentMetadata;
+import tech.kronicle.common.CaseUtils;
 import tech.kronicle.pluginapi.ExtensionPointWithId;
 
 import java.util.List;

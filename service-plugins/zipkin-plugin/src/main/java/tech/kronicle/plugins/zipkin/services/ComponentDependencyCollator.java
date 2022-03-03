@@ -2,7 +2,6 @@ package tech.kronicle.plugins.zipkin.services;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.stereotype.Service;
 import tech.kronicle.plugins.zipkin.models.NodesAndDependencies;
 import tech.kronicle.plugins.zipkin.models.api.Span;
 import tech.kronicle.sdk.models.Dependency;
@@ -10,7 +9,7 @@ import tech.kronicle.sdk.models.SummaryComponentDependencies;
 import tech.kronicle.sdk.models.SummaryComponentDependency;
 import tech.kronicle.sdk.models.SummaryComponentDependencyNode;
 
-import java.util.Comparator;
+import javax.inject.Inject;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -22,18 +21,20 @@ import java.util.stream.Stream;
 
 import static java.util.Objects.nonNull;
 
-@Service
-@RequiredArgsConstructor
+@RequiredArgsConstructor(onConstructor = @__({@Inject}))
 @Slf4j
 public class ComponentDependencyCollator {
 
     private final GenericDependencyCollator genericDependencyCollator;
-    private final Comparator<SummaryComponentDependencyNode> componentNodeComparator;
     private final DependencyHelper dependencyHelper;
 
     public SummaryComponentDependencies collateDependencies(List<List<Span>> traces, List<Dependency> otherDependencies) {
         NodesAndDependencies<SummaryComponentDependencyNode, SummaryComponentDependency> nodesAndDependencies = genericDependencyCollator.createDependencies(
-                traces, this::createComponentDependencyNode, componentNodeComparator, dependencyHelper::mergeDuplicateDependencies);
+                traces,
+                this::createComponentDependencyNode,
+                NodeComparators.COMPONENT_NODE_COMPARATOR,
+                dependencyHelper::mergeDuplicateDependencies
+        );
         addOtherComponentDependencies(nodesAndDependencies.getNodes(), nodesAndDependencies.getDependencies(), otherDependencies);
         return createComponentDependencies(nodesAndDependencies);
     }

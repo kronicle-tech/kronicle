@@ -16,12 +16,12 @@ public class PluginsConfiguration {
 
     @Bean
     public PluginManager pluginManager(
-            ConfigurableApplicationContext applicationContext,
-            @Value("${info.app.version}") String version,
             PluginManagerConfig pluginManagerConfig,
+            @Value("${info.app.version}") String version,
+            ConfigurableApplicationContext applicationContext,
             KroniclePluginManagerFactory pluginManagerFactory
     ) {
-        return pluginManagerFactory.create(applicationContext, version, pluginManagerConfig);
+        return pluginManagerFactory.create(pluginManagerConfig, version, applicationContext);
     }
 
     @Bean

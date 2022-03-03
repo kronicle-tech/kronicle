@@ -1,18 +1,17 @@
 package tech.kronicle.plugins.sonarqube.services;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
 import tech.kronicle.plugins.sonarqube.models.Project;
-import tech.kronicle.pluginutils.utils.FileUtils;
+import tech.kronicle.pluginutils.FileUtils;
 
+import javax.inject.Inject;
 import java.nio.file.Path;
 import java.util.List;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-@Service
-@RequiredArgsConstructor
+@RequiredArgsConstructor(onConstructor = @__({@Inject}))
 public class CodebaseSonarQubeProjectFinder {
 
     private static final String SONAR_WORD_IN_LOWER_CASE = "sonar";

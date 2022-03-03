@@ -8,10 +8,8 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import tech.kronicle.pluginapi.scanners.models.Codebase;
 import tech.kronicle.pluginapi.scanners.models.Output;
 import tech.kronicle.plugins.todo.internal.services.ToDoFinder;
+import tech.kronicle.plugintestutils.MalformedFileCreator;
 import tech.kronicle.plugintestutils.scanners.BaseCodebaseScannerTest;
-import tech.kronicle.plugintestutils.testutils.MalformedFileCreator;
-import tech.kronicle.pluginutils.utils.AntStyleIgnoreFileLoader;
-import tech.kronicle.pluginutils.utils.FileUtils;
 import tech.kronicle.sdk.models.todos.ToDo;
 
 import java.nio.file.Path;
@@ -20,11 +18,12 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static tech.kronicle.pluginutils.FileUtilsFactory.createFileUtils;
 
 @ExtendWith(MockitoExtension.class)
 public class ToDoScannerTest extends BaseCodebaseScannerTest {
 
-    private final ToDoScanner underTest = new ToDoScanner(new FileUtils(new AntStyleIgnoreFileLoader()), new ToDoFinder());
+    private final ToDoScanner underTest = new ToDoScanner(createFileUtils(), new ToDoFinder());
 
     @Test
     public void idShouldReturnTheIdOfTheScanner() {

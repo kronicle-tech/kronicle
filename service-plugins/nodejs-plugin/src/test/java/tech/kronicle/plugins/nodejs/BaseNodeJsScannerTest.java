@@ -2,7 +2,7 @@ package tech.kronicle.plugins.nodejs;
 
 import org.slf4j.Logger;
 import tech.kronicle.plugintestutils.scanners.BaseCodebaseScannerTest;
-import tech.kronicle.pluginutils.constants.Comparators;
+import tech.kronicle.pluginutils.Comparators;
 import tech.kronicle.sdk.models.Component;
 import tech.kronicle.sdk.models.Software;
 import tech.kronicle.sdk.models.SoftwareRepository;

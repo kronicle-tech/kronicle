@@ -1,18 +1,18 @@
 package tech.kronicle.plugins.gradle.internal.services;
 
-import org.springframework.stereotype.Component;
 import tech.kronicle.plugins.gradle.config.GradleConfig;
 import tech.kronicle.plugins.gradle.config.GradleCustomRepository;
 
+import javax.inject.Inject;
 import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-@Component
 public class CustomRepositoryRegistry {
 
     private final Map<String, String> customRepositoryUrls;
 
+    @Inject
     public CustomRepositoryRegistry(GradleConfig config) {
         customRepositoryUrls = Optional.ofNullable(config.getCustomRepositories())
                 .map(items -> items.stream()

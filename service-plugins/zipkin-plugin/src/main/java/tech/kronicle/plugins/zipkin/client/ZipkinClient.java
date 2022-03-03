@@ -1,22 +1,26 @@
 package tech.kronicle.plugins.zipkin.client;
 
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.common.net.HttpHeaders;
 import io.github.resilience4j.retry.Retry;
 import io.github.resilience4j.retry.RetryRegistry;
+import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.core.ParameterizedTypeReference;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
-import org.springframework.stereotype.Component;
-import org.springframework.web.reactive.function.client.ClientResponse;
-import org.springframework.web.reactive.function.client.WebClient;
 import tech.kronicle.plugins.zipkin.config.ZipkinConfig;
 import tech.kronicle.plugins.zipkin.constants.ZipkinApiPaths;
 import tech.kronicle.plugins.zipkin.models.api.Span;
-import tech.kronicle.pluginutils.services.UriVariablesBuilder;
+import tech.kronicle.pluginutils.HttpStatuses;
+import tech.kronicle.pluginutils.UriVariablesBuilder;
 import tech.kronicle.sdk.models.zipkin.ZipkinDependency;
 
+import javax.inject.Inject;
 import java.io.UnsupportedEncodingException;
+import java.net.URI;
 import java.net.URLEncoder;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
 import java.nio.charset.StandardCharsets;
 import java.time.Clock;
 import java.time.Duration;
@@ -24,9 +28,9 @@ import java.util.List;
 import java.util.Map;
 
 import static java.util.Objects.nonNull;
-import static tech.kronicle.pluginutils.utils.UriTemplateUtils.expandUriTemplate;
+import static tech.kronicle.pluginutils.HttpClientFactory.createHttpRequestBuilder;
+import static tech.kronicle.pluginutils.UriTemplateUtils.expandUriTemplate;
 
-@Component
 @Slf4j
 public class ZipkinClient {
 
@@ -34,13 +38,16 @@ public class ZipkinClient {
     private static final Duration LOOKBACK = Duration.ofDays(1);
 
     private final ZipkinConfig config;
-    private final WebClient webClient;
+    private final HttpClient httpClient;
+    private final ObjectMapper objectMapper;
     private final Clock clock;
     private final Retry retry;
 
-    public ZipkinClient(ZipkinConfig config, WebClient webClient, Clock clock, RetryRegistry retryRegistry) {
+    @Inject
+    public ZipkinClient(ZipkinConfig config, HttpClient httpClient, ObjectMapper objectMapper, Clock clock, RetryRegistry retryRegistry) {
         this.config = config;
-        this.webClient = webClient;
+        this.httpClient = httpClient;
+        this.objectMapper = objectMapper;
         this.clock = clock;
         this.retry = retryRegistry.retry(RETRY_NAME, RETRY_NAME);
     }
@@ -52,24 +59,14 @@ public class ZipkinClient {
                 .addUriVariable("lookback", LOOKBACK.toMillis())
                 .build();
 
-        return retry.executeSupplier(() -> {
-            ClientResponse clientResponse = makeRequest(webClient.get().uri(uriTemplate, uriVariables));
-            checkResponseStatus(clientResponse, uriTemplate, uriVariables);
-            return clientResponse.bodyToMono(new ParameterizedTypeReference<List<ZipkinDependency>>() { })
-                    .block(config.getTimeout());
-        });
+        return retry.executeSupplier(() -> makeRequest(uriTemplate, uriVariables, new TypeReference<>() {}));
     }
 
     public List<String> getServiceNames() {
         String uriTemplate = config.getBaseUrl() + ZipkinApiPaths.SERVICES;
         Map<String, String> uriVariables = UriVariablesBuilder.builder().build();
 
-        return retry.executeSupplier(() -> {
-            ClientResponse clientResponse = makeRequest(webClient.get().uri(uriTemplate));
-            checkResponseStatus(clientResponse, uriTemplate, uriVariables);
-            return clientResponse.bodyToMono(new ParameterizedTypeReference<List<String>>() {
-            }).block(config.getTimeout());
-        });
+        return retry.executeSupplier(() -> makeRequest(uriTemplate, uriVariables, new TypeReference<>() {}));
     }
 
     public List<String> getSpanNames(String serviceName) {
@@ -78,12 +75,7 @@ public class ZipkinClient {
                 .addUriVariable("serviceName", serviceName)
                 .build();
 
-        return retry.executeSupplier(() -> {
-            ClientResponse clientResponse = makeRequest(webClient.get().uri(uriTemplate, uriVariables));
-            checkResponseStatus(clientResponse, uriTemplate, uriVariables);
-            return clientResponse.bodyToMono(new ParameterizedTypeReference<List<String>>() {
-            }).block(config.getTimeout());
-        });
+        return retry.executeSupplier(() -> makeRequest(uriTemplate, uriVariables, new TypeReference<>() {}));
     }
 
     public List<List<Span>> getTraces(String serviceName, String spanName, int limit) {
@@ -97,32 +89,31 @@ public class ZipkinClient {
                 .addUriVariable("limit", limit)
                 .build();
 
-        return retry.executeSupplier(() -> {
-            ClientResponse clientResponse = makeRequest(webClient.get().uri(uriTemplate, uriVariables));
-            checkResponseStatus(clientResponse, uriTemplate, uriVariables);
-            return clientResponse.bodyToMono(new ParameterizedTypeReference<List<List<Span>>>() {
-            }).block(config.getTimeout());
-        });
+        return retry.executeSupplier(() -> makeRequest(uriTemplate, uriVariables, new TypeReference<>() {}));
     }
 
-    private ClientResponse makeRequest(WebClient.RequestHeadersSpec<?> requestHeadersSpec) {
+    @SneakyThrows
+    private <T> T makeRequest(String uriTemplate, Map<String, String> uriVariables, TypeReference<T> bodyTypeReference) {
+        HttpRequest.Builder requestBuilder = createHttpRequestBuilder(config.getTimeout())
+                .uri(URI.create(expandUriTemplate(uriTemplate, uriVariables)));
         String cookieValue = getCookieHeaderValue();
 
         if (nonNull(cookieValue)) {
-            requestHeadersSpec = requestHeadersSpec.header(HttpHeaders.COOKIE, cookieValue);
+            requestBuilder = requestBuilder.header(HttpHeaders.COOKIE, cookieValue);
         }
 
-        return requestHeadersSpec
-                .exchange()
-                .block(config.getTimeout());
+        HttpResponse<String> response = httpClient.send(requestBuilder.build(), HttpResponse.BodyHandlers.ofString(StandardCharsets.UTF_8));
+        checkResponseStatus(response, uriTemplate, uriVariables);
+        return objectMapper.readValue(response.body(), bodyTypeReference);
     }
 
-    private void checkResponseStatus(ClientResponse clientResponse, String uriTemplate, Map<String, String> uriVariables) {
-        if (clientResponse.statusCode() != HttpStatus.OK) {
-            String responseBody = clientResponse.bodyToMono(String.class).block(config.getTimeout());
-
-            ZipkinClientException exception = new ZipkinClientException(expandUriTemplate(uriTemplate, uriVariables),
-                    clientResponse.rawStatusCode(), responseBody);
+    private void checkResponseStatus(HttpResponse<String> response, String uriTemplate, Map<String, String> uriVariables) {
+        if (response.statusCode() != HttpStatuses.OK) {
+            ZipkinClientException exception = new ZipkinClientException(
+                    expandUriTemplate(uriTemplate, uriVariables),
+                    response.statusCode(),
+                    response.body()
+            );
             log.warn(exception.getMessage());
             throw exception;
         }

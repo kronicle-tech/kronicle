@@ -1,28 +1,24 @@
 package tech.kronicle.plugins.manualdependencies;
 
+import com.google.inject.Module;
 import org.pf4j.PluginWrapper;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import tech.kronicle.pluginapi.KroniclePlugin;
-import tech.kronicle.plugins.manualdependencies.spring.SpringConfiguration;
+import tech.kronicle.pluginguice.KronicleGuicePlugin;
 
-public class ManualDependencyPlugin extends KroniclePlugin {
+import java.util.List;
+
+public class ManualDependencyPlugin extends KronicleGuicePlugin {
 
     public ManualDependencyPlugin(PluginWrapper wrapper) {
         super(wrapper);
     }
 
     @Override
-    public Class<?> getConfigType() {
-        return null;
+    protected List<Module> getGuiceModules() {
+        return List.of();
     }
 
     @Override
-    protected ApplicationContext createApplicationContext() {
-        AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext();
-        applicationContext.setClassLoader(getWrapper().getPluginClassLoader());
-        applicationContext.register(SpringConfiguration.class);
-        return applicationContext;
+    public Class<?> getConfigType() {
+        return null;
     }
-
 }

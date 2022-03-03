@@ -8,14 +8,13 @@ import tech.kronicle.pluginapi.scanners.models.Codebase;
 import tech.kronicle.pluginapi.scanners.models.Output;
 import tech.kronicle.plugins.javaimport.services.JavaImportFinder;
 import tech.kronicle.plugintestutils.scanners.BaseCodebaseScannerTest;
-import tech.kronicle.pluginutils.utils.AntStyleIgnoreFileLoader;
-import tech.kronicle.pluginutils.utils.FileUtils;
 import tech.kronicle.sdk.models.Import;
 import tech.kronicle.sdk.models.ImportType;
 
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static tech.kronicle.pluginutils.FileUtilsFactory.createFileUtils;
 
 @ExtendWith(MockitoExtension.class)
 public class JavaImportScannerTest extends BaseCodebaseScannerTest {
@@ -24,7 +23,7 @@ public class JavaImportScannerTest extends BaseCodebaseScannerTest {
 
     @BeforeEach
     public void beforeEach() {
-        underTest = new JavaImportScanner(new FileUtils(new AntStyleIgnoreFileLoader()), new JavaImportFinder());
+        underTest = new JavaImportScanner(createFileUtils(), new JavaImportFinder());
     }
 
     @Test

@@ -15,7 +15,7 @@ public class SonarQubeProjectCreatorTest {
 
     private static final String BASE_URL = "https://example.com/example";
 
-    private final SonarQubeConfig config = new SonarQubeConfig(BASE_URL, null);
+    private final SonarQubeConfig config = new SonarQubeConfig(BASE_URL, null, null);
     private final SonarQubeProjectCreator underTest = new SonarQubeProjectCreator(config);
 
     @Test

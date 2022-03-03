@@ -13,6 +13,7 @@ import tech.kronicle.sdk.models.Component;
 import tech.kronicle.sdk.models.KeySoftware;
 import tech.kronicle.sdk.models.Software;
 
+import javax.inject.Inject;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
@@ -26,7 +27,6 @@ import java.util.stream.Collectors;
 import static java.util.Objects.isNull;
 
 @Extension
-@org.springframework.stereotype.Component
 @Slf4j
 public class KeySoftwareScanner extends LateComponentScanner {
 
@@ -35,6 +35,7 @@ public class KeySoftwareScanner extends LateComponentScanner {
     private final Comparator<Version> versionComparator = new DefaultVersionComparator().asVersionComparator().reversed();
     private final List<KeySoftwareRuleConfig> rules;
 
+    @Inject
     public KeySoftwareScanner(KeySoftwareRuleProvider ruleProvider) {
         this.rules = ruleProvider.getRules();
     }

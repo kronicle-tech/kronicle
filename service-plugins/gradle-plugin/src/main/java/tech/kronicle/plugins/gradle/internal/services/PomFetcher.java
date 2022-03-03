@@ -2,13 +2,11 @@ package tech.kronicle.plugins.gradle.internal.services;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.JAXBException;
 import jakarta.xml.bind.Unmarshaller;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.stereotype.Component;
-import tech.kronicle.common.utils.StringEscapeUtils;
+import tech.kronicle.common.StringEscapeUtils;
 import tech.kronicle.plugins.gradle.internal.models.Pom;
 import tech.kronicle.plugins.gradle.internal.models.PomOutcome;
 import tech.kronicle.plugins.gradle.internal.models.mavenxml.DependenciesContainer;
@@ -19,13 +17,13 @@ import tech.kronicle.plugins.gradle.internal.models.mavenxml.project.Dependency;
 import tech.kronicle.plugins.gradle.internal.models.mavenxml.project.Parent;
 import tech.kronicle.plugins.gradle.internal.models.mavenxml.project.Properties;
 import tech.kronicle.plugins.gradle.internal.utils.ArtifactUtils;
-import tech.kronicle.pluginutils.utils.StringUtils;
+import tech.kronicle.pluginutils.StringUtils;
 import tech.kronicle.sdk.models.Software;
 import tech.kronicle.sdk.models.SoftwareDependencyType;
 import tech.kronicle.sdk.models.SoftwareRepository;
 import tech.kronicle.sdk.models.SoftwareType;
 
-import javax.annotation.PostConstruct;
+import javax.inject.Inject;
 import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.XMLStreamException;
 import java.io.StringReader;
@@ -42,9 +40,10 @@ import static java.util.Objects.nonNull;
 import static java.util.Objects.requireNonNull;
 import static tech.kronicle.plugins.gradle.internal.constants.MavenPackagings.JAR;
 import static tech.kronicle.plugins.gradle.internal.constants.MavenPackagings.POM;
+import static tech.kronicle.plugins.gradle.internal.utils.JaxbUnmarshallerFactory.createJaxbUnmarshaller;
+import static tech.kronicle.plugins.gradle.internal.utils.XmlInputFactoryFactory.createXmlInputFactory;
 
-@Component
-@RequiredArgsConstructor
+@RequiredArgsConstructor(onConstructor = @__({@Inject}))
 @Slf4j
 public class PomFetcher {
 
@@ -53,16 +52,8 @@ public class PomFetcher {
     private final PropertyExpander propertyExpander;
     private final ObjectMapper objectMapper;
     private final ArtifactUtils artifactUtils;
-    private Unmarshaller unmarshaller;
-    private XMLInputFactory xmlInputFactory;
-
-    @PostConstruct
-    public void initialize() throws JAXBException {
-        JAXBContext context = JAXBContext.newInstance(Project.class);
-        unmarshaller = context.createUnmarshaller();
-        xmlInputFactory = XMLInputFactory.newFactory();
-        xmlInputFactory.setProperty(XMLInputFactory.IS_NAMESPACE_AWARE, false);
-    }
+    private final Unmarshaller unmarshaller = createJaxbUnmarshaller(Project.class);
+    private final XMLInputFactory xmlInputFactory = createXmlInputFactory();
 
     public PomOutcome fetchPom(String pomArtifactCoordinates, Set<SoftwareRepository> softwareRepositories) {
         log.debug("Processing POM \"" + StringEscapeUtils.escapeString(pomArtifactCoordinates) + "\"");

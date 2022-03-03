@@ -9,12 +9,12 @@ import tech.kronicle.plugins.zipkin.models.api.Service;
 import tech.kronicle.plugins.zipkin.models.api.Span;
 import tech.kronicle.sdk.models.zipkin.ZipkinDependency;
 
+import javax.inject.Inject;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@org.springframework.stereotype.Service
 @Slf4j
-@RequiredArgsConstructor
+@RequiredArgsConstructor(onConstructor = @__({@Inject}))
 public class ZipkinService {
 
     private static final int MAX_SPAN_NAMES_PER_SERVICE = 200;

@@ -5,15 +5,10 @@ import org.codehaus.groovy.ast.ASTNode;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit.jupiter.SpringExtension;
-import tech.kronicle.plugins.gradle.GradleScannerTestConfiguration;
 import tech.kronicle.plugins.gradle.internal.utils.InheritingHashMap;
 import tech.kronicle.plugins.gradle.internal.utils.InheritingHashSet;
-import tech.kronicle.plugintestutils.testutils.LogCaptor;
-import tech.kronicle.pluginutils.constants.Comparators;
+import tech.kronicle.plugintestutils.LogCaptor;
+import tech.kronicle.pluginutils.Comparators;
 import tech.kronicle.sdk.models.Software;
 import tech.kronicle.sdk.models.SoftwareType;
 
@@ -21,13 +16,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static tech.kronicle.plugins.gradle.TestDependencyFactory.createBuildGradleVisitor;
 
-@ExtendWith(SpringExtension.class)
-@SpringBootTest(properties = "test-name=BuildGradleVisitorTest", classes = GradleScannerTestConfiguration.class)
 public class BuildGradleVisitorTest {
 
-    @Autowired
-    private BuildGradleVisitor underTest;
+    private BuildGradleVisitor underTest = createBuildGradleVisitor(this.getClass());
     private GroovyParser groovyParser = new GroovyParser();
     private LogCaptor logCaptor;
 

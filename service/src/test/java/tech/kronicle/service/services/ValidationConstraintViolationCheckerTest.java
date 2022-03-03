@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import tech.kronicle.common.services.ValidationConstraintViolationTransformer;
+import tech.kronicle.common.ValidationConstraintViolationTransformer;
 import tech.kronicle.sdk.models.ObjectWithReference;
 import tech.kronicle.service.exceptions.ValidationException;
 

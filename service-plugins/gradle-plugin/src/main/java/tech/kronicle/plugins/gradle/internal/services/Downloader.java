@@ -1,19 +1,22 @@
 package tech.kronicle.plugins.gradle.internal.services;
 
+import com.google.common.net.HttpHeaders;
 import lombok.RequiredArgsConstructor;
+import lombok.SneakyThrows;
 import lombok.Value;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Component;
-import org.springframework.web.reactive.function.client.WebClient;
-import org.springframework.web.reactive.function.client.WebClientResponseException;
-import reactor.core.publisher.Mono;
-import tech.kronicle.common.utils.StringEscapeUtils;
+import tech.kronicle.common.StringEscapeUtils;
 import tech.kronicle.plugins.gradle.config.DownloaderConfig;
 import tech.kronicle.plugins.gradle.config.HttpHeaderConfig;
+import tech.kronicle.pluginutils.HttpMethods;
+import tech.kronicle.pluginutils.HttpStatuses;
 
+import javax.inject.Inject;
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.Optional;
 import java.util.function.BiConsumer;
@@ -21,14 +24,14 @@ import java.util.function.Function;
 
 import static java.util.Objects.isNull;
 import static java.util.Objects.nonNull;
+import static tech.kronicle.pluginutils.HttpClientFactory.createHttpRequestBuilder;
 
-@Component
-@RequiredArgsConstructor
+@RequiredArgsConstructor(onConstructor = @__({@Inject}))
 @Slf4j
 public class Downloader {
 
+    private final HttpClient httpClient;
     private final DownloaderConfig config;
-    private final WebClient webClient;
     private final DownloadCache downloadCache;
     private final UrlExistsCache urlExistsCache;
     private final HttpRequestMaker httpRequestMaker;
@@ -36,47 +39,46 @@ public class Downloader {
     public HttpRequestOutcome<String> download(String url, List<HttpHeaderConfig> headers, int maxRedirectCount) {
         log.debug("Downloading from URL \"" + StringEscapeUtils.escapeString(url) + "\"");
 
-        return makeRequestFollowingRedirects(url, maxRedirectCount,
-                originalUrlOrRedirectUrl -> makeRequest(webClient.get(), originalUrlOrRedirectUrl, headers),
-                clientResponse -> clientResponse.getStatusCode() == HttpStatus.OK
-                        ? Optional.ofNullable(clientResponse.getBody())
+        return makeRequestFollowingRedirects(
+                HttpMethods.GET,
+                url, 
+                maxRedirectCount,
+                originalUrlOrRedirectUrl -> makeRequest(createHttpRequestBuilder(config.getTimeout()), originalUrlOrRedirectUrl, headers),
+                response -> response.statusCode() == HttpStatuses.OK
+                        ? Optional.ofNullable(response.body())
                         : Optional.empty(),
                 downloadCache::getContent,
                 downloadCache::putContent);
     }
 
-    private ResponseEntity<String> makeRequest(WebClient.RequestHeadersUriSpec<?> requestSpec, String originalUrlOrRedirectUrl, List<HttpHeaderConfig> headers) {
-        return addHeaders(requestSpec.uri(originalUrlOrRedirectUrl), headers)
-                .retrieve()
-                .toEntity(String.class)
-                .onErrorResume(
-                        WebClientResponseException.class,
-                        thrown -> thrown.getStatusCode() == HttpStatus.NOT_FOUND ?
-                                Mono.just(new ResponseEntity<>(thrown.getStatusCode())) :
-                                Mono.error(thrown)
-                )
-                .block(config.getTimeout());
+    @SneakyThrows
+    private HttpResponse<String> makeRequest(HttpRequest.Builder requestBuilder, String originalUrlOrRedirectUrl, List<HttpHeaderConfig> headers) {
+        addHeaders(requestBuilder.uri(URI.create(originalUrlOrRedirectUrl)), headers);
+        return httpClient.send(requestBuilder.build(), HttpResponse.BodyHandlers.ofString(StandardCharsets.UTF_8));
     }
 
-    private WebClient.RequestHeadersSpec<?> addHeaders(WebClient.RequestHeadersSpec<?> requestSpec, List<HttpHeaderConfig> headers) {
+    private void addHeaders(HttpRequest.Builder requestBuilder, List<HttpHeaderConfig> headers) {
         if (nonNull(headers) && !headers.isEmpty()) {
-            return requestSpec.headers(headersSpec -> headers.forEach(
-                    header -> headersSpec.add(header.getName(), header.getValue())));
+            headers.forEach(header -> requestBuilder.header(header.getName(), header.getValue()));
         }
-        return requestSpec;
     }
 
     public HttpRequestOutcome<Boolean> exists(String url, List<HttpHeaderConfig> headers, int maxRedirectCount) {
         log.debug("Checking whether URL \"" + StringEscapeUtils.escapeString(url) + "\" exists");
 
         return makeRequestFollowingRedirects(
+                HttpMethods.HEAD,
                 url,
                 maxRedirectCount,
-                originalUrlOrRedirectUrl -> makeRequest(webClient.head(), originalUrlOrRedirectUrl, headers),
-                responseSpec -> {
-                    if (responseSpec.getStatusCode() == HttpStatus.OK) {
+                originalUrlOrRedirectUrl -> makeRequest(
+                        createHttpRequestBuilder(config.getTimeout()).method(HttpMethods.HEAD, HttpRequest.BodyPublishers.noBody()),
+                        originalUrlOrRedirectUrl,
+                        headers
+                ),
+                response -> {
+                    if (response.statusCode() == HttpStatuses.OK) {
                         return Optional.of(true);
-                    } else if (responseSpec.getStatusCode() == HttpStatus.NOT_FOUND) {
+                    } else if (response.statusCode() == HttpStatuses.NOT_FOUND) {
                         return Optional.of(false);
                     } else {
                         return Optional.empty();
@@ -87,10 +89,11 @@ public class Downloader {
     }
 
     private <T> HttpRequestOutcome<T> makeRequestFollowingRedirects(
+            String httpMethod,
             String url,
             int maxRedirectCount,
-            Function<String, ResponseEntity<String>> httpRequest,
-            Function<ResponseEntity<String>, Optional<T>> outputGetter,
+            Function<String, HttpResponse<String>> httpRequest,
+            Function<HttpResponse<String>, Optional<T>> outputGetter,
             Function<String, Optional<T>> cacheGetter,
             BiConsumer<String, T> cacheSetter
     ) {
@@ -104,22 +107,22 @@ public class Downloader {
         int redirectCount = 0;
 
         while (true) {
-            ResponseEntity<String> responseEntity;
+            HttpResponse<String> response;
             try {
-                responseEntity = httpRequestMaker.makeHttpRequest(httpRequest, url);
+                response = httpRequestMaker.makeHttpRequest(httpRequest, url);
             } catch (Exception e) {
                 log.error("Failed to make HTTP request for URL \"{}\"", StringEscapeUtils.escapeString(url), e);
                 return new HttpRequestOutcome<>(url, false, null, List.of(e));
             }
-            log.debug("Response status code was " + responseEntity.getStatusCodeValue());
-            HttpStatus statusCode = responseEntity.getStatusCode();
-            if (statusCode == HttpStatus.MOVED_PERMANENTLY
-                    || statusCode == HttpStatus.FOUND
-                    || statusCode == HttpStatus.SEE_OTHER) {
+            log.debug("Response status code was " + response.statusCode());
+            int statusCode = response.statusCode();
+            if (statusCode == HttpStatuses.MOVED_PERMANENTLY
+                    || statusCode == HttpStatuses.FOUND
+                    || statusCode == HttpStatuses.SEE_OTHER) {
                 redirectCount++;
 
                 if (redirectCount <= maxRedirectCount) {
-                    url = getLocationHeader(responseEntity);
+                    url = getLocationHeader(response);
 
                     if (isNull(url)) {
                         log.warn("Redirect response is missing a Location HTTP response header");
@@ -136,8 +139,8 @@ public class Downloader {
                     log.info("Exceeded max redirect count for URL \"{}\"", StringEscapeUtils.escapeString(url));
                     break;
                 }
-            } else {
-                output = outputGetter.apply(responseEntity);
+            } else if (statusCode == HttpStatuses.OK || statusCode == HttpStatuses.NOT_FOUND) {
+                output = outputGetter.apply(response);
 
                 if (output.isPresent()) {
                     cacheSetter.accept(url, output.get());
@@ -146,6 +149,15 @@ public class Downloader {
                 } else {
                     break;
                 }
+            } else{
+                DownloaderException exception = new DownloaderException(
+                        httpMethod,
+                        url,
+                        statusCode,
+                        response.body()
+                );
+                log.warn(exception.getMessage());
+                return new HttpRequestOutcome<>(url, false, null, List.of(exception));
             }
         }
 
@@ -153,9 +165,8 @@ public class Downloader {
         return new HttpRequestOutcome<>(url, false, null, List.of());
     }
 
-    private String getLocationHeader(ResponseEntity<String> clientResponse) {
-        List<String> values = clientResponse.getHeaders().get(HttpHeaders.LOCATION);
-        return isNull(values) || values.isEmpty() ? null : values.get(0);
+    private String getLocationHeader(HttpResponse<String> response) {
+        return response.headers().firstValue(HttpHeaders.LOCATION).orElse(null);
     }
 
     @Value

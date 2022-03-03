@@ -4,8 +4,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.codehaus.groovy.ast.ASTNode;
 import org.pf4j.Extension;
-import org.springframework.stereotype.Component;
-import tech.kronicle.common.utils.StringEscapeUtils;
+import tech.kronicle.common.StringEscapeUtils;
 import tech.kronicle.pluginapi.scanners.CodebaseScanner;
 import tech.kronicle.pluginapi.scanners.models.Codebase;
 import tech.kronicle.pluginapi.scanners.models.Output;
@@ -28,9 +27,9 @@ import tech.kronicle.plugins.gradle.internal.services.SoftwareRepositoryFactory;
 import tech.kronicle.plugins.gradle.internal.utils.ArtifactUtils;
 import tech.kronicle.plugins.gradle.internal.utils.InheritingHashMap;
 import tech.kronicle.plugins.gradle.internal.utils.InheritingHashSet;
-import tech.kronicle.pluginutils.constants.Comparators;
-import tech.kronicle.pluginutils.scanners.services.ThrowableToScannerErrorMapper;
-import tech.kronicle.pluginutils.utils.FileUtils;
+import tech.kronicle.pluginutils.Comparators;
+import tech.kronicle.pluginutils.FileUtils;
+import tech.kronicle.pluginutils.ThrowableToScannerErrorMapper;
 import tech.kronicle.sdk.models.ScannerError;
 import tech.kronicle.sdk.models.Software;
 import tech.kronicle.sdk.models.SoftwareDependencyType;
@@ -39,6 +38,7 @@ import tech.kronicle.sdk.models.SoftwareRepositoryScope;
 import tech.kronicle.sdk.models.SoftwareType;
 import tech.kronicle.sdk.models.gradle.Gradle;
 
+import javax.inject.Inject;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.attribute.BasicFileAttributes;
@@ -66,9 +66,8 @@ import static tech.kronicle.plugins.gradle.internal.constants.GradleFileNames.SE
 import static tech.kronicle.plugins.gradle.internal.constants.GradleWrapperPropertyNames.DISTRIBUTION_URL;
 import static tech.kronicle.plugins.gradle.internal.constants.ToolNames.GRADLE_WRAPPER;
 
-@Component
 @Extension
-@RequiredArgsConstructor
+@RequiredArgsConstructor(onConstructor = @__({@Inject}))
 @Slf4j
 public class GradleScanner extends CodebaseScanner {
 

@@ -1,7 +1,6 @@
 package tech.kronicle.plugins.gradle.internal.services;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import jakarta.xml.bind.JAXBException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -71,9 +70,8 @@ public class PomFetcherTest {
     private final ArtifactUtils artifactUtils = new ArtifactUtils();
 
     @BeforeEach
-    public void beforeEach() throws JAXBException {
+    public void beforeEach() {
         underTest = new PomFetcher(mockMavenRepositoryFileDownloader, mockPomCache, mockPropertyExpander, objectMapper, artifactUtils);
-        underTest.initialize();
     }
 
     @Test

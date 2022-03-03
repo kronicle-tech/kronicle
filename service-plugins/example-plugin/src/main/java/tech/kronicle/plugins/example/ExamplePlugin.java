@@ -1,13 +1,14 @@
 package tech.kronicle.plugins.example;
 
+import com.google.inject.Module;
 import org.pf4j.PluginWrapper;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import tech.kronicle.pluginapi.KroniclePlugin;
+import tech.kronicle.pluginguice.KronicleGuicePlugin;
 import tech.kronicle.plugins.example.config.ExampleConfig;
-import tech.kronicle.plugins.example.spring.SpringConfiguration;
+import tech.kronicle.plugins.example.guice.GuiceModule;
 
-public class ExamplePlugin extends KroniclePlugin {
+import java.util.List;
+
+public class ExamplePlugin extends KronicleGuicePlugin {
 
     public ExamplePlugin(PluginWrapper wrapper) {
         super(wrapper);
@@ -19,11 +20,7 @@ public class ExamplePlugin extends KroniclePlugin {
     }
 
     @Override
-    protected ApplicationContext createApplicationContext() {
-        AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext();
-        applicationContext.setClassLoader(getWrapper().getPluginClassLoader());
-        applicationContext.register(SpringConfiguration.class);
-        return applicationContext;
+    protected List<Module> getGuiceModules() {
+        return List.of(new GuiceModule());
     }
-
 }

@@ -5,18 +5,17 @@ import lombok.extern.slf4j.Slf4j;
 import org.codehaus.groovy.ast.ASTNode;
 import org.codehaus.groovy.ast.builder.AstBuilder;
 import org.codehaus.groovy.control.CompilePhase;
-import org.springframework.stereotype.Component;
-import tech.kronicle.common.utils.StringEscapeUtils;
-import tech.kronicle.pluginutils.utils.FileUtils;
+import tech.kronicle.pluginutils.FileUtils;
 
+import javax.inject.Inject;
 import java.nio.file.Path;
 import java.util.List;
 import java.util.Map;
 
 import static java.util.Objects.nonNull;
+import static tech.kronicle.common.StringEscapeUtils.escapeString;
 
-@Component
-@RequiredArgsConstructor
+@RequiredArgsConstructor(onConstructor = @__({@Inject}))
 @Slf4j
 public class BuildFileLoader {
 
@@ -27,8 +26,11 @@ public class BuildFileLoader {
 
     public List<ASTNode> loadBuildFile(Path buildFile, Path codebaseDir) {
         if (!buildFile.startsWith(codebaseDir)) {
-            throw new IllegalArgumentException(String.format("buildFile path \"%s\" is not within codebaseDir path \"%s\"", StringEscapeUtils.escapeString(buildFile.toString()),
-                    StringEscapeUtils.escapeString(codebaseDir.toString())));
+            throw new IllegalArgumentException(String.format(
+                    "buildFile path \"%s\" is not within codebaseDir path \"%s\"",
+                    escapeString(buildFile.toString()),
+                    escapeString(codebaseDir.toString())
+            ));
         }
         String contents = fileUtils.readFileContent(buildFile);
         if (contents.isEmpty()) {

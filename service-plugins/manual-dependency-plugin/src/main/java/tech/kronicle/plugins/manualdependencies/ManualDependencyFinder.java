@@ -1,10 +1,10 @@
 package tech.kronicle.plugins.manualdependencies;
 
 import org.pf4j.Extension;
-import tech.kronicle.componentmetadata.models.ComponentMetadata;
 import tech.kronicle.pluginapi.finders.DependencyFinder;
 import tech.kronicle.sdk.models.Component;
 import tech.kronicle.sdk.models.ComponentDependency;
+import tech.kronicle.sdk.models.ComponentMetadata;
 import tech.kronicle.sdk.models.Dependency;
 import tech.kronicle.sdk.models.DependencyDirection;
 
@@ -14,7 +14,6 @@ import java.util.Objects;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-@org.springframework.stereotype.Component
 @Extension
 public class ManualDependencyFinder extends DependencyFinder {
 

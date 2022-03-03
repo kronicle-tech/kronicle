@@ -10,11 +10,6 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit.jupiter.SpringExtension;
-import org.springframework.web.reactive.function.client.WebClient;
 import tech.kronicle.pluginapi.finders.models.ApiRepo;
 import tech.kronicle.plugins.github.config.GitHubConfig;
 import tech.kronicle.plugins.github.config.GitHubOrganizationConfig;
@@ -23,8 +18,8 @@ import tech.kronicle.plugins.github.models.ApiResponseCacheEntry;
 import tech.kronicle.plugins.github.models.api.GitHubContentEntry;
 import tech.kronicle.plugins.github.models.api.GitHubRepo;
 import tech.kronicle.plugins.github.services.ApiResponseCache;
-import tech.kronicle.plugintestutils.testutils.LogCaptor;
-import tech.kronicle.plugintestutils.testutils.SimplifiedLogEvent;
+import tech.kronicle.plugintestutils.LogCaptor;
+import tech.kronicle.plugintestutils.SimplifiedLogEvent;
 
 import java.time.Duration;
 import java.util.List;
@@ -35,19 +30,16 @@ import static org.assertj.core.api.Assertions.catchThrowable;
 import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
+import static tech.kronicle.pluginutils.HttpClientFactory.createHttpClient;
+import static tech.kronicle.pluginutils.JsonMapperFactory.createJsonMapper;
 
-@ExtendWith(SpringExtension.class)
 @ExtendWith(MockitoExtension.class)
-@SpringBootTest
-@ContextConfiguration(classes = {GitHubClientTestConfiguration.class})
 public class GitHubClientTest {
 
     private static final Duration TEST_DURATION = Duration.ofSeconds(30);
 
     private final GitHubApiWireMockFactory gitHubApiWireMockFactory = new GitHubApiWireMockFactory();
     private GitHubClient underTest;
-    @Autowired
-    private WebClient webClient;
     @Mock
     private ApiResponseCache mockCache;
     private WireMockServer wireMockServer;
@@ -71,7 +63,7 @@ public class GitHubClientTest {
         // Given
         wireMockServer = gitHubApiWireMockFactory.create(scenario);
         GitHubConfig config = new GitHubConfig(baseUrl, null, null, null, TEST_DURATION);
-        underTest = new GitHubClient(webClient, config, mockCache);
+        underTest = createUnderTest(config);
 
         // When
         List<ApiRepo> returnValue;
@@ -108,9 +100,7 @@ public class GitHubClientTest {
         verify(mockCache).putEntry(
                 scenario.getAccessToken(),
                 reposUrl,
-                // Note: The instance of Jetty that is bundled with WireMock adds "--gzip" to the end of the ETag HTTP response
-                // header.  See http://wiremock.org/docs/extending-wiremock/ for confirmation
-                new ApiResponseCacheEntry<>("test-modified-etag-1--gzip", List.of(
+                new ApiResponseCacheEntry<>("test-modified-etag-1", List.of(
                         new GitHubRepo("https://github.com/" + scenario.getName() + "/test-repo-1.git", baseUrl + "/repos/" + scenario.getName() + "/test-repo-1/contents/{+path}"),
                         new GitHubRepo("https://github.com/" + scenario.getName() + "/test-repo-2.git", baseUrl + "/repos/" + scenario.getName() + "/test-repo-2/contents/{+path}"),
                         new GitHubRepo("https://github.com/" + scenario.getName() + "/test-repo-3.git", baseUrl + "/repos/" + scenario.getName() + "/test-repo-3/contents/{+path}"),
@@ -118,27 +108,19 @@ public class GitHubClientTest {
         verify(mockCache).putEntry(
                 scenario.getAccessToken(),
                 baseUrl + "/repos/" + scenario.getName() + "/test-repo-1/contents/",
-                // Note: The instance of Jetty that is bundled with WireMock adds "--gzip" to the end of the ETag HTTP response
-                // header.  See http://wiremock.org/docs/extending-wiremock/ for confirmation
-                new ApiResponseCacheEntry<>("test-modified-etag-2--gzip", List.of(new GitHubContentEntry(".gitignore"), new GitHubContentEntry("kronicle.yaml"), new GitHubContentEntry("README.md"))));
+                new ApiResponseCacheEntry<>("test-modified-etag-2", List.of(new GitHubContentEntry(".gitignore"), new GitHubContentEntry("kronicle.yaml"), new GitHubContentEntry("README.md"))));
         verify(mockCache).putEntry(
                 scenario.getAccessToken(),
                 baseUrl + "/repos/" + scenario.getName() + "/test-repo-2/contents/",
-                // Note: The instance of Jetty that is bundled with WireMock adds "--gzip" to the end of the ETag HTTP response
-                // header.  See http://wiremock.org/docs/extending-wiremock/ for confirmation
-                new ApiResponseCacheEntry<>("test-modified-etag-3--gzip", List.of(new GitHubContentEntry(".gitignore"), new GitHubContentEntry("README.md"))));
+                new ApiResponseCacheEntry<>("test-modified-etag-3", List.of(new GitHubContentEntry(".gitignore"), new GitHubContentEntry("README.md"))));
         verify(mockCache).putEntry(
                 scenario.getAccessToken(),
                 baseUrl + "/repos/" + scenario.getName() + "/test-repo-3/contents/",
-                // Note: The instance of Jetty that is bundled with WireMock adds "--gzip" to the end of the ETag HTTP response
-                // header.  See http://wiremock.org/docs/extending-wiremock/ for confirmation
-                new ApiResponseCacheEntry<>("test-modified-etag-4--gzip", List.of(new GitHubContentEntry(".gitignore"), new GitHubContentEntry("kronicle.yaml"), new GitHubContentEntry("README.md"))));
+                new ApiResponseCacheEntry<>("test-modified-etag-4", List.of(new GitHubContentEntry(".gitignore"), new GitHubContentEntry("kronicle.yaml"), new GitHubContentEntry("README.md"))));
         verify(mockCache).putEntry(
                 scenario.getAccessToken(),
                 baseUrl + "/repos/" + scenario.getName() + "/test-repo-4/contents/",
-                // Note: The instance of Jetty that is bundled with WireMock adds "--gzip" to the end of the ETag HTTP response
-                // header.  See http://wiremock.org/docs/extending-wiremock/ for confirmation
-                new ApiResponseCacheEntry<>("test-modified-etag-5--gzip", List.of(new GitHubContentEntry(".gitignore"), new GitHubContentEntry("README.md"))));
+                new ApiResponseCacheEntry<>("test-modified-etag-5", List.of(new GitHubContentEntry(".gitignore"), new GitHubContentEntry("README.md"))));
 
         assertThat(returnValue).containsExactly(
                 new ApiRepo("https://github.com/" + scenario.getName() + "/test-repo-" + 1 + ".git", true),
@@ -164,13 +146,17 @@ public class GitHubClientTest {
                 new SimplifiedLogEvent(Level.INFO, "Response for " + baseUrl + "/repos/" + scenario.getName() + "/test-repo-4/contents/ for user " + scenario.getBasicAuthUsername() + " was different to last call"));
     }
 
+    private GitHubClient createUnderTest(GitHubConfig config) {
+        return new GitHubClient(createHttpClient(), createJsonMapper(), config, mockCache);
+    }
+
     @Test
     public void getReposShouldLogRateLimitResponseHeadersInGitHubApiResponses() {
         // Given
         GitHubApiWireMockFactory.Scenario scenario = GitHubApiWireMockFactory.Scenario.RATE_LIMIT_RESPONSE_HEADERS;
         wireMockServer = gitHubApiWireMockFactory.create(scenario);
         GitHubConfig config = new GitHubConfig(baseUrl, null, null, null, TEST_DURATION);
-        underTest = new GitHubClient(webClient, config, mockCache);
+        underTest = createUnderTest(config);
 
         // When
         List<ApiRepo> returnValue = underTest.getRepos(scenario.getAccessToken());
@@ -206,7 +192,7 @@ public class GitHubClientTest {
         GitHubApiWireMockFactory.Scenario scenario = GitHubApiWireMockFactory.Scenario.ETAG_USER_REPOS_NOT_MODIFIED;
         wireMockServer = gitHubApiWireMockFactory.create(scenario);
         GitHubConfig config = new GitHubConfig(baseUrl, null, null, null, TEST_DURATION);
-        underTest = new GitHubClient(webClient, config, mockCache);
+        underTest = createUnderTest(config);
         ApiResponseCacheEntry<List<GitHubRepo>> userReposCacheEntry = new ApiResponseCacheEntry<>(
                 "test-etag-1",
                 List.of(
@@ -229,7 +215,7 @@ public class GitHubClientTest {
         GitHubApiWireMockFactory.Scenario scenario = GitHubApiWireMockFactory.Scenario.ETAG_REPO_2_NOT_MODIFIED;
         wireMockServer = gitHubApiWireMockFactory.create(scenario);
         GitHubConfig config = new GitHubConfig(baseUrl, null, null, null, TEST_DURATION);
-        underTest = new GitHubClient(webClient, config, mockCache);
+        underTest = createUnderTest(config);
         ApiResponseCacheEntry<List<GitHubContentEntry>> userReposCacheEntry = new ApiResponseCacheEntry<>("test-etag-3", List.of(new GitHubContentEntry("kronicle.yaml")));
         when(mockCache.getEntry(scenario.getAccessToken(), baseUrl + "/user/repos")).thenReturn(null);
         when(mockCache.getEntry(scenario.getAccessToken(), baseUrl + "/repos/" + scenario.getName() + "/test-repo-" + 1 + "/contents/")).thenReturn(null);
@@ -255,7 +241,7 @@ public class GitHubClientTest {
         GitHubApiWireMockFactory.Scenario scenario = GitHubApiWireMockFactory.Scenario.REPO_3_NO_CONTENT;
         wireMockServer = gitHubApiWireMockFactory.create(scenario);
         GitHubConfig config = new GitHubConfig(baseUrl, null, null, null, TEST_DURATION);
-        underTest = new GitHubClient(webClient, config, mockCache);
+        underTest = createUnderTest(config);
 
         // When
         List<ApiRepo> returnValue = underTest.getRepos(scenario.getAccessToken());
@@ -275,7 +261,7 @@ public class GitHubClientTest {
         GitHubApiWireMockFactory.Scenario scenario = GitHubApiWireMockFactory.Scenario.INTERNAL_SERVER_ERROR;
         wireMockServer = gitHubApiWireMockFactory.create(scenario);
         GitHubConfig config = new GitHubConfig(baseUrl, null, null, null, TEST_DURATION);
-        underTest = new GitHubClient(webClient, config, mockCache);
+        underTest = createUnderTest(config);
 
         // When
         Throwable thrown = catchThrowable(() -> underTest.getRepos(scenario.getAccessToken()));
@@ -295,7 +281,7 @@ public class GitHubClientTest {
         GitHubApiWireMockFactory.Scenario scenario = GitHubApiWireMockFactory.Scenario.REPO_LIST_NOT_FOUND;
         wireMockServer = gitHubApiWireMockFactory.create(scenario);
         GitHubConfig config = new GitHubConfig(baseUrl, null, null, null, TEST_DURATION);
-        underTest = new GitHubClient(webClient, config, mockCache);
+        underTest = createUnderTest(config);
 
         // When
         List<ApiRepo> returnValue = underTest.getRepos(scenario.getAccessToken());

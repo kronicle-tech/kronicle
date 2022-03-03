@@ -4,8 +4,6 @@ import lombok.RequiredArgsConstructor;
 import lombok.Value;
 import lombok.extern.slf4j.Slf4j;
 import org.pf4j.Extension;
-import org.springframework.stereotype.Component;
-import tech.kronicle.componentmetadata.models.ComponentMetadata;
 import tech.kronicle.pluginapi.scanners.ComponentAndCodebaseScanner;
 import tech.kronicle.pluginapi.scanners.models.ComponentAndCodebase;
 import tech.kronicle.pluginapi.scanners.models.Output;
@@ -13,10 +11,12 @@ import tech.kronicle.plugins.openapi.models.SpecAndErrors;
 import tech.kronicle.plugins.openapi.services.SpecDiscoverer;
 import tech.kronicle.plugins.openapi.services.SpecParser;
 import tech.kronicle.plugins.openapi.utils.OpenApiSpecUtils;
+import tech.kronicle.sdk.models.ComponentMetadata;
 import tech.kronicle.sdk.models.Dependency;
 import tech.kronicle.sdk.models.ScannerError;
 import tech.kronicle.sdk.models.openapi.OpenApiSpec;
 
+import javax.inject.Inject;
 import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -25,8 +25,7 @@ import static java.util.Objects.nonNull;
 import static tech.kronicle.plugins.openapi.utils.OpenApiSpecUtils.isManualSpec;
 
 @Extension
-@Component
-@RequiredArgsConstructor
+@RequiredArgsConstructor(onConstructor = @__({@Inject}))
 @Slf4j
 public class OpenApiScanner extends ComponentAndCodebaseScanner {
 

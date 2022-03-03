@@ -3,8 +3,7 @@ package tech.kronicle.plugins.gradle.internal.groovyscriptvisitors.buildgradlevi
 import lombok.extern.slf4j.Slf4j;
 import org.codehaus.groovy.ast.expr.MethodCallExpression;
 import org.slf4j.Logger;
-import org.springframework.stereotype.Component;
-import tech.kronicle.common.utils.StringEscapeUtils;
+import tech.kronicle.common.StringEscapeUtils;
 import tech.kronicle.plugins.gradle.internal.groovyscriptvisitors.ProcessPhase;
 import tech.kronicle.plugins.gradle.internal.models.PomOutcome;
 import tech.kronicle.plugins.gradle.internal.services.ArtifactVersionResolver;
@@ -21,6 +20,7 @@ import tech.kronicle.sdk.models.Software;
 import tech.kronicle.sdk.models.SoftwareDependencyType;
 import tech.kronicle.sdk.models.SoftwareScope;
 
+import javax.inject.Inject;
 import java.util.Objects;
 import java.util.Set;
 
@@ -28,7 +28,6 @@ import static java.util.Objects.isNull;
 import static java.util.Objects.nonNull;
 import static tech.kronicle.sdk.models.SoftwareType.JVM;
 
-@Component
 @Slf4j
 public class DependenciesVisitor extends BaseArtifactVisitor {
 
@@ -36,6 +35,7 @@ public class DependenciesVisitor extends BaseArtifactVisitor {
     private final PomFetcher pomFetcher;
     private final PlatformVisitor platformVisitor;
 
+    @Inject
     public DependenciesVisitor(BuildFileLoader buildFileLoader, BuildFileProcessor buildFileProcessor, ExpressionEvaluator expressionEvaluator,
                                SoftwareRepositoryFactory softwareRepositoryFactory, ArtifactUtils artifactUtils, DependencyVersionFetcher dependencyVersionFetcher,
                                BillOfMaterialsLogger billOfMaterialsLogger, PlatformVisitor platformVisitor, ArtifactVersionResolver artifactVersionResolver,

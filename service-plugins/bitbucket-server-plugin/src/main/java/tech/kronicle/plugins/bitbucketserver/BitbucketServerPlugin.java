@@ -1,13 +1,14 @@
 package tech.kronicle.plugins.bitbucketserver;
 
+import com.google.inject.Module;
 import org.pf4j.PluginWrapper;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import tech.kronicle.pluginapi.KroniclePlugin;
+import tech.kronicle.pluginguice.KronicleGuicePlugin;
 import tech.kronicle.plugins.bitbucketserver.config.BitbucketServerConfig;
-import tech.kronicle.plugins.bitbucketserver.spring.SpringConfiguration;
+import tech.kronicle.plugins.bitbucketserver.guice.GuiceModule;
 
-public class BitbucketServerPlugin extends KroniclePlugin {
+import java.util.List;
+
+public class BitbucketServerPlugin extends KronicleGuicePlugin {
 
     public BitbucketServerPlugin(PluginWrapper wrapper) {
         super(wrapper);
@@ -19,11 +20,7 @@ public class BitbucketServerPlugin extends KroniclePlugin {
     }
 
     @Override
-    protected ApplicationContext createApplicationContext() {
-        AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext();
-        applicationContext.setClassLoader(getWrapper().getPluginClassLoader());
-        applicationContext.register(SpringConfiguration.class);
-        return applicationContext;
+    protected List<Module> getGuiceModules() {
+        return List.of(new GuiceModule());
     }
-
 }

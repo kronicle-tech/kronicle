@@ -2,7 +2,7 @@ package tech.kronicle.service.services;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import tech.kronicle.pluginutils.utils.ObjectReference;
+import tech.kronicle.pluginutils.ObjectReference;
 import tech.kronicle.sdk.models.Area;
 import tech.kronicle.sdk.models.Component;
 import tech.kronicle.sdk.models.Scanner;

@@ -1,6 +1,6 @@
 package tech.kronicle.plugins.git;
 
-import lombok.RequiredArgsConstructor;
+import com.google.common.io.RecursiveDeleteOption;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.eclipse.jgit.api.Git;
@@ -9,14 +9,12 @@ import org.eclipse.jgit.lib.Ref;
 import org.eclipse.jgit.transport.CredentialsProvider;
 import org.eclipse.jgit.transport.UsernamePasswordCredentialsProvider;
 import org.pf4j.Extension;
-import org.springframework.stereotype.Component;
-import org.springframework.util.FileSystemUtils;
-import tech.kronicle.common.utils.StringEscapeUtils;
+import tech.kronicle.common.StringEscapeUtils;
 import tech.kronicle.pluginapi.git.GitCloner;
 import tech.kronicle.plugins.git.config.GitConfig;
 import tech.kronicle.plugins.git.config.GitHost;
 
-import javax.annotation.PostConstruct;
+import javax.inject.Inject;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URI;
@@ -30,12 +28,11 @@ import java.util.Objects;
 import java.util.Optional;
 import java.util.function.Predicate;
 
+import static com.google.common.io.MoreFiles.deleteRecursively;
 import static java.util.Objects.isNull;
 import static java.util.Objects.nonNull;
 
-@Component
 @Extension
-@RequiredArgsConstructor
 @Slf4j
 public class GitClonerImpl implements GitCloner {
 
@@ -44,12 +41,13 @@ public class GitClonerImpl implements GitCloner {
     private static final String BRANCH_REF_NAME_PREFIX = "refs/heads/";
 
     private final GitConfig config;
-    private Path reposDir;
+    private final Path reposDir;
 
+    @Inject
     @SneakyThrows
-    @PostConstruct
-    public void initialize() {
-        reposDir = Path.of(config.getReposDir());
+    public GitClonerImpl(GitConfig config) {
+        this.config = config;
+        this.reposDir = Path.of(config.getReposDir());
         Files.createDirectories(reposDir);
     }
 
@@ -109,7 +107,7 @@ public class GitClonerImpl implements GitCloner {
                 }
             }
 
-            FileSystemUtils.deleteRecursively(repoDir);
+            deleteRecursively(repoDir, RecursiveDeleteOption.ALLOW_INSECURE);
         }
 
         return clone(repoUrl, repoDir, credentialsProvider);

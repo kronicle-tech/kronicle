@@ -6,56 +6,74 @@ import lombok.extern.slf4j.Slf4j;
 import org.pf4j.DefaultPluginFactory;
 import org.pf4j.Plugin;
 import org.pf4j.PluginWrapper;
-import org.pf4j.spring.SpringPlugin;
-import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
 import org.springframework.boot.context.properties.bind.Bindable;
 import org.springframework.boot.context.properties.bind.Binder;
-import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.core.env.ConfigurableEnvironment;
+import tech.kronicle.service.services.ValidatorService;
 
+import javax.validation.Validation;
+import javax.validation.Validator;
+import javax.validation.ValidatorFactory;
 import java.lang.reflect.Method;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Objects;
+import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
+import static java.util.Objects.isNull;
 import static java.util.Objects.nonNull;
 
 @RequiredArgsConstructor
 @Slf4j
 public class KroniclePluginFactory extends DefaultPluginFactory {
 
-    private final ConfigurableApplicationContext applicationContext;
+    private final ConfigurableEnvironment environment;
 
-    @SneakyThrows
     @Override
     public Plugin create(PluginWrapper pluginWrapper) {
         Plugin plugin = super.create(pluginWrapper);
 
-        if (nonNull(plugin) && plugin instanceof SpringPlugin) {
-            SpringPlugin springPlugin = (SpringPlugin) plugin;
+        if (isNull(plugin)) {
+            return null;
+        }
 
-            if (springPlugin.getApplicationContext() instanceof ConfigurableApplicationContext) {
-                ConfigurableApplicationContext pluginApplicationContext = (ConfigurableApplicationContext) springPlugin.getApplicationContext();
+        Class<?> pluginClass = plugin.getClass();
 
-                Class<?> pluginClass = plugin.getClass();
-                List<Method> methods = Arrays.asList(pluginClass.getMethods());
-
-                if (methods.stream().anyMatch(it -> Objects.equals(it.getName(), "getConfigType"))) {
-                    Method getConfigTypeMethod = pluginClass.getMethod("getConfigType");
-                    Class<?> configType = (Class<?>) getConfigTypeMethod.invoke(plugin);
-
-                    if (nonNull(configType)) {
-                        Binder binder = Binder.get(applicationContext.getEnvironment());
-                        Object config = binder.bind("plugins." + pluginWrapper.getPluginId(), Bindable.of(configType)).get();
-
-                        ConfigurableListableBeanFactory pluginBeanFactory = pluginApplicationContext.getBeanFactory();
-                        pluginBeanFactory.registerSingleton("pluginConfig", config);
-                    }
-                }
-
-                pluginApplicationContext.refresh();
+        if (pluginHasConfigMethods(pluginClass)) {
+            Class<?> configType = getConfigType(pluginClass, plugin);
+            Object config = null;
+            if (nonNull(configType)) {
+                config = loadConfig(pluginWrapper, configType);
             }
+            initialize(pluginClass, plugin, config);
         }
 
         return plugin;
+    }
+
+    private boolean pluginHasConfigMethods(Class<?> pluginClass) {
+        Set<String> methodNames = getMethodNames(pluginClass);
+        return methodNames.contains("getConfigType") && methodNames.contains("initialize");
+    }
+
+    private Set<String> getMethodNames(Class<?> pluginClass) {
+        return Stream.of(pluginClass.getMethods()).map(Method::getName).collect(Collectors.toUnmodifiableSet());
+    }
+
+    private Object loadConfig(PluginWrapper pluginWrapper, Class<?> configType) {
+        Binder binder = Binder.get(environment);
+        return binder.bind("plugins." + pluginWrapper.getPluginId(), Bindable.of(configType)).get();
+    }
+
+    @SneakyThrows
+    private Class<?> getConfigType(Class<?> pluginClass, Plugin plugin) {
+        Method method = pluginClass.getMethod("getConfigType");
+        Class<?> configType = (Class<?>) method.invoke(plugin);
+        return configType;
+    }
+
+    @SneakyThrows
+    private void initialize(Class<?> pluginClass, Plugin plugin, Object config) {
+        Method method = pluginClass.getMethod("initialize", Object.class);
+        method.invoke(plugin, config);
     }
 }

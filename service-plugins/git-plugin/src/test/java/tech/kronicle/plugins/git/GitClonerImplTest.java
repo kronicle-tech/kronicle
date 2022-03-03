@@ -1,11 +1,12 @@
 package tech.kronicle.plugins.git;
 
+import com.google.common.io.RecursiveDeleteOption;
+import lombok.SneakyThrows;
 import org.eclipse.jgit.api.Git;
 import org.eclipse.jgit.api.errors.GitAPIException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
-import org.springframework.util.FileSystemUtils;
 import tech.kronicle.plugins.git.config.GitConfig;
 import tech.kronicle.plugins.git.testutils.CreateBranchInRemoteRepoOutcome;
 import tech.kronicle.plugins.git.testutils.CreateRemoteRepoOutcome;
@@ -19,6 +20,7 @@ import java.nio.file.Path;
 import java.time.Instant;
 import java.util.List;
 
+import static com.google.common.io.MoreFiles.deleteRecursively;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.catchThrowable;
 
@@ -35,7 +37,7 @@ public class GitClonerImplTest {
     }
 
     @Test
-    public void cloneOrPullRepoShouldCloneARepoWhenNotClonedBefore() throws IOException, GitAPIException {
+    public void cloneOrPullRepoShouldCloneARepoWhenNotClonedBefore() {
         // Given
         createGitCloner();
         CreateRemoteRepoOutcome createOutcome = gitRepoHelper.createRemoteRepo();
@@ -49,7 +51,7 @@ public class GitClonerImplTest {
     }
 
     @Test
-    public void cloneOrPullRepoShouldFetchARepoWhenClonedBefore() throws IOException, GitAPIException {
+    public void cloneOrPullRepoShouldFetchARepoWhenClonedBefore() {
         // Given
         createGitCloner();
         CreateRemoteRepoOutcome createOutcome = gitRepoHelper.createRemoteRepo();
@@ -73,8 +75,9 @@ public class GitClonerImplTest {
         assertThat(updateOutcome.getNewFile()).exists();
     }
 
+    @SneakyThrows
     @Test
-    public void cloneOrPullRepoShouldDeleteAllAndCloneAgainWhenGitOpenFails() throws IOException, GitAPIException {
+    public void cloneOrPullRepoShouldDeleteAllAndCloneAgainWhenGitOpenFails() {
         // Given
         createGitCloner();
         CreateRemoteRepoOutcome createOutcome = gitRepoHelper.createRemoteRepo();
@@ -100,8 +103,9 @@ public class GitClonerImplTest {
         assertThat(untrackedFile).doesNotExist();
     }
 
+    @SneakyThrows
     @Test
-    public void cloneOrPullRepoShouldDeleteAllAndCloneAgainWhenFetchFails() throws IOException, GitAPIException {
+    public void cloneOrPullRepoShouldDeleteAllAndCloneAgainWhenFetchFails() {
         // Given
         createGitCloner();
         CreateRemoteRepoOutcome createOutcome = gitRepoHelper.createRemoteRepo();
@@ -127,8 +131,9 @@ public class GitClonerImplTest {
         assertThat(untrackedFile).doesNotExist();
     }
 
+    @SneakyThrows
     @Test
-    public void cloneOrPullRepoShouldCheckoutARefWhenARefIsSpecified() throws IOException, GitAPIException {
+    public void cloneOrPullRepoShouldCheckoutARefWhenARefIsSpecified() {
         // Given
         createGitCloner();
         CreateRemoteRepoOutcome createOutcome = gitRepoHelper.createRemoteRepo();
@@ -147,7 +152,7 @@ public class GitClonerImplTest {
     }
 
     @Test
-    public void cloneOrPullRepoShouldThrowAnExceptionWhenARefIsSpecifiedThatDoesNotExist() throws IOException, GitAPIException {
+    public void cloneOrPullRepoShouldThrowAnExceptionWhenARefIsSpecifiedThatDoesNotExist() {
         // Given
         createGitCloner();
         CreateRemoteRepoOutcome createOutcome = gitRepoHelper.createRemoteRepo();
@@ -161,18 +166,19 @@ public class GitClonerImplTest {
                 + createOutcome.getRepoDir().toString() + "\"");
     }
 
-    private void createGitCloner() throws IOException {
-        GitConfig gitConfig = new GitConfig(tempDir.resolve("repos").toString(), List.of());
-        underTest = new GitClonerImpl(gitConfig);
-        underTest.initialize();
+    private void createGitCloner() {
+        GitConfig config = new GitConfig(tempDir.resolve("repos").toString(), List.of());
+        underTest = new GitClonerImpl(config);
     }
 
-    private Instant getLastModifiedTime(Path repoDir) throws IOException {
+    @SneakyThrows
+    private Instant getLastModifiedTime(Path repoDir) {
         return Files.getLastModifiedTime(repoDir).toInstant();
     }
 
-    private void causeNextGitOpenFail(Path repoDir) throws IOException {
-        FileSystemUtils.deleteRecursively(repoDir.resolve(".git"));
+    @SneakyThrows
+    private void causeNextGitOpenFail(Path repoDir) {
+        deleteRecursively(repoDir.resolve(".git"), RecursiveDeleteOption.ALLOW_INSECURE);
     }
 
     private void causeNextFetchToFail(Path repoDir) throws GitAPIException, IOException {

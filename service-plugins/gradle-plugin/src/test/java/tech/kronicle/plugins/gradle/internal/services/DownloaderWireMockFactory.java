@@ -4,7 +4,7 @@ import com.github.tomakehurst.wiremock.WireMockServer;
 import com.github.tomakehurst.wiremock.client.MappingBuilder;
 import com.github.tomakehurst.wiremock.client.ResponseDefinitionBuilder;
 import com.github.tomakehurst.wiremock.matching.UrlPattern;
-import org.springframework.http.HttpMethod;
+import org.eclipse.jetty.http.HttpMethod;
 
 import java.time.Duration;
 import java.util.function.Consumer;

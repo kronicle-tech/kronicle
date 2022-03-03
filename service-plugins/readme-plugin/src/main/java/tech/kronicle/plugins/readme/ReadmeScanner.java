@@ -2,22 +2,21 @@ package tech.kronicle.plugins.readme;
 
 import lombok.RequiredArgsConstructor;
 import org.pf4j.Extension;
-import org.springframework.stereotype.Component;
 import tech.kronicle.pluginapi.scanners.CodebaseScanner;
 import tech.kronicle.pluginapi.scanners.models.Codebase;
 import tech.kronicle.pluginapi.scanners.models.Output;
 import tech.kronicle.plugins.readme.services.ReadmeFileNameChecker;
-import tech.kronicle.pluginutils.utils.FileUtils;
+import tech.kronicle.pluginutils.FileUtils;
 import tech.kronicle.sdk.models.readme.Readme;
 
+import javax.inject.Inject;
 import java.nio.file.Path;
 import java.nio.file.attribute.BasicFileAttributes;
 import java.util.Comparator;
 import java.util.Optional;
 
 @Extension
-@Component
-@RequiredArgsConstructor
+@RequiredArgsConstructor(onConstructor = @__({@Inject}))
 public class ReadmeScanner extends CodebaseScanner {
 
     private static final int SEARCH_ONLY_ROOT_DIRECTORY = 1;

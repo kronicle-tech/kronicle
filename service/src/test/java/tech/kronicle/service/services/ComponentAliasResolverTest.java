@@ -1,7 +1,7 @@
 package tech.kronicle.service.services;
 
 import org.junit.jupiter.api.Test;
-import tech.kronicle.componentmetadata.models.ComponentMetadata;
+import tech.kronicle.sdk.models.ComponentMetadata;
 import tech.kronicle.sdk.models.Alias;
 import tech.kronicle.sdk.models.Component;
 

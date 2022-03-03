@@ -1,13 +1,10 @@
 package tech.kronicle.plugins.gitlab.client;
 
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
+import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.core.ParameterizedTypeReference;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Component;
-import org.springframework.web.reactive.function.client.WebClient;
-import org.springframework.web.reactive.function.client.WebClientResponseException;
 import tech.kronicle.pluginapi.constants.KronicleMetadataFilePaths;
 import tech.kronicle.pluginapi.finders.models.ApiRepo;
 import tech.kronicle.plugins.gitlab.config.GitLabAccessTokenConfig;
@@ -17,8 +14,15 @@ import tech.kronicle.plugins.gitlab.config.GitLabUserConfig;
 import tech.kronicle.plugins.gitlab.constants.GitLabApiHeaders;
 import tech.kronicle.plugins.gitlab.constants.GitLabApiPaths;
 import tech.kronicle.plugins.gitlab.models.api.GitLabRepo;
-import tech.kronicle.pluginutils.services.UriVariablesBuilder;
+import tech.kronicle.pluginutils.HttpStatuses;
+import tech.kronicle.pluginutils.UriVariablesBuilder;
 
+import javax.inject.Inject;
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -29,14 +33,15 @@ import java.util.stream.Stream;
 
 import static java.util.Objects.isNull;
 import static java.util.Objects.nonNull;
-import static tech.kronicle.pluginutils.utils.UriTemplateUtils.expandUriTemplate;
+import static tech.kronicle.pluginutils.HttpClientFactory.createHttpRequestBuilder;
+import static tech.kronicle.pluginutils.UriTemplateUtils.expandUriTemplate;
 
-@Component
 @Slf4j
-@RequiredArgsConstructor
+@RequiredArgsConstructor(onConstructor = @__({@Inject}))
 public class GitLabClient {
 
-  private final WebClient webClient;
+  private final HttpClient httpClient;
+  private final ObjectMapper objectMapper;
   private final GitLabConfig config;
 
   public List<ApiRepo> getRepos(String baseUrl, GitLabAccessTokenConfig accessToken) {
@@ -64,7 +69,7 @@ public class GitLabClient {
   }
 
   private List<ApiRepo> getRepos(GitLabAccessTokenConfig accessToken, String baseUrl, String uri) {
-    return getAllPagedResources(accessToken, baseUrl + uri, new ParameterizedTypeReference<List<GitLabRepo>>() {})
+    return getAllPagedResources(accessToken, baseUrl + uri, new TypeReference<List<GitLabRepo>>() {})
             .map(addHasComponentMetadataFile(accessToken, baseUrl))
             .collect(Collectors.toList());
   }
@@ -72,7 +77,7 @@ public class GitLabClient {
   private <T> Stream<T> getAllPagedResources(
           GitLabAccessTokenConfig accessToken,
           String uri,
-          ParameterizedTypeReference<List<T>> bodyTypeReference
+          TypeReference<List<T>> bodyTypeReference
   ) {
     return Stream.iterate(
             getPagedResource(accessToken, uri, 1, bodyTypeReference),
@@ -110,40 +115,46 @@ public class GitLabClient {
     });
   }
 
+  @SneakyThrows
   private <T> PagedResource<T> getPagedResource(
           GitLabAccessTokenConfig accessToken,
           String uri,
           Integer page,
-          ParameterizedTypeReference<List<T>> bodyTypeReference
+          TypeReference<List<T>> bodyTypeReference
   ) {
     if (isNull(page)) {
       return null;
     }
     String uriWithQueryParams = uri + "?page=" + page + "&per_page=" + config.getProjectPageSize();
     logWebCall(uriWithQueryParams);
-    ResponseEntity<List<T>> responseEntity = makeRequest(
-            accessToken, webClient.get().uri(uriWithQueryParams)
-    )
-            .toEntity(bodyTypeReference)
-            .block(config.getTimeout());
-    return new PagedResource<>(responseEntity);
+    HttpRequest.Builder requestBuilder = createHttpRequestBuilder(config.getTimeout())
+            .uri(URI.create(uriWithQueryParams));
+    configureRequest(requestBuilder, accessToken);
+    HttpResponse<String> response = httpClient.send(requestBuilder.build(), HttpResponse.BodyHandlers.ofString(StandardCharsets.UTF_8));
+    checkResponseStatus(response, uriWithQueryParams);
+    return new PagedResource<>(response, bodyTypeReference);
   }
 
+  private void checkResponseStatus(HttpResponse<String> response, String uri) {
+    if (response.statusCode() != HttpStatuses.OK) {
+      GitLabClientException exception = new GitLabClientException(
+              uri,
+              response.statusCode(),
+              response.body()
+      );
+      log.warn(exception.getMessage());
+      throw exception;
+    }
+  }
+
+  @SneakyThrows
   private boolean doesResourceExist(GitLabAccessTokenConfig accessToken, String uri) {
     logWebCall(uri);
-    boolean exists;
-    try {
-      makeRequest(accessToken, webClient.get().uri(uri))
-              .toBodilessEntity()
-              .block(config.getTimeout());
-      exists = true;
-    } catch (WebClientResponseException ex) {
-      if (ex.getStatusCode() == HttpStatus.NOT_FOUND) {
-        exists = false;
-      } else {
-        throw ex;
-      }
-    }
+    HttpRequest.Builder requestBuilder = createHttpRequestBuilder(config.getTimeout())
+            .uri(URI.create(uri));
+    configureRequest(requestBuilder, accessToken);
+    HttpResponse<Void> response = httpClient.send(requestBuilder.build(), HttpResponse.BodyHandlers.discarding());
+    boolean exists = response.statusCode() == HttpStatuses.OK;
     log.info("Resource exists: {}", exists);
     return exists;
   }
@@ -152,36 +163,33 @@ public class GitLabClient {
     log.info("Calling {}", uri);
   }
 
-  private WebClient.ResponseSpec makeRequest(GitLabAccessTokenConfig accessToken, WebClient.RequestHeadersSpec<?> requestHeadersSpec) {
+  private void configureRequest(
+          HttpRequest.Builder requestBuilder,
+          GitLabAccessTokenConfig accessToken
+  ) {
     if (nonNull(accessToken)) {
-      requestHeadersSpec
-              .headers(headers -> headers.add(GitLabApiHeaders.PRIVATE_TOKEN, accessToken.getValue()));
+      requestBuilder.header(GitLabApiHeaders.PRIVATE_TOKEN, accessToken.getValue());
     }
-    return requestHeadersSpec.retrieve();
   }
 
-  private static class PagedResource<T> {
+  private class PagedResource<T> {
 
     private final List<T> items;
     private final Integer nextPage;
 
-    public PagedResource(ResponseEntity<List<T>> responseEntity) {
-      items = responseEntity.getBody();
-      nextPage = getNextPage(responseEntity);
+    @SneakyThrows
+    public PagedResource(HttpResponse<String> response, TypeReference<List<T>> bodyTypeReference) {
+      items = objectMapper.readValue(response.body(), bodyTypeReference);
+      nextPage = getNextPage(response);
     }
 
-    private Integer getNextPage(ResponseEntity<List<T>> responseEntity) {
-      return getOptionalNextPage(responseEntity).map(Integer::parseInt).orElse(null);
+    private Integer getNextPage(HttpResponse<String> response) {
+      return getOptionalNextPage(response).map(Integer::parseInt).orElse(null);
     }
 
-    private Optional<String> getOptionalNextPage(ResponseEntity<List<T>> responseEntity) {
-      return Optional.ofNullable(responseEntity.getHeaders()
-              .getFirst(GitLabApiHeaders.X_NEXT_PAGE))
+    private Optional<String> getOptionalNextPage(HttpResponse<String> response) {
+      return response.headers().firstValue(GitLabApiHeaders.X_NEXT_PAGE)
               .filter(value -> !value.isEmpty());
-    }
-
-    public boolean isNotEmpty() {
-      return !items.isEmpty();
     }
   }
 }

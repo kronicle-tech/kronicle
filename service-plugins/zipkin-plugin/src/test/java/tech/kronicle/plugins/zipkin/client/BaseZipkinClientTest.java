@@ -5,9 +5,8 @@ import io.github.resilience4j.retry.RetryConfig;
 import io.github.resilience4j.retry.RetryRegistry;
 import lombok.RequiredArgsConstructor;
 import lombok.Value;
-import org.springframework.web.reactive.function.client.WebClient;
 import tech.kronicle.plugins.zipkin.config.ZipkinConfig;
-import tech.kronicle.plugintestutils.testutils.LogCaptor;
+import tech.kronicle.plugintestutils.LogCaptor;
 
 import java.time.Clock;
 import java.time.Duration;
@@ -18,6 +17,8 @@ import java.util.function.Function;
 import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static tech.kronicle.pluginutils.HttpClientFactory.createHttpClient;
+import static tech.kronicle.pluginutils.JsonMapperFactory.createJsonMapper;
 
 @RequiredArgsConstructor
 public class BaseZipkinClientTest {
@@ -40,7 +41,8 @@ public class BaseZipkinClientTest {
                         cookieValue,
                         1000
                 ),
-                webClient(),
+                createHttpClient(),
+                createJsonMapper(),
                 clock(),
                 retryRegistry(retryWaitDuration)
         );
@@ -60,10 +62,6 @@ public class BaseZipkinClientTest {
 
     private Clock clock() {
         return Clock.fixed(LocalDateTime.of(2021, 1, 1, 0, 0).toInstant(ZoneOffset.UTC), ZoneOffset.UTC);
-    }
-
-    private WebClient webClient() {
-        return WebClient.builder().build();
     }
 
     protected static Stream<ZipkinClientMethod> provideZipkinClientMethods(int port) {

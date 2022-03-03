@@ -2,25 +2,24 @@ package tech.kronicle.plugins.gradle.internal.services;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.stereotype.Component;
-import tech.kronicle.common.utils.StringEscapeUtils;
-import tech.kronicle.pluginutils.utils.StringUtils;
 
+import javax.inject.Inject;
 import java.util.Map;
 
 import static java.util.Objects.nonNull;
 import static java.util.Objects.requireNonNull;
+import static tech.kronicle.common.StringEscapeUtils.escapeString;
+import static tech.kronicle.pluginutils.StringUtils.requireNonEmpty;
 
-@Component
-@RequiredArgsConstructor
+@RequiredArgsConstructor(onConstructor = @__({@Inject}))
 @Slf4j
 public class PropertyExpander {
 
     private final PropertyRetriever propertyRetriever;
 
     public String expandProperties(String value, String name, Map<String, String> properties, boolean bracesRequired) {
-        StringUtils.requireNonEmpty(value, "value");
-        StringUtils.requireNonEmpty(name, "name");
+        requireNonEmpty(value, "value");
+        requireNonEmpty(name, "name");
         requireNonNull(properties, "properties");
         int startIndex = value.indexOf("$");
 
@@ -36,7 +35,7 @@ public class PropertyExpander {
             newValue.append(value, endIndex, startIndex);
 
             if (startIndex + 1 == length) {
-                throw new IllegalArgumentException(name + " with value \"" + StringEscapeUtils.escapeString(value)
+                throw new IllegalArgumentException(name + " with value \"" + escapeString(value)
                         + "\" contains an empty \"$\" property reference");
             }
 
@@ -48,7 +47,7 @@ public class PropertyExpander {
                     endIndex = value.indexOf("}", startIndex + 2);
 
                     if (endIndex == -1) {
-                        throw new IllegalArgumentException(name + " with value \"" + StringEscapeUtils.escapeString(value)
+                        throw new IllegalArgumentException(name + " with value \"" + escapeString(value)
                                 + "\" contains an \"${\" property reference without a corresponding \"}\"");
                     }
 
@@ -57,7 +56,7 @@ public class PropertyExpander {
                     endIndex = startIndex + 1;
 
                     if (!isPropertyNameCharacter(value.charAt(endIndex))) {
-                        throw new IllegalArgumentException(name + " with value \"" + StringEscapeUtils.escapeString(value)
+                        throw new IllegalArgumentException(name + " with value \"" + escapeString(value)
                                 + "\" contains an \"$\" this is not followed by an alphanumeric character");
                     }
 
@@ -68,17 +67,17 @@ public class PropertyExpander {
 
                 String propertyName = value.substring(getPropertyNameStartIndex(startIndex, hasBrace), getPropertyNameEndIndex(endIndex, hasBrace));
                 if (log.isDebugEnabled()) {
-                    log.debug("Property name '{}'", StringEscapeUtils.escapeString(propertyName));
+                    log.debug("Property name '{}'", escapeString(propertyName));
                 }
                 String propertyValue = propertyRetriever.getPropertyValue(propertyName, properties);
                 if (log.isDebugEnabled()) {
-                    log.debug("Property value '{}'", StringEscapeUtils.escapeString(propertyValue));
+                    log.debug("Property value '{}'", escapeString(propertyValue));
                 }
 
                 if (nonNull(propertyValue)) {
                     if (propertyValue.contains("$")) {
                         if (log.isDebugEnabled()) {
-                            log.debug("Expanding properties in property value '{}'", StringEscapeUtils.escapeString(propertyValue));
+                            log.debug("Expanding properties in property value '{}'", escapeString(propertyValue));
                         }
                         propertyValue = expandProperties(propertyValue, name, properties, bracesRequired);
                     }

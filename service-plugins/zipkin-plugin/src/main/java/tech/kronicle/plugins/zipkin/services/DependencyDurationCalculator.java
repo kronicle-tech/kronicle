@@ -1,7 +1,6 @@
 package tech.kronicle.plugins.zipkin.services;
 
 import org.apache.commons.math3.stat.descriptive.rank.Percentile;
-import org.springframework.stereotype.Service;
 import tech.kronicle.plugins.zipkin.models.ObjectWithDurations;
 import tech.kronicle.sdk.models.SummaryComponentDependencyDuration;
 
@@ -10,7 +9,6 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
-@Service
 public class DependencyDurationCalculator {
 
     public <D extends ObjectWithDurations> SummaryComponentDependencyDuration calculateDependencyDuration(List<D> dependencies) {

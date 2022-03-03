@@ -1,7 +1,6 @@
 package tech.kronicle.plugins.zipkin.services;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
 import tech.kronicle.plugins.zipkin.models.CollatorComponentDependency;
 import tech.kronicle.plugins.zipkin.models.NodesAndDependencies;
 import tech.kronicle.plugins.zipkin.models.ObjectWithTimestamps;
@@ -11,6 +10,7 @@ import tech.kronicle.sdk.models.SummaryComponentDependency;
 import tech.kronicle.sdk.models.SummarySubComponentDependencies;
 import tech.kronicle.sdk.models.SummarySubComponentDependencyNode;
 
+import javax.inject.Inject;
 import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
@@ -23,8 +23,7 @@ import java.util.stream.Collectors;
 
 import static java.util.Objects.isNull;
 
-@Service
-@RequiredArgsConstructor
+@RequiredArgsConstructor(onConstructor = @__({@Inject}))
 public class DependencyHelper {
 
     private final DependencyDurationCalculator dependencyDurationCalculator;

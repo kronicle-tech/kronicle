@@ -1,13 +1,11 @@
 package tech.kronicle.plugins.bitbucketserver.client;
 
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
+import lombok.SneakyThrows;
 import lombok.Value;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.core.ParameterizedTypeReference;
-import org.springframework.http.HttpStatus;
-import org.springframework.stereotype.Component;
-import org.springframework.web.reactive.function.client.ClientResponse;
-import org.springframework.web.reactive.function.client.WebClient;
 import tech.kronicle.pluginapi.finders.models.ApiRepo;
 import tech.kronicle.plugins.bitbucketserver.config.BitbucketServerConfig;
 import tech.kronicle.plugins.bitbucketserver.config.BitbucketServerHostConfig;
@@ -16,8 +14,15 @@ import tech.kronicle.plugins.bitbucketserver.models.api.BrowseResponse;
 import tech.kronicle.plugins.bitbucketserver.models.api.Link;
 import tech.kronicle.plugins.bitbucketserver.models.api.PageResponse;
 import tech.kronicle.plugins.bitbucketserver.models.api.Repo;
-import tech.kronicle.pluginutils.services.UriVariablesBuilder;
+import tech.kronicle.pluginutils.HttpStatuses;
+import tech.kronicle.pluginutils.UriVariablesBuilder;
 
+import javax.inject.Inject;
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Comparator;
@@ -28,23 +33,25 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 
 import static java.util.Objects.isNull;
-import static tech.kronicle.pluginutils.utils.UriTemplateUtils.expandUriTemplate;
+import static tech.kronicle.pluginutils.BasicAuthUtils.basicAuth;
+import static tech.kronicle.pluginutils.HttpClientFactory.createHttpRequestBuilder;
+import static tech.kronicle.pluginutils.UriTemplateUtils.expandUriTemplate;
 
 /**
  * See https://docs.atlassian.com/bitbucket-server/rest/7.11.1/bitbucket-rest.html
  * for a description of the API endpoints for Bitbucket Server.  Bitbucket Service
  * is a distinct product from Bitbucket Cloud.
  */
-@Component
-@RequiredArgsConstructor
+@RequiredArgsConstructor(onConstructor = @__({@Inject}))
 @Slf4j
 public class BitbucketServerClient {
 
-    private static final List<HttpStatus> GET_REPOS_EXPECTED_STATUS_CODES = List.of(HttpStatus.OK);
-    private static final List<HttpStatus> BROWSE_EXPECTED_STATUS_CODES = List.of(HttpStatus.OK, HttpStatus.NOT_FOUND);
+    private static final List<Integer> GET_REPOS_EXPECTED_STATUS_CODES = List.of(HttpStatuses.OK);
+    private static final List<Integer> BROWSE_EXPECTED_STATUS_CODES = List.of(HttpStatuses.OK, HttpStatuses.NOT_FOUND);
     private static final Comparator<RepoAndApiRepo> REPO_AND_API_REPO_COMPARATOR = Comparator.comparing(repoAndApiRepo -> repoAndApiRepo.getApiRepo().getUrl());
 
-    private final WebClient webClient;
+    private final HttpClient httpClient;
+    private final ObjectMapper objectMapper;
     private final BitbucketServerConfig config;
 
     public List<ApiRepo> getNormalRepos() {
@@ -81,21 +88,22 @@ public class BitbucketServerClient {
                 .collect(Collectors.toList());
     }
 
+    @SneakyThrows
     private PageResponse<Repo> getReposPage(BitbucketServerHostConfig host, Optional<Integer> start) {
-        String uriTemplate = host.getBaseUrl() + BitbucketServerApiPaths.REPOS;
-        UriVariablesBuilder uriVariablesBuilder = UriVariablesBuilder.builder();
-        if (start.isPresent()) {
-            uriTemplate += "?start={start}";
-            uriVariablesBuilder.addUriVariable("start", start.get());
-        }
-        Map<String, String> uriVariables = uriVariablesBuilder.build();
-
-        logWebCall(uriTemplate, uriVariables);
-
-        ClientResponse clientResponse = makeRequest(host, webClient.get().uri(uriTemplate, uriVariables));
-        checkResponseStatus(clientResponse, GET_REPOS_EXPECTED_STATUS_CODES, uriTemplate, uriVariables);
-        return clientResponse.bodyToMono(new ParameterizedTypeReference<PageResponse<Repo>>() { })
-                .block(config.getTimeout());
+        StringBuilder uriBuilder = new StringBuilder()
+                .append(host.getBaseUrl())
+                .append(BitbucketServerApiPaths.REPOS);
+        start.ifPresent(startValue -> uriBuilder.append("?start=")
+                .append(startValue));
+        String uri = uriBuilder.toString();
+        logWebCall(uri);
+        HttpRequest request = createHttpRequestBuilder(config.getTimeout())
+                .uri(URI.create(uri))
+                .header("Authorization", basicAuth(host.getUsername(), host.getPassword()))
+                .build();
+        HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString(StandardCharsets.UTF_8));
+        checkResponseStatus(response, GET_REPOS_EXPECTED_STATUS_CODES, uri);
+        return objectMapper.readValue(response.body(), new TypeReference<>() { });
     }
 
     private List<Repo> getNormalReposFromPage(PageResponse<Repo> page) {
@@ -128,46 +136,46 @@ public class BitbucketServerClient {
         return repoAndApiRepo -> repoAndApiRepo.getApiRepo().withHasComponentMetadataFile(hasComponentMetadataFile(host, repoAndApiRepo.getRepo()));
     }
 
+    @SneakyThrows
     private boolean hasComponentMetadataFile(BitbucketServerHostConfig host, Repo repo) {
         String uriTemplate = host.getBaseUrl() + BitbucketServerApiPaths.BROWSE + "/component-metadata.yaml?type=true";
         Map<String, String> uriVariables = UriVariablesBuilder.builder()
                 .addUriVariable("projectKey", repo.getProject().getKey())
                 .addUriVariable("repositorySlug", repo.getSlug())
                 .build();
+        String uri = expandUriTemplate(uriTemplate, uriVariables);
 
-        logWebCall(uriTemplate, uriVariables);
+        logWebCall(uri);
 
-        ClientResponse clientResponse = makeRequest(host, webClient.get().uri(uriTemplate, uriVariables));
-        checkResponseStatus(clientResponse, BROWSE_EXPECTED_STATUS_CODES, uriTemplate, uriVariables);
-        BrowseResponse browseResponse = clientResponse.bodyToMono(BrowseResponse.class)
-                .block(config.getTimeout());
+        HttpRequest request = createHttpRequestBuilder(config.getTimeout())
+                .uri(URI.create(uri))
+                .header("Authorization", basicAuth(host.getUsername(), host.getPassword()))
+                .build();
+        HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString(StandardCharsets.UTF_8));
+
+        checkResponseStatus(response, BROWSE_EXPECTED_STATUS_CODES, uri);
+        BrowseResponse browseResponse = objectMapper.readValue(response.body(), BrowseResponse.class);
         return Optional.ofNullable(browseResponse)
                 .map(BrowseResponse::getType)
                 .map(type -> type.equals("FILE"))
                 .orElse(false);
     }
 
-    private ClientResponse makeRequest(BitbucketServerHostConfig host, WebClient.RequestHeadersSpec<?> requestHeadersSpec) {
-        return requestHeadersSpec
-                .headers(headers -> headers.setBasicAuth(host.getUsername(), host.getPassword()))
-                .exchange()
-                .block(config.getTimeout());
-    }
-
-    private void checkResponseStatus(ClientResponse clientResponse, List<HttpStatus> expectedStatusCodes, String uriTemplate, Map<String, String> uriVariables) {
-        if (!expectedStatusCodes.contains(clientResponse.statusCode())) {
-            String responseBody = clientResponse.bodyToMono(String.class).block(config.getTimeout());
-
-            BitbucketServerClientException exception = new BitbucketServerClientException(expandUriTemplate(uriTemplate, uriVariables),
-                    clientResponse.rawStatusCode(), responseBody);
+    private void checkResponseStatus(HttpResponse<String> response, List<Integer> expectedStatusCodes, String uri) {
+        if (!expectedStatusCodes.contains(response.statusCode())) {
+            BitbucketServerClientException exception = new BitbucketServerClientException(
+                    uri,
+                    response.statusCode(),
+                    response.body()
+            );
             log.warn(exception.getMessage());
             throw exception;
         }
     }
 
-    private void logWebCall(String uriTemplate, Map<String, String> uriVariables) {
+    private void logWebCall(String uri) {
         if (log.isInfoEnabled()) {
-            log.info("Calling {}", expandUriTemplate(uriTemplate, uriVariables));
+            log.info("Calling {}", uri);
         }
     }
 

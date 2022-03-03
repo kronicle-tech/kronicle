@@ -1,24 +1,18 @@
 package tech.kronicle.plugins.gradle;
 
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit.jupiter.SpringExtension;
 import tech.kronicle.pluginapi.scanners.models.Codebase;
 import tech.kronicle.pluginapi.scanners.models.Output;
 import tech.kronicle.sdk.models.ScannerError;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static tech.kronicle.plugins.gradle.TestDependencyFactory.createGradleScanner;
 
-@ExtendWith(SpringExtension.class)
-@SpringBootTest(properties = "test-name=GradleScannerErrorTest", classes = GradleScannerTestConfiguration.class)
 public class GradleScannerErrorTest extends BaseGradleScannerTest {
 
     private static final String SCANNER_ID = "gradle";
 
-    @Autowired
-    private GradleScanner underTest;
+    private final GradleScanner underTest = createGradleScanner(this.getClass());
 
     @Test
     public void shouldScanBuildscriptMissingRepositoryBuild() {

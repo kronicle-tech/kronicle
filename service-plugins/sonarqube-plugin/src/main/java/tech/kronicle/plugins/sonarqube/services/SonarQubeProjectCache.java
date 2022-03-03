@@ -1,6 +1,5 @@
 package tech.kronicle.plugins.sonarqube.services;
 
-import org.springframework.stereotype.Service;
 import tech.kronicle.sdk.models.sonarqube.SonarQubeProject;
 
 import java.nio.file.Path;
@@ -11,7 +10,6 @@ import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-@Service
 public class SonarQubeProjectCache {
 
     private final Map<Path, List<SonarQubeProject>> innerCache = new HashMap<>();

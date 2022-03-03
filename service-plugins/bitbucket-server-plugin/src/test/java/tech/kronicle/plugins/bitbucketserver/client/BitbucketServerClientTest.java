@@ -1,35 +1,30 @@
 package tech.kronicle.plugins.bitbucketserver.client;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.tomakehurst.wiremock.WireMockServer;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit.jupiter.SpringExtension;
-import org.springframework.web.reactive.function.client.WebClient;
 import tech.kronicle.pluginapi.finders.models.ApiRepo;
 import tech.kronicle.plugins.bitbucketserver.config.BitbucketServerConfig;
 import tech.kronicle.plugins.bitbucketserver.config.BitbucketServerHostConfig;
 
+import java.net.http.HttpClient;
 import java.time.Duration;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.catchThrowable;
+import static tech.kronicle.pluginutils.HttpClientFactory.createHttpClient;
+import static tech.kronicle.pluginutils.JsonMapperFactory.createJsonMapper;
 
-@ExtendWith(SpringExtension.class)
-@SpringBootTest
-@ContextConfiguration(classes = { BitbucketServerClientTestConfiguration.class})
 public class BitbucketServerClientTest {
 
     private static final Duration TEST_DURATION = Duration.ofSeconds(30);
 
     private BitbucketServerClient underTest;
-    @Autowired
-    private WebClient webClient;
+    private final HttpClient httpClient = createHttpClient();
+    private final ObjectMapper objectMapper = createJsonMapper();
     private WireMockServer wireMockServer;
 
     @BeforeEach
@@ -46,7 +41,7 @@ public class BitbucketServerClientTest {
     public void getNormalReposShouldReturnAnEmptyListWhenHostsListInConfigIsNull() {
         // Given
         BitbucketServerConfig config = new BitbucketServerConfig(null, TEST_DURATION);
-        underTest = new BitbucketServerClient(webClient, config);
+        underTest = new BitbucketServerClient(httpClient, objectMapper, config);
 
         // When
         List<ApiRepo> returnValue = underTest.getNormalRepos();
@@ -59,7 +54,7 @@ public class BitbucketServerClientTest {
     public void getNormalReposShouldReturnAnEmptyListWhenHostsListInConfigIsEmpty() {
         // Given
         BitbucketServerConfig config = new BitbucketServerConfig(List.of(), TEST_DURATION);
-        underTest = new BitbucketServerClient(webClient, config);
+        underTest = new BitbucketServerClient(httpClient, objectMapper, config);
 
         // When
         List<ApiRepo> returnValue = underTest.getNormalRepos();
@@ -76,7 +71,7 @@ public class BitbucketServerClientTest {
                     new BitbucketServerHostConfig(createBaseUrl("/server-1"), "test-username-1", "test-password-1"),
                     new BitbucketServerHostConfig(createBaseUrl("/server-2"), "test-username-2", "test-password-2")),
                 TEST_DURATION);
-        underTest = new BitbucketServerClient(webClient, config);
+        underTest = new BitbucketServerClient(httpClient, objectMapper, config);
 
         // When
         List<ApiRepo> returnValue = underTest.getNormalRepos();
@@ -100,7 +95,7 @@ public class BitbucketServerClientTest {
         BitbucketServerConfig config = new BitbucketServerConfig(
                 List.of(new BitbucketServerHostConfig(createBaseUrl("/server-does-not-exist"), "test-username-1", "test-password-1")),
                 TEST_DURATION);
-        underTest = new BitbucketServerClient(webClient, config);
+        underTest = new BitbucketServerClient(httpClient, objectMapper, config);
 
         // When
         Throwable thrown = catchThrowable(() -> underTest.getNormalRepos());

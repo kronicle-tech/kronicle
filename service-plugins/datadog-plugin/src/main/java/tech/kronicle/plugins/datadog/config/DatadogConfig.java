@@ -2,15 +2,18 @@ package tech.kronicle.plugins.datadog.config;
 
 import lombok.Value;
 import lombok.experimental.NonFinal;
-import org.springframework.validation.annotation.Validated;
 import tech.kronicle.plugins.datadog.dependencies.config.DatadogDependenciesConfig;
 
-@Validated
+import javax.validation.constraints.NotNull;
+import java.time.Duration;
+
 @Value
 @NonFinal
 public class DatadogConfig {
 
     String baseUrl;
+    @NotNull
+    Duration timeout;
     String apiKey;
     String applicationKey;
     DatadogDependenciesConfig dependencies;

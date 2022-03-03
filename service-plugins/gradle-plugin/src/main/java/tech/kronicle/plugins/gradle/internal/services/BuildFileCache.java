@@ -3,18 +3,16 @@ package tech.kronicle.plugins.gradle.internal.services;
 import com.google.common.hash.HashFunction;
 import com.google.common.hash.Hashing;
 import org.codehaus.groovy.ast.ASTNode;
-import org.springframework.stereotype.Component;
 
 import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@Component
 public class BuildFileCache {
 
     private static final HashFunction HASH_FUNCTION = Hashing.md5();
-    private Map<String, List<ASTNode>> cache = new HashMap<>();
+    private final Map<String, List<ASTNode>> cache = new HashMap<>();
 
     public List<ASTNode> getBuildFileNodes(String content) {
         return cache.get(getHashCodeForBuildFileContent(content));

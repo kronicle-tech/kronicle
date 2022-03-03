@@ -1,6 +1,6 @@
 package tech.kronicle.service.tests;
 
-import tech.kronicle.common.utils.CaseUtils;
+import tech.kronicle.common.CaseUtils;
 import tech.kronicle.sdk.models.ObjectWithReference;
 import tech.kronicle.sdk.models.Priority;
 import tech.kronicle.sdk.models.TestOutcome;

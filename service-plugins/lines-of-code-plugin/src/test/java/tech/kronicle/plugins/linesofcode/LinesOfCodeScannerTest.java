@@ -7,8 +7,6 @@ import tech.kronicle.pluginapi.scanners.models.Codebase;
 import tech.kronicle.pluginapi.scanners.models.Output;
 import tech.kronicle.plugins.linesofcode.services.LinesOfCodeCounter;
 import tech.kronicle.plugintestutils.scanners.BaseCodebaseScannerTest;
-import tech.kronicle.pluginutils.utils.AntStyleIgnoreFileLoader;
-import tech.kronicle.pluginutils.utils.FileUtils;
 import tech.kronicle.sdk.models.linesofcode.FileExtensionCount;
 import tech.kronicle.sdk.models.linesofcode.LinesOfCode;
 
@@ -16,6 +14,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static tech.kronicle.pluginutils.FileUtilsFactory.createFileUtils;
 
 public class LinesOfCodeScannerTest extends BaseCodebaseScannerTest {
 
@@ -23,7 +22,7 @@ public class LinesOfCodeScannerTest extends BaseCodebaseScannerTest {
 
     @BeforeEach
     public void beforeEach() {
-        underTest = new LinesOfCodeScanner(new FileUtils(new AntStyleIgnoreFileLoader()), new LinesOfCodeCounter());
+        underTest = new LinesOfCodeScanner(createFileUtils(), new LinesOfCodeCounter());
     }
 
     @Test

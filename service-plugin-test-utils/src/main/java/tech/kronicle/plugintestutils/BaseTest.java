@@ -1,7 +1,5 @@
 package tech.kronicle.plugintestutils;
 
-import tech.kronicle.plugintestutils.testutils.TestFileHelper;
-
 import java.nio.file.Path;
 
 public class BaseTest {

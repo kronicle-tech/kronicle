@@ -7,11 +7,10 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.web.reactive.function.client.WebClient;
-import tech.kronicle.componentmetadata.models.ComponentMetadata;
 import tech.kronicle.pluginapi.scanners.models.Output;
 import tech.kronicle.plugins.zipkin.client.ZipkinClient;
 import tech.kronicle.plugins.zipkin.config.ZipkinConfig;
+import tech.kronicle.plugins.zipkin.guice.GuiceModule;
 import tech.kronicle.plugins.zipkin.services.CallGraphCollator;
 import tech.kronicle.plugins.zipkin.services.ComponentDependencyCollator;
 import tech.kronicle.plugins.zipkin.services.DependencyDurationCalculator;
@@ -20,10 +19,9 @@ import tech.kronicle.plugins.zipkin.services.GenericDependencyCollator;
 import tech.kronicle.plugins.zipkin.services.SubComponentDependencyCollator;
 import tech.kronicle.plugins.zipkin.services.SubComponentDependencyTagFilter;
 import tech.kronicle.plugins.zipkin.services.ZipkinService;
-import tech.kronicle.plugins.zipkin.spring.SpringConfiguration;
 import tech.kronicle.plugintestutils.scanners.BaseScannerTest;
-import tech.kronicle.pluginutils.services.MapComparator;
 import tech.kronicle.sdk.models.Component;
+import tech.kronicle.sdk.models.ComponentMetadata;
 import tech.kronicle.sdk.models.Dependency;
 import tech.kronicle.sdk.models.Summary;
 import tech.kronicle.sdk.models.SummaryCallGraph;
@@ -37,7 +35,6 @@ import tech.kronicle.sdk.models.zipkin.ZipkinDependency;
 import java.time.Clock;
 import java.time.Duration;
 import java.time.LocalDateTime;
-import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -46,6 +43,8 @@ import static java.util.Objects.nonNull;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verifyNoInteractions;
+import static tech.kronicle.pluginutils.HttpClientFactory.createHttpClient;
+import static tech.kronicle.pluginutils.JsonMapperFactory.createJsonMapper;
 
 @ExtendWith(MockitoExtension.class)
 public class ZipkinScannerTest extends BaseScannerTest {
@@ -371,23 +370,31 @@ public class ZipkinScannerTest extends BaseScannerTest {
         String zipkinBaseUrl = Optional.ofNullable(wireMockServer).map(WireMockServer::baseUrl).orElse("http://localhost:" + PORT);
         ZipkinConfig config = new ZipkinConfig(zipkinEnabled, zipkinBaseUrl, Duration.ofMinutes(2), null, null, 100);
         GenericDependencyCollator genericDependencyCollator = new GenericDependencyCollator();
-        SpringConfiguration configuration = new SpringConfiguration();
+        GuiceModule configuration = new GuiceModule();
         DependencyDurationCalculator dependencyDurationCalculator = new DependencyDurationCalculator();
         DependencyHelper dependencyHelper = new DependencyHelper(dependencyDurationCalculator, new SubComponentDependencyTagFilter());
-        Comparator<SummarySubComponentDependencyNode> subComponentNodeComparator = configuration.subComponentNodeComparator(new MapComparator<>());
         zipkinService = createZipkinService(config);
         underTest = new ZipkinScanner(
                 config,
                 zipkinService,
-                new ComponentDependencyCollator(genericDependencyCollator, configuration.componentNodeComparator(), dependencyHelper),
-                new SubComponentDependencyCollator(genericDependencyCollator, subComponentNodeComparator, dependencyHelper),
-                new CallGraphCollator(genericDependencyCollator, subComponentNodeComparator, dependencyHelper, dependencyDurationCalculator)
+                new ComponentDependencyCollator(genericDependencyCollator, dependencyHelper),
+                new SubComponentDependencyCollator(genericDependencyCollator, dependencyHelper),
+                new CallGraphCollator(genericDependencyCollator, dependencyHelper, dependencyDurationCalculator)
         );
     }
 
     private ZipkinService createZipkinService(ZipkinConfig config) {
         return config.getEnabled() ?
-                new ZipkinService(new ZipkinClient(config, WebClient.create(), Clock.systemUTC(), retryRegistry), config) :
+                new ZipkinService(
+                        new ZipkinClient(
+                            config,
+                            createHttpClient(),
+                            createJsonMapper(),
+                            Clock.systemUTC(),
+                            retryRegistry
+                        ),
+                        config
+                ) :
                 mock(ZipkinService.class);
     }
 

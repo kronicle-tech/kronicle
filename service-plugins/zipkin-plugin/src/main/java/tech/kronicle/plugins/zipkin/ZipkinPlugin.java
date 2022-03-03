@@ -1,29 +1,26 @@
 package tech.kronicle.plugins.zipkin;
 
+import com.google.inject.Module;
 import org.pf4j.PluginWrapper;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import tech.kronicle.pluginapi.KroniclePlugin;
+import tech.kronicle.pluginguice.KronicleGuicePlugin;
 import tech.kronicle.plugins.zipkin.config.ZipkinConfig;
-import tech.kronicle.plugins.zipkin.spring.SpringConfiguration;
+import tech.kronicle.plugins.zipkin.guice.GuiceModule;
 
-public class ZipkinPlugin extends KroniclePlugin {
+import java.util.List;
+
+public class ZipkinPlugin extends KronicleGuicePlugin {
 
     public ZipkinPlugin(PluginWrapper wrapper) {
         super(wrapper);
     }
 
     @Override
-    public Class<?> getConfigType() {
-        return ZipkinConfig.class;
+    protected List<Module> getGuiceModules() {
+        return List.of(new GuiceModule());
     }
 
     @Override
-    protected ApplicationContext createApplicationContext() {
-        AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext();
-        applicationContext.setClassLoader(getWrapper().getPluginClassLoader());
-        applicationContext.register(SpringConfiguration.class);
-        return applicationContext;
+    public Class<?> getConfigType() {
+        return ZipkinConfig.class;
     }
-
 }

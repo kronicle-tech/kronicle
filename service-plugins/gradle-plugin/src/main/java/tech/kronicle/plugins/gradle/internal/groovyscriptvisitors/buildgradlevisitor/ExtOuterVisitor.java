@@ -5,7 +5,6 @@ import org.codehaus.groovy.ast.expr.Expression;
 import org.codehaus.groovy.ast.expr.MethodCallExpression;
 import org.codehaus.groovy.ast.expr.VariableExpression;
 import org.slf4j.Logger;
-import org.springframework.stereotype.Component;
 import tech.kronicle.plugins.gradle.internal.groovyscriptvisitors.BaseVisitor;
 import tech.kronicle.plugins.gradle.internal.groovyscriptvisitors.ExpressionVisitOutcome;
 import tech.kronicle.plugins.gradle.internal.services.BuildFileLoader;
@@ -13,14 +12,15 @@ import tech.kronicle.plugins.gradle.internal.services.BuildFileProcessor;
 import tech.kronicle.plugins.gradle.internal.services.ExpressionEvaluator;
 import tech.kronicle.plugins.gradle.internal.services.SoftwareRepositoryFactory;
 
+import javax.inject.Inject;
 import java.util.Objects;
 
-@Component
 @Slf4j
 public class ExtOuterVisitor extends BaseVisitor {
 
     private final ExtVisitor extVisitor;
 
+    @Inject
     public ExtOuterVisitor(BuildFileLoader buildFileLoader, BuildFileProcessor buildFileProcessor, ExpressionEvaluator expressionEvaluator,
                            ExtVisitor extVisitor, SoftwareRepositoryFactory softwareRepositoryFactory) {
         super(buildFileLoader, buildFileProcessor, expressionEvaluator, softwareRepositoryFactory);

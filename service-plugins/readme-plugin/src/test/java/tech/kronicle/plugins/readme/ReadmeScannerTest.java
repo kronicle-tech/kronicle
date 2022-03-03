@@ -6,11 +6,10 @@ import tech.kronicle.pluginapi.scanners.models.Codebase;
 import tech.kronicle.pluginapi.scanners.models.Output;
 import tech.kronicle.plugins.readme.services.ReadmeFileNameChecker;
 import tech.kronicle.plugintestutils.scanners.BaseCodebaseScannerTest;
-import tech.kronicle.pluginutils.utils.AntStyleIgnoreFileLoader;
-import tech.kronicle.pluginutils.utils.FileUtils;
 import tech.kronicle.sdk.models.readme.Readme;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static tech.kronicle.pluginutils.FileUtilsFactory.createFileUtils;
 
 public class ReadmeScannerTest extends BaseCodebaseScannerTest {
 
@@ -18,7 +17,7 @@ public class ReadmeScannerTest extends BaseCodebaseScannerTest {
 
     @BeforeEach
     public void beforeEach() {
-        underTest = new ReadmeScanner(new FileUtils(new AntStyleIgnoreFileLoader()), new ReadmeFileNameChecker());
+        underTest = new ReadmeScanner(createFileUtils(), new ReadmeFileNameChecker());
     }
 
     @Test

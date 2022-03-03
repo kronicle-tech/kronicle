@@ -3,17 +3,15 @@ package tech.kronicle;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
 import com.fasterxml.jackson.dataformat.yaml.YAMLMapper;
-import tech.kronicle.common.services.ValidationConstraintViolationTransformer;
-import tech.kronicle.componentmetadata.exceptions.ValidationException;
-import tech.kronicle.componentmetadata.models.ComponentMetadata;
+import tech.kronicle.common.ValidationConstraintViolationTransformer;
+import tech.kronicle.common.ValidatorService;
+import tech.kronicle.sdk.models.ComponentMetadata;
 
-import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
 import javax.validation.Validator;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
-import java.util.Set;
 
 /**
  * This class is used by the build scripts of the PR build jobs and master build jobs for "component-metadata" repos that contain "kronicle.yaml"
@@ -24,6 +22,7 @@ public class KronicleMetadataValidator {
     private static final YAMLMapper YAML_MAPPER = new YAMLMapper(new YAMLFactory());
     private static final Validator VALIDATOR = Validation.buildDefaultValidatorFactory().getValidator();
     private static final ValidationConstraintViolationTransformer CONSTRAINT_VIOLATION_TRANSFORMER = new ValidationConstraintViolationTransformer();
+    private static final ValidatorService VALIDATION_SERVICE = new ValidatorService(VALIDATOR, CONSTRAINT_VIOLATION_TRANSFORMER);
 
     static {
         YAML_MAPPER.configure(DeserializationFeature. FAIL_ON_UNKNOWN_PROPERTIES, true);
@@ -41,11 +40,6 @@ public class KronicleMetadataValidator {
     }
 
     public static void validate(ComponentMetadata componentMetadata) {
-        Set<ConstraintViolation<ComponentMetadata>> constraintViolations = VALIDATOR.validate(componentMetadata);
-
-        if (!constraintViolations.isEmpty()) {
-            throw new ValidationException(String.format("Component Metadata file has failed validation:%n%s",
-                    CONSTRAINT_VIOLATION_TRANSFORMER.transform(constraintViolations)));
-        }
+        VALIDATION_SERVICE.validate(componentMetadata, "Component Metadata file has failed validation");
     }
 }

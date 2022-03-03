@@ -1,8 +1,6 @@
 package tech.kronicle.plugins.sonarqube.services;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
-import org.springframework.web.util.UriComponentsBuilder;
 import tech.kronicle.plugins.sonarqube.config.SonarQubeConfig;
 import tech.kronicle.plugins.sonarqube.constants.MetricKeys;
 import tech.kronicle.plugins.sonarqube.constants.WebPaths;
@@ -10,13 +8,13 @@ import tech.kronicle.plugins.sonarqube.models.Project;
 import tech.kronicle.sdk.models.sonarqube.SonarQubeMeasure;
 import tech.kronicle.sdk.models.sonarqube.SonarQubeProject;
 
+import javax.inject.Inject;
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
 import java.util.List;
 import java.util.Objects;
 
-@Service
-@RequiredArgsConstructor
+@RequiredArgsConstructor(onConstructor = @__({@Inject}))
 public class SonarQubeProjectCreator {
 
     private final SonarQubeConfig config;
@@ -37,8 +35,6 @@ public class SonarQubeProjectCreator {
     }
 
     private String createProjectUrl(String projectKey) {
-        UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(config.getBaseUrl());
-        builder.path(WebPaths.DASHBOARD_PATH).queryParam("id", projectKey);
-        return builder.build().toUriString();
+        return config.getBaseUrl() + WebPaths.DASHBOARD_PATH + "?id=" + projectKey;
     }
 }

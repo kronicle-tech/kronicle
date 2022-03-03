@@ -2,14 +2,11 @@ package tech.kronicle.plugins.nodejs;
 
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.slf4j.Logger;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit.jupiter.SpringExtension;
 import tech.kronicle.pluginapi.scanners.models.Codebase;
 import tech.kronicle.pluginapi.scanners.models.Output;
+import tech.kronicle.plugins.nodejs.internal.services.npm.NpmPackageExtractor;
+import tech.kronicle.pluginutils.FileUtils;
 import tech.kronicle.sdk.models.Component;
 import tech.kronicle.sdk.models.Software;
 import tech.kronicle.sdk.models.SoftwareDependencyType;
@@ -18,15 +15,14 @@ import tech.kronicle.sdk.models.SoftwareScope;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static tech.kronicle.pluginutils.FileUtilsFactory.createFileUtils;
+import static tech.kronicle.pluginutils.JsonMapperFactory.createJsonMapper;
 
 @Slf4j
-@ExtendWith(SpringExtension.class)
-@SpringBootTest()
-@ContextConfiguration(classes = { NodeJsScannerTestConfiguration.class})
 public class NodeJsScannerCodebaseTest extends BaseNodeJsScannerTest {
 
-    @Autowired
-    private NodeJsScanner underTest;
+    private final FileUtils fileUtils = createFileUtils();
+    private final NodeJsScanner underTest = new NodeJsScanner(fileUtils, new NpmPackageExtractor(fileUtils, createJsonMapper()));
 
     @Override
     protected Logger log() {

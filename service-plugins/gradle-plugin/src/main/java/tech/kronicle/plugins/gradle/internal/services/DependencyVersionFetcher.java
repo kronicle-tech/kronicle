@@ -1,7 +1,6 @@
 package tech.kronicle.plugins.gradle.internal.services;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Component;
 import tech.kronicle.plugins.gradle.internal.constants.MavenPackagings;
 import tech.kronicle.plugins.gradle.internal.models.Pom;
 import tech.kronicle.plugins.gradle.internal.models.PomOutcome;
@@ -11,6 +10,7 @@ import tech.kronicle.sdk.models.SoftwareDependencyType;
 import tech.kronicle.sdk.models.SoftwareRepository;
 import tech.kronicle.sdk.models.SoftwareType;
 
+import javax.inject.Inject;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
@@ -18,8 +18,7 @@ import java.util.Set;
 import static java.util.Objects.isNull;
 import static java.util.Objects.nonNull;
 
-@Component
-@RequiredArgsConstructor
+@RequiredArgsConstructor(onConstructor = @__({@Inject}))
 public class DependencyVersionFetcher {
 
     private final PomFetcher pomFetcher;

@@ -14,7 +14,7 @@ import tech.kronicle.plugins.git.testutils.GitRepoHelper;
 import tech.kronicle.plugins.git.testutils.RepoOperationOption;
 import tech.kronicle.plugins.git.testutils.UpdateRemoteRepoOutcome;
 import tech.kronicle.plugintestutils.scanners.BaseScannerTest;
-import tech.kronicle.pluginutils.scanners.services.ThrowableToScannerErrorMapper;
+import tech.kronicle.pluginutils.ThrowableToScannerErrorMapper;
 import tech.kronicle.sdk.models.Component;
 import tech.kronicle.sdk.models.Repo;
 import tech.kronicle.sdk.models.git.Identity;
@@ -36,7 +36,6 @@ public class GitScannerTest extends BaseScannerTest {
     public void beforeEach() {
         gitRepoHelper = new GitRepoHelper(tempDir);
         GitClonerImpl gitCloner = new GitClonerImpl(new GitConfig(tempDir.resolve("repos").toString(), List.of()));
-        gitCloner.initialize();
         underTest = new GitScanner(gitCloner, new ThrowableToScannerErrorMapper(), null);
     }
 

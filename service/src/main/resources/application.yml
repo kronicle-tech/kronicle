@@ -67,8 +67,7 @@ plugins:
 
   datadog:
     baseUrl: "https://api.datadoghq.com"
-    dependencies:
-      timeout: 30s
+    timeout: 30s
 
   git:
     repos-dir: /data/git/repos
@@ -131,6 +130,7 @@ plugins:
 
   sonarqube:
     base-url: http://localhost:9000
+    timeout: 30s
 
   zipkin:
     enabled: false

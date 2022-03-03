@@ -2,12 +2,12 @@ package tech.kronicle.plugins.openapi.services;
 
 import lombok.RequiredArgsConstructor;
 import org.apache.commons.io.FilenameUtils;
-import org.springframework.stereotype.Service;
 import tech.kronicle.pluginapi.scanners.Scanner;
 import tech.kronicle.pluginapi.scanners.models.ComponentAndCodebase;
-import tech.kronicle.pluginutils.utils.FileUtils;
+import tech.kronicle.pluginutils.FileUtils;
 import tech.kronicle.sdk.models.openapi.OpenApiSpec;
 
+import javax.inject.Inject;
 import java.nio.file.Path;
 import java.nio.file.attribute.BasicFileAttributes;
 import java.util.List;
@@ -15,8 +15,7 @@ import java.util.Objects;
 import java.util.function.Function;
 import java.util.function.Predicate;
 
-@Service
-@RequiredArgsConstructor
+@RequiredArgsConstructor(onConstructor = @__({@Inject}))
 public class SpecDiscoverer {
 
     private static final List<String> OPENAPI_SPEC_FILE_EXTENSIONS = List.of("yaml", "yml", "json");

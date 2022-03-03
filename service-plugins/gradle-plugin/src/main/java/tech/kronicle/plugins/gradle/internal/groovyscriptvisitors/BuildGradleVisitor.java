@@ -3,7 +3,6 @@ package tech.kronicle.plugins.gradle.internal.groovyscriptvisitors;
 import lombok.extern.slf4j.Slf4j;
 import org.codehaus.groovy.ast.expr.MethodCallExpression;
 import org.slf4j.Logger;
-import org.springframework.stereotype.Component;
 import tech.kronicle.plugins.gradle.internal.constants.GradlePlugins;
 import tech.kronicle.plugins.gradle.internal.groovyscriptvisitors.buildgradlevisitor.BuildscriptVisitor;
 import tech.kronicle.plugins.gradle.internal.groovyscriptvisitors.buildgradlevisitor.DependenciesVisitor;
@@ -19,11 +18,11 @@ import tech.kronicle.plugins.gradle.internal.services.PluginProcessor;
 import tech.kronicle.plugins.gradle.internal.services.SoftwareRepositoryFactory;
 import tech.kronicle.sdk.models.Software;
 
+import javax.inject.Inject;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 
-@Component
 @Slf4j
 public class BuildGradleVisitor extends BaseBuildFileVisitor {
 
@@ -34,6 +33,7 @@ public class BuildGradleVisitor extends BaseBuildFileVisitor {
     private final MicronautVisitor micronautVisitor;
     private final PluginProcessor pluginProcessor;
 
+    @Inject
     public BuildGradleVisitor(BuildFileLoader buildFileLoader, BuildFileProcessor buildFileProcessor, ExpressionEvaluator expressionEvaluator, PluginsVisitor pluginsVisitor, RepositoriesVisitor repositoriesVisitor, SoftwareRepositoryFactory softwareRepositoryFactory, PluginProcessor pluginProcessor, BuildscriptVisitor buildscriptVisitor, DependencyManagementVisitor dependencyManagementVisitor, DependenciesVisitor dependenciesVisitor, ExtOuterVisitor extOuterVisitor, MicronautVisitor micronautVisitor, PluginProcessor pluginProcessor1) {
         super(buildFileLoader, buildFileProcessor, expressionEvaluator, pluginsVisitor, repositoriesVisitor, softwareRepositoryFactory, pluginProcessor);
         this.buildscriptVisitor = buildscriptVisitor;
