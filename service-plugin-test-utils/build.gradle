@@ -3,6 +3,12 @@ plugins {
     id "io.freefair.lombok"
 }
 
+group "tech.kronicle"
+archivesBaseName = "kronicle-plugin-test-utils"
+description "Kronicle plugin-tests-utils library that contains helper classes for testing Kronicle plugins"
+
+apply from: "$rootDir/gradle/publish.gradle"
+
 dependencies {
     annotationProcessor platform("org.springframework.boot:spring-boot-dependencies:$springBootVersion")
     implementation platform("org.springframework.boot:spring-boot-dependencies:$springBootVersion")
@@ -17,8 +23,8 @@ dependencies {
 
     api project(":service-plugin-api")
     api project(":service-plugin-utils")
-    api "ch.qos.logback:logback-classic"
-    api "org.assertj:assertj-core"
+    api "ch.qos.logback:logback-classic:$logbackVersion"
+    implementation "org.assertj:assertj-core"
 
     testImplementation "org.springframework.boot:spring-boot-starter-test", {
         exclude group: "junit", module: "junit"
