@@ -26,10 +26,6 @@ dependencies {
     api "ch.qos.logback:logback-classic:$logbackVersion"
     implementation "org.assertj:assertj-core"
 
-    testImplementation "org.springframework.boot:spring-boot-starter-test", {
-        exclude group: "junit", module: "junit"
-        exclude group: "org.junit.vintage", module: "junit-vintage-engine"
-    }
     testImplementation "org.junit.jupiter:junit-jupiter"
     testImplementation "org.junit.jupiter:junit-jupiter-params"
     testImplementation "org.assertj:assertj-core"
