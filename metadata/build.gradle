@@ -4,7 +4,7 @@ plugins {
 }
 
 group "tech.kronicle"
-archivesBaseName = "kronicle-$name"
+archivesBaseName = "kronicle-metadata"
 description "Kronicle metadata library used for verifying that the contents of a Kronicle metdata YAML file is valid"
 
 apply from: "$rootDir/gradle/publish.gradle"

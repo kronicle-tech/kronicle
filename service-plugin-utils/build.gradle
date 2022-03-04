@@ -3,6 +3,12 @@ plugins {
     id "io.freefair.lombok"
 }
 
+group "tech.kronicle"
+archivesBaseName = "kronicle-plugin-utils"
+description "Kronicle plugin-utils library that contains utility classes for use by Kronicle plugins"
+
+apply from: "$rootDir/gradle/publish.gradle"
+
 dependencies {
     annotationProcessor platform("org.springframework.boot:spring-boot-dependencies:$springBootVersion")
     implementation platform("org.springframework.boot:spring-boot-dependencies:$springBootVersion")
