@@ -21,8 +21,6 @@ dependencies {
     testImplementation platform("org.springframework.boot:spring-boot-dependencies:$springBootVersion")
     testImplementation platform("org.springframework.cloud:spring-cloud-dependencies:$springCloudVersion")
 
-    annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
-
     compileOnly "com.github.spotbugs:spotbugs-annotations:$spotBugsVersion"
     testCompileOnly "com.github.spotbugs:spotbugs-annotations:$spotBugsVersion"
 
