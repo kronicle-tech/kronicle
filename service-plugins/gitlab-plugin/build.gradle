@@ -29,6 +29,13 @@ dependencies {
     testImplementation "com.github.tomakehurst:wiremock-jre8:$wireMockVersion"
 }
 
+shadowJar {
+  minimize {
+      exclude(dependency("org.hibernate.validator:hibernate-validator:"))
+      exclude(dependency("com.fasterxml.jackson.core:jackson-databind:"))
+  }
+}
+
 tasks.register("copyPlugin", Copy) {
     dependsOn(shadowJar)
 
