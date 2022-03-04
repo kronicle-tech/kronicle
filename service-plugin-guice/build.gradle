@@ -16,10 +16,6 @@ dependencies {
     api project(":service-plugin-api")
     api "com.google.inject:guice:$guiceVersion"
 
-    testImplementation "org.springframework.boot:spring-boot-starter-test", {
-        exclude group: "junit", module: "junit"
-        exclude group: "org.junit.vintage", module: "junit-vintage-engine"
-    }
     testImplementation "org.junit.jupiter:junit-jupiter"
     testImplementation "org.junit.jupiter:junit-jupiter-params"
     testImplementation "org.assertj:assertj-core"
