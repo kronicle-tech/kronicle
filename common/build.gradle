@@ -4,7 +4,7 @@ plugins {
 }
 
 group "tech.kronicle"
-archivesBaseName = "kronicle-$name"
+archivesBaseName = "kronicle-common"
 description "Kronicle common library that contains low level reusable code"
 
 apply from: "$rootDir/gradle/publish.gradle"
