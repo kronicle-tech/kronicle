@@ -23,7 +23,7 @@ dependencies {
     api project(":common")
     api "com.fasterxml.jackson.core:jackson-annotations:$jacksonVersion"
     api "jakarta.validation:jakarta.validation-api:$jakartaValidationVersion"
-    api "org.hibernate.validator:hibernate-validator$hibernateValidatorVersion"
+    api "org.hibernate.validator:hibernate-validator:$hibernateValidatorVersion"
     api("org.pf4j:pf4j:$pf4jVersion") {
         exclude group: 'org.apache.logging.log4j'
     }
