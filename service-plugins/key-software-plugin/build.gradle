@@ -27,6 +27,13 @@ dependencies {
     testImplementation "org.mockito:mockito-junit-jupiter"
 }
 
+shadowJar {
+  minimize {
+      exclude(dependency("org.hibernate.validator:hibernate-validator:"))
+      exclude(dependency("com.fasterxml.jackson.core:jackson-databind:"))
+  }
+}
+
 tasks.register("copyPlugin", Copy) {
     dependsOn(shadowJar)
 
