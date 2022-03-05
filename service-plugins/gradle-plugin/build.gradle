@@ -46,7 +46,7 @@ dependencies {
     testCompileOnly "com.github.spotbugs:spotbugs-annotations:$spotBugsVersion"
 
     implementation project(":service-plugin-guice")
-    implementation project(":service-plugin-utils")
+    implementation project(":service-utils")
     implementation "tech.kronicle:gradle-version-logic:$gradleVersionLogicVersion"
     implementation "io.github.resilience4j:resilience4j-retry:$resilience4jVersion"
     implementation "com.fasterxml.jackson.core:jackson-core"

@@ -17,7 +17,7 @@ dependencies {
     testCompileOnly "com.github.spotbugs:spotbugs-annotations:$spotBugsVersion"
 
     implementation project(":service-plugin-guice")
-    implementation project(":service-plugin-utils")
+    implementation project(":service-utils")
     implementation "commons-io:commons-io:$commonsIoVersion"
 
     testImplementation project(":service-plugin-test-utils")

@@ -2,9 +2,9 @@ package tech.kronicle.plugins.javaimport.guice;
 
 import com.google.inject.AbstractModule;
 import com.google.inject.Provides;
-import tech.kronicle.pluginutils.FileUtils;
+import tech.kronicle.utils.FileUtils;
 
-import static tech.kronicle.pluginutils.FileUtilsFactory.createFileUtils;
+import static tech.kronicle.utils.FileUtilsFactory.createFileUtils;
 
 public class GuiceModule extends AbstractModule {
 

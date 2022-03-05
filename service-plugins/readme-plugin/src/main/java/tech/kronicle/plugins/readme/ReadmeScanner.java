@@ -6,7 +6,7 @@ import tech.kronicle.pluginapi.scanners.CodebaseScanner;
 import tech.kronicle.pluginapi.scanners.models.Codebase;
 import tech.kronicle.pluginapi.scanners.models.Output;
 import tech.kronicle.plugins.readme.services.ReadmeFileNameChecker;
-import tech.kronicle.pluginutils.FileUtils;
+import tech.kronicle.utils.FileUtils;
 import tech.kronicle.sdk.models.readme.Readme;
 
 import javax.inject.Inject;

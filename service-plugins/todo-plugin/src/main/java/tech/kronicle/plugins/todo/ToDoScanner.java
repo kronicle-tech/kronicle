@@ -7,7 +7,7 @@ import tech.kronicle.pluginapi.scanners.CodebaseScanner;
 import tech.kronicle.pluginapi.scanners.models.Codebase;
 import tech.kronicle.pluginapi.scanners.models.Output;
 import tech.kronicle.plugins.todo.internal.services.ToDoFinder;
-import tech.kronicle.pluginutils.FileUtils;
+import tech.kronicle.utils.FileUtils;
 import tech.kronicle.sdk.models.todos.ToDo;
 
 import javax.inject.Inject;

@@ -2,7 +2,7 @@ package tech.kronicle.plugins.bitbucketserver.client;
 
 import com.github.tomakehurst.wiremock.WireMockServer;
 import com.github.tomakehurst.wiremock.client.MappingBuilder;
-import tech.kronicle.plugintestutils.TestFileHelper;
+import tech.kronicle.testutils.TestFileHelper;
 
 import java.util.function.Consumer;
 import java.util.stream.IntStream;

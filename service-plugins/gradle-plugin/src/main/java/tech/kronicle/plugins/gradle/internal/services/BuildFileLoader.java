@@ -5,7 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.codehaus.groovy.ast.ASTNode;
 import org.codehaus.groovy.ast.builder.AstBuilder;
 import org.codehaus.groovy.control.CompilePhase;
-import tech.kronicle.pluginutils.FileUtils;
+import tech.kronicle.utils.FileUtils;
 
 import javax.inject.Inject;
 import java.nio.file.Path;

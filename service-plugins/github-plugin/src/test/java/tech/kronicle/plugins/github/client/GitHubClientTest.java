@@ -18,8 +18,8 @@ import tech.kronicle.plugins.github.models.ApiResponseCacheEntry;
 import tech.kronicle.plugins.github.models.api.GitHubContentEntry;
 import tech.kronicle.plugins.github.models.api.GitHubRepo;
 import tech.kronicle.plugins.github.services.ApiResponseCache;
-import tech.kronicle.plugintestutils.LogCaptor;
-import tech.kronicle.plugintestutils.SimplifiedLogEvent;
+import tech.kronicle.testutils.LogCaptor;
+import tech.kronicle.testutils.SimplifiedLogEvent;
 
 import java.time.Duration;
 import java.util.List;
@@ -30,8 +30,8 @@ import static org.assertj.core.api.Assertions.catchThrowable;
 import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
-import static tech.kronicle.pluginutils.HttpClientFactory.createHttpClient;
-import static tech.kronicle.pluginutils.JsonMapperFactory.createJsonMapper;
+import static tech.kronicle.utils.HttpClientFactory.createHttpClient;
+import static tech.kronicle.utils.JsonMapperFactory.createJsonMapper;
 
 @ExtendWith(MockitoExtension.class)
 public class GitHubClientTest {

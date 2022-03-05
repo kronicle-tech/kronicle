@@ -19,7 +19,7 @@ import tech.kronicle.plugins.gradle.internal.services.DependencyVersionFetcher;
 import tech.kronicle.plugins.gradle.internal.services.ExpressionEvaluator;
 import tech.kronicle.plugins.gradle.internal.services.SoftwareRepositoryFactory;
 import tech.kronicle.plugins.gradle.internal.utils.ArtifactUtils;
-import tech.kronicle.pluginutils.ObjectReference;
+import tech.kronicle.utils.ObjectReference;
 
 import java.util.Objects;
 

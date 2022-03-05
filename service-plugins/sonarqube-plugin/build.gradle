@@ -17,7 +17,7 @@ dependencies {
     testCompileOnly "com.github.spotbugs:spotbugs-annotations:$spotBugsVersion"
 
     implementation project(":service-plugin-guice")
-    implementation project(":service-plugin-utils")
+    implementation project(":service-utils")
     implementation "com.fasterxml.jackson.core:jackson-databind"
     implementation "com.google.guava:guava:$guavaVersion"
 

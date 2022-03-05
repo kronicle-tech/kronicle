@@ -4,7 +4,7 @@ import com.google.inject.AbstractModule;
 import com.google.inject.Provides;
 import tech.kronicle.pluginapi.git.GitCloner;
 import tech.kronicle.plugins.git.GitClonerImpl;
-import tech.kronicle.pluginutils.ThrowableToScannerErrorMapper;
+import tech.kronicle.utils.ThrowableToScannerErrorMapper;
 
 public class GuiceModule extends AbstractModule {
 

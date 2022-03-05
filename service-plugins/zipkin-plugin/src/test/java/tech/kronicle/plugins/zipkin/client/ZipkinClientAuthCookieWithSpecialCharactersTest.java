@@ -6,8 +6,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 import tech.kronicle.plugins.zipkin.ZipkinWireMockFactory;
-import tech.kronicle.plugintestutils.LogCaptor;
-import tech.kronicle.plugintestutils.Timer;
+import tech.kronicle.testutils.LogCaptor;
+import tech.kronicle.testutils.Timer;
 
 import java.net.URI;
 import java.net.URISyntaxException;

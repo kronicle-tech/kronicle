@@ -8,7 +8,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import tech.kronicle.pluginapi.scanners.models.Codebase;
 import tech.kronicle.pluginapi.scanners.models.Output;
 import tech.kronicle.plugins.todo.internal.services.ToDoFinder;
-import tech.kronicle.plugintestutils.MalformedFileCreator;
+import tech.kronicle.testutils.MalformedFileCreator;
 import tech.kronicle.plugintestutils.scanners.BaseCodebaseScannerTest;
 import tech.kronicle.sdk.models.todos.ToDo;
 
@@ -18,7 +18,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static tech.kronicle.pluginutils.FileUtilsFactory.createFileUtils;
+import static tech.kronicle.utils.FileUtilsFactory.createFileUtils;
 
 @ExtendWith(MockitoExtension.class)
 public class ToDoScannerTest extends BaseCodebaseScannerTest {

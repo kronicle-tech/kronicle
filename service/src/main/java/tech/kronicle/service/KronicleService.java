@@ -15,12 +15,12 @@ import org.springframework.web.reactive.function.client.WebClient;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import tech.kronicle.common.ValidationConstraintViolationTransformer;
-import tech.kronicle.pluginutils.FileUtils;
-import tech.kronicle.pluginutils.ThrowableToScannerErrorMapper;
+import tech.kronicle.utils.FileUtils;
+import tech.kronicle.utils.ThrowableToScannerErrorMapper;
 
 import java.time.Clock;
 
-import static tech.kronicle.pluginutils.FileUtilsFactory.createFileUtils;
+import static tech.kronicle.utils.FileUtilsFactory.createFileUtils;
 
 @SpringBootApplication
 @ConfigurationPropertiesScan

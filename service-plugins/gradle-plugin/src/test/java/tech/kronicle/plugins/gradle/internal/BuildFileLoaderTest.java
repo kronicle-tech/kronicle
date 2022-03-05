@@ -12,7 +12,7 @@ import tech.kronicle.plugins.gradle.internal.services.BuildFileCache;
 import tech.kronicle.plugins.gradle.internal.services.BuildFileLoader;
 import tech.kronicle.plugins.gradle.internal.services.PropertyExpander;
 import tech.kronicle.plugins.gradle.internal.services.PropertyRetriever;
-import tech.kronicle.pluginutils.FileUtils;
+import tech.kronicle.utils.FileUtils;
 
 import java.nio.file.Path;
 import java.util.HashMap;

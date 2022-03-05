@@ -32,7 +32,7 @@ dependencies {
     testCompileOnly "com.github.spotbugs:spotbugs-annotations:$spotBugsVersion"
 
     implementation project(":service-plugin-guice")
-    implementation project(":service-plugin-utils")
+    implementation project(":service-utils")
     implementation "org.springframework.boot:spring-boot-starter-web"
     developmentOnly "org.springframework.boot:spring-boot-devtools"
     implementation "org.springframework.boot:spring-boot-starter-actuator"
@@ -48,7 +48,7 @@ dependencies {
     implementation "net.logstash.logback:logstash-logback-encoder:$logstashLogbackEncoder"
     implementation "tech.kronicle:gradle-version-logic:$gradleVersionLogicVersion"
 
-    testImplementation project(":service-plugin-test-utils")
+    testImplementation project(":service-test-utils")
     testImplementation "org.springframework.boot:spring-boot-starter-test", {
         exclude group: "junit", module: "junit"
         exclude group: "org.junit.vintage", module: "junit-vintage-engine"

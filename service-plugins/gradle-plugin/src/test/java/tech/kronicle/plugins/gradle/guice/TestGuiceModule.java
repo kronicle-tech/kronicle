@@ -12,16 +12,16 @@ import tech.kronicle.plugins.gradle.config.GradleCustomRepository;
 import tech.kronicle.plugins.gradle.config.HttpHeaderConfig;
 import tech.kronicle.plugins.gradle.config.PomCacheConfig;
 import tech.kronicle.plugins.gradle.config.UrlExistsCacheConfig;
-import tech.kronicle.pluginutils.FileUtils;
-import tech.kronicle.pluginutils.ThrowableToScannerErrorMapper;
+import tech.kronicle.utils.FileUtils;
+import tech.kronicle.utils.ThrowableToScannerErrorMapper;
 
 import java.net.http.HttpClient;
 import java.time.Duration;
 import java.util.List;
 
-import static tech.kronicle.pluginutils.FileUtilsFactory.createFileUtils;
-import static tech.kronicle.pluginutils.HttpClientFactory.createHttpClient;
-import static tech.kronicle.pluginutils.JsonMapperFactory.createJsonMapper;
+import static tech.kronicle.utils.FileUtilsFactory.createFileUtils;
+import static tech.kronicle.utils.HttpClientFactory.createHttpClient;
+import static tech.kronicle.utils.JsonMapperFactory.createJsonMapper;
 
 public class TestGuiceModule extends AbstractModule {
 

@@ -5,7 +5,7 @@ import tech.kronicle.plugins.zipkin.models.CollatorComponentDependency;
 import tech.kronicle.plugins.zipkin.models.NodesAndDependencies;
 import tech.kronicle.plugins.zipkin.models.SourceIndexAndTargetIndex;
 import tech.kronicle.plugins.zipkin.models.api.Span;
-import tech.kronicle.pluginutils.MapCollectors;
+import tech.kronicle.utils.MapCollectors;
 import tech.kronicle.sdk.models.ObjectWithComponentId;
 import tech.kronicle.sdk.models.ObjectWithSourceIndexAndTargetIndex;
 

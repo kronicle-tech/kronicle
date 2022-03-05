@@ -12,8 +12,8 @@ import java.time.Duration;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static tech.kronicle.pluginutils.HttpClientFactory.createHttpClient;
-import static tech.kronicle.pluginutils.JsonMapperFactory.createJsonMapper;
+import static tech.kronicle.utils.HttpClientFactory.createHttpClient;
+import static tech.kronicle.utils.JsonMapperFactory.createJsonMapper;
 
 @ExtendWith(MockitoExtension.class)
 public class DatadogDependencyClientTest {

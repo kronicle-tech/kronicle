@@ -14,7 +14,7 @@ import tech.kronicle.plugins.openapi.services.SpecDiscoverer;
 import tech.kronicle.plugins.openapi.services.SpecErrorProcessor;
 import tech.kronicle.plugins.openapi.services.SpecParser;
 import tech.kronicle.plugintestutils.scanners.BaseCodebaseScannerTest;
-import tech.kronicle.pluginutils.ThrowableToScannerErrorMapper;
+import tech.kronicle.utils.ThrowableToScannerErrorMapper;
 import tech.kronicle.sdk.models.Component;
 import tech.kronicle.sdk.models.ComponentMetadata;
 import tech.kronicle.sdk.models.ScannerError;
@@ -30,8 +30,8 @@ import static com.github.tomakehurst.wiremock.client.WireMock.urlPathEqualTo;
 import static com.github.tomakehurst.wiremock.core.WireMockConfiguration.options;
 import static java.util.Objects.nonNull;
 import static org.assertj.core.api.Assertions.assertThat;
-import static tech.kronicle.pluginutils.FileUtilsFactory.createFileUtils;
-import static tech.kronicle.pluginutils.JsonMapperFactory.createJsonMapper;
+import static tech.kronicle.utils.FileUtilsFactory.createFileUtils;
+import static tech.kronicle.utils.JsonMapperFactory.createJsonMapper;
 
 public class OpenApiScannerTest extends BaseCodebaseScannerTest {
 

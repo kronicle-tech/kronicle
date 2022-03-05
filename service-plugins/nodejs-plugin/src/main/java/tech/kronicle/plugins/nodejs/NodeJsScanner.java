@@ -7,7 +7,7 @@ import tech.kronicle.pluginapi.scanners.models.Codebase;
 import tech.kronicle.pluginapi.scanners.models.Output;
 import tech.kronicle.plugins.nodejs.internal.constants.NodeJsFileNames;
 import tech.kronicle.plugins.nodejs.internal.services.npm.NpmPackageExtractor;
-import tech.kronicle.pluginutils.FileUtils;
+import tech.kronicle.utils.FileUtils;
 import tech.kronicle.sdk.models.Software;
 import tech.kronicle.sdk.models.nodejs.NodeJs;
 

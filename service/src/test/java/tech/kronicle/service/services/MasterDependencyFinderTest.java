@@ -9,8 +9,8 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import tech.kronicle.sdk.models.ComponentMetadata;
 import tech.kronicle.pluginapi.finders.DependencyFinder;
-import tech.kronicle.plugintestutils.LogCaptor;
-import tech.kronicle.plugintestutils.SimplifiedLogEvent;
+import tech.kronicle.testutils.LogCaptor;
+import tech.kronicle.testutils.SimplifiedLogEvent;
 import tech.kronicle.sdk.models.Dependency;
 
 import java.util.List;

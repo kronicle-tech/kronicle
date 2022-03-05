@@ -2,7 +2,7 @@ package tech.kronicle.plugins.zipkin.services;
 
 import tech.kronicle.plugins.zipkin.constants.TagKeys;
 import tech.kronicle.plugins.zipkin.models.api.Span;
-import tech.kronicle.pluginutils.MapCollectors;
+import tech.kronicle.utils.MapCollectors;
 
 import java.util.List;
 import java.util.Map;

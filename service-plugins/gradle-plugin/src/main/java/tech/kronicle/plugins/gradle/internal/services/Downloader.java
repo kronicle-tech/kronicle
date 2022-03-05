@@ -8,8 +8,8 @@ import lombok.extern.slf4j.Slf4j;
 import tech.kronicle.common.StringEscapeUtils;
 import tech.kronicle.plugins.gradle.config.DownloaderConfig;
 import tech.kronicle.plugins.gradle.config.HttpHeaderConfig;
-import tech.kronicle.pluginutils.HttpMethods;
-import tech.kronicle.pluginutils.HttpStatuses;
+import tech.kronicle.utils.HttpMethods;
+import tech.kronicle.utils.HttpStatuses;
 
 import javax.inject.Inject;
 import java.net.URI;
@@ -24,7 +24,7 @@ import java.util.function.Function;
 
 import static java.util.Objects.isNull;
 import static java.util.Objects.nonNull;
-import static tech.kronicle.pluginutils.HttpClientFactory.createHttpRequestBuilder;
+import static tech.kronicle.utils.HttpClientFactory.createHttpRequestBuilder;
 
 @RequiredArgsConstructor(onConstructor = @__({@Inject}))
 @Slf4j

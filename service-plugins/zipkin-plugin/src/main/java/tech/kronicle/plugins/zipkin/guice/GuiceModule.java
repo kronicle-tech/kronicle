@@ -13,8 +13,8 @@ import java.net.http.HttpClient;
 import java.time.Clock;
 import java.time.Duration;
 
-import static tech.kronicle.pluginutils.HttpClientFactory.createHttpClient;
-import static tech.kronicle.pluginutils.JsonMapperFactory.createJsonMapper;
+import static tech.kronicle.utils.HttpClientFactory.createHttpClient;
+import static tech.kronicle.utils.JsonMapperFactory.createJsonMapper;
 
 public class GuiceModule extends AbstractModule {
 

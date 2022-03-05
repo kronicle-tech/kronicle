@@ -13,7 +13,7 @@ import static com.github.tomakehurst.wiremock.client.WireMock.equalTo;
 import static com.github.tomakehurst.wiremock.client.WireMock.get;
 import static com.github.tomakehurst.wiremock.client.WireMock.matching;
 import static com.github.tomakehurst.wiremock.client.WireMock.urlPathEqualTo;
-import static tech.kronicle.plugintestutils.TestFileHelper.readTestFile;
+import static tech.kronicle.testutils.TestFileHelper.readTestFile;
 
 public class ZipkinWireMockFactory {
 

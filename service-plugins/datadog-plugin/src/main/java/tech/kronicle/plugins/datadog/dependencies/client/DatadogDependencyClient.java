@@ -9,7 +9,7 @@ import tech.kronicle.plugins.datadog.config.DatadogConfig;
 import tech.kronicle.plugins.datadog.constants.DatadogApiPaths;
 import tech.kronicle.plugins.datadog.constants.DatadogHttpHeaderNames;
 import tech.kronicle.plugins.datadog.dependencies.models.ServiceDependenciesResponse;
-import tech.kronicle.pluginutils.UriVariablesBuilder;
+import tech.kronicle.utils.UriVariablesBuilder;
 import tech.kronicle.sdk.models.Dependency;
 
 import javax.inject.Inject;
@@ -23,8 +23,8 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 import static java.util.Objects.isNull;
-import static tech.kronicle.pluginutils.HttpClientFactory.createHttpRequestBuilder;
-import static tech.kronicle.pluginutils.UriTemplateUtils.expandUriTemplate;
+import static tech.kronicle.utils.HttpClientFactory.createHttpRequestBuilder;
+import static tech.kronicle.utils.UriTemplateUtils.expandUriTemplate;
 
 @Slf4j
 @RequiredArgsConstructor(onConstructor = @__({@Inject}))
