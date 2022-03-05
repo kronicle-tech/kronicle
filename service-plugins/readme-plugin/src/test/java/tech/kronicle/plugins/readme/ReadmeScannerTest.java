@@ -9,7 +9,7 @@ import tech.kronicle.plugintestutils.scanners.BaseCodebaseScannerTest;
 import tech.kronicle.sdk.models.readme.Readme;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static tech.kronicle.pluginutils.FileUtilsFactory.createFileUtils;
+import static tech.kronicle.utils.FileUtilsFactory.createFileUtils;
 
 public class ReadmeScannerTest extends BaseCodebaseScannerTest {
 

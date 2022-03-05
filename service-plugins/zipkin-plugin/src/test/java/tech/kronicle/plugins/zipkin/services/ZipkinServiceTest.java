@@ -13,8 +13,8 @@ import tech.kronicle.plugins.zipkin.client.ZipkinClientException;
 import tech.kronicle.plugins.zipkin.config.ZipkinConfig;
 import tech.kronicle.plugins.zipkin.models.api.Service;
 import tech.kronicle.plugins.zipkin.models.api.Span;
-import tech.kronicle.plugintestutils.LogCaptor;
-import tech.kronicle.plugintestutils.SimplifiedLogEvent;
+import tech.kronicle.testutils.LogCaptor;
+import tech.kronicle.testutils.SimplifiedLogEvent;
 import tech.kronicle.sdk.models.zipkin.ZipkinDependency;
 
 import java.util.ArrayList;

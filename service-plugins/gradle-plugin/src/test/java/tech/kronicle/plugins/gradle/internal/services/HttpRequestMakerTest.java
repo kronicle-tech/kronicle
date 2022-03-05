@@ -5,8 +5,8 @@ import io.github.resilience4j.retry.RetryRegistry;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import tech.kronicle.plugintestutils.Timer;
-import tech.kronicle.pluginutils.ObjectReference;
+import tech.kronicle.testutils.Timer;
+import tech.kronicle.utils.ObjectReference;
 
 import java.net.http.HttpResponse;
 import java.time.Duration;

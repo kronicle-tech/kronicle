@@ -14,8 +14,8 @@ import tech.kronicle.plugins.gitlab.config.GitLabUserConfig;
 import tech.kronicle.plugins.gitlab.constants.GitLabApiHeaders;
 import tech.kronicle.plugins.gitlab.constants.GitLabApiPaths;
 import tech.kronicle.plugins.gitlab.models.api.GitLabRepo;
-import tech.kronicle.pluginutils.HttpStatuses;
-import tech.kronicle.pluginutils.UriVariablesBuilder;
+import tech.kronicle.utils.HttpStatuses;
+import tech.kronicle.utils.UriVariablesBuilder;
 
 import javax.inject.Inject;
 import java.net.URI;
@@ -33,8 +33,8 @@ import java.util.stream.Stream;
 
 import static java.util.Objects.isNull;
 import static java.util.Objects.nonNull;
-import static tech.kronicle.pluginutils.HttpClientFactory.createHttpRequestBuilder;
-import static tech.kronicle.pluginutils.UriTemplateUtils.expandUriTemplate;
+import static tech.kronicle.utils.HttpClientFactory.createHttpRequestBuilder;
+import static tech.kronicle.utils.UriTemplateUtils.expandUriTemplate;
 
 @Slf4j
 @RequiredArgsConstructor(onConstructor = @__({@Inject}))

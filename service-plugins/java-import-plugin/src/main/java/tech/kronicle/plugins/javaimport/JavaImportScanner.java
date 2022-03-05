@@ -7,8 +7,8 @@ import tech.kronicle.pluginapi.scanners.CodebaseScanner;
 import tech.kronicle.pluginapi.scanners.models.Codebase;
 import tech.kronicle.pluginapi.scanners.models.Output;
 import tech.kronicle.plugins.javaimport.services.JavaImportFinder;
-import tech.kronicle.pluginutils.Comparators;
-import tech.kronicle.pluginutils.FileUtils;
+import tech.kronicle.utils.Comparators;
+import tech.kronicle.utils.FileUtils;
 import tech.kronicle.sdk.models.Import;
 
 import javax.inject.Inject;

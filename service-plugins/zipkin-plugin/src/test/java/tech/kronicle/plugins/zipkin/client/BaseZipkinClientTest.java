@@ -6,7 +6,7 @@ import io.github.resilience4j.retry.RetryRegistry;
 import lombok.RequiredArgsConstructor;
 import lombok.Value;
 import tech.kronicle.plugins.zipkin.config.ZipkinConfig;
-import tech.kronicle.plugintestutils.LogCaptor;
+import tech.kronicle.testutils.LogCaptor;
 
 import java.time.Clock;
 import java.time.Duration;
@@ -17,8 +17,8 @@ import java.util.function.Function;
 import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static tech.kronicle.pluginutils.HttpClientFactory.createHttpClient;
-import static tech.kronicle.pluginutils.JsonMapperFactory.createJsonMapper;
+import static tech.kronicle.utils.HttpClientFactory.createHttpClient;
+import static tech.kronicle.utils.JsonMapperFactory.createJsonMapper;
 
 @RequiredArgsConstructor
 public class BaseZipkinClientTest {

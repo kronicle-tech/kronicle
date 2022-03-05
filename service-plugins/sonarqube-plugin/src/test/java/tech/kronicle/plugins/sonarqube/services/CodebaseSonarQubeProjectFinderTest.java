@@ -8,7 +8,7 @@ import java.nio.file.Path;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static tech.kronicle.pluginutils.FileUtilsFactory.createFileUtils;
+import static tech.kronicle.utils.FileUtilsFactory.createFileUtils;
 
 public class CodebaseSonarQubeProjectFinderTest extends BaseCodebaseScannerTest {
 

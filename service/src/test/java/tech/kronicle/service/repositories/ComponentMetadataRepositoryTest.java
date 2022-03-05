@@ -11,10 +11,10 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import tech.kronicle.sdk.models.ComponentMetadata;
 import tech.kronicle.pluginapi.finders.models.ApiRepo;
 import tech.kronicle.pluginapi.git.GitCloner;
-import tech.kronicle.plugintestutils.BaseTest;
-import tech.kronicle.plugintestutils.LogCaptor;
-import tech.kronicle.pluginutils.AntStyleIgnoreFileLoader;
-import tech.kronicle.pluginutils.FileUtils;
+import tech.kronicle.testutils.BaseTest;
+import tech.kronicle.testutils.LogCaptor;
+import tech.kronicle.utils.AntStyleIgnoreFileLoader;
+import tech.kronicle.utils.FileUtils;
 import tech.kronicle.sdk.models.Area;
 import tech.kronicle.sdk.models.Component;
 import tech.kronicle.sdk.models.Team;
@@ -27,7 +27,7 @@ import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.when;
-import static tech.kronicle.pluginutils.FileUtilsFactory.createFileUtils;
+import static tech.kronicle.utils.FileUtilsFactory.createFileUtils;
 
 @ExtendWith(MockitoExtension.class)
 public class ComponentMetadataRepositoryTest extends BaseTest {

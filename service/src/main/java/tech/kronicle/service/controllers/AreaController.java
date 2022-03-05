@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import tech.kronicle.pluginutils.EnumUtils;
+import tech.kronicle.utils.EnumUtils;
 import tech.kronicle.sdk.models.GetAreaResponse;
 import tech.kronicle.sdk.models.GetAreasResponse;
 import tech.kronicle.sdk.models.TestOutcome;
@@ -16,6 +16,8 @@ import tech.kronicle.service.services.ComponentService;
 import tech.kronicle.service.springdoc.Texts;
 
 import java.util.List;
+
+import static tech.kronicle.utils.EnumUtils.getEnumListFromJsonValues;
 
 @RestController
 @RequiredArgsConstructor
@@ -33,7 +35,7 @@ public class AreaController {
     @GetMapping
     @PartialResponse
     public GetAreasResponse getAreas(@RequestParam(required = false) List<String> testOutcome) {
-        return new GetAreasResponse(componentService.getAreas(EnumUtils.getEnumListFromJsonValues(TestOutcome.class, testOutcome)));
+        return new GetAreasResponse(componentService.getAreas(getEnumListFromJsonValues(TestOutcome.class, testOutcome)));
     }
 
     @Operation(
@@ -45,6 +47,6 @@ public class AreaController {
     @GetMapping("/{areaId}")
     @PartialResponse
     public GetAreaResponse getArea(@PathVariable String areaId, @RequestParam(required = false) List<String> testOutcome) {
-        return new GetAreaResponse(componentService.getArea(areaId, EnumUtils.getEnumListFromJsonValues(TestOutcome.class, testOutcome)));
+        return new GetAreaResponse(componentService.getArea(areaId, getEnumListFromJsonValues(TestOutcome.class, testOutcome)));
     }
 }

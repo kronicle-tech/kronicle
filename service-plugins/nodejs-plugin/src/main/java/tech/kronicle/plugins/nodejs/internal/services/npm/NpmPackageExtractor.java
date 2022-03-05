@@ -9,7 +9,7 @@ import tech.kronicle.plugins.nodejs.internal.models.PackageJson;
 import tech.kronicle.plugins.nodejs.internal.models.npm.NpmDependencies;
 import tech.kronicle.plugins.nodejs.internal.models.npm.NpmDependency;
 import tech.kronicle.plugins.nodejs.internal.models.npm.NpmPackageLock;
-import tech.kronicle.pluginutils.FileUtils;
+import tech.kronicle.utils.FileUtils;
 import tech.kronicle.sdk.models.Software;
 import tech.kronicle.sdk.models.SoftwareDependencyType;
 import tech.kronicle.sdk.models.SoftwareScope;

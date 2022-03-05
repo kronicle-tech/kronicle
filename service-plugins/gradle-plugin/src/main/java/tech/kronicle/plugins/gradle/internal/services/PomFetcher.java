@@ -17,7 +17,7 @@ import tech.kronicle.plugins.gradle.internal.models.mavenxml.project.Dependency;
 import tech.kronicle.plugins.gradle.internal.models.mavenxml.project.Parent;
 import tech.kronicle.plugins.gradle.internal.models.mavenxml.project.Properties;
 import tech.kronicle.plugins.gradle.internal.utils.ArtifactUtils;
-import tech.kronicle.pluginutils.StringUtils;
+import tech.kronicle.utils.StringUtils;
 import tech.kronicle.sdk.models.Software;
 import tech.kronicle.sdk.models.SoftwareDependencyType;
 import tech.kronicle.sdk.models.SoftwareRepository;

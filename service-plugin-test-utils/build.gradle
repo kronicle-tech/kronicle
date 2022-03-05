@@ -22,8 +22,7 @@ dependencies {
     testCompileOnly "javax.inject:javax.inject:$javaxInjectApiVersion"
 
     api project(":service-plugin-api")
-    api project(":service-plugin-utils")
-    api "ch.qos.logback:logback-classic:$logbackVersion"
+    api project(":service-test-utils")
     implementation "org.assertj:assertj-core"
 
     testImplementation "org.junit.jupiter:junit-jupiter"

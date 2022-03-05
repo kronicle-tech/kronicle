@@ -3,11 +3,11 @@ package tech.kronicle.plugins.openapi.guice;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.inject.AbstractModule;
 import com.google.inject.Provides;
-import tech.kronicle.pluginutils.FileUtils;
-import tech.kronicle.pluginutils.ThrowableToScannerErrorMapper;
+import tech.kronicle.utils.FileUtils;
+import tech.kronicle.utils.ThrowableToScannerErrorMapper;
 
-import static tech.kronicle.pluginutils.FileUtilsFactory.createFileUtils;
-import static tech.kronicle.pluginutils.JsonMapperFactory.createJsonMapper;
+import static tech.kronicle.utils.FileUtilsFactory.createFileUtils;
+import static tech.kronicle.utils.JsonMapperFactory.createJsonMapper;
 
 public class GuiceModule extends AbstractModule {
 

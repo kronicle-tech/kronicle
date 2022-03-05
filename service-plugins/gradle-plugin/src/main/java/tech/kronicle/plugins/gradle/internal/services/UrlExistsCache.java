@@ -1,8 +1,8 @@
 package tech.kronicle.plugins.gradle.internal.services;
 
 import tech.kronicle.plugins.gradle.config.UrlExistsCacheConfig;
-import tech.kronicle.pluginutils.BaseFileCache;
-import tech.kronicle.pluginutils.FileUtils;
+import tech.kronicle.utils.BaseFileCache;
+import tech.kronicle.utils.FileUtils;
 
 import javax.inject.Inject;
 import java.nio.file.Path;

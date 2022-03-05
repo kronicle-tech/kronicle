@@ -14,8 +14,8 @@ import tech.kronicle.plugins.bitbucketserver.models.api.BrowseResponse;
 import tech.kronicle.plugins.bitbucketserver.models.api.Link;
 import tech.kronicle.plugins.bitbucketserver.models.api.PageResponse;
 import tech.kronicle.plugins.bitbucketserver.models.api.Repo;
-import tech.kronicle.pluginutils.HttpStatuses;
-import tech.kronicle.pluginutils.UriVariablesBuilder;
+import tech.kronicle.utils.HttpStatuses;
+import tech.kronicle.utils.UriVariablesBuilder;
 
 import javax.inject.Inject;
 import java.net.URI;
@@ -33,9 +33,9 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 
 import static java.util.Objects.isNull;
-import static tech.kronicle.pluginutils.BasicAuthUtils.basicAuth;
-import static tech.kronicle.pluginutils.HttpClientFactory.createHttpRequestBuilder;
-import static tech.kronicle.pluginutils.UriTemplateUtils.expandUriTemplate;
+import static tech.kronicle.utils.BasicAuthUtils.basicAuth;
+import static tech.kronicle.utils.HttpClientFactory.createHttpRequestBuilder;
+import static tech.kronicle.utils.UriTemplateUtils.expandUriTemplate;
 
 /**
  * See https://docs.atlassian.com/bitbucket-server/rest/7.11.1/bitbucket-rest.html

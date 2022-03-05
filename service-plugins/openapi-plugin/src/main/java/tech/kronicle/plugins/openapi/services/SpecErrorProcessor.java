@@ -4,7 +4,7 @@ import io.swagger.v3.parser.core.models.SwaggerParseResult;
 import lombok.RequiredArgsConstructor;
 import tech.kronicle.common.StringEscapeUtils;
 import tech.kronicle.pluginapi.scanners.Scanner;
-import tech.kronicle.pluginutils.ThrowableToScannerErrorMapper;
+import tech.kronicle.utils.ThrowableToScannerErrorMapper;
 import tech.kronicle.sdk.models.ScannerError;
 
 import javax.inject.Inject;

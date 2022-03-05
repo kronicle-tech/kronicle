@@ -14,7 +14,7 @@ import tech.kronicle.sdk.models.ImportType;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static tech.kronicle.pluginutils.FileUtilsFactory.createFileUtils;
+import static tech.kronicle.utils.FileUtilsFactory.createFileUtils;
 
 @ExtendWith(MockitoExtension.class)
 public class JavaImportScannerTest extends BaseCodebaseScannerTest {

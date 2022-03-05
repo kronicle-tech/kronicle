@@ -9,7 +9,7 @@ import java.util.Map;
 import static java.util.Objects.nonNull;
 import static java.util.Objects.requireNonNull;
 import static tech.kronicle.common.StringEscapeUtils.escapeString;
-import static tech.kronicle.pluginutils.StringUtils.requireNonEmpty;
+import static tech.kronicle.utils.StringUtils.requireNonEmpty;
 
 @RequiredArgsConstructor(onConstructor = @__({@Inject}))
 @Slf4j

@@ -12,7 +12,7 @@ import tech.kronicle.plugins.gitlab.config.GitLabConfig;
 import tech.kronicle.plugins.gitlab.config.GitLabGroupConfig;
 import tech.kronicle.plugins.gitlab.config.GitLabHostConfig;
 import tech.kronicle.plugins.gitlab.config.GitLabUserConfig;
-import tech.kronicle.pluginutils.HttpStatuses;
+import tech.kronicle.utils.HttpStatuses;
 
 import java.time.Duration;
 import java.util.List;
@@ -20,8 +20,8 @@ import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.catchThrowable;
-import static tech.kronicle.pluginutils.HttpClientFactory.createHttpClient;
-import static tech.kronicle.pluginutils.JsonMapperFactory.createJsonMapper;
+import static tech.kronicle.utils.HttpClientFactory.createHttpClient;
+import static tech.kronicle.utils.JsonMapperFactory.createJsonMapper;
 
 @ExtendWith(MockitoExtension.class)
 public class GitLabClientTest {

@@ -2,7 +2,7 @@ package tech.kronicle.plugins.sonarqube.services;
 
 import lombok.RequiredArgsConstructor;
 import tech.kronicle.plugins.sonarqube.models.Project;
-import tech.kronicle.pluginutils.FileUtils;
+import tech.kronicle.utils.FileUtils;
 
 import javax.inject.Inject;
 import java.nio.file.Path;

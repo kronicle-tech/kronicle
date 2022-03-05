@@ -6,7 +6,7 @@ import org.slf4j.Logger;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Repository;
 import tech.kronicle.sdk.models.ComponentMetadata;
-import tech.kronicle.pluginutils.ObjectReference;
+import tech.kronicle.utils.ObjectReference;
 import tech.kronicle.sdk.models.Area;
 import tech.kronicle.sdk.models.Component;
 import tech.kronicle.sdk.models.Scanner;

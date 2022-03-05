@@ -14,7 +14,7 @@ import tech.kronicle.plugins.git.testutils.GitRepoHelper;
 import tech.kronicle.plugins.git.testutils.RepoOperationOption;
 import tech.kronicle.plugins.git.testutils.UpdateRemoteRepoOutcome;
 import tech.kronicle.plugintestutils.scanners.BaseScannerTest;
-import tech.kronicle.pluginutils.ThrowableToScannerErrorMapper;
+import tech.kronicle.utils.ThrowableToScannerErrorMapper;
 import tech.kronicle.sdk.models.Component;
 import tech.kronicle.sdk.models.Repo;
 import tech.kronicle.sdk.models.git.Identity;

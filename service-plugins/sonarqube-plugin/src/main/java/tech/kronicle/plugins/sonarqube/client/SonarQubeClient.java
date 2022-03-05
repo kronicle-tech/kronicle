@@ -14,7 +14,7 @@ import tech.kronicle.plugins.sonarqube.models.Project;
 import tech.kronicle.plugins.sonarqube.models.api.Component;
 import tech.kronicle.plugins.sonarqube.models.api.ComponentQualifier;
 import tech.kronicle.plugins.sonarqube.models.api.GetComponentMeasuresResponse;
-import tech.kronicle.pluginutils.HttpStatuses;
+import tech.kronicle.utils.HttpStatuses;
 import tech.kronicle.sdk.models.sonarqube.SonarQubeMeasure;
 import tech.kronicle.sdk.models.sonarqube.SummarySonarQubeMetric;
 
@@ -31,8 +31,8 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 import static java.util.Objects.nonNull;
-import static tech.kronicle.pluginutils.HttpClientFactory.createHttpRequestBuilder;
-import static tech.kronicle.pluginutils.UriTemplateUtils.expandUriTemplate;
+import static tech.kronicle.utils.HttpClientFactory.createHttpRequestBuilder;
+import static tech.kronicle.utils.UriTemplateUtils.expandUriTemplate;
 
 @RequiredArgsConstructor(onConstructor = @__({@Inject}))
 public class SonarQubeClient {

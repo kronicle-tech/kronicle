@@ -7,8 +7,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import tech.kronicle.plugins.gradle.internal.utils.InheritingHashMap;
 import tech.kronicle.plugins.gradle.internal.utils.InheritingHashSet;
-import tech.kronicle.plugintestutils.LogCaptor;
-import tech.kronicle.pluginutils.Comparators;
+import tech.kronicle.testutils.LogCaptor;
+import tech.kronicle.utils.Comparators;
 import tech.kronicle.sdk.models.Software;
 import tech.kronicle.sdk.models.SoftwareType;
 

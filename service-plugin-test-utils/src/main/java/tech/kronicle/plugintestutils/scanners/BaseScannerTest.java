@@ -1,7 +1,7 @@
 package tech.kronicle.plugintestutils.scanners;
 
 import tech.kronicle.pluginapi.scanners.models.Output;
-import tech.kronicle.plugintestutils.BaseTest;
+import tech.kronicle.testutils.BaseTest;
 import tech.kronicle.sdk.models.Component;
 
 import static org.assertj.core.api.Assertions.assertThat;

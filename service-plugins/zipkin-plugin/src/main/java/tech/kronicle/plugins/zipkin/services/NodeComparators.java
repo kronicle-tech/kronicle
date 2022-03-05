@@ -1,6 +1,6 @@
 package tech.kronicle.plugins.zipkin.services;
 
-import tech.kronicle.pluginutils.MapComparator;
+import tech.kronicle.utils.MapComparator;
 import tech.kronicle.sdk.models.SummaryComponentDependencyNode;
 import tech.kronicle.sdk.models.SummarySubComponentDependencyNode;
 

@@ -18,8 +18,8 @@ import tech.kronicle.plugins.github.models.ApiResponseCacheEntry;
 import tech.kronicle.plugins.github.models.api.GitHubContentEntry;
 import tech.kronicle.plugins.github.models.api.GitHubRepo;
 import tech.kronicle.plugins.github.services.ApiResponseCache;
-import tech.kronicle.pluginutils.HttpStatuses;
-import tech.kronicle.pluginutils.UriVariablesBuilder;
+import tech.kronicle.utils.HttpStatuses;
+import tech.kronicle.utils.UriVariablesBuilder;
 
 import javax.inject.Inject;
 import javax.validation.constraints.NotEmpty;
@@ -40,9 +40,9 @@ import java.util.stream.Collectors;
 
 import static java.util.Objects.isNull;
 import static java.util.Objects.nonNull;
-import static tech.kronicle.pluginutils.BasicAuthUtils.basicAuth;
-import static tech.kronicle.pluginutils.HttpClientFactory.createHttpRequestBuilder;
-import static tech.kronicle.pluginutils.UriTemplateUtils.expandUriTemplate;
+import static tech.kronicle.utils.BasicAuthUtils.basicAuth;
+import static tech.kronicle.utils.HttpClientFactory.createHttpRequestBuilder;
+import static tech.kronicle.utils.UriTemplateUtils.expandUriTemplate;
 
 @RequiredArgsConstructor(onConstructor = @__({@Inject}))
 @Slf4j

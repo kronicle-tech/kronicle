@@ -8,8 +8,8 @@ import tech.kronicle.pluginapi.scanners.CodebaseScanner;
 import tech.kronicle.pluginapi.scanners.models.Codebase;
 import tech.kronicle.pluginapi.scanners.models.Output;
 import tech.kronicle.plugins.linesofcode.services.LinesOfCodeCounter;
-import tech.kronicle.pluginutils.FileUtils;
-import tech.kronicle.pluginutils.ObjectReference;
+import tech.kronicle.utils.FileUtils;
+import tech.kronicle.utils.ObjectReference;
 import tech.kronicle.sdk.models.linesofcode.FileExtensionCount;
 import tech.kronicle.sdk.models.linesofcode.LinesOfCode;
 

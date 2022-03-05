@@ -11,7 +11,7 @@ import tech.kronicle.sdk.models.ComponentMetadata;
 import tech.kronicle.pluginapi.constants.KronicleMetadataFilePaths;
 import tech.kronicle.pluginapi.finders.models.ApiRepo;
 import tech.kronicle.pluginapi.git.GitCloner;
-import tech.kronicle.pluginutils.FileUtils;
+import tech.kronicle.utils.FileUtils;
 import tech.kronicle.service.exceptions.ValidationException;
 import tech.kronicle.service.services.RepoFinderService;
 import tech.kronicle.service.services.ValidatorService;

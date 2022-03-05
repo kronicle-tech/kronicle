@@ -10,8 +10,8 @@ import lombok.extern.slf4j.Slf4j;
 import tech.kronicle.plugins.zipkin.config.ZipkinConfig;
 import tech.kronicle.plugins.zipkin.constants.ZipkinApiPaths;
 import tech.kronicle.plugins.zipkin.models.api.Span;
-import tech.kronicle.pluginutils.HttpStatuses;
-import tech.kronicle.pluginutils.UriVariablesBuilder;
+import tech.kronicle.utils.HttpStatuses;
+import tech.kronicle.utils.UriVariablesBuilder;
 import tech.kronicle.sdk.models.zipkin.ZipkinDependency;
 
 import javax.inject.Inject;
@@ -28,8 +28,8 @@ import java.util.List;
 import java.util.Map;
 
 import static java.util.Objects.nonNull;
-import static tech.kronicle.pluginutils.HttpClientFactory.createHttpRequestBuilder;
-import static tech.kronicle.pluginutils.UriTemplateUtils.expandUriTemplate;
+import static tech.kronicle.utils.HttpClientFactory.createHttpRequestBuilder;
+import static tech.kronicle.utils.UriTemplateUtils.expandUriTemplate;
 
 @Slf4j
 public class ZipkinClient {

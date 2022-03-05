@@ -6,7 +6,7 @@ import org.slf4j.Logger;
 import tech.kronicle.pluginapi.scanners.models.Codebase;
 import tech.kronicle.pluginapi.scanners.models.Output;
 import tech.kronicle.plugins.nodejs.internal.services.npm.NpmPackageExtractor;
-import tech.kronicle.pluginutils.FileUtils;
+import tech.kronicle.utils.FileUtils;
 import tech.kronicle.sdk.models.Component;
 import tech.kronicle.sdk.models.Software;
 import tech.kronicle.sdk.models.SoftwareDependencyType;
@@ -15,8 +15,8 @@ import tech.kronicle.sdk.models.SoftwareScope;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static tech.kronicle.pluginutils.FileUtilsFactory.createFileUtils;
-import static tech.kronicle.pluginutils.JsonMapperFactory.createJsonMapper;
+import static tech.kronicle.utils.FileUtilsFactory.createFileUtils;
+import static tech.kronicle.utils.JsonMapperFactory.createJsonMapper;
 
 @Slf4j
 public class NodeJsScannerCodebaseTest extends BaseNodeJsScannerTest {
