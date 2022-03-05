@@ -1,5 +1,7 @@
 package tech.kronicle.pluginutils;
 
+import lombok.SneakyThrows;
+
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
@@ -16,7 +18,8 @@ public class BaseFileCache {
     private final FileUtils fileUtils;
     private final Path cacheDir;
 
-    public BaseFileCache(FileUtils fileUtils, Path cacheDir) throws IOException {
+    @SneakyThrows
+    public BaseFileCache(FileUtils fileUtils, Path cacheDir) {
         this.fileUtils = fileUtils;
         this.cacheDir = cacheDir;
         Files.createDirectories(this.cacheDir);
