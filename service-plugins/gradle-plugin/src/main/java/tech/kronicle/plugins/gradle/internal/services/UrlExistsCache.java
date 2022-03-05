@@ -5,14 +5,13 @@ import tech.kronicle.pluginutils.BaseFileCache;
 import tech.kronicle.pluginutils.FileUtils;
 
 import javax.inject.Inject;
-import java.io.IOException;
 import java.nio.file.Path;
 import java.util.Optional;
 
 public class UrlExistsCache extends BaseFileCache {
 
     @Inject
-    public UrlExistsCache(FileUtils fileUtils, UrlExistsCacheConfig config) throws IOException {
+    public UrlExistsCache(FileUtils fileUtils, UrlExistsCacheConfig config) {
         super(fileUtils, Path.of(config.getDir()));
     }
 

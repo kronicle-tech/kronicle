@@ -5,14 +5,13 @@ import tech.kronicle.pluginutils.BaseFileCache;
 import tech.kronicle.pluginutils.FileUtils;
 
 import javax.inject.Inject;
-import java.io.IOException;
 import java.nio.file.Path;
 import java.util.Optional;
 
 public class PomCache extends BaseFileCache {
 
     @Inject
-    public PomCache(FileUtils fileUtils, PomCacheConfig config) throws IOException {
+    public PomCache(FileUtils fileUtils, PomCacheConfig config) {
         super(fileUtils, Path.of(config.getDir()));
     }
 
