@@ -394,4 +394,20 @@
         <packageUrl regex="true">^pkg:npm/nth\-check@.*$</packageUrl>
         <vulnerabilityName>1020412</vulnerabilityName>
     </suppress>
+    <!-- Suppress a "Regular Expression Denial of Service" vulnerability in an npm package -->
+    <suppress>
+        <notes><![CDATA[
+   file name: glob-parent:3.1.0
+   ]]></notes>
+        <packageUrl regex="true">^pkg:npm/glob\-parent@.*$</packageUrl>
+        <vulnerabilityName>1023233</vulnerabilityName>
+    </suppress>
+    <!-- Suppress an "Inefficient Regular Expression Complexity" vulnerability in an npm package -->
+    <suppress>
+        <notes><![CDATA[
+   file name: nth-check:1.0.2
+   ]]></notes>
+        <packageUrl regex="true">^pkg:npm/nth\-check@.*$</packageUrl>
+        <vulnerabilityName>1023024</vulnerabilityName>
+    </suppress>
 </suppressions>
