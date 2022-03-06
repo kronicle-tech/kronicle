@@ -5,12 +5,12 @@ import com.google.inject.Guice;
 import com.google.inject.Injector;
 import lombok.SneakyThrows;
 import org.junit.jupiter.api.Test;
+import tech.kronicle.gradlestaticanalyzer.config.DownloadCacheConfig;
+import tech.kronicle.gradlestaticanalyzer.config.DownloaderConfig;
+import tech.kronicle.gradlestaticanalyzer.config.GradleStaticAnalyzerConfig;
+import tech.kronicle.gradlestaticanalyzer.config.PomCacheConfig;
+import tech.kronicle.gradlestaticanalyzer.config.UrlExistsCacheConfig;
 import tech.kronicle.plugins.gradle.GradleScanner;
-import tech.kronicle.plugins.gradle.config.DownloadCacheConfig;
-import tech.kronicle.plugins.gradle.config.DownloaderConfig;
-import tech.kronicle.plugins.gradle.config.GradleConfig;
-import tech.kronicle.plugins.gradle.config.PomCacheConfig;
-import tech.kronicle.plugins.gradle.config.UrlExistsCacheConfig;
 
 import java.nio.file.Files;
 import java.time.Duration;
@@ -27,7 +27,7 @@ public class GuiceModuleTest {
         AbstractModule configModule = new AbstractModule() {
             @Override
             protected void configure() {
-                bind(GradleConfig.class).toInstance(new GradleConfig(
+                bind(GradleStaticAnalyzerConfig.class).toInstance(new GradleStaticAnalyzerConfig(
                         null,
                         null,
                         new DownloaderConfig(Duration.ofSeconds(60)),

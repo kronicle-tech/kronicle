@@ -5,8 +5,6 @@ import io.github.resilience4j.retry.RetryConfig;
 import io.github.resilience4j.retry.RetryRegistry;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.junit.jupiter.MockitoExtension;
 import tech.kronicle.pluginapi.scanners.models.Output;
 import tech.kronicle.plugins.zipkin.client.ZipkinClient;
 import tech.kronicle.plugins.zipkin.config.ZipkinConfig;
@@ -46,7 +44,6 @@ import static org.mockito.Mockito.verifyNoInteractions;
 import static tech.kronicle.utils.HttpClientFactory.createHttpClient;
 import static tech.kronicle.utils.JsonMapperFactory.createJsonMapper;
 
-@ExtendWith(MockitoExtension.class)
 public class ZipkinScannerTest extends BaseScannerTest {
 
     private static final int PORT = 36206;

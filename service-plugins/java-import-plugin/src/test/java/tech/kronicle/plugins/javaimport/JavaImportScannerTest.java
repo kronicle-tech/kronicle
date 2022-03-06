@@ -2,8 +2,6 @@ package tech.kronicle.plugins.javaimport;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.junit.jupiter.MockitoExtension;
 import tech.kronicle.pluginapi.scanners.models.Codebase;
 import tech.kronicle.pluginapi.scanners.models.Output;
 import tech.kronicle.plugins.javaimport.services.JavaImportFinder;
@@ -16,7 +14,6 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 import static tech.kronicle.utils.FileUtilsFactory.createFileUtils;
 
-@ExtendWith(MockitoExtension.class)
 public class JavaImportScannerTest extends BaseCodebaseScannerTest {
 
     private JavaImportScanner underTest;

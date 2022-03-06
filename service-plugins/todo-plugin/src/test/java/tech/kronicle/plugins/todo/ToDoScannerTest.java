@@ -1,10 +1,8 @@
 package tech.kronicle.plugins.todo;
 
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-import org.mockito.junit.jupiter.MockitoExtension;
 import tech.kronicle.pluginapi.scanners.models.Codebase;
 import tech.kronicle.pluginapi.scanners.models.Output;
 import tech.kronicle.plugins.todo.internal.services.ToDoFinder;
@@ -20,7 +18,6 @@ import java.util.stream.Collectors;
 import static org.assertj.core.api.Assertions.assertThat;
 import static tech.kronicle.utils.FileUtilsFactory.createFileUtils;
 
-@ExtendWith(MockitoExtension.class)
 public class ToDoScannerTest extends BaseCodebaseScannerTest {
 
     private final ToDoScanner underTest = new ToDoScanner(createFileUtils(), new ToDoFinder());

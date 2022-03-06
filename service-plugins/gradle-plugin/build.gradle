@@ -5,34 +5,6 @@ plugins {
     id "com.github.johnrengelman.shadow"
 }
 
-testing {
-    suites {
-        test {
-            useJUnitJupiter()
-        }
-
-        realCodebaseTest(JvmTestSuite) {
-            dependencies {
-                implementation project
-            }
-
-            targets {
-                all {
-                    testTask.configure {
-                        shouldRunAfter(test)
-                    }
-                }
-            }
-        }
-    }
-}
-
-configurations {
-    realCodebaseTestImplementation.extendsFrom testImplementation
-    realCodebaseTestAnnotationProcessor.extendsFrom testAnnotationProcessor
-    realCodebaseTestCompileOnly.extendsFrom testCompileOnly
-}
-
 dependencies {
     annotationProcessor platform("org.springframework.boot:spring-boot-dependencies:$springBootVersion")
     implementation platform("org.springframework.boot:spring-boot-dependencies:$springBootVersion")
@@ -47,15 +19,7 @@ dependencies {
 
     implementation project(":service-plugin-guice")
     implementation project(":service-utils")
-    implementation "tech.kronicle:gradle-version-logic:$gradleVersionLogicVersion"
-    implementation "io.github.resilience4j:resilience4j-retry:$resilience4jVersion"
-    implementation "com.fasterxml.jackson.core:jackson-core"
-    implementation "com.fasterxml.jackson.core:jackson-databind"
-    // See https://stackoverflow.com/a/43574427
-    implementation "jakarta.xml.bind:jakarta.xml.bind-api:$jakartaXmlBindVersion"
-    implementation "com.sun.xml.bind:jaxb-impl:$eclipseJaxbVersion"
-    implementation "org.codehaus.groovy:groovy:$groovyVersion"
-    implementation "com.google.guava:guava:$guavaVersion"
+    implementation "tech.kronicle:gradle-static-analyzer:$gradleStaticAnalyzerVersion"
 
     testImplementation project(":service-plugin-test-utils")
     testImplementation "org.junit.jupiter:junit-jupiter"
@@ -63,7 +27,6 @@ dependencies {
     testImplementation "org.assertj:assertj-core"
     testImplementation "org.mockito:mockito-core"
     testImplementation "org.mockito:mockito-junit-jupiter"
-    testImplementation "com.github.tomakehurst:wiremock-jre8:$wireMockVersion"
 }
 
 shadowJar {
