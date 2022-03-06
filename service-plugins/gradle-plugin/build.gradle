@@ -29,16 +29,6 @@ dependencies {
     testImplementation "org.mockito:mockito-junit-jupiter"
 }
 
-shadowJar {
-  minimize {
-      exclude(dependency("org.codehaus.groovy:groovy:"))
-      exclude(dependency("org.hibernate.validator:hibernate-validator:"))
-      exclude(dependency("com.fasterxml.jackson.core:jackson-core:"))
-      exclude(dependency("com.sun.xml.bind:jaxb-impl:"))
-      exclude(dependency("com.google.guava:guava:"))
-  }
-}
-
 tasks.register("copyPlugin", Copy) {
     dependsOn(shadowJar)
 
