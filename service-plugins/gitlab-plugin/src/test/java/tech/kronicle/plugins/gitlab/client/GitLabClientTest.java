@@ -3,10 +3,8 @@ package tech.kronicle.plugins.gitlab.client;
 import com.github.tomakehurst.wiremock.WireMockServer;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
-import org.mockito.junit.jupiter.MockitoExtension;
 import tech.kronicle.pluginapi.finders.models.ApiRepo;
 import tech.kronicle.plugins.gitlab.config.GitLabConfig;
 import tech.kronicle.plugins.gitlab.config.GitLabGroupConfig;
@@ -23,7 +21,6 @@ import static org.assertj.core.api.Assertions.catchThrowable;
 import static tech.kronicle.utils.HttpClientFactory.createHttpClient;
 import static tech.kronicle.utils.JsonMapperFactory.createJsonMapper;
 
-@ExtendWith(MockitoExtension.class)
 public class GitLabClientTest {
 
     private static final String baseUrl = "http://localhost:" + GitLabApiWireMockFactory.PORT;

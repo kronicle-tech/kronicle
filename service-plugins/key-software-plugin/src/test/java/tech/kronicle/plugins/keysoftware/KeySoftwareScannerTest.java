@@ -1,8 +1,6 @@
 package tech.kronicle.plugins.keysoftware;
 
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.junit.jupiter.MockitoExtension;
 import tech.kronicle.pluginapi.scanners.models.Output;
 import tech.kronicle.plugins.keysoftware.config.KeySoftwareRuleConfig;
 import tech.kronicle.plugins.keysoftware.services.KeySoftwareRuleProvider;
@@ -17,7 +15,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-@ExtendWith(MockitoExtension.class)
 public class KeySoftwareScannerTest extends BaseScannerTest {
 
     @Test

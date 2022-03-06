@@ -3,8 +3,6 @@ package tech.kronicle.plugins.datadog.dependencies.client;
 import com.github.tomakehurst.wiremock.WireMockServer;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.junit.jupiter.MockitoExtension;
 import tech.kronicle.plugins.datadog.config.DatadogConfig;
 import tech.kronicle.sdk.models.Dependency;
 
@@ -15,7 +13,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static tech.kronicle.utils.HttpClientFactory.createHttpClient;
 import static tech.kronicle.utils.JsonMapperFactory.createJsonMapper;
 
-@ExtendWith(MockitoExtension.class)
 public class DatadogDependencyClientTest {
 
     private static final String baseUrl = "http://localhost:" + DatadogApiWireMockFactory.PORT;
