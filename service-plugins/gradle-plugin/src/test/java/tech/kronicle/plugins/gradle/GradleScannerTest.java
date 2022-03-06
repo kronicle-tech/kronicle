@@ -5,6 +5,8 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import tech.kronicle.gradlestaticanalyzer.GradleAnalysis;
+import tech.kronicle.gradlestaticanalyzer.GradleStaticAnalyzer;
 import tech.kronicle.pluginapi.scanners.models.Codebase;
 import tech.kronicle.pluginapi.scanners.models.Output;
 import tech.kronicle.plugintestutils.scanners.BaseCodebaseScannerTest;

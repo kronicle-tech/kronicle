@@ -4,6 +4,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.pf4j.Extension;
 import tech.kronicle.common.StringEscapeUtils;
+import tech.kronicle.gradlestaticanalyzer.GradleAnalysis;
+import tech.kronicle.gradlestaticanalyzer.GradleStaticAnalyzer;
 import tech.kronicle.pluginapi.scanners.CodebaseScanner;
 import tech.kronicle.pluginapi.scanners.models.Codebase;
 import tech.kronicle.pluginapi.scanners.models.Output;
