@@ -101,6 +101,7 @@ public class ComponentRepositoryTest {
                         .components(List.of(Component.builder()
                                 .id("test-component-id")
                                 .name("Test Component Name")
+                                .discovered(false)
                                 .typeId("test-component-type-id")
                                 .tags(List.of("test-component-tag-1", "test-component-tag-2"))
                                 .repo(Repo.builder().url("https://example.com/example.git").build())
@@ -838,6 +839,7 @@ public class ComponentRepositoryTest {
         return Component.builder()
                 .id(createTestComponentId(uniquePart))
                 .name("Test Component Name " + uniquePart)
+                .discovered(false)
                 .typeId("test-component-type-id-" + uniquePart)
                 .repo(Repo.builder().url("https://example.com/example-" + uniquePart.toLowerCase() + ".git").build());
     }

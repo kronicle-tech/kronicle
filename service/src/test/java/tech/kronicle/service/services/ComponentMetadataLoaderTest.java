@@ -314,6 +314,7 @@ public class ComponentMetadataLoaderTest {
                 new SimplifiedLogEvent(Level.INFO, "Loaded 1 components"));
         assertThat(logCaptor.getEvents().get(4).getThrowableProxy().getMessage()).isEqualTo(""
                 + "Failed to validate tech.kronicle.sdk.models.Component with reference \"test-component-id-1\". Violations:\n"
+                + "- discovered with value \"null\" must not be null\n"
                 + "- name with value \"null\" must not be blank\n"
                 + "- repo with value \"null\" must not be null\n"
                 + "- typeId with value \"null\" must not be blank");
@@ -538,6 +539,7 @@ public class ComponentMetadataLoaderTest {
                 .builder()
                 .id("test-component-id-" + idNumber)
                 .name("Test Component Name " + othersNumber)
+                .discovered(false)
                 .repo(Repo.builder().url("http://example.com/test-repo-" + othersNumber + ".git").build())
                 .typeId("test-component-type-id-" + othersNumber);
     }
