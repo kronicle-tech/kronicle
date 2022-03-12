@@ -19,6 +19,7 @@ dependencies {
     testCompileOnly "com.github.spotbugs:spotbugs-annotations:$spotBugsVersion"
 
     implementation project(":service-plugin-guice")
+    implementation "software.amazon.awssdk:url-connection-client"
     implementation "software.amazon.awssdk:xray"
 
     testImplementation project(":service-plugin-test-utils")
@@ -33,6 +34,7 @@ shadowJar {
   minimize {
       exclude(dependency("org.hibernate.validator:hibernate-validator:"))
       exclude(dependency("com.fasterxml.jackson.core:jackson-databind:"))
+      exclude(dependency("software.amazon.awssdk:url-connection-client:"))
   }
 }
 

@@ -36,7 +36,6 @@ public class Component implements ObjectWithId, ObjectWithReference {
     List<Alias> aliases;
     @NotBlank
     String name;
-    @NotNull
     Boolean discovered;
     @NotBlank
     @Pattern(regexp = "[a-z][a-z0-9]*(-[a-z0-9]+)*")

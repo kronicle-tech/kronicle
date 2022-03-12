@@ -278,24 +278,6 @@ public class ComponentMetadataRepositoryTest extends BaseTest {
                 "test-component-2");
     }
 
-    @Test
-    public void getComponentMetadataShouldSetDiscoverableToFalseForEveryComponent() {
-        // Given
-        when(mockGitCloner.cloneOrPullRepo(REPO_URL_1)).thenReturn(getResourcesDir("Repo1"));
-        mockRepoFinderService(new ApiRepo(REPO_URL_1, true));
-        underTest = createUnderTest();
-
-        // When
-        ComponentMetadata returnValue = underTest.getComponentMetadata();
-
-        // Then
-        assertThat(returnValue.getComponents()).hasSize(2);
-        assertThat(returnValue.getComponents().stream().map(Component::getDiscovered).collect(Collectors.toList())).containsExactly(
-                false,
-                false
-        );
-    }
-
     private ComponentMetadataRepository createUnderTest() {
         return new ComponentMetadataRepository(mockRepoFinderService, mockGitCloner, createFileUtils(), new YAMLMapper(), validatorService);
     }

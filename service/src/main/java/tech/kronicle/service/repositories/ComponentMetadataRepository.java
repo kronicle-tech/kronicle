@@ -62,7 +62,6 @@ public class ComponentMetadataRepository {
                 .filter(Objects::nonNull)
                 .map(this::readComponentMetadataYaml)
                 .filter(Objects::nonNull)
-                .map(this::setNotDiscovered)
                 .map(this::validateComponentMetadata)
                 .filter(Objects::nonNull)
                 .collect(Collectors.toList());
@@ -111,23 +110,6 @@ public class ComponentMetadataRepository {
             logError(repoAndYaml.repo, e);
             return null;
         }
-    }
-
-    private RepoAndComponentMetadata setNotDiscovered(RepoAndComponentMetadata repoAndComponentMetadata) {
-        return new RepoAndComponentMetadata(
-                repoAndComponentMetadata.repo,
-                setNotDiscovered(repoAndComponentMetadata.componentMetadata)
-        );
-    }
-
-    private ComponentMetadata setNotDiscovered(ComponentMetadata componentMetadata) {
-        return componentMetadata.withComponents(setNotDiscovered(componentMetadata.getComponents()));
-    }
-
-    private List<Component> setNotDiscovered(List<Component> components) {
-        return components.stream()
-                .map(component -> component.withDiscovered(false))
-                .collect(Collectors.toList());
     }
 
     private ComponentMetadata validateComponentMetadata(RepoAndComponentMetadata repoAndComponentMetadata) {

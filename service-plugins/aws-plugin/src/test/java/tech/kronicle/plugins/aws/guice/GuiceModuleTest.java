@@ -19,7 +19,7 @@ public class GuiceModuleTest {
         AbstractModule configModule = new AbstractModule() {
             @Override
             protected void configure() {
-                bind(AwsConfig.class).toInstance(new AwsConfig());
+                bind(AwsConfig.class).toInstance(new AwsConfig(null));
             }
         };
         Injector guiceInjector = Guice.createInjector(underTest, configModule);

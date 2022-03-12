@@ -1,11 +1,12 @@
 package tech.kronicle.plugins.aws.services;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import tech.kronicle.plugins.aws.xray.models.Service;
+import tech.kronicle.plugins.aws.config.AwsConfig;
+import tech.kronicle.plugins.aws.config.AwsProfileConfig;
+import tech.kronicle.plugins.aws.xray.models.XRayDependency;
 import tech.kronicle.plugins.aws.xray.services.DependencyAssembler;
 import tech.kronicle.plugins.aws.xray.services.DependencyService;
 import tech.kronicle.plugins.aws.xray.services.XRayServiceGraphFetcher;
@@ -25,19 +26,16 @@ public class DependencyServiceTest {
     @Mock
     public DependencyAssembler assembler;
 
-    @BeforeEach
-    public void beforeEach() {
-        underTest = new DependencyService(fetcher, assembler);
-    }
-
     @Test
-    public void getDependenciesShouldFetchAServiceGraphAndAssembleDependencies() {
+    public void getDependenciesShouldFetchAServiceGraphForAProfileAndRegionAndAssembleDependencies() {
         // Given
-        List<Service> services = List.of(
-                new Service("test-service-1", null, null),
-                new Service("test-service-2", null, null)
+        AwsProfileConfig profile = new AwsProfileConfig(null, null, List.of("test-region-1"));
+        underTest = createUnderTest(List.of(profile));
+        List<XRayDependency> services = List.of(
+                createDependency(1),
+                createDependency(2)
         );
-        when(fetcher.getServiceGraph()).thenReturn(services);
+        when(fetcher.getServiceGraph(profile, "test-region-1")).thenReturn(services);
         List<Dependency> dependencies = List.of(
                 Dependency.builder()
                         .sourceComponentId("test-source-component-id-1")
@@ -55,5 +53,134 @@ public class DependencyServiceTest {
 
         // Then
         assertThat(returnValue).isEqualTo(dependencies);
+    }
+
+    @Test
+    public void getDependenciesShouldFetchAServiceGraphForAProfileAndMultipleRegionsAndAssembleDependencies() {
+        // Given
+        AwsProfileConfig profile = new AwsProfileConfig(null, null, List.of(
+                "test-region-1",
+                "test-region-2"
+        ));
+        underTest = createUnderTest(List.of(profile));
+        XRayDependency service1 = createDependency(1);
+        XRayDependency service2 = createDependency(2);
+        XRayDependency service3 = createDependency(3);
+        XRayDependency service4 = createDependency(4);
+        when(fetcher.getServiceGraph(profile, "test-region-1")).thenReturn(List.of(
+                service1,
+                service2
+        ));
+        when(fetcher.getServiceGraph(profile, "test-region-2")).thenReturn(List.of(
+                service3,
+                service4
+        ));
+        List<Dependency> dependencies = List.of(
+                Dependency.builder()
+                        .sourceComponentId("test-source-component-id-1")
+                        .targetComponentId("test-target-component-id-2")
+                        .build(),
+                Dependency.builder()
+                        .sourceComponentId("test-source-component-id-3")
+                        .targetComponentId("test-target-component-id-4")
+                        .build()
+        );
+        when(assembler.assembleDependencies(List.of(
+                service1,
+                service2,
+                service3,
+                service4
+        ))).thenReturn(dependencies);
+
+        // When
+        List<Dependency> returnValue = underTest.getDependencies();
+
+        // Then
+        assertThat(returnValue).isEqualTo(dependencies);
+    }
+
+    @Test
+    public void getDependenciesShouldFetchAServiceGraphForMultipleProfilesAndMultipleRegionsAndAssembleDependencies() {
+        // Given
+        AwsProfileConfig profile1 = new AwsProfileConfig(null, null, List.of(
+                "test-region-1",
+                "test-region-2"
+        ));
+        AwsProfileConfig profile2 = new AwsProfileConfig(null, null, List.of(
+                "test-region-3",
+                "test-region-4"
+        ));
+        underTest = createUnderTest(List.of(profile1, profile2));
+        XRayDependency dependency1 = createDependency(1);
+        XRayDependency dependency2 = createDependency(2);
+        XRayDependency dependency3 = createDependency(3);
+        XRayDependency dependency4 = createDependency(4);
+        XRayDependency dependency5 = createDependency(5);
+        XRayDependency dependency6 = createDependency(6);
+        XRayDependency dependency7 = createDependency(7);
+        XRayDependency dependency8 = createDependency(8);
+        when(fetcher.getServiceGraph(profile1, "test-region-1")).thenReturn(List.of(
+                dependency1,
+                dependency2
+        ));
+        when(fetcher.getServiceGraph(profile1, "test-region-2")).thenReturn(List.of(
+                dependency3,
+                dependency4
+        ));
+        when(fetcher.getServiceGraph(profile2, "test-region-3")).thenReturn(List.of(
+                dependency5,
+                dependency6
+        ));
+        when(fetcher.getServiceGraph(profile2, "test-region-4")).thenReturn(List.of(
+                dependency7,
+                dependency8
+        ));
+        List<Dependency> dependencies = List.of(
+                Dependency.builder()
+                        .sourceComponentId("test-source-component-id-1")
+                        .targetComponentId("test-target-component-id-2")
+                        .build(),
+                Dependency.builder()
+                        .sourceComponentId("test-source-component-id-3")
+                        .targetComponentId("test-target-component-id-4")
+                        .build()
+        );
+        when(assembler.assembleDependencies(List.of(
+                dependency1,
+                dependency2,
+                dependency3,
+                dependency4,
+                dependency5,
+                dependency6,
+                dependency7,
+                dependency8
+        ))).thenReturn(dependencies);
+
+        // When
+        List<Dependency> returnValue = underTest.getDependencies();
+
+        // Then
+        assertThat(returnValue).isEqualTo(dependencies);
+    }
+
+    private XRayDependency createDependency(int dependencyNumber) {
+        return new XRayDependency(
+                List.of(
+                        createServiceName(dependencyNumber, 1),
+                        createServiceName(dependencyNumber, 2)
+                ),
+                List.of(
+                        createServiceName(dependencyNumber, 3),
+                        createServiceName(dependencyNumber, 4)
+                )
+        );
+    }
+
+    private String createServiceName(int dependencyNumber, int serviceNameNumber) {
+        return "test-dependency-" + dependencyNumber + "-" + serviceNameNumber;
+    }
+
+    private DependencyService createUnderTest(List<AwsProfileConfig> profiles) {
+        return new DependencyService(fetcher, assembler, new AwsConfig(profiles));
     }
 }

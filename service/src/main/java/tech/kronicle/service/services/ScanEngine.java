@@ -38,13 +38,17 @@ import static java.util.Objects.nonNull;
 @Slf4j
 public class ScanEngine {
 
+    private final MasterComponentFinder masterComponentFinder;
     private final MasterDependencyFinder masterDependencyFinder;
     private final ScannerExtensionRegistry scannerRegistry;
     private final ValidatorService validatorService;
     private final ThrowableToScannerErrorMapper throwableToScannerErrorMapper;
 
     public void scan(ComponentMetadata componentMetadata, ConcurrentHashMap<String, Component> componentMap, Consumer<Summary> summaryConsumer) {
-        List<Dependency> dependencies = masterDependencyFinder.getDependencies(componentMetadata);
+        List<Component> extraComponents = masterComponentFinder.findComponents(componentMetadata);
+        addExtraComponents(componentMap, extraComponents);
+
+        List<Dependency> dependencies = masterDependencyFinder.findDependencies(componentMetadata);
 
         ObjectReference<Summary> summary = new ObjectReference<>(Summary.EMPTY);
         Consumer<UnaryOperator<Summary>> summaryTransformerConsumer = summaryTransformer -> {
@@ -88,6 +92,10 @@ public class ScanEngine {
                 componentMap,
                 scanner,
                 summaryTransformerConsumer));
+    }
+
+    private void addExtraComponents(ConcurrentHashMap<String, Component> componentMap, List<Component> extraComponents) {
+        extraComponents.forEach(component -> componentMap.put(component.getId(), component));
     }
 
     /**

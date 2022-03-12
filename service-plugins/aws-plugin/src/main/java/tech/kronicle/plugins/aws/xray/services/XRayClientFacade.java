@@ -2,50 +2,55 @@ package tech.kronicle.plugins.aws.xray.services;
 
 import lombok.RequiredArgsConstructor;
 import software.amazon.awssdk.services.xray.XRayClient;
-import software.amazon.awssdk.services.xray.model.GetServiceGraphRequest;
 import software.amazon.awssdk.services.xray.model.GetServiceGraphResponse;
-import tech.kronicle.plugins.aws.xray.models.Alias;
-import tech.kronicle.plugins.aws.xray.models.Edge;
-import tech.kronicle.plugins.aws.xray.models.Service;
-import tech.kronicle.plugins.aws.xray.models.ServiceGraphPage;
+import software.amazon.awssdk.services.xray.model.Service;
+import tech.kronicle.plugins.aws.xray.models.XRayDependency;
+import tech.kronicle.plugins.aws.xray.models.XRayServiceGraphPage;
 
-import javax.inject.Inject;
 import java.time.Instant;
 import java.util.List;
+import java.util.Map;
+import java.util.function.Function;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
-@RequiredArgsConstructor(onConstructor = @__({@Inject}))
-public class XRayClientFacade {
+@RequiredArgsConstructor
+public class XRayClientFacade implements AutoCloseable {
 
-    private XRayClient client;
+    private final XRayClient client;
 
-    public ServiceGraphPage getServiceGraph(Instant startTime, Instant endTime, String nextToken) {
-        GetServiceGraphResponse serviceGraph = client.getServiceGraph(GetServiceGraphRequest.builder()
+    @Override
+    public void close() {
+        client.close();
+    }
+
+    public XRayServiceGraphPage getServiceGraph(Instant startTime, Instant endTime, String nextToken) {
+        GetServiceGraphResponse serviceGraph = client.getServiceGraph(builder -> builder
                 .startTime(startTime)
                 .endTime(endTime)
-                .nextToken(nextToken)
-                .build());
-        return new ServiceGraphPage(
+                .nextToken(nextToken));
+        return new XRayServiceGraphPage(
                 mapServices(serviceGraph.services()),
                 serviceGraph.nextToken()
         );
     }
 
-    private List<Service> mapServices(List<software.amazon.awssdk.services.xray.model.Service> services) {
+    private List<XRayDependency> mapServices(List<Service> services) {
+        Map<Integer, Service> serviceMap = getServiceMap(services);
         return services.stream()
-                .map(service -> new Service(service.name(), service.names(), mapEdges(service.edges())))
+                .flatMap(service -> mapEdges(service, serviceMap))
                 .collect(Collectors.toList());
     }
 
-    private List<Edge> mapEdges(List<software.amazon.awssdk.services.xray.model.Edge> edges) {
-        return edges.stream()
-                .map(edge -> new Edge(mapAliases(edge.aliases())))
-                .collect(Collectors.toList());
+    private Map<Integer, Service> getServiceMap(List<Service> services) {
+        return services.stream()
+                .collect(Collectors.toMap(Service::referenceId, Function.identity()));
     }
 
-    private List<Alias> mapAliases(List<software.amazon.awssdk.services.xray.model.Alias> aliases) {
-        return aliases.stream()
-                .map(alias -> new Alias(alias.name(), alias.names()))
-                .collect(Collectors.toList());
+    private Stream<XRayDependency> mapEdges(Service service, Map<Integer, Service> serviceMap) {
+        return service.edges().stream().map(edge -> new XRayDependency(
+                service.names(),
+                serviceMap.get(edge.referenceId()).names())
+        );
     }
 }

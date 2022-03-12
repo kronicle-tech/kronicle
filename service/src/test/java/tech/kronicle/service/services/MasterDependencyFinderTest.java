@@ -44,7 +44,7 @@ public class MasterDependencyFinderTest {
     }
 
     @Test
-    public void getDependenciesShouldReturnAllDependenciesFromAllDependencyFinders() {
+    public void findDependenciesShouldReturnAllDependenciesFromAllDependencyFinders() {
         // Given
         underTest = new MasterDependencyFinder(finderRegistry, componentAliasResolver);
         when(finderRegistry.getDependencyFinders()).thenReturn(List.of(dependencyFinder1, dependencyFinder2));
@@ -58,14 +58,14 @@ public class MasterDependencyFinderTest {
         when(dependencyFinder2.find(componentMetadata)).thenReturn(List.of(dependency3, dependency4));
 
         // When
-        List<Dependency> returnValue = underTest.getDependencies(componentMetadata);
+        List<Dependency> returnValue = underTest.findDependencies(componentMetadata);
 
         // Then
         assertThat(returnValue).containsExactly(dependency1, dependency2, dependency3, dependency4);
     }
 
     @Test
-    public void getDependenciesShouldDeduplicateDependencies() {
+    public void findDependenciesShouldDeduplicateDependencies() {
         // Given
         underTest = new MasterDependencyFinder(finderRegistry, componentAliasResolver);
         when(finderRegistry.getDependencyFinders()).thenReturn(List.of(dependencyFinder1, dependencyFinder2));
@@ -78,14 +78,14 @@ public class MasterDependencyFinderTest {
         when(dependencyFinder2.find(componentMetadata)).thenReturn(List.of(dependency2, dependency3));
 
         // When
-        List<Dependency> returnValue = underTest.getDependencies(componentMetadata);
+        List<Dependency> returnValue = underTest.findDependencies(componentMetadata);
 
         // Then
         assertThat(returnValue).containsExactly(dependency1, dependency2, dependency3);
     }
 
     @Test
-    public void getDependenciesShouldMapComponentAliasIds() {
+    public void findDependenciesShouldMapComponentAliasIds() {
         // Given
         underTest = new MasterDependencyFinder(finderRegistry, componentAliasResolver);
         when(finderRegistry.getDependencyFinders()).thenReturn(List.of(dependencyFinder1, dependencyFinder2));
@@ -108,7 +108,7 @@ public class MasterDependencyFinderTest {
         ));
 
         // When
-        List<Dependency> returnValue = underTest.getDependencies(componentMetadata);
+        List<Dependency> returnValue = underTest.findDependencies(componentMetadata);
 
         // Then
         assertThat(returnValue).containsExactly(
@@ -120,7 +120,7 @@ public class MasterDependencyFinderTest {
     }
 
     @Test
-    public void getDependenciesShouldDeduplicateMappedComponentAliasIds() {
+    public void findDependenciesShouldDeduplicateMappedComponentAliasIds() {
         // Given
         underTest = new MasterDependencyFinder(finderRegistry, componentAliasResolver);
         when(finderRegistry.getDependencyFinders()).thenReturn(List.of(dependencyFinder1, dependencyFinder2));
@@ -147,7 +147,7 @@ public class MasterDependencyFinderTest {
         ));
 
         // When
-        List<Dependency> returnValue = underTest.getDependencies(componentMetadata);
+        List<Dependency> returnValue = underTest.findDependencies(componentMetadata);
 
         // Then
         assertThat(returnValue).containsExactly(
@@ -159,7 +159,7 @@ public class MasterDependencyFinderTest {
     }
 
     @Test
-    public void getDependenciesShouldLogAndIgnoreAnExceptionWhenExecutingDependencyFinders() {
+    public void findDependenciesShouldLogAndIgnoreAnExceptionWhenExecutingDependencyFinders() {
         // Given
         underTest = new MasterDependencyFinder(finderRegistry, componentAliasResolver);
         when(finderRegistry.getDependencyFinders()).thenReturn(List.of(dependencyFinder1, dependencyFinder2));
@@ -173,7 +173,7 @@ public class MasterDependencyFinderTest {
         when(dependencyFinder2.find(componentMetadata)).thenReturn(List.of(dependency1, dependency2));
 
         // When
-        List<Dependency> returnValue = underTest.getDependencies(componentMetadata);
+        List<Dependency> returnValue = underTest.findDependencies(componentMetadata);
 
         // Then
         assertThat(returnValue).containsExactly(dependency1, dependency2);

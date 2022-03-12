@@ -5,8 +5,8 @@ import lombok.Value;
 import java.util.List;
 
 @Value
-public class ServiceGraphPage {
+public class XRayServiceGraphPage {
 
-    List<Service> services;
+    List<XRayDependency> dependencies;
     String nextPage;
 }
