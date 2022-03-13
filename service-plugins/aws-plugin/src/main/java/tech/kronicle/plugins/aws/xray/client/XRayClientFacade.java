@@ -1,4 +1,4 @@
-package tech.kronicle.plugins.aws.xray.services;
+package tech.kronicle.plugins.aws.xray.client;
 
 import lombok.RequiredArgsConstructor;
 import software.amazon.awssdk.services.xray.XRayClient;

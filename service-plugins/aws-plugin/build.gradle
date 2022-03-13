@@ -20,6 +20,7 @@ dependencies {
 
     implementation project(":service-plugin-guice")
     implementation "software.amazon.awssdk:url-connection-client"
+    implementation "software.amazon.awssdk:resourcegroupstaggingapi"
     implementation "software.amazon.awssdk:xray"
 
     testImplementation project(":service-plugin-test-utils")

@@ -1,9 +1,10 @@
 package tech.kronicle.plugins.aws.xray.services;
 
 import lombok.RequiredArgsConstructor;
-import tech.kronicle.plugins.aws.config.AwsProfileConfig;
+import tech.kronicle.plugins.aws.models.AwsProfileAndRegion;
+import tech.kronicle.plugins.aws.xray.client.XRayClientFacade;
+import tech.kronicle.plugins.aws.xray.client.XRayClientFacadeFactory;
 import tech.kronicle.plugins.aws.xray.models.XRayDependency;
-import tech.kronicle.plugins.aws.xray.models.XRayServiceGraphPage;
 
 import javax.inject.Inject;
 import java.time.Clock;
@@ -12,7 +13,7 @@ import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
 
-import static java.util.Objects.nonNull;
+import static tech.kronicle.plugins.aws.utils.PageFetcher.fetchAllPages;
 
 @RequiredArgsConstructor(onConstructor = @__({@Inject}))
 public class XRayServiceGraphFetcher {
@@ -22,21 +23,19 @@ public class XRayServiceGraphFetcher {
     private final XRayClientFacadeFactory clientFacadeFactory;
     private final Clock clock;
 
-    public List<XRayDependency> getServiceGraph(AwsProfileConfig profile, String region) {
-        try (XRayClientFacade clientFacade = clientFacadeFactory.createXRayClientFacade(profile, region)) {
+    public List<XRayDependency> getServiceGraph(AwsProfileAndRegion profileAndRegion) {
+        try (XRayClientFacade clientFacade = clientFacadeFactory.createXRayClientFacade(profileAndRegion)) {
             Instant endTime = clock.instant();
             Instant currentStartTime = getStartTime(endTime);
             List<XRayDependency> dependencies = new ArrayList<>();
 
             while (currentStartTime.isBefore(endTime)) {
+                Instant currentStartTime2 = currentStartTime;
                 Instant currentEndTime = currentStartTime.plus(FETCH_INTERVAL_IN_HOURS, ChronoUnit.HOURS);
-                String nextToken;
 
-                do {
-                    XRayServiceGraphPage page = clientFacade.getServiceGraph(currentStartTime, currentEndTime, null);
-                    dependencies.addAll(page.getDependencies());
-                    nextToken = page.getNextPage();
-                } while (nonNull(nextToken));
+                dependencies.addAll(fetchAllPages(
+                        nextToken -> clientFacade.getServiceGraph(currentStartTime2, currentEndTime, nextToken)
+                ));
 
                 currentStartTime = currentEndTime;
             }

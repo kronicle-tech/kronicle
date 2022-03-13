@@ -6,6 +6,7 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import tech.kronicle.plugins.aws.config.AwsConfig;
 import tech.kronicle.plugins.aws.config.AwsProfileConfig;
+import tech.kronicle.plugins.aws.models.AwsProfileAndRegion;
 import tech.kronicle.plugins.aws.xray.models.XRayDependency;
 import tech.kronicle.plugins.aws.xray.services.DependencyAssembler;
 import tech.kronicle.plugins.aws.xray.services.DependencyService;
@@ -35,7 +36,7 @@ public class DependencyServiceTest {
                 createDependency(1),
                 createDependency(2)
         );
-        when(fetcher.getServiceGraph(profile, "test-region-1")).thenReturn(services);
+        when(fetcher.getServiceGraph(new AwsProfileAndRegion(profile, "test-region-1"))).thenReturn(services);
         List<Dependency> dependencies = List.of(
                 Dependency.builder()
                         .sourceComponentId("test-source-component-id-1")
@@ -67,11 +68,11 @@ public class DependencyServiceTest {
         XRayDependency service2 = createDependency(2);
         XRayDependency service3 = createDependency(3);
         XRayDependency service4 = createDependency(4);
-        when(fetcher.getServiceGraph(profile, "test-region-1")).thenReturn(List.of(
+        when(fetcher.getServiceGraph(new AwsProfileAndRegion(profile, "test-region-1"))).thenReturn(List.of(
                 service1,
                 service2
         ));
-        when(fetcher.getServiceGraph(profile, "test-region-2")).thenReturn(List.of(
+        when(fetcher.getServiceGraph(new AwsProfileAndRegion(profile, "test-region-2"))).thenReturn(List.of(
                 service3,
                 service4
         ));
@@ -119,19 +120,19 @@ public class DependencyServiceTest {
         XRayDependency dependency6 = createDependency(6);
         XRayDependency dependency7 = createDependency(7);
         XRayDependency dependency8 = createDependency(8);
-        when(fetcher.getServiceGraph(profile1, "test-region-1")).thenReturn(List.of(
+        when(fetcher.getServiceGraph(new AwsProfileAndRegion(profile1, "test-region-1"))).thenReturn(List.of(
                 dependency1,
                 dependency2
         ));
-        when(fetcher.getServiceGraph(profile1, "test-region-2")).thenReturn(List.of(
+        when(fetcher.getServiceGraph(new AwsProfileAndRegion(profile1, "test-region-2"))).thenReturn(List.of(
                 dependency3,
                 dependency4
         ));
-        when(fetcher.getServiceGraph(profile2, "test-region-3")).thenReturn(List.of(
+        when(fetcher.getServiceGraph(new AwsProfileAndRegion(profile2, "test-region-3"))).thenReturn(List.of(
                 dependency5,
                 dependency6
         ));
-        when(fetcher.getServiceGraph(profile2, "test-region-4")).thenReturn(List.of(
+        when(fetcher.getServiceGraph(new AwsProfileAndRegion(profile2, "test-region-4"))).thenReturn(List.of(
                 dependency7,
                 dependency8
         ));
