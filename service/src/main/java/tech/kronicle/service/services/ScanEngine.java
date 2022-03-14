@@ -28,6 +28,7 @@ import java.util.Objects;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.function.Consumer;
 import java.util.function.Function;
+import java.util.function.Predicate;
 import java.util.function.UnaryOperator;
 import java.util.stream.Collectors;
 
@@ -113,7 +114,12 @@ public class ScanEngine {
 
     private Map<Repo, List<String>> getRepoAndComponentIdsMap(ConcurrentHashMap<String, Component> componentMap) {
         return componentMap.values().stream()
+                .filter(this::componentHasRepo)
                 .collect(Collectors.groupingBy(Component::getRepo, Collectors.mapping(Component::getId, Collectors.toList())));
+    }
+
+    private boolean componentHasRepo(Component component) {
+        return nonNull(component.getRepo());
     }
 
     /**

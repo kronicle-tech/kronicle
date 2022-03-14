@@ -353,18 +353,12 @@ public class ScanEngineTest {
                 new ScanLogEntry("TestRepoScanner", "test-repo-url-a"),
                 new ScanLogEntry("TestRepoScanner", "test-repo-url-b"),
                 new ScanLogEntry("TestRepoScanner", "test-repo-url-c"),
-                new ScanLogEntry("TestRepoScanner", "test-repo-url-extra-1"),
-                new ScanLogEntry("TestRepoScanner", "test-repo-url-extra-2"),
                 new ScanLogEntry("TestCodebaseScanner1", "test-repo-url-a"),
                 new ScanLogEntry("TestCodebaseScanner1", "test-repo-url-b"),
                 new ScanLogEntry("TestCodebaseScanner1", "test-repo-url-c"),
-                new ScanLogEntry("TestCodebaseScanner1", "test-repo-url-extra-1"),
-                new ScanLogEntry("TestCodebaseScanner1", "test-repo-url-extra-2"),
                 new ScanLogEntry("TestCodebaseScanner2", "test-repo-url-a"),
                 new ScanLogEntry("TestCodebaseScanner2", "test-repo-url-b"),
                 new ScanLogEntry("TestCodebaseScanner2", "test-repo-url-c"),
-                new ScanLogEntry("TestCodebaseScanner2", "test-repo-url-extra-1"),
-                new ScanLogEntry("TestCodebaseScanner2", "test-repo-url-extra-2"),
                 new ScanLogEntry("TestLateComponentScanner1", "test-component-a"),
                 new ScanLogEntry("TestLateComponentScanner1", "test-component-b"),
                 new ScanLogEntry("TestLateComponentScanner1", "test-component-c"),
@@ -386,7 +380,10 @@ public class ScanEngineTest {
     }
 
     private Component createExtraComponent(String componentUniquePart) {
-        return createComponent("extra-" + componentUniquePart);
+        // Extra components have no repo
+        return Component.builder()
+                .id("test-component-extra-" + componentUniquePart)
+                .build();
     }
 
     private Component createComponent(String componentUniquePart) {

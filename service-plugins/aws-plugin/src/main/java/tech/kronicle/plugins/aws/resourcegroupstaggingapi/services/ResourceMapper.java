@@ -25,12 +25,13 @@ public class ResourceMapper {
     private Component mapResource(ResourceGroupsTaggingApiResource resource) {
         AnalysedArn analysedArn = analyseArn(resource.getArn());
         Optional<String> nameTag = getNameTag(resource);
+        List<Alias> aliases = getAliases(nameTag, analysedArn);
         return Component.builder()
                 .id(toKebabCase(resource.getArn()))
-                .aliases(getAliases(nameTag, analysedArn))
+                .aliases(aliases)
                 .name(getName(nameTag, analysedArn))
                 .typeId(toKebabCase(analysedArn.getDerivedResourceType()))
-                .description(getDescription(analysedArn))
+                .description(getDescription(resource, analysedArn, aliases))
                 .build();
     }
 
@@ -38,6 +39,7 @@ public class ResourceMapper {
         List<String> aliases = new ArrayList<>();
         nameTag.ifPresent(aliases::add);
         aliases.add(analysedArn.getResourceId());
+        aliases.add(analysedArn.getResourceId().toLowerCase());
         return aliases.stream()
                 .map(alias -> Alias.builder().id(alias).build())
                 .collect(Collectors.toList());
@@ -51,8 +53,30 @@ public class ResourceMapper {
         return getTagValue(resource, "Name");
     }
 
-    private String getDescription(AnalysedArn analysedArn) {
-        return analysedArn.getArn();
+    private String getDescription(ResourceGroupsTaggingApiResource resource, AnalysedArn analysedArn, List<Alias> aliases) {
+        StringBuilder builder = new StringBuilder()
+                .append(analysedArn.getArn())
+                .append("\n");
+
+        if (!resource.getTags().isEmpty()) {
+            builder.append("\nTags:\n\n");
+
+            resource.getTags().forEach(tag -> builder.append("* ")
+                    .append(tag.getKey())
+                    .append("=")
+                    .append(tag.getValue())
+                    .append("\n")
+            );
+
+            builder.append("\nAliases:\n\n");
+
+            aliases.forEach(alias -> builder.append("* ")
+                    .append(alias)
+                    .append("\n")
+            );
+        }
+
+        return builder.toString();
     }
 
     private Optional<String> getTagValue(ResourceGroupsTaggingApiResource resource, String name) {

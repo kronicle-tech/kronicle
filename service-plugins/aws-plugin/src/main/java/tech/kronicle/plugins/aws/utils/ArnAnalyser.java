@@ -31,7 +31,12 @@ public class ArnAnalyser {
                 derivedResourceType = "aws-apigateway-restapi-stage";
             }
         }
-        return analysedArn.withDerivedResourceType(derivedResourceType);
+        String resourceId = analysedArn.getResourceId();
+        if (resourceId.contains(":")) {
+            resourceId = getSubstringAfter(resourceId, ':');
+        }
+        return analysedArn.withResourceId(resourceId)
+                .withDerivedResourceType(derivedResourceType);
     }
 
     private static boolean matchesPattern(String value, Pattern pattern) {
@@ -44,15 +49,19 @@ public class ArnAnalyser {
 
     private static String getDerivedResourceType(AnalysedArn analysedArn) {
         if (analysedArn.getResourceId().contains(":")) {
-            return getStartBefore(analysedArn.getResourceId(), ':');
+            return getSubstringBefore(analysedArn.getResourceId(), ':');
         } else if (analysedArn.getResourceId().contains("/")) {
-            return getStartBefore(analysedArn.getResourceId(), '/');
+            return getSubstringBefore(analysedArn.getResourceId(), '/');
         } else {
             return "";
         }
     }
 
-    private static String getStartBefore(String value, int ch) {
+    private static String getSubstringBefore(String value, int ch) {
         return value.substring(0, value.indexOf(ch));
+    }
+
+    private static String getSubstringAfter(String value, int ch) {
+        return value.substring(value.indexOf(ch) + 1);
     }
 }
