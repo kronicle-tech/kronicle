@@ -14,7 +14,7 @@ public class GuiceModuleTest {
     private final GuiceModule underTest = new GuiceModule();
 
     @Test
-    public void shouldCreateAGitScannerInstance() {
+    public void shouldCreateAnExampleScanner() {
         // Given
         AbstractModule configModule = new AbstractModule() {
             @Override

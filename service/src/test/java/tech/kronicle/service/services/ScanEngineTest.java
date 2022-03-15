@@ -51,9 +51,9 @@ import static org.mockito.Mockito.when;
 @ExtendWith(MockitoExtension.class)
 public class ScanEngineTest {
 
-    private static final Repo TEST_REPO_1 = new Repo("test-repo-url1");
-    private static final Repo TEST_REPO_2 = new Repo("test-repo-url2");
     private List<ScanLogEntry> scanLog;
+    @Mock
+    private MasterComponentFinder masterComponentFinder;
     @Mock
     private MasterDependencyFinder masterDependencyFinder;
     @Mock
@@ -65,17 +65,26 @@ public class ScanEngineTest {
     @BeforeEach
     public void beforeEach() {
         scanLog = new ArrayList<>();
-        underTest = new ScanEngine(masterDependencyFinder, mockScannerRegistry, mockValidatorService, new ThrowableToScannerErrorMapper());
+        underTest = new ScanEngine(
+                masterComponentFinder,
+                masterDependencyFinder,
+                mockScannerRegistry,
+                mockValidatorService,
+                new ThrowableToScannerErrorMapper()
+        );
     }
 
     @Test
     public void scanShouldPassEachComponentThroughEachScannerAndTransformSummaryAndShouldAlwaysPassLatestVersionsOfComponentsAsInputForComponentBasedScanners() {
         // Given
-        ComponentMetadata componentMetadata = ComponentMetadata.builder().build();
-        Component component1 = Component.builder().id("test-component-1").repo(TEST_REPO_1).build();
-        Component component2 = Component.builder().id("test-component-2").repo(TEST_REPO_2).build();
-        List<Dependency> dependencies = mockMasterDependencyFinder(componentMetadata);
-        ConcurrentHashMap<String, Component> componentMap = createComponentMap(component1, component2);
+        Component component1 = createComponent("1");
+        Component component2 = createComponent("2");
+        ComponentMetadata componentMetadata = ComponentMetadata.builder()
+                .components(List.of(component1, component2))
+                .build();
+        ComponentMetadata updatedComponentMetadata = mockMasterComponentFinder(componentMetadata);
+        List<Dependency> dependencies = mockMasterDependencyFinder(updatedComponentMetadata);
+        ConcurrentHashMap<String, Component> componentMap = createComponentMap(componentMetadata);
         TestScannerConfig config = TestScannerConfig.builder().output(true).build();
         TestComponentScanner1 testComponentScanner1 = new TestComponentScanner1(config);
         TestComponentScanner2 testComponentScanner2 = new TestComponentScanner2(config);
@@ -107,15 +116,15 @@ public class ScanEngineTest {
         underTest.scan(componentMetadata, componentMap, summaries::add);
 
         // Then
-        assertThat(testComponentScanner1.componentMetadataItems).containsExactlyInAnyOrder(componentMetadata);
-        assertThat(testComponentScanner2.componentMetadataItems).containsExactlyInAnyOrder(componentMetadata);
-        assertThat(testRepoScanner.componentMetadataItems).containsExactlyInAnyOrder(componentMetadata);
-        assertThat(testCodebaseScanner1.componentMetadataItems).containsExactlyInAnyOrder(componentMetadata);
-        assertThat(testCodebaseScanner2.componentMetadataItems).containsExactlyInAnyOrder(componentMetadata);
-        assertThat(testComponentAndCodebaseScanner1.componentMetadataItems).containsExactlyInAnyOrder(componentMetadata);
-        assertThat(testComponentAndCodebaseScanner2.componentMetadataItems).containsExactlyInAnyOrder(componentMetadata);
-        assertThat(testLateComponentScanner1.componentMetadataItems).containsExactlyInAnyOrder(componentMetadata);
-        assertThat(testLateComponentScanner2.componentMetadataItems).containsExactlyInAnyOrder(componentMetadata);
+        assertThat(testComponentScanner1.componentMetadataItems).containsExactlyInAnyOrder(updatedComponentMetadata);
+        assertThat(testComponentScanner2.componentMetadataItems).containsExactlyInAnyOrder(updatedComponentMetadata);
+        assertThat(testRepoScanner.componentMetadataItems).containsExactlyInAnyOrder(updatedComponentMetadata);
+        assertThat(testCodebaseScanner1.componentMetadataItems).containsExactlyInAnyOrder(updatedComponentMetadata);
+        assertThat(testCodebaseScanner2.componentMetadataItems).containsExactlyInAnyOrder(updatedComponentMetadata);
+        assertThat(testComponentAndCodebaseScanner1.componentMetadataItems).containsExactlyInAnyOrder(updatedComponentMetadata);
+        assertThat(testComponentAndCodebaseScanner2.componentMetadataItems).containsExactlyInAnyOrder(updatedComponentMetadata);
+        assertThat(testLateComponentScanner1.componentMetadataItems).containsExactlyInAnyOrder(updatedComponentMetadata);
+        assertThat(testLateComponentScanner2.componentMetadataItems).containsExactlyInAnyOrder(updatedComponentMetadata);
         
         assertThat(testComponentScanner1.dependenciesItems).containsExactlyInAnyOrder(dependencies);
         assertThat(testComponentScanner2.dependenciesItems).containsExactlyInAnyOrder(dependencies);
@@ -172,24 +181,18 @@ public class ScanEngineTest {
                 createTestSummary(node1, node2, node3, node4, node5, node6, node7, node8),
                 createTestSummary(node1, node2, node3, node4, node5, node6, node7, node8, node9));
     }
-
-    private List<Dependency> mockMasterDependencyFinder(ComponentMetadata componentMetadata) {
-        List<Dependency> dependencies = List.of(
-                new Dependency("test-component-3", "test-component-4"),
-                new Dependency("test-component-5", "test-component-6")
-        );
-        when(masterDependencyFinder.getDependencies(componentMetadata)).thenReturn(dependencies);
-        return dependencies;
-    }
-
+    
     @Test
     public void scanShouldValidateTransformedComponents() {
         // Given
-        ComponentMetadata componentMetadata = ComponentMetadata.builder().build();
-        Component component1 = Component.builder().id("test-component-1").repo(TEST_REPO_1).build();
-        Component component2 = Component.builder().id("test-component-2").repo(TEST_REPO_2).build();
-        mockMasterDependencyFinder(componentMetadata);
-        ConcurrentHashMap<String, Component> componentMap = createComponentMap(component1, component2);
+        Component component1 = createComponent("1");
+        Component component2 = createComponent("2");
+        ComponentMetadata componentMetadata = ComponentMetadata.builder()
+                .components(List.of(component1, component2))
+                .build();
+        ComponentMetadata updatedComponentMetadata = mockMasterComponentFinder(componentMetadata);
+        mockMasterDependencyFinder(updatedComponentMetadata);
+        ConcurrentHashMap<String, Component> componentMap = createComponentMap(componentMetadata);
         TestScannerConfig config = TestScannerConfig.builder().output(true).build();
         when(mockScannerRegistry.getComponentScanners()).thenReturn(List.of(new TestComponentScanner1(config), new TestComponentScanner2(config)));
         when(mockScannerRegistry.getRepoScanner()).thenReturn(new TestRepoScanner(config));
@@ -234,11 +237,14 @@ public class ScanEngineTest {
     @Test
     public void scanShouldCatchExceptionsThrowByScannerRefresh() {
         // Given
-        ComponentMetadata componentMetadata = ComponentMetadata.builder().build();
-        Component component1 = Component.builder().id("test-component-1").repo(TEST_REPO_1).build();
-        Component component2 = Component.builder().id("test-component-2").repo(TEST_REPO_2).build();
-        mockMasterDependencyFinder(componentMetadata);
-        ConcurrentHashMap<String, Component> componentMap = createComponentMap(component1, component2);
+        Component component1 = createComponent("1");
+        Component component2 = createComponent("2");
+        ComponentMetadata componentMetadata = ComponentMetadata.builder()
+                .components(List.of(component1, component2))
+                .build();
+        ComponentMetadata updatedComponentMetadata = mockMasterComponentFinder(componentMetadata);
+        mockMasterDependencyFinder(updatedComponentMetadata);
+        ConcurrentHashMap<String, Component> componentMap = createComponentMap(componentMetadata);
         TestScannerConfig config = TestScannerConfig.builder().output(true).refreshException(true).build();
         when(mockScannerRegistry.getComponentScanners()).thenReturn(List.of(new TestComponentScanner1(config), new TestComponentScanner2(config)));
         when(mockScannerRegistry.getRepoScanner()).thenReturn(new TestRepoScanner(config));
@@ -255,11 +261,14 @@ public class ScanEngineTest {
     @Test
     public void scanShouldCatchExceptionsThrowByScannerScan() {
         // Given
-        ComponentMetadata componentMetadata = ComponentMetadata.builder().build();
-        Component component1 = Component.builder().id("test-component-1").repo(TEST_REPO_1).build();
-        Component component2 = Component.builder().id("test-component-2").repo(TEST_REPO_2).build();
-        mockMasterDependencyFinder(componentMetadata);
-        ConcurrentHashMap<String, Component> componentMap = createComponentMap(component1, component2);
+        Component component1 = createComponent("1");
+        Component component2 = createComponent("2");
+        ComponentMetadata componentMetadata = ComponentMetadata.builder()
+                .components(List.of(component1, component2))
+                .build();
+        ComponentMetadata updatedComponentMetadata = mockMasterComponentFinder(componentMetadata);
+        mockMasterDependencyFinder(updatedComponentMetadata);
+        ConcurrentHashMap<String, Component> componentMap = createComponentMap(componentMetadata);
         TestScannerConfig config = TestScannerConfig.builder().output(true).scanException(true).build();
         when(mockScannerRegistry.getComponentScanners()).thenReturn(List.of(new TestComponentScanner1(config), new TestComponentScanner2(config)));
         when(mockScannerRegistry.getRepoScanner()).thenReturn(new TestRepoScanner(config));
@@ -276,11 +285,14 @@ public class ScanEngineTest {
     @Test
     public void scanShouldHandleScannerErrorsReturnedByScanner() {
         // Given
-        ComponentMetadata componentMetadata = ComponentMetadata.builder().build();
-        Component component1 = Component.builder().id("test-component-1").repo(TEST_REPO_1).build();
-        Component component2 = Component.builder().id("test-component-2").repo(TEST_REPO_2).build();
-        mockMasterDependencyFinder(componentMetadata);
-        ConcurrentHashMap<String, Component> componentMap = createComponentMap(component1, component2);
+        Component component1 = createComponent("1");
+        Component component2 = createComponent("2");
+        ComponentMetadata componentMetadata = ComponentMetadata.builder()
+                .components(List.of(component1, component2))
+                .build();
+        ComponentMetadata updatedComponentMetadata = mockMasterComponentFinder(componentMetadata);
+        mockMasterDependencyFinder(updatedComponentMetadata);
+        ConcurrentHashMap<String, Component> componentMap = createComponentMap(componentMetadata);
         TestScannerConfig config = TestScannerConfig.builder().outputScannerError(true).build();
         when(mockScannerRegistry.getComponentScanners()).thenReturn(List.of(new TestComponentScanner1(config), new TestComponentScanner2(config)));
         when(mockScannerRegistry.getRepoScanner()).thenReturn(new TestRepoScanner(config));
@@ -297,11 +309,14 @@ public class ScanEngineTest {
     @Test
     public void scanShouldHandleScannerErrorsAndOutputReturnedByScanner() {
         // Given
-        ComponentMetadata componentMetadata = ComponentMetadata.builder().build();
-        Component component1 = Component.builder().id("test-component-1").repo(TEST_REPO_1).build();
-        Component component2 = Component.builder().id("test-component-2").repo(TEST_REPO_2).build();
-        mockMasterDependencyFinder(componentMetadata);
-        ConcurrentHashMap<String, Component> componentMap = createComponentMap(component1, component2);
+        Component component1 = createComponent("1");
+        Component component2 = createComponent("2");
+        ComponentMetadata componentMetadata = ComponentMetadata.builder()
+                .components(List.of(component1, component2))
+                .build();
+        ComponentMetadata updatedComponentMetadata = mockMasterComponentFinder(componentMetadata);
+        mockMasterDependencyFinder(updatedComponentMetadata);
+        ConcurrentHashMap<String, Component> componentMap = createComponentMap(componentMetadata);
         TestScannerConfig config = TestScannerConfig.builder().output(true).outputScannerError(true).build();
         when(mockScannerRegistry.getComponentScanners()).thenReturn(List.of(new TestComponentScanner1(config), new TestComponentScanner2(config)));
         when(mockScannerRegistry.getRepoScanner()).thenReturn(new TestRepoScanner(TestScannerConfig.builder().output(true).outputScannerError(true).build()));
@@ -318,13 +333,16 @@ public class ScanEngineTest {
     @Test
     public void scanShouldScanInputsInAlphabeticalOrderSortedByReference() {
         // Given
-        ComponentMetadata componentMetadata = ComponentMetadata.builder().build();
-        Component componentA = Component.builder().id("test-component-a").repo(TEST_REPO_1).build();
-        Component componentB = Component.builder().id("test-component-b").repo(TEST_REPO_2).build();
-        Component componentC = Component.builder().id("test-component-c").repo(TEST_REPO_2).build();
-        mockMasterDependencyFinder(componentMetadata);
+        Component componentA = createComponent("a");
+        Component componentB = createComponent("b");
+        Component componentC = createComponent("c");
+        ComponentMetadata componentMetadata = ComponentMetadata.builder()
+                .components(List.of(componentA, componentB, componentC))
+                .build();
+        ComponentMetadata updatedComponentMetadata = mockMasterComponentFinder(componentMetadata);
+        mockMasterDependencyFinder(updatedComponentMetadata);
         // Components are deliberately in the order b, a, c which is not sorted alphabetically
-        ConcurrentHashMap<String, Component> componentMap = createComponentMap(componentB, componentA, componentC);
+        ConcurrentHashMap<String, Component> componentMap = createComponentMap(componentMetadata);
         TestScannerConfig config = TestScannerConfig.builder().output(true).outputScannerError(true).build();
         when(mockScannerRegistry.getComponentScanners()).thenReturn(List.of(new TestComponentScanner1(config), new TestComponentScanner2(config)));
         when(mockScannerRegistry.getRepoScanner()).thenReturn(new TestRepoScanner(TestScannerConfig.builder().output(true).outputScannerError(true).build()));
@@ -339,21 +357,69 @@ public class ScanEngineTest {
                 new ScanLogEntry("TestComponentScanner1", "test-component-a"),
                 new ScanLogEntry("TestComponentScanner1", "test-component-b"),
                 new ScanLogEntry("TestComponentScanner1", "test-component-c"),
+                new ScanLogEntry("TestComponentScanner1", "test-component-extra-1"),
+                new ScanLogEntry("TestComponentScanner1", "test-component-extra-2"),
                 new ScanLogEntry("TestComponentScanner2", "test-component-a"),
                 new ScanLogEntry("TestComponentScanner2", "test-component-b"),
                 new ScanLogEntry("TestComponentScanner2", "test-component-c"),
-                new ScanLogEntry("TestRepoScanner", "test-repo-url1"),
-                new ScanLogEntry("TestRepoScanner", "test-repo-url2"),
-                new ScanLogEntry("TestCodebaseScanner1", "test-repo-url1"),
-                new ScanLogEntry("TestCodebaseScanner1", "test-repo-url2"),
-                new ScanLogEntry("TestCodebaseScanner2", "test-repo-url1"),
-                new ScanLogEntry("TestCodebaseScanner2", "test-repo-url2"),
+                new ScanLogEntry("TestComponentScanner2", "test-component-extra-1"),
+                new ScanLogEntry("TestComponentScanner2", "test-component-extra-2"),
+                new ScanLogEntry("TestRepoScanner", "test-repo-url-a"),
+                new ScanLogEntry("TestRepoScanner", "test-repo-url-b"),
+                new ScanLogEntry("TestRepoScanner", "test-repo-url-c"),
+                new ScanLogEntry("TestCodebaseScanner1", "test-repo-url-a"),
+                new ScanLogEntry("TestCodebaseScanner1", "test-repo-url-b"),
+                new ScanLogEntry("TestCodebaseScanner1", "test-repo-url-c"),
+                new ScanLogEntry("TestCodebaseScanner2", "test-repo-url-a"),
+                new ScanLogEntry("TestCodebaseScanner2", "test-repo-url-b"),
+                new ScanLogEntry("TestCodebaseScanner2", "test-repo-url-c"),
                 new ScanLogEntry("TestLateComponentScanner1", "test-component-a"),
                 new ScanLogEntry("TestLateComponentScanner1", "test-component-b"),
                 new ScanLogEntry("TestLateComponentScanner1", "test-component-c"),
+                new ScanLogEntry("TestLateComponentScanner1", "test-component-extra-1"),
+                new ScanLogEntry("TestLateComponentScanner1", "test-component-extra-2"),
                 new ScanLogEntry("TestLateComponentScanner2", "test-component-a"),
                 new ScanLogEntry("TestLateComponentScanner2", "test-component-b"),
-                new ScanLogEntry("TestLateComponentScanner2", "test-component-c"));
+                new ScanLogEntry("TestLateComponentScanner2", "test-component-c"),
+                new ScanLogEntry("TestLateComponentScanner2", "test-component-extra-1"),
+                new ScanLogEntry("TestLateComponentScanner2", "test-component-extra-2")
+        );
+    }
+
+    private ComponentMetadata mockMasterComponentFinder(ComponentMetadata componentMetadata) {
+        Component extraComponent1 = createExtraComponent("1");
+        Component extraComponent2 = createExtraComponent("2");
+        when(masterComponentFinder.findComponents(componentMetadata)).thenReturn(List.of(
+                extraComponent1,
+                extraComponent2
+        ));
+        List<Component> components = new ArrayList<>(componentMetadata.getComponents());
+        components.add(extraComponent1);
+        components.add(extraComponent2);
+        return componentMetadata.withComponents(components);
+    }
+
+    private Component createExtraComponent(String componentUniquePart) {
+        // Extra components have no repo
+        return Component.builder()
+                .id("test-component-extra-" + componentUniquePart)
+                .build();
+    }
+
+    private Component createComponent(String componentUniquePart) {
+        return Component.builder()
+                .id("test-component-" + componentUniquePart)
+                .repo(new Repo("test-repo-url-" + componentUniquePart))
+                .build();
+    }
+    
+    private List<Dependency> mockMasterDependencyFinder(ComponentMetadata componentMetadata) {
+        List<Dependency> dependencies = List.of(
+                new Dependency("test-component-3", "test-component-4"),
+                new Dependency("test-component-5", "test-component-6")
+        );
+        when(masterDependencyFinder.findDependencies(componentMetadata)).thenReturn(dependencies);
+        return dependencies;
     }
 
     private void assertRefreshScannerErrors(Component component) {
@@ -411,9 +477,9 @@ public class ScanEngineTest {
         }
     }
 
-    private ConcurrentHashMap<String, Component> createComponentMap(Component... components) {
+    private ConcurrentHashMap<String, Component> createComponentMap(ComponentMetadata componentMetadata) {
         ConcurrentHashMap<String, Component> map = new ConcurrentHashMap<>();
-        for (Component component : components) {
+        for (Component component : componentMetadata.getComponents()) {
             map.put(component.getId(), component);
         }
         return map;

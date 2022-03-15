@@ -21,7 +21,7 @@ public class MasterDependencyFinder {
     private final FinderExtensionRegistry finderRegistry;
     private final ComponentAliasResolver componentAliasResolver;
 
-    public List<Dependency> getDependencies(ComponentMetadata componentMetadata) {
+    public List<Dependency> findDependencies(ComponentMetadata componentMetadata) {
         Map<String, String> componentAliasMap = componentAliasResolver.createComponentAliasMap(componentMetadata);
         return finderRegistry.getDependencyFinders().stream()
                 .map(finder -> executeFinder(finder, componentMetadata))

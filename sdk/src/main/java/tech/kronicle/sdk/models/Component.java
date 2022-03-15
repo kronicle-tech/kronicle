@@ -36,6 +36,7 @@ public class Component implements ObjectWithId, ObjectWithReference {
     List<Alias> aliases;
     @NotBlank
     String name;
+    Boolean discovered;
     @NotBlank
     @Pattern(regexp = "[a-z][a-z0-9]*(-[a-z0-9]+)*")
     @JsonAlias("type")
@@ -75,6 +76,7 @@ public class Component implements ObjectWithId, ObjectWithReference {
             String id,
             List<Alias> aliases,
             String name,
+            Boolean discovered,
             String typeId,
             List<String> tags,
             Repo repo,
@@ -106,6 +108,7 @@ public class Component implements ObjectWithId, ObjectWithReference {
         this.id = id;
         this.aliases = ListUtils.createUnmodifiableList(aliases);
         this.name = name;
+        this.discovered = discovered;
         this.typeId = typeId;
         this.tags = ListUtils.createUnmodifiableList(tags);
         this.repo = repo;

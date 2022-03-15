@@ -38,13 +38,17 @@ import static java.util.Objects.nonNull;
 @Slf4j
 public class ScanEngine {
 
+    private final MasterComponentFinder masterComponentFinder;
     private final MasterDependencyFinder masterDependencyFinder;
     private final ScannerExtensionRegistry scannerRegistry;
     private final ValidatorService validatorService;
     private final ThrowableToScannerErrorMapper throwableToScannerErrorMapper;
 
     public void scan(ComponentMetadata componentMetadata, ConcurrentHashMap<String, Component> componentMap, Consumer<Summary> summaryConsumer) {
-        List<Dependency> dependencies = masterDependencyFinder.getDependencies(componentMetadata);
+        List<Component> extraComponents = masterComponentFinder.findComponents(componentMetadata);
+        ComponentMetadata updatedComponentMetadata = addExtraComponents(componentMetadata, componentMap, extraComponents);
+
+        List<Dependency> dependencies = masterDependencyFinder.findDependencies(updatedComponentMetadata);
 
         ObjectReference<Summary> summary = new ObjectReference<>(Summary.EMPTY);
         Consumer<UnaryOperator<Summary>> summaryTransformerConsumer = summaryTransformer -> {
@@ -54,40 +58,47 @@ public class ScanEngine {
         };
 
         scannerRegistry.getComponentScanners().forEach(scanner -> executeScanner(
-                componentMetadata,
+                updatedComponentMetadata,
                 dependencies,
                 getFreshComponentAndComponentIdMap(componentMap),
                 componentMap,
                 scanner,
                 summaryTransformerConsumer));
         Map<Codebase, List<String>> codebaseAndComponentIdsMap = executeScanner(
-                componentMetadata,
+                updatedComponentMetadata,
                 dependencies,
                 getRepoAndComponentIdsMap(componentMap),
                 componentMap,
                 scannerRegistry.getRepoScanner(),
                 summaryTransformerConsumer);
         scannerRegistry.getCodebaseScanners().forEach(scanner -> executeScanner(
-                componentMetadata,
+                updatedComponentMetadata,
                 dependencies,
                 codebaseAndComponentIdsMap,
                 componentMap,
                 scanner,
                 summaryTransformerConsumer));
         scannerRegistry.getComponentAndCodebaseScanners().forEach(scanner -> executeScanner(
-                componentMetadata,
+                updatedComponentMetadata,
                 dependencies,
                 getFreshComponentAndCodebaseAndComponentIdsMap(componentMap, codebaseAndComponentIdsMap),
                 componentMap,
                 scanner,
                 summaryTransformerConsumer));
         scannerRegistry.getLateComponentScanners().forEach(scanner -> executeScanner(
-                componentMetadata,
+                updatedComponentMetadata,
                 dependencies,
                 getFreshComponentAndComponentIdMap(componentMap),
                 componentMap,
                 scanner,
                 summaryTransformerConsumer));
+    }
+
+    private ComponentMetadata addExtraComponents(ComponentMetadata componentMetadata, ConcurrentHashMap<String, Component> componentMap, List<Component> extraComponents) {
+        List<Component> components = new ArrayList<>(componentMetadata.getComponents());
+        components.addAll(extraComponents);
+        extraComponents.forEach(component -> componentMap.put(component.getId(), component));
+        return componentMetadata.withComponents(components);
     }
 
     /**
@@ -105,7 +116,12 @@ public class ScanEngine {
 
     private Map<Repo, List<String>> getRepoAndComponentIdsMap(ConcurrentHashMap<String, Component> componentMap) {
         return componentMap.values().stream()
+                .filter(this::componentHasRepo)
                 .collect(Collectors.groupingBy(Component::getRepo, Collectors.mapping(Component::getId, Collectors.toList())));
+    }
+
+    private boolean componentHasRepo(Component component) {
+        return nonNull(component.getRepo());
     }
 
     /**
