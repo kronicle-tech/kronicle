@@ -27,7 +27,7 @@ public class ResourceMapper {
         Optional<String> nameTag = getNameTag(resource);
         List<Alias> aliases = getAliases(analysedArn);
         return Component.builder()
-                .id(toKebabCase(analysedArn.getDerivedResourceType()) + "-" + analysedArn.getResourceId())
+                .id(toKebabCase(analysedArn.getDerivedResourceType() + "-" + analysedArn.getResourceId()))
                 .aliases(aliases)
                 .name(getName(nameTag, analysedArn))
                 .typeId(toKebabCase(analysedArn.getDerivedResourceType()))
