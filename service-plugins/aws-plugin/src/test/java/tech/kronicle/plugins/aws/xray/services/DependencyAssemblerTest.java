@@ -1,8 +1,7 @@
-package tech.kronicle.plugins.aws.services;
+package tech.kronicle.plugins.aws.xray.services;
 
 import org.junit.jupiter.api.Test;
 import tech.kronicle.plugins.aws.xray.models.XRayDependency;
-import tech.kronicle.plugins.aws.xray.services.DependencyAssembler;
 import tech.kronicle.sdk.models.Dependency;
 
 import java.util.List;

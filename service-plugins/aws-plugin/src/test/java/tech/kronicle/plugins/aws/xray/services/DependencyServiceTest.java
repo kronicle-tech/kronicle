@@ -1,4 +1,4 @@
-package tech.kronicle.plugins.aws.services;
+package tech.kronicle.plugins.aws.xray.services;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

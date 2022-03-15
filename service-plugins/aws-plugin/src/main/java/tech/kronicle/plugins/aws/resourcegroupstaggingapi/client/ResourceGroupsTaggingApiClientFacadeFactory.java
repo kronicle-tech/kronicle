@@ -13,7 +13,7 @@ public class ResourceGroupsTaggingApiClientFacadeFactory {
     public ResourceGroupsTaggingApiClientFacade createResourceGroupsTaggingApiClientFacade(
             AwsProfileAndRegion profileAndRegion
     ) {
-        return new ResourceGroupsTaggingApiClientFacade(
+        return new ResourceGroupsTaggingApiClientFacadeImpl(
                 clientFactory.createResourceGroupsTaggingApiClient(profileAndRegion)
         );
     }

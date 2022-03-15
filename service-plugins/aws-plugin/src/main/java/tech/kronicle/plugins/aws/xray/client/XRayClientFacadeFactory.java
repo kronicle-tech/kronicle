@@ -11,6 +11,6 @@ public class XRayClientFacadeFactory {
     private final XRayClientFactory clientFactory;
     
     public XRayClientFacade createXRayClientFacade(AwsProfileAndRegion profileAndRegion) {
-        return new XRayClientFacade(clientFactory.createXRayClient(profileAndRegion));
+        return new XRayClientFacadeImpl(clientFactory.createXRayClient(profileAndRegion));
     }
 }

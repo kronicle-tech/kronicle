@@ -21,7 +21,7 @@ public class ArnAnalyserTest {
                 .service("lambda")
                 .region("us-west-1")
                 .accountId("123456789012")
-                .resourceId("function:ExampleStack-exampleFunction123ABC-123456ABCDEF")
+                .resourceId("ExampleStack-exampleFunction123ABC-123456ABCDEF")
                 .derivedResourceType("aws-lambda-function")
                 .build());
     }
@@ -117,7 +117,7 @@ public class ArnAnalyserTest {
                 .service("secretsmanager")
                 .region("us-west-1")
                 .accountId("123456789012")
-                .resourceId("secret:one/two/three-123ABC")
+                .resourceId("one/two/three-123ABC")
                 .derivedResourceType("aws-secretsmanager-secret")
                 .build());
     }

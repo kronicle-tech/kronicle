@@ -8,13 +8,12 @@ import tech.kronicle.sdk.models.Component;
 import tech.kronicle.sdk.models.ComponentMetadata;
 
 import java.util.Collection;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
-import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
+
+import static tech.kronicle.utils.StreamUtils.distinctByKey;
 
 @Service
 @Slf4j
@@ -44,11 +43,6 @@ public class MasterComponentFinder {
                         .map(Component::getId)
                         .collect(Collectors.toList())
         );
-    }
-
-    private static <T> Predicate<T> distinctByKey(Function<? super T, ?> keyExtractor) {
-        Map<Object, Boolean> seen = new HashMap<>();
-        return t -> seen.putIfAbsent(keyExtractor.apply(t), Boolean.TRUE) == null;
     }
 
     private List<Component> executeFinder(ComponentFinder finder, ComponentMetadata componentMetadata) {

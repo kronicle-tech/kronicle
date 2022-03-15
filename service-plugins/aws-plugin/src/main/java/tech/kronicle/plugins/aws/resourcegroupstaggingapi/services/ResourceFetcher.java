@@ -1,7 +1,6 @@
 package tech.kronicle.plugins.aws.resourcegroupstaggingapi.services;
 
 import lombok.RequiredArgsConstructor;
-import tech.kronicle.plugins.aws.config.AwsProfileConfig;
 import tech.kronicle.plugins.aws.models.AwsProfileAndRegion;
 import tech.kronicle.plugins.aws.resourcegroupstaggingapi.client.ResourceGroupsTaggingApiClientFacade;
 import tech.kronicle.plugins.aws.resourcegroupstaggingapi.client.ResourceGroupsTaggingApiClientFacadeFactory;

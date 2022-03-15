@@ -9,6 +9,8 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import static tech.kronicle.utils.StreamUtils.distinctByKey;
+
 @Service
 public class ComponentAliasResolver {
 
@@ -24,6 +26,7 @@ public class ComponentAliasResolver {
                                     .map(alias -> Map.entry(alias.getId(), id))
                     );
                 })
+                .filter(distinctByKey(Map.Entry::getKey))
                 .collect(Collectors.toUnmodifiableMap(
                    Map.Entry::getKey,
                    Map.Entry::getValue

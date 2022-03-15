@@ -25,9 +25,9 @@ public class ResourceMapper {
     private Component mapResource(ResourceGroupsTaggingApiResource resource) {
         AnalysedArn analysedArn = analyseArn(resource.getArn());
         Optional<String> nameTag = getNameTag(resource);
-        List<Alias> aliases = getAliases(nameTag, analysedArn);
+        List<Alias> aliases = getAliases(analysedArn);
         return Component.builder()
-                .id(toKebabCase(resource.getArn()))
+                .id(toKebabCase(analysedArn.getDerivedResourceType()) + "-" + analysedArn.getResourceId())
                 .aliases(aliases)
                 .name(getName(nameTag, analysedArn))
                 .typeId(toKebabCase(analysedArn.getDerivedResourceType()))
@@ -35,13 +35,13 @@ public class ResourceMapper {
                 .build();
     }
 
-    private List<Alias> getAliases(Optional<String> nameTag, AnalysedArn analysedArn) {
+    private List<Alias> getAliases(AnalysedArn analysedArn) {
         List<String> aliases = new ArrayList<>();
-        nameTag.ifPresent(aliases::add);
         aliases.add(analysedArn.getResourceId());
         aliases.add(analysedArn.getResourceId().toLowerCase());
         return aliases.stream()
                 .map(alias -> Alias.builder().id(alias).build())
+                .distinct()
                 .collect(Collectors.toList());
     }
 
