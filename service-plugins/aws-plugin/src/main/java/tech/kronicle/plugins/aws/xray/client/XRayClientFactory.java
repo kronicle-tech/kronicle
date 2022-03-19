@@ -1,16 +1,23 @@
 package tech.kronicle.plugins.aws.xray.client;
 
+import lombok.RequiredArgsConstructor;
 import software.amazon.awssdk.regions.Region;
 import software.amazon.awssdk.services.xray.XRayClient;
 import tech.kronicle.plugins.aws.models.AwsProfileAndRegion;
+import tech.kronicle.plugins.aws.utils.AwsCredentialsProviderFactory;
 
-import static tech.kronicle.plugins.aws.utils.StaticCredentialsUtils.createStaticCredentialsProvider;
+import javax.inject.Inject;
 
+@RequiredArgsConstructor(onConstructor = @__({@Inject}))
 public class XRayClientFactory {
+
+    private final AwsCredentialsProviderFactory credentialsProviderFactory;
 
     public XRayClient createXRayClient(AwsProfileAndRegion profileAndRegion) {
         return XRayClient.builder()
-                .credentialsProvider(createStaticCredentialsProvider(profileAndRegion.getProfile()))
+                .credentialsProvider(
+                        credentialsProviderFactory.createCredentialsProvider(profileAndRegion.getProfile())
+                )
                 .region(Region.of(profileAndRegion.getRegion()))
                 .build();
     }
