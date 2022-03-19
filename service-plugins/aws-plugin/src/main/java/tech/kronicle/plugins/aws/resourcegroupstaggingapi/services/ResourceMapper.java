@@ -22,7 +22,7 @@ public class ResourceMapper {
 
     @Inject
     public ResourceMapper(AwsConfig config) {
-        this.detailedComponentDescriptions = config.getDetailedComponentDescriptions();
+        this.detailedComponentDescriptions = Optional.ofNullable(config.getDetailedComponentDescriptions()).orElse(false);
     }
 
     public List<Component> mapResources(List<ResourceGroupsTaggingApiResource> resources) {
