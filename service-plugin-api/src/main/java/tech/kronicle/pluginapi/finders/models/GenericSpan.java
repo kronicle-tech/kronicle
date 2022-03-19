@@ -2,6 +2,7 @@ package tech.kronicle.pluginapi.finders.models;
 
 import lombok.Builder;
 import lombok.Value;
+import lombok.With;
 
 import java.util.Comparator;
 import java.util.List;
@@ -12,6 +13,7 @@ import static tech.kronicle.sdk.utils.ListUtils.createUnmodifiableList;
 
 @Value
 @Builder
+@With
 public class GenericSpan {
 
     String id;

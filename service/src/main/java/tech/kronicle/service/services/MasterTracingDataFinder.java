@@ -16,7 +16,6 @@ import java.util.stream.Collectors;
 public class MasterTracingDataFinder {
 
     private final FinderExtensionRegistry finderRegistry;
-//    private final ComponentAliasResolver componentAliasResolver;
 
     public List<TracingData> findTracingData(ComponentMetadata componentMetadata) {
         return finderRegistry.getTracingDataFinders().stream()
@@ -24,17 +23,6 @@ public class MasterTracingDataFinder {
                 .distinct()
                 .collect(Collectors.toList());
     }
-
-//    private Dependency resolveComponentAliases(Dependency dependency, Map<String, String> componentAliasMap) {
-//        return new Dependency(
-//                resolveComponentAliases(dependency.getSourceComponentId(), componentAliasMap),
-//                resolveComponentAliases(dependency.getTargetComponentId(), componentAliasMap)
-//        );
-//    }
-
-//    private String resolveComponentAliases(String componentId, Map<String, String> componentAliasMap) {
-//        return Optional.ofNullable(componentAliasMap.get(componentId)).orElse(componentId);
-//    }
 
     private TracingData executeFinder(TracingDataFinder finder, ComponentMetadata componentMetadata) {
         TracingData tracingData;

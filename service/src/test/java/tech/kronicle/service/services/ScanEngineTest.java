@@ -27,6 +27,7 @@ import tech.kronicle.sdk.models.Summary;
 import tech.kronicle.sdk.models.SummaryMissingComponent;
 import tech.kronicle.sdk.models.TechDebt;
 import tech.kronicle.service.exceptions.ValidationException;
+import tech.kronicle.tracingprocessor.ComponentAliasResolver;
 import tech.kronicle.tracingprocessor.ProcessedTracingData;
 import tech.kronicle.tracingprocessor.TracingProcessor;
 import tech.kronicle.utils.ThrowableToScannerErrorMapper;
@@ -36,6 +37,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -62,6 +64,10 @@ public class ScanEngineTest {
     @Mock
     private TracingProcessor tracingProcessor;
     @Mock
+    private ComponentAliasMapCreator componentAliasMapCreator;
+    @Mock
+    private ComponentAliasResolver componentAliasResolver;
+    @Mock
     private ScannerExtensionRegistry scannerRegistry;
     @Mock
     private ValidatorService validatorService;
@@ -75,6 +81,8 @@ public class ScanEngineTest {
                 masterComponentFinder,
                 masterTracingDataFinder,
                 tracingProcessor,
+                componentAliasMapCreator,
+                componentAliasResolver,
                 scannerRegistry,
                 validatorService,
                 new ThrowableToScannerErrorMapper()
@@ -412,10 +420,17 @@ public class ScanEngineTest {
     }
     
     private void mockMasterDependencyFinder(ComponentMetadata componentMetadata) {
-        List<TracingData> tracingDataList = createTracingDataList();
+        List<TracingData> tracingDataList = createTracingDataList(1);
         when(masterTracingDataFinder.findTracingData(componentMetadata)).thenReturn(tracingDataList);
+        Map<String, String> componentAliasMap = Map.ofEntries(
+                Map.entry("alias-1", "component-id-1"),
+                Map.entry("alias-2", "component-id-2")
+        );
+        when(componentAliasMapCreator.createComponentAliasMap(componentMetadata)).thenReturn(componentAliasMap);
+        List<TracingData> updatedTracingDataList = createTracingDataList(2);
+        when(componentAliasResolver.tracingDataList(tracingDataList, componentAliasMap)).thenReturn(updatedTracingDataList);
         processedTracingData = createProcessedTracingData();
-        when(tracingProcessor.process(tracingDataList)).thenReturn(processedTracingData);
+        when(tracingProcessor.process(updatedTracingDataList)).thenReturn(processedTracingData);
     }
     
     private void assertRefreshScannerErrors(Component component) {

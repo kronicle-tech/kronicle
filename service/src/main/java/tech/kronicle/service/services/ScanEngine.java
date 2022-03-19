@@ -16,6 +16,7 @@ import tech.kronicle.sdk.models.Repo;
 import tech.kronicle.sdk.models.ScannerError;
 import tech.kronicle.sdk.models.Summary;
 import tech.kronicle.service.exceptions.ValidationException;
+import tech.kronicle.tracingprocessor.ComponentAliasResolver;
 import tech.kronicle.tracingprocessor.ProcessedTracingData;
 import tech.kronicle.tracingprocessor.TracingProcessor;
 import tech.kronicle.utils.MapCollectors;
@@ -43,6 +44,8 @@ public class ScanEngine {
     private final MasterComponentFinder masterComponentFinder;
     private final MasterTracingDataFinder masterTracingDataFinder;
     private final TracingProcessor tracingProcessor;
+    private final ComponentAliasMapCreator componentAliasMapCreator;
+    private final ComponentAliasResolver componentAliasResolver;
     private final ScannerExtensionRegistry scannerRegistry;
     private final ValidatorService validatorService;
     private final ThrowableToScannerErrorMapper throwableToScannerErrorMapper;
@@ -86,9 +89,13 @@ public class ScanEngine {
         return componentMetadata.withComponents(components);
     }
 
-    private void findAndProcessTracingData(ComponentMetadata updatedComponentMetadata, Consumer<UnaryOperator<Summary>> summaryTransformerConsumer) {
-        List<TracingData> tracingData = masterTracingDataFinder.findTracingData(updatedComponentMetadata);
-        ProcessedTracingData processedTracingData = tracingProcessor.process(tracingData);
+    private void findAndProcessTracingData(ComponentMetadata componentMetadata, Consumer<UnaryOperator<Summary>> summaryTransformerConsumer) {
+        List<TracingData> tracingData = masterTracingDataFinder.findTracingData(componentMetadata);
+        List<TracingData> updatedTracingData = componentAliasResolver.tracingDataList(
+                tracingData,
+                componentAliasMapCreator.createComponentAliasMap(componentMetadata)
+        );
+        ProcessedTracingData processedTracingData = tracingProcessor.process(updatedTracingData);
         summaryTransformerConsumer.accept(summary -> summary
                 .withComponentDependencies(processedTracingData.getComponentDependencies())
                 .withSubComponentDependencies(processedTracingData.getSubComponentDependencies())

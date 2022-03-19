@@ -12,7 +12,7 @@ import java.util.stream.Stream;
 import static tech.kronicle.utils.StreamUtils.distinctByKey;
 
 @Service
-public class ComponentAliasResolver {
+public class ComponentAliasMapCreator {
 
     public Map<String, String> createComponentAliasMap(ComponentMetadata componentMetadata) {
         return componentMetadata.getComponents().stream()

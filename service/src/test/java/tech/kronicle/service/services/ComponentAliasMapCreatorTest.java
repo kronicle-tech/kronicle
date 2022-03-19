@@ -10,9 +10,9 @@ import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class ComponentAliasResolverTest {
+class ComponentAliasMapCreatorTest {
 
-    private final ComponentAliasResolver underTest = new ComponentAliasResolver();
+    private final ComponentAliasMapCreator underTest = new ComponentAliasMapCreator();
 
     @Test
     void createComponentAliasMapWhenComponentsIsEmptyShouldReturnAnEmptyMap() {

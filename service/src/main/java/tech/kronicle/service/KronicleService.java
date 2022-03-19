@@ -15,6 +15,7 @@ import org.springframework.web.reactive.function.client.WebClient;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import tech.kronicle.common.ValidationConstraintViolationTransformer;
+import tech.kronicle.tracingprocessor.ComponentAliasResolver;
 import tech.kronicle.tracingprocessor.TracingProcessor;
 import tech.kronicle.tracingprocessor.TracingProcessorFactory;
 import tech.kronicle.utils.FileUtils;
@@ -22,6 +23,7 @@ import tech.kronicle.utils.ThrowableToScannerErrorMapper;
 
 import java.time.Clock;
 
+import static tech.kronicle.tracingprocessor.ComponentAliasResolverFactory.createComponentAliasResolver;
 import static tech.kronicle.tracingprocessor.TracingProcessorFactory.createTracingProcessor;
 import static tech.kronicle.utils.FileUtilsFactory.createFileUtils;
 
@@ -72,6 +74,11 @@ public class KronicleService {
     @Bean
     public TracingProcessor tracingProcessor() {
         return createTracingProcessor();
+    }
+
+    @Bean
+    public ComponentAliasResolver componentAliasResolver() {
+        return createComponentAliasResolver();
     }
 
     @Bean
