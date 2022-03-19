@@ -362,7 +362,8 @@ export default Vue.extend({
             text.push(` ${key}=${node.tags[key]}`)
           )
         }
-        return text
+        const maxLineLength = 30;
+        return text.map(line => line.length > maxLineLength ? line.substr(0, maxLineLength) + '…' : line)
       }
 
       function addDependencies() {
