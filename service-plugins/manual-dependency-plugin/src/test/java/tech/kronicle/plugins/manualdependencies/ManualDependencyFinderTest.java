@@ -2,12 +2,14 @@ package tech.kronicle.plugins.manualdependencies;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import tech.kronicle.pluginapi.finders.models.TracingData;
 import tech.kronicle.sdk.models.Component;
 import tech.kronicle.sdk.models.ComponentDependency;
 import tech.kronicle.sdk.models.ComponentMetadata;
 import tech.kronicle.sdk.models.Dependency;
 import tech.kronicle.sdk.models.DependencyDirection;
 
+import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -45,10 +47,10 @@ public class ManualDependencyFinderTest {
         ComponentMetadata componentMetadata = ComponentMetadata.builder().build();
 
         // When
-        List<Dependency> returnValue = underTest.find(componentMetadata);
+        TracingData returnValue = underTest.find(componentMetadata);
 
         // Then
-        assertThat(returnValue).isEmpty();
+        assertThat(returnValue).isEqualTo(TracingData.EMPTY);
     }
 
     @Test
@@ -59,10 +61,10 @@ public class ManualDependencyFinderTest {
                 .build();
 
         // When
-        List<Dependency> returnValue = underTest.find(componentMetadata);
+        TracingData returnValue = underTest.find(componentMetadata);
 
         // Then
-        assertThat(returnValue).isEmpty();
+        assertThat(returnValue).isEqualTo(TracingData.EMPTY);
     }
 
     @Test
@@ -78,10 +80,12 @@ public class ManualDependencyFinderTest {
                 .build();
 
         // When
-        List<Dependency> returnValue = underTest.find(componentMetadata);
+        TracingData returnValue = underTest.find(componentMetadata);
 
         // Then
-        assertThat(returnValue).containsExactly(new Dependency("test-component-1", "test-component-2"));
+        assertThat(returnValue).isEqualTo(createTracingData(
+                new Dependency("test-component-1", "test-component-2")
+        ));
     }
 
     @Test
@@ -97,10 +101,12 @@ public class ManualDependencyFinderTest {
                 .build();
 
         // When
-        List<Dependency> returnValue = underTest.find(componentMetadata);
+        TracingData returnValue = underTest.find(componentMetadata);
 
         // Then
-        assertThat(returnValue).containsExactly(new Dependency("test-component-2", "test-component-1"));
+        assertThat(returnValue).isEqualTo(createTracingData(
+                new Dependency("test-component-2", "test-component-1")
+        ));
     }
 
     @Test
@@ -116,10 +122,12 @@ public class ManualDependencyFinderTest {
                 .build();
 
         // When
-        List<Dependency> returnValue = underTest.find(componentMetadata);
+        TracingData returnValue = underTest.find(componentMetadata);
 
         // Then
-        assertThat(returnValue).containsExactly(new Dependency("test-component-1", "test-component-2"));
+        assertThat(returnValue).isEqualTo(createTracingData(
+                new Dependency("test-component-1", "test-component-2")
+        ));
     }
 
     @Test
@@ -136,12 +144,13 @@ public class ManualDependencyFinderTest {
                 .build();
 
         // When
-        List<Dependency> returnValue = underTest.find(componentMetadata);
+        TracingData returnValue = underTest.find(componentMetadata);
 
         // Then
-        assertThat(returnValue).containsExactly(
+        assertThat(returnValue).isEqualTo(createTracingData(
                 new Dependency("test-component-1", "test-component-2"),
-                new Dependency("test-component-1", "test-component-3"));
+                new Dependency("test-component-1", "test-component-3")
+        ));
     }
 
     @Test
@@ -164,14 +173,15 @@ public class ManualDependencyFinderTest {
                 .build();
 
         // When
-        List<Dependency> returnValue = underTest.find(componentMetadata);
+        TracingData returnValue = underTest.find(componentMetadata);
 
         // Then
-        assertThat(returnValue).containsExactly(
+        assertThat(returnValue).isEqualTo(createTracingData(
                 new Dependency("test-component-1", "test-component-2"),
                 new Dependency("test-component-1", "test-component-3"),
                 new Dependency("test-component-4", "test-component-5"),
-                new Dependency("test-component-4", "test-component-6"));
+                new Dependency("test-component-4", "test-component-6")
+        ));
     }
 
     @Test
@@ -188,11 +198,12 @@ public class ManualDependencyFinderTest {
                 .build();
 
         // When
-        List<Dependency> returnValue = underTest.find(componentMetadata);
+        TracingData returnValue = underTest.find(componentMetadata);
 
         // Then
-        assertThat(returnValue).containsExactly(
-                new Dependency("test-component-1", "test-component-2"));
+        assertThat(returnValue).isEqualTo(createTracingData(
+                new Dependency("test-component-1", "test-component-2")
+        ));
     }
 
     @Test
@@ -213,10 +224,17 @@ public class ManualDependencyFinderTest {
                 .build();
 
         // When
-        List<Dependency> returnValue = underTest.find(componentMetadata);
+        TracingData returnValue = underTest.find(componentMetadata);
 
         // Then
-        assertThat(returnValue).containsExactly(
-                new Dependency("test-component-1", "test-component-2"));
+        assertThat(returnValue).isEqualTo(createTracingData(
+                new Dependency("test-component-1", "test-component-2")
+        ));
+    }
+
+    private TracingData createTracingData(Dependency... dependencies) {
+        return TracingData.builder()
+                .dependencies(Arrays.asList(dependencies))
+                .build();
     }
 }

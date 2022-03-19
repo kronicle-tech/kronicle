@@ -9,6 +9,10 @@ public final class MapCollectors {
         return java.util.stream.Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue);
     }
 
+    public static <K, U> Collector<Map.Entry<K, U>, ?, Map<K, U>> toUnmodifiableMap() {
+        return java.util.stream.Collectors.toUnmodifiableMap(Map.Entry::getKey, Map.Entry::getValue);
+    }
+
     private MapCollectors() {
     }
 }

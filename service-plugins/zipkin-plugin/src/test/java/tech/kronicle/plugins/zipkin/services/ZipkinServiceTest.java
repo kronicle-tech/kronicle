@@ -48,25 +48,6 @@ public class ZipkinServiceTest {
     }
 
     @Test
-    public void getDependenciesShouldReturnAllDependencies() {
-        // Given
-        ZipkinDependency dependency1 = ZipkinDependency.builder()
-                .parent("test-service-1")
-                .build();
-        ZipkinDependency dependency2 = ZipkinDependency.builder()
-                .parent("test-service-2")
-                .build();
-        List<ZipkinDependency> dependencies = List.of(dependency1, dependency2);
-        when(client.getDependencies()).thenReturn(dependencies);
-
-        // When
-        List<ZipkinDependency> returnValue = underTest.getDependencies();
-
-        // Then
-        assertThat(returnValue).isSameAs(dependencies);
-    }
-
-    @Test
     public void getServicesShouldReturnAllServicesWithSpanNames() {
         // Given
         String service1 = "test-service-1";

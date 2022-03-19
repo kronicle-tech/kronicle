@@ -4,7 +4,7 @@ import com.google.inject.AbstractModule;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 import org.junit.jupiter.api.Test;
-import tech.kronicle.plugins.zipkin.ZipkinScanner;
+import tech.kronicle.plugins.zipkin.ZipkinTracingDataFinder;
 import tech.kronicle.plugins.zipkin.config.ZipkinConfig;
 
 import java.time.Duration;
@@ -34,7 +34,7 @@ public class GuiceModuleTest {
         Injector guiceInjector = Guice.createInjector(underTest, configModule);
 
         // When
-        ZipkinScanner returnValue = guiceInjector.getInstance(ZipkinScanner.class);
+        ZipkinTracingDataFinder returnValue = guiceInjector.getInstance(ZipkinTracingDataFinder.class);
 
         // Then
         assertThat(returnValue).isNotNull();

@@ -44,7 +44,7 @@ public class OpenApiScanner extends ComponentAndCodebaseScanner {
     }
 
     @Override
-    public void refresh(ComponentMetadata componentMetadata, List<Dependency> dependencies) {
+    public void refresh(ComponentMetadata componentMetadata) {
         specParser.clearCache();
     }
 

@@ -4,21 +4,23 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import tech.kronicle.common.StringEscapeUtils;
-import tech.kronicle.sdk.models.ComponentMetadata;
+import tech.kronicle.pluginapi.finders.models.TracingData;
 import tech.kronicle.pluginapi.scanners.Scanner;
 import tech.kronicle.pluginapi.scanners.models.Codebase;
 import tech.kronicle.pluginapi.scanners.models.ComponentAndCodebase;
 import tech.kronicle.pluginapi.scanners.models.Output;
-import tech.kronicle.utils.ThrowableToScannerErrorMapper;
-import tech.kronicle.utils.MapCollectors;
-import tech.kronicle.utils.ObjectReference;
 import tech.kronicle.sdk.models.Component;
-import tech.kronicle.sdk.models.Dependency;
+import tech.kronicle.sdk.models.ComponentMetadata;
 import tech.kronicle.sdk.models.ObjectWithReference;
 import tech.kronicle.sdk.models.Repo;
 import tech.kronicle.sdk.models.ScannerError;
 import tech.kronicle.sdk.models.Summary;
 import tech.kronicle.service.exceptions.ValidationException;
+import tech.kronicle.tracingprocessor.ProcessedTracingData;
+import tech.kronicle.tracingprocessor.TracingProcessor;
+import tech.kronicle.utils.MapCollectors;
+import tech.kronicle.utils.ObjectReference;
+import tech.kronicle.utils.ThrowableToScannerErrorMapper;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -39,59 +41,42 @@ import static java.util.Objects.nonNull;
 public class ScanEngine {
 
     private final MasterComponentFinder masterComponentFinder;
-    private final MasterDependencyFinder masterDependencyFinder;
+    private final MasterTracingDataFinder masterTracingDataFinder;
+    private final TracingProcessor tracingProcessor;
     private final ScannerExtensionRegistry scannerRegistry;
     private final ValidatorService validatorService;
     private final ThrowableToScannerErrorMapper throwableToScannerErrorMapper;
 
     public void scan(ComponentMetadata componentMetadata, ConcurrentHashMap<String, Component> componentMap, Consumer<Summary> summaryConsumer) {
-        List<Component> extraComponents = masterComponentFinder.findComponents(componentMetadata);
-        ComponentMetadata updatedComponentMetadata = addExtraComponents(componentMetadata, componentMap, extraComponents);
+        Consumer<UnaryOperator<Summary>> summaryTransformerConsumer = createSummaryTransformerConsumer(summaryConsumer);
 
-        List<Dependency> dependencies = masterDependencyFinder.findDependencies(updatedComponentMetadata);
+        ComponentMetadata updatedComponentMetadata = findAndProcessExtraComponents(componentMetadata, componentMap);
 
+        findAndProcessTracingData(updatedComponentMetadata, summaryTransformerConsumer);
+
+        executeComponentScanners(componentMap, summaryTransformerConsumer, updatedComponentMetadata);
+
+        Map<Codebase, List<String>> codebaseAndComponentIdsMap = executeRepoScanner(componentMap, summaryTransformerConsumer, updatedComponentMetadata);
+
+        executeCodebaseScanners(componentMap, summaryTransformerConsumer, updatedComponentMetadata, codebaseAndComponentIdsMap);
+
+        executeComponentAndCodebaseScanners(componentMap, summaryTransformerConsumer, updatedComponentMetadata, codebaseAndComponentIdsMap);
+
+        executeLateComponentScanners(componentMap, summaryTransformerConsumer, updatedComponentMetadata);
+    }
+
+    private Consumer<UnaryOperator<Summary>> createSummaryTransformerConsumer(Consumer<Summary> summaryConsumer) {
         ObjectReference<Summary> summary = new ObjectReference<>(Summary.EMPTY);
-        Consumer<UnaryOperator<Summary>> summaryTransformerConsumer = summaryTransformer -> {
+        return summaryTransformer -> {
             Summary transformedSummary = summaryTransformer.apply(summary.get());
             summaryConsumer.accept(transformedSummary);
             summary.set(transformedSummary);
         };
+    }
 
-        scannerRegistry.getComponentScanners().forEach(scanner -> executeScanner(
-                updatedComponentMetadata,
-                dependencies,
-                getFreshComponentAndComponentIdMap(componentMap),
-                componentMap,
-                scanner,
-                summaryTransformerConsumer));
-        Map<Codebase, List<String>> codebaseAndComponentIdsMap = executeScanner(
-                updatedComponentMetadata,
-                dependencies,
-                getRepoAndComponentIdsMap(componentMap),
-                componentMap,
-                scannerRegistry.getRepoScanner(),
-                summaryTransformerConsumer);
-        scannerRegistry.getCodebaseScanners().forEach(scanner -> executeScanner(
-                updatedComponentMetadata,
-                dependencies,
-                codebaseAndComponentIdsMap,
-                componentMap,
-                scanner,
-                summaryTransformerConsumer));
-        scannerRegistry.getComponentAndCodebaseScanners().forEach(scanner -> executeScanner(
-                updatedComponentMetadata,
-                dependencies,
-                getFreshComponentAndCodebaseAndComponentIdsMap(componentMap, codebaseAndComponentIdsMap),
-                componentMap,
-                scanner,
-                summaryTransformerConsumer));
-        scannerRegistry.getLateComponentScanners().forEach(scanner -> executeScanner(
-                updatedComponentMetadata,
-                dependencies,
-                getFreshComponentAndComponentIdMap(componentMap),
-                componentMap,
-                scanner,
-                summaryTransformerConsumer));
+    private ComponentMetadata findAndProcessExtraComponents(ComponentMetadata componentMetadata, ConcurrentHashMap<String, Component> componentMap) {
+        List<Component> extraComponents = masterComponentFinder.findComponents(componentMetadata);
+        return addExtraComponents(componentMetadata, componentMap, extraComponents);
     }
 
     private ComponentMetadata addExtraComponents(ComponentMetadata componentMetadata, ConcurrentHashMap<String, Component> componentMap, List<Component> extraComponents) {
@@ -99,6 +84,60 @@ public class ScanEngine {
         components.addAll(extraComponents);
         extraComponents.forEach(component -> componentMap.put(component.getId(), component));
         return componentMetadata.withComponents(components);
+    }
+
+    private void findAndProcessTracingData(ComponentMetadata updatedComponentMetadata, Consumer<UnaryOperator<Summary>> summaryTransformerConsumer) {
+        List<TracingData> tracingData = masterTracingDataFinder.findTracingData(updatedComponentMetadata);
+        ProcessedTracingData processedTracingData = tracingProcessor.process(tracingData);
+        summaryTransformerConsumer.accept(summary -> summary
+                .withComponentDependencies(processedTracingData.getComponentDependencies())
+                .withSubComponentDependencies(processedTracingData.getSubComponentDependencies())
+                .withCallGraphs(processedTracingData.getCallGraphs()));
+    }
+
+    private void executeComponentScanners(ConcurrentHashMap<String, Component> componentMap, Consumer<UnaryOperator<Summary>> summaryTransformerConsumer, ComponentMetadata updatedComponentMetadata) {
+        scannerRegistry.getComponentScanners().forEach(scanner -> executeScanner(
+                updatedComponentMetadata,
+                getFreshComponentAndComponentIdMap(componentMap),
+                componentMap,
+                scanner,
+                summaryTransformerConsumer));
+    }
+
+    private Map<Codebase, List<String>> executeRepoScanner(ConcurrentHashMap<String, Component> componentMap, Consumer<UnaryOperator<Summary>> summaryTransformerConsumer, ComponentMetadata updatedComponentMetadata) {
+        return executeScanner(
+                updatedComponentMetadata,
+                getRepoAndComponentIdsMap(componentMap),
+                componentMap,
+                scannerRegistry.getRepoScanner(),
+                summaryTransformerConsumer);
+    }
+
+    private void executeCodebaseScanners(ConcurrentHashMap<String, Component> componentMap, Consumer<UnaryOperator<Summary>> summaryTransformerConsumer, ComponentMetadata updatedComponentMetadata, Map<Codebase, List<String>> codebaseAndComponentIdsMap) {
+        scannerRegistry.getCodebaseScanners().forEach(scanner -> executeScanner(
+                updatedComponentMetadata,
+                codebaseAndComponentIdsMap,
+                componentMap,
+                scanner,
+                summaryTransformerConsumer));
+    }
+
+    private void executeComponentAndCodebaseScanners(ConcurrentHashMap<String, Component> componentMap, Consumer<UnaryOperator<Summary>> summaryTransformerConsumer, ComponentMetadata updatedComponentMetadata, Map<Codebase, List<String>> codebaseAndComponentIdsMap) {
+        scannerRegistry.getComponentAndCodebaseScanners().forEach(scanner -> executeScanner(
+                updatedComponentMetadata,
+                getFreshComponentAndCodebaseAndComponentIdsMap(componentMap, codebaseAndComponentIdsMap),
+                componentMap,
+                scanner,
+                summaryTransformerConsumer));
+    }
+
+    private void executeLateComponentScanners(ConcurrentHashMap<String, Component> componentMap, Consumer<UnaryOperator<Summary>> summaryTransformerConsumer, ComponentMetadata updatedComponentMetadata) {
+        scannerRegistry.getLateComponentScanners().forEach(scanner -> executeScanner(
+                updatedComponentMetadata,
+                getFreshComponentAndComponentIdMap(componentMap),
+                componentMap,
+                scanner,
+                summaryTransformerConsumer));
     }
 
     /**
@@ -151,14 +190,13 @@ public class ScanEngine {
 
     private <I extends ObjectWithReference, O> Map<O, List<String>> executeScanner(
             ComponentMetadata componentMetadata,
-            List<Dependency> dependencies,
             Map<I, List<String>> inputAndComponentIdsMap,
             ConcurrentHashMap<String, Component> componentMap,
             Scanner<I, O> scanner,
             Consumer<UnaryOperator<Summary>> summaryTransformerConsumer
     ) {
         try {
-            scanner.refresh(componentMetadata, dependencies);
+            scanner.refresh(componentMetadata);
         } catch (Exception e) {
             log.error("Failed to refresh scanner {}", scanner.id(), e);
             List<ScannerError> newErrors = List.of(new ScannerError(scanner.id(), "Failed to refresh scanner",

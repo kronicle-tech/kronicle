@@ -22,10 +22,6 @@ public class ZipkinService {
     private final ZipkinClient client;
     private final ZipkinConfig config;
 
-    public List<ZipkinDependency> getDependencies() {
-        return client.getDependencies();
-    }
-
     public List<Service> getServices() {
         return client.getServiceNames().stream()
                 .map(serviceName -> new Service(serviceName, getSpanNames(serviceName)))

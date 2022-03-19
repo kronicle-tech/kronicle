@@ -8,9 +8,6 @@ import tech.kronicle.plugins.aws.config.AwsConfig;
 import tech.kronicle.plugins.aws.config.AwsProfileConfig;
 import tech.kronicle.plugins.aws.models.AwsProfileAndRegion;
 import tech.kronicle.plugins.aws.xray.models.XRayDependency;
-import tech.kronicle.plugins.aws.xray.services.DependencyAssembler;
-import tech.kronicle.plugins.aws.xray.services.DependencyService;
-import tech.kronicle.plugins.aws.xray.services.XRayServiceGraphFetcher;
 import tech.kronicle.sdk.models.Dependency;
 
 import java.util.List;
@@ -182,6 +179,6 @@ public class DependencyServiceTest {
     }
 
     private DependencyService createUnderTest(List<AwsProfileConfig> profiles) {
-        return new DependencyService(fetcher, assembler, new AwsConfig(profiles));
+        return new DependencyService(fetcher, assembler, new AwsConfig(profiles, null));
     }
 }

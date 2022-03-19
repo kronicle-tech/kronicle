@@ -5,7 +5,7 @@ import com.google.inject.Guice;
 import com.google.inject.Injector;
 import org.junit.jupiter.api.Test;
 import tech.kronicle.plugins.aws.AwsComponentFinder;
-import tech.kronicle.plugins.aws.AwsXrayDependencyFinder;
+import tech.kronicle.plugins.aws.AwsXrayTracingDataFinder;
 import tech.kronicle.plugins.aws.config.AwsConfig;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -32,7 +32,7 @@ public class GuiceModuleTest {
         Injector guiceInjector = createGuiceInjector();
 
         // When
-        AwsXrayDependencyFinder returnValue = guiceInjector.getInstance(AwsXrayDependencyFinder.class);
+        AwsXrayTracingDataFinder returnValue = guiceInjector.getInstance(AwsXrayTracingDataFinder.class);
 
         // Then
         assertThat(returnValue).isNotNull();
@@ -42,7 +42,7 @@ public class GuiceModuleTest {
         AbstractModule configModule = new AbstractModule() {
             @Override
             protected void configure() {
-                bind(AwsConfig.class).toInstance(new AwsConfig(null));
+                bind(AwsConfig.class).toInstance(new AwsConfig(null, null));
             }
         };
         Injector guiceInjector = Guice.createInjector(underTest, configModule);

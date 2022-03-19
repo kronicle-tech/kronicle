@@ -12,7 +12,6 @@ import tech.kronicle.service.plugins.config.PluginManagerConfig;
 import javax.annotation.PostConstruct;
 import java.nio.file.Path;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 public abstract class KroniclePluginManager extends DefaultPluginManager {
@@ -48,11 +47,7 @@ public abstract class KroniclePluginManager extends DefaultPluginManager {
 
     @Override
     protected PluginStatusProvider createPluginStatusProvider() {
-        PluginManagerConfig pluginManagerConfig = getPluginManagerConfig();
-        return new KroniclePluginStatusProvider(
-                Optional.ofNullable(pluginManagerConfig.getEnabledPlugins()).orElse(List.of()),
-                Optional.ofNullable(pluginManagerConfig.getDisabledPlugins()).orElse(List.of())
-        );
+        return new KroniclePluginStatusProvider(getApplicationContext().getEnvironment());
     }
 
     @Override

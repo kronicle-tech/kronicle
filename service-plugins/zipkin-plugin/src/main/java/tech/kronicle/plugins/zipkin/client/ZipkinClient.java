@@ -52,16 +52,6 @@ public class ZipkinClient {
         this.retry = retryRegistry.retry(RETRY_NAME, RETRY_NAME);
     }
 
-    public List<ZipkinDependency> getDependencies() {
-        String uriTemplate = config.getBaseUrl() + ZipkinApiPaths.DEPENDENCIES + "?endTs={endTs}&lookback={lookback}";
-        Map<String, String> uriVariables = UriVariablesBuilder.builder()
-                .addUriVariable("endTs", clock.millis())
-                .addUriVariable("lookback", LOOKBACK.toMillis())
-                .build();
-
-        return retry.executeSupplier(() -> makeRequest(uriTemplate, uriVariables, new TypeReference<>() {}));
-    }
-
     public List<String> getServiceNames() {
         String uriTemplate = config.getBaseUrl() + ZipkinApiPaths.SERVICES;
         Map<String, String> uriVariables = UriVariablesBuilder.builder().build();

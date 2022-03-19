@@ -74,13 +74,13 @@ public class SonarQubeServiceTest {
         when(mockProjectFinder.findProjects(codebaseDir, projects1)).thenReturn(List.of(project1));
 
         // Then
-        Assertions.assertThat(underTest.getMetrics()).isNull();
+        assertThat(underTest.getMetrics()).isNull();
 
         // When
         underTest.refresh();
 
         // Then
-        Assertions.assertThat(underTest.getMetrics()).isSameAs(metrics1);
+        assertThat(underTest.getMetrics()).isSameAs(metrics1);
 
         // When
         underTest.findProjects(codebaseDir);
@@ -104,7 +104,7 @@ public class SonarQubeServiceTest {
         underTest.refresh();
 
         // Then
-        Assertions.assertThat(underTest.getMetrics()).isSameAs(metrics2);
+        assertThat(underTest.getMetrics()).isSameAs(metrics2);
 
         // When
         underTest.findProjects(codebaseDir);

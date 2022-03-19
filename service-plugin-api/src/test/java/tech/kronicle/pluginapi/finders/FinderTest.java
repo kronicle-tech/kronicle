@@ -42,7 +42,7 @@ public class FinderTest {
         }
     }
 
-    private static class ExampleFinder extends Finder<ComponentMetadata, TestInput> {
+    private static class ExampleFinder extends Finder<ComponentMetadata, List<TestInput>> {
 
         @Override
         public String description() {

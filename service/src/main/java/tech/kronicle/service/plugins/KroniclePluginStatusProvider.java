@@ -1,27 +1,19 @@
 package tech.kronicle.service.plugins;
 
 import org.pf4j.PluginStatusProvider;
-
-import java.util.List;
-import java.util.Set;
+import org.springframework.core.env.PropertyResolver;
 
 public class KroniclePluginStatusProvider implements PluginStatusProvider {
 
-    private final Set<String> enabledPlugins;
-    private final Set<String> disabledPlugins;
+    private PropertyResolver propertyResolver;
 
-    public KroniclePluginStatusProvider(List<String> enabledPlugins, List<String> disabledPlugins) {
-        this.enabledPlugins = Set.copyOf(enabledPlugins);
-        this.disabledPlugins = Set.copyOf(disabledPlugins);
+    public KroniclePluginStatusProvider(PropertyResolver propertyResolver) {
+        this.propertyResolver = propertyResolver;
     }
 
     @Override
     public boolean isPluginDisabled(String pluginId) {
-        if (!enabledPlugins.isEmpty()) {
-            return !enabledPlugins.contains(pluginId);
-        } else {
-            return disabledPlugins.contains(pluginId);
-        }
+        return !propertyResolver.getProperty("plugins." + pluginId + ".enabled", Boolean.class, false);
     }
 
     @Override
