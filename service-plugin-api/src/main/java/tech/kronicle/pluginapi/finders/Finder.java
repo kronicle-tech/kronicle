@@ -17,5 +17,5 @@ public abstract class Finder<I, O> implements ExtensionPointWithId {
         return null;
     }
 
-    public abstract List<O> find(I input);
+    public abstract O find(I input);
 }

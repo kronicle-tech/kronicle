@@ -4,7 +4,7 @@ import com.google.inject.AbstractModule;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 import org.junit.jupiter.api.Test;
-import tech.kronicle.plugins.datadog.DatadogDependencyFinder;
+import tech.kronicle.plugins.datadog.DatadogTracingDataFinder;
 import tech.kronicle.plugins.datadog.config.DatadogConfig;
 import tech.kronicle.plugins.datadog.dependencies.config.DatadogDependenciesConfig;
 import tech.kronicle.plugins.datadog.guice.GuiceModule;
@@ -35,7 +35,7 @@ public class GuiceModuleTest {
         Injector guiceInjector = Guice.createInjector(underTest, configModule);
 
         // When
-        DatadogDependencyFinder returnValue = guiceInjector.getInstance(DatadogDependencyFinder.class);
+        DatadogTracingDataFinder returnValue = guiceInjector.getInstance(DatadogTracingDataFinder.class);
 
         // Then
         assertThat(returnValue).isNotNull();

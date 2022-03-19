@@ -9,6 +9,10 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import java.util.List;
 
+/***
+ * Code using this class should migrate to using the tracing data available on Summary.
+ */
+@Deprecated
 @Value
 @AllArgsConstructor
 @With

@@ -66,7 +66,6 @@ public class BaseZipkinClientTest {
 
     protected static Stream<ZipkinClientMethod> provideZipkinClientMethods(int port) {
         return Stream.of(
-                new ZipkinClientMethod(ZipkinClient::getDependencies, "http://localhost:" + port + "/zipkin/api/v2/dependencies?endTs=1609459200000&lookback=86400000"),
                 new ZipkinClientMethod(ZipkinClient::getServiceNames, "http://localhost:" + port + "/zipkin/api/v2/services"),
                 new ZipkinClientMethod(underTest -> underTest.getSpanNames("test-service-1"), "http://localhost:" + port + "/zipkin/api/v2/spans?serviceName=test-service-1"),
                 new ZipkinClientMethod(underTest -> underTest.getTraces("test-service-1", "test-service-1-span-1", 100), "http://localhost:" + port + "/zipkin/api/v2/traces?serviceName=test-service-1&spanName=test-service-1-span-1&endTs=1609459200000&lookback=86400000&limit=100"));

@@ -62,25 +62,38 @@ plugin-manager:
     - example
 
 plugins:
+  aws:
+    enabled: false
+    detailed-component-descriptions: false
+
   bitbucket-server:
+    enabled: false
     timeout: 30s
 
   datadog:
-    baseUrl: "https://api.datadoghq.com"
+    enabled: false
+    base-url: "https://api.datadoghq.com"
     timeout: 30s
 
+  example:
+    enabled: false
+
   git:
+    enabled: true
     repos-dir: /data/git/repos
 
   github:
-    apiBaseUrl: https://api.github.com
+    enabled: false
+    api-base-url: https://api.github.com
     timeout: 30s
 
   gitlab:
-    projectPageSize: 100
+    enabled: false
+    project-page-size: 100
     timeout: 30s
 
   gradle:
+    enabled: true
     downloader:
       timeout: 2m
     download-cache:
@@ -90,7 +103,11 @@ plugins:
     pom-cache:
       dir: /data/gradle/pom-cache
 
+  java-import:
+    enabled: true
+
   key-software:
+    enabled: true
     default-rules-enabled: true
     default-rules:
       - name: "Gradle"
@@ -128,9 +145,28 @@ plugins:
       - name: "Angular"
         software-name-pattern: "^@angular/core$$"
 
+  lines-of-code:
+    enabled: true
+
+  manual-dependency:
+    enabled: true
+
+  nodejs:
+    enabled: true
+
+  openapi:
+    enabled: true
+
+  readme:
+    enabled: true
+
   sonarqube:
+    enabled: false
     base-url: http://localhost:9000
     timeout: 30s
+
+  todo:
+    enabled: true
 
   zipkin:
     enabled: false

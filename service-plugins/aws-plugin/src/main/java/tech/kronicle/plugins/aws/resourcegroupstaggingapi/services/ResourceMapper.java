@@ -1,11 +1,13 @@
 package tech.kronicle.plugins.aws.resourcegroupstaggingapi.services;
 
+import tech.kronicle.plugins.aws.config.AwsConfig;
 import tech.kronicle.plugins.aws.resourcegroupstaggingapi.models.ResourceGroupsTaggingApiResource;
 import tech.kronicle.plugins.aws.resourcegroupstaggingapi.models.ResourceGroupsTaggingApiTag;
 import tech.kronicle.plugins.aws.utils.AnalysedArn;
 import tech.kronicle.sdk.models.Alias;
 import tech.kronicle.sdk.models.Component;
 
+import javax.inject.Inject;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -15,6 +17,13 @@ import static tech.kronicle.common.CaseUtils.toKebabCase;
 import static tech.kronicle.plugins.aws.utils.ArnAnalyser.analyseArn;
 
 public class ResourceMapper {
+
+    private final boolean detailedComponentDescriptions;
+
+    @Inject
+    public ResourceMapper(AwsConfig config) {
+        this.detailedComponentDescriptions = Optional.ofNullable(config.getDetailedComponentDescriptions()).orElse(false);
+    }
 
     public List<Component> mapResources(List<ResourceGroupsTaggingApiResource> resources) {
         return resources.stream()
@@ -54,6 +63,10 @@ public class ResourceMapper {
     }
 
     private String getDescription(ResourceGroupsTaggingApiResource resource, AnalysedArn analysedArn, List<Alias> aliases) {
+        if (!detailedComponentDescriptions) {
+            return "";
+        }
+
         StringBuilder builder = new StringBuilder()
                 .append(analysedArn.getArn())
                 .append("\n");

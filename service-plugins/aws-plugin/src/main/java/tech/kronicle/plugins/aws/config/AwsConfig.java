@@ -12,8 +12,10 @@ import static tech.kronicle.sdk.utils.ListUtils.createUnmodifiableList;
 public class AwsConfig {
 
     List<AwsProfileConfig> profiles;
+    Boolean detailedComponentDescriptions;
 
-    public AwsConfig(List<AwsProfileConfig> profiles) {
+    public AwsConfig(List<AwsProfileConfig> profiles, Boolean detailedComponentDescriptions) {
         this.profiles = createUnmodifiableList(profiles);
+        this.detailedComponentDescriptions = detailedComponentDescriptions;
     }
 }

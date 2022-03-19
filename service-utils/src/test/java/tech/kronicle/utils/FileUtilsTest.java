@@ -304,7 +304,7 @@ public class FileUtilsTest extends BaseTest {
         List<FileUtils.FileContent> returnValue = filesScenario.findFileContentsInvoker.apply(underTest, tempDir).collect(Collectors.toList());
 
         // Then
-        Assertions.assertThat(returnValue).containsExactlyInAnyOrder(new FileUtils.FileContent(file1, "test1"), new FileUtils.FileContent(file2, "test2"));
+        assertThat(returnValue).containsExactlyInAnyOrder(new FileUtils.FileContent(file1, "test1"), new FileUtils.FileContent(file2, "test2"));
     }
 
     @ParameterizedTest
@@ -325,7 +325,7 @@ public class FileUtilsTest extends BaseTest {
         }
 
         // Then
-        Assertions.assertThat(returnValue).containsExactlyInAnyOrder(new FileUtils.FileContent(file1, "test1"));
+        assertThat(returnValue).containsExactlyInAnyOrder(new FileUtils.FileContent(file1, "test1"));
     }
 
     @ParameterizedTest
@@ -338,7 +338,7 @@ public class FileUtilsTest extends BaseTest {
         List<FileUtils.FileContent> returnValue = filesScenario.findFileContentsInvoker.apply(underTest, tempDir).collect(Collectors.toList());
 
         // Then
-        Assertions.assertThat(returnValue).containsExactlyInAnyOrder(convertFileContentListToFileContentArray(fileContents));
+        assertThat(returnValue).containsExactlyInAnyOrder(convertFileContentListToFileContentArray(fileContents));
     }
 
     @ParameterizedTest
@@ -352,7 +352,7 @@ public class FileUtilsTest extends BaseTest {
 
         // Then
         fileContents.removeIf(fileContent -> fileContent.getFile().toString().contains("/subdirectory2/"));
-        Assertions.assertThat(returnValue).containsExactlyInAnyOrder(convertFileContentListToFileContentArray(fileContents));
+        assertThat(returnValue).containsExactlyInAnyOrder(convertFileContentListToFileContentArray(fileContents));
     }
 
     @ParameterizedTest
@@ -366,7 +366,7 @@ public class FileUtilsTest extends BaseTest {
         List<FileUtils.FileContent> returnValue = filesScenario.findFileContentsInvoker.apply(underTest, tempDir).collect(Collectors.toList());
 
         // Then
-        Assertions.assertThat(returnValue).containsExactlyInAnyOrder(convertFileContentListToFileContentArray(fileContents));
+        assertThat(returnValue).containsExactlyInAnyOrder(convertFileContentListToFileContentArray(fileContents));
         assertThat(convertFileContentListToPathArray(returnValue)).doesNotContain(createGitFiles.getIgnoredFile1(), createGitFiles.getIgnoredFile2(), createGitFiles.getIgnoredFile3());
     }
 
@@ -382,7 +382,7 @@ public class FileUtilsTest extends BaseTest {
 
         // Then
         fileContents.removeIf(fileContent -> fileContent.getFile().toString().contains("/subdirectory2/"));
-        Assertions.assertThat(returnValue).containsExactlyInAnyOrder(convertFileContentListToFileContentArray(fileContents));
+        assertThat(returnValue).containsExactlyInAnyOrder(convertFileContentListToFileContentArray(fileContents));
         assertThat(convertFileContentListToPathArray(returnValue)).doesNotContain(createGitFiles.getIgnoredFile1(), createGitFiles.getIgnoredFile2(), createGitFiles.getIgnoredFile3());
     }
 
@@ -403,7 +403,7 @@ public class FileUtilsTest extends BaseTest {
         List<FileUtils.FileContent> returnValue = filesScenario.findFileContentsInvoker.apply(underTest, tempDir).collect(Collectors.toList());
 
         // Then
-        Assertions.assertThat(returnValue).containsExactlyInAnyOrder(
+        assertThat(returnValue).containsExactlyInAnyOrder(
                 new FileUtils.FileContent(file1, "test1"),
                 new FileUtils.FileContent(file3, "test3"),
                 new FileUtils.FileContent(kronicleignoreFile, "file2.txt"));
@@ -435,7 +435,7 @@ public class FileUtilsTest extends BaseTest {
         List<FileUtils.FileContent> returnValue = underTest.findFileContents(tempDir).collect(Collectors.toList());
 
         // Then
-        Assertions.assertThat(returnValue).containsExactlyInAnyOrder(new FileUtils.FileContent(file2, "Regular text"));
+        assertThat(returnValue).containsExactlyInAnyOrder(new FileUtils.FileContent(file2, "Regular text"));
     }
 
     public static Stream<FilesScenario> provideFilesScenariosWithMaxDepth() {

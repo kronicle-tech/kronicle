@@ -2,9 +2,10 @@ package tech.kronicle.service.services;
 
 import org.junit.jupiter.api.Test;
 import tech.kronicle.pluginapi.finders.ComponentFinder;
+import tech.kronicle.pluginapi.finders.models.TracingData;
 import tech.kronicle.sdk.models.Component;
 import tech.kronicle.sdk.models.ComponentMetadata;
-import tech.kronicle.pluginapi.finders.DependencyFinder;
+import tech.kronicle.pluginapi.finders.TracingDataFinder;
 import tech.kronicle.pluginapi.finders.Finder;
 import tech.kronicle.pluginapi.finders.RepoFinder;
 import tech.kronicle.pluginapi.finders.models.ApiRepo;
@@ -46,31 +47,31 @@ public class FinderExtensionRegistryTest {
     }
 
     @Test
-    public void getDependencyFindersShouldReturnTheDependencyFinders() {
+    public void getTracingDataFindersShouldReturnTheTracingDataFinders() {
         // Given
-        TestDependencyFinder dependencyFinder1 = new TestDependencyFinder();
-        TestDependencyFinder dependencyFinder2 = new TestDependencyFinder();
-        FinderExtensionRegistry underTest = createUnderTest(List.of(dependencyFinder1, dependencyFinder2));
+        TestTracingDataFinder tracingDataFinder1 = new TestTracingDataFinder();
+        TestTracingDataFinder tracingDataFinder2 = new TestTracingDataFinder();
+        FinderExtensionRegistry underTest = createUnderTest(List.of(tracingDataFinder1, tracingDataFinder2));
 
         // When
-        List<DependencyFinder> returnValue = underTest.getDependencyFinders();
+        List<TracingDataFinder> returnValue = underTest.getTracingDataFinders();
 
         // Then
-        assertThat(returnValue).containsExactly(dependencyFinder1, dependencyFinder2);
+        assertThat(returnValue).containsExactly(tracingDataFinder1, tracingDataFinder2);
     }
 
     @Test
-    public void getDependencyFindersShouldIgnoreOtherTypesOfFinder() {
+    public void getTracingDataFindersShouldIgnoreOtherTypesOfFinder() {
         // Given
         TestOtherFinder otherFinder1 = new TestOtherFinder();
-        TestDependencyFinder dependencyFinder1 = new TestDependencyFinder();
-        FinderExtensionRegistry underTest = createUnderTest(List.of(otherFinder1, dependencyFinder1));
+        TestTracingDataFinder tracingDataFinder1 = new TestTracingDataFinder();
+        FinderExtensionRegistry underTest = createUnderTest(List.of(otherFinder1, tracingDataFinder1));
 
         // When
-        List<DependencyFinder> returnValue = underTest.getDependencyFinders();
+        List<TracingDataFinder> returnValue = underTest.getTracingDataFinders();
 
         // Then
-        assertThat(returnValue).containsExactly(dependencyFinder1);
+        assertThat(returnValue).containsExactly(tracingDataFinder1);
     }
 
     @Test
@@ -117,14 +118,14 @@ public class FinderExtensionRegistryTest {
         }
     }
 
-    private static class TestDependencyFinder extends DependencyFinder {
+    private static class TestTracingDataFinder extends TracingDataFinder {
         @Override
         public String description() {
             return null;
         }
 
         @Override
-        public List<Dependency> find(ComponentMetadata componentMetadata) {
+        public TracingData find(ComponentMetadata componentMetadata) {
             return null;
         }
     }

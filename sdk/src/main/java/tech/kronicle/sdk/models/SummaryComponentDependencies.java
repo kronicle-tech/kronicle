@@ -14,7 +14,7 @@ import java.util.List;
 @With
 @Builder(toBuilder = true)
 @Jacksonized
-public class SummaryComponentDependencies {
+public class SummaryComponentDependencies implements SummaryDependencies<SummaryComponentDependencyNode, SummaryComponentDependency> {
 
     @NotNull
     List<@NotNull @Valid SummaryComponentDependencyNode> nodes;

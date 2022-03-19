@@ -1,7 +1,8 @@
 package tech.kronicle.plugins.manualdependencies;
 
 import org.pf4j.Extension;
-import tech.kronicle.pluginapi.finders.DependencyFinder;
+import tech.kronicle.pluginapi.finders.TracingDataFinder;
+import tech.kronicle.pluginapi.finders.models.TracingData;
 import tech.kronicle.sdk.models.Component;
 import tech.kronicle.sdk.models.ComponentDependency;
 import tech.kronicle.sdk.models.ComponentMetadata;
@@ -15,7 +16,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Extension
-public class ManualDependencyFinder extends DependencyFinder {
+public class ManualDependencyFinder extends TracingDataFinder {
 
     @Override
     public String description() {
@@ -23,7 +24,13 @@ public class ManualDependencyFinder extends DependencyFinder {
     }
 
     @Override
-    public List<Dependency> find(ComponentMetadata componentMetadata) {
+    public TracingData find(ComponentMetadata componentMetadata) {
+        return TracingData.builder()
+                .dependencies(getDependencies(componentMetadata))
+                .build();
+    }
+
+    private List<Dependency> getDependencies(ComponentMetadata componentMetadata) {
         return Optional.ofNullable(componentMetadata).map(ComponentMetadata::getComponents).stream()
                 .flatMap(Collection::stream)
                 .flatMap(component -> component.getDependencies().stream()

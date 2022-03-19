@@ -1,11 +1,13 @@
 package tech.kronicle.plugins.zipkin.services;
 
+import tech.kronicle.pluginapi.finders.models.GenericTag;
 import tech.kronicle.plugins.zipkin.constants.TagKeys;
 import tech.kronicle.plugins.zipkin.models.api.Span;
 import tech.kronicle.utils.MapCollectors;
 
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class SubComponentDependencyTagFilter {
 
@@ -16,10 +18,10 @@ public class SubComponentDependencyTagFilter {
             TagKeys.EVENT_TYPE,
             TagKeys.EVENT_VERSION);
 
-    public Map<String, String> filterAndSortTags(Span span) {
+    public List<GenericTag> filterTags(Span span) {
         return span.getTags().entrySet().stream()
                 .filter(entry -> IDENTITY_TAG_KEYS.contains(entry.getKey()))
-                .sorted(Map.Entry.comparingByKey())
-                .collect(MapCollectors.toMap());
+                .map(entry -> new GenericTag(entry.getKey(), entry.getValue()))
+                .collect(Collectors.toList());
     }
 }

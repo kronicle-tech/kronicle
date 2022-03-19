@@ -12,7 +12,7 @@ public class AwsConfigTest {
     @Test
     public void constructorShouldMakeProfilesAnUnmodifiableList() {
         // Given
-        AwsConfig underTest = new AwsConfig(new ArrayList<>());
+        AwsConfig underTest = new AwsConfig(new ArrayList<>(), null);
 
         // When
         Throwable thrown = catchThrowable(() -> underTest.getProfiles().add(
