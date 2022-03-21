@@ -41,6 +41,7 @@ public class ResourceMapper {
                 .name(getName(nameTag, analysedArn))
                 .typeId(toKebabCase(analysedArn.getDerivedResourceType()))
                 .description(getDescription(resource, analysedArn, aliases))
+                .platformId("aws-managed-service")
                 .build();
     }
 
