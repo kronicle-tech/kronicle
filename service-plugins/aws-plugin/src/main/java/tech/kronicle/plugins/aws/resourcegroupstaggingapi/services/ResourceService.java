@@ -22,6 +22,6 @@ public class ResourceService {
     }
 
     private List<ResourceGroupsTaggingApiResource> getResources() {
-        return processProfiles(config.getProfiles(), fetcher::getResources);
+        return processProfiles(config.getProfiles(), fetcher::getResources, true);
     }
 }

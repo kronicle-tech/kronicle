@@ -22,6 +22,6 @@ public class DependencyService {
     }
 
     private List<XRayDependency> getXRayDependencies() {
-        return processProfiles(config.getProfiles(), fetcher::getServiceGraph);
+        return processProfiles(config.getProfiles(), fetcher::getServiceGraph, false);
     }
 }
