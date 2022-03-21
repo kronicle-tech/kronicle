@@ -66,6 +66,7 @@ public class ResourceMapperTest {
                                 detailedComponentDescriptions,
                                 "arn:aws:lambda:us-west-1:123456789012:function:ExampleStack-exampleFunction123ABC-123456ABCDEF\n"
                         ))
+                        .platformId("aws-managed-service")
                         .build(),
                 Component.builder()
                         .id("aws-ec2-security-group-security-group-sg-12345678901abcdef")
@@ -89,6 +90,7 @@ public class ResourceMapperTest {
                                         "* Alias(id=security-group/sg-12345678901ABCDEF, description=null, notes=null)\n" +
                                         "* Alias(id=security-group/sg-12345678901abcdef, description=null, notes=null)\n"
                         ))
+                        .platformId("aws-managed-service")
                         .build()
         ));
     }
