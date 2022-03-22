@@ -1,11 +1,13 @@
 package tech.kronicle.plugins.aws.resourcegroupstaggingapi.services;
 
+import lombok.RequiredArgsConstructor;
 import tech.kronicle.plugins.aws.config.AwsConfig;
 import tech.kronicle.plugins.aws.resourcegroupstaggingapi.models.ResourceGroupsTaggingApiResource;
 import tech.kronicle.plugins.aws.resourcegroupstaggingapi.models.ResourceGroupsTaggingApiTag;
 import tech.kronicle.plugins.aws.utils.AnalysedArn;
 import tech.kronicle.sdk.models.Alias;
 import tech.kronicle.sdk.models.Component;
+import tech.kronicle.sdk.models.ComponentTeam;
 
 import javax.inject.Inject;
 import java.util.ArrayList;
@@ -16,14 +18,10 @@ import java.util.stream.Collectors;
 import static tech.kronicle.common.CaseUtils.toKebabCase;
 import static tech.kronicle.plugins.aws.utils.ArnAnalyser.analyseArn;
 
+@RequiredArgsConstructor(onConstructor = @__({@Inject}))
 public class ResourceMapper {
 
-    private final boolean detailedComponentDescriptions;
-
-    @Inject
-    public ResourceMapper(AwsConfig config) {
-        this.detailedComponentDescriptions = Optional.ofNullable(config.getDetailedComponentDescriptions()).orElse(false);
-    }
+    private final AwsConfig config;
 
     public List<Component> mapResources(List<ResourceGroupsTaggingApiResource> resources) {
         return resources.stream()
@@ -40,6 +38,7 @@ public class ResourceMapper {
                 .aliases(aliases)
                 .name(getName(nameTag, analysedArn))
                 .typeId(toKebabCase(analysedArn.getDerivedResourceType()))
+                .teams(getTeam(resource))
                 .description(getDescription(resource, analysedArn, aliases))
                 .platformId("aws-managed-service")
                 .build();
@@ -63,8 +62,14 @@ public class ResourceMapper {
         return getTagValue(resource, "Name");
     }
 
+    private List<ComponentTeam> getTeam(ResourceGroupsTaggingApiResource resource) {
+        return getTagValue(resource, config.getTeamTagName())
+                .map(teamId -> List.of(ComponentTeam.builder().teamId(teamId).build()))
+                .orElse(List.of());
+    }
+
     private String getDescription(ResourceGroupsTaggingApiResource resource, AnalysedArn analysedArn, List<Alias> aliases) {
-        if (!detailedComponentDescriptions) {
+        if (!config.getDetailedComponentDescriptions()) {
             return "";
         }
 

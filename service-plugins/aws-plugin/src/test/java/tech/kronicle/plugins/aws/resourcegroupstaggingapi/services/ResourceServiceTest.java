@@ -163,6 +163,6 @@ public class ResourceServiceTest {
     }
 
     private ResourceService createUnderTest(List<AwsProfileConfig> profiles) {
-        return new ResourceService(fetcher, mapper, new AwsConfig(profiles, null));
+        return new ResourceService(fetcher, mapper, new AwsConfig(profiles, null, null));
     }
 }

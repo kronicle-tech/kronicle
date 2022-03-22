@@ -2,13 +2,13 @@ package tech.kronicle.plugins.aws.resourcegroupstaggingapi.services;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.NullSource;
 import org.junit.jupiter.params.provider.ValueSource;
 import tech.kronicle.plugins.aws.config.AwsConfig;
 import tech.kronicle.plugins.aws.resourcegroupstaggingapi.models.ResourceGroupsTaggingApiResource;
 import tech.kronicle.plugins.aws.resourcegroupstaggingapi.models.ResourceGroupsTaggingApiTag;
 import tech.kronicle.sdk.models.Alias;
 import tech.kronicle.sdk.models.Component;
+import tech.kronicle.sdk.models.ComponentTeam;
 
 import java.util.List;
 
@@ -31,7 +31,6 @@ public class ResourceMapperTest {
 
     @ParameterizedTest
     @ValueSource(booleans = { false, true })
-    @NullSource
     public void mapResourcesShouldMapAllResourcesToComponents(Boolean detailedComponentDescriptions) {
         // Given
         ResourceMapper underTest = createUnderTest(detailedComponentDescriptions);
@@ -44,6 +43,7 @@ public class ResourceMapperTest {
                         "arn:aws:ec2:us-west-1:123456789012:security-group/sg-12345678901ABCDEF",
                         List.of(
                                 new ResourceGroupsTaggingApiTag("Name", "Test name"),
+                                new ResourceGroupsTaggingApiTag("team", "test-team-id"),
                                 new ResourceGroupsTaggingApiTag("test-tag-key-1", "test-tag-value-1")
                         )
                 )
@@ -76,6 +76,11 @@ public class ResourceMapperTest {
                         ))
                         .name("Test name")
                         .typeId("aws-ec2-security-group")
+                        .teams(List.of(
+                                ComponentTeam.builder()
+                                        .teamId("test-team-id")
+                                        .build()
+                        ))
                         .description(prepareExpectedDescription(
                                 detailedComponentDescriptions,
                                         "arn:aws:ec2:us-west-1:123456789012:security-group/sg-12345678901ABCDEF\n" +
@@ -83,6 +88,7 @@ public class ResourceMapperTest {
                                         "Tags:\n" +
                                         "\n" +
                                         "* Name=Test name\n" +
+                                        "* team=test-team-id\n" +
                                         "* test-tag-key-1=test-tag-value-1\n" +
                                         "\n" +
                                         "Aliases:\n" +
@@ -96,7 +102,7 @@ public class ResourceMapperTest {
     }
 
     private ResourceMapper createUnderTest(Boolean detailedComponentDescriptions) {
-        return new ResourceMapper(new AwsConfig(null, detailedComponentDescriptions));
+        return new ResourceMapper(new AwsConfig(null, detailedComponentDescriptions, "team"));
     }
 
     private String prepareExpectedDescription(Boolean detailedComponentDescriptions, String value) {
