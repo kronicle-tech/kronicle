@@ -22,7 +22,7 @@ subprojects {
     apply from: "$rootDir/gradle/jacoco.gradle"
     apply from: "$rootDir/gradle/sonarqube.gradle"
 
-    version = scmVersion.version
+    version = System.getenv("CI") != null ? scmVersion.version : "0.0.1"
 
     compileJava {
         options.release = javaMajorVersion.toInteger()
