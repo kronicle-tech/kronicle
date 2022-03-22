@@ -65,6 +65,7 @@ plugins:
   aws:
     enabled: false
     detailed-component-descriptions: false
+    team-tag-name: team
 
   bitbucket-server:
     enabled: false
