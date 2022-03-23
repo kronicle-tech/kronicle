@@ -1,6 +1,7 @@
 package tech.kronicle.plugins.datadog;
 
 import lombok.RequiredArgsConstructor;
+import org.pf4j.Extension;
 import tech.kronicle.pluginapi.finders.TracingDataFinder;
 import tech.kronicle.pluginapi.finders.models.TracingData;
 import tech.kronicle.plugins.datadog.dependencies.client.DatadogDependencyClient;
@@ -14,6 +15,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+@Extension
 @RequiredArgsConstructor(onConstructor = @__({@Inject}))
 public class DatadogTracingDataFinder extends TracingDataFinder {
 
