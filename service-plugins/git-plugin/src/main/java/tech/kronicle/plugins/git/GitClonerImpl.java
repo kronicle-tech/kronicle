@@ -102,11 +102,11 @@ public class GitClonerImpl implements GitCloner {
                 return git;
             } catch (Exception e) {
                 log.error("Fetch failed for {} so deleting and cloning again", createRepoDescription(repoUrl, repoDir), e);
-                if (nonNull(git)) {
-                    git.close();
-                }
             }
 
+            if (nonNull(git)) {
+                git.close();
+            }
             deleteRecursively(repoDir, RecursiveDeleteOption.ALLOW_INSECURE);
         }
 
