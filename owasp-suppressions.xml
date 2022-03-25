@@ -434,4 +434,12 @@
         <packageUrl regex="true">^pkg:npm/minimist@.*$</packageUrl>
         <vulnerabilityName>1067259</vulnerabilityName>
     </suppress>
+    <!-- Suppress a vulnerability that does not affect Kronicle.  This is a command line argument parsing vulnerability -->
+    <suppress>
+        <notes><![CDATA[
+   file name: minimist:1.2.5
+   ]]></notes>
+        <packageUrl regex="true">^pkg:npm/minimist@.*$</packageUrl>
+        <vulnerabilityName>1067285</vulnerabilityName>
+    </suppress>
 </suppressions>

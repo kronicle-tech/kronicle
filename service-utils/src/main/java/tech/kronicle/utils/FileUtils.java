@@ -12,10 +12,12 @@ import java.nio.file.Files;
 import java.nio.file.OpenOption;
 import java.nio.file.Path;
 import java.nio.file.attribute.BasicFileAttributes;
+import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 import java.util.Properties;
 import java.util.function.BiPredicate;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import static java.util.Objects.nonNull;
@@ -83,10 +85,10 @@ public class FileUtils {
 
     public Stream<Path> findFiles(Path start, int maxDepth, BiPredicate<Path, BasicFileAttributes> matcher) {
         try {
-            return Files.find(start, maxDepth, isRegularFile()
+            return cloneAndCloseStream(Files.find(start, maxDepth, isRegularFile()
                     .and(isNotGitFile(start))
                     .and(isNotToBeIgnored(start))
-                    .and(matcher));
+                    .and(matcher)));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -112,6 +114,13 @@ public class FileUtils {
         return findFiles(start, maxDepth, matcher)
                 .map(file -> new FileContent(file, readFileContent(file)))
                 .filter(fileContent -> nonNull(fileContent.getContent()));
+    }
+
+    private <T> Stream<T> cloneAndCloseStream(Stream<T> stream) {
+        try (stream) {
+            return Stream.of(stream.collect(Collectors.toUnmodifiableList()))
+                    .flatMap(Collection::stream);
+        }
     }
 
     private BiPredicate<Path, BasicFileAttributes> isRegularFile() {
