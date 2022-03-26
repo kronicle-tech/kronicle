@@ -8,7 +8,7 @@ on:
 
 jobs:
 
-  ci-branch:
+  ci-branch-app:
     runs-on: ubuntu-latest
 
     steps:
@@ -41,13 +41,6 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-gradle-
 
-      - name: Cache SonarCloud packages
-        uses: actions/cache@v2
-        with:
-          path: ~/.sonar/cache
-          key: ${{ runner.os }}-sonar
-          restore-keys: ${{ runner.os }}-sonar
-
       - name: Get Node.js version
         run: |
           echo "$(node -v)" > node-version.txt
@@ -68,13 +61,61 @@ jobs:
         uses: gradle/wrapper-validation-action@e6e38bacfdf1a337459f332974bb2327a31aaf4b
 
       - name: Build
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information for SonarQube, if any
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: |
-          extra_tasks=()
-          #if [[ -v SONAR_TOKEN ]]; then extra_tasks+=('sonarqube'); fi
-          ./gradlew app:docker service:test app:assembleFrontend "${extra_tasks[@]}" build
+          ./gradlew app:build
+
+      - name: Archive Dependency Check report 🗄️
+        uses: actions/upload-artifact@v2
+        if: success() || failure()
+        with:
+          name: dependency-check-report
+          path: '**/build/reports/dependency-check-report.html'
+
+      - name: Archive JUnit test reports 🗄️
+        uses: actions/upload-artifact@v2
+        if: success() || failure()
+        with:
+          name: junit-test-reports
+          path: '**/build/reports/tests/test/**'
+
+      - name: Clean up Gradle Cache
+        # Remove some files from the Gradle cache, so they aren't cached by GitHub Actions.
+        # Restoring these files from a GitHub Actions cache might cause problems for future builds.
+        run: |
+          rm -f ~/.gradle/caches/modules-2/modules-2.lock
+          rm -f ~/.gradle/caches/modules-2/gc.properties
+
+  ci-branch-service:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+        # Based on https://axion-release-plugin.readthedocs.io/en/latest/configuration/ci_servers/#github-actions
+        with:
+          fetch-depth: 0
+
+      - name: Set up JDK 11
+        uses: actions/setup-java@v2
+        with:
+          java-version: '11'
+          distribution: 'adopt'
+
+      - name: Cache Gradle packages
+        uses: actions/cache@v2
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
+          restore-keys: |
+            ${{ runner.os }}-gradle-
+
+      - name: Validate Gradle wrapper
+        uses: gradle/wrapper-validation-action@e6e38bacfdf1a337459f332974bb2327a31aaf4b
+
+      - name: Build
+        run: |
+          ./gradlew service:build
 
       - name: Archive Dependency Check report 🗄️
         uses: actions/upload-artifact@v2
