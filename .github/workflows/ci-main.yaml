@@ -150,9 +150,7 @@ jobs:
       - name: Build and push Docker images to GitHub Container Registry
         run: |
           ./gradlew -PdockerPushImage=true -PdockerRegistry=ghcr.io/kronicle-tech -PdockerTagSuffix=-pre-release\
-            service:build common:build metadata:build sdk:build service-plugin-api:build service-utils:build\
-            service-test-utils:build service-plugin-test-utils:build\
-            service:dockerPush
+            build service:dockerPush -x app:build
 
       - name: Archive Dependency Check report 🗄️
         uses: actions/upload-artifact@v2
