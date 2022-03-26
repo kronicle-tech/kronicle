@@ -19,6 +19,10 @@ dependencies {
     compileOnly "com.github.spotbugs:spotbugs-annotations:$spotBugsVersion"
     testCompileOnly "com.github.spotbugs:spotbugs-annotations:$spotBugsVersion"
 
+    // Resolves performance vulnerability https://github.com/FasterXML/jackson-databind/issues/2816
+    // TODO: Remove dependency entirely once a version of Spring Boot is released that includes this fix
+    implementation "com.fasterxml.jackson.core:jackson-databind:2.13.2.1"
+
     api project(":sdk")
     api project(":common")
     api "com.fasterxml.jackson.core:jackson-annotations:$jacksonVersion"

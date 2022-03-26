@@ -18,7 +18,11 @@ dependencies {
 
     implementation project(":service-plugin-guice")
     implementation project(":service-utils")
-    implementation "com.fasterxml.jackson.core:jackson-databind"
+
+    // Resolves performance vulnerability https://github.com/FasterXML/jackson-databind/issues/2816
+    // TODO: Remove explicit version on dependency once a version of Spring Boot is released that includes this fix
+    implementation "com.fasterxml.jackson.core:jackson-databind:2.13.2.1"
+
     implementation "commons-io:commons-io:$commonsIoVersion"
     implementation "io.swagger.parser.v3:swagger-parser:$swaggerParserVersion"
 
