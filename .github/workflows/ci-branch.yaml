@@ -115,7 +115,8 @@ jobs:
 
       - name: Build
         run: |
-          ./gradlew service:build
+          ./gradlew service:build common:build metadata:build sdk:build service-plugin-api:build utils:build\
+            test-utils:build plugin-test-utils:build
 
       - name: Archive Dependency Check report 🗄️
         uses: actions/upload-artifact@v2
