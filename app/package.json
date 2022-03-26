@@ -12,7 +12,7 @@
     "lint:style": "stylelint \"**/*.{vue,css}\" --ignore-path .gitignore",
     "prepare": "cd .. && husky install app/.husky",
     "lint": "npm run lint:js && npm run lint:style",
-    "test": "TZ=utc jest",
+    "test": "TZ=utc jest --runInBand",
     "jest-watch": "TZ=utc jest --watch"
   },
   "lint-staged": {
