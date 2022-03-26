@@ -4,6 +4,7 @@ import lombok.Builder;
 import lombok.Value;
 import lombok.With;
 import lombok.extern.jackson.Jacksonized;
+import tech.kronicle.sdk.constants.PatternStrings;
 import tech.kronicle.sdk.utils.ListUtils;
 
 import javax.validation.Valid;
@@ -18,11 +19,11 @@ import java.util.List;
 public class Area implements ObjectWithId, ObjectWithReference {
 
     @NotBlank
-    @Pattern(regexp = "[a-z][a-z0-9]*(-[a-z0-9]+)*")
+    @Pattern(regexp = PatternStrings.ID)
     String id;
     @NotBlank
     String name;
-    List<@NotBlank @Pattern(regexp = "[a-z][a-z0-9]*(-[a-z0-9]+)*") String> tags;
+    List<@NotBlank @Pattern(regexp = PatternStrings.ID) String> tags;
     String description;
     String notes;
     List<@Valid Link> links;

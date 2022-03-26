@@ -6,6 +6,7 @@ import lombok.Value;
 import lombok.With;
 import lombok.extern.jackson.Jacksonized;
 import org.hibernate.validator.constraints.UniqueElements;
+import tech.kronicle.sdk.constants.PatternStrings;
 import tech.kronicle.sdk.models.git.GitRepo;
 import tech.kronicle.sdk.models.gradle.Gradle;
 import tech.kronicle.sdk.models.linesofcode.LinesOfCode;
@@ -30,7 +31,7 @@ import java.util.List;
 public class Component implements ObjectWithId, ObjectWithReference {
 
     @NotBlank
-    @Pattern(regexp = "[a-z][a-z0-9]*(-[a-z0-9]+)*")
+    @Pattern(regexp = PatternStrings.ID)
     String id;
     @UniqueElements
     List<Alias> aliases;
@@ -38,10 +39,10 @@ public class Component implements ObjectWithId, ObjectWithReference {
     String name;
     Boolean discovered;
     @NotBlank
-    @Pattern(regexp = "[a-z][a-z0-9]*(-[a-z0-9]+)*")
+    @Pattern(regexp = PatternStrings.ID)
     @JsonAlias("type")
     String typeId;
-    List<@NotBlank @Pattern(regexp = "[a-z][a-z0-9]*(-[a-z0-9]+)*") String> tags;
+    List<@NotBlank @Pattern(regexp = PatternStrings.ID) String> tags;
     @Valid
     @NotNull
     Repo repo;
@@ -50,12 +51,16 @@ public class Component implements ObjectWithId, ObjectWithReference {
     String notes;
     List<@Valid Link> links;
     List<@Valid ComponentTeam> teams;
-    @Pattern(regexp = "[a-z][a-z0-9]*(-[a-z0-9]+)*")
+    @Pattern(regexp = PatternStrings.ID)
     @JsonAlias("platform")
     String platformId;
     List<@Valid ComponentDependency> dependencies;
     List<@Valid CrossFunctionalRequirement> crossFunctionalRequirements;
     List<@Valid TechDebt> techDebts;
+
+    @Valid
+    ComponentState state;
+    
     @Valid GitRepo gitRepo;
     @Valid Gradle gradle;
     @Valid NodeJs nodeJs;
@@ -89,6 +94,7 @@ public class Component implements ObjectWithId, ObjectWithReference {
             List<ComponentDependency> dependencies,
             List<CrossFunctionalRequirement> crossFunctionalRequirements,
             List<TechDebt> techDebts,
+            ComponentState state,
             GitRepo gitRepo,
             Gradle gradle,
             NodeJs nodeJs,
@@ -121,6 +127,7 @@ public class Component implements ObjectWithId, ObjectWithReference {
         this.dependencies = ListUtils.createUnmodifiableList(dependencies);
         this.crossFunctionalRequirements = ListUtils.createUnmodifiableList(crossFunctionalRequirements);
         this.techDebts = ListUtils.createUnmodifiableList(techDebts);
+        this.state = state;
         this.gitRepo = gitRepo;
         this.gradle = gradle;
         this.nodeJs = nodeJs;

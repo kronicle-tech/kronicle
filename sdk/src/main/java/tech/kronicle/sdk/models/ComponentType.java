@@ -4,6 +4,7 @@ import lombok.Builder;
 import lombok.Value;
 import lombok.With;
 import lombok.extern.jackson.Jacksonized;
+import tech.kronicle.sdk.constants.PatternStrings;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
@@ -15,7 +16,7 @@ import javax.validation.constraints.Pattern;
 public class ComponentType implements ObjectWithId, ObjectWithReference {
 
     @NotBlank
-    @Pattern(regexp = "[a-z][a-z0-9]*(-[a-z0-9]+)*")
+    @Pattern(regexp = PatternStrings.ID)
     String id;
     @NotBlank
     String description;
