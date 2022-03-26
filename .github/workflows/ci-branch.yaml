@@ -115,7 +115,7 @@ jobs:
 
       - name: Build
         run: |
-          ./gradlew service:build common:build metadata:build sdk:build service-plugin-api:build utils:build\
+          ./gradlew service:build common:build metadata:build sdk:build service-plugin-api:build service-utils:build\
             test-utils:build plugin-test-utils:build
 
       - name: Archive Dependency Check report 🗄️
