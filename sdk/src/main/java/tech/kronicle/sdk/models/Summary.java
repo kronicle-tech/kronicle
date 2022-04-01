@@ -9,6 +9,8 @@ import tech.kronicle.sdk.utils.ListUtils;
 
 import java.util.List;
 
+import static tech.kronicle.sdk.utils.ListUtils.createUnmodifiableList;
+
 @Value
 @With
 @Builder(toBuilder = true)
@@ -25,10 +27,10 @@ public class Summary {
 
     public Summary(List<SummaryMissingComponent> missingComponents, SummaryComponentDependencies componentDependencies,
             SummarySubComponentDependencies subComponentDependencies, List<SummaryCallGraph> callGraphs, List<SummarySonarQubeMetric> sonarQubeMetrics) {
-        this.missingComponents = ListUtils.createUnmodifiableList(missingComponents);
+        this.missingComponents = createUnmodifiableList(missingComponents);
         this.componentDependencies = componentDependencies;
         this.subComponentDependencies = subComponentDependencies;
-        this.callGraphs = ListUtils.createUnmodifiableList(callGraphs);
-        this.sonarQubeMetrics = ListUtils.createUnmodifiableList(sonarQubeMetrics);
+        this.callGraphs = createUnmodifiableList(callGraphs);
+        this.sonarQubeMetrics = createUnmodifiableList(sonarQubeMetrics);
     }
 }

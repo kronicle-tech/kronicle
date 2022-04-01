@@ -9,6 +9,8 @@ import tech.kronicle.sdk.utils.ListUtils;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import static tech.kronicle.sdk.utils.ListUtils.createUnmodifiableList;
+
 @Value
 @With
 @Builder(toBuilder = true)
@@ -30,8 +32,8 @@ public class GitRepo {
         this.firstCommitTimestamp = firstCommitTimestamp;
         this.lastCommitTimestamp = lastCommitTimestamp;
         this.commitCount = commitCount;
-        this.authors = ListUtils.createUnmodifiableList(authors);
-        this.committers = ListUtils.createUnmodifiableList(committers);
+        this.authors = createUnmodifiableList(authors);
+        this.committers = createUnmodifiableList(committers);
         this.authorCount = authorCount;
         this.committerCount = committerCount;
     }

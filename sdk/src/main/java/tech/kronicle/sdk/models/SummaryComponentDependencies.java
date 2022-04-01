@@ -10,6 +10,8 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import java.util.List;
 
+import static tech.kronicle.sdk.utils.ListUtils.createUnmodifiableList;
+
 @Value
 @With
 @Builder(toBuilder = true)
@@ -22,7 +24,7 @@ public class SummaryComponentDependencies implements SummaryDependencies<Summary
     List<@NotNull @Valid SummaryComponentDependency> dependencies;
 
     public SummaryComponentDependencies(List<SummaryComponentDependencyNode> nodes, List<SummaryComponentDependency> dependencies) {
-        this.nodes = ListUtils.createUnmodifiableList(nodes);
-        this.dependencies = ListUtils.createUnmodifiableList(dependencies);
+        this.nodes = createUnmodifiableList(nodes);
+        this.dependencies = createUnmodifiableList(dependencies);
     }
 }

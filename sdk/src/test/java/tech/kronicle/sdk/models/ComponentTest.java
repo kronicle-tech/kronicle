@@ -8,6 +8,8 @@ import tech.kronicle.sdk.models.sonarqube.SonarQubeProject;
 import tech.kronicle.sdk.models.todos.ToDo;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.catchThrowable;
@@ -24,6 +26,32 @@ public class ComponentTest {
 
         // Then
         assertThat(returnValue).isNotNull();
+    }
+
+    @Test
+    public void constructorShouldDeserializePluginsAsAMapOfRawJsonValues() throws JsonProcessingException {
+        // Given
+        String json = "{\n" +
+                "  \"plugins\": {\n" +
+                "    \"key-1\": {\n" +
+                "      \"nested-key-1\": \"nested-value-1\"\n" +
+                "    },\n" +
+                "    \"key-2\": {\n" +
+                "      \"nested-key-2\": \"nested-value-2\"\n" +
+                "    }\n" +
+                "  }" +
+                "}";
+
+        // When
+        Component returnValue = new ObjectMapper().readValue(json, Component.class);
+
+        // Then
+        assertThat(returnValue).isNotNull();
+        Map<String, String> plugins = returnValue.getPlugins();
+        assertThat(plugins).isNotNull();
+        assertThat(plugins.keySet()).containsExactlyInAnyOrder("key-1", "key-2");
+        assertThat(plugins.get("key-1")).isEqualTo("{\"nested-key-1\":\"nested-value-1\"}");
+        assertThat(plugins.get("key-2")).isEqualTo("{\"nested-key-2\":\"nested-value-2\"}");
     }
 
     @Test
@@ -107,6 +135,18 @@ public class ComponentTest {
 
         // When
         Throwable thrown = catchThrowable(() -> underTest.getTechDebts().add(TechDebt.builder().build()));
+
+        // Then
+        assertThat(thrown).isInstanceOf(UnsupportedOperationException.class);
+    }
+
+    @Test
+    public void constructorShouldMakePluginsAnUnmodifiableMap() {
+        // Given
+        Component underTest = Component.builder().plugins(new HashMap<>()).build();
+
+        // When
+        Throwable thrown = catchThrowable(() -> underTest.getPlugins().put("key", "value"));
 
         // Then
         assertThat(thrown).isInstanceOf(UnsupportedOperationException.class);

@@ -10,6 +10,8 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import java.util.List;
 
+import static tech.kronicle.sdk.utils.ListUtils.createUnmodifiableList;
+
 @Value
 @With
 @Builder(toBuilder = true)
@@ -24,6 +26,6 @@ public class CrossFunctionalRequirement {
     public CrossFunctionalRequirement(String description, String notes, List<Link> links) {
         this.description = description;
         this.notes = notes;
-        this.links = ListUtils.createUnmodifiableList(links);
+        this.links = createUnmodifiableList(links);
     }
 }

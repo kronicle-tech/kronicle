@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Value;
 import lombok.With;
+import tech.kronicle.sdk.constants.PatternStrings;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
@@ -15,7 +16,7 @@ import javax.validation.constraints.Pattern;
 public class ComponentTeam {
 
     @NotBlank
-    @Pattern(regexp = "[a-z][a-z0-9]*(-[a-z0-9]+)*")
+    @Pattern(regexp = PatternStrings.ID)
     String teamId;
     String description;
     ComponentTeamType type;

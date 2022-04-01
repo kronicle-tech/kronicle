@@ -4,11 +4,12 @@ import lombok.Builder;
 import lombok.Value;
 import lombok.With;
 import lombok.extern.jackson.Jacksonized;
-import tech.kronicle.sdk.utils.MapUtils;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.util.Map;
+
+import static tech.kronicle.sdk.utils.MapUtils.createUnmodifiableMap;
 
 @Value
 @With
@@ -26,6 +27,6 @@ public class SummarySubComponentDependencyNode implements ObjectWithComponentId 
     public SummarySubComponentDependencyNode(String componentId, String spanName, Map<String, String> tags) {
         this.componentId = componentId;
         this.spanName = spanName;
-        this.tags = MapUtils.createUnmodifiableMap(tags);
+        this.tags = createUnmodifiableMap(tags);
     }
 }
