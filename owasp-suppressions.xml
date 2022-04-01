@@ -442,4 +442,12 @@
         <packageUrl regex="true">^pkg:npm/minimist@.*$</packageUrl>
         <vulnerabilityName>1067285</vulnerabilityName>
     </suppress>
+    <!-- Suppress a "Regular Expression Denial of Service" vulnerability in an npm package -->
+    <suppress>
+        <notes><![CDATA[
+   file name: glob-parent:3.1.0
+   ]]></notes>
+        <packageUrl regex="true">^pkg:npm/glob\-parent@.*$</packageUrl>
+        <vulnerabilityName>1067329</vulnerabilityName>
+    </suppress>
 </suppressions>
