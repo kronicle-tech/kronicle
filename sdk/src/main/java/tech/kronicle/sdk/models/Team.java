@@ -13,6 +13,8 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 import java.util.List;
 
+import static tech.kronicle.sdk.utils.ListUtils.createUnmodifiableList;
+
 @Value
 @With
 @Builder(toBuilder = true)
@@ -40,11 +42,11 @@ public class Team implements ObjectWithId, ObjectWithReference {
         this.name = name;
         this.emailAddress = emailAddress;
         this.areaId = areaId;
-        this.tags = ListUtils.createUnmodifiableList(tags);
+        this.tags = createUnmodifiableList(tags);
         this.description = description;
         this.notes = notes;
-        this.links = ListUtils.createUnmodifiableList(links);
-        this.components = ListUtils.createUnmodifiableList(components);
+        this.links = createUnmodifiableList(links);
+        this.components = createUnmodifiableList(components);
     }
 
     @Override

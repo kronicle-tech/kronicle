@@ -12,6 +12,8 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 import java.util.List;
 
+import static tech.kronicle.sdk.utils.ListUtils.createUnmodifiableList;
+
 @Value
 @With
 @Builder(toBuilder = true)
@@ -34,12 +36,12 @@ public class Area implements ObjectWithId, ObjectWithReference {
             List<Component> components) {
         this.id = id;
         this.name = name;
-        this.tags = ListUtils.createUnmodifiableList(tags);
+        this.tags = createUnmodifiableList(tags);
         this.description = description;
         this.notes = notes;
-        this.links = ListUtils.createUnmodifiableList(links);
-        this.teams = ListUtils.createUnmodifiableList(teams);
-        this.components = ListUtils.createUnmodifiableList(components);
+        this.links = createUnmodifiableList(links);
+        this.teams = createUnmodifiableList(teams);
+        this.components = createUnmodifiableList(components);
     }
 
     @Override

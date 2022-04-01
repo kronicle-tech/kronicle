@@ -20,5 +20,5 @@ public class ComponentStateLogLevelCount {
     String level;
     @NotNull
     @Min(0)
-    Integer count;
+    Long count;
 }

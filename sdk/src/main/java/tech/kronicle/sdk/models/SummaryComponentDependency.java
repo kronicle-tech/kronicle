@@ -11,6 +11,8 @@ import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import static tech.kronicle.sdk.utils.ListUtils.createUnmodifiableList;
+
 @Value
 @With
 @Builder(toBuilder = true)
@@ -35,7 +37,7 @@ public class SummaryComponentDependency implements ObjectWithSourceIndexAndTarge
             LocalDateTime startTimestamp, LocalDateTime endTimestamp, SummaryComponentDependencyDuration duration) {
         this.sourceIndex = sourceIndex;
         this.targetIndex = targetIndex;
-        this.relatedIndexes = ListUtils.createUnmodifiableList(relatedIndexes);
+        this.relatedIndexes = createUnmodifiableList(relatedIndexes);
         this.manual = manual;
         this.sampleSize = sampleSize;
         this.startTimestamp = startTimestamp;
