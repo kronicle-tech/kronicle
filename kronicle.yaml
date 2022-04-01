@@ -39,7 +39,7 @@ components:
     techDebts: []
     plugins:
       aws:
-        - logGroupNamePatterns:
+        logGroupNamePatterns:
           - "KronicleStack-KronicleTaskDefinitionKronicleAppLogGroup.*"
 
   - id: kronicle-service
@@ -121,5 +121,5 @@ components:
           OpenAPI spec for the Kronicle Service
     plugins:
       aws:
-        - logGroupNamePatterns:
+        logGroupNamePatterns:
           - "KronicleStack-KronicleTaskDefinitionKronicleServiceLogGroup.*"
