@@ -8,7 +8,7 @@ import tech.kronicle.sdk.models.Component;
 import javax.inject.Inject;
 import java.util.List;
 
-import static tech.kronicle.plugins.aws.utils.ProfileUtils.processProfiles;
+import static tech.kronicle.plugins.aws.utils.ProfileUtils.processProfilesToList;
 
 @RequiredArgsConstructor(onConstructor = @__({@Inject}))
 public class ResourceService {
@@ -22,6 +22,6 @@ public class ResourceService {
     }
 
     private List<ResourceGroupsTaggingApiResource> getResources() {
-        return processProfiles(config.getProfiles(), fetcher::getResources);
+        return processProfilesToList(config.getProfiles(), fetcher::getResources);
     }
 }

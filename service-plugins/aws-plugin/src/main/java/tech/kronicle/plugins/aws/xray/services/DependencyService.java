@@ -8,7 +8,7 @@ import tech.kronicle.sdk.models.Dependency;
 import javax.inject.Inject;
 import java.util.List;
 
-import static tech.kronicle.plugins.aws.utils.ProfileUtils.processProfiles;
+import static tech.kronicle.plugins.aws.utils.ProfileUtils.processProfilesToList;
 
 @RequiredArgsConstructor(onConstructor = @__({@Inject}))
 public class DependencyService {
@@ -22,6 +22,6 @@ public class DependencyService {
     }
 
     private List<XRayDependency> getXRayDependencies() {
-        return processProfiles(config.getProfiles(), fetcher::getServiceGraph);
+        return processProfilesToList(config.getProfiles(), fetcher::getServiceGraph);
     }
 }

@@ -32,6 +32,7 @@ public class ResourceFetcherTest {
                 new AwsProfileConfig(
                         "test-access-key-id",
                         "test-secret-access-key",
+                        null,
                         null
                 ),
                 "test-region"

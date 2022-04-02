@@ -10,6 +10,8 @@ import java.util.List;
 
 public class AwsPlugin extends KronicleGuicePlugin {
 
+    public static final String ID = "aws";
+
     public AwsPlugin(PluginWrapper wrapper) {
         super(wrapper);
     }

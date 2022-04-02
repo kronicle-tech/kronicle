@@ -28,7 +28,9 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import java.util.List;
 import java.util.Map;
+import java.util.function.UnaryOperator;
 
+import static java.util.Objects.nonNull;
 import static tech.kronicle.sdk.utils.ListUtils.createUnmodifiableList;
 import static tech.kronicle.sdk.utils.MapUtils.createUnmodifiableMap;
 
@@ -161,5 +163,11 @@ public class Component implements ObjectWithId, ObjectWithReference {
     @Override
     public String reference() {
         return id;
+    }
+
+    public Component withUpdatedState(UnaryOperator<ComponentState> action) {
+        return withState(
+                action.apply(nonNull(state) ? state : ComponentState.builder().build())
+        );
     }
 }
