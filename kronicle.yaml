@@ -37,10 +37,6 @@ components:
       - targetComponentId: kronicle-service
     crossFunctionalRequirements: []
     techDebts: []
-    plugins:
-      aws:
-        logGroupNamePatterns:
-          - "KronicleStack-KronicleTaskDefinitionKronicleAppLogGroup.*"
 
   - id: kronicle-service
     name: Kronicle Service
@@ -119,7 +115,3 @@ components:
       - url: http://localhost:8091/actuator/openapi
         description: |
           OpenAPI spec for the Kronicle Service
-    plugins:
-      aws:
-        logGroupNamePatterns:
-          - "KronicleStack-KronicleTaskDefinitionKronicleServiceLogGroup.*"
