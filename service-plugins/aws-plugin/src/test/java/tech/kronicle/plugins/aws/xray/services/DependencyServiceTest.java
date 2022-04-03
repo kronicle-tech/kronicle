@@ -178,6 +178,15 @@ public class DependencyServiceTest {
     }
 
     private DependencyService createUnderTest(List<AwsProfileConfig> profiles) {
-        return new DependencyService(fetcher, assembler, new AwsConfig(profiles, null, null));
+        return new DependencyService(
+                fetcher,
+                assembler,
+                new AwsConfig(
+                        profiles,
+                        null,
+                        null,
+                        null
+                )
+        );
     }
 }

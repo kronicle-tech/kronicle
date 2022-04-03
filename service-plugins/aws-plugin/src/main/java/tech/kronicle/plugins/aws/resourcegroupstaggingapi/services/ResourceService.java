@@ -18,7 +18,7 @@ public class ResourceService {
     private final AwsConfig config;
 
     public List<Component> getComponents() {
-        return mapper.mapResources(getResources());
+        return mapper.mapResourcesToComponents(getResources());
     }
 
     private List<ResourceGroupsTaggingApiResource> getResources() {

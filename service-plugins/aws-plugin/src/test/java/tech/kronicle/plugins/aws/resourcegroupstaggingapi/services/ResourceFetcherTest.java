@@ -13,6 +13,7 @@ import tech.kronicle.plugins.aws.resourcegroupstaggingapi.models.ResourceGroupsT
 import tech.kronicle.plugins.aws.resourcegroupstaggingapi.models.ResourceGroupsTaggingApiResourcePage;
 
 import java.util.List;
+import java.util.Map;
 
 import static java.util.Objects.isNull;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -73,7 +74,12 @@ public class ResourceFetcherTest {
                     getNextPage(nextToken)
             );
         }
-        
+
+        @Override
+        public ResourceGroupsTaggingApiResourcePage getResources(List<String> resourceTypeFilters, Map<String, List<String>> tagFilters, String nextToken) {
+            return null;
+        }
+
         private ResourceGroupsTaggingApiResource createResourceGroupsTaggingApiResource(String nextToken, int resourceGroupsTaggingApiResourceNumber) {
             return new ResourceGroupsTaggingApiResource(
                     "test-arn-" + nextToken + "-" + resourceGroupsTaggingApiResourceNumber,

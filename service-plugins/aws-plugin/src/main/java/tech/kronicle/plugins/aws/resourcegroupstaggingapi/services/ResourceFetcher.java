@@ -8,6 +8,7 @@ import tech.kronicle.plugins.aws.resourcegroupstaggingapi.models.ResourceGroupsT
 
 import javax.inject.Inject;
 import java.util.List;
+import java.util.Map;
 
 import static tech.kronicle.plugins.aws.utils.PageFetcher.fetchAllPages;
 
@@ -20,6 +21,21 @@ public class ResourceFetcher {
         try (ResourceGroupsTaggingApiClientFacade clientFacade =
                      clientFacadeFactory.createResourceGroupsTaggingApiClientFacade(profileAndRegion)) {
             return fetchAllPages(clientFacade::getResources);
+        }
+    }
+
+    public List<ResourceGroupsTaggingApiResource> getResources(
+            AwsProfileAndRegion profileAndRegion,
+            List<String> resourceTypeFilters,
+            Map<String, List<String>> tagFilters
+    ) {
+        try (ResourceGroupsTaggingApiClientFacade clientFacade =
+                     clientFacadeFactory.createResourceGroupsTaggingApiClientFacade(profileAndRegion)) {
+            return fetchAllPages(nextToken -> clientFacade.getResources(
+                    resourceTypeFilters,
+                    tagFilters,
+                    nextToken
+            ));
         }
     }
 }

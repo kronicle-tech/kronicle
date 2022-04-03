@@ -5,12 +5,15 @@ import software.amazon.awssdk.services.resourcegroupstaggingapi.ResourceGroupsTa
 import software.amazon.awssdk.services.resourcegroupstaggingapi.model.GetResourcesResponse;
 import software.amazon.awssdk.services.resourcegroupstaggingapi.model.ResourceTagMapping;
 import software.amazon.awssdk.services.resourcegroupstaggingapi.model.Tag;
+import software.amazon.awssdk.services.resourcegroupstaggingapi.model.TagFilter;
 import tech.kronicle.plugins.aws.resourcegroupstaggingapi.models.ResourceGroupsTaggingApiResource;
 import tech.kronicle.plugins.aws.resourcegroupstaggingapi.models.ResourceGroupsTaggingApiResourcePage;
 import tech.kronicle.plugins.aws.resourcegroupstaggingapi.models.ResourceGroupsTaggingApiTag;
 
 import javax.inject.Inject;
+import java.util.Collection;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 import static java.util.Objects.isNull;
@@ -29,6 +32,29 @@ public class ResourceGroupsTaggingApiClientFacadeImpl implements ResourceGroupsT
         return mapResources(
                 client.getResources(builder -> builder.paginationToken(nextToken))
         );
+    }
+
+    public ResourceGroupsTaggingApiResourcePage getResources(
+            List<String> resourceTypeFilters,
+            Map<String, List<String>> tagFilters,
+            String nextToken
+    ) {
+        return mapResources(
+                client.getResources(builder -> builder
+                        .resourceTypeFilters(resourceTypeFilters)
+                        .tagFilters(mapTagFilters(tagFilters))
+                        .paginationToken(nextToken))
+        );
+    }
+
+    private List<TagFilter> mapTagFilters(Map<String, List<String>> tagFilters) {
+        return tagFilters.entrySet().stream()
+                .map(entry -> TagFilter.builder()
+                        .key(entry.getKey())
+                        .values(entry.getValue())
+                        .build()
+                )
+                .collect(Collectors.toList());
     }
 
     private ResourceGroupsTaggingApiResourcePage mapResources(GetResourcesResponse resources) {

@@ -47,7 +47,7 @@ public class ResourceServiceTest {
                         .id("test-component-id-2")
                         .build()
         );
-        when(mapper.mapResources(services)).thenReturn(components);
+        when(mapper.mapResourcesToComponents(services)).thenReturn(components);
 
         // When
         List<Component> returnValue = underTest.getComponents();
@@ -86,7 +86,7 @@ public class ResourceServiceTest {
                         .id("test-component-id-2")
                         .build()
         );
-        when(mapper.mapResources(List.of(
+        when(mapper.mapResourcesToComponents(List.of(
                 resource1,
                 resource2,
                 resource3,
@@ -148,7 +148,7 @@ public class ResourceServiceTest {
                         .id("test-component-id-2")
                         .build()
         );
-        when(mapper.mapResources(List.of(
+        when(mapper.mapResourcesToComponents(List.of(
                 resource1,
                 resource2,
                 resource3,
@@ -174,6 +174,6 @@ public class ResourceServiceTest {
     }
 
     private ResourceService createUnderTest(List<AwsProfileConfig> profiles) {
-        return new ResourceService(fetcher, mapper, new AwsConfig(profiles, null, null));
+        return new ResourceService(fetcher, mapper, new AwsConfig(profiles, null, null, null));
     }
 }

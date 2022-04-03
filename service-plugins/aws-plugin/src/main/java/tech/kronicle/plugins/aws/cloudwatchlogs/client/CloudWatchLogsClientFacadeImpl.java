@@ -2,9 +2,7 @@ package tech.kronicle.plugins.aws.cloudwatchlogs.client;
 
 import lombok.RequiredArgsConstructor;
 import software.amazon.awssdk.services.cloudwatchlogs.CloudWatchLogsClient;
-import software.amazon.awssdk.services.cloudwatchlogs.model.DescribeLogGroupsResponse;
 import software.amazon.awssdk.services.cloudwatchlogs.model.GetQueryResultsResponse;
-import software.amazon.awssdk.services.cloudwatchlogs.model.LogGroup;
 import software.amazon.awssdk.services.cloudwatchlogs.model.ResultField;
 import tech.kronicle.plugins.aws.cloudwatchlogs.models.CloudWatchLogsQueryResult;
 import tech.kronicle.plugins.aws.cloudwatchlogs.models.CloudWatchLogsQueryResultField;
@@ -23,10 +21,6 @@ public class CloudWatchLogsClientFacadeImpl implements CloudWatchLogsClientFacad
         client.close();
     }
 
-    public List<String> getLogGroupNames() {
-        return mapLogGroupNames(client.describeLogGroups());
-    }
-
     public String startQuery(long startTime, long endTime, List<String> logGroupNames, String queryString) {
         return client
                 .startQuery(
@@ -43,16 +37,6 @@ public class CloudWatchLogsClientFacadeImpl implements CloudWatchLogsClientFacad
                 .getQueryResults(
                         builder -> builder.queryId(queryId)
                 ));
-    }
-
-    private List<String> mapLogGroupNames(DescribeLogGroupsResponse describeLogGroups) {
-        return describeLogGroups.logGroups().stream()
-                .map(this::mapLogGroupName)
-                .collect(Collectors.toList());
-    }
-
-    private String mapLogGroupName(LogGroup logGroup) {
-        return logGroup.logGroupName();
     }
 
     private CloudWatchLogsQueryResults mapQueryResults(GetQueryResultsResponse queryResults) {
