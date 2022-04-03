@@ -21,13 +21,13 @@ public class CloudWatchLogsClientFacadeImpl implements CloudWatchLogsClientFacad
         client.close();
     }
 
-    public String startQuery(long startTime, long endTime, List<String> logGroupNames, String queryString) {
+    public String startQuery(long startTime, long endTime, List<String> logGroupNames, String query) {
         return client
                 .startQuery(
                     builder -> builder.startTime(startTime)
                             .endTime(endTime)
                             .logGroupNames(logGroupNames)
-                            .queryString(queryString)
+                            .queryString(query)
                 )
                 .queryId();
     }

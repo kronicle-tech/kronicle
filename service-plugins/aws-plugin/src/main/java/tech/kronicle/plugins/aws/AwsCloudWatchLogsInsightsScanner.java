@@ -8,7 +8,7 @@ import tech.kronicle.plugins.aws.cloudwatchlogs.services.CloudWatchLogsService;
 import tech.kronicle.plugins.aws.models.AwsProfileAndRegion;
 import tech.kronicle.sdk.models.Component;
 import tech.kronicle.sdk.models.ComponentMetadata;
-import tech.kronicle.sdk.models.ComponentStateLogLevelCount;
+import tech.kronicle.sdk.models.ComponentStateLogSummary;
 
 import javax.inject.Inject;
 import java.util.List;
@@ -32,18 +32,21 @@ public class AwsCloudWatchLogsInsightsScanner extends ComponentScanner {
 
     @Override
     public Output<Void> scan(Component input) {
-        Map<AwsProfileAndRegion, List<ComponentStateLogLevelCount>> logLevelCounts = service.getLogLevelCountsForComponent(input);
+        Map<AwsProfileAndRegion, List<ComponentStateLogSummary>> logLevelCounts = service.getLogSummariesForComponent(input);
 
         return Output.of(component -> component.withUpdatedState(state -> {
-            for (Map.Entry<AwsProfileAndRegion, List<ComponentStateLogLevelCount>> entry : logLevelCounts.entrySet()) {
-                String environmentId = entry.getKey().getProfile().getEnvironmentId();
-                state = state.withUpdatedEnvironment(
-                        environmentId,
-                        environment -> environment.withUpdatedPlugin(
-                                AwsPlugin.ID,
-                                plugin -> plugin.withLogLevelCounts(entry.getValue())
-                        )
-                );
+            for (Map.Entry<AwsProfileAndRegion, List<ComponentStateLogSummary>> entry : logLevelCounts.entrySet()) {
+                List<ComponentStateLogSummary> logSummaries = entry.getValue();
+                if (!logSummaries.isEmpty()) {
+                    String environmentId = entry.getKey().getProfile().getEnvironmentId();
+                    state = state.withUpdatedEnvironment(
+                            environmentId,
+                            environment -> environment.withUpdatedPlugin(
+                                    AwsPlugin.ID,
+                                    plugin -> plugin.withLogSummaries(logSummaries)
+                            )
+                    );
+                }
             }
             return state;
         }));

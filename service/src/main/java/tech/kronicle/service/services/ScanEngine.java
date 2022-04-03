@@ -249,15 +249,16 @@ public class ScanEngine {
         Component component = componentMap.get(componentId);
         try {
             component = componentTransformer.apply(component);
-            try {
-                validatorService.validate(component);
-            } catch (ValidationException e) {
-                ScannerError scannerError = new ScannerError(scanner.id(), "Validation failure for transformed component",
-                        throwableToScannerErrorMapper.map(scanner.id(), e));
-                component = addScannerErrorsToComponent(component, List.of(scannerError));
-            }
         } catch (Exception e) {
-            ScannerError scannerError = new ScannerError(scanner.id(), "Component transformation failed",
+            log.error("Scanner {} failed to update component", scanner.id(), e);
+            ScannerError scannerError = new ScannerError(scanner.id(), "Component update failed",
+                    throwableToScannerErrorMapper.map(scanner.id(), e));
+            component = addScannerErrorsToComponent(component, List.of(scannerError));
+        }
+        try {
+            validatorService.validate(component);
+        } catch (ValidationException e) {
+            ScannerError scannerError = new ScannerError(scanner.id(), "Validation failure for transformed component",
                     throwableToScannerErrorMapper.map(scanner.id(), e));
             component = addScannerErrorsToComponent(component, List.of(scannerError));
         }

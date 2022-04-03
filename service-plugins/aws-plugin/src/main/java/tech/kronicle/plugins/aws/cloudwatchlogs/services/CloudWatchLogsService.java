@@ -15,18 +15,23 @@ import tech.kronicle.plugins.aws.resourcegroupstaggingapi.models.ResourceGroupsT
 import tech.kronicle.plugins.aws.resourcegroupstaggingapi.services.ResourceFetcher;
 import tech.kronicle.sdk.models.Alias;
 import tech.kronicle.sdk.models.Component;
-import tech.kronicle.sdk.models.ComponentStateLogLevelCount;
+import tech.kronicle.sdk.models.ComponentStateLogLevel;
+import tech.kronicle.sdk.models.ComponentStateLogMessage;
+import tech.kronicle.sdk.models.ComponentStateLogSummary;
 
 import javax.inject.Inject;
 import java.time.Clock;
 import java.time.Duration;
 import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.function.Function;
-import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
+import static java.util.Objects.isNull;
 import static java.util.Objects.nonNull;
 import static java.util.stream.Collectors.groupingBy;
 import static java.util.stream.Collectors.mapping;
@@ -85,28 +90,151 @@ public class CloudWatchLogsService {
     }
 
     @SneakyThrows
-    public Map<AwsProfileAndRegion, List<ComponentStateLogLevelCount>> getLogLevelCountsForComponent(Component component) {
+    public Map<AwsProfileAndRegion, List<ComponentStateLogSummary>> getLogSummariesForComponent(Component component) {
         return processProfilesToMap(
                 config.getProfiles(),
-                getLogLevelCountsProfileAndRegionAndComponent(component)
+                getLogSummariesProfileAndRegionAndComponent(component)
         );
     }
 
-    private Function<AwsProfileAndRegion, List<ComponentStateLogLevelCount>> getLogLevelCountsProfileAndRegionAndComponent(
+    private Function<AwsProfileAndRegion, List<ComponentStateLogSummary>> getLogSummariesProfileAndRegionAndComponent(
             Component component
     ) {
         return profileAndRegion -> {
-            Instant now = clock.instant();
-            CloudWatchLogsQueryResults finalResults = executeQuery(
-                    profileAndRegion,
-                    getLogGroupNamesForComponent(profileAndRegion, component),
-                    now
-            );
-
-            return finalResults.getResults().stream()
-                    .map(this::mapResult)
-                    .collect(Collectors.toList());
+            GetLogSummary getLogSummary = (
+                    String name,
+                    String comparisonName,
+                    Duration duration,
+                    Duration offset
+            ) -> {
+                ComponentStateLogSummary logSummary = getLogSummary(
+                        profileAndRegion,
+                        component,
+                        name,
+                        duration,
+                        Duration.ZERO
+                );
+                if (isNull(logSummary)) {
+                    return null;
+                }
+                return logSummary.withComparison(
+                        getLogSummary(
+                                profileAndRegion,
+                                component,
+                                comparisonName,
+                                duration,
+                                offset
+                        )
+                );
+            };
+            return Stream
+                    .of(
+                            getLogSummary.apply(
+                                    "Last hour",
+                                    "Previous hour",
+                                    Duration.ofHours(1),
+                                    Duration.ofHours(1)
+                            ),
+                            getLogSummary.apply(
+                                    "Last 24 hours",
+                                    "Previous 24 hours",
+                                    Duration.ofDays(1),
+                                    Duration.ofDays(1)
+                            ),
+                            getLogSummary.apply(
+                                    "Last 7 days",
+                                    "Previous 7 days",
+                                    Duration.ofDays(7),
+                                    Duration.ofDays(7)
+                            )
+                    )
+                    .filter(Objects::nonNull)
+                    .collect(toList());
         };
+    }
+
+    private ComponentStateLogSummary getLogSummary(
+            AwsProfileAndRegion profileAndRegion,
+            Component component,
+            String name,
+            Duration duration,
+            Duration offset
+    ) {
+        ZonedDateTime now = ZonedDateTime.now(clock);
+        Instant endTime = now.toInstant().minus(offset);
+        Instant startTime = endTime.minus(duration);
+        List<ComponentStateLogLevel> levels = getLevels(profileAndRegion, component, startTime, endTime);
+        if (levels.isEmpty()) {
+            return null;
+        }
+        return ComponentStateLogSummary.builder()
+                .name(name)
+                .levels(levels)
+                .updateTimestamp(LocalDateTime.from(now))
+                .build();
+    }
+
+    private List<ComponentStateLogLevel> getLevels(
+            AwsProfileAndRegion profileAndRegion,
+            Component component,
+            Instant startTime,
+            Instant endTime
+    ) {
+        List<ComponentStateLogLevel> levels = mapMessageCountResults(
+                executeMessageCountQuery(
+                        component,
+                        profileAndRegion,
+                        startTime,
+                        endTime
+                )
+        );
+        return levels.stream()
+                .map(level -> level.withTopMessages(mapTopMessageResults(
+                        executeTopMessageQuery(
+                                component,
+                                profileAndRegion,
+                                level,
+                                startTime,
+                                endTime
+                        )
+                )))
+                .collect(toList());
+    }
+
+    private CloudWatchLogsQueryResults executeMessageCountQuery(
+            Component component,
+            AwsProfileAndRegion profileAndRegion,
+            Instant startTime,
+            Instant endTime
+    ) {
+        return executeQuery(
+                profileAndRegion,
+                getLogGroupNamesForComponent(profileAndRegion, component),
+                startTime,
+                endTime,
+                "stats count(*) as message_count by " + logLevelField + "\n" +
+                        "| sort message_count desc\n" +
+                        "| limit 10"
+        );
+    }
+
+    private CloudWatchLogsQueryResults executeTopMessageQuery(
+            Component component,
+            AwsProfileAndRegion profileAndRegion,
+            ComponentStateLogLevel level,
+            Instant startTime,
+            Instant endTime
+    ) {
+        return executeQuery(
+                profileAndRegion,
+                getLogGroupNamesForComponent(profileAndRegion, component),
+                startTime,
+                endTime,
+                "filter " + logLevelField + " = '" + level.getLevel() + "'\n" +
+                        "| stats count(*) as message_count by message\n" +
+                        "| sort message_count desc\n" +
+                        "| limit 10"
+        );
     }
 
     private List<String> getLogGroupNamesForComponent(AwsProfileAndRegion profileAndRegion, Component component) {
@@ -126,7 +254,9 @@ public class CloudWatchLogsService {
     private CloudWatchLogsQueryResults executeQuery(
             AwsProfileAndRegion profileAndRegion,
             List<String> logGroupNames,
-            Instant now
+            Instant startTime,
+            Instant endTime,
+            String query
     ) {
         if (logGroupNames.isEmpty()) {
             return CloudWatchLogsQueryResults.EMPTY;
@@ -135,10 +265,10 @@ public class CloudWatchLogsService {
                 profileAndRegion
         );
         String queryId = clientFacade.startQuery(
-                now.minus(Duration.ofHours(1)).getEpochSecond(),
-                now.getEpochSecond(),
+                startTime.getEpochSecond(),
+                endTime.getEpochSecond(),
                 logGroupNames,
-                "stats count(*) by " + logLevelField + " as level"
+                query
         );
 
         return retry.executeCallable(() -> {
@@ -157,10 +287,31 @@ public class CloudWatchLogsService {
         });
     }
 
-    private ComponentStateLogLevelCount mapResult(CloudWatchLogsQueryResult result) {
-        return ComponentStateLogLevelCount.builder()
+    private List<ComponentStateLogLevel> mapMessageCountResults(
+            CloudWatchLogsQueryResults results
+    ) {
+        return results.getResults().stream()
+                .map(this::mapMessageCountResult)
+                .collect(toList());
+    }
+
+    private ComponentStateLogLevel mapMessageCountResult(CloudWatchLogsQueryResult result) {
+        return ComponentStateLogLevel.builder()
                 .level(getResultFieldValue(result, "level"))
-                .count(Long.parseLong(getResultFieldValue(result, "count(*)")))
+                .count(Long.parseLong(getResultFieldValue(result, "message_count")))
+                .build();
+    }
+
+    private List<ComponentStateLogMessage> mapTopMessageResults(CloudWatchLogsQueryResults results) {
+        return results.getResults().stream()
+                .map(this::mapTopMessageResult)
+                .collect(toList());
+    }
+
+    private ComponentStateLogMessage mapTopMessageResult(CloudWatchLogsQueryResult result) {
+        return ComponentStateLogMessage.builder()
+                .message(getResultFieldValue(result, "message"))
+                .count(Long.parseLong(getResultFieldValue(result, "message_count")))
                 .build();
     }
 
@@ -170,5 +321,16 @@ public class CloudWatchLogsService {
                 .findFirst()
                 .get()
                 .getValue();
+    }
+
+    @FunctionalInterface
+    private interface GetLogSummary {
+
+        ComponentStateLogSummary apply(
+                String name,
+                String comparisonName,
+                Duration duration,
+                Duration offset
+        );
     }
 }

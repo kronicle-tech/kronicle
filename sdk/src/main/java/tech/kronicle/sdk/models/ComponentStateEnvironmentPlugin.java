@@ -23,13 +23,13 @@ public class ComponentStateEnvironmentPlugin {
     @NotEmpty
     @Pattern(regexp = PatternStrings.ID)
     String id;
-    List<@NotNull @Valid ComponentStateLogLevelCount> logLevelCounts;
+    List<@NotNull @Valid ComponentStateLogSummary> logSummaries;
 
     public ComponentStateEnvironmentPlugin(
             String id,
-            List<@NotNull @Valid ComponentStateLogLevelCount> logLevelCounts
+            List<@NotNull @Valid ComponentStateLogSummary> logSummaries
     ) {
         this.id = id;
-        this.logLevelCounts = createUnmodifiableList(logLevelCounts);
+        this.logSummaries = createUnmodifiableList(logSummaries);
     }
 }

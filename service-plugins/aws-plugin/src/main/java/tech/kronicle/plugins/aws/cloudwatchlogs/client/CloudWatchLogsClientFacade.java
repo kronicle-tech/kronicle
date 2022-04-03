@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface CloudWatchLogsClientFacade extends AutoCloseable {
 
-    String startQuery(long startTime, long endTime, List<String> logGroupNames, String queryString);
+    String startQuery(long startTime, long endTime, List<String> logGroupNames, String query);
 
     CloudWatchLogsQueryResults getQueryResults(String queryId);
 
