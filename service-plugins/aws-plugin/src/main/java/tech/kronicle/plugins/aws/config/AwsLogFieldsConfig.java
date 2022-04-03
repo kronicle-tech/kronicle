@@ -11,4 +11,6 @@ public class AwsLogFieldsConfig {
 
     @NotEmpty
     String level;
+    @NotEmpty
+    String message;
 }

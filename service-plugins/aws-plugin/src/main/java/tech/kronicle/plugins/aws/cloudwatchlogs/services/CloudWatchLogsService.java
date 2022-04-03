@@ -6,6 +6,7 @@ import tech.kronicle.plugins.aws.cloudwatchlogs.client.CloudWatchLogsClientFacad
 import tech.kronicle.plugins.aws.cloudwatchlogs.client.CloudWatchLogsClientFacadeFactory;
 import tech.kronicle.plugins.aws.cloudwatchlogs.constants.CloudWatchQueryStatuses;
 import tech.kronicle.plugins.aws.cloudwatchlogs.models.CloudWatchLogsQueryResult;
+import tech.kronicle.plugins.aws.cloudwatchlogs.models.CloudWatchLogsQueryResultField;
 import tech.kronicle.plugins.aws.cloudwatchlogs.models.CloudWatchLogsQueryResults;
 import tech.kronicle.plugins.aws.config.AwsConfig;
 import tech.kronicle.plugins.aws.constants.ResourceTypes;
@@ -49,6 +50,7 @@ public class CloudWatchLogsService {
     private final AwsConfig config;
     private final String componentTagKey;
     private final String logLevelField;
+    private final String logMessageField;
     private Map<AwsProfileAndRegion, Map<String, List<String>>> logGroupNamesByProfileAndRegion;
 
     @Inject
@@ -66,6 +68,7 @@ public class CloudWatchLogsService {
         this.config = config;
         componentTagKey = config.getTagKeys().getComponent();
         logLevelField = config.getLogFields().getLevel();
+        logMessageField = config.getLogFields().getMessage();
     }
 
     public void refresh() {
@@ -231,7 +234,7 @@ public class CloudWatchLogsService {
                 startTime,
                 endTime,
                 "filter " + logLevelField + " = '" + level.getLevel() + "'\n" +
-                        "| stats count(*) as message_count by message\n" +
+                        "| stats count(*) as message_count by " + logMessageField + " as message\n" +
                         "| sort message_count desc\n" +
                         "| limit 10"
         );
@@ -319,8 +322,8 @@ public class CloudWatchLogsService {
         return result.getFields().stream()
                 .filter(field -> Objects.equals(field.getField(), name))
                 .findFirst()
-                .get()
-                .getValue();
+                .map(CloudWatchLogsQueryResultField::getValue)
+                .orElse(null);
     }
 
     @FunctionalInterface

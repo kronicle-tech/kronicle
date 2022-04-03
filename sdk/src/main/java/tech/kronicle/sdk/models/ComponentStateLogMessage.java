@@ -14,7 +14,6 @@ import javax.validation.constraints.NotNull;
 @Jacksonized
 public class ComponentStateLogMessage {
 
-    @NotNull
     String message;
     @NotNull
     @Min(0)
