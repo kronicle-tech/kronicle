@@ -5,6 +5,7 @@ import lombok.Value;
 import lombok.With;
 import lombok.extern.jackson.Jacksonized;
 
+import javax.validation.Valid;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
@@ -25,7 +26,7 @@ public class ComponentStateLogSummary {
     @NotNull
     LocalDateTime endTimestamp;
     List<ComponentStateLogLevel> levels;
-    ComponentStateLogSummary comparison;
+    List<@NotNull @Valid ComponentStateLogSummary> comparisons;
     @NotNull
     LocalDateTime updateTimestamp;
 
@@ -34,14 +35,14 @@ public class ComponentStateLogSummary {
             LocalDateTime startTimestamp,
             LocalDateTime endTimestamp,
             List<ComponentStateLogLevel> levels,
-            ComponentStateLogSummary comparison,
+            List<ComponentStateLogSummary> comparisons,
             LocalDateTime updateTimestamp
     ) {
         this.name = name;
         this.startTimestamp = startTimestamp;
         this.endTimestamp = endTimestamp;
         this.levels = createUnmodifiableList(levels);
-        this.comparison = comparison;
+        this.comparisons = createUnmodifiableList(comparisons);
         this.updateTimestamp = updateTimestamp;
     }
 }

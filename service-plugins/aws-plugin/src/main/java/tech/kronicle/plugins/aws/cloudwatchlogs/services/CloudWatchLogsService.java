@@ -37,6 +37,7 @@ import static java.util.Objects.nonNull;
 import static java.util.stream.Collectors.groupingBy;
 import static java.util.stream.Collectors.mapping;
 import static java.util.stream.Collectors.toList;
+import static java.util.stream.Collectors.toUnmodifiableList;
 import static tech.kronicle.plugins.aws.resourcegroupstaggingapi.utils.ResourceUtils.getResourceTagValue;
 import static tech.kronicle.plugins.aws.utils.ArnAnalyser.analyseArn;
 import static tech.kronicle.plugins.aws.utils.ProfileUtils.processProfilesToMap;
@@ -106,9 +107,11 @@ public class CloudWatchLogsService {
         return profileAndRegion -> {
             GetLogSummary getLogSummary = (
                     String name,
-                    String comparisonName,
                     Duration duration,
-                    Duration offset
+                    String comparisonName1,
+                    Duration offset1,
+                    String comparisonName2,
+                    Duration offset2
             ) -> {
                 ComponentStateLogSummary logSummary = getLogSummary(
                         profileAndRegion,
@@ -120,39 +123,41 @@ public class CloudWatchLogsService {
                 if (isNull(logSummary)) {
                     return null;
                 }
-                return logSummary.withComparison(
+                return logSummary.withComparisons(filterNotNull(
                         getLogSummary(
                                 profileAndRegion,
                                 component,
-                                comparisonName,
+                                comparisonName1,
                                 duration,
-                                offset
+                                offset1
+                        ),
+                        getLogSummary(
+                                profileAndRegion,
+                                component,
+                                comparisonName2,
+                                duration,
+                                offset2
                         )
-                );
+                ));
             };
-            return Stream
-                    .of(
-                            getLogSummary.apply(
-                                    "Last hour",
-                                    "Previous hour",
-                                    Duration.ofHours(1),
-                                    Duration.ofHours(1)
-                            ),
-                            getLogSummary.apply(
-                                    "Last 24 hours",
-                                    "Previous 24 hours",
-                                    Duration.ofDays(1),
-                                    Duration.ofDays(1)
-                            ),
-                            getLogSummary.apply(
-                                    "Last 7 days",
-                                    "Previous 7 days",
-                                    Duration.ofDays(7),
-                                    Duration.ofDays(7)
-                            )
+            return filterNotNull(
+                    getLogSummary.apply(
+                            "Last hour",
+                            Duration.ofHours(1),
+                            "Previous hour",
+                            Duration.ofHours(1),
+                            "Same hour, previous week",
+                            Duration.ofDays(7)
+                    ),
+                    getLogSummary.apply(
+                            "Last 24 hours",
+                            Duration.ofDays(1),
+                            "Previous 24 hours",
+                            Duration.ofDays(1),
+                            "Same 24 hours, previous week",
+                            Duration.ofDays(7)
                     )
-                    .filter(Objects::nonNull)
-                    .collect(toList());
+            );
         };
     }
 
@@ -326,14 +331,22 @@ public class CloudWatchLogsService {
                 .orElse(null);
     }
 
+    private <T> List<T> filterNotNull(T... values) {
+        return Stream.of(values)
+                .filter(Objects::nonNull)
+                .collect(toUnmodifiableList());
+    }
+
     @FunctionalInterface
     private interface GetLogSummary {
 
         ComponentStateLogSummary apply(
                 String name,
-                String comparisonName,
                 Duration duration,
-                Duration offset
+                String comparisonName1,
+                Duration offset1,
+                String comparisonName2,
+                Duration offset2
         );
     }
 }
