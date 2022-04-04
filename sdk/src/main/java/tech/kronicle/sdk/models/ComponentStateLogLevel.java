@@ -11,6 +11,8 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import java.util.List;
 
+import static tech.kronicle.sdk.utils.ListUtils.createUnmodifiableList;
+
 @Value
 @With
 @Builder(toBuilder = true)
@@ -23,4 +25,10 @@ public class ComponentStateLogLevel {
     @Min(0)
     Long count;
     List<ComponentStateLogMessage> topMessages;
+
+    public ComponentStateLogLevel(String level, Long count, List<ComponentStateLogMessage> topMessages) {
+        this.level = level;
+        this.count = count;
+        this.topMessages = createUnmodifiableList(topMessages);
+    }
 }

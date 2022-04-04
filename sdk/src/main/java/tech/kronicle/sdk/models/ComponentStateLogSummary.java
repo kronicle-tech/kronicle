@@ -25,7 +25,7 @@ public class ComponentStateLogSummary {
     LocalDateTime startTimestamp;
     @NotNull
     LocalDateTime endTimestamp;
-    List<ComponentStateLogLevel> levels;
+    List<@NotNull @Valid ComponentStateLogLevel> levels;
     List<@NotNull @Valid ComponentStateLogSummary> comparisons;
     @NotNull
     LocalDateTime updateTimestamp;
