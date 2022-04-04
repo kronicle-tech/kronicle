@@ -4,7 +4,6 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import org.junit.jupiter.api.Test;
-import org.mockito.ArgumentCaptor;
 import tech.kronicle.sdk.models.openapi.OpenApiSpec;
 import tech.kronicle.sdk.models.sonarqube.SonarQubeProject;
 import tech.kronicle.sdk.models.todos.ToDo;
@@ -13,12 +12,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.function.UnaryOperator;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.catchThrowable;
 import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
 
 public class ComponentTest {
 
@@ -281,8 +278,8 @@ public class ComponentTest {
     @Test
     public void withUpdatedStateShouldPassANewStateObjectToActionWhenStateIsNull() {
         // Given
+        ComponentState updatedState = createState(1);
         Component underTest = Component.builder().build();
-        ComponentState updatedState = createComponentState(1);
         FakeStateUpdateAction action = new FakeStateUpdateAction(updatedState);
 
         // When
@@ -294,10 +291,10 @@ public class ComponentTest {
     }
 
     @Test
-    public void withUpdatedStateShouldPassExistStateObjectToActionWhenStateIsNotNull() {
+    public void withUpdatedStateShouldPassExistingStateObjectToActionWhenStateIsNotNull() {
         // Given
-        ComponentState initialState = createComponentState(1);
-        ComponentState updatedState = createComponentState(2);
+        ComponentState initialState = createState(1);
+        ComponentState updatedState = createState(2);
         Component underTest = Component.builder()
                 .state(initialState)
                 .build();
@@ -311,11 +308,11 @@ public class ComponentTest {
         assertThat(action.calls).containsExactly(initialState);
     }
 
-    private ComponentState createComponentState(int componentStateNumber) {
+    private ComponentState createState(int stateNumber) {
         return ComponentState.builder()
                 .environments(List.of(
                         ComponentStateEnvironment.builder()
-                                .id("test-environment-id-" + componentStateNumber)
+                                .id("test-environment-id-" + stateNumber)
                                 .build()
                 ))
                 .build();
@@ -325,7 +322,7 @@ public class ComponentTest {
     private static class FakeStateUpdateAction {
 
         private final ComponentState updatedState;
-        private List<ComponentState> calls = new ArrayList<>();
+        private final List<ComponentState> calls = new ArrayList<>();
 
         public ComponentState apply(ComponentState value) {
             calls.add(value);
