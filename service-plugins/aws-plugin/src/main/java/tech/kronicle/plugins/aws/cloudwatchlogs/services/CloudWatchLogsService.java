@@ -176,13 +176,13 @@ public class CloudWatchLogsService {
             Duration offset
     ) {
         ZonedDateTime now = ZonedDateTime.now(clock);
-        Instant endTime = now.toInstant().minus(offset);
-        Instant startTime = endTime.minus(duration);
+        ZonedDateTime endTime = now.minus(offset);
+        ZonedDateTime startTime = endTime.minus(duration);
         List<ComponentStateLogLevel> levels = getLevels(
                 profileAndRegion,
                 logGroupNames,
-                startTime,
-                endTime
+                startTime.toInstant(),
+                endTime.toInstant()
         );
         if (levels.isEmpty()) {
             return null;
@@ -190,6 +190,8 @@ public class CloudWatchLogsService {
         return ComponentStateLogSummary.builder()
                 .name(name)
                 .levels(levels)
+                .startTimestamp(startTime.toLocalDateTime())
+                .endTimestamp(endTime.toLocalDateTime())
                 .updateTimestamp(LocalDateTime.from(now))
                 .build();
     }
