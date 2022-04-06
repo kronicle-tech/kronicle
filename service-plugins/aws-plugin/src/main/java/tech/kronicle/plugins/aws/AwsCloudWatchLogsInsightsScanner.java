@@ -32,10 +32,11 @@ public class AwsCloudWatchLogsInsightsScanner extends ComponentScanner {
 
     @Override
     public Output<Void> scan(Component input) {
-        Map<AwsProfileAndRegion, List<ComponentStateLogSummary>> logLevelCounts = service.getLogSummariesForComponent(input);
+        List<Map.Entry<AwsProfileAndRegion, List<ComponentStateLogSummary>>> logLevelCounts =
+                service.getLogSummariesForComponent(input);
 
         return Output.of(component -> component.withUpdatedState(state -> {
-            for (Map.Entry<AwsProfileAndRegion, List<ComponentStateLogSummary>> entry : logLevelCounts.entrySet()) {
+            for (Map.Entry<AwsProfileAndRegion, List<ComponentStateLogSummary>> entry : logLevelCounts) {
                 List<ComponentStateLogSummary> logSummaries = entry.getValue();
                 if (!logSummaries.isEmpty()) {
                     String environmentId = entry.getKey().getProfile().getEnvironmentId();

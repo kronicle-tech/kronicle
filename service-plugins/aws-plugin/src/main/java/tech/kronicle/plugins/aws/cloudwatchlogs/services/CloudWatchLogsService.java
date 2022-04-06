@@ -40,7 +40,7 @@ import static java.util.stream.Collectors.toList;
 import static java.util.stream.Collectors.toUnmodifiableList;
 import static tech.kronicle.plugins.aws.resourcegroupstaggingapi.utils.ResourceUtils.getResourceTagValue;
 import static tech.kronicle.plugins.aws.utils.ArnAnalyser.analyseArn;
-import static tech.kronicle.plugins.aws.utils.ProfileUtils.processProfilesToMap;
+import static tech.kronicle.plugins.aws.utils.ProfileUtils.processProfilesToMapEntryList;
 
 public class CloudWatchLogsService {
 
@@ -52,7 +52,7 @@ public class CloudWatchLogsService {
     private final String componentTagKey;
     private final String logLevelField;
     private final String logMessageField;
-    private Map<AwsProfileAndRegion, Map<String, List<String>>> logGroupNamesByProfileAndRegion;
+    private List<Map.Entry<AwsProfileAndRegion, Map<String, List<String>>>> logGroupNamesByProfileAndRegion;
 
     @Inject
     public CloudWatchLogsService(
@@ -73,10 +73,13 @@ public class CloudWatchLogsService {
     }
 
     public void refresh() {
-        logGroupNamesByProfileAndRegion = processProfilesToMap(config.getProfiles(), this::getLogGroupNamesForProfileAndRegion);
+        logGroupNamesByProfileAndRegion = processProfilesToMapEntryList(
+                config.getProfiles(),
+                this::prepareLogGroupNamesForProfileAndRegion
+        );
     }
 
-    private Map<String, List<String>> getLogGroupNamesForProfileAndRegion(AwsProfileAndRegion profileAndRegion) {
+    private Map<String, List<String>> prepareLogGroupNamesForProfileAndRegion(AwsProfileAndRegion profileAndRegion) {
         return mapLogGroups(resourceFetcher.getResources(
                 profileAndRegion,
                 List.of(ResourceTypes.LOGS_LOG_GROUP),
@@ -94,8 +97,8 @@ public class CloudWatchLogsService {
     }
 
     @SneakyThrows
-    public Map<AwsProfileAndRegion, List<ComponentStateLogSummary>> getLogSummariesForComponent(Component component) {
-        return processProfilesToMap(
+    public List<Map.Entry<AwsProfileAndRegion, List<ComponentStateLogSummary>>> getLogSummariesForComponent(Component component) {
+        return processProfilesToMapEntryList(
                 config.getProfiles(),
                 getLogSummariesProfileAndRegionAndComponent(component)
         );
@@ -105,6 +108,10 @@ public class CloudWatchLogsService {
             Component component
     ) {
         return profileAndRegion -> {
+            List<String> logGroupNames = getLogGroupNamesForProfileAndRegionAndComponent(
+                    profileAndRegion,
+                    component
+            );
             GetLogSummary getLogSummary = (
                     String name,
                     Duration duration,
@@ -115,7 +122,7 @@ public class CloudWatchLogsService {
             ) -> {
                 ComponentStateLogSummary logSummary = getLogSummary(
                         profileAndRegion,
-                        component,
+                        logGroupNames,
                         name,
                         duration,
                         Duration.ZERO
@@ -126,14 +133,14 @@ public class CloudWatchLogsService {
                 return logSummary.withComparisons(filterNotNull(
                         getLogSummary(
                                 profileAndRegion,
-                                component,
+                                logGroupNames,
                                 comparisonName1,
                                 duration,
                                 offset1
                         ),
                         getLogSummary(
                                 profileAndRegion,
-                                component,
+                                logGroupNames,
                                 comparisonName2,
                                 duration,
                                 offset2
@@ -163,7 +170,7 @@ public class CloudWatchLogsService {
 
     private ComponentStateLogSummary getLogSummary(
             AwsProfileAndRegion profileAndRegion,
-            Component component,
+            List<String> logGroupNames,
             String name,
             Duration duration,
             Duration offset
@@ -171,7 +178,12 @@ public class CloudWatchLogsService {
         ZonedDateTime now = ZonedDateTime.now(clock);
         Instant endTime = now.toInstant().minus(offset);
         Instant startTime = endTime.minus(duration);
-        List<ComponentStateLogLevel> levels = getLevels(profileAndRegion, component, startTime, endTime);
+        List<ComponentStateLogLevel> levels = getLevels(
+                profileAndRegion,
+                logGroupNames,
+                startTime,
+                endTime
+        );
         if (levels.isEmpty()) {
             return null;
         }
@@ -184,14 +196,14 @@ public class CloudWatchLogsService {
 
     private List<ComponentStateLogLevel> getLevels(
             AwsProfileAndRegion profileAndRegion,
-            Component component,
+            List<String> logGroupNames,
             Instant startTime,
             Instant endTime
     ) {
         List<ComponentStateLogLevel> levels = mapMessageCountResults(
                 executeMessageCountQuery(
-                        component,
                         profileAndRegion,
+                        logGroupNames,
                         startTime,
                         endTime
                 )
@@ -199,8 +211,8 @@ public class CloudWatchLogsService {
         return levels.stream()
                 .map(level -> level.withTopMessages(mapTopMessageResults(
                         executeTopMessageQuery(
-                                component,
                                 profileAndRegion,
+                                logGroupNames,
                                 level,
                                 startTime,
                                 endTime
@@ -210,14 +222,14 @@ public class CloudWatchLogsService {
     }
 
     private CloudWatchLogsQueryResults executeMessageCountQuery(
-            Component component,
             AwsProfileAndRegion profileAndRegion,
+            List<String> logGroupNames,
             Instant startTime,
             Instant endTime
     ) {
         return executeQuery(
                 profileAndRegion,
-                getLogGroupNamesForComponent(profileAndRegion, component),
+                logGroupNames,
                 startTime,
                 endTime,
                 "stats count(*) as message_count by " + logLevelField + "\n" +
@@ -227,15 +239,15 @@ public class CloudWatchLogsService {
     }
 
     private CloudWatchLogsQueryResults executeTopMessageQuery(
-            Component component,
             AwsProfileAndRegion profileAndRegion,
+            List<String> logGroupNames,
             ComponentStateLogLevel level,
             Instant startTime,
             Instant endTime
     ) {
         return executeQuery(
                 profileAndRegion,
-                getLogGroupNamesForComponent(profileAndRegion, component),
+                logGroupNames,
                 startTime,
                 endTime,
                 "filter " + logLevelField + " = '" + level.getLevel() + "'\n" +
@@ -245,8 +257,15 @@ public class CloudWatchLogsService {
         );
     }
 
-    private List<String> getLogGroupNamesForComponent(AwsProfileAndRegion profileAndRegion, Component component) {
-        Map<String, List<String>> logGroupNamesByComponent = logGroupNamesByProfileAndRegion.get(profileAndRegion);
+    private List<String> getLogGroupNamesForProfileAndRegionAndComponent(
+            AwsProfileAndRegion profileAndRegion,
+            Component component
+    ) {
+        Map<String, List<String>> logGroupNamesByComponent = logGroupNamesByProfileAndRegion.stream()
+                .filter(it -> Objects.equals(it.getKey(), profileAndRegion))
+                .findFirst()
+                .map(Map.Entry::getValue)
+                .orElse(Map.of());
         List<String> logGroupNames = logGroupNamesByComponent.get(component.getId());
         if (nonNull(logGroupNames)) {
             return logGroupNames;
@@ -331,7 +350,7 @@ public class CloudWatchLogsService {
                 .orElse(null);
     }
 
-    private <T> List<T> filterNotNull(T... values) {
+    private List<ComponentStateLogSummary> filterNotNull(ComponentStateLogSummary... values) {
         return Stream.of(values)
                 .filter(Objects::nonNull)
                 .collect(toUnmodifiableList());

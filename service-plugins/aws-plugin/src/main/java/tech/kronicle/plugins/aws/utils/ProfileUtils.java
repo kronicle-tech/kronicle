@@ -12,6 +12,7 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 
 import static java.util.Objects.isNull;
+import static java.util.stream.Collectors.toUnmodifiableList;
 
 public final class ProfileUtils {
 
@@ -32,12 +33,12 @@ public final class ProfileUtils {
                 .collect(Collectors.toList());
     }
 
-    public static <T> Map<AwsProfileAndRegion, T> processProfilesToMap(
+    public static <T> List<Map.Entry<AwsProfileAndRegion, T>> processProfilesToMapEntryList(
             List<AwsProfileConfig> profiles,
             Function<AwsProfileAndRegion, T> processor
     ) {
         if (isNull(profiles)) {
-            return Map.of();
+            return List.of();
         }
 
         return profiles.stream()
@@ -45,7 +46,7 @@ public final class ProfileUtils {
                         .map(region -> new AwsProfileAndRegion(profile, region))
                         .map(profileAndRegion -> Map.entry(profileAndRegion, processor.apply(profileAndRegion)))
                 )
-                .collect(MapCollectors.toMap());
+                .collect(toUnmodifiableList());
     }
 
     private static List<String> getRegions(AwsProfileConfig profile) {
