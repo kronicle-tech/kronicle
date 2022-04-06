@@ -106,6 +106,29 @@ public class AwsCloudWatchLogsInsightsScannerTest {
         );
     }
 
+    @Test
+    public void scanShouldNotTransformTheComponentIfNoLogSummariesAreFound() {
+        // Given
+        CloudWatchLogsService service = mock(CloudWatchLogsService.class);
+        AwsCloudWatchLogsInsightsScanner underTest = new AwsCloudWatchLogsInsightsScanner(service);
+        Component component = createComponent(1);
+        when(service.getLogSummariesForComponent(component)).thenReturn(
+                List.of(
+                        createEmptyLogSummariesForProfileAndRegion(1),
+                        createEmptyLogSummariesForProfileAndRegion(2)                )
+        );
+
+        // When
+        Output<Void> returnValue = underTest.scan(component);
+
+        // Then
+        assertThat(returnValue.getOutput()).isNull();
+        assertThat(returnValue.getErrors()).isEmpty();
+        UnaryOperator<Component> componentTransformer = returnValue.getComponentTransformer();
+        Component transformedComponent = componentTransformer.apply(component);
+        assertThat(transformedComponent).isEqualTo(component);
+    }
+
     private Map.Entry<AwsProfileAndRegion, List<ComponentStateLogSummary>> createLogSummariesForProfileAndRegion(
             int profileAndRegionNumber
     ) {
@@ -113,6 +136,12 @@ public class AwsCloudWatchLogsInsightsScannerTest {
                 createLogSummary(profileAndRegionNumber, 1),
                 createLogSummary(profileAndRegionNumber, 2)
         ));
+    }
+
+    private Map.Entry<AwsProfileAndRegion, List<ComponentStateLogSummary>> createEmptyLogSummariesForProfileAndRegion(
+            int profileAndRegionNumber
+    ) {
+        return Map.entry(createProfileAndRegion(profileAndRegionNumber), List.of());
     }
 
     private ComponentStateEnvironment createEnvironment(int environmentNumber) {

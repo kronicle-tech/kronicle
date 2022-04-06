@@ -13,6 +13,7 @@ import tech.kronicle.sdk.models.ComponentStateLogSummary;
 import javax.inject.Inject;
 import java.util.List;
 import java.util.Map;
+import java.util.function.UnaryOperator;
 
 @Extension
 @RequiredArgsConstructor(onConstructor = @__({@Inject}))
@@ -35,6 +36,10 @@ public class AwsCloudWatchLogsInsightsScanner extends ComponentScanner {
         List<Map.Entry<AwsProfileAndRegion, List<ComponentStateLogSummary>>> logLevelCounts =
                 service.getLogSummariesForComponent(input);
 
+        if (logLevelCountsIsEmpty(logLevelCounts)) {
+            return Output.of(UnaryOperator.identity());
+        }
+
         return Output.of(component -> component.withUpdatedState(state -> {
             for (Map.Entry<AwsProfileAndRegion, List<ComponentStateLogSummary>> entry : logLevelCounts) {
                 List<ComponentStateLogSummary> logSummaries = entry.getValue();
@@ -51,5 +56,11 @@ public class AwsCloudWatchLogsInsightsScanner extends ComponentScanner {
             }
             return state;
         }));
+    }
+
+    private boolean logLevelCountsIsEmpty(
+            List<Map.Entry<AwsProfileAndRegion, List<ComponentStateLogSummary>>> logLevelCounts
+    ) {
+        return logLevelCounts.stream().allMatch(entry -> entry.getValue().isEmpty());
     }
 }
