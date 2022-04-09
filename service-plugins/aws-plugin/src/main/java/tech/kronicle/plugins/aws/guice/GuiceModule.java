@@ -6,6 +6,10 @@ import com.google.inject.Provides;
 import io.github.resilience4j.core.IntervalFunction;
 import io.github.resilience4j.retry.Retry;
 import io.github.resilience4j.retry.RetryConfig;
+import tech.kronicle.plugins.aws.cloudwatchlogs.client.CloudWatchLogsClientFacade;
+import tech.kronicle.plugins.aws.cloudwatchlogs.client.CloudWatchLogsClientFacadeImpl;
+import tech.kronicle.plugins.aws.resourcegroupstaggingapi.client.ResourceGroupsTaggingApiClientFacade;
+import tech.kronicle.plugins.aws.resourcegroupstaggingapi.client.ResourceGroupsTaggingApiClientFacadeImpl;
 
 import java.time.Clock;
 import java.time.Duration;
@@ -13,6 +17,12 @@ import java.time.Duration;
 import static tech.kronicle.utils.JsonMapperFactory.createJsonMapper;
 
 public class GuiceModule extends AbstractModule {
+
+    @Override
+    protected void configure() {
+        bind(CloudWatchLogsClientFacade.class).to(CloudWatchLogsClientFacadeImpl.class);
+        bind(ResourceGroupsTaggingApiClientFacade.class).to(ResourceGroupsTaggingApiClientFacadeImpl.class);
+    }
 
     @Provides
     public Clock clock() {

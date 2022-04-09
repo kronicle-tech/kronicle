@@ -23,7 +23,7 @@ public class ResourceGroupsTaggingApiClientFacadeImpl extends BaseClientFacade<R
         implements ResourceGroupsTaggingApiClientFacade {
 
     @Inject
-    public ResourceGroupsTaggingApiClientFacadeImpl(ClientFactory<ResourceGroupsTaggingApiClient> clientFactory) {
+    public ResourceGroupsTaggingApiClientFacadeImpl(ResourceGroupsTaggingApiClientFactory clientFactory) {
         super(clientFactory);
     }
 

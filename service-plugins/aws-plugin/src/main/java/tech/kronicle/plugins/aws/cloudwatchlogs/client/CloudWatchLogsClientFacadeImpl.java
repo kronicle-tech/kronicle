@@ -18,7 +18,7 @@ public class CloudWatchLogsClientFacadeImpl extends BaseClientFacade<CloudWatchL
         implements CloudWatchLogsClientFacade {
 
     @Inject
-    public CloudWatchLogsClientFacadeImpl(ClientFactory<CloudWatchLogsClient> clientFactory) {
+    public CloudWatchLogsClientFacadeImpl(CloudWatchLogsClientFactory clientFactory) {
         super(clientFactory);
     }
 

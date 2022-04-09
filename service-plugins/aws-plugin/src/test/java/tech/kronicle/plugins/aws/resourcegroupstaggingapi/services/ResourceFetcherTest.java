@@ -2,9 +2,6 @@ package tech.kronicle.plugins.aws.resourcegroupstaggingapi.services;
 
 import lombok.RequiredArgsConstructor;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.Mock;
-import org.mockito.junit.jupiter.MockitoExtension;
 import tech.kronicle.plugins.aws.config.AwsProfileConfig;
 import tech.kronicle.plugins.aws.models.AwsProfileAndRegion;
 import tech.kronicle.plugins.aws.resourcegroupstaggingapi.client.ResourceGroupsTaggingApiClientFacade;
@@ -17,16 +14,13 @@ import java.util.Map;
 import static java.util.Objects.isNull;
 import static org.assertj.core.api.Assertions.assertThat;
 
-@ExtendWith(MockitoExtension.class)
 public class ResourceFetcherTest {
-
-    @Mock
-    private ResourceGroupsTaggingApiClientFacade clientFacade;
 
     @Test
     public void getResourcesShouldUseTheClientFacadeToGetAllResourcesAndThenReturnThem() {
         // Given
-        ResourceFetcher underTest = createUnderTest();
+        FakeResourceGroupsTaggingApiClientFacade clientFacade = new FakeResourceGroupsTaggingApiClientFacade(2);
+        ResourceFetcher underTest = createUnderTest(clientFacade);
         AwsProfileAndRegion profileAndRegion = new AwsProfileAndRegion(
                 new AwsProfileConfig(
                         "test-access-key-id",
@@ -36,7 +30,6 @@ public class ResourceFetcherTest {
                 ),
                 "test-region"
         );
-        FakeResourceGroupsTaggingApiClientFacade clientFacade = new FakeResourceGroupsTaggingApiClientFacade(2);
 
         // When
         List<ResourceGroupsTaggingApiResource> returnValue = underTest.getResources(profileAndRegion);
@@ -48,10 +41,9 @@ public class ResourceFetcherTest {
                 new ResourceGroupsTaggingApiResource("test-arn-2-1", List.of()),
                 new ResourceGroupsTaggingApiResource("test-arn-2-2", List.of())
         ));
-        assertThat(clientFacade.isClosed).isTrue();
     }
 
-    private ResourceFetcher createUnderTest() {
+    private ResourceFetcher createUnderTest(ResourceGroupsTaggingApiClientFacade clientFacade) {
         return new ResourceFetcher(clientFacade);
     }
 
