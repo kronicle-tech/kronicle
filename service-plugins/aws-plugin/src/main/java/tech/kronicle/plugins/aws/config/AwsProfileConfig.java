@@ -16,7 +16,7 @@ public class AwsProfileConfig {
     String accessKeyId;
     String secretAccessKey;
     @NotEmpty
-    List<String> regions;
+    List<@NotBlank String> regions;
     @NotBlank
     String environmentId;
 

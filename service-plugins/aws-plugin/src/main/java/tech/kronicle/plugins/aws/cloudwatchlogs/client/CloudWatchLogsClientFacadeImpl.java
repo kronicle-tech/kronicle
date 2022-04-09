@@ -1,28 +1,35 @@
 package tech.kronicle.plugins.aws.cloudwatchlogs.client;
 
-import lombok.RequiredArgsConstructor;
 import software.amazon.awssdk.services.cloudwatchlogs.CloudWatchLogsClient;
 import software.amazon.awssdk.services.cloudwatchlogs.model.GetQueryResultsResponse;
 import software.amazon.awssdk.services.cloudwatchlogs.model.ResultField;
+import tech.kronicle.plugins.aws.client.BaseClientFacade;
+import tech.kronicle.plugins.aws.client.ClientFactory;
 import tech.kronicle.plugins.aws.cloudwatchlogs.models.CloudWatchLogsQueryResult;
 import tech.kronicle.plugins.aws.cloudwatchlogs.models.CloudWatchLogsQueryResultField;
 import tech.kronicle.plugins.aws.cloudwatchlogs.models.CloudWatchLogsQueryResults;
+import tech.kronicle.plugins.aws.models.AwsProfileAndRegion;
 
+import javax.inject.Inject;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@RequiredArgsConstructor
-public class CloudWatchLogsClientFacadeImpl implements CloudWatchLogsClientFacade {
+public class CloudWatchLogsClientFacadeImpl extends BaseClientFacade<CloudWatchLogsClient>
+        implements CloudWatchLogsClientFacade {
 
-    private final CloudWatchLogsClient client;
-
-    @Override
-    public void close() {
-        client.close();
+    @Inject
+    public CloudWatchLogsClientFacadeImpl(ClientFactory<CloudWatchLogsClient> clientFactory) {
+        super(clientFactory);
     }
 
-    public String startQuery(long startTime, long endTime, List<String> logGroupNames, String query) {
-        return client
+    public String startQuery(
+            AwsProfileAndRegion profileAndRegion,
+            long startTime,
+            long endTime,
+            List<String> logGroupNames,
+            String query
+    ) {
+        return getClient(profileAndRegion)
                 .startQuery(
                     builder -> builder.startTime(startTime)
                             .endTime(endTime)
@@ -32,8 +39,11 @@ public class CloudWatchLogsClientFacadeImpl implements CloudWatchLogsClientFacad
                 .queryId();
     }
 
-    public CloudWatchLogsQueryResults getQueryResults(String queryId) {
-        return mapQueryResults(client
+    public CloudWatchLogsQueryResults getQueryResults(
+            AwsProfileAndRegion profileAndRegion,
+            String queryId
+    ) {
+        return mapQueryResults(getClient(profileAndRegion)
                 .getQueryResults(
                         builder -> builder.queryId(queryId)
                 ));

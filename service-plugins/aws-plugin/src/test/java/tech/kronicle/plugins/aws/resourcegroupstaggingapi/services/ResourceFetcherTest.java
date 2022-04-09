@@ -8,7 +8,6 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import tech.kronicle.plugins.aws.config.AwsProfileConfig;
 import tech.kronicle.plugins.aws.models.AwsProfileAndRegion;
 import tech.kronicle.plugins.aws.resourcegroupstaggingapi.client.ResourceGroupsTaggingApiClientFacade;
-import tech.kronicle.plugins.aws.resourcegroupstaggingapi.client.ResourceGroupsTaggingApiClientFacadeFactory;
 import tech.kronicle.plugins.aws.resourcegroupstaggingapi.models.ResourceGroupsTaggingApiResource;
 import tech.kronicle.plugins.aws.resourcegroupstaggingapi.models.ResourceGroupsTaggingApiResourcePage;
 
@@ -17,13 +16,12 @@ import java.util.Map;
 
 import static java.util.Objects.isNull;
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
 public class ResourceFetcherTest {
 
     @Mock
-    private ResourceGroupsTaggingApiClientFacadeFactory clientFacadeFactory;
+    private ResourceGroupsTaggingApiClientFacade clientFacade;
 
     @Test
     public void getResourcesShouldUseTheClientFacadeToGetAllResourcesAndThenReturnThem() {
@@ -39,7 +37,6 @@ public class ResourceFetcherTest {
                 "test-region"
         );
         FakeResourceGroupsTaggingApiClientFacade clientFacade = new FakeResourceGroupsTaggingApiClientFacade(2);
-        when(clientFacadeFactory.createResourceGroupsTaggingApiClientFacade(profileAndRegion)).thenReturn(clientFacade);
 
         // When
         List<ResourceGroupsTaggingApiResource> returnValue = underTest.getResources(profileAndRegion);
@@ -55,7 +52,7 @@ public class ResourceFetcherTest {
     }
 
     private ResourceFetcher createUnderTest() {
-        return new ResourceFetcher(clientFacadeFactory);
+        return new ResourceFetcher(clientFacade);
     }
 
     @RequiredArgsConstructor
@@ -65,7 +62,10 @@ public class ResourceFetcherTest {
         private boolean isClosed;
 
         @Override
-        public ResourceGroupsTaggingApiResourcePage getResources(String nextToken) {
+        public ResourceGroupsTaggingApiResourcePage getResources(
+                AwsProfileAndRegion profileAndRegion,
+                String nextToken
+        ) {
             return new ResourceGroupsTaggingApiResourcePage(
                     List.of(
                             createResourceGroupsTaggingApiResource(nextToken, 1),
@@ -76,7 +76,12 @@ public class ResourceFetcherTest {
         }
 
         @Override
-        public ResourceGroupsTaggingApiResourcePage getResources(List<String> resourceTypeFilters, Map<String, List<String>> tagFilters, String nextToken) {
+        public ResourceGroupsTaggingApiResourcePage getResources(
+                AwsProfileAndRegion profileAndRegion,
+                List<String> resourceTypeFilters,
+                Map<String, List<String>> tagFilters,
+                String nextToken
+        ) {
             return null;
         }
 

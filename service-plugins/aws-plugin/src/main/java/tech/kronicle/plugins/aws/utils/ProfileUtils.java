@@ -2,7 +2,6 @@ package tech.kronicle.plugins.aws.utils;
 
 import tech.kronicle.plugins.aws.config.AwsProfileConfig;
 import tech.kronicle.plugins.aws.models.AwsProfileAndRegion;
-import tech.kronicle.utils.MapCollectors;
 
 import java.util.Collection;
 import java.util.List;
@@ -13,6 +12,7 @@ import java.util.stream.Collectors;
 
 import static java.util.Objects.isNull;
 import static java.util.stream.Collectors.toUnmodifiableList;
+import static tech.kronicle.utils.MapCollectors.toUnmodifiableMap;
 
 public final class ProfileUtils {
 
@@ -47,6 +47,22 @@ public final class ProfileUtils {
                         .map(profileAndRegion -> Map.entry(profileAndRegion, processor.apply(profileAndRegion)))
                 )
                 .collect(toUnmodifiableList());
+    }
+
+    public static <T> Map<AwsProfileAndRegion, T> processProfilesToMap(
+            List<AwsProfileConfig> profiles,
+            Function<AwsProfileAndRegion, T> processor
+    ) {
+        if (isNull(profiles)) {
+            return Map.of();
+        }
+
+        return profiles.stream()
+                .flatMap(profile -> getRegions(profile).stream()
+                        .map(region -> new AwsProfileAndRegion(profile, region))
+                        .map(profileAndRegion -> Map.entry(profileAndRegion, processor.apply(profileAndRegion)))
+                )
+                .collect(toUnmodifiableMap());
     }
 
     private static List<String> getRegions(AwsProfileConfig profile) {

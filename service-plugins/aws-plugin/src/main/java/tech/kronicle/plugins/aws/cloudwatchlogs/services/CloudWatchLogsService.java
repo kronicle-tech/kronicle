@@ -3,7 +3,6 @@ package tech.kronicle.plugins.aws.cloudwatchlogs.services;
 import io.github.resilience4j.retry.Retry;
 import lombok.SneakyThrows;
 import tech.kronicle.plugins.aws.cloudwatchlogs.client.CloudWatchLogsClientFacade;
-import tech.kronicle.plugins.aws.cloudwatchlogs.client.CloudWatchLogsClientFacadeFactory;
 import tech.kronicle.plugins.aws.cloudwatchlogs.constants.CloudWatchQueryStatuses;
 import tech.kronicle.plugins.aws.cloudwatchlogs.models.CloudWatchLogsQueryResult;
 import tech.kronicle.plugins.aws.cloudwatchlogs.models.CloudWatchLogsQueryResultField;
@@ -44,7 +43,7 @@ import static tech.kronicle.plugins.aws.utils.ProfileUtils.processProfilesToMapE
 
 public class CloudWatchLogsService {
 
-    private final CloudWatchLogsClientFacadeFactory clientFacadeFactory;
+    private final CloudWatchLogsClientFacade clientFacade;
     private final ResourceFetcher resourceFetcher;
     private final Clock clock;
     private final Retry retry;
@@ -56,13 +55,13 @@ public class CloudWatchLogsService {
 
     @Inject
     public CloudWatchLogsService(
-            CloudWatchLogsClientFacadeFactory clientFacadeFactory,
+            CloudWatchLogsClientFacade clientFacade,
             ResourceFetcher resourceFetcher,
             Clock clock,
             @CloudWatchLogsGetQueryResultsRetry Retry retry,
             AwsConfig config
     ) {
-        this.clientFacadeFactory = clientFacadeFactory;
+        this.clientFacade = clientFacade;
         this.resourceFetcher = resourceFetcher;
         this.clock = clock;
         this.retry = retry;
@@ -234,7 +233,7 @@ public class CloudWatchLogsService {
                 logGroupNames,
                 startTime,
                 endTime,
-                "stats count(*) as message_count by " + logLevelField + "\n" +
+                "stats count(*) as message_count by " + logLevelField + " as level\n" +
                         "| sort message_count desc\n" +
                         "| limit 10"
         );
@@ -290,10 +289,8 @@ public class CloudWatchLogsService {
         if (logGroupNames.isEmpty()) {
             return CloudWatchLogsQueryResults.EMPTY;
         }
-        CloudWatchLogsClientFacade clientFacade = clientFacadeFactory.createCloudWatchLogsClientFacade(
-                profileAndRegion
-        );
         String queryId = clientFacade.startQuery(
+                profileAndRegion,
                 startTime.getEpochSecond(),
                 endTime.getEpochSecond(),
                 logGroupNames,
@@ -301,7 +298,10 @@ public class CloudWatchLogsService {
         );
 
         return retry.executeCallable(() -> {
-            CloudWatchLogsQueryResults results = clientFacade.getQueryResults(queryId);
+            CloudWatchLogsQueryResults results = clientFacade.getQueryResults(
+                    profileAndRegion,
+                    queryId
+            );
 
             switch (results.getStatus()) {
                 case CloudWatchQueryStatuses.SCHEDULED:
