@@ -450,4 +450,12 @@
         <packageUrl regex="true">^pkg:npm/glob\-parent@.*$</packageUrl>
         <vulnerabilityName>1067329</vulnerabilityName>
     </suppress>
+    <!-- Suppress an "Inefficient Regular Expression Complexity" vulnerability in an npm package -->
+    <suppress>
+        <notes><![CDATA[
+   file name: nth-check:1.0.2
+   ]]></notes>
+        <packageUrl regex="true">^pkg:npm/nth\-check@.*$</packageUrl>
+        <vulnerabilityName>1067654</vulnerabilityName>
+    </suppress>
 </suppressions>

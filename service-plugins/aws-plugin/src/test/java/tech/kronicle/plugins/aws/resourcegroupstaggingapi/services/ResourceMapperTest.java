@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import tech.kronicle.plugins.aws.config.AwsConfig;
+import tech.kronicle.plugins.aws.config.AwsTagKeysConfig;
 import tech.kronicle.plugins.aws.resourcegroupstaggingapi.models.ResourceGroupsTaggingApiResource;
 import tech.kronicle.plugins.aws.resourcegroupstaggingapi.models.ResourceGroupsTaggingApiTag;
 import tech.kronicle.sdk.models.Alias;
@@ -23,7 +24,7 @@ public class ResourceMapperTest {
         ResourceMapper underTest = createUnderTest(false);
 
         // When
-        List<Component> components = underTest.mapResources(List.of());
+        List<Component> components = underTest.mapResourcesToComponents(List.of());
 
         // Then
         assertThat(components).isEmpty();
@@ -50,7 +51,7 @@ public class ResourceMapperTest {
         );
 
         // When
-        List<Component> returnValue = underTest.mapResources(resources);
+        List<Component> returnValue = underTest.mapResourcesToComponents(resources);
 
         // Then
         assertThat(returnValue).isEqualTo(List.of(
@@ -102,7 +103,14 @@ public class ResourceMapperTest {
     }
 
     private ResourceMapper createUnderTest(Boolean detailedComponentDescriptions) {
-        return new ResourceMapper(new AwsConfig(null, detailedComponentDescriptions, "team"));
+        return new ResourceMapper(
+                new AwsConfig(
+                        null,
+                        detailedComponentDescriptions,
+                        new AwsTagKeysConfig(null, "team"),
+                        null
+                )
+        );
     }
 
     private String prepareExpectedDescription(Boolean detailedComponentDescriptions, String value) {

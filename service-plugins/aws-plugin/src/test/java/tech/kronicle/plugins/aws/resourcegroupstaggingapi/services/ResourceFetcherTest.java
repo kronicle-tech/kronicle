@@ -2,42 +2,34 @@ package tech.kronicle.plugins.aws.resourcegroupstaggingapi.services;
 
 import lombok.RequiredArgsConstructor;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.Mock;
-import org.mockito.junit.jupiter.MockitoExtension;
 import tech.kronicle.plugins.aws.config.AwsProfileConfig;
 import tech.kronicle.plugins.aws.models.AwsProfileAndRegion;
 import tech.kronicle.plugins.aws.resourcegroupstaggingapi.client.ResourceGroupsTaggingApiClientFacade;
-import tech.kronicle.plugins.aws.resourcegroupstaggingapi.client.ResourceGroupsTaggingApiClientFacadeFactory;
 import tech.kronicle.plugins.aws.resourcegroupstaggingapi.models.ResourceGroupsTaggingApiResource;
 import tech.kronicle.plugins.aws.resourcegroupstaggingapi.models.ResourceGroupsTaggingApiResourcePage;
 
 import java.util.List;
+import java.util.Map;
 
 import static java.util.Objects.isNull;
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.Mockito.when;
 
-@ExtendWith(MockitoExtension.class)
 public class ResourceFetcherTest {
-
-    @Mock
-    private ResourceGroupsTaggingApiClientFacadeFactory clientFacadeFactory;
 
     @Test
     public void getResourcesShouldUseTheClientFacadeToGetAllResourcesAndThenReturnThem() {
         // Given
-        ResourceFetcher underTest = createUnderTest();
+        FakeResourceGroupsTaggingApiClientFacade clientFacade = new FakeResourceGroupsTaggingApiClientFacade(2);
+        ResourceFetcher underTest = createUnderTest(clientFacade);
         AwsProfileAndRegion profileAndRegion = new AwsProfileAndRegion(
                 new AwsProfileConfig(
                         "test-access-key-id",
                         "test-secret-access-key",
+                        null,
                         null
                 ),
                 "test-region"
         );
-        FakeResourceGroupsTaggingApiClientFacade clientFacade = new FakeResourceGroupsTaggingApiClientFacade(2);
-        when(clientFacadeFactory.createResourceGroupsTaggingApiClientFacade(profileAndRegion)).thenReturn(clientFacade);
 
         // When
         List<ResourceGroupsTaggingApiResource> returnValue = underTest.getResources(profileAndRegion);
@@ -49,11 +41,53 @@ public class ResourceFetcherTest {
                 new ResourceGroupsTaggingApiResource("test-arn-2-1", List.of()),
                 new ResourceGroupsTaggingApiResource("test-arn-2-2", List.of())
         ));
-        assertThat(clientFacade.isClosed).isTrue();
+        assertThat(clientFacade.isClosed).isFalse();
     }
 
-    private ResourceFetcher createUnderTest() {
-        return new ResourceFetcher(clientFacadeFactory);
+    @Test
+    public void getResourcesShouldUseTheClientFacadeToGetAllResourcesWithFiltersAndThenReturnThem() {
+        // Given
+        FakeResourceGroupsTaggingApiClientFacade clientFacade = new FakeResourceGroupsTaggingApiClientFacade(2);
+        ResourceFetcher underTest = createUnderTest(clientFacade);
+        AwsProfileAndRegion profileAndRegion = new AwsProfileAndRegion(
+                new AwsProfileConfig(
+                        "test-access-key-id",
+                        "test-secret-access-key",
+                        null,
+                        null
+                ),
+                "test-region"
+        );
+        List<String> resourceTypeFilters = List.of(
+                "test-resource-type-1",
+                "test-resource-type-2"
+        );
+        Map<String, List<String>> tagFilters = Map.ofEntries(
+                Map.entry("test-tag-key-1", List.of("test-tag-value-1-1", "test-tag-value-1-2")),
+                Map.entry("test-tag-key-2", List.of("test-tag-value-2-1", "test-tag-value-2-2"))
+        );
+
+        // When
+        List<ResourceGroupsTaggingApiResource> returnValue = underTest.getResources(
+                profileAndRegion,
+                resourceTypeFilters,
+                tagFilters
+        );
+
+        // Then
+        assertThat(returnValue).isEqualTo(List.of(
+                new ResourceGroupsTaggingApiResource("test-arn-null-3", List.of()),
+                new ResourceGroupsTaggingApiResource("test-arn-null-4", List.of()),
+                new ResourceGroupsTaggingApiResource("test-arn-2-3", List.of()),
+                new ResourceGroupsTaggingApiResource("test-arn-2-4", List.of())
+        ));
+        assertThat(clientFacade.isClosed).isFalse();
+        assertThat(clientFacade.resourceTypeFilters).isEqualTo(resourceTypeFilters);
+        assertThat(clientFacade.tagFilters).isEqualTo(tagFilters);
+    }
+
+    private ResourceFetcher createUnderTest(ResourceGroupsTaggingApiClientFacade clientFacade) {
+        return new ResourceFetcher(clientFacade);
     }
 
     @RequiredArgsConstructor
@@ -61,9 +95,14 @@ public class ResourceFetcherTest {
 
         private final int pageCount;
         private boolean isClosed;
+        private List<String> resourceTypeFilters;
+        private Map<String, List<String>> tagFilters;
 
         @Override
-        public ResourceGroupsTaggingApiResourcePage getResources(String nextToken) {
+        public ResourceGroupsTaggingApiResourcePage getResources(
+                AwsProfileAndRegion profileAndRegion,
+                String nextToken
+        ) {
             return new ResourceGroupsTaggingApiResourcePage(
                     List.of(
                             createResourceGroupsTaggingApiResource(nextToken, 1),
@@ -72,7 +111,25 @@ public class ResourceFetcherTest {
                     getNextPage(nextToken)
             );
         }
-        
+
+        @Override
+        public ResourceGroupsTaggingApiResourcePage getResources(
+                AwsProfileAndRegion profileAndRegion,
+                List<String> resourceTypeFilters,
+                Map<String, List<String>> tagFilters,
+                String nextToken
+        ) {
+            this.resourceTypeFilters = resourceTypeFilters;
+            this.tagFilters = tagFilters;
+            return new ResourceGroupsTaggingApiResourcePage(
+                    List.of(
+                            createResourceGroupsTaggingApiResource(nextToken, 3),
+                            createResourceGroupsTaggingApiResource(nextToken, 4)
+                    ),
+                    getNextPage(nextToken)
+            );
+        }
+
         private ResourceGroupsTaggingApiResource createResourceGroupsTaggingApiResource(String nextToken, int resourceGroupsTaggingApiResourceNumber) {
             return new ResourceGroupsTaggingApiResource(
                     "test-arn-" + nextToken + "-" + resourceGroupsTaggingApiResourceNumber,
@@ -90,7 +147,7 @@ public class ResourceFetcherTest {
 
             return Integer.toString(nextPageNumber);
         }
-        
+
         @Override
         public void close() {
             isClosed = true;

@@ -246,7 +246,15 @@ public class ScanEngine {
     }
 
     private void updateComponent(ConcurrentHashMap<String, Component> componentMap, String componentId, Scanner<?, ?> scanner, UnaryOperator<Component> componentTransformer) {
-        Component component = componentTransformer.apply(componentMap.get(componentId));
+        Component component = componentMap.get(componentId);
+        try {
+            component = componentTransformer.apply(component);
+        } catch (Exception e) {
+            log.error("Scanner {} failed to update component", scanner.id(), e);
+            ScannerError scannerError = new ScannerError(scanner.id(), "Component update failed",
+                    throwableToScannerErrorMapper.map(scanner.id(), e));
+            component = addScannerErrorsToComponent(component, List.of(scannerError));
+        }
         try {
             validatorService.validate(component);
         } catch (ValidationException e) {

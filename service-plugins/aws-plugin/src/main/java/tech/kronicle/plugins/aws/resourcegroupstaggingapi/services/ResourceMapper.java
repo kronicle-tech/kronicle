@@ -2,8 +2,8 @@ package tech.kronicle.plugins.aws.resourcegroupstaggingapi.services;
 
 import lombok.RequiredArgsConstructor;
 import tech.kronicle.plugins.aws.config.AwsConfig;
+import tech.kronicle.plugins.aws.constants.TagKeys;
 import tech.kronicle.plugins.aws.resourcegroupstaggingapi.models.ResourceGroupsTaggingApiResource;
-import tech.kronicle.plugins.aws.resourcegroupstaggingapi.models.ResourceGroupsTaggingApiTag;
 import tech.kronicle.plugins.aws.utils.AnalysedArn;
 import tech.kronicle.sdk.models.Alias;
 import tech.kronicle.sdk.models.Component;
@@ -16,6 +16,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 import static tech.kronicle.common.CaseUtils.toKebabCase;
+import static tech.kronicle.plugins.aws.resourcegroupstaggingapi.utils.ResourceUtils.getOptionalResourceTagValue;
 import static tech.kronicle.plugins.aws.utils.ArnAnalyser.analyseArn;
 
 @RequiredArgsConstructor(onConstructor = @__({@Inject}))
@@ -23,13 +24,13 @@ public class ResourceMapper {
 
     private final AwsConfig config;
 
-    public List<Component> mapResources(List<ResourceGroupsTaggingApiResource> resources) {
+    public List<Component> mapResourcesToComponents(List<ResourceGroupsTaggingApiResource> resources) {
         return resources.stream()
-                .map(this::mapResource)
+                .map(this::mapResourceToComponent)
                 .collect(Collectors.toList());
     }
 
-    private Component mapResource(ResourceGroupsTaggingApiResource resource) {
+    private Component mapResourceToComponent(ResourceGroupsTaggingApiResource resource) {
         AnalysedArn analysedArn = analyseArn(resource.getArn());
         Optional<String> nameTag = getNameTag(resource);
         List<Alias> aliases = getAliases(analysedArn);
@@ -59,11 +60,11 @@ public class ResourceMapper {
     }
 
     private Optional<String> getNameTag(ResourceGroupsTaggingApiResource resource) {
-        return getTagValue(resource, "Name");
+        return getOptionalResourceTagValue(resource, TagKeys.PASCAL_CASE_NAME);
     }
 
     private List<ComponentTeam> getTeam(ResourceGroupsTaggingApiResource resource) {
-        return getTagValue(resource, config.getTeamTagName())
+        return getOptionalResourceTagValue(resource, config.getTagKeys().getTeam())
                 .map(teamId -> List.of(ComponentTeam.builder().teamId(teamId).build()))
                 .orElse(List.of());
     }
@@ -96,12 +97,5 @@ public class ResourceMapper {
         }
 
         return builder.toString();
-    }
-
-    private Optional<String> getTagValue(ResourceGroupsTaggingApiResource resource, String name) {
-        return resource.getTags().stream()
-                .filter(tag -> tag.getKey().equals(name))
-                .findFirst()
-                .map(ResourceGroupsTaggingApiTag::getValue);
     }
 }

@@ -25,9 +25,14 @@ public class ResourceServiceTest {
     public ResourceMapper mapper;
 
     @Test
-    public void getDependenciesShouldFetchResourecsForAProfileAndRegionAndMapResourcesToComponents() {
+    public void getDependenciesShouldFetchResourcesForAProfileAndRegionAndMapResourcesToComponents() {
         // Given
-        AwsProfileConfig profile = new AwsProfileConfig(null, null, List.of("test-region-1"));
+        AwsProfileConfig profile = new AwsProfileConfig(
+                null,
+                null,
+                List.of("test-region-1"),
+                null
+        );
         underTest = createUnderTest(List.of(profile));
         List<ResourceGroupsTaggingApiResource> services = List.of(
                 createResource(1),
@@ -42,7 +47,7 @@ public class ResourceServiceTest {
                         .id("test-component-id-2")
                         .build()
         );
-        when(mapper.mapResources(services)).thenReturn(components);
+        when(mapper.mapResourcesToComponents(services)).thenReturn(components);
 
         // When
         List<Component> returnValue = underTest.getComponents();
@@ -52,12 +57,14 @@ public class ResourceServiceTest {
     }
 
     @Test
-    public void getDependenciesShouldFetchResourecsForAProfileAndMultipleRegionsAndMapResourcesToComponents() {
+    public void getDependenciesShouldFetchResourcesForAProfileAndMultipleRegionsAndMapResourcesToComponents() {
         // Given
-        AwsProfileConfig profile = new AwsProfileConfig(null, null, List.of(
-                "test-region-1",
-                "test-region-2"
-        ));
+        AwsProfileConfig profile = new AwsProfileConfig(
+                null,
+                null,
+                List.of("test-region-1", "test-region-2"),
+                null
+        );
         underTest = createUnderTest(List.of(profile));
         ResourceGroupsTaggingApiResource resource1 = createResource(1);
         ResourceGroupsTaggingApiResource resource2 = createResource(2);
@@ -79,7 +86,7 @@ public class ResourceServiceTest {
                         .id("test-component-id-2")
                         .build()
         );
-        when(mapper.mapResources(List.of(
+        when(mapper.mapResourcesToComponents(List.of(
                 resource1,
                 resource2,
                 resource3,
@@ -94,16 +101,20 @@ public class ResourceServiceTest {
     }
 
     @Test
-    public void getDependenciesShouldFetchResourecsForMultipleProfilesAndMultipleRegionsAndMapResourcesToComponents() {
+    public void getDependenciesShouldFetchResourcesForMultipleProfilesAndMultipleRegionsAndMapResourcesToComponents() {
         // Given
-        AwsProfileConfig profile1 = new AwsProfileConfig(null, null, List.of(
-                "test-region-1",
-                "test-region-2"
-        ));
-        AwsProfileConfig profile2 = new AwsProfileConfig(null, null, List.of(
-                "test-region-3",
-                "test-region-4"
-        ));
+        AwsProfileConfig profile1 = new AwsProfileConfig(
+                null,
+                null,
+                List.of("test-region-1", "test-region-2"),
+                null
+        );
+        AwsProfileConfig profile2 = new AwsProfileConfig(
+                null,
+                null,
+                List.of("test-region-3", "test-region-4"),
+                null
+        );
         underTest = createUnderTest(List.of(profile1, profile2));
         ResourceGroupsTaggingApiResource resource1 = createResource(1);
         ResourceGroupsTaggingApiResource resource2 = createResource(2);
@@ -137,7 +148,7 @@ public class ResourceServiceTest {
                         .id("test-component-id-2")
                         .build()
         );
-        when(mapper.mapResources(List.of(
+        when(mapper.mapResourcesToComponents(List.of(
                 resource1,
                 resource2,
                 resource3,
@@ -163,6 +174,6 @@ public class ResourceServiceTest {
     }
 
     private ResourceService createUnderTest(List<AwsProfileConfig> profiles) {
-        return new ResourceService(fetcher, mapper, new AwsConfig(profiles, null, null));
+        return new ResourceService(fetcher, mapper, new AwsConfig(profiles, null, null, null));
     }
 }

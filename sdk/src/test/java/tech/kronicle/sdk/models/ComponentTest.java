@@ -2,6 +2,7 @@ package tech.kronicle.sdk.models;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import lombok.RequiredArgsConstructor;
 import org.junit.jupiter.api.Test;
 import tech.kronicle.sdk.models.openapi.OpenApiSpec;
 import tech.kronicle.sdk.models.sonarqube.SonarQubeProject;
@@ -9,10 +10,12 @@ import tech.kronicle.sdk.models.todos.ToDo;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.catchThrowable;
+import static org.mockito.Mockito.mock;
 
 public class ComponentTest {
 
@@ -270,5 +273,60 @@ public class ComponentTest {
 
         // Then
         assertThat(thrown).isInstanceOf(UnsupportedOperationException.class);
+    }
+
+    @Test
+    public void withUpdatedStateShouldPassANewStateObjectToActionWhenStateIsNull() {
+        // Given
+        ComponentState updatedState = createState(1);
+        Component underTest = Component.builder().build();
+        FakeStateUpdateAction action = new FakeStateUpdateAction(updatedState);
+
+        // When
+        Component returnValue = underTest.withUpdatedState(action::apply);
+
+        // Then
+        assertThat(returnValue).isEqualTo(underTest.withState(updatedState));
+        assertThat(action.calls).containsExactly(ComponentState.builder().build());
+    }
+
+    @Test
+    public void withUpdatedStateShouldPassExistingStateObjectToActionWhenStateIsNotNull() {
+        // Given
+        ComponentState initialState = createState(1);
+        ComponentState updatedState = createState(2);
+        Component underTest = Component.builder()
+                .state(initialState)
+                .build();
+        FakeStateUpdateAction action = new FakeStateUpdateAction(updatedState);
+
+        // When
+        Component returnValue = underTest.withUpdatedState(action::apply);
+
+        // Then
+        assertThat(returnValue).isEqualTo(underTest.withState(updatedState));
+        assertThat(action.calls).containsExactly(initialState);
+    }
+
+    private ComponentState createState(int stateNumber) {
+        return ComponentState.builder()
+                .environments(List.of(
+                        ComponentStateEnvironment.builder()
+                                .id("test-environment-id-" + stateNumber)
+                                .build()
+                ))
+                .build();
+    }
+
+    @RequiredArgsConstructor
+    private static class FakeStateUpdateAction {
+
+        private final ComponentState updatedState;
+        private final List<ComponentState> calls = new ArrayList<>();
+
+        public ComponentState apply(ComponentState value) {
+            calls.add(value);
+            return updatedState;
+        }
     }
 }

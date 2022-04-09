@@ -40,6 +40,7 @@ public class XRayServiceGraphFetcherTest {
                 new AwsProfileConfig(
                         "test-access-key-id",
                         "test-secret-access-key",
+                        null,
                         null
                 ),
                 "test-region"

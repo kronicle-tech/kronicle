@@ -27,7 +27,7 @@ public class DependencyServiceTest {
     @Test
     public void getDependenciesShouldFetchAServiceGraphForAProfileAndRegionAndAssembleDependencies() {
         // Given
-        AwsProfileConfig profile = new AwsProfileConfig(null, null, List.of("test-region-1"));
+        AwsProfileConfig profile = createProfile(List.of("test-region-1"));
         underTest = createUnderTest(List.of(profile));
         List<XRayDependency> services = List.of(
                 createDependency(1),
@@ -53,13 +53,18 @@ public class DependencyServiceTest {
         assertThat(returnValue).isEqualTo(dependencies);
     }
 
+    private AwsProfileConfig createProfile(List<String> regions) {
+        return new AwsProfileConfig(
+                null,
+                null,
+                regions,
+                null);
+    }
+
     @Test
     public void getDependenciesShouldFetchAServiceGraphForAProfileAndMultipleRegionsAndAssembleDependencies() {
         // Given
-        AwsProfileConfig profile = new AwsProfileConfig(null, null, List.of(
-                "test-region-1",
-                "test-region-2"
-        ));
+        AwsProfileConfig profile = createProfile(List.of("test-region-1", "test-region-2"));
         underTest = createUnderTest(List.of(profile));
         XRayDependency service1 = createDependency(1);
         XRayDependency service2 = createDependency(2);
@@ -100,14 +105,8 @@ public class DependencyServiceTest {
     @Test
     public void getDependenciesShouldFetchAServiceGraphForMultipleProfilesAndMultipleRegionsAndAssembleDependencies() {
         // Given
-        AwsProfileConfig profile1 = new AwsProfileConfig(null, null, List.of(
-                "test-region-1",
-                "test-region-2"
-        ));
-        AwsProfileConfig profile2 = new AwsProfileConfig(null, null, List.of(
-                "test-region-3",
-                "test-region-4"
-        ));
+        AwsProfileConfig profile1 = createProfile(List.of("test-region-1", "test-region-2"));
+        AwsProfileConfig profile2 = createProfile(List.of("test-region-3", "test-region-4"));
         underTest = createUnderTest(List.of(profile1, profile2));
         XRayDependency dependency1 = createDependency(1);
         XRayDependency dependency2 = createDependency(2);
@@ -179,6 +178,15 @@ public class DependencyServiceTest {
     }
 
     private DependencyService createUnderTest(List<AwsProfileConfig> profiles) {
-        return new DependencyService(fetcher, assembler, new AwsConfig(profiles, null, null));
+        return new DependencyService(
+                fetcher,
+                assembler,
+                new AwsConfig(
+                        profiles,
+                        null,
+                        null,
+                        null
+                )
+        );
     }
 }

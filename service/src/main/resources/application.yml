@@ -65,7 +65,12 @@ plugins:
   aws:
     enabled: false
     detailed-component-descriptions: false
-    team-tag-name: team
+    tag-keys:
+      component: component
+      team: team
+    log-fields:
+      level: level
+      message: message
 
   bitbucket-server:
     enabled: false
