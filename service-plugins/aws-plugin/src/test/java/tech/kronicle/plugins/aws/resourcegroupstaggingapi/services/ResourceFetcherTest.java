@@ -41,6 +41,49 @@ public class ResourceFetcherTest {
                 new ResourceGroupsTaggingApiResource("test-arn-2-1", List.of()),
                 new ResourceGroupsTaggingApiResource("test-arn-2-2", List.of())
         ));
+        assertThat(clientFacade.isClosed).isFalse();
+    }
+
+    @Test
+    public void getResourcesShouldUseTheClientFacadeToGetAllResourcesWithFiltersAndThenReturnThem() {
+        // Given
+        FakeResourceGroupsTaggingApiClientFacade clientFacade = new FakeResourceGroupsTaggingApiClientFacade(2);
+        ResourceFetcher underTest = createUnderTest(clientFacade);
+        AwsProfileAndRegion profileAndRegion = new AwsProfileAndRegion(
+                new AwsProfileConfig(
+                        "test-access-key-id",
+                        "test-secret-access-key",
+                        null,
+                        null
+                ),
+                "test-region"
+        );
+        List<String> resourceTypeFilters = List.of(
+                "test-resource-type-1",
+                "test-resource-type-2"
+        );
+        Map<String, List<String>> tagFilters = Map.ofEntries(
+                Map.entry("test-tag-key-1", List.of("test-tag-value-1-1", "test-tag-value-1-2")),
+                Map.entry("test-tag-key-2", List.of("test-tag-value-2-1", "test-tag-value-2-2"))
+        );
+
+        // When
+        List<ResourceGroupsTaggingApiResource> returnValue = underTest.getResources(
+                profileAndRegion,
+                resourceTypeFilters,
+                tagFilters
+        );
+
+        // Then
+        assertThat(returnValue).isEqualTo(List.of(
+                new ResourceGroupsTaggingApiResource("test-arn-null-3", List.of()),
+                new ResourceGroupsTaggingApiResource("test-arn-null-4", List.of()),
+                new ResourceGroupsTaggingApiResource("test-arn-2-3", List.of()),
+                new ResourceGroupsTaggingApiResource("test-arn-2-4", List.of())
+        ));
+        assertThat(clientFacade.isClosed).isFalse();
+        assertThat(clientFacade.resourceTypeFilters).isEqualTo(resourceTypeFilters);
+        assertThat(clientFacade.tagFilters).isEqualTo(tagFilters);
     }
 
     private ResourceFetcher createUnderTest(ResourceGroupsTaggingApiClientFacade clientFacade) {
@@ -52,6 +95,8 @@ public class ResourceFetcherTest {
 
         private final int pageCount;
         private boolean isClosed;
+        private List<String> resourceTypeFilters;
+        private Map<String, List<String>> tagFilters;
 
         @Override
         public ResourceGroupsTaggingApiResourcePage getResources(
@@ -74,7 +119,15 @@ public class ResourceFetcherTest {
                 Map<String, List<String>> tagFilters,
                 String nextToken
         ) {
-            return null;
+            this.resourceTypeFilters = resourceTypeFilters;
+            this.tagFilters = tagFilters;
+            return new ResourceGroupsTaggingApiResourcePage(
+                    List.of(
+                            createResourceGroupsTaggingApiResource(nextToken, 3),
+                            createResourceGroupsTaggingApiResource(nextToken, 4)
+                    ),
+                    getNextPage(nextToken)
+            );
         }
 
         private ResourceGroupsTaggingApiResource createResourceGroupsTaggingApiResource(String nextToken, int resourceGroupsTaggingApiResourceNumber) {
@@ -94,7 +147,7 @@ public class ResourceFetcherTest {
 
             return Integer.toString(nextPageNumber);
         }
-        
+
         @Override
         public void close() {
             isClosed = true;
