@@ -16,8 +16,11 @@ import tech.kronicle.plugins.github.config.GitHubUserConfig;
 import tech.kronicle.plugins.github.guice.GuiceModule;
 import tech.kronicle.plugins.github.models.ApiResponseCacheEntry;
 import tech.kronicle.plugins.github.models.api.GitHubContentEntry;
+import tech.kronicle.plugins.github.models.api.GitHubGetWorkflowRunsResponse;
 import tech.kronicle.plugins.github.models.api.GitHubRepo;
+import tech.kronicle.plugins.github.models.api.GitHubRepoOwner;
 import tech.kronicle.plugins.github.models.api.GitHubWorkflowRun;
+import tech.kronicle.plugins.github.models.api.GitHubWorkflowRunActor;
 import tech.kronicle.plugins.github.services.ApiResponseCache;
 import tech.kronicle.sdk.models.CheckState;
 import tech.kronicle.sdk.models.ComponentState;
@@ -150,27 +153,27 @@ public class GitHubClientTest {
                 new SimplifiedLogEvent(Level.INFO, "Calling " + baseUrl + "/repos/" + scenario.getName() + "/test-repo-1/contents/ for user " + scenario.getBasicAuthUsername()),
                 new SimplifiedLogEvent(Level.INFO, "Request limits after call " + baseUrl + "/repos/" + scenario.getName() + "/test-repo-1/contents/ for user " + scenario.getBasicAuthUsername() + ": rate limit null, remaining null, reset null, used null, resource null"),
                 new SimplifiedLogEvent(Level.INFO, "Response for " + baseUrl + "/repos/" + scenario.getName() + "/test-repo-1/contents/ for user " + scenario.getBasicAuthUsername() + " was different to last call"),
-                new SimplifiedLogEvent(Level.INFO, "Calling " + baseUrl + "/repos/" + scenario.getName() + "/test-repo-1/statuses/ for user " + scenario.getBasicAuthUsername()),
-                new SimplifiedLogEvent(Level.INFO, "Request limits after call " + baseUrl + "/repos/" + scenario.getName() + "/test-repo-1/statuses/ for user " + scenario.getBasicAuthUsername() + ": rate limit null, remaining null, reset null, used null, resource null"),
-                new SimplifiedLogEvent(Level.INFO, "Response for " + baseUrl + "/repos/" + scenario.getName() + "/test-repo-1/statuses/ for user " + scenario.getBasicAuthUsername() + " was different to last call"),
+                new SimplifiedLogEvent(Level.INFO, "Calling " + baseUrl + "/repos/" + scenario.getName() + "/test-repo-1/actions/runs?branch=test-default-branch-1 for user " + scenario.getBasicAuthUsername()),
+                new SimplifiedLogEvent(Level.INFO, "Request limits after call " + baseUrl + "/repos/" + scenario.getName() + "/test-repo-1/actions/runs?branch=test-default-branch-1 for user " + scenario.getBasicAuthUsername() + ": rate limit null, remaining null, reset null, used null, resource null"),
+                new SimplifiedLogEvent(Level.INFO, "Response for " + baseUrl + "/repos/" + scenario.getName() + "/test-repo-1/actions/runs?branch=test-default-branch-1 for user " + scenario.getBasicAuthUsername() + " was different to last call"),
                 new SimplifiedLogEvent(Level.INFO, "Calling " + baseUrl + "/repos/" + scenario.getName() + "/test-repo-2/contents/ for user " + scenario.getBasicAuthUsername()),
                 new SimplifiedLogEvent(Level.INFO, "Request limits after call " + baseUrl + "/repos/" + scenario.getName() + "/test-repo-2/contents/ for user " + scenario.getBasicAuthUsername() + ": rate limit null, remaining null, reset null, used null, resource null"),
                 new SimplifiedLogEvent(Level.INFO, "Response for " + baseUrl + "/repos/" + scenario.getName() + "/test-repo-2/contents/ for user " + scenario.getBasicAuthUsername() + " was different to last call"),
-                new SimplifiedLogEvent(Level.INFO, "Calling " + baseUrl + "/repos/" + scenario.getName() + "/test-repo-2/statuses/ for user " + scenario.getBasicAuthUsername()),
-                new SimplifiedLogEvent(Level.INFO, "Request limits after call " + baseUrl + "/repos/" + scenario.getName() + "/test-repo-2/statuses/ for user " + scenario.getBasicAuthUsername() + ": rate limit null, remaining null, reset null, used null, resource null"),
-                new SimplifiedLogEvent(Level.INFO, "Response for " + baseUrl + "/repos/" + scenario.getName() + "/test-repo-2/statuses/ for user " + scenario.getBasicAuthUsername() + " was different to last call"),
+                new SimplifiedLogEvent(Level.INFO, "Calling " + baseUrl + "/repos/" + scenario.getName() + "/test-repo-2/actions/runs?branch=test-default-branch-2 for user " + scenario.getBasicAuthUsername()),
+                new SimplifiedLogEvent(Level.INFO, "Request limits after call " + baseUrl + "/repos/" + scenario.getName() + "/test-repo-2/actions/runs?branch=test-default-branch-2 for user " + scenario.getBasicAuthUsername() + ": rate limit null, remaining null, reset null, used null, resource null"),
+                new SimplifiedLogEvent(Level.INFO, "Response for " + baseUrl + "/repos/" + scenario.getName() + "/test-repo-2/actions/runs?branch=test-default-branch-2 for user " + scenario.getBasicAuthUsername() + " was different to last call"),
                 new SimplifiedLogEvent(Level.INFO, "Calling " + baseUrl + "/repos/" + scenario.getName() + "/test-repo-3/contents/ for user " + scenario.getBasicAuthUsername()),
                 new SimplifiedLogEvent(Level.INFO, "Request limits after call " + baseUrl + "/repos/" + scenario.getName() + "/test-repo-3/contents/ for user " + scenario.getBasicAuthUsername() + ": rate limit null, remaining null, reset null, used null, resource null"),
                 new SimplifiedLogEvent(Level.INFO, "Response for " + baseUrl + "/repos/" + scenario.getName() + "/test-repo-3/contents/ for user " + scenario.getBasicAuthUsername() + " was different to last call"),
-                new SimplifiedLogEvent(Level.INFO, "Calling " + baseUrl + "/repos/" + scenario.getName() + "/test-repo-3/statuses/ for user " + scenario.getBasicAuthUsername()),
-                new SimplifiedLogEvent(Level.INFO, "Request limits after call " + baseUrl + "/repos/" + scenario.getName() + "/test-repo-3/statuses/ for user " + scenario.getBasicAuthUsername() + ": rate limit null, remaining null, reset null, used null, resource null"),
-                new SimplifiedLogEvent(Level.INFO, "Response for " + baseUrl + "/repos/" + scenario.getName() + "/test-repo-3/statuses/ for user " + scenario.getBasicAuthUsername() + " was different to last call"),
+                new SimplifiedLogEvent(Level.INFO, "Calling " + baseUrl + "/repos/" + scenario.getName() + "/test-repo-3/actions/runs?branch=test-default-branch-3 for user " + scenario.getBasicAuthUsername()),
+                new SimplifiedLogEvent(Level.INFO, "Request limits after call " + baseUrl + "/repos/" + scenario.getName() + "/test-repo-3/actions/runs?branch=test-default-branch-3 for user " + scenario.getBasicAuthUsername() + ": rate limit null, remaining null, reset null, used null, resource null"),
+                new SimplifiedLogEvent(Level.INFO, "Response for " + baseUrl + "/repos/" + scenario.getName() + "/test-repo-3/actions/runs?branch=test-default-branch-3 for user " + scenario.getBasicAuthUsername() + " was different to last call"),
                 new SimplifiedLogEvent(Level.INFO, "Calling " + baseUrl + "/repos/" + scenario.getName() + "/test-repo-4/contents/ for user " + scenario.getBasicAuthUsername()),
                 new SimplifiedLogEvent(Level.INFO, "Request limits after call " + baseUrl + "/repos/" + scenario.getName() + "/test-repo-4/contents/ for user " + scenario.getBasicAuthUsername() + ": rate limit null, remaining null, reset null, used null, resource null"),
                 new SimplifiedLogEvent(Level.INFO, "Response for " + baseUrl + "/repos/" + scenario.getName() + "/test-repo-4/contents/ for user " + scenario.getBasicAuthUsername() + " was different to last call"),
-                new SimplifiedLogEvent(Level.INFO, "Calling " + baseUrl + "/repos/" + scenario.getName() + "/test-repo-4/statuses/ for user " + scenario.getBasicAuthUsername()),
-                new SimplifiedLogEvent(Level.INFO, "Request limits after call " + baseUrl + "/repos/" + scenario.getName() + "/test-repo-4/statuses/ for user " + scenario.getBasicAuthUsername() + ": rate limit null, remaining null, reset null, used null, resource null"),
-                new SimplifiedLogEvent(Level.INFO, "Response for " + baseUrl + "/repos/" + scenario.getName() + "/test-repo-4/statuses/ for user " + scenario.getBasicAuthUsername() + " was different to last call")
+                new SimplifiedLogEvent(Level.INFO, "Calling " + baseUrl + "/repos/" + scenario.getName() + "/test-repo-4/actions/runs?branch=test-default-branch-4 for user " + scenario.getBasicAuthUsername()),
+                new SimplifiedLogEvent(Level.INFO, "Request limits after call " + baseUrl + "/repos/" + scenario.getName() + "/test-repo-4/actions/runs?branch=test-default-branch-4 for user " + scenario.getBasicAuthUsername() + ": rate limit null, remaining null, reset null, used null, resource null"),
+                new SimplifiedLogEvent(Level.INFO, "Response for " + baseUrl + "/repos/" + scenario.getName() + "/test-repo-4/actions/runs?branch=test-default-branch-4 for user " + scenario.getBasicAuthUsername() + " was different to last call")
         );
     }
     
@@ -201,33 +204,33 @@ public class GitHubClientTest {
                 new SimplifiedLogEvent(Level.INFO, "Request limits after call " + baseUrl + "/repos/" + scenario.getName() + "/test-repo-1/contents/ for user " + scenario.getBasicAuthUsername() + ": rate limit 5004, remaining 4002, reset 2020-01-01T00:00:02Z, used 1002, resource test-resource-2"),
                 new SimplifiedLogEvent(Level.INFO, "Response for " + baseUrl + "/repos/" + scenario.getName() + "/test-repo-1/contents/ for user " + scenario.getBasicAuthUsername() + " was different to last call"),
                 
-                new SimplifiedLogEvent(Level.INFO, "Calling " + baseUrl + "/repos/" + scenario.getName() + "/test-repo-1/statuses/ for user " + scenario.getBasicAuthUsername()),
-                new SimplifiedLogEvent(Level.INFO, "Request limits after call " + baseUrl + "/repos/" + scenario.getName() + "/test-repo-1/statuses/ for user " + scenario.getBasicAuthUsername() + ": rate limit 5004, remaining 4002, reset 2020-01-01T00:00:02Z, used 1002, resource test-resource-2"),
-                new SimplifiedLogEvent(Level.INFO, "Response for " + baseUrl + "/repos/" + scenario.getName() + "/test-repo-1/statuses/ for user " + scenario.getBasicAuthUsername() + " was different to last call"),
+                new SimplifiedLogEvent(Level.INFO, "Calling " + baseUrl + "/repos/" + scenario.getName() + "/test-repo-1/actions/runs?branch=test-default-branch-1 for user " + scenario.getBasicAuthUsername()),
+                new SimplifiedLogEvent(Level.INFO, "Request limits after call " + baseUrl + "/repos/" + scenario.getName() + "/test-repo-1/actions/runs?branch=test-default-branch-1 for user " + scenario.getBasicAuthUsername() + ": rate limit 5004, remaining 4002, reset 2020-01-01T00:00:02Z, used 1002, resource test-resource-2"),
+                new SimplifiedLogEvent(Level.INFO, "Response for " + baseUrl + "/repos/" + scenario.getName() + "/test-repo-1/actions/runs?branch=test-default-branch-1 for user " + scenario.getBasicAuthUsername() + " was different to last call"),
                 
                 new SimplifiedLogEvent(Level.INFO, "Calling " + baseUrl + "/repos/" + scenario.getName() + "/test-repo-2/contents/ for user " + scenario.getBasicAuthUsername()),
                 new SimplifiedLogEvent(Level.INFO, "Request limits after call " + baseUrl + "/repos/" + scenario.getName() + "/test-repo-2/contents/ for user " + scenario.getBasicAuthUsername() + ": rate limit 5006, remaining 4003, reset 2020-01-01T00:00:03Z, used 1003, resource test-resource-3"),
                 new SimplifiedLogEvent(Level.INFO, "Response for " + baseUrl + "/repos/" + scenario.getName() + "/test-repo-2/contents/ for user " + scenario.getBasicAuthUsername() + " was different to last call"),
 
-                new SimplifiedLogEvent(Level.INFO, "Calling " + baseUrl + "/repos/" + scenario.getName() + "/test-repo-2/statuses/ for user " + scenario.getBasicAuthUsername()),
-                new SimplifiedLogEvent(Level.INFO, "Request limits after call " + baseUrl + "/repos/" + scenario.getName() + "/test-repo-2/statuses/ for user " + scenario.getBasicAuthUsername() + ": rate limit 5006, remaining 4003, reset 2020-01-01T00:00:03Z, used 1003, resource test-resource-3"),
-                new SimplifiedLogEvent(Level.INFO, "Response for " + baseUrl + "/repos/" + scenario.getName() + "/test-repo-2/statuses/ for user " + scenario.getBasicAuthUsername() + " was different to last call"),
+                new SimplifiedLogEvent(Level.INFO, "Calling " + baseUrl + "/repos/" + scenario.getName() + "/test-repo-2/actions/runs?branch=test-default-branch-2 for user " + scenario.getBasicAuthUsername()),
+                new SimplifiedLogEvent(Level.INFO, "Request limits after call " + baseUrl + "/repos/" + scenario.getName() + "/test-repo-2/actions/runs?branch=test-default-branch-2 for user " + scenario.getBasicAuthUsername() + ": rate limit 5006, remaining 4003, reset 2020-01-01T00:00:03Z, used 1003, resource test-resource-3"),
+                new SimplifiedLogEvent(Level.INFO, "Response for " + baseUrl + "/repos/" + scenario.getName() + "/test-repo-2/actions/runs?branch=test-default-branch-2 for user " + scenario.getBasicAuthUsername() + " was different to last call"),
 
                 new SimplifiedLogEvent(Level.INFO, "Calling " + baseUrl + "/repos/" + scenario.getName() + "/test-repo-3/contents/ for user " + scenario.getBasicAuthUsername()),
                 new SimplifiedLogEvent(Level.INFO, "Request limits after call " + baseUrl + "/repos/" + scenario.getName() + "/test-repo-3/contents/ for user " + scenario.getBasicAuthUsername() + ": rate limit 5008, remaining 4004, reset 2020-01-01T00:00:04Z, used 1004, resource test-resource-4"),
                 new SimplifiedLogEvent(Level.INFO, "Response for " + baseUrl + "/repos/" + scenario.getName() + "/test-repo-3/contents/ for user " + scenario.getBasicAuthUsername() + " was different to last call"),
 
-                new SimplifiedLogEvent(Level.INFO, "Calling " + baseUrl + "/repos/" + scenario.getName() + "/test-repo-3/statuses/ for user " + scenario.getBasicAuthUsername()),
-                new SimplifiedLogEvent(Level.INFO, "Request limits after call " + baseUrl + "/repos/" + scenario.getName() + "/test-repo-3/statuses/ for user " + scenario.getBasicAuthUsername() + ": rate limit 5008, remaining 4004, reset 2020-01-01T00:00:04Z, used 1004, resource test-resource-4"),
-                new SimplifiedLogEvent(Level.INFO, "Response for " + baseUrl + "/repos/" + scenario.getName() + "/test-repo-3/statuses/ for user " + scenario.getBasicAuthUsername() + " was different to last call"),
+                new SimplifiedLogEvent(Level.INFO, "Calling " + baseUrl + "/repos/" + scenario.getName() + "/test-repo-3/actions/runs?branch=test-default-branch-3 for user " + scenario.getBasicAuthUsername()),
+                new SimplifiedLogEvent(Level.INFO, "Request limits after call " + baseUrl + "/repos/" + scenario.getName() + "/test-repo-3/actions/runs?branch=test-default-branch-3 for user " + scenario.getBasicAuthUsername() + ": rate limit 5008, remaining 4004, reset 2020-01-01T00:00:04Z, used 1004, resource test-resource-4"),
+                new SimplifiedLogEvent(Level.INFO, "Response for " + baseUrl + "/repos/" + scenario.getName() + "/test-repo-3/actions/runs?branch=test-default-branch-3 for user " + scenario.getBasicAuthUsername() + " was different to last call"),
 
                 new SimplifiedLogEvent(Level.INFO, "Calling " + baseUrl + "/repos/" + scenario.getName() + "/test-repo-4/contents/ for user " + scenario.getBasicAuthUsername()),
                 new SimplifiedLogEvent(Level.INFO, "Request limits after call " + baseUrl + "/repos/" + scenario.getName() + "/test-repo-4/contents/ for user " + scenario.getBasicAuthUsername() + ": rate limit 5010, remaining 4005, reset 2020-01-01T00:00:05Z, used 1005, resource test-resource-5"),
                 new SimplifiedLogEvent(Level.INFO, "Response for " + baseUrl + "/repos/" + scenario.getName() + "/test-repo-4/contents/ for user " + scenario.getBasicAuthUsername() + " was different to last call"),
 
-                new SimplifiedLogEvent(Level.INFO, "Calling " + baseUrl + "/repos/" + scenario.getName() + "/test-repo-4/statuses/ for user " + scenario.getBasicAuthUsername()),
-                new SimplifiedLogEvent(Level.INFO, "Request limits after call " + baseUrl + "/repos/" + scenario.getName() + "/test-repo-4/statuses/ for user " + scenario.getBasicAuthUsername() + ": rate limit 5010, remaining 4005, reset 2020-01-01T00:00:05Z, used 1005, resource test-resource-5"),
-                new SimplifiedLogEvent(Level.INFO, "Response for " + baseUrl + "/repos/" + scenario.getName() + "/test-repo-4/statuses/ for user " + scenario.getBasicAuthUsername() + " was different to last call")
+                new SimplifiedLogEvent(Level.INFO, "Calling " + baseUrl + "/repos/" + scenario.getName() + "/test-repo-4/actions/runs?branch=test-default-branch-4 for user " + scenario.getBasicAuthUsername()),
+                new SimplifiedLogEvent(Level.INFO, "Request limits after call " + baseUrl + "/repos/" + scenario.getName() + "/test-repo-4/actions/runs?branch=test-default-branch-4 for user " + scenario.getBasicAuthUsername() + ": rate limit 5010, remaining 4005, reset 2020-01-01T00:00:05Z, used 1005, resource test-resource-5"),
+                new SimplifiedLogEvent(Level.INFO, "Response for " + baseUrl + "/repos/" + scenario.getName() + "/test-repo-4/actions/runs?branch=test-default-branch-4 for user " + scenario.getBasicAuthUsername() + " was different to last call")
         );
     }
 
@@ -263,35 +266,19 @@ public class GitHubClientTest {
         wireMockServer = gitHubApiWireMockFactory.create(scenario);
         underTest = createUnderTest();
         ApiResponseCacheEntry<List<GitHubContentEntry>> contentsCacheEntry = new ApiResponseCacheEntry<>("test-etag-3", List.of(new GitHubContentEntry("kronicle.yaml")));
-        ApiResponseCacheEntry<List<GitHubWorkflowRun>> statusesCacheEntry = new ApiResponseCacheEntry<>("test-etag-3", List.of(
-                new GitHubWorkflowRun(
-                        "https://example.com/test-status-1-modified",
-                        "https://example.com/status-1-avatar.gif",
-                        "success",
-                        "Test description 1-modified",
-                        "test/context-1-modified",
-                        LocalDateTime.of(2001, 2, 3, 4, 5, 5, 6),
-                        LocalDateTime.of(2002, 2, 3, 4, 5, 5, 6)
-                ),
-                new GitHubWorkflowRun(
-                        "https://example.com/test-status-2-modified",
-                        "https://example.com/status-2-avatar.gif",
-                        "error",
-                        "Test description 2-modified",
-                        "test/context-2-modified",
-                        LocalDateTime.of(2001, 2, 3, 4, 5, 5, 6),
-                        LocalDateTime.of(2002, 2, 3, 4, 5, 5, 6)
-                )
-        ));
+        ApiResponseCacheEntry<GitHubGetWorkflowRunsResponse> statusesCacheEntry = new ApiResponseCacheEntry<>("test-etag-3", new GitHubGetWorkflowRunsResponse(List.of(
+                createWorkflowRun(1, "success"),
+                createWorkflowRun(2, "failure")
+        )));
         when(mockCache.getEntry(scenario.getAccessToken(), baseUrl + "/user/repos")).thenReturn(null);
         when(mockCache.getEntry(scenario.getAccessToken(), baseUrl + "/repos/" + scenario.getName() + "/test-repo-" + 1 + "/contents/")).thenReturn(null);
-        when(mockCache.getEntry(scenario.getAccessToken(), baseUrl + "/repos/" + scenario.getName() + "/test-repo-" + 1 + "/statuses/")).thenReturn(null);
+        when(mockCache.getEntry(scenario.getAccessToken(), baseUrl + "/repos/" + scenario.getName() + "/test-repo-" + 1 + "/actions/runs?branch=test-default-branch-" + 1)).thenReturn(null);
         doReturn(contentsCacheEntry).when(mockCache).getEntry(scenario.getAccessToken(), baseUrl + "/repos/" + scenario.getName() + "/test-repo-" + 2 + "/contents/");
-        doReturn(statusesCacheEntry).when(mockCache).getEntry(scenario.getAccessToken(), baseUrl + "/repos/" + scenario.getName() + "/test-repo-" + 2 + "/statuses/");
+        doReturn(statusesCacheEntry).when(mockCache).getEntry(scenario.getAccessToken(), baseUrl + "/repos/" + scenario.getName() + "/test-repo-" + 2 + "/actions/runs?branch=test-default-branch-" + 2);
         when(mockCache.getEntry(scenario.getAccessToken(), baseUrl + "/repos/" + scenario.getName() + "/test-repo-" + 3 + "/contents/")).thenReturn(null);
-        when(mockCache.getEntry(scenario.getAccessToken(), baseUrl + "/repos/" + scenario.getName() + "/test-repo-" + 3 + "/statuses/")).thenReturn(null);
+        when(mockCache.getEntry(scenario.getAccessToken(), baseUrl + "/repos/" + scenario.getName() + "/test-repo-" + 3 + "/actions/runs?branch=test-default-branch-" + 3)).thenReturn(null);
         when(mockCache.getEntry(scenario.getAccessToken(), baseUrl + "/repos/" + scenario.getName() + "/test-repo-" + 4 + "/contents/")).thenReturn(null);
-        when(mockCache.getEntry(scenario.getAccessToken(), baseUrl + "/repos/" + scenario.getName() + "/test-repo-" + 4 + "/statuses/")).thenReturn(null);
+        when(mockCache.getEntry(scenario.getAccessToken(), baseUrl + "/repos/" + scenario.getName() + "/test-repo-" + 4 + "/actions/runs?branch=test-default-branch-" + 4)).thenReturn(null);
 
         // When
         List<Repo> returnValue = underTest.getRepos(scenario.getAccessToken());
@@ -302,7 +289,25 @@ public class GitHubClientTest {
                 // hasComponentMetadataFile has been changed from "false" to "true" for repo 2 by the cached response
                 createRepo(scenario, 2, true, "-modified"),
                 createRepo(scenario, 3, true),
-                createRepo(scenario, 4, false));
+                createRepo(scenario, 4, false)
+        );
+    }
+
+    private GitHubWorkflowRun createWorkflowRun(int workflowRunNumber, String conclusion) {
+        return new GitHubWorkflowRun(
+                "Test name " + workflowRunNumber + "-modified",
+                "test-head-sha-a",
+                "completed",
+                conclusion,
+                (long) workflowRunNumber,
+                "https://example.com/test-html-url-" + workflowRunNumber + "-modified",
+                LocalDateTime.of(2000 + workflowRunNumber, 2, 3, 4, 5, 5, 6),
+                LocalDateTime.of(2000 + workflowRunNumber, 3, 3, 4, 5, 5, 6),
+                new GitHubWorkflowRunActor(
+                        "test-login-" + workflowRunNumber,
+                        "https://example.com/test-avatar-url-" + workflowRunNumber
+                )
+        );
     }
 
     @Test
@@ -401,8 +406,15 @@ public class GitHubClientTest {
             int repoNumber
     ) {
         return new GitHubRepo(
-                "test-repo-description-" + repoNumber, "https://github.com/" + cloneUrlScenarioName + "/test-repo-" + repoNumber + ".git",
-                baseUrl + "/repos/" + scenario.getName() + "/test-repo-" + repoNumber + "/contents/{+path}"
+                "test-repo-" + repoNumber,
+                "test-repo-description-" + repoNumber,
+                "https://github.com/" + cloneUrlScenarioName + "/test-repo-" + repoNumber + ".git",
+                baseUrl + "/repos/" + scenario.getName() + "/test-repo-" + repoNumber + "/contents/{+path}",
+                "test-default-branch-" + repoNumber,
+                new GitHubRepoOwner(
+                        scenario.getName(),
+                        "test-owner-avatar-url-" + repoNumber
+                )
         );
     }
 
@@ -449,8 +461,8 @@ public class GitHubClientTest {
                                                 EnvironmentPluginState.builder()
                                                         .id("github")
                                                         .checks(List.of(
-                                                                createCheckState(1, ComponentStateCheckStatus.OK, checkSuffix),
-                                                                createCheckState(2, ComponentStateCheckStatus.CRITICAL, checkSuffix)
+                                                                createCheckState(1, ComponentStateCheckStatus.OK, "Success", checkSuffix),
+                                                                createCheckState(2, ComponentStateCheckStatus.CRITICAL, "Failure", checkSuffix)
                                                         ))
                                                         .build()
                                         ))
@@ -461,15 +473,21 @@ public class GitHubClientTest {
                 .build();
     }
 
-    private CheckState createCheckState(int checkStateNumber, ComponentStateCheckStatus status, String checkSuffix) {
+    private CheckState createCheckState(
+            int checkStateNumber,
+            ComponentStateCheckStatus status,
+            String statusMessage,
+            String checkSuffix
+    ) {
         return CheckState.builder()
-                .name("test/context-" + checkStateNumber + checkSuffix)
+                .name("Test name " + checkStateNumber + checkSuffix)
+                .description("GitHub Actions Workflow Run")
                 .status(status)
-                .statusMessage("Test description " + checkStateNumber + checkSuffix)
+                .statusMessage(statusMessage)
                 .links(List.of(
                         Link.builder()
-                                .url("https://example.com/test-status-" + checkStateNumber + checkSuffix)
-                                .description("Status")
+                                .url("https://example.com/test-html-url-" + checkStateNumber + checkSuffix)
+                                .description("GitHub Actions Workflow Run")
                                 .build()
                 ))
                 .updateTimestamp(LocalDateTime.now(clock))

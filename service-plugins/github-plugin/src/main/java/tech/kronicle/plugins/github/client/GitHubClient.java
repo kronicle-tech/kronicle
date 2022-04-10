@@ -8,6 +8,7 @@ import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import tech.kronicle.pluginapi.constants.KronicleMetadataFilePaths;
 import tech.kronicle.plugins.github.GitHubPlugin;
+import tech.kronicle.plugins.github.models.api.GitHubGetWorkflowRunsResponse;
 import tech.kronicle.plugins.github.models.api.GitHubWorkflowRun;
 import tech.kronicle.sdk.models.CheckState;
 import tech.kronicle.sdk.models.ComponentState;
@@ -45,6 +46,7 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.function.Function;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import static java.util.Objects.isNull;
 import static java.util.Objects.nonNull;
@@ -138,9 +140,12 @@ public class GitHubClient {
             .addUriVariable("repo", repo.getName())
             .addUriVariable("branch", repo.getDefault_branch())
             .build();
-    List<GitHubWorkflowRun> workflowRuns = getResource(accessToken, expandUriTemplate(uriTemplate, uriVariables),
-            new TypeReference<>() {});
-    if (workflowRuns.isEmpty()) {
+    GitHubGetWorkflowRunsResponse response = getResource(
+            accessToken,
+            expandUriTemplate(uriTemplate, uriVariables),
+            new TypeReference<>() {}
+    );
+    if (response.getWorkflow_runs().isEmpty()) {
       return null;
     }
     return ComponentState.EMPTY
@@ -148,53 +153,89 @@ public class GitHubClient {
                     config.getEnvironmentId(),
                     environment -> environment.withUpdatedPlugin(
                             GitHubPlugin.ID,
-                            plugin -> plugin.withChecks(mapStatuses(workflowRuns, now))
+                            plugin -> plugin.withChecks(mapWorkflowRuns(response.getWorkflow_runs(), now))
                     )
             );
   }
 
-  private List<CheckState> mapStatuses(List<GitHubWorkflowRun> statuses, LocalDateTime now) {
-    return statuses.stream()
-            .map(mapStatus(now))
+  private Stream<GitHubWorkflowRun> getWorkflowRunsForMostRecentCommit(List<GitHubWorkflowRun> workflowRuns) {
+    GitHubWorkflowRun latestWorkflowRun = workflowRuns.get(0);
+    String mostRecentSha = latestWorkflowRun.getHead_sha();
+    return workflowRuns.stream()
+            .filter(it -> Objects.equals(it.getHead_sha(), mostRecentSha));
+  }
+
+  private List<CheckState> mapWorkflowRuns(List<GitHubWorkflowRun> workflowRuns, LocalDateTime now) {
+    return getWorkflowRunsForMostRecentCommit(workflowRuns)
+            .map(mapWorkflowRun(now))
             .collect(toUnmodifiableList());
   }
 
-  private Function<GitHubWorkflowRun, CheckState> mapStatus(LocalDateTime now) {
-    return workflowRun -> CheckState.builder()
-            .status(mapWorkflowRunStatus(workflowRun))
-            .name(workflowRun.getContext())
-            .statusMessage(workflowRun.getDescription())
-            .links(getLinks(workflowRun))
-            .updateTimestamp(now)
-            .build();
+  private Function<GitHubWorkflowRun, CheckState> mapWorkflowRun(LocalDateTime now) {
+    return workflowRun -> {
+      WorkflowRunStatus status = mapWorkflowRunStatus(workflowRun);
+      return CheckState.builder()
+              .status(status.status)
+              .name(workflowRun.getName())
+              .description("GitHub Actions Workflow Run")
+              .statusMessage(status.statusMessage)
+              .links(createWorkflowRunLinks(workflowRun))
+              .updateTimestamp(now)
+              .build();
+    };
   }
 
-  private List<Link> getLinks(GitHubWorkflowRun gitHubWorkflowRun) {
-    if (isNull(gitHubWorkflowRun.getUrl())) {
+  private WorkflowRunStatus mapWorkflowRunStatus(GitHubWorkflowRun workflowRun) {
+    switch (workflowRun.getStatus()) {
+      case "queued":
+        return new WorkflowRunStatus(
+                ComponentStateCheckStatus.PENDING,
+                "Queued"
+        );
+      case "in_progress":
+        return new WorkflowRunStatus(
+                ComponentStateCheckStatus.PENDING,
+                "In progress"
+        );
+      case "completed":
+        switch (workflowRun.getConclusion()) {
+          case "success":
+            return new WorkflowRunStatus(
+                    ComponentStateCheckStatus.OK,
+                    "Success"
+            );
+          case "failure":
+            return new WorkflowRunStatus(
+                    ComponentStateCheckStatus.CRITICAL,
+                    "Failure"
+            );
+          default:
+            log.warn("Unrecognised workflow run conclusion \"{}\"", workflowRun.getConclusion());
+            return new WorkflowRunStatus(
+                    ComponentStateCheckStatus.UNKNOWN,
+                    workflowRun.getConclusion()
+            );
+        }
+      default:
+        log.warn("Unrecognised workflow run status \"{}\"", workflowRun.getStatus());
+        return new WorkflowRunStatus(
+                ComponentStateCheckStatus.UNKNOWN,
+                workflowRun.getStatus()
+        );
+    }
+  }
+
+  private List<Link> createWorkflowRunLinks(GitHubWorkflowRun gitHubWorkflowRun) {
+    if (isNull(gitHubWorkflowRun.getHtml_url())) {
       return List.of();
     }
 
     return List.of(
             Link.builder()
-                    .url(gitHubWorkflowRun.getUrl())
-                    .description("Status")
+                    .url(gitHubWorkflowRun.getHtml_url())
+                    .description("GitHub Actions Workflow Run")
                     .build()
     );
-  }
-
-  private ComponentStateCheckStatus mapWorkflowRunStatus(GitHubWorkflowRun workflowRun) {
-    switch (workflowRun.) {
-      case "error":
-      case "failure":
-        return ComponentStateCheckStatus.CRITICAL;
-      case "pending":
-        return ComponentStateCheckStatus.PENDING;
-      case "success":
-        return ComponentStateCheckStatus.OK;
-      default:
-        log.warn("Unrecognised status state \"{}\"", state);
-        return ComponentStateCheckStatus.UNKNOWN;
-    }
   }
 
   @SneakyThrows
@@ -303,5 +344,12 @@ public class GitHubClient {
       log.warn(exception.getMessage());
       throw exception;
     }
+  }
+
+  @RequiredArgsConstructor
+  private static class WorkflowRunStatus {
+
+    private final ComponentStateCheckStatus status;
+    private final String statusMessage;
   }
 }

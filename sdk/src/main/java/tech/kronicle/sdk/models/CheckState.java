@@ -21,6 +21,7 @@ public class CheckState {
 
     @NotEmpty
     String name;
+    String description;
     @NotNull
     ComponentStateCheckStatus status;
     @NotEmpty
@@ -31,12 +32,14 @@ public class CheckState {
 
     public CheckState(
             String name,
+            String description,
             ComponentStateCheckStatus status,
             String statusMessage,
             List<Link> links,
             LocalDateTime updateTimestamp
     ) {
         this.name = name;
+        this.description = description;
         this.status = status;
         this.statusMessage = statusMessage;
         this.links = createUnmodifiableList(links);

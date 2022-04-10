@@ -11,7 +11,7 @@ public class GitHubWorkflowRun {
   String head_sha;
   String status;
   String conclusion;
-  String workflow_id;
+  Long workflow_id;
   String html_url;
   LocalDateTime created_at;
   LocalDateTime updated_at;

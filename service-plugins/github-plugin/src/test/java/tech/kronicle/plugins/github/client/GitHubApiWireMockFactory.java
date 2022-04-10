@@ -54,8 +54,8 @@ public class GitHubApiWireMockFactory {
                 int repoRequestNumber = requestNumber.getNext();
                 wireMockServer.stubFor(createRepoRootContentsRequest(scenario, repoNumber, repoRequestNumber)
                         .willReturn(createRepoRootContentsResponse(scenario, repoNumber, repoRequestNumber)));
-                wireMockServer.stubFor(createRepoStatusesRequest(scenario, repoNumber, repoRequestNumber)
-                        .willReturn(createRepoStatusesResponse(scenario, repoNumber, repoRequestNumber)));
+                wireMockServer.stubFor(createRepoWorkflowRunsRequest(scenario, repoNumber, repoRequestNumber)
+                        .willReturn(createRepoWorkflowRunsResponse(scenario, repoNumber, repoRequestNumber)));
             });
         }
     }
@@ -134,9 +134,11 @@ public class GitHubApiWireMockFactory {
         return builder;
     }
 
-    private MappingBuilder createRepoStatusesRequest(Scenario scenario, int repoNumber, int requestNumber) {
+    private MappingBuilder createRepoWorkflowRunsRequest(Scenario scenario, int repoNumber, int requestNumber) {
         MappingBuilder builder = get(urlPathEqualTo(
-                "/repos/" + scenario.name + "/test-repo-" + repoNumber + "/statuses/"));
+                "/repos/" + scenario.name + "/test-repo-" + repoNumber + "/actions/runs"
+        ))
+                .withQueryParam("branch", equalTo("test-default-branch-" + repoNumber));
         addBasicAuthIfNeeded(scenario, builder);
         if (scenario.eTag && scenario.repo2NotModified && repoNumber == 2) {
             builder.withHeader("If-None-Match", equalTo(createRequestETag(requestNumber)));
@@ -144,14 +146,14 @@ public class GitHubApiWireMockFactory {
         return builder;
     }
 
-    private ResponseDefinitionBuilder createRepoStatusesResponse(Scenario scenario, int repoNumber, int requestNumber) {
+    private ResponseDefinitionBuilder createRepoWorkflowRunsResponse(Scenario scenario, int repoNumber, int requestNumber) {
         ResponseDefinitionBuilder builder = aResponse();
         if (scenario.eTag && scenario.repo2NotModified && repoNumber == 2) {
             builder.withStatus(304);
         } else {
             builder.withStatus(200)
                     .withHeader("Content-Type", "application/json")
-                    .withBody(readTestFile("github-api-responses/repo-statuses.json"));
+                    .withBody(readTestFile("github-api-responses/repo-workflow-runs.json"));
         }
         builder.withHeader("ETag", createResponseETag(scenario, requestNumber));
         if (scenario.rateLimitResponseHeaders) {

@@ -1,30 +1,50 @@
 [
   {
     "test-unknown-field": "This field should be ignored by Jackson when deserialised, if Jackson is configured correctly",
+    "name": "test-repo-1",
     "description": "test-repo-description-1",
-    "contents_url": "{{baseUrl}}/repos/{{username}}/test-repo-1/contents/{+path}",
     "clone_url": "https://github.com/{{username}}/test-repo-1.git",
-    "statuses_url": "{{baseUrl}}/repos/{{username}}/test-repo-1/statuses/{sha}"
+    "contents_url": "{{baseUrl}}/repos/{{username}}/test-repo-1/contents/{+path}",
+    "default_branch": "test-default-branch-1",
+    "owner": {
+      "login": "{{username}}",
+      "avatar_url": "test-owner-avatar-url-1"
+    }
   },
   {
     "test-unknown-field": "This field should be ignored by Jackson when deserialised, if Jackson is configured correctly",
+    "name": "test-repo-2",
     "description": "test-repo-description-2",
-    "contents_url": "{{baseUrl}}/repos/{{username}}/test-repo-2/contents/{+path}",
     "clone_url": "https://github.com/{{username}}/test-repo-2.git",
-    "statuses_url": "{{baseUrl}}/repos/{{username}}/test-repo-2/statuses/{sha}"
+    "contents_url": "{{baseUrl}}/repos/{{username}}/test-repo-2/contents/{+path}",
+    "default_branch": "test-default-branch-2",
+    "owner": {
+      "login": "{{username}}",
+      "avatar_url": "test-owner-avatar-url-2"
+    }
   },
   {
     "test-unknown-field": "This field should be ignored by Jackson when deserialised, if Jackson is configured correctly",
+    "name": "test-repo-3",
     "description": "test-repo-description-3",
-    "contents_url": "{{baseUrl}}/repos/{{username}}/test-repo-3/contents/{+path}",
     "clone_url": "https://github.com/{{username}}/test-repo-3.git",
-    "statuses_url": "{{baseUrl}}/repos/{{username}}/test-repo-3/statuses/{sha}"
+    "contents_url": "{{baseUrl}}/repos/{{username}}/test-repo-3/contents/{+path}",
+    "default_branch": "test-default-branch-3",
+    "owner": {
+      "login": "{{username}}",
+      "avatar_url": "test-owner-avatar-url-3"
+    }
   },
   {
     "test-unknown-field": "This field should be ignored by Jackson when deserialised, if Jackson is configured correctly",
+    "name": "test-repo-4",
     "description": "test-repo-description-4",
-    "contents_url": "{{baseUrl}}/repos/{{username}}/test-repo-4/contents/{+path}",
     "clone_url": "https://github.com/{{username}}/test-repo-4.git",
-    "statuses_url": "{{baseUrl}}/repos/{{username}}/test-repo-4/statuses/{sha}"
+    "contents_url": "{{baseUrl}}/repos/{{username}}/test-repo-4/contents/{+path}",
+    "default_branch": "test-default-branch-4",
+    "owner": {
+      "login": "{{username}}",
+      "avatar_url": "test-owner-avatar-url-4"
+    }
   }
 ]
