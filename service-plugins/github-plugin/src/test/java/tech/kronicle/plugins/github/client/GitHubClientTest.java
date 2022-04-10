@@ -17,7 +17,7 @@ import tech.kronicle.plugins.github.guice.GuiceModule;
 import tech.kronicle.plugins.github.models.ApiResponseCacheEntry;
 import tech.kronicle.plugins.github.models.api.GitHubContentEntry;
 import tech.kronicle.plugins.github.models.api.GitHubRepo;
-import tech.kronicle.plugins.github.models.api.GitHubStatus;
+import tech.kronicle.plugins.github.models.api.GitHubWorkflowRun;
 import tech.kronicle.plugins.github.services.ApiResponseCache;
 import tech.kronicle.sdk.models.CheckState;
 import tech.kronicle.sdk.models.ComponentState;
@@ -263,8 +263,8 @@ public class GitHubClientTest {
         wireMockServer = gitHubApiWireMockFactory.create(scenario);
         underTest = createUnderTest();
         ApiResponseCacheEntry<List<GitHubContentEntry>> contentsCacheEntry = new ApiResponseCacheEntry<>("test-etag-3", List.of(new GitHubContentEntry("kronicle.yaml")));
-        ApiResponseCacheEntry<List<GitHubStatus>> statusesCacheEntry = new ApiResponseCacheEntry<>("test-etag-3", List.of(
-                new GitHubStatus(
+        ApiResponseCacheEntry<List<GitHubWorkflowRun>> statusesCacheEntry = new ApiResponseCacheEntry<>("test-etag-3", List.of(
+                new GitHubWorkflowRun(
                         "https://example.com/test-status-1-modified",
                         "https://example.com/status-1-avatar.gif",
                         "success",
@@ -273,7 +273,7 @@ public class GitHubClientTest {
                         LocalDateTime.of(2001, 2, 3, 4, 5, 5, 6),
                         LocalDateTime.of(2002, 2, 3, 4, 5, 5, 6)
                 ),
-                new GitHubStatus(
+                new GitHubWorkflowRun(
                         "https://example.com/test-status-2-modified",
                         "https://example.com/status-2-avatar.gif",
                         "error",
@@ -401,10 +401,8 @@ public class GitHubClientTest {
             int repoNumber
     ) {
         return new GitHubRepo(
-                "https://github.com/" + cloneUrlScenarioName + "/test-repo-" + repoNumber + ".git",
-                "test-repo-description-" + repoNumber,
-                baseUrl + "/repos/" + scenario.getName() + "/test-repo-" + repoNumber + "/contents/{+path}",
-                baseUrl + "/repos/" + scenario.getName() + "/test-repo-" + repoNumber + "/statuses/{sha}"
+                "test-repo-description-" + repoNumber, "https://github.com/" + cloneUrlScenarioName + "/test-repo-" + repoNumber + ".git",
+                baseUrl + "/repos/" + scenario.getName() + "/test-repo-" + repoNumber + "/contents/{+path}"
         );
     }
 

@@ -8,5 +8,7 @@ public class GitHubRepo {
   String clone_url;
   String description;
   String contents_url;
-  String statuses_url;
+  String name;
+  GitHubRepoOwner owner;
+  String default_branch;
 }

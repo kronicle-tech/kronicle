@@ -8,7 +8,7 @@ import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import tech.kronicle.pluginapi.constants.KronicleMetadataFilePaths;
 import tech.kronicle.plugins.github.GitHubPlugin;
-import tech.kronicle.plugins.github.models.api.GitHubStatus;
+import tech.kronicle.plugins.github.models.api.GitHubWorkflowRun;
 import tech.kronicle.sdk.models.CheckState;
 import tech.kronicle.sdk.models.ComponentState;
 import tech.kronicle.sdk.models.ComponentStateCheckStatus;
@@ -132,13 +132,15 @@ public class GitHubClient {
 
   private ComponentState getState(GitHubAccessTokenConfig accessToken, GitHubRepo repo) {
     LocalDateTime now = LocalDateTime.now(clock);
-    String uriTemplate = repo.getStatuses_url();
+    String uriTemplate = config.getApiBaseUrl() + GitHubApiPaths.REPO_ACTIONS_RUNS;
     Map<String, String> uriVariables = UriVariablesBuilder.builder()
-            .addUriVariable("sha", "")
+            .addUriVariable("owner", repo.getOwner().getLogin())
+            .addUriVariable("repo", repo.getName())
+            .addUriVariable("branch", repo.getDefault_branch())
             .build();
-    List<GitHubStatus> statuses = getResource(accessToken, expandUriTemplate(uriTemplate, uriVariables),
+    List<GitHubWorkflowRun> workflowRuns = getResource(accessToken, expandUriTemplate(uriTemplate, uriVariables),
             new TypeReference<>() {});
-    if (statuses.isEmpty()) {
+    if (workflowRuns.isEmpty()) {
       return null;
     }
     return ComponentState.EMPTY
@@ -146,42 +148,42 @@ public class GitHubClient {
                     config.getEnvironmentId(),
                     environment -> environment.withUpdatedPlugin(
                             GitHubPlugin.ID,
-                            plugin -> plugin.withChecks(mapStatuses(statuses, now))
+                            plugin -> plugin.withChecks(mapStatuses(workflowRuns, now))
                     )
             );
   }
 
-  private List<CheckState> mapStatuses(List<GitHubStatus> statuses, LocalDateTime now) {
+  private List<CheckState> mapStatuses(List<GitHubWorkflowRun> statuses, LocalDateTime now) {
     return statuses.stream()
             .map(mapStatus(now))
             .collect(toUnmodifiableList());
   }
 
-  private Function<GitHubStatus, CheckState> mapStatus(LocalDateTime now) {
-    return gitHubStatus -> CheckState.builder()
-            .status(mapStatusState(gitHubStatus.getState()))
-            .name(gitHubStatus.getContext())
-            .statusMessage(gitHubStatus.getDescription())
-            .links(getLinks(gitHubStatus))
+  private Function<GitHubWorkflowRun, CheckState> mapStatus(LocalDateTime now) {
+    return workflowRun -> CheckState.builder()
+            .status(mapWorkflowRunStatus(workflowRun))
+            .name(workflowRun.getContext())
+            .statusMessage(workflowRun.getDescription())
+            .links(getLinks(workflowRun))
             .updateTimestamp(now)
             .build();
   }
 
-  private List<Link> getLinks(GitHubStatus gitHubStatus) {
-    if (isNull(gitHubStatus.getUrl())) {
+  private List<Link> getLinks(GitHubWorkflowRun gitHubWorkflowRun) {
+    if (isNull(gitHubWorkflowRun.getUrl())) {
       return List.of();
     }
 
     return List.of(
             Link.builder()
-                    .url(gitHubStatus.getUrl())
+                    .url(gitHubWorkflowRun.getUrl())
                     .description("Status")
                     .build()
     );
   }
 
-  private ComponentStateCheckStatus mapStatusState(String state) {
-    switch (state) {
+  private ComponentStateCheckStatus mapWorkflowRunStatus(GitHubWorkflowRun workflowRun) {
+    switch (workflowRun.) {
       case "error":
       case "failure":
         return ComponentStateCheckStatus.CRITICAL;
