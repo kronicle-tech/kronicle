@@ -22,6 +22,8 @@ import static tech.kronicle.sdk.utils.ListUtils.createUnmodifiableList;
 @Jacksonized
 public class ComponentState {
 
+    public static final ComponentState EMPTY = ComponentState.builder().build();
+
     List<@NotNull @Valid EnvironmentState> environments;
 
     public ComponentState(List<@NotNull @Valid EnvironmentState> environments) {

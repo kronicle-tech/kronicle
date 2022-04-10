@@ -20,6 +20,7 @@ public class Repo implements ObjectWithReference {
 
     @NotBlank
     String url;
+    String description;
     @NotNull
     Boolean hasComponentMetadataFile;
     @Valid

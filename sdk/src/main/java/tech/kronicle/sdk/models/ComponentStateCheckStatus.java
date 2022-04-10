@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 public enum ComponentStateCheckStatus {
 
     OK,
+    PENDING,
     WARNING,
     CRITICAL,
     UNKNOWN;

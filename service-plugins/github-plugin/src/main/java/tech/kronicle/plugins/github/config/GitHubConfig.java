@@ -17,6 +17,8 @@ public class GitHubConfig {
   List<GitHubAccessTokenConfig> accessTokens;
   List<GitHubUserConfig> users;
   List<GitHubOrganizationConfig> organizations;
+  @NotEmpty
+  String environmentId;
   @NotNull
   Duration timeout;
 }

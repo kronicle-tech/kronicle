@@ -7,6 +7,11 @@ import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import tech.kronicle.pluginapi.constants.KronicleMetadataFilePaths;
+import tech.kronicle.plugins.github.GitHubPlugin;
+import tech.kronicle.plugins.github.models.api.GitHubStatus;
+import tech.kronicle.sdk.models.CheckState;
+import tech.kronicle.sdk.models.ComponentState;
+import tech.kronicle.sdk.models.ComponentStateCheckStatus;
 import tech.kronicle.sdk.models.Repo;
 import tech.kronicle.plugins.github.config.GitHubAccessTokenConfig;
 import tech.kronicle.plugins.github.config.GitHubConfig;
@@ -28,7 +33,9 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.nio.charset.StandardCharsets;
+import java.time.Clock;
 import java.time.Instant;
+import java.time.LocalDateTime;
 import java.time.ZoneOffset;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
@@ -40,6 +47,7 @@ import java.util.stream.Collectors;
 
 import static java.util.Objects.isNull;
 import static java.util.Objects.nonNull;
+import static java.util.stream.Collectors.toUnmodifiableList;
 import static tech.kronicle.utils.BasicAuthUtils.basicAuth;
 import static tech.kronicle.utils.HttpClientFactory.createHttpRequestBuilder;
 import static tech.kronicle.utils.UriTemplateUtils.expandUriTemplate;
@@ -58,6 +66,7 @@ public class GitHubClient {
   private final ObjectMapper objectMapper;
   private final GitHubConfig config;
   private final ApiResponseCache cache;
+  private final Clock clock;
 
   public List<Repo> getRepos(GitHubAccessTokenConfig accessToken) {
     return getRepos(accessToken, getAuthenticatedUserReposUri());
@@ -98,7 +107,12 @@ public class GitHubClient {
   }
 
   private Function<GitHubRepo, Repo> addHasComponentMetadataFile(GitHubAccessTokenConfig accessToken) {
-    return gitHubRepo -> new Repo(gitHubRepo.getClone_url(), hasComponentMetadataFile(accessToken, gitHubRepo));
+    return gitHubRepo -> Repo.builder()
+            .url(gitHubRepo.getClone_url())
+            .description(gitHubRepo.getDescription())
+            .hasComponentMetadataFile(hasComponentMetadataFile(accessToken, gitHubRepo))
+            .state(getState(accessToken, gitHubRepo))
+            .build();
   }
 
   private boolean hasComponentMetadataFile(GitHubAccessTokenConfig accessToken, GitHubRepo repo) {
@@ -113,6 +127,57 @@ public class GitHubClient {
     }
     return contentEntries.stream()
             .anyMatch(contentEntry -> KronicleMetadataFilePaths.ALL.contains(contentEntry.getName()));
+  }
+
+  private ComponentState getState(GitHubAccessTokenConfig accessToken, GitHubRepo repo) {
+    LocalDateTime now = LocalDateTime.now(clock);
+    String uriTemplate = repo.getStatuses_url();
+    Map<String, String> uriVariables = UriVariablesBuilder.builder()
+            .addUriVariable("{sha}", "")
+            .build();
+    List<GitHubStatus> statuses = getResource(accessToken, expandUriTemplate(uriTemplate, uriVariables),
+            new TypeReference<>() {});
+    if (statuses.isEmpty()) {
+      return null;
+    }
+    return ComponentState.EMPTY
+            .withUpdatedEnvironment(
+                    config.getEnvironmentId(),
+                    environment -> environment.withUpdatedPlugin(
+                            GitHubPlugin.ID,
+                            plugin -> plugin.withChecks(mapStatuses(statuses, now))
+                    )
+            );
+  }
+
+  private List<CheckState> mapStatuses(List<GitHubStatus> statuses, LocalDateTime now) {
+    return statuses.stream()
+            .map(mapStatus(now))
+            .collect(toUnmodifiableList());
+  }
+
+  private Function<GitHubStatus, CheckState> mapStatus(LocalDateTime now) {
+    return gitHubStatus -> CheckState.builder()
+            .status(mapStatusState(gitHubStatus.getState()))
+            .name(gitHubStatus.getContext())
+            .statusMessage(gitHubStatus.getDescription())
+            .updateTimestamp(now)
+            .build();
+  }
+
+  private ComponentStateCheckStatus mapStatusState(String state) {
+    switch (state) {
+      case "error":
+      case "failure":
+        return ComponentStateCheckStatus.CRITICAL;
+      case "pending":
+        return ComponentStateCheckStatus.PENDING;
+      case "success":
+        return ComponentStateCheckStatus.OK;
+      default:
+        log.warn("Unrecognised status state \"{}\"", state);
+        return ComponentStateCheckStatus.UNKNOWN;
+    }
   }
 
   @SneakyThrows

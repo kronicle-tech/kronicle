@@ -33,19 +33,19 @@ public class GitHubRepoFinder extends RepoFinder {
   @Override
   public List<Repo> find(Void ignored) {
     return Stream.of(
-            findApiRepos(config::getAccessTokens, client::getRepos, "personal access tokens"),
-            findApiRepos(config::getUsers, client::getRepos, "users"),
-            findApiRepos(config::getOrganizations, client::getRepos, "organizations"))
+            findRepos(config::getAccessTokens, client::getRepos, "personal access tokens"),
+            findRepos(config::getUsers, client::getRepos, "users"),
+            findRepos(config::getOrganizations, client::getRepos, "organizations"))
             .flatMap(Collection::stream)
             .distinct()
             .collect(Collectors.toList());
   }
 
-  public <T> List<Repo> findApiRepos(Supplier<List<T>> configItemSupplier, Function<T, List<Repo>> repoGetter, String pluralConfigItemTypeName) {
+  public <T> List<Repo> findRepos(Supplier<List<T>> configItemSupplier, Function<T, List<Repo>> repoGetter, String pluralConfigItemTypeName) {
     List<T> configItems = getConfigItems(configItemSupplier);
     log.info("Found {} GitHub " + pluralConfigItemTypeName, configItems.size());
     List<Repo> repos = getRepos(configItems, repoGetter);
-    log.info("Found {} API repos via GitHub " + pluralConfigItemTypeName, repos.size());
+    log.info("Found {} repos via GitHub " + pluralConfigItemTypeName, repos.size());
     return repos;
   }
 

@@ -6,5 +6,7 @@ import lombok.Value;
 public class GitHubRepo {
 
   String clone_url;
+  String description;
   String contents_url;
+  String statuses_url;
 }
