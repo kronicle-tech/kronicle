@@ -16,13 +16,22 @@ import static tech.kronicle.sdk.utils.ListUtils.createUnmodifiableList;
 @Jacksonized
 public class ComponentMetadata implements ObjectWithReference {
 
+    List<@Valid Repo> repos;
     List<@Valid ComponentType> componentTypes;
     List<@Valid Platform> platforms;
     List<@Valid Area> areas;
     List<@Valid Team> teams;
     List<@Valid Component> components;
 
-    public ComponentMetadata(List<ComponentType> componentTypes, List<Platform> platforms, List<Area> areas, List<Team> teams, List<Component> components) {
+    public ComponentMetadata(
+            List<Repo> repos,
+            List<ComponentType> componentTypes,
+            List<Platform> platforms,
+            List<Area> areas,
+            List<Team> teams,
+            List<Component> components
+    ) {
+        this.repos = createUnmodifiableList(repos);
         this.componentTypes = createUnmodifiableList(componentTypes);
         this.platforms = createUnmodifiableList(platforms);
         this.areas = createUnmodifiableList(areas);

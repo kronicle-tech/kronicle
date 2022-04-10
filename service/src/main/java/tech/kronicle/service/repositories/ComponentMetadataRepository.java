@@ -38,6 +38,7 @@ public class ComponentMetadataRepository {
     public ComponentMetadata getComponentMetadata() {
         List<ComponentMetadata> componentMetadataList = getComponentMetadataList();
         return new ComponentMetadata(
+                getItems(componentMetadataList, ComponentMetadata::getRepos),
                 getItems(componentMetadataList, ComponentMetadata::getComponentTypes),
                 getItems(componentMetadataList, ComponentMetadata::getPlatforms),
                 getItems(componentMetadataList, ComponentMetadata::getAreas),

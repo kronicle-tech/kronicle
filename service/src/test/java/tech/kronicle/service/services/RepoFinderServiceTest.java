@@ -97,7 +97,10 @@ public class RepoFinderServiceTest {
     }
 
     private static Repo createTestRepo(int repoNumber) {
-        return new Repo("https://example.com/test-repo-" + repoNumber, isOddNumber(repoNumber));
+        return Repo.builder()
+                .url("https://example.com/test-repo-" + repoNumber)
+                .hasComponentMetadataFile(isOddNumber(repoNumber))
+                .build();
     }
 
     private static Boolean isOddNumber(int value) {
