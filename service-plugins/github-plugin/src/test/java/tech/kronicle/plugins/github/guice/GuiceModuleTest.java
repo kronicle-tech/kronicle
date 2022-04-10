@@ -21,7 +21,16 @@ public class GuiceModuleTest {
         AbstractModule configModule = new AbstractModule() {
             @Override
             protected void configure() {
-                bind(GitHubConfig.class).toInstance(new GitHubConfig(null, null, null, null, Duration.ofSeconds(60)));
+                bind(GitHubConfig.class).toInstance(
+                        new GitHubConfig(
+                                null,
+                                null,
+                                null,
+                                null,
+                                null,
+                                Duration.ofSeconds(60)
+                        )
+                );
             }
         };
         Injector guiceInjector = Guice.createInjector(underTest, configModule);

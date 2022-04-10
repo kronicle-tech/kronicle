@@ -12,6 +12,7 @@ import tech.kronicle.plugins.github.models.api.GitHubStatus;
 import tech.kronicle.sdk.models.CheckState;
 import tech.kronicle.sdk.models.ComponentState;
 import tech.kronicle.sdk.models.ComponentStateCheckStatus;
+import tech.kronicle.sdk.models.Link;
 import tech.kronicle.sdk.models.Repo;
 import tech.kronicle.plugins.github.config.GitHubAccessTokenConfig;
 import tech.kronicle.plugins.github.config.GitHubConfig;
@@ -98,7 +99,7 @@ public class GitHubClient {
       return List.of();
     }
     return repos.stream()
-            .map(addHasComponentMetadataFile(accessToken))
+            .map(addDataToRepo(accessToken))
             .collect(Collectors.toList());
   }
 
@@ -106,7 +107,7 @@ public class GitHubClient {
     return getResource(accessToken, uri, new TypeReference<>() {});
   }
 
-  private Function<GitHubRepo, Repo> addHasComponentMetadataFile(GitHubAccessTokenConfig accessToken) {
+  private Function<GitHubRepo, Repo> addDataToRepo(GitHubAccessTokenConfig accessToken) {
     return gitHubRepo -> Repo.builder()
             .url(gitHubRepo.getClone_url())
             .description(gitHubRepo.getDescription())
@@ -133,7 +134,7 @@ public class GitHubClient {
     LocalDateTime now = LocalDateTime.now(clock);
     String uriTemplate = repo.getStatuses_url();
     Map<String, String> uriVariables = UriVariablesBuilder.builder()
-            .addUriVariable("{sha}", "")
+            .addUriVariable("sha", "")
             .build();
     List<GitHubStatus> statuses = getResource(accessToken, expandUriTemplate(uriTemplate, uriVariables),
             new TypeReference<>() {});
@@ -161,8 +162,22 @@ public class GitHubClient {
             .status(mapStatusState(gitHubStatus.getState()))
             .name(gitHubStatus.getContext())
             .statusMessage(gitHubStatus.getDescription())
+            .links(getLinks(gitHubStatus))
             .updateTimestamp(now)
             .build();
+  }
+
+  private List<Link> getLinks(GitHubStatus gitHubStatus) {
+    if (isNull(gitHubStatus.getUrl())) {
+      return List.of();
+    }
+
+    return List.of(
+            Link.builder()
+                    .url(gitHubStatus.getUrl())
+                    .description("Status")
+                    .build()
+    );
   }
 
   private ComponentStateCheckStatus mapStatusState(String state) {

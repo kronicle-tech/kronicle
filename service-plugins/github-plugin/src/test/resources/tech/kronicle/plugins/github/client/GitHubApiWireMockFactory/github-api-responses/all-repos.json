@@ -1,22 +1,30 @@
 [
   {
     "test-unknown-field": "This field should be ignored by Jackson when deserialised, if Jackson is configured correctly",
+    "description": "test-repo-description-1",
     "contents_url": "{{baseUrl}}/repos/{{username}}/test-repo-1/contents/{+path}",
-    "clone_url": "https://github.com/{{username}}/test-repo-1.git"
+    "clone_url": "https://github.com/{{username}}/test-repo-1.git",
+    "statuses_url": "{{baseUrl}}/repos/{{username}}/test-repo-1/statuses/{sha}"
   },
   {
     "test-unknown-field": "This field should be ignored by Jackson when deserialised, if Jackson is configured correctly",
+    "description": "test-repo-description-2",
     "contents_url": "{{baseUrl}}/repos/{{username}}/test-repo-2/contents/{+path}",
-    "clone_url": "https://github.com/{{username}}/test-repo-2.git"
+    "clone_url": "https://github.com/{{username}}/test-repo-2.git",
+    "statuses_url": "{{baseUrl}}/repos/{{username}}/test-repo-2/statuses/{sha}"
   },
   {
     "test-unknown-field": "This field should be ignored by Jackson when deserialised, if Jackson is configured correctly",
+    "description": "test-repo-description-3",
     "contents_url": "{{baseUrl}}/repos/{{username}}/test-repo-3/contents/{+path}",
-    "clone_url": "https://github.com/{{username}}/test-repo-3.git"
+    "clone_url": "https://github.com/{{username}}/test-repo-3.git",
+    "statuses_url": "{{baseUrl}}/repos/{{username}}/test-repo-3/statuses/{sha}"
   },
   {
     "test-unknown-field": "This field should be ignored by Jackson when deserialised, if Jackson is configured correctly",
+    "description": "test-repo-description-4",
     "contents_url": "{{baseUrl}}/repos/{{username}}/test-repo-4/contents/{+path}",
-    "clone_url": "https://github.com/{{username}}/test-repo-4.git"
+    "clone_url": "https://github.com/{{username}}/test-repo-4.git",
+    "statuses_url": "{{baseUrl}}/repos/{{username}}/test-repo-4/statuses/{sha}"
   }
 ]
