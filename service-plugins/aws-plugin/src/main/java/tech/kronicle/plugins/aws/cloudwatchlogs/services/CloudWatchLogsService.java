@@ -15,9 +15,9 @@ import tech.kronicle.plugins.aws.resourcegroupstaggingapi.models.ResourceGroupsT
 import tech.kronicle.plugins.aws.resourcegroupstaggingapi.services.ResourceFetcher;
 import tech.kronicle.sdk.models.Alias;
 import tech.kronicle.sdk.models.Component;
-import tech.kronicle.sdk.models.ComponentStateLogLevel;
-import tech.kronicle.sdk.models.ComponentStateLogMessage;
-import tech.kronicle.sdk.models.ComponentStateLogSummary;
+import tech.kronicle.sdk.models.LogLevelState;
+import tech.kronicle.sdk.models.LogMessageState;
+import tech.kronicle.sdk.models.LogSummaryState;
 
 import javax.inject.Inject;
 import java.time.Clock;
@@ -96,14 +96,14 @@ public class CloudWatchLogsService {
     }
 
     @SneakyThrows
-    public List<Map.Entry<AwsProfileAndRegion, List<ComponentStateLogSummary>>> getLogSummariesForComponent(Component component) {
+    public List<Map.Entry<AwsProfileAndRegion, List<LogSummaryState>>> getLogSummariesForComponent(Component component) {
         return processProfilesToMapEntryList(
                 config.getProfiles(),
                 getLogSummariesProfileAndRegionAndComponent(component)
         );
     }
 
-    private Function<AwsProfileAndRegion, List<ComponentStateLogSummary>> getLogSummariesProfileAndRegionAndComponent(
+    private Function<AwsProfileAndRegion, List<LogSummaryState>> getLogSummariesProfileAndRegionAndComponent(
             Component component
     ) {
         return profileAndRegion -> {
@@ -119,7 +119,7 @@ public class CloudWatchLogsService {
                     String comparisonName2,
                     Duration offset2
             ) -> {
-                ComponentStateLogSummary logSummary = getLogSummary(
+                LogSummaryState logSummary = getLogSummary(
                         profileAndRegion,
                         logGroupNames,
                         name,
@@ -167,7 +167,7 @@ public class CloudWatchLogsService {
         };
     }
 
-    private ComponentStateLogSummary getLogSummary(
+    private LogSummaryState getLogSummary(
             AwsProfileAndRegion profileAndRegion,
             List<String> logGroupNames,
             String name,
@@ -177,7 +177,7 @@ public class CloudWatchLogsService {
         ZonedDateTime now = ZonedDateTime.now(clock);
         ZonedDateTime endTime = now.minus(offset);
         ZonedDateTime startTime = endTime.minus(duration);
-        List<ComponentStateLogLevel> levels = getLevels(
+        List<LogLevelState> levels = getLevels(
                 profileAndRegion,
                 logGroupNames,
                 startTime.toInstant(),
@@ -186,7 +186,7 @@ public class CloudWatchLogsService {
         if (levels.isEmpty()) {
             return null;
         }
-        return ComponentStateLogSummary.builder()
+        return LogSummaryState.builder()
                 .name(name)
                 .levels(levels)
                 .startTimestamp(startTime.toLocalDateTime())
@@ -195,13 +195,13 @@ public class CloudWatchLogsService {
                 .build();
     }
 
-    private List<ComponentStateLogLevel> getLevels(
+    private List<LogLevelState> getLevels(
             AwsProfileAndRegion profileAndRegion,
             List<String> logGroupNames,
             Instant startTime,
             Instant endTime
     ) {
-        List<ComponentStateLogLevel> levels = mapMessageCountResults(
+        List<LogLevelState> levels = mapMessageCountResults(
                 executeMessageCountQuery(
                         profileAndRegion,
                         logGroupNames,
@@ -242,7 +242,7 @@ public class CloudWatchLogsService {
     private CloudWatchLogsQueryResults executeTopMessageQuery(
             AwsProfileAndRegion profileAndRegion,
             List<String> logGroupNames,
-            ComponentStateLogLevel level,
+            LogLevelState level,
             Instant startTime,
             Instant endTime
     ) {
@@ -316,7 +316,7 @@ public class CloudWatchLogsService {
         });
     }
 
-    private List<ComponentStateLogLevel> mapMessageCountResults(
+    private List<LogLevelState> mapMessageCountResults(
             CloudWatchLogsQueryResults results
     ) {
         return results.getResults().stream()
@@ -324,21 +324,21 @@ public class CloudWatchLogsService {
                 .collect(toList());
     }
 
-    private ComponentStateLogLevel mapMessageCountResult(CloudWatchLogsQueryResult result) {
-        return ComponentStateLogLevel.builder()
+    private LogLevelState mapMessageCountResult(CloudWatchLogsQueryResult result) {
+        return LogLevelState.builder()
                 .level(getResultFieldValue(result, "level"))
                 .count(Long.parseLong(getResultFieldValue(result, "message_count")))
                 .build();
     }
 
-    private List<ComponentStateLogMessage> mapTopMessageResults(CloudWatchLogsQueryResults results) {
+    private List<LogMessageState> mapTopMessageResults(CloudWatchLogsQueryResults results) {
         return results.getResults().stream()
                 .map(this::mapTopMessageResult)
                 .collect(toList());
     }
 
-    private ComponentStateLogMessage mapTopMessageResult(CloudWatchLogsQueryResult result) {
-        return ComponentStateLogMessage.builder()
+    private LogMessageState mapTopMessageResult(CloudWatchLogsQueryResult result) {
+        return LogMessageState.builder()
                 .message(getResultFieldValue(result, "message"))
                 .count(Long.parseLong(getResultFieldValue(result, "message_count")))
                 .build();
@@ -352,7 +352,7 @@ public class CloudWatchLogsService {
                 .orElse(null);
     }
 
-    private List<ComponentStateLogSummary> filterNotNull(ComponentStateLogSummary... values) {
+    private List<LogSummaryState> filterNotNull(LogSummaryState... values) {
         return Stream.of(values)
                 .filter(Objects::nonNull)
                 .collect(toUnmodifiableList());
@@ -361,7 +361,7 @@ public class CloudWatchLogsService {
     @FunctionalInterface
     private interface GetLogSummary {
 
-        ComponentStateLogSummary apply(
+        LogSummaryState apply(
                 String name,
                 Duration duration,
                 String comparisonName1,

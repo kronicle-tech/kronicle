@@ -23,32 +23,32 @@ import static tech.kronicle.sdk.utils.ListUtils.createUnmodifiableList;
 @With
 @Builder(toBuilder = true)
 @Jacksonized
-public class ComponentStateEnvironment {
+public class EnvironmentState {
     
     @NotEmpty
     @Pattern(regexp = PatternStrings.ID)
     String id;
-    List<@NotNull @Valid ComponentStateEnvironmentPlugin> plugins;
+    List<@NotNull @Valid EnvironmentPluginState> plugins;
 
-    public ComponentStateEnvironment(String id, List<ComponentStateEnvironmentPlugin> plugins) {
+    public EnvironmentState(String id, List<EnvironmentPluginState> plugins) {
         this.id = id;
         this.plugins = createUnmodifiableList(plugins);
     }
 
-    public ComponentStateEnvironment withUpdatedPlugin(
+    public EnvironmentState withUpdatedPlugin(
             String pluginId,
-            UnaryOperator<ComponentStateEnvironmentPlugin> action
+            UnaryOperator<EnvironmentPluginState> action
     ) {
-        List<ComponentStateEnvironmentPlugin> newPlugins = new ArrayList<>(plugins);
+        List<EnvironmentPluginState> newPlugins = new ArrayList<>(plugins);
         OptionalInt pluginIndex = IntStream.range(0, newPlugins.size())
                 .filter(it -> Objects.equals(newPlugins.get(it).getId(), pluginId))
                 .findFirst();
 
-        ComponentStateEnvironmentPlugin plugin;
+        EnvironmentPluginState plugin;
         if (pluginIndex.isPresent()) {
             plugin = newPlugins.get(pluginIndex.getAsInt());
         } else {
-            plugin = ComponentStateEnvironmentPlugin.builder()
+            plugin = EnvironmentPluginState.builder()
                     .id(pluginId)
                     .build();
         }

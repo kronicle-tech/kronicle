@@ -22,26 +22,26 @@ import static tech.kronicle.sdk.utils.ListUtils.createUnmodifiableList;
 @Jacksonized
 public class ComponentState {
 
-    List<@NotNull @Valid ComponentStateEnvironment> environments;
+    List<@NotNull @Valid EnvironmentState> environments;
 
-    public ComponentState(List<@NotNull @Valid ComponentStateEnvironment> environments) {
+    public ComponentState(List<@NotNull @Valid EnvironmentState> environments) {
         this.environments = createUnmodifiableList(environments);
     }
 
     public ComponentState withUpdatedEnvironment(
             String environmentId,
-            UnaryOperator<ComponentStateEnvironment> action
+            UnaryOperator<EnvironmentState> action
     ) {
-        List<ComponentStateEnvironment> newEnvironments = new ArrayList<>(environments);
+        List<EnvironmentState> newEnvironments = new ArrayList<>(environments);
         OptionalInt environmentIndex = IntStream.range(0, newEnvironments.size())
                 .filter(it -> Objects.equals(newEnvironments.get(it).getId(), environmentId))
                 .findFirst();
 
-        ComponentStateEnvironment environment;
+        EnvironmentState environment;
         if (environmentIndex.isPresent()) {
             environment = newEnvironments.get(environmentIndex.getAsInt());
         } else {
-            environment = ComponentStateEnvironment.builder()
+            environment = EnvironmentState.builder()
                     .id(environmentId)
                     .build();
         }

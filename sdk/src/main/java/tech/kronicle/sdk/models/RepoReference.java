@@ -1,4 +1,4 @@
-package tech.kronicle.pluginapi.finders.models;
+package tech.kronicle.sdk.models;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -6,16 +6,18 @@ import lombok.Value;
 import lombok.With;
 
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
 
 @Value
 @AllArgsConstructor
 @With
 @Builder(toBuilder = true)
-public class ApiRepo {
+public class RepoReference implements ObjectWithReference {
 
     @NotBlank
     String url;
-    @NotNull
-    Boolean hasComponentMetadataFile;
+
+    @Override
+    public String reference() {
+        return url;
+    }
 }

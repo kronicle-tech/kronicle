@@ -7,18 +7,18 @@ import java.util.ArrayList;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.catchThrowable;
 
-public class ComponentStateEnvironmentPluginTest {
+public class EnvironmentStatePluginTest {
 
     @Test
     public void constructorShouldMakeChecksAnUnmodifiableList() {
         // Given
-        ComponentStateEnvironmentPlugin underTest = ComponentStateEnvironmentPlugin.builder()
+        EnvironmentPluginState underTest = EnvironmentPluginState.builder()
                 .checks(new ArrayList<>())
                 .build();
 
         // When
         Throwable thrown = catchThrowable(() -> underTest.getChecks().add(
-                ComponentStateCheck.builder().build()
+                CheckState.builder().build()
         ));
 
         // Then
@@ -28,13 +28,13 @@ public class ComponentStateEnvironmentPluginTest {
     @Test
     public void constructorShouldMakeLogSummariesAnUnmodifiableList() {
         // Given
-        ComponentStateEnvironmentPlugin underTest = ComponentStateEnvironmentPlugin.builder()
+        EnvironmentPluginState underTest = EnvironmentPluginState.builder()
                 .logSummaries(new ArrayList<>())
                 .build();
 
         // When
         Throwable thrown = catchThrowable(() -> underTest.getLogSummaries().add(
-                ComponentStateLogSummary.builder().build()
+                LogSummaryState.builder().build()
         ));
 
         // Then

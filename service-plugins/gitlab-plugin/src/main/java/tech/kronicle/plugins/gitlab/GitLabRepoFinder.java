@@ -4,7 +4,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.pf4j.Extension;
 import tech.kronicle.pluginapi.finders.RepoFinder;
-import tech.kronicle.pluginapi.finders.models.ApiRepo;
+import tech.kronicle.sdk.models.Repo;
 import tech.kronicle.plugins.gitlab.client.GitLabClient;
 import tech.kronicle.plugins.gitlab.config.GitLabConfig;
 import tech.kronicle.plugins.gitlab.config.GitLabHostConfig;
@@ -32,7 +32,7 @@ public class GitLabRepoFinder extends RepoFinder {
     }
 
     @Override
-    public List<ApiRepo> find(Void ignored) {
+    public List<Repo> find(Void ignored) {
         return getHosts().stream()
                 .flatMap(host -> Stream.of(
                         findApiRepos(host, host::getAccessTokens, client::getRepos, "access tokens"),
@@ -47,14 +47,14 @@ public class GitLabRepoFinder extends RepoFinder {
         return Optional.ofNullable(config.getHosts()).orElseGet(List::of);
     }
 
-    public <T> List<ApiRepo> findApiRepos(
+    public <T> List<Repo> findApiRepos(
             GitLabHostConfig host,
             Supplier<List<T>> configItemSupplier,
-            BiFunction<String, T, List<ApiRepo>> repoGetter,
+            BiFunction<String, T, List<Repo>> repoGetter,
             String pluralConfigItemTypeName) {
         List<T> configItems = getConfigItems(configItemSupplier);
         log.info("Found {} GitLab " + pluralConfigItemTypeName, configItems.size());
-        List<ApiRepo> repos = getRepos(host.getBaseUrl(), configItems, repoGetter);
+        List<Repo> repos = getRepos(host.getBaseUrl(), configItems, repoGetter);
         log.info("Found {} API repos via GitLab " + pluralConfigItemTypeName, repos.size());
         return repos;
     }
@@ -63,10 +63,10 @@ public class GitLabRepoFinder extends RepoFinder {
         return Optional.ofNullable(configItemSupplier.get()).orElseGet(List::of);
     }
 
-    private <T> List<ApiRepo> getRepos(
+    private <T> List<Repo> getRepos(
             String baseUrl,
             List<T> configItems,
-            BiFunction<String, T, List<ApiRepo>> repoGetter) {
+            BiFunction<String, T, List<Repo>> repoGetter) {
         return configItems.stream()
                 .map(configItem -> repoGetter.apply(baseUrl, configItem))
                 .flatMap(Collection::stream)

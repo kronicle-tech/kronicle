@@ -21,7 +21,7 @@ import tech.kronicle.pluginapi.scanners.models.Output;
 import tech.kronicle.sdk.models.Component;
 import tech.kronicle.sdk.models.ComponentMetadata;
 import tech.kronicle.sdk.models.ObjectWithReference;
-import tech.kronicle.sdk.models.Repo;
+import tech.kronicle.sdk.models.RepoReference;
 import tech.kronicle.sdk.models.ScannerError;
 import tech.kronicle.sdk.models.Summary;
 import tech.kronicle.sdk.models.SummaryMissingComponent;
@@ -415,7 +415,7 @@ public class ScanEngineTest {
     private Component createComponent(String componentUniquePart) {
         return Component.builder()
                 .id("test-component-" + componentUniquePart)
-                .repo(new Repo("test-repo-url-" + componentUniquePart))
+                .repo(new RepoReference("test-repo-url-" + componentUniquePart))
                 .build();
     }
     
@@ -702,7 +702,7 @@ public class ScanEngineTest {
         }
 
         @Override
-        public Output<Codebase> scan(Repo input) {
+        public Output<Codebase> scan(RepoReference input) {
             Codebase codebase = config.isOutput() ? new Codebase(input, Path.of(input.getUrl())) : null;
             return scannerScan(config, refreshCount, this, input, codebase);
         }

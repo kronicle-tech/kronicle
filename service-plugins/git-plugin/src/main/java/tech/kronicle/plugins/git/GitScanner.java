@@ -18,7 +18,7 @@ import tech.kronicle.pluginapi.scanners.models.Codebase;
 import tech.kronicle.pluginapi.scanners.models.Output;
 import tech.kronicle.plugins.git.config.GitConfig;
 import tech.kronicle.utils.ThrowableToScannerErrorMapper;
-import tech.kronicle.sdk.models.Repo;
+import tech.kronicle.sdk.models.RepoReference;
 import tech.kronicle.sdk.models.ScannerError;
 import tech.kronicle.sdk.models.git.GitRepo;
 import tech.kronicle.sdk.models.git.Identity;
@@ -61,7 +61,7 @@ public class GitScanner extends RepoScanner {
     }
 
     @Override
-    public Output<Codebase> scan(Repo input) {
+    public Output<Codebase> scan(RepoReference input) {
         if (input.getUrl().startsWith("https://github.com/DecisionTechnologies/")) {
             Path repoDir = Path.of(config.getReposDir()).resolve("empty");
             try {

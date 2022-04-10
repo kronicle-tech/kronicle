@@ -18,7 +18,7 @@ public class ComponentStateTest {
 
         // When
         Throwable thrown = catchThrowable(() -> underTest.getEnvironments().add(
-                ComponentStateEnvironment.builder().build())
+                EnvironmentState.builder().build())
         );
 
         // Then
@@ -28,7 +28,7 @@ public class ComponentStateTest {
     @Test
     public void withUpdatedEnvironmentShouldPassANewEnvironmentObjectToActionWhenEnvironmentDoesNotExist() {
         // Given
-        ComponentStateEnvironment updatedEnvironment = createEnvironment(1, 1);
+        EnvironmentState updatedEnvironment = createEnvironment(1, 1);
         ComponentState underTest = ComponentState.builder().build();
         FakeEnvironmentUpdateAction action = new FakeEnvironmentUpdateAction(updatedEnvironment);
 
@@ -38,7 +38,7 @@ public class ComponentStateTest {
         // Then
         assertThat(returnValue).isEqualTo(underTest.withEnvironments(List.of(updatedEnvironment)));
         assertThat(action.calls).containsExactly(
-                ComponentStateEnvironment.builder()
+                EnvironmentState.builder()
                         .id(createEnvironmentId(1))
                         .build()
         );
@@ -47,7 +47,7 @@ public class ComponentStateTest {
     @Test
     public void withUpdatedEnvironmentShouldKeepExistingEnvironmentsWhenAddingANewOne() {
         // Given
-        ComponentStateEnvironment updatedEnvironment = createEnvironment(1, 1);
+        EnvironmentState updatedEnvironment = createEnvironment(1, 1);
         ComponentState underTest = ComponentState.builder()
                 .environments(List.of(
                         createEnvironment(2, 1),
@@ -66,7 +66,7 @@ public class ComponentStateTest {
                 updatedEnvironment
         )));
         assertThat(action.calls).containsExactly(
-                ComponentStateEnvironment.builder()
+                EnvironmentState.builder()
                         .id(createEnvironmentId(1))
                         .build()
         );
@@ -75,8 +75,8 @@ public class ComponentStateTest {
     @Test
     public void withUpdatedEnvironmentShouldPassExistingEnvironmentObjectToActionWhenEnvironmentAlreadyExists() {
         // Given
-        ComponentStateEnvironment initialEnvironment = createEnvironment(1, 1);
-        ComponentStateEnvironment updatedEnvironment = createEnvironment(1, 2);
+        EnvironmentState initialEnvironment = createEnvironment(1, 1);
+        EnvironmentState updatedEnvironment = createEnvironment(1, 2);
         ComponentState underTest = ComponentState.builder()
                 .environments(List.of(initialEnvironment))
                 .build();
@@ -93,8 +93,8 @@ public class ComponentStateTest {
     @Test
     public void withUpdatedEnvironmentShouldKeepExistingEnvironmentsWhenUpdatingOne() {
         // Given
-        ComponentStateEnvironment initialEnvironment = createEnvironment(1, 1);
-        ComponentStateEnvironment updatedEnvironment = createEnvironment(1, 2);
+        EnvironmentState initialEnvironment = createEnvironment(1, 1);
+        EnvironmentState updatedEnvironment = createEnvironment(1, 2);
         ComponentState underTest = ComponentState.builder()
                 .environments(List.of(
                         initialEnvironment,
@@ -116,11 +116,11 @@ public class ComponentStateTest {
         assertThat(action.calls).containsExactly(initialEnvironment);
     }
 
-    private ComponentStateEnvironment createEnvironment(int environmentNumber, int pluginNumber) {
-        return ComponentStateEnvironment.builder()
+    private EnvironmentState createEnvironment(int environmentNumber, int pluginNumber) {
+        return EnvironmentState.builder()
                 .id(createEnvironmentId(environmentNumber))
                 .plugins(List.of(
-                        ComponentStateEnvironmentPlugin.builder()
+                        EnvironmentPluginState.builder()
                                 .id("test-plugin-id-" + environmentNumber + "-" + pluginNumber)
                                 .build()
                 ))
@@ -134,10 +134,10 @@ public class ComponentStateTest {
     @RequiredArgsConstructor
     private static class FakeEnvironmentUpdateAction {
 
-        private final ComponentStateEnvironment updatedEnvironment;
-        private final List<ComponentStateEnvironment> calls = new ArrayList<>();
+        private final EnvironmentState updatedEnvironment;
+        private final List<EnvironmentState> calls = new ArrayList<>();
 
-        public ComponentStateEnvironment apply(ComponentStateEnvironment value) {
+        public EnvironmentState apply(EnvironmentState value) {
             calls.add(value);
             return updatedEnvironment;
         }

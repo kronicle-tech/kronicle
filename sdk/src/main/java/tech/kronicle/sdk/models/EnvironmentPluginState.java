@@ -18,18 +18,18 @@ import static tech.kronicle.sdk.utils.ListUtils.createUnmodifiableList;
 @With
 @Builder(toBuilder = true)
 @Jacksonized
-public class ComponentStateEnvironmentPlugin {
+public class EnvironmentPluginState {
 
     @NotEmpty
     @Pattern(regexp = PatternStrings.ID)
     String id;
-    List<@NotNull @Valid ComponentStateCheck> checks;
-    List<@NotNull @Valid ComponentStateLogSummary> logSummaries;
+    List<@NotNull @Valid CheckState> checks;
+    List<@NotNull @Valid LogSummaryState> logSummaries;
 
-    public ComponentStateEnvironmentPlugin(
+    public EnvironmentPluginState(
             String id,
-            List<ComponentStateCheck> checks,
-            List<ComponentStateLogSummary> logSummaries
+            List<CheckState> checks,
+            List<LogSummaryState> logSummaries
     ) {
         this.id = id;
         this.checks = createUnmodifiableList(checks);

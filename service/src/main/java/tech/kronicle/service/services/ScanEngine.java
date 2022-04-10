@@ -12,7 +12,7 @@ import tech.kronicle.pluginapi.scanners.models.Output;
 import tech.kronicle.sdk.models.Component;
 import tech.kronicle.sdk.models.ComponentMetadata;
 import tech.kronicle.sdk.models.ObjectWithReference;
-import tech.kronicle.sdk.models.Repo;
+import tech.kronicle.sdk.models.RepoReference;
 import tech.kronicle.sdk.models.ScannerError;
 import tech.kronicle.sdk.models.Summary;
 import tech.kronicle.service.exceptions.ValidationException;
@@ -160,7 +160,7 @@ public class ScanEngine {
                 .collect(Collectors.groupingBy(Function.identity(), Collectors.mapping(Component::getId, Collectors.toList())));
     }
 
-    private Map<Repo, List<String>> getRepoAndComponentIdsMap(ConcurrentHashMap<String, Component> componentMap) {
+    private Map<RepoReference, List<String>> getRepoAndComponentIdsMap(ConcurrentHashMap<String, Component> componentMap) {
         return componentMap.values().stream()
                 .filter(this::componentHasRepo)
                 .collect(Collectors.groupingBy(Component::getRepo, Collectors.mapping(Component::getId, Collectors.toList())));

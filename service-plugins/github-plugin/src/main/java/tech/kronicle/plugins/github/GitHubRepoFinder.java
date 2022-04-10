@@ -4,7 +4,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.pf4j.Extension;
 import tech.kronicle.pluginapi.finders.RepoFinder;
-import tech.kronicle.pluginapi.finders.models.ApiRepo;
+import tech.kronicle.sdk.models.Repo;
 import tech.kronicle.plugins.github.client.GitHubClient;
 import tech.kronicle.plugins.github.config.GitHubConfig;
 
@@ -31,7 +31,7 @@ public class GitHubRepoFinder extends RepoFinder {
   }
 
   @Override
-  public List<ApiRepo> find(Void ignored) {
+  public List<Repo> find(Void ignored) {
     return Stream.of(
             findApiRepos(config::getAccessTokens, client::getRepos, "personal access tokens"),
             findApiRepos(config::getUsers, client::getRepos, "users"),
@@ -41,15 +41,15 @@ public class GitHubRepoFinder extends RepoFinder {
             .collect(Collectors.toList());
   }
 
-  public <T> List<ApiRepo> findApiRepos(Supplier<List<T>> configItemSupplier, Function<T, List<ApiRepo>> repoGetter, String pluralConfigItemTypeName) {
+  public <T> List<Repo> findApiRepos(Supplier<List<T>> configItemSupplier, Function<T, List<Repo>> repoGetter, String pluralConfigItemTypeName) {
     List<T> configItems = getConfigItems(configItemSupplier);
     log.info("Found {} GitHub " + pluralConfigItemTypeName, configItems.size());
-    List<ApiRepo> repos = getRepos(configItems, repoGetter);
+    List<Repo> repos = getRepos(configItems, repoGetter);
     log.info("Found {} API repos via GitHub " + pluralConfigItemTypeName, repos.size());
     return repos;
   }
 
-  private <T> List<ApiRepo> getRepos(List<T> configItems, Function<T, List<ApiRepo>> repoGetter) {
+  private <T> List<Repo> getRepos(List<T> configItems, Function<T, List<Repo>> repoGetter) {
     return configItems.stream()
             .map(repoGetter)
             .flatMap(Collection::stream)

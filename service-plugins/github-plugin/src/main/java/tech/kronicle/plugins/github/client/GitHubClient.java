@@ -7,7 +7,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import tech.kronicle.pluginapi.constants.KronicleMetadataFilePaths;
-import tech.kronicle.pluginapi.finders.models.ApiRepo;
+import tech.kronicle.sdk.models.Repo;
 import tech.kronicle.plugins.github.config.GitHubAccessTokenConfig;
 import tech.kronicle.plugins.github.config.GitHubConfig;
 import tech.kronicle.plugins.github.config.GitHubOrganizationConfig;
@@ -59,15 +59,15 @@ public class GitHubClient {
   private final GitHubConfig config;
   private final ApiResponseCache cache;
 
-  public List<ApiRepo> getRepos(GitHubAccessTokenConfig accessToken) {
+  public List<Repo> getRepos(GitHubAccessTokenConfig accessToken) {
     return getRepos(accessToken, getAuthenticatedUserReposUri());
   }
 
-  public List<ApiRepo> getRepos(GitHubUserConfig user) {
+  public List<Repo> getRepos(GitHubUserConfig user) {
     return getRepos(user.getAccessToken(), getUserReposUri(user));
   }
 
-  public List<ApiRepo> getRepos(GitHubOrganizationConfig organization) {
+  public List<Repo> getRepos(GitHubOrganizationConfig organization) {
     return getRepos(organization.getAccessToken(), getOrganizationReposUri(organization));
   }
 
@@ -83,7 +83,7 @@ public class GitHubClient {
     return expandUriTemplate(config.getApiBaseUrl() + GitHubApiPaths.ORGANIZATION_REPOS, Map.of("org", organization.getAccountName()));
   }
 
-  private List<ApiRepo> getRepos(GitHubAccessTokenConfig accessToken, String uri) {
+  private List<Repo> getRepos(GitHubAccessTokenConfig accessToken, String uri) {
     List<GitHubRepo> repos = getGitHubRepos(accessToken, uri);
     if (isNull(repos)) {
       return List.of();
@@ -97,8 +97,8 @@ public class GitHubClient {
     return getResource(accessToken, uri, new TypeReference<>() {});
   }
 
-  private Function<GitHubRepo, ApiRepo> addHasComponentMetadataFile(GitHubAccessTokenConfig accessToken) {
-    return gitHubRepo -> new ApiRepo(gitHubRepo.getClone_url(), hasComponentMetadataFile(accessToken, gitHubRepo));
+  private Function<GitHubRepo, Repo> addHasComponentMetadataFile(GitHubAccessTokenConfig accessToken) {
+    return gitHubRepo -> new Repo(gitHubRepo.getClone_url(), hasComponentMetadataFile(accessToken, gitHubRepo));
   }
 
   private boolean hasComponentMetadataFile(GitHubAccessTokenConfig accessToken, GitHubRepo repo) {

@@ -8,7 +8,7 @@ import tech.kronicle.plugins.aws.cloudwatchlogs.services.CloudWatchLogsService;
 import tech.kronicle.plugins.aws.models.AwsProfileAndRegion;
 import tech.kronicle.sdk.models.Component;
 import tech.kronicle.sdk.models.ComponentMetadata;
-import tech.kronicle.sdk.models.ComponentStateLogSummary;
+import tech.kronicle.sdk.models.LogSummaryState;
 
 import javax.inject.Inject;
 import java.util.List;
@@ -33,7 +33,7 @@ public class AwsCloudWatchLogsInsightsScanner extends ComponentScanner {
 
     @Override
     public Output<Void> scan(Component input) {
-        List<Map.Entry<AwsProfileAndRegion, List<ComponentStateLogSummary>>> logLevelCounts =
+        List<Map.Entry<AwsProfileAndRegion, List<LogSummaryState>>> logLevelCounts =
                 service.getLogSummariesForComponent(input);
 
         if (logLevelCountsIsEmpty(logLevelCounts)) {
@@ -41,8 +41,8 @@ public class AwsCloudWatchLogsInsightsScanner extends ComponentScanner {
         }
 
         return Output.of(component -> component.withUpdatedState(state -> {
-            for (Map.Entry<AwsProfileAndRegion, List<ComponentStateLogSummary>> entry : logLevelCounts) {
-                List<ComponentStateLogSummary> logSummaries = entry.getValue();
+            for (Map.Entry<AwsProfileAndRegion, List<LogSummaryState>> entry : logLevelCounts) {
+                List<LogSummaryState> logSummaries = entry.getValue();
                 if (!logSummaries.isEmpty()) {
                     String environmentId = entry.getKey().getProfile().getEnvironmentId();
                     state = state.withUpdatedEnvironment(
@@ -59,7 +59,7 @@ public class AwsCloudWatchLogsInsightsScanner extends ComponentScanner {
     }
 
     private boolean logLevelCountsIsEmpty(
-            List<Map.Entry<AwsProfileAndRegion, List<ComponentStateLogSummary>>> logLevelCounts
+            List<Map.Entry<AwsProfileAndRegion, List<LogSummaryState>>> logLevelCounts
     ) {
         return logLevelCounts.stream().allMatch(entry -> entry.getValue().isEmpty());
     }

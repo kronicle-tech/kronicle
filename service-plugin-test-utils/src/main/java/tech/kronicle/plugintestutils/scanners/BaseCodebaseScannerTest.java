@@ -1,14 +1,14 @@
 package tech.kronicle.plugintestutils.scanners;
 
-import tech.kronicle.sdk.models.Repo;
+import tech.kronicle.sdk.models.RepoReference;
 
 import java.nio.file.Path;
 
 public class BaseCodebaseScannerTest extends BaseScannerTest {
 
-    private static final Repo TEST_REPO = new Repo("test");
+    private static final RepoReference TEST_REPO = new RepoReference("test");
 
-    protected Repo getTestRepo() {
+    protected RepoReference getTestRepo() {
         return TEST_REPO;
     }
 

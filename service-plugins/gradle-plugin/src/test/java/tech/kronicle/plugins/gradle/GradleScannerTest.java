@@ -11,7 +11,7 @@ import tech.kronicle.pluginapi.scanners.models.Codebase;
 import tech.kronicle.pluginapi.scanners.models.Output;
 import tech.kronicle.plugintestutils.scanners.BaseCodebaseScannerTest;
 import tech.kronicle.sdk.models.Component;
-import tech.kronicle.sdk.models.Repo;
+import tech.kronicle.sdk.models.RepoReference;
 import tech.kronicle.sdk.models.Software;
 import tech.kronicle.sdk.models.SoftwareRepository;
 import tech.kronicle.utils.ThrowableToScannerErrorMapper;
@@ -71,7 +71,7 @@ public class GradleScannerTest extends BaseCodebaseScannerTest {
     public void scanShouldSetGradleIsUsedWhenGradleIsUsedInCodebase() {
         // Given
         Path codebaseDir = Path.of("test-repo");
-        Codebase input = new Codebase(new Repo("https://example.com/test-repo"), codebaseDir);
+        Codebase input = new Codebase(new RepoReference("https://example.com/test-repo"), codebaseDir);
         GradleAnalysis gradleAnalysis = new GradleAnalysis(
                 true,
                 List.of(),
@@ -94,7 +94,7 @@ public class GradleScannerTest extends BaseCodebaseScannerTest {
     public void scanShouldSetGradleIsNotUsedWhenGradleIsNotUsedInCodebase() {
         // Given
         Path codebaseDir = Path.of("test-repo");
-        Codebase input = new Codebase(new Repo("https://example.com/test-repo"), codebaseDir);
+        Codebase input = new Codebase(new RepoReference("https://example.com/test-repo"), codebaseDir);
         GradleAnalysis gradleAnalysis = new GradleAnalysis(
                 false,
                 List.of(),
@@ -117,7 +117,7 @@ public class GradleScannerTest extends BaseCodebaseScannerTest {
     public void scanShouldSetScannerIdOnAnySoftwareRepositories() {
         // Given
         Path codebaseDir = Path.of("test-repo");
-        Codebase input = new Codebase(new Repo("https://example.com/test-repo"), codebaseDir);
+        Codebase input = new Codebase(new RepoReference("https://example.com/test-repo"), codebaseDir);
         SoftwareRepository softwareRepository1 = SoftwareRepository.builder().url("https://example.com/test-maven-repo-1").build();
         SoftwareRepository softwareRepository2 = SoftwareRepository.builder().url("https://example.com/test-maven-repo-2").build();
         GradleAnalysis gradleAnalysis = new GradleAnalysis(
@@ -148,7 +148,7 @@ public class GradleScannerTest extends BaseCodebaseScannerTest {
     public void scanShouldSetScannerIdOnAnySoftware() {
         // Given
         Path codebaseDir = Path.of("test-repo");
-        Codebase input = new Codebase(new Repo("https://example.com/test-repo"), codebaseDir);
+        Codebase input = new Codebase(new RepoReference("https://example.com/test-repo"), codebaseDir);
         Software software1 = Software.builder().name("test-software-1").build();
         Software software2 = Software.builder().name("test-software-2").build();
         GradleAnalysis gradleAnalysis = new GradleAnalysis(

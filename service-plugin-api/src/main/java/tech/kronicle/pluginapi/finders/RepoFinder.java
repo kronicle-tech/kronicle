@@ -1,11 +1,10 @@
 package tech.kronicle.pluginapi.finders;
 
-import org.pf4j.ExtensionPoint;
-import tech.kronicle.pluginapi.finders.models.ApiRepo;
+import tech.kronicle.sdk.models.Repo;
 
 import java.util.List;
 
-public abstract class RepoFinder extends Finder<Void, List<ApiRepo>> {
+public abstract class RepoFinder extends Finder<Void, List<Repo>> {
 
-    public abstract List<ApiRepo> find(Void ignored);
+    public abstract List<Repo> find(Void ignored);
 }

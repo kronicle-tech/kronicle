@@ -6,7 +6,7 @@ import lombok.Value;
  * This class only contains a subset of the fields returned by the Bitbucket Server API
  */
 @Value
-public class Project {
+public class BitbucketServerProject {
 
     String key;
     String name;

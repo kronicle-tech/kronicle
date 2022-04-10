@@ -5,7 +5,7 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
-import tech.kronicle.pluginapi.finders.models.ApiRepo;
+import tech.kronicle.sdk.models.Repo;
 import tech.kronicle.plugins.gitlab.config.GitLabConfig;
 import tech.kronicle.plugins.gitlab.config.GitLabGroupConfig;
 import tech.kronicle.plugins.gitlab.config.GitLabHostConfig;
@@ -48,7 +48,7 @@ public class GitLabClientTest {
         underTest = createUnderTest(config);
 
         // When
-        List<ApiRepo> returnValue;
+        List<Repo> returnValue;
 
         switch (scenario.getReposResourceType()) {
             case ALL:
@@ -66,14 +66,14 @@ public class GitLabClientTest {
 
         // Then
         assertThat(returnValue).containsExactly(
-                new ApiRepo("https://example.com/repo-1-KRONICLE_YAML.git", true),
-                new ApiRepo("https://example.com/repo-2-KRONICLE_YAML.git", true),
-                new ApiRepo("https://example.com/repo-3-NO_DEFAULT_BRANCH.git", false),
-                new ApiRepo("https://example.com/repo-4-NONE.git", false),
-                new ApiRepo("https://example.com/repo-5-NONE.git", false),
-                new ApiRepo("https://example.com/repo-6-NONE.git", false),
-                new ApiRepo("https://example.com/repo-7-NONE.git", false),
-                new ApiRepo("https://example.com/repo-8-NONE.git", false)
+                new Repo("https://example.com/repo-1-KRONICLE_YAML.git", true),
+                new Repo("https://example.com/repo-2-KRONICLE_YAML.git", true),
+                new Repo("https://example.com/repo-3-NO_DEFAULT_BRANCH.git", false),
+                new Repo("https://example.com/repo-4-NONE.git", false),
+                new Repo("https://example.com/repo-5-NONE.git", false),
+                new Repo("https://example.com/repo-6-NONE.git", false),
+                new Repo("https://example.com/repo-7-NONE.git", false),
+                new Repo("https://example.com/repo-8-NONE.git", false)
         );
     }
 

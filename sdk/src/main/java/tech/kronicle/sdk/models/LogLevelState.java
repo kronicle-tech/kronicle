@@ -17,16 +17,16 @@ import static tech.kronicle.sdk.utils.ListUtils.createUnmodifiableList;
 @With
 @Builder(toBuilder = true)
 @Jacksonized
-public class ComponentStateLogLevel {
+public class LogLevelState {
 
     @Pattern(regexp = PatternStrings.CASE_INSENSITIVE_SNAKE_CASE_OR_KEBAB_CASE)
     String level;
     @NotNull
     @Min(0)
     Long count;
-    List<ComponentStateLogMessage> topMessages;
+    List<LogMessageState> topMessages;
 
-    public ComponentStateLogLevel(String level, Long count, List<ComponentStateLogMessage> topMessages) {
+    public LogLevelState(String level, Long count, List<LogMessageState> topMessages) {
         this.level = level;
         this.count = count;
         this.topMessages = createUnmodifiableList(topMessages);

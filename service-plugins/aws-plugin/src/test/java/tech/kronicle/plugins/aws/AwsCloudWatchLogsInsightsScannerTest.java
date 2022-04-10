@@ -8,9 +8,9 @@ import tech.kronicle.plugins.aws.models.AwsProfileAndRegion;
 import tech.kronicle.sdk.models.Component;
 import tech.kronicle.sdk.models.ComponentMetadata;
 import tech.kronicle.sdk.models.ComponentState;
-import tech.kronicle.sdk.models.ComponentStateEnvironment;
-import tech.kronicle.sdk.models.ComponentStateEnvironmentPlugin;
-import tech.kronicle.sdk.models.ComponentStateLogSummary;
+import tech.kronicle.sdk.models.EnvironmentState;
+import tech.kronicle.sdk.models.EnvironmentPluginState;
+import tech.kronicle.sdk.models.LogSummaryState;
 
 import java.util.List;
 import java.util.Map;
@@ -129,7 +129,7 @@ public class AwsCloudWatchLogsInsightsScannerTest {
         assertThat(transformedComponent).isEqualTo(component);
     }
 
-    private Map.Entry<AwsProfileAndRegion, List<ComponentStateLogSummary>> createLogSummariesForProfileAndRegion(
+    private Map.Entry<AwsProfileAndRegion, List<LogSummaryState>> createLogSummariesForProfileAndRegion(
             int profileAndRegionNumber
     ) {
         return Map.entry(createProfileAndRegion(profileAndRegionNumber), List.of(
@@ -138,23 +138,23 @@ public class AwsCloudWatchLogsInsightsScannerTest {
         ));
     }
 
-    private Map.Entry<AwsProfileAndRegion, List<ComponentStateLogSummary>> createEmptyLogSummariesForProfileAndRegion(
+    private Map.Entry<AwsProfileAndRegion, List<LogSummaryState>> createEmptyLogSummariesForProfileAndRegion(
             int profileAndRegionNumber
     ) {
         return Map.entry(createProfileAndRegion(profileAndRegionNumber), List.of());
     }
 
-    private ComponentStateEnvironment createEnvironment(int environmentNumber) {
-        return ComponentStateEnvironment.builder()
+    private EnvironmentState createEnvironment(int environmentNumber) {
+        return EnvironmentState.builder()
                 .id("test-environment-id-" + environmentNumber)
                 .plugins(List.of(
-                        ComponentStateEnvironmentPlugin.builder()
+                        EnvironmentPluginState.builder()
                                 .id("aws")
                                 .logSummaries(List.of(
-                                        ComponentStateLogSummary.builder()
+                                        LogSummaryState.builder()
                                                 .name("test-log-summary-name-" + environmentNumber + "-1")
                                                 .build(),
-                                        ComponentStateLogSummary.builder()
+                                        LogSummaryState.builder()
                                                 .name("test-log-summary-name-" + environmentNumber + "-2")
                                                 .build()
                                 ))
@@ -163,11 +163,11 @@ public class AwsCloudWatchLogsInsightsScannerTest {
                 .build();
     }
 
-    private ComponentStateLogSummary createLogSummary(
+    private LogSummaryState createLogSummary(
             int profileAndRegionNumber,
             int logSummaryNumber
     ) {
-        return ComponentStateLogSummary.builder()
+        return LogSummaryState.builder()
                 .name("test-log-summary-name-" + profileAndRegionNumber + "-" + logSummaryNumber)
                 .build();
     }

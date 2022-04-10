@@ -6,14 +6,14 @@ import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
 import lombok.Value;
 import lombok.extern.slf4j.Slf4j;
-import tech.kronicle.pluginapi.finders.models.ApiRepo;
+import tech.kronicle.plugins.bitbucketserver.models.api.BitbucketServerRepo;
+import tech.kronicle.sdk.models.Repo;
 import tech.kronicle.plugins.bitbucketserver.config.BitbucketServerConfig;
 import tech.kronicle.plugins.bitbucketserver.config.BitbucketServerHostConfig;
 import tech.kronicle.plugins.bitbucketserver.constants.BitbucketServerApiPaths;
-import tech.kronicle.plugins.bitbucketserver.models.api.BrowseResponse;
-import tech.kronicle.plugins.bitbucketserver.models.api.Link;
-import tech.kronicle.plugins.bitbucketserver.models.api.PageResponse;
-import tech.kronicle.plugins.bitbucketserver.models.api.Repo;
+import tech.kronicle.plugins.bitbucketserver.models.api.BitbucketServerBrowseResponse;
+import tech.kronicle.plugins.bitbucketserver.models.api.BitbucketServerLink;
+import tech.kronicle.plugins.bitbucketserver.models.api.BitbucketServerPageResponse;
 import tech.kronicle.utils.HttpStatuses;
 import tech.kronicle.utils.UriVariablesBuilder;
 
@@ -48,13 +48,13 @@ public class BitbucketServerClient {
 
     private static final List<Integer> GET_REPOS_EXPECTED_STATUS_CODES = List.of(HttpStatuses.OK);
     private static final List<Integer> BROWSE_EXPECTED_STATUS_CODES = List.of(HttpStatuses.OK, HttpStatuses.NOT_FOUND);
-    private static final Comparator<RepoAndApiRepo> REPO_AND_API_REPO_COMPARATOR = Comparator.comparing(repoAndApiRepo -> repoAndApiRepo.getApiRepo().getUrl());
+    private static final Comparator<BitBucketServerRepoAndRepo> REPO_AND_API_REPO_COMPARATOR = Comparator.comparing(bitBucketServerRepoAndRepo -> bitBucketServerRepoAndRepo.getRepo().getUrl());
 
     private final HttpClient httpClient;
     private final ObjectMapper objectMapper;
     private final BitbucketServerConfig config;
 
-    public List<ApiRepo> getNormalRepos() {
+    public List<Repo> getNormalRepos() {
         if (isNull(config.getHosts())) {
             return List.of();
         }
@@ -65,12 +65,12 @@ public class BitbucketServerClient {
                 .collect(Collectors.toList());
     }
 
-    private List<ApiRepo> getNormalRepos(BitbucketServerHostConfig host) {
-        List<Repo> normalRepos = new ArrayList<>();
+    private List<Repo> getNormalRepos(BitbucketServerHostConfig host) {
+        List<BitbucketServerRepo> normalRepos = new ArrayList<>();
         Optional<Integer> start = Optional.empty();
 
         while (true) {
-            PageResponse<Repo> page = getReposPage(host, start);
+            BitbucketServerPageResponse<BitbucketServerRepo> page = getReposPage(host, start);
 
             normalRepos.addAll(getNormalReposFromPage(page));
 
@@ -89,7 +89,7 @@ public class BitbucketServerClient {
     }
 
     @SneakyThrows
-    private PageResponse<Repo> getReposPage(BitbucketServerHostConfig host, Optional<Integer> start) {
+    private BitbucketServerPageResponse<BitbucketServerRepo> getReposPage(BitbucketServerHostConfig host, Optional<Integer> start) {
         StringBuilder uriBuilder = new StringBuilder()
                 .append(host.getBaseUrl())
                 .append(BitbucketServerApiPaths.REPOS);
@@ -106,38 +106,38 @@ public class BitbucketServerClient {
         return objectMapper.readValue(response.body(), new TypeReference<>() { });
     }
 
-    private List<Repo> getNormalReposFromPage(PageResponse<Repo> page) {
+    private List<BitbucketServerRepo> getNormalReposFromPage(BitbucketServerPageResponse<BitbucketServerRepo> page) {
         return page.getValues().stream()
                 .filter(this::isNormalRepo)
                 .collect(Collectors.toList());
     }
 
-    private boolean isNormalRepo(Repo repo) {
+    private boolean isNormalRepo(BitbucketServerRepo repo) {
         return repo.getScmId().equals("git")
                 && repo.getState().equals("AVAILABLE")
                 && repo.getProject().getType().equals("NORMAL");
     }
 
-    private RepoAndApiRepo mapRepoToApiRepo(Repo repo) {
-        return new RepoAndApiRepo(repo, new ApiRepo(getHttpCloneLink(repo).getHref(), null));
+    private BitBucketServerRepoAndRepo mapRepoToApiRepo(BitbucketServerRepo repo) {
+        return new BitBucketServerRepoAndRepo(repo, new Repo(getHttpCloneLink(repo).getHref(), null));
     }
 
-    private Link getHttpCloneLink(Repo repo) {
+    private BitbucketServerLink getHttpCloneLink(BitbucketServerRepo repo) {
         return repo.getLinks().getClone().stream()
                 .filter(this::isHttpLink)
                 .findFirst().get();
     }
 
-    private boolean isHttpLink(Link link) {
+    private boolean isHttpLink(BitbucketServerLink link) {
         return link.getName().equals("http");
     }
 
-    private Function<RepoAndApiRepo, ApiRepo> addHasComponentMetadataFileToApiRepo(BitbucketServerHostConfig host) {
-        return repoAndApiRepo -> repoAndApiRepo.getApiRepo().withHasComponentMetadataFile(hasComponentMetadataFile(host, repoAndApiRepo.getRepo()));
+    private Function<BitBucketServerRepoAndRepo, Repo> addHasComponentMetadataFileToApiRepo(BitbucketServerHostConfig host) {
+        return bitBucketServerRepoAndRepo -> bitBucketServerRepoAndRepo.getRepo().withHasComponentMetadataFile(hasComponentMetadataFile(host, bitBucketServerRepoAndRepo.getBitbucketServerRepo()));
     }
 
     @SneakyThrows
-    private boolean hasComponentMetadataFile(BitbucketServerHostConfig host, Repo repo) {
+    private boolean hasComponentMetadataFile(BitbucketServerHostConfig host, BitbucketServerRepo repo) {
         String uriTemplate = host.getBaseUrl() + BitbucketServerApiPaths.BROWSE + "/component-metadata.yaml?type=true";
         Map<String, String> uriVariables = UriVariablesBuilder.builder()
                 .addUriVariable("projectKey", repo.getProject().getKey())
@@ -154,9 +154,9 @@ public class BitbucketServerClient {
         HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString(StandardCharsets.UTF_8));
 
         checkResponseStatus(response, BROWSE_EXPECTED_STATUS_CODES, uri);
-        BrowseResponse browseResponse = objectMapper.readValue(response.body(), BrowseResponse.class);
+        BitbucketServerBrowseResponse browseResponse = objectMapper.readValue(response.body(), BitbucketServerBrowseResponse.class);
         return Optional.ofNullable(browseResponse)
-                .map(BrowseResponse::getType)
+                .map(BitbucketServerBrowseResponse::getType)
                 .map(type -> type.equals("FILE"))
                 .orElse(false);
     }
@@ -180,9 +180,9 @@ public class BitbucketServerClient {
     }
 
     @Value
-    private static class RepoAndApiRepo {
+    private static class BitBucketServerRepoAndRepo {
 
+        BitbucketServerRepo bitbucketServerRepo;
         Repo repo;
-        ApiRepo apiRepo;
     }
 }

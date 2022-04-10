@@ -311,7 +311,7 @@ public class ComponentTest {
     private ComponentState createState(int stateNumber) {
         return ComponentState.builder()
                 .environments(List.of(
-                        ComponentStateEnvironment.builder()
+                        EnvironmentState.builder()
                                 .id("test-environment-id-" + stateNumber)
                                 .build()
                 ))

@@ -2,7 +2,7 @@ package tech.kronicle.service.services;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import tech.kronicle.pluginapi.finders.models.ApiRepo;
+import tech.kronicle.sdk.models.Repo;
 
 import java.util.Collection;
 import java.util.List;
@@ -15,7 +15,7 @@ public class RepoFinderService {
     private final FinderExtensionRegistry extensionRegistry;
     private final RepoFilterService repoFilterService;
 
-    public List<ApiRepo> findRepos() {
+    public List<Repo> findRepos() {
         return extensionRegistry.getRepoFinders().stream()
                 .map(repoFinder -> repoFinder.find(null))
                 .flatMap(Collection::stream)

@@ -7,18 +7,18 @@ import java.util.ArrayList;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.catchThrowable;
 
-public class ComponentStateLogLevelTest {
+public class CheckStateTest {
 
     @Test
-    public void constructorShouldMakeTopMessagesAnUnmodifiableList() {
+    public void constructorShouldMakeLinksAnUnmodifiableList() {
         // Given
-        ComponentStateLogLevel underTest = ComponentStateLogLevel.builder()
-                .topMessages(new ArrayList<>())
+        CheckState underTest = CheckState.builder()
+                .links(new ArrayList<>())
                 .build();
 
         // When
-        Throwable thrown = catchThrowable(() -> underTest.getTopMessages().add(
-                ComponentStateLogMessage.builder().build())
+        Throwable thrown = catchThrowable(() -> underTest.getLinks().add(
+                Link.builder().build())
         );
 
         // Then

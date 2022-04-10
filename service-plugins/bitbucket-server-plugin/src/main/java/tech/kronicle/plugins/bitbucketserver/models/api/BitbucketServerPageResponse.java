@@ -8,7 +8,12 @@ import java.util.List;
  * This class only contains a subset of the fields returned by the Bitbucket Server API
  */
 @Value
-public class Links {
+public class BitbucketServerPageResponse<T> {
 
-    private List<Link> clone;
+    Integer size;
+    Integer limit;
+    Boolean isLastPage;
+    List<T> values;
+    Integer start;
+    Integer nextPageStart;
 }

@@ -13,8 +13,6 @@ import java.util.List;
 public class GitHubConfig {
 
   @NotEmpty
-  String domain;
-  @NotEmpty
   String apiBaseUrl;
   List<GitHubAccessTokenConfig> accessTokens;
   List<GitHubUserConfig> users;

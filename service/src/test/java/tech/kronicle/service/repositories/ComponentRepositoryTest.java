@@ -21,7 +21,7 @@ import tech.kronicle.sdk.models.Component;
 import tech.kronicle.sdk.models.ComponentTeam;
 import tech.kronicle.sdk.models.ObjectWithReference;
 import tech.kronicle.sdk.models.Priority;
-import tech.kronicle.sdk.models.Repo;
+import tech.kronicle.sdk.models.RepoReference;
 import tech.kronicle.sdk.models.Scanner;
 import tech.kronicle.sdk.models.Summary;
 import tech.kronicle.sdk.models.SummaryCallGraph;
@@ -103,7 +103,7 @@ public class ComponentRepositoryTest {
                                 .name("Test Component Name")
                                 .typeId("test-component-type-id")
                                 .tags(List.of("test-component-tag-1", "test-component-tag-2"))
-                                .repo(Repo.builder().url("https://example.com/example.git").build())
+                                .repo(RepoReference.builder().url("https://example.com/example.git").build())
                                 .notes("Test Component Notes")
                                 .teams(List.of(ComponentTeam.builder().teamId("test-team-id").build()))
                                 .platformId("test-platform-id")
@@ -839,7 +839,7 @@ public class ComponentRepositoryTest {
                 .id(createTestComponentId(uniquePart))
                 .name("Test Component Name " + uniquePart)
                 .typeId("test-component-type-id-" + uniquePart)
-                .repo(Repo.builder().url("https://example.com/example-" + uniquePart.toLowerCase() + ".git").build());
+                .repo(RepoReference.builder().url("https://example.com/example-" + uniquePart.toLowerCase() + ".git").build());
     }
 
     private String createTestComponentId(String uniquePart) {

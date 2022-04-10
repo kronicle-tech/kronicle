@@ -16,7 +16,7 @@ import tech.kronicle.plugins.git.testutils.UpdateRemoteRepoOutcome;
 import tech.kronicle.plugintestutils.scanners.BaseScannerTest;
 import tech.kronicle.utils.ThrowableToScannerErrorMapper;
 import tech.kronicle.sdk.models.Component;
-import tech.kronicle.sdk.models.Repo;
+import tech.kronicle.sdk.models.RepoReference;
 import tech.kronicle.sdk.models.git.Identity;
 
 import java.nio.file.Path;
@@ -71,7 +71,7 @@ public class GitScannerTest extends BaseScannerTest {
     public void scanShouldCloneThenFetchGitRepo() {
         // Given
         CreateRemoteRepoOutcome createOutcome = gitRepoHelper.createRemoteRepo();
-        Repo testRepo = new Repo(createOutcome.getRepoDir().toString());
+        RepoReference testRepo = new RepoReference(createOutcome.getRepoDir().toString());
 
         // When
         Output<Codebase> returnValue = underTest.scan(testRepo);
@@ -135,7 +135,7 @@ public class GitScannerTest extends BaseScannerTest {
         UpdateRemoteRepoOutcome updateOutcome = gitRepoHelper.updateRemoteGitRepo(createOutcome.getRepoDir(), getDifferentIdentityOption(identityType));
         waitForNextCommitTimestampToBeForDifferentSecond();
         UpdateRemoteRepoOutcome updateOutcome2 = gitRepoHelper.updateRemoteGitRepo(createOutcome.getRepoDir(), getDifferentIdentityOption(identityType));
-        Repo testRepo = new Repo(createOutcome.getRepoDir().toString());
+        RepoReference testRepo = new RepoReference(createOutcome.getRepoDir().toString());
 
         // When
         Output<Codebase> returnValue = underTest.scan(testRepo);
@@ -189,7 +189,7 @@ public class GitScannerTest extends BaseScannerTest {
         CreateRemoteRepoOutcome createOutcome = gitRepoHelper.createRemoteRepo();
         waitForNextCommitTimestampToBeForDifferentSecond();
         UpdateRemoteRepoOutcome updateOutcome = gitRepoHelper.updateRemoteGitRepo(createOutcome.getRepoDir(), getDifferentIdentityNameOption(identityType));
-        Repo testRepo = new Repo(createOutcome.getRepoDir().toString());
+        RepoReference testRepo = new RepoReference(createOutcome.getRepoDir().toString());
 
         // When
         Output<Codebase> returnValue = underTest.scan(testRepo);

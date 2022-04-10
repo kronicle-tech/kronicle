@@ -10,7 +10,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import tech.kronicle.pluginapi.finders.models.ApiRepo;
+import tech.kronicle.sdk.models.Repo;
 import tech.kronicle.plugins.github.config.GitHubConfig;
 import tech.kronicle.plugins.github.config.GitHubOrganizationConfig;
 import tech.kronicle.plugins.github.config.GitHubUserConfig;
@@ -66,7 +66,7 @@ public class GitHubClientTest {
         underTest = createUnderTest(config);
 
         // When
-        List<ApiRepo> returnValue;
+        List<Repo> returnValue;
 
         switch (scenario.getReposResourceType()) {
             case AUTHENTICATED_USER:
@@ -123,10 +123,10 @@ public class GitHubClientTest {
                 new ApiResponseCacheEntry<>("test-modified-etag-5", List.of(new GitHubContentEntry(".gitignore"), new GitHubContentEntry("README.md"))));
 
         assertThat(returnValue).containsExactly(
-                new ApiRepo("https://github.com/" + scenario.getName() + "/test-repo-" + 1 + ".git", true),
-                new ApiRepo("https://github.com/" + scenario.getName() + "/test-repo-" + 2 + ".git", false),
-                new ApiRepo("https://github.com/" + scenario.getName() + "/test-repo-" + 3 + ".git", true),
-                new ApiRepo("https://github.com/" + scenario.getName() + "/test-repo-" + 4 + ".git", false));
+                new Repo("https://github.com/" + scenario.getName() + "/test-repo-" + 1 + ".git", true),
+                new Repo("https://github.com/" + scenario.getName() + "/test-repo-" + 2 + ".git", false),
+                new Repo("https://github.com/" + scenario.getName() + "/test-repo-" + 3 + ".git", true),
+                new Repo("https://github.com/" + scenario.getName() + "/test-repo-" + 4 + ".git", false));
         List<SimplifiedLogEvent> events = logCaptor.getSimplifiedEvents();
         assertThat(events).containsExactly(
                 new SimplifiedLogEvent(Level.INFO, "Calling " + reposUrl + " for user " + scenario.getBasicAuthUsername()),
@@ -159,14 +159,14 @@ public class GitHubClientTest {
         underTest = createUnderTest(config);
 
         // When
-        List<ApiRepo> returnValue = underTest.getRepos(scenario.getAccessToken());
+        List<Repo> returnValue = underTest.getRepos(scenario.getAccessToken());
 
         // Then
         assertThat(returnValue).containsExactly(
-                new ApiRepo("https://github.com/" + scenario.getName() + "/test-repo-" + 1 + ".git", true),
-                new ApiRepo("https://github.com/" + scenario.getName() + "/test-repo-" + 2 + ".git", false),
-                new ApiRepo("https://github.com/" + scenario.getName() + "/test-repo-" + 3 + ".git", true),
-                new ApiRepo("https://github.com/" + scenario.getName() + "/test-repo-" + 4 + ".git", false));
+                new Repo("https://github.com/" + scenario.getName() + "/test-repo-" + 1 + ".git", true),
+                new Repo("https://github.com/" + scenario.getName() + "/test-repo-" + 2 + ".git", false),
+                new Repo("https://github.com/" + scenario.getName() + "/test-repo-" + 3 + ".git", true),
+                new Repo("https://github.com/" + scenario.getName() + "/test-repo-" + 4 + ".git", false));
         List<SimplifiedLogEvent> events = logCaptor.getSimplifiedEvents();
         assertThat(events).containsExactly(
                 new SimplifiedLogEvent(Level.INFO, "Calling " + baseUrl + "/user/repos for user " + scenario.getBasicAuthUsername()),
@@ -201,12 +201,12 @@ public class GitHubClientTest {
         doReturn(userReposCacheEntry).when(mockCache).getEntry(scenario.getAccessToken(), baseUrl + "/user/repos");
 
         // When
-        List<ApiRepo> returnValue = underTest.getRepos(scenario.getAccessToken());
+        List<Repo> returnValue = underTest.getRepos(scenario.getAccessToken());
 
         // Then
         assertThat(returnValue).containsExactly(
-                new ApiRepo("https://example.com/cached-clone-url-1", true),
-                new ApiRepo("https://example.com/cached-clone-url-2", false));
+                new Repo("https://example.com/cached-clone-url-1", true),
+                new Repo("https://example.com/cached-clone-url-2", false));
     }
 
     @Test
@@ -224,15 +224,15 @@ public class GitHubClientTest {
         when(mockCache.getEntry(scenario.getAccessToken(), baseUrl + "/repos/" + scenario.getName() + "/test-repo-" + 4 + "/contents/")).thenReturn(null);
 
         // When
-        List<ApiRepo> returnValue = underTest.getRepos(scenario.getAccessToken());
+        List<Repo> returnValue = underTest.getRepos(scenario.getAccessToken());
 
         // Then
         assertThat(returnValue).containsExactly(
-                new ApiRepo("https://github.com/" + scenario.getName() + "/test-repo-" + 1 + ".git", true),
+                new Repo("https://github.com/" + scenario.getName() + "/test-repo-" + 1 + ".git", true),
                 // hasComponentMetadataFile has been changed from "false" to "true" for repo 2 by the cached response
-                new ApiRepo("https://github.com/" + scenario.getName() + "/test-repo-" + 2 + ".git", true),
-                new ApiRepo("https://github.com/" + scenario.getName() + "/test-repo-" + 3 + ".git", true),
-                new ApiRepo("https://github.com/" + scenario.getName() + "/test-repo-" + 4 + ".git", false));
+                new Repo("https://github.com/" + scenario.getName() + "/test-repo-" + 2 + ".git", true),
+                new Repo("https://github.com/" + scenario.getName() + "/test-repo-" + 3 + ".git", true),
+                new Repo("https://github.com/" + scenario.getName() + "/test-repo-" + 4 + ".git", false));
     }
 
     @Test
@@ -244,15 +244,15 @@ public class GitHubClientTest {
         underTest = createUnderTest(config);
 
         // When
-        List<ApiRepo> returnValue = underTest.getRepos(scenario.getAccessToken());
+        List<Repo> returnValue = underTest.getRepos(scenario.getAccessToken());
 
         // Then
         assertThat(returnValue).containsExactly(
-                new ApiRepo("https://github.com/" + scenario.getName() + "/test-repo-" + 1 + ".git", true),
-                new ApiRepo("https://github.com/" + scenario.getName() + "/test-repo-" + 2 + ".git", false),
+                new Repo("https://github.com/" + scenario.getName() + "/test-repo-" + 1 + ".git", true),
+                new Repo("https://github.com/" + scenario.getName() + "/test-repo-" + 2 + ".git", false),
                 // hasComponentMetadataFile has been changed from "true" to "false" for repo 3 by the 404 response
-                new ApiRepo("https://github.com/" + scenario.getName() + "/test-repo-" + 3 + ".git", false),
-                new ApiRepo("https://github.com/" + scenario.getName() + "/test-repo-" + 4 + ".git", false));
+                new Repo("https://github.com/" + scenario.getName() + "/test-repo-" + 3 + ".git", false),
+                new Repo("https://github.com/" + scenario.getName() + "/test-repo-" + 4 + ".git", false));
     }
 
     @Test
@@ -284,7 +284,7 @@ public class GitHubClientTest {
         underTest = createUnderTest(config);
 
         // When
-        List<ApiRepo> returnValue = underTest.getRepos(scenario.getAccessToken());
+        List<Repo> returnValue = underTest.getRepos(scenario.getAccessToken());
 
         // Then
         assertThat(returnValue).isEmpty();

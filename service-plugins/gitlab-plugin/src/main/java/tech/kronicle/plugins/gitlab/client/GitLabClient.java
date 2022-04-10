@@ -6,7 +6,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import tech.kronicle.pluginapi.constants.KronicleMetadataFilePaths;
-import tech.kronicle.pluginapi.finders.models.ApiRepo;
+import tech.kronicle.sdk.models.Repo;
 import tech.kronicle.plugins.gitlab.config.GitLabAccessTokenConfig;
 import tech.kronicle.plugins.gitlab.config.GitLabConfig;
 import tech.kronicle.plugins.gitlab.config.GitLabGroupConfig;
@@ -44,15 +44,15 @@ public class GitLabClient {
   private final ObjectMapper objectMapper;
   private final GitLabConfig config;
 
-  public List<ApiRepo> getRepos(String baseUrl, GitLabAccessTokenConfig accessToken) {
+  public List<Repo> getRepos(String baseUrl, GitLabAccessTokenConfig accessToken) {
     return getRepos(accessToken, baseUrl, getAllProjectsUri());
   }
 
-  public List<ApiRepo> getRepos(String baseUrl, GitLabUserConfig user) {
+  public List<Repo> getRepos(String baseUrl, GitLabUserConfig user) {
     return getRepos(user.getAccessToken(), baseUrl, getUserProjectsUri(user));
   }
 
-  public List<ApiRepo> getRepos(String baseUrl, GitLabGroupConfig group) {
+  public List<Repo> getRepos(String baseUrl, GitLabGroupConfig group) {
     return getRepos(group.getAccessToken(), baseUrl, getGroupProjectsUri(group));
   }
 
@@ -68,7 +68,7 @@ public class GitLabClient {
     return expandUriTemplate(GitLabApiPaths.GROUP_PROJECTS, Map.of("groupPath", group.getPath()));
   }
 
-  private List<ApiRepo> getRepos(GitLabAccessTokenConfig accessToken, String baseUrl, String uri) {
+  private List<Repo> getRepos(GitLabAccessTokenConfig accessToken, String baseUrl, String uri) {
     return getAllPagedResources(accessToken, baseUrl + uri, new TypeReference<List<GitLabRepo>>() {})
             .map(addHasComponentMetadataFile(accessToken, baseUrl))
             .collect(Collectors.toList());
@@ -87,11 +87,11 @@ public class GitLabClient {
             .flatMap(page -> page.items.stream());
   }
 
-  private Function<GitLabRepo, ApiRepo> addHasComponentMetadataFile(
+  private Function<GitLabRepo, Repo> addHasComponentMetadataFile(
           GitLabAccessTokenConfig accessToken,
           String baseUrl
   ) {
-    return repo -> new ApiRepo(repo.getHttp_url_to_repo(), hasComponentMetadataFile(accessToken, baseUrl, repo));
+    return repo -> new Repo(repo.getHttp_url_to_repo(), hasComponentMetadataFile(accessToken, baseUrl, repo));
   }
 
   private boolean hasComponentMetadataFile(

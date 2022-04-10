@@ -1,7 +1,7 @@
 package tech.kronicle.service.services;
 
 import org.springframework.stereotype.Service;
-import tech.kronicle.pluginapi.finders.models.ApiRepo;
+import tech.kronicle.sdk.models.Repo;
 import tech.kronicle.service.config.RepoFindersConfig;
 import tech.kronicle.service.config.RepoFindersIgnoredRepoConfig;
 
@@ -24,7 +24,7 @@ public class RepoFilterService {
                 .collect(Collectors.toUnmodifiableSet());
     }
 
-    public boolean keepRepo(ApiRepo repo) {
+    public boolean keepRepo(Repo repo) {
         return !ignoredRepoUrls.contains(repo.getUrl());
     }
 }
