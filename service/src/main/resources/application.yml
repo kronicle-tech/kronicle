@@ -90,6 +90,7 @@ plugins:
 
   github:
     enabled: false
+    domain: github.com
     api-base-url: https://api.github.com
     timeout: 30s
 

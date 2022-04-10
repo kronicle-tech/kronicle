@@ -3,6 +3,7 @@ package tech.kronicle.plugins.github.config;
 import lombok.Value;
 import lombok.experimental.NonFinal;
 
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.time.Duration;
 import java.util.List;
@@ -11,6 +12,9 @@ import java.util.List;
 @NonFinal
 public class GitHubConfig {
 
+  @NotEmpty
+  String domain;
+  @NotEmpty
   String apiBaseUrl;
   List<GitHubAccessTokenConfig> accessTokens;
   List<GitHubUserConfig> users;

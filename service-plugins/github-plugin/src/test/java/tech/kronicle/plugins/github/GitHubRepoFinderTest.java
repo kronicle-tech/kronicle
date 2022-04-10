@@ -43,6 +43,7 @@ public class GitHubRepoFinderTest {
     private GitHubRepoFinder underTest;
     @Mock
     private GitHubClient mockClient;
+
     @Test
     public void descriptionShouldReturnTheDescriptionOfTheFinder() {
         // Given
