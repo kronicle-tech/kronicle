@@ -37,7 +37,10 @@ public class BitbucketServerRepoFinderTest {
     @Test
     public void findShouldCallClientAndReturnApiRepos() {
         // Given
-        List<Repo> repos = List.of(new Repo("https://example.com/repo-1.git", true), new Repo("https://example.com/repo-2.git", false));
+        List<Repo> repos = List.of(
+                new Repo("https://example.com/repo-1.git", null, true, null),
+                new Repo("https://example.com/repo-2.git", null, false, null)
+        );
         when(mockClient.getNormalRepos()).thenReturn(repos);
 
         // When

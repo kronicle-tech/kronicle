@@ -114,11 +114,12 @@ public class BitbucketServerClientTest {
     }
 
     private Repo createTestRepo(int serverNumber, int repoNumber, boolean hasComponentMetadataFile) {
-        return new Repo(
-                "http://localhost:" + BitbucketServerWireMockFactory.PORT
+        return Repo.builder()
+                .url("http://localhost:" + BitbucketServerWireMockFactory.PORT
                         + "/server-" + serverNumber
                         + "/scm/example-project-" + repoNumber
-                        + "/example-repo-" + repoNumber + ".git",
-                hasComponentMetadataFile);
+                        + "/example-repo-" + repoNumber + ".git")
+                .hasComponentMetadataFile(hasComponentMetadataFile)
+                .build();
     }
 }

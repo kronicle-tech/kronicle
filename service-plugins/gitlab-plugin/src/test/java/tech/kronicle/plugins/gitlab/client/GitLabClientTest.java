@@ -66,15 +66,22 @@ public class GitLabClientTest {
 
         // Then
         assertThat(returnValue).containsExactly(
-                new Repo("https://example.com/repo-1-KRONICLE_YAML.git", true),
-                new Repo("https://example.com/repo-2-KRONICLE_YAML.git", true),
-                new Repo("https://example.com/repo-3-NO_DEFAULT_BRANCH.git", false),
-                new Repo("https://example.com/repo-4-NONE.git", false),
-                new Repo("https://example.com/repo-5-NONE.git", false),
-                new Repo("https://example.com/repo-6-NONE.git", false),
-                new Repo("https://example.com/repo-7-NONE.git", false),
-                new Repo("https://example.com/repo-8-NONE.git", false)
+                createRepo("https://example.com/repo-1-KRONICLE_YAML.git", true),
+                createRepo("https://example.com/repo-2-KRONICLE_YAML.git", true),
+                createRepo("https://example.com/repo-3-NO_DEFAULT_BRANCH.git", false),
+                createRepo("https://example.com/repo-4-NONE.git", false),
+                createRepo("https://example.com/repo-5-NONE.git", false),
+                createRepo("https://example.com/repo-6-NONE.git", false),
+                createRepo("https://example.com/repo-7-NONE.git", false),
+                createRepo("https://example.com/repo-8-NONE.git", false)
         );
+    }
+
+    private Repo createRepo(String url, boolean hasComponentMetadataFile) {
+        return Repo.builder()
+                .url(url)
+                .hasComponentMetadataFile(hasComponentMetadataFile)
+                .build();
     }
 
     @Test

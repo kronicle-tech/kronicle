@@ -184,9 +184,18 @@ public class GitLabRepoFinderTest {
                         List.of(GROUP_1, GROUP_2))),
                 PAGE_SIZE,
                 TIMEOUT);
-        Repo repo1 = new Repo("https://example.com/repo-1.git", true);
-        Repo repo2 = new Repo("https://example.com/repo-2.git", false);
-        Repo repo3 = new Repo("https://example.com/repo-3.git", false);
+        Repo repo1 = Repo.builder()
+                .url("https://example.com/repo-1.git")
+                .hasComponentMetadataFile(true)
+                .build();
+        Repo repo2 = Repo.builder()
+                .url("https://example.com/repo-2.git")
+                .hasComponentMetadataFile(false)
+                .build();
+        Repo repo3 = Repo.builder()
+                .url("https://example.com/repo-3.git")
+                .hasComponentMetadataFile(false)
+                .build();
         List<Repo> repos1 = List.of(repo1, repo2);
         List<Repo> repos2 = List.of(repo2, repo3);
         when(mockClient.getRepos(BASE_URL, ACCESS_TOKEN_1)).thenReturn(repos1);
@@ -209,7 +218,14 @@ public class GitLabRepoFinderTest {
 
     private static List<Repo> createApiRepos(int number) {
         return List.of(
-                new Repo("https://example.com/repo-" + number + "-a.git", true),
-                new Repo("https://example.com/repo-" + number + "-b.git", false));
+                Repo.builder()
+                        .url("https://example.com/repo-" + number + "-a.git")
+                        .hasComponentMetadataFile(true)
+                        .build(),
+                Repo.builder()
+                        .url("https://example.com/repo-" + number + "-b.git")
+                        .hasComponentMetadataFile(false)
+                        .build()
+        );
     }
 }

@@ -91,7 +91,10 @@ public class GitLabClient {
           GitLabAccessTokenConfig accessToken,
           String baseUrl
   ) {
-    return repo -> new Repo(repo.getHttp_url_to_repo(), hasComponentMetadataFile(accessToken, baseUrl, repo));
+    return repo -> Repo.builder()
+            .url(repo.getHttp_url_to_repo())
+            .hasComponentMetadataFile(hasComponentMetadataFile(accessToken, baseUrl, repo))
+            .build();
   }
 
   private boolean hasComponentMetadataFile(
