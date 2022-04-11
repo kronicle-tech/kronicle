@@ -18,12 +18,13 @@ import java.util.function.UnaryOperator;
 import java.util.stream.IntStream;
 
 import static tech.kronicle.sdk.utils.ListUtils.createUnmodifiableList;
+import static tech.kronicle.sdk.utils.ObjectWithIdListUtils.mergeObjectWithIdLists;
 
 @Value
 @With
 @Builder(toBuilder = true)
 @Jacksonized
-public class EnvironmentState {
+public class EnvironmentState implements ObjectWithIdAndMerge<EnvironmentState> {
     
     @NotEmpty
     @Pattern(regexp = PatternStrings.ID)
@@ -62,5 +63,12 @@ public class EnvironmentState {
         }
 
         return withPlugins(newPlugins);
+    }
+
+    @Override
+    public EnvironmentState merge(EnvironmentState state) {
+        return withPlugins(
+                mergeObjectWithIdLists(plugins, state.plugins)
+        );
     }
 }

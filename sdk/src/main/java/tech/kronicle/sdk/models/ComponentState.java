@@ -15,6 +15,7 @@ import java.util.function.UnaryOperator;
 import java.util.stream.IntStream;
 
 import static tech.kronicle.sdk.utils.ListUtils.createUnmodifiableList;
+import static tech.kronicle.sdk.utils.ObjectWithIdListUtils.mergeObjectWithIdLists;
 
 @Value
 @With
@@ -57,5 +58,11 @@ public class ComponentState {
         }
 
         return withEnvironments(newEnvironments);
+    }
+
+    public ComponentState merge(ComponentState state) {
+        return withEnvironments(
+                mergeObjectWithIdLists(environments, state.environments)
+        );
     }
 }

@@ -54,7 +54,8 @@ public class ComponentMetadataRepository {
     }
 
     private List<ComponentMetadata> getComponentMetadataList() {
-        return repoFinderService.findRepos().stream()
+        List<Repo> repos = repoFinderService.findRepos();
+        List<ComponentMetadata> componentMetadataList = repos.stream()
                 .filter(this::repoHasComponentMetadataFile)
                 .map(this::cloneOrPullRepo)
                 .filter(Objects::nonNull)
@@ -65,6 +66,12 @@ public class ComponentMetadataRepository {
                 .map(this::validateComponentMetadata)
                 .filter(Objects::nonNull)
                 .collect(Collectors.toList());
+        componentMetadataList.add(
+                ComponentMetadata.builder()
+                        .repos(repos)
+                        .build()
+        );
+        return componentMetadataList;
     }
 
     private boolean repoHasComponentMetadataFile(Repo repo) {

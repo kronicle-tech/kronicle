@@ -23,6 +23,7 @@ import tech.kronicle.service.testutils.ValidatorServiceFactory;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static java.util.stream.Collectors.toList;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.when;
 import static tech.kronicle.utils.FileUtilsFactory.createFileUtils;
@@ -71,8 +72,15 @@ public class ComponentMetadataRepositoryTest extends BaseTest {
         ComponentMetadata returnValue = underTest.getComponentMetadata();
         
         // Then
+        assertThat(returnValue.getRepos()).hasSize(4);
+        assertThat(returnValue.getRepos().stream().map(Repo::getUrl).collect(toList())).containsExactly(
+                REPO_URL_1,
+                REPO_URL_2,
+                REPO_URL_3,
+                REPO_URL_4
+        );
         assertThat(returnValue.getAreas()).hasSize(8);
-        assertThat(returnValue.getAreas().stream().map(Area::getId).collect(Collectors.toList())).containsExactly(
+        assertThat(returnValue.getAreas().stream().map(Area::getId).collect(toList())).containsExactly(
                 "test-area-1",
                 "test-area-2",
                 "test-area-3",
@@ -80,9 +88,10 @@ public class ComponentMetadataRepositoryTest extends BaseTest {
                 "test-area-5",
                 "test-area-6",
                 "test-area-7",
-                "test-area-8");
+                "test-area-8"
+        );
         assertThat(returnValue.getTeams()).hasSize(8);
-        assertThat(returnValue.getTeams().stream().map(Team::getId).collect(Collectors.toList())).containsExactly(
+        assertThat(returnValue.getTeams().stream().map(Team::getId).collect(toList())).containsExactly(
                 "test-team-1",
                 "test-team-2",
                 "test-team-3",
@@ -90,9 +99,10 @@ public class ComponentMetadataRepositoryTest extends BaseTest {
                 "test-team-5",
                 "test-team-6",
                 "test-team-7",
-                "test-team-8");
+                "test-team-8"
+        );
         assertThat(returnValue.getComponents()).hasSize(8);
-        assertThat(returnValue.getComponents().stream().map(Component::getId).collect(Collectors.toList())).containsExactly(
+        assertThat(returnValue.getComponents().stream().map(Component::getId).collect(toList())).containsExactly(
                 "test-component-1",
                 "test-component-2",
                 "test-component-3",
@@ -100,7 +110,8 @@ public class ComponentMetadataRepositoryTest extends BaseTest {
                 "test-component-5",
                 "test-component-6",
                 "test-component-7",
-                "test-component-8");
+                "test-component-8"
+        );
     }
 
     @Test
@@ -115,15 +126,15 @@ public class ComponentMetadataRepositoryTest extends BaseTest {
 
         // Then
         assertThat(returnValue.getAreas()).hasSize(2);
-        assertThat(returnValue.getAreas().stream().map(Area::getId).collect(Collectors.toList())).containsExactly(
+        assertThat(returnValue.getAreas().stream().map(Area::getId).collect(toList())).containsExactly(
                 "test-area-3",
                 "test-area-4");
         assertThat(returnValue.getTeams()).hasSize(2);
-        assertThat(returnValue.getTeams().stream().map(Team::getId).collect(Collectors.toList())).containsExactly(
+        assertThat(returnValue.getTeams().stream().map(Team::getId).collect(toList())).containsExactly(
                 "test-team-3",
                 "test-team-4");
         assertThat(returnValue.getComponents()).hasSize(2);
-        assertThat(returnValue.getComponents().stream().map(Component::getId).collect(Collectors.toList())).containsExactly(
+        assertThat(returnValue.getComponents().stream().map(Component::getId).collect(toList())).containsExactly(
                 "test-component-3",
                 "test-component-4");
     }
@@ -149,15 +160,15 @@ public class ComponentMetadataRepositoryTest extends BaseTest {
         assertThat(event.getThrowableProxy().getMessage()).isEqualTo("Test Exception");
 
         assertThat(returnValue.getAreas()).hasSize(2);
-        assertThat(returnValue.getAreas().stream().map(Area::getId).collect(Collectors.toList())).containsExactly(
+        assertThat(returnValue.getAreas().stream().map(Area::getId).collect(toList())).containsExactly(
                 "test-area-1",
                 "test-area-2");
         assertThat(returnValue.getTeams()).hasSize(2);
-        assertThat(returnValue.getTeams().stream().map(Team::getId).collect(Collectors.toList())).containsExactly(
+        assertThat(returnValue.getTeams().stream().map(Team::getId).collect(toList())).containsExactly(
                 "test-team-1",
                 "test-team-2");
         assertThat(returnValue.getComponents()).hasSize(2);
-        assertThat(returnValue.getComponents().stream().map(Component::getId).collect(Collectors.toList())).containsExactly(
+        assertThat(returnValue.getComponents().stream().map(Component::getId).collect(toList())).containsExactly(
                 "test-component-1",
                 "test-component-2");
     }
@@ -184,15 +195,15 @@ public class ComponentMetadataRepositoryTest extends BaseTest {
                 "Could not find Kronicle metadata file in repo \"https://example.com/repo-2.git\"");
 
         assertThat(returnValue.getAreas()).hasSize(2);
-        assertThat(returnValue.getAreas().stream().map(Area::getId).collect(Collectors.toList())).containsExactly(
+        assertThat(returnValue.getAreas().stream().map(Area::getId).collect(toList())).containsExactly(
                 "test-area-1",
                 "test-area-2");
         assertThat(returnValue.getTeams()).hasSize(2);
-        assertThat(returnValue.getTeams().stream().map(Team::getId).collect(Collectors.toList())).containsExactly(
+        assertThat(returnValue.getTeams().stream().map(Team::getId).collect(toList())).containsExactly(
                 "test-team-1",
                 "test-team-2");
         assertThat(returnValue.getComponents()).hasSize(2);
-        assertThat(returnValue.getComponents().stream().map(Component::getId).collect(Collectors.toList())).containsExactly(
+        assertThat(returnValue.getComponents().stream().map(Component::getId).collect(toList())).containsExactly(
                 "test-component-1",
                 "test-component-2");
     }
@@ -227,15 +238,15 @@ public class ComponentMetadataRepositoryTest extends BaseTest {
                 + " at [Source: (StringReader); line: 2, column: 14] (through reference chain: tech.kronicle.sdk.models.ComponentMetadata$ComponentMetadataBuilder[\"components\"])");
 
         assertThat(returnValue.getAreas()).hasSize(2);
-        assertThat(returnValue.getAreas().stream().map(Area::getId).collect(Collectors.toList())).containsExactly(
+        assertThat(returnValue.getAreas().stream().map(Area::getId).collect(toList())).containsExactly(
                 "test-area-1",
                 "test-area-2");
         assertThat(returnValue.getTeams()).hasSize(2);
-        assertThat(returnValue.getTeams().stream().map(Team::getId).collect(Collectors.toList())).containsExactly(
+        assertThat(returnValue.getTeams().stream().map(Team::getId).collect(toList())).containsExactly(
                 "test-team-1",
                 "test-team-2");
         assertThat(returnValue.getComponents()).hasSize(2);
-        assertThat(returnValue.getComponents().stream().map(Component::getId).collect(Collectors.toList())).containsExactly(
+        assertThat(returnValue.getComponents().stream().map(Component::getId).collect(toList())).containsExactly(
                 "test-component-1",
                 "test-component-2");
     }
@@ -263,15 +274,15 @@ public class ComponentMetadataRepositoryTest extends BaseTest {
                 + "- components[0].id with value \"Not-Valid-Id\" must match \"[a-z][a-z0-9]*(-[a-z0-9]+)*\"");
 
         assertThat(returnValue.getAreas()).hasSize(2);
-        assertThat(returnValue.getAreas().stream().map(Area::getId).collect(Collectors.toList())).containsExactly(
+        assertThat(returnValue.getAreas().stream().map(Area::getId).collect(toList())).containsExactly(
                 "test-area-1",
                 "test-area-2");
         assertThat(returnValue.getTeams()).hasSize(2);
-        assertThat(returnValue.getTeams().stream().map(Team::getId).collect(Collectors.toList())).containsExactly(
+        assertThat(returnValue.getTeams().stream().map(Team::getId).collect(toList())).containsExactly(
                 "test-team-1",
                 "test-team-2");
         assertThat(returnValue.getComponents()).hasSize(2);
-        assertThat(returnValue.getComponents().stream().map(Component::getId).collect(Collectors.toList())).containsExactly(
+        assertThat(returnValue.getComponents().stream().map(Component::getId).collect(toList())).containsExactly(
                 "test-component-1",
                 "test-component-2");
     }

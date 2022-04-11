@@ -13,12 +13,13 @@ import javax.validation.constraints.Pattern;
 import java.util.List;
 
 import static tech.kronicle.sdk.utils.ListUtils.createUnmodifiableList;
+import static tech.kronicle.sdk.utils.ListUtils.unmodifiableUnionOfLists;
 
 @Value
 @With
 @Builder(toBuilder = true)
 @Jacksonized
-public class EnvironmentPluginState {
+public class EnvironmentPluginState implements ObjectWithIdAndMerge<EnvironmentPluginState> {
 
     @NotEmpty
     @Pattern(regexp = PatternStrings.ID)
@@ -34,5 +35,11 @@ public class EnvironmentPluginState {
         this.id = id;
         this.checks = createUnmodifiableList(checks);
         this.logSummaries = createUnmodifiableList(logSummaries);
+    }
+
+    @Override
+    public EnvironmentPluginState merge(EnvironmentPluginState state) {
+        return withChecks(unmodifiableUnionOfLists(List.of(checks, state.checks)))
+                .withLogSummaries(unmodifiableUnionOfLists(List.of(logSummaries, state.logSummaries)));
     }
 }
