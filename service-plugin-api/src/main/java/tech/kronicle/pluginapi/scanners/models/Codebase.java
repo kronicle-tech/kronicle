@@ -2,14 +2,14 @@ package tech.kronicle.pluginapi.scanners.models;
 
 import lombok.Value;
 import tech.kronicle.sdk.models.ObjectWithReference;
-import tech.kronicle.sdk.models.Repo;
+import tech.kronicle.sdk.models.RepoReference;
 
 import java.nio.file.Path;
 
 @Value
 public class Codebase implements ObjectWithReference {
 
-    Repo repo;
+    RepoReference repo;
     Path dir;
 
     @Override

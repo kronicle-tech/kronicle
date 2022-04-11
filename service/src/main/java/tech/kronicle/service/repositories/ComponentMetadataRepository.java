@@ -7,10 +7,9 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Repository;
 import tech.kronicle.common.StringEscapeUtils;
-import tech.kronicle.sdk.models.Component;
 import tech.kronicle.sdk.models.ComponentMetadata;
 import tech.kronicle.pluginapi.constants.KronicleMetadataFilePaths;
-import tech.kronicle.pluginapi.finders.models.ApiRepo;
+import tech.kronicle.sdk.models.Repo;
 import tech.kronicle.pluginapi.git.GitCloner;
 import tech.kronicle.utils.FileUtils;
 import tech.kronicle.service.exceptions.ValidationException;
@@ -39,6 +38,7 @@ public class ComponentMetadataRepository {
     public ComponentMetadata getComponentMetadata() {
         List<ComponentMetadata> componentMetadataList = getComponentMetadataList();
         return new ComponentMetadata(
+                getItems(componentMetadataList, ComponentMetadata::getRepos),
                 getItems(componentMetadataList, ComponentMetadata::getComponentTypes),
                 getItems(componentMetadataList, ComponentMetadata::getPlatforms),
                 getItems(componentMetadataList, ComponentMetadata::getAreas),
@@ -54,7 +54,8 @@ public class ComponentMetadataRepository {
     }
 
     private List<ComponentMetadata> getComponentMetadataList() {
-        return repoFinderService.findRepos().stream()
+        List<Repo> repos = repoFinderService.findRepos();
+        List<ComponentMetadata> componentMetadataList = repos.stream()
                 .filter(this::repoHasComponentMetadataFile)
                 .map(this::cloneOrPullRepo)
                 .filter(Objects::nonNull)
@@ -65,18 +66,24 @@ public class ComponentMetadataRepository {
                 .map(this::validateComponentMetadata)
                 .filter(Objects::nonNull)
                 .collect(Collectors.toList());
+        componentMetadataList.add(
+                ComponentMetadata.builder()
+                        .repos(repos)
+                        .build()
+        );
+        return componentMetadataList;
     }
 
-    private boolean repoHasComponentMetadataFile(ApiRepo repo) {
+    private boolean repoHasComponentMetadataFile(Repo repo) {
         return repo.getHasComponentMetadataFile();
     }
 
-    private RepoAndRepoDir cloneOrPullRepo(ApiRepo apiRepo) throws RuntimeException {
+    private RepoAndRepoDir cloneOrPullRepo(Repo repo) throws RuntimeException {
         try {
-            Path repoDir = gitCloner.cloneOrPullRepo(apiRepo.getUrl());
-            return new RepoAndRepoDir(apiRepo, repoDir);
+            Path repoDir = gitCloner.cloneOrPullRepo(repo.getUrl());
+            return new RepoAndRepoDir(repo, repoDir);
         } catch (Exception ex) {
-            logError(apiRepo, ex);
+            logError(repo, ex);
             return null;
         }
     }
@@ -122,28 +129,28 @@ public class ComponentMetadataRepository {
         }
     }
 
-    private void logError(ApiRepo repo, Exception e) {
+    private void logError(Repo repo, Exception e) {
         log.error("Could not read Component Metadata file from repo \"{}\"", StringEscapeUtils.escapeString(repo.getUrl()), e);
     }
 
     @AllArgsConstructor
     private static class RepoAndRepoDir {
 
-        private final ApiRepo repo;
+        private final Repo repo;
         private final Path repoDir;
     }
 
     @AllArgsConstructor
     private static class RepoAndYaml {
 
-        private final ApiRepo repo;
+        private final Repo repo;
         private final String yaml;
     }
 
     @AllArgsConstructor
     private static class RepoAndComponentMetadata {
 
-        private final ApiRepo repo;
+        private final Repo repo;
         private final ComponentMetadata componentMetadata;
     }
 }

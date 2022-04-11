@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import tech.kronicle.pluginapi.finders.models.ApiRepo;
+import tech.kronicle.sdk.models.Repo;
 import tech.kronicle.plugins.bitbucketserver.client.BitbucketServerClient;
 
 import java.util.List;
@@ -37,26 +37,29 @@ public class BitbucketServerRepoFinderTest {
     @Test
     public void findShouldCallClientAndReturnApiRepos() {
         // Given
-        List<ApiRepo> apiRepos = List.of(new ApiRepo("https://example.com/repo-1.git", true), new ApiRepo("https://example.com/repo-2.git", false));
-        when(mockClient.getNormalRepos()).thenReturn(apiRepos);
+        List<Repo> repos = List.of(
+                new Repo("https://example.com/repo-1.git", null, true, null),
+                new Repo("https://example.com/repo-2.git", null, false, null)
+        );
+        when(mockClient.getNormalRepos()).thenReturn(repos);
 
         // When
-        List<ApiRepo> returnValue = underTest.find(null);
+        List<Repo> returnValue = underTest.find(null);
 
         // Then
-        assertThat(returnValue).isSameAs(apiRepos);
+        assertThat(returnValue).isSameAs(repos);
     }
 
     @Test
     public void findShouldCallClientAndReturnAnEmptyListOfApiReposWhenClientReturnsAnEmptyList() {
         // Given
-        List<ApiRepo> apiRepos = List.of();
-        when(mockClient.getNormalRepos()).thenReturn(apiRepos);
+        List<Repo> repos = List.of();
+        when(mockClient.getNormalRepos()).thenReturn(repos);
 
         // When
-        List<ApiRepo> returnValue = underTest.find(null);
+        List<Repo> returnValue = underTest.find(null);
 
         // Then
-        assertThat(returnValue).isSameAs(apiRepos);
+        assertThat(returnValue).isSameAs(repos);
     }
 }

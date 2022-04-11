@@ -91,6 +91,7 @@ plugins:
   github:
     enabled: false
     api-base-url: https://api.github.com
+    environment-id: ci
     timeout: 30s
 
   gitlab:
@@ -164,6 +165,9 @@ plugins:
     enabled: true
 
   readme:
+    enabled: true
+
+  repo-state:
     enabled: true
 
   sonarqube:

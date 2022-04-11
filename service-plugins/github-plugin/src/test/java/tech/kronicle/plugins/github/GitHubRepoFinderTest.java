@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import tech.kronicle.pluginapi.finders.models.ApiRepo;
+import tech.kronicle.sdk.models.Repo;
 import tech.kronicle.plugins.github.client.GitHubClient;
 import tech.kronicle.plugins.github.config.GitHubAccessTokenConfig;
 import tech.kronicle.plugins.github.config.GitHubConfig;
@@ -43,6 +43,7 @@ public class GitHubRepoFinderTest {
     private GitHubRepoFinder underTest;
     @Mock
     private GitHubClient mockClient;
+
     @Test
     public void descriptionShouldReturnTheDescriptionOfTheFinder() {
         // Given
@@ -58,11 +59,11 @@ public class GitHubRepoFinderTest {
     @Test
     public void findShouldReturnAnEmptyListWhenConfigListsAreNull() {
         // Given
-        GitHubConfig config = new GitHubConfig(null, null, null, null, TIMEOUT);
+        GitHubConfig config = new GitHubConfig(null, null, null, null, null, TIMEOUT);
         underTest = new GitHubRepoFinder(config, mockClient);
 
         // When
-        List<ApiRepo> returnValue = underTest.find(null);
+        List<Repo> returnValue = underTest.find(null);
 
         // Then
         assertThat(returnValue).isEmpty();
@@ -71,11 +72,11 @@ public class GitHubRepoFinderTest {
     @Test
     public void findShouldReturnAnEmptyListWhenConfigListsAreEmpty() {
         // Given
-        GitHubConfig config = new GitHubConfig(null, List.of(), List.of(), List.of(), TIMEOUT);
+        GitHubConfig config = new GitHubConfig(null, List.of(), List.of(), List.of(), null, TIMEOUT);
         underTest = new GitHubRepoFinder(config, mockClient);
 
         // When
-        List<ApiRepo> returnValue = underTest.find(null);
+        List<Repo> returnValue = underTest.find(null);
 
         // Then
         assertThat(returnValue).isEmpty();
@@ -84,73 +85,90 @@ public class GitHubRepoFinderTest {
     @Test
     public void findShouldCallClientForAnItemInEachConfigList() {
         // Given
-        GitHubConfig config = new GitHubConfig(null, List.of(ACCESS_TOKEN_1), List.of(USER_1), List.of(ORGANIZATION_1), TIMEOUT);
-        List<ApiRepo> apiRepos1 = createApiRepos(1);
-        List<ApiRepo> apiRepos2 = createApiRepos(2);
-        List<ApiRepo> apiRepos3 = createApiRepos(3);
-        when(mockClient.getRepos(ACCESS_TOKEN_1)).thenReturn(apiRepos1);
-        when(mockClient.getRepos(USER_1)).thenReturn(apiRepos2);
-        when(mockClient.getRepos(ORGANIZATION_1)).thenReturn(apiRepos3);
+        GitHubConfig config = new GitHubConfig(
+                null,
+                List.of(ACCESS_TOKEN_1),
+                List.of(USER_1),
+                List.of(ORGANIZATION_1),
+                null,
+                TIMEOUT
+        );
+        List<Repo> repos1 = createRepos(1);
+        List<Repo> repos2 = createRepos(2);
+        List<Repo> repos3 = createRepos(3);
+        when(mockClient.getRepos(ACCESS_TOKEN_1)).thenReturn(repos1);
+        when(mockClient.getRepos(USER_1)).thenReturn(repos2);
+        when(mockClient.getRepos(ORGANIZATION_1)).thenReturn(repos3);
         underTest = new GitHubRepoFinder(config, mockClient);
 
         // When
-        List<ApiRepo> returnValue = underTest.find(null);
+        List<Repo> returnValue = underTest.find(null);
 
         // Then
-        List<ApiRepo> allApiRepos = Stream.of(apiRepos1, apiRepos2, apiRepos3)
+        List<Repo> allRepos = Stream.of(repos1, repos2, repos3)
                 .flatMap(Collection::stream)
                 .collect(Collectors.toList());
-        assertThat(returnValue).containsExactlyInAnyOrderElementsOf(allApiRepos);
+        assertThat(returnValue).containsExactlyInAnyOrderElementsOf(allRepos);
     }
 
     @Test
     public void findShouldCallClientForItemsInEachConfigList() {
         // Given
-        GitHubConfig config = new GitHubConfig(null, 
+        GitHubConfig config = new GitHubConfig(
+                null,
                 List.of(ACCESS_TOKEN_1, ACCESS_TOKEN_2, ACCESS_TOKEN_3),
                 List.of(USER_1, USER_2, USER_3),
                 List.of(ORGANIZATION_1, ORGANIZATION_2, ORGANIZATION_3),
-                TIMEOUT);
-        List<ApiRepo> apiRepos1 = createApiRepos(1);
-        List<ApiRepo> apiRepos2 = createApiRepos(2);
-        List<ApiRepo> apiRepos3 = createApiRepos(3);
-        List<ApiRepo> apiRepos4 = createApiRepos(4);
-        List<ApiRepo> apiRepos5 = createApiRepos(5);
-        List<ApiRepo> apiRepos6 = createApiRepos(6);
-        List<ApiRepo> apiRepos7 = createApiRepos(7);
-        List<ApiRepo> apiRepos8 = createApiRepos(8);
-        List<ApiRepo> apiRepos9 = createApiRepos(9);
-        when(mockClient.getRepos(ACCESS_TOKEN_1)).thenReturn(apiRepos1);
-        when(mockClient.getRepos(ACCESS_TOKEN_2)).thenReturn(apiRepos2);
-        when(mockClient.getRepos(ACCESS_TOKEN_3)).thenReturn(apiRepos3);
-        when(mockClient.getRepos(USER_1)).thenReturn(apiRepos4);
-        when(mockClient.getRepos(USER_2)).thenReturn(apiRepos5);
-        when(mockClient.getRepos(USER_3)).thenReturn(apiRepos6);
-        when(mockClient.getRepos(ORGANIZATION_1)).thenReturn(apiRepos7);
-        when(mockClient.getRepos(ORGANIZATION_2)).thenReturn(apiRepos8);
-        when(mockClient.getRepos(ORGANIZATION_3)).thenReturn(apiRepos9);
+                null,
+                TIMEOUT
+        );
+        List<Repo> repos1 = createRepos(1);
+        List<Repo> repos2 = createRepos(2);
+        List<Repo> repos3 = createRepos(3);
+        List<Repo> repos4 = createRepos(4);
+        List<Repo> repos5 = createRepos(5);
+        List<Repo> repos6 = createRepos(6);
+        List<Repo> repos7 = createRepos(7);
+        List<Repo> repos8 = createRepos(8);
+        List<Repo> repos9 = createRepos(9);
+        when(mockClient.getRepos(ACCESS_TOKEN_1)).thenReturn(repos1);
+        when(mockClient.getRepos(ACCESS_TOKEN_2)).thenReturn(repos2);
+        when(mockClient.getRepos(ACCESS_TOKEN_3)).thenReturn(repos3);
+        when(mockClient.getRepos(USER_1)).thenReturn(repos4);
+        when(mockClient.getRepos(USER_2)).thenReturn(repos5);
+        when(mockClient.getRepos(USER_3)).thenReturn(repos6);
+        when(mockClient.getRepos(ORGANIZATION_1)).thenReturn(repos7);
+        when(mockClient.getRepos(ORGANIZATION_2)).thenReturn(repos8);
+        when(mockClient.getRepos(ORGANIZATION_3)).thenReturn(repos9);
         underTest = new GitHubRepoFinder(config, mockClient);
         // When
-        List<ApiRepo> returnValue = underTest.find(null);
+        List<Repo> returnValue = underTest.find(null);
 
         // Then
-        List<ApiRepo> allApiRepos = Stream.of(apiRepos1, apiRepos2, apiRepos3, apiRepos4, apiRepos5, apiRepos6, apiRepos7, apiRepos8, apiRepos9)
+        List<Repo> allRepos = Stream.of(repos1, repos2, repos3, repos4, repos5, repos6, repos7, repos8, repos9)
                 .flatMap(Collection::stream)
                 .collect(Collectors.toList());
-        assertThat(returnValue).containsExactlyInAnyOrderElementsOf(allApiRepos);
+        assertThat(returnValue).containsExactlyInAnyOrderElementsOf(allRepos);
     }
 
     @Test
     public void findShouldCallClientAndReturnAnEmptyListOfApiReposWhenClientReturnsEmptyLists() {
         // Given
-        GitHubConfig config = new GitHubConfig(null, List.of(ACCESS_TOKEN_1), List.of(USER_1), List.of(ORGANIZATION_1), TIMEOUT);
+        GitHubConfig config = new GitHubConfig(
+                null,
+                List.of(ACCESS_TOKEN_1),
+                List.of(USER_1),
+                List.of(ORGANIZATION_1),
+                null,
+                TIMEOUT
+        );
         when(mockClient.getRepos(ACCESS_TOKEN_1)).thenReturn(List.of());
         when(mockClient.getRepos(USER_1)).thenReturn(List.of());
         when(mockClient.getRepos(ORGANIZATION_1)).thenReturn(List.of());
         underTest = new GitHubRepoFinder(config, mockClient);
 
         // When
-        List<ApiRepo> returnValue = underTest.find(null);
+        List<Repo> returnValue = underTest.find(null);
 
         // Then
         assertThat(returnValue).isEmpty();
@@ -159,36 +177,55 @@ public class GitHubRepoFinderTest {
     @Test
     public void findShouldDeduplicateIdenticalApiRepos() {
         // Given
-        GitHubConfig config = new GitHubConfig(null, 
+        GitHubConfig config = new GitHubConfig(
+                null,
                 List.of(ACCESS_TOKEN_1, ACCESS_TOKEN_2),
                 List.of(USER_1, USER_2),
                 List.of(ORGANIZATION_1, ORGANIZATION_2),
-                TIMEOUT);
-        ApiRepo apiRepo1 = new ApiRepo("https://example.com/repo-1.git", true);
-        ApiRepo apiRepo2 = new ApiRepo("https://example.com/repo-2.git", false);
-        ApiRepo apiRepo3 = new ApiRepo("https://example.com/repo-3.git", false);
-        List<ApiRepo> apiRepos1 = List.of(apiRepo1, apiRepo2);
-        List<ApiRepo> apiRepos2 = List.of(apiRepo2, apiRepo3);
-        when(mockClient.getRepos(ACCESS_TOKEN_1)).thenReturn(apiRepos1);
-        when(mockClient.getRepos(ACCESS_TOKEN_2)).thenReturn(apiRepos2);
-        when(mockClient.getRepos(USER_1)).thenReturn(apiRepos1);
-        when(mockClient.getRepos(USER_2)).thenReturn(apiRepos2);
-        when(mockClient.getRepos(ORGANIZATION_1)).thenReturn(apiRepos1);
-        when(mockClient.getRepos(ORGANIZATION_2)).thenReturn(apiRepos2);
+                null,
+                TIMEOUT
+        );
+        Repo repo1 = createRepo(1, true);
+        Repo repo2 = createRepo(2, false);
+        Repo repo3 = createRepo(3, false);
+        List<Repo> repos1 = List.of(repo1, repo2);
+        List<Repo> repos2 = List.of(repo2, repo3);
+        when(mockClient.getRepos(ACCESS_TOKEN_1)).thenReturn(repos1);
+        when(mockClient.getRepos(ACCESS_TOKEN_2)).thenReturn(repos2);
+        when(mockClient.getRepos(USER_1)).thenReturn(repos1);
+        when(mockClient.getRepos(USER_2)).thenReturn(repos2);
+        when(mockClient.getRepos(ORGANIZATION_1)).thenReturn(repos1);
+        when(mockClient.getRepos(ORGANIZATION_2)).thenReturn(repos2);
         underTest = new GitHubRepoFinder(config, mockClient);
         // When
-        List<ApiRepo> returnValue = underTest.find(null);
+        List<Repo> returnValue = underTest.find(null);
 
         // Then
         assertThat(returnValue).hasSize(3);
-        assertThat(returnValue).containsExactly(apiRepo1, apiRepo2, apiRepo3);
+        assertThat(returnValue).containsExactly(repo1, repo2, repo3);
     }
 
     private static GitHubAccessTokenConfig createAccessToken(int number) {
         return new GitHubAccessTokenConfig("test-personal-access-token-username-" + number, "test-personal-access-token-" + number);
     }
 
-    private static List<ApiRepo> createApiRepos(int number) {
-        return List.of(new ApiRepo("https://example.com/repo-" + number + "-a.git", true), new ApiRepo("https://example.com/repo-" + number + "-b.git", false));
+    private List<Repo> createRepos(int reposNumber) {
+        return List.of(
+                createRepo(reposNumber, "-a", true),
+                createRepo(reposNumber, "-b", false)
+        );
+    }
+
+    private Repo createRepo(int repoNumber, boolean hasComponentMetadataFile) {
+        return createRepo(repoNumber, "", hasComponentMetadataFile);
+    }
+
+    private Repo createRepo(int repoNumber, String repoSuffix, boolean hasComponentMetadataFile) {
+        return new Repo(
+                "https://example.com/repo-" + repoNumber + repoSuffix + ".git",
+                "test-repo-description-" + repoNumber + repoSuffix,
+                hasComponentMetadataFile,
+                null
+        );
     }
 }

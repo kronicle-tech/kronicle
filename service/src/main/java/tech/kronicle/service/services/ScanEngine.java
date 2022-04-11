@@ -12,7 +12,7 @@ import tech.kronicle.pluginapi.scanners.models.Output;
 import tech.kronicle.sdk.models.Component;
 import tech.kronicle.sdk.models.ComponentMetadata;
 import tech.kronicle.sdk.models.ObjectWithReference;
-import tech.kronicle.sdk.models.Repo;
+import tech.kronicle.sdk.models.RepoReference;
 import tech.kronicle.sdk.models.ScannerError;
 import tech.kronicle.sdk.models.Summary;
 import tech.kronicle.service.exceptions.ValidationException;
@@ -53,19 +53,19 @@ public class ScanEngine {
     public void scan(ComponentMetadata componentMetadata, ConcurrentHashMap<String, Component> componentMap, Consumer<Summary> summaryConsumer) {
         Consumer<UnaryOperator<Summary>> summaryTransformerConsumer = createSummaryTransformerConsumer(summaryConsumer);
 
-        ComponentMetadata updatedComponentMetadata = findAndProcessExtraComponents(componentMetadata, componentMap);
+        componentMetadata = findAndProcessExtraComponents(componentMetadata, componentMap);
 
-        findAndProcessTracingData(updatedComponentMetadata, summaryTransformerConsumer);
+        findAndProcessTracingData(componentMetadata, summaryTransformerConsumer);
 
-        executeComponentScanners(componentMap, summaryTransformerConsumer, updatedComponentMetadata);
+        executeComponentScanners(componentMap, summaryTransformerConsumer, componentMetadata);
 
-        Map<Codebase, List<String>> codebaseAndComponentIdsMap = executeRepoScanner(componentMap, summaryTransformerConsumer, updatedComponentMetadata);
+        Map<Codebase, List<String>> codebaseAndComponentIdsMap = executeRepoScanner(componentMap, summaryTransformerConsumer, componentMetadata);
 
-        executeCodebaseScanners(componentMap, summaryTransformerConsumer, updatedComponentMetadata, codebaseAndComponentIdsMap);
+        executeCodebaseScanners(componentMap, summaryTransformerConsumer, componentMetadata, codebaseAndComponentIdsMap);
 
-        executeComponentAndCodebaseScanners(componentMap, summaryTransformerConsumer, updatedComponentMetadata, codebaseAndComponentIdsMap);
+        executeComponentAndCodebaseScanners(componentMap, summaryTransformerConsumer, componentMetadata, codebaseAndComponentIdsMap);
 
-        executeLateComponentScanners(componentMap, summaryTransformerConsumer, updatedComponentMetadata);
+        executeLateComponentScanners(componentMap, summaryTransformerConsumer, componentMetadata);
     }
 
     private Consumer<UnaryOperator<Summary>> createSummaryTransformerConsumer(Consumer<Summary> summaryConsumer) {
@@ -114,7 +114,7 @@ public class ScanEngine {
     private Map<Codebase, List<String>> executeRepoScanner(ConcurrentHashMap<String, Component> componentMap, Consumer<UnaryOperator<Summary>> summaryTransformerConsumer, ComponentMetadata updatedComponentMetadata) {
         return executeScanner(
                 updatedComponentMetadata,
-                getRepoAndComponentIdsMap(componentMap),
+                getFreshRepoReferenceAndComponentIdsMap(componentMap),
                 componentMap,
                 scannerRegistry.getRepoScanner(),
                 summaryTransformerConsumer);
@@ -155,12 +155,24 @@ public class ScanEngine {
      * @param componentMap  a map with component ids as the keys and their components as the values.
      * @return              a map containing components as keys and each component's id as the value
      */
-    private Map<Component, List<String>> getFreshComponentAndComponentIdMap(ConcurrentHashMap<String, Component> componentMap) {
+    private Map<Component, List<String>> getFreshComponentAndComponentIdMap(
+            ConcurrentHashMap<String, Component> componentMap
+    ) {
         return componentMap.values().stream()
                 .collect(Collectors.groupingBy(Function.identity(), Collectors.mapping(Component::getId, Collectors.toList())));
     }
 
-    private Map<Repo, List<String>> getRepoAndComponentIdsMap(ConcurrentHashMap<String, Component> componentMap) {
+    /**
+     * The components are immutable value types using Lombok's @Value annotation.  The components in componentMap get updated (replaced because they
+     * are immutable) when they pass through the scanners.  Consequently this method needs to be called each time its return value is needed and not stored
+     * in a variable for reuse, otherwise the components in the map would be out-of-date for second and subsequent reuses.
+     *
+     * @param componentMap a map with component ids as the keys and their components as the values.
+     * @return             a map containing repo references as keys and the associated components' ids as the values
+     */
+    private Map<RepoReference, List<String>> getFreshRepoReferenceAndComponentIdsMap(
+            ConcurrentHashMap<String, Component> componentMap
+    ) {
         return componentMap.values().stream()
                 .filter(this::componentHasRepo)
                 .collect(Collectors.groupingBy(Component::getRepo, Collectors.mapping(Component::getId, Collectors.toList())));
@@ -179,8 +191,10 @@ public class ScanEngine {
      * @param codebaseAndComponentIdsMap    a map with codebases as the keys and their components as the values.  Each codebase can have 1 or more components
      * @return                              a map containing component and codebase pairs as keys and those component's ids as the values
      */
-    private Map<ComponentAndCodebase, List<String>> getFreshComponentAndCodebaseAndComponentIdsMap(ConcurrentHashMap<String, Component> componentMap,
-                                                                                                   Map<Codebase, List<String>> codebaseAndComponentIdsMap) {
+    private Map<ComponentAndCodebase, List<String>> getFreshComponentAndCodebaseAndComponentIdsMap(
+            ConcurrentHashMap<String, Component> componentMap,
+            Map<Codebase, List<String>> codebaseAndComponentIdsMap
+    ) {
         return codebaseAndComponentIdsMap.entrySet().stream()
                 .flatMap(entry -> entry.getValue().stream()
                         .map(componentId -> Map.entry(

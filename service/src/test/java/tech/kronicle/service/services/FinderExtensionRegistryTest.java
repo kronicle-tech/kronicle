@@ -8,8 +8,7 @@ import tech.kronicle.sdk.models.ComponentMetadata;
 import tech.kronicle.pluginapi.finders.TracingDataFinder;
 import tech.kronicle.pluginapi.finders.Finder;
 import tech.kronicle.pluginapi.finders.RepoFinder;
-import tech.kronicle.pluginapi.finders.models.ApiRepo;
-import tech.kronicle.sdk.models.Dependency;
+import tech.kronicle.sdk.models.Repo;
 import tech.kronicle.service.services.testutils.FakePluginManager;
 
 import java.util.List;
@@ -137,7 +136,7 @@ public class FinderExtensionRegistryTest {
         }
 
         @Override
-        public List<ApiRepo> find(Void ignored) {
+        public List<Repo> find(Void ignored) {
             return null;
         }
     }

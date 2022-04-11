@@ -7,18 +7,18 @@ import java.util.ArrayList;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.catchThrowable;
 
-public class ComponentStateLogSummaryTest {
+public class LogSummaryStateTest {
 
     @Test
     public void constructorShouldMakeLevelsAnUnmodifiableList() {
         // Given
-        ComponentStateLogSummary underTest = ComponentStateLogSummary.builder()
+        LogSummaryState underTest = LogSummaryState.builder()
                 .levels(new ArrayList<>())
                 .build();
 
         // When
         Throwable thrown = catchThrowable(() -> underTest.getLevels().add(
-                ComponentStateLogLevel.builder().build())
+                LogLevelState.builder().build())
         );
 
         // Then
@@ -28,13 +28,13 @@ public class ComponentStateLogSummaryTest {
     @Test
     public void constructorShouldMakeComparisonsAnUnmodifiableList() {
         // Given
-        ComponentStateLogSummary underTest = ComponentStateLogSummary.builder()
+        LogSummaryState underTest = LogSummaryState.builder()
                 .comparisons(new ArrayList<>())
                 .build();
 
         // When
         Throwable thrown = catchThrowable(() -> underTest.getComparisons().add(
-                ComponentStateLogSummary.builder().build())
+                LogSummaryState.builder().build())
         );
 
         // Then

@@ -11,7 +11,7 @@ import tech.kronicle.pluginapi.scanners.models.Codebase;
 import tech.kronicle.pluginapi.scanners.models.ComponentAndCodebase;
 import tech.kronicle.pluginapi.scanners.models.Output;
 import tech.kronicle.sdk.models.Component;
-import tech.kronicle.sdk.models.Repo;
+import tech.kronicle.sdk.models.RepoReference;
 import tech.kronicle.service.services.testutils.FakePluginManager;
 
 import java.nio.file.Path;
@@ -251,8 +251,8 @@ public class ScannerExtensionRegistryTest {
         }
 
         @Override
-        public Output<Codebase> scan(Repo input) {
-            return Output.of(UnaryOperator.identity(), new Codebase(new Repo("https://example.com/example.git"), Path.of("test-codebase-dir")));
+        public Output<Codebase> scan(RepoReference input) {
+            return Output.of(UnaryOperator.identity(), new Codebase(new RepoReference("https://example.com/example.git"), Path.of("test-codebase-dir")));
         }
     }
 

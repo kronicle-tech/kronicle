@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.List;
 
+import static java.util.stream.Collectors.toUnmodifiableList;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.catchThrowable;
 
@@ -18,7 +19,7 @@ public class ComponentStateTest {
 
         // When
         Throwable thrown = catchThrowable(() -> underTest.getEnvironments().add(
-                ComponentStateEnvironment.builder().build())
+                EnvironmentState.builder().build())
         );
 
         // Then
@@ -28,7 +29,7 @@ public class ComponentStateTest {
     @Test
     public void withUpdatedEnvironmentShouldPassANewEnvironmentObjectToActionWhenEnvironmentDoesNotExist() {
         // Given
-        ComponentStateEnvironment updatedEnvironment = createEnvironment(1, 1);
+        EnvironmentState updatedEnvironment = createEnvironment(1, 1);
         ComponentState underTest = ComponentState.builder().build();
         FakeEnvironmentUpdateAction action = new FakeEnvironmentUpdateAction(updatedEnvironment);
 
@@ -38,7 +39,7 @@ public class ComponentStateTest {
         // Then
         assertThat(returnValue).isEqualTo(underTest.withEnvironments(List.of(updatedEnvironment)));
         assertThat(action.calls).containsExactly(
-                ComponentStateEnvironment.builder()
+                EnvironmentState.builder()
                         .id(createEnvironmentId(1))
                         .build()
         );
@@ -47,7 +48,7 @@ public class ComponentStateTest {
     @Test
     public void withUpdatedEnvironmentShouldKeepExistingEnvironmentsWhenAddingANewOne() {
         // Given
-        ComponentStateEnvironment updatedEnvironment = createEnvironment(1, 1);
+        EnvironmentState updatedEnvironment = createEnvironment(1, 1);
         ComponentState underTest = ComponentState.builder()
                 .environments(List.of(
                         createEnvironment(2, 1),
@@ -66,7 +67,7 @@ public class ComponentStateTest {
                 updatedEnvironment
         )));
         assertThat(action.calls).containsExactly(
-                ComponentStateEnvironment.builder()
+                EnvironmentState.builder()
                         .id(createEnvironmentId(1))
                         .build()
         );
@@ -75,8 +76,8 @@ public class ComponentStateTest {
     @Test
     public void withUpdatedEnvironmentShouldPassExistingEnvironmentObjectToActionWhenEnvironmentAlreadyExists() {
         // Given
-        ComponentStateEnvironment initialEnvironment = createEnvironment(1, 1);
-        ComponentStateEnvironment updatedEnvironment = createEnvironment(1, 2);
+        EnvironmentState initialEnvironment = createEnvironment(1, 1);
+        EnvironmentState updatedEnvironment = createEnvironment(1, 2);
         ComponentState underTest = ComponentState.builder()
                 .environments(List.of(initialEnvironment))
                 .build();
@@ -93,8 +94,8 @@ public class ComponentStateTest {
     @Test
     public void withUpdatedEnvironmentShouldKeepExistingEnvironmentsWhenUpdatingOne() {
         // Given
-        ComponentStateEnvironment initialEnvironment = createEnvironment(1, 1);
-        ComponentStateEnvironment updatedEnvironment = createEnvironment(1, 2);
+        EnvironmentState initialEnvironment = createEnvironment(1, 1);
+        EnvironmentState updatedEnvironment = createEnvironment(1, 2);
         ComponentState underTest = ComponentState.builder()
                 .environments(List.of(
                         initialEnvironment,
@@ -116,14 +117,55 @@ public class ComponentStateTest {
         assertThat(action.calls).containsExactly(initialEnvironment);
     }
 
-    private ComponentStateEnvironment createEnvironment(int environmentNumber, int pluginNumber) {
-        return ComponentStateEnvironment.builder()
-                .id(createEnvironmentId(environmentNumber))
-                .plugins(List.of(
-                        ComponentStateEnvironmentPlugin.builder()
-                                .id("test-plugin-id-" + environmentNumber + "-" + pluginNumber)
-                                .build()
+    @Test
+    public void mergeShouldMergeEnvironments() {
+        // Given
+        EnvironmentState environment1 = createEnvironment(1, 1);
+        EnvironmentState environment2A = createEnvironment(2, 1);
+        EnvironmentState environment2B = createEnvironment(2, 2);
+        EnvironmentState environment3 = createEnvironment(3, 1);
+        ComponentState underTest1 = ComponentState.builder()
+                .environments(List.of(
+                        environment1,
+                        environment2A
                 ))
+                .build();
+        ComponentState underTest2 = ComponentState.builder()
+                .environments(List.of(
+                        environment2B,
+                        environment3
+                ))
+                .build();
+
+        // When
+        ComponentState returnValue = underTest1.merge(underTest2);
+
+        // Then
+        assertThat(returnValue.getEnvironments()).containsExactly(
+                environment1,
+                createEnvironment(2, List.of(1, 2)),
+                environment3
+        );
+    }
+
+    private EnvironmentState createEnvironment(int environmentNumber, int pluginNumber) {
+        return createEnvironment(environmentNumber, List.of(pluginNumber));
+    }
+
+    private EnvironmentState createEnvironment(int environmentNumber, List<Integer> pluginNumbers) {
+        return EnvironmentState.builder()
+                .id(createEnvironmentId(environmentNumber))
+                .plugins(
+                        pluginNumbers.stream()
+                                .map(pluginNumber -> createPlugin(environmentNumber, pluginNumber))
+                                .collect(toUnmodifiableList())
+                )
+                .build();
+    }
+
+    private EnvironmentPluginState createPlugin(int environmentNumber, int pluginNumber) {
+        return EnvironmentPluginState.builder()
+                .id("test-plugin-id-" + environmentNumber + "-" + pluginNumber)
                 .build();
     }
 
@@ -134,10 +176,10 @@ public class ComponentStateTest {
     @RequiredArgsConstructor
     private static class FakeEnvironmentUpdateAction {
 
-        private final ComponentStateEnvironment updatedEnvironment;
-        private final List<ComponentStateEnvironment> calls = new ArrayList<>();
+        private final EnvironmentState updatedEnvironment;
+        private final List<EnvironmentState> calls = new ArrayList<>();
 
-        public ComponentStateEnvironment apply(ComponentStateEnvironment value) {
+        public EnvironmentState apply(EnvironmentState value) {
             calls.add(value);
             return updatedEnvironment;
         }

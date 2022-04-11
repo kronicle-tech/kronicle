@@ -17,7 +17,7 @@ import static tech.kronicle.sdk.utils.ListUtils.createUnmodifiableList;
 @With
 @Builder(toBuilder = true)
 @Jacksonized
-public class ComponentStateLogSummary {
+public class LogSummaryState {
 
     @NotEmpty
     String name;
@@ -25,17 +25,17 @@ public class ComponentStateLogSummary {
     LocalDateTime startTimestamp;
     @NotNull
     LocalDateTime endTimestamp;
-    List<@NotNull @Valid ComponentStateLogLevel> levels;
-    List<@NotNull @Valid ComponentStateLogSummary> comparisons;
+    List<@NotNull @Valid LogLevelState> levels;
+    List<@NotNull @Valid LogSummaryState> comparisons;
     @NotNull
     LocalDateTime updateTimestamp;
 
-    public ComponentStateLogSummary(
+    public LogSummaryState(
             String name,
             LocalDateTime startTimestamp,
             LocalDateTime endTimestamp,
-            List<ComponentStateLogLevel> levels,
-            List<ComponentStateLogSummary> comparisons,
+            List<LogLevelState> levels,
+            List<LogSummaryState> comparisons,
             LocalDateTime updateTimestamp
     ) {
         this.name = name;

@@ -24,6 +24,18 @@ public class ComponentMetadataTest {
     }
 
     @Test
+    public void constructorShouldMakeReposAnUnmodifiableList() {
+        // Given
+        ComponentMetadata underTest = ComponentMetadata.builder().repos(new ArrayList<>()).build();
+
+        // When
+        Throwable thrown = catchThrowable(() -> underTest.getRepos().add(Repo.builder().build()));
+
+        // Then
+        assertThat(thrown).isInstanceOf(UnsupportedOperationException.class);
+    }
+
+    @Test
     public void constructorShouldMakeComponentTypesAnUnmodifiableList() {
         // Given
         ComponentMetadata underTest = ComponentMetadata.builder().componentTypes(new ArrayList<>()).build();

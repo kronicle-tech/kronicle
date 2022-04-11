@@ -11,7 +11,7 @@ import tech.kronicle.pluginapi.scanners.models.Output;
 import tech.kronicle.plugins.sonarqube.services.SonarQubeService;
 import tech.kronicle.sdk.models.Component;
 import tech.kronicle.sdk.models.ComponentMetadata;
-import tech.kronicle.sdk.models.Repo;
+import tech.kronicle.sdk.models.RepoReference;
 import tech.kronicle.sdk.models.Summary;
 import tech.kronicle.sdk.models.SummaryMissingComponent;
 import tech.kronicle.sdk.models.sonarqube.SonarQubeProject;
@@ -83,7 +83,7 @@ public class SonarQubeScannerTest {
         when(mockService.findProjects(codebaseDir)).thenReturn(projects);
 
         // When
-        Output<Void> returnValue = underTest.scan(new ComponentAndCodebase(Component.builder().build(), new Codebase(new Repo("https://example.com"), codebaseDir)));
+        Output<Void> returnValue = underTest.scan(new ComponentAndCodebase(Component.builder().build(), new Codebase(new RepoReference("https://example.com"), codebaseDir)));
 
         // Then
         assertThat(returnValue).isNotNull();

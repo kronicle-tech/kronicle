@@ -3,7 +3,7 @@ package tech.kronicle.plugins.bitbucketserver;
 import lombok.RequiredArgsConstructor;
 import org.pf4j.Extension;
 import tech.kronicle.pluginapi.finders.RepoFinder;
-import tech.kronicle.pluginapi.finders.models.ApiRepo;
+import tech.kronicle.sdk.models.Repo;
 import tech.kronicle.plugins.bitbucketserver.client.BitbucketServerClient;
 
 import javax.inject.Inject;
@@ -21,7 +21,7 @@ public class BitbucketServerRepoFinder extends RepoFinder {
     }
 
     @Override
-    public List<ApiRepo> find(Void ignored) {
+    public List<Repo> find(Void ignored) {
         return client.getNormalRepos();
     }
 }

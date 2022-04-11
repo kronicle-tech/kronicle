@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import tech.kronicle.pluginapi.finders.models.ApiRepo;
+import tech.kronicle.sdk.models.Repo;
 import tech.kronicle.plugins.gitlab.client.GitLabClient;
 import tech.kronicle.plugins.gitlab.config.GitLabAccessTokenConfig;
 import tech.kronicle.plugins.gitlab.config.GitLabConfig;
@@ -66,7 +66,7 @@ public class GitLabRepoFinderTest {
         underTest = new GitLabRepoFinder(config, mockClient);
 
         // When
-        List<ApiRepo> returnValue = underTest.find(null);
+        List<Repo> returnValue = underTest.find(null);
 
         // Then
         assertThat(returnValue).isEmpty();
@@ -79,7 +79,7 @@ public class GitLabRepoFinderTest {
         underTest = new GitLabRepoFinder(config, mockClient);
 
         // When
-        List<ApiRepo> returnValue = underTest.find(null);
+        List<Repo> returnValue = underTest.find(null);
 
         // Then
         assertThat(returnValue).isEmpty();
@@ -95,22 +95,22 @@ public class GitLabRepoFinderTest {
                         List.of(GROUP_1))),
                 PAGE_SIZE,
                 TIMEOUT);
-        List<ApiRepo> apiRepos1 = createApiRepos(1);
-        List<ApiRepo> apiRepos2 = createApiRepos(2);
-        List<ApiRepo> apiRepos3 = createApiRepos(3);
-        when(mockClient.getRepos(BASE_URL, ACCESS_TOKEN_1)).thenReturn(apiRepos1);
-        when(mockClient.getRepos(BASE_URL, USER_1)).thenReturn(apiRepos2);
-        when(mockClient.getRepos(BASE_URL, GROUP_1)).thenReturn(apiRepos3);
+        List<Repo> repos1 = createApiRepos(1);
+        List<Repo> repos2 = createApiRepos(2);
+        List<Repo> repos3 = createApiRepos(3);
+        when(mockClient.getRepos(BASE_URL, ACCESS_TOKEN_1)).thenReturn(repos1);
+        when(mockClient.getRepos(BASE_URL, USER_1)).thenReturn(repos2);
+        when(mockClient.getRepos(BASE_URL, GROUP_1)).thenReturn(repos3);
         underTest = new GitLabRepoFinder(config, mockClient);
 
         // When
-        List<ApiRepo> returnValue = underTest.find(null);
+        List<Repo> returnValue = underTest.find(null);
 
         // Then
-        List<ApiRepo> allApiRepos = Stream.of(apiRepos1, apiRepos2, apiRepos3)
+        List<Repo> allRepos = Stream.of(repos1, repos2, repos3)
                 .flatMap(Collection::stream)
                 .collect(Collectors.toList());
-        assertThat(returnValue).containsExactlyInAnyOrderElementsOf(allApiRepos);
+        assertThat(returnValue).containsExactlyInAnyOrderElementsOf(allRepos);
     }
 
     @Test
@@ -123,33 +123,33 @@ public class GitLabRepoFinderTest {
                         List.of(GROUP_1, GROUP_2, GROUP_3))),
                 PAGE_SIZE,
                 TIMEOUT);
-        List<ApiRepo> apiRepos1 = createApiRepos(1);
-        List<ApiRepo> apiRepos2 = createApiRepos(2);
-        List<ApiRepo> apiRepos3 = createApiRepos(3);
-        List<ApiRepo> apiRepos4 = createApiRepos(4);
-        List<ApiRepo> apiRepos5 = createApiRepos(5);
-        List<ApiRepo> apiRepos6 = createApiRepos(6);
-        List<ApiRepo> apiRepos7 = createApiRepos(7);
-        List<ApiRepo> apiRepos8 = createApiRepos(8);
-        List<ApiRepo> apiRepos9 = createApiRepos(9);
-        when(mockClient.getRepos(BASE_URL, ACCESS_TOKEN_1)).thenReturn(apiRepos1);
-        when(mockClient.getRepos(BASE_URL, ACCESS_TOKEN_2)).thenReturn(apiRepos2);
-        when(mockClient.getRepos(BASE_URL, ACCESS_TOKEN_3)).thenReturn(apiRepos3);
-        when(mockClient.getRepos(BASE_URL, USER_1)).thenReturn(apiRepos4);
-        when(mockClient.getRepos(BASE_URL, USER_2)).thenReturn(apiRepos5);
-        when(mockClient.getRepos(BASE_URL, USER_3)).thenReturn(apiRepos6);
-        when(mockClient.getRepos(BASE_URL, GROUP_1)).thenReturn(apiRepos7);
-        when(mockClient.getRepos(BASE_URL, GROUP_2)).thenReturn(apiRepos8);
-        when(mockClient.getRepos(BASE_URL, GROUP_3)).thenReturn(apiRepos9);
+        List<Repo> repos1 = createApiRepos(1);
+        List<Repo> repos2 = createApiRepos(2);
+        List<Repo> repos3 = createApiRepos(3);
+        List<Repo> repos4 = createApiRepos(4);
+        List<Repo> repos5 = createApiRepos(5);
+        List<Repo> repos6 = createApiRepos(6);
+        List<Repo> repos7 = createApiRepos(7);
+        List<Repo> repos8 = createApiRepos(8);
+        List<Repo> repos9 = createApiRepos(9);
+        when(mockClient.getRepos(BASE_URL, ACCESS_TOKEN_1)).thenReturn(repos1);
+        when(mockClient.getRepos(BASE_URL, ACCESS_TOKEN_2)).thenReturn(repos2);
+        when(mockClient.getRepos(BASE_URL, ACCESS_TOKEN_3)).thenReturn(repos3);
+        when(mockClient.getRepos(BASE_URL, USER_1)).thenReturn(repos4);
+        when(mockClient.getRepos(BASE_URL, USER_2)).thenReturn(repos5);
+        when(mockClient.getRepos(BASE_URL, USER_3)).thenReturn(repos6);
+        when(mockClient.getRepos(BASE_URL, GROUP_1)).thenReturn(repos7);
+        when(mockClient.getRepos(BASE_URL, GROUP_2)).thenReturn(repos8);
+        when(mockClient.getRepos(BASE_URL, GROUP_3)).thenReturn(repos9);
         underTest = new GitLabRepoFinder(config, mockClient);
         // When
-        List<ApiRepo> returnValue = underTest.find(null);
+        List<Repo> returnValue = underTest.find(null);
 
         // Then
-        List<ApiRepo> allApiRepos = Stream.of(apiRepos1, apiRepos2, apiRepos3, apiRepos4, apiRepos5, apiRepos6, apiRepos7, apiRepos8, apiRepos9)
+        List<Repo> allRepos = Stream.of(repos1, repos2, repos3, repos4, repos5, repos6, repos7, repos8, repos9)
                 .flatMap(Collection::stream)
                 .collect(Collectors.toList());
-        assertThat(returnValue).containsExactlyInAnyOrderElementsOf(allApiRepos);
+        assertThat(returnValue).containsExactlyInAnyOrderElementsOf(allRepos);
     }
 
     @Test
@@ -168,7 +168,7 @@ public class GitLabRepoFinderTest {
         underTest = new GitLabRepoFinder(config, mockClient);
 
         // When
-        List<ApiRepo> returnValue = underTest.find(null);
+        List<Repo> returnValue = underTest.find(null);
 
         // Then
         assertThat(returnValue).isEmpty();
@@ -184,32 +184,48 @@ public class GitLabRepoFinderTest {
                         List.of(GROUP_1, GROUP_2))),
                 PAGE_SIZE,
                 TIMEOUT);
-        ApiRepo apiRepo1 = new ApiRepo("https://example.com/repo-1.git", true);
-        ApiRepo apiRepo2 = new ApiRepo("https://example.com/repo-2.git", false);
-        ApiRepo apiRepo3 = new ApiRepo("https://example.com/repo-3.git", false);
-        List<ApiRepo> apiRepos1 = List.of(apiRepo1, apiRepo2);
-        List<ApiRepo> apiRepos2 = List.of(apiRepo2, apiRepo3);
-        when(mockClient.getRepos(BASE_URL, ACCESS_TOKEN_1)).thenReturn(apiRepos1);
-        when(mockClient.getRepos(BASE_URL, ACCESS_TOKEN_2)).thenReturn(apiRepos2);
-        when(mockClient.getRepos(BASE_URL, USER_1)).thenReturn(apiRepos1);
-        when(mockClient.getRepos(BASE_URL, USER_2)).thenReturn(apiRepos2);
-        when(mockClient.getRepos(BASE_URL, GROUP_1)).thenReturn(apiRepos1);
-        when(mockClient.getRepos(BASE_URL, GROUP_2)).thenReturn(apiRepos2);
+        Repo repo1 = Repo.builder()
+                .url("https://example.com/repo-1.git")
+                .hasComponentMetadataFile(true)
+                .build();
+        Repo repo2 = Repo.builder()
+                .url("https://example.com/repo-2.git")
+                .hasComponentMetadataFile(false)
+                .build();
+        Repo repo3 = Repo.builder()
+                .url("https://example.com/repo-3.git")
+                .hasComponentMetadataFile(false)
+                .build();
+        List<Repo> repos1 = List.of(repo1, repo2);
+        List<Repo> repos2 = List.of(repo2, repo3);
+        when(mockClient.getRepos(BASE_URL, ACCESS_TOKEN_1)).thenReturn(repos1);
+        when(mockClient.getRepos(BASE_URL, ACCESS_TOKEN_2)).thenReturn(repos2);
+        when(mockClient.getRepos(BASE_URL, USER_1)).thenReturn(repos1);
+        when(mockClient.getRepos(BASE_URL, USER_2)).thenReturn(repos2);
+        when(mockClient.getRepos(BASE_URL, GROUP_1)).thenReturn(repos1);
+        when(mockClient.getRepos(BASE_URL, GROUP_2)).thenReturn(repos2);
         underTest = new GitLabRepoFinder(config, mockClient);
         // When
-        List<ApiRepo> returnValue = underTest.find(null);
+        List<Repo> returnValue = underTest.find(null);
 
         // Then
-        assertThat(returnValue).containsExactly(apiRepo1, apiRepo2, apiRepo3);
+        assertThat(returnValue).containsExactly(repo1, repo2, repo3);
     }
 
     private static GitLabAccessTokenConfig createAccessToken(int number) {
         return new GitLabAccessTokenConfig("test-access-token-" + number);
     }
 
-    private static List<ApiRepo> createApiRepos(int number) {
+    private static List<Repo> createApiRepos(int number) {
         return List.of(
-                new ApiRepo("https://example.com/repo-" + number + "-a.git", true),
-                new ApiRepo("https://example.com/repo-" + number + "-b.git", false));
+                Repo.builder()
+                        .url("https://example.com/repo-" + number + "-a.git")
+                        .hasComponentMetadataFile(true)
+                        .build(),
+                Repo.builder()
+                        .url("https://example.com/repo-" + number + "-b.git")
+                        .hasComponentMetadataFile(false)
+                        .build()
+        );
     }
 }

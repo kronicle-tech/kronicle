@@ -13,7 +13,7 @@ import tech.kronicle.sdk.models.ComponentDependency;
 import tech.kronicle.sdk.models.ComponentTeam;
 import tech.kronicle.sdk.models.ComponentType;
 import tech.kronicle.sdk.models.Platform;
-import tech.kronicle.sdk.models.Repo;
+import tech.kronicle.sdk.models.RepoReference;
 import tech.kronicle.sdk.models.Team;
 
 import java.util.List;
@@ -538,7 +538,7 @@ public class ComponentMetadataLoaderTest {
                 .builder()
                 .id("test-component-id-" + idNumber)
                 .name("Test Component Name " + othersNumber)
-                .repo(Repo.builder().url("http://example.com/test-repo-" + othersNumber + ".git").build())
+                .repo(RepoReference.builder().url("http://example.com/test-repo-" + othersNumber + ".git").build())
                 .typeId("test-component-type-id-" + othersNumber);
     }
 

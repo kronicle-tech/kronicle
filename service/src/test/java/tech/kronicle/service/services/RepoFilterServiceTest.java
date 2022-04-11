@@ -1,7 +1,7 @@
 package tech.kronicle.service.services;
 
 import org.junit.jupiter.api.Test;
-import tech.kronicle.pluginapi.finders.models.ApiRepo;
+import tech.kronicle.sdk.models.Repo;
 import tech.kronicle.service.config.RepoFindersConfig;
 import tech.kronicle.service.config.RepoFindersIgnoredRepoConfig;
 
@@ -18,7 +18,7 @@ public class RepoFilterServiceTest {
         RepoFilterService underTest = new RepoFilterService(config);
 
         // When
-        boolean returnValue = underTest.keepRepo(new ApiRepo("https://example.com/test-repo", true));
+        boolean returnValue = underTest.keepRepo(createRepo("https://example.com/test-repo", true));
 
         // Then
         assertThat(returnValue).isTrue();
@@ -31,7 +31,7 @@ public class RepoFilterServiceTest {
         RepoFilterService underTest = new RepoFilterService(config);
 
         // When
-        boolean returnValue = underTest.keepRepo(new ApiRepo("https://example.com/test-repo", true));
+        boolean returnValue = underTest.keepRepo(createRepo("https://example.com/test-repo", true));
 
         // Then
         assertThat(returnValue).isTrue();
@@ -46,7 +46,7 @@ public class RepoFilterServiceTest {
         RepoFilterService underTest = new RepoFilterService(config);
 
         // When
-        boolean returnValue = underTest.keepRepo(new ApiRepo("https://example.com/test-repo-2", true));
+        boolean returnValue = underTest.keepRepo(createRepo("https://example.com/test-repo-2", true));
 
         // Then
         assertThat(returnValue).isTrue();
@@ -61,9 +61,16 @@ public class RepoFilterServiceTest {
         RepoFilterService underTest = new RepoFilterService(config);
 
         // When
-        boolean returnValue = underTest.keepRepo(new ApiRepo("https://example.com/test-repo-2", true));
+        boolean returnValue = underTest.keepRepo(createRepo("https://example.com/test-repo-2", true));
 
         // Then
         assertThat(returnValue).isFalse();
+    }
+
+    private Repo createRepo(String url, boolean hasComponentMetadataFile) {
+        return Repo.builder()
+                .url(url)
+                .hasComponentMetadataFile(hasComponentMetadataFile)
+                .build();
     }
 }

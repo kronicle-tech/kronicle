@@ -19,9 +19,9 @@ import tech.kronicle.plugins.aws.resourcegroupstaggingapi.models.ResourceGroupsT
 import tech.kronicle.plugins.aws.resourcegroupstaggingapi.models.ResourceGroupsTaggingApiTag;
 import tech.kronicle.plugins.aws.resourcegroupstaggingapi.services.ResourceFetcher;
 import tech.kronicle.sdk.models.Component;
-import tech.kronicle.sdk.models.ComponentStateLogLevel;
-import tech.kronicle.sdk.models.ComponentStateLogMessage;
-import tech.kronicle.sdk.models.ComponentStateLogSummary;
+import tech.kronicle.sdk.models.LogLevelState;
+import tech.kronicle.sdk.models.LogMessageState;
+import tech.kronicle.sdk.models.LogSummaryState;
 
 import java.time.Clock;
 import java.time.Duration;
@@ -130,7 +130,7 @@ public class CloudWatchLogsServiceTest {
 
         // When
         underTest.refresh();
-        List<Map.Entry<AwsProfileAndRegion, List<ComponentStateLogSummary>>> returnValue =
+        List<Map.Entry<AwsProfileAndRegion, List<LogSummaryState>>> returnValue =
                 underTest.getLogSummariesForComponent(component);
 
         // Then
@@ -138,53 +138,53 @@ public class CloudWatchLogsServiceTest {
                 Map.entry(
                         profile1AndRegion1,
                         List.of(
-                                ComponentStateLogSummary.builder()
+                                LogSummaryState.builder()
                                         .name("Last hour")
                                         .startTimestamp(LocalDateTime.of(2001, 2, 3, 3, 5, 6))
                                         .endTimestamp(LocalDateTime.of(2001, 2, 3, 4, 5, 6))
                                         .levels(List.of(
-                                                ComponentStateLogLevel.builder()
+                                                LogLevelState.builder()
                                                         .level("test-level-1-1")
                                                         .count(11L)
                                                         .topMessages(List.of(
-                                                                ComponentStateLogMessage.builder()
+                                                                LogMessageState.builder()
                                                                         .message("test-message-1-1-1")
                                                                         .count(111L)
                                                                         .build(),
-                                                                ComponentStateLogMessage.builder()
+                                                                LogMessageState.builder()
                                                                         .message("test-message-1-1-2")
                                                                         .count(112L).build(),
-                                                                ComponentStateLogMessage.builder()
+                                                                LogMessageState.builder()
                                                                         .message("test-message-1-1-3")
                                                                         .count(113L).build()
                                                         ))
                                                         .build(),
-                                                ComponentStateLogLevel.builder()
+                                                LogLevelState.builder()
                                                         .level("test-level-1-2")
                                                         .count(12L)
                                                         .topMessages(List.of(
-                                                                ComponentStateLogMessage.builder()
+                                                                LogMessageState.builder()
                                                                         .message("test-message-1-2-1")
                                                                         .count(121L).build(),
-                                                                ComponentStateLogMessage.builder()
+                                                                LogMessageState.builder()
                                                                         .message("test-message-1-2-2")
                                                                         .count(122L).build(),
-                                                                ComponentStateLogMessage.builder()
+                                                                LogMessageState.builder()
                                                                         .message("test-message-1-2-3")
                                                                         .count(123L).build()
                                                         ))
                                                         .build(),
-                                                ComponentStateLogLevel.builder()
+                                                LogLevelState.builder()
                                                         .level("test-level-1-3")
                                                         .count(13L)
                                                         .topMessages(List.of(
-                                                                ComponentStateLogMessage.builder()
+                                                                LogMessageState.builder()
                                                                         .message("test-message-1-3-1")
                                                                         .count(131L).build(),
-                                                                ComponentStateLogMessage.builder()
+                                                                LogMessageState.builder()
                                                                         .message("test-message-1-3-2")
                                                                         .count(132L).build(),
-                                                                ComponentStateLogMessage.builder()
+                                                                LogMessageState.builder()
                                                                         .message("test-message-1-3-3")
                                                                         .count(133L).build()
                                                         ))
@@ -192,52 +192,52 @@ public class CloudWatchLogsServiceTest {
                                         ))
                                         .updateTimestamp(LocalDateTime.of(2001, 2, 3, 4, 5, 6))
                                         .comparisons(List.of(
-                                                ComponentStateLogSummary.builder()
+                                                LogSummaryState.builder()
                                                         .name("Previous hour")
                                                         .startTimestamp(LocalDateTime.of(2001, 2, 3, 2, 5, 6))
                                                         .endTimestamp(LocalDateTime.of(2001, 2, 3, 3, 5, 6))
                                                         .levels(List.of(
-                                                                ComponentStateLogLevel.builder()
+                                                                LogLevelState.builder()
                                                                         .level("test-level-2-1")
                                                                         .count(21L)
                                                                         .topMessages(List.of(
-                                                                                ComponentStateLogMessage.builder()
+                                                                                LogMessageState.builder()
                                                                                         .message("test-message-2-1-1")
                                                                                         .count(211L).build(),
-                                                                                ComponentStateLogMessage.builder()
+                                                                                LogMessageState.builder()
                                                                                         .message("test-message-2-1-2")
                                                                                         .count(212L).build(),
-                                                                                ComponentStateLogMessage.builder()
+                                                                                LogMessageState.builder()
                                                                                         .message("test-message-2-1-3")
                                                                                         .count(213L).build()
                                                                         ))
                                                                         .build(),
-                                                                ComponentStateLogLevel.builder()
+                                                                LogLevelState.builder()
                                                                         .level("test-level-2-2")
                                                                         .count(22L)
                                                                         .topMessages(List.of(
-                                                                                ComponentStateLogMessage.builder()
+                                                                                LogMessageState.builder()
                                                                                         .message("test-message-2-2-1")
                                                                                         .count(221L).build(),
-                                                                                ComponentStateLogMessage.builder()
+                                                                                LogMessageState.builder()
                                                                                         .message("test-message-2-2-2")
                                                                                         .count(222L).build(),
-                                                                                ComponentStateLogMessage.builder()
+                                                                                LogMessageState.builder()
                                                                                         .message("test-message-2-2-3")
                                                                                         .count(223L).build()
                                                                         ))
                                                                         .build(),
-                                                                ComponentStateLogLevel.builder()
+                                                                LogLevelState.builder()
                                                                         .level("test-level-2-3")
                                                                         .count(23L)
                                                                         .topMessages(List.of(
-                                                                                ComponentStateLogMessage.builder()
+                                                                                LogMessageState.builder()
                                                                                         .message("test-message-2-3-1")
                                                                                         .count(231L).build(),
-                                                                                ComponentStateLogMessage.builder()
+                                                                                LogMessageState.builder()
                                                                                         .message("test-message-2-3-2")
                                                                                         .count(232L).build(),
-                                                                                ComponentStateLogMessage.builder()
+                                                                                LogMessageState.builder()
                                                                                         .message("test-message-2-3-3")
                                                                                         .count(233L).build()
                                                                         ))
@@ -245,52 +245,52 @@ public class CloudWatchLogsServiceTest {
                                                         ))
                                                         .updateTimestamp(LocalDateTime.of(2001, 2, 3, 4, 5, 6))
                                                         .build(),
-                                                ComponentStateLogSummary.builder()
+                                                LogSummaryState.builder()
                                                         .name("Same hour, previous week")
                                                         .startTimestamp(LocalDateTime.of(2001, 1, 27, 3, 5, 6))
                                                         .endTimestamp(LocalDateTime.of(2001, 1, 27, 4, 5, 6))
                                                         .levels(List.of(
-                                                                ComponentStateLogLevel.builder()
+                                                                LogLevelState.builder()
                                                                         .level("test-level-3-1")
                                                                         .count(31L)
                                                                         .topMessages(List.of(
-                                                                                ComponentStateLogMessage.builder()
+                                                                                LogMessageState.builder()
                                                                                         .message("test-message-3-1-1")
                                                                                         .count(311L).build(),
-                                                                                ComponentStateLogMessage.builder()
+                                                                                LogMessageState.builder()
                                                                                         .message("test-message-3-1-2")
                                                                                         .count(312L).build(),
-                                                                                ComponentStateLogMessage.builder()
+                                                                                LogMessageState.builder()
                                                                                         .message("test-message-3-1-3")
                                                                                         .count(313L).build()
                                                                         ))
                                                                         .build(),
-                                                                ComponentStateLogLevel.builder()
+                                                                LogLevelState.builder()
                                                                         .level("test-level-3-2")
                                                                         .count(32L)
                                                                         .topMessages(List.of(
-                                                                                ComponentStateLogMessage.builder()
+                                                                                LogMessageState.builder()
                                                                                         .message("test-message-3-2-1")
                                                                                         .count(321L).build(),
-                                                                                ComponentStateLogMessage.builder()
+                                                                                LogMessageState.builder()
                                                                                         .message("test-message-3-2-2")
                                                                                         .count(322L).build(),
-                                                                                ComponentStateLogMessage.builder()
+                                                                                LogMessageState.builder()
                                                                                         .message("test-message-3-2-3")
                                                                                         .count(323L).build()
                                                                         ))
                                                                         .build(),
-                                                                ComponentStateLogLevel.builder()
+                                                                LogLevelState.builder()
                                                                         .level("test-level-3-3")
                                                                         .count(33L)
                                                                         .topMessages(List.of(
-                                                                                ComponentStateLogMessage.builder()
+                                                                                LogMessageState.builder()
                                                                                         .message("test-message-3-3-1")
                                                                                         .count(331L).build(),
-                                                                                ComponentStateLogMessage.builder()
+                                                                                LogMessageState.builder()
                                                                                         .message("test-message-3-3-2")
                                                                                         .count(332L).build(),
-                                                                                ComponentStateLogMessage.builder()
+                                                                                LogMessageState.builder()
                                                                                         .message("test-message-3-3-3")
                                                                                         .count(333L).build()
                                                                         ))
@@ -300,52 +300,52 @@ public class CloudWatchLogsServiceTest {
                                                         .build()
                                         ))
                                         .build(),
-                                ComponentStateLogSummary.builder()
+                                LogSummaryState.builder()
                                         .name("Last 24 hours")
                                         .startTimestamp(LocalDateTime.of(2001, 2, 2, 4, 5, 6))
                                         .endTimestamp(LocalDateTime.of(2001, 2, 3, 4, 5, 6))
                                         .levels(List.of(
-                                                ComponentStateLogLevel.builder()
+                                                LogLevelState.builder()
                                                         .level("test-level-4-1")
                                                         .count(41L)
                                                         .topMessages(List.of(
-                                                                ComponentStateLogMessage.builder()
+                                                                LogMessageState.builder()
                                                                         .message("test-message-4-1-1")
                                                                         .count(411L).build(),
-                                                                ComponentStateLogMessage.builder()
+                                                                LogMessageState.builder()
                                                                         .message("test-message-4-1-2")
                                                                         .count(412L).build(),
-                                                                ComponentStateLogMessage.builder()
+                                                                LogMessageState.builder()
                                                                         .message("test-message-4-1-3")
                                                                         .count(413L).build()
                                                         ))
                                                         .build(),
-                                                ComponentStateLogLevel.builder()
+                                                LogLevelState.builder()
                                                         .level("test-level-4-2")
                                                         .count(42L)
                                                         .topMessages(List.of(
-                                                                ComponentStateLogMessage.builder()
+                                                                LogMessageState.builder()
                                                                         .message("test-message-4-2-1")
                                                                         .count(421L).build(),
-                                                                ComponentStateLogMessage.builder()
+                                                                LogMessageState.builder()
                                                                         .message("test-message-4-2-2")
                                                                         .count(422L).build(),
-                                                                ComponentStateLogMessage.builder()
+                                                                LogMessageState.builder()
                                                                         .message("test-message-4-2-3")
                                                                         .count(423L).build()
                                                         ))
                                                         .build(),
-                                                ComponentStateLogLevel.builder()
+                                                LogLevelState.builder()
                                                         .level("test-level-4-3")
                                                         .count(43L)
                                                         .topMessages(List.of(
-                                                                ComponentStateLogMessage.builder()
+                                                                LogMessageState.builder()
                                                                         .message("test-message-4-3-1")
                                                                         .count(431L).build(),
-                                                                ComponentStateLogMessage.builder()
+                                                                LogMessageState.builder()
                                                                         .message("test-message-4-3-2")
                                                                         .count(432L).build(),
-                                                                ComponentStateLogMessage.builder()
+                                                                LogMessageState.builder()
                                                                         .message("test-message-4-3-3")
                                                                         .count(433L).build()
                                                         ))
@@ -353,52 +353,52 @@ public class CloudWatchLogsServiceTest {
                                         ))
                                         .updateTimestamp(LocalDateTime.of(2001, 2, 3, 4, 5, 6))
                                         .comparisons(List.of(
-                                                ComponentStateLogSummary.builder()
+                                                LogSummaryState.builder()
                                                         .name("Previous 24 hours")
                                                         .startTimestamp(LocalDateTime.of(2001, 2, 1, 4, 5, 6))
                                                         .endTimestamp(LocalDateTime.of(2001, 2, 2, 4, 5, 6))
                                                         .levels(List.of(
-                                                                ComponentStateLogLevel.builder()
+                                                                LogLevelState.builder()
                                                                         .level("test-level-5-1")
                                                                         .count(51L)
                                                                         .topMessages(List.of(
-                                                                                ComponentStateLogMessage.builder()
+                                                                                LogMessageState.builder()
                                                                                         .message("test-message-5-1-1")
                                                                                         .count(511L).build(),
-                                                                                ComponentStateLogMessage.builder()
+                                                                                LogMessageState.builder()
                                                                                         .message("test-message-5-1-2")
                                                                                         .count(512L).build(),
-                                                                                ComponentStateLogMessage.builder()
+                                                                                LogMessageState.builder()
                                                                                         .message("test-message-5-1-3")
                                                                                         .count(513L).build()
                                                                         ))
                                                                         .build(),
-                                                                ComponentStateLogLevel.builder()
+                                                                LogLevelState.builder()
                                                                         .level("test-level-5-2")
                                                                         .count(52L)
                                                                         .topMessages(List.of(
-                                                                                ComponentStateLogMessage.builder()
+                                                                                LogMessageState.builder()
                                                                                         .message("test-message-5-2-1")
                                                                                         .count(521L).build(),
-                                                                                ComponentStateLogMessage.builder()
+                                                                                LogMessageState.builder()
                                                                                         .message("test-message-5-2-2")
                                                                                         .count(522L).build(),
-                                                                                ComponentStateLogMessage.builder()
+                                                                                LogMessageState.builder()
                                                                                         .message("test-message-5-2-3")
                                                                                         .count(523L).build()
                                                                         ))
                                                                         .build(),
-                                                                ComponentStateLogLevel.builder()
+                                                                LogLevelState.builder()
                                                                         .level("test-level-5-3")
                                                                         .count(53L)
                                                                         .topMessages(List.of(
-                                                                                ComponentStateLogMessage.builder()
+                                                                                LogMessageState.builder()
                                                                                         .message("test-message-5-3-1")
                                                                                         .count(531L).build(),
-                                                                                ComponentStateLogMessage.builder()
+                                                                                LogMessageState.builder()
                                                                                         .message("test-message-5-3-2")
                                                                                         .count(532L).build(),
-                                                                                ComponentStateLogMessage.builder()
+                                                                                LogMessageState.builder()
                                                                                         .message("test-message-5-3-3")
                                                                                         .count(533L).build()
                                                                         ))
@@ -406,52 +406,52 @@ public class CloudWatchLogsServiceTest {
                                                         ))
                                                         .updateTimestamp(LocalDateTime.of(2001, 2, 3, 4, 5, 6))
                                                         .build(),
-                                                ComponentStateLogSummary.builder()
+                                                LogSummaryState.builder()
                                                         .name("Same 24 hours, previous week")
                                                         .startTimestamp(LocalDateTime.of(2001, 1, 26, 4, 5, 6))
                                                         .endTimestamp(LocalDateTime.of(2001, 1, 27, 4, 5, 6))
                                                         .levels(List.of(
-                                                                ComponentStateLogLevel.builder()
+                                                                LogLevelState.builder()
                                                                         .level("test-level-6-1")
                                                                         .count(61L)
                                                                         .topMessages(List.of(
-                                                                                ComponentStateLogMessage.builder()
+                                                                                LogMessageState.builder()
                                                                                         .message("test-message-6-1-1")
                                                                                         .count(611L).build(),
-                                                                                ComponentStateLogMessage.builder()
+                                                                                LogMessageState.builder()
                                                                                         .message("test-message-6-1-2")
                                                                                         .count(612L).build(),
-                                                                                ComponentStateLogMessage.builder()
+                                                                                LogMessageState.builder()
                                                                                         .message("test-message-6-1-3")
                                                                                         .count(613L).build()
                                                                         ))
                                                                         .build(),
-                                                                ComponentStateLogLevel.builder()
+                                                                LogLevelState.builder()
                                                                         .level("test-level-6-2")
                                                                         .count(62L)
                                                                         .topMessages(List.of(
-                                                                                ComponentStateLogMessage.builder()
+                                                                                LogMessageState.builder()
                                                                                         .message("test-message-6-2-1")
                                                                                         .count(621L).build(),
-                                                                                ComponentStateLogMessage.builder()
+                                                                                LogMessageState.builder()
                                                                                         .message("test-message-6-2-2")
                                                                                         .count(622L).build(),
-                                                                                ComponentStateLogMessage.builder()
+                                                                                LogMessageState.builder()
                                                                                         .message("test-message-6-2-3")
                                                                                         .count(623L).build()
                                                                         ))
                                                                         .build(),
-                                                                ComponentStateLogLevel.builder()
+                                                                LogLevelState.builder()
                                                                         .level("test-level-6-3")
                                                                         .count(63L)
                                                                         .topMessages(List.of(
-                                                                                ComponentStateLogMessage.builder()
+                                                                                LogMessageState.builder()
                                                                                         .message("test-message-6-3-1")
                                                                                         .count(631L).build(),
-                                                                                ComponentStateLogMessage.builder()
+                                                                                LogMessageState.builder()
                                                                                         .message("test-message-6-3-2")
                                                                                         .count(632L).build(),
-                                                                                ComponentStateLogMessage.builder()
+                                                                                LogMessageState.builder()
                                                                                         .message("test-message-6-3-3")
                                                                                         .count(633L).build()
                                                                         ))

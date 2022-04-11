@@ -55,7 +55,7 @@ public class Component implements ObjectWithId, ObjectWithReference {
     List<@NotBlank @Pattern(regexp = PatternStrings.ID) String> tags;
     @Valid
     @NotNull
-    Repo repo;
+    RepoReference repo;
     String description;
     List<@Valid Responsibility> responsibilities;
     String notes;
@@ -97,7 +97,7 @@ public class Component implements ObjectWithId, ObjectWithReference {
             Boolean discovered,
             String typeId,
             List<String> tags,
-            Repo repo,
+            RepoReference repo,
             String description,
             List<Responsibility> responsibilities,
             String notes,

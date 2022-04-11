@@ -5,7 +5,7 @@ import com.github.tomakehurst.wiremock.WireMockServer;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import tech.kronicle.pluginapi.finders.models.ApiRepo;
+import tech.kronicle.sdk.models.Repo;
 import tech.kronicle.plugins.bitbucketserver.config.BitbucketServerConfig;
 import tech.kronicle.plugins.bitbucketserver.config.BitbucketServerHostConfig;
 
@@ -44,7 +44,7 @@ public class BitbucketServerClientTest {
         underTest = new BitbucketServerClient(httpClient, objectMapper, config);
 
         // When
-        List<ApiRepo> returnValue = underTest.getNormalRepos();
+        List<Repo> returnValue = underTest.getNormalRepos();
 
         // Then
         assertThat(returnValue).isEmpty();
@@ -57,7 +57,7 @@ public class BitbucketServerClientTest {
         underTest = new BitbucketServerClient(httpClient, objectMapper, config);
 
         // When
-        List<ApiRepo> returnValue = underTest.getNormalRepos();
+        List<Repo> returnValue = underTest.getNormalRepos();
 
         // Then
         assertThat(returnValue).isEmpty();
@@ -74,7 +74,7 @@ public class BitbucketServerClientTest {
         underTest = new BitbucketServerClient(httpClient, objectMapper, config);
 
         // When
-        List<ApiRepo> returnValue = underTest.getNormalRepos();
+        List<Repo> returnValue = underTest.getNormalRepos();
 
         // Then
         assertThat(returnValue).hasSize(8);
@@ -113,12 +113,13 @@ public class BitbucketServerClientTest {
         return "http://localhost:" + BitbucketServerWireMockFactory.PORT + path;
     }
 
-    private ApiRepo createTestRepo(int serverNumber, int repoNumber, boolean hasComponentMetadataFile) {
-        return new ApiRepo(
-                "http://localhost:" + BitbucketServerWireMockFactory.PORT
+    private Repo createTestRepo(int serverNumber, int repoNumber, boolean hasComponentMetadataFile) {
+        return Repo.builder()
+                .url("http://localhost:" + BitbucketServerWireMockFactory.PORT
                         + "/server-" + serverNumber
                         + "/scm/example-project-" + repoNumber
-                        + "/example-repo-" + repoNumber + ".git",
-                hasComponentMetadataFile);
+                        + "/example-repo-" + repoNumber + ".git")
+                .hasComponentMetadataFile(hasComponentMetadataFile)
+                .build();
     }
 }
