@@ -1,6 +1,5 @@
 package tech.kronicle.plugins.gitlab.client;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
@@ -8,6 +7,7 @@ import com.github.tomakehurst.wiremock.WireMockServer;
 import com.github.tomakehurst.wiremock.client.MappingBuilder;
 import com.github.tomakehurst.wiremock.client.ResponseDefinitionBuilder;
 import lombok.Getter;
+import lombok.SneakyThrows;
 import tech.kronicle.plugins.gitlab.config.GitLabAccessTokenConfig;
 
 import java.util.ArrayList;
@@ -21,6 +21,7 @@ import static com.github.tomakehurst.wiremock.client.WireMock.equalTo;
 import static com.github.tomakehurst.wiremock.client.WireMock.get;
 import static com.github.tomakehurst.wiremock.client.WireMock.urlEqualTo;
 import static com.github.tomakehurst.wiremock.client.WireMock.urlPathEqualTo;
+import static com.google.common.base.Strings.padStart;
 import static java.util.Objects.nonNull;
 
 public class GitLabApiWireMockFactory {
@@ -58,20 +59,27 @@ public class GitLabApiWireMockFactory {
 
                         switch (repoMetadataScenario) {
                             case KRONICLE_YAML:
-                                stubRepoMetadataFileRequest(wireMockServer, scenario, repoNumber.get(), RepoMetadataScenario.KRONICLE_YAML, true);
+                                stubRepoMetadataFileRequest(wireMockServer, scenario, repoNumber.get(), true);
                                 break;
                             case NONE:
-                                stubRepoMetadataFileRequest(wireMockServer, scenario, repoNumber.get(), RepoMetadataScenario.KRONICLE_YAML, false);
+                                stubRepoMetadataFileRequest(wireMockServer, scenario, repoNumber.get(), false);
                                 break;
                         }
+                        stubRepoPipelinesRequest(wireMockServer, scenario, repoNumber.get());
+                        stubRepoPipelineJobsRequest(wireMockServer, scenario, repoNumber.get());
                     }
                 });
             });
         }
     }
-
-    private void stubRepoMetadataFileRequest(WireMockServer wireMockServer, Scenario scenario, int repoNumber, RepoMetadataScenario repoMetadataScenario, boolean hasContent) {
-        wireMockServer.stubFor(createRepoRootContentsRequest(scenario, repoNumber, repoMetadataScenario)
+    
+    private void stubRepoMetadataFileRequest(
+            WireMockServer wireMockServer,
+            Scenario scenario,
+            int repoNumber,
+            boolean hasContent
+    ) {
+        wireMockServer.stubFor(createRepoRootContentsRequest(scenario, repoNumber)
                 .willReturn(createRepoRootContentsResponse(hasContent)));
     }
 
@@ -121,6 +129,7 @@ public class GitLabApiWireMockFactory {
         return builder;
     }
 
+    @SneakyThrows
     private String createRepoListResponseBody(int pageNumber) {
         ArrayNode responseBody = objectMapper.createArrayNode();
         IntStream.range(1, PAGE_SIZE + 1).forEach(pageItemNumber -> {
@@ -137,11 +146,7 @@ public class GitLabApiWireMockFactory {
                 responseBody.add(repo);
             }
         });
-        try {
-            return objectMapper.writeValueAsString(responseBody);
-        } catch (JsonProcessingException e) {
-            throw new RuntimeException(e);
-        }
+        return objectMapper.writeValueAsString(responseBody);
     }
 
     private int getRepoNumber(int pageNumber, int pageItemNumber) {
@@ -150,22 +155,14 @@ public class GitLabApiWireMockFactory {
 
     private MappingBuilder createRepoRootContentsRequest(
             Scenario scenario,
-            int repoNumber,
-            RepoMetadataScenario repoMetadataScenario
+            int repoNumber
     ) {
         MappingBuilder builder = get(urlEqualTo(
                 "/api/v4/projects/" + repoNumber +
-                "/repository/files/" + getMetadataFilename(repoMetadataScenario) +
+                "/repository/files/kronicle.yaml" +
                 "?ref=branch-" + repoNumber));
         addAccessTokenHeaderIfWanted(scenario, builder);
         return builder;
-    }
-
-    private String getMetadataFilename(RepoMetadataScenario repoMetadataScenario) {
-        if (repoMetadataScenario == RepoMetadataScenario.KRONICLE_YAML) {
-            return "kronicle.yaml";
-        }
-        throw new RuntimeException("Unexpected repo metadata scenario");
     }
 
     private ResponseDefinitionBuilder createRepoRootContentsResponse(boolean hasContent) {
@@ -178,6 +175,109 @@ public class GitLabApiWireMockFactory {
                     .withHeader("Content-Type", "text/plain")
                     .withBody("Not Found");
         }
+    }
+
+    private void stubRepoPipelinesRequest(WireMockServer wireMockServer, Scenario scenario, int repoNumber) {
+        wireMockServer.stubFor(createRepoPipelinesRequest(scenario, repoNumber)
+                .willReturn(createRepoPipelinesResponse(repoNumber)));
+    }
+
+    private MappingBuilder createRepoPipelinesRequest(
+            Scenario scenario,
+            int repoNumber
+    ) {
+        MappingBuilder builder = get(urlEqualTo(
+                "/api/v4/projects/" + repoNumber +
+                        "/pipelines?ref=" + createDefaultBranch(repoNumber) +
+                        "&page=1&per_page=5"
+        ));
+        addAccessTokenHeaderIfWanted(scenario, builder);
+        return builder;
+    }
+
+    private String createDefaultBranch(int repoNumber) {
+        return "branch-" + repoNumber;
+    }
+
+    @SneakyThrows
+    private ResponseDefinitionBuilder createRepoPipelinesResponse(int repoNumber) {
+        return aResponse()
+                .withStatus(200)
+                .withHeader("Content-Type", "application/json")
+                .withHeader("X-Next-Page", "")
+                .withBody(createRepoPipelinesResponseBody(repoNumber));
+    }
+
+    @SneakyThrows
+    private String createRepoPipelinesResponseBody(int repoNumber) {
+        ArrayNode responseBody = objectMapper.createArrayNode();
+        IntStream.range(1, PAGE_SIZE + 1).forEach(pageItemNumber -> {
+            ObjectNode pipeline = objectMapper.createObjectNode()
+                    .put("id", 1000 + pageItemNumber)
+                    .put("iid", pageItemNumber)
+                    .put("project_id", repoNumber)
+                    .put("sha", "test-sha-" + repoNumber + "-" + pageItemNumber)
+                    .put("ref", createDefaultBranch(repoNumber))
+                    .put("status", "success")
+                    .put("source", "push")
+                    .put("created_at", createTimestamp(repoNumber, pageItemNumber, 1))
+                    .put("updated_at", createTimestamp(repoNumber, pageItemNumber, 2))
+                    .put("web_url", "https://example.com/web-url-" + repoNumber + "-" + pageItemNumber);
+            responseBody.add(pipeline);
+        });
+        return objectMapper.writeValueAsString(responseBody);
+    }
+
+    private String createTimestamp(int repoNumber, int pageItemNumber, int timestampNumber) {
+        return (2000 + repoNumber)
+                + "-"
+                + padStart(Integer.toString(pageItemNumber), 2, '0')
+                + "-"
+                + padStart(Integer.toString(timestampNumber), 2, '0')
+                + "T00:00:00.000Z";
+    }
+
+    private void stubRepoPipelineJobsRequest(WireMockServer wireMockServer, Scenario scenario, int repoNumber) {
+        wireMockServer.stubFor(createRepoPipelineJobsRequest(scenario, repoNumber)
+                .willReturn(createRepoPipelineJobsResponse(repoNumber)));
+    }
+
+    private MappingBuilder createRepoPipelineJobsRequest(
+            Scenario scenario,
+            int repoNumber
+    ) {
+        MappingBuilder builder = get(urlEqualTo(
+                "/api/v4/projects/" + repoNumber + "/pipelines/1001/jobs?page=1&per_page=5"
+        ));
+        addAccessTokenHeaderIfWanted(scenario, builder);
+        return builder;
+    }
+
+    @SneakyThrows
+    private ResponseDefinitionBuilder createRepoPipelineJobsResponse(int repoNumber) {
+        return aResponse()
+                .withStatus(200)
+                .withHeader("Content-Type", "application/json")
+                .withHeader("X-Next-Page", "")
+                .withBody(createRepoPipelineJobsResponseBody(repoNumber));
+    }
+
+    @SneakyThrows
+    private String createRepoPipelineJobsResponseBody(int repoNumber) {
+        ArrayNode responseBody = objectMapper.createArrayNode();
+        IntStream.range(1, PAGE_SIZE + 1).forEach(pageItemNumber -> {
+            ObjectNode job = objectMapper.createObjectNode()
+                    .put("name", "Test name " + repoNumber + " " + pageItemNumber)
+                    .put("status", "success")
+                    .put("web_url", "https://example.com/web-url-" + repoNumber + "-" + pageItemNumber)
+                    .put("created_at", createTimestamp(repoNumber, pageItemNumber, 1))
+                    .put("started_at", createTimestamp(repoNumber, pageItemNumber, 2))
+                    .put("finished_at", createTimestamp(repoNumber, pageItemNumber, 3));
+            job.putObject("user")
+                    .put("avatar_url", "https://example.com/avatar-url-" + repoNumber + "-" + pageItemNumber);
+            responseBody.add(job);
+        });
+        return objectMapper.writeValueAsString(responseBody);
     }
 
     private void addAccessTokenHeaderIfWanted(Scenario scenario, MappingBuilder builder) {

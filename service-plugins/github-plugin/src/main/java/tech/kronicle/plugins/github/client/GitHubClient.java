@@ -10,6 +10,7 @@ import tech.kronicle.pluginapi.constants.KronicleMetadataFilePaths;
 import tech.kronicle.plugins.github.GitHubPlugin;
 import tech.kronicle.plugins.github.models.api.GitHubGetWorkflowRunsResponse;
 import tech.kronicle.plugins.github.models.api.GitHubWorkflowRun;
+import tech.kronicle.plugins.github.models.api.GitHubWorkflowRunActor;
 import tech.kronicle.sdk.models.CheckState;
 import tech.kronicle.sdk.models.ComponentState;
 import tech.kronicle.sdk.models.ComponentStateCheckStatus;
@@ -44,6 +45,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -178,6 +180,7 @@ public class GitHubClient {
               .status(status.status)
               .name(workflowRun.getName())
               .description("GitHub Actions Workflow Run")
+              .avatarUrl(mapAvatarUrl(workflowRun))
               .statusMessage(status.statusMessage)
               .links(createWorkflowRunLinks(workflowRun))
               .updateTimestamp(now)
@@ -223,6 +226,13 @@ public class GitHubClient {
                 workflowRun.getStatus()
         );
     }
+  }
+
+  private String mapAvatarUrl(GitHubWorkflowRun workflowRun) {
+    return Optional.of(workflowRun)
+            .map(GitHubWorkflowRun::getActor)
+            .map(GitHubWorkflowRunActor::getAvatar_url)
+            .orElse(null);
   }
 
   private List<Link> createWorkflowRunLinks(GitHubWorkflowRun gitHubWorkflowRun) {

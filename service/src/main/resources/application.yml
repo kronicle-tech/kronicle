@@ -97,6 +97,7 @@ plugins:
   gitlab:
     enabled: false
     project-page-size: 100
+    environment-id: ci
     timeout: 30s
 
   gradle:

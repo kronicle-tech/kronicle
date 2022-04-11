@@ -1,6 +1,7 @@
 package tech.kronicle.plugins.gitlab.guice;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.google.inject.AbstractModule;
 import com.google.inject.Provides;
 import tech.kronicle.plugins.gitlab.config.GitLabConfig;
@@ -19,6 +20,7 @@ public class GuiceModule extends AbstractModule {
 
     @Provides
     public ObjectMapper objectMapper() {
-        return createJsonMapper();
+        return createJsonMapper()
+                .registerModule(new JavaTimeModule());
     }
 }

@@ -22,6 +22,7 @@ public class CheckState {
     @NotEmpty
     String name;
     String description;
+    String avatarUrl;
     @NotNull
     ComponentStateCheckStatus status;
     @NotEmpty
@@ -33,6 +34,7 @@ public class CheckState {
     public CheckState(
             String name,
             String description,
+            String avatarUrl,
             ComponentStateCheckStatus status,
             String statusMessage,
             List<Link> links,
@@ -40,6 +42,7 @@ public class CheckState {
     ) {
         this.name = name;
         this.description = description;
+        this.avatarUrl = avatarUrl;
         this.status = status;
         this.statusMessage = statusMessage;
         this.links = createUnmodifiableList(links);

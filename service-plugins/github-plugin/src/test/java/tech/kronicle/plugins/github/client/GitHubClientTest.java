@@ -305,7 +305,7 @@ public class GitHubClientTest {
                 LocalDateTime.of(2000 + workflowRunNumber, 3, 3, 4, 5, 5, 6),
                 new GitHubWorkflowRunActor(
                         "test-login-" + workflowRunNumber,
-                        "https://example.com/test-avatar-url-" + workflowRunNumber
+                        "https://example.com/test-avatar-url-" + workflowRunNumber + "-modified"
                 )
         );
     }
@@ -482,6 +482,7 @@ public class GitHubClientTest {
         return CheckState.builder()
                 .name("Test name " + checkStateNumber + checkSuffix)
                 .description("GitHub Actions Workflow Run")
+                .avatarUrl("https://example.com/test-avatar-url-" + checkStateNumber + checkSuffix)
                 .status(status)
                 .statusMessage(statusMessage)
                 .links(List.of(

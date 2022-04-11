@@ -21,7 +21,9 @@ public class GuiceModuleTest {
         AbstractModule configModule = new AbstractModule() {
             @Override
             protected void configure() {
-                bind(GitLabConfig.class).toInstance(new GitLabConfig(null, 100, Duration.ofSeconds(60)));
+                bind(GitLabConfig.class).toInstance(new GitLabConfig(
+                        null, 100, null, Duration.ofSeconds(60)
+                ));
             }
         };
         Injector guiceInjector = Guice.createInjector(underTest, configModule);
