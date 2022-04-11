@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.pf4j.Extension;
 import tech.kronicle.pluginapi.finders.RepoFinder;
+import tech.kronicle.sdk.models.ComponentStateCheckStatus;
 import tech.kronicle.sdk.models.Repo;
 import tech.kronicle.plugins.github.client.GitHubClient;
 import tech.kronicle.plugins.github.config.GitHubConfig;

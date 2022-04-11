@@ -62,7 +62,7 @@ public class GitLabRepoFinderTest {
     @Test
     public void findShouldReturnAnEmptyListWhenHostsListIsNull() {
         // Given
-        GitLabConfig config = new GitLabConfig(null, PAGE_SIZE, TIMEOUT);
+        GitLabConfig config = createConfig(null);
         underTest = new GitLabRepoFinder(config, mockClient);
 
         // When
@@ -75,7 +75,7 @@ public class GitLabRepoFinderTest {
     @Test
     public void findShouldReturnAnEmptyListWhenHostsListIsEmpty() {
         // Given
-        GitLabConfig config = new GitLabConfig(List.of(), PAGE_SIZE, TIMEOUT);
+        GitLabConfig config = createConfig(List.of());
         underTest = new GitLabRepoFinder(config, mockClient);
 
         // When
@@ -88,13 +88,10 @@ public class GitLabRepoFinderTest {
     @Test
     public void findShouldCallClientForAnItemInEachListOfAHost() {
         // Given
-        GitLabConfig config = new GitLabConfig(
-                List.of(new GitLabHostConfig(BASE_URL,
-                        List.of(ACCESS_TOKEN_1),
-                        List.of(USER_1),
-                        List.of(GROUP_1))),
-                PAGE_SIZE,
-                TIMEOUT);
+        GitLabConfig config = createConfig(List.of(new GitLabHostConfig(BASE_URL,
+                List.of(ACCESS_TOKEN_1),
+                List.of(USER_1),
+                List.of(GROUP_1))));
         List<Repo> repos1 = createApiRepos(1);
         List<Repo> repos2 = createApiRepos(2);
         List<Repo> repos3 = createApiRepos(3);
@@ -116,13 +113,10 @@ public class GitLabRepoFinderTest {
     @Test
     public void findShouldCallClientForItemsInEachConfigListOfAHost() {
         // Given
-        GitLabConfig config = new GitLabConfig(
-                List.of(new GitLabHostConfig(BASE_URL,
-                        List.of(ACCESS_TOKEN_1, ACCESS_TOKEN_2, ACCESS_TOKEN_3),
-                        List.of(USER_1, USER_2, USER_3),
-                        List.of(GROUP_1, GROUP_2, GROUP_3))),
-                PAGE_SIZE,
-                TIMEOUT);
+        GitLabConfig config = createConfig(List.of(new GitLabHostConfig(BASE_URL,
+                List.of(ACCESS_TOKEN_1, ACCESS_TOKEN_2, ACCESS_TOKEN_3),
+                List.of(USER_1, USER_2, USER_3),
+                List.of(GROUP_1, GROUP_2, GROUP_3))));
         List<Repo> repos1 = createApiRepos(1);
         List<Repo> repos2 = createApiRepos(2);
         List<Repo> repos3 = createApiRepos(3);
@@ -155,13 +149,10 @@ public class GitLabRepoFinderTest {
     @Test
     public void findShouldCallClientAndReturnAnEmptyListOfApiReposWhenClientReturnsEmptyLists() {
         // Given
-        GitLabConfig config = new GitLabConfig(
-                List.of(new GitLabHostConfig(BASE_URL,
-                        List.of(ACCESS_TOKEN_1),
-                        List.of(USER_1),
-                        List.of(GROUP_1))),
-                PAGE_SIZE,
-                TIMEOUT);
+        GitLabConfig config = createConfig(List.of(new GitLabHostConfig(BASE_URL,
+                List.of(ACCESS_TOKEN_1),
+                List.of(USER_1),
+                List.of(GROUP_1))));
         when(mockClient.getRepos(BASE_URL, ACCESS_TOKEN_1)).thenReturn(List.of());
         when(mockClient.getRepos(BASE_URL, USER_1)).thenReturn(List.of());
         when(mockClient.getRepos(BASE_URL, GROUP_1)).thenReturn(List.of());
@@ -177,13 +168,10 @@ public class GitLabRepoFinderTest {
     @Test
     public void findShouldDeduplicateIdenticalApiRepos() {
         // Given
-        GitLabConfig config = new GitLabConfig(
-                List.of(new GitLabHostConfig(BASE_URL,
-                        List.of(ACCESS_TOKEN_1, ACCESS_TOKEN_2),
-                        List.of(USER_1, USER_2),
-                        List.of(GROUP_1, GROUP_2))),
-                PAGE_SIZE,
-                TIMEOUT);
+        GitLabConfig config = createConfig(List.of(new GitLabHostConfig(BASE_URL,
+                List.of(ACCESS_TOKEN_1, ACCESS_TOKEN_2),
+                List.of(USER_1, USER_2),
+                List.of(GROUP_1, GROUP_2))));
         Repo repo1 = Repo.builder()
                 .url("https://example.com/repo-1.git")
                 .hasComponentMetadataFile(true)
@@ -210,6 +198,15 @@ public class GitLabRepoFinderTest {
 
         // Then
         assertThat(returnValue).containsExactly(repo1, repo2, repo3);
+    }
+
+    private GitLabConfig createConfig(List<GitLabHostConfig> hosts) {
+        return new GitLabConfig(
+                hosts,
+                PAGE_SIZE,
+                null,
+                TIMEOUT
+        );
     }
 
     private static GitLabAccessTokenConfig createAccessToken(int number) {

@@ -10,6 +10,8 @@ import java.util.List;
 
 public class GitLabPlugin extends KronicleGuicePlugin {
 
+    public static final String ID = "gitlab";
+
     public GitLabPlugin(PluginWrapper wrapper) {
         super(wrapper);
     }

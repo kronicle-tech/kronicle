@@ -35,9 +35,9 @@ public class GitLabRepoFinder extends RepoFinder {
     public List<Repo> find(Void ignored) {
         return getHosts().stream()
                 .flatMap(host -> Stream.of(
-                        findApiRepos(host, host::getAccessTokens, client::getRepos, "access tokens"),
-                        findApiRepos(host, host::getUsers, client::getRepos, "users"),
-                        findApiRepos(host, host::getGroups, client::getRepos, "groups")))
+                        findRepos(host, host::getAccessTokens, client::getRepos, "access tokens"),
+                        findRepos(host, host::getUsers, client::getRepos, "users"),
+                        findRepos(host, host::getGroups, client::getRepos, "groups")))
                 .flatMap(Collection::stream)
                 .distinct()
                 .collect(Collectors.toList());
@@ -47,7 +47,7 @@ public class GitLabRepoFinder extends RepoFinder {
         return Optional.ofNullable(config.getHosts()).orElseGet(List::of);
     }
 
-    public <T> List<Repo> findApiRepos(
+    public <T> List<Repo> findRepos(
             GitLabHostConfig host,
             Supplier<List<T>> configItemSupplier,
             BiFunction<String, T, List<Repo>> repoGetter,
