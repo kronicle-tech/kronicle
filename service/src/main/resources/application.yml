@@ -167,6 +167,9 @@ plugins:
   readme:
     enabled: true
 
+  repo-state:
+    enabled: true
+
   sonarqube:
     enabled: false
     base-url: http://localhost:9000
