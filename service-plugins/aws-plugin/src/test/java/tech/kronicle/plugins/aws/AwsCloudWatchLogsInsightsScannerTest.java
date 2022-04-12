@@ -45,7 +45,7 @@ public class AwsCloudWatchLogsInsightsScannerTest {
 
         // Then
         assertThat(returnValue).isEqualTo(
-                "Finds the number of log entries for each log level for a component"
+                "Finds the number of log entries and top log messages for each log level for a component"
         );
     }
 
