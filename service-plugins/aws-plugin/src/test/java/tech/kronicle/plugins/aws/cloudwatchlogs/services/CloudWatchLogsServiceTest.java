@@ -35,6 +35,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.when;
+import static tech.kronicle.plugins.aws.testutils.AwsProfileAndRegionUtils.createProfile;
 
 @ExtendWith(MockitoExtension.class)
 public class CloudWatchLogsServiceTest {
@@ -614,21 +615,6 @@ public class CloudWatchLogsServiceTest {
         return "test-log-group-name-" + logGroupNameNumber;
     }
 
-    private AwsProfileConfig createProfile(int profileNumber) {
-        return new AwsProfileConfig(
-                "test-access-key-id-" + profileNumber,
-                "test-secret-access-key-" + profileNumber,
-                List.of(
-                        createRegion(profileNumber, 1),
-                        createRegion(profileNumber, 2)
-                ),
-                "test-environment-id-" + profileNumber
-        );
-    }
-
-    private String createRegion(int profileNumber, int regionNumber) {
-        return "test-region-" + profileNumber + "-" + regionNumber;
-    }
 
     private ResourceIdsByProfileAndRegionAndComponent createResourceIdsByProfileAndRegionAndComponent(
             Map.Entry<AwsProfileAndRegion, Map<String, List<String>>> resourceIdsForProfileAndRegionAndComponent
