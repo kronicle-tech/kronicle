@@ -14,10 +14,10 @@ import tech.kronicle.plugins.aws.config.AwsConfig;
 import tech.kronicle.plugins.aws.config.AwsLogFieldsConfig;
 import tech.kronicle.plugins.aws.config.AwsProfileConfig;
 import tech.kronicle.plugins.aws.config.AwsTagKeysConfig;
+import tech.kronicle.plugins.aws.constants.ResourceTypes;
 import tech.kronicle.plugins.aws.models.AwsProfileAndRegion;
-import tech.kronicle.plugins.aws.resourcegroupstaggingapi.models.ResourceGroupsTaggingApiResource;
-import tech.kronicle.plugins.aws.resourcegroupstaggingapi.models.ResourceGroupsTaggingApiTag;
-import tech.kronicle.plugins.aws.resourcegroupstaggingapi.services.ResourceFetcher;
+import tech.kronicle.plugins.aws.models.ResourceIdsByProfileAndRegionAndComponent;
+import tech.kronicle.plugins.aws.services.TaggedResourceFinder;
 import tech.kronicle.sdk.models.Component;
 import tech.kronicle.sdk.models.LogLevelState;
 import tech.kronicle.sdk.models.LogMessageState;
@@ -35,6 +35,8 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.when;
+import static tech.kronicle.plugins.aws.testutils.AwsProfileAndRegionUtils.createProfile;
+import static tech.kronicle.plugins.aws.testutils.ComponentUtils.createComponent;
 
 @ExtendWith(MockitoExtension.class)
 public class CloudWatchLogsServiceTest {
@@ -42,7 +44,7 @@ public class CloudWatchLogsServiceTest {
     @Mock
     private CloudWatchLogsClientFacade clientFacade;
     @Mock
-    private ResourceFetcher resourceFetcher;
+    private TaggedResourceFinder taggedResourceFinder;
     private final Instant fixedInstant = LocalDateTime.of(2001, 2, 3, 4, 5, 6).toInstant(ZoneOffset.UTC);
     private final Clock clock = Clock.fixed(
             fixedInstant,
@@ -57,7 +59,7 @@ public class CloudWatchLogsServiceTest {
         AwsProfileConfig profile2 = createProfile(2);
         CloudWatchLogsService underTest = new CloudWatchLogsService(
                 clientFacade,
-                resourceFetcher,
+                taggedResourceFinder,
                 clock,
                 retry,
                 new AwsConfig(
@@ -71,14 +73,8 @@ public class CloudWatchLogsServiceTest {
         AwsProfileAndRegion profile1AndRegion2 = new AwsProfileAndRegion(profile1, profile1.getRegions().get(1));
         AwsProfileAndRegion profile2AndRegion1 = new AwsProfileAndRegion(profile2, profile2.getRegions().get(0));
         AwsProfileAndRegion profile2AndRegion2 = new AwsProfileAndRegion(profile2, profile2.getRegions().get(1));
-        List<String> resourceTypeFilters = List.of("logs:log-group");
-        Map<String, List<String>> tagFilters = Map.ofEntries(Map.entry("component", List.of()));
-        when(resourceFetcher.getResources(profile1AndRegion1, resourceTypeFilters, tagFilters)).thenReturn(List.of(
-                createResource(1, 1),
-                createResource(2, 1),
-                createResource(3, 2),
-                createResource(4, 2)
-        ));
+        Component component = createComponent(1);
+        mockTaggedResourceFinder(profile1AndRegion1, component);
         List<String> logGroupNames = List.of(
                 createLogGroupName(1),
                 createLogGroupName(2)
@@ -126,7 +122,6 @@ public class CloudWatchLogsServiceTest {
                 fixedInstant.minus(Duration.ofDays(7)).minus(Duration.ofDays(1)),
                 fixedInstant.minus(Duration.ofDays(7))
         );
-        Component component = createComponent(1);
 
         // When
         underTest.refresh();
@@ -478,6 +473,23 @@ public class CloudWatchLogsServiceTest {
         );
     }
 
+    private void mockTaggedResourceFinder(AwsProfileAndRegion profile1AndRegion1, Component component) {
+        when(taggedResourceFinder.getResourceIdsByProfileAndRegionAndComponent(ResourceTypes.LOGS_LOG_GROUP)).thenReturn(
+                createResourceIdsByProfileAndRegionAndComponent(
+                        Map.entry(
+                                profile1AndRegion1,
+                                Map.of(
+                                        component.getId(),
+                                        List.of(
+                                                createLogGroupName(1),
+                                                createLogGroupName(2)
+                                        )
+                                )
+                        )
+                )
+        );
+    }
+
     private void mockLevelMessageCountQuery(
             AwsProfileAndRegion profileAndRegion,
             List<String> logGroupNames,
@@ -590,46 +602,20 @@ public class CloudWatchLogsServiceTest {
         return Integer.toString((queryNumber * 100) + (levelNumber * 10) + messageNumber);
     }
 
-    private ResourceGroupsTaggingApiResource createResource(int resourceNumber, int componentNumber) {
-        return new ResourceGroupsTaggingApiResource(
-                "arn:aws:logs:us-west-1:123456789012:log-group:" + createLogGroupName(resourceNumber),
-                List.of(
-                        new ResourceGroupsTaggingApiTag("component", createComponentId(componentNumber))
-                )
-        );
-    }
-
-    private Component createComponent(int componentNumber) {
-        return Component.builder()
-                .id(createComponentId(componentNumber))
-                .build();
-    }
-
-    private String createComponentId(int componentNumber) {
-        return "test-component-id-" + componentNumber;
-    }
-
     private String createLogGroupName(int logGroupNameNumber) {
         return "test-log-group-name-" + logGroupNameNumber;
     }
 
-    private AwsProfileConfig createProfile(int profileNumber) {
-        return new AwsProfileConfig(
-                "test-access-key-id-" + profileNumber,
-                "test-secret-access-key-" + profileNumber,
-                List.of(
-                        createRegion(profileNumber, 1),
-                        createRegion(profileNumber, 2)
-                ),
-                "test-environment-id-" + profileNumber
+
+    private ResourceIdsByProfileAndRegionAndComponent createResourceIdsByProfileAndRegionAndComponent(
+            Map.Entry<AwsProfileAndRegion, Map<String, List<String>>> resourceIdsForProfileAndRegionAndComponent
+    ) {
+        return new ResourceIdsByProfileAndRegionAndComponent(
+                List.of(resourceIdsForProfileAndRegionAndComponent)
         );
     }
 
-    private String createRegion(int profileNumber, int regionNumber) {
-        return "test-region-" + profileNumber + "-" + regionNumber;
-    }
-
-    private class FakeRetry implements Retry {
+    private static class FakeRetry implements Retry {
         @Override
         public String getName() {
             return null;

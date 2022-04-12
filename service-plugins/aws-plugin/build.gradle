@@ -29,6 +29,7 @@ dependencies {
     implementation "software.amazon.awssdk:resourcegroupstaggingapi"
     implementation "software.amazon.awssdk:xray"
     implementation "software.amazon.awssdk:cloudwatchlogs"
+    implementation "software.amazon.awssdk:synthetics"
     implementation "io.github.resilience4j:resilience4j-retry:$resilience4jVersion"
 
     testImplementation project(":service-plugin-test-utils")

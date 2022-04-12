@@ -4,11 +4,11 @@ import lombok.RequiredArgsConstructor;
 import org.pf4j.Extension;
 import tech.kronicle.pluginapi.scanners.ComponentScanner;
 import tech.kronicle.pluginapi.scanners.models.Output;
-import tech.kronicle.plugins.aws.cloudwatchlogs.services.CloudWatchLogsService;
 import tech.kronicle.plugins.aws.models.AwsProfileAndRegion;
+import tech.kronicle.plugins.aws.synthetics.services.SyntheticsService;
+import tech.kronicle.sdk.models.CheckState;
 import tech.kronicle.sdk.models.Component;
 import tech.kronicle.sdk.models.ComponentMetadata;
-import tech.kronicle.sdk.models.LogSummaryState;
 
 import javax.inject.Inject;
 import java.util.List;
@@ -17,13 +17,13 @@ import java.util.function.UnaryOperator;
 
 @Extension
 @RequiredArgsConstructor(onConstructor = @__({@Inject}))
-public class AwsCloudWatchLogsInsightsScanner extends ComponentScanner {
+public class AwsSyntheticsCanariesScanner extends ComponentScanner {
 
-    private final CloudWatchLogsService service;
+    private final SyntheticsService service;
 
     @Override
     public String description() {
-        return "Finds the number of log entries and top log messages for each log level for a component";
+        return "Finds AWS CloudWatch Synthetics Canaries and adds the state of those canaries to components";
     }
 
     @Override
@@ -33,23 +33,23 @@ public class AwsCloudWatchLogsInsightsScanner extends ComponentScanner {
 
     @Override
     public Output<Void> scan(Component input) {
-        List<Map.Entry<AwsProfileAndRegion, List<LogSummaryState>>> logSummaries =
-                service.getLogSummariesForComponent(input);
+        List<Map.Entry<AwsProfileAndRegion, List<CheckState>>> checks =
+                service.getCanaryLastRunsForComponent(input);
 
-        if (logSummariesIsEmpty(logSummaries)) {
+        if (checksIsEmpty(checks)) {
             return Output.of(UnaryOperator.identity());
         }
 
         return Output.of(component -> component.withUpdatedState(state -> {
-            for (Map.Entry<AwsProfileAndRegion, List<LogSummaryState>> entry : logSummaries) {
-                List<LogSummaryState> logSummariesForProfileAndRegion = entry.getValue();
-                if (!logSummariesForProfileAndRegion.isEmpty()) {
+            for (Map.Entry<AwsProfileAndRegion, List<CheckState>> entry : checks) {
+                List<CheckState> checksForProfileAndRegion = entry.getValue();
+                if (!checksForProfileAndRegion.isEmpty()) {
                     String environmentId = entry.getKey().getProfile().getEnvironmentId();
                     state = state.withUpdatedEnvironment(
                             environmentId,
                             environment -> environment.withUpdatedPlugin(
                                     AwsPlugin.ID,
-                                    plugin -> plugin.withLogSummaries(logSummariesForProfileAndRegion)
+                                    plugin -> plugin.withChecks(checksForProfileAndRegion)
                             )
                     );
                 }
@@ -58,9 +58,9 @@ public class AwsCloudWatchLogsInsightsScanner extends ComponentScanner {
         }));
     }
 
-    private boolean logSummariesIsEmpty(
-            List<Map.Entry<AwsProfileAndRegion, List<LogSummaryState>>> logSummaries
+    private boolean checksIsEmpty(
+            List<Map.Entry<AwsProfileAndRegion, List<CheckState>>> checks
     ) {
-        return logSummaries.stream().allMatch(entry -> entry.getValue().isEmpty());
+        return checks.stream().allMatch(entry -> entry.getValue().isEmpty());
     }
 }

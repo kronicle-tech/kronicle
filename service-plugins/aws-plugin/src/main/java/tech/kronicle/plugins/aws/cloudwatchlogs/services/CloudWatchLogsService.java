@@ -11,9 +11,8 @@ import tech.kronicle.plugins.aws.config.AwsConfig;
 import tech.kronicle.plugins.aws.constants.ResourceTypes;
 import tech.kronicle.plugins.aws.guice.CloudWatchLogsGetQueryResultsRetry;
 import tech.kronicle.plugins.aws.models.AwsProfileAndRegion;
-import tech.kronicle.plugins.aws.resourcegroupstaggingapi.models.ResourceGroupsTaggingApiResource;
-import tech.kronicle.plugins.aws.resourcegroupstaggingapi.services.ResourceFetcher;
-import tech.kronicle.sdk.models.Alias;
+import tech.kronicle.plugins.aws.models.ResourceIdsByProfileAndRegionAndComponent;
+import tech.kronicle.plugins.aws.services.TaggedResourceFinder;
 import tech.kronicle.sdk.models.Component;
 import tech.kronicle.sdk.models.LogLevelState;
 import tech.kronicle.sdk.models.LogMessageState;
@@ -32,71 +31,48 @@ import java.util.function.Function;
 import java.util.stream.Stream;
 
 import static java.util.Objects.isNull;
-import static java.util.Objects.nonNull;
-import static java.util.stream.Collectors.groupingBy;
-import static java.util.stream.Collectors.mapping;
 import static java.util.stream.Collectors.toList;
 import static java.util.stream.Collectors.toUnmodifiableList;
-import static tech.kronicle.plugins.aws.resourcegroupstaggingapi.utils.ResourceUtils.getResourceTagValue;
-import static tech.kronicle.plugins.aws.utils.ArnAnalyser.analyseArn;
 import static tech.kronicle.plugins.aws.utils.ProfileUtils.processProfilesToMapEntryList;
 
 public class CloudWatchLogsService {
 
     private final CloudWatchLogsClientFacade clientFacade;
-    private final ResourceFetcher resourceFetcher;
+    private final TaggedResourceFinder taggedResourceFinder;
     private final Clock clock;
     private final Retry retry;
     private final AwsConfig config;
-    private final String componentTagKey;
     private final String logLevelField;
     private final String logMessageField;
-    private List<Map.Entry<AwsProfileAndRegion, Map<String, List<String>>>> logGroupNamesByProfileAndRegion;
+    private ResourceIdsByProfileAndRegionAndComponent resourceIdsByProfileAndRegionAndComponent;
 
     @Inject
     public CloudWatchLogsService(
             CloudWatchLogsClientFacade clientFacade,
-            ResourceFetcher resourceFetcher,
+            TaggedResourceFinder taggedResourceFinder,
             Clock clock,
             @CloudWatchLogsGetQueryResultsRetry Retry retry,
             AwsConfig config
     ) {
         this.clientFacade = clientFacade;
-        this.resourceFetcher = resourceFetcher;
+        this.taggedResourceFinder = taggedResourceFinder;
         this.clock = clock;
         this.retry = retry;
         this.config = config;
-        componentTagKey = config.getTagKeys().getComponent();
         logLevelField = config.getLogFields().getLevel();
         logMessageField = config.getLogFields().getMessage();
     }
 
     public void refresh() {
-        logGroupNamesByProfileAndRegion = processProfilesToMapEntryList(
-                config.getProfiles(),
-                this::prepareLogGroupNamesForProfileAndRegion
+        resourceIdsByProfileAndRegionAndComponent = taggedResourceFinder.getResourceIdsByProfileAndRegionAndComponent(
+                ResourceTypes.LOGS_LOG_GROUP
         );
     }
 
-    private Map<String, List<String>> prepareLogGroupNamesForProfileAndRegion(AwsProfileAndRegion profileAndRegion) {
-        return mapLogGroups(resourceFetcher.getResources(
-                profileAndRegion,
-                List.of(ResourceTypes.LOGS_LOG_GROUP),
-                Map.ofEntries(Map.entry(componentTagKey, List.of()))
-        ));
-    }
-
-    private Map<String, List<String>> mapLogGroups(List<ResourceGroupsTaggingApiResource> resources) {
-        return resources.stream()
-                .map(resource -> Map.entry(
-                        getResourceTagValue(resource, componentTagKey),
-                        analyseArn(resource.getArn()).getResourceId()
-                ))
-                .collect(groupingBy(Map.Entry::getKey, mapping(Map.Entry::getValue, toList())));
-    }
-
     @SneakyThrows
-    public List<Map.Entry<AwsProfileAndRegion, List<LogSummaryState>>> getLogSummariesForComponent(Component component) {
+    public List<Map.Entry<AwsProfileAndRegion, List<LogSummaryState>>> getLogSummariesForComponent(
+            Component component
+    ) {
         return processProfilesToMapEntryList(
                 config.getProfiles(),
                 getLogSummariesProfileAndRegionAndComponent(component)
@@ -107,7 +83,7 @@ public class CloudWatchLogsService {
             Component component
     ) {
         return profileAndRegion -> {
-            List<String> logGroupNames = getLogGroupNamesForProfileAndRegionAndComponent(
+            List<String> logGroupNames = resourceIdsByProfileAndRegionAndComponent.getResourceIds(
                     profileAndRegion,
                     component
             );
@@ -256,26 +232,6 @@ public class CloudWatchLogsService {
                         "| sort message_count desc\n" +
                         "| limit 10"
         );
-    }
-
-    private List<String> getLogGroupNamesForProfileAndRegionAndComponent(
-            AwsProfileAndRegion profileAndRegion,
-            Component component
-    ) {
-        Map<String, List<String>> logGroupNamesByComponent = logGroupNamesByProfileAndRegion.stream()
-                .filter(it -> Objects.equals(it.getKey(), profileAndRegion))
-                .findFirst()
-                .map(Map.Entry::getValue)
-                .orElse(Map.of());
-        List<String> logGroupNames = logGroupNamesByComponent.get(component.getId());
-        if (nonNull(logGroupNames)) {
-            return logGroupNames;
-        }
-        return component.getAliases().stream()
-                .map(Alias::getId)
-                .map(logGroupNamesByComponent::get)
-                .filter(Objects::nonNull)
-                .findFirst().orElse(List.of());
     }
 
     @SneakyThrows

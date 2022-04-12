@@ -2,14 +2,14 @@ package tech.kronicle.plugins.aws;
 
 import org.junit.jupiter.api.Test;
 import tech.kronicle.pluginapi.scanners.models.Output;
-import tech.kronicle.plugins.aws.cloudwatchlogs.services.CloudWatchLogsService;
 import tech.kronicle.plugins.aws.models.AwsProfileAndRegion;
+import tech.kronicle.plugins.aws.synthetics.services.SyntheticsService;
+import tech.kronicle.sdk.models.CheckState;
 import tech.kronicle.sdk.models.Component;
 import tech.kronicle.sdk.models.ComponentMetadata;
 import tech.kronicle.sdk.models.ComponentState;
 import tech.kronicle.sdk.models.EnvironmentPluginState;
 import tech.kronicle.sdk.models.EnvironmentState;
-import tech.kronicle.sdk.models.LogSummaryState;
 
 import java.util.List;
 import java.util.Map;
@@ -22,38 +22,38 @@ import static org.mockito.Mockito.when;
 import static tech.kronicle.plugins.aws.testutils.AwsProfileAndRegionUtils.createProfileAndRegion;
 import static tech.kronicle.plugins.aws.testutils.ComponentUtils.createComponent;
 
-public class AwsCloudWatchLogsInsightsScannerTest {
+public class AwsSyntheticsCanariesScannerTest {
 
     @Test
     public void idShouldReturnTheIdOfTheScanner() {
         // Given
-        AwsCloudWatchLogsInsightsScanner underTest = new AwsCloudWatchLogsInsightsScanner(null);
+        AwsSyntheticsCanariesScanner underTest = new AwsSyntheticsCanariesScanner(null);
 
         // When
         String returnValue = underTest.id();
 
         // Then
-        assertThat(returnValue).isEqualTo("aws-cloud-watch-logs-insights");
+        assertThat(returnValue).isEqualTo("aws-synthetics-canaries");
     }
 
     @Test
     public void descriptionShouldReturnTheDescriptionOfTheScanner() {
         // Given
-        AwsCloudWatchLogsInsightsScanner underTest = new AwsCloudWatchLogsInsightsScanner(null);
+        AwsSyntheticsCanariesScanner underTest = new AwsSyntheticsCanariesScanner(null);
 
         // When
         String returnValue = underTest.description();
 
         // Then
         assertThat(returnValue).isEqualTo(
-                "Finds the number of log entries and top log messages for each log level for a component"
+                "Finds AWS CloudWatch Synthetics Canaries and adds the state of those canaries to components"
         );
     }
 
     @Test
     public void notesShouldReturnNull() {
         // Given
-        AwsCloudWatchLogsInsightsScanner underTest = new AwsCloudWatchLogsInsightsScanner(null);
+        AwsSyntheticsCanariesScanner underTest = new AwsSyntheticsCanariesScanner(null);
 
         // When
         String returnValue = underTest.notes();
@@ -65,8 +65,8 @@ public class AwsCloudWatchLogsInsightsScannerTest {
     @Test
     public void refreshShouldRefreshTheService() {
         // Given
-        CloudWatchLogsService service = mock(CloudWatchLogsService.class);
-        AwsCloudWatchLogsInsightsScanner underTest = new AwsCloudWatchLogsInsightsScanner(service);
+        SyntheticsService service = mock(SyntheticsService.class);
+        AwsSyntheticsCanariesScanner underTest = new AwsSyntheticsCanariesScanner(service);
 
         // When
         underTest.refresh(ComponentMetadata.builder().build());
@@ -78,12 +78,12 @@ public class AwsCloudWatchLogsInsightsScannerTest {
     @Test
     public void scanShouldAddLogSummariesToTheComponent() {
         // Given
-        CloudWatchLogsService service = mock(CloudWatchLogsService.class);
-        AwsCloudWatchLogsInsightsScanner underTest = new AwsCloudWatchLogsInsightsScanner(service);
+        SyntheticsService service = mock(SyntheticsService.class);
+        AwsSyntheticsCanariesScanner underTest = new AwsSyntheticsCanariesScanner(service);
         Component component = createComponent(1);
-        when(service.getLogSummariesForComponent(component)).thenReturn(List.of(
-                createLogSummariesForProfileAndRegion(1),
-                createLogSummariesForProfileAndRegion(2)
+        when(service.getCanaryLastRunsForComponent(component)).thenReturn(List.of(
+                createChecksForProfileAndRegion(1),
+                createChecksForProfileAndRegion(2)
         ));
 
         // When
@@ -109,12 +109,12 @@ public class AwsCloudWatchLogsInsightsScannerTest {
     @Test
     public void scanShouldNotTransformTheComponentIfNoLogSummariesAreFound() {
         // Given
-        CloudWatchLogsService service = mock(CloudWatchLogsService.class);
-        AwsCloudWatchLogsInsightsScanner underTest = new AwsCloudWatchLogsInsightsScanner(service);
+        SyntheticsService service = mock(SyntheticsService.class);
+        AwsSyntheticsCanariesScanner underTest = new AwsSyntheticsCanariesScanner(service);
         Component component = createComponent(1);
-        when(service.getLogSummariesForComponent(component)).thenReturn(List.of(
-                        createEmptyLogSummariesForProfileAndRegion(1),
-                        createEmptyLogSummariesForProfileAndRegion(2)
+        when(service.getCanaryLastRunsForComponent(component)).thenReturn(List.of(
+                createEmptyChecksForProfileAndRegion(1),
+                createEmptyChecksForProfileAndRegion(2)
         ));
 
         // When
@@ -128,16 +128,16 @@ public class AwsCloudWatchLogsInsightsScannerTest {
         assertThat(transformedComponent).isEqualTo(component);
     }
 
-    private Map.Entry<AwsProfileAndRegion, List<LogSummaryState>> createLogSummariesForProfileAndRegion(
+    private Map.Entry<AwsProfileAndRegion, List<CheckState>> createChecksForProfileAndRegion(
             int profileAndRegionNumber
     ) {
         return Map.entry(createProfileAndRegion(profileAndRegionNumber), List.of(
-                createLogSummary(profileAndRegionNumber, 1),
-                createLogSummary(profileAndRegionNumber, 2)
+                createCheck(profileAndRegionNumber, 1),
+                createCheck(profileAndRegionNumber, 2)
         ));
     }
 
-    private Map.Entry<AwsProfileAndRegion, List<LogSummaryState>> createEmptyLogSummariesForProfileAndRegion(
+    private Map.Entry<AwsProfileAndRegion, List<CheckState>> createEmptyChecksForProfileAndRegion(
             int profileAndRegionNumber
     ) {
         return Map.entry(createProfileAndRegion(profileAndRegionNumber), List.of());
@@ -149,12 +149,12 @@ public class AwsCloudWatchLogsInsightsScannerTest {
                 .plugins(List.of(
                         EnvironmentPluginState.builder()
                                 .id("aws")
-                                .logSummaries(List.of(
-                                        LogSummaryState.builder()
-                                                .name("test-log-summary-name-" + environmentNumber + "-1")
+                                .checks(List.of(
+                                        CheckState.builder()
+                                                .name("test-check-name-" + environmentNumber + "-1")
                                                 .build(),
-                                        LogSummaryState.builder()
-                                                .name("test-log-summary-name-" + environmentNumber + "-2")
+                                        CheckState.builder()
+                                                .name("test-check-name-" + environmentNumber + "-2")
                                                 .build()
                                 ))
                                 .build()
@@ -162,12 +162,12 @@ public class AwsCloudWatchLogsInsightsScannerTest {
                 .build();
     }
 
-    private LogSummaryState createLogSummary(
+    private CheckState createCheck(
             int profileAndRegionNumber,
-            int logSummaryNumber
+            int checkNumber
     ) {
-        return LogSummaryState.builder()
-                .name("test-log-summary-name-" + profileAndRegionNumber + "-" + logSummaryNumber)
+        return CheckState.builder()
+                .name("test-check-name-" + profileAndRegionNumber + "-" + checkNumber)
                 .build();
     }
 }

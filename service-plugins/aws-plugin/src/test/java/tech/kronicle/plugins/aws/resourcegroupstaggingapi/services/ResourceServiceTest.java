@@ -14,6 +14,7 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.when;
+import static tech.kronicle.plugins.aws.testutils.ResourceGroupsTaggingApiResourceUtils.createResource;
 
 @ExtendWith(MockitoExtension.class)
 public class ResourceServiceTest {
@@ -164,13 +165,6 @@ public class ResourceServiceTest {
 
         // Then
         assertThat(returnValue).isEqualTo(components);
-    }
-
-    private ResourceGroupsTaggingApiResource createResource(int resourceNumber) {
-        return new ResourceGroupsTaggingApiResource(
-                "test-arn-" + resourceNumber,
-                List.of()
-        );
     }
 
     private ResourceService createUnderTest(List<AwsProfileConfig> profiles) {
