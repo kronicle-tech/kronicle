@@ -53,6 +53,9 @@ public class SyntheticsService {
                     profileAndRegion,
                     component
             );
+            if (canaryNames.isEmpty()) {
+                return List.of();
+            }
             return mapCanaryLastRuns(clientFacade.describeCanariesLastRun(profileAndRegion, canaryNames));
         };
     }

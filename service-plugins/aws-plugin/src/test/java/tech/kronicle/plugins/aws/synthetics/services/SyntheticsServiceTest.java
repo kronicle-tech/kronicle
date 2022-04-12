@@ -80,14 +80,6 @@ public class SyntheticsServiceTest {
                 )
         );
         mockDescribeCanariesLastRun(
-                profile1AndRegion2,
-                List.of()
-        );
-        mockDescribeCanariesLastRun(
-                profile2AndRegion1,
-                List.of()
-        );
-        mockDescribeCanariesLastRun(
                 profile2AndRegion2,
                 List.of(
                         createCanaryName(3),
