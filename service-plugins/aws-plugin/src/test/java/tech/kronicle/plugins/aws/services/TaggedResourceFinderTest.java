@@ -19,6 +19,7 @@ import java.util.Map;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.when;
 import static tech.kronicle.plugins.aws.testutils.AwsProfileAndRegionUtils.createProfile;
+import static tech.kronicle.plugins.aws.testutils.ComponentUtils.createComponent;
 import static tech.kronicle.plugins.aws.testutils.ResourceGroupsTaggingApiResourceUtils.TEST_COMPONENT_TAG_KEY;
 import static tech.kronicle.plugins.aws.testutils.ResourceGroupsTaggingApiResourceUtils.createResource;
 
@@ -94,11 +95,5 @@ public class TaggedResourceFinderTest {
                 List.of(resourceType),
                 Map.of(TEST_COMPONENT_TAG_KEY, List.of())
         )).thenReturn(resources);
-    }
-
-    private Component createComponent(int componentNumber) {
-        return Component.builder()
-                .id("test-component-id-" + componentNumber)
-                .build();
     }
 }

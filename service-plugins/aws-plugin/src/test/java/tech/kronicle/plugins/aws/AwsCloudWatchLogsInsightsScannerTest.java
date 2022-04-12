@@ -20,6 +20,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
+import static tech.kronicle.plugins.aws.testutils.ComponentUtils.createComponent;
 
 public class AwsCloudWatchLogsInsightsScannerTest {
 
@@ -185,11 +186,5 @@ public class AwsCloudWatchLogsInsightsScannerTest {
                 ),
                 "test-region-" + profileAndRegionNumber + "-1"
         );
-    }
-
-    private Component createComponent(int componentNumber) {
-        return Component.builder()
-                .id("test-component-id-" + componentNumber)
-                .build();
     }
 }

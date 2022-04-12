@@ -36,6 +36,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.when;
 import static tech.kronicle.plugins.aws.testutils.AwsProfileAndRegionUtils.createProfile;
+import static tech.kronicle.plugins.aws.testutils.ComponentUtils.createComponent;
 
 @ExtendWith(MockitoExtension.class)
 public class CloudWatchLogsServiceTest {
@@ -599,16 +600,6 @@ public class CloudWatchLogsServiceTest {
 
     private String createLevelTopMessageCount(int queryNumber, int levelNumber, int messageNumber) {
         return Integer.toString((queryNumber * 100) + (levelNumber * 10) + messageNumber);
-    }
-
-    private Component createComponent(int componentNumber) {
-        return Component.builder()
-                .id(createComponentId(componentNumber))
-                .build();
-    }
-
-    private String createComponentId(int componentNumber) {
-        return "test-component-id-" + componentNumber;
     }
 
     private String createLogGroupName(int logGroupNameNumber) {

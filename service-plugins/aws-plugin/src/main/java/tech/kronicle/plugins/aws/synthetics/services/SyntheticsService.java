@@ -63,7 +63,6 @@ public class SyntheticsService {
                 .collect(toUnmodifiableList());
     }
 
-
     private CheckState mapCanaryLastRun(SyntheticsCanaryLastRun canaryLastRun) {
         return CheckState.builder()
                 .name(canaryLastRun.getCanaryName())
