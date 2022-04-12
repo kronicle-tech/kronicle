@@ -10,6 +10,8 @@ import tech.kronicle.plugins.aws.cloudwatchlogs.client.CloudWatchLogsClientFacad
 import tech.kronicle.plugins.aws.cloudwatchlogs.client.CloudWatchLogsClientFacadeImpl;
 import tech.kronicle.plugins.aws.resourcegroupstaggingapi.client.ResourceGroupsTaggingApiClientFacade;
 import tech.kronicle.plugins.aws.resourcegroupstaggingapi.client.ResourceGroupsTaggingApiClientFacadeImpl;
+import tech.kronicle.plugins.aws.synthetics.client.SyntheticsClientFacade;
+import tech.kronicle.plugins.aws.synthetics.client.SyntheticsClientFacadeImpl;
 
 import java.time.Clock;
 import java.time.Duration;
@@ -22,6 +24,7 @@ public class GuiceModule extends AbstractModule {
     protected void configure() {
         bind(CloudWatchLogsClientFacade.class).to(CloudWatchLogsClientFacadeImpl.class);
         bind(ResourceGroupsTaggingApiClientFacade.class).to(ResourceGroupsTaggingApiClientFacadeImpl.class);
+        bind(SyntheticsClientFacade.class).to(SyntheticsClientFacadeImpl.class);
     }
 
     @Provides
