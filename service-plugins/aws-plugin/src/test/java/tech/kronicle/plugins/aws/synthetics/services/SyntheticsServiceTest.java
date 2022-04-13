@@ -51,6 +51,7 @@ public class SyntheticsServiceTest {
         SyntheticsService underTest = new SyntheticsService(
                 clientFacade,
                 taggedResourceFinder,
+                new SyntheticsCanaryLastRunMapper(),
                 new AwsConfig(
                         List.of(profile1, profile2),
                         null,
