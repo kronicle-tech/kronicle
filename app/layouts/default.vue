@@ -5,7 +5,6 @@
       <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
       <b-collapse id="nav-collapse" is-nav>
         <b-navbar-nav>
-          <b-nav-item :to="{ name: 'all-environments' }">Environments</b-nav-item>
           <b-nav-item to="/all-components">Components</b-nav-item>
           <b-nav-item to="/all-teams">Teams</b-nav-item>
           <b-nav-item to="/all-areas">Areas</b-nav-item>
