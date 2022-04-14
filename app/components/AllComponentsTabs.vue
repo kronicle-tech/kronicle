@@ -10,9 +10,6 @@
       Cross Functional Requirements
     </b-button>
     <b-button class="my-1" :to="{ name: 'all-components-tech-debts' }">Tech Debts</b-button>
-    <b-button class="my-1" :to="{ name: 'all-components-dependencies' }">
-      Dependencies
-    </b-button>
     <b-button class="my-1" :to="{ name: 'all-components-openapi-specs' }">
       OpenAPI Specs
     </b-button>

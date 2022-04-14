@@ -1,13 +1,5 @@
 <template>
-  <div>
-    <b-container fluid>
-      <b-row>
-        <b-col>
-          <AllComponentsTabs />
-        </b-col>
-      </b-row>
-    </b-container>
-
+  <div class="mt-3">
     <ComponentDependenciesView
       :all-components="components"
       :components="components"

@@ -179,7 +179,7 @@ public class GitHubClient {
       return CheckState.builder()
               .status(status.status)
               .name(workflowRun.getName())
-              .description("GitHub Actions Workflow Run")
+              .description("GitHub Actions Workflow")
               .avatarUrl(mapAvatarUrl(workflowRun))
               .statusMessage(status.statusMessage)
               .links(createWorkflowRunLinks(workflowRun))
@@ -243,7 +243,7 @@ public class GitHubClient {
     return List.of(
             Link.builder()
                     .url(gitHubWorkflowRun.getHtml_url())
-                    .description("GitHub Actions Workflow Run")
+                    .description("GitHub Actions Workflow")
                     .build()
     );
   }

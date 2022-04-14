@@ -6,15 +6,15 @@
           <b-card-group columns>
             <template v-for="item in items">
               <template v-if="item.itemType === 'check'">
-                <b-card :key="item.key" :class="`border-${item.statusClass}`">
+                <b-card :key="item.key" :class="`border-${item.statusVariant}`">
                   <b-card-title>
-                    <span class="h5">{{ item.environment.id }} <span class="text-muted">//</span> {{ item.plugin.id }} <span class="text-muted">//</span> {{ item.component.name }}<br><br></span>
-                    {{ item.check.name }} <b-badge>{{ item.check.description }}</b-badge>
+                    <h5>{{ item.environment.id }} <span class="text-muted">//</span> {{ item.plugin.id }} <span class="text-muted">//</span> {{ item.component.name }}</h5>
+                    <h4 :class="`text-${item.statusVariant}`">{{ item.check.name }} <b-badge>{{ item.check.description }}</b-badge></h4>
                   </b-card-title>
                   <b-card-text>
-                    <span class="text-muted">Status:</span> <b>{{ item.check.status }}</b><br>
-                    <span class="text-muted">Status Message:</span> <b>{{ item.check.statusMessage }}</b><br>
-                    <span class="text-muted">Updated At:</span> <b><FormattedDateTime :value="item.check.updateTimestamp" /></b><br>
+                    <div><span class="text-muted">Status:</span> <b-badge :variant="item.statusVariant">{{ item.check.status }}</b-badge></div>
+                    <div><span class="text-muted">Status Message:</span> <b>{{ item.check.statusMessage }}</b></div>
+                    <div><span class="text-muted">Updated At:</span> <b><FormattedDateTime :value="item.check.updateTimestamp" /></b></div>
                   </b-card-text>
                 </b-card>
               </template>
@@ -26,35 +26,35 @@
                   <b-card-text>
                     <h4>{{ item.logSummary.name }}</h4>
 
-                    <p>
-                      <span v-for="level in item.logSummary.levels" :key="level.level">
-                        <span class="text-muted">{{ level.level || '{blank}' }}:</span> <b><FormattedNumber :value="level.count"/></b><br>
-                      </span>
-                    </p>
+                    <div v-for="level in item.logSummary.levels" :key="level.level">
+                      <span class="text-muted">{{ level.level || '{blank}' }}:</span> <b><FormattedNumber :value="level.count"/></b>
+                    </div>
 
-                    <div v-for="comparison in item.logSummary.comparisons" :key="comparison.name">
+                    <div v-for="comparison in item.logSummary.comparisons" :key="comparison.name" class="mt-2">
                       <h5>{{ comparison.name }}</h5>
 
-                      <p>
-                        <span v-for="level in comparison.levels" :key="level.level">
-                          <span class="text-muted">{{ level.level || '{blank}' }}:</span> <b><FormattedNumber :value="level.count"/></b><br>
-                        </span>
-                      </p>
+                      <div v-for="level in comparison.levels" :key="level.level">
+                        <span class="text-muted">{{ level.level || '{blank}' }}:</span> <b><FormattedNumber :value="level.count"/></b>
+                      </div>
                     </div>
+
+                    <div class="mt-2"><span class="text-muted">Updated At:</span> <b><FormattedDateTime :value="item.logSummary.updateTimestamp" /></b></div>
                   </b-card-text>
                 </b-card>
-                <b-card v-for="level in item.logSummary.levels" :key="`${item.key}-${level.level}`">
+                <b-card v-for="level in item.logSummary.levels.filter(level => level.topMessages.length > 0)" :key="`${item.key}-${level.level}`">
                   <b-card-title class="h5">
                     {{ item.environment.id }} <span class="text-muted">//</span> {{ item.component.name }} <span class="text-muted">//</span> {{ item.plugin.id }} <span class="text-muted">//</span> Logs
                   </b-card-title>
                   <b-card-text>
-                    <h4> {{ level.level }} - Top Messages</h4>
+                    <h4> {{ level.level || '{blank}' }} - Top Messages - {{ item.logSummary.name }}</h4>
 
                     <ol>
                       <li v-for="topMessage in level.topMessages" :key="topMessage.message">
-                        <span class="text-muted">{{ topMessage.message || '{blank}' }}</span> <b>x<FormattedNumber :value="topMessage.count"/></b><br>
+                        <span class="text-muted">{{ topMessage.message || '{blank}' }}</span> <b class="h5">x<FormattedNumber :value="topMessage.count"/></b><br>
                       </li>
                     </ol>
+
+                    <div class="mt-2"><span class="text-muted">Updated At:</span> <b><FormattedDateTime :value="item.logSummary.updateTimestamp" /></b></div>
                   </b-card-text>
                 </b-card>
               </template>
@@ -71,7 +71,7 @@
 
 <script lang="ts">
 import Vue, {PropType} from 'vue'
-import {BCard, BCardBody, BCardGroup, BCardText, BCardTitle, BCol, BContainer, BRow} from 'bootstrap-vue'
+import {BCard, BCardGroup, BCardText, BCardTitle, BCol, BContainer, BRow} from 'bootstrap-vue'
 import {
   CheckState,
   Component,
@@ -94,7 +94,7 @@ interface BaseItem {
 interface CheckItem extends BaseItem {
   readonly itemType: 'check';
   readonly check: CheckState;
-  readonly statusClass: string;
+  readonly statusVariant: string;
 }
 
 interface LogSummaryItem extends BaseItem {
@@ -181,7 +181,7 @@ export default Vue.extend({
         environment,
         plugin,
         check,
-        statusClass: that.getStatusClass(check.status),
+        statusVariant: that.getStatusVariant(check.status),
       };
     },
     mapLogSummary(component: Component, environment: EnvironmentState, plugin: EnvironmentPluginState, logSummary: LogSummaryState): Item {
@@ -194,7 +194,7 @@ export default Vue.extend({
         logSummary,
       };
     },
-    getStatusClass(status: ComponentStateCheckStatus): string {
+    getStatusVariant(status: ComponentStateCheckStatus): string {
       switch (status) {
         case "critical":
           return "danger";
