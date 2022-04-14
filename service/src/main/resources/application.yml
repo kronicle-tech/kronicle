@@ -195,3 +195,4 @@ openapi-spec:
   clear-existing-servers: true
   servers:
     - description: Kronicle Service
+      url: https://demo.kronicle.tech/api
