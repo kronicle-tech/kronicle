@@ -7,7 +7,8 @@
       <tr>
         <th class="component">Component</th>
         <th class="teams">Teams</th>
-        <th class="link">Link</th>
+        <th class="location">Location</th>
+        <th class="action">Action</th>
         <th class="description">Description</th>
       </tr>
     </thead>
@@ -16,24 +17,27 @@
         v-for="(openApiSpec, openApiSpecIndex) in openApiSpecs"
         :key="openApiSpecIndex"
       >
-        <td class="component table-primary">
+        <td class="component">
           <ComponentName :component="openApiSpec.component" />
         </td>
-        <td class="teams table-primary">
+        <td class="teams">
           <ComponentTeams :component-teams="openApiSpec.component.teams" />
         </td>
-        <td class="link">
+        <td class="location">
+          {{ openApiSpec.url ? openApiSpec.url : openApiSpec.file }}
+        </td>
+        <td class="action table-secondary">
           <b-link
             v-if="openApiSpec.spec"
             :href="`/components/${openApiSpec.component.id}/openapi-specs/${
               openApiSpec.index + 1
             }`"
+            variant="primary"
           >
-            {{ openApiSpec.url ? openApiSpec.url : openApiSpec.file }}
+            View OpenAPI spec
           </b-link>
           <div v-else>
-            {{ openApiSpec.url ? openApiSpec.url : openApiSpec.file }}
-            <b-badge variant="danger">Missing</b-badge>
+            <b-badge variant="danger">OpenApi spec not found</b-badge>
           </div>
         </td>
         <td class="description">

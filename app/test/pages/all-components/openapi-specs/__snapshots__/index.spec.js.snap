@@ -63,9 +63,15 @@ exports[`Index when Get Components service endpoint returns an array of multiple
                     </th>
                      
                     <th
-                      class="link"
+                      class="location"
                     >
-                      Link
+                      Location
+                    </th>
+                     
+                    <th
+                      class="action"
+                    >
+                      Action
                     </th>
                      
                     <th
@@ -79,7 +85,7 @@ exports[`Index when Get Components service endpoint returns an array of multiple
                 <tbody>
                   <tr>
                     <td
-                      class="component table-primary"
+                      class="component"
                     >
                       <a
                         href="/components/test-component-id-1"
@@ -89,7 +95,7 @@ exports[`Index when Get Components service endpoint returns an array of multiple
                     </td>
                      
                     <td
-                      class="teams table-primary"
+                      class="teams"
                     >
                       <ul>
                         <li>
@@ -120,15 +126,24 @@ exports[`Index when Get Components service endpoint returns an array of multiple
                     </td>
                      
                     <td
-                      class="link"
+                      class="location"
+                    >
+                      
+        https://example.com/test-openapi-spec-1-1
+      
+                    </td>
+                     
+                    <td
+                      class="action table-secondary"
                     >
                       <a
                         class=""
                         href="/components/test-component-id-1/openapi-specs/1"
                         target="_self"
+                        variant="primary"
                       >
                         
-          https://example.com/test-openapi-spec-1-1
+          View OpenAPI spec
         
                       </a>
                     </td>
@@ -147,7 +162,7 @@ exports[`Index when Get Components service endpoint returns an array of multiple
                   </tr>
                   <tr>
                     <td
-                      class="component table-primary"
+                      class="component"
                     >
                       <a
                         href="/components/test-component-id-1"
@@ -157,7 +172,7 @@ exports[`Index when Get Components service endpoint returns an array of multiple
                     </td>
                      
                     <td
-                      class="teams table-primary"
+                      class="teams"
                     >
                       <ul>
                         <li>
@@ -188,15 +203,24 @@ exports[`Index when Get Components service endpoint returns an array of multiple
                     </td>
                      
                     <td
-                      class="link"
+                      class="location"
+                    >
+                      
+        https://example.com/test-openapi-spec-1-2
+      
+                    </td>
+                     
+                    <td
+                      class="action table-secondary"
                     >
                       <a
                         class=""
                         href="/components/test-component-id-1/openapi-specs/2"
                         target="_self"
+                        variant="primary"
                       >
                         
-          https://example.com/test-openapi-spec-1-2
+          View OpenAPI spec
         
                       </a>
                     </td>
@@ -215,7 +239,7 @@ exports[`Index when Get Components service endpoint returns an array of multiple
                   </tr>
                   <tr>
                     <td
-                      class="component table-primary"
+                      class="component"
                     >
                       <a
                         href="/components/test-component-id-3"
@@ -225,7 +249,7 @@ exports[`Index when Get Components service endpoint returns an array of multiple
                     </td>
                      
                     <td
-                      class="teams table-primary"
+                      class="teams"
                     >
                       <ul>
                         <li>
@@ -256,15 +280,24 @@ exports[`Index when Get Components service endpoint returns an array of multiple
                     </td>
                      
                     <td
-                      class="link"
+                      class="location"
+                    >
+                      
+        https://example.com/test-openapi-spec-3-1
+      
+                    </td>
+                     
+                    <td
+                      class="action table-secondary"
                     >
                       <a
                         class=""
                         href="/components/test-component-id-3/openapi-specs/1"
                         target="_self"
+                        variant="primary"
                       >
                         
-          https://example.com/test-openapi-spec-3-1
+          View OpenAPI spec
         
                       </a>
                     </td>
@@ -283,7 +316,7 @@ exports[`Index when Get Components service endpoint returns an array of multiple
                   </tr>
                   <tr>
                     <td
-                      class="component table-primary"
+                      class="component"
                     >
                       <a
                         href="/components/test-component-id-3"
@@ -293,7 +326,7 @@ exports[`Index when Get Components service endpoint returns an array of multiple
                     </td>
                      
                     <td
-                      class="teams table-primary"
+                      class="teams"
                     >
                       <ul>
                         <li>
@@ -324,15 +357,24 @@ exports[`Index when Get Components service endpoint returns an array of multiple
                     </td>
                      
                     <td
-                      class="link"
+                      class="location"
+                    >
+                      
+        https://example.com/test-openapi-spec-3-2
+      
+                    </td>
+                     
+                    <td
+                      class="action table-secondary"
                     >
                       <a
                         class=""
                         href="/components/test-component-id-3/openapi-specs/2"
                         target="_self"
+                        variant="primary"
                       >
                         
-          https://example.com/test-openapi-spec-3-2
+          View OpenAPI spec
         
                       </a>
                     </td>

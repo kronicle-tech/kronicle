@@ -25,14 +25,15 @@ exports[`OpenApiSpecsView when an OpenAPI spec has a URL but no spec renders the
                 <tr>
                   <th class=\\"component\\">Component</th>
                   <th class=\\"teams\\">Teams</th>
-                  <th class=\\"link\\">Link</th>
+                  <th class=\\"location\\">Location</th>
+                  <th class=\\"action\\">Action</th>
                   <th class=\\"description\\">Description</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <td class=\\"component table-primary\\"><a href=\\"/components/test-component-id-1\\">Test Component Name 1</a></td>
-                  <td class=\\"teams table-primary\\">
+                  <td class=\\"component\\"><a href=\\"/components/test-component-id-1\\">Test Component Name 1</a></td>
+                  <td class=\\"teams\\">
                     <ul>
                       <li><a href=\\"/teams/test-team-id-1-1\\" class=\\"team-name\\">test-team-id-1-1</a>
                         <!---->
@@ -44,10 +45,11 @@ exports[`OpenApiSpecsView when an OpenAPI spec has a URL but no spec renders the
                       </li>
                     </ul>
                   </td>
-                  <td class=\\"link\\">
-                    <div>
-                      https://example.com/openapi-spec-1-1
-                      <span class=\\"badge badge-danger\\">Missing</span></div>
+                  <td class=\\"location\\">
+                    https://example.com/openapi-spec-1-1
+                  </td>
+                  <td class=\\"action table-secondary\\">
+                    <div><span class=\\"badge badge-danger\\">OpenApi spec not found</span></div>
                   </td>
                   <td class=\\"description\\">
                     <div>
@@ -153,14 +155,15 @@ exports[`OpenApiSpecsView when an OpenAPI spec has a file but no spec renders th
                 <tr>
                   <th class=\\"component\\">Component</th>
                   <th class=\\"teams\\">Teams</th>
-                  <th class=\\"link\\">Link</th>
+                  <th class=\\"location\\">Location</th>
+                  <th class=\\"action\\">Action</th>
                   <th class=\\"description\\">Description</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <td class=\\"component table-primary\\"><a href=\\"/components/test-component-id-1\\">Test Component Name 1</a></td>
-                  <td class=\\"teams table-primary\\">
+                  <td class=\\"component\\"><a href=\\"/components/test-component-id-1\\">Test Component Name 1</a></td>
+                  <td class=\\"teams\\">
                     <ul>
                       <li><a href=\\"/teams/test-team-id-1-1\\" class=\\"team-name\\">test-team-id-1-1</a>
                         <!---->
@@ -172,10 +175,11 @@ exports[`OpenApiSpecsView when an OpenAPI spec has a file but no spec renders th
                       </li>
                     </ul>
                   </td>
-                  <td class=\\"link\\">
-                    <div>
-                      /openapi-spec-1-1.yaml
-                      <span class=\\"badge badge-danger\\">Missing</span></div>
+                  <td class=\\"location\\">
+                    /openapi-spec-1-1.yaml
+                  </td>
+                  <td class=\\"action table-secondary\\">
+                    <div><span class=\\"badge badge-danger\\">OpenApi spec not found</span></div>
                   </td>
                   <td class=\\"description\\">
                     <div>
@@ -281,14 +285,15 @@ exports[`OpenApiSpecsView when an OpenAPI spec has a spec and a URL renders the 
                 <tr>
                   <th class=\\"component\\">Component</th>
                   <th class=\\"teams\\">Teams</th>
-                  <th class=\\"link\\">Link</th>
+                  <th class=\\"location\\">Location</th>
+                  <th class=\\"action\\">Action</th>
                   <th class=\\"description\\">Description</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <td class=\\"component table-primary\\"><a href=\\"/components/test-component-id-1\\">Test Component Name 1</a></td>
-                  <td class=\\"teams table-primary\\">
+                  <td class=\\"component\\"><a href=\\"/components/test-component-id-1\\">Test Component Name 1</a></td>
+                  <td class=\\"teams\\">
                     <ul>
                       <li><a href=\\"/teams/test-team-id-1-1\\" class=\\"team-name\\">test-team-id-1-1</a>
                         <!---->
@@ -300,8 +305,11 @@ exports[`OpenApiSpecsView when an OpenAPI spec has a spec and a URL renders the 
                       </li>
                     </ul>
                   </td>
-                  <td class=\\"link\\"><a href=\\"/components/test-component-id-1/openapi-specs/1\\" target=\\"_self\\" class=\\"\\">
-                      https://example.com/openapi-spec-1-1
+                  <td class=\\"location\\">
+                    https://example.com/openapi-spec-1-1
+                  </td>
+                  <td class=\\"action table-secondary\\"><a variant=\\"primary\\" href=\\"/components/test-component-id-1/openapi-specs/1\\" target=\\"_self\\" class=\\"\\">
+                      View OpenAPI spec
                     </a></td>
                   <td class=\\"description\\">
                     <div>
@@ -407,14 +415,15 @@ exports[`OpenApiSpecsView when an OpenAPI spec has a spec and a file renders the
                 <tr>
                   <th class=\\"component\\">Component</th>
                   <th class=\\"teams\\">Teams</th>
-                  <th class=\\"link\\">Link</th>
+                  <th class=\\"location\\">Location</th>
+                  <th class=\\"action\\">Action</th>
                   <th class=\\"description\\">Description</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <td class=\\"component table-primary\\"><a href=\\"/components/test-component-id-1\\">Test Component Name 1</a></td>
-                  <td class=\\"teams table-primary\\">
+                  <td class=\\"component\\"><a href=\\"/components/test-component-id-1\\">Test Component Name 1</a></td>
+                  <td class=\\"teams\\">
                     <ul>
                       <li><a href=\\"/teams/test-team-id-1-1\\" class=\\"team-name\\">test-team-id-1-1</a>
                         <!---->
@@ -426,8 +435,11 @@ exports[`OpenApiSpecsView when an OpenAPI spec has a spec and a file renders the
                       </li>
                     </ul>
                   </td>
-                  <td class=\\"link\\"><a href=\\"/components/test-component-id-1/openapi-specs/1\\" target=\\"_self\\" class=\\"\\">
-                      /openapi-spec-1-1.yaml
+                  <td class=\\"location\\">
+                    /openapi-spec-1-1.yaml
+                  </td>
+                  <td class=\\"action table-secondary\\"><a variant=\\"primary\\" href=\\"/components/test-component-id-1/openapi-specs/1\\" target=\\"_self\\" class=\\"\\">
+                      View OpenAPI spec
                     </a></td>
                   <td class=\\"description\\">
                     <div>
@@ -533,14 +545,15 @@ exports[`OpenApiSpecsView when components is set to multiple components with mul
                 <tr>
                   <th class=\\"component\\">Component</th>
                   <th class=\\"teams\\">Teams</th>
-                  <th class=\\"link\\">Link</th>
+                  <th class=\\"location\\">Location</th>
+                  <th class=\\"action\\">Action</th>
                   <th class=\\"description\\">Description</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <td class=\\"component table-primary\\"><a href=\\"/components/test-component-id-1\\">Test Component Name 1</a></td>
-                  <td class=\\"teams table-primary\\">
+                  <td class=\\"component\\"><a href=\\"/components/test-component-id-1\\">Test Component Name 1</a></td>
+                  <td class=\\"teams\\">
                     <ul>
                       <li><a href=\\"/teams/test-team-id-1-1\\" class=\\"team-name\\">test-team-id-1-1</a>
                         <!---->
@@ -552,8 +565,11 @@ exports[`OpenApiSpecsView when components is set to multiple components with mul
                       </li>
                     </ul>
                   </td>
-                  <td class=\\"link\\"><a href=\\"/components/test-component-id-1/openapi-specs/1\\" target=\\"_self\\" class=\\"\\">
-                      https://example.com/openapi-spec-1-1
+                  <td class=\\"location\\">
+                    https://example.com/openapi-spec-1-1
+                  </td>
+                  <td class=\\"action table-secondary\\"><a variant=\\"primary\\" href=\\"/components/test-component-id-1/openapi-specs/1\\" target=\\"_self\\" class=\\"\\">
+                      View OpenAPI spec
                     </a></td>
                   <td class=\\"description\\">
                     <div>
@@ -562,8 +578,8 @@ exports[`OpenApiSpecsView when components is set to multiple components with mul
                   </td>
                 </tr>
                 <tr>
-                  <td class=\\"component table-primary\\"><a href=\\"/components/test-component-id-1\\">Test Component Name 1</a></td>
-                  <td class=\\"teams table-primary\\">
+                  <td class=\\"component\\"><a href=\\"/components/test-component-id-1\\">Test Component Name 1</a></td>
+                  <td class=\\"teams\\">
                     <ul>
                       <li><a href=\\"/teams/test-team-id-1-1\\" class=\\"team-name\\">test-team-id-1-1</a>
                         <!---->
@@ -575,8 +591,11 @@ exports[`OpenApiSpecsView when components is set to multiple components with mul
                       </li>
                     </ul>
                   </td>
-                  <td class=\\"link\\"><a href=\\"/components/test-component-id-1/openapi-specs/2\\" target=\\"_self\\" class=\\"\\">
-                      https://example.com/openapi-spec-1-2
+                  <td class=\\"location\\">
+                    https://example.com/openapi-spec-1-2
+                  </td>
+                  <td class=\\"action table-secondary\\"><a variant=\\"primary\\" href=\\"/components/test-component-id-1/openapi-specs/2\\" target=\\"_self\\" class=\\"\\">
+                      View OpenAPI spec
                     </a></td>
                   <td class=\\"description\\">
                     <div>
@@ -585,8 +604,8 @@ exports[`OpenApiSpecsView when components is set to multiple components with mul
                   </td>
                 </tr>
                 <tr>
-                  <td class=\\"component table-primary\\"><a href=\\"/components/test-component-id-2\\">Test Component Name 2</a></td>
-                  <td class=\\"teams table-primary\\">
+                  <td class=\\"component\\"><a href=\\"/components/test-component-id-2\\">Test Component Name 2</a></td>
+                  <td class=\\"teams\\">
                     <ul>
                       <li><a href=\\"/teams/test-team-id-2-1\\" class=\\"team-name\\">test-team-id-2-1</a>
                         <!---->
@@ -598,8 +617,11 @@ exports[`OpenApiSpecsView when components is set to multiple components with mul
                       </li>
                     </ul>
                   </td>
-                  <td class=\\"link\\"><a href=\\"/components/test-component-id-2/openapi-specs/1\\" target=\\"_self\\" class=\\"\\">
-                      https://example.com/openapi-spec-2-1
+                  <td class=\\"location\\">
+                    https://example.com/openapi-spec-2-1
+                  </td>
+                  <td class=\\"action table-secondary\\"><a variant=\\"primary\\" href=\\"/components/test-component-id-2/openapi-specs/1\\" target=\\"_self\\" class=\\"\\">
+                      View OpenAPI spec
                     </a></td>
                   <td class=\\"description\\">
                     <div>
@@ -608,8 +630,8 @@ exports[`OpenApiSpecsView when components is set to multiple components with mul
                   </td>
                 </tr>
                 <tr>
-                  <td class=\\"component table-primary\\"><a href=\\"/components/test-component-id-2\\">Test Component Name 2</a></td>
-                  <td class=\\"teams table-primary\\">
+                  <td class=\\"component\\"><a href=\\"/components/test-component-id-2\\">Test Component Name 2</a></td>
+                  <td class=\\"teams\\">
                     <ul>
                       <li><a href=\\"/teams/test-team-id-2-1\\" class=\\"team-name\\">test-team-id-2-1</a>
                         <!---->
@@ -621,8 +643,11 @@ exports[`OpenApiSpecsView when components is set to multiple components with mul
                       </li>
                     </ul>
                   </td>
-                  <td class=\\"link\\"><a href=\\"/components/test-component-id-2/openapi-specs/2\\" target=\\"_self\\" class=\\"\\">
-                      https://example.com/openapi-spec-2-2
+                  <td class=\\"location\\">
+                    https://example.com/openapi-spec-2-2
+                  </td>
+                  <td class=\\"action table-secondary\\"><a variant=\\"primary\\" href=\\"/components/test-component-id-2/openapi-specs/2\\" target=\\"_self\\" class=\\"\\">
+                      View OpenAPI spec
                     </a></td>
                   <td class=\\"description\\">
                     <div>
@@ -734,14 +759,15 @@ exports[`OpenApiSpecsView when components is set to multiple components with mul
                 <tr>
                   <th class=\\"component\\">Component</th>
                   <th class=\\"teams\\">Teams</th>
-                  <th class=\\"link\\">Link</th>
+                  <th class=\\"location\\">Location</th>
+                  <th class=\\"action\\">Action</th>
                   <th class=\\"description\\">Description</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <td class=\\"component table-primary\\"><a href=\\"/components/test-component-id-1\\">Test Component Name 1</a></td>
-                  <td class=\\"teams table-primary\\">
+                  <td class=\\"component\\"><a href=\\"/components/test-component-id-1\\">Test Component Name 1</a></td>
+                  <td class=\\"teams\\">
                     <ul>
                       <li><a href=\\"/teams/test-team-id-1-1\\" class=\\"team-name\\">test-team-id-1-1</a>
                         <!---->
@@ -753,8 +779,11 @@ exports[`OpenApiSpecsView when components is set to multiple components with mul
                       </li>
                     </ul>
                   </td>
-                  <td class=\\"link\\"><a href=\\"/components/test-component-id-1/openapi-specs/1\\" target=\\"_self\\" class=\\"\\">
-                      https://example.com/openapi-spec-1-1
+                  <td class=\\"location\\">
+                    https://example.com/openapi-spec-1-1
+                  </td>
+                  <td class=\\"action table-secondary\\"><a variant=\\"primary\\" href=\\"/components/test-component-id-1/openapi-specs/1\\" target=\\"_self\\" class=\\"\\">
+                      View OpenAPI spec
                     </a></td>
                   <td class=\\"description\\">
                     <div>
@@ -763,8 +792,8 @@ exports[`OpenApiSpecsView when components is set to multiple components with mul
                   </td>
                 </tr>
                 <tr>
-                  <td class=\\"component table-primary\\"><a href=\\"/components/test-component-id-1\\">Test Component Name 1</a></td>
-                  <td class=\\"teams table-primary\\">
+                  <td class=\\"component\\"><a href=\\"/components/test-component-id-1\\">Test Component Name 1</a></td>
+                  <td class=\\"teams\\">
                     <ul>
                       <li><a href=\\"/teams/test-team-id-1-1\\" class=\\"team-name\\">test-team-id-1-1</a>
                         <!---->
@@ -776,8 +805,11 @@ exports[`OpenApiSpecsView when components is set to multiple components with mul
                       </li>
                     </ul>
                   </td>
-                  <td class=\\"link\\"><a href=\\"/components/test-component-id-1/openapi-specs/2\\" target=\\"_self\\" class=\\"\\">
-                      https://example.com/openapi-spec-1-2
+                  <td class=\\"location\\">
+                    https://example.com/openapi-spec-1-2
+                  </td>
+                  <td class=\\"action table-secondary\\"><a variant=\\"primary\\" href=\\"/components/test-component-id-1/openapi-specs/2\\" target=\\"_self\\" class=\\"\\">
+                      View OpenAPI spec
                     </a></td>
                   <td class=\\"description\\">
                     <div>
@@ -786,8 +818,8 @@ exports[`OpenApiSpecsView when components is set to multiple components with mul
                   </td>
                 </tr>
                 <tr>
-                  <td class=\\"component table-primary\\"><a href=\\"/components/test-component-id-2\\">Test Component Name 2</a></td>
-                  <td class=\\"teams table-primary\\">
+                  <td class=\\"component\\"><a href=\\"/components/test-component-id-2\\">Test Component Name 2</a></td>
+                  <td class=\\"teams\\">
                     <ul>
                       <li><a href=\\"/teams/test-team-id-2-1\\" class=\\"team-name\\">test-team-id-2-1</a>
                         <!---->
@@ -799,8 +831,11 @@ exports[`OpenApiSpecsView when components is set to multiple components with mul
                       </li>
                     </ul>
                   </td>
-                  <td class=\\"link\\"><a href=\\"/components/test-component-id-2/openapi-specs/1\\" target=\\"_self\\" class=\\"\\">
-                      https://example.com/openapi-spec-2-1
+                  <td class=\\"location\\">
+                    https://example.com/openapi-spec-2-1
+                  </td>
+                  <td class=\\"action table-secondary\\"><a variant=\\"primary\\" href=\\"/components/test-component-id-2/openapi-specs/1\\" target=\\"_self\\" class=\\"\\">
+                      View OpenAPI spec
                     </a></td>
                   <td class=\\"description\\">
                     <div>
@@ -809,8 +844,8 @@ exports[`OpenApiSpecsView when components is set to multiple components with mul
                   </td>
                 </tr>
                 <tr>
-                  <td class=\\"component table-primary\\"><a href=\\"/components/test-component-id-2\\">Test Component Name 2</a></td>
-                  <td class=\\"teams table-primary\\">
+                  <td class=\\"component\\"><a href=\\"/components/test-component-id-2\\">Test Component Name 2</a></td>
+                  <td class=\\"teams\\">
                     <ul>
                       <li><a href=\\"/teams/test-team-id-2-1\\" class=\\"team-name\\">test-team-id-2-1</a>
                         <!---->
@@ -822,8 +857,11 @@ exports[`OpenApiSpecsView when components is set to multiple components with mul
                       </li>
                     </ul>
                   </td>
-                  <td class=\\"link\\"><a href=\\"/components/test-component-id-2/openapi-specs/2\\" target=\\"_self\\" class=\\"\\">
-                      https://example.com/openapi-spec-2-2
+                  <td class=\\"location\\">
+                    https://example.com/openapi-spec-2-2
+                  </td>
+                  <td class=\\"action table-secondary\\"><a variant=\\"primary\\" href=\\"/components/test-component-id-2/openapi-specs/2\\" target=\\"_self\\" class=\\"\\">
+                      View OpenAPI spec
                     </a></td>
                   <td class=\\"description\\">
                     <div>
@@ -935,14 +973,15 @@ exports[`OpenApiSpecsView when components is set to multiple components with mul
                 <tr>
                   <th class=\\"component\\">Component</th>
                   <th class=\\"teams\\">Teams</th>
-                  <th class=\\"link\\">Link</th>
+                  <th class=\\"location\\">Location</th>
+                  <th class=\\"action\\">Action</th>
                   <th class=\\"description\\">Description</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <td class=\\"component table-primary\\"><a href=\\"/components/test-component-id-1\\">Test Component Name 1</a></td>
-                  <td class=\\"teams table-primary\\">
+                  <td class=\\"component\\"><a href=\\"/components/test-component-id-1\\">Test Component Name 1</a></td>
+                  <td class=\\"teams\\">
                     <ul>
                       <li><a href=\\"/teams/test-team-id-1-1\\" class=\\"team-name\\">test-team-id-1-1</a>
                         <!---->
@@ -954,8 +993,11 @@ exports[`OpenApiSpecsView when components is set to multiple components with mul
                       </li>
                     </ul>
                   </td>
-                  <td class=\\"link\\"><a href=\\"/components/test-component-id-1/openapi-specs/1\\" target=\\"_self\\" class=\\"\\">
-                      https://example.com/openapi-spec-1-1
+                  <td class=\\"location\\">
+                    https://example.com/openapi-spec-1-1
+                  </td>
+                  <td class=\\"action table-secondary\\"><a variant=\\"primary\\" href=\\"/components/test-component-id-1/openapi-specs/1\\" target=\\"_self\\" class=\\"\\">
+                      View OpenAPI spec
                     </a></td>
                   <td class=\\"description\\">
                     <div>
@@ -964,8 +1006,8 @@ exports[`OpenApiSpecsView when components is set to multiple components with mul
                   </td>
                 </tr>
                 <tr>
-                  <td class=\\"component table-primary\\"><a href=\\"/components/test-component-id-1\\">Test Component Name 1</a></td>
-                  <td class=\\"teams table-primary\\">
+                  <td class=\\"component\\"><a href=\\"/components/test-component-id-1\\">Test Component Name 1</a></td>
+                  <td class=\\"teams\\">
                     <ul>
                       <li><a href=\\"/teams/test-team-id-1-1\\" class=\\"team-name\\">test-team-id-1-1</a>
                         <!---->
@@ -977,8 +1019,11 @@ exports[`OpenApiSpecsView when components is set to multiple components with mul
                       </li>
                     </ul>
                   </td>
-                  <td class=\\"link\\"><a href=\\"/components/test-component-id-1/openapi-specs/2\\" target=\\"_self\\" class=\\"\\">
-                      https://example.com/openapi-spec-1-2
+                  <td class=\\"location\\">
+                    https://example.com/openapi-spec-1-2
+                  </td>
+                  <td class=\\"action table-secondary\\"><a variant=\\"primary\\" href=\\"/components/test-component-id-1/openapi-specs/2\\" target=\\"_self\\" class=\\"\\">
+                      View OpenAPI spec
                     </a></td>
                   <td class=\\"description\\">
                     <div>
@@ -1090,14 +1135,15 @@ exports[`OpenApiSpecsView when components prop is set a component with 1 OpenAPI
                 <tr>
                   <th class=\\"component\\">Component</th>
                   <th class=\\"teams\\">Teams</th>
-                  <th class=\\"link\\">Link</th>
+                  <th class=\\"location\\">Location</th>
+                  <th class=\\"action\\">Action</th>
                   <th class=\\"description\\">Description</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <td class=\\"component table-primary\\"><a href=\\"/components/test-component-id-1\\">Test Component Name 1</a></td>
-                  <td class=\\"teams table-primary\\">
+                  <td class=\\"component\\"><a href=\\"/components/test-component-id-1\\">Test Component Name 1</a></td>
+                  <td class=\\"teams\\">
                     <ul>
                       <li><a href=\\"/teams/test-team-id-1-1\\" class=\\"team-name\\">test-team-id-1-1</a>
                         <!---->
@@ -1109,8 +1155,11 @@ exports[`OpenApiSpecsView when components prop is set a component with 1 OpenAPI
                       </li>
                     </ul>
                   </td>
-                  <td class=\\"link\\"><a href=\\"/components/test-component-id-1/openapi-specs/1\\" target=\\"_self\\" class=\\"\\">
-                      https://example.com/openapi-spec-1-1
+                  <td class=\\"location\\">
+                    https://example.com/openapi-spec-1-1
+                  </td>
+                  <td class=\\"action table-secondary\\"><a variant=\\"primary\\" href=\\"/components/test-component-id-1/openapi-specs/1\\" target=\\"_self\\" class=\\"\\">
+                      View OpenAPI spec
                     </a></td>
                   <td class=\\"description\\">
                     <div>
@@ -1216,14 +1265,15 @@ exports[`OpenApiSpecsView when components prop is set a component with 2 OpenAPI
                 <tr>
                   <th class=\\"component\\">Component</th>
                   <th class=\\"teams\\">Teams</th>
-                  <th class=\\"link\\">Link</th>
+                  <th class=\\"location\\">Location</th>
+                  <th class=\\"action\\">Action</th>
                   <th class=\\"description\\">Description</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <td class=\\"component table-primary\\"><a href=\\"/components/test-component-id-1\\">Test Component Name 1</a></td>
-                  <td class=\\"teams table-primary\\">
+                  <td class=\\"component\\"><a href=\\"/components/test-component-id-1\\">Test Component Name 1</a></td>
+                  <td class=\\"teams\\">
                     <ul>
                       <li><a href=\\"/teams/test-team-id-1-1\\" class=\\"team-name\\">test-team-id-1-1</a>
                         <!---->
@@ -1235,8 +1285,11 @@ exports[`OpenApiSpecsView when components prop is set a component with 2 OpenAPI
                       </li>
                     </ul>
                   </td>
-                  <td class=\\"link\\"><a href=\\"/components/test-component-id-1/openapi-specs/1\\" target=\\"_self\\" class=\\"\\">
-                      https://example.com/openapi-spec-1-1
+                  <td class=\\"location\\">
+                    https://example.com/openapi-spec-1-1
+                  </td>
+                  <td class=\\"action table-secondary\\"><a variant=\\"primary\\" href=\\"/components/test-component-id-1/openapi-specs/1\\" target=\\"_self\\" class=\\"\\">
+                      View OpenAPI spec
                     </a></td>
                   <td class=\\"description\\">
                     <div>
@@ -1245,8 +1298,8 @@ exports[`OpenApiSpecsView when components prop is set a component with 2 OpenAPI
                   </td>
                 </tr>
                 <tr>
-                  <td class=\\"component table-primary\\"><a href=\\"/components/test-component-id-1\\">Test Component Name 1</a></td>
-                  <td class=\\"teams table-primary\\">
+                  <td class=\\"component\\"><a href=\\"/components/test-component-id-1\\">Test Component Name 1</a></td>
+                  <td class=\\"teams\\">
                     <ul>
                       <li><a href=\\"/teams/test-team-id-1-1\\" class=\\"team-name\\">test-team-id-1-1</a>
                         <!---->
@@ -1258,8 +1311,11 @@ exports[`OpenApiSpecsView when components prop is set a component with 2 OpenAPI
                       </li>
                     </ul>
                   </td>
-                  <td class=\\"link\\"><a href=\\"/components/test-component-id-1/openapi-specs/2\\" target=\\"_self\\" class=\\"\\">
-                      https://example.com/openapi-spec-1-2
+                  <td class=\\"location\\">
+                    https://example.com/openapi-spec-1-2
+                  </td>
+                  <td class=\\"action table-secondary\\"><a variant=\\"primary\\" href=\\"/components/test-component-id-1/openapi-specs/2\\" target=\\"_self\\" class=\\"\\">
+                      View OpenAPI spec
                     </a></td>
                   <td class=\\"description\\">
                     <div>
