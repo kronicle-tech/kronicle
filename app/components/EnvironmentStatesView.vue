@@ -1,85 +1,94 @@
 <template>
-  <div>
-    <b-container fluid class="mt-3">
-      <b-row>
-        <b-col>
-          <b-card-group columns>
-            <template v-for="item in items">
-              <template v-if="item.itemType === 'check'">
-                <b-card :key="item.key" :class="`border-${item.statusVariant}`">
-                  <b-card-title>
-                    <h5>{{ item.environment.id }} <span class="text-muted">//</span> {{ item.plugin.id }} <span class="text-muted">//</span> {{ item.component.name }}</h5>
-                    <h4 :class="`text-${item.statusVariant}`">
-                      <b-avatar v-if="item.check.avatarUrl" :src="item.check.avatarUrl" />
-                      {{ item.check.name }}
-                      <b-badge>{{ item.check.description }}</b-badge>
-                    </h4>
-                  </b-card-title>
-                  <b-card-text>
-                    <div><span class="text-muted">Status:</span> <b-badge :variant="item.statusVariant">{{ item.check.status }}</b-badge></div>
-                    <div><span class="text-muted">Status Message:</span> <b>{{ item.check.statusMessage }}</b></div>
-                    <div><span class="text-muted">Updated At:</span> <b><FormattedDateTime :value="item.check.updateTimestamp" /></b></div>
+  <div class="m-2">
+    <b-button v-b-toggle.filters-sidebar class="mb-3">
+      <b-icon icon="filter" aria-hidden="true" /> Filters
+    </b-button>
+    <b-sidebar id="filters-sidebar" title="Filters" width="600px" bg-variant="dark" text-variant="light" shadow>
+      <ComponentFilters :components="components" class="m-2" />
+    </b-sidebar>
+    <b-card-group columns>
+      <template v-for="item in items">
+        <template v-if="item.itemType === 'check'">
+          <b-card :key="item.key" :class="`border-${item.statusVariant}`">
+            <b-card-title>
+              <h5>{{ item.environment.id }} <span class="text-muted">//</span> {{ item.plugin.id }} <span class="text-muted">//</span> {{ item.component.name }}</h5>
+              <h4 :class="`text-${item.statusVariant}`">
+                <b-avatar v-if="item.check.avatarUrl" :src="item.check.avatarUrl" />
+                {{ item.check.name }}
+                <b-badge>{{ item.check.description }}</b-badge>
+              </h4>
+            </b-card-title>
+            <b-card-text>
+              <div><span class="text-muted">Status:</span> <b-badge :variant="item.statusVariant">{{ item.check.status }}</b-badge></div>
+              <div><span class="text-muted">Status Message:</span> <b>{{ item.check.statusMessage }}</b></div>
+              <div><span class="text-muted">Updated At:</span> <b><FormattedDateTime :value="item.check.updateTimestamp" /></b></div>
 
-                    <div v-if="item.check.links" class="mt-1">
-                      <b-link v-for="link in item.check.links" :key="link.url" :href="link.url" class="card-link">{{ link.description || link.url }}</b-link>
-                    </div>
-                  </b-card-text>
-                </b-card>
-              </template>
-              <template v-if="item.itemType === 'log-summary'">
-                <b-card :key="item.key">
-                  <b-card-title class="h5">
-                    {{ item.environment.id }} <span class="text-muted">//</span> {{ item.component.name }} <span class="text-muted">//</span> {{ item.plugin.id }} <span class="text-muted">//</span> Logs
-                  </b-card-title>
-                  <b-card-text>
-                    <h4>{{ item.logSummary.name }}</h4>
+              <div v-if="item.check.links" class="mt-1">
+                <b-link v-for="link in item.check.links" :key="link.url" :href="link.url" class="card-link">{{ link.description || link.url }}</b-link>
+              </div>
+            </b-card-text>
+          </b-card>
+        </template>
+        <template v-if="item.itemType === 'log-summary'">
+          <b-card :key="item.key">
+            <b-card-title class="h5">
+              {{ item.environment.id }} <span class="text-muted">//</span> {{ item.component.name }} <span class="text-muted">//</span> {{ item.plugin.id }} <span class="text-muted">//</span> Logs
+            </b-card-title>
+            <b-card-text>
+              <h4>{{ item.logSummary.name }}</h4>
 
-                    <div v-for="level in item.logSummary.levels" :key="level.level">
-                      <span class="text-muted">{{ level.level || '{blank}' }}:</span> <b><FormattedNumber :value="level.count"/></b>
-                    </div>
+              <div v-for="level in item.logSummary.levels" :key="level.level">
+                <span class="text-muted">{{ level.level || '{blank}' }}:</span> <b><FormattedNumber :value="level.count"/></b>
+              </div>
 
-                    <div v-for="comparison in item.logSummary.comparisons" :key="comparison.name" class="mt-2">
-                      <h5>{{ comparison.name }}</h5>
+              <div v-for="comparison in item.logSummary.comparisons" :key="comparison.name" class="mt-2">
+                <h5>{{ comparison.name }}</h5>
 
-                      <div v-for="level in comparison.levels" :key="level.level">
-                        <span class="text-muted">{{ level.level || '{blank}' }}:</span> <b><FormattedNumber :value="level.count"/></b>
-                      </div>
-                    </div>
+                <div v-for="level in comparison.levels" :key="level.level">
+                  <span class="text-muted">{{ level.level || '{blank}' }}:</span> <b><FormattedNumber :value="level.count"/></b>
+                </div>
+              </div>
 
-                    <div class="mt-2"><span class="text-muted">Updated At:</span> <b><FormattedDateTime :value="item.logSummary.updateTimestamp" /></b></div>
-                  </b-card-text>
-                </b-card>
-                <b-card v-for="level in item.logSummary.levels.filter(level => level.topMessages.length > 0)" :key="`${item.key}-${level.level}`">
-                  <b-card-title class="h5">
-                    {{ item.environment.id }} <span class="text-muted">//</span> {{ item.component.name }} <span class="text-muted">//</span> {{ item.plugin.id }} <span class="text-muted">//</span> Logs
-                  </b-card-title>
-                  <b-card-text>
-                    <h4> {{ level.level || '{blank}' }} - Top Messages - {{ item.logSummary.name }}</h4>
+              <div class="mt-2"><span class="text-muted">Updated At:</span> <b><FormattedDateTime :value="item.logSummary.updateTimestamp" /></b></div>
+            </b-card-text>
+          </b-card>
+          <b-card v-for="level in item.logSummary.levels.filter(level => level.topMessages.length > 0)" :key="`${item.key}-${level.level}`">
+            <b-card-title class="h5">
+              {{ item.environment.id }} <span class="text-muted">//</span> {{ item.component.name }} <span class="text-muted">//</span> {{ item.plugin.id }} <span class="text-muted">//</span> Logs
+            </b-card-title>
+            <b-card-text>
+              <h4> {{ level.level || '{blank}' }} - Top Messages - {{ item.logSummary.name }}</h4>
 
-                    <ol>
-                      <li v-for="topMessage in level.topMessages" :key="topMessage.message">
-                        <span class="text-muted">{{ topMessage.message || '{blank}' }}</span> <b class="h5">x<FormattedNumber :value="topMessage.count"/></b><br>
-                      </li>
-                    </ol>
+              <ol>
+                <li v-for="topMessage in level.topMessages" :key="topMessage.message">
+                  <span class="text-muted">{{ topMessage.message || '{blank}' }}</span> <b class="h5">x<FormattedNumber :value="topMessage.count"/></b><br>
+                </li>
+              </ol>
 
-                    <div class="mt-2"><span class="text-muted">Updated At:</span> <b><FormattedDateTime :value="item.logSummary.updateTimestamp" /></b></div>
-                  </b-card-text>
-                </b-card>
-              </template>
-            </template>
-          </b-card-group>
-        </b-col>
-        <b-col md="3">
-          <ComponentFilters :components="components"/>
-        </b-col>
-      </b-row>
-    </b-container>
+              <div class="mt-2"><span class="text-muted">Updated At:</span> <b><FormattedDateTime :value="item.logSummary.updateTimestamp" /></b></div>
+            </b-card-text>
+          </b-card>
+        </template>
+      </template>
+    </b-card-group>
   </div>
 </template>
 
 <script lang="ts">
 import Vue, {PropType} from 'vue'
-import {BAvatar, BCard, BCardGroup, BCardText, BCardTitle, BCol, BContainer, BLink, BRow} from 'bootstrap-vue'
+import {
+  BAvatar,
+  BButton,
+  BCard,
+  BCardGroup,
+  BCardText,
+  BCardTitle,
+  BCol,
+  BContainer, BIcon,
+  BLink,
+  BRow,
+  BSidebar
+} from 'bootstrap-vue'
 import {
   CheckState,
   Component,
@@ -115,14 +124,14 @@ type Item = CheckItem | LogSummaryItem;
 export default Vue.extend({
   components: {
     'b-avatar': BAvatar,
+    'b-button': BButton,
     'b-card': BCard,
     'b-card-group': BCardGroup,
     'b-card-text': BCardText,
     'b-card-title': BCardTitle,
-    'b-col': BCol,
-    'b-container': BContainer,
+    'b-icon': BIcon,
     'b-link': BLink,
-    'b-row': BRow,
+    'b-sidebar': BSidebar,
     ComponentFilters,
     FormattedDateTime,
     FormattedNumber,
