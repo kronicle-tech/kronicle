@@ -35,14 +35,14 @@
               {{ item.environment.id }} <span class="text-muted">//</span> {{ item.component.name }} <span class="text-muted">//</span> {{ item.plugin.id }} <span class="text-muted">//</span> Logs
             </b-card-title>
             <b-card-text>
-              <h4>{{ item.logSummary.name }}</h4>
+              <h4 class="text-info">{{ item.logSummary.name }}</h4>
 
               <div v-for="level in item.logSummary.levels" :key="level.level">
                 <span class="text-muted">{{ level.level || '{blank}' }}:</span> <b><FormattedNumber :value="level.count"/></b>
               </div>
 
               <div v-for="comparison in item.logSummary.comparisons" :key="comparison.name" class="mt-2">
-                <h5>{{ comparison.name }}</h5>
+                <h5 class="text-info">{{ comparison.name }}</h5>
 
                 <div v-for="level in comparison.levels" :key="level.level">
                   <span class="text-muted">{{ level.level || '{blank}' }}:</span> <b><FormattedNumber :value="level.count"/></b>
