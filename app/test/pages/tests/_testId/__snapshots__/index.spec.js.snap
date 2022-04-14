@@ -1,24 +1,14 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Index when Get Test service endpoint returns a test renders the page 1`] = `
-<div>
-  <div
-    class="container-fluid"
+<div
+  class="m-3"
+>
+  <h1
+    class="text-info my-3"
   >
-    <div
-      class="row"
-    >
-      <div
-        class="col"
-      >
-        <h1
-          class="text-info my-3"
-        >
-          test-test-id-1 Test
-        </h1>
-      </div>
-    </div>
-  </div>
+    test-test-id-1 Test
+  </h1>
    
   <div>
     <div
@@ -97,200 +87,285 @@ exports[`Index when Get Test service endpoint returns a test renders the page 1`
      
     <div>
       <div
-        class="container-fluid"
+        class="card my-3"
       >
+        <!---->
+        <!---->
         <div
-          class="row"
+          class="list-group"
         >
           <div
-            class="col"
+            class="list-group-item zero-count list-group-item-success"
           >
-            <div
-              class="card my-3"
+            <span
+              class="display-1"
             >
-              <!---->
-              <!---->
-              <div
-                class="list-group"
-              >
-                <div
-                  class="list-group-item zero-count list-group-item-success"
-                >
-                  <span
-                    class="display-1"
-                  >
-                    0
-                  </span>
-                   tests
-            
-                </div>
-                 
-              </div>
-              <!---->
-              <!---->
-            </div>
-             
-            <div
-              class="card my-3"
-            >
-              <!---->
-              <!---->
-              <div
-                class="card-body"
-              >
-                <h4
-                  class="card-title"
-                >
-                  0 Test Results
-                </h4>
-                <!---->
-                <p
-                  class="card-text"
-                >
-                  <!---->
-                </p>
-              </div>
-              <!---->
-              <!---->
-            </div>
+              0
+            </span>
+             tests
+      
           </div>
            
+        </div>
+        <!---->
+        <!---->
+      </div>
+       
+      <div
+        class="mt-3 mb-4"
+      >
+        <button
+          aria-controls="filters"
+          aria-expanded="false"
+          class="btn btn-secondary collapsed"
+          id="toggle-filters"
+          type="button"
+        >
+          <svg
+            aria-hidden="true"
+            aria-label="blank"
+            class="bi-blank b-icon bi"
+            fill="currentColor"
+            focusable="false"
+            height="1em"
+            role="img"
+            viewBox="0 0 16 16"
+            width="1em"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <g />
+          </svg>
+           Filters
+  
+        </button>
+         
+        <transition-stub
+          class="mt-3"
+          css="true"
+          enteractiveclass="collapsing"
+          enterclass=""
+          entertoclass="collapse show"
+          leaveactiveclass="collapsing"
+          leaveclass="collapse show"
+          leavetoclass="collapse"
+        >
           <div
-            class="col-md-3"
+            class="collapse"
+            id="filters"
+            style="display: none;"
           >
             <div
-              class="mt-3"
+              class="card-columns"
             >
-              <!---->
                
               <!---->
                
               <!---->
                
-              <fieldset
-                class="form-group"
-                id="__BVID__30"
-              >
-                <legend
-                  class="bv-no-focus-ring col-form-label pt-0"
-                  id="__BVID__30__BV_label_"
-                  tabindex="-1"
-                >
-                  Component Types
-                </legend>
-                <div>
-                  <div
-                    class="bv-no-focus-ring"
-                    id="__BVID__31"
-                    role="group"
-                    tabindex="-1"
-                  >
-                    <div
-                      class="custom-control custom-checkbox"
-                    >
-                      <input
-                        class="custom-control-input"
-                        id="__BVID__31_BV_option_0"
-                        name="componentTypeId"
-                        type="checkbox"
-                        value="test-component-type-id-1"
-                      />
-                      <label
-                        class="custom-control-label"
-                        for="__BVID__31_BV_option_0"
-                      >
-                        <span>
-                          test-component-type-id-1
-                        </span>
-                      </label>
-                    </div>
-                  </div>
-                  <!---->
-                  <!---->
-                  <!---->
-                </div>
-              </fieldset>
-               
-              <fieldset
-                class="form-group"
-                id="__BVID__33"
-              >
-                <legend
-                  class="bv-no-focus-ring col-form-label pt-0"
-                  id="__BVID__33__BV_label_"
-                  tabindex="-1"
-                >
-                  Platforms
-                </legend>
-                <div>
-                  <div
-                    class="bv-no-focus-ring"
-                    id="__BVID__34"
-                    role="group"
-                    tabindex="-1"
-                  >
-                    <div
-                      class="custom-control custom-checkbox"
-                    >
-                      <input
-                        class="custom-control-input"
-                        id="__BVID__34_BV_option_0"
-                        name="platformId"
-                        type="checkbox"
-                        value="undefined"
-                      />
-                      <label
-                        class="custom-control-label"
-                        for="__BVID__34_BV_option_0"
-                      >
-                        <span>
-                          undefined
-                        </span>
-                      </label>
-                    </div>
-                  </div>
-                  <!---->
-                  <!---->
-                  <!---->
-                </div>
-              </fieldset>
+              <!---->
                
               <div
-                class="form-group"
-                id="__BVID__36"
-                role="group"
+                class="card bg-secondary"
               >
-                <label
-                  class="d-block"
-                  for="component-filter"
-                  id="__BVID__36__BV_label_"
+                <!---->
+                <!---->
+                <div
+                  class="card-body"
                 >
-                  Component
-                </label>
-                <div>
-                  <select
-                    class="custom-select custom-select-sm"
-                    id="component-filter"
+                  <!---->
+                  <!---->
+                  <p
+                    class="card-text"
                   >
-                    <option
-                      value=""
+                    <fieldset
+                      class="form-group"
+                      id="__BVID__33"
                     >
-                      Please select a component
-                    </option>
-                    <option
-                      value="test-component-id-1"
-                    >
-                      test-component-id-1
-                    </option>
-                  </select>
-                  <!---->
-                  <!---->
-                  <!---->
+                      <legend
+                        class="bv-no-focus-ring col-form-label pt-0"
+                        id="__BVID__33__BV_label_"
+                        tabindex="-1"
+                      >
+                        Component Types
+                      </legend>
+                      <div>
+                        <div
+                          class="bv-no-focus-ring"
+                          id="__BVID__34"
+                          role="group"
+                          tabindex="-1"
+                        >
+                          <div
+                            class="custom-control custom-checkbox"
+                          >
+                            <input
+                              class="custom-control-input"
+                              id="__BVID__34_BV_option_0"
+                              name="componentTypeId"
+                              type="checkbox"
+                              value="test-component-type-id-1"
+                            />
+                            <label
+                              class="custom-control-label"
+                              for="__BVID__34_BV_option_0"
+                            >
+                              <span>
+                                test-component-type-id-1
+                              </span>
+                            </label>
+                          </div>
+                        </div>
+                        <!---->
+                        <!---->
+                        <!---->
+                      </div>
+                    </fieldset>
+                  </p>
                 </div>
+                <!---->
+                <!---->
+              </div>
+               
+              <div
+                class="card bg-secondary"
+              >
+                <!---->
+                <!---->
+                <div
+                  class="card-body"
+                >
+                  <!---->
+                  <!---->
+                  <p
+                    class="card-text"
+                  >
+                    <fieldset
+                      class="form-group"
+                      id="__BVID__36"
+                    >
+                      <legend
+                        class="bv-no-focus-ring col-form-label pt-0"
+                        id="__BVID__36__BV_label_"
+                        tabindex="-1"
+                      >
+                        Platforms
+                      </legend>
+                      <div>
+                        <div
+                          class="bv-no-focus-ring"
+                          id="__BVID__37"
+                          role="group"
+                          tabindex="-1"
+                        >
+                          <div
+                            class="custom-control custom-checkbox"
+                          >
+                            <input
+                              class="custom-control-input"
+                              id="__BVID__37_BV_option_0"
+                              name="platformId"
+                              type="checkbox"
+                              value="undefined"
+                            />
+                            <label
+                              class="custom-control-label"
+                              for="__BVID__37_BV_option_0"
+                            >
+                              <span>
+                                undefined
+                              </span>
+                            </label>
+                          </div>
+                        </div>
+                        <!---->
+                        <!---->
+                        <!---->
+                      </div>
+                    </fieldset>
+                  </p>
+                </div>
+                <!---->
+                <!---->
+              </div>
+               
+              <div
+                class="card bg-secondary"
+              >
+                <!---->
+                <!---->
+                <div
+                  class="card-body"
+                >
+                  <!---->
+                  <!---->
+                  <p
+                    class="card-text"
+                  >
+                    <div
+                      class="form-group"
+                      id="__BVID__39"
+                      role="group"
+                    >
+                      <label
+                        class="d-block"
+                        for="component-filter"
+                        id="__BVID__39__BV_label_"
+                      >
+                        Component
+                      </label>
+                      <div>
+                        <select
+                          class="custom-select custom-select-sm"
+                          id="component-filter"
+                        >
+                          <option
+                            value=""
+                          >
+                            Please select a component
+                          </option>
+                          <option
+                            value="test-component-id-1"
+                          >
+                            test-component-id-1
+                          </option>
+                        </select>
+                        <!---->
+                        <!---->
+                        <!---->
+                      </div>
+                    </div>
+                  </p>
+                </div>
+                <!---->
+                <!---->
               </div>
             </div>
           </div>
+        </transition-stub>
+      </div>
+       
+      <div
+        class="card my-3"
+      >
+        <!---->
+        <!---->
+        <div
+          class="card-body"
+        >
+          <h4
+            class="card-title"
+          >
+            0 Test Results
+          </h4>
+          <!---->
+          <p
+            class="card-text"
+          >
+            <!---->
+          </p>
         </div>
+        <!---->
+        <!---->
       </div>
     </div>
   </div>
@@ -298,24 +373,14 @@ exports[`Index when Get Test service endpoint returns a test renders the page 1`
 `;
 
 exports[`Index when Get Test service endpoint returns a test when there are test results for the test renders the test results 1`] = `
-<div>
-  <div
-    class="container-fluid"
+<div
+  class="m-3"
+>
+  <h1
+    class="text-info my-3"
   >
-    <div
-      class="row"
-    >
-      <div
-        class="col"
-      >
-        <h1
-          class="text-info my-3"
-        >
-          test-test-id-1 Test
-        </h1>
-      </div>
-    </div>
-  </div>
+    test-test-id-1 Test
+  </h1>
    
   <div>
     <div
@@ -394,475 +459,578 @@ exports[`Index when Get Test service endpoint returns a test when there are test
      
     <div>
       <div
-        class="container-fluid"
+        class="card my-3"
       >
+        <!---->
+        <!---->
         <div
-          class="row"
+          class="list-group"
         >
-          <div
-            class="col"
-          >
-            <div
-              class="card my-3"
-            >
-              <!---->
-              <!---->
-              <div
-                class="list-group"
-              >
-                <!---->
-                 
-                <div
-                  class="list-group-item list-group-item-danger fail-count"
-                >
-                  <span
-                    class="display-1"
-                  >
-                    
-            1
-          
-                  </span>
-                   
-                  <b>
-                    failing
-                  </b>
-                   test
-            
-                </div>
-                <div
-                  class="list-group-item list-group-item-success pass-count"
-                >
-                  <span
-                    class="display-4"
-                  >
-                    
-            1
-          
-                  </span>
-                   
-                  <b>
-                    passing
-                  </b>
-                   test
-            
-                </div>
-              </div>
-              <!---->
-              <!---->
-            </div>
-             
-            <div
-              class="card my-3"
-            >
-              <!---->
-              <!---->
-              <div
-                class="card-body"
-              >
-                <h4
-                  class="card-title"
-                >
-                  2 Test Results
-                </h4>
-                <!---->
-                <p
-                  class="card-text"
-                >
-                  <table
-                    class="table table-dark"
-                  >
-                    <thead>
-                      <tr>
-                        <th>
-                          Component
-                        </th>
-                         
-                        <th>
-                          Test
-                        </th>
-                         
-                        <th>
-                          Teams
-                        </th>
-                         
-                        <th>
-                          Priority
-                        </th>
-                         
-                        <th>
-                          Outcome
-                        </th>
-                         
-                        <th>
-                          Message
-                        </th>
-                      </tr>
-                    </thead>
-                     
-                    <tbody>
-                      <tr>
-                        <td
-                          class="test-id"
-                        >
-                          <a
-                            href="/tests/test-test-id-1"
-                          >
-                            test-test-id-1
-                          </a>
-                        </td>
-                         
-                        <td
-                          class="test-component table-primary"
-                        >
-                          <a
-                            href="/components/test-component-id-2"
-                          >
-                            Test Component Name 2
-                          </a>
-                        </td>
-                         
-                        <td>
-                          <!---->
-                        </td>
-                         
-                        <td
-                          class="test-priority"
-                        >
-                          <span
-                            class="badge badge-danger"
-                          >
-                            
-          Very High
-        
-                          </span>
-                        </td>
-                         
-                        <td
-                          class="test-outcome table-danger"
-                        >
-                          
-        failing
-      
-                        </td>
-                         
-                        <td
-                          class="test-message"
-                        >
-                          <div>
-                            
-
-                            <p>
-                              Test Test Message 2a
-                            </p>
-                          </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td
-                          class="test-id"
-                        >
-                          <a
-                            href="/tests/test-test-id-1"
-                          >
-                            test-test-id-1
-                          </a>
-                        </td>
-                         
-                        <td
-                          class="test-component table-primary"
-                        >
-                          <a
-                            href="/components/test-component-id-1"
-                          >
-                            Test Component Name 1
-                          </a>
-                        </td>
-                         
-                        <td>
-                          <!---->
-                        </td>
-                         
-                        <td
-                          class="test-priority"
-                        >
-                          <span
-                            class="badge badge-danger"
-                          >
-                            
-          Very High
-        
-                          </span>
-                        </td>
-                         
-                        <td
-                          class="test-outcome table-success"
-                        >
-                          
-        passing
-      
-                        </td>
-                         
-                        <td
-                          class="test-message"
-                        >
-                          <div>
-                            
-
-                            <p>
-                              Test Test Message 1a
-                            </p>
-                          </div>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </p>
-              </div>
-              <!---->
-              <!---->
-            </div>
-          </div>
+          <!---->
            
           <div
-            class="col-md-3"
+            class="list-group-item list-group-item-danger fail-count"
+          >
+            <span
+              class="display-1"
+            >
+              
+      1
+    
+            </span>
+             
+            <b>
+              failing
+            </b>
+             test
+      
+          </div>
+          <div
+            class="list-group-item list-group-item-success pass-count"
+          >
+            <span
+              class="display-4"
+            >
+              
+      1
+    
+            </span>
+             
+            <b>
+              passing
+            </b>
+             test
+      
+          </div>
+        </div>
+        <!---->
+        <!---->
+      </div>
+       
+      <div
+        class="mt-3 mb-4"
+      >
+        <button
+          aria-controls="filters"
+          aria-expanded="false"
+          class="btn btn-secondary collapsed"
+          id="toggle-filters"
+          type="button"
+        >
+          <svg
+            aria-hidden="true"
+            aria-label="blank"
+            class="bi-blank b-icon bi"
+            fill="currentColor"
+            focusable="false"
+            height="1em"
+            role="img"
+            viewBox="0 0 16 16"
+            width="1em"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <g />
+          </svg>
+           Filters
+  
+        </button>
+         
+        <transition-stub
+          class="mt-3"
+          css="true"
+          enteractiveclass="collapsing"
+          enterclass=""
+          entertoclass="collapse show"
+          leaveactiveclass="collapsing"
+          leaveclass="collapse show"
+          leavetoclass="collapse"
+        >
+          <div
+            class="collapse"
+            id="filters"
+            style="display: none;"
           >
             <div
-              class="mt-3"
+              class="card-columns"
             >
-              <fieldset
-                class="form-group"
-                id="__BVID__56"
-              >
-                <legend
-                  class="bv-no-focus-ring col-form-label pt-0"
-                  id="__BVID__56__BV_label_"
-                  tabindex="-1"
-                >
-                  Test Outcomes
-                </legend>
-                <div>
-                  <div
-                    class="bv-no-focus-ring"
-                    id="__BVID__57"
-                    role="group"
-                    tabindex="-1"
-                  >
-                    <div
-                      class="custom-control custom-checkbox"
-                    >
-                      <input
-                        class="custom-control-input"
-                        id="__BVID__57_BV_option_0"
-                        name="testOutcome"
-                        type="checkbox"
-                        value="fail"
-                      />
-                      <label
-                        class="custom-control-label"
-                        for="__BVID__57_BV_option_0"
-                      >
-                        <span>
-                          fail
-                        </span>
-                      </label>
-                    </div>
-                    <div
-                      class="custom-control custom-checkbox"
-                    >
-                      <input
-                        class="custom-control-input"
-                        id="__BVID__57_BV_option_1"
-                        name="testOutcome"
-                        type="checkbox"
-                        value="not-applicable"
-                      />
-                      <label
-                        class="custom-control-label"
-                        for="__BVID__57_BV_option_1"
-                      >
-                        <span>
-                          not-applicable
-                        </span>
-                      </label>
-                    </div>
-                    <div
-                      class="custom-control custom-checkbox"
-                    >
-                      <input
-                        class="custom-control-input"
-                        id="__BVID__57_BV_option_2"
-                        name="testOutcome"
-                        type="checkbox"
-                        value="pass"
-                      />
-                      <label
-                        class="custom-control-label"
-                        for="__BVID__57_BV_option_2"
-                      >
-                        <span>
-                          pass
-                        </span>
-                      </label>
-                    </div>
-                  </div>
-                  <!---->
-                  <!---->
-                  <!---->
-                </div>
-              </fieldset>
-               
-              <!---->
-               
-              <!---->
-               
-              <fieldset
-                class="form-group"
-                id="__BVID__61"
-              >
-                <legend
-                  class="bv-no-focus-ring col-form-label pt-0"
-                  id="__BVID__61__BV_label_"
-                  tabindex="-1"
-                >
-                  Component Types
-                </legend>
-                <div>
-                  <div
-                    class="bv-no-focus-ring"
-                    id="__BVID__62"
-                    role="group"
-                    tabindex="-1"
-                  >
-                    <div
-                      class="custom-control custom-checkbox"
-                    >
-                      <input
-                        class="custom-control-input"
-                        id="__BVID__62_BV_option_0"
-                        name="componentTypeId"
-                        type="checkbox"
-                        value="test-component-type-id-1"
-                      />
-                      <label
-                        class="custom-control-label"
-                        for="__BVID__62_BV_option_0"
-                      >
-                        <span>
-                          test-component-type-id-1
-                        </span>
-                      </label>
-                    </div>
-                    <div
-                      class="custom-control custom-checkbox"
-                    >
-                      <input
-                        class="custom-control-input"
-                        id="__BVID__62_BV_option_1"
-                        name="componentTypeId"
-                        type="checkbox"
-                        value=""
-                      />
-                      <label
-                        class="custom-control-label"
-                        for="__BVID__62_BV_option_1"
-                      >
-                        <span>
-                          null
-                        </span>
-                      </label>
-                    </div>
-                  </div>
-                  <!---->
-                  <!---->
-                  <!---->
-                </div>
-              </fieldset>
-               
-              <fieldset
-                class="form-group"
-                id="__BVID__65"
-              >
-                <legend
-                  class="bv-no-focus-ring col-form-label pt-0"
-                  id="__BVID__65__BV_label_"
-                  tabindex="-1"
-                >
-                  Platforms
-                </legend>
-                <div>
-                  <div
-                    class="bv-no-focus-ring"
-                    id="__BVID__66"
-                    role="group"
-                    tabindex="-1"
-                  >
-                    <div
-                      class="custom-control custom-checkbox"
-                    >
-                      <input
-                        class="custom-control-input"
-                        id="__BVID__66_BV_option_0"
-                        name="platformId"
-                        type="checkbox"
-                        value="undefined"
-                      />
-                      <label
-                        class="custom-control-label"
-                        for="__BVID__66_BV_option_0"
-                      >
-                        <span>
-                          undefined
-                        </span>
-                      </label>
-                    </div>
-                  </div>
-                  <!---->
-                  <!---->
-                  <!---->
-                </div>
-              </fieldset>
                
               <div
-                class="form-group"
-                id="__BVID__68"
-                role="group"
+                class="card bg-secondary"
               >
-                <label
-                  class="d-block"
-                  for="component-filter"
-                  id="__BVID__68__BV_label_"
+                <!---->
+                <!---->
+                <div
+                  class="card-body"
                 >
-                  Component
-                </label>
-                <div>
-                  <select
-                    class="custom-select custom-select-sm"
-                    id="component-filter"
+                  <!---->
+                  <!---->
+                  <p
+                    class="card-text"
                   >
-                    <option
-                      value=""
+                    <fieldset
+                      class="form-group"
+                      id="__BVID__53"
                     >
-                      Please select a component
-                    </option>
-                    <option
-                      value="test-component-id-1"
-                    >
-                      test-component-id-1
-                    </option>
-                    <option
-                      value="test-component-id-2"
-                    >
-                      test-component-id-2
-                    </option>
-                  </select>
-                  <!---->
-                  <!---->
-                  <!---->
+                      <legend
+                        class="bv-no-focus-ring col-form-label pt-0"
+                        id="__BVID__53__BV_label_"
+                        tabindex="-1"
+                      >
+                        Test Outcomes
+                      </legend>
+                      <div>
+                        <div
+                          class="bv-no-focus-ring"
+                          id="__BVID__54"
+                          role="group"
+                          tabindex="-1"
+                        >
+                          <div
+                            class="custom-control custom-checkbox"
+                          >
+                            <input
+                              class="custom-control-input"
+                              id="__BVID__54_BV_option_0"
+                              name="testOutcome"
+                              type="checkbox"
+                              value="fail"
+                            />
+                            <label
+                              class="custom-control-label"
+                              for="__BVID__54_BV_option_0"
+                            >
+                              <span>
+                                fail
+                              </span>
+                            </label>
+                          </div>
+                          <div
+                            class="custom-control custom-checkbox"
+                          >
+                            <input
+                              class="custom-control-input"
+                              id="__BVID__54_BV_option_1"
+                              name="testOutcome"
+                              type="checkbox"
+                              value="not-applicable"
+                            />
+                            <label
+                              class="custom-control-label"
+                              for="__BVID__54_BV_option_1"
+                            >
+                              <span>
+                                not-applicable
+                              </span>
+                            </label>
+                          </div>
+                          <div
+                            class="custom-control custom-checkbox"
+                          >
+                            <input
+                              class="custom-control-input"
+                              id="__BVID__54_BV_option_2"
+                              name="testOutcome"
+                              type="checkbox"
+                              value="pass"
+                            />
+                            <label
+                              class="custom-control-label"
+                              for="__BVID__54_BV_option_2"
+                            >
+                              <span>
+                                pass
+                              </span>
+                            </label>
+                          </div>
+                        </div>
+                        <!---->
+                        <!---->
+                        <!---->
+                      </div>
+                    </fieldset>
+                  </p>
                 </div>
+                <!---->
+                <!---->
+              </div>
+               
+              <!---->
+               
+              <!---->
+               
+              <div
+                class="card bg-secondary"
+              >
+                <!---->
+                <!---->
+                <div
+                  class="card-body"
+                >
+                  <!---->
+                  <!---->
+                  <p
+                    class="card-text"
+                  >
+                    <fieldset
+                      class="form-group"
+                      id="__BVID__58"
+                    >
+                      <legend
+                        class="bv-no-focus-ring col-form-label pt-0"
+                        id="__BVID__58__BV_label_"
+                        tabindex="-1"
+                      >
+                        Component Types
+                      </legend>
+                      <div>
+                        <div
+                          class="bv-no-focus-ring"
+                          id="__BVID__59"
+                          role="group"
+                          tabindex="-1"
+                        >
+                          <div
+                            class="custom-control custom-checkbox"
+                          >
+                            <input
+                              class="custom-control-input"
+                              id="__BVID__59_BV_option_0"
+                              name="componentTypeId"
+                              type="checkbox"
+                              value="test-component-type-id-1"
+                            />
+                            <label
+                              class="custom-control-label"
+                              for="__BVID__59_BV_option_0"
+                            >
+                              <span>
+                                test-component-type-id-1
+                              </span>
+                            </label>
+                          </div>
+                          <div
+                            class="custom-control custom-checkbox"
+                          >
+                            <input
+                              class="custom-control-input"
+                              id="__BVID__59_BV_option_1"
+                              name="componentTypeId"
+                              type="checkbox"
+                              value=""
+                            />
+                            <label
+                              class="custom-control-label"
+                              for="__BVID__59_BV_option_1"
+                            >
+                              <span>
+                                null
+                              </span>
+                            </label>
+                          </div>
+                        </div>
+                        <!---->
+                        <!---->
+                        <!---->
+                      </div>
+                    </fieldset>
+                  </p>
+                </div>
+                <!---->
+                <!---->
+              </div>
+               
+              <div
+                class="card bg-secondary"
+              >
+                <!---->
+                <!---->
+                <div
+                  class="card-body"
+                >
+                  <!---->
+                  <!---->
+                  <p
+                    class="card-text"
+                  >
+                    <fieldset
+                      class="form-group"
+                      id="__BVID__62"
+                    >
+                      <legend
+                        class="bv-no-focus-ring col-form-label pt-0"
+                        id="__BVID__62__BV_label_"
+                        tabindex="-1"
+                      >
+                        Platforms
+                      </legend>
+                      <div>
+                        <div
+                          class="bv-no-focus-ring"
+                          id="__BVID__63"
+                          role="group"
+                          tabindex="-1"
+                        >
+                          <div
+                            class="custom-control custom-checkbox"
+                          >
+                            <input
+                              class="custom-control-input"
+                              id="__BVID__63_BV_option_0"
+                              name="platformId"
+                              type="checkbox"
+                              value="undefined"
+                            />
+                            <label
+                              class="custom-control-label"
+                              for="__BVID__63_BV_option_0"
+                            >
+                              <span>
+                                undefined
+                              </span>
+                            </label>
+                          </div>
+                        </div>
+                        <!---->
+                        <!---->
+                        <!---->
+                      </div>
+                    </fieldset>
+                  </p>
+                </div>
+                <!---->
+                <!---->
+              </div>
+               
+              <div
+                class="card bg-secondary"
+              >
+                <!---->
+                <!---->
+                <div
+                  class="card-body"
+                >
+                  <!---->
+                  <!---->
+                  <p
+                    class="card-text"
+                  >
+                    <div
+                      class="form-group"
+                      id="__BVID__65"
+                      role="group"
+                    >
+                      <label
+                        class="d-block"
+                        for="component-filter"
+                        id="__BVID__65__BV_label_"
+                      >
+                        Component
+                      </label>
+                      <div>
+                        <select
+                          class="custom-select custom-select-sm"
+                          id="component-filter"
+                        >
+                          <option
+                            value=""
+                          >
+                            Please select a component
+                          </option>
+                          <option
+                            value="test-component-id-1"
+                          >
+                            test-component-id-1
+                          </option>
+                          <option
+                            value="test-component-id-2"
+                          >
+                            test-component-id-2
+                          </option>
+                        </select>
+                        <!---->
+                        <!---->
+                        <!---->
+                      </div>
+                    </div>
+                  </p>
+                </div>
+                <!---->
+                <!---->
               </div>
             </div>
           </div>
+        </transition-stub>
+      </div>
+       
+      <div
+        class="card my-3"
+      >
+        <!---->
+        <!---->
+        <div
+          class="card-body"
+        >
+          <h4
+            class="card-title"
+          >
+            2 Test Results
+          </h4>
+          <!---->
+          <p
+            class="card-text"
+          >
+            <table
+              class="table table-dark"
+            >
+              <thead>
+                <tr>
+                  <th>
+                    Component
+                  </th>
+                   
+                  <th>
+                    Test
+                  </th>
+                   
+                  <th>
+                    Teams
+                  </th>
+                   
+                  <th>
+                    Priority
+                  </th>
+                   
+                  <th>
+                    Outcome
+                  </th>
+                   
+                  <th>
+                    Message
+                  </th>
+                </tr>
+              </thead>
+               
+              <tbody>
+                <tr>
+                  <td
+                    class="test-id"
+                  >
+                    <a
+                      href="/tests/test-test-id-1"
+                    >
+                      test-test-id-1
+                    </a>
+                  </td>
+                   
+                  <td
+                    class="test-component table-primary"
+                  >
+                    <a
+                      href="/components/test-component-id-2"
+                    >
+                      Test Component Name 2
+                    </a>
+                  </td>
+                   
+                  <td>
+                    <!---->
+                  </td>
+                   
+                  <td
+                    class="test-priority"
+                  >
+                    <span
+                      class="badge badge-danger"
+                    >
+                      
+          Very High
+        
+                    </span>
+                  </td>
+                   
+                  <td
+                    class="test-outcome table-danger"
+                  >
+                    
+        failing
+      
+                  </td>
+                   
+                  <td
+                    class="test-message"
+                  >
+                    <div>
+                      
+
+                      <p>
+                        Test Test Message 2a
+                      </p>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td
+                    class="test-id"
+                  >
+                    <a
+                      href="/tests/test-test-id-1"
+                    >
+                      test-test-id-1
+                    </a>
+                  </td>
+                   
+                  <td
+                    class="test-component table-primary"
+                  >
+                    <a
+                      href="/components/test-component-id-1"
+                    >
+                      Test Component Name 1
+                    </a>
+                  </td>
+                   
+                  <td>
+                    <!---->
+                  </td>
+                   
+                  <td
+                    class="test-priority"
+                  >
+                    <span
+                      class="badge badge-danger"
+                    >
+                      
+          Very High
+        
+                    </span>
+                  </td>
+                   
+                  <td
+                    class="test-outcome table-success"
+                  >
+                    
+        passing
+      
+                  </td>
+                   
+                  <td
+                    class="test-message"
+                  >
+                    <div>
+                      
+
+                      <p>
+                        Test Test Message 1a
+                      </p>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </p>
         </div>
+        <!---->
+        <!---->
       </div>
     </div>
   </div>

@@ -45,14 +45,16 @@ describe('Index', () => {
 
   beforeEach(() => {
     team = createTeam({ teamNumber: 1 })
-    allComponents = [
+    team.components = [
       createComponent({ componentNumber: 1 }),
       createComponent({ componentNumber: 2 }),
       createComponent({ componentNumber: 3 }),
+    ]
+    allComponents = [].concat(team.components, [
       createComponent({ componentNumber: 4 }),
       createComponent({ componentNumber: 5 }),
       createComponent({ componentNumber: 6 }),
-    ]
+    ])
     summary = createSummaryWithEmptyComponentAndSubComponentDependencies()
     wrapperActions = []
   })
@@ -89,10 +91,10 @@ describe('Index', () => {
 
     describe('when the detailed checkbox is checked', () => {
       beforeEach(() => {
-        wrapperActions.push(
-          async (wrapper) =>
-            await wrapper.get('#detailed-dependencies').trigger('click')
-        )
+        wrapperActions.push(async (wrapper) => {
+          await wrapper.get('#toggle-filters').trigger('click')
+          await wrapper.get('#detailed-dependencies').trigger('click')
+        })
       })
 
       test('shows detailed dependencies in graph', async () => {

@@ -1,58 +1,51 @@
 <template>
   <div>
-    <b-container fluid>
-      <b-row>
-        <b-col>
-          <b-card no-body class="my-3">
-            <b-list-group>
-              <b-list-group-item
-                v-if="outcomeCounts.length === 0"
-                class="zero-count"
-                variant="success"
-              >
-                <span class="display-1">0</span> tests
-              </b-list-group-item>
-              <b-list-group-item
-                v-for="outcomeCount in outcomeCounts"
-                :key="outcomeCount.outcome"
-                :class="`${outcomeCount.outcome}-count`"
-                :variant="outcomeCount.variant"
-              >
-            <span :class="outcomeCount.countClass">
-              {{ outcomeCount.count }}
-            </span>
-                <b>{{ outcomeCount.text }}</b> test{{
-                  outcomeCount.count === 1 ? '' : 's'
-                }}
-              </b-list-group-item>
-            </b-list-group>
-          </b-card>
+    <b-card no-body class="my-3">
+      <b-list-group>
+        <b-list-group-item
+          v-if="outcomeCounts.length === 0"
+          class="zero-count"
+          variant="success"
+        >
+          <span class="display-1">0</span> tests
+        </b-list-group-item>
+        <b-list-group-item
+          v-for="outcomeCount in outcomeCounts"
+          :key="outcomeCount.outcome"
+          :class="`${outcomeCount.outcome}-count`"
+          :variant="outcomeCount.variant"
+        >
+      <span :class="outcomeCount.countClass">
+        {{ outcomeCount.count }}
+      </span>
+          <b>{{ outcomeCount.text }}</b> test{{
+            outcomeCount.count === 1 ? '' : 's'
+          }}
+        </b-list-group-item>
+      </b-list-group>
+    </b-card>
 
-          <b-card :title="`${count} Test Results`" class="my-3">
-            <b-card-text>
-              <TestResultTable
-                :test-id="testId"
-                :area-id="areaId"
-                :team-id="teamId"
-                :components="filteredComponents"
-              />
-            </b-card-text>
-          </b-card>
-        </b-col>
-        <b-col md="3">
-          <ComponentFilters
-            :components="components"
-            :test-outcomes-filter-enabled="testOutcomesFilterEnabled"
-          />
-        </b-col>
-      </b-row>
-    </b-container>
+    <ComponentFilters
+      :components="components"
+      :test-outcomes-filter-enabled="testOutcomesFilterEnabled"
+    />
+
+    <b-card :title="`${count} Test Results`" class="my-3">
+      <b-card-text>
+        <TestResultTable
+          :test-id="testId"
+          :area-id="areaId"
+          :team-id="teamId"
+          :components="filteredComponents"
+        />
+      </b-card-text>
+    </b-card>
   </div>
 </template>
 
 <script lang="ts">
 import Vue, { PropType } from 'vue'
-import {BCard, BCardText, BCol, BContainer, BListGroup, BListGroupItem, BRow} from 'bootstrap-vue'
+import {BCard, BCardText, BListGroup, BListGroupItem} from 'bootstrap-vue'
 import {
   Component,
   TestOutcome,
@@ -79,11 +72,8 @@ export default Vue.extend({
   components: {
     'b-card': BCard,
     'b-card-text': BCardText,
-    'b-col': BCol,
-    'b-container': BContainer,
     'b-list-group': BListGroup,
     'b-list-group-item': BListGroupItem,
-    'b-row': BRow,
     ComponentFilters,
     TestResultTable,
   },

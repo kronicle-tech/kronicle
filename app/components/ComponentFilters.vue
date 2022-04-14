@@ -1,89 +1,142 @@
 <template>
   <div v-if="components && components.length > 0"
-       class="mt-3">
-    <b-form-group
-      v-if="
-        testOutcomesFilterEnabled &&
-        testOutcomeOptions &&
-        testOutcomeOptions.length > 0
-      "
-      label="Test Outcomes"
-    >
-      <b-form-checkbox-group
-        v-model="testOutcomes"
-        :options="testOutcomeOptions"
-        name="testOutcome"
-        stacked
-      ></b-form-checkbox-group>
-    </b-form-group>
+       class="mt-3 mb-4">
 
-    <b-form-group
-      v-if="teamIdOptions && teamIdOptions.length > 0"
-      label="Teams"
-    >
-      <b-form-checkbox-group
-        v-model="teamIds"
-        :options="teamIdOptions"
-        name="team"
-        stacked
-      ></b-form-checkbox-group>
-    </b-form-group>
+    <b-button id="toggle-filters" v-b-toggle.filters>
+      <b-icon icon="filter" aria-hidden="true" /> Filters
+    </b-button>
 
-    <b-form-group v-if="tagOptions && tagOptions.length > 0" label="Tags">
-      <b-form-checkbox-group
-        v-model="tags"
-        :options="tagOptions"
-        name="tag"
-        stacked
-      ></b-form-checkbox-group>
-    </b-form-group>
+    <b-collapse id="filters" class="mt-3">
+      <b-card-group columns>
+        <slot></slot>
 
-    <b-form-group
-      v-if="componentTypeIdOptions && componentTypeIdOptions.length > 0"
-      label="Component Types"
-    >
-      <b-form-checkbox-group
-        v-model="componentTypeIds"
-        :options="componentTypeIdOptions"
-        name="componentTypeId"
-        stacked
-      ></b-form-checkbox-group>
-    </b-form-group>
-
-    <b-form-group
-      v-if="platformIdOptions && platformIdOptions.length > 0"
-      label="Platforms"
-    >
-      <b-form-checkbox-group
-        v-model="platformIds"
-        :options="platformIdOptions"
-        name="platformId"
-        stacked
-      ></b-form-checkbox-group>
-    </b-form-group>
-
-    <b-form-group
-      v-if="
-        componentFilterEnabled &&
-        componentIdOptions &&
-        componentIdOptions.length > 0
-      "
-      label="Component"
-      label-for="component-filter"
-    >
-      <b-form-select
-        id="component-filter"
-        v-model="componentId"
-        :options="componentIdOptions"
-        size="sm"
-      />
-    </b-form-group>
+        <b-card
+          v-if="
+                testOutcomesFilterEnabled &&
+                testOutcomeOptions &&
+                testOutcomeOptions.length > 0
+              "
+          bg-variant="secondary"
+        >
+          <b-card-text>
+            <b-form-group
+              label="Test Outcomes"
+            >
+              <b-form-checkbox-group
+                v-model="testOutcomes"
+                :options="testOutcomeOptions"
+                name="testOutcome"
+                stacked
+              ></b-form-checkbox-group>
+            </b-form-group>
+          </b-card-text>
+        </b-card>
+        <b-card
+          v-if="teamIdOptions && teamIdOptions.length > 0"
+          bg-variant="secondary"
+        >
+          <b-card-text>
+            <b-form-group
+              label="Teams"
+            >
+              <b-form-checkbox-group
+                v-model="teamIds"
+                :options="teamIdOptions"
+                name="team"
+                stacked
+              ></b-form-checkbox-group>
+            </b-form-group>
+          </b-card-text>
+        </b-card>
+        <b-card
+          v-if="tagOptions && tagOptions.length > 0"
+          bg-variant="secondary"
+        >
+          <b-card-text>
+            <b-form-group label="Tags">
+              <b-form-checkbox-group
+                v-model="tags"
+                :options="tagOptions"
+                name="tag"
+                stacked
+              ></b-form-checkbox-group>
+            </b-form-group>
+          </b-card-text>
+        </b-card>
+        <b-card
+          v-if="componentTypeIdOptions && componentTypeIdOptions.length > 0"
+          bg-variant="secondary"
+        >
+          <b-card-text>
+            <b-form-group
+              label="Component Types"
+            >
+              <b-form-checkbox-group
+                v-model="componentTypeIds"
+                :options="componentTypeIdOptions"
+                name="componentTypeId"
+                stacked
+              ></b-form-checkbox-group>
+            </b-form-group>
+          </b-card-text>
+        </b-card>
+        <b-card
+          v-if="platformIdOptions && platformIdOptions.length > 0"
+          bg-variant="secondary"
+        >
+          <b-card-text>
+            <b-form-group
+              label="Platforms"
+            >
+              <b-form-checkbox-group
+                v-model="platformIds"
+                :options="platformIdOptions"
+                name="platformId"
+                stacked
+              ></b-form-checkbox-group>
+            </b-form-group>
+          </b-card-text>
+        </b-card>
+        <b-card
+          v-if="
+            componentFilterEnabled &&
+            componentIdOptions &&
+            componentIdOptions.length > 0
+          "
+          bg-variant="secondary"
+        >
+          <b-card-text>
+            <b-form-group
+              label="Component"
+              label-for="component-filter"
+            >
+              <b-form-select
+                id="component-filter"
+                v-model="componentId"
+                :options="componentIdOptions"
+                size="sm"
+              />
+            </b-form-group>
+          </b-card-text>
+        </b-card>
+      </b-card-group>
+    </b-collapse>
   </div>
 </template>
 
 <script lang="ts">
 import { Component as VueComponent, Prop, Vue } from 'vue-property-decorator'
-import { BFormCheckboxGroup, BFormGroup, BFormSelect } from 'bootstrap-vue'
+import {
+  BButton,
+  BCard,
+  BCardGroup,
+  BCardText,
+  BCollapse,
+  BFormCheckboxGroup,
+  BFormGroup,
+  BFormSelect, BIcon,
+  VBToggle
+} from 'bootstrap-vue'
 import { Component } from '~/types/kronicle-service'
 import { distinctArrayElements } from '~/src/arrayUtils'
 
@@ -94,10 +147,19 @@ interface Option {
 
 @VueComponent({
   components: {
+    'b-button': BButton,
+    'b-card': BCard,
+    'b-card-group': BCardGroup,
+    'b-card-text': BCardText,
+    'b-collapse': BCollapse,
     'b-form-checkbox-group': BFormCheckboxGroup,
     'b-form-group': BFormGroup,
     'b-form-select': BFormSelect,
+    'b-icon': BIcon,
   },
+  directives: {
+    'b-toggle': VBToggle,
+  }
 })
 export default class ComponentFilters extends Vue {
   @Prop({ default: () => [] }) readonly components!: Component[]

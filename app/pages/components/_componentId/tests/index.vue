@@ -1,14 +1,8 @@
 <template>
-  <div>
-    <b-container fluid>
-      <b-row>
-        <b-col>
-          <h1 class="text-info my-3">{{ component.name }} - Tests</h1>
+  <div class="m-3">
+    <h1 class="text-info my-3">{{ component.name }} - Tests</h1>
 
-          <ComponentTabs :component-id="component.id" />
-        </b-col>
-      </b-row>
-    </b-container>
+    <ComponentTabs :component-id="component.id" />
 
     <TestResultsView :components="[component]" />
   </div>
@@ -17,16 +11,12 @@
 <script lang="ts">
 import Vue from 'vue'
 import { MetaInfo } from 'vue-meta'
-import {BCol, BContainer, BRow} from "bootstrap-vue";
 import { Component } from '~/types/kronicle-service'
 import ComponentTabs from '~/components/ComponentTabs.vue'
 import TestResultsView from '~/components/TestResultsView.vue'
 
 export default Vue.extend({
   components: {
-    'b-col': BCol,
-    'b-container': BContainer,
-    'b-row': BRow,
     ComponentTabs,
     TestResultsView,
   },

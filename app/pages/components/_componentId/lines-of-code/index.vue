@@ -1,47 +1,41 @@
 <template>
-  <div>
-    <b-container fluid>
-      <b-row>
-        <b-col>
-          <h1 class="text-info my-3">{{ component.name }} - Lines of Code</h1>
+  <div class="m-3">
+    <h1 class="text-info my-3">{{ component.name }} - Lines of Code</h1>
 
-          <ComponentTabs :component-id="component.id" />
+    <ComponentTabs :component-id="component.id" />
 
-          <b-card title="Total Lines of Code" class="my-3">
-            <b-list-group>
-              <b-list-group-item :variant="linesOfCodeCountVariant">
-              <span class="display-1">
-                <FormattedNumber :value="linesOfCodeCount" />
-              </span>
-                lines of code{{ linesOfCodeCount === 1 ? '' : 's' }}
-              </b-list-group-item>
-            </b-list-group>
-          </b-card>
+    <b-card title="Total Lines of Code" class="my-3">
+      <b-list-group>
+        <b-list-group-item :variant="linesOfCodeCountVariant">
+        <span class="display-1">
+          <FormattedNumber :value="linesOfCodeCount" />
+        </span>
+          lines of code{{ linesOfCodeCount === 1 ? '' : 's' }}
+        </b-list-group-item>
+      </b-list-group>
+    </b-card>
 
-          <b-card title="Lines of Code by File Extension">
-            <b-list-group>
-              <b-list-group-item
-                v-for="fileExtensionCount in fileExtensionCounts"
-                :key="fileExtensionCount.fileExtension"
-                class="d-flex justify-content-between align-items-center"
-              >
-                {{ fileExtensionCount.fileExtension }}
-                <b-badge variant="primary" pill>
-                  <FormattedNumber :value="fileExtensionCount.count" />
-                </b-badge>
-              </b-list-group-item>
-            </b-list-group>
-          </b-card>
-        </b-col>
-      </b-row>
-    </b-container>
+    <b-card title="Lines of Code by File Extension">
+      <b-list-group>
+        <b-list-group-item
+          v-for="fileExtensionCount in fileExtensionCounts"
+          :key="fileExtensionCount.fileExtension"
+          class="d-flex justify-content-between align-items-center"
+        >
+          {{ fileExtensionCount.fileExtension }}
+          <b-badge variant="primary" pill>
+            <FormattedNumber :value="fileExtensionCount.count" />
+          </b-badge>
+        </b-list-group-item>
+      </b-list-group>
+    </b-card>
   </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
 import { MetaInfo } from 'vue-meta'
-import {BBadge, BCard, BCol, BContainer, BListGroup, BListGroupItem, BRow} from 'bootstrap-vue'
+import {BBadge, BCard, BListGroup, BListGroupItem} from 'bootstrap-vue'
 import {
   Component,
   FileExtensionCount,
@@ -53,11 +47,8 @@ export default Vue.extend({
   components: {
     'b-badge': BBadge,
     'b-card': BCard,
-    'b-col': BCol,
-    'b-container': BContainer,
     'b-list-group': BListGroup,
     'b-list-group-item': BListGroupItem,
-    'b-row': BRow,
     ComponentTabs,
     FormattedNumber,
   },

@@ -1,991 +1,971 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Index when Kronicle contains information renders the page showing the information 1`] = `
-<div>
+<div
+  class="m-3"
+>
   <div
-    class="container-fluid"
+    class="jumbotron my-3"
+    id="intro"
+  >
+    <h1
+      class="display-3"
+    >
+      Test Intro Title
+    </h1>
+    <!---->
+    <div>
+      
+
+      <p>
+        Test Intro 
+        <em>
+          Markdown
+        </em>
+      </p>
+    </div>
+  </div>
+   
+  <div
+    class="card-columns"
   >
     <div
-      class="row"
+      class="card"
     >
+      <!---->
       <div
-        class="col"
+        class="card-header lead bg-info"
+      >
+        Kronicle
+      </div>
+      <div
+        class="list-group list-group-flush"
       >
         <div
-          class="jumbotron my-3"
-          id="intro"
+          class="list-group-item d-flex justify-content-between align-items-center text-muted"
         >
-          <h1
-            class="display-3"
+          
+          Kronicle contains the following:
+        
+        </div>
+         
+        <a
+          class="list-group-item d-flex justify-content-between align-items-center list-group-item-action"
+          href="#"
+          target="_self"
+        >
+          <b>
+            Areas
+          </b>
+           
+          <span
+            class="lead"
           >
-            Test Intro Title
-          </h1>
-          <!---->
-          <div>
-            
-
-            <p>
-              Test Intro 
-              <em>
-                Markdown
-              </em>
-            </p>
-          </div>
+            <span
+              class="badge area-count badge-primary badge-pill"
+            >
+              3
+            </span>
+          </span>
+        </a>
+         
+        <a
+          class="list-group-item d-flex justify-content-between align-items-center list-group-item-action"
+          href="#"
+          target="_self"
+        >
+          <b>
+            Teams
+          </b>
+           
+          <span
+            class="lead"
+          >
+            <span
+              class="badge team-count badge-primary badge-pill"
+            >
+              3
+            </span>
+          </span>
+        </a>
+         
+        <a
+          class="list-group-item d-flex justify-content-between align-items-center list-group-item-action"
+          href="#"
+          target="_self"
+        >
+          <b>
+            Components
+          </b>
+           
+          <span
+            class="lead"
+          >
+            <span
+              class="badge component-count badge-primary badge-pill"
+            >
+              3
+            </span>
+          </span>
+        </a>
+         
+        <a
+          class="list-group-item d-flex justify-content-between align-items-center list-group-item-action"
+          href="#"
+          target="_self"
+        >
+          <b>
+            Tech Debts
+          </b>
+           
+          <span
+            class="lead"
+          >
+            <span
+              class="badge tech-debt-count badge-primary badge-pill"
+            >
+              6
+            </span>
+          </span>
+        </a>
+         
+        <a
+          class="list-group-item d-flex justify-content-between align-items-center list-group-item-action"
+          href="#"
+          target="_self"
+        >
+          <b>
+            Test Results
+          </b>
+           
+          <span
+            class="lead"
+          >
+            <span
+              class="badge test-result-count badge-primary badge-pill"
+            >
+              6
+            </span>
+          </span>
+        </a>
+      </div>
+      <!---->
+      <!---->
+    </div>
+     
+    <div
+      class="card"
+    >
+      <!---->
+      <div
+        class="card-header lead bg-info"
+      >
+        Scanners
+      </div>
+      <div
+        class="list-group list-group-flush"
+      >
+        <div
+          class="list-group-item d-flex justify-content-between align-items-center text-muted"
+        >
+          
+          Scanners dynamically add data to Kronicle at runtime:
+        
         </div>
          
         <div
-          class="card-columns"
+          class="list-group-item"
         >
-          <div
-            class="card"
+          <b
+            class="scanner-id text-info"
           >
-            <!---->
-            <div
-              class="card-header lead bg-info"
-            >
-              Kronicle
-            </div>
-            <div
-              class="list-group list-group-flush"
-            >
-              <div
-                class="list-group-item d-flex justify-content-between align-items-center text-muted"
-              >
-                
-                Kronicle contains the following:
-              
-              </div>
-               
-              <a
-                class="list-group-item d-flex justify-content-between align-items-center list-group-item-action"
-                href="#"
-                target="_self"
-              >
-                <b>
-                  Areas
-                </b>
-                 
-                <span
-                  class="lead"
-                >
-                  <span
-                    class="badge area-count badge-primary badge-pill"
-                  >
-                    3
-                  </span>
-                </span>
-              </a>
-               
-              <a
-                class="list-group-item d-flex justify-content-between align-items-center list-group-item-action"
-                href="#"
-                target="_self"
-              >
-                <b>
-                  Teams
-                </b>
-                 
-                <span
-                  class="lead"
-                >
-                  <span
-                    class="badge team-count badge-primary badge-pill"
-                  >
-                    3
-                  </span>
-                </span>
-              </a>
-               
-              <a
-                class="list-group-item d-flex justify-content-between align-items-center list-group-item-action"
-                href="#"
-                target="_self"
-              >
-                <b>
-                  Components
-                </b>
-                 
-                <span
-                  class="lead"
-                >
-                  <span
-                    class="badge component-count badge-primary badge-pill"
-                  >
-                    3
-                  </span>
-                </span>
-              </a>
-               
-              <a
-                class="list-group-item d-flex justify-content-between align-items-center list-group-item-action"
-                href="#"
-                target="_self"
-              >
-                <b>
-                  Tech Debts
-                </b>
-                 
-                <span
-                  class="lead"
-                >
-                  <span
-                    class="badge tech-debt-count badge-primary badge-pill"
-                  >
-                    6
-                  </span>
-                </span>
-              </a>
-               
-              <a
-                class="list-group-item d-flex justify-content-between align-items-center list-group-item-action"
-                href="#"
-                target="_self"
-              >
-                <b>
-                  Test Results
-                </b>
-                 
-                <span
-                  class="lead"
-                >
-                  <span
-                    class="badge test-result-count badge-primary badge-pill"
-                  >
-                    6
-                  </span>
-                </span>
-              </a>
-            </div>
-            <!---->
-            <!---->
-          </div>
+            test-scanner-id-1
+          </b>
+           
+          <br />
            
           <div
-            class="card"
+            class="description"
           >
-            <!---->
-            <div
-              class="card-header lead bg-info"
-            >
-              Scanners
-            </div>
-            <div
-              class="list-group list-group-flush"
-            >
-              <div
-                class="list-group-item d-flex justify-content-between align-items-center text-muted"
-              >
-                
-                Scanners dynamically add data to Kronicle at runtime:
-              
-              </div>
-               
-              <div
-                class="list-group-item"
-              >
-                <b
-                  class="scanner-id text-info"
-                >
-                  test-scanner-id-1
-                </b>
-                 
-                <br />
-                 
-                <div
-                  class="description"
-                >
-                  
+            
 
-                  <p>
-                    Test Scanner Description 1
-                  </p>
-                </div>
-              </div>
-              <div
-                class="list-group-item"
-              >
-                <b
-                  class="scanner-id text-info"
-                >
-                  test-scanner-id-2
-                </b>
-                 
-                <br />
-                 
-                <div
-                  class="description"
-                >
-                  
-
-                  <p>
-                    Test Scanner Description 2
-                  </p>
-                </div>
-              </div>
-              <div
-                class="list-group-item"
-              >
-                <b
-                  class="scanner-id text-info"
-                >
-                  test-scanner-id-3
-                </b>
-                 
-                <br />
-                 
-                <div
-                  class="description"
-                >
-                  
-
-                  <p>
-                    Test Scanner Description 3
-                  </p>
-                </div>
-              </div>
-            </div>
-            <!---->
-            <!---->
+            <p>
+              Test Scanner Description 1
+            </p>
           </div>
+        </div>
+        <div
+          class="list-group-item"
+        >
+          <b
+            class="scanner-id text-info"
+          >
+            test-scanner-id-2
+          </b>
+           
+          <br />
            
           <div
-            class="card"
+            class="description"
           >
-            <!---->
-            <div
-              class="card-header lead bg-info"
-            >
-              Tests
-            </div>
-            <div
-              class="list-group list-group-flush"
-            >
-              <div
-                class="list-group-item d-flex justify-content-between align-items-center text-muted"
-              >
-                
-                Tests evaluate the data associated with components in Kronicle and
-                return outcomes of pass, fail and not applicable
-              
-              </div>
-               
-              <a
-                class="list-group-item list-group-item-action"
-                href="#"
-                target="_self"
-              >
-                <b
-                  class="test-id text-info"
-                >
-                  test-test-id-1
-                </b>
-                 
-                <br />
-                 
-                <div
-                  class="description"
-                >
-                  
+            
 
-                  <p>
-                    Test Test Description 1
-                  </p>
-                </div>
-              </a>
-              <a
-                class="list-group-item list-group-item-action"
-                href="#"
-                target="_self"
-              >
-                <b
-                  class="test-id text-info"
-                >
-                  test-test-id-2
-                </b>
-                 
-                <br />
-                 
-                <div
-                  class="description"
-                >
-                  
-
-                  <p>
-                    Test Test Description 2
-                  </p>
-                </div>
-              </a>
-              <a
-                class="list-group-item list-group-item-action"
-                href="#"
-                target="_self"
-              >
-                <b
-                  class="test-id text-info"
-                >
-                  test-test-id-3
-                </b>
-                 
-                <br />
-                 
-                <div
-                  class="description"
-                >
-                  
-
-                  <p>
-                    Test Test Description 3
-                  </p>
-                </div>
-              </a>
-            </div>
-            <!---->
-            <!---->
+            <p>
+              Test Scanner Description 2
+            </p>
           </div>
+        </div>
+        <div
+          class="list-group-item"
+        >
+          <b
+            class="scanner-id text-info"
+          >
+            test-scanner-id-3
+          </b>
+           
+          <br />
            
           <div
-            class="card"
+            class="description"
           >
-            <!---->
-            <div
-              class="card-header lead bg-info"
-            >
-              Platforms
-            </div>
-            <div
-              class="list-group-item d-flex justify-content-between align-items-center text-muted"
-            >
-              
-              The following platforms are associated with components in Kronicle:
             
-            </div>
-             
-            <div
-              class="list-group list-group-flush"
-            >
-              <a
-                class="list-group-item d-flex justify-content-between align-items-center list-group-item-action"
-                href="?platformId=undefined"
-                target="_self"
-              >
-                <b
-                  class="platform"
-                >
-                  missing
-                </b>
-                 
-                <span
-                  class="lead"
-                >
-                  <span
-                    class="badge badge-primary badge-pill"
-                  >
-                    
-              1
-            
-                  </span>
-                </span>
-              </a>
-              <a
-                class="list-group-item d-flex justify-content-between align-items-center list-group-item-action"
-                href="?platformId=test-platform-id-1"
-                target="_self"
-              >
-                <b
-                  class="platform"
-                >
-                  test-platform-id-1
-                </b>
-                 
-                <span
-                  class="lead"
-                >
-                  <span
-                    class="badge badge-primary badge-pill"
-                  >
-                    
-              1
-            
-                  </span>
-                </span>
-              </a>
-              <a
-                class="list-group-item d-flex justify-content-between align-items-center list-group-item-action"
-                href="?platformId=test-platform-id-3"
-                target="_self"
-              >
-                <b
-                  class="platform"
-                >
-                  test-platform-id-3
-                </b>
-                 
-                <span
-                  class="lead"
-                >
-                  <span
-                    class="badge badge-primary badge-pill"
-                  >
-                    
-              1
-            
-                  </span>
-                </span>
-              </a>
-            </div>
-            <!---->
-            <!---->
-          </div>
-           
-          <div
-            class="card"
-          >
-            <!---->
-            <div
-              class="card-header lead bg-info"
-            >
-              Tags
-            </div>
-            <div
-              class="list-group list-group-flush"
-            >
-              <div
-                class="list-group-item d-flex justify-content-between align-items-center text-muted"
-              >
-                
-                The components in Kronicle are tagged with the following:
-              
-              </div>
-               
-              <a
-                class="list-group-item d-flex justify-content-between align-items-center list-group-item-action"
-                href="?tag=test-tag-1-1"
-                target="_self"
-              >
-                <b
-                  class="tag"
-                >
-                  test-tag-1-1
-                </b>
-                 
-                <span
-                  class="lead"
-                >
-                  <span
-                    class="badge badge-primary badge-pill"
-                  >
-                    
-              1
-            
-                  </span>
-                </span>
-              </a>
-              <a
-                class="list-group-item d-flex justify-content-between align-items-center list-group-item-action"
-                href="?tag=test-tag-1-2"
-                target="_self"
-              >
-                <b
-                  class="tag"
-                >
-                  test-tag-1-2
-                </b>
-                 
-                <span
-                  class="lead"
-                >
-                  <span
-                    class="badge badge-primary badge-pill"
-                  >
-                    
-              1
-            
-                  </span>
-                </span>
-              </a>
-              <a
-                class="list-group-item d-flex justify-content-between align-items-center list-group-item-action"
-                href="?tag=test-tag-2-1"
-                target="_self"
-              >
-                <b
-                  class="tag"
-                >
-                  test-tag-2-1
-                </b>
-                 
-                <span
-                  class="lead"
-                >
-                  <span
-                    class="badge badge-primary badge-pill"
-                  >
-                    
-              1
-            
-                  </span>
-                </span>
-              </a>
-              <a
-                class="list-group-item d-flex justify-content-between align-items-center list-group-item-action"
-                href="?tag=test-tag-2-2"
-                target="_self"
-              >
-                <b
-                  class="tag"
-                >
-                  test-tag-2-2
-                </b>
-                 
-                <span
-                  class="lead"
-                >
-                  <span
-                    class="badge badge-primary badge-pill"
-                  >
-                    
-              1
-            
-                  </span>
-                </span>
-              </a>
-              <a
-                class="list-group-item d-flex justify-content-between align-items-center list-group-item-action"
-                href="?tag=test-tag-3-1"
-                target="_self"
-              >
-                <b
-                  class="tag"
-                >
-                  test-tag-3-1
-                </b>
-                 
-                <span
-                  class="lead"
-                >
-                  <span
-                    class="badge badge-primary badge-pill"
-                  >
-                    
-              1
-            
-                  </span>
-                </span>
-              </a>
-              <a
-                class="list-group-item d-flex justify-content-between align-items-center list-group-item-action"
-                href="?tag=test-tag-3-2"
-                target="_self"
-              >
-                <b
-                  class="tag"
-                >
-                  test-tag-3-2
-                </b>
-                 
-                <span
-                  class="lead"
-                >
-                  <span
-                    class="badge badge-primary badge-pill"
-                  >
-                    
-              1
-            
-                  </span>
-                </span>
-              </a>
-            </div>
-            <!---->
-            <!---->
-          </div>
-           
-          <div
-            class="card"
-          >
-            <!---->
-            <div
-              class="card-header lead bg-info"
-            >
-              Component Types
-            </div>
-            <div
-              class="list-group list-group-flush"
-            >
-              <div
-                class="list-group-item d-flex justify-content-between align-items-center text-muted"
-              >
-                
-                There are the following types of components in Kronicle:
-              
-              </div>
-               
-              <a
-                class="list-group-item d-flex justify-content-between align-items-center list-group-item-action"
-                href="?componentType=test-component-type-id-1"
-                target="_self"
-              >
-                <b
-                  class="component-type"
-                >
-                  test-component-type-id-1
-                </b>
-                 
-                <span
-                  class="lead"
-                >
-                  <span
-                    class="badge badge-primary badge-pill"
-                  >
-                    
-              1
-            
-                  </span>
-                </span>
-              </a>
-              <a
-                class="list-group-item d-flex justify-content-between align-items-center list-group-item-action"
-                href="?componentType=test-component-type-id-2"
-                target="_self"
-              >
-                <b
-                  class="component-type"
-                >
-                  test-component-type-id-2
-                </b>
-                 
-                <span
-                  class="lead"
-                >
-                  <span
-                    class="badge badge-primary badge-pill"
-                  >
-                    
-              1
-            
-                  </span>
-                </span>
-              </a>
-              <a
-                class="list-group-item d-flex justify-content-between align-items-center list-group-item-action"
-                href="?componentType=test-component-type-id-3"
-                target="_self"
-              >
-                <b
-                  class="component-type"
-                >
-                  test-component-type-id-3
-                </b>
-                 
-                <span
-                  class="lead"
-                >
-                  <span
-                    class="badge badge-primary badge-pill"
-                  >
-                    
-              1
-            
-                  </span>
-                </span>
-              </a>
-            </div>
-            <!---->
-            <!---->
+
+            <p>
+              Test Scanner Description 3
+            </p>
           </div>
         </div>
       </div>
+      <!---->
+      <!---->
+    </div>
+     
+    <div
+      class="card"
+    >
+      <!---->
+      <div
+        class="card-header lead bg-info"
+      >
+        Tests
+      </div>
+      <div
+        class="list-group list-group-flush"
+      >
+        <div
+          class="list-group-item d-flex justify-content-between align-items-center text-muted"
+        >
+          
+          Tests evaluate the data associated with components in Kronicle and
+          return outcomes of pass, fail and not applicable
+        
+        </div>
+         
+        <a
+          class="list-group-item list-group-item-action"
+          href="#"
+          target="_self"
+        >
+          <b
+            class="test-id text-info"
+          >
+            test-test-id-1
+          </b>
+           
+          <br />
+           
+          <div
+            class="description"
+          >
+            
+
+            <p>
+              Test Test Description 1
+            </p>
+          </div>
+        </a>
+        <a
+          class="list-group-item list-group-item-action"
+          href="#"
+          target="_self"
+        >
+          <b
+            class="test-id text-info"
+          >
+            test-test-id-2
+          </b>
+           
+          <br />
+           
+          <div
+            class="description"
+          >
+            
+
+            <p>
+              Test Test Description 2
+            </p>
+          </div>
+        </a>
+        <a
+          class="list-group-item list-group-item-action"
+          href="#"
+          target="_self"
+        >
+          <b
+            class="test-id text-info"
+          >
+            test-test-id-3
+          </b>
+           
+          <br />
+           
+          <div
+            class="description"
+          >
+            
+
+            <p>
+              Test Test Description 3
+            </p>
+          </div>
+        </a>
+      </div>
+      <!---->
+      <!---->
+    </div>
+     
+    <div
+      class="card"
+    >
+      <!---->
+      <div
+        class="card-header lead bg-info"
+      >
+        Platforms
+      </div>
+      <div
+        class="list-group-item d-flex justify-content-between align-items-center text-muted"
+      >
+        
+        The following platforms are associated with components in Kronicle:
+      
+      </div>
+       
+      <div
+        class="list-group list-group-flush"
+      >
+        <a
+          class="list-group-item d-flex justify-content-between align-items-center list-group-item-action"
+          href="?platformId=undefined"
+          target="_self"
+        >
+          <b
+            class="platform"
+          >
+            missing
+          </b>
+           
+          <span
+            class="lead"
+          >
+            <span
+              class="badge badge-primary badge-pill"
+            >
+              
+              1
+            
+            </span>
+          </span>
+        </a>
+        <a
+          class="list-group-item d-flex justify-content-between align-items-center list-group-item-action"
+          href="?platformId=test-platform-id-1"
+          target="_self"
+        >
+          <b
+            class="platform"
+          >
+            test-platform-id-1
+          </b>
+           
+          <span
+            class="lead"
+          >
+            <span
+              class="badge badge-primary badge-pill"
+            >
+              
+              1
+            
+            </span>
+          </span>
+        </a>
+        <a
+          class="list-group-item d-flex justify-content-between align-items-center list-group-item-action"
+          href="?platformId=test-platform-id-3"
+          target="_self"
+        >
+          <b
+            class="platform"
+          >
+            test-platform-id-3
+          </b>
+           
+          <span
+            class="lead"
+          >
+            <span
+              class="badge badge-primary badge-pill"
+            >
+              
+              1
+            
+            </span>
+          </span>
+        </a>
+      </div>
+      <!---->
+      <!---->
+    </div>
+     
+    <div
+      class="card"
+    >
+      <!---->
+      <div
+        class="card-header lead bg-info"
+      >
+        Tags
+      </div>
+      <div
+        class="list-group list-group-flush"
+      >
+        <div
+          class="list-group-item d-flex justify-content-between align-items-center text-muted"
+        >
+          
+          The components in Kronicle are tagged with the following:
+        
+        </div>
+         
+        <a
+          class="list-group-item d-flex justify-content-between align-items-center list-group-item-action"
+          href="?tag=test-tag-1-1"
+          target="_self"
+        >
+          <b
+            class="tag"
+          >
+            test-tag-1-1
+          </b>
+           
+          <span
+            class="lead"
+          >
+            <span
+              class="badge badge-primary badge-pill"
+            >
+              
+              1
+            
+            </span>
+          </span>
+        </a>
+        <a
+          class="list-group-item d-flex justify-content-between align-items-center list-group-item-action"
+          href="?tag=test-tag-1-2"
+          target="_self"
+        >
+          <b
+            class="tag"
+          >
+            test-tag-1-2
+          </b>
+           
+          <span
+            class="lead"
+          >
+            <span
+              class="badge badge-primary badge-pill"
+            >
+              
+              1
+            
+            </span>
+          </span>
+        </a>
+        <a
+          class="list-group-item d-flex justify-content-between align-items-center list-group-item-action"
+          href="?tag=test-tag-2-1"
+          target="_self"
+        >
+          <b
+            class="tag"
+          >
+            test-tag-2-1
+          </b>
+           
+          <span
+            class="lead"
+          >
+            <span
+              class="badge badge-primary badge-pill"
+            >
+              
+              1
+            
+            </span>
+          </span>
+        </a>
+        <a
+          class="list-group-item d-flex justify-content-between align-items-center list-group-item-action"
+          href="?tag=test-tag-2-2"
+          target="_self"
+        >
+          <b
+            class="tag"
+          >
+            test-tag-2-2
+          </b>
+           
+          <span
+            class="lead"
+          >
+            <span
+              class="badge badge-primary badge-pill"
+            >
+              
+              1
+            
+            </span>
+          </span>
+        </a>
+        <a
+          class="list-group-item d-flex justify-content-between align-items-center list-group-item-action"
+          href="?tag=test-tag-3-1"
+          target="_self"
+        >
+          <b
+            class="tag"
+          >
+            test-tag-3-1
+          </b>
+           
+          <span
+            class="lead"
+          >
+            <span
+              class="badge badge-primary badge-pill"
+            >
+              
+              1
+            
+            </span>
+          </span>
+        </a>
+        <a
+          class="list-group-item d-flex justify-content-between align-items-center list-group-item-action"
+          href="?tag=test-tag-3-2"
+          target="_self"
+        >
+          <b
+            class="tag"
+          >
+            test-tag-3-2
+          </b>
+           
+          <span
+            class="lead"
+          >
+            <span
+              class="badge badge-primary badge-pill"
+            >
+              
+              1
+            
+            </span>
+          </span>
+        </a>
+      </div>
+      <!---->
+      <!---->
+    </div>
+     
+    <div
+      class="card"
+    >
+      <!---->
+      <div
+        class="card-header lead bg-info"
+      >
+        Component Types
+      </div>
+      <div
+        class="list-group list-group-flush"
+      >
+        <div
+          class="list-group-item d-flex justify-content-between align-items-center text-muted"
+        >
+          
+          There are the following types of components in Kronicle:
+        
+        </div>
+         
+        <a
+          class="list-group-item d-flex justify-content-between align-items-center list-group-item-action"
+          href="?componentType=test-component-type-id-1"
+          target="_self"
+        >
+          <b
+            class="component-type"
+          >
+            test-component-type-id-1
+          </b>
+           
+          <span
+            class="lead"
+          >
+            <span
+              class="badge badge-primary badge-pill"
+            >
+              
+              1
+            
+            </span>
+          </span>
+        </a>
+        <a
+          class="list-group-item d-flex justify-content-between align-items-center list-group-item-action"
+          href="?componentType=test-component-type-id-2"
+          target="_self"
+        >
+          <b
+            class="component-type"
+          >
+            test-component-type-id-2
+          </b>
+           
+          <span
+            class="lead"
+          >
+            <span
+              class="badge badge-primary badge-pill"
+            >
+              
+              1
+            
+            </span>
+          </span>
+        </a>
+        <a
+          class="list-group-item d-flex justify-content-between align-items-center list-group-item-action"
+          href="?componentType=test-component-type-id-3"
+          target="_self"
+        >
+          <b
+            class="component-type"
+          >
+            test-component-type-id-3
+          </b>
+           
+          <span
+            class="lead"
+          >
+            <span
+              class="badge badge-primary badge-pill"
+            >
+              
+              1
+            
+            </span>
+          </span>
+        </a>
+      </div>
+      <!---->
+      <!---->
     </div>
   </div>
 </div>
 `;
 
 exports[`Index when Kronicle contains no information renders the page with no information on it 1`] = `
-<div>
+<div
+  class="m-3"
+>
   <div
-    class="container-fluid"
+    class="jumbotron my-3"
+    id="intro"
+  >
+    <h1
+      class="display-3"
+    >
+      Test Intro Title
+    </h1>
+    <!---->
+    <div>
+      
+
+      <p>
+        Test Intro 
+        <em>
+          Markdown
+        </em>
+      </p>
+    </div>
+  </div>
+   
+  <div
+    class="card-columns"
   >
     <div
-      class="row"
+      class="card"
     >
+      <!---->
       <div
-        class="col"
+        class="card-header lead bg-info"
+      >
+        Kronicle
+      </div>
+      <div
+        class="list-group list-group-flush"
       >
         <div
-          class="jumbotron my-3"
-          id="intro"
+          class="list-group-item d-flex justify-content-between align-items-center text-muted"
         >
-          <h1
-            class="display-3"
-          >
-            Test Intro Title
-          </h1>
-          <!---->
-          <div>
-            
-
-            <p>
-              Test Intro 
-              <em>
-                Markdown
-              </em>
-            </p>
-          </div>
+          
+          Kronicle contains the following:
+        
         </div>
          
-        <div
-          class="card-columns"
+        <a
+          class="list-group-item d-flex justify-content-between align-items-center list-group-item-action"
+          href="#"
+          target="_self"
         >
-          <div
-            class="card"
-          >
-            <!---->
-            <div
-              class="card-header lead bg-info"
-            >
-              Kronicle
-            </div>
-            <div
-              class="list-group list-group-flush"
-            >
-              <div
-                class="list-group-item d-flex justify-content-between align-items-center text-muted"
-              >
-                
-                Kronicle contains the following:
-              
-              </div>
-               
-              <a
-                class="list-group-item d-flex justify-content-between align-items-center list-group-item-action"
-                href="#"
-                target="_self"
-              >
-                <b>
-                  Areas
-                </b>
-                 
-                <span
-                  class="lead"
-                >
-                  <span
-                    class="badge area-count badge-primary badge-pill"
-                  >
-                    0
-                  </span>
-                </span>
-              </a>
-               
-              <a
-                class="list-group-item d-flex justify-content-between align-items-center list-group-item-action"
-                href="#"
-                target="_self"
-              >
-                <b>
-                  Teams
-                </b>
-                 
-                <span
-                  class="lead"
-                >
-                  <span
-                    class="badge team-count badge-primary badge-pill"
-                  >
-                    0
-                  </span>
-                </span>
-              </a>
-               
-              <a
-                class="list-group-item d-flex justify-content-between align-items-center list-group-item-action"
-                href="#"
-                target="_self"
-              >
-                <b>
-                  Components
-                </b>
-                 
-                <span
-                  class="lead"
-                >
-                  <span
-                    class="badge component-count badge-primary badge-pill"
-                  >
-                    0
-                  </span>
-                </span>
-              </a>
-               
-              <a
-                class="list-group-item d-flex justify-content-between align-items-center list-group-item-action"
-                href="#"
-                target="_self"
-              >
-                <b>
-                  Tech Debts
-                </b>
-                 
-                <span
-                  class="lead"
-                >
-                  <span
-                    class="badge tech-debt-count badge-primary badge-pill"
-                  >
-                    0
-                  </span>
-                </span>
-              </a>
-               
-              <a
-                class="list-group-item d-flex justify-content-between align-items-center list-group-item-action"
-                href="#"
-                target="_self"
-              >
-                <b>
-                  Test Results
-                </b>
-                 
-                <span
-                  class="lead"
-                >
-                  <span
-                    class="badge test-result-count badge-primary badge-pill"
-                  >
-                    0
-                  </span>
-                </span>
-              </a>
-            </div>
-            <!---->
-            <!---->
-          </div>
+          <b>
+            Areas
+          </b>
            
-          <div
-            class="card"
+          <span
+            class="lead"
           >
-            <!---->
-            <div
-              class="card-header lead bg-info"
+            <span
+              class="badge area-count badge-primary badge-pill"
             >
-              Scanners
-            </div>
-            <div
-              class="list-group list-group-flush"
-            >
-              <div
-                class="list-group-item d-flex justify-content-between align-items-center text-muted"
-              >
-                
-                Scanners dynamically add data to Kronicle at runtime:
-              
-              </div>
-               
-            </div>
-            <!---->
-            <!---->
-          </div>
+              0
+            </span>
+          </span>
+        </a>
+         
+        <a
+          class="list-group-item d-flex justify-content-between align-items-center list-group-item-action"
+          href="#"
+          target="_self"
+        >
+          <b>
+            Teams
+          </b>
            
-          <div
-            class="card"
+          <span
+            class="lead"
           >
-            <!---->
-            <div
-              class="card-header lead bg-info"
+            <span
+              class="badge team-count badge-primary badge-pill"
             >
-              Tests
-            </div>
-            <div
-              class="list-group list-group-flush"
-            >
-              <div
-                class="list-group-item d-flex justify-content-between align-items-center text-muted"
-              >
-                
-                Tests evaluate the data associated with components in Kronicle and
-                return outcomes of pass, fail and not applicable
-              
-              </div>
-               
-            </div>
-            <!---->
-            <!---->
-          </div>
+              0
+            </span>
+          </span>
+        </a>
+         
+        <a
+          class="list-group-item d-flex justify-content-between align-items-center list-group-item-action"
+          href="#"
+          target="_self"
+        >
+          <b>
+            Components
+          </b>
            
-          <div
-            class="card"
+          <span
+            class="lead"
           >
-            <!---->
-            <div
-              class="card-header lead bg-info"
+            <span
+              class="badge component-count badge-primary badge-pill"
             >
-              Platforms
-            </div>
-            <div
-              class="list-group-item d-flex justify-content-between align-items-center text-muted"
-            >
-              
-              The following platforms are associated with components in Kronicle:
-            
-            </div>
-             
-            <div
-              class="list-group list-group-flush"
-            />
-            <!---->
-            <!---->
-          </div>
+              0
+            </span>
+          </span>
+        </a>
+         
+        <a
+          class="list-group-item d-flex justify-content-between align-items-center list-group-item-action"
+          href="#"
+          target="_self"
+        >
+          <b>
+            Tech Debts
+          </b>
            
-          <div
-            class="card"
+          <span
+            class="lead"
           >
-            <!---->
-            <div
-              class="card-header lead bg-info"
+            <span
+              class="badge tech-debt-count badge-primary badge-pill"
             >
-              Tags
-            </div>
-            <div
-              class="list-group list-group-flush"
-            >
-              <div
-                class="list-group-item d-flex justify-content-between align-items-center text-muted"
-              >
-                
-                The components in Kronicle are tagged with the following:
-              
-              </div>
-               
-            </div>
-            <!---->
-            <!---->
-          </div>
+              0
+            </span>
+          </span>
+        </a>
+         
+        <a
+          class="list-group-item d-flex justify-content-between align-items-center list-group-item-action"
+          href="#"
+          target="_self"
+        >
+          <b>
+            Test Results
+          </b>
            
-          <div
-            class="card"
+          <span
+            class="lead"
           >
-            <!---->
-            <div
-              class="card-header lead bg-info"
+            <span
+              class="badge test-result-count badge-primary badge-pill"
             >
-              Component Types
-            </div>
-            <div
-              class="list-group list-group-flush"
-            >
-              <div
-                class="list-group-item d-flex justify-content-between align-items-center text-muted"
-              >
-                
-                There are the following types of components in Kronicle:
-              
-              </div>
-               
-            </div>
-            <!---->
-            <!---->
-          </div>
-        </div>
+              0
+            </span>
+          </span>
+        </a>
       </div>
+      <!---->
+      <!---->
+    </div>
+     
+    <div
+      class="card"
+    >
+      <!---->
+      <div
+        class="card-header lead bg-info"
+      >
+        Scanners
+      </div>
+      <div
+        class="list-group list-group-flush"
+      >
+        <div
+          class="list-group-item d-flex justify-content-between align-items-center text-muted"
+        >
+          
+          Scanners dynamically add data to Kronicle at runtime:
+        
+        </div>
+         
+      </div>
+      <!---->
+      <!---->
+    </div>
+     
+    <div
+      class="card"
+    >
+      <!---->
+      <div
+        class="card-header lead bg-info"
+      >
+        Tests
+      </div>
+      <div
+        class="list-group list-group-flush"
+      >
+        <div
+          class="list-group-item d-flex justify-content-between align-items-center text-muted"
+        >
+          
+          Tests evaluate the data associated with components in Kronicle and
+          return outcomes of pass, fail and not applicable
+        
+        </div>
+         
+      </div>
+      <!---->
+      <!---->
+    </div>
+     
+    <div
+      class="card"
+    >
+      <!---->
+      <div
+        class="card-header lead bg-info"
+      >
+        Platforms
+      </div>
+      <div
+        class="list-group-item d-flex justify-content-between align-items-center text-muted"
+      >
+        
+        The following platforms are associated with components in Kronicle:
+      
+      </div>
+       
+      <div
+        class="list-group list-group-flush"
+      />
+      <!---->
+      <!---->
+    </div>
+     
+    <div
+      class="card"
+    >
+      <!---->
+      <div
+        class="card-header lead bg-info"
+      >
+        Tags
+      </div>
+      <div
+        class="list-group list-group-flush"
+      >
+        <div
+          class="list-group-item d-flex justify-content-between align-items-center text-muted"
+        >
+          
+          The components in Kronicle are tagged with the following:
+        
+        </div>
+         
+      </div>
+      <!---->
+      <!---->
+    </div>
+     
+    <div
+      class="card"
+    >
+      <!---->
+      <div
+        class="card-header lead bg-info"
+      >
+        Component Types
+      </div>
+      <div
+        class="list-group list-group-flush"
+      >
+        <div
+          class="list-group-item d-flex justify-content-between align-items-center text-muted"
+        >
+          
+          There are the following types of components in Kronicle:
+        
+        </div>
+         
+      </div>
+      <!---->
+      <!---->
     </div>
   </div>
 </div>

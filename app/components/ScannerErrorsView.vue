@@ -1,34 +1,27 @@
 <template>
   <div>
-    <b-container fluid>
-      <b-row>
-        <b-col>
-          <b-card no-body class="my-3">
-            <b-list-group>
-              <b-list-group-item :variant="errorCountVariant">
-                <span :class="errorCountClass">{{ errorCount }}</span>
-                error{{ errorCount === 1 ? '' : 's' }}
-              </b-list-group-item>
-            </b-list-group>
-          </b-card>
+    <b-card no-body class="my-3">
+      <b-list-group>
+        <b-list-group-item :variant="errorCountVariant">
+          <span :class="errorCountClass">{{ errorCount }}</span>
+          error{{ errorCount === 1 ? '' : 's' }}
+        </b-list-group-item>
+      </b-list-group>
+    </b-card>
 
-          <b-card :title="`${errorCount} Errors`" class="my-3">
-            <b-card-text>
-              <ScannerErrorTable :components="filteredComponents" />
-            </b-card-text>
-          </b-card>
-        </b-col>
-        <b-col md="3">
-          <ComponentFilters :components="components" />
-        </b-col>
-      </b-row>
-    </b-container>
+    <ComponentFilters :components="components" />
+
+    <b-card :title="`${errorCount} Errors`" class="my-3">
+      <b-card-text>
+        <ScannerErrorTable :components="filteredComponents" />
+      </b-card-text>
+    </b-card>
   </div>
 </template>
 
 <script lang="ts">
 import Vue, { PropType } from 'vue'
-import {BCard, BCardText, BCol, BContainer, BListGroup, BListGroupItem, BRow} from 'bootstrap-vue'
+import {BCard, BCardText, BListGroup, BListGroupItem} from 'bootstrap-vue'
 import { Component, ScannerError } from '~/types/kronicle-service'
 import ComponentFilters from '~/components/ComponentFilters.vue'
 import ScannerErrorTable from '~/components/ScannerErrorTable.vue'
@@ -37,11 +30,8 @@ export default Vue.extend({
   components: {
     'b-card': BCard,
     'b-card-text': BCardText,
-    'b-col': BCol,
-    'b-container': BContainer,
     'b-list-group': BListGroup,
     'b-list-group-item': BListGroupItem,
-    'b-row': BRow,
     ComponentFilters,
     ScannerErrorTable,
   },

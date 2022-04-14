@@ -1,57 +1,51 @@
 <template>
-  <div>
-    <b-container fluid>
-      <b-row>
-        <b-col>
-          <h1 class="text-info my-3">{{ component.name }} - Imports</h1>
+  <div class="m-3">
+    <h1 class="text-info my-3">{{ component.name }} - Imports</h1>
 
-          <ComponentTabs :component-id="component.id" />
+    <ComponentTabs :component-id="component.id" />
 
-          <b-card title="Total Imports" class="my-3">
-            <b-list-group>
-              <b-list-group-item variant="success">
-              <span class="display-1">
-                <FormattedNumber :value="importCount" />
-              </span>
-                import{{ importCount === 1 ? '' : 's' }}
-              </b-list-group-item>
-            </b-list-group>
-          </b-card>
+    <b-card title="Total Imports" class="my-3">
+      <b-list-group>
+        <b-list-group-item variant="success">
+        <span class="display-1">
+          <FormattedNumber :value="importCount" />
+        </span>
+          import{{ importCount === 1 ? '' : 's' }}
+        </b-list-group-item>
+      </b-list-group>
+    </b-card>
 
-          <b-card title="Imports">
-            <table
-              class="table table-dark table-bordered table-striped mt-2"
-              style="width: 100%"
-            >
-              <thead>
-              <tr>
-                <th>Scanner</th>
-                <th>Type</th>
-                <th>Name</th>
-              </tr>
-              </thead>
-              <tbody>
-              <tr
-                v-for="(importItem, importItemIndex) in component.imports"
-                :key="importItemIndex"
-              >
-                <td>{{ importItem.scannerId }}</td>
-                <td>{{ importItem.type }}</td>
-                <td>{{ importItem.name }}</td>
-              </tr>
-              </tbody>
-            </table>
-          </b-card>
-        </b-col>
-      </b-row>
-    </b-container>
+    <b-card title="Imports">
+      <table
+        class="table table-dark table-bordered table-striped mt-2"
+        style="width: 100%"
+      >
+        <thead>
+        <tr>
+          <th>Scanner</th>
+          <th>Type</th>
+          <th>Name</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr
+          v-for="(importItem, importItemIndex) in component.imports"
+          :key="importItemIndex"
+        >
+          <td>{{ importItem.scannerId }}</td>
+          <td>{{ importItem.type }}</td>
+          <td>{{ importItem.name }}</td>
+        </tr>
+        </tbody>
+      </table>
+    </b-card>
   </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
 import { MetaInfo } from 'vue-meta'
-import {BCard, BCol, BContainer, BListGroup, BListGroupItem, BRow} from 'bootstrap-vue'
+import {BCard, BListGroup, BListGroupItem} from 'bootstrap-vue'
 import { Component } from '~/types/kronicle-service'
 import ComponentTabs from '~/components/ComponentTabs.vue'
 import FormattedNumber from '~/components/FormattedNumber.vue'
@@ -59,11 +53,8 @@ import FormattedNumber from '~/components/FormattedNumber.vue'
 export default Vue.extend({
   components: {
     'b-card': BCard,
-    'b-col': BCol,
-    'b-container': BContainer,
     'b-list-group': BListGroup,
     'b-list-group-item': BListGroupItem,
-    'b-row': BRow,
     ComponentTabs,
     FormattedNumber,
   },

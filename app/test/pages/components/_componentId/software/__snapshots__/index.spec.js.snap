@@ -1,976 +1,946 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Index when Get Component service endpoint returns a component when the component has no software renders no software 1`] = `
-<div>
-  <div
-    class="container-fluid"
+<div
+  class="m-3"
+>
+  <h1
+    class="text-info my-3"
   >
-    <div
-      class="row"
+    Test Component Name 1 - Software
+  </h1>
+   
+  <div
+    class="my-3"
+  >
+    <a
+      class="btn my-1 btn-secondary"
+      href="/components/test-component-id-1"
+      target="_self"
     >
-      <div
-        class="col"
-      >
-        <h1
-          class="text-info my-3"
-        >
-          Test Component Name 1 - Software
-        </h1>
-         
-        <div
-          class="my-3"
-        >
-          <a
-            class="btn my-1 btn-secondary"
-            href="/components/test-component-id-1"
-            target="_self"
-          >
-            Info
-          </a>
-           
-          <a
-            class="btn my-1 btn-secondary"
-            href="/components/test-component-id-1/dependencies"
-            target="_self"
-          >
-            
+      Info
+    </a>
+     
+    <a
+      class="btn my-1 btn-secondary"
+      href="/components/test-component-id-1/dependencies"
+      target="_self"
+    >
+      
     Dependencies
   
-          </a>
-           
-          <a
-            class="btn my-1 btn-secondary"
-            href="/components/test-component-id-1/response-times"
-            target="_self"
-          >
-            
+    </a>
+     
+    <a
+      class="btn my-1 btn-secondary"
+      href="/components/test-component-id-1/response-times"
+      target="_self"
+    >
+      
     Response Times
   
-          </a>
-           
-          <a
-            class="btn my-1 btn-secondary"
-            href="/components/test-component-id-1/downstream-response-times"
-            target="_self"
-          >
-            
+    </a>
+     
+    <a
+      class="btn my-1 btn-secondary"
+      href="/components/test-component-id-1/downstream-response-times"
+      target="_self"
+    >
+      
     Downstream Response Times
   
-          </a>
-           
-          <a
-            class="btn my-1 btn-secondary"
-            href="/components/test-component-id-1/call-graphs"
-            target="_self"
-          >
-            
+    </a>
+     
+    <a
+      class="btn my-1 btn-secondary"
+      href="/components/test-component-id-1/call-graphs"
+      target="_self"
+    >
+      
     Call Graphs
   
-          </a>
-           
-          <a
-            class="btn my-1 btn-secondary"
-            href="/components/test-component-id-1/cross-functional-requirements"
-            target="_self"
-          >
-            
+    </a>
+     
+    <a
+      class="btn my-1 btn-secondary"
+      href="/components/test-component-id-1/cross-functional-requirements"
+      target="_self"
+    >
+      
     Cross Functional Requirements
   
-          </a>
-           
-          <a
-            class="btn my-1 btn-secondary"
-            href="/components/test-component-id-1/tech-debts"
-            target="_self"
-          >
-            
+    </a>
+     
+    <a
+      class="btn my-1 btn-secondary"
+      href="/components/test-component-id-1/tech-debts"
+      target="_self"
+    >
+      
     Tech Debts
   
-          </a>
-           
-          <a
-            class="btn my-1 btn-secondary"
-            href="/components/test-component-id-1/tests"
-            target="_self"
-          >
-            Tests
-          </a>
-           
-          <a
-            class="btn my-1 btn-secondary"
-            href="/components/test-component-id-1/errors"
-            target="_self"
-          >
-            Errors
-          </a>
-           
-          <a
-            class="btn my-1 btn-secondary"
-            href="/components/test-component-id-1/openapi-specs"
-            target="_self"
-          >
-            
+    </a>
+     
+    <a
+      class="btn my-1 btn-secondary"
+      href="/components/test-component-id-1/tests"
+      target="_self"
+    >
+      Tests
+    </a>
+     
+    <a
+      class="btn my-1 btn-secondary"
+      href="/components/test-component-id-1/errors"
+      target="_self"
+    >
+      Errors
+    </a>
+     
+    <a
+      class="btn my-1 btn-secondary"
+      href="/components/test-component-id-1/openapi-specs"
+      target="_self"
+    >
+      
     OpenAPI Specs
   
-          </a>
-           
-          <a
-            class="btn my-1 btn-secondary"
-            href="/components/test-component-id-1/repo"
-            target="_self"
-          >
-            Repo
-          </a>
-           
-          <a
-            class="btn my-1 btn-secondary"
-            href="/components/test-component-id-1/readme"
-            target="_self"
-          >
-            README
-          </a>
-           
-          <a
-            class="btn my-1 btn-secondary"
-            href="/components/test-component-id-1/to-dos"
-            target="_self"
-          >
-            To Dos
-          </a>
-           
-          <a
-            class="btn my-1 btn-secondary"
-            href="/components/test-component-id-1/lines-of-code"
-            target="_self"
-          >
-            
+    </a>
+     
+    <a
+      class="btn my-1 btn-secondary"
+      href="/components/test-component-id-1/repo"
+      target="_self"
+    >
+      Repo
+    </a>
+     
+    <a
+      class="btn my-1 btn-secondary"
+      href="/components/test-component-id-1/readme"
+      target="_self"
+    >
+      README
+    </a>
+     
+    <a
+      class="btn my-1 btn-secondary"
+      href="/components/test-component-id-1/to-dos"
+      target="_self"
+    >
+      To Dos
+    </a>
+     
+    <a
+      class="btn my-1 btn-secondary"
+      href="/components/test-component-id-1/lines-of-code"
+      target="_self"
+    >
+      
     Lines of Code
   
-          </a>
-           
-          <a
-            class="btn my-1 btn-secondary"
-            href="/components/test-component-id-1/software-repositories"
-            target="_self"
-          >
-            
+    </a>
+     
+    <a
+      class="btn my-1 btn-secondary"
+      href="/components/test-component-id-1/software-repositories"
+      target="_self"
+    >
+      
     Software Repositories
   
-          </a>
-           
-          <a
-            class="btn my-1 btn-secondary"
-            href="/components/test-component-id-1/software"
-            target="_self"
-          >
-            Software
-          </a>
-           
-          <a
-            class="btn my-1 btn-secondary"
-            href="/components/test-component-id-1/imports"
-            target="_self"
-          >
-            Imports
-          </a>
-        </div>
-         
+    </a>
+     
+    <a
+      class="btn my-1 btn-secondary"
+      href="/components/test-component-id-1/software"
+      target="_self"
+    >
+      Software
+    </a>
+     
+    <a
+      class="btn my-1 btn-secondary"
+      href="/components/test-component-id-1/imports"
+      target="_self"
+    >
+      Imports
+    </a>
+  </div>
+   
+  <div
+    class="card my-3"
+  >
+    <!---->
+    <!---->
+    <div
+      class="card-body"
+    >
+      <h4
+        class="card-title"
+      >
+        Total Software
+      </h4>
+      <!---->
+      <div
+        class="list-group"
+      >
         <div
-          class="card my-3"
+          class="list-group-item list-group-item-success"
         >
-          <!---->
-          <!---->
-          <div
-            class="card-body"
+          <span
+            class="display-1"
           >
-            <h4
-              class="card-title"
-            >
-              Total Software
-            </h4>
-            <!---->
-            <div
-              class="list-group"
-            >
-              <div
-                class="list-group-item list-group-item-success"
-              >
-                <span
-                  class="display-1"
-                >
-                  <span>
-                    0
-                  </span>
-                </span>
-                
-              software items
-            
-              </div>
-            </div>
-          </div>
-          <!---->
-          <!---->
+            <span>
+              0
+            </span>
+          </span>
+          
+        software items
+      
         </div>
-         
-        <!---->
       </div>
     </div>
+    <!---->
+    <!---->
   </div>
+   
+  <!---->
 </div>
 `;
 
 exports[`Index when Get Component service endpoint returns a component when the component has software renders the details of the software 1`] = `
-<div>
-  <div
-    class="container-fluid"
+<div
+  class="m-3"
+>
+  <h1
+    class="text-info my-3"
   >
-    <div
-      class="row"
+    Test Component Name 1 - Software
+  </h1>
+   
+  <div
+    class="my-3"
+  >
+    <a
+      class="btn my-1 btn-secondary"
+      href="/components/test-component-id-1"
+      target="_self"
     >
-      <div
-        class="col"
-      >
-        <h1
-          class="text-info my-3"
-        >
-          Test Component Name 1 - Software
-        </h1>
-         
-        <div
-          class="my-3"
-        >
-          <a
-            class="btn my-1 btn-secondary"
-            href="/components/test-component-id-1"
-            target="_self"
-          >
-            Info
-          </a>
-           
-          <a
-            class="btn my-1 btn-secondary"
-            href="/components/test-component-id-1/dependencies"
-            target="_self"
-          >
-            
+      Info
+    </a>
+     
+    <a
+      class="btn my-1 btn-secondary"
+      href="/components/test-component-id-1/dependencies"
+      target="_self"
+    >
+      
     Dependencies
   
-          </a>
-           
-          <a
-            class="btn my-1 btn-secondary"
-            href="/components/test-component-id-1/response-times"
-            target="_self"
-          >
-            
+    </a>
+     
+    <a
+      class="btn my-1 btn-secondary"
+      href="/components/test-component-id-1/response-times"
+      target="_self"
+    >
+      
     Response Times
   
-          </a>
-           
-          <a
-            class="btn my-1 btn-secondary"
-            href="/components/test-component-id-1/downstream-response-times"
-            target="_self"
-          >
-            
+    </a>
+     
+    <a
+      class="btn my-1 btn-secondary"
+      href="/components/test-component-id-1/downstream-response-times"
+      target="_self"
+    >
+      
     Downstream Response Times
   
-          </a>
-           
-          <a
-            class="btn my-1 btn-secondary"
-            href="/components/test-component-id-1/call-graphs"
-            target="_self"
-          >
-            
+    </a>
+     
+    <a
+      class="btn my-1 btn-secondary"
+      href="/components/test-component-id-1/call-graphs"
+      target="_self"
+    >
+      
     Call Graphs
   
-          </a>
-           
-          <a
-            class="btn my-1 btn-secondary"
-            href="/components/test-component-id-1/cross-functional-requirements"
-            target="_self"
-          >
-            
+    </a>
+     
+    <a
+      class="btn my-1 btn-secondary"
+      href="/components/test-component-id-1/cross-functional-requirements"
+      target="_self"
+    >
+      
     Cross Functional Requirements
   
-          </a>
-           
-          <a
-            class="btn my-1 btn-secondary"
-            href="/components/test-component-id-1/tech-debts"
-            target="_self"
-          >
-            
+    </a>
+     
+    <a
+      class="btn my-1 btn-secondary"
+      href="/components/test-component-id-1/tech-debts"
+      target="_self"
+    >
+      
     Tech Debts
   
-          </a>
-           
-          <a
-            class="btn my-1 btn-secondary"
-            href="/components/test-component-id-1/tests"
-            target="_self"
-          >
-            Tests
-          </a>
-           
-          <a
-            class="btn my-1 btn-secondary"
-            href="/components/test-component-id-1/errors"
-            target="_self"
-          >
-            Errors
-          </a>
-           
-          <a
-            class="btn my-1 btn-secondary"
-            href="/components/test-component-id-1/openapi-specs"
-            target="_self"
-          >
-            
+    </a>
+     
+    <a
+      class="btn my-1 btn-secondary"
+      href="/components/test-component-id-1/tests"
+      target="_self"
+    >
+      Tests
+    </a>
+     
+    <a
+      class="btn my-1 btn-secondary"
+      href="/components/test-component-id-1/errors"
+      target="_self"
+    >
+      Errors
+    </a>
+     
+    <a
+      class="btn my-1 btn-secondary"
+      href="/components/test-component-id-1/openapi-specs"
+      target="_self"
+    >
+      
     OpenAPI Specs
   
-          </a>
-           
-          <a
-            class="btn my-1 btn-secondary"
-            href="/components/test-component-id-1/repo"
-            target="_self"
-          >
-            Repo
-          </a>
-           
-          <a
-            class="btn my-1 btn-secondary"
-            href="/components/test-component-id-1/readme"
-            target="_self"
-          >
-            README
-          </a>
-           
-          <a
-            class="btn my-1 btn-secondary"
-            href="/components/test-component-id-1/to-dos"
-            target="_self"
-          >
-            To Dos
-          </a>
-           
-          <a
-            class="btn my-1 btn-secondary"
-            href="/components/test-component-id-1/lines-of-code"
-            target="_self"
-          >
-            
+    </a>
+     
+    <a
+      class="btn my-1 btn-secondary"
+      href="/components/test-component-id-1/repo"
+      target="_self"
+    >
+      Repo
+    </a>
+     
+    <a
+      class="btn my-1 btn-secondary"
+      href="/components/test-component-id-1/readme"
+      target="_self"
+    >
+      README
+    </a>
+     
+    <a
+      class="btn my-1 btn-secondary"
+      href="/components/test-component-id-1/to-dos"
+      target="_self"
+    >
+      To Dos
+    </a>
+     
+    <a
+      class="btn my-1 btn-secondary"
+      href="/components/test-component-id-1/lines-of-code"
+      target="_self"
+    >
+      
     Lines of Code
   
-          </a>
-           
-          <a
-            class="btn my-1 btn-secondary"
-            href="/components/test-component-id-1/software-repositories"
-            target="_self"
-          >
-            
+    </a>
+     
+    <a
+      class="btn my-1 btn-secondary"
+      href="/components/test-component-id-1/software-repositories"
+      target="_self"
+    >
+      
     Software Repositories
   
-          </a>
-           
-          <a
-            class="btn my-1 btn-secondary"
-            href="/components/test-component-id-1/software"
-            target="_self"
-          >
-            Software
-          </a>
-           
-          <a
-            class="btn my-1 btn-secondary"
-            href="/components/test-component-id-1/imports"
-            target="_self"
-          >
-            Imports
-          </a>
-        </div>
-         
+    </a>
+     
+    <a
+      class="btn my-1 btn-secondary"
+      href="/components/test-component-id-1/software"
+      target="_self"
+    >
+      Software
+    </a>
+     
+    <a
+      class="btn my-1 btn-secondary"
+      href="/components/test-component-id-1/imports"
+      target="_self"
+    >
+      Imports
+    </a>
+  </div>
+   
+  <div
+    class="card my-3"
+  >
+    <!---->
+    <!---->
+    <div
+      class="card-body"
+    >
+      <h4
+        class="card-title"
+      >
+        Total Software
+      </h4>
+      <!---->
+      <div
+        class="list-group"
+      >
         <div
-          class="card my-3"
+          class="list-group-item list-group-item-success"
         >
-          <!---->
-          <!---->
-          <div
-            class="card-body"
+          <span
+            class="display-1"
           >
-            <h4
-              class="card-title"
-            >
-              Total Software
-            </h4>
-            <!---->
-            <div
-              class="list-group"
-            >
-              <div
-                class="list-group-item list-group-item-success"
-              >
-                <span
-                  class="display-1"
-                >
-                  <span>
-                    3
-                  </span>
-                </span>
-                
-              software items
-            
-              </div>
-            </div>
-          </div>
-          <!---->
-          <!---->
-        </div>
-         
-        <div
-          class="card"
-        >
-          <!---->
-          <!---->
-          <div
-            class="card-body"
-          >
-            <h4
-              class="card-title"
-            >
-              Software
-            </h4>
-            <!---->
-            <table
-              class="table table-dark table-bordered table-striped mt-2"
-              style="width: 100%;"
-            >
-              <thead>
-                <tr>
-                  <th>
-                    Scanner
-                  </th>
-                   
-                  <th>
-                    Type
-                  </th>
-                   
-                  <th>
-                    Dependency Type
-                  </th>
-                   
-                  <th>
-                    Name
-                  </th>
-                   
-                  <th>
-                    Version
-                  </th>
-                   
-                  <th>
-                    Version Selector
-                  </th>
-                   
-                  <th>
-                    Packaging
-                  </th>
-                   
-                  <th>
-                    Scope
-                  </th>
-                </tr>
-              </thead>
-               
-              <tbody>
-                <tr>
-                  <td>
-                    test-scanner-id-1-1
-                  </td>
-                   
-                  <td>
-                    test-software-type-id-1-1
-                  </td>
-                   
-                  <td>
-                    test-software-dependency-type-1-1
-                  </td>
-                   
-                  <td>
-                    Test Software Name 1 1
-                  </td>
-                   
-                  <td>
-                    1.1.1
-                  </td>
-                   
-                  <td>
-                    ^1.1.1
-                  </td>
-                   
-                  <td>
-                    test-software-packaging-1-1
-                  </td>
-                   
-                  <td>
-                    test-software-scope-1-1
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    test-scanner-id-1-2
-                  </td>
-                   
-                  <td>
-                    test-software-type-id-1-2
-                  </td>
-                   
-                  <td>
-                    test-software-dependency-type-1-2
-                  </td>
-                   
-                  <td>
-                    Test Software Name 1 2
-                  </td>
-                   
-                  <td>
-                    1.1.2
-                  </td>
-                   
-                  <td>
-                    ^1.1.2
-                  </td>
-                   
-                  <td>
-                    test-software-packaging-1-2
-                  </td>
-                   
-                  <td>
-                    test-software-scope-1-2
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    test-scanner-id-1-3
-                  </td>
-                   
-                  <td>
-                    test-software-type-id-1-3
-                  </td>
-                   
-                  <td>
-                    test-software-dependency-type-1-3
-                  </td>
-                   
-                  <td>
-                    Test Software Name 1 3
-                  </td>
-                   
-                  <td>
-                    1.1.3
-                  </td>
-                   
-                  <td>
-                    ^1.1.3
-                  </td>
-                   
-                  <td>
-                    test-software-packaging-1-3
-                  </td>
-                   
-                  <td>
-                    test-software-scope-1-3
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <!---->
-          <!---->
+            <span>
+              3
+            </span>
+          </span>
+          
+        software items
+      
         </div>
       </div>
     </div>
+    <!---->
+    <!---->
+  </div>
+   
+  <div
+    class="card"
+  >
+    <!---->
+    <!---->
+    <div
+      class="card-body"
+    >
+      <h4
+        class="card-title"
+      >
+        Software
+      </h4>
+      <!---->
+      <table
+        class="table table-dark table-bordered table-striped mt-2"
+        style="width: 100%;"
+      >
+        <thead>
+          <tr>
+            <th>
+              Scanner
+            </th>
+             
+            <th>
+              Type
+            </th>
+             
+            <th>
+              Dependency Type
+            </th>
+             
+            <th>
+              Name
+            </th>
+             
+            <th>
+              Version
+            </th>
+             
+            <th>
+              Version Selector
+            </th>
+             
+            <th>
+              Packaging
+            </th>
+             
+            <th>
+              Scope
+            </th>
+          </tr>
+        </thead>
+         
+        <tbody>
+          <tr>
+            <td>
+              test-scanner-id-1-1
+            </td>
+             
+            <td>
+              test-software-type-id-1-1
+            </td>
+             
+            <td>
+              test-software-dependency-type-1-1
+            </td>
+             
+            <td>
+              Test Software Name 1 1
+            </td>
+             
+            <td>
+              1.1.1
+            </td>
+             
+            <td>
+              ^1.1.1
+            </td>
+             
+            <td>
+              test-software-packaging-1-1
+            </td>
+             
+            <td>
+              test-software-scope-1-1
+            </td>
+          </tr>
+          <tr>
+            <td>
+              test-scanner-id-1-2
+            </td>
+             
+            <td>
+              test-software-type-id-1-2
+            </td>
+             
+            <td>
+              test-software-dependency-type-1-2
+            </td>
+             
+            <td>
+              Test Software Name 1 2
+            </td>
+             
+            <td>
+              1.1.2
+            </td>
+             
+            <td>
+              ^1.1.2
+            </td>
+             
+            <td>
+              test-software-packaging-1-2
+            </td>
+             
+            <td>
+              test-software-scope-1-2
+            </td>
+          </tr>
+          <tr>
+            <td>
+              test-scanner-id-1-3
+            </td>
+             
+            <td>
+              test-software-type-id-1-3
+            </td>
+             
+            <td>
+              test-software-dependency-type-1-3
+            </td>
+             
+            <td>
+              Test Software Name 1 3
+            </td>
+             
+            <td>
+              1.1.3
+            </td>
+             
+            <td>
+              ^1.1.3
+            </td>
+             
+            <td>
+              test-software-packaging-1-3
+            </td>
+             
+            <td>
+              test-software-scope-1-3
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <!---->
+    <!---->
   </div>
 </div>
 `;
 
 exports[`Index when Get Component service endpoint returns a component when the component has software that are not sorted sorts the software before rending the software 1`] = `
-<div>
-  <div
-    class="container-fluid"
+<div
+  class="m-3"
+>
+  <h1
+    class="text-info my-3"
   >
-    <div
-      class="row"
+    Test Component Name 1 - Software
+  </h1>
+   
+  <div
+    class="my-3"
+  >
+    <a
+      class="btn my-1 btn-secondary"
+      href="/components/test-component-id-1"
+      target="_self"
     >
-      <div
-        class="col"
-      >
-        <h1
-          class="text-info my-3"
-        >
-          Test Component Name 1 - Software
-        </h1>
-         
-        <div
-          class="my-3"
-        >
-          <a
-            class="btn my-1 btn-secondary"
-            href="/components/test-component-id-1"
-            target="_self"
-          >
-            Info
-          </a>
-           
-          <a
-            class="btn my-1 btn-secondary"
-            href="/components/test-component-id-1/dependencies"
-            target="_self"
-          >
-            
+      Info
+    </a>
+     
+    <a
+      class="btn my-1 btn-secondary"
+      href="/components/test-component-id-1/dependencies"
+      target="_self"
+    >
+      
     Dependencies
   
-          </a>
-           
-          <a
-            class="btn my-1 btn-secondary"
-            href="/components/test-component-id-1/response-times"
-            target="_self"
-          >
-            
+    </a>
+     
+    <a
+      class="btn my-1 btn-secondary"
+      href="/components/test-component-id-1/response-times"
+      target="_self"
+    >
+      
     Response Times
   
-          </a>
-           
-          <a
-            class="btn my-1 btn-secondary"
-            href="/components/test-component-id-1/downstream-response-times"
-            target="_self"
-          >
-            
+    </a>
+     
+    <a
+      class="btn my-1 btn-secondary"
+      href="/components/test-component-id-1/downstream-response-times"
+      target="_self"
+    >
+      
     Downstream Response Times
   
-          </a>
-           
-          <a
-            class="btn my-1 btn-secondary"
-            href="/components/test-component-id-1/call-graphs"
-            target="_self"
-          >
-            
+    </a>
+     
+    <a
+      class="btn my-1 btn-secondary"
+      href="/components/test-component-id-1/call-graphs"
+      target="_self"
+    >
+      
     Call Graphs
   
-          </a>
-           
-          <a
-            class="btn my-1 btn-secondary"
-            href="/components/test-component-id-1/cross-functional-requirements"
-            target="_self"
-          >
-            
+    </a>
+     
+    <a
+      class="btn my-1 btn-secondary"
+      href="/components/test-component-id-1/cross-functional-requirements"
+      target="_self"
+    >
+      
     Cross Functional Requirements
   
-          </a>
-           
-          <a
-            class="btn my-1 btn-secondary"
-            href="/components/test-component-id-1/tech-debts"
-            target="_self"
-          >
-            
+    </a>
+     
+    <a
+      class="btn my-1 btn-secondary"
+      href="/components/test-component-id-1/tech-debts"
+      target="_self"
+    >
+      
     Tech Debts
   
-          </a>
-           
-          <a
-            class="btn my-1 btn-secondary"
-            href="/components/test-component-id-1/tests"
-            target="_self"
-          >
-            Tests
-          </a>
-           
-          <a
-            class="btn my-1 btn-secondary"
-            href="/components/test-component-id-1/errors"
-            target="_self"
-          >
-            Errors
-          </a>
-           
-          <a
-            class="btn my-1 btn-secondary"
-            href="/components/test-component-id-1/openapi-specs"
-            target="_self"
-          >
-            
+    </a>
+     
+    <a
+      class="btn my-1 btn-secondary"
+      href="/components/test-component-id-1/tests"
+      target="_self"
+    >
+      Tests
+    </a>
+     
+    <a
+      class="btn my-1 btn-secondary"
+      href="/components/test-component-id-1/errors"
+      target="_self"
+    >
+      Errors
+    </a>
+     
+    <a
+      class="btn my-1 btn-secondary"
+      href="/components/test-component-id-1/openapi-specs"
+      target="_self"
+    >
+      
     OpenAPI Specs
   
-          </a>
-           
-          <a
-            class="btn my-1 btn-secondary"
-            href="/components/test-component-id-1/repo"
-            target="_self"
-          >
-            Repo
-          </a>
-           
-          <a
-            class="btn my-1 btn-secondary"
-            href="/components/test-component-id-1/readme"
-            target="_self"
-          >
-            README
-          </a>
-           
-          <a
-            class="btn my-1 btn-secondary"
-            href="/components/test-component-id-1/to-dos"
-            target="_self"
-          >
-            To Dos
-          </a>
-           
-          <a
-            class="btn my-1 btn-secondary"
-            href="/components/test-component-id-1/lines-of-code"
-            target="_self"
-          >
-            
+    </a>
+     
+    <a
+      class="btn my-1 btn-secondary"
+      href="/components/test-component-id-1/repo"
+      target="_self"
+    >
+      Repo
+    </a>
+     
+    <a
+      class="btn my-1 btn-secondary"
+      href="/components/test-component-id-1/readme"
+      target="_self"
+    >
+      README
+    </a>
+     
+    <a
+      class="btn my-1 btn-secondary"
+      href="/components/test-component-id-1/to-dos"
+      target="_self"
+    >
+      To Dos
+    </a>
+     
+    <a
+      class="btn my-1 btn-secondary"
+      href="/components/test-component-id-1/lines-of-code"
+      target="_self"
+    >
+      
     Lines of Code
   
-          </a>
-           
-          <a
-            class="btn my-1 btn-secondary"
-            href="/components/test-component-id-1/software-repositories"
-            target="_self"
-          >
-            
+    </a>
+     
+    <a
+      class="btn my-1 btn-secondary"
+      href="/components/test-component-id-1/software-repositories"
+      target="_self"
+    >
+      
     Software Repositories
   
-          </a>
-           
-          <a
-            class="btn my-1 btn-secondary"
-            href="/components/test-component-id-1/software"
-            target="_self"
-          >
-            Software
-          </a>
-           
-          <a
-            class="btn my-1 btn-secondary"
-            href="/components/test-component-id-1/imports"
-            target="_self"
-          >
-            Imports
-          </a>
-        </div>
-         
+    </a>
+     
+    <a
+      class="btn my-1 btn-secondary"
+      href="/components/test-component-id-1/software"
+      target="_self"
+    >
+      Software
+    </a>
+     
+    <a
+      class="btn my-1 btn-secondary"
+      href="/components/test-component-id-1/imports"
+      target="_self"
+    >
+      Imports
+    </a>
+  </div>
+   
+  <div
+    class="card my-3"
+  >
+    <!---->
+    <!---->
+    <div
+      class="card-body"
+    >
+      <h4
+        class="card-title"
+      >
+        Total Software
+      </h4>
+      <!---->
+      <div
+        class="list-group"
+      >
         <div
-          class="card my-3"
+          class="list-group-item list-group-item-success"
         >
-          <!---->
-          <!---->
-          <div
-            class="card-body"
+          <span
+            class="display-1"
           >
-            <h4
-              class="card-title"
-            >
-              Total Software
-            </h4>
-            <!---->
-            <div
-              class="list-group"
-            >
-              <div
-                class="list-group-item list-group-item-success"
-              >
-                <span
-                  class="display-1"
-                >
-                  <span>
-                    3
-                  </span>
-                </span>
-                
-              software items
-            
-              </div>
-            </div>
-          </div>
-          <!---->
-          <!---->
-        </div>
-         
-        <div
-          class="card"
-        >
-          <!---->
-          <!---->
-          <div
-            class="card-body"
-          >
-            <h4
-              class="card-title"
-            >
-              Software
-            </h4>
-            <!---->
-            <table
-              class="table table-dark table-bordered table-striped mt-2"
-              style="width: 100%;"
-            >
-              <thead>
-                <tr>
-                  <th>
-                    Scanner
-                  </th>
-                   
-                  <th>
-                    Type
-                  </th>
-                   
-                  <th>
-                    Dependency Type
-                  </th>
-                   
-                  <th>
-                    Name
-                  </th>
-                   
-                  <th>
-                    Version
-                  </th>
-                   
-                  <th>
-                    Version Selector
-                  </th>
-                   
-                  <th>
-                    Packaging
-                  </th>
-                   
-                  <th>
-                    Scope
-                  </th>
-                </tr>
-              </thead>
-               
-              <tbody>
-                <tr>
-                  <td>
-                    test-scanner-id-1-1
-                  </td>
-                   
-                  <td>
-                    test-software-type-id-1-1
-                  </td>
-                   
-                  <td>
-                    test-software-dependency-type-1-1
-                  </td>
-                   
-                  <td>
-                    Test Software Name 1 1
-                  </td>
-                   
-                  <td>
-                    1.1.1
-                  </td>
-                   
-                  <td>
-                    ^1.1.1
-                  </td>
-                   
-                  <td>
-                    test-software-packaging-1-1
-                  </td>
-                   
-                  <td>
-                    test-software-scope-1-1
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    test-scanner-id-1-2
-                  </td>
-                   
-                  <td>
-                    test-software-type-id-1-2
-                  </td>
-                   
-                  <td>
-                    test-software-dependency-type-1-2
-                  </td>
-                   
-                  <td>
-                    Test Software Name 1 2
-                  </td>
-                   
-                  <td>
-                    1.1.2
-                  </td>
-                   
-                  <td>
-                    ^1.1.2
-                  </td>
-                   
-                  <td>
-                    test-software-packaging-1-2
-                  </td>
-                   
-                  <td>
-                    test-software-scope-1-2
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    test-scanner-id-1-3
-                  </td>
-                   
-                  <td>
-                    test-software-type-id-1-3
-                  </td>
-                   
-                  <td>
-                    test-software-dependency-type-1-3
-                  </td>
-                   
-                  <td>
-                    Test Software Name 1 3
-                  </td>
-                   
-                  <td>
-                    1.1.3
-                  </td>
-                   
-                  <td>
-                    ^1.1.3
-                  </td>
-                   
-                  <td>
-                    test-software-packaging-1-3
-                  </td>
-                   
-                  <td>
-                    test-software-scope-1-3
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <!---->
-          <!---->
+            <span>
+              3
+            </span>
+          </span>
+          
+        software items
+      
         </div>
       </div>
     </div>
+    <!---->
+    <!---->
+  </div>
+   
+  <div
+    class="card"
+  >
+    <!---->
+    <!---->
+    <div
+      class="card-body"
+    >
+      <h4
+        class="card-title"
+      >
+        Software
+      </h4>
+      <!---->
+      <table
+        class="table table-dark table-bordered table-striped mt-2"
+        style="width: 100%;"
+      >
+        <thead>
+          <tr>
+            <th>
+              Scanner
+            </th>
+             
+            <th>
+              Type
+            </th>
+             
+            <th>
+              Dependency Type
+            </th>
+             
+            <th>
+              Name
+            </th>
+             
+            <th>
+              Version
+            </th>
+             
+            <th>
+              Version Selector
+            </th>
+             
+            <th>
+              Packaging
+            </th>
+             
+            <th>
+              Scope
+            </th>
+          </tr>
+        </thead>
+         
+        <tbody>
+          <tr>
+            <td>
+              test-scanner-id-1-1
+            </td>
+             
+            <td>
+              test-software-type-id-1-1
+            </td>
+             
+            <td>
+              test-software-dependency-type-1-1
+            </td>
+             
+            <td>
+              Test Software Name 1 1
+            </td>
+             
+            <td>
+              1.1.1
+            </td>
+             
+            <td>
+              ^1.1.1
+            </td>
+             
+            <td>
+              test-software-packaging-1-1
+            </td>
+             
+            <td>
+              test-software-scope-1-1
+            </td>
+          </tr>
+          <tr>
+            <td>
+              test-scanner-id-1-2
+            </td>
+             
+            <td>
+              test-software-type-id-1-2
+            </td>
+             
+            <td>
+              test-software-dependency-type-1-2
+            </td>
+             
+            <td>
+              Test Software Name 1 2
+            </td>
+             
+            <td>
+              1.1.2
+            </td>
+             
+            <td>
+              ^1.1.2
+            </td>
+             
+            <td>
+              test-software-packaging-1-2
+            </td>
+             
+            <td>
+              test-software-scope-1-2
+            </td>
+          </tr>
+          <tr>
+            <td>
+              test-scanner-id-1-3
+            </td>
+             
+            <td>
+              test-software-type-id-1-3
+            </td>
+             
+            <td>
+              test-software-dependency-type-1-3
+            </td>
+             
+            <td>
+              Test Software Name 1 3
+            </td>
+             
+            <td>
+              1.1.3
+            </td>
+             
+            <td>
+              ^1.1.3
+            </td>
+             
+            <td>
+              test-software-packaging-1-3
+            </td>
+             
+            <td>
+              test-software-scope-1-3
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <!---->
+    <!---->
   </div>
 </div>
 `;

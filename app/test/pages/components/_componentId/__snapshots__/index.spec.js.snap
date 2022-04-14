@@ -1,501 +1,491 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Index when Get Component service endpoint returns a component renders the page 1`] = `
-<div>
-  <div
-    class="container-fluid"
+<div
+  class="m-3"
+>
+  <h1
+    class="text-info my-3"
   >
-    <div
-      class="row"
+    Test Component Name 1
+  </h1>
+   
+  <div
+    class="my-3"
+  >
+    <a
+      class="btn my-1 btn-secondary"
+      href="/components/test-component-id-1"
+      target="_self"
     >
-      <div
-        class="col"
-      >
-        <h1
-          class="text-info my-3"
-        >
-          Test Component Name 1
-        </h1>
-         
-        <div
-          class="my-3"
-        >
-          <a
-            class="btn my-1 btn-secondary"
-            href="/components/test-component-id-1"
-            target="_self"
-          >
-            Info
-          </a>
-           
-          <a
-            class="btn my-1 btn-secondary"
-            href="/components/test-component-id-1/dependencies"
-            target="_self"
-          >
-            
+      Info
+    </a>
+     
+    <a
+      class="btn my-1 btn-secondary"
+      href="/components/test-component-id-1/dependencies"
+      target="_self"
+    >
+      
     Dependencies
   
-          </a>
-           
-          <a
-            class="btn my-1 btn-secondary"
-            href="/components/test-component-id-1/response-times"
-            target="_self"
-          >
-            
+    </a>
+     
+    <a
+      class="btn my-1 btn-secondary"
+      href="/components/test-component-id-1/response-times"
+      target="_self"
+    >
+      
     Response Times
   
-          </a>
-           
-          <a
-            class="btn my-1 btn-secondary"
-            href="/components/test-component-id-1/downstream-response-times"
-            target="_self"
-          >
-            
+    </a>
+     
+    <a
+      class="btn my-1 btn-secondary"
+      href="/components/test-component-id-1/downstream-response-times"
+      target="_self"
+    >
+      
     Downstream Response Times
   
-          </a>
-           
-          <a
-            class="btn my-1 btn-secondary"
-            href="/components/test-component-id-1/call-graphs"
-            target="_self"
-          >
-            
+    </a>
+     
+    <a
+      class="btn my-1 btn-secondary"
+      href="/components/test-component-id-1/call-graphs"
+      target="_self"
+    >
+      
     Call Graphs
   
-          </a>
-           
-          <a
-            class="btn my-1 btn-secondary"
-            href="/components/test-component-id-1/cross-functional-requirements"
-            target="_self"
-          >
-            
+    </a>
+     
+    <a
+      class="btn my-1 btn-secondary"
+      href="/components/test-component-id-1/cross-functional-requirements"
+      target="_self"
+    >
+      
     Cross Functional Requirements
   
-          </a>
-           
-          <a
-            class="btn my-1 btn-secondary"
-            href="/components/test-component-id-1/tech-debts"
-            target="_self"
-          >
-            
+    </a>
+     
+    <a
+      class="btn my-1 btn-secondary"
+      href="/components/test-component-id-1/tech-debts"
+      target="_self"
+    >
+      
     Tech Debts
   
-          </a>
-           
-          <a
-            class="btn my-1 btn-secondary"
-            href="/components/test-component-id-1/tests"
-            target="_self"
-          >
-            Tests
-          </a>
-           
-          <a
-            class="btn my-1 btn-secondary"
-            href="/components/test-component-id-1/errors"
-            target="_self"
-          >
-            Errors
-          </a>
-           
-          <a
-            class="btn my-1 btn-secondary"
-            href="/components/test-component-id-1/openapi-specs"
-            target="_self"
-          >
-            
+    </a>
+     
+    <a
+      class="btn my-1 btn-secondary"
+      href="/components/test-component-id-1/tests"
+      target="_self"
+    >
+      Tests
+    </a>
+     
+    <a
+      class="btn my-1 btn-secondary"
+      href="/components/test-component-id-1/errors"
+      target="_self"
+    >
+      Errors
+    </a>
+     
+    <a
+      class="btn my-1 btn-secondary"
+      href="/components/test-component-id-1/openapi-specs"
+      target="_self"
+    >
+      
     OpenAPI Specs
   
-          </a>
-           
-          <a
-            class="btn my-1 btn-secondary"
-            href="/components/test-component-id-1/repo"
-            target="_self"
-          >
-            Repo
-          </a>
-           
-          <a
-            class="btn my-1 btn-secondary"
-            href="/components/test-component-id-1/readme"
-            target="_self"
-          >
-            README
-          </a>
-           
-          <a
-            class="btn my-1 btn-secondary"
-            href="/components/test-component-id-1/to-dos"
-            target="_self"
-          >
-            To Dos
-          </a>
-           
-          <a
-            class="btn my-1 btn-secondary"
-            href="/components/test-component-id-1/lines-of-code"
-            target="_self"
-          >
-            
+    </a>
+     
+    <a
+      class="btn my-1 btn-secondary"
+      href="/components/test-component-id-1/repo"
+      target="_self"
+    >
+      Repo
+    </a>
+     
+    <a
+      class="btn my-1 btn-secondary"
+      href="/components/test-component-id-1/readme"
+      target="_self"
+    >
+      README
+    </a>
+     
+    <a
+      class="btn my-1 btn-secondary"
+      href="/components/test-component-id-1/to-dos"
+      target="_self"
+    >
+      To Dos
+    </a>
+     
+    <a
+      class="btn my-1 btn-secondary"
+      href="/components/test-component-id-1/lines-of-code"
+      target="_self"
+    >
+      
     Lines of Code
   
-          </a>
-           
-          <a
-            class="btn my-1 btn-secondary"
-            href="/components/test-component-id-1/software-repositories"
-            target="_self"
-          >
-            
+    </a>
+     
+    <a
+      class="btn my-1 btn-secondary"
+      href="/components/test-component-id-1/software-repositories"
+      target="_self"
+    >
+      
     Software Repositories
   
-          </a>
-           
-          <a
-            class="btn my-1 btn-secondary"
-            href="/components/test-component-id-1/software"
-            target="_self"
-          >
-            Software
-          </a>
-           
-          <a
-            class="btn my-1 btn-secondary"
-            href="/components/test-component-id-1/imports"
-            target="_self"
-          >
-            Imports
-          </a>
-        </div>
-         
-        <div
-          class="card-columns"
+    </a>
+     
+    <a
+      class="btn my-1 btn-secondary"
+      href="/components/test-component-id-1/software"
+      target="_self"
+    >
+      Software
+    </a>
+     
+    <a
+      class="btn my-1 btn-secondary"
+      href="/components/test-component-id-1/imports"
+      target="_self"
+    >
+      Imports
+    </a>
+  </div>
+   
+  <div
+    class="card-columns"
+  >
+    <div
+      class="card"
+    >
+      <!---->
+      <!---->
+      <div
+        class="card-body"
+      >
+        <h4
+          class="card-title"
         >
-          <div
-            class="card"
-          >
-            <!---->
-            <!---->
-            <div
-              class="card-body"
+          Component Name
+        </h4>
+        <!---->
+        <p
+          class="card-text"
+        >
+          
+        Test Component Name 1
+      
+        </p>
+      </div>
+      <!---->
+      <!---->
+    </div>
+     
+    <div
+      class="card"
+    >
+      <!---->
+      <!---->
+      <div
+        class="card-body"
+      >
+        <h4
+          class="card-title"
+        >
+          Component Type
+        </h4>
+        <!---->
+        <p
+          class="card-text"
+        >
+          
+        test-component-type-id-1
+      
+        </p>
+      </div>
+      <!---->
+      <!---->
+    </div>
+     
+    <div
+      class="card"
+    >
+      <!---->
+      <!---->
+      <div
+        class="card-body"
+      >
+        <h4
+          class="card-title"
+        >
+          Platform
+        </h4>
+        <!---->
+        <p
+          class="card-text"
+        >
+          
+        test-platform-id-1
+      
+        </p>
+      </div>
+      <!---->
+      <!---->
+    </div>
+     
+    <!---->
+     
+    <div
+      class="card"
+    >
+      <!---->
+      <!---->
+      <div
+        class="card-body"
+      >
+        <h4
+          class="card-title"
+        >
+          Teams
+        </h4>
+        <!---->
+        <ul>
+          <li>
+            <a
+              class="team-name"
+              href="/teams/test-team-id-1-1"
             >
-              <h4
-                class="card-title"
-              >
-                Component Name
-              </h4>
-              <!---->
-              <p
-                class="card-text"
-              >
-                
-              Test Component Name 1
+              test-team-id-1-1
+            </a>
+             
+            <!---->
+             
+            <!---->
+          </li>
+          <li>
+            <a
+              class="team-name"
+              href="/teams/test-team-id-1-2"
+            >
+              test-team-id-1-2
+            </a>
+             
+            <!---->
+             
+            <!---->
+          </li>
+        </ul>
+      </div>
+      <!---->
+      <!---->
+    </div>
+     
+    <div
+      class="card"
+    >
+      <!---->
+      <!---->
+      <div
+        class="card-body"
+      >
+        <h4
+          class="card-title"
+        >
+          Key Software
+        </h4>
+        <!---->
+        <div
+          class="h5"
+        >
+          <span
+            class="badge mr-2 mb-2 badge-info"
+          >
             
-              </p>
-            </div>
-            <!---->
-            <!---->
-          </div>
-           
-          <div
-            class="card"
-          >
-            <!---->
-            <!---->
-            <div
-              class="card-body"
-            >
-              <h4
-                class="card-title"
-              >
-                Component Type
-              </h4>
-              <!---->
-              <p
-                class="card-text"
-              >
-                
-              test-component-type-id-1
-            
-              </p>
-            </div>
-            <!---->
-            <!---->
-          </div>
-           
-          <div
-            class="card"
-          >
-            <!---->
-            <!---->
-            <div
-              class="card-body"
-            >
-              <h4
-                class="card-title"
-              >
-                Platform
-              </h4>
-              <!---->
-              <p
-                class="card-text"
-              >
-                
-              test-platform-id-1
-            
-              </p>
-            </div>
-            <!---->
-            <!---->
-          </div>
-           
-          <!---->
-           
-          <div
-            class="card"
-          >
-            <!---->
-            <!---->
-            <div
-              class="card-body"
-            >
-              <h4
-                class="card-title"
-              >
-                Teams
-              </h4>
-              <!---->
-              <ul>
-                <li>
-                  <a
-                    class="team-name"
-                    href="/teams/test-team-id-1-1"
-                  >
-                    test-team-id-1-1
-                  </a>
-                   
-                  <!---->
-                   
-                  <!---->
-                </li>
-                <li>
-                  <a
-                    class="team-name"
-                    href="/teams/test-team-id-1-2"
-                  >
-                    test-team-id-1-2
-                  </a>
-                   
-                  <!---->
-                   
-                  <!---->
-                </li>
-              </ul>
-            </div>
-            <!---->
-            <!---->
-          </div>
-           
-          <div
-            class="card"
-          >
-            <!---->
-            <!---->
-            <div
-              class="card-body"
-            >
-              <h4
-                class="card-title"
-              >
-                Key Software
-              </h4>
-              <!---->
-              <div
-                class="h5"
-              >
-                <span
-                  class="badge mr-2 mb-2 badge-info"
-                >
-                  
     Test Key Software 1 1 1.1.1
   
-                </span>
-                <span
-                  class="badge mr-2 mb-2 badge-info"
-                >
-                  
+          </span>
+          <span
+            class="badge mr-2 mb-2 badge-info"
+          >
+            
     Test Key Software 1 2 1.1.2
   
-                </span>
-              </div>
-            </div>
-            <!---->
-            <!---->
-          </div>
-           
-          <div
-            class="card"
-          >
-            <!---->
-            <!---->
-            <div
-              class="card-body"
-            >
-              <h4
-                class="card-title"
-              >
-                Description
-              </h4>
-              <!---->
-              <div>
-                
-
-                <p>
-                  Test Component Description 1
-                </p>
-              </div>
-            </div>
-            <!---->
-            <!---->
-          </div>
-           
-          <div
-            class="card"
-          >
-            <!---->
-            <!---->
-            <div
-              class="card-body"
-            >
-              <h4
-                class="card-title"
-              >
-                Notes
-              </h4>
-              <!---->
-              <div>
-                
-
-                <h1
-                  id="user-content-table-of-contents"
-                >
-                  Table of Contents
-                </h1>
-                
-
-                <p>
-                  Test Component Notes 1
-                </p>
-              </div>
-            </div>
-            <!---->
-            <!---->
-          </div>
-           
-          <div
-            class="card"
-          >
-            <!---->
-            <!---->
-            <div
-              class="card-body"
-            >
-              <h4
-                class="card-title"
-              >
-                Links
-              </h4>
-              <!---->
-              <ul>
-                <li>
-                  <a
-                    href="https://example.com/test-link-1-1"
-                    target="_blank"
-                  >
-                    https://example.com/test-link-1-1
-                  </a>
-                   
-                  <br />
-                   
-                  <div>
-                    
-
-                    <p>
-                      Test Link Description 1 1
-                    </p>
-                  </div>
-                </li>
-                <li>
-                  <a
-                    href="https://example.com/test-link-1-2"
-                    target="_blank"
-                  >
-                    https://example.com/test-link-1-2
-                  </a>
-                   
-                  <br />
-                   
-                  <div>
-                    
-
-                    <p>
-                      Test Link Description 1 2
-                    </p>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <!---->
-            <!---->
-          </div>
-           
-          <div
-            class="card"
-          >
-            <!---->
-            <!---->
-            <div
-              class="card-body"
-            >
-              <h4
-                class="card-title"
-              >
-                Responsibilities
-              </h4>
-              <!---->
-              <ul>
-                <li>
-                  <div>
-                    
-
-                    <p>
-                      Test Responsibility Description 1 1
-                    </p>
-                  </div>
-                </li>
-                <li>
-                  <div>
-                    
-
-                    <p>
-                      Test Responsibility Description 1 2
-                    </p>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <!---->
-            <!---->
-          </div>
+          </span>
         </div>
       </div>
+      <!---->
+      <!---->
+    </div>
+     
+    <div
+      class="card"
+    >
+      <!---->
+      <!---->
+      <div
+        class="card-body"
+      >
+        <h4
+          class="card-title"
+        >
+          Description
+        </h4>
+        <!---->
+        <div>
+          
+
+          <p>
+            Test Component Description 1
+          </p>
+        </div>
+      </div>
+      <!---->
+      <!---->
+    </div>
+     
+    <div
+      class="card"
+    >
+      <!---->
+      <!---->
+      <div
+        class="card-body"
+      >
+        <h4
+          class="card-title"
+        >
+          Notes
+        </h4>
+        <!---->
+        <div>
+          
+
+          <h1
+            id="user-content-table-of-contents"
+          >
+            Table of Contents
+          </h1>
+          
+
+          <p>
+            Test Component Notes 1
+          </p>
+        </div>
+      </div>
+      <!---->
+      <!---->
+    </div>
+     
+    <div
+      class="card"
+    >
+      <!---->
+      <!---->
+      <div
+        class="card-body"
+      >
+        <h4
+          class="card-title"
+        >
+          Links
+        </h4>
+        <!---->
+        <ul>
+          <li>
+            <a
+              href="https://example.com/test-link-1-1"
+              target="_blank"
+            >
+              https://example.com/test-link-1-1
+            </a>
+             
+            <br />
+             
+            <div>
+              
+
+              <p>
+                Test Link Description 1 1
+              </p>
+            </div>
+          </li>
+          <li>
+            <a
+              href="https://example.com/test-link-1-2"
+              target="_blank"
+            >
+              https://example.com/test-link-1-2
+            </a>
+             
+            <br />
+             
+            <div>
+              
+
+              <p>
+                Test Link Description 1 2
+              </p>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <!---->
+      <!---->
+    </div>
+     
+    <div
+      class="card"
+    >
+      <!---->
+      <!---->
+      <div
+        class="card-body"
+      >
+        <h4
+          class="card-title"
+        >
+          Responsibilities
+        </h4>
+        <!---->
+        <ul>
+          <li>
+            <div>
+              
+
+              <p>
+                Test Responsibility Description 1 1
+              </p>
+            </div>
+          </li>
+          <li>
+            <div>
+              
+
+              <p>
+                Test Responsibility Description 1 2
+              </p>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <!---->
+      <!---->
     </div>
   </div>
 </div>

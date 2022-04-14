@@ -1,51 +1,41 @@
 <template>
-  <div>
-    <b-container fluid>
-      <b-row>
-        <b-col>
-          <h1 class="text-info my-3">{{ area.name }} Area</h1>
+  <div class="m-3">
+    <h1 class="text-info my-3">{{ area.name }} Area</h1>
 
-          <AreaTabs :area-id="area.id" />
-        </b-col>
-      </b-row>
-      <b-row>
-        <b-col>
-          <b-card-group columns>
-            <b-card title="Area Name">
-              {{ area.name }}
-            </b-card>
+    <AreaTabs :area-id="area.id" />
+    <b-card-group columns>
+      <b-card title="Area Name">
+        {{ area.name }}
+      </b-card>
 
-            <b-card v-if="area.description" title="Description">
-              <Markdown :markdown="area.description" />
-            </b-card>
+      <b-card v-if="area.description" title="Description">
+        <Markdown :markdown="area.description" />
+      </b-card>
 
-            <b-card v-if="area.notes" title="Notes">
-              <Markdown :markdown="area.notes" :toc="true" />
-            </b-card>
+      <b-card v-if="area.notes" title="Notes">
+        <Markdown :markdown="area.notes" :toc="true" />
+      </b-card>
 
-            <b-card
-              v-if="area.links && area.links.length > 0"
-              title="Links"
-            >
-              <Links :links="area.links" />
-            </b-card>
-          </b-card-group>
+      <b-card
+        v-if="area.links && area.links.length > 0"
+        title="Links"
+      >
+        <Links :links="area.links" />
+      </b-card>
+    </b-card-group>
 
-          <b-card-group>
-            <b-card v-if="area.teams" title="Area's Teams">
-              <TeamTable :teams="area.teams" />
-            </b-card>
-          </b-card-group>
-        </b-col>
-      </b-row>
-    </b-container>
+    <b-card-group>
+      <b-card v-if="area.teams" title="Area's Teams">
+        <TeamTable :teams="area.teams" />
+      </b-card>
+    </b-card-group>
   </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
 import { MetaInfo } from 'vue-meta'
-import {BCard, BCardGroup, BCol, BContainer, BRow} from 'bootstrap-vue'
+import {BCard, BCardGroup} from 'bootstrap-vue'
 import { Area } from '~/types/kronicle-service'
 import AreaTabs from '~/components/AreaTabs.vue'
 import Links from '~/components/Links.vue'
@@ -57,9 +47,6 @@ export default Vue.extend({
     AreaTabs,
     'b-card': BCard,
     'b-card-group': BCardGroup,
-    'b-col': BCol,
-    'b-container': BContainer,
-    'b-row': BRow,
     Links,
     Markdown,
     TeamTable,

@@ -1,16 +1,10 @@
 <template>
-  <div>
-    <b-container fluid>
-      <b-row>
-        <b-col>
-          <h1 class="text-info my-3">
-            {{ team.name }} Team - Cross Functional Requirements
-          </h1>
+  <div class="m-3">
+    <h1 class="text-info my-3">
+      {{ team.name }} Team - Cross Functional Requirements
+    </h1>
 
-          <TeamTabs :team-id="team.id" />
-        </b-col>
-      </b-row>
-    </b-container>
+    <TeamTabs :team-id="team.id" />
 
     <CrossFunctionalRequirementsView :components="team.components" />
   </div>
@@ -19,16 +13,12 @@
 <script lang="ts">
 import Vue from 'vue'
 import { MetaInfo } from 'vue-meta'
-import {BCol, BContainer, BRow} from "bootstrap-vue";
 import { Team } from '~/types/kronicle-service'
 import CrossFunctionalRequirementsView from '~/components/CrossFunctionalRequirementsView.vue'
 import TeamTabs from '~/components/TeamTabs.vue'
 
 export default Vue.extend({
   components: {
-    'b-col': BCol,
-    'b-container': BContainer,
-    'b-row': BRow,
     CrossFunctionalRequirementsView,
     TeamTabs,
   },

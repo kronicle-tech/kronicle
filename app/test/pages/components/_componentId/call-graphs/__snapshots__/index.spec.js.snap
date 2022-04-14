@@ -1,771 +1,751 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Index when Get Component Nodes service endpoint returns no nodes renders a message saying there are no call graphs available 1`] = `
-<div>
-  <div
-    class="container-fluid"
+<div
+  class="m-3"
+>
+  <h1
+    class="text-info my-3"
   >
-    <div
-      class="row"
+    Test Component Name 1 - Call Graphs
+  </h1>
+   
+  <div
+    class="my-3"
+  >
+    <a
+      class="btn my-1 btn-secondary"
+      href="/components/test-component-id-1"
+      target="_self"
     >
-      <div
-        class="col"
-      >
-        <h1
-          class="text-info my-3"
-        >
-          Test Component Name 1 - Call Graphs
-        </h1>
-         
-        <div
-          class="my-3"
-        >
-          <a
-            class="btn my-1 btn-secondary"
-            href="/components/test-component-id-1"
-            target="_self"
-          >
-            Info
-          </a>
-           
-          <a
-            class="btn my-1 btn-secondary"
-            href="/components/test-component-id-1/dependencies"
-            target="_self"
-          >
-            
+      Info
+    </a>
+     
+    <a
+      class="btn my-1 btn-secondary"
+      href="/components/test-component-id-1/dependencies"
+      target="_self"
+    >
+      
     Dependencies
   
-          </a>
-           
-          <a
-            class="btn my-1 btn-secondary"
-            href="/components/test-component-id-1/response-times"
-            target="_self"
-          >
-            
+    </a>
+     
+    <a
+      class="btn my-1 btn-secondary"
+      href="/components/test-component-id-1/response-times"
+      target="_self"
+    >
+      
     Response Times
   
-          </a>
-           
-          <a
-            class="btn my-1 btn-secondary"
-            href="/components/test-component-id-1/downstream-response-times"
-            target="_self"
-          >
-            
+    </a>
+     
+    <a
+      class="btn my-1 btn-secondary"
+      href="/components/test-component-id-1/downstream-response-times"
+      target="_self"
+    >
+      
     Downstream Response Times
   
-          </a>
-           
-          <a
-            class="btn my-1 btn-secondary"
-            href="/components/test-component-id-1/call-graphs"
-            target="_self"
-          >
-            
+    </a>
+     
+    <a
+      class="btn my-1 btn-secondary"
+      href="/components/test-component-id-1/call-graphs"
+      target="_self"
+    >
+      
     Call Graphs
   
-          </a>
-           
-          <a
-            class="btn my-1 btn-secondary"
-            href="/components/test-component-id-1/cross-functional-requirements"
-            target="_self"
-          >
-            
+    </a>
+     
+    <a
+      class="btn my-1 btn-secondary"
+      href="/components/test-component-id-1/cross-functional-requirements"
+      target="_self"
+    >
+      
     Cross Functional Requirements
   
-          </a>
-           
-          <a
-            class="btn my-1 btn-secondary"
-            href="/components/test-component-id-1/tech-debts"
-            target="_self"
-          >
-            
+    </a>
+     
+    <a
+      class="btn my-1 btn-secondary"
+      href="/components/test-component-id-1/tech-debts"
+      target="_self"
+    >
+      
     Tech Debts
   
-          </a>
-           
-          <a
-            class="btn my-1 btn-secondary"
-            href="/components/test-component-id-1/tests"
-            target="_self"
-          >
-            Tests
-          </a>
-           
-          <a
-            class="btn my-1 btn-secondary"
-            href="/components/test-component-id-1/errors"
-            target="_self"
-          >
-            Errors
-          </a>
-           
-          <a
-            class="btn my-1 btn-secondary"
-            href="/components/test-component-id-1/openapi-specs"
-            target="_self"
-          >
-            
+    </a>
+     
+    <a
+      class="btn my-1 btn-secondary"
+      href="/components/test-component-id-1/tests"
+      target="_self"
+    >
+      Tests
+    </a>
+     
+    <a
+      class="btn my-1 btn-secondary"
+      href="/components/test-component-id-1/errors"
+      target="_self"
+    >
+      Errors
+    </a>
+     
+    <a
+      class="btn my-1 btn-secondary"
+      href="/components/test-component-id-1/openapi-specs"
+      target="_self"
+    >
+      
     OpenAPI Specs
   
-          </a>
-           
-          <a
-            class="btn my-1 btn-secondary"
-            href="/components/test-component-id-1/repo"
-            target="_self"
-          >
-            Repo
-          </a>
-           
-          <a
-            class="btn my-1 btn-secondary"
-            href="/components/test-component-id-1/readme"
-            target="_self"
-          >
-            README
-          </a>
-           
-          <a
-            class="btn my-1 btn-secondary"
-            href="/components/test-component-id-1/to-dos"
-            target="_self"
-          >
-            To Dos
-          </a>
-           
-          <a
-            class="btn my-1 btn-secondary"
-            href="/components/test-component-id-1/lines-of-code"
-            target="_self"
-          >
-            
+    </a>
+     
+    <a
+      class="btn my-1 btn-secondary"
+      href="/components/test-component-id-1/repo"
+      target="_self"
+    >
+      Repo
+    </a>
+     
+    <a
+      class="btn my-1 btn-secondary"
+      href="/components/test-component-id-1/readme"
+      target="_self"
+    >
+      README
+    </a>
+     
+    <a
+      class="btn my-1 btn-secondary"
+      href="/components/test-component-id-1/to-dos"
+      target="_self"
+    >
+      To Dos
+    </a>
+     
+    <a
+      class="btn my-1 btn-secondary"
+      href="/components/test-component-id-1/lines-of-code"
+      target="_self"
+    >
+      
     Lines of Code
   
-          </a>
-           
-          <a
-            class="btn my-1 btn-secondary"
-            href="/components/test-component-id-1/software-repositories"
-            target="_self"
-          >
-            
+    </a>
+     
+    <a
+      class="btn my-1 btn-secondary"
+      href="/components/test-component-id-1/software-repositories"
+      target="_self"
+    >
+      
     Software Repositories
   
-          </a>
-           
-          <a
-            class="btn my-1 btn-secondary"
-            href="/components/test-component-id-1/software"
-            target="_self"
-          >
-            Software
-          </a>
-           
-          <a
-            class="btn my-1 btn-secondary"
-            href="/components/test-component-id-1/imports"
-            target="_self"
-          >
-            Imports
-          </a>
-        </div>
-         
-        <div>
-          <transition-stub
-            class="my-3"
-            css="true"
-            enteractiveclass=""
-            enterclass=""
-            entertoclass="show"
-            leaveactiveclass=""
-            leaveclass="show"
-            leavetoclass=""
-            name=""
-          >
-            <div
-              aria-atomic="true"
-              aria-live="polite"
-              class="alert alert-dismissible alert-info"
-              role="alert"
-            >
-              <button
-                aria-label="Close"
-                class="close"
-                type="button"
-              >
-                ×
-              </button>
-              <p>
-                
+    </a>
+     
+    <a
+      class="btn my-1 btn-secondary"
+      href="/components/test-component-id-1/software"
+      target="_self"
+    >
+      Software
+    </a>
+     
+    <a
+      class="btn my-1 btn-secondary"
+      href="/components/test-component-id-1/imports"
+      target="_self"
+    >
+      Imports
+    </a>
+  </div>
+   
+  <div>
+    <transition-stub
+      class="my-3"
+      css="true"
+      enteractiveclass=""
+      enterclass=""
+      entertoclass="show"
+      leaveactiveclass=""
+      leaveclass="show"
+      leavetoclass=""
+      name=""
+    >
+      <div
+        aria-atomic="true"
+        aria-live="polite"
+        class="alert alert-dismissible alert-info"
+        role="alert"
+      >
+        <button
+          aria-label="Close"
+          class="close"
+          type="button"
+        >
+          ×
+        </button>
+        <p>
+          
       The call graphs on this page come from a combination of Zipkin traces.
       The visualisation is not out-of-the-box Zipkin functionality and is
       bespoke to Kronicle.
     
-              </p>
-               
-              <p
-                class="mb-0"
-              >
-                
+        </p>
+         
+        <p
+          class="mb-0"
+        >
+          
       A maximum of 20 call graphs are displayed on this
       page at any one time.
     
-              </p>
-            </div>
-          </transition-stub>
-           
-          <div>
-            <transition-stub
-              class="my-3"
-              css="true"
-              enteractiveclass=""
-              enterclass=""
-              entertoclass="show"
-              leaveactiveclass=""
-              leaveclass="show"
-              leavetoclass=""
-              name=""
-            >
-              <div
-                aria-atomic="true"
-                aria-live="polite"
-                class="alert alert-warning"
-                role="alert"
-              >
-                <!---->
-                
+        </p>
+      </div>
+    </transition-stub>
+     
+    <div>
+      <transition-stub
+        class="my-3"
+        css="true"
+        enteractiveclass=""
+        enterclass=""
+        entertoclass="show"
+        leaveactiveclass=""
+        leaveclass="show"
+        leavetoclass=""
+        name=""
+      >
+        <div
+          aria-atomic="true"
+          aria-live="polite"
+          class="alert alert-warning"
+          role="alert"
+        >
+          <!---->
+          
       No call graphs are available for this component. Possibly:
 
       
-                <ol>
-                  <li>
-                    The component is not integrated with Zipkin yet or
-                  </li>
-                   
-                  <li>
-                    
+          <ol>
+            <li>
+              The component is not integrated with Zipkin yet or
+            </li>
+             
+            <li>
+              
           Kronicle may have restarted recently and not have loaded Zipkin data
           yet
         
-                  </li>
-                </ol>
-              </div>
-            </transition-stub>
-          </div>
-           
-          <div
-            class="call-graphs"
-          />
-           
-          <div
-            class="nodes"
-          >
-            <h4>
-              Component Nodes
-            </h4>
-             
-          </div>
+            </li>
+          </ol>
         </div>
-      </div>
+      </transition-stub>
+    </div>
+     
+    <div
+      class="call-graphs"
+    />
+     
+    <div
+      class="nodes"
+    >
+      <h4>
+        Component Nodes
+      </h4>
+       
     </div>
   </div>
 </div>
 `;
 
 exports[`Index when Get Component Nodes service endpoints returns nodes and Get Component Call Graphs service endpoint returns call graphs renders the nodes and call graphs 1`] = `
-<div>
-  <div
-    class="container-fluid"
+<div
+  class="m-3"
+>
+  <h1
+    class="text-info my-3"
   >
-    <div
-      class="row"
+    Test Component Name 1 - Call Graphs
+  </h1>
+   
+  <div
+    class="my-3"
+  >
+    <a
+      class="btn my-1 btn-secondary"
+      href="/components/test-component-id-1"
+      target="_self"
     >
-      <div
-        class="col"
-      >
-        <h1
-          class="text-info my-3"
-        >
-          Test Component Name 1 - Call Graphs
-        </h1>
-         
-        <div
-          class="my-3"
-        >
-          <a
-            class="btn my-1 btn-secondary"
-            href="/components/test-component-id-1"
-            target="_self"
-          >
-            Info
-          </a>
-           
-          <a
-            class="btn my-1 btn-secondary"
-            href="/components/test-component-id-1/dependencies"
-            target="_self"
-          >
-            
+      Info
+    </a>
+     
+    <a
+      class="btn my-1 btn-secondary"
+      href="/components/test-component-id-1/dependencies"
+      target="_self"
+    >
+      
     Dependencies
   
-          </a>
-           
-          <a
-            class="btn my-1 btn-secondary"
-            href="/components/test-component-id-1/response-times"
-            target="_self"
-          >
-            
+    </a>
+     
+    <a
+      class="btn my-1 btn-secondary"
+      href="/components/test-component-id-1/response-times"
+      target="_self"
+    >
+      
     Response Times
   
-          </a>
-           
-          <a
-            class="btn my-1 btn-secondary"
-            href="/components/test-component-id-1/downstream-response-times"
-            target="_self"
-          >
-            
+    </a>
+     
+    <a
+      class="btn my-1 btn-secondary"
+      href="/components/test-component-id-1/downstream-response-times"
+      target="_self"
+    >
+      
     Downstream Response Times
   
-          </a>
-           
-          <a
-            class="btn my-1 btn-secondary"
-            href="/components/test-component-id-1/call-graphs"
-            target="_self"
-          >
-            
+    </a>
+     
+    <a
+      class="btn my-1 btn-secondary"
+      href="/components/test-component-id-1/call-graphs"
+      target="_self"
+    >
+      
     Call Graphs
   
-          </a>
-           
-          <a
-            class="btn my-1 btn-secondary"
-            href="/components/test-component-id-1/cross-functional-requirements"
-            target="_self"
-          >
-            
+    </a>
+     
+    <a
+      class="btn my-1 btn-secondary"
+      href="/components/test-component-id-1/cross-functional-requirements"
+      target="_self"
+    >
+      
     Cross Functional Requirements
   
-          </a>
-           
-          <a
-            class="btn my-1 btn-secondary"
-            href="/components/test-component-id-1/tech-debts"
-            target="_self"
-          >
-            
+    </a>
+     
+    <a
+      class="btn my-1 btn-secondary"
+      href="/components/test-component-id-1/tech-debts"
+      target="_self"
+    >
+      
     Tech Debts
   
-          </a>
-           
-          <a
-            class="btn my-1 btn-secondary"
-            href="/components/test-component-id-1/tests"
-            target="_self"
-          >
-            Tests
-          </a>
-           
-          <a
-            class="btn my-1 btn-secondary"
-            href="/components/test-component-id-1/errors"
-            target="_self"
-          >
-            Errors
-          </a>
-           
-          <a
-            class="btn my-1 btn-secondary"
-            href="/components/test-component-id-1/openapi-specs"
-            target="_self"
-          >
-            
+    </a>
+     
+    <a
+      class="btn my-1 btn-secondary"
+      href="/components/test-component-id-1/tests"
+      target="_self"
+    >
+      Tests
+    </a>
+     
+    <a
+      class="btn my-1 btn-secondary"
+      href="/components/test-component-id-1/errors"
+      target="_self"
+    >
+      Errors
+    </a>
+     
+    <a
+      class="btn my-1 btn-secondary"
+      href="/components/test-component-id-1/openapi-specs"
+      target="_self"
+    >
+      
     OpenAPI Specs
   
-          </a>
-           
-          <a
-            class="btn my-1 btn-secondary"
-            href="/components/test-component-id-1/repo"
-            target="_self"
-          >
-            Repo
-          </a>
-           
-          <a
-            class="btn my-1 btn-secondary"
-            href="/components/test-component-id-1/readme"
-            target="_self"
-          >
-            README
-          </a>
-           
-          <a
-            class="btn my-1 btn-secondary"
-            href="/components/test-component-id-1/to-dos"
-            target="_self"
-          >
-            To Dos
-          </a>
-           
-          <a
-            class="btn my-1 btn-secondary"
-            href="/components/test-component-id-1/lines-of-code"
-            target="_self"
-          >
-            
+    </a>
+     
+    <a
+      class="btn my-1 btn-secondary"
+      href="/components/test-component-id-1/repo"
+      target="_self"
+    >
+      Repo
+    </a>
+     
+    <a
+      class="btn my-1 btn-secondary"
+      href="/components/test-component-id-1/readme"
+      target="_self"
+    >
+      README
+    </a>
+     
+    <a
+      class="btn my-1 btn-secondary"
+      href="/components/test-component-id-1/to-dos"
+      target="_self"
+    >
+      To Dos
+    </a>
+     
+    <a
+      class="btn my-1 btn-secondary"
+      href="/components/test-component-id-1/lines-of-code"
+      target="_self"
+    >
+      
     Lines of Code
   
-          </a>
-           
-          <a
-            class="btn my-1 btn-secondary"
-            href="/components/test-component-id-1/software-repositories"
-            target="_self"
-          >
-            
+    </a>
+     
+    <a
+      class="btn my-1 btn-secondary"
+      href="/components/test-component-id-1/software-repositories"
+      target="_self"
+    >
+      
     Software Repositories
   
-          </a>
-           
-          <a
-            class="btn my-1 btn-secondary"
-            href="/components/test-component-id-1/software"
-            target="_self"
-          >
-            Software
-          </a>
-           
-          <a
-            class="btn my-1 btn-secondary"
-            href="/components/test-component-id-1/imports"
-            target="_self"
-          >
-            Imports
-          </a>
-        </div>
-         
-        <div>
-          <transition-stub
-            class="my-3"
-            css="true"
-            enteractiveclass=""
-            enterclass=""
-            entertoclass="show"
-            leaveactiveclass=""
-            leaveclass="show"
-            leavetoclass=""
-            name=""
-          >
-            <div
-              aria-atomic="true"
-              aria-live="polite"
-              class="alert alert-dismissible alert-info"
-              role="alert"
-            >
-              <button
-                aria-label="Close"
-                class="close"
-                type="button"
-              >
-                ×
-              </button>
-              <p>
-                
+    </a>
+     
+    <a
+      class="btn my-1 btn-secondary"
+      href="/components/test-component-id-1/software"
+      target="_self"
+    >
+      Software
+    </a>
+     
+    <a
+      class="btn my-1 btn-secondary"
+      href="/components/test-component-id-1/imports"
+      target="_self"
+    >
+      Imports
+    </a>
+  </div>
+   
+  <div>
+    <transition-stub
+      class="my-3"
+      css="true"
+      enteractiveclass=""
+      enterclass=""
+      entertoclass="show"
+      leaveactiveclass=""
+      leaveclass="show"
+      leavetoclass=""
+      name=""
+    >
+      <div
+        aria-atomic="true"
+        aria-live="polite"
+        class="alert alert-dismissible alert-info"
+        role="alert"
+      >
+        <button
+          aria-label="Close"
+          class="close"
+          type="button"
+        >
+          ×
+        </button>
+        <p>
+          
       The call graphs on this page come from a combination of Zipkin traces.
       The visualisation is not out-of-the-box Zipkin functionality and is
       bespoke to Kronicle.
     
-              </p>
-               
-              <p
-                class="mb-0"
-              >
-                
+        </p>
+         
+        <p
+          class="mb-0"
+        >
+          
       A maximum of 20 call graphs are displayed on this
       page at any one time.
     
-              </p>
-            </div>
-          </transition-stub>
-           
-          <!---->
-           
-          <div
-            class="call-graphs"
-          >
-            <div
-              class="call-graph my-2"
-            >
-              <h5>
-                
+        </p>
+      </div>
+    </transition-stub>
+     
+    <!---->
+     
+    <div
+      class="call-graphs"
+    >
+      <div
+        class="call-graph my-2"
+      >
+        <h5>
+          
         Call Graph 1
         
-                <span
-                  class="badge ml-2 badge-primary"
-                >
-                  
+          <span
+            class="badge ml-2 badge-primary"
+          >
+            
           1 Traces
         
-                </span>
-              </h5>
-               
-              <svg
-                height="1200"
-                overflow="auto"
-                width="100%"
-                xmlns="http://www.w3.org/2000/svg"
+          </span>
+        </h5>
+         
+        <svg
+          height="1200"
+          overflow="auto"
+          width="100%"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <rect
+            class="component-dependency-graph-background"
+            fill-opacity="0"
+          />
+           
+          <defs>
+            <marker
+              class="dependency-marker all-dependency-marker"
+              id="component-dependency-graph-dependency-marker-all"
+              markerHeight="11.5"
+              markerUnits="userSpaceOnUse"
+              markerWidth="7.1"
+              orient="auto-start-reverse"
+              refX="10"
+              refY="5.75"
+              viewBox="0 0 7.1 11.5"
+            >
+              <path
+                d="M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5"
+              />
+            </marker>
+            <marker
+              class="dependency-marker manual-dependency-marker"
+              id="component-dependency-graph-dependency-marker-manual"
+              markerHeight="11.5"
+              markerUnits="userSpaceOnUse"
+              markerWidth="7.1"
+              orient="auto-start-reverse"
+              refX="10"
+              refY="5.75"
+              viewBox="0 0 7.1 11.5"
+            >
+              <path
+                d="M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5"
+              />
+            </marker>
+            <marker
+              class="dependency-marker scope-related-dependency-marker"
+              id="component-dependency-graph-dependency-marker-scope-related"
+              markerHeight="11.5"
+              markerUnits="userSpaceOnUse"
+              markerWidth="7.1"
+              orient="auto-start-reverse"
+              refX="10"
+              refY="5.75"
+              viewBox="0 0 7.1 11.5"
+            >
+              <path
+                d="M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5"
+              />
+            </marker>
+            <marker
+              class="dependency-marker scoped-dependency-marker"
+              id="component-dependency-graph-dependency-marker-scoped"
+              markerHeight="11.5"
+              markerUnits="userSpaceOnUse"
+              markerWidth="7.1"
+              orient="auto-start-reverse"
+              refX="10"
+              refY="5.75"
+              viewBox="0 0 7.1 11.5"
+            >
+              <path
+                d="M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5"
+              />
+            </marker>
+            <marker
+              class="dependency-marker related-dependency-marker"
+              id="component-dependency-graph-dependency-marker-related"
+              markerHeight="11.5"
+              markerUnits="userSpaceOnUse"
+              markerWidth="7.1"
+              orient="auto-start-reverse"
+              refX="10"
+              refY="5.75"
+              viewBox="0 0 7.1 11.5"
+            >
+              <path
+                d="M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5"
+              />
+            </marker>
+            <marker
+              class="dependency-marker direct-dependency-marker"
+              id="component-dependency-graph-dependency-marker-direct"
+              markerHeight="11.5"
+              markerUnits="userSpaceOnUse"
+              markerWidth="7.1"
+              orient="auto-start-reverse"
+              refX="10"
+              refY="5.75"
+              viewBox="0 0 7.1 11.5"
+            >
+              <path
+                d="M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5"
+              />
+            </marker>
+            <marker
+              class="dependency-marker selected-dependency-marker"
+              id="component-dependency-graph-dependency-marker-selected"
+              markerHeight="11.5"
+              markerUnits="userSpaceOnUse"
+              markerWidth="7.1"
+              orient="auto-start-reverse"
+              refX="10"
+              refY="5.75"
+              viewBox="0 0 7.1 11.5"
+            >
+              <path
+                d="M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5"
+              />
+            </marker>
+          </defs>
+           
+          <g />
+          <g />
+          <g />
+          <g />
+          <g />
+          <g>
+            <path
+              class="dependency direct-dependency"
+              d="M50,50L50,250"
+              id="component-dependency-graph-dependency-0"
+              marker-end="url(#component-dependencies-direct-dependency-marker)"
+            />
+          </g>
+          <g />
+           
+          <g />
+          <g />
+          <g />
+          <g />
+          <g />
+          <g>
+            <circle
+              class="node direct-node"
+              cx="50"
+              cy="250"
+              id="component-dependency-graph-node-1"
+              r="5"
+              title="test-component-id-2, test-span-name-2-2"
+            />
+          </g>
+          <g>
+            <circle
+              class="node selected-node"
+              cx="50"
+              cy="50"
+              id="component-dependency-graph-node-0"
+              r="5"
+              title="test-component-id-1, test-span-name-1-1"
+            />
+          </g>
+           
+          <g />
+          <g />
+          <g />
+          <g />
+          <g />
+          <g>
+            <text
+              class="node-label direct-node-label"
+              font-size="14"
+              stroke-width="1.75"
+              x="62"
+              y="270"
+            >
+              <tspan
+                x="62"
+                y="270"
               >
-                <rect
-                  class="component-dependency-graph-background"
-                  fill-opacity="0"
-                />
-                 
-                <defs>
-                  <marker
-                    class="dependency-marker all-dependency-marker"
-                    id="component-dependency-graph-dependency-marker-all"
-                    markerHeight="11.5"
-                    markerUnits="userSpaceOnUse"
-                    markerWidth="7.1"
-                    orient="auto-start-reverse"
-                    refX="10"
-                    refY="5.75"
-                    viewBox="0 0 7.1 11.5"
-                  >
-                    <path
-                      d="M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5"
-                    />
-                  </marker>
-                  <marker
-                    class="dependency-marker manual-dependency-marker"
-                    id="component-dependency-graph-dependency-marker-manual"
-                    markerHeight="11.5"
-                    markerUnits="userSpaceOnUse"
-                    markerWidth="7.1"
-                    orient="auto-start-reverse"
-                    refX="10"
-                    refY="5.75"
-                    viewBox="0 0 7.1 11.5"
-                  >
-                    <path
-                      d="M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5"
-                    />
-                  </marker>
-                  <marker
-                    class="dependency-marker scope-related-dependency-marker"
-                    id="component-dependency-graph-dependency-marker-scope-related"
-                    markerHeight="11.5"
-                    markerUnits="userSpaceOnUse"
-                    markerWidth="7.1"
-                    orient="auto-start-reverse"
-                    refX="10"
-                    refY="5.75"
-                    viewBox="0 0 7.1 11.5"
-                  >
-                    <path
-                      d="M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5"
-                    />
-                  </marker>
-                  <marker
-                    class="dependency-marker scoped-dependency-marker"
-                    id="component-dependency-graph-dependency-marker-scoped"
-                    markerHeight="11.5"
-                    markerUnits="userSpaceOnUse"
-                    markerWidth="7.1"
-                    orient="auto-start-reverse"
-                    refX="10"
-                    refY="5.75"
-                    viewBox="0 0 7.1 11.5"
-                  >
-                    <path
-                      d="M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5"
-                    />
-                  </marker>
-                  <marker
-                    class="dependency-marker related-dependency-marker"
-                    id="component-dependency-graph-dependency-marker-related"
-                    markerHeight="11.5"
-                    markerUnits="userSpaceOnUse"
-                    markerWidth="7.1"
-                    orient="auto-start-reverse"
-                    refX="10"
-                    refY="5.75"
-                    viewBox="0 0 7.1 11.5"
-                  >
-                    <path
-                      d="M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5"
-                    />
-                  </marker>
-                  <marker
-                    class="dependency-marker direct-dependency-marker"
-                    id="component-dependency-graph-dependency-marker-direct"
-                    markerHeight="11.5"
-                    markerUnits="userSpaceOnUse"
-                    markerWidth="7.1"
-                    orient="auto-start-reverse"
-                    refX="10"
-                    refY="5.75"
-                    viewBox="0 0 7.1 11.5"
-                  >
-                    <path
-                      d="M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5"
-                    />
-                  </marker>
-                  <marker
-                    class="dependency-marker selected-dependency-marker"
-                    id="component-dependency-graph-dependency-marker-selected"
-                    markerHeight="11.5"
-                    markerUnits="userSpaceOnUse"
-                    markerWidth="7.1"
-                    orient="auto-start-reverse"
-                    refX="10"
-                    refY="5.75"
-                    viewBox="0 0 7.1 11.5"
-                  >
-                    <path
-                      d="M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5"
-                    />
-                  </marker>
-                </defs>
-                 
-                <g />
-                <g />
-                <g />
-                <g />
-                <g />
-                <g>
-                  <path
-                    class="dependency direct-dependency"
-                    d="M50,50L50,250"
-                    id="component-dependency-graph-dependency-0"
-                    marker-end="url(#component-dependencies-direct-dependency-marker)"
-                  />
-                </g>
-                <g />
-                 
-                <g />
-                <g />
-                <g />
-                <g />
-                <g />
-                <g>
-                  <circle
-                    class="node direct-node"
-                    cx="50"
-                    cy="250"
-                    id="component-dependency-graph-node-1"
-                    r="5"
-                    title="test-component-id-2, test-span-name-2-2"
-                  />
-                </g>
-                <g>
-                  <circle
-                    class="node selected-node"
-                    cx="50"
-                    cy="50"
-                    id="component-dependency-graph-node-0"
-                    r="5"
-                    title="test-component-id-1, test-span-name-1-1"
-                  />
-                </g>
-                 
-                <g />
-                <g />
-                <g />
-                <g />
-                <g />
-                <g>
-                  <text
-                    class="node-label direct-node-label"
-                    font-size="14"
-                    stroke-width="1.75"
-                    x="62"
-                    y="270"
-                  >
-                    <tspan
-                      x="62"
-                      y="270"
-                    >
-                      
+                
         test-component-id-2
       
-                    </tspan>
-                    <tspan
-                      x="62"
-                      y="286.8"
-                    >
-                      
+              </tspan>
+              <tspan
+                x="62"
+                y="286.8"
+              >
+                
         test-span-name-2-2
       
-                    </tspan>
-                  </text>
-                </g>
-                <g>
-                  <text
-                    class="node-label selected-node-label"
-                    font-size="14"
-                    stroke-width="1.75"
-                    x="62"
-                    y="70"
-                  >
-                    <tspan
-                      x="62"
-                      y="70"
-                    >
-                      
+              </tspan>
+            </text>
+          </g>
+          <g>
+            <text
+              class="node-label selected-node-label"
+              font-size="14"
+              stroke-width="1.75"
+              x="62"
+              y="70"
+            >
+              <tspan
+                x="62"
+                y="70"
+              >
+                
         test-component-id-1
       
-                    </tspan>
-                    <tspan
-                      x="62"
-                      y="86.8"
-                    >
-                      
+              </tspan>
+              <tspan
+                x="62"
+                y="86.8"
+              >
+                
         test-span-name-1-1
       
-                    </tspan>
-                  </text>
-                </g>
-              </svg>
-            </div>
-          </div>
-           
-          <div
-            class="nodes"
-          >
-            <h4>
-              Component Nodes
-            </h4>
-             
-            <button
-              class="btn node my-1 btn-success btn-block"
-              type="button"
-            >
-              
+              </tspan>
+            </text>
+          </g>
+        </svg>
+      </div>
+    </div>
+     
+    <div
+      class="nodes"
+    >
+      <h4>
+        Component Nodes
+      </h4>
+       
+      <button
+        class="btn node my-1 btn-success btn-block"
+        type="button"
+      >
+        
       test-span-name-1-1
       
-              <!---->
-            </button>
-            <button
-              class="btn node my-1 btn-secondary btn-block"
-              type="button"
-            >
-              
+        <!---->
+      </button>
+      <button
+        class="btn node my-1 btn-secondary btn-block"
+        type="button"
+      >
+        
       test-span-name-2-2
       
-              <!---->
-            </button>
-          </div>
-        </div>
-      </div>
+        <!---->
+      </button>
     </div>
   </div>
 </div>

@@ -1,68 +1,54 @@
 <template>
-  <div>
-    <b-container fluid>
-      <b-row>
-        <b-col>
-          <AllComponentsTabs />
-        </b-col>
-      </b-row>
-    </b-container>
+  <div class="m-3">
+    <AllComponentsTabs />
 
-    <b-container fluid>
-      <b-row>
-        <b-col>
-          <table
-            class="table table-dark table-bordered table-striped mt-2"
-            style="width: 100%"
+    <ComponentFilters :components="components" />
+
+    <table
+      class="table table-dark table-bordered table-striped mt-2"
+      style="width: 100%"
+    >
+      <thead>
+      <tr>
+        <th class="component-type">Type</th>
+        <th class="component-name">Name</th>
+        <!-- eslint-disable vue/require-v-for-key -->
+        <template v-for="keySoftwareName in keySoftwareNames">
+          <th>{{ keySoftwareName }}</th>
+        </template>
+        <!-- eslint-enable -->
+      </tr>
+      </thead>
+      <tbody>
+      <tr v-for="component in filteredComponents" :key="component.id">
+        <td>{{ component.typeId }}</td>
+        <td class="component-name table-primary">
+          <ComponentName :component="component" />
+        </td>
+        <!-- eslint-disable vue/require-v-for-key -->
+        <template v-for="keySoftwareName in keySoftwareNames">
+          <td>
+          <span
+            v-for="(version, versionIndex) in getKeySoftwareVersions(
+              component,
+              keySoftwareName
+            )"
+            :key="versionIndex"
           >
-            <thead>
-            <tr>
-              <th class="component-type">Type</th>
-              <th class="component-name">Name</th>
-              <!-- eslint-disable vue/require-v-for-key -->
-              <template v-for="keySoftwareName in keySoftwareNames">
-                <th>{{ keySoftwareName }}</th>
-              </template>
-              <!-- eslint-enable -->
-            </tr>
-            </thead>
-            <tbody>
-            <tr v-for="component in filteredComponents" :key="component.id">
-              <td>{{ component.typeId }}</td>
-              <td class="component-name table-primary">
-                <ComponentName :component="component" />
-              </td>
-              <!-- eslint-disable vue/require-v-for-key -->
-              <template v-for="keySoftwareName in keySoftwareNames">
-                <td>
-                <span
-                  v-for="(version, versionIndex) in getKeySoftwareVersions(
-                    component,
-                    keySoftwareName
-                  )"
-                  :key="versionIndex"
-                >
-                  {{ version }}<br />
-                </span>
-                </td>
-              </template>
-              <!-- eslint-enable -->
-            </tr>
-            </tbody>
-          </table>
-        </b-col>
-        <b-col md="3">
-          <ComponentFilters :components="components" />
-        </b-col>
-      </b-row>
-    </b-container>
+            {{ version }}<br />
+          </span>
+          </td>
+        </template>
+        <!-- eslint-enable -->
+      </tr>
+      </tbody>
+    </table>
   </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
 import { MetaInfo } from 'vue-meta'
-import {BCol, BContainer, BRow} from "bootstrap-vue";
 import { Component } from '~/types/kronicle-service'
 import AllComponentsTabs from '~/components/AllComponentsTabs.vue'
 import ComponentFilters from '~/components/ComponentFilters.vue'
@@ -71,9 +57,6 @@ import ComponentName from '~/components/ComponentName.vue'
 export default Vue.extend({
   components: {
     AllComponentsTabs,
-    'b-col': BCol,
-    'b-container': BContainer,
-    'b-row': BRow,
     ComponentFilters,
     ComponentName,
   },

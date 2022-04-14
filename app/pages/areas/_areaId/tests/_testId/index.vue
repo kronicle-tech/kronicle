@@ -1,16 +1,10 @@
 <template>
-  <div>
-    <b-container fluid>
-      <b-row>
-        <b-col>
-          <h1 class="text-info my-3">
-            {{ area.name }} Area - {{ $route.params.testId }} Test
-          </h1>
+  <div class="m-3">
+    <h1 class="text-info my-3">
+      {{ area.name }} Area - {{ $route.params.testId }} Test
+    </h1>
 
-          <AreaTabs :area-id="area.id" />
-        </b-col>
-      </b-row>
-    </b-container>
+    <AreaTabs :area-id="area.id" />
 
     <TestView :test="test" :components="area.components" />
   </div>
@@ -19,7 +13,6 @@
 <script lang="ts">
 import Vue from 'vue'
 import { MetaInfo } from 'vue-meta'
-import {BCol, BContainer, BRow} from "bootstrap-vue";
 import { Area, Test } from '~/types/kronicle-service'
 import AreaTabs from '~/components/AreaTabs.vue'
 import TestView from '~/components/TestView.vue'
@@ -27,9 +20,6 @@ import TestView from '~/components/TestView.vue'
 export default Vue.extend({
   components: {
     AreaTabs,
-    'b-col': BCol,
-    'b-container': BContainer,
-    'b-row': BRow,
     TestView,
   },
   async asyncData({ $config, route, store }) {

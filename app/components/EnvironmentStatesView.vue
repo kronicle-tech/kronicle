@@ -1,11 +1,7 @@
 <template>
-  <div class="m-2">
-    <b-button v-b-toggle.filters-sidebar class="mb-3">
-      <b-icon icon="filter" aria-hidden="true" /> Filters
-    </b-button>
-    <b-sidebar id="filters-sidebar" title="Filters" width="600px" bg-variant="dark" text-variant="light" shadow>
-      <ComponentFilters :components="components" class="m-2" />
-    </b-sidebar>
+  <div class="m-3">
+    <ComponentFilters :components="components" />
+
     <b-card-group columns>
       <template v-for="item in items">
         <template v-if="item.itemType === 'check'">
@@ -78,16 +74,11 @@
 import Vue, {PropType} from 'vue'
 import {
   BAvatar,
-  BButton,
   BCard,
   BCardGroup,
   BCardText,
   BCardTitle,
-  BCol,
-  BContainer, BIcon,
-  BLink,
-  BRow,
-  BSidebar
+  BLink
 } from 'bootstrap-vue'
 import {
   CheckState,
@@ -124,14 +115,11 @@ type Item = CheckItem | LogSummaryItem;
 export default Vue.extend({
   components: {
     'b-avatar': BAvatar,
-    'b-button': BButton,
     'b-card': BCard,
     'b-card-group': BCardGroup,
     'b-card-text': BCardText,
     'b-card-title': BCardTitle,
-    'b-icon': BIcon,
     'b-link': BLink,
-    'b-sidebar': BSidebar,
     ComponentFilters,
     FormattedDateTime,
     FormattedNumber,
