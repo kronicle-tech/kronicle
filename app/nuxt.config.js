@@ -6,7 +6,8 @@ const customFields = format((info) => {
   return info
 })
 
-const serverSideServiceBaseUrl = process.env.SERVER_SIDE_SERVICE_BASE_URL || 'http://localhost:8090';
+const serverSideServiceBaseUrl =
+  process.env.SERVER_SIDE_SERVICE_BASE_URL || 'http://localhost:8090'
 
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
@@ -21,22 +22,24 @@ export default {
     const script = []
     if (process.env.ANALYTICS_PLAUSIBLE_ENABLED === 'true') {
       script.push({
-        src: process.env.ANALYTICS_PLAUSIBLE_SCRIPT_URL ?? 'https://plausible.io/js/plausible.js',
+        src:
+          process.env.ANALYTICS_PLAUSIBLE_SCRIPT_URL ??
+          'https://plausible.io/js/plausible.js',
         defer: true,
         'data-domain': process.env.ANALYTICS_PLAUSIBLE_DATA_DOMAIN,
       })
     }
     return {
       htmlAttrs: {
-        lang: 'en'
+        lang: 'en',
       },
       meta: [
-        {charset: 'utf-8'},
-        {name: 'viewport', content: 'width=device-width, initial-scale=1'},
-        {hid: 'description', name: 'description', content: ''},
+        { charset: 'utf-8' },
+        { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+        { hid: 'description', name: 'description', content: '' },
       ],
       link: [
-        {rel: 'icon', type: 'image/x-icon', href: '/favicon.ico'},
+        { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
         {
           rel: 'stylesheet',
           href: 'https://cdnjs.cloudflare.com/ajax/libs/bootswatch/4.5.3/darkly/bootstrap.min.css',
@@ -58,12 +61,10 @@ export default {
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
-  css: [
-  ],
+  css: [],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [
-  ],
+  plugins: [],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
@@ -79,7 +80,7 @@ export default {
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
     // https://go.nuxtjs.dev/bootstrap
-    ['bootstrap-vue/nuxt', { css: false }],
+    ['bootstrap-vue/nuxt', { css: false, icons: true }],
     '@nuxtjs/redirect-module',
     '@nuxtjs/proxy',
     'nuxt-healthcheck',
