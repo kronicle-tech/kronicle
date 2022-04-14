@@ -180,7 +180,6 @@ public class GitHubClient {
               .status(status.status)
               .name(workflowRun.getName())
               .description("GitHub Actions Workflow")
-              .avatarUrl(mapAvatarUrl(workflowRun))
               .statusMessage(status.statusMessage)
               .links(createWorkflowRunLinks(workflowRun))
               .updateTimestamp(now)
@@ -226,13 +225,6 @@ public class GitHubClient {
                 workflowRun.getStatus()
         );
     }
-  }
-
-  private String mapAvatarUrl(GitHubWorkflowRun workflowRun) {
-    return Optional.of(workflowRun)
-            .map(GitHubWorkflowRun::getActor)
-            .map(GitHubWorkflowRunActor::getAvatar_url)
-            .orElse(null);
   }
 
   private List<Link> createWorkflowRunLinks(GitHubWorkflowRun gitHubWorkflowRun) {
