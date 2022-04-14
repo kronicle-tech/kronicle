@@ -9,12 +9,20 @@
                 <b-card :key="item.key" :class="`border-${item.statusVariant}`">
                   <b-card-title>
                     <h5>{{ item.environment.id }} <span class="text-muted">//</span> {{ item.plugin.id }} <span class="text-muted">//</span> {{ item.component.name }}</h5>
-                    <h4 :class="`text-${item.statusVariant}`">{{ item.check.name }} <b-badge>{{ item.check.description }}</b-badge></h4>
+                    <h4 :class="`text-${item.statusVariant}`">
+                      <b-avatar v-if="item.check.avatarUrl" :src="item.check.avatarUrl" />
+                      {{ item.check.name }}
+                      <b-badge>{{ item.check.description }}</b-badge>
+                    </h4>
                   </b-card-title>
                   <b-card-text>
                     <div><span class="text-muted">Status:</span> <b-badge :variant="item.statusVariant">{{ item.check.status }}</b-badge></div>
                     <div><span class="text-muted">Status Message:</span> <b>{{ item.check.statusMessage }}</b></div>
                     <div><span class="text-muted">Updated At:</span> <b><FormattedDateTime :value="item.check.updateTimestamp" /></b></div>
+
+                    <div v-if="item.check.links" class="mt-1">
+                      <b-link v-for="link in item.check.links" :key="link.url" :href="link.url" class="card-link">{{ link.description || link.url }}</b-link>
+                    </div>
                   </b-card-text>
                 </b-card>
               </template>
@@ -71,7 +79,7 @@
 
 <script lang="ts">
 import Vue, {PropType} from 'vue'
-import {BCard, BCardGroup, BCardText, BCardTitle, BCol, BContainer, BRow} from 'bootstrap-vue'
+import {BAvatar, BCard, BCardGroup, BCardText, BCardTitle, BCol, BContainer, BLink, BRow} from 'bootstrap-vue'
 import {
   CheckState,
   Component,
@@ -106,12 +114,14 @@ type Item = CheckItem | LogSummaryItem;
 
 export default Vue.extend({
   components: {
+    'b-avatar': BAvatar,
     'b-card': BCard,
     'b-card-group': BCardGroup,
     'b-card-text': BCardText,
     'b-card-title': BCardTitle,
     'b-col': BCol,
     'b-container': BContainer,
+    'b-link': BLink,
     'b-row': BRow,
     ComponentFilters,
     FormattedDateTime,

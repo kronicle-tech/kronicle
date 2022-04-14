@@ -482,7 +482,6 @@ public class GitHubClientTest {
         return CheckState.builder()
                 .name("Test name " + checkStateNumber + checkSuffix)
                 .description("GitHub Actions Workflow")
-                .avatarUrl("https://example.com/test-avatar-url-" + checkStateNumber + checkSuffix)
                 .status(status)
                 .statusMessage(statusMessage)
                 .links(List.of(
