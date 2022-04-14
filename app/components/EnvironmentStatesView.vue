@@ -167,7 +167,7 @@ export default Vue.extend({
     },
     mapPlugin(component: Component, environment: EnvironmentState, plugin: EnvironmentPluginState): Item[] {
       const that = this;
-      return [].concat(
+      return ([] as Item[]).concat(
         plugin.checks.map(check => that.mapCheck(component, environment, plugin, check)),
         plugin.logSummaries.map(logSummary => that.mapLogSummary(component, environment, plugin, logSummary)),
       );
