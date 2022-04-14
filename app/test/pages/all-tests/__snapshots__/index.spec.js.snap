@@ -1,682 +1,642 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Index when Get Tests service endpoint returns an array of multiple tests renders the page 1`] = `
-<div>
+<div
+  class="m-3"
+>
   <div
-    class="container-fluid"
+    class="my-3"
+  >
+    <a
+      class="btn my-1 btn-secondary"
+      href="/all-tests"
+      target="_self"
+    >
+      Tests
+    </a>
+  </div>
+   
+  <transition-stub
+    class="my-3"
+    css="true"
+    enteractiveclass=""
+    enterclass=""
+    entertoclass="show"
+    leaveactiveclass=""
+    leaveclass="show"
+    leavetoclass=""
+    name=""
   >
     <div
-      class="row"
+      aria-atomic="true"
+      aria-live="polite"
+      class="alert alert-dismissible alert-info"
+      role="alert"
     >
-      <div
-        class="col"
+      <button
+        aria-label="Close"
+        class="close"
+        type="button"
       >
-        <div
-          class="my-3"
-        >
-          <a
-            class="btn my-1 btn-secondary"
-            href="/all-tests"
-            target="_self"
-          >
-            Tests
-          </a>
-        </div>
-         
-        <transition-stub
-          class="my-3"
-          css="true"
-          enteractiveclass=""
-          enterclass=""
-          entertoclass="show"
-          leaveactiveclass=""
-          leaveclass="show"
-          leavetoclass=""
-          name=""
-        >
-          <div
-            aria-atomic="true"
-            aria-live="polite"
-            class="alert alert-dismissible alert-info"
-            role="alert"
-          >
-            <button
-              aria-label="Close"
-              class="close"
-              type="button"
-            >
-              ×
-            </button>
-            
-          Click a test's id in the table below to view more information about that
-          test
-        
-          </div>
-        </transition-stub>
-         
-        <table
-          class="table table-dark table-bordered table-striped mt-2"
-          style="width: 100%;"
-        >
-          <thead>
-            <tr>
-              <th
-                class="test-id"
-              >
-                Id
-              </th>
-               
-              <th>
-                Description
-              </th>
-               
-              <th>
-                Priority
-              </th>
-               
-              <th>
-                Pass Count
-              </th>
-               
-              <th>
-                Fail Count
-              </th>
-               
-              <th>
-                Not Applicable Count
-              </th>
-            </tr>
-          </thead>
-           
-          <tbody>
-            <tr>
-              <td>
-                <a
-                  href="/tests/test-test-id-1"
-                >
-                  test-test-id-1
-                </a>
-              </td>
-               
-              <td>
-                <div>
-                  
-
-                  <p>
-                    Test Description 1
-                  </p>
-                </div>
-              </td>
-               
-              <td>
-                
-                very-high
-              
-              </td>
-               
-              <td
-                class=""
-              >
-                <span>
-                  
-                </span>
-              </td>
-               
-              <td
-                class=""
-              >
-                <span>
-                  
-                </span>
-              </td>
-               
-              <td
-                class=""
-              >
-                <span>
-                  
-                </span>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <a
-                  href="/tests/test-test-id-2"
-                >
-                  test-test-id-2
-                </a>
-              </td>
-               
-              <td>
-                <div>
-                  
-
-                  <p>
-                    Test Description 2
-                  </p>
-                </div>
-              </td>
-               
-              <td>
-                
-                high
-              
-              </td>
-               
-              <td
-                class=""
-              >
-                <span>
-                  
-                </span>
-              </td>
-               
-              <td
-                class=""
-              >
-                <span>
-                  
-                </span>
-              </td>
-               
-              <td
-                class=""
-              >
-                <span>
-                  
-                </span>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+        ×
+      </button>
+      
+    Click a test's id in the table below to view more information about that
+    test
+  
     </div>
-  </div>
+  </transition-stub>
+   
+  <table
+    class="table table-dark table-bordered table-striped mt-2"
+    style="width: 100%;"
+  >
+    <thead>
+      <tr>
+        <th
+          class="test-id"
+        >
+          Id
+        </th>
+         
+        <th>
+          Description
+        </th>
+         
+        <th>
+          Priority
+        </th>
+         
+        <th>
+          Pass Count
+        </th>
+         
+        <th>
+          Fail Count
+        </th>
+         
+        <th>
+          Not Applicable Count
+        </th>
+      </tr>
+    </thead>
+     
+    <tbody>
+      <tr>
+        <td>
+          <a
+            href="/tests/test-test-id-1"
+          >
+            test-test-id-1
+          </a>
+        </td>
+         
+        <td>
+          <div>
+            
+
+            <p>
+              Test Description 1
+            </p>
+          </div>
+        </td>
+         
+        <td>
+          
+          very-high
+        
+        </td>
+         
+        <td
+          class=""
+        >
+          <span>
+            
+          </span>
+        </td>
+         
+        <td
+          class=""
+        >
+          <span>
+            
+          </span>
+        </td>
+         
+        <td
+          class=""
+        >
+          <span>
+            
+          </span>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <a
+            href="/tests/test-test-id-2"
+          >
+            test-test-id-2
+          </a>
+        </td>
+         
+        <td>
+          <div>
+            
+
+            <p>
+              Test Description 2
+            </p>
+          </div>
+        </td>
+         
+        <td>
+          
+          high
+        
+        </td>
+         
+        <td
+          class=""
+        >
+          <span>
+            
+          </span>
+        </td>
+         
+        <td
+          class=""
+        >
+          <span>
+            
+          </span>
+        </td>
+         
+        <td
+          class=""
+        >
+          <span>
+            
+          </span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </div>
 `;
 
 exports[`Index when Get Tests service endpoint returns an empty array renders the page 1`] = `
-<div>
+<div
+  class="m-3"
+>
   <div
-    class="container-fluid"
+    class="my-3"
+  >
+    <a
+      class="btn my-1 btn-secondary"
+      href="/all-tests"
+      target="_self"
+    >
+      Tests
+    </a>
+  </div>
+   
+  <transition-stub
+    class="my-3"
+    css="true"
+    enteractiveclass=""
+    enterclass=""
+    entertoclass="show"
+    leaveactiveclass=""
+    leaveclass="show"
+    leavetoclass=""
+    name=""
   >
     <div
-      class="row"
+      aria-atomic="true"
+      aria-live="polite"
+      class="alert alert-dismissible alert-info"
+      role="alert"
     >
-      <div
-        class="col"
+      <button
+        aria-label="Close"
+        class="close"
+        type="button"
       >
-        <div
-          class="my-3"
-        >
-          <a
-            class="btn my-1 btn-secondary"
-            href="/all-tests"
-            target="_self"
-          >
-            Tests
-          </a>
-        </div>
-         
-        <transition-stub
-          class="my-3"
-          css="true"
-          enteractiveclass=""
-          enterclass=""
-          entertoclass="show"
-          leaveactiveclass=""
-          leaveclass="show"
-          leavetoclass=""
-          name=""
-        >
-          <div
-            aria-atomic="true"
-            aria-live="polite"
-            class="alert alert-dismissible alert-info"
-            role="alert"
-          >
-            <button
-              aria-label="Close"
-              class="close"
-              type="button"
-            >
-              ×
-            </button>
-            
-          Click a test's id in the table below to view more information about that
-          test
-        
-          </div>
-        </transition-stub>
-         
-        <table
-          class="table table-dark table-bordered table-striped mt-2"
-          style="width: 100%;"
-        >
-          <thead>
-            <tr>
-              <th
-                class="test-id"
-              >
-                Id
-              </th>
-               
-              <th>
-                Description
-              </th>
-               
-              <th>
-                Priority
-              </th>
-               
-              <th>
-                Pass Count
-              </th>
-               
-              <th>
-                Fail Count
-              </th>
-               
-              <th>
-                Not Applicable Count
-              </th>
-            </tr>
-          </thead>
-           
-          <tbody />
-        </table>
-      </div>
+        ×
+      </button>
+      
+    Click a test's id in the table below to view more information about that
+    test
+  
     </div>
-  </div>
+  </transition-stub>
+   
+  <table
+    class="table table-dark table-bordered table-striped mt-2"
+    style="width: 100%;"
+  >
+    <thead>
+      <tr>
+        <th
+          class="test-id"
+        >
+          Id
+        </th>
+         
+        <th>
+          Description
+        </th>
+         
+        <th>
+          Priority
+        </th>
+         
+        <th>
+          Pass Count
+        </th>
+         
+        <th>
+          Fail Count
+        </th>
+         
+        <th>
+          Not Applicable Count
+        </th>
+      </tr>
+    </thead>
+     
+    <tbody />
+  </table>
 </div>
 `;
 
 exports[`Index when there are tests with different amounts of outcome counts renders the page 1`] = `
-<div>
+<div
+  class="m-3"
+>
   <div
-    class="container-fluid"
+    class="my-3"
+  >
+    <a
+      class="btn my-1 btn-secondary"
+      href="/all-tests"
+      target="_self"
+    >
+      Tests
+    </a>
+  </div>
+   
+  <transition-stub
+    class="my-3"
+    css="true"
+    enteractiveclass=""
+    enterclass=""
+    entertoclass="show"
+    leaveactiveclass=""
+    leaveclass="show"
+    leavetoclass=""
+    name=""
   >
     <div
-      class="row"
+      aria-atomic="true"
+      aria-live="polite"
+      class="alert alert-dismissible alert-info"
+      role="alert"
     >
-      <div
-        class="col"
+      <button
+        aria-label="Close"
+        class="close"
+        type="button"
       >
-        <div
-          class="my-3"
-        >
-          <a
-            class="btn my-1 btn-secondary"
-            href="/all-tests"
-            target="_self"
-          >
-            Tests
-          </a>
-        </div>
-         
-        <transition-stub
-          class="my-3"
-          css="true"
-          enteractiveclass=""
-          enterclass=""
-          entertoclass="show"
-          leaveactiveclass=""
-          leaveclass="show"
-          leavetoclass=""
-          name=""
-        >
-          <div
-            aria-atomic="true"
-            aria-live="polite"
-            class="alert alert-dismissible alert-info"
-            role="alert"
-          >
-            <button
-              aria-label="Close"
-              class="close"
-              type="button"
-            >
-              ×
-            </button>
-            
-          Click a test's id in the table below to view more information about that
-          test
-        
-          </div>
-        </transition-stub>
-         
-        <table
-          class="table table-dark table-bordered table-striped mt-2"
-          style="width: 100%;"
-        >
-          <thead>
-            <tr>
-              <th
-                class="test-id"
-              >
-                Id
-              </th>
-               
-              <th>
-                Description
-              </th>
-               
-              <th>
-                Priority
-              </th>
-               
-              <th>
-                Pass Count
-              </th>
-               
-              <th>
-                Fail Count
-              </th>
-               
-              <th>
-                Not Applicable Count
-              </th>
-            </tr>
-          </thead>
-           
-          <tbody>
-            <tr>
-              <td>
-                <a
-                  href="/tests/test-test-id-1"
-                >
-                  test-test-id-1
-                </a>
-              </td>
-               
-              <td>
-                <div>
-                  
-
-                  <p>
-                    Test Description 1
-                  </p>
-                </div>
-              </td>
-               
-              <td>
-                
-                very-high
-              
-              </td>
-               
-              <td
-                class="table-primary"
-              >
-                <span>
-                  3
-                </span>
-              </td>
-               
-              <td
-                class=""
-              >
-                <span>
-                  
-                </span>
-              </td>
-               
-              <td
-                class=""
-              >
-                <span>
-                  
-                </span>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <a
-                  href="/tests/test-test-id-2"
-                >
-                  test-test-id-2
-                </a>
-              </td>
-               
-              <td>
-                <div>
-                  
-
-                  <p>
-                    Test Description 2
-                  </p>
-                </div>
-              </td>
-               
-              <td>
-                
-                high
-              
-              </td>
-               
-              <td
-                class="table-primary"
-              >
-                <span>
-                  2
-                </span>
-              </td>
-               
-              <td
-                class="table-danger"
-              >
-                <span>
-                  1
-                </span>
-              </td>
-               
-              <td
-                class=""
-              >
-                <span>
-                  
-                </span>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <a
-                  href="/tests/test-test-id-3"
-                >
-                  test-test-id-3
-                </a>
-              </td>
-               
-              <td>
-                <div>
-                  
-
-                  <p>
-                    Test Description 3
-                  </p>
-                </div>
-              </td>
-               
-              <td>
-                
-                medium
-              
-              </td>
-               
-              <td
-                class="table-primary"
-              >
-                <span>
-                  1
-                </span>
-              </td>
-               
-              <td
-                class="table-danger"
-              >
-                <span>
-                  1
-                </span>
-              </td>
-               
-              <td
-                class="table-light"
-              >
-                <span>
-                  1
-                </span>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+        ×
+      </button>
+      
+    Click a test's id in the table below to view more information about that
+    test
+  
     </div>
-  </div>
+  </transition-stub>
+   
+  <table
+    class="table table-dark table-bordered table-striped mt-2"
+    style="width: 100%;"
+  >
+    <thead>
+      <tr>
+        <th
+          class="test-id"
+        >
+          Id
+        </th>
+         
+        <th>
+          Description
+        </th>
+         
+        <th>
+          Priority
+        </th>
+         
+        <th>
+          Pass Count
+        </th>
+         
+        <th>
+          Fail Count
+        </th>
+         
+        <th>
+          Not Applicable Count
+        </th>
+      </tr>
+    </thead>
+     
+    <tbody>
+      <tr>
+        <td>
+          <a
+            href="/tests/test-test-id-1"
+          >
+            test-test-id-1
+          </a>
+        </td>
+         
+        <td>
+          <div>
+            
+
+            <p>
+              Test Description 1
+            </p>
+          </div>
+        </td>
+         
+        <td>
+          
+          very-high
+        
+        </td>
+         
+        <td
+          class="table-primary"
+        >
+          <span>
+            3
+          </span>
+        </td>
+         
+        <td
+          class=""
+        >
+          <span>
+            
+          </span>
+        </td>
+         
+        <td
+          class=""
+        >
+          <span>
+            
+          </span>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <a
+            href="/tests/test-test-id-2"
+          >
+            test-test-id-2
+          </a>
+        </td>
+         
+        <td>
+          <div>
+            
+
+            <p>
+              Test Description 2
+            </p>
+          </div>
+        </td>
+         
+        <td>
+          
+          high
+        
+        </td>
+         
+        <td
+          class="table-primary"
+        >
+          <span>
+            2
+          </span>
+        </td>
+         
+        <td
+          class="table-danger"
+        >
+          <span>
+            1
+          </span>
+        </td>
+         
+        <td
+          class=""
+        >
+          <span>
+            
+          </span>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <a
+            href="/tests/test-test-id-3"
+          >
+            test-test-id-3
+          </a>
+        </td>
+         
+        <td>
+          <div>
+            
+
+            <p>
+              Test Description 3
+            </p>
+          </div>
+        </td>
+         
+        <td>
+          
+          medium
+        
+        </td>
+         
+        <td
+          class="table-primary"
+        >
+          <span>
+            1
+          </span>
+        </td>
+         
+        <td
+          class="table-danger"
+        >
+          <span>
+            1
+          </span>
+        </td>
+         
+        <td
+          class="table-light"
+        >
+          <span>
+            1
+          </span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </div>
 `;
 
 exports[`Index when there is a test and a component with no test results renders the page 1`] = `
-<div>
+<div
+  class="m-3"
+>
   <div
-    class="container-fluid"
+    class="my-3"
+  >
+    <a
+      class="btn my-1 btn-secondary"
+      href="/all-tests"
+      target="_self"
+    >
+      Tests
+    </a>
+  </div>
+   
+  <transition-stub
+    class="my-3"
+    css="true"
+    enteractiveclass=""
+    enterclass=""
+    entertoclass="show"
+    leaveactiveclass=""
+    leaveclass="show"
+    leavetoclass=""
+    name=""
   >
     <div
-      class="row"
+      aria-atomic="true"
+      aria-live="polite"
+      class="alert alert-dismissible alert-info"
+      role="alert"
     >
-      <div
-        class="col"
+      <button
+        aria-label="Close"
+        class="close"
+        type="button"
       >
-        <div
-          class="my-3"
-        >
-          <a
-            class="btn my-1 btn-secondary"
-            href="/all-tests"
-            target="_self"
-          >
-            Tests
-          </a>
-        </div>
-         
-        <transition-stub
-          class="my-3"
-          css="true"
-          enteractiveclass=""
-          enterclass=""
-          entertoclass="show"
-          leaveactiveclass=""
-          leaveclass="show"
-          leavetoclass=""
-          name=""
-        >
-          <div
-            aria-atomic="true"
-            aria-live="polite"
-            class="alert alert-dismissible alert-info"
-            role="alert"
-          >
-            <button
-              aria-label="Close"
-              class="close"
-              type="button"
-            >
-              ×
-            </button>
-            
-          Click a test's id in the table below to view more information about that
-          test
-        
-          </div>
-        </transition-stub>
-         
-        <table
-          class="table table-dark table-bordered table-striped mt-2"
-          style="width: 100%;"
-        >
-          <thead>
-            <tr>
-              <th
-                class="test-id"
-              >
-                Id
-              </th>
-               
-              <th>
-                Description
-              </th>
-               
-              <th>
-                Priority
-              </th>
-               
-              <th>
-                Pass Count
-              </th>
-               
-              <th>
-                Fail Count
-              </th>
-               
-              <th>
-                Not Applicable Count
-              </th>
-            </tr>
-          </thead>
-           
-          <tbody>
-            <tr>
-              <td>
-                <a
-                  href="/tests/test-test-id-1"
-                >
-                  test-test-id-1
-                </a>
-              </td>
-               
-              <td>
-                <div>
-                  
-
-                  <p>
-                    Test Description 1
-                  </p>
-                </div>
-              </td>
-               
-              <td>
-                
-                very-high
-              
-              </td>
-               
-              <td
-                class=""
-              >
-                <span>
-                  
-                </span>
-              </td>
-               
-              <td
-                class=""
-              >
-                <span>
-                  
-                </span>
-              </td>
-               
-              <td
-                class=""
-              >
-                <span>
-                  
-                </span>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+        ×
+      </button>
+      
+    Click a test's id in the table below to view more information about that
+    test
+  
     </div>
-  </div>
+  </transition-stub>
+   
+  <table
+    class="table table-dark table-bordered table-striped mt-2"
+    style="width: 100%;"
+  >
+    <thead>
+      <tr>
+        <th
+          class="test-id"
+        >
+          Id
+        </th>
+         
+        <th>
+          Description
+        </th>
+         
+        <th>
+          Priority
+        </th>
+         
+        <th>
+          Pass Count
+        </th>
+         
+        <th>
+          Fail Count
+        </th>
+         
+        <th>
+          Not Applicable Count
+        </th>
+      </tr>
+    </thead>
+     
+    <tbody>
+      <tr>
+        <td>
+          <a
+            href="/tests/test-test-id-1"
+          >
+            test-test-id-1
+          </a>
+        </td>
+         
+        <td>
+          <div>
+            
+
+            <p>
+              Test Description 1
+            </p>
+          </div>
+        </td>
+         
+        <td>
+          
+          very-high
+        
+        </td>
+         
+        <td
+          class=""
+        >
+          <span>
+            
+          </span>
+        </td>
+         
+        <td
+          class=""
+        >
+          <span>
+            
+          </span>
+        </td>
+         
+        <td
+          class=""
+        >
+          <span>
+            
+          </span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </div>
 `;

@@ -1,5 +1,56 @@
 <template>
   <div>
+    <ComponentFilters :components="components">
+      <b-card bg-variant="secondary">
+        <b-card-text>
+          <b-form-group
+            label-cols="6"
+            label-size="sm"
+            label="Radius:"
+            label-for="graph-scope-related-radius"
+          >
+            <b-form-select
+              id="graph-scope-related-radius"
+              v-model="selectedScopeRelatedRadius"
+              :options="scopeRelatedRadiusOptions"
+              size="sm"
+            />
+          </b-form-group>
+        </b-card-text>
+      </b-card>
+
+      <b-card bg-variant="secondary">
+        <b-card-text>
+          <b-form-group
+            label-cols="6"
+            label-size="sm"
+            label="Zoom:"
+            label-for="graph-zoom"
+          >
+            <b-form-select
+              id="graph-zoom"
+              v-model="zoom"
+              :options="zoomOptions"
+              size="sm"
+            />
+          </b-form-group>
+        </b-card-text>
+      </b-card>
+
+      <b-card bg-variant="secondary">
+        <b-card-text>
+          <b-form-checkbox
+            id="detailed-dependencies"
+            v-model="detailed"
+            :value="true"
+            :unchecked-value="false"
+          >
+            Detailed dependencies
+          </b-form-checkbox>
+        </b-card-text>
+      </b-card>
+    </ComponentFilters>
+
     <b-container fluid>
       <b-row>
         <b-col class="graph">
@@ -16,56 +67,13 @@
             @selectedNodeChange="selectedNodeChange"
           />
         </b-col>
-        <b-col md="3">
-          <b-alert show="60" dismissible variant="info">
+        <b-col md="3" class="bg-dark">
+          <b-alert show="60" dismissible variant="info" class="mt-3">
             Hover over or click a component's dot in the dependencies diagram to see
             more information about it
           </b-alert>
 
           <ComponentPanel v-if="selectedComponent" :component="selectedComponent" />
-
-          <div v-else class="my-3">
-            <ComponentFilters :components="components" />
-
-            <b-form-group
-              label-cols="6"
-              label-size="sm"
-              label="Radius:"
-              label-for="graph-scope-related-radius"
-              class="my-3 mr-2"
-            >
-              <b-form-select
-                id="graph-scope-related-radius"
-                v-model="selectedScopeRelatedRadius"
-                :options="scopeRelatedRadiusOptions"
-                size="sm"
-              />
-            </b-form-group>
-
-            <b-form-group
-              label-cols="6"
-              label-size="sm"
-              label="Zoom:"
-              label-for="graph-zoom"
-              class="my-3 mr-2"
-            >
-              <b-form-select
-                id="graph-zoom"
-                v-model="zoom"
-                :options="zoomOptions"
-                size="sm"
-              />
-            </b-form-group>
-
-            <b-form-checkbox
-              id="detailed-dependencies"
-              v-model="detailed"
-              :value="true"
-              :unchecked-value="false"
-            >
-              Detailed dependencies
-            </b-form-checkbox>
-          </div>
         </b-col>
       </b-row>
     </b-container>
@@ -84,7 +92,7 @@
 <script lang="ts">
 import Vue, { PropType } from 'vue'
 import {
-  BAlert,
+  BAlert, BCard, BCardText,
   BCol,
   BContainer,
   BFormCheckbox,
@@ -113,6 +121,8 @@ interface Option {
 export default Vue.extend({
   components: {
     'b-alert': BAlert,
+    'b-card': BCard,
+    'b-card-text': BCardText,
     'b-col': BCol,
     'b-container': BContainer,
     'b-form-checkbox': BFormCheckbox,

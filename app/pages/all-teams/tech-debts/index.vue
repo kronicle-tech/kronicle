@@ -1,57 +1,51 @@
 <template>
-  <div>
-    <b-container fluid>
-      <b-row>
-        <b-col>
-          <AllTeamsTabs />
+  <div class="m-3">
+    <AllTeamsTabs />
 
-          <b-card-group v-for="(row, rowIndex) in rows" :key="rowIndex" deck>
-            <b-card
-              v-for="(item, itemIndex) in row"
-              :key="itemIndex"
-              bg-variant="dark"
-              :header="item.team.name"
-              text-variant="white"
-              class="my-3"
+    <b-card-group v-for="(row, rowIndex) in rows" :key="rowIndex" deck>
+      <b-card
+        v-for="(item, itemIndex) in row"
+        :key="itemIndex"
+        bg-variant="dark"
+        :header="item.team.name"
+        text-variant="white"
+        class="my-3"
+      >
+        <b-card
+          v-for="itemPriority in item.priorities"
+          :key="itemPriority.priority"
+          no-body
+          class="mt-1"
+        >
+          <b-card-header header-tag="header" class="p-1" role="tab">
+            <b-button
+              v-b-toggle="
+          `accordion-${rowIndex}-${itemIndex}-${itemPriority.priority}`
+        "
+              block
+              variant="info"
+            >{{
+                `${priorityName(
+                  itemPriority.priority
+                )} (${getItemPriorityTechDebtCount(itemPriority)})`
+              }}</b-button
             >
-              <b-card
-                v-for="itemPriority in item.priorities"
-                :key="itemPriority.priority"
-                no-body
-                class="mt-1"
-              >
-                <b-card-header header-tag="header" class="p-1" role="tab">
-                  <b-button
-                    v-b-toggle="
-                `accordion-${rowIndex}-${itemIndex}-${itemPriority.priority}`
-              "
-                    block
-                    variant="info"
-                  >{{
-                      `${priorityName(
-                        itemPriority.priority
-                      )} (${getItemPriorityTechDebtCount(itemPriority)})`
-                    }}</b-button
-                  >
-                </b-card-header>
-                <b-collapse
-                  :id="`accordion-${rowIndex}-${itemIndex}-${itemPriority.priority}`"
-                  visible
-                  :accordion="`accordion-${rowIndex}-${itemIndex}`"
-                  role="tabpanel"
-                >
-                  <b-card-body>
-                    <ComponentTechDebtTable
-                      :components-and-tech-debts="itemPriority.componentsAndTechDebts"
-                    />
-                  </b-card-body>
-                </b-collapse>
-              </b-card>
-            </b-card>
-          </b-card-group>
-        </b-col>
-      </b-row>
-    </b-container>
+          </b-card-header>
+          <b-collapse
+            :id="`accordion-${rowIndex}-${itemIndex}-${itemPriority.priority}`"
+            visible
+            :accordion="`accordion-${rowIndex}-${itemIndex}`"
+            role="tabpanel"
+          >
+            <b-card-body>
+              <ComponentTechDebtTable
+                :components-and-tech-debts="itemPriority.componentsAndTechDebts"
+              />
+            </b-card-body>
+          </b-collapse>
+        </b-card>
+      </b-card>
+    </b-card-group>
   </div>
 </template>
 
@@ -62,8 +56,8 @@ import {
   BCard,
   BCardBody,
   BCardGroup,
-  BCardHeader, BCol,
-  BCollapse, BContainer, BRow,
+  BCardHeader,
+  BCollapse,
   VBToggle,
 } from 'bootstrap-vue'
 import { MetaInfo } from 'vue-meta'
@@ -72,14 +66,14 @@ import AllTeamsTabs from '~/components/AllTeamsTabs.vue'
 import ComponentTechDebtTable from '~/components/ComponentTechDebtTable.vue'
 import { ComponentAndTechDebts } from '~/types/component-tech-debts'
 
-interface Item {
-  team: Team
-  priorities: ItemPriority[]
-}
-
 interface ItemPriority {
   priority: Priority
   componentsAndTechDebts: ComponentAndTechDebts[]
+}
+
+interface Item {
+  team: Team
+  priorities: ItemPriority[]
 }
 
 export default Vue.extend({
@@ -90,10 +84,7 @@ export default Vue.extend({
     'b-card-body': BCardBody,
     'b-card-group': BCardGroup,
     'b-card-header': BCardHeader,
-    'b-col': BCol,
     'b-collapse': BCollapse,
-    'b-container': BContainer,
-    'b-row': BRow,
     ComponentTechDebtTable,
   },
   directives: {

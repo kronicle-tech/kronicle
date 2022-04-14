@@ -1,12 +1,6 @@
 <template>
-  <div>
-    <b-container fluid>
-      <b-row>
-        <b-col>
-          <AllComponentsTabs />
-        </b-col>
-      </b-row>
-    </b-container>
+  <div class="m-3">
+    <AllComponentsTabs />
 
     <TestResultsView
       :components="components"
@@ -18,7 +12,6 @@
 <script lang="ts">
 import Vue from 'vue'
 import { MetaInfo } from 'vue-meta'
-import {BCol, BContainer, BRow} from "bootstrap-vue";
 import { Component } from '~/types/kronicle-service'
 import AllComponentsTabs from '~/components/AllComponentsTabs.vue'
 import TestResultsView from '~/components/TestResultsView.vue'
@@ -26,9 +19,6 @@ import TestResultsView from '~/components/TestResultsView.vue'
 export default Vue.extend({
   components: {
     AllComponentsTabs,
-    'b-col': BCol,
-    'b-container': BContainer,
-    'b-row': BRow,
     TestResultsView,
   },
   async asyncData({ $config, route, store }) {

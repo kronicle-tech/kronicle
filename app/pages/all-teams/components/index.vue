@@ -1,49 +1,43 @@
 <template>
-  <div>
-    <b-container fluid>
-      <b-row>
-        <b-col>
-          <AllTeamsTabs />
+  <div class="m-3">
+    <AllTeamsTabs />
 
-          <b-card-group v-for="(row, rowIndex) in rows" :key="rowIndex" deck>
-            <b-card
-              v-for="(item, itemIndex) in row"
-              :key="itemIndex"
-              bg-variant="dark"
-              :header="item.team.name"
-              text-variant="white"
-              class="my-3"
+    <b-card-group v-for="(row, rowIndex) in rows" :key="rowIndex" deck>
+      <b-card
+        v-for="(item, itemIndex) in row"
+        :key="itemIndex"
+        bg-variant="dark"
+        :header="item.team.name"
+        text-variant="white"
+        class="my-3"
+      >
+        <b-card
+          v-for="component in item.components"
+          :key="component.id"
+          no-body
+          class="mt-1"
+        >
+          <b-card-header header-tag="header" class="p-1" role="tab">
+            <b-button
+              v-b-toggle="`accordion-${rowIndex}-${itemIndex}-${component.id}`"
+              block
+              variant="info"
+            >{{ component.name }}</b-button
             >
-              <b-card
-                v-for="component in item.components"
-                :key="component.id"
-                no-body
-                class="mt-1"
-              >
-                <b-card-header header-tag="header" class="p-1" role="tab">
-                  <b-button
-                    v-b-toggle="`accordion-${rowIndex}-${itemIndex}-${component.id}`"
-                    block
-                    variant="info"
-                  >{{ component.name }}</b-button
-                  >
-                </b-card-header>
-                <b-collapse
-                  :id="`accordion-${rowIndex}-${itemIndex}-${component.id}`"
-                  visible
-                  :accordion="`accordion-${rowIndex}-${itemIndex}`"
-                  role="tabpanel"
-                >
-                  <b-card-body>
-                    <ComponentPanel :component="component" />
-                  </b-card-body>
-                </b-collapse>
-              </b-card>
-            </b-card>
-          </b-card-group>
-        </b-col>
-      </b-row>
-    </b-container>
+          </b-card-header>
+          <b-collapse
+            :id="`accordion-${rowIndex}-${itemIndex}-${component.id}`"
+            visible
+            :accordion="`accordion-${rowIndex}-${itemIndex}`"
+            role="tabpanel"
+          >
+            <b-card-body>
+              <ComponentPanel :component="component" />
+            </b-card-body>
+          </b-collapse>
+        </b-card>
+      </b-card>
+    </b-card-group>
   </div>
 </template>
 
@@ -54,8 +48,8 @@ import {
   BCard,
   BCardBody,
   BCardGroup,
-  BCardHeader, BCol,
-  BCollapse, BContainer, BRow,
+  BCardHeader,
+  BCollapse,
   VBToggle,
 } from 'bootstrap-vue'
 import { MetaInfo } from 'vue-meta'
@@ -76,10 +70,7 @@ export default Vue.extend({
     'b-card-body': BCardBody,
     'b-card-group': BCardGroup,
     'b-card-header': BCardHeader,
-    'b-col': BCol,
     'b-collapse': BCollapse,
-    'b-container': BContainer,
-    'b-row': BRow,
     ComponentPanel,
   },
   directives: {
