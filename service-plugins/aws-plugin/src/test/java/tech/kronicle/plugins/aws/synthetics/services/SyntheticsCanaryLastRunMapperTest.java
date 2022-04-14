@@ -139,7 +139,7 @@ public class SyntheticsCanaryLastRunMapperTest {
     private CheckState createCheck(int canaryLastRunNumber, String state, ComponentStateCheckStatus status) {
         return CheckState.builder()
                 .name("test-canary-name-" + canaryLastRunNumber)
-                .description("AWS Synthetics Canary Run")
+                .description("AWS Synthetics Canary")
                 .status(status)
                 .statusMessage(state + " - "
                         + "test-state-reason-code-" + canaryLastRunNumber + " - "

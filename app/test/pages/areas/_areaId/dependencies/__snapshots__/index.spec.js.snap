@@ -453,20 +453,6 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
         </div>
       </div>
     </div>
-     
-    <div
-      class="container-fluid"
-    >
-      <div
-        class="row"
-      >
-        <div
-          class="col"
-        >
-          <!---->
-        </div>
-      </div>
-    </div>
   </div>
 </div>
 `;
@@ -924,20 +910,6 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
         </div>
       </div>
     </div>
-     
-    <div
-      class="container-fluid"
-    >
-      <div
-        class="row"
-      >
-        <div
-          class="col"
-        >
-          <!---->
-        </div>
-      </div>
-    </div>
   </div>
 </div>
 `;
@@ -1392,20 +1364,6 @@ exports[`Index when Get Summary service endpoint returns no dependencies renders
               </label>
             </div>
           </div>
-        </div>
-      </div>
-    </div>
-     
-    <div
-      class="container-fluid"
-    >
-      <div
-        class="row"
-      >
-        <div
-          class="col"
-        >
-          <!---->
         </div>
       </div>
     </div>

@@ -232,7 +232,6 @@ export default Vue.extend({
   },
   data() {
     return {
-      height: 1200,
       nodeSize: 10,
       fontSize: 14,
       labelOffset: 20,

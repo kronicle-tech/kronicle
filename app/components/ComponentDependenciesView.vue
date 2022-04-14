@@ -69,26 +69,14 @@
         </b-col>
       </b-row>
     </b-container>
-
-    <b-container fluid>
-      <b-row>
-        <b-col>
-          <div
-            v-if="excludedComponents && excludedComponents.length > 0"
-            class="excluded-components my-3"
-          >
-            <h2>Excluded Components</h2>
-            <ComponentTable :components="excludedComponents" />
-          </div>
-        </b-col>
-      </b-row>
-    </b-container>
   </div>
 </template>
 
 <style scoped>
 .graph {
   overflow-x: scroll;
+  height: 1000px;
+  height: calc(100vh - 200px);
   scrollbar-color: #444 #111;
 }
 </style>
@@ -115,7 +103,6 @@ import { Network } from '~/types/component-dependency-graph'
 import { intRange } from '~/src/arrayUtils'
 import ComponentDependencyGraph from '~/components/ComponentDependencyGraph.vue'
 import ComponentPanel from '~/components/ComponentPanel.vue'
-import ComponentTable from '~/components/ComponentTable.vue'
 import ComponentFilters from '~/components/ComponentFilters.vue'
 
 interface Option {
@@ -135,7 +122,6 @@ export default Vue.extend({
     ComponentDependencyGraph,
     ComponentFilters,
     ComponentPanel,
-    ComponentTable,
   },
   props: {
     components: {
@@ -202,19 +188,6 @@ export default Vue.extend({
           value: zoomOption.toString(),
           text: `${zoomOption}%`,
         }
-      })
-    },
-    excludedComponents(): Component[] | undefined {
-      if (!this.network) {
-        return undefined
-      }
-
-      const componentIds = this.network.nodes.map((node) => {
-        return node.node.componentId
-      })
-
-      return this.components.filter((component) => {
-        return !componentIds.includes(component.id)
       })
     },
   },

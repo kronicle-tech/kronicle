@@ -25,7 +25,7 @@ public class SyntheticsCanaryLastRunMapper {
     public CheckState mapCanaryLastRun(SyntheticsCanaryLastRun canaryLastRun) {
         return CheckState.builder()
                 .name(canaryLastRun.getCanaryName())
-                .description("AWS Synthetics Canary Run")
+                .description("AWS Synthetics Canary")
                 .status(mapStatus(canaryLastRun))
                 .statusMessage(mapStatusMessage(canaryLastRun))
                 .updateTimestamp(canaryLastRun.getCompletedAt())

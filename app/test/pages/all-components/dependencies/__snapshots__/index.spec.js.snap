@@ -1,105 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Index when Get Summary service endpoint returns an array of multiple component dependencies renders the page 1`] = `
-<div>
-  <div
-    class="container-fluid"
-  >
-    <div
-      class="row"
-    >
-      <div
-        class="col"
-      >
-        <div
-          class="my-3"
-        >
-          <a
-            class="btn my-1 btn-secondary"
-            href="#"
-            target="_self"
-          >
-            Components
-          </a>
-           
-          <a
-            class="btn btn-secondary"
-            href="?testOutcome=fail"
-            target="_self"
-          >
-            
-    Tests
-  
-          </a>
-           
-          <a
-            class="btn my-1 btn-secondary"
-            href="#"
-            target="_self"
-          >
-            
-    Cross Functional Requirements
-  
-          </a>
-           
-          <a
-            class="btn my-1 btn-secondary"
-            href="#"
-            target="_self"
-          >
-            Tech Debts
-          </a>
-           
-          <a
-            class="btn my-1 btn-secondary"
-            href="#"
-            target="_self"
-          >
-            
-    Dependencies
-  
-          </a>
-           
-          <a
-            class="btn my-1 btn-secondary"
-            href="#"
-            target="_self"
-          >
-            
-    OpenAPI Specs
-  
-          </a>
-           
-          <a
-            class="btn my-1 btn-secondary"
-            href="#"
-            target="_self"
-          >
-            
-    Key Software
-  
-          </a>
-           
-          <a
-            class="btn my-1 btn-secondary"
-            href="#"
-            target="_self"
-          >
-            Repos
-          </a>
-           
-          <a
-            class="btn my-1 btn-secondary"
-            href="#"
-            target="_self"
-          >
-            Errors
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-   
+<div
+  class="mt-3"
+>
   <div>
     <div
       class="container-fluid"
@@ -386,11 +290,11 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
                
               <fieldset
                 class="form-group"
-                id="__BVID__159"
+                id="__BVID__91"
               >
                 <legend
                   class="bv-no-focus-ring col-form-label pt-0"
-                  id="__BVID__159__BV_label_"
+                  id="__BVID__91__BV_label_"
                   tabindex="-1"
                 >
                   Teams
@@ -398,7 +302,7 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
                 <div>
                   <div
                     class="bv-no-focus-ring"
-                    id="__BVID__160"
+                    id="__BVID__92"
                     role="group"
                     tabindex="-1"
                   >
@@ -407,14 +311,14 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
                     >
                       <input
                         class="custom-control-input"
-                        id="__BVID__160_BV_option_0"
+                        id="__BVID__92_BV_option_0"
                         name="team"
                         type="checkbox"
                         value="test-team-id-1-1"
                       />
                       <label
                         class="custom-control-label"
-                        for="__BVID__160_BV_option_0"
+                        for="__BVID__92_BV_option_0"
                       >
                         <span>
                           test-team-id-1-1
@@ -426,14 +330,14 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
                     >
                       <input
                         class="custom-control-input"
-                        id="__BVID__160_BV_option_1"
+                        id="__BVID__92_BV_option_1"
                         name="team"
                         type="checkbox"
                         value="test-team-id-1-2"
                       />
                       <label
                         class="custom-control-label"
-                        for="__BVID__160_BV_option_1"
+                        for="__BVID__92_BV_option_1"
                       >
                         <span>
                           test-team-id-1-2
@@ -445,14 +349,14 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
                     >
                       <input
                         class="custom-control-input"
-                        id="__BVID__160_BV_option_2"
+                        id="__BVID__92_BV_option_2"
                         name="team"
                         type="checkbox"
                         value="test-team-id-2-1"
                       />
                       <label
                         class="custom-control-label"
-                        for="__BVID__160_BV_option_2"
+                        for="__BVID__92_BV_option_2"
                       >
                         <span>
                           test-team-id-2-1
@@ -464,14 +368,14 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
                     >
                       <input
                         class="custom-control-input"
-                        id="__BVID__160_BV_option_3"
+                        id="__BVID__92_BV_option_3"
                         name="team"
                         type="checkbox"
                         value="test-team-id-2-2"
                       />
                       <label
                         class="custom-control-label"
-                        for="__BVID__160_BV_option_3"
+                        for="__BVID__92_BV_option_3"
                       >
                         <span>
                           test-team-id-2-2
@@ -483,14 +387,14 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
                     >
                       <input
                         class="custom-control-input"
-                        id="__BVID__160_BV_option_4"
+                        id="__BVID__92_BV_option_4"
                         name="team"
                         type="checkbox"
                         value="test-team-id-3-1"
                       />
                       <label
                         class="custom-control-label"
-                        for="__BVID__160_BV_option_4"
+                        for="__BVID__92_BV_option_4"
                       >
                         <span>
                           test-team-id-3-1
@@ -502,14 +406,14 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
                     >
                       <input
                         class="custom-control-input"
-                        id="__BVID__160_BV_option_5"
+                        id="__BVID__92_BV_option_5"
                         name="team"
                         type="checkbox"
                         value="test-team-id-3-2"
                       />
                       <label
                         class="custom-control-label"
-                        for="__BVID__160_BV_option_5"
+                        for="__BVID__92_BV_option_5"
                       >
                         <span>
                           test-team-id-3-2
@@ -525,11 +429,11 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
                
               <fieldset
                 class="form-group"
-                id="__BVID__167"
+                id="__BVID__99"
               >
                 <legend
                   class="bv-no-focus-ring col-form-label pt-0"
-                  id="__BVID__167__BV_label_"
+                  id="__BVID__99__BV_label_"
                   tabindex="-1"
                 >
                   Tags
@@ -537,7 +441,7 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
                 <div>
                   <div
                     class="bv-no-focus-ring"
-                    id="__BVID__168"
+                    id="__BVID__100"
                     role="group"
                     tabindex="-1"
                   >
@@ -546,14 +450,14 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
                     >
                       <input
                         class="custom-control-input"
-                        id="__BVID__168_BV_option_0"
+                        id="__BVID__100_BV_option_0"
                         name="tag"
                         type="checkbox"
                         value="test-tag-1-1"
                       />
                       <label
                         class="custom-control-label"
-                        for="__BVID__168_BV_option_0"
+                        for="__BVID__100_BV_option_0"
                       >
                         <span>
                           test-tag-1-1
@@ -565,14 +469,14 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
                     >
                       <input
                         class="custom-control-input"
-                        id="__BVID__168_BV_option_1"
+                        id="__BVID__100_BV_option_1"
                         name="tag"
                         type="checkbox"
                         value="test-tag-1-2"
                       />
                       <label
                         class="custom-control-label"
-                        for="__BVID__168_BV_option_1"
+                        for="__BVID__100_BV_option_1"
                       >
                         <span>
                           test-tag-1-2
@@ -584,14 +488,14 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
                     >
                       <input
                         class="custom-control-input"
-                        id="__BVID__168_BV_option_2"
+                        id="__BVID__100_BV_option_2"
                         name="tag"
                         type="checkbox"
                         value="test-tag-2-1"
                       />
                       <label
                         class="custom-control-label"
-                        for="__BVID__168_BV_option_2"
+                        for="__BVID__100_BV_option_2"
                       >
                         <span>
                           test-tag-2-1
@@ -603,14 +507,14 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
                     >
                       <input
                         class="custom-control-input"
-                        id="__BVID__168_BV_option_3"
+                        id="__BVID__100_BV_option_3"
                         name="tag"
                         type="checkbox"
                         value="test-tag-2-2"
                       />
                       <label
                         class="custom-control-label"
-                        for="__BVID__168_BV_option_3"
+                        for="__BVID__100_BV_option_3"
                       >
                         <span>
                           test-tag-2-2
@@ -622,14 +526,14 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
                     >
                       <input
                         class="custom-control-input"
-                        id="__BVID__168_BV_option_4"
+                        id="__BVID__100_BV_option_4"
                         name="tag"
                         type="checkbox"
                         value="test-tag-3-1"
                       />
                       <label
                         class="custom-control-label"
-                        for="__BVID__168_BV_option_4"
+                        for="__BVID__100_BV_option_4"
                       >
                         <span>
                           test-tag-3-1
@@ -641,14 +545,14 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
                     >
                       <input
                         class="custom-control-input"
-                        id="__BVID__168_BV_option_5"
+                        id="__BVID__100_BV_option_5"
                         name="tag"
                         type="checkbox"
                         value="test-tag-3-2"
                       />
                       <label
                         class="custom-control-label"
-                        for="__BVID__168_BV_option_5"
+                        for="__BVID__100_BV_option_5"
                       >
                         <span>
                           test-tag-3-2
@@ -664,11 +568,11 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
                
               <fieldset
                 class="form-group"
-                id="__BVID__175"
+                id="__BVID__107"
               >
                 <legend
                   class="bv-no-focus-ring col-form-label pt-0"
-                  id="__BVID__175__BV_label_"
+                  id="__BVID__107__BV_label_"
                   tabindex="-1"
                 >
                   Component Types
@@ -676,7 +580,7 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
                 <div>
                   <div
                     class="bv-no-focus-ring"
-                    id="__BVID__176"
+                    id="__BVID__108"
                     role="group"
                     tabindex="-1"
                   >
@@ -685,14 +589,14 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
                     >
                       <input
                         class="custom-control-input"
-                        id="__BVID__176_BV_option_0"
+                        id="__BVID__108_BV_option_0"
                         name="componentTypeId"
                         type="checkbox"
                         value="test-component-type-id-1"
                       />
                       <label
                         class="custom-control-label"
-                        for="__BVID__176_BV_option_0"
+                        for="__BVID__108_BV_option_0"
                       >
                         <span>
                           test-component-type-id-1
@@ -704,14 +608,14 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
                     >
                       <input
                         class="custom-control-input"
-                        id="__BVID__176_BV_option_1"
+                        id="__BVID__108_BV_option_1"
                         name="componentTypeId"
                         type="checkbox"
                         value="test-component-type-id-2"
                       />
                       <label
                         class="custom-control-label"
-                        for="__BVID__176_BV_option_1"
+                        for="__BVID__108_BV_option_1"
                       >
                         <span>
                           test-component-type-id-2
@@ -723,14 +627,14 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
                     >
                       <input
                         class="custom-control-input"
-                        id="__BVID__176_BV_option_2"
+                        id="__BVID__108_BV_option_2"
                         name="componentTypeId"
                         type="checkbox"
                         value="test-component-type-id-3"
                       />
                       <label
                         class="custom-control-label"
-                        for="__BVID__176_BV_option_2"
+                        for="__BVID__108_BV_option_2"
                       >
                         <span>
                           test-component-type-id-3
@@ -746,11 +650,11 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
                
               <fieldset
                 class="form-group"
-                id="__BVID__180"
+                id="__BVID__112"
               >
                 <legend
                   class="bv-no-focus-ring col-form-label pt-0"
-                  id="__BVID__180__BV_label_"
+                  id="__BVID__112__BV_label_"
                   tabindex="-1"
                 >
                   Platforms
@@ -758,7 +662,7 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
                 <div>
                   <div
                     class="bv-no-focus-ring"
-                    id="__BVID__181"
+                    id="__BVID__113"
                     role="group"
                     tabindex="-1"
                   >
@@ -767,14 +671,14 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
                     >
                       <input
                         class="custom-control-input"
-                        id="__BVID__181_BV_option_0"
+                        id="__BVID__113_BV_option_0"
                         name="platformId"
                         type="checkbox"
                         value="undefined"
                       />
                       <label
                         class="custom-control-label"
-                        for="__BVID__181_BV_option_0"
+                        for="__BVID__113_BV_option_0"
                       >
                         <span>
                           undefined
@@ -790,13 +694,13 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
                
               <div
                 class="form-group"
-                id="__BVID__183"
+                id="__BVID__115"
                 role="group"
               >
                 <label
                   class="d-block"
                   for="component-filter"
-                  id="__BVID__183__BV_label_"
+                  id="__BVID__115__BV_label_"
                 >
                   Component
                 </label>
@@ -835,13 +739,13 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
              
             <div
               class="form-row form-group my-3 mr-2"
-              id="__BVID__185"
+              id="__BVID__117"
               role="group"
             >
               <label
                 class="col-6 col-form-label col-form-label-sm"
                 for="graph-scope-related-radius"
-                id="__BVID__185__BV_label_"
+                id="__BVID__117__BV_label_"
               >
                 Radius:
               </label>
@@ -916,13 +820,13 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
              
             <div
               class="form-row form-group my-3 mr-2"
-              id="__BVID__187"
+              id="__BVID__119"
               role="group"
             >
               <label
                 class="col-6 col-form-label col-form-label-sm"
                 for="graph-zoom"
-                id="__BVID__187__BV_label_"
+                id="__BVID__119__BV_label_"
               >
                 Zoom:
               </label>
@@ -1002,124 +906,14 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
         </div>
       </div>
     </div>
-     
-    <div
-      class="container-fluid"
-    >
-      <div
-        class="row"
-      >
-        <div
-          class="col"
-        >
-          <!---->
-        </div>
-      </div>
-    </div>
   </div>
 </div>
 `;
 
 exports[`Index when Get Summary service endpoint returns an array of multiple component dependencies when a node is clicked when the node has only downstream dependencies shows downstream dependencies in panel 1`] = `
-<div>
-  <div
-    class="container-fluid"
-  >
-    <div
-      class="row"
-    >
-      <div
-        class="col"
-      >
-        <div
-          class="my-3"
-        >
-          <a
-            class="btn my-1 btn-secondary"
-            href="#"
-            target="_self"
-          >
-            Components
-          </a>
-           
-          <a
-            class="btn btn-secondary"
-            href="?testOutcome=fail"
-            target="_self"
-          >
-            
-    Tests
-  
-          </a>
-           
-          <a
-            class="btn my-1 btn-secondary"
-            href="#"
-            target="_self"
-          >
-            
-    Cross Functional Requirements
-  
-          </a>
-           
-          <a
-            class="btn my-1 btn-secondary"
-            href="#"
-            target="_self"
-          >
-            Tech Debts
-          </a>
-           
-          <a
-            class="btn my-1 btn-secondary"
-            href="#"
-            target="_self"
-          >
-            
-    Dependencies
-  
-          </a>
-           
-          <a
-            class="btn my-1 btn-secondary"
-            href="#"
-            target="_self"
-          >
-            
-    OpenAPI Specs
-  
-          </a>
-           
-          <a
-            class="btn my-1 btn-secondary"
-            href="#"
-            target="_self"
-          >
-            
-    Key Software
-  
-          </a>
-           
-          <a
-            class="btn my-1 btn-secondary"
-            href="#"
-            target="_self"
-          >
-            Repos
-          </a>
-           
-          <a
-            class="btn my-1 btn-secondary"
-            href="#"
-            target="_self"
-          >
-            Errors
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-   
+<div
+  class="mt-3"
+>
   <div>
     <div
       class="container-fluid"
@@ -1487,124 +1281,14 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
         </div>
       </div>
     </div>
-     
-    <div
-      class="container-fluid"
-    >
-      <div
-        class="row"
-      >
-        <div
-          class="col"
-        >
-          <!---->
-        </div>
-      </div>
-    </div>
   </div>
 </div>
 `;
 
 exports[`Index when Get Summary service endpoint returns an array of multiple component dependencies when a node is clicked when the node has only upstream dependencies shows upstream dependencies in panel 1`] = `
-<div>
-  <div
-    class="container-fluid"
-  >
-    <div
-      class="row"
-    >
-      <div
-        class="col"
-      >
-        <div
-          class="my-3"
-        >
-          <a
-            class="btn my-1 btn-secondary"
-            href="#"
-            target="_self"
-          >
-            Components
-          </a>
-           
-          <a
-            class="btn btn-secondary"
-            href="?testOutcome=fail"
-            target="_self"
-          >
-            
-    Tests
-  
-          </a>
-           
-          <a
-            class="btn my-1 btn-secondary"
-            href="#"
-            target="_self"
-          >
-            
-    Cross Functional Requirements
-  
-          </a>
-           
-          <a
-            class="btn my-1 btn-secondary"
-            href="#"
-            target="_self"
-          >
-            Tech Debts
-          </a>
-           
-          <a
-            class="btn my-1 btn-secondary"
-            href="#"
-            target="_self"
-          >
-            
-    Dependencies
-  
-          </a>
-           
-          <a
-            class="btn my-1 btn-secondary"
-            href="#"
-            target="_self"
-          >
-            
-    OpenAPI Specs
-  
-          </a>
-           
-          <a
-            class="btn my-1 btn-secondary"
-            href="#"
-            target="_self"
-          >
-            
-    Key Software
-  
-          </a>
-           
-          <a
-            class="btn my-1 btn-secondary"
-            href="#"
-            target="_self"
-          >
-            Repos
-          </a>
-           
-          <a
-            class="btn my-1 btn-secondary"
-            href="#"
-            target="_self"
-          >
-            Errors
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-   
+<div
+  class="mt-3"
+>
   <div>
     <div
       class="container-fluid"
@@ -1972,124 +1656,14 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
         </div>
       </div>
     </div>
-     
-    <div
-      class="container-fluid"
-    >
-      <div
-        class="row"
-      >
-        <div
-          class="col"
-        >
-          <!---->
-        </div>
-      </div>
-    </div>
   </div>
 </div>
 `;
 
 exports[`Index when Get Summary service endpoint returns an array of multiple component dependencies when a node is clicked when the node has upstream and downstream dependencies shows both upstream and downstream dependencies in panel 1`] = `
-<div>
-  <div
-    class="container-fluid"
-  >
-    <div
-      class="row"
-    >
-      <div
-        class="col"
-      >
-        <div
-          class="my-3"
-        >
-          <a
-            class="btn my-1 btn-secondary"
-            href="#"
-            target="_self"
-          >
-            Components
-          </a>
-           
-          <a
-            class="btn btn-secondary"
-            href="?testOutcome=fail"
-            target="_self"
-          >
-            
-    Tests
-  
-          </a>
-           
-          <a
-            class="btn my-1 btn-secondary"
-            href="#"
-            target="_self"
-          >
-            
-    Cross Functional Requirements
-  
-          </a>
-           
-          <a
-            class="btn my-1 btn-secondary"
-            href="#"
-            target="_self"
-          >
-            Tech Debts
-          </a>
-           
-          <a
-            class="btn my-1 btn-secondary"
-            href="#"
-            target="_self"
-          >
-            
-    Dependencies
-  
-          </a>
-           
-          <a
-            class="btn my-1 btn-secondary"
-            href="#"
-            target="_self"
-          >
-            
-    OpenAPI Specs
-  
-          </a>
-           
-          <a
-            class="btn my-1 btn-secondary"
-            href="#"
-            target="_self"
-          >
-            
-    Key Software
-  
-          </a>
-           
-          <a
-            class="btn my-1 btn-secondary"
-            href="#"
-            target="_self"
-          >
-            Repos
-          </a>
-           
-          <a
-            class="btn my-1 btn-secondary"
-            href="#"
-            target="_self"
-          >
-            Errors
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-   
+<div
+  class="mt-3"
+>
   <div>
     <div
       class="container-fluid"
@@ -2453,20 +2027,6 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
              
             <!---->
           </div>
-        </div>
-      </div>
-    </div>
-     
-    <div
-      class="container-fluid"
-    >
-      <div
-        class="row"
-      >
-        <div
-          class="col"
-        >
-          <!---->
         </div>
       </div>
     </div>
@@ -2475,105 +2035,9 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
 `;
 
 exports[`Index when Get Summary service endpoint returns an array of multiple component dependencies when the detailed checkbox is checked shows detailed dependencies in graph 1`] = `
-<div>
-  <div
-    class="container-fluid"
-  >
-    <div
-      class="row"
-    >
-      <div
-        class="col"
-      >
-        <div
-          class="my-3"
-        >
-          <a
-            class="btn my-1 btn-secondary"
-            href="#"
-            target="_self"
-          >
-            Components
-          </a>
-           
-          <a
-            class="btn btn-secondary"
-            href="?testOutcome=fail"
-            target="_self"
-          >
-            
-    Tests
-  
-          </a>
-           
-          <a
-            class="btn my-1 btn-secondary"
-            href="#"
-            target="_self"
-          >
-            
-    Cross Functional Requirements
-  
-          </a>
-           
-          <a
-            class="btn my-1 btn-secondary"
-            href="#"
-            target="_self"
-          >
-            Tech Debts
-          </a>
-           
-          <a
-            class="btn my-1 btn-secondary"
-            href="#"
-            target="_self"
-          >
-            
-    Dependencies
-  
-          </a>
-           
-          <a
-            class="btn my-1 btn-secondary"
-            href="#"
-            target="_self"
-          >
-            
-    OpenAPI Specs
-  
-          </a>
-           
-          <a
-            class="btn my-1 btn-secondary"
-            href="#"
-            target="_self"
-          >
-            
-    Key Software
-  
-          </a>
-           
-          <a
-            class="btn my-1 btn-secondary"
-            href="#"
-            target="_self"
-          >
-            Repos
-          </a>
-           
-          <a
-            class="btn my-1 btn-secondary"
-            href="#"
-            target="_self"
-          >
-            Errors
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-   
+<div
+  class="mt-3"
+>
   <div>
     <div
       class="container-fluid"
@@ -2860,11 +2324,11 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
                
               <fieldset
                 class="form-group"
-                id="__BVID__380"
+                id="__BVID__272"
               >
                 <legend
                   class="bv-no-focus-ring col-form-label pt-0"
-                  id="__BVID__380__BV_label_"
+                  id="__BVID__272__BV_label_"
                   tabindex="-1"
                 >
                   Teams
@@ -2872,7 +2336,7 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
                 <div>
                   <div
                     class="bv-no-focus-ring"
-                    id="__BVID__381"
+                    id="__BVID__273"
                     role="group"
                     tabindex="-1"
                   >
@@ -2881,14 +2345,14 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
                     >
                       <input
                         class="custom-control-input"
-                        id="__BVID__381_BV_option_0"
+                        id="__BVID__273_BV_option_0"
                         name="team"
                         type="checkbox"
                         value="test-team-id-1-1"
                       />
                       <label
                         class="custom-control-label"
-                        for="__BVID__381_BV_option_0"
+                        for="__BVID__273_BV_option_0"
                       >
                         <span>
                           test-team-id-1-1
@@ -2900,14 +2364,14 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
                     >
                       <input
                         class="custom-control-input"
-                        id="__BVID__381_BV_option_1"
+                        id="__BVID__273_BV_option_1"
                         name="team"
                         type="checkbox"
                         value="test-team-id-1-2"
                       />
                       <label
                         class="custom-control-label"
-                        for="__BVID__381_BV_option_1"
+                        for="__BVID__273_BV_option_1"
                       >
                         <span>
                           test-team-id-1-2
@@ -2919,14 +2383,14 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
                     >
                       <input
                         class="custom-control-input"
-                        id="__BVID__381_BV_option_2"
+                        id="__BVID__273_BV_option_2"
                         name="team"
                         type="checkbox"
                         value="test-team-id-2-1"
                       />
                       <label
                         class="custom-control-label"
-                        for="__BVID__381_BV_option_2"
+                        for="__BVID__273_BV_option_2"
                       >
                         <span>
                           test-team-id-2-1
@@ -2938,14 +2402,14 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
                     >
                       <input
                         class="custom-control-input"
-                        id="__BVID__381_BV_option_3"
+                        id="__BVID__273_BV_option_3"
                         name="team"
                         type="checkbox"
                         value="test-team-id-2-2"
                       />
                       <label
                         class="custom-control-label"
-                        for="__BVID__381_BV_option_3"
+                        for="__BVID__273_BV_option_3"
                       >
                         <span>
                           test-team-id-2-2
@@ -2957,14 +2421,14 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
                     >
                       <input
                         class="custom-control-input"
-                        id="__BVID__381_BV_option_4"
+                        id="__BVID__273_BV_option_4"
                         name="team"
                         type="checkbox"
                         value="test-team-id-3-1"
                       />
                       <label
                         class="custom-control-label"
-                        for="__BVID__381_BV_option_4"
+                        for="__BVID__273_BV_option_4"
                       >
                         <span>
                           test-team-id-3-1
@@ -2976,14 +2440,14 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
                     >
                       <input
                         class="custom-control-input"
-                        id="__BVID__381_BV_option_5"
+                        id="__BVID__273_BV_option_5"
                         name="team"
                         type="checkbox"
                         value="test-team-id-3-2"
                       />
                       <label
                         class="custom-control-label"
-                        for="__BVID__381_BV_option_5"
+                        for="__BVID__273_BV_option_5"
                       >
                         <span>
                           test-team-id-3-2
@@ -2999,11 +2463,11 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
                
               <fieldset
                 class="form-group"
-                id="__BVID__388"
+                id="__BVID__280"
               >
                 <legend
                   class="bv-no-focus-ring col-form-label pt-0"
-                  id="__BVID__388__BV_label_"
+                  id="__BVID__280__BV_label_"
                   tabindex="-1"
                 >
                   Tags
@@ -3011,7 +2475,7 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
                 <div>
                   <div
                     class="bv-no-focus-ring"
-                    id="__BVID__389"
+                    id="__BVID__281"
                     role="group"
                     tabindex="-1"
                   >
@@ -3020,14 +2484,14 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
                     >
                       <input
                         class="custom-control-input"
-                        id="__BVID__389_BV_option_0"
+                        id="__BVID__281_BV_option_0"
                         name="tag"
                         type="checkbox"
                         value="test-tag-1-1"
                       />
                       <label
                         class="custom-control-label"
-                        for="__BVID__389_BV_option_0"
+                        for="__BVID__281_BV_option_0"
                       >
                         <span>
                           test-tag-1-1
@@ -3039,14 +2503,14 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
                     >
                       <input
                         class="custom-control-input"
-                        id="__BVID__389_BV_option_1"
+                        id="__BVID__281_BV_option_1"
                         name="tag"
                         type="checkbox"
                         value="test-tag-1-2"
                       />
                       <label
                         class="custom-control-label"
-                        for="__BVID__389_BV_option_1"
+                        for="__BVID__281_BV_option_1"
                       >
                         <span>
                           test-tag-1-2
@@ -3058,14 +2522,14 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
                     >
                       <input
                         class="custom-control-input"
-                        id="__BVID__389_BV_option_2"
+                        id="__BVID__281_BV_option_2"
                         name="tag"
                         type="checkbox"
                         value="test-tag-2-1"
                       />
                       <label
                         class="custom-control-label"
-                        for="__BVID__389_BV_option_2"
+                        for="__BVID__281_BV_option_2"
                       >
                         <span>
                           test-tag-2-1
@@ -3077,14 +2541,14 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
                     >
                       <input
                         class="custom-control-input"
-                        id="__BVID__389_BV_option_3"
+                        id="__BVID__281_BV_option_3"
                         name="tag"
                         type="checkbox"
                         value="test-tag-2-2"
                       />
                       <label
                         class="custom-control-label"
-                        for="__BVID__389_BV_option_3"
+                        for="__BVID__281_BV_option_3"
                       >
                         <span>
                           test-tag-2-2
@@ -3096,14 +2560,14 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
                     >
                       <input
                         class="custom-control-input"
-                        id="__BVID__389_BV_option_4"
+                        id="__BVID__281_BV_option_4"
                         name="tag"
                         type="checkbox"
                         value="test-tag-3-1"
                       />
                       <label
                         class="custom-control-label"
-                        for="__BVID__389_BV_option_4"
+                        for="__BVID__281_BV_option_4"
                       >
                         <span>
                           test-tag-3-1
@@ -3115,14 +2579,14 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
                     >
                       <input
                         class="custom-control-input"
-                        id="__BVID__389_BV_option_5"
+                        id="__BVID__281_BV_option_5"
                         name="tag"
                         type="checkbox"
                         value="test-tag-3-2"
                       />
                       <label
                         class="custom-control-label"
-                        for="__BVID__389_BV_option_5"
+                        for="__BVID__281_BV_option_5"
                       >
                         <span>
                           test-tag-3-2
@@ -3138,11 +2602,11 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
                
               <fieldset
                 class="form-group"
-                id="__BVID__396"
+                id="__BVID__288"
               >
                 <legend
                   class="bv-no-focus-ring col-form-label pt-0"
-                  id="__BVID__396__BV_label_"
+                  id="__BVID__288__BV_label_"
                   tabindex="-1"
                 >
                   Component Types
@@ -3150,7 +2614,7 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
                 <div>
                   <div
                     class="bv-no-focus-ring"
-                    id="__BVID__397"
+                    id="__BVID__289"
                     role="group"
                     tabindex="-1"
                   >
@@ -3159,14 +2623,14 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
                     >
                       <input
                         class="custom-control-input"
-                        id="__BVID__397_BV_option_0"
+                        id="__BVID__289_BV_option_0"
                         name="componentTypeId"
                         type="checkbox"
                         value="test-component-type-id-1"
                       />
                       <label
                         class="custom-control-label"
-                        for="__BVID__397_BV_option_0"
+                        for="__BVID__289_BV_option_0"
                       >
                         <span>
                           test-component-type-id-1
@@ -3178,14 +2642,14 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
                     >
                       <input
                         class="custom-control-input"
-                        id="__BVID__397_BV_option_1"
+                        id="__BVID__289_BV_option_1"
                         name="componentTypeId"
                         type="checkbox"
                         value="test-component-type-id-2"
                       />
                       <label
                         class="custom-control-label"
-                        for="__BVID__397_BV_option_1"
+                        for="__BVID__289_BV_option_1"
                       >
                         <span>
                           test-component-type-id-2
@@ -3197,14 +2661,14 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
                     >
                       <input
                         class="custom-control-input"
-                        id="__BVID__397_BV_option_2"
+                        id="__BVID__289_BV_option_2"
                         name="componentTypeId"
                         type="checkbox"
                         value="test-component-type-id-3"
                       />
                       <label
                         class="custom-control-label"
-                        for="__BVID__397_BV_option_2"
+                        for="__BVID__289_BV_option_2"
                       >
                         <span>
                           test-component-type-id-3
@@ -3220,11 +2684,11 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
                
               <fieldset
                 class="form-group"
-                id="__BVID__401"
+                id="__BVID__293"
               >
                 <legend
                   class="bv-no-focus-ring col-form-label pt-0"
-                  id="__BVID__401__BV_label_"
+                  id="__BVID__293__BV_label_"
                   tabindex="-1"
                 >
                   Platforms
@@ -3232,7 +2696,7 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
                 <div>
                   <div
                     class="bv-no-focus-ring"
-                    id="__BVID__402"
+                    id="__BVID__294"
                     role="group"
                     tabindex="-1"
                   >
@@ -3241,14 +2705,14 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
                     >
                       <input
                         class="custom-control-input"
-                        id="__BVID__402_BV_option_0"
+                        id="__BVID__294_BV_option_0"
                         name="platformId"
                         type="checkbox"
                         value="undefined"
                       />
                       <label
                         class="custom-control-label"
-                        for="__BVID__402_BV_option_0"
+                        for="__BVID__294_BV_option_0"
                       >
                         <span>
                           undefined
@@ -3264,13 +2728,13 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
                
               <div
                 class="form-group"
-                id="__BVID__404"
+                id="__BVID__296"
                 role="group"
               >
                 <label
                   class="d-block"
                   for="component-filter"
-                  id="__BVID__404__BV_label_"
+                  id="__BVID__296__BV_label_"
                 >
                   Component
                 </label>
@@ -3309,13 +2773,13 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
              
             <div
               class="form-row form-group my-3 mr-2"
-              id="__BVID__406"
+              id="__BVID__298"
               role="group"
             >
               <label
                 class="col-6 col-form-label col-form-label-sm"
                 for="graph-scope-related-radius"
-                id="__BVID__406__BV_label_"
+                id="__BVID__298__BV_label_"
               >
                 Radius:
               </label>
@@ -3390,13 +2854,13 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
              
             <div
               class="form-row form-group my-3 mr-2"
-              id="__BVID__408"
+              id="__BVID__300"
               role="group"
             >
               <label
                 class="col-6 col-form-label col-form-label-sm"
                 for="graph-zoom"
-                id="__BVID__408__BV_label_"
+                id="__BVID__300__BV_label_"
               >
                 Zoom:
               </label>
@@ -3476,124 +2940,14 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
         </div>
       </div>
     </div>
-     
-    <div
-      class="container-fluid"
-    >
-      <div
-        class="row"
-      >
-        <div
-          class="col"
-        >
-          <!---->
-        </div>
-      </div>
-    </div>
   </div>
 </div>
 `;
 
 exports[`Index when Get Summary service endpoint returns an array of multiple component dependencies when the detailed checkbox is checked when a node is clicked shows dependencies and component details in panel 1`] = `
-<div>
-  <div
-    class="container-fluid"
-  >
-    <div
-      class="row"
-    >
-      <div
-        class="col"
-      >
-        <div
-          class="my-3"
-        >
-          <a
-            class="btn my-1 btn-secondary"
-            href="#"
-            target="_self"
-          >
-            Components
-          </a>
-           
-          <a
-            class="btn btn-secondary"
-            href="?testOutcome=fail"
-            target="_self"
-          >
-            
-    Tests
-  
-          </a>
-           
-          <a
-            class="btn my-1 btn-secondary"
-            href="#"
-            target="_self"
-          >
-            
-    Cross Functional Requirements
-  
-          </a>
-           
-          <a
-            class="btn my-1 btn-secondary"
-            href="#"
-            target="_self"
-          >
-            Tech Debts
-          </a>
-           
-          <a
-            class="btn my-1 btn-secondary"
-            href="#"
-            target="_self"
-          >
-            
-    Dependencies
-  
-          </a>
-           
-          <a
-            class="btn my-1 btn-secondary"
-            href="#"
-            target="_self"
-          >
-            
-    OpenAPI Specs
-  
-          </a>
-           
-          <a
-            class="btn my-1 btn-secondary"
-            href="#"
-            target="_self"
-          >
-            
-    Key Software
-  
-          </a>
-           
-          <a
-            class="btn my-1 btn-secondary"
-            href="#"
-            target="_self"
-          >
-            Repos
-          </a>
-           
-          <a
-            class="btn my-1 btn-secondary"
-            href="#"
-            target="_self"
-          >
-            Errors
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-   
+<div
+  class="mt-3"
+>
   <div>
     <div
       class="container-fluid"
@@ -3960,124 +3314,14 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
         </div>
       </div>
     </div>
-     
-    <div
-      class="container-fluid"
-    >
-      <div
-        class="row"
-      >
-        <div
-          class="col"
-        >
-          <!---->
-        </div>
-      </div>
-    </div>
   </div>
 </div>
 `;
 
 exports[`Index when Get Summary service endpoint returns no dependencies renders the page 1`] = `
-<div>
-  <div
-    class="container-fluid"
-  >
-    <div
-      class="row"
-    >
-      <div
-        class="col"
-      >
-        <div
-          class="my-3"
-        >
-          <a
-            class="btn my-1 btn-secondary"
-            href="#"
-            target="_self"
-          >
-            Components
-          </a>
-           
-          <a
-            class="btn btn-secondary"
-            href="?testOutcome=fail"
-            target="_self"
-          >
-            
-    Tests
-  
-          </a>
-           
-          <a
-            class="btn my-1 btn-secondary"
-            href="#"
-            target="_self"
-          >
-            
-    Cross Functional Requirements
-  
-          </a>
-           
-          <a
-            class="btn my-1 btn-secondary"
-            href="#"
-            target="_self"
-          >
-            Tech Debts
-          </a>
-           
-          <a
-            class="btn my-1 btn-secondary"
-            href="#"
-            target="_self"
-          >
-            
-    Dependencies
-  
-          </a>
-           
-          <a
-            class="btn my-1 btn-secondary"
-            href="#"
-            target="_self"
-          >
-            
-    OpenAPI Specs
-  
-          </a>
-           
-          <a
-            class="btn my-1 btn-secondary"
-            href="#"
-            target="_self"
-          >
-            
-    Key Software
-  
-          </a>
-           
-          <a
-            class="btn my-1 btn-secondary"
-            href="#"
-            target="_self"
-          >
-            Repos
-          </a>
-           
-          <a
-            class="btn my-1 btn-secondary"
-            href="#"
-            target="_self"
-          >
-            Errors
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-   
+<div
+  class="mt-3"
+>
   <div>
     <div
       class="container-fluid"
@@ -4277,11 +3521,11 @@ exports[`Index when Get Summary service endpoint returns no dependencies renders
                
               <fieldset
                 class="form-group"
-                id="__BVID__90"
+                id="__BVID__51"
               >
                 <legend
                   class="bv-no-focus-ring col-form-label pt-0"
-                  id="__BVID__90__BV_label_"
+                  id="__BVID__51__BV_label_"
                   tabindex="-1"
                 >
                   Teams
@@ -4289,7 +3533,7 @@ exports[`Index when Get Summary service endpoint returns no dependencies renders
                 <div>
                   <div
                     class="bv-no-focus-ring"
-                    id="__BVID__91"
+                    id="__BVID__52"
                     role="group"
                     tabindex="-1"
                   >
@@ -4298,14 +3542,14 @@ exports[`Index when Get Summary service endpoint returns no dependencies renders
                     >
                       <input
                         class="custom-control-input"
-                        id="__BVID__91_BV_option_0"
+                        id="__BVID__52_BV_option_0"
                         name="team"
                         type="checkbox"
                         value="test-team-id-1-1"
                       />
                       <label
                         class="custom-control-label"
-                        for="__BVID__91_BV_option_0"
+                        for="__BVID__52_BV_option_0"
                       >
                         <span>
                           test-team-id-1-1
@@ -4317,14 +3561,14 @@ exports[`Index when Get Summary service endpoint returns no dependencies renders
                     >
                       <input
                         class="custom-control-input"
-                        id="__BVID__91_BV_option_1"
+                        id="__BVID__52_BV_option_1"
                         name="team"
                         type="checkbox"
                         value="test-team-id-1-2"
                       />
                       <label
                         class="custom-control-label"
-                        for="__BVID__91_BV_option_1"
+                        for="__BVID__52_BV_option_1"
                       >
                         <span>
                           test-team-id-1-2
@@ -4336,14 +3580,14 @@ exports[`Index when Get Summary service endpoint returns no dependencies renders
                     >
                       <input
                         class="custom-control-input"
-                        id="__BVID__91_BV_option_2"
+                        id="__BVID__52_BV_option_2"
                         name="team"
                         type="checkbox"
                         value="test-team-id-2-1"
                       />
                       <label
                         class="custom-control-label"
-                        for="__BVID__91_BV_option_2"
+                        for="__BVID__52_BV_option_2"
                       >
                         <span>
                           test-team-id-2-1
@@ -4355,14 +3599,14 @@ exports[`Index when Get Summary service endpoint returns no dependencies renders
                     >
                       <input
                         class="custom-control-input"
-                        id="__BVID__91_BV_option_3"
+                        id="__BVID__52_BV_option_3"
                         name="team"
                         type="checkbox"
                         value="test-team-id-2-2"
                       />
                       <label
                         class="custom-control-label"
-                        for="__BVID__91_BV_option_3"
+                        for="__BVID__52_BV_option_3"
                       >
                         <span>
                           test-team-id-2-2
@@ -4374,14 +3618,14 @@ exports[`Index when Get Summary service endpoint returns no dependencies renders
                     >
                       <input
                         class="custom-control-input"
-                        id="__BVID__91_BV_option_4"
+                        id="__BVID__52_BV_option_4"
                         name="team"
                         type="checkbox"
                         value="test-team-id-3-1"
                       />
                       <label
                         class="custom-control-label"
-                        for="__BVID__91_BV_option_4"
+                        for="__BVID__52_BV_option_4"
                       >
                         <span>
                           test-team-id-3-1
@@ -4393,14 +3637,14 @@ exports[`Index when Get Summary service endpoint returns no dependencies renders
                     >
                       <input
                         class="custom-control-input"
-                        id="__BVID__91_BV_option_5"
+                        id="__BVID__52_BV_option_5"
                         name="team"
                         type="checkbox"
                         value="test-team-id-3-2"
                       />
                       <label
                         class="custom-control-label"
-                        for="__BVID__91_BV_option_5"
+                        for="__BVID__52_BV_option_5"
                       >
                         <span>
                           test-team-id-3-2
@@ -4416,11 +3660,11 @@ exports[`Index when Get Summary service endpoint returns no dependencies renders
                
               <fieldset
                 class="form-group"
-                id="__BVID__98"
+                id="__BVID__59"
               >
                 <legend
                   class="bv-no-focus-ring col-form-label pt-0"
-                  id="__BVID__98__BV_label_"
+                  id="__BVID__59__BV_label_"
                   tabindex="-1"
                 >
                   Tags
@@ -4428,7 +3672,7 @@ exports[`Index when Get Summary service endpoint returns no dependencies renders
                 <div>
                   <div
                     class="bv-no-focus-ring"
-                    id="__BVID__99"
+                    id="__BVID__60"
                     role="group"
                     tabindex="-1"
                   >
@@ -4437,14 +3681,14 @@ exports[`Index when Get Summary service endpoint returns no dependencies renders
                     >
                       <input
                         class="custom-control-input"
-                        id="__BVID__99_BV_option_0"
+                        id="__BVID__60_BV_option_0"
                         name="tag"
                         type="checkbox"
                         value="test-tag-1-1"
                       />
                       <label
                         class="custom-control-label"
-                        for="__BVID__99_BV_option_0"
+                        for="__BVID__60_BV_option_0"
                       >
                         <span>
                           test-tag-1-1
@@ -4456,14 +3700,14 @@ exports[`Index when Get Summary service endpoint returns no dependencies renders
                     >
                       <input
                         class="custom-control-input"
-                        id="__BVID__99_BV_option_1"
+                        id="__BVID__60_BV_option_1"
                         name="tag"
                         type="checkbox"
                         value="test-tag-1-2"
                       />
                       <label
                         class="custom-control-label"
-                        for="__BVID__99_BV_option_1"
+                        for="__BVID__60_BV_option_1"
                       >
                         <span>
                           test-tag-1-2
@@ -4475,14 +3719,14 @@ exports[`Index when Get Summary service endpoint returns no dependencies renders
                     >
                       <input
                         class="custom-control-input"
-                        id="__BVID__99_BV_option_2"
+                        id="__BVID__60_BV_option_2"
                         name="tag"
                         type="checkbox"
                         value="test-tag-2-1"
                       />
                       <label
                         class="custom-control-label"
-                        for="__BVID__99_BV_option_2"
+                        for="__BVID__60_BV_option_2"
                       >
                         <span>
                           test-tag-2-1
@@ -4494,14 +3738,14 @@ exports[`Index when Get Summary service endpoint returns no dependencies renders
                     >
                       <input
                         class="custom-control-input"
-                        id="__BVID__99_BV_option_3"
+                        id="__BVID__60_BV_option_3"
                         name="tag"
                         type="checkbox"
                         value="test-tag-2-2"
                       />
                       <label
                         class="custom-control-label"
-                        for="__BVID__99_BV_option_3"
+                        for="__BVID__60_BV_option_3"
                       >
                         <span>
                           test-tag-2-2
@@ -4513,14 +3757,14 @@ exports[`Index when Get Summary service endpoint returns no dependencies renders
                     >
                       <input
                         class="custom-control-input"
-                        id="__BVID__99_BV_option_4"
+                        id="__BVID__60_BV_option_4"
                         name="tag"
                         type="checkbox"
                         value="test-tag-3-1"
                       />
                       <label
                         class="custom-control-label"
-                        for="__BVID__99_BV_option_4"
+                        for="__BVID__60_BV_option_4"
                       >
                         <span>
                           test-tag-3-1
@@ -4532,14 +3776,14 @@ exports[`Index when Get Summary service endpoint returns no dependencies renders
                     >
                       <input
                         class="custom-control-input"
-                        id="__BVID__99_BV_option_5"
+                        id="__BVID__60_BV_option_5"
                         name="tag"
                         type="checkbox"
                         value="test-tag-3-2"
                       />
                       <label
                         class="custom-control-label"
-                        for="__BVID__99_BV_option_5"
+                        for="__BVID__60_BV_option_5"
                       >
                         <span>
                           test-tag-3-2
@@ -4555,11 +3799,11 @@ exports[`Index when Get Summary service endpoint returns no dependencies renders
                
               <fieldset
                 class="form-group"
-                id="__BVID__106"
+                id="__BVID__67"
               >
                 <legend
                   class="bv-no-focus-ring col-form-label pt-0"
-                  id="__BVID__106__BV_label_"
+                  id="__BVID__67__BV_label_"
                   tabindex="-1"
                 >
                   Component Types
@@ -4567,7 +3811,7 @@ exports[`Index when Get Summary service endpoint returns no dependencies renders
                 <div>
                   <div
                     class="bv-no-focus-ring"
-                    id="__BVID__107"
+                    id="__BVID__68"
                     role="group"
                     tabindex="-1"
                   >
@@ -4576,14 +3820,14 @@ exports[`Index when Get Summary service endpoint returns no dependencies renders
                     >
                       <input
                         class="custom-control-input"
-                        id="__BVID__107_BV_option_0"
+                        id="__BVID__68_BV_option_0"
                         name="componentTypeId"
                         type="checkbox"
                         value="test-component-type-id-1"
                       />
                       <label
                         class="custom-control-label"
-                        for="__BVID__107_BV_option_0"
+                        for="__BVID__68_BV_option_0"
                       >
                         <span>
                           test-component-type-id-1
@@ -4595,14 +3839,14 @@ exports[`Index when Get Summary service endpoint returns no dependencies renders
                     >
                       <input
                         class="custom-control-input"
-                        id="__BVID__107_BV_option_1"
+                        id="__BVID__68_BV_option_1"
                         name="componentTypeId"
                         type="checkbox"
                         value="test-component-type-id-2"
                       />
                       <label
                         class="custom-control-label"
-                        for="__BVID__107_BV_option_1"
+                        for="__BVID__68_BV_option_1"
                       >
                         <span>
                           test-component-type-id-2
@@ -4614,14 +3858,14 @@ exports[`Index when Get Summary service endpoint returns no dependencies renders
                     >
                       <input
                         class="custom-control-input"
-                        id="__BVID__107_BV_option_2"
+                        id="__BVID__68_BV_option_2"
                         name="componentTypeId"
                         type="checkbox"
                         value="test-component-type-id-3"
                       />
                       <label
                         class="custom-control-label"
-                        for="__BVID__107_BV_option_2"
+                        for="__BVID__68_BV_option_2"
                       >
                         <span>
                           test-component-type-id-3
@@ -4637,11 +3881,11 @@ exports[`Index when Get Summary service endpoint returns no dependencies renders
                
               <fieldset
                 class="form-group"
-                id="__BVID__111"
+                id="__BVID__72"
               >
                 <legend
                   class="bv-no-focus-ring col-form-label pt-0"
-                  id="__BVID__111__BV_label_"
+                  id="__BVID__72__BV_label_"
                   tabindex="-1"
                 >
                   Platforms
@@ -4649,7 +3893,7 @@ exports[`Index when Get Summary service endpoint returns no dependencies renders
                 <div>
                   <div
                     class="bv-no-focus-ring"
-                    id="__BVID__112"
+                    id="__BVID__73"
                     role="group"
                     tabindex="-1"
                   >
@@ -4658,14 +3902,14 @@ exports[`Index when Get Summary service endpoint returns no dependencies renders
                     >
                       <input
                         class="custom-control-input"
-                        id="__BVID__112_BV_option_0"
+                        id="__BVID__73_BV_option_0"
                         name="platformId"
                         type="checkbox"
                         value="undefined"
                       />
                       <label
                         class="custom-control-label"
-                        for="__BVID__112_BV_option_0"
+                        for="__BVID__73_BV_option_0"
                       >
                         <span>
                           undefined
@@ -4681,13 +3925,13 @@ exports[`Index when Get Summary service endpoint returns no dependencies renders
                
               <div
                 class="form-group"
-                id="__BVID__114"
+                id="__BVID__75"
                 role="group"
               >
                 <label
                   class="d-block"
                   for="component-filter"
-                  id="__BVID__114__BV_label_"
+                  id="__BVID__75__BV_label_"
                 >
                   Component
                 </label>
@@ -4726,13 +3970,13 @@ exports[`Index when Get Summary service endpoint returns no dependencies renders
              
             <div
               class="form-row form-group my-3 mr-2"
-              id="__BVID__116"
+              id="__BVID__77"
               role="group"
             >
               <label
                 class="col-6 col-form-label col-form-label-sm"
                 for="graph-scope-related-radius"
-                id="__BVID__116__BV_label_"
+                id="__BVID__77__BV_label_"
               >
                 Radius:
               </label>
@@ -4807,13 +4051,13 @@ exports[`Index when Get Summary service endpoint returns no dependencies renders
              
             <div
               class="form-row form-group my-3 mr-2"
-              id="__BVID__118"
+              id="__BVID__79"
               role="group"
             >
               <label
                 class="col-6 col-form-label col-form-label-sm"
                 for="graph-zoom"
-                id="__BVID__118__BV_label_"
+                id="__BVID__79__BV_label_"
               >
                 Zoom:
               </label>
@@ -4889,280 +4133,6 @@ exports[`Index when Get Summary service endpoint returns no dependencies renders
           
               </label>
             </div>
-          </div>
-        </div>
-      </div>
-    </div>
-     
-    <div
-      class="container-fluid"
-    >
-      <div
-        class="row"
-      >
-        <div
-          class="col"
-        >
-          <div
-            class="excluded-components my-3"
-          >
-            <h2>
-              Excluded Components
-            </h2>
-             
-            <table
-              class="table table-dark"
-            >
-              <thead>
-                <tr>
-                  <th
-                    class="type"
-                  >
-                    Type
-                  </th>
-                   
-                  <th
-                    class="name"
-                  >
-                    Name
-                  </th>
-                   
-                  <th>
-                    Tags
-                  </th>
-                   
-                  <th>
-                    Teams
-                  </th>
-                   
-                  <th>
-                    Description
-                  </th>
-                </tr>
-              </thead>
-               
-              <tbody>
-                <tr>
-                  <td
-                    class="type"
-                  >
-                    test-component-type-id-1
-                  </td>
-                   
-                  <td
-                    class="name table-primary"
-                  >
-                    <a
-                      href="/components/test-component-id-1"
-                    >
-                      Test Component Name 1
-                    </a>
-                  </td>
-                   
-                  <td>
-                    <ul>
-                      <li>
-                        
-    test-tag-1-1
-  
-                      </li>
-                      <li>
-                        
-    test-tag-1-2
-  
-                      </li>
-                    </ul>
-                  </td>
-                   
-                  <td>
-                    <ul>
-                      <li>
-                        <a
-                          class="team-name"
-                          href="/teams/test-team-id-1-1"
-                        >
-                          test-team-id-1-1
-                        </a>
-                         
-                        <!---->
-                         
-                        <!---->
-                      </li>
-                      <li>
-                        <a
-                          class="team-name"
-                          href="/teams/test-team-id-1-2"
-                        >
-                          test-team-id-1-2
-                        </a>
-                         
-                        <!---->
-                         
-                        <!---->
-                      </li>
-                    </ul>
-                  </td>
-                   
-                  <td
-                    class="description"
-                  >
-                    <div>
-                      
-
-                      <p>
-                        Test Component Description 1
-                      </p>
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td
-                    class="type"
-                  >
-                    test-component-type-id-2
-                  </td>
-                   
-                  <td
-                    class="name table-primary"
-                  >
-                    <a
-                      href="/components/test-component-id-2"
-                    >
-                      Test Component Name 2
-                    </a>
-                  </td>
-                   
-                  <td>
-                    <ul>
-                      <li>
-                        
-    test-tag-2-1
-  
-                      </li>
-                      <li>
-                        
-    test-tag-2-2
-  
-                      </li>
-                    </ul>
-                  </td>
-                   
-                  <td>
-                    <ul>
-                      <li>
-                        <a
-                          class="team-name"
-                          href="/teams/test-team-id-2-1"
-                        >
-                          test-team-id-2-1
-                        </a>
-                         
-                        <!---->
-                         
-                        <!---->
-                      </li>
-                      <li>
-                        <a
-                          class="team-name"
-                          href="/teams/test-team-id-2-2"
-                        >
-                          test-team-id-2-2
-                        </a>
-                         
-                        <!---->
-                         
-                        <!---->
-                      </li>
-                    </ul>
-                  </td>
-                   
-                  <td
-                    class="description"
-                  >
-                    <div>
-                      
-
-                      <p>
-                        Test Component Description 2
-                      </p>
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td
-                    class="type"
-                  >
-                    test-component-type-id-3
-                  </td>
-                   
-                  <td
-                    class="name table-primary"
-                  >
-                    <a
-                      href="/components/test-component-id-3"
-                    >
-                      Test Component Name 3
-                    </a>
-                  </td>
-                   
-                  <td>
-                    <ul>
-                      <li>
-                        
-    test-tag-3-1
-  
-                      </li>
-                      <li>
-                        
-    test-tag-3-2
-  
-                      </li>
-                    </ul>
-                  </td>
-                   
-                  <td>
-                    <ul>
-                      <li>
-                        <a
-                          class="team-name"
-                          href="/teams/test-team-id-3-1"
-                        >
-                          test-team-id-3-1
-                        </a>
-                         
-                        <!---->
-                         
-                        <!---->
-                      </li>
-                      <li>
-                        <a
-                          class="team-name"
-                          href="/teams/test-team-id-3-2"
-                        >
-                          test-team-id-3-2
-                        </a>
-                         
-                        <!---->
-                         
-                        <!---->
-                      </li>
-                    </ul>
-                  </td>
-                   
-                  <td
-                    class="description"
-                  >
-                    <div>
-                      
-
-                      <p>
-                        Test Component Description 3
-                      </p>
-                    </div>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
           </div>
         </div>
       </div>

@@ -6,8 +6,6 @@ exports[`AllComponentsTabs renders the component 1`] = `
   </a> <a href=\\"#\\" target=\\"_self\\" class=\\"btn my-1 btn-secondary\\">
     Cross Functional Requirements
   </a> <a href=\\"#\\" target=\\"_self\\" class=\\"btn my-1 btn-secondary\\">Tech Debts</a> <a href=\\"#\\" target=\\"_self\\" class=\\"btn my-1 btn-secondary\\">
-    Dependencies
-  </a> <a href=\\"#\\" target=\\"_self\\" class=\\"btn my-1 btn-secondary\\">
     OpenAPI Specs
   </a> <a href=\\"#\\" target=\\"_self\\" class=\\"btn my-1 btn-secondary\\">
     Key Software

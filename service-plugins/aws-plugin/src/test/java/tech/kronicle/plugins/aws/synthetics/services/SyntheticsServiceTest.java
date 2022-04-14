@@ -101,14 +101,14 @@ public class SyntheticsServiceTest {
                         List.of(
                                 CheckState.builder()
                                         .name("test-access-key-id-1-test-region-1-1-test-canary-name-1")
-                                        .description("AWS Synthetics Canary Run")
+                                        .description("AWS Synthetics Canary")
                                         .status(ComponentStateCheckStatus.PENDING)
                                         .statusMessage("RUNNING - test-state-reason-code-1 - test-state-reason-1")
                                         .updateTimestamp(LocalDateTime.of(2000, 1, 1, 0, 0, 1))
                                         .build(),
                                 CheckState.builder()
                                         .name("test-access-key-id-1-test-region-1-1-test-canary-name-2")
-                                        .description("AWS Synthetics Canary Run")
+                                        .description("AWS Synthetics Canary")
                                         .status(ComponentStateCheckStatus.OK)
                                         .statusMessage("PASSED - test-state-reason-code-2 - test-state-reason-2")
                                         .updateTimestamp(LocalDateTime.of(2000, 1, 1, 0, 0, 2))
@@ -134,14 +134,14 @@ public class SyntheticsServiceTest {
                         List.of(
                                 CheckState.builder()
                                         .name("test-access-key-id-2-test-region-2-2-test-canary-name-3")
-                                        .description("AWS Synthetics Canary Run")
+                                        .description("AWS Synthetics Canary")
                                         .status(ComponentStateCheckStatus.PENDING)
                                         .statusMessage("RUNNING - test-state-reason-code-1 - test-state-reason-1")
                                         .updateTimestamp(LocalDateTime.of(2000, 1, 1, 0, 0, 1))
                                         .build(),
                                 CheckState.builder()
                                         .name("test-access-key-id-2-test-region-2-2-test-canary-name-4")
-                                        .description("AWS Synthetics Canary Run")
+                                        .description("AWS Synthetics Canary")
                                         .status(ComponentStateCheckStatus.OK)
                                         .statusMessage("PASSED - test-state-reason-code-2 - test-state-reason-2")
                                         .updateTimestamp(LocalDateTime.of(2000, 1, 1, 0, 0, 2))

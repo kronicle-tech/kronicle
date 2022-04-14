@@ -481,14 +481,14 @@ public class GitHubClientTest {
     ) {
         return CheckState.builder()
                 .name("Test name " + checkStateNumber + checkSuffix)
-                .description("GitHub Actions Workflow Run")
+                .description("GitHub Actions Workflow")
                 .avatarUrl("https://example.com/test-avatar-url-" + checkStateNumber + checkSuffix)
                 .status(status)
                 .statusMessage(statusMessage)
                 .links(List.of(
                         Link.builder()
                                 .url("https://example.com/test-html-url-" + checkStateNumber + checkSuffix)
-                                .description("GitHub Actions Workflow Run")
+                                .description("GitHub Actions Workflow")
                                 .build()
                 ))
                 .updateTimestamp(LocalDateTime.now(clock))
