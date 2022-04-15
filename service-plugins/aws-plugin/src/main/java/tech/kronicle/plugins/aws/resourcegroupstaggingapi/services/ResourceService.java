@@ -18,10 +18,16 @@ public class ResourceService {
     private final AwsConfig config;
 
     public List<Component> getComponents() {
-        return mapper.mapResourcesToComponents(getResources());
+        return getResources();
     }
 
-    private List<ResourceGroupsTaggingApiResource> getResources() {
-        return processProfilesToList(config.getProfiles(), fetcher::getResources);
+    private List<Component> getResources() {
+        return processProfilesToList(
+                config.getProfiles(),
+                profileAndRegion ->  mapper.mapResourcesToComponents(
+                        profileAndRegion.getProfile().getEnvironmentId(),
+                        fetcher.getResources(profileAndRegion)
+                )
+        );
     }
 }

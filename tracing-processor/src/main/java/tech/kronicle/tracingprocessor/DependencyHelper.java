@@ -57,10 +57,19 @@ public class DependencyHelper {
     public SummaryComponentDependency mergeDuplicateDependencies(List<CollatorComponentDependency> duplicateDependencies) {
         TimestampsForDependency timestampsForDependency = getTimestampsForDependency(duplicateDependencies);
         CollatorComponentDependency firstDependency = duplicateDependencies.get(0);
-        return new SummaryComponentDependency(firstDependency.getSourceIndex(), firstDependency.getTargetIndex(),
-                mergeRelatedIndexes(duplicateDependencies, CollatorComponentDependency::getRelatedIndexes), false, duplicateDependencies.size(),
-                timestampsForDependency.getStartTimestamp(), timestampsForDependency.getEndTimestamp(),
-                dependencyDurationCalculator.calculateDependencyDuration(duplicateDependencies));
+        return new SummaryComponentDependency(
+                firstDependency.getSourceIndex(),
+                firstDependency.getTargetIndex(),
+                mergeRelatedIndexes(duplicateDependencies, CollatorComponentDependency::getRelatedIndexes),
+                firstDependency.getTypeId(),
+                firstDependency.getLabel(),
+                firstDependency.getDescription(),
+                false,
+                duplicateDependencies.size(),
+                timestampsForDependency.getStartTimestamp(),
+                timestampsForDependency.getEndTimestamp(),
+                dependencyDurationCalculator.calculateDependencyDuration(duplicateDependencies)
+        );
     }
 
     public SummarySubComponentDependencyNode createSubComponentDependencyNode(GenericSpan span) {

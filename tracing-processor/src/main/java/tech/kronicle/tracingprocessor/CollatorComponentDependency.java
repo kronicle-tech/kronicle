@@ -3,7 +3,7 @@ package tech.kronicle.tracingprocessor;
 import lombok.Builder;
 import lombok.Value;
 import lombok.With;
-import tech.kronicle.sdk.models.ObjectWithSourceIndexAndTargetIndex;
+import tech.kronicle.sdk.models.DependencyWithIdentity;
 
 import java.util.List;
 
@@ -12,11 +12,14 @@ import static java.util.Objects.nonNull;
 @Value
 @Builder
 @With
-public class CollatorComponentDependency implements ObjectWithSourceIndexAndTargetIndex, ObjectWithTimestamps, ObjectWithDurations {
+public class CollatorComponentDependency implements DependencyWithIdentity, ObjectWithTimestamps, ObjectWithDurations {
 
     Integer sourceIndex;
     Integer targetIndex;
     List<Integer> relatedIndexes;
+    String typeId;
+    String label;
+    String description;
     Long timestamp;
     Long duration;
 

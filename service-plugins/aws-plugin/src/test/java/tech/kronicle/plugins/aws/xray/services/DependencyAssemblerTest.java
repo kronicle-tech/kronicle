@@ -2,6 +2,7 @@ package tech.kronicle.plugins.aws.xray.services;
 
 import org.junit.jupiter.api.Test;
 import tech.kronicle.plugins.aws.xray.models.XRayDependency;
+import tech.kronicle.sdk.constants.DependencyTypeIds;
 import tech.kronicle.sdk.models.Dependency;
 
 import java.util.List;
@@ -28,10 +29,12 @@ public class DependencyAssemblerTest {
                 Dependency.builder()
                         .sourceComponentId("test-service-1-1")
                         .targetComponentId("test-service-1-3")
+                        .typeId(DependencyTypeIds.TRACE)
                         .build(),
                 Dependency.builder()
                         .sourceComponentId("test-service-2-1")
                         .targetComponentId("test-service-2-3")
+                        .typeId(DependencyTypeIds.TRACE)
                         .build()
         );
     }
@@ -52,6 +55,7 @@ public class DependencyAssemblerTest {
                 Dependency.builder()
                         .sourceComponentId("test-service-1-1")
                         .targetComponentId("test-service-1-3")
+                        .typeId(DependencyTypeIds.TRACE)
                         .build()
         );
     }

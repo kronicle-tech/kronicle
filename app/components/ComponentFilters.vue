@@ -2,14 +2,38 @@
   <div v-if="components && components.length > 0"
        class="mt-3 mb-4">
 
-    <b-button id="toggle-filters" v-b-toggle.filters>
+    <b-button v-if="toggleEnabled" id="toggle-filters" v-b-toggle.filters>
       <b-icon icon="filter" aria-hidden="true" /> Filters
     </b-button>
 
-    <b-collapse id="filters" class="mt-3">
-      <b-card-group columns>
+    <b-collapse id="filters" :visible="!toggleEnabled" class="mt-3">
+      <b-card-group
+        columns
+        :style="`-webkit-column-count: ${columnCount}; -moz-column-count: ${columnCount}; column-count: ${columnCount}`"
+      >
         <slot></slot>
 
+        <b-card
+          v-if="
+                environmentIdFilterEnabled &&
+                environmentIdOptions &&
+                environmentIdOptions.length > 0
+              "
+          bg-variant="secondary"
+        >
+          <b-card-text>
+            <b-form-group
+              label="Environments"
+            >
+              <b-form-checkbox-group
+                v-model="environmentIds"
+                :options="environmentIdOptions"
+                name="environmentId"
+                stacked
+              ></b-form-checkbox-group>
+            </b-form-group>
+          </b-card-text>
+        </b-card>
         <b-card
           v-if="
                 testOutcomesFilterEnabled &&
@@ -163,8 +187,36 @@ interface Option {
 })
 export default class ComponentFilters extends Vue {
   @Prop({ default: () => [] }) readonly components!: Component[]
+  @Prop({ default: false }) readonly environmentIdFilterEnabled!: boolean
   @Prop({ default: false }) readonly testOutcomesFilterEnabled!: boolean
   @Prop({ default: true }) readonly componentFilterEnabled!: boolean
+  @Prop({ default: true }) readonly toggleEnabled!: boolean
+  @Prop({ default: 3 }) readonly columnCount!: number
+
+  get allEnvironmentIds(): string[] {
+    return distinctArrayElements(
+      this.components
+        .flatMap((component) => component.state?.environments ?? [])
+        .map((environment) => environment.id)
+    )
+  }
+
+  get environmentIdOptions(): Option[] {
+    return this.allEnvironmentIds.map((environmentId) => {
+      return {
+        value: environmentId,
+        text: environmentId,
+      }
+    })
+  }
+
+  get environmentIds(): string[] {
+    return this.$store.state.componentFilters.environmentIds
+  }
+
+  set environmentIds(value: string[]) {
+    this.$store.commit('componentFilters/setEnvironmentIds', value)
+  }
 
   get allTestOutcomes(): string[] {
     return distinctArrayElements(

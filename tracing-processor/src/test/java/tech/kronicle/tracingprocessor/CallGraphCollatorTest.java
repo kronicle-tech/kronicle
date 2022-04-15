@@ -3,6 +3,7 @@ package tech.kronicle.tracingprocessor;
 import org.junit.jupiter.api.Test;
 import tech.kronicle.pluginapi.finders.models.GenericSpan;
 import tech.kronicle.pluginapi.finders.models.GenericTrace;
+import tech.kronicle.sdk.constants.DependencyTypeIds;
 import tech.kronicle.sdk.models.SummaryCallGraph;
 import tech.kronicle.sdk.models.SummaryComponentDependency;
 import tech.kronicle.sdk.models.SummarySubComponentDependencyNode;
@@ -53,6 +54,7 @@ public class CallGraphCollatorTest {
                 .dependencies(List.of(
                         SummaryComponentDependency.builder()
                                 .targetIndex(0)
+                                .typeId(DependencyTypeIds.TRACE)
                                 .manual(false)
                                 .sampleSize(1)
                                 .startTimestamp(testHelper.getTimestamp(1))
@@ -98,6 +100,7 @@ public class CallGraphCollatorTest {
                         SummaryComponentDependency.builder()
                                 .targetIndex(0)
                                 .relatedIndexes(List.of(1))
+                                .typeId(DependencyTypeIds.TRACE)
                                 .manual(false)
                                 .sampleSize(1)
                                 .startTimestamp(testHelper.getTimestamp(1))
@@ -107,6 +110,7 @@ public class CallGraphCollatorTest {
                         SummaryComponentDependency.builder()
                                 .sourceIndex(0)
                                 .targetIndex(1)
+                                .typeId(DependencyTypeIds.TRACE)
                                 .manual(false)
                                 .sampleSize(1)
                                 .startTimestamp(testHelper.getTimestamp(2))
@@ -159,6 +163,7 @@ public class CallGraphCollatorTest {
                         SummaryComponentDependency.builder()
                                 .targetIndex(0)
                                 .relatedIndexes(List.of(1))
+                                .typeId(DependencyTypeIds.TRACE)
                                 .manual(false)
                                 .sampleSize(1)
                                 .startTimestamp(testHelper.getTimestamp(1))
@@ -168,6 +173,7 @@ public class CallGraphCollatorTest {
                         SummaryComponentDependency.builder()
                                 .sourceIndex(0)
                                 .targetIndex(1)
+                                .typeId(DependencyTypeIds.TRACE)
                                 .manual(false)
                                 .sampleSize(2)
                                 .startTimestamp(testHelper.getTimestamp(2))
@@ -229,6 +235,7 @@ public class CallGraphCollatorTest {
                                 SummaryComponentDependency.builder()
                                         .targetIndex(0)
                                         .relatedIndexes(List.of(1))
+                                        .typeId(DependencyTypeIds.TRACE)
                                         .manual(false)
                                         .sampleSize(1)
                                         .startTimestamp(testHelper.getTimestamp(3))
@@ -238,6 +245,7 @@ public class CallGraphCollatorTest {
                                 SummaryComponentDependency.builder()
                                         .sourceIndex(0)
                                         .targetIndex(1)
+                                        .typeId(DependencyTypeIds.TRACE)
                                         .manual(false)
                                         .sampleSize(1)
                                         .startTimestamp(testHelper.getTimestamp(4))
@@ -260,6 +268,7 @@ public class CallGraphCollatorTest {
                                 SummaryComponentDependency.builder()
                                         .targetIndex(0)
                                         .relatedIndexes(List.of(1))
+                                        .typeId(DependencyTypeIds.TRACE)
                                         .manual(false)
                                         .sampleSize(1)
                                         .startTimestamp(testHelper.getTimestamp(1))
@@ -269,6 +278,7 @@ public class CallGraphCollatorTest {
                                 SummaryComponentDependency.builder()
                                         .sourceIndex(0)
                                         .targetIndex(1)
+                                        .typeId(DependencyTypeIds.TRACE)
                                         .manual(false)
                                         .sampleSize(1)
                                         .startTimestamp(testHelper.getTimestamp(2))
@@ -330,6 +340,7 @@ public class CallGraphCollatorTest {
                                 SummaryComponentDependency.builder()
                                         .targetIndex(0)
                                         .relatedIndexes(List.of(1))
+                                        .typeId(DependencyTypeIds.TRACE)
                                         .manual(false)
                                         .sampleSize(2)
                                         .startTimestamp(testHelper.getTimestamp(1))
@@ -339,6 +350,7 @@ public class CallGraphCollatorTest {
                                 SummaryComponentDependency.builder()
                                         .sourceIndex(0)
                                         .targetIndex(1)
+                                        .typeId(DependencyTypeIds.TRACE)
                                         .manual(false)
                                         .sampleSize(2)
                                         .startTimestamp(testHelper.getTimestamp(2))

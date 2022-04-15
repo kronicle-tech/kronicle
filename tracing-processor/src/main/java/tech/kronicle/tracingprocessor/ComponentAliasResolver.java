@@ -32,10 +32,10 @@ public class ComponentAliasResolver {
     }
 
     private Dependency dependency(Dependency dependency, Map<String, String> componentAliasMap) {
-        return new Dependency(
-                componentId(dependency.getSourceComponentId(), componentAliasMap),
-                componentId(dependency.getTargetComponentId(), componentAliasMap)
-        );
+        return dependency.toBuilder()
+                .sourceComponentId(componentId(dependency.getSourceComponentId(), componentAliasMap))
+                .targetComponentId(componentId(dependency.getTargetComponentId(), componentAliasMap))
+                .build();
     }
 
     private List<GenericTrace> traces(List<GenericTrace> traces, Map<String, String> componentAliasMap) {

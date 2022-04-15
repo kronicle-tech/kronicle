@@ -169,7 +169,7 @@ import {
 } from '~/types/kronicle-service'
 import {
   Dependency,
-  DependencyType,
+  DependencyRelationType,
   Network,
   Node,
 } from '~/types/component-dependency-graph'
@@ -187,7 +187,11 @@ export default Vue.extend({
       >,
       default: undefined,
     },
-    dependencyType: {
+    dependencyTypeIds: {
+      type: Array as PropType<string[]>,
+      default: [] as string[],
+    },
+    dependencyRelationType: {
       type: String as PropType<
         'all' | 'scope-related' | 'scoped' | 'related' | 'direct'
       >,
@@ -254,16 +258,16 @@ export default Vue.extend({
         this.scopedComponentIds &&
         this.scopedComponentIds.length > 0 &&
         this.fixedScope &&
-        !['related', 'direct'].includes(this.dependencyType)
+        !['related', 'direct'].includes(this.dependencyRelationType)
       )
     },
     network(): Network {
       const that = this
       const network = {
         nodes: [],
-        nodeGroups: new Map<DependencyType, Node[]>(),
+        nodeGroups: new Map<DependencyRelationType, Node[]>(),
         dependencies: [],
-        dependencyGroups: new Map<DependencyType, Dependency[]>(),
+        dependencyGroups: new Map<DependencyRelationType, Dependency[]>(),
       } as Network
 
       addNodes()
@@ -344,7 +348,7 @@ export default Vue.extend({
             x: 0,
             y: 0,
           },
-          dependencyType: 'all',
+          dependencyRelationType: 'all',
           node: dependencyNode,
           dependencies: [] as Dependency[],
         } as Node
@@ -368,7 +372,7 @@ export default Vue.extend({
       function addDependencies() {
         that.dependencies.dependencies.forEach(
           (dependency, dependencyIndex) => {
-            if (dependency.sourceIndex !== undefined) {
+            if (dependency.sourceIndex !== undefined && filterDependencyType(dependency)) {
               addDependency(
                 dependency as SummaryComponentDependencyWithMandatorySourceIndex,
                 dependencyIndex
@@ -376,6 +380,14 @@ export default Vue.extend({
             }
           }
         )
+      }
+
+      function filterDependencyType(
+        componentDependency: SummaryComponentDependencyWithMandatorySourceIndex
+      ) {
+        return that.dependencyTypeIds === undefined ||
+          that.dependencyTypeIds.length === 0 ||
+          that.dependencyTypeIds.includes(componentDependency.typeId)
       }
 
       function addDependency(
@@ -390,7 +402,7 @@ export default Vue.extend({
           manual: componentDependency.manual,
           d: '',
           scopeRelated: false,
-          dependencyType: 'all',
+          dependencyRelationType: 'all',
           dependency: componentDependency,
         } as Dependency
         dependency.sourceNode.dependencies.push(dependency)
@@ -404,13 +416,13 @@ export default Vue.extend({
             dependency,
             that.scopeRelatedRadius
           )
-          dependency.dependencyType = getDependencyTypeForDependency(dependency)
+          dependency.dependencyRelationType = getDependencyRelationTypeForDependency(dependency)
         })
       }
 
-      function getDependencyTypeForDependency(
+      function getDependencyRelationTypeForDependency(
         dependency: Dependency
-      ): DependencyType {
+      ): DependencyRelationType {
         if (dependencyIsDirectDependency(dependency)) {
           return 'direct'
         } else if (dependencyIsRelatedDependency(dependency)) {
@@ -510,53 +522,53 @@ export default Vue.extend({
         })
       }
 
-      function getAcceptableDependencyTypes() {
-        const dependencyTypes = [
+      function getAcceptableDependencyRelationTypes() {
+        const dependencyRelationTypes = [
           'direct',
           'related',
           'scoped',
           'scope-related',
           'manual',
           'all',
-        ] as DependencyType[]
-        const acceptableDependencyTypes = [] as DependencyType[]
-        let selectedDependencyType = that.dependencyType
+        ] as DependencyRelationType[]
+        const acceptableDependencyRelationTypes = [] as DependencyRelationType[]
+        let selectedDependencyRelationType = that.dependencyRelationType
 
         if (
           effectiveSelectedNodeIndexes.length === 0 &&
-          ['direct', 'related'].includes(selectedDependencyType)
+          ['direct', 'related'].includes(selectedDependencyRelationType)
         ) {
-          selectedDependencyType = 'scope-related'
+          selectedDependencyRelationType = 'scope-related'
         }
 
         if (
           !that.scopedComponentIds &&
-          ['scoped', 'scope-related'].includes(selectedDependencyType)
+          ['scoped', 'scope-related'].includes(selectedDependencyRelationType)
         ) {
-          selectedDependencyType = 'all'
+          selectedDependencyRelationType = 'all'
         }
 
-        dependencyTypes.some((dependencyType) => {
-          acceptableDependencyTypes.push(dependencyType)
+        dependencyRelationTypes.some((dependencyRelationType) => {
+          acceptableDependencyRelationTypes.push(dependencyRelationType)
 
-          if (dependencyType === selectedDependencyType) {
+          if (dependencyRelationType === selectedDependencyRelationType) {
             return true
           }
         })
 
-        return acceptableDependencyTypes
+        return acceptableDependencyRelationTypes
       }
 
       function filterNodesAndDependencies() {
-        const acceptableDependencyTypes = getAcceptableDependencyTypes()
+        const acceptableDependencyRelationTypes = getAcceptableDependencyRelationTypes()
 
         const dependencyToRemove = [] as Dependency[]
         network.dependencies.forEach((dependency) => {
           if (
             isFixedScopeAndDependencyIsNotScopeRelated(dependency) ||
-            dependencyTypeOfDependencyIsNotAcceptable(
+            dependencyRelationTypeOfDependencyIsNotAcceptable(
               dependency,
-              acceptableDependencyTypes
+              acceptableDependencyRelationTypes
             )
           ) {
             dependencyToRemove.push(dependency)
@@ -568,24 +580,24 @@ export default Vue.extend({
         const nodesToRemove = [] as Node[]
         network.nodes.forEach((node) => {
           if (effectiveSelectedNodeIndexes.includes(node.index)) {
-            node.dependencyType = 'selected'
+            node.dependencyRelationType = 'selected'
           } else if (node.dependencies.length === 0) {
             nodesToRemove.push(node)
           } else if (
             scopedNodeIndexes &&
             scopedNodeIndexes.includes(node.index)
           ) {
-            node.dependencyType = 'scoped'
+            node.dependencyRelationType = 'scoped'
           } else {
-            let dependencyType = 'manual' as DependencyType
+            let dependencyRelationType = 'manual' as DependencyRelationType
             node.dependencies.some((dependency) => {
-              dependencyType = maxDependencyType(
-                dependencyType,
-                dependency.dependencyType
+              dependencyRelationType = maxDependencyRelationType(
+                dependencyRelationType,
+                dependency.dependencyRelationType
               )
-              return dependencyType === 'direct'
+              return dependencyRelationType === 'direct'
             })
-            node.dependencyType = dependencyType
+            node.dependencyRelationType = dependencyRelationType
           }
         })
 
@@ -601,14 +613,14 @@ export default Vue.extend({
         return that.effectiveFixedScope && !dependency.scopeRelated
       }
 
-      function dependencyTypeOfDependencyIsNotAcceptable(
+      function dependencyRelationTypeOfDependencyIsNotAcceptable(
         dependency: Dependency,
-        acceptableDependencyTypes: DependencyType[]
+        acceptableDependencyRelationTypes: DependencyRelationType[]
       ) {
-        return !acceptableDependencyTypes.includes(dependency.dependencyType)
+        return !acceptableDependencyRelationTypes.includes(dependency.dependencyRelationType)
       }
 
-      function maxDependencyType(a: DependencyType, b: DependencyType) {
+      function maxDependencyRelationType(a: DependencyRelationType, b: DependencyRelationType) {
         if (a === 'direct' || b === 'direct') {
           return 'direct'
         } else if (a === 'related' || b === 'related') {
@@ -791,21 +803,21 @@ export default Vue.extend({
       }
 
       function addItemsToItemTypes<I extends Node | Dependency>(
-        itemTypes: Map<DependencyType, I[]>,
+        itemTypes: Map<DependencyRelationType, I[]>,
         items: I[]
       ) {
         items.forEach((item) => addItemToItemTypes(itemTypes, item))
       }
 
       function addItemToItemTypes<I extends Node | Dependency>(
-        itemTypes: Map<DependencyType, I[]>,
+        itemTypes: Map<DependencyRelationType, I[]>,
         item: I
       ) {
-        let itemType = itemTypes.get(item.dependencyType)
+        let itemType = itemTypes.get(item.dependencyRelationType)
 
         if (!itemType) {
           itemType = []
-          itemTypes.set(item.dependencyType, itemType)
+          itemTypes.set(item.dependencyRelationType, itemType)
         }
 
         itemType.push(item)

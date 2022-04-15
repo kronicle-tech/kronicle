@@ -9,6 +9,8 @@ import tech.kronicle.plugins.datadog.config.DatadogConfig;
 import tech.kronicle.plugins.datadog.constants.DatadogApiPaths;
 import tech.kronicle.plugins.datadog.constants.DatadogHttpHeaderNames;
 import tech.kronicle.plugins.datadog.dependencies.models.ServiceDependenciesResponse;
+import tech.kronicle.plugins.datadog.dependencies.models.ServiceWithDependencies;
+import tech.kronicle.sdk.constants.DependencyTypeIds;
 import tech.kronicle.utils.UriVariablesBuilder;
 import tech.kronicle.sdk.models.Dependency;
 
@@ -65,7 +67,17 @@ public class DatadogDependencyClient {
       return List.of();
     }
     return serviceDependenciesResponse.getServices().entrySet().stream()
-            .flatMap(entry -> entry.getValue().getCalls().stream().map(call -> new Dependency(entry.getKey(), call)))
+            .flatMap(entry -> entry.getValue().getCalls().stream().map(call -> createDependency(entry, call)))
             .collect(Collectors.toList());
+  }
+
+  private Dependency createDependency(Map.Entry<String, ServiceWithDependencies> entry, String call) {
+    return new Dependency(
+            entry.getKey(),
+            call,
+            DependencyTypeIds.TRACE,
+            null,
+            null
+    );
   }
 }

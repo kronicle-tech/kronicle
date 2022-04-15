@@ -4,12 +4,15 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import tech.kronicle.plugins.aws.config.AwsConfig;
+import tech.kronicle.plugins.aws.config.AwsProfileConfig;
 import tech.kronicle.plugins.aws.config.AwsTagKeysConfig;
 import tech.kronicle.plugins.aws.resourcegroupstaggingapi.models.ResourceGroupsTaggingApiResource;
 import tech.kronicle.plugins.aws.resourcegroupstaggingapi.models.ResourceGroupsTaggingApiTag;
 import tech.kronicle.sdk.models.Alias;
 import tech.kronicle.sdk.models.Component;
+import tech.kronicle.sdk.models.ComponentState;
 import tech.kronicle.sdk.models.ComponentTeam;
+import tech.kronicle.sdk.models.EnvironmentState;
 
 import java.util.List;
 
@@ -18,13 +21,15 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class ResourceMapperTest {
 
+    private static final String TEST_ENVIRONMENT_ID = "test-environment-id";
+
     @Test
     public void mapResourcesShouldReturnAnEmptyListWhenResourceListIsEmpty() {
         // Given
         ResourceMapper underTest = createUnderTest(false);
 
         // When
-        List<Component> components = underTest.mapResourcesToComponents(List.of());
+        List<Component> components = underTest.mapResourcesToComponents(TEST_ENVIRONMENT_ID, List.of());
 
         // Then
         assertThat(components).isEmpty();
@@ -51,7 +56,7 @@ public class ResourceMapperTest {
         );
 
         // When
-        List<Component> returnValue = underTest.mapResourcesToComponents(resources);
+        List<Component> returnValue = underTest.mapResourcesToComponents(TEST_ENVIRONMENT_ID, resources);
 
         // Then
         assertThat(returnValue).isEqualTo(List.of(
@@ -68,6 +73,14 @@ public class ResourceMapperTest {
                                 "arn:aws:lambda:us-west-1:123456789012:function:ExampleStack-exampleFunction123ABC-123456ABCDEF\n"
                         ))
                         .platformId("aws-managed-service")
+                        .state(ComponentState.builder()
+                                .environments(List.of(
+                                        EnvironmentState.builder()
+                                                .id(TEST_ENVIRONMENT_ID)
+                                                .build()
+                                ))
+                                .build()
+                        )
                         .build(),
                 Component.builder()
                         .id("aws-ec2-security-group-security-group-sg-12345678901abcdef")
@@ -98,6 +111,14 @@ public class ResourceMapperTest {
                                         "* Alias(id=security-group/sg-12345678901abcdef, description=null, notes=null)\n"
                         ))
                         .platformId("aws-managed-service")
+                        .state(ComponentState.builder()
+                                .environments(List.of(
+                                        EnvironmentState.builder()
+                                                .id(TEST_ENVIRONMENT_ID)
+                                                .build()
+                                ))
+                                .build()
+                        )
                         .build()
         ));
     }
@@ -105,7 +126,14 @@ public class ResourceMapperTest {
     private ResourceMapper createUnderTest(Boolean detailedComponentDescriptions) {
         return new ResourceMapper(
                 new AwsConfig(
-                        null,
+                        List.of(
+                                new AwsProfileConfig(
+                                        null,
+                                        null,
+                                        null,
+                                        TEST_ENVIRONMENT_ID
+                                )
+                        ),
                         detailedComponentDescriptions,
                         new AwsTagKeysConfig(null, "team"),
                         null

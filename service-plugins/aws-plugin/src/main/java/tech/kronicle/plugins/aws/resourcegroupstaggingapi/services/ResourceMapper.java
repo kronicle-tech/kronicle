@@ -7,12 +7,15 @@ import tech.kronicle.plugins.aws.resourcegroupstaggingapi.models.ResourceGroupsT
 import tech.kronicle.plugins.aws.utils.AnalysedArn;
 import tech.kronicle.sdk.models.Alias;
 import tech.kronicle.sdk.models.Component;
+import tech.kronicle.sdk.models.ComponentState;
 import tech.kronicle.sdk.models.ComponentTeam;
+import tech.kronicle.sdk.models.EnvironmentState;
 
 import javax.inject.Inject;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 import static tech.kronicle.common.CaseUtils.toKebabCase;
@@ -24,25 +27,39 @@ public class ResourceMapper {
 
     private final AwsConfig config;
 
-    public List<Component> mapResourcesToComponents(List<ResourceGroupsTaggingApiResource> resources) {
+    public List<Component> mapResourcesToComponents(
+            String environmentId,
+            List<ResourceGroupsTaggingApiResource> resources
+    ) {
         return resources.stream()
-                .map(this::mapResourceToComponent)
+                .map(mapResourceToComponent(environmentId))
                 .collect(Collectors.toList());
     }
 
-    private Component mapResourceToComponent(ResourceGroupsTaggingApiResource resource) {
-        AnalysedArn analysedArn = analyseArn(resource.getArn());
-        Optional<String> nameTag = getNameTag(resource);
-        List<Alias> aliases = getAliases(analysedArn);
-        return Component.builder()
-                .id(toKebabCase(analysedArn.getDerivedResourceType() + "-" + analysedArn.getResourceId()))
-                .aliases(aliases)
-                .name(getName(nameTag, analysedArn))
-                .typeId(toKebabCase(analysedArn.getDerivedResourceType()))
-                .teams(getTeam(resource))
-                .description(getDescription(resource, analysedArn, aliases))
-                .platformId("aws-managed-service")
-                .build();
+    private Function<ResourceGroupsTaggingApiResource, Component> mapResourceToComponent(String environmentId) {
+        return resource -> {
+            AnalysedArn analysedArn = analyseArn(resource.getArn());
+            Optional<String> nameTag = getNameTag(resource);
+            List<Alias> aliases = getAliases(analysedArn);
+            return Component.builder()
+                    .id(toKebabCase(analysedArn.getDerivedResourceType() + "-" + analysedArn.getResourceId()))
+                    .aliases(aliases)
+                    .name(getName(nameTag, analysedArn))
+                    .typeId(toKebabCase(analysedArn.getDerivedResourceType()))
+                    .teams(getTeam(resource))
+                    .description(getDescription(resource, analysedArn, aliases))
+                    .platformId("aws-managed-service")
+                    .state(
+                            ComponentState.builder()
+                                    .environments(List.of(
+                                            EnvironmentState.builder()
+                                                    .id(environmentId)
+                                                    .build()
+                                    ))
+                                    .build()
+                    )
+                    .build();
+        };
     }
 
     private List<Alias> getAliases(AnalysedArn analysedArn) {

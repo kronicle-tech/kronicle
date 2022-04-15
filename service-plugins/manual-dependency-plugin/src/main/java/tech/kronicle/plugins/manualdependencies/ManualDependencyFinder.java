@@ -3,6 +3,7 @@ package tech.kronicle.plugins.manualdependencies;
 import org.pf4j.Extension;
 import tech.kronicle.pluginapi.finders.TracingDataFinder;
 import tech.kronicle.pluginapi.finders.models.TracingData;
+import tech.kronicle.sdk.constants.DependencyTypeIds;
 import tech.kronicle.sdk.models.Component;
 import tech.kronicle.sdk.models.ComponentDependency;
 import tech.kronicle.sdk.models.ComponentMetadata;
@@ -15,12 +16,14 @@ import java.util.Objects;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+import static java.util.Objects.nonNull;
+
 @Extension
 public class ManualDependencyFinder extends TracingDataFinder {
 
     @Override
     public String description() {
-        return "Finds dependencies manually specified in kronicle.yaml files.  ";
+        return "Finds dependencies manually specified in kronicle.yaml files";
     }
 
     @Override
@@ -40,9 +43,21 @@ public class ManualDependencyFinder extends TracingDataFinder {
     }
 
     private Dependency createDependency(Component component, ComponentDependency dependency) {
+        String sourceComponentId;
+        String targetComponentId;
         if (Objects.equals(dependency.getDirection(), DependencyDirection.INBOUND)) {
-            return new Dependency(dependency.getTargetComponentId(), component.getId());
+            sourceComponentId = dependency.getTargetComponentId();
+            targetComponentId = component.getId();
+        } else {
+            sourceComponentId = component.getId();
+            targetComponentId = dependency.getTargetComponentId();
         }
-        return new Dependency(component.getId(), dependency.getTargetComponentId());
+        return new Dependency(
+                sourceComponentId,
+                targetComponentId,
+                Optional.ofNullable(dependency.getTypeId()).orElse(DependencyTypeIds.COMPOSITION),
+                dependency.getLabel(),
+                dependency.getDescription()
+        );
     }
 }

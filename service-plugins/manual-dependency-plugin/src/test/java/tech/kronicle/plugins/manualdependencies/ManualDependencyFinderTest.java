@@ -38,7 +38,7 @@ public class ManualDependencyFinderTest {
         String returnValue = underTest.description();
 
         // Then
-        assertThat(returnValue).isEqualTo("Finds dependencies manually specified in kronicle.yaml files.  ");
+        assertThat(returnValue).isEqualTo("Finds dependencies manually specified in kronicle.yaml files");
     }
 
     @Test
@@ -75,7 +75,8 @@ public class ManualDependencyFinderTest {
                         Component.builder()
                                 .id("test-component-1")
                                 .dependencies(List.of(
-                                        ComponentDependency.builder().targetComponentId("test-component-2").build()))
+                                        createComponentDependencyBuilder("test-component-2").build()
+                                ))
                                 .build()))
                 .build();
 
@@ -84,7 +85,7 @@ public class ManualDependencyFinderTest {
 
         // Then
         assertThat(returnValue).isEqualTo(createTracingData(
-                new Dependency("test-component-1", "test-component-2")
+                createDependency("test-component-1", "test-component-2")
         ));
     }
 
@@ -96,7 +97,10 @@ public class ManualDependencyFinderTest {
                         Component.builder()
                                 .id("test-component-1")
                                 .dependencies(List.of(
-                                        ComponentDependency.builder().targetComponentId("test-component-2").direction(DependencyDirection.INBOUND).build()))
+                                        createComponentDependencyBuilder("test-component-2")
+                                                .direction(DependencyDirection.INBOUND)
+                                                .build()
+                                ))
                                 .build()))
                 .build();
 
@@ -105,7 +109,32 @@ public class ManualDependencyFinderTest {
 
         // Then
         assertThat(returnValue).isEqualTo(createTracingData(
-                new Dependency("test-component-2", "test-component-1")
+                createDependency("test-component-2", "test-component-1")
+        ));
+    }
+
+    @Test
+    public void findShouldSetTheDependencyTypeIdToCompositionWhenAComponentHasDependencyWithNoTypeId() {
+        // Given
+        ComponentMetadata componentMetadata = ComponentMetadata.builder()
+                .components(List.of(
+                        Component.builder()
+                                .id("test-component-1")
+                                .dependencies(List.of(
+                                        createComponentDependencyBuilder("test-component-2")
+                                                .typeId(null)
+                                                .build()
+                                ))
+                                .build()))
+                .build();
+
+        // When
+        TracingData returnValue = underTest.find(componentMetadata);
+
+        // Then
+        assertThat(returnValue).isEqualTo(createTracingData(
+                createDependency("test-component-1", "test-component-2")
+                        .withTypeId("composition")
         ));
     }
 
@@ -117,7 +146,10 @@ public class ManualDependencyFinderTest {
                         Component.builder()
                                 .id("test-component-1")
                                 .dependencies(List.of(
-                                        ComponentDependency.builder().targetComponentId("test-component-2").direction(DependencyDirection.OUTBOUND).build()))
+                                        createComponentDependencyBuilder("test-component-2")
+                                                .direction(DependencyDirection.OUTBOUND)
+                                                .build()
+                                ))
                                 .build()))
                 .build();
 
@@ -126,7 +158,7 @@ public class ManualDependencyFinderTest {
 
         // Then
         assertThat(returnValue).isEqualTo(createTracingData(
-                new Dependency("test-component-1", "test-component-2")
+                createDependency("test-component-1", "test-component-2")
         ));
     }
 
@@ -138,8 +170,9 @@ public class ManualDependencyFinderTest {
                         Component.builder()
                                 .id("test-component-1")
                                 .dependencies(List.of(
-                                        ComponentDependency.builder().targetComponentId("test-component-2").build(),
-                                        ComponentDependency.builder().targetComponentId("test-component-3").build()))
+                                        createComponentDependencyBuilder("test-component-2").build(),
+                                        createComponentDependencyBuilder("test-component-3").build()
+                                ))
                                 .build()))
                 .build();
 
@@ -148,8 +181,8 @@ public class ManualDependencyFinderTest {
 
         // Then
         assertThat(returnValue).isEqualTo(createTracingData(
-                new Dependency("test-component-1", "test-component-2"),
-                new Dependency("test-component-1", "test-component-3")
+                createDependency("test-component-1", "test-component-2"),
+                createDependency("test-component-1", "test-component-3")
         ));
     }
 
@@ -161,14 +194,16 @@ public class ManualDependencyFinderTest {
                         Component.builder()
                                 .id("test-component-1")
                                 .dependencies(List.of(
-                                        ComponentDependency.builder().targetComponentId("test-component-2").build(),
-                                        ComponentDependency.builder().targetComponentId("test-component-3").build()))
+                                        createComponentDependencyBuilder("test-component-2").build(),
+                                        createComponentDependencyBuilder("test-component-3").build()
+                                ))
                                 .build(),
                         Component.builder()
                                 .id("test-component-4")
                                 .dependencies(List.of(
-                                        ComponentDependency.builder().targetComponentId("test-component-5").build(),
-                                        ComponentDependency.builder().targetComponentId("test-component-6").build()))
+                                        createComponentDependencyBuilder("test-component-5").build(),
+                                        createComponentDependencyBuilder("test-component-6").build()
+                                ))
                                 .build()))
                 .build();
 
@@ -177,10 +212,10 @@ public class ManualDependencyFinderTest {
 
         // Then
         assertThat(returnValue).isEqualTo(createTracingData(
-                new Dependency("test-component-1", "test-component-2"),
-                new Dependency("test-component-1", "test-component-3"),
-                new Dependency("test-component-4", "test-component-5"),
-                new Dependency("test-component-4", "test-component-6")
+                createDependency("test-component-1", "test-component-2"),
+                createDependency("test-component-1", "test-component-3"),
+                createDependency("test-component-4", "test-component-5"),
+                createDependency("test-component-4", "test-component-6")
         ));
     }
 
@@ -192,8 +227,8 @@ public class ManualDependencyFinderTest {
                         Component.builder()
                                 .id("test-component-1")
                                 .dependencies(List.of(
-                                        ComponentDependency.builder().targetComponentId("test-component-2").build(),
-                                        ComponentDependency.builder().targetComponentId("test-component-2").build()))
+                                        createComponentDependencyBuilder("test-component-2").build(),
+                                        createComponentDependencyBuilder("test-component-2").build()))
                                 .build()))
                 .build();
 
@@ -202,7 +237,7 @@ public class ManualDependencyFinderTest {
 
         // Then
         assertThat(returnValue).isEqualTo(createTracingData(
-                new Dependency("test-component-1", "test-component-2")
+                createDependency("test-component-1", "test-component-2")
         ));
     }
 
@@ -214,12 +249,12 @@ public class ManualDependencyFinderTest {
                         Component.builder()
                                 .id("test-component-1")
                                 .dependencies(List.of(
-                                        ComponentDependency.builder().targetComponentId("test-component-2").build()))
+                                        createComponentDependencyBuilder("test-component-2").build()))
                                 .build(),
                         Component.builder()
                                 .id("test-component-2")
                                 .dependencies(List.of(
-                                        ComponentDependency.builder().targetComponentId("test-component-1").direction(DependencyDirection.INBOUND).build()))
+                                        createComponentDependencyBuilder("test-component-1").direction(DependencyDirection.INBOUND).build()))
                                 .build()))
                 .build();
 
@@ -228,13 +263,31 @@ public class ManualDependencyFinderTest {
 
         // Then
         assertThat(returnValue).isEqualTo(createTracingData(
-                new Dependency("test-component-1", "test-component-2")
+                createDependency("test-component-1", "test-component-2")
         ));
+    }
+
+    private ComponentDependency.ComponentDependencyBuilder createComponentDependencyBuilder(String targetComponentId) {
+        return ComponentDependency.builder()
+                .targetComponentId(targetComponentId)
+                .typeId("test-type-id")
+                .label("test-label")
+                .description("test-description");
     }
 
     private TracingData createTracingData(Dependency... dependencies) {
         return TracingData.builder()
                 .dependencies(Arrays.asList(dependencies))
                 .build();
+    }
+
+    private Dependency createDependency(String sourceComponentId, String targetComponentId) {
+        return new Dependency(
+                sourceComponentId,
+                targetComponentId,
+                "test-type-id",
+                "test-label",
+                "test-description"
+        );
     }
 }

@@ -8,6 +8,7 @@ import tech.kronicle.pluginapi.finders.models.TracingData;
 import tech.kronicle.plugins.datadog.DatadogTracingDataFinder;
 import tech.kronicle.plugins.datadog.dependencies.client.DatadogDependencyClient;
 import tech.kronicle.plugins.datadog.dependencies.config.DatadogDependenciesConfig;
+import tech.kronicle.sdk.constants.DependencyTypeIds;
 import tech.kronicle.sdk.models.Dependency;
 
 import java.util.List;
@@ -62,8 +63,8 @@ public class DatadogTracingDataFinderTest {
     public void findShouldReturnAndDependenciesTheClientFinds() {
         // Given
         List<Dependency> dependencies = List.of(
-                new Dependency("test-service-1", "test-service-2"),
-                new Dependency("test-service-3", "test-service-4")
+                createDependency("test-service-1", "test-service-2"),
+                createDependency("test-service-3", "test-service-4")
         );
         when(client.getDependencies("test-environment-1")).thenReturn(dependencies);
         underTest = new DatadogTracingDataFinder(new DatadogDependenciesConfig(List.of("test-environment-1")), client);
@@ -79,16 +80,26 @@ public class DatadogTracingDataFinderTest {
         );
     }
 
+    private Dependency createDependency(String sourceComponentId, String targetComponentId) {
+        return new Dependency(
+                sourceComponentId,
+                targetComponentId,
+                DependencyTypeIds.TRACE,
+                null,
+                null
+        );
+    }
+
     @Test
     public void findShouldFindDependenciesForAllEnvironments() {
         // Given
         when(client.getDependencies("test-environment-1")).thenReturn(List.of(
-                new Dependency("test-service-1", "test-service-2"),
-                new Dependency("test-service-3", "test-service-4")
+                createDependency("test-service-1", "test-service-2"),
+                createDependency("test-service-3", "test-service-4")
         ));
         when(client.getDependencies("test-environment-2")).thenReturn(List.of(
-                new Dependency("test-service-5", "test-service-6"),
-                new Dependency("test-service-7", "test-service-8")
+                createDependency("test-service-5", "test-service-6"),
+                createDependency("test-service-7", "test-service-8")
         ));
         underTest = new DatadogTracingDataFinder(new DatadogDependenciesConfig(List.of("test-environment-1", "test-environment-2")), client);
 
@@ -99,10 +110,10 @@ public class DatadogTracingDataFinderTest {
         assertThat(returnValue).isEqualTo(
                 TracingData.builder()
                         .dependencies(List.of(
-                                new Dependency("test-service-1", "test-service-2"),
-                                new Dependency("test-service-3", "test-service-4"),
-                                new Dependency("test-service-5", "test-service-6"),
-                                new Dependency("test-service-7", "test-service-8")
+                                createDependency("test-service-1", "test-service-2"),
+                                createDependency("test-service-3", "test-service-4"),
+                                createDependency("test-service-5", "test-service-6"),
+                                createDependency("test-service-7", "test-service-8")
                         ))
                         .build()
         );
@@ -113,12 +124,12 @@ public class DatadogTracingDataFinderTest {
     public void findShouldDeduplicateTheDependencies() {
         // Given
         when(client.getDependencies("test-environment-1")).thenReturn(List.of(
-                new Dependency("test-service-1", "test-service-2"),
-                new Dependency("test-service-3", "test-service-4")
+                createDependency("test-service-1", "test-service-2"),
+                createDependency("test-service-3", "test-service-4")
         ));
         when(client.getDependencies("test-environment-2")).thenReturn(List.of(
-                new Dependency("test-service-3", "test-service-4"),
-                new Dependency("test-service-5", "test-service-6")
+                createDependency("test-service-3", "test-service-4"),
+                createDependency("test-service-5", "test-service-6")
         ));
         underTest = new DatadogTracingDataFinder(new DatadogDependenciesConfig(List.of("test-environment-1", "test-environment-2")), client);
 
@@ -129,9 +140,9 @@ public class DatadogTracingDataFinderTest {
         assertThat(returnValue).isEqualTo(
                 TracingData.builder()
                         .dependencies(List.of(
-                                new Dependency("test-service-1", "test-service-2"),
-                                new Dependency("test-service-3", "test-service-4"),
-                                new Dependency("test-service-5", "test-service-6")
+                                createDependency("test-service-1", "test-service-2"),
+                                createDependency("test-service-3", "test-service-4"),
+                                createDependency("test-service-5", "test-service-6")
                         ))
                         .build()
         );
