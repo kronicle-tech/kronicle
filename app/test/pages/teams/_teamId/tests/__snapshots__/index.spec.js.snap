@@ -175,7 +175,10 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
         >
           <div
             class="card-columns"
+            style="column-count: 3;"
           >
+             
+            <!---->
              
             <!---->
              
@@ -1260,7 +1263,10 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
         >
           <div
             class="card-columns"
+            style="column-count: 3;"
           >
+             
+            <!---->
              
             <!---->
              

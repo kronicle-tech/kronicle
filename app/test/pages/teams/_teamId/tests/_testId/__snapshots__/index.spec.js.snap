@@ -441,7 +441,10 @@ exports[`Index when Get Test service endpoint returns a test and the Get Team se
           >
             <div
               class="card-columns"
+              style="column-count: 3;"
             >
+               
+              <!---->
                
               <div
                 class="card bg-secondary"

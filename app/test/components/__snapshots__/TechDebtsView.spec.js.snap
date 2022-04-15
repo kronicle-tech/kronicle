@@ -50,7 +50,8 @@ exports[`TechDebtsView when components prop is set to multiple components with t
     </button>
     <transition-stub css=\\"true\\" enterclass=\\"\\" leaveclass=\\"collapse show\\" entertoclass=\\"collapse show\\" leavetoclass=\\"collapse\\" enteractiveclass=\\"collapsing\\" leaveactiveclass=\\"collapsing\\" class=\\"mt-3\\">
       <div id=\\"filters\\" class=\\"collapse\\" style=\\"display: none;\\">
-        <div class=\\"card-columns\\">
+        <div class=\\"card-columns\\" style=\\"column-count: 3;\\">
+          <!---->
           <!---->
           <div class=\\"card bg-secondary\\">
             <!---->
@@ -486,7 +487,8 @@ exports[`TechDebtsView when components prop is set to multiple components with t
     </button>
     <transition-stub css=\\"true\\" enterclass=\\"\\" leaveclass=\\"collapse show\\" entertoclass=\\"collapse show\\" leavetoclass=\\"collapse\\" enteractiveclass=\\"collapsing\\" leaveactiveclass=\\"collapsing\\" class=\\"mt-3\\">
       <div id=\\"filters\\" class=\\"collapse\\" style=\\"display: none;\\">
-        <div class=\\"card-columns\\">
+        <div class=\\"card-columns\\" style=\\"column-count: 3;\\">
+          <!---->
           <!---->
           <div class=\\"card bg-secondary\\">
             <!---->
@@ -922,7 +924,8 @@ exports[`TechDebtsView when components prop is set to multiple components with t
     </button>
     <transition-stub css=\\"true\\" enterclass=\\"\\" leaveclass=\\"collapse show\\" entertoclass=\\"collapse show\\" leavetoclass=\\"collapse\\" enteractiveclass=\\"collapsing\\" leaveactiveclass=\\"collapsing\\" class=\\"mt-3\\">
       <div id=\\"filters\\" class=\\"collapse\\" style=\\"display: none;\\">
-        <div class=\\"card-columns\\">
+        <div class=\\"card-columns\\" style=\\"column-count: 3;\\">
+          <!---->
           <!---->
           <div class=\\"card bg-secondary\\">
             <!---->

@@ -189,7 +189,7 @@ export default Vue.extend({
     },
     dependencyTypeIds: {
       type: Array as PropType<string[]>,
-      default: [] as string[],
+      default: () => ([] as string[]),
     },
     dependencyRelationType: {
       type: String as PropType<

@@ -105,7 +105,6 @@ describe('Index', () => {
     describe('when the detailed checkbox is checked', () => {
       beforeEach(() => {
         wrapperActions.push(async (wrapper) => {
-          await wrapper.get('#toggle-filters').trigger('click')
           await wrapper.get('#detailed-dependencies').trigger('click')
         })
       })

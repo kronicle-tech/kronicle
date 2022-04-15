@@ -117,7 +117,7 @@ import {
   BAlert, BCard, BCardText,
   BCol,
   BContainer,
-  BFormCheckbox,
+  BFormCheckbox, BFormCheckboxGroup,
   BFormGroup,
   BFormSelect,
   BRow
@@ -148,6 +148,7 @@ export default Vue.extend({
     'b-col': BCol,
     'b-container': BContainer,
     'b-form-checkbox': BFormCheckbox,
+    'b-form-checkbox-group': BFormCheckboxGroup,
     'b-form-group': BFormGroup,
     'b-form-select': BFormSelect,
     'b-row': BRow,
