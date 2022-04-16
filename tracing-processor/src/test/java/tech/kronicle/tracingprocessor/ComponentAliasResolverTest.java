@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 import tech.kronicle.pluginapi.finders.models.GenericSpan;
 import tech.kronicle.pluginapi.finders.models.GenericTrace;
 import tech.kronicle.pluginapi.finders.models.TracingData;
+import tech.kronicle.sdk.constants.DependencyTypeIds;
 import tech.kronicle.sdk.models.Dependency;
 
 import java.util.List;
@@ -21,14 +22,14 @@ public class ComponentAliasResolverTest {
         List<TracingData> tracingDataList = List.of(
                 TracingData.builder()
                         .dependencies(List.of(
-                                new Dependency("test-source-1", "test-target-1"),
-                                new Dependency("test-source-2", "test-target-2")
+                                createDependency("test-source-1", "test-target-1"),
+                                createDependency("test-source-2", "test-target-2")
                         ))
                         .build(),
                 TracingData.builder()
                         .dependencies(List.of(
-                                new Dependency("test-source-3", "test-target-3"),
-                                new Dependency("test-source-4", "test-target-4")
+                                createDependency("test-source-3", "test-target-3"),
+                                createDependency("test-source-4", "test-target-4")
                         ))
                         .build()
         );
@@ -46,14 +47,14 @@ public class ComponentAliasResolverTest {
         assertThat(returnValue).isEqualTo(List.of(
                 TracingData.builder()
                         .dependencies(List.of(
-                                new Dependency("test-source-1-real", "test-target-1"),
-                                new Dependency("test-source-2", "test-target-2-real")
+                                createDependency("test-source-1-real", "test-target-1"),
+                                createDependency("test-source-2", "test-target-2-real")
                         ))
                         .build(),
                 TracingData.builder()
                         .dependencies(List.of(
-                                new Dependency("test-source-3-real", "test-target-3"),
-                                new Dependency("test-source-4", "test-target-4-real")
+                                createDependency("test-source-3-real", "test-target-3"),
+                                createDependency("test-source-4", "test-target-4-real")
                         ))
                         .build()
         ));
@@ -173,5 +174,15 @@ public class ComponentAliasResolverTest {
                         ))
                         .build()
         ));
+    }
+
+    private Dependency createDependency(String sourceComponentId, String targetComponentId) {
+        return new Dependency(
+                sourceComponentId,
+                targetComponentId,
+                DependencyTypeIds.TRACE,
+                null,
+                null
+        );
     }
 }

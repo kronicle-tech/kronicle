@@ -38,7 +38,7 @@
         >
           <td>{{ softwareItem.scannerId }}</td>
           <td>{{ softwareItem.type }}</td>
-          <td>{{ softwareItem.dependencyType }}</td>
+          <td>{{ softwareItem.dependencyRelationType }}</td>
           <td>{{ softwareItem.name }}</td>
           <td>{{ softwareItem.version }}</td>
           <td>{{ softwareItem.versionSelector }}</td>

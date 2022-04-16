@@ -3,6 +3,7 @@ package tech.kronicle.tracingprocessor.testutils;
 import tech.kronicle.pluginapi.finders.models.GenericSpan;
 import tech.kronicle.pluginapi.finders.models.GenericTrace;
 import tech.kronicle.pluginapi.finders.models.TracingData;
+import tech.kronicle.sdk.constants.DependencyTypeIds;
 import tech.kronicle.sdk.models.Dependency;
 import tech.kronicle.sdk.models.SummaryCallGraph;
 import tech.kronicle.sdk.models.SummaryComponentDependencies;
@@ -49,7 +50,10 @@ public final class TestDataHelper {
     public static Dependency createDependency(int tracingDataNumber, int dependencyNumber) {
         return new Dependency(
                 "test-source-" + tracingDataNumber + "-" + dependencyNumber,
-                "test-target-" + tracingDataNumber + "-" + dependencyNumber
+                "test-target-" + tracingDataNumber + "-" + dependencyNumber,
+                DependencyTypeIds.TRACE,
+                null,
+                null
         );
     }
 

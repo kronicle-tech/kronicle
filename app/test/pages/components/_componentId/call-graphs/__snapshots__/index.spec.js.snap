@@ -519,7 +519,7 @@ exports[`Index when Get Component Nodes service endpoints returns nodes and Get 
               markerUnits="userSpaceOnUse"
               markerWidth="7.1"
               orient="auto-start-reverse"
-              refX="10"
+              refX="20"
               refY="5.75"
               viewBox="0 0 7.1 11.5"
             >
@@ -534,7 +534,7 @@ exports[`Index when Get Component Nodes service endpoints returns nodes and Get 
               markerUnits="userSpaceOnUse"
               markerWidth="7.1"
               orient="auto-start-reverse"
-              refX="10"
+              refX="20"
               refY="5.75"
               viewBox="0 0 7.1 11.5"
             >
@@ -549,7 +549,7 @@ exports[`Index when Get Component Nodes service endpoints returns nodes and Get 
               markerUnits="userSpaceOnUse"
               markerWidth="7.1"
               orient="auto-start-reverse"
-              refX="10"
+              refX="20"
               refY="5.75"
               viewBox="0 0 7.1 11.5"
             >
@@ -564,7 +564,7 @@ exports[`Index when Get Component Nodes service endpoints returns nodes and Get 
               markerUnits="userSpaceOnUse"
               markerWidth="7.1"
               orient="auto-start-reverse"
-              refX="10"
+              refX="20"
               refY="5.75"
               viewBox="0 0 7.1 11.5"
             >
@@ -579,7 +579,7 @@ exports[`Index when Get Component Nodes service endpoints returns nodes and Get 
               markerUnits="userSpaceOnUse"
               markerWidth="7.1"
               orient="auto-start-reverse"
-              refX="10"
+              refX="20"
               refY="5.75"
               viewBox="0 0 7.1 11.5"
             >
@@ -594,7 +594,7 @@ exports[`Index when Get Component Nodes service endpoints returns nodes and Get 
               markerUnits="userSpaceOnUse"
               markerWidth="7.1"
               orient="auto-start-reverse"
-              refX="10"
+              refX="20"
               refY="5.75"
               viewBox="0 0 7.1 11.5"
             >
@@ -609,7 +609,7 @@ exports[`Index when Get Component Nodes service endpoints returns nodes and Get 
               markerUnits="userSpaceOnUse"
               markerWidth="7.1"
               orient="auto-start-reverse"
-              refX="10"
+              refX="20"
               refY="5.75"
               viewBox="0 0 7.1 11.5"
             >
@@ -645,7 +645,7 @@ exports[`Index when Get Component Nodes service endpoints returns nodes and Get 
               cx="50"
               cy="250"
               id="component-dependency-graph-node-1"
-              r="5"
+              r="10"
               title="test-component-id-2, test-span-name-2-2"
             />
           </g>
@@ -655,7 +655,7 @@ exports[`Index when Get Component Nodes service endpoints returns nodes and Get 
               cx="50"
               cy="50"
               id="component-dependency-graph-node-0"
-              r="5"
+              r="10"
               title="test-component-id-1, test-span-name-1-1"
             />
           </g>
@@ -670,11 +670,11 @@ exports[`Index when Get Component Nodes service endpoints returns nodes and Get 
               class="node-label direct-node-label"
               font-size="14"
               stroke-width="1.75"
-              x="62"
+              x="67"
               y="270"
             >
               <tspan
-                x="62"
+                x="67"
                 y="270"
               >
                 
@@ -682,7 +682,7 @@ exports[`Index when Get Component Nodes service endpoints returns nodes and Get 
       
               </tspan>
               <tspan
-                x="62"
+                x="67"
                 y="286.8"
               >
                 
@@ -696,11 +696,11 @@ exports[`Index when Get Component Nodes service endpoints returns nodes and Get 
               class="node-label selected-node-label"
               font-size="14"
               stroke-width="1.75"
-              x="62"
+              x="67"
               y="70"
             >
               <tspan
-                x="62"
+                x="67"
                 y="70"
               >
                 
@@ -708,7 +708,7 @@ exports[`Index when Get Component Nodes service endpoints returns nodes and Get 
       
               </tspan>
               <tspan
-                x="62"
+                x="67"
                 y="86.8"
               >
                 

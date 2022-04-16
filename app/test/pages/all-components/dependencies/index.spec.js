@@ -15,7 +15,7 @@ describe('Index', () => {
   async function createWrapper() {
     wrapper = await createPageWrapper(Index, {
       serviceRequests: {
-        '/v1/components?fields=components(id,name,typeId,tags,description,notes,responsibilities,teams,platformId)':
+        '/v1/components?fields=components(id,name,typeId,tags,description,notes,responsibilities,teams,platformId,state(environments(id)))':
           {
             responseBody: { components },
           },
@@ -104,12 +104,9 @@ describe('Index', () => {
 
     describe('when the detailed checkbox is checked', () => {
       beforeEach(() => {
-        wrapperActions.push(
-          async (wrapper) => {
-            await wrapper.get('#toggle-filters').trigger('click')
-            await wrapper.get('#detailed-dependencies').trigger('click')
-          }
-        )
+        wrapperActions.push(async (wrapper) => {
+          await wrapper.get('#detailed-dependencies').trigger('click')
+        })
       })
 
       test('shows detailed dependencies in graph', async () => {

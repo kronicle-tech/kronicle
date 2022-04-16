@@ -169,6 +169,35 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
   </div>
    
   <div>
+    <transition-stub
+      css="true"
+      enteractiveclass=""
+      enterclass=""
+      entertoclass="show"
+      leaveactiveclass=""
+      leaveclass="show"
+      leavetoclass=""
+      name=""
+    >
+      <div
+        aria-atomic="true"
+        aria-live="polite"
+        class="alert alert-dismissible alert-info"
+        role="alert"
+      >
+        <button
+          aria-label="Close"
+          class="close"
+          type="button"
+        >
+          ×
+        </button>
+        
+    Click a dot in the dependencies diagram to see more information about that component
+  
+      </div>
+    </transition-stub>
+     
     <div
       class="mt-3 mb-4"
     >
@@ -214,6 +243,7 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
         >
           <div
             class="card-columns"
+            style="column-count: 3;"
           >
             <div
               class="card bg-secondary"
@@ -225,90 +255,49 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
               >
                 <!---->
                 <!---->
-                <p
-                  class="card-text"
+                <fieldset
+                  class="form-group"
+                  id="__BVID__142"
                 >
-                  <div
-                    class="form-row form-group"
-                    id="__BVID__128"
-                    role="group"
+                  <legend
+                    class="bv-no-focus-ring col-form-label pt-0"
+                    id="__BVID__142__BV_label_"
+                    tabindex="-1"
                   >
-                    <label
-                      class="col-6 col-form-label col-form-label-sm"
-                      for="graph-scope-related-radius"
-                      id="__BVID__128__BV_label_"
-                    >
-                      Radius:
-                    </label>
+                    Dependency Types
+                  </legend>
+                  <div>
                     <div
-                      class="col"
+                      class="bv-no-focus-ring"
+                      id="__BVID__143"
+                      role="group"
+                      tabindex="-1"
                     >
-                      <select
-                        class="custom-select custom-select-sm"
-                        id="graph-scope-related-radius"
+                      <div
+                        class="custom-control custom-checkbox"
                       >
-                        <option
-                          value="0"
+                        <input
+                          class="custom-control-input"
+                          id="__BVID__143_BV_option_0"
+                          name="dependencyTypeId"
+                          type="checkbox"
+                          value=""
+                        />
+                        <label
+                          class="custom-control-label"
+                          for="__BVID__143_BV_option_0"
                         >
-                          0
-                        </option>
-                        <option
-                          value="1"
-                        >
-                          1
-                        </option>
-                        <option
-                          value="2"
-                        >
-                          2
-                        </option>
-                        <option
-                          value="3"
-                        >
-                          3
-                        </option>
-                        <option
-                          value="4"
-                        >
-                          4
-                        </option>
-                        <option
-                          value="5"
-                        >
-                          5
-                        </option>
-                        <option
-                          value="6"
-                        >
-                          6
-                        </option>
-                        <option
-                          value="7"
-                        >
-                          7
-                        </option>
-                        <option
-                          value="8"
-                        >
-                          8
-                        </option>
-                        <option
-                          value="9"
-                        >
-                          9
-                        </option>
-                        <option
-                          value="10"
-                        >
-                          10
-                        </option>
-                      </select>
-                      <!---->
-                      <!---->
-                      <!---->
+                          <span>
+                            null
+                          </span>
+                        </label>
+                      </div>
                     </div>
+                    <!---->
+                    <!---->
+                    <!---->
                   </div>
-                </p>
+                </fieldset>
               </div>
               <!---->
               <!---->
@@ -324,75 +313,86 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
               >
                 <!---->
                 <!---->
-                <p
-                  class="card-text"
+                <div
+                  class="form-row form-group"
+                  id="__BVID__145"
+                  role="group"
                 >
-                  <div
-                    class="form-row form-group"
-                    id="__BVID__130"
-                    role="group"
+                  <label
+                    class="col-6 col-form-label col-form-label-sm"
+                    for="graph-scope-related-radius"
+                    id="__BVID__145__BV_label_"
                   >
-                    <label
-                      class="col-6 col-form-label col-form-label-sm"
-                      for="graph-zoom"
-                      id="__BVID__130__BV_label_"
+                    Radius:
+                  </label>
+                  <div
+                    class="col"
+                  >
+                    <select
+                      class="custom-select custom-select-sm"
+                      id="graph-scope-related-radius"
                     >
-                      Zoom:
-                    </label>
-                    <div
-                      class="col"
-                    >
-                      <select
-                        class="custom-select custom-select-sm"
-                        id="graph-zoom"
+                      <option
+                        value="0"
                       >
-                        <option
-                          value="25"
-                        >
-                          25%
-                        </option>
-                        <option
-                          value="50"
-                        >
-                          50%
-                        </option>
-                        <option
-                          value="75"
-                        >
-                          75%
-                        </option>
-                        <option
-                          value="100"
-                        >
-                          100%
-                        </option>
-                        <option
-                          value="125"
-                        >
-                          125%
-                        </option>
-                        <option
-                          value="150"
-                        >
-                          150%
-                        </option>
-                        <option
-                          value="200"
-                        >
-                          200%
-                        </option>
-                        <option
-                          value="400"
-                        >
-                          400%
-                        </option>
-                      </select>
-                      <!---->
-                      <!---->
-                      <!---->
-                    </div>
+                        0
+                      </option>
+                      <option
+                        value="1"
+                      >
+                        1
+                      </option>
+                      <option
+                        value="2"
+                      >
+                        2
+                      </option>
+                      <option
+                        value="3"
+                      >
+                        3
+                      </option>
+                      <option
+                        value="4"
+                      >
+                        4
+                      </option>
+                      <option
+                        value="5"
+                      >
+                        5
+                      </option>
+                      <option
+                        value="6"
+                      >
+                        6
+                      </option>
+                      <option
+                        value="7"
+                      >
+                        7
+                      </option>
+                      <option
+                        value="8"
+                      >
+                        8
+                      </option>
+                      <option
+                        value="9"
+                      >
+                        9
+                      </option>
+                      <option
+                        value="10"
+                      >
+                        10
+                      </option>
+                    </select>
+                    <!---->
+                    <!---->
+                    <!---->
                   </div>
-                </p>
+                </div>
               </div>
               <!---->
               <!---->
@@ -408,32 +408,110 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
               >
                 <!---->
                 <!---->
-                <p
-                  class="card-text"
+                <div
+                  class="form-row form-group"
+                  id="__BVID__147"
+                  role="group"
                 >
-                  <div
-                    class="custom-control custom-checkbox"
+                  <label
+                    class="col-6 col-form-label col-form-label-sm"
+                    for="graph-zoom"
+                    id="__BVID__147__BV_label_"
                   >
-                    <input
-                      class="custom-control-input"
-                      id="detailed-dependencies"
-                      type="checkbox"
-                      value="true"
-                    />
-                    <label
-                      class="custom-control-label"
-                      for="detailed-dependencies"
+                    Zoom:
+                  </label>
+                  <div
+                    class="col"
+                  >
+                    <select
+                      class="custom-select custom-select-sm"
+                      id="graph-zoom"
                     >
-                      
-          Detailed dependencies
-        
-                    </label>
+                      <option
+                        value="25"
+                      >
+                        25%
+                      </option>
+                      <option
+                        value="50"
+                      >
+                        50%
+                      </option>
+                      <option
+                        value="75"
+                      >
+                        75%
+                      </option>
+                      <option
+                        value="100"
+                      >
+                        100%
+                      </option>
+                      <option
+                        value="125"
+                      >
+                        125%
+                      </option>
+                      <option
+                        value="150"
+                      >
+                        150%
+                      </option>
+                      <option
+                        value="200"
+                      >
+                        200%
+                      </option>
+                      <option
+                        value="400"
+                      >
+                        400%
+                      </option>
+                    </select>
+                    <!---->
+                    <!---->
+                    <!---->
                   </div>
-                </p>
+                </div>
               </div>
               <!---->
               <!---->
             </div>
+             
+            <div
+              class="card bg-secondary"
+            >
+              <!---->
+              <!---->
+              <div
+                class="card-body"
+              >
+                <!---->
+                <!---->
+                <div
+                  class="custom-control custom-checkbox"
+                >
+                  <input
+                    class="custom-control-input"
+                    id="detailed-dependencies"
+                    type="checkbox"
+                    value="true"
+                  />
+                  <label
+                    class="custom-control-label"
+                    for="detailed-dependencies"
+                  >
+                    
+        Detailed dependencies
+      
+                  </label>
+                </div>
+              </div>
+              <!---->
+              <!---->
+            </div>
+             
+            <!---->
              
             <!---->
              
@@ -447,329 +525,309 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
               >
                 <!---->
                 <!---->
-                <p
-                  class="card-text"
+                <fieldset
+                  class="form-group"
+                  id="__BVID__150"
                 >
-                  <fieldset
-                    class="form-group"
-                    id="__BVID__133"
+                  <legend
+                    class="bv-no-focus-ring col-form-label pt-0"
+                    id="__BVID__150__BV_label_"
+                    tabindex="-1"
                   >
-                    <legend
-                      class="bv-no-focus-ring col-form-label pt-0"
-                      id="__BVID__133__BV_label_"
+                    Teams
+                  </legend>
+                  <div>
+                    <div
+                      class="bv-no-focus-ring"
+                      id="__BVID__151"
+                      role="group"
                       tabindex="-1"
                     >
-                      Teams
-                    </legend>
-                    <div>
                       <div
-                        class="bv-no-focus-ring"
-                        id="__BVID__134"
-                        role="group"
-                        tabindex="-1"
+                        class="custom-control custom-checkbox"
                       >
-                        <div
-                          class="custom-control custom-checkbox"
+                        <input
+                          class="custom-control-input"
+                          id="__BVID__151_BV_option_0"
+                          name="team"
+                          type="checkbox"
+                          value="test-team-id-1-1"
+                        />
+                        <label
+                          class="custom-control-label"
+                          for="__BVID__151_BV_option_0"
                         >
-                          <input
-                            class="custom-control-input"
-                            id="__BVID__134_BV_option_0"
-                            name="team"
-                            type="checkbox"
-                            value="test-team-id-1-1"
-                          />
-                          <label
-                            class="custom-control-label"
-                            for="__BVID__134_BV_option_0"
-                          >
-                            <span>
-                              test-team-id-1-1
-                            </span>
-                          </label>
-                        </div>
-                        <div
-                          class="custom-control custom-checkbox"
-                        >
-                          <input
-                            class="custom-control-input"
-                            id="__BVID__134_BV_option_1"
-                            name="team"
-                            type="checkbox"
-                            value="test-team-id-1-2"
-                          />
-                          <label
-                            class="custom-control-label"
-                            for="__BVID__134_BV_option_1"
-                          >
-                            <span>
-                              test-team-id-1-2
-                            </span>
-                          </label>
-                        </div>
+                          <span>
+                            test-team-id-1-1
+                          </span>
+                        </label>
                       </div>
-                      <!---->
-                      <!---->
-                      <!---->
-                    </div>
-                  </fieldset>
-                </p>
-              </div>
-              <!---->
-              <!---->
-            </div>
-             
-            <div
-              class="card bg-secondary"
-            >
-              <!---->
-              <!---->
-              <div
-                class="card-body"
-              >
-                <!---->
-                <!---->
-                <p
-                  class="card-text"
-                >
-                  <fieldset
-                    class="form-group"
-                    id="__BVID__137"
-                  >
-                    <legend
-                      class="bv-no-focus-ring col-form-label pt-0"
-                      id="__BVID__137__BV_label_"
-                      tabindex="-1"
-                    >
-                      Tags
-                    </legend>
-                    <div>
                       <div
-                        class="bv-no-focus-ring"
-                        id="__BVID__138"
-                        role="group"
-                        tabindex="-1"
+                        class="custom-control custom-checkbox"
                       >
-                        <div
-                          class="custom-control custom-checkbox"
+                        <input
+                          class="custom-control-input"
+                          id="__BVID__151_BV_option_1"
+                          name="team"
+                          type="checkbox"
+                          value="test-team-id-1-2"
+                        />
+                        <label
+                          class="custom-control-label"
+                          for="__BVID__151_BV_option_1"
                         >
-                          <input
-                            class="custom-control-input"
-                            id="__BVID__138_BV_option_0"
-                            name="tag"
-                            type="checkbox"
-                            value="test-tag-1-1"
-                          />
-                          <label
-                            class="custom-control-label"
-                            for="__BVID__138_BV_option_0"
-                          >
-                            <span>
-                              test-tag-1-1
-                            </span>
-                          </label>
-                        </div>
-                        <div
-                          class="custom-control custom-checkbox"
-                        >
-                          <input
-                            class="custom-control-input"
-                            id="__BVID__138_BV_option_1"
-                            name="tag"
-                            type="checkbox"
-                            value="test-tag-1-2"
-                          />
-                          <label
-                            class="custom-control-label"
-                            for="__BVID__138_BV_option_1"
-                          >
-                            <span>
-                              test-tag-1-2
-                            </span>
-                          </label>
-                        </div>
+                          <span>
+                            test-team-id-1-2
+                          </span>
+                        </label>
                       </div>
-                      <!---->
-                      <!---->
-                      <!---->
                     </div>
-                  </fieldset>
-                </p>
-              </div>
-              <!---->
-              <!---->
-            </div>
-             
-            <div
-              class="card bg-secondary"
-            >
-              <!---->
-              <!---->
-              <div
-                class="card-body"
-              >
-                <!---->
-                <!---->
-                <p
-                  class="card-text"
-                >
-                  <fieldset
-                    class="form-group"
-                    id="__BVID__141"
-                  >
-                    <legend
-                      class="bv-no-focus-ring col-form-label pt-0"
-                      id="__BVID__141__BV_label_"
-                      tabindex="-1"
-                    >
-                      Component Types
-                    </legend>
-                    <div>
-                      <div
-                        class="bv-no-focus-ring"
-                        id="__BVID__142"
-                        role="group"
-                        tabindex="-1"
-                      >
-                        <div
-                          class="custom-control custom-checkbox"
-                        >
-                          <input
-                            class="custom-control-input"
-                            id="__BVID__142_BV_option_0"
-                            name="componentTypeId"
-                            type="checkbox"
-                            value="test-component-type-id-1"
-                          />
-                          <label
-                            class="custom-control-label"
-                            for="__BVID__142_BV_option_0"
-                          >
-                            <span>
-                              test-component-type-id-1
-                            </span>
-                          </label>
-                        </div>
-                      </div>
-                      <!---->
-                      <!---->
-                      <!---->
-                    </div>
-                  </fieldset>
-                </p>
-              </div>
-              <!---->
-              <!---->
-            </div>
-             
-            <div
-              class="card bg-secondary"
-            >
-              <!---->
-              <!---->
-              <div
-                class="card-body"
-              >
-                <!---->
-                <!---->
-                <p
-                  class="card-text"
-                >
-                  <fieldset
-                    class="form-group"
-                    id="__BVID__144"
-                  >
-                    <legend
-                      class="bv-no-focus-ring col-form-label pt-0"
-                      id="__BVID__144__BV_label_"
-                      tabindex="-1"
-                    >
-                      Platforms
-                    </legend>
-                    <div>
-                      <div
-                        class="bv-no-focus-ring"
-                        id="__BVID__145"
-                        role="group"
-                        tabindex="-1"
-                      >
-                        <div
-                          class="custom-control custom-checkbox"
-                        >
-                          <input
-                            class="custom-control-input"
-                            id="__BVID__145_BV_option_0"
-                            name="platformId"
-                            type="checkbox"
-                            value="undefined"
-                          />
-                          <label
-                            class="custom-control-label"
-                            for="__BVID__145_BV_option_0"
-                          >
-                            <span>
-                              undefined
-                            </span>
-                          </label>
-                        </div>
-                      </div>
-                      <!---->
-                      <!---->
-                      <!---->
-                    </div>
-                  </fieldset>
-                </p>
-              </div>
-              <!---->
-              <!---->
-            </div>
-             
-            <div
-              class="card bg-secondary"
-            >
-              <!---->
-              <!---->
-              <div
-                class="card-body"
-              >
-                <!---->
-                <!---->
-                <p
-                  class="card-text"
-                >
-                  <div
-                    class="form-group"
-                    id="__BVID__147"
-                    role="group"
-                  >
-                    <label
-                      class="d-block"
-                      for="component-filter"
-                      id="__BVID__147__BV_label_"
-                    >
-                      Component
-                    </label>
-                    <div>
-                      <select
-                        class="custom-select custom-select-sm"
-                        id="component-filter"
-                      >
-                        <option
-                          value=""
-                        >
-                          Please select a component
-                        </option>
-                        <option
-                          value="test-component-id-1"
-                        >
-                          test-component-id-1
-                        </option>
-                      </select>
-                      <!---->
-                      <!---->
-                      <!---->
-                    </div>
+                    <!---->
+                    <!---->
+                    <!---->
                   </div>
-                </p>
+                </fieldset>
+              </div>
+              <!---->
+              <!---->
+            </div>
+             
+            <div
+              class="card bg-secondary"
+            >
+              <!---->
+              <!---->
+              <div
+                class="card-body"
+              >
+                <!---->
+                <!---->
+                <fieldset
+                  class="form-group"
+                  id="__BVID__154"
+                >
+                  <legend
+                    class="bv-no-focus-ring col-form-label pt-0"
+                    id="__BVID__154__BV_label_"
+                    tabindex="-1"
+                  >
+                    Tags
+                  </legend>
+                  <div>
+                    <div
+                      class="bv-no-focus-ring"
+                      id="__BVID__155"
+                      role="group"
+                      tabindex="-1"
+                    >
+                      <div
+                        class="custom-control custom-checkbox"
+                      >
+                        <input
+                          class="custom-control-input"
+                          id="__BVID__155_BV_option_0"
+                          name="tag"
+                          type="checkbox"
+                          value="test-tag-1-1"
+                        />
+                        <label
+                          class="custom-control-label"
+                          for="__BVID__155_BV_option_0"
+                        >
+                          <span>
+                            test-tag-1-1
+                          </span>
+                        </label>
+                      </div>
+                      <div
+                        class="custom-control custom-checkbox"
+                      >
+                        <input
+                          class="custom-control-input"
+                          id="__BVID__155_BV_option_1"
+                          name="tag"
+                          type="checkbox"
+                          value="test-tag-1-2"
+                        />
+                        <label
+                          class="custom-control-label"
+                          for="__BVID__155_BV_option_1"
+                        >
+                          <span>
+                            test-tag-1-2
+                          </span>
+                        </label>
+                      </div>
+                    </div>
+                    <!---->
+                    <!---->
+                    <!---->
+                  </div>
+                </fieldset>
+              </div>
+              <!---->
+              <!---->
+            </div>
+             
+            <div
+              class="card bg-secondary"
+            >
+              <!---->
+              <!---->
+              <div
+                class="card-body"
+              >
+                <!---->
+                <!---->
+                <fieldset
+                  class="form-group"
+                  id="__BVID__158"
+                >
+                  <legend
+                    class="bv-no-focus-ring col-form-label pt-0"
+                    id="__BVID__158__BV_label_"
+                    tabindex="-1"
+                  >
+                    Component Types
+                  </legend>
+                  <div>
+                    <div
+                      class="bv-no-focus-ring"
+                      id="__BVID__159"
+                      role="group"
+                      tabindex="-1"
+                    >
+                      <div
+                        class="custom-control custom-checkbox"
+                      >
+                        <input
+                          class="custom-control-input"
+                          id="__BVID__159_BV_option_0"
+                          name="componentTypeId"
+                          type="checkbox"
+                          value="test-component-type-id-1"
+                        />
+                        <label
+                          class="custom-control-label"
+                          for="__BVID__159_BV_option_0"
+                        >
+                          <span>
+                            test-component-type-id-1
+                          </span>
+                        </label>
+                      </div>
+                    </div>
+                    <!---->
+                    <!---->
+                    <!---->
+                  </div>
+                </fieldset>
+              </div>
+              <!---->
+              <!---->
+            </div>
+             
+            <div
+              class="card bg-secondary"
+            >
+              <!---->
+              <!---->
+              <div
+                class="card-body"
+              >
+                <!---->
+                <!---->
+                <fieldset
+                  class="form-group"
+                  id="__BVID__161"
+                >
+                  <legend
+                    class="bv-no-focus-ring col-form-label pt-0"
+                    id="__BVID__161__BV_label_"
+                    tabindex="-1"
+                  >
+                    Platforms
+                  </legend>
+                  <div>
+                    <div
+                      class="bv-no-focus-ring"
+                      id="__BVID__162"
+                      role="group"
+                      tabindex="-1"
+                    >
+                      <div
+                        class="custom-control custom-checkbox"
+                      >
+                        <input
+                          class="custom-control-input"
+                          id="__BVID__162_BV_option_0"
+                          name="platformId"
+                          type="checkbox"
+                          value="undefined"
+                        />
+                        <label
+                          class="custom-control-label"
+                          for="__BVID__162_BV_option_0"
+                        >
+                          <span>
+                            undefined
+                          </span>
+                        </label>
+                      </div>
+                    </div>
+                    <!---->
+                    <!---->
+                    <!---->
+                  </div>
+                </fieldset>
+              </div>
+              <!---->
+              <!---->
+            </div>
+             
+            <div
+              class="card bg-secondary"
+            >
+              <!---->
+              <!---->
+              <div
+                class="card-body"
+              >
+                <!---->
+                <!---->
+                <div
+                  class="form-group"
+                  id="__BVID__164"
+                  role="group"
+                >
+                  <label
+                    class="d-block"
+                    for="component-filter"
+                    id="__BVID__164__BV_label_"
+                  >
+                    Component
+                  </label>
+                  <div>
+                    <select
+                      class="custom-select custom-select-sm"
+                      id="component-filter"
+                    >
+                      <option
+                        value=""
+                      >
+                        Please select a component
+                      </option>
+                      <option
+                        value="test-component-id-1"
+                      >
+                        test-component-id-1
+                      </option>
+                    </select>
+                    <!---->
+                    <!---->
+                    <!---->
+                  </div>
+                </div>
               </div>
               <!---->
               <!---->
@@ -780,256 +838,292 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
     </div>
      
     <div
-      class="container-fluid"
+      class="graph"
     >
-      <div
-        class="row"
+      <svg
+        height="1200"
+        id="component-dependency-graph"
+        overflow="auto"
+        width="100%"
+        xmlns="http://www.w3.org/2000/svg"
       >
-        <div
-          class="graph col"
-        >
-          <svg
-            height="1200"
-            id="component-dependency-graph"
-            overflow="auto"
-            width="100%"
-            xmlns="http://www.w3.org/2000/svg"
+        <rect
+          class="component-dependency-graph-background"
+          fill-opacity="0"
+        />
+         
+        <defs>
+          <marker
+            class="dependency-marker all-dependency-marker"
+            id="component-dependency-graph-dependency-marker-all"
+            markerHeight="11.5"
+            markerUnits="userSpaceOnUse"
+            markerWidth="7.1"
+            orient="auto-start-reverse"
+            refX="20"
+            refY="5.75"
+            viewBox="0 0 7.1 11.5"
           >
-            <rect
-              class="component-dependency-graph-background"
-              fill-opacity="0"
+            <path
+              d="M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5"
             />
-             
-            <defs>
-              <marker
-                class="dependency-marker all-dependency-marker"
-                id="component-dependency-graph-dependency-marker-all"
-                markerHeight="11.5"
-                markerUnits="userSpaceOnUse"
-                markerWidth="7.1"
-                orient="auto-start-reverse"
-                refX="10"
-                refY="5.75"
-                viewBox="0 0 7.1 11.5"
-              >
-                <path
-                  d="M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5"
-                />
-              </marker>
-              <marker
-                class="dependency-marker manual-dependency-marker"
-                id="component-dependency-graph-dependency-marker-manual"
-                markerHeight="11.5"
-                markerUnits="userSpaceOnUse"
-                markerWidth="7.1"
-                orient="auto-start-reverse"
-                refX="10"
-                refY="5.75"
-                viewBox="0 0 7.1 11.5"
-              >
-                <path
-                  d="M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5"
-                />
-              </marker>
-              <marker
-                class="dependency-marker scope-related-dependency-marker"
-                id="component-dependency-graph-dependency-marker-scope-related"
-                markerHeight="11.5"
-                markerUnits="userSpaceOnUse"
-                markerWidth="7.1"
-                orient="auto-start-reverse"
-                refX="10"
-                refY="5.75"
-                viewBox="0 0 7.1 11.5"
-              >
-                <path
-                  d="M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5"
-                />
-              </marker>
-              <marker
-                class="dependency-marker scoped-dependency-marker"
-                id="component-dependency-graph-dependency-marker-scoped"
-                markerHeight="11.5"
-                markerUnits="userSpaceOnUse"
-                markerWidth="7.1"
-                orient="auto-start-reverse"
-                refX="10"
-                refY="5.75"
-                viewBox="0 0 7.1 11.5"
-              >
-                <path
-                  d="M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5"
-                />
-              </marker>
-              <marker
-                class="dependency-marker related-dependency-marker"
-                id="component-dependency-graph-dependency-marker-related"
-                markerHeight="11.5"
-                markerUnits="userSpaceOnUse"
-                markerWidth="7.1"
-                orient="auto-start-reverse"
-                refX="10"
-                refY="5.75"
-                viewBox="0 0 7.1 11.5"
-              >
-                <path
-                  d="M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5"
-                />
-              </marker>
-              <marker
-                class="dependency-marker direct-dependency-marker"
-                id="component-dependency-graph-dependency-marker-direct"
-                markerHeight="11.5"
-                markerUnits="userSpaceOnUse"
-                markerWidth="7.1"
-                orient="auto-start-reverse"
-                refX="10"
-                refY="5.75"
-                viewBox="0 0 7.1 11.5"
-              >
-                <path
-                  d="M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5"
-                />
-              </marker>
-              <marker
-                class="dependency-marker selected-dependency-marker"
-                id="component-dependency-graph-dependency-marker-selected"
-                markerHeight="11.5"
-                markerUnits="userSpaceOnUse"
-                markerWidth="7.1"
-                orient="auto-start-reverse"
-                refX="10"
-                refY="5.75"
-                viewBox="0 0 7.1 11.5"
-              >
-                <path
-                  d="M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5"
-                />
-              </marker>
-            </defs>
-             
-            <g />
-            <g />
-            <g />
-            <g />
-            <g />
-            <g>
-              <path
-                class="dependency direct-dependency"
-                d="M50,50L50,150"
-                id="component-dependency-graph-dependency-0"
-                marker-end="url(#component-dependencies-direct-dependency-marker)"
-              />
-            </g>
-            <g />
-             
-            <g />
-            <g />
-            <g />
-            <g />
-            <g />
-            <g>
-              <circle
-                class="node direct-node"
-                cx="50"
-                cy="150"
-                id="component-dependency-graph-node-1"
-                r="5"
-                title="test-component-id-2"
-              />
-            </g>
-            <g>
-              <circle
-                class="node selected-node"
-                cx="50"
-                cy="50"
-                id="component-dependency-graph-node-0"
-                r="5"
-                title="test-component-id-1"
-              />
-            </g>
-             
-            <g />
-            <g />
-            <g />
-            <g />
-            <g />
-            <g>
-              <text
-                class="node-label direct-node-label"
-                font-size="14"
-                stroke-width="1.75"
-                x="62"
-                y="170"
-              >
-                <tspan
-                  x="62"
-                  y="170"
-                >
-                  
+          </marker>
+          <marker
+            class="dependency-marker manual-dependency-marker"
+            id="component-dependency-graph-dependency-marker-manual"
+            markerHeight="11.5"
+            markerUnits="userSpaceOnUse"
+            markerWidth="7.1"
+            orient="auto-start-reverse"
+            refX="20"
+            refY="5.75"
+            viewBox="0 0 7.1 11.5"
+          >
+            <path
+              d="M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5"
+            />
+          </marker>
+          <marker
+            class="dependency-marker scope-related-dependency-marker"
+            id="component-dependency-graph-dependency-marker-scope-related"
+            markerHeight="11.5"
+            markerUnits="userSpaceOnUse"
+            markerWidth="7.1"
+            orient="auto-start-reverse"
+            refX="20"
+            refY="5.75"
+            viewBox="0 0 7.1 11.5"
+          >
+            <path
+              d="M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5"
+            />
+          </marker>
+          <marker
+            class="dependency-marker scoped-dependency-marker"
+            id="component-dependency-graph-dependency-marker-scoped"
+            markerHeight="11.5"
+            markerUnits="userSpaceOnUse"
+            markerWidth="7.1"
+            orient="auto-start-reverse"
+            refX="20"
+            refY="5.75"
+            viewBox="0 0 7.1 11.5"
+          >
+            <path
+              d="M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5"
+            />
+          </marker>
+          <marker
+            class="dependency-marker related-dependency-marker"
+            id="component-dependency-graph-dependency-marker-related"
+            markerHeight="11.5"
+            markerUnits="userSpaceOnUse"
+            markerWidth="7.1"
+            orient="auto-start-reverse"
+            refX="20"
+            refY="5.75"
+            viewBox="0 0 7.1 11.5"
+          >
+            <path
+              d="M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5"
+            />
+          </marker>
+          <marker
+            class="dependency-marker direct-dependency-marker"
+            id="component-dependency-graph-dependency-marker-direct"
+            markerHeight="11.5"
+            markerUnits="userSpaceOnUse"
+            markerWidth="7.1"
+            orient="auto-start-reverse"
+            refX="20"
+            refY="5.75"
+            viewBox="0 0 7.1 11.5"
+          >
+            <path
+              d="M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5"
+            />
+          </marker>
+          <marker
+            class="dependency-marker selected-dependency-marker"
+            id="component-dependency-graph-dependency-marker-selected"
+            markerHeight="11.5"
+            markerUnits="userSpaceOnUse"
+            markerWidth="7.1"
+            orient="auto-start-reverse"
+            refX="20"
+            refY="5.75"
+            viewBox="0 0 7.1 11.5"
+          >
+            <path
+              d="M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5"
+            />
+          </marker>
+        </defs>
+         
+        <g />
+        <g />
+        <g />
+        <g />
+        <g />
+        <g>
+          <path
+            class="dependency direct-dependency"
+            d="M50,50L50,150"
+            id="component-dependency-graph-dependency-0"
+            marker-end="url(#component-dependencies-direct-dependency-marker)"
+          />
+        </g>
+        <g />
+         
+        <g />
+        <g />
+        <g />
+        <g />
+        <g />
+        <g>
+          <circle
+            class="node direct-node"
+            cx="50"
+            cy="150"
+            id="component-dependency-graph-node-1"
+            r="10"
+            title="test-component-id-2"
+          />
+        </g>
+        <g>
+          <circle
+            class="node selected-node"
+            cx="50"
+            cy="50"
+            id="component-dependency-graph-node-0"
+            r="10"
+            title="test-component-id-1"
+          />
+        </g>
+         
+        <g />
+        <g />
+        <g />
+        <g />
+        <g />
+        <g>
+          <text
+            class="node-label direct-node-label"
+            font-size="14"
+            stroke-width="1.75"
+            x="67"
+            y="170"
+          >
+            <tspan
+              x="67"
+              y="170"
+            >
+              
         test-component-id-2
       
-                </tspan>
-              </text>
-            </g>
-            <g>
-              <text
-                class="node-label selected-node-label"
-                font-size="14"
-                stroke-width="1.75"
-                x="62"
-                y="70"
-              >
-                <tspan
-                  x="62"
-                  y="70"
-                >
-                  
+            </tspan>
+          </text>
+        </g>
+        <g>
+          <text
+            class="node-label selected-node-label"
+            font-size="14"
+            stroke-width="1.75"
+            x="67"
+            y="70"
+          >
+            <tspan
+              x="67"
+              y="70"
+            >
+              
         test-component-id-1
       
-                </tspan>
-              </text>
-            </g>
-          </svg>
-        </div>
-         
+            </tspan>
+          </text>
+        </g>
+      </svg>
+    </div>
+     
+    <div
+      class="b-sidebar-outer"
+      tabindex="-1"
+    >
+      <!---->
+      <transition-stub
+        css="true"
+        enteractiveclass="slide"
+        enterclass=""
+        entertoclass="show"
+        leaveactiveclass="slide"
+        leaveclass="show"
+        leavetoclass=""
+      >
         <div
-          class="bg-dark col-md-3"
+          aria-hidden="true"
+          aria-modal="true"
+          class="b-sidebar b-sidebar-right bg-dark text-light"
+          id="component"
+          role="dialog"
+          style="width: 600px; display: none;"
+          tabindex="-1"
         >
-          <transition-stub
-            class="mt-3"
-            css="true"
-            enteractiveclass=""
-            enterclass=""
-            entertoclass="show"
-            leaveactiveclass=""
-            leaveclass="show"
-            leavetoclass=""
-            name=""
+          <header
+            class="b-sidebar-header"
+          >
+            <button
+              aria-label="Close"
+              class="close text-light"
+              type="button"
+            >
+              <svg
+                aria-label="x"
+                class="bi-x b-icon bi"
+                fill="currentColor"
+                focusable="false"
+                height="1em"
+                role="img"
+                viewBox="0 0 16 16"
+                width="1em"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <g>
+                  <path
+                    d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"
+                  />
+                </g>
+              </svg>
+            </button>
+            <span />
+          </header>
+          <div
+            class="b-sidebar-body"
           >
             <div
-              aria-atomic="true"
-              aria-live="polite"
-              class="alert alert-dismissible alert-info"
-              role="alert"
+              class="m-3"
             >
-              <button
-                aria-label="Close"
-                class="close"
-                type="button"
-              >
-                ×
-              </button>
-              
-          Hover over or click a component's dot in the dependencies diagram to see
-          more information about it
-        
+              <!---->
             </div>
-          </transition-stub>
-           
+          </div>
           <!---->
         </div>
-      </div>
+      </transition-stub>
+      <!---->
+      <transition-stub
+        css="true"
+        enteractiveclass="fade"
+        enterclass=""
+        entertoclass="show"
+        leaveactiveclass="fade"
+        leaveclass="show"
+        leavetoclass=""
+        name=""
+      >
+        <div
+          class="b-sidebar-backdrop bg-dark"
+          style="display: none;"
+        />
+      </transition-stub>
     </div>
   </div>
 </div>
@@ -1204,6 +1298,35 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
   </div>
    
   <div>
+    <transition-stub
+      css="true"
+      enteractiveclass=""
+      enterclass=""
+      entertoclass="show"
+      leaveactiveclass=""
+      leaveclass="show"
+      leavetoclass=""
+      name=""
+    >
+      <div
+        aria-atomic="true"
+        aria-live="polite"
+        class="alert alert-dismissible alert-info"
+        role="alert"
+      >
+        <button
+          aria-label="Close"
+          class="close"
+          type="button"
+        >
+          ×
+        </button>
+        
+    Click a dot in the dependencies diagram to see more information about that component
+  
+      </div>
+    </transition-stub>
+     
     <div
       class="mt-3 mb-4"
     >
@@ -1249,6 +1372,7 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
         >
           <div
             class="card-columns"
+            style="column-count: 3;"
           >
             <div
               class="card bg-secondary"
@@ -1260,90 +1384,49 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
               >
                 <!---->
                 <!---->
-                <p
-                  class="card-text"
+                <fieldset
+                  class="form-group"
+                  id="__BVID__199"
                 >
-                  <div
-                    class="form-row form-group"
-                    id="__BVID__178"
-                    role="group"
+                  <legend
+                    class="bv-no-focus-ring col-form-label pt-0"
+                    id="__BVID__199__BV_label_"
+                    tabindex="-1"
                   >
-                    <label
-                      class="col-6 col-form-label col-form-label-sm"
-                      for="graph-scope-related-radius"
-                      id="__BVID__178__BV_label_"
-                    >
-                      Radius:
-                    </label>
+                    Dependency Types
+                  </legend>
+                  <div>
                     <div
-                      class="col"
+                      class="bv-no-focus-ring"
+                      id="__BVID__200"
+                      role="group"
+                      tabindex="-1"
                     >
-                      <select
-                        class="custom-select custom-select-sm"
-                        id="graph-scope-related-radius"
+                      <div
+                        class="custom-control custom-checkbox"
                       >
-                        <option
-                          value="0"
+                        <input
+                          class="custom-control-input"
+                          id="__BVID__200_BV_option_0"
+                          name="dependencyTypeId"
+                          type="checkbox"
+                          value=""
+                        />
+                        <label
+                          class="custom-control-label"
+                          for="__BVID__200_BV_option_0"
                         >
-                          0
-                        </option>
-                        <option
-                          value="1"
-                        >
-                          1
-                        </option>
-                        <option
-                          value="2"
-                        >
-                          2
-                        </option>
-                        <option
-                          value="3"
-                        >
-                          3
-                        </option>
-                        <option
-                          value="4"
-                        >
-                          4
-                        </option>
-                        <option
-                          value="5"
-                        >
-                          5
-                        </option>
-                        <option
-                          value="6"
-                        >
-                          6
-                        </option>
-                        <option
-                          value="7"
-                        >
-                          7
-                        </option>
-                        <option
-                          value="8"
-                        >
-                          8
-                        </option>
-                        <option
-                          value="9"
-                        >
-                          9
-                        </option>
-                        <option
-                          value="10"
-                        >
-                          10
-                        </option>
-                      </select>
-                      <!---->
-                      <!---->
-                      <!---->
+                          <span>
+                            null
+                          </span>
+                        </label>
+                      </div>
                     </div>
+                    <!---->
+                    <!---->
+                    <!---->
                   </div>
-                </p>
+                </fieldset>
               </div>
               <!---->
               <!---->
@@ -1359,75 +1442,86 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
               >
                 <!---->
                 <!---->
-                <p
-                  class="card-text"
+                <div
+                  class="form-row form-group"
+                  id="__BVID__202"
+                  role="group"
                 >
-                  <div
-                    class="form-row form-group"
-                    id="__BVID__180"
-                    role="group"
+                  <label
+                    class="col-6 col-form-label col-form-label-sm"
+                    for="graph-scope-related-radius"
+                    id="__BVID__202__BV_label_"
                   >
-                    <label
-                      class="col-6 col-form-label col-form-label-sm"
-                      for="graph-zoom"
-                      id="__BVID__180__BV_label_"
+                    Radius:
+                  </label>
+                  <div
+                    class="col"
+                  >
+                    <select
+                      class="custom-select custom-select-sm"
+                      id="graph-scope-related-radius"
                     >
-                      Zoom:
-                    </label>
-                    <div
-                      class="col"
-                    >
-                      <select
-                        class="custom-select custom-select-sm"
-                        id="graph-zoom"
+                      <option
+                        value="0"
                       >
-                        <option
-                          value="25"
-                        >
-                          25%
-                        </option>
-                        <option
-                          value="50"
-                        >
-                          50%
-                        </option>
-                        <option
-                          value="75"
-                        >
-                          75%
-                        </option>
-                        <option
-                          value="100"
-                        >
-                          100%
-                        </option>
-                        <option
-                          value="125"
-                        >
-                          125%
-                        </option>
-                        <option
-                          value="150"
-                        >
-                          150%
-                        </option>
-                        <option
-                          value="200"
-                        >
-                          200%
-                        </option>
-                        <option
-                          value="400"
-                        >
-                          400%
-                        </option>
-                      </select>
-                      <!---->
-                      <!---->
-                      <!---->
-                    </div>
+                        0
+                      </option>
+                      <option
+                        value="1"
+                      >
+                        1
+                      </option>
+                      <option
+                        value="2"
+                      >
+                        2
+                      </option>
+                      <option
+                        value="3"
+                      >
+                        3
+                      </option>
+                      <option
+                        value="4"
+                      >
+                        4
+                      </option>
+                      <option
+                        value="5"
+                      >
+                        5
+                      </option>
+                      <option
+                        value="6"
+                      >
+                        6
+                      </option>
+                      <option
+                        value="7"
+                      >
+                        7
+                      </option>
+                      <option
+                        value="8"
+                      >
+                        8
+                      </option>
+                      <option
+                        value="9"
+                      >
+                        9
+                      </option>
+                      <option
+                        value="10"
+                      >
+                        10
+                      </option>
+                    </select>
+                    <!---->
+                    <!---->
+                    <!---->
                   </div>
-                </p>
+                </div>
               </div>
               <!---->
               <!---->
@@ -1443,32 +1537,110 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
               >
                 <!---->
                 <!---->
-                <p
-                  class="card-text"
+                <div
+                  class="form-row form-group"
+                  id="__BVID__204"
+                  role="group"
                 >
-                  <div
-                    class="custom-control custom-checkbox"
+                  <label
+                    class="col-6 col-form-label col-form-label-sm"
+                    for="graph-zoom"
+                    id="__BVID__204__BV_label_"
                   >
-                    <input
-                      class="custom-control-input"
-                      id="detailed-dependencies"
-                      type="checkbox"
-                      value="true"
-                    />
-                    <label
-                      class="custom-control-label"
-                      for="detailed-dependencies"
+                    Zoom:
+                  </label>
+                  <div
+                    class="col"
+                  >
+                    <select
+                      class="custom-select custom-select-sm"
+                      id="graph-zoom"
                     >
-                      
-          Detailed dependencies
-        
-                    </label>
+                      <option
+                        value="25"
+                      >
+                        25%
+                      </option>
+                      <option
+                        value="50"
+                      >
+                        50%
+                      </option>
+                      <option
+                        value="75"
+                      >
+                        75%
+                      </option>
+                      <option
+                        value="100"
+                      >
+                        100%
+                      </option>
+                      <option
+                        value="125"
+                      >
+                        125%
+                      </option>
+                      <option
+                        value="150"
+                      >
+                        150%
+                      </option>
+                      <option
+                        value="200"
+                      >
+                        200%
+                      </option>
+                      <option
+                        value="400"
+                      >
+                        400%
+                      </option>
+                    </select>
+                    <!---->
+                    <!---->
+                    <!---->
                   </div>
-                </p>
+                </div>
               </div>
               <!---->
               <!---->
             </div>
+             
+            <div
+              class="card bg-secondary"
+            >
+              <!---->
+              <!---->
+              <div
+                class="card-body"
+              >
+                <!---->
+                <!---->
+                <div
+                  class="custom-control custom-checkbox"
+                >
+                  <input
+                    class="custom-control-input"
+                    id="detailed-dependencies"
+                    type="checkbox"
+                    value="true"
+                  />
+                  <label
+                    class="custom-control-label"
+                    for="detailed-dependencies"
+                  >
+                    
+        Detailed dependencies
+      
+                  </label>
+                </div>
+              </div>
+              <!---->
+              <!---->
+            </div>
+             
+            <!---->
              
             <!---->
              
@@ -1482,329 +1654,309 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
               >
                 <!---->
                 <!---->
-                <p
-                  class="card-text"
+                <fieldset
+                  class="form-group"
+                  id="__BVID__207"
                 >
-                  <fieldset
-                    class="form-group"
-                    id="__BVID__183"
+                  <legend
+                    class="bv-no-focus-ring col-form-label pt-0"
+                    id="__BVID__207__BV_label_"
+                    tabindex="-1"
                   >
-                    <legend
-                      class="bv-no-focus-ring col-form-label pt-0"
-                      id="__BVID__183__BV_label_"
+                    Teams
+                  </legend>
+                  <div>
+                    <div
+                      class="bv-no-focus-ring"
+                      id="__BVID__208"
+                      role="group"
                       tabindex="-1"
                     >
-                      Teams
-                    </legend>
-                    <div>
                       <div
-                        class="bv-no-focus-ring"
-                        id="__BVID__184"
-                        role="group"
-                        tabindex="-1"
+                        class="custom-control custom-checkbox"
                       >
-                        <div
-                          class="custom-control custom-checkbox"
+                        <input
+                          class="custom-control-input"
+                          id="__BVID__208_BV_option_0"
+                          name="team"
+                          type="checkbox"
+                          value="test-team-id-1-1"
+                        />
+                        <label
+                          class="custom-control-label"
+                          for="__BVID__208_BV_option_0"
                         >
-                          <input
-                            class="custom-control-input"
-                            id="__BVID__184_BV_option_0"
-                            name="team"
-                            type="checkbox"
-                            value="test-team-id-1-1"
-                          />
-                          <label
-                            class="custom-control-label"
-                            for="__BVID__184_BV_option_0"
-                          >
-                            <span>
-                              test-team-id-1-1
-                            </span>
-                          </label>
-                        </div>
-                        <div
-                          class="custom-control custom-checkbox"
-                        >
-                          <input
-                            class="custom-control-input"
-                            id="__BVID__184_BV_option_1"
-                            name="team"
-                            type="checkbox"
-                            value="test-team-id-1-2"
-                          />
-                          <label
-                            class="custom-control-label"
-                            for="__BVID__184_BV_option_1"
-                          >
-                            <span>
-                              test-team-id-1-2
-                            </span>
-                          </label>
-                        </div>
+                          <span>
+                            test-team-id-1-1
+                          </span>
+                        </label>
                       </div>
-                      <!---->
-                      <!---->
-                      <!---->
-                    </div>
-                  </fieldset>
-                </p>
-              </div>
-              <!---->
-              <!---->
-            </div>
-             
-            <div
-              class="card bg-secondary"
-            >
-              <!---->
-              <!---->
-              <div
-                class="card-body"
-              >
-                <!---->
-                <!---->
-                <p
-                  class="card-text"
-                >
-                  <fieldset
-                    class="form-group"
-                    id="__BVID__187"
-                  >
-                    <legend
-                      class="bv-no-focus-ring col-form-label pt-0"
-                      id="__BVID__187__BV_label_"
-                      tabindex="-1"
-                    >
-                      Tags
-                    </legend>
-                    <div>
                       <div
-                        class="bv-no-focus-ring"
-                        id="__BVID__188"
-                        role="group"
-                        tabindex="-1"
+                        class="custom-control custom-checkbox"
                       >
-                        <div
-                          class="custom-control custom-checkbox"
+                        <input
+                          class="custom-control-input"
+                          id="__BVID__208_BV_option_1"
+                          name="team"
+                          type="checkbox"
+                          value="test-team-id-1-2"
+                        />
+                        <label
+                          class="custom-control-label"
+                          for="__BVID__208_BV_option_1"
                         >
-                          <input
-                            class="custom-control-input"
-                            id="__BVID__188_BV_option_0"
-                            name="tag"
-                            type="checkbox"
-                            value="test-tag-1-1"
-                          />
-                          <label
-                            class="custom-control-label"
-                            for="__BVID__188_BV_option_0"
-                          >
-                            <span>
-                              test-tag-1-1
-                            </span>
-                          </label>
-                        </div>
-                        <div
-                          class="custom-control custom-checkbox"
-                        >
-                          <input
-                            class="custom-control-input"
-                            id="__BVID__188_BV_option_1"
-                            name="tag"
-                            type="checkbox"
-                            value="test-tag-1-2"
-                          />
-                          <label
-                            class="custom-control-label"
-                            for="__BVID__188_BV_option_1"
-                          >
-                            <span>
-                              test-tag-1-2
-                            </span>
-                          </label>
-                        </div>
+                          <span>
+                            test-team-id-1-2
+                          </span>
+                        </label>
                       </div>
-                      <!---->
-                      <!---->
-                      <!---->
                     </div>
-                  </fieldset>
-                </p>
-              </div>
-              <!---->
-              <!---->
-            </div>
-             
-            <div
-              class="card bg-secondary"
-            >
-              <!---->
-              <!---->
-              <div
-                class="card-body"
-              >
-                <!---->
-                <!---->
-                <p
-                  class="card-text"
-                >
-                  <fieldset
-                    class="form-group"
-                    id="__BVID__191"
-                  >
-                    <legend
-                      class="bv-no-focus-ring col-form-label pt-0"
-                      id="__BVID__191__BV_label_"
-                      tabindex="-1"
-                    >
-                      Component Types
-                    </legend>
-                    <div>
-                      <div
-                        class="bv-no-focus-ring"
-                        id="__BVID__192"
-                        role="group"
-                        tabindex="-1"
-                      >
-                        <div
-                          class="custom-control custom-checkbox"
-                        >
-                          <input
-                            class="custom-control-input"
-                            id="__BVID__192_BV_option_0"
-                            name="componentTypeId"
-                            type="checkbox"
-                            value="test-component-type-id-1"
-                          />
-                          <label
-                            class="custom-control-label"
-                            for="__BVID__192_BV_option_0"
-                          >
-                            <span>
-                              test-component-type-id-1
-                            </span>
-                          </label>
-                        </div>
-                      </div>
-                      <!---->
-                      <!---->
-                      <!---->
-                    </div>
-                  </fieldset>
-                </p>
-              </div>
-              <!---->
-              <!---->
-            </div>
-             
-            <div
-              class="card bg-secondary"
-            >
-              <!---->
-              <!---->
-              <div
-                class="card-body"
-              >
-                <!---->
-                <!---->
-                <p
-                  class="card-text"
-                >
-                  <fieldset
-                    class="form-group"
-                    id="__BVID__194"
-                  >
-                    <legend
-                      class="bv-no-focus-ring col-form-label pt-0"
-                      id="__BVID__194__BV_label_"
-                      tabindex="-1"
-                    >
-                      Platforms
-                    </legend>
-                    <div>
-                      <div
-                        class="bv-no-focus-ring"
-                        id="__BVID__195"
-                        role="group"
-                        tabindex="-1"
-                      >
-                        <div
-                          class="custom-control custom-checkbox"
-                        >
-                          <input
-                            class="custom-control-input"
-                            id="__BVID__195_BV_option_0"
-                            name="platformId"
-                            type="checkbox"
-                            value="undefined"
-                          />
-                          <label
-                            class="custom-control-label"
-                            for="__BVID__195_BV_option_0"
-                          >
-                            <span>
-                              undefined
-                            </span>
-                          </label>
-                        </div>
-                      </div>
-                      <!---->
-                      <!---->
-                      <!---->
-                    </div>
-                  </fieldset>
-                </p>
-              </div>
-              <!---->
-              <!---->
-            </div>
-             
-            <div
-              class="card bg-secondary"
-            >
-              <!---->
-              <!---->
-              <div
-                class="card-body"
-              >
-                <!---->
-                <!---->
-                <p
-                  class="card-text"
-                >
-                  <div
-                    class="form-group"
-                    id="__BVID__197"
-                    role="group"
-                  >
-                    <label
-                      class="d-block"
-                      for="component-filter"
-                      id="__BVID__197__BV_label_"
-                    >
-                      Component
-                    </label>
-                    <div>
-                      <select
-                        class="custom-select custom-select-sm"
-                        id="component-filter"
-                      >
-                        <option
-                          value=""
-                        >
-                          Please select a component
-                        </option>
-                        <option
-                          value="test-component-id-1"
-                        >
-                          test-component-id-1
-                        </option>
-                      </select>
-                      <!---->
-                      <!---->
-                      <!---->
-                    </div>
+                    <!---->
+                    <!---->
+                    <!---->
                   </div>
-                </p>
+                </fieldset>
+              </div>
+              <!---->
+              <!---->
+            </div>
+             
+            <div
+              class="card bg-secondary"
+            >
+              <!---->
+              <!---->
+              <div
+                class="card-body"
+              >
+                <!---->
+                <!---->
+                <fieldset
+                  class="form-group"
+                  id="__BVID__211"
+                >
+                  <legend
+                    class="bv-no-focus-ring col-form-label pt-0"
+                    id="__BVID__211__BV_label_"
+                    tabindex="-1"
+                  >
+                    Tags
+                  </legend>
+                  <div>
+                    <div
+                      class="bv-no-focus-ring"
+                      id="__BVID__212"
+                      role="group"
+                      tabindex="-1"
+                    >
+                      <div
+                        class="custom-control custom-checkbox"
+                      >
+                        <input
+                          class="custom-control-input"
+                          id="__BVID__212_BV_option_0"
+                          name="tag"
+                          type="checkbox"
+                          value="test-tag-1-1"
+                        />
+                        <label
+                          class="custom-control-label"
+                          for="__BVID__212_BV_option_0"
+                        >
+                          <span>
+                            test-tag-1-1
+                          </span>
+                        </label>
+                      </div>
+                      <div
+                        class="custom-control custom-checkbox"
+                      >
+                        <input
+                          class="custom-control-input"
+                          id="__BVID__212_BV_option_1"
+                          name="tag"
+                          type="checkbox"
+                          value="test-tag-1-2"
+                        />
+                        <label
+                          class="custom-control-label"
+                          for="__BVID__212_BV_option_1"
+                        >
+                          <span>
+                            test-tag-1-2
+                          </span>
+                        </label>
+                      </div>
+                    </div>
+                    <!---->
+                    <!---->
+                    <!---->
+                  </div>
+                </fieldset>
+              </div>
+              <!---->
+              <!---->
+            </div>
+             
+            <div
+              class="card bg-secondary"
+            >
+              <!---->
+              <!---->
+              <div
+                class="card-body"
+              >
+                <!---->
+                <!---->
+                <fieldset
+                  class="form-group"
+                  id="__BVID__215"
+                >
+                  <legend
+                    class="bv-no-focus-ring col-form-label pt-0"
+                    id="__BVID__215__BV_label_"
+                    tabindex="-1"
+                  >
+                    Component Types
+                  </legend>
+                  <div>
+                    <div
+                      class="bv-no-focus-ring"
+                      id="__BVID__216"
+                      role="group"
+                      tabindex="-1"
+                    >
+                      <div
+                        class="custom-control custom-checkbox"
+                      >
+                        <input
+                          class="custom-control-input"
+                          id="__BVID__216_BV_option_0"
+                          name="componentTypeId"
+                          type="checkbox"
+                          value="test-component-type-id-1"
+                        />
+                        <label
+                          class="custom-control-label"
+                          for="__BVID__216_BV_option_0"
+                        >
+                          <span>
+                            test-component-type-id-1
+                          </span>
+                        </label>
+                      </div>
+                    </div>
+                    <!---->
+                    <!---->
+                    <!---->
+                  </div>
+                </fieldset>
+              </div>
+              <!---->
+              <!---->
+            </div>
+             
+            <div
+              class="card bg-secondary"
+            >
+              <!---->
+              <!---->
+              <div
+                class="card-body"
+              >
+                <!---->
+                <!---->
+                <fieldset
+                  class="form-group"
+                  id="__BVID__218"
+                >
+                  <legend
+                    class="bv-no-focus-ring col-form-label pt-0"
+                    id="__BVID__218__BV_label_"
+                    tabindex="-1"
+                  >
+                    Platforms
+                  </legend>
+                  <div>
+                    <div
+                      class="bv-no-focus-ring"
+                      id="__BVID__219"
+                      role="group"
+                      tabindex="-1"
+                    >
+                      <div
+                        class="custom-control custom-checkbox"
+                      >
+                        <input
+                          class="custom-control-input"
+                          id="__BVID__219_BV_option_0"
+                          name="platformId"
+                          type="checkbox"
+                          value="undefined"
+                        />
+                        <label
+                          class="custom-control-label"
+                          for="__BVID__219_BV_option_0"
+                        >
+                          <span>
+                            undefined
+                          </span>
+                        </label>
+                      </div>
+                    </div>
+                    <!---->
+                    <!---->
+                    <!---->
+                  </div>
+                </fieldset>
+              </div>
+              <!---->
+              <!---->
+            </div>
+             
+            <div
+              class="card bg-secondary"
+            >
+              <!---->
+              <!---->
+              <div
+                class="card-body"
+              >
+                <!---->
+                <!---->
+                <div
+                  class="form-group"
+                  id="__BVID__221"
+                  role="group"
+                >
+                  <label
+                    class="d-block"
+                    for="component-filter"
+                    id="__BVID__221__BV_label_"
+                  >
+                    Component
+                  </label>
+                  <div>
+                    <select
+                      class="custom-select custom-select-sm"
+                      id="component-filter"
+                    >
+                      <option
+                        value=""
+                      >
+                        Please select a component
+                      </option>
+                      <option
+                        value="test-component-id-1"
+                      >
+                        test-component-id-1
+                      </option>
+                    </select>
+                    <!---->
+                    <!---->
+                    <!---->
+                  </div>
+                </div>
               </div>
               <!---->
               <!---->
@@ -1815,256 +1967,292 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
     </div>
      
     <div
-      class="container-fluid"
+      class="graph"
     >
-      <div
-        class="row"
+      <svg
+        height="1200"
+        id="component-dependency-graph"
+        overflow="auto"
+        width="100%"
+        xmlns="http://www.w3.org/2000/svg"
       >
-        <div
-          class="graph col"
-        >
-          <svg
-            height="1200"
-            id="component-dependency-graph"
-            overflow="auto"
-            width="100%"
-            xmlns="http://www.w3.org/2000/svg"
+        <rect
+          class="component-dependency-graph-background"
+          fill-opacity="0"
+        />
+         
+        <defs>
+          <marker
+            class="dependency-marker all-dependency-marker"
+            id="component-dependency-graph-dependency-marker-all"
+            markerHeight="11.5"
+            markerUnits="userSpaceOnUse"
+            markerWidth="7.1"
+            orient="auto-start-reverse"
+            refX="20"
+            refY="5.75"
+            viewBox="0 0 7.1 11.5"
           >
-            <rect
-              class="component-dependency-graph-background"
-              fill-opacity="0"
+            <path
+              d="M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5"
             />
-             
-            <defs>
-              <marker
-                class="dependency-marker all-dependency-marker"
-                id="component-dependency-graph-dependency-marker-all"
-                markerHeight="11.5"
-                markerUnits="userSpaceOnUse"
-                markerWidth="7.1"
-                orient="auto-start-reverse"
-                refX="10"
-                refY="5.75"
-                viewBox="0 0 7.1 11.5"
-              >
-                <path
-                  d="M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5"
-                />
-              </marker>
-              <marker
-                class="dependency-marker manual-dependency-marker"
-                id="component-dependency-graph-dependency-marker-manual"
-                markerHeight="11.5"
-                markerUnits="userSpaceOnUse"
-                markerWidth="7.1"
-                orient="auto-start-reverse"
-                refX="10"
-                refY="5.75"
-                viewBox="0 0 7.1 11.5"
-              >
-                <path
-                  d="M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5"
-                />
-              </marker>
-              <marker
-                class="dependency-marker scope-related-dependency-marker"
-                id="component-dependency-graph-dependency-marker-scope-related"
-                markerHeight="11.5"
-                markerUnits="userSpaceOnUse"
-                markerWidth="7.1"
-                orient="auto-start-reverse"
-                refX="10"
-                refY="5.75"
-                viewBox="0 0 7.1 11.5"
-              >
-                <path
-                  d="M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5"
-                />
-              </marker>
-              <marker
-                class="dependency-marker scoped-dependency-marker"
-                id="component-dependency-graph-dependency-marker-scoped"
-                markerHeight="11.5"
-                markerUnits="userSpaceOnUse"
-                markerWidth="7.1"
-                orient="auto-start-reverse"
-                refX="10"
-                refY="5.75"
-                viewBox="0 0 7.1 11.5"
-              >
-                <path
-                  d="M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5"
-                />
-              </marker>
-              <marker
-                class="dependency-marker related-dependency-marker"
-                id="component-dependency-graph-dependency-marker-related"
-                markerHeight="11.5"
-                markerUnits="userSpaceOnUse"
-                markerWidth="7.1"
-                orient="auto-start-reverse"
-                refX="10"
-                refY="5.75"
-                viewBox="0 0 7.1 11.5"
-              >
-                <path
-                  d="M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5"
-                />
-              </marker>
-              <marker
-                class="dependency-marker direct-dependency-marker"
-                id="component-dependency-graph-dependency-marker-direct"
-                markerHeight="11.5"
-                markerUnits="userSpaceOnUse"
-                markerWidth="7.1"
-                orient="auto-start-reverse"
-                refX="10"
-                refY="5.75"
-                viewBox="0 0 7.1 11.5"
-              >
-                <path
-                  d="M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5"
-                />
-              </marker>
-              <marker
-                class="dependency-marker selected-dependency-marker"
-                id="component-dependency-graph-dependency-marker-selected"
-                markerHeight="11.5"
-                markerUnits="userSpaceOnUse"
-                markerWidth="7.1"
-                orient="auto-start-reverse"
-                refX="10"
-                refY="5.75"
-                viewBox="0 0 7.1 11.5"
-              >
-                <path
-                  d="M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5"
-                />
-              </marker>
-            </defs>
-             
-            <g />
-            <g />
-            <g />
-            <g />
-            <g />
-            <g>
-              <path
-                class="dependency direct-dependency"
-                d="M50,50L50,150"
-                id="component-dependency-graph-dependency-0"
-                marker-end="url(#component-dependencies-direct-dependency-marker)"
-              />
-            </g>
-            <g />
-             
-            <g />
-            <g />
-            <g />
-            <g />
-            <g />
-            <g>
-              <circle
-                class="node direct-node"
-                cx="50"
-                cy="150"
-                id="component-dependency-graph-node-1"
-                r="5"
-                title="test-component-id-2"
-              />
-            </g>
-            <g>
-              <circle
-                class="node selected-node"
-                cx="50"
-                cy="50"
-                id="component-dependency-graph-node-0"
-                r="5"
-                title="test-component-id-1"
-              />
-            </g>
-             
-            <g />
-            <g />
-            <g />
-            <g />
-            <g />
-            <g>
-              <text
-                class="node-label direct-node-label"
-                font-size="14"
-                stroke-width="1.75"
-                x="62"
-                y="170"
-              >
-                <tspan
-                  x="62"
-                  y="170"
-                >
-                  
+          </marker>
+          <marker
+            class="dependency-marker manual-dependency-marker"
+            id="component-dependency-graph-dependency-marker-manual"
+            markerHeight="11.5"
+            markerUnits="userSpaceOnUse"
+            markerWidth="7.1"
+            orient="auto-start-reverse"
+            refX="20"
+            refY="5.75"
+            viewBox="0 0 7.1 11.5"
+          >
+            <path
+              d="M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5"
+            />
+          </marker>
+          <marker
+            class="dependency-marker scope-related-dependency-marker"
+            id="component-dependency-graph-dependency-marker-scope-related"
+            markerHeight="11.5"
+            markerUnits="userSpaceOnUse"
+            markerWidth="7.1"
+            orient="auto-start-reverse"
+            refX="20"
+            refY="5.75"
+            viewBox="0 0 7.1 11.5"
+          >
+            <path
+              d="M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5"
+            />
+          </marker>
+          <marker
+            class="dependency-marker scoped-dependency-marker"
+            id="component-dependency-graph-dependency-marker-scoped"
+            markerHeight="11.5"
+            markerUnits="userSpaceOnUse"
+            markerWidth="7.1"
+            orient="auto-start-reverse"
+            refX="20"
+            refY="5.75"
+            viewBox="0 0 7.1 11.5"
+          >
+            <path
+              d="M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5"
+            />
+          </marker>
+          <marker
+            class="dependency-marker related-dependency-marker"
+            id="component-dependency-graph-dependency-marker-related"
+            markerHeight="11.5"
+            markerUnits="userSpaceOnUse"
+            markerWidth="7.1"
+            orient="auto-start-reverse"
+            refX="20"
+            refY="5.75"
+            viewBox="0 0 7.1 11.5"
+          >
+            <path
+              d="M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5"
+            />
+          </marker>
+          <marker
+            class="dependency-marker direct-dependency-marker"
+            id="component-dependency-graph-dependency-marker-direct"
+            markerHeight="11.5"
+            markerUnits="userSpaceOnUse"
+            markerWidth="7.1"
+            orient="auto-start-reverse"
+            refX="20"
+            refY="5.75"
+            viewBox="0 0 7.1 11.5"
+          >
+            <path
+              d="M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5"
+            />
+          </marker>
+          <marker
+            class="dependency-marker selected-dependency-marker"
+            id="component-dependency-graph-dependency-marker-selected"
+            markerHeight="11.5"
+            markerUnits="userSpaceOnUse"
+            markerWidth="7.1"
+            orient="auto-start-reverse"
+            refX="20"
+            refY="5.75"
+            viewBox="0 0 7.1 11.5"
+          >
+            <path
+              d="M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5"
+            />
+          </marker>
+        </defs>
+         
+        <g />
+        <g />
+        <g />
+        <g />
+        <g />
+        <g>
+          <path
+            class="dependency direct-dependency"
+            d="M50,50L50,150"
+            id="component-dependency-graph-dependency-0"
+            marker-end="url(#component-dependencies-direct-dependency-marker)"
+          />
+        </g>
+        <g />
+         
+        <g />
+        <g />
+        <g />
+        <g />
+        <g />
+        <g>
+          <circle
+            class="node direct-node"
+            cx="50"
+            cy="150"
+            id="component-dependency-graph-node-1"
+            r="10"
+            title="test-component-id-2"
+          />
+        </g>
+        <g>
+          <circle
+            class="node selected-node"
+            cx="50"
+            cy="50"
+            id="component-dependency-graph-node-0"
+            r="10"
+            title="test-component-id-1"
+          />
+        </g>
+         
+        <g />
+        <g />
+        <g />
+        <g />
+        <g />
+        <g>
+          <text
+            class="node-label direct-node-label"
+            font-size="14"
+            stroke-width="1.75"
+            x="67"
+            y="170"
+          >
+            <tspan
+              x="67"
+              y="170"
+            >
+              
         test-component-id-2
       
-                </tspan>
-              </text>
-            </g>
-            <g>
-              <text
-                class="node-label selected-node-label"
-                font-size="14"
-                stroke-width="1.75"
-                x="62"
-                y="70"
-              >
-                <tspan
-                  x="62"
-                  y="70"
-                >
-                  
+            </tspan>
+          </text>
+        </g>
+        <g>
+          <text
+            class="node-label selected-node-label"
+            font-size="14"
+            stroke-width="1.75"
+            x="67"
+            y="70"
+          >
+            <tspan
+              x="67"
+              y="70"
+            >
+              
         test-component-id-1
       
-                </tspan>
-              </text>
-            </g>
-          </svg>
-        </div>
-         
+            </tspan>
+          </text>
+        </g>
+      </svg>
+    </div>
+     
+    <div
+      class="b-sidebar-outer"
+      tabindex="-1"
+    >
+      <!---->
+      <transition-stub
+        css="true"
+        enteractiveclass="slide"
+        enterclass=""
+        entertoclass="show"
+        leaveactiveclass="slide"
+        leaveclass="show"
+        leavetoclass=""
+      >
         <div
-          class="bg-dark col-md-3"
+          aria-hidden="true"
+          aria-modal="true"
+          class="b-sidebar b-sidebar-right bg-dark text-light"
+          id="component"
+          role="dialog"
+          style="width: 600px; display: none;"
+          tabindex="-1"
         >
-          <transition-stub
-            class="mt-3"
-            css="true"
-            enteractiveclass=""
-            enterclass=""
-            entertoclass="show"
-            leaveactiveclass=""
-            leaveclass="show"
-            leavetoclass=""
-            name=""
+          <header
+            class="b-sidebar-header"
+          >
+            <button
+              aria-label="Close"
+              class="close text-light"
+              type="button"
+            >
+              <svg
+                aria-label="x"
+                class="bi-x b-icon bi"
+                fill="currentColor"
+                focusable="false"
+                height="1em"
+                role="img"
+                viewBox="0 0 16 16"
+                width="1em"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <g>
+                  <path
+                    d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"
+                  />
+                </g>
+              </svg>
+            </button>
+            <span />
+          </header>
+          <div
+            class="b-sidebar-body"
           >
             <div
-              aria-atomic="true"
-              aria-live="polite"
-              class="alert alert-dismissible alert-info"
-              role="alert"
+              class="m-3"
             >
-              <button
-                aria-label="Close"
-                class="close"
-                type="button"
-              >
-                ×
-              </button>
-              
-          Hover over or click a component's dot in the dependencies diagram to see
-          more information about it
-        
+              <!---->
             </div>
-          </transition-stub>
-           
+          </div>
           <!---->
         </div>
-      </div>
+      </transition-stub>
+      <!---->
+      <transition-stub
+        css="true"
+        enteractiveclass="fade"
+        enterclass=""
+        entertoclass="show"
+        leaveactiveclass="fade"
+        leaveclass="show"
+        leavetoclass=""
+        name=""
+      >
+        <div
+          class="b-sidebar-backdrop bg-dark"
+          style="display: none;"
+        />
+      </transition-stub>
     </div>
   </div>
 </div>
@@ -2239,6 +2427,35 @@ exports[`Index when Get Summary service endpoint returns no dependencies renders
   </div>
    
   <div>
+    <transition-stub
+      css="true"
+      enteractiveclass=""
+      enterclass=""
+      entertoclass="show"
+      leaveactiveclass=""
+      leaveclass="show"
+      leavetoclass=""
+      name=""
+    >
+      <div
+        aria-atomic="true"
+        aria-live="polite"
+        class="alert alert-dismissible alert-info"
+        role="alert"
+      >
+        <button
+          aria-label="Close"
+          class="close"
+          type="button"
+        >
+          ×
+        </button>
+        
+    Click a dot in the dependencies diagram to see more information about that component
+  
+      </div>
+    </transition-stub>
+     
     <div
       class="mt-3 mb-4"
     >
@@ -2284,6 +2501,7 @@ exports[`Index when Get Summary service endpoint returns no dependencies renders
         >
           <div
             class="card-columns"
+            style="column-count: 3;"
           >
             <div
               class="card bg-secondary"
@@ -2295,215 +2513,243 @@ exports[`Index when Get Summary service endpoint returns no dependencies renders
               >
                 <!---->
                 <!---->
-                <p
-                  class="card-text"
+                <fieldset
+                  class="form-group"
+                  id="__BVID__86"
                 >
-                  <div
-                    class="form-row form-group"
-                    id="__BVID__78"
-                    role="group"
+                  <legend
+                    class="bv-no-focus-ring col-form-label pt-0"
+                    id="__BVID__86__BV_label_"
+                    tabindex="-1"
                   >
-                    <label
-                      class="col-6 col-form-label col-form-label-sm"
-                      for="graph-scope-related-radius"
-                      id="__BVID__78__BV_label_"
-                    >
-                      Radius:
-                    </label>
+                    Dependency Types
+                  </legend>
+                  <div>
                     <div
-                      class="col"
-                    >
-                      <select
-                        class="custom-select custom-select-sm"
-                        id="graph-scope-related-radius"
-                      >
-                        <option
-                          value="0"
-                        >
-                          0
-                        </option>
-                        <option
-                          value="1"
-                        >
-                          1
-                        </option>
-                        <option
-                          value="2"
-                        >
-                          2
-                        </option>
-                        <option
-                          value="3"
-                        >
-                          3
-                        </option>
-                        <option
-                          value="4"
-                        >
-                          4
-                        </option>
-                        <option
-                          value="5"
-                        >
-                          5
-                        </option>
-                        <option
-                          value="6"
-                        >
-                          6
-                        </option>
-                        <option
-                          value="7"
-                        >
-                          7
-                        </option>
-                        <option
-                          value="8"
-                        >
-                          8
-                        </option>
-                        <option
-                          value="9"
-                        >
-                          9
-                        </option>
-                        <option
-                          value="10"
-                        >
-                          10
-                        </option>
-                      </select>
-                      <!---->
-                      <!---->
-                      <!---->
-                    </div>
-                  </div>
-                </p>
-              </div>
-              <!---->
-              <!---->
-            </div>
-             
-            <div
-              class="card bg-secondary"
-            >
-              <!---->
-              <!---->
-              <div
-                class="card-body"
-              >
-                <!---->
-                <!---->
-                <p
-                  class="card-text"
-                >
-                  <div
-                    class="form-row form-group"
-                    id="__BVID__80"
-                    role="group"
-                  >
-                    <label
-                      class="col-6 col-form-label col-form-label-sm"
-                      for="graph-zoom"
-                      id="__BVID__80__BV_label_"
-                    >
-                      Zoom:
-                    </label>
-                    <div
-                      class="col"
-                    >
-                      <select
-                        class="custom-select custom-select-sm"
-                        id="graph-zoom"
-                      >
-                        <option
-                          value="25"
-                        >
-                          25%
-                        </option>
-                        <option
-                          value="50"
-                        >
-                          50%
-                        </option>
-                        <option
-                          value="75"
-                        >
-                          75%
-                        </option>
-                        <option
-                          value="100"
-                        >
-                          100%
-                        </option>
-                        <option
-                          value="125"
-                        >
-                          125%
-                        </option>
-                        <option
-                          value="150"
-                        >
-                          150%
-                        </option>
-                        <option
-                          value="200"
-                        >
-                          200%
-                        </option>
-                        <option
-                          value="400"
-                        >
-                          400%
-                        </option>
-                      </select>
-                      <!---->
-                      <!---->
-                      <!---->
-                    </div>
-                  </div>
-                </p>
-              </div>
-              <!---->
-              <!---->
-            </div>
-             
-            <div
-              class="card bg-secondary"
-            >
-              <!---->
-              <!---->
-              <div
-                class="card-body"
-              >
-                <!---->
-                <!---->
-                <p
-                  class="card-text"
-                >
-                  <div
-                    class="custom-control custom-checkbox"
-                  >
-                    <input
-                      class="custom-control-input"
-                      id="detailed-dependencies"
-                      type="checkbox"
-                      value="true"
+                      class="bv-no-focus-ring"
+                      id="__BVID__87"
+                      role="group"
+                      tabindex="-1"
                     />
-                    <label
-                      class="custom-control-label"
-                      for="detailed-dependencies"
-                    >
-                      
-          Detailed dependencies
-        
-                    </label>
+                    <!---->
+                    <!---->
+                    <!---->
                   </div>
-                </p>
+                </fieldset>
               </div>
               <!---->
               <!---->
             </div>
+             
+            <div
+              class="card bg-secondary"
+            >
+              <!---->
+              <!---->
+              <div
+                class="card-body"
+              >
+                <!---->
+                <!---->
+                <div
+                  class="form-row form-group"
+                  id="__BVID__88"
+                  role="group"
+                >
+                  <label
+                    class="col-6 col-form-label col-form-label-sm"
+                    for="graph-scope-related-radius"
+                    id="__BVID__88__BV_label_"
+                  >
+                    Radius:
+                  </label>
+                  <div
+                    class="col"
+                  >
+                    <select
+                      class="custom-select custom-select-sm"
+                      id="graph-scope-related-radius"
+                    >
+                      <option
+                        value="0"
+                      >
+                        0
+                      </option>
+                      <option
+                        value="1"
+                      >
+                        1
+                      </option>
+                      <option
+                        value="2"
+                      >
+                        2
+                      </option>
+                      <option
+                        value="3"
+                      >
+                        3
+                      </option>
+                      <option
+                        value="4"
+                      >
+                        4
+                      </option>
+                      <option
+                        value="5"
+                      >
+                        5
+                      </option>
+                      <option
+                        value="6"
+                      >
+                        6
+                      </option>
+                      <option
+                        value="7"
+                      >
+                        7
+                      </option>
+                      <option
+                        value="8"
+                      >
+                        8
+                      </option>
+                      <option
+                        value="9"
+                      >
+                        9
+                      </option>
+                      <option
+                        value="10"
+                      >
+                        10
+                      </option>
+                    </select>
+                    <!---->
+                    <!---->
+                    <!---->
+                  </div>
+                </div>
+              </div>
+              <!---->
+              <!---->
+            </div>
+             
+            <div
+              class="card bg-secondary"
+            >
+              <!---->
+              <!---->
+              <div
+                class="card-body"
+              >
+                <!---->
+                <!---->
+                <div
+                  class="form-row form-group"
+                  id="__BVID__90"
+                  role="group"
+                >
+                  <label
+                    class="col-6 col-form-label col-form-label-sm"
+                    for="graph-zoom"
+                    id="__BVID__90__BV_label_"
+                  >
+                    Zoom:
+                  </label>
+                  <div
+                    class="col"
+                  >
+                    <select
+                      class="custom-select custom-select-sm"
+                      id="graph-zoom"
+                    >
+                      <option
+                        value="25"
+                      >
+                        25%
+                      </option>
+                      <option
+                        value="50"
+                      >
+                        50%
+                      </option>
+                      <option
+                        value="75"
+                      >
+                        75%
+                      </option>
+                      <option
+                        value="100"
+                      >
+                        100%
+                      </option>
+                      <option
+                        value="125"
+                      >
+                        125%
+                      </option>
+                      <option
+                        value="150"
+                      >
+                        150%
+                      </option>
+                      <option
+                        value="200"
+                      >
+                        200%
+                      </option>
+                      <option
+                        value="400"
+                      >
+                        400%
+                      </option>
+                    </select>
+                    <!---->
+                    <!---->
+                    <!---->
+                  </div>
+                </div>
+              </div>
+              <!---->
+              <!---->
+            </div>
+             
+            <div
+              class="card bg-secondary"
+            >
+              <!---->
+              <!---->
+              <div
+                class="card-body"
+              >
+                <!---->
+                <!---->
+                <div
+                  class="custom-control custom-checkbox"
+                >
+                  <input
+                    class="custom-control-input"
+                    id="detailed-dependencies"
+                    type="checkbox"
+                    value="true"
+                  />
+                  <label
+                    class="custom-control-label"
+                    for="detailed-dependencies"
+                  >
+                    
+        Detailed dependencies
+      
+                  </label>
+                </div>
+              </div>
+              <!---->
+              <!---->
+            </div>
+             
+            <!---->
              
             <!---->
              
@@ -2517,329 +2763,309 @@ exports[`Index when Get Summary service endpoint returns no dependencies renders
               >
                 <!---->
                 <!---->
-                <p
-                  class="card-text"
+                <fieldset
+                  class="form-group"
+                  id="__BVID__93"
                 >
-                  <fieldset
-                    class="form-group"
-                    id="__BVID__83"
+                  <legend
+                    class="bv-no-focus-ring col-form-label pt-0"
+                    id="__BVID__93__BV_label_"
+                    tabindex="-1"
                   >
-                    <legend
-                      class="bv-no-focus-ring col-form-label pt-0"
-                      id="__BVID__83__BV_label_"
+                    Teams
+                  </legend>
+                  <div>
+                    <div
+                      class="bv-no-focus-ring"
+                      id="__BVID__94"
+                      role="group"
                       tabindex="-1"
                     >
-                      Teams
-                    </legend>
-                    <div>
                       <div
-                        class="bv-no-focus-ring"
-                        id="__BVID__84"
-                        role="group"
-                        tabindex="-1"
+                        class="custom-control custom-checkbox"
                       >
-                        <div
-                          class="custom-control custom-checkbox"
+                        <input
+                          class="custom-control-input"
+                          id="__BVID__94_BV_option_0"
+                          name="team"
+                          type="checkbox"
+                          value="test-team-id-1-1"
+                        />
+                        <label
+                          class="custom-control-label"
+                          for="__BVID__94_BV_option_0"
                         >
-                          <input
-                            class="custom-control-input"
-                            id="__BVID__84_BV_option_0"
-                            name="team"
-                            type="checkbox"
-                            value="test-team-id-1-1"
-                          />
-                          <label
-                            class="custom-control-label"
-                            for="__BVID__84_BV_option_0"
-                          >
-                            <span>
-                              test-team-id-1-1
-                            </span>
-                          </label>
-                        </div>
-                        <div
-                          class="custom-control custom-checkbox"
-                        >
-                          <input
-                            class="custom-control-input"
-                            id="__BVID__84_BV_option_1"
-                            name="team"
-                            type="checkbox"
-                            value="test-team-id-1-2"
-                          />
-                          <label
-                            class="custom-control-label"
-                            for="__BVID__84_BV_option_1"
-                          >
-                            <span>
-                              test-team-id-1-2
-                            </span>
-                          </label>
-                        </div>
+                          <span>
+                            test-team-id-1-1
+                          </span>
+                        </label>
                       </div>
-                      <!---->
-                      <!---->
-                      <!---->
-                    </div>
-                  </fieldset>
-                </p>
-              </div>
-              <!---->
-              <!---->
-            </div>
-             
-            <div
-              class="card bg-secondary"
-            >
-              <!---->
-              <!---->
-              <div
-                class="card-body"
-              >
-                <!---->
-                <!---->
-                <p
-                  class="card-text"
-                >
-                  <fieldset
-                    class="form-group"
-                    id="__BVID__87"
-                  >
-                    <legend
-                      class="bv-no-focus-ring col-form-label pt-0"
-                      id="__BVID__87__BV_label_"
-                      tabindex="-1"
-                    >
-                      Tags
-                    </legend>
-                    <div>
                       <div
-                        class="bv-no-focus-ring"
-                        id="__BVID__88"
-                        role="group"
-                        tabindex="-1"
+                        class="custom-control custom-checkbox"
                       >
-                        <div
-                          class="custom-control custom-checkbox"
+                        <input
+                          class="custom-control-input"
+                          id="__BVID__94_BV_option_1"
+                          name="team"
+                          type="checkbox"
+                          value="test-team-id-1-2"
+                        />
+                        <label
+                          class="custom-control-label"
+                          for="__BVID__94_BV_option_1"
                         >
-                          <input
-                            class="custom-control-input"
-                            id="__BVID__88_BV_option_0"
-                            name="tag"
-                            type="checkbox"
-                            value="test-tag-1-1"
-                          />
-                          <label
-                            class="custom-control-label"
-                            for="__BVID__88_BV_option_0"
-                          >
-                            <span>
-                              test-tag-1-1
-                            </span>
-                          </label>
-                        </div>
-                        <div
-                          class="custom-control custom-checkbox"
-                        >
-                          <input
-                            class="custom-control-input"
-                            id="__BVID__88_BV_option_1"
-                            name="tag"
-                            type="checkbox"
-                            value="test-tag-1-2"
-                          />
-                          <label
-                            class="custom-control-label"
-                            for="__BVID__88_BV_option_1"
-                          >
-                            <span>
-                              test-tag-1-2
-                            </span>
-                          </label>
-                        </div>
+                          <span>
+                            test-team-id-1-2
+                          </span>
+                        </label>
                       </div>
-                      <!---->
-                      <!---->
-                      <!---->
                     </div>
-                  </fieldset>
-                </p>
-              </div>
-              <!---->
-              <!---->
-            </div>
-             
-            <div
-              class="card bg-secondary"
-            >
-              <!---->
-              <!---->
-              <div
-                class="card-body"
-              >
-                <!---->
-                <!---->
-                <p
-                  class="card-text"
-                >
-                  <fieldset
-                    class="form-group"
-                    id="__BVID__91"
-                  >
-                    <legend
-                      class="bv-no-focus-ring col-form-label pt-0"
-                      id="__BVID__91__BV_label_"
-                      tabindex="-1"
-                    >
-                      Component Types
-                    </legend>
-                    <div>
-                      <div
-                        class="bv-no-focus-ring"
-                        id="__BVID__92"
-                        role="group"
-                        tabindex="-1"
-                      >
-                        <div
-                          class="custom-control custom-checkbox"
-                        >
-                          <input
-                            class="custom-control-input"
-                            id="__BVID__92_BV_option_0"
-                            name="componentTypeId"
-                            type="checkbox"
-                            value="test-component-type-id-1"
-                          />
-                          <label
-                            class="custom-control-label"
-                            for="__BVID__92_BV_option_0"
-                          >
-                            <span>
-                              test-component-type-id-1
-                            </span>
-                          </label>
-                        </div>
-                      </div>
-                      <!---->
-                      <!---->
-                      <!---->
-                    </div>
-                  </fieldset>
-                </p>
-              </div>
-              <!---->
-              <!---->
-            </div>
-             
-            <div
-              class="card bg-secondary"
-            >
-              <!---->
-              <!---->
-              <div
-                class="card-body"
-              >
-                <!---->
-                <!---->
-                <p
-                  class="card-text"
-                >
-                  <fieldset
-                    class="form-group"
-                    id="__BVID__94"
-                  >
-                    <legend
-                      class="bv-no-focus-ring col-form-label pt-0"
-                      id="__BVID__94__BV_label_"
-                      tabindex="-1"
-                    >
-                      Platforms
-                    </legend>
-                    <div>
-                      <div
-                        class="bv-no-focus-ring"
-                        id="__BVID__95"
-                        role="group"
-                        tabindex="-1"
-                      >
-                        <div
-                          class="custom-control custom-checkbox"
-                        >
-                          <input
-                            class="custom-control-input"
-                            id="__BVID__95_BV_option_0"
-                            name="platformId"
-                            type="checkbox"
-                            value="undefined"
-                          />
-                          <label
-                            class="custom-control-label"
-                            for="__BVID__95_BV_option_0"
-                          >
-                            <span>
-                              undefined
-                            </span>
-                          </label>
-                        </div>
-                      </div>
-                      <!---->
-                      <!---->
-                      <!---->
-                    </div>
-                  </fieldset>
-                </p>
-              </div>
-              <!---->
-              <!---->
-            </div>
-             
-            <div
-              class="card bg-secondary"
-            >
-              <!---->
-              <!---->
-              <div
-                class="card-body"
-              >
-                <!---->
-                <!---->
-                <p
-                  class="card-text"
-                >
-                  <div
-                    class="form-group"
-                    id="__BVID__97"
-                    role="group"
-                  >
-                    <label
-                      class="d-block"
-                      for="component-filter"
-                      id="__BVID__97__BV_label_"
-                    >
-                      Component
-                    </label>
-                    <div>
-                      <select
-                        class="custom-select custom-select-sm"
-                        id="component-filter"
-                      >
-                        <option
-                          value=""
-                        >
-                          Please select a component
-                        </option>
-                        <option
-                          value="test-component-id-1"
-                        >
-                          test-component-id-1
-                        </option>
-                      </select>
-                      <!---->
-                      <!---->
-                      <!---->
-                    </div>
+                    <!---->
+                    <!---->
+                    <!---->
                   </div>
-                </p>
+                </fieldset>
+              </div>
+              <!---->
+              <!---->
+            </div>
+             
+            <div
+              class="card bg-secondary"
+            >
+              <!---->
+              <!---->
+              <div
+                class="card-body"
+              >
+                <!---->
+                <!---->
+                <fieldset
+                  class="form-group"
+                  id="__BVID__97"
+                >
+                  <legend
+                    class="bv-no-focus-ring col-form-label pt-0"
+                    id="__BVID__97__BV_label_"
+                    tabindex="-1"
+                  >
+                    Tags
+                  </legend>
+                  <div>
+                    <div
+                      class="bv-no-focus-ring"
+                      id="__BVID__98"
+                      role="group"
+                      tabindex="-1"
+                    >
+                      <div
+                        class="custom-control custom-checkbox"
+                      >
+                        <input
+                          class="custom-control-input"
+                          id="__BVID__98_BV_option_0"
+                          name="tag"
+                          type="checkbox"
+                          value="test-tag-1-1"
+                        />
+                        <label
+                          class="custom-control-label"
+                          for="__BVID__98_BV_option_0"
+                        >
+                          <span>
+                            test-tag-1-1
+                          </span>
+                        </label>
+                      </div>
+                      <div
+                        class="custom-control custom-checkbox"
+                      >
+                        <input
+                          class="custom-control-input"
+                          id="__BVID__98_BV_option_1"
+                          name="tag"
+                          type="checkbox"
+                          value="test-tag-1-2"
+                        />
+                        <label
+                          class="custom-control-label"
+                          for="__BVID__98_BV_option_1"
+                        >
+                          <span>
+                            test-tag-1-2
+                          </span>
+                        </label>
+                      </div>
+                    </div>
+                    <!---->
+                    <!---->
+                    <!---->
+                  </div>
+                </fieldset>
+              </div>
+              <!---->
+              <!---->
+            </div>
+             
+            <div
+              class="card bg-secondary"
+            >
+              <!---->
+              <!---->
+              <div
+                class="card-body"
+              >
+                <!---->
+                <!---->
+                <fieldset
+                  class="form-group"
+                  id="__BVID__101"
+                >
+                  <legend
+                    class="bv-no-focus-ring col-form-label pt-0"
+                    id="__BVID__101__BV_label_"
+                    tabindex="-1"
+                  >
+                    Component Types
+                  </legend>
+                  <div>
+                    <div
+                      class="bv-no-focus-ring"
+                      id="__BVID__102"
+                      role="group"
+                      tabindex="-1"
+                    >
+                      <div
+                        class="custom-control custom-checkbox"
+                      >
+                        <input
+                          class="custom-control-input"
+                          id="__BVID__102_BV_option_0"
+                          name="componentTypeId"
+                          type="checkbox"
+                          value="test-component-type-id-1"
+                        />
+                        <label
+                          class="custom-control-label"
+                          for="__BVID__102_BV_option_0"
+                        >
+                          <span>
+                            test-component-type-id-1
+                          </span>
+                        </label>
+                      </div>
+                    </div>
+                    <!---->
+                    <!---->
+                    <!---->
+                  </div>
+                </fieldset>
+              </div>
+              <!---->
+              <!---->
+            </div>
+             
+            <div
+              class="card bg-secondary"
+            >
+              <!---->
+              <!---->
+              <div
+                class="card-body"
+              >
+                <!---->
+                <!---->
+                <fieldset
+                  class="form-group"
+                  id="__BVID__104"
+                >
+                  <legend
+                    class="bv-no-focus-ring col-form-label pt-0"
+                    id="__BVID__104__BV_label_"
+                    tabindex="-1"
+                  >
+                    Platforms
+                  </legend>
+                  <div>
+                    <div
+                      class="bv-no-focus-ring"
+                      id="__BVID__105"
+                      role="group"
+                      tabindex="-1"
+                    >
+                      <div
+                        class="custom-control custom-checkbox"
+                      >
+                        <input
+                          class="custom-control-input"
+                          id="__BVID__105_BV_option_0"
+                          name="platformId"
+                          type="checkbox"
+                          value="undefined"
+                        />
+                        <label
+                          class="custom-control-label"
+                          for="__BVID__105_BV_option_0"
+                        >
+                          <span>
+                            undefined
+                          </span>
+                        </label>
+                      </div>
+                    </div>
+                    <!---->
+                    <!---->
+                    <!---->
+                  </div>
+                </fieldset>
+              </div>
+              <!---->
+              <!---->
+            </div>
+             
+            <div
+              class="card bg-secondary"
+            >
+              <!---->
+              <!---->
+              <div
+                class="card-body"
+              >
+                <!---->
+                <!---->
+                <div
+                  class="form-group"
+                  id="__BVID__107"
+                  role="group"
+                >
+                  <label
+                    class="d-block"
+                    for="component-filter"
+                    id="__BVID__107__BV_label_"
+                  >
+                    Component
+                  </label>
+                  <div>
+                    <select
+                      class="custom-select custom-select-sm"
+                      id="component-filter"
+                    >
+                      <option
+                        value=""
+                      >
+                        Please select a component
+                      </option>
+                      <option
+                        value="test-component-id-1"
+                      >
+                        test-component-id-1
+                      </option>
+                    </select>
+                    <!---->
+                    <!---->
+                    <!---->
+                  </div>
+                </div>
               </div>
               <!---->
               <!---->
@@ -2850,197 +3076,233 @@ exports[`Index when Get Summary service endpoint returns no dependencies renders
     </div>
      
     <div
-      class="container-fluid"
+      class="graph"
     >
-      <div
-        class="row"
+      <svg
+        height="1200"
+        id="component-dependency-graph"
+        overflow="auto"
+        width="100%"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <rect
+          class="component-dependency-graph-background"
+          fill-opacity="0"
+        />
+         
+        <defs>
+          <marker
+            class="dependency-marker all-dependency-marker"
+            id="component-dependency-graph-dependency-marker-all"
+            markerHeight="11.5"
+            markerUnits="userSpaceOnUse"
+            markerWidth="7.1"
+            orient="auto-start-reverse"
+            refX="20"
+            refY="5.75"
+            viewBox="0 0 7.1 11.5"
+          >
+            <path
+              d="M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5"
+            />
+          </marker>
+          <marker
+            class="dependency-marker manual-dependency-marker"
+            id="component-dependency-graph-dependency-marker-manual"
+            markerHeight="11.5"
+            markerUnits="userSpaceOnUse"
+            markerWidth="7.1"
+            orient="auto-start-reverse"
+            refX="20"
+            refY="5.75"
+            viewBox="0 0 7.1 11.5"
+          >
+            <path
+              d="M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5"
+            />
+          </marker>
+          <marker
+            class="dependency-marker scope-related-dependency-marker"
+            id="component-dependency-graph-dependency-marker-scope-related"
+            markerHeight="11.5"
+            markerUnits="userSpaceOnUse"
+            markerWidth="7.1"
+            orient="auto-start-reverse"
+            refX="20"
+            refY="5.75"
+            viewBox="0 0 7.1 11.5"
+          >
+            <path
+              d="M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5"
+            />
+          </marker>
+          <marker
+            class="dependency-marker scoped-dependency-marker"
+            id="component-dependency-graph-dependency-marker-scoped"
+            markerHeight="11.5"
+            markerUnits="userSpaceOnUse"
+            markerWidth="7.1"
+            orient="auto-start-reverse"
+            refX="20"
+            refY="5.75"
+            viewBox="0 0 7.1 11.5"
+          >
+            <path
+              d="M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5"
+            />
+          </marker>
+          <marker
+            class="dependency-marker related-dependency-marker"
+            id="component-dependency-graph-dependency-marker-related"
+            markerHeight="11.5"
+            markerUnits="userSpaceOnUse"
+            markerWidth="7.1"
+            orient="auto-start-reverse"
+            refX="20"
+            refY="5.75"
+            viewBox="0 0 7.1 11.5"
+          >
+            <path
+              d="M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5"
+            />
+          </marker>
+          <marker
+            class="dependency-marker direct-dependency-marker"
+            id="component-dependency-graph-dependency-marker-direct"
+            markerHeight="11.5"
+            markerUnits="userSpaceOnUse"
+            markerWidth="7.1"
+            orient="auto-start-reverse"
+            refX="20"
+            refY="5.75"
+            viewBox="0 0 7.1 11.5"
+          >
+            <path
+              d="M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5"
+            />
+          </marker>
+          <marker
+            class="dependency-marker selected-dependency-marker"
+            id="component-dependency-graph-dependency-marker-selected"
+            markerHeight="11.5"
+            markerUnits="userSpaceOnUse"
+            markerWidth="7.1"
+            orient="auto-start-reverse"
+            refX="20"
+            refY="5.75"
+            viewBox="0 0 7.1 11.5"
+          >
+            <path
+              d="M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5"
+            />
+          </marker>
+        </defs>
+         
+        <g />
+        <g />
+        <g />
+        <g />
+        <g />
+        <g />
+        <g />
+         
+        <g />
+        <g />
+        <g />
+        <g />
+        <g />
+        <g />
+        <g />
+         
+        <g />
+        <g />
+        <g />
+        <g />
+        <g />
+        <g />
+        <g />
+      </svg>
+    </div>
+     
+    <div
+      class="b-sidebar-outer"
+      tabindex="-1"
+    >
+      <!---->
+      <transition-stub
+        css="true"
+        enteractiveclass="slide"
+        enterclass=""
+        entertoclass="show"
+        leaveactiveclass="slide"
+        leaveclass="show"
+        leavetoclass=""
       >
         <div
-          class="graph col"
+          aria-hidden="true"
+          aria-modal="true"
+          class="b-sidebar b-sidebar-right bg-dark text-light"
+          id="component"
+          role="dialog"
+          style="width: 600px; display: none;"
+          tabindex="-1"
         >
-          <svg
-            height="1200"
-            id="component-dependency-graph"
-            overflow="auto"
-            width="100%"
-            xmlns="http://www.w3.org/2000/svg"
+          <header
+            class="b-sidebar-header"
           >
-            <rect
-              class="component-dependency-graph-background"
-              fill-opacity="0"
-            />
-             
-            <defs>
-              <marker
-                class="dependency-marker all-dependency-marker"
-                id="component-dependency-graph-dependency-marker-all"
-                markerHeight="11.5"
-                markerUnits="userSpaceOnUse"
-                markerWidth="7.1"
-                orient="auto-start-reverse"
-                refX="10"
-                refY="5.75"
-                viewBox="0 0 7.1 11.5"
+            <button
+              aria-label="Close"
+              class="close text-light"
+              type="button"
+            >
+              <svg
+                aria-label="x"
+                class="bi-x b-icon bi"
+                fill="currentColor"
+                focusable="false"
+                height="1em"
+                role="img"
+                viewBox="0 0 16 16"
+                width="1em"
+                xmlns="http://www.w3.org/2000/svg"
               >
-                <path
-                  d="M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5"
-                />
-              </marker>
-              <marker
-                class="dependency-marker manual-dependency-marker"
-                id="component-dependency-graph-dependency-marker-manual"
-                markerHeight="11.5"
-                markerUnits="userSpaceOnUse"
-                markerWidth="7.1"
-                orient="auto-start-reverse"
-                refX="10"
-                refY="5.75"
-                viewBox="0 0 7.1 11.5"
-              >
-                <path
-                  d="M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5"
-                />
-              </marker>
-              <marker
-                class="dependency-marker scope-related-dependency-marker"
-                id="component-dependency-graph-dependency-marker-scope-related"
-                markerHeight="11.5"
-                markerUnits="userSpaceOnUse"
-                markerWidth="7.1"
-                orient="auto-start-reverse"
-                refX="10"
-                refY="5.75"
-                viewBox="0 0 7.1 11.5"
-              >
-                <path
-                  d="M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5"
-                />
-              </marker>
-              <marker
-                class="dependency-marker scoped-dependency-marker"
-                id="component-dependency-graph-dependency-marker-scoped"
-                markerHeight="11.5"
-                markerUnits="userSpaceOnUse"
-                markerWidth="7.1"
-                orient="auto-start-reverse"
-                refX="10"
-                refY="5.75"
-                viewBox="0 0 7.1 11.5"
-              >
-                <path
-                  d="M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5"
-                />
-              </marker>
-              <marker
-                class="dependency-marker related-dependency-marker"
-                id="component-dependency-graph-dependency-marker-related"
-                markerHeight="11.5"
-                markerUnits="userSpaceOnUse"
-                markerWidth="7.1"
-                orient="auto-start-reverse"
-                refX="10"
-                refY="5.75"
-                viewBox="0 0 7.1 11.5"
-              >
-                <path
-                  d="M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5"
-                />
-              </marker>
-              <marker
-                class="dependency-marker direct-dependency-marker"
-                id="component-dependency-graph-dependency-marker-direct"
-                markerHeight="11.5"
-                markerUnits="userSpaceOnUse"
-                markerWidth="7.1"
-                orient="auto-start-reverse"
-                refX="10"
-                refY="5.75"
-                viewBox="0 0 7.1 11.5"
-              >
-                <path
-                  d="M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5"
-                />
-              </marker>
-              <marker
-                class="dependency-marker selected-dependency-marker"
-                id="component-dependency-graph-dependency-marker-selected"
-                markerHeight="11.5"
-                markerUnits="userSpaceOnUse"
-                markerWidth="7.1"
-                orient="auto-start-reverse"
-                refX="10"
-                refY="5.75"
-                viewBox="0 0 7.1 11.5"
-              >
-                <path
-                  d="M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5"
-                />
-              </marker>
-            </defs>
-             
-            <g />
-            <g />
-            <g />
-            <g />
-            <g />
-            <g />
-            <g />
-             
-            <g />
-            <g />
-            <g />
-            <g />
-            <g />
-            <g />
-            <g />
-             
-            <g />
-            <g />
-            <g />
-            <g />
-            <g />
-            <g />
-            <g />
-          </svg>
-        </div>
-         
-        <div
-          class="bg-dark col-md-3"
-        >
-          <transition-stub
-            class="mt-3"
-            css="true"
-            enteractiveclass=""
-            enterclass=""
-            entertoclass="show"
-            leaveactiveclass=""
-            leaveclass="show"
-            leavetoclass=""
-            name=""
+                <g>
+                  <path
+                    d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"
+                  />
+                </g>
+              </svg>
+            </button>
+            <span />
+          </header>
+          <div
+            class="b-sidebar-body"
           >
             <div
-              aria-atomic="true"
-              aria-live="polite"
-              class="alert alert-dismissible alert-info"
-              role="alert"
+              class="m-3"
             >
-              <button
-                aria-label="Close"
-                class="close"
-                type="button"
-              >
-                ×
-              </button>
-              
-          Hover over or click a component's dot in the dependencies diagram to see
-          more information about it
-        
+              <!---->
             </div>
-          </transition-stub>
-           
+          </div>
           <!---->
         </div>
-      </div>
+      </transition-stub>
+      <!---->
+      <transition-stub
+        css="true"
+        enteractiveclass="fade"
+        enterclass=""
+        entertoclass="show"
+        leaveactiveclass="fade"
+        leaveclass="show"
+        leavetoclass=""
+        name=""
+      >
+        <div
+          class="b-sidebar-backdrop bg-dark"
+          style="display: none;"
+        />
+      </transition-stub>
     </div>
   </div>
 </div>

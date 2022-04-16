@@ -3,8 +3,9 @@ package tech.kronicle.tracingprocessor;
 import lombok.Value;
 import tech.kronicle.pluginapi.finders.models.GenericSpan;
 import tech.kronicle.pluginapi.finders.models.GenericTrace;
+import tech.kronicle.sdk.constants.DependencyTypeIds;
 import tech.kronicle.sdk.models.ObjectWithComponentId;
-import tech.kronicle.sdk.models.ObjectWithSourceIndexAndTargetIndex;
+import tech.kronicle.sdk.models.DependencyWithIdentity;
 import tech.kronicle.sdk.models.SummaryDependencies;
 import tech.kronicle.utils.MapCollectors;
 
@@ -23,7 +24,7 @@ import static java.util.Objects.nonNull;
 
 public class GenericDependencyCollator {
 
-    public <N extends ObjectWithComponentId, D extends ObjectWithSourceIndexAndTargetIndex, S extends SummaryDependencies<N, D>> S createDependencies(
+    public <N extends ObjectWithComponentId, D extends DependencyWithIdentity, S extends SummaryDependencies<N, D>> S createDependencies(
       List<GenericTrace> traces,
       Function<GenericSpan, N> createNode,
       Comparator<N> nodeComparator,
@@ -35,7 +36,7 @@ public class GenericDependencyCollator {
 
         List<D> dependencies = traces.stream()
                 .flatMap(trace -> createDependencies(trace, nodeMap, createNode))
-                .collect(Collectors.groupingBy(SourceIndexAndTargetIndex::new))
+                .collect(Collectors.groupingBy(DependencyIdentity::new))
                 .values().stream()
                 .map(mergeDuplicateDependencies)
                 .sorted(Comparator.comparing(D::getSourceIndex, Comparator.nullsFirst(Comparator.naturalOrder()))
@@ -65,9 +66,16 @@ public class GenericDependencyCollator {
             Function<GenericSpan, N> createNode) {
         List<CollatorComponentDependency> traceDependencies = trace.getSpans().stream()
                 .map(span -> new SpanAndParentSpan(span, findParentSpan(trace, span.getParentId())))
-                .map(spanAndParentSpan -> new CollatorComponentDependency(getSourceIndex(spanAndParentSpan, nodeMap, createNode),
-                        getTargetIndex(spanAndParentSpan, nodeMap, createNode), null, spanAndParentSpan.span.getTimestamp(),
-                        spanAndParentSpan.span.getDuration()))
+                .map(spanAndParentSpan -> new CollatorComponentDependency(
+                        getSourceIndex(spanAndParentSpan, nodeMap, createNode),
+                        getTargetIndex(spanAndParentSpan, nodeMap, createNode),
+                        null,
+                        DependencyTypeIds.TRACE,
+                        null,
+                        null,
+                        spanAndParentSpan.span.getTimestamp(),
+                        spanAndParentSpan.span.getDuration()
+                ))
                 .filter(dependency -> !Objects.equals(dependency.getSourceIndex(), dependency.getTargetIndex()))
                 .collect(Collectors.toList());
         List<Integer> relatedIndexes = traceDependencies.stream()

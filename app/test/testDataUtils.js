@@ -482,9 +482,7 @@ function createFileExtensionCount({
 function createKeySoftware({ componentNumber, keySoftwareItemNumber }) {
   return {
     name: `Test Key Software ${componentNumber} ${keySoftwareItemNumber}`,
-    versions: [
-      `1.${componentNumber}.${keySoftwareItemNumber}`,
-    ]
+    versions: [`1.${componentNumber}.${keySoftwareItemNumber}`],
   }
 }
 
@@ -536,7 +534,7 @@ function createSoftwareItem({ componentNumber, softwareItemNumber }) {
   return {
     scannerId: `test-scanner-id-${componentNumber}-${softwareItemNumber}`,
     type: `test-software-type-id-${componentNumber}-${softwareItemNumber}`,
-    dependencyType: `test-software-dependency-type-${componentNumber}-${softwareItemNumber}`,
+    dependencyRelationType: `test-software-dependency-type-${componentNumber}-${softwareItemNumber}`,
     name: `Test Software Name ${componentNumber} ${softwareItemNumber}`,
     version: `1.${componentNumber}.${softwareItemNumber}`,
     versionSelector: `^1.${componentNumber}.${softwareItemNumber}`,

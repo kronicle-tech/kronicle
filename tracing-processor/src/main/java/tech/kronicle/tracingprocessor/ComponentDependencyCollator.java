@@ -77,10 +77,21 @@ public class ComponentDependencyCollator {
 
     private SummaryComponentDependency createDependencyForOtherDependency(
             List<SummaryComponentDependencyNode> nodes,
-            Dependency otherComponentDependency
+            Dependency dependency
     ) {
-        return new SummaryComponentDependency(getOrAddNode(nodes, otherComponentDependency.getSourceComponentId()),
-                getOrAddNode(nodes, otherComponentDependency.getTargetComponentId()), List.of(), true, 0, null, null, null);
+        return new SummaryComponentDependency(
+                getOrAddNode(nodes, dependency.getSourceComponentId()),
+                getOrAddNode(nodes, dependency.getTargetComponentId()),
+                List.of(),
+                dependency.getTypeId(),
+                dependency.getLabel(),
+                dependency.getDescription(),
+                true,
+                0,
+                null,
+                null,
+                null
+        );
     }
 
     private int getOrAddNode(List<SummaryComponentDependencyNode> nodes, String componentId) {

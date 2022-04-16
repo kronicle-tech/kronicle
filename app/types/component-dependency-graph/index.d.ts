@@ -13,7 +13,7 @@ export interface Node {
   x: number
   y: number
   label: NodeLabel
-  dependencyType: DependencyType
+  dependencyRelationType: DependencyRelationType
   node: SummaryComponentDependencyNode | SummarySubComponentDependencyNode
   dependencies: Dependency[]
 }
@@ -31,11 +31,11 @@ export interface Dependency {
   manual: boolean
   d: string
   scopeRelated: boolean
-  dependencyType: DependencyType
+  dependencyRelationType: DependencyRelationType
   dependency: SummaryComponentDependency
 }
 
-export type DependencyType =
+export type DependencyRelationType =
   | 'all'
   | 'manual'
   | 'scope-related'
@@ -46,7 +46,7 @@ export type DependencyType =
 
 export interface Network {
   nodes: Node[]
-  nodeGroups: Map<DependencyType, Node[]>
+  nodeGroups: Map<DependencyRelationType, Node[]>
   dependencies: Dependency[]
-  dependencyGroups: Map<DependencyType, Dependency[]>
+  dependencyGroups: Map<DependencyRelationType, Dependency[]>
 }

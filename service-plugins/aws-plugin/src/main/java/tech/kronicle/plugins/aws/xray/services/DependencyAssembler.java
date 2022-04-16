@@ -1,6 +1,7 @@
 package tech.kronicle.plugins.aws.xray.services;
 
 import tech.kronicle.plugins.aws.xray.models.XRayDependency;
+import tech.kronicle.sdk.constants.DependencyTypeIds;
 import tech.kronicle.sdk.models.Dependency;
 
 import java.util.List;
@@ -13,9 +14,10 @@ public class DependencyAssembler {
     public List<Dependency> assembleDependencies(List<XRayDependency> dependencies) {
         return dependencies.stream()
                 .map(dependency -> Dependency.builder()
-                                .sourceComponentId(getComponentId(dependency.getSourceServiceNames()))
-                                .targetComponentId(getComponentId(dependency.getTargetServiceNames()))
-                                .build()
+                        .sourceComponentId(getComponentId(dependency.getSourceServiceNames()))
+                        .targetComponentId(getComponentId(dependency.getTargetServiceNames()))
+                        .typeId(DependencyTypeIds.TRACE)
+                        .build()
                 )
                 .distinct()
                 .collect(Collectors.toList());

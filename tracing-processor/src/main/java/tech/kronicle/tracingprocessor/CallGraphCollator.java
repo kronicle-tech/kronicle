@@ -3,7 +3,7 @@ package tech.kronicle.tracingprocessor;
 import lombok.RequiredArgsConstructor;
 import lombok.Value;
 import tech.kronicle.pluginapi.finders.models.GenericTrace;
-import tech.kronicle.sdk.models.ObjectWithSourceIndexAndTargetIndex;
+import tech.kronicle.sdk.models.DependencyWithIdentity;
 import tech.kronicle.sdk.models.SummaryCallGraph;
 import tech.kronicle.sdk.models.SummaryComponentDependency;
 import tech.kronicle.sdk.models.SummaryDependencies;
@@ -40,11 +40,17 @@ public class CallGraphCollator {
 
     private CallGraphDependency mergeDuplicateDependencies(List<CollatorComponentDependency> duplicateDependencies) {
         CollatorComponentDependency firstDependency = duplicateDependencies.get(0);
-        return new CallGraphDependency(firstDependency.getSourceIndex(), firstDependency.getTargetIndex(),
+        return new CallGraphDependency(
+                firstDependency.getSourceIndex(),
+                firstDependency.getTargetIndex(),
                 dependencyHelper.mergeRelatedIndexes(duplicateDependencies, CollatorComponentDependency::getRelatedIndexes),
+                firstDependency.getTypeId(),
+                firstDependency.getLabel(),
+                firstDependency.getDescription(),
                 duplicateDependencies.size(),
                 dependencyHelper.getFlattenedListValuesFromObjects(duplicateDependencies, CollatorComponentDependency::getTimestamps),
-                dependencyHelper.getFlattenedListValuesFromObjects(duplicateDependencies, CollatorComponentDependency::getDurations));
+                dependencyHelper.getFlattenedListValuesFromObjects(duplicateDependencies, CollatorComponentDependency::getDurations)
+        );
     }
 
     private SummaryCallGraph mergeDuplicateCallGraphs(List<CallGraph> duplicateCallGraphs) {
@@ -67,9 +73,17 @@ public class CallGraphCollator {
                 .collect(Collectors.toList());
         CallGraphDependency firstDependency = duplicateDependencies.get(0);
         TimestampsForDependency timestampsForDependency = dependencyHelper.getTimestampsForDependency(duplicateDependencies);
-        return new SummaryComponentDependency(firstDependency.sourceIndex, firstDependency.targetIndex,
-                dependencyHelper.mergeRelatedIndexes(duplicateDependencies, CallGraphDependency::getRelatedIndexes), false,
-                getSampleSize(duplicateDependencies), timestampsForDependency.getStartTimestamp(), timestampsForDependency.getEndTimestamp(),
+        return new SummaryComponentDependency(
+                firstDependency.sourceIndex,
+                firstDependency.targetIndex,
+                dependencyHelper.mergeRelatedIndexes(duplicateDependencies, CallGraphDependency::getRelatedIndexes),
+                firstDependency.typeId,
+                firstDependency.label,
+                firstDependency.description,
+                false,
+                getSampleSize(duplicateDependencies),
+                timestampsForDependency.getStartTimestamp(),
+                timestampsForDependency.getEndTimestamp(),
                 dependencyDurationCalculator.calculateDependencyDuration(duplicateDependencies));
     }
 
@@ -84,15 +98,19 @@ public class CallGraphCollator {
     }
 
     private SimpleCallGraph createSimpleCallGraph(CallGraph callGraph) {
-        return new SimpleCallGraph(callGraph.getNodes(), callGraph.getDependencies().stream().map(
-                SourceIndexAndTargetIndex::new).collect(Collectors.toList()));
+        return new SimpleCallGraph(
+                callGraph.getNodes(),
+                callGraph.getDependencies().stream()
+                        .map(DependencyIdentity::new)
+                        .collect(Collectors.toList())
+        );
     }
 
     @Value
     private static class SimpleCallGraph {
 
         List<SummarySubComponentDependencyNode> nodes;
-        List<SourceIndexAndTargetIndex> dependencies;
+        List<DependencyIdentity> dependencies;
     }
 
     @Value
@@ -103,11 +121,14 @@ public class CallGraphCollator {
     }
 
     @Value
-    public static class CallGraphDependency implements ObjectWithSourceIndexAndTargetIndex, ObjectWithTimestamps, ObjectWithDurations {
+    public static class CallGraphDependency implements DependencyWithIdentity, ObjectWithTimestamps, ObjectWithDurations {
 
         Integer sourceIndex;
         Integer targetIndex;
         List<Integer> relatedIndexes;
+        String typeId;
+        String label;
+        String description;
         Integer sampleSize;
         List<Long> timestamps;
         List<Long> durations;

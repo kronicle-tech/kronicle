@@ -1,6 +1,6 @@
 <template>
   <div>
-    <ComponentFilters :components="components" />
+    <ComponentFilters :components="components" environment-id-filter-enabled />
 
     <b-card
       :title="`${componentCount} Component${componentCount === 1 ? '' : 's'}`"

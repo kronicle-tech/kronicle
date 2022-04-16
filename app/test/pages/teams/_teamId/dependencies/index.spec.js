@@ -24,7 +24,7 @@ describe('Index', () => {
     wrapper = await createPageWrapper(Index, {
       route,
       serviceRequests: {
-        '/v1/teams/test-team-id-1?fields=team(id,name,components(id,name,typeId,tags,description,notes,responsibilities,teams,platformId))':
+        '/v1/teams/test-team-id-1?fields=team(id,name,components(id,name,typeId,tags,description,notes,responsibilities,teams,platformId,state(environments(id))))':
           {
             responseBody: { team },
           },
@@ -92,7 +92,6 @@ describe('Index', () => {
     describe('when the detailed checkbox is checked', () => {
       beforeEach(() => {
         wrapperActions.push(async (wrapper) => {
-          await wrapper.get('#toggle-filters').trigger('click')
           await wrapper.get('#detailed-dependencies').trigger('click')
         })
       })

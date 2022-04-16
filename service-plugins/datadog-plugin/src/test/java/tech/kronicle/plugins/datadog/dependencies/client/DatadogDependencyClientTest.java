@@ -4,6 +4,7 @@ import com.github.tomakehurst.wiremock.WireMockServer;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import tech.kronicle.plugins.datadog.config.DatadogConfig;
+import tech.kronicle.sdk.constants.DependencyTypeIds;
 import tech.kronicle.sdk.models.Dependency;
 
 import java.time.Duration;
@@ -37,10 +38,20 @@ public class DatadogDependencyClientTest {
 
         // Then
         assertThat(returnValue).containsExactlyInAnyOrder(
-                new Dependency("test-service-1", "test-service-2"),
-                new Dependency("test-service-1", "test-service-3"),
-                new Dependency("test-service-4", "test-service-5"),
-                new Dependency("test-service-4", "test-service-6")
+                createDependency("test-service-1", "test-service-2"),
+                createDependency("test-service-1", "test-service-3"),
+                createDependency("test-service-4", "test-service-5"),
+                createDependency("test-service-4", "test-service-6")
+        );
+    }
+
+    private Dependency createDependency(String sourceComponentId, String targetComponentId) {
+        return new Dependency(
+                sourceComponentId,
+                targetComponentId,
+                DependencyTypeIds.TRACE,
+                null,
+                null
         );
     }
 

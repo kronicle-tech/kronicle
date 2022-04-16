@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="m-3">
     <EnvironmentStatesView :components="components" />
   </div>
 </template>

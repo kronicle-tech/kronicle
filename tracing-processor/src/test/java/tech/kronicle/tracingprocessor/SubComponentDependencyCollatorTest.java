@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 import tech.kronicle.pluginapi.finders.models.GenericSpan;
 import tech.kronicle.pluginapi.finders.models.GenericTag;
 import tech.kronicle.pluginapi.finders.models.GenericTrace;
+import tech.kronicle.sdk.constants.DependencyTypeIds;
 import tech.kronicle.sdk.models.SummaryComponentDependency;
 import tech.kronicle.sdk.models.SummarySubComponentDependencies;
 import tech.kronicle.sdk.models.SummarySubComponentDependencyNode;
@@ -53,7 +54,7 @@ public class SubComponentDependencyCollatorTest {
         assertThat(returnValue.getNodes()).containsExactly(
                 new SummarySubComponentDependencyNode("test-service-1", "test-span-1", Map.of()));
         assertThat(returnValue.getDependencies()).containsExactly(
-                new SummaryComponentDependency(null, 0, List.of(), false, 1, testHelper.getTimestamp(1), testHelper.getTimestamp(1), testHelper.createDuration(1_000, 1_000, 1_000, 1_000, 1_000, 1_000)));
+                new SummaryComponentDependency(null, 0, List.of(), DependencyTypeIds.TRACE, null, null, false, 1, testHelper.getTimestamp(1), testHelper.getTimestamp(1), testHelper.createDuration(1_000, 1_000, 1_000, 1_000, 1_000, 1_000)));
     }
 
     @Test
@@ -84,8 +85,8 @@ public class SubComponentDependencyCollatorTest {
                 new SummarySubComponentDependencyNode("test-service-1", "test-span-1", Map.of()),
                 new SummarySubComponentDependencyNode("test-service-2", "test-span-2", Map.of()));
         assertThat(returnValue.getDependencies()).containsExactly(
-                new SummaryComponentDependency(null, 0, List.of(1), false, 1, testHelper.getTimestamp(1), testHelper.getTimestamp(1), testHelper.createDuration(1_000, 1_000, 1_000, 1_000, 1_000, 1_000)),
-                new SummaryComponentDependency(0, 1, List.of(), false, 1, testHelper.getTimestamp(2), testHelper.getTimestamp(2), testHelper.createDuration(2_000, 2_000, 2_000, 2_000, 2_000, 2_000)));
+                new SummaryComponentDependency(null, 0, List.of(1), DependencyTypeIds.TRACE, null, null, false, 1, testHelper.getTimestamp(1), testHelper.getTimestamp(1), testHelper.createDuration(1_000, 1_000, 1_000, 1_000, 1_000, 1_000)),
+                new SummaryComponentDependency(0, 1, List.of(), DependencyTypeIds.TRACE, null, null, false, 1, testHelper.getTimestamp(2), testHelper.getTimestamp(2), testHelper.createDuration(2_000, 2_000, 2_000, 2_000, 2_000, 2_000)));
     }
 
     @Test
@@ -132,10 +133,10 @@ public class SubComponentDependencyCollatorTest {
                 new SummarySubComponentDependencyNode("test-service-3", "test-span-3", Map.of()),
                 new SummarySubComponentDependencyNode("test-service-4", "test-span-4", Map.of()));
         assertThat(returnValue.getDependencies()).containsExactly(
-                new SummaryComponentDependency(null, 0, List.of(1), false, 1, testHelper.getTimestamp(1), testHelper.getTimestamp(1), testHelper.createDuration(1_000, 1_000, 1_000, 1_000, 1_000, 1_000)),
-                new SummaryComponentDependency(null, 2, List.of(3), false, 1, testHelper.getTimestamp(3), testHelper.getTimestamp(3), testHelper.createDuration(3_000, 3_000, 3_000, 3_000, 3_000, 3_000)),
-                new SummaryComponentDependency(0, 1, List.of(), false, 1, testHelper.getTimestamp(2), testHelper.getTimestamp(2), testHelper.createDuration(2_000, 2_000, 2_000, 2_000, 2_000, 2_000)),
-                new SummaryComponentDependency(2, 3, List.of(), false, 1, testHelper.getTimestamp(4), testHelper.getTimestamp(4), testHelper.createDuration(4_000, 4_000, 4_000, 4_000, 4_000, 4_000)));
+                new SummaryComponentDependency(null, 0, List.of(1), DependencyTypeIds.TRACE, null, null, false, 1, testHelper.getTimestamp(1), testHelper.getTimestamp(1), testHelper.createDuration(1_000, 1_000, 1_000, 1_000, 1_000, 1_000)),
+                new SummaryComponentDependency(null, 2, List.of(3), DependencyTypeIds.TRACE, null, null, false, 1, testHelper.getTimestamp(3), testHelper.getTimestamp(3), testHelper.createDuration(3_000, 3_000, 3_000, 3_000, 3_000, 3_000)),
+                new SummaryComponentDependency(0, 1, List.of(), DependencyTypeIds.TRACE, null, null, false, 1, testHelper.getTimestamp(2), testHelper.getTimestamp(2), testHelper.createDuration(2_000, 2_000, 2_000, 2_000, 2_000, 2_000)),
+                new SummaryComponentDependency(2, 3, List.of(), DependencyTypeIds.TRACE, null, null, false, 1, testHelper.getTimestamp(4), testHelper.getTimestamp(4), testHelper.createDuration(4_000, 4_000, 4_000, 4_000, 4_000, 4_000)));
     }
 
     @Test
@@ -182,10 +183,10 @@ public class SubComponentDependencyCollatorTest {
                 new SummarySubComponentDependencyNode("test-service-3", "test-span-3", Map.of()),
                 new SummarySubComponentDependencyNode("test-service-4", "test-span-4", Map.of()));
         assertThat(returnValue.getDependencies()).containsExactly(
-                new SummaryComponentDependency(null, 0, List.of(1, 2, 3), false, 1, testHelper.getTimestamp(1), testHelper.getTimestamp(1), testHelper.createDuration(1_000, 1_000, 1_000, 1_000, 1_000, 1_000)),
-                new SummaryComponentDependency(0, 1, List.of(2, 3), false, 1, testHelper.getTimestamp(2), testHelper.getTimestamp(2), testHelper.createDuration(2_000, 2_000, 2_000, 2_000, 2_000, 2_000)),
-                new SummaryComponentDependency(1, 2, List.of(0, 3), false, 1, testHelper.getTimestamp(3), testHelper.getTimestamp(3), testHelper.createDuration(3_000, 3_000, 3_000, 3_000, 3_000, 3_000)),
-                new SummaryComponentDependency(2, 3, List.of(0, 1), false, 1, testHelper.getTimestamp(4), testHelper.getTimestamp(4), testHelper.createDuration(4_000, 4_000, 4_000, 4_000, 4_000, 4_000)));
+                new SummaryComponentDependency(null, 0, List.of(1, 2, 3), DependencyTypeIds.TRACE, null, null, false, 1, testHelper.getTimestamp(1), testHelper.getTimestamp(1), testHelper.createDuration(1_000, 1_000, 1_000, 1_000, 1_000, 1_000)),
+                new SummaryComponentDependency(0, 1, List.of(2, 3), DependencyTypeIds.TRACE, null, null, false, 1, testHelper.getTimestamp(2), testHelper.getTimestamp(2), testHelper.createDuration(2_000, 2_000, 2_000, 2_000, 2_000, 2_000)),
+                new SummaryComponentDependency(1, 2, List.of(0, 3), DependencyTypeIds.TRACE, null, null, false, 1, testHelper.getTimestamp(3), testHelper.getTimestamp(3), testHelper.createDuration(3_000, 3_000, 3_000, 3_000, 3_000, 3_000)),
+                new SummaryComponentDependency(2, 3, List.of(0, 1), DependencyTypeIds.TRACE, null, null, false, 1, testHelper.getTimestamp(4), testHelper.getTimestamp(4), testHelper.createDuration(4_000, 4_000, 4_000, 4_000, 4_000, 4_000)));
     }
 
     @Test
@@ -231,9 +232,9 @@ public class SubComponentDependencyCollatorTest {
                 new SummarySubComponentDependencyNode("test-service-2", "test-span-2", Map.of()),
                 new SummarySubComponentDependencyNode("test-service-3", "test-span-3", Map.of()));
         assertThat(returnValue.getDependencies()).containsExactly(
-                new SummaryComponentDependency(null, 0, List.of(1, 2), false, 1, testHelper.getTimestamp(1), testHelper.getTimestamp(1), testHelper.createDuration(1_000, 1_000, 1_000, 1_000, 1_000, 1_000)),
-                new SummaryComponentDependency(0, 1, List.of(2), false, 1, testHelper.getTimestamp(2), testHelper.getTimestamp(2), testHelper.createDuration(2_000, 2_000, 2_000, 2_000, 2_000, 2_000)),
-                new SummaryComponentDependency(1, 2, List.of(0), false, 2, testHelper.getTimestamp(3), testHelper.getTimestamp(4), testHelper.createDuration(3_000, 4_000, 3_000, 4_000, 4_000, 4_000)));
+                new SummaryComponentDependency(null, 0, List.of(1, 2), DependencyTypeIds.TRACE, null, null, false, 1, testHelper.getTimestamp(1), testHelper.getTimestamp(1), testHelper.createDuration(1_000, 1_000, 1_000, 1_000, 1_000, 1_000)),
+                new SummaryComponentDependency(0, 1, List.of(2), DependencyTypeIds.TRACE, null, null, false, 1, testHelper.getTimestamp(2), testHelper.getTimestamp(2), testHelper.createDuration(2_000, 2_000, 2_000, 2_000, 2_000, 2_000)),
+                new SummaryComponentDependency(1, 2, List.of(0), DependencyTypeIds.TRACE, null, null, false, 2, testHelper.getTimestamp(3), testHelper.getTimestamp(4), testHelper.createDuration(3_000, 4_000, 3_000, 4_000, 4_000, 4_000)));
     }
 
     @Test
@@ -277,8 +278,8 @@ public class SubComponentDependencyCollatorTest {
                 new SummarySubComponentDependencyNode("test-service-1", "test-span-1", Map.of()),
                 new SummarySubComponentDependencyNode("test-service-2", "test-span-2", Map.of()));
         assertThat(returnValue.getDependencies()).containsExactly(
-                new SummaryComponentDependency(null, 0, List.of(1), false, 2, testHelper.getTimestamp(1), testHelper.getTimestamp(3), testHelper.createDuration(1_000, 3_000, 1_000, 3_000, 3_000, 3_000)),
-                new SummaryComponentDependency(0, 1, List.of(), false, 2, testHelper.getTimestamp(2), testHelper.getTimestamp(4), testHelper.createDuration(2_000, 4_000, 2_000, 4_000, 4_000, 4_000)));
+                new SummaryComponentDependency(null, 0, List.of(1), DependencyTypeIds.TRACE, null, null, false, 2, testHelper.getTimestamp(1), testHelper.getTimestamp(3), testHelper.createDuration(1_000, 3_000, 1_000, 3_000, 3_000, 3_000)),
+                new SummaryComponentDependency(0, 1, List.of(), DependencyTypeIds.TRACE, null, null, false, 2, testHelper.getTimestamp(2), testHelper.getTimestamp(4), testHelper.createDuration(2_000, 4_000, 2_000, 4_000, 4_000, 4_000)));
     }
 
     @Test
@@ -323,8 +324,8 @@ public class SubComponentDependencyCollatorTest {
                 new SummarySubComponentDependencyNode("test-service-1", "test-span-1", Map.of()),
                 new SummarySubComponentDependencyNode("test-service-2", "test-span-2", Map.of()));
         assertThat(returnValue.getDependencies()).containsExactly(
-                new SummaryComponentDependency(null, 0, List.of(1), false, 2, testHelper.getTimestamp(1), testHelper.getTimestamp(3), testHelper.createDuration(1_000, 3_000, 1_000, 3_000, 3_000, 3_000)),
-                new SummaryComponentDependency(0, 1, List.of(), false, 2, testHelper.getTimestamp(2), testHelper.getTimestamp(4), testHelper.createDuration(2_000, 4_000, 2_000, 4_000, 4_000, 4_000)));
+                new SummaryComponentDependency(null, 0, List.of(1), DependencyTypeIds.TRACE, null, null, false, 2, testHelper.getTimestamp(1), testHelper.getTimestamp(3), testHelper.createDuration(1_000, 3_000, 1_000, 3_000, 3_000, 3_000)),
+                new SummaryComponentDependency(0, 1, List.of(), DependencyTypeIds.TRACE, null, null, false, 2, testHelper.getTimestamp(2), testHelper.getTimestamp(4), testHelper.createDuration(2_000, 4_000, 2_000, 4_000, 4_000, 4_000)));
     }
 
     @Test
@@ -368,10 +369,10 @@ public class SubComponentDependencyCollatorTest {
                 new SummarySubComponentDependencyNode("test-service-1", "test-span-1", Map.of()),
                 new SummarySubComponentDependencyNode("test-service-2", "test-span-2", Map.of()));
         assertThat(returnValue.getDependencies()).containsExactly(
-                new SummaryComponentDependency(null, 0, List.of(1), false, 1, testHelper.getTimestamp(1), testHelper.getTimestamp(1), testHelper.createDuration(1_000, 1_000, 1_000, 1_000, 1_000, 1_000)),
-                new SummaryComponentDependency(null, 1, List.of(0), false, 1, testHelper.getTimestamp(3), testHelper.getTimestamp(3), testHelper.createDuration(3_000, 3_000, 3_000, 3_000, 3_000, 3_000)),
-                new SummaryComponentDependency(0, 1, List.of(), false, 1, testHelper.getTimestamp(2), testHelper.getTimestamp(2), testHelper.createDuration(2_000, 2_000, 2_000, 2_000, 2_000, 2_000)),
-                new SummaryComponentDependency(1, 0, List.of(), false, 1, testHelper.getTimestamp(4), testHelper.getTimestamp(4), testHelper.createDuration(4_000, 4_000, 4_000, 4_000, 4_000, 4_000)));
+                new SummaryComponentDependency(null, 0, List.of(1), DependencyTypeIds.TRACE, null, null, false, 1, testHelper.getTimestamp(1), testHelper.getTimestamp(1), testHelper.createDuration(1_000, 1_000, 1_000, 1_000, 1_000, 1_000)),
+                new SummaryComponentDependency(null, 1, List.of(0), DependencyTypeIds.TRACE, null, null, false, 1, testHelper.getTimestamp(3), testHelper.getTimestamp(3), testHelper.createDuration(3_000, 3_000, 3_000, 3_000, 3_000, 3_000)),
+                new SummaryComponentDependency(0, 1, List.of(), DependencyTypeIds.TRACE, null, null, false, 1, testHelper.getTimestamp(2), testHelper.getTimestamp(2), testHelper.createDuration(2_000, 2_000, 2_000, 2_000, 2_000, 2_000)),
+                new SummaryComponentDependency(1, 0, List.of(), DependencyTypeIds.TRACE, null, null, false, 1, testHelper.getTimestamp(4), testHelper.getTimestamp(4), testHelper.createDuration(4_000, 4_000, 4_000, 4_000, 4_000, 4_000)));
     }
 
     @Test
@@ -401,7 +402,7 @@ public class SubComponentDependencyCollatorTest {
         assertThat(returnValue.getNodes()).containsExactly(
                 new SummarySubComponentDependencyNode("test-service-1", "test-span-1", Map.of()));
         assertThat(returnValue.getDependencies()).containsExactly(
-                new SummaryComponentDependency(null, 0, List.of(), false, 1, testHelper.getTimestamp(1), testHelper.getTimestamp(1), testHelper.createDuration(1_000, 1_000, 1_000, 1_000, 1_000, 1_000)));
+                new SummaryComponentDependency(null, 0, List.of(), DependencyTypeIds.TRACE, null, null, false, 1, testHelper.getTimestamp(1), testHelper.getTimestamp(1), testHelper.createDuration(1_000, 1_000, 1_000, 1_000, 1_000, 1_000)));
     }
 
     @Test
@@ -430,8 +431,8 @@ public class SubComponentDependencyCollatorTest {
                 new SummarySubComponentDependencyNode("test-service-1", "test-span-1", Map.of()),
                 new SummarySubComponentDependencyNode("test-service-1", "test-span-2", Map.of()));
         assertThat(returnValue.getDependencies()).containsExactly(
-                new SummaryComponentDependency(null, 0, List.of(1), false, 1, testHelper.getTimestamp(1), testHelper.getTimestamp(1), testHelper.createDuration(1_000, 1_000, 1_000, 1_000, 1_000, 1_000)),
-                new SummaryComponentDependency(0, 1, List.of(), false, 1, testHelper.getTimestamp(2), testHelper.getTimestamp(2), testHelper.createDuration(2_000, 2_000, 2_000, 2_000, 2_000, 2_000)));
+                new SummaryComponentDependency(null, 0, List.of(1), DependencyTypeIds.TRACE, null, null, false, 1, testHelper.getTimestamp(1), testHelper.getTimestamp(1), testHelper.createDuration(1_000, 1_000, 1_000, 1_000, 1_000, 1_000)),
+                new SummaryComponentDependency(0, 1, List.of(), DependencyTypeIds.TRACE, null, null, false, 1, testHelper.getTimestamp(2), testHelper.getTimestamp(2), testHelper.createDuration(2_000, 2_000, 2_000, 2_000, 2_000, 2_000)));
     }
 
     @Test
@@ -462,8 +463,8 @@ public class SubComponentDependencyCollatorTest {
                 new SummarySubComponentDependencyNode("test-service-1", "test-span-1", Map.of("http.path_template", "test-value-1")),
                 new SummarySubComponentDependencyNode("test-service-1", "test-span-1", Map.of("http.path_template", "test-value-2")));
         assertThat(returnValue.getDependencies()).containsExactly(
-                new SummaryComponentDependency(null, 0, List.of(1), false, 1, testHelper.getTimestamp(1), testHelper.getTimestamp(1), testHelper.createDuration(1_000, 1_000, 1_000, 1_000, 1_000, 1_000)),
-                new SummaryComponentDependency(0, 1, List.of(), false, 1, testHelper.getTimestamp(2), testHelper.getTimestamp(2), testHelper.createDuration(2_000, 2_000, 2_000, 2_000, 2_000, 2_000)));
+                new SummaryComponentDependency(null, 0, List.of(1), DependencyTypeIds.TRACE, null, null, false, 1, testHelper.getTimestamp(1), testHelper.getTimestamp(1), testHelper.createDuration(1_000, 1_000, 1_000, 1_000, 1_000, 1_000)),
+                new SummaryComponentDependency(0, 1, List.of(), DependencyTypeIds.TRACE, null, null, false, 1, testHelper.getTimestamp(2), testHelper.getTimestamp(2), testHelper.createDuration(2_000, 2_000, 2_000, 2_000, 2_000, 2_000)));
     }
     
     @Test
@@ -530,8 +531,8 @@ public class SubComponentDependencyCollatorTest {
                 )
         );
         assertThat(returnValue.getDependencies()).containsExactly(
-                new SummaryComponentDependency(null, 0, List.of(1), false, 2, testHelper.getTimestamp(1), testHelper.getTimestamp(3), testHelper.createDuration(1_000, 3_000, 1_000, 3_000, 3_000, 3_000)),
-                new SummaryComponentDependency(0, 1, List.of(), false, 2, testHelper.getTimestamp(2), testHelper.getTimestamp(4), testHelper.createDuration(2_000, 4_000, 2_000, 4_000, 4_000, 4_000)));
+                new SummaryComponentDependency(null, 0, List.of(1), DependencyTypeIds.TRACE, null, null, false, 2, testHelper.getTimestamp(1), testHelper.getTimestamp(3), testHelper.createDuration(1_000, 3_000, 1_000, 3_000, 3_000, 3_000)),
+                new SummaryComponentDependency(0, 1, List.of(), DependencyTypeIds.TRACE, null, null, false, 2, testHelper.getTimestamp(2), testHelper.getTimestamp(4), testHelper.createDuration(2_000, 4_000, 2_000, 4_000, 4_000, 4_000)));
     }
 
     @Test
@@ -589,8 +590,8 @@ public class SubComponentDependencyCollatorTest {
                 )
         );
         assertThat(returnValue.getDependencies()).containsExactly(
-                new SummaryComponentDependency(null, 0, List.of(1), false, 1, testHelper.getTimestamp(1), testHelper.getTimestamp(1), testHelper.createDuration(1_000, 1_000, 1_000, 1_000, 1_000, 1_000)),
-                new SummaryComponentDependency(0, 1, List.of(), false, 2, testHelper.getTimestamp(2), testHelper.getTimestamp(3), testHelper.createDuration(2_000, 3_000, 2_000, 3_000, 3_000, 3_000)));
+                new SummaryComponentDependency(null, 0, List.of(1), DependencyTypeIds.TRACE, null, null, false, 1, testHelper.getTimestamp(1), testHelper.getTimestamp(1), testHelper.createDuration(1_000, 1_000, 1_000, 1_000, 1_000, 1_000)),
+                new SummaryComponentDependency(0, 1, List.of(), DependencyTypeIds.TRACE, null, null, false, 2, testHelper.getTimestamp(2), testHelper.getTimestamp(3), testHelper.createDuration(2_000, 3_000, 2_000, 3_000, 3_000, 3_000)));
     }
 
     @Test
@@ -627,8 +628,8 @@ public class SubComponentDependencyCollatorTest {
                 new SummarySubComponentDependencyNode("test-service-1", "test-span-1", Map.of()),
                 new SummarySubComponentDependencyNode("test-service-2", "test-span-2", Map.of()));
         assertThat(returnValue.getDependencies()).containsExactly(
-                new SummaryComponentDependency(null, 0, List.of(1), false, 1, testHelper.getTimestamp(1), testHelper.getTimestamp(1), testHelper.createDuration(1_000, 1_000, 1_000, 1_000, 1_000, 1_000)),
-                new SummaryComponentDependency(0, 1, List.of(), false, 2, testHelper.getTimestamp(2), testHelper.getTimestamp(2), testHelper.createDuration(2_000, 3_000, 2_000, 3_000, 3_000, 3_000)));
+                new SummaryComponentDependency(null, 0, List.of(1), DependencyTypeIds.TRACE, null, null, false, 1, testHelper.getTimestamp(1), testHelper.getTimestamp(1), testHelper.createDuration(1_000, 1_000, 1_000, 1_000, 1_000, 1_000)),
+                new SummaryComponentDependency(0, 1, List.of(), DependencyTypeIds.TRACE, null, null, false, 2, testHelper.getTimestamp(2), testHelper.getTimestamp(2), testHelper.createDuration(2_000, 3_000, 2_000, 3_000, 3_000, 3_000)));
     }
 
     @Test
@@ -665,8 +666,8 @@ public class SubComponentDependencyCollatorTest {
                 new SummarySubComponentDependencyNode("test-service-1", "test-span-1", Map.of()),
                 new SummarySubComponentDependencyNode("test-service-2", "test-span-2", Map.of()));
         assertThat(returnValue.getDependencies()).containsExactly(
-                new SummaryComponentDependency(null, 0, List.of(1), false, 1, null, null, testHelper.createDuration(1_000, 1_000, 1_000, 1_000, 1_000, 1_000)),
-                new SummaryComponentDependency(0, 1, List.of(), false, 2, null, null, testHelper.createDuration(2_000, 3_000, 2_000, 3_000, 3_000, 3_000)));
+                new SummaryComponentDependency(null, 0, List.of(1), DependencyTypeIds.TRACE, null, null, false, 1, null, null, testHelper.createDuration(1_000, 1_000, 1_000, 1_000, 1_000, 1_000)),
+                new SummaryComponentDependency(0, 1, List.of(), DependencyTypeIds.TRACE, null, null, false, 2, null, null, testHelper.createDuration(2_000, 3_000, 2_000, 3_000, 3_000, 3_000)));
     }
 
     @Test
@@ -703,8 +704,8 @@ public class SubComponentDependencyCollatorTest {
                 new SummarySubComponentDependencyNode("test-service-1", "test-span-1", Map.of()),
                 new SummarySubComponentDependencyNode("test-service-2", "test-span-2", Map.of()));
         assertThat(returnValue.getDependencies()).containsExactly(
-                new SummaryComponentDependency(null, 0, List.of(1), false, 1, testHelper.getTimestamp(1), testHelper.getTimestamp(1), testHelper.createDuration(1_000, 1_000, 1_000, 1_000, 1_000, 1_000)),
-                new SummaryComponentDependency(0, 1, List.of(), false, 2, testHelper.getTimestamp(2), testHelper.getTimestamp(3), testHelper.createDuration(2_000, 2_000, 2_000, 2_000, 2_000, 2_000)));
+                new SummaryComponentDependency(null, 0, List.of(1), DependencyTypeIds.TRACE, null, null, false, 1, testHelper.getTimestamp(1), testHelper.getTimestamp(1), testHelper.createDuration(1_000, 1_000, 1_000, 1_000, 1_000, 1_000)),
+                new SummaryComponentDependency(0, 1, List.of(), DependencyTypeIds.TRACE, null, null, false, 2, testHelper.getTimestamp(2), testHelper.getTimestamp(3), testHelper.createDuration(2_000, 2_000, 2_000, 2_000, 2_000, 2_000)));
     }
 
     @Test
@@ -741,8 +742,8 @@ public class SubComponentDependencyCollatorTest {
                 new SummarySubComponentDependencyNode("test-service-1", "test-span-1", Map.of()),
                 new SummarySubComponentDependencyNode("test-service-2", "test-span-2", Map.of()));
         assertThat(returnValue.getDependencies()).containsExactly(
-                new SummaryComponentDependency(null, 0, List.of(1), false, 1, testHelper.getTimestamp(1), testHelper.getTimestamp(1), null),
-                new SummaryComponentDependency(0, 1, List.of(), false, 2, testHelper.getTimestamp(2), testHelper.getTimestamp(3), null));
+                new SummaryComponentDependency(null, 0, List.of(1), DependencyTypeIds.TRACE, null, null, false, 1, testHelper.getTimestamp(1), testHelper.getTimestamp(1), null),
+                new SummaryComponentDependency(0, 1, List.of(), DependencyTypeIds.TRACE, null, null, false, 2, testHelper.getTimestamp(2), testHelper.getTimestamp(3), null));
     }
 
     private List<GenericTag> createTags(String... args) {

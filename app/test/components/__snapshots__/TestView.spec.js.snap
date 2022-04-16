@@ -59,32 +59,7 @@ exports[`TestView when components is set to multiple components with multiple te
       </button>
       <transition-stub css=\\"true\\" enterclass=\\"\\" leaveclass=\\"collapse show\\" entertoclass=\\"collapse show\\" leavetoclass=\\"collapse\\" enteractiveclass=\\"collapsing\\" leaveactiveclass=\\"collapsing\\" class=\\"mt-3\\">
         <div id=\\"filters\\" class=\\"collapse\\" style=\\"display: none;\\">
-          <div class=\\"card-columns\\">
-            <div class=\\"card bg-secondary\\">
-              <!---->
-              <!---->
-              <div class=\\"card-body\\">
-                <!---->
-                <!---->
-                <p class=\\"card-text\\">
-                  <fieldset class=\\"form-group\\" id=\\"__BVID__12\\">
-                    <legend tabindex=\\"-1\\" class=\\"bv-no-focus-ring col-form-label pt-0\\" id=\\"__BVID__12__BV_label_\\">Test Outcomes</legend>
-                    <div>
-                      <div role=\\"group\\" tabindex=\\"-1\\" class=\\"bv-no-focus-ring\\" id=\\"__BVID__13\\">
-                        <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"testOutcome\\" class=\\"custom-control-input\\" value=\\"fail\\" id=\\"__BVID__13_BV_option_0\\"><label class=\\"custom-control-label\\" for=\\"__BVID__13_BV_option_0\\"><span>fail</span></label></div>
-                        <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"testOutcome\\" class=\\"custom-control-input\\" value=\\"success\\" id=\\"__BVID__13_BV_option_1\\"><label class=\\"custom-control-label\\" for=\\"__BVID__13_BV_option_1\\"><span>success</span></label></div>
-                      </div>
-                      <!---->
-                      <!---->
-                      <!---->
-                    </div>
-                  </fieldset>
-                </p>
-              </div>
-              <!---->
-              <!---->
-            </div>
-            <!---->
+          <div class=\\"card-columns\\" style=\\"column-count: 3;\\">
             <!---->
             <div class=\\"card bg-secondary\\">
               <!---->
@@ -92,66 +67,84 @@ exports[`TestView when components is set to multiple components with multiple te
               <div class=\\"card-body\\">
                 <!---->
                 <!---->
-                <p class=\\"card-text\\">
-                  <fieldset class=\\"form-group\\" id=\\"__BVID__16\\">
-                    <legend tabindex=\\"-1\\" class=\\"bv-no-focus-ring col-form-label pt-0\\" id=\\"__BVID__16__BV_label_\\">Component Types</legend>
-                    <div>
-                      <div role=\\"group\\" tabindex=\\"-1\\" class=\\"bv-no-focus-ring\\" id=\\"__BVID__17\\">
-                        <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"componentTypeId\\" class=\\"custom-control-input\\" value=\\"\\" id=\\"__BVID__17_BV_option_0\\"><label class=\\"custom-control-label\\" for=\\"__BVID__17_BV_option_0\\"><span>null</span></label></div>
-                      </div>
-                      <!---->
-                      <!---->
-                      <!---->
+                <fieldset class=\\"form-group\\" id=\\"__BVID__12\\">
+                  <legend tabindex=\\"-1\\" class=\\"bv-no-focus-ring col-form-label pt-0\\" id=\\"__BVID__12__BV_label_\\">Test Outcomes</legend>
+                  <div>
+                    <div role=\\"group\\" tabindex=\\"-1\\" class=\\"bv-no-focus-ring\\" id=\\"__BVID__13\\">
+                      <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"testOutcome\\" class=\\"custom-control-input\\" value=\\"fail\\" id=\\"__BVID__13_BV_option_0\\"><label class=\\"custom-control-label\\" for=\\"__BVID__13_BV_option_0\\"><span>fail</span></label></div>
+                      <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"testOutcome\\" class=\\"custom-control-input\\" value=\\"success\\" id=\\"__BVID__13_BV_option_1\\"><label class=\\"custom-control-label\\" for=\\"__BVID__13_BV_option_1\\"><span>success</span></label></div>
                     </div>
-                  </fieldset>
-                </p>
-              </div>
-              <!---->
-              <!---->
-            </div>
-            <div class=\\"card bg-secondary\\">
-              <!---->
-              <!---->
-              <div class=\\"card-body\\">
-                <!---->
-                <!---->
-                <p class=\\"card-text\\">
-                  <fieldset class=\\"form-group\\" id=\\"__BVID__19\\">
-                    <legend tabindex=\\"-1\\" class=\\"bv-no-focus-ring col-form-label pt-0\\" id=\\"__BVID__19__BV_label_\\">Platforms</legend>
-                    <div>
-                      <div role=\\"group\\" tabindex=\\"-1\\" class=\\"bv-no-focus-ring\\" id=\\"__BVID__20\\">
-                        <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"platformId\\" class=\\"custom-control-input\\" value=\\"undefined\\" id=\\"__BVID__20_BV_option_0\\"><label class=\\"custom-control-label\\" for=\\"__BVID__20_BV_option_0\\"><span>undefined</span></label></div>
-                      </div>
-                      <!---->
-                      <!---->
-                      <!---->
-                    </div>
-                  </fieldset>
-                </p>
-              </div>
-              <!---->
-              <!---->
-            </div>
-            <div class=\\"card bg-secondary\\">
-              <!---->
-              <!---->
-              <div class=\\"card-body\\">
-                <!---->
-                <!---->
-                <p class=\\"card-text\\">
-                  <div role=\\"group\\" class=\\"form-group\\" id=\\"__BVID__22\\"><label for=\\"component-filter\\" class=\\"d-block\\" id=\\"__BVID__22__BV_label_\\">Component</label>
-                    <div><select id=\\"component-filter\\" class=\\"custom-select custom-select-sm\\">
-                        <option value=\\"\\">Please select a component</option>
-                        <option value=\\"test-component-id-1\\">test-component-id-1</option>
-                        <option value=\\"test-component-id-2\\">test-component-id-2</option>
-                        <option value=\\"test-component-id-3\\">test-component-id-3</option>
-                      </select>
-                      <!---->
-                      <!---->
-                      <!---->
-                    </div>
+                    <!---->
+                    <!---->
+                    <!---->
                   </div>
-                </p>
+                </fieldset>
+              </div>
+              <!---->
+              <!---->
+            </div>
+            <!---->
+            <!---->
+            <div class=\\"card bg-secondary\\">
+              <!---->
+              <!---->
+              <div class=\\"card-body\\">
+                <!---->
+                <!---->
+                <fieldset class=\\"form-group\\" id=\\"__BVID__16\\">
+                  <legend tabindex=\\"-1\\" class=\\"bv-no-focus-ring col-form-label pt-0\\" id=\\"__BVID__16__BV_label_\\">Component Types</legend>
+                  <div>
+                    <div role=\\"group\\" tabindex=\\"-1\\" class=\\"bv-no-focus-ring\\" id=\\"__BVID__17\\">
+                      <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"componentTypeId\\" class=\\"custom-control-input\\" value=\\"\\" id=\\"__BVID__17_BV_option_0\\"><label class=\\"custom-control-label\\" for=\\"__BVID__17_BV_option_0\\"><span>null</span></label></div>
+                    </div>
+                    <!---->
+                    <!---->
+                    <!---->
+                  </div>
+                </fieldset>
+              </div>
+              <!---->
+              <!---->
+            </div>
+            <div class=\\"card bg-secondary\\">
+              <!---->
+              <!---->
+              <div class=\\"card-body\\">
+                <!---->
+                <!---->
+                <fieldset class=\\"form-group\\" id=\\"__BVID__19\\">
+                  <legend tabindex=\\"-1\\" class=\\"bv-no-focus-ring col-form-label pt-0\\" id=\\"__BVID__19__BV_label_\\">Platforms</legend>
+                  <div>
+                    <div role=\\"group\\" tabindex=\\"-1\\" class=\\"bv-no-focus-ring\\" id=\\"__BVID__20\\">
+                      <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"platformId\\" class=\\"custom-control-input\\" value=\\"undefined\\" id=\\"__BVID__20_BV_option_0\\"><label class=\\"custom-control-label\\" for=\\"__BVID__20_BV_option_0\\"><span>undefined</span></label></div>
+                    </div>
+                    <!---->
+                    <!---->
+                    <!---->
+                  </div>
+                </fieldset>
+              </div>
+              <!---->
+              <!---->
+            </div>
+            <div class=\\"card bg-secondary\\">
+              <!---->
+              <!---->
+              <div class=\\"card-body\\">
+                <!---->
+                <!---->
+                <div role=\\"group\\" class=\\"form-group\\" id=\\"__BVID__22\\"><label for=\\"component-filter\\" class=\\"d-block\\" id=\\"__BVID__22__BV_label_\\">Component</label>
+                  <div><select id=\\"component-filter\\" class=\\"custom-select custom-select-sm\\">
+                      <option value=\\"\\">Please select a component</option>
+                      <option value=\\"test-component-id-1\\">test-component-id-1</option>
+                      <option value=\\"test-component-id-2\\">test-component-id-2</option>
+                      <option value=\\"test-component-id-3\\">test-component-id-3</option>
+                    </select>
+                    <!---->
+                    <!---->
+                    <!---->
+                  </div>
+                </div>
               </div>
               <!---->
               <!---->
