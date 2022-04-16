@@ -1,6 +1,6 @@
 <template>
   <div>
-    <b-alert dismissible variant="info">
+    <b-alert show dismissible variant="info">
       Click a dot in the dependencies diagram to see more information about that component
     </b-alert>
 
@@ -9,67 +9,59 @@
       :environment-id-filter-enabled="true"
     >
       <b-card bg-variant="secondary">
-        <b-card-text>
-          <b-form-group
-            label="Dependency Types"
-          >
-            <b-form-checkbox-group
-              v-model="selectedDependencyTypeIds"
-              :options="dependencyTypeIdOptions"
-              name="dependencyTypeId"
-              stacked
-            ></b-form-checkbox-group>
-          </b-form-group>
-        </b-card-text>
+        <b-form-group
+          label="Dependency Types"
+        >
+          <b-form-checkbox-group
+            v-model="selectedDependencyTypeIds"
+            :options="dependencyTypeIdOptions"
+            name="dependencyTypeId"
+            stacked
+          ></b-form-checkbox-group>
+        </b-form-group>
       </b-card>
 
       <b-card bg-variant="secondary">
-        <b-card-text>
-          <b-form-group
-            label-cols="6"
-            label-size="sm"
-            label="Radius:"
-            label-for="graph-scope-related-radius"
-          >
-            <b-form-select
-              id="graph-scope-related-radius"
-              v-model="selectedScopeRelatedRadius"
-              :options="scopeRelatedRadiusOptions"
-              size="sm"
-            />
-          </b-form-group>
-        </b-card-text>
+        <b-form-group
+          label-cols="6"
+          label-size="sm"
+          label="Radius:"
+          label-for="graph-scope-related-radius"
+        >
+          <b-form-select
+            id="graph-scope-related-radius"
+            v-model="selectedScopeRelatedRadius"
+            :options="scopeRelatedRadiusOptions"
+            size="sm"
+          />
+        </b-form-group>
       </b-card>
 
       <b-card bg-variant="secondary">
-        <b-card-text>
-          <b-form-group
-            label-cols="6"
-            label-size="sm"
-            label="Zoom:"
-            label-for="graph-zoom"
-          >
-            <b-form-select
-              id="graph-zoom"
-              v-model="zoom"
-              :options="zoomOptions"
-              size="sm"
-            />
-          </b-form-group>
-        </b-card-text>
+        <b-form-group
+          label-cols="6"
+          label-size="sm"
+          label="Zoom:"
+          label-for="graph-zoom"
+        >
+          <b-form-select
+            id="graph-zoom"
+            v-model="zoom"
+            :options="zoomOptions"
+            size="sm"
+          />
+        </b-form-group>
       </b-card>
 
       <b-card bg-variant="secondary">
-        <b-card-text>
-          <b-form-checkbox
-            id="detailed-dependencies"
-            v-model="detailed"
-            :value="true"
-            :unchecked-value="false"
-          >
-            Detailed dependencies
-          </b-form-checkbox>
-        </b-card-text>
+        <b-form-checkbox
+          id="detailed-dependencies"
+          v-model="detailed"
+          :value="true"
+          :unchecked-value="false"
+        >
+          Detailed dependencies
+        </b-form-checkbox>
       </b-card>
     </ComponentFilters>
 
@@ -91,7 +83,7 @@
 
     <b-sidebar
       id="component"
-      v-model="component"
+      v-model="componentSidebarVisible"
       right
       width="600px"
       bg-variant="dark"
@@ -118,8 +110,10 @@
 <script lang="ts">
 import Vue, { PropType } from 'vue'
 import {
-  BAlert, BCard, BCardText,
-  BFormCheckbox, BFormCheckboxGroup,
+  BAlert,
+  BCard,
+  BFormCheckbox,
+  BFormCheckboxGroup,
   BFormGroup,
   BFormSelect,
   BSidebar
@@ -146,7 +140,6 @@ export default Vue.extend({
   components: {
     'b-alert': BAlert,
     'b-card': BCard,
-    'b-card-text': BCardText,
     'b-form-checkbox': BFormCheckbox,
     'b-form-checkbox-group': BFormCheckboxGroup,
     'b-form-group': BFormGroup,
@@ -184,6 +177,7 @@ export default Vue.extend({
   },
   data() {
     return {
+      componentSidebarVisible: false as boolean,
       node: undefined as
         | SummaryComponentDependencyNode
         | SummarySubComponentDependencyNode
@@ -243,9 +237,11 @@ export default Vue.extend({
       }
     ): void {
       if (node) {
+        this.componentSidebarVisible = true
         this.node = node
         this.component = this.findComponent(node.componentId)
       } else {
+        this.componentSidebarVisible = false
         this.node = undefined
         this.component = undefined
       }

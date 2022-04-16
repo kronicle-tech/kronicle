@@ -21,18 +21,16 @@
               "
           bg-variant="secondary"
         >
-          <b-card-text>
-            <b-form-group
-              label="Environments"
-            >
-              <b-form-checkbox-group
-                v-model="environmentIds"
-                :options="environmentIdOptions"
-                name="environmentId"
-                stacked
-              ></b-form-checkbox-group>
-            </b-form-group>
-          </b-card-text>
+          <b-form-group
+            label="Environments"
+          >
+            <b-form-checkbox-group
+              v-model="environmentIds"
+              :options="environmentIdOptions"
+              name="environmentId"
+              stacked
+            ></b-form-checkbox-group>
+          </b-form-group>
         </b-card>
         <b-card
           v-if="
@@ -42,84 +40,74 @@
               "
           bg-variant="secondary"
         >
-          <b-card-text>
-            <b-form-group
-              label="Test Outcomes"
-            >
-              <b-form-checkbox-group
-                v-model="testOutcomes"
-                :options="testOutcomeOptions"
-                name="testOutcome"
-                stacked
-              ></b-form-checkbox-group>
-            </b-form-group>
-          </b-card-text>
+          <b-form-group
+            label="Test Outcomes"
+          >
+            <b-form-checkbox-group
+              v-model="testOutcomes"
+              :options="testOutcomeOptions"
+              name="testOutcome"
+              stacked
+            ></b-form-checkbox-group>
+          </b-form-group>
         </b-card>
         <b-card
           v-if="teamIdOptions && teamIdOptions.length > 0"
           bg-variant="secondary"
         >
-          <b-card-text>
-            <b-form-group
-              label="Teams"
-            >
-              <b-form-checkbox-group
-                v-model="teamIds"
-                :options="teamIdOptions"
-                name="team"
-                stacked
-              ></b-form-checkbox-group>
-            </b-form-group>
-          </b-card-text>
+          <b-form-group
+            label="Teams"
+          >
+            <b-form-checkbox-group
+              v-model="teamIds"
+              :options="teamIdOptions"
+              name="team"
+              stacked
+            ></b-form-checkbox-group>
+          </b-form-group>
         </b-card>
         <b-card
           v-if="tagOptions && tagOptions.length > 0"
           bg-variant="secondary"
         >
-          <b-card-text>
-            <b-form-group label="Tags">
-              <b-form-checkbox-group
-                v-model="tags"
-                :options="tagOptions"
-                name="tag"
-                stacked
-              ></b-form-checkbox-group>
-            </b-form-group>
-          </b-card-text>
+          <b-form-group label="Tags">
+            <b-form-checkbox-group
+              v-model="tags"
+              :options="tagOptions"
+              name="tag"
+              stacked
+            ></b-form-checkbox-group>
+          </b-form-group>
         </b-card>
         <b-card
           v-if="componentTypeIdOptions && componentTypeIdOptions.length > 0"
           bg-variant="secondary"
         >
-          <b-card-text>
-            <b-form-group
-              label="Component Types"
-            >
-              <b-form-checkbox-group
-                v-model="componentTypeIds"
-                :options="componentTypeIdOptions"
-                name="componentTypeId"
-                stacked
-              ></b-form-checkbox-group>
-            </b-form-group>
-          </b-card-text>
+          <b-form-group
+            label="Component Types"
+          >
+            <b-form-checkbox-group
+              v-model="componentTypeIds"
+              :options="componentTypeIdOptions"
+              name="componentTypeId"
+              stacked
+            ></b-form-checkbox-group>
+          </b-form-group>
         </b-card>
         <b-card
           v-if="platformIdOptions && platformIdOptions.length > 0"
           bg-variant="secondary"
         >
-          <b-card-text>
-            <b-form-group
-              label="Platforms"
-            >
-              <b-form-checkbox-group
-                v-model="platformIds"
-                :options="platformIdOptions"
-                name="platformId"
-                stacked
-              ></b-form-checkbox-group>
-            </b-form-group>
-          </b-card-text>
+          <b-form-group
+            label="Platforms"
+          >
+            <b-form-checkbox-group
+              v-model="platformIds"
+              :options="platformIdOptions"
+              name="platformId"
+              stacked
+            ></b-form-checkbox-group>
+          </b-form-group>
         </b-card>
         <b-card
           v-if="
@@ -129,19 +117,17 @@
           "
           bg-variant="secondary"
         >
-          <b-card-text>
-            <b-form-group
-              label="Component"
-              label-for="component-filter"
-            >
-              <b-form-select
-                id="component-filter"
-                v-model="componentId"
-                :options="componentIdOptions"
-                size="sm"
-              />
-            </b-form-group>
-          </b-card-text>
+          <b-form-group
+            label="Component"
+            label-for="component-filter"
+          >
+            <b-form-select
+              id="component-filter"
+              v-model="componentId"
+              :options="componentIdOptions"
+              size="sm"
+            />
+          </b-form-group>
         </b-card>
       </b-card-group>
     </b-collapse>
@@ -154,7 +140,6 @@ import {
   BButton,
   BCard,
   BCardGroup,
-  BCardText,
   BCollapse,
   BFormCheckboxGroup,
   BFormGroup,
@@ -174,7 +159,6 @@ interface Option {
     'b-button': BButton,
     'b-card': BCard,
     'b-card-group': BCardGroup,
-    'b-card-text': BCardText,
     'b-collapse': BCollapse,
     'b-form-checkbox-group': BFormCheckboxGroup,
     'b-form-group': BFormGroup,

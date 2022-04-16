@@ -33,148 +33,136 @@ exports[`TestResultsView when areaId prop is set renders the test hrefs pointing
             <div class=\\"card-body\\">
               <!---->
               <!---->
-              <p class=\\"card-text\\">
-                <fieldset class=\\"form-group\\" id=\\"__BVID__298\\">
-                  <legend tabindex=\\"-1\\" class=\\"bv-no-focus-ring col-form-label pt-0\\" id=\\"__BVID__298__BV_label_\\">Test Outcomes</legend>
-                  <div>
-                    <div role=\\"group\\" tabindex=\\"-1\\" class=\\"bv-no-focus-ring\\" id=\\"__BVID__299\\">
-                      <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"testOutcome\\" class=\\"custom-control-input\\" value=\\"fail\\" id=\\"__BVID__299_BV_option_0\\"><label class=\\"custom-control-label\\" for=\\"__BVID__299_BV_option_0\\"><span>fail</span></label></div>
-                      <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"testOutcome\\" class=\\"custom-control-input\\" value=\\"not-applicable\\" id=\\"__BVID__299_BV_option_1\\"><label class=\\"custom-control-label\\" for=\\"__BVID__299_BV_option_1\\"><span>not-applicable</span></label></div>
-                    </div>
-                    <!---->
-                    <!---->
-                    <!---->
+              <fieldset class=\\"form-group\\" id=\\"__BVID__298\\">
+                <legend tabindex=\\"-1\\" class=\\"bv-no-focus-ring col-form-label pt-0\\" id=\\"__BVID__298__BV_label_\\">Test Outcomes</legend>
+                <div>
+                  <div role=\\"group\\" tabindex=\\"-1\\" class=\\"bv-no-focus-ring\\" id=\\"__BVID__299\\">
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"testOutcome\\" class=\\"custom-control-input\\" value=\\"fail\\" id=\\"__BVID__299_BV_option_0\\"><label class=\\"custom-control-label\\" for=\\"__BVID__299_BV_option_0\\"><span>fail</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"testOutcome\\" class=\\"custom-control-input\\" value=\\"not-applicable\\" id=\\"__BVID__299_BV_option_1\\"><label class=\\"custom-control-label\\" for=\\"__BVID__299_BV_option_1\\"><span>not-applicable</span></label></div>
                   </div>
-                </fieldset>
-              </p>
-            </div>
-            <!---->
-            <!---->
-          </div>
-          <div class=\\"card bg-secondary\\">
-            <!---->
-            <!---->
-            <div class=\\"card-body\\">
-              <!---->
-              <!---->
-              <p class=\\"card-text\\">
-                <fieldset class=\\"form-group\\" id=\\"__BVID__302\\">
-                  <legend tabindex=\\"-1\\" class=\\"bv-no-focus-ring col-form-label pt-0\\" id=\\"__BVID__302__BV_label_\\">Teams</legend>
-                  <div>
-                    <div role=\\"group\\" tabindex=\\"-1\\" class=\\"bv-no-focus-ring\\" id=\\"__BVID__303\\">
-                      <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"team\\" class=\\"custom-control-input\\" value=\\"test-team-id-1-1\\" id=\\"__BVID__303_BV_option_0\\"><label class=\\"custom-control-label\\" for=\\"__BVID__303_BV_option_0\\"><span>test-team-id-1-1</span></label></div>
-                      <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"team\\" class=\\"custom-control-input\\" value=\\"test-team-id-1-2\\" id=\\"__BVID__303_BV_option_1\\"><label class=\\"custom-control-label\\" for=\\"__BVID__303_BV_option_1\\"><span>test-team-id-1-2</span></label></div>
-                      <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"team\\" class=\\"custom-control-input\\" value=\\"test-team-id-2-1\\" id=\\"__BVID__303_BV_option_2\\"><label class=\\"custom-control-label\\" for=\\"__BVID__303_BV_option_2\\"><span>test-team-id-2-1</span></label></div>
-                      <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"team\\" class=\\"custom-control-input\\" value=\\"test-team-id-2-2\\" id=\\"__BVID__303_BV_option_3\\"><label class=\\"custom-control-label\\" for=\\"__BVID__303_BV_option_3\\"><span>test-team-id-2-2</span></label></div>
-                      <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"team\\" class=\\"custom-control-input\\" value=\\"test-team-id-3-1\\" id=\\"__BVID__303_BV_option_4\\"><label class=\\"custom-control-label\\" for=\\"__BVID__303_BV_option_4\\"><span>test-team-id-3-1</span></label></div>
-                      <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"team\\" class=\\"custom-control-input\\" value=\\"test-team-id-3-2\\" id=\\"__BVID__303_BV_option_5\\"><label class=\\"custom-control-label\\" for=\\"__BVID__303_BV_option_5\\"><span>test-team-id-3-2</span></label></div>
-                    </div>
-                    <!---->
-                    <!---->
-                    <!---->
-                  </div>
-                </fieldset>
-              </p>
-            </div>
-            <!---->
-            <!---->
-          </div>
-          <div class=\\"card bg-secondary\\">
-            <!---->
-            <!---->
-            <div class=\\"card-body\\">
-              <!---->
-              <!---->
-              <p class=\\"card-text\\">
-                <fieldset class=\\"form-group\\" id=\\"__BVID__310\\">
-                  <legend tabindex=\\"-1\\" class=\\"bv-no-focus-ring col-form-label pt-0\\" id=\\"__BVID__310__BV_label_\\">Tags</legend>
-                  <div>
-                    <div role=\\"group\\" tabindex=\\"-1\\" class=\\"bv-no-focus-ring\\" id=\\"__BVID__311\\">
-                      <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"tag\\" class=\\"custom-control-input\\" value=\\"test-tag-1-1\\" id=\\"__BVID__311_BV_option_0\\"><label class=\\"custom-control-label\\" for=\\"__BVID__311_BV_option_0\\"><span>test-tag-1-1</span></label></div>
-                      <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"tag\\" class=\\"custom-control-input\\" value=\\"test-tag-1-2\\" id=\\"__BVID__311_BV_option_1\\"><label class=\\"custom-control-label\\" for=\\"__BVID__311_BV_option_1\\"><span>test-tag-1-2</span></label></div>
-                      <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"tag\\" class=\\"custom-control-input\\" value=\\"test-tag-2-1\\" id=\\"__BVID__311_BV_option_2\\"><label class=\\"custom-control-label\\" for=\\"__BVID__311_BV_option_2\\"><span>test-tag-2-1</span></label></div>
-                      <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"tag\\" class=\\"custom-control-input\\" value=\\"test-tag-2-2\\" id=\\"__BVID__311_BV_option_3\\"><label class=\\"custom-control-label\\" for=\\"__BVID__311_BV_option_3\\"><span>test-tag-2-2</span></label></div>
-                      <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"tag\\" class=\\"custom-control-input\\" value=\\"test-tag-3-1\\" id=\\"__BVID__311_BV_option_4\\"><label class=\\"custom-control-label\\" for=\\"__BVID__311_BV_option_4\\"><span>test-tag-3-1</span></label></div>
-                      <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"tag\\" class=\\"custom-control-input\\" value=\\"test-tag-3-2\\" id=\\"__BVID__311_BV_option_5\\"><label class=\\"custom-control-label\\" for=\\"__BVID__311_BV_option_5\\"><span>test-tag-3-2</span></label></div>
-                    </div>
-                    <!---->
-                    <!---->
-                    <!---->
-                  </div>
-                </fieldset>
-              </p>
-            </div>
-            <!---->
-            <!---->
-          </div>
-          <div class=\\"card bg-secondary\\">
-            <!---->
-            <!---->
-            <div class=\\"card-body\\">
-              <!---->
-              <!---->
-              <p class=\\"card-text\\">
-                <fieldset class=\\"form-group\\" id=\\"__BVID__318\\">
-                  <legend tabindex=\\"-1\\" class=\\"bv-no-focus-ring col-form-label pt-0\\" id=\\"__BVID__318__BV_label_\\">Component Types</legend>
-                  <div>
-                    <div role=\\"group\\" tabindex=\\"-1\\" class=\\"bv-no-focus-ring\\" id=\\"__BVID__319\\">
-                      <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"componentTypeId\\" class=\\"custom-control-input\\" value=\\"test-component-type-id-1\\" id=\\"__BVID__319_BV_option_0\\"><label class=\\"custom-control-label\\" for=\\"__BVID__319_BV_option_0\\"><span>test-component-type-id-1</span></label></div>
-                      <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"componentTypeId\\" class=\\"custom-control-input\\" value=\\"test-component-type-id-2\\" id=\\"__BVID__319_BV_option_1\\"><label class=\\"custom-control-label\\" for=\\"__BVID__319_BV_option_1\\"><span>test-component-type-id-2</span></label></div>
-                      <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"componentTypeId\\" class=\\"custom-control-input\\" value=\\"test-component-type-id-3\\" id=\\"__BVID__319_BV_option_2\\"><label class=\\"custom-control-label\\" for=\\"__BVID__319_BV_option_2\\"><span>test-component-type-id-3</span></label></div>
-                    </div>
-                    <!---->
-                    <!---->
-                    <!---->
-                  </div>
-                </fieldset>
-              </p>
-            </div>
-            <!---->
-            <!---->
-          </div>
-          <div class=\\"card bg-secondary\\">
-            <!---->
-            <!---->
-            <div class=\\"card-body\\">
-              <!---->
-              <!---->
-              <p class=\\"card-text\\">
-                <fieldset class=\\"form-group\\" id=\\"__BVID__323\\">
-                  <legend tabindex=\\"-1\\" class=\\"bv-no-focus-ring col-form-label pt-0\\" id=\\"__BVID__323__BV_label_\\">Platforms</legend>
-                  <div>
-                    <div role=\\"group\\" tabindex=\\"-1\\" class=\\"bv-no-focus-ring\\" id=\\"__BVID__324\\">
-                      <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"platformId\\" class=\\"custom-control-input\\" value=\\"undefined\\" id=\\"__BVID__324_BV_option_0\\"><label class=\\"custom-control-label\\" for=\\"__BVID__324_BV_option_0\\"><span>undefined</span></label></div>
-                    </div>
-                    <!---->
-                    <!---->
-                    <!---->
-                  </div>
-                </fieldset>
-              </p>
-            </div>
-            <!---->
-            <!---->
-          </div>
-          <div class=\\"card bg-secondary\\">
-            <!---->
-            <!---->
-            <div class=\\"card-body\\">
-              <!---->
-              <!---->
-              <p class=\\"card-text\\">
-                <div role=\\"group\\" class=\\"form-group\\" id=\\"__BVID__326\\"><label for=\\"component-filter\\" class=\\"d-block\\" id=\\"__BVID__326__BV_label_\\">Component</label>
-                  <div><select id=\\"component-filter\\" class=\\"custom-select custom-select-sm\\">
-                      <option value=\\"\\">Please select a component</option>
-                      <option value=\\"test-component-id-1\\">test-component-id-1</option>
-                      <option value=\\"test-component-id-2\\">test-component-id-2</option>
-                      <option value=\\"test-component-id-3\\">test-component-id-3</option>
-                    </select>
-                    <!---->
-                    <!---->
-                    <!---->
-                  </div>
+                  <!---->
+                  <!---->
+                  <!---->
                 </div>
-              </p>
+              </fieldset>
+            </div>
+            <!---->
+            <!---->
+          </div>
+          <div class=\\"card bg-secondary\\">
+            <!---->
+            <!---->
+            <div class=\\"card-body\\">
+              <!---->
+              <!---->
+              <fieldset class=\\"form-group\\" id=\\"__BVID__302\\">
+                <legend tabindex=\\"-1\\" class=\\"bv-no-focus-ring col-form-label pt-0\\" id=\\"__BVID__302__BV_label_\\">Teams</legend>
+                <div>
+                  <div role=\\"group\\" tabindex=\\"-1\\" class=\\"bv-no-focus-ring\\" id=\\"__BVID__303\\">
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"team\\" class=\\"custom-control-input\\" value=\\"test-team-id-1-1\\" id=\\"__BVID__303_BV_option_0\\"><label class=\\"custom-control-label\\" for=\\"__BVID__303_BV_option_0\\"><span>test-team-id-1-1</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"team\\" class=\\"custom-control-input\\" value=\\"test-team-id-1-2\\" id=\\"__BVID__303_BV_option_1\\"><label class=\\"custom-control-label\\" for=\\"__BVID__303_BV_option_1\\"><span>test-team-id-1-2</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"team\\" class=\\"custom-control-input\\" value=\\"test-team-id-2-1\\" id=\\"__BVID__303_BV_option_2\\"><label class=\\"custom-control-label\\" for=\\"__BVID__303_BV_option_2\\"><span>test-team-id-2-1</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"team\\" class=\\"custom-control-input\\" value=\\"test-team-id-2-2\\" id=\\"__BVID__303_BV_option_3\\"><label class=\\"custom-control-label\\" for=\\"__BVID__303_BV_option_3\\"><span>test-team-id-2-2</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"team\\" class=\\"custom-control-input\\" value=\\"test-team-id-3-1\\" id=\\"__BVID__303_BV_option_4\\"><label class=\\"custom-control-label\\" for=\\"__BVID__303_BV_option_4\\"><span>test-team-id-3-1</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"team\\" class=\\"custom-control-input\\" value=\\"test-team-id-3-2\\" id=\\"__BVID__303_BV_option_5\\"><label class=\\"custom-control-label\\" for=\\"__BVID__303_BV_option_5\\"><span>test-team-id-3-2</span></label></div>
+                  </div>
+                  <!---->
+                  <!---->
+                  <!---->
+                </div>
+              </fieldset>
+            </div>
+            <!---->
+            <!---->
+          </div>
+          <div class=\\"card bg-secondary\\">
+            <!---->
+            <!---->
+            <div class=\\"card-body\\">
+              <!---->
+              <!---->
+              <fieldset class=\\"form-group\\" id=\\"__BVID__310\\">
+                <legend tabindex=\\"-1\\" class=\\"bv-no-focus-ring col-form-label pt-0\\" id=\\"__BVID__310__BV_label_\\">Tags</legend>
+                <div>
+                  <div role=\\"group\\" tabindex=\\"-1\\" class=\\"bv-no-focus-ring\\" id=\\"__BVID__311\\">
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"tag\\" class=\\"custom-control-input\\" value=\\"test-tag-1-1\\" id=\\"__BVID__311_BV_option_0\\"><label class=\\"custom-control-label\\" for=\\"__BVID__311_BV_option_0\\"><span>test-tag-1-1</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"tag\\" class=\\"custom-control-input\\" value=\\"test-tag-1-2\\" id=\\"__BVID__311_BV_option_1\\"><label class=\\"custom-control-label\\" for=\\"__BVID__311_BV_option_1\\"><span>test-tag-1-2</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"tag\\" class=\\"custom-control-input\\" value=\\"test-tag-2-1\\" id=\\"__BVID__311_BV_option_2\\"><label class=\\"custom-control-label\\" for=\\"__BVID__311_BV_option_2\\"><span>test-tag-2-1</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"tag\\" class=\\"custom-control-input\\" value=\\"test-tag-2-2\\" id=\\"__BVID__311_BV_option_3\\"><label class=\\"custom-control-label\\" for=\\"__BVID__311_BV_option_3\\"><span>test-tag-2-2</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"tag\\" class=\\"custom-control-input\\" value=\\"test-tag-3-1\\" id=\\"__BVID__311_BV_option_4\\"><label class=\\"custom-control-label\\" for=\\"__BVID__311_BV_option_4\\"><span>test-tag-3-1</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"tag\\" class=\\"custom-control-input\\" value=\\"test-tag-3-2\\" id=\\"__BVID__311_BV_option_5\\"><label class=\\"custom-control-label\\" for=\\"__BVID__311_BV_option_5\\"><span>test-tag-3-2</span></label></div>
+                  </div>
+                  <!---->
+                  <!---->
+                  <!---->
+                </div>
+              </fieldset>
+            </div>
+            <!---->
+            <!---->
+          </div>
+          <div class=\\"card bg-secondary\\">
+            <!---->
+            <!---->
+            <div class=\\"card-body\\">
+              <!---->
+              <!---->
+              <fieldset class=\\"form-group\\" id=\\"__BVID__318\\">
+                <legend tabindex=\\"-1\\" class=\\"bv-no-focus-ring col-form-label pt-0\\" id=\\"__BVID__318__BV_label_\\">Component Types</legend>
+                <div>
+                  <div role=\\"group\\" tabindex=\\"-1\\" class=\\"bv-no-focus-ring\\" id=\\"__BVID__319\\">
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"componentTypeId\\" class=\\"custom-control-input\\" value=\\"test-component-type-id-1\\" id=\\"__BVID__319_BV_option_0\\"><label class=\\"custom-control-label\\" for=\\"__BVID__319_BV_option_0\\"><span>test-component-type-id-1</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"componentTypeId\\" class=\\"custom-control-input\\" value=\\"test-component-type-id-2\\" id=\\"__BVID__319_BV_option_1\\"><label class=\\"custom-control-label\\" for=\\"__BVID__319_BV_option_1\\"><span>test-component-type-id-2</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"componentTypeId\\" class=\\"custom-control-input\\" value=\\"test-component-type-id-3\\" id=\\"__BVID__319_BV_option_2\\"><label class=\\"custom-control-label\\" for=\\"__BVID__319_BV_option_2\\"><span>test-component-type-id-3</span></label></div>
+                  </div>
+                  <!---->
+                  <!---->
+                  <!---->
+                </div>
+              </fieldset>
+            </div>
+            <!---->
+            <!---->
+          </div>
+          <div class=\\"card bg-secondary\\">
+            <!---->
+            <!---->
+            <div class=\\"card-body\\">
+              <!---->
+              <!---->
+              <fieldset class=\\"form-group\\" id=\\"__BVID__323\\">
+                <legend tabindex=\\"-1\\" class=\\"bv-no-focus-ring col-form-label pt-0\\" id=\\"__BVID__323__BV_label_\\">Platforms</legend>
+                <div>
+                  <div role=\\"group\\" tabindex=\\"-1\\" class=\\"bv-no-focus-ring\\" id=\\"__BVID__324\\">
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"platformId\\" class=\\"custom-control-input\\" value=\\"undefined\\" id=\\"__BVID__324_BV_option_0\\"><label class=\\"custom-control-label\\" for=\\"__BVID__324_BV_option_0\\"><span>undefined</span></label></div>
+                  </div>
+                  <!---->
+                  <!---->
+                  <!---->
+                </div>
+              </fieldset>
+            </div>
+            <!---->
+            <!---->
+          </div>
+          <div class=\\"card bg-secondary\\">
+            <!---->
+            <!---->
+            <div class=\\"card-body\\">
+              <!---->
+              <!---->
+              <div role=\\"group\\" class=\\"form-group\\" id=\\"__BVID__326\\"><label for=\\"component-filter\\" class=\\"d-block\\" id=\\"__BVID__326__BV_label_\\">Component</label>
+                <div><select id=\\"component-filter\\" class=\\"custom-select custom-select-sm\\">
+                    <option value=\\"\\">Please select a component</option>
+                    <option value=\\"test-component-id-1\\">test-component-id-1</option>
+                    <option value=\\"test-component-id-2\\">test-component-id-2</option>
+                    <option value=\\"test-component-id-3\\">test-component-id-3</option>
+                  </select>
+                  <!---->
+                  <!---->
+                  <!---->
+                </div>
+              </div>
             </div>
             <!---->
             <!---->
@@ -407,148 +395,136 @@ exports[`TestResultsView when components is set to multiple components with mult
             <div class=\\"card-body\\">
               <!---->
               <!---->
-              <p class=\\"card-text\\">
-                <fieldset class=\\"form-group\\" id=\\"__BVID__100\\">
-                  <legend tabindex=\\"-1\\" class=\\"bv-no-focus-ring col-form-label pt-0\\" id=\\"__BVID__100__BV_label_\\">Test Outcomes</legend>
-                  <div>
-                    <div role=\\"group\\" tabindex=\\"-1\\" class=\\"bv-no-focus-ring\\" id=\\"__BVID__101\\">
-                      <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"testOutcome\\" class=\\"custom-control-input\\" value=\\"fail\\" id=\\"__BVID__101_BV_option_0\\"><label class=\\"custom-control-label\\" for=\\"__BVID__101_BV_option_0\\"><span>fail</span></label></div>
-                      <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"testOutcome\\" class=\\"custom-control-input\\" value=\\"not-applicable\\" id=\\"__BVID__101_BV_option_1\\"><label class=\\"custom-control-label\\" for=\\"__BVID__101_BV_option_1\\"><span>not-applicable</span></label></div>
-                    </div>
-                    <!---->
-                    <!---->
-                    <!---->
+              <fieldset class=\\"form-group\\" id=\\"__BVID__100\\">
+                <legend tabindex=\\"-1\\" class=\\"bv-no-focus-ring col-form-label pt-0\\" id=\\"__BVID__100__BV_label_\\">Test Outcomes</legend>
+                <div>
+                  <div role=\\"group\\" tabindex=\\"-1\\" class=\\"bv-no-focus-ring\\" id=\\"__BVID__101\\">
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"testOutcome\\" class=\\"custom-control-input\\" value=\\"fail\\" id=\\"__BVID__101_BV_option_0\\"><label class=\\"custom-control-label\\" for=\\"__BVID__101_BV_option_0\\"><span>fail</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"testOutcome\\" class=\\"custom-control-input\\" value=\\"not-applicable\\" id=\\"__BVID__101_BV_option_1\\"><label class=\\"custom-control-label\\" for=\\"__BVID__101_BV_option_1\\"><span>not-applicable</span></label></div>
                   </div>
-                </fieldset>
-              </p>
-            </div>
-            <!---->
-            <!---->
-          </div>
-          <div class=\\"card bg-secondary\\">
-            <!---->
-            <!---->
-            <div class=\\"card-body\\">
-              <!---->
-              <!---->
-              <p class=\\"card-text\\">
-                <fieldset class=\\"form-group\\" id=\\"__BVID__104\\">
-                  <legend tabindex=\\"-1\\" class=\\"bv-no-focus-ring col-form-label pt-0\\" id=\\"__BVID__104__BV_label_\\">Teams</legend>
-                  <div>
-                    <div role=\\"group\\" tabindex=\\"-1\\" class=\\"bv-no-focus-ring\\" id=\\"__BVID__105\\">
-                      <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"team\\" class=\\"custom-control-input\\" value=\\"test-team-id-1-1\\" id=\\"__BVID__105_BV_option_0\\"><label class=\\"custom-control-label\\" for=\\"__BVID__105_BV_option_0\\"><span>test-team-id-1-1</span></label></div>
-                      <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"team\\" class=\\"custom-control-input\\" value=\\"test-team-id-1-2\\" id=\\"__BVID__105_BV_option_1\\"><label class=\\"custom-control-label\\" for=\\"__BVID__105_BV_option_1\\"><span>test-team-id-1-2</span></label></div>
-                      <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"team\\" class=\\"custom-control-input\\" value=\\"test-team-id-2-1\\" id=\\"__BVID__105_BV_option_2\\"><label class=\\"custom-control-label\\" for=\\"__BVID__105_BV_option_2\\"><span>test-team-id-2-1</span></label></div>
-                      <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"team\\" class=\\"custom-control-input\\" value=\\"test-team-id-2-2\\" id=\\"__BVID__105_BV_option_3\\"><label class=\\"custom-control-label\\" for=\\"__BVID__105_BV_option_3\\"><span>test-team-id-2-2</span></label></div>
-                      <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"team\\" class=\\"custom-control-input\\" value=\\"test-team-id-3-1\\" id=\\"__BVID__105_BV_option_4\\"><label class=\\"custom-control-label\\" for=\\"__BVID__105_BV_option_4\\"><span>test-team-id-3-1</span></label></div>
-                      <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"team\\" class=\\"custom-control-input\\" value=\\"test-team-id-3-2\\" id=\\"__BVID__105_BV_option_5\\"><label class=\\"custom-control-label\\" for=\\"__BVID__105_BV_option_5\\"><span>test-team-id-3-2</span></label></div>
-                    </div>
-                    <!---->
-                    <!---->
-                    <!---->
-                  </div>
-                </fieldset>
-              </p>
-            </div>
-            <!---->
-            <!---->
-          </div>
-          <div class=\\"card bg-secondary\\">
-            <!---->
-            <!---->
-            <div class=\\"card-body\\">
-              <!---->
-              <!---->
-              <p class=\\"card-text\\">
-                <fieldset class=\\"form-group\\" id=\\"__BVID__112\\">
-                  <legend tabindex=\\"-1\\" class=\\"bv-no-focus-ring col-form-label pt-0\\" id=\\"__BVID__112__BV_label_\\">Tags</legend>
-                  <div>
-                    <div role=\\"group\\" tabindex=\\"-1\\" class=\\"bv-no-focus-ring\\" id=\\"__BVID__113\\">
-                      <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"tag\\" class=\\"custom-control-input\\" value=\\"test-tag-1-1\\" id=\\"__BVID__113_BV_option_0\\"><label class=\\"custom-control-label\\" for=\\"__BVID__113_BV_option_0\\"><span>test-tag-1-1</span></label></div>
-                      <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"tag\\" class=\\"custom-control-input\\" value=\\"test-tag-1-2\\" id=\\"__BVID__113_BV_option_1\\"><label class=\\"custom-control-label\\" for=\\"__BVID__113_BV_option_1\\"><span>test-tag-1-2</span></label></div>
-                      <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"tag\\" class=\\"custom-control-input\\" value=\\"test-tag-2-1\\" id=\\"__BVID__113_BV_option_2\\"><label class=\\"custom-control-label\\" for=\\"__BVID__113_BV_option_2\\"><span>test-tag-2-1</span></label></div>
-                      <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"tag\\" class=\\"custom-control-input\\" value=\\"test-tag-2-2\\" id=\\"__BVID__113_BV_option_3\\"><label class=\\"custom-control-label\\" for=\\"__BVID__113_BV_option_3\\"><span>test-tag-2-2</span></label></div>
-                      <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"tag\\" class=\\"custom-control-input\\" value=\\"test-tag-3-1\\" id=\\"__BVID__113_BV_option_4\\"><label class=\\"custom-control-label\\" for=\\"__BVID__113_BV_option_4\\"><span>test-tag-3-1</span></label></div>
-                      <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"tag\\" class=\\"custom-control-input\\" value=\\"test-tag-3-2\\" id=\\"__BVID__113_BV_option_5\\"><label class=\\"custom-control-label\\" for=\\"__BVID__113_BV_option_5\\"><span>test-tag-3-2</span></label></div>
-                    </div>
-                    <!---->
-                    <!---->
-                    <!---->
-                  </div>
-                </fieldset>
-              </p>
-            </div>
-            <!---->
-            <!---->
-          </div>
-          <div class=\\"card bg-secondary\\">
-            <!---->
-            <!---->
-            <div class=\\"card-body\\">
-              <!---->
-              <!---->
-              <p class=\\"card-text\\">
-                <fieldset class=\\"form-group\\" id=\\"__BVID__120\\">
-                  <legend tabindex=\\"-1\\" class=\\"bv-no-focus-ring col-form-label pt-0\\" id=\\"__BVID__120__BV_label_\\">Component Types</legend>
-                  <div>
-                    <div role=\\"group\\" tabindex=\\"-1\\" class=\\"bv-no-focus-ring\\" id=\\"__BVID__121\\">
-                      <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"componentTypeId\\" class=\\"custom-control-input\\" value=\\"test-component-type-id-1\\" id=\\"__BVID__121_BV_option_0\\"><label class=\\"custom-control-label\\" for=\\"__BVID__121_BV_option_0\\"><span>test-component-type-id-1</span></label></div>
-                      <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"componentTypeId\\" class=\\"custom-control-input\\" value=\\"test-component-type-id-2\\" id=\\"__BVID__121_BV_option_1\\"><label class=\\"custom-control-label\\" for=\\"__BVID__121_BV_option_1\\"><span>test-component-type-id-2</span></label></div>
-                      <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"componentTypeId\\" class=\\"custom-control-input\\" value=\\"test-component-type-id-3\\" id=\\"__BVID__121_BV_option_2\\"><label class=\\"custom-control-label\\" for=\\"__BVID__121_BV_option_2\\"><span>test-component-type-id-3</span></label></div>
-                    </div>
-                    <!---->
-                    <!---->
-                    <!---->
-                  </div>
-                </fieldset>
-              </p>
-            </div>
-            <!---->
-            <!---->
-          </div>
-          <div class=\\"card bg-secondary\\">
-            <!---->
-            <!---->
-            <div class=\\"card-body\\">
-              <!---->
-              <!---->
-              <p class=\\"card-text\\">
-                <fieldset class=\\"form-group\\" id=\\"__BVID__125\\">
-                  <legend tabindex=\\"-1\\" class=\\"bv-no-focus-ring col-form-label pt-0\\" id=\\"__BVID__125__BV_label_\\">Platforms</legend>
-                  <div>
-                    <div role=\\"group\\" tabindex=\\"-1\\" class=\\"bv-no-focus-ring\\" id=\\"__BVID__126\\">
-                      <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"platformId\\" class=\\"custom-control-input\\" value=\\"undefined\\" id=\\"__BVID__126_BV_option_0\\"><label class=\\"custom-control-label\\" for=\\"__BVID__126_BV_option_0\\"><span>undefined</span></label></div>
-                    </div>
-                    <!---->
-                    <!---->
-                    <!---->
-                  </div>
-                </fieldset>
-              </p>
-            </div>
-            <!---->
-            <!---->
-          </div>
-          <div class=\\"card bg-secondary\\">
-            <!---->
-            <!---->
-            <div class=\\"card-body\\">
-              <!---->
-              <!---->
-              <p class=\\"card-text\\">
-                <div role=\\"group\\" class=\\"form-group\\" id=\\"__BVID__128\\"><label for=\\"component-filter\\" class=\\"d-block\\" id=\\"__BVID__128__BV_label_\\">Component</label>
-                  <div><select id=\\"component-filter\\" class=\\"custom-select custom-select-sm\\">
-                      <option value=\\"\\">Please select a component</option>
-                      <option value=\\"test-component-id-1\\">test-component-id-1</option>
-                      <option value=\\"test-component-id-2\\">test-component-id-2</option>
-                      <option value=\\"test-component-id-3\\">test-component-id-3</option>
-                    </select>
-                    <!---->
-                    <!---->
-                    <!---->
-                  </div>
+                  <!---->
+                  <!---->
+                  <!---->
                 </div>
-              </p>
+              </fieldset>
+            </div>
+            <!---->
+            <!---->
+          </div>
+          <div class=\\"card bg-secondary\\">
+            <!---->
+            <!---->
+            <div class=\\"card-body\\">
+              <!---->
+              <!---->
+              <fieldset class=\\"form-group\\" id=\\"__BVID__104\\">
+                <legend tabindex=\\"-1\\" class=\\"bv-no-focus-ring col-form-label pt-0\\" id=\\"__BVID__104__BV_label_\\">Teams</legend>
+                <div>
+                  <div role=\\"group\\" tabindex=\\"-1\\" class=\\"bv-no-focus-ring\\" id=\\"__BVID__105\\">
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"team\\" class=\\"custom-control-input\\" value=\\"test-team-id-1-1\\" id=\\"__BVID__105_BV_option_0\\"><label class=\\"custom-control-label\\" for=\\"__BVID__105_BV_option_0\\"><span>test-team-id-1-1</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"team\\" class=\\"custom-control-input\\" value=\\"test-team-id-1-2\\" id=\\"__BVID__105_BV_option_1\\"><label class=\\"custom-control-label\\" for=\\"__BVID__105_BV_option_1\\"><span>test-team-id-1-2</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"team\\" class=\\"custom-control-input\\" value=\\"test-team-id-2-1\\" id=\\"__BVID__105_BV_option_2\\"><label class=\\"custom-control-label\\" for=\\"__BVID__105_BV_option_2\\"><span>test-team-id-2-1</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"team\\" class=\\"custom-control-input\\" value=\\"test-team-id-2-2\\" id=\\"__BVID__105_BV_option_3\\"><label class=\\"custom-control-label\\" for=\\"__BVID__105_BV_option_3\\"><span>test-team-id-2-2</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"team\\" class=\\"custom-control-input\\" value=\\"test-team-id-3-1\\" id=\\"__BVID__105_BV_option_4\\"><label class=\\"custom-control-label\\" for=\\"__BVID__105_BV_option_4\\"><span>test-team-id-3-1</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"team\\" class=\\"custom-control-input\\" value=\\"test-team-id-3-2\\" id=\\"__BVID__105_BV_option_5\\"><label class=\\"custom-control-label\\" for=\\"__BVID__105_BV_option_5\\"><span>test-team-id-3-2</span></label></div>
+                  </div>
+                  <!---->
+                  <!---->
+                  <!---->
+                </div>
+              </fieldset>
+            </div>
+            <!---->
+            <!---->
+          </div>
+          <div class=\\"card bg-secondary\\">
+            <!---->
+            <!---->
+            <div class=\\"card-body\\">
+              <!---->
+              <!---->
+              <fieldset class=\\"form-group\\" id=\\"__BVID__112\\">
+                <legend tabindex=\\"-1\\" class=\\"bv-no-focus-ring col-form-label pt-0\\" id=\\"__BVID__112__BV_label_\\">Tags</legend>
+                <div>
+                  <div role=\\"group\\" tabindex=\\"-1\\" class=\\"bv-no-focus-ring\\" id=\\"__BVID__113\\">
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"tag\\" class=\\"custom-control-input\\" value=\\"test-tag-1-1\\" id=\\"__BVID__113_BV_option_0\\"><label class=\\"custom-control-label\\" for=\\"__BVID__113_BV_option_0\\"><span>test-tag-1-1</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"tag\\" class=\\"custom-control-input\\" value=\\"test-tag-1-2\\" id=\\"__BVID__113_BV_option_1\\"><label class=\\"custom-control-label\\" for=\\"__BVID__113_BV_option_1\\"><span>test-tag-1-2</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"tag\\" class=\\"custom-control-input\\" value=\\"test-tag-2-1\\" id=\\"__BVID__113_BV_option_2\\"><label class=\\"custom-control-label\\" for=\\"__BVID__113_BV_option_2\\"><span>test-tag-2-1</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"tag\\" class=\\"custom-control-input\\" value=\\"test-tag-2-2\\" id=\\"__BVID__113_BV_option_3\\"><label class=\\"custom-control-label\\" for=\\"__BVID__113_BV_option_3\\"><span>test-tag-2-2</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"tag\\" class=\\"custom-control-input\\" value=\\"test-tag-3-1\\" id=\\"__BVID__113_BV_option_4\\"><label class=\\"custom-control-label\\" for=\\"__BVID__113_BV_option_4\\"><span>test-tag-3-1</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"tag\\" class=\\"custom-control-input\\" value=\\"test-tag-3-2\\" id=\\"__BVID__113_BV_option_5\\"><label class=\\"custom-control-label\\" for=\\"__BVID__113_BV_option_5\\"><span>test-tag-3-2</span></label></div>
+                  </div>
+                  <!---->
+                  <!---->
+                  <!---->
+                </div>
+              </fieldset>
+            </div>
+            <!---->
+            <!---->
+          </div>
+          <div class=\\"card bg-secondary\\">
+            <!---->
+            <!---->
+            <div class=\\"card-body\\">
+              <!---->
+              <!---->
+              <fieldset class=\\"form-group\\" id=\\"__BVID__120\\">
+                <legend tabindex=\\"-1\\" class=\\"bv-no-focus-ring col-form-label pt-0\\" id=\\"__BVID__120__BV_label_\\">Component Types</legend>
+                <div>
+                  <div role=\\"group\\" tabindex=\\"-1\\" class=\\"bv-no-focus-ring\\" id=\\"__BVID__121\\">
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"componentTypeId\\" class=\\"custom-control-input\\" value=\\"test-component-type-id-1\\" id=\\"__BVID__121_BV_option_0\\"><label class=\\"custom-control-label\\" for=\\"__BVID__121_BV_option_0\\"><span>test-component-type-id-1</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"componentTypeId\\" class=\\"custom-control-input\\" value=\\"test-component-type-id-2\\" id=\\"__BVID__121_BV_option_1\\"><label class=\\"custom-control-label\\" for=\\"__BVID__121_BV_option_1\\"><span>test-component-type-id-2</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"componentTypeId\\" class=\\"custom-control-input\\" value=\\"test-component-type-id-3\\" id=\\"__BVID__121_BV_option_2\\"><label class=\\"custom-control-label\\" for=\\"__BVID__121_BV_option_2\\"><span>test-component-type-id-3</span></label></div>
+                  </div>
+                  <!---->
+                  <!---->
+                  <!---->
+                </div>
+              </fieldset>
+            </div>
+            <!---->
+            <!---->
+          </div>
+          <div class=\\"card bg-secondary\\">
+            <!---->
+            <!---->
+            <div class=\\"card-body\\">
+              <!---->
+              <!---->
+              <fieldset class=\\"form-group\\" id=\\"__BVID__125\\">
+                <legend tabindex=\\"-1\\" class=\\"bv-no-focus-ring col-form-label pt-0\\" id=\\"__BVID__125__BV_label_\\">Platforms</legend>
+                <div>
+                  <div role=\\"group\\" tabindex=\\"-1\\" class=\\"bv-no-focus-ring\\" id=\\"__BVID__126\\">
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"platformId\\" class=\\"custom-control-input\\" value=\\"undefined\\" id=\\"__BVID__126_BV_option_0\\"><label class=\\"custom-control-label\\" for=\\"__BVID__126_BV_option_0\\"><span>undefined</span></label></div>
+                  </div>
+                  <!---->
+                  <!---->
+                  <!---->
+                </div>
+              </fieldset>
+            </div>
+            <!---->
+            <!---->
+          </div>
+          <div class=\\"card bg-secondary\\">
+            <!---->
+            <!---->
+            <div class=\\"card-body\\">
+              <!---->
+              <!---->
+              <div role=\\"group\\" class=\\"form-group\\" id=\\"__BVID__128\\"><label for=\\"component-filter\\" class=\\"d-block\\" id=\\"__BVID__128__BV_label_\\">Component</label>
+                <div><select id=\\"component-filter\\" class=\\"custom-select custom-select-sm\\">
+                    <option value=\\"\\">Please select a component</option>
+                    <option value=\\"test-component-id-1\\">test-component-id-1</option>
+                    <option value=\\"test-component-id-2\\">test-component-id-2</option>
+                    <option value=\\"test-component-id-3\\">test-component-id-3</option>
+                  </select>
+                  <!---->
+                  <!---->
+                  <!---->
+                </div>
+              </div>
             </div>
             <!---->
             <!---->
@@ -781,148 +757,136 @@ exports[`TestResultsView when components is set to multiple components with mult
             <div class=\\"card-body\\">
               <!---->
               <!---->
-              <p class=\\"card-text\\">
-                <fieldset class=\\"form-group\\" id=\\"__BVID__174\\">
-                  <legend tabindex=\\"-1\\" class=\\"bv-no-focus-ring col-form-label pt-0\\" id=\\"__BVID__174__BV_label_\\">Test Outcomes</legend>
-                  <div>
-                    <div role=\\"group\\" tabindex=\\"-1\\" class=\\"bv-no-focus-ring\\" id=\\"__BVID__175\\">
-                      <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"testOutcome\\" class=\\"custom-control-input\\" value=\\"fail\\" id=\\"__BVID__175_BV_option_0\\"><label class=\\"custom-control-label\\" for=\\"__BVID__175_BV_option_0\\"><span>fail</span></label></div>
-                      <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"testOutcome\\" class=\\"custom-control-input\\" value=\\"not-applicable\\" id=\\"__BVID__175_BV_option_1\\"><label class=\\"custom-control-label\\" for=\\"__BVID__175_BV_option_1\\"><span>not-applicable</span></label></div>
-                    </div>
-                    <!---->
-                    <!---->
-                    <!---->
+              <fieldset class=\\"form-group\\" id=\\"__BVID__174\\">
+                <legend tabindex=\\"-1\\" class=\\"bv-no-focus-ring col-form-label pt-0\\" id=\\"__BVID__174__BV_label_\\">Test Outcomes</legend>
+                <div>
+                  <div role=\\"group\\" tabindex=\\"-1\\" class=\\"bv-no-focus-ring\\" id=\\"__BVID__175\\">
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"testOutcome\\" class=\\"custom-control-input\\" value=\\"fail\\" id=\\"__BVID__175_BV_option_0\\"><label class=\\"custom-control-label\\" for=\\"__BVID__175_BV_option_0\\"><span>fail</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"testOutcome\\" class=\\"custom-control-input\\" value=\\"not-applicable\\" id=\\"__BVID__175_BV_option_1\\"><label class=\\"custom-control-label\\" for=\\"__BVID__175_BV_option_1\\"><span>not-applicable</span></label></div>
                   </div>
-                </fieldset>
-              </p>
-            </div>
-            <!---->
-            <!---->
-          </div>
-          <div class=\\"card bg-secondary\\">
-            <!---->
-            <!---->
-            <div class=\\"card-body\\">
-              <!---->
-              <!---->
-              <p class=\\"card-text\\">
-                <fieldset class=\\"form-group\\" id=\\"__BVID__178\\">
-                  <legend tabindex=\\"-1\\" class=\\"bv-no-focus-ring col-form-label pt-0\\" id=\\"__BVID__178__BV_label_\\">Teams</legend>
-                  <div>
-                    <div role=\\"group\\" tabindex=\\"-1\\" class=\\"bv-no-focus-ring\\" id=\\"__BVID__179\\">
-                      <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"team\\" class=\\"custom-control-input\\" value=\\"test-team-id-1-1\\" id=\\"__BVID__179_BV_option_0\\"><label class=\\"custom-control-label\\" for=\\"__BVID__179_BV_option_0\\"><span>test-team-id-1-1</span></label></div>
-                      <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"team\\" class=\\"custom-control-input\\" value=\\"test-team-id-1-2\\" id=\\"__BVID__179_BV_option_1\\"><label class=\\"custom-control-label\\" for=\\"__BVID__179_BV_option_1\\"><span>test-team-id-1-2</span></label></div>
-                      <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"team\\" class=\\"custom-control-input\\" value=\\"test-team-id-2-1\\" id=\\"__BVID__179_BV_option_2\\"><label class=\\"custom-control-label\\" for=\\"__BVID__179_BV_option_2\\"><span>test-team-id-2-1</span></label></div>
-                      <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"team\\" class=\\"custom-control-input\\" value=\\"test-team-id-2-2\\" id=\\"__BVID__179_BV_option_3\\"><label class=\\"custom-control-label\\" for=\\"__BVID__179_BV_option_3\\"><span>test-team-id-2-2</span></label></div>
-                      <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"team\\" class=\\"custom-control-input\\" value=\\"test-team-id-3-1\\" id=\\"__BVID__179_BV_option_4\\"><label class=\\"custom-control-label\\" for=\\"__BVID__179_BV_option_4\\"><span>test-team-id-3-1</span></label></div>
-                      <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"team\\" class=\\"custom-control-input\\" value=\\"test-team-id-3-2\\" id=\\"__BVID__179_BV_option_5\\"><label class=\\"custom-control-label\\" for=\\"__BVID__179_BV_option_5\\"><span>test-team-id-3-2</span></label></div>
-                    </div>
-                    <!---->
-                    <!---->
-                    <!---->
-                  </div>
-                </fieldset>
-              </p>
-            </div>
-            <!---->
-            <!---->
-          </div>
-          <div class=\\"card bg-secondary\\">
-            <!---->
-            <!---->
-            <div class=\\"card-body\\">
-              <!---->
-              <!---->
-              <p class=\\"card-text\\">
-                <fieldset class=\\"form-group\\" id=\\"__BVID__186\\">
-                  <legend tabindex=\\"-1\\" class=\\"bv-no-focus-ring col-form-label pt-0\\" id=\\"__BVID__186__BV_label_\\">Tags</legend>
-                  <div>
-                    <div role=\\"group\\" tabindex=\\"-1\\" class=\\"bv-no-focus-ring\\" id=\\"__BVID__187\\">
-                      <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"tag\\" class=\\"custom-control-input\\" value=\\"test-tag-1-1\\" id=\\"__BVID__187_BV_option_0\\"><label class=\\"custom-control-label\\" for=\\"__BVID__187_BV_option_0\\"><span>test-tag-1-1</span></label></div>
-                      <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"tag\\" class=\\"custom-control-input\\" value=\\"test-tag-1-2\\" id=\\"__BVID__187_BV_option_1\\"><label class=\\"custom-control-label\\" for=\\"__BVID__187_BV_option_1\\"><span>test-tag-1-2</span></label></div>
-                      <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"tag\\" class=\\"custom-control-input\\" value=\\"test-tag-2-1\\" id=\\"__BVID__187_BV_option_2\\"><label class=\\"custom-control-label\\" for=\\"__BVID__187_BV_option_2\\"><span>test-tag-2-1</span></label></div>
-                      <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"tag\\" class=\\"custom-control-input\\" value=\\"test-tag-2-2\\" id=\\"__BVID__187_BV_option_3\\"><label class=\\"custom-control-label\\" for=\\"__BVID__187_BV_option_3\\"><span>test-tag-2-2</span></label></div>
-                      <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"tag\\" class=\\"custom-control-input\\" value=\\"test-tag-3-1\\" id=\\"__BVID__187_BV_option_4\\"><label class=\\"custom-control-label\\" for=\\"__BVID__187_BV_option_4\\"><span>test-tag-3-1</span></label></div>
-                      <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"tag\\" class=\\"custom-control-input\\" value=\\"test-tag-3-2\\" id=\\"__BVID__187_BV_option_5\\"><label class=\\"custom-control-label\\" for=\\"__BVID__187_BV_option_5\\"><span>test-tag-3-2</span></label></div>
-                    </div>
-                    <!---->
-                    <!---->
-                    <!---->
-                  </div>
-                </fieldset>
-              </p>
-            </div>
-            <!---->
-            <!---->
-          </div>
-          <div class=\\"card bg-secondary\\">
-            <!---->
-            <!---->
-            <div class=\\"card-body\\">
-              <!---->
-              <!---->
-              <p class=\\"card-text\\">
-                <fieldset class=\\"form-group\\" id=\\"__BVID__194\\">
-                  <legend tabindex=\\"-1\\" class=\\"bv-no-focus-ring col-form-label pt-0\\" id=\\"__BVID__194__BV_label_\\">Component Types</legend>
-                  <div>
-                    <div role=\\"group\\" tabindex=\\"-1\\" class=\\"bv-no-focus-ring\\" id=\\"__BVID__195\\">
-                      <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"componentTypeId\\" class=\\"custom-control-input\\" value=\\"test-component-type-id-1\\" id=\\"__BVID__195_BV_option_0\\"><label class=\\"custom-control-label\\" for=\\"__BVID__195_BV_option_0\\"><span>test-component-type-id-1</span></label></div>
-                      <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"componentTypeId\\" class=\\"custom-control-input\\" value=\\"test-component-type-id-2\\" id=\\"__BVID__195_BV_option_1\\"><label class=\\"custom-control-label\\" for=\\"__BVID__195_BV_option_1\\"><span>test-component-type-id-2</span></label></div>
-                      <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"componentTypeId\\" class=\\"custom-control-input\\" value=\\"test-component-type-id-3\\" id=\\"__BVID__195_BV_option_2\\"><label class=\\"custom-control-label\\" for=\\"__BVID__195_BV_option_2\\"><span>test-component-type-id-3</span></label></div>
-                    </div>
-                    <!---->
-                    <!---->
-                    <!---->
-                  </div>
-                </fieldset>
-              </p>
-            </div>
-            <!---->
-            <!---->
-          </div>
-          <div class=\\"card bg-secondary\\">
-            <!---->
-            <!---->
-            <div class=\\"card-body\\">
-              <!---->
-              <!---->
-              <p class=\\"card-text\\">
-                <fieldset class=\\"form-group\\" id=\\"__BVID__199\\">
-                  <legend tabindex=\\"-1\\" class=\\"bv-no-focus-ring col-form-label pt-0\\" id=\\"__BVID__199__BV_label_\\">Platforms</legend>
-                  <div>
-                    <div role=\\"group\\" tabindex=\\"-1\\" class=\\"bv-no-focus-ring\\" id=\\"__BVID__200\\">
-                      <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"platformId\\" class=\\"custom-control-input\\" value=\\"undefined\\" id=\\"__BVID__200_BV_option_0\\"><label class=\\"custom-control-label\\" for=\\"__BVID__200_BV_option_0\\"><span>undefined</span></label></div>
-                    </div>
-                    <!---->
-                    <!---->
-                    <!---->
-                  </div>
-                </fieldset>
-              </p>
-            </div>
-            <!---->
-            <!---->
-          </div>
-          <div class=\\"card bg-secondary\\">
-            <!---->
-            <!---->
-            <div class=\\"card-body\\">
-              <!---->
-              <!---->
-              <p class=\\"card-text\\">
-                <div role=\\"group\\" class=\\"form-group\\" id=\\"__BVID__202\\"><label for=\\"component-filter\\" class=\\"d-block\\" id=\\"__BVID__202__BV_label_\\">Component</label>
-                  <div><select id=\\"component-filter\\" class=\\"custom-select custom-select-sm\\">
-                      <option value=\\"\\">Please select a component</option>
-                      <option value=\\"test-component-id-1\\">test-component-id-1</option>
-                      <option value=\\"test-component-id-2\\">test-component-id-2</option>
-                      <option value=\\"test-component-id-3\\">test-component-id-3</option>
-                    </select>
-                    <!---->
-                    <!---->
-                    <!---->
-                  </div>
+                  <!---->
+                  <!---->
+                  <!---->
                 </div>
-              </p>
+              </fieldset>
+            </div>
+            <!---->
+            <!---->
+          </div>
+          <div class=\\"card bg-secondary\\">
+            <!---->
+            <!---->
+            <div class=\\"card-body\\">
+              <!---->
+              <!---->
+              <fieldset class=\\"form-group\\" id=\\"__BVID__178\\">
+                <legend tabindex=\\"-1\\" class=\\"bv-no-focus-ring col-form-label pt-0\\" id=\\"__BVID__178__BV_label_\\">Teams</legend>
+                <div>
+                  <div role=\\"group\\" tabindex=\\"-1\\" class=\\"bv-no-focus-ring\\" id=\\"__BVID__179\\">
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"team\\" class=\\"custom-control-input\\" value=\\"test-team-id-1-1\\" id=\\"__BVID__179_BV_option_0\\"><label class=\\"custom-control-label\\" for=\\"__BVID__179_BV_option_0\\"><span>test-team-id-1-1</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"team\\" class=\\"custom-control-input\\" value=\\"test-team-id-1-2\\" id=\\"__BVID__179_BV_option_1\\"><label class=\\"custom-control-label\\" for=\\"__BVID__179_BV_option_1\\"><span>test-team-id-1-2</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"team\\" class=\\"custom-control-input\\" value=\\"test-team-id-2-1\\" id=\\"__BVID__179_BV_option_2\\"><label class=\\"custom-control-label\\" for=\\"__BVID__179_BV_option_2\\"><span>test-team-id-2-1</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"team\\" class=\\"custom-control-input\\" value=\\"test-team-id-2-2\\" id=\\"__BVID__179_BV_option_3\\"><label class=\\"custom-control-label\\" for=\\"__BVID__179_BV_option_3\\"><span>test-team-id-2-2</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"team\\" class=\\"custom-control-input\\" value=\\"test-team-id-3-1\\" id=\\"__BVID__179_BV_option_4\\"><label class=\\"custom-control-label\\" for=\\"__BVID__179_BV_option_4\\"><span>test-team-id-3-1</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"team\\" class=\\"custom-control-input\\" value=\\"test-team-id-3-2\\" id=\\"__BVID__179_BV_option_5\\"><label class=\\"custom-control-label\\" for=\\"__BVID__179_BV_option_5\\"><span>test-team-id-3-2</span></label></div>
+                  </div>
+                  <!---->
+                  <!---->
+                  <!---->
+                </div>
+              </fieldset>
+            </div>
+            <!---->
+            <!---->
+          </div>
+          <div class=\\"card bg-secondary\\">
+            <!---->
+            <!---->
+            <div class=\\"card-body\\">
+              <!---->
+              <!---->
+              <fieldset class=\\"form-group\\" id=\\"__BVID__186\\">
+                <legend tabindex=\\"-1\\" class=\\"bv-no-focus-ring col-form-label pt-0\\" id=\\"__BVID__186__BV_label_\\">Tags</legend>
+                <div>
+                  <div role=\\"group\\" tabindex=\\"-1\\" class=\\"bv-no-focus-ring\\" id=\\"__BVID__187\\">
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"tag\\" class=\\"custom-control-input\\" value=\\"test-tag-1-1\\" id=\\"__BVID__187_BV_option_0\\"><label class=\\"custom-control-label\\" for=\\"__BVID__187_BV_option_0\\"><span>test-tag-1-1</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"tag\\" class=\\"custom-control-input\\" value=\\"test-tag-1-2\\" id=\\"__BVID__187_BV_option_1\\"><label class=\\"custom-control-label\\" for=\\"__BVID__187_BV_option_1\\"><span>test-tag-1-2</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"tag\\" class=\\"custom-control-input\\" value=\\"test-tag-2-1\\" id=\\"__BVID__187_BV_option_2\\"><label class=\\"custom-control-label\\" for=\\"__BVID__187_BV_option_2\\"><span>test-tag-2-1</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"tag\\" class=\\"custom-control-input\\" value=\\"test-tag-2-2\\" id=\\"__BVID__187_BV_option_3\\"><label class=\\"custom-control-label\\" for=\\"__BVID__187_BV_option_3\\"><span>test-tag-2-2</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"tag\\" class=\\"custom-control-input\\" value=\\"test-tag-3-1\\" id=\\"__BVID__187_BV_option_4\\"><label class=\\"custom-control-label\\" for=\\"__BVID__187_BV_option_4\\"><span>test-tag-3-1</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"tag\\" class=\\"custom-control-input\\" value=\\"test-tag-3-2\\" id=\\"__BVID__187_BV_option_5\\"><label class=\\"custom-control-label\\" for=\\"__BVID__187_BV_option_5\\"><span>test-tag-3-2</span></label></div>
+                  </div>
+                  <!---->
+                  <!---->
+                  <!---->
+                </div>
+              </fieldset>
+            </div>
+            <!---->
+            <!---->
+          </div>
+          <div class=\\"card bg-secondary\\">
+            <!---->
+            <!---->
+            <div class=\\"card-body\\">
+              <!---->
+              <!---->
+              <fieldset class=\\"form-group\\" id=\\"__BVID__194\\">
+                <legend tabindex=\\"-1\\" class=\\"bv-no-focus-ring col-form-label pt-0\\" id=\\"__BVID__194__BV_label_\\">Component Types</legend>
+                <div>
+                  <div role=\\"group\\" tabindex=\\"-1\\" class=\\"bv-no-focus-ring\\" id=\\"__BVID__195\\">
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"componentTypeId\\" class=\\"custom-control-input\\" value=\\"test-component-type-id-1\\" id=\\"__BVID__195_BV_option_0\\"><label class=\\"custom-control-label\\" for=\\"__BVID__195_BV_option_0\\"><span>test-component-type-id-1</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"componentTypeId\\" class=\\"custom-control-input\\" value=\\"test-component-type-id-2\\" id=\\"__BVID__195_BV_option_1\\"><label class=\\"custom-control-label\\" for=\\"__BVID__195_BV_option_1\\"><span>test-component-type-id-2</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"componentTypeId\\" class=\\"custom-control-input\\" value=\\"test-component-type-id-3\\" id=\\"__BVID__195_BV_option_2\\"><label class=\\"custom-control-label\\" for=\\"__BVID__195_BV_option_2\\"><span>test-component-type-id-3</span></label></div>
+                  </div>
+                  <!---->
+                  <!---->
+                  <!---->
+                </div>
+              </fieldset>
+            </div>
+            <!---->
+            <!---->
+          </div>
+          <div class=\\"card bg-secondary\\">
+            <!---->
+            <!---->
+            <div class=\\"card-body\\">
+              <!---->
+              <!---->
+              <fieldset class=\\"form-group\\" id=\\"__BVID__199\\">
+                <legend tabindex=\\"-1\\" class=\\"bv-no-focus-ring col-form-label pt-0\\" id=\\"__BVID__199__BV_label_\\">Platforms</legend>
+                <div>
+                  <div role=\\"group\\" tabindex=\\"-1\\" class=\\"bv-no-focus-ring\\" id=\\"__BVID__200\\">
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"platformId\\" class=\\"custom-control-input\\" value=\\"undefined\\" id=\\"__BVID__200_BV_option_0\\"><label class=\\"custom-control-label\\" for=\\"__BVID__200_BV_option_0\\"><span>undefined</span></label></div>
+                  </div>
+                  <!---->
+                  <!---->
+                  <!---->
+                </div>
+              </fieldset>
+            </div>
+            <!---->
+            <!---->
+          </div>
+          <div class=\\"card bg-secondary\\">
+            <!---->
+            <!---->
+            <div class=\\"card-body\\">
+              <!---->
+              <!---->
+              <div role=\\"group\\" class=\\"form-group\\" id=\\"__BVID__202\\"><label for=\\"component-filter\\" class=\\"d-block\\" id=\\"__BVID__202__BV_label_\\">Component</label>
+                <div><select id=\\"component-filter\\" class=\\"custom-select custom-select-sm\\">
+                    <option value=\\"\\">Please select a component</option>
+                    <option value=\\"test-component-id-1\\">test-component-id-1</option>
+                    <option value=\\"test-component-id-2\\">test-component-id-2</option>
+                    <option value=\\"test-component-id-3\\">test-component-id-3</option>
+                  </select>
+                  <!---->
+                  <!---->
+                  <!---->
+                </div>
+              </div>
             </div>
             <!---->
             <!---->
@@ -1155,148 +1119,136 @@ exports[`TestResultsView when components is set to multiple components with mult
             <div class=\\"card-body\\">
               <!---->
               <!---->
-              <p class=\\"card-text\\">
-                <fieldset class=\\"form-group\\" id=\\"__BVID__174\\">
-                  <legend tabindex=\\"-1\\" class=\\"bv-no-focus-ring col-form-label pt-0\\" id=\\"__BVID__174__BV_label_\\">Test Outcomes</legend>
-                  <div>
-                    <div role=\\"group\\" tabindex=\\"-1\\" class=\\"bv-no-focus-ring\\" id=\\"__BVID__175\\">
-                      <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"testOutcome\\" class=\\"custom-control-input\\" value=\\"fail\\" id=\\"__BVID__175_BV_option_0\\"><label class=\\"custom-control-label\\" for=\\"__BVID__175_BV_option_0\\"><span>fail</span></label></div>
-                      <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"testOutcome\\" class=\\"custom-control-input\\" value=\\"not-applicable\\" id=\\"__BVID__175_BV_option_1\\"><label class=\\"custom-control-label\\" for=\\"__BVID__175_BV_option_1\\"><span>not-applicable</span></label></div>
-                    </div>
-                    <!---->
-                    <!---->
-                    <!---->
+              <fieldset class=\\"form-group\\" id=\\"__BVID__174\\">
+                <legend tabindex=\\"-1\\" class=\\"bv-no-focus-ring col-form-label pt-0\\" id=\\"__BVID__174__BV_label_\\">Test Outcomes</legend>
+                <div>
+                  <div role=\\"group\\" tabindex=\\"-1\\" class=\\"bv-no-focus-ring\\" id=\\"__BVID__175\\">
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"testOutcome\\" class=\\"custom-control-input\\" value=\\"fail\\" id=\\"__BVID__175_BV_option_0\\"><label class=\\"custom-control-label\\" for=\\"__BVID__175_BV_option_0\\"><span>fail</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"testOutcome\\" class=\\"custom-control-input\\" value=\\"not-applicable\\" id=\\"__BVID__175_BV_option_1\\"><label class=\\"custom-control-label\\" for=\\"__BVID__175_BV_option_1\\"><span>not-applicable</span></label></div>
                   </div>
-                </fieldset>
-              </p>
-            </div>
-            <!---->
-            <!---->
-          </div>
-          <div class=\\"card bg-secondary\\">
-            <!---->
-            <!---->
-            <div class=\\"card-body\\">
-              <!---->
-              <!---->
-              <p class=\\"card-text\\">
-                <fieldset class=\\"form-group\\" id=\\"__BVID__178\\">
-                  <legend tabindex=\\"-1\\" class=\\"bv-no-focus-ring col-form-label pt-0\\" id=\\"__BVID__178__BV_label_\\">Teams</legend>
-                  <div>
-                    <div role=\\"group\\" tabindex=\\"-1\\" class=\\"bv-no-focus-ring\\" id=\\"__BVID__179\\">
-                      <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"team\\" class=\\"custom-control-input\\" value=\\"test-team-id-1-1\\" id=\\"__BVID__179_BV_option_0\\"><label class=\\"custom-control-label\\" for=\\"__BVID__179_BV_option_0\\"><span>test-team-id-1-1</span></label></div>
-                      <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"team\\" class=\\"custom-control-input\\" value=\\"test-team-id-1-2\\" id=\\"__BVID__179_BV_option_1\\"><label class=\\"custom-control-label\\" for=\\"__BVID__179_BV_option_1\\"><span>test-team-id-1-2</span></label></div>
-                      <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"team\\" class=\\"custom-control-input\\" value=\\"test-team-id-2-1\\" id=\\"__BVID__179_BV_option_2\\"><label class=\\"custom-control-label\\" for=\\"__BVID__179_BV_option_2\\"><span>test-team-id-2-1</span></label></div>
-                      <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"team\\" class=\\"custom-control-input\\" value=\\"test-team-id-2-2\\" id=\\"__BVID__179_BV_option_3\\"><label class=\\"custom-control-label\\" for=\\"__BVID__179_BV_option_3\\"><span>test-team-id-2-2</span></label></div>
-                      <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"team\\" class=\\"custom-control-input\\" value=\\"test-team-id-3-1\\" id=\\"__BVID__179_BV_option_4\\"><label class=\\"custom-control-label\\" for=\\"__BVID__179_BV_option_4\\"><span>test-team-id-3-1</span></label></div>
-                      <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"team\\" class=\\"custom-control-input\\" value=\\"test-team-id-3-2\\" id=\\"__BVID__179_BV_option_5\\"><label class=\\"custom-control-label\\" for=\\"__BVID__179_BV_option_5\\"><span>test-team-id-3-2</span></label></div>
-                    </div>
-                    <!---->
-                    <!---->
-                    <!---->
-                  </div>
-                </fieldset>
-              </p>
-            </div>
-            <!---->
-            <!---->
-          </div>
-          <div class=\\"card bg-secondary\\">
-            <!---->
-            <!---->
-            <div class=\\"card-body\\">
-              <!---->
-              <!---->
-              <p class=\\"card-text\\">
-                <fieldset class=\\"form-group\\" id=\\"__BVID__186\\">
-                  <legend tabindex=\\"-1\\" class=\\"bv-no-focus-ring col-form-label pt-0\\" id=\\"__BVID__186__BV_label_\\">Tags</legend>
-                  <div>
-                    <div role=\\"group\\" tabindex=\\"-1\\" class=\\"bv-no-focus-ring\\" id=\\"__BVID__187\\">
-                      <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"tag\\" class=\\"custom-control-input\\" value=\\"test-tag-1-1\\" id=\\"__BVID__187_BV_option_0\\"><label class=\\"custom-control-label\\" for=\\"__BVID__187_BV_option_0\\"><span>test-tag-1-1</span></label></div>
-                      <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"tag\\" class=\\"custom-control-input\\" value=\\"test-tag-1-2\\" id=\\"__BVID__187_BV_option_1\\"><label class=\\"custom-control-label\\" for=\\"__BVID__187_BV_option_1\\"><span>test-tag-1-2</span></label></div>
-                      <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"tag\\" class=\\"custom-control-input\\" value=\\"test-tag-2-1\\" id=\\"__BVID__187_BV_option_2\\"><label class=\\"custom-control-label\\" for=\\"__BVID__187_BV_option_2\\"><span>test-tag-2-1</span></label></div>
-                      <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"tag\\" class=\\"custom-control-input\\" value=\\"test-tag-2-2\\" id=\\"__BVID__187_BV_option_3\\"><label class=\\"custom-control-label\\" for=\\"__BVID__187_BV_option_3\\"><span>test-tag-2-2</span></label></div>
-                      <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"tag\\" class=\\"custom-control-input\\" value=\\"test-tag-3-1\\" id=\\"__BVID__187_BV_option_4\\"><label class=\\"custom-control-label\\" for=\\"__BVID__187_BV_option_4\\"><span>test-tag-3-1</span></label></div>
-                      <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"tag\\" class=\\"custom-control-input\\" value=\\"test-tag-3-2\\" id=\\"__BVID__187_BV_option_5\\"><label class=\\"custom-control-label\\" for=\\"__BVID__187_BV_option_5\\"><span>test-tag-3-2</span></label></div>
-                    </div>
-                    <!---->
-                    <!---->
-                    <!---->
-                  </div>
-                </fieldset>
-              </p>
-            </div>
-            <!---->
-            <!---->
-          </div>
-          <div class=\\"card bg-secondary\\">
-            <!---->
-            <!---->
-            <div class=\\"card-body\\">
-              <!---->
-              <!---->
-              <p class=\\"card-text\\">
-                <fieldset class=\\"form-group\\" id=\\"__BVID__194\\">
-                  <legend tabindex=\\"-1\\" class=\\"bv-no-focus-ring col-form-label pt-0\\" id=\\"__BVID__194__BV_label_\\">Component Types</legend>
-                  <div>
-                    <div role=\\"group\\" tabindex=\\"-1\\" class=\\"bv-no-focus-ring\\" id=\\"__BVID__195\\">
-                      <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"componentTypeId\\" class=\\"custom-control-input\\" value=\\"test-component-type-id-1\\" id=\\"__BVID__195_BV_option_0\\"><label class=\\"custom-control-label\\" for=\\"__BVID__195_BV_option_0\\"><span>test-component-type-id-1</span></label></div>
-                      <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"componentTypeId\\" class=\\"custom-control-input\\" value=\\"test-component-type-id-2\\" id=\\"__BVID__195_BV_option_1\\"><label class=\\"custom-control-label\\" for=\\"__BVID__195_BV_option_1\\"><span>test-component-type-id-2</span></label></div>
-                      <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"componentTypeId\\" class=\\"custom-control-input\\" value=\\"test-component-type-id-3\\" id=\\"__BVID__195_BV_option_2\\"><label class=\\"custom-control-label\\" for=\\"__BVID__195_BV_option_2\\"><span>test-component-type-id-3</span></label></div>
-                    </div>
-                    <!---->
-                    <!---->
-                    <!---->
-                  </div>
-                </fieldset>
-              </p>
-            </div>
-            <!---->
-            <!---->
-          </div>
-          <div class=\\"card bg-secondary\\">
-            <!---->
-            <!---->
-            <div class=\\"card-body\\">
-              <!---->
-              <!---->
-              <p class=\\"card-text\\">
-                <fieldset class=\\"form-group\\" id=\\"__BVID__199\\">
-                  <legend tabindex=\\"-1\\" class=\\"bv-no-focus-ring col-form-label pt-0\\" id=\\"__BVID__199__BV_label_\\">Platforms</legend>
-                  <div>
-                    <div role=\\"group\\" tabindex=\\"-1\\" class=\\"bv-no-focus-ring\\" id=\\"__BVID__200\\">
-                      <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"platformId\\" class=\\"custom-control-input\\" value=\\"undefined\\" id=\\"__BVID__200_BV_option_0\\"><label class=\\"custom-control-label\\" for=\\"__BVID__200_BV_option_0\\"><span>undefined</span></label></div>
-                    </div>
-                    <!---->
-                    <!---->
-                    <!---->
-                  </div>
-                </fieldset>
-              </p>
-            </div>
-            <!---->
-            <!---->
-          </div>
-          <div class=\\"card bg-secondary\\">
-            <!---->
-            <!---->
-            <div class=\\"card-body\\">
-              <!---->
-              <!---->
-              <p class=\\"card-text\\">
-                <div role=\\"group\\" class=\\"form-group\\" id=\\"__BVID__202\\"><label for=\\"component-filter\\" class=\\"d-block\\" id=\\"__BVID__202__BV_label_\\">Component</label>
-                  <div><select id=\\"component-filter\\" class=\\"custom-select custom-select-sm\\">
-                      <option value=\\"\\">Please select a component</option>
-                      <option value=\\"test-component-id-1\\">test-component-id-1</option>
-                      <option value=\\"test-component-id-2\\">test-component-id-2</option>
-                      <option value=\\"test-component-id-3\\">test-component-id-3</option>
-                    </select>
-                    <!---->
-                    <!---->
-                    <!---->
-                  </div>
+                  <!---->
+                  <!---->
+                  <!---->
                 </div>
-              </p>
+              </fieldset>
+            </div>
+            <!---->
+            <!---->
+          </div>
+          <div class=\\"card bg-secondary\\">
+            <!---->
+            <!---->
+            <div class=\\"card-body\\">
+              <!---->
+              <!---->
+              <fieldset class=\\"form-group\\" id=\\"__BVID__178\\">
+                <legend tabindex=\\"-1\\" class=\\"bv-no-focus-ring col-form-label pt-0\\" id=\\"__BVID__178__BV_label_\\">Teams</legend>
+                <div>
+                  <div role=\\"group\\" tabindex=\\"-1\\" class=\\"bv-no-focus-ring\\" id=\\"__BVID__179\\">
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"team\\" class=\\"custom-control-input\\" value=\\"test-team-id-1-1\\" id=\\"__BVID__179_BV_option_0\\"><label class=\\"custom-control-label\\" for=\\"__BVID__179_BV_option_0\\"><span>test-team-id-1-1</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"team\\" class=\\"custom-control-input\\" value=\\"test-team-id-1-2\\" id=\\"__BVID__179_BV_option_1\\"><label class=\\"custom-control-label\\" for=\\"__BVID__179_BV_option_1\\"><span>test-team-id-1-2</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"team\\" class=\\"custom-control-input\\" value=\\"test-team-id-2-1\\" id=\\"__BVID__179_BV_option_2\\"><label class=\\"custom-control-label\\" for=\\"__BVID__179_BV_option_2\\"><span>test-team-id-2-1</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"team\\" class=\\"custom-control-input\\" value=\\"test-team-id-2-2\\" id=\\"__BVID__179_BV_option_3\\"><label class=\\"custom-control-label\\" for=\\"__BVID__179_BV_option_3\\"><span>test-team-id-2-2</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"team\\" class=\\"custom-control-input\\" value=\\"test-team-id-3-1\\" id=\\"__BVID__179_BV_option_4\\"><label class=\\"custom-control-label\\" for=\\"__BVID__179_BV_option_4\\"><span>test-team-id-3-1</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"team\\" class=\\"custom-control-input\\" value=\\"test-team-id-3-2\\" id=\\"__BVID__179_BV_option_5\\"><label class=\\"custom-control-label\\" for=\\"__BVID__179_BV_option_5\\"><span>test-team-id-3-2</span></label></div>
+                  </div>
+                  <!---->
+                  <!---->
+                  <!---->
+                </div>
+              </fieldset>
+            </div>
+            <!---->
+            <!---->
+          </div>
+          <div class=\\"card bg-secondary\\">
+            <!---->
+            <!---->
+            <div class=\\"card-body\\">
+              <!---->
+              <!---->
+              <fieldset class=\\"form-group\\" id=\\"__BVID__186\\">
+                <legend tabindex=\\"-1\\" class=\\"bv-no-focus-ring col-form-label pt-0\\" id=\\"__BVID__186__BV_label_\\">Tags</legend>
+                <div>
+                  <div role=\\"group\\" tabindex=\\"-1\\" class=\\"bv-no-focus-ring\\" id=\\"__BVID__187\\">
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"tag\\" class=\\"custom-control-input\\" value=\\"test-tag-1-1\\" id=\\"__BVID__187_BV_option_0\\"><label class=\\"custom-control-label\\" for=\\"__BVID__187_BV_option_0\\"><span>test-tag-1-1</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"tag\\" class=\\"custom-control-input\\" value=\\"test-tag-1-2\\" id=\\"__BVID__187_BV_option_1\\"><label class=\\"custom-control-label\\" for=\\"__BVID__187_BV_option_1\\"><span>test-tag-1-2</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"tag\\" class=\\"custom-control-input\\" value=\\"test-tag-2-1\\" id=\\"__BVID__187_BV_option_2\\"><label class=\\"custom-control-label\\" for=\\"__BVID__187_BV_option_2\\"><span>test-tag-2-1</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"tag\\" class=\\"custom-control-input\\" value=\\"test-tag-2-2\\" id=\\"__BVID__187_BV_option_3\\"><label class=\\"custom-control-label\\" for=\\"__BVID__187_BV_option_3\\"><span>test-tag-2-2</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"tag\\" class=\\"custom-control-input\\" value=\\"test-tag-3-1\\" id=\\"__BVID__187_BV_option_4\\"><label class=\\"custom-control-label\\" for=\\"__BVID__187_BV_option_4\\"><span>test-tag-3-1</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"tag\\" class=\\"custom-control-input\\" value=\\"test-tag-3-2\\" id=\\"__BVID__187_BV_option_5\\"><label class=\\"custom-control-label\\" for=\\"__BVID__187_BV_option_5\\"><span>test-tag-3-2</span></label></div>
+                  </div>
+                  <!---->
+                  <!---->
+                  <!---->
+                </div>
+              </fieldset>
+            </div>
+            <!---->
+            <!---->
+          </div>
+          <div class=\\"card bg-secondary\\">
+            <!---->
+            <!---->
+            <div class=\\"card-body\\">
+              <!---->
+              <!---->
+              <fieldset class=\\"form-group\\" id=\\"__BVID__194\\">
+                <legend tabindex=\\"-1\\" class=\\"bv-no-focus-ring col-form-label pt-0\\" id=\\"__BVID__194__BV_label_\\">Component Types</legend>
+                <div>
+                  <div role=\\"group\\" tabindex=\\"-1\\" class=\\"bv-no-focus-ring\\" id=\\"__BVID__195\\">
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"componentTypeId\\" class=\\"custom-control-input\\" value=\\"test-component-type-id-1\\" id=\\"__BVID__195_BV_option_0\\"><label class=\\"custom-control-label\\" for=\\"__BVID__195_BV_option_0\\"><span>test-component-type-id-1</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"componentTypeId\\" class=\\"custom-control-input\\" value=\\"test-component-type-id-2\\" id=\\"__BVID__195_BV_option_1\\"><label class=\\"custom-control-label\\" for=\\"__BVID__195_BV_option_1\\"><span>test-component-type-id-2</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"componentTypeId\\" class=\\"custom-control-input\\" value=\\"test-component-type-id-3\\" id=\\"__BVID__195_BV_option_2\\"><label class=\\"custom-control-label\\" for=\\"__BVID__195_BV_option_2\\"><span>test-component-type-id-3</span></label></div>
+                  </div>
+                  <!---->
+                  <!---->
+                  <!---->
+                </div>
+              </fieldset>
+            </div>
+            <!---->
+            <!---->
+          </div>
+          <div class=\\"card bg-secondary\\">
+            <!---->
+            <!---->
+            <div class=\\"card-body\\">
+              <!---->
+              <!---->
+              <fieldset class=\\"form-group\\" id=\\"__BVID__199\\">
+                <legend tabindex=\\"-1\\" class=\\"bv-no-focus-ring col-form-label pt-0\\" id=\\"__BVID__199__BV_label_\\">Platforms</legend>
+                <div>
+                  <div role=\\"group\\" tabindex=\\"-1\\" class=\\"bv-no-focus-ring\\" id=\\"__BVID__200\\">
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"platformId\\" class=\\"custom-control-input\\" value=\\"undefined\\" id=\\"__BVID__200_BV_option_0\\"><label class=\\"custom-control-label\\" for=\\"__BVID__200_BV_option_0\\"><span>undefined</span></label></div>
+                  </div>
+                  <!---->
+                  <!---->
+                  <!---->
+                </div>
+              </fieldset>
+            </div>
+            <!---->
+            <!---->
+          </div>
+          <div class=\\"card bg-secondary\\">
+            <!---->
+            <!---->
+            <div class=\\"card-body\\">
+              <!---->
+              <!---->
+              <div role=\\"group\\" class=\\"form-group\\" id=\\"__BVID__202\\"><label for=\\"component-filter\\" class=\\"d-block\\" id=\\"__BVID__202__BV_label_\\">Component</label>
+                <div><select id=\\"component-filter\\" class=\\"custom-select custom-select-sm\\">
+                    <option value=\\"\\">Please select a component</option>
+                    <option value=\\"test-component-id-1\\">test-component-id-1</option>
+                    <option value=\\"test-component-id-2\\">test-component-id-2</option>
+                    <option value=\\"test-component-id-3\\">test-component-id-3</option>
+                  </select>
+                  <!---->
+                  <!---->
+                  <!---->
+                </div>
+              </div>
             </div>
             <!---->
             <!---->
@@ -1417,89 +1369,81 @@ exports[`TestResultsView when components prop is set a component with 1 fail tes
             <div class=\\"card-body\\">
               <!---->
               <!---->
-              <p class=\\"card-text\\">
-                <fieldset class=\\"form-group\\" id=\\"__BVID__31\\">
-                  <legend tabindex=\\"-1\\" class=\\"bv-no-focus-ring col-form-label pt-0\\" id=\\"__BVID__31__BV_label_\\">Test Outcomes</legend>
-                  <div>
-                    <div role=\\"group\\" tabindex=\\"-1\\" class=\\"bv-no-focus-ring\\" id=\\"__BVID__32\\">
-                      <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"testOutcome\\" class=\\"custom-control-input\\" value=\\"fail\\" id=\\"__BVID__32_BV_option_0\\"><label class=\\"custom-control-label\\" for=\\"__BVID__32_BV_option_0\\"><span>fail</span></label></div>
-                    </div>
-                    <!---->
-                    <!---->
-                    <!---->
+              <fieldset class=\\"form-group\\" id=\\"__BVID__31\\">
+                <legend tabindex=\\"-1\\" class=\\"bv-no-focus-ring col-form-label pt-0\\" id=\\"__BVID__31__BV_label_\\">Test Outcomes</legend>
+                <div>
+                  <div role=\\"group\\" tabindex=\\"-1\\" class=\\"bv-no-focus-ring\\" id=\\"__BVID__32\\">
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"testOutcome\\" class=\\"custom-control-input\\" value=\\"fail\\" id=\\"__BVID__32_BV_option_0\\"><label class=\\"custom-control-label\\" for=\\"__BVID__32_BV_option_0\\"><span>fail</span></label></div>
                   </div>
-                </fieldset>
-              </p>
-            </div>
-            <!---->
-            <!---->
-          </div>
-          <!---->
-          <!---->
-          <div class=\\"card bg-secondary\\">
-            <!---->
-            <!---->
-            <div class=\\"card-body\\">
-              <!---->
-              <!---->
-              <p class=\\"card-text\\">
-                <fieldset class=\\"form-group\\" id=\\"__BVID__34\\">
-                  <legend tabindex=\\"-1\\" class=\\"bv-no-focus-ring col-form-label pt-0\\" id=\\"__BVID__34__BV_label_\\">Component Types</legend>
-                  <div>
-                    <div role=\\"group\\" tabindex=\\"-1\\" class=\\"bv-no-focus-ring\\" id=\\"__BVID__35\\">
-                      <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"componentTypeId\\" class=\\"custom-control-input\\" value=\\"\\" id=\\"__BVID__35_BV_option_0\\"><label class=\\"custom-control-label\\" for=\\"__BVID__35_BV_option_0\\"><span>null</span></label></div>
-                    </div>
-                    <!---->
-                    <!---->
-                    <!---->
-                  </div>
-                </fieldset>
-              </p>
-            </div>
-            <!---->
-            <!---->
-          </div>
-          <div class=\\"card bg-secondary\\">
-            <!---->
-            <!---->
-            <div class=\\"card-body\\">
-              <!---->
-              <!---->
-              <p class=\\"card-text\\">
-                <fieldset class=\\"form-group\\" id=\\"__BVID__37\\">
-                  <legend tabindex=\\"-1\\" class=\\"bv-no-focus-ring col-form-label pt-0\\" id=\\"__BVID__37__BV_label_\\">Platforms</legend>
-                  <div>
-                    <div role=\\"group\\" tabindex=\\"-1\\" class=\\"bv-no-focus-ring\\" id=\\"__BVID__38\\">
-                      <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"platformId\\" class=\\"custom-control-input\\" value=\\"undefined\\" id=\\"__BVID__38_BV_option_0\\"><label class=\\"custom-control-label\\" for=\\"__BVID__38_BV_option_0\\"><span>undefined</span></label></div>
-                    </div>
-                    <!---->
-                    <!---->
-                    <!---->
-                  </div>
-                </fieldset>
-              </p>
-            </div>
-            <!---->
-            <!---->
-          </div>
-          <div class=\\"card bg-secondary\\">
-            <!---->
-            <!---->
-            <div class=\\"card-body\\">
-              <!---->
-              <!---->
-              <p class=\\"card-text\\">
-                <div role=\\"group\\" class=\\"form-group\\" id=\\"__BVID__40\\"><label for=\\"component-filter\\" class=\\"d-block\\" id=\\"__BVID__40__BV_label_\\">Component</label>
-                  <div><select id=\\"component-filter\\" class=\\"custom-select custom-select-sm\\">
-                      <option value=\\"\\">Please select a component</option>
-                      <option value=\\"test-component-id-1\\">test-component-id-1</option>
-                    </select>
-                    <!---->
-                    <!---->
-                    <!---->
-                  </div>
+                  <!---->
+                  <!---->
+                  <!---->
                 </div>
-              </p>
+              </fieldset>
+            </div>
+            <!---->
+            <!---->
+          </div>
+          <!---->
+          <!---->
+          <div class=\\"card bg-secondary\\">
+            <!---->
+            <!---->
+            <div class=\\"card-body\\">
+              <!---->
+              <!---->
+              <fieldset class=\\"form-group\\" id=\\"__BVID__34\\">
+                <legend tabindex=\\"-1\\" class=\\"bv-no-focus-ring col-form-label pt-0\\" id=\\"__BVID__34__BV_label_\\">Component Types</legend>
+                <div>
+                  <div role=\\"group\\" tabindex=\\"-1\\" class=\\"bv-no-focus-ring\\" id=\\"__BVID__35\\">
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"componentTypeId\\" class=\\"custom-control-input\\" value=\\"\\" id=\\"__BVID__35_BV_option_0\\"><label class=\\"custom-control-label\\" for=\\"__BVID__35_BV_option_0\\"><span>null</span></label></div>
+                  </div>
+                  <!---->
+                  <!---->
+                  <!---->
+                </div>
+              </fieldset>
+            </div>
+            <!---->
+            <!---->
+          </div>
+          <div class=\\"card bg-secondary\\">
+            <!---->
+            <!---->
+            <div class=\\"card-body\\">
+              <!---->
+              <!---->
+              <fieldset class=\\"form-group\\" id=\\"__BVID__37\\">
+                <legend tabindex=\\"-1\\" class=\\"bv-no-focus-ring col-form-label pt-0\\" id=\\"__BVID__37__BV_label_\\">Platforms</legend>
+                <div>
+                  <div role=\\"group\\" tabindex=\\"-1\\" class=\\"bv-no-focus-ring\\" id=\\"__BVID__38\\">
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"platformId\\" class=\\"custom-control-input\\" value=\\"undefined\\" id=\\"__BVID__38_BV_option_0\\"><label class=\\"custom-control-label\\" for=\\"__BVID__38_BV_option_0\\"><span>undefined</span></label></div>
+                  </div>
+                  <!---->
+                  <!---->
+                  <!---->
+                </div>
+              </fieldset>
+            </div>
+            <!---->
+            <!---->
+          </div>
+          <div class=\\"card bg-secondary\\">
+            <!---->
+            <!---->
+            <div class=\\"card-body\\">
+              <!---->
+              <!---->
+              <div role=\\"group\\" class=\\"form-group\\" id=\\"__BVID__40\\"><label for=\\"component-filter\\" class=\\"d-block\\" id=\\"__BVID__40__BV_label_\\">Component</label>
+                <div><select id=\\"component-filter\\" class=\\"custom-select custom-select-sm\\">
+                    <option value=\\"\\">Please select a component</option>
+                    <option value=\\"test-component-id-1\\">test-component-id-1</option>
+                  </select>
+                  <!---->
+                  <!---->
+                  <!---->
+                </div>
+              </div>
             </div>
             <!---->
             <!---->
@@ -1584,89 +1528,81 @@ exports[`TestResultsView when components prop is set a component with 1 not-appl
             <div class=\\"card-body\\">
               <!---->
               <!---->
-              <p class=\\"card-text\\">
-                <fieldset class=\\"form-group\\" id=\\"__BVID__77\\">
-                  <legend tabindex=\\"-1\\" class=\\"bv-no-focus-ring col-form-label pt-0\\" id=\\"__BVID__77__BV_label_\\">Test Outcomes</legend>
-                  <div>
-                    <div role=\\"group\\" tabindex=\\"-1\\" class=\\"bv-no-focus-ring\\" id=\\"__BVID__78\\">
-                      <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"testOutcome\\" class=\\"custom-control-input\\" value=\\"not-applicable\\" id=\\"__BVID__78_BV_option_0\\"><label class=\\"custom-control-label\\" for=\\"__BVID__78_BV_option_0\\"><span>not-applicable</span></label></div>
-                    </div>
-                    <!---->
-                    <!---->
-                    <!---->
+              <fieldset class=\\"form-group\\" id=\\"__BVID__77\\">
+                <legend tabindex=\\"-1\\" class=\\"bv-no-focus-ring col-form-label pt-0\\" id=\\"__BVID__77__BV_label_\\">Test Outcomes</legend>
+                <div>
+                  <div role=\\"group\\" tabindex=\\"-1\\" class=\\"bv-no-focus-ring\\" id=\\"__BVID__78\\">
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"testOutcome\\" class=\\"custom-control-input\\" value=\\"not-applicable\\" id=\\"__BVID__78_BV_option_0\\"><label class=\\"custom-control-label\\" for=\\"__BVID__78_BV_option_0\\"><span>not-applicable</span></label></div>
                   </div>
-                </fieldset>
-              </p>
-            </div>
-            <!---->
-            <!---->
-          </div>
-          <!---->
-          <!---->
-          <div class=\\"card bg-secondary\\">
-            <!---->
-            <!---->
-            <div class=\\"card-body\\">
-              <!---->
-              <!---->
-              <p class=\\"card-text\\">
-                <fieldset class=\\"form-group\\" id=\\"__BVID__80\\">
-                  <legend tabindex=\\"-1\\" class=\\"bv-no-focus-ring col-form-label pt-0\\" id=\\"__BVID__80__BV_label_\\">Component Types</legend>
-                  <div>
-                    <div role=\\"group\\" tabindex=\\"-1\\" class=\\"bv-no-focus-ring\\" id=\\"__BVID__81\\">
-                      <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"componentTypeId\\" class=\\"custom-control-input\\" value=\\"\\" id=\\"__BVID__81_BV_option_0\\"><label class=\\"custom-control-label\\" for=\\"__BVID__81_BV_option_0\\"><span>null</span></label></div>
-                    </div>
-                    <!---->
-                    <!---->
-                    <!---->
-                  </div>
-                </fieldset>
-              </p>
-            </div>
-            <!---->
-            <!---->
-          </div>
-          <div class=\\"card bg-secondary\\">
-            <!---->
-            <!---->
-            <div class=\\"card-body\\">
-              <!---->
-              <!---->
-              <p class=\\"card-text\\">
-                <fieldset class=\\"form-group\\" id=\\"__BVID__83\\">
-                  <legend tabindex=\\"-1\\" class=\\"bv-no-focus-ring col-form-label pt-0\\" id=\\"__BVID__83__BV_label_\\">Platforms</legend>
-                  <div>
-                    <div role=\\"group\\" tabindex=\\"-1\\" class=\\"bv-no-focus-ring\\" id=\\"__BVID__84\\">
-                      <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"platformId\\" class=\\"custom-control-input\\" value=\\"undefined\\" id=\\"__BVID__84_BV_option_0\\"><label class=\\"custom-control-label\\" for=\\"__BVID__84_BV_option_0\\"><span>undefined</span></label></div>
-                    </div>
-                    <!---->
-                    <!---->
-                    <!---->
-                  </div>
-                </fieldset>
-              </p>
-            </div>
-            <!---->
-            <!---->
-          </div>
-          <div class=\\"card bg-secondary\\">
-            <!---->
-            <!---->
-            <div class=\\"card-body\\">
-              <!---->
-              <!---->
-              <p class=\\"card-text\\">
-                <div role=\\"group\\" class=\\"form-group\\" id=\\"__BVID__86\\"><label for=\\"component-filter\\" class=\\"d-block\\" id=\\"__BVID__86__BV_label_\\">Component</label>
-                  <div><select id=\\"component-filter\\" class=\\"custom-select custom-select-sm\\">
-                      <option value=\\"\\">Please select a component</option>
-                      <option value=\\"test-component-id-1\\">test-component-id-1</option>
-                    </select>
-                    <!---->
-                    <!---->
-                    <!---->
-                  </div>
+                  <!---->
+                  <!---->
+                  <!---->
                 </div>
-              </p>
+              </fieldset>
+            </div>
+            <!---->
+            <!---->
+          </div>
+          <!---->
+          <!---->
+          <div class=\\"card bg-secondary\\">
+            <!---->
+            <!---->
+            <div class=\\"card-body\\">
+              <!---->
+              <!---->
+              <fieldset class=\\"form-group\\" id=\\"__BVID__80\\">
+                <legend tabindex=\\"-1\\" class=\\"bv-no-focus-ring col-form-label pt-0\\" id=\\"__BVID__80__BV_label_\\">Component Types</legend>
+                <div>
+                  <div role=\\"group\\" tabindex=\\"-1\\" class=\\"bv-no-focus-ring\\" id=\\"__BVID__81\\">
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"componentTypeId\\" class=\\"custom-control-input\\" value=\\"\\" id=\\"__BVID__81_BV_option_0\\"><label class=\\"custom-control-label\\" for=\\"__BVID__81_BV_option_0\\"><span>null</span></label></div>
+                  </div>
+                  <!---->
+                  <!---->
+                  <!---->
+                </div>
+              </fieldset>
+            </div>
+            <!---->
+            <!---->
+          </div>
+          <div class=\\"card bg-secondary\\">
+            <!---->
+            <!---->
+            <div class=\\"card-body\\">
+              <!---->
+              <!---->
+              <fieldset class=\\"form-group\\" id=\\"__BVID__83\\">
+                <legend tabindex=\\"-1\\" class=\\"bv-no-focus-ring col-form-label pt-0\\" id=\\"__BVID__83__BV_label_\\">Platforms</legend>
+                <div>
+                  <div role=\\"group\\" tabindex=\\"-1\\" class=\\"bv-no-focus-ring\\" id=\\"__BVID__84\\">
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"platformId\\" class=\\"custom-control-input\\" value=\\"undefined\\" id=\\"__BVID__84_BV_option_0\\"><label class=\\"custom-control-label\\" for=\\"__BVID__84_BV_option_0\\"><span>undefined</span></label></div>
+                  </div>
+                  <!---->
+                  <!---->
+                  <!---->
+                </div>
+              </fieldset>
+            </div>
+            <!---->
+            <!---->
+          </div>
+          <div class=\\"card bg-secondary\\">
+            <!---->
+            <!---->
+            <div class=\\"card-body\\">
+              <!---->
+              <!---->
+              <div role=\\"group\\" class=\\"form-group\\" id=\\"__BVID__86\\"><label for=\\"component-filter\\" class=\\"d-block\\" id=\\"__BVID__86__BV_label_\\">Component</label>
+                <div><select id=\\"component-filter\\" class=\\"custom-select custom-select-sm\\">
+                    <option value=\\"\\">Please select a component</option>
+                    <option value=\\"test-component-id-1\\">test-component-id-1</option>
+                  </select>
+                  <!---->
+                  <!---->
+                  <!---->
+                </div>
+              </div>
             </div>
             <!---->
             <!---->
@@ -1751,89 +1687,81 @@ exports[`TestResultsView when components prop is set a component with 1 pass tes
             <div class=\\"card-body\\">
               <!---->
               <!---->
-              <p class=\\"card-text\\">
-                <fieldset class=\\"form-group\\" id=\\"__BVID__54\\">
-                  <legend tabindex=\\"-1\\" class=\\"bv-no-focus-ring col-form-label pt-0\\" id=\\"__BVID__54__BV_label_\\">Test Outcomes</legend>
-                  <div>
-                    <div role=\\"group\\" tabindex=\\"-1\\" class=\\"bv-no-focus-ring\\" id=\\"__BVID__55\\">
-                      <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"testOutcome\\" class=\\"custom-control-input\\" value=\\"pass\\" id=\\"__BVID__55_BV_option_0\\"><label class=\\"custom-control-label\\" for=\\"__BVID__55_BV_option_0\\"><span>pass</span></label></div>
-                    </div>
-                    <!---->
-                    <!---->
-                    <!---->
+              <fieldset class=\\"form-group\\" id=\\"__BVID__54\\">
+                <legend tabindex=\\"-1\\" class=\\"bv-no-focus-ring col-form-label pt-0\\" id=\\"__BVID__54__BV_label_\\">Test Outcomes</legend>
+                <div>
+                  <div role=\\"group\\" tabindex=\\"-1\\" class=\\"bv-no-focus-ring\\" id=\\"__BVID__55\\">
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"testOutcome\\" class=\\"custom-control-input\\" value=\\"pass\\" id=\\"__BVID__55_BV_option_0\\"><label class=\\"custom-control-label\\" for=\\"__BVID__55_BV_option_0\\"><span>pass</span></label></div>
                   </div>
-                </fieldset>
-              </p>
-            </div>
-            <!---->
-            <!---->
-          </div>
-          <!---->
-          <!---->
-          <div class=\\"card bg-secondary\\">
-            <!---->
-            <!---->
-            <div class=\\"card-body\\">
-              <!---->
-              <!---->
-              <p class=\\"card-text\\">
-                <fieldset class=\\"form-group\\" id=\\"__BVID__57\\">
-                  <legend tabindex=\\"-1\\" class=\\"bv-no-focus-ring col-form-label pt-0\\" id=\\"__BVID__57__BV_label_\\">Component Types</legend>
-                  <div>
-                    <div role=\\"group\\" tabindex=\\"-1\\" class=\\"bv-no-focus-ring\\" id=\\"__BVID__58\\">
-                      <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"componentTypeId\\" class=\\"custom-control-input\\" value=\\"\\" id=\\"__BVID__58_BV_option_0\\"><label class=\\"custom-control-label\\" for=\\"__BVID__58_BV_option_0\\"><span>null</span></label></div>
-                    </div>
-                    <!---->
-                    <!---->
-                    <!---->
-                  </div>
-                </fieldset>
-              </p>
-            </div>
-            <!---->
-            <!---->
-          </div>
-          <div class=\\"card bg-secondary\\">
-            <!---->
-            <!---->
-            <div class=\\"card-body\\">
-              <!---->
-              <!---->
-              <p class=\\"card-text\\">
-                <fieldset class=\\"form-group\\" id=\\"__BVID__60\\">
-                  <legend tabindex=\\"-1\\" class=\\"bv-no-focus-ring col-form-label pt-0\\" id=\\"__BVID__60__BV_label_\\">Platforms</legend>
-                  <div>
-                    <div role=\\"group\\" tabindex=\\"-1\\" class=\\"bv-no-focus-ring\\" id=\\"__BVID__61\\">
-                      <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"platformId\\" class=\\"custom-control-input\\" value=\\"undefined\\" id=\\"__BVID__61_BV_option_0\\"><label class=\\"custom-control-label\\" for=\\"__BVID__61_BV_option_0\\"><span>undefined</span></label></div>
-                    </div>
-                    <!---->
-                    <!---->
-                    <!---->
-                  </div>
-                </fieldset>
-              </p>
-            </div>
-            <!---->
-            <!---->
-          </div>
-          <div class=\\"card bg-secondary\\">
-            <!---->
-            <!---->
-            <div class=\\"card-body\\">
-              <!---->
-              <!---->
-              <p class=\\"card-text\\">
-                <div role=\\"group\\" class=\\"form-group\\" id=\\"__BVID__63\\"><label for=\\"component-filter\\" class=\\"d-block\\" id=\\"__BVID__63__BV_label_\\">Component</label>
-                  <div><select id=\\"component-filter\\" class=\\"custom-select custom-select-sm\\">
-                      <option value=\\"\\">Please select a component</option>
-                      <option value=\\"test-component-id-1\\">test-component-id-1</option>
-                    </select>
-                    <!---->
-                    <!---->
-                    <!---->
-                  </div>
+                  <!---->
+                  <!---->
+                  <!---->
                 </div>
-              </p>
+              </fieldset>
+            </div>
+            <!---->
+            <!---->
+          </div>
+          <!---->
+          <!---->
+          <div class=\\"card bg-secondary\\">
+            <!---->
+            <!---->
+            <div class=\\"card-body\\">
+              <!---->
+              <!---->
+              <fieldset class=\\"form-group\\" id=\\"__BVID__57\\">
+                <legend tabindex=\\"-1\\" class=\\"bv-no-focus-ring col-form-label pt-0\\" id=\\"__BVID__57__BV_label_\\">Component Types</legend>
+                <div>
+                  <div role=\\"group\\" tabindex=\\"-1\\" class=\\"bv-no-focus-ring\\" id=\\"__BVID__58\\">
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"componentTypeId\\" class=\\"custom-control-input\\" value=\\"\\" id=\\"__BVID__58_BV_option_0\\"><label class=\\"custom-control-label\\" for=\\"__BVID__58_BV_option_0\\"><span>null</span></label></div>
+                  </div>
+                  <!---->
+                  <!---->
+                  <!---->
+                </div>
+              </fieldset>
+            </div>
+            <!---->
+            <!---->
+          </div>
+          <div class=\\"card bg-secondary\\">
+            <!---->
+            <!---->
+            <div class=\\"card-body\\">
+              <!---->
+              <!---->
+              <fieldset class=\\"form-group\\" id=\\"__BVID__60\\">
+                <legend tabindex=\\"-1\\" class=\\"bv-no-focus-ring col-form-label pt-0\\" id=\\"__BVID__60__BV_label_\\">Platforms</legend>
+                <div>
+                  <div role=\\"group\\" tabindex=\\"-1\\" class=\\"bv-no-focus-ring\\" id=\\"__BVID__61\\">
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"platformId\\" class=\\"custom-control-input\\" value=\\"undefined\\" id=\\"__BVID__61_BV_option_0\\"><label class=\\"custom-control-label\\" for=\\"__BVID__61_BV_option_0\\"><span>undefined</span></label></div>
+                  </div>
+                  <!---->
+                  <!---->
+                  <!---->
+                </div>
+              </fieldset>
+            </div>
+            <!---->
+            <!---->
+          </div>
+          <div class=\\"card bg-secondary\\">
+            <!---->
+            <!---->
+            <div class=\\"card-body\\">
+              <!---->
+              <!---->
+              <div role=\\"group\\" class=\\"form-group\\" id=\\"__BVID__63\\"><label for=\\"component-filter\\" class=\\"d-block\\" id=\\"__BVID__63__BV_label_\\">Component</label>
+                <div><select id=\\"component-filter\\" class=\\"custom-select custom-select-sm\\">
+                    <option value=\\"\\">Please select a component</option>
+                    <option value=\\"test-component-id-1\\">test-component-id-1</option>
+                  </select>
+                  <!---->
+                  <!---->
+                  <!---->
+                </div>
+              </div>
             </div>
             <!---->
             <!---->
@@ -1918,65 +1846,59 @@ exports[`TestResultsView when components prop is set components with no test res
             <div class=\\"card-body\\">
               <!---->
               <!---->
-              <p class=\\"card-text\\">
-                <fieldset class=\\"form-group\\" id=\\"__BVID__15\\">
-                  <legend tabindex=\\"-1\\" class=\\"bv-no-focus-ring col-form-label pt-0\\" id=\\"__BVID__15__BV_label_\\">Component Types</legend>
-                  <div>
-                    <div role=\\"group\\" tabindex=\\"-1\\" class=\\"bv-no-focus-ring\\" id=\\"__BVID__16\\">
-                      <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"componentTypeId\\" class=\\"custom-control-input\\" value=\\"\\" id=\\"__BVID__16_BV_option_0\\"><label class=\\"custom-control-label\\" for=\\"__BVID__16_BV_option_0\\"><span>null</span></label></div>
-                    </div>
-                    <!---->
-                    <!---->
-                    <!---->
+              <fieldset class=\\"form-group\\" id=\\"__BVID__15\\">
+                <legend tabindex=\\"-1\\" class=\\"bv-no-focus-ring col-form-label pt-0\\" id=\\"__BVID__15__BV_label_\\">Component Types</legend>
+                <div>
+                  <div role=\\"group\\" tabindex=\\"-1\\" class=\\"bv-no-focus-ring\\" id=\\"__BVID__16\\">
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"componentTypeId\\" class=\\"custom-control-input\\" value=\\"\\" id=\\"__BVID__16_BV_option_0\\"><label class=\\"custom-control-label\\" for=\\"__BVID__16_BV_option_0\\"><span>null</span></label></div>
                   </div>
-                </fieldset>
-              </p>
-            </div>
-            <!---->
-            <!---->
-          </div>
-          <div class=\\"card bg-secondary\\">
-            <!---->
-            <!---->
-            <div class=\\"card-body\\">
-              <!---->
-              <!---->
-              <p class=\\"card-text\\">
-                <fieldset class=\\"form-group\\" id=\\"__BVID__18\\">
-                  <legend tabindex=\\"-1\\" class=\\"bv-no-focus-ring col-form-label pt-0\\" id=\\"__BVID__18__BV_label_\\">Platforms</legend>
-                  <div>
-                    <div role=\\"group\\" tabindex=\\"-1\\" class=\\"bv-no-focus-ring\\" id=\\"__BVID__19\\">
-                      <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"platformId\\" class=\\"custom-control-input\\" value=\\"undefined\\" id=\\"__BVID__19_BV_option_0\\"><label class=\\"custom-control-label\\" for=\\"__BVID__19_BV_option_0\\"><span>undefined</span></label></div>
-                    </div>
-                    <!---->
-                    <!---->
-                    <!---->
-                  </div>
-                </fieldset>
-              </p>
-            </div>
-            <!---->
-            <!---->
-          </div>
-          <div class=\\"card bg-secondary\\">
-            <!---->
-            <!---->
-            <div class=\\"card-body\\">
-              <!---->
-              <!---->
-              <p class=\\"card-text\\">
-                <div role=\\"group\\" class=\\"form-group\\" id=\\"__BVID__21\\"><label for=\\"component-filter\\" class=\\"d-block\\" id=\\"__BVID__21__BV_label_\\">Component</label>
-                  <div><select id=\\"component-filter\\" class=\\"custom-select custom-select-sm\\">
-                      <option value=\\"\\">Please select a component</option>
-                      <option value=\\"test-component-id-1\\">test-component-id-1</option>
-                      <option value=\\"test-component-id-2\\">test-component-id-2</option>
-                    </select>
-                    <!---->
-                    <!---->
-                    <!---->
-                  </div>
+                  <!---->
+                  <!---->
+                  <!---->
                 </div>
-              </p>
+              </fieldset>
+            </div>
+            <!---->
+            <!---->
+          </div>
+          <div class=\\"card bg-secondary\\">
+            <!---->
+            <!---->
+            <div class=\\"card-body\\">
+              <!---->
+              <!---->
+              <fieldset class=\\"form-group\\" id=\\"__BVID__18\\">
+                <legend tabindex=\\"-1\\" class=\\"bv-no-focus-ring col-form-label pt-0\\" id=\\"__BVID__18__BV_label_\\">Platforms</legend>
+                <div>
+                  <div role=\\"group\\" tabindex=\\"-1\\" class=\\"bv-no-focus-ring\\" id=\\"__BVID__19\\">
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"platformId\\" class=\\"custom-control-input\\" value=\\"undefined\\" id=\\"__BVID__19_BV_option_0\\"><label class=\\"custom-control-label\\" for=\\"__BVID__19_BV_option_0\\"><span>undefined</span></label></div>
+                  </div>
+                  <!---->
+                  <!---->
+                  <!---->
+                </div>
+              </fieldset>
+            </div>
+            <!---->
+            <!---->
+          </div>
+          <div class=\\"card bg-secondary\\">
+            <!---->
+            <!---->
+            <div class=\\"card-body\\">
+              <!---->
+              <!---->
+              <div role=\\"group\\" class=\\"form-group\\" id=\\"__BVID__21\\"><label for=\\"component-filter\\" class=\\"d-block\\" id=\\"__BVID__21__BV_label_\\">Component</label>
+                <div><select id=\\"component-filter\\" class=\\"custom-select custom-select-sm\\">
+                    <option value=\\"\\">Please select a component</option>
+                    <option value=\\"test-component-id-1\\">test-component-id-1</option>
+                    <option value=\\"test-component-id-2\\">test-component-id-2</option>
+                  </select>
+                  <!---->
+                  <!---->
+                  <!---->
+                </div>
+              </div>
             </div>
             <!---->
             <!---->
@@ -2063,148 +1985,136 @@ exports[`TestResultsView when teamId prop is set renders the test hrefs pointing
             <div class=\\"card-body\\">
               <!---->
               <!---->
-              <p class=\\"card-text\\">
-                <fieldset class=\\"form-group\\" id=\\"__BVID__372\\">
-                  <legend tabindex=\\"-1\\" class=\\"bv-no-focus-ring col-form-label pt-0\\" id=\\"__BVID__372__BV_label_\\">Test Outcomes</legend>
-                  <div>
-                    <div role=\\"group\\" tabindex=\\"-1\\" class=\\"bv-no-focus-ring\\" id=\\"__BVID__373\\">
-                      <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"testOutcome\\" class=\\"custom-control-input\\" value=\\"fail\\" id=\\"__BVID__373_BV_option_0\\"><label class=\\"custom-control-label\\" for=\\"__BVID__373_BV_option_0\\"><span>fail</span></label></div>
-                      <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"testOutcome\\" class=\\"custom-control-input\\" value=\\"not-applicable\\" id=\\"__BVID__373_BV_option_1\\"><label class=\\"custom-control-label\\" for=\\"__BVID__373_BV_option_1\\"><span>not-applicable</span></label></div>
-                    </div>
-                    <!---->
-                    <!---->
-                    <!---->
+              <fieldset class=\\"form-group\\" id=\\"__BVID__372\\">
+                <legend tabindex=\\"-1\\" class=\\"bv-no-focus-ring col-form-label pt-0\\" id=\\"__BVID__372__BV_label_\\">Test Outcomes</legend>
+                <div>
+                  <div role=\\"group\\" tabindex=\\"-1\\" class=\\"bv-no-focus-ring\\" id=\\"__BVID__373\\">
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"testOutcome\\" class=\\"custom-control-input\\" value=\\"fail\\" id=\\"__BVID__373_BV_option_0\\"><label class=\\"custom-control-label\\" for=\\"__BVID__373_BV_option_0\\"><span>fail</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"testOutcome\\" class=\\"custom-control-input\\" value=\\"not-applicable\\" id=\\"__BVID__373_BV_option_1\\"><label class=\\"custom-control-label\\" for=\\"__BVID__373_BV_option_1\\"><span>not-applicable</span></label></div>
                   </div>
-                </fieldset>
-              </p>
-            </div>
-            <!---->
-            <!---->
-          </div>
-          <div class=\\"card bg-secondary\\">
-            <!---->
-            <!---->
-            <div class=\\"card-body\\">
-              <!---->
-              <!---->
-              <p class=\\"card-text\\">
-                <fieldset class=\\"form-group\\" id=\\"__BVID__376\\">
-                  <legend tabindex=\\"-1\\" class=\\"bv-no-focus-ring col-form-label pt-0\\" id=\\"__BVID__376__BV_label_\\">Teams</legend>
-                  <div>
-                    <div role=\\"group\\" tabindex=\\"-1\\" class=\\"bv-no-focus-ring\\" id=\\"__BVID__377\\">
-                      <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"team\\" class=\\"custom-control-input\\" value=\\"test-team-id-1-1\\" id=\\"__BVID__377_BV_option_0\\"><label class=\\"custom-control-label\\" for=\\"__BVID__377_BV_option_0\\"><span>test-team-id-1-1</span></label></div>
-                      <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"team\\" class=\\"custom-control-input\\" value=\\"test-team-id-1-2\\" id=\\"__BVID__377_BV_option_1\\"><label class=\\"custom-control-label\\" for=\\"__BVID__377_BV_option_1\\"><span>test-team-id-1-2</span></label></div>
-                      <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"team\\" class=\\"custom-control-input\\" value=\\"test-team-id-2-1\\" id=\\"__BVID__377_BV_option_2\\"><label class=\\"custom-control-label\\" for=\\"__BVID__377_BV_option_2\\"><span>test-team-id-2-1</span></label></div>
-                      <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"team\\" class=\\"custom-control-input\\" value=\\"test-team-id-2-2\\" id=\\"__BVID__377_BV_option_3\\"><label class=\\"custom-control-label\\" for=\\"__BVID__377_BV_option_3\\"><span>test-team-id-2-2</span></label></div>
-                      <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"team\\" class=\\"custom-control-input\\" value=\\"test-team-id-3-1\\" id=\\"__BVID__377_BV_option_4\\"><label class=\\"custom-control-label\\" for=\\"__BVID__377_BV_option_4\\"><span>test-team-id-3-1</span></label></div>
-                      <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"team\\" class=\\"custom-control-input\\" value=\\"test-team-id-3-2\\" id=\\"__BVID__377_BV_option_5\\"><label class=\\"custom-control-label\\" for=\\"__BVID__377_BV_option_5\\"><span>test-team-id-3-2</span></label></div>
-                    </div>
-                    <!---->
-                    <!---->
-                    <!---->
-                  </div>
-                </fieldset>
-              </p>
-            </div>
-            <!---->
-            <!---->
-          </div>
-          <div class=\\"card bg-secondary\\">
-            <!---->
-            <!---->
-            <div class=\\"card-body\\">
-              <!---->
-              <!---->
-              <p class=\\"card-text\\">
-                <fieldset class=\\"form-group\\" id=\\"__BVID__384\\">
-                  <legend tabindex=\\"-1\\" class=\\"bv-no-focus-ring col-form-label pt-0\\" id=\\"__BVID__384__BV_label_\\">Tags</legend>
-                  <div>
-                    <div role=\\"group\\" tabindex=\\"-1\\" class=\\"bv-no-focus-ring\\" id=\\"__BVID__385\\">
-                      <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"tag\\" class=\\"custom-control-input\\" value=\\"test-tag-1-1\\" id=\\"__BVID__385_BV_option_0\\"><label class=\\"custom-control-label\\" for=\\"__BVID__385_BV_option_0\\"><span>test-tag-1-1</span></label></div>
-                      <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"tag\\" class=\\"custom-control-input\\" value=\\"test-tag-1-2\\" id=\\"__BVID__385_BV_option_1\\"><label class=\\"custom-control-label\\" for=\\"__BVID__385_BV_option_1\\"><span>test-tag-1-2</span></label></div>
-                      <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"tag\\" class=\\"custom-control-input\\" value=\\"test-tag-2-1\\" id=\\"__BVID__385_BV_option_2\\"><label class=\\"custom-control-label\\" for=\\"__BVID__385_BV_option_2\\"><span>test-tag-2-1</span></label></div>
-                      <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"tag\\" class=\\"custom-control-input\\" value=\\"test-tag-2-2\\" id=\\"__BVID__385_BV_option_3\\"><label class=\\"custom-control-label\\" for=\\"__BVID__385_BV_option_3\\"><span>test-tag-2-2</span></label></div>
-                      <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"tag\\" class=\\"custom-control-input\\" value=\\"test-tag-3-1\\" id=\\"__BVID__385_BV_option_4\\"><label class=\\"custom-control-label\\" for=\\"__BVID__385_BV_option_4\\"><span>test-tag-3-1</span></label></div>
-                      <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"tag\\" class=\\"custom-control-input\\" value=\\"test-tag-3-2\\" id=\\"__BVID__385_BV_option_5\\"><label class=\\"custom-control-label\\" for=\\"__BVID__385_BV_option_5\\"><span>test-tag-3-2</span></label></div>
-                    </div>
-                    <!---->
-                    <!---->
-                    <!---->
-                  </div>
-                </fieldset>
-              </p>
-            </div>
-            <!---->
-            <!---->
-          </div>
-          <div class=\\"card bg-secondary\\">
-            <!---->
-            <!---->
-            <div class=\\"card-body\\">
-              <!---->
-              <!---->
-              <p class=\\"card-text\\">
-                <fieldset class=\\"form-group\\" id=\\"__BVID__392\\">
-                  <legend tabindex=\\"-1\\" class=\\"bv-no-focus-ring col-form-label pt-0\\" id=\\"__BVID__392__BV_label_\\">Component Types</legend>
-                  <div>
-                    <div role=\\"group\\" tabindex=\\"-1\\" class=\\"bv-no-focus-ring\\" id=\\"__BVID__393\\">
-                      <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"componentTypeId\\" class=\\"custom-control-input\\" value=\\"test-component-type-id-1\\" id=\\"__BVID__393_BV_option_0\\"><label class=\\"custom-control-label\\" for=\\"__BVID__393_BV_option_0\\"><span>test-component-type-id-1</span></label></div>
-                      <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"componentTypeId\\" class=\\"custom-control-input\\" value=\\"test-component-type-id-2\\" id=\\"__BVID__393_BV_option_1\\"><label class=\\"custom-control-label\\" for=\\"__BVID__393_BV_option_1\\"><span>test-component-type-id-2</span></label></div>
-                      <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"componentTypeId\\" class=\\"custom-control-input\\" value=\\"test-component-type-id-3\\" id=\\"__BVID__393_BV_option_2\\"><label class=\\"custom-control-label\\" for=\\"__BVID__393_BV_option_2\\"><span>test-component-type-id-3</span></label></div>
-                    </div>
-                    <!---->
-                    <!---->
-                    <!---->
-                  </div>
-                </fieldset>
-              </p>
-            </div>
-            <!---->
-            <!---->
-          </div>
-          <div class=\\"card bg-secondary\\">
-            <!---->
-            <!---->
-            <div class=\\"card-body\\">
-              <!---->
-              <!---->
-              <p class=\\"card-text\\">
-                <fieldset class=\\"form-group\\" id=\\"__BVID__397\\">
-                  <legend tabindex=\\"-1\\" class=\\"bv-no-focus-ring col-form-label pt-0\\" id=\\"__BVID__397__BV_label_\\">Platforms</legend>
-                  <div>
-                    <div role=\\"group\\" tabindex=\\"-1\\" class=\\"bv-no-focus-ring\\" id=\\"__BVID__398\\">
-                      <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"platformId\\" class=\\"custom-control-input\\" value=\\"undefined\\" id=\\"__BVID__398_BV_option_0\\"><label class=\\"custom-control-label\\" for=\\"__BVID__398_BV_option_0\\"><span>undefined</span></label></div>
-                    </div>
-                    <!---->
-                    <!---->
-                    <!---->
-                  </div>
-                </fieldset>
-              </p>
-            </div>
-            <!---->
-            <!---->
-          </div>
-          <div class=\\"card bg-secondary\\">
-            <!---->
-            <!---->
-            <div class=\\"card-body\\">
-              <!---->
-              <!---->
-              <p class=\\"card-text\\">
-                <div role=\\"group\\" class=\\"form-group\\" id=\\"__BVID__400\\"><label for=\\"component-filter\\" class=\\"d-block\\" id=\\"__BVID__400__BV_label_\\">Component</label>
-                  <div><select id=\\"component-filter\\" class=\\"custom-select custom-select-sm\\">
-                      <option value=\\"\\">Please select a component</option>
-                      <option value=\\"test-component-id-1\\">test-component-id-1</option>
-                      <option value=\\"test-component-id-2\\">test-component-id-2</option>
-                      <option value=\\"test-component-id-3\\">test-component-id-3</option>
-                    </select>
-                    <!---->
-                    <!---->
-                    <!---->
-                  </div>
+                  <!---->
+                  <!---->
+                  <!---->
                 </div>
-              </p>
+              </fieldset>
+            </div>
+            <!---->
+            <!---->
+          </div>
+          <div class=\\"card bg-secondary\\">
+            <!---->
+            <!---->
+            <div class=\\"card-body\\">
+              <!---->
+              <!---->
+              <fieldset class=\\"form-group\\" id=\\"__BVID__376\\">
+                <legend tabindex=\\"-1\\" class=\\"bv-no-focus-ring col-form-label pt-0\\" id=\\"__BVID__376__BV_label_\\">Teams</legend>
+                <div>
+                  <div role=\\"group\\" tabindex=\\"-1\\" class=\\"bv-no-focus-ring\\" id=\\"__BVID__377\\">
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"team\\" class=\\"custom-control-input\\" value=\\"test-team-id-1-1\\" id=\\"__BVID__377_BV_option_0\\"><label class=\\"custom-control-label\\" for=\\"__BVID__377_BV_option_0\\"><span>test-team-id-1-1</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"team\\" class=\\"custom-control-input\\" value=\\"test-team-id-1-2\\" id=\\"__BVID__377_BV_option_1\\"><label class=\\"custom-control-label\\" for=\\"__BVID__377_BV_option_1\\"><span>test-team-id-1-2</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"team\\" class=\\"custom-control-input\\" value=\\"test-team-id-2-1\\" id=\\"__BVID__377_BV_option_2\\"><label class=\\"custom-control-label\\" for=\\"__BVID__377_BV_option_2\\"><span>test-team-id-2-1</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"team\\" class=\\"custom-control-input\\" value=\\"test-team-id-2-2\\" id=\\"__BVID__377_BV_option_3\\"><label class=\\"custom-control-label\\" for=\\"__BVID__377_BV_option_3\\"><span>test-team-id-2-2</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"team\\" class=\\"custom-control-input\\" value=\\"test-team-id-3-1\\" id=\\"__BVID__377_BV_option_4\\"><label class=\\"custom-control-label\\" for=\\"__BVID__377_BV_option_4\\"><span>test-team-id-3-1</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"team\\" class=\\"custom-control-input\\" value=\\"test-team-id-3-2\\" id=\\"__BVID__377_BV_option_5\\"><label class=\\"custom-control-label\\" for=\\"__BVID__377_BV_option_5\\"><span>test-team-id-3-2</span></label></div>
+                  </div>
+                  <!---->
+                  <!---->
+                  <!---->
+                </div>
+              </fieldset>
+            </div>
+            <!---->
+            <!---->
+          </div>
+          <div class=\\"card bg-secondary\\">
+            <!---->
+            <!---->
+            <div class=\\"card-body\\">
+              <!---->
+              <!---->
+              <fieldset class=\\"form-group\\" id=\\"__BVID__384\\">
+                <legend tabindex=\\"-1\\" class=\\"bv-no-focus-ring col-form-label pt-0\\" id=\\"__BVID__384__BV_label_\\">Tags</legend>
+                <div>
+                  <div role=\\"group\\" tabindex=\\"-1\\" class=\\"bv-no-focus-ring\\" id=\\"__BVID__385\\">
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"tag\\" class=\\"custom-control-input\\" value=\\"test-tag-1-1\\" id=\\"__BVID__385_BV_option_0\\"><label class=\\"custom-control-label\\" for=\\"__BVID__385_BV_option_0\\"><span>test-tag-1-1</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"tag\\" class=\\"custom-control-input\\" value=\\"test-tag-1-2\\" id=\\"__BVID__385_BV_option_1\\"><label class=\\"custom-control-label\\" for=\\"__BVID__385_BV_option_1\\"><span>test-tag-1-2</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"tag\\" class=\\"custom-control-input\\" value=\\"test-tag-2-1\\" id=\\"__BVID__385_BV_option_2\\"><label class=\\"custom-control-label\\" for=\\"__BVID__385_BV_option_2\\"><span>test-tag-2-1</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"tag\\" class=\\"custom-control-input\\" value=\\"test-tag-2-2\\" id=\\"__BVID__385_BV_option_3\\"><label class=\\"custom-control-label\\" for=\\"__BVID__385_BV_option_3\\"><span>test-tag-2-2</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"tag\\" class=\\"custom-control-input\\" value=\\"test-tag-3-1\\" id=\\"__BVID__385_BV_option_4\\"><label class=\\"custom-control-label\\" for=\\"__BVID__385_BV_option_4\\"><span>test-tag-3-1</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"tag\\" class=\\"custom-control-input\\" value=\\"test-tag-3-2\\" id=\\"__BVID__385_BV_option_5\\"><label class=\\"custom-control-label\\" for=\\"__BVID__385_BV_option_5\\"><span>test-tag-3-2</span></label></div>
+                  </div>
+                  <!---->
+                  <!---->
+                  <!---->
+                </div>
+              </fieldset>
+            </div>
+            <!---->
+            <!---->
+          </div>
+          <div class=\\"card bg-secondary\\">
+            <!---->
+            <!---->
+            <div class=\\"card-body\\">
+              <!---->
+              <!---->
+              <fieldset class=\\"form-group\\" id=\\"__BVID__392\\">
+                <legend tabindex=\\"-1\\" class=\\"bv-no-focus-ring col-form-label pt-0\\" id=\\"__BVID__392__BV_label_\\">Component Types</legend>
+                <div>
+                  <div role=\\"group\\" tabindex=\\"-1\\" class=\\"bv-no-focus-ring\\" id=\\"__BVID__393\\">
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"componentTypeId\\" class=\\"custom-control-input\\" value=\\"test-component-type-id-1\\" id=\\"__BVID__393_BV_option_0\\"><label class=\\"custom-control-label\\" for=\\"__BVID__393_BV_option_0\\"><span>test-component-type-id-1</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"componentTypeId\\" class=\\"custom-control-input\\" value=\\"test-component-type-id-2\\" id=\\"__BVID__393_BV_option_1\\"><label class=\\"custom-control-label\\" for=\\"__BVID__393_BV_option_1\\"><span>test-component-type-id-2</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"componentTypeId\\" class=\\"custom-control-input\\" value=\\"test-component-type-id-3\\" id=\\"__BVID__393_BV_option_2\\"><label class=\\"custom-control-label\\" for=\\"__BVID__393_BV_option_2\\"><span>test-component-type-id-3</span></label></div>
+                  </div>
+                  <!---->
+                  <!---->
+                  <!---->
+                </div>
+              </fieldset>
+            </div>
+            <!---->
+            <!---->
+          </div>
+          <div class=\\"card bg-secondary\\">
+            <!---->
+            <!---->
+            <div class=\\"card-body\\">
+              <!---->
+              <!---->
+              <fieldset class=\\"form-group\\" id=\\"__BVID__397\\">
+                <legend tabindex=\\"-1\\" class=\\"bv-no-focus-ring col-form-label pt-0\\" id=\\"__BVID__397__BV_label_\\">Platforms</legend>
+                <div>
+                  <div role=\\"group\\" tabindex=\\"-1\\" class=\\"bv-no-focus-ring\\" id=\\"__BVID__398\\">
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"platformId\\" class=\\"custom-control-input\\" value=\\"undefined\\" id=\\"__BVID__398_BV_option_0\\"><label class=\\"custom-control-label\\" for=\\"__BVID__398_BV_option_0\\"><span>undefined</span></label></div>
+                  </div>
+                  <!---->
+                  <!---->
+                  <!---->
+                </div>
+              </fieldset>
+            </div>
+            <!---->
+            <!---->
+          </div>
+          <div class=\\"card bg-secondary\\">
+            <!---->
+            <!---->
+            <div class=\\"card-body\\">
+              <!---->
+              <!---->
+              <div role=\\"group\\" class=\\"form-group\\" id=\\"__BVID__400\\"><label for=\\"component-filter\\" class=\\"d-block\\" id=\\"__BVID__400__BV_label_\\">Component</label>
+                <div><select id=\\"component-filter\\" class=\\"custom-select custom-select-sm\\">
+                    <option value=\\"\\">Please select a component</option>
+                    <option value=\\"test-component-id-1\\">test-component-id-1</option>
+                    <option value=\\"test-component-id-2\\">test-component-id-2</option>
+                    <option value=\\"test-component-id-3\\">test-component-id-3</option>
+                  </select>
+                  <!---->
+                  <!---->
+                  <!---->
+                </div>
+              </div>
             </div>
             <!---->
             <!---->
@@ -2437,148 +2347,136 @@ exports[`TestResultsView when testId prop is set renders only the test results t
             <div class=\\"card-body\\">
               <!---->
               <!---->
-              <p class=\\"card-text\\">
-                <fieldset class=\\"form-group\\" id=\\"__BVID__248\\">
-                  <legend tabindex=\\"-1\\" class=\\"bv-no-focus-ring col-form-label pt-0\\" id=\\"__BVID__248__BV_label_\\">Test Outcomes</legend>
-                  <div>
-                    <div role=\\"group\\" tabindex=\\"-1\\" class=\\"bv-no-focus-ring\\" id=\\"__BVID__249\\">
-                      <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"testOutcome\\" class=\\"custom-control-input\\" value=\\"fail\\" id=\\"__BVID__249_BV_option_0\\"><label class=\\"custom-control-label\\" for=\\"__BVID__249_BV_option_0\\"><span>fail</span></label></div>
-                      <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"testOutcome\\" class=\\"custom-control-input\\" value=\\"pass\\" id=\\"__BVID__249_BV_option_1\\"><label class=\\"custom-control-label\\" for=\\"__BVID__249_BV_option_1\\"><span>pass</span></label></div>
-                    </div>
-                    <!---->
-                    <!---->
-                    <!---->
+              <fieldset class=\\"form-group\\" id=\\"__BVID__248\\">
+                <legend tabindex=\\"-1\\" class=\\"bv-no-focus-ring col-form-label pt-0\\" id=\\"__BVID__248__BV_label_\\">Test Outcomes</legend>
+                <div>
+                  <div role=\\"group\\" tabindex=\\"-1\\" class=\\"bv-no-focus-ring\\" id=\\"__BVID__249\\">
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"testOutcome\\" class=\\"custom-control-input\\" value=\\"fail\\" id=\\"__BVID__249_BV_option_0\\"><label class=\\"custom-control-label\\" for=\\"__BVID__249_BV_option_0\\"><span>fail</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"testOutcome\\" class=\\"custom-control-input\\" value=\\"pass\\" id=\\"__BVID__249_BV_option_1\\"><label class=\\"custom-control-label\\" for=\\"__BVID__249_BV_option_1\\"><span>pass</span></label></div>
                   </div>
-                </fieldset>
-              </p>
-            </div>
-            <!---->
-            <!---->
-          </div>
-          <div class=\\"card bg-secondary\\">
-            <!---->
-            <!---->
-            <div class=\\"card-body\\">
-              <!---->
-              <!---->
-              <p class=\\"card-text\\">
-                <fieldset class=\\"form-group\\" id=\\"__BVID__252\\">
-                  <legend tabindex=\\"-1\\" class=\\"bv-no-focus-ring col-form-label pt-0\\" id=\\"__BVID__252__BV_label_\\">Teams</legend>
-                  <div>
-                    <div role=\\"group\\" tabindex=\\"-1\\" class=\\"bv-no-focus-ring\\" id=\\"__BVID__253\\">
-                      <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"team\\" class=\\"custom-control-input\\" value=\\"test-team-id-1-1\\" id=\\"__BVID__253_BV_option_0\\"><label class=\\"custom-control-label\\" for=\\"__BVID__253_BV_option_0\\"><span>test-team-id-1-1</span></label></div>
-                      <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"team\\" class=\\"custom-control-input\\" value=\\"test-team-id-1-2\\" id=\\"__BVID__253_BV_option_1\\"><label class=\\"custom-control-label\\" for=\\"__BVID__253_BV_option_1\\"><span>test-team-id-1-2</span></label></div>
-                      <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"team\\" class=\\"custom-control-input\\" value=\\"test-team-id-2-1\\" id=\\"__BVID__253_BV_option_2\\"><label class=\\"custom-control-label\\" for=\\"__BVID__253_BV_option_2\\"><span>test-team-id-2-1</span></label></div>
-                      <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"team\\" class=\\"custom-control-input\\" value=\\"test-team-id-2-2\\" id=\\"__BVID__253_BV_option_3\\"><label class=\\"custom-control-label\\" for=\\"__BVID__253_BV_option_3\\"><span>test-team-id-2-2</span></label></div>
-                      <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"team\\" class=\\"custom-control-input\\" value=\\"test-team-id-3-1\\" id=\\"__BVID__253_BV_option_4\\"><label class=\\"custom-control-label\\" for=\\"__BVID__253_BV_option_4\\"><span>test-team-id-3-1</span></label></div>
-                      <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"team\\" class=\\"custom-control-input\\" value=\\"test-team-id-3-2\\" id=\\"__BVID__253_BV_option_5\\"><label class=\\"custom-control-label\\" for=\\"__BVID__253_BV_option_5\\"><span>test-team-id-3-2</span></label></div>
-                    </div>
-                    <!---->
-                    <!---->
-                    <!---->
-                  </div>
-                </fieldset>
-              </p>
-            </div>
-            <!---->
-            <!---->
-          </div>
-          <div class=\\"card bg-secondary\\">
-            <!---->
-            <!---->
-            <div class=\\"card-body\\">
-              <!---->
-              <!---->
-              <p class=\\"card-text\\">
-                <fieldset class=\\"form-group\\" id=\\"__BVID__260\\">
-                  <legend tabindex=\\"-1\\" class=\\"bv-no-focus-ring col-form-label pt-0\\" id=\\"__BVID__260__BV_label_\\">Tags</legend>
-                  <div>
-                    <div role=\\"group\\" tabindex=\\"-1\\" class=\\"bv-no-focus-ring\\" id=\\"__BVID__261\\">
-                      <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"tag\\" class=\\"custom-control-input\\" value=\\"test-tag-1-1\\" id=\\"__BVID__261_BV_option_0\\"><label class=\\"custom-control-label\\" for=\\"__BVID__261_BV_option_0\\"><span>test-tag-1-1</span></label></div>
-                      <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"tag\\" class=\\"custom-control-input\\" value=\\"test-tag-1-2\\" id=\\"__BVID__261_BV_option_1\\"><label class=\\"custom-control-label\\" for=\\"__BVID__261_BV_option_1\\"><span>test-tag-1-2</span></label></div>
-                      <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"tag\\" class=\\"custom-control-input\\" value=\\"test-tag-2-1\\" id=\\"__BVID__261_BV_option_2\\"><label class=\\"custom-control-label\\" for=\\"__BVID__261_BV_option_2\\"><span>test-tag-2-1</span></label></div>
-                      <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"tag\\" class=\\"custom-control-input\\" value=\\"test-tag-2-2\\" id=\\"__BVID__261_BV_option_3\\"><label class=\\"custom-control-label\\" for=\\"__BVID__261_BV_option_3\\"><span>test-tag-2-2</span></label></div>
-                      <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"tag\\" class=\\"custom-control-input\\" value=\\"test-tag-3-1\\" id=\\"__BVID__261_BV_option_4\\"><label class=\\"custom-control-label\\" for=\\"__BVID__261_BV_option_4\\"><span>test-tag-3-1</span></label></div>
-                      <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"tag\\" class=\\"custom-control-input\\" value=\\"test-tag-3-2\\" id=\\"__BVID__261_BV_option_5\\"><label class=\\"custom-control-label\\" for=\\"__BVID__261_BV_option_5\\"><span>test-tag-3-2</span></label></div>
-                    </div>
-                    <!---->
-                    <!---->
-                    <!---->
-                  </div>
-                </fieldset>
-              </p>
-            </div>
-            <!---->
-            <!---->
-          </div>
-          <div class=\\"card bg-secondary\\">
-            <!---->
-            <!---->
-            <div class=\\"card-body\\">
-              <!---->
-              <!---->
-              <p class=\\"card-text\\">
-                <fieldset class=\\"form-group\\" id=\\"__BVID__268\\">
-                  <legend tabindex=\\"-1\\" class=\\"bv-no-focus-ring col-form-label pt-0\\" id=\\"__BVID__268__BV_label_\\">Component Types</legend>
-                  <div>
-                    <div role=\\"group\\" tabindex=\\"-1\\" class=\\"bv-no-focus-ring\\" id=\\"__BVID__269\\">
-                      <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"componentTypeId\\" class=\\"custom-control-input\\" value=\\"test-component-type-id-1\\" id=\\"__BVID__269_BV_option_0\\"><label class=\\"custom-control-label\\" for=\\"__BVID__269_BV_option_0\\"><span>test-component-type-id-1</span></label></div>
-                      <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"componentTypeId\\" class=\\"custom-control-input\\" value=\\"test-component-type-id-2\\" id=\\"__BVID__269_BV_option_1\\"><label class=\\"custom-control-label\\" for=\\"__BVID__269_BV_option_1\\"><span>test-component-type-id-2</span></label></div>
-                      <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"componentTypeId\\" class=\\"custom-control-input\\" value=\\"test-component-type-id-3\\" id=\\"__BVID__269_BV_option_2\\"><label class=\\"custom-control-label\\" for=\\"__BVID__269_BV_option_2\\"><span>test-component-type-id-3</span></label></div>
-                    </div>
-                    <!---->
-                    <!---->
-                    <!---->
-                  </div>
-                </fieldset>
-              </p>
-            </div>
-            <!---->
-            <!---->
-          </div>
-          <div class=\\"card bg-secondary\\">
-            <!---->
-            <!---->
-            <div class=\\"card-body\\">
-              <!---->
-              <!---->
-              <p class=\\"card-text\\">
-                <fieldset class=\\"form-group\\" id=\\"__BVID__273\\">
-                  <legend tabindex=\\"-1\\" class=\\"bv-no-focus-ring col-form-label pt-0\\" id=\\"__BVID__273__BV_label_\\">Platforms</legend>
-                  <div>
-                    <div role=\\"group\\" tabindex=\\"-1\\" class=\\"bv-no-focus-ring\\" id=\\"__BVID__274\\">
-                      <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"platformId\\" class=\\"custom-control-input\\" value=\\"undefined\\" id=\\"__BVID__274_BV_option_0\\"><label class=\\"custom-control-label\\" for=\\"__BVID__274_BV_option_0\\"><span>undefined</span></label></div>
-                    </div>
-                    <!---->
-                    <!---->
-                    <!---->
-                  </div>
-                </fieldset>
-              </p>
-            </div>
-            <!---->
-            <!---->
-          </div>
-          <div class=\\"card bg-secondary\\">
-            <!---->
-            <!---->
-            <div class=\\"card-body\\">
-              <!---->
-              <!---->
-              <p class=\\"card-text\\">
-                <div role=\\"group\\" class=\\"form-group\\" id=\\"__BVID__276\\"><label for=\\"component-filter\\" class=\\"d-block\\" id=\\"__BVID__276__BV_label_\\">Component</label>
-                  <div><select id=\\"component-filter\\" class=\\"custom-select custom-select-sm\\">
-                      <option value=\\"\\">Please select a component</option>
-                      <option value=\\"test-component-id-1\\">test-component-id-1</option>
-                      <option value=\\"test-component-id-2\\">test-component-id-2</option>
-                      <option value=\\"test-component-id-3\\">test-component-id-3</option>
-                    </select>
-                    <!---->
-                    <!---->
-                    <!---->
-                  </div>
+                  <!---->
+                  <!---->
+                  <!---->
                 </div>
-              </p>
+              </fieldset>
+            </div>
+            <!---->
+            <!---->
+          </div>
+          <div class=\\"card bg-secondary\\">
+            <!---->
+            <!---->
+            <div class=\\"card-body\\">
+              <!---->
+              <!---->
+              <fieldset class=\\"form-group\\" id=\\"__BVID__252\\">
+                <legend tabindex=\\"-1\\" class=\\"bv-no-focus-ring col-form-label pt-0\\" id=\\"__BVID__252__BV_label_\\">Teams</legend>
+                <div>
+                  <div role=\\"group\\" tabindex=\\"-1\\" class=\\"bv-no-focus-ring\\" id=\\"__BVID__253\\">
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"team\\" class=\\"custom-control-input\\" value=\\"test-team-id-1-1\\" id=\\"__BVID__253_BV_option_0\\"><label class=\\"custom-control-label\\" for=\\"__BVID__253_BV_option_0\\"><span>test-team-id-1-1</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"team\\" class=\\"custom-control-input\\" value=\\"test-team-id-1-2\\" id=\\"__BVID__253_BV_option_1\\"><label class=\\"custom-control-label\\" for=\\"__BVID__253_BV_option_1\\"><span>test-team-id-1-2</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"team\\" class=\\"custom-control-input\\" value=\\"test-team-id-2-1\\" id=\\"__BVID__253_BV_option_2\\"><label class=\\"custom-control-label\\" for=\\"__BVID__253_BV_option_2\\"><span>test-team-id-2-1</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"team\\" class=\\"custom-control-input\\" value=\\"test-team-id-2-2\\" id=\\"__BVID__253_BV_option_3\\"><label class=\\"custom-control-label\\" for=\\"__BVID__253_BV_option_3\\"><span>test-team-id-2-2</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"team\\" class=\\"custom-control-input\\" value=\\"test-team-id-3-1\\" id=\\"__BVID__253_BV_option_4\\"><label class=\\"custom-control-label\\" for=\\"__BVID__253_BV_option_4\\"><span>test-team-id-3-1</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"team\\" class=\\"custom-control-input\\" value=\\"test-team-id-3-2\\" id=\\"__BVID__253_BV_option_5\\"><label class=\\"custom-control-label\\" for=\\"__BVID__253_BV_option_5\\"><span>test-team-id-3-2</span></label></div>
+                  </div>
+                  <!---->
+                  <!---->
+                  <!---->
+                </div>
+              </fieldset>
+            </div>
+            <!---->
+            <!---->
+          </div>
+          <div class=\\"card bg-secondary\\">
+            <!---->
+            <!---->
+            <div class=\\"card-body\\">
+              <!---->
+              <!---->
+              <fieldset class=\\"form-group\\" id=\\"__BVID__260\\">
+                <legend tabindex=\\"-1\\" class=\\"bv-no-focus-ring col-form-label pt-0\\" id=\\"__BVID__260__BV_label_\\">Tags</legend>
+                <div>
+                  <div role=\\"group\\" tabindex=\\"-1\\" class=\\"bv-no-focus-ring\\" id=\\"__BVID__261\\">
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"tag\\" class=\\"custom-control-input\\" value=\\"test-tag-1-1\\" id=\\"__BVID__261_BV_option_0\\"><label class=\\"custom-control-label\\" for=\\"__BVID__261_BV_option_0\\"><span>test-tag-1-1</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"tag\\" class=\\"custom-control-input\\" value=\\"test-tag-1-2\\" id=\\"__BVID__261_BV_option_1\\"><label class=\\"custom-control-label\\" for=\\"__BVID__261_BV_option_1\\"><span>test-tag-1-2</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"tag\\" class=\\"custom-control-input\\" value=\\"test-tag-2-1\\" id=\\"__BVID__261_BV_option_2\\"><label class=\\"custom-control-label\\" for=\\"__BVID__261_BV_option_2\\"><span>test-tag-2-1</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"tag\\" class=\\"custom-control-input\\" value=\\"test-tag-2-2\\" id=\\"__BVID__261_BV_option_3\\"><label class=\\"custom-control-label\\" for=\\"__BVID__261_BV_option_3\\"><span>test-tag-2-2</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"tag\\" class=\\"custom-control-input\\" value=\\"test-tag-3-1\\" id=\\"__BVID__261_BV_option_4\\"><label class=\\"custom-control-label\\" for=\\"__BVID__261_BV_option_4\\"><span>test-tag-3-1</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"tag\\" class=\\"custom-control-input\\" value=\\"test-tag-3-2\\" id=\\"__BVID__261_BV_option_5\\"><label class=\\"custom-control-label\\" for=\\"__BVID__261_BV_option_5\\"><span>test-tag-3-2</span></label></div>
+                  </div>
+                  <!---->
+                  <!---->
+                  <!---->
+                </div>
+              </fieldset>
+            </div>
+            <!---->
+            <!---->
+          </div>
+          <div class=\\"card bg-secondary\\">
+            <!---->
+            <!---->
+            <div class=\\"card-body\\">
+              <!---->
+              <!---->
+              <fieldset class=\\"form-group\\" id=\\"__BVID__268\\">
+                <legend tabindex=\\"-1\\" class=\\"bv-no-focus-ring col-form-label pt-0\\" id=\\"__BVID__268__BV_label_\\">Component Types</legend>
+                <div>
+                  <div role=\\"group\\" tabindex=\\"-1\\" class=\\"bv-no-focus-ring\\" id=\\"__BVID__269\\">
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"componentTypeId\\" class=\\"custom-control-input\\" value=\\"test-component-type-id-1\\" id=\\"__BVID__269_BV_option_0\\"><label class=\\"custom-control-label\\" for=\\"__BVID__269_BV_option_0\\"><span>test-component-type-id-1</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"componentTypeId\\" class=\\"custom-control-input\\" value=\\"test-component-type-id-2\\" id=\\"__BVID__269_BV_option_1\\"><label class=\\"custom-control-label\\" for=\\"__BVID__269_BV_option_1\\"><span>test-component-type-id-2</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"componentTypeId\\" class=\\"custom-control-input\\" value=\\"test-component-type-id-3\\" id=\\"__BVID__269_BV_option_2\\"><label class=\\"custom-control-label\\" for=\\"__BVID__269_BV_option_2\\"><span>test-component-type-id-3</span></label></div>
+                  </div>
+                  <!---->
+                  <!---->
+                  <!---->
+                </div>
+              </fieldset>
+            </div>
+            <!---->
+            <!---->
+          </div>
+          <div class=\\"card bg-secondary\\">
+            <!---->
+            <!---->
+            <div class=\\"card-body\\">
+              <!---->
+              <!---->
+              <fieldset class=\\"form-group\\" id=\\"__BVID__273\\">
+                <legend tabindex=\\"-1\\" class=\\"bv-no-focus-ring col-form-label pt-0\\" id=\\"__BVID__273__BV_label_\\">Platforms</legend>
+                <div>
+                  <div role=\\"group\\" tabindex=\\"-1\\" class=\\"bv-no-focus-ring\\" id=\\"__BVID__274\\">
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"platformId\\" class=\\"custom-control-input\\" value=\\"undefined\\" id=\\"__BVID__274_BV_option_0\\"><label class=\\"custom-control-label\\" for=\\"__BVID__274_BV_option_0\\"><span>undefined</span></label></div>
+                  </div>
+                  <!---->
+                  <!---->
+                  <!---->
+                </div>
+              </fieldset>
+            </div>
+            <!---->
+            <!---->
+          </div>
+          <div class=\\"card bg-secondary\\">
+            <!---->
+            <!---->
+            <div class=\\"card-body\\">
+              <!---->
+              <!---->
+              <div role=\\"group\\" class=\\"form-group\\" id=\\"__BVID__276\\"><label for=\\"component-filter\\" class=\\"d-block\\" id=\\"__BVID__276__BV_label_\\">Component</label>
+                <div><select id=\\"component-filter\\" class=\\"custom-select custom-select-sm\\">
+                    <option value=\\"\\">Please select a component</option>
+                    <option value=\\"test-component-id-1\\">test-component-id-1</option>
+                    <option value=\\"test-component-id-2\\">test-component-id-2</option>
+                    <option value=\\"test-component-id-3\\">test-component-id-3</option>
+                  </select>
+                  <!---->
+                  <!---->
+                  <!---->
+                </div>
+              </div>
             </div>
             <!---->
             <!---->
