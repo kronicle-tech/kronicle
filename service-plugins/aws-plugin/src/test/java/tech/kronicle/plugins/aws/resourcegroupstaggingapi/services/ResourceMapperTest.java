@@ -8,10 +8,13 @@ import tech.kronicle.plugins.aws.config.AwsProfileConfig;
 import tech.kronicle.plugins.aws.config.AwsTagKeysConfig;
 import tech.kronicle.plugins.aws.resourcegroupstaggingapi.models.ResourceGroupsTaggingApiResource;
 import tech.kronicle.plugins.aws.resourcegroupstaggingapi.models.ResourceGroupsTaggingApiTag;
+import tech.kronicle.sdk.constants.DependencyTypeIds;
 import tech.kronicle.sdk.models.Alias;
 import tech.kronicle.sdk.models.Component;
+import tech.kronicle.sdk.models.ComponentDependency;
 import tech.kronicle.sdk.models.ComponentState;
 import tech.kronicle.sdk.models.ComponentTeam;
+import tech.kronicle.sdk.models.DependencyDirection;
 import tech.kronicle.sdk.models.EnvironmentState;
 
 import java.util.List;
@@ -49,7 +52,8 @@ public class ResourceMapperTest {
                         "arn:aws:ec2:us-west-1:123456789012:security-group/sg-12345678901ABCDEF",
                         List.of(
                                 new ResourceGroupsTaggingApiTag("Name", "Test name"),
-                                new ResourceGroupsTaggingApiTag("team", "test-team-id"),
+                                new ResourceGroupsTaggingApiTag("test-team-tag-key", "test-team-id"),
+                                new ResourceGroupsTaggingApiTag("test-component-tag-key", "test-component-id"),
                                 new ResourceGroupsTaggingApiTag("test-tag-key-1", "test-tag-value-1")
                         )
                 )
@@ -86,7 +90,8 @@ public class ResourceMapperTest {
                         .id("aws-ec2-security-group-security-group-sg-12345678901abcdef")
                         .aliases(List.of(
                                 Alias.builder().id("security-group/sg-12345678901ABCDEF").build(),
-                                Alias.builder().id("security-group/sg-12345678901abcdef").build()
+                                Alias.builder().id("security-group/sg-12345678901abcdef").build(),
+                                Alias.builder().id("Test name").build()
                         ))
                         .name("Test name")
                         .typeId("aws-ec2-security-group")
@@ -102,15 +107,25 @@ public class ResourceMapperTest {
                                         "Tags:\n" +
                                         "\n" +
                                         "* Name=Test name\n" +
-                                        "* team=test-team-id\n" +
+                                        "* test-team-tag-key=test-team-id\n" +
+                                        "* test-component-tag-key=test-component-id\n" +
                                         "* test-tag-key-1=test-tag-value-1\n" +
                                         "\n" +
                                         "Aliases:\n" +
                                         "\n" +
-                                        "* Alias(id=security-group/sg-12345678901ABCDEF, description=null, notes=null)\n" +
-                                        "* Alias(id=security-group/sg-12345678901abcdef, description=null, notes=null)\n"
+                                        "* security-group/sg-12345678901ABCDEF\n" +
+                                        "* security-group/sg-12345678901abcdef\n" +
+                                        "* Test name\n"
                         ))
                         .platformId("aws-managed-service")
+                        .dependencies(List.of(
+                                ComponentDependency.builder()
+                                        .targetComponentId("test-component-id")
+                                        .direction(DependencyDirection.INBOUND)
+                                        .typeId(DependencyTypeIds.COMPOSITION)
+                                        .label("is composed of")
+                                        .build()
+                        ))
                         .state(ComponentState.builder()
                                 .environments(List.of(
                                         EnvironmentState.builder()
@@ -135,7 +150,7 @@ public class ResourceMapperTest {
                                 )
                         ),
                         detailedComponentDescriptions,
-                        new AwsTagKeysConfig(null, "team"),
+                        new AwsTagKeysConfig("test-component-tag-key", "test-team-tag-key"),
                         null
                 )
         );
