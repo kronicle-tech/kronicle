@@ -9,8 +9,8 @@
     <rect
       class="component-dependency-graph-background"
       fill-opacity="0"
-      @click="backgroundClick($event)"
-      @touchend.passive="backgroundClick($event)"
+      @click="backgroundClick()"
+      @touchend.passive="backgroundClick()"
     ></rect>
     <defs>
       <marker
@@ -51,10 +51,10 @@
         :cx="node.x"
         :cy="node.y"
         :title="node.text.join(', ')"
-        @click="selectedNodeChange($event, node)"
-        @touchend.passive="selectedNodeChange($event, node)"
-        @mouseover="mouseOverNodeChange($event, node)"
-        @mouseout="mouseOverNodeChange($event, undefined)"
+        @click="selectedNodeChange(node)"
+        @touchend.passive="selectedNodeChange(node)"
+        @mouseover="hoverNodeChange(node)"
+        @mouseout="hoverNodeChange(undefined)"
       />
     </g>
 
@@ -236,7 +236,7 @@ export default Vue.extend({
   },
   data() {
     return {
-      nodeSize: 10,
+      nodeSize: 20,
       fontSize: 14,
       labelOffset: 20,
       groups: [
@@ -249,7 +249,7 @@ export default Vue.extend({
         'selected',
       ],
       selectedNodeIndex: undefined as number | undefined,
-      mouseOverNodeIndex: undefined as number | undefined,
+      hoverNodeIndex: undefined as number | undefined,
     }
   },
   computed: {
@@ -294,8 +294,8 @@ export default Vue.extend({
       }
 
       function getEffectiveSelectedNodeIndexes(): number[] {
-        if (that.mouseOverNodeIndex !== undefined) {
-          return [that.mouseOverNodeIndex]
+        if (that.hoverNodeIndex !== undefined) {
+          return [that.hoverNodeIndex]
         }
 
         if (that.selectedNodeIndex !== undefined) {
@@ -904,29 +904,23 @@ export default Vue.extend({
 
       return this.network.nodes.find((node) => node.index === index)
     },
-    selectedNodeChange(event: Event, node: Node) {
+    selectedNodeChange(node: Node) {
       this.selectedNodeIndex =
         this.selectedNodeIndex === node.index ? undefined : node.index
       this.$emit(
-        'selectedNodeChange',
-        event,
-        this.getNodeByIndex(this.selectedNodeIndex)?.node
+        'nodeClick',
+        {
+          node: this.getNodeByIndex(this.selectedNodeIndex)?.node,
+        }
       )
     },
-    backgroundClick(event: Event) {
+    backgroundClick() {
       if (this.selectedNodeIndex) {
         this.selectedNodeIndex = undefined
-        this.$emit('selectedNodeChange', event, undefined)
       }
     },
-    mouseOverNodeChange(event: Event, node: Node) {
-      this.mouseOverNodeIndex = node ? node.index : undefined
-      this.$emit(
-        'selectedNodeChange',
-        event,
-        this.getNodeByIndex(this.mouseOverNodeIndex)?.node ||
-          this.getNodeByIndex(this.selectedNodeIndex)?.node
-      )
+    hoverNodeChange(node: Node) {
+      this.hoverNodeIndex = node ? node.index : undefined
     },
   },
 })

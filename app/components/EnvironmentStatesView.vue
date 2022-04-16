@@ -1,5 +1,5 @@
 <template>
-  <div class="m-3">
+  <div>
     <ComponentFilters :components="components" environment-id-filter-enabled />
 
     <b-card-group columns>
@@ -162,21 +162,24 @@ export default Vue.extend({
         });
     },
     mapComponent(component: Component): Item[] {
-      if (!component.state) {
+      if (!component.state || !component.state.environments) {
         return [];
       }
       const that = this;
       return component.state.environments.flatMap(environment => that.mapEnvironment(component, environment));
     },
     mapEnvironment(component: Component, environment: EnvironmentState): Item[] {
+      if (!environment.plugins) {
+        return [];
+      }
       const that = this;
       return environment.plugins.flatMap(plugin => that.mapPlugin(component, environment, plugin));
     },
     mapPlugin(component: Component, environment: EnvironmentState, plugin: EnvironmentPluginState): Item[] {
       const that = this;
       return ([] as Item[]).concat(
-        plugin.checks.map(check => that.mapCheck(component, environment, plugin, check)),
-        plugin.logSummaries.map(logSummary => that.mapLogSummary(component, environment, plugin, logSummary)),
+        (plugin.checks ?? []).map(check => that.mapCheck(component, environment, plugin, check)),
+        (plugin.logSummaries ?? []).map(logSummary => that.mapLogSummary(component, environment, plugin, logSummary)),
       );
     },
     mapCheck(component: Component, environment: EnvironmentState, plugin: EnvironmentPluginState, check: CheckState): Item {

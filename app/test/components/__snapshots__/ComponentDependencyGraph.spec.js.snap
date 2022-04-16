@@ -4,25 +4,25 @@ exports[`ComponentDependencyGraph when a node is clicked renders the direct depe
 "<svg xmlns=\\"http://www.w3.org/2000/svg\\" overflow=\\"auto\\" width=\\"100%\\" height=\\"1200\\">
   <rect fill-opacity=\\"0\\" class=\\"component-dependency-graph-background\\"></rect>
   <defs>
-    <marker id=\\"component-dependency-graph-dependency-marker-all\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"10\\" refY=\\"5.75\\" class=\\"dependency-marker all-dependency-marker\\">
+    <marker id=\\"component-dependency-graph-dependency-marker-all\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"20\\" refY=\\"5.75\\" class=\\"dependency-marker all-dependency-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-dependency-marker-manual\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"10\\" refY=\\"5.75\\" class=\\"dependency-marker manual-dependency-marker\\">
+    <marker id=\\"component-dependency-graph-dependency-marker-manual\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"20\\" refY=\\"5.75\\" class=\\"dependency-marker manual-dependency-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-dependency-marker-scope-related\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"10\\" refY=\\"5.75\\" class=\\"dependency-marker scope-related-dependency-marker\\">
+    <marker id=\\"component-dependency-graph-dependency-marker-scope-related\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"20\\" refY=\\"5.75\\" class=\\"dependency-marker scope-related-dependency-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-dependency-marker-scoped\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"10\\" refY=\\"5.75\\" class=\\"dependency-marker scoped-dependency-marker\\">
+    <marker id=\\"component-dependency-graph-dependency-marker-scoped\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"20\\" refY=\\"5.75\\" class=\\"dependency-marker scoped-dependency-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-dependency-marker-related\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"10\\" refY=\\"5.75\\" class=\\"dependency-marker related-dependency-marker\\">
+    <marker id=\\"component-dependency-graph-dependency-marker-related\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"20\\" refY=\\"5.75\\" class=\\"dependency-marker related-dependency-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-dependency-marker-direct\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"10\\" refY=\\"5.75\\" class=\\"dependency-marker direct-dependency-marker\\">
+    <marker id=\\"component-dependency-graph-dependency-marker-direct\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"20\\" refY=\\"5.75\\" class=\\"dependency-marker direct-dependency-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-dependency-marker-selected\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"10\\" refY=\\"5.75\\" class=\\"dependency-marker selected-dependency-marker\\">
+    <marker id=\\"component-dependency-graph-dependency-marker-selected\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"20\\" refY=\\"5.75\\" class=\\"dependency-marker selected-dependency-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
   </defs>
@@ -41,31 +41,31 @@ exports[`ComponentDependencyGraph when a node is clicked renders the direct depe
   </g>
   <g></g>
   <g>
-    <circle id=\\"component-dependency-graph-node-3\\" r=\\"5\\" cx=\\"50\\" cy=\\"350\\" title=\\"test-id-4\\" class=\\"node all-node\\"></circle>
-    <circle id=\\"component-dependency-graph-node-4\\" r=\\"5\\" cx=\\"50\\" cy=\\"450\\" title=\\"test-id-5\\" class=\\"node all-node\\"></circle>
-    <circle id=\\"component-dependency-graph-node-5\\" r=\\"5\\" cx=\\"50\\" cy=\\"550\\" title=\\"test-id-6\\" class=\\"node all-node\\"></circle>
+    <circle id=\\"component-dependency-graph-node-3\\" r=\\"10\\" cx=\\"50\\" cy=\\"350\\" title=\\"test-id-4\\" class=\\"node all-node\\"></circle>
+    <circle id=\\"component-dependency-graph-node-4\\" r=\\"10\\" cx=\\"50\\" cy=\\"450\\" title=\\"test-id-5\\" class=\\"node all-node\\"></circle>
+    <circle id=\\"component-dependency-graph-node-5\\" r=\\"10\\" cx=\\"50\\" cy=\\"550\\" title=\\"test-id-6\\" class=\\"node all-node\\"></circle>
   </g>
   <g></g>
   <g></g>
   <g></g>
   <g></g>
   <g>
-    <circle id=\\"component-dependency-graph-node-0\\" r=\\"5\\" cx=\\"50\\" cy=\\"50\\" title=\\"test-id-1\\" class=\\"node direct-node\\"></circle>
-    <circle id=\\"component-dependency-graph-node-2\\" r=\\"5\\" cx=\\"50\\" cy=\\"250\\" title=\\"test-id-3\\" class=\\"node direct-node\\"></circle>
+    <circle id=\\"component-dependency-graph-node-0\\" r=\\"10\\" cx=\\"50\\" cy=\\"50\\" title=\\"test-id-1\\" class=\\"node direct-node\\"></circle>
+    <circle id=\\"component-dependency-graph-node-2\\" r=\\"10\\" cx=\\"50\\" cy=\\"250\\" title=\\"test-id-3\\" class=\\"node direct-node\\"></circle>
   </g>
   <g>
-    <circle id=\\"component-dependency-graph-node-1\\" r=\\"5\\" cx=\\"50\\" cy=\\"150\\" title=\\"test-id-2\\" class=\\"node selected-node\\"></circle>
+    <circle id=\\"component-dependency-graph-node-1\\" r=\\"10\\" cx=\\"50\\" cy=\\"150\\" title=\\"test-id-2\\" class=\\"node selected-node\\"></circle>
   </g>
-  <g><text x=\\"62\\" y=\\"370\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label all-node-label\\">
-      <tspan x=\\"62\\" y=\\"370\\">
+  <g><text x=\\"67\\" y=\\"370\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label all-node-label\\">
+      <tspan x=\\"67\\" y=\\"370\\">
         test-id-4
       </tspan>
-    </text><text x=\\"62\\" y=\\"470\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label all-node-label\\">
-      <tspan x=\\"62\\" y=\\"470\\">
+    </text><text x=\\"67\\" y=\\"470\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label all-node-label\\">
+      <tspan x=\\"67\\" y=\\"470\\">
         test-id-5
       </tspan>
-    </text><text x=\\"62\\" y=\\"570\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label all-node-label\\">
-      <tspan x=\\"62\\" y=\\"570\\">
+    </text><text x=\\"67\\" y=\\"570\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label all-node-label\\">
+      <tspan x=\\"67\\" y=\\"570\\">
         test-id-6
       </tspan>
     </text></g>
@@ -73,17 +73,17 @@ exports[`ComponentDependencyGraph when a node is clicked renders the direct depe
   <g></g>
   <g></g>
   <g></g>
-  <g><text x=\\"62\\" y=\\"70\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label direct-node-label\\">
-      <tspan x=\\"62\\" y=\\"70\\">
+  <g><text x=\\"67\\" y=\\"70\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label direct-node-label\\">
+      <tspan x=\\"67\\" y=\\"70\\">
         test-id-1
       </tspan>
-    </text><text x=\\"62\\" y=\\"270\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label direct-node-label\\">
-      <tspan x=\\"62\\" y=\\"270\\">
+    </text><text x=\\"67\\" y=\\"270\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label direct-node-label\\">
+      <tspan x=\\"67\\" y=\\"270\\">
         test-id-3
       </tspan>
     </text></g>
-  <g><text x=\\"62\\" y=\\"170\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label selected-node-label\\">
-      <tspan x=\\"62\\" y=\\"170\\">
+  <g><text x=\\"67\\" y=\\"170\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label selected-node-label\\">
+      <tspan x=\\"67\\" y=\\"170\\">
         test-id-2
       </tspan>
     </text></g>
@@ -94,25 +94,25 @@ exports[`ComponentDependencyGraph when a node is clicked when a none direct depe
 "<svg xmlns=\\"http://www.w3.org/2000/svg\\" overflow=\\"auto\\" width=\\"100%\\" height=\\"1200\\">
   <rect fill-opacity=\\"0\\" class=\\"component-dependency-graph-background\\"></rect>
   <defs>
-    <marker id=\\"component-dependency-graph-dependency-marker-all\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"10\\" refY=\\"5.75\\" class=\\"dependency-marker all-dependency-marker\\">
+    <marker id=\\"component-dependency-graph-dependency-marker-all\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"20\\" refY=\\"5.75\\" class=\\"dependency-marker all-dependency-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-dependency-marker-manual\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"10\\" refY=\\"5.75\\" class=\\"dependency-marker manual-dependency-marker\\">
+    <marker id=\\"component-dependency-graph-dependency-marker-manual\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"20\\" refY=\\"5.75\\" class=\\"dependency-marker manual-dependency-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-dependency-marker-scope-related\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"10\\" refY=\\"5.75\\" class=\\"dependency-marker scope-related-dependency-marker\\">
+    <marker id=\\"component-dependency-graph-dependency-marker-scope-related\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"20\\" refY=\\"5.75\\" class=\\"dependency-marker scope-related-dependency-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-dependency-marker-scoped\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"10\\" refY=\\"5.75\\" class=\\"dependency-marker scoped-dependency-marker\\">
+    <marker id=\\"component-dependency-graph-dependency-marker-scoped\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"20\\" refY=\\"5.75\\" class=\\"dependency-marker scoped-dependency-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-dependency-marker-related\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"10\\" refY=\\"5.75\\" class=\\"dependency-marker related-dependency-marker\\">
+    <marker id=\\"component-dependency-graph-dependency-marker-related\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"20\\" refY=\\"5.75\\" class=\\"dependency-marker related-dependency-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-dependency-marker-direct\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"10\\" refY=\\"5.75\\" class=\\"dependency-marker direct-dependency-marker\\">
+    <marker id=\\"component-dependency-graph-dependency-marker-direct\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"20\\" refY=\\"5.75\\" class=\\"dependency-marker direct-dependency-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-dependency-marker-selected\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"10\\" refY=\\"5.75\\" class=\\"dependency-marker selected-dependency-marker\\">
+    <marker id=\\"component-dependency-graph-dependency-marker-selected\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"20\\" refY=\\"5.75\\" class=\\"dependency-marker selected-dependency-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
   </defs>
@@ -132,50 +132,50 @@ exports[`ComponentDependencyGraph when a node is clicked when a none direct depe
   </g>
   <g></g>
   <g>
-    <circle id=\\"component-dependency-graph-node-4\\" r=\\"5\\" cx=\\"50\\" cy=\\"450\\" title=\\"test-id-5\\" class=\\"node all-node\\"></circle>
-    <circle id=\\"component-dependency-graph-node-5\\" r=\\"5\\" cx=\\"50\\" cy=\\"550\\" title=\\"test-id-6\\" class=\\"node all-node\\"></circle>
+    <circle id=\\"component-dependency-graph-node-4\\" r=\\"10\\" cx=\\"50\\" cy=\\"450\\" title=\\"test-id-5\\" class=\\"node all-node\\"></circle>
+    <circle id=\\"component-dependency-graph-node-5\\" r=\\"10\\" cx=\\"50\\" cy=\\"550\\" title=\\"test-id-6\\" class=\\"node all-node\\"></circle>
   </g>
   <g></g>
   <g></g>
   <g></g>
   <g>
-    <circle id=\\"component-dependency-graph-node-3\\" r=\\"5\\" cx=\\"50\\" cy=\\"350\\" title=\\"test-id-4\\" class=\\"node related-node\\"></circle>
+    <circle id=\\"component-dependency-graph-node-3\\" r=\\"10\\" cx=\\"50\\" cy=\\"350\\" title=\\"test-id-4\\" class=\\"node related-node\\"></circle>
   </g>
   <g>
-    <circle id=\\"component-dependency-graph-node-0\\" r=\\"5\\" cx=\\"50\\" cy=\\"50\\" title=\\"test-id-1\\" class=\\"node direct-node\\"></circle>
-    <circle id=\\"component-dependency-graph-node-2\\" r=\\"5\\" cx=\\"50\\" cy=\\"250\\" title=\\"test-id-3\\" class=\\"node direct-node\\"></circle>
+    <circle id=\\"component-dependency-graph-node-0\\" r=\\"10\\" cx=\\"50\\" cy=\\"50\\" title=\\"test-id-1\\" class=\\"node direct-node\\"></circle>
+    <circle id=\\"component-dependency-graph-node-2\\" r=\\"10\\" cx=\\"50\\" cy=\\"250\\" title=\\"test-id-3\\" class=\\"node direct-node\\"></circle>
   </g>
   <g>
-    <circle id=\\"component-dependency-graph-node-1\\" r=\\"5\\" cx=\\"50\\" cy=\\"150\\" title=\\"test-id-2\\" class=\\"node selected-node\\"></circle>
+    <circle id=\\"component-dependency-graph-node-1\\" r=\\"10\\" cx=\\"50\\" cy=\\"150\\" title=\\"test-id-2\\" class=\\"node selected-node\\"></circle>
   </g>
-  <g><text x=\\"62\\" y=\\"470\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label all-node-label\\">
-      <tspan x=\\"62\\" y=\\"470\\">
+  <g><text x=\\"67\\" y=\\"470\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label all-node-label\\">
+      <tspan x=\\"67\\" y=\\"470\\">
         test-id-5
       </tspan>
-    </text><text x=\\"62\\" y=\\"570\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label all-node-label\\">
-      <tspan x=\\"62\\" y=\\"570\\">
+    </text><text x=\\"67\\" y=\\"570\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label all-node-label\\">
+      <tspan x=\\"67\\" y=\\"570\\">
         test-id-6
       </tspan>
     </text></g>
   <g></g>
   <g></g>
   <g></g>
-  <g><text x=\\"62\\" y=\\"370\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label related-node-label\\">
-      <tspan x=\\"62\\" y=\\"370\\">
+  <g><text x=\\"67\\" y=\\"370\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label related-node-label\\">
+      <tspan x=\\"67\\" y=\\"370\\">
         test-id-4
       </tspan>
     </text></g>
-  <g><text x=\\"62\\" y=\\"70\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label direct-node-label\\">
-      <tspan x=\\"62\\" y=\\"70\\">
+  <g><text x=\\"67\\" y=\\"70\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label direct-node-label\\">
+      <tspan x=\\"67\\" y=\\"70\\">
         test-id-1
       </tspan>
-    </text><text x=\\"62\\" y=\\"270\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label direct-node-label\\">
-      <tspan x=\\"62\\" y=\\"270\\">
+    </text><text x=\\"67\\" y=\\"270\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label direct-node-label\\">
+      <tspan x=\\"67\\" y=\\"270\\">
         test-id-3
       </tspan>
     </text></g>
-  <g><text x=\\"62\\" y=\\"170\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label selected-node-label\\">
-      <tspan x=\\"62\\" y=\\"170\\">
+  <g><text x=\\"67\\" y=\\"170\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label selected-node-label\\">
+      <tspan x=\\"67\\" y=\\"170\\">
         test-id-2
       </tspan>
     </text></g>
@@ -186,25 +186,25 @@ exports[`ComponentDependencyGraph when a node is clicked when a none direct depe
 "<svg xmlns=\\"http://www.w3.org/2000/svg\\" overflow=\\"auto\\" width=\\"100%\\" height=\\"1200\\">
   <rect fill-opacity=\\"0\\" class=\\"component-dependency-graph-background\\"></rect>
   <defs>
-    <marker id=\\"component-dependency-graph-dependency-marker-all\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"10\\" refY=\\"5.75\\" class=\\"dependency-marker all-dependency-marker\\">
+    <marker id=\\"component-dependency-graph-dependency-marker-all\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"20\\" refY=\\"5.75\\" class=\\"dependency-marker all-dependency-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-dependency-marker-manual\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"10\\" refY=\\"5.75\\" class=\\"dependency-marker manual-dependency-marker\\">
+    <marker id=\\"component-dependency-graph-dependency-marker-manual\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"20\\" refY=\\"5.75\\" class=\\"dependency-marker manual-dependency-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-dependency-marker-scope-related\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"10\\" refY=\\"5.75\\" class=\\"dependency-marker scope-related-dependency-marker\\">
+    <marker id=\\"component-dependency-graph-dependency-marker-scope-related\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"20\\" refY=\\"5.75\\" class=\\"dependency-marker scope-related-dependency-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-dependency-marker-scoped\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"10\\" refY=\\"5.75\\" class=\\"dependency-marker scoped-dependency-marker\\">
+    <marker id=\\"component-dependency-graph-dependency-marker-scoped\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"20\\" refY=\\"5.75\\" class=\\"dependency-marker scoped-dependency-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-dependency-marker-related\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"10\\" refY=\\"5.75\\" class=\\"dependency-marker related-dependency-marker\\">
+    <marker id=\\"component-dependency-graph-dependency-marker-related\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"20\\" refY=\\"5.75\\" class=\\"dependency-marker related-dependency-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-dependency-marker-direct\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"10\\" refY=\\"5.75\\" class=\\"dependency-marker direct-dependency-marker\\">
+    <marker id=\\"component-dependency-graph-dependency-marker-direct\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"20\\" refY=\\"5.75\\" class=\\"dependency-marker direct-dependency-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-dependency-marker-selected\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"10\\" refY=\\"5.75\\" class=\\"dependency-marker selected-dependency-marker\\">
+    <marker id=\\"component-dependency-graph-dependency-marker-selected\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"20\\" refY=\\"5.75\\" class=\\"dependency-marker selected-dependency-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
   </defs>
@@ -225,51 +225,51 @@ exports[`ComponentDependencyGraph when a node is clicked when a none direct depe
   </g>
   <g></g>
   <g>
-    <circle id=\\"component-dependency-graph-node-4\\" r=\\"5\\" cx=\\"50\\" cy=\\"450\\" title=\\"test-id-5\\" class=\\"node all-node\\"></circle>
+    <circle id=\\"component-dependency-graph-node-4\\" r=\\"10\\" cx=\\"50\\" cy=\\"450\\" title=\\"test-id-5\\" class=\\"node all-node\\"></circle>
   </g>
   <g>
-    <circle id=\\"component-dependency-graph-node-5\\" r=\\"5\\" cx=\\"50\\" cy=\\"550\\" title=\\"test-id-6\\" class=\\"node manual-node\\"></circle>
+    <circle id=\\"component-dependency-graph-node-5\\" r=\\"10\\" cx=\\"50\\" cy=\\"550\\" title=\\"test-id-6\\" class=\\"node manual-node\\"></circle>
   </g>
   <g></g>
   <g></g>
   <g>
-    <circle id=\\"component-dependency-graph-node-3\\" r=\\"5\\" cx=\\"50\\" cy=\\"350\\" title=\\"test-id-4\\" class=\\"node related-node\\"></circle>
+    <circle id=\\"component-dependency-graph-node-3\\" r=\\"10\\" cx=\\"50\\" cy=\\"350\\" title=\\"test-id-4\\" class=\\"node related-node\\"></circle>
   </g>
   <g>
-    <circle id=\\"component-dependency-graph-node-0\\" r=\\"5\\" cx=\\"50\\" cy=\\"50\\" title=\\"test-id-1\\" class=\\"node direct-node\\"></circle>
-    <circle id=\\"component-dependency-graph-node-2\\" r=\\"5\\" cx=\\"50\\" cy=\\"250\\" title=\\"test-id-3\\" class=\\"node direct-node\\"></circle>
+    <circle id=\\"component-dependency-graph-node-0\\" r=\\"10\\" cx=\\"50\\" cy=\\"50\\" title=\\"test-id-1\\" class=\\"node direct-node\\"></circle>
+    <circle id=\\"component-dependency-graph-node-2\\" r=\\"10\\" cx=\\"50\\" cy=\\"250\\" title=\\"test-id-3\\" class=\\"node direct-node\\"></circle>
   </g>
   <g>
-    <circle id=\\"component-dependency-graph-node-1\\" r=\\"5\\" cx=\\"50\\" cy=\\"150\\" title=\\"test-id-2\\" class=\\"node selected-node\\"></circle>
+    <circle id=\\"component-dependency-graph-node-1\\" r=\\"10\\" cx=\\"50\\" cy=\\"150\\" title=\\"test-id-2\\" class=\\"node selected-node\\"></circle>
   </g>
-  <g><text x=\\"62\\" y=\\"470\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label all-node-label\\">
-      <tspan x=\\"62\\" y=\\"470\\">
+  <g><text x=\\"67\\" y=\\"470\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label all-node-label\\">
+      <tspan x=\\"67\\" y=\\"470\\">
         test-id-5
       </tspan>
     </text></g>
-  <g><text x=\\"62\\" y=\\"570\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label manual-node-label\\">
-      <tspan x=\\"62\\" y=\\"570\\">
+  <g><text x=\\"67\\" y=\\"570\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label manual-node-label\\">
+      <tspan x=\\"67\\" y=\\"570\\">
         test-id-6
       </tspan>
     </text></g>
   <g></g>
   <g></g>
-  <g><text x=\\"62\\" y=\\"370\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label related-node-label\\">
-      <tspan x=\\"62\\" y=\\"370\\">
+  <g><text x=\\"67\\" y=\\"370\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label related-node-label\\">
+      <tspan x=\\"67\\" y=\\"370\\">
         test-id-4
       </tspan>
     </text></g>
-  <g><text x=\\"62\\" y=\\"70\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label direct-node-label\\">
-      <tspan x=\\"62\\" y=\\"70\\">
+  <g><text x=\\"67\\" y=\\"70\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label direct-node-label\\">
+      <tspan x=\\"67\\" y=\\"70\\">
         test-id-1
       </tspan>
-    </text><text x=\\"62\\" y=\\"270\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label direct-node-label\\">
-      <tspan x=\\"62\\" y=\\"270\\">
+    </text><text x=\\"67\\" y=\\"270\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label direct-node-label\\">
+      <tspan x=\\"67\\" y=\\"270\\">
         test-id-3
       </tspan>
     </text></g>
-  <g><text x=\\"62\\" y=\\"170\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label selected-node-label\\">
-      <tspan x=\\"62\\" y=\\"170\\">
+  <g><text x=\\"67\\" y=\\"170\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label selected-node-label\\">
+      <tspan x=\\"67\\" y=\\"170\\">
         test-id-2
       </tspan>
     </text></g>
@@ -280,25 +280,25 @@ exports[`ComponentDependencyGraph when a node is clicked when a none direct depe
 "<svg xmlns=\\"http://www.w3.org/2000/svg\\" overflow=\\"auto\\" width=\\"100%\\" height=\\"1200\\">
   <rect fill-opacity=\\"0\\" class=\\"component-dependency-graph-background\\"></rect>
   <defs>
-    <marker id=\\"component-dependency-graph-dependency-marker-all\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"10\\" refY=\\"5.75\\" class=\\"dependency-marker all-dependency-marker\\">
+    <marker id=\\"component-dependency-graph-dependency-marker-all\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"20\\" refY=\\"5.75\\" class=\\"dependency-marker all-dependency-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-dependency-marker-manual\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"10\\" refY=\\"5.75\\" class=\\"dependency-marker manual-dependency-marker\\">
+    <marker id=\\"component-dependency-graph-dependency-marker-manual\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"20\\" refY=\\"5.75\\" class=\\"dependency-marker manual-dependency-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-dependency-marker-scope-related\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"10\\" refY=\\"5.75\\" class=\\"dependency-marker scope-related-dependency-marker\\">
+    <marker id=\\"component-dependency-graph-dependency-marker-scope-related\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"20\\" refY=\\"5.75\\" class=\\"dependency-marker scope-related-dependency-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-dependency-marker-scoped\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"10\\" refY=\\"5.75\\" class=\\"dependency-marker scoped-dependency-marker\\">
+    <marker id=\\"component-dependency-graph-dependency-marker-scoped\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"20\\" refY=\\"5.75\\" class=\\"dependency-marker scoped-dependency-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-dependency-marker-related\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"10\\" refY=\\"5.75\\" class=\\"dependency-marker related-dependency-marker\\">
+    <marker id=\\"component-dependency-graph-dependency-marker-related\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"20\\" refY=\\"5.75\\" class=\\"dependency-marker related-dependency-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-dependency-marker-direct\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"10\\" refY=\\"5.75\\" class=\\"dependency-marker direct-dependency-marker\\">
+    <marker id=\\"component-dependency-graph-dependency-marker-direct\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"20\\" refY=\\"5.75\\" class=\\"dependency-marker direct-dependency-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-dependency-marker-selected\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"10\\" refY=\\"5.75\\" class=\\"dependency-marker selected-dependency-marker\\">
+    <marker id=\\"component-dependency-graph-dependency-marker-selected\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"20\\" refY=\\"5.75\\" class=\\"dependency-marker selected-dependency-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
   </defs>
@@ -318,50 +318,50 @@ exports[`ComponentDependencyGraph when a node is clicked when a none direct depe
   </g>
   <g></g>
   <g>
-    <circle id=\\"component-dependency-graph-node-4\\" r=\\"5\\" cx=\\"50\\" cy=\\"450\\" title=\\"test-id-5\\" class=\\"node all-node\\"></circle>
-    <circle id=\\"component-dependency-graph-node-5\\" r=\\"5\\" cx=\\"50\\" cy=\\"550\\" title=\\"test-id-6\\" class=\\"node all-node\\"></circle>
+    <circle id=\\"component-dependency-graph-node-4\\" r=\\"10\\" cx=\\"50\\" cy=\\"450\\" title=\\"test-id-5\\" class=\\"node all-node\\"></circle>
+    <circle id=\\"component-dependency-graph-node-5\\" r=\\"10\\" cx=\\"50\\" cy=\\"550\\" title=\\"test-id-6\\" class=\\"node all-node\\"></circle>
   </g>
   <g></g>
   <g></g>
   <g></g>
   <g>
-    <circle id=\\"component-dependency-graph-node-3\\" r=\\"5\\" cx=\\"50\\" cy=\\"350\\" title=\\"test-id-4\\" class=\\"node related-node\\"></circle>
+    <circle id=\\"component-dependency-graph-node-3\\" r=\\"10\\" cx=\\"50\\" cy=\\"350\\" title=\\"test-id-4\\" class=\\"node related-node\\"></circle>
   </g>
   <g>
-    <circle id=\\"component-dependency-graph-node-0\\" r=\\"5\\" cx=\\"50\\" cy=\\"50\\" title=\\"test-id-1\\" class=\\"node direct-node\\"></circle>
-    <circle id=\\"component-dependency-graph-node-2\\" r=\\"5\\" cx=\\"50\\" cy=\\"250\\" title=\\"test-id-3\\" class=\\"node direct-node\\"></circle>
+    <circle id=\\"component-dependency-graph-node-0\\" r=\\"10\\" cx=\\"50\\" cy=\\"50\\" title=\\"test-id-1\\" class=\\"node direct-node\\"></circle>
+    <circle id=\\"component-dependency-graph-node-2\\" r=\\"10\\" cx=\\"50\\" cy=\\"250\\" title=\\"test-id-3\\" class=\\"node direct-node\\"></circle>
   </g>
   <g>
-    <circle id=\\"component-dependency-graph-node-1\\" r=\\"5\\" cx=\\"50\\" cy=\\"150\\" title=\\"test-id-2\\" class=\\"node selected-node\\"></circle>
+    <circle id=\\"component-dependency-graph-node-1\\" r=\\"10\\" cx=\\"50\\" cy=\\"150\\" title=\\"test-id-2\\" class=\\"node selected-node\\"></circle>
   </g>
-  <g><text x=\\"62\\" y=\\"470\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label all-node-label\\">
-      <tspan x=\\"62\\" y=\\"470\\">
+  <g><text x=\\"67\\" y=\\"470\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label all-node-label\\">
+      <tspan x=\\"67\\" y=\\"470\\">
         test-id-5
       </tspan>
-    </text><text x=\\"62\\" y=\\"570\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label all-node-label\\">
-      <tspan x=\\"62\\" y=\\"570\\">
+    </text><text x=\\"67\\" y=\\"570\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label all-node-label\\">
+      <tspan x=\\"67\\" y=\\"570\\">
         test-id-6
       </tspan>
     </text></g>
   <g></g>
   <g></g>
   <g></g>
-  <g><text x=\\"62\\" y=\\"370\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label related-node-label\\">
-      <tspan x=\\"62\\" y=\\"370\\">
+  <g><text x=\\"67\\" y=\\"370\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label related-node-label\\">
+      <tspan x=\\"67\\" y=\\"370\\">
         test-id-4
       </tspan>
     </text></g>
-  <g><text x=\\"62\\" y=\\"70\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label direct-node-label\\">
-      <tspan x=\\"62\\" y=\\"70\\">
+  <g><text x=\\"67\\" y=\\"70\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label direct-node-label\\">
+      <tspan x=\\"67\\" y=\\"70\\">
         test-id-1
       </tspan>
-    </text><text x=\\"62\\" y=\\"270\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label direct-node-label\\">
-      <tspan x=\\"62\\" y=\\"270\\">
+    </text><text x=\\"67\\" y=\\"270\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label direct-node-label\\">
+      <tspan x=\\"67\\" y=\\"270\\">
         test-id-3
       </tspan>
     </text></g>
-  <g><text x=\\"62\\" y=\\"170\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label selected-node-label\\">
-      <tspan x=\\"62\\" y=\\"170\\">
+  <g><text x=\\"67\\" y=\\"170\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label selected-node-label\\">
+      <tspan x=\\"67\\" y=\\"170\\">
         test-id-2
       </tspan>
     </text></g>
@@ -372,25 +372,25 @@ exports[`ComponentDependencyGraph when a node is clicked when one of the direct 
 "<svg xmlns=\\"http://www.w3.org/2000/svg\\" overflow=\\"auto\\" width=\\"100%\\" height=\\"1200\\">
   <rect fill-opacity=\\"0\\" class=\\"component-dependency-graph-background\\"></rect>
   <defs>
-    <marker id=\\"component-dependency-graph-dependency-marker-all\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"10\\" refY=\\"5.75\\" class=\\"dependency-marker all-dependency-marker\\">
+    <marker id=\\"component-dependency-graph-dependency-marker-all\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"20\\" refY=\\"5.75\\" class=\\"dependency-marker all-dependency-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-dependency-marker-manual\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"10\\" refY=\\"5.75\\" class=\\"dependency-marker manual-dependency-marker\\">
+    <marker id=\\"component-dependency-graph-dependency-marker-manual\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"20\\" refY=\\"5.75\\" class=\\"dependency-marker manual-dependency-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-dependency-marker-scope-related\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"10\\" refY=\\"5.75\\" class=\\"dependency-marker scope-related-dependency-marker\\">
+    <marker id=\\"component-dependency-graph-dependency-marker-scope-related\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"20\\" refY=\\"5.75\\" class=\\"dependency-marker scope-related-dependency-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-dependency-marker-scoped\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"10\\" refY=\\"5.75\\" class=\\"dependency-marker scoped-dependency-marker\\">
+    <marker id=\\"component-dependency-graph-dependency-marker-scoped\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"20\\" refY=\\"5.75\\" class=\\"dependency-marker scoped-dependency-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-dependency-marker-related\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"10\\" refY=\\"5.75\\" class=\\"dependency-marker related-dependency-marker\\">
+    <marker id=\\"component-dependency-graph-dependency-marker-related\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"20\\" refY=\\"5.75\\" class=\\"dependency-marker related-dependency-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-dependency-marker-direct\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"10\\" refY=\\"5.75\\" class=\\"dependency-marker direct-dependency-marker\\">
+    <marker id=\\"component-dependency-graph-dependency-marker-direct\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"20\\" refY=\\"5.75\\" class=\\"dependency-marker direct-dependency-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-dependency-marker-selected\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"10\\" refY=\\"5.75\\" class=\\"dependency-marker selected-dependency-marker\\">
+    <marker id=\\"component-dependency-graph-dependency-marker-selected\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"20\\" refY=\\"5.75\\" class=\\"dependency-marker selected-dependency-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
   </defs>
@@ -409,31 +409,31 @@ exports[`ComponentDependencyGraph when a node is clicked when one of the direct 
   </g>
   <g></g>
   <g>
-    <circle id=\\"component-dependency-graph-node-3\\" r=\\"5\\" cx=\\"50\\" cy=\\"350\\" title=\\"test-id-4\\" class=\\"node all-node\\"></circle>
-    <circle id=\\"component-dependency-graph-node-4\\" r=\\"5\\" cx=\\"50\\" cy=\\"450\\" title=\\"test-id-5\\" class=\\"node all-node\\"></circle>
-    <circle id=\\"component-dependency-graph-node-5\\" r=\\"5\\" cx=\\"50\\" cy=\\"550\\" title=\\"test-id-6\\" class=\\"node all-node\\"></circle>
+    <circle id=\\"component-dependency-graph-node-3\\" r=\\"10\\" cx=\\"50\\" cy=\\"350\\" title=\\"test-id-4\\" class=\\"node all-node\\"></circle>
+    <circle id=\\"component-dependency-graph-node-4\\" r=\\"10\\" cx=\\"50\\" cy=\\"450\\" title=\\"test-id-5\\" class=\\"node all-node\\"></circle>
+    <circle id=\\"component-dependency-graph-node-5\\" r=\\"10\\" cx=\\"50\\" cy=\\"550\\" title=\\"test-id-6\\" class=\\"node all-node\\"></circle>
   </g>
   <g></g>
   <g></g>
   <g></g>
   <g></g>
   <g>
-    <circle id=\\"component-dependency-graph-node-0\\" r=\\"5\\" cx=\\"50\\" cy=\\"50\\" title=\\"test-id-1\\" class=\\"node direct-node\\"></circle>
-    <circle id=\\"component-dependency-graph-node-2\\" r=\\"5\\" cx=\\"50\\" cy=\\"250\\" title=\\"test-id-3\\" class=\\"node direct-node\\"></circle>
+    <circle id=\\"component-dependency-graph-node-0\\" r=\\"10\\" cx=\\"50\\" cy=\\"50\\" title=\\"test-id-1\\" class=\\"node direct-node\\"></circle>
+    <circle id=\\"component-dependency-graph-node-2\\" r=\\"10\\" cx=\\"50\\" cy=\\"250\\" title=\\"test-id-3\\" class=\\"node direct-node\\"></circle>
   </g>
   <g>
-    <circle id=\\"component-dependency-graph-node-1\\" r=\\"5\\" cx=\\"50\\" cy=\\"150\\" title=\\"test-id-2\\" class=\\"node selected-node\\"></circle>
+    <circle id=\\"component-dependency-graph-node-1\\" r=\\"10\\" cx=\\"50\\" cy=\\"150\\" title=\\"test-id-2\\" class=\\"node selected-node\\"></circle>
   </g>
-  <g><text x=\\"62\\" y=\\"370\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label all-node-label\\">
-      <tspan x=\\"62\\" y=\\"370\\">
+  <g><text x=\\"67\\" y=\\"370\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label all-node-label\\">
+      <tspan x=\\"67\\" y=\\"370\\">
         test-id-4
       </tspan>
-    </text><text x=\\"62\\" y=\\"470\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label all-node-label\\">
-      <tspan x=\\"62\\" y=\\"470\\">
+    </text><text x=\\"67\\" y=\\"470\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label all-node-label\\">
+      <tspan x=\\"67\\" y=\\"470\\">
         test-id-5
       </tspan>
-    </text><text x=\\"62\\" y=\\"570\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label all-node-label\\">
-      <tspan x=\\"62\\" y=\\"570\\">
+    </text><text x=\\"67\\" y=\\"570\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label all-node-label\\">
+      <tspan x=\\"67\\" y=\\"570\\">
         test-id-6
       </tspan>
     </text></g>
@@ -441,17 +441,17 @@ exports[`ComponentDependencyGraph when a node is clicked when one of the direct 
   <g></g>
   <g></g>
   <g></g>
-  <g><text x=\\"62\\" y=\\"70\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label direct-node-label\\">
-      <tspan x=\\"62\\" y=\\"70\\">
+  <g><text x=\\"67\\" y=\\"70\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label direct-node-label\\">
+      <tspan x=\\"67\\" y=\\"70\\">
         test-id-1
       </tspan>
-    </text><text x=\\"62\\" y=\\"270\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label direct-node-label\\">
-      <tspan x=\\"62\\" y=\\"270\\">
+    </text><text x=\\"67\\" y=\\"270\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label direct-node-label\\">
+      <tspan x=\\"67\\" y=\\"270\\">
         test-id-3
       </tspan>
     </text></g>
-  <g><text x=\\"62\\" y=\\"170\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label selected-node-label\\">
-      <tspan x=\\"62\\" y=\\"170\\">
+  <g><text x=\\"67\\" y=\\"170\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label selected-node-label\\">
+      <tspan x=\\"67\\" y=\\"170\\">
         test-id-2
       </tspan>
     </text></g>
@@ -478,7 +478,7 @@ exports[`ComponentDependencyGraph when a node is clicked when the background is 
       markerUnits="userSpaceOnUse"
       markerWidth="7.1"
       orient="auto-start-reverse"
-      refX="10"
+      refX="20"
       refY="5.75"
       viewBox="0 0 7.1 11.5"
     >
@@ -493,7 +493,7 @@ exports[`ComponentDependencyGraph when a node is clicked when the background is 
       markerUnits="userSpaceOnUse"
       markerWidth="7.1"
       orient="auto-start-reverse"
-      refX="10"
+      refX="20"
       refY="5.75"
       viewBox="0 0 7.1 11.5"
     >
@@ -508,7 +508,7 @@ exports[`ComponentDependencyGraph when a node is clicked when the background is 
       markerUnits="userSpaceOnUse"
       markerWidth="7.1"
       orient="auto-start-reverse"
-      refX="10"
+      refX="20"
       refY="5.75"
       viewBox="0 0 7.1 11.5"
     >
@@ -523,7 +523,7 @@ exports[`ComponentDependencyGraph when a node is clicked when the background is 
       markerUnits="userSpaceOnUse"
       markerWidth="7.1"
       orient="auto-start-reverse"
-      refX="10"
+      refX="20"
       refY="5.75"
       viewBox="0 0 7.1 11.5"
     >
@@ -538,7 +538,7 @@ exports[`ComponentDependencyGraph when a node is clicked when the background is 
       markerUnits="userSpaceOnUse"
       markerWidth="7.1"
       orient="auto-start-reverse"
-      refX="10"
+      refX="20"
       refY="5.75"
       viewBox="0 0 7.1 11.5"
     >
@@ -553,7 +553,7 @@ exports[`ComponentDependencyGraph when a node is clicked when the background is 
       markerUnits="userSpaceOnUse"
       markerWidth="7.1"
       orient="auto-start-reverse"
-      refX="10"
+      refX="20"
       refY="5.75"
       viewBox="0 0 7.1 11.5"
     >
@@ -568,7 +568,7 @@ exports[`ComponentDependencyGraph when a node is clicked when the background is 
       markerUnits="userSpaceOnUse"
       markerWidth="7.1"
       orient="auto-start-reverse"
-      refX="10"
+      refX="20"
       refY="5.75"
       viewBox="0 0 7.1 11.5"
     >
@@ -623,7 +623,7 @@ exports[`ComponentDependencyGraph when a node is clicked when the background is 
       cx="50"
       cy="50"
       id="component-dependency-graph-node-0"
-      r="5"
+      r="10"
       title="test-id-1"
     />
     <circle
@@ -631,7 +631,7 @@ exports[`ComponentDependencyGraph when a node is clicked when the background is 
       cx="50"
       cy="150"
       id="component-dependency-graph-node-1"
-      r="5"
+      r="10"
       title="test-id-2"
     />
     <circle
@@ -639,7 +639,7 @@ exports[`ComponentDependencyGraph when a node is clicked when the background is 
       cx="50"
       cy="250"
       id="component-dependency-graph-node-2"
-      r="5"
+      r="10"
       title="test-id-3"
     />
     <circle
@@ -647,7 +647,7 @@ exports[`ComponentDependencyGraph when a node is clicked when the background is 
       cx="50"
       cy="350"
       id="component-dependency-graph-node-3"
-      r="5"
+      r="10"
       title="test-id-4"
     />
     <circle
@@ -655,7 +655,7 @@ exports[`ComponentDependencyGraph when a node is clicked when the background is 
       cx="50"
       cy="450"
       id="component-dependency-graph-node-4"
-      r="5"
+      r="10"
       title="test-id-5"
     />
     <circle
@@ -663,7 +663,7 @@ exports[`ComponentDependencyGraph when a node is clicked when the background is 
       cx="50"
       cy="550"
       id="component-dependency-graph-node-5"
-      r="5"
+      r="10"
       title="test-id-6"
     />
   </g>
@@ -679,11 +679,11 @@ exports[`ComponentDependencyGraph when a node is clicked when the background is 
       class="node-label all-node-label"
       font-size="14"
       stroke-width="1.75"
-      x="62"
+      x="67"
       y="70"
     >
       <tspan
-        x="62"
+        x="67"
         y="70"
       >
         
@@ -695,11 +695,11 @@ exports[`ComponentDependencyGraph when a node is clicked when the background is 
       class="node-label all-node-label"
       font-size="14"
       stroke-width="1.75"
-      x="62"
+      x="67"
       y="170"
     >
       <tspan
-        x="62"
+        x="67"
         y="170"
       >
         
@@ -711,11 +711,11 @@ exports[`ComponentDependencyGraph when a node is clicked when the background is 
       class="node-label all-node-label"
       font-size="14"
       stroke-width="1.75"
-      x="62"
+      x="67"
       y="270"
     >
       <tspan
-        x="62"
+        x="67"
         y="270"
       >
         
@@ -727,11 +727,11 @@ exports[`ComponentDependencyGraph when a node is clicked when the background is 
       class="node-label all-node-label"
       font-size="14"
       stroke-width="1.75"
-      x="62"
+      x="67"
       y="370"
     >
       <tspan
-        x="62"
+        x="67"
         y="370"
       >
         
@@ -743,11 +743,11 @@ exports[`ComponentDependencyGraph when a node is clicked when the background is 
       class="node-label all-node-label"
       font-size="14"
       stroke-width="1.75"
-      x="62"
+      x="67"
       y="470"
     >
       <tspan
-        x="62"
+        x="67"
         y="470"
       >
         
@@ -759,11 +759,11 @@ exports[`ComponentDependencyGraph when a node is clicked when the background is 
       class="node-label all-node-label"
       font-size="14"
       stroke-width="1.75"
-      x="62"
+      x="67"
       y="570"
     >
       <tspan
-        x="62"
+        x="67"
         y="570"
       >
         
@@ -785,25 +785,25 @@ exports[`ComponentDependencyGraph when a node is clicked when the node is clicke
 "<svg xmlns=\\"http://www.w3.org/2000/svg\\" overflow=\\"auto\\" width=\\"100%\\" height=\\"1200\\">
   <rect fill-opacity=\\"0\\" class=\\"component-dependency-graph-background\\"></rect>
   <defs>
-    <marker id=\\"component-dependency-graph-dependency-marker-all\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"10\\" refY=\\"5.75\\" class=\\"dependency-marker all-dependency-marker\\">
+    <marker id=\\"component-dependency-graph-dependency-marker-all\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"20\\" refY=\\"5.75\\" class=\\"dependency-marker all-dependency-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-dependency-marker-manual\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"10\\" refY=\\"5.75\\" class=\\"dependency-marker manual-dependency-marker\\">
+    <marker id=\\"component-dependency-graph-dependency-marker-manual\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"20\\" refY=\\"5.75\\" class=\\"dependency-marker manual-dependency-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-dependency-marker-scope-related\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"10\\" refY=\\"5.75\\" class=\\"dependency-marker scope-related-dependency-marker\\">
+    <marker id=\\"component-dependency-graph-dependency-marker-scope-related\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"20\\" refY=\\"5.75\\" class=\\"dependency-marker scope-related-dependency-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-dependency-marker-scoped\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"10\\" refY=\\"5.75\\" class=\\"dependency-marker scoped-dependency-marker\\">
+    <marker id=\\"component-dependency-graph-dependency-marker-scoped\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"20\\" refY=\\"5.75\\" class=\\"dependency-marker scoped-dependency-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-dependency-marker-related\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"10\\" refY=\\"5.75\\" class=\\"dependency-marker related-dependency-marker\\">
+    <marker id=\\"component-dependency-graph-dependency-marker-related\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"20\\" refY=\\"5.75\\" class=\\"dependency-marker related-dependency-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-dependency-marker-direct\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"10\\" refY=\\"5.75\\" class=\\"dependency-marker direct-dependency-marker\\">
+    <marker id=\\"component-dependency-graph-dependency-marker-direct\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"20\\" refY=\\"5.75\\" class=\\"dependency-marker direct-dependency-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-dependency-marker-selected\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"10\\" refY=\\"5.75\\" class=\\"dependency-marker selected-dependency-marker\\">
+    <marker id=\\"component-dependency-graph-dependency-marker-selected\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"20\\" refY=\\"5.75\\" class=\\"dependency-marker selected-dependency-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
   </defs>
@@ -821,12 +821,12 @@ exports[`ComponentDependencyGraph when a node is clicked when the node is clicke
   <g></g>
   <g></g>
   <g>
-    <circle id=\\"component-dependency-graph-node-0\\" r=\\"5\\" cx=\\"50\\" cy=\\"50\\" title=\\"test-id-1\\" class=\\"node all-node\\"></circle>
-    <circle id=\\"component-dependency-graph-node-1\\" r=\\"5\\" cx=\\"50\\" cy=\\"150\\" title=\\"test-id-2\\" class=\\"node all-node\\"></circle>
-    <circle id=\\"component-dependency-graph-node-2\\" r=\\"5\\" cx=\\"50\\" cy=\\"250\\" title=\\"test-id-3\\" class=\\"node all-node\\"></circle>
-    <circle id=\\"component-dependency-graph-node-3\\" r=\\"5\\" cx=\\"50\\" cy=\\"350\\" title=\\"test-id-4\\" class=\\"node all-node\\"></circle>
-    <circle id=\\"component-dependency-graph-node-4\\" r=\\"5\\" cx=\\"50\\" cy=\\"450\\" title=\\"test-id-5\\" class=\\"node all-node\\"></circle>
-    <circle id=\\"component-dependency-graph-node-5\\" r=\\"5\\" cx=\\"50\\" cy=\\"550\\" title=\\"test-id-6\\" class=\\"node all-node\\"></circle>
+    <circle id=\\"component-dependency-graph-node-0\\" r=\\"10\\" cx=\\"50\\" cy=\\"50\\" title=\\"test-id-1\\" class=\\"node all-node\\"></circle>
+    <circle id=\\"component-dependency-graph-node-1\\" r=\\"10\\" cx=\\"50\\" cy=\\"150\\" title=\\"test-id-2\\" class=\\"node all-node\\"></circle>
+    <circle id=\\"component-dependency-graph-node-2\\" r=\\"10\\" cx=\\"50\\" cy=\\"250\\" title=\\"test-id-3\\" class=\\"node all-node\\"></circle>
+    <circle id=\\"component-dependency-graph-node-3\\" r=\\"10\\" cx=\\"50\\" cy=\\"350\\" title=\\"test-id-4\\" class=\\"node all-node\\"></circle>
+    <circle id=\\"component-dependency-graph-node-4\\" r=\\"10\\" cx=\\"50\\" cy=\\"450\\" title=\\"test-id-5\\" class=\\"node all-node\\"></circle>
+    <circle id=\\"component-dependency-graph-node-5\\" r=\\"10\\" cx=\\"50\\" cy=\\"550\\" title=\\"test-id-6\\" class=\\"node all-node\\"></circle>
   </g>
   <g></g>
   <g></g>
@@ -834,28 +834,28 @@ exports[`ComponentDependencyGraph when a node is clicked when the node is clicke
   <g></g>
   <g></g>
   <g></g>
-  <g><text x=\\"62\\" y=\\"70\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label all-node-label\\">
-      <tspan x=\\"62\\" y=\\"70\\">
+  <g><text x=\\"67\\" y=\\"70\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label all-node-label\\">
+      <tspan x=\\"67\\" y=\\"70\\">
         test-id-1
       </tspan>
-    </text><text x=\\"62\\" y=\\"170\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label all-node-label\\">
-      <tspan x=\\"62\\" y=\\"170\\">
+    </text><text x=\\"67\\" y=\\"170\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label all-node-label\\">
+      <tspan x=\\"67\\" y=\\"170\\">
         test-id-2
       </tspan>
-    </text><text x=\\"62\\" y=\\"270\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label all-node-label\\">
-      <tspan x=\\"62\\" y=\\"270\\">
+    </text><text x=\\"67\\" y=\\"270\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label all-node-label\\">
+      <tspan x=\\"67\\" y=\\"270\\">
         test-id-3
       </tspan>
-    </text><text x=\\"62\\" y=\\"370\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label all-node-label\\">
-      <tspan x=\\"62\\" y=\\"370\\">
+    </text><text x=\\"67\\" y=\\"370\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label all-node-label\\">
+      <tspan x=\\"67\\" y=\\"370\\">
         test-id-4
       </tspan>
-    </text><text x=\\"62\\" y=\\"470\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label all-node-label\\">
-      <tspan x=\\"62\\" y=\\"470\\">
+    </text><text x=\\"67\\" y=\\"470\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label all-node-label\\">
+      <tspan x=\\"67\\" y=\\"470\\">
         test-id-5
       </tspan>
-    </text><text x=\\"62\\" y=\\"570\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label all-node-label\\">
-      <tspan x=\\"62\\" y=\\"570\\">
+    </text><text x=\\"67\\" y=\\"570\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label all-node-label\\">
+      <tspan x=\\"67\\" y=\\"570\\">
         test-id-6
       </tspan>
     </text></g>
@@ -872,25 +872,25 @@ exports[`ComponentDependencyGraph when dependencies prop is set to multiple node
 "<svg xmlns=\\"http://www.w3.org/2000/svg\\" overflow=\\"auto\\" width=\\"100%\\" height=\\"1200\\">
   <rect fill-opacity=\\"0\\" class=\\"component-dependency-graph-background\\"></rect>
   <defs>
-    <marker id=\\"component-dependency-graph-dependency-marker-all\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"10\\" refY=\\"5.75\\" class=\\"dependency-marker all-dependency-marker\\">
+    <marker id=\\"component-dependency-graph-dependency-marker-all\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"20\\" refY=\\"5.75\\" class=\\"dependency-marker all-dependency-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-dependency-marker-manual\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"10\\" refY=\\"5.75\\" class=\\"dependency-marker manual-dependency-marker\\">
+    <marker id=\\"component-dependency-graph-dependency-marker-manual\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"20\\" refY=\\"5.75\\" class=\\"dependency-marker manual-dependency-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-dependency-marker-scope-related\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"10\\" refY=\\"5.75\\" class=\\"dependency-marker scope-related-dependency-marker\\">
+    <marker id=\\"component-dependency-graph-dependency-marker-scope-related\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"20\\" refY=\\"5.75\\" class=\\"dependency-marker scope-related-dependency-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-dependency-marker-scoped\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"10\\" refY=\\"5.75\\" class=\\"dependency-marker scoped-dependency-marker\\">
+    <marker id=\\"component-dependency-graph-dependency-marker-scoped\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"20\\" refY=\\"5.75\\" class=\\"dependency-marker scoped-dependency-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-dependency-marker-related\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"10\\" refY=\\"5.75\\" class=\\"dependency-marker related-dependency-marker\\">
+    <marker id=\\"component-dependency-graph-dependency-marker-related\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"20\\" refY=\\"5.75\\" class=\\"dependency-marker related-dependency-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-dependency-marker-direct\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"10\\" refY=\\"5.75\\" class=\\"dependency-marker direct-dependency-marker\\">
+    <marker id=\\"component-dependency-graph-dependency-marker-direct\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"20\\" refY=\\"5.75\\" class=\\"dependency-marker direct-dependency-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-dependency-marker-selected\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"10\\" refY=\\"5.75\\" class=\\"dependency-marker selected-dependency-marker\\">
+    <marker id=\\"component-dependency-graph-dependency-marker-selected\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"20\\" refY=\\"5.75\\" class=\\"dependency-marker selected-dependency-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
   </defs>
@@ -905,9 +905,9 @@ exports[`ComponentDependencyGraph when dependencies prop is set to multiple node
   <g></g>
   <g></g>
   <g>
-    <circle id=\\"component-dependency-graph-node-0\\" r=\\"5\\" cx=\\"50\\" cy=\\"50\\" title=\\"test-id-1\\" class=\\"node all-node\\"></circle>
-    <circle id=\\"component-dependency-graph-node-1\\" r=\\"5\\" cx=\\"50\\" cy=\\"150\\" title=\\"test-id-2\\" class=\\"node all-node\\"></circle>
-    <circle id=\\"component-dependency-graph-node-2\\" r=\\"5\\" cx=\\"50\\" cy=\\"250\\" title=\\"test-id-3\\" class=\\"node all-node\\"></circle>
+    <circle id=\\"component-dependency-graph-node-0\\" r=\\"10\\" cx=\\"50\\" cy=\\"50\\" title=\\"test-id-1\\" class=\\"node all-node\\"></circle>
+    <circle id=\\"component-dependency-graph-node-1\\" r=\\"10\\" cx=\\"50\\" cy=\\"150\\" title=\\"test-id-2\\" class=\\"node all-node\\"></circle>
+    <circle id=\\"component-dependency-graph-node-2\\" r=\\"10\\" cx=\\"50\\" cy=\\"250\\" title=\\"test-id-3\\" class=\\"node all-node\\"></circle>
   </g>
   <g></g>
   <g></g>
@@ -915,16 +915,16 @@ exports[`ComponentDependencyGraph when dependencies prop is set to multiple node
   <g></g>
   <g></g>
   <g></g>
-  <g><text x=\\"62\\" y=\\"70\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label all-node-label\\">
-      <tspan x=\\"62\\" y=\\"70\\">
+  <g><text x=\\"67\\" y=\\"70\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label all-node-label\\">
+      <tspan x=\\"67\\" y=\\"70\\">
         test-id-1
       </tspan>
-    </text><text x=\\"62\\" y=\\"170\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label all-node-label\\">
-      <tspan x=\\"62\\" y=\\"170\\">
+    </text><text x=\\"67\\" y=\\"170\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label all-node-label\\">
+      <tspan x=\\"67\\" y=\\"170\\">
         test-id-2
       </tspan>
-    </text><text x=\\"62\\" y=\\"270\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label all-node-label\\">
-      <tspan x=\\"62\\" y=\\"270\\">
+    </text><text x=\\"67\\" y=\\"270\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label all-node-label\\">
+      <tspan x=\\"67\\" y=\\"270\\">
         test-id-3
       </tspan>
     </text></g>
@@ -941,25 +941,25 @@ exports[`ComponentDependencyGraph when dependencies prop is set to multiple node
 "<svg xmlns=\\"http://www.w3.org/2000/svg\\" overflow=\\"auto\\" width=\\"100%\\" height=\\"1200\\">
   <rect fill-opacity=\\"0\\" class=\\"component-dependency-graph-background\\"></rect>
   <defs>
-    <marker id=\\"component-dependency-graph-dependency-marker-all\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"10\\" refY=\\"5.75\\" class=\\"dependency-marker all-dependency-marker\\">
+    <marker id=\\"component-dependency-graph-dependency-marker-all\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"20\\" refY=\\"5.75\\" class=\\"dependency-marker all-dependency-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-dependency-marker-manual\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"10\\" refY=\\"5.75\\" class=\\"dependency-marker manual-dependency-marker\\">
+    <marker id=\\"component-dependency-graph-dependency-marker-manual\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"20\\" refY=\\"5.75\\" class=\\"dependency-marker manual-dependency-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-dependency-marker-scope-related\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"10\\" refY=\\"5.75\\" class=\\"dependency-marker scope-related-dependency-marker\\">
+    <marker id=\\"component-dependency-graph-dependency-marker-scope-related\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"20\\" refY=\\"5.75\\" class=\\"dependency-marker scope-related-dependency-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-dependency-marker-scoped\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"10\\" refY=\\"5.75\\" class=\\"dependency-marker scoped-dependency-marker\\">
+    <marker id=\\"component-dependency-graph-dependency-marker-scoped\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"20\\" refY=\\"5.75\\" class=\\"dependency-marker scoped-dependency-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-dependency-marker-related\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"10\\" refY=\\"5.75\\" class=\\"dependency-marker related-dependency-marker\\">
+    <marker id=\\"component-dependency-graph-dependency-marker-related\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"20\\" refY=\\"5.75\\" class=\\"dependency-marker related-dependency-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-dependency-marker-direct\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"10\\" refY=\\"5.75\\" class=\\"dependency-marker direct-dependency-marker\\">
+    <marker id=\\"component-dependency-graph-dependency-marker-direct\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"20\\" refY=\\"5.75\\" class=\\"dependency-marker direct-dependency-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-dependency-marker-selected\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"10\\" refY=\\"5.75\\" class=\\"dependency-marker selected-dependency-marker\\">
+    <marker id=\\"component-dependency-graph-dependency-marker-selected\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"20\\" refY=\\"5.75\\" class=\\"dependency-marker selected-dependency-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
   </defs>
@@ -975,28 +975,28 @@ exports[`ComponentDependencyGraph when dependencies prop is set to multiple node
   <g></g>
   <g></g>
   <g>
-    <circle id=\\"component-dependency-graph-node-1\\" r=\\"5\\" cx=\\"50\\" cy=\\"150\\" title=\\"test-id-2\\" class=\\"node all-node\\"></circle>
-    <circle id=\\"component-dependency-graph-node-2\\" r=\\"5\\" cx=\\"50\\" cy=\\"250\\" title=\\"test-id-3\\" class=\\"node all-node\\"></circle>
+    <circle id=\\"component-dependency-graph-node-1\\" r=\\"10\\" cx=\\"50\\" cy=\\"150\\" title=\\"test-id-2\\" class=\\"node all-node\\"></circle>
+    <circle id=\\"component-dependency-graph-node-2\\" r=\\"10\\" cx=\\"50\\" cy=\\"250\\" title=\\"test-id-3\\" class=\\"node all-node\\"></circle>
   </g>
   <g>
-    <circle id=\\"component-dependency-graph-node-0\\" r=\\"5\\" cx=\\"50\\" cy=\\"50\\" title=\\"test-id-1\\" class=\\"node manual-node\\"></circle>
+    <circle id=\\"component-dependency-graph-node-0\\" r=\\"10\\" cx=\\"50\\" cy=\\"50\\" title=\\"test-id-1\\" class=\\"node manual-node\\"></circle>
   </g>
   <g></g>
   <g></g>
   <g></g>
   <g></g>
   <g></g>
-  <g><text x=\\"62\\" y=\\"170\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label all-node-label\\">
-      <tspan x=\\"62\\" y=\\"170\\">
+  <g><text x=\\"67\\" y=\\"170\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label all-node-label\\">
+      <tspan x=\\"67\\" y=\\"170\\">
         test-id-2
       </tspan>
-    </text><text x=\\"62\\" y=\\"270\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label all-node-label\\">
-      <tspan x=\\"62\\" y=\\"270\\">
+    </text><text x=\\"67\\" y=\\"270\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label all-node-label\\">
+      <tspan x=\\"67\\" y=\\"270\\">
         test-id-3
       </tspan>
     </text></g>
-  <g><text x=\\"62\\" y=\\"70\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label manual-node-label\\">
-      <tspan x=\\"62\\" y=\\"70\\">
+  <g><text x=\\"67\\" y=\\"70\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label manual-node-label\\">
+      <tspan x=\\"67\\" y=\\"70\\">
         test-id-1
       </tspan>
     </text></g>
@@ -1012,25 +1012,25 @@ exports[`ComponentDependencyGraph when dependencies prop is set to multiple node
 "<svg xmlns=\\"http://www.w3.org/2000/svg\\" overflow=\\"auto\\" width=\\"100%\\" height=\\"1200\\">
   <rect fill-opacity=\\"0\\" class=\\"component-dependency-graph-background\\"></rect>
   <defs>
-    <marker id=\\"component-dependency-graph-dependency-marker-all\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"10\\" refY=\\"5.75\\" class=\\"dependency-marker all-dependency-marker\\">
+    <marker id=\\"component-dependency-graph-dependency-marker-all\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"20\\" refY=\\"5.75\\" class=\\"dependency-marker all-dependency-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-dependency-marker-manual\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"10\\" refY=\\"5.75\\" class=\\"dependency-marker manual-dependency-marker\\">
+    <marker id=\\"component-dependency-graph-dependency-marker-manual\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"20\\" refY=\\"5.75\\" class=\\"dependency-marker manual-dependency-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-dependency-marker-scope-related\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"10\\" refY=\\"5.75\\" class=\\"dependency-marker scope-related-dependency-marker\\">
+    <marker id=\\"component-dependency-graph-dependency-marker-scope-related\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"20\\" refY=\\"5.75\\" class=\\"dependency-marker scope-related-dependency-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-dependency-marker-scoped\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"10\\" refY=\\"5.75\\" class=\\"dependency-marker scoped-dependency-marker\\">
+    <marker id=\\"component-dependency-graph-dependency-marker-scoped\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"20\\" refY=\\"5.75\\" class=\\"dependency-marker scoped-dependency-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-dependency-marker-related\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"10\\" refY=\\"5.75\\" class=\\"dependency-marker related-dependency-marker\\">
+    <marker id=\\"component-dependency-graph-dependency-marker-related\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"20\\" refY=\\"5.75\\" class=\\"dependency-marker related-dependency-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-dependency-marker-direct\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"10\\" refY=\\"5.75\\" class=\\"dependency-marker direct-dependency-marker\\">
+    <marker id=\\"component-dependency-graph-dependency-marker-direct\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"20\\" refY=\\"5.75\\" class=\\"dependency-marker direct-dependency-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-dependency-marker-selected\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"10\\" refY=\\"5.75\\" class=\\"dependency-marker selected-dependency-marker\\">
+    <marker id=\\"component-dependency-graph-dependency-marker-selected\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"20\\" refY=\\"5.75\\" class=\\"dependency-marker selected-dependency-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
   </defs>
@@ -1045,9 +1045,9 @@ exports[`ComponentDependencyGraph when dependencies prop is set to multiple node
   <g></g>
   <g></g>
   <g>
-    <circle id=\\"component-dependency-graph-node-0\\" r=\\"5\\" cx=\\"50\\" cy=\\"50\\" title=\\"test-id-1, test span 1,  test.tag.1=test-tag-value-1,  test.tag.2=test-tag-value-2\\" class=\\"node all-node\\"></circle>
-    <circle id=\\"component-dependency-graph-node-1\\" r=\\"5\\" cx=\\"50\\" cy=\\"150\\" title=\\"test-id-2, test span 2\\" class=\\"node all-node\\"></circle>
-    <circle id=\\"component-dependency-graph-node-2\\" r=\\"5\\" cx=\\"50\\" cy=\\"250\\" title=\\"test-id-3, test span 3\\" class=\\"node all-node\\"></circle>
+    <circle id=\\"component-dependency-graph-node-0\\" r=\\"10\\" cx=\\"50\\" cy=\\"50\\" title=\\"test-id-1, test span 1,  test.tag.1=test-tag-value-1,  test.tag.2=test-tag-value-2\\" class=\\"node all-node\\"></circle>
+    <circle id=\\"component-dependency-graph-node-1\\" r=\\"10\\" cx=\\"50\\" cy=\\"150\\" title=\\"test-id-2, test span 2\\" class=\\"node all-node\\"></circle>
+    <circle id=\\"component-dependency-graph-node-2\\" r=\\"10\\" cx=\\"50\\" cy=\\"250\\" title=\\"test-id-3, test span 3\\" class=\\"node all-node\\"></circle>
   </g>
   <g></g>
   <g></g>
@@ -1055,31 +1055,31 @@ exports[`ComponentDependencyGraph when dependencies prop is set to multiple node
   <g></g>
   <g></g>
   <g></g>
-  <g><text x=\\"62\\" y=\\"70\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label all-node-label\\">
-      <tspan x=\\"62\\" y=\\"70\\">
+  <g><text x=\\"67\\" y=\\"70\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label all-node-label\\">
+      <tspan x=\\"67\\" y=\\"70\\">
         test-id-1
       </tspan>
-      <tspan x=\\"62\\" y=\\"86.8\\">
+      <tspan x=\\"67\\" y=\\"86.8\\">
         test span 1
       </tspan>
-      <tspan x=\\"62\\" y=\\"103.6\\">
+      <tspan x=\\"67\\" y=\\"103.6\\">
         test.tag.1=test-tag-value-1
       </tspan>
-      <tspan x=\\"62\\" y=\\"120.4\\">
+      <tspan x=\\"67\\" y=\\"120.4\\">
         test.tag.2=test-tag-value-2
       </tspan>
-    </text><text x=\\"62\\" y=\\"170\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label all-node-label\\">
-      <tspan x=\\"62\\" y=\\"170\\">
+    </text><text x=\\"67\\" y=\\"170\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label all-node-label\\">
+      <tspan x=\\"67\\" y=\\"170\\">
         test-id-2
       </tspan>
-      <tspan x=\\"62\\" y=\\"186.8\\">
+      <tspan x=\\"67\\" y=\\"186.8\\">
         test span 2
       </tspan>
-    </text><text x=\\"62\\" y=\\"270\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label all-node-label\\">
-      <tspan x=\\"62\\" y=\\"270\\">
+    </text><text x=\\"67\\" y=\\"270\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label all-node-label\\">
+      <tspan x=\\"67\\" y=\\"270\\">
         test-id-3
       </tspan>
-      <tspan x=\\"62\\" y=\\"286.8\\">
+      <tspan x=\\"67\\" y=\\"286.8\\">
         test span 3
       </tspan>
     </text></g>
@@ -1096,25 +1096,25 @@ exports[`ComponentDependencyGraph when dependencyType prop is set to direct when
 "<svg xmlns=\\"http://www.w3.org/2000/svg\\" overflow=\\"auto\\" width=\\"100%\\" height=\\"1200\\" dependencyType=\\"direct\\">
   <rect fill-opacity=\\"0\\" class=\\"component-dependency-graph-background\\"></rect>
   <defs>
-    <marker id=\\"component-dependency-graph-dependency-marker-all\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"10\\" refY=\\"5.75\\" class=\\"dependency-marker all-dependency-marker\\">
+    <marker id=\\"component-dependency-graph-dependency-marker-all\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"20\\" refY=\\"5.75\\" class=\\"dependency-marker all-dependency-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-dependency-marker-manual\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"10\\" refY=\\"5.75\\" class=\\"dependency-marker manual-dependency-marker\\">
+    <marker id=\\"component-dependency-graph-dependency-marker-manual\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"20\\" refY=\\"5.75\\" class=\\"dependency-marker manual-dependency-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-dependency-marker-scope-related\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"10\\" refY=\\"5.75\\" class=\\"dependency-marker scope-related-dependency-marker\\">
+    <marker id=\\"component-dependency-graph-dependency-marker-scope-related\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"20\\" refY=\\"5.75\\" class=\\"dependency-marker scope-related-dependency-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-dependency-marker-scoped\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"10\\" refY=\\"5.75\\" class=\\"dependency-marker scoped-dependency-marker\\">
+    <marker id=\\"component-dependency-graph-dependency-marker-scoped\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"20\\" refY=\\"5.75\\" class=\\"dependency-marker scoped-dependency-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-dependency-marker-related\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"10\\" refY=\\"5.75\\" class=\\"dependency-marker related-dependency-marker\\">
+    <marker id=\\"component-dependency-graph-dependency-marker-related\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"20\\" refY=\\"5.75\\" class=\\"dependency-marker related-dependency-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-dependency-marker-direct\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"10\\" refY=\\"5.75\\" class=\\"dependency-marker direct-dependency-marker\\">
+    <marker id=\\"component-dependency-graph-dependency-marker-direct\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"20\\" refY=\\"5.75\\" class=\\"dependency-marker direct-dependency-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-dependency-marker-selected\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"10\\" refY=\\"5.75\\" class=\\"dependency-marker selected-dependency-marker\\">
+    <marker id=\\"component-dependency-graph-dependency-marker-selected\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"20\\" refY=\\"5.75\\" class=\\"dependency-marker selected-dependency-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
   </defs>
@@ -1135,51 +1135,51 @@ exports[`ComponentDependencyGraph when dependencyType prop is set to direct when
   </g>
   <g></g>
   <g>
-    <circle id=\\"component-dependency-graph-node-4\\" r=\\"5\\" cx=\\"50\\" cy=\\"450\\" title=\\"test-id-5\\" class=\\"node all-node\\"></circle>
+    <circle id=\\"component-dependency-graph-node-4\\" r=\\"10\\" cx=\\"50\\" cy=\\"450\\" title=\\"test-id-5\\" class=\\"node all-node\\"></circle>
   </g>
   <g>
-    <circle id=\\"component-dependency-graph-node-5\\" r=\\"5\\" cx=\\"50\\" cy=\\"550\\" title=\\"test-id-6\\" class=\\"node manual-node\\"></circle>
+    <circle id=\\"component-dependency-graph-node-5\\" r=\\"10\\" cx=\\"50\\" cy=\\"550\\" title=\\"test-id-6\\" class=\\"node manual-node\\"></circle>
   </g>
   <g></g>
   <g></g>
   <g>
-    <circle id=\\"component-dependency-graph-node-3\\" r=\\"5\\" cx=\\"50\\" cy=\\"350\\" title=\\"test-id-4\\" class=\\"node related-node\\"></circle>
+    <circle id=\\"component-dependency-graph-node-3\\" r=\\"10\\" cx=\\"50\\" cy=\\"350\\" title=\\"test-id-4\\" class=\\"node related-node\\"></circle>
   </g>
   <g>
-    <circle id=\\"component-dependency-graph-node-0\\" r=\\"5\\" cx=\\"50\\" cy=\\"50\\" title=\\"test-id-1\\" class=\\"node direct-node\\"></circle>
-    <circle id=\\"component-dependency-graph-node-2\\" r=\\"5\\" cx=\\"50\\" cy=\\"250\\" title=\\"test-id-3\\" class=\\"node direct-node\\"></circle>
+    <circle id=\\"component-dependency-graph-node-0\\" r=\\"10\\" cx=\\"50\\" cy=\\"50\\" title=\\"test-id-1\\" class=\\"node direct-node\\"></circle>
+    <circle id=\\"component-dependency-graph-node-2\\" r=\\"10\\" cx=\\"50\\" cy=\\"250\\" title=\\"test-id-3\\" class=\\"node direct-node\\"></circle>
   </g>
   <g>
-    <circle id=\\"component-dependency-graph-node-1\\" r=\\"5\\" cx=\\"50\\" cy=\\"150\\" title=\\"test-id-2\\" class=\\"node selected-node\\"></circle>
+    <circle id=\\"component-dependency-graph-node-1\\" r=\\"10\\" cx=\\"50\\" cy=\\"150\\" title=\\"test-id-2\\" class=\\"node selected-node\\"></circle>
   </g>
-  <g><text x=\\"62\\" y=\\"470\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label all-node-label\\">
-      <tspan x=\\"62\\" y=\\"470\\">
+  <g><text x=\\"67\\" y=\\"470\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label all-node-label\\">
+      <tspan x=\\"67\\" y=\\"470\\">
         test-id-5
       </tspan>
     </text></g>
-  <g><text x=\\"62\\" y=\\"570\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label manual-node-label\\">
-      <tspan x=\\"62\\" y=\\"570\\">
+  <g><text x=\\"67\\" y=\\"570\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label manual-node-label\\">
+      <tspan x=\\"67\\" y=\\"570\\">
         test-id-6
       </tspan>
     </text></g>
   <g></g>
   <g></g>
-  <g><text x=\\"62\\" y=\\"370\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label related-node-label\\">
-      <tspan x=\\"62\\" y=\\"370\\">
+  <g><text x=\\"67\\" y=\\"370\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label related-node-label\\">
+      <tspan x=\\"67\\" y=\\"370\\">
         test-id-4
       </tspan>
     </text></g>
-  <g><text x=\\"62\\" y=\\"70\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label direct-node-label\\">
-      <tspan x=\\"62\\" y=\\"70\\">
+  <g><text x=\\"67\\" y=\\"70\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label direct-node-label\\">
+      <tspan x=\\"67\\" y=\\"70\\">
         test-id-1
       </tspan>
-    </text><text x=\\"62\\" y=\\"270\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label direct-node-label\\">
-      <tspan x=\\"62\\" y=\\"270\\">
+    </text><text x=\\"67\\" y=\\"270\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label direct-node-label\\">
+      <tspan x=\\"67\\" y=\\"270\\">
         test-id-3
       </tspan>
     </text></g>
-  <g><text x=\\"62\\" y=\\"170\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label selected-node-label\\">
-      <tspan x=\\"62\\" y=\\"170\\">
+  <g><text x=\\"67\\" y=\\"170\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label selected-node-label\\">
+      <tspan x=\\"67\\" y=\\"170\\">
         test-id-2
       </tspan>
     </text></g>
@@ -1190,25 +1190,25 @@ exports[`ComponentDependencyGraph when dependencyType prop is set to direct when
 "<svg xmlns=\\"http://www.w3.org/2000/svg\\" overflow=\\"auto\\" width=\\"100%\\" height=\\"1200\\" dependencyType=\\"direct\\">
   <rect fill-opacity=\\"0\\" class=\\"component-dependency-graph-background\\"></rect>
   <defs>
-    <marker id=\\"component-dependency-graph-dependency-marker-all\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"10\\" refY=\\"5.75\\" class=\\"dependency-marker all-dependency-marker\\">
+    <marker id=\\"component-dependency-graph-dependency-marker-all\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"20\\" refY=\\"5.75\\" class=\\"dependency-marker all-dependency-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-dependency-marker-manual\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"10\\" refY=\\"5.75\\" class=\\"dependency-marker manual-dependency-marker\\">
+    <marker id=\\"component-dependency-graph-dependency-marker-manual\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"20\\" refY=\\"5.75\\" class=\\"dependency-marker manual-dependency-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-dependency-marker-scope-related\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"10\\" refY=\\"5.75\\" class=\\"dependency-marker scope-related-dependency-marker\\">
+    <marker id=\\"component-dependency-graph-dependency-marker-scope-related\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"20\\" refY=\\"5.75\\" class=\\"dependency-marker scope-related-dependency-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-dependency-marker-scoped\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"10\\" refY=\\"5.75\\" class=\\"dependency-marker scoped-dependency-marker\\">
+    <marker id=\\"component-dependency-graph-dependency-marker-scoped\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"20\\" refY=\\"5.75\\" class=\\"dependency-marker scoped-dependency-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-dependency-marker-related\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"10\\" refY=\\"5.75\\" class=\\"dependency-marker related-dependency-marker\\">
+    <marker id=\\"component-dependency-graph-dependency-marker-related\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"20\\" refY=\\"5.75\\" class=\\"dependency-marker related-dependency-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-dependency-marker-direct\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"10\\" refY=\\"5.75\\" class=\\"dependency-marker direct-dependency-marker\\">
+    <marker id=\\"component-dependency-graph-dependency-marker-direct\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"20\\" refY=\\"5.75\\" class=\\"dependency-marker direct-dependency-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-dependency-marker-selected\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"10\\" refY=\\"5.75\\" class=\\"dependency-marker selected-dependency-marker\\">
+    <marker id=\\"component-dependency-graph-dependency-marker-selected\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"20\\" refY=\\"5.75\\" class=\\"dependency-marker selected-dependency-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
   </defs>
@@ -1227,43 +1227,43 @@ exports[`ComponentDependencyGraph when dependencyType prop is set to direct when
   <g></g>
   <g></g>
   <g>
-    <circle id=\\"component-dependency-graph-node-0\\" r=\\"5\\" cx=\\"50\\" cy=\\"50\\" title=\\"test-id-1\\" class=\\"node all-node\\"></circle>
-    <circle id=\\"component-dependency-graph-node-1\\" r=\\"5\\" cx=\\"50\\" cy=\\"150\\" title=\\"test-id-2\\" class=\\"node all-node\\"></circle>
-    <circle id=\\"component-dependency-graph-node-2\\" r=\\"5\\" cx=\\"50\\" cy=\\"250\\" title=\\"test-id-3\\" class=\\"node all-node\\"></circle>
-    <circle id=\\"component-dependency-graph-node-3\\" r=\\"5\\" cx=\\"50\\" cy=\\"350\\" title=\\"test-id-4\\" class=\\"node all-node\\"></circle>
-    <circle id=\\"component-dependency-graph-node-4\\" r=\\"5\\" cx=\\"50\\" cy=\\"450\\" title=\\"test-id-5\\" class=\\"node all-node\\"></circle>
+    <circle id=\\"component-dependency-graph-node-0\\" r=\\"10\\" cx=\\"50\\" cy=\\"50\\" title=\\"test-id-1\\" class=\\"node all-node\\"></circle>
+    <circle id=\\"component-dependency-graph-node-1\\" r=\\"10\\" cx=\\"50\\" cy=\\"150\\" title=\\"test-id-2\\" class=\\"node all-node\\"></circle>
+    <circle id=\\"component-dependency-graph-node-2\\" r=\\"10\\" cx=\\"50\\" cy=\\"250\\" title=\\"test-id-3\\" class=\\"node all-node\\"></circle>
+    <circle id=\\"component-dependency-graph-node-3\\" r=\\"10\\" cx=\\"50\\" cy=\\"350\\" title=\\"test-id-4\\" class=\\"node all-node\\"></circle>
+    <circle id=\\"component-dependency-graph-node-4\\" r=\\"10\\" cx=\\"50\\" cy=\\"450\\" title=\\"test-id-5\\" class=\\"node all-node\\"></circle>
   </g>
   <g>
-    <circle id=\\"component-dependency-graph-node-5\\" r=\\"5\\" cx=\\"50\\" cy=\\"550\\" title=\\"test-id-6\\" class=\\"node manual-node\\"></circle>
+    <circle id=\\"component-dependency-graph-node-5\\" r=\\"10\\" cx=\\"50\\" cy=\\"550\\" title=\\"test-id-6\\" class=\\"node manual-node\\"></circle>
   </g>
   <g></g>
   <g></g>
   <g></g>
   <g></g>
   <g></g>
-  <g><text x=\\"62\\" y=\\"70\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label all-node-label\\">
-      <tspan x=\\"62\\" y=\\"70\\">
+  <g><text x=\\"67\\" y=\\"70\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label all-node-label\\">
+      <tspan x=\\"67\\" y=\\"70\\">
         test-id-1
       </tspan>
-    </text><text x=\\"62\\" y=\\"170\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label all-node-label\\">
-      <tspan x=\\"62\\" y=\\"170\\">
+    </text><text x=\\"67\\" y=\\"170\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label all-node-label\\">
+      <tspan x=\\"67\\" y=\\"170\\">
         test-id-2
       </tspan>
-    </text><text x=\\"62\\" y=\\"270\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label all-node-label\\">
-      <tspan x=\\"62\\" y=\\"270\\">
+    </text><text x=\\"67\\" y=\\"270\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label all-node-label\\">
+      <tspan x=\\"67\\" y=\\"270\\">
         test-id-3
       </tspan>
-    </text><text x=\\"62\\" y=\\"370\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label all-node-label\\">
-      <tspan x=\\"62\\" y=\\"370\\">
+    </text><text x=\\"67\\" y=\\"370\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label all-node-label\\">
+      <tspan x=\\"67\\" y=\\"370\\">
         test-id-4
       </tspan>
-    </text><text x=\\"62\\" y=\\"470\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label all-node-label\\">
-      <tspan x=\\"62\\" y=\\"470\\">
+    </text><text x=\\"67\\" y=\\"470\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label all-node-label\\">
+      <tspan x=\\"67\\" y=\\"470\\">
         test-id-5
       </tspan>
     </text></g>
-  <g><text x=\\"62\\" y=\\"570\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label manual-node-label\\">
-      <tspan x=\\"62\\" y=\\"570\\">
+  <g><text x=\\"67\\" y=\\"570\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label manual-node-label\\">
+      <tspan x=\\"67\\" y=\\"570\\">
         test-id-6
       </tspan>
     </text></g>
@@ -1279,25 +1279,25 @@ exports[`ComponentDependencyGraph when dependencyType prop is set to related whe
 "<svg xmlns=\\"http://www.w3.org/2000/svg\\" overflow=\\"auto\\" width=\\"100%\\" height=\\"1200\\" dependencyType=\\"related\\">
   <rect fill-opacity=\\"0\\" class=\\"component-dependency-graph-background\\"></rect>
   <defs>
-    <marker id=\\"component-dependency-graph-dependency-marker-all\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"10\\" refY=\\"5.75\\" class=\\"dependency-marker all-dependency-marker\\">
+    <marker id=\\"component-dependency-graph-dependency-marker-all\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"20\\" refY=\\"5.75\\" class=\\"dependency-marker all-dependency-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-dependency-marker-manual\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"10\\" refY=\\"5.75\\" class=\\"dependency-marker manual-dependency-marker\\">
+    <marker id=\\"component-dependency-graph-dependency-marker-manual\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"20\\" refY=\\"5.75\\" class=\\"dependency-marker manual-dependency-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-dependency-marker-scope-related\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"10\\" refY=\\"5.75\\" class=\\"dependency-marker scope-related-dependency-marker\\">
+    <marker id=\\"component-dependency-graph-dependency-marker-scope-related\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"20\\" refY=\\"5.75\\" class=\\"dependency-marker scope-related-dependency-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-dependency-marker-scoped\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"10\\" refY=\\"5.75\\" class=\\"dependency-marker scoped-dependency-marker\\">
+    <marker id=\\"component-dependency-graph-dependency-marker-scoped\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"20\\" refY=\\"5.75\\" class=\\"dependency-marker scoped-dependency-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-dependency-marker-related\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"10\\" refY=\\"5.75\\" class=\\"dependency-marker related-dependency-marker\\">
+    <marker id=\\"component-dependency-graph-dependency-marker-related\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"20\\" refY=\\"5.75\\" class=\\"dependency-marker related-dependency-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-dependency-marker-direct\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"10\\" refY=\\"5.75\\" class=\\"dependency-marker direct-dependency-marker\\">
+    <marker id=\\"component-dependency-graph-dependency-marker-direct\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"20\\" refY=\\"5.75\\" class=\\"dependency-marker direct-dependency-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-dependency-marker-selected\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"10\\" refY=\\"5.75\\" class=\\"dependency-marker selected-dependency-marker\\">
+    <marker id=\\"component-dependency-graph-dependency-marker-selected\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"20\\" refY=\\"5.75\\" class=\\"dependency-marker selected-dependency-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
   </defs>
@@ -1318,51 +1318,51 @@ exports[`ComponentDependencyGraph when dependencyType prop is set to related whe
   </g>
   <g></g>
   <g>
-    <circle id=\\"component-dependency-graph-node-4\\" r=\\"5\\" cx=\\"50\\" cy=\\"450\\" title=\\"test-id-5\\" class=\\"node all-node\\"></circle>
+    <circle id=\\"component-dependency-graph-node-4\\" r=\\"10\\" cx=\\"50\\" cy=\\"450\\" title=\\"test-id-5\\" class=\\"node all-node\\"></circle>
   </g>
   <g>
-    <circle id=\\"component-dependency-graph-node-5\\" r=\\"5\\" cx=\\"50\\" cy=\\"550\\" title=\\"test-id-6\\" class=\\"node manual-node\\"></circle>
+    <circle id=\\"component-dependency-graph-node-5\\" r=\\"10\\" cx=\\"50\\" cy=\\"550\\" title=\\"test-id-6\\" class=\\"node manual-node\\"></circle>
   </g>
   <g></g>
   <g></g>
   <g>
-    <circle id=\\"component-dependency-graph-node-3\\" r=\\"5\\" cx=\\"50\\" cy=\\"350\\" title=\\"test-id-4\\" class=\\"node related-node\\"></circle>
+    <circle id=\\"component-dependency-graph-node-3\\" r=\\"10\\" cx=\\"50\\" cy=\\"350\\" title=\\"test-id-4\\" class=\\"node related-node\\"></circle>
   </g>
   <g>
-    <circle id=\\"component-dependency-graph-node-0\\" r=\\"5\\" cx=\\"50\\" cy=\\"50\\" title=\\"test-id-1\\" class=\\"node direct-node\\"></circle>
-    <circle id=\\"component-dependency-graph-node-2\\" r=\\"5\\" cx=\\"50\\" cy=\\"250\\" title=\\"test-id-3\\" class=\\"node direct-node\\"></circle>
+    <circle id=\\"component-dependency-graph-node-0\\" r=\\"10\\" cx=\\"50\\" cy=\\"50\\" title=\\"test-id-1\\" class=\\"node direct-node\\"></circle>
+    <circle id=\\"component-dependency-graph-node-2\\" r=\\"10\\" cx=\\"50\\" cy=\\"250\\" title=\\"test-id-3\\" class=\\"node direct-node\\"></circle>
   </g>
   <g>
-    <circle id=\\"component-dependency-graph-node-1\\" r=\\"5\\" cx=\\"50\\" cy=\\"150\\" title=\\"test-id-2\\" class=\\"node selected-node\\"></circle>
+    <circle id=\\"component-dependency-graph-node-1\\" r=\\"10\\" cx=\\"50\\" cy=\\"150\\" title=\\"test-id-2\\" class=\\"node selected-node\\"></circle>
   </g>
-  <g><text x=\\"62\\" y=\\"470\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label all-node-label\\">
-      <tspan x=\\"62\\" y=\\"470\\">
+  <g><text x=\\"67\\" y=\\"470\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label all-node-label\\">
+      <tspan x=\\"67\\" y=\\"470\\">
         test-id-5
       </tspan>
     </text></g>
-  <g><text x=\\"62\\" y=\\"570\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label manual-node-label\\">
-      <tspan x=\\"62\\" y=\\"570\\">
+  <g><text x=\\"67\\" y=\\"570\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label manual-node-label\\">
+      <tspan x=\\"67\\" y=\\"570\\">
         test-id-6
       </tspan>
     </text></g>
   <g></g>
   <g></g>
-  <g><text x=\\"62\\" y=\\"370\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label related-node-label\\">
-      <tspan x=\\"62\\" y=\\"370\\">
+  <g><text x=\\"67\\" y=\\"370\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label related-node-label\\">
+      <tspan x=\\"67\\" y=\\"370\\">
         test-id-4
       </tspan>
     </text></g>
-  <g><text x=\\"62\\" y=\\"70\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label direct-node-label\\">
-      <tspan x=\\"62\\" y=\\"70\\">
+  <g><text x=\\"67\\" y=\\"70\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label direct-node-label\\">
+      <tspan x=\\"67\\" y=\\"70\\">
         test-id-1
       </tspan>
-    </text><text x=\\"62\\" y=\\"270\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label direct-node-label\\">
-      <tspan x=\\"62\\" y=\\"270\\">
+    </text><text x=\\"67\\" y=\\"270\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label direct-node-label\\">
+      <tspan x=\\"67\\" y=\\"270\\">
         test-id-3
       </tspan>
     </text></g>
-  <g><text x=\\"62\\" y=\\"170\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label selected-node-label\\">
-      <tspan x=\\"62\\" y=\\"170\\">
+  <g><text x=\\"67\\" y=\\"170\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label selected-node-label\\">
+      <tspan x=\\"67\\" y=\\"170\\">
         test-id-2
       </tspan>
     </text></g>
@@ -1373,25 +1373,25 @@ exports[`ComponentDependencyGraph when dependencyType prop is set to related whe
 "<svg xmlns=\\"http://www.w3.org/2000/svg\\" overflow=\\"auto\\" width=\\"100%\\" height=\\"1200\\" dependencyType=\\"related\\">
   <rect fill-opacity=\\"0\\" class=\\"component-dependency-graph-background\\"></rect>
   <defs>
-    <marker id=\\"component-dependency-graph-dependency-marker-all\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"10\\" refY=\\"5.75\\" class=\\"dependency-marker all-dependency-marker\\">
+    <marker id=\\"component-dependency-graph-dependency-marker-all\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"20\\" refY=\\"5.75\\" class=\\"dependency-marker all-dependency-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-dependency-marker-manual\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"10\\" refY=\\"5.75\\" class=\\"dependency-marker manual-dependency-marker\\">
+    <marker id=\\"component-dependency-graph-dependency-marker-manual\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"20\\" refY=\\"5.75\\" class=\\"dependency-marker manual-dependency-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-dependency-marker-scope-related\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"10\\" refY=\\"5.75\\" class=\\"dependency-marker scope-related-dependency-marker\\">
+    <marker id=\\"component-dependency-graph-dependency-marker-scope-related\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"20\\" refY=\\"5.75\\" class=\\"dependency-marker scope-related-dependency-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-dependency-marker-scoped\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"10\\" refY=\\"5.75\\" class=\\"dependency-marker scoped-dependency-marker\\">
+    <marker id=\\"component-dependency-graph-dependency-marker-scoped\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"20\\" refY=\\"5.75\\" class=\\"dependency-marker scoped-dependency-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-dependency-marker-related\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"10\\" refY=\\"5.75\\" class=\\"dependency-marker related-dependency-marker\\">
+    <marker id=\\"component-dependency-graph-dependency-marker-related\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"20\\" refY=\\"5.75\\" class=\\"dependency-marker related-dependency-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-dependency-marker-direct\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"10\\" refY=\\"5.75\\" class=\\"dependency-marker direct-dependency-marker\\">
+    <marker id=\\"component-dependency-graph-dependency-marker-direct\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"20\\" refY=\\"5.75\\" class=\\"dependency-marker direct-dependency-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-dependency-marker-selected\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"10\\" refY=\\"5.75\\" class=\\"dependency-marker selected-dependency-marker\\">
+    <marker id=\\"component-dependency-graph-dependency-marker-selected\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"20\\" refY=\\"5.75\\" class=\\"dependency-marker selected-dependency-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
   </defs>
@@ -1410,43 +1410,43 @@ exports[`ComponentDependencyGraph when dependencyType prop is set to related whe
   <g></g>
   <g></g>
   <g>
-    <circle id=\\"component-dependency-graph-node-0\\" r=\\"5\\" cx=\\"50\\" cy=\\"50\\" title=\\"test-id-1\\" class=\\"node all-node\\"></circle>
-    <circle id=\\"component-dependency-graph-node-1\\" r=\\"5\\" cx=\\"50\\" cy=\\"150\\" title=\\"test-id-2\\" class=\\"node all-node\\"></circle>
-    <circle id=\\"component-dependency-graph-node-2\\" r=\\"5\\" cx=\\"50\\" cy=\\"250\\" title=\\"test-id-3\\" class=\\"node all-node\\"></circle>
-    <circle id=\\"component-dependency-graph-node-3\\" r=\\"5\\" cx=\\"50\\" cy=\\"350\\" title=\\"test-id-4\\" class=\\"node all-node\\"></circle>
-    <circle id=\\"component-dependency-graph-node-4\\" r=\\"5\\" cx=\\"50\\" cy=\\"450\\" title=\\"test-id-5\\" class=\\"node all-node\\"></circle>
+    <circle id=\\"component-dependency-graph-node-0\\" r=\\"10\\" cx=\\"50\\" cy=\\"50\\" title=\\"test-id-1\\" class=\\"node all-node\\"></circle>
+    <circle id=\\"component-dependency-graph-node-1\\" r=\\"10\\" cx=\\"50\\" cy=\\"150\\" title=\\"test-id-2\\" class=\\"node all-node\\"></circle>
+    <circle id=\\"component-dependency-graph-node-2\\" r=\\"10\\" cx=\\"50\\" cy=\\"250\\" title=\\"test-id-3\\" class=\\"node all-node\\"></circle>
+    <circle id=\\"component-dependency-graph-node-3\\" r=\\"10\\" cx=\\"50\\" cy=\\"350\\" title=\\"test-id-4\\" class=\\"node all-node\\"></circle>
+    <circle id=\\"component-dependency-graph-node-4\\" r=\\"10\\" cx=\\"50\\" cy=\\"450\\" title=\\"test-id-5\\" class=\\"node all-node\\"></circle>
   </g>
   <g>
-    <circle id=\\"component-dependency-graph-node-5\\" r=\\"5\\" cx=\\"50\\" cy=\\"550\\" title=\\"test-id-6\\" class=\\"node manual-node\\"></circle>
+    <circle id=\\"component-dependency-graph-node-5\\" r=\\"10\\" cx=\\"50\\" cy=\\"550\\" title=\\"test-id-6\\" class=\\"node manual-node\\"></circle>
   </g>
   <g></g>
   <g></g>
   <g></g>
   <g></g>
   <g></g>
-  <g><text x=\\"62\\" y=\\"70\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label all-node-label\\">
-      <tspan x=\\"62\\" y=\\"70\\">
+  <g><text x=\\"67\\" y=\\"70\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label all-node-label\\">
+      <tspan x=\\"67\\" y=\\"70\\">
         test-id-1
       </tspan>
-    </text><text x=\\"62\\" y=\\"170\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label all-node-label\\">
-      <tspan x=\\"62\\" y=\\"170\\">
+    </text><text x=\\"67\\" y=\\"170\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label all-node-label\\">
+      <tspan x=\\"67\\" y=\\"170\\">
         test-id-2
       </tspan>
-    </text><text x=\\"62\\" y=\\"270\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label all-node-label\\">
-      <tspan x=\\"62\\" y=\\"270\\">
+    </text><text x=\\"67\\" y=\\"270\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label all-node-label\\">
+      <tspan x=\\"67\\" y=\\"270\\">
         test-id-3
       </tspan>
-    </text><text x=\\"62\\" y=\\"370\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label all-node-label\\">
-      <tspan x=\\"62\\" y=\\"370\\">
+    </text><text x=\\"67\\" y=\\"370\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label all-node-label\\">
+      <tspan x=\\"67\\" y=\\"370\\">
         test-id-4
       </tspan>
-    </text><text x=\\"62\\" y=\\"470\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label all-node-label\\">
-      <tspan x=\\"62\\" y=\\"470\\">
+    </text><text x=\\"67\\" y=\\"470\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label all-node-label\\">
+      <tspan x=\\"67\\" y=\\"470\\">
         test-id-5
       </tspan>
     </text></g>
-  <g><text x=\\"62\\" y=\\"570\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label manual-node-label\\">
-      <tspan x=\\"62\\" y=\\"570\\">
+  <g><text x=\\"67\\" y=\\"570\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label manual-node-label\\">
+      <tspan x=\\"67\\" y=\\"570\\">
         test-id-6
       </tspan>
     </text></g>
@@ -1462,25 +1462,25 @@ exports[`ComponentDependencyGraph when the mouse hovers over a node renders the 
 "<svg xmlns=\\"http://www.w3.org/2000/svg\\" overflow=\\"auto\\" width=\\"100%\\" height=\\"1200\\">
   <rect fill-opacity=\\"0\\" class=\\"component-dependency-graph-background\\"></rect>
   <defs>
-    <marker id=\\"component-dependency-graph-dependency-marker-all\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"10\\" refY=\\"5.75\\" class=\\"dependency-marker all-dependency-marker\\">
+    <marker id=\\"component-dependency-graph-dependency-marker-all\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"20\\" refY=\\"5.75\\" class=\\"dependency-marker all-dependency-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-dependency-marker-manual\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"10\\" refY=\\"5.75\\" class=\\"dependency-marker manual-dependency-marker\\">
+    <marker id=\\"component-dependency-graph-dependency-marker-manual\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"20\\" refY=\\"5.75\\" class=\\"dependency-marker manual-dependency-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-dependency-marker-scope-related\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"10\\" refY=\\"5.75\\" class=\\"dependency-marker scope-related-dependency-marker\\">
+    <marker id=\\"component-dependency-graph-dependency-marker-scope-related\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"20\\" refY=\\"5.75\\" class=\\"dependency-marker scope-related-dependency-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-dependency-marker-scoped\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"10\\" refY=\\"5.75\\" class=\\"dependency-marker scoped-dependency-marker\\">
+    <marker id=\\"component-dependency-graph-dependency-marker-scoped\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"20\\" refY=\\"5.75\\" class=\\"dependency-marker scoped-dependency-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-dependency-marker-related\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"10\\" refY=\\"5.75\\" class=\\"dependency-marker related-dependency-marker\\">
+    <marker id=\\"component-dependency-graph-dependency-marker-related\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"20\\" refY=\\"5.75\\" class=\\"dependency-marker related-dependency-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-dependency-marker-direct\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"10\\" refY=\\"5.75\\" class=\\"dependency-marker direct-dependency-marker\\">
+    <marker id=\\"component-dependency-graph-dependency-marker-direct\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"20\\" refY=\\"5.75\\" class=\\"dependency-marker direct-dependency-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-dependency-marker-selected\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"10\\" refY=\\"5.75\\" class=\\"dependency-marker selected-dependency-marker\\">
+    <marker id=\\"component-dependency-graph-dependency-marker-selected\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"20\\" refY=\\"5.75\\" class=\\"dependency-marker selected-dependency-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
   </defs>
@@ -1499,31 +1499,31 @@ exports[`ComponentDependencyGraph when the mouse hovers over a node renders the 
   </g>
   <g></g>
   <g>
-    <circle id=\\"component-dependency-graph-node-3\\" r=\\"5\\" cx=\\"50\\" cy=\\"350\\" title=\\"test-id-4\\" class=\\"node all-node\\"></circle>
-    <circle id=\\"component-dependency-graph-node-4\\" r=\\"5\\" cx=\\"50\\" cy=\\"450\\" title=\\"test-id-5\\" class=\\"node all-node\\"></circle>
-    <circle id=\\"component-dependency-graph-node-5\\" r=\\"5\\" cx=\\"50\\" cy=\\"550\\" title=\\"test-id-6\\" class=\\"node all-node\\"></circle>
+    <circle id=\\"component-dependency-graph-node-3\\" r=\\"10\\" cx=\\"50\\" cy=\\"350\\" title=\\"test-id-4\\" class=\\"node all-node\\"></circle>
+    <circle id=\\"component-dependency-graph-node-4\\" r=\\"10\\" cx=\\"50\\" cy=\\"450\\" title=\\"test-id-5\\" class=\\"node all-node\\"></circle>
+    <circle id=\\"component-dependency-graph-node-5\\" r=\\"10\\" cx=\\"50\\" cy=\\"550\\" title=\\"test-id-6\\" class=\\"node all-node\\"></circle>
   </g>
   <g></g>
   <g></g>
   <g></g>
   <g></g>
   <g>
-    <circle id=\\"component-dependency-graph-node-0\\" r=\\"5\\" cx=\\"50\\" cy=\\"50\\" title=\\"test-id-1\\" class=\\"node direct-node\\"></circle>
-    <circle id=\\"component-dependency-graph-node-2\\" r=\\"5\\" cx=\\"50\\" cy=\\"250\\" title=\\"test-id-3\\" class=\\"node direct-node\\"></circle>
+    <circle id=\\"component-dependency-graph-node-0\\" r=\\"10\\" cx=\\"50\\" cy=\\"50\\" title=\\"test-id-1\\" class=\\"node direct-node\\"></circle>
+    <circle id=\\"component-dependency-graph-node-2\\" r=\\"10\\" cx=\\"50\\" cy=\\"250\\" title=\\"test-id-3\\" class=\\"node direct-node\\"></circle>
   </g>
   <g>
-    <circle id=\\"component-dependency-graph-node-1\\" r=\\"5\\" cx=\\"50\\" cy=\\"150\\" title=\\"test-id-2\\" class=\\"node selected-node\\"></circle>
+    <circle id=\\"component-dependency-graph-node-1\\" r=\\"10\\" cx=\\"50\\" cy=\\"150\\" title=\\"test-id-2\\" class=\\"node selected-node\\"></circle>
   </g>
-  <g><text x=\\"62\\" y=\\"370\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label all-node-label\\">
-      <tspan x=\\"62\\" y=\\"370\\">
+  <g><text x=\\"67\\" y=\\"370\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label all-node-label\\">
+      <tspan x=\\"67\\" y=\\"370\\">
         test-id-4
       </tspan>
-    </text><text x=\\"62\\" y=\\"470\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label all-node-label\\">
-      <tspan x=\\"62\\" y=\\"470\\">
+    </text><text x=\\"67\\" y=\\"470\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label all-node-label\\">
+      <tspan x=\\"67\\" y=\\"470\\">
         test-id-5
       </tspan>
-    </text><text x=\\"62\\" y=\\"570\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label all-node-label\\">
-      <tspan x=\\"62\\" y=\\"570\\">
+    </text><text x=\\"67\\" y=\\"570\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label all-node-label\\">
+      <tspan x=\\"67\\" y=\\"570\\">
         test-id-6
       </tspan>
     </text></g>
@@ -1531,17 +1531,17 @@ exports[`ComponentDependencyGraph when the mouse hovers over a node renders the 
   <g></g>
   <g></g>
   <g></g>
-  <g><text x=\\"62\\" y=\\"70\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label direct-node-label\\">
-      <tspan x=\\"62\\" y=\\"70\\">
+  <g><text x=\\"67\\" y=\\"70\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label direct-node-label\\">
+      <tspan x=\\"67\\" y=\\"70\\">
         test-id-1
       </tspan>
-    </text><text x=\\"62\\" y=\\"270\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label direct-node-label\\">
-      <tspan x=\\"62\\" y=\\"270\\">
+    </text><text x=\\"67\\" y=\\"270\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label direct-node-label\\">
+      <tspan x=\\"67\\" y=\\"270\\">
         test-id-3
       </tspan>
     </text></g>
-  <g><text x=\\"62\\" y=\\"170\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label selected-node-label\\">
-      <tspan x=\\"62\\" y=\\"170\\">
+  <g><text x=\\"67\\" y=\\"170\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label selected-node-label\\">
+      <tspan x=\\"67\\" y=\\"170\\">
         test-id-2
       </tspan>
     </text></g>
@@ -1552,25 +1552,25 @@ exports[`ComponentDependencyGraph when the mouse hovers over a node when the mou
 "<svg xmlns=\\"http://www.w3.org/2000/svg\\" overflow=\\"auto\\" width=\\"100%\\" height=\\"1200\\">
   <rect fill-opacity=\\"0\\" class=\\"component-dependency-graph-background\\"></rect>
   <defs>
-    <marker id=\\"component-dependency-graph-dependency-marker-all\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"10\\" refY=\\"5.75\\" class=\\"dependency-marker all-dependency-marker\\">
+    <marker id=\\"component-dependency-graph-dependency-marker-all\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"20\\" refY=\\"5.75\\" class=\\"dependency-marker all-dependency-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-dependency-marker-manual\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"10\\" refY=\\"5.75\\" class=\\"dependency-marker manual-dependency-marker\\">
+    <marker id=\\"component-dependency-graph-dependency-marker-manual\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"20\\" refY=\\"5.75\\" class=\\"dependency-marker manual-dependency-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-dependency-marker-scope-related\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"10\\" refY=\\"5.75\\" class=\\"dependency-marker scope-related-dependency-marker\\">
+    <marker id=\\"component-dependency-graph-dependency-marker-scope-related\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"20\\" refY=\\"5.75\\" class=\\"dependency-marker scope-related-dependency-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-dependency-marker-scoped\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"10\\" refY=\\"5.75\\" class=\\"dependency-marker scoped-dependency-marker\\">
+    <marker id=\\"component-dependency-graph-dependency-marker-scoped\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"20\\" refY=\\"5.75\\" class=\\"dependency-marker scoped-dependency-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-dependency-marker-related\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"10\\" refY=\\"5.75\\" class=\\"dependency-marker related-dependency-marker\\">
+    <marker id=\\"component-dependency-graph-dependency-marker-related\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"20\\" refY=\\"5.75\\" class=\\"dependency-marker related-dependency-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-dependency-marker-direct\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"10\\" refY=\\"5.75\\" class=\\"dependency-marker direct-dependency-marker\\">
+    <marker id=\\"component-dependency-graph-dependency-marker-direct\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"20\\" refY=\\"5.75\\" class=\\"dependency-marker direct-dependency-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-dependency-marker-selected\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"10\\" refY=\\"5.75\\" class=\\"dependency-marker selected-dependency-marker\\">
+    <marker id=\\"component-dependency-graph-dependency-marker-selected\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"20\\" refY=\\"5.75\\" class=\\"dependency-marker selected-dependency-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
   </defs>
@@ -1588,12 +1588,12 @@ exports[`ComponentDependencyGraph when the mouse hovers over a node when the mou
   <g></g>
   <g></g>
   <g>
-    <circle id=\\"component-dependency-graph-node-0\\" r=\\"5\\" cx=\\"50\\" cy=\\"50\\" title=\\"test-id-1\\" class=\\"node all-node\\"></circle>
-    <circle id=\\"component-dependency-graph-node-1\\" r=\\"5\\" cx=\\"50\\" cy=\\"150\\" title=\\"test-id-2\\" class=\\"node all-node\\"></circle>
-    <circle id=\\"component-dependency-graph-node-2\\" r=\\"5\\" cx=\\"50\\" cy=\\"250\\" title=\\"test-id-3\\" class=\\"node all-node\\"></circle>
-    <circle id=\\"component-dependency-graph-node-3\\" r=\\"5\\" cx=\\"50\\" cy=\\"350\\" title=\\"test-id-4\\" class=\\"node all-node\\"></circle>
-    <circle id=\\"component-dependency-graph-node-4\\" r=\\"5\\" cx=\\"50\\" cy=\\"450\\" title=\\"test-id-5\\" class=\\"node all-node\\"></circle>
-    <circle id=\\"component-dependency-graph-node-5\\" r=\\"5\\" cx=\\"50\\" cy=\\"550\\" title=\\"test-id-6\\" class=\\"node all-node\\"></circle>
+    <circle id=\\"component-dependency-graph-node-0\\" r=\\"10\\" cx=\\"50\\" cy=\\"50\\" title=\\"test-id-1\\" class=\\"node all-node\\"></circle>
+    <circle id=\\"component-dependency-graph-node-1\\" r=\\"10\\" cx=\\"50\\" cy=\\"150\\" title=\\"test-id-2\\" class=\\"node all-node\\"></circle>
+    <circle id=\\"component-dependency-graph-node-2\\" r=\\"10\\" cx=\\"50\\" cy=\\"250\\" title=\\"test-id-3\\" class=\\"node all-node\\"></circle>
+    <circle id=\\"component-dependency-graph-node-3\\" r=\\"10\\" cx=\\"50\\" cy=\\"350\\" title=\\"test-id-4\\" class=\\"node all-node\\"></circle>
+    <circle id=\\"component-dependency-graph-node-4\\" r=\\"10\\" cx=\\"50\\" cy=\\"450\\" title=\\"test-id-5\\" class=\\"node all-node\\"></circle>
+    <circle id=\\"component-dependency-graph-node-5\\" r=\\"10\\" cx=\\"50\\" cy=\\"550\\" title=\\"test-id-6\\" class=\\"node all-node\\"></circle>
   </g>
   <g></g>
   <g></g>
@@ -1601,28 +1601,28 @@ exports[`ComponentDependencyGraph when the mouse hovers over a node when the mou
   <g></g>
   <g></g>
   <g></g>
-  <g><text x=\\"62\\" y=\\"70\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label all-node-label\\">
-      <tspan x=\\"62\\" y=\\"70\\">
+  <g><text x=\\"67\\" y=\\"70\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label all-node-label\\">
+      <tspan x=\\"67\\" y=\\"70\\">
         test-id-1
       </tspan>
-    </text><text x=\\"62\\" y=\\"170\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label all-node-label\\">
-      <tspan x=\\"62\\" y=\\"170\\">
+    </text><text x=\\"67\\" y=\\"170\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label all-node-label\\">
+      <tspan x=\\"67\\" y=\\"170\\">
         test-id-2
       </tspan>
-    </text><text x=\\"62\\" y=\\"270\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label all-node-label\\">
-      <tspan x=\\"62\\" y=\\"270\\">
+    </text><text x=\\"67\\" y=\\"270\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label all-node-label\\">
+      <tspan x=\\"67\\" y=\\"270\\">
         test-id-3
       </tspan>
-    </text><text x=\\"62\\" y=\\"370\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label all-node-label\\">
-      <tspan x=\\"62\\" y=\\"370\\">
+    </text><text x=\\"67\\" y=\\"370\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label all-node-label\\">
+      <tspan x=\\"67\\" y=\\"370\\">
         test-id-4
       </tspan>
-    </text><text x=\\"62\\" y=\\"470\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label all-node-label\\">
-      <tspan x=\\"62\\" y=\\"470\\">
+    </text><text x=\\"67\\" y=\\"470\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label all-node-label\\">
+      <tspan x=\\"67\\" y=\\"470\\">
         test-id-5
       </tspan>
-    </text><text x=\\"62\\" y=\\"570\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label all-node-label\\">
-      <tspan x=\\"62\\" y=\\"570\\">
+    </text><text x=\\"67\\" y=\\"570\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label all-node-label\\">
+      <tspan x=\\"67\\" y=\\"570\\">
         test-id-6
       </tspan>
     </text></g>
@@ -1639,25 +1639,25 @@ exports[`ComponentDependencyGraph when the selectedComponentId is specified rend
 "<svg xmlns=\\"http://www.w3.org/2000/svg\\" overflow=\\"auto\\" width=\\"100%\\" height=\\"1200\\">
   <rect fill-opacity=\\"0\\" class=\\"component-dependency-graph-background\\"></rect>
   <defs>
-    <marker id=\\"component-dependency-graph-dependency-marker-all\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"10\\" refY=\\"5.75\\" class=\\"dependency-marker all-dependency-marker\\">
+    <marker id=\\"component-dependency-graph-dependency-marker-all\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"20\\" refY=\\"5.75\\" class=\\"dependency-marker all-dependency-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-dependency-marker-manual\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"10\\" refY=\\"5.75\\" class=\\"dependency-marker manual-dependency-marker\\">
+    <marker id=\\"component-dependency-graph-dependency-marker-manual\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"20\\" refY=\\"5.75\\" class=\\"dependency-marker manual-dependency-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-dependency-marker-scope-related\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"10\\" refY=\\"5.75\\" class=\\"dependency-marker scope-related-dependency-marker\\">
+    <marker id=\\"component-dependency-graph-dependency-marker-scope-related\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"20\\" refY=\\"5.75\\" class=\\"dependency-marker scope-related-dependency-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-dependency-marker-scoped\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"10\\" refY=\\"5.75\\" class=\\"dependency-marker scoped-dependency-marker\\">
+    <marker id=\\"component-dependency-graph-dependency-marker-scoped\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"20\\" refY=\\"5.75\\" class=\\"dependency-marker scoped-dependency-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-dependency-marker-related\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"10\\" refY=\\"5.75\\" class=\\"dependency-marker related-dependency-marker\\">
+    <marker id=\\"component-dependency-graph-dependency-marker-related\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"20\\" refY=\\"5.75\\" class=\\"dependency-marker related-dependency-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-dependency-marker-direct\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"10\\" refY=\\"5.75\\" class=\\"dependency-marker direct-dependency-marker\\">
+    <marker id=\\"component-dependency-graph-dependency-marker-direct\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"20\\" refY=\\"5.75\\" class=\\"dependency-marker direct-dependency-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-dependency-marker-selected\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"10\\" refY=\\"5.75\\" class=\\"dependency-marker selected-dependency-marker\\">
+    <marker id=\\"component-dependency-graph-dependency-marker-selected\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"20\\" refY=\\"5.75\\" class=\\"dependency-marker selected-dependency-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
   </defs>
@@ -1674,21 +1674,21 @@ exports[`ComponentDependencyGraph when the selectedComponentId is specified rend
   </g>
   <g></g>
   <g>
-    <circle id=\\"component-dependency-graph-node-3\\" r=\\"5\\" cx=\\"50\\" cy=\\"350\\" title=\\"test-id-4\\" class=\\"node all-node\\"></circle>
+    <circle id=\\"component-dependency-graph-node-3\\" r=\\"10\\" cx=\\"50\\" cy=\\"350\\" title=\\"test-id-4\\" class=\\"node all-node\\"></circle>
   </g>
   <g></g>
   <g></g>
   <g></g>
   <g></g>
   <g>
-    <circle id=\\"component-dependency-graph-node-0\\" r=\\"5\\" cx=\\"50\\" cy=\\"50\\" title=\\"test-id-1\\" class=\\"node direct-node\\"></circle>
-    <circle id=\\"component-dependency-graph-node-2\\" r=\\"5\\" cx=\\"50\\" cy=\\"250\\" title=\\"test-id-3\\" class=\\"node direct-node\\"></circle>
+    <circle id=\\"component-dependency-graph-node-0\\" r=\\"10\\" cx=\\"50\\" cy=\\"50\\" title=\\"test-id-1\\" class=\\"node direct-node\\"></circle>
+    <circle id=\\"component-dependency-graph-node-2\\" r=\\"10\\" cx=\\"50\\" cy=\\"250\\" title=\\"test-id-3\\" class=\\"node direct-node\\"></circle>
   </g>
   <g>
-    <circle id=\\"component-dependency-graph-node-1\\" r=\\"5\\" cx=\\"50\\" cy=\\"150\\" title=\\"test-id-2\\" class=\\"node selected-node\\"></circle>
+    <circle id=\\"component-dependency-graph-node-1\\" r=\\"10\\" cx=\\"50\\" cy=\\"150\\" title=\\"test-id-2\\" class=\\"node selected-node\\"></circle>
   </g>
-  <g><text x=\\"62\\" y=\\"370\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label all-node-label\\">
-      <tspan x=\\"62\\" y=\\"370\\">
+  <g><text x=\\"67\\" y=\\"370\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label all-node-label\\">
+      <tspan x=\\"67\\" y=\\"370\\">
         test-id-4
       </tspan>
     </text></g>
@@ -1696,17 +1696,17 @@ exports[`ComponentDependencyGraph when the selectedComponentId is specified rend
   <g></g>
   <g></g>
   <g></g>
-  <g><text x=\\"62\\" y=\\"70\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label direct-node-label\\">
-      <tspan x=\\"62\\" y=\\"70\\">
+  <g><text x=\\"67\\" y=\\"70\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label direct-node-label\\">
+      <tspan x=\\"67\\" y=\\"70\\">
         test-id-1
       </tspan>
-    </text><text x=\\"62\\" y=\\"270\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label direct-node-label\\">
-      <tspan x=\\"62\\" y=\\"270\\">
+    </text><text x=\\"67\\" y=\\"270\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label direct-node-label\\">
+      <tspan x=\\"67\\" y=\\"270\\">
         test-id-3
       </tspan>
     </text></g>
-  <g><text x=\\"62\\" y=\\"170\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label selected-node-label\\">
-      <tspan x=\\"62\\" y=\\"170\\">
+  <g><text x=\\"67\\" y=\\"170\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label selected-node-label\\">
+      <tspan x=\\"67\\" y=\\"170\\">
         test-id-2
       </tspan>
     </text></g>
@@ -1717,25 +1717,25 @@ exports[`ComponentDependencyGraph when there are multiple nodes at the same dept
 "<svg xmlns=\\"http://www.w3.org/2000/svg\\" overflow=\\"auto\\" width=\\"100%\\" height=\\"1200\\">
   <rect fill-opacity=\\"0\\" class=\\"component-dependency-graph-background\\"></rect>
   <defs>
-    <marker id=\\"component-dependency-graph-dependency-marker-all\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"10\\" refY=\\"5.75\\" class=\\"dependency-marker all-dependency-marker\\">
+    <marker id=\\"component-dependency-graph-dependency-marker-all\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"20\\" refY=\\"5.75\\" class=\\"dependency-marker all-dependency-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-dependency-marker-manual\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"10\\" refY=\\"5.75\\" class=\\"dependency-marker manual-dependency-marker\\">
+    <marker id=\\"component-dependency-graph-dependency-marker-manual\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"20\\" refY=\\"5.75\\" class=\\"dependency-marker manual-dependency-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-dependency-marker-scope-related\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"10\\" refY=\\"5.75\\" class=\\"dependency-marker scope-related-dependency-marker\\">
+    <marker id=\\"component-dependency-graph-dependency-marker-scope-related\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"20\\" refY=\\"5.75\\" class=\\"dependency-marker scope-related-dependency-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-dependency-marker-scoped\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"10\\" refY=\\"5.75\\" class=\\"dependency-marker scoped-dependency-marker\\">
+    <marker id=\\"component-dependency-graph-dependency-marker-scoped\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"20\\" refY=\\"5.75\\" class=\\"dependency-marker scoped-dependency-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-dependency-marker-related\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"10\\" refY=\\"5.75\\" class=\\"dependency-marker related-dependency-marker\\">
+    <marker id=\\"component-dependency-graph-dependency-marker-related\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"20\\" refY=\\"5.75\\" class=\\"dependency-marker related-dependency-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-dependency-marker-direct\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"10\\" refY=\\"5.75\\" class=\\"dependency-marker direct-dependency-marker\\">
+    <marker id=\\"component-dependency-graph-dependency-marker-direct\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"20\\" refY=\\"5.75\\" class=\\"dependency-marker direct-dependency-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-dependency-marker-selected\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"10\\" refY=\\"5.75\\" class=\\"dependency-marker selected-dependency-marker\\">
+    <marker id=\\"component-dependency-graph-dependency-marker-selected\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"20\\" refY=\\"5.75\\" class=\\"dependency-marker selected-dependency-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
   </defs>
@@ -1753,12 +1753,12 @@ exports[`ComponentDependencyGraph when there are multiple nodes at the same dept
   <g></g>
   <g></g>
   <g>
-    <circle id=\\"component-dependency-graph-node-0\\" r=\\"5\\" cx=\\"50\\" cy=\\"50\\" title=\\"test-id-1\\" class=\\"node all-node\\"></circle>
-    <circle id=\\"component-dependency-graph-node-1\\" r=\\"5\\" cx=\\"50\\" cy=\\"150\\" title=\\"test-id-2\\" class=\\"node all-node\\"></circle>
-    <circle id=\\"component-dependency-graph-node-2\\" r=\\"5\\" cx=\\"50\\" cy=\\"250\\" title=\\"test-id-3\\" class=\\"node all-node\\"></circle>
-    <circle id=\\"component-dependency-graph-node-3\\" r=\\"5\\" cx=\\"350\\" cy=\\"150\\" title=\\"test-id-4\\" class=\\"node all-node\\"></circle>
-    <circle id=\\"component-dependency-graph-node-4\\" r=\\"5\\" cx=\\"350\\" cy=\\"250\\" title=\\"test-id-5\\" class=\\"node all-node\\"></circle>
-    <circle id=\\"component-dependency-graph-node-5\\" r=\\"5\\" cx=\\"350\\" cy=\\"350\\" title=\\"test-id-6\\" class=\\"node all-node\\"></circle>
+    <circle id=\\"component-dependency-graph-node-0\\" r=\\"10\\" cx=\\"50\\" cy=\\"50\\" title=\\"test-id-1\\" class=\\"node all-node\\"></circle>
+    <circle id=\\"component-dependency-graph-node-1\\" r=\\"10\\" cx=\\"50\\" cy=\\"150\\" title=\\"test-id-2\\" class=\\"node all-node\\"></circle>
+    <circle id=\\"component-dependency-graph-node-2\\" r=\\"10\\" cx=\\"50\\" cy=\\"250\\" title=\\"test-id-3\\" class=\\"node all-node\\"></circle>
+    <circle id=\\"component-dependency-graph-node-3\\" r=\\"10\\" cx=\\"350\\" cy=\\"150\\" title=\\"test-id-4\\" class=\\"node all-node\\"></circle>
+    <circle id=\\"component-dependency-graph-node-4\\" r=\\"10\\" cx=\\"350\\" cy=\\"250\\" title=\\"test-id-5\\" class=\\"node all-node\\"></circle>
+    <circle id=\\"component-dependency-graph-node-5\\" r=\\"10\\" cx=\\"350\\" cy=\\"350\\" title=\\"test-id-6\\" class=\\"node all-node\\"></circle>
   </g>
   <g></g>
   <g></g>
@@ -1766,28 +1766,28 @@ exports[`ComponentDependencyGraph when there are multiple nodes at the same dept
   <g></g>
   <g></g>
   <g></g>
-  <g><text x=\\"62\\" y=\\"70\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label all-node-label\\">
-      <tspan x=\\"62\\" y=\\"70\\">
+  <g><text x=\\"67\\" y=\\"70\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label all-node-label\\">
+      <tspan x=\\"67\\" y=\\"70\\">
         test-id-1
       </tspan>
-    </text><text x=\\"62\\" y=\\"170\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label all-node-label\\">
-      <tspan x=\\"62\\" y=\\"170\\">
+    </text><text x=\\"67\\" y=\\"170\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label all-node-label\\">
+      <tspan x=\\"67\\" y=\\"170\\">
         test-id-2
       </tspan>
-    </text><text x=\\"62\\" y=\\"270\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label all-node-label\\">
-      <tspan x=\\"62\\" y=\\"270\\">
+    </text><text x=\\"67\\" y=\\"270\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label all-node-label\\">
+      <tspan x=\\"67\\" y=\\"270\\">
         test-id-3
       </tspan>
-    </text><text x=\\"362\\" y=\\"170\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label all-node-label\\">
-      <tspan x=\\"362\\" y=\\"170\\">
+    </text><text x=\\"367\\" y=\\"170\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label all-node-label\\">
+      <tspan x=\\"367\\" y=\\"170\\">
         test-id-4
       </tspan>
-    </text><text x=\\"362\\" y=\\"270\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label all-node-label\\">
-      <tspan x=\\"362\\" y=\\"270\\">
+    </text><text x=\\"367\\" y=\\"270\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label all-node-label\\">
+      <tspan x=\\"367\\" y=\\"270\\">
         test-id-5
       </tspan>
-    </text><text x=\\"362\\" y=\\"370\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label all-node-label\\">
-      <tspan x=\\"362\\" y=\\"370\\">
+    </text><text x=\\"367\\" y=\\"370\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label all-node-label\\">
+      <tspan x=\\"367\\" y=\\"370\\">
         test-id-6
       </tspan>
     </text></g>

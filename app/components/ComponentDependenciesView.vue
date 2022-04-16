@@ -1,104 +1,108 @@
 <template>
   <div>
-    <b-container fluid>
-      <b-row>
-        <b-col class="graph">
-          <ComponentDependencyGraph
-            id="component-dependency-graph"
-            :dependencies="dependencies"
-            :dependency-type-ids="selectedDependencyTypeIds"
-            dependency-relation-type="scope-related"
-            :zoom="zoom"
-            :selected-component-id="selectedComponentId"
-            :scoped-component-ids="filteredComponentIds"
-            :fixed-scope="true"
-            :scope-related-radius="parseInt(selectedScopeRelatedRadius, 10)"
-            @networkChange="networkChange"
-            @selectedNodeChange="selectedNodeChange"
-          />
-        </b-col>
-        <b-col md="3" class="bg-dark">
-          <b-alert show="60" dismissible variant="info" class="mt-3">
-            Hover over or click a component's dot in the dependencies diagram to see
-            more information about it
-          </b-alert>
+    <b-alert dismissible variant="info">
+      Click a dot in the dependencies diagram to see more information about that component
+    </b-alert>
 
-          <ComponentFilters
-            v-if="!selectedComponent"
-            :components="components"
-            :toggle-enabled="false"
-            :column-count="1"
-            :environment-id-filter-enabled="true"
+    <ComponentFilters
+      :components="components"
+      :environment-id-filter-enabled="true"
+    >
+      <b-card bg-variant="secondary">
+        <b-card-text>
+          <b-form-group
+            label="Dependency Types"
           >
-            <b-card bg-variant="secondary">
-              <b-card-text>
-                <b-form-group
-                  label="Dependency Types"
-                >
-                  <b-form-checkbox-group
-                    v-model="selectedDependencyTypeIds"
-                    :options="dependencyTypeIdOptions"
-                    name="dependencyTypeId"
-                    stacked
-                  ></b-form-checkbox-group>
-                </b-form-group>
-              </b-card-text>
-            </b-card>
+            <b-form-checkbox-group
+              v-model="selectedDependencyTypeIds"
+              :options="dependencyTypeIdOptions"
+              name="dependencyTypeId"
+              stacked
+            ></b-form-checkbox-group>
+          </b-form-group>
+        </b-card-text>
+      </b-card>
 
-            <b-card bg-variant="secondary">
-              <b-card-text>
-                <b-form-group
-                  label-cols="6"
-                  label-size="sm"
-                  label="Radius:"
-                  label-for="graph-scope-related-radius"
-                >
-                  <b-form-select
-                    id="graph-scope-related-radius"
-                    v-model="selectedScopeRelatedRadius"
-                    :options="scopeRelatedRadiusOptions"
-                    size="sm"
-                  />
-                </b-form-group>
-              </b-card-text>
-            </b-card>
+      <b-card bg-variant="secondary">
+        <b-card-text>
+          <b-form-group
+            label-cols="6"
+            label-size="sm"
+            label="Radius:"
+            label-for="graph-scope-related-radius"
+          >
+            <b-form-select
+              id="graph-scope-related-radius"
+              v-model="selectedScopeRelatedRadius"
+              :options="scopeRelatedRadiusOptions"
+              size="sm"
+            />
+          </b-form-group>
+        </b-card-text>
+      </b-card>
 
-            <b-card bg-variant="secondary">
-              <b-card-text>
-                <b-form-group
-                  label-cols="6"
-                  label-size="sm"
-                  label="Zoom:"
-                  label-for="graph-zoom"
-                >
-                  <b-form-select
-                    id="graph-zoom"
-                    v-model="zoom"
-                    :options="zoomOptions"
-                    size="sm"
-                  />
-                </b-form-group>
-              </b-card-text>
-            </b-card>
+      <b-card bg-variant="secondary">
+        <b-card-text>
+          <b-form-group
+            label-cols="6"
+            label-size="sm"
+            label="Zoom:"
+            label-for="graph-zoom"
+          >
+            <b-form-select
+              id="graph-zoom"
+              v-model="zoom"
+              :options="zoomOptions"
+              size="sm"
+            />
+          </b-form-group>
+        </b-card-text>
+      </b-card>
 
-            <b-card bg-variant="secondary">
-              <b-card-text>
-                <b-form-checkbox
-                  id="detailed-dependencies"
-                  v-model="detailed"
-                  :value="true"
-                  :unchecked-value="false"
-                >
-                  Detailed dependencies
-                </b-form-checkbox>
-              </b-card-text>
-            </b-card>
-          </ComponentFilters>
+      <b-card bg-variant="secondary">
+        <b-card-text>
+          <b-form-checkbox
+            id="detailed-dependencies"
+            v-model="detailed"
+            :value="true"
+            :unchecked-value="false"
+          >
+            Detailed dependencies
+          </b-form-checkbox>
+        </b-card-text>
+      </b-card>
+    </ComponentFilters>
 
-          <ComponentPanel v-if="selectedComponent" :component="selectedComponent" />
-        </b-col>
-      </b-row>
-    </b-container>
+    <div class="graph">
+      <ComponentDependencyGraph
+        id="component-dependency-graph"
+        :dependencies="dependencies"
+        :dependency-type-ids="selectedDependencyTypeIds"
+        dependency-relation-type="scope-related"
+        :zoom="zoom"
+        :selected-component-id="selectedComponentId"
+        :scoped-component-ids="filteredComponentIds"
+        :fixed-scope="true"
+        :scope-related-radius="parseInt(selectedScopeRelatedRadius, 10)"
+        @networkChange="networkChange"
+        @nodeClick="nodeClick"
+      />
+    </div>
+
+    <b-sidebar
+      id="component"
+      v-model="component"
+      right
+      width="600px"
+      bg-variant="dark"
+      text-variant="light"
+      backdrop-variant="dark"
+      backdrop
+    >
+      <div class="m-3">
+        <ComponentPanel :component="component" />
+      </div>
+    </b-sidebar>
   </div>
 </template>
 
@@ -115,12 +119,10 @@
 import Vue, { PropType } from 'vue'
 import {
   BAlert, BCard, BCardText,
-  BCol,
-  BContainer,
   BFormCheckbox, BFormCheckboxGroup,
   BFormGroup,
   BFormSelect,
-  BRow
+  BSidebar
 } from 'bootstrap-vue'
 import {
   Component,
@@ -145,13 +147,11 @@ export default Vue.extend({
     'b-alert': BAlert,
     'b-card': BCard,
     'b-card-text': BCardText,
-    'b-col': BCol,
-    'b-container': BContainer,
     'b-form-checkbox': BFormCheckbox,
     'b-form-checkbox-group': BFormCheckboxGroup,
     'b-form-group': BFormGroup,
     'b-form-select': BFormSelect,
-    'b-row': BRow,
+    'b-sidebar': BSidebar,
     ComponentDependencyGraph,
     ComponentFilters,
     ComponentPanel,
@@ -184,11 +184,11 @@ export default Vue.extend({
   },
   data() {
     return {
-      selectedNode: undefined as
+      node: undefined as
         | SummaryComponentDependencyNode
         | SummarySubComponentDependencyNode
         | undefined,
-      selectedComponent: undefined as Component | undefined,
+      component: undefined as Component | undefined,
       selectedDependencyTypeIds: [] as string[],
       selectedScopeRelatedRadius: this.scopeRelatedRadius,
       zoom: 100,
@@ -235,19 +235,19 @@ export default Vue.extend({
     networkChange(network: Network): void {
       this.network = network
     },
-    selectedNodeChange(
-      _: Event,
-      node:
-        | SummaryComponentDependencyNode
-        | SummarySubComponentDependencyNode
-        | undefined
+    nodeClick(
+      { node }: {
+        node: SummaryComponentDependencyNode
+          | SummarySubComponentDependencyNode
+          | undefined
+      }
     ): void {
       if (node) {
-        this.selectedNode = node
-        this.selectedComponent = this.findComponent(node.componentId)
+        this.node = node
+        this.component = this.findComponent(node.componentId)
       } else {
-        this.selectedNode = undefined
-        this.selectedComponent = undefined
+        this.node = undefined
+        this.component = undefined
       }
     },
   },
