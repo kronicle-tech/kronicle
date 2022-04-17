@@ -7,6 +7,7 @@ import { Component } from '~/types/kronicle-service'
 interface ReadOnlyState {
   components: Component[]
   environmentIds: string[]
+  pluginIds: string[]
   testOutcomes: string[]
   teamIds: string[]
   componentTypeIds: string[]
@@ -18,6 +19,7 @@ interface ReadOnlyState {
 function updateQuery(state: ReadOnlyState) {
   const url = new URL(document.location.href)
   addQueryParams(url, 'environmentId', state.environmentIds)
+  addQueryParams(url, 'pluginId', state.pluginIds)
   addQueryParams(url, 'testOutcome', state.testOutcomes)
   addQueryParams(url, 'teamId', state.teamIds)
   addQueryParams(url, 'componentTypeId', state.componentTypeIds)
@@ -59,6 +61,16 @@ function getFilteredComponents(state: ReadOnlyState): Component[] {
     filteredComponents = filteredComponents.filter((component) =>
       component.state?.environments?.some((environment) =>
         state.environmentIds.includes(environment.id)
+      )
+    )
+  }
+
+  if (state.pluginIds.length > 0) {
+    filteredComponents = filteredComponents.filter((component) =>
+      component.state?.environments?.some((environment) =>
+        environment.plugins?.some((plugin) =>
+          state.pluginIds.includes(plugin.id)
+        )
       )
     )
   }
@@ -153,6 +165,7 @@ function ensureQueryParamValueIsAString(
 export default class ComponentFilters extends VuexModule {
   components = [] as Component[]
   environmentIds = [] as string[]
+  pluginIds = [] as string[]
   testOutcomes = [] as string[]
   teamIds = [] as string[]
   componentTypeIds = [] as string[]
@@ -169,6 +182,7 @@ export default class ComponentFilters extends VuexModule {
     this.environmentIds = ensureQueryParamValueIsAStringArray(
       query.environmentId
     )
+    this.pluginIds = ensureQueryParamValueIsAStringArray(query.pluginId)
     this.testOutcomes = ensureQueryParamValueIsAStringArray(query.testOutcome)
     this.teamIds = ensureQueryParamValueIsAStringArray(query.teamId)
     this.componentTypeIds = ensureQueryParamValueIsAStringArray(
@@ -181,6 +195,7 @@ export default class ComponentFilters extends VuexModule {
     const state = {
       components: this.components,
       environmentIds: this.environmentIds,
+      pluginIds: this.pluginIds,
       testOutcomes: this.testOutcomes,
       teamIds: this.teamIds,
       componentTypeIds: this.componentTypeIds,
@@ -198,6 +213,26 @@ export default class ComponentFilters extends VuexModule {
     const state = {
       components: this.components,
       environmentIds: this.environmentIds,
+      pluginIds: this.pluginIds,
+      testOutcomes: this.testOutcomes,
+      teamIds: this.teamIds,
+      componentTypeIds: this.componentTypeIds,
+      tags: this.tags,
+      platformIds: this.platformIds,
+      componentId: this.componentId,
+    }
+    updateQuery(state)
+    this.filteredComponents = getFilteredComponents(state)
+    this.filteredComponentIds = getComponentIds(this.filteredComponents)
+  }
+
+  @Mutation
+  setPluginIds(value: string[]) {
+    this.pluginIds = value
+    const state = {
+      components: this.components,
+      environmentIds: this.environmentIds,
+      pluginIds: this.pluginIds,
       testOutcomes: this.testOutcomes,
       teamIds: this.teamIds,
       componentTypeIds: this.componentTypeIds,
@@ -216,6 +251,7 @@ export default class ComponentFilters extends VuexModule {
     const state = {
       components: this.components,
       environmentIds: this.environmentIds,
+      pluginIds: this.pluginIds,
       testOutcomes: this.testOutcomes,
       teamIds: this.teamIds,
       componentTypeIds: this.componentTypeIds,
@@ -234,6 +270,7 @@ export default class ComponentFilters extends VuexModule {
     const state = {
       components: this.components,
       environmentIds: this.environmentIds,
+      pluginIds: this.pluginIds,
       testOutcomes: this.testOutcomes,
       teamIds: this.teamIds,
       componentTypeIds: this.componentTypeIds,
@@ -252,6 +289,7 @@ export default class ComponentFilters extends VuexModule {
     const state = {
       components: this.components,
       environmentIds: this.environmentIds,
+      pluginIds: this.pluginIds,
       testOutcomes: this.testOutcomes,
       teamIds: this.teamIds,
       componentTypeIds: this.componentTypeIds,
@@ -270,6 +308,7 @@ export default class ComponentFilters extends VuexModule {
     const state = {
       components: this.components,
       environmentIds: this.environmentIds,
+      pluginIds: this.pluginIds,
       testOutcomes: this.testOutcomes,
       teamIds: this.teamIds,
       componentTypeIds: this.componentTypeIds,
@@ -288,6 +327,7 @@ export default class ComponentFilters extends VuexModule {
     const state = {
       components: this.components,
       environmentIds: this.environmentIds,
+      pluginIds: this.pluginIds,
       testOutcomes: this.testOutcomes,
       teamIds: this.teamIds,
       componentTypeIds: this.componentTypeIds,
@@ -306,6 +346,7 @@ export default class ComponentFilters extends VuexModule {
     const state = {
       components: this.components,
       environmentIds: this.environmentIds,
+      pluginIds: this.pluginIds,
       testOutcomes: this.testOutcomes,
       teamIds: this.teamIds,
       componentTypeIds: this.componentTypeIds,

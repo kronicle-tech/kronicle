@@ -131,6 +131,8 @@ exports[`Index when Get Components service endpoint returns an array of multiple
            
           <!---->
            
+          <!---->
+           
           <div
             class="card bg-secondary"
           >
@@ -895,6 +897,8 @@ exports[`Index when Get Components service endpoint returns an array of multiple
            
           <!---->
            
+          <!---->
+           
           <div
             class="card bg-secondary"
           >
@@ -1624,6 +1628,8 @@ exports[`Index when Get Components service endpoint returns an array of multiple
         <div
           class="card-columns"
         >
+           
+          <!---->
            
           <!---->
            
@@ -2508,6 +2514,8 @@ exports[`Index when a key software has multiple versions renders all versions 1`
         <div
           class="card-columns"
         >
+           
+          <!---->
            
           <!---->
            

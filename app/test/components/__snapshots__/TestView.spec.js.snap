@@ -61,6 +61,7 @@ exports[`TestView when components is set to multiple components with multiple te
         <div id=\\"filters\\" class=\\"collapse\\" style=\\"display: none;\\">
           <div class=\\"card-columns\\">
             <!---->
+            <!---->
             <div class=\\"card bg-secondary\\">
               <!---->
               <!---->

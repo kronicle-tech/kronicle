@@ -1,6 +1,8 @@
 <template>
   <div>
-    <ComponentFilters :components="components" environment-id-filter-enabled />
+    <ComponentFilters
+      :components="components"
+    />
 
     <b-card-group columns>
       <template v-for="item in items">

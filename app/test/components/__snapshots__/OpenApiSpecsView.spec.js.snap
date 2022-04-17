@@ -22,6 +22,7 @@ exports[`OpenApiSpecsView when an OpenAPI spec has a URL but no spec renders the
         <div class=\\"card-columns\\">
           <!---->
           <!---->
+          <!---->
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
@@ -194,6 +195,7 @@ exports[`OpenApiSpecsView when an OpenAPI spec has a file but no spec renders th
     <transition-stub css=\\"true\\" enterclass=\\"\\" leaveclass=\\"collapse show\\" entertoclass=\\"collapse show\\" leavetoclass=\\"collapse\\" enteractiveclass=\\"collapsing\\" leaveactiveclass=\\"collapsing\\" class=\\"mt-3\\">
       <div id=\\"filters\\" class=\\"collapse\\" style=\\"display: none;\\">
         <div class=\\"card-columns\\">
+          <!---->
           <!---->
           <!---->
           <div class=\\"card bg-secondary\\">
@@ -370,6 +372,7 @@ exports[`OpenApiSpecsView when an OpenAPI spec has a spec and a URL renders the 
         <div class=\\"card-columns\\">
           <!---->
           <!---->
+          <!---->
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
@@ -544,6 +547,7 @@ exports[`OpenApiSpecsView when an OpenAPI spec has a spec and a file renders the
         <div class=\\"card-columns\\">
           <!---->
           <!---->
+          <!---->
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
@@ -716,6 +720,7 @@ exports[`OpenApiSpecsView when components is set to multiple components with mul
     <transition-stub css=\\"true\\" enterclass=\\"\\" leaveclass=\\"collapse show\\" entertoclass=\\"collapse show\\" leavetoclass=\\"collapse\\" enteractiveclass=\\"collapsing\\" leaveactiveclass=\\"collapsing\\" class=\\"mt-3\\">
       <div id=\\"filters\\" class=\\"collapse\\" style=\\"display: none;\\">
         <div class=\\"card-columns\\">
+          <!---->
           <!---->
           <!---->
           <div class=\\"card bg-secondary\\">
@@ -976,6 +981,7 @@ exports[`OpenApiSpecsView when components is set to multiple components with mul
         <div class=\\"card-columns\\">
           <!---->
           <!---->
+          <!---->
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
@@ -1234,6 +1240,7 @@ exports[`OpenApiSpecsView when components is set to multiple components with mul
         <div class=\\"card-columns\\">
           <!---->
           <!---->
+          <!---->
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
@@ -1440,6 +1447,7 @@ exports[`OpenApiSpecsView when components prop is set a component with 1 OpenAPI
         <div class=\\"card-columns\\">
           <!---->
           <!---->
+          <!---->
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
@@ -1612,6 +1620,7 @@ exports[`OpenApiSpecsView when components prop is set a component with 2 OpenAPI
     <transition-stub css=\\"true\\" enterclass=\\"\\" leaveclass=\\"collapse show\\" entertoclass=\\"collapse show\\" leavetoclass=\\"collapse\\" enteractiveclass=\\"collapsing\\" leaveactiveclass=\\"collapsing\\" class=\\"mt-3\\">
       <div id=\\"filters\\" class=\\"collapse\\" style=\\"display: none;\\">
         <div class=\\"card-columns\\">
+          <!---->
           <!---->
           <!---->
           <div class=\\"card bg-secondary\\">
@@ -1812,6 +1821,7 @@ exports[`OpenApiSpecsView when components prop is set components with no OpenAPI
     <transition-stub css=\\"true\\" enterclass=\\"\\" leaveclass=\\"collapse show\\" entertoclass=\\"collapse show\\" leavetoclass=\\"collapse\\" enteractiveclass=\\"collapsing\\" leaveactiveclass=\\"collapsing\\" class=\\"mt-3\\">
       <div id=\\"filters\\" class=\\"collapse\\" style=\\"display: none;\\">
         <div class=\\"card-columns\\">
+          <!---->
           <!---->
           <!---->
           <div class=\\"card bg-secondary\\">
