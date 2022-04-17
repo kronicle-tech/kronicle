@@ -216,7 +216,6 @@ exports[`Index when Get Component service endpoint returns a component when the 
         >
           <div
             class="card-columns"
-            style="column-count: 3;"
           >
              
             <!---->
@@ -1045,7 +1044,6 @@ exports[`Index when Get Component service endpoint returns a component when the 
         >
           <div
             class="card-columns"
-            style="column-count: 3;"
           >
              
             <!---->
