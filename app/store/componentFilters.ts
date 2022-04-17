@@ -58,11 +58,69 @@ function getFilteredComponents(state: ReadOnlyState): Component[] {
   let filteredComponents = state.components
 
   if (state.environmentIds.length > 0) {
-    filteredComponents = filteredComponents.filter((component) =>
-      component.state?.environments?.some((environment) =>
-        state.environmentIds.includes(environment.id)
-      )
-    )
+    filteredComponents = filteredComponents
+      .map((component) => {
+        if (!component.state || !component.state.environments) {
+          return undefined
+        }
+
+        const filteredEnvironments = component.state.environments.filter(
+          (environment) => state.environmentIds.includes(environment.id)
+        )
+
+        if (filteredEnvironments.length === 0) {
+          return undefined
+        } else if (
+          filteredEnvironments.length === component.state.environments.length
+        ) {
+          return component
+        } else {
+          const componentDeepClone = JSON.parse(JSON.stringify(component))
+          componentDeepClone.state.environments = filteredEnvironments
+          return componentDeepClone
+        }
+      })
+      .filter((component) => component !== undefined)
+  }
+
+  if (state.pluginIds.length > 0) {
+    filteredComponents = filteredComponents
+      .map((component) => {
+        if (!component.state || !component.state.environments) {
+          return undefined
+        }
+
+        let changed = false
+        let empty = true
+
+        const filteredEnvironments = component.state.environments.map(
+          (environment) => {
+            const filteredPlugins = environment.plugins.filter((plugin) =>
+              state.pluginIds.includes(plugin.id)
+            )
+
+            if (filteredPlugins.length !== environment.plugins.length) {
+              changed = true
+              if (filteredPlugins.length > 0) {
+                empty = false
+              }
+            }
+
+            return filteredPlugins
+          }
+        )
+
+        if (changed && empty) {
+          return undefined
+        } else if (!changed) {
+          return component
+        } else {
+          const componentDeepClone = JSON.parse(JSON.stringify(component))
+          componentDeepClone.state.environments = filteredEnvironments
+          return componentDeepClone
+        }
+      })
+      .filter((component) => component !== undefined)
   }
 
   if (state.pluginIds.length > 0) {
@@ -76,23 +134,29 @@ function getFilteredComponents(state: ReadOnlyState): Component[] {
   }
 
   if (state.testOutcomes.length > 0) {
-    filteredComponents = filteredComponents.map((component) => {
-      if (!component.testResults) {
-        return component
-      }
+    filteredComponents = filteredComponents
+      .map((component) => {
+        if (!component.testResults) {
+          return undefined
+        }
 
-      const filteredTestResults = component.testResults.filter((testResult) =>
-        state.testOutcomes.includes(testResult.outcome)
-      )
+        const filteredTestResults = component.testResults.filter((testResult) =>
+          state.testOutcomes.includes(testResult.outcome)
+        )
 
-      if (filteredTestResults.length === component.testResults.length) {
-        return component
-      } else {
-        const componentDeepClone = JSON.parse(JSON.stringify(component))
-        componentDeepClone.testResults = filteredTestResults
-        return componentDeepClone
-      }
-    })
+        if (filteredTestResults.length === 0) {
+          return undefined
+        } else if (
+          filteredTestResults.length === component.testResults.length
+        ) {
+          return component
+        } else {
+          const componentDeepClone = JSON.parse(JSON.stringify(component))
+          componentDeepClone.testResults = filteredTestResults
+          return componentDeepClone
+        }
+      })
+      .filter((component) => component !== undefined)
   }
 
   if (state.teamIds.length > 0) {
