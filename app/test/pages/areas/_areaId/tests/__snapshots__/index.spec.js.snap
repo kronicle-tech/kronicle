@@ -175,7 +175,6 @@ exports[`Index when Get Area service endpoint returns an area when the area has 
         >
           <div
             class="card-columns"
-            style="column-count: 3;"
           >
              
             <!---->
@@ -1243,7 +1242,6 @@ exports[`Index when Get Area service endpoint returns an area when the area has 
         >
           <div
             class="card-columns"
-            style="column-count: 3;"
           >
              
             <!---->

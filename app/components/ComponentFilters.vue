@@ -9,7 +9,7 @@
     <b-collapse id="filters" :visible="!toggleEnabled" class="mt-3">
       <b-card-group
         columns
-        :style="`-webkit-column-count: ${columnCount}; -moz-column-count: ${columnCount}; column-count: ${columnCount}`"
+        :style="cardGroupStyle"
       >
         <slot></slot>
 
@@ -175,7 +175,14 @@ export default class ComponentFilters extends Vue {
   @Prop({ default: false }) readonly testOutcomesFilterEnabled!: boolean
   @Prop({ default: true }) readonly componentFilterEnabled!: boolean
   @Prop({ default: true }) readonly toggleEnabled!: boolean
-  @Prop({ default: 3 }) readonly columnCount!: number
+  @Prop({ default: undefined }) readonly columnCount!: number | undefined
+
+  get cardGroupStyle(): string {
+    if (this.columnCount === undefined) {
+      return ''
+    }
+    return `-webkit-column-count: ${this.columnCount}; -moz-column-count: ${this.columnCount}; column-count: ${this.columnCount}`
+  }
 
   get allEnvironmentIds(): string[] {
     return distinctArrayElements(
