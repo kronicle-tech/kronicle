@@ -134,6 +134,8 @@ exports[`Index when Get Area service endpoint returns an area when the area has 
              
             <!---->
              
+            <!---->
+             
             <div
               class="card bg-secondary"
             >
@@ -1287,6 +1289,8 @@ exports[`Index when Get Area service endpoint returns an area when the area has 
           <div
             class="card-columns"
           >
+             
+            <!---->
              
             <!---->
              

@@ -22,7 +22,7 @@ describe('Index', () => {
     wrapper = await createPageWrapper(Index, {
       route,
       serviceRequests: {
-        '/v1/components/test-component-id-1?fields=component(id,name,typeId,tags,description,notes,responsibilities,teams,platformId,state(environments(id)))':
+        '/v1/components/test-component-id-1?fields=component(id,name,typeId,tags,description,notes,responsibilities,teams,platformId,state(environments(id,plugins(id))))':
           {
             responseBody: { component },
           },

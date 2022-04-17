@@ -32,6 +32,27 @@
             ></b-form-checkbox-group>
           </b-form-group>
         </b-card>
+
+        <b-card
+          v-if="
+                pluginIdFilterEnabled &&
+                pluginIdOptions &&
+                pluginIdOptions.length > 0
+              "
+          bg-variant="secondary"
+        >
+          <b-form-group
+            label="Plugins"
+          >
+            <b-form-checkbox-group
+              v-model="pluginIds"
+              :options="pluginIdOptions"
+              name="pluginId"
+              stacked
+            ></b-form-checkbox-group>
+          </b-form-group>
+        </b-card>
+
         <b-card
           v-if="
                 testOutcomesFilterEnabled &&
@@ -51,6 +72,7 @@
             ></b-form-checkbox-group>
           </b-form-group>
         </b-card>
+
         <b-card
           v-if="teamIdOptions && teamIdOptions.length > 0"
           bg-variant="secondary"
@@ -66,6 +88,7 @@
             ></b-form-checkbox-group>
           </b-form-group>
         </b-card>
+
         <b-card
           v-if="tagOptions && tagOptions.length > 0"
           bg-variant="secondary"
@@ -79,6 +102,7 @@
             ></b-form-checkbox-group>
           </b-form-group>
         </b-card>
+
         <b-card
           v-if="componentTypeIdOptions && componentTypeIdOptions.length > 0"
           bg-variant="secondary"
@@ -94,6 +118,7 @@
             ></b-form-checkbox-group>
           </b-form-group>
         </b-card>
+
         <b-card
           v-if="platformIdOptions && platformIdOptions.length > 0"
           bg-variant="secondary"
@@ -109,6 +134,7 @@
             ></b-form-checkbox-group>
           </b-form-group>
         </b-card>
+
         <b-card
           v-if="
             componentFilterEnabled &&
@@ -172,6 +198,7 @@ interface Option {
 export default class ComponentFilters extends Vue {
   @Prop({ default: () => [] }) readonly components!: Component[]
   @Prop({ default: false }) readonly environmentIdFilterEnabled!: boolean
+  @Prop({ default: false }) readonly pluginIdFilterEnabled!: boolean
   @Prop({ default: false }) readonly testOutcomesFilterEnabled!: boolean
   @Prop({ default: true }) readonly componentFilterEnabled!: boolean
   @Prop({ default: true }) readonly toggleEnabled!: boolean
@@ -207,6 +234,34 @@ export default class ComponentFilters extends Vue {
 
   set environmentIds(value: string[]) {
     this.$store.commit('componentFilters/setEnvironmentIds', value)
+  }
+
+  get allPluginIds(): string[] {
+    return distinctArrayElements(
+      this.components
+        .flatMap((component) =>
+          (component.state?.environments ?? []).flatMap(environment =>
+            (environment.plugins ?? []).map((plugin) => plugin.id)
+          )
+        )
+    )
+  }
+
+  get pluginIdOptions(): Option[] {
+    return this.allPluginIds.map((pluginId) => {
+      return {
+        value: pluginId,
+        text: pluginId,
+      }
+    })
+  }
+
+  get pluginIds(): string[] {
+    return this.$store.state.componentFilters.pluginIds
+  }
+
+  set pluginIds(value: string[]) {
+    this.$store.commit('componentFilters/setPluginIds', value)
   }
 
   get allTestOutcomes(): string[] {

@@ -350,6 +350,8 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
              
             <!---->
              
+            <!---->
+             
             <div
               class="card bg-secondary"
             >
@@ -1537,6 +1539,8 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
               <!---->
               <!---->
             </div>
+             
+            <!---->
              
             <!---->
              
@@ -2824,6 +2828,8 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
              
             <!---->
              
+            <!---->
+             
             <div
               class="card bg-secondary"
             >
@@ -4101,6 +4107,8 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
               <!---->
               <!---->
             </div>
+             
+            <!---->
              
             <!---->
              
@@ -5387,6 +5395,8 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
              
             <!---->
              
+            <!---->
+             
             <div
               class="card bg-secondary"
             >
@@ -6574,6 +6584,8 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
               <!---->
               <!---->
             </div>
+             
+            <!---->
              
             <!---->
              
@@ -7835,6 +7847,8 @@ exports[`Index when Get Summary service endpoint returns no dependencies renders
               <!---->
               <!---->
             </div>
+             
+            <!---->
              
             <!---->
              

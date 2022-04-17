@@ -222,6 +222,8 @@ exports[`Index when Get Component service endpoint returns a component when the 
              
             <!---->
              
+            <!---->
+             
             <div
               class="card bg-secondary"
             >
@@ -1045,6 +1047,8 @@ exports[`Index when Get Component service endpoint returns a component when the 
           <div
             class="card-columns"
           >
+             
+            <!---->
              
             <!---->
              
