@@ -2,6 +2,8 @@
   <div>
     <ComponentFilters
       :components="components"
+      :environment-id-filter-enabled="true"
+      :plugin-id-filter-enabled="true"
     />
 
     <b-card-group columns>
@@ -84,8 +86,13 @@ import ComponentFilters from '~/components/ComponentFilters.vue'
 import FormattedDateTime from "~/components/FormattedDateTime.vue";
 import FormattedNumber from "~/components/FormattedNumber.vue";
 
+type ItemType = 'check' | 'log-summary'
+const ITEM_TYPE_ORDER: ItemType[] = ['check', 'log-summary']
+const CHECK_STATUS_ORDER: ComponentStateCheckStatus[] =
+  ["critical", "warning", "pending", "unknown", "ok"]
+
 interface BaseItem {
-  readonly itemType: string;
+  readonly itemType: ItemType;
   readonly key: string;
   readonly component: Component;
   readonly environment: EnvironmentState;
@@ -137,15 +144,22 @@ export default Vue.extend({
       const that = this;
       return components.flatMap(component => that.mapComponent(component))
         .sort((a, b) => {
-          let result = a.environment.id.localeCompare(b.environment.id)
+          let result: number
+          result = ITEM_TYPE_ORDER.indexOf(a.itemType) - ITEM_TYPE_ORDER.indexOf(b.itemType)
+          if (result !== 0) {
+            return result;
+          }
+          if (a.itemType === 'check' && b.itemType === 'check') {
+            result = CHECK_STATUS_ORDER.indexOf(a.check.status) - CHECK_STATUS_ORDER.indexOf(b.check.status)
+            if (result !== 0) {
+              return result;
+            }
+          }
+          result = a.environment.id.localeCompare(b.environment.id)
           if (result !== 0) {
             return result;
           }
           result = a.component.id.localeCompare(b.component.id)
-          if (result !== 0) {
-            return result;
-          }
-          result = a.itemType.localeCompare(b.itemType)
           if (result !== 0) {
             return result;
           }

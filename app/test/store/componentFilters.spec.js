@@ -205,7 +205,7 @@ describe('Component Filters Store', () => {
     })
   })
 
-  test('when testOutcomes is set to a test outcome, filteredComponents and filteredComponentIds return all components with their testResults filtered to only include that test outcome', () => {
+  test('when testOutcomes is set to a test outcome, filteredComponents and filteredComponentIds return only components with that test outcome and those components have their testResults filtered to only include that test outcome', () => {
     const component1 = {
       id: 'test-component-id-1',
     }
@@ -235,7 +235,6 @@ describe('Component Filters Store', () => {
       givenComponents: [component1, component2, component3],
       givenValue: ['fail'],
       expectedFilteredComponents: [
-        component1,
         {
           id: 'test-component-id-2',
           testResults: [
@@ -245,16 +244,12 @@ describe('Component Filters Store', () => {
             },
           ],
         },
-        {
-          id: 'test-component-id-3',
-          testResults: [],
-        },
       ],
       expectedQueryString: 'testOutcome=fail',
     })
   })
 
-  test('when testOutcomes is set to multiple test outcomes, filteredComponents and filteredComponentIds return all components with their testResults filtered to only include those test outcomes', () => {
+  test('when testOutcomes is set to multiple test outcomes, filteredComponents and filteredComponentIds return only components with those test outcomes and those components have their testResults filtered to only include those test outcomes', () => {
     const component1 = {
       id: 'test-component-id-1',
     }
@@ -288,7 +283,6 @@ describe('Component Filters Store', () => {
       givenComponents: [component1, component2, component3],
       givenValue: ['fail', 'pass'],
       expectedFilteredComponents: [
-        component1,
         {
           id: 'test-component-id-2',
           testResults: [
@@ -308,7 +302,7 @@ describe('Component Filters Store', () => {
     })
   })
 
-  test('when testOutcomes is set once via the query string, filteredComponents and filteredComponentIds return all components with their testResults filtered to only include that test outcome', () => {
+  test('when testOutcomes is set once via the query string, filteredComponents and filteredComponentIds return only components with that test outcome and those components have their testResults filtered to only include that test outcome', () => {
     const component1 = {
       id: 'test-component-id-1',
     }
@@ -338,7 +332,6 @@ describe('Component Filters Store', () => {
       givenComponents: [component1, component2, component3],
       givenQuery: { testOutcome: ['fail'] },
       expectedFilteredComponents: [
-        component1,
         {
           id: 'test-component-id-2',
           testResults: [
@@ -348,10 +341,6 @@ describe('Component Filters Store', () => {
             },
           ],
         },
-        {
-          id: 'test-component-id-3',
-          testResults: [],
-        },
       ],
       expectedFilters: {
         testOutcomes: ['fail'],
@@ -359,7 +348,7 @@ describe('Component Filters Store', () => {
     })
   })
 
-  test('when testOutcomes is set to multiple test outcomes, filteredComponents and filteredComponentIds return all components with their testResults filtered to only include those test outcomes', () => {
+  test('when testOutcomes is set to multiple test outcomes, filteredComponents and filteredComponentIds return only components with those test outcomes and those components have their testResults filtered to only include those test outcomes', () => {
     const component1 = {
       id: 'test-component-id-1',
     }
@@ -393,7 +382,6 @@ describe('Component Filters Store', () => {
       givenComponents: [component1, component2, component3],
       givenQuery: { testOutcome: ['fail', 'pass'] },
       expectedFilteredComponents: [
-        component1,
         {
           id: 'test-component-id-2',
           testResults: [
