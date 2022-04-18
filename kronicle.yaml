@@ -133,6 +133,9 @@ components:
     typeId: third-party-platform
     description: |
       Kronicle integrates with several of Amazon AWS's APIs
+    # TODO: Remove "repo" in July 2022 or later
+    repo:
+      url: https://github.com/kronicle-tech/kronicle.git
     teams:
       - teamId: kronicle-project
     platform: third-party-platform
@@ -143,6 +146,9 @@ components:
     description: |
       Kronicle integrates with Bitbucket Server's APIs.  This is the self-hosted version of Bitbucket, rather than the 
       SaaS vcersion of Bitbucket (which has a completely API)
+    # TODO: Remove "repo" in July 2022 or later
+    repo:
+      url: https://github.com/kronicle-tech/kronicle.git
     teams:
       - teamId: kronicle-project
     platform: third-party-platform
@@ -152,6 +158,9 @@ components:
     typeId: third-party-platform
     description: |
       Kronicle integrates with Datadog's Service Dependencies API
+    # TODO: Remove "repo" in July 2022 or later
+    repo:
+      url: https://github.com/kronicle-tech/kronicle.git
     teams:
       - teamId: kronicle-project
     platform: third-party-platform
@@ -161,6 +170,9 @@ components:
     typeId: third-party-platform
     description: |
       Kronicle integrates with GitHub's APIs
+    # TODO: Remove "repo" in July 2022 or later
+    repo:
+      url: https://github.com/kronicle-tech/kronicle.git
     teams:
       - teamId: kronicle-project
     platform: third-party-platform
@@ -170,6 +182,9 @@ components:
     typeId: third-party-platform
     description: |
       Kronicle integrates with GitLab Platforms's APIs
+    # TODO: Remove "repo" in July 2022 or later
+    repo:
+      url: https://github.com/kronicle-tech/kronicle.git
     teams:
       - teamId: kronicle-project
     platform: third-party-platform
@@ -180,6 +195,9 @@ components:
     description: |
       Kronicle integrates with SonarQube's APIs.  Kronicle supports both self-hosted SonarQube and the SaaS version of
       SonarQube called SonarCloud
+    # TODO: Remove "repo" in July 2022 or later
+    repo:
+      url: https://github.com/kronicle-tech/kronicle.git
     teams:
       - teamId: kronicle-project
     platform: third-party-platform
@@ -192,6 +210,9 @@ components:
     notes: |
       Kronicle imports raw traces to produce detailed component dependencies, deduplicated call graphs, response times 
       and request times
+    # TODO: Remove "repo" in July 2022 or later
+    repo:
+      url: https://github.com/kronicle-tech/kronicle.git
     teams:
       - teamId: kronicle-project
     platform: third-party-platform
