@@ -95,9 +95,9 @@ components:
       #  typeId: integration
       - targetComponentId: gitlab
       #  typeId: integration
-      - targetComponentId: sonarcloud
+      - targetComponentId: sonarqube
       #  typeId: integration
-      - targetComponentId: sonarcloud
+      - targetComponentId: zipkin
       #  typeId: integration
     crossFunctionalRequirements:
       - description: |
