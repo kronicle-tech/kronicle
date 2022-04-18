@@ -42,6 +42,7 @@ import java.time.LocalDateTime;
 import java.time.ZoneOffset;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -137,17 +138,47 @@ public class GitHubClient {
   private ComponentState getState(GitHubAccessTokenConfig accessToken, GitHubRepo repo) {
     LocalDateTime now = LocalDateTime.now(clock);
     String uriTemplate = config.getApiBaseUrl() + GitHubApiPaths.REPO_ACTIONS_RUNS;
-    Map<String, String> uriVariables = UriVariablesBuilder.builder()
-            .addUriVariable("owner", repo.getOwner().getLogin())
-            .addUriVariable("repo", repo.getName())
-            .addUriVariable("branch", repo.getDefault_branch())
-            .build();
-    GitHubGetWorkflowRunsResponse response = getResource(
-            accessToken,
-            expandUriTemplate(uriTemplate, uriVariables),
-            new TypeReference<>() {}
-    );
-    if (response.getWorkflow_runs().isEmpty()) {
+    int page = 0;
+    boolean defaultBranchFound = false;
+    String defaultBranchFirstSha = null;
+    boolean defaultBranchSecondShaFound = false;
+    List<GitHubWorkflowRun> defaultBranchWorkflowRuns = new ArrayList<>();
+
+    while (!defaultBranchSecondShaFound) {
+      page++;
+      Map<String, String> uriVariables = UriVariablesBuilder.builder()
+              .addUriVariable("owner", repo.getOwner().getLogin())
+              .addUriVariable("repo", repo.getName())
+              .addUriVariable("page", page)
+              .build();
+      GitHubGetWorkflowRunsResponse response = getResource(
+              accessToken,
+              expandUriTemplate(uriTemplate, uriVariables),
+              new TypeReference<>() {
+              }
+      );
+      if (response.getWorkflow_runs().isEmpty()) {
+        break;
+      }
+      for (GitHubWorkflowRun workflowRun : response.getWorkflow_runs()) {
+        if (Objects.equals(workflowRun.getHead_branch(), repo.getDefault_branch())) {
+          if (!defaultBranchFound) {
+            defaultBranchFound = true;
+            defaultBranchFirstSha = workflowRun.getHead_sha();
+          }
+
+          if (defaultBranchFound) {
+            if (!Objects.equals(workflowRun.getHead_sha(), defaultBranchFirstSha)) {
+              defaultBranchSecondShaFound = true;
+            } else {
+              defaultBranchWorkflowRuns.add(workflowRun);
+            }
+          }
+        }
+      }
+    }
+
+    if (defaultBranchWorkflowRuns.isEmpty()) {
       return null;
     }
     return ComponentState.EMPTY
@@ -155,7 +186,7 @@ public class GitHubClient {
                     config.getEnvironmentId(),
                     environment -> environment.withUpdatedPlugin(
                             GitHubPlugin.ID,
-                            plugin -> plugin.withChecks(mapWorkflowRuns(response.getWorkflow_runs(), now))
+                            plugin -> plugin.withChecks(mapWorkflowRuns(defaultBranchWorkflowRuns, now))
                     )
             );
   }

@@ -50,12 +50,26 @@ public class GitHubApiWireMockFactory {
         } else {
             wireMockServer.stubFor(request
                     .willReturn(createRepoListResponse(baseUrl, scenario, reposRequestNumber)));
-            IntStream.range(1, 5).forEach(repoNumber -> {
+            IntStream.rangeClosed(1, 4).forEach(repoNumber -> {
                 int repoRequestNumber = requestNumber.getNext();
                 wireMockServer.stubFor(createRepoRootContentsRequest(scenario, repoNumber, repoRequestNumber)
                         .willReturn(createRepoRootContentsResponse(scenario, repoNumber, repoRequestNumber)));
-                wireMockServer.stubFor(createRepoWorkflowRunsRequest(scenario, repoNumber, repoRequestNumber)
-                        .willReturn(createRepoWorkflowRunsResponse(scenario, repoNumber, repoRequestNumber)));
+                IntStream.rangeClosed(1, 2).forEach(pageNumber -> {
+                    wireMockServer.stubFor(
+                            createRepoWorkflowRunsRequest(
+                                    scenario,
+                                    repoNumber,
+                                    repoRequestNumber,
+                                    pageNumber
+                            )
+                            .willReturn(createRepoWorkflowRunsResponse(
+                                    scenario,
+                                    repoNumber,
+                                    repoRequestNumber,
+                                    pageNumber
+                            ))
+                    );
+                });
             });
         }
     }
@@ -134,11 +148,16 @@ public class GitHubApiWireMockFactory {
         return builder;
     }
 
-    private MappingBuilder createRepoWorkflowRunsRequest(Scenario scenario, int repoNumber, int requestNumber) {
+    private MappingBuilder createRepoWorkflowRunsRequest(
+            Scenario scenario,
+            int repoNumber,
+            int requestNumber,
+            int page
+    ) {
         MappingBuilder builder = get(urlPathEqualTo(
                 "/repos/" + scenario.name + "/test-repo-" + repoNumber + "/actions/runs"
         ))
-                .withQueryParam("branch", equalTo("test-default-branch-" + repoNumber));
+                .withQueryParam("page", equalTo(Integer.toString(page)));
         addBasicAuthIfNeeded(scenario, builder);
         if (scenario.eTag && scenario.repo2NotModified && repoNumber == 2) {
             builder.withHeader("If-None-Match", equalTo(createRequestETag(requestNumber)));
@@ -146,14 +165,19 @@ public class GitHubApiWireMockFactory {
         return builder;
     }
 
-    private ResponseDefinitionBuilder createRepoWorkflowRunsResponse(Scenario scenario, int repoNumber, int requestNumber) {
+    private ResponseDefinitionBuilder createRepoWorkflowRunsResponse(
+            Scenario scenario,
+            int repoNumber,
+            int requestNumber,
+            int page
+    ) {
         ResponseDefinitionBuilder builder = aResponse();
         if (scenario.eTag && scenario.repo2NotModified && repoNumber == 2) {
             builder.withStatus(304);
         } else {
             builder.withStatus(200)
                     .withHeader("Content-Type", "application/json")
-                    .withBody(readTestFile("github-api-responses/repo-workflow-runs.json"));
+                    .withBody(readTestFile("github-api-responses/repo-workflow-runs-page-" + page +".json"));
         }
         builder.withHeader("ETag", createResponseETag(scenario, requestNumber));
         if (scenario.rateLimitResponseHeaders) {
@@ -215,7 +239,7 @@ public class GitHubApiWireMockFactory {
                 .replaceAll("\\{\\{username}}", username);
     }
 
-    private String readTestFile(String name) {
+    public String readTestFile(String name) {
         return TestFileHelper.readTestFile(name, GitHubApiWireMockFactory.class);
     }
 

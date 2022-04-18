@@ -2,6 +2,7 @@
   "workflow_runs": [
     {
       "name": "Test name 1",
+      "head_branch": "test-default-branch",
       "head_sha": "test-head-sha-a",
       "status": "completed",
       "conclusion": "success",
@@ -16,6 +17,7 @@
     },
     {
       "name": "Test name 2",
+      "head_branch": "test-default-branch",
       "head_sha": "test-head-sha-a",
       "status": "completed",
       "conclusion": "failure",
@@ -30,6 +32,7 @@
     },
     {
       "name": "Test name 3",
+      "head_branch": "test-other-branch",
       "head_sha": "test-head-sha-b",
       "status": "completed",
       "conclusion": "success",
