@@ -31,7 +31,7 @@ describe('FormattedDateTime', () => {
 
     test('renders the date time with year, month, day, hour and seconds', () => {
       createWrapper()
-      expect(wrapper.html()).toEqual(`<span>2001-02-03 04:05</span>`)
+      expect(wrapper.html()).toEqual(`<span>2001-02-03 04:05 UTC</span>`)
     })
   })
 })
