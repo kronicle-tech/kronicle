@@ -2,11 +2,20 @@
   <div v-if="components && components.length > 0"
        class="mt-3 mb-4">
 
-    <b-button v-if="toggleEnabled" id="toggle-filters" v-b-toggle.filters>
+    <b-button
+      v-if="toggleEnabled"
+      id="toggleFilters"
+      v-b-toggle.filters
+      variant="primary"
+    >
       <b-icon icon="filter" aria-hidden="true" /> Filters
     </b-button>
 
-    <b-collapse id="filters" :visible="!toggleEnabled" class="mt-3">
+    <b-collapse
+      id="filters"
+      :visible.sync="collapseVisible"
+      class="mt-3"
+    >
       <b-card-group
         columns
         :style="cardGroupStyle"
@@ -196,13 +205,16 @@ interface Option {
   }
 })
 export default class ComponentFilters extends Vue {
-  @Prop({ default: () => [] }) readonly components!: Component[]
   @Prop({ default: false }) readonly environmentIdFilterEnabled!: boolean
   @Prop({ default: false }) readonly pluginIdFilterEnabled!: boolean
   @Prop({ default: false }) readonly testOutcomesFilterEnabled!: boolean
   @Prop({ default: true }) readonly componentFilterEnabled!: boolean
   @Prop({ default: true }) readonly toggleEnabled!: boolean
   @Prop({ default: undefined }) readonly columnCount!: number | undefined
+
+  get components(): Component[] {
+    return this.$store.state.componentFilters.components ?? []
+  }
 
   get cardGroupStyle(): string {
     if (this.columnCount === undefined) {

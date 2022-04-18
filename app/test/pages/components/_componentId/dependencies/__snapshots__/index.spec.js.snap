@@ -200,12 +200,13 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
      
     <div
       class="mt-3 mb-4"
+      components="[object Object]"
     >
       <button
         aria-controls="filters"
         aria-expanded="false"
-        class="btn btn-secondary collapsed"
-        id="toggle-filters"
+        class="btn btn-primary collapsed"
+        id="toggleFilters"
         type="button"
       >
         <svg
@@ -1330,12 +1331,13 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
      
     <div
       class="mt-3 mb-4"
+      components="[object Object]"
     >
       <button
         aria-controls="filters"
         aria-expanded="false"
-        class="btn btn-secondary collapsed"
-        id="toggle-filters"
+        class="btn btn-primary collapsed"
+        id="toggleFilters"
         type="button"
       >
         <svg
@@ -2460,12 +2462,13 @@ exports[`Index when Get Summary service endpoint returns no dependencies renders
      
     <div
       class="mt-3 mb-4"
+      components="[object Object]"
     >
       <button
         aria-controls="filters"
         aria-expanded="false"
-        class="btn btn-secondary collapsed"
-        id="toggle-filters"
+        class="btn btn-primary collapsed"
+        id="toggleFilters"
         type="button"
       >
         <svg
