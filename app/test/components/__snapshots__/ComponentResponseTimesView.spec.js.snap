@@ -62,8 +62,8 @@ exports[`ComponentResponseTimesView when a matching sub component dependency has
             </ul>
           </td>
           <td><span>123</span> spans</td>
-          <td><span>2021-01-01 02:03</span></td>
-          <td><span>2021-01-02 03:04</span></td>
+          <td><span>2021-01-01 02:03 UTC</span></td>
+          <td><span>2021-01-02 03:04 UTC</span></td>
           <td><span><span>11</span>ms
             </span></td>
           <td><span><span>13</span>ms
@@ -129,8 +129,8 @@ exports[`ComponentResponseTimesView when a sub component dependency's source mat
             <!---->
           </td>
           <td><span>123</span> spans</td>
-          <td><span>2021-01-01 02:03</span></td>
-          <td><span>2021-01-02 03:04</span></td>
+          <td><span>2021-01-01 02:03 UTC</span></td>
+          <td><span>2021-01-02 03:04 UTC</span></td>
           <td><span><span>11</span>ms
             </span></td>
           <td><span><span>13</span>ms
@@ -196,8 +196,8 @@ exports[`ComponentResponseTimesView when a sub component dependency's target mat
             <!---->
           </td>
           <td><span>123</span> spans</td>
-          <td><span>2021-01-01 02:03</span></td>
-          <td><span>2021-01-02 03:04</span></td>
+          <td><span>2021-01-01 02:03 UTC</span></td>
+          <td><span>2021-01-02 03:04 UTC</span></td>
           <td><span><span>11</span>ms
             </span></td>
           <td><span><span>13</span>ms
@@ -307,8 +307,8 @@ exports[`ComponentResponseTimesView when direction prop is set to downstream whe
             <!---->
           </td>
           <td><span>123</span> spans</td>
-          <td><span>2021-01-01 02:03</span></td>
-          <td><span>2021-01-02 03:04</span></td>
+          <td><span>2021-01-01 02:03 UTC</span></td>
+          <td><span>2021-01-02 03:04 UTC</span></td>
           <td><span><span>11</span>ms
             </span></td>
           <td><span><span>13</span>ms
@@ -376,8 +376,8 @@ exports[`ComponentResponseTimesView when direction prop is set to downstream whe
             <!---->
           </td>
           <td><span>123</span> spans</td>
-          <td><span>2021-01-01 02:03</span></td>
-          <td><span>2021-01-02 03:04</span></td>
+          <td><span>2021-01-01 02:03 UTC</span></td>
+          <td><span>2021-01-02 03:04 UTC</span></td>
           <td><span><span>11</span>ms
             </span></td>
           <td><span><span>13</span>ms
@@ -409,8 +409,8 @@ exports[`ComponentResponseTimesView when direction prop is set to downstream whe
             <!---->
           </td>
           <td><span>123</span> spans</td>
-          <td><span>2021-01-01 02:03</span></td>
-          <td><span>2021-01-02 03:04</span></td>
+          <td><span>2021-01-01 02:03 UTC</span></td>
+          <td><span>2021-01-02 03:04 UTC</span></td>
           <td><span><span>11</span>ms
             </span></td>
           <td><span><span>13</span>ms
@@ -478,8 +478,8 @@ exports[`ComponentResponseTimesView when direction prop is set to upstream when 
             <!---->
           </td>
           <td><span>123</span> spans</td>
-          <td><span>2021-01-01 02:03</span></td>
-          <td><span>2021-01-02 03:04</span></td>
+          <td><span>2021-01-01 02:03 UTC</span></td>
+          <td><span>2021-01-02 03:04 UTC</span></td>
           <td><span><span>11</span>ms
             </span></td>
           <td><span><span>13</span>ms
@@ -589,8 +589,8 @@ exports[`ComponentResponseTimesView when direction prop is set to upstream when 
             <!---->
           </td>
           <td><span>123</span> spans</td>
-          <td><span>2021-01-01 02:03</span></td>
-          <td><span>2021-01-02 03:04</span></td>
+          <td><span>2021-01-01 02:03 UTC</span></td>
+          <td><span>2021-01-02 03:04 UTC</span></td>
           <td><span><span>11</span>ms
             </span></td>
           <td><span><span>13</span>ms
@@ -658,8 +658,8 @@ exports[`ComponentResponseTimesView when direction prop is set to upstream when 
             <!---->
           </td>
           <td><span>123</span> spans</td>
-          <td><span>2021-01-01 02:03</span></td>
-          <td><span>2021-01-02 03:04</span></td>
+          <td><span>2021-01-01 02:03 UTC</span></td>
+          <td><span>2021-01-02 03:04 UTC</span></td>
           <td><span><span>11</span>ms
             </span></td>
           <td><span><span>13</span>ms
@@ -691,8 +691,8 @@ exports[`ComponentResponseTimesView when direction prop is set to upstream when 
             <!---->
           </td>
           <td><span>123</span> spans</td>
-          <td><span>2021-01-01 02:03</span></td>
-          <td><span>2021-01-02 03:04</span></td>
+          <td><span>2021-01-01 02:03 UTC</span></td>
+          <td><span>2021-01-02 03:04 UTC</span></td>
           <td><span><span>11</span>ms
             </span></td>
           <td><span><span>13</span>ms
@@ -774,8 +774,8 @@ exports[`ComponentResponseTimesView when there is no duration object for multipl
             <!---->
           </td>
           <td><span>123</span> spans</td>
-          <td><span>2021-01-01 02:03</span></td>
-          <td><span>2021-01-02 03:04</span></td>
+          <td><span>2021-01-01 02:03 UTC</span></td>
+          <td><span>2021-01-02 03:04 UTC</span></td>
           <td><span>Unknown</span></td>
           <td><span>Unknown</span></td>
           <td><span>Unknown</span></td>
@@ -801,8 +801,8 @@ exports[`ComponentResponseTimesView when there is no duration object for multipl
             <!---->
           </td>
           <td><span>123</span> spans</td>
-          <td><span>2021-01-01 02:03</span></td>
-          <td><span>2021-01-02 03:04</span></td>
+          <td><span>2021-01-01 02:03 UTC</span></td>
+          <td><span>2021-01-02 03:04 UTC</span></td>
           <td><span>Unknown</span></td>
           <td><span>Unknown</span></td>
           <td><span>Unknown</span></td>
