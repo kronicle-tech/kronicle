@@ -19,7 +19,7 @@ exports[`TestResultsView when areaId prop is set renders the test hrefs pointing
     <!---->
     <!---->
   </div>
-  <div class=\\"mt-3 mb-4\\"><button id=\\"toggle-filters\\" type=\\"button\\" class=\\"btn btn-secondary collapsed\\" aria-expanded=\\"false\\" aria-controls=\\"filters\\"><svg viewBox=\\"0 0 16 16\\" width=\\"1em\\" height=\\"1em\\" focusable=\\"false\\" role=\\"img\\" aria-label=\\"blank\\" aria-hidden=\\"true\\" xmlns=\\"http://www.w3.org/2000/svg\\" fill=\\"currentColor\\" class=\\"bi-blank b-icon bi\\">
+  <div class=\\"mt-3 mb-4\\" components=\\"[object Object],[object Object],[object Object]\\"><button id=\\"toggleFilters\\" type=\\"button\\" class=\\"btn btn-primary collapsed\\" aria-expanded=\\"false\\" aria-controls=\\"filters\\"><svg viewBox=\\"0 0 16 16\\" width=\\"1em\\" height=\\"1em\\" focusable=\\"false\\" role=\\"img\\" aria-label=\\"blank\\" aria-hidden=\\"true\\" xmlns=\\"http://www.w3.org/2000/svg\\" fill=\\"currentColor\\" class=\\"bi-blank b-icon bi\\">
         <g></g>
       </svg> Filters
     </button>
@@ -382,7 +382,7 @@ exports[`TestResultsView when components is set to multiple components with mult
     <!---->
     <!---->
   </div>
-  <div class=\\"mt-3 mb-4\\"><button id=\\"toggle-filters\\" type=\\"button\\" class=\\"btn btn-secondary collapsed\\" aria-expanded=\\"false\\" aria-controls=\\"filters\\"><svg viewBox=\\"0 0 16 16\\" width=\\"1em\\" height=\\"1em\\" focusable=\\"false\\" role=\\"img\\" aria-label=\\"blank\\" aria-hidden=\\"true\\" xmlns=\\"http://www.w3.org/2000/svg\\" fill=\\"currentColor\\" class=\\"bi-blank b-icon bi\\">
+  <div class=\\"mt-3 mb-4\\" components=\\"[object Object],[object Object],[object Object]\\"><button id=\\"toggleFilters\\" type=\\"button\\" class=\\"btn btn-primary collapsed\\" aria-expanded=\\"false\\" aria-controls=\\"filters\\"><svg viewBox=\\"0 0 16 16\\" width=\\"1em\\" height=\\"1em\\" focusable=\\"false\\" role=\\"img\\" aria-label=\\"blank\\" aria-hidden=\\"true\\" xmlns=\\"http://www.w3.org/2000/svg\\" fill=\\"currentColor\\" class=\\"bi-blank b-icon bi\\">
         <g></g>
       </svg> Filters
     </button>
@@ -745,7 +745,7 @@ exports[`TestResultsView when components is set to multiple components with mult
     <!---->
     <!---->
   </div>
-  <div class=\\"mt-3 mb-4\\"><button id=\\"toggle-filters\\" type=\\"button\\" class=\\"btn btn-secondary collapsed\\" aria-expanded=\\"false\\" aria-controls=\\"filters\\"><svg viewBox=\\"0 0 16 16\\" width=\\"1em\\" height=\\"1em\\" focusable=\\"false\\" role=\\"img\\" aria-label=\\"blank\\" aria-hidden=\\"true\\" xmlns=\\"http://www.w3.org/2000/svg\\" fill=\\"currentColor\\" class=\\"bi-blank b-icon bi\\">
+  <div class=\\"mt-3 mb-4\\" components=\\"[object Object],[object Object],[object Object]\\"><button id=\\"toggleFilters\\" type=\\"button\\" class=\\"btn btn-primary collapsed\\" aria-expanded=\\"false\\" aria-controls=\\"filters\\"><svg viewBox=\\"0 0 16 16\\" width=\\"1em\\" height=\\"1em\\" focusable=\\"false\\" role=\\"img\\" aria-label=\\"blank\\" aria-hidden=\\"true\\" xmlns=\\"http://www.w3.org/2000/svg\\" fill=\\"currentColor\\" class=\\"bi-blank b-icon bi\\">
         <g></g>
       </svg> Filters
     </button>
@@ -1108,7 +1108,7 @@ exports[`TestResultsView when components is set to multiple components with mult
     <!---->
     <!---->
   </div>
-  <div class=\\"mt-3 mb-4\\"><button id=\\"toggle-filters\\" type=\\"button\\" class=\\"btn btn-secondary collapsed\\" aria-expanded=\\"false\\" aria-controls=\\"filters\\"><svg viewBox=\\"0 0 16 16\\" width=\\"1em\\" height=\\"1em\\" focusable=\\"false\\" role=\\"img\\" aria-label=\\"blank\\" aria-hidden=\\"true\\" xmlns=\\"http://www.w3.org/2000/svg\\" fill=\\"currentColor\\" class=\\"bi-blank b-icon bi\\">
+  <div class=\\"mt-3 mb-4\\" components=\\"[object Object],[object Object],[object Object]\\"><button id=\\"toggleFilters\\" type=\\"button\\" class=\\"btn btn-primary collapsed\\" aria-expanded=\\"false\\" aria-controls=\\"filters\\"><svg viewBox=\\"0 0 16 16\\" width=\\"1em\\" height=\\"1em\\" focusable=\\"false\\" role=\\"img\\" aria-label=\\"blank\\" aria-hidden=\\"true\\" xmlns=\\"http://www.w3.org/2000/svg\\" fill=\\"currentColor\\" class=\\"bi-blank b-icon bi\\">
         <g></g>
       </svg> Filters
     </button>
@@ -1359,7 +1359,7 @@ exports[`TestResultsView when components prop is set a component with 1 fail tes
     <!---->
     <!---->
   </div>
-  <div class=\\"mt-3 mb-4\\"><button id=\\"toggle-filters\\" type=\\"button\\" class=\\"btn btn-secondary collapsed\\" aria-expanded=\\"false\\" aria-controls=\\"filters\\"><svg viewBox=\\"0 0 16 16\\" width=\\"1em\\" height=\\"1em\\" focusable=\\"false\\" role=\\"img\\" aria-label=\\"blank\\" aria-hidden=\\"true\\" xmlns=\\"http://www.w3.org/2000/svg\\" fill=\\"currentColor\\" class=\\"bi-blank b-icon bi\\">
+  <div class=\\"mt-3 mb-4\\" components=\\"[object Object]\\"><button id=\\"toggleFilters\\" type=\\"button\\" class=\\"btn btn-primary collapsed\\" aria-expanded=\\"false\\" aria-controls=\\"filters\\"><svg viewBox=\\"0 0 16 16\\" width=\\"1em\\" height=\\"1em\\" focusable=\\"false\\" role=\\"img\\" aria-label=\\"blank\\" aria-hidden=\\"true\\" xmlns=\\"http://www.w3.org/2000/svg\\" fill=\\"currentColor\\" class=\\"bi-blank b-icon bi\\">
         <g></g>
       </svg> Filters
     </button>
@@ -1519,7 +1519,7 @@ exports[`TestResultsView when components prop is set a component with 1 not-appl
     <!---->
     <!---->
   </div>
-  <div class=\\"mt-3 mb-4\\"><button id=\\"toggle-filters\\" type=\\"button\\" class=\\"btn btn-secondary collapsed\\" aria-expanded=\\"false\\" aria-controls=\\"filters\\"><svg viewBox=\\"0 0 16 16\\" width=\\"1em\\" height=\\"1em\\" focusable=\\"false\\" role=\\"img\\" aria-label=\\"blank\\" aria-hidden=\\"true\\" xmlns=\\"http://www.w3.org/2000/svg\\" fill=\\"currentColor\\" class=\\"bi-blank b-icon bi\\">
+  <div class=\\"mt-3 mb-4\\" components=\\"[object Object]\\"><button id=\\"toggleFilters\\" type=\\"button\\" class=\\"btn btn-primary collapsed\\" aria-expanded=\\"false\\" aria-controls=\\"filters\\"><svg viewBox=\\"0 0 16 16\\" width=\\"1em\\" height=\\"1em\\" focusable=\\"false\\" role=\\"img\\" aria-label=\\"blank\\" aria-hidden=\\"true\\" xmlns=\\"http://www.w3.org/2000/svg\\" fill=\\"currentColor\\" class=\\"bi-blank b-icon bi\\">
         <g></g>
       </svg> Filters
     </button>
@@ -1679,7 +1679,7 @@ exports[`TestResultsView when components prop is set a component with 1 pass tes
     <!---->
     <!---->
   </div>
-  <div class=\\"mt-3 mb-4\\"><button id=\\"toggle-filters\\" type=\\"button\\" class=\\"btn btn-secondary collapsed\\" aria-expanded=\\"false\\" aria-controls=\\"filters\\"><svg viewBox=\\"0 0 16 16\\" width=\\"1em\\" height=\\"1em\\" focusable=\\"false\\" role=\\"img\\" aria-label=\\"blank\\" aria-hidden=\\"true\\" xmlns=\\"http://www.w3.org/2000/svg\\" fill=\\"currentColor\\" class=\\"bi-blank b-icon bi\\">
+  <div class=\\"mt-3 mb-4\\" components=\\"[object Object]\\"><button id=\\"toggleFilters\\" type=\\"button\\" class=\\"btn btn-primary collapsed\\" aria-expanded=\\"false\\" aria-controls=\\"filters\\"><svg viewBox=\\"0 0 16 16\\" width=\\"1em\\" height=\\"1em\\" focusable=\\"false\\" role=\\"img\\" aria-label=\\"blank\\" aria-hidden=\\"true\\" xmlns=\\"http://www.w3.org/2000/svg\\" fill=\\"currentColor\\" class=\\"bi-blank b-icon bi\\">
         <g></g>
       </svg> Filters
     </button>
@@ -1836,7 +1836,7 @@ exports[`TestResultsView when components prop is set components with no test res
     <!---->
     <!---->
   </div>
-  <div class=\\"mt-3 mb-4\\"><button id=\\"toggle-filters\\" type=\\"button\\" class=\\"btn btn-secondary collapsed\\" aria-expanded=\\"false\\" aria-controls=\\"filters\\"><svg viewBox=\\"0 0 16 16\\" width=\\"1em\\" height=\\"1em\\" focusable=\\"false\\" role=\\"img\\" aria-label=\\"blank\\" aria-hidden=\\"true\\" xmlns=\\"http://www.w3.org/2000/svg\\" fill=\\"currentColor\\" class=\\"bi-blank b-icon bi\\">
+  <div class=\\"mt-3 mb-4\\" components=\\"[object Object],[object Object]\\"><button id=\\"toggleFilters\\" type=\\"button\\" class=\\"btn btn-primary collapsed\\" aria-expanded=\\"false\\" aria-controls=\\"filters\\"><svg viewBox=\\"0 0 16 16\\" width=\\"1em\\" height=\\"1em\\" focusable=\\"false\\" role=\\"img\\" aria-label=\\"blank\\" aria-hidden=\\"true\\" xmlns=\\"http://www.w3.org/2000/svg\\" fill=\\"currentColor\\" class=\\"bi-blank b-icon bi\\">
         <g></g>
       </svg> Filters
     </button>
@@ -1979,7 +1979,7 @@ exports[`TestResultsView when teamId prop is set renders the test hrefs pointing
     <!---->
     <!---->
   </div>
-  <div class=\\"mt-3 mb-4\\"><button id=\\"toggle-filters\\" type=\\"button\\" class=\\"btn btn-secondary collapsed\\" aria-expanded=\\"false\\" aria-controls=\\"filters\\"><svg viewBox=\\"0 0 16 16\\" width=\\"1em\\" height=\\"1em\\" focusable=\\"false\\" role=\\"img\\" aria-label=\\"blank\\" aria-hidden=\\"true\\" xmlns=\\"http://www.w3.org/2000/svg\\" fill=\\"currentColor\\" class=\\"bi-blank b-icon bi\\">
+  <div class=\\"mt-3 mb-4\\" components=\\"[object Object],[object Object],[object Object]\\"><button id=\\"toggleFilters\\" type=\\"button\\" class=\\"btn btn-primary collapsed\\" aria-expanded=\\"false\\" aria-controls=\\"filters\\"><svg viewBox=\\"0 0 16 16\\" width=\\"1em\\" height=\\"1em\\" focusable=\\"false\\" role=\\"img\\" aria-label=\\"blank\\" aria-hidden=\\"true\\" xmlns=\\"http://www.w3.org/2000/svg\\" fill=\\"currentColor\\" class=\\"bi-blank b-icon bi\\">
         <g></g>
       </svg> Filters
     </button>
@@ -2342,7 +2342,7 @@ exports[`TestResultsView when testId prop is set renders only the test results t
     <!---->
     <!---->
   </div>
-  <div class=\\"mt-3 mb-4\\"><button id=\\"toggle-filters\\" type=\\"button\\" class=\\"btn btn-secondary collapsed\\" aria-expanded=\\"false\\" aria-controls=\\"filters\\"><svg viewBox=\\"0 0 16 16\\" width=\\"1em\\" height=\\"1em\\" focusable=\\"false\\" role=\\"img\\" aria-label=\\"blank\\" aria-hidden=\\"true\\" xmlns=\\"http://www.w3.org/2000/svg\\" fill=\\"currentColor\\" class=\\"bi-blank b-icon bi\\">
+  <div class=\\"mt-3 mb-4\\" components=\\"[object Object],[object Object],[object Object]\\"><button id=\\"toggleFilters\\" type=\\"button\\" class=\\"btn btn-primary collapsed\\" aria-expanded=\\"false\\" aria-controls=\\"filters\\"><svg viewBox=\\"0 0 16 16\\" width=\\"1em\\" height=\\"1em\\" focusable=\\"false\\" role=\\"img\\" aria-label=\\"blank\\" aria-hidden=\\"true\\" xmlns=\\"http://www.w3.org/2000/svg\\" fill=\\"currentColor\\" class=\\"bi-blank b-icon bi\\">
         <g></g>
       </svg> Filters
     </button>

@@ -85,12 +85,13 @@ exports[`Index when Get Area service endpoint returns an area when the area has 
   <div>
     <div
       class="mt-3 mb-4"
+      components="[object Object],[object Object],[object Object]"
     >
       <button
         aria-controls="filters"
         aria-expanded="false"
-        class="btn btn-secondary collapsed"
-        id="toggle-filters"
+        class="btn btn-primary collapsed"
+        id="toggleFilters"
         type="button"
       >
         <svg
@@ -1245,12 +1246,13 @@ exports[`Index when Get Area service endpoint returns an area when the area has 
   <div>
     <div
       class="mt-3 mb-4"
+      components="[object Object],[object Object],[object Object]"
     >
       <button
         aria-controls="filters"
         aria-expanded="false"
-        class="btn btn-secondary collapsed"
-        id="toggle-filters"
+        class="btn btn-primary collapsed"
+        id="toggleFilters"
         type="button"
       >
         <svg

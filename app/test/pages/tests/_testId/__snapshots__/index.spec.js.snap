@@ -113,12 +113,13 @@ exports[`Index when Get Test service endpoint returns a test renders the page 1`
        
       <div
         class="mt-3 mb-4"
+        components="[object Object]"
       >
         <button
           aria-controls="filters"
           aria-expanded="false"
-          class="btn btn-secondary collapsed"
-          id="toggle-filters"
+          class="btn btn-primary collapsed"
+          id="toggleFilters"
           type="button"
         >
           <svg
@@ -501,12 +502,13 @@ exports[`Index when Get Test service endpoint returns a test when there are test
        
       <div
         class="mt-3 mb-4"
+        components="[object Object],[object Object]"
       >
         <button
           aria-controls="filters"
           aria-expanded="false"
-          class="btn btn-secondary collapsed"
-          id="toggle-filters"
+          class="btn btn-primary collapsed"
+          id="toggleFilters"
           type="button"
         >
           <svg

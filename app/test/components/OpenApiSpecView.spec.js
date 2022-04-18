@@ -13,8 +13,9 @@ describe('OpenApiSpecView', () => {
   async function createWrapper() {
     wrapper = await mount(OpenApiSpecView, {
       localVue,
-      propsData
+      propsData,
     })
+    await flushPromises()
   }
 
   beforeEach(() => {
@@ -47,7 +48,7 @@ describe('OpenApiSpecView', () => {
     expect(wrapper.vm.$metaInfo.script).toStrictEqual([
       {
         src: 'https://cdn.jsdelivr.net/npm/redoc@2.0.0-rc.45/bundles/redoc.standalone.js',
-      }
+      },
     ])
   })
 
@@ -58,7 +59,6 @@ describe('OpenApiSpecView', () => {
 
   test('calls Redoc.init()', async () => {
     await createWrapper()
-    await flushPromises()
     expect(window.Redoc.init).toBeCalledTimes(1)
     expect(window.Redoc.init.mock.calls[0][0]).toEqual(
       propsData.component.openApiSpecs[0].spec

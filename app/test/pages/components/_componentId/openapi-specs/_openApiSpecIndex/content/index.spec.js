@@ -2,7 +2,7 @@ import { createLocalVue } from '@vue/test-utils'
 import VueMeta from 'vue-meta'
 import flushPromises from 'flush-promises'
 import Index from '~/pages/components/_componentId/openapi-specs/_openApiSpecIndex/content'
-import {createPageWrapper} from "~/test/pages/pageUtils";
+import { createPageWrapper } from '~/test/pages/pageUtils'
 
 const localVue = createLocalVue()
 localVue.use(VueMeta, { keyName: 'head' })
@@ -27,6 +27,7 @@ describe('Index', () => {
           },
       },
     })
+    await flushPromises()
   }
 
   beforeEach(() => {
@@ -77,7 +78,6 @@ describe('Index', () => {
 
     test('calls Redoc.init()', async () => {
       await createWrapper()
-      await flushPromises()
       expect(window.Redoc.init).toBeCalledTimes(1)
       expect(window.Redoc.init.mock.calls[0][0]).toEqual(
         component.openApiSpecs[0].spec

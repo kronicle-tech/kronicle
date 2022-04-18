@@ -1,7 +1,6 @@
 <template>
   <div>
     <ComponentFilters
-      :components="components"
       :environment-id-filter-enabled="true"
       :plugin-id-filter-enabled="true"
     />
