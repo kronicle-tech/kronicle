@@ -19,7 +19,7 @@ components:
       - frontend
     teams:
       - teamId: kronicle-project
-    platform: kubernetes
+    platform: aws-ecs-fargate
     responsibilities:
       - description: |
           Rendering a web UI that visualises all the data in Kronicle.  Data is a combination of data from
@@ -53,7 +53,7 @@ components:
       - backend
     teams:
       - teamId: kronicle-project
-    platform: kubernetes
+    platform: aws-ecs-fargate
     responsibilities:
       - description: |
           Uses `Repo Finders` to discover Git repos that belong to an organisation. Also detects the presense of
@@ -84,9 +84,20 @@ components:
         description: |
           The Kronicle live demo
     dependencies:
-      - targetComponentId: zipkin
-      - targetComponentId: sonarcloud
+      - targetComponentId: amazon-aws
+        typeId: integration
+      - targetComponentId: bitbucket-server
+        typeId: integration
+      - targetComponentId: datadog
+        typeId: integration
       - targetComponentId: github
+        typeId: integration
+      - targetComponentId: gitlab
+        typeId: integration
+      - targetComponentId: sonarcloud
+        typeId: integration
+      - targetComponentId: sonarcloud
+        typeId: integration
     crossFunctionalRequirements:
       - description: |
           When refreshing the data in Kronicle, either on start up or on scheduled, if an individual scanner fails when
@@ -115,3 +126,71 @@ components:
       - url: http://localhost:8091/actuator/openapi
         description: |
           OpenAPI spec for the Kronicle Service
+
+  - id: amazon-aws
+    name: Amazon AWS
+    typeId: third-party-platform
+    description: |
+      Kronicle integrates with several of Amazon AWS's APIs
+    teams:
+      - teamId: kronicle-project
+    platform: third-party-platform
+
+  - id: bitbucket-server
+    name: Bitbucket Server
+    typeId: third-party-platform
+    description: |
+      Kronicle integrates with Bitbucket Server's APIs.  This is the self-hosted version of Bitbucket, rather than the 
+      SaaS vcersion of Bitbucket (which has a completely API)
+    teams:
+      - teamId: kronicle-project
+    platform: third-party-platform
+
+  - id: datadog
+    name: Datadog
+    typeId: third-party-platform
+    description: |
+      Kronicle integrates with Datadog's Service Dependencies API
+    teams:
+      - teamId: kronicle-project
+    platform: third-party-platform
+
+  - id: github
+    name: GitHub
+    typeId: third-party-platform
+    description: |
+      Kronicle integrates with GitHub's APIs
+    teams:
+      - teamId: kronicle-project
+    platform: third-party-platform
+
+  - id: gitlab
+    name: GitLab
+    typeId: third-party-platform
+    description: |
+      Kronicle integrates with GitLab Platforms's APIs
+    teams:
+      - teamId: kronicle-project
+    platform: third-party-platform
+
+  - id: sonarqube
+    name: SonarQube
+    typeId: third-party-platform
+    description: |
+      Kronicle integrates with SonarQube's APIs.  Kronicle supports both self-hosted SonarQube and the SaaS version of
+      SonarQube called SonarCloud
+    teams:
+      - teamId: kronicle-project
+    platform: third-party-platform
+
+  - id: zipkin
+    name: Zipkin
+    typeId: third-party-platform
+    description: |
+      Kronicle integrates with Zipkin's APIs
+    notes: |
+      Kronicle imports raw traces to produce detailed component dependencies, deduplicated call graphs, response times 
+      and request times
+    teams:
+      - teamId: kronicle-project
+    platform: third-party-platform
