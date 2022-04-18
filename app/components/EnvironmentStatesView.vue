@@ -218,7 +218,7 @@ export default Vue.extend({
         case "ok":
           return "success";
         case "pending":
-          return "muted";
+          return "primary";
         case "unknown":
           return "info";
         case "warning":
