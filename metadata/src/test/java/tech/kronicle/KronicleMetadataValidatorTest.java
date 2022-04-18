@@ -49,7 +49,6 @@ public class KronicleMetadataValidatorTest {
         assertThat(thrown).isInstanceOf(RuntimeException.class);
         assertThat(thrown).hasMessage("Component Metadata file has failed validation:\n"
                 + "- components[0].name with value \"null\" must not be blank\n"
-                + "- components[0].repo with value \"null\" must not be null\n"
                 + "- components[0].typeId with value \"null\" must not be blank");
     }
 }
