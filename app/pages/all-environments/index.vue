@@ -67,7 +67,7 @@ export default Vue.extend({
         })
         this.components = data.components
       },
-      5 * 60 * 1000
+      60 * 1000
     )
   },
 })
