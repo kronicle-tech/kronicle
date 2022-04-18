@@ -2,7 +2,9 @@
   <div>
     <b-navbar toggleable="sm" class="navbar navbar-dark bg-dark">
       <b-navbar-brand to="/" class="text-info"><b>Kronicle</b></b-navbar-brand>
-      <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
+      <b-navbar-toggle target="nav-collapse">
+        <b-icon icon="list" aria-hidden="true" /> Menu
+      </b-navbar-toggle>
       <b-collapse id="nav-collapse" is-nav>
         <b-navbar-nav>
           <b-nav-item to="/all-environments">Environments</b-nav-item>
