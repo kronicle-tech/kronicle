@@ -3,7 +3,7 @@
     <b-navbar toggleable="sm" class="navbar navbar-dark bg-dark">
       <b-navbar-brand to="/" class="text-info"><b>Kronicle</b></b-navbar-brand>
       <b-navbar-toggle target="nav-collapse">
-        <b-icon icon="list" aria-hidden="true" /> Menu
+        <b-icon icon="list" aria-hidden="true" width="1.171875rem" height="1.171875rem" /> Menu
       </b-navbar-toggle>
       <b-collapse id="nav-collapse" is-nav>
         <b-navbar-nav>
