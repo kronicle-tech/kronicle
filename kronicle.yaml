@@ -135,7 +135,7 @@ components:
       Kronicle integrates with several of Amazon AWS's APIs
     # TODO: Remove "repo" in July 2022 or later
     repo:
-      url: https://github.com/kronicle-tech/kronicle.git
+      url: https://github.com/kronicle-tech/empty.git
     teams:
       - teamId: kronicle-project
     platform: third-party-platform
@@ -148,7 +148,7 @@ components:
       SaaS vcersion of Bitbucket (which has a completely API)
     # TODO: Remove "repo" in July 2022 or later
     repo:
-      url: https://github.com/kronicle-tech/kronicle.git
+      url: https://github.com/kronicle-tech/empty.git
     teams:
       - teamId: kronicle-project
     platform: third-party-platform
@@ -160,7 +160,7 @@ components:
       Kronicle integrates with Datadog's Service Dependencies API
     # TODO: Remove "repo" in July 2022 or later
     repo:
-      url: https://github.com/kronicle-tech/kronicle.git
+      url: https://github.com/kronicle-tech/empty.git
     teams:
       - teamId: kronicle-project
     platform: third-party-platform
@@ -172,7 +172,7 @@ components:
       Kronicle integrates with GitHub's APIs
     # TODO: Remove "repo" in July 2022 or later
     repo:
-      url: https://github.com/kronicle-tech/kronicle.git
+      url: https://github.com/kronicle-tech/empty.git
     teams:
       - teamId: kronicle-project
     platform: third-party-platform
@@ -184,7 +184,7 @@ components:
       Kronicle integrates with GitLab Platforms's APIs
     # TODO: Remove "repo" in July 2022 or later
     repo:
-      url: https://github.com/kronicle-tech/kronicle.git
+      url: https://github.com/kronicle-tech/empty.git
     teams:
       - teamId: kronicle-project
     platform: third-party-platform
@@ -197,7 +197,7 @@ components:
       SonarQube called SonarCloud
     # TODO: Remove "repo" in July 2022 or later
     repo:
-      url: https://github.com/kronicle-tech/kronicle.git
+      url: https://github.com/kronicle-tech/empty.git
     teams:
       - teamId: kronicle-project
     platform: third-party-platform
@@ -212,7 +212,7 @@ components:
       and request times
     # TODO: Remove "repo" in July 2022 or later
     repo:
-      url: https://github.com/kronicle-tech/kronicle.git
+      url: https://github.com/kronicle-tech/empty.git
     teams:
       - teamId: kronicle-project
     platform: third-party-platform
