@@ -4,6 +4,7 @@
 
 <script lang="ts">
 import Vue from 'vue'
+import { DateTime } from 'luxon'
 
 export default Vue.extend({
   props: {
@@ -18,9 +19,10 @@ export default Vue.extend({
         return ''
       }
 
-      const text = new Date(this.value).toISOString()
+      // return this.value
+      const text = DateTime.fromISO(this.value as string).toISO()
 
-      return text.slice(0, 10) + ' ' + text.slice(11, 16)
+      return `${text.slice(0, 10)} ${text.slice(11, 16)} UTC`
     },
   },
 })
