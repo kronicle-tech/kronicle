@@ -84,20 +84,21 @@ components:
         description: |
           The Kronicle live demo
     dependencies:
+      # The typeId field is only supported in the latest "kronicle.yaml" file format
       - targetComponentId: amazon-aws
-        typeId: integration
+      #  typeId: integration
       - targetComponentId: bitbucket-server
-        typeId: integration
+      #  typeId: integration
       - targetComponentId: datadog
-        typeId: integration
+      #  typeId: integration
       - targetComponentId: github
-        typeId: integration
+      #  typeId: integration
       - targetComponentId: gitlab
-        typeId: integration
+      #  typeId: integration
       - targetComponentId: sonarcloud
-        typeId: integration
+      #  typeId: integration
       - targetComponentId: sonarcloud
-        typeId: integration
+      #  typeId: integration
     crossFunctionalRequirements:
       - description: |
           When refreshing the data in Kronicle, either on start up or on scheduled, if an individual scanner fails when
