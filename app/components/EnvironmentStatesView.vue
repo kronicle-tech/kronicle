@@ -22,7 +22,9 @@
             <div><span class="text-muted">Updated At:</span> <b><FormattedDateTime :value="item.check.updateTimestamp" /></b></div>
 
             <div v-if="item.check.links" class="mt-1">
-              <b-link v-for="link in item.check.links" :key="link.url" :href="link.url" class="card-link">{{ link.description || link.url }}</b-link>
+              <b-link v-for="link in item.check.links" :key="link.url" :href="link.url" class="card-link">
+                {{ link.description || link.url }} <b-icon icon="box-arrow-up-right" aria-label="opens in new window" />
+              </b-link>
             </div>
           </b-card>
         </template>

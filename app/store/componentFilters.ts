@@ -70,10 +70,6 @@ function getFilteredComponents(state: ReadOnlyState): Component[] {
 
         if (filteredEnvironments.length === 0) {
           return undefined
-        } else if (
-          filteredEnvironments.length === component.state.environments.length
-        ) {
-          return component
         } else {
           const componentDeepClone = JSON.parse(JSON.stringify(component))
           componentDeepClone.state.environments = filteredEnvironments
@@ -90,30 +86,20 @@ function getFilteredComponents(state: ReadOnlyState): Component[] {
           return undefined
         }
 
-        let changed = false
-        let empty = true
-
         const filteredEnvironments = component.state.environments.map(
           (environment) => {
             const filteredPlugins = environment.plugins.filter((plugin) =>
               state.pluginIds.includes(plugin.id)
             )
 
-            if (filteredPlugins.length !== environment.plugins.length) {
-              changed = true
-              if (filteredPlugins.length > 0) {
-                empty = false
-              }
-            }
-
-            return filteredPlugins
+            const environmentDeepClone = JSON.parse(JSON.stringify(environment))
+            environmentDeepClone.plugins = filteredPlugins
+            return environmentDeepClone
           }
         )
 
-        if (changed && empty) {
+        if (filteredEnvironments.length === 0) {
           return undefined
-        } else if (!changed) {
-          return component
         } else {
           const componentDeepClone = JSON.parse(JSON.stringify(component))
           componentDeepClone.state.environments = filteredEnvironments
