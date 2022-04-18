@@ -315,7 +315,6 @@ public class ComponentMetadataLoaderTest {
         assertThat(logCaptor.getEvents().get(4).getThrowableProxy().getMessage()).isEqualTo(""
                 + "Failed to validate tech.kronicle.sdk.models.Component with reference \"test-component-id-1\". Violations:\n"
                 + "- name with value \"null\" must not be blank\n"
-                + "- repo with value \"null\" must not be null\n"
                 + "- typeId with value \"null\" must not be blank");
         assertThat(returnValue.getAreas()).isEmpty();
         assertThat(returnValue.getTeams()).isEmpty();
