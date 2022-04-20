@@ -78,14 +78,14 @@ public class GitLabClientTest {
 
         // Then
         assertThat(returnValue).containsExactly(
-                createRepo(1, "https://example.com/repo-1-KRONICLE_YAML.git", true),
-                createRepo(2, "https://example.com/repo-2-KRONICLE_YAML.git", true),
-                createRepo(3, "https://example.com/repo-3-NO_DEFAULT_BRANCH.git", false, false),
-                createRepo(4, "https://example.com/repo-4-NONE.git", false),
-                createRepo(5, "https://example.com/repo-5-NONE.git", false),
-                createRepo(6, "https://example.com/repo-6-NONE.git", false),
-                createRepo(7, "https://example.com/repo-7-NONE.git", false),
-                createRepo(8, "https://example.com/repo-8-NONE.git", false)
+                createRepo(1, RepoScenario.NORMAL),
+                createRepo(2, RepoScenario.NORMAL),
+                createRepo(3, RepoScenario.NO_DEFAULT_BRANCH),
+                createRepo(4, RepoScenario.NORMAL),
+                createRepo(5, RepoScenario.NO_KRONICLE_METADATA_FILE),
+                createRepo(6, RepoScenario.NORMAL),
+                createRepo(7, RepoScenario.PIPELINES_FORBIDDEN),
+                createRepo(8, RepoScenario.NORMAL)
         );
     }
 
@@ -117,20 +117,28 @@ public class GitLabClientTest {
         );
     }
 
-    private Repo createRepo(int repoNumber, String url, boolean hasComponentMetadataFile) {
-        return createRepo(repoNumber, url, hasComponentMetadataFile, true);
-    }
-
-    private Repo createRepo(int repoNumber, String url, boolean hasComponentMetadataFile, boolean hasDefaultBranch) {
+    private Repo createRepo(int repoNumber, RepoScenario repoScenario) {
         return Repo.builder()
-                .url(url)
-                .hasComponentMetadataFile(hasDefaultBranch ? hasComponentMetadataFile : null)
-                .state(createRepoState(repoNumber, hasDefaultBranch))
+                .url("https://example.com/repo-" + repoNumber + "-" + repoScenario + ".git")
+                .hasComponentMetadataFile(getHasComponentMetadataFile(repoScenario))
+                .state(createRepoState(repoNumber, repoScenario))
                 .build();
     }
 
-    private ComponentState createRepoState(int repoNumber, boolean hasDefaultBranch) {
-        if (!hasDefaultBranch) {
+    private Boolean getHasComponentMetadataFile(RepoScenario repoScenario) {
+        switch (repoScenario) {
+            case NO_DEFAULT_BRANCH:
+                return null;
+            case NO_KRONICLE_METADATA_FILE:
+                return false;
+            default:
+                return true;
+        }
+    }
+
+    private ComponentState createRepoState(int repoNumber, RepoScenario repoScenario) {
+        if (repoScenario == RepoScenario.NO_DEFAULT_BRANCH ||
+                repoScenario == RepoScenario.PIPELINES_FORBIDDEN) {
             return null;
         }
         return ComponentState.builder()
