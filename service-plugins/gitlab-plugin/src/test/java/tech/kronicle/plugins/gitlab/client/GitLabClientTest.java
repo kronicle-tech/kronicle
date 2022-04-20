@@ -125,10 +125,9 @@ public class GitLabClientTest {
                 .build();
     }
 
-    private Boolean getHasComponentMetadataFile(RepoScenario repoScenario) {
+    private boolean getHasComponentMetadataFile(RepoScenario repoScenario) {
         switch (repoScenario) {
             case NO_DEFAULT_BRANCH:
-                return null;
             case NO_KRONICLE_METADATA_FILE:
                 return false;
             default:
