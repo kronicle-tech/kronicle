@@ -19,8 +19,10 @@ import tech.kronicle.sdk.models.Link;
 import tech.kronicle.sdk.models.Repo;
 import tech.kronicle.utils.HttpStatuses;
 
+import java.time.Clock;
 import java.time.Duration;
 import java.time.LocalDateTime;
+import java.time.ZoneOffset;
 import java.util.List;
 import java.util.stream.Stream;
 
@@ -30,6 +32,10 @@ import static tech.kronicle.utils.HttpClientFactory.createHttpClient;
 
 public class GitLabClientTest {
 
+    private static final Clock clock = Clock.fixed(
+            LocalDateTime.of(2001, 2, 3, 4, 5, 6).toInstant(ZoneOffset.UTC),
+            ZoneOffset.UTC
+    );
     private static final String baseUrl = "http://localhost:" + GitLabApiWireMockFactory.PORT;
     private static final int PAGE_SIZE = 5;
     private static final Duration TIMEOUT = Duration.ofSeconds(30);
@@ -161,12 +167,17 @@ public class GitLabClientTest {
                                 .description("GitLab Job")
                                 .build()
                 ))
-                .updateTimestamp(LocalDateTime.of(2000 + repoNumber, checkNumber, 1, 0, 0))
+                .updateTimestamp(LocalDateTime.now(clock))
                 .build();
     }
 
     private GitLabClient createUnderTest(GitLabConfig config) {
-        return new GitLabClient(createHttpClient(), new GuiceModule().objectMapper(), config);
+        return new GitLabClient(
+                createHttpClient(),
+                new GuiceModule().objectMapper(),
+                config,
+                clock
+        );
     }
 
     public static Stream<GitLabApiWireMockFactory.Scenario> provideReposResponseTypeScenarios() {
