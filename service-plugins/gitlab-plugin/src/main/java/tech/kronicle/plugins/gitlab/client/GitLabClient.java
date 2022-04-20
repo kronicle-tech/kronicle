@@ -112,6 +112,8 @@ public class GitLabClient {
       if (nonNull(repo.getDefault_branch())) {
         repoBuilder.hasComponentMetadataFile(hasComponentMetadataFile(accessToken, baseUrl, repo))
                 .state(getState(accessToken, baseUrl, repo));
+      } else {
+        repoBuilder.hasComponentMetadataFile(false);
       }
       return repoBuilder
               .build();
