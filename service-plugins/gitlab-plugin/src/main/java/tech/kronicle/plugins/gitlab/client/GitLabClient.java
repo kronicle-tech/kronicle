@@ -2,7 +2,6 @@ package tech.kronicle.plugins.gitlab.client;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
@@ -18,6 +17,7 @@ import tech.kronicle.plugins.gitlab.models.api.GitLabJob;
 import tech.kronicle.plugins.gitlab.models.api.GitLabPipeline;
 import tech.kronicle.plugins.gitlab.models.api.GitLabRepo;
 import tech.kronicle.plugins.gitlab.models.api.GitLabUser;
+import tech.kronicle.plugins.gitlab.models.api.PagedResource;
 import tech.kronicle.sdk.models.CheckState;
 import tech.kronicle.sdk.models.ComponentState;
 import tech.kronicle.sdk.models.ComponentStateCheckStatus;
@@ -97,9 +97,9 @@ public class GitLabClient {
     return Stream.iterate(
             getPagedResource(accessToken, uri, 1, bodyTypeReference),
             Objects::nonNull,
-            page -> getPagedResource(accessToken, uri, page.nextPage, bodyTypeReference)
+            page -> getPagedResource(accessToken, uri, page.getNextPage(), bodyTypeReference)
     )
-            .flatMap(page -> page.items.stream());
+            .flatMap(page -> page.getItems().stream());
   }
 
   private Function<GitLabRepo, Repo> mapRepo(
@@ -281,8 +281,11 @@ public class GitLabClient {
             .uri(URI.create(uriWithQueryParams));
     configureRequest(requestBuilder, accessToken);
     HttpResponse<String> response = httpClient.send(requestBuilder.build(), HttpResponse.BodyHandlers.ofString(StandardCharsets.UTF_8));
+    if (response.statusCode() == HttpStatuses.FORBIDDEN) {
+      return PagedResource.empty();
+    }
     checkResponseStatus(response, uriWithQueryParams);
-    return new PagedResource<>(response, bodyTypeReference);
+    return new PagedResource<>(response, bodyTypeReference, objectMapper);
   }
 
   private void checkResponseStatus(HttpResponse<String> response, String uri) {
@@ -322,25 +325,4 @@ public class GitLabClient {
     }
   }
 
-  @Getter
-  private class PagedResource<T> {
-
-    private final List<T> items;
-    private final Integer nextPage;
-
-    @SneakyThrows
-    public PagedResource(HttpResponse<String> response, TypeReference<List<T>> bodyTypeReference) {
-      items = objectMapper.readValue(response.body(), bodyTypeReference);
-      nextPage = getNextPage(response);
-    }
-
-    private Integer getNextPage(HttpResponse<String> response) {
-      return getOptionalNextPage(response).map(Integer::parseInt).orElse(null);
-    }
-
-    private Optional<String> getOptionalNextPage(HttpResponse<String> response) {
-      return response.headers().firstValue(GitLabApiHeaders.X_NEXT_PAGE)
-              .filter(value -> !value.isEmpty());
-    }
-  }
 }

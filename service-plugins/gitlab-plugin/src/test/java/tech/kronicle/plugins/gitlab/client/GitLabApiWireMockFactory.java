@@ -55,17 +55,9 @@ public class GitLabApiWireMockFactory {
                     repoNumber.incrementAndGet();
 
                     if (repoNumber.get() <= REPO_COUNT) {
-                        RepoMetadataScenario repoMetadataScenario = getRepoMetadataScenario(repoNumber.get());
-
-                        switch (repoMetadataScenario) {
-                            case KRONICLE_YAML:
-                                stubRepoMetadataFileRequest(wireMockServer, scenario, repoNumber.get(), true);
-                                break;
-                            case NONE:
-                                stubRepoMetadataFileRequest(wireMockServer, scenario, repoNumber.get(), false);
-                                break;
-                        }
-                        stubRepoPipelinesRequest(wireMockServer, scenario, repoNumber.get());
+                        RepoScenario repoScenario = getRepoScenario(repoNumber.get());
+                        stubRepoMetadataFileRequest(wireMockServer, scenario, repoNumber.get(), repoScenario);
+                        stubRepoPipelinesRequest(wireMockServer, scenario, repoNumber.get(), repoScenario);
                         stubRepoPipelineJobsRequest(wireMockServer, scenario, repoNumber.get());
                     }
                 });
@@ -77,22 +69,23 @@ public class GitLabApiWireMockFactory {
             WireMockServer wireMockServer,
             Scenario scenario,
             int repoNumber,
-            boolean hasContent
+            RepoScenario repoScenario
     ) {
         wireMockServer.stubFor(createRepoRootContentsRequest(scenario, repoNumber)
-                .willReturn(createRepoRootContentsResponse(hasContent)));
+                .willReturn(createRepoRootContentsResponse(repoScenario)));
     }
 
-    private RepoMetadataScenario getRepoMetadataScenario(int repoNumber) {
+    private RepoScenario getRepoScenario(int repoNumber) {
         switch (repoNumber) {
-            case 1:
-            case 2:
-                return RepoMetadataScenario.KRONICLE_YAML;
             case 3:
-                return RepoMetadataScenario.NO_DEFAULT_BRANCH;
+                return RepoScenario.NO_DEFAULT_BRANCH;
+            case 5:
+                return RepoScenario.NO_KRONICLE_METADATA_FILE;
+            case 7:
+                return RepoScenario.PIPELINES_FORBIDDEN;
+            default:
+                return RepoScenario.NORMAL;
         }
-
-        return RepoMetadataScenario.NONE;
     }
 
     private MappingBuilder createReposRequest(Scenario scenario, int pageNumber) {
@@ -134,13 +127,13 @@ public class GitLabApiWireMockFactory {
         ArrayNode responseBody = objectMapper.createArrayNode();
         IntStream.range(1, PAGE_SIZE + 1).forEach(pageItemNumber -> {
             int repoNumber = getRepoNumber(pageNumber, pageItemNumber);
-            RepoMetadataScenario repoMetadataScenario = getRepoMetadataScenario(repoNumber);
             if (repoNumber <= REPO_COUNT) {
+                RepoScenario repoScenario = getRepoScenario(repoNumber);
                 ObjectNode repo = objectMapper.createObjectNode()
                         .put("id", repoNumber)
-                        .put("http_url_to_repo", "https://example.com/repo-" + repoNumber + "-" + repoMetadataScenario + ".git")
+                        .put("http_url_to_repo", "https://example.com/repo-" + repoNumber + "-" + repoScenario + ".git")
                         .put("unknown", true);
-                if (repoMetadataScenario != RepoMetadataScenario.NO_DEFAULT_BRANCH) {
+                if (repoScenario != RepoScenario.NO_DEFAULT_BRANCH) {
                     repo.put("default_branch", "branch-" + repoNumber);
                 }
                 responseBody.add(repo);
@@ -165,21 +158,26 @@ public class GitLabApiWireMockFactory {
         return builder;
     }
 
-    private ResponseDefinitionBuilder createRepoRootContentsResponse(boolean hasContent) {
-        if (hasContent) {
-            return aResponse().withStatus(200)
-                    .withHeader("Content-Type", "application/json")
-                    .withBody("{}");
-        } else {
+    private ResponseDefinitionBuilder createRepoRootContentsResponse(RepoScenario repoScenario) {
+        if (repoScenario == RepoScenario.NO_KRONICLE_METADATA_FILE) {
             return aResponse().withStatus(404)
                     .withHeader("Content-Type", "text/plain")
                     .withBody("Not Found");
+        } else {
+            return aResponse().withStatus(200)
+                    .withHeader("Content-Type", "application/json")
+                    .withBody("{}");
         }
     }
 
-    private void stubRepoPipelinesRequest(WireMockServer wireMockServer, Scenario scenario, int repoNumber) {
+    private void stubRepoPipelinesRequest(
+            WireMockServer wireMockServer,
+            Scenario scenario,
+            int repoNumber,
+            RepoScenario repoScenario
+    ) {
         wireMockServer.stubFor(createRepoPipelinesRequest(scenario, repoNumber)
-                .willReturn(createRepoPipelinesResponse(repoNumber)));
+                .willReturn(createRepoPipelinesResponse(repoNumber, repoScenario)));
     }
 
     private MappingBuilder createRepoPipelinesRequest(
@@ -200,12 +198,22 @@ public class GitLabApiWireMockFactory {
     }
 
     @SneakyThrows
-    private ResponseDefinitionBuilder createRepoPipelinesResponse(int repoNumber) {
-        return aResponse()
-                .withStatus(200)
-                .withHeader("Content-Type", "application/json")
-                .withHeader("X-Next-Page", "")
-                .withBody(createRepoPipelinesResponseBody(repoNumber));
+    private ResponseDefinitionBuilder createRepoPipelinesResponse(
+            int repoNumber,
+            RepoScenario repoScenario
+    ) {
+        if (repoScenario == RepoScenario.PIPELINES_FORBIDDEN) {
+            return aResponse()
+                    .withStatus(403)
+                    .withHeader("Content-Type", "application/json")
+                    .withBody(createRepoPipelinesNotAuthorisedResponseBody());
+        } else {
+            return aResponse()
+                    .withStatus(200)
+                    .withHeader("Content-Type", "application/json")
+                    .withHeader("X-Next-Page", "")
+                    .withBody(createRepoPipelinesResponseBody(repoNumber));
+        }
     }
 
     @SneakyThrows
@@ -226,6 +234,14 @@ public class GitLabApiWireMockFactory {
             responseBody.add(pipeline);
         });
         return objectMapper.writeValueAsString(responseBody);
+    }
+
+    @SneakyThrows
+    private String createRepoPipelinesNotAuthorisedResponseBody() {
+        return objectMapper.writeValueAsString(
+                objectMapper.createObjectNode()
+                        .put("message", "403 Forbidden")
+        );
     }
 
     private String createTimestamp(int repoNumber, int pageItemNumber, int timestampNumber) {
@@ -291,12 +307,6 @@ public class GitLabApiWireMockFactory {
         initializer.accept(wireMockServer);
         wireMockServer.start();
         return wireMockServer;
-    }
-
-    public enum RepoMetadataScenario {
-        NONE,
-        KRONICLE_YAML,
-        NO_DEFAULT_BRANCH
     }
 
     public enum ReposResourceType {
