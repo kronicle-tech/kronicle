@@ -7,6 +7,7 @@ import com.google.inject.Provides;
 import tech.kronicle.plugins.gitlab.config.GitLabConfig;
 
 import java.net.http.HttpClient;
+import java.time.Clock;
 
 import static tech.kronicle.utils.HttpClientFactory.createHttpClient;
 import static tech.kronicle.utils.JsonMapperFactory.createJsonMapper;
@@ -22,5 +23,10 @@ public class GuiceModule extends AbstractModule {
     public ObjectMapper objectMapper() {
         return createJsonMapper()
                 .registerModule(new JavaTimeModule());
+    }
+
+    @Provides
+    public Clock clock() {
+        return Clock.systemUTC();
     }
 }

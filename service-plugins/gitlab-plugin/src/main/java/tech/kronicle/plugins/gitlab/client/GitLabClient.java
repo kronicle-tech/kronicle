@@ -34,6 +34,8 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.nio.charset.StandardCharsets;
+import java.time.Clock;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -55,6 +57,7 @@ public class GitLabClient {
   private final HttpClient httpClient;
   private final ObjectMapper objectMapper;
   private final GitLabConfig config;
+  private final Clock clock;
 
   public List<Repo> getRepos(String baseUrl, GitLabAccessTokenConfig accessToken) {
     return getRepos(accessToken, baseUrl, getAllProjectsUri());
@@ -138,6 +141,7 @@ public class GitLabClient {
           String baseUrl,
           GitLabRepo repo
   ) {
+    LocalDateTime now = LocalDateTime.now(clock);
     List<GitLabPipeline> pipelines = getProjectPipelinesForDefaultBranch(accessToken, baseUrl, repo);
     if (pipelines.isEmpty()) {
       return null;
@@ -147,10 +151,10 @@ public class GitLabClient {
     if (jobs.isEmpty()) {
       return null;
     }
-    return mapState(jobs);
+    return mapState(jobs, now);
   }
 
-  private ComponentState mapState(List<GitLabJob> jobs) {
+  private ComponentState mapState(List<GitLabJob> jobs, LocalDateTime now) {
     return ComponentState.builder()
             .environments(List.of(
                     EnvironmentState.builder()
@@ -158,7 +162,7 @@ public class GitLabClient {
                             .plugins(List.of(
                                     EnvironmentPluginState.builder()
                                             .id(GitLabPlugin.ID)
-                                            .checks(mapChecks(jobs))
+                                            .checks(mapChecks(jobs, now))
                                             .build()
                             ))
                             .build()
@@ -166,21 +170,21 @@ public class GitLabClient {
             .build();
   }
 
-  private List<CheckState> mapChecks(List<GitLabJob> jobs) {
+  private List<CheckState> mapChecks(List<GitLabJob> jobs, LocalDateTime now) {
     return jobs.stream()
-            .map(this::mapCheck)
+            .map(mapCheck(now))
             .collect(toUnmodifiableList());
   }
 
-  private CheckState mapCheck(GitLabJob job) {
-    return CheckState.builder()
+  private Function<GitLabJob, CheckState> mapCheck(LocalDateTime now) {
+    return job -> CheckState.builder()
             .name(job.getName())
             .description("GitLab Job")
             .avatarUrl(mapAvatarUrl(job))
             .status(mapCheckStatus(job))
             .statusMessage(toTitleCase(job.getStatus()))
             .links(createWorkflowRunLinks(job))
-            .updateTimestamp(firstNonNull(List.of(job.getCreated_at(), job.getStarted_at(), job.getFinished_at())))
+            .updateTimestamp(now)
             .build();
   }
 
@@ -189,12 +193,6 @@ public class GitLabClient {
             .map(GitLabJob::getUser)
             .map(GitLabUser::getAvatar_url)
             .orElse(null);
-  }
-
-  private <T> T firstNonNull(List<T> list) {
-    return list.stream()
-            .filter(Objects::nonNull)
-            .findFirst().orElse(null);
   }
 
   private ComponentStateCheckStatus mapCheckStatus(GitLabJob job) {
