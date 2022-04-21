@@ -7,12 +7,12 @@ import org.pf4j.Extension;
 import tech.kronicle.pluginapi.scanners.ComponentAndCodebaseScanner;
 import tech.kronicle.pluginapi.scanners.models.ComponentAndCodebase;
 import tech.kronicle.pluginapi.scanners.models.Output;
+import tech.kronicle.plugins.openapi.config.OpenApiConfig;
 import tech.kronicle.plugins.openapi.models.SpecAndErrors;
 import tech.kronicle.plugins.openapi.services.SpecDiscoverer;
 import tech.kronicle.plugins.openapi.services.SpecParser;
 import tech.kronicle.plugins.openapi.utils.OpenApiSpecUtils;
 import tech.kronicle.sdk.models.ComponentMetadata;
-import tech.kronicle.sdk.models.Dependency;
 import tech.kronicle.sdk.models.ScannerError;
 import tech.kronicle.sdk.models.openapi.OpenApiSpec;
 
@@ -31,6 +31,7 @@ public class OpenApiScanner extends ComponentAndCodebaseScanner {
 
     private final SpecDiscoverer specDiscoverer;
     private final SpecParser specParser;
+    private final OpenApiConfig config;
 
     @Override
     public String id() {
@@ -56,7 +57,9 @@ public class OpenApiScanner extends ComponentAndCodebaseScanner {
 
     private ScanOutput processComponentAndCodebase(ComponentAndCodebase input) {
         List<OpenApiSpec> specs = getManualSpecs(input);
-        specDiscoverer.discoverSpecsInCodebase(this, input, specs);
+        if (config.getScanCodebases()) {
+            specDiscoverer.discoverSpecsInCodebase(this, input, specs);
+        }
 
         List<SpecAndErrors> specAndErrors = specParser.parseSpecs(this, input, specs);
         List<OpenApiSpec> newSpecs = getSpecs(specAndErrors);

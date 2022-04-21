@@ -3,6 +3,7 @@ package tech.kronicle.plugins.openapi;
 import com.google.inject.Module;
 import org.pf4j.PluginWrapper;
 import tech.kronicle.pluginguice.KronicleGuicePlugin;
+import tech.kronicle.plugins.openapi.config.OpenApiConfig;
 import tech.kronicle.plugins.openapi.guice.GuiceModule;
 
 import java.util.List;
@@ -20,6 +21,6 @@ public class OpenApiPlugin extends KronicleGuicePlugin {
 
     @Override
     public Class<?> getConfigType() {
-        return null;
+        return OpenApiConfig.class;
     }
 }

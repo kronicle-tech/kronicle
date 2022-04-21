@@ -165,6 +165,7 @@ plugins:
 
   openapi:
     enabled: true
+    scan-codebases: true
 
   readme:
     enabled: true
