@@ -174,8 +174,19 @@ public class GitLabClient {
 
   private List<CheckState> mapChecks(List<GitLabJob> jobs, LocalDateTime now) {
     return jobs.stream()
+            .filter(this::excludeCertainJobStatuses)
             .map(mapCheck(now))
             .collect(toUnmodifiableList());
+  }
+
+  private boolean excludeCertainJobStatuses(GitLabJob gitLabJob) {
+    switch (gitLabJob.getStatus()) {
+      case "canceled":
+      case "skipped":
+        return false;
+      default:
+        return true;
+    }
   }
 
   private Function<GitLabJob, CheckState> mapCheck(LocalDateTime now) {
@@ -195,8 +206,6 @@ public class GitLabClient {
       case "pending":
       case "running":
       case "manual":
-      case "canceled":
-      case "skipped":
         return ComponentStateCheckStatus.PENDING;
       case "failed":
         return ComponentStateCheckStatus.CRITICAL;
