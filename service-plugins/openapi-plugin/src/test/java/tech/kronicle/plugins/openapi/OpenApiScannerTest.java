@@ -7,9 +7,12 @@ import com.github.tomakehurst.wiremock.client.MappingBuilder;
 import lombok.SneakyThrows;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 import tech.kronicle.pluginapi.scanners.models.Codebase;
 import tech.kronicle.pluginapi.scanners.models.ComponentAndCodebase;
 import tech.kronicle.pluginapi.scanners.models.Output;
+import tech.kronicle.plugins.openapi.config.OpenApiConfig;
 import tech.kronicle.plugins.openapi.services.SpecDiscoverer;
 import tech.kronicle.plugins.openapi.services.SpecErrorProcessor;
 import tech.kronicle.plugins.openapi.services.SpecParser;
@@ -36,7 +39,6 @@ import static tech.kronicle.utils.JsonMapperFactory.createJsonMapper;
 public class OpenApiScannerTest extends BaseCodebaseScannerTest {
 
     private WireMockServer wireMockServer;
-    private final OpenApiScanner underTest = createOpenApiScanner();
     private final ObjectMapper objectMapper = createJsonMapper();
     private MappingBuilder openApiSpecWireMockStub;
 
@@ -49,6 +51,9 @@ public class OpenApiScannerTest extends BaseCodebaseScannerTest {
 
     @Test
     public void idShouldReturnTheIdOfTheScanner() {
+        // Given
+        OpenApiScanner underTest = createOpenApiScanner(true);
+
         // When
         String returnValue = underTest.id();
 
@@ -58,6 +63,9 @@ public class OpenApiScannerTest extends BaseCodebaseScannerTest {
 
     @Test
     public void descriptionShouldReturnTheDescriptionOfTheScanner() {
+        // Given
+        OpenApiScanner underTest = createOpenApiScanner(true);
+
         // When
         String returnValue = underTest.description();
 
@@ -68,6 +76,9 @@ public class OpenApiScannerTest extends BaseCodebaseScannerTest {
 
     @Test
     public void notesShouldReturnNull() {
+        // Given
+        OpenApiScanner underTest = createOpenApiScanner(true);
+
         // When
         String returnValue = underTest.notes();
 
@@ -89,6 +100,7 @@ public class OpenApiScannerTest extends BaseCodebaseScannerTest {
         Codebase codebase = new Codebase(getTestRepo(), getCodebaseDir("NoOpenApiSpecs"));
         ComponentAndCodebase componentAndCodebase = new ComponentAndCodebase(component, codebase);
         ComponentMetadata componentMetadata = ComponentMetadata.builder().build();
+        OpenApiScanner underTest = createOpenApiScanner(true);
         underTest.refresh(componentMetadata);
 
         // When
@@ -120,6 +132,7 @@ public class OpenApiScannerTest extends BaseCodebaseScannerTest {
         Component component = Component.builder().build();
         Codebase codebase = new Codebase(getTestRepo(), getCodebaseDir("NoOpenApiSpecs"));
         ComponentAndCodebase componentAndCodebase = new ComponentAndCodebase(component, codebase);
+        OpenApiScanner underTest = createOpenApiScanner(true);
 
         // When
         Output<Void> returnValue = underTest.scan(componentAndCodebase);
@@ -143,6 +156,7 @@ public class OpenApiScannerTest extends BaseCodebaseScannerTest {
                 .build();
         Codebase codebase = new Codebase(getTestRepo(), getCodebaseDir("NoOpenApiSpecs"));
         ComponentAndCodebase componentAndCodebase = new ComponentAndCodebase(component, codebase);
+        OpenApiScanner underTest = createOpenApiScanner(true);
 
         // When
         Output<Void> returnValue = underTest.scan(componentAndCodebase);
@@ -160,12 +174,14 @@ public class OpenApiScannerTest extends BaseCodebaseScannerTest {
         assertThat(getSpecAsJsonTree(returnOpenApiSpec).has("openapi")).isTrue();
     }
 
-    @Test
-    public void scanShouldHandleCodebaseOpenApiSpecs() {
+    @ParameterizedTest
+    @ValueSource(booleans = { false, true })
+    public void scanShouldHandleCodebaseOpenApiSpecs(boolean scanCodebases) {
         // Given
         Component component = Component.builder().build();
         Codebase codebase = new Codebase(getTestRepo(), getCodebaseDir("OpenApiSpecsWithAllFileExtensions"));
         ComponentAndCodebase componentAndCodebase = new ComponentAndCodebase(component, codebase);
+        OpenApiScanner underTest = createOpenApiScanner(scanCodebases);
 
         // When
         Output<Void> returnValue = underTest.scan(componentAndCodebase);
@@ -173,27 +189,32 @@ public class OpenApiScannerTest extends BaseCodebaseScannerTest {
         // Then
         assertThat(returnValue.getErrors()).isEmpty();
         List<OpenApiSpec> returnOpenApiSpecs = new ArrayList<>(getMutatedComponent(returnValue).getOpenApiSpecs());
-        assertThat(returnOpenApiSpecs).hasSize(3);
-        returnOpenApiSpecs.sort(Comparator.comparing(OpenApiSpec::getFile));
-        OpenApiSpec returnOpenApiSpec;
-        returnOpenApiSpec = returnOpenApiSpecs.get(0);
-        assertThat(returnOpenApiSpec.getScannerId()).isEqualTo("openapi");
-        assertThat(returnOpenApiSpec.getFile()).isEqualTo("test-openapi.json");
-        assertThat(returnOpenApiSpec.getUrl()).isNull();
-        assertThat(returnOpenApiSpec.getSpec()).isNotNull();
-        assertThat(getSpecAsJsonTree(returnOpenApiSpec).has("openapi")).isTrue();
-        returnOpenApiSpec = returnOpenApiSpecs.get(1);
-        assertThat(returnOpenApiSpec.getScannerId()).isEqualTo("openapi");
-        assertThat(returnOpenApiSpec.getFile()).isEqualTo("test-openapi.yaml");
-        assertThat(returnOpenApiSpec.getUrl()).isNull();
-        assertThat(returnOpenApiSpec.getSpec()).isNotNull();
-        assertThat(getSpecAsJsonTree(returnOpenApiSpec).has("openapi")).isTrue();
-        returnOpenApiSpec = returnOpenApiSpecs.get(2);
-        assertThat(returnOpenApiSpec.getScannerId()).isEqualTo("openapi");
-        assertThat(returnOpenApiSpec.getFile()).isEqualTo("test-openapi.yml");
-        assertThat(returnOpenApiSpec.getUrl()).isNull();
-        assertThat(returnOpenApiSpec.getSpec()).isNotNull();
-        assertThat(getSpecAsJsonTree(returnOpenApiSpec).has("openapi")).isTrue();
+
+        if (scanCodebases) {
+            assertThat(returnOpenApiSpecs).hasSize(3);
+            returnOpenApiSpecs.sort(Comparator.comparing(OpenApiSpec::getFile));
+            OpenApiSpec returnOpenApiSpec;
+            returnOpenApiSpec = returnOpenApiSpecs.get(0);
+            assertThat(returnOpenApiSpec.getScannerId()).isEqualTo("openapi");
+            assertThat(returnOpenApiSpec.getFile()).isEqualTo("test-openapi.json");
+            assertThat(returnOpenApiSpec.getUrl()).isNull();
+            assertThat(returnOpenApiSpec.getSpec()).isNotNull();
+            assertThat(getSpecAsJsonTree(returnOpenApiSpec).has("openapi")).isTrue();
+            returnOpenApiSpec = returnOpenApiSpecs.get(1);
+            assertThat(returnOpenApiSpec.getScannerId()).isEqualTo("openapi");
+            assertThat(returnOpenApiSpec.getFile()).isEqualTo("test-openapi.yaml");
+            assertThat(returnOpenApiSpec.getUrl()).isNull();
+            assertThat(returnOpenApiSpec.getSpec()).isNotNull();
+            assertThat(getSpecAsJsonTree(returnOpenApiSpec).has("openapi")).isTrue();
+            returnOpenApiSpec = returnOpenApiSpecs.get(2);
+            assertThat(returnOpenApiSpec.getScannerId()).isEqualTo("openapi");
+            assertThat(returnOpenApiSpec.getFile()).isEqualTo("test-openapi.yml");
+            assertThat(returnOpenApiSpec.getUrl()).isNull();
+            assertThat(returnOpenApiSpec.getSpec()).isNotNull();
+            assertThat(getSpecAsJsonTree(returnOpenApiSpec).has("openapi")).isTrue();
+        } else {
+            assertThat(returnOpenApiSpecs).isEmpty();
+        }
     }
 
     @Test
@@ -207,6 +228,7 @@ public class OpenApiScannerTest extends BaseCodebaseScannerTest {
                 .build();
         Codebase codebase = new Codebase(getTestRepo(), getCodebaseDir("OneOpenApiSpec"));
         ComponentAndCodebase componentAndCodebase = new ComponentAndCodebase(component, codebase);
+        OpenApiScanner underTest = createOpenApiScanner(true);
 
         // When
         Output<Void> returnValue = underTest.scan(componentAndCodebase);
@@ -231,6 +253,7 @@ public class OpenApiScannerTest extends BaseCodebaseScannerTest {
                 .build();
         Codebase codebase = new Codebase(getTestRepo(), getCodebaseDir("InvalidOpenApiSpec"));
         ComponentAndCodebase componentAndCodebase = new ComponentAndCodebase(component, codebase);
+        OpenApiScanner underTest = createOpenApiScanner(true);
 
         // When
         Output<Void> returnValue = underTest.scan(componentAndCodebase);
@@ -260,6 +283,7 @@ public class OpenApiScannerTest extends BaseCodebaseScannerTest {
                 .build();
         Codebase codebase = new Codebase(getTestRepo(), getCodebaseDir("InvalidOpenApiSpec"));
         ComponentAndCodebase componentAndCodebase = new ComponentAndCodebase(component, codebase);
+        OpenApiScanner underTest = createOpenApiScanner(true);
 
         // When
         Output<Void> returnValue = underTest.scan(componentAndCodebase);
@@ -290,6 +314,7 @@ public class OpenApiScannerTest extends BaseCodebaseScannerTest {
                 .build();
         Codebase codebase = new Codebase(getTestRepo(), getCodebaseDir("InvalidYamlFile"));
         ComponentAndCodebase componentAndCodebase = new ComponentAndCodebase(component, codebase);
+        OpenApiScanner underTest = createOpenApiScanner(true);
 
         // When
         Output<Void> returnValue = underTest.scan(componentAndCodebase);
@@ -311,6 +336,7 @@ public class OpenApiScannerTest extends BaseCodebaseScannerTest {
                 .build();
         Codebase codebase = new Codebase(getTestRepo(), getCodebaseDir("InvalidYamlFile"));
         ComponentAndCodebase componentAndCodebase = new ComponentAndCodebase(component, codebase);
+        OpenApiScanner underTest = createOpenApiScanner(true);
 
         // When
         Output<Void> returnValue = underTest.scan(componentAndCodebase);
@@ -339,6 +365,7 @@ public class OpenApiScannerTest extends BaseCodebaseScannerTest {
                 .build();
         Codebase codebase = new Codebase(getTestRepo(), getCodebaseDir("OpenApiSpecWithFileReference"));
         ComponentAndCodebase componentAndCodebase = new ComponentAndCodebase(component, codebase);
+        OpenApiScanner underTest = createOpenApiScanner(true);
 
         // When
         Output<Void> returnValue = underTest.scan(componentAndCodebase);
@@ -364,6 +391,7 @@ public class OpenApiScannerTest extends BaseCodebaseScannerTest {
                 .build();
         Codebase codebase = new Codebase(getTestRepo(), getCodebaseDir("NonOpenApiYamlAndJsonFiles"));
         ComponentAndCodebase componentAndCodebase = new ComponentAndCodebase(component, codebase);
+        OpenApiScanner underTest = createOpenApiScanner(true);
 
         // When
         Output<Void> returnValue = underTest.scan(componentAndCodebase);
@@ -374,11 +402,11 @@ public class OpenApiScannerTest extends BaseCodebaseScannerTest {
         assertThat(returnOpenApiSpecs).isEmpty();
     }
 
-    private OpenApiScanner createOpenApiScanner() {
+    private OpenApiScanner createOpenApiScanner(boolean scanCodebases) {
         SpecDiscoverer specDiscoverer = new SpecDiscoverer(createFileUtils());
         SpecErrorProcessor specErrorProcessor = new SpecErrorProcessor(new ThrowableToScannerErrorMapper());
         SpecParser specParser = new SpecParser(new ObjectMapper(), specErrorProcessor);
-        return new OpenApiScanner(specDiscoverer, specParser);
+        return new OpenApiScanner(specDiscoverer, specParser, new OpenApiConfig(scanCodebases));
     }
 
     private void createWireMockServer() {
