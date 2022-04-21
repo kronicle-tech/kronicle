@@ -165,7 +165,6 @@ public class GitLabClientTest {
         return CheckState.builder()
                 .name("Test name " + repoNumber + " " + checkNumber)
                 .description("GitLab Job")
-                .avatarUrl("https://example.com/avatar-url-" + repoNumber + "-" + checkNumber)
                 .status(ComponentStateCheckStatus.OK)
                 .statusMessage("Success")
                 .links(List.of(
