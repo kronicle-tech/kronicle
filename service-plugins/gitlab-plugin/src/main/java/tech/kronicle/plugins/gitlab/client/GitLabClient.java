@@ -203,14 +203,13 @@ public class GitLabClient {
       case "pending":
       case "running":
       case "manual":
+      case "canceled":
+      case "skipped":
         return ComponentStateCheckStatus.PENDING;
       case "failed":
         return ComponentStateCheckStatus.CRITICAL;
       case "success":
         return ComponentStateCheckStatus.OK;
-      case "canceled":
-      case "skipped":
-        return ComponentStateCheckStatus.WARNING;
       default:
         log.warn("Unrecognised job status \"{}\"", job.getStatus());
         return ComponentStateCheckStatus.UNKNOWN;
