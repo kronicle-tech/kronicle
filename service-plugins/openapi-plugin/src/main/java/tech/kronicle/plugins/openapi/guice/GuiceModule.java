@@ -1,6 +1,7 @@
 package tech.kronicle.plugins.openapi.guice;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.google.inject.AbstractModule;
 import com.google.inject.Provides;
 import tech.kronicle.utils.FileUtils;
@@ -18,7 +19,8 @@ public class GuiceModule extends AbstractModule {
 
     @Provides
     public ObjectMapper objectMapper() {
-        return createJsonMapper();
+        return createJsonMapper()
+                .registerModule(new JavaTimeModule());
     }
 
     @Provides
