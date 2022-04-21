@@ -181,6 +181,9 @@ public class GitLabClient {
 
   private boolean excludeCertainJobStatuses(GitLabJob gitLabJob) {
     switch (gitLabJob.getStatus()) {
+      case "created":
+      case "pending":
+      case "manual":
       case "canceled":
       case "skipped":
         return false;
@@ -202,10 +205,7 @@ public class GitLabClient {
 
   private ComponentStateCheckStatus mapCheckStatus(GitLabJob job) {
     switch (job.getStatus()) {
-      case "created":
-      case "pending":
       case "running":
-      case "manual":
         return ComponentStateCheckStatus.PENDING;
       case "failed":
         return ComponentStateCheckStatus.CRITICAL;
