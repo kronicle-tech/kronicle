@@ -13,7 +13,6 @@
 
     <b-collapse
       id="filters"
-      :visible.sync="collapseVisible"
       class="mt-3"
     >
       <b-card-group

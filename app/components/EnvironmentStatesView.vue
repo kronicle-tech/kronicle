@@ -15,24 +15,29 @@
           <b-card :key="item.key" :class="`border-${item.statusVariant}`">
             <h5>{{ item.environment.id }} <span class="text-muted">//</span> {{ item.plugin.id }} <span class="text-muted">//</span> {{ item.component.name }}</h5>
             <h4 :class="`text-${item.statusVariant}`">
-              <b-avatar v-if="item.check.avatarUrl" :src="item.check.avatarUrl" />
-              {{ item.check.name }}
-              <b-badge>{{ item.check.description }}</b-badge>
+              <b-avatar v-if="item.firstCheck.avatarUrl" :src="item.firstCheck.avatarUrl" />
+              <span v-for="(check, checkIndex) in item.allChecks" :key="checkIndex">
+                <span v-if="checkIndex > 0"><br></span>
+                {{ check.name }}
+                <b-badge>{{ check.description }}</b-badge>
+              </span>
             </h4>
 
-            <div><span class="text-muted">Status:</span> <b-badge :variant="item.statusVariant">{{ item.check.status }}</b-badge></div>
-            <div><span class="text-muted">Status Message:</span> <b>{{ item.check.statusMessage }}</b></div>
-            <div><span class="text-muted">Updated At:</span> <b><FormattedDateTime :value="item.check.updateTimestamp" /></b></div>
+            <div><span class="text-muted">Status:</span> <b-badge :variant="item.statusVariant">{{ item.firstCheck.status }}</b-badge></div>
+            <div><span class="text-muted">Status Message:</span> <b>{{ item.firstCheck.statusMessage }}</b></div>
+            <div><span class="text-muted">Updated At:</span> <b><FormattedDateTime :value="item.firstCheck.updateTimestamp" /></b></div>
 
-            <div v-if="item.check.links" class="mt-1">
+            <div
+              v-for="link in item.allLinks"
+              :key="link.link.url"
+              class="mt-2"
+            >
               <b-link
-                v-for="link in item.check.links"
-                :key="link.url"
-                :href="link.url"
+                :href="link.link.url"
                 target="_blank"
                 class="card-link"
               >
-                {{ link.description || link.url }} <b-icon icon="box-arrow-up-right" aria-label="opens in new window" />
+                {{ getLinkDescription(link) }} <b-icon icon="box-arrow-up-right" aria-label="opens in new window" />
               </b-link>
             </div>
           </b-card>
@@ -91,7 +96,7 @@ import {
   Component,
   ComponentStateCheckStatus,
   EnvironmentPluginState,
-  EnvironmentState, LogSummaryState,
+  EnvironmentState, Link, LogSummaryState,
 } from '~/types/kronicle-service'
 import ComponentFilters from '~/components/ComponentFilters.vue'
 import FormattedDateTime from "~/components/FormattedDateTime.vue";
@@ -110,9 +115,17 @@ interface BaseItem {
   readonly plugin: EnvironmentPluginState;
 }
 
+interface LinkAndCheck {
+  readonly link: Link;
+  readonly check: CheckState;
+}
+
 interface CheckItem extends BaseItem {
   readonly itemType: 'check';
-  readonly check: CheckState;
+  readonly classifier: string;
+  readonly firstCheck: CheckState;
+  readonly allChecks: CheckState[];
+  readonly allLinks: LinkAndCheck[];
   readonly statusVariant: string;
 }
 
@@ -122,6 +135,11 @@ interface LogSummaryItem extends BaseItem {
 }
 
 type Item = CheckItem | LogSummaryItem;
+
+interface ClassifierIndex {
+  readonly classifier: string;
+  readonly index: number;
+}
 
 export default Vue.extend({
   components: {
@@ -153,29 +171,29 @@ export default Vue.extend({
   methods: {
     mapComponents(components: Component[]): Item[] {
       const that = this;
-      return components.flatMap(component => that.mapComponent(component))
-        .sort((a, b) => {
-          let result: number
-          result = ITEM_TYPE_ORDER.indexOf(a.itemType) - ITEM_TYPE_ORDER.indexOf(b.itemType)
-          if (result !== 0) {
-            return result;
+      const items = components.flatMap(component => that.mapComponent(component));
+      const classifierIndexes = new Map<string, ClassifierIndex>()
+      const groupedItems: Item[] = []
+      items.forEach(item => {
+        if (item.itemType === 'check') {
+          let classifierIndex = classifierIndexes.get(item.classifier);
+          if (classifierIndex) {
+            const existingItem = groupedItems[classifierIndex.index] as CheckItem;
+            existingItem.allChecks.push(item.firstCheck);
+            existingItem.allLinks.push(...item.firstCheck.links.map(link => ({ link, check: item.firstCheck })));
+          } else {
+            classifierIndex = {
+              classifier: item.classifier,
+              index: groupedItems.length,
+            };
+            classifierIndexes.set(item.classifier, classifierIndex);
+            groupedItems.push(item);
           }
-          if (a.itemType === 'check' && b.itemType === 'check') {
-            result = CHECK_STATUS_ORDER.indexOf(a.check.status) - CHECK_STATUS_ORDER.indexOf(b.check.status)
-            if (result !== 0) {
-              return result;
-            }
-          }
-          result = a.environment.id.localeCompare(b.environment.id)
-          if (result !== 0) {
-            return result;
-          }
-          result = a.component.id.localeCompare(b.component.id)
-          if (result !== 0) {
-            return result;
-          }
-          return 0;
-        });
+        } else {
+          groupedItems.push(item);
+        }
+      });
+      return groupedItems.sort(that.compareItems);
     },
     mapComponent(component: Component): Item[] {
       if (!component.state || !component.state.environments) {
@@ -203,10 +221,13 @@ export default Vue.extend({
       return {
         itemType: 'check',
         key: `${component.id}_${environment.id}_${plugin.id}_${check.name}`,
+        classifier: `${component.id}_${environment.id}_${plugin.id}_${check.avatarUrl}_${check.status}_${check.statusMessage}_${check.updateTimestamp}`,
         component,
         environment,
         plugin,
-        check,
+        firstCheck: check,
+        allChecks: [check],
+        allLinks: check.links.map(link => ({ link, check })),
         statusVariant: that.getStatusVariant(check.status),
       };
     },
@@ -233,7 +254,36 @@ export default Vue.extend({
         case "warning":
           return "warning";
       }
-    }
+    },
+    compareItems(a: Item, b: Item) {
+      let result: number
+      result = ITEM_TYPE_ORDER.indexOf(a.itemType) - ITEM_TYPE_ORDER.indexOf(b.itemType)
+      if (result !== 0) {
+        return result;
+      }
+      if (a.itemType === 'check' && b.itemType === 'check') {
+        result = CHECK_STATUS_ORDER.indexOf(a.firstCheck.status) - CHECK_STATUS_ORDER.indexOf(b.firstCheck.status)
+        if (result !== 0) {
+          return result;
+        }
+      }
+      result = a.environment.id.localeCompare(b.environment.id)
+      if (result !== 0) {
+        return result;
+      }
+      result = a.component.id.localeCompare(b.component.id)
+      if (result !== 0) {
+        return result;
+      }
+      return 0;
+    },
+    getLinkDescription(linkAndCheck: LinkAndCheck): string {
+      if (linkAndCheck.link.description) {
+        return `${linkAndCheck.check.name}: ${linkAndCheck.link.description}`
+      } else {
+        return `${linkAndCheck.check.name}: ${linkAndCheck.link.url}`
+      }
+    },
   },
 })
 </script>
