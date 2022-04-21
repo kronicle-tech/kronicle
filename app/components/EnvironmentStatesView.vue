@@ -5,7 +5,11 @@
       :plugin-id-filter-enabled="true"
     />
 
-    <b-card-group columns>
+    <b-alert v-if="items.length === 0" show variant="info">
+      This page is empty as there are currently no environment status items to show on this page
+    </b-alert>
+
+    <b-card-group v-if="items.length > 0" columns>
       <template v-for="item in items">
         <template v-if="item.itemType === 'check'">
           <b-card :key="item.key" :class="`border-${item.statusVariant}`">

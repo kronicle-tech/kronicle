@@ -210,7 +210,7 @@
             :key="componentTypeCount.item"
             :to="{
               name: 'all-components',
-              query: { componentType: componentTypeCount.item },
+              query: { componentTypeId: componentTypeCount.item },
             }"
             class="d-flex justify-content-between align-items-center"
           >

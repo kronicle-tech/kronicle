@@ -185,6 +185,7 @@ public class DependencyServiceTest {
                         profiles,
                         null,
                         null,
+                        null,
                         null
                 )
         );

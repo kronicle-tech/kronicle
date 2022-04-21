@@ -17,6 +17,8 @@ public class AwsConfig {
     @NotNull
     Boolean detailedComponentDescriptions;
     @NotNull
+    Boolean createDependenciesForResources;
+    @NotNull
     @Valid
     AwsTagKeysConfig tagKeys;
     @NotNull
@@ -26,11 +28,12 @@ public class AwsConfig {
     public AwsConfig(
             List<AwsProfileConfig> profiles,
             Boolean detailedComponentDescriptions,
-            AwsTagKeysConfig tagKeys,
+            Boolean createDependenciesForResources, AwsTagKeysConfig tagKeys,
             AwsLogFieldsConfig logFields
     ) {
         this.profiles = createUnmodifiableList(profiles);
         this.detailedComponentDescriptions = detailedComponentDescriptions;
+        this.createDependenciesForResources = createDependenciesForResources;
         this.tagKeys = tagKeys;
         this.logFields = logFields;
     }

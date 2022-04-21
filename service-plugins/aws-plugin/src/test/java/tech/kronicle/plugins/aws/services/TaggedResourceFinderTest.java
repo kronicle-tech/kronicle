@@ -44,6 +44,7 @@ public class TaggedResourceFinderTest {
                         profile2
                 ),
                 null,
+                null,
                 new AwsTagKeysConfig(
                         TEST_COMPONENT_TAG_KEY,
                         null

@@ -65,6 +65,7 @@ public class CloudWatchLogsServiceTest {
                 new AwsConfig(
                         List.of(profile1, profile2),
                         null,
+                        null,
                         new AwsTagKeysConfig("component", null),
                         new AwsLogFieldsConfig("test-level-field", "test-message-field")
                 )
