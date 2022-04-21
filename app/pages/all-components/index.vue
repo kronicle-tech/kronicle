@@ -2,11 +2,6 @@
   <div class="m-3">
     <AllComponentsTabs />
 
-    <b-alert show="10" dismissible variant="info" class="my-3">
-      Click a component's name in the table below to view more information about
-      that component
-    </b-alert>
-
     <ComponentsView :components="components" />
   </div>
 </template>

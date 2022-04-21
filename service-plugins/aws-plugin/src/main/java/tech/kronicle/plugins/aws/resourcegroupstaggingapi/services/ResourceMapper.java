@@ -124,9 +124,13 @@ public class ResourceMapper {
     }
 
     private List<ComponentDependency> createDependencies(ResourceGroupsTaggingApiResource resource) {
-        Optional<String> componentTag = getComponentTag(resource);
-        return componentTag.map(this::createDependency).stream()
-                .collect(toUnmodifiableList());
+        if (config.getCreateDependenciesForResources()) {
+            Optional<String> componentTag = getComponentTag(resource);
+            return componentTag.map(this::createDependency).stream()
+                    .collect(toUnmodifiableList());
+        } else {
+            return List.of();
+        }
     }
 
     private ComponentDependency createDependency(String componentTag) {

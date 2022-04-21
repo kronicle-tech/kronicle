@@ -1,8 +1,9 @@
 package tech.kronicle.plugins.aws.resourcegroupstaggingapi.services;
 
+import lombok.RequiredArgsConstructor;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
+import org.junit.jupiter.params.provider.MethodSource;
 import tech.kronicle.plugins.aws.config.AwsConfig;
 import tech.kronicle.plugins.aws.config.AwsProfileConfig;
 import tech.kronicle.plugins.aws.config.AwsTagKeysConfig;
@@ -18,8 +19,8 @@ import tech.kronicle.sdk.models.DependencyDirection;
 import tech.kronicle.sdk.models.EnvironmentState;
 
 import java.util.List;
+import java.util.stream.Stream;
 
-import static java.util.Objects.nonNull;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class ResourceMapperTest {
@@ -29,7 +30,7 @@ public class ResourceMapperTest {
     @Test
     public void mapResourcesShouldReturnAnEmptyListWhenResourceListIsEmpty() {
         // Given
-        ResourceMapper underTest = createUnderTest(false);
+        ResourceMapper underTest = createUnderTest();
 
         // When
         List<Component> components = underTest.mapResourcesToComponents(TEST_ENVIRONMENT_ID, List.of());
@@ -39,10 +40,10 @@ public class ResourceMapperTest {
     }
 
     @ParameterizedTest
-    @ValueSource(booleans = { false, true })
-    public void mapResourcesShouldMapAllResourcesToComponents(Boolean detailedComponentDescriptions) {
+    @MethodSource("provideMappingConfig")
+    public void mapResourcesShouldMapAllResourcesToComponents(MappingConfig mappingConfig) {
         // Given
-        ResourceMapper underTest = createUnderTest(detailedComponentDescriptions);
+        ResourceMapper underTest = createUnderTest(mappingConfig);
         List<ResourceGroupsTaggingApiResource> resources = List.of(
                 new ResourceGroupsTaggingApiResource(
                         "arn:aws:lambda:us-west-1:123456789012:function:ExampleStack-exampleFunction123ABC-123456ABCDEF",
@@ -73,7 +74,7 @@ public class ResourceMapperTest {
                         .name("ExampleStack-exampleFunction123ABC-123456ABCDEF")
                         .typeId("aws-lambda-function")
                         .description(prepareExpectedDescription(
-                                detailedComponentDescriptions,
+                                mappingConfig,
                                 "arn:aws:lambda:us-west-1:123456789012:function:ExampleStack-exampleFunction123ABC-123456ABCDEF\n"
                         ))
                         .platformId("aws-managed-service")
@@ -101,31 +102,24 @@ public class ResourceMapperTest {
                                         .build()
                         ))
                         .description(prepareExpectedDescription(
-                                detailedComponentDescriptions,
-                                        "arn:aws:ec2:us-west-1:123456789012:security-group/sg-12345678901ABCDEF\n" +
-                                        "\n" +
-                                        "Tags:\n" +
-                                        "\n" +
-                                        "* Name=Test name\n" +
-                                        "* test-team-tag-key=test-team-id\n" +
-                                        "* test-component-tag-key=test-component-id\n" +
-                                        "* test-tag-key-1=test-tag-value-1\n" +
-                                        "\n" +
-                                        "Aliases:\n" +
-                                        "\n" +
-                                        "* security-group/sg-12345678901ABCDEF\n" +
-                                        "* security-group/sg-12345678901abcdef\n" +
-                                        "* Test name\n"
+                                mappingConfig,
+                                "arn:aws:ec2:us-west-1:123456789012:security-group/sg-12345678901ABCDEF\n" +
+                                "\n" +
+                                "Tags:\n" +
+                                "\n" +
+                                "* Name=Test name\n" +
+                                "* test-team-tag-key=test-team-id\n" +
+                                "* test-component-tag-key=test-component-id\n" +
+                                "* test-tag-key-1=test-tag-value-1\n" +
+                                "\n" +
+                                "Aliases:\n" +
+                                "\n" +
+                                "* security-group/sg-12345678901ABCDEF\n" +
+                                "* security-group/sg-12345678901abcdef\n" +
+                                "* Test name\n"
                         ))
                         .platformId("aws-managed-service")
-                        .dependencies(List.of(
-                                ComponentDependency.builder()
-                                        .targetComponentId("test-component-id")
-                                        .direction(DependencyDirection.INBOUND)
-                                        .typeId(DependencyTypeIds.COMPOSITION)
-                                        .label("is composed of")
-                                        .build()
-                        ))
+                        .dependencies(prepareExpectedDependencies(mappingConfig))
                         .state(ComponentState.builder()
                                 .environments(List.of(
                                         EnvironmentState.builder()
@@ -138,7 +132,21 @@ public class ResourceMapperTest {
         ));
     }
 
-    private ResourceMapper createUnderTest(Boolean detailedComponentDescriptions) {
+    private ResourceMapper createUnderTest() {
+        return createUnderTest(false, false);
+    }
+
+    private ResourceMapper createUnderTest(MappingConfig mappingConfig) {
+        return createUnderTest(
+                mappingConfig.detailedComponentDescriptions,
+                mappingConfig.createDependenciesForResources
+        );
+    }
+
+    private ResourceMapper createUnderTest(
+            boolean detailedComponentDescriptions,
+            boolean createDependenciesForResources
+    ) {
         return new ResourceMapper(
                 new AwsConfig(
                         List.of(
@@ -150,15 +158,45 @@ public class ResourceMapperTest {
                                 )
                         ),
                         detailedComponentDescriptions,
+                        createDependenciesForResources,
                         new AwsTagKeysConfig("test-component-tag-key", "test-team-tag-key"),
                         null
                 )
         );
     }
 
-    private String prepareExpectedDescription(Boolean detailedComponentDescriptions, String value) {
-        return nonNull(detailedComponentDescriptions) && detailedComponentDescriptions
-                ? value
-                : "";
+    public static Stream<MappingConfig> provideMappingConfig() {
+        return Stream.of(
+                new MappingConfig(false, false),
+                new MappingConfig(false, true),
+                new MappingConfig(true, false),
+                new MappingConfig(true, true)
+        );
+    }
+
+    @RequiredArgsConstructor
+    private static class MappingConfig {
+
+        private final boolean detailedComponentDescriptions;
+        private final boolean createDependenciesForResources;
+    }
+
+    private String prepareExpectedDescription(MappingConfig mappingConfig, String value) {
+        return mappingConfig.detailedComponentDescriptions ? value : "";
+    }
+
+    private List<ComponentDependency> prepareExpectedDependencies(MappingConfig mappingConfig) {
+        if (mappingConfig.createDependenciesForResources) {
+            return List.of(
+                    ComponentDependency.builder()
+                            .targetComponentId("test-component-id")
+                            .direction(DependencyDirection.INBOUND)
+                            .typeId(DependencyTypeIds.COMPOSITION)
+                            .label("is composed of")
+                            .build()
+            );
+        } else {
+            return List.of();
+        }
     }
 }

@@ -65,6 +65,7 @@ plugins:
   aws:
     enabled: false
     detailed-component-descriptions: false
+    create-dependencies-for-resources: true
     tag-keys:
       component: component
       team: team
