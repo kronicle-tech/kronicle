@@ -182,19 +182,11 @@ public class GitLabClient {
     return job -> CheckState.builder()
             .name(job.getName())
             .description("GitLab Job")
-            .avatarUrl(mapAvatarUrl(job))
             .status(mapCheckStatus(job))
             .statusMessage(toTitleCase(job.getStatus()))
             .links(createWorkflowRunLinks(job))
             .updateTimestamp(now)
             .build();
-  }
-
-  private String mapAvatarUrl(GitLabJob job) {
-    return Optional.of(job)
-            .map(GitLabJob::getUser)
-            .map(GitLabUser::getAvatar_url)
-            .orElse(null);
   }
 
   private ComponentStateCheckStatus mapCheckStatus(GitLabJob job) {
