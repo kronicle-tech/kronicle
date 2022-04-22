@@ -1,7 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Index when Get Components service endpoint returns an array of multiple components renders the page 1`] = `
-<div>
+<div
+  class="m-3"
+>
   <div>
     <div
       class="card"
@@ -957,7 +959,9 @@ exports[`Index when Get Components service endpoint returns an array of multiple
 `;
 
 exports[`Index when Get Components service endpoint returns an empty array renders the page 1`] = `
-<div>
+<div
+  class="m-3"
+>
   <div>
     <div
       class="card"
