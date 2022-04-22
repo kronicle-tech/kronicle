@@ -159,7 +159,7 @@ public class ResourceMapperTest {
                         ),
                         detailedComponentDescriptions,
                         createDependenciesForResources,
-                        new AwsTagKeysConfig("test-component-tag-key", "test-team-tag-key"),
+                        null, new AwsTagKeysConfig("test-component-tag-key", "test-team-tag-key"),
                         null
                 )
         );

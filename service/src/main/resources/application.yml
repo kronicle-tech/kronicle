@@ -66,6 +66,7 @@ plugins:
     enabled: false
     detailed-component-descriptions: false
     create-dependencies-for-resources: true
+    load-xray-trace-data: true
     tag-keys:
       component: component
       team: team
