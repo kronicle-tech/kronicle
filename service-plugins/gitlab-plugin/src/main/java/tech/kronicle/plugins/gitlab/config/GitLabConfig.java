@@ -1,6 +1,5 @@
 package tech.kronicle.plugins.gitlab.config;
 
-import lombok.NonNull;
 import lombok.Value;
 import lombok.experimental.NonFinal;
 
@@ -14,7 +13,7 @@ import java.util.List;
 public class GitLabConfig {
 
   List<GitLabHostConfig> hosts;
-  @NonNull
+  @NotNull
   Integer projectPageSize;
   @NotEmpty
   String environmentId;

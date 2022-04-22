@@ -217,8 +217,9 @@ public class OpenApiScannerTest extends BaseCodebaseScannerTest {
         }
     }
 
-    @Test
-    public void scanShouldHandleAManualCodebaseOpenApiSpec() {
+    @ParameterizedTest
+    @ValueSource(booleans = { false, true })
+    public void scanShouldHandleAManualCodebaseOpenApiSpec(boolean scanCodebases) {
         // Given
         OpenApiSpec openApiSpec = OpenApiSpec.builder()
                 .file("test-openapi.yaml")
@@ -228,7 +229,7 @@ public class OpenApiScannerTest extends BaseCodebaseScannerTest {
                 .build();
         Codebase codebase = new Codebase(getTestRepo(), getCodebaseDir("OneOpenApiSpec"));
         ComponentAndCodebase componentAndCodebase = new ComponentAndCodebase(component, codebase);
-        OpenApiScanner underTest = createOpenApiScanner(true);
+        OpenApiScanner underTest = createOpenApiScanner(scanCodebases);
 
         // When
         Output<Void> returnValue = underTest.scan(componentAndCodebase);
@@ -346,8 +347,7 @@ public class OpenApiScannerTest extends BaseCodebaseScannerTest {
         ScannerError error;
         error = returnValue.getErrors().get(0);
         assertThat(error.getScannerId()).isEqualTo("openapi");
-        assertThat(sanitizeErrorMessage(error.getMessage())).isEqualTo("Issue while parsing OpenAPI spec \"InvalidYamlFile/test-openapi.yaml\": "
-                + "Expected a field name (Scalar value in YAML), got this instead: <org.yaml.snakeyaml.events.MappingStartEvent(anchor=null, tag=null, implicit=true)>");
+        assertThat(sanitizeErrorMessage(error.getMessage())).isEqualTo("Issue while parsing OpenAPI spec \"InvalidYamlFile/test-openapi.yaml\": attribute openapi is not of type `string`");
         List<OpenApiSpec> returnOpenApiSpecs = getMutatedComponentIgnoringErrors(returnValue).getOpenApiSpecs();
         assertThat(returnOpenApiSpecs).hasSize(1);
         OpenApiSpec returnOpenApiSpec;
