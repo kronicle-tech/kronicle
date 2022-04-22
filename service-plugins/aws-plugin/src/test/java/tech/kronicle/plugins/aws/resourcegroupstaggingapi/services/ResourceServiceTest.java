@@ -219,7 +219,7 @@ public class ResourceServiceTest {
                         profiles,
                         null,
                         null,
-                        null,
+                        null, null,
                         null
                 )
         );

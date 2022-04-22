@@ -19,6 +19,8 @@ public class AwsConfig {
     @NotNull
     Boolean createDependenciesForResources;
     @NotNull
+    Boolean loadXrayTraceData;
+    @NotNull
     @Valid
     AwsTagKeysConfig tagKeys;
     @NotNull
@@ -28,12 +30,13 @@ public class AwsConfig {
     public AwsConfig(
             List<AwsProfileConfig> profiles,
             Boolean detailedComponentDescriptions,
-            Boolean createDependenciesForResources, AwsTagKeysConfig tagKeys,
+            Boolean createDependenciesForResources, Boolean loadXrayTraceData, AwsTagKeysConfig tagKeys,
             AwsLogFieldsConfig logFields
     ) {
         this.profiles = createUnmodifiableList(profiles);
         this.detailedComponentDescriptions = detailedComponentDescriptions;
         this.createDependenciesForResources = createDependenciesForResources;
+        this.loadXrayTraceData = loadXrayTraceData;
         this.tagKeys = tagKeys;
         this.logFields = logFields;
     }

@@ -56,7 +56,7 @@ public class SyntheticsServiceTest {
                         List.of(profile1, profile2),
                         null,
                         null,
-                        new AwsTagKeysConfig("component", null),
+                        null, new AwsTagKeysConfig("component", null),
                         null
                 )
         );

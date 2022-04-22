@@ -16,7 +16,7 @@ public class AwsConfigTest {
                 new ArrayList<>(),
                 null,
                 null,
-                null,
+                null, null,
                 null
         );
 
