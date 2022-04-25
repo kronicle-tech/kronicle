@@ -14,6 +14,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.scheduling.annotation.Scheduled;
 import tech.kronicle.sdk.models.ComponentMetadata;
 import tech.kronicle.pluginapi.scanners.models.Output;
+import tech.kronicle.sdk.models.Tag;
 import tech.kronicle.testutils.LogCaptor;
 import tech.kronicle.utils.ObjectReference;
 import tech.kronicle.sdk.models.Area;
@@ -102,7 +103,10 @@ public class ComponentRepositoryTest {
                                 .id("test-component-id")
                                 .name("Test Component Name")
                                 .typeId("test-component-type-id")
-                                .tags(List.of("test-component-tag-1", "test-component-tag-2"))
+                                .tags(List.of(
+                                        Tag.builder().key("test-component-tag-1").build(),
+                                        Tag.builder().key("test-component-tag-2").build()
+                                ))
                                 .repo(RepoReference.builder().url("https://example.com/example.git").build())
                                 .notes("Test Component Notes")
                                 .teams(List.of(ComponentTeam.builder().teamId("test-team-id").build()))
@@ -137,7 +141,10 @@ public class ComponentRepositoryTest {
         assertThat(component.getId()).isEqualTo("test-component-id");
         assertThat(component.getName()).isEqualTo("Test Component Name");
         assertThat(component.getTypeId()).isEqualTo("test-component-type-id");
-        assertThat(component.getTags()).containsExactly("test-component-tag-1", "test-component-tag-2");
+        assertThat(component.getTags()).containsExactly(
+                Tag.builder().key("test-component-tag-1").build(),
+                Tag.builder().key("test-component-tag-2").build()
+        );
         assertThat(component.getRepo().getUrl()).isEqualTo("https://example.com/example.git");
         assertThat(component.getNotes()).isEqualTo("Test Component Notes");
         assertThat(component.getTeams()).containsExactly(new ComponentTeam("test-team-id", null, null));
