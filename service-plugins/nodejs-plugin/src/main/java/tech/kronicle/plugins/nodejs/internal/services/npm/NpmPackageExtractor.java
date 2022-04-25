@@ -9,6 +9,7 @@ import tech.kronicle.plugins.nodejs.internal.models.PackageJson;
 import tech.kronicle.plugins.nodejs.internal.models.npm.NpmDependencies;
 import tech.kronicle.plugins.nodejs.internal.models.npm.NpmDependency;
 import tech.kronicle.plugins.nodejs.internal.models.npm.NpmPackageLock;
+import tech.kronicle.sdk.models.SoftwareType;
 import tech.kronicle.utils.FileUtils;
 import tech.kronicle.sdk.models.Software;
 import tech.kronicle.sdk.models.SoftwareDependencyType;
@@ -84,6 +85,7 @@ public class NpmPackageExtractor {
         return Software.builder()
                 .scannerId(scannerId)
                 .name(entry.getKey())
+                .type(SoftwareType.NPM_PACKAGE)
                 .packaging(NpmPackagings.NPM_PACKAGE)
                 .version(entry.getValue().getVersion())
                 .dependencyType(getDependencyType(entry.getKey(), directDependencyNames, dependencyType))
