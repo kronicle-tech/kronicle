@@ -5,11 +5,10 @@ import com.fasterxml.jackson.core.JsonToken;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
 import tech.kronicle.sdk.models.Tag;
-import tech.kronicle.sdk.models.TagOrString;
 
 import java.io.IOException;
 
-public class TagOrStringDeserializer extends StdDeserializer<TagOrString> {
+public class TagOrStringDeserializer extends StdDeserializer<Tag> {
 
     protected TagOrStringDeserializer() {
         super(Tag.class);

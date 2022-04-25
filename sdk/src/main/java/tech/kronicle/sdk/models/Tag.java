@@ -13,7 +13,7 @@ import javax.validation.constraints.Pattern;
 @With
 @Builder(toBuilder = true)
 @Jacksonized
-public class Tag implements TagOrString {
+public class Tag {
 
     @NotBlank
     @Pattern(regexp = PatternStrings.ID)

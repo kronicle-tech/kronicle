@@ -11,6 +11,7 @@ import org.hibernate.validator.constraints.UniqueElements;
 import tech.kronicle.sdk.constants.PatternStrings;
 import tech.kronicle.sdk.jackson.JsonRawValueDeserializer;
 import tech.kronicle.sdk.jackson.JsonRawValueSerializer;
+import tech.kronicle.sdk.jackson.TagOrStringDeserializer;
 import tech.kronicle.sdk.models.git.GitRepo;
 import tech.kronicle.sdk.models.gradle.Gradle;
 import tech.kronicle.sdk.models.linesofcode.LinesOfCode;
@@ -52,6 +53,7 @@ public class Component implements ObjectWithId, ObjectWithReference {
     @Pattern(regexp = PatternStrings.ID)
     @JsonAlias("type")
     String typeId;
+    @JsonDeserialize(contentUsing = TagOrStringDeserializer.class)
     List<@Valid Tag> tags;
     @Valid
     RepoReference repo;

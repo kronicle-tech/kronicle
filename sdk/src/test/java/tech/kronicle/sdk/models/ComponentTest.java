@@ -2,7 +2,9 @@ package tech.kronicle.sdk.models;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.json.JsonMapper;
 import lombok.RequiredArgsConstructor;
+import lombok.SneakyThrows;
 import org.junit.jupiter.api.Test;
 import tech.kronicle.sdk.models.openapi.OpenApiSpec;
 import tech.kronicle.sdk.models.sonarqube.SonarQubeProject;
@@ -328,5 +330,52 @@ public class ComponentTest {
             calls.add(value);
             return updatedState;
         }
+    }
+
+    private final ObjectMapper objectMapper = new JsonMapper();
+
+    @SneakyThrows
+    @Test
+    public void tagsShouldDeserializeFromJsonString() {
+        // Given
+        String rawJson = "{\"tags\":[\"test-tag-key\"]}";
+
+        // When
+        Component returnValue = objectMapper.readValue(rawJson, Component.class);
+
+        // Then
+        assertThat(returnValue).isEqualTo(
+                Component.builder()
+                        .tags(List.of(
+                                Tag.builder()
+                                        .key("test-tag-key")
+                                        .build()
+                        ))
+                        .build()
+        );
+        assertThat(returnValue.getTags().get(0)).isInstanceOf(Tag.class);
+    }
+
+    @SneakyThrows
+    @Test
+    public void tagsShouldDeserializeFromJsonObject() {
+        // Given
+        String rawJson = "{\"tags\":[{\"key\":\"test-tag-key\",\"value\":\"test-tag-value\"}]}";
+
+        // When
+        Component returnValue = objectMapper.readValue(rawJson, Component.class);
+
+        // Then
+        assertThat(returnValue).isEqualTo(
+                Component.builder()
+                        .tags(List.of(
+                                Tag.builder()
+                                        .key("test-tag-key")
+                                        .value("test-tag-value")
+                                        .build()
+                        ))
+                        .build()
+        );
+        assertThat(returnValue.getTags().get(0)).isInstanceOf(Tag.class);
     }
 }
