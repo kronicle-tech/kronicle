@@ -16,6 +16,8 @@ import java.nio.file.Path;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static java.util.stream.Collectors.toUnmodifiableList;
+
 @Extension
 @RequiredArgsConstructor(onConstructor = @__({@Inject}))
 public class NodeJsScanner  extends CodebaseScanner {
@@ -43,10 +45,10 @@ public class NodeJsScanner  extends CodebaseScanner {
     @Override
     public Output<Void> scan(Codebase input) {
         List<Path> npmLockFiles = fileUtils.findFiles(input.getDir(), (file, ignored) -> file.endsWith(NodeJsFileNames.NPM_PACKAGE_LOCK_JSON))
-                .collect(Collectors.toList());
+                .collect(toUnmodifiableList());
         List<Software> software = npmLockFiles.stream()
                 .flatMap(file -> npmPackageExtractor.extractPackages(id(), file))
-                .collect(Collectors.toList());
+                .collect(toUnmodifiableList());
         return Output.of(component -> component
                 .withNodeJs(new NodeJs(!npmLockFiles.isEmpty()))
                 .withSoftware(software));

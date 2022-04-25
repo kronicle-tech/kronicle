@@ -7,6 +7,7 @@ public enum SoftwareType {
     GRADLE_PLUGIN,
     GRADLE_PLUGIN_VERSION,
     JVM,
+    NPM_PACKAGE,
     TOOL;
 
     @JsonValue
