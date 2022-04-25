@@ -52,7 +52,7 @@ public class Component implements ObjectWithId, ObjectWithReference {
     @Pattern(regexp = PatternStrings.ID)
     @JsonAlias("type")
     String typeId;
-    List<@NotBlank @Pattern(regexp = PatternStrings.ID) String> tags;
+    List<@Valid Tag> tags;
     @Valid
     RepoReference repo;
     String description;
@@ -95,7 +95,7 @@ public class Component implements ObjectWithId, ObjectWithReference {
             String name,
             Boolean discovered,
             String typeId,
-            List<String> tags,
+            List<Tag> tags,
             RepoReference repo,
             String description,
             List<Responsibility> responsibilities,
