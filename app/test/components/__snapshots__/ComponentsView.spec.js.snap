@@ -178,9 +178,11 @@ exports[`ComponentsView when components prop is set to multiple components rende
                 <ul>
                   <li>
                     test-tag-1-1
+                    <!---->
                   </li>
                   <li>
                     test-tag-1-2
+                    <!---->
                   </li>
                 </ul>
               </td>
@@ -209,9 +211,11 @@ exports[`ComponentsView when components prop is set to multiple components rende
                 <ul>
                   <li>
                     test-tag-2-1
+                    <!---->
                   </li>
                   <li>
                     test-tag-2-2
+                    <!---->
                   </li>
                 </ul>
               </td>
@@ -240,9 +244,11 @@ exports[`ComponentsView when components prop is set to multiple components rende
                 <ul>
                   <li>
                     test-tag-3-1
+                    <!---->
                   </li>
                   <li>
                     test-tag-3-2
+                    <!---->
                   </li>
                 </ul>
               </td>
@@ -433,9 +439,11 @@ exports[`ComponentsView when components prop is set to multiple components when 
                 <ul>
                   <li>
                     test-tag-1-1
+                    <!---->
                   </li>
                   <li>
                     test-tag-1-2
+                    <!---->
                   </li>
                 </ul>
               </td>
@@ -464,9 +472,11 @@ exports[`ComponentsView when components prop is set to multiple components when 
                 <ul>
                   <li>
                     test-tag-2-1
+                    <!---->
                   </li>
                   <li>
                     test-tag-2-2
+                    <!---->
                   </li>
                 </ul>
               </td>
@@ -495,9 +505,11 @@ exports[`ComponentsView when components prop is set to multiple components when 
                 <ul>
                   <li>
                     test-tag-3-1
+                    <!---->
                   </li>
                   <li>
                     test-tag-3-2
+                    <!---->
                   </li>
                 </ul>
               </td>
@@ -688,9 +700,11 @@ exports[`ComponentsView when components prop is set to multiple components when 
                 <ul>
                   <li>
                     test-tag-1-1
+                    <!---->
                   </li>
                   <li>
                     test-tag-1-2
+                    <!---->
                   </li>
                 </ul>
               </td>

@@ -766,12 +766,12 @@ exports[`Index when Get Components service endpoint returns an array of multiple
                     <li>
                       
     test-tag-1-1
-  
+                      <!---->
                     </li>
                     <li>
                       
     test-tag-1-2
-  
+                      <!---->
                     </li>
                   </ul>
                 </td>
@@ -839,12 +839,12 @@ exports[`Index when Get Components service endpoint returns an array of multiple
                     <li>
                       
     test-tag-2-1
-  
+                      <!---->
                     </li>
                     <li>
                       
     test-tag-2-2
-  
+                      <!---->
                     </li>
                   </ul>
                 </td>
@@ -912,12 +912,12 @@ exports[`Index when Get Components service endpoint returns an array of multiple
                     <li>
                       
     test-tag-3-1
-  
+                      <!---->
                     </li>
                     <li>
                       
     test-tag-3-2
-  
+                      <!---->
                     </li>
                   </ul>
                 </td>

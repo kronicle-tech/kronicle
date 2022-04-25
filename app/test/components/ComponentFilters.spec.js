@@ -105,7 +105,14 @@ describe('ComponentFilters', () => {
           id: 'test-component-id-1',
           name: 'Test Component Name 1',
           typeId: 'test-component-type-id-1',
-          tags: ['test-tag-1-a', 'test-tag-1-b'],
+          tags: [
+            {
+              key: 'test-tag-1-a',
+            },
+            {
+              key: 'test-tag-1-b',
+            },
+          ],
           repo: {
             url: 'https://example.com/repo-1',
           },
@@ -137,7 +144,14 @@ describe('ComponentFilters', () => {
           id: 'test-component-id-2',
           name: 'Test Component Name 2',
           typeId: 'test-component-type-id-2',
-          tags: ['test-tag-2-a', 'test-tag-2-a'],
+          tags: [
+            {
+              key: 'test-tag-2-a',
+            },
+            {
+              key: 'test-tag-2-b',
+            },
+          ],
           repo: {
             url: 'https://example.com/repo-2',
           },
@@ -169,7 +183,14 @@ describe('ComponentFilters', () => {
           id: 'test-component-id-3',
           name: 'Test Component Name 3',
           typeId: 'test-component-type-id-3',
-          tags: ['test-tag-3-a', 'test-tag-3-a'],
+          tags: [
+            {
+              key: 'test-tag-3-a',
+            },
+            {
+              key: 'test-tag-3-b',
+            },
+          ],
           repo: {
             url: 'https://example.com/repo-3',
           },
@@ -347,7 +368,14 @@ describe('ComponentFilters', () => {
           id: 'test-component-id-1',
           name: 'Test Component Name 1',
           typeId: 'test-component-type-id-1',
-          tags: ['test-tag-1-a', 'test-tag-1-b'],
+          tags: [
+            {
+              key: 'test-tag-1-a',
+            },
+            {
+              key: 'test-tag-1-b',
+            },
+          ],
           repo: {
             url: 'https://example.com/repo-1',
           },
@@ -379,7 +407,14 @@ describe('ComponentFilters', () => {
           id: 'test-component-id-2',
           name: 'Test Component Name 1',
           typeId: 'test-component-type-id-1',
-          tags: ['test-tag-1-a', 'test-tag-1-b'],
+          tags: [
+            {
+              key: 'test-tag-1-a',
+            },
+            {
+              key: 'test-tag-1-b',
+            },
+          ],
           repo: {
             url: 'https://example.com/repo-1',
           },
@@ -411,7 +446,14 @@ describe('ComponentFilters', () => {
           id: 'test-component-id-3',
           name: 'Test Component Name 1',
           typeId: 'test-component-type-id-1',
-          tags: ['test-tag-1-a', 'test-tag-1-b'],
+          tags: [
+            {
+              key: 'test-tag-1-a',
+            },
+            {
+              key: 'test-tag-1-b',
+            },
+          ],
           repo: {
             url: 'https://example.com/repo-1',
           },

@@ -37,7 +37,27 @@ describe('Tags', () => {
 
   describe('when tags prop is set to one tag', () => {
     beforeEach(() => {
-      propsData.tags = ['test-tag-1']
+      propsData.tags = [
+        {
+          key: 'test-tag-key-1',
+        },
+      ]
+    })
+
+    test('renders an unordered list showing the tag', () => {
+      createWrapper()
+      expect(wrapper.html()).toMatchSnapshot()
+    })
+  })
+
+  describe('when tags prop is set to one tag with a value', () => {
+    beforeEach(() => {
+      propsData.tags = [
+        {
+          key: 'test-tag-key-1',
+          value: 'test-tag-value-1',
+        },
+      ]
     })
 
     test('renders an unordered list showing the tag', () => {
@@ -48,7 +68,17 @@ describe('Tags', () => {
 
   describe('when tags prop is set to multiple tags', () => {
     beforeEach(() => {
-      propsData.tags = ['test-tag-1', 'test-tag-2', 'test-tag-3']
+      propsData.tags = [
+        {
+          key: 'test-tag-key-1',
+        },
+        {
+          key: 'test-tag-key-2',
+        },
+        {
+          key: 'test-tag-key-3',
+        },
+      ]
     })
 
     test('renders an unordered list showing the tags', () => {

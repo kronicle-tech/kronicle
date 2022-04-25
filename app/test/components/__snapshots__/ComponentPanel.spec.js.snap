@@ -112,10 +112,10 @@ exports[`ComponentPanel when tags is set renders the tags 1`] = `
     <h5>Tags</h5>
     <ul>
       <li>
-        test-tag-1
+        <!---->
       </li>
       <li>
-        test-tag-2
+        <!---->
       </li>
     </ul>
   </div>

@@ -339,7 +339,7 @@ export default Vue.extend({
     },
     tagCounts(): ItemCount<string>[] {
       return itemCounts(
-        this.components.flatMap((component) => component.tags ?? [])
+        this.components.flatMap((component) => (component.tags ?? []).map(tag => tag.key))
       )
     },
     techDebtCount(): number {
