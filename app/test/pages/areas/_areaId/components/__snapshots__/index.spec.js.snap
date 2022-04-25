@@ -728,12 +728,12 @@ exports[`Index when Get Area service endpoint returns an area when the area has 
                     <li>
                       
     test-tag-1-1
-  
+                      <!---->
                     </li>
                     <li>
                       
     test-tag-1-2
-  
+                      <!---->
                     </li>
                   </ul>
                 </td>
@@ -801,12 +801,12 @@ exports[`Index when Get Area service endpoint returns an area when the area has 
                     <li>
                       
     test-tag-2-1
-  
+                      <!---->
                     </li>
                     <li>
                       
     test-tag-2-2
-  
+                      <!---->
                     </li>
                   </ul>
                 </td>
@@ -874,12 +874,12 @@ exports[`Index when Get Area service endpoint returns an area when the area has 
                     <li>
                       
     test-tag-3-1
-  
+                      <!---->
                     </li>
                     <li>
                       
     test-tag-3-2
-  
+                      <!---->
                     </li>
                   </ul>
                 </td>

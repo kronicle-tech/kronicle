@@ -25,6 +25,7 @@ import tech.kronicle.sdk.models.RepoReference;
 import tech.kronicle.sdk.models.ScannerError;
 import tech.kronicle.sdk.models.Summary;
 import tech.kronicle.sdk.models.SummaryMissingComponent;
+import tech.kronicle.sdk.models.Tag;
 import tech.kronicle.sdk.models.TechDebt;
 import tech.kronicle.service.exceptions.ValidationException;
 import tech.kronicle.tracingprocessor.ComponentAliasResolver;
@@ -142,12 +143,13 @@ public class ScanEngineTest {
         assertThat(testLateComponentScanner2.componentMetadataItems).containsExactlyInAnyOrder(updatedComponentMetadata);
         
         assertThat(componentMap.get("test-component-1").getTags()).containsExactlyInAnyOrder(
-                "input-test-component-1-has-0-tags",
-                "input-test-component-1-has-1-tags",
-                "input-test-component-1-has-2-tags",
-                "input-test-component-1-has-3-tags",
-                "input-test-component-1-has-4-tags",
-                "input-test-component-1-has-5-tags");
+                createTag("input-test-component-1-has-0-tags"),
+                createTag("input-test-component-1-has-1-tags"),
+                createTag("input-test-component-1-has-2-tags"),
+                createTag("input-test-component-1-has-3-tags"),
+                createTag("input-test-component-1-has-4-tags"),
+                createTag("input-test-component-1-has-5-tags")
+        );
         assertThat(componentMap.get("test-component-1").getTechDebts()).containsExactlyInAnyOrder(
                 createTestTechDebt("Update to test-component-1 from TestComponentScanner1"),
                 createTestTechDebt("Update to test-component-1 from TestComponentScanner2"),
@@ -159,12 +161,13 @@ public class ScanEngineTest {
                 createTestTechDebt("Update to test-component-1 from TestLateComponentScanner1"),
                 createTestTechDebt("Update to test-component-1 from TestLateComponentScanner2"));
         assertThat(componentMap.get("test-component-2").getTags()).containsExactlyInAnyOrder(
-                "input-test-component-2-has-0-tags",
-                "input-test-component-2-has-1-tags",
-                "input-test-component-2-has-2-tags",
-                "input-test-component-2-has-3-tags",
-                "input-test-component-2-has-4-tags",
-                "input-test-component-2-has-5-tags");
+                createTag("input-test-component-2-has-0-tags"),
+                createTag("input-test-component-2-has-1-tags"),
+                createTag("input-test-component-2-has-2-tags"),
+                createTag("input-test-component-2-has-3-tags"),
+                createTag("input-test-component-2-has-4-tags"),
+                createTag("input-test-component-2-has-5-tags")
+        );
         assertThat(componentMap.get("test-component-2").getTechDebts()).containsExactlyInAnyOrder(
                 createTestTechDebt("Update to test-component-2 from TestComponentScanner1"),
                 createTestTechDebt("Update to test-component-2 from TestComponentScanner2"),
@@ -514,7 +517,7 @@ public class ScanEngineTest {
 
     private <I> UnaryOperator<Component> createTestComponentTransformer(Scanner<?, ?> scanner, I input) {
         return component -> {
-            List<String> tags = new ArrayList<>(component.getTags());
+            List<Tag> tags = new ArrayList<>(component.getTags());
             Component inputComponent;
             if (input instanceof Component) {
                 inputComponent = (Component) input;
@@ -524,13 +527,21 @@ public class ScanEngineTest {
                 inputComponent = null;
             }
             if (nonNull(inputComponent)) {
-                tags.add(format("input-%s-has-%d-tags", inputComponent.getId(), inputComponent.getTags().size()));
+                tags.add(createTag(
+                        format("input-%s-has-%d-tags", inputComponent.getId(), inputComponent.getTags().size())
+                ));
             }
             List<TechDebt> techDebts = new ArrayList<>(component.getTechDebts());
             techDebts.add(createTestTechDebt("Update to " + component.getId() + " from " + scanner.id()));
             return component.withTags(tags)
                     .withTechDebts(techDebts);
         };
+    }
+
+    private Tag createTag(String key) {
+        return Tag.builder()
+                .key(key)
+                .build();
     }
 
     private static void scannerRefresh(TestScannerConfig config, AtomicInteger refreshCount) {

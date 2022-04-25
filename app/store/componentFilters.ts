@@ -163,7 +163,7 @@ function getFilteredComponents(state: ReadOnlyState): Component[] {
 
   if (state.tags.length > 0) {
     filteredComponents = filteredComponents.filter((component) =>
-      component.tags?.some((tag) => state.tags.includes(tag))
+      component.tags?.some((tag) => state.tags.includes(tag.key))
     )
   }
 

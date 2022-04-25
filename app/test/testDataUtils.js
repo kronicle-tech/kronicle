@@ -62,7 +62,14 @@ export function createComponent({
     name: `Test Component Name ${componentNumber}`,
     typeId: `test-component-type-id-${componentNumber}`,
     description: `Test Component Description ${componentNumber}`,
-    tags: [`test-tag-${componentNumber}-1`, `test-tag-${componentNumber}-2`],
+    tags: [
+      {
+        key: `test-tag-${componentNumber}-1`,
+      },
+      {
+        key: `test-tag-${componentNumber}-2`,
+      },
+    ],
     repo: {
       url: `https://example.com/test-repo-${componentNumber}`,
     },

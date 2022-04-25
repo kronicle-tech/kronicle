@@ -643,7 +643,14 @@ describe('Component Filters Store', () => {
     }
     const component2 = {
       id: 'test-component-id-2',
-      tags: ['test-tag-1', 'test-tag-2'],
+      tags: [
+        {
+          key: 'test-tag-1',
+        },
+        {
+          key: 'test-tag-2',
+        },
+      ],
     }
     whenSettingTags({
       givenComponents: [component1, component2],
@@ -659,11 +666,25 @@ describe('Component Filters Store', () => {
     }
     const component2 = {
       id: 'test-component-id-2',
-      tags: ['test-tag-1', 'test-tag-2', 'test-tag-3'],
+      tags: [
+        {
+          key: 'test-tag-1',
+        },
+        {
+          key: 'test-tag-2',
+        },
+        {
+          key: 'test-tag-3',
+        },
+      ],
     }
     const component3 = {
       id: 'test-component-id-3',
-      tags: ['test-tag-3'],
+      tags: [
+        {
+          key: 'test-tag-3',
+        },
+      ],
     }
     whenSettingTags({
       givenComponents: [component1, component2, component3],
@@ -673,17 +694,31 @@ describe('Component Filters Store', () => {
     })
   })
 
-  test('when tags is set  once via the query string, filteredComponents and filteredComponentIds return only components with that tag', () => {
+  test('when tags is set once via the query string, filteredComponents and filteredComponentIds return only components with that tag', () => {
     const component1 = {
       id: 'test-component-id-1',
     }
     const component2 = {
       id: 'test-component-id-2',
-      tags: ['test-tag-1', 'test-tag-2', 'test-tag-3'],
+      tags: [
+        {
+          key: 'test-tag-1',
+        },
+        {
+          key: 'test-tag-2',
+        },
+        {
+          key: 'test-tag-3',
+        },
+      ],
     }
     const component3 = {
       id: 'test-component-id-3',
-      tags: ['test-tag-3'],
+      tags: [
+        {
+          key: 'test-tag-3',
+        },
+      ],
     }
     whenInitializing({
       givenComponents: [component1, component2, component3],
@@ -701,11 +736,25 @@ describe('Component Filters Store', () => {
     }
     const component2 = {
       id: 'test-component-id-2',
-      tags: ['test-tag-1', 'test-tag-2', 'test-tag-3'],
+      tags: [
+        {
+          key: 'test-tag-1',
+        },
+        {
+          key: 'test-tag-2',
+        },
+        {
+          key: 'test-tag-3',
+        },
+      ],
     }
     const component3 = {
       id: 'test-component-id-3',
-      tags: ['test-tag-3'],
+      tags: [
+        {
+          key: 'test-tag-3',
+        },
+      ],
     }
     whenInitializing({
       givenComponents: [component1, component2, component3],

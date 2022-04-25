@@ -327,7 +327,7 @@ export default class ComponentFilters extends Vue {
 
   get allTags(): string[] {
     return distinctArrayElements(
-      this.components.flatMap((component) => component.tags ?? [])
+      this.components.flatMap((component) => (component.tags ?? []).map(tag => tag.key))
     )
   }
 
