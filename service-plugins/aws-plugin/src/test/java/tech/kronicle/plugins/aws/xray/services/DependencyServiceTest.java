@@ -184,7 +184,7 @@ public class DependencyServiceTest {
                 new AwsConfig(
                         profiles,
                         null,
-                        null,
+                        null, null,
                         null, null,
                         null
                 )

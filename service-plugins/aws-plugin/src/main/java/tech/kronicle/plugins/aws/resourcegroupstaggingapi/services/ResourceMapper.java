@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import tech.kronicle.plugins.aws.config.AwsConfig;
 import tech.kronicle.plugins.aws.constants.TagKeys;
 import tech.kronicle.plugins.aws.resourcegroupstaggingapi.models.ResourceGroupsTaggingApiResource;
+import tech.kronicle.plugins.aws.resourcegroupstaggingapi.models.ResourceGroupsTaggingApiTag;
 import tech.kronicle.plugins.aws.utils.AnalysedArn;
 import tech.kronicle.sdk.constants.DependencyTypeIds;
 import tech.kronicle.sdk.models.Alias;
@@ -13,6 +14,7 @@ import tech.kronicle.sdk.models.ComponentState;
 import tech.kronicle.sdk.models.ComponentTeam;
 import tech.kronicle.sdk.models.DependencyDirection;
 import tech.kronicle.sdk.models.EnvironmentState;
+import tech.kronicle.sdk.models.Tag;
 
 import javax.inject.Inject;
 import java.util.ArrayList;
@@ -51,6 +53,7 @@ public class ResourceMapper {
                     .aliases(aliases)
                     .name(name)
                     .typeId(toKebabCase(analysedArn.getDerivedResourceType()))
+                    .tags(mapTags(resource))
                     .teams(getTeam(resource))
                     .description(getDescription(resource, analysedArn, aliases))
                     .platformId("aws-managed-service")
@@ -66,6 +69,23 @@ public class ResourceMapper {
                     )
                     .build();
         };
+    }
+
+    private List<Tag> mapTags(ResourceGroupsTaggingApiResource resource) {
+        if (config.getCopyResourceTagsToComponents()) {
+            return resource.getTags().stream()
+                    .map(this::mapTag)
+                    .collect(toUnmodifiableList());
+        } else {
+            return List.of();
+        }
+    }
+
+    private Tag mapTag(ResourceGroupsTaggingApiTag resourceGroupsTaggingApiTag) {
+        return Tag.builder()
+                .key(toKebabCase(resourceGroupsTaggingApiTag.getKey()))
+                .value(resourceGroupsTaggingApiTag.getValue())
+                .build();
     }
 
     private List<Alias> getAliases(AnalysedArn analysedArn, String name) {

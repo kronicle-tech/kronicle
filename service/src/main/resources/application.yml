@@ -65,6 +65,7 @@ plugins:
   aws:
     enabled: false
     detailed-component-descriptions: false
+    copy-resource-tags-to-components: true
     create-dependencies-for-resources: true
     load-xray-trace-data: true
     tag-keys:

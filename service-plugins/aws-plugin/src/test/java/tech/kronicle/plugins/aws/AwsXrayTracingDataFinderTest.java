@@ -96,6 +96,7 @@ public class AwsXrayTracingDataFinderTest {
                         null,
                         null,
                         null,
+                        null,
                         loadXrayTraceData,
                         null,
                         null

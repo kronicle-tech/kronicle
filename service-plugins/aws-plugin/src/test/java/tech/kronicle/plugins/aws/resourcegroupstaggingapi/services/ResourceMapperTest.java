@@ -1,6 +1,7 @@
 package tech.kronicle.plugins.aws.resourcegroupstaggingapi.services;
 
 import lombok.RequiredArgsConstructor;
+import lombok.With;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -17,6 +18,7 @@ import tech.kronicle.sdk.models.ComponentState;
 import tech.kronicle.sdk.models.ComponentTeam;
 import tech.kronicle.sdk.models.DependencyDirection;
 import tech.kronicle.sdk.models.EnvironmentState;
+import tech.kronicle.sdk.models.Tag;
 
 import java.util.List;
 import java.util.stream.Stream;
@@ -96,6 +98,15 @@ public class ResourceMapperTest {
                         ))
                         .name("Test name")
                         .typeId("aws-ec2-security-group")
+                        .tags(prepareExpectedTags(
+                                mappingConfig,
+                                List.of(
+                                        Tag.builder().key("name").value("Test name").build(),
+                                        Tag.builder().key("test-team-tag-key").value("test-team-id").build(),
+                                        Tag.builder().key("test-component-tag-key").value("test-component-id").build(),
+                                        Tag.builder().key("test-tag-key-1").value("test-tag-value-1").build()
+                                )
+                        ))
                         .teams(List.of(
                                 ComponentTeam.builder()
                                         .teamId("test-team-id")
@@ -133,20 +144,10 @@ public class ResourceMapperTest {
     }
 
     private ResourceMapper createUnderTest() {
-        return createUnderTest(false, false);
+        return createUnderTest(MappingConfig.builder().build());
     }
 
     private ResourceMapper createUnderTest(MappingConfig mappingConfig) {
-        return createUnderTest(
-                mappingConfig.detailedComponentDescriptions,
-                mappingConfig.createDependenciesForResources
-        );
-    }
-
-    private ResourceMapper createUnderTest(
-            boolean detailedComponentDescriptions,
-            boolean createDependenciesForResources
-    ) {
         return new ResourceMapper(
                 new AwsConfig(
                         List.of(
@@ -157,9 +158,11 @@ public class ResourceMapperTest {
                                         TEST_ENVIRONMENT_ID
                                 )
                         ),
-                        detailedComponentDescriptions,
-                        createDependenciesForResources,
-                        null, new AwsTagKeysConfig("test-component-tag-key", "test-team-tag-key"),
+                        mappingConfig.detailedComponentDescriptions,
+                        mappingConfig.copyResourceTagsToComponents,
+                        mappingConfig.createDependenciesForResources,
+                        null,
+                        new AwsTagKeysConfig("test-component-tag-key", "test-team-tag-key"),
                         null
                 )
         );
@@ -167,22 +170,67 @@ public class ResourceMapperTest {
 
     public static Stream<MappingConfig> provideMappingConfig() {
         return Stream.of(
-                new MappingConfig(false, false),
-                new MappingConfig(false, true),
-                new MappingConfig(true, false),
-                new MappingConfig(true, true)
+                MappingConfig.builder().build(),
+                MappingConfig.builder().detailedComponentDescriptions().build(),
+                MappingConfig.builder().copyResourceTagsToComponents().build(),
+                MappingConfig.builder().createDependenciesForResources().build(),
+                MappingConfig.builder()
+                        .detailedComponentDescriptions()
+                        .copyResourceTagsToComponents()
+                        .createDependenciesForResources()
+                        .build()
         );
     }
 
     @RequiredArgsConstructor
+    @With
     private static class MappingConfig {
 
         private final boolean detailedComponentDescriptions;
+        private final boolean copyResourceTagsToComponents;
         private final boolean createDependenciesForResources;
+
+        private static MappingConfigBuilder builder() {
+            return new MappingConfigBuilder();
+        }
+
+        private static class MappingConfigBuilder {
+
+            private boolean detailedComponentDescriptions;
+            private boolean copyResourceTagsToComponents;
+            private boolean createDependenciesForResources;
+
+            public MappingConfigBuilder detailedComponentDescriptions() {
+                detailedComponentDescriptions = true;
+                return this;
+            }
+
+            public MappingConfigBuilder copyResourceTagsToComponents() {
+                copyResourceTagsToComponents = true;
+                return this;
+            }
+
+            public MappingConfigBuilder createDependenciesForResources() {
+                createDependenciesForResources = true;
+                return this;
+            }
+
+            public MappingConfig build() {
+                return new MappingConfig(
+                        detailedComponentDescriptions,
+                        copyResourceTagsToComponents,
+                        createDependenciesForResources
+                );
+            }
+        }
     }
 
-    private String prepareExpectedDescription(MappingConfig mappingConfig, String value) {
-        return mappingConfig.detailedComponentDescriptions ? value : "";
+    private String prepareExpectedDescription(MappingConfig mappingConfig, String description) {
+        return mappingConfig.detailedComponentDescriptions ? description : "";
+    }
+
+    private List<Tag> prepareExpectedTags(MappingConfig mappingConfig, List<Tag> tags) {
+        return mappingConfig.copyResourceTagsToComponents ? tags : List.of();
     }
 
     private List<ComponentDependency> prepareExpectedDependencies(MappingConfig mappingConfig) {
