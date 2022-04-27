@@ -28,6 +28,7 @@ import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.catchThrowable;
+import static tech.kronicle.plugins.gitlab.client.RepoScenario.NO_DEFAULT_BRANCH;
 import static tech.kronicle.utils.HttpClientFactory.createHttpClient;
 
 public class GitLabClientTest {
@@ -80,7 +81,7 @@ public class GitLabClientTest {
         assertThat(returnValue).containsExactly(
                 createRepo(1, RepoScenario.NORMAL),
                 createRepo(2, RepoScenario.NORMAL),
-                createRepo(3, RepoScenario.NO_DEFAULT_BRANCH),
+                createRepo(3, NO_DEFAULT_BRANCH),
                 createRepo(4, RepoScenario.NORMAL),
                 createRepo(5, RepoScenario.NO_KRONICLE_METADATA_FILE),
                 createRepo(6, RepoScenario.NORMAL),
@@ -120,9 +121,14 @@ public class GitLabClientTest {
     private Repo createRepo(int repoNumber, RepoScenario repoScenario) {
         return Repo.builder()
                 .url("https://example.com/repo-" + repoNumber + "-" + repoScenario + ".git")
+                .defaultBranch(getDefaultBranch(repoNumber, repoScenario))
                 .hasComponentMetadataFile(getHasComponentMetadataFile(repoScenario))
                 .state(createRepoState(repoNumber, repoScenario))
                 .build();
+    }
+
+    private String getDefaultBranch(int repoNumber, RepoScenario repoScenario) {
+        return repoScenario == NO_DEFAULT_BRANCH ? null : "branch-" + repoNumber;
     }
 
     private boolean getHasComponentMetadataFile(RepoScenario repoScenario) {
@@ -136,7 +142,7 @@ public class GitLabClientTest {
     }
 
     private ComponentState createRepoState(int repoNumber, RepoScenario repoScenario) {
-        if (repoScenario == RepoScenario.NO_DEFAULT_BRANCH ||
+        if (repoScenario == NO_DEFAULT_BRANCH ||
                 repoScenario == RepoScenario.PIPELINES_FORBIDDEN) {
             return null;
         }

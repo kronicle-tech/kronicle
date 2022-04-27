@@ -38,8 +38,14 @@ public class BitbucketServerRepoFinderTest {
     public void findShouldCallClientAndReturnApiRepos() {
         // Given
         List<Repo> repos = List.of(
-                new Repo("https://example.com/repo-1.git", null, true, null),
-                new Repo("https://example.com/repo-2.git", null, false, null)
+                Repo.builder()
+                        .url("https://example.com/repo-1.git")
+                        .hasComponentMetadataFile(true)
+                        .build(),
+                Repo.builder()
+                        .url("https://example.com/repo-2.git")
+                        .hasComponentMetadataFile(false)
+                        .build()
         );
         when(mockClient.getNormalRepos()).thenReturn(repos);
 

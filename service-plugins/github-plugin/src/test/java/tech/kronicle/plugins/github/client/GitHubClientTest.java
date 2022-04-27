@@ -420,6 +420,7 @@ public class GitHubClientTest {
         return Repo.builder()
                 .url("https://github.com/" + scenarioName + "/test-repo-" + repoNumber + ".git")
                 .description("test-repo-description-" + repoNumber)
+                .defaultBranch("test-default-branch")
                 .hasComponentMetadataFile(hasComponentMetadataFile)
                 .state(ComponentState.builder()
                         .environments(List.of(

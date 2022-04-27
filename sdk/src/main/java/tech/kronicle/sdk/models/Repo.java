@@ -21,6 +21,7 @@ public class Repo implements ObjectWithReference {
     @NotBlank
     String url;
     String description;
+    String defaultBranch;
     @NotNull
     Boolean hasComponentMetadataFile;
     @Valid
