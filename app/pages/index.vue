@@ -79,7 +79,7 @@
       </b-card>
 
       <b-card
-        header="Scanners"
+        header="Component Types"
         header-bg-variant="info"
         header-class="lead"
         no-body
@@ -88,42 +88,24 @@
           <b-list-group-item
             class="d-flex justify-content-between align-items-center text-muted"
           >
-            Scanners dynamically add data to Kronicle at runtime:
-          </b-list-group-item>
-
-          <b-list-group-item v-for="scanner in scanners" :key="scanner.id">
-            <b class="scanner-id text-info">{{ scanner.id }}</b>
-            <br />
-            <Markdown :markdown="scanner.description" class="description" />
-          </b-list-group-item>
-        </b-list-group>
-      </b-card>
-
-      <b-card
-        header="Tests"
-        header-bg-variant="info"
-        header-class="lead"
-        no-body
-      >
-        <b-list-group flush>
-          <b-list-group-item
-            class="d-flex justify-content-between align-items-center text-muted"
-          >
-            Tests evaluate the data associated with components in Kronicle and
-            return outcomes of pass, fail and not applicable
+            There are the following types of components in Kronicle:
           </b-list-group-item>
 
           <b-list-group-item
-            v-for="test in tests"
-            :key="test.id"
+            v-for="componentTypeCount in componentTypeCounts"
+            :key="componentTypeCount.item"
             :to="{
-              name: 'tests-testId',
-              params: { testId: test.id },
+              name: 'all-components',
+              query: { componentTypeId: componentTypeCount.item },
             }"
+            class="d-flex justify-content-between align-items-center"
           >
-            <b class="test-id text-info">{{ test.id }}</b>
-            <br />
-            <Markdown :markdown="test.description" class="description" />
+            <b class="component-type">{{ componentTypeCount.item }}</b>
+            <span class="lead">
+              <b-badge variant="primary" pill>
+                {{ componentTypeCount.count }}
+              </b-badge>
+            </span>
           </b-list-group-item>
         </b-list-group>
       </b-card>
@@ -193,7 +175,7 @@
       </b-card>
 
       <b-card
-        header="Component Types"
+        header="Scanners"
         header-bg-variant="info"
         header-class="lead"
         no-body
@@ -202,24 +184,42 @@
           <b-list-group-item
             class="d-flex justify-content-between align-items-center text-muted"
           >
-            There are the following types of components in Kronicle:
+            Scanners dynamically add data to Kronicle at runtime:
+          </b-list-group-item>
+
+          <b-list-group-item v-for="scanner in scanners" :key="scanner.id">
+            <b class="scanner-id text-info">{{ scanner.id }}</b>
+            <br />
+            <Markdown :markdown="scanner.description" class="description" />
+          </b-list-group-item>
+        </b-list-group>
+      </b-card>
+
+      <b-card
+        header="Tests"
+        header-bg-variant="info"
+        header-class="lead"
+        no-body
+      >
+        <b-list-group flush>
+          <b-list-group-item
+            class="d-flex justify-content-between align-items-center text-muted"
+          >
+            Tests evaluate the data associated with components in Kronicle and
+            return outcomes of pass, fail and not applicable
           </b-list-group-item>
 
           <b-list-group-item
-            v-for="componentTypeCount in componentTypeCounts"
-            :key="componentTypeCount.item"
+            v-for="test in tests"
+            :key="test.id"
             :to="{
-              name: 'all-components',
-              query: { componentTypeId: componentTypeCount.item },
+              name: 'tests-testId',
+              params: { testId: test.id },
             }"
-            class="d-flex justify-content-between align-items-center"
           >
-            <b class="component-type">{{ componentTypeCount.item }}</b>
-            <span class="lead">
-              <b-badge variant="primary" pill>
-                {{ componentTypeCount.count }}
-              </b-badge>
-            </span>
+            <b class="test-id text-info">{{ test.id }}</b>
+            <br />
+            <Markdown :markdown="test.description" class="description" />
           </b-list-group-item>
         </b-list-group>
       </b-card>
