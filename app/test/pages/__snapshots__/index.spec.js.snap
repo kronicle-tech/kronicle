@@ -160,7 +160,7 @@ exports[`Index when Kronicle contains information renders the page showing the i
       <div
         class="card-header lead bg-info"
       >
-        Scanners
+        Component Types
       </div>
       <div
         class="list-group list-group-flush"
@@ -169,167 +169,78 @@ exports[`Index when Kronicle contains information renders the page showing the i
           class="list-group-item d-flex justify-content-between align-items-center text-muted"
         >
           
-          Scanners dynamically add data to Kronicle at runtime:
-        
-        </div>
-         
-        <div
-          class="list-group-item"
-        >
-          <b
-            class="scanner-id text-info"
-          >
-            test-scanner-id-1
-          </b>
-           
-          <br />
-           
-          <div
-            class="description"
-          >
-            
-
-            <p>
-              Test Scanner Description 1
-            </p>
-          </div>
-        </div>
-        <div
-          class="list-group-item"
-        >
-          <b
-            class="scanner-id text-info"
-          >
-            test-scanner-id-2
-          </b>
-           
-          <br />
-           
-          <div
-            class="description"
-          >
-            
-
-            <p>
-              Test Scanner Description 2
-            </p>
-          </div>
-        </div>
-        <div
-          class="list-group-item"
-        >
-          <b
-            class="scanner-id text-info"
-          >
-            test-scanner-id-3
-          </b>
-           
-          <br />
-           
-          <div
-            class="description"
-          >
-            
-
-            <p>
-              Test Scanner Description 3
-            </p>
-          </div>
-        </div>
-      </div>
-      <!---->
-      <!---->
-    </div>
-     
-    <div
-      class="card"
-    >
-      <!---->
-      <div
-        class="card-header lead bg-info"
-      >
-        Tests
-      </div>
-      <div
-        class="list-group list-group-flush"
-      >
-        <div
-          class="list-group-item d-flex justify-content-between align-items-center text-muted"
-        >
-          
-          Tests evaluate the data associated with components in Kronicle and
-          return outcomes of pass, fail and not applicable
+          There are the following types of components in Kronicle:
         
         </div>
          
         <a
-          class="list-group-item list-group-item-action"
-          href="#"
+          class="list-group-item d-flex justify-content-between align-items-center list-group-item-action"
+          href="?componentTypeId=test-component-type-id-1"
           target="_self"
         >
           <b
-            class="test-id text-info"
+            class="component-type"
           >
-            test-test-id-1
+            test-component-type-id-1
           </b>
            
-          <br />
-           
-          <div
-            class="description"
+          <span
+            class="lead"
           >
+            <span
+              class="badge badge-primary badge-pill"
+            >
+              
+              1
             
-
-            <p>
-              Test Test Description 1
-            </p>
-          </div>
+            </span>
+          </span>
         </a>
         <a
-          class="list-group-item list-group-item-action"
-          href="#"
+          class="list-group-item d-flex justify-content-between align-items-center list-group-item-action"
+          href="?componentTypeId=test-component-type-id-2"
           target="_self"
         >
           <b
-            class="test-id text-info"
+            class="component-type"
           >
-            test-test-id-2
+            test-component-type-id-2
           </b>
            
-          <br />
-           
-          <div
-            class="description"
+          <span
+            class="lead"
           >
+            <span
+              class="badge badge-primary badge-pill"
+            >
+              
+              1
             
-
-            <p>
-              Test Test Description 2
-            </p>
-          </div>
+            </span>
+          </span>
         </a>
         <a
-          class="list-group-item list-group-item-action"
-          href="#"
+          class="list-group-item d-flex justify-content-between align-items-center list-group-item-action"
+          href="?componentTypeId=test-component-type-id-3"
           target="_self"
         >
           <b
-            class="test-id text-info"
+            class="component-type"
           >
-            test-test-id-3
+            test-component-type-id-3
           </b>
            
-          <br />
-           
-          <div
-            class="description"
+          <span
+            class="lead"
           >
+            <span
+              class="badge badge-primary badge-pill"
+            >
+              
+              1
             
-
-            <p>
-              Test Test Description 3
-            </p>
-          </div>
+            </span>
+          </span>
         </a>
       </div>
       <!---->
@@ -600,7 +511,7 @@ exports[`Index when Kronicle contains information renders the page showing the i
       <div
         class="card-header lead bg-info"
       >
-        Component Types
+        Scanners
       </div>
       <div
         class="list-group list-group-flush"
@@ -609,78 +520,167 @@ exports[`Index when Kronicle contains information renders the page showing the i
           class="list-group-item d-flex justify-content-between align-items-center text-muted"
         >
           
-          There are the following types of components in Kronicle:
+          Scanners dynamically add data to Kronicle at runtime:
+        
+        </div>
+         
+        <div
+          class="list-group-item"
+        >
+          <b
+            class="scanner-id text-info"
+          >
+            test-scanner-id-1
+          </b>
+           
+          <br />
+           
+          <div
+            class="description"
+          >
+            
+
+            <p>
+              Test Scanner Description 1
+            </p>
+          </div>
+        </div>
+        <div
+          class="list-group-item"
+        >
+          <b
+            class="scanner-id text-info"
+          >
+            test-scanner-id-2
+          </b>
+           
+          <br />
+           
+          <div
+            class="description"
+          >
+            
+
+            <p>
+              Test Scanner Description 2
+            </p>
+          </div>
+        </div>
+        <div
+          class="list-group-item"
+        >
+          <b
+            class="scanner-id text-info"
+          >
+            test-scanner-id-3
+          </b>
+           
+          <br />
+           
+          <div
+            class="description"
+          >
+            
+
+            <p>
+              Test Scanner Description 3
+            </p>
+          </div>
+        </div>
+      </div>
+      <!---->
+      <!---->
+    </div>
+     
+    <div
+      class="card"
+    >
+      <!---->
+      <div
+        class="card-header lead bg-info"
+      >
+        Tests
+      </div>
+      <div
+        class="list-group list-group-flush"
+      >
+        <div
+          class="list-group-item d-flex justify-content-between align-items-center text-muted"
+        >
+          
+          Tests evaluate the data associated with components in Kronicle and
+          return outcomes of pass, fail and not applicable
         
         </div>
          
         <a
-          class="list-group-item d-flex justify-content-between align-items-center list-group-item-action"
-          href="?componentTypeId=test-component-type-id-1"
+          class="list-group-item list-group-item-action"
+          href="#"
           target="_self"
         >
           <b
-            class="component-type"
+            class="test-id text-info"
           >
-            test-component-type-id-1
+            test-test-id-1
           </b>
            
-          <span
-            class="lead"
+          <br />
+           
+          <div
+            class="description"
           >
-            <span
-              class="badge badge-primary badge-pill"
-            >
-              
-              1
             
-            </span>
-          </span>
+
+            <p>
+              Test Test Description 1
+            </p>
+          </div>
         </a>
         <a
-          class="list-group-item d-flex justify-content-between align-items-center list-group-item-action"
-          href="?componentTypeId=test-component-type-id-2"
+          class="list-group-item list-group-item-action"
+          href="#"
           target="_self"
         >
           <b
-            class="component-type"
+            class="test-id text-info"
           >
-            test-component-type-id-2
+            test-test-id-2
           </b>
            
-          <span
-            class="lead"
+          <br />
+           
+          <div
+            class="description"
           >
-            <span
-              class="badge badge-primary badge-pill"
-            >
-              
-              1
             
-            </span>
-          </span>
+
+            <p>
+              Test Test Description 2
+            </p>
+          </div>
         </a>
         <a
-          class="list-group-item d-flex justify-content-between align-items-center list-group-item-action"
-          href="?componentTypeId=test-component-type-id-3"
+          class="list-group-item list-group-item-action"
+          href="#"
           target="_self"
         >
           <b
-            class="component-type"
+            class="test-id text-info"
           >
-            test-component-type-id-3
+            test-test-id-3
           </b>
            
-          <span
-            class="lead"
+          <br />
+           
+          <div
+            class="description"
           >
-            <span
-              class="badge badge-primary badge-pill"
-            >
-              
-              1
             
-            </span>
-          </span>
+
+            <p>
+              Test Test Description 3
+            </p>
+          </div>
         </a>
       </div>
       <!---->
@@ -850,7 +850,7 @@ exports[`Index when Kronicle contains no information renders the page with no in
       <div
         class="card-header lead bg-info"
       >
-        Scanners
+        Component Types
       </div>
       <div
         class="list-group list-group-flush"
@@ -859,33 +859,7 @@ exports[`Index when Kronicle contains no information renders the page with no in
           class="list-group-item d-flex justify-content-between align-items-center text-muted"
         >
           
-          Scanners dynamically add data to Kronicle at runtime:
-        
-        </div>
-         
-      </div>
-      <!---->
-      <!---->
-    </div>
-     
-    <div
-      class="card"
-    >
-      <!---->
-      <div
-        class="card-header lead bg-info"
-      >
-        Tests
-      </div>
-      <div
-        class="list-group list-group-flush"
-      >
-        <div
-          class="list-group-item d-flex justify-content-between align-items-center text-muted"
-        >
-          
-          Tests evaluate the data associated with components in Kronicle and
-          return outcomes of pass, fail and not applicable
+          There are the following types of components in Kronicle:
         
         </div>
          
@@ -950,7 +924,7 @@ exports[`Index when Kronicle contains no information renders the page with no in
       <div
         class="card-header lead bg-info"
       >
-        Component Types
+        Scanners
       </div>
       <div
         class="list-group list-group-flush"
@@ -959,7 +933,33 @@ exports[`Index when Kronicle contains no information renders the page with no in
           class="list-group-item d-flex justify-content-between align-items-center text-muted"
         >
           
-          There are the following types of components in Kronicle:
+          Scanners dynamically add data to Kronicle at runtime:
+        
+        </div>
+         
+      </div>
+      <!---->
+      <!---->
+    </div>
+     
+    <div
+      class="card"
+    >
+      <!---->
+      <div
+        class="card-header lead bg-info"
+      >
+        Tests
+      </div>
+      <div
+        class="list-group list-group-flush"
+      >
+        <div
+          class="list-group-item d-flex justify-content-between align-items-center text-muted"
+        >
+          
+          Tests evaluate the data associated with components in Kronicle and
+          return outcomes of pass, fail and not applicable
         
         </div>
          
