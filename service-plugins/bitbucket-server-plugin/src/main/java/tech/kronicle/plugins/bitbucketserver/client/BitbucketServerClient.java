@@ -123,7 +123,6 @@ public class BitbucketServerClient {
                 repo,
                 Repo.builder()
                         .url(getHttpCloneLink(repo).getHref())
-                        .defaultBranch(repo.)
                         .build()
         );
     }
