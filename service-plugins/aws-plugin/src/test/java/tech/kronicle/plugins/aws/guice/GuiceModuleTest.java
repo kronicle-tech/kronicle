@@ -73,7 +73,7 @@ public class GuiceModuleTest {
                 bind(AwsConfig.class).toInstance(new AwsConfig(
                         null,
                         null,
-                        null,
+                        null, null,
                         null, new AwsTagKeysConfig(
                                 "test-component-tag-key",
                                 null
