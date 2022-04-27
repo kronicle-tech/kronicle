@@ -221,11 +221,10 @@ public class GitHubRepoFinderTest {
     }
 
     private Repo createRepo(int repoNumber, String repoSuffix, boolean hasComponentMetadataFile) {
-        return new Repo(
-                "https://example.com/repo-" + repoNumber + repoSuffix + ".git",
-                "test-repo-description-" + repoNumber + repoSuffix,
-                hasComponentMetadataFile,
-                null
-        );
+        return Repo.builder()
+                .url("https://example.com/repo-" + repoNumber + repoSuffix + ".git")
+                .description("test-repo-description-" + repoNumber + repoSuffix)
+                .hasComponentMetadataFile(hasComponentMetadataFile)
+                .build();
     }
 }

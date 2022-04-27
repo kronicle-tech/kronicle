@@ -121,12 +121,10 @@ public class BitbucketServerClient {
     private BitBucketServerRepoAndRepo mapRepoToApiRepo(BitbucketServerRepo repo) {
         return new BitBucketServerRepoAndRepo(
                 repo,
-                new Repo(
-                        getHttpCloneLink(repo).getHref(),
-                        null,
-                        null,
-                        null
-                )
+                Repo.builder()
+                        .url(getHttpCloneLink(repo).getHref())
+                        .defaultBranch(repo.)
+                        .build()
         );
     }
 

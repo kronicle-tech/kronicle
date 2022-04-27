@@ -116,6 +116,7 @@ public class GitHubClient {
     return gitHubRepo -> Repo.builder()
             .url(gitHubRepo.getClone_url())
             .description(gitHubRepo.getDescription())
+            .defaultBranch(gitHubRepo.getDefault_branch())
             .hasComponentMetadataFile(hasComponentMetadataFile(accessToken, gitHubRepo))
             .state(getState(accessToken, gitHubRepo))
             .build();
