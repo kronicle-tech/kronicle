@@ -9,6 +9,7 @@ import com.github.tomakehurst.wiremock.client.ResponseDefinitionBuilder;
 import lombok.Getter;
 import lombok.SneakyThrows;
 import tech.kronicle.plugins.gitlab.config.GitLabAccessTokenConfig;
+import tech.kronicle.plugins.gitlab.testutils.RepoScenario;
 
 import java.util.ArrayList;
 import java.util.List;

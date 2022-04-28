@@ -1,4 +1,4 @@
-package tech.kronicle.plugins.gitlab.client;
+package tech.kronicle.plugins.gitlab.testutils;
 
 public enum RepoScenario {
     NORMAL,

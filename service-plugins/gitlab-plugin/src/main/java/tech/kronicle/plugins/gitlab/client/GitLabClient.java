@@ -6,25 +6,17 @@ import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import tech.kronicle.pluginapi.constants.KronicleMetadataFilePaths;
-import tech.kronicle.plugins.gitlab.GitLabPlugin;
 import tech.kronicle.plugins.gitlab.config.GitLabAccessTokenConfig;
 import tech.kronicle.plugins.gitlab.config.GitLabConfig;
 import tech.kronicle.plugins.gitlab.config.GitLabGroupConfig;
 import tech.kronicle.plugins.gitlab.config.GitLabUserConfig;
 import tech.kronicle.plugins.gitlab.constants.GitLabApiHeaders;
 import tech.kronicle.plugins.gitlab.constants.GitLabApiPaths;
+import tech.kronicle.plugins.gitlab.models.EnrichedGitLabRepo;
 import tech.kronicle.plugins.gitlab.models.api.GitLabJob;
 import tech.kronicle.plugins.gitlab.models.api.GitLabPipeline;
 import tech.kronicle.plugins.gitlab.models.api.GitLabRepo;
-import tech.kronicle.plugins.gitlab.models.api.GitLabUser;
 import tech.kronicle.plugins.gitlab.models.api.PagedResource;
-import tech.kronicle.sdk.models.CheckState;
-import tech.kronicle.sdk.models.ComponentState;
-import tech.kronicle.sdk.models.ComponentStateCheckStatus;
-import tech.kronicle.sdk.models.EnvironmentPluginState;
-import tech.kronicle.sdk.models.EnvironmentState;
-import tech.kronicle.sdk.models.Link;
-import tech.kronicle.sdk.models.Repo;
 import tech.kronicle.utils.HttpStatuses;
 import tech.kronicle.utils.UriVariablesBuilder;
 
@@ -34,8 +26,6 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.nio.charset.StandardCharsets;
-import java.time.Clock;
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -46,7 +36,6 @@ import java.util.stream.Stream;
 import static java.util.Objects.isNull;
 import static java.util.Objects.nonNull;
 import static java.util.stream.Collectors.toUnmodifiableList;
-import static tech.kronicle.common.CaseUtils.toTitleCase;
 import static tech.kronicle.utils.HttpClientFactory.createHttpRequestBuilder;
 import static tech.kronicle.utils.UriTemplateUtils.expandUriTemplate;
 
@@ -57,18 +46,28 @@ public class GitLabClient {
   private final HttpClient httpClient;
   private final ObjectMapper objectMapper;
   private final GitLabConfig config;
-  private final Clock clock;
 
-  public List<Repo> getRepos(String baseUrl, GitLabAccessTokenConfig accessToken) {
+  public List<EnrichedGitLabRepo> getRepos(String baseUrl, GitLabAccessTokenConfig accessToken) {
     return getRepos(accessToken, baseUrl, getAllProjectsUri());
   }
 
-  public List<Repo> getRepos(String baseUrl, GitLabUserConfig user) {
+  public List<EnrichedGitLabRepo> getRepos(String baseUrl, GitLabUserConfig user) {
     return getRepos(user.getAccessToken(), baseUrl, getUserProjectsUri(user));
   }
 
-  public List<Repo> getRepos(String baseUrl, GitLabGroupConfig group) {
+  public List<EnrichedGitLabRepo> getRepos(String baseUrl, GitLabGroupConfig group) {
     return getRepos(group.getAccessToken(), baseUrl, getGroupProjectsUri(group));
+  }
+
+  public List<GitLabJob> getJobs(
+          EnrichedGitLabRepo repo
+  ) {
+    List<GitLabPipeline> pipelines = getProjectPipelinesForDefaultBranch(repo);
+    if (pipelines.isEmpty()) {
+      return List.of();
+    }
+    GitLabPipeline latestPipeline = pipelines.get(0);
+    return getProjectJobsForPipeline(repo, latestPipeline.getId());
   }
 
   private String getAllProjectsUri() {
@@ -83,10 +82,19 @@ public class GitLabClient {
     return expandUriTemplate(GitLabApiPaths.GROUP_PROJECTS, Map.of("groupPath", group.getPath()));
   }
 
-  private List<Repo> getRepos(GitLabAccessTokenConfig accessToken, String baseUrl, String uri) {
+  private List<EnrichedGitLabRepo> getRepos(GitLabAccessTokenConfig accessToken, String baseUrl, String uri) {
     return getAllPagedResources(accessToken, baseUrl + uri, new TypeReference<List<GitLabRepo>>() {})
-            .map(mapRepo(accessToken, baseUrl))
+            .map(enrichRepo(baseUrl, accessToken))
             .collect(toUnmodifiableList());
+  }
+
+  private Function<GitLabRepo, EnrichedGitLabRepo> enrichRepo(String baseUrl, GitLabAccessTokenConfig accessToken) {
+    return repo -> EnrichedGitLabRepo.builder()
+            .repo(repo)
+            .baseUrl(baseUrl)
+            .accessToken(accessToken)
+            .hasComponentMetadataFile(hasComponentMetadataFile(accessToken, baseUrl, repo))
+            .build();
   }
 
   private <T> Stream<T> getAllPagedResources(
@@ -102,30 +110,14 @@ public class GitLabClient {
             .flatMap(page -> page.getItems().stream());
   }
 
-  private Function<GitLabRepo, Repo> mapRepo(
-          GitLabAccessTokenConfig accessToken,
-          String baseUrl
-  ) {
-    return repo -> {
-      Repo.RepoBuilder repoBuilder = Repo.builder()
-              .url(repo.getHttp_url_to_repo());
-      if (nonNull(repo.getDefault_branch())) {
-        repoBuilder.defaultBranch(repo.getDefault_branch())
-                .hasComponentMetadataFile(hasComponentMetadataFile(accessToken, baseUrl, repo))
-                .state(getState(accessToken, baseUrl, repo));
-      } else {
-        repoBuilder.hasComponentMetadataFile(false);
-      }
-      return repoBuilder
-              .build();
-    };
-  }
-
   private boolean hasComponentMetadataFile(
           GitLabAccessTokenConfig accessToken,
           String baseUrl,
           GitLabRepo repo
   ) {
+    if (isNull(repo.getDefault_branch())) {
+      return false;
+    }
     return KronicleMetadataFilePaths.ALL.stream().anyMatch(kronicleMetadataFilePath -> {
       Map<String, String> uriVariables = UriVariablesBuilder.builder()
               .addUriVariable("projectId", repo.getId())
@@ -139,110 +131,16 @@ public class GitLabClient {
     });
   }
 
-  private ComponentState getState(
-          GitLabAccessTokenConfig accessToken,
-          String baseUrl,
-          GitLabRepo repo
-  ) {
-    LocalDateTime now = LocalDateTime.now(clock);
-    List<GitLabPipeline> pipelines = getProjectPipelinesForDefaultBranch(accessToken, baseUrl, repo);
-    if (pipelines.isEmpty()) {
-      return null;
-    }
-    GitLabPipeline latestPipeline = pipelines.get(0);
-    List<GitLabJob> jobs = getProjectJobsForPipeline(accessToken, baseUrl, repo, latestPipeline.getId());
-    if (jobs.isEmpty()) {
-      return null;
-    }
-    return mapState(jobs, now);
-  }
-
-  private ComponentState mapState(List<GitLabJob> jobs, LocalDateTime now) {
-    return ComponentState.builder()
-            .environments(List.of(
-                    EnvironmentState.builder()
-                            .id(config.getEnvironmentId())
-                            .plugins(List.of(
-                                    EnvironmentPluginState.builder()
-                                            .id(GitLabPlugin.ID)
-                                            .checks(mapChecks(jobs, now))
-                                            .build()
-                            ))
-                            .build()
-            ))
-            .build();
-  }
-
-  private List<CheckState> mapChecks(List<GitLabJob> jobs, LocalDateTime now) {
-    return jobs.stream()
-            .filter(this::excludeCertainJobStatuses)
-            .map(mapCheck(now))
-            .collect(toUnmodifiableList());
-  }
-
-  private boolean excludeCertainJobStatuses(GitLabJob gitLabJob) {
-    switch (gitLabJob.getStatus()) {
-      case "created":
-      case "pending":
-      case "manual":
-      case "canceled":
-      case "skipped":
-        return false;
-      default:
-        return true;
-    }
-  }
-
-  private Function<GitLabJob, CheckState> mapCheck(LocalDateTime now) {
-    return job -> CheckState.builder()
-            .name(job.getName())
-            .description("GitLab Job")
-            .status(mapCheckStatus(job))
-            .statusMessage(toTitleCase(job.getStatus()))
-            .links(createWorkflowRunLinks(job))
-            .updateTimestamp(now)
-            .build();
-  }
-
-  private ComponentStateCheckStatus mapCheckStatus(GitLabJob job) {
-    switch (job.getStatus()) {
-      case "running":
-        return ComponentStateCheckStatus.PENDING;
-      case "failed":
-        return ComponentStateCheckStatus.CRITICAL;
-      case "success":
-        return ComponentStateCheckStatus.OK;
-      default:
-        log.warn("Unrecognised job status \"{}\"", job.getStatus());
-        return ComponentStateCheckStatus.UNKNOWN;
-    }
-  }
-
-  private List<Link> createWorkflowRunLinks(GitLabJob job) {
-    if (isNull(job.getWeb_url())) {
-      return List.of();
-    }
-
-    return List.of(
-            Link.builder()
-                    .url(job.getWeb_url())
-                    .description("GitLab Job")
-                    .build()
-    );
-  }
-
   private List<GitLabPipeline> getProjectPipelinesForDefaultBranch(
-          GitLabAccessTokenConfig accessToken,
-          String baseUrl,
-          GitLabRepo repo
+          EnrichedGitLabRepo repo
   ) {
     Map<String, String> uriVariables = UriVariablesBuilder.builder()
-              .addUriVariable("projectId", repo.getId())
-              .addUriVariable("defaultBranch", repo.getDefault_branch())
+              .addUriVariable("projectId", repo.getRepo().getId())
+              .addUriVariable("defaultBranch", repo.getRepo().getDefault_branch())
               .build();
     PagedResource<GitLabPipeline> pagedResource = getPagedResource(
-            accessToken,
-            expandUriTemplate(baseUrl + GitLabApiPaths.PROJECT_PIPELINES_FOR_REF, uriVariables),
+            repo.getAccessToken(),
+            expandUriTemplate(repo.getBaseUrl() + GitLabApiPaths.PROJECT_PIPELINES_FOR_REF, uriVariables),
             1,
             new TypeReference<>() {}
     );
@@ -250,18 +148,16 @@ public class GitLabClient {
   }
 
   private List<GitLabJob> getProjectJobsForPipeline(
-          GitLabAccessTokenConfig accessToken,
-          String baseUrl,
-          GitLabRepo repo,
+          EnrichedGitLabRepo repo,
           long pipelineId
   ) {
     Map<String, String> uriVariables = UriVariablesBuilder.builder()
-            .addUriVariable("projectId", repo.getId())
+            .addUriVariable("projectId", repo.getRepo().getId())
             .addUriVariable("pipelineId", pipelineId)
             .build();
     return getAllPagedResources(
-            accessToken,
-            expandUriTemplate(baseUrl + GitLabApiPaths.PROJECT_JOBS_FOR_PIPELINE, uriVariables),
+            repo.getAccessToken(),
+            expandUriTemplate(repo.getBaseUrl() + GitLabApiPaths.PROJECT_JOBS_FOR_PIPELINE, uriVariables),
             new TypeReference<List<GitLabJob>>() {}
     )
             .collect(toUnmodifiableList());
