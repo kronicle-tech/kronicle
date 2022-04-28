@@ -38,11 +38,11 @@ public final class RepoUtils {
                 .build();
     }
 
-    public static String getDefaultBranch(int repoNumber, RepoScenario repoScenario) {
+    private static String getDefaultBranch(int repoNumber, RepoScenario repoScenario) {
         return repoScenario == NO_DEFAULT_BRANCH ? null : "branch-" + repoNumber;
     }
 
-    public static boolean getHasComponentMetadataFile(RepoScenario repoScenario) {
+    private static boolean getHasComponentMetadataFile(RepoScenario repoScenario) {
         switch (repoScenario) {
             case NO_DEFAULT_BRANCH:
             case NO_KRONICLE_METADATA_FILE:
@@ -52,7 +52,7 @@ public final class RepoUtils {
         }
     }
 
-    public static ComponentState createRepoState(int repoNumber, RepoScenario repoScenario) {
+    private static ComponentState createRepoState(int repoNumber, RepoScenario repoScenario) {
         if (repoScenario == NO_DEFAULT_BRANCH ||
                 repoScenario == RepoScenario.PIPELINES_FORBIDDEN) {
             return null;
@@ -78,7 +78,7 @@ public final class RepoUtils {
                 .build();
     }
 
-    public static CheckState createCheck(int repoNumber, int checkNumber) {
+    private static CheckState createCheck(int repoNumber, int checkNumber) {
         return CheckState.builder()
                 .name("Test name " + repoNumber + " " + checkNumber)
                 .description("GitLab Job")

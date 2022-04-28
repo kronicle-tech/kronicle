@@ -1,20 +1,10 @@
 package tech.kronicle.plugins.gitlab.testutils;
 
 import tech.kronicle.plugins.gitlab.models.api.GitLabRepo;
-import tech.kronicle.sdk.models.Repo;
-
-import java.util.List;
 
 import static tech.kronicle.plugins.gitlab.testutils.RepoScenario.NO_DEFAULT_BRANCH;
 
 public final class GitLabRepoUtils {
-
-    public static List<GitLabRepo> createGitLabRepos() {
-        return List.of(
-                createGitLabRepo(1, 1),
-                createGitLabRepo(1, 2)
-        );
-    }
 
     public static GitLabRepo createGitLabRepo(int repoListNumber, int repoNumber) {
         long id = (repoListNumber * 100L) + repoNumber;
@@ -33,7 +23,7 @@ public final class GitLabRepoUtils {
         );
     }
 
-    public static String getDefaultBranch(int repoNumber, RepoScenario repoScenario) {
+    private static String getDefaultBranch(int repoNumber, RepoScenario repoScenario) {
         return repoScenario == NO_DEFAULT_BRANCH ? null : "branch-" + repoNumber;
     }
 
