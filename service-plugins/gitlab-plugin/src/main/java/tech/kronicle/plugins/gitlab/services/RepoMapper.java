@@ -6,7 +6,6 @@ import tech.kronicle.plugins.gitlab.GitLabPlugin;
 import tech.kronicle.plugins.gitlab.config.GitLabConfig;
 import tech.kronicle.plugins.gitlab.models.EnrichedGitLabRepo;
 import tech.kronicle.plugins.gitlab.models.api.GitLabJob;
-import tech.kronicle.plugins.gitlab.models.api.GitLabRepo;
 import tech.kronicle.sdk.models.CheckState;
 import tech.kronicle.sdk.models.ComponentState;
 import tech.kronicle.sdk.models.ComponentStateCheckStatus;
@@ -21,7 +20,6 @@ import java.util.List;
 import java.util.function.Function;
 
 import static java.util.Objects.isNull;
-import static java.util.Objects.nonNull;
 import static java.util.stream.Collectors.toUnmodifiableList;
 import static tech.kronicle.common.CaseUtils.toTitleCase;
 

@@ -102,6 +102,7 @@ plugins:
     project-page-size: 100
     environment-id: ci
     timeout: 30s
+    repos-cache-ttl: 1h
 
   gradle:
     enabled: true

@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import tech.kronicle.plugins.gitlab.GitLabRepoFinder;
 import tech.kronicle.plugins.gitlab.client.GitLabClient;
 import tech.kronicle.plugins.gitlab.config.GitLabAccessTokenConfig;
 import tech.kronicle.plugins.gitlab.config.GitLabConfig;
@@ -11,6 +12,8 @@ import tech.kronicle.plugins.gitlab.config.GitLabGroupConfig;
 import tech.kronicle.plugins.gitlab.config.GitLabHostConfig;
 import tech.kronicle.plugins.gitlab.config.GitLabUserConfig;
 import tech.kronicle.plugins.gitlab.models.EnrichedGitLabRepo;
+import tech.kronicle.plugins.gitlab.models.api.GitLabJob;
+import tech.kronicle.sdk.models.Repo;
 
 import java.time.Duration;
 import java.util.Collection;
@@ -22,6 +25,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.when;
 import static tech.kronicle.plugins.gitlab.testutils.EnrichedGitLabRepoUtils.createEnrichedGitLabRepo;
 import static tech.kronicle.plugins.gitlab.testutils.EnrichedGitLabRepoUtils.createEnrichedGitLabRepos;
+import static tech.kronicle.plugins.gitlab.testutils.GitLabJobUtils.createGitLabJobs;
+import static tech.kronicle.plugins.gitlab.testutils.RepoUtils.createRepos;
 
 @ExtendWith(MockitoExtension.class)
 public class RepoFetcherTest {
@@ -50,7 +55,7 @@ public class RepoFetcherTest {
     private GitLabClient mockClient;
 
     @Test
-    public void findShouldReturnAnEmptyListWhenHostsListIsNull() {
+    public void getReposShouldReturnAnEmptyListWhenHostsListIsNull() {
         // Given
         GitLabConfig config = createConfig(null);
         underTest = new RepoFetcher(config, mockClient);
@@ -63,7 +68,7 @@ public class RepoFetcherTest {
     }
 
     @Test
-    public void findShouldReturnAnEmptyListWhenHostsListIsEmpty() {
+    public void getReposShouldReturnAnEmptyListWhenHostsListIsEmpty() {
         // Given
         GitLabConfig config = createConfig(List.of());
         underTest = new RepoFetcher(config, mockClient);
@@ -76,7 +81,7 @@ public class RepoFetcherTest {
     }
 
     @Test
-    public void findShouldCallClientForAnItemInEachListOfAHost() {
+    public void getReposShouldCallClientForAnItemInEachListOfAHost() {
         // Given
         GitLabConfig config = createConfig(List.of(new GitLabHostConfig(BASE_URL,
                 List.of(ACCESS_TOKEN_1),
@@ -101,7 +106,7 @@ public class RepoFetcherTest {
     }
 
     @Test
-    public void findShouldCallClientForItemsInEachConfigListOfAHost() {
+    public void getReposShouldCallClientForItemsInEachConfigListOfAHost() {
         // Given
         GitLabConfig config = createConfig(List.of(new GitLabHostConfig(BASE_URL,
                 List.of(ACCESS_TOKEN_1, ACCESS_TOKEN_2, ACCESS_TOKEN_3),
@@ -126,6 +131,7 @@ public class RepoFetcherTest {
         when(mockClient.getRepos(BASE_URL, GROUP_2)).thenReturn(repos8);
         when(mockClient.getRepos(BASE_URL, GROUP_3)).thenReturn(repos9);
         underTest = new RepoFetcher(config, mockClient);
+
         // When
         List<EnrichedGitLabRepo> returnValue = underTest.getRepos();
 
@@ -137,7 +143,7 @@ public class RepoFetcherTest {
     }
 
     @Test
-    public void findShouldCallClientAndReturnAnEmptyListOfApiReposWhenClientReturnsEmptyLists() {
+    public void getReposShouldCallClientAndReturnAnEmptyListOfApiReposWhenClientReturnsEmptyLists() {
         // Given
         GitLabConfig config = createConfig(List.of(new GitLabHostConfig(BASE_URL,
                 List.of(ACCESS_TOKEN_1),
@@ -156,7 +162,7 @@ public class RepoFetcherTest {
     }
 
     @Test
-    public void findShouldDeduplicateIdenticalApiRepos() {
+    public void getReposShouldDeduplicateIdenticalApiRepos() {
         // Given
         GitLabConfig config = createConfig(List.of(new GitLabHostConfig(BASE_URL,
                 List.of(ACCESS_TOKEN_1, ACCESS_TOKEN_2),
@@ -174,6 +180,7 @@ public class RepoFetcherTest {
         when(mockClient.getRepos(BASE_URL, GROUP_1)).thenReturn(repos1);
         when(mockClient.getRepos(BASE_URL, GROUP_2)).thenReturn(repos2);
         underTest = new RepoFetcher(config, mockClient);
+
         // When
         List<EnrichedGitLabRepo> returnValue = underTest.getRepos();
 
@@ -181,12 +188,28 @@ public class RepoFetcherTest {
         assertThat(returnValue).containsExactly(repo1, repo2, repo3);
     }
 
+    @Test
+    public void getRepoStateShouldUseTheClientToGetRepoStateForARepo() {
+        // Given
+        List<GitLabJob> jobs = createGitLabJobs();
+        EnrichedGitLabRepo repo = createEnrichedGitLabRepo(1, 1);
+        when(mockClient.getJobs(repo)).thenReturn(jobs);
+        underTest = new RepoFetcher(null, mockClient);
+
+        // When
+        List<GitLabJob> returnValue = underTest.getRepoState(repo);
+
+        // Then
+        assertThat(returnValue).isEqualTo(jobs);
+    }
+
     private GitLabConfig createConfig(List<GitLabHostConfig> hosts) {
         return new GitLabConfig(
                 hosts,
                 PAGE_SIZE,
                 null,
-                TIMEOUT
+                TIMEOUT,
+                null
         );
     }
 
