@@ -12,9 +12,13 @@ import static java.util.stream.Collectors.toUnmodifiableList;
 public final class GitLabJobUtils {
 
     public static List<GitLabJob> createGitLabJobs() {
+        return createGitLabJobs(1);
+    }
+
+    public static List<GitLabJob> createGitLabJobs(int repoNumber) {
         return List.of(
-                createGitLabJob(1),
-                createGitLabJob(2)
+                createGitLabJob(repoNumber, 1),
+                createGitLabJob(repoNumber, 2)
         );
     }
 
@@ -25,23 +29,31 @@ public final class GitLabJobUtils {
     }
 
     public static GitLabJob createGitLabJob(int jobNumber) {
-        return createGitLabJob(jobNumber, "test-job-status-1-" + jobNumber);
+        return createGitLabJob(1, jobNumber);
     }
 
-    public static GitLabJob createGitLabJob(int jobNumber, String status) {
+    public static GitLabJob createGitLabJob(int jobNumber, String status){
+        return createGitLabJob(1, jobNumber, status);
+    }
+
+    public static GitLabJob createGitLabJob(int repoNumber, int jobNumber) {
+        return createGitLabJob(repoNumber, jobNumber, "test-job-status-" + repoNumber + "-" + jobNumber);
+    }
+
+    public static GitLabJob createGitLabJob(int repoNumber, int jobNumber, String status) {
         return new GitLabJob(
-                "Test Job Name 1 " + jobNumber,
+                "Test Job Name " + repoNumber + " " + jobNumber,
                 status,
-                "https://example.com/test-job-web-url-1-" + jobNumber,
-                new GitLabUser("https://example.com/test-user-avatar-1-" + jobNumber),
-                createTimestamp(jobNumber, 1),
-                createTimestamp(jobNumber, 2),
-                createTimestamp(jobNumber, 3)
+                "https://example.com/test-job-web-url-" + repoNumber + "-" + jobNumber,
+                new GitLabUser("https://example.com/test-user-avatar-" + repoNumber + "-" + jobNumber),
+                createTimestamp(repoNumber, jobNumber, 1),
+                createTimestamp(repoNumber, jobNumber, 2),
+                createTimestamp(repoNumber, jobNumber, 3)
         );
     }
 
-    private static LocalDateTime createTimestamp(int jobNumber, int timestampNumber) {
-        return LocalDateTime.of(2001, jobNumber, timestampNumber, 0, 0, 0);
+    private static LocalDateTime createTimestamp(int repoNumber, int jobNumber, int timestampNumber) {
+        return LocalDateTime.of(2000 + repoNumber, jobNumber, timestampNumber, 0, 0, 0);
     }
 
     private GitLabJobUtils() {

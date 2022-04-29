@@ -11,11 +11,19 @@ import static tech.kronicle.plugins.gitlab.testutils.GitLabRepoUtils.createGitLa
 
 public final class EnrichedGitLabRepoUtils {
 
+    public static List<EnrichedGitLabRepo> createEnrichedGitLabRepos() {
+        return createEnrichedGitLabRepos(1);
+    }
+
     public static List<EnrichedGitLabRepo> createEnrichedGitLabRepos(int repoListNumber) {
         return List.of(
                 createEnrichedGitLabRepo(repoListNumber, 1),
                 createEnrichedGitLabRepo(repoListNumber, 2)
         );
+    }
+
+    public static EnrichedGitLabRepo createEnrichedGitLabRepo(int repoNumber) {
+        return createEnrichedGitLabRepo(1, repoNumber);
     }
 
     public static EnrichedGitLabRepo createEnrichedGitLabRepo(int repoListNumber, int repoNumber) {
