@@ -20,8 +20,9 @@ import java.util.stream.IntStream;
 
 import static java.util.stream.Collectors.toUnmodifiableList;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.Mockito.reset;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
-import static tech.kronicle.plugins.gitlab.testutils.EnrichedGitLabRepoUtils.createEnrichedGitLabRepo;
 import static tech.kronicle.plugins.gitlab.testutils.GitLabJobUtils.createGitLabJobs;
 import static tech.kronicle.plugins.gitlab.testutils.RepoUtils.createRepo;
 import static tech.kronicle.plugins.gitlab.testutils.RepoUtils.createRepoState;
@@ -34,18 +35,17 @@ public class CachingRepoFetcherTest {
             ZoneOffset.UTC
     );
     private static final LocalDateTime NOW = LocalDateTime.now(CLOCK);
+    private static final int REPO_COUNT = 3;
 
     @Mock
     private RepoFetcher mockFetcher;
     @Mock
     private RepoMapper mockMapper;
-    @Mock
-    private ReposCacheLoader mockLoader;
 
     @Test
     public void getReposShouldReturnAnEmptyListWhenLoaderReturnsAnEmptyList() {
         // Given
-        when(mockLoader.load(CachingRepoFetcher.REPOS_CACHE_KEY)).thenReturn(List.of());
+        when(mockFetcher.getRepos()).thenReturn(List.of());
         CachingRepoFetcher underTest = createUnderTest();
 
         // When
@@ -58,45 +58,92 @@ public class CachingRepoFetcherTest {
     @Test
     public void getReposShouldEnrichTheReposWhenLoaderReturnsMultipleRepos() {
         // Given
-        int repoCount = 3;
-        List<EnrichedGitLabRepo> enrichedGitLabRepos = IntStream.rangeClosed(1, repoCount)
-                .mapToObj(EnrichedGitLabRepoUtils::createEnrichedGitLabRepo)
-                .collect(toUnmodifiableList());
-        when(mockLoader.load(CachingRepoFetcher.REPOS_CACHE_KEY)).thenReturn(enrichedGitLabRepos);
-        List<Repo> expectedRepos = IntStream.range(0, repoCount)
-                .mapToObj(repoIndex -> {
-                    int repoNumber = repoIndex + 1;
-                    EnrichedGitLabRepo enrichedGitLabRepo = enrichedGitLabRepos.get(repoIndex);
-                    Repo repo = createRepo(repoNumber).withState(null);
-                    List<GitLabJob> jobs = createGitLabJobs(repoNumber);
-                    ComponentState repoState = createRepoState(repoNumber);
-                    when(mockMapper.mapRepo(enrichedGitLabRepo)).thenReturn(repo);
-                    when(mockFetcher.getRepoState(enrichedGitLabRepo)).thenReturn(jobs);
-                    when(mockMapper.mapState(jobs, NOW)).thenReturn(repoState);
-                    return repo.withState(repoState);
-                })
-                .collect(toUnmodifiableList());
+        List<Repo> enrichedRepos = mockEverything(1, 1);
         CachingRepoFetcher underTest = createUnderTest();
 
         // When
         List<Repo> returnValue = underTest.getRepos();
 
         // Then
+        assertThat(returnValue).isEqualTo(enrichedRepos);
+    }
+
+    @Test
+    public void getReposShouldNotReloadTheReposBeforeTheCacheTtlHasExpired() {
+        // Given
+        List<Repo> expectedRepos = mockEverything(1, 1);
+        CachingRepoFetcher underTest = createUnderTest(Duration.ofMinutes(1));
+
+        // When
+        List<Repo> returnValue = underTest.getRepos();
+
+        // Then
         assertThat(returnValue).isEqualTo(expectedRepos);
+
+        // When
+        List<Repo> returnValue2 = underTest.getRepos();
+
+        // Then
+        assertThat(returnValue2).isEqualTo(expectedRepos);
+
+        verify(mockFetcher).getRepos();
+    }
+
+    private List<Repo> mockEverything(int cacheIteration, int enrichmentIteration) {
+        reset(mockFetcher, mockMapper);
+        mockCacheLoader(cacheIteration);
+        return mockEnrichment(enrichmentIteration);
+    }
+
+    private void mockCacheLoader(int iteration) {
+        when(mockFetcher.getRepos()).thenReturn(createCachedRepos(iteration));
+    }
+
+    private List<Repo> mockEnrichment(int iteration) {
+        List<EnrichedGitLabRepo> cachedRepos = createCachedRepos(iteration);
+        int offset = getOffset(iteration);
+        return IntStream.range(0, REPO_COUNT)
+                .mapToObj(repoIndex -> {
+                    int repoNumber = offset + repoIndex + 1;
+                    EnrichedGitLabRepo cachedRepo = cachedRepos.get(repoIndex);
+                    Repo repo = createRepo(repoNumber).withState(null);
+                    List<GitLabJob> jobs = createGitLabJobs(repoNumber);
+                    ComponentState repoState = createRepoState(repoNumber);
+                    when(mockMapper.mapRepo(cachedRepo)).thenReturn(repo);
+                    when(mockFetcher.getRepoState(cachedRepo)).thenReturn(jobs);
+                    when(mockMapper.mapState(jobs, NOW)).thenReturn(repoState);
+                    return repo.withState(repoState);
+                })
+                .collect(toUnmodifiableList());
+    }
+
+    private List<EnrichedGitLabRepo> createCachedRepos(int iteration) {
+        int offset = getOffset(iteration);
+        return IntStream.rangeClosed(offset + 1, offset + REPO_COUNT)
+                .mapToObj(EnrichedGitLabRepoUtils::createEnrichedGitLabRepo)
+                .collect(toUnmodifiableList());
+    }
+
+    private int getOffset(int iteration) {
+        return (iteration - 1) * REPO_COUNT;
     }
 
     private CachingRepoFetcher createUnderTest() {
+        return createUnderTest(Duration.ofMinutes(1));
+    }
+
+    private CachingRepoFetcher createUnderTest(Duration reposCacheTtl) {
         return new CachingRepoFetcher(
                 mockFetcher,
                 mockMapper,
                 CLOCK,
-                mockLoader,
+                new ReposCacheLoader(mockFetcher),
                 new GitLabConfig(
                         null,
                         null,
                         null,
                         null,
-                        Duration.ofMinutes(1)
+                        reposCacheTtl
                 )
         );
     }
