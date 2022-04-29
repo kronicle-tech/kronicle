@@ -16,7 +16,7 @@ import static java.util.stream.Collectors.toUnmodifiableList;
 
 public class CachingRepoFetcher {
 
-    private static final Object REPOS_CACHE_KEY = new Object();
+    static final Object REPOS_CACHE_KEY = new Object();
 
     private final RepoFetcher fetcher;
     private final RepoMapper mapper;

@@ -24,9 +24,13 @@ public final class RepoUtils {
 
     public static List<Repo> createRepos() {
         return List.of(
-                createRepo(1, RepoScenario.NORMAL),
-                createRepo(2, RepoScenario.NORMAL)
+                createRepo(1),
+                createRepo(2)
         );
+    }
+
+    public static Repo createRepo(int repoNumber) {
+        return createRepo(repoNumber, RepoScenario.NORMAL);
     }
 
     public static Repo createRepo(int repoNumber, RepoScenario repoScenario) {
@@ -38,21 +42,11 @@ public final class RepoUtils {
                 .build();
     }
 
-    private static String getDefaultBranch(int repoNumber, RepoScenario repoScenario) {
-        return repoScenario == NO_DEFAULT_BRANCH ? null : "branch-" + repoNumber;
+    public static ComponentState createRepoState(int repoNumber) {
+        return createRepoState(repoNumber, RepoScenario.NORMAL);
     }
 
-    private static boolean getHasComponentMetadataFile(RepoScenario repoScenario) {
-        switch (repoScenario) {
-            case NO_DEFAULT_BRANCH:
-            case NO_KRONICLE_METADATA_FILE:
-                return false;
-            default:
-                return true;
-        }
-    }
-
-    private static ComponentState createRepoState(int repoNumber, RepoScenario repoScenario) {
+    public static ComponentState createRepoState(int repoNumber, RepoScenario repoScenario) {
         if (repoScenario == NO_DEFAULT_BRANCH ||
                 repoScenario == RepoScenario.PIPELINES_FORBIDDEN) {
             return null;
@@ -76,6 +70,20 @@ public final class RepoUtils {
                                 .build()
                 ))
                 .build();
+    }
+
+    private static String getDefaultBranch(int repoNumber, RepoScenario repoScenario) {
+        return repoScenario == NO_DEFAULT_BRANCH ? null : "branch-" + repoNumber;
+    }
+
+    private static boolean getHasComponentMetadataFile(RepoScenario repoScenario) {
+        switch (repoScenario) {
+            case NO_DEFAULT_BRANCH:
+            case NO_KRONICLE_METADATA_FILE:
+                return false;
+            default:
+                return true;
+        }
     }
 
     private static CheckState createCheck(int repoNumber, int checkNumber) {

@@ -16,15 +16,13 @@ import static tech.kronicle.plugins.gitlab.testutils.RepoUtils.createRepos;
 @ExtendWith(MockitoExtension.class)
 public class GitLabRepoFinderTest {
 
-
-    private GitLabRepoFinder underTest;
     @Mock
     private CachingRepoFetcher mockFetcher;
 
     @Test
     public void descriptionShouldReturnTheDescriptionOfTheFinder() {
         // Given
-        underTest = new GitLabRepoFinder(null);
+        GitLabRepoFinder underTest = new GitLabRepoFinder(null);
 
         // When
         String returnValue = underTest.description();
@@ -38,7 +36,7 @@ public class GitLabRepoFinderTest {
         // Given
         List<Repo> repos = createRepos();
         when(mockFetcher.getRepos()).thenReturn(repos);
-        underTest = new GitLabRepoFinder(mockFetcher);
+        GitLabRepoFinder underTest = new GitLabRepoFinder(mockFetcher);
 
         // When
         List<Repo> returnValue = underTest.find(null);
