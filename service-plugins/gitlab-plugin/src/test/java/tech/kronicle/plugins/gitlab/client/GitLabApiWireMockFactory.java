@@ -9,6 +9,7 @@ import com.github.tomakehurst.wiremock.client.ResponseDefinitionBuilder;
 import lombok.Getter;
 import lombok.SneakyThrows;
 import tech.kronicle.plugins.gitlab.config.GitLabAccessTokenConfig;
+import tech.kronicle.plugins.gitlab.testutils.RepoScenario;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,6 +23,7 @@ import static com.github.tomakehurst.wiremock.client.WireMock.get;
 import static com.github.tomakehurst.wiremock.client.WireMock.urlEqualTo;
 import static com.github.tomakehurst.wiremock.client.WireMock.urlPathEqualTo;
 import static com.google.common.base.Strings.padStart;
+import static java.util.Collections.unmodifiableList;
 import static java.util.Objects.nonNull;
 
 public class GitLabApiWireMockFactory {
@@ -33,23 +35,24 @@ public class GitLabApiWireMockFactory {
 
     private final ObjectMapper objectMapper = new ObjectMapper();
 
-    public WireMockServer create(Scenario scenario) {
-        return create(wireMockServer -> stubScenarioSpecificResponses(wireMockServer, scenario));
+    public WireMockServer createRepoRequests(ReposScenario scenario) {
+        return create(wireMockServer -> stubRepoRequests(wireMockServer, scenario));
     }
 
-    private void stubScenarioSpecificResponses(WireMockServer wireMockServer, Scenario scenario) {
-        if (scenario.reposResourceType == ReposResourceType.INTERNAL_SERVER_ERROR) {
-            MappingBuilder request = createReposRequest(scenario, 1);
-            wireMockServer.stubFor(request
-                    .willReturn(aResponse()
-                            .withStatus(500)
-                            .withHeader("Content-Type", "text/plain")
-                            .withBody("Internal Server Error")));
+    public WireMockServer createJobRequests(JobsScenario scenario) {
+        return create(wireMockServer -> stubJobRequests(wireMockServer, scenario));
+    }
+
+    private void stubRepoRequests(WireMockServer wireMockServer, ReposScenario scenario) {
+        if (scenario.type == ReposScenarioType.INTERNAL_SERVER_ERROR) {
+            wireMockServer.stubFor(createReposRequest(scenario, 1)
+                    .willReturn(createInternalServerErrorResponse()));
         } else {
             AtomicInteger repoNumber = new AtomicInteger();
             IntStream.range(1, PAGE_COUNT + 1).forEach(pageNumber -> {
-                MappingBuilder request = createReposRequest(scenario, pageNumber);
-                wireMockServer.stubFor(request.willReturn(createRepoListResponse(pageNumber)));
+                wireMockServer.stubFor(
+                        createReposRequest(scenario, pageNumber).willReturn(createRepoListResponse(pageNumber))
+                );
 
                 IntStream.range(1, PAGE_SIZE + 1).forEach(pageItemNumber -> {
                     repoNumber.incrementAndGet();
@@ -57,17 +60,21 @@ public class GitLabApiWireMockFactory {
                     if (repoNumber.get() <= REPO_COUNT) {
                         RepoScenario repoScenario = getRepoScenario(repoNumber.get());
                         stubRepoMetadataFileRequest(wireMockServer, scenario, repoNumber.get(), repoScenario);
-                        stubRepoPipelinesRequest(wireMockServer, scenario, repoNumber.get(), repoScenario);
-                        stubRepoPipelineJobsRequest(wireMockServer, scenario, repoNumber.get());
                     }
                 });
             });
         }
     }
-    
+
+    private void stubJobRequests(WireMockServer wireMockServer, JobsScenario scenario) {
+        int repoNumber = 1;
+        stubRepoPipelinesRequest(wireMockServer, scenario, repoNumber);
+        stubRepoPipelineJobsRequest(wireMockServer, scenario, repoNumber);
+    }
+
     private void stubRepoMetadataFileRequest(
             WireMockServer wireMockServer,
-            Scenario scenario,
+            ReposScenario scenario,
             int repoNumber,
             RepoScenario repoScenario
     ) {
@@ -88,7 +95,7 @@ public class GitLabApiWireMockFactory {
         }
     }
 
-    private MappingBuilder createReposRequest(Scenario scenario, int pageNumber) {
+    private MappingBuilder createReposRequest(ReposScenario scenario, int pageNumber) {
         MappingBuilder builder = get(urlPathEqualTo(getReposUrl(scenario)));
         builder.withQueryParam("page", equalTo(Integer.toString(pageNumber)))
                 .withQueryParam("per_page", equalTo(Integer.toString(PAGE_SIZE)));
@@ -96,8 +103,8 @@ public class GitLabApiWireMockFactory {
         return builder;
     }
 
-    private String getReposUrl(Scenario scenario) {
-        switch (scenario.reposResourceType) {
+    private String getReposUrl(ReposScenario scenario) {
+        switch (scenario.type) {
             case ALL:
             case INTERNAL_SERVER_ERROR:
                 return "/api/v4/projects";
@@ -106,7 +113,7 @@ public class GitLabApiWireMockFactory {
             case GROUP:
                 return "/api/v4/groups/example-group-path/projects";
            default:
-                throw new RuntimeException("Unexpected repos resource type " + scenario.reposResourceType);
+                throw new RuntimeException("Unexpected repos resource type " + scenario.type);
         }
     }
 
@@ -147,7 +154,7 @@ public class GitLabApiWireMockFactory {
     }
 
     private MappingBuilder createRepoRootContentsRequest(
-            Scenario scenario,
+            ReposScenario scenario,
             int repoNumber
     ) {
         MappingBuilder builder = get(urlEqualTo(
@@ -172,16 +179,15 @@ public class GitLabApiWireMockFactory {
 
     private void stubRepoPipelinesRequest(
             WireMockServer wireMockServer,
-            Scenario scenario,
-            int repoNumber,
-            RepoScenario repoScenario
+            JobsScenario scenario,
+            int repoNumber
     ) {
         wireMockServer.stubFor(createRepoPipelinesRequest(scenario, repoNumber)
-                .willReturn(createRepoPipelinesResponse(repoNumber, repoScenario)));
+                .willReturn(createRepoPipelinesResponse(scenario, repoNumber)));
     }
 
     private MappingBuilder createRepoPipelinesRequest(
-            Scenario scenario,
+            JobsScenario scenario,
             int repoNumber
     ) {
         MappingBuilder builder = get(urlEqualTo(
@@ -199,20 +205,23 @@ public class GitLabApiWireMockFactory {
 
     @SneakyThrows
     private ResponseDefinitionBuilder createRepoPipelinesResponse(
-            int repoNumber,
-            RepoScenario repoScenario
+            JobsScenario scenario,
+            int repoNumber
     ) {
-        if (repoScenario == RepoScenario.PIPELINES_FORBIDDEN) {
-            return aResponse()
-                    .withStatus(403)
-                    .withHeader("Content-Type", "application/json")
-                    .withBody(createRepoPipelinesNotAuthorisedResponseBody());
-        } else {
-            return aResponse()
-                    .withStatus(200)
-                    .withHeader("Content-Type", "application/json")
-                    .withHeader("X-Next-Page", "")
-                    .withBody(createRepoPipelinesResponseBody(repoNumber));
+        switch (scenario.type) {
+            case INTERNAL_SERVER_ERROR:
+                return createInternalServerErrorResponse();
+            case PIPELINES_FORBIDDEN:
+                return aResponse()
+                        .withStatus(403)
+                        .withHeader("Content-Type", "application/json")
+                        .withBody(createRepoPipelinesNotAuthorisedResponseBody());
+            default:
+                return aResponse()
+                        .withStatus(200)
+                        .withHeader("Content-Type", "application/json")
+                        .withHeader("X-Next-Page", "")
+                        .withBody(createRepoPipelinesResponseBody(repoNumber));
         }
     }
 
@@ -253,13 +262,13 @@ public class GitLabApiWireMockFactory {
                 + "T00:00:00.000Z";
     }
 
-    private void stubRepoPipelineJobsRequest(WireMockServer wireMockServer, Scenario scenario, int repoNumber) {
+    private void stubRepoPipelineJobsRequest(WireMockServer wireMockServer, JobsScenario scenario, int repoNumber) {
         wireMockServer.stubFor(createRepoPipelineJobsRequest(scenario, repoNumber)
                 .willReturn(createRepoPipelineJobsResponse(repoNumber)));
     }
 
     private MappingBuilder createRepoPipelineJobsRequest(
-            Scenario scenario,
+            JobsScenario scenario,
             int repoNumber
     ) {
         MappingBuilder builder = get(urlEqualTo(
@@ -283,14 +292,14 @@ public class GitLabApiWireMockFactory {
         ArrayNode responseBody = objectMapper.createArrayNode();
         IntStream.range(1, PAGE_SIZE + 1).forEach(pageItemNumber -> {
             ObjectNode job = objectMapper.createObjectNode()
-                    .put("name", "Test name " + repoNumber + " " + pageItemNumber)
-                    .put("status", "success")
-                    .put("web_url", "https://example.com/web-url-" + repoNumber + "-" + pageItemNumber)
+                    .put("name", "Test Job Name " + repoNumber + " " + pageItemNumber)
+                    .put("status", "test-job-status-" + repoNumber + "-" + pageItemNumber)
+                    .put("web_url", "https://example.com/test-job-web-url-" + repoNumber + "-" + pageItemNumber)
                     .put("created_at", createTimestamp(repoNumber, pageItemNumber, 1))
                     .put("started_at", createTimestamp(repoNumber, pageItemNumber, 2))
                     .put("finished_at", createTimestamp(repoNumber, pageItemNumber, 3));
             job.putObject("user")
-                    .put("avatar_url", "https://example.com/avatar-url-" + repoNumber + "-" + pageItemNumber);
+                    .put("avatar_url", "https://example.com/test-user-avatar-" + repoNumber + "-" + pageItemNumber);
             responseBody.add(job);
         });
         return objectMapper.writeValueAsString(responseBody);
@@ -298,7 +307,7 @@ public class GitLabApiWireMockFactory {
 
     private void addAccessTokenHeaderIfWanted(Scenario scenario, MappingBuilder builder) {
         if (nonNull(scenario.getAccessToken())) {
-            builder.withHeader("PRIVATE-TOKEN", equalTo(scenario.accessToken.getValue()));
+            builder.withHeader("PRIVATE-TOKEN", equalTo(scenario.getAccessToken().getValue()));
         }
     }
 
@@ -309,36 +318,86 @@ public class GitLabApiWireMockFactory {
         return wireMockServer;
     }
 
-    public enum ReposResourceType {
+    private ResponseDefinitionBuilder createInternalServerErrorResponse() {
+        return aResponse()
+                .withStatus(500)
+                .withHeader("Content-Type", "text/plain")
+                .withBody("Internal Server Error");
+    }
+
+    public enum ReposScenarioType {
         INTERNAL_SERVER_ERROR,
         ALL,
         USER,
         GROUP
     }
 
+    public enum JobsScenarioType {
+        INTERNAL_SERVER_ERROR,
+        NORMAL,
+        PIPELINES_FORBIDDEN
+    }
+
+    public interface Scenario {
+
+        GitLabAccessTokenConfig getAccessToken();
+    }
+
     @Getter
-    public static class Scenario {
+    public static class ReposScenario implements Scenario {
 
-        public static final List<Scenario> ALL_SCENARIOS = new ArrayList<>();
-        public static final Scenario INTERNAL_SERVER_ERROR = new Scenario(ReposResourceType.INTERNAL_SERVER_ERROR, true);
-        public static final Scenario ALL_WITH_ACCESS_TOKEN = new Scenario(ReposResourceType.ALL, true);
-        public static final Scenario USER_WITH_ACCESS_TOKEN = new Scenario(ReposResourceType.USER, true);
-        public static final Scenario GROUP_WITH_ACCESS_TOKEN = new Scenario(ReposResourceType.GROUP, true);
-        public static final Scenario ALL_WITHOUT_ACCESS_TOKEN = new Scenario(ReposResourceType.ALL, false);
-        public static final Scenario USER_WITHOUT_ACCESS_TOKEN = new Scenario(ReposResourceType.USER, false);
-        public static final Scenario GROUP_WITHOUT_ACCESS_TOKEN = new Scenario(ReposResourceType.GROUP, false);
+        private static final List<ReposScenario> MUTABLE_NORMAL_SCENARIOS = new ArrayList<>();
+        public static final List<ReposScenario> NORMAL_SCENARIOS = unmodifiableList(MUTABLE_NORMAL_SCENARIOS);
 
-        ReposResourceType reposResourceType;
+        public static final ReposScenario INTERNAL_SERVER_ERROR = new ReposScenario(true, ReposScenarioType.INTERNAL_SERVER_ERROR);
+        public static final ReposScenario ALL_WITH_ACCESS_TOKEN = new ReposScenario(true, ReposScenarioType.ALL);
+        public static final ReposScenario USER_WITH_ACCESS_TOKEN = new ReposScenario(true, ReposScenarioType.USER);
+        public static final ReposScenario GROUP_WITH_ACCESS_TOKEN = new ReposScenario(true, ReposScenarioType.GROUP);
+        public static final ReposScenario ALL_WITHOUT_ACCESS_TOKEN = new ReposScenario(false, ReposScenarioType.ALL);
+        public static final ReposScenario USER_WITHOUT_ACCESS_TOKEN = new ReposScenario(false, ReposScenarioType.USER);
+        public static final ReposScenario GROUP_WITHOUT_ACCESS_TOKEN = new ReposScenario(false, ReposScenarioType.GROUP);
+
+        ReposScenarioType type;
         GitLabAccessTokenConfig accessToken;
 
-        private Scenario(ReposResourceType reposResourceType, boolean hasAccessToken) {
-            this.reposResourceType = reposResourceType;
+        private ReposScenario(boolean hasAccessToken, ReposScenarioType type) {
             if (hasAccessToken) {
-                accessToken = new GitLabAccessTokenConfig("access-token-" + reposResourceType.name());
+                accessToken = new GitLabAccessTokenConfig("access-token-" + type.name());
             } else {
                 accessToken = null;
             }
-            ALL_SCENARIOS.add(this);
+            this.type = type;
+            if (type != ReposScenarioType.INTERNAL_SERVER_ERROR) {
+                MUTABLE_NORMAL_SCENARIOS.add(this);
+            }
+        }
+    }
+
+    @Getter
+    public static class JobsScenario implements Scenario {
+
+        private static final List<JobsScenario> MUTABLE_NORMAL_SCENARIOS = new ArrayList<>();
+        public static final List<JobsScenario> NORMAL_SCENARIOS = unmodifiableList(MUTABLE_NORMAL_SCENARIOS);
+
+        public static final JobsScenario INTERNAL_SERVER_ERROR = new JobsScenario(true, JobsScenarioType.INTERNAL_SERVER_ERROR);
+        public static final JobsScenario NORMAL_WITH_ACCESS_TOKEN = new JobsScenario(true, JobsScenarioType.NORMAL);
+        public static final JobsScenario PIPELINES_FORBIDDEN_WITH_ACCESS_TOKEN = new JobsScenario(true, JobsScenarioType.PIPELINES_FORBIDDEN);
+        public static final JobsScenario NORMAL_WITHOUT_ACCESS_TOKEN = new JobsScenario(false, JobsScenarioType.NORMAL);
+        public static final JobsScenario PIPELINES_FORBIDDEN_WITHOUT_ACCESS_TOKEN = new JobsScenario(false, JobsScenarioType.PIPELINES_FORBIDDEN);
+
+        JobsScenarioType type;
+        GitLabAccessTokenConfig accessToken;
+
+        private JobsScenario(boolean hasAccessToken, JobsScenarioType type) {
+            if (hasAccessToken) {
+                accessToken = new GitLabAccessTokenConfig("access-token-" + type.name());
+            } else {
+                accessToken = null;
+            }
+            this.type = type;
+            if (this.type != JobsScenarioType.INTERNAL_SERVER_ERROR) {
+                MUTABLE_NORMAL_SCENARIOS.add(this);
+            }
         }
     }
 }

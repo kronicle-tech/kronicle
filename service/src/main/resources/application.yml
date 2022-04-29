@@ -65,7 +65,7 @@ plugins:
   aws:
     enabled: false
     detailed-component-descriptions: false
-    copy-resource-tags-to-components: true
+    copy-resource-tags-to-components: false
     create-dependencies-for-resources: true
     load-xray-trace-data: true
     tag-keys:
@@ -102,6 +102,7 @@ plugins:
     project-page-size: 100
     environment-id: ci
     timeout: 30s
+    repos-cache-ttl: 1h
 
   gradle:
     enabled: true

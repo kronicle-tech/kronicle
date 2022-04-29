@@ -22,7 +22,11 @@ public class GuiceModuleTest {
             @Override
             protected void configure() {
                 bind(GitLabConfig.class).toInstance(new GitLabConfig(
-                        null, 100, null, Duration.ofSeconds(60)
+                        null,
+                        100,
+                        null,
+                        Duration.ofSeconds(60),
+                        Duration.ofSeconds(60)
                 ));
             }
         };

@@ -19,4 +19,6 @@ public class GitLabConfig {
   String environmentId;
   @NotNull
   Duration timeout;
+  @NotNull
+  Duration reposCacheTtl;
 }

@@ -7,36 +7,25 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 import tech.kronicle.plugins.gitlab.config.GitLabConfig;
 import tech.kronicle.plugins.gitlab.config.GitLabGroupConfig;
-import tech.kronicle.plugins.gitlab.config.GitLabHostConfig;
 import tech.kronicle.plugins.gitlab.config.GitLabUserConfig;
 import tech.kronicle.plugins.gitlab.guice.GuiceModule;
-import tech.kronicle.sdk.models.CheckState;
-import tech.kronicle.sdk.models.ComponentState;
-import tech.kronicle.sdk.models.ComponentStateCheckStatus;
-import tech.kronicle.sdk.models.EnvironmentPluginState;
-import tech.kronicle.sdk.models.EnvironmentState;
-import tech.kronicle.sdk.models.Link;
-import tech.kronicle.sdk.models.Repo;
+import tech.kronicle.plugins.gitlab.models.EnrichedGitLabRepo;
+import tech.kronicle.plugins.gitlab.models.api.GitLabJob;
+import tech.kronicle.plugins.gitlab.testutils.RepoScenario;
 import tech.kronicle.utils.HttpStatuses;
 
-import java.time.Clock;
 import java.time.Duration;
-import java.time.LocalDateTime;
-import java.time.ZoneOffset;
 import java.util.List;
 import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.catchThrowable;
-import static tech.kronicle.plugins.gitlab.client.RepoScenario.NO_DEFAULT_BRANCH;
+import static tech.kronicle.plugins.gitlab.testutils.EnrichedGitLabRepoUtils.createEnrichedGitLabRepo;
+import static tech.kronicle.plugins.gitlab.testutils.GitLabJobUtils.createGitLabJob;
 import static tech.kronicle.utils.HttpClientFactory.createHttpClient;
 
 public class GitLabClientTest {
 
-    private static final Clock clock = Clock.fixed(
-            LocalDateTime.of(2001, 2, 3, 4, 5, 6).toInstant(ZoneOffset.UTC),
-            ZoneOffset.UTC
-    );
     private static final String baseUrl = "http://localhost:" + GitLabApiWireMockFactory.PORT;
     private static final int PAGE_SIZE = 5;
     private static final Duration TIMEOUT = Duration.ofSeconds(30);
@@ -51,19 +40,18 @@ public class GitLabClientTest {
     }
 
     @ParameterizedTest
-    @MethodSource("provideReposResponseTypeScenarios")
-    public void getReposShouldReturnAListOfReposWithVaryingHasComponentMetadataFileValues(GitLabApiWireMockFactory.Scenario scenario) {
+    @MethodSource("provideRepoScenarios")
+    public void getReposShouldReturnAListOfReposWithVaryingHasComponentMetadataFileValues(
+            GitLabApiWireMockFactory.ReposScenario scenario
+    ) {
         // Given
-        wireMockServer = gitLabApiWireMockFactory.create(scenario);
-        GitLabConfig config = createConfig(List.of(
-                new GitLabHostConfig(baseUrl, null, null, null)
-        ));
-        underTest = createUnderTest(config);
+        wireMockServer = gitLabApiWireMockFactory.createRepoRequests(scenario);
+        underTest = createUnderTest();
 
         // When
-        List<Repo> returnValue;
+        List<EnrichedGitLabRepo> returnValue;
 
-        switch (scenario.getReposResourceType()) {
+        switch (scenario.getType()) {
             case ALL:
                 returnValue = underTest.getRepos(baseUrl, scenario.getAccessToken());
                 break;
@@ -74,29 +62,28 @@ public class GitLabClientTest {
                 returnValue = underTest.getRepos(baseUrl, new GitLabGroupConfig("example-group-path", scenario.getAccessToken()));
                 break;
             default:
-                throw new RuntimeException("Unexpected repos resource type " + scenario.getReposResourceType());
+                throw new RuntimeException("Unexpected repos resource type " + scenario.getType());
         }
 
         // Then
         assertThat(returnValue).containsExactly(
-                createRepo(1, RepoScenario.NORMAL),
-                createRepo(2, RepoScenario.NORMAL),
-                createRepo(3, NO_DEFAULT_BRANCH),
-                createRepo(4, RepoScenario.NORMAL),
-                createRepo(5, RepoScenario.NO_KRONICLE_METADATA_FILE),
-                createRepo(6, RepoScenario.NORMAL),
-                createRepo(7, RepoScenario.PIPELINES_FORBIDDEN),
-                createRepo(8, RepoScenario.NORMAL)
+                createEnrichedGitLabRepo(baseUrl, scenario.getAccessToken(), 1, RepoScenario.NORMAL),
+                createEnrichedGitLabRepo(baseUrl, scenario.getAccessToken(), 2, RepoScenario.NORMAL),
+                createEnrichedGitLabRepo(baseUrl, scenario.getAccessToken(), 3, RepoScenario.NO_DEFAULT_BRANCH),
+                createEnrichedGitLabRepo(baseUrl, scenario.getAccessToken(), 4, RepoScenario.NORMAL),
+                createEnrichedGitLabRepo(baseUrl, scenario.getAccessToken(), 5, RepoScenario.NO_KRONICLE_METADATA_FILE),
+                createEnrichedGitLabRepo(baseUrl, scenario.getAccessToken(), 6, RepoScenario.NORMAL),
+                createEnrichedGitLabRepo(baseUrl, scenario.getAccessToken(), 7, RepoScenario.PIPELINES_FORBIDDEN),
+                createEnrichedGitLabRepo(baseUrl, scenario.getAccessToken(), 8, RepoScenario.NORMAL)
         );
     }
 
     @Test
     public void getReposShouldThrowAnExceptionWhenGitLabReturnsAnUnexpectedStatusCode() {
         // Given
-        GitLabApiWireMockFactory.Scenario scenario = GitLabApiWireMockFactory.Scenario.INTERNAL_SERVER_ERROR;
-        wireMockServer = gitLabApiWireMockFactory.create(scenario);
-        GitLabConfig config = createConfig(null);
-        underTest = createUnderTest(config);
+        GitLabApiWireMockFactory.ReposScenario scenario = GitLabApiWireMockFactory.ReposScenario.INTERNAL_SERVER_ERROR;
+        wireMockServer = gitLabApiWireMockFactory.createRepoRequests(scenario);
+        underTest = createUnderTest();
 
         // When
         Throwable thrown = catchThrowable(() -> underTest.getRepos(baseUrl, scenario.getAccessToken()));
@@ -109,91 +96,80 @@ public class GitLabClientTest {
         assertThat(exception.getUri()).isEqualTo("http://localhost:36209/api/v4/projects?page=1&per_page=5");
     }
 
-    private GitLabConfig createConfig(List<GitLabHostConfig> hosts) {
+    @ParameterizedTest
+    @MethodSource("provideJobScenarios")
+    public void getJobsShouldReturnAListOfReposWithVaryingHasComponentMetadataFileValues(
+            GitLabApiWireMockFactory.JobsScenario scenario
+    ) {
+        // Given
+        wireMockServer = gitLabApiWireMockFactory.createJobRequests(scenario);
+        EnrichedGitLabRepo repo = createEnrichedGitLabRepo(baseUrl, scenario.getAccessToken(), 1, RepoScenario.NORMAL);
+        underTest = createUnderTest();
+
+        // When
+        List<GitLabJob> returnValue = underTest.getJobs(repo);
+
+        // Then
+        if (scenario.type == GitLabApiWireMockFactory.JobsScenarioType.PIPELINES_FORBIDDEN) {
+            assertThat(returnValue).isEmpty();
+        } else {
+            assertThat(returnValue).containsExactly(
+                    createGitLabJob(1),
+                    createGitLabJob(2),
+                    createGitLabJob(3),
+                    createGitLabJob(4),
+                    createGitLabJob(5)
+            );
+        }
+    }
+
+    @Test
+    public void getJobsShouldThrowAnExceptionWhenGitLabReturnsAnUnexpectedStatusCode() {
+        // Given
+        GitLabApiWireMockFactory.JobsScenario scenario = GitLabApiWireMockFactory.JobsScenario.INTERNAL_SERVER_ERROR;
+        wireMockServer = gitLabApiWireMockFactory.createJobRequests(scenario);
+        EnrichedGitLabRepo repo = createEnrichedGitLabRepo(
+                baseUrl,
+                scenario.accessToken,
+                1,
+                RepoScenario.NORMAL
+        );
+        underTest = createUnderTest();
+
+        // When
+        Throwable thrown = catchThrowable(() -> underTest.getJobs(repo));
+
+        // Then
+        assertThat(thrown).isInstanceOf(GitLabClientException.class);
+        GitLabClientException exception = (GitLabClientException) thrown;
+        assertThat(exception).hasMessage("Call to 'http://localhost:36209/api/v4/projects/1/pipelines?ref=branch-1&page=1&per_page=5' failed with status 500");
+        assertThat(exception.getStatusCode()).isEqualTo(HttpStatuses.INTERNAL_SERVER_ERROR);
+        assertThat(exception.getUri()).isEqualTo("http://localhost:36209/api/v4/projects/1/pipelines?ref=branch-1&page=1&per_page=5");
+    }
+
+    private GitLabConfig createConfig() {
         return new GitLabConfig(
-                hosts,
+                null,
                 PAGE_SIZE,
                 "test-environment-id",
-                TIMEOUT
+                TIMEOUT,
+                null
         );
     }
 
-    private Repo createRepo(int repoNumber, RepoScenario repoScenario) {
-        return Repo.builder()
-                .url("https://example.com/repo-" + repoNumber + "-" + repoScenario + ".git")
-                .defaultBranch(getDefaultBranch(repoNumber, repoScenario))
-                .hasComponentMetadataFile(getHasComponentMetadataFile(repoScenario))
-                .state(createRepoState(repoNumber, repoScenario))
-                .build();
-    }
-
-    private String getDefaultBranch(int repoNumber, RepoScenario repoScenario) {
-        return repoScenario == NO_DEFAULT_BRANCH ? null : "branch-" + repoNumber;
-    }
-
-    private boolean getHasComponentMetadataFile(RepoScenario repoScenario) {
-        switch (repoScenario) {
-            case NO_DEFAULT_BRANCH:
-            case NO_KRONICLE_METADATA_FILE:
-                return false;
-            default:
-                return true;
-        }
-    }
-
-    private ComponentState createRepoState(int repoNumber, RepoScenario repoScenario) {
-        if (repoScenario == NO_DEFAULT_BRANCH ||
-                repoScenario == RepoScenario.PIPELINES_FORBIDDEN) {
-            return null;
-        }
-        return ComponentState.builder()
-                .environments(List.of(
-                        EnvironmentState.builder()
-                                .id("test-environment-id")
-                                .plugins(List.of(
-                                        EnvironmentPluginState.builder()
-                                                .id("gitlab")
-                                                .checks(List.of(
-                                                        createCheck(repoNumber, 1),
-                                                        createCheck(repoNumber, 2),
-                                                        createCheck(repoNumber, 3),
-                                                        createCheck(repoNumber, 4),
-                                                        createCheck(repoNumber, 5)
-                                                ))
-                                                .build()
-                                ))
-                                .build()
-                ))
-                .build();
-    }
-
-    private CheckState createCheck(int repoNumber, int checkNumber) {
-        return CheckState.builder()
-                .name("Test name " + repoNumber + " " + checkNumber)
-                .description("GitLab Job")
-                .status(ComponentStateCheckStatus.OK)
-                .statusMessage("Success")
-                .links(List.of(
-                        Link.builder()
-                                .url("https://example.com/web-url-" + repoNumber + "-" + checkNumber)
-                                .description("GitLab Job")
-                                .build()
-                ))
-                .updateTimestamp(LocalDateTime.now(clock))
-                .build();
-    }
-
-    private GitLabClient createUnderTest(GitLabConfig config) {
+    private GitLabClient createUnderTest() {
         return new GitLabClient(
                 createHttpClient(),
                 new GuiceModule().objectMapper(),
-                config,
-                clock
+                createConfig()
         );
     }
 
-    public static Stream<GitLabApiWireMockFactory.Scenario> provideReposResponseTypeScenarios() {
-        return GitLabApiWireMockFactory.Scenario.ALL_SCENARIOS.stream()
-                .filter(scenario -> !scenario.equals(GitLabApiWireMockFactory.Scenario.INTERNAL_SERVER_ERROR));
+    public static Stream<GitLabApiWireMockFactory.ReposScenario> provideRepoScenarios() {
+        return GitLabApiWireMockFactory.ReposScenario.NORMAL_SCENARIOS.stream();
+    }
+
+    public static Stream<GitLabApiWireMockFactory.JobsScenario> provideJobScenarios() {
+        return GitLabApiWireMockFactory.JobsScenario.NORMAL_SCENARIOS.stream();
     }
 }
