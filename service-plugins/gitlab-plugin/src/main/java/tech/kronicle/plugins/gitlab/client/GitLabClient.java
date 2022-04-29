@@ -134,6 +134,9 @@ public class GitLabClient {
   private List<GitLabPipeline> getProjectPipelinesForDefaultBranch(
           EnrichedGitLabRepo repo
   ) {
+    if (isNull(repo.getRepo().getDefault_branch())) {
+      return List.of();
+    }
     Map<String, String> uriVariables = UriVariablesBuilder.builder()
               .addUriVariable("projectId", repo.getRepo().getId())
               .addUriVariable("defaultBranch", repo.getRepo().getDefault_branch())

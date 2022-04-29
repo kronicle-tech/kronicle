@@ -18,6 +18,7 @@ import java.time.Duration;
 import java.util.List;
 import java.util.stream.Stream;
 
+import static java.util.Objects.nonNull;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.catchThrowable;
 import static tech.kronicle.plugins.gitlab.testutils.EnrichedGitLabRepoUtils.createEnrichedGitLabRepo;
@@ -36,7 +37,9 @@ public class GitLabClientTest {
 
     @AfterEach
     public void afterEach() {
-        wireMockServer.stop();
+        if (nonNull(wireMockServer)) {
+            wireMockServer.stop();
+        }
     }
 
     @ParameterizedTest
@@ -121,6 +124,24 @@ public class GitLabClientTest {
                     createGitLabJob(5)
             );
         }
+    }
+
+    @Test
+    public void getJobsShouldReturnAnEmptyListWhenRepoHasNoDefaultBranch() {
+        // Given
+        EnrichedGitLabRepo repo = createEnrichedGitLabRepo(
+                baseUrl,
+                null,
+                1,
+                RepoScenario.NO_DEFAULT_BRANCH
+        );
+        underTest = createUnderTest();
+
+        // When
+        List<GitLabJob> returnValue = underTest.getJobs(repo);
+
+        // Then
+        assertThat(returnValue).isEmpty();
     }
 
     @Test
