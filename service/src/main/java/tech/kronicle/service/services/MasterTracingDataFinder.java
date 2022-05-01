@@ -5,6 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import tech.kronicle.pluginapi.finders.TracingDataFinder;
 import tech.kronicle.pluginapi.finders.models.TracingData;
+import tech.kronicle.pluginapi.scanners.models.Output;
 import tech.kronicle.sdk.models.ComponentMetadata;
 
 import java.util.List;
@@ -15,26 +16,22 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class MasterTracingDataFinder {
 
-    private final FinderExtensionRegistry finderRegistry;
+    private final FinderExtensionRegistry registry;
+    private final TaskExecutor executor;
 
     public List<TracingData> findTracingData(ComponentMetadata componentMetadata) {
-        return finderRegistry.getTracingDataFinders().stream()
+        return registry.getTracingDataFinders().stream()
                 .map(finder -> executeFinder(finder, componentMetadata))
                 .distinct()
                 .collect(Collectors.toList());
     }
 
     private TracingData executeFinder(TracingDataFinder finder, ComponentMetadata componentMetadata) {
-        TracingData tracingData;
-        try {
-            tracingData = finder.find(componentMetadata);
-        } catch (Exception e) {
-            log.error("Failed to execute tracing data finder {}", finder.id(), e);
-            return TracingData.EMPTY;
+        Output<TracingData, Void> tracingData = executor.executeFinder(finder, componentMetadata);
+        if (tracingData.success()) {
+            log.info("Tracing data finder {} found {} dependencies", finder.id(), tracingData.getOutput().getDependencies().size());
+            log.info("Tracing data finder {} found {} traces", finder.id(), tracingData.getOutput().getTraces().size());
         }
-
-        log.info("Tracing data finder {} found {} dependencies", finder.id(), tracingData.getDependencies().size());
-        log.info("Tracing data finder {} found {} traces", finder.id(), tracingData.getTraces().size());
-        return tracingData;
+        return tracingData.getOutputOrElse(TracingData.EMPTY);
     }
 }

@@ -6,11 +6,13 @@ import org.junit.jupiter.params.provider.ValueSource;
 import tech.kronicle.pluginapi.scanners.models.Codebase;
 import tech.kronicle.pluginapi.scanners.models.Output;
 import tech.kronicle.plugins.todo.internal.services.ToDoFinder;
+import tech.kronicle.sdk.models.Component;
 import tech.kronicle.testutils.MalformedFileCreator;
 import tech.kronicle.plugintestutils.scanners.BaseCodebaseScannerTest;
 import tech.kronicle.sdk.models.todos.ToDo;
 
 import java.nio.file.Path;
+import java.time.Duration;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -19,6 +21,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static tech.kronicle.utils.FileUtilsFactory.createFileUtils;
 
 public class ToDoScannerTest extends BaseCodebaseScannerTest {
+
+    private static final Duration CACHE_TTL = Duration.ZERO;
 
     private final ToDoScanner underTest = new ToDoScanner(createFileUtils(), new ToDoFinder());
 
@@ -55,10 +59,10 @@ public class ToDoScannerTest extends BaseCodebaseScannerTest {
         Codebase testCodebase = new Codebase(getTestRepo(), getCodebaseDir("MultipleToDosInMultipleFiles"));
 
         // When
-        Output<Void> returnValue = underTest.scan(testCodebase);
+        Output<Void, Component> returnValue = underTest.scan(testCodebase);
 
         // Then
-        assertThat(returnValue.getErrors()).isEmpty();
+        assertThat(maskTransformer(returnValue)).isEqualTo(maskTransformer(Output.empty(CACHE_TTL)));
         List<ToDo> toDos = getToDos(returnValue);
         assertThat(toDos).hasSize(3);
         ToDo toDo;
@@ -84,10 +88,10 @@ public class ToDoScannerTest extends BaseCodebaseScannerTest {
         MalformedFileCreator.createFile(file, malformed, null, toDoText);
 
         // When
-        Output<Void> returnValue = underTest.scan(testCodebase);
+        Output<Void, Component> returnValue = underTest.scan(testCodebase);
 
         // Then
-        assertThat(returnValue.getErrors()).isEmpty();
+        assertThat(maskTransformer(returnValue)).isEqualTo(maskTransformer(Output.empty(CACHE_TTL)));
         List<ToDo> toDos = getToDos(returnValue);
         assertThat(toDos).hasSize(malformed ? 1 : 2);
         ToDo toDo;
@@ -105,7 +109,7 @@ public class ToDoScannerTest extends BaseCodebaseScannerTest {
         assertThat(returnValue.getErrors()).isEmpty();
     }
 
-    private List<ToDo> getToDos(Output<Void> returnValue) {
+    private List<ToDo> getToDos(Output<Void, Component> returnValue) {
         return getMutatedComponent(returnValue).getToDos().stream()
           .sorted(Comparator.comparing(ToDo::getFile))
           .collect(Collectors.toList());

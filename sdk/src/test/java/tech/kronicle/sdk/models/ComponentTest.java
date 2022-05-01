@@ -17,9 +17,14 @@ import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.catchThrowable;
-import static org.mockito.Mockito.mock;
+import static tech.kronicle.sdk.models.testutils.ImportUtils.createImport;
+import static tech.kronicle.sdk.models.testutils.SoftwareRepositoryUtils.createSoftwareRepository;
+import static tech.kronicle.sdk.models.testutils.SoftwareUtils.createSoftware;
+import static tech.kronicle.sdk.utils.ListUtils.unmodifiableUnionOfLists;
 
 public class ComponentTest {
+
+    private final ObjectMapper objectMapper = new JsonMapper();
 
     @Test
     public void constructorShouldSupportDeserializationWithJackson() throws JsonProcessingException {
@@ -277,63 +282,6 @@ public class ComponentTest {
         assertThat(thrown).isInstanceOf(UnsupportedOperationException.class);
     }
 
-    @Test
-    public void withUpdatedStateShouldPassANewStateObjectToActionWhenStateIsNull() {
-        // Given
-        ComponentState updatedState = createState(1);
-        Component underTest = Component.builder().build();
-        FakeStateUpdateAction action = new FakeStateUpdateAction(updatedState);
-
-        // When
-        Component returnValue = underTest.withUpdatedState(action::apply);
-
-        // Then
-        assertThat(returnValue).isEqualTo(underTest.withState(updatedState));
-        assertThat(action.calls).containsExactly(ComponentState.builder().build());
-    }
-
-    @Test
-    public void withUpdatedStateShouldPassExistingStateObjectToActionWhenStateIsNotNull() {
-        // Given
-        ComponentState initialState = createState(1);
-        ComponentState updatedState = createState(2);
-        Component underTest = Component.builder()
-                .state(initialState)
-                .build();
-        FakeStateUpdateAction action = new FakeStateUpdateAction(updatedState);
-
-        // When
-        Component returnValue = underTest.withUpdatedState(action::apply);
-
-        // Then
-        assertThat(returnValue).isEqualTo(underTest.withState(updatedState));
-        assertThat(action.calls).containsExactly(initialState);
-    }
-
-    private ComponentState createState(int stateNumber) {
-        return ComponentState.builder()
-                .environments(List.of(
-                        EnvironmentState.builder()
-                                .id("test-environment-id-" + stateNumber)
-                                .build()
-                ))
-                .build();
-    }
-
-    @RequiredArgsConstructor
-    private static class FakeStateUpdateAction {
-
-        private final ComponentState updatedState;
-        private final List<ComponentState> calls = new ArrayList<>();
-
-        public ComponentState apply(ComponentState value) {
-            calls.add(value);
-            return updatedState;
-        }
-    }
-
-    private final ObjectMapper objectMapper = new JsonMapper();
-
     @SneakyThrows
     @Test
     public void tagsShouldDeserializeFromJsonString() {
@@ -377,5 +325,180 @@ public class ComponentTest {
                         .build()
         );
         assertThat(returnValue.getTags().get(0)).isInstanceOf(Tag.class);
+    }
+
+    @Test
+    public void withUpdatedStateShouldPassANewStateObjectToActionWhenStateIsNull() {
+        // Given
+        ComponentState updatedState = createState(1);
+        Component underTest = Component.builder().build();
+        FakeStateUpdateAction action = new FakeStateUpdateAction(updatedState);
+
+        // When
+        Component returnValue = underTest.withUpdatedState(action::apply);
+
+        // Then
+        assertThat(returnValue).isEqualTo(underTest.withState(updatedState));
+        assertThat(action.calls).containsExactly(ComponentState.builder().build());
+    }
+
+    @Test
+    public void withUpdatedStateShouldPassExistingStateObjectToActionWhenStateIsNotNull() {
+        // Given
+        ComponentState initialState = createState(1);
+        ComponentState updatedState = createState(2);
+        Component underTest = Component.builder()
+                .state(initialState)
+                .build();
+        FakeStateUpdateAction action = new FakeStateUpdateAction(updatedState);
+
+        // When
+        Component returnValue = underTest.withUpdatedState(action::apply);
+
+        // Then
+        assertThat(returnValue).isEqualTo(underTest.withState(updatedState));
+        assertThat(action.calls).containsExactly(initialState);
+    }
+    
+    @Test
+    public void addImportsWhenThereAreNoExistingImportsShouldAddImportsToExistingImports() {
+        // Given
+        List<Import> newImports = List.of(
+                createImport(1),
+                createImport(2)
+        );
+        Component underTest = Component.builder().build();
+
+        // When
+        underTest = underTest.addImports(newImports);
+
+        // When
+        assertThat(underTest.getImports()).containsExactlyElementsOf(newImports);
+    }
+
+    @Test
+    public void addImportsWhenThereAreExistingImportsShouldAddImportsToExistingImports() {
+        // Given
+        List<Import> existingImports = List.of(
+                createImport(3),
+                createImport(4)
+        );
+        List<Import> newImports = List.of(
+                createImport(1),
+                createImport(2)
+        );
+        Component underTest = Component.builder()
+                .imports(existingImports)
+                .build();
+
+        // When
+        underTest = underTest.addImports(newImports);
+
+        // When
+        assertThat(underTest.getImports()).containsExactlyElementsOf(
+                unmodifiableUnionOfLists(List.of(existingImports, newImports))
+        );
+    }
+
+    @Test
+    public void addSoftwareRepositoriesWhenThereAreNoExistingSoftwareRepositoriesShouldAddSoftwareRepositoriesToExistingSoftwareRepositories() {
+        // Given
+        List<SoftwareRepository> newSoftwareRepositories = List.of(
+                createSoftwareRepository(1),
+                createSoftwareRepository(2)
+        );
+        Component underTest = Component.builder().build();
+
+        // When
+        underTest = underTest.addSoftwareRepositories(newSoftwareRepositories);
+
+        // When
+        assertThat(underTest.getSoftwareRepositories()).containsExactlyElementsOf(newSoftwareRepositories);
+    }
+
+    @Test
+    public void addSoftwareRepositoriesWhenThereAreExistingSoftwareRepositoriesShouldAddSoftwareRepositoriesToExistingSoftwareRepositories() {
+        // Given
+        List<SoftwareRepository> existingSoftwareRepositories = List.of(
+                createSoftwareRepository(3),
+                createSoftwareRepository(4)
+        );
+        List<SoftwareRepository> newSoftwareRepositories = List.of(
+                createSoftwareRepository(1),
+                createSoftwareRepository(2)
+        );
+        Component underTest = Component.builder()
+                .softwareRepositories(existingSoftwareRepositories)
+                .build();
+
+        // When
+        underTest = underTest.addSoftwareRepositories(newSoftwareRepositories);
+
+        // When
+        assertThat(underTest.getSoftwareRepositories()).containsExactlyElementsOf(
+                unmodifiableUnionOfLists(List.of(existingSoftwareRepositories, newSoftwareRepositories))
+        );
+    }
+
+    @Test
+    public void addSoftwareWhenThereAreNoExistingSoftwareShouldAddSoftwareToExistingSoftware() {
+        // Given
+        List<Software> newSoftware = List.of(
+                createSoftware(1),
+                createSoftware(2)
+        );
+        Component underTest = Component.builder().build();
+
+        // When
+        underTest = underTest.addSoftware(newSoftware);
+
+        // When
+        assertThat(underTest.getSoftware()).containsExactlyElementsOf(newSoftware);
+    }
+
+    @Test
+    public void addSoftwareWhenThereAreExistingSoftwareShouldAddSoftwareToExistingSoftware() {
+        // Given
+        List<Software> existingSoftware = List.of(
+                createSoftware(3),
+                createSoftware(4)
+        );
+        List<Software> newSoftware = List.of(
+                createSoftware(1),
+                createSoftware(2)
+        );
+        Component underTest = Component.builder()
+                .software(existingSoftware)
+                .build();
+
+        // When
+        underTest = underTest.addSoftware(newSoftware);
+
+        // When
+        assertThat(underTest.getSoftware()).containsExactlyElementsOf(
+                unmodifiableUnionOfLists(List.of(existingSoftware, newSoftware))
+        );
+    }
+
+    private ComponentState createState(int stateNumber) {
+        return ComponentState.builder()
+                .environments(List.of(
+                        EnvironmentState.builder()
+                                .id("test-environment-id-" + stateNumber)
+                                .build()
+                ))
+                .build();
+    }
+
+    @RequiredArgsConstructor
+    private static class FakeStateUpdateAction {
+
+        private final ComponentState updatedState;
+        private final List<ComponentState> calls = new ArrayList<>();
+
+        public ComponentState apply(ComponentState value) {
+            calls.add(value);
+            return updatedState;
+        }
     }
 }

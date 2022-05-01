@@ -890,7 +890,7 @@ public class ComponentRepositoryTest {
         }
 
         @Override
-        public Output<Object> scan(ObjectWithReference input) {
+        public Output<Object, Component> scan(ObjectWithReference input) {
             return null;
         }
     }

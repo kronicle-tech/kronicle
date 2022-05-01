@@ -9,6 +9,7 @@ import tech.kronicle.pluginapi.finders.models.GenericSpan;
 import tech.kronicle.pluginapi.finders.models.GenericTag;
 import tech.kronicle.pluginapi.finders.models.GenericTrace;
 import tech.kronicle.pluginapi.finders.models.TracingData;
+import tech.kronicle.pluginapi.scanners.models.Output;
 import tech.kronicle.plugins.zipkin.client.ZipkinClient;
 import tech.kronicle.plugins.zipkin.config.ZipkinConfig;
 import tech.kronicle.plugins.zipkin.services.SubComponentDependencyTagFilter;
@@ -30,6 +31,7 @@ import static tech.kronicle.utils.JsonMapperFactory.createJsonMapper;
 public class ZipkinTracingDataFinderTest {
 
     private static final int PORT = 36206;
+    private static final Duration CACHE_TTL = Duration.ofHours(1);
 
     private final ZipkinWireMockFactory zipkinWireMockFactory = new ZipkinWireMockFactory();
     private final RetryConfig retryConfig = RetryConfig.custom()
@@ -89,10 +91,6 @@ public class ZipkinTracingDataFinderTest {
                 + "* Calculate the response time percentiles for each service and span name combination");
     }
 
-    private GenericTrace createTrace(GenericSpan... spans) {
-        return GenericTrace.builder().spans(List.of(spans)).build();
-    }
-
     @Test
     public void findShouldReturnTraces() {
         // Given
@@ -104,11 +102,10 @@ public class ZipkinTracingDataFinderTest {
         ComponentMetadata componentMetadata = ComponentMetadata.builder().components(List.of(component)).build();
 
         // When
-        TracingData returnValue = underTest.find(componentMetadata);
+        Output<TracingData, Void> returnValue = underTest.find(componentMetadata);
 
         // Then
-        assertThat(returnValue.getDependencies()).isEmpty();
-        assertThat(returnValue.getTraces()).containsExactly(
+        List<GenericTrace> expectedTraces = List.of(
                 createTrace(
                         createSpan("1", "1"),
                         createSpan("1b", "1b")
@@ -142,7 +139,13 @@ public class ZipkinTracingDataFinderTest {
                         createSpan("2", "2")
                 )
         );
-      }
+        assertThat(returnValue.getOutput().getDependencies()).isEmpty();
+        assertThat(returnValue.getOutput().getTraces()).containsExactlyElementsOf(expectedTraces);
+        assertThat(returnValue).isEqualTo(Output.ofOutput(
+                new TracingData(List.of(), expectedTraces),
+                CACHE_TTL
+        ));
+    }
 
     private GenericSpan createSpan(String serviceUniqueText, String spanUniqueText) {
         return GenericSpan.builder()
@@ -154,6 +157,10 @@ public class ZipkinTracingDataFinderTest {
                 .timestamp(1609459200000000L)
                 .duration(123L)
                 .build();
+    }
+
+    private GenericTrace createTrace(GenericSpan... spans) {
+        return GenericTrace.builder().spans(List.of(spans)).build();
     }
 
     private void createZipkinTracingDataFinder() {

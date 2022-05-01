@@ -9,6 +9,7 @@ import tech.kronicle.gradlestaticanalyzer.GradleStaticAnalyzer;
 import tech.kronicle.pluginapi.scanners.CodebaseScanner;
 import tech.kronicle.pluginapi.scanners.models.Codebase;
 import tech.kronicle.pluginapi.scanners.models.Output;
+import tech.kronicle.sdk.models.Component;
 import tech.kronicle.sdk.models.ScannerError;
 import tech.kronicle.sdk.models.Software;
 import tech.kronicle.sdk.models.SoftwareRepository;
@@ -16,6 +17,7 @@ import tech.kronicle.sdk.models.gradle.Gradle;
 import tech.kronicle.utils.ThrowableToScannerErrorMapper;
 
 import javax.inject.Inject;
+import java.time.Duration;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -23,6 +25,8 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor(onConstructor = @__({@Inject}))
 @Slf4j
 public class GradleScanner extends CodebaseScanner {
+
+    private static final Duration CACHE_TTL = Duration.ofHours(1);
 
     private final GradleStaticAnalyzer gradleStaticAnalyzer;
     private final ThrowableToScannerErrorMapper throwableToScannerErrorMapper;
@@ -47,25 +51,29 @@ public class GradleScanner extends CodebaseScanner {
     }
 
     @Override
-    public Output<Void> scan(Codebase input) {
+    public Output<Void, Component> scan(Codebase input) {
         log.info("Starting Gradle scan of codebase \"" + StringEscapeUtils.escapeString(input.getDir().toString()) + "\"");
         GradleAnalysis gradleAnalysis;
 
         try {
             gradleAnalysis = gradleStaticAnalyzer.analyzeCodebase(input.getDir());
         } catch (Exception e) {
-            return Output.of(new ScannerError(id(), "Failed to scan codebase", throwableToScannerErrorMapper.map(id(), e)));
+            return Output.ofError(
+                    new ScannerError(
+                            id(),
+                            "Failed to scan codebase",
+                            throwableToScannerErrorMapper.map(id(), e)
+                    ),
+                    CACHE_TTL
+            );
         }
 
-        return Output.of(component -> component.withGradle(new Gradle(gradleAnalysis.getGradleIsUsed()))
-                .withSoftwareRepositories(replaceScannerItemsInList(
-                        component.getSoftwareRepositories(),
-                        setScannerIdOnSoftwareRepositories(gradleAnalysis.getSoftwareRepositories()))
-                )
-                .withSoftware(replaceScannerItemsInList(
-                        component.getSoftware(),
-                        setScannerIdOnSoftware(gradleAnalysis.getSoftware())
-                )));
+        return Output.ofTransformer(
+                component -> component.withGradle(new Gradle(gradleAnalysis.getGradleIsUsed()))
+                        .addSoftwareRepositories(setScannerIdOnSoftwareRepositories(gradleAnalysis.getSoftwareRepositories()))
+                        .addSoftware(setScannerIdOnSoftware(gradleAnalysis.getSoftware())),
+                CACHE_TTL
+        );
     }
 
     private List<SoftwareRepository> setScannerIdOnSoftwareRepositories(List<SoftwareRepository> softwareRepositories) {

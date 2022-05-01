@@ -5,9 +5,11 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import tech.kronicle.pluginapi.scanners.models.Output;
 import tech.kronicle.sdk.models.Repo;
 import tech.kronicle.plugins.bitbucketserver.client.BitbucketServerClient;
 
+import java.time.Duration;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -15,6 +17,8 @@ import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
 public class BitbucketServerRepoFinderTest {
+
+    private static final Duration CACHE_TTL = Duration.ofHours(1);
 
     private BitbucketServerRepoFinder underTest;
     @Mock
@@ -50,10 +54,10 @@ public class BitbucketServerRepoFinderTest {
         when(mockClient.getNormalRepos()).thenReturn(repos);
 
         // When
-        List<Repo> returnValue = underTest.find(null);
+        Output<List<Repo>, Void> returnValue = underTest.find(null);
 
         // Then
-        assertThat(returnValue).isSameAs(repos);
+        assertThat(returnValue).isEqualTo(Output.ofOutput(repos, CACHE_TTL));
     }
 
     @Test
@@ -63,9 +67,9 @@ public class BitbucketServerRepoFinderTest {
         when(mockClient.getNormalRepos()).thenReturn(repos);
 
         // When
-        List<Repo> returnValue = underTest.find(null);
+        Output<List<Repo>, Void> returnValue = underTest.find(null);
 
         // Then
-        assertThat(returnValue).isSameAs(repos);
+        assertThat(returnValue).isEqualTo(Output.ofOutput(repos, CACHE_TTL));
     }
 }

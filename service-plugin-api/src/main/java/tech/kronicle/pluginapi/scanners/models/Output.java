@@ -1,116 +1,62 @@
 package tech.kronicle.pluginapi.scanners.models;
 
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
 import lombok.Value;
-import tech.kronicle.sdk.models.Component;
 import tech.kronicle.sdk.models.ScannerError;
 
 import javax.validation.constraints.NotNull;
+import java.time.Duration;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+import java.util.function.Function;
 import java.util.function.UnaryOperator;
 
+import static java.util.Objects.nonNull;
 import static java.util.Objects.requireNonNull;
+import static tech.kronicle.sdk.utils.ListUtils.createUnmodifiableList;
 
 @Value
-public class Output<O> {
+public class Output<O, T> {
 
     O output;
-    UnaryOperator<Component> componentTransformer;
+    UnaryOperator<T> transformer;
     @NotNull
     List<ScannerError> errors;
+    Duration cacheTtl;
 
-    private Output(UnaryOperator<Component> componentTransformer) {
-        requireNonNull(componentTransformer, "componentTransformer");
-        this.componentTransformer = componentTransformer;
-        this.output = null;
-        this.errors = List.of();
-    }
-
-    private Output(UnaryOperator<Component> componentTransformer, ScannerError error) {
-        requireNonNull(componentTransformer, "componentTransformer");
-        requireNonNull(error, "error");
-        this.componentTransformer = componentTransformer;
-        this.output = null;
-        this.errors = List.of(error);
-    }
-
-    private Output(UnaryOperator<Component> componentTransformer, List<ScannerError> errors) {
-        requireNonNull(componentTransformer, "componentTransformer");
-        requireNonNull(errors, "errors");
-        this.componentTransformer = componentTransformer;
-        this.output = null;
-        this.errors = List.copyOf(errors);
-    }
-
-    private Output(UnaryOperator<Component> componentTransformer, O output) {
-        requireNonNull(componentTransformer, "componentTransformer");
-        requireNonNull(output, "output");
-        this.componentTransformer = componentTransformer;
+    public Output(O output, UnaryOperator<T> transformer, List<ScannerError> errors, Duration cacheTtl) {
         this.output = output;
-        this.errors = List.of();
+        this.transformer = transformer;
+        this.errors = createUnmodifiableList(errors);
+        this.cacheTtl = cacheTtl;
     }
 
-    private Output(UnaryOperator<Component> componentTransformer, O output, ScannerError error) {
-        requireNonNull(componentTransformer, "componentTransformer");
-        requireNonNull(output, "output");
-        requireNonNull(error, "error");
-        this.componentTransformer = componentTransformer;
-        this.output = output;
-        this.errors = List.of(error);
+    public static <O> Output<O, Void> ofOutput(O output, Duration cacheTtl) {
+        return new Output<>(output, null, null, cacheTtl);
     }
 
-    private Output(UnaryOperator<Component> componentTransformer, O output, List<ScannerError> errors) {
-        requireNonNull(componentTransformer, "componentTransformer");
-        requireNonNull(output, "output");
+    public static <O, T> Output<O, T> ofTransformer(UnaryOperator<T> transformer, Duration cacheTtl) {
+        return new Output<>(null, transformer, null, cacheTtl);
+    }
+
+    public static <O, T> Output<O, T> ofErrors(List<ScannerError> errors, Duration cacheTtl) {
         requireNonNull(errors, "errors");
-        this.componentTransformer = componentTransformer;
-        this.output = output;
-        this.errors = List.copyOf(errors);
+        return new Output<>(null, null, errors, cacheTtl);
     }
 
-    private Output(ScannerError error) {
+    public static <O, T> Output<O, T> ofError(ScannerError error, Duration cacheTtl) {
         requireNonNull(error, "error");
-        this.componentTransformer = null;
-        this.output = null;
-        this.errors = List.of(error);
+        return new Output<>(null, null, List.of(error), cacheTtl);
     }
 
-    private Output(List<ScannerError> errors) {
-        requireNonNull(errors, "errors");
-        this.componentTransformer = null;
-        this.output = null;
-        this.errors = List.copyOf(errors);
+    public static <O, T> Output<O, T> empty(Duration cacheTtl) {
+        return new Output<>(null, null, null, cacheTtl);
     }
 
-    public static <O> Output<O> of(UnaryOperator<Component> componentTransformer) {
-        return new Output<>(componentTransformer);
-    }
-
-    public static <O> Output<O> of(UnaryOperator<Component> componentTransformer, ScannerError error) {
-        return new Output<>(componentTransformer, error);
-    }
-
-    public static <O> Output<O> of(UnaryOperator<Component> componentTransformer, List<ScannerError> errors) {
-        return new Output<>(componentTransformer, errors);
-    }
-
-    public static <O> Output<O> of(UnaryOperator<Component> componentTransformer, O output) {
-        return new Output<>(componentTransformer, output);
-    }
-
-    public static <O> Output<O> of(UnaryOperator<Component> componentTransformer, O output, ScannerError error) {
-        return new Output<>(componentTransformer, output, error);
-    }
-
-    public static <O> Output<O> of(UnaryOperator<Component> componentTransformer, O output, List<ScannerError> errors) {
-        return new Output<>(componentTransformer, output, errors);
-    }
-
-    public static <O> Output<O> of(ScannerError error) {
-        return new Output<>(error);
-    }
-
-    public static <O> Output<O> of(List<ScannerError> errors) {
-        return new Output<>(errors);
+    public static OutputBuilder<Void, Void> builder(Duration cacheTtl) {
+        return new OutputBuilder<>(cacheTtl);
     }
 
     public boolean success() {
@@ -119,5 +65,54 @@ public class Output<O> {
 
     public boolean failed() {
         return !success();
+    }
+
+    public boolean hasOutput() {
+        return nonNull(output);
+    }
+
+    public <O2> Optional<O2> mapOutput(Function<O, O2> mapper) {
+        return Optional.ofNullable(output).map(mapper);
+    }
+
+    public O getOutputOrElse(O other) {
+        return nonNull(output) ? output : other;
+    }
+
+    @AllArgsConstructor(access = AccessLevel.PRIVATE)
+    public static class OutputBuilder<O, T> {
+
+        private O output;
+        private UnaryOperator<T> transformer;
+        private List<ScannerError> errors = new ArrayList<>();
+        private Duration cacheTtl;
+
+        public OutputBuilder(Duration cacheTtl) {
+            this.cacheTtl = cacheTtl;
+        }
+
+        public <O2> OutputBuilder<O2, T> output(O2 output) {
+            return new OutputBuilder<>(output, transformer, errors, cacheTtl);
+        }
+
+        public <T2> OutputBuilder<O, T2> transformer(UnaryOperator<T2> transformer) {
+            return new OutputBuilder<>(output, transformer, errors, cacheTtl);
+        }
+
+        public OutputBuilder<O, T> errors(List<ScannerError> errors) {
+            requireNonNull(errors, "errors");
+            this.errors = new ArrayList<>(errors);
+            return this;
+        }
+
+        public OutputBuilder<O, T> error(ScannerError error) {
+            requireNonNull(error, "error");
+            this.errors.add(error);
+            return this;
+        }
+
+        public Output<O, T> build() {
+            return new Output<>(output, transformer, errors, cacheTtl);
+        }
     }
 }

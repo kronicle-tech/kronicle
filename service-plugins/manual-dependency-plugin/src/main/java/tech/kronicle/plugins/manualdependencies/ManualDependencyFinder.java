@@ -3,6 +3,7 @@ package tech.kronicle.plugins.manualdependencies;
 import org.pf4j.Extension;
 import tech.kronicle.pluginapi.finders.TracingDataFinder;
 import tech.kronicle.pluginapi.finders.models.TracingData;
+import tech.kronicle.pluginapi.scanners.models.Output;
 import tech.kronicle.sdk.constants.DependencyTypeIds;
 import tech.kronicle.sdk.models.Component;
 import tech.kronicle.sdk.models.ComponentDependency;
@@ -10,6 +11,7 @@ import tech.kronicle.sdk.models.ComponentMetadata;
 import tech.kronicle.sdk.models.Dependency;
 import tech.kronicle.sdk.models.DependencyDirection;
 
+import java.time.Duration;
 import java.util.Collection;
 import java.util.List;
 import java.util.Objects;
@@ -21,16 +23,21 @@ import static java.util.Objects.nonNull;
 @Extension
 public class ManualDependencyFinder extends TracingDataFinder {
 
+    private static final Duration CACHE_TTL = Duration.ZERO;
+
     @Override
     public String description() {
         return "Finds dependencies manually specified in kronicle.yaml files";
     }
 
     @Override
-    public TracingData find(ComponentMetadata componentMetadata) {
-        return TracingData.builder()
-                .dependencies(getDependencies(componentMetadata))
-                .build();
+    public Output<TracingData, Void> find(ComponentMetadata componentMetadata) {
+        return Output.ofOutput(
+                TracingData.builder()
+                        .dependencies(getDependencies(componentMetadata))
+                        .build(),
+                CACHE_TTL
+        );
     }
 
     private List<Dependency> getDependencies(ComponentMetadata componentMetadata) {

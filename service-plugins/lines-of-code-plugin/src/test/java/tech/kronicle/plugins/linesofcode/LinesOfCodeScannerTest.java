@@ -7,16 +7,20 @@ import tech.kronicle.pluginapi.scanners.models.Codebase;
 import tech.kronicle.pluginapi.scanners.models.Output;
 import tech.kronicle.plugins.linesofcode.services.LinesOfCodeCounter;
 import tech.kronicle.plugintestutils.scanners.BaseCodebaseScannerTest;
+import tech.kronicle.sdk.models.Component;
 import tech.kronicle.sdk.models.linesofcode.FileExtensionCount;
 import tech.kronicle.sdk.models.linesofcode.LinesOfCode;
 
 import java.io.IOException;
 import java.nio.file.Files;
+import java.time.Duration;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static tech.kronicle.utils.FileUtilsFactory.createFileUtils;
 
 public class LinesOfCodeScannerTest extends BaseCodebaseScannerTest {
+
+    private static final Duration CACHE_TTL = Duration.ofMinutes(15);
 
     private LinesOfCodeScanner underTest;
 
@@ -59,10 +63,10 @@ public class LinesOfCodeScannerTest extends BaseCodebaseScannerTest {
         Codebase codebase = new Codebase(getTestRepo(), getCodebaseDir("NoFiles"));
 
         // When
-        Output<Void> returnValue = underTest.scan(codebase);
+        Output<Void, Component> returnValue = underTest.scan(codebase);
 
         // Then
-        assertThat(returnValue.getErrors()).isEmpty();
+        assertThat(maskTransformer(returnValue)).isEqualTo(maskTransformer(Output.empty(CACHE_TTL)));
         LinesOfCode linesOfCode = getMutatedComponent(returnValue).getLinesOfCode();
         assertThat(linesOfCode).isNotNull();
         // The count includes the single line in the ".gitignore" file
@@ -77,10 +81,10 @@ public class LinesOfCodeScannerTest extends BaseCodebaseScannerTest {
         Codebase codebase = new Codebase(getTestRepo(), getCodebaseDir("SingleFileWithTerminatingNewLine"));
 
         // When
-        Output<Void> returnValue = underTest.scan(codebase);
+        Output<Void, Component> returnValue = underTest.scan(codebase);
 
         // Then
-        assertThat(returnValue.getErrors()).isEmpty();
+        assertThat(maskTransformer(returnValue)).isEqualTo(maskTransformer(Output.empty(CACHE_TTL)));
         LinesOfCode linesOfCode = getMutatedComponent(returnValue).getLinesOfCode();
         assertThat(linesOfCode).isNotNull();
         assertThat(linesOfCode.getCount()).isEqualTo(3);
@@ -94,10 +98,10 @@ public class LinesOfCodeScannerTest extends BaseCodebaseScannerTest {
         Codebase codebase = new Codebase(getTestRepo(), getCodebaseDir("SingleFileWithNoTerminatingNewLine"));
 
         // When
-        Output<Void> returnValue = underTest.scan(codebase);
+        Output<Void, Component> returnValue = underTest.scan(codebase);
 
         // Then
-        assertThat(returnValue.getErrors()).isEmpty();
+        assertThat(maskTransformer(returnValue)).isEqualTo(maskTransformer(Output.empty(CACHE_TTL)));
         LinesOfCode linesOfCode = getMutatedComponent(returnValue).getLinesOfCode();
         assertThat(linesOfCode).isNotNull();
         assertThat(linesOfCode.getCount()).isEqualTo(2);
@@ -111,10 +115,10 @@ public class LinesOfCodeScannerTest extends BaseCodebaseScannerTest {
         Codebase codebase = new Codebase(getTestRepo(), getCodebaseDir("MultipleFilesWithDifferentFileExtensions"));
 
         // When
-        Output<Void> returnValue = underTest.scan(codebase);
+        Output<Void, Component> returnValue = underTest.scan(codebase);
 
         // Then
-        assertThat(returnValue.getErrors()).isEmpty();
+        assertThat(maskTransformer(returnValue)).isEqualTo(maskTransformer(Output.empty(CACHE_TTL)));
         LinesOfCode linesOfCode = getMutatedComponent(returnValue).getLinesOfCode();
         assertThat(linesOfCode).isNotNull();
         assertThat(linesOfCode.getCount()).isEqualTo(5);
@@ -129,10 +133,10 @@ public class LinesOfCodeScannerTest extends BaseCodebaseScannerTest {
         Codebase codebase = new Codebase(getTestRepo(), getCodebaseDir("MultipleFilesWithSameFileExtension"));
 
         // When
-        Output<Void> returnValue = underTest.scan(codebase);
+        Output<Void, Component> returnValue = underTest.scan(codebase);
 
         // Then
-        assertThat(returnValue.getErrors()).isEmpty();
+        assertThat(maskTransformer(returnValue)).isEqualTo(maskTransformer(Output.empty(CACHE_TTL)));
         LinesOfCode linesOfCode = getMutatedComponent(returnValue).getLinesOfCode();
         assertThat(linesOfCode).isNotNull();
         assertThat(linesOfCode.getCount()).isEqualTo(5);
@@ -146,10 +150,10 @@ public class LinesOfCodeScannerTest extends BaseCodebaseScannerTest {
         Codebase codebase = new Codebase(getTestRepo(), getCodebaseDir("Subdirectories"));
 
         // When
-        Output<Void> returnValue = underTest.scan(codebase);
+        Output<Void, Component> returnValue = underTest.scan(codebase);
 
         // Then
-        assertThat(returnValue.getErrors()).isEmpty();
+        assertThat(maskTransformer(returnValue)).isEqualTo(maskTransformer(Output.empty(CACHE_TTL)));
         LinesOfCode linesOfCode = getMutatedComponent(returnValue).getLinesOfCode();
         assertThat(linesOfCode).isNotNull();
         assertThat(linesOfCode.getCount()).isEqualTo(6);
@@ -164,10 +168,10 @@ public class LinesOfCodeScannerTest extends BaseCodebaseScannerTest {
         assertThat(Files.readString(codebase.getDir().resolve("binary_file.bin"))).isEqualTo(Character.valueOf((char) Ascii.VT).toString().repeat(100));
 
         // When
-        Output<Void> returnValue = underTest.scan(codebase);
+        Output<Void, Component> returnValue = underTest.scan(codebase);
 
         // Then
-        assertThat(returnValue.getErrors()).isEmpty();
+        assertThat(maskTransformer(returnValue)).isEqualTo(maskTransformer(Output.empty(CACHE_TTL)));
         LinesOfCode linesOfCode = getMutatedComponent(returnValue).getLinesOfCode();
         assertThat(linesOfCode).isNotNull();
         assertThat(linesOfCode.getCount()).isEqualTo(1);
@@ -182,10 +186,10 @@ public class LinesOfCodeScannerTest extends BaseCodebaseScannerTest {
         Codebase codebase = new Codebase(getTestRepo(), getCodebaseDir("SortMultipleFilesByLinesOfCode"));
 
         // When
-        Output<Void> returnValue = underTest.scan(codebase);
+        Output<Void, Component> returnValue = underTest.scan(codebase);
 
         // Then
-        assertThat(returnValue.getErrors()).isEmpty();
+        assertThat(maskTransformer(returnValue)).isEqualTo(maskTransformer(Output.empty(CACHE_TTL)));
         LinesOfCode linesOfCode = getMutatedComponent(returnValue).getLinesOfCode();
         assertThat(linesOfCode).isNotNull();
         assertThat(linesOfCode.getCount()).isEqualTo(6);

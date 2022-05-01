@@ -6,18 +6,22 @@ import tech.kronicle.pluginapi.scanners.CodebaseScanner;
 import tech.kronicle.pluginapi.scanners.models.Codebase;
 import tech.kronicle.pluginapi.scanners.models.Output;
 import tech.kronicle.plugins.readme.services.ReadmeFileNameChecker;
+import tech.kronicle.sdk.models.Component;
 import tech.kronicle.utils.FileUtils;
 import tech.kronicle.sdk.models.readme.Readme;
 
 import javax.inject.Inject;
 import java.nio.file.Path;
 import java.nio.file.attribute.BasicFileAttributes;
+import java.time.Duration;
 import java.util.Comparator;
 import java.util.Optional;
 
 @Extension
 @RequiredArgsConstructor(onConstructor = @__({@Inject}))
 public class ReadmeScanner extends CodebaseScanner {
+
+    private static final Duration CACHE_TTL = Duration.ofMinutes(15);
 
     private static final int SEARCH_ONLY_ROOT_DIRECTORY = 1;
     private static final Comparator<Path> PATH_FILE_NAME_COMPARATOR = Comparator.comparing(path -> path.getFileName().toString());
@@ -36,7 +40,7 @@ public class ReadmeScanner extends CodebaseScanner {
     }
 
     @Override
-    public Output<Void> scan(Codebase input) {
+    public Output<Void, Component> scan(Codebase input) {
         Optional<Path> optionalReadmeFile = fileUtils.findFiles(input.getDir(), SEARCH_ONLY_ROOT_DIRECTORY, this::pathIsReadme)
                 .sorted(PATH_FILE_NAME_COMPARATOR)
                 .findFirst();
@@ -44,7 +48,10 @@ public class ReadmeScanner extends CodebaseScanner {
         Readme readme = optionalReadmeFile
                 .map(readmeFile -> new Readme(readmeFile.getFileName().toString(), fileUtils.readFileContent(readmeFile)))
                 .orElse(null);
-        return Output.of(component -> component.withReadme(readme));
+        return Output.ofTransformer(
+                component -> component.withReadme(readme),
+                CACHE_TTL
+        );
     }
 
     private boolean pathIsReadme(Path path, BasicFileAttributes attributes) {

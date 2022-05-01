@@ -17,16 +17,18 @@ import tech.kronicle.pluginapi.scanners.RepoScanner;
 import tech.kronicle.pluginapi.scanners.models.Codebase;
 import tech.kronicle.pluginapi.scanners.models.Output;
 import tech.kronicle.plugins.git.config.GitConfig;
-import tech.kronicle.utils.ThrowableToScannerErrorMapper;
+import tech.kronicle.sdk.models.Component;
 import tech.kronicle.sdk.models.RepoReference;
 import tech.kronicle.sdk.models.ScannerError;
 import tech.kronicle.sdk.models.git.GitRepo;
 import tech.kronicle.sdk.models.git.Identity;
+import tech.kronicle.utils.ThrowableToScannerErrorMapper;
 
 import javax.inject.Inject;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
 import java.util.ArrayList;
@@ -35,7 +37,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
-import java.util.function.UnaryOperator;
 import java.util.stream.Collectors;
 
 import static java.util.Objects.isNull;
@@ -44,6 +45,8 @@ import static java.util.Objects.nonNull;
 @Extension
 @RequiredArgsConstructor(onConstructor = @__({@Inject}))
 public class GitScanner extends RepoScanner {
+
+    private static final Duration CACHE_TTL = Duration.ofMinutes(5);
 
     private final GitCloner gitCloner;
     private final ThrowableToScannerErrorMapper throwableToScannerErrorMapper;
@@ -61,16 +64,23 @@ public class GitScanner extends RepoScanner {
     }
 
     @Override
-    public Output<Codebase> scan(RepoReference input) {
+    public Output<Codebase, Component> scan(RepoReference input) {
         if (input.getUrl().startsWith("https://github.com/DecisionTechnologies/")) {
             Path repoDir = Path.of(config.getReposDir()).resolve("empty");
             try {
                 Files.createDirectories(repoDir);
             } catch (IOException e) {
-                return Output.of(new ScannerError(id(), "Failed to scan Git repo", throwableToScannerErrorMapper.map(id(), e)));
+                return Output.ofError(
+                        new ScannerError(
+                                id(),
+                                "Failed to scan Git repo",
+                                throwableToScannerErrorMapper.map(id(), e)
+                        ),
+                        CACHE_TTL
+                );
             }
             Codebase codebase = new Codebase(input, repoDir);
-            return Output.of(UnaryOperator.identity(), codebase);
+            return new Output<>(codebase, null, null, CACHE_TTL);
         }
 
         Path repoDir = gitCloner.cloneOrPullRepo(input.getUrl());
@@ -83,9 +93,18 @@ public class GitScanner extends RepoScanner {
             Codebase codebase = new Codebase(input, repoDir);
             GitRepo gitRepo = new GitRepo(firstCommitTimestamp, lastCommitTimestamp, commitStats.commitCount, commitStats.authors, commitStats.committers,
                     commitStats.authors.size(), commitStats.committers.size());
-            return Output.of(component -> component.withGitRepo(gitRepo), codebase);
+            return new Output<>(codebase, component -> component.withGitRepo(gitRepo), null, CACHE_TTL);
         } catch (Exception e) {
-            return Output.of(new ScannerError(id(), "Failed to scan Git repo", throwableToScannerErrorMapper.map(id(), e)));
+            return new Output<>(
+                    null,
+                    null,
+                    List.of(new ScannerError(
+                            id(),
+                            "Failed to scan Git repo",
+                            throwableToScannerErrorMapper.map(id(), e)
+                    )),
+                    CACHE_TTL
+            );
         }
     }
 

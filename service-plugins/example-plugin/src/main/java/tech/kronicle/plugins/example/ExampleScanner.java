@@ -14,7 +14,7 @@ public class ExampleScanner extends ComponentScanner {
     }
 
     @Override
-    public Output<Void> scan(Component input) {
+    public Output<Void, Component> scan(Component input) {
         throw new IllegalStateException("Not implemented");
     }
 }

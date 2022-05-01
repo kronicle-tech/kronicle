@@ -4,9 +4,11 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import tech.kronicle.pluginapi.scanners.models.Output;
 import tech.kronicle.plugins.gitlab.services.CachingRepoFetcher;
 import tech.kronicle.sdk.models.Repo;
 
+import java.time.Duration;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -15,6 +17,8 @@ import static tech.kronicle.plugins.gitlab.testutils.RepoUtils.createRepos;
 
 @ExtendWith(MockitoExtension.class)
 public class GitLabRepoFinderTest {
+
+    private static final Duration CACHE_TTL = Duration.ZERO;
 
     @Mock
     private CachingRepoFetcher mockFetcher;
@@ -39,9 +43,9 @@ public class GitLabRepoFinderTest {
         GitLabRepoFinder underTest = new GitLabRepoFinder(mockFetcher);
 
         // When
-        List<Repo> returnValue = underTest.find(null);
+        Output<List<Repo>, Void> returnValue = underTest.find(null);
 
         // Then
-        assertThat(returnValue).isEqualTo(repos);
+        assertThat(returnValue).isEqualTo(Output.ofOutput(repos, CACHE_TTL));
     }
 }

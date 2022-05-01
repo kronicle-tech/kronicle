@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import tech.kronicle.pluginapi.scanners.models.Output;
 import tech.kronicle.sdk.models.Repo;
 import tech.kronicle.plugins.github.client.GitHubClient;
 import tech.kronicle.plugins.github.config.GitHubAccessTokenConfig;
@@ -17,12 +18,14 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import static java.util.stream.Collectors.toUnmodifiableList;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
 public class GitHubRepoFinderTest {
 
+    private static final Duration CACHE_TTL = Duration.ofMinutes(15);
     private static final GitHubAccessTokenConfig ACCESS_TOKEN_1 = createAccessToken(1);
     private static final GitHubAccessTokenConfig ACCESS_TOKEN_2 = createAccessToken(2);
     private static final GitHubAccessTokenConfig ACCESS_TOKEN_3 = createAccessToken(3);
@@ -63,10 +66,10 @@ public class GitHubRepoFinderTest {
         underTest = new GitHubRepoFinder(config, mockClient);
 
         // When
-        List<Repo> returnValue = underTest.find(null);
+        Output<List<Repo>, Void> returnValue = underTest.find(null);
 
         // Then
-        assertThat(returnValue).isEmpty();
+        assertThat(returnValue).isEqualTo(Output.ofOutput(List.of(), CACHE_TTL));
     }
 
     @Test
@@ -76,10 +79,10 @@ public class GitHubRepoFinderTest {
         underTest = new GitHubRepoFinder(config, mockClient);
 
         // When
-        List<Repo> returnValue = underTest.find(null);
+        Output<List<Repo>, Void> returnValue = underTest.find(null);
 
         // Then
-        assertThat(returnValue).isEmpty();
+        assertThat(returnValue).isEqualTo(Output.ofOutput(List.of(), CACHE_TTL));
     }
 
     @Test
@@ -102,13 +105,14 @@ public class GitHubRepoFinderTest {
         underTest = new GitHubRepoFinder(config, mockClient);
 
         // When
-        List<Repo> returnValue = underTest.find(null);
+        Output<List<Repo>, Void> returnValue = underTest.find(null);
 
         // Then
         List<Repo> allRepos = Stream.of(repos1, repos2, repos3)
                 .flatMap(Collection::stream)
-                .collect(Collectors.toList());
-        assertThat(returnValue).containsExactlyInAnyOrderElementsOf(allRepos);
+                .collect(toUnmodifiableList());
+        assertThat(returnValue.getOutput()).containsExactlyElementsOf(allRepos);
+        assertThat(returnValue).isEqualTo(Output.ofOutput(allRepos, CACHE_TTL));
     }
 
     @Test
@@ -142,13 +146,14 @@ public class GitHubRepoFinderTest {
         when(mockClient.getRepos(ORGANIZATION_3)).thenReturn(repos9);
         underTest = new GitHubRepoFinder(config, mockClient);
         // When
-        List<Repo> returnValue = underTest.find(null);
+        Output<List<Repo>, Void> returnValue = underTest.find(null);
 
         // Then
         List<Repo> allRepos = Stream.of(repos1, repos2, repos3, repos4, repos5, repos6, repos7, repos8, repos9)
                 .flatMap(Collection::stream)
-                .collect(Collectors.toList());
-        assertThat(returnValue).containsExactlyInAnyOrderElementsOf(allRepos);
+                .collect(toUnmodifiableList());
+        assertThat(returnValue.getOutput()).containsExactlyElementsOf(allRepos);
+        assertThat(returnValue).isEqualTo(Output.ofOutput(allRepos, CACHE_TTL));
     }
 
     @Test
@@ -168,10 +173,10 @@ public class GitHubRepoFinderTest {
         underTest = new GitHubRepoFinder(config, mockClient);
 
         // When
-        List<Repo> returnValue = underTest.find(null);
+        Output<List<Repo>, Void> returnValue = underTest.find(null);
 
         // Then
-        assertThat(returnValue).isEmpty();
+        assertThat(returnValue).isEqualTo(Output.ofOutput(List.of(), CACHE_TTL));
     }
 
     @Test
@@ -198,11 +203,11 @@ public class GitHubRepoFinderTest {
         when(mockClient.getRepos(ORGANIZATION_2)).thenReturn(repos2);
         underTest = new GitHubRepoFinder(config, mockClient);
         // When
-        List<Repo> returnValue = underTest.find(null);
+        Output<List<Repo>, Void> returnValue = underTest.find(null);
 
         // Then
-        assertThat(returnValue).hasSize(3);
-        assertThat(returnValue).containsExactly(repo1, repo2, repo3);
+        assertThat(returnValue.getOutput()).containsExactly(repo1, repo2, repo3);
+        assertThat(returnValue).isEqualTo(Output.ofOutput(List.of(repo1, repo2, repo3), CACHE_TTL));
     }
 
     private static GitHubAccessTokenConfig createAccessToken(int number) {

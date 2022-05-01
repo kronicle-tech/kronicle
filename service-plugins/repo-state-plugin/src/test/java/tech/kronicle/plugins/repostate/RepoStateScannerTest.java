@@ -2,6 +2,7 @@ package tech.kronicle.plugins.repostate;
 
 import org.junit.jupiter.api.Test;
 import tech.kronicle.pluginapi.scanners.models.Output;
+import tech.kronicle.plugintestutils.scanners.BaseScannerTest;
 import tech.kronicle.sdk.models.Component;
 import tech.kronicle.sdk.models.ComponentMetadata;
 import tech.kronicle.sdk.models.ComponentState;
@@ -9,12 +10,15 @@ import tech.kronicle.sdk.models.EnvironmentState;
 import tech.kronicle.sdk.models.Repo;
 import tech.kronicle.sdk.models.RepoReference;
 
+import java.time.Duration;
 import java.util.List;
 import java.util.function.UnaryOperator;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class RepoStateScannerTest {
+public class RepoStateScannerTest extends BaseScannerTest {
+
+    private static final Duration CACHE_TTL = Duration.ofMinutes(15);
 
     @Test
     public void idShouldReturnTheIdOfTheScanner() {
@@ -63,10 +67,10 @@ public class RepoStateScannerTest {
 
         // When
         underTest.refresh(componentMetadata);
-        Output<Void> returnValue = underTest.scan(component);
+        Output<Void, Component> returnValue = underTest.scan(component);
 
         // Then
-        assertThat(returnValue.getComponentTransformer()).isEqualTo(UnaryOperator.identity());
+        assertThat(returnValue).isEqualTo(Output.empty(CACHE_TTL));
     }
 
     @Test
@@ -81,10 +85,10 @@ public class RepoStateScannerTest {
 
         // When
         underTest.refresh(componentMetadata);
-        Output<Void> returnValue = underTest.scan(component);
+        Output<Void, Component> returnValue = underTest.scan(component);
 
         // Then
-        assertThat(returnValue.getComponentTransformer()).isEqualTo(UnaryOperator.identity());
+        assertThat(returnValue).isEqualTo(Output.empty(CACHE_TTL));
     }
 
     @Test
@@ -99,10 +103,10 @@ public class RepoStateScannerTest {
 
         // When
         underTest.refresh(componentMetadata);
-        Output<Void> returnValue = underTest.scan(component);
+        Output<Void, Component> returnValue = underTest.scan(component);
 
         // Then
-        assertThat(returnValue.getComponentTransformer()).isEqualTo(UnaryOperator.identity());
+        assertThat(returnValue).isEqualTo(Output.empty(CACHE_TTL));
     }
 
     @Test
@@ -120,10 +124,11 @@ public class RepoStateScannerTest {
 
         // When
         underTest.refresh(componentMetadata);
-        Output<Void> returnValue = underTest.scan(component);
+        Output<Void, Component> returnValue = underTest.scan(component);
 
         // Then
-        Component transformedComponent = returnValue.getComponentTransformer().apply(component);
+        assertThat(maskTransformer(returnValue)).isEqualTo(maskTransformer(Output.empty(CACHE_TTL)));
+        Component transformedComponent = getMutatedComponent(returnValue, component);
         assertThat(transformedComponent).isEqualTo(
                 component.withState(
                         ComponentState.builder()
