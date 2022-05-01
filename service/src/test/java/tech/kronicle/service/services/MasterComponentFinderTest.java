@@ -39,7 +39,7 @@ public class MasterComponentFinderTest {
     @BeforeEach
     public void beforeEach() {
         logCaptor = new LogCaptor(MasterComponentFinder.class);
-        taskExecutorLogCaptor = new LogCaptor(TaskExecutor.class);
+        taskExecutorLogCaptor = new LogCaptor(ExtensionExecutor.class);
     }
 
     @AfterEach
@@ -168,7 +168,7 @@ public class MasterComponentFinderTest {
     }
 
     private MasterComponentFinder createUnderTest() {
-        return new MasterComponentFinder(finderRegistry, new TaskExecutor(new ThrowableToScannerErrorMapper()));
+        return new MasterComponentFinder(finderRegistry, new ExtensionExecutor(new ThrowableToScannerErrorMapper()));
     }
 
     private Component createComponent(int componentNumber) {

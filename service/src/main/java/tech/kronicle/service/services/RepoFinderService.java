@@ -14,7 +14,7 @@ import java.util.stream.Collectors;
 public class RepoFinderService {
 
     private final FinderExtensionRegistry registry;
-    private final TaskExecutor executor;
+    private final ExtensionExecutor executor;
     private final RepoFilterService repoFilterService;
 
     public List<Repo> findRepos() {

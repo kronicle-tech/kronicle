@@ -15,7 +15,7 @@ import tech.kronicle.utils.ThrowableToScannerErrorMapper;
 @Service
 @RequiredArgsConstructor
 @Slf4j
-public class TaskExecutor {
+public class ExtensionExecutor {
 
     private final ThrowableToScannerErrorMapper throwableToScannerErrorMapper;
 

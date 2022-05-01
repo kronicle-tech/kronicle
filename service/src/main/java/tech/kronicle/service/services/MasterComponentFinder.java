@@ -22,7 +22,7 @@ import static tech.kronicle.utils.StreamUtils.distinctByKey;
 public class MasterComponentFinder {
 
     private final FinderExtensionRegistry registry;
-    private final TaskExecutor executor;
+    private final ExtensionExecutor executor;
 
     public List<Component> findComponents(ComponentMetadata componentMetadata) {
         return registry.getComponentFinders().stream()

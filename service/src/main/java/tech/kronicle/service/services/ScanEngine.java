@@ -47,7 +47,7 @@ public class ScanEngine {
     private final ComponentAliasMapCreator componentAliasMapCreator;
     private final ComponentAliasResolver componentAliasResolver;
     private final ScannerExtensionRegistry scannerRegistry;
-    private final TaskExecutor executor;
+    private final ExtensionExecutor executor;
     private final ValidatorService validatorService;
     private final ThrowableToScannerErrorMapper throwableToScannerErrorMapper;
 
