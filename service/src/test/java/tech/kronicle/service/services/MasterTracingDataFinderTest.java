@@ -40,7 +40,7 @@ public class MasterTracingDataFinderTest {
     @BeforeEach
     public void beforeEach() {
         logCaptor = new LogCaptor(MasterTracingDataFinder.class);
-        taskExecutorLogCaptor = new LogCaptor(TaskExecutor.class);
+        taskExecutorLogCaptor = new LogCaptor(ExtensionExecutor.class);
     }
 
     @AfterEach
@@ -99,6 +99,6 @@ public class MasterTracingDataFinderTest {
     }
 
     private MasterTracingDataFinder createUnderTest() {
-        return new MasterTracingDataFinder(finderRegistry, new TaskExecutor(new ThrowableToScannerErrorMapper()));
+        return new MasterTracingDataFinder(finderRegistry, new ExtensionExecutor(new ThrowableToScannerErrorMapper()));
     }
 }

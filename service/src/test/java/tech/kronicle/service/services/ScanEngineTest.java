@@ -89,7 +89,7 @@ public class ScanEngineTest {
                 componentAliasMapCreator,
                 componentAliasResolver,
                 scannerRegistry,
-                new TaskExecutor(throwableToScannerErrorMapper),
+                new ExtensionExecutor(throwableToScannerErrorMapper),
                 validatorService,
                 throwableToScannerErrorMapper
         );

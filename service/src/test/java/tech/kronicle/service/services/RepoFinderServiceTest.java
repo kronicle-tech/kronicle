@@ -103,7 +103,7 @@ public class RepoFinderServiceTest {
     private RepoFinderService createUnderTest() {
         return new RepoFinderService(
                 mockFinderExtensionRegistry,
-                new TaskExecutor(new ThrowableToScannerErrorMapper()),
+                new ExtensionExecutor(new ThrowableToScannerErrorMapper()),
                 mockRepoFilterService
         );
     }

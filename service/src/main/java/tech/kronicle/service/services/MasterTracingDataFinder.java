@@ -17,7 +17,7 @@ import java.util.stream.Collectors;
 public class MasterTracingDataFinder {
 
     private final FinderExtensionRegistry registry;
-    private final TaskExecutor executor;
+    private final ExtensionExecutor executor;
 
     public List<TracingData> findTracingData(ComponentMetadata componentMetadata) {
         return registry.getTracingDataFinders().stream()
