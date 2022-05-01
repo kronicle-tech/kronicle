@@ -7,6 +7,7 @@ import tech.kronicle.pluginapi.scanners.models.ComponentAndCodebase;
 import tech.kronicle.pluginapi.scanners.models.Output;
 import tech.kronicle.plugins.sonarqube.exceptions.SonarQubeScannerException;
 import tech.kronicle.plugins.sonarqube.services.SonarQubeService;
+import tech.kronicle.sdk.models.Component;
 import tech.kronicle.sdk.models.ComponentMetadata;
 import tech.kronicle.sdk.models.Dependency;
 import tech.kronicle.sdk.models.ScannerError;
@@ -15,12 +16,15 @@ import tech.kronicle.sdk.models.SummaryMissingComponent;
 import tech.kronicle.sdk.models.sonarqube.SonarQubeProject;
 
 import javax.inject.Inject;
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 
 @Extension
 @RequiredArgsConstructor(onConstructor = @__({@Inject}))
 public class SonarQubeScanner extends ComponentAndCodebaseScanner {
+
+    private static final Duration CACHE_TTL = Duration.ofMinutes(15);
 
     private final SonarQubeService service;
 
@@ -41,7 +45,7 @@ public class SonarQubeScanner extends ComponentAndCodebaseScanner {
     }
 
     @Override
-    public Output<Void> scan(ComponentAndCodebase input) {
+    public Output<Void, Component> scan(ComponentAndCodebase input) {
         try {
             return createOutput(service.findProjects(input.getCodebase().getDir()));
         } catch (SonarQubeScannerException e) {
@@ -61,11 +65,11 @@ public class SonarQubeScanner extends ComponentAndCodebaseScanner {
         return newList;
     }
 
-    private Output<Void> createOutput(List<SonarQubeProject> sonarQubeProjects) {
-        return Output.of(component -> component.withSonarQubeProjects(sonarQubeProjects));
+    private Output<Void, Component> createOutput(List<SonarQubeProject> sonarQubeProjects) {
+        return Output.ofTransformer(component -> component.withSonarQubeProjects(sonarQubeProjects), CACHE_TTL);
     }
 
-    private Output<Void> createOutput(SonarQubeScannerException e) {
-        return Output.of(ScannerError.builder().scannerId(id()).message(e.getMessage()).build());
+    private Output<Void, Component> createOutput(SonarQubeScannerException e) {
+        return Output.ofError(ScannerError.builder().scannerId(id()).message(e.getMessage()).build(), CACHE_TTL);
     }
 }

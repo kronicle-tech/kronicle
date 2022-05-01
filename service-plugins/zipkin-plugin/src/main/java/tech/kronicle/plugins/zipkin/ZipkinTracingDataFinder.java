@@ -5,6 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.pf4j.Extension;
 import tech.kronicle.pluginapi.finders.TracingDataFinder;
 import tech.kronicle.pluginapi.finders.models.TracingData;
+import tech.kronicle.pluginapi.scanners.models.Output;
 import tech.kronicle.plugins.zipkin.models.api.Service;
 import tech.kronicle.plugins.zipkin.models.api.Span;
 import tech.kronicle.plugins.zipkin.services.TraceMapper;
@@ -12,12 +13,15 @@ import tech.kronicle.plugins.zipkin.services.ZipkinService;
 import tech.kronicle.sdk.models.ComponentMetadata;
 
 import javax.inject.Inject;
+import java.time.Duration;
 import java.util.List;
 
 @Extension
 @Slf4j
 @RequiredArgsConstructor(onConstructor = @__({@Inject}))
 public class ZipkinTracingDataFinder extends TracingDataFinder {
+
+    private static final Duration CACHE_TTL = Duration.ofHours(1);
 
     private final ZipkinService zipkinService;
     private final TraceMapper traceMapper;
@@ -37,7 +41,7 @@ public class ZipkinTracingDataFinder extends TracingDataFinder {
     }
 
     @Override
-    public TracingData find(ComponentMetadata input) {
+    public Output<TracingData, Void> find(ComponentMetadata input) {
         log.info("Getting Zipkin services");
         List<Service> services = zipkinService.getServices();
         log.info("Retrieved {} Zipkin services", services.size());
@@ -46,9 +50,9 @@ public class ZipkinTracingDataFinder extends TracingDataFinder {
         log.info("Retrieved {} Zipkin traces", traces.size());
         log.info("Getting Zipkin component dependencies");
 
-        return new TracingData(
-                null,
-                traceMapper.mapTraces(traces)
+        return Output.ofOutput(
+                new TracingData(null, traceMapper.mapTraces(traces)),
+                CACHE_TTL
         );
     }
 }

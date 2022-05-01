@@ -23,7 +23,11 @@ dependencies {
 
     implementation project(":service-plugin-guice")
     implementation project(":service-utils")
-    implementation "tech.kronicle:gradle-static-analyzer:$gradleStaticAnalyzerVersion"
+    implementation("tech.kronicle:gradle-static-analyzer:$gradleStaticAnalyzerVersion") {
+        exclude group: 'tech.kronicle', module: 'kronicle-common'
+        exclude group: 'tech.kronicle', module: 'kronicle-sdk'
+        exclude group: 'tech.kronicle', module: 'kronicle-utils'
+    }
 
     testImplementation project(":service-plugin-test-utils")
     testImplementation "org.junit.jupiter:junit-jupiter"

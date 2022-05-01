@@ -7,6 +7,7 @@ import tech.kronicle.sdk.models.Component;
 import tech.kronicle.sdk.models.ComponentMetadata;
 import tech.kronicle.sdk.models.Repo;
 
+import java.time.Duration;
 import java.util.Map;
 import java.util.function.UnaryOperator;
 
@@ -15,6 +16,8 @@ import static tech.kronicle.utils.MapCollectors.toUnmodifiableMap;
 
 @Extension
 public class RepoStateScanner extends ComponentScanner {
+
+    private static final Duration CACHE_TTL = Duration.ofMinutes(15);
 
     private Map<String, Repo> repoUrlAndRepoMap;
 
@@ -31,19 +34,20 @@ public class RepoStateScanner extends ComponentScanner {
     }
 
     @Override
-    public Output<Void> scan(Component input) {
+    public Output<Void, Component> scan(Component input) {
         if (isNull(input.getRepo())) {
-            return Output.of(UnaryOperator.identity());
+            return Output.empty(CACHE_TTL);
         }
 
         Repo repo = repoUrlAndRepoMap.get(input.getRepo().getUrl());
 
         if (isNull(repo) || isNull(repo.getState())) {
-            return Output.of(UnaryOperator.identity());
+            return Output.empty(CACHE_TTL);
         }
 
-        return Output.of(component -> component.withUpdatedState(
-                state -> state.merge(repo.getState())
-        ));
+        return Output.ofTransformer(
+                component -> component.withUpdatedState(state -> state.merge(repo.getState())),
+                CACHE_TTL
+        );
     }
 }

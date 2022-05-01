@@ -13,6 +13,7 @@ import tech.kronicle.sdk.models.Software;
 import tech.kronicle.sdk.models.SoftwareDependencyType;
 import tech.kronicle.sdk.models.SoftwareScope;
 
+import java.time.Duration;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -21,6 +22,8 @@ import static tech.kronicle.utils.JsonMapperFactory.createJsonMapper;
 
 @Slf4j
 public class NodeJsScannerCodebaseTest extends BaseNodeJsScannerTest {
+
+    private static final Duration CACHE_TTL = Duration.ofMinutes(15);
 
     private final FileUtils fileUtils = createFileUtils();
     private final NodeJsScanner underTest = new NodeJsScanner(fileUtils, new NpmPackageExtractor(fileUtils, createJsonMapper()));
@@ -36,11 +39,11 @@ public class NodeJsScannerCodebaseTest extends BaseNodeJsScannerTest {
         Codebase codebase = new Codebase(getTestRepo(), getCodebaseDir("NoPackageLockFiles"));
 
         // When
-        Output<Void> output = underTest.scan(codebase);
+        Output<Void, Component> returnValue = underTest.scan(codebase);
 
         // Then
-        assertThat(output.getOutput()).isNull();
-        Component component = getMutatedComponent(output);
+        assertThat(maskTransformer(returnValue)).isEqualTo(maskTransformer(Output.empty(CACHE_TTL)));
+        Component component = getMutatedComponent(returnValue);
         assertThatNodeJsIsNotUsed(component);
         assertThat(getSoftwareRepositories(component)).isEmpty();
         List<Software> software = getSoftware(component);
@@ -53,11 +56,11 @@ public class NodeJsScannerCodebaseTest extends BaseNodeJsScannerTest {
         Codebase codebase = new Codebase(getTestRepo(), getCodebaseDir("NpmPackageLockButNoPackageJson"));
 
         // When
-        Output<Void> output = underTest.scan(codebase);
+        Output<Void, Component> returnValue = underTest.scan(codebase);
 
         // Then
-        assertThat(output.getOutput()).isNull();
-        Component component = getMutatedComponent(output);
+        assertThat(maskTransformer(returnValue)).isEqualTo(maskTransformer(Output.empty(CACHE_TTL)));
+        Component component = getMutatedComponent(returnValue);
         assertThatNodeJsIsUsed(component);
         assertThat(getSoftwareRepositories(component)).isEmpty();
         List<Software> software = getSoftware(component);
@@ -70,11 +73,11 @@ public class NodeJsScannerCodebaseTest extends BaseNodeJsScannerTest {
         Codebase codebase = new Codebase(getTestRepo(), getCodebaseDir("NpmPackageLockThatIsEmpty"));
 
         // When
-        Output<Void> output = underTest.scan(codebase);
+        Output<Void, Component> returnValue = underTest.scan(codebase);
 
         // Then
-        assertThat(output.getOutput()).isNull();
-        Component component = getMutatedComponent(output);
+        assertThat(maskTransformer(returnValue)).isEqualTo(maskTransformer(Output.empty(CACHE_TTL)));
+        Component component = getMutatedComponent(returnValue);
         assertThatNodeJsIsUsed(component);
         assertThat(getSoftwareRepositories(component)).isEmpty();
         List<Software> software = getSoftware(component);
@@ -87,11 +90,11 @@ public class NodeJsScannerCodebaseTest extends BaseNodeJsScannerTest {
         Codebase codebase = new Codebase(getTestRepo(), getCodebaseDir("NpmPackageLockWithSimpleDependency"));
 
         // When
-        Output<Void> output = underTest.scan(codebase);
+        Output<Void, Component> returnValue = underTest.scan(codebase);
 
         // Then
-        assertThat(output.getOutput()).isNull();
-        Component component = getMutatedComponent(output);
+        assertThat(maskTransformer(returnValue)).isEqualTo(maskTransformer(Output.empty(CACHE_TTL)));
+        Component component = getMutatedComponent(returnValue);
         assertThatNodeJsIsUsed(component);
         assertThat(getSoftwareRepositories(component)).isEmpty();
         List<Software> software = getSoftware(component);
@@ -104,11 +107,11 @@ public class NodeJsScannerCodebaseTest extends BaseNodeJsScannerTest {
         Codebase codebase = new Codebase(getTestRepo(), getCodebaseDir("NpmPackageLockWithSimpleDevDependency"));
 
         // When
-        Output<Void> output = underTest.scan(codebase);
+        Output<Void, Component> returnValue = underTest.scan(codebase);
 
         // Then
-        assertThat(output.getOutput()).isNull();
-        Component component = getMutatedComponent(output);
+        assertThat(maskTransformer(returnValue)).isEqualTo(maskTransformer(Output.empty(CACHE_TTL)));
+        Component component = getMutatedComponent(returnValue);
         assertThatNodeJsIsUsed(component);
         assertThat(getSoftwareRepositories(component)).isEmpty();
         List<Software> software = getSoftware(component);
@@ -121,11 +124,11 @@ public class NodeJsScannerCodebaseTest extends BaseNodeJsScannerTest {
         Codebase codebase = new Codebase(getTestRepo(), getCodebaseDir("NpmPackageLockWithComplexDependencies"));
 
         // When
-        Output<Void> output = underTest.scan(codebase);
+        Output<Void, Component> returnValue = underTest.scan(codebase);
 
         // Then
-        assertThat(output.getOutput()).isNull();
-        Component component = getMutatedComponent(output);
+        assertThat(maskTransformer(returnValue)).isEqualTo(maskTransformer(Output.empty(CACHE_TTL)));
+        Component component = getMutatedComponent(returnValue);
         assertThatNodeJsIsUsed(component);
         assertThat(getSoftwareRepositories(component)).isEmpty();
         List<Software> software = getSoftware(component);

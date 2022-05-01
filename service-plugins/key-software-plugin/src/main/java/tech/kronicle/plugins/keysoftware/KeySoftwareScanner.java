@@ -14,13 +14,13 @@ import tech.kronicle.sdk.models.KeySoftware;
 import tech.kronicle.sdk.models.Software;
 
 import javax.inject.Inject;
+import java.time.Duration;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.function.Function;
-import java.util.function.UnaryOperator;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
@@ -29,6 +29,8 @@ import static java.util.Objects.isNull;
 @Extension
 @Slf4j
 public class KeySoftwareScanner extends LateComponentScanner {
+
+    private static final Duration CACHE_TTL = Duration.ZERO;
 
     private final Map<String, Pattern> patternCache = new HashMap<>();
     private final VersionParser versionParser = new VersionParser();
@@ -53,13 +55,13 @@ public class KeySoftwareScanner extends LateComponentScanner {
     }
 
     @Override
-    public Output<Void> scan(Component input) {
+    public Output<Void, Component> scan(Component input) {
         if (rules.isEmpty() || isNull(input.getSoftware())) {
-            return Output.of(UnaryOperator.identity());
+            return Output.empty(CACHE_TTL);
         }
 
         List<KeySoftware> keySoftware = getKeySoftware(input);
-        return Output.of(component -> component.withKeySoftware(keySoftware));
+        return Output.ofTransformer(component -> component.withKeySoftware(keySoftware), CACHE_TTL);
     }
 
     private List<KeySoftware> getKeySoftware(Component input) {

@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import tech.kronicle.pluginapi.finders.ComponentFinder;
+import tech.kronicle.pluginapi.scanners.models.Output;
 import tech.kronicle.sdk.models.Component;
 import tech.kronicle.sdk.models.ComponentMetadata;
 
@@ -20,10 +21,11 @@ import static tech.kronicle.utils.StreamUtils.distinctByKey;
 @RequiredArgsConstructor
 public class MasterComponentFinder {
 
-    private final FinderExtensionRegistry finderRegistry;
+    private final FinderExtensionRegistry registry;
+    private final TaskExecutor executor;
 
     public List<Component> findComponents(ComponentMetadata componentMetadata) {
-        return finderRegistry.getComponentFinders().stream()
+        return registry.getComponentFinders().stream()
                 .map(finder -> executeFinder(finder, componentMetadata))
                 .flatMap(Collection::stream)
                 .filter(distinctByKey(Component::getId))
@@ -46,16 +48,11 @@ public class MasterComponentFinder {
     }
 
     private List<Component> executeFinder(ComponentFinder finder, ComponentMetadata componentMetadata) {
-        List<Component> components;
-        try {
-            components = finder.find(componentMetadata);
-        } catch (Exception e) {
-            log.error("Failed to execute component finder {}", finder.id(), e);
-            return List.of();
+        Output<List<Component>, Void> components = executor.executeFinder(finder, componentMetadata);
+        if (components.success()) {
+            log.info("Component finder {} found {} components", finder.id(), components.getOutput().size());
         }
-
-        log.info("Component finder {} found {} components", finder.id(), components.size());
-        return components;
+        return components.getOutputOrElse(List.of());
     }
 
 }

@@ -3,6 +3,7 @@ package tech.kronicle.service.services;
 import org.junit.jupiter.api.Test;
 import tech.kronicle.pluginapi.finders.ComponentFinder;
 import tech.kronicle.pluginapi.finders.models.TracingData;
+import tech.kronicle.pluginapi.scanners.models.Output;
 import tech.kronicle.sdk.models.Component;
 import tech.kronicle.sdk.models.ComponentMetadata;
 import tech.kronicle.pluginapi.finders.TracingDataFinder;
@@ -112,7 +113,7 @@ public class FinderExtensionRegistryTest {
         }
 
         @Override
-        public List<Component> find(ComponentMetadata componentMetadata) {
+        public Output<List<Component>, Void> find(ComponentMetadata componentMetadata) {
             return null;
         }
     }
@@ -124,7 +125,7 @@ public class FinderExtensionRegistryTest {
         }
 
         @Override
-        public TracingData find(ComponentMetadata componentMetadata) {
+        public Output<TracingData, Void> find(ComponentMetadata componentMetadata) {
             return null;
         }
     }
@@ -136,7 +137,7 @@ public class FinderExtensionRegistryTest {
         }
 
         @Override
-        public List<Repo> find(Void ignored) {
+        public Output<List<Repo>, Void> find(Void ignored) {
             return null;
         }
     }
@@ -148,7 +149,7 @@ public class FinderExtensionRegistryTest {
         }
 
         @Override
-        public List<Object> find(ComponentMetadata componentMetadata) {
+        public Output<Object, Void> find(ComponentMetadata componentMetadata) {
             return null;
         }
     }

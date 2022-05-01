@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 import tech.kronicle.pluginapi.scanners.models.Output;
 import tech.kronicle.plugins.aws.models.AwsProfileAndRegion;
 import tech.kronicle.plugins.aws.synthetics.services.SyntheticsService;
+import tech.kronicle.plugintestutils.scanners.BaseScannerTest;
 import tech.kronicle.sdk.models.CheckState;
 import tech.kronicle.sdk.models.Component;
 import tech.kronicle.sdk.models.ComponentMetadata;
@@ -11,6 +12,7 @@ import tech.kronicle.sdk.models.ComponentState;
 import tech.kronicle.sdk.models.EnvironmentPluginState;
 import tech.kronicle.sdk.models.EnvironmentState;
 
+import java.time.Duration;
 import java.util.List;
 import java.util.Map;
 import java.util.function.UnaryOperator;
@@ -22,7 +24,9 @@ import static org.mockito.Mockito.when;
 import static tech.kronicle.plugins.aws.testutils.AwsProfileAndRegionUtils.createProfileAndRegion;
 import static tech.kronicle.plugins.aws.testutils.ComponentUtils.createComponent;
 
-public class AwsSyntheticsCanariesScannerTest {
+public class AwsSyntheticsCanariesScannerTest extends BaseScannerTest {
+
+    private static final Duration CACHE_TTL = Duration.ofMinutes(5);
 
     @Test
     public void idShouldReturnTheIdOfTheScanner() {
@@ -87,13 +91,13 @@ public class AwsSyntheticsCanariesScannerTest {
         ));
 
         // When
-        Output<Void> returnValue = underTest.scan(component);
+        Output<Void, Component> returnValue = underTest.scan(component);
 
         // Then
         assertThat(returnValue.getOutput()).isNull();
         assertThat(returnValue.getErrors()).isEmpty();
-        UnaryOperator<Component> componentTransformer = returnValue.getComponentTransformer();
-        Component transformedComponent = componentTransformer.apply(component);
+        assertThat(returnValue.getCacheTtl()).isEqualTo(CACHE_TTL);
+        Component transformedComponent = getMutatedComponent(returnValue, component);
         assertThat(transformedComponent).isEqualTo(
                 component.withState(
                         ComponentState.builder()
@@ -118,14 +122,10 @@ public class AwsSyntheticsCanariesScannerTest {
         ));
 
         // When
-        Output<Void> returnValue = underTest.scan(component);
+        Output<Void, Component> returnValue = underTest.scan(component);
 
         // Then
-        assertThat(returnValue.getOutput()).isNull();
-        assertThat(returnValue.getErrors()).isEmpty();
-        UnaryOperator<Component> componentTransformer = returnValue.getComponentTransformer();
-        Component transformedComponent = componentTransformer.apply(component);
-        assertThat(transformedComponent).isEqualTo(component);
+        assertThat(returnValue).isEqualTo(new Output<>(null, null, null, CACHE_TTL));
     }
 
     private Map.Entry<AwsProfileAndRegion, List<CheckState>> createChecksForProfileAndRegion(

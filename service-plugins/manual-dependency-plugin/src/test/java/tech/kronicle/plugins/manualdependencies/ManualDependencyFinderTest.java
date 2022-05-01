@@ -3,19 +3,23 @@ package tech.kronicle.plugins.manualdependencies;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import tech.kronicle.pluginapi.finders.models.TracingData;
+import tech.kronicle.pluginapi.scanners.models.Output;
 import tech.kronicle.sdk.models.Component;
 import tech.kronicle.sdk.models.ComponentDependency;
 import tech.kronicle.sdk.models.ComponentMetadata;
 import tech.kronicle.sdk.models.Dependency;
 import tech.kronicle.sdk.models.DependencyDirection;
 
+import java.time.Duration;
 import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class ManualDependencyFinderTest {
-    
+
+    private static final Duration CACHE_TTL = Duration.ZERO;
+
     private ManualDependencyFinder underTest;
     
     @BeforeEach
@@ -47,10 +51,10 @@ public class ManualDependencyFinderTest {
         ComponentMetadata componentMetadata = ComponentMetadata.builder().build();
 
         // When
-        TracingData returnValue = underTest.find(componentMetadata);
+        Output<TracingData, Void> returnValue = underTest.find(componentMetadata);
 
         // Then
-        assertThat(returnValue).isEqualTo(TracingData.EMPTY);
+        assertThat(returnValue).isEqualTo(createTracingDataOutput(TracingData.EMPTY));
     }
 
     @Test
@@ -61,10 +65,10 @@ public class ManualDependencyFinderTest {
                 .build();
 
         // When
-        TracingData returnValue = underTest.find(componentMetadata);
+        Output<TracingData, Void> returnValue = underTest.find(componentMetadata);
 
         // Then
-        assertThat(returnValue).isEqualTo(TracingData.EMPTY);
+        assertThat(returnValue).isEqualTo(createTracingDataOutput(TracingData.EMPTY));
     }
 
     @Test
@@ -81,10 +85,10 @@ public class ManualDependencyFinderTest {
                 .build();
 
         // When
-        TracingData returnValue = underTest.find(componentMetadata);
+        Output<TracingData, Void> returnValue = underTest.find(componentMetadata);
 
         // Then
-        assertThat(returnValue).isEqualTo(createTracingData(
+        assertThat(returnValue).isEqualTo(createTracingDataOutput(
                 createDependency("test-component-1", "test-component-2")
         ));
     }
@@ -105,10 +109,10 @@ public class ManualDependencyFinderTest {
                 .build();
 
         // When
-        TracingData returnValue = underTest.find(componentMetadata);
+        Output<TracingData, Void> returnValue = underTest.find(componentMetadata);
 
         // Then
-        assertThat(returnValue).isEqualTo(createTracingData(
+        assertThat(returnValue).isEqualTo(createTracingDataOutput(
                 createDependency("test-component-2", "test-component-1")
         ));
     }
@@ -129,10 +133,10 @@ public class ManualDependencyFinderTest {
                 .build();
 
         // When
-        TracingData returnValue = underTest.find(componentMetadata);
+        Output<TracingData, Void> returnValue = underTest.find(componentMetadata);
 
         // Then
-        assertThat(returnValue).isEqualTo(createTracingData(
+        assertThat(returnValue).isEqualTo(createTracingDataOutput(
                 createDependency("test-component-1", "test-component-2")
                         .withTypeId("composition")
         ));
@@ -154,10 +158,10 @@ public class ManualDependencyFinderTest {
                 .build();
 
         // When
-        TracingData returnValue = underTest.find(componentMetadata);
+        Output<TracingData, Void> returnValue = underTest.find(componentMetadata);
 
         // Then
-        assertThat(returnValue).isEqualTo(createTracingData(
+        assertThat(returnValue).isEqualTo(createTracingDataOutput(
                 createDependency("test-component-1", "test-component-2")
         ));
     }
@@ -177,10 +181,10 @@ public class ManualDependencyFinderTest {
                 .build();
 
         // When
-        TracingData returnValue = underTest.find(componentMetadata);
+        Output<TracingData, Void> returnValue = underTest.find(componentMetadata);
 
         // Then
-        assertThat(returnValue).isEqualTo(createTracingData(
+        assertThat(returnValue).isEqualTo(createTracingDataOutput(
                 createDependency("test-component-1", "test-component-2"),
                 createDependency("test-component-1", "test-component-3")
         ));
@@ -208,10 +212,10 @@ public class ManualDependencyFinderTest {
                 .build();
 
         // When
-        TracingData returnValue = underTest.find(componentMetadata);
+        Output<TracingData, Void> returnValue = underTest.find(componentMetadata);
 
         // Then
-        assertThat(returnValue).isEqualTo(createTracingData(
+        assertThat(returnValue).isEqualTo(createTracingDataOutput(
                 createDependency("test-component-1", "test-component-2"),
                 createDependency("test-component-1", "test-component-3"),
                 createDependency("test-component-4", "test-component-5"),
@@ -233,10 +237,10 @@ public class ManualDependencyFinderTest {
                 .build();
 
         // When
-        TracingData returnValue = underTest.find(componentMetadata);
+        Output<TracingData, Void> returnValue = underTest.find(componentMetadata);
 
         // Then
-        assertThat(returnValue).isEqualTo(createTracingData(
+        assertThat(returnValue).isEqualTo(createTracingDataOutput(
                 createDependency("test-component-1", "test-component-2")
         ));
     }
@@ -259,12 +263,23 @@ public class ManualDependencyFinderTest {
                 .build();
 
         // When
-        TracingData returnValue = underTest.find(componentMetadata);
+        Output<TracingData, Void> returnValue = underTest.find(componentMetadata);
 
         // Then
-        assertThat(returnValue).isEqualTo(createTracingData(
+        assertThat(returnValue).isEqualTo(createTracingDataOutput(
                 createDependency("test-component-1", "test-component-2")
         ));
+    }
+
+    private Output<TracingData, Void> createTracingDataOutput(Dependency... dependencies) {
+        return createTracingDataOutput(createTracingData(dependencies));
+    }
+
+    private Output<TracingData, Void> createTracingDataOutput(TracingData tracingData) {
+        return Output.ofOutput(
+                tracingData,
+                CACHE_TTL
+        );
     }
 
     private ComponentDependency.ComponentDependencyBuilder createComponentDependencyBuilder(String targetComponentId) {

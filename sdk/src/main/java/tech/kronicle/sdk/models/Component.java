@@ -21,6 +21,7 @@ import tech.kronicle.sdk.models.readme.Readme;
 import tech.kronicle.sdk.models.sonarqube.SonarQubeProject;
 import tech.kronicle.sdk.models.todos.ToDo;
 import tech.kronicle.sdk.models.zipkin.Zipkin;
+import tech.kronicle.sdk.utils.ListUtils;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
@@ -33,6 +34,7 @@ import java.util.function.UnaryOperator;
 
 import static java.util.Objects.nonNull;
 import static tech.kronicle.sdk.utils.ListUtils.createUnmodifiableList;
+import static tech.kronicle.sdk.utils.ListUtils.unmodifiableUnionOfLists;
 import static tech.kronicle.sdk.utils.MapUtils.createUnmodifiableMap;
 
 @Value
@@ -169,6 +171,24 @@ public class Component implements ObjectWithId, ObjectWithReference {
     public Component withUpdatedState(UnaryOperator<ComponentState> action) {
         return withState(
                 action.apply(nonNull(state) ? state : ComponentState.builder().build())
+        );
+    }
+
+    public Component addImports(List<Import> imports) {
+        return withImports(
+                unmodifiableUnionOfLists(List.of(this.imports, imports))
+        );
+    }
+
+    public Component addSoftwareRepositories(List<SoftwareRepository> softwareRepositories) {
+        return withSoftwareRepositories(
+                unmodifiableUnionOfLists(List.of(this.softwareRepositories, softwareRepositories))
+        );
+    }
+
+    public Component addSoftware(List<Software> software) {
+        return withSoftware(
+                unmodifiableUnionOfLists(List.of(this.software, software))
         );
     }
 }

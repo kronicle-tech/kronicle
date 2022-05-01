@@ -7,6 +7,7 @@ import tech.kronicle.pluginapi.scanners.CodebaseScanner;
 import tech.kronicle.pluginapi.scanners.models.Codebase;
 import tech.kronicle.pluginapi.scanners.models.Output;
 import tech.kronicle.plugins.javaimport.services.JavaImportFinder;
+import tech.kronicle.sdk.models.Component;
 import tech.kronicle.utils.Comparators;
 import tech.kronicle.utils.FileUtils;
 import tech.kronicle.sdk.models.Import;
@@ -14,12 +15,15 @@ import tech.kronicle.sdk.models.Import;
 import javax.inject.Inject;
 import java.nio.file.Path;
 import java.nio.file.attribute.BasicFileAttributes;
+import java.time.Duration;
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Extension
 @RequiredArgsConstructor(onConstructor = @__({@Inject}))
 public class JavaImportScanner extends CodebaseScanner {
+
+    private static final Duration CACHE_TTL = Duration.ofMinutes(15);
 
     public static final String JAVA_FILE_EXTENSION = "java";
     private final FileUtils fileUtils;
@@ -36,13 +40,16 @@ public class JavaImportScanner extends CodebaseScanner {
     }
 
     @Override
-    public Output<Void> scan(Codebase input) {
+    public Output<Void, Component> scan(Codebase input) {
         List<Import> imports = fileUtils.findFileContents(input.getDir(), this::isJavaFile)
                 .flatMap(fileContent -> javaImportFinder.findImports(id(), fileContent.getContent()).stream())
                 .distinct()
                 .sorted(Comparators.IMPORTS)
                 .collect(Collectors.toList());
-        return Output.of(component -> component.withImports(replaceScannerItemsInList(component.getImports(), imports)));
+        return Output.ofTransformer(
+                component -> component.withImports(imports),
+                CACHE_TTL
+        );
     }
 
     private boolean isJavaFile(Path path, BasicFileAttributes attributes) {

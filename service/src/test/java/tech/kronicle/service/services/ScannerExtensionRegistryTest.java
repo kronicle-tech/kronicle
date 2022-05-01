@@ -15,6 +15,7 @@ import tech.kronicle.sdk.models.RepoReference;
 import tech.kronicle.service.services.testutils.FakePluginManager;
 
 import java.nio.file.Path;
+import java.time.Duration;
 import java.util.List;
 import java.util.function.UnaryOperator;
 
@@ -22,6 +23,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.catchThrowable;
 
 public class ScannerExtensionRegistryTest {
+
+    private static final Duration CACHE_TTL = Duration.ofHours(1);
 
     @Test
     public void getRepoScannerShouldReturnTheRepoScanner() {
@@ -251,8 +254,16 @@ public class ScannerExtensionRegistryTest {
         }
 
         @Override
-        public Output<Codebase> scan(RepoReference input) {
-            return Output.of(UnaryOperator.identity(), new Codebase(new RepoReference("https://example.com/example.git"), Path.of("test-codebase-dir")));
+        public Output<Codebase, Component> scan(RepoReference input) {
+            return new Output<>(
+                    new Codebase(
+                            new RepoReference("https://example.com/example.git"),
+                            Path.of("test-codebase-dir")
+                    ),
+                    null,
+                    null,
+                    CACHE_TTL
+            );
         }
     }
 
@@ -264,8 +275,8 @@ public class ScannerExtensionRegistryTest {
         }
 
         @Override
-        public Output<Void> scan(Component input) {
-            return Output.of(UnaryOperator.identity());
+        public Output<Void, Component> scan(Component input) {
+            return Output.empty(CACHE_TTL);
         }
     }
 
@@ -277,8 +288,8 @@ public class ScannerExtensionRegistryTest {
         }
 
         @Override
-        public Output<Void> scan(Codebase input) {
-            return Output.of(UnaryOperator.identity());
+        public Output<Void, Component> scan(Codebase input) {
+            return Output.empty(CACHE_TTL);
         }
     }
 
@@ -290,8 +301,8 @@ public class ScannerExtensionRegistryTest {
         }
 
         @Override
-        public Output<Void> scan(ComponentAndCodebase input) {
-            return Output.of(UnaryOperator.identity());
+        public Output<Void, Component> scan(ComponentAndCodebase input) {
+            return Output.empty(CACHE_TTL);
         }
     }
 
@@ -303,8 +314,8 @@ public class ScannerExtensionRegistryTest {
         }
 
         @Override
-        public Output<Void> scan(Component input) {
-            return Output.of(UnaryOperator.identity());
+        public Output<Void, Component> scan(Component input) {
+            return Output.empty(CACHE_TTL);
         }
     }
 }

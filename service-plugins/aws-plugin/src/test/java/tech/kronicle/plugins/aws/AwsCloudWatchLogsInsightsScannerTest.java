@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 import tech.kronicle.pluginapi.scanners.models.Output;
 import tech.kronicle.plugins.aws.cloudwatchlogs.services.CloudWatchLogsService;
 import tech.kronicle.plugins.aws.models.AwsProfileAndRegion;
+import tech.kronicle.plugintestutils.scanners.BaseScannerTest;
 import tech.kronicle.sdk.models.Component;
 import tech.kronicle.sdk.models.ComponentMetadata;
 import tech.kronicle.sdk.models.ComponentState;
@@ -11,18 +12,22 @@ import tech.kronicle.sdk.models.EnvironmentPluginState;
 import tech.kronicle.sdk.models.EnvironmentState;
 import tech.kronicle.sdk.models.LogSummaryState;
 
+import java.time.Duration;
 import java.util.List;
 import java.util.Map;
 import java.util.function.UnaryOperator;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.InstanceOfAssertFactories.DURATION;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import static tech.kronicle.plugins.aws.testutils.AwsProfileAndRegionUtils.createProfileAndRegion;
 import static tech.kronicle.plugins.aws.testutils.ComponentUtils.createComponent;
 
-public class AwsCloudWatchLogsInsightsScannerTest {
+public class AwsCloudWatchLogsInsightsScannerTest extends BaseScannerTest {
+
+    private static final Duration CACHE_TTL = Duration.ofMinutes(15);
 
     @Test
     public void idShouldReturnTheIdOfTheScanner() {
@@ -87,13 +92,13 @@ public class AwsCloudWatchLogsInsightsScannerTest {
         ));
 
         // When
-        Output<Void> returnValue = underTest.scan(component);
+        Output<Void, Component> returnValue = underTest.scan(component);
 
         // Then
         assertThat(returnValue.getOutput()).isNull();
         assertThat(returnValue.getErrors()).isEmpty();
-        UnaryOperator<Component> componentTransformer = returnValue.getComponentTransformer();
-        Component transformedComponent = componentTransformer.apply(component);
+        assertThat(returnValue.getCacheTtl()).isEqualTo(CACHE_TTL);
+        Component transformedComponent = getMutatedComponent(returnValue, component);
         assertThat(transformedComponent).isEqualTo(
                 component.withState(
                         ComponentState.builder()
@@ -118,13 +123,13 @@ public class AwsCloudWatchLogsInsightsScannerTest {
         ));
 
         // When
-        Output<Void> returnValue = underTest.scan(component);
+        Output<Void, Component> returnValue = underTest.scan(component);
 
         // Then
         assertThat(returnValue.getOutput()).isNull();
         assertThat(returnValue.getErrors()).isEmpty();
-        UnaryOperator<Component> componentTransformer = returnValue.getComponentTransformer();
-        Component transformedComponent = componentTransformer.apply(component);
+        assertThat(returnValue.getCacheTtl()).isEqualTo(CACHE_TTL);
+        Component transformedComponent = getMutatedComponent(returnValue, component);
         assertThat(transformedComponent).isEqualTo(component);
     }
 

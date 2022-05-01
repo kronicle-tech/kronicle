@@ -11,6 +11,7 @@ import tech.kronicle.sdk.models.Component;
 import tech.kronicle.sdk.models.ComponentMetadata;
 
 import javax.inject.Inject;
+import java.time.Duration;
 import java.util.List;
 import java.util.Map;
 import java.util.function.UnaryOperator;
@@ -18,6 +19,8 @@ import java.util.function.UnaryOperator;
 @Extension
 @RequiredArgsConstructor(onConstructor = @__({@Inject}))
 public class AwsSyntheticsCanariesScanner extends ComponentScanner {
+
+    private static final Duration CACHE_TTL = Duration.ofMinutes(5);
 
     private final SyntheticsService service;
 
@@ -32,15 +35,19 @@ public class AwsSyntheticsCanariesScanner extends ComponentScanner {
     }
 
     @Override
-    public Output<Void> scan(Component input) {
+    public Output<Void, Component> scan(Component input) {
         List<Map.Entry<AwsProfileAndRegion, List<CheckState>>> checks =
                 service.getCanaryLastRunsForComponent(input);
 
         if (checksIsEmpty(checks)) {
-            return Output.of(UnaryOperator.identity());
+            return Output.ofTransformer(null, CACHE_TTL);
         }
 
-        return Output.of(component -> component.withUpdatedState(state -> {
+        return Output.ofTransformer(updateComponentState(checks), CACHE_TTL);
+    }
+
+    private UnaryOperator<Component> updateComponentState(List<Map.Entry<AwsProfileAndRegion, List<CheckState>>> checks) {
+        return component -> component.withUpdatedState(state -> {
             for (Map.Entry<AwsProfileAndRegion, List<CheckState>> entry : checks) {
                 List<CheckState> checksForProfileAndRegion = entry.getValue();
                 if (!checksForProfileAndRegion.isEmpty()) {
@@ -55,7 +62,7 @@ public class AwsSyntheticsCanariesScanner extends ComponentScanner {
                 }
             }
             return state;
-        }));
+        });
     }
 
     private boolean checksIsEmpty(

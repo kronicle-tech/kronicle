@@ -9,6 +9,7 @@ import tech.kronicle.pluginapi.scanners.models.Codebase;
 import tech.kronicle.pluginapi.scanners.models.ComponentAndCodebase;
 import tech.kronicle.pluginapi.scanners.models.Output;
 import tech.kronicle.plugins.sonarqube.services.SonarQubeService;
+import tech.kronicle.plugintestutils.scanners.BaseScannerTest;
 import tech.kronicle.sdk.models.Component;
 import tech.kronicle.sdk.models.ComponentMetadata;
 import tech.kronicle.sdk.models.RepoReference;
@@ -18,6 +19,7 @@ import tech.kronicle.sdk.models.sonarqube.SonarQubeProject;
 import tech.kronicle.sdk.models.sonarqube.SummarySonarQubeMetric;
 
 import java.nio.file.Path;
+import java.time.Duration;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -25,7 +27,9 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
-public class SonarQubeScannerTest {
+public class SonarQubeScannerTest extends BaseScannerTest {
+
+    private static final Duration CACHE_TTL = Duration.ofMinutes(15);
 
     @Mock
     private SonarQubeService mockService;
@@ -83,13 +87,11 @@ public class SonarQubeScannerTest {
         when(mockService.findProjects(codebaseDir)).thenReturn(projects);
 
         // When
-        Output<Void> returnValue = underTest.scan(new ComponentAndCodebase(Component.builder().build(), new Codebase(new RepoReference("https://example.com"), codebaseDir)));
+        Output<Void, Component> returnValue = underTest.scan(new ComponentAndCodebase(Component.builder().build(), new Codebase(new RepoReference("https://example.com"), codebaseDir)));
 
         // Then
-        assertThat(returnValue).isNotNull();
-        assertThat(returnValue.getErrors()).isEmpty();
-        Component component = Component.builder().build();
-        Component transformedComponent = returnValue.getComponentTransformer().apply(component);
+        assertThat(maskTransformer(returnValue)).isEqualTo(maskTransformer(Output.empty(CACHE_TTL)));
+        Component transformedComponent = getMutatedComponent(returnValue);
         assertThat(transformedComponent.getSonarQubeProjects()).isEqualTo(projects);
     }
 

@@ -17,6 +17,7 @@ import tech.kronicle.sdk.models.SoftwareRepository;
 import tech.kronicle.utils.ThrowableToScannerErrorMapper;
 
 import java.nio.file.Path;
+import java.time.Duration;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -24,6 +25,8 @@ import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
 public class GradleScannerTest extends BaseCodebaseScannerTest {
+
+    private static final Duration CACHE_TTL = Duration.ofHours(1);
 
     public static final String SCANNER_ID = "gradle";
     private GradleScanner underTest;
@@ -80,11 +83,11 @@ public class GradleScannerTest extends BaseCodebaseScannerTest {
         when(gradleStaticAnalyzer.analyzeCodebase(codebaseDir)).thenReturn(gradleAnalysis);
 
         // When
-        Output<Void> output = underTest.scan(input);
+        Output<Void, Component> returnValue = underTest.scan(input);
 
         // Then
-        assertThat(output.getOutput()).isNull();
-        Component component = getMutatedComponent(output);
+        assertThat(maskTransformer(returnValue)).isEqualTo(maskTransformer(Output.empty(CACHE_TTL)));
+        Component component = getMutatedComponent(returnValue);
         assertThat(component.getGradle().getUsed()).isTrue();
         assertThat(component.getSoftwareRepositories()).isEmpty();
         assertThat(component.getSoftware()).isEmpty();
@@ -103,11 +106,11 @@ public class GradleScannerTest extends BaseCodebaseScannerTest {
         when(gradleStaticAnalyzer.analyzeCodebase(codebaseDir)).thenReturn(gradleAnalysis);
 
         // When
-        Output<Void> output = underTest.scan(input);
+        Output<Void, Component> returnValue = underTest.scan(input);
 
         // Then
-        assertThat(output.getOutput()).isNull();
-        Component component = getMutatedComponent(output);
+        assertThat(maskTransformer(returnValue)).isEqualTo(maskTransformer(Output.empty(CACHE_TTL)));
+        Component component = getMutatedComponent(returnValue);
         assertThat(component.getGradle().getUsed()).isFalse();
         assertThat(component.getSoftwareRepositories()).isEmpty();
         assertThat(component.getSoftware()).isEmpty();
@@ -131,11 +134,11 @@ public class GradleScannerTest extends BaseCodebaseScannerTest {
         when(gradleStaticAnalyzer.analyzeCodebase(codebaseDir)).thenReturn(gradleAnalysis);
 
         // When
-        Output<Void> output = underTest.scan(input);
+        Output<Void, Component> returnValue = underTest.scan(input);
 
         // Then
-        assertThat(output.getOutput()).isNull();
-        Component component = getMutatedComponent(output);
+        assertThat(maskTransformer(returnValue)).isEqualTo(maskTransformer(Output.empty(CACHE_TTL)));
+        Component component = getMutatedComponent(returnValue);
         assertThat(component.getGradle().getUsed()).isTrue();
         assertThat(component.getSoftwareRepositories()).containsExactly(
                 softwareRepository1.withScannerId(SCANNER_ID),
@@ -162,11 +165,11 @@ public class GradleScannerTest extends BaseCodebaseScannerTest {
         when(gradleStaticAnalyzer.analyzeCodebase(codebaseDir)).thenReturn(gradleAnalysis);
 
         // When
-        Output<Void> output = underTest.scan(input);
+        Output<Void, Component> returnValue = underTest.scan(input);
 
         // Then
-        assertThat(output.getOutput()).isNull();
-        Component component = getMutatedComponent(output);
+        assertThat(maskTransformer(returnValue)).isEqualTo(maskTransformer(Output.empty(CACHE_TTL)));
+        Component component = getMutatedComponent(returnValue);
         assertThat(component.getGradle().getUsed()).isTrue();
         assertThat(component.getSoftwareRepositories()).isEmpty();
         assertThat(component.getSoftware()).containsExactly(

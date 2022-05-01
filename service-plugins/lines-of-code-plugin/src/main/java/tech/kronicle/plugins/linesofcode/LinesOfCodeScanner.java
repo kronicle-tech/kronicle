@@ -8,6 +8,7 @@ import tech.kronicle.pluginapi.scanners.CodebaseScanner;
 import tech.kronicle.pluginapi.scanners.models.Codebase;
 import tech.kronicle.pluginapi.scanners.models.Output;
 import tech.kronicle.plugins.linesofcode.services.LinesOfCodeCounter;
+import tech.kronicle.sdk.models.Component;
 import tech.kronicle.utils.FileUtils;
 import tech.kronicle.utils.ObjectReference;
 import tech.kronicle.sdk.models.linesofcode.FileExtensionCount;
@@ -17,6 +18,7 @@ import javax.inject.Inject;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Path;
+import java.time.Duration;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
@@ -29,6 +31,8 @@ import static java.util.Objects.isNull;
 @RequiredArgsConstructor(onConstructor = @__({@Inject}))
 @Slf4j
 public class LinesOfCodeScanner extends CodebaseScanner {
+
+    private static final Duration CACHE_TTL = Duration.ofMinutes(15);
 
     private final FileUtils fileUtils;
     private final LinesOfCodeCounter linesOfCodeCounter;
@@ -45,9 +49,12 @@ public class LinesOfCodeScanner extends CodebaseScanner {
     }
 
     @Override
-    public Output<Void> scan(Codebase input) {
+    public Output<Void, Component> scan(Codebase input) {
         LinesOfCode linesOfCode = getLinesOfCode(input);
-        return Output.of(component -> component.withLinesOfCode(linesOfCode));
+        return Output.ofTransformer(
+                component -> component.withLinesOfCode(linesOfCode),
+                CACHE_TTL
+        );
     }
 
     private LinesOfCode getLinesOfCode(Codebase codebase) {

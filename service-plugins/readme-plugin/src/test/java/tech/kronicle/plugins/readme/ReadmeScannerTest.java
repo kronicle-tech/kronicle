@@ -6,12 +6,17 @@ import tech.kronicle.pluginapi.scanners.models.Codebase;
 import tech.kronicle.pluginapi.scanners.models.Output;
 import tech.kronicle.plugins.readme.services.ReadmeFileNameChecker;
 import tech.kronicle.plugintestutils.scanners.BaseCodebaseScannerTest;
+import tech.kronicle.sdk.models.Component;
 import tech.kronicle.sdk.models.readme.Readme;
+
+import java.time.Duration;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static tech.kronicle.utils.FileUtilsFactory.createFileUtils;
 
 public class ReadmeScannerTest extends BaseCodebaseScannerTest {
+
+    private static final Duration CACHE_TTL = Duration.ofMinutes(15);
 
     private ReadmeScanner underTest;
 
@@ -53,10 +58,10 @@ public class ReadmeScannerTest extends BaseCodebaseScannerTest {
         Codebase codebase = new Codebase(getTestRepo(), getCodebaseDir("NoReadmes"));
 
         // When
-        Output<Void> returnValue = underTest.scan(codebase);
+        Output<Void, Component> returnValue = underTest.scan(codebase);
 
         // Then
-        assertThat(returnValue.getErrors()).isEmpty();
+        assertThat(maskTransformer(returnValue)).isEqualTo(maskTransformer(Output.empty(CACHE_TTL)));
         Readme readme = getMutatedComponent(returnValue).getReadme();
         assertThat(readme).isNull();
     }
@@ -67,10 +72,10 @@ public class ReadmeScannerTest extends BaseCodebaseScannerTest {
         Codebase codebase = new Codebase(getTestRepo(), getCodebaseDir("SingleReadme"));
 
         // When
-        Output<Void> returnValue = underTest.scan(codebase);
+        Output<Void, Component> returnValue = underTest.scan(codebase);
 
         // Then
-        assertThat(returnValue.getErrors()).isEmpty();
+        assertThat(maskTransformer(returnValue)).isEqualTo(maskTransformer(Output.empty(CACHE_TTL)));
         Readme readme = getMutatedComponent(returnValue).getReadme();
         assertThat(readme).isNotNull();
         assertThat(readme.getFileName()).isEqualTo("README.md");
@@ -83,10 +88,10 @@ public class ReadmeScannerTest extends BaseCodebaseScannerTest {
         Codebase codebase = new Codebase(getTestRepo(), getCodebaseDir("SingleReadmeInLowerCase"));
 
         // When
-        Output<Void> returnValue = underTest.scan(codebase);
+        Output<Void, Component> returnValue = underTest.scan(codebase);
 
         // Then
-        assertThat(returnValue.getErrors()).isEmpty();
+        assertThat(maskTransformer(returnValue)).isEqualTo(maskTransformer(Output.empty(CACHE_TTL)));
         Readme readme = getMutatedComponent(returnValue).getReadme();
         assertThat(readme).isNotNull();
         assertThat(readme.getFileName()).isEqualTo("readme.md");
@@ -99,10 +104,10 @@ public class ReadmeScannerTest extends BaseCodebaseScannerTest {
         Codebase codebase = new Codebase(getTestRepo(), getCodebaseDir("OtherFileTypes"));
 
         // When
-        Output<Void> returnValue = underTest.scan(codebase);
+        Output<Void, Component> returnValue = underTest.scan(codebase);
 
         // Then
-        assertThat(returnValue.getErrors()).isEmpty();
+        assertThat(maskTransformer(returnValue)).isEqualTo(maskTransformer(Output.empty(CACHE_TTL)));
         Readme readme = getMutatedComponent(returnValue).getReadme();
         assertThat(readme).isNull();
     }
@@ -113,10 +118,10 @@ public class ReadmeScannerTest extends BaseCodebaseScannerTest {
         Codebase codebase = new Codebase(getTestRepo(), getCodebaseDir("ReadmeWithNoFileExtension"));
 
         // When
-        Output<Void> returnValue = underTest.scan(codebase);
+        Output<Void, Component> returnValue = underTest.scan(codebase);
 
         // Then
-        assertThat(returnValue.getErrors()).isEmpty();
+        assertThat(maskTransformer(returnValue)).isEqualTo(maskTransformer(Output.empty(CACHE_TTL)));
         Readme readme = getMutatedComponent(returnValue).getReadme();
         assertThat(readme).isNull();
     }
@@ -127,10 +132,10 @@ public class ReadmeScannerTest extends BaseCodebaseScannerTest {
         Codebase codebase = new Codebase(getTestRepo(), getCodebaseDir("MultipleReadmes"));
 
         // When
-        Output<Void> returnValue = underTest.scan(codebase);
+        Output<Void, Component> returnValue = underTest.scan(codebase);
 
         // Then
-        assertThat(returnValue.getErrors()).isEmpty();
+        assertThat(maskTransformer(returnValue)).isEqualTo(maskTransformer(Output.empty(CACHE_TTL)));
         Readme readme = getMutatedComponent(returnValue).getReadme();
         assertThat(readme).isNotNull();
         assertThat(readme.getFileName()).isEqualTo("README.adoc");
@@ -143,10 +148,10 @@ public class ReadmeScannerTest extends BaseCodebaseScannerTest {
         Codebase codebase = new Codebase(getTestRepo(), getCodebaseDir("ReadmeInSubdirectory"));
 
         // When
-        Output<Void> returnValue = underTest.scan(codebase);
+        Output<Void, Component> returnValue = underTest.scan(codebase);
 
         // Then
-        assertThat(returnValue.getErrors()).isEmpty();
+        assertThat(maskTransformer(returnValue)).isEqualTo(maskTransformer(Output.empty(CACHE_TTL)));
         Readme readme = getMutatedComponent(returnValue).getReadme();
         assertThat(readme).isNull();
     }

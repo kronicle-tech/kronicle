@@ -12,11 +12,13 @@ import tech.kronicle.plugins.openapi.models.SpecAndErrors;
 import tech.kronicle.plugins.openapi.services.SpecDiscoverer;
 import tech.kronicle.plugins.openapi.services.SpecParser;
 import tech.kronicle.plugins.openapi.utils.OpenApiSpecUtils;
+import tech.kronicle.sdk.models.Component;
 import tech.kronicle.sdk.models.ComponentMetadata;
 import tech.kronicle.sdk.models.ScannerError;
 import tech.kronicle.sdk.models.openapi.OpenApiSpec;
 
 import javax.inject.Inject;
+import java.time.Duration;
 import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -28,6 +30,8 @@ import static tech.kronicle.plugins.openapi.utils.OpenApiSpecUtils.isManualSpec;
 @RequiredArgsConstructor(onConstructor = @__({@Inject}))
 @Slf4j
 public class OpenApiScanner extends ComponentAndCodebaseScanner {
+
+    private static final Duration CACHE_TTL = Duration.ofMinutes(15);
 
     private final SpecDiscoverer specDiscoverer;
     private final SpecParser specParser;
@@ -50,9 +54,12 @@ public class OpenApiScanner extends ComponentAndCodebaseScanner {
     }
 
     @Override
-    public Output<Void> scan(ComponentAndCodebase input) {
+    public Output<Void, Component> scan(ComponentAndCodebase input) {
         ScanOutput scanOutput = processComponentAndCodebase(input);
-        return Output.of(component -> component.withOpenApiSpecs(scanOutput.getSpecs()), scanOutput.getErrors());
+        return Output.builder(CACHE_TTL)
+                .transformer((Component component) -> component.withOpenApiSpecs(scanOutput.getSpecs()))
+                .errors(scanOutput.getErrors())
+                .build();
     }
 
     private ScanOutput processComponentAndCodebase(ComponentAndCodebase input) {

@@ -1,6 +1,7 @@
 package tech.kronicle.pluginapi.finders;
 
 import org.junit.jupiter.api.Test;
+import tech.kronicle.pluginapi.scanners.models.Output;
 import tech.kronicle.sdk.models.ComponentMetadata;
 import tech.kronicle.sdk.models.ObjectWithReference;
 
@@ -50,7 +51,7 @@ public class FinderTest {
         }
 
         @Override
-        public List<TestInput> find(ComponentMetadata componentMetadata) {
+        public Output<List<TestInput>, Void> find(ComponentMetadata componentMetadata) {
             return null;
         }
     }

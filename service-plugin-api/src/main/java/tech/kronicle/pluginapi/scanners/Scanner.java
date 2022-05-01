@@ -1,16 +1,14 @@
 package tech.kronicle.pluginapi.scanners;
 
 import tech.kronicle.common.CaseUtils;
-import tech.kronicle.sdk.models.ComponentMetadata;
 import tech.kronicle.pluginapi.ExtensionPointWithId;
 import tech.kronicle.pluginapi.scanners.models.Output;
-import tech.kronicle.sdk.models.Dependency;
+import tech.kronicle.sdk.models.Component;
+import tech.kronicle.sdk.models.ComponentMetadata;
 import tech.kronicle.sdk.models.ObjectWithReference;
-import tech.kronicle.sdk.models.ObjectWithScannerId;
 import tech.kronicle.sdk.models.Summary;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.time.Duration;
 
 public abstract class Scanner<I extends ObjectWithReference, O> implements ExtensionPointWithId {
 
@@ -24,19 +22,16 @@ public abstract class Scanner<I extends ObjectWithReference, O> implements Exten
         return null;
     }
 
+    public Duration errorCacheTtl() {
+        return Duration.ofMinutes(15);
+    }
+
     public void refresh(ComponentMetadata componentMetadata) {
     }
 
-    public abstract Output<O> scan(I input);
+    public abstract Output<O, Component> scan(I input);
 
     public Summary transformSummary(Summary summary) {
         return summary;
-    }
-
-    protected <T extends ObjectWithScannerId> List<T> replaceScannerItemsInList(List<T> list, List<T> newItems) {
-        List<T> newList = new ArrayList<>(list);
-        newList.removeIf(item -> item.getScannerId().equals(id()));
-        newList.addAll(newItems);
-        return newList;
     }
 }

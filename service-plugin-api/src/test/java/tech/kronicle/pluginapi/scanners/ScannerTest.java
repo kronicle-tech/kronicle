@@ -1,11 +1,13 @@
 package tech.kronicle.pluginapi.scanners;
 
 import org.junit.jupiter.api.Test;
+import tech.kronicle.sdk.models.Component;
 import tech.kronicle.sdk.models.ComponentMetadata;
 import tech.kronicle.pluginapi.scanners.models.Output;
 import tech.kronicle.sdk.models.ObjectWithReference;
 import tech.kronicle.sdk.models.Summary;
 
+import java.time.Duration;
 import java.util.function.UnaryOperator;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -75,8 +77,8 @@ public class ScannerTest {
         }
 
         @Override
-        public Output<Void> scan(TestInput input) {
-            return Output.of(UnaryOperator.identity());
+        public Output<Void, Component> scan(TestInput input) {
+            return Output.ofTransformer(UnaryOperator.identity(), Duration.ZERO);
         }
     }
 }

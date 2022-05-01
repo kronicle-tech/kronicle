@@ -47,6 +47,7 @@ public class ScanEngine {
     private final ComponentAliasMapCreator componentAliasMapCreator;
     private final ComponentAliasResolver componentAliasResolver;
     private final ScannerExtensionRegistry scannerRegistry;
+    private final TaskExecutor executor;
     private final ValidatorService validatorService;
     private final ThrowableToScannerErrorMapper throwableToScannerErrorMapper;
 
@@ -279,28 +280,29 @@ public class ScanEngine {
         componentMap.put(componentId, component);
     }
 
-    private <I extends ObjectWithReference, O> Map.Entry<O, List<String>> executeScanner(I input, List<String> componentIds,
-            ConcurrentHashMap<String, Component> componentMap, Scanner<I, O> scanner) {
-        log.info("Executing scanner {} for \"{}\"", scanner.id(), StringEscapeUtils.escapeString(input.reference()));
-        Output<O> output;
-        try {
-            output = scanner.scan(input);
-        } catch (Exception e) {
-            output = Output.of(new ScannerError(
-                    scanner.id(), String.format("Failed to scan \"%s\"", StringEscapeUtils.escapeString(input.reference())), throwableToScannerErrorMapper.map(scanner.id(), e)));
-        }
+    private <I extends ObjectWithReference, O> Map.Entry<O, List<String>> executeScanner(
+            I input, 
+            List<String> componentIds,
+            ConcurrentHashMap<String, Component> componentMap, 
+            Scanner<I, O> scanner
+    ) {
+        Output<O, Component> output = executor.executeScanner(scanner, input);
 
         if (output.failed()) {
             addScannerErrorsToComponents(componentMap, componentIds, scanner, output.getErrors());
-            output.getErrors().forEach(error -> log.error("Failed to scan \"{}\" with scanner {}: {}", StringEscapeUtils.escapeString(input.reference()), scanner.id(),
-                    error.toString()));
+            output.getErrors().forEach(error -> log.error(
+                    "Failed to scan \"{}\" with scanner {}: {}", 
+                    StringEscapeUtils.escapeString(input.reference()), 
+                    scanner.id(),
+                    error.toString()
+            ));
         }
 
-        UnaryOperator<Component> componentTransformer = output.getComponentTransformer();
-        if (nonNull(componentTransformer)) {
-            updateComponents(componentMap, componentIds, scanner, componentTransformer);
+        UnaryOperator<Component> transformer = output.getTransformer();
+        if (nonNull(transformer)) {
+            updateComponents(componentMap, componentIds, scanner, transformer);
         }
 
-        return nonNull(output.getOutput()) ? Map.entry(output.getOutput(), componentIds) : null;
+        return output.mapOutput(it -> Map.entry(it, componentIds)).orElse(null);
     }
 }

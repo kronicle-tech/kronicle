@@ -34,6 +34,7 @@ import tech.kronicle.tracingprocessor.TracingProcessor;
 import tech.kronicle.utils.ThrowableToScannerErrorMapper;
 
 import java.nio.file.Path;
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
@@ -57,6 +58,8 @@ import static tech.kronicle.tracingprocessor.testutils.TestDataHelper.createTrac
 @ExtendWith(MockitoExtension.class)
 public class ScanEngineTest {
 
+    private static final Duration CACHE_TTL = Duration.ofHours(1);
+
     private List<ScanLogEntry> scanLog;
     @Mock
     private MasterComponentFinder masterComponentFinder;
@@ -78,6 +81,7 @@ public class ScanEngineTest {
     @BeforeEach
     public void beforeEach() {
         scanLog = new ArrayList<>();
+        ThrowableToScannerErrorMapper throwableToScannerErrorMapper = new ThrowableToScannerErrorMapper();
         underTest = new ScanEngine(
                 masterComponentFinder,
                 masterTracingDataFinder,
@@ -85,8 +89,9 @@ public class ScanEngineTest {
                 componentAliasMapCreator,
                 componentAliasResolver,
                 scannerRegistry,
+                new TaskExecutor(throwableToScannerErrorMapper),
                 validatorService,
-                new ThrowableToScannerErrorMapper()
+                throwableToScannerErrorMapper
         );
     }
 
@@ -499,20 +504,20 @@ public class ScanEngineTest {
         return map;
     }
 
-    private <I, O> Output<O> createTestOutput(Scanner<?, ?> scanner, I input, O output) {
-        return Output.of(createTestComponentTransformer(scanner, input), output);
+    private <I, O> Output<O, Component> createTestOutput(Scanner<?, ?> scanner, I input, O output) {
+        return new Output<>(output, createTestComponentTransformer(scanner, input), null, CACHE_TTL);
     }
 
-    private <I, O> Output<O> createTestOutput(Scanner<?, ?> scanner, I input) {
-        return Output.of(createTestComponentTransformer(scanner, input));
+    private <I, O> Output<O, Component> createTestOutput(Scanner<?, ?> scanner, I input) {
+        return new Output<>(null, createTestComponentTransformer(scanner, input), null, CACHE_TTL);
     }
 
-    private <I, O> Output<O> createTestOutput(Scanner<?, ?> scanner, I input, O output, ScannerError scannerError) {
-        return Output.of(createTestComponentTransformer(scanner, input), output, scannerError);
+    private <I, O> Output<O, Component> createTestOutput(Scanner<?, ?> scanner, I input, O output, ScannerError scannerError) {
+        return new Output<>(output, createTestComponentTransformer(scanner, input), List.of(scannerError), CACHE_TTL);
     }
 
-    private <I, O> Output<O> createTestOutput(Scanner<?, ?> scanner, I input, ScannerError scannerError) {
-        return Output.of(createTestComponentTransformer(scanner, input), scannerError);
+    private <I, O> Output<O, Component> createTestOutput(Scanner<?, ?> scanner, I input, ScannerError scannerError) {
+        return new Output<>(null, createTestComponentTransformer(scanner, input), List.of(scannerError), CACHE_TTL);
     }
 
     private <I> UnaryOperator<Component> createTestComponentTransformer(Scanner<?, ?> scanner, I input) {
@@ -551,7 +556,7 @@ public class ScanEngineTest {
         }
     }
 
-    private <I extends ObjectWithReference, O> Output<O> scannerScan(TestScannerConfig config, AtomicInteger refreshCount, Scanner<?, ?> scanner, I input, O output) {
+    private <I extends ObjectWithReference, O> Output<O, Component> scannerScan(TestScannerConfig config, AtomicInteger refreshCount, Scanner<?, ?> scanner, I input, O output) {
         assertThat(refreshCount.get()).isGreaterThan(0);
         scanLog.add(new ScanLogEntry(scanner.id(), input.reference()));
         if (config.isScanException()) {
@@ -645,7 +650,7 @@ public class ScanEngineTest {
         }
 
         @Override
-        public Output<Void> scan(Component input) {
+        public Output<Void, Component> scan(Component input) {
             return scannerScan(config, refreshCount, this, input, null);
         }
 
@@ -679,7 +684,7 @@ public class ScanEngineTest {
         }
 
         @Override
-        public Output<Void> scan(Component input) {
+        public Output<Void, Component> scan(Component input) {
             return scannerScan(config, refreshCount, this, input, null);
         }
 
@@ -713,7 +718,7 @@ public class ScanEngineTest {
         }
 
         @Override
-        public Output<Codebase> scan(RepoReference input) {
+        public Output<Codebase, Component> scan(RepoReference input) {
             Codebase codebase = config.isOutput() ? new Codebase(input, Path.of(input.getUrl())) : null;
             return scannerScan(config, refreshCount, this, input, codebase);
         }
@@ -748,7 +753,7 @@ public class ScanEngineTest {
         }
 
         @Override
-        public Output<Void> scan(Codebase input) {
+        public Output<Void, Component> scan(Codebase input) {
             return scannerScan(config, refreshCount, this, input, null);
         }
 
@@ -782,7 +787,7 @@ public class ScanEngineTest {
         }
 
         @Override
-        public Output<Void> scan(Codebase input) {
+        public Output<Void, Component> scan(Codebase input) {
             return scannerScan(config, refreshCount, this, input, null);
         }
 
@@ -816,7 +821,7 @@ public class ScanEngineTest {
         }
 
         @Override
-        public Output<Void> scan(ComponentAndCodebase input) {
+        public Output<Void, Component> scan(ComponentAndCodebase input) {
             return scannerScan(config, refreshCount, this, input, null);
         }
 
@@ -850,7 +855,7 @@ public class ScanEngineTest {
         }
 
         @Override
-        public Output<Void> scan(ComponentAndCodebase input) {
+        public Output<Void, Component> scan(ComponentAndCodebase input) {
             return scannerScan(config, refreshCount, this, input, null);
         }
 
@@ -884,7 +889,7 @@ public class ScanEngineTest {
         }
 
         @Override
-        public Output<Void> scan(Component input) {
+        public Output<Void, Component> scan(Component input) {
             return scannerScan(config, refreshCount, this, input, null);
         }
 
@@ -918,7 +923,7 @@ public class ScanEngineTest {
         }
 
         @Override
-        public Output<Void> scan(Component input) {
+        public Output<Void, Component> scan(Component input) {
             return scannerScan(config, refreshCount, this, input, null);
         }
 

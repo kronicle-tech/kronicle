@@ -20,12 +20,15 @@ import tech.kronicle.sdk.models.RepoReference;
 import tech.kronicle.sdk.models.git.Identity;
 
 import java.nio.file.Path;
+import java.time.Duration;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class GitScannerTest extends BaseScannerTest {
+
+    private static final Duration CACHE_TTL = Duration.ofMinutes(5);
 
     @TempDir
     public Path tempDir;
@@ -74,11 +77,11 @@ public class GitScannerTest extends BaseScannerTest {
         RepoReference testRepo = new RepoReference(createOutcome.getRepoDir().toString());
 
         // When
-        Output<Codebase> returnValue = underTest.scan(testRepo);
+        Output<Codebase, Component> returnValue = underTest.scan(testRepo);
 
         // Then
-        assertThat(returnValue.getErrors()).isEmpty();
         Codebase codebase = returnValue.getOutput();
+        assertThat(returnValue.getCacheTtl()).isEqualTo(CACHE_TTL);
         Component component = getMutatedComponent(returnValue);
         assertThat(codebase).isNotNull();
         assertThat(codebase.getRepo()).isEqualTo(testRepo);
@@ -138,10 +141,11 @@ public class GitScannerTest extends BaseScannerTest {
         RepoReference testRepo = new RepoReference(createOutcome.getRepoDir().toString());
 
         // When
-        Output<Codebase> returnValue = underTest.scan(testRepo);
+        Output<Codebase, Component> returnValue = underTest.scan(testRepo);
 
         // Then
         assertThat(returnValue.getErrors()).isEmpty();
+        assertThat(returnValue.getCacheTtl()).isEqualTo(CACHE_TTL);
         Codebase codebase = returnValue.getOutput();
         Component component = getMutatedComponent(returnValue);
         assertThat(codebase).isNotNull();
@@ -192,10 +196,11 @@ public class GitScannerTest extends BaseScannerTest {
         RepoReference testRepo = new RepoReference(createOutcome.getRepoDir().toString());
 
         // When
-        Output<Codebase> returnValue = underTest.scan(testRepo);
+        Output<Codebase, Component> returnValue = underTest.scan(testRepo);
 
         // Then
         assertThat(returnValue.getErrors()).isEmpty();
+        assertThat(returnValue.getCacheTtl()).isEqualTo(CACHE_TTL);
         Codebase codebase = returnValue.getOutput();
         Component component = getMutatedComponent(returnValue);
         assertThat(codebase).isNotNull();

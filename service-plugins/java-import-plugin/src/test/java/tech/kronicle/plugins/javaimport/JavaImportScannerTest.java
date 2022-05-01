@@ -6,15 +6,19 @@ import tech.kronicle.pluginapi.scanners.models.Codebase;
 import tech.kronicle.pluginapi.scanners.models.Output;
 import tech.kronicle.plugins.javaimport.services.JavaImportFinder;
 import tech.kronicle.plugintestutils.scanners.BaseCodebaseScannerTest;
+import tech.kronicle.sdk.models.Component;
 import tech.kronicle.sdk.models.Import;
 import tech.kronicle.sdk.models.ImportType;
 
+import java.time.Duration;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static tech.kronicle.utils.FileUtilsFactory.createFileUtils;
 
 public class JavaImportScannerTest extends BaseCodebaseScannerTest {
+
+    private static final Duration CACHE_TTL = Duration.ofMinutes(15);
 
     private JavaImportScanner underTest;
 
@@ -56,10 +60,10 @@ public class JavaImportScannerTest extends BaseCodebaseScannerTest {
         Codebase testCodebase = new Codebase(getTestRepo(), getCodebaseDir("Empty"));
 
         // When
-        Output<Void> returnValue = underTest.scan(testCodebase);
+        Output<Void, Component> returnValue = underTest.scan(testCodebase);
 
         // Then
-        assertThat(returnValue.getErrors()).isEmpty();
+        assertThat(maskTransformer(returnValue)).isEqualTo(maskTransformer(Output.empty(CACHE_TTL)));
         List<Import> imports = getMutatedComponent(returnValue).getImports();
         assertThat(imports).isEmpty();
     }
@@ -70,10 +74,10 @@ public class JavaImportScannerTest extends BaseCodebaseScannerTest {
         Codebase testCodebase = new Codebase(getTestRepo(), getCodebaseDir("MultipleImportsInMultipleJavaFiles"));
 
         // When
-        Output<Void> returnValue = underTest.scan(testCodebase);
+        Output<Void, Component> returnValue = underTest.scan(testCodebase);
 
         // Then
-        assertThat(returnValue.getErrors()).isEmpty();
+        assertThat(maskTransformer(returnValue)).isEqualTo(maskTransformer(Output.empty(CACHE_TTL)));
         List<Import> imports = getMutatedComponent(returnValue).getImports();
         assertThat(imports).hasSize(3);
         Import importItem;
@@ -95,10 +99,10 @@ public class JavaImportScannerTest extends BaseCodebaseScannerTest {
         Codebase testCodebase = new Codebase(getTestRepo(), getCodebaseDir("DuplicateImports"));
 
         // When
-        Output<Void> returnValue = underTest.scan(testCodebase);
+        Output<Void, Component> returnValue = underTest.scan(testCodebase);
 
         // Then
-        assertThat(returnValue.getErrors()).isEmpty();
+        assertThat(maskTransformer(returnValue)).isEqualTo(maskTransformer(Output.empty(CACHE_TTL)));
         List<Import> imports = getMutatedComponent(returnValue).getImports();
         assertThat(imports).hasSize(2);
         Import importItem;

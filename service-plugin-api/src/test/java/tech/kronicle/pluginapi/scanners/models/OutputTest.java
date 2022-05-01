@@ -6,7 +6,9 @@ import tech.kronicle.sdk.models.Component;
 import tech.kronicle.sdk.models.ScannerError;
 
 import javax.validation.constraints.NotNull;
+import java.time.Duration;
 import java.util.List;
+import java.util.Optional;
 import java.util.function.UnaryOperator;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -14,165 +16,96 @@ import static org.assertj.core.api.Assertions.catchThrowable;
 
 public class OutputTest {
 
-    private final UnaryOperator<Component> componentTransformer = component -> component;
+    private static final Duration CACHE_TTL = Duration.ofHours(1);
+
+    private final UnaryOperator<Component> transformer = component -> component;
     private final TestOutput output = new TestOutput("output");
-    private final ScannerError error = new ScannerError("test_scanner", "test_message", null);
-    private final List<ScannerError> errors = List.of(error);
+    private final ScannerError error1 = createError(1);
+    private final ScannerError error2 = createError(2);
+    private final ScannerError error3 = createError(3);
+    private final ScannerError error4 = createError(4);
+    private final List<ScannerError> errors = List.of(error3, error4);
 
     @Test
-    public void ofWithComponentTransformerShouldSetComponentTransformer() {
+    public void ofOutputShouldSetOutput() {
         // When
-        Output<TestOutput> underTest = Output.of(componentTransformer);
+        Output<TestOutput, Void> underTest = Output.ofOutput(output, CACHE_TTL);
 
         // Then
-        assertThat(underTest.getComponentTransformer()).isSameAs(componentTransformer);
-        assertThat(underTest.getOutput()).isNull();
-        assertThat(underTest.getErrors()).isEmpty();
-    }
-
-    @Test
-    public void ofWithComponentTransformerShouldCheckComponentTransformerIsNotNull() {
-        // When
-        Throwable thrown = catchThrowable(() -> Output.of((UnaryOperator<Component>) null));
-
-        // Then
-        assertThat(thrown).isInstanceOf(NullPointerException.class);
-        assertThat(thrown).hasMessage("componentTransformer");
-    }
-
-    @Test
-    public void ofWithComponentTransformerAndErrorShouldSetComponentTransformerAndError() {
-        // When
-        Output<TestOutput> underTest = Output.of(componentTransformer, error);
-
-        // Then
-        assertThat(underTest.getComponentTransformer()).isSameAs(componentTransformer);
-        assertThat(underTest.getOutput()).isNull();
-        assertThat(underTest.getErrors()).containsExactly(error);
-        assertIsUnmodifiable(underTest.getErrors());
-    }
-
-    @Test
-    public void ofWithComponentTransformerAndErrorShouldCheckComponentTransformerIsNotNull() {
-        // When
-        Throwable thrown = catchThrowable(() -> Output.of(null, error));
-
-        // Then
-        assertThat(thrown).isInstanceOf(NullPointerException.class);
-        assertThat(thrown).hasMessage("componentTransformer");
-    }
-
-    @Test
-    public void ofWithComponentTransformerAndErrorShouldCheckErrorIsNotNull() {
-        // When
-        Throwable thrown = catchThrowable(() -> Output.of(componentTransformer, (ScannerError) null));
-
-        // Then
-        assertThat(thrown).isInstanceOf(NullPointerException.class);
-        assertThat(thrown).hasMessage("error");
-    }
-
-    @Test
-    public void ofWithComponentTransformerAndErrorsShouldSetComponentTransformerAndErrors() {
-        // When
-        Output<TestOutput> underTest = Output.of(componentTransformer, errors);
-
-        // Then
-        assertThat(underTest.getComponentTransformer()).isSameAs(componentTransformer);
-        assertThat(underTest.getOutput()).isNull();
-        assertThat(underTest.getErrors()).containsExactlyElementsOf(errors);
-        assertIsUnmodifiable(underTest.getErrors());
-    }
-
-    @Test
-    public void ofWithComponentTransformerAndErrorsShouldCheckComponentTransformerIsNotNull() {
-        // When
-        Throwable thrown = catchThrowable(() -> Output.of(null, List.of(error)));
-
-        // Then
-        assertThat(thrown).isInstanceOf(NullPointerException.class);
-        assertThat(thrown).hasMessage("componentTransformer");
-    }
-
-    @Test
-    public void ofWithComponentTransformerAndErrorsShouldCheckErrorsIsNotNull() {
-        // When
-        Throwable thrown = catchThrowable(() -> Output.of(componentTransformer, (List<ScannerError>) null));
-
-        // Then
-        assertThat(thrown).isInstanceOf(NullPointerException.class);
-        assertThat(thrown).hasMessage("errors");
-    }
-    
-    // Here
-    
-    @Test
-    public void ofWithComponentTransformerAndOutputShouldSetComponentTransformerAndOutput() {
-        // When
-        Output<TestOutput> underTest = Output.of(componentTransformer, output);
-
-        // Then
-        assertThat(underTest.getComponentTransformer()).isSameAs(componentTransformer);
+        assertThat(underTest.getTransformer()).isNull();
         assertThat(underTest.getOutput()).isSameAs(output);
         assertThat(underTest.getErrors()).isEmpty();
+        assertThat(underTest.success()).isTrue();
+        assertThat(underTest.failed()).isFalse();
+        assertThat(underTest.hasOutput()).isTrue();
+        assertThat(underTest.getCacheTtl()).isEqualTo(CACHE_TTL);
     }
 
     @Test
-    public void ofWithComponentTransformerAndOutputShouldCheckComponentTransformerIsNotNull() {
+    public void ofOutputShouldAcceptANullOutput() {
         // When
-        Throwable thrown = catchThrowable(() -> Output.of(null, output));
+        Output<TestOutput, Void> underTest = Output.ofOutput(null, CACHE_TTL);
 
         // Then
-        assertThat(thrown).isInstanceOf(NullPointerException.class);
-        assertThat(thrown).hasMessage("componentTransformer");
+        assertThat(underTest.getTransformer()).isNull();
+        assertThat(underTest.getOutput()).isNull();
+        assertThat(underTest.getErrors()).isEmpty();
+        assertThat(underTest.success()).isTrue();
+        assertThat(underTest.failed()).isFalse();
+        assertThat(underTest.hasOutput()).isFalse();
+        assertThat(underTest.getCacheTtl()).isEqualTo(CACHE_TTL);
     }
 
     @Test
-    public void ofWithComponentTransformerAndOutputShouldCheckOutputIsNotNull() {
+    public void ofTransformerShouldSetTransformer() {
         // When
-        Throwable thrown = catchThrowable(() -> Output.of(componentTransformer, (TestOutput) null));
+        Output<TestOutput, Component> underTest = Output.ofTransformer(transformer, CACHE_TTL);
 
         // Then
-        assertThat(thrown).isInstanceOf(NullPointerException.class);
-        assertThat(thrown).hasMessage("output");
+        assertThat(underTest.getTransformer()).isSameAs(transformer);
+        assertThat(underTest.getOutput()).isNull();
+        assertThat(underTest.getErrors()).isEmpty();
+        assertThat(underTest.success()).isTrue();
+        assertThat(underTest.failed()).isFalse();
+        assertThat(underTest.hasOutput()).isFalse();
+        assertThat(underTest.getCacheTtl()).isEqualTo(CACHE_TTL);
     }
 
     @Test
-    public void ofWithComponentTransformerAndOutputAndErrorShouldSetComponentTransformerAndOutputAndError() {
+    public void ofTransformerShouldAcceptANullOutput() {
         // When
-        Output<TestOutput> underTest = Output.of(componentTransformer, output, error);
+        Output<TestOutput, Component> underTest = Output.ofTransformer(null, CACHE_TTL);
 
         // Then
-        assertThat(underTest.getComponentTransformer()).isSameAs(componentTransformer);
-        assertThat(underTest.getOutput()).isSameAs(output);
-        assertThat(underTest.getErrors()).containsExactly(error);
+        assertThat(underTest.getTransformer()).isNull();
+        assertThat(underTest.getOutput()).isNull();
+        assertThat(underTest.getErrors()).isEmpty();
+        assertThat(underTest.success()).isTrue();
+        assertThat(underTest.failed()).isFalse();
+        assertThat(underTest.hasOutput()).isFalse();
+        assertThat(underTest.getCacheTtl()).isEqualTo(CACHE_TTL);
+    }
+
+    @Test
+    public void ofErrorShouldSetError() {
+        // When
+        Output<Void, Component> underTest = Output.ofError(error1, CACHE_TTL);
+
+        // Then
+        assertThat(underTest.getTransformer()).isNull();
+        assertThat(underTest.getOutput()).isNull();
+        assertThat(underTest.getErrors()).containsExactly(error1);
         assertIsUnmodifiable(underTest.getErrors());
+        assertThat(underTest.success()).isFalse();
+        assertThat(underTest.failed()).isTrue();
+        assertThat(underTest.hasOutput()).isFalse();
+        assertThat(underTest.getCacheTtl()).isEqualTo(CACHE_TTL);
     }
 
     @Test
-    public void ofWithComponentTransformerAndOutputAndErrorShouldCheckComponentTransformerIsNotNull() {
+    public void ofErrorShouldCheckErrorIsNotNull() {
         // When
-        Throwable thrown = catchThrowable(() -> Output.of(null, output, error));
-
-        // Then
-        assertThat(thrown).isInstanceOf(NullPointerException.class);
-        assertThat(thrown).hasMessage("componentTransformer");
-    }
-
-    @Test
-    public void ofWithComponentTransformerAndOutputAndErrorShouldCheckOutputIsNotNull() {
-        // When
-        Throwable thrown = catchThrowable(() -> Output.of(componentTransformer, null, error));
-
-        // Then
-        assertThat(thrown).isInstanceOf(NullPointerException.class);
-        assertThat(thrown).hasMessage("output");
-    }
-
-    @Test
-    public void ofWithComponentTransformerAndOutputAndErrorShouldCheckErrorIsNotNull() {
-        // When
-        Throwable thrown = catchThrowable(() -> Output.of(componentTransformer, output, (ScannerError) null));
+        Throwable thrown = catchThrowable(() -> Output.ofError(null, CACHE_TTL));
 
         // Then
         assertThat(thrown).isInstanceOf(NullPointerException.class);
@@ -180,41 +113,25 @@ public class OutputTest {
     }
 
     @Test
-    public void ofWithComponentTransformerAndOutputAndErrorsShouldSetComponentTransformerAndOutputAndErrors() {
+    public void ofErrorsShouldSetErrors() {
         // When
-        Output<TestOutput> underTest = Output.of(componentTransformer, output, errors);
+        Output<Void, Component> underTest = Output.ofErrors(errors, CACHE_TTL);
 
         // Then
-        assertThat(underTest.getComponentTransformer()).isSameAs(componentTransformer);
-        assertThat(underTest.getOutput()).isSameAs(output);
-        assertThat(underTest.getErrors()).containsExactlyElementsOf(errors);
+        assertThat(underTest.getTransformer()).isNull();
+        assertThat(underTest.getOutput()).isNull();
+        assertThat(underTest.getErrors()).containsExactly(error3, error4);
         assertIsUnmodifiable(underTest.getErrors());
+        assertThat(underTest.success()).isFalse();
+        assertThat(underTest.failed()).isTrue();
+        assertThat(underTest.hasOutput()).isFalse();
+        assertThat(underTest.getCacheTtl()).isEqualTo(CACHE_TTL);
     }
 
     @Test
-    public void ofWithComponentTransformerAndOutputAndErrorsShouldCheckComponentTransformerIsNotNull() {
+    public void ofErrorsShouldCheckErrorsIsNotNull() {
         // When
-        Throwable thrown = catchThrowable(() -> Output.of(null, output, List.of(error)));
-
-        // Then
-        assertThat(thrown).isInstanceOf(NullPointerException.class);
-        assertThat(thrown).hasMessage("componentTransformer");
-    }
-
-    @Test
-    public void ofWithComponentTransformerAndOutputAndErrorsShouldCheckOutputIsNotNull() {
-        // When
-        Throwable thrown = catchThrowable(() -> Output.of(componentTransformer, null, List.of(error)));
-
-        // Then
-        assertThat(thrown).isInstanceOf(NullPointerException.class);
-        assertThat(thrown).hasMessage("output");
-    }
-
-    @Test
-    public void ofWithComponentTransformerAndOutputAndErrorsShouldCheckErrorsIsNotNull() {
-        // When
-        Throwable thrown = catchThrowable(() -> Output.of(componentTransformer, output, (List<ScannerError>) null));
+        Throwable thrown = catchThrowable(() -> Output.ofErrors(null, CACHE_TTL));
 
         // Then
         assertThat(thrown).isInstanceOf(NullPointerException.class);
@@ -222,99 +139,164 @@ public class OutputTest {
     }
 
     @Test
-    public void ofWithErrorShouldSetError() {
+    public void emptyShouldSetNothing() {
         // When
-        Output<Void> underTest = Output.of(errors);
+        Output<Void, Component> underTest = Output.empty(CACHE_TTL);
 
         // Then
-        assertThat(underTest.getComponentTransformer()).isNull();
-        assertThat(underTest.getOutput()).isNull();
-        assertThat(underTest.getErrors()).containsExactlyElementsOf(errors);
-        assertIsUnmodifiable(underTest.getErrors());
-    }
-
-    @Test
-    public void ofWithErrorShouldCheckErrorIsNotNull() {
-        // When
-        Throwable thrown = catchThrowable(() -> Output.of((ScannerError) null));
-
-        // Then
-        assertThat(thrown).isInstanceOf(NullPointerException.class);
-        assertThat(thrown).hasMessage("error");
-    }
-
-    @Test
-    public void ofWithErrorsShouldSetErrors() {
-        // When
-        Output<Void> underTest = Output.of(error);
-
-        // Then
-        assertThat(underTest.getComponentTransformer()).isNull();
-        assertThat(underTest.getOutput()).isNull();
-        assertThat(underTest.getErrors()).containsExactly(error);
-        assertIsUnmodifiable(underTest.getErrors());
-    }
-
-    @Test
-    public void ofWithErrorsShouldCheckErrorsIsNotNull() {
-        // When
-        Throwable thrown = catchThrowable(() -> Output.of((List<ScannerError>) null));
-
-        // Then
-        assertThat(thrown).isInstanceOf(NullPointerException.class);
-        assertThat(thrown).hasMessage("errors");
-    }
-
-    @Test
-    public void successReturnsTrueAndFailedReturnsFalseWhenComponentTransformerIsNullAndOutputIsNullAndErrorsIsEmpty() {
-        // When
-        Output<Void> underTest = Output.of(List.of());
-
-        // Then
-        assertThat(underTest.getComponentTransformer()).isNull();
+        assertThat(underTest.getTransformer()).isNull();
         assertThat(underTest.getOutput()).isNull();
         assertThat(underTest.success()).isTrue();
         assertThat(underTest.failed()).isFalse();
+        assertThat(underTest.hasOutput()).isFalse();
+        assertThat(underTest.getCacheTtl()).isEqualTo(CACHE_TTL);
     }
 
     @Test
-    public void successReturnsTrueAndFailedReturnsFalseWhenComponentTransformerIsNonNullAndOutputIsNonNullAndErrorsIsEmpty() {
+    public void builderOutputShouldSetOutput() {
         // When
-        Output<TestOutput> underTest = Output.of(componentTransformer, output, List.of());
+        Output<TestOutput, Void> returnValue = Output.builder(CACHE_TTL)
+                .output(output)
+                .build();
 
         // Then
-        assertThat(underTest.getComponentTransformer()).isSameAs(componentTransformer);
-        assertThat(underTest.getOutput()).isSameAs(output);
-        assertThat(underTest.success()).isTrue();
-        assertThat(underTest.failed()).isFalse();
+        assertThat(returnValue).isEqualTo(new Output<>(output, null, null, CACHE_TTL));
     }
 
     @Test
-    public void successReturnsFalseAndFailedReturnsTrueWhenComponentTransformerIsNullAndOutputIsNullAndErrorsIsNonEmpty() {
+    public void builderTransformerShouldSetTransformer() {
         // When
-        Output<Void> underTest = Output.of(errors);
+        Output<Void, Component> returnValue = Output.builder(CACHE_TTL)
+                .transformer(transformer)
+                .build();
 
         // Then
-        assertThat(underTest.getComponentTransformer()).isNull();
-        assertThat(underTest.getOutput()).isNull();
-        assertThat(underTest.success()).isFalse();
-        assertThat(underTest.failed()).isTrue();
+        assertThat(returnValue).isEqualTo(new Output<>(null, transformer, null, CACHE_TTL));
     }
 
     @Test
-    public void successReturnsFalseAndFailedReturnsTrueWhenComponentTransformerIsNonNullAndOutputIsNonNullAndErrorsIsEmpty() {
+    public void builderErrorsShouldSetErrors() {
         // When
-        Output<TestOutput> underTest = Output.of(componentTransformer, output, errors);
+        Output<Void, Void> returnValue = Output.builder(CACHE_TTL)
+                .errors(errors)
+                .build();
 
         // Then
-        assertThat(underTest.getComponentTransformer()).isSameAs(componentTransformer);
-        assertThat(underTest.getOutput()).isSameAs(output);
-        assertThat(underTest.success()).isFalse();
-        assertThat(underTest.failed()).isTrue();
+        assertThat(returnValue).isEqualTo(new Output<>(null, null, errors, CACHE_TTL));
+    }
+
+    @Test
+    public void builderErrorShouldAddTheErrorToErrors() {
+        // When
+        Output<Void, Void> returnValue = Output.builder(CACHE_TTL)
+                .error(error1)
+                .build();
+
+        // Then
+        assertThat(returnValue).isEqualTo(new Output<>(null, null, List.of(error1), CACHE_TTL));
+    }
+
+    @Test
+    public void builderErrorWhenCalledMultipleTimesShouldAddTheErrorsToErrors() {
+        // When
+        Output<Void, Void> returnValue = Output.builder(CACHE_TTL)
+                .error(error1)
+                .error(error2)
+                .build();
+
+        // Then
+        assertThat(returnValue).isEqualTo(new Output<>(null, null, List.of(error1, error2), CACHE_TTL));
+    }
+
+    @Test
+    public void builderShouldSetBeAbleToSetOutputAndTransformerAndErrors() {
+        // When
+        Output<TestOutput, Component> returnValue = Output.builder(CACHE_TTL)
+                .output(output)
+                .transformer(transformer)
+                .errors(errors)
+                .build();
+
+        // Then
+        assertThat(returnValue).isEqualTo(new Output<>(
+                output,
+                transformer,
+                errors,
+                CACHE_TTL
+        ));
+    }
+
+    @Test
+    public void builderErrorWhenCalledMultipleTimesAndThereAreAlreadyErrorsShouldAddTheErrorsToErrors() {
+        // When
+        Output<Void, Void> returnValue = Output.builder(CACHE_TTL)
+                .errors(errors)
+                .error(error1)
+                .error(error2)
+                .build();
+
+        // Then
+        assertThat(returnValue).isEqualTo(new Output<>(null, null, List.of(error3, error4, error1, error2), CACHE_TTL));
+    }
+
+    @Test
+    public void mapOutputWhenOutputIsNullShouldReturnAnEmptyOptional() {
+        // Given
+        Output<String, Void> underTest = Output.ofOutput(null, CACHE_TTL);
+
+        // When
+        Optional<String> returnValue = underTest.mapOutput(value -> value + " mapped");
+
+        // Then
+        assertThat(returnValue).isEmpty();
+    }
+
+    @Test
+    public void mapOutputWhenOutputPresentShouldMapTheOutput() {
+        // Given
+        Output<String, Void> underTest = Output.ofOutput("test-value", CACHE_TTL);
+
+        // When
+        Optional<String> returnValue = underTest.mapOutput(value -> value + " mapped");
+
+        // Then
+        assertThat(returnValue).hasValue("test-value mapped");
+    }
+
+    @Test
+    public void getOutputOrElseWhenOutputIsNullShouldReturnOtherValue() {
+        // Given
+        Output<String, Void> underTest = Output.ofOutput(null, CACHE_TTL);
+
+        // When
+        String returnValue = underTest.getOutputOrElse("other-value");
+
+        // Then
+        assertThat(returnValue).isEqualTo("other-value");
+    }
+
+    @Test
+    public void getOutputOrElseWhenOutputPresentShouldReturnOutput() {
+        // Given
+        Output<String, Void> underTest = Output.ofOutput("test-value", CACHE_TTL);
+
+        // When
+        String returnValue = underTest.getOutputOrElse("other-value");
+
+        // Then
+        assertThat(returnValue).isEqualTo("test-value");
+    }
+
+    private ScannerError createError(int errorNumber) {
+        return new ScannerError(
+                "test-scanner-id-" + errorNumber,
+                "test-message-" + errorNumber,
+                null
+        );
     }
 
     private void assertIsUnmodifiable(@NotNull List<ScannerError> value) {
-        Throwable thrown = catchThrowable(() -> value.add(new ScannerError("test_scanner", "test_message", null)));
+        Throwable thrown = catchThrowable(() -> value.add(createError(1)));
         assertThat(thrown).isInstanceOf(UnsupportedOperationException.class);
     }
 

@@ -2,6 +2,7 @@ package tech.kronicle.service.services;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import tech.kronicle.pluginapi.scanners.models.Output;
 import tech.kronicle.sdk.models.Repo;
 
 import java.util.Collection;
@@ -12,12 +13,15 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class RepoFinderService {
 
-    private final FinderExtensionRegistry extensionRegistry;
+    private final FinderExtensionRegistry registry;
+    private final TaskExecutor executor;
     private final RepoFilterService repoFilterService;
 
     public List<Repo> findRepos() {
-        return extensionRegistry.getRepoFinders().stream()
-                .map(repoFinder -> repoFinder.find(null))
+        return registry.getRepoFinders().stream()
+                .map(repoFinder -> executor.executeFinder(repoFinder, null))
+                .filter(Output::success)
+                .map(Output::getOutput)
                 .flatMap(Collection::stream)
                 .distinct()
                 .filter(repoFilterService::keepRepo)

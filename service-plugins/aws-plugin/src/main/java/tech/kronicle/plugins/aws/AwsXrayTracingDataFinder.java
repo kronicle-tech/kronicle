@@ -4,15 +4,19 @@ import lombok.RequiredArgsConstructor;
 import org.pf4j.Extension;
 import tech.kronicle.pluginapi.finders.TracingDataFinder;
 import tech.kronicle.pluginapi.finders.models.TracingData;
+import tech.kronicle.pluginapi.scanners.models.Output;
 import tech.kronicle.plugins.aws.config.AwsConfig;
 import tech.kronicle.plugins.aws.xray.services.DependencyService;
 import tech.kronicle.sdk.models.ComponentMetadata;
 
 import javax.inject.Inject;
+import java.time.Duration;
 
 @Extension
 @RequiredArgsConstructor(onConstructor = @__({@Inject}))
 public class AwsXrayTracingDataFinder extends TracingDataFinder {
+
+    private static final Duration CACHE_TTL = Duration.ofHours(1);
 
     private final DependencyService dependencyService;
     private final AwsConfig config;
@@ -23,13 +27,19 @@ public class AwsXrayTracingDataFinder extends TracingDataFinder {
     }
 
     @Override
-    public TracingData find(ComponentMetadata input) {
+    public Output<TracingData, Void> find(ComponentMetadata input) {
         if (config.getLoadXrayTraceData()) {
-            return TracingData.builder()
-                    .dependencies(dependencyService.getDependencies())
-                    .build();
+            return Output.ofOutput(
+                    TracingData.builder()
+                            .dependencies(dependencyService.getDependencies())
+                            .build(),
+                    CACHE_TTL
+            );
         } else {
-            return TracingData.EMPTY;
+            return Output.ofOutput(
+                    TracingData.EMPTY,
+                    CACHE_TTL
+            );
         }
     }
 }

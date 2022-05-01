@@ -23,6 +23,7 @@ import tech.kronicle.sdk.models.ComponentMetadata;
 import tech.kronicle.sdk.models.ScannerError;
 import tech.kronicle.sdk.models.openapi.OpenApiSpec;
 
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -37,6 +38,8 @@ import static tech.kronicle.utils.FileUtilsFactory.createFileUtils;
 import static tech.kronicle.utils.JsonMapperFactory.createJsonMapper;
 
 public class OpenApiScannerTest extends BaseCodebaseScannerTest {
+
+    private static final Duration CACHE_TTL = Duration.ofMinutes(15);
 
     private WireMockServer wireMockServer;
     private final ObjectMapper objectMapper = createJsonMapper();
@@ -104,10 +107,10 @@ public class OpenApiScannerTest extends BaseCodebaseScannerTest {
         underTest.refresh(componentMetadata);
 
         // When
-        Output<Void> returnValue = underTest.scan(componentAndCodebase);
+        Output<Void, Component> returnValue = underTest.scan(componentAndCodebase);
 
         // Then
-        assertThat(returnValue.getErrors()).isEmpty();
+        assertThat(maskTransformer(returnValue)).isEqualTo(maskTransformer(Output.empty(CACHE_TTL)));
         List<OpenApiSpec> returnOpenApiSpecs = getMutatedComponent(returnValue).getOpenApiSpecs();
         assertThat(returnOpenApiSpecs).hasSize(1);
         assertThat(getSpecAsJsonTree(returnOpenApiSpecs.get(0)).get("info").get("title").textValue()).isEqualTo("Example");
@@ -135,10 +138,10 @@ public class OpenApiScannerTest extends BaseCodebaseScannerTest {
         OpenApiScanner underTest = createOpenApiScanner(true);
 
         // When
-        Output<Void> returnValue = underTest.scan(componentAndCodebase);
+        Output<Void, Component> returnValue = underTest.scan(componentAndCodebase);
 
         // Then
-        assertThat(returnValue.getErrors()).isEmpty();
+        assertThat(maskTransformer(returnValue)).isEqualTo(maskTransformer(Output.empty(CACHE_TTL)));
         List<OpenApiSpec> openApiSpecs = getMutatedComponent(returnValue).getOpenApiSpecs();
         assertThat(openApiSpecs).isEmpty();
     }
@@ -159,10 +162,10 @@ public class OpenApiScannerTest extends BaseCodebaseScannerTest {
         OpenApiScanner underTest = createOpenApiScanner(true);
 
         // When
-        Output<Void> returnValue = underTest.scan(componentAndCodebase);
+        Output<Void, Component> returnValue = underTest.scan(componentAndCodebase);
 
         // Then
-        assertThat(returnValue.getErrors()).isEmpty();
+        assertThat(maskTransformer(returnValue)).isEqualTo(maskTransformer(Output.empty(CACHE_TTL)));
         List<OpenApiSpec> returnOpenApiSpecs = getMutatedComponent(returnValue).getOpenApiSpecs();
         assertThat(returnOpenApiSpecs).hasSize(1);
         OpenApiSpec returnOpenApiSpec;
@@ -184,10 +187,10 @@ public class OpenApiScannerTest extends BaseCodebaseScannerTest {
         OpenApiScanner underTest = createOpenApiScanner(scanCodebases);
 
         // When
-        Output<Void> returnValue = underTest.scan(componentAndCodebase);
+        Output<Void, Component> returnValue = underTest.scan(componentAndCodebase);
 
         // Then
-        assertThat(returnValue.getErrors()).isEmpty();
+        assertThat(maskTransformer(returnValue)).isEqualTo(maskTransformer(Output.empty(CACHE_TTL)));
         List<OpenApiSpec> returnOpenApiSpecs = new ArrayList<>(getMutatedComponent(returnValue).getOpenApiSpecs());
 
         if (scanCodebases) {
@@ -232,10 +235,10 @@ public class OpenApiScannerTest extends BaseCodebaseScannerTest {
         OpenApiScanner underTest = createOpenApiScanner(scanCodebases);
 
         // When
-        Output<Void> returnValue = underTest.scan(componentAndCodebase);
+        Output<Void, Component> returnValue = underTest.scan(componentAndCodebase);
 
         // Then
-        assertThat(returnValue.getErrors()).isEmpty();
+        assertThat(maskTransformer(returnValue)).isEqualTo(maskTransformer(Output.empty(CACHE_TTL)));
         List<OpenApiSpec> returnOpenApiSpecs = getMutatedComponent(returnValue).getOpenApiSpecs();
         assertThat(returnOpenApiSpecs).hasSize(1);
         OpenApiSpec returnOpenApiSpec;
@@ -257,10 +260,10 @@ public class OpenApiScannerTest extends BaseCodebaseScannerTest {
         OpenApiScanner underTest = createOpenApiScanner(true);
 
         // When
-        Output<Void> returnValue = underTest.scan(componentAndCodebase);
+        Output<Void, Component> returnValue = underTest.scan(componentAndCodebase);
 
         // Then
-        assertThat(returnValue.getErrors()).isEmpty();
+        assertThat(maskTransformer(returnValue)).isEqualTo(maskTransformer(Output.empty(CACHE_TTL)));
         List<OpenApiSpec> returnOpenApiSpecs = getMutatedComponentIgnoringErrors(returnValue).getOpenApiSpecs();
         assertThat(returnOpenApiSpecs).hasSize(1);
         OpenApiSpec returnOpenApiSpec;
@@ -287,10 +290,11 @@ public class OpenApiScannerTest extends BaseCodebaseScannerTest {
         OpenApiScanner underTest = createOpenApiScanner(true);
 
         // When
-        Output<Void> returnValue = underTest.scan(componentAndCodebase);
+        Output<Void, Component> returnValue = underTest.scan(componentAndCodebase);
 
         // Then
         assertThat(returnValue.getErrors()).hasSize(1);
+        assertThat(returnValue.getCacheTtl()).isEqualTo(CACHE_TTL);
         ScannerError error;
         error = returnValue.getErrors().get(0);
         assertThat(error.getScannerId()).isEqualTo("openapi");
@@ -318,10 +322,10 @@ public class OpenApiScannerTest extends BaseCodebaseScannerTest {
         OpenApiScanner underTest = createOpenApiScanner(true);
 
         // When
-        Output<Void> returnValue = underTest.scan(componentAndCodebase);
+        Output<Void, Component> returnValue = underTest.scan(componentAndCodebase);
 
         // Then
-        assertThat(returnValue.getErrors()).isEmpty();
+        assertThat(maskTransformer(returnValue)).isEqualTo(maskTransformer(Output.empty(CACHE_TTL)));
         List<OpenApiSpec> returnOpenApiSpecs = getMutatedComponentIgnoringErrors(returnValue).getOpenApiSpecs();
         assertThat(returnOpenApiSpecs).isEmpty();
     }
@@ -340,10 +344,11 @@ public class OpenApiScannerTest extends BaseCodebaseScannerTest {
         OpenApiScanner underTest = createOpenApiScanner(true);
 
         // When
-        Output<Void> returnValue = underTest.scan(componentAndCodebase);
+        Output<Void, Component> returnValue = underTest.scan(componentAndCodebase);
 
         // Then
         assertThat(returnValue.getErrors()).hasSize(1);
+        assertThat(returnValue.getCacheTtl()).isEqualTo(CACHE_TTL);
         ScannerError error;
         error = returnValue.getErrors().get(0);
         assertThat(error.getScannerId()).isEqualTo("openapi");
@@ -369,10 +374,10 @@ public class OpenApiScannerTest extends BaseCodebaseScannerTest {
         OpenApiScanner underTest = createOpenApiScanner(true);
 
         // When
-        Output<Void> returnValue = underTest.scan(componentAndCodebase);
+        Output<Void, Component> returnValue = underTest.scan(componentAndCodebase);
 
         // Then
-        assertThat(returnValue.getErrors()).isEmpty();
+        assertThat(maskTransformer(returnValue)).isEqualTo(maskTransformer(Output.empty(CACHE_TTL)));
         List<OpenApiSpec> returnOpenApiSpecs = getMutatedComponent(returnValue).getOpenApiSpecs();
         assertThat(returnOpenApiSpecs).hasSize(1);
         OpenApiSpec returnOpenApiSpec;
@@ -395,10 +400,10 @@ public class OpenApiScannerTest extends BaseCodebaseScannerTest {
         OpenApiScanner underTest = createOpenApiScanner(true);
 
         // When
-        Output<Void> returnValue = underTest.scan(componentAndCodebase);
+        Output<Void, Component> returnValue = underTest.scan(componentAndCodebase);
 
         // Then
-        assertThat(returnValue.getErrors()).isEmpty();
+        assertThat(maskTransformer(returnValue)).isEqualTo(maskTransformer(Output.empty(CACHE_TTL)));
         List<OpenApiSpec> returnOpenApiSpecs = getMutatedComponent(returnValue).getOpenApiSpecs();
         assertThat(returnOpenApiSpecs).isEmpty();
     }
