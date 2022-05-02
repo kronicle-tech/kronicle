@@ -80,6 +80,7 @@ public class GitHubClientTest {
     @AfterEach
     public void afterEach() {
         wireMockServer.stop();
+        logCaptor.close();
     }
 
     @ParameterizedTest

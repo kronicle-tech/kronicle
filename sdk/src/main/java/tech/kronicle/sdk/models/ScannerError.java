@@ -25,7 +25,7 @@ public class ScannerError {
     public String toString() {
         String text = this.message;
         if (nonNull(cause)) {
-            text += " | " + cause.toString();
+            text += " | " + cause;
         }
         return text;
     }
