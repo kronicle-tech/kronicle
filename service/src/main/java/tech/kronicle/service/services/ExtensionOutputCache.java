@@ -11,7 +11,7 @@ import java.util.function.Supplier;
 @Service
 public class ExtensionOutputCache {
 
-    private final LoadingCache<ExtensionOutputCacheKey<?, ?, ?, ?>, Output<?, ?>> cache;
+    private final LoadingCache<ExtensionOutputCacheKey, Output> cache;
 
     public ExtensionOutputCache(
             ExtensionOutputCacheLoader loader,
@@ -22,10 +22,10 @@ public class ExtensionOutputCache {
                 .build(loader);
     }
 
-    public <P, I, O, T> Output<O, T> get(P processor, I input, Supplier<Output<O, T>> loader) {
+    public <E, I, O, T> Output<O, T> get(E extension, I input, Supplier<Output<O, T>> loader) {
         return (Output<O, T>) cache
                 .get(new ExtensionOutputCacheKey<>(
-                        processor,
+                        extension,
                         input,
                         loader
                 ));

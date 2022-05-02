@@ -58,6 +58,7 @@ public class ExtensionExecutor {
         try {
             return scanner.scan(input);
         } catch (Exception e) {
+            log.error("Scanner {} failed to scan \"{}\"", scanner.id(), input.reference(), e);
             return Output.ofError(
                     new ScannerError(
                             scanner.id(),
