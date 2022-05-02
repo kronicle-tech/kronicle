@@ -168,7 +168,17 @@ public class MasterComponentFinderTest {
     }
 
     private MasterComponentFinder createUnderTest() {
-        return new MasterComponentFinder(finderRegistry, new ExtensionExecutor(new ThrowableToScannerErrorMapper()));
+        ThrowableToScannerErrorMapper throwableToScannerErrorMapper = new ThrowableToScannerErrorMapper();
+        return new MasterComponentFinder(
+                finderRegistry,
+                new ExtensionExecutor(
+                        new ExtensionOutputCache(
+                                new ExtensionOutputCacheLoader(),
+                                new ExtensionOutputCacheExpiry()
+                        ),
+                        throwableToScannerErrorMapper
+                )
+        );
     }
 
     private Component createComponent(int componentNumber) {
