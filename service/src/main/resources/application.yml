@@ -70,6 +70,7 @@ plugins:
     load-xray-trace-data: true
     tag-keys:
       component: component
+      environment: environment
       team: team
     log-fields:
       level: level

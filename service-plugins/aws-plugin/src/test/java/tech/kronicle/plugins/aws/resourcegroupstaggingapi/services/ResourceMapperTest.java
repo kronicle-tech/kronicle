@@ -1,6 +1,7 @@
 package tech.kronicle.plugins.aws.resourcegroupstaggingapi.services;
 
 import lombok.RequiredArgsConstructor;
+import lombok.ToString;
 import lombok.With;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -20,6 +21,7 @@ import tech.kronicle.sdk.models.DependencyDirection;
 import tech.kronicle.sdk.models.EnvironmentState;
 import tech.kronicle.sdk.models.Tag;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Stream;
 
@@ -53,11 +55,15 @@ public class ResourceMapperTest {
                 ),
                 new ResourceGroupsTaggingApiResource(
                         "arn:aws:ec2:us-west-1:123456789012:security-group/sg-12345678901ABCDEF",
-                        List.of(
-                                new ResourceGroupsTaggingApiTag("Name", "Test name"),
-                                new ResourceGroupsTaggingApiTag("test-team-tag-key", "test-team-id"),
-                                new ResourceGroupsTaggingApiTag("test-component-tag-key", "test-component-id"),
-                                new ResourceGroupsTaggingApiTag("test-tag-key-1", "test-tag-value-1")
+                        prepareResourceTags(
+                                mappingConfig,
+                                List.of(
+                                        new ResourceGroupsTaggingApiTag("Name", "Test name"),
+                                        new ResourceGroupsTaggingApiTag("test-team-tag-key", "test-team-id"),
+                                        new ResourceGroupsTaggingApiTag("test-component-tag-key", "test-component-id"),
+                                        new ResourceGroupsTaggingApiTag("test-tag-key-1", "test-tag-value-1")
+                                ),
+                                new ResourceGroupsTaggingApiTag("test-environment-tag-key", "test-override-environment-id")
                         )
                 )
         );
@@ -105,7 +111,8 @@ public class ResourceMapperTest {
                                         Tag.builder().key("test-team-tag-key").value("test-team-id").build(),
                                         Tag.builder().key("test-component-tag-key").value("test-component-id").build(),
                                         Tag.builder().key("test-tag-key-1").value("test-tag-value-1").build()
-                                )
+                                ),
+                                Tag.builder().key("test-environment-tag-key").value("test-override-environment-id").build()
                         ))
                         .teams(List.of(
                                 ComponentTeam.builder()
@@ -122,6 +129,7 @@ public class ResourceMapperTest {
                                 "* test-team-tag-key=test-team-id\n" +
                                 "* test-component-tag-key=test-component-id\n" +
                                 "* test-tag-key-1=test-tag-value-1\n" +
+                                (mappingConfig.overrideEnvironment ? "* test-environment-tag-key=test-override-environment-id\n" : "") +
                                 "\n" +
                                 "Aliases:\n" +
                                 "\n" +
@@ -134,7 +142,7 @@ public class ResourceMapperTest {
                         .state(ComponentState.builder()
                                 .environments(List.of(
                                         EnvironmentState.builder()
-                                                .id(TEST_ENVIRONMENT_ID)
+                                                .id(prepareExpectedEnvironmentId(mappingConfig, TEST_ENVIRONMENT_ID))
                                                 .build()
                                 ))
                                 .build()
@@ -162,7 +170,11 @@ public class ResourceMapperTest {
                         mappingConfig.copyResourceTagsToComponents,
                         mappingConfig.createDependenciesForResources,
                         null,
-                        new AwsTagKeysConfig("test-component-tag-key", "test-team-tag-key"),
+                        new AwsTagKeysConfig(
+                                "test-component-tag-key",
+                                "test-environment-tag-key",
+                                "test-team-tag-key"
+                        ),
                         null
                 )
         );
@@ -171,10 +183,12 @@ public class ResourceMapperTest {
     public static Stream<MappingConfig> provideMappingConfig() {
         return Stream.of(
                 MappingConfig.builder().build(),
+                MappingConfig.builder().overrideEnvironment().build(),
                 MappingConfig.builder().detailedComponentDescriptions().build(),
                 MappingConfig.builder().copyResourceTagsToComponents().build(),
                 MappingConfig.builder().createDependenciesForResources().build(),
                 MappingConfig.builder()
+                        .overrideEnvironment()
                         .detailedComponentDescriptions()
                         .copyResourceTagsToComponents()
                         .createDependenciesForResources()
@@ -182,10 +196,63 @@ public class ResourceMapperTest {
         );
     }
 
-    @RequiredArgsConstructor
+    private List<ResourceGroupsTaggingApiTag> prepareResourceTags(
+            MappingConfig mappingConfig,
+            List<ResourceGroupsTaggingApiTag> tags,
+            ResourceGroupsTaggingApiTag environmentTag
+    ) {
+        List<ResourceGroupsTaggingApiTag> expectedTags = new ArrayList<>(tags);
+        if (mappingConfig.overrideEnvironment) {
+            expectedTags.add(environmentTag);
+        }
+        return expectedTags;
+    }
+
+    private String prepareExpectedDescription(MappingConfig mappingConfig, String description) {
+        return mappingConfig.detailedComponentDescriptions ? description : "";
+    }
+
+    private List<Tag> prepareExpectedTags(
+            MappingConfig mappingConfig,
+            List<Tag> tags,
+            Tag environmentTag
+    ) {
+        if (mappingConfig.copyResourceTagsToComponents) {
+            List<Tag> expectedTags = new ArrayList<>(tags);
+            if (mappingConfig.overrideEnvironment) {
+                expectedTags.add(environmentTag);
+            }
+            return expectedTags;
+        } else {
+            return List.of();
+        }
+    }
+
+    private List<ComponentDependency> prepareExpectedDependencies(MappingConfig mappingConfig) {
+        if (mappingConfig.createDependenciesForResources) {
+            return List.of(
+                    ComponentDependency.builder()
+                            .targetComponentId("test-component-id")
+                            .direction(DependencyDirection.INBOUND)
+                            .typeId(DependencyTypeIds.COMPOSITION)
+                            .label("is composed of")
+                            .build()
+            );
+        } else {
+            return List.of();
+        }
+    }
+
+    private String prepareExpectedEnvironmentId(MappingConfig mappingConfig, String environmentId) {
+        return mappingConfig.overrideEnvironment ? "test-override-environment-id" : environmentId;
+    }
+
     @With
+    @ToString
+    @RequiredArgsConstructor
     private static class MappingConfig {
 
+        private final boolean overrideEnvironment;
         private final boolean detailedComponentDescriptions;
         private final boolean copyResourceTagsToComponents;
         private final boolean createDependenciesForResources;
@@ -196,9 +263,15 @@ public class ResourceMapperTest {
 
         private static class MappingConfigBuilder {
 
+            private boolean overrideEnvironment;
             private boolean detailedComponentDescriptions;
             private boolean copyResourceTagsToComponents;
             private boolean createDependenciesForResources;
+
+            public MappingConfigBuilder overrideEnvironment() {
+                overrideEnvironment = true;
+                return this;
+            }
 
             public MappingConfigBuilder detailedComponentDescriptions() {
                 detailedComponentDescriptions = true;
@@ -217,34 +290,12 @@ public class ResourceMapperTest {
 
             public MappingConfig build() {
                 return new MappingConfig(
+                        overrideEnvironment,
                         detailedComponentDescriptions,
                         copyResourceTagsToComponents,
                         createDependenciesForResources
                 );
             }
-        }
-    }
-
-    private String prepareExpectedDescription(MappingConfig mappingConfig, String description) {
-        return mappingConfig.detailedComponentDescriptions ? description : "";
-    }
-
-    private List<Tag> prepareExpectedTags(MappingConfig mappingConfig, List<Tag> tags) {
-        return mappingConfig.copyResourceTagsToComponents ? tags : List.of();
-    }
-
-    private List<ComponentDependency> prepareExpectedDependencies(MappingConfig mappingConfig) {
-        if (mappingConfig.createDependenciesForResources) {
-            return List.of(
-                    ComponentDependency.builder()
-                            .targetComponentId("test-component-id")
-                            .direction(DependencyDirection.INBOUND)
-                            .typeId(DependencyTypeIds.COMPOSITION)
-                            .label("is composed of")
-                            .build()
-            );
-        } else {
-            return List.of();
         }
     }
 }

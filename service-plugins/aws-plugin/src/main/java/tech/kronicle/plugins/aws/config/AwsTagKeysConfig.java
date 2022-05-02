@@ -12,5 +12,7 @@ public class AwsTagKeysConfig {
     @NotEmpty
     String component;
     @NotEmpty
+    String environment;
+    @NotEmpty
     String team;
 }

@@ -76,6 +76,7 @@ public class GuiceModuleTest {
                         null, null,
                         null, new AwsTagKeysConfig(
                                 "test-component-tag-key",
+                                null,
                                 null
                         ),
                         new AwsLogFieldsConfig(
