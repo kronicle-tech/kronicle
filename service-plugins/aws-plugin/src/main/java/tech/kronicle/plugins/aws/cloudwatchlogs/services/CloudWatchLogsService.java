@@ -7,11 +7,13 @@ import tech.kronicle.plugins.aws.cloudwatchlogs.constants.CloudWatchQueryStatuse
 import tech.kronicle.plugins.aws.cloudwatchlogs.models.CloudWatchLogsQueryResult;
 import tech.kronicle.plugins.aws.cloudwatchlogs.models.CloudWatchLogsQueryResultField;
 import tech.kronicle.plugins.aws.cloudwatchlogs.models.CloudWatchLogsQueryResults;
+import tech.kronicle.plugins.aws.cloudwatchlogs.models.LogSummaryStateAndContext;
 import tech.kronicle.plugins.aws.config.AwsConfig;
 import tech.kronicle.plugins.aws.constants.ResourceTypes;
 import tech.kronicle.plugins.aws.guice.CloudWatchLogsGetQueryResultsRetry;
 import tech.kronicle.plugins.aws.models.AwsProfileAndRegion;
-import tech.kronicle.plugins.aws.models.ResourceIdsByProfileAndRegionAndComponent;
+import tech.kronicle.plugins.aws.models.TaggedResource;
+import tech.kronicle.plugins.aws.models.TaggedResourcesByProfileAndRegionAndComponent;
 import tech.kronicle.plugins.aws.services.TaggedResourceFinder;
 import tech.kronicle.sdk.models.Component;
 import tech.kronicle.sdk.models.LogLevelState;
@@ -24,6 +26,7 @@ import java.time.Duration;
 import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.ZonedDateTime;
+import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -31,6 +34,8 @@ import java.util.function.Function;
 import java.util.stream.Stream;
 
 import static java.util.Objects.isNull;
+import static java.util.stream.Collectors.groupingBy;
+import static java.util.stream.Collectors.mapping;
 import static java.util.stream.Collectors.toList;
 import static java.util.stream.Collectors.toUnmodifiableList;
 import static tech.kronicle.plugins.aws.utils.ProfileUtils.processProfilesToMapEntryList;
@@ -44,7 +49,7 @@ public class CloudWatchLogsService {
     private final AwsConfig config;
     private final String logLevelField;
     private final String logMessageField;
-    private ResourceIdsByProfileAndRegionAndComponent resourceIdsByProfileAndRegionAndComponent;
+    private TaggedResourcesByProfileAndRegionAndComponent taggedResourcesByProfileAndRegionAndComponent;
 
     @Inject
     public CloudWatchLogsService(
@@ -64,83 +69,106 @@ public class CloudWatchLogsService {
     }
 
     public void refresh() {
-        resourceIdsByProfileAndRegionAndComponent = taggedResourceFinder.getResourceIdsByProfileAndRegionAndComponent(
+        taggedResourcesByProfileAndRegionAndComponent = taggedResourceFinder.getTaggedResourcesByProfileAndRegionAndComponent(
                 ResourceTypes.LOGS_LOG_GROUP
         );
     }
 
     @SneakyThrows
-    public List<Map.Entry<AwsProfileAndRegion, List<LogSummaryState>>> getLogSummariesForComponent(
+    public List<LogSummaryStateAndContext> getLogSummariesForComponent(
             Component component
     ) {
         return processProfilesToMapEntryList(
                 config.getProfiles(),
                 getLogSummariesProfileAndRegionAndComponent(component)
-        );
+        )
+                .stream()
+                .map(Map.Entry::getValue)
+                .flatMap(Collection::stream)
+                .collect(toUnmodifiableList());
     }
 
-    private Function<AwsProfileAndRegion, List<LogSummaryState>> getLogSummariesProfileAndRegionAndComponent(
+    private Function<AwsProfileAndRegion, List<LogSummaryStateAndContext>> getLogSummariesProfileAndRegionAndComponent(
             Component component
     ) {
         return profileAndRegion -> {
-            List<String> logGroupNames = resourceIdsByProfileAndRegionAndComponent.getResourceIds(
-                    profileAndRegion,
-                    component
-            );
-            GetLogSummary getLogSummary = (
-                    String name,
-                    Duration duration,
-                    String comparisonName1,
-                    Duration offset1,
-                    String comparisonName2,
-                    Duration offset2
-            ) -> {
-                LogSummaryState logSummary = getLogSummary(
-                        profileAndRegion,
-                        logGroupNames,
-                        name,
-                        duration,
-                        Duration.ZERO
-                );
-                if (isNull(logSummary)) {
-                    return null;
-                }
-                return logSummary.withComparisons(filterNotNull(
-                        getLogSummary(
-                                profileAndRegion,
-                                logGroupNames,
-                                comparisonName1,
-                                duration,
-                                offset1
-                        ),
-                        getLogSummary(
-                                profileAndRegion,
-                                logGroupNames,
-                                comparisonName2,
-                                duration,
-                                offset2
-                        )
-                ));
-            };
-            return filterNotNull(
-                    getLogSummary.apply(
-                            "Last hour",
-                            Duration.ofHours(1),
-                            "Previous hour",
-                            Duration.ofHours(1),
-                            "Same hour, previous week",
-                            Duration.ofDays(7)
-                    ),
-                    getLogSummary.apply(
-                            "Last 24 hours",
-                            Duration.ofDays(1),
-                            "Previous 24 hours",
-                            Duration.ofDays(1),
-                            "Same 24 hours, previous week",
-                            Duration.ofDays(7)
+            Map<String, List<String>> logGroupNamesByEnvironmentId = getLogGroupNamesByEnvironmentId(
+                    taggedResourcesByProfileAndRegionAndComponent.getTaggedResources(
+                            profileAndRegion,
+                            component
                     )
             );
+            return logGroupNamesByEnvironmentId.entrySet().stream()
+                    .map(entry -> {
+                        GetLogSummary getLogSummary = (
+                                String name,
+                                Duration duration,
+                                String comparisonName1,
+                                Duration offset1,
+                                String comparisonName2,
+                                Duration offset2
+                        ) -> {
+                            List<String> logGroupNames = entry.getValue();
+                            LogSummaryState logSummary = getLogSummary(
+                                    profileAndRegion,
+                                    logGroupNames,
+                                    name,
+                                    duration,
+                                    Duration.ZERO
+                            );
+                            if (isNull(logSummary)) {
+                                return null;
+                            }
+                            return new LogSummaryStateAndContext(
+                                    entry.getKey(),
+                                    logSummary.withComparisons(filterNotNull(
+                                            getLogSummary(
+                                                    profileAndRegion,
+                                                    logGroupNames,
+                                                    comparisonName1,
+                                                    duration,
+                                                    offset1
+                                            ),
+                                            getLogSummary(
+                                                    profileAndRegion,
+                                                    logGroupNames,
+                                                    comparisonName2,
+                                                    duration,
+                                                    offset2
+                                            )
+                                    ))
+                            );
+                        };
+                        return filterNotNull(
+                                getLogSummary.apply(
+                                        "Last hour",
+                                        Duration.ofHours(1),
+                                        "Previous hour",
+                                        Duration.ofHours(1),
+                                        "Same hour, previous week",
+                                        Duration.ofDays(7)
+                                ),
+                                getLogSummary.apply(
+                                        "Last 24 hours",
+                                        Duration.ofDays(1),
+                                        "Previous 24 hours",
+                                        Duration.ofDays(1),
+                                        "Same 24 hours, previous week",
+                                        Duration.ofDays(7)
+                                )
+                        );
+                    })
+                    .flatMap(Collection::stream)
+                    .collect(toUnmodifiableList());
         };
+    }
+
+    private Map<String, List<String>> getLogGroupNamesByEnvironmentId(List<TaggedResource> taggedResources) {
+        return taggedResources.stream()
+                .collect(groupingBy(
+                        TaggedResource::getEnvironmentId,
+                        mapping(TaggedResource::getResourceId, toUnmodifiableList())
+                ));
     }
 
     private LogSummaryState getLogSummary(
@@ -314,10 +342,16 @@ public class CloudWatchLogsService {
                 .collect(toUnmodifiableList());
     }
 
+    private List<LogSummaryStateAndContext> filterNotNull(LogSummaryStateAndContext... values) {
+        return Stream.of(values)
+                .filter(Objects::nonNull)
+                .collect(toUnmodifiableList());
+    }
+
     @FunctionalInterface
     private interface GetLogSummary {
 
-        LogSummaryState apply(
+        LogSummaryStateAndContext apply(
                 String name,
                 Duration duration,
                 String comparisonName1,

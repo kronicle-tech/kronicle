@@ -78,7 +78,7 @@ public class ScannerTest {
 
         @Override
         public Output<Void, Component> scan(TestInput input) {
-            return Output.ofTransformer(UnaryOperator.identity(), Duration.ZERO);
+            return Output.ofTransformer(null, Duration.ZERO);
         }
     }
 }

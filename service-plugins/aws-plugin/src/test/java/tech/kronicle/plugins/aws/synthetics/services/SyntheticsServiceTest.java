@@ -9,7 +9,7 @@ import tech.kronicle.plugins.aws.config.AwsProfileConfig;
 import tech.kronicle.plugins.aws.config.AwsTagKeysConfig;
 import tech.kronicle.plugins.aws.constants.ResourceTypes;
 import tech.kronicle.plugins.aws.models.AwsProfileAndRegion;
-import tech.kronicle.plugins.aws.models.ResourceIdsByProfileAndRegionAndComponent;
+import tech.kronicle.plugins.aws.models.TaggedResourcesByProfileAndRegionAndComponent;
 import tech.kronicle.plugins.aws.services.TaggedResourceFinder;
 import tech.kronicle.plugins.aws.synthetics.client.SyntheticsClientFacade;
 import tech.kronicle.plugins.aws.synthetics.models.SyntheticsCanaryLastRun;
@@ -67,8 +67,8 @@ public class SyntheticsServiceTest {
         AwsProfileAndRegion profile2AndRegion1 = new AwsProfileAndRegion(profile2, profile2.getRegions().get(0));
         AwsProfileAndRegion profile2AndRegion2 = new AwsProfileAndRegion(profile2, profile2.getRegions().get(1));
         Component component = createComponent(1);
-        when(taggedResourceFinder.getResourceIdsByProfileAndRegionAndComponent(ResourceTypes.SYNTHETICS_CANARY)).thenReturn(
-                new ResourceIdsByProfileAndRegionAndComponent(List.of(
+        when(taggedResourceFinder.getTaggedResourcesByProfileAndRegionAndComponent(ResourceTypes.SYNTHETICS_CANARY)).thenReturn(
+                new TaggedResourcesByProfileAndRegionAndComponent(List.of(
                         Map.entry(profile1AndRegion1, createResourceIdsByComponentMap(component, List.of(1, 2))),
                         Map.entry(profile1AndRegion2, createResourceIdsByComponentMap(component, List.of())),
                         Map.entry(profile2AndRegion1, createResourceIdsByComponentMap(component, List.of())),

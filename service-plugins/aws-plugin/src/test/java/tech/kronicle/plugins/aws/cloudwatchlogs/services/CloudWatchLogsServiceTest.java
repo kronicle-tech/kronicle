@@ -16,7 +16,8 @@ import tech.kronicle.plugins.aws.config.AwsProfileConfig;
 import tech.kronicle.plugins.aws.config.AwsTagKeysConfig;
 import tech.kronicle.plugins.aws.constants.ResourceTypes;
 import tech.kronicle.plugins.aws.models.AwsProfileAndRegion;
-import tech.kronicle.plugins.aws.models.ResourceIdsByProfileAndRegionAndComponent;
+import tech.kronicle.plugins.aws.models.TaggedResource;
+import tech.kronicle.plugins.aws.models.TaggedResourcesByProfileAndRegionAndComponent;
 import tech.kronicle.plugins.aws.services.TaggedResourceFinder;
 import tech.kronicle.sdk.models.Component;
 import tech.kronicle.sdk.models.LogLevelState;
@@ -41,6 +42,7 @@ import static tech.kronicle.plugins.aws.testutils.ComponentUtils.createComponent
 @ExtendWith(MockitoExtension.class)
 public class CloudWatchLogsServiceTest {
 
+    private static final String ENVIRONMENT_ID = "test-environment-id";
     @Mock
     private CloudWatchLogsClientFacade clientFacade;
     @Mock
@@ -477,15 +479,15 @@ public class CloudWatchLogsServiceTest {
     }
 
     private void mockTaggedResourceFinder(AwsProfileAndRegion profile1AndRegion1, Component component) {
-        when(taggedResourceFinder.getResourceIdsByProfileAndRegionAndComponent(ResourceTypes.LOGS_LOG_GROUP)).thenReturn(
+        when(taggedResourceFinder.getTaggedResourcesByProfileAndRegionAndComponent(ResourceTypes.LOGS_LOG_GROUP)).thenReturn(
                 createResourceIdsByProfileAndRegionAndComponent(
                         Map.entry(
                                 profile1AndRegion1,
                                 Map.of(
                                         component.getId(),
                                         List.of(
-                                                createLogGroupName(1),
-                                                createLogGroupName(2)
+                                                new TaggedResource(createLogGroupName(1), ENVIRONMENT_ID),
+                                                new TaggedResource(createLogGroupName(2), ENVIRONMENT_ID)
                                         )
                                 )
                         )
@@ -610,11 +612,11 @@ public class CloudWatchLogsServiceTest {
     }
 
 
-    private ResourceIdsByProfileAndRegionAndComponent createResourceIdsByProfileAndRegionAndComponent(
-            Map.Entry<AwsProfileAndRegion, Map<String, List<String>>> resourceIdsForProfileAndRegionAndComponent
+    private TaggedResourcesByProfileAndRegionAndComponent createResourceIdsByProfileAndRegionAndComponent(
+            Map.Entry<AwsProfileAndRegion, Map<String, List<TaggedResource>>> taggedResourcesForProfileAndRegionAndComponent
     ) {
-        return new ResourceIdsByProfileAndRegionAndComponent(
-                List.of(resourceIdsForProfileAndRegionAndComponent)
+        return new TaggedResourcesByProfileAndRegionAndComponent(
+                List.of(taggedResourcesForProfileAndRegionAndComponent)
         );
     }
 

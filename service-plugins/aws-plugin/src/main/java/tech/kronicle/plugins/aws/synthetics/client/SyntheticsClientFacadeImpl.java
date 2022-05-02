@@ -6,6 +6,7 @@ import software.amazon.awssdk.services.synthetics.model.DescribeCanariesLastRunR
 import software.amazon.awssdk.services.synthetics.paginators.DescribeCanariesLastRunIterable;
 import tech.kronicle.plugins.aws.client.BaseClientFacade;
 import tech.kronicle.plugins.aws.models.AwsProfileAndRegion;
+import tech.kronicle.plugins.aws.models.TaggedResource;
 import tech.kronicle.plugins.aws.synthetics.models.SyntheticsCanaryLastRun;
 
 import javax.inject.Inject;

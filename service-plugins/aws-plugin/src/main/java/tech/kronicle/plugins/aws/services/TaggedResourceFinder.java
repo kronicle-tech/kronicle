@@ -2,7 +2,8 @@ package tech.kronicle.plugins.aws.services;
 
 import tech.kronicle.plugins.aws.config.AwsConfig;
 import tech.kronicle.plugins.aws.models.AwsProfileAndRegion;
-import tech.kronicle.plugins.aws.models.ResourceIdsByProfileAndRegionAndComponent;
+import tech.kronicle.plugins.aws.models.TaggedResource;
+import tech.kronicle.plugins.aws.models.TaggedResourcesByProfileAndRegionAndComponent;
 import tech.kronicle.plugins.aws.resourcegroupstaggingapi.models.ResourceGroupsTaggingApiResource;
 import tech.kronicle.plugins.aws.resourcegroupstaggingapi.services.ResourceFetcher;
 
@@ -14,6 +15,7 @@ import java.util.function.Function;
 import static java.util.stream.Collectors.groupingBy;
 import static java.util.stream.Collectors.mapping;
 import static java.util.stream.Collectors.toList;
+import static tech.kronicle.plugins.aws.resourcegroupstaggingapi.utils.ResourceUtils.getOptionalResourceTagValue;
 import static tech.kronicle.plugins.aws.resourcegroupstaggingapi.utils.ResourceUtils.getResourceTagValue;
 import static tech.kronicle.plugins.aws.utils.ArnAnalyser.analyseArn;
 import static tech.kronicle.plugins.aws.utils.ProfileUtils.processProfilesToMapEntryList;
@@ -34,29 +36,43 @@ public class TaggedResourceFinder {
         componentTagKey = config.getTagKeys().getComponent();
     }
 
-    public ResourceIdsByProfileAndRegionAndComponent getResourceIdsByProfileAndRegionAndComponent(String resourceType) {
-        return new ResourceIdsByProfileAndRegionAndComponent(processProfilesToMapEntryList(
+    public TaggedResourcesByProfileAndRegionAndComponent getTaggedResourcesByProfileAndRegionAndComponent(String resourceType) {
+        return new TaggedResourcesByProfileAndRegionAndComponent(processProfilesToMapEntryList(
                 config.getProfiles(),
-                prepareResourceIdsForProfileAndRegionAndComponent(resourceType)
+                prepareTaggedResourcesForProfileAndRegionAndComponent(resourceType)
         ));
     }
 
-    private Function<AwsProfileAndRegion, Map<String, List<String>>> prepareResourceIdsForProfileAndRegionAndComponent(
+    private Function<AwsProfileAndRegion, Map<String, List<TaggedResource>>> prepareTaggedResourcesForProfileAndRegionAndComponent(
             String resourceType
     ) {
-        return profileAndRegion -> mapResource(resourceFetcher.getResources(
+        return profileAndRegion -> mapResources(
                 profileAndRegion,
-                List.of(resourceType),
-                Map.ofEntries(Map.entry(componentTagKey, List.of()))
-        ));
+                resourceFetcher.getResources(
+                        profileAndRegion,
+                        List.of(resourceType),
+                        Map.ofEntries(Map.entry(componentTagKey, List.of()))
+                )
+        );
     }
 
-    private Map<String, List<String>> mapResource(List<ResourceGroupsTaggingApiResource> resources) {
+    private Map<String, List<TaggedResource>> mapResources(
+            AwsProfileAndRegion profileAndRegion,
+            List<ResourceGroupsTaggingApiResource> resources
+    ) {
         return resources.stream()
                 .map(resource -> Map.entry(
                         getResourceTagValue(resource, componentTagKey),
-                        analyseArn(resource.getArn()).getResourceId()
+                        new TaggedResource(
+                                analyseArn(resource.getArn()).getResourceId(),
+                                getEnvironmentId(resource, profileAndRegion)
+                        )
                 ))
                 .collect(groupingBy(Map.Entry::getKey, mapping(Map.Entry::getValue, toList())));
+    }
+
+    private String getEnvironmentId(ResourceGroupsTaggingApiResource resource, AwsProfileAndRegion profileAndRegion) {
+        return getOptionalResourceTagValue(resource, config.getTagKeys().getEnvironment())
+                .orElse(profileAndRegion.getProfile().getEnvironmentId());
     }
 }

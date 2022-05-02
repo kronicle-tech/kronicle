@@ -8,7 +8,7 @@ import tech.kronicle.plugins.aws.config.AwsConfig;
 import tech.kronicle.plugins.aws.config.AwsProfileConfig;
 import tech.kronicle.plugins.aws.config.AwsTagKeysConfig;
 import tech.kronicle.plugins.aws.models.AwsProfileAndRegion;
-import tech.kronicle.plugins.aws.models.ResourceIdsByProfileAndRegionAndComponent;
+import tech.kronicle.plugins.aws.models.TaggedResourcesByProfileAndRegionAndComponent;
 import tech.kronicle.plugins.aws.resourcegroupstaggingapi.models.ResourceGroupsTaggingApiResource;
 import tech.kronicle.plugins.aws.resourcegroupstaggingapi.services.ResourceFetcher;
 import tech.kronicle.sdk.models.Component;
@@ -77,7 +77,7 @@ public class TaggedResourceFinderTest {
         ));
 
         // When
-        ResourceIdsByProfileAndRegionAndComponent returnValue = underTest.getResourceIdsByProfileAndRegionAndComponent(resourceType);
+        TaggedResourcesByProfileAndRegionAndComponent returnValue = underTest.getTaggedResourcesByProfileAndRegionAndComponent(resourceType);
 
         // Then
         assertThat(returnValue.getResourceIds(profile1AndRegion1, component1)).containsExactly("test-resource-id-1", "test-resource-id-2");

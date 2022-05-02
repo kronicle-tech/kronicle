@@ -27,7 +27,7 @@ public class SyntheticsCanaryLastRunMapperTest {
         SyntheticsCanaryLastRunMapper underTest = new SyntheticsCanaryLastRunMapper();
 
         // When
-        List<CheckState> returnValue = underTest.mapCanaryLastRuns(canaryLastRuns);
+        List<CheckState> returnValue = underTest.mapCanaryLastRuns(canaryLastRuns, canaries);
 
         // Then
         assertThat(returnValue).containsExactly(

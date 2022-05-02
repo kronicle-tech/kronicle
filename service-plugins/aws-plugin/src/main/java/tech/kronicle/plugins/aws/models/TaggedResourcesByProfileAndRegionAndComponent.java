@@ -12,29 +12,29 @@ import static java.util.Objects.isNull;
 import static java.util.Objects.nonNull;
 
 @RequiredArgsConstructor
-public class ResourceIdsByProfileAndRegionAndComponent {
+public class TaggedResourcesByProfileAndRegionAndComponent {
 
-    private final List<Map.Entry<AwsProfileAndRegion, Map<String, List<String>>>> resourceIdsByProfileAndRegionAndComponent;
+    private final List<Map.Entry<AwsProfileAndRegion, Map<String, List<TaggedResource>>>> taggedResourcesByProfileAndRegionAndComponent;
 
-    public List<String> getResourceIds(
+    public List<TaggedResource> getTaggedResources(
             AwsProfileAndRegion profileAndRegion,
             Component component
     ) {
-        Map<String, List<String>> resourceIdsByComponent = resourceIdsByProfileAndRegionAndComponent.stream()
+        Map<String, List<TaggedResource>> taggedResourcesByComponent = taggedResourcesByProfileAndRegionAndComponent.stream()
                 .filter(it -> Objects.equals(it.getKey(), profileAndRegion))
                 .findFirst()
                 .map(Map.Entry::getValue)
                 .orElse(null);
-        if (isNull(resourceIdsByComponent)) {
+        if (isNull(taggedResourcesByComponent)) {
             return List.of();
         }
-        List<String> resourceIds = resourceIdsByComponent.get(component.getId());
-        if (nonNull(resourceIds)) {
-            return resourceIds;
+        List<TaggedResource> taggedResources = taggedResourcesByComponent.get(component.getId());
+        if (nonNull(taggedResources)) {
+            return taggedResources;
         }
         return component.getAliases().stream()
                 .map(Alias::getId)
-                .map(resourceIdsByComponent::get)
+                .map(taggedResourcesByComponent::get)
                 .filter(Objects::nonNull)
                 .findFirst().orElse(List.of());
     }

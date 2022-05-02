@@ -42,4 +42,12 @@ public class EnvironmentPluginState implements ObjectWithIdAndMerge<EnvironmentP
         return withChecks(unmodifiableUnionOfLists(List.of(checks, state.checks)))
                 .withLogSummaries(unmodifiableUnionOfLists(List.of(logSummaries, state.logSummaries)));
     }
+
+    public EnvironmentPluginState addCheck(CheckState check) {
+        return withChecks(unmodifiableUnionOfLists(List.of(checks, List.of(check))));
+    }
+
+    public EnvironmentPluginState addLogSummary(LogSummaryState logSummary) {
+        return withLogSummaries(unmodifiableUnionOfLists(List.of(logSummaries, List.of(logSummary))));
+    }
 }
