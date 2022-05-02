@@ -17,9 +17,26 @@ import tech.kronicle.utils.ThrowableToScannerErrorMapper;
 @Slf4j
 public class ExtensionExecutor {
 
+    private final ExtensionOutputCache cache;
     private final ThrowableToScannerErrorMapper throwableToScannerErrorMapper;
 
     public <I, O> Output<O, Void> executeFinder(Finder<I, O> finder, I input) {
+        return cache.get(
+                finder,
+                input,
+                () -> loadFromFinder(finder, input)
+        );
+    }
+
+    public <I extends ObjectWithReference, O> Output<O, Component> executeScanner(Scanner<I, O> scanner, I input) {
+        return cache.get(
+                scanner,
+                input,
+                () -> loadFromScanner(scanner, input)
+        );
+    }
+
+    private <I, O> Output<O, Void> loadFromFinder(Finder<I, O> finder, I input) {
         log.info("Executing finder {}", finder.id());
         try {
             return finder.find(input);
@@ -36,7 +53,7 @@ public class ExtensionExecutor {
         }
     }
 
-    public <I extends ObjectWithReference, O> Output<O, Component> executeScanner(Scanner<I, O> scanner, I input) {
+    private <I extends ObjectWithReference, O> Output<O, Component> loadFromScanner(Scanner<I, O> scanner, I input) {
         log.info("Executing scanner {} for \"{}\"", scanner.id(), StringEscapeUtils.escapeString(input.reference()));
         try {
             return scanner.scan(input);

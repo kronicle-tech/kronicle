@@ -99,6 +99,15 @@ public class MasterTracingDataFinderTest {
     }
 
     private MasterTracingDataFinder createUnderTest() {
-        return new MasterTracingDataFinder(finderRegistry, new ExtensionExecutor(new ThrowableToScannerErrorMapper()));
+        return new MasterTracingDataFinder(
+                finderRegistry,
+                new ExtensionExecutor(
+                        new ExtensionOutputCache(
+                                new ExtensionOutputCacheLoader(),
+                                new ExtensionOutputCacheExpiry()
+                        ),
+                        new ThrowableToScannerErrorMapper()
+                )
+        );
     }
 }
