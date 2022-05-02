@@ -217,14 +217,14 @@ public class ComponentRepositoryTest {
     }
 
     @Test
-    public void refreshShouldBeScheduledToRunEvery15Mins() throws NoSuchMethodException {
+    public void refreshShouldBeScheduledToRunEveryMinute() throws NoSuchMethodException {
         // When
         Method refreshMethod = underTest.getClass().getMethod("refresh");
         Scheduled scheduledAnnotation = refreshMethod.getAnnotation(Scheduled.class);
 
         // Then
         assertThat(scheduledAnnotation).isNotNull();
-        assertThat(scheduledAnnotation.cron()).isEqualTo("0 */15 * * * *");
+        assertThat(scheduledAnnotation.cron()).isEqualTo("0 */1 * * * *");
         assertThat(scheduledAnnotation.zone()).isEqualTo("UTC");
         assertThat(scheduledAnnotation.zone()).isEqualTo("UTC");
         assertThat(scheduledAnnotation.fixedDelay()).isEqualTo(-1);

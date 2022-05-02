@@ -60,7 +60,7 @@ public class ComponentRepository extends RefreshingRepository {
     protected void doInitialize() {
     }
 
-    @Scheduled(cron = "0 */15 * * * *", zone = "UTC")
+    @Scheduled(cron = "0 */1 * * * *", zone = "UTC")
     @Override
     public void refresh() {
         super.refresh();
