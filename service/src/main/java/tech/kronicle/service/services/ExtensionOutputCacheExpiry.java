@@ -15,7 +15,7 @@ public class ExtensionOutputCacheExpiry implements Expiry<ExtensionOutputCacheKe
             Output<?, ?> value,
             long currentTime
     ) {
-        return currentTime + value.getCacheTtl().toNanos();
+        return value.getCacheTtl().toNanos();
     }
 
     @Override
