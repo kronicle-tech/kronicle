@@ -49,6 +49,7 @@ public class TaggedResourceFinderTest {
                 null,
                 new AwsTagKeysConfig(
                         TEST_COMPONENT_TAG_KEY,
+                        null,
                         null
                 ),
                 null

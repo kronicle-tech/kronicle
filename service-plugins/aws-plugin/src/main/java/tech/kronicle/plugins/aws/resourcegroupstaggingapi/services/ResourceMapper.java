@@ -62,7 +62,7 @@ public class ResourceMapper {
                             ComponentState.builder()
                                     .environments(List.of(
                                             EnvironmentState.builder()
-                                                    .id(environmentId)
+                                                    .id(getEnvironmentId(resource, environmentId))
                                                     .build()
                                     ))
                                     .build()
@@ -164,5 +164,10 @@ public class ResourceMapper {
 
     private Optional<String> getComponentTag(ResourceGroupsTaggingApiResource resource) {
         return getOptionalResourceTagValue(resource, config.getTagKeys().getComponent());
+    }
+
+    private String getEnvironmentId(ResourceGroupsTaggingApiResource resource, String environmentId) {
+        return getOptionalResourceTagValue(resource, config.getTagKeys().getEnvironment())
+                .orElse(environmentId);
     }
 }

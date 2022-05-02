@@ -58,7 +58,7 @@ public class SyntheticsServiceTest {
                         null,
                         null,
                         null,
-                        new AwsTagKeysConfig("component", null),
+                        new AwsTagKeysConfig("component", null, null),
                         null
                 )
         );
