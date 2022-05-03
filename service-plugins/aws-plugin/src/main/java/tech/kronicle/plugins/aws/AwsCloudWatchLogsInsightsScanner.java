@@ -4,8 +4,8 @@ import lombok.RequiredArgsConstructor;
 import org.pf4j.Extension;
 import tech.kronicle.pluginapi.scanners.ComponentScanner;
 import tech.kronicle.pluginapi.scanners.models.Output;
+import tech.kronicle.plugins.aws.cloudwatchlogs.models.LogSummaryStateAndContext;
 import tech.kronicle.plugins.aws.cloudwatchlogs.services.CloudWatchLogsService;
-import tech.kronicle.plugins.aws.models.AwsProfileAndRegion;
 import tech.kronicle.sdk.models.Component;
 import tech.kronicle.sdk.models.ComponentMetadata;
 import tech.kronicle.sdk.models.LogSummaryState;
@@ -14,7 +14,10 @@ import javax.inject.Inject;
 import java.time.Duration;
 import java.util.List;
 import java.util.Map;
-import java.util.function.UnaryOperator;
+
+import static java.util.stream.Collectors.groupingBy;
+import static java.util.stream.Collectors.mapping;
+import static java.util.stream.Collectors.toUnmodifiableList;
 
 @Extension
 @RequiredArgsConstructor(onConstructor = @__({@Inject}))
@@ -36,37 +39,32 @@ public class AwsCloudWatchLogsInsightsScanner extends ComponentScanner {
 
     @Override
     public Output<Void, Component> scan(Component input) {
-        List<Map.Entry<AwsProfileAndRegion, List<LogSummaryState>>> logSummaries =
+        List<LogSummaryStateAndContext> logSummaries =
                 service.getLogSummariesForComponent(input);
 
-        if (logSummariesIsEmpty(logSummaries)) {
-            return Output.ofTransformer(UnaryOperator.identity(), CACHE_TTL);
+        if (logSummaries.isEmpty()) {
+            return Output.ofTransformer(null, CACHE_TTL);
         }
 
         return Output.ofTransformer(
                 component -> component.withUpdatedState(state -> {
-                    for (Map.Entry<AwsProfileAndRegion, List<LogSummaryState>> entry : logSummaries) {
-                        List<LogSummaryState> logSummariesForProfileAndRegion = entry.getValue();
-                        if (!logSummariesForProfileAndRegion.isEmpty()) {
-                            String environmentId = entry.getKey().getProfile().getEnvironmentId();
-                            state = state.withUpdatedEnvironment(
-                                    environmentId,
-                                    environment -> environment.withUpdatedPlugin(
-                                            AwsPlugin.ID,
-                                            plugin -> plugin.withLogSummaries(logSummariesForProfileAndRegion)
-                                    )
-                            );
-                        }
+                    Map<String, List<LogSummaryState>> logSummariesByEnvironmentId = logSummaries.stream()
+                            .collect(groupingBy(
+                                    LogSummaryStateAndContext::getEnvironmentId,
+                                    mapping(LogSummaryStateAndContext::getLogSummary, toUnmodifiableList())
+                            ));
+                    for (Map.Entry<String, List<LogSummaryState>> entry : logSummariesByEnvironmentId.entrySet()) {
+                        state = state.withUpdatedEnvironment(
+                                entry.getKey(),
+                                environment -> environment.withUpdatedPlugin(
+                                        AwsPlugin.ID,
+                                        plugin -> plugin.addLogSummaries(entry.getValue())
+                                )
+                        );
                     }
                     return state;
                 }),
                 CACHE_TTL
         );
-    }
-
-    private boolean logSummariesIsEmpty(
-            List<Map.Entry<AwsProfileAndRegion, List<LogSummaryState>>> logSummaries
-    ) {
-        return logSummaries.stream().allMatch(entry -> entry.getValue().isEmpty());
     }
 }

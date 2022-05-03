@@ -8,7 +8,8 @@ import tech.kronicle.plugins.aws.config.AwsConfig;
 import tech.kronicle.plugins.aws.config.AwsProfileConfig;
 import tech.kronicle.plugins.aws.config.AwsTagKeysConfig;
 import tech.kronicle.plugins.aws.models.AwsProfileAndRegion;
-import tech.kronicle.plugins.aws.models.ResourceIdsByProfileAndRegionAndComponent;
+import tech.kronicle.plugins.aws.models.TaggedResource;
+import tech.kronicle.plugins.aws.models.TaggedResourcesByProfileAndRegionAndComponent;
 import tech.kronicle.plugins.aws.resourcegroupstaggingapi.models.ResourceGroupsTaggingApiResource;
 import tech.kronicle.plugins.aws.resourcegroupstaggingapi.services.ResourceFetcher;
 import tech.kronicle.sdk.models.Component;
@@ -20,7 +21,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.when;
 import static tech.kronicle.plugins.aws.testutils.AwsProfileAndRegionUtils.createProfile;
 import static tech.kronicle.plugins.aws.testutils.ComponentUtils.createComponent;
+import static tech.kronicle.plugins.aws.testutils.EnvironmentUtils.createOverrideEnvironmentId;
 import static tech.kronicle.plugins.aws.testutils.ResourceGroupsTaggingApiResourceUtils.TEST_COMPONENT_TAG_KEY;
+import static tech.kronicle.plugins.aws.testutils.ResourceGroupsTaggingApiResourceUtils.TEST_ENVIRONMENT_TAG_KEY;
 import static tech.kronicle.plugins.aws.testutils.ResourceGroupsTaggingApiResourceUtils.createResource;
 
 @ExtendWith(MockitoExtension.class)
@@ -30,7 +33,7 @@ public class TaggedResourceFinderTest {
     private ResourceFetcher resourceFetcher;
 
     @Test
-    public void getResourceIdsByProfileAndRegionAndComponentShouldResourceIdsByProfileAndRegionAndComponent() {
+    public void getTaggedResourcesByProfileAndRegionAndComponentShouldGetTaggedResourcesByProfileAndRegionAndComponent() {
         // Given
         AwsProfileConfig profile1 = createProfile(1);
         AwsProfileConfig profile2 = createProfile(2);
@@ -49,7 +52,7 @@ public class TaggedResourceFinderTest {
                 null,
                 new AwsTagKeysConfig(
                         TEST_COMPONENT_TAG_KEY,
-                        null,
+                        TEST_ENVIRONMENT_TAG_KEY,
                         null
                 ),
                 null
@@ -61,11 +64,13 @@ public class TaggedResourceFinderTest {
         String resourceType = "test-resource-type";
         Component component1 = createComponent(1);
         Component component2 = createComponent(2);
+        String overrideEnvironmentId1 = createOverrideEnvironmentId(1);
+        String overrideEnvironmentId2 = createOverrideEnvironmentId(2);
         mockGetResources(profile1AndRegion1, resourceType, List.of(
-                createResource(1, component1.getId()),
+                createResource(1, component1.getId(), overrideEnvironmentId1),
                 createResource(2, component1.getId()),
                 createResource(3, component2.getId()),
-                createResource(4, component2.getId())
+                createResource(4, component2.getId(), overrideEnvironmentId2)
         ));
         mockGetResources(profile1AndRegion2, resourceType, List.of());
         mockGetResources(profile2AndRegion1, resourceType, List.of());
@@ -77,17 +82,43 @@ public class TaggedResourceFinderTest {
         ));
 
         // When
-        ResourceIdsByProfileAndRegionAndComponent returnValue = underTest.getResourceIdsByProfileAndRegionAndComponent(resourceType);
+        TaggedResourcesByProfileAndRegionAndComponent returnValue = underTest.getTaggedResourcesByProfileAndRegionAndComponent(resourceType);
 
         // Then
-        assertThat(returnValue.getResourceIds(profile1AndRegion1, component1)).containsExactly("test-resource-id-1", "test-resource-id-2");
-        assertThat(returnValue.getResourceIds(profile1AndRegion1, component2)).containsExactly("test-resource-id-3", "test-resource-id-4");
-        assertThat(returnValue.getResourceIds(profile1AndRegion2, component1)).isEmpty();
-        assertThat(returnValue.getResourceIds(profile1AndRegion2, component2)).isEmpty();
-        assertThat(returnValue.getResourceIds(profile2AndRegion1, component1)).isEmpty();
-        assertThat(returnValue.getResourceIds(profile2AndRegion1, component2)).isEmpty();
-        assertThat(returnValue.getResourceIds(profile2AndRegion2, component1)).containsExactly("test-resource-id-5", "test-resource-id-6");
-        assertThat(returnValue.getResourceIds(profile2AndRegion2, component2)).containsExactly("test-resource-id-7", "test-resource-id-8");
+        assertThat(returnValue.getTaggedResources(profile1AndRegion1, component1)).containsExactly(
+                createTaggedResource(overrideEnvironmentId1, 1),
+                createTaggedResource(profile1AndRegion1, 2)
+        );
+        assertThat(returnValue.getTaggedResources(profile1AndRegion1, component2)).containsExactly(
+                createTaggedResource(profile1AndRegion1, 3),
+                createTaggedResource(overrideEnvironmentId2, 4)
+        );
+        assertThat(returnValue.getTaggedResources(profile1AndRegion2, component1)).isEmpty();
+        assertThat(returnValue.getTaggedResources(profile1AndRegion2, component2)).isEmpty();
+        assertThat(returnValue.getTaggedResources(profile2AndRegion1, component1)).isEmpty();
+        assertThat(returnValue.getTaggedResources(profile2AndRegion1, component2)).isEmpty();
+        assertThat(returnValue.getTaggedResources(profile2AndRegion2, component1)).containsExactly(
+                createTaggedResource(profile2AndRegion2, 5),
+                createTaggedResource(profile2AndRegion2, 6)
+        );
+        assertThat(returnValue.getTaggedResources(profile2AndRegion2, component2)).containsExactly(
+                createTaggedResource(profile2AndRegion2, 7),
+                createTaggedResource(profile2AndRegion2, 8)
+        );
+    }
+
+    private TaggedResource createTaggedResource(AwsProfileAndRegion profileAndRegion, int taggedResourceNumber) {
+        return new TaggedResource(
+                "test-resource-id-" + taggedResourceNumber,
+                profileAndRegion.getProfile().getEnvironmentId()
+        );
+    }
+
+    private TaggedResource createTaggedResource(String environmentId, int taggedResourceNumber) {
+        return new TaggedResource(
+                "test-resource-id-" + taggedResourceNumber,
+                environmentId
+        );
     }
 
     private void mockGetResources(

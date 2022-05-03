@@ -4,12 +4,14 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.NullSource;
 import org.junit.jupiter.params.provider.ValueSource;
+import tech.kronicle.plugins.aws.synthetics.models.CheckStateAndContext;
 import tech.kronicle.plugins.aws.synthetics.models.SyntheticsCanaryLastRun;
 import tech.kronicle.sdk.models.CheckState;
 import tech.kronicle.sdk.models.ComponentStateCheckStatus;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -18,23 +20,45 @@ public class SyntheticsCanaryLastRunMapperTest {
     @Test
     public void mapCanaryLastRunsShouldMapCanaryLastRunsToChecks() {
         // Given
+        SyntheticsCanaryLastRun canary1 = createCanaryLastRun(1, "RUNNING");
+        SyntheticsCanaryLastRun canary2 = createCanaryLastRun(2, "PASSED");
+        SyntheticsCanaryLastRun canary3 = createCanaryLastRun(3, "FAILED");
+        SyntheticsCanaryLastRun canary4 = createCanaryLastRun(4, "NOT_REAL_STATE");
         List<SyntheticsCanaryLastRun> canaryLastRuns = List.of(
-                createCanaryLastRun(1, "RUNNING"),
-                createCanaryLastRun(2, "PASSED"),
-                createCanaryLastRun(3, "FAILED"),
-                createCanaryLastRun(4, "NOT_REAL_STATE")
+                canary1,
+                canary2,
+                canary3,
+                canary4
+        );
+        Map<String, String> canaryNameToEnvironmentIdMap = Map.ofEntries(
+                Map.entry(canary1.getCanaryName(), "test-environment-id-2"),
+                Map.entry(canary2.getCanaryName(), "test-environment-id-1"),
+                Map.entry(canary3.getCanaryName(), "test-environment-id-1"),
+                Map.entry(canary4.getCanaryName(), "test-environment-id-2")
         );
         SyntheticsCanaryLastRunMapper underTest = new SyntheticsCanaryLastRunMapper();
 
         // When
-        List<CheckState> returnValue = underTest.mapCanaryLastRuns(canaryLastRuns);
+        List<CheckStateAndContext> returnValue = underTest.mapCanaryLastRuns(canaryLastRuns, canaryNameToEnvironmentIdMap);
 
         // Then
         assertThat(returnValue).containsExactly(
-                createCheck(1, "RUNNING", ComponentStateCheckStatus.PENDING),
-                createCheck(2, "PASSED", ComponentStateCheckStatus.OK),
-                createCheck(3, "FAILED", ComponentStateCheckStatus.CRITICAL),
-                createCheck(4, "NOT_REAL_STATE", ComponentStateCheckStatus.UNKNOWN)
+                new CheckStateAndContext(
+                        "test-environment-id-2",
+                        createCheck(1, "RUNNING", ComponentStateCheckStatus.PENDING)
+                ),
+                new CheckStateAndContext(
+                        "test-environment-id-1",
+                        createCheck(2, "PASSED", ComponentStateCheckStatus.OK)
+                ),
+                new CheckStateAndContext(
+                        "test-environment-id-1",
+                        createCheck(3, "FAILED", ComponentStateCheckStatus.CRITICAL)
+                ),
+                new CheckStateAndContext(
+                        "test-environment-id-2",
+                        createCheck(4, "NOT_REAL_STATE", ComponentStateCheckStatus.UNKNOWN)
+                )
         );
     }
 

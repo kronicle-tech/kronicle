@@ -3,6 +3,7 @@ package tech.kronicle.plugins.aws;
 import org.junit.jupiter.api.Test;
 import tech.kronicle.pluginapi.scanners.models.Output;
 import tech.kronicle.plugins.aws.models.AwsProfileAndRegion;
+import tech.kronicle.plugins.aws.synthetics.models.CheckStateAndContext;
 import tech.kronicle.plugins.aws.synthetics.services.SyntheticsService;
 import tech.kronicle.plugintestutils.scanners.BaseScannerTest;
 import tech.kronicle.sdk.models.CheckState;
@@ -15,7 +16,6 @@ import tech.kronicle.sdk.models.EnvironmentState;
 import java.time.Duration;
 import java.util.List;
 import java.util.Map;
-import java.util.function.UnaryOperator;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.mock;
@@ -80,14 +80,16 @@ public class AwsSyntheticsCanariesScannerTest extends BaseScannerTest {
     }
 
     @Test
-    public void scanShouldAddLogSummariesToTheComponent() {
+    public void scanShouldAddChecksToTheComponent() {
         // Given
         SyntheticsService service = mock(SyntheticsService.class);
         AwsSyntheticsCanariesScanner underTest = new AwsSyntheticsCanariesScanner(service);
         Component component = createComponent(1);
         when(service.getCanaryLastRunsForComponent(component)).thenReturn(List.of(
-                createChecksForProfileAndRegion(1),
-                createChecksForProfileAndRegion(2)
+                createCheckAndContext(1, 1),
+                createCheckAndContext(1, 2),
+                createCheckAndContext(2, 1),
+                createCheckAndContext(2, 2)
         ));
 
         // When
@@ -111,36 +113,18 @@ public class AwsSyntheticsCanariesScannerTest extends BaseScannerTest {
     }
 
     @Test
-    public void scanShouldNotTransformTheComponentIfNoLogSummariesAreFound() {
+    public void scanShouldNotTransformTheComponentIfNoChecksAreFound() {
         // Given
         SyntheticsService service = mock(SyntheticsService.class);
         AwsSyntheticsCanariesScanner underTest = new AwsSyntheticsCanariesScanner(service);
         Component component = createComponent(1);
-        when(service.getCanaryLastRunsForComponent(component)).thenReturn(List.of(
-                createEmptyChecksForProfileAndRegion(1),
-                createEmptyChecksForProfileAndRegion(2)
-        ));
+        when(service.getCanaryLastRunsForComponent(component)).thenReturn(List.of());
 
         // When
         Output<Void, Component> returnValue = underTest.scan(component);
 
         // Then
         assertThat(returnValue).isEqualTo(new Output<>(null, null, null, CACHE_TTL));
-    }
-
-    private Map.Entry<AwsProfileAndRegion, List<CheckState>> createChecksForProfileAndRegion(
-            int profileAndRegionNumber
-    ) {
-        return Map.entry(createProfileAndRegion(profileAndRegionNumber), List.of(
-                createCheck(profileAndRegionNumber, 1),
-                createCheck(profileAndRegionNumber, 2)
-        ));
-    }
-
-    private Map.Entry<AwsProfileAndRegion, List<CheckState>> createEmptyChecksForProfileAndRegion(
-            int profileAndRegionNumber
-    ) {
-        return Map.entry(createProfileAndRegion(profileAndRegionNumber), List.of());
     }
 
     private EnvironmentState createEnvironment(int environmentNumber) {
@@ -160,6 +144,16 @@ public class AwsSyntheticsCanariesScannerTest extends BaseScannerTest {
                                 .build()
                 ))
                 .build();
+    }
+
+    private CheckStateAndContext createCheckAndContext(
+            int profileAndRegionNumber,
+            int checkNumber
+    ) {
+        return new CheckStateAndContext(
+                "test-environment-id-" + profileAndRegionNumber,
+                createCheck(profileAndRegionNumber, checkNumber)
+        );
     }
 
     private CheckState createCheck(
