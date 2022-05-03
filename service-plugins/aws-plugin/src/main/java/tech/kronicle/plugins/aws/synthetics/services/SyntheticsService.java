@@ -85,6 +85,6 @@ public class SyntheticsService {
 
     private Map<String, String> getCanaryNameToEnvironmentIdMap(List<TaggedResource> canaries) {
         return canaries.stream()
-                .collect(toMap(TaggedResource::getEnvironmentId, TaggedResource::getResourceId));
+                .collect(toMap(TaggedResource::getResourceId, TaggedResource::getEnvironmentId));
     }
 }

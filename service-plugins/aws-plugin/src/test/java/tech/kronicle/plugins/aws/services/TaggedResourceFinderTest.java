@@ -8,6 +8,7 @@ import tech.kronicle.plugins.aws.config.AwsConfig;
 import tech.kronicle.plugins.aws.config.AwsProfileConfig;
 import tech.kronicle.plugins.aws.config.AwsTagKeysConfig;
 import tech.kronicle.plugins.aws.models.AwsProfileAndRegion;
+import tech.kronicle.plugins.aws.models.TaggedResource;
 import tech.kronicle.plugins.aws.models.TaggedResourcesByProfileAndRegionAndComponent;
 import tech.kronicle.plugins.aws.resourcegroupstaggingapi.models.ResourceGroupsTaggingApiResource;
 import tech.kronicle.plugins.aws.resourcegroupstaggingapi.services.ResourceFetcher;
@@ -80,14 +81,33 @@ public class TaggedResourceFinderTest {
         TaggedResourcesByProfileAndRegionAndComponent returnValue = underTest.getTaggedResourcesByProfileAndRegionAndComponent(resourceType);
 
         // Then
-        assertThat(returnValue.getResourceIds(profile1AndRegion1, component1)).containsExactly("test-resource-id-1", "test-resource-id-2");
-        assertThat(returnValue.getResourceIds(profile1AndRegion1, component2)).containsExactly("test-resource-id-3", "test-resource-id-4");
-        assertThat(returnValue.getResourceIds(profile1AndRegion2, component1)).isEmpty();
-        assertThat(returnValue.getResourceIds(profile1AndRegion2, component2)).isEmpty();
-        assertThat(returnValue.getResourceIds(profile2AndRegion1, component1)).isEmpty();
-        assertThat(returnValue.getResourceIds(profile2AndRegion1, component2)).isEmpty();
-        assertThat(returnValue.getResourceIds(profile2AndRegion2, component1)).containsExactly("test-resource-id-5", "test-resource-id-6");
-        assertThat(returnValue.getResourceIds(profile2AndRegion2, component2)).containsExactly("test-resource-id-7", "test-resource-id-8");
+        assertThat(returnValue.getTaggedResources(profile1AndRegion1, component1)).containsExactly(
+                createTaggedResource(profile1AndRegion1, 1),
+                createTaggedResource(profile1AndRegion1, 2)
+        );
+        assertThat(returnValue.getTaggedResources(profile1AndRegion1, component2)).containsExactly(
+                createTaggedResource(profile1AndRegion1, 3),
+                createTaggedResource(profile1AndRegion1, 4)
+        );
+        assertThat(returnValue.getTaggedResources(profile1AndRegion2, component1)).isEmpty();
+        assertThat(returnValue.getTaggedResources(profile1AndRegion2, component2)).isEmpty();
+        assertThat(returnValue.getTaggedResources(profile2AndRegion1, component1)).isEmpty();
+        assertThat(returnValue.getTaggedResources(profile2AndRegion1, component2)).isEmpty();
+        assertThat(returnValue.getTaggedResources(profile2AndRegion2, component1)).containsExactly(
+                createTaggedResource(profile2AndRegion2, 5),
+                createTaggedResource(profile2AndRegion2, 6)
+        );
+        assertThat(returnValue.getTaggedResources(profile2AndRegion2, component2)).containsExactly(
+                createTaggedResource(profile2AndRegion2, 7),
+                createTaggedResource(profile2AndRegion2, 8)
+        );
+    }
+
+    private TaggedResource createTaggedResource(AwsProfileAndRegion profileAndRegion, int taggedResourceNumber) {
+        return new TaggedResource(
+                "test-resource-id-" + taggedResourceNumber,
+                profileAndRegion.getProfile().getEnvironmentId()
+        );
     }
 
     private void mockGetResources(

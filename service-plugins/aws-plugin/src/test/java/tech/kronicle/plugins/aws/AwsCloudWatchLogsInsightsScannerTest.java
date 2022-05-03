@@ -2,8 +2,8 @@ package tech.kronicle.plugins.aws;
 
 import org.junit.jupiter.api.Test;
 import tech.kronicle.pluginapi.scanners.models.Output;
+import tech.kronicle.plugins.aws.cloudwatchlogs.models.LogSummaryStateAndContext;
 import tech.kronicle.plugins.aws.cloudwatchlogs.services.CloudWatchLogsService;
-import tech.kronicle.plugins.aws.models.AwsProfileAndRegion;
 import tech.kronicle.plugintestutils.scanners.BaseScannerTest;
 import tech.kronicle.sdk.models.Component;
 import tech.kronicle.sdk.models.ComponentMetadata;
@@ -14,15 +14,11 @@ import tech.kronicle.sdk.models.LogSummaryState;
 
 import java.time.Duration;
 import java.util.List;
-import java.util.Map;
-import java.util.function.UnaryOperator;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.InstanceOfAssertFactories.DURATION;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
-import static tech.kronicle.plugins.aws.testutils.AwsProfileAndRegionUtils.createProfileAndRegion;
 import static tech.kronicle.plugins.aws.testutils.ComponentUtils.createComponent;
 
 public class AwsCloudWatchLogsInsightsScannerTest extends BaseScannerTest {
@@ -87,8 +83,10 @@ public class AwsCloudWatchLogsInsightsScannerTest extends BaseScannerTest {
         AwsCloudWatchLogsInsightsScanner underTest = new AwsCloudWatchLogsInsightsScanner(service);
         Component component = createComponent(1);
         when(service.getLogSummariesForComponent(component)).thenReturn(List.of(
-                createLogSummariesForProfileAndRegion(1),
-                createLogSummariesForProfileAndRegion(2)
+                createLogSummaryAndContext(1, 1),
+                createLogSummaryAndContext(1, 2),
+                createLogSummaryAndContext(2, 1),
+                createLogSummaryAndContext(2, 2)
         ));
 
         // When
@@ -117,10 +115,7 @@ public class AwsCloudWatchLogsInsightsScannerTest extends BaseScannerTest {
         CloudWatchLogsService service = mock(CloudWatchLogsService.class);
         AwsCloudWatchLogsInsightsScanner underTest = new AwsCloudWatchLogsInsightsScanner(service);
         Component component = createComponent(1);
-        when(service.getLogSummariesForComponent(component)).thenReturn(List.of(
-                        createEmptyLogSummariesForProfileAndRegion(1),
-                        createEmptyLogSummariesForProfileAndRegion(2)
-        ));
+        when(service.getLogSummariesForComponent(component)).thenReturn(List.of());
 
         // When
         Output<Void, Component> returnValue = underTest.scan(component);
@@ -131,21 +126,6 @@ public class AwsCloudWatchLogsInsightsScannerTest extends BaseScannerTest {
         assertThat(returnValue.getCacheTtl()).isEqualTo(CACHE_TTL);
         Component transformedComponent = getMutatedComponent(returnValue, component);
         assertThat(transformedComponent).isEqualTo(component);
-    }
-
-    private Map.Entry<AwsProfileAndRegion, List<LogSummaryState>> createLogSummariesForProfileAndRegion(
-            int profileAndRegionNumber
-    ) {
-        return Map.entry(createProfileAndRegion(profileAndRegionNumber), List.of(
-                createLogSummary(profileAndRegionNumber, 1),
-                createLogSummary(profileAndRegionNumber, 2)
-        ));
-    }
-
-    private Map.Entry<AwsProfileAndRegion, List<LogSummaryState>> createEmptyLogSummariesForProfileAndRegion(
-            int profileAndRegionNumber
-    ) {
-        return Map.entry(createProfileAndRegion(profileAndRegionNumber), List.of());
     }
 
     private EnvironmentState createEnvironment(int environmentNumber) {
@@ -165,6 +145,16 @@ public class AwsCloudWatchLogsInsightsScannerTest extends BaseScannerTest {
                                 .build()
                 ))
                 .build();
+    }
+
+    private LogSummaryStateAndContext createLogSummaryAndContext(
+            int profileAndRegionNumber,
+            int logSummaryNumber
+    ) {
+        return new LogSummaryStateAndContext(
+                "test-environment-id-" + profileAndRegionNumber,
+                createLogSummary(profileAndRegionNumber, logSummaryNumber)
+        );
     }
 
     private LogSummaryState createLogSummary(
