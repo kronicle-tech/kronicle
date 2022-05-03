@@ -8,10 +8,16 @@ import tech.kronicle.plugins.aws.cloudwatchlogs.models.LogSummaryStateAndContext
 import tech.kronicle.plugins.aws.cloudwatchlogs.services.CloudWatchLogsService;
 import tech.kronicle.sdk.models.Component;
 import tech.kronicle.sdk.models.ComponentMetadata;
+import tech.kronicle.sdk.models.LogSummaryState;
 
 import javax.inject.Inject;
 import java.time.Duration;
 import java.util.List;
+import java.util.Map;
+
+import static java.util.stream.Collectors.groupingBy;
+import static java.util.stream.Collectors.mapping;
+import static java.util.stream.Collectors.toUnmodifiableList;
 
 @Extension
 @RequiredArgsConstructor(onConstructor = @__({@Inject}))
@@ -42,12 +48,17 @@ public class AwsCloudWatchLogsInsightsScanner extends ComponentScanner {
 
         return Output.ofTransformer(
                 component -> component.withUpdatedState(state -> {
-                    for (LogSummaryStateAndContext logSummary : logSummaries) {
+                    Map<String, List<LogSummaryState>> logSummariesByEnvironmentId = logSummaries.stream()
+                            .collect(groupingBy(
+                                    LogSummaryStateAndContext::getEnvironmentId,
+                                    mapping(LogSummaryStateAndContext::getLogSummary, toUnmodifiableList())
+                            ));
+                    for (Map.Entry<String, List<LogSummaryState>> entry : logSummariesByEnvironmentId.entrySet()) {
                         state = state.withUpdatedEnvironment(
-                                logSummary.getEnvironmentId(),
+                                entry.getKey(),
                                 environment -> environment.withUpdatedPlugin(
                                         AwsPlugin.ID,
-                                        plugin -> plugin.addLogSummary(logSummary.getLogSummary())
+                                        plugin -> plugin.addLogSummaries(entry.getValue())
                                 )
                         );
                     }
