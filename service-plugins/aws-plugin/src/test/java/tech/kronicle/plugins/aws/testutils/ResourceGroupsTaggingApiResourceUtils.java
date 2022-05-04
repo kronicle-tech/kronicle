@@ -12,7 +12,9 @@ import static java.util.Objects.nonNull;
 public final class ResourceGroupsTaggingApiResourceUtils {
 
     public static final String TEST_COMPONENT_TAG_KEY = "test-component-tag-key";
+    public static final String TEST_DESCRIPTION_TAG_KEY = "test-description-tag-key";
     public static final String TEST_ENVIRONMENT_TAG_KEY = "test-environment-tag-key";
+    public static final String TEST_TEAM_TAG_KEY = "test-team-tag-key";
 
     public static ResourceGroupsTaggingApiResource createResource(
             int resourceNumber
