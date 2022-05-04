@@ -113,11 +113,27 @@ public class ResourceMapper {
                 .orElse(List.of());
     }
 
-    private String getDescription(ResourceGroupsTaggingApiResource resource, AnalysedArn analysedArn, List<Alias> aliases) {
-        if (!config.getDetailedComponentDescriptions()) {
+    private String getDescription(
+            ResourceGroupsTaggingApiResource resource,
+            AnalysedArn analysedArn,
+            List<Alias> aliases
+    ) {
+        Optional<String> descriptionTag = getDescriptionTag(resource);
+
+        if (descriptionTag.isPresent()) {
+            return descriptionTag.get();
+        } else if (config.getDetailedComponentDescriptions()) {
+            return getDetailedComponentDescription(resource, analysedArn, aliases);
+        } else {
             return "";
         }
+    }
 
+    private String getDetailedComponentDescription(
+            ResourceGroupsTaggingApiResource resource,
+            AnalysedArn analysedArn,
+            List<Alias> aliases
+    ) {
         StringBuilder builder = new StringBuilder()
                 .append(analysedArn.getArn())
                 .append("\n");
@@ -141,6 +157,10 @@ public class ResourceMapper {
         }
 
         return builder.toString();
+    }
+
+    private Optional<String> getDescriptionTag(ResourceGroupsTaggingApiResource resource) {
+        return getOptionalResourceTagValue(resource, config.getTagKeys().getDescription());
     }
 
     private List<ComponentDependency> createDependencies(ResourceGroupsTaggingApiResource resource) {
