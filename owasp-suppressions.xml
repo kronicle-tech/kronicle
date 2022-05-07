@@ -458,4 +458,52 @@
         <packageUrl regex="true">^pkg:npm/nth\-check@.*$</packageUrl>
         <vulnerabilityName>1067654</vulnerabilityName>
     </suppress>
+    <!-- Suppress a vulnerability that is incorrectly flagged against Spring GraphQL RC1 -->
+    <suppress>
+        <notes><![CDATA[
+   file name: spring-graphql-1.0.0-RC1.jar
+   ]]></notes>
+        <packageUrl regex="true">^pkg:maven/org\.springframework\.graphql/spring\-graphql@.*$</packageUrl>
+        <cve>CVE-2013-4152</cve>
+    </suppress>
+    <!-- Suppress a vulnerability that is incorrectly flagged against Spring GraphQL RC1 -->
+    <suppress>
+        <notes><![CDATA[
+   file name: spring-graphql-1.0.0-RC1.jar
+   ]]></notes>
+        <packageUrl regex="true">^pkg:maven/org\.springframework\.graphql/spring\-graphql@.*$</packageUrl>
+        <cve>CVE-2013-7315</cve>
+    </suppress>
+    <!-- Suppress a vulnerability that is incorrectly flagged against Spring GraphQL RC1 -->
+    <suppress>
+        <notes><![CDATA[
+   file name: spring-graphql-1.0.0-RC1.jar
+   ]]></notes>
+        <packageUrl regex="true">^pkg:maven/org\.springframework\.graphql/spring\-graphql@.*$</packageUrl>
+        <cve>CVE-2014-0054</cve>
+    </suppress>
+    <!-- Suppress a vulnerability that is incorrectly flagged against Spring GraphQL RC1 -->
+    <suppress>
+        <notes><![CDATA[
+   file name: spring-graphql-1.0.0-RC1.jar
+   ]]></notes>
+        <packageUrl regex="true">^pkg:maven/org\.springframework\.graphql/spring\-graphql@.*$</packageUrl>
+        <cve>CVE-2016-1000027</cve>
+    </suppress>
+    <!-- Suppress a vulnerability that is incorrectly flagged against Spring GraphQL RC1 -->
+    <suppress>
+        <notes><![CDATA[
+   file name: spring-graphql-1.0.0-RC1.jar
+   ]]></notes>
+        <packageUrl regex="true">^pkg:maven/org\.springframework\.graphql/spring\-graphql@.*$</packageUrl>
+        <cve>CVE-2022-22965</cve>
+    </suppress>
+    <!-- Suppress a vulnerability that is incorrectly flagged against Spring GraphQL RC1 -->
+    <suppress>
+        <notes><![CDATA[
+   file name: spring-graphql-1.0.0-RC1.jar
+   ]]></notes>
+        <packageUrl regex="true">^pkg:maven/org\.springframework\.graphql/spring\-graphql@.*$</packageUrl>
+        <cve>CVE-2022-22968</cve>
+    </suppress>
 </suppressions>
