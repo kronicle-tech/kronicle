@@ -1,4 +1,4 @@
-package tech.kronicle.spring.graphql.codefirst;
+package tech.kronicle.graphql.codefirst;
 
 import graphql.schema.GraphQLFieldDefinition;
 import graphql.schema.GraphQLObjectType;

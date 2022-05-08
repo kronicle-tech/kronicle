@@ -4,8 +4,8 @@ plugins {
 }
 
 group "tech.kronicle"
-archivesBaseName = "spring-graphql-code-first"
-description "spring-graphql-code-first library for taking a code first approach with Spring's integration with the graphql-java framework"
+archivesBaseName = "graphql-code-first"
+description "graphql-code-first library for taking a code first approach with the graphql-java framework"
 
 apply from: "$rootDir/gradle/publish.gradle"
 
@@ -21,10 +21,9 @@ dependencies {
     compileOnly "javax.inject:javax.inject:$javaxInjectApiVersion"
     testCompileOnly "javax.inject:javax.inject:$javaxInjectApiVersion"
 
-    implementation project(":graphql-java-code-first")
-    implementation "org.springframework.graphql:spring-graphql"
-    compileOnly "org.springframework:spring-context"
-    compileOnly "org.springframework.boot:spring-boot-autoconfigure"
+    implementation "com.graphql-java:graphql-java"
+    implementation project(":graphql-java-code-first-annotations")
+    compileOnly "jakarta.validation:jakarta.validation-api"
 
     testImplementation "org.junit.jupiter:junit-jupiter"
     testImplementation "org.junit.jupiter:junit-jupiter-params"

@@ -4,6 +4,9 @@ import org.springframework.beans.factory.ListableBeanFactory;
 import org.springframework.boot.autoconfigure.graphql.GraphQlSourceBuilderCustomizer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import tech.kronicle.graphql.codefirst.CodeFirstGraphQlSchemaGenerator;
+import tech.kronicle.graphql.codefirst.CodeFirstInputTypeMapper;
+import tech.kronicle.graphql.codefirst.CodeFirstOutputTypeMapper;
 
 @Configuration
 public class CodeFirstGraphQlConfiguration {
@@ -20,15 +23,24 @@ public class CodeFirstGraphQlConfiguration {
 
     @Bean
     public CodeFirstGraphQlSchemaGenerator codeFirstGraphQlSchemaGenerator(
-            ListableBeanFactory beanFactory,
             CodeFirstInputTypeMapper inputTypeMapper,
             CodeFirstOutputTypeMapper outputTypeMapper
     ) {
-        return new CodeFirstGraphQlSchemaGenerator(beanFactory, inputTypeMapper, outputTypeMapper);
+        return new CodeFirstGraphQlSchemaGenerator(inputTypeMapper, outputTypeMapper);
     }
 
     @Bean
-    public GraphQlSourceBuilderCustomizer codeFirstGraphQlSourceBuilderCustomizer(CodeFirstGraphQlSchemaGenerator graphQlSchemaGenerator) {
-        return new CodeFirstGraphQlSourceBuilderCustomizer(graphQlSchemaGenerator);
+    public CodeFirstGraphQlSchemaResourceGenerator codeFirstGraphQlSchemaResourceGenerator(
+            ListableBeanFactory beanFactory,
+            CodeFirstGraphQlSchemaGenerator codeFirstGraphQlSchemaGenerator
+    ) {
+        return new CodeFirstGraphQlSchemaResourceGenerator(beanFactory, codeFirstGraphQlSchemaGenerator);
+    }
+
+    @Bean
+    public GraphQlSourceBuilderCustomizer codeFirstGraphQlSourceBuilderCustomizer(
+            CodeFirstGraphQlSchemaResourceGenerator codeFirstGraphQlSchemaResourceGenerator
+    ) {
+        return new CodeFirstGraphQlSourceBuilderCustomizer(codeFirstGraphQlSchemaResourceGenerator);
     }
 }
