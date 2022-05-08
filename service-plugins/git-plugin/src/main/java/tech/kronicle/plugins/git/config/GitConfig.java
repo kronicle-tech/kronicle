@@ -7,7 +7,6 @@ import javax.validation.constraints.NotEmpty;
 import java.util.List;
 
 @Value
-@NonFinal
 public class GitConfig {
 
     @NotEmpty

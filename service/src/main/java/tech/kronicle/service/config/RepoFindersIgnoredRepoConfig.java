@@ -10,7 +10,6 @@ import javax.validation.constraints.NotBlank;
 @Validated
 @ConstructorBinding
 @Value
-@NonFinal
 public class RepoFindersIgnoredRepoConfig {
 
     @NotBlank

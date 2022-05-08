@@ -19,8 +19,8 @@ public class Healthcheck {
         HttpResponse<String> response;
         try {
             response = client.send(request, HttpResponse.BodyHandlers.ofString());
-        } catch (Exception ex) {
-            System.err.println("Healthcheck failed with exception: " + ex);
+        } catch (Exception e) {
+            System.err.println("Healthcheck failed with exception: " + e);
             System.exit(1);
             return;
         }

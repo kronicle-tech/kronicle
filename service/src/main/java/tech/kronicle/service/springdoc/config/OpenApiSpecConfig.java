@@ -12,7 +12,6 @@ import java.util.List;
 @ConfigurationProperties("openapi-spec")
 @ConstructorBinding
 @Value
-@NonFinal
 public class OpenApiSpecConfig {
 
     Boolean clearExistingServers;

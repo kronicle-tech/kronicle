@@ -14,7 +14,6 @@ import java.util.List;
 @ConfigurationProperties("plugin-manager")
 @ConstructorBinding
 @Value
-@NonFinal
 public class PluginManagerConfig {
 
     @NotNull

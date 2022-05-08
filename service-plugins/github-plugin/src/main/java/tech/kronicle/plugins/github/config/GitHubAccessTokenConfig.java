@@ -6,7 +6,6 @@ import lombok.experimental.NonFinal;
 import javax.validation.constraints.NotEmpty;
 
 @Value
-@NonFinal
 public class GitHubAccessTokenConfig {
 
   @NotEmpty

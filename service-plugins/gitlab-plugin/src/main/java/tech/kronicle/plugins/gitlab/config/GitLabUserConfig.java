@@ -4,7 +4,6 @@ import lombok.Value;
 import lombok.experimental.NonFinal;
 
 @Value
-@NonFinal
 public class GitLabUserConfig {
 
     String username;

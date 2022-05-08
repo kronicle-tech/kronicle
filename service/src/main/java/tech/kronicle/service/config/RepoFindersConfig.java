@@ -12,7 +12,6 @@ import java.util.List;
 @ConfigurationProperties("repo-finders")
 @ConstructorBinding
 @Value
-@NonFinal
 public class RepoFindersConfig {
 
     List<RepoFindersIgnoredRepoConfig> ignoredRepos;

@@ -117,6 +117,9 @@ plugins:
     pom-cache:
       dir: /data/gradle/pom-cache
 
+  graphql:
+    enabled: true
+
   java-import:
     enabled: true
 

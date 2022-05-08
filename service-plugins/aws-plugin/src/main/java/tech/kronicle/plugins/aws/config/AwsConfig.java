@@ -10,7 +10,6 @@ import java.util.List;
 import static tech.kronicle.sdk.utils.ListUtils.createUnmodifiableList;
 
 @Value
-@NonFinal
 public class AwsConfig {
 
     List<@Valid AwsProfileConfig> profiles;

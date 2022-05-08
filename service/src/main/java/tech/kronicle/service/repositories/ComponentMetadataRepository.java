@@ -82,8 +82,8 @@ public class ComponentMetadataRepository {
         try {
             Path repoDir = gitCloner.cloneOrPullRepo(repo.getUrl());
             return new RepoAndRepoDir(repo, repoDir);
-        } catch (Exception ex) {
-            logError(repo, ex);
+        } catch (Exception e) {
+            logError(repo, e);
             return null;
         }
     }

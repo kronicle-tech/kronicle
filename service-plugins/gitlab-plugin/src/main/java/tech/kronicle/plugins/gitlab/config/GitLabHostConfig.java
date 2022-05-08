@@ -8,7 +8,6 @@ import javax.validation.constraints.Pattern;
 import java.util.List;
 
 @Value
-@NonFinal
 public class GitLabHostConfig {
 
     @NotNull

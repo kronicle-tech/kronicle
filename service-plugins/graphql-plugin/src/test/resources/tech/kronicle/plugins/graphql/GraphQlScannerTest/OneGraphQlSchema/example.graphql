@@ -1,0 +1,7 @@
+type Greeting {
+    greeting: String
+}
+
+type Query {
+    fileGreet(): Greeting
+}
