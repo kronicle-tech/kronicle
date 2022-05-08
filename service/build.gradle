@@ -54,6 +54,7 @@ dependencies {
     implementation "net.logstash.logback:logstash-logback-encoder:$logstashLogbackEncoder"
     implementation "tech.kronicle:gradle-version-logic:$gradleVersionLogicVersion"
     implementation "com.github.ben-manes.caffeine:caffeine:$caffeineVersion"
+    implementation project(":spring-graphql-code-first")
 
     testImplementation project(":service-test-utils")
     testImplementation project(":tracing-processor-test-utils")

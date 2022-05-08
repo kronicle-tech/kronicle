@@ -31,6 +31,7 @@ dependencies {
 
     implementation "jakarta.validation:jakarta.validation-api"
     implementation "org.hibernate.validator:hibernate-validator"
+    implementation project(":graphql-java-code-first-annotations")
 
     testImplementation "org.springframework.boot:spring-boot-starter-test", {
         exclude group: "junit", module: "junit"
