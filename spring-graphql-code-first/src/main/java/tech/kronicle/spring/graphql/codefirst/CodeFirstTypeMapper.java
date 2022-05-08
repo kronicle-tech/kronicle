@@ -11,44 +11,59 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
+import java.time.ZonedDateTime;
+import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collection;
-import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
-import java.util.stream.Stream;
 
 import static graphql.Scalars.GraphQLBoolean;
 import static graphql.Scalars.GraphQLFloat;
 import static graphql.Scalars.GraphQLInt;
 import static graphql.Scalars.GraphQLString;
 import static graphql.schema.GraphQLList.list;
-import static java.util.Objects.isNull;
+import static graphql.schema.GraphQLTypeReference.typeRef;
 import static java.util.stream.Collectors.toUnmodifiableList;
-import static java.util.stream.Collectors.toUnmodifiableSet;
 
 public abstract class CodeFirstTypeMapper<T extends GraphQLType, F> {
 
-    private static final Set<Type> INTEGER_TYPES = Set.of(Byte.class, Short.class, Integer.class, Long.class);
-    private static final Set<Type> FLOAT_TYPES = Set.of(Float.class, Double.class);
+    private static final Set<Type> INTEGER_TYPES = Set.of(
+            byte.class,
+            Byte.class,
+            short.class,
+            Short.class,
+            int.class,
+            Integer.class,
+            long.class,
+            Long.class
+    );
+    private static final Set<Type> FLOAT_TYPES = Set.of(
+            float.class,
+            Float.class,
+            double.class,
+            Double.class
+    );
+    private static final Set<Type> STRING_TYPES = Set.of(
+            String.class,
+            LocalDate.class,
+            LocalDateTime.class,
+            ZonedDateTime.class,
+            OffsetDateTime.class
+    );
 
-    private final Map<Type, T> graphQlTypeCache = new HashMap<>();
+    private final List<Class> customTypes = new ArrayList<>();
 
-    public T resolveGraphQlType(Type type) {
-        return resolveGraphQlType(type, Set.of());
-    }
-
-    private T resolveGraphQlType(Type type, Set<Type> visitedTypes) {
+    public T resolveType(Type type) {
         log().debug("Resolving type " + type.getTypeName());
-        if (visitedTypes.contains(type)) {
-            throw new IllegalStateException("Cyclic dependency found for type " + type.getTypeName());
-        }
         if (INTEGER_TYPES.contains(type)) {
             return (T) GraphQLInt;
         } else if (FLOAT_TYPES.contains(type)) {
             return (T) GraphQLFloat;
-        } else if (type.equals(String.class)) {
+        } else if (STRING_TYPES.contains(type)) {
             return (T) GraphQLString;
         } else if (type.equals(Boolean.class)) {
             return (T) GraphQLBoolean;
@@ -58,7 +73,7 @@ public abstract class CodeFirstTypeMapper<T extends GraphQLType, F> {
 
             if (rawType.equals(List.class)) {
                 Type elementType = parameterizedType.getActualTypeArguments()[0];
-                return (T) list(resolveGraphQlType(elementType));
+                return (T) list(resolveType(elementType));
             } else {
                 throw new IllegalStateException("Unexpected parameterized type " + rawType.getTypeName());
             }
@@ -68,33 +83,38 @@ public abstract class CodeFirstTypeMapper<T extends GraphQLType, F> {
             if (clazz.isEnum()) {
                 return (T) GraphQLString;
             } else {
-                T graphQlType = graphQlTypeCache.get(type);
-
-                if (isNull(graphQlType)) {
-                    graphQlType = newObject(
-                            clazz.getSimpleName(),
-                            getFields(clazz, newVisitedTypes(visitedTypes, type))
-                    );
-                    graphQlTypeCache.put(type, graphQlType);
+                if (!customTypes.contains(clazz)) {
+                    customTypes.add(clazz);
                 }
-                return graphQlType;
+                return (T) typeRef(clazz.getSimpleName());
             }
         } else {
             throw new IllegalStateException("Unexpected type " + type.getTypeName());
         }
     }
 
-    private Set<Type> newVisitedTypes(Set<Type> visitedTypes, Type newType) {
-        return Stream.of(visitedTypes, Set.of(newType))
-                .flatMap(Collection::stream)
-                .collect(toUnmodifiableSet());
+    public Set<GraphQLType> resolveCustomTypes() {
+        Set<GraphQLType> resolvedCustomTypes = new HashSet<>();
+        // Note: customTypes will grow with some iterations of this for look as new nested custom types are found
+        for (int index = 0; index < customTypes.size(); index++) {
+            Class customType = customTypes.get(index);
+            resolvedCustomTypes.add(resolveCustomType(customType));
+        }
+        return Set.copyOf(resolvedCustomTypes);
     }
 
-    private List<F> getFields(Class clazz, Set<Type> visitedTypes) {
+    private T resolveCustomType(Class type) {
+        return newObject(
+                type.getSimpleName(),
+                getFields(type)
+        );
+    }
+
+    private List<F> getFields(Class clazz) {
         return Arrays.stream(clazz.getDeclaredFields())
                 .filter(this::fieldIsNotStatic)
                 .filter(this::fieldIsNotIgnored)
-                .map(field -> getField(field, visitedTypes))
+                .map(field -> getField(field))
                 .collect(toUnmodifiableList());
     }
 
@@ -106,8 +126,8 @@ public abstract class CodeFirstTypeMapper<T extends GraphQLType, F> {
         return !field.isAnnotationPresent(CodeFirstGraphQlIgnore.class);
     }
 
-    private F getField(Field field, Set<Type> visitedTypes) {
-        T fieldType = resolveGraphQlType(field.getGenericType(), visitedTypes);
+    private F getField(Field field) {
+        T fieldType = resolveType(field.getGenericType());
         if (nonNullField(field)) {
             fieldType = (T) GraphQLNonNull.nonNull(fieldType);
         }

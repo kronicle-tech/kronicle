@@ -47,6 +47,8 @@ public class CodeFirstGraphQlSchemaGenerator {
         if (schemaIsNotEmpty(mutation)) {
             builder.mutation(mutation);
         }
+        builder.additionalTypes(inputTypeMapper.resolveCustomTypes());
+        builder.additionalTypes(outputTypeMapper.resolveCustomTypes());
         return builder
                 .build();
     }
@@ -109,7 +111,7 @@ public class CodeFirstGraphQlSchemaGenerator {
         return GraphQLFieldDefinition.newFieldDefinition()
                 .name(method.getName())
                 .arguments(buildOperationArguments(method))
-                .type(outputTypeMapper.resolveGraphQlType(method.getReturnType()))
+                .type(outputTypeMapper.resolveType(method.getReturnType()))
                 .build();
     }
 
@@ -122,7 +124,7 @@ public class CodeFirstGraphQlSchemaGenerator {
     private GraphQLArgument buildOperationArgument(Parameter parameter) {
         return GraphQLArgument.newArgument()
                 .name(parameter.getName())
-                .type(inputTypeMapper.resolveGraphQlType(parameter.getType()))
+                .type(inputTypeMapper.resolveType(parameter.getType()))
                 .build();
     }
 }
