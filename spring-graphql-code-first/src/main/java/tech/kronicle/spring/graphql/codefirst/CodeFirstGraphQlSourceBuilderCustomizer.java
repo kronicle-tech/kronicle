@@ -7,10 +7,10 @@ import org.springframework.graphql.execution.GraphQlSource;
 @RequiredArgsConstructor
 public class CodeFirstGraphQlSourceBuilderCustomizer implements GraphQlSourceBuilderCustomizer {
 
-    private final CodeFirstGraphQlSchemaGenerator graphQlSchemaGenerator;
+    private final CodeFirstGraphQlSchemaResourceGenerator schemaResourceGenerator;
 
     @Override
     public void customize(GraphQlSource.SchemaResourceBuilder builder) {
-        builder.schemaResources(graphQlSchemaGenerator.generateResource());
+        builder.schemaResources(schemaResourceGenerator.generateSchemaResource());
     }
 }
