@@ -12,7 +12,6 @@ import java.util.List;
 @ConfigurationProperties("zipkin-test")
 @ConstructorBinding
 @Value
-@NonFinal
 public class ZipkinTestConfig {
 
     List<String> expectedComponentTypeIds;

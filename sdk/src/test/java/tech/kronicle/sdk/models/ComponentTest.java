@@ -6,6 +6,7 @@ import com.fasterxml.jackson.databind.json.JsonMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
 import org.junit.jupiter.api.Test;
+import tech.kronicle.sdk.models.graphql.GraphQlSchema;
 import tech.kronicle.sdk.models.openapi.OpenApiSpec;
 import tech.kronicle.sdk.models.sonarqube.SonarQubeProject;
 import tech.kronicle.sdk.models.todos.ToDo;
@@ -241,6 +242,18 @@ public class ComponentTest {
 
         // When
         Throwable thrown = catchThrowable(() -> underTest.getOpenApiSpecs().add(OpenApiSpec.builder().build()));
+
+        // Then
+        assertThat(thrown).isInstanceOf(UnsupportedOperationException.class);
+    }
+
+    @Test
+    public void constructorShouldMakeGraphQlSchemasAnUnmodifiableList() {
+        // Given
+        Component underTest = Component.builder().graphQlSchemas(new ArrayList<>()).build();
+
+        // When
+        Throwable thrown = catchThrowable(() -> underTest.getGraphQlSchemas().add(GraphQlSchema.builder().build()));
 
         // Then
         assertThat(thrown).isInstanceOf(UnsupportedOperationException.class);

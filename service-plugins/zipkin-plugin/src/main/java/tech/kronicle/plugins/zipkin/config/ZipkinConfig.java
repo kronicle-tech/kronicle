@@ -9,7 +9,6 @@ import javax.validation.constraints.Pattern;
 import java.time.Duration;
 
 @Value
-@NonFinal
 public class ZipkinConfig {
 
     @NotNull

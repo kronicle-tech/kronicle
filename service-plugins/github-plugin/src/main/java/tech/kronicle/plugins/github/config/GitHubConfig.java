@@ -9,7 +9,6 @@ import java.time.Duration;
 import java.util.List;
 
 @Value
-@NonFinal
 public class GitHubConfig {
 
   @NotEmpty

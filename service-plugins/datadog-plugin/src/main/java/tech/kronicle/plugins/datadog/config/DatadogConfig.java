@@ -8,7 +8,6 @@ import javax.validation.constraints.NotNull;
 import java.time.Duration;
 
 @Value
-@NonFinal
 public class DatadogConfig {
 
     String baseUrl;

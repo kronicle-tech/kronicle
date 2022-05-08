@@ -8,7 +8,6 @@ import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Value
-@NonFinal
 public class KeySoftwareConfig {
 
     @NotNull

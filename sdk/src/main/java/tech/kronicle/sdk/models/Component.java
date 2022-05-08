@@ -15,6 +15,7 @@ import tech.kronicle.sdk.jackson.JsonRawValueSerializer;
 import tech.kronicle.sdk.jackson.TagOrStringDeserializer;
 import tech.kronicle.sdk.models.git.GitRepo;
 import tech.kronicle.sdk.models.gradle.Gradle;
+import tech.kronicle.sdk.models.graphql.GraphQlSchema;
 import tech.kronicle.sdk.models.linesofcode.LinesOfCode;
 import tech.kronicle.sdk.models.nodejs.NodeJs;
 import tech.kronicle.sdk.models.openapi.OpenApiSpec;
@@ -22,12 +23,10 @@ import tech.kronicle.sdk.models.readme.Readme;
 import tech.kronicle.sdk.models.sonarqube.SonarQubeProject;
 import tech.kronicle.sdk.models.todos.ToDo;
 import tech.kronicle.sdk.models.zipkin.Zipkin;
-import tech.kronicle.sdk.utils.ListUtils;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import java.util.List;
 import java.util.Map;
@@ -91,6 +90,7 @@ public class Component implements ObjectWithId, ObjectWithReference {
     @Valid Readme readme;
     @Valid Zipkin zipkin;
     List<@Valid OpenApiSpec> openApiSpecs;
+    List<@Valid GraphQlSchema> graphQlSchemas;
     List<@Valid SonarQubeProject> sonarQubeProjects;
     List<@Valid ScannerError> scannerErrors;
     List<@Valid TestResult> testResults;
@@ -126,6 +126,7 @@ public class Component implements ObjectWithId, ObjectWithReference {
             Readme readme,
             Zipkin zipkin,
             List<OpenApiSpec> openApiSpecs,
+            List<@Valid GraphQlSchema> graphQlSchemas,
             List<SonarQubeProject> sonarQubeProjects,
             List<ScannerError> scannerErrors,
             List<TestResult> testResults
@@ -160,6 +161,7 @@ public class Component implements ObjectWithId, ObjectWithReference {
         this.readme = readme;
         this.zipkin = zipkin;
         this.openApiSpecs = createUnmodifiableList(openApiSpecs);
+        this.graphQlSchemas = createUnmodifiableList(graphQlSchemas);
         this.sonarQubeProjects = createUnmodifiableList(sonarQubeProjects);
         this.scannerErrors = createUnmodifiableList(scannerErrors);
         this.testResults = createUnmodifiableList(testResults);

@@ -6,7 +6,6 @@ import lombok.experimental.NonFinal;
 import javax.validation.constraints.NotNull;
 
 @Value
-@NonFinal
 public class OpenApiConfig {
 
     @NotNull

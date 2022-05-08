@@ -8,7 +8,6 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
 @Value
-@NonFinal
 public class BitbucketServerHostConfig {
 
     @NotNull

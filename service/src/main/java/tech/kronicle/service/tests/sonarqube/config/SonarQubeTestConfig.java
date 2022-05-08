@@ -12,7 +12,6 @@ import java.util.List;
 @ConfigurationProperties("sonarqube-test")
 @ConstructorBinding
 @Value
-@NonFinal
 public class SonarQubeTestConfig {
 
     List<String> expectedComponentTypeIds;
