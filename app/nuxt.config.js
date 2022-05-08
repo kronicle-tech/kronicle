@@ -105,6 +105,9 @@ export default {
         '^/api($|/)': '/',
       },
     },
+    '/graphql': {
+      target: serverSideServiceBaseUrl,
+    },
   },
 
   privateRuntimeConfig: {

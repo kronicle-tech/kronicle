@@ -15,9 +15,9 @@ import org.springframework.web.reactive.function.client.WebClient;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import tech.kronicle.common.ValidationConstraintViolationTransformer;
+import tech.kronicle.spring.graphql.codefirst.EnableCodeFirstGraphQl;
 import tech.kronicle.tracingprocessor.ComponentAliasResolver;
 import tech.kronicle.tracingprocessor.TracingProcessor;
-import tech.kronicle.tracingprocessor.TracingProcessorFactory;
 import tech.kronicle.utils.FileUtils;
 import tech.kronicle.utils.ThrowableToScannerErrorMapper;
 
@@ -30,6 +30,7 @@ import static tech.kronicle.utils.FileUtilsFactory.createFileUtils;
 @SpringBootApplication
 @ConfigurationPropertiesScan
 @EnableScheduling
+@EnableCodeFirstGraphQl
 public class KronicleService {
 
     public static void main(String[] args) {

@@ -8,6 +8,7 @@ import lombok.Value;
 import lombok.With;
 import lombok.extern.jackson.Jacksonized;
 import org.hibernate.validator.constraints.UniqueElements;
+import tech.kronicle.graphql.codefirst.annotation.CodeFirstGraphQlIgnore;
 import tech.kronicle.sdk.constants.PatternStrings;
 import tech.kronicle.sdk.jackson.JsonRawValueDeserializer;
 import tech.kronicle.sdk.jackson.JsonRawValueSerializer;
@@ -72,6 +73,7 @@ public class Component implements ObjectWithId, ObjectWithReference {
     List<@Valid TechDebt> techDebts;
     @JsonSerialize(contentUsing = JsonRawValueSerializer.class)
     @JsonDeserialize(contentUsing = JsonRawValueDeserializer.class)
+    @CodeFirstGraphQlIgnore
     Map<@NotEmpty String, String> plugins;
 
     @Valid
