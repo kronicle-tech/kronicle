@@ -1,6 +1,6 @@
 <template>
   <table
-    v-if="openApiSpecs && openApiSpecs.length > 0"
+    v-if="graphQlSchemas && graphQlSchemas.length > 0"
     class="table table-dark"
   >
     <thead>
@@ -14,34 +14,34 @@
     </thead>
     <tbody>
       <tr
-        v-for="(openApiSpec, openApiSpecIndex) in openApiSpecs"
-        :key="openApiSpecIndex"
+        v-for="(graphQlSchema, graphQlSchemaIndex) in graphQlSchemas"
+        :key="graphQlSchemaIndex"
       >
         <td class="component">
-          <ComponentName :component="openApiSpec.component" />
+          <ComponentName :component="graphQlSchema.component" />
         </td>
         <td class="teams">
-          <ComponentTeams :component-teams="openApiSpec.component.teams" />
+          <ComponentTeams :component-teams="graphQlSchema.component.teams" />
         </td>
         <td class="location">
-          {{ openApiSpec.url ? openApiSpec.url : openApiSpec.file }}
+          {{ graphQlSchema.url ? graphQlSchema.url : graphQlSchema.file }}
         </td>
         <td class="action table-secondary">
           <b-link
-            v-if="openApiSpec.spec"
-            :href="`/components/${openApiSpec.component.id}/openapi-specs/${
-              openApiSpec.index + 1
+            v-if="graphQlSchema.schema"
+            :href="`/components/${graphQlSchema.component.id}/graphql-schemas/${
+              graphQlSchema.index + 1
             }`"
             variant="primary"
           >
-            View OpenAPI spec
+            View GraphQL schema
           </b-link>
           <div v-else>
-            <b-badge variant="danger">OpenAPI spec not found</b-badge>
+            <b-badge variant="danger">GraphQL schema not found</b-badge>
           </div>
         </td>
         <td class="description">
-          <Markdown :markdown="openApiSpec.description" />
+          <Markdown :markdown="graphQlSchema.description" />
         </td>
       </tr>
     </tbody>
@@ -51,13 +51,13 @@
 <script lang="ts">
 import Vue, { PropType } from 'vue'
 import { BBadge, BLink } from 'bootstrap-vue'
-import { Component, OpenApiSpec } from '~/types/kronicle-service'
-import { compareOpenApiSpecs } from '~/src/openApiSpecComparator'
+import { Component, GraphQlSchema } from '~/types/kronicle-service'
+import { compareGraphQlSchemas } from '~/src/graphQlSchemaComparator'
 import ComponentName from '~/components/ComponentName.vue'
 import ComponentTeams from '~/components/ComponentTeams.vue'
 import Markdown from '~/components/Markdown.vue'
 
-interface OpenApiSpecWithIndexAndComponent extends OpenApiSpec {
+interface GraphQlSchemaWithIndexAndComponent extends GraphQlSchema {
   index: number
   component: Component
 }
@@ -77,19 +77,19 @@ export default Vue.extend({
     },
   },
   computed: {
-    openApiSpecs(): OpenApiSpecWithIndexAndComponent[] {
+    graphQlSchemas(): GraphQlSchemaWithIndexAndComponent[] {
       const that = this
       return that.components
         .flatMap((component) => {
-          return (component.openApiSpecs ?? []).map((openApiSpec, index) => {
+          return (component.graphQlSchemas ?? []).map((graphQlSchema, index) => {
             return {
-              ...openApiSpec,
+              ...graphQlSchema,
               index,
               component,
-            } as OpenApiSpecWithIndexAndComponent
+            } as GraphQlSchemaWithIndexAndComponent
           })
         })
-        .sort(compareOpenApiSpecs)
+        .sort(compareGraphQlSchemas)
     },
   },
 })

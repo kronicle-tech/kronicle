@@ -19,7 +19,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static com.github.tomakehurst.wiremock.client.WireMock.aResponse;
-import static com.github.tomakehurst.wiremock.client.WireMock.get;
+import static com.github.tomakehurst.wiremock.client.WireMock.equalTo;
+import static com.github.tomakehurst.wiremock.client.WireMock.post;
 import static com.github.tomakehurst.wiremock.client.WireMock.urlPathEqualTo;
 import static com.github.tomakehurst.wiremock.core.WireMockConfiguration.options;
 import static java.util.Objects.nonNull;
@@ -45,6 +46,107 @@ public class GraphQlScannerTest extends BaseCodebaseScannerTest {
             "    fileGreet(): Greeting\n" +
             "}\n";
     public static final String GRAPHQL_URL_PATH = "/graphql-schema";
+    private static final String GRAPHQL_INTROSPECTION_QUERY = "{\"query\":\"" +
+            "query IntrospectionQuery {\\n" +
+            "  __schema {\\n" +
+            "    queryType {\\n" +
+            "      name\\n" +
+            "    }\\n" +
+            "    mutationType {\\n" +
+            "      name\\n" +
+            "    }\\n" +
+            "    subscriptionType {\\n" +
+            "      name\\n" +
+            "    }\\n" +
+            "    types {\\n" +
+            "      ...FullType\\n" +
+            "    }\\n" +
+            "    directives {\\n" +
+            "      name\\n" +
+            "      description\\n" +
+            "      locations\\n" +
+            "      args {\\n" +
+            "        ...InputValue\\n" +
+            "      }\\n" +
+            "    }\\n" +
+            "  }\\n" +
+            "}\\n" +
+            "\\n" +
+            "fragment FullType on __Type {\\n" +
+            "  kind\\n" +
+            "  name\\n" +
+            "  description\\n" +
+            "  fields(includeDeprecated: true) {\\n" +
+            "    name\\n" +
+            "    description\\n" +
+            "    args {\\n" +
+            "      ...InputValue\\n" +
+            "    }\\n" +
+            "    type {\\n" +
+            "      ...TypeRef\\n" +
+            "    }\\n" +
+            "    isDeprecated\\n" +
+            "    deprecationReason\\n" +
+            "  }\\n" +
+            "  inputFields {\\n" +
+            "    ...InputValue\\n" +
+            "  }\\n" +
+            "  interfaces {\\n" +
+            "    ...TypeRef\\n" +
+            "  }\\n" +
+            "  enumValues(includeDeprecated: true) {\\n" +
+            "    name\\n" +
+            "    description\\n" +
+            "    isDeprecated\\n" +
+            "    deprecationReason\\n" +
+            "  }\\n" +
+            "  possibleTypes {\\n" +
+            "    ...TypeRef\\n" +
+            "  }\\n" +
+            "}\\n" +
+            "\\n" +
+            "fragment InputValue on __InputValue {\\n" +
+            "  name\\n" +
+            "  description\\n" +
+            "  type {\\n" +
+            "    ...TypeRef\\n" +
+            "  }\\n" +
+            "  defaultValue\\n" +
+            "}\\n" +
+            "\\n" +
+            "fragment TypeRef on __Type {\\n" +
+            "  kind\\n" +
+            "  name\\n" +
+            "  ofType {\\n" +
+            "    kind\\n" +
+            "    name\\n" +
+            "    ofType {\\n" +
+            "      kind\\n" +
+            "      name\\n" +
+            "      ofType {\\n" +
+            "        kind\\n" +
+            "        name\\n" +
+            "        ofType {\\n" +
+            "          kind\\n" +
+            "          name\\n" +
+            "          ofType {\\n" +
+            "            kind\\n" +
+            "            name\\n" +
+            "            ofType {\\n" +
+            "              kind\\n" +
+            "              name\\n" +
+            "              ofType {\\n" +
+            "                kind\\n" +
+            "                name\\n" +
+            "              }\\n" +
+            "            }\\n" +
+            "          }\\n" +
+            "        }\\n" +
+            "      }\\n" +
+            "    }\\n" +
+            "  }\\n" +
+            "}\\n" +
+            "\"}";
     public static final String GRAPHQL_SCHEMA_FILE_NAME = "example.graphql";
 
     private WireMockServer wireMockServer;
@@ -204,7 +306,8 @@ public class GraphQlScannerTest extends BaseCodebaseScannerTest {
 
     private void createWireMockServer() {
         wireMockServer = new WireMockServer(options().dynamicPort());
-        wireMockServer.stubFor(get(urlPathEqualTo(GRAPHQL_URL_PATH))
+        wireMockServer.stubFor(post(urlPathEqualTo(GRAPHQL_URL_PATH))
+                .withRequestBody(equalTo(GRAPHQL_INTROSPECTION_QUERY))
                 .willReturn(aResponse()
                         .withStatus(200)
                         .withHeader("Content-Type", "application/graphql")
