@@ -10,11 +10,11 @@ description "graphql-java-code-first-annotations library for taking a code first
 apply from: "$rootDir/gradle/publish.gradle"
 
 dependencies {
-    annotationProcessor platform("org.springframework.boot:spring-boot-dependencies:$springBootVersion")
-    implementation platform("org.springframework.boot:spring-boot-dependencies:$springBootVersion")
-    compileOnly platform("org.springframework.boot:spring-boot-dependencies:$springBootVersion")
-    testAnnotationProcessor platform("org.springframework.boot:spring-boot-dependencies:$springBootVersion")
-    testImplementation platform("org.springframework.boot:spring-boot-dependencies:$springBootVersion")
+    annotationProcessor platform("org.springframework.boot:spring-boot-dependencies:$springBootVersionOverride")
+    implementation platform("org.springframework.boot:spring-boot-dependencies:$springBootVersionOverride")
+    compileOnly platform("org.springframework.boot:spring-boot-dependencies:$springBootVersionOverride")
+    testAnnotationProcessor platform("org.springframework.boot:spring-boot-dependencies:$springBootVersionOverride")
+    testImplementation platform("org.springframework.boot:spring-boot-dependencies:$springBootVersionOverride")
     
     compileOnly "com.github.spotbugs:spotbugs-annotations:$spotBugsVersion"
     testCompileOnly "com.github.spotbugs:spotbugs-annotations:$spotBugsVersion"
