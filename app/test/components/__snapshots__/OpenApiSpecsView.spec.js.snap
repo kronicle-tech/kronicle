@@ -162,7 +162,7 @@ exports[`OpenApiSpecsView when an OpenAPI spec has a URL but no spec renders the
           https://example.com/openapi-spec-1-1
         </td>
         <td class=\\"action table-secondary\\">
-          <div><span class=\\"badge badge-danger\\">OpenApi spec not found</span></div>
+          <div><span class=\\"badge badge-danger\\">OpenAPI spec not found</span></div>
         </td>
         <td class=\\"description\\">
           <div>
@@ -337,7 +337,7 @@ exports[`OpenApiSpecsView when an OpenAPI spec has a file but no spec renders th
           /openapi-spec-1-1.yaml
         </td>
         <td class=\\"action table-secondary\\">
-          <div><span class=\\"badge badge-danger\\">OpenApi spec not found</span></div>
+          <div><span class=\\"badge badge-danger\\">OpenAPI spec not found</span></div>
         </td>
         <td class=\\"description\\">
           <div>
