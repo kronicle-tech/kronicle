@@ -103,7 +103,17 @@ exports[`Index when Get Component service endpoint returns a component when the 
       target="_self"
     >
       
-    OpenAPI Specs
+    OpenAPI
+  
+    </a>
+     
+    <a
+      class="btn my-1 btn-secondary"
+      href="/components/test-component-id-1/graphql-schemas"
+      target="_self"
+    >
+      
+    GraphQL
   
     </a>
      
@@ -345,7 +355,17 @@ exports[`Index when Get Component service endpoint returns a component when the 
       target="_self"
     >
       
-    OpenAPI Specs
+    OpenAPI
+  
+    </a>
+     
+    <a
+      class="btn my-1 btn-secondary"
+      href="/components/test-component-id-1/graphql-schemas"
+      target="_self"
+    >
+      
+    GraphQL
   
     </a>
      
