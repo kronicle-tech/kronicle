@@ -13,11 +13,12 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.nio.charset.StandardCharsets;
 
-import static graphql.introspection.IntrospectionQuery.INTROSPECTION_QUERY;
+import static tech.kronicle.plugins.graphql.constants.IntrospectionQuery.INTROSPECTION_QUERY_JSON;
 import static tech.kronicle.utils.HttpClientFactory.createHttpRequestBuilder;
 
 @RequiredArgsConstructor(onConstructor = @__({@Inject}))
 public class SchemaDownloader {
+
 
     private final GraphQlConfig config;
     private final HttpClient httpClient;
@@ -26,7 +27,7 @@ public class SchemaDownloader {
     public String downloadSchema(String url) {
         HttpResponse<String> response = httpClient.send(
                 createHttpRequestBuilder(config.getTimeout())
-                        .POST(HttpRequest.BodyPublishers.ofString(INTROSPECTION_QUERY))
+                        .POST(HttpRequest.BodyPublishers.ofString(INTROSPECTION_QUERY_JSON))
                         .uri(URI.create(url))
                         .header(HttpHeaders.CONTENT_TYPE, MediaType.JSON_UTF_8.toString())
                         .build(),

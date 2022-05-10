@@ -27,9 +27,9 @@ import static com.github.tomakehurst.wiremock.client.WireMock.equalTo;
 import static com.github.tomakehurst.wiremock.client.WireMock.post;
 import static com.github.tomakehurst.wiremock.client.WireMock.urlPathEqualTo;
 import static com.github.tomakehurst.wiremock.core.WireMockConfiguration.options;
-import static graphql.introspection.IntrospectionQuery.INTROSPECTION_QUERY;
 import static java.util.Objects.nonNull;
 import static org.assertj.core.api.Assertions.assertThat;
+import static tech.kronicle.plugins.graphql.constants.IntrospectionQuery.INTROSPECTION_QUERY_JSON;
 import static tech.kronicle.utils.FileUtilsFactory.createFileUtils;
 import static tech.kronicle.utils.HttpClientFactory.createHttpClient;
 import static tech.kronicle.utils.JsonMapperFactory.createJsonMapper;
@@ -289,7 +289,7 @@ public class GraphQlScannerTest extends BaseCodebaseScannerTest {
     private void createWireMockServer() {
         wireMockServer = new WireMockServer(options().dynamicPort());
         wireMockServer.stubFor(post(urlPathEqualTo(GRAPHQL_URL_PATH))
-                .withRequestBody(equalTo(INTROSPECTION_QUERY))
+                .withRequestBody(equalTo(INTROSPECTION_QUERY_JSON))
                 .willReturn(aResponse()
                         .withStatus(200)
                         .withHeader("Content-Type", "application/graphql")
