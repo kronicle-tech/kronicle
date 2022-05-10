@@ -119,6 +119,7 @@ plugins:
 
   graphql:
     enabled: true
+    timeout: 30s
 
   java-import:
     enabled: true
