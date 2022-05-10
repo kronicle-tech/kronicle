@@ -108,6 +108,9 @@ export default {
     '/graphql': {
       target: serverSideServiceBaseUrl,
     },
+    '/openapi': {
+      target: serverSideServiceBaseUrl,
+    },
   },
 
   privateRuntimeConfig: {

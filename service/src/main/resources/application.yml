@@ -197,7 +197,9 @@ plugins:
     trace-limit: 1000
 
 springdoc:
-  use-management-port: true
+  use-management-port: false
+  api-docs:
+      path: /openapi
   writer-with-default-pretty-printer: true
   swagger-ui:
     enabled: false
