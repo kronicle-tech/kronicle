@@ -4,7 +4,6 @@ import lombok.RequiredArgsConstructor;
 import tech.kronicle.plugins.graphql.models.SchemaAndErrors;
 import tech.kronicle.sdk.models.ScannerError;
 import tech.kronicle.sdk.models.graphql.GraphQlSchema;
-import tech.kronicle.utils.FileUtils;
 import tech.kronicle.utils.ThrowableToScannerErrorMapper;
 
 import javax.inject.Inject;
@@ -18,8 +17,9 @@ import static java.util.stream.Collectors.toUnmodifiableList;
 @RequiredArgsConstructor(onConstructor = @__({@Inject}))
 public class SchemaFetcher {
 
-    private final FileUtils fileUtils;
+    private final SchemaFileReader fileReader;
     private final SchemaDownloader downloader;
+    private final SchemaTransformer transformer;
     private final ThrowableToScannerErrorMapper scannerErrorMapper;
 
     public List<SchemaAndErrors> fetchSchemas(String scannerId, Path codebaseDir, List<GraphQlSchema> schemas) {
@@ -39,9 +39,10 @@ public class SchemaFetcher {
 
         try {
             if (nonNull(schema.getFile())) {
-                schemaText = fileUtils.readFileContent(codebaseDir.resolve(schema.getFile()));
+                schemaText = fileReader.readSchemaFile(codebaseDir, schema.getFile());
             } else {
-                schemaText = downloader.downloadSchema(schema.getUrl());
+                String introspectionResult = downloader.downloadSchema(schema.getUrl());
+                schemaText = transformer.transformIntrospectionResultToSchemaIdl(introspectionResult);
             }
         } catch (Exception e) {
             return error(schema, scannerErrorMapper.map(scannerId, e));

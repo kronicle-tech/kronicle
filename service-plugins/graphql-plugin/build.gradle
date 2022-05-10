@@ -5,11 +5,11 @@ plugins {
 }
 
 dependencies {
-    annotationProcessor platform("org.springframework.boot:spring-boot-dependencies:$springBootVersion")
-    implementation platform("org.springframework.boot:spring-boot-dependencies:$springBootVersion")
-    compileOnly platform("org.springframework.boot:spring-boot-dependencies:$springBootVersion")
-    testAnnotationProcessor platform("org.springframework.boot:spring-boot-dependencies:$springBootVersion")
-    testImplementation platform("org.springframework.boot:spring-boot-dependencies:$springBootVersion")
+    annotationProcessor platform("org.springframework.boot:spring-boot-dependencies:$springBootVersionOverride")
+    implementation platform("org.springframework.boot:spring-boot-dependencies:$springBootVersionOverride")
+    compileOnly platform("org.springframework.boot:spring-boot-dependencies:$springBootVersionOverride")
+    testAnnotationProcessor platform("org.springframework.boot:spring-boot-dependencies:$springBootVersionOverride")
+    testImplementation platform("org.springframework.boot:spring-boot-dependencies:$springBootVersionOverride")
 
     annotationProcessor "org.pf4j:pf4j:$pf4jVersion"
 
@@ -18,6 +18,13 @@ dependencies {
 
     implementation project(":service-plugin-guice")
     implementation project(":service-utils")
+    implementation "com.graphql-java:graphql-java"
+
+    // Resolves performance vulnerability https://github.com/FasterXML/jackson-databind/issues/2816
+    // TODO: Remove platform once a version of Spring Boot is released that includes this fix
+    implementation platform("com.fasterxml.jackson:jackson-bom:2.13.2.20220324")
+    implementation "com.fasterxml.jackson.core:jackson-databind"
+    implementation "com.fasterxml.jackson.datatype:jackson-datatype-jsr310:$jacksonVersion"
 
     testImplementation project(":service-plugin-test-utils")
     testImplementation "org.junit.jupiter:junit-jupiter"
