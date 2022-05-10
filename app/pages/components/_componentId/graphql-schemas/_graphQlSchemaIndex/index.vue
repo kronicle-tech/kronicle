@@ -1,6 +1,6 @@
 <template>
   <div class="m-3">
-    <h1 class="text-info my-3">{{ component.name }} - OpenAPI Spec {{ graphQlSchemaIndex }}</h1>
+    <h1 class="text-info my-3">{{ component.name }} - GraphQL Schema {{ graphQlSchemaIndex }}</h1>
 
     <ComponentTabs :component-id="component.id" />
 
