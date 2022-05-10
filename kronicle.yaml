@@ -124,11 +124,10 @@ components:
           intervals for data sources like Zipkin and SonarQube.
         priority: medium
     openApiSpecs:
-      - url: http://localhost:8091/actuator/openapi
+      - url: https://demo.kronicle.tech/openapi
         description: |
           OpenAPI spec for the Kronicle Service
     graphQlSchemas:
-#      - url: http://localhost:8091/graphql
       - url: https://demo.kronicle.tech/graphql
         description: |
           GraphQL schema for the Kronicle Service
