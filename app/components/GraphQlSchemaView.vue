@@ -46,7 +46,7 @@ export default Vue.extend({
     load(graphQlSchema: GraphQlSchema) {
       const windowAny = window as any
       windowAny.GraphQLVoyager.init(this.$el, {
-        introspection: () => graphQlSchema.schema,
+        introspection: graphQlSchema.schema,
       });
     },
   },
