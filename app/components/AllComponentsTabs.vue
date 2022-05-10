@@ -13,6 +13,9 @@
     <b-button class="my-1" :to="{ name: 'all-components-openapi-specs' }">
       OpenAPI Specs
     </b-button>
+    <b-button class="my-1" :to="{ name: 'all-components-graphql-schemas' }">
+      GraphQL Schemas
+    </b-button>
     <b-button class="my-1" :to="{ name: 'all-components-key-software' }">
       Key Software
     </b-button>

@@ -103,7 +103,17 @@ exports[`Index when Get Component service endpoint returns a component when the 
       target="_self"
     >
       
-    OpenAPI Specs
+    OpenAPI
+  
+    </a>
+     
+    <a
+      class="btn my-1 btn-secondary"
+      href="/components/test-component-id-1/graphql-schemas"
+      target="_self"
+    >
+      
+    GraphQL
   
     </a>
      
@@ -260,11 +270,11 @@ exports[`Index when Get Component service endpoint returns a component when the 
                 <!---->
                 <fieldset
                   class="form-group"
-                  id="__BVID__71"
+                  id="__BVID__73"
                 >
                   <legend
                     class="bv-no-focus-ring col-form-label pt-0"
-                    id="__BVID__71__BV_label_"
+                    id="__BVID__73__BV_label_"
                     tabindex="-1"
                   >
                     Teams
@@ -272,7 +282,7 @@ exports[`Index when Get Component service endpoint returns a component when the 
                   <div>
                     <div
                       class="bv-no-focus-ring"
-                      id="__BVID__72"
+                      id="__BVID__74"
                       role="group"
                       tabindex="-1"
                     >
@@ -281,14 +291,14 @@ exports[`Index when Get Component service endpoint returns a component when the 
                       >
                         <input
                           class="custom-control-input"
-                          id="__BVID__72_BV_option_0"
+                          id="__BVID__74_BV_option_0"
                           name="team"
                           type="checkbox"
                           value="test-team-id-1-1"
                         />
                         <label
                           class="custom-control-label"
-                          for="__BVID__72_BV_option_0"
+                          for="__BVID__74_BV_option_0"
                         >
                           <span>
                             test-team-id-1-1
@@ -300,14 +310,14 @@ exports[`Index when Get Component service endpoint returns a component when the 
                       >
                         <input
                           class="custom-control-input"
-                          id="__BVID__72_BV_option_1"
+                          id="__BVID__74_BV_option_1"
                           name="team"
                           type="checkbox"
                           value="test-team-id-1-2"
                         />
                         <label
                           class="custom-control-label"
-                          for="__BVID__72_BV_option_1"
+                          for="__BVID__74_BV_option_1"
                         >
                           <span>
                             test-team-id-1-2
@@ -337,11 +347,11 @@ exports[`Index when Get Component service endpoint returns a component when the 
                 <!---->
                 <fieldset
                   class="form-group"
-                  id="__BVID__75"
+                  id="__BVID__77"
                 >
                   <legend
                     class="bv-no-focus-ring col-form-label pt-0"
-                    id="__BVID__75__BV_label_"
+                    id="__BVID__77__BV_label_"
                     tabindex="-1"
                   >
                     Tags
@@ -349,7 +359,7 @@ exports[`Index when Get Component service endpoint returns a component when the 
                   <div>
                     <div
                       class="bv-no-focus-ring"
-                      id="__BVID__76"
+                      id="__BVID__78"
                       role="group"
                       tabindex="-1"
                     >
@@ -358,14 +368,14 @@ exports[`Index when Get Component service endpoint returns a component when the 
                       >
                         <input
                           class="custom-control-input"
-                          id="__BVID__76_BV_option_0"
+                          id="__BVID__78_BV_option_0"
                           name="tag"
                           type="checkbox"
                           value="test-tag-1-1"
                         />
                         <label
                           class="custom-control-label"
-                          for="__BVID__76_BV_option_0"
+                          for="__BVID__78_BV_option_0"
                         >
                           <span>
                             test-tag-1-1
@@ -377,14 +387,14 @@ exports[`Index when Get Component service endpoint returns a component when the 
                       >
                         <input
                           class="custom-control-input"
-                          id="__BVID__76_BV_option_1"
+                          id="__BVID__78_BV_option_1"
                           name="tag"
                           type="checkbox"
                           value="test-tag-1-2"
                         />
                         <label
                           class="custom-control-label"
-                          for="__BVID__76_BV_option_1"
+                          for="__BVID__78_BV_option_1"
                         >
                           <span>
                             test-tag-1-2
@@ -414,11 +424,11 @@ exports[`Index when Get Component service endpoint returns a component when the 
                 <!---->
                 <fieldset
                   class="form-group"
-                  id="__BVID__79"
+                  id="__BVID__81"
                 >
                   <legend
                     class="bv-no-focus-ring col-form-label pt-0"
-                    id="__BVID__79__BV_label_"
+                    id="__BVID__81__BV_label_"
                     tabindex="-1"
                   >
                     Component Types
@@ -426,7 +436,7 @@ exports[`Index when Get Component service endpoint returns a component when the 
                   <div>
                     <div
                       class="bv-no-focus-ring"
-                      id="__BVID__80"
+                      id="__BVID__82"
                       role="group"
                       tabindex="-1"
                     >
@@ -435,14 +445,14 @@ exports[`Index when Get Component service endpoint returns a component when the 
                       >
                         <input
                           class="custom-control-input"
-                          id="__BVID__80_BV_option_0"
+                          id="__BVID__82_BV_option_0"
                           name="componentTypeId"
                           type="checkbox"
                           value="test-component-type-id-1"
                         />
                         <label
                           class="custom-control-label"
-                          for="__BVID__80_BV_option_0"
+                          for="__BVID__82_BV_option_0"
                         >
                           <span>
                             test-component-type-id-1
@@ -472,11 +482,11 @@ exports[`Index when Get Component service endpoint returns a component when the 
                 <!---->
                 <fieldset
                   class="form-group"
-                  id="__BVID__82"
+                  id="__BVID__84"
                 >
                   <legend
                     class="bv-no-focus-ring col-form-label pt-0"
-                    id="__BVID__82__BV_label_"
+                    id="__BVID__84__BV_label_"
                     tabindex="-1"
                   >
                     Platforms
@@ -484,7 +494,7 @@ exports[`Index when Get Component service endpoint returns a component when the 
                   <div>
                     <div
                       class="bv-no-focus-ring"
-                      id="__BVID__83"
+                      id="__BVID__85"
                       role="group"
                       tabindex="-1"
                     >
@@ -493,14 +503,14 @@ exports[`Index when Get Component service endpoint returns a component when the 
                       >
                         <input
                           class="custom-control-input"
-                          id="__BVID__83_BV_option_0"
+                          id="__BVID__85_BV_option_0"
                           name="platformId"
                           type="checkbox"
                           value="undefined"
                         />
                         <label
                           class="custom-control-label"
-                          for="__BVID__83_BV_option_0"
+                          for="__BVID__85_BV_option_0"
                         >
                           <span>
                             undefined
@@ -530,13 +540,13 @@ exports[`Index when Get Component service endpoint returns a component when the 
                 <!---->
                 <div
                   class="form-group"
-                  id="__BVID__85"
+                  id="__BVID__87"
                   role="group"
                 >
                   <label
                     class="d-block"
                     for="component-filter"
-                    id="__BVID__85__BV_label_"
+                    id="__BVID__87__BV_label_"
                   >
                     Component
                   </label>
@@ -700,7 +710,17 @@ exports[`Index when Get Component service endpoint returns a component when the 
       target="_self"
     >
       
-    OpenAPI Specs
+    OpenAPI
+  
+    </a>
+     
+    <a
+      class="btn my-1 btn-secondary"
+      href="/components/test-component-id-1/graphql-schemas"
+      target="_self"
+    >
+      
+    GraphQL
   
     </a>
      
@@ -877,11 +897,11 @@ exports[`Index when Get Component service endpoint returns a component when the 
                 <!---->
                 <fieldset
                   class="form-group"
-                  id="__BVID__114"
+                  id="__BVID__117"
                 >
                   <legend
                     class="bv-no-focus-ring col-form-label pt-0"
-                    id="__BVID__114__BV_label_"
+                    id="__BVID__117__BV_label_"
                     tabindex="-1"
                   >
                     Teams
@@ -889,7 +909,7 @@ exports[`Index when Get Component service endpoint returns a component when the 
                   <div>
                     <div
                       class="bv-no-focus-ring"
-                      id="__BVID__115"
+                      id="__BVID__118"
                       role="group"
                       tabindex="-1"
                     >
@@ -898,14 +918,14 @@ exports[`Index when Get Component service endpoint returns a component when the 
                       >
                         <input
                           class="custom-control-input"
-                          id="__BVID__115_BV_option_0"
+                          id="__BVID__118_BV_option_0"
                           name="team"
                           type="checkbox"
                           value="test-team-id-1-1"
                         />
                         <label
                           class="custom-control-label"
-                          for="__BVID__115_BV_option_0"
+                          for="__BVID__118_BV_option_0"
                         >
                           <span>
                             test-team-id-1-1
@@ -917,14 +937,14 @@ exports[`Index when Get Component service endpoint returns a component when the 
                       >
                         <input
                           class="custom-control-input"
-                          id="__BVID__115_BV_option_1"
+                          id="__BVID__118_BV_option_1"
                           name="team"
                           type="checkbox"
                           value="test-team-id-1-2"
                         />
                         <label
                           class="custom-control-label"
-                          for="__BVID__115_BV_option_1"
+                          for="__BVID__118_BV_option_1"
                         >
                           <span>
                             test-team-id-1-2
@@ -954,11 +974,11 @@ exports[`Index when Get Component service endpoint returns a component when the 
                 <!---->
                 <fieldset
                   class="form-group"
-                  id="__BVID__118"
+                  id="__BVID__121"
                 >
                   <legend
                     class="bv-no-focus-ring col-form-label pt-0"
-                    id="__BVID__118__BV_label_"
+                    id="__BVID__121__BV_label_"
                     tabindex="-1"
                   >
                     Tags
@@ -966,7 +986,7 @@ exports[`Index when Get Component service endpoint returns a component when the 
                   <div>
                     <div
                       class="bv-no-focus-ring"
-                      id="__BVID__119"
+                      id="__BVID__122"
                       role="group"
                       tabindex="-1"
                     >
@@ -975,14 +995,14 @@ exports[`Index when Get Component service endpoint returns a component when the 
                       >
                         <input
                           class="custom-control-input"
-                          id="__BVID__119_BV_option_0"
+                          id="__BVID__122_BV_option_0"
                           name="tag"
                           type="checkbox"
                           value="test-tag-1-1"
                         />
                         <label
                           class="custom-control-label"
-                          for="__BVID__119_BV_option_0"
+                          for="__BVID__122_BV_option_0"
                         >
                           <span>
                             test-tag-1-1
@@ -994,75 +1014,17 @@ exports[`Index when Get Component service endpoint returns a component when the 
                       >
                         <input
                           class="custom-control-input"
-                          id="__BVID__119_BV_option_1"
+                          id="__BVID__122_BV_option_1"
                           name="tag"
                           type="checkbox"
                           value="test-tag-1-2"
                         />
                         <label
                           class="custom-control-label"
-                          for="__BVID__119_BV_option_1"
+                          for="__BVID__122_BV_option_1"
                         >
                           <span>
                             test-tag-1-2
-                          </span>
-                        </label>
-                      </div>
-                    </div>
-                    <!---->
-                    <!---->
-                    <!---->
-                  </div>
-                </fieldset>
-              </div>
-              <!---->
-              <!---->
-            </div>
-             
-            <div
-              class="card bg-secondary"
-            >
-              <!---->
-              <!---->
-              <div
-                class="card-body"
-              >
-                <!---->
-                <!---->
-                <fieldset
-                  class="form-group"
-                  id="__BVID__122"
-                >
-                  <legend
-                    class="bv-no-focus-ring col-form-label pt-0"
-                    id="__BVID__122__BV_label_"
-                    tabindex="-1"
-                  >
-                    Component Types
-                  </legend>
-                  <div>
-                    <div
-                      class="bv-no-focus-ring"
-                      id="__BVID__123"
-                      role="group"
-                      tabindex="-1"
-                    >
-                      <div
-                        class="custom-control custom-checkbox"
-                      >
-                        <input
-                          class="custom-control-input"
-                          id="__BVID__123_BV_option_0"
-                          name="componentTypeId"
-                          type="checkbox"
-                          value="test-component-type-id-1"
-                        />
-                        <label
-                          class="custom-control-label"
-                          for="__BVID__123_BV_option_0"
-                        >
-                          <span>
-                            test-component-type-id-1
                           </span>
                         </label>
                       </div>
@@ -1096,7 +1058,7 @@ exports[`Index when Get Component service endpoint returns a component when the 
                     id="__BVID__125__BV_label_"
                     tabindex="-1"
                   >
-                    Platforms
+                    Component Types
                   </legend>
                   <div>
                     <div
@@ -1111,13 +1073,71 @@ exports[`Index when Get Component service endpoint returns a component when the 
                         <input
                           class="custom-control-input"
                           id="__BVID__126_BV_option_0"
+                          name="componentTypeId"
+                          type="checkbox"
+                          value="test-component-type-id-1"
+                        />
+                        <label
+                          class="custom-control-label"
+                          for="__BVID__126_BV_option_0"
+                        >
+                          <span>
+                            test-component-type-id-1
+                          </span>
+                        </label>
+                      </div>
+                    </div>
+                    <!---->
+                    <!---->
+                    <!---->
+                  </div>
+                </fieldset>
+              </div>
+              <!---->
+              <!---->
+            </div>
+             
+            <div
+              class="card bg-secondary"
+            >
+              <!---->
+              <!---->
+              <div
+                class="card-body"
+              >
+                <!---->
+                <!---->
+                <fieldset
+                  class="form-group"
+                  id="__BVID__128"
+                >
+                  <legend
+                    class="bv-no-focus-ring col-form-label pt-0"
+                    id="__BVID__128__BV_label_"
+                    tabindex="-1"
+                  >
+                    Platforms
+                  </legend>
+                  <div>
+                    <div
+                      class="bv-no-focus-ring"
+                      id="__BVID__129"
+                      role="group"
+                      tabindex="-1"
+                    >
+                      <div
+                        class="custom-control custom-checkbox"
+                      >
+                        <input
+                          class="custom-control-input"
+                          id="__BVID__129_BV_option_0"
                           name="platformId"
                           type="checkbox"
                           value="undefined"
                         />
                         <label
                           class="custom-control-label"
-                          for="__BVID__126_BV_option_0"
+                          for="__BVID__129_BV_option_0"
                         >
                           <span>
                             undefined
@@ -1147,13 +1167,13 @@ exports[`Index when Get Component service endpoint returns a component when the 
                 <!---->
                 <div
                   class="form-group"
-                  id="__BVID__128"
+                  id="__BVID__131"
                   role="group"
                 >
                   <label
                     class="d-block"
                     for="component-filter"
-                    id="__BVID__128__BV_label_"
+                    id="__BVID__131__BV_label_"
                   >
                     Component
                   </label>

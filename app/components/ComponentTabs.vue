@@ -22,7 +22,10 @@
     <b-button class="my-1" :to="`/components/${componentId}/tests`">Tests</b-button>
     <b-button class="my-1" :to="`/components/${componentId}/errors`">Errors</b-button>
     <b-button class="my-1" :to="`/components/${componentId}/openapi-specs`">
-      OpenAPI Specs
+      OpenAPI
+    </b-button>
+    <b-button class="my-1" :to="`/components/${componentId}/graphql-schemas`">
+      GraphQL
     </b-button>
     <b-button class="my-1" :to="`/components/${componentId}/repo`">Repo</b-button>
     <b-button class="my-1" :to="`/components/${componentId}/readme`">README</b-button>
