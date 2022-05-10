@@ -4,15 +4,16 @@
 
 <style scoped>
 .graphql-schema {
+  color: #000;
   background-color: #FFF;
 }
 </style>
 
 <script lang="ts">
-import Vue, { PropType } from 'vue'
+import Vue, {PropType} from 'vue'
 import {MetaInfo} from "vue-meta";
-import { buildSchema, getIntrospectionQuery, graphqlSync } from "graphql";
-import { Component, GraphQlSchema } from '~/types/kronicle-service'
+import {buildSchema, getIntrospectionQuery, graphqlSync} from "graphql";
+import {Component, GraphQlSchema} from '~/types/kronicle-service'
 
 export default Vue.extend({
   props: {
@@ -51,9 +52,8 @@ export default Vue.extend({
   },
   methods: {
     load(graphQlSchema: GraphQlSchema) {
-      const schemaIdl = JSON.parse(graphQlSchema.schema)
       const introspection = graphqlSync({
-        schema: buildSchema(schemaIdl),
+        schema: buildSchema(graphQlSchema.schema),
         source: getIntrospectionQuery()
       })
       const windowAny = window as any
