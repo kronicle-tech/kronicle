@@ -1,6 +1,6 @@
 import { mount } from '@vue/test-utils'
-import FormattedAge from '@/components/FormattedAge.vue'
 import MockDate from 'mockdate'
+import FormattedAge from '@/components/FormattedAge.vue'
 
 describe('FormattedAge', () => {
   let propsData
