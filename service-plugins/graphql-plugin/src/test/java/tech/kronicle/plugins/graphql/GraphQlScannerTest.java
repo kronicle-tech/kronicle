@@ -1,6 +1,8 @@
 package tech.kronicle.plugins.graphql;
 
 import com.github.tomakehurst.wiremock.WireMockServer;
+import graphql.introspection.IntrospectionResultToSchema;
+import graphql.schema.idl.SchemaPrinter;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import tech.kronicle.pluginapi.scanners.models.Codebase;
@@ -9,6 +11,8 @@ import tech.kronicle.pluginapi.scanners.models.Output;
 import tech.kronicle.plugins.graphql.config.GraphQlConfig;
 import tech.kronicle.plugins.graphql.services.SchemaDownloader;
 import tech.kronicle.plugins.graphql.services.SchemaFetcher;
+import tech.kronicle.plugins.graphql.services.SchemaFileReader;
+import tech.kronicle.plugins.graphql.services.SchemaTransformer;
 import tech.kronicle.plugintestutils.scanners.BaseCodebaseScannerTest;
 import tech.kronicle.sdk.models.Component;
 import tech.kronicle.sdk.models.graphql.GraphQlSchema;
@@ -25,129 +29,95 @@ import static com.github.tomakehurst.wiremock.client.WireMock.urlPathEqualTo;
 import static com.github.tomakehurst.wiremock.core.WireMockConfiguration.options;
 import static java.util.Objects.nonNull;
 import static org.assertj.core.api.Assertions.assertThat;
+import static tech.kronicle.plugins.graphql.constants.IntrospectionQuery.INTROSPECTION_QUERY_JSON;
 import static tech.kronicle.utils.FileUtilsFactory.createFileUtils;
 import static tech.kronicle.utils.HttpClientFactory.createHttpClient;
+import static tech.kronicle.utils.JsonMapperFactory.createJsonMapper;
 
 public class GraphQlScannerTest extends BaseCodebaseScannerTest {
 
     private static final Duration CACHE_TTL = Duration.ofMinutes(15);
-    public static final String URL_SCHEMA_TEXT = "type Greeting {\n" +
-            "    greeting: String\n" +
+    private static final String URL_INTROSPECTION_RESULT = "{\n" +
+            "  \"data\": {\n" +
+            "    \"__schema\": {\n" +
+            "      \"queryType\": {\n" +
+            "        \"name\": \"Query\"\n" +
+            "      },\n" +
+            "      \"types\": [\n" +
+            "        {\n" +
+            "          \"kind\": \"OBJECT\",\n" +
+            "          \"name\": \"Query\",\n" +
+            "          \"fields\": [\n" +
+            "            {\n" +
+            "              \"name\": \"urlGreet\",\n" +
+            "              \"args\": [],\n" +
+            "              \"type\": {\n" +
+            "                \"kind\": \"OBJECT\",\n" +
+            "                \"name\": \"Greeting\"\n" +
+            "              },\n" +
+            "              \"isDeprecated\": false\n" +
+            "            }\n" +
+            "          ]\n" +
+            "        },\n" +
+            "        {\n" +
+            "          \"kind\": \"OBJECT\",\n" +
+            "          \"name\": \"Greeting\",\n" +
+            "          \"fields\": [\n" +
+            "            {\n" +
+            "              \"name\": \"greeting\",\n" +
+            "              \"args\": [],\n" +
+            "              \"type\": {\n" +
+            "                \"kind\": \"SCALAR\",\n" +
+            "                \"name\": \"String\"\n" +
+            "              },\n" +
+            "              \"isDeprecated\": false\n" +
+            "            }\n" +
+            "          ]\n" +
+            "        }\n" +
+            "      ]\n" +
+            "    }\n" +
+            "  }\n" +
+            "}";
+    private static final String URL_SCHEMA = "\"Marks the field, argument, input field or enum value as deprecated\"\n" +
+            "directive @deprecated(\n" +
+            "    \"The reason for the deprecation\"\n" +
+            "    reason: String = \"No longer supported\"\n" +
+            "  ) on FIELD_DEFINITION | ARGUMENT_DEFINITION | ENUM_VALUE | INPUT_FIELD_DEFINITION\n" +
+            "\n" +
+            "\"Directs the executor to include this field or fragment only when the `if` argument is true\"\n" +
+            "directive @include(\n" +
+            "    \"Included when true.\"\n" +
+            "    if: Boolean!\n" +
+            "  ) on FIELD | FRAGMENT_SPREAD | INLINE_FRAGMENT\n" +
+            "\n" +
+            "\"Directs the executor to skip this field or fragment when the `if`'argument is true.\"\n" +
+            "directive @skip(\n" +
+            "    \"Skipped when true.\"\n" +
+            "    if: Boolean!\n" +
+            "  ) on FIELD | FRAGMENT_SPREAD | INLINE_FRAGMENT\n" +
+            "\n" +
+            "\"Exposes a URL that specifies the behaviour of this scalar.\"\n" +
+            "directive @specifiedBy(\n" +
+            "    \"The URL that specifies the behaviour of this scalar.\"\n" +
+            "    url: String!\n" +
+            "  ) on SCALAR\n" +
+            "\n" +
+            "type Greeting {\n" +
+            "  greeting: String\n" +
             "}\n" +
             "\n" +
             "type Query {\n" +
-            "    urlGreet(): Greeting\n" +
+            "  urlGreet: Greeting\n" +
             "}\n";
-    public static final String FILE_SCHEMA_TEXT = "type Greeting {\n" +
+    private static final String FILE_SCHEMA = "type Greeting {\n" +
             "    greeting: String\n" +
             "}\n" +
             "\n" +
             "type Query {\n" +
             "    fileGreet(): Greeting\n" +
             "}\n";
-    public static final String GRAPHQL_URL_PATH = "/graphql-schema";
-    private static final String GRAPHQL_INTROSPECTION_QUERY = "{\"query\":\"" +
-            "query IntrospectionQuery {\\n" +
-            "  __schema {\\n" +
-            "    queryType {\\n" +
-            "      name\\n" +
-            "    }\\n" +
-            "    mutationType {\\n" +
-            "      name\\n" +
-            "    }\\n" +
-            "    subscriptionType {\\n" +
-            "      name\\n" +
-            "    }\\n" +
-            "    types {\\n" +
-            "      ...FullType\\n" +
-            "    }\\n" +
-            "    directives {\\n" +
-            "      name\\n" +
-            "      description\\n" +
-            "      locations\\n" +
-            "      args {\\n" +
-            "        ...InputValue\\n" +
-            "      }\\n" +
-            "    }\\n" +
-            "  }\\n" +
-            "}\\n" +
-            "\\n" +
-            "fragment FullType on __Type {\\n" +
-            "  kind\\n" +
-            "  name\\n" +
-            "  description\\n" +
-            "  fields(includeDeprecated: true) {\\n" +
-            "    name\\n" +
-            "    description\\n" +
-            "    args {\\n" +
-            "      ...InputValue\\n" +
-            "    }\\n" +
-            "    type {\\n" +
-            "      ...TypeRef\\n" +
-            "    }\\n" +
-            "    isDeprecated\\n" +
-            "    deprecationReason\\n" +
-            "  }\\n" +
-            "  inputFields {\\n" +
-            "    ...InputValue\\n" +
-            "  }\\n" +
-            "  interfaces {\\n" +
-            "    ...TypeRef\\n" +
-            "  }\\n" +
-            "  enumValues(includeDeprecated: true) {\\n" +
-            "    name\\n" +
-            "    description\\n" +
-            "    isDeprecated\\n" +
-            "    deprecationReason\\n" +
-            "  }\\n" +
-            "  possibleTypes {\\n" +
-            "    ...TypeRef\\n" +
-            "  }\\n" +
-            "}\\n" +
-            "\\n" +
-            "fragment InputValue on __InputValue {\\n" +
-            "  name\\n" +
-            "  description\\n" +
-            "  type {\\n" +
-            "    ...TypeRef\\n" +
-            "  }\\n" +
-            "  defaultValue\\n" +
-            "}\\n" +
-            "\\n" +
-            "fragment TypeRef on __Type {\\n" +
-            "  kind\\n" +
-            "  name\\n" +
-            "  ofType {\\n" +
-            "    kind\\n" +
-            "    name\\n" +
-            "    ofType {\\n" +
-            "      kind\\n" +
-            "      name\\n" +
-            "      ofType {\\n" +
-            "        kind\\n" +
-            "        name\\n" +
-            "        ofType {\\n" +
-            "          kind\\n" +
-            "          name\\n" +
-            "          ofType {\\n" +
-            "            kind\\n" +
-            "            name\\n" +
-            "            ofType {\\n" +
-            "              kind\\n" +
-            "              name\\n" +
-            "              ofType {\\n" +
-            "                kind\\n" +
-            "                name\\n" +
-            "              }\\n" +
-            "            }\\n" +
-            "          }\\n" +
-            "        }\\n" +
-            "      }\\n" +
-            "    }\\n" +
-            "  }\\n" +
-            "}\\n" +
-            "\"}";
-    public static final String GRAPHQL_SCHEMA_FILE_NAME = "example.graphql";
+    private static final String GRAPHQL_URL_PATH = "/graphql-schema";
+    private static final String GRAPHQL_SCHEMA_FILE_NAME = "example.graphql";
 
     private WireMockServer wireMockServer;
 
@@ -230,7 +200,9 @@ public class GraphQlScannerTest extends BaseCodebaseScannerTest {
         // Then
         assertThat(maskTransformer(returnValue)).isEqualTo(maskTransformer(Output.empty(CACHE_TTL)));
         List<GraphQlSchema> returnGraphQlSchemas = new ArrayList<>(getMutatedComponent(returnValue).getGraphQlSchemas());
-        assertThat(returnGraphQlSchemas).containsExactly(graphQlSchema.withSchema(FILE_SCHEMA_TEXT));
+        assertThat(returnGraphQlSchemas).hasSize(1);
+        assertThat(returnGraphQlSchemas.get(0).getSchema()).isEqualTo(FILE_SCHEMA);
+        assertThat(returnGraphQlSchemas).containsExactly(graphQlSchema.withSchema(FILE_SCHEMA));
     }
 
     @Test
@@ -254,7 +226,9 @@ public class GraphQlScannerTest extends BaseCodebaseScannerTest {
         // Then
         assertThat(maskTransformer(returnValue)).isEqualTo(maskTransformer(Output.empty(CACHE_TTL)));
         List<GraphQlSchema> returnGraphQlSchemas = getMutatedComponent(returnValue).getGraphQlSchemas();
-        assertThat(returnGraphQlSchemas).containsExactly(graphQlSchema.withSchema(URL_SCHEMA_TEXT));
+        assertThat(returnGraphQlSchemas).hasSize(1);
+        assertThat(returnGraphQlSchemas.get(0).getSchema()).isEqualTo(URL_SCHEMA);
+        assertThat(returnGraphQlSchemas).containsExactly(graphQlSchema.withSchema(URL_SCHEMA));
     }
 
     @Test
@@ -284,9 +258,12 @@ public class GraphQlScannerTest extends BaseCodebaseScannerTest {
         // Then
         assertThat(maskTransformer(returnValue)).isEqualTo(maskTransformer(Output.empty(CACHE_TTL)));
         List<GraphQlSchema> returnGraphQlSchemas = getMutatedComponent(returnValue).getGraphQlSchemas();
+        assertThat(returnGraphQlSchemas).hasSize(2);
+        assertThat(returnGraphQlSchemas.get(0).getSchema()).isEqualTo(FILE_SCHEMA);
+        assertThat(returnGraphQlSchemas.get(1).getSchema()).isEqualTo(URL_SCHEMA);
         assertThat(returnGraphQlSchemas).containsExactly(
-                fileGraphQlSchema.withSchema(FILE_SCHEMA_TEXT),
-                urlGraphQlSchema.withSchema(URL_SCHEMA_TEXT)
+                fileGraphQlSchema.withSchema(FILE_SCHEMA),
+                urlGraphQlSchema.withSchema(URL_SCHEMA)
         );
     }
 
@@ -294,10 +271,15 @@ public class GraphQlScannerTest extends BaseCodebaseScannerTest {
         Duration timeout = Duration.ofMinutes(1);
         return new GraphQlScanner(
                 new SchemaFetcher(
-                        createFileUtils(),
+                        new SchemaFileReader(createFileUtils()),
                         new SchemaDownloader(
                                 new GraphQlConfig(timeout),
                                 createHttpClient(timeout)
+                        ),
+                        new SchemaTransformer(
+                                createJsonMapper(),
+                                new IntrospectionResultToSchema(),
+                                new SchemaPrinter()
                         ),
                         new ThrowableToScannerErrorMapper()
                 )
@@ -307,11 +289,11 @@ public class GraphQlScannerTest extends BaseCodebaseScannerTest {
     private void createWireMockServer() {
         wireMockServer = new WireMockServer(options().dynamicPort());
         wireMockServer.stubFor(post(urlPathEqualTo(GRAPHQL_URL_PATH))
-                .withRequestBody(equalTo(GRAPHQL_INTROSPECTION_QUERY))
+                .withRequestBody(equalTo(INTROSPECTION_QUERY_JSON))
                 .willReturn(aResponse()
                         .withStatus(200)
                         .withHeader("Content-Type", "application/graphql")
-                        .withBody(URL_SCHEMA_TEXT)));
+                        .withBody(URL_INTROSPECTION_RESULT)));
         wireMockServer.start();
     }
 }
