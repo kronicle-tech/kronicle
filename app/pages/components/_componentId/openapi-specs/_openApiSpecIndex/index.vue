@@ -4,7 +4,7 @@
 
     <ComponentTabs :component-id="component.id" />
 
-    <div class="text-center">
+    <div class="text-center mb-3">
       <NuxtLink :to="`/components/${component.id}/openapi-specs/${openApiSpecIndex}/content`">
         View Full Screen
       </NuxtLink>
