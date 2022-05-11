@@ -2,10 +2,26 @@
   <div class="graphql-schema">Loading...</div>
 </template>
 
-<style scoped>
+<style>
 .graphql-schema {
   color: #000;
   background-color: #FFF;
+}
+
+.graphql-schema .loading-box {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+.graphql-schema .graphql-voyager {
+  min-height: 100vh;
+}
+
+.graphql-schema .menu-content {
+  position: fixed;
 }
 </style>
 
