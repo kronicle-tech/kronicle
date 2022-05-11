@@ -4,7 +4,7 @@
 
     <ComponentTabs :component-id="component.id" />
 
-    <div class="text-center">
+    <div class="text-center mb-3">
       <NuxtLink :to="`/components/${component.id}/graphql-schemas/${graphQlSchemaIndex}/content`">
         View Full Screen
       </NuxtLink>
