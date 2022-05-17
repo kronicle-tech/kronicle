@@ -7,11 +7,11 @@ import tech.kronicle.pluginapi.scanners.models.Output;
 import tech.kronicle.service.models.ExtensionOutputCacheKey;
 
 @Service
-public class ExtensionOutputCacheExpiry implements Expiry<ExtensionOutputCacheKey<?, ?, ?, ?>, Output<?, ?>> {
+public class ExtensionOutputCacheExpiry implements Expiry<ExtensionOutputCacheKey<?, ?, ?, ?, ?>, Output<?, ?>> {
 
     @Override
     public long expireAfterCreate(
-            ExtensionOutputCacheKey<?, ?, ?, ?> key,
+            ExtensionOutputCacheKey<?, ?, ?, ?, ?> key,
             Output<?, ?> value,
             long currentTime
     ) {
@@ -20,7 +20,7 @@ public class ExtensionOutputCacheExpiry implements Expiry<ExtensionOutputCacheKe
 
     @Override
     public long expireAfterUpdate(
-            ExtensionOutputCacheKey<?, ?, ?, ?> key,
+            ExtensionOutputCacheKey<?, ?, ?, ?, ?> key,
             Output<?, ?> value,
             long currentTime,
             @NonNegative long currentDuration
@@ -30,7 +30,7 @@ public class ExtensionOutputCacheExpiry implements Expiry<ExtensionOutputCacheKe
 
     @Override
     public long expireAfterRead(
-            ExtensionOutputCacheKey<?, ?, ?, ?> key,
+            ExtensionOutputCacheKey<?, ?, ?, ?, ?> key,
             Output<?, ?> value,
             long currentTime,
             @NonNegative long currentDuration

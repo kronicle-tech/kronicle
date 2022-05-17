@@ -47,7 +47,7 @@ public class ExtensionExecutorTest {
         ExtensionExecutor underTest = createUnderTest();
 
         // When
-        Output<Integer, Void> returnValue = underTest.executeFinder(finder, INPUT);
+        Output<Integer, Void> returnValue = underTest.executeFinder(finder, null, INPUT);
 
         // Then
         assertThat(returnValue).isEqualTo(FINDER_OUTPUT);
@@ -64,14 +64,14 @@ public class ExtensionExecutorTest {
         ExtensionExecutor underTest = createUnderTest();
 
         // When
-        Output<Integer, Void> returnValue = underTest.executeFinder(finder, INPUT);
+        Output<Integer, Void> returnValue = underTest.executeFinder(finder, null, INPUT);
 
         // Then
         assertThat(returnValue).isEqualTo(FINDER_OUTPUT);
         assertThat(finder.callCount).isEqualTo(1);
 
         // When
-        returnValue = underTest.executeFinder(finder, INPUT);
+        returnValue = underTest.executeFinder(finder, null, INPUT);
 
         // Then
         assertThat(returnValue).isEqualTo(FINDER_OUTPUT);
@@ -89,7 +89,7 @@ public class ExtensionExecutorTest {
         ExtensionExecutor underTest = createUnderTest();
 
         // When
-        Output<Integer, Void> returnValue = underTest.executeFinder(failingFinder, INPUT);
+        Output<Integer, Void> returnValue = underTest.executeFinder(failingFinder, null, INPUT);
 
         // Then
         assertThat(returnValue).isEqualTo(new Output<>(
@@ -120,7 +120,7 @@ public class ExtensionExecutorTest {
         ExtensionExecutor underTest = createUnderTest();
 
         // When
-        Output<Integer, Component> returnValue = underTest.executeScanner(scanner, INPUT);
+        Output<Integer, Component> returnValue = underTest.executeScanner(scanner, INPUT.reference(), INPUT);
 
         // Then
         assertThat(returnValue).isEqualTo(SCANNER_OUTPUT);
@@ -137,14 +137,14 @@ public class ExtensionExecutorTest {
         ExtensionExecutor underTest = createUnderTest();
 
         // When
-        Output<Integer, Component> returnValue = underTest.executeScanner(scanner, INPUT);
+        Output<Integer, Component> returnValue = underTest.executeScanner(scanner, INPUT.reference(), INPUT);
 
         // Then
         assertThat(returnValue).isEqualTo(SCANNER_OUTPUT);
         assertThat(scanner.callCount).isEqualTo(1);
 
         // When
-        returnValue = underTest.executeScanner(scanner, INPUT);
+        returnValue = underTest.executeScanner(scanner, INPUT.reference(), INPUT);
 
         // Then
         assertThat(returnValue).isEqualTo(SCANNER_OUTPUT);
@@ -162,7 +162,7 @@ public class ExtensionExecutorTest {
         ExtensionExecutor underTest = createUnderTest();
 
         // When
-        Output<Integer, Component> returnValue = underTest.executeScanner(failingScanner, INPUT);
+        Output<Integer, Component> returnValue = underTest.executeScanner(failingScanner, INPUT.reference(), INPUT);
 
         // Then
         assertThat(returnValue).isEqualTo(new Output<>(

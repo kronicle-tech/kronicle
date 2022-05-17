@@ -20,17 +20,26 @@ public class ExtensionExecutor {
     private final ExtensionOutputCache cache;
     private final ThrowableToScannerErrorMapper throwableToScannerErrorMapper;
 
-    public <I, O> Output<O, Void> executeFinder(Finder<I, O> finder, I input) {
+    public <K, I, O> Output<O, Void> executeFinder(
+            Finder<I, O> finder,
+            K key,
+            I input) {
         return cache.get(
                 finder,
+                key,
                 input,
                 () -> loadFromFinder(finder, input)
         );
     }
 
-    public <I extends ObjectWithReference, O> Output<O, Component> executeScanner(Scanner<I, O> scanner, I input) {
+    public <K, I extends ObjectWithReference, O> Output<O, Component> executeScanner(
+            Scanner<I, O> scanner,
+            K key,
+            I input
+    ) {
         return cache.get(
                 scanner,
+                key,
                 input,
                 () -> loadFromScanner(scanner, input)
         );

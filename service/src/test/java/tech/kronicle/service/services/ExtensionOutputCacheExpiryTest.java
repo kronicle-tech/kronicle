@@ -26,6 +26,7 @@ public class ExtensionOutputCacheExpiryTest {
         long returnValue = underTest.expireAfterCreate(
                 new ExtensionOutputCacheKey<>(
                         new Object(),
+                        "test-key",
                         "test-input",
                         () -> output
                 ),
@@ -45,6 +46,7 @@ public class ExtensionOutputCacheExpiryTest {
         long returnValue = underTest.expireAfterUpdate(
                 new ExtensionOutputCacheKey<>(
                         new Object(),
+                        "test-key",
                         "test-input",
                         () -> OUTPUT
                 ),
@@ -65,6 +67,7 @@ public class ExtensionOutputCacheExpiryTest {
         long returnValue = underTest.expireAfterRead(
                 new ExtensionOutputCacheKey<>(
                         new Object(),
+                        "test-key",
                         "test-input",
                         () -> OUTPUT
                 ),

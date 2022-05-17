@@ -22,10 +22,11 @@ public class ExtensionOutputCache {
                 .build(loader);
     }
 
-    public <E, I, O, T> Output<O, T> get(E extension, I input, Supplier<Output<O, T>> loader) {
+    public <E, K, I, O, T> Output<O, T> get(E extension, K key, I input, Supplier<Output<O, T>> loader) {
         return (Output<O, T>) cache
                 .get(new ExtensionOutputCacheKey<>(
                         extension,
+                        key,
                         input,
                         loader
                 ));

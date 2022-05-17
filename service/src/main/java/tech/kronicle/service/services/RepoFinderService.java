@@ -19,7 +19,7 @@ public class RepoFinderService {
 
     public List<Repo> findRepos() {
         return registry.getRepoFinders().stream()
-                .map(repoFinder -> executor.executeFinder(repoFinder, null))
+                .map(repoFinder -> executor.executeFinder(repoFinder, null, null))
                 .filter(Output::success)
                 .map(Output::getOutput)
                 .flatMap(Collection::stream)
