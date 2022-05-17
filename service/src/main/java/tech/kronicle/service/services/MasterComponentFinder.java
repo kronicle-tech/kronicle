@@ -48,7 +48,7 @@ public class MasterComponentFinder {
     }
 
     private List<Component> executeFinder(ComponentFinder finder, ComponentMetadata componentMetadata) {
-        Output<List<Component>, Void> components = executor.executeFinder(finder, componentMetadata);
+        Output<List<Component>, Void> components = executor.executeFinder(finder, null, componentMetadata);
         if (components.success()) {
             log.info("Component finder {} found {} components", finder.id(), components.getOutput().size());
         }

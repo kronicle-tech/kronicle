@@ -17,8 +17,9 @@ public class ExtensionOutputCacheLoaderTest {
     public void loadShouldCallTheLoaderOfTheKeyAndReturnItsValue() {
         // Given
         Output<Integer, Component> output = new Output<>(1234, UnaryOperator.identity(), List.of(), Duration.ofMinutes(15));
-        ExtensionOutputCacheKey<Object, String, Integer, Component> key = new ExtensionOutputCacheKey<>(
+        ExtensionOutputCacheKey<Object, String, String, Integer, Component> key = new ExtensionOutputCacheKey<>(
                 new Object(),
+                "test-key",
                 "test-input",
                 () -> output
         );

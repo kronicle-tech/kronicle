@@ -27,7 +27,7 @@ public class MasterTracingDataFinder {
     }
 
     private TracingData executeFinder(TracingDataFinder finder, ComponentMetadata componentMetadata) {
-        Output<TracingData, Void> tracingData = executor.executeFinder(finder, componentMetadata);
+        Output<TracingData, Void> tracingData = executor.executeFinder(finder, null, componentMetadata);
         if (tracingData.success()) {
             log.info("Tracing data finder {} found {} dependencies", finder.id(), tracingData.getOutput().getDependencies().size());
             log.info("Tracing data finder {} found {} traces", finder.id(), tracingData.getOutput().getTraces().size());

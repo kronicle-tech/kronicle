@@ -4,7 +4,6 @@ import lombok.RequiredArgsConstructor;
 import org.junit.jupiter.api.Test;
 import tech.kronicle.pluginapi.scanners.models.Output;
 import tech.kronicle.sdk.models.Component;
-import tech.kronicle.service.models.ExtensionOutputCacheKey;
 
 import java.time.Duration;
 import java.util.List;
@@ -15,6 +14,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class ExtensionOutputCacheTest {
 
+    public static final String KEY = "test-key";
     public static final String INPUT = "test-input";
     public static final Object EXTENSION = new Object();
     public static final Output<Integer, Component> OUTPUT = createOutput(1);
@@ -24,16 +24,12 @@ public class ExtensionOutputCacheTest {
     @Test
     public void getShouldCallTheOutputLoaderTheFirstTimeItIsCalledForAParticularKey() {
         // Given
-        ExtensionOutputCacheKey<Object, String, Integer, Component> key = new ExtensionOutputCacheKey<>(
-                EXTENSION,
-                INPUT,
-                outputLoader
-        );
         ExtensionOutputCache underTest = createUnderTest();
 
         // When
         Output<Integer, Component> returnValue = underTest.get(
                 EXTENSION,
+                KEY,
                 INPUT,
                 outputLoader
         );
@@ -46,16 +42,12 @@ public class ExtensionOutputCacheTest {
     @Test
     public void getShouldCallTheOutputLoaderOnlyOnceForAParticularKey() {
         // Given
-        ExtensionOutputCacheKey<Object, String, Integer, Component> key = new ExtensionOutputCacheKey<>(
-                EXTENSION,
-                INPUT,
-                outputLoader
-        );
         ExtensionOutputCache underTest = createUnderTest();
 
         // When
         Output<Integer, Component> returnValue = underTest.get(
                 EXTENSION,
+                KEY,
                 INPUT,
                 outputLoader
         );
@@ -67,7 +59,38 @@ public class ExtensionOutputCacheTest {
         // When
         returnValue = underTest.get(
                 EXTENSION,
+                KEY,
                 INPUT,
+                outputLoader
+        );
+
+        // Then
+        assertThat(returnValue).isEqualTo(OUTPUT);
+        assertThat(outputLoader.callCount).isEqualTo(1);
+    }
+
+    @Test
+    public void getShouldCallTheOutputLoaderOnlyOnceForAParticularKeyWhenInputVaries() {
+        // Given
+        ExtensionOutputCache underTest = createUnderTest();
+
+        // When
+        Output<Integer, Component> returnValue = underTest.get(
+                EXTENSION,
+                KEY,
+                "test-input-1",
+                outputLoader
+        );
+
+        // Then
+        assertThat(returnValue).isEqualTo(OUTPUT);
+        assertThat(outputLoader.callCount).isEqualTo(1);
+
+        // When
+        returnValue = underTest.get(
+                EXTENSION,
+                KEY,
+                "test-input-2",
                 outputLoader
         );
 

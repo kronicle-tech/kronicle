@@ -286,7 +286,7 @@ public class ScanEngine {
             ConcurrentHashMap<String, Component> componentMap, 
             Scanner<I, O> scanner
     ) {
-        Output<O, Component> output = executor.executeScanner(scanner, input);
+        Output<O, Component> output = executor.executeScanner(scanner, input.reference(), input);
 
         if (output.failed()) {
             addScannerErrorsToComponents(componentMap, componentIds, scanner, output.getErrors());
