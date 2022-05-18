@@ -148,7 +148,7 @@ public class FileUtils {
         return (file, attributes) -> {
             String relativeFile = start.relativize(file).toString();
             boolean shouldBeIgnored = ignorePatterns.stream()
-                    .anyMatch(pattern -> ANT_PATH_MATCHER.matchStart(pattern, relativeFile));
+                    .anyMatch(pattern -> ANT_PATH_MATCHER.match(pattern, relativeFile));
             return !shouldBeIgnored;
         };
     }

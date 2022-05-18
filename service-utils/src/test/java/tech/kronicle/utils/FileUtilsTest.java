@@ -42,7 +42,7 @@ public class FileUtilsTest extends BaseTest {
     public static final FilesScenario FILES_SCENARIO_WITH_MATCHER = new FilesScenario(Optional.empty(), Optional.of(ALWAYS_TRUE_MATCHER), null, null);
     public static final FilesScenario FILES_SCENARIO_WITH_MAX_DEPTH_AND_MATCHER = new FilesScenario(Optional.of(2), Optional.of(ALWAYS_TRUE_MATCHER), null, null);
 
-    private FileUtils underTest = createFileUtils();
+    private final FileUtils underTest = createFileUtils();
     @TempDir
     public Path tempDir;
 
@@ -267,8 +267,15 @@ public class FileUtilsTest extends BaseTest {
         Files.writeString(file2, "test2");
         Path file3 = tempDir.resolve("file3.txt");
         Files.writeString(file3, "test3");
+        Path file4 = tempDir.resolve("anything/subdir/anything/file4.txt");
+        Files.createDirectories(file4.getParent());
+        Files.writeString(file4, "test4");
         Path kronicleignoreFile = tempDir.resolve(".kronicleignore");
-        Files.writeString(kronicleignoreFile, "file2.txt");
+        Files.writeString(
+                kronicleignoreFile,
+                "file2.txt\n" +
+                        "**/subdir/**"
+        );
 
         // When
         List<Path> returnValue = filesScenario.findFilesInvoker.apply(underTest, tempDir).collect(Collectors.toList());
