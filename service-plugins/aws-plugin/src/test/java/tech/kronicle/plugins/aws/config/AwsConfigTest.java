@@ -19,6 +19,7 @@ public class AwsConfigTest {
                 null,
                 null,
                 null,
+                null,
                 null
         );
 

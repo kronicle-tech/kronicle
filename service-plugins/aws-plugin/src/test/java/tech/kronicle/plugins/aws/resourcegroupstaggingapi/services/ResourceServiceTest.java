@@ -222,6 +222,7 @@ public class ResourceServiceTest {
                         null,
                         null,
                         null,
+                        null,
                         null
                 )
         );

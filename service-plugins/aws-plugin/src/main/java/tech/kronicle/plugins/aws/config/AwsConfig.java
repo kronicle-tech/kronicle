@@ -1,7 +1,6 @@
 package tech.kronicle.plugins.aws.config;
 
 import lombok.Value;
-import lombok.experimental.NonFinal;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
@@ -27,6 +26,9 @@ public class AwsConfig {
     @NotNull
     @Valid
     AwsLogFieldsConfig logFields;
+    @NotNull
+    @Valid
+    AwsLogSummariesConfig logSummaries;
 
     public AwsConfig(
             List<AwsProfileConfig> profiles,
@@ -35,7 +37,8 @@ public class AwsConfig {
             Boolean createDependenciesForResources,
             Boolean loadXrayTraceData,
             AwsTagKeysConfig tagKeys,
-            AwsLogFieldsConfig logFields
+            AwsLogFieldsConfig logFields,
+            AwsLogSummariesConfig logSummaries
     ) {
         this.profiles = createUnmodifiableList(profiles);
         this.detailedComponentDescriptions = detailedComponentDescriptions;
@@ -44,5 +47,6 @@ public class AwsConfig {
         this.loadXrayTraceData = loadXrayTraceData;
         this.tagKeys = tagKeys;
         this.logFields = logFields;
+        this.logSummaries = logSummaries;
     }
 }

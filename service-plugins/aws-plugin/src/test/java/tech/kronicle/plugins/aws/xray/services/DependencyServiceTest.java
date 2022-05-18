@@ -186,6 +186,7 @@ public class DependencyServiceTest {
                         null,
                         null, null,
                         null, null,
+                        null,
                         null
                 )
         );

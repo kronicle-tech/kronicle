@@ -55,7 +55,7 @@ public class NodeJsScanner  extends CodebaseScanner {
         return Output.ofTransformer(
                 component -> component
                         .withNodeJs(new NodeJs(!npmLockFiles.isEmpty()))
-                        .withSoftware(software),
+                        .addSoftware(software),
                 CACHE_TTL
         );
     }

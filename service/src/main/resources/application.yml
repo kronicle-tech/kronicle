@@ -76,6 +76,9 @@ plugins:
     log-fields:
       level: level
       message: message
+    log-summaries:
+      one-hour-summaries: true
+      twenty-four-hour-summaries: false
 
   bitbucket-server:
     enabled: false

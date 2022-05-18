@@ -85,7 +85,9 @@ public class GuiceModuleTest {
                         new AwsLogFieldsConfig(
                                 "test-level-field",
                                 "test-message-field"
-                        )));
+                        ),
+                        null
+                ));
             }
         };
         Injector guiceInjector = Guice.createInjector(underTest, configModule);

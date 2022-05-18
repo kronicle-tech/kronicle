@@ -101,6 +101,7 @@ public class CloudWatchLogsService {
             return logGroupNamesByEnvironmentId.entrySet().stream()
                     .map(entry -> {
                         GetLogSummary getLogSummary = (
+                                boolean enabled,
                                 String name,
                                 Duration duration,
                                 String comparisonName1,
@@ -108,6 +109,9 @@ public class CloudWatchLogsService {
                                 String comparisonName2,
                                 Duration offset2
                         ) -> {
+                            if (!enabled) {
+                                return null;
+                            }
                             List<String> logGroupNames = entry.getValue();
                             LogSummaryState logSummary = getLogSummary(
                                     profileAndRegion,
@@ -141,6 +145,7 @@ public class CloudWatchLogsService {
                         };
                         return filterNotNull(
                                 getLogSummary.apply(
+                                        config.getLogSummaries().getOneHourSummaries(),
                                         "Last hour",
                                         Duration.ofHours(1),
                                         "Previous hour",
@@ -149,6 +154,7 @@ public class CloudWatchLogsService {
                                         Duration.ofDays(7)
                                 ),
                                 getLogSummary.apply(
+                                        config.getLogSummaries().getTwentyFourHourSummaries(),
                                         "Last 24 hours",
                                         Duration.ofDays(1),
                                         "Previous 24 hours",
@@ -352,6 +358,7 @@ public class CloudWatchLogsService {
     private interface GetLogSummary {
 
         LogSummaryStateAndContext apply(
+                boolean enabled,
                 String name,
                 Duration duration,
                 String comparisonName1,

@@ -4,6 +4,8 @@ import io.github.resilience4j.retry.Retry;
 import io.github.resilience4j.retry.RetryConfig;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.MethodSource;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import tech.kronicle.plugins.aws.cloudwatchlogs.client.CloudWatchLogsClientFacade;
@@ -13,6 +15,7 @@ import tech.kronicle.plugins.aws.cloudwatchlogs.models.CloudWatchLogsQueryResult
 import tech.kronicle.plugins.aws.cloudwatchlogs.models.LogSummaryStateAndContext;
 import tech.kronicle.plugins.aws.config.AwsConfig;
 import tech.kronicle.plugins.aws.config.AwsLogFieldsConfig;
+import tech.kronicle.plugins.aws.config.AwsLogSummariesConfig;
 import tech.kronicle.plugins.aws.config.AwsProfileConfig;
 import tech.kronicle.plugins.aws.config.AwsTagKeysConfig;
 import tech.kronicle.plugins.aws.constants.ResourceTypes;
@@ -30,6 +33,7 @@ import java.time.Duration;
 import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.Callable;
@@ -54,8 +58,11 @@ public class CloudWatchLogsServiceTest {
     );
     private final Retry retry = new FakeRetry();
 
-    @Test
-    public void getLogSummariesForComponentShouldGetLogSummariesForAComponent() {
+    @ParameterizedTest
+    @MethodSource("provideLogSummariesConfigs")
+    public void getLogSummariesForComponentShouldGetLogSummariesForAComponent(
+            AwsLogSummariesConfig logSummariesConfig
+    ) {
         // Given
         AwsProfileConfig profile1 = createProfile(1);
         AwsProfileConfig profile2 = createProfile(2);
@@ -71,7 +78,8 @@ public class CloudWatchLogsServiceTest {
                         null,
                         null,
                         new AwsTagKeysConfig("component", null, null, null),
-                        new AwsLogFieldsConfig("test-level-field", "test-message-field")
+                        new AwsLogFieldsConfig("test-level-field", "test-message-field"),
+                        logSummariesConfig
                 )
         );
         AwsProfileAndRegion profile1AndRegion1 = new AwsProfileAndRegion(profile1, profile1.getRegions().get(0));
@@ -83,6 +91,7 @@ public class CloudWatchLogsServiceTest {
         );
         AtomicInteger queryNumber = new AtomicInteger(1);
         mockLevelMessageCountQuery(
+                logSummariesConfig.getOneHourSummaries(),
                 profile1AndRegion1,
                 logGroupNames,
                 queryNumber,
@@ -90,6 +99,7 @@ public class CloudWatchLogsServiceTest {
                 fixedInstant
         );
         mockLevelMessageCountQuery(
+                logSummariesConfig.getOneHourSummaries(),
                 profile1AndRegion1,
                 logGroupNames,
                 queryNumber,
@@ -97,6 +107,7 @@ public class CloudWatchLogsServiceTest {
                 fixedInstant.minus(Duration.ofHours(1))
         );
         mockLevelMessageCountQuery(
+                logSummariesConfig.getOneHourSummaries(),
                 profile1AndRegion1,
                 logGroupNames,
                 queryNumber,
@@ -104,6 +115,7 @@ public class CloudWatchLogsServiceTest {
                 fixedInstant.minus(Duration.ofDays(7))
         );
         mockLevelMessageCountQuery(
+                logSummariesConfig.getTwentyFourHourSummaries(),
                 profile1AndRegion1,
                 logGroupNames,
                 queryNumber,
@@ -111,6 +123,7 @@ public class CloudWatchLogsServiceTest {
                 fixedInstant
         );
         mockLevelMessageCountQuery(
+                logSummariesConfig.getTwentyFourHourSummaries(),
                 profile1AndRegion1,
                 logGroupNames,
                 queryNumber,
@@ -118,6 +131,7 @@ public class CloudWatchLogsServiceTest {
                 fixedInstant.minus(Duration.ofDays(1))
         );
         mockLevelMessageCountQuery(
+                logSummariesConfig.getTwentyFourHourSummaries(),
                 profile1AndRegion1,
                 logGroupNames,
                 queryNumber,
@@ -130,336 +144,349 @@ public class CloudWatchLogsServiceTest {
         List<LogSummaryStateAndContext> returnValue = underTest.getLogSummariesForComponent(component);
 
         // Then
-        assertThat(returnValue).containsExactly(
-                new LogSummaryStateAndContext(
-                        profile1.getEnvironmentId(),
-                        LogSummaryState.builder()
-                                .name("Last hour")
-                                .startTimestamp(LocalDateTime.of(2001, 2, 3, 3, 5, 6))
-                                .endTimestamp(LocalDateTime.of(2001, 2, 3, 4, 5, 6))
-                                .levels(List.of(
-                                        LogLevelState.builder()
-                                                .level("test-level-1-1")
-                                                .count(11L)
-                                                .topMessages(List.of(
-                                                        LogMessageState.builder()
-                                                                .message("test-message-1-1-1")
-                                                                .count(111L)
-                                                                .build(),
-                                                        LogMessageState.builder()
-                                                                .message("test-message-1-1-2")
-                                                                .count(112L).build(),
-                                                        LogMessageState.builder()
-                                                                .message("test-message-1-1-3")
-                                                                .count(113L).build()
-                                                ))
-                                                .build(),
-                                        LogLevelState.builder()
-                                                .level("test-level-1-2")
-                                                .count(12L)
-                                                .topMessages(List.of(
-                                                        LogMessageState.builder()
-                                                                .message("test-message-1-2-1")
-                                                                .count(121L).build(),
-                                                        LogMessageState.builder()
-                                                                .message("test-message-1-2-2")
-                                                                .count(122L).build(),
-                                                        LogMessageState.builder()
-                                                                .message("test-message-1-2-3")
-                                                                .count(123L).build()
-                                                ))
-                                                .build(),
-                                        LogLevelState.builder()
-                                                .level("test-level-1-3")
-                                                .count(13L)
-                                                .topMessages(List.of(
-                                                        LogMessageState.builder()
-                                                                .message("test-message-1-3-1")
-                                                                .count(131L).build(),
-                                                        LogMessageState.builder()
-                                                                .message("test-message-1-3-2")
-                                                                .count(132L).build(),
-                                                        LogMessageState.builder()
-                                                                .message("test-message-1-3-3")
-                                                                .count(133L).build()
-                                                ))
-                                                .build()
-                                ))
-                                .updateTimestamp(LocalDateTime.of(2001, 2, 3, 4, 5, 6))
-                                .comparisons(List.of(
-                                        LogSummaryState.builder()
-                                                .name("Previous hour")
-                                                .startTimestamp(LocalDateTime.of(2001, 2, 3, 2, 5, 6))
-                                                .endTimestamp(LocalDateTime.of(2001, 2, 3, 3, 5, 6))
-                                                .levels(List.of(
-                                                        LogLevelState.builder()
-                                                                .level("test-level-2-1")
-                                                                .count(21L)
-                                                                .topMessages(List.of(
-                                                                        LogMessageState.builder()
-                                                                                .message("test-message-2-1-1")
-                                                                                .count(211L).build(),
-                                                                        LogMessageState.builder()
-                                                                                .message("test-message-2-1-2")
-                                                                                .count(212L).build(),
-                                                                        LogMessageState.builder()
-                                                                                .message("test-message-2-1-3")
-                                                                                .count(213L).build()
-                                                                ))
-                                                                .build(),
-                                                        LogLevelState.builder()
-                                                                .level("test-level-2-2")
-                                                                .count(22L)
-                                                                .topMessages(List.of(
-                                                                        LogMessageState.builder()
-                                                                                .message("test-message-2-2-1")
-                                                                                .count(221L).build(),
-                                                                        LogMessageState.builder()
-                                                                                .message("test-message-2-2-2")
-                                                                                .count(222L).build(),
-                                                                        LogMessageState.builder()
-                                                                                .message("test-message-2-2-3")
-                                                                                .count(223L).build()
-                                                                ))
-                                                                .build(),
-                                                        LogLevelState.builder()
-                                                                .level("test-level-2-3")
-                                                                .count(23L)
-                                                                .topMessages(List.of(
-                                                                        LogMessageState.builder()
-                                                                                .message("test-message-2-3-1")
-                                                                                .count(231L).build(),
-                                                                        LogMessageState.builder()
-                                                                                .message("test-message-2-3-2")
-                                                                                .count(232L).build(),
-                                                                        LogMessageState.builder()
-                                                                                .message("test-message-2-3-3")
-                                                                                .count(233L).build()
-                                                                ))
-                                                                .build()
-                                                ))
-                                                .updateTimestamp(LocalDateTime.of(2001, 2, 3, 4, 5, 6))
-                                                .build(),
-                                        LogSummaryState.builder()
-                                                .name("Same hour, previous week")
-                                                .startTimestamp(LocalDateTime.of(2001, 1, 27, 3, 5, 6))
-                                                .endTimestamp(LocalDateTime.of(2001, 1, 27, 4, 5, 6))
-                                                .levels(List.of(
-                                                        LogLevelState.builder()
-                                                                .level("test-level-3-1")
-                                                                .count(31L)
-                                                                .topMessages(List.of(
-                                                                        LogMessageState.builder()
-                                                                                .message("test-message-3-1-1")
-                                                                                .count(311L).build(),
-                                                                        LogMessageState.builder()
-                                                                                .message("test-message-3-1-2")
-                                                                                .count(312L).build(),
-                                                                        LogMessageState.builder()
-                                                                                .message("test-message-3-1-3")
-                                                                                .count(313L).build()
-                                                                ))
-                                                                .build(),
-                                                        LogLevelState.builder()
-                                                                .level("test-level-3-2")
-                                                                .count(32L)
-                                                                .topMessages(List.of(
-                                                                        LogMessageState.builder()
-                                                                                .message("test-message-3-2-1")
-                                                                                .count(321L).build(),
-                                                                        LogMessageState.builder()
-                                                                                .message("test-message-3-2-2")
-                                                                                .count(322L).build(),
-                                                                        LogMessageState.builder()
-                                                                                .message("test-message-3-2-3")
-                                                                                .count(323L).build()
-                                                                ))
-                                                                .build(),
-                                                        LogLevelState.builder()
-                                                                .level("test-level-3-3")
-                                                                .count(33L)
-                                                                .topMessages(List.of(
-                                                                        LogMessageState.builder()
-                                                                                .message("test-message-3-3-1")
-                                                                                .count(331L).build(),
-                                                                        LogMessageState.builder()
-                                                                                .message("test-message-3-3-2")
-                                                                                .count(332L).build(),
-                                                                        LogMessageState.builder()
-                                                                                .message("test-message-3-3-3")
-                                                                                .count(333L).build()
-                                                                ))
-                                                                .build()
-                                                ))
-                                                .updateTimestamp(LocalDateTime.of(2001, 2, 3, 4, 5, 6))
-                                                .build()
-                                ))
-                                .build()
-                        ),
-                        new LogSummaryStateAndContext(
-                                profile1.getEnvironmentId(),
-                                LogSummaryState.builder()
-                                        .name("Last 24 hours")
-                                        .startTimestamp(LocalDateTime.of(2001, 2, 2, 4, 5, 6))
-                                        .endTimestamp(LocalDateTime.of(2001, 2, 3, 4, 5, 6))
-                                        .levels(List.of(
-                                                LogLevelState.builder()
-                                                        .level("test-level-4-1")
-                                                        .count(41L)
-                                                        .topMessages(List.of(
-                                                                LogMessageState.builder()
-                                                                        .message("test-message-4-1-1")
-                                                                        .count(411L).build(),
-                                                                LogMessageState.builder()
-                                                                        .message("test-message-4-1-2")
-                                                                        .count(412L).build(),
-                                                                LogMessageState.builder()
-                                                                        .message("test-message-4-1-3")
-                                                                        .count(413L).build()
-                                                        ))
-                                                        .build(),
-                                                LogLevelState.builder()
-                                                        .level("test-level-4-2")
-                                                        .count(42L)
-                                                        .topMessages(List.of(
-                                                                LogMessageState.builder()
-                                                                        .message("test-message-4-2-1")
-                                                                        .count(421L).build(),
-                                                                LogMessageState.builder()
-                                                                        .message("test-message-4-2-2")
-                                                                        .count(422L).build(),
-                                                                LogMessageState.builder()
-                                                                        .message("test-message-4-2-3")
-                                                                        .count(423L).build()
-                                                        ))
-                                                        .build(),
-                                                LogLevelState.builder()
-                                                        .level("test-level-4-3")
-                                                        .count(43L)
-                                                        .topMessages(List.of(
-                                                                LogMessageState.builder()
-                                                                        .message("test-message-4-3-1")
-                                                                        .count(431L).build(),
-                                                                LogMessageState.builder()
-                                                                        .message("test-message-4-3-2")
-                                                                        .count(432L).build(),
-                                                                LogMessageState.builder()
-                                                                        .message("test-message-4-3-3")
-                                                                        .count(433L).build()
-                                                        ))
-                                                        .build()
-                                        ))
-                                        .updateTimestamp(LocalDateTime.of(2001, 2, 3, 4, 5, 6))
-                                        .comparisons(List.of(
-                                                LogSummaryState.builder()
-                                                        .name("Previous 24 hours")
-                                                        .startTimestamp(LocalDateTime.of(2001, 2, 1, 4, 5, 6))
-                                                        .endTimestamp(LocalDateTime.of(2001, 2, 2, 4, 5, 6))
-                                                        .levels(List.of(
-                                                                LogLevelState.builder()
-                                                                        .level("test-level-5-1")
-                                                                        .count(51L)
-                                                                        .topMessages(List.of(
-                                                                                LogMessageState.builder()
-                                                                                        .message("test-message-5-1-1")
-                                                                                        .count(511L).build(),
-                                                                                LogMessageState.builder()
-                                                                                        .message("test-message-5-1-2")
-                                                                                        .count(512L).build(),
-                                                                                LogMessageState.builder()
-                                                                                        .message("test-message-5-1-3")
-                                                                                        .count(513L).build()
-                                                                        ))
-                                                                        .build(),
-                                                                LogLevelState.builder()
-                                                                        .level("test-level-5-2")
-                                                                        .count(52L)
-                                                                        .topMessages(List.of(
-                                                                                LogMessageState.builder()
-                                                                                        .message("test-message-5-2-1")
-                                                                                        .count(521L).build(),
-                                                                                LogMessageState.builder()
-                                                                                        .message("test-message-5-2-2")
-                                                                                        .count(522L).build(),
-                                                                                LogMessageState.builder()
-                                                                                        .message("test-message-5-2-3")
-                                                                                        .count(523L).build()
-                                                                        ))
-                                                                        .build(),
-                                                                LogLevelState.builder()
-                                                                        .level("test-level-5-3")
-                                                                        .count(53L)
-                                                                        .topMessages(List.of(
-                                                                                LogMessageState.builder()
-                                                                                        .message("test-message-5-3-1")
-                                                                                        .count(531L).build(),
-                                                                                LogMessageState.builder()
-                                                                                        .message("test-message-5-3-2")
-                                                                                        .count(532L).build(),
-                                                                                LogMessageState.builder()
-                                                                                        .message("test-message-5-3-3")
-                                                                                        .count(533L).build()
-                                                                        ))
-                                                                        .build()
-                                                        ))
-                                                        .updateTimestamp(LocalDateTime.of(2001, 2, 3, 4, 5, 6))
-                                                        .build(),
-                                                LogSummaryState.builder()
-                                                        .name("Same 24 hours, previous week")
-                                                        .startTimestamp(LocalDateTime.of(2001, 1, 26, 4, 5, 6))
-                                                        .endTimestamp(LocalDateTime.of(2001, 1, 27, 4, 5, 6))
-                                                        .levels(List.of(
-                                                                LogLevelState.builder()
-                                                                        .level("test-level-6-1")
-                                                                        .count(61L)
-                                                                        .topMessages(List.of(
-                                                                                LogMessageState.builder()
-                                                                                        .message("test-message-6-1-1")
-                                                                                        .count(611L).build(),
-                                                                                LogMessageState.builder()
-                                                                                        .message("test-message-6-1-2")
-                                                                                        .count(612L).build(),
-                                                                                LogMessageState.builder()
-                                                                                        .message("test-message-6-1-3")
-                                                                                        .count(613L).build()
-                                                                        ))
-                                                                        .build(),
-                                                                LogLevelState.builder()
-                                                                        .level("test-level-6-2")
-                                                                        .count(62L)
-                                                                        .topMessages(List.of(
-                                                                                LogMessageState.builder()
-                                                                                        .message("test-message-6-2-1")
-                                                                                        .count(621L).build(),
-                                                                                LogMessageState.builder()
-                                                                                        .message("test-message-6-2-2")
-                                                                                        .count(622L).build(),
-                                                                                LogMessageState.builder()
-                                                                                        .message("test-message-6-2-3")
-                                                                                        .count(623L).build()
-                                                                        ))
-                                                                        .build(),
-                                                                LogLevelState.builder()
-                                                                        .level("test-level-6-3")
-                                                                        .count(63L)
-                                                                        .topMessages(List.of(
-                                                                                LogMessageState.builder()
-                                                                                        .message("test-message-6-3-1")
-                                                                                        .count(631L).build(),
-                                                                                LogMessageState.builder()
-                                                                                        .message("test-message-6-3-2")
-                                                                                        .count(632L).build(),
-                                                                                LogMessageState.builder()
-                                                                                        .message("test-message-6-3-3")
-                                                                                        .count(633L).build()
-                                                                        ))
-                                                                        .build()
-                                                        ))
-                                                        .updateTimestamp(LocalDateTime.of(2001, 2, 3, 4, 5, 6))
-                                                        .build()
-                                        ))
-                                        .build()
-                        )
+        List<LogSummaryStateAndContext> expectedEntries = new ArrayList<>();
+        if (logSummariesConfig.getOneHourSummaries()) {
+            expectedEntries.add(new LogSummaryStateAndContext(
+                    profile1.getEnvironmentId(),
+                    LogSummaryState.builder()
+                            .name("Last hour")
+                            .startTimestamp(LocalDateTime.of(2001, 2, 3, 3, 5, 6))
+                            .endTimestamp(LocalDateTime.of(2001, 2, 3, 4, 5, 6))
+                            .levels(List.of(
+                                    LogLevelState.builder()
+                                            .level("test-level-1-1")
+                                            .count(11L)
+                                            .topMessages(List.of(
+                                                    LogMessageState.builder()
+                                                            .message("test-message-1-1-1")
+                                                            .count(111L)
+                                                            .build(),
+                                                    LogMessageState.builder()
+                                                            .message("test-message-1-1-2")
+                                                            .count(112L).build(),
+                                                    LogMessageState.builder()
+                                                            .message("test-message-1-1-3")
+                                                            .count(113L).build()
+                                            ))
+                                            .build(),
+                                    LogLevelState.builder()
+                                            .level("test-level-1-2")
+                                            .count(12L)
+                                            .topMessages(List.of(
+                                                    LogMessageState.builder()
+                                                            .message("test-message-1-2-1")
+                                                            .count(121L).build(),
+                                                    LogMessageState.builder()
+                                                            .message("test-message-1-2-2")
+                                                            .count(122L).build(),
+                                                    LogMessageState.builder()
+                                                            .message("test-message-1-2-3")
+                                                            .count(123L).build()
+                                            ))
+                                            .build(),
+                                    LogLevelState.builder()
+                                            .level("test-level-1-3")
+                                            .count(13L)
+                                            .topMessages(List.of(
+                                                    LogMessageState.builder()
+                                                            .message("test-message-1-3-1")
+                                                            .count(131L).build(),
+                                                    LogMessageState.builder()
+                                                            .message("test-message-1-3-2")
+                                                            .count(132L).build(),
+                                                    LogMessageState.builder()
+                                                            .message("test-message-1-3-3")
+                                                            .count(133L).build()
+                                            ))
+                                            .build()
+                            ))
+                            .updateTimestamp(LocalDateTime.of(2001, 2, 3, 4, 5, 6))
+                            .comparisons(List.of(
+                                    LogSummaryState.builder()
+                                            .name("Previous hour")
+                                            .startTimestamp(LocalDateTime.of(2001, 2, 3, 2, 5, 6))
+                                            .endTimestamp(LocalDateTime.of(2001, 2, 3, 3, 5, 6))
+                                            .levels(List.of(
+                                                    LogLevelState.builder()
+                                                            .level("test-level-2-1")
+                                                            .count(21L)
+                                                            .topMessages(List.of(
+                                                                    LogMessageState.builder()
+                                                                            .message("test-message-2-1-1")
+                                                                            .count(211L).build(),
+                                                                    LogMessageState.builder()
+                                                                            .message("test-message-2-1-2")
+                                                                            .count(212L).build(),
+                                                                    LogMessageState.builder()
+                                                                            .message("test-message-2-1-3")
+                                                                            .count(213L).build()
+                                                            ))
+                                                            .build(),
+                                                    LogLevelState.builder()
+                                                            .level("test-level-2-2")
+                                                            .count(22L)
+                                                            .topMessages(List.of(
+                                                                    LogMessageState.builder()
+                                                                            .message("test-message-2-2-1")
+                                                                            .count(221L).build(),
+                                                                    LogMessageState.builder()
+                                                                            .message("test-message-2-2-2")
+                                                                            .count(222L).build(),
+                                                                    LogMessageState.builder()
+                                                                            .message("test-message-2-2-3")
+                                                                            .count(223L).build()
+                                                            ))
+                                                            .build(),
+                                                    LogLevelState.builder()
+                                                            .level("test-level-2-3")
+                                                            .count(23L)
+                                                            .topMessages(List.of(
+                                                                    LogMessageState.builder()
+                                                                            .message("test-message-2-3-1")
+                                                                            .count(231L).build(),
+                                                                    LogMessageState.builder()
+                                                                            .message("test-message-2-3-2")
+                                                                            .count(232L).build(),
+                                                                    LogMessageState.builder()
+                                                                            .message("test-message-2-3-3")
+                                                                            .count(233L).build()
+                                                            ))
+                                                            .build()
+                                            ))
+                                            .updateTimestamp(LocalDateTime.of(2001, 2, 3, 4, 5, 6))
+                                            .build(),
+                                    LogSummaryState.builder()
+                                            .name("Same hour, previous week")
+                                            .startTimestamp(LocalDateTime.of(2001, 1, 27, 3, 5, 6))
+                                            .endTimestamp(LocalDateTime.of(2001, 1, 27, 4, 5, 6))
+                                            .levels(List.of(
+                                                    LogLevelState.builder()
+                                                            .level("test-level-3-1")
+                                                            .count(31L)
+                                                            .topMessages(List.of(
+                                                                    LogMessageState.builder()
+                                                                            .message("test-message-3-1-1")
+                                                                            .count(311L).build(),
+                                                                    LogMessageState.builder()
+                                                                            .message("test-message-3-1-2")
+                                                                            .count(312L).build(),
+                                                                    LogMessageState.builder()
+                                                                            .message("test-message-3-1-3")
+                                                                            .count(313L).build()
+                                                            ))
+                                                            .build(),
+                                                    LogLevelState.builder()
+                                                            .level("test-level-3-2")
+                                                            .count(32L)
+                                                            .topMessages(List.of(
+                                                                    LogMessageState.builder()
+                                                                            .message("test-message-3-2-1")
+                                                                            .count(321L).build(),
+                                                                    LogMessageState.builder()
+                                                                            .message("test-message-3-2-2")
+                                                                            .count(322L).build(),
+                                                                    LogMessageState.builder()
+                                                                            .message("test-message-3-2-3")
+                                                                            .count(323L).build()
+                                                            ))
+                                                            .build(),
+                                                    LogLevelState.builder()
+                                                            .level("test-level-3-3")
+                                                            .count(33L)
+                                                            .topMessages(List.of(
+                                                                    LogMessageState.builder()
+                                                                            .message("test-message-3-3-1")
+                                                                            .count(331L).build(),
+                                                                    LogMessageState.builder()
+                                                                            .message("test-message-3-3-2")
+                                                                            .count(332L).build(),
+                                                                    LogMessageState.builder()
+                                                                            .message("test-message-3-3-3")
+                                                                            .count(333L).build()
+                                                            ))
+                                                            .build()
+                                            ))
+                                            .updateTimestamp(LocalDateTime.of(2001, 2, 3, 4, 5, 6))
+                                            .build()
+                            ))
+                            .build()
+            ));
+        }
+        if (logSummariesConfig.getTwentyFourHourSummaries()) {
+            expectedEntries.add(new LogSummaryStateAndContext(
+                    profile1.getEnvironmentId(),
+                    LogSummaryState.builder()
+                            .name("Last 24 hours")
+                            .startTimestamp(LocalDateTime.of(2001, 2, 2, 4, 5, 6))
+                            .endTimestamp(LocalDateTime.of(2001, 2, 3, 4, 5, 6))
+                            .levels(List.of(
+                                    LogLevelState.builder()
+                                            .level("test-level-4-1")
+                                            .count(41L)
+                                            .topMessages(List.of(
+                                                    LogMessageState.builder()
+                                                            .message("test-message-4-1-1")
+                                                            .count(411L).build(),
+                                                    LogMessageState.builder()
+                                                            .message("test-message-4-1-2")
+                                                            .count(412L).build(),
+                                                    LogMessageState.builder()
+                                                            .message("test-message-4-1-3")
+                                                            .count(413L).build()
+                                            ))
+                                            .build(),
+                                    LogLevelState.builder()
+                                            .level("test-level-4-2")
+                                            .count(42L)
+                                            .topMessages(List.of(
+                                                    LogMessageState.builder()
+                                                            .message("test-message-4-2-1")
+                                                            .count(421L).build(),
+                                                    LogMessageState.builder()
+                                                            .message("test-message-4-2-2")
+                                                            .count(422L).build(),
+                                                    LogMessageState.builder()
+                                                            .message("test-message-4-2-3")
+                                                            .count(423L).build()
+                                            ))
+                                            .build(),
+                                    LogLevelState.builder()
+                                            .level("test-level-4-3")
+                                            .count(43L)
+                                            .topMessages(List.of(
+                                                    LogMessageState.builder()
+                                                            .message("test-message-4-3-1")
+                                                            .count(431L).build(),
+                                                    LogMessageState.builder()
+                                                            .message("test-message-4-3-2")
+                                                            .count(432L).build(),
+                                                    LogMessageState.builder()
+                                                            .message("test-message-4-3-3")
+                                                            .count(433L).build()
+                                            ))
+                                            .build()
+                            ))
+                            .updateTimestamp(LocalDateTime.of(2001, 2, 3, 4, 5, 6))
+                            .comparisons(List.of(
+                                    LogSummaryState.builder()
+                                            .name("Previous 24 hours")
+                                            .startTimestamp(LocalDateTime.of(2001, 2, 1, 4, 5, 6))
+                                            .endTimestamp(LocalDateTime.of(2001, 2, 2, 4, 5, 6))
+                                            .levels(List.of(
+                                                    LogLevelState.builder()
+                                                            .level("test-level-5-1")
+                                                            .count(51L)
+                                                            .topMessages(List.of(
+                                                                    LogMessageState.builder()
+                                                                            .message("test-message-5-1-1")
+                                                                            .count(511L).build(),
+                                                                    LogMessageState.builder()
+                                                                            .message("test-message-5-1-2")
+                                                                            .count(512L).build(),
+                                                                    LogMessageState.builder()
+                                                                            .message("test-message-5-1-3")
+                                                                            .count(513L).build()
+                                                            ))
+                                                            .build(),
+                                                    LogLevelState.builder()
+                                                            .level("test-level-5-2")
+                                                            .count(52L)
+                                                            .topMessages(List.of(
+                                                                    LogMessageState.builder()
+                                                                            .message("test-message-5-2-1")
+                                                                            .count(521L).build(),
+                                                                    LogMessageState.builder()
+                                                                            .message("test-message-5-2-2")
+                                                                            .count(522L).build(),
+                                                                    LogMessageState.builder()
+                                                                            .message("test-message-5-2-3")
+                                                                            .count(523L).build()
+                                                            ))
+                                                            .build(),
+                                                    LogLevelState.builder()
+                                                            .level("test-level-5-3")
+                                                            .count(53L)
+                                                            .topMessages(List.of(
+                                                                    LogMessageState.builder()
+                                                                            .message("test-message-5-3-1")
+                                                                            .count(531L).build(),
+                                                                    LogMessageState.builder()
+                                                                            .message("test-message-5-3-2")
+                                                                            .count(532L).build(),
+                                                                    LogMessageState.builder()
+                                                                            .message("test-message-5-3-3")
+                                                                            .count(533L).build()
+                                                            ))
+                                                            .build()
+                                            ))
+                                            .updateTimestamp(LocalDateTime.of(2001, 2, 3, 4, 5, 6))
+                                            .build(),
+                                    LogSummaryState.builder()
+                                            .name("Same 24 hours, previous week")
+                                            .startTimestamp(LocalDateTime.of(2001, 1, 26, 4, 5, 6))
+                                            .endTimestamp(LocalDateTime.of(2001, 1, 27, 4, 5, 6))
+                                            .levels(List.of(
+                                                    LogLevelState.builder()
+                                                            .level("test-level-6-1")
+                                                            .count(61L)
+                                                            .topMessages(List.of(
+                                                                    LogMessageState.builder()
+                                                                            .message("test-message-6-1-1")
+                                                                            .count(611L).build(),
+                                                                    LogMessageState.builder()
+                                                                            .message("test-message-6-1-2")
+                                                                            .count(612L).build(),
+                                                                    LogMessageState.builder()
+                                                                            .message("test-message-6-1-3")
+                                                                            .count(613L).build()
+                                                            ))
+                                                            .build(),
+                                                    LogLevelState.builder()
+                                                            .level("test-level-6-2")
+                                                            .count(62L)
+                                                            .topMessages(List.of(
+                                                                    LogMessageState.builder()
+                                                                            .message("test-message-6-2-1")
+                                                                            .count(621L).build(),
+                                                                    LogMessageState.builder()
+                                                                            .message("test-message-6-2-2")
+                                                                            .count(622L).build(),
+                                                                    LogMessageState.builder()
+                                                                            .message("test-message-6-2-3")
+                                                                            .count(623L).build()
+                                                            ))
+                                                            .build(),
+                                                    LogLevelState.builder()
+                                                            .level("test-level-6-3")
+                                                            .count(63L)
+                                                            .topMessages(List.of(
+                                                                    LogMessageState.builder()
+                                                                            .message("test-message-6-3-1")
+                                                                            .count(631L).build(),
+                                                                    LogMessageState.builder()
+                                                                            .message("test-message-6-3-2")
+                                                                            .count(632L).build(),
+                                                                    LogMessageState.builder()
+                                                                            .message("test-message-6-3-3")
+                                                                            .count(633L).build()
+                                                            ))
+                                                            .build()
+                                            ))
+                                            .updateTimestamp(LocalDateTime.of(2001, 2, 3, 4, 5, 6))
+                                            .build()
+                            ))
+                            .build()
+            ));
+        }
+        assertThat(returnValue).containsExactlyElementsOf(expectedEntries);
+    }
+
+    private static List<AwsLogSummariesConfig> provideLogSummariesConfigs() {
+        return List.of(
+                new AwsLogSummariesConfig(false, false),
+                new AwsLogSummariesConfig(false, true),
+                new AwsLogSummariesConfig(true, false),
+                new AwsLogSummariesConfig(true, true)
         );
     }
 
@@ -487,6 +514,7 @@ public class CloudWatchLogsServiceTest {
     }
 
     private void mockLevelMessageCountQuery(
+            boolean enabled,
             AwsProfileAndRegion profileAndRegion,
             List<String> logGroupNames,
             AtomicInteger queryNumberState,
@@ -494,6 +522,9 @@ public class CloudWatchLogsServiceTest {
             Instant endTime
     ) {
         int queryNumber = queryNumberState.getAndIncrement();
+        if (!enabled) {
+            return;
+        }
         mockQuery(
                 profileAndRegion,
                 logGroupNames,
