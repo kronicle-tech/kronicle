@@ -23,7 +23,6 @@ import static tech.kronicle.plugins.aws.testutils.AwsProfileAndRegionUtils.creat
 import static tech.kronicle.plugins.aws.testutils.ComponentUtils.createComponent;
 import static tech.kronicle.plugins.aws.testutils.EnvironmentUtils.createOverrideEnvironmentId;
 import static tech.kronicle.plugins.aws.testutils.ResourceGroupsTaggingApiResourceUtils.TEST_COMPONENT_TAG_KEY;
-import static tech.kronicle.plugins.aws.testutils.ResourceGroupsTaggingApiResourceUtils.TEST_DESCRIPTION_TAG_KEY;
 import static tech.kronicle.plugins.aws.testutils.ResourceGroupsTaggingApiResourceUtils.TEST_ENVIRONMENT_TAG_KEY;
 import static tech.kronicle.plugins.aws.testutils.ResourceGroupsTaggingApiResourceUtils.createResource;
 
@@ -57,6 +56,7 @@ public class TaggedResourceFinderTest {
                         TEST_ENVIRONMENT_TAG_KEY,
                         null
                 ),
+                null,
                 null
         );
         TaggedResourceFinder underTest = new TaggedResourceFinder(

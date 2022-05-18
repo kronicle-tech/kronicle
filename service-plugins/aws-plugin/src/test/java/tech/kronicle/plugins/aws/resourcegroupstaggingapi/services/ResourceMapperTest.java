@@ -185,6 +185,7 @@ public class ResourceMapperTest {
                                 TEST_ENVIRONMENT_TAG_KEY,
                                 TEST_TEAM_TAG_KEY
                         ),
+                        null,
                         null
                 )
         );
