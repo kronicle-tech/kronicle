@@ -5,11 +5,11 @@ plugins {
 }
 
 dependencies {
-    annotationProcessor platform("org.springframework.boot:spring-boot-dependencies:$springBootVersionOverride")
-    implementation platform("org.springframework.boot:spring-boot-dependencies:$springBootVersionOverride")
-    compileOnly platform("org.springframework.boot:spring-boot-dependencies:$springBootVersionOverride")
-    testAnnotationProcessor platform("org.springframework.boot:spring-boot-dependencies:$springBootVersionOverride")
-    testImplementation platform("org.springframework.boot:spring-boot-dependencies:$springBootVersionOverride")
+    annotationProcessor platform("org.springframework.boot:spring-boot-dependencies:$springBootVersion")
+    implementation platform("org.springframework.boot:spring-boot-dependencies:$springBootVersion")
+    compileOnly platform("org.springframework.boot:spring-boot-dependencies:$springBootVersion")
+    testAnnotationProcessor platform("org.springframework.boot:spring-boot-dependencies:$springBootVersion")
+    testImplementation platform("org.springframework.boot:spring-boot-dependencies:$springBootVersion")
 
     annotationProcessor "org.pf4j:pf4j:$pf4jVersion"
 
