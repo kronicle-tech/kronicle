@@ -514,4 +514,12 @@
         <packageUrl regex="true">^pkg:maven/io\.netty/netty\-.*@.*$</packageUrl>
         <cve>CVE-2022-24823</cve>
     </suppress>
+    <!-- Suppress Spring Framework vulnerability that is not relevant to Kronicle -->
+    <suppress>
+        <notes><![CDATA[
+   file name: spring-*-5.3.20.jar
+   ]]></notes>
+        <packageUrl regex="true">^pkg:maven/org\.springframework/spring\-.*@.*$</packageUrl>
+        <cve>CVE-2016-1000027</cve>
+    </suppress>
 </suppressions>
