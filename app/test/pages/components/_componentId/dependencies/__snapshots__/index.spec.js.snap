@@ -7,7 +7,7 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
   <h1
     class="text-info my-3"
   >
-    Test Component Name 1 - Dependencies
+    Test Component Name 1 - Visualizations
   </h1>
    
   <div
@@ -27,7 +27,7 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
       target="_self"
     >
       
-    Dependencies
+    Visualizations
   
     </a>
      
@@ -212,6 +212,7 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
       class="mt-3 mb-4"
       components="[object Object]"
     >
+       
       <button
         aria-controls="filters"
         aria-expanded="false"
@@ -1148,7 +1149,7 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
   <h1
     class="text-info my-3"
   >
-    Test Component Name 1 - Dependencies
+    Test Component Name 1 - Visualizations
   </h1>
    
   <div
@@ -1168,7 +1169,7 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
       target="_self"
     >
       
-    Dependencies
+    Visualizations
   
     </a>
      
@@ -1353,6 +1354,7 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
       class="mt-3 mb-4"
       components="[object Object]"
     >
+       
       <button
         aria-controls="filters"
         aria-expanded="false"
@@ -2289,7 +2291,7 @@ exports[`Index when Get Summary service endpoint returns no dependencies renders
   <h1
     class="text-info my-3"
   >
-    Test Component Name 1 - Dependencies
+    Test Component Name 1 - Visualizations
   </h1>
    
   <div
@@ -2309,7 +2311,7 @@ exports[`Index when Get Summary service endpoint returns no dependencies renders
       target="_self"
     >
       
-    Dependencies
+    Visualizations
   
     </a>
      
@@ -2494,6 +2496,7 @@ exports[`Index when Get Summary service endpoint returns no dependencies renders
       class="mt-3 mb-4"
       components="[object Object]"
     >
+       
       <button
         aria-controls="filters"
         aria-expanded="false"

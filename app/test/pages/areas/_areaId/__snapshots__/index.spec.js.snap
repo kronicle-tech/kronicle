@@ -26,7 +26,7 @@ exports[`Index when Get Area service endpoint returns an area renders the page 1
       href="/areas/test-area-id-1/dependencies"
       target="_self"
     >
-      Dependencies
+      Visualizations
     </a>
      
     <a

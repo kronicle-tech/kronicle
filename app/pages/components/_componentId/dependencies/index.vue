@@ -1,6 +1,6 @@
 <template>
   <div class="m-3">
-    <h1 class="text-info my-3">{{ component.name }} - Dependencies</h1>
+    <h1 class="text-info my-3">{{ component.name }} - Visualizations</h1>
 
     <ComponentTabs :component-id="component.id" />
 
@@ -66,7 +66,7 @@ export default Vue.extend({
   },
   head(): MetaInfo {
     return {
-      title: `Kronicle - ${this.component.name} - Dependencies`,
+      title: `Kronicle - ${this.component.name} - Visualizations`,
     }
   },
 })

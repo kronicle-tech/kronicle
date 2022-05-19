@@ -26,7 +26,7 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
       href="/teams/test-team-id-1/dependencies"
       target="_self"
     >
-      Dependencies
+      Visualizations
     </a>
      
     <a
@@ -110,6 +110,7 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
       class="mt-3 mb-4"
       components="[object Object],[object Object],[object Object]"
     >
+       
       <button
         aria-controls="filters"
         aria-expanded="false"
@@ -1060,7 +1061,7 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
       href="/teams/test-team-id-1/dependencies"
       target="_self"
     >
-      Dependencies
+      Visualizations
     </a>
      
     <a
@@ -1144,6 +1145,7 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
       class="mt-3 mb-4"
       components="[object Object],[object Object],[object Object]"
     >
+       
       <button
         aria-controls="filters"
         aria-expanded="false"
@@ -1747,7 +1749,7 @@ exports[`Index when Get Team service endpoint returns a team when the team has n
       href="/teams/test-team-id-1/dependencies"
       target="_self"
     >
-      Dependencies
+      Visualizations
     </a>
      
     <a

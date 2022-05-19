@@ -38,6 +38,7 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
       class="mt-3 mb-4"
       components="[object Object],[object Object],[object Object]"
     >
+       
       <button
         aria-controls="filters"
         aria-expanded="false"
@@ -1233,6 +1234,7 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
       class="mt-3 mb-4"
       components="[object Object],[object Object],[object Object]"
     >
+       
       <button
         aria-controls="filters"
         aria-expanded="false"
@@ -2518,6 +2520,7 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
       class="mt-3 mb-4"
       components="[object Object],[object Object],[object Object]"
     >
+       
       <button
         aria-controls="filters"
         aria-expanded="false"
@@ -3803,6 +3806,7 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
       class="mt-3 mb-4"
       components="[object Object],[object Object],[object Object]"
     >
+       
       <button
         aria-controls="filters"
         aria-expanded="false"
@@ -5087,6 +5091,7 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
       class="mt-3 mb-4"
       components="[object Object],[object Object],[object Object]"
     >
+       
       <button
         aria-controls="filters"
         aria-expanded="false"
@@ -6282,6 +6287,7 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
       class="mt-3 mb-4"
       components="[object Object],[object Object],[object Object]"
     >
+       
       <button
         aria-controls="filters"
         aria-expanded="false"
@@ -7566,6 +7572,7 @@ exports[`Index when Get Summary service endpoint returns no dependencies renders
       class="mt-3 mb-4"
       components="[object Object],[object Object],[object Object]"
     >
+       
       <button
         aria-controls="filters"
         aria-expanded="false"

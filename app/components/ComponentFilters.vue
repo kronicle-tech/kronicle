@@ -2,13 +2,15 @@
   <div v-if="components && components.length > 0"
        class="mt-3 mb-4">
 
+    <slot name="top"></slot>
+
     <b-button
       v-if="toggleEnabled"
       id="toggleFilters"
       v-b-toggle.filters
       variant="primary"
     >
-      <b-icon icon="filter" aria-hidden="true" /> Filters
+      <b-icon icon="filter" aria-hidden="true" /> {{ toggleName }}
     </b-button>
 
     <b-collapse
@@ -204,6 +206,7 @@ interface Option {
   }
 })
 export default class ComponentFilters extends Vue {
+  @Prop({ default: 'Filters' }) readonly toggleName!: string
   @Prop({ default: false }) readonly environmentIdFilterEnabled!: boolean
   @Prop({ default: false }) readonly pluginIdFilterEnabled!: boolean
   @Prop({ default: false }) readonly testOutcomesFilterEnabled!: boolean

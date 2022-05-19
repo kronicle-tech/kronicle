@@ -31,21 +31,19 @@
     />
 
     <b-card :title="`${count} Test Results`" class="my-3">
-      <b-card-text>
-        <TestResultTable
-          :test-id="testId"
-          :area-id="areaId"
-          :team-id="teamId"
-          :components="filteredComponents"
-        />
-      </b-card-text>
+      <TestResultTable
+        :test-id="testId"
+        :area-id="areaId"
+        :team-id="teamId"
+        :components="filteredComponents"
+      />
     </b-card>
   </div>
 </template>
 
 <script lang="ts">
 import Vue, { PropType } from 'vue'
-import {BCard, BCardText, BListGroup, BListGroupItem} from 'bootstrap-vue'
+import {BCard, BListGroup, BListGroupItem} from 'bootstrap-vue'
 import {
   Component,
   TestOutcome,
@@ -71,7 +69,6 @@ interface OutcomeCount {
 export default Vue.extend({
   components: {
     'b-card': BCard,
-    'b-card-text': BCardText,
     'b-list-group': BListGroup,
     'b-list-group-item': BListGroupItem,
     ComponentFilters,

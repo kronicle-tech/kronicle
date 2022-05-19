@@ -9,9 +9,7 @@ exports[`CrossFunctionalRequirementsView when components prop is set to an empty
     <div class=\\"card-body\\">
       <h4 class=\\"card-title\\">0 Cross Functional Requirements</h4>
       <!---->
-      <p class=\\"card-text\\">
-        <!---->
-      </p>
+      <!---->
     </div>
     <!---->
     <!---->
@@ -21,7 +19,7 @@ exports[`CrossFunctionalRequirementsView when components prop is set to an empty
 
 exports[`CrossFunctionalRequirementsView when components prop is set to multiple components with cross functional requirements renders all the cross functional requirements in a table 1`] = `
 "<div>
-  <div class=\\"mt-3 mb-4\\" components=\\"[object Object],[object Object],[object Object]\\"><button id=\\"toggleFilters\\" type=\\"button\\" class=\\"btn btn-primary collapsed\\" aria-expanded=\\"false\\" aria-controls=\\"filters\\"><svg viewBox=\\"0 0 16 16\\" width=\\"1em\\" height=\\"1em\\" focusable=\\"false\\" role=\\"img\\" aria-label=\\"blank\\" aria-hidden=\\"true\\" xmlns=\\"http://www.w3.org/2000/svg\\" fill=\\"currentColor\\" class=\\"bi-blank b-icon bi\\">
+  <div class=\\"mt-3 mb-4\\" components=\\"[object Object],[object Object],[object Object]\\"> <button id=\\"toggleFilters\\" type=\\"button\\" class=\\"btn btn-primary collapsed\\" aria-expanded=\\"false\\" aria-controls=\\"filters\\"><svg viewBox=\\"0 0 16 16\\" width=\\"1em\\" height=\\"1em\\" focusable=\\"false\\" role=\\"img\\" aria-label=\\"blank\\" aria-hidden=\\"true\\" xmlns=\\"http://www.w3.org/2000/svg\\" fill=\\"currentColor\\" class=\\"bi-blank b-icon bi\\">
         <g></g>
       </svg> Filters
     </button>
@@ -159,255 +157,253 @@ exports[`CrossFunctionalRequirementsView when components prop is set to multiple
     <div class=\\"card-body\\">
       <h4 class=\\"card-title\\">6 Cross Functional Requirements</h4>
       <!---->
-      <p class=\\"card-text\\">
-        <table class=\\"table table-dark\\">
-          <thead>
-            <tr>
-              <th class=\\"component\\">Component</th>
-              <th class=\\"teams\\">Teams</th>
-              <th class=\\"description\\">Description</th>
-              <th class=\\"notes\\">Notes</th>
-              <th class=\\"links\\">Links</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td class=\\"component table-primary\\"><a href=\\"/components/test-component-id-1\\">Test Component Name 1</a></td>
-              <td class=\\"teams\\">
-                <ul>
-                  <li><a href=\\"/teams/test-team-id-1-1\\" class=\\"team-name\\">test-team-id-1-1</a>
-                    <!---->
-                    <!---->
-                  </li>
-                  <li><a href=\\"/teams/test-team-id-1-2\\" class=\\"team-name\\">test-team-id-1-2</a>
-                    <!---->
-                    <!---->
-                  </li>
-                </ul>
-              </td>
-              <td class=\\"description\\">
-                <div>
-                  <p>Test CFR Description 1 1</p>
-                </div>
-              </td>
-              <td class=\\"notes\\">
-                <div>
-                  <p>Test CFR Notes 1 1</p>
-                </div>
-              </td>
-              <td class=\\"links\\">
-                <ul>
-                  <li><a href=\\"https://example.com/test-cfr-link-1-1-1\\" target=\\"_blank\\">https://example.com/test-cfr-link-1-1-1</a> <br>
-                    <div>
-                      <p>Test CFR Link Description 1 1 1</p>
-                    </div>
-                  </li>
-                  <li><a href=\\"https://example.com/test-cfr-link-1-1-2\\" target=\\"_blank\\">https://example.com/test-cfr-link-1-1-2</a> <br>
-                    <div>
-                      <p>Test CFR Link Description 1 1 2</p>
-                    </div>
-                  </li>
-                </ul>
-              </td>
-            </tr>
-            <tr>
-              <td class=\\"component table-primary\\"><a href=\\"/components/test-component-id-1\\">Test Component Name 1</a></td>
-              <td class=\\"teams\\">
-                <ul>
-                  <li><a href=\\"/teams/test-team-id-1-1\\" class=\\"team-name\\">test-team-id-1-1</a>
-                    <!---->
-                    <!---->
-                  </li>
-                  <li><a href=\\"/teams/test-team-id-1-2\\" class=\\"team-name\\">test-team-id-1-2</a>
-                    <!---->
-                    <!---->
-                  </li>
-                </ul>
-              </td>
-              <td class=\\"description\\">
-                <div>
-                  <p>Test CFR Description 1 2</p>
-                </div>
-              </td>
-              <td class=\\"notes\\">
-                <div>
-                  <p>Test CFR Notes 1 2</p>
-                </div>
-              </td>
-              <td class=\\"links\\">
-                <ul>
-                  <li><a href=\\"https://example.com/test-cfr-link-1-2-1\\" target=\\"_blank\\">https://example.com/test-cfr-link-1-2-1</a> <br>
-                    <div>
-                      <p>Test CFR Link Description 1 2 1</p>
-                    </div>
-                  </li>
-                  <li><a href=\\"https://example.com/test-cfr-link-1-2-2\\" target=\\"_blank\\">https://example.com/test-cfr-link-1-2-2</a> <br>
-                    <div>
-                      <p>Test CFR Link Description 1 2 2</p>
-                    </div>
-                  </li>
-                </ul>
-              </td>
-            </tr>
-            <tr>
-              <td class=\\"component table-primary\\"><a href=\\"/components/test-component-id-2\\">Test Component Name 2</a></td>
-              <td class=\\"teams\\">
-                <ul>
-                  <li><a href=\\"/teams/test-team-id-2-1\\" class=\\"team-name\\">test-team-id-2-1</a>
-                    <!---->
-                    <!---->
-                  </li>
-                  <li><a href=\\"/teams/test-team-id-2-2\\" class=\\"team-name\\">test-team-id-2-2</a>
-                    <!---->
-                    <!---->
-                  </li>
-                </ul>
-              </td>
-              <td class=\\"description\\">
-                <div>
-                  <p>Test CFR Description 2 1</p>
-                </div>
-              </td>
-              <td class=\\"notes\\">
-                <div>
-                  <p>Test CFR Notes 2 1</p>
-                </div>
-              </td>
-              <td class=\\"links\\">
-                <ul>
-                  <li><a href=\\"https://example.com/test-cfr-link-2-1-1\\" target=\\"_blank\\">https://example.com/test-cfr-link-2-1-1</a> <br>
-                    <div>
-                      <p>Test CFR Link Description 2 1 1</p>
-                    </div>
-                  </li>
-                  <li><a href=\\"https://example.com/test-cfr-link-2-1-2\\" target=\\"_blank\\">https://example.com/test-cfr-link-2-1-2</a> <br>
-                    <div>
-                      <p>Test CFR Link Description 2 1 2</p>
-                    </div>
-                  </li>
-                </ul>
-              </td>
-            </tr>
-            <tr>
-              <td class=\\"component table-primary\\"><a href=\\"/components/test-component-id-2\\">Test Component Name 2</a></td>
-              <td class=\\"teams\\">
-                <ul>
-                  <li><a href=\\"/teams/test-team-id-2-1\\" class=\\"team-name\\">test-team-id-2-1</a>
-                    <!---->
-                    <!---->
-                  </li>
-                  <li><a href=\\"/teams/test-team-id-2-2\\" class=\\"team-name\\">test-team-id-2-2</a>
-                    <!---->
-                    <!---->
-                  </li>
-                </ul>
-              </td>
-              <td class=\\"description\\">
-                <div>
-                  <p>Test CFR Description 2 2</p>
-                </div>
-              </td>
-              <td class=\\"notes\\">
-                <div>
-                  <p>Test CFR Notes 2 2</p>
-                </div>
-              </td>
-              <td class=\\"links\\">
-                <ul>
-                  <li><a href=\\"https://example.com/test-cfr-link-2-2-1\\" target=\\"_blank\\">https://example.com/test-cfr-link-2-2-1</a> <br>
-                    <div>
-                      <p>Test CFR Link Description 2 2 1</p>
-                    </div>
-                  </li>
-                  <li><a href=\\"https://example.com/test-cfr-link-2-2-2\\" target=\\"_blank\\">https://example.com/test-cfr-link-2-2-2</a> <br>
-                    <div>
-                      <p>Test CFR Link Description 2 2 2</p>
-                    </div>
-                  </li>
-                </ul>
-              </td>
-            </tr>
-            <tr>
-              <td class=\\"component table-primary\\"><a href=\\"/components/test-component-id-3\\">Test Component Name 3</a></td>
-              <td class=\\"teams\\">
-                <ul>
-                  <li><a href=\\"/teams/test-team-id-3-1\\" class=\\"team-name\\">test-team-id-3-1</a>
-                    <!---->
-                    <!---->
-                  </li>
-                  <li><a href=\\"/teams/test-team-id-3-2\\" class=\\"team-name\\">test-team-id-3-2</a>
-                    <!---->
-                    <!---->
-                  </li>
-                </ul>
-              </td>
-              <td class=\\"description\\">
-                <div>
-                  <p>Test CFR Description 3 1</p>
-                </div>
-              </td>
-              <td class=\\"notes\\">
-                <div>
-                  <p>Test CFR Notes 3 1</p>
-                </div>
-              </td>
-              <td class=\\"links\\">
-                <ul>
-                  <li><a href=\\"https://example.com/test-cfr-link-3-1-1\\" target=\\"_blank\\">https://example.com/test-cfr-link-3-1-1</a> <br>
-                    <div>
-                      <p>Test CFR Link Description 3 1 1</p>
-                    </div>
-                  </li>
-                  <li><a href=\\"https://example.com/test-cfr-link-3-1-2\\" target=\\"_blank\\">https://example.com/test-cfr-link-3-1-2</a> <br>
-                    <div>
-                      <p>Test CFR Link Description 3 1 2</p>
-                    </div>
-                  </li>
-                </ul>
-              </td>
-            </tr>
-            <tr>
-              <td class=\\"component table-primary\\"><a href=\\"/components/test-component-id-3\\">Test Component Name 3</a></td>
-              <td class=\\"teams\\">
-                <ul>
-                  <li><a href=\\"/teams/test-team-id-3-1\\" class=\\"team-name\\">test-team-id-3-1</a>
-                    <!---->
-                    <!---->
-                  </li>
-                  <li><a href=\\"/teams/test-team-id-3-2\\" class=\\"team-name\\">test-team-id-3-2</a>
-                    <!---->
-                    <!---->
-                  </li>
-                </ul>
-              </td>
-              <td class=\\"description\\">
-                <div>
-                  <p>Test CFR Description 3 2</p>
-                </div>
-              </td>
-              <td class=\\"notes\\">
-                <div>
-                  <p>Test CFR Notes 3 2</p>
-                </div>
-              </td>
-              <td class=\\"links\\">
-                <ul>
-                  <li><a href=\\"https://example.com/test-cfr-link-3-2-1\\" target=\\"_blank\\">https://example.com/test-cfr-link-3-2-1</a> <br>
-                    <div>
-                      <p>Test CFR Link Description 3 2 1</p>
-                    </div>
-                  </li>
-                  <li><a href=\\"https://example.com/test-cfr-link-3-2-2\\" target=\\"_blank\\">https://example.com/test-cfr-link-3-2-2</a> <br>
-                    <div>
-                      <p>Test CFR Link Description 3 2 2</p>
-                    </div>
-                  </li>
-                </ul>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </p>
+      <table class=\\"table table-dark\\">
+        <thead>
+          <tr>
+            <th class=\\"component\\">Component</th>
+            <th class=\\"teams\\">Teams</th>
+            <th class=\\"description\\">Description</th>
+            <th class=\\"notes\\">Notes</th>
+            <th class=\\"links\\">Links</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class=\\"component table-primary\\"><a href=\\"/components/test-component-id-1\\">Test Component Name 1</a></td>
+            <td class=\\"teams\\">
+              <ul>
+                <li><a href=\\"/teams/test-team-id-1-1\\" class=\\"team-name\\">test-team-id-1-1</a>
+                  <!---->
+                  <!---->
+                </li>
+                <li><a href=\\"/teams/test-team-id-1-2\\" class=\\"team-name\\">test-team-id-1-2</a>
+                  <!---->
+                  <!---->
+                </li>
+              </ul>
+            </td>
+            <td class=\\"description\\">
+              <div>
+                <p>Test CFR Description 1 1</p>
+              </div>
+            </td>
+            <td class=\\"notes\\">
+              <div>
+                <p>Test CFR Notes 1 1</p>
+              </div>
+            </td>
+            <td class=\\"links\\">
+              <ul>
+                <li><a href=\\"https://example.com/test-cfr-link-1-1-1\\" target=\\"_blank\\">https://example.com/test-cfr-link-1-1-1</a> <br>
+                  <div>
+                    <p>Test CFR Link Description 1 1 1</p>
+                  </div>
+                </li>
+                <li><a href=\\"https://example.com/test-cfr-link-1-1-2\\" target=\\"_blank\\">https://example.com/test-cfr-link-1-1-2</a> <br>
+                  <div>
+                    <p>Test CFR Link Description 1 1 2</p>
+                  </div>
+                </li>
+              </ul>
+            </td>
+          </tr>
+          <tr>
+            <td class=\\"component table-primary\\"><a href=\\"/components/test-component-id-1\\">Test Component Name 1</a></td>
+            <td class=\\"teams\\">
+              <ul>
+                <li><a href=\\"/teams/test-team-id-1-1\\" class=\\"team-name\\">test-team-id-1-1</a>
+                  <!---->
+                  <!---->
+                </li>
+                <li><a href=\\"/teams/test-team-id-1-2\\" class=\\"team-name\\">test-team-id-1-2</a>
+                  <!---->
+                  <!---->
+                </li>
+              </ul>
+            </td>
+            <td class=\\"description\\">
+              <div>
+                <p>Test CFR Description 1 2</p>
+              </div>
+            </td>
+            <td class=\\"notes\\">
+              <div>
+                <p>Test CFR Notes 1 2</p>
+              </div>
+            </td>
+            <td class=\\"links\\">
+              <ul>
+                <li><a href=\\"https://example.com/test-cfr-link-1-2-1\\" target=\\"_blank\\">https://example.com/test-cfr-link-1-2-1</a> <br>
+                  <div>
+                    <p>Test CFR Link Description 1 2 1</p>
+                  </div>
+                </li>
+                <li><a href=\\"https://example.com/test-cfr-link-1-2-2\\" target=\\"_blank\\">https://example.com/test-cfr-link-1-2-2</a> <br>
+                  <div>
+                    <p>Test CFR Link Description 1 2 2</p>
+                  </div>
+                </li>
+              </ul>
+            </td>
+          </tr>
+          <tr>
+            <td class=\\"component table-primary\\"><a href=\\"/components/test-component-id-2\\">Test Component Name 2</a></td>
+            <td class=\\"teams\\">
+              <ul>
+                <li><a href=\\"/teams/test-team-id-2-1\\" class=\\"team-name\\">test-team-id-2-1</a>
+                  <!---->
+                  <!---->
+                </li>
+                <li><a href=\\"/teams/test-team-id-2-2\\" class=\\"team-name\\">test-team-id-2-2</a>
+                  <!---->
+                  <!---->
+                </li>
+              </ul>
+            </td>
+            <td class=\\"description\\">
+              <div>
+                <p>Test CFR Description 2 1</p>
+              </div>
+            </td>
+            <td class=\\"notes\\">
+              <div>
+                <p>Test CFR Notes 2 1</p>
+              </div>
+            </td>
+            <td class=\\"links\\">
+              <ul>
+                <li><a href=\\"https://example.com/test-cfr-link-2-1-1\\" target=\\"_blank\\">https://example.com/test-cfr-link-2-1-1</a> <br>
+                  <div>
+                    <p>Test CFR Link Description 2 1 1</p>
+                  </div>
+                </li>
+                <li><a href=\\"https://example.com/test-cfr-link-2-1-2\\" target=\\"_blank\\">https://example.com/test-cfr-link-2-1-2</a> <br>
+                  <div>
+                    <p>Test CFR Link Description 2 1 2</p>
+                  </div>
+                </li>
+              </ul>
+            </td>
+          </tr>
+          <tr>
+            <td class=\\"component table-primary\\"><a href=\\"/components/test-component-id-2\\">Test Component Name 2</a></td>
+            <td class=\\"teams\\">
+              <ul>
+                <li><a href=\\"/teams/test-team-id-2-1\\" class=\\"team-name\\">test-team-id-2-1</a>
+                  <!---->
+                  <!---->
+                </li>
+                <li><a href=\\"/teams/test-team-id-2-2\\" class=\\"team-name\\">test-team-id-2-2</a>
+                  <!---->
+                  <!---->
+                </li>
+              </ul>
+            </td>
+            <td class=\\"description\\">
+              <div>
+                <p>Test CFR Description 2 2</p>
+              </div>
+            </td>
+            <td class=\\"notes\\">
+              <div>
+                <p>Test CFR Notes 2 2</p>
+              </div>
+            </td>
+            <td class=\\"links\\">
+              <ul>
+                <li><a href=\\"https://example.com/test-cfr-link-2-2-1\\" target=\\"_blank\\">https://example.com/test-cfr-link-2-2-1</a> <br>
+                  <div>
+                    <p>Test CFR Link Description 2 2 1</p>
+                  </div>
+                </li>
+                <li><a href=\\"https://example.com/test-cfr-link-2-2-2\\" target=\\"_blank\\">https://example.com/test-cfr-link-2-2-2</a> <br>
+                  <div>
+                    <p>Test CFR Link Description 2 2 2</p>
+                  </div>
+                </li>
+              </ul>
+            </td>
+          </tr>
+          <tr>
+            <td class=\\"component table-primary\\"><a href=\\"/components/test-component-id-3\\">Test Component Name 3</a></td>
+            <td class=\\"teams\\">
+              <ul>
+                <li><a href=\\"/teams/test-team-id-3-1\\" class=\\"team-name\\">test-team-id-3-1</a>
+                  <!---->
+                  <!---->
+                </li>
+                <li><a href=\\"/teams/test-team-id-3-2\\" class=\\"team-name\\">test-team-id-3-2</a>
+                  <!---->
+                  <!---->
+                </li>
+              </ul>
+            </td>
+            <td class=\\"description\\">
+              <div>
+                <p>Test CFR Description 3 1</p>
+              </div>
+            </td>
+            <td class=\\"notes\\">
+              <div>
+                <p>Test CFR Notes 3 1</p>
+              </div>
+            </td>
+            <td class=\\"links\\">
+              <ul>
+                <li><a href=\\"https://example.com/test-cfr-link-3-1-1\\" target=\\"_blank\\">https://example.com/test-cfr-link-3-1-1</a> <br>
+                  <div>
+                    <p>Test CFR Link Description 3 1 1</p>
+                  </div>
+                </li>
+                <li><a href=\\"https://example.com/test-cfr-link-3-1-2\\" target=\\"_blank\\">https://example.com/test-cfr-link-3-1-2</a> <br>
+                  <div>
+                    <p>Test CFR Link Description 3 1 2</p>
+                  </div>
+                </li>
+              </ul>
+            </td>
+          </tr>
+          <tr>
+            <td class=\\"component table-primary\\"><a href=\\"/components/test-component-id-3\\">Test Component Name 3</a></td>
+            <td class=\\"teams\\">
+              <ul>
+                <li><a href=\\"/teams/test-team-id-3-1\\" class=\\"team-name\\">test-team-id-3-1</a>
+                  <!---->
+                  <!---->
+                </li>
+                <li><a href=\\"/teams/test-team-id-3-2\\" class=\\"team-name\\">test-team-id-3-2</a>
+                  <!---->
+                  <!---->
+                </li>
+              </ul>
+            </td>
+            <td class=\\"description\\">
+              <div>
+                <p>Test CFR Description 3 2</p>
+              </div>
+            </td>
+            <td class=\\"notes\\">
+              <div>
+                <p>Test CFR Notes 3 2</p>
+              </div>
+            </td>
+            <td class=\\"links\\">
+              <ul>
+                <li><a href=\\"https://example.com/test-cfr-link-3-2-1\\" target=\\"_blank\\">https://example.com/test-cfr-link-3-2-1</a> <br>
+                  <div>
+                    <p>Test CFR Link Description 3 2 1</p>
+                  </div>
+                </li>
+                <li><a href=\\"https://example.com/test-cfr-link-3-2-2\\" target=\\"_blank\\">https://example.com/test-cfr-link-3-2-2</a> <br>
+                  <div>
+                    <p>Test CFR Link Description 3 2 2</p>
+                  </div>
+                </li>
+              </ul>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
     <!---->
     <!---->
@@ -417,7 +413,7 @@ exports[`CrossFunctionalRequirementsView when components prop is set to multiple
 
 exports[`CrossFunctionalRequirementsView when components prop is set to multiple components with cross functional requirements when selecting a filter, the filter is applied to the cross functional requirements in the table 1`] = `
 "<div>
-  <div class=\\"mt-3 mb-4\\" components=\\"[object Object],[object Object],[object Object]\\"><button id=\\"toggleFilters\\" type=\\"button\\" class=\\"btn btn-primary collapsed\\" aria-expanded=\\"false\\" aria-controls=\\"filters\\"><svg viewBox=\\"0 0 16 16\\" width=\\"1em\\" height=\\"1em\\" focusable=\\"false\\" role=\\"img\\" aria-label=\\"blank\\" aria-hidden=\\"true\\" xmlns=\\"http://www.w3.org/2000/svg\\" fill=\\"currentColor\\" class=\\"bi-blank b-icon bi\\">
+  <div class=\\"mt-3 mb-4\\" components=\\"[object Object],[object Object],[object Object]\\"> <button id=\\"toggleFilters\\" type=\\"button\\" class=\\"btn btn-primary collapsed\\" aria-expanded=\\"false\\" aria-controls=\\"filters\\"><svg viewBox=\\"0 0 16 16\\" width=\\"1em\\" height=\\"1em\\" focusable=\\"false\\" role=\\"img\\" aria-label=\\"blank\\" aria-hidden=\\"true\\" xmlns=\\"http://www.w3.org/2000/svg\\" fill=\\"currentColor\\" class=\\"bi-blank b-icon bi\\">
         <g></g>
       </svg> Filters
     </button>
@@ -555,255 +551,253 @@ exports[`CrossFunctionalRequirementsView when components prop is set to multiple
     <div class=\\"card-body\\">
       <h4 class=\\"card-title\\">6 Cross Functional Requirements</h4>
       <!---->
-      <p class=\\"card-text\\">
-        <table class=\\"table table-dark\\">
-          <thead>
-            <tr>
-              <th class=\\"component\\">Component</th>
-              <th class=\\"teams\\">Teams</th>
-              <th class=\\"description\\">Description</th>
-              <th class=\\"notes\\">Notes</th>
-              <th class=\\"links\\">Links</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td class=\\"component table-primary\\"><a href=\\"/components/test-component-id-1\\">Test Component Name 1</a></td>
-              <td class=\\"teams\\">
-                <ul>
-                  <li><a href=\\"/teams/test-team-id-1-1\\" class=\\"team-name\\">test-team-id-1-1</a>
-                    <!---->
-                    <!---->
-                  </li>
-                  <li><a href=\\"/teams/test-team-id-1-2\\" class=\\"team-name\\">test-team-id-1-2</a>
-                    <!---->
-                    <!---->
-                  </li>
-                </ul>
-              </td>
-              <td class=\\"description\\">
-                <div>
-                  <p>Test CFR Description 1 1</p>
-                </div>
-              </td>
-              <td class=\\"notes\\">
-                <div>
-                  <p>Test CFR Notes 1 1</p>
-                </div>
-              </td>
-              <td class=\\"links\\">
-                <ul>
-                  <li><a href=\\"https://example.com/test-cfr-link-1-1-1\\" target=\\"_blank\\">https://example.com/test-cfr-link-1-1-1</a> <br>
-                    <div>
-                      <p>Test CFR Link Description 1 1 1</p>
-                    </div>
-                  </li>
-                  <li><a href=\\"https://example.com/test-cfr-link-1-1-2\\" target=\\"_blank\\">https://example.com/test-cfr-link-1-1-2</a> <br>
-                    <div>
-                      <p>Test CFR Link Description 1 1 2</p>
-                    </div>
-                  </li>
-                </ul>
-              </td>
-            </tr>
-            <tr>
-              <td class=\\"component table-primary\\"><a href=\\"/components/test-component-id-1\\">Test Component Name 1</a></td>
-              <td class=\\"teams\\">
-                <ul>
-                  <li><a href=\\"/teams/test-team-id-1-1\\" class=\\"team-name\\">test-team-id-1-1</a>
-                    <!---->
-                    <!---->
-                  </li>
-                  <li><a href=\\"/teams/test-team-id-1-2\\" class=\\"team-name\\">test-team-id-1-2</a>
-                    <!---->
-                    <!---->
-                  </li>
-                </ul>
-              </td>
-              <td class=\\"description\\">
-                <div>
-                  <p>Test CFR Description 1 2</p>
-                </div>
-              </td>
-              <td class=\\"notes\\">
-                <div>
-                  <p>Test CFR Notes 1 2</p>
-                </div>
-              </td>
-              <td class=\\"links\\">
-                <ul>
-                  <li><a href=\\"https://example.com/test-cfr-link-1-2-1\\" target=\\"_blank\\">https://example.com/test-cfr-link-1-2-1</a> <br>
-                    <div>
-                      <p>Test CFR Link Description 1 2 1</p>
-                    </div>
-                  </li>
-                  <li><a href=\\"https://example.com/test-cfr-link-1-2-2\\" target=\\"_blank\\">https://example.com/test-cfr-link-1-2-2</a> <br>
-                    <div>
-                      <p>Test CFR Link Description 1 2 2</p>
-                    </div>
-                  </li>
-                </ul>
-              </td>
-            </tr>
-            <tr>
-              <td class=\\"component table-primary\\"><a href=\\"/components/test-component-id-2\\">Test Component Name 2</a></td>
-              <td class=\\"teams\\">
-                <ul>
-                  <li><a href=\\"/teams/test-team-id-2-1\\" class=\\"team-name\\">test-team-id-2-1</a>
-                    <!---->
-                    <!---->
-                  </li>
-                  <li><a href=\\"/teams/test-team-id-2-2\\" class=\\"team-name\\">test-team-id-2-2</a>
-                    <!---->
-                    <!---->
-                  </li>
-                </ul>
-              </td>
-              <td class=\\"description\\">
-                <div>
-                  <p>Test CFR Description 2 1</p>
-                </div>
-              </td>
-              <td class=\\"notes\\">
-                <div>
-                  <p>Test CFR Notes 2 1</p>
-                </div>
-              </td>
-              <td class=\\"links\\">
-                <ul>
-                  <li><a href=\\"https://example.com/test-cfr-link-2-1-1\\" target=\\"_blank\\">https://example.com/test-cfr-link-2-1-1</a> <br>
-                    <div>
-                      <p>Test CFR Link Description 2 1 1</p>
-                    </div>
-                  </li>
-                  <li><a href=\\"https://example.com/test-cfr-link-2-1-2\\" target=\\"_blank\\">https://example.com/test-cfr-link-2-1-2</a> <br>
-                    <div>
-                      <p>Test CFR Link Description 2 1 2</p>
-                    </div>
-                  </li>
-                </ul>
-              </td>
-            </tr>
-            <tr>
-              <td class=\\"component table-primary\\"><a href=\\"/components/test-component-id-2\\">Test Component Name 2</a></td>
-              <td class=\\"teams\\">
-                <ul>
-                  <li><a href=\\"/teams/test-team-id-2-1\\" class=\\"team-name\\">test-team-id-2-1</a>
-                    <!---->
-                    <!---->
-                  </li>
-                  <li><a href=\\"/teams/test-team-id-2-2\\" class=\\"team-name\\">test-team-id-2-2</a>
-                    <!---->
-                    <!---->
-                  </li>
-                </ul>
-              </td>
-              <td class=\\"description\\">
-                <div>
-                  <p>Test CFR Description 2 2</p>
-                </div>
-              </td>
-              <td class=\\"notes\\">
-                <div>
-                  <p>Test CFR Notes 2 2</p>
-                </div>
-              </td>
-              <td class=\\"links\\">
-                <ul>
-                  <li><a href=\\"https://example.com/test-cfr-link-2-2-1\\" target=\\"_blank\\">https://example.com/test-cfr-link-2-2-1</a> <br>
-                    <div>
-                      <p>Test CFR Link Description 2 2 1</p>
-                    </div>
-                  </li>
-                  <li><a href=\\"https://example.com/test-cfr-link-2-2-2\\" target=\\"_blank\\">https://example.com/test-cfr-link-2-2-2</a> <br>
-                    <div>
-                      <p>Test CFR Link Description 2 2 2</p>
-                    </div>
-                  </li>
-                </ul>
-              </td>
-            </tr>
-            <tr>
-              <td class=\\"component table-primary\\"><a href=\\"/components/test-component-id-3\\">Test Component Name 3</a></td>
-              <td class=\\"teams\\">
-                <ul>
-                  <li><a href=\\"/teams/test-team-id-3-1\\" class=\\"team-name\\">test-team-id-3-1</a>
-                    <!---->
-                    <!---->
-                  </li>
-                  <li><a href=\\"/teams/test-team-id-3-2\\" class=\\"team-name\\">test-team-id-3-2</a>
-                    <!---->
-                    <!---->
-                  </li>
-                </ul>
-              </td>
-              <td class=\\"description\\">
-                <div>
-                  <p>Test CFR Description 3 1</p>
-                </div>
-              </td>
-              <td class=\\"notes\\">
-                <div>
-                  <p>Test CFR Notes 3 1</p>
-                </div>
-              </td>
-              <td class=\\"links\\">
-                <ul>
-                  <li><a href=\\"https://example.com/test-cfr-link-3-1-1\\" target=\\"_blank\\">https://example.com/test-cfr-link-3-1-1</a> <br>
-                    <div>
-                      <p>Test CFR Link Description 3 1 1</p>
-                    </div>
-                  </li>
-                  <li><a href=\\"https://example.com/test-cfr-link-3-1-2\\" target=\\"_blank\\">https://example.com/test-cfr-link-3-1-2</a> <br>
-                    <div>
-                      <p>Test CFR Link Description 3 1 2</p>
-                    </div>
-                  </li>
-                </ul>
-              </td>
-            </tr>
-            <tr>
-              <td class=\\"component table-primary\\"><a href=\\"/components/test-component-id-3\\">Test Component Name 3</a></td>
-              <td class=\\"teams\\">
-                <ul>
-                  <li><a href=\\"/teams/test-team-id-3-1\\" class=\\"team-name\\">test-team-id-3-1</a>
-                    <!---->
-                    <!---->
-                  </li>
-                  <li><a href=\\"/teams/test-team-id-3-2\\" class=\\"team-name\\">test-team-id-3-2</a>
-                    <!---->
-                    <!---->
-                  </li>
-                </ul>
-              </td>
-              <td class=\\"description\\">
-                <div>
-                  <p>Test CFR Description 3 2</p>
-                </div>
-              </td>
-              <td class=\\"notes\\">
-                <div>
-                  <p>Test CFR Notes 3 2</p>
-                </div>
-              </td>
-              <td class=\\"links\\">
-                <ul>
-                  <li><a href=\\"https://example.com/test-cfr-link-3-2-1\\" target=\\"_blank\\">https://example.com/test-cfr-link-3-2-1</a> <br>
-                    <div>
-                      <p>Test CFR Link Description 3 2 1</p>
-                    </div>
-                  </li>
-                  <li><a href=\\"https://example.com/test-cfr-link-3-2-2\\" target=\\"_blank\\">https://example.com/test-cfr-link-3-2-2</a> <br>
-                    <div>
-                      <p>Test CFR Link Description 3 2 2</p>
-                    </div>
-                  </li>
-                </ul>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </p>
+      <table class=\\"table table-dark\\">
+        <thead>
+          <tr>
+            <th class=\\"component\\">Component</th>
+            <th class=\\"teams\\">Teams</th>
+            <th class=\\"description\\">Description</th>
+            <th class=\\"notes\\">Notes</th>
+            <th class=\\"links\\">Links</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class=\\"component table-primary\\"><a href=\\"/components/test-component-id-1\\">Test Component Name 1</a></td>
+            <td class=\\"teams\\">
+              <ul>
+                <li><a href=\\"/teams/test-team-id-1-1\\" class=\\"team-name\\">test-team-id-1-1</a>
+                  <!---->
+                  <!---->
+                </li>
+                <li><a href=\\"/teams/test-team-id-1-2\\" class=\\"team-name\\">test-team-id-1-2</a>
+                  <!---->
+                  <!---->
+                </li>
+              </ul>
+            </td>
+            <td class=\\"description\\">
+              <div>
+                <p>Test CFR Description 1 1</p>
+              </div>
+            </td>
+            <td class=\\"notes\\">
+              <div>
+                <p>Test CFR Notes 1 1</p>
+              </div>
+            </td>
+            <td class=\\"links\\">
+              <ul>
+                <li><a href=\\"https://example.com/test-cfr-link-1-1-1\\" target=\\"_blank\\">https://example.com/test-cfr-link-1-1-1</a> <br>
+                  <div>
+                    <p>Test CFR Link Description 1 1 1</p>
+                  </div>
+                </li>
+                <li><a href=\\"https://example.com/test-cfr-link-1-1-2\\" target=\\"_blank\\">https://example.com/test-cfr-link-1-1-2</a> <br>
+                  <div>
+                    <p>Test CFR Link Description 1 1 2</p>
+                  </div>
+                </li>
+              </ul>
+            </td>
+          </tr>
+          <tr>
+            <td class=\\"component table-primary\\"><a href=\\"/components/test-component-id-1\\">Test Component Name 1</a></td>
+            <td class=\\"teams\\">
+              <ul>
+                <li><a href=\\"/teams/test-team-id-1-1\\" class=\\"team-name\\">test-team-id-1-1</a>
+                  <!---->
+                  <!---->
+                </li>
+                <li><a href=\\"/teams/test-team-id-1-2\\" class=\\"team-name\\">test-team-id-1-2</a>
+                  <!---->
+                  <!---->
+                </li>
+              </ul>
+            </td>
+            <td class=\\"description\\">
+              <div>
+                <p>Test CFR Description 1 2</p>
+              </div>
+            </td>
+            <td class=\\"notes\\">
+              <div>
+                <p>Test CFR Notes 1 2</p>
+              </div>
+            </td>
+            <td class=\\"links\\">
+              <ul>
+                <li><a href=\\"https://example.com/test-cfr-link-1-2-1\\" target=\\"_blank\\">https://example.com/test-cfr-link-1-2-1</a> <br>
+                  <div>
+                    <p>Test CFR Link Description 1 2 1</p>
+                  </div>
+                </li>
+                <li><a href=\\"https://example.com/test-cfr-link-1-2-2\\" target=\\"_blank\\">https://example.com/test-cfr-link-1-2-2</a> <br>
+                  <div>
+                    <p>Test CFR Link Description 1 2 2</p>
+                  </div>
+                </li>
+              </ul>
+            </td>
+          </tr>
+          <tr>
+            <td class=\\"component table-primary\\"><a href=\\"/components/test-component-id-2\\">Test Component Name 2</a></td>
+            <td class=\\"teams\\">
+              <ul>
+                <li><a href=\\"/teams/test-team-id-2-1\\" class=\\"team-name\\">test-team-id-2-1</a>
+                  <!---->
+                  <!---->
+                </li>
+                <li><a href=\\"/teams/test-team-id-2-2\\" class=\\"team-name\\">test-team-id-2-2</a>
+                  <!---->
+                  <!---->
+                </li>
+              </ul>
+            </td>
+            <td class=\\"description\\">
+              <div>
+                <p>Test CFR Description 2 1</p>
+              </div>
+            </td>
+            <td class=\\"notes\\">
+              <div>
+                <p>Test CFR Notes 2 1</p>
+              </div>
+            </td>
+            <td class=\\"links\\">
+              <ul>
+                <li><a href=\\"https://example.com/test-cfr-link-2-1-1\\" target=\\"_blank\\">https://example.com/test-cfr-link-2-1-1</a> <br>
+                  <div>
+                    <p>Test CFR Link Description 2 1 1</p>
+                  </div>
+                </li>
+                <li><a href=\\"https://example.com/test-cfr-link-2-1-2\\" target=\\"_blank\\">https://example.com/test-cfr-link-2-1-2</a> <br>
+                  <div>
+                    <p>Test CFR Link Description 2 1 2</p>
+                  </div>
+                </li>
+              </ul>
+            </td>
+          </tr>
+          <tr>
+            <td class=\\"component table-primary\\"><a href=\\"/components/test-component-id-2\\">Test Component Name 2</a></td>
+            <td class=\\"teams\\">
+              <ul>
+                <li><a href=\\"/teams/test-team-id-2-1\\" class=\\"team-name\\">test-team-id-2-1</a>
+                  <!---->
+                  <!---->
+                </li>
+                <li><a href=\\"/teams/test-team-id-2-2\\" class=\\"team-name\\">test-team-id-2-2</a>
+                  <!---->
+                  <!---->
+                </li>
+              </ul>
+            </td>
+            <td class=\\"description\\">
+              <div>
+                <p>Test CFR Description 2 2</p>
+              </div>
+            </td>
+            <td class=\\"notes\\">
+              <div>
+                <p>Test CFR Notes 2 2</p>
+              </div>
+            </td>
+            <td class=\\"links\\">
+              <ul>
+                <li><a href=\\"https://example.com/test-cfr-link-2-2-1\\" target=\\"_blank\\">https://example.com/test-cfr-link-2-2-1</a> <br>
+                  <div>
+                    <p>Test CFR Link Description 2 2 1</p>
+                  </div>
+                </li>
+                <li><a href=\\"https://example.com/test-cfr-link-2-2-2\\" target=\\"_blank\\">https://example.com/test-cfr-link-2-2-2</a> <br>
+                  <div>
+                    <p>Test CFR Link Description 2 2 2</p>
+                  </div>
+                </li>
+              </ul>
+            </td>
+          </tr>
+          <tr>
+            <td class=\\"component table-primary\\"><a href=\\"/components/test-component-id-3\\">Test Component Name 3</a></td>
+            <td class=\\"teams\\">
+              <ul>
+                <li><a href=\\"/teams/test-team-id-3-1\\" class=\\"team-name\\">test-team-id-3-1</a>
+                  <!---->
+                  <!---->
+                </li>
+                <li><a href=\\"/teams/test-team-id-3-2\\" class=\\"team-name\\">test-team-id-3-2</a>
+                  <!---->
+                  <!---->
+                </li>
+              </ul>
+            </td>
+            <td class=\\"description\\">
+              <div>
+                <p>Test CFR Description 3 1</p>
+              </div>
+            </td>
+            <td class=\\"notes\\">
+              <div>
+                <p>Test CFR Notes 3 1</p>
+              </div>
+            </td>
+            <td class=\\"links\\">
+              <ul>
+                <li><a href=\\"https://example.com/test-cfr-link-3-1-1\\" target=\\"_blank\\">https://example.com/test-cfr-link-3-1-1</a> <br>
+                  <div>
+                    <p>Test CFR Link Description 3 1 1</p>
+                  </div>
+                </li>
+                <li><a href=\\"https://example.com/test-cfr-link-3-1-2\\" target=\\"_blank\\">https://example.com/test-cfr-link-3-1-2</a> <br>
+                  <div>
+                    <p>Test CFR Link Description 3 1 2</p>
+                  </div>
+                </li>
+              </ul>
+            </td>
+          </tr>
+          <tr>
+            <td class=\\"component table-primary\\"><a href=\\"/components/test-component-id-3\\">Test Component Name 3</a></td>
+            <td class=\\"teams\\">
+              <ul>
+                <li><a href=\\"/teams/test-team-id-3-1\\" class=\\"team-name\\">test-team-id-3-1</a>
+                  <!---->
+                  <!---->
+                </li>
+                <li><a href=\\"/teams/test-team-id-3-2\\" class=\\"team-name\\">test-team-id-3-2</a>
+                  <!---->
+                  <!---->
+                </li>
+              </ul>
+            </td>
+            <td class=\\"description\\">
+              <div>
+                <p>Test CFR Description 3 2</p>
+              </div>
+            </td>
+            <td class=\\"notes\\">
+              <div>
+                <p>Test CFR Notes 3 2</p>
+              </div>
+            </td>
+            <td class=\\"links\\">
+              <ul>
+                <li><a href=\\"https://example.com/test-cfr-link-3-2-1\\" target=\\"_blank\\">https://example.com/test-cfr-link-3-2-1</a> <br>
+                  <div>
+                    <p>Test CFR Link Description 3 2 1</p>
+                  </div>
+                </li>
+                <li><a href=\\"https://example.com/test-cfr-link-3-2-2\\" target=\\"_blank\\">https://example.com/test-cfr-link-3-2-2</a> <br>
+                  <div>
+                    <p>Test CFR Link Description 3 2 2</p>
+                  </div>
+                </li>
+              </ul>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
     <!---->
     <!---->
@@ -813,7 +807,7 @@ exports[`CrossFunctionalRequirementsView when components prop is set to multiple
 
 exports[`CrossFunctionalRequirementsView when components prop is set to multiple components with cross functional requirements when selecting a filter, the filter is applied to the cross functional requirements in the table 2`] = `
 "<div>
-  <div class=\\"mt-3 mb-4\\" components=\\"[object Object],[object Object],[object Object]\\"><button id=\\"toggleFilters\\" type=\\"button\\" class=\\"btn btn-primary collapsed\\" aria-expanded=\\"false\\" aria-controls=\\"filters\\"><svg viewBox=\\"0 0 16 16\\" width=\\"1em\\" height=\\"1em\\" focusable=\\"false\\" role=\\"img\\" aria-label=\\"blank\\" aria-hidden=\\"true\\" xmlns=\\"http://www.w3.org/2000/svg\\" fill=\\"currentColor\\" class=\\"bi-blank b-icon bi\\">
+  <div class=\\"mt-3 mb-4\\" components=\\"[object Object],[object Object],[object Object]\\"> <button id=\\"toggleFilters\\" type=\\"button\\" class=\\"btn btn-primary collapsed\\" aria-expanded=\\"false\\" aria-controls=\\"filters\\"><svg viewBox=\\"0 0 16 16\\" width=\\"1em\\" height=\\"1em\\" focusable=\\"false\\" role=\\"img\\" aria-label=\\"blank\\" aria-hidden=\\"true\\" xmlns=\\"http://www.w3.org/2000/svg\\" fill=\\"currentColor\\" class=\\"bi-blank b-icon bi\\">
         <g></g>
       </svg> Filters
     </button>
@@ -951,99 +945,97 @@ exports[`CrossFunctionalRequirementsView when components prop is set to multiple
     <div class=\\"card-body\\">
       <h4 class=\\"card-title\\">2 Cross Functional Requirements</h4>
       <!---->
-      <p class=\\"card-text\\">
-        <table class=\\"table table-dark\\">
-          <thead>
-            <tr>
-              <th class=\\"component\\">Component</th>
-              <th class=\\"teams\\">Teams</th>
-              <th class=\\"description\\">Description</th>
-              <th class=\\"notes\\">Notes</th>
-              <th class=\\"links\\">Links</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td class=\\"component table-primary\\"><a href=\\"/components/test-component-id-1\\">Test Component Name 1</a></td>
-              <td class=\\"teams\\">
-                <ul>
-                  <li><a href=\\"/teams/test-team-id-1-1\\" class=\\"team-name\\">test-team-id-1-1</a>
-                    <!---->
-                    <!---->
-                  </li>
-                  <li><a href=\\"/teams/test-team-id-1-2\\" class=\\"team-name\\">test-team-id-1-2</a>
-                    <!---->
-                    <!---->
-                  </li>
-                </ul>
-              </td>
-              <td class=\\"description\\">
-                <div>
-                  <p>Test CFR Description 1 1</p>
-                </div>
-              </td>
-              <td class=\\"notes\\">
-                <div>
-                  <p>Test CFR Notes 1 1</p>
-                </div>
-              </td>
-              <td class=\\"links\\">
-                <ul>
-                  <li><a href=\\"https://example.com/test-cfr-link-1-1-1\\" target=\\"_blank\\">https://example.com/test-cfr-link-1-1-1</a> <br>
-                    <div>
-                      <p>Test CFR Link Description 1 1 1</p>
-                    </div>
-                  </li>
-                  <li><a href=\\"https://example.com/test-cfr-link-1-1-2\\" target=\\"_blank\\">https://example.com/test-cfr-link-1-1-2</a> <br>
-                    <div>
-                      <p>Test CFR Link Description 1 1 2</p>
-                    </div>
-                  </li>
-                </ul>
-              </td>
-            </tr>
-            <tr>
-              <td class=\\"component table-primary\\"><a href=\\"/components/test-component-id-1\\">Test Component Name 1</a></td>
-              <td class=\\"teams\\">
-                <ul>
-                  <li><a href=\\"/teams/test-team-id-1-1\\" class=\\"team-name\\">test-team-id-1-1</a>
-                    <!---->
-                    <!---->
-                  </li>
-                  <li><a href=\\"/teams/test-team-id-1-2\\" class=\\"team-name\\">test-team-id-1-2</a>
-                    <!---->
-                    <!---->
-                  </li>
-                </ul>
-              </td>
-              <td class=\\"description\\">
-                <div>
-                  <p>Test CFR Description 1 2</p>
-                </div>
-              </td>
-              <td class=\\"notes\\">
-                <div>
-                  <p>Test CFR Notes 1 2</p>
-                </div>
-              </td>
-              <td class=\\"links\\">
-                <ul>
-                  <li><a href=\\"https://example.com/test-cfr-link-1-2-1\\" target=\\"_blank\\">https://example.com/test-cfr-link-1-2-1</a> <br>
-                    <div>
-                      <p>Test CFR Link Description 1 2 1</p>
-                    </div>
-                  </li>
-                  <li><a href=\\"https://example.com/test-cfr-link-1-2-2\\" target=\\"_blank\\">https://example.com/test-cfr-link-1-2-2</a> <br>
-                    <div>
-                      <p>Test CFR Link Description 1 2 2</p>
-                    </div>
-                  </li>
-                </ul>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </p>
+      <table class=\\"table table-dark\\">
+        <thead>
+          <tr>
+            <th class=\\"component\\">Component</th>
+            <th class=\\"teams\\">Teams</th>
+            <th class=\\"description\\">Description</th>
+            <th class=\\"notes\\">Notes</th>
+            <th class=\\"links\\">Links</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class=\\"component table-primary\\"><a href=\\"/components/test-component-id-1\\">Test Component Name 1</a></td>
+            <td class=\\"teams\\">
+              <ul>
+                <li><a href=\\"/teams/test-team-id-1-1\\" class=\\"team-name\\">test-team-id-1-1</a>
+                  <!---->
+                  <!---->
+                </li>
+                <li><a href=\\"/teams/test-team-id-1-2\\" class=\\"team-name\\">test-team-id-1-2</a>
+                  <!---->
+                  <!---->
+                </li>
+              </ul>
+            </td>
+            <td class=\\"description\\">
+              <div>
+                <p>Test CFR Description 1 1</p>
+              </div>
+            </td>
+            <td class=\\"notes\\">
+              <div>
+                <p>Test CFR Notes 1 1</p>
+              </div>
+            </td>
+            <td class=\\"links\\">
+              <ul>
+                <li><a href=\\"https://example.com/test-cfr-link-1-1-1\\" target=\\"_blank\\">https://example.com/test-cfr-link-1-1-1</a> <br>
+                  <div>
+                    <p>Test CFR Link Description 1 1 1</p>
+                  </div>
+                </li>
+                <li><a href=\\"https://example.com/test-cfr-link-1-1-2\\" target=\\"_blank\\">https://example.com/test-cfr-link-1-1-2</a> <br>
+                  <div>
+                    <p>Test CFR Link Description 1 1 2</p>
+                  </div>
+                </li>
+              </ul>
+            </td>
+          </tr>
+          <tr>
+            <td class=\\"component table-primary\\"><a href=\\"/components/test-component-id-1\\">Test Component Name 1</a></td>
+            <td class=\\"teams\\">
+              <ul>
+                <li><a href=\\"/teams/test-team-id-1-1\\" class=\\"team-name\\">test-team-id-1-1</a>
+                  <!---->
+                  <!---->
+                </li>
+                <li><a href=\\"/teams/test-team-id-1-2\\" class=\\"team-name\\">test-team-id-1-2</a>
+                  <!---->
+                  <!---->
+                </li>
+              </ul>
+            </td>
+            <td class=\\"description\\">
+              <div>
+                <p>Test CFR Description 1 2</p>
+              </div>
+            </td>
+            <td class=\\"notes\\">
+              <div>
+                <p>Test CFR Notes 1 2</p>
+              </div>
+            </td>
+            <td class=\\"links\\">
+              <ul>
+                <li><a href=\\"https://example.com/test-cfr-link-1-2-1\\" target=\\"_blank\\">https://example.com/test-cfr-link-1-2-1</a> <br>
+                  <div>
+                    <p>Test CFR Link Description 1 2 1</p>
+                  </div>
+                </li>
+                <li><a href=\\"https://example.com/test-cfr-link-1-2-2\\" target=\\"_blank\\">https://example.com/test-cfr-link-1-2-2</a> <br>
+                  <div>
+                    <p>Test CFR Link Description 1 2 2</p>
+                  </div>
+                </li>
+              </ul>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
     <!---->
     <!---->

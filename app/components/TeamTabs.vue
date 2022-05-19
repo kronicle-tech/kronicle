@@ -1,7 +1,7 @@
 <template>
   <div class="my-3">
     <b-button class="my-1" :to="`/teams/${teamId}`">Info</b-button>
-    <b-button class="my-1" :to="`/teams/${teamId}/dependencies`">Dependencies</b-button>
+    <b-button class="my-1" :to="`/teams/${teamId}/dependencies`">Visualizations</b-button>
     <b-button class="my-1" :to="`/teams/${teamId}/components`">Components</b-button>
     <b-button class="my-1" :to="`/teams/${teamId}/cross-functional-requirements`">
       Cross Functional Requirements

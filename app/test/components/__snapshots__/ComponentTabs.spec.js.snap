@@ -2,7 +2,7 @@
 
 exports[`ComponentTabs renders the component 1`] = `
 "<div class=\\"my-3\\"><a href=\\"/components/test-component-id-1\\" target=\\"_self\\" class=\\"btn my-1 btn-secondary\\">Info</a> <a href=\\"/components/test-component-id-1/dependencies\\" target=\\"_self\\" class=\\"btn my-1 btn-secondary\\">
-    Dependencies
+    Visualizations
   </a> <a href=\\"/components/test-component-id-1/response-times\\" target=\\"_self\\" class=\\"btn my-1 btn-secondary\\">
     Response Times
   </a> <a href=\\"/components/test-component-id-1/downstream-response-times\\" target=\\"_self\\" class=\\"btn my-1 btn-secondary\\">
