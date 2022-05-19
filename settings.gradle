@@ -1,8 +1,6 @@
 pluginManagement {
     repositories {
         gradlePluginPortal()
-        // TODO: Remove when Spring Boot 2.7 is released
-        maven { url "https://repo.spring.io/milestone" }
     }
 
     plugins {

@@ -13,27 +13,23 @@ configurations {
 }
 
 dependencies {
-    annotationProcessor platform("org.springframework.boot:spring-boot-dependencies:$springBootVersionOverride")
+    annotationProcessor platform("org.springframework.boot:spring-boot-dependencies:$springBootVersion")
     annotationProcessor platform("org.springframework.cloud:spring-cloud-dependencies:$springCloudVersion")
-    implementation platform("org.springframework.boot:spring-boot-dependencies:$springBootVersionOverride")
+    implementation platform("org.springframework.boot:spring-boot-dependencies:$springBootVersion")
     implementation platform("org.springframework.cloud:spring-cloud-dependencies:$springCloudVersion")
-    compileOnly platform("org.springframework.boot:spring-boot-dependencies:$springBootVersionOverride")
+    compileOnly platform("org.springframework.boot:spring-boot-dependencies:$springBootVersion")
     compileOnly platform("org.springframework.cloud:spring-cloud-dependencies:$springCloudVersion")
-    developmentOnly platform("org.springframework.boot:spring-boot-dependencies:$springBootVersionOverride")
+    developmentOnly platform("org.springframework.boot:spring-boot-dependencies:$springBootVersion")
     developmentOnly platform("org.springframework.cloud:spring-cloud-dependencies:$springCloudVersion")
-    testAnnotationProcessor platform("org.springframework.boot:spring-boot-dependencies:$springBootVersionOverride")
+    testAnnotationProcessor platform("org.springframework.boot:spring-boot-dependencies:$springBootVersion")
     testAnnotationProcessor platform("org.springframework.cloud:spring-cloud-dependencies:$springCloudVersion")
-    testImplementation platform("org.springframework.boot:spring-boot-dependencies:$springBootVersionOverride")
+    testImplementation platform("org.springframework.boot:spring-boot-dependencies:$springBootVersion")
     testImplementation platform("org.springframework.cloud:spring-cloud-dependencies:$springCloudVersion")
 
     annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
 
     compileOnly "com.github.spotbugs:spotbugs-annotations:$spotBugsVersion"
     testCompileOnly "com.github.spotbugs:spotbugs-annotations:$spotBugsVersion"
-
-    // Resolves performance vulnerability https://github.com/FasterXML/jackson-databind/issues/2816
-    // TODO: Remove platform once a version of Spring Boot is released that includes this fix
-    implementation platform("com.fasterxml.jackson:jackson-bom:2.13.2.20220324")
 
     implementation project(":service-plugin-guice")
     implementation project(":service-utils")
