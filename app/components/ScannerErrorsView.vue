@@ -12,16 +12,14 @@
     <ComponentFilters :components="components" />
 
     <b-card :title="`${errorCount} Errors`" class="my-3">
-      <b-card-text>
-        <ScannerErrorTable :components="filteredComponents" />
-      </b-card-text>
+      <ScannerErrorTable :components="filteredComponents" />
     </b-card>
   </div>
 </template>
 
 <script lang="ts">
 import Vue, { PropType } from 'vue'
-import {BCard, BCardText, BListGroup, BListGroupItem} from 'bootstrap-vue'
+import {BCard, BListGroup, BListGroupItem} from 'bootstrap-vue'
 import { Component, ScannerError } from '~/types/kronicle-service'
 import ComponentFilters from '~/components/ComponentFilters.vue'
 import ScannerErrorTable from '~/components/ScannerErrorTable.vue'
@@ -29,7 +27,6 @@ import ScannerErrorTable from '~/components/ScannerErrorTable.vue'
 export default Vue.extend({
   components: {
     'b-card': BCard,
-    'b-card-text': BCardText,
     'b-list-group': BListGroup,
     'b-list-group-item': BListGroupItem,
     ComponentFilters,

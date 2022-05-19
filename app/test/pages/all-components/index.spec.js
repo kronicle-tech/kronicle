@@ -8,7 +8,7 @@ describe('Index', () => {
   async function createWrapper() {
     wrapper = await createPageWrapper(Index, {
       serviceRequests: {
-        '/v1/components?fields=components(id,name,typeId,tags,description,notes,responsibilities,teams,platformId)':
+        '/v1/components?fields=components(id,name,discovered,typeId,tags,description,notes,responsibilities,teams,platformId)':
           {
             responseBody: { components },
           },
@@ -27,9 +27,7 @@ describe('Index', () => {
 
   test('has the right page title', async () => {
     await createWrapper()
-    expect(wrapper.vm.$metaInfo.title).toBe(
-      'Kronicle - All Components'
-    )
+    expect(wrapper.vm.$metaInfo.title).toBe('Kronicle - All Components')
   })
 
   describe('when Get Components service endpoint returns an empty array', () => {

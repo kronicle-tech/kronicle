@@ -63,7 +63,7 @@ describe('Index', () => {
   test('has the right page title', async () => {
     await createWrapper()
     expect(wrapper.vm.$metaInfo.title).toBe(
-      'Kronicle - Test Component Name 1 - Dependencies'
+      'Kronicle - Test Component Name 1 - Visualizations'
     )
   })
 

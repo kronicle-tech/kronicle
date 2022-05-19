@@ -26,7 +26,7 @@ exports[`Index when Get Team service endpoint returns a team when the area has n
       href="/teams/test-team-id-1/dependencies"
       target="_self"
     >
-      Dependencies
+      Visualizations
     </a>
      
     <a
@@ -97,11 +97,7 @@ exports[`Index when Get Team service endpoint returns a team when the area has n
           0 Components
         </h4>
         <!---->
-        <p
-          class="card-text"
-        >
-          <!---->
-        </p>
+        <!---->
       </div>
       <!---->
       <!---->
@@ -136,7 +132,7 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
       href="/teams/test-team-id-1/dependencies"
       target="_self"
     >
-      Dependencies
+      Visualizations
     </a>
      
     <a
@@ -196,6 +192,20 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
       components="[object Object],[object Object],[object Object]"
     >
       <button
+        class="btn mr-2 my-1 btn-info"
+        type="button"
+      >
+        Documented Components
+      </button>
+       
+      <button
+        class="btn mr-2 my-1 btn-secondary"
+        type="button"
+      >
+        All Components
+      </button>
+       
+      <button
         aria-controls="filters"
         aria-expanded="false"
         class="btn btn-primary collapsed"
@@ -216,7 +226,7 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
         >
           <g />
         </svg>
-         Filters
+         Other Filters
   
       </button>
        
@@ -781,263 +791,259 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
           3 Components
         </h4>
         <!---->
-        <p
-          class="card-text"
+        <table
+          class="table table-dark"
         >
-          <table
-            class="table table-dark"
-          >
-            <thead>
-              <tr>
-                <th
-                  class="type"
+          <thead>
+            <tr>
+              <th
+                class="type"
+              >
+                Type
+              </th>
+               
+              <th
+                class="name"
+              >
+                Name
+              </th>
+               
+              <th>
+                Tags
+              </th>
+               
+              <th>
+                Teams
+              </th>
+               
+              <th>
+                Description
+              </th>
+            </tr>
+          </thead>
+           
+          <tbody>
+            <tr>
+              <td
+                class="type"
+              >
+                test-component-type-id-1
+              </td>
+               
+              <td
+                class="name table-primary"
+              >
+                <a
+                  href="/components/test-component-id-1"
                 >
-                  Type
-                </th>
-                 
-                <th
-                  class="name"
-                >
-                  Name
-                </th>
-                 
-                <th>
-                  Tags
-                </th>
-                 
-                <th>
-                  Teams
-                </th>
-                 
-                <th>
-                  Description
-                </th>
-              </tr>
-            </thead>
-             
-            <tbody>
-              <tr>
-                <td
-                  class="type"
-                >
-                  test-component-type-id-1
-                </td>
-                 
-                <td
-                  class="name table-primary"
-                >
-                  <a
-                    href="/components/test-component-id-1"
-                  >
-                    Test Component Name 1
-                  </a>
-                </td>
-                 
-                <td>
-                  <ul>
-                    <li>
-                      
+                  Test Component Name 1
+                </a>
+              </td>
+               
+              <td>
+                <ul>
+                  <li>
+                    
     test-tag-1-1
-                      <!---->
-                    </li>
-                    <li>
-                      
+                    <!---->
+                  </li>
+                  <li>
+                    
     test-tag-1-2
-                      <!---->
-                    </li>
-                  </ul>
-                </td>
-                 
-                <td>
-                  <ul>
-                    <li>
-                      <a
-                        class="team-name"
-                        href="/teams/test-team-id-1-1"
-                      >
-                        test-team-id-1-1
-                      </a>
-                       
-                      <!---->
-                       
-                      <!---->
-                    </li>
-                    <li>
-                      <a
-                        class="team-name"
-                        href="/teams/test-team-id-1-2"
-                      >
-                        test-team-id-1-2
-                      </a>
-                       
-                      <!---->
-                       
-                      <!---->
-                    </li>
-                  </ul>
-                </td>
-                 
-                <td
-                  class="description"
-                >
-                  <div>
-                    
+                    <!---->
+                  </li>
+                </ul>
+              </td>
+               
+              <td>
+                <ul>
+                  <li>
+                    <a
+                      class="team-name"
+                      href="/teams/test-team-id-1-1"
+                    >
+                      test-team-id-1-1
+                    </a>
+                     
+                    <!---->
+                     
+                    <!---->
+                  </li>
+                  <li>
+                    <a
+                      class="team-name"
+                      href="/teams/test-team-id-1-2"
+                    >
+                      test-team-id-1-2
+                    </a>
+                     
+                    <!---->
+                     
+                    <!---->
+                  </li>
+                </ul>
+              </td>
+               
+              <td
+                class="description"
+              >
+                <div>
+                  
 
-                    <p>
-                      Test Component Description 1
-                    </p>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td
-                  class="type"
+                  <p>
+                    Test Component Description 1
+                  </p>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td
+                class="type"
+              >
+                test-component-type-id-2
+              </td>
+               
+              <td
+                class="name table-primary"
+              >
+                <a
+                  href="/components/test-component-id-2"
                 >
-                  test-component-type-id-2
-                </td>
-                 
-                <td
-                  class="name table-primary"
-                >
-                  <a
-                    href="/components/test-component-id-2"
-                  >
-                    Test Component Name 2
-                  </a>
-                </td>
-                 
-                <td>
-                  <ul>
-                    <li>
-                      
+                  Test Component Name 2
+                </a>
+              </td>
+               
+              <td>
+                <ul>
+                  <li>
+                    
     test-tag-2-1
-                      <!---->
-                    </li>
-                    <li>
-                      
+                    <!---->
+                  </li>
+                  <li>
+                    
     test-tag-2-2
-                      <!---->
-                    </li>
-                  </ul>
-                </td>
-                 
-                <td>
-                  <ul>
-                    <li>
-                      <a
-                        class="team-name"
-                        href="/teams/test-team-id-2-1"
-                      >
-                        test-team-id-2-1
-                      </a>
-                       
-                      <!---->
-                       
-                      <!---->
-                    </li>
-                    <li>
-                      <a
-                        class="team-name"
-                        href="/teams/test-team-id-2-2"
-                      >
-                        test-team-id-2-2
-                      </a>
-                       
-                      <!---->
-                       
-                      <!---->
-                    </li>
-                  </ul>
-                </td>
-                 
-                <td
-                  class="description"
-                >
-                  <div>
-                    
+                    <!---->
+                  </li>
+                </ul>
+              </td>
+               
+              <td>
+                <ul>
+                  <li>
+                    <a
+                      class="team-name"
+                      href="/teams/test-team-id-2-1"
+                    >
+                      test-team-id-2-1
+                    </a>
+                     
+                    <!---->
+                     
+                    <!---->
+                  </li>
+                  <li>
+                    <a
+                      class="team-name"
+                      href="/teams/test-team-id-2-2"
+                    >
+                      test-team-id-2-2
+                    </a>
+                     
+                    <!---->
+                     
+                    <!---->
+                  </li>
+                </ul>
+              </td>
+               
+              <td
+                class="description"
+              >
+                <div>
+                  
 
-                    <p>
-                      Test Component Description 2
-                    </p>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td
-                  class="type"
+                  <p>
+                    Test Component Description 2
+                  </p>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td
+                class="type"
+              >
+                test-component-type-id-3
+              </td>
+               
+              <td
+                class="name table-primary"
+              >
+                <a
+                  href="/components/test-component-id-3"
                 >
-                  test-component-type-id-3
-                </td>
-                 
-                <td
-                  class="name table-primary"
-                >
-                  <a
-                    href="/components/test-component-id-3"
-                  >
-                    Test Component Name 3
-                  </a>
-                </td>
-                 
-                <td>
-                  <ul>
-                    <li>
-                      
+                  Test Component Name 3
+                </a>
+              </td>
+               
+              <td>
+                <ul>
+                  <li>
+                    
     test-tag-3-1
-                      <!---->
-                    </li>
-                    <li>
-                      
-    test-tag-3-2
-                      <!---->
-                    </li>
-                  </ul>
-                </td>
-                 
-                <td>
-                  <ul>
-                    <li>
-                      <a
-                        class="team-name"
-                        href="/teams/test-team-id-3-1"
-                      >
-                        test-team-id-3-1
-                      </a>
-                       
-                      <!---->
-                       
-                      <!---->
-                    </li>
-                    <li>
-                      <a
-                        class="team-name"
-                        href="/teams/test-team-id-3-2"
-                      >
-                        test-team-id-3-2
-                      </a>
-                       
-                      <!---->
-                       
-                      <!---->
-                    </li>
-                  </ul>
-                </td>
-                 
-                <td
-                  class="description"
-                >
-                  <div>
+                    <!---->
+                  </li>
+                  <li>
                     
+    test-tag-3-2
+                    <!---->
+                  </li>
+                </ul>
+              </td>
+               
+              <td>
+                <ul>
+                  <li>
+                    <a
+                      class="team-name"
+                      href="/teams/test-team-id-3-1"
+                    >
+                      test-team-id-3-1
+                    </a>
+                     
+                    <!---->
+                     
+                    <!---->
+                  </li>
+                  <li>
+                    <a
+                      class="team-name"
+                      href="/teams/test-team-id-3-2"
+                    >
+                      test-team-id-3-2
+                    </a>
+                     
+                    <!---->
+                     
+                    <!---->
+                  </li>
+                </ul>
+              </td>
+               
+              <td
+                class="description"
+              >
+                <div>
+                  
 
-                    <p>
-                      Test Component Description 3
-                    </p>
-                  </div>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </p>
+                  <p>
+                    Test Component Description 3
+                  </p>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </div>
       <!---->
       <!---->

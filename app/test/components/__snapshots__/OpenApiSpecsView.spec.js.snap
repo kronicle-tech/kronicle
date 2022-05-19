@@ -13,7 +13,7 @@ exports[`OpenApiSpecsView when an OpenAPI spec has a URL but no spec renders the
     <!---->
     <!---->
   </div>
-  <div class=\\"mt-3 mb-4\\" components=\\"[object Object]\\"><button id=\\"toggleFilters\\" type=\\"button\\" class=\\"btn btn-primary collapsed\\" aria-expanded=\\"false\\" aria-controls=\\"filters\\"><svg viewBox=\\"0 0 16 16\\" width=\\"1em\\" height=\\"1em\\" focusable=\\"false\\" role=\\"img\\" aria-label=\\"blank\\" aria-hidden=\\"true\\" xmlns=\\"http://www.w3.org/2000/svg\\" fill=\\"currentColor\\" class=\\"bi-blank b-icon bi\\">
+  <div class=\\"mt-3 mb-4\\" components=\\"[object Object]\\"> <button id=\\"toggleFilters\\" type=\\"button\\" class=\\"btn btn-primary collapsed\\" aria-expanded=\\"false\\" aria-controls=\\"filters\\"><svg viewBox=\\"0 0 16 16\\" width=\\"1em\\" height=\\"1em\\" focusable=\\"false\\" role=\\"img\\" aria-label=\\"blank\\" aria-hidden=\\"true\\" xmlns=\\"http://www.w3.org/2000/svg\\" fill=\\"currentColor\\" class=\\"bi-blank b-icon bi\\">
         <g></g>
       </svg> Filters
     </button>
@@ -188,7 +188,7 @@ exports[`OpenApiSpecsView when an OpenAPI spec has a file but no spec renders th
     <!---->
     <!---->
   </div>
-  <div class=\\"mt-3 mb-4\\" components=\\"[object Object]\\"><button id=\\"toggleFilters\\" type=\\"button\\" class=\\"btn btn-primary collapsed\\" aria-expanded=\\"false\\" aria-controls=\\"filters\\"><svg viewBox=\\"0 0 16 16\\" width=\\"1em\\" height=\\"1em\\" focusable=\\"false\\" role=\\"img\\" aria-label=\\"blank\\" aria-hidden=\\"true\\" xmlns=\\"http://www.w3.org/2000/svg\\" fill=\\"currentColor\\" class=\\"bi-blank b-icon bi\\">
+  <div class=\\"mt-3 mb-4\\" components=\\"[object Object]\\"> <button id=\\"toggleFilters\\" type=\\"button\\" class=\\"btn btn-primary collapsed\\" aria-expanded=\\"false\\" aria-controls=\\"filters\\"><svg viewBox=\\"0 0 16 16\\" width=\\"1em\\" height=\\"1em\\" focusable=\\"false\\" role=\\"img\\" aria-label=\\"blank\\" aria-hidden=\\"true\\" xmlns=\\"http://www.w3.org/2000/svg\\" fill=\\"currentColor\\" class=\\"bi-blank b-icon bi\\">
         <g></g>
       </svg> Filters
     </button>
@@ -363,7 +363,7 @@ exports[`OpenApiSpecsView when an OpenAPI spec has a spec and a URL renders the 
     <!---->
     <!---->
   </div>
-  <div class=\\"mt-3 mb-4\\" components=\\"[object Object]\\"><button id=\\"toggleFilters\\" type=\\"button\\" class=\\"btn btn-primary collapsed\\" aria-expanded=\\"false\\" aria-controls=\\"filters\\"><svg viewBox=\\"0 0 16 16\\" width=\\"1em\\" height=\\"1em\\" focusable=\\"false\\" role=\\"img\\" aria-label=\\"blank\\" aria-hidden=\\"true\\" xmlns=\\"http://www.w3.org/2000/svg\\" fill=\\"currentColor\\" class=\\"bi-blank b-icon bi\\">
+  <div class=\\"mt-3 mb-4\\" components=\\"[object Object]\\"> <button id=\\"toggleFilters\\" type=\\"button\\" class=\\"btn btn-primary collapsed\\" aria-expanded=\\"false\\" aria-controls=\\"filters\\"><svg viewBox=\\"0 0 16 16\\" width=\\"1em\\" height=\\"1em\\" focusable=\\"false\\" role=\\"img\\" aria-label=\\"blank\\" aria-hidden=\\"true\\" xmlns=\\"http://www.w3.org/2000/svg\\" fill=\\"currentColor\\" class=\\"bi-blank b-icon bi\\">
         <g></g>
       </svg> Filters
     </button>
@@ -538,7 +538,7 @@ exports[`OpenApiSpecsView when an OpenAPI spec has a spec and a file renders the
     <!---->
     <!---->
   </div>
-  <div class=\\"mt-3 mb-4\\" components=\\"[object Object]\\"><button id=\\"toggleFilters\\" type=\\"button\\" class=\\"btn btn-primary collapsed\\" aria-expanded=\\"false\\" aria-controls=\\"filters\\"><svg viewBox=\\"0 0 16 16\\" width=\\"1em\\" height=\\"1em\\" focusable=\\"false\\" role=\\"img\\" aria-label=\\"blank\\" aria-hidden=\\"true\\" xmlns=\\"http://www.w3.org/2000/svg\\" fill=\\"currentColor\\" class=\\"bi-blank b-icon bi\\">
+  <div class=\\"mt-3 mb-4\\" components=\\"[object Object]\\"> <button id=\\"toggleFilters\\" type=\\"button\\" class=\\"btn btn-primary collapsed\\" aria-expanded=\\"false\\" aria-controls=\\"filters\\"><svg viewBox=\\"0 0 16 16\\" width=\\"1em\\" height=\\"1em\\" focusable=\\"false\\" role=\\"img\\" aria-label=\\"blank\\" aria-hidden=\\"true\\" xmlns=\\"http://www.w3.org/2000/svg\\" fill=\\"currentColor\\" class=\\"bi-blank b-icon bi\\">
         <g></g>
       </svg> Filters
     </button>
@@ -713,7 +713,7 @@ exports[`OpenApiSpecsView when components is set to multiple components with mul
     <!---->
     <!---->
   </div>
-  <div class=\\"mt-3 mb-4\\" components=\\"[object Object],[object Object]\\"><button id=\\"toggleFilters\\" type=\\"button\\" class=\\"btn btn-primary collapsed\\" aria-expanded=\\"false\\" aria-controls=\\"filters\\"><svg viewBox=\\"0 0 16 16\\" width=\\"1em\\" height=\\"1em\\" focusable=\\"false\\" role=\\"img\\" aria-label=\\"blank\\" aria-hidden=\\"true\\" xmlns=\\"http://www.w3.org/2000/svg\\" fill=\\"currentColor\\" class=\\"bi-blank b-icon bi\\">
+  <div class=\\"mt-3 mb-4\\" components=\\"[object Object],[object Object]\\"> <button id=\\"toggleFilters\\" type=\\"button\\" class=\\"btn btn-primary collapsed\\" aria-expanded=\\"false\\" aria-controls=\\"filters\\"><svg viewBox=\\"0 0 16 16\\" width=\\"1em\\" height=\\"1em\\" focusable=\\"false\\" role=\\"img\\" aria-label=\\"blank\\" aria-hidden=\\"true\\" xmlns=\\"http://www.w3.org/2000/svg\\" fill=\\"currentColor\\" class=\\"bi-blank b-icon bi\\">
         <g></g>
       </svg> Filters
     </button>
@@ -972,7 +972,7 @@ exports[`OpenApiSpecsView when components is set to multiple components with mul
     <!---->
     <!---->
   </div>
-  <div class=\\"mt-3 mb-4\\" components=\\"[object Object],[object Object]\\"><button id=\\"toggleFilters\\" type=\\"button\\" class=\\"btn btn-primary collapsed\\" aria-expanded=\\"false\\" aria-controls=\\"filters\\"><svg viewBox=\\"0 0 16 16\\" width=\\"1em\\" height=\\"1em\\" focusable=\\"false\\" role=\\"img\\" aria-label=\\"blank\\" aria-hidden=\\"true\\" xmlns=\\"http://www.w3.org/2000/svg\\" fill=\\"currentColor\\" class=\\"bi-blank b-icon bi\\">
+  <div class=\\"mt-3 mb-4\\" components=\\"[object Object],[object Object]\\"> <button id=\\"toggleFilters\\" type=\\"button\\" class=\\"btn btn-primary collapsed\\" aria-expanded=\\"false\\" aria-controls=\\"filters\\"><svg viewBox=\\"0 0 16 16\\" width=\\"1em\\" height=\\"1em\\" focusable=\\"false\\" role=\\"img\\" aria-label=\\"blank\\" aria-hidden=\\"true\\" xmlns=\\"http://www.w3.org/2000/svg\\" fill=\\"currentColor\\" class=\\"bi-blank b-icon bi\\">
         <g></g>
       </svg> Filters
     </button>
@@ -1231,7 +1231,7 @@ exports[`OpenApiSpecsView when components is set to multiple components with mul
     <!---->
     <!---->
   </div>
-  <div class=\\"mt-3 mb-4\\" components=\\"[object Object],[object Object]\\"><button id=\\"toggleFilters\\" type=\\"button\\" class=\\"btn btn-primary collapsed\\" aria-expanded=\\"false\\" aria-controls=\\"filters\\"><svg viewBox=\\"0 0 16 16\\" width=\\"1em\\" height=\\"1em\\" focusable=\\"false\\" role=\\"img\\" aria-label=\\"blank\\" aria-hidden=\\"true\\" xmlns=\\"http://www.w3.org/2000/svg\\" fill=\\"currentColor\\" class=\\"bi-blank b-icon bi\\">
+  <div class=\\"mt-3 mb-4\\" components=\\"[object Object],[object Object]\\"> <button id=\\"toggleFilters\\" type=\\"button\\" class=\\"btn btn-primary collapsed\\" aria-expanded=\\"false\\" aria-controls=\\"filters\\"><svg viewBox=\\"0 0 16 16\\" width=\\"1em\\" height=\\"1em\\" focusable=\\"false\\" role=\\"img\\" aria-label=\\"blank\\" aria-hidden=\\"true\\" xmlns=\\"http://www.w3.org/2000/svg\\" fill=\\"currentColor\\" class=\\"bi-blank b-icon bi\\">
         <g></g>
       </svg> Filters
     </button>
@@ -1438,7 +1438,7 @@ exports[`OpenApiSpecsView when components prop is set a component with 1 OpenAPI
     <!---->
     <!---->
   </div>
-  <div class=\\"mt-3 mb-4\\" components=\\"[object Object]\\"><button id=\\"toggleFilters\\" type=\\"button\\" class=\\"btn btn-primary collapsed\\" aria-expanded=\\"false\\" aria-controls=\\"filters\\"><svg viewBox=\\"0 0 16 16\\" width=\\"1em\\" height=\\"1em\\" focusable=\\"false\\" role=\\"img\\" aria-label=\\"blank\\" aria-hidden=\\"true\\" xmlns=\\"http://www.w3.org/2000/svg\\" fill=\\"currentColor\\" class=\\"bi-blank b-icon bi\\">
+  <div class=\\"mt-3 mb-4\\" components=\\"[object Object]\\"> <button id=\\"toggleFilters\\" type=\\"button\\" class=\\"btn btn-primary collapsed\\" aria-expanded=\\"false\\" aria-controls=\\"filters\\"><svg viewBox=\\"0 0 16 16\\" width=\\"1em\\" height=\\"1em\\" focusable=\\"false\\" role=\\"img\\" aria-label=\\"blank\\" aria-hidden=\\"true\\" xmlns=\\"http://www.w3.org/2000/svg\\" fill=\\"currentColor\\" class=\\"bi-blank b-icon bi\\">
         <g></g>
       </svg> Filters
     </button>
@@ -1613,7 +1613,7 @@ exports[`OpenApiSpecsView when components prop is set a component with 2 OpenAPI
     <!---->
     <!---->
   </div>
-  <div class=\\"mt-3 mb-4\\" components=\\"[object Object]\\"><button id=\\"toggleFilters\\" type=\\"button\\" class=\\"btn btn-primary collapsed\\" aria-expanded=\\"false\\" aria-controls=\\"filters\\"><svg viewBox=\\"0 0 16 16\\" width=\\"1em\\" height=\\"1em\\" focusable=\\"false\\" role=\\"img\\" aria-label=\\"blank\\" aria-hidden=\\"true\\" xmlns=\\"http://www.w3.org/2000/svg\\" fill=\\"currentColor\\" class=\\"bi-blank b-icon bi\\">
+  <div class=\\"mt-3 mb-4\\" components=\\"[object Object]\\"> <button id=\\"toggleFilters\\" type=\\"button\\" class=\\"btn btn-primary collapsed\\" aria-expanded=\\"false\\" aria-controls=\\"filters\\"><svg viewBox=\\"0 0 16 16\\" width=\\"1em\\" height=\\"1em\\" focusable=\\"false\\" role=\\"img\\" aria-label=\\"blank\\" aria-hidden=\\"true\\" xmlns=\\"http://www.w3.org/2000/svg\\" fill=\\"currentColor\\" class=\\"bi-blank b-icon bi\\">
         <g></g>
       </svg> Filters
     </button>
@@ -1814,7 +1814,7 @@ exports[`OpenApiSpecsView when components prop is set components with no OpenAPI
     <!---->
     <!---->
   </div>
-  <div class=\\"mt-3 mb-4\\" components=\\"[object Object],[object Object]\\"><button id=\\"toggleFilters\\" type=\\"button\\" class=\\"btn btn-primary collapsed\\" aria-expanded=\\"false\\" aria-controls=\\"filters\\"><svg viewBox=\\"0 0 16 16\\" width=\\"1em\\" height=\\"1em\\" focusable=\\"false\\" role=\\"img\\" aria-label=\\"blank\\" aria-hidden=\\"true\\" xmlns=\\"http://www.w3.org/2000/svg\\" fill=\\"currentColor\\" class=\\"bi-blank b-icon bi\\">
+  <div class=\\"mt-3 mb-4\\" components=\\"[object Object],[object Object]\\"> <button id=\\"toggleFilters\\" type=\\"button\\" class=\\"btn btn-primary collapsed\\" aria-expanded=\\"false\\" aria-controls=\\"filters\\"><svg viewBox=\\"0 0 16 16\\" width=\\"1em\\" height=\\"1em\\" focusable=\\"false\\" role=\\"img\\" aria-label=\\"blank\\" aria-hidden=\\"true\\" xmlns=\\"http://www.w3.org/2000/svg\\" fill=\\"currentColor\\" class=\\"bi-blank b-icon bi\\">
         <g></g>
       </svg> Filters
     </button>

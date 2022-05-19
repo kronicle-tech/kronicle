@@ -26,7 +26,7 @@ exports[`Index when Get Team service endpoint returns an team renders the page 1
       href="/teams/test-team-id-1/dependencies"
       target="_self"
     >
-      Dependencies
+      Visualizations
     </a>
      
     <a

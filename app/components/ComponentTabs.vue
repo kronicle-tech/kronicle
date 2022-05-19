@@ -2,7 +2,7 @@
   <div class="my-3">
     <b-button class="my-1" :to="`/components/${componentId}`">Info</b-button>
     <b-button class="my-1" :to="`/components/${componentId}/dependencies`">
-      Dependencies
+      Visualizations
     </b-button>
     <b-button class="my-1" :to="`/components/${componentId}/response-times`">
       Response Times

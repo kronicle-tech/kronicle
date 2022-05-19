@@ -50,7 +50,7 @@ export default Vue.extend({
   },
   head(): MetaInfo {
     return {
-      title: 'Kronicle - All Components - Dependencies',
+      title: 'Kronicle - All Components - Visualizations',
     }
   },
 })

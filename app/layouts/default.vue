@@ -9,7 +9,7 @@
         <b-navbar-nav>
           <b-nav-item to="/all-environments">Environments</b-nav-item>
           <b-nav-item to="/all-components">Components</b-nav-item>
-          <b-nav-item to="/all-components/dependencies">Dependencies</b-nav-item>
+          <b-nav-item to="/all-components/dependencies">Visualizations</b-nav-item>
           <b-nav-item to="/all-components/openapi-specs">OpenAPI</b-nav-item>
           <b-nav-item to="/all-components/graphql-schemas">GraphQL</b-nav-item>
           <b-nav-item to="/all-teams">Teams</b-nav-item>
