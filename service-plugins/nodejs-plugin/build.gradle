@@ -19,6 +19,7 @@ dependencies {
     implementation project(":service-plugin-guice")
     implementation project(":service-utils")
 
+    implementation "com.fasterxml.jackson.core:jackson-core"
     implementation "com.fasterxml.jackson.core:jackson-databind"
 
     testImplementation project(":service-plugin-test-utils")

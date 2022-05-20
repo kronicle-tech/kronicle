@@ -16,6 +16,7 @@ dependencies {
     compileOnly "com.github.spotbugs:spotbugs-annotations:$spotBugsVersion"
     testCompileOnly "com.github.spotbugs:spotbugs-annotations:$spotBugsVersion"
 
+    implementation "com.fasterxml.jackson.core:jackson-core"
     implementation "com.fasterxml.jackson.core:jackson-databind"
     implementation "com.fasterxml.jackson.datatype:jackson-datatype-jsr310"
 
