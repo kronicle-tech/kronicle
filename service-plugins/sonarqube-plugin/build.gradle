@@ -19,9 +19,6 @@ dependencies {
     implementation project(":service-plugin-guice")
     implementation project(":service-utils")
 
-    // Resolves performance vulnerability https://github.com/FasterXML/jackson-databind/issues/2816
-    // TODO: Remove platform once a version of Spring Boot is released that includes this fix
-    implementation platform("com.fasterxml.jackson:jackson-bom:2.13.2.20220324")
     implementation "com.fasterxml.jackson.core:jackson-databind"
 
     implementation "com.google.guava:guava:$guavaVersion"

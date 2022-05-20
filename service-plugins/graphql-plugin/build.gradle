@@ -20,11 +20,8 @@ dependencies {
     implementation project(":service-utils")
     implementation "com.graphql-java:graphql-java"
 
-    // Resolves performance vulnerability https://github.com/FasterXML/jackson-databind/issues/2816
-    // TODO: Remove platform once a version of Spring Boot is released that includes this fix
-    implementation platform("com.fasterxml.jackson:jackson-bom:2.13.2.20220324")
     implementation "com.fasterxml.jackson.core:jackson-databind"
-    implementation "com.fasterxml.jackson.datatype:jackson-datatype-jsr310:$jacksonVersion"
+    implementation "com.fasterxml.jackson.datatype:jackson-datatype-jsr310"
 
     testImplementation project(":service-plugin-test-utils")
     testImplementation "org.junit.jupiter:junit-jupiter"

@@ -30,7 +30,7 @@ dependencies {
     implementation project(':common')
     implementation "com.fasterxml.jackson.core:jackson-annotations"
     implementation "com.fasterxml.jackson.core:jackson-databind"
-    implementation "com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:$jacksonVersion"
+    implementation "com.fasterxml.jackson.dataformat:jackson-dataformat-yaml"
     implementation "org.hibernate.validator:hibernate-validator"
     implementation "org.glassfish:javax.el:$expressionLanguageVersion"
 
