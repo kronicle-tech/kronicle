@@ -7,10 +7,7 @@ import tech.kronicle.plugins.gitlab.config.GitLabConfig;
 import tech.kronicle.plugins.gitlab.models.EnrichedGitLabRepo;
 import tech.kronicle.plugins.gitlab.models.api.GitLabJob;
 import tech.kronicle.sdk.models.CheckState;
-import tech.kronicle.sdk.models.ComponentState;
 import tech.kronicle.sdk.models.ComponentStateCheckStatus;
-import tech.kronicle.sdk.models.EnvironmentPluginState;
-import tech.kronicle.sdk.models.EnvironmentState;
 import tech.kronicle.sdk.models.Link;
 import tech.kronicle.sdk.models.Repo;
 
@@ -37,23 +34,7 @@ public class RepoMapper {
                 .build();
     }
 
-    public ComponentState mapState(List<GitLabJob> jobs, LocalDateTime now) {
-        return ComponentState.builder()
-                .environments(List.of(
-                        EnvironmentState.builder()
-                                .id(config.getEnvironmentId())
-                                .plugins(List.of(
-                                        EnvironmentPluginState.builder()
-                                                .id(GitLabPlugin.ID)
-                                                .checks(mapChecks(jobs, now))
-                                                .build()
-                                ))
-                                .build()
-                ))
-                .build();
-    }
-
-    private List<CheckState> mapChecks(List<GitLabJob> jobs, LocalDateTime now) {
+    public List<CheckState> mapChecks(List<GitLabJob> jobs, LocalDateTime now) {
         return jobs.stream()
                 .filter(this::excludeCertainJobStatuses)
                 .map(mapCheck(now))
@@ -75,6 +56,8 @@ public class RepoMapper {
 
     private Function<GitLabJob, CheckState> mapCheck(LocalDateTime now) {
         return job -> CheckState.builder()
+                .environmentId(config.getEnvironmentId())
+                .pluginId(GitLabPlugin.ID)
                 .name(job.getName())
                 .description("GitLab Job")
                 .status(mapCheckStatus(job))

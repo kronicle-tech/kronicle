@@ -8,7 +8,7 @@ import tech.kronicle.plugins.gitlab.config.GitLabConfig;
 import tech.kronicle.plugins.gitlab.models.EnrichedGitLabRepo;
 import tech.kronicle.plugins.gitlab.models.api.GitLabJob;
 import tech.kronicle.plugins.gitlab.testutils.EnrichedGitLabRepoUtils;
-import tech.kronicle.sdk.models.ComponentState;
+import tech.kronicle.sdk.models.CheckState;
 import tech.kronicle.sdk.models.Repo;
 
 import java.time.Clock;
@@ -25,7 +25,7 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import static tech.kronicle.plugins.gitlab.testutils.GitLabJobUtils.createGitLabJobs;
 import static tech.kronicle.plugins.gitlab.testutils.RepoUtils.createRepo;
-import static tech.kronicle.plugins.gitlab.testutils.RepoUtils.createRepoState;
+import static tech.kronicle.plugins.gitlab.testutils.RepoUtils.createChecks;
 
 @ExtendWith(MockitoExtension.class)
 public class CachingRepoFetcherTest {
@@ -106,13 +106,13 @@ public class CachingRepoFetcherTest {
                 .mapToObj(repoIndex -> {
                     int repoNumber = offset + repoIndex + 1;
                     EnrichedGitLabRepo cachedRepo = cachedRepos.get(repoIndex);
-                    Repo repo = createRepo(repoNumber).withState(null);
+                    Repo repo = createRepo(repoNumber);
                     List<GitLabJob> jobs = createGitLabJobs(repoNumber);
-                    ComponentState repoState = createRepoState(repoNumber);
+                    List<CheckState> checks = createChecks(repoNumber);
                     when(mockMapper.mapRepo(cachedRepo)).thenReturn(repo);
-                    when(mockFetcher.getRepoState(cachedRepo)).thenReturn(jobs);
-                    when(mockMapper.mapState(jobs, NOW)).thenReturn(repoState);
-                    return repo.withState(repoState);
+                    when(mockFetcher.getRepoJobs(cachedRepo)).thenReturn(jobs);
+                    when(mockMapper.mapChecks(jobs, NOW)).thenReturn(checks);
+                    return repo.withStates(List.copyOf(checks));
                 })
                 .collect(toUnmodifiableList());
     }

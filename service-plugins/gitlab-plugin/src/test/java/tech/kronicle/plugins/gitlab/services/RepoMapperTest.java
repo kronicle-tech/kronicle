@@ -6,15 +6,10 @@ import tech.kronicle.plugins.gitlab.models.EnrichedGitLabRepo;
 import tech.kronicle.plugins.gitlab.models.api.GitLabJob;
 import tech.kronicle.plugins.gitlab.models.api.GitLabRepo;
 import tech.kronicle.sdk.models.CheckState;
-import tech.kronicle.sdk.models.ComponentState;
 import tech.kronicle.sdk.models.ComponentStateCheckStatus;
-import tech.kronicle.sdk.models.EnvironmentPluginState;
-import tech.kronicle.sdk.models.EnvironmentState;
 import tech.kronicle.sdk.models.Link;
 import tech.kronicle.sdk.models.Repo;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -46,26 +41,24 @@ public class RepoMapperTest {
     }
 
     @Test
-    public void mapStateShouldMapStateForARepo() {
+    public void mapChecksShouldMapChecksForARepo() {
         // Given
         List<GitLabJob> jobs = createGitLabJobs();
         LocalDateTime now = LocalDateTime.of(2001, 2, 3, 4, 5, 6);
         RepoMapper underTest = createUnderTest();
 
         // When
-        ComponentState returnValue = underTest.mapState(jobs, now);
+        List<CheckState> returnValue = underTest.mapChecks(jobs, now);
 
         // Then
-        assertThat(returnValue).isEqualTo(
-                createComponentState(List.of(
-                        createCheckState(now, 1, ComponentStateCheckStatus.UNKNOWN),
-                        createCheckState(now, 2, ComponentStateCheckStatus.UNKNOWN)
-                ))
+        assertThat(returnValue).containsExactly(
+                createCheckState(now, 1, ComponentStateCheckStatus.UNKNOWN),
+                createCheckState(now, 2, ComponentStateCheckStatus.UNKNOWN)
         );
     }
 
     @Test
-    public void mapStateShouldExcludeSomeJobStatusesAndMapOtherJobStatuses() {
+    public void mapChecksShouldExcludeSomeJobStatusesAndMapOtherJobStatuses() {
         // Given
         List<GitLabJob> jobs = createGitLabJobs(List.of(
             "created",
@@ -82,33 +75,15 @@ public class RepoMapperTest {
         RepoMapper underTest = createUnderTest();
 
         // When
-        ComponentState returnValue = underTest.mapState(jobs, now);
+        List<CheckState> returnValue = underTest.mapChecks(jobs, now);
 
         // Then
-        assertThat(returnValue).isEqualTo(
-                createComponentState(List.of(
-                        createCheckState(now, 6, ComponentStateCheckStatus.PENDING, "Running"),
-                        createCheckState(now, 7, ComponentStateCheckStatus.CRITICAL, "Failed"),
-                        createCheckState(now, 8, ComponentStateCheckStatus.OK, "Success"),
-                        createCheckState(now, 9, ComponentStateCheckStatus.UNKNOWN, "Does Not Exist")
-                ))
+        assertThat(returnValue).containsExactly(
+                createCheckState(now, 6, ComponentStateCheckStatus.PENDING, "Running"),
+                createCheckState(now, 7, ComponentStateCheckStatus.CRITICAL, "Failed"),
+                createCheckState(now, 8, ComponentStateCheckStatus.OK, "Success"),
+                createCheckState(now, 9, ComponentStateCheckStatus.UNKNOWN, "Does Not Exist")
         );
-    }
-
-    private ComponentState createComponentState(List<CheckState> checks) {
-        return ComponentState.builder()
-                .environments(List.of(
-                        EnvironmentState.builder()
-                                .id("test-environment-id")
-                                .plugins(List.of(
-                                        EnvironmentPluginState.builder()
-                                                .id("gitlab")
-                                                .checks(checks)
-                                                .build()
-                                ))
-                                .build()
-                ))
-                .build();
     }
 
     private CheckState createCheckState(LocalDateTime now, int jobNumber, ComponentStateCheckStatus status) {
@@ -122,6 +97,8 @@ public class RepoMapperTest {
             String statusMessage
     ) {
         return CheckState.builder()
+                .environmentId("test-environment-id")
+                .pluginId("gitlab")
                 .name("Test Job Name 1 " + jobNumber)
                 .description("GitLab Job")
                 .status(status)

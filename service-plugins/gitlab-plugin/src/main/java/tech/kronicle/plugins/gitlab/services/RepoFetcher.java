@@ -35,7 +35,7 @@ public class RepoFetcher {
                 .collect(Collectors.toList());
     }
 
-    public List<GitLabJob> getRepoState(EnrichedGitLabRepo repo) {
+    public List<GitLabJob> getRepoJobs(EnrichedGitLabRepo repo) {
         return client.getJobs(repo);
     }
 
