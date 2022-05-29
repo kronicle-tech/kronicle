@@ -17,8 +17,13 @@ import static tech.kronicle.sdk.utils.ListUtils.createUnmodifiableList;
 @With
 @Builder(toBuilder = true)
 @Jacksonized
-public class CheckState {
+public class CheckState implements ComponentEnvironmentState {
 
+    String type = "check";
+    @NotEmpty
+    String pluginId;
+    @NotEmpty
+    String environmentId;
     @NotEmpty
     String name;
     String description;
@@ -32,6 +37,8 @@ public class CheckState {
     LocalDateTime updateTimestamp;
 
     public CheckState(
+            String pluginId,
+            String environmentId,
             String name,
             String description,
             String avatarUrl,
@@ -40,6 +47,8 @@ public class CheckState {
             List<Link> links,
             LocalDateTime updateTimestamp
     ) {
+        this.pluginId = pluginId;
+        this.environmentId = environmentId;
         this.name = name;
         this.description = description;
         this.avatarUrl = avatarUrl;

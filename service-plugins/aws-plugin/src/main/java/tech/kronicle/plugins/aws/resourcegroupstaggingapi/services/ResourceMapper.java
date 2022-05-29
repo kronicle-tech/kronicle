@@ -1,6 +1,7 @@
 package tech.kronicle.plugins.aws.resourcegroupstaggingapi.services;
 
 import lombok.RequiredArgsConstructor;
+import tech.kronicle.plugins.aws.AwsPlugin;
 import tech.kronicle.plugins.aws.config.AwsConfig;
 import tech.kronicle.plugins.aws.constants.TagKeys;
 import tech.kronicle.plugins.aws.resourcegroupstaggingapi.models.ResourceGroupsTaggingApiResource;
@@ -10,10 +11,9 @@ import tech.kronicle.sdk.constants.DependencyTypeIds;
 import tech.kronicle.sdk.models.Alias;
 import tech.kronicle.sdk.models.Component;
 import tech.kronicle.sdk.models.ComponentDependency;
-import tech.kronicle.sdk.models.ComponentState;
 import tech.kronicle.sdk.models.ComponentTeam;
 import tech.kronicle.sdk.models.DependencyDirection;
-import tech.kronicle.sdk.models.EnvironmentState;
+import tech.kronicle.sdk.models.DiscoveredState;
 import tech.kronicle.sdk.models.Tag;
 
 import javax.inject.Inject;
@@ -58,15 +58,12 @@ public class ResourceMapper {
                     .description(getDescription(resource, analysedArn, aliases))
                     .platformId("aws-managed-service")
                     .dependencies(createDependencies(resource))
-                    .state(
-                            ComponentState.builder()
-                                    .environments(List.of(
-                                            EnvironmentState.builder()
-                                                    .id(getEnvironmentId(resource, environmentId))
-                                                    .build()
-                                    ))
+                    .states(List.of(
+                            DiscoveredState.builder()
+                                    .environmentId(getEnvironmentId(resource, environmentId))
+                                    .pluginId(AwsPlugin.ID)
                                     .build()
-                    )
+                    ))
                     .build();
         };
     }

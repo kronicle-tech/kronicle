@@ -4,7 +4,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.NullSource;
 import org.junit.jupiter.params.provider.ValueSource;
-import tech.kronicle.plugins.aws.synthetics.models.CheckStateAndContext;
 import tech.kronicle.plugins.aws.synthetics.models.SyntheticsCanaryLastRun;
 import tech.kronicle.sdk.models.CheckState;
 import tech.kronicle.sdk.models.ComponentStateCheckStatus;
@@ -39,26 +38,14 @@ public class SyntheticsCanaryLastRunMapperTest {
         SyntheticsCanaryLastRunMapper underTest = new SyntheticsCanaryLastRunMapper();
 
         // When
-        List<CheckStateAndContext> returnValue = underTest.mapCanaryLastRuns(canaryLastRuns, canaryNameToEnvironmentIdMap);
+        List<CheckState> returnValue = underTest.mapCanaryLastRuns(canaryLastRuns, canaryNameToEnvironmentIdMap);
 
         // Then
         assertThat(returnValue).containsExactly(
-                new CheckStateAndContext(
-                        "test-environment-id-2",
-                        createCheck(1, "RUNNING", ComponentStateCheckStatus.PENDING)
-                ),
-                new CheckStateAndContext(
-                        "test-environment-id-1",
-                        createCheck(2, "PASSED", ComponentStateCheckStatus.OK)
-                ),
-                new CheckStateAndContext(
-                        "test-environment-id-1",
-                        createCheck(3, "FAILED", ComponentStateCheckStatus.CRITICAL)
-                ),
-                new CheckStateAndContext(
-                        "test-environment-id-2",
-                        createCheck(4, "NOT_REAL_STATE", ComponentStateCheckStatus.UNKNOWN)
-                )
+                createCheck(1, "test-environment-id-2", "RUNNING", ComponentStateCheckStatus.PENDING),
+                createCheck(2, "test-environment-id-1", "PASSED", ComponentStateCheckStatus.OK),
+                createCheck(3, "test-environment-id-1", "FAILED", ComponentStateCheckStatus.CRITICAL),
+                createCheck(4, "test-environment-id-2", "NOT_REAL_STATE", ComponentStateCheckStatus.UNKNOWN)
         );
     }
 
@@ -136,6 +123,16 @@ public class SyntheticsCanaryLastRunMapperTest {
         assertThat(returnValue).isEqualTo("FAILED");
     }
 
+    private SyntheticsCanaryLastRun createCanaryLastRun(int canaryLastRunNumber, String state) {
+        return new SyntheticsCanaryLastRun(
+                "test-canary-name-" + canaryLastRunNumber,
+                state,
+                "test-state-reason-" + canaryLastRunNumber,
+                "test-state-reason-code-" + canaryLastRunNumber,
+                LocalDateTime.of(2000, 1, 1, 0, 0, canaryLastRunNumber)
+        );
+    }
+
     private SyntheticsCanaryLastRun createCanaryLastRunWithState(
             String state,
             String stateReason,
@@ -150,18 +147,15 @@ public class SyntheticsCanaryLastRunMapperTest {
         );
     }
 
-    private SyntheticsCanaryLastRun createCanaryLastRun(int canaryLastRunNumber, String state) {
-        return new SyntheticsCanaryLastRun(
-                "test-canary-name-" + canaryLastRunNumber,
-                state,
-                "test-state-reason-" + canaryLastRunNumber,
-                "test-state-reason-code-" + canaryLastRunNumber,
-                LocalDateTime.of(2000, 1, 1, 0, 0, canaryLastRunNumber)
-        );
-    }
-
-    private CheckState createCheck(int canaryLastRunNumber, String state, ComponentStateCheckStatus status) {
+    private CheckState createCheck(
+            int canaryLastRunNumber,
+            String environmentId,
+            String state,
+            ComponentStateCheckStatus status
+    ) {
         return CheckState.builder()
+                .environmentId(environmentId)
+                .pluginId("aws")
                 .name("test-canary-name-" + canaryLastRunNumber)
                 .description("AWS Synthetics Canary")
                 .status(status)

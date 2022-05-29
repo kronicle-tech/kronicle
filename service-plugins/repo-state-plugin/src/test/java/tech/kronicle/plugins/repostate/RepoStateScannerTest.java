@@ -12,7 +12,6 @@ import tech.kronicle.sdk.models.RepoReference;
 
 import java.time.Duration;
 import java.util.List;
-import java.util.function.UnaryOperator;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -119,7 +118,7 @@ public class RepoStateScannerTest extends BaseScannerTest {
         Component component = Component.builder()
                 .id("test-component-id-1")
                 .repo(createRepoReference(componentMetadata.getRepos().get(0).getUrl()))
-                .state(createComponentState(2))
+                .states(createComponentState(2))
                 .build();
 
         // When
@@ -130,7 +129,7 @@ public class RepoStateScannerTest extends BaseScannerTest {
         assertThat(maskTransformer(returnValue)).isEqualTo(maskTransformer(Output.empty(CACHE_TTL)));
         Component transformedComponent = getMutatedComponent(returnValue, component);
         assertThat(transformedComponent).isEqualTo(
-                component.withState(
+                component.withStates(
                         ComponentState.builder()
                                 .environments(List.of(
                                         createEnvironmentState(2),
