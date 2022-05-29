@@ -9,7 +9,6 @@ import tech.kronicle.sdk.models.Repo;
 
 import java.time.Duration;
 import java.util.Map;
-import java.util.function.UnaryOperator;
 
 import static java.util.Objects.isNull;
 import static tech.kronicle.utils.MapCollectors.toUnmodifiableMap;
@@ -41,12 +40,12 @@ public class RepoStateScanner extends ComponentScanner {
 
         Repo repo = repoUrlAndRepoMap.get(input.getRepo().getUrl());
 
-        if (isNull(repo) || isNull(repo.getState())) {
+        if (isNull(repo) || repo.getStates().isEmpty()) {
             return Output.empty(CACHE_TTL);
         }
 
         return Output.ofTransformer(
-                component -> component.withUpdatedState(state -> state.merge(repo.getState())),
+                component -> component.addStates(repo.getStates()),
                 CACHE_TTL
         );
     }

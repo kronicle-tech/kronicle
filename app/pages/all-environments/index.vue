@@ -21,7 +21,7 @@ async function loadData(
   { $config, route, store }: { $config: NuxtRuntimeConfig, route: Route, store: Store<any> }
 ): Promise<Data> {
   const components = await fetch(
-    `${$config.serviceBaseUrl}/v1/components?fields=components(id,name,typeId,tags,description,notes,responsibilities,teams,platformId,state)`
+    `${$config.serviceBaseUrl}/v1/components?fields=components(id,name,typeId,tags,description,notes,responsibilities,teams,platformId,states)`
   )
     .then((res) => res.json())
     .then((json) => json.components as Component[])

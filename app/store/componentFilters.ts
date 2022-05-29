@@ -1,6 +1,10 @@
 import { Module, Mutation, VuexModule } from 'vuex-module-decorators'
 import { Route } from 'vue-router'
-import { Component } from '~/types/kronicle-service'
+import {
+  Component,
+  ComponentEnvironmentState,
+  ComponentState,
+} from '~/types/kronicle-service'
 
 // TODO: This module can be simplified when https://github.com/championswimmer/vuex-module-decorators/issues/335 is fixed
 
@@ -44,6 +48,12 @@ function addQueryParams(
   }
 }
 
+function isComponentEnvironmentState(
+  componentState: ComponentState
+): componentState is ComponentEnvironmentState {
+  return 'environmentId' in componentState
+}
+
 function getFilteredComponents(state: ReadOnlyState): Component[] {
   if (!state.components) {
     return []
@@ -60,63 +70,53 @@ function getFilteredComponents(state: ReadOnlyState): Component[] {
   if (state.environmentIds.length > 0) {
     filteredComponents = filteredComponents
       .map((component) => {
-        if (!component.state || !component.state.environments) {
+        if (!component.states) {
           return undefined
         }
 
-        const filteredEnvironments = component.state.environments.filter(
-          (environment) => state.environmentIds.includes(environment.id)
+        const filteredStates = component.states.filter(
+          (componentState) =>
+            !isComponentEnvironmentState(componentState) ||
+            state.environmentIds.includes(componentState.environmentId)
         )
 
-        if (filteredEnvironments.length === 0) {
+        if (filteredStates.length === 0) {
           return undefined
         } else {
-          const componentDeepClone = JSON.parse(JSON.stringify(component))
-          componentDeepClone.state.environments = filteredEnvironments
+          const componentDeepClone = JSON.parse(
+            JSON.stringify(component)
+          ) as Component
+          componentDeepClone.states = filteredStates
           return componentDeepClone
         }
       })
-      .filter((component) => component !== undefined)
+      .filter((component) => component !== undefined) as Component[]
   }
 
   if (state.pluginIds.length > 0) {
     filteredComponents = filteredComponents
       .map((component) => {
-        if (!component.state || !component.state.environments) {
+        if (!component.states) {
           return undefined
         }
 
-        const filteredEnvironments = component.state.environments.map(
-          (environment) => {
-            const filteredPlugins = environment.plugins.filter((plugin) =>
-              state.pluginIds.includes(plugin.id)
-            )
-
-            const environmentDeepClone = JSON.parse(JSON.stringify(environment))
-            environmentDeepClone.plugins = filteredPlugins
-            return environmentDeepClone
-          }
+        const filteredStates = component.states.filter(
+          (componentState) =>
+            !isComponentEnvironmentState(componentState) ||
+            state.pluginIds.includes(componentState.pluginId)
         )
 
-        if (filteredEnvironments.length === 0) {
+        if (filteredStates.length === 0) {
           return undefined
         } else {
-          const componentDeepClone = JSON.parse(JSON.stringify(component))
-          componentDeepClone.state.environments = filteredEnvironments
+          const componentDeepClone = JSON.parse(
+            JSON.stringify(component)
+          ) as Component
+          componentDeepClone.states = filteredStates
           return componentDeepClone
         }
       })
-      .filter((component) => component !== undefined)
-  }
-
-  if (state.pluginIds.length > 0) {
-    filteredComponents = filteredComponents.filter((component) =>
-      component.state?.environments?.some((environment) =>
-        environment.plugins?.some((plugin) =>
-          state.pluginIds.includes(plugin.id)
-        )
-      )
-    )
+      .filter((component) => component !== undefined) as Component[]
   }
 
   if (state.testOutcomes.length > 0) {
@@ -137,12 +137,14 @@ function getFilteredComponents(state: ReadOnlyState): Component[] {
         ) {
           return component
         } else {
-          const componentDeepClone = JSON.parse(JSON.stringify(component))
+          const componentDeepClone = JSON.parse(
+            JSON.stringify(component)
+          ) as Component
           componentDeepClone.testResults = filteredTestResults
           return componentDeepClone
         }
       })
-      .filter((component) => component !== undefined)
+      .filter((component) => component !== undefined) as Component[]
   }
 
   if (state.teamIds.length > 0) {

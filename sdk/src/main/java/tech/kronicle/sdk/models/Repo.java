@@ -23,8 +23,8 @@ public class Repo implements ObjectWithReference {
     String defaultBranch;
     @NotNull
     Boolean hasComponentMetadataFile;
-    @Valid
-    List<ComponentState> states;
+    @NotNull
+    List<@Valid ComponentState> states;
 
     public Repo(
             String url,
