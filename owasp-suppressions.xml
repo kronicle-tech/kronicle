@@ -610,4 +610,12 @@
         <packageUrl regex="true">^pkg:npm/opener@.*$</packageUrl>
         <cve>CVE-2021-27500</cve>
     </suppress>
+    <!-- Suppress npm package vulnerability that is not relevant to Kronicle -->
+    <suppress>
+        <notes><![CDATA[
+   file name: set-value:2.0.1
+   ]]></notes>
+        <packageUrl regex="true">^pkg:npm/set\-value@.*$</packageUrl>
+        <vulnerabilityName>CVE-2021-23440</vulnerabilityName>
+    </suppress>
 </suppressions>
