@@ -522,4 +522,12 @@
         <packageUrl regex="true">^pkg:maven/org\.springframework/spring\-.*@.*$</packageUrl>
         <cve>CVE-2016-1000027</cve>
     </suppress>
+    <!-- Suppress Spring Framework vulnerability that is incorrectly flagged against the latest version of Spring Framework -->
+    <suppress>
+        <notes><![CDATA[
+   file name: spring-security-crypto-5.7.1.jar
+   ]]></notes>
+        <packageUrl regex="true">^pkg:maven/org\.springframework\.security/spring\-security\-crypto@.*$</packageUrl>
+        <vulnerabilityName>CVE-2020-5408</vulnerabilityName>
+    </suppress>
 </suppressions>
