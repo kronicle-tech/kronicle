@@ -197,6 +197,9 @@ export default Vue.extend({
     },
     mapComponent(component: Component): Item[] {
       const that = this;
+      if (!component.states) {
+        return [];
+      }
       return component.states
         .map(state => that.mapState(component, state))
         .filter(item => item !== undefined) as Item[];

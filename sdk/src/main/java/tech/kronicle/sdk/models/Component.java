@@ -2,15 +2,12 @@ package tech.kronicle.sdk.models;
 
 import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.Builder;
 import lombok.Value;
 import lombok.With;
 import lombok.extern.jackson.Jacksonized;
 import org.hibernate.validator.constraints.UniqueElements;
 import tech.kronicle.sdk.constants.PatternStrings;
-import tech.kronicle.sdk.jackson.JsonRawValueDeserializer;
-import tech.kronicle.sdk.jackson.JsonRawValueSerializer;
 import tech.kronicle.sdk.jackson.TagOrStringDeserializer;
 import tech.kronicle.sdk.models.git.GitRepo;
 import tech.kronicle.sdk.models.gradle.Gradle;
@@ -64,8 +61,6 @@ public class Component implements ObjectWithId, ObjectWithReference {
     List<@Valid ComponentDependency> dependencies;
     List<@Valid CrossFunctionalRequirement> crossFunctionalRequirements;
     List<@Valid TechDebt> techDebts;
-    @JsonSerialize(contentUsing = JsonRawValueSerializer.class)
-    @JsonDeserialize(contentUsing = JsonRawValueDeserializer.class)
 
     List<@Valid ComponentState> states;
     
