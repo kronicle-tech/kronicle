@@ -7,7 +7,9 @@ import tech.kronicle.graphql.codefirst.annotation.CodeFirstGraphQlIgnore;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import java.lang.reflect.AccessibleObject;
 import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
@@ -54,6 +56,8 @@ public abstract class CodeFirstTypeMapper<T extends GraphQLType, F> {
             ZonedDateTime.class,
             OffsetDateTime.class
     );
+    public static final String GETTER_METHOD_NAME_PREFIX = "get";
+    public static final int GETTER_METHOD_NAME_PREFIX_LENGTH = GETTER_METHOD_NAME_PREFIX.length();
 
     private final List<Class> customTypes = new ArrayList<>();
 
@@ -111,22 +115,47 @@ public abstract class CodeFirstTypeMapper<T extends GraphQLType, F> {
     }
 
     private List<F> getFields(Class clazz) {
-        return Arrays.stream(clazz.getDeclaredFields())
-                .filter(this::fieldIsNotStatic)
-                .filter(this::fieldIsNotIgnored)
-                .map(field -> getField(field))
-                .collect(toUnmodifiableList());
+        if (clazz.isInterface()) {
+            return Arrays.stream(clazz.getDeclaredMethods())
+                    .filter(this::methodIsGetter)
+                    .filter(this::fieldIsNotIgnored)
+                    .map(this::getFieldForGetter)
+                    .collect(toUnmodifiableList());
+        } else {
+            return Arrays.stream(clazz.getDeclaredFields())
+                    .filter(this::fieldIsNotStatic)
+                    .filter(this::fieldIsNotIgnored)
+                    .map(this::getFieldForClassField)
+                    .collect(toUnmodifiableList());
+        }
+    }
+
+    private boolean methodIsGetter(Method method) {
+        return method.getName().startsWith(GETTER_METHOD_NAME_PREFIX);
     }
 
     private boolean fieldIsNotStatic(Field field) {
         return !Modifier.isStatic(field.getModifiers());
     }
 
-    private boolean fieldIsNotIgnored(Field field) {
-        return !field.isAnnotationPresent(CodeFirstGraphQlIgnore.class);
+    private boolean fieldIsNotIgnored(AccessibleObject accessibleObject) {
+        return !accessibleObject.isAnnotationPresent(CodeFirstGraphQlIgnore.class);
     }
 
-    private F getField(Field field) {
+    private F getFieldForGetter(Method method) {
+        T methodType = resolveType(method.getGenericReturnType());
+        if (nonNullField(method)) {
+            methodType = (T) GraphQLNonNull.nonNull(methodType);
+        }
+        return newField(getFieldNameForGetter(method), methodType);
+    }
+
+    private String getFieldNameForGetter(Method method) {
+        String fieldName = method.getName().substring(GETTER_METHOD_NAME_PREFIX_LENGTH);
+        return fieldName.substring(0, 1).toLowerCase() + fieldName.substring(1);
+    }
+
+    private F getFieldForClassField(Field field) {
         T fieldType = resolveType(field.getGenericType());
         if (nonNullField(field)) {
             fieldType = (T) GraphQLNonNull.nonNull(fieldType);
@@ -134,9 +163,9 @@ public abstract class CodeFirstTypeMapper<T extends GraphQLType, F> {
         return newField(field.getName(), fieldType);
     }
 
-    private boolean nonNullField(Field field) {
-        return field.isAnnotationPresent(NotNull.class) ||
-                field.isAnnotationPresent(NotEmpty.class);
+    private boolean nonNullField(AccessibleObject accessibleObject) {
+        return accessibleObject.isAnnotationPresent(NotNull.class) ||
+                accessibleObject.isAnnotationPresent(NotEmpty.class);
     }
 
     protected abstract Logger log();

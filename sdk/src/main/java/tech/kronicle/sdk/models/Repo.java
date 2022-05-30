@@ -1,6 +1,5 @@
 package tech.kronicle.sdk.models;
 
-import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Value;
 import lombok.With;
@@ -8,12 +7,12 @@ import lombok.With;
 import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import java.util.function.UnaryOperator;
+import java.util.List;
 
-import static java.util.Objects.nonNull;
+import static tech.kronicle.sdk.utils.ListUtils.createUnmodifiableList;
+import static tech.kronicle.sdk.utils.ListUtils.unmodifiableUnionOfLists;
 
 @Value
-@AllArgsConstructor
 @With
 @Builder(toBuilder = true)
 public class Repo implements ObjectWithReference {
@@ -24,17 +23,31 @@ public class Repo implements ObjectWithReference {
     String defaultBranch;
     @NotNull
     Boolean hasComponentMetadataFile;
-    @Valid
-    ComponentState state;
+    @NotNull
+    List<@Valid ComponentState> states;
+
+    public Repo(
+            String url,
+            String description,
+            String defaultBranch,
+            Boolean hasComponentMetadataFile,
+            List<ComponentState> states
+    ) {
+        this.url = url;
+        this.description = description;
+        this.defaultBranch = defaultBranch;
+        this.hasComponentMetadataFile = hasComponentMetadataFile;
+        this.states = createUnmodifiableList(states);
+    }
 
     @Override
     public String reference() {
         return url;
     }
 
-    public Repo withUpdatedState(UnaryOperator<ComponentState> action) {
-        return withState(
-                action.apply(nonNull(state) ? state : ComponentState.builder().build())
+    public Repo addStates(List<ComponentState> states) {
+        return withStates(
+                unmodifiableUnionOfLists(List.of(this.states, states))
         );
     }
 }

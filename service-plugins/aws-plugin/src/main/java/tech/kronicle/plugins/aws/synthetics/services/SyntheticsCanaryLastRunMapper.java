@@ -1,8 +1,7 @@
 package tech.kronicle.plugins.aws.synthetics.services;
 
 import lombok.extern.slf4j.Slf4j;
-import tech.kronicle.plugins.aws.models.TaggedResource;
-import tech.kronicle.plugins.aws.synthetics.models.CheckStateAndContext;
+import tech.kronicle.plugins.aws.AwsPlugin;
 import tech.kronicle.plugins.aws.synthetics.models.SyntheticsCanaryLastRun;
 import tech.kronicle.sdk.models.CheckState;
 import tech.kronicle.sdk.models.ComponentStateCheckStatus;
@@ -19,7 +18,7 @@ import static java.util.stream.Collectors.toUnmodifiableList;
 @Slf4j
 public class SyntheticsCanaryLastRunMapper {
 
-    public List<CheckStateAndContext> mapCanaryLastRuns(
+    public List<CheckState> mapCanaryLastRuns(
             List<SyntheticsCanaryLastRun> canaryLastRuns,
             Map<String, String> canaryNameToEnvironmentIdMap
     ) {
@@ -28,19 +27,18 @@ public class SyntheticsCanaryLastRunMapper {
                 .collect(toUnmodifiableList());
     }
 
-    private Function<SyntheticsCanaryLastRun, CheckStateAndContext> mapCanaryLastRun(
+    private Function<SyntheticsCanaryLastRun, CheckState> mapCanaryLastRun(
             Map<String, String> canaryNameToEnvironmentIdMap
     ) {
-        return canaryLastRun -> new CheckStateAndContext(
-                canaryNameToEnvironmentIdMap.get(canaryLastRun.getCanaryName()),
-                CheckState.builder()
-                    .name(canaryLastRun.getCanaryName())
-                    .description("AWS Synthetics Canary")
-                    .status(mapStatus(canaryLastRun))
-                    .statusMessage(mapStatusMessage(canaryLastRun))
-                    .updateTimestamp(canaryLastRun.getCompletedAt())
-                    .build()
-        );
+        return canaryLastRun -> CheckState.builder()
+                .environmentId(canaryNameToEnvironmentIdMap.get(canaryLastRun.getCanaryName()))
+                .pluginId(AwsPlugin.ID)
+                .name(canaryLastRun.getCanaryName())
+                .description("AWS Synthetics Canary")
+                .status(mapStatus(canaryLastRun))
+                .statusMessage(mapStatusMessage(canaryLastRun))
+                .updateTimestamp(canaryLastRun.getCompletedAt())
+                .build();
     }
 
     private ComponentStateCheckStatus mapStatus(SyntheticsCanaryLastRun canaryLastRun) {

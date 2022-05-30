@@ -13,7 +13,6 @@ import tech.kronicle.plugins.aws.models.TaggedResource;
 import tech.kronicle.plugins.aws.models.TaggedResourcesByProfileAndRegionAndComponent;
 import tech.kronicle.plugins.aws.services.TaggedResourceFinder;
 import tech.kronicle.plugins.aws.synthetics.client.SyntheticsClientFacade;
-import tech.kronicle.plugins.aws.synthetics.models.CheckStateAndContext;
 import tech.kronicle.plugins.aws.synthetics.models.SyntheticsCanaryLastRun;
 import tech.kronicle.sdk.models.CheckState;
 import tech.kronicle.sdk.models.Component;
@@ -96,50 +95,46 @@ public class SyntheticsServiceTest {
 
         // When
         underTest.refresh();
-        List<CheckStateAndContext> returnValue = underTest.getCanaryLastRunsForComponent(component);
+        List<CheckState> returnValue = underTest.getCanaryLastRunsForComponent(component);
 
         // Then
         assertThat(returnValue).containsExactly(
-                new CheckStateAndContext(
-                        profile1.getEnvironmentId(),
-                        CheckState.builder()
-                                .name("test-canary-name-1")
-                                .description("AWS Synthetics Canary")
-                                .status(ComponentStateCheckStatus.PENDING)
-                                .statusMessage("RUNNING - test-state-reason-code-1 - test-state-reason-1")
-                                .updateTimestamp(LocalDateTime.of(2000, 1, 1, 0, 0, 1))
-                                .build()
-                ),
-                new CheckStateAndContext(
-                        profile1.getEnvironmentId(),
-                        CheckState.builder()
-                                .name("test-canary-name-2")
-                                .description("AWS Synthetics Canary")
-                                .status(ComponentStateCheckStatus.OK)
-                                .statusMessage("PASSED - test-state-reason-code-2 - test-state-reason-2")
-                                .updateTimestamp(LocalDateTime.of(2000, 1, 1, 0, 0, 2))
-                                .build()
-                ),
-                new CheckStateAndContext(
-                        profile2.getEnvironmentId(),
-                        CheckState.builder()
-                                .name("test-canary-name-3")
-                                .description("AWS Synthetics Canary")
-                                .status(ComponentStateCheckStatus.PENDING)
-                                .statusMessage("RUNNING - test-state-reason-code-1 - test-state-reason-1")
-                                .updateTimestamp(LocalDateTime.of(2000, 1, 1, 0, 0, 1))
-                                .build()
-                ),
-                new CheckStateAndContext(
-                        profile2.getEnvironmentId(),
-                        CheckState.builder()
-                                .name("test-canary-name-4")
-                                .description("AWS Synthetics Canary")
-                                .status(ComponentStateCheckStatus.OK)
-                                .statusMessage("PASSED - test-state-reason-code-2 - test-state-reason-2")
-                                .updateTimestamp(LocalDateTime.of(2000, 1, 1, 0, 0, 2))
-                                .build()
-                )
+                CheckState.builder()
+                        .environmentId(profile1.getEnvironmentId())
+                        .pluginId("aws")
+                        .name("test-canary-name-1")
+                        .description("AWS Synthetics Canary")
+                        .status(ComponentStateCheckStatus.PENDING)
+                        .statusMessage("RUNNING - test-state-reason-code-1 - test-state-reason-1")
+                        .updateTimestamp(LocalDateTime.of(2000, 1, 1, 0, 0, 1))
+                        .build(),
+                CheckState.builder()
+                        .environmentId(profile1.getEnvironmentId())
+                        .pluginId("aws")
+                        .name("test-canary-name-2")
+                        .description("AWS Synthetics Canary")
+                        .status(ComponentStateCheckStatus.OK)
+                        .statusMessage("PASSED - test-state-reason-code-2 - test-state-reason-2")
+                        .updateTimestamp(LocalDateTime.of(2000, 1, 1, 0, 0, 2))
+                        .build(),
+                CheckState.builder()
+                        .environmentId(profile2.getEnvironmentId())
+                        .pluginId("aws")
+                        .name("test-canary-name-3")
+                        .description("AWS Synthetics Canary")
+                        .status(ComponentStateCheckStatus.PENDING)
+                        .statusMessage("RUNNING - test-state-reason-code-1 - test-state-reason-1")
+                        .updateTimestamp(LocalDateTime.of(2000, 1, 1, 0, 0, 1))
+                        .build(),
+                CheckState.builder()
+                        .environmentId(profile2.getEnvironmentId())
+                        .pluginId("aws")
+                        .name("test-canary-name-4")
+                        .description("AWS Synthetics Canary")
+                        .status(ComponentStateCheckStatus.OK)
+                        .statusMessage("PASSED - test-state-reason-code-2 - test-state-reason-2")
+                        .updateTimestamp(LocalDateTime.of(2000, 1, 1, 0, 0, 2))
+                        .build()
         );
     }
 
@@ -164,7 +159,7 @@ public class SyntheticsServiceTest {
             List<TaggedResource> canaries
     ) {
         when(clientFacade.describeCanariesLastRun(profileAndRegion, getCanaryNames(canaries))).thenReturn(
-                createCanaryLastRuns(profileAndRegion, getCanaryNames(canaries))
+                createCanaryLastRuns(getCanaryNames(canaries))
         );
     }
 
@@ -174,18 +169,13 @@ public class SyntheticsServiceTest {
                 .collect(toUnmodifiableList());
     }
 
-    private List<SyntheticsCanaryLastRun> createCanaryLastRuns(
-            AwsProfileAndRegion profileAndRegion,
-            List<String> canaryNames
-    ) {
+    private List<SyntheticsCanaryLastRun> createCanaryLastRuns(List<String> canaryNames) {
         return IntStream.range(0, canaryNames.size())
-                .mapToObj(createCanaryLastRun(profileAndRegion, canaryNames))
+                .mapToObj(createCanaryLastRun(canaryNames))
                 .collect(toUnmodifiableList());
     }
 
-    private IntFunction<SyntheticsCanaryLastRun> createCanaryLastRun(
-            AwsProfileAndRegion profileAndRegion,
-            List<String> canaryNames) {
+    private IntFunction<SyntheticsCanaryLastRun> createCanaryLastRun(List<String> canaryNames) {
         return canaryIndex -> {
             int canaryNumber = canaryIndex + 1;
             return new SyntheticsCanaryLastRun(

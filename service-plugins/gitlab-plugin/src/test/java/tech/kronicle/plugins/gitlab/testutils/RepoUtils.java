@@ -1,10 +1,7 @@
 package tech.kronicle.plugins.gitlab.testutils;
 
 import tech.kronicle.sdk.models.CheckState;
-import tech.kronicle.sdk.models.ComponentState;
 import tech.kronicle.sdk.models.ComponentStateCheckStatus;
-import tech.kronicle.sdk.models.EnvironmentPluginState;
-import tech.kronicle.sdk.models.EnvironmentState;
 import tech.kronicle.sdk.models.Link;
 import tech.kronicle.sdk.models.Repo;
 
@@ -38,38 +35,26 @@ public final class RepoUtils {
                 .url("https://example.com/repo-" + repoNumber + "-" + repoScenario + ".git")
                 .defaultBranch(getDefaultBranch(repoNumber, repoScenario))
                 .hasComponentMetadataFile(getHasComponentMetadataFile(repoScenario))
-                .state(createRepoState(repoNumber, repoScenario))
+                .states(List.copyOf(createChecks(repoNumber, repoScenario)))
                 .build();
     }
 
-    public static ComponentState createRepoState(int repoNumber) {
-        return createRepoState(repoNumber, RepoScenario.NORMAL);
+    public static List<CheckState> createChecks(int repoNumber) {
+        return createChecks(repoNumber, RepoScenario.NORMAL);
     }
 
-    public static ComponentState createRepoState(int repoNumber, RepoScenario repoScenario) {
+    public static List<CheckState> createChecks(int repoNumber, RepoScenario repoScenario) {
         if (repoScenario == NO_DEFAULT_BRANCH ||
                 repoScenario == RepoScenario.PIPELINES_FORBIDDEN) {
-            return null;
+            return List.of();
         }
-        return ComponentState.builder()
-                .environments(List.of(
-                        EnvironmentState.builder()
-                                .id("test-environment-id")
-                                .plugins(List.of(
-                                        EnvironmentPluginState.builder()
-                                                .id("gitlab")
-                                                .checks(List.of(
-                                                        createCheck(repoNumber, 1),
-                                                        createCheck(repoNumber, 2),
-                                                        createCheck(repoNumber, 3),
-                                                        createCheck(repoNumber, 4),
-                                                        createCheck(repoNumber, 5)
-                                                ))
-                                                .build()
-                                ))
-                                .build()
-                ))
-                .build();
+        return List.of(
+                createCheck(repoNumber, 1),
+                createCheck(repoNumber, 2),
+                createCheck(repoNumber, 3),
+                createCheck(repoNumber, 4),
+                createCheck(repoNumber, 5)
+        );
     }
 
     private static String getDefaultBranch(int repoNumber, RepoScenario repoScenario) {

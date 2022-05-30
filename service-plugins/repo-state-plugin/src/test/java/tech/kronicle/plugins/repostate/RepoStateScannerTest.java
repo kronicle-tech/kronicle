@@ -1,19 +1,19 @@
 package tech.kronicle.plugins.repostate;
 
+import lombok.Value;
 import org.junit.jupiter.api.Test;
 import tech.kronicle.pluginapi.scanners.models.Output;
 import tech.kronicle.plugintestutils.scanners.BaseScannerTest;
 import tech.kronicle.sdk.models.Component;
 import tech.kronicle.sdk.models.ComponentMetadata;
 import tech.kronicle.sdk.models.ComponentState;
-import tech.kronicle.sdk.models.EnvironmentState;
 import tech.kronicle.sdk.models.Repo;
 import tech.kronicle.sdk.models.RepoReference;
 
 import java.time.Duration;
 import java.util.List;
-import java.util.function.UnaryOperator;
 
+import static java.util.Objects.nonNull;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class RepoStateScannerTest extends BaseScannerTest {
@@ -113,13 +113,15 @@ public class RepoStateScannerTest extends BaseScannerTest {
     public void scanShouldMergeRepoStateAndComponentState() {
         // Given
         RepoStateScanner underTest = new RepoStateScanner();
+        ComponentState componentState1 = createComponentState(1);
         ComponentMetadata componentMetadata = createComponentMetadata(
-                createComponentState(1)
+                componentState1
         );
+        ComponentState componentState2 = createComponentState(2);
         Component component = Component.builder()
                 .id("test-component-id-1")
                 .repo(createRepoReference(componentMetadata.getRepos().get(0).getUrl()))
-                .state(createComponentState(2))
+                .states(List.of(componentState2))
                 .build();
 
         // When
@@ -130,29 +132,15 @@ public class RepoStateScannerTest extends BaseScannerTest {
         assertThat(maskTransformer(returnValue)).isEqualTo(maskTransformer(Output.empty(CACHE_TTL)));
         Component transformedComponent = getMutatedComponent(returnValue, component);
         assertThat(transformedComponent).isEqualTo(
-                component.withState(
-                        ComponentState.builder()
-                                .environments(List.of(
-                                        createEnvironmentState(2),
-                                        createEnvironmentState(1)
-                                ))
-                                .build()
-                )
+                component.withStates(List.of(
+                        componentState2,
+                        componentState1
+                ))
         );
     }
 
     private ComponentState createComponentState(int componentStateNumber) {
-        return ComponentState.builder()
-                .environments(List.of(
-                        createEnvironmentState(componentStateNumber)
-                ))
-                .build();
-    }
-
-    private EnvironmentState createEnvironmentState(int environmentNumber) {
-        return EnvironmentState.builder()
-                .id("test-environment-id-" + environmentNumber)
-                .build();
+        return new TestComponentState("test-component-state-" + componentStateNumber);
     }
 
     private ComponentMetadata createComponentMetadata() {
@@ -175,7 +163,7 @@ public class RepoStateScannerTest extends BaseScannerTest {
     private Repo createRepo(int repoNumber, ComponentState componentState) {
         return Repo.builder()
                 .url(createRepoUrl(repoNumber))
-                .state(componentState)
+                .states(nonNull(componentState) ? List.of(componentState) : List.of())
                 .build();
     }
 
@@ -187,5 +175,12 @@ public class RepoStateScannerTest extends BaseScannerTest {
         return RepoReference.builder()
                 .url(repoUrl)
                 .build();
+    }
+
+    @Value
+    private static class TestComponentState implements ComponentState {
+
+        String type = "test";
+        String pluginId;
     }
 }

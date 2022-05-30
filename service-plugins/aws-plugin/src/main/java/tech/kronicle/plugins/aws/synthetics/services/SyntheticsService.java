@@ -8,7 +8,7 @@ import tech.kronicle.plugins.aws.models.TaggedResource;
 import tech.kronicle.plugins.aws.models.TaggedResourcesByProfileAndRegionAndComponent;
 import tech.kronicle.plugins.aws.services.TaggedResourceFinder;
 import tech.kronicle.plugins.aws.synthetics.client.SyntheticsClientFacade;
-import tech.kronicle.plugins.aws.synthetics.models.CheckStateAndContext;
+import tech.kronicle.sdk.models.CheckState;
 import tech.kronicle.sdk.models.Component;
 
 import javax.inject.Inject;
@@ -36,7 +36,7 @@ public class SyntheticsService {
         );
     }
 
-    public List<CheckStateAndContext> getCanaryLastRunsForComponent(
+    public List<CheckState> getCanaryLastRunsForComponent(
             Component component
     ) {
         return processProfilesToMapEntryList(
@@ -49,7 +49,7 @@ public class SyntheticsService {
                 .collect(toUnmodifiableList());
     }
 
-    private Function<AwsProfileAndRegion, List<CheckStateAndContext>> getCanaryLastRunsForProfileAndRegionAndComponent(
+    private Function<AwsProfileAndRegion, List<CheckState>> getCanaryLastRunsForProfileAndRegionAndComponent(
             Component component
     ) {
         return profileAndRegion -> {

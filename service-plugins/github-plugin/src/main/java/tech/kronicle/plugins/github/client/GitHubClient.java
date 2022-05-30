@@ -10,7 +10,6 @@ import tech.kronicle.pluginapi.constants.KronicleMetadataFilePaths;
 import tech.kronicle.plugins.github.GitHubPlugin;
 import tech.kronicle.plugins.github.models.api.GitHubGetWorkflowRunsResponse;
 import tech.kronicle.plugins.github.models.api.GitHubWorkflowRun;
-import tech.kronicle.plugins.github.models.api.GitHubWorkflowRunActor;
 import tech.kronicle.sdk.models.CheckState;
 import tech.kronicle.sdk.models.ComponentState;
 import tech.kronicle.sdk.models.ComponentStateCheckStatus;
@@ -46,7 +45,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
-import java.util.Optional;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -118,7 +116,7 @@ public class GitHubClient {
             .description(gitHubRepo.getDescription())
             .defaultBranch(gitHubRepo.getDefault_branch())
             .hasComponentMetadataFile(hasComponentMetadataFile(accessToken, gitHubRepo))
-            .state(getState(accessToken, gitHubRepo))
+            .states(getStates(accessToken, gitHubRepo))
             .build();
   }
 
@@ -136,7 +134,7 @@ public class GitHubClient {
             .anyMatch(contentEntry -> KronicleMetadataFilePaths.ALL.contains(contentEntry.getName()));
   }
 
-  private ComponentState getState(GitHubAccessTokenConfig accessToken, GitHubRepo repo) {
+  private List<ComponentState> getStates(GitHubAccessTokenConfig accessToken, GitHubRepo repo) {
     LocalDateTime now = LocalDateTime.now(clock);
     String uriTemplate = config.getApiBaseUrl() + GitHubApiPaths.REPO_ACTIONS_RUNS;
     int page = 0;
@@ -168,12 +166,10 @@ public class GitHubClient {
             defaultBranchFirstSha = workflowRun.getHead_sha();
           }
 
-          if (defaultBranchFound) {
-            if (!Objects.equals(workflowRun.getHead_sha(), defaultBranchFirstSha)) {
-              defaultBranchSecondShaFound = true;
-            } else {
-              defaultBranchWorkflowRuns.add(workflowRun);
-            }
+          if (!Objects.equals(workflowRun.getHead_sha(), defaultBranchFirstSha)) {
+            defaultBranchSecondShaFound = true;
+          } else {
+            defaultBranchWorkflowRuns.add(workflowRun);
           }
         }
       }
@@ -182,14 +178,7 @@ public class GitHubClient {
     if (defaultBranchWorkflowRuns.isEmpty()) {
       return null;
     }
-    return ComponentState.EMPTY
-            .withUpdatedEnvironment(
-                    config.getEnvironmentId(),
-                    environment -> environment.withUpdatedPlugin(
-                            GitHubPlugin.ID,
-                            plugin -> plugin.withChecks(mapWorkflowRuns(defaultBranchWorkflowRuns, now))
-                    )
-            );
+    return List.copyOf(mapWorkflowRuns(defaultBranchWorkflowRuns, now));
   }
 
   private Stream<GitHubWorkflowRun> getWorkflowRunsForMostRecentCommit(List<GitHubWorkflowRun> workflowRuns) {
@@ -209,6 +198,8 @@ public class GitHubClient {
     return workflowRun -> {
       WorkflowRunStatus status = mapWorkflowRunStatus(workflowRun);
       return CheckState.builder()
+              .environmentId(config.getEnvironmentId())
+              .pluginId(GitHubPlugin.ID)
               .status(status.status)
               .name(workflowRun.getName())
               .description("GitHub Actions Workflow")

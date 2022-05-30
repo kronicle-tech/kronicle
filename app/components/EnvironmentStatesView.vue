@@ -13,7 +13,7 @@
       <template v-for="item in items">
         <template v-if="item.itemType === 'check'">
           <b-card :key="item.key" :class="`border-${item.statusVariant}`">
-            <h5>{{ item.environment.id }} <span class="text-muted">//</span> {{ item.plugin.id }} <span class="text-muted">//</span> {{ item.component.name }}</h5>
+            <h5>{{ item.environmentId }} <span class="text-muted">//</span> {{ item.pluginId }} <span class="text-muted">//</span> {{ item.component.name }}</h5>
             <h4 :class="`text-${item.statusVariant}`">
               <b-avatar v-if="item.firstCheck.avatarUrl" :src="item.firstCheck.avatarUrl" />
               <span v-for="(check, checkIndex) in item.allChecks" :key="checkIndex">
@@ -45,7 +45,7 @@
         <template v-if="item.itemType === 'log-summary'">
           <b-card :key="item.key">
             <h5>
-              {{ item.environment.id }} <span class="text-muted">//</span> {{ item.component.name }} <span class="text-muted">//</span> {{ item.plugin.id }} <span class="text-muted">//</span> Logs
+              {{ item.environmentId }} <span class="text-muted">//</span> {{ item.component.name }} <span class="text-muted">//</span> {{ item.pluginId }} <span class="text-muted">//</span> Logs
             </h5>
             <h4 class="text-info">{{ item.logSummary.name }}</h4>
 
@@ -63,9 +63,9 @@
 
             <div class="mt-2"><span class="text-muted">Updated At:</span> <b><FormattedDateTime :value="item.logSummary.updateTimestamp" /></b></div>
           </b-card>
-          <b-card v-for="level in item.logSummary.levels.filter(level => level.topMessages.length > 0)" :key="`${item.key}-${level.level}`">
+          <b-card v-for="level in item.logSummary.levels.filter(it => it.topMessages.length > 0)" :key="`${item.key}-${level.level}`">
             <h5>
-              {{ item.environment.id }} <span class="text-muted">//</span> {{ item.component.name }} <span class="text-muted">//</span> {{ item.plugin.id }} <span class="text-muted">//</span> Logs
+              {{ item.environmentId }} <span class="text-muted">//</span> {{ item.component.name }} <span class="text-muted">//</span> {{ item.pluginId }} <span class="text-muted">//</span> Logs
             </h5>
             <h4>{{ level.level || '{blank}' }} - Top Messages - {{ item.logSummary.name }}</h4>
 
@@ -93,10 +93,10 @@ import {
 } from 'bootstrap-vue'
 import {
   CheckState,
-  Component,
+  Component, ComponentState,
   ComponentStateCheckStatus,
-  EnvironmentPluginState,
-  EnvironmentState, Link, LogSummaryState,
+  Link,
+  LogSummaryState,
 } from '~/types/kronicle-service'
 import ComponentFilters from '~/components/ComponentFilters.vue'
 import FormattedDateTime from "~/components/FormattedDateTime.vue";
@@ -109,10 +109,10 @@ const CHECK_STATUS_ORDER: ComponentStateCheckStatus[] =
 
 interface BaseItem {
   readonly itemType: ItemType;
+  readonly environmentId: string;
+  readonly pluginId: string;
   readonly key: string;
   readonly component: Component;
-  readonly environment: EnvironmentState;
-  readonly plugin: EnvironmentPluginState;
 }
 
 interface LinkAndCheck {
@@ -196,48 +196,47 @@ export default Vue.extend({
       return groupedItems.sort(that.compareItems);
     },
     mapComponent(component: Component): Item[] {
-      if (!component.state || !component.state.environments) {
+      const that = this;
+      if (!component.states) {
         return [];
       }
-      const that = this;
-      return component.state.environments.flatMap(environment => that.mapEnvironment(component, environment));
+      return component.states
+        .map(state => that.mapState(component, state))
+        .filter(item => item !== undefined) as Item[];
     },
-    mapEnvironment(component: Component, environment: EnvironmentState): Item[] {
-      if (!environment.plugins) {
-        return [];
+    mapState(component: Component, state: ComponentState): Item | undefined {
+      const that = this;
+      switch (state.type) {
+        case 'check':
+          return that.mapCheck(component, state as CheckState);
+        case 'log-summary':
+          return that.mapLogSummary(component, state as LogSummaryState);
+        default:
+          return undefined;
       }
-      const that = this;
-      return environment.plugins.flatMap(plugin => that.mapPlugin(component, environment, plugin));
     },
-    mapPlugin(component: Component, environment: EnvironmentState, plugin: EnvironmentPluginState): Item[] {
-      const that = this;
-      return ([] as Item[]).concat(
-        (plugin.checks ?? []).map(check => that.mapCheck(component, environment, plugin, check)),
-        (plugin.logSummaries ?? []).map(logSummary => that.mapLogSummary(component, environment, plugin, logSummary)),
-      );
-    },
-    mapCheck(component: Component, environment: EnvironmentState, plugin: EnvironmentPluginState, check: CheckState): Item {
+    mapCheck(component: Component, check: CheckState): Item {
       const that = this;
       return {
         itemType: 'check',
-        key: `${component.id}_${environment.id}_${plugin.id}_${check.name}`,
-        classifier: `${component.id}_${environment.id}_${plugin.id}_${check.avatarUrl}_${check.status}_${check.statusMessage}_${check.updateTimestamp}`,
+        environmentId: check.environmentId,
+        pluginId: check.pluginId,
+        key: `${component.id}_${check.environmentId}_${check.pluginId}_${check.name}`,
+        classifier: `${component.id}_${check.environmentId}_${check.pluginId}_${check.avatarUrl}_${check.status}_${check.statusMessage}_${check.updateTimestamp}`,
         component,
-        environment,
-        plugin,
         firstCheck: check,
         allChecks: [check],
         allLinks: check.links.map(link => ({ link, check })),
         statusVariant: that.getStatusVariant(check.status),
       };
     },
-    mapLogSummary(component: Component, environment: EnvironmentState, plugin: EnvironmentPluginState, logSummary: LogSummaryState): Item {
+    mapLogSummary(component: Component, logSummary: LogSummaryState): Item {
       return {
         itemType: 'log-summary',
-        key: `${component.id}_${environment.id}_${plugin.id}_${logSummary.name}`,
+        environmentId: logSummary.environmentId,
+        pluginId: logSummary.pluginId,
+        key: `${component.id}_${logSummary.environmentId}_${logSummary.pluginId}_${logSummary.name}`,
         component,
-        environment,
-        plugin,
         logSummary,
       };
     },
@@ -267,7 +266,7 @@ export default Vue.extend({
           return result;
         }
       }
-      result = a.environment.id.localeCompare(b.environment.id)
+      result = a.environmentId.localeCompare(b.environmentId)
       if (result !== 0) {
         return result;
       }

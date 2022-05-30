@@ -24,7 +24,7 @@ describe('Index', () => {
     wrapper = await createPageWrapper(Index, {
       route,
       serviceRequests: {
-        '/v1/teams/test-team-id-1?fields=team(id,name,components(id,name,typeId,tags,description,notes,responsibilities,teams,platformId,state(environments(id,plugins(id)))))':
+        '/v1/teams/test-team-id-1?fields=team(id,name,components(id,name,typeId,tags,description,notes,responsibilities,teams,platformId,states(environmentId,pluginId)))':
           {
             responseBody: { team },
           },

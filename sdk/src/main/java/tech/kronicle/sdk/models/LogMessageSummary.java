@@ -12,7 +12,7 @@ import javax.validation.constraints.NotNull;
 @With
 @Builder(toBuilder = true)
 @Jacksonized
-public class LogMessageState {
+public class LogMessageSummary {
 
     String message;
     @NotNull

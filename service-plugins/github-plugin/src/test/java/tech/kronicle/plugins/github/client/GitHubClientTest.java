@@ -24,10 +24,7 @@ import tech.kronicle.plugins.github.models.api.GitHubRepo;
 import tech.kronicle.plugins.github.models.api.GitHubRepoOwner;
 import tech.kronicle.plugins.github.services.ApiResponseCache;
 import tech.kronicle.sdk.models.CheckState;
-import tech.kronicle.sdk.models.ComponentState;
 import tech.kronicle.sdk.models.ComponentStateCheckStatus;
-import tech.kronicle.sdk.models.EnvironmentPluginState;
-import tech.kronicle.sdk.models.EnvironmentState;
 import tech.kronicle.sdk.models.Link;
 import tech.kronicle.sdk.models.Repo;
 import tech.kronicle.testutils.LogCaptor;
@@ -423,25 +420,12 @@ public class GitHubClientTest {
                 .description("test-repo-description-" + repoNumber)
                 .defaultBranch("test-default-branch")
                 .hasComponentMetadataFile(hasComponentMetadataFile)
-                .state(ComponentState.builder()
-                        .environments(List.of(
-                                EnvironmentState.builder()
-                                        .id("test-environment-id")
-                                        .plugins(List.of(
-                                                EnvironmentPluginState.builder()
-                                                        .id("github")
-                                                        .checks(List.of(
-                                                                createCheckState(1, ComponentStateCheckStatus.OK, "Success", checkSuffix),
-                                                                createCheckState(2, ComponentStateCheckStatus.CRITICAL, "Failure", checkSuffix),
-                                                                createCheckState(4, ComponentStateCheckStatus.OK, "Success", checkSuffix),
-                                                                createCheckState(5, ComponentStateCheckStatus.CRITICAL, "Failure", checkSuffix)
-                                                        ))
-                                                        .build()
-                                        ))
-                                        .build()
-                        ))
-                        .build()
-                )
+                .states(List.of(
+                        createCheckState(1, ComponentStateCheckStatus.OK, "Success", checkSuffix),
+                        createCheckState(2, ComponentStateCheckStatus.CRITICAL, "Failure", checkSuffix),
+                        createCheckState(4, ComponentStateCheckStatus.OK, "Success", checkSuffix),
+                        createCheckState(5, ComponentStateCheckStatus.CRITICAL, "Failure", checkSuffix)
+                ))
                 .build();
     }
 
@@ -452,6 +436,8 @@ public class GitHubClientTest {
             String checkSuffix
     ) {
         return CheckState.builder()
+                .environmentId("test-environment-id")
+                .pluginId("github")
                 .name("Test name " + checkStateNumber + checkSuffix)
                 .description("GitHub Actions Workflow")
                 .status(status)

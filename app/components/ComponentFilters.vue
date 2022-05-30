@@ -182,7 +182,7 @@ import {
   BFormSelect, BIcon,
   VBToggle
 } from 'bootstrap-vue'
-import { Component } from '~/types/kronicle-service'
+import {Component, ComponentEnvironmentState} from '~/types/kronicle-service'
 import { distinctArrayElements } from '~/src/arrayUtils'
 
 interface Option {
@@ -228,8 +228,9 @@ export default class ComponentFilters extends Vue {
   get allEnvironmentIds(): string[] {
     return distinctArrayElements(
       this.components
-        .flatMap((component) => component.state?.environments ?? [])
-        .map((environment) => environment.id)
+        .flatMap((component) => component.states ?? [])
+        .filter((state) => 'environmentId' in state)
+        .map((state) => (state as ComponentEnvironmentState).environmentId)
     )
   }
 
@@ -253,11 +254,8 @@ export default class ComponentFilters extends Vue {
   get allPluginIds(): string[] {
     return distinctArrayElements(
       this.components
-        .flatMap((component) =>
-          (component.state?.environments ?? []).flatMap(environment =>
-            (environment.plugins ?? []).map((plugin) => plugin.id)
-          )
-        )
+        .flatMap((component) => (component.states ?? []))
+        .flatMap(state => state.pluginId)
     )
   }
 

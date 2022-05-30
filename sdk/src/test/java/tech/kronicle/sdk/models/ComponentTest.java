@@ -3,7 +3,6 @@ package tech.kronicle.sdk.models;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.json.JsonMapper;
-import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
 import org.junit.jupiter.api.Test;
 import tech.kronicle.sdk.models.graphql.GraphQlSchema;
@@ -12,12 +11,11 @@ import tech.kronicle.sdk.models.sonarqube.SonarQubeProject;
 import tech.kronicle.sdk.models.todos.ToDo;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.catchThrowable;
+import static tech.kronicle.sdk.models.testutils.ComponentStateUtils.createComponentState;
 import static tech.kronicle.sdk.models.testutils.ImportUtils.createImport;
 import static tech.kronicle.sdk.models.testutils.SoftwareRepositoryUtils.createSoftwareRepository;
 import static tech.kronicle.sdk.models.testutils.SoftwareUtils.createSoftware;
@@ -38,33 +36,7 @@ public class ComponentTest {
         // Then
         assertThat(returnValue).isNotNull();
     }
-
-    @Test
-    public void constructorShouldDeserializePluginsAsAMapOfRawJsonValues() throws JsonProcessingException {
-        // Given
-        String json = "{\n" +
-                "  \"plugins\": {\n" +
-                "    \"key-1\": {\n" +
-                "      \"nested-key-1\": \"nested-value-1\"\n" +
-                "    },\n" +
-                "    \"key-2\": {\n" +
-                "      \"nested-key-2\": \"nested-value-2\"\n" +
-                "    }\n" +
-                "  }" +
-                "}";
-
-        // When
-        Component returnValue = new ObjectMapper().readValue(json, Component.class);
-
-        // Then
-        assertThat(returnValue).isNotNull();
-        Map<String, String> plugins = returnValue.getPlugins();
-        assertThat(plugins).isNotNull();
-        assertThat(plugins.keySet()).containsExactlyInAnyOrder("key-1", "key-2");
-        assertThat(plugins.get("key-1")).isEqualTo("{\"nested-key-1\":\"nested-value-1\"}");
-        assertThat(plugins.get("key-2")).isEqualTo("{\"nested-key-2\":\"nested-value-2\"}");
-    }
-
+    
     @Test
     public void referenceShouldReturnId() {
         // Given
@@ -152,12 +124,12 @@ public class ComponentTest {
     }
 
     @Test
-    public void constructorShouldMakePluginsAnUnmodifiableMap() {
+    public void constructorShouldMakeStatesAnUnmodifiableList() {
         // Given
-        Component underTest = Component.builder().plugins(new HashMap<>()).build();
+        Component underTest = Component.builder().states(new ArrayList<>()).build();
 
         // When
-        Throwable thrown = catchThrowable(() -> underTest.getPlugins().put("key", "value"));
+        Throwable thrown = catchThrowable(() -> underTest.getStates().add(createComponentState(1)));
 
         // Then
         assertThat(thrown).isInstanceOf(UnsupportedOperationException.class);
@@ -341,38 +313,45 @@ public class ComponentTest {
     }
 
     @Test
-    public void withUpdatedStateShouldPassANewStateObjectToActionWhenStateIsNull() {
+    public void addStatesWhenThereAreNoExistingStatesShouldAddStatesToExistingStates() {
         // Given
-        ComponentState updatedState = createState(1);
+        List<ComponentState> newStates = List.of(
+                createComponentState(1),
+                createComponentState(2)
+        );
         Component underTest = Component.builder().build();
-        FakeStateUpdateAction action = new FakeStateUpdateAction(updatedState);
 
         // When
-        Component returnValue = underTest.withUpdatedState(action::apply);
+        underTest = underTest.addStates(newStates);
 
-        // Then
-        assertThat(returnValue).isEqualTo(underTest.withState(updatedState));
-        assertThat(action.calls).containsExactly(ComponentState.builder().build());
+        // When
+        assertThat(underTest.getStates()).containsExactlyElementsOf(newStates);
     }
 
     @Test
-    public void withUpdatedStateShouldPassExistingStateObjectToActionWhenStateIsNotNull() {
+    public void addStatesWhenThereAreExistingStatesShouldAddStatesToExistingStates() {
         // Given
-        ComponentState initialState = createState(1);
-        ComponentState updatedState = createState(2);
+        List<ComponentState> existingState = List.of(
+                createComponentState(3),
+                createComponentState(4)
+        );
+        List<ComponentState> newState = List.of(
+                createComponentState(1),
+                createComponentState(2)
+        );
         Component underTest = Component.builder()
-                .state(initialState)
+                .states(existingState)
                 .build();
-        FakeStateUpdateAction action = new FakeStateUpdateAction(updatedState);
 
         // When
-        Component returnValue = underTest.withUpdatedState(action::apply);
+        underTest = underTest.addStates(newState);
 
-        // Then
-        assertThat(returnValue).isEqualTo(underTest.withState(updatedState));
-        assertThat(action.calls).containsExactly(initialState);
+        // When
+        assertThat(underTest.getStates()).containsExactlyElementsOf(
+                unmodifiableUnionOfLists(List.of(existingState, newState))
+        );
     }
-    
+
     @Test
     public void addImportsWhenThereAreNoExistingImportsShouldAddImportsToExistingImports() {
         // Given
@@ -491,27 +470,5 @@ public class ComponentTest {
         assertThat(underTest.getSoftware()).containsExactlyElementsOf(
                 unmodifiableUnionOfLists(List.of(existingSoftware, newSoftware))
         );
-    }
-
-    private ComponentState createState(int stateNumber) {
-        return ComponentState.builder()
-                .environments(List.of(
-                        EnvironmentState.builder()
-                                .id("test-environment-id-" + stateNumber)
-                                .build()
-                ))
-                .build();
-    }
-
-    @RequiredArgsConstructor
-    private static class FakeStateUpdateAction {
-
-        private final ComponentState updatedState;
-        private final List<ComponentState> calls = new ArrayList<>();
-
-        public ComponentState apply(ComponentState value) {
-            calls.add(value);
-            return updatedState;
-        }
     }
 }

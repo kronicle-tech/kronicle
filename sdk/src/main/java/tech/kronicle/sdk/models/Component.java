@@ -2,16 +2,12 @@ package tech.kronicle.sdk.models;
 
 import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.Builder;
 import lombok.Value;
 import lombok.With;
 import lombok.extern.jackson.Jacksonized;
 import org.hibernate.validator.constraints.UniqueElements;
-import tech.kronicle.graphql.codefirst.annotation.CodeFirstGraphQlIgnore;
 import tech.kronicle.sdk.constants.PatternStrings;
-import tech.kronicle.sdk.jackson.JsonRawValueDeserializer;
-import tech.kronicle.sdk.jackson.JsonRawValueSerializer;
 import tech.kronicle.sdk.jackson.TagOrStringDeserializer;
 import tech.kronicle.sdk.models.git.GitRepo;
 import tech.kronicle.sdk.models.gradle.Gradle;
@@ -26,16 +22,11 @@ import tech.kronicle.sdk.models.zipkin.Zipkin;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Pattern;
 import java.util.List;
-import java.util.Map;
-import java.util.function.UnaryOperator;
 
-import static java.util.Objects.nonNull;
 import static tech.kronicle.sdk.utils.ListUtils.createUnmodifiableList;
 import static tech.kronicle.sdk.utils.ListUtils.unmodifiableUnionOfLists;
-import static tech.kronicle.sdk.utils.MapUtils.createUnmodifiableMap;
 
 @Value
 @With
@@ -70,13 +61,8 @@ public class Component implements ObjectWithId, ObjectWithReference {
     List<@Valid ComponentDependency> dependencies;
     List<@Valid CrossFunctionalRequirement> crossFunctionalRequirements;
     List<@Valid TechDebt> techDebts;
-    @JsonSerialize(contentUsing = JsonRawValueSerializer.class)
-    @JsonDeserialize(contentUsing = JsonRawValueDeserializer.class)
-    @CodeFirstGraphQlIgnore
-    Map<@NotEmpty String, String> plugins;
 
-    @Valid
-    ComponentState state;
+    List<@Valid ComponentState> states;
     
     @Valid GitRepo gitRepo;
     @Valid Gradle gradle;
@@ -112,8 +98,7 @@ public class Component implements ObjectWithId, ObjectWithReference {
             List<ComponentDependency> dependencies,
             List<CrossFunctionalRequirement> crossFunctionalRequirements,
             List<TechDebt> techDebts,
-            Map<String, String> plugins,
-            ComponentState state,
+            List<ComponentState> states,
             GitRepo gitRepo,
             Gradle gradle,
             NodeJs nodeJs,
@@ -147,8 +132,7 @@ public class Component implements ObjectWithId, ObjectWithReference {
         this.dependencies = createUnmodifiableList(dependencies);
         this.crossFunctionalRequirements = createUnmodifiableList(crossFunctionalRequirements);
         this.techDebts = createUnmodifiableList(techDebts);
-        this.plugins = createUnmodifiableMap(plugins);
-        this.state = state;
+        this.states = createUnmodifiableList(states);
         this.gitRepo = gitRepo;
         this.gradle = gradle;
         this.nodeJs = nodeJs;
@@ -172,9 +156,9 @@ public class Component implements ObjectWithId, ObjectWithReference {
         return id;
     }
 
-    public Component withUpdatedState(UnaryOperator<ComponentState> action) {
-        return withState(
-                action.apply(nonNull(state) ? state : ComponentState.builder().build())
+    public Component addStates(List<ComponentState> states) {
+        return withStates(
+                unmodifiableUnionOfLists(List.of(this.states, states))
         );
     }
 

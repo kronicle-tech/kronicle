@@ -7,8 +7,23 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.catchThrowable;
+import static tech.kronicle.sdk.models.testutils.ComponentStateUtils.createComponentState;
+import static tech.kronicle.sdk.utils.ListUtils.unmodifiableUnionOfLists;
 
 public class RepoTest {
+
+    @Test
+    public void constructorShouldMakeStatesAnUnmodifiableList() {
+        // Given
+        Repo underTest = Repo.builder().states(new ArrayList<>()).build();
+
+        // When
+        Throwable thrown = catchThrowable(() -> underTest.getStates().add(createComponentState(1)));
+
+        // Then
+        assertThat(thrown).isInstanceOf(UnsupportedOperationException.class);
+    }
 
     @Test
     public void referenceShouldReturnUrl() {
@@ -25,57 +40,42 @@ public class RepoTest {
     }
 
     @Test
-    public void withUpdatedStateShouldPassANewStateObjectToActionWhenStateIsNull() {
+    public void addStatesWhenThereAreNoExistingStatesShouldAddStatesToExistingStates() {
         // Given
-        ComponentState updatedState = createState(1);
+        List<ComponentState> newStates = List.of(
+                createComponentState(1),
+                createComponentState(2)
+        );
         Repo underTest = Repo.builder().build();
-        FakeStateUpdateAction action = new FakeStateUpdateAction(updatedState);
 
         // When
-        Repo returnValue = underTest.withUpdatedState(action::apply);
+        underTest = underTest.addStates(newStates);
 
-        // Then
-        assertThat(returnValue).isEqualTo(underTest.withState(updatedState));
-        assertThat(action.calls).containsExactly(ComponentState.builder().build());
+        // When
+        assertThat(underTest.getStates()).containsExactlyElementsOf(newStates);
     }
 
     @Test
-    public void withUpdatedStateShouldPassExistingStateObjectToActionWhenStateIsNotNull() {
+    public void addStatesWhenThereAreExistingStatesShouldAddStatesToExistingStates() {
         // Given
-        ComponentState initialState = createState(1);
-        ComponentState updatedState = createState(2);
+        List<ComponentState> existingState = List.of(
+                createComponentState(3),
+                createComponentState(4)
+        );
+        List<ComponentState> newState = List.of(
+                createComponentState(1),
+                createComponentState(2)
+        );
         Repo underTest = Repo.builder()
-                .state(initialState)
+                .states(existingState)
                 .build();
-        FakeStateUpdateAction action = new FakeStateUpdateAction(updatedState);
 
         // When
-        Repo returnValue = underTest.withUpdatedState(action::apply);
+        underTest = underTest.addStates(newState);
 
-        // Then
-        assertThat(returnValue).isEqualTo(underTest.withState(updatedState));
-        assertThat(action.calls).containsExactly(initialState);
-    }
-
-    private ComponentState createState(int stateNumber) {
-        return ComponentState.builder()
-                .environments(List.of(
-                        EnvironmentState.builder()
-                                .id("test-environment-id-" + stateNumber)
-                                .build()
-                ))
-                .build();
-    }
-
-    @RequiredArgsConstructor
-    private static class FakeStateUpdateAction {
-
-        private final ComponentState updatedState;
-        private final List<ComponentState> calls = new ArrayList<>();
-
-        public ComponentState apply(ComponentState value) {
-            calls.add(value);
-            return updatedState;
-        }
+        // When
+        assertThat(underTest.getStates()).containsExactlyElementsOf(
+                unmodifiableUnionOfLists(List.of(existingState, newState))
+        );
     }
 }

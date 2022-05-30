@@ -15,10 +15,9 @@ import tech.kronicle.sdk.constants.DependencyTypeIds;
 import tech.kronicle.sdk.models.Alias;
 import tech.kronicle.sdk.models.Component;
 import tech.kronicle.sdk.models.ComponentDependency;
-import tech.kronicle.sdk.models.ComponentState;
 import tech.kronicle.sdk.models.ComponentTeam;
 import tech.kronicle.sdk.models.DependencyDirection;
-import tech.kronicle.sdk.models.EnvironmentState;
+import tech.kronicle.sdk.models.DiscoveredState;
 import tech.kronicle.sdk.models.Tag;
 
 import java.util.ArrayList;
@@ -93,14 +92,12 @@ public class ResourceMapperTest {
                                 "arn:aws:lambda:us-west-1:123456789012:function:ExampleStack-exampleFunction123ABC-123456ABCDEF\n"
                         ))
                         .platformId("aws-managed-service")
-                        .state(ComponentState.builder()
-                                .environments(List.of(
-                                        EnvironmentState.builder()
-                                                .id(TEST_ENVIRONMENT_ID)
-                                                .build()
-                                ))
-                                .build()
-                        )
+                        .states(List.of(
+                                DiscoveredState.builder()
+                                        .environmentId(TEST_ENVIRONMENT_ID)
+                                        .pluginId("aws")
+                                        .build()
+                        ))
                         .build(),
                 Component.builder()
                         .id("aws-ec2-security-group-security-group-sg-12345678901abcdef")
@@ -148,14 +145,12 @@ public class ResourceMapperTest {
                         ))
                         .platformId("aws-managed-service")
                         .dependencies(prepareExpectedDependencies(mappingConfig))
-                        .state(ComponentState.builder()
-                                .environments(List.of(
-                                        EnvironmentState.builder()
-                                                .id(prepareExpectedEnvironmentId(mappingConfig, TEST_ENVIRONMENT_ID))
-                                                .build()
-                                ))
-                                .build()
-                        )
+                        .states(List.of(
+                                DiscoveredState.builder()
+                                        .environmentId(prepareExpectedEnvironmentId(mappingConfig, TEST_ENVIRONMENT_ID))
+                                        .pluginId("aws")
+                                        .build()
+                        ))
                         .build()
         ));
     }

@@ -189,7 +189,7 @@ public class RepoFetcherTest {
     }
 
     @Test
-    public void getRepoStateShouldUseTheClientToGetRepoStateForARepo() {
+    public void getRepoJobsShouldUseTheClientToGetRepoJobsForARepo() {
         // Given
         List<GitLabJob> jobs = createGitLabJobs();
         EnrichedGitLabRepo repo = createEnrichedGitLabRepo(1, 1);
@@ -197,7 +197,7 @@ public class RepoFetcherTest {
         underTest = new RepoFetcher(null, mockClient);
 
         // When
-        List<GitLabJob> returnValue = underTest.getRepoState(repo);
+        List<GitLabJob> returnValue = underTest.getRepoJobs(repo);
 
         // Then
         assertThat(returnValue).isEqualTo(jobs);

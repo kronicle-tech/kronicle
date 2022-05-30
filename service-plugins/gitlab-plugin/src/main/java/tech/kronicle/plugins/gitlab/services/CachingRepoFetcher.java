@@ -44,9 +44,9 @@ public class CachingRepoFetcher {
         return repos.stream()
                 .map(repo -> {
                     LocalDateTime repoStateRefreshedAt = LocalDateTime.now(clock);
-                    List<GitLabJob> repoState = fetcher.getRepoState(repo);
+                    List<GitLabJob> jobs = fetcher.getRepoJobs(repo);
                     return mapper.mapRepo(repo)
-                            .withState(mapper.mapState(repoState, repoStateRefreshedAt));
+                            .withStates(List.copyOf(mapper.mapChecks(jobs, repoStateRefreshedAt)));
                 })
                 .collect(toUnmodifiableList());
     }

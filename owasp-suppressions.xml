@@ -522,4 +522,100 @@
         <packageUrl regex="true">^pkg:maven/org\.springframework/spring\-.*@.*$</packageUrl>
         <cve>CVE-2016-1000027</cve>
     </suppress>
+    <!-- Suppress Spring Framework vulnerability that is incorrectly flagged against the latest version of Spring Framework -->
+    <suppress>
+        <notes><![CDATA[
+   file name: spring-security-crypto-5.7.1.jar
+   ]]></notes>
+        <packageUrl regex="true">^pkg:maven/org\.springframework\.security/spring\-security\-crypto@.*$</packageUrl>
+        <vulnerabilityName>CVE-2020-5408</vulnerabilityName>
+    </suppress>
+    <!-- Suppress vulnerability flagged against wrong package -->
+    <suppress>
+        <notes><![CDATA[
+   file name: fb-watchman:2.0.1
+   ]]></notes>
+        <packageUrl regex="true">^pkg:npm/fb\-watchman@.*$</packageUrl>
+        <vulnerabilityName>CVE-2022-21944</vulnerabilityName>
+    </suppress>
+    <!-- Suppress a "Resource Exhaustion" vulnerability in an npm package -->
+    <suppress>
+        <notes><![CDATA[
+   file name: glob-parent:3.1.0
+   ]]></notes>
+        <packageUrl regex="true">^pkg:npm/glob\-parent@.*$</packageUrl>
+        <vulnerabilityName>CVE-2020-28469</vulnerabilityName>
+    </suppress>
+    <!-- Suppress a "Resource Exhaustion" vulnerability in an npm package -->
+    <suppress>
+        <notes><![CDATA[
+   file name: glob-parent:3.1.0
+   ]]></notes>
+        <packageUrl regex="true">^pkg:npm/glob\-parent@.*$</packageUrl>
+        <vulnerabilityName>CVE-2020-28469</vulnerabilityName>
+    </suppress>
+    <!-- Suppress a "Resource Exhaustion" vulnerability in an npm package -->
+    <suppress>
+        <notes><![CDATA[
+   file name: hosted-git-info:2.8.9
+   ]]></notes>
+        <packageUrl regex="true">^pkg:npm/hosted\-git\-info@.*$</packageUrl>
+        <vulnerabilityName>CVE-2021-23362</vulnerabilityName>
+    </suppress>
+    <!-- Suppress npm package vulnerability that is not relevant to Kronicle -->
+    <suppress>
+        <notes><![CDATA[
+   file name: lodash.template:4.5.0
+   ]]></notes>
+        <packageUrl regex="true">^pkg:npm/lodash\.template@.*$</packageUrl>
+        <vulnerabilityName>CVE-2021-23337</vulnerabilityName>
+    </suppress>
+    <!-- Suppress an "Inefficient Regular Expression Complexity" vulnerability in an npm package -->
+    <suppress>
+        <notes><![CDATA[
+   file name: nth-check:1.0.2
+   ]]></notes>
+        <packageUrl regex="true">^pkg:npm/nth\-check@.*$</packageUrl>
+        <vulnerabilityName>1070415</vulnerabilityName>
+    </suppress>
+    <!-- Suppress vulnerability flagged against wrong package -->
+    <suppress>
+        <notes><![CDATA[
+   file name: opener:1.5.2
+   ]]></notes>
+        <packageUrl regex="true">^pkg:npm/opener@.*$</packageUrl>
+        <cve>CVE-2021-27478</cve>
+    </suppress>
+    <!-- Suppress vulnerability flagged against wrong package -->
+    <suppress>
+        <notes><![CDATA[
+   file name: opener:1.5.2
+   ]]></notes>
+        <packageUrl regex="true">^pkg:npm/opener@.*$</packageUrl>
+        <cve>CVE-2021-27482</cve>
+    </suppress>
+    <!-- Suppress vulnerability flagged against wrong package -->
+    <suppress>
+        <notes><![CDATA[
+   file name: opener:1.5.2
+   ]]></notes>
+        <packageUrl regex="true">^pkg:npm/opener@.*$</packageUrl>
+        <cve>CVE-2021-27498</cve>
+    </suppress>
+    <!-- Suppress vulnerability flagged against wrong package -->
+    <suppress>
+        <notes><![CDATA[
+   file name: opener:1.5.2
+   ]]></notes>
+        <packageUrl regex="true">^pkg:npm/opener@.*$</packageUrl>
+        <cve>CVE-2021-27500</cve>
+    </suppress>
+    <!-- Suppress npm package vulnerability that is not relevant to Kronicle -->
+    <suppress>
+        <notes><![CDATA[
+   file name: set-value:2.0.1
+   ]]></notes>
+        <packageUrl regex="true">^pkg:npm/set\-value@.*$</packageUrl>
+        <vulnerabilityName>CVE-2021-23440</vulnerabilityName>
+    </suppress>
 </suppressions>
