@@ -31,7 +31,7 @@ dependencies {
 
 generateTypeScript {
   jsonLibrary = "jackson2"
-  classPatterns = ["tech.kronicle.sdk.models.*"]
+  classPatterns = ["tech.kronicle.sdk.models.**"]
   optionalAnnotations = ["org.springframework.lang.Nullable"]
   mapDate = "asString"
   outputFile = "types/kronicle-service/index.d.ts"

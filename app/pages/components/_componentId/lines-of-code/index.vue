@@ -38,7 +38,7 @@ import { MetaInfo } from 'vue-meta'
 import {BBadge, BCard, BListGroup, BListGroupItem} from 'bootstrap-vue'
 import {
   Component,
-  FileExtensionCount,
+  FileExtensionCount, LinesOfCodeState,
 } from '~/types/kronicle-service'
 import ComponentTabs from '~/components/ComponentTabs.vue'
 import FormattedNumber from '~/components/FormattedNumber.vue'
@@ -54,7 +54,7 @@ export default Vue.extend({
   },
   async asyncData({ $config, route }) {
     const component = await fetch(
-      `${$config.serviceBaseUrl}/v1/components/${route.params.componentId}?fields=component(id,name,linesOfCode)`
+      `${$config.serviceBaseUrl}/v1/components/${route.params.componentId}?stateType=lines-of-code&fields=component(id,name,states)`
     )
       .then((res) => res.json())
       .then((json) => json.component as Component)
@@ -74,18 +74,21 @@ export default Vue.extend({
     }
   },
   computed: {
+    linesOfCode(): LinesOfCodeState | undefined {
+      return this.component.states.find(state => state.type === 'lines-of-code') as LinesOfCodeState | undefined
+    },
     linesOfCodeCount(): number {
-      return this.component.linesOfCode?.count ?? 0
+      return this.linesOfCode?.count ?? 0
     },
     linesOfCodeCountVariant(): string {
       return this.linesOfCodeCount > 100000 ? 'danger' : 'success'
     },
     fileExtensionCounts(): FileExtensionCount[] {
-      if (!this.component.linesOfCode) {
+      if (!this.linesOfCode) {
         return []
       }
 
-      return this.component.linesOfCode.fileExtensionCounts.map(
+      return this.linesOfCode.fileExtensionCounts.map(
         ({ fileExtension, count }) => {
           return {
             fileExtension: fileExtension || 'No file extension',

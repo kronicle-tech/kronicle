@@ -75,10 +75,10 @@ public class ComponentControllerTest {
     @Test
     public void getComponentShouldReturnAComponent() {
         // Given
-        when(mockComponentService.getComponent(COMPONENT_1.getId())).thenReturn(COMPONENT_1);
+        when(mockComponentService.getComponent(COMPONENT_1.getId(), List.of())).thenReturn(COMPONENT_1);
 
         // When
-        GetComponentResponse returnValue = underTest.getComponent(COMPONENT_1.getId());
+        GetComponentResponse returnValue = underTest.getComponent(COMPONENT_1.getId(), List.of());
 
         // Then
         assertThat(returnValue).isNotNull();
@@ -89,13 +89,28 @@ public class ComponentControllerTest {
     public void getComponentShouldNotReturnAComponentWhenComponentIdIsUnknown() {
         // Given
         String componentId = "unknown";
-        when(mockComponentService.getComponent(componentId)).thenReturn(null);
+        when(mockComponentService.getComponent(componentId, List.of())).thenReturn(null);
 
         // When
-        GetComponentResponse returnValue = underTest.getComponent(componentId);
+        GetComponentResponse returnValue = underTest.getComponent(componentId, List.of());
 
         // Then
         assertThat(returnValue).isNotNull();
         assertThat(returnValue.getComponent()).isNull();
+    }
+
+    @Test
+    public void getComponentShouldFilterStateTypes() {
+        // Given
+        String componentId = "unknown";
+        List<String> stateTypes = List.of("test-state-type-1", "test-state-type-2");
+        when(mockComponentService.getComponent(componentId, stateTypes)).thenReturn(COMPONENT_1);
+
+        // When
+        GetComponentResponse returnValue = underTest.getComponent(componentId, stateTypes);
+
+        // Then
+        assertThat(returnValue).isNotNull();
+        assertThat(returnValue.getComponent()).isEqualTo(COMPONENT_1);
     }
 }

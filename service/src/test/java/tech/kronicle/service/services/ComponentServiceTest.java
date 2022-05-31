@@ -1,5 +1,6 @@
 package tech.kronicle.service.services;
 
+import lombok.Value;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -7,15 +8,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import tech.kronicle.sdk.models.Area;
-import tech.kronicle.sdk.models.Component;
-import tech.kronicle.sdk.models.Scanner;
-import tech.kronicle.sdk.models.Summary;
-import tech.kronicle.sdk.models.SummaryCallGraph;
-import tech.kronicle.sdk.models.SummarySubComponentDependencyNode;
-import tech.kronicle.sdk.models.Team;
-import tech.kronicle.sdk.models.TestOutcome;
-import tech.kronicle.sdk.models.TestResult;
+import tech.kronicle.sdk.models.*;
 import tech.kronicle.service.repositories.ComponentRepository;
 
 import java.util.List;
@@ -176,7 +169,7 @@ public class ComponentServiceTest {
         when(mockComponentRepository.getComponent(component1.getId())).thenReturn(component1);
 
         // When
-        Component returnValue = underTest.getComponent(component1.getId());
+        Component returnValue = underTest.getComponent(component1.getId(), List.of());
 
         // Then
         assertThat(returnValue).isSameAs(component1);
@@ -189,10 +182,84 @@ public class ComponentServiceTest {
         when(mockComponentRepository.getComponent(componentId)).thenReturn(null);
 
         // When
-        Component returnValue = underTest.getComponent(componentId);
+        Component returnValue = underTest.getComponent(componentId, List.of());
 
         // Then
         assertThat(returnValue).isNull();
+    }
+
+    @Test
+    public void getComponentShouldReturnAllStatesIfStateTypesListIsNull() {
+        // Given
+        String componentId = "test-component-id";
+        Component component = Component.builder()
+                .id(componentId)
+                .states(List.of(
+                        new TestComponentState(1),
+                        new TestComponentState(2)
+                ))
+                .build();
+        when(mockComponentRepository.getComponent(componentId)).thenReturn(component);
+
+        // When
+        Component returnValue = underTest.getComponent(componentId, null);
+
+        // Then
+        assertThat(returnValue).isEqualTo(component);
+    }
+
+    @Test
+    public void getComponentShouldReturnAllStatesIfStateTypesListIsEmpty() {
+        // Given
+        String componentId = "test-component-id";
+        Component component = Component.builder()
+                .id(componentId)
+                .states(List.of(
+                        new TestComponentState(1),
+                        new TestComponentState(2)
+                ))
+                .build();
+        when(mockComponentRepository.getComponent(componentId)).thenReturn(component);
+
+        // When
+        Component returnValue = underTest.getComponent(componentId, List.of());
+
+        // Then
+        assertThat(returnValue).isEqualTo(component);
+    }
+
+    @Test
+    public void getComponentShouldFilterByStateTypesIfAtLeastOneStateTypeIsSpecified() {
+        // Given
+        String componentId = "test-component-id";
+        TestComponentState state1 = new TestComponentState(1);
+        TestComponentState state2 = new TestComponentState(2);
+        TestComponentState state3 = new TestComponentState(3);
+        TestComponentState state4 = new TestComponentState(4);
+        Component component = Component.builder()
+                .id(componentId)
+                .states(List.of(
+                        state1,
+                        state2,
+                        state3,
+                        state4
+                ))
+                .build();
+        when(mockComponentRepository.getComponent(componentId)).thenReturn(component);
+
+        // When
+        Component returnValue = underTest.getComponent(componentId, List.of(
+                state1.type,
+                state3.type
+        ));
+
+        // Then
+        assertThat(returnValue).isEqualTo(
+                component.withStates(List.of(
+                        state1,
+                        state3
+                ))
+        );
     }
 
     @Test
@@ -595,5 +662,18 @@ public class ComponentServiceTest {
     private interface ComponentsReturningMethod {
         
         List<Component> call(ComponentService underTest, ComponentRepository mockComponentRepository, List<Component> components, List<TestOutcome> testOutcomes);
+    }
+
+    @Value
+    private static class TestComponentState implements ComponentState {
+
+        String type;
+        String pluginId = "test-plugin-id";
+        String value;
+
+        public TestComponentState(int testComponentStateNumber) {
+            this.type = "test-component-state-type-" + testComponentStateNumber;
+            this.value = "test-component-value-" + testComponentStateNumber;
+        }
     }
 }
