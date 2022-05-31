@@ -30,6 +30,7 @@ export function createComponent({
   hasTechDebts = false,
   hasTestResults = false,
   additionalFields = {},
+  additionalStates = []
 }) {
   const fields = {}
   if (hasMainDetails) {
@@ -81,6 +82,7 @@ export function createComponent({
         teamId: `test-team-id-${componentNumber}-2`,
       },
     ],
+    states: additionalStates,
     ...fields,
     ...additionalFields,
   }
@@ -143,9 +145,9 @@ export function createComponentWithImports({ componentNumber }) {
 export function createComponentWithLinesOfCode({ componentNumber }) {
   return createComponent({
     componentNumber,
-    additionalFields: {
-      linesOfCode: createLinesOfCode({ componentNumber, importNumber: 1 }),
-    },
+    additionalStates: [
+      createLinesOfCode({ componentNumber, importNumber: 1 })
+    ]
   })
 }
 
@@ -450,6 +452,8 @@ function createImport({ componentNumber, importNumber }) {
 
 function createLinesOfCode({ componentNumber }) {
   return {
+    pluginId: 'lines-of-code',
+    type: 'lines-of-code',
     count: componentNumber,
     fileExtensionCounts: [
       createFileExtensionCount({

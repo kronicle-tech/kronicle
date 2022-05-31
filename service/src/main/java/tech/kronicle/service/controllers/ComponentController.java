@@ -33,8 +33,11 @@ public class ComponentController {
     )
     @GetMapping
     @PartialResponse
-    public GetComponentsResponse getComponents(@RequestParam(required = false) Optional<Integer> offset,
-            @RequestParam(required = false) Optional<Integer> limit, @RequestParam(required = false) List<String> testOutcome) {
+    public GetComponentsResponse getComponents(
+            @RequestParam(required = false) Optional<Integer> offset,
+            @RequestParam(required = false) Optional<Integer> limit,
+            @RequestParam(required = false) List<String> testOutcome
+    ) {
         return new GetComponentsResponse(componentService.getComponents(offset, limit, EnumUtils.getEnumListFromJsonValues(TestOutcome.class, testOutcome)));
     }
 
@@ -46,7 +49,10 @@ public class ComponentController {
     )
     @GetMapping("/{componentId}")
     @PartialResponse
-    public GetComponentResponse getComponent(@PathVariable String componentId) {
-        return new GetComponentResponse(componentService.getComponent(componentId));
+    public GetComponentResponse getComponent(
+            @PathVariable String componentId,
+            @RequestParam(required = false) List<String> stateType
+    ) {
+        return new GetComponentResponse(componentService.getComponent(componentId, stateType));
     }
 }

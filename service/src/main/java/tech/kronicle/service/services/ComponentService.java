@@ -2,29 +2,20 @@ package tech.kronicle.service.services;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import tech.kronicle.utils.ObjectReference;
-import tech.kronicle.sdk.models.Area;
-import tech.kronicle.sdk.models.Component;
-import tech.kronicle.sdk.models.Scanner;
-import tech.kronicle.sdk.models.Summary;
-import tech.kronicle.sdk.models.SummaryCallGraph;
-import tech.kronicle.sdk.models.SummarySubComponentDependencyNode;
-import tech.kronicle.sdk.models.Team;
-import tech.kronicle.sdk.models.Test;
-import tech.kronicle.sdk.models.TestOutcome;
-import tech.kronicle.sdk.models.TestResult;
+import tech.kronicle.sdk.models.*;
 import tech.kronicle.service.repositories.ComponentRepository;
+import tech.kronicle.utils.ObjectReference;
 
 import javax.validation.Valid;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.function.UnaryOperator;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import static java.util.Objects.isNull;
 import static java.util.Objects.nonNull;
+import static java.util.stream.Collectors.toUnmodifiableList;
 
 @Service
 @RequiredArgsConstructor
@@ -36,8 +27,12 @@ public class ComponentService {
         return getFilteredComponents(componentRepository.getComponents(), offset, limit, testOutcomes);
     }
 
-    public Component getComponent(String componentId) {
-        return componentRepository.getComponent(componentId);
+    public Component getComponent(String componentId, List<String> stateTypes) {
+        Component component = componentRepository.getComponent(componentId);
+        if (isNull(component)) {
+            return null;
+        }
+        return component.withStates(getFilteredStates(component.getStates(), stateTypes));
     }
 
     public List<SummarySubComponentDependencyNode> getComponentNodes(String componentId) {
@@ -87,7 +82,8 @@ public class ComponentService {
     private List<Team> filterComponentsForTeams(List<Team> teams, List<TestOutcome> testOutcomes) {
         return teams.stream()
                 .map(team -> filterComponentsForTeam(team, testOutcomes))
-                .collect(Collectors.toList());
+                .filter(Objects::nonNull)
+                .collect(toUnmodifiableList());
     }
 
     private Team filterComponentsForTeam(Team team, List<TestOutcome> testOutcomes) {
@@ -101,7 +97,8 @@ public class ComponentService {
     private List<Area> filterComponentsForAreas(List<Area> areas, List<TestOutcome> testOutcomes) {
         return areas.stream()
                 .map(area -> filterComponentsForArea(area, testOutcomes))
-                .collect(Collectors.toList());
+                .filter(Objects::nonNull)
+                .collect(toUnmodifiableList());
     }
 
     private Area filterComponentsForArea(Area area, List<TestOutcome> testOutcomes) {
@@ -130,7 +127,7 @@ public class ComponentService {
         }
 
         return componentStream.get()
-                .collect(Collectors.toList());
+                .collect(toUnmodifiableList());
     }
 
     private UnaryOperator<Component> filterComponentBasedOnTestOutcomes(List<TestOutcome> testOutcomes) {
@@ -145,9 +142,18 @@ public class ComponentService {
         };
     }
 
-    private List<TestResult> filterTestResultsBasedOnTestOutcomes(List<@Valid TestResult> testResults, List<TestOutcome> testOutcomes) {
+    private List<ComponentState> getFilteredStates(List<ComponentState> states, List<String> stateTypes) {
+        if (isNull(stateTypes) || stateTypes.isEmpty()) {
+            return states;
+        }
+        return states.stream()
+                .filter(state -> stateTypes.contains(state.getType()))
+                .collect(toUnmodifiableList());
+    }
+    
+    private List<TestResult> filterTestResultsBasedOnTestOutcomes(List<TestResult> testResults, List<TestOutcome> testOutcomes) {
         return testResults.stream()
                 .filter(testResult -> testOutcomes.contains(testResult.getOutcome()))
-                .collect(Collectors.toList());
+                .collect(toUnmodifiableList());
     }
 }

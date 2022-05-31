@@ -12,7 +12,7 @@ import tech.kronicle.sdk.models.Component;
 import tech.kronicle.utils.FileUtils;
 import tech.kronicle.utils.ObjectReference;
 import tech.kronicle.sdk.models.linesofcode.FileExtensionCount;
-import tech.kronicle.sdk.models.linesofcode.LinesOfCode;
+import tech.kronicle.sdk.models.linesofcode.LinesOfCodeState;
 
 import javax.inject.Inject;
 import java.io.IOException;
@@ -50,14 +50,14 @@ public class LinesOfCodeScanner extends CodebaseScanner {
 
     @Override
     public Output<Void, Component> scan(Codebase input) {
-        LinesOfCode linesOfCode = getLinesOfCode(input);
+        LinesOfCodeState linesOfCode = getLinesOfCode(input);
         return Output.ofTransformer(
-                component -> component.withLinesOfCode(linesOfCode),
+                component -> component.addState(linesOfCode),
                 CACHE_TTL
         );
     }
 
-    private LinesOfCode getLinesOfCode(Codebase codebase) {
+    private LinesOfCodeState getLinesOfCode(Codebase codebase) {
         log.debug("Counting lines of code for repo \"{}\"", codebase.getRepo().getUrl());
 
         ObjectReference<Integer> count = new ObjectReference<>(0);
@@ -95,7 +95,7 @@ public class LinesOfCodeScanner extends CodebaseScanner {
             }
         });
 
-        return new LinesOfCode(count.get(), fileExtensionCounts);
+        return new LinesOfCodeState(LinesOfCodePlugin.ID, count.get(), fileExtensionCounts);
     }
 
     private void addToFileExtensionCounts(Map<String, Integer> fileExtensionCounts, Path file, LinesOfCodeCounter.LinesOfCodeCountResult result) {
