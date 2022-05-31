@@ -12,7 +12,7 @@ export default Vue.extend({
   components: {
     GraphQlSchemaView,
   },
-  layout: 'Redoc',
+  layout: 'Minimal',
   async asyncData({ $config, route }) {
     const component = await fetch(
       `${$config.serviceBaseUrl}/v1/components/${route.params.componentId}?fields=component(id,name,teams,graphQlSchemas)`

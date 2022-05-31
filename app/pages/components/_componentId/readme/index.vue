@@ -2,7 +2,7 @@
   <div class="m-3">
     <h1 class="text-info my-3">{{ component.name }} - README</h1>
 
-    <ComponentTabs :component-id="component.id" />
+    <ComponentTabs :component-id="component.id" :state-types="stateTypes" />
 
     <b-card v-if="component.readme" :title="component.readme.fileName">
       <ReadmeContent :readme="component.readme" />
@@ -21,6 +21,7 @@ import {BCard, BCardText} from 'bootstrap-vue'
 import { Component } from '~/types/kronicle-service'
 import ComponentTabs from '~/components/ComponentTabs.vue'
 import ReadmeContent from '~/components/ReadmeContent.vue'
+import {fetchComponentStateTypes} from "~/src/fetchComponentStateTypes";
 
 export default Vue.extend({
   components: {
@@ -30,6 +31,8 @@ export default Vue.extend({
     ReadmeContent,
   },
   async asyncData({ $config, route }) {
+    const stateTypes = await fetchComponentStateTypes($config, route)
+
     const component = await fetch(
       `${$config.serviceBaseUrl}/v1/components/${route.params.componentId}?fields=component(id,name,readme)`
     )
@@ -37,11 +40,13 @@ export default Vue.extend({
       .then((json) => json.component as Component)
 
     return {
+      stateTypes,
       component,
     }
   },
   data() {
     return {
+      stateTypes: [] as string[],
       component: {} as Component,
     }
   },

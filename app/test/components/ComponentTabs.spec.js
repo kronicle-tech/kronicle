@@ -11,6 +11,7 @@ describe('ComponentTabs', () => {
   beforeEach(() => {
     propsData = {
       componentId: 'test-component-id-1',
+      stateTypes: [],
     }
   })
 
@@ -19,8 +20,27 @@ describe('ComponentTabs', () => {
     wrapper = null
   })
 
-  test('renders the component', () => {
-    createWrapper()
-    expect(wrapper.html()).toMatchSnapshot()
+  describe('when there are no state types', () => {
+    beforeEach(() => {
+      propsData.stateTypes = []
+    })
+
+    test('renders the component with less tabs', () => {
+      createWrapper()
+      expect(wrapper.html()).toMatchSnapshot()
+    })
+  })
+
+  describe('when there are no state types', () => {
+    beforeEach(() => {
+      propsData.stateTypes = [
+        'lines-of-code',
+      ]
+    })
+
+    test('renders the component with all tabs', () => {
+      createWrapper()
+      expect(wrapper.html()).toMatchSnapshot()
+    })
   })
 })

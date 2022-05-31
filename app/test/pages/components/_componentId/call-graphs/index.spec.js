@@ -2,6 +2,7 @@ import Index from '~/pages/components/_componentId/call-graphs/index.vue'
 import { createPageWrapper } from '~/test/pages/pageUtils'
 import {
   createComponent,
+  createComponentResponseWithStateTypes,
   createDependency,
   createSubComponentNode,
 } from '~/test/testDataUtils'
@@ -26,6 +27,7 @@ describe('Index', () => {
     wrapper = await createPageWrapper(Index, {
       route,
       serviceRequests: {
+        '/v1/components/test-component-id-1?fields=component(id,name,states(type))': createComponentResponseWithStateTypes(1),
         '/v1/components/test-component-id-1?fields=component(id,name)': {
           responseBody: { component },
         },

@@ -27,15 +27,15 @@
           {{ graphQlSchema.url ? graphQlSchema.url : graphQlSchema.file }}
         </td>
         <td class="action table-secondary">
-          <b-link
+          <b-button
             v-if="graphQlSchema.schema"
             :href="`/components/${graphQlSchema.component.id}/graphql-schemas/${
               graphQlSchema.index + 1
             }`"
-            variant="primary"
+            variant="info"
           >
             View GraphQL schema
-          </b-link>
+          </b-button>
           <div v-else>
             <b-badge variant="danger">GraphQL schema not found</b-badge>
           </div>
@@ -50,7 +50,7 @@
 
 <script lang="ts">
 import Vue, { PropType } from 'vue'
-import { BBadge, BLink } from 'bootstrap-vue'
+import {BBadge, BButton} from 'bootstrap-vue'
 import { Component, GraphQlSchema } from '~/types/kronicle-service'
 import { compareGraphQlSchemas } from '~/src/graphQlSchemaComparator'
 import ComponentName from '~/components/ComponentName.vue'
@@ -64,8 +64,8 @@ interface GraphQlSchemaWithIndexAndComponent extends GraphQlSchema {
 
 export default Vue.extend({
   components: {
-    'b-link': BLink,
     'b-badge': BBadge,
+    'b-button': BButton,
     ComponentName,
     ComponentTeams,
     Markdown,
