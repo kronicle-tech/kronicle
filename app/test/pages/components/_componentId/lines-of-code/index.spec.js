@@ -17,7 +17,7 @@ describe('Index', () => {
     wrapper = await createPageWrapper(Index, {
       route,
       serviceRequests: {
-        '/v1/components/test-component-id-1?fields=component(id,name,linesOfCode)':
+        '/v1/components/test-component-id-1?stateType=lines-of-code&fields=component(id,name,states)':
           {
             responseBody: { component },
           },
