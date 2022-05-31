@@ -313,6 +313,44 @@ public class ComponentTest {
     }
 
     @Test
+    public void addStateWhenThereAreNoExistingStatesShouldAddStateToExistingStates() {
+        // Given
+        ComponentState newState = createComponentState(1);
+        Component underTest = Component.builder().build();
+
+        // When
+        underTest = underTest.addState(newState);
+
+        // When
+        assertThat(underTest.getStates()).containsExactly(newState);
+    }
+
+    @Test
+    public void addStateWhenThereAreExistingStatesShouldAddStateToExistingStates() {
+        // Given
+        ComponentState state2 = createComponentState(2);
+        ComponentState state3 = createComponentState(3);
+        List<ComponentState> existingState = List.of(
+                state2,
+                state3
+        );
+        ComponentState state1 = createComponentState(1);
+        Component underTest = Component.builder()
+                .states(existingState)
+                .build();
+
+        // When
+        underTest = underTest.addState(state1);
+
+        // When
+        assertThat(underTest.getStates()).containsExactly(
+                state2,
+                state3,
+                state1
+        );
+    }
+
+    @Test
     public void addStatesWhenThereAreNoExistingStatesShouldAddStatesToExistingStates() {
         // Given
         List<ComponentState> newStates = List.of(
@@ -331,13 +369,17 @@ public class ComponentTest {
     @Test
     public void addStatesWhenThereAreExistingStatesShouldAddStatesToExistingStates() {
         // Given
+        ComponentState state3 = createComponentState(3);
+        ComponentState state4 = createComponentState(4);
         List<ComponentState> existingState = List.of(
-                createComponentState(3),
-                createComponentState(4)
+                state3,
+                state4
         );
+        ComponentState state1 = createComponentState(1);
+        ComponentState state2 = createComponentState(2);
         List<ComponentState> newState = List.of(
-                createComponentState(1),
-                createComponentState(2)
+                state1,
+                state2
         );
         Component underTest = Component.builder()
                 .states(existingState)
@@ -347,8 +389,11 @@ public class ComponentTest {
         underTest = underTest.addStates(newState);
 
         // When
-        assertThat(underTest.getStates()).containsExactlyElementsOf(
-                unmodifiableUnionOfLists(List.of(existingState, newState))
+        assertThat(underTest.getStates()).containsExactly(
+                state3,
+                state4,
+                state1,
+                state2
         );
     }
 

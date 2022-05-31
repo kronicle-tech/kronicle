@@ -12,7 +12,7 @@ import tech.kronicle.sdk.jackson.TagOrStringDeserializer;
 import tech.kronicle.sdk.models.git.GitRepo;
 import tech.kronicle.sdk.models.gradle.Gradle;
 import tech.kronicle.sdk.models.graphql.GraphQlSchema;
-import tech.kronicle.sdk.models.linesofcode.LinesOfCode;
+import tech.kronicle.sdk.models.linesofcode.LinesOfCodeState;
 import tech.kronicle.sdk.models.nodejs.NodeJs;
 import tech.kronicle.sdk.models.openapi.OpenApiSpec;
 import tech.kronicle.sdk.models.readme.Readme;
@@ -71,7 +71,6 @@ public class Component implements ObjectWithId, ObjectWithReference {
     List<@Valid Software> software;
     List<@Valid Import> imports;
     List<@Valid KeySoftware> keySoftware;
-    @Valid LinesOfCode linesOfCode;
     @Valid List<ToDo> toDos;
     @Valid Readme readme;
     @Valid Zipkin zipkin;
@@ -106,7 +105,7 @@ public class Component implements ObjectWithId, ObjectWithReference {
             List<Software> software,
             List<Import> imports,
             List<KeySoftware> keySoftware,
-            LinesOfCode linesOfCode,
+            LinesOfCodeState linesOfCode,
             List<ToDo> toDos,
             Readme readme,
             Zipkin zipkin,
@@ -154,6 +153,12 @@ public class Component implements ObjectWithId, ObjectWithReference {
     @Override
     public String reference() {
         return id;
+    }
+
+    public Component addState(ComponentState state) {
+        return withStates(
+                unmodifiableUnionOfLists(List.of(this.states, List.of(state)))
+        );
     }
 
     public Component addStates(List<ComponentState> states) {

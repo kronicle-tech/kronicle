@@ -9,7 +9,7 @@ import tech.kronicle.plugins.linesofcode.services.LinesOfCodeCounter;
 import tech.kronicle.plugintestutils.scanners.BaseCodebaseScannerTest;
 import tech.kronicle.sdk.models.Component;
 import tech.kronicle.sdk.models.linesofcode.FileExtensionCount;
-import tech.kronicle.sdk.models.linesofcode.LinesOfCode;
+import tech.kronicle.sdk.models.linesofcode.LinesOfCodeState;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -67,7 +67,7 @@ public class LinesOfCodeScannerTest extends BaseCodebaseScannerTest {
 
         // Then
         assertThat(maskTransformer(returnValue)).isEqualTo(maskTransformer(Output.empty(CACHE_TTL)));
-        LinesOfCode linesOfCode = getMutatedComponent(returnValue).getLinesOfCode();
+        LinesOfCodeState linesOfCode = getMutatedComponent(returnValue).getLinesOfCode();
         assertThat(linesOfCode).isNotNull();
         // The count includes the single line in the ".gitignore" file
         assertThat(linesOfCode.getCount()).isEqualTo(1);
@@ -85,7 +85,7 @@ public class LinesOfCodeScannerTest extends BaseCodebaseScannerTest {
 
         // Then
         assertThat(maskTransformer(returnValue)).isEqualTo(maskTransformer(Output.empty(CACHE_TTL)));
-        LinesOfCode linesOfCode = getMutatedComponent(returnValue).getLinesOfCode();
+        LinesOfCodeState linesOfCode = getMutatedComponent(returnValue).getLinesOfCode();
         assertThat(linesOfCode).isNotNull();
         assertThat(linesOfCode.getCount()).isEqualTo(3);
         assertThat(linesOfCode.getFileExtensionCounts()).hasSize(1);
@@ -102,7 +102,7 @@ public class LinesOfCodeScannerTest extends BaseCodebaseScannerTest {
 
         // Then
         assertThat(maskTransformer(returnValue)).isEqualTo(maskTransformer(Output.empty(CACHE_TTL)));
-        LinesOfCode linesOfCode = getMutatedComponent(returnValue).getLinesOfCode();
+        LinesOfCodeState linesOfCode = getMutatedComponent(returnValue).getLinesOfCode();
         assertThat(linesOfCode).isNotNull();
         assertThat(linesOfCode.getCount()).isEqualTo(2);
         assertThat(linesOfCode.getFileExtensionCounts()).hasSize(1);
@@ -119,7 +119,7 @@ public class LinesOfCodeScannerTest extends BaseCodebaseScannerTest {
 
         // Then
         assertThat(maskTransformer(returnValue)).isEqualTo(maskTransformer(Output.empty(CACHE_TTL)));
-        LinesOfCode linesOfCode = getMutatedComponent(returnValue).getLinesOfCode();
+        LinesOfCodeState linesOfCode = getMutatedComponent(returnValue).getLinesOfCode();
         assertThat(linesOfCode).isNotNull();
         assertThat(linesOfCode.getCount()).isEqualTo(5);
         assertThat(linesOfCode.getFileExtensionCounts()).hasSize(2);
@@ -137,7 +137,7 @@ public class LinesOfCodeScannerTest extends BaseCodebaseScannerTest {
 
         // Then
         assertThat(maskTransformer(returnValue)).isEqualTo(maskTransformer(Output.empty(CACHE_TTL)));
-        LinesOfCode linesOfCode = getMutatedComponent(returnValue).getLinesOfCode();
+        LinesOfCodeState linesOfCode = getMutatedComponent(returnValue).getLinesOfCode();
         assertThat(linesOfCode).isNotNull();
         assertThat(linesOfCode.getCount()).isEqualTo(5);
         assertThat(linesOfCode.getFileExtensionCounts()).hasSize(1);
@@ -154,7 +154,7 @@ public class LinesOfCodeScannerTest extends BaseCodebaseScannerTest {
 
         // Then
         assertThat(maskTransformer(returnValue)).isEqualTo(maskTransformer(Output.empty(CACHE_TTL)));
-        LinesOfCode linesOfCode = getMutatedComponent(returnValue).getLinesOfCode();
+        LinesOfCodeState linesOfCode = getMutatedComponent(returnValue).getLinesOfCode();
         assertThat(linesOfCode).isNotNull();
         assertThat(linesOfCode.getCount()).isEqualTo(6);
         assertThat(linesOfCode.getFileExtensionCounts()).hasSize(1);
@@ -172,7 +172,7 @@ public class LinesOfCodeScannerTest extends BaseCodebaseScannerTest {
 
         // Then
         assertThat(maskTransformer(returnValue)).isEqualTo(maskTransformer(Output.empty(CACHE_TTL)));
-        LinesOfCode linesOfCode = getMutatedComponent(returnValue).getLinesOfCode();
+        LinesOfCodeState linesOfCode = getMutatedComponent(returnValue).getLinesOfCode();
         assertThat(linesOfCode).isNotNull();
         assertThat(linesOfCode.getCount()).isEqualTo(1);
         assertThat(linesOfCode.getFileExtensionCounts()).hasSize(2);
@@ -190,7 +190,7 @@ public class LinesOfCodeScannerTest extends BaseCodebaseScannerTest {
 
         // Then
         assertThat(maskTransformer(returnValue)).isEqualTo(maskTransformer(Output.empty(CACHE_TTL)));
-        LinesOfCode linesOfCode = getMutatedComponent(returnValue).getLinesOfCode();
+        LinesOfCodeState linesOfCode = getMutatedComponent(returnValue).getLinesOfCode();
         assertThat(linesOfCode).isNotNull();
         assertThat(linesOfCode.getCount()).isEqualTo(6);
         assertThat(linesOfCode.getFileExtensionCounts()).hasSize(3);

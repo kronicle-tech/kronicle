@@ -9,6 +9,8 @@ import java.util.List;
 
 public class LinesOfCodePlugin extends KronicleGuicePlugin {
 
+    public static final String ID = "lines-of-code";
+
     public LinesOfCodePlugin(PluginWrapper wrapper) {
         super(wrapper);
     }
