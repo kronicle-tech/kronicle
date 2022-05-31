@@ -92,6 +92,27 @@ export function createComponent({
   return component
 }
 
+export function createComponentResponseWithStateTypes(componentNumber) {
+  return {
+    responseBody: {
+      component: createComponentWithStateTypes(componentNumber),
+    },
+  }
+}
+
+export function createComponentWithStateTypes(componentNumber) {
+  const component = {
+    id: `test-component-id-${componentNumber}`,
+    name: `Test Component Name ${componentNumber}`,
+    states: [
+      {
+        type: 'lines-of-code',
+      },
+    ],
+  }
+  return component
+}
+
 function createCrossFunctionalRequirements(componentNumber) {
   return [
     createCrossFunctionalRequirement({

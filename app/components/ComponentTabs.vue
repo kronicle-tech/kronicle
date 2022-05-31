@@ -30,7 +30,7 @@
     <b-button class="my-1" :to="`/components/${componentId}/repo`">Repo</b-button>
     <b-button class="my-1" :to="`/components/${componentId}/readme`">README</b-button>
     <b-button class="my-1" :to="`/components/${componentId}/to-dos`">To Dos</b-button>
-    <b-button class="my-1" :to="`/components/${componentId}/lines-of-code`">
+    <b-button v-if="hasStateType('lines-of-code')" class="my-1" :to="`/components/${componentId}/lines-of-code`">
       Lines of Code
     </b-button>
     <b-button class="my-1" :to="`/components/${componentId}/software-repositories`">
@@ -42,7 +42,7 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
+import Vue, {PropType} from 'vue'
 import { BButton } from 'bootstrap-vue'
 
 export default Vue.extend({
@@ -53,6 +53,15 @@ export default Vue.extend({
     componentId: {
       type: String,
       required: true,
+    },
+    stateTypes: {
+      type: Array as PropType<Array<string>>,
+      required: true,
+    }
+  },
+  methods: {
+    hasStateType(stateType: string): boolean {
+      return this.stateTypes.includes(stateType)
     },
   },
 })

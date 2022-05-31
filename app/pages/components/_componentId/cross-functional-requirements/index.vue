@@ -4,7 +4,7 @@
       {{ component.name }} - Cross Functional Requirements
     </h1>
 
-    <ComponentTabs :component-id="component.id" />
+    <ComponentTabs :component-id="component.id" :state-types="stateTypes" />
 
     <CrossFunctionalRequirementsView :components="[component]" />
   </div>
@@ -16,6 +16,7 @@ import { MetaInfo } from 'vue-meta'
 import { Component } from '~/types/kronicle-service'
 import ComponentTabs from '~/components/ComponentTabs.vue'
 import CrossFunctionalRequirementsView from '~/components/CrossFunctionalRequirementsView.vue'
+import {fetchComponentStateTypes} from "~/src/fetchComponentStateTypes";
 
 export default Vue.extend({
   components: {
@@ -23,6 +24,8 @@ export default Vue.extend({
     CrossFunctionalRequirementsView,
   },
   async asyncData({ $config, route, store }) {
+    const stateTypes = await fetchComponentStateTypes($config, route)
+
     const component = await fetch(
       `${$config.serviceBaseUrl}/v1/components/${route.params.componentId}?fields=component(id,name,typeId,tags,teams,platformId,crossFunctionalRequirements)`
     )
@@ -35,11 +38,13 @@ export default Vue.extend({
     })
 
     return {
+      stateTypes,
       component,
     }
   },
   data() {
     return {
+      stateTypes: [] as string[],
       component: {} as Component,
     }
   },
