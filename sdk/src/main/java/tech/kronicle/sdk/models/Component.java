@@ -105,7 +105,6 @@ public class Component implements ObjectWithId, ObjectWithReference {
             List<Software> software,
             List<Import> imports,
             List<KeySoftware> keySoftware,
-            LinesOfCodeState linesOfCode,
             List<ToDo> toDos,
             Readme readme,
             Zipkin zipkin,
@@ -139,7 +138,6 @@ public class Component implements ObjectWithId, ObjectWithReference {
         this.software = createUnmodifiableList(software);
         this.imports = createUnmodifiableList(imports);
         this.keySoftware = createUnmodifiableList(keySoftware);
-        this.linesOfCode = linesOfCode;
         this.toDos = createUnmodifiableList(toDos);
         this.readme = readme;
         this.zipkin = zipkin;
