@@ -16,7 +16,7 @@ import java.util.List;
 @Builder(toBuilder = true)
 public class LinesOfCodeState implements ComponentState {
 
-    String type = "check";
+    String type = "lines-of-code";
     @NotEmpty
     String pluginId;
     Integer count;
