@@ -673,10 +673,9 @@ exports[`Index when Get Component service endpoint returns a component when the 
             class="action table-secondary"
           >
             <a
-              class=""
+              class="btn btn-info"
               href="/components/test-component-id-1/openapi-specs/1"
               target="_self"
-              variant="primary"
             >
               
           View OpenAPI spec
@@ -750,10 +749,9 @@ exports[`Index when Get Component service endpoint returns a component when the 
             class="action table-secondary"
           >
             <a
-              class=""
+              class="btn btn-info"
               href="/components/test-component-id-1/openapi-specs/2"
               target="_self"
-              variant="primary"
             >
               
           View OpenAPI spec

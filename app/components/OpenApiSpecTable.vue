@@ -27,15 +27,15 @@
           {{ openApiSpec.url ? openApiSpec.url : openApiSpec.file }}
         </td>
         <td class="action table-secondary">
-          <b-link
+          <b-button
             v-if="openApiSpec.spec"
             :href="`/components/${openApiSpec.component.id}/openapi-specs/${
               openApiSpec.index + 1
             }`"
-            variant="primary"
+            variant="info"
           >
             View OpenAPI spec
-          </b-link>
+          </b-button>
           <div v-else>
             <b-badge variant="danger">OpenAPI spec not found</b-badge>
           </div>
@@ -50,7 +50,7 @@
 
 <script lang="ts">
 import Vue, { PropType } from 'vue'
-import { BBadge, BLink } from 'bootstrap-vue'
+import {BBadge, BButton} from 'bootstrap-vue'
 import { Component, OpenApiSpec } from '~/types/kronicle-service'
 import { compareOpenApiSpecs } from '~/src/openApiSpecComparator'
 import ComponentName from '~/components/ComponentName.vue'
@@ -64,8 +64,8 @@ interface OpenApiSpecWithIndexAndComponent extends OpenApiSpec {
 
 export default Vue.extend({
   components: {
-    'b-link': BLink,
     'b-badge': BBadge,
+    'b-button': BButton,
     ComponentName,
     ComponentTeams,
     Markdown,

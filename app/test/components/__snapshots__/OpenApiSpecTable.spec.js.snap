@@ -86,7 +86,7 @@ exports[`OpenApiSpecTable when an OpenAPI spec has a spec and a URL renders the 
       <td class=\\"location\\">
         https://example.com/openapi-spec-1-1
       </td>
-      <td class=\\"action table-secondary\\"><a variant=\\"primary\\" href=\\"/components/test-id-1/openapi-specs/1\\" target=\\"_self\\" class=\\"\\">
+      <td class=\\"action table-secondary\\"><a href=\\"/components/test-id-1/openapi-specs/1\\" target=\\"_self\\" class=\\"btn btn-info\\">
           View OpenAPI spec
         </a></td>
       <td class=\\"description\\">
@@ -119,7 +119,7 @@ exports[`OpenApiSpecTable when an OpenAPI spec has a spec and a file renders the
       <td class=\\"location\\">
         /openapi-spec-1-1.yaml
       </td>
-      <td class=\\"action table-secondary\\"><a variant=\\"primary\\" href=\\"/components/test-id-1/openapi-specs/1\\" target=\\"_self\\" class=\\"\\">
+      <td class=\\"action table-secondary\\"><a href=\\"/components/test-id-1/openapi-specs/1\\" target=\\"_self\\" class=\\"btn btn-info\\">
           View OpenAPI spec
         </a></td>
       <td class=\\"description\\">
@@ -152,7 +152,7 @@ exports[`OpenApiSpecTable when components is set to multiple components with mul
       <td class=\\"location\\">
         https://example.com/openapi-spec-1-1
       </td>
-      <td class=\\"action table-secondary\\"><a variant=\\"primary\\" href=\\"/components/test-id-1/openapi-specs/1\\" target=\\"_self\\" class=\\"\\">
+      <td class=\\"action table-secondary\\"><a href=\\"/components/test-id-1/openapi-specs/1\\" target=\\"_self\\" class=\\"btn btn-info\\">
           View OpenAPI spec
         </a></td>
       <td class=\\"description\\">
@@ -169,7 +169,7 @@ exports[`OpenApiSpecTable when components is set to multiple components with mul
       <td class=\\"location\\">
         https://example.com/openapi-spec-1-2
       </td>
-      <td class=\\"action table-secondary\\"><a variant=\\"primary\\" href=\\"/components/test-id-1/openapi-specs/2\\" target=\\"_self\\" class=\\"\\">
+      <td class=\\"action table-secondary\\"><a href=\\"/components/test-id-1/openapi-specs/2\\" target=\\"_self\\" class=\\"btn btn-info\\">
           View OpenAPI spec
         </a></td>
       <td class=\\"description\\">
@@ -186,7 +186,7 @@ exports[`OpenApiSpecTable when components is set to multiple components with mul
       <td class=\\"location\\">
         https://example.com/openapi-spec-2-1
       </td>
-      <td class=\\"action table-secondary\\"><a variant=\\"primary\\" href=\\"/components/test-id-2/openapi-specs/1\\" target=\\"_self\\" class=\\"\\">
+      <td class=\\"action table-secondary\\"><a href=\\"/components/test-id-2/openapi-specs/1\\" target=\\"_self\\" class=\\"btn btn-info\\">
           View OpenAPI spec
         </a></td>
       <td class=\\"description\\">
@@ -203,7 +203,7 @@ exports[`OpenApiSpecTable when components is set to multiple components with mul
       <td class=\\"location\\">
         https://example.com/openapi-spec-2-2
       </td>
-      <td class=\\"action table-secondary\\"><a variant=\\"primary\\" href=\\"/components/test-id-2/openapi-specs/2\\" target=\\"_self\\" class=\\"\\">
+      <td class=\\"action table-secondary\\"><a href=\\"/components/test-id-2/openapi-specs/2\\" target=\\"_self\\" class=\\"btn btn-info\\">
           View OpenAPI spec
         </a></td>
       <td class=\\"description\\">
