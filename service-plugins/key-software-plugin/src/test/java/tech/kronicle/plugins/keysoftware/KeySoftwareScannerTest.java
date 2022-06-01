@@ -5,9 +5,7 @@ import tech.kronicle.pluginapi.scanners.models.Output;
 import tech.kronicle.plugins.keysoftware.config.KeySoftwareRuleConfig;
 import tech.kronicle.plugins.keysoftware.services.KeySoftwareRuleProvider;
 import tech.kronicle.plugintestutils.scanners.BaseScannerTest;
-import tech.kronicle.sdk.models.Component;
-import tech.kronicle.sdk.models.KeySoftware;
-import tech.kronicle.sdk.models.Software;
+import tech.kronicle.sdk.models.*;
 
 import java.time.Duration;
 import java.util.List;
@@ -69,8 +67,8 @@ public class KeySoftwareScannerTest extends BaseScannerTest {
 
         // Then
         assertThat(maskTransformer(returnValue)).isEqualTo(maskTransformer(Output.empty(CACHE_TTL)));
-        List<KeySoftware> keySoftware = getMutatedComponent(returnValue).getKeySoftware();
-        assertThat(keySoftware).isEmpty();
+        KeySoftwaresState keySoftware = getKeySoftwaresState(returnValue);
+        assertThat(keySoftware).isNull();
     }
 
     @Test
@@ -83,8 +81,8 @@ public class KeySoftwareScannerTest extends BaseScannerTest {
 
         // Then
         assertThat(maskTransformer(returnValue)).isEqualTo(maskTransformer(Output.empty(CACHE_TTL)));
-        List<KeySoftware> keySoftware = getMutatedComponent(returnValue).getKeySoftware();
-        assertThat(keySoftware).isEmpty();
+        KeySoftwaresState keySoftware = getKeySoftwaresState(returnValue);
+        assertThat(keySoftware).isNull();
     }
 
     @Test
@@ -97,8 +95,7 @@ public class KeySoftwareScannerTest extends BaseScannerTest {
 
         // Then
         assertThat(maskTransformer(returnValue)).isEqualTo(maskTransformer(Output.empty(CACHE_TTL)));
-        List<KeySoftware> keySoftware = getMutatedComponent(returnValue).getKeySoftware();
-        assertThat(keySoftware).isEmpty();
+        assertNoState(returnValue);
     }
 
     @Test
@@ -115,7 +112,7 @@ public class KeySoftwareScannerTest extends BaseScannerTest {
 
         // Then
         assertThat(maskTransformer(returnValue)).isEqualTo(maskTransformer(Output.empty(CACHE_TTL)));
-        List<KeySoftware> keySoftware = getMutatedComponent(returnValue).getKeySoftware();
+        List<KeySoftware> keySoftware = getKeySoftwares(returnValue);
         assertThat(keySoftware).hasSize(1);
         KeySoftware keySoftwareItem;
         keySoftwareItem = keySoftware.get(0);
@@ -141,7 +138,7 @@ public class KeySoftwareScannerTest extends BaseScannerTest {
 
         // Then
         assertThat(maskTransformer(returnValue)).isEqualTo(maskTransformer(Output.empty(CACHE_TTL)));
-        List<KeySoftware> keySoftware = getMutatedComponent(returnValue).getKeySoftware();
+        List<KeySoftware> keySoftware = getKeySoftwares(returnValue);
         assertThat(keySoftware).hasSize(1);
         KeySoftware keySoftwareItem;
         keySoftwareItem = keySoftware.get(0);
@@ -167,7 +164,7 @@ public class KeySoftwareScannerTest extends BaseScannerTest {
 
         // Then
         assertThat(maskTransformer(returnValue)).isEqualTo(maskTransformer(Output.empty(CACHE_TTL)));
-        List<KeySoftware> keySoftware = getMutatedComponent(returnValue).getKeySoftware();
+        List<KeySoftware> keySoftware = getKeySoftwares(returnValue);
         assertThat(keySoftware).hasSize(1);
         KeySoftware keySoftwareItem;
         keySoftwareItem = keySoftware.get(0);
@@ -193,7 +190,7 @@ public class KeySoftwareScannerTest extends BaseScannerTest {
 
         // Then
         assertThat(maskTransformer(returnValue)).isEqualTo(maskTransformer(Output.empty(CACHE_TTL)));
-        List<KeySoftware> keySoftware = getMutatedComponent(returnValue).getKeySoftware();
+        List<KeySoftware> keySoftware = getKeySoftwares(returnValue);
         assertThat(keySoftware).hasSize(1);
         KeySoftware keySoftwareItem;
         keySoftwareItem = keySoftware.get(0);
@@ -221,7 +218,7 @@ public class KeySoftwareScannerTest extends BaseScannerTest {
 
         // Then
         assertThat(maskTransformer(returnValue)).isEqualTo(maskTransformer(Output.empty(CACHE_TTL)));
-        List<KeySoftware> keySoftware = getMutatedComponent(returnValue).getKeySoftware();
+        List<KeySoftware> keySoftware = getKeySoftwares(returnValue);
         assertThat(keySoftware).hasSize(2);
         KeySoftware keySoftwareItem;
         keySoftwareItem = keySoftware.get(0);
@@ -240,7 +237,27 @@ public class KeySoftwareScannerTest extends BaseScannerTest {
 
     private Component createComponent(List<Software> software) {
         return Component.builder()
-                .software(software)
+                .states(List.of(
+                        new SoftwaresState(
+                                "test-plugin-id",
+                                software
+                        )
+                ))
                 .build();
+    }
+
+
+    private List<KeySoftware> getKeySoftwares(Output<Void, Component> returnValue) {
+        KeySoftwaresState state = getKeySoftwaresState(returnValue);
+        assertThat(state).isNotNull();
+        return state.getKeySoftwares();
+    }
+
+    private KeySoftwaresState getKeySoftwaresState(Output<Void, Component> returnValue) {
+        return getMutatedComponent(returnValue).getState(KeySoftwaresState.TYPE);
+    }
+
+    private void assertNoState(Output<Void, Component> returnValue) {
+        assertThat(getMutatedComponent(returnValue).getStates()).isEmpty();
     }
 }

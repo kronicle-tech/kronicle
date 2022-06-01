@@ -36,8 +36,8 @@ public class SonarQubeCodeCoverageTest extends BaseSonarQubeTest {
     }
 
     @Override
-    public TestResult doTest(Component input, TestContext testContext) {
-        List<ProjectOutcome<Outcome>> projectOutcomes = input.getSonarQubeProjects().stream()
+    public TestResult doTest(Component input, List<SonarQubeProject> sonarQubeProjects, TestContext testContext) {
+        List<ProjectOutcome<Outcome>> projectOutcomes = sonarQubeProjects.stream()
                 .map(this::createProjectOutcome)
                 .collect(Collectors.toList());
 

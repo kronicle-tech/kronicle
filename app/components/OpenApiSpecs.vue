@@ -24,8 +24,9 @@
 <script lang="ts">
 import Vue, { PropType } from 'vue'
 import { BBadge, BLink } from 'bootstrap-vue'
-import { Component } from '~/types/kronicle-service'
+import {Component, OpenApiSpec, OpenApiSpecsState} from '~/types/kronicle-service'
 import Markdown from '~/components/Markdown.vue'
+import {findComponentState} from "~/src/componentStateUtils";
 
 export default Vue.extend({
   components: {
@@ -38,6 +39,12 @@ export default Vue.extend({
       type: Object as PropType<Component>,
       default: undefined,
     },
+  },
+  computed: {
+    openApiSpecs(): OpenApiSpec[] {
+      const openApiSpecs: OpenApiSpecsState | undefined = findComponentState(this.component, 'openapi-specs')
+      return openApiSpecs?.openApiSpecs ?? []
+    }
   },
 })
 </script>

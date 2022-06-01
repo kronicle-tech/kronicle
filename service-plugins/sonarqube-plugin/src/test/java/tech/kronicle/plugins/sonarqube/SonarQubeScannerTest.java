@@ -10,14 +10,11 @@ import tech.kronicle.pluginapi.scanners.models.ComponentAndCodebase;
 import tech.kronicle.pluginapi.scanners.models.Output;
 import tech.kronicle.plugins.sonarqube.services.SonarQubeService;
 import tech.kronicle.plugintestutils.scanners.BaseScannerTest;
-import tech.kronicle.sdk.models.Component;
-import tech.kronicle.sdk.models.ComponentMetadata;
-import tech.kronicle.sdk.models.RepoReference;
-import tech.kronicle.sdk.models.Summary;
-import tech.kronicle.sdk.models.SummaryMissingComponent;
+import tech.kronicle.sdk.models.*;
 import tech.kronicle.sdk.models.sonarqube.SonarQubeProject;
 import tech.kronicle.sdk.models.sonarqube.SummarySonarQubeMetric;
 
+import javax.validation.Valid;
 import java.nio.file.Path;
 import java.time.Duration;
 import java.util.List;
@@ -91,8 +88,7 @@ public class SonarQubeScannerTest extends BaseScannerTest {
 
         // Then
         assertThat(maskTransformer(returnValue)).isEqualTo(maskTransformer(Output.empty(CACHE_TTL)));
-        Component transformedComponent = getMutatedComponent(returnValue);
-        assertThat(transformedComponent.getSonarQubeProjects()).isEqualTo(projects);
+        assertThat(getSonarQubeProjects(returnValue)).isEqualTo(projects);
     }
 
     @Test
@@ -144,5 +140,11 @@ public class SonarQubeScannerTest extends BaseScannerTest {
                 missingComponent2,
                 missingComponent3,
                 missingComponent4);
+    }
+
+    private List<@Valid SonarQubeProject> getSonarQubeProjects(Output<Void, Component> returnValue) {
+        SonarQubeProjectsState state = getMutatedComponent(returnValue).getState(SonarQubeProjectsState.TYPE);
+        assertThat(state).isNotNull();
+        return state.getSonarQubeProjects();
     }
 }

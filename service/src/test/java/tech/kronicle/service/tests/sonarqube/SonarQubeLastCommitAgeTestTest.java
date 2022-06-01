@@ -16,7 +16,7 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class SonarQubeLastCommitAgeTestTest {
+public class SonarQubeLastCommitAgeTestTest extends BaseSonarQubeTestTest {
 
     private static final Clock clock = Clock.fixed(Instant.parse("2021-01-01T01:02:03.004Z"), ZoneOffset.UTC);
     private final SonarQubeLastCommitAgeTest underTest = new SonarQubeLastCommitAgeTest(clock);
@@ -60,19 +60,18 @@ public class SonarQubeLastCommitAgeTestTest {
     @Test
     public void testShouldReturnFailWhenComponentHasASonarQubeProjectWithNoLastCommitAge() {
         // Given
-        Component component = Component.builder()
-                .sonarQubeProjects(List.of(
-                        SonarQubeProject.builder()
-                                .key("test-project-key-1")
-                                .name("Test Project Name 1")
-                                .url("https://example.com/test-project-key-1")
-                                .measures(List.of(
-                                        SonarQubeMeasure.builder()
-                                                .metric("test-metric-key-1")
-                                                .value("1")
-                                                .build()))
-                                .build()))
-                .build();
+        Component component = createComponent(List.of(
+                SonarQubeProject.builder()
+                        .key("test-project-key-1")
+                        .name("Test Project Name 1")
+                        .url("https://example.com/test-project-key-1")
+                        .measures(List.of(
+                                SonarQubeMeasure.builder()
+                                        .metric("test-metric-key-1")
+                                        .value("1")
+                                        .build()))
+                        .build()
+        ));
 
         // When
         TestResult returnValue = underTest.test(component, null);
@@ -92,15 +91,14 @@ public class SonarQubeLastCommitAgeTestTest {
     @Test
     public void testShouldReturnFailWhenComponentHasASonarQubeProjectWithLastCommitAgeThatIsHigherThanMaximum() {
         // Given
-        Component component = Component.builder()
-                .sonarQubeProjects(List.of(
-                        SonarQubeProject.builder()
-                                .key("test-project-key-1")
-                                .name("Test Project Name 1")
-                                .url("https://example.com/test-project-key-1")
-                                .lastCommitTimestamp(LocalDateTime.of(2020, 6, 1, 1, 2, 3, 4))
-                                .build()))
-                .build();
+        Component component = createComponent(List.of(
+                SonarQubeProject.builder()
+                        .key("test-project-key-1")
+                        .name("Test Project Name 1")
+                        .url("https://example.com/test-project-key-1")
+                        .lastCommitTimestamp(LocalDateTime.of(2020, 6, 1, 1, 2, 3, 4))
+                        .build()
+        ));
 
         // When
         TestResult returnValue = underTest.test(component, null);
@@ -120,20 +118,19 @@ public class SonarQubeLastCommitAgeTestTest {
     @Test
     public void testShouldReturnFailWhenComponentHasASonarQubeProjectWithNoLastCommitAgeAndASonarQubeProjectWithLastCommitAgeThatIsHigherThanMaximum() {
         // Given
-        Component component = Component.builder()
-                .sonarQubeProjects(List.of(
-                        SonarQubeProject.builder()
-                                .key("test-project-key-1")
-                                .name("Test Project Name 1")
-                                .url("https://example.com/test-project-key-1")
-                                .build(),
-                        SonarQubeProject.builder()
-                                .key("test-project-key-2")
-                                .name("Test Project Name 2")
-                                .url("https://example.com/test-project-key-2")
-                                .lastCommitTimestamp(LocalDateTime.of(2020, 6, 1, 1, 2, 3, 4))
-                                .build()))
-                .build();
+        Component component = createComponent(List.of(
+                SonarQubeProject.builder()
+                        .key("test-project-key-1")
+                        .name("Test Project Name 1")
+                        .url("https://example.com/test-project-key-1")
+                        .build(),
+                SonarQubeProject.builder()
+                        .key("test-project-key-2")
+                        .name("Test Project Name 2")
+                        .url("https://example.com/test-project-key-2")
+                        .lastCommitTimestamp(LocalDateTime.of(2020, 6, 1, 1, 2, 3, 4))
+                        .build()
+        ));
 
         // When
         TestResult returnValue = underTest.test(component, null);
@@ -154,21 +151,20 @@ public class SonarQubeLastCommitAgeTestTest {
     @Test
     public void testShouldReturnFailWhenComponentHasASonarQubeProjectWithLastCommitAgeThatIsLowerThanMaximumAndASonarQubeProjectWithLastCommitAgeThatIsHigherThanMaximum() {
         // Given
-        Component component = Component.builder()
-                .sonarQubeProjects(List.of(
-                        SonarQubeProject.builder()
-                                .key("test-project-key-1")
-                                .name("Test Project Name 1")
-                                .url("https://example.com/test-project-key-1")
-                                .lastCommitTimestamp(LocalDateTime.of(2020, 8, 1, 1, 2, 3, 4))
-                                .build(),
-                        SonarQubeProject.builder()
-                                .key("test-project-key-2")
-                                .name("Test Project Name 2")
-                                .url("https://example.com/test-project-key-2")
-                                .lastCommitTimestamp(LocalDateTime.of(2020, 6, 1, 1, 2, 3, 4))
-                                .build()))
-                .build();
+        Component component = createComponent(List.of(
+                SonarQubeProject.builder()
+                        .key("test-project-key-1")
+                        .name("Test Project Name 1")
+                        .url("https://example.com/test-project-key-1")
+                        .lastCommitTimestamp(LocalDateTime.of(2020, 8, 1, 1, 2, 3, 4))
+                        .build(),
+                SonarQubeProject.builder()
+                        .key("test-project-key-2")
+                        .name("Test Project Name 2")
+                        .url("https://example.com/test-project-key-2")
+                        .lastCommitTimestamp(LocalDateTime.of(2020, 6, 1, 1, 2, 3, 4))
+                        .build()
+        ));
 
         // When
         TestResult returnValue = underTest.test(component, null);
@@ -189,15 +185,14 @@ public class SonarQubeLastCommitAgeTestTest {
     @Test
     public void testShouldReturnPassWhenComponentHasOneSonarQubeProjectWithLastCommitAgeThatIsEqualToMaximum() {
         // Given
-        Component component = Component.builder()
-                .sonarQubeProjects(List.of(
-                        SonarQubeProject.builder()
-                                .key("test-project-key-1")
-                                .name("Test Project Name 1")
-                                .url("https://example.com/test-project-key-1")
-                                .lastCommitTimestamp(LocalDateTime.of(2020, 7, 1, 1, 2, 3, 4))
-                                .build()))
-                .build();
+        Component component = createComponent(List.of(
+                SonarQubeProject.builder()
+                        .key("test-project-key-1")
+                        .name("Test Project Name 1")
+                        .url("https://example.com/test-project-key-1")
+                        .lastCommitTimestamp(LocalDateTime.of(2020, 7, 1, 1, 2, 3, 4))
+                        .build()
+        ));
 
         // When
         TestResult returnValue = underTest.test(component, null);
@@ -217,15 +212,14 @@ public class SonarQubeLastCommitAgeTestTest {
     @Test
     public void testShouldReturnPassWhenComponentHasOneSonarQubeProjectWithLastCommitAgeThatIsLowerThanMaximum() {
         // Given
-        Component component = Component.builder()
-                .sonarQubeProjects(List.of(
-                        SonarQubeProject.builder()
-                                .key("test-project-key-1")
-                                .name("Test Project Name 1")
-                                .url("https://example.com/test-project-key-1")
-                                .lastCommitTimestamp(LocalDateTime.of(2020, 8, 1, 1, 2, 3, 4))
-                                .build()))
-                .build();
+        Component component = createComponent(List.of(
+                SonarQubeProject.builder()
+                        .key("test-project-key-1")
+                        .name("Test Project Name 1")
+                        .url("https://example.com/test-project-key-1")
+                        .lastCommitTimestamp(LocalDateTime.of(2020, 8, 1, 1, 2, 3, 4))
+                        .build()
+        ));
 
         // When
         TestResult returnValue = underTest.test(component, null);
@@ -245,21 +239,20 @@ public class SonarQubeLastCommitAgeTestTest {
     @Test
     public void testShouldReturnPassWhenComponentHasTwoSonarQubeProjectsWithLastCommitAgeThatIsLowerThanMaximum() {
         // Given
-        Component component = Component.builder()
-                .sonarQubeProjects(List.of(
-                        SonarQubeProject.builder()
-                                .key("test-project-key-1")
-                                .name("Test Project Name 1")
-                                .url("https://example.com/test-project-key-1")
-                                .lastCommitTimestamp(LocalDateTime.of(2020, 8, 1, 1, 2, 3, 4))
-                                .build(),
-                        SonarQubeProject.builder()
-                                .key("test-project-key-2")
-                                .name("Test Project Name 2")
-                                .url("https://example.com/test-project-key-2")
-                                .lastCommitTimestamp(LocalDateTime.of(2020, 8, 1, 0, 0, 0, 0))
-                                .build()))
-                .build();
+        Component component = createComponent(List.of(
+                SonarQubeProject.builder()
+                        .key("test-project-key-1")
+                        .name("Test Project Name 1")
+                        .url("https://example.com/test-project-key-1")
+                        .lastCommitTimestamp(LocalDateTime.of(2020, 8, 1, 1, 2, 3, 4))
+                        .build(),
+                SonarQubeProject.builder()
+                        .key("test-project-key-2")
+                        .name("Test Project Name 2")
+                        .url("https://example.com/test-project-key-2")
+                        .lastCommitTimestamp(LocalDateTime.of(2020, 8, 1, 0, 0, 0, 0))
+                        .build()
+        ));
 
         // When
         TestResult returnValue = underTest.test(component, null);

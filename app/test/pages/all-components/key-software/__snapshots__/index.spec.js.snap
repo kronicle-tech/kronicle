@@ -686,13 +686,7 @@ exports[`Index when Get Components service endpoint returns an array of multiple
         </th>
          
         <th>
-          test-key-software-1
-        </th>
-        <th>
-          test-key-software-2
-        </th>
-        <th>
-          test-key-software-3
+          
         </th>
       </tr>
     </thead>
@@ -713,14 +707,6 @@ exports[`Index when Get Components service endpoint returns an array of multiple
           </a>
         </td>
          
-        <td>
-          <span>
-            
-          test-version-1
-            <br />
-          </span>
-        </td>
-        <td />
         <td />
       </tr>
       <tr>
@@ -739,14 +725,6 @@ exports[`Index when Get Components service endpoint returns an array of multiple
         </td>
          
         <td />
-        <td>
-          <span>
-            
-          test-version-2
-            <br />
-          </span>
-        </td>
-        <td />
       </tr>
       <tr>
         <td>
@@ -764,14 +742,6 @@ exports[`Index when Get Components service endpoint returns an array of multiple
         </td>
          
         <td />
-        <td />
-        <td>
-          <span>
-            
-          test-version-3
-            <br />
-          </span>
-        </td>
       </tr>
     </tbody>
   </table>
@@ -2212,10 +2182,7 @@ exports[`Index when Get Components service endpoint returns an array of multiple
         </th>
          
         <th>
-          test-key-software-1
-        </th>
-        <th>
-          test-key-software-2
+          
         </th>
       </tr>
     </thead>
@@ -2236,20 +2203,7 @@ exports[`Index when Get Components service endpoint returns an array of multiple
           </a>
         </td>
          
-        <td>
-          <span>
-            
-          test-version-1
-            <br />
-          </span>
-        </td>
-        <td>
-          <span>
-            
-          test-version-2
-            <br />
-          </span>
-        </td>
+        <td />
       </tr>
       <tr>
         <td>
@@ -2266,20 +2220,7 @@ exports[`Index when Get Components service endpoint returns an array of multiple
           </a>
         </td>
          
-        <td>
-          <span>
-            
-          test-version-3
-            <br />
-          </span>
-        </td>
-        <td>
-          <span>
-            
-          test-version-4
-            <br />
-          </span>
-        </td>
+        <td />
       </tr>
       <tr>
         <td>
@@ -2296,20 +2237,7 @@ exports[`Index when Get Components service endpoint returns an array of multiple
           </a>
         </td>
          
-        <td>
-          <span>
-            
-          test-version-5
-            <br />
-          </span>
-        </td>
-        <td>
-          <span>
-            
-          test-version-6
-            <br />
-          </span>
-        </td>
+        <td />
       </tr>
     </tbody>
   </table>
@@ -2920,7 +2848,7 @@ exports[`Index when a key software has multiple versions renders all versions 1`
         </th>
          
         <th>
-          test-key-software-1
+          
         </th>
       </tr>
     </thead>
@@ -2941,18 +2869,7 @@ exports[`Index when a key software has multiple versions renders all versions 1`
           </a>
         </td>
          
-        <td>
-          <span>
-            
-          test-version-1
-            <br />
-          </span>
-          <span>
-            
-          test-version-2
-            <br />
-          </span>
-        </td>
+        <td />
       </tr>
     </tbody>
   </table>

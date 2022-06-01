@@ -1,11 +1,11 @@
 package tech.kronicle.plugins.nodejs;
 
 import org.slf4j.Logger;
+import tech.kronicle.pluginapi.scanners.models.Output;
 import tech.kronicle.plugintestutils.scanners.BaseCodebaseScannerTest;
+import tech.kronicle.sdk.models.*;
+import tech.kronicle.sdk.models.nodejs.NodeJsState;
 import tech.kronicle.utils.Comparators;
-import tech.kronicle.sdk.models.Component;
-import tech.kronicle.sdk.models.Software;
-import tech.kronicle.sdk.models.SoftwareRepository;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -18,25 +18,29 @@ public abstract class BaseNodeJsScannerTest extends BaseCodebaseScannerTest {
     protected abstract Logger log();
 
     protected void assertThatNodeJsIsNotUsed(Component component) {
-        assertThat(component.getNodeJs()).isNotNull();
-        assertThat(component.getNodeJs().getUsed()).isFalse();
+        NodeJsState nodeJs = getNodeJs(component);
+        assertThat(nodeJs.getUsed()).isFalse();
     }
 
     protected void assertThatNodeJsIsUsed(Component component) {
-        assertThat(component.getNodeJs()).isNotNull();
-        assertThat(component.getNodeJs().getUsed()).isTrue();
+        NodeJsState nodeJs = getNodeJs(component);
+        assertThat(nodeJs.getUsed()).isTrue();
     }
 
-    protected List<SoftwareRepository> getSoftwareRepositories(Component component) {
-        return component.getSoftwareRepositories().stream()
-                .sorted(Comparators.SOFTWARE_REPOSITORIES)
-                .collect(Collectors.toList());
+    protected void assertNoState(Output<Void, Component> returnValue) {
+        assertThat(getMutatedComponent(returnValue).getStates()).isEmpty();
+    }
+
+    protected NodeJsState getNodeJs(Component component) {
+        NodeJsState state = component.getState(NodeJsState.TYPE);
+        assertThat(state).isNotNull();
+        return state;
     }
 
     protected List<Software> getSoftware(Component component) {
-        List<Software> software = component
-                .getSoftware()
-                .stream()
+        SoftwaresState state = component
+                .getState(SoftwaresState.TYPE);
+        List<Software> software = state.getSoftwares().stream()
                 .sorted(Comparators.SOFTWARE)
                 .collect(Collectors.toList());
         logSoftware(software);

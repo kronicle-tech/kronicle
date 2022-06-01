@@ -19,25 +19,25 @@
     <b-button class="my-1" :to="`/components/${componentId}/tech-debts`">
       Tech Debts
     </b-button>
-    <b-button class="my-1" :to="`/components/${componentId}/tests`">Tests</b-button>
     <b-button class="my-1" :to="`/components/${componentId}/errors`">Errors</b-button>
-    <b-button class="my-1" :to="`/components/${componentId}/openapi-specs`">
+    <b-button v-if="hasStateType('openapi-specs')" class="my-1" :to="`/components/${componentId}/openapi-specs`">
       OpenAPI
     </b-button>
-    <b-button class="my-1" :to="`/components/${componentId}/graphql-schemas`">
+    <b-button v-if="hasStateType('graphql-schemas')" class="my-1" :to="`/components/${componentId}/graphql-schemas`">
       GraphQL
     </b-button>
-    <b-button class="my-1" :to="`/components/${componentId}/repo`">Repo</b-button>
-    <b-button class="my-1" :to="`/components/${componentId}/readme`">README</b-button>
-    <b-button class="my-1" :to="`/components/${componentId}/to-dos`">To Dos</b-button>
+    <b-button v-if="hasStateType('git-repo')" class="my-1" :to="`/components/${componentId}/repo`">Repo</b-button>
+    <b-button v-if="hasStateType('readme')" class="my-1" :to="`/components/${componentId}/readme`">README</b-button>
+    <b-button v-if="hasStateType('to-dos')" class="my-1" :to="`/components/${componentId}/to-dos`">To Dos</b-button>
     <b-button v-if="hasStateType('lines-of-code')" class="my-1" :to="`/components/${componentId}/lines-of-code`">
       Lines of Code
     </b-button>
-    <b-button class="my-1" :to="`/components/${componentId}/software-repositories`">
+    <b-button v-if="hasStateType('software-repositories')" class="my-1" :to="`/components/${componentId}/software-repositories`">
       Software Repositories
     </b-button>
-    <b-button class="my-1" :to="`/components/${componentId}/software`">Software</b-button>
-    <b-button class="my-1" :to="`/components/${componentId}/imports`">Imports</b-button>
+    <b-button v-if="hasStateType('softwares')" class="my-1" :to="`/components/${componentId}/software`">Software</b-button>
+    <b-button v-if="hasStateType('imports')" class="my-1" :to="`/components/${componentId}/imports`">Imports</b-button>
+    <b-button class="my-1" :to="`/components/${componentId}/tests`">Tests</b-button>
   </div>
 </template>
 

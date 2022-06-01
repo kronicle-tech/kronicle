@@ -43,11 +43,7 @@ public class NodeJsScannerCodebaseTest extends BaseNodeJsScannerTest {
 
         // Then
         assertThat(maskTransformer(returnValue)).isEqualTo(maskTransformer(Output.empty(CACHE_TTL)));
-        Component component = getMutatedComponent(returnValue);
-        assertThatNodeJsIsNotUsed(component);
-        assertThat(getSoftwareRepositories(component)).isEmpty();
-        List<Software> software = getSoftware(component);
-        assertThat(software).isEmpty();
+        assertNoState(returnValue);
     }
 
     @Test
@@ -62,7 +58,6 @@ public class NodeJsScannerCodebaseTest extends BaseNodeJsScannerTest {
         assertThat(maskTransformer(returnValue)).isEqualTo(maskTransformer(Output.empty(CACHE_TTL)));
         Component component = getMutatedComponent(returnValue);
         assertThatNodeJsIsUsed(component);
-        assertThat(getSoftwareRepositories(component)).isEmpty();
         List<Software> software = getSoftware(component);
         assertThat(software).isEmpty();
     }
@@ -79,7 +74,6 @@ public class NodeJsScannerCodebaseTest extends BaseNodeJsScannerTest {
         assertThat(maskTransformer(returnValue)).isEqualTo(maskTransformer(Output.empty(CACHE_TTL)));
         Component component = getMutatedComponent(returnValue);
         assertThatNodeJsIsUsed(component);
-        assertThat(getSoftwareRepositories(component)).isEmpty();
         List<Software> software = getSoftware(component);
         assertThat(software).isEmpty();
     }
@@ -96,7 +90,6 @@ public class NodeJsScannerCodebaseTest extends BaseNodeJsScannerTest {
         assertThat(maskTransformer(returnValue)).isEqualTo(maskTransformer(Output.empty(CACHE_TTL)));
         Component component = getMutatedComponent(returnValue);
         assertThatNodeJsIsUsed(component);
-        assertThat(getSoftwareRepositories(component)).isEmpty();
         List<Software> software = getSoftware(component);
         assertThat(software).containsExactly(Software.builder().scannerId("nodejs").name("core-js").type(SoftwareType.NPM_PACKAGE).version("3.21.0").packaging("npm-package").dependencyType(SoftwareDependencyType.DIRECT).build());
     }
@@ -113,7 +106,6 @@ public class NodeJsScannerCodebaseTest extends BaseNodeJsScannerTest {
         assertThat(maskTransformer(returnValue)).isEqualTo(maskTransformer(Output.empty(CACHE_TTL)));
         Component component = getMutatedComponent(returnValue);
         assertThatNodeJsIsUsed(component);
-        assertThat(getSoftwareRepositories(component)).isEmpty();
         List<Software> software = getSoftware(component);
         assertThat(software).containsExactly(Software.builder().scannerId("nodejs").name("prettier").type(SoftwareType.NPM_PACKAGE).version("2.5.1").packaging("npm-package").dependencyType(SoftwareDependencyType.DIRECT).scope(SoftwareScope.DEV).build());
     }
@@ -130,7 +122,6 @@ public class NodeJsScannerCodebaseTest extends BaseNodeJsScannerTest {
         assertThat(maskTransformer(returnValue)).isEqualTo(maskTransformer(Output.empty(CACHE_TTL)));
         Component component = getMutatedComponent(returnValue);
         assertThatNodeJsIsUsed(component);
-        assertThat(getSoftwareRepositories(component)).isEmpty();
         List<Software> software = getSoftware(component);
         assertThat(software).containsExactly(
                 Software.builder().scannerId("nodejs").name("@eslint/eslintrc").type(SoftwareType.NPM_PACKAGE).version("1.0.5").packaging("npm-package").dependencyType(SoftwareDependencyType.TRANSITIVE).scope(SoftwareScope.DEV).build(),

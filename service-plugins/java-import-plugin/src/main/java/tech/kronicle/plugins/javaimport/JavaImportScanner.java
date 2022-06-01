@@ -8,6 +8,7 @@ import tech.kronicle.pluginapi.scanners.models.Codebase;
 import tech.kronicle.pluginapi.scanners.models.Output;
 import tech.kronicle.plugins.javaimport.services.JavaImportFinder;
 import tech.kronicle.sdk.models.Component;
+import tech.kronicle.sdk.models.ImportsState;
 import tech.kronicle.utils.Comparators;
 import tech.kronicle.utils.FileUtils;
 import tech.kronicle.sdk.models.Import;
@@ -46,8 +47,13 @@ public class JavaImportScanner extends CodebaseScanner {
                 .distinct()
                 .sorted(Comparators.IMPORTS)
                 .collect(Collectors.toList());
+
+        if (imports.isEmpty()) {
+            return Output.empty(CACHE_TTL);
+        }
+
         return Output.ofTransformer(
-                component -> component.withImports(imports),
+                component -> component.addState(new ImportsState(JavaImportPlugin.ID, imports)),
                 CACHE_TTL
         );
     }

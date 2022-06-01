@@ -2,9 +2,10 @@ package tech.kronicle.service.tests.zipkin;
 
 import lombok.RequiredArgsConstructor;
 import tech.kronicle.sdk.models.Component;
+import tech.kronicle.sdk.models.ComponentState;
 import tech.kronicle.sdk.models.Priority;
 import tech.kronicle.sdk.models.TestResult;
-import tech.kronicle.sdk.models.zipkin.Zipkin;
+import tech.kronicle.sdk.models.zipkin.ZipkinState;
 import tech.kronicle.service.tests.ComponentTest;
 import tech.kronicle.service.tests.models.TestContext;
 import tech.kronicle.service.tests.zipkin.config.ZipkinTestConfig;
@@ -50,6 +51,7 @@ public class ZipkinTest extends ComponentTest {
     }
 
     private Boolean isZipkinUsed(Component input) {
-        return Optional.ofNullable(input.getZipkin()).map(Zipkin::getUsed).orElse(false);
+        ZipkinState zipkin = input.getState(ZipkinState.TYPE);
+        return Optional.ofNullable(zipkin).map(ZipkinState::getUsed).orElse(false);
     }
 }

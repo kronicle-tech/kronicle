@@ -8,9 +8,10 @@ import tech.kronicle.pluginapi.scanners.models.Output;
 import tech.kronicle.plugins.nodejs.internal.constants.NodeJsFileNames;
 import tech.kronicle.plugins.nodejs.internal.services.npm.NpmPackageExtractor;
 import tech.kronicle.sdk.models.Component;
+import tech.kronicle.sdk.models.SoftwaresState;
 import tech.kronicle.utils.FileUtils;
 import tech.kronicle.sdk.models.Software;
-import tech.kronicle.sdk.models.nodejs.NodeJs;
+import tech.kronicle.sdk.models.nodejs.NodeJsState;
 
 import javax.inject.Inject;
 import java.nio.file.Path;
@@ -49,13 +50,18 @@ public class NodeJsScanner  extends CodebaseScanner {
     public Output<Void, Component> scan(Codebase input) {
         List<Path> npmLockFiles = fileUtils.findFiles(input.getDir(), (file, ignored) -> file.endsWith(NodeJsFileNames.NPM_PACKAGE_LOCK_JSON))
                 .collect(toUnmodifiableList());
+
+        if (npmLockFiles.isEmpty()) {
+            return Output.empty(CACHE_TTL);
+        }
+
         List<Software> software = npmLockFiles.stream()
                 .flatMap(file -> npmPackageExtractor.extractPackages(id(), file))
                 .collect(toUnmodifiableList());
         return Output.ofTransformer(
                 component -> component
-                        .withNodeJs(new NodeJs(!npmLockFiles.isEmpty()))
-                        .addSoftware(software),
+                        .addState(new NodeJsState(NodeJsPlugin.ID, !npmLockFiles.isEmpty()))
+                        .addState(new SoftwaresState(NodeJsPlugin.ID, software)),
                 CACHE_TTL
         );
     }

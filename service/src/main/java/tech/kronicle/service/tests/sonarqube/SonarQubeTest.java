@@ -12,7 +12,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import static java.util.Objects.isNull;
-import static java.util.Objects.nonNull;
 
 @org.springframework.stereotype.Component
 @RequiredArgsConstructor
@@ -36,11 +35,11 @@ public class SonarQubeTest extends BaseSonarQubeTest {
     }
 
     @Override
-    protected TestResult doTest(Component input, TestContext testContext) {
-        if (nonNull(input.getSonarQubeProjects()) && !input.getSonarQubeProjects().isEmpty()) {
+    protected TestResult doTest(Component input, List<SonarQubeProject> sonarQubeProjects, TestContext testContext) {
+        if (!sonarQubeProjects.isEmpty()) {
             return createPassTestResult(createMessage(
                     "Component has these SonarQube project(s):",
-                    createProjectOutcomes(input.getSonarQubeProjects()),
+                    createProjectOutcomes(sonarQubeProjects),
                     null));
         }
 

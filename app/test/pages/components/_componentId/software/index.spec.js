@@ -19,7 +19,7 @@ describe('Index', () => {
       route,
       serviceRequests: {
         '/v1/components/test-component-id-1?fields=component(id,name,states(type))': createComponentResponseWithStateTypes(1),
-        '/v1/components/test-component-id-1?fields=component(id,name,software)':
+        '/v1/components/test-component-id-1?stateType=softwares&fields=component(id,name,teams,states)':
           {
             responseBody: { component },
           },
@@ -65,7 +65,7 @@ describe('Index', () => {
     describe('when the component has software that are not sorted', () => {
       beforeEach(() => {
         component = createComponentWithSoftwareItems({ componentNumber: 1 })
-        component.software.reverse()
+        component.states[0].softwares.reverse()
       })
 
       test('sorts the software before rending the software', async () => {

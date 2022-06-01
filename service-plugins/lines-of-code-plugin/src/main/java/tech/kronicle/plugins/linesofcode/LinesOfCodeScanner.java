@@ -51,6 +51,7 @@ public class LinesOfCodeScanner extends CodebaseScanner {
     @Override
     public Output<Void, Component> scan(Codebase input) {
         LinesOfCodeState linesOfCode = getLinesOfCode(input);
+
         return Output.ofTransformer(
                 component -> component.addState(linesOfCode),
                 CACHE_TTL

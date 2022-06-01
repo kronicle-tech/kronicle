@@ -4,8 +4,11 @@ import lombok.Builder;
 import lombok.Value;
 import lombok.With;
 import lombok.extern.jackson.Jacksonized;
-import tech.kronicle.sdk.utils.ListUtils;
+import tech.kronicle.sdk.constants.PatternStrings;
+import tech.kronicle.sdk.models.ComponentState;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -15,8 +18,14 @@ import static tech.kronicle.sdk.utils.ListUtils.createUnmodifiableList;
 @With
 @Builder(toBuilder = true)
 @Jacksonized
-public class GitRepo {
+public class GitRepoState implements ComponentState {
 
+    public static final String TYPE = "git-repo";
+
+    String type = TYPE;
+    @NotBlank
+    @Pattern(regexp = PatternStrings.ID)
+    String pluginId;
     LocalDateTime firstCommitTimestamp;
     LocalDateTime lastCommitTimestamp;
     Integer commitCount;
@@ -27,8 +36,17 @@ public class GitRepo {
     // TODO: Remove committer count and use committer list instead
     Integer committerCount;
 
-    public GitRepo(LocalDateTime firstCommitTimestamp, LocalDateTime lastCommitTimestamp, Integer commitCount, List<Identity> authors,
-            List<Identity> committers, Integer authorCount, Integer committerCount) {
+    public GitRepoState(
+            String pluginId,
+            LocalDateTime firstCommitTimestamp,
+            LocalDateTime lastCommitTimestamp,
+            Integer commitCount,
+            List<Identity> authors,
+            List<Identity> committers,
+            Integer authorCount,
+            Integer committerCount
+    ) {
+        this.pluginId = pluginId;
         this.firstCommitTimestamp = firstCommitTimestamp;
         this.lastCommitTimestamp = lastCommitTimestamp;
         this.commitCount = commitCount;

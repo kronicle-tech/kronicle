@@ -8,6 +8,8 @@ import tech.kronicle.pluginapi.scanners.models.Codebase;
 import tech.kronicle.pluginapi.scanners.models.Output;
 import tech.kronicle.plugins.todo.internal.services.ToDoFinder;
 import tech.kronicle.sdk.models.Component;
+import tech.kronicle.sdk.models.ComponentState;
+import tech.kronicle.sdk.models.ToDosState;
 import tech.kronicle.utils.FileUtils;
 import tech.kronicle.sdk.models.todos.ToDo;
 
@@ -44,7 +46,19 @@ public class ToDoScanner extends CodebaseScanner {
                         .map(toDo -> new ToDo(getRelativeFilePath(input, fileContent.getFile()), toDo)))
                 .collect(Collectors.toList());
         log.info("Found {} To Dos in codebase \"{}\"", toDos.size(), input.getDir());
-        return Output.ofTransformer(component -> component.withToDos(toDos), CACHE_TTL);
+
+        if (toDos.isEmpty()) {
+            return Output.empty(CACHE_TTL);
+        }
+
+        return Output.ofTransformer(component -> component.addState(createState(toDos)), CACHE_TTL);
+    }
+
+    private ToDosState createState(List<ToDo> toDos) {
+        return new ToDosState(
+                ToDoPlugin.ID,
+                toDos
+        );
     }
 
     private String getRelativeFilePath(Codebase input, Path file) {

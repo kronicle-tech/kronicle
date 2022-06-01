@@ -36,7 +36,7 @@ public class AwsCloudWatchLogsInsightsScanner extends ComponentScanner {
         List<LogSummaryState> logSummaries = service.getLogSummariesForComponent(input);
 
         if (logSummaries.isEmpty()) {
-            return Output.ofTransformer(null, CACHE_TTL);
+            return Output.empty(CACHE_TTL);
         }
 
         return Output.ofTransformer(

@@ -9,6 +9,8 @@ import java.util.List;
 
 public class ReadmePlugin extends KronicleGuicePlugin {
 
+    public static final String ID = "readme";
+
     public ReadmePlugin(PluginWrapper wrapper) {
         super(wrapper);
     }

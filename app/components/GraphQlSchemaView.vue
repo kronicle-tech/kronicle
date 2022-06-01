@@ -29,7 +29,8 @@
 import Vue, {PropType} from 'vue'
 import {MetaInfo} from "vue-meta";
 import {buildSchema, getIntrospectionQuery, graphqlSync} from "graphql";
-import {Component, GraphQlSchema} from '~/types/kronicle-service'
+import {Component, GraphQlSchema, GraphQlSchemasState} from '~/types/kronicle-service'
+import {findComponentState} from "~/src/componentStateUtils";
 
 export default Vue.extend({
   props: {
@@ -64,7 +65,8 @@ export default Vue.extend({
     }
   },
   mounted() {
-    this.load(this.component.graphQlSchemas[this.graphQlSchemaIndex - 1])
+    const graphQlSchemas: GraphQlSchemasState | undefined = findComponentState(this.component, 'graphql-schemas')
+    this.load(graphQlSchemas!.graphQlSchemas[this.graphQlSchemaIndex - 1])
   },
   methods: {
     load(graphQlSchema: GraphQlSchema) {

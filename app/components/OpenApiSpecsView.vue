@@ -18,9 +18,10 @@
 <script lang="ts">
 import Vue, { PropType } from 'vue'
 import {BCard, BListGroup, BListGroupItem} from 'bootstrap-vue'
-import { Component, OpenApiSpec } from '~/types/kronicle-service'
+import {Component, OpenApiSpec, OpenApiSpecsState} from '~/types/kronicle-service'
 import ComponentFilters from '~/components/ComponentFilters.vue'
 import OpenApiSpecTable from '~/components/OpenApiSpecTable.vue'
+import {findComponentState} from "~/src/componentStateUtils";
 
 export default Vue.extend({
   components: {
@@ -42,7 +43,10 @@ export default Vue.extend({
     },
     openApiSpecs(): OpenApiSpec[] {
       return this.filteredComponents.flatMap(
-        (component) => component.openApiSpecs ?? []
+        (component) => {
+          const openApiSpecs: OpenApiSpecsState | undefined = findComponentState(component, 'openapi-specs')
+          return openApiSpecs?.openApiSpecs ?? []
+        }
       )
     },
     count(): number {

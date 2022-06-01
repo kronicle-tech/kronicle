@@ -10,6 +10,8 @@ import java.util.List;
 
 public class OpenApiPlugin extends KronicleGuicePlugin {
 
+    public static final String ID = "openapi";
+
     public OpenApiPlugin(PluginWrapper wrapper) {
         super(wrapper);
     }

@@ -83,63 +83,21 @@ exports[`Index when Get Component service endpoint returns a component when the 
      
     <a
       class="btn my-1 btn-secondary"
-      href="/components/test-component-id-1/tests"
-      target="_self"
-    >
-      Tests
-    </a>
-     
-    <a
-      class="btn my-1 btn-secondary"
       href="/components/test-component-id-1/errors"
       target="_self"
     >
       Errors
     </a>
      
-    <a
-      class="btn my-1 btn-secondary"
-      href="/components/test-component-id-1/openapi-specs"
-      target="_self"
-    >
-      
-    OpenAPI
-  
-    </a>
+    <!---->
      
-    <a
-      class="btn my-1 btn-secondary"
-      href="/components/test-component-id-1/graphql-schemas"
-      target="_self"
-    >
-      
-    GraphQL
-  
-    </a>
+    <!---->
      
-    <a
-      class="btn my-1 btn-secondary"
-      href="/components/test-component-id-1/repo"
-      target="_self"
-    >
-      Repo
-    </a>
+    <!---->
      
-    <a
-      class="btn my-1 btn-secondary"
-      href="/components/test-component-id-1/readme"
-      target="_self"
-    >
-      README
-    </a>
+    <!---->
      
-    <a
-      class="btn my-1 btn-secondary"
-      href="/components/test-component-id-1/to-dos"
-      target="_self"
-    >
-      To Dos
-    </a>
+    <!---->
      
     <a
       class="btn my-1 btn-secondary"
@@ -151,30 +109,18 @@ exports[`Index when Get Component service endpoint returns a component when the 
   
     </a>
      
-    <a
-      class="btn my-1 btn-secondary"
-      href="/components/test-component-id-1/software-repositories"
-      target="_self"
-    >
-      
-    Software Repositories
-  
-    </a>
+    <!---->
+     
+    <!---->
+     
+    <!---->
      
     <a
       class="btn my-1 btn-secondary"
-      href="/components/test-component-id-1/software"
+      href="/components/test-component-id-1/tests"
       target="_self"
     >
-      Software
-    </a>
-     
-    <a
-      class="btn my-1 btn-secondary"
-      href="/components/test-component-id-1/imports"
-      target="_self"
-    >
-      Imports
+      Tests
     </a>
   </div>
    
@@ -317,63 +263,21 @@ exports[`Index when Get Component service endpoint returns a component when the 
      
     <a
       class="btn my-1 btn-secondary"
-      href="/components/test-component-id-1/tests"
-      target="_self"
-    >
-      Tests
-    </a>
-     
-    <a
-      class="btn my-1 btn-secondary"
       href="/components/test-component-id-1/errors"
       target="_self"
     >
       Errors
     </a>
      
-    <a
-      class="btn my-1 btn-secondary"
-      href="/components/test-component-id-1/openapi-specs"
-      target="_self"
-    >
-      
-    OpenAPI
-  
-    </a>
+    <!---->
      
-    <a
-      class="btn my-1 btn-secondary"
-      href="/components/test-component-id-1/graphql-schemas"
-      target="_self"
-    >
-      
-    GraphQL
-  
-    </a>
+    <!---->
      
-    <a
-      class="btn my-1 btn-secondary"
-      href="/components/test-component-id-1/repo"
-      target="_self"
-    >
-      Repo
-    </a>
+    <!---->
      
-    <a
-      class="btn my-1 btn-secondary"
-      href="/components/test-component-id-1/readme"
-      target="_self"
-    >
-      README
-    </a>
+    <!---->
      
-    <a
-      class="btn my-1 btn-secondary"
-      href="/components/test-component-id-1/to-dos"
-      target="_self"
-    >
-      To Dos
-    </a>
+    <!---->
      
     <a
       class="btn my-1 btn-secondary"
@@ -385,30 +289,18 @@ exports[`Index when Get Component service endpoint returns a component when the 
   
     </a>
      
-    <a
-      class="btn my-1 btn-secondary"
-      href="/components/test-component-id-1/software-repositories"
-      target="_self"
-    >
-      
-    Software Repositories
-  
-    </a>
+    <!---->
+     
+    <!---->
+     
+    <!---->
      
     <a
       class="btn my-1 btn-secondary"
-      href="/components/test-component-id-1/software"
+      href="/components/test-component-id-1/tests"
       target="_self"
     >
-      Software
-    </a>
-     
-    <a
-      class="btn my-1 btn-secondary"
-      href="/components/test-component-id-1/imports"
-      target="_self"
-    >
-      Imports
+      Tests
     </a>
   </div>
    

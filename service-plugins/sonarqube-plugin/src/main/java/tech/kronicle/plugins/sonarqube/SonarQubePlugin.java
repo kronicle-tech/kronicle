@@ -10,6 +10,8 @@ import java.util.List;
 
 public class SonarQubePlugin extends KronicleGuicePlugin {
 
+    public static final String ID = "sonarqube";
+
     public SonarQubePlugin(PluginWrapper wrapper) {
         super(wrapper);
     }

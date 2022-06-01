@@ -7,6 +7,8 @@ import tech.kronicle.pluginapi.scanners.models.Codebase;
 import tech.kronicle.pluginapi.scanners.models.Output;
 import tech.kronicle.plugins.todo.internal.services.ToDoFinder;
 import tech.kronicle.sdk.models.Component;
+import tech.kronicle.sdk.models.ComponentState;
+import tech.kronicle.sdk.models.ToDosState;
 import tech.kronicle.testutils.MalformedFileCreator;
 import tech.kronicle.plugintestutils.scanners.BaseCodebaseScannerTest;
 import tech.kronicle.sdk.models.todos.ToDo;
@@ -110,7 +112,9 @@ public class ToDoScannerTest extends BaseCodebaseScannerTest {
     }
 
     private List<ToDo> getToDos(Output<Void, Component> returnValue) {
-        return getMutatedComponent(returnValue).getToDos().stream()
+        ToDosState state = getMutatedComponent(returnValue).getState(ToDosState.TYPE);
+        assertThat(state).isNotNull();
+        return state.getToDos().stream()
           .sorted(Comparator.comparing(ToDo::getFile))
           .collect(Collectors.toList());
     }

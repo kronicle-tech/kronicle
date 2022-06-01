@@ -12,15 +12,14 @@ import tech.kronicle.plugins.openapi.models.SpecAndErrors;
 import tech.kronicle.plugins.openapi.services.SpecDiscoverer;
 import tech.kronicle.plugins.openapi.services.SpecParser;
 import tech.kronicle.plugins.openapi.utils.OpenApiSpecUtils;
-import tech.kronicle.sdk.models.Component;
-import tech.kronicle.sdk.models.ComponentMetadata;
-import tech.kronicle.sdk.models.ScannerError;
+import tech.kronicle.sdk.models.*;
 import tech.kronicle.sdk.models.openapi.OpenApiSpec;
 
 import javax.inject.Inject;
 import java.time.Duration;
 import java.util.Collection;
 import java.util.List;
+import java.util.function.UnaryOperator;
 import java.util.stream.Collectors;
 
 import static java.util.Objects.nonNull;
@@ -56,10 +55,26 @@ public class OpenApiScanner extends ComponentAndCodebaseScanner {
     @Override
     public Output<Void, Component> scan(ComponentAndCodebase input) {
         ScanOutput scanOutput = processComponentAndCodebase(input);
+        List<OpenApiSpec> specs = scanOutput.getSpecs();
+        UnaryOperator<Component> transformer;
+
+        if (specs.isEmpty()) {
+            transformer = null;
+        } else {
+            transformer = (Component component) -> component.addState(createState(specs));
+        }
+
         return Output.builder(CACHE_TTL)
-                .transformer((Component component) -> component.withOpenApiSpecs(scanOutput.getSpecs()))
+                .transformer(transformer)
                 .errors(scanOutput.getErrors())
                 .build();
+    }
+
+    private OpenApiSpecsState createState(List<OpenApiSpec> specs) {
+        return new OpenApiSpecsState(
+                OpenApiPlugin.ID,
+                specs
+        );
     }
 
     private ScanOutput processComponentAndCodebase(ComponentAndCodebase input) {

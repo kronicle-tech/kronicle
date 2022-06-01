@@ -17,20 +17,19 @@ import tech.kronicle.plugins.openapi.services.SpecDiscoverer;
 import tech.kronicle.plugins.openapi.services.SpecErrorProcessor;
 import tech.kronicle.plugins.openapi.services.SpecParser;
 import tech.kronicle.plugintestutils.scanners.BaseCodebaseScannerTest;
-import tech.kronicle.utils.ThrowableToScannerErrorMapper;
 import tech.kronicle.sdk.models.Component;
 import tech.kronicle.sdk.models.ComponentMetadata;
+import tech.kronicle.sdk.models.OpenApiSpecsState;
 import tech.kronicle.sdk.models.ScannerError;
 import tech.kronicle.sdk.models.openapi.OpenApiSpec;
+import tech.kronicle.utils.ThrowableToScannerErrorMapper;
 
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
-import static com.github.tomakehurst.wiremock.client.WireMock.aResponse;
-import static com.github.tomakehurst.wiremock.client.WireMock.get;
-import static com.github.tomakehurst.wiremock.client.WireMock.urlPathEqualTo;
+import static com.github.tomakehurst.wiremock.client.WireMock.*;
 import static com.github.tomakehurst.wiremock.core.WireMockConfiguration.options;
 import static java.util.Objects.nonNull;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -111,7 +110,7 @@ public class OpenApiScannerTest extends BaseCodebaseScannerTest {
 
         // Then
         assertThat(maskTransformer(returnValue)).isEqualTo(maskTransformer(Output.empty(CACHE_TTL)));
-        List<OpenApiSpec> returnOpenApiSpecs = getMutatedComponent(returnValue).getOpenApiSpecs();
+        List<OpenApiSpec> returnOpenApiSpecs = getSpecs(returnValue);
         assertThat(returnOpenApiSpecs).hasSize(1);
         assertThat(getSpecAsJsonTree(returnOpenApiSpecs.get(0)).get("info").get("title").textValue()).isEqualTo("Example");
 
@@ -124,7 +123,7 @@ public class OpenApiScannerTest extends BaseCodebaseScannerTest {
 
         // Then
         assertThat(returnValue.getErrors()).isEmpty();
-        returnOpenApiSpecs = getMutatedComponent(returnValue).getOpenApiSpecs();
+        returnOpenApiSpecs = getSpecs(returnValue);
         assertThat(returnOpenApiSpecs).hasSize(1);
         assertThat(getSpecAsJsonTree(returnOpenApiSpecs.get(0)).get("info").get("title").textValue()).isEqualTo("Example - Changed");
     }
@@ -142,8 +141,7 @@ public class OpenApiScannerTest extends BaseCodebaseScannerTest {
 
         // Then
         assertThat(maskTransformer(returnValue)).isEqualTo(maskTransformer(Output.empty(CACHE_TTL)));
-        List<OpenApiSpec> openApiSpecs = getMutatedComponent(returnValue).getOpenApiSpecs();
-        assertThat(openApiSpecs).isEmpty();
+        assertNoState(returnValue);
     }
 
     @Test
@@ -166,7 +164,7 @@ public class OpenApiScannerTest extends BaseCodebaseScannerTest {
 
         // Then
         assertThat(maskTransformer(returnValue)).isEqualTo(maskTransformer(Output.empty(CACHE_TTL)));
-        List<OpenApiSpec> returnOpenApiSpecs = getMutatedComponent(returnValue).getOpenApiSpecs();
+        List<OpenApiSpec> returnOpenApiSpecs = getSpecs(returnValue);
         assertThat(returnOpenApiSpecs).hasSize(1);
         OpenApiSpec returnOpenApiSpec;
         returnOpenApiSpec = returnOpenApiSpecs.get(0);
@@ -191,9 +189,9 @@ public class OpenApiScannerTest extends BaseCodebaseScannerTest {
 
         // Then
         assertThat(maskTransformer(returnValue)).isEqualTo(maskTransformer(Output.empty(CACHE_TTL)));
-        List<OpenApiSpec> returnOpenApiSpecs = new ArrayList<>(getMutatedComponent(returnValue).getOpenApiSpecs());
 
         if (scanCodebases) {
+            List<OpenApiSpec> returnOpenApiSpecs = new ArrayList<>(getSpecs(returnValue));
             assertThat(returnOpenApiSpecs).hasSize(3);
             returnOpenApiSpecs.sort(Comparator.comparing(OpenApiSpec::getFile));
             OpenApiSpec returnOpenApiSpec;
@@ -216,7 +214,7 @@ public class OpenApiScannerTest extends BaseCodebaseScannerTest {
             assertThat(returnOpenApiSpec.getSpec()).isNotNull();
             assertThat(getSpecAsJsonTree(returnOpenApiSpec).has("openapi")).isTrue();
         } else {
-            assertThat(returnOpenApiSpecs).isEmpty();
+            assertNoState(returnValue);
         }
     }
 
@@ -239,7 +237,7 @@ public class OpenApiScannerTest extends BaseCodebaseScannerTest {
 
         // Then
         assertThat(maskTransformer(returnValue)).isEqualTo(maskTransformer(Output.empty(CACHE_TTL)));
-        List<OpenApiSpec> returnOpenApiSpecs = getMutatedComponent(returnValue).getOpenApiSpecs();
+        List<OpenApiSpec> returnOpenApiSpecs = getSpecs(returnValue);
         assertThat(returnOpenApiSpecs).hasSize(1);
         OpenApiSpec returnOpenApiSpec;
         returnOpenApiSpec = returnOpenApiSpecs.get(0);
@@ -264,7 +262,7 @@ public class OpenApiScannerTest extends BaseCodebaseScannerTest {
 
         // Then
         assertThat(maskTransformer(returnValue)).isEqualTo(maskTransformer(Output.empty(CACHE_TTL)));
-        List<OpenApiSpec> returnOpenApiSpecs = getMutatedComponentIgnoringErrors(returnValue).getOpenApiSpecs();
+        List<OpenApiSpec> returnOpenApiSpecs = getSpecs(returnValue);
         assertThat(returnOpenApiSpecs).hasSize(1);
         OpenApiSpec returnOpenApiSpec;
         returnOpenApiSpec = returnOpenApiSpecs.get(0);
@@ -300,7 +298,7 @@ public class OpenApiScannerTest extends BaseCodebaseScannerTest {
         assertThat(error.getScannerId()).isEqualTo("openapi");
         assertThat(sanitizeErrorMessage(error.getMessage())).isEqualTo("Issue while parsing OpenAPI spec \"InvalidOpenApiSpec/test-openapi.yaml\": "
                 + "attribute paths./invalid is not of type `object`");
-        List<OpenApiSpec> returnOpenApiSpecs = getMutatedComponentIgnoringErrors(returnValue).getOpenApiSpecs();
+        List<OpenApiSpec> returnOpenApiSpecs = getSpecs(returnValue);
         assertThat(returnOpenApiSpecs).hasSize(1);
         OpenApiSpec returnOpenApiSpec;
         returnOpenApiSpec = returnOpenApiSpecs.get(0);
@@ -354,7 +352,7 @@ public class OpenApiScannerTest extends BaseCodebaseScannerTest {
         assertThat(error.getScannerId()).isEqualTo("openapi");
         assertThat(sanitizeErrorMessage(error.getMessage())).isEqualTo("Issue while parsing OpenAPI spec \"InvalidYamlFile/test-openapi.yaml\": "
                 + "Expected a field name (Scalar value in YAML), got this instead: <org.yaml.snakeyaml.events.MappingStartEvent(anchor=null, tag=null, implicit=true)>");
-        List<OpenApiSpec> returnOpenApiSpecs = getMutatedComponentIgnoringErrors(returnValue).getOpenApiSpecs();
+        List<OpenApiSpec> returnOpenApiSpecs = getSpecs(returnValue);
         assertThat(returnOpenApiSpecs).hasSize(1);
         OpenApiSpec returnOpenApiSpec;
         returnOpenApiSpec = returnOpenApiSpecs.get(0);
@@ -378,7 +376,7 @@ public class OpenApiScannerTest extends BaseCodebaseScannerTest {
 
         // Then
         assertThat(maskTransformer(returnValue)).isEqualTo(maskTransformer(Output.empty(CACHE_TTL)));
-        List<OpenApiSpec> returnOpenApiSpecs = getMutatedComponent(returnValue).getOpenApiSpecs();
+        List<OpenApiSpec> returnOpenApiSpecs = getSpecs(returnValue);
         assertThat(returnOpenApiSpecs).hasSize(1);
         OpenApiSpec returnOpenApiSpec;
         returnOpenApiSpec = returnOpenApiSpecs.get(0);
@@ -404,8 +402,7 @@ public class OpenApiScannerTest extends BaseCodebaseScannerTest {
 
         // Then
         assertThat(maskTransformer(returnValue)).isEqualTo(maskTransformer(Output.empty(CACHE_TTL)));
-        List<OpenApiSpec> returnOpenApiSpecs = getMutatedComponent(returnValue).getOpenApiSpecs();
-        assertThat(returnOpenApiSpecs).isEmpty();
+        assertNoState(returnValue);
     }
 
     private OpenApiScanner createOpenApiScanner(boolean scanCodebases) {
@@ -474,5 +471,15 @@ public class OpenApiScannerTest extends BaseCodebaseScannerTest {
     @SneakyThrows
     private ObjectNode getSpecAsJsonTree(OpenApiSpec openApiSpec) {
         return (ObjectNode) objectMapper.readTree(openApiSpec.getSpec());
+    }
+
+    private List<OpenApiSpec> getSpecs(Output<Void, Component> returnValue) {
+        OpenApiSpecsState state = getMutatedComponentIgnoringErrors(returnValue)
+                .getState(OpenApiSpecsState.TYPE);
+        return state.getOpenApiSpecs();
+    }
+
+    private void assertNoState(Output<Void, Component> returnValue) {
+        assertThat(getMutatedComponent(returnValue).getStates()).isEmpty();
     }
 }

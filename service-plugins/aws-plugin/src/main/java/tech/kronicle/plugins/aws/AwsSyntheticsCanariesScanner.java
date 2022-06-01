@@ -36,7 +36,7 @@ public class AwsSyntheticsCanariesScanner extends ComponentScanner {
         List<CheckState> checks = service.getCanaryLastRunsForComponent(input);
 
         if (checks.isEmpty()) {
-            return Output.ofTransformer(null, CACHE_TTL);
+            return Output.empty(CACHE_TTL);
         }
 
         return Output.ofTransformer(

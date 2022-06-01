@@ -9,15 +9,13 @@ import tech.kronicle.gradlestaticanalyzer.GradleStaticAnalyzer;
 import tech.kronicle.pluginapi.scanners.CodebaseScanner;
 import tech.kronicle.pluginapi.scanners.models.Codebase;
 import tech.kronicle.pluginapi.scanners.models.Output;
-import tech.kronicle.sdk.models.Component;
-import tech.kronicle.sdk.models.ScannerError;
-import tech.kronicle.sdk.models.Software;
-import tech.kronicle.sdk.models.SoftwareRepository;
-import tech.kronicle.sdk.models.gradle.Gradle;
+import tech.kronicle.sdk.models.*;
+import tech.kronicle.sdk.models.gradle.GradleState;
 import tech.kronicle.utils.ThrowableToScannerErrorMapper;
 
 import javax.inject.Inject;
 import java.time.Duration;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -68,10 +66,25 @@ public class GradleScanner extends CodebaseScanner {
             );
         }
 
+        List<ComponentState> states = new ArrayList<>();
+        states.add(new GradleState(GradlePlugin.ID, gradleAnalysis.getGradleIsUsed()));
+
+        if (!gradleAnalysis.getSoftwareRepositories().isEmpty()) {
+            states.add(new SoftwareRepositoriesState(
+                    GradlePlugin.ID,
+                    setScannerIdOnSoftwareRepositories(gradleAnalysis.getSoftwareRepositories())
+            ));
+        }
+
+        if (!gradleAnalysis.getSoftware().isEmpty()) {
+            states.add(new SoftwaresState(
+                    GradlePlugin.ID,
+                    setScannerIdOnSoftware(gradleAnalysis.getSoftware())
+            ));
+        }
+
         return Output.ofTransformer(
-                component -> component.withGradle(new Gradle(gradleAnalysis.getGradleIsUsed()))
-                        .addSoftwareRepositories(setScannerIdOnSoftwareRepositories(gradleAnalysis.getSoftwareRepositories()))
-                        .addSoftware(setScannerIdOnSoftware(gradleAnalysis.getSoftware())),
+                component -> component.addStates(states),
                 CACHE_TTL
         );
     }

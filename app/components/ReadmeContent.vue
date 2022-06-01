@@ -11,7 +11,7 @@
 
 <script lang="ts">
 import Vue, { PropType } from 'vue'
-import { Readme } from '~/types/kronicle-service'
+import { ReadmeState } from '~/types/kronicle-service'
 import Markdown from '~/components/Markdown.vue'
 
 export default Vue.extend({
@@ -20,7 +20,7 @@ export default Vue.extend({
   },
   props: {
     readme: {
-      type: Object as PropType<Readme>,
+      type: Object as PropType<ReadmeState>,
       default: undefined,
     },
   },

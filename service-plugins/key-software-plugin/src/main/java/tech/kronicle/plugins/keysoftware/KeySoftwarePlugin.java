@@ -9,6 +9,8 @@ import java.util.List;
 
 public class KeySoftwarePlugin extends KronicleGuicePlugin {
 
+    public static final String ID = "key-software";
+
     public KeySoftwarePlugin(PluginWrapper wrapper) {
         super(wrapper);
     }

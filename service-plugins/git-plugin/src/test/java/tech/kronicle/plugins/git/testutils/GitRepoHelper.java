@@ -56,10 +56,10 @@ public class GitRepoHelper {
         RevCommit commit;
         try (Git git = Git.open(repoDir.toFile())) {
             git.add().addFilepattern(randomTextFile.getFileName().toString()).call();
-            beforeCommit = nowWithoutSubSeconds();
             PersonIdent committer = options.contains(RepoOperationOption.DIFFERENT_COMMITTER)
                     ? createPerson2()
                     : createPerson1(options.contains(RepoOperationOption.DIFFERENT_COMMITTER_NAME));
+            beforeCommit = nowWithoutSubSeconds();
             commit = git
                     .commit()
                     .setMessage("Add random text file")

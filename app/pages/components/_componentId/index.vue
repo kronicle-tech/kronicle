@@ -37,8 +37,8 @@
         <ComponentTeams :component-teams="component.teams" />
       </b-card>
 
-      <b-card v-if="component.keySoftware" title="Key Software">
-        <KeySoftwareBadges :key-software="component.keySoftware" />
+      <b-card v-if="keySoftwares" title="Key Software">
+        <KeySoftwareBadges :key-software="keySoftwares" />
       </b-card>
 
       <b-card v-if="component.description" title="Description">
@@ -70,7 +70,7 @@
 import Vue from 'vue'
 import { MetaInfo } from 'vue-meta'
 import {BCard, BCardGroup, BCardText} from 'bootstrap-vue'
-import { Component } from '~/types/kronicle-service'
+import {Component, KeySoftware, KeySoftwaresState} from '~/types/kronicle-service'
 import ComponentTabs from '~/components/ComponentTabs.vue'
 import KeySoftwareBadges from "~/components/KeySoftwareBadges.vue";
 import Links from '~/components/Links.vue'
@@ -78,6 +78,7 @@ import Markdown from '~/components/Markdown.vue'
 import ComponentTeams from '~/components/ComponentTeams.vue'
 import Responsibilities from '~/components/Responsibilities.vue'
 import {fetchComponentStateTypes} from "~/src/fetchComponentStateTypes";
+import {findComponentState} from "~/src/componentStateUtils";
 
 export default Vue.extend({
   components: {
@@ -95,7 +96,7 @@ export default Vue.extend({
     const stateTypes = await fetchComponentStateTypes($config, route)
 
     const component = await fetch(
-      `${$config.serviceBaseUrl}/v1/components/${route.params.componentId}?fields=component(id,name,typeId,platformId,tags,teams,links,description,notes,responsibilities,keySoftware)`
+      `${$config.serviceBaseUrl}/v1/components/${route.params.componentId}?stateType=key-softwares&fields=component(id,name,typeId,platformId,tags,teams,links,description,notes,responsibilities,states)`
     )
       .then((res) => res.json())
       .then((json) => json.component)
@@ -109,6 +110,12 @@ export default Vue.extend({
     return {
       stateTypes: [] as string[],
       component: {} as Component,
+    }
+  },
+  computed: {
+    keySoftwares(): KeySoftware[] {
+      const keySoftwares: KeySoftwaresState | undefined = findComponentState(this.component, 'key-softwares')
+      return keySoftwares?.keySoftwares ?? []
     }
   },
   head(): MetaInfo {

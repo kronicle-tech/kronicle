@@ -10,6 +10,8 @@ import java.util.List;
 
 public class GraphQlPlugin extends KronicleGuicePlugin {
 
+    public static final String ID = "graphql";
+
     public GraphQlPlugin(PluginWrapper wrapper) {
         super(wrapper);
     }

@@ -5,10 +5,6 @@ import lombok.Builder;
 import lombok.Value;
 import lombok.With;
 
-/***
- * Code using this class should migrate to using the tracing data available on Summary.
- */
-@Deprecated
 @Value
 @AllArgsConstructor
 @With

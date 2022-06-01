@@ -7,8 +7,6 @@ import lombok.SneakyThrows;
 import org.junit.jupiter.api.Test;
 import tech.kronicle.sdk.models.graphql.GraphQlSchema;
 import tech.kronicle.sdk.models.openapi.OpenApiSpec;
-import tech.kronicle.sdk.models.sonarqube.SonarQubeProject;
-import tech.kronicle.sdk.models.todos.ToDo;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,10 +14,6 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.catchThrowable;
 import static tech.kronicle.sdk.models.testutils.ComponentStateUtils.createComponentState;
-import static tech.kronicle.sdk.models.testutils.ImportUtils.createImport;
-import static tech.kronicle.sdk.models.testutils.SoftwareRepositoryUtils.createSoftwareRepository;
-import static tech.kronicle.sdk.models.testutils.SoftwareUtils.createSoftware;
-import static tech.kronicle.sdk.utils.ListUtils.unmodifiableUnionOfLists;
 
 public class ComponentTest {
 
@@ -124,6 +118,34 @@ public class ComponentTest {
     }
 
     @Test
+    public void constructorShouldMakeOpenApiSpecsAnUnmodifiableList() {
+        // Given
+        Component underTest = Component.builder().openApiSpecs(new ArrayList<>()).build();
+
+        // When
+        Throwable thrown = catchThrowable(() -> underTest.getOpenApiSpecs().add(
+                OpenApiSpec.builder().build()
+        ));
+
+        // Then
+        assertThat(thrown).isInstanceOf(UnsupportedOperationException.class);
+    }
+
+    @Test
+    public void constructorShouldMakeGraphQlSchemasAnUnmodifiableList() {
+        // Given
+        Component underTest = Component.builder().graphQlSchemas(new ArrayList<>()).build();
+
+        // When
+        Throwable thrown = catchThrowable(() -> underTest.getGraphQlSchemas().add(
+                GraphQlSchema.builder().build()
+        ));
+
+        // Then
+        assertThat(thrown).isInstanceOf(UnsupportedOperationException.class);
+    }
+
+    @Test
     public void constructorShouldMakeStatesAnUnmodifiableList() {
         // Given
         Component underTest = Component.builder().states(new ArrayList<>()).build();
@@ -142,102 +164,6 @@ public class ComponentTest {
 
         // When
         Throwable thrown = catchThrowable(() -> underTest.getDependencies().add(ComponentDependency.builder().build()));
-
-        // Then
-        assertThat(thrown).isInstanceOf(UnsupportedOperationException.class);
-    }
-
-    @Test
-    public void constructorShouldMakeSoftwareRepositoriesAnUnmodifiableList() {
-        // Given
-        Component underTest = Component.builder().softwareRepositories(new ArrayList<>()).build();
-
-        // When
-        Throwable thrown = catchThrowable(() -> underTest.getSoftwareRepositories().add(SoftwareRepository.builder().build()));
-
-        // Then
-        assertThat(thrown).isInstanceOf(UnsupportedOperationException.class);
-    }
-
-    @Test
-    public void constructorShouldMakeSoftwareAnUnmodifiableList() {
-        // Given
-        Component underTest = Component.builder().software(new ArrayList<>()).build();
-
-        // When
-        Throwable thrown = catchThrowable(() -> underTest.getSoftware().add(Software.builder().build()));
-
-        // Then
-        assertThat(thrown).isInstanceOf(UnsupportedOperationException.class);
-    }
-
-    @Test
-    public void constructorShouldMakeImportsAnUnmodifiableList() {
-        // Given
-        Component underTest = Component.builder().imports(new ArrayList<>()).build();
-
-        // When
-        Throwable thrown = catchThrowable(() -> underTest.getImports().add(Import.builder().build()));
-
-        // Then
-        assertThat(thrown).isInstanceOf(UnsupportedOperationException.class);
-    }
-
-    @Test
-    public void constructorShouldMakeKeySoftwareAnUnmodifiableList() {
-        // Given
-        Component underTest = Component.builder().keySoftware(new ArrayList<>()).build();
-
-        // When
-        Throwable thrown = catchThrowable(() -> underTest.getKeySoftware().add(KeySoftware.builder().build()));
-
-        // Then
-        assertThat(thrown).isInstanceOf(UnsupportedOperationException.class);
-    }
-
-    @Test
-    public void constructorShouldMakeToDosAnUnmodifiableList() {
-        // Given
-        Component underTest = Component.builder().toDos(new ArrayList<>()).build();
-
-        // When
-        Throwable thrown = catchThrowable(() -> underTest.getToDos().add(ToDo.builder().build()));
-
-        // Then
-        assertThat(thrown).isInstanceOf(UnsupportedOperationException.class);
-    }
-
-    @Test
-    public void constructorShouldMakeOpenApiSpecsAnUnmodifiableList() {
-        // Given
-        Component underTest = Component.builder().openApiSpecs(new ArrayList<>()).build();
-
-        // When
-        Throwable thrown = catchThrowable(() -> underTest.getOpenApiSpecs().add(OpenApiSpec.builder().build()));
-
-        // Then
-        assertThat(thrown).isInstanceOf(UnsupportedOperationException.class);
-    }
-
-    @Test
-    public void constructorShouldMakeGraphQlSchemasAnUnmodifiableList() {
-        // Given
-        Component underTest = Component.builder().graphQlSchemas(new ArrayList<>()).build();
-
-        // When
-        Throwable thrown = catchThrowable(() -> underTest.getGraphQlSchemas().add(GraphQlSchema.builder().build()));
-
-        // Then
-        assertThat(thrown).isInstanceOf(UnsupportedOperationException.class);
-    }
-
-    @Test
-    public void constructorShouldMakeSonarQubeProjectsAnUnmodifiableList() {
-        // Given
-        Component underTest = Component.builder().sonarQubeProjects(new ArrayList<>()).build();
-
-        // When
-        Throwable thrown = catchThrowable(() -> underTest.getSonarQubeProjects().add(SonarQubeProject.builder().build()));
 
         // Then
         assertThat(thrown).isInstanceOf(UnsupportedOperationException.class);
@@ -398,122 +324,65 @@ public class ComponentTest {
     }
 
     @Test
-    public void addImportsWhenThereAreNoExistingImportsShouldAddImportsToExistingImports() {
+    public void getStatesShouldReturnAnEmptyListWhenThereAreNoStates() {
         // Given
-        List<Import> newImports = List.of(
-                createImport(1),
-                createImport(2)
-        );
-        Component underTest = Component.builder().build();
-
-        // When
-        underTest = underTest.addImports(newImports);
-
-        // When
-        assertThat(underTest.getImports()).containsExactlyElementsOf(newImports);
-    }
-
-    @Test
-    public void addImportsWhenThereAreExistingImportsShouldAddImportsToExistingImports() {
-        // Given
-        List<Import> existingImports = List.of(
-                createImport(3),
-                createImport(4)
-        );
-        List<Import> newImports = List.of(
-                createImport(1),
-                createImport(2)
-        );
         Component underTest = Component.builder()
-                .imports(existingImports)
+                .id("test-component-id")
                 .build();
 
         // When
-        underTest = underTest.addImports(newImports);
+        List<ComponentState> returnValue = underTest.getStates("test-state-type");
 
-        // When
-        assertThat(underTest.getImports()).containsExactlyElementsOf(
-                unmodifiableUnionOfLists(List.of(existingImports, newImports))
-        );
+        // Then
+        assertThat(returnValue).isEmpty();
     }
 
     @Test
-    public void addSoftwareRepositoriesWhenThereAreNoExistingSoftwareRepositoriesShouldAddSoftwareRepositoriesToExistingSoftwareRepositories() {
+    public void getStatesShouldReturnAnEmptyListWhenThereAreNoMatchingStates() {
         // Given
-        List<SoftwareRepository> newSoftwareRepositories = List.of(
-                createSoftwareRepository(1),
-                createSoftwareRepository(2)
-        );
-        Component underTest = Component.builder().build();
-
-        // When
-        underTest = underTest.addSoftwareRepositories(newSoftwareRepositories);
-
-        // When
-        assertThat(underTest.getSoftwareRepositories()).containsExactlyElementsOf(newSoftwareRepositories);
-    }
-
-    @Test
-    public void addSoftwareRepositoriesWhenThereAreExistingSoftwareRepositoriesShouldAddSoftwareRepositoriesToExistingSoftwareRepositories() {
-        // Given
-        List<SoftwareRepository> existingSoftwareRepositories = List.of(
-                createSoftwareRepository(3),
-                createSoftwareRepository(4)
-        );
-        List<SoftwareRepository> newSoftwareRepositories = List.of(
-                createSoftwareRepository(1),
-                createSoftwareRepository(2)
-        );
         Component underTest = Component.builder()
-                .softwareRepositories(existingSoftwareRepositories)
+                .id("test-component-id")
+                .states(List.of(
+                        createComponentState(1),
+                        createComponentState(2)
+                ))
                 .build();
 
         // When
-        underTest = underTest.addSoftwareRepositories(newSoftwareRepositories);
+        List<ComponentState> returnValue = underTest.getStates("test-state-type");
 
-        // When
-        assertThat(underTest.getSoftwareRepositories()).containsExactlyElementsOf(
-                unmodifiableUnionOfLists(List.of(existingSoftwareRepositories, newSoftwareRepositories))
-        );
+        // Then
+        assertThat(returnValue).isEmpty();
     }
 
     @Test
-    public void addSoftwareWhenThereAreNoExistingSoftwareShouldAddSoftwareToExistingSoftware() {
+    public void getStatesShouldStatesWithMatchingTypesWhenThereAreMatchingStates() {
         // Given
-        List<Software> newSoftware = List.of(
-                createSoftware(1),
-                createSoftware(2)
-        );
-        Component underTest = Component.builder().build();
-
-        // When
-        underTest = underTest.addSoftware(newSoftware);
-
-        // When
-        assertThat(underTest.getSoftware()).containsExactlyElementsOf(newSoftware);
-    }
-
-    @Test
-    public void addSoftwareWhenThereAreExistingSoftwareShouldAddSoftwareToExistingSoftware() {
-        // Given
-        List<Software> existingSoftware = List.of(
-                createSoftware(3),
-                createSoftware(4)
-        );
-        List<Software> newSoftware = List.of(
-                createSoftware(1),
-                createSoftware(2)
-        );
+        ComponentState state1 = createComponentState(1, "test-state-type-1");
+        ComponentState state2 = createComponentState(2, "test-state-type-1");
+        ComponentState state3 = createComponentState(3, "test-state-type-2");
+        ComponentState state4 = createComponentState(4, "test-state-type-2");
+        ComponentState state5 = createComponentState(5, "test-state-type-3");
+        ComponentState state6 = createComponentState(6, "test-state-type-3");
         Component underTest = Component.builder()
-                .software(existingSoftware)
+                .id("test-component-id")
+                .states(List.of(
+                        state1,
+                        state2,
+                        state3,
+                        state4,
+                        state5,
+                        state6
+                ))
                 .build();
 
         // When
-        underTest = underTest.addSoftware(newSoftware);
+        List<ComponentState> returnValue = underTest.getStates("test-state-type-2");
 
-        // When
-        assertThat(underTest.getSoftware()).containsExactlyElementsOf(
-                unmodifiableUnionOfLists(List.of(existingSoftware, newSoftware))
+        // Then
+        assertThat(returnValue).containsExactly(
+                state3,
+                state4
         );
     }
 }

@@ -3,12 +3,15 @@ package tech.kronicle.service.tests.sonarqube;
 import lombok.RequiredArgsConstructor;
 import lombok.Value;
 import tech.kronicle.sdk.models.Component;
+import tech.kronicle.sdk.models.SonarQubeProjectsState;
 import tech.kronicle.sdk.models.TestResult;
 import tech.kronicle.sdk.models.sonarqube.SonarQubeProject;
 import tech.kronicle.service.tests.ComponentTest;
 import tech.kronicle.service.tests.models.TestContext;
 
+import javax.validation.Valid;
 import java.util.List;
+import java.util.Optional;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
@@ -23,18 +26,23 @@ public abstract class BaseSonarQubeTest extends ComponentTest {
 
     @Override
     public final TestResult test(Component input, TestContext testContext) {
-        if (ignoreNoProjects() && hasNoProjects(input)) {
+        List<SonarQubeProject> sonarQubeProjects = getSonarQubeProjects(input);
+
+        if (ignoreNoProjects() && sonarQubeProjects.isEmpty()) {
             return createNotApplicableTestResult("Component does not have a SonarQube project");
         }
 
-        return doTest(input, testContext);
+        return doTest(input, sonarQubeProjects, testContext);
     }
 
-    private boolean hasNoProjects(Component input) {
-        return isNull(input.getSonarQubeProjects()) || input.getSonarQubeProjects().isEmpty();
+    private List<SonarQubeProject> getSonarQubeProjects(Component input) {
+        SonarQubeProjectsState state = input.getState(SonarQubeProjectsState.TYPE);
+        return Optional.ofNullable(state)
+                .map(SonarQubeProjectsState::getSonarQubeProjects)
+                .orElse(List.of());
     }
 
-    protected abstract TestResult doTest(Component input, TestContext testContext);
+    protected abstract TestResult doTest(Component input, List<SonarQubeProject> sonarQubeProjects, TestContext testContext);
 
     protected <T> String createMessage(String start, List<ProjectOutcome<T>> projectOutcomes, Function<ProjectOutcome<T>, String> projectMessageSupplier) {
         return start

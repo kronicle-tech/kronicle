@@ -3,6 +3,7 @@ package tech.kronicle.service.tests.componentdependencies;
 import tech.kronicle.sdk.models.Component;
 import tech.kronicle.sdk.models.Priority;
 import tech.kronicle.sdk.models.TestResult;
+import tech.kronicle.sdk.models.zipkin.ZipkinState;
 import tech.kronicle.service.constants.CommonComponentTypeIds;
 import tech.kronicle.service.tests.ComponentTest;
 import tech.kronicle.service.tests.models.TestContext;
@@ -31,15 +32,17 @@ public class BackendForFrontendDependencyTest extends ComponentTest {
             return createNotApplicableTestResult("Component is not a [backend for frontend (BFF)](https://samnewman.io/patterns/architectural/bff/)");
         }
 
-        if (isNull(input.getZipkin())) {
+        ZipkinState zipkin = input.getState(ZipkinState.TYPE);
+
+        if (isNull(zipkin)) {
             return createNotApplicableTestResult("Component does not use Zipkin for distributed tracing");
         }
 
-        if (isNull(input.getZipkin().getUpstream())) {
+        if (zipkin.getUpstream().isEmpty()) {
             return createNotApplicableTestResult("Component has no upstream dependencies recorded in Zipkin");
         }
 
-        int count = countUpstreamServiceDependencies(input, testContext);
+        int count = countUpstreamServiceDependencies(zipkin, testContext);
 
         if (count > 0) {
             return createFailTestResult(
@@ -52,8 +55,8 @@ public class BackendForFrontendDependencyTest extends ComponentTest {
         }
     }
 
-    private int countUpstreamServiceDependencies(Component input, TestContext testContext) {
-        return (int) input.getZipkin().getUpstream().stream()
+    private int countUpstreamServiceDependencies(ZipkinState zipkin, TestContext testContext) {
+        return (int) zipkin.getUpstream().stream()
                 .filter(dependency -> Objects.equals(getComponentTypeIdForComponentId(dependency.getParent(), testContext), CommonComponentTypeIds.SERVICE))
                 .count();
     }

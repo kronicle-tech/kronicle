@@ -1,18 +1,17 @@
 package tech.kronicle.service.tests.componentdependencies;
 
 import org.junit.jupiter.api.Test;
-import tech.kronicle.sdk.models.Component;
-import tech.kronicle.sdk.models.Priority;
-import tech.kronicle.sdk.models.TestOutcome;
-import tech.kronicle.sdk.models.TestResult;
-import tech.kronicle.sdk.models.zipkin.Zipkin;
+import tech.kronicle.sdk.models.*;
+import tech.kronicle.sdk.models.zipkin.ZipkinState;
 import tech.kronicle.sdk.models.zipkin.ZipkinDependency;
 import tech.kronicle.service.constants.CommonComponentTypeIds;
 import tech.kronicle.service.tests.models.TestContext;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.Map;
 
+import static java.util.Objects.nonNull;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class BackendForFrontendDependencyTestTest {
@@ -62,9 +61,7 @@ public class BackendForFrontendDependencyTestTest {
     @Test
     public void testShouldReturnNotApplicableWhenComponentIsNotIntegratedWithZipkin() {
         // Given
-        Component component = Component.builder()
-                .typeId(CommonComponentTypeIds.BACKEND_FOR_FRONTEND)
-                .build();
+        Component component = createComponent(null);
         TestContext testContext = TestContext.builder().build();
 
         // When
@@ -82,10 +79,7 @@ public class BackendForFrontendDependencyTestTest {
     @Test
     public void testShouldReturnNotApplicableWhenComponentHasNoUpstreamDependenciesInZipkin() {
         // Given
-        Component component = Component.builder()
-                .typeId(CommonComponentTypeIds.BACKEND_FOR_FRONTEND)
-                .zipkin(Zipkin.builder().build())
-                .build();
+        Component component = createComponent(ZipkinState.builder().build());
         TestContext testContext = TestContext.builder().build();
 
         // When
@@ -103,15 +97,14 @@ public class BackendForFrontendDependencyTestTest {
     @Test
     public void testShouldReturnPassWhenComponentHasAnUpstreamDependencyInZipkinAndItIsANotService() {
         // Given
-        Component component = Component.builder()
-                .typeId(CommonComponentTypeIds.BACKEND_FOR_FRONTEND)
-                .zipkin(Zipkin.builder()
+        Component component = createComponent(
+                ZipkinState.builder()
                         .upstream(List.of(
                                 ZipkinDependency.builder()
                                         .parent("test-component-id-1")
                                         .build()))
-                        .build())
-                .build();
+                        .build()
+        );
         TestContext testContext = TestContext.builder()
                 .componentMap(Map.ofEntries(
                         Map.entry("test-component-id-1", Component.builder().typeId(NOT_A_SERVICE).build())))
@@ -131,15 +124,14 @@ public class BackendForFrontendDependencyTestTest {
     @Test
     public void testShouldReturnFailWhenComponentHasAnUpstreamDependencyInZipkinAndItIsAService() {
         // Given
-        Component component = Component.builder()
-                .typeId(CommonComponentTypeIds.BACKEND_FOR_FRONTEND)
-                .zipkin(Zipkin.builder()
+        Component component = createComponent(
+                ZipkinState.builder()
                         .upstream(List.of(
                                 ZipkinDependency.builder()
                                         .parent("test-component-id-1")
                                         .build()))
-                        .build())
-                .build();
+                        .build()
+        );
         TestContext testContext = TestContext.builder()
                 .componentMap(Map.ofEntries(
                         Map.entry("test-component-id-1", Component.builder().typeId(CommonComponentTypeIds.SERVICE).build())))
@@ -161,9 +153,8 @@ public class BackendForFrontendDependencyTestTest {
     @Test
     public void testShouldReturnFailWhenComponentHasTwoUpstreamDependenciesInZipkinAndTheirComponentTypesAreBothService() {
         // Given
-        Component component = Component.builder()
-                .typeId(CommonComponentTypeIds.BACKEND_FOR_FRONTEND)
-                .zipkin(Zipkin.builder()
+        Component component = createComponent(
+                ZipkinState.builder()
                         .upstream(List.of(
                                 ZipkinDependency.builder()
                                         .parent("test-component-id-1")
@@ -171,8 +162,8 @@ public class BackendForFrontendDependencyTestTest {
                                 ZipkinDependency.builder()
                                         .parent("test-component-id-2")
                                         .build()))
-                        .build())
-                .build();
+                        .build()
+        );
         TestContext testContext = TestContext.builder()
                 .componentMap(Map.ofEntries(
                         Map.entry("test-component-id-1", Component.builder().typeId(CommonComponentTypeIds.SERVICE).build()),
@@ -195,9 +186,8 @@ public class BackendForFrontendDependencyTestTest {
     @Test
     public void testShouldReturnFailWhenComponentHasTwoUpstreamDependenciesInZipkinAndOneIsNotAServiceAndOneIsAService() {
         // Given
-        Component component = Component.builder()
-                .typeId(CommonComponentTypeIds.BACKEND_FOR_FRONTEND)
-                .zipkin(Zipkin.builder()
+        Component component = createComponent(
+                ZipkinState.builder()
                         .upstream(List.of(
                                 ZipkinDependency.builder()
                                         .parent("test-component-id-1")
@@ -205,8 +195,8 @@ public class BackendForFrontendDependencyTestTest {
                                 ZipkinDependency.builder()
                                         .parent("test-component-id-2")
                                         .build()))
-                        .build())
-                .build();
+                        .build()
+        );
         TestContext testContext = TestContext.builder()
                 .componentMap(Map.ofEntries(
                         Map.entry("test-component-id-1", Component.builder().typeId(NOT_A_SERVICE).build()),
@@ -224,5 +214,16 @@ public class BackendForFrontendDependencyTestTest {
                 .message("Component is a [backend for frontend (BFF)](https://samnewman.io/patterns/architectural/bff/) and is called by 1 service.  "
                         + "It is not good for a BFF to be called by services.  ")
                 .build());
+    }
+
+    private Component createComponent(ZipkinState zipkinState) {
+        return Component.builder()
+                .typeId(CommonComponentTypeIds.BACKEND_FOR_FRONTEND)
+                .states(createStates(zipkinState))
+                .build();
+    }
+
+    private List<@Valid ComponentState> createStates(ZipkinState zipkinState) {
+        return nonNull(zipkinState) ? List.of(zipkinState) : List.of();
     }
 }

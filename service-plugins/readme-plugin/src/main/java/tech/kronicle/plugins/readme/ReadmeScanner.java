@@ -8,7 +8,7 @@ import tech.kronicle.pluginapi.scanners.models.Output;
 import tech.kronicle.plugins.readme.services.ReadmeFileNameChecker;
 import tech.kronicle.sdk.models.Component;
 import tech.kronicle.utils.FileUtils;
-import tech.kronicle.sdk.models.readme.Readme;
+import tech.kronicle.sdk.models.readme.ReadmeState;
 
 import javax.inject.Inject;
 import java.nio.file.Path;
@@ -42,15 +42,23 @@ public class ReadmeScanner extends CodebaseScanner {
     @Override
     public Output<Void, Component> scan(Codebase input) {
         Optional<Path> optionalReadmeFile = fileUtils.findFiles(input.getDir(), SEARCH_ONLY_ROOT_DIRECTORY, this::pathIsReadme)
-                .sorted(PATH_FILE_NAME_COMPARATOR)
-                .findFirst();
+                .min(PATH_FILE_NAME_COMPARATOR);
 
-        Readme readme = optionalReadmeFile
-                .map(readmeFile -> new Readme(readmeFile.getFileName().toString(), fileUtils.readFileContent(readmeFile)))
-                .orElse(null);
+        if (optionalReadmeFile.isEmpty()) {
+            return Output.empty(CACHE_TTL);
+        }
+
         return Output.ofTransformer(
-                component -> component.withReadme(readme),
+                component -> component.addState(createReadmeState(optionalReadmeFile.get())),
                 CACHE_TTL
+        );
+    }
+
+    private ReadmeState createReadmeState(Path readmeFile) {
+        return new ReadmeState(
+                ReadmePlugin.ID,
+                readmeFile.getFileName().toString(),
+                fileUtils.readFileContent(readmeFile)
         );
     }
 

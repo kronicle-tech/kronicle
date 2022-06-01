@@ -9,6 +9,7 @@ import tech.kronicle.pluginapi.scanners.models.Output;
 import tech.kronicle.plugins.graphql.models.SchemaAndErrors;
 import tech.kronicle.plugins.graphql.services.SchemaFetcher;
 import tech.kronicle.sdk.models.Component;
+import tech.kronicle.sdk.models.GraphQlSchemasState;
 import tech.kronicle.sdk.models.ScannerError;
 import tech.kronicle.sdk.models.graphql.GraphQlSchema;
 
@@ -16,6 +17,7 @@ import javax.inject.Inject;
 import java.time.Duration;
 import java.util.Collection;
 import java.util.List;
+import java.util.function.UnaryOperator;
 
 import static java.util.stream.Collectors.toUnmodifiableList;
 
@@ -41,10 +43,26 @@ public class GraphQlScanner extends ComponentAndCodebaseScanner {
     @Override
     public Output<Void, Component> scan(ComponentAndCodebase input) {
         List<SchemaAndErrors> schemaAndErrors = fetcher.fetchSchemas(id(), input.getCodebase().getDir(), input.getComponent().getGraphQlSchemas());
+        List<GraphQlSchema> schemas = getSchemas(schemaAndErrors);
+        UnaryOperator<Component> transformer;
+
+        if (schemas.isEmpty()) {
+            transformer = null;
+        } else {
+            transformer = (Component component) -> component.addState(getSchemasState(schemas));
+        }
+
         return Output.builder(CACHE_TTL)
-                .transformer((Component component) -> component.withGraphQlSchemas(getSchemas(schemaAndErrors)))
+                .transformer(transformer)
                 .errors(getErrors(schemaAndErrors))
                 .build();
+    }
+
+    private GraphQlSchemasState getSchemasState(List<GraphQlSchema> schemas) {
+        return new GraphQlSchemasState(
+                GraphQlPlugin.ID,
+                schemas
+        );
     }
 
     private List<GraphQlSchema> getSchemas(List<SchemaAndErrors> schemaAndErrors) {
