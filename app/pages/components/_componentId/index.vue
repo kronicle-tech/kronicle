@@ -70,7 +70,7 @@
 import Vue from 'vue'
 import { MetaInfo } from 'vue-meta'
 import {BCard, BCardGroup, BCardText} from 'bootstrap-vue'
-import {Component, KeySoftware, KeySoftwaresState, SoftwareRepositoriesState} from '~/types/kronicle-service'
+import {Component, KeySoftware, KeySoftwaresState} from '~/types/kronicle-service'
 import ComponentTabs from '~/components/ComponentTabs.vue'
 import KeySoftwareBadges from "~/components/KeySoftwareBadges.vue";
 import Links from '~/components/Links.vue'

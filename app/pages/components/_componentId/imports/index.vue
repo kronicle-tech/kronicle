@@ -46,7 +46,7 @@
 import Vue from 'vue'
 import { MetaInfo } from 'vue-meta'
 import {BCard, BListGroup, BListGroupItem} from 'bootstrap-vue'
-import {Component, GraphQlSchemasState, Import, ImportsState} from '~/types/kronicle-service'
+import {Component, Import, ImportsState} from '~/types/kronicle-service'
 import ComponentTabs from '~/components/ComponentTabs.vue'
 import FormattedNumber from '~/components/FormattedNumber.vue'
 import {fetchComponentStateTypes} from "~/src/fetchComponentStateTypes";
