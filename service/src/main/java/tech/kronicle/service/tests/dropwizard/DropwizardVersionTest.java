@@ -4,11 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.gradle.api.internal.artifacts.ivyservice.ivyresolve.strategy.DefaultVersionComparator;
 import org.gradle.api.internal.artifacts.ivyservice.ivyresolve.strategy.Version;
 import org.gradle.api.internal.artifacts.ivyservice.ivyresolve.strategy.VersionParser;
-import tech.kronicle.sdk.models.Component;
-import tech.kronicle.sdk.models.KeySoftware;
-import tech.kronicle.sdk.models.Priority;
-import tech.kronicle.sdk.models.TestOutcome;
-import tech.kronicle.sdk.models.TestResult;
+import tech.kronicle.sdk.models.*;
 import tech.kronicle.service.tests.ComponentTest;
 import tech.kronicle.service.tests.models.TestContext;
 
@@ -18,6 +14,8 @@ import java.util.Objects;
 import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+
+import static java.util.Objects.isNull;
 
 @org.springframework.stereotype.Component
 @RequiredArgsConstructor
@@ -40,9 +38,13 @@ public class DropwizardVersionTest extends ComponentTest {
 
     @Override
     public TestResult test(Component input, TestContext testContext) {
-        List<KeySoftware> keySoftware = input.getKeySoftware();
+        KeySoftwaresState keySoftwares = input.getState(KeySoftwaresState.TYPE);
 
-        Optional<KeySoftware> optionalDropwizard = keySoftware.stream()
+        if (isNull(keySoftwares)) {
+            return createNotApplicableTestResult();
+        }
+
+        Optional<KeySoftware> optionalDropwizard = keySoftwares.getKeySoftwares().stream()
                 .filter(item -> Objects.equals(item.getName(), DROPWIZARD_NAME))
                 .findFirst();
 

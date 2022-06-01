@@ -15,17 +15,16 @@ import tech.kronicle.plugins.graphql.services.SchemaFileReader;
 import tech.kronicle.plugins.graphql.services.SchemaTransformer;
 import tech.kronicle.plugintestutils.scanners.BaseCodebaseScannerTest;
 import tech.kronicle.sdk.models.Component;
+import tech.kronicle.sdk.models.GraphQlSpecsState;
 import tech.kronicle.sdk.models.graphql.GraphQlSchema;
 import tech.kronicle.utils.ThrowableToScannerErrorMapper;
 
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 import java.time.Duration;
-import java.util.ArrayList;
 import java.util.List;
 
-import static com.github.tomakehurst.wiremock.client.WireMock.aResponse;
-import static com.github.tomakehurst.wiremock.client.WireMock.equalTo;
-import static com.github.tomakehurst.wiremock.client.WireMock.post;
-import static com.github.tomakehurst.wiremock.client.WireMock.urlPathEqualTo;
+import static com.github.tomakehurst.wiremock.client.WireMock.*;
 import static com.github.tomakehurst.wiremock.core.WireMockConfiguration.options;
 import static java.util.Objects.nonNull;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -199,7 +198,7 @@ public class GraphQlScannerTest extends BaseCodebaseScannerTest {
 
         // Then
         assertThat(maskTransformer(returnValue)).isEqualTo(maskTransformer(Output.empty(CACHE_TTL)));
-        List<GraphQlSchema> returnGraphQlSchemas = new ArrayList<>(getMutatedComponent(returnValue).getGraphQlSchemas());
+        List<GraphQlSchema> returnGraphQlSchemas = getSchemas(returnValue);
         assertThat(returnGraphQlSchemas).hasSize(1);
         assertThat(returnGraphQlSchemas.get(0).getSchema()).isEqualTo(FILE_SCHEMA);
         assertThat(returnGraphQlSchemas).containsExactly(graphQlSchema.withSchema(FILE_SCHEMA));
@@ -225,7 +224,7 @@ public class GraphQlScannerTest extends BaseCodebaseScannerTest {
 
         // Then
         assertThat(maskTransformer(returnValue)).isEqualTo(maskTransformer(Output.empty(CACHE_TTL)));
-        List<GraphQlSchema> returnGraphQlSchemas = getMutatedComponent(returnValue).getGraphQlSchemas();
+        List<GraphQlSchema> returnGraphQlSchemas = getSchemas(returnValue);
         assertThat(returnGraphQlSchemas).hasSize(1);
         assertThat(returnGraphQlSchemas.get(0).getSchema()).isEqualTo(URL_SCHEMA);
         assertThat(returnGraphQlSchemas).containsExactly(graphQlSchema.withSchema(URL_SCHEMA));
@@ -257,7 +256,7 @@ public class GraphQlScannerTest extends BaseCodebaseScannerTest {
 
         // Then
         assertThat(maskTransformer(returnValue)).isEqualTo(maskTransformer(Output.empty(CACHE_TTL)));
-        List<GraphQlSchema> returnGraphQlSchemas = getMutatedComponent(returnValue).getGraphQlSchemas();
+        List<GraphQlSchema> returnGraphQlSchemas = getSchemas(returnValue);
         assertThat(returnGraphQlSchemas).hasSize(2);
         assertThat(returnGraphQlSchemas.get(0).getSchema()).isEqualTo(FILE_SCHEMA);
         assertThat(returnGraphQlSchemas.get(1).getSchema()).isEqualTo(URL_SCHEMA);
@@ -295,5 +294,11 @@ public class GraphQlScannerTest extends BaseCodebaseScannerTest {
                         .withHeader("Content-Type", "application/graphql")
                         .withBody(URL_INTROSPECTION_RESULT)));
         wireMockServer.start();
+    }
+
+    private List<GraphQlSchema> getSchemas(Output<Void, Component> returnValue) {
+        GraphQlSpecsState state = getMutatedComponent(returnValue)
+                .getState(GraphQlSpecsState.TYPE);
+        return state.getGraphQlSchemas();
     }
 }

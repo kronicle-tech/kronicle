@@ -10,10 +10,8 @@ import tech.kronicle.gradlestaticanalyzer.GradleStaticAnalyzer;
 import tech.kronicle.pluginapi.scanners.models.Codebase;
 import tech.kronicle.pluginapi.scanners.models.Output;
 import tech.kronicle.plugintestutils.scanners.BaseCodebaseScannerTest;
-import tech.kronicle.sdk.models.Component;
-import tech.kronicle.sdk.models.RepoReference;
-import tech.kronicle.sdk.models.Software;
-import tech.kronicle.sdk.models.SoftwareRepository;
+import tech.kronicle.sdk.models.*;
+import tech.kronicle.sdk.models.gradle.GradleState;
 import tech.kronicle.utils.ThrowableToScannerErrorMapper;
 
 import java.nio.file.Path;
@@ -88,9 +86,9 @@ public class GradleScannerTest extends BaseCodebaseScannerTest {
         // Then
         assertThat(maskTransformer(returnValue)).isEqualTo(maskTransformer(Output.empty(CACHE_TTL)));
         Component component = getMutatedComponent(returnValue);
-        assertThat(component.getGradle().getUsed()).isTrue();
-        assertThat(component.getSoftwareRepositories()).isEmpty();
-        assertThat(component.getSoftware()).isEmpty();
+        assertThat(getGradle(component).getUsed()).isTrue();
+        assertThat(getSoftwareRepositories(component)).isEmpty();
+        assertThat(getSoftwares(component)).isEmpty();
     }
 
     @Test
@@ -111,9 +109,9 @@ public class GradleScannerTest extends BaseCodebaseScannerTest {
         // Then
         assertThat(maskTransformer(returnValue)).isEqualTo(maskTransformer(Output.empty(CACHE_TTL)));
         Component component = getMutatedComponent(returnValue);
-        assertThat(component.getGradle().getUsed()).isFalse();
-        assertThat(component.getSoftwareRepositories()).isEmpty();
-        assertThat(component.getSoftware()).isEmpty();
+        assertThat(getGradle(component).getUsed()).isFalse();
+        assertThat(getSoftwareRepositories(component)).isEmpty();
+        assertThat(getSoftwares(component)).isEmpty();
     }
 
     @Test
@@ -139,12 +137,12 @@ public class GradleScannerTest extends BaseCodebaseScannerTest {
         // Then
         assertThat(maskTransformer(returnValue)).isEqualTo(maskTransformer(Output.empty(CACHE_TTL)));
         Component component = getMutatedComponent(returnValue);
-        assertThat(component.getGradle().getUsed()).isTrue();
-        assertThat(component.getSoftwareRepositories()).containsExactly(
+        assertThat(getGradle(component).getUsed()).isTrue();
+        assertThat(getSoftwareRepositories(component)).containsExactly(
                 softwareRepository1.withScannerId(SCANNER_ID),
                 softwareRepository2.withScannerId(SCANNER_ID)
         );
-        assertThat(component.getSoftware()).isEmpty();
+        assertThat(getSoftwares(component)).isEmpty();
     }
 
     @Test
@@ -170,11 +168,29 @@ public class GradleScannerTest extends BaseCodebaseScannerTest {
         // Then
         assertThat(maskTransformer(returnValue)).isEqualTo(maskTransformer(Output.empty(CACHE_TTL)));
         Component component = getMutatedComponent(returnValue);
-        assertThat(component.getGradle().getUsed()).isTrue();
-        assertThat(component.getSoftwareRepositories()).isEmpty();
-        assertThat(component.getSoftware()).containsExactly(
+        assertThat(getGradle(component).getUsed()).isTrue();
+        assertThat(getSoftwareRepositories(component)).isEmpty();
+        assertThat(getSoftwares(component)).containsExactly(
                 software1.withScannerId(SCANNER_ID),
                 software2.withScannerId(SCANNER_ID)
         );
+    }
+
+    private GradleState getGradle(Component component) {
+        GradleState state = component.getState(GradleState.TYPE);
+        assertThat(state).isNotNull();
+        return state;
+    }
+
+    private List<SoftwareRepository> getSoftwareRepositories(Component component) {
+        SoftwareRepositoriesState state = component.getState(SoftwareRepositoriesState.TYPE);
+        assertThat(state).isNotNull();
+        return state.getSoftwareRepositories();
+    }
+
+    private List<Software> getSoftwares(Component component) {
+        SoftwaresState state = component.getState(SoftwaresState.TYPE);
+        assertThat(state).isNotNull();
+        return state.getSoftwares();
     }
 }

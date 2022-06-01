@@ -8,14 +8,12 @@ import tech.kronicle.pluginapi.scanners.models.Output;
 import tech.kronicle.plugins.linesofcode.services.LinesOfCodeCounter;
 import tech.kronicle.plugintestutils.scanners.BaseCodebaseScannerTest;
 import tech.kronicle.sdk.models.Component;
-import tech.kronicle.sdk.models.ComponentState;
 import tech.kronicle.sdk.models.linesofcode.FileExtensionCount;
 import tech.kronicle.sdk.models.linesofcode.LinesOfCodeState;
 
 import java.io.IOException;
 import java.nio.file.Files;
 import java.time.Duration;
-import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static tech.kronicle.utils.FileUtilsFactory.createFileUtils;
@@ -202,10 +200,8 @@ public class LinesOfCodeScannerTest extends BaseCodebaseScannerTest {
     }
 
     private LinesOfCodeState getLinesOfCode(Output<Void, Component> returnValue) {
-        List<ComponentState> states = getMutatedComponent(returnValue).getStates();
-        assertThat(states).hasSize(1);
-        ComponentState state = states.get(0);
-        assertThat(state).isInstanceOf(LinesOfCodeState.class);
-        return (LinesOfCodeState) state;
+        LinesOfCodeState state = getMutatedComponent(returnValue).getState(LinesOfCodeState.TYPE);
+        assertThat(state).isNotNull();
+        return state;
     }
 }

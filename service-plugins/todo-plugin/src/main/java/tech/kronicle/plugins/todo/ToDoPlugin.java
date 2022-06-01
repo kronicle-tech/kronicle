@@ -9,6 +9,8 @@ import java.util.List;
 
 public class ToDoPlugin extends KronicleGuicePlugin {
 
+    public static final String ID = "todo";
+
     public ToDoPlugin(PluginWrapper wrapper) {
         super(wrapper);
     }

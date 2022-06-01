@@ -3,11 +3,7 @@ package tech.kronicle.service.tests.dropwizard;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
-import tech.kronicle.sdk.models.Component;
-import tech.kronicle.sdk.models.KeySoftware;
-import tech.kronicle.sdk.models.Priority;
-import tech.kronicle.sdk.models.TestOutcome;
-import tech.kronicle.sdk.models.TestResult;
+import tech.kronicle.sdk.models.*;
 
 import java.util.List;
 
@@ -58,10 +54,11 @@ public class DropwizardVersionTestTest {
     @Test
     public void testShouldReturnNotApplicableWhenKeySoftwareDoesNotIncludeDropwizard() {
         // Given
-        Component component = Component.builder()
-                .keySoftware(List.of(
-                        KeySoftware.builder().name("something-else").build()))
-                .build();
+        Component component = createComponent(List.of(
+                KeySoftware.builder()
+                        .name("something-else")
+                        .build()
+        ));
 
         // When
         TestResult returnValue = underTest.test(component, null);
@@ -78,13 +75,12 @@ public class DropwizardVersionTestTest {
     @Test
     public void testShouldReturnPassWhenDropwizardVersionIsSameAsMinimumVersion() {
         // Given
-        Component component = Component.builder()
-                .keySoftware(List.of(
-                        KeySoftware.builder()
-                                .name("dropwizard")
-                                .versions(List.of("2.0.0"))
-                                .build()))
-                .build();
+        Component component = createComponent(List.of(
+                KeySoftware.builder()
+                        .name("dropwizard")
+                        .versions(List.of("2.0.0"))
+                        .build()
+        ));
 
         // When
         TestResult returnValue = underTest.test(component, null);
@@ -103,13 +99,12 @@ public class DropwizardVersionTestTest {
     @Test
     public void testShouldReturnPassWhenDropwizardVersionIsHigherThanMinimumVersion() {
         // Given
-        Component component = Component.builder()
-                .keySoftware(List.of(
-                        KeySoftware.builder()
-                                .name("dropwizard")
-                                .versions(List.of("2.0.1"))
-                                .build()))
-                .build();
+        Component component = createComponent(List.of(
+                KeySoftware.builder()
+                        .name("dropwizard")
+                        .versions(List.of("2.0.1"))
+                        .build()
+        ));
 
         // When
         TestResult returnValue = underTest.test(component, null);
@@ -128,13 +123,12 @@ public class DropwizardVersionTestTest {
     @Test
     public void testShouldReturnFailWhenDropwizardVersionIsLowerThanMinimumVersion() {
         // Given
-        Component component = Component.builder()
-                .keySoftware(List.of(
-                        KeySoftware.builder()
-                                .name("dropwizard")
-                                .versions(List.of("1.3.16"))
-                                .build()))
-                .build();
+        Component component = createComponent(List.of(
+                KeySoftware.builder()
+                        .name("dropwizard")
+                        .versions(List.of("1.3.16"))
+                        .build()
+        ));
 
         // When
         TestResult returnValue = underTest.test(component, null);
@@ -153,13 +147,12 @@ public class DropwizardVersionTestTest {
     @Test
     public void testShouldReturnFailForLowestDropwizardVersionThatIsLowerThanMinimumVersion() {
         // Given
-        Component component = Component.builder()
-                .keySoftware(List.of(
-                        KeySoftware.builder()
-                                .name("dropwizard")
-                                .versions(List.of("1.3.16", "1.0.0"))
-                                .build()))
-                .build();
+        Component component = createComponent(List.of(
+                KeySoftware.builder()
+                        .name("dropwizard")
+                        .versions(List.of("1.3.16", "1.0.0"))
+                        .build()
+        ));
 
         // When
         TestResult returnValue = underTest.test(component, null);
@@ -178,13 +171,12 @@ public class DropwizardVersionTestTest {
     @Test
     public void testShouldReturnFailWhenOneDropwizardVersionIsHigherThanMinimumAndOneDropwizardVersionIsLowerThanMinimum() {
         // Given
-        Component component = Component.builder()
-                .keySoftware(List.of(
-                        KeySoftware.builder()
-                                .name("dropwizard")
-                                .versions(List.of("2.1.0", "1.3.16"))
-                                .build()))
-                .build();
+        Component component = createComponent(List.of(
+                KeySoftware.builder()
+                        .name("dropwizard")
+                        .versions(List.of("2.1.0", "1.3.16"))
+                        .build()
+        ));
 
         // When
         TestResult returnValue = underTest.test(component, null);
@@ -198,5 +190,14 @@ public class DropwizardVersionTestTest {
                         .message("Component is using very old and unsupported version `1.3.16` of the Dropwizard framework.  Should be using at least version "
                                 + "`2.0.0`.  ")
                         .build());
+    }
+
+    private Component createComponent(List<KeySoftware> keySoftwares) {
+        return Component.builder()
+                .states(List.of(new KeySoftwaresState(
+                        "test-plugin-id",
+                        keySoftwares
+                )))
+                .build();
     }
 }

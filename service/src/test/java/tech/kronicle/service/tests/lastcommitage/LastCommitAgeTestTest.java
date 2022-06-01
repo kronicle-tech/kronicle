@@ -5,12 +5,13 @@ import tech.kronicle.sdk.models.Component;
 import tech.kronicle.sdk.models.Priority;
 import tech.kronicle.sdk.models.TestOutcome;
 import tech.kronicle.sdk.models.TestResult;
-import tech.kronicle.sdk.models.git.GitRepo;
+import tech.kronicle.sdk.models.git.GitRepoState;
 
 import java.time.Clock;
 import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -57,11 +58,7 @@ public class LastCommitAgeTestTest {
     @Test
     public void testShouldReturnFailWhenLastCommitAgeIsOver6Months() {
         // Given
-        Component component = Component.builder()
-                .gitRepo(GitRepo.builder()
-                        .lastCommitTimestamp(LocalDateTime.of(2020, 1, 1, 1, 2, 3, 4))
-                        .build())
-                .build();
+        Component component = createComponent(1);
 
         // When
         TestResult returnValue = underTest.test(component, null);
@@ -81,11 +78,7 @@ public class LastCommitAgeTestTest {
     @Test
     public void testShouldReturnFailWhenLastCommitAgeIs6Months() {
         // Given
-        Component component = Component.builder()
-                .gitRepo(GitRepo.builder()
-                        .lastCommitTimestamp(LocalDateTime.of(2020, 7, 1, 1, 2, 3, 4))
-                        .build())
-                .build();
+        Component component = createComponent(7);
 
         // When
         TestResult returnValue = underTest.test(component, null);
@@ -105,11 +98,7 @@ public class LastCommitAgeTestTest {
     @Test
     public void testShouldReturnPassWhenLastCommitAgeIsLessThan6Months() {
         // Given
-        Component component = Component.builder()
-                .gitRepo(GitRepo.builder()
-                        .lastCommitTimestamp(LocalDateTime.of(2020, 8, 1, 1, 2, 3, 4))
-                        .build())
-                .build();
+        Component component = createComponent(8);
 
         // When
         TestResult returnValue = underTest.test(component, null);
@@ -122,5 +111,15 @@ public class LastCommitAgeTestTest {
                         .priority(Priority.HIGH)
                         .message("It has only been 5 months since the last code commit to the component's repo.  ")
                         .build());
+    }
+
+    private Component createComponent(int month) {
+        return Component.builder()
+                .states(List.of(
+                        GitRepoState.builder()
+                                .lastCommitTimestamp(LocalDateTime.of(2020, month, 1, 1, 2, 3, 4))
+                                .build()
+                ))
+                .build();
     }
 }

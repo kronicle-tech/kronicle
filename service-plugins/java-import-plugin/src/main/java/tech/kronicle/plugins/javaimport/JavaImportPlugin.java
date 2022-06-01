@@ -9,6 +9,8 @@ import java.util.List;
 
 public class JavaImportPlugin extends KronicleGuicePlugin {
 
+    public static final String ID = "java-import";
+
     public JavaImportPlugin(PluginWrapper wrapper) {
         super(wrapper);
     }

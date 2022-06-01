@@ -7,12 +7,7 @@ import tech.kronicle.pluginapi.scanners.models.ComponentAndCodebase;
 import tech.kronicle.pluginapi.scanners.models.Output;
 import tech.kronicle.plugins.sonarqube.exceptions.SonarQubeScannerException;
 import tech.kronicle.plugins.sonarqube.services.SonarQubeService;
-import tech.kronicle.sdk.models.Component;
-import tech.kronicle.sdk.models.ComponentMetadata;
-import tech.kronicle.sdk.models.Dependency;
-import tech.kronicle.sdk.models.ScannerError;
-import tech.kronicle.sdk.models.Summary;
-import tech.kronicle.sdk.models.SummaryMissingComponent;
+import tech.kronicle.sdk.models.*;
 import tech.kronicle.sdk.models.sonarqube.SonarQubeProject;
 
 import javax.inject.Inject;
@@ -66,7 +61,14 @@ public class SonarQubeScanner extends ComponentAndCodebaseScanner {
     }
 
     private Output<Void, Component> createOutput(List<SonarQubeProject> sonarQubeProjects) {
-        return Output.ofTransformer(component -> component.withSonarQubeProjects(sonarQubeProjects), CACHE_TTL);
+        return Output.ofTransformer(component -> component.addState(createState(sonarQubeProjects)), CACHE_TTL);
+    }
+
+    private SonarQubeProjectsState createState(List<SonarQubeProject> sonarQubeProjects) {
+        return new SonarQubeProjectsState(
+                SonarQubePlugin.ID,
+                sonarQubeProjects
+        );
     }
 
     private Output<Void, Component> createOutput(SonarQubeScannerException e) {

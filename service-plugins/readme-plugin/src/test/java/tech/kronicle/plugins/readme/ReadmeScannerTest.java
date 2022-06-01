@@ -7,7 +7,7 @@ import tech.kronicle.pluginapi.scanners.models.Output;
 import tech.kronicle.plugins.readme.services.ReadmeFileNameChecker;
 import tech.kronicle.plugintestutils.scanners.BaseCodebaseScannerTest;
 import tech.kronicle.sdk.models.Component;
-import tech.kronicle.sdk.models.readme.Readme;
+import tech.kronicle.sdk.models.readme.ReadmeState;
 
 import java.time.Duration;
 
@@ -62,7 +62,7 @@ public class ReadmeScannerTest extends BaseCodebaseScannerTest {
 
         // Then
         assertThat(maskTransformer(returnValue)).isEqualTo(maskTransformer(Output.empty(CACHE_TTL)));
-        Readme readme = getMutatedComponent(returnValue).getReadme();
+        ReadmeState readme = getReadme(returnValue);
         assertThat(readme).isNull();
     }
 
@@ -76,7 +76,7 @@ public class ReadmeScannerTest extends BaseCodebaseScannerTest {
 
         // Then
         assertThat(maskTransformer(returnValue)).isEqualTo(maskTransformer(Output.empty(CACHE_TTL)));
-        Readme readme = getMutatedComponent(returnValue).getReadme();
+        ReadmeState readme = getReadme(returnValue);
         assertThat(readme).isNotNull();
         assertThat(readme.getFileName()).isEqualTo("README.md");
         assertThat(readme.getContent()).isEqualTo("# Example Readme\nHere is the content\n");
@@ -92,7 +92,7 @@ public class ReadmeScannerTest extends BaseCodebaseScannerTest {
 
         // Then
         assertThat(maskTransformer(returnValue)).isEqualTo(maskTransformer(Output.empty(CACHE_TTL)));
-        Readme readme = getMutatedComponent(returnValue).getReadme();
+        ReadmeState readme = getReadme(returnValue);
         assertThat(readme).isNotNull();
         assertThat(readme.getFileName()).isEqualTo("readme.md");
         assertThat(readme.getContent()).isEqualTo("# Example Readme\nHere is the content\n");
@@ -108,7 +108,7 @@ public class ReadmeScannerTest extends BaseCodebaseScannerTest {
 
         // Then
         assertThat(maskTransformer(returnValue)).isEqualTo(maskTransformer(Output.empty(CACHE_TTL)));
-        Readme readme = getMutatedComponent(returnValue).getReadme();
+        ReadmeState readme = getReadme(returnValue);
         assertThat(readme).isNull();
     }
 
@@ -122,7 +122,7 @@ public class ReadmeScannerTest extends BaseCodebaseScannerTest {
 
         // Then
         assertThat(maskTransformer(returnValue)).isEqualTo(maskTransformer(Output.empty(CACHE_TTL)));
-        Readme readme = getMutatedComponent(returnValue).getReadme();
+        ReadmeState readme = getReadme(returnValue);
         assertThat(readme).isNull();
     }
 
@@ -136,7 +136,7 @@ public class ReadmeScannerTest extends BaseCodebaseScannerTest {
 
         // Then
         assertThat(maskTransformer(returnValue)).isEqualTo(maskTransformer(Output.empty(CACHE_TTL)));
-        Readme readme = getMutatedComponent(returnValue).getReadme();
+        ReadmeState readme = getReadme(returnValue);
         assertThat(readme).isNotNull();
         assertThat(readme.getFileName()).isEqualTo("README.adoc");
         assertThat(readme.getContent()).isEqualTo("= Example Readme\n\nHere is the content\n");
@@ -152,7 +152,11 @@ public class ReadmeScannerTest extends BaseCodebaseScannerTest {
 
         // Then
         assertThat(maskTransformer(returnValue)).isEqualTo(maskTransformer(Output.empty(CACHE_TTL)));
-        Readme readme = getMutatedComponent(returnValue).getReadme();
+        ReadmeState readme = getReadme(returnValue);
         assertThat(readme).isNull();
+    }
+
+    protected ReadmeState getReadme(Output<Void, Component> returnValue) {
+        return getMutatedComponent(returnValue).getState(ReadmeState.TYPE);
     }
 }

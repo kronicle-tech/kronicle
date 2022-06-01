@@ -12,7 +12,7 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class SonarQubeCodeCoverageTestTest {
+public class SonarQubeCodeCoverageTestTest extends BaseSonarQubeTestTest {
 
     private final SonarQubeCodeCoverageTest underTest = new SonarQubeCodeCoverageTest();
 
@@ -55,14 +55,13 @@ public class SonarQubeCodeCoverageTestTest {
     @Test
     public void testShouldReturnFailWhenComponentHasASonarQubeProjectWithNoMetrics() {
         // Given
-        Component component = Component.builder()
-                .sonarQubeProjects(List.of(
-                        SonarQubeProject.builder()
-                                .key("test-project-key-1")
-                                .name("Test Project Name 1")
-                                .url("https://example.com/test-project-key-1")
-                                .build()))
-                .build();
+        Component component = createComponent(List.of(
+                SonarQubeProject.builder()
+                        .key("test-project-key-1")
+                        .name("Test Project Name 1")
+                        .url("https://example.com/test-project-key-1")
+                        .build()
+        ));
 
         // When
         TestResult returnValue = underTest.test(component, null);
@@ -82,19 +81,18 @@ public class SonarQubeCodeCoverageTestTest {
     @Test
     public void testShouldReturnFailWhenComponentHasASonarQubeProjectWithNoCodeCoverageMetric() {
         // Given
-        Component component = Component.builder()
-                .sonarQubeProjects(List.of(
-                        SonarQubeProject.builder()
-                                .key("test-project-key-1")
-                                .name("Test Project Name 1")
-                                .url("https://example.com/test-project-key-1")
-                                .measures(List.of(
-                                        SonarQubeMeasure.builder()
-                                                .metric("test-metric-key-1")
-                                                .value("1")
-                                                .build()))
-                                .build()))
-                .build();
+        Component component = createComponent(List.of(
+                SonarQubeProject.builder()
+                        .key("test-project-key-1")
+                        .name("Test Project Name 1")
+                        .url("https://example.com/test-project-key-1")
+                        .measures(List.of(
+                                SonarQubeMeasure.builder()
+                                        .metric("test-metric-key-1")
+                                        .value("1")
+                                        .build()))
+                        .build()
+        ));
 
         // When
         TestResult returnValue = underTest.test(component, null);
@@ -114,19 +112,18 @@ public class SonarQubeCodeCoverageTestTest {
     @Test
     public void testShouldReturnFailWhenComponentHasASonarQubeProjectWithCodeCoverageMetricThatIsLowerThanMinimum() {
         // Given
-        Component component = Component.builder()
-                .sonarQubeProjects(List.of(
-                        SonarQubeProject.builder()
-                                .key("test-project-key-1")
-                                .name("Test Project Name 1")
-                                .url("https://example.com/test-project-key-1")
-                                .measures(List.of(
-                                        SonarQubeMeasure.builder()
-                                                .metric("coverage")
-                                                .value("79")
-                                                .build()))
-                                .build()))
-                .build();
+        Component component = createComponent(List.of(
+                SonarQubeProject.builder()
+                        .key("test-project-key-1")
+                        .name("Test Project Name 1")
+                        .url("https://example.com/test-project-key-1")
+                        .measures(List.of(
+                                SonarQubeMeasure.builder()
+                                        .metric("coverage")
+                                        .value("79")
+                                        .build()))
+                        .build()
+        ));
 
         // When
         TestResult returnValue = underTest.test(component, null);
@@ -146,29 +143,28 @@ public class SonarQubeCodeCoverageTestTest {
     @Test
     public void testShouldReturnFailWhenComponentHasASonarQubeProjectWithNoCodeCoverageMetricAndASonarQubeProjectWithCodeCoverageMetricThatIsLowerThanMinimum() {
         // Given
-        Component component = Component.builder()
-                .sonarQubeProjects(List.of(
-                        SonarQubeProject.builder()
-                                .key("test-project-key-1")
-                                .name("Test Project Name 1")
-                                .url("https://example.com/test-project-key-1")
-                                .measures(List.of(
-                                        SonarQubeMeasure.builder()
-                                                .metric("coverage")
-                                                .value("79")
-                                                .build()))
-                                .build(),
-                        SonarQubeProject.builder()
-                                .key("test-project-key-2")
-                                .name("Test Project Name 2")
-                                .url("https://example.com/test-project-key-2")
-                                .measures(List.of(
-                                        SonarQubeMeasure.builder()
-                                                .metric("test-metric-key-1")
-                                                .value("1")
-                                                .build()))
-                                .build()))
-                .build();
+        Component component = createComponent(List.of(
+                SonarQubeProject.builder()
+                        .key("test-project-key-1")
+                        .name("Test Project Name 1")
+                        .url("https://example.com/test-project-key-1")
+                        .measures(List.of(
+                                SonarQubeMeasure.builder()
+                                        .metric("coverage")
+                                        .value("79")
+                                        .build()))
+                        .build(),
+                SonarQubeProject.builder()
+                        .key("test-project-key-2")
+                        .name("Test Project Name 2")
+                        .url("https://example.com/test-project-key-2")
+                        .measures(List.of(
+                                SonarQubeMeasure.builder()
+                                        .metric("test-metric-key-1")
+                                        .value("1")
+                                        .build()))
+                        .build()
+        ));
 
         // When
         TestResult returnValue = underTest.test(component, null);
@@ -189,29 +185,28 @@ public class SonarQubeCodeCoverageTestTest {
     @Test
     public void testShouldReturnFailWhenComponentHasASonarQubeProjectWithCodeCoverageMetricThatIsLowerThanMinimumAndASonarQubeProjectWithCodeCoverageMetricThatIsHigherThanMinimum() {
         // Given
-        Component component = Component.builder()
-                .sonarQubeProjects(List.of(
-                        SonarQubeProject.builder()
-                                .key("test-project-key-1")
-                                .name("Test Project Name 1")
-                                .url("https://example.com/test-project-key-1")
-                                .measures(List.of(
-                                        SonarQubeMeasure.builder()
-                                                .metric("coverage")
-                                                .value("79")
-                                                .build()))
-                                .build(),
-                        SonarQubeProject.builder()
-                                .key("test-project-key-2")
-                                .name("Test Project Name 2")
-                                .url("https://example.com/test-project-key-2")
-                                .measures(List.of(
-                                        SonarQubeMeasure.builder()
-                                                .metric("coverage")
-                                                .value("81")
-                                                .build()))
-                                .build()))
-                .build();
+        Component component = createComponent(List.of(
+                SonarQubeProject.builder()
+                        .key("test-project-key-1")
+                        .name("Test Project Name 1")
+                        .url("https://example.com/test-project-key-1")
+                        .measures(List.of(
+                                SonarQubeMeasure.builder()
+                                        .metric("coverage")
+                                        .value("79")
+                                        .build()))
+                        .build(),
+                SonarQubeProject.builder()
+                        .key("test-project-key-2")
+                        .name("Test Project Name 2")
+                        .url("https://example.com/test-project-key-2")
+                        .measures(List.of(
+                                SonarQubeMeasure.builder()
+                                        .metric("coverage")
+                                        .value("81")
+                                        .build()))
+                        .build()
+        ));
 
         // When
         TestResult returnValue = underTest.test(component, null);
@@ -232,19 +227,18 @@ public class SonarQubeCodeCoverageTestTest {
     @Test
     public void testShouldReturnPassWhenComponentHasOneSonarQubeProjectWithCodeCoverageMetricThatIsEqualToMinimum() {
         // Given
-        Component component = Component.builder()
-                .sonarQubeProjects(List.of(
-                        SonarQubeProject.builder()
-                                .key("test-project-key-1")
-                                .name("Test Project Name 1")
-                                .url("https://example.com/test-project-key-1")
-                                .measures(List.of(
-                                        SonarQubeMeasure.builder()
-                                                .metric("coverage")
-                                                .value("80")
-                                                .build()))
-                                .build()))
-                .build();
+        Component component = createComponent(List.of(
+                SonarQubeProject.builder()
+                        .key("test-project-key-1")
+                        .name("Test Project Name 1")
+                        .url("https://example.com/test-project-key-1")
+                        .measures(List.of(
+                                SonarQubeMeasure.builder()
+                                        .metric("coverage")
+                                        .value("80")
+                                        .build()))
+                        .build()
+        ));
 
         // When
         TestResult returnValue = underTest.test(component, null);
@@ -264,19 +258,18 @@ public class SonarQubeCodeCoverageTestTest {
     @Test
     public void testShouldReturnPassWhenComponentHasOneSonarQubeProjectWithCodeCoverageMetricThatIsHigherThanMinimum() {
         // Given
-        Component component = Component.builder()
-                .sonarQubeProjects(List.of(
-                        SonarQubeProject.builder()
-                                .key("test-project-key-1")
-                                .name("Test Project Name 1")
-                                .url("https://example.com/test-project-key-1")
-                                .measures(List.of(
-                                        SonarQubeMeasure.builder()
-                                                .metric("coverage")
-                                                .value("81")
-                                                .build()))
-                                .build()))
-                .build();
+        Component component = createComponent(List.of(
+                SonarQubeProject.builder()
+                        .key("test-project-key-1")
+                        .name("Test Project Name 1")
+                        .url("https://example.com/test-project-key-1")
+                        .measures(List.of(
+                                SonarQubeMeasure.builder()
+                                        .metric("coverage")
+                                        .value("81")
+                                        .build()))
+                        .build()
+        ));
 
         // When
         TestResult returnValue = underTest.test(component, null);
@@ -296,29 +289,28 @@ public class SonarQubeCodeCoverageTestTest {
     @Test
     public void testShouldReturnPassWhenComponentHasTwoSonarQubeProjectsWithCodeCoverageMetricThatIsHigherThanMinimum() {
         // Given
-        Component component = Component.builder()
-                .sonarQubeProjects(List.of(
-                        SonarQubeProject.builder()
-                                .key("test-project-key-1")
-                                .name("Test Project Name 1")
-                                .url("https://example.com/test-project-key-1")
-                                .measures(List.of(
-                                        SonarQubeMeasure.builder()
-                                                .metric("coverage")
-                                                .value("81")
-                                                .build()))
-                                .build(),
-                        SonarQubeProject.builder()
-                                .key("test-project-key-2")
-                                .name("Test Project Name 2")
-                                .url("https://example.com/test-project-key-2")
-                                .measures(List.of(
-                                        SonarQubeMeasure.builder()
-                                                .metric("coverage")
-                                                .value("81")
-                                                .build()))
-                                .build()))
-                .build();
+        Component component = createComponent(List.of(
+                SonarQubeProject.builder()
+                        .key("test-project-key-1")
+                        .name("Test Project Name 1")
+                        .url("https://example.com/test-project-key-1")
+                        .measures(List.of(
+                                SonarQubeMeasure.builder()
+                                        .metric("coverage")
+                                        .value("81")
+                                        .build()))
+                        .build(),
+                SonarQubeProject.builder()
+                        .key("test-project-key-2")
+                        .name("Test Project Name 2")
+                        .url("https://example.com/test-project-key-2")
+                        .measures(List.of(
+                                SonarQubeMeasure.builder()
+                                        .metric("coverage")
+                                        .value("81")
+                                        .build()))
+                        .build()
+        ));
 
         // When
         TestResult returnValue = underTest.test(component, null);

@@ -9,6 +9,7 @@ import tech.kronicle.plugintestutils.scanners.BaseCodebaseScannerTest;
 import tech.kronicle.sdk.models.Component;
 import tech.kronicle.sdk.models.Import;
 import tech.kronicle.sdk.models.ImportType;
+import tech.kronicle.sdk.models.ImportsState;
 
 import java.time.Duration;
 import java.util.List;
@@ -64,7 +65,7 @@ public class JavaImportScannerTest extends BaseCodebaseScannerTest {
 
         // Then
         assertThat(maskTransformer(returnValue)).isEqualTo(maskTransformer(Output.empty(CACHE_TTL)));
-        List<Import> imports = getMutatedComponent(returnValue).getImports();
+        List<Import> imports = getImports(returnValue);
         assertThat(imports).isEmpty();
     }
 
@@ -78,7 +79,7 @@ public class JavaImportScannerTest extends BaseCodebaseScannerTest {
 
         // Then
         assertThat(maskTransformer(returnValue)).isEqualTo(maskTransformer(Output.empty(CACHE_TTL)));
-        List<Import> imports = getMutatedComponent(returnValue).getImports();
+        List<Import> imports = getImports(returnValue);
         assertThat(imports).hasSize(3);
         Import importItem;
         importItem = imports.get(0);
@@ -103,7 +104,7 @@ public class JavaImportScannerTest extends BaseCodebaseScannerTest {
 
         // Then
         assertThat(maskTransformer(returnValue)).isEqualTo(maskTransformer(Output.empty(CACHE_TTL)));
-        List<Import> imports = getMutatedComponent(returnValue).getImports();
+        List<Import> imports = getImports(returnValue);
         assertThat(imports).hasSize(2);
         Import importItem;
         importItem = imports.get(0);
@@ -113,5 +114,11 @@ public class JavaImportScannerTest extends BaseCodebaseScannerTest {
         assertThat(importItem.getType()).isEqualTo(ImportType.JAVA);
         assertThat(importItem.getName()).isEqualTo("java.util.stream.Stream");
         assertThat(returnValue.getErrors()).isEmpty();
+    }
+
+    private List<Import> getImports(Output<Void, Component> returnValue) {
+        ImportsState state = getMutatedComponent(returnValue).getState(ImportsState.TYPE);
+        assertThat(state).isNotNull();
+        return state.getImports();
     }
 }

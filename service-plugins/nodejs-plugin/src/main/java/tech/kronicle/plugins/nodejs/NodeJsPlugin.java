@@ -9,6 +9,8 @@ import java.util.List;
 
 public class NodeJsPlugin extends KronicleGuicePlugin {
 
+    public static final String ID = "nodejs";
+
     public NodeJsPlugin(PluginWrapper wrapper) {
         super(wrapper);
     }

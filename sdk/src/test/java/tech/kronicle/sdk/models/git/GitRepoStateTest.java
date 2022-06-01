@@ -7,12 +7,12 @@ import java.util.ArrayList;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.catchThrowable;
 
-public class GitRepoTest {
+public class GitRepoStateTest {
 
     @Test
     public void constructorShouldMakeAuthorsAnUnmodifiableList() {
         // Given
-        GitRepo underTest = GitRepo.builder().authors(new ArrayList<>()).build();
+        GitRepoState underTest = GitRepoState.builder().authors(new ArrayList<>()).build();
 
         // When
         Throwable thrown = catchThrowable(() -> underTest.getAuthors().add(Identity.builder().build()));
@@ -24,7 +24,7 @@ public class GitRepoTest {
     @Test
     public void constructorShouldMakeCommittersAnUnmodifiableList() {
         // Given
-        GitRepo underTest = GitRepo.builder().committers(new ArrayList<>()).build();
+        GitRepoState underTest = GitRepoState.builder().committers(new ArrayList<>()).build();
 
         // When
         Throwable thrown = catchThrowable(() -> underTest.getCommitters().add(Identity.builder().build()));

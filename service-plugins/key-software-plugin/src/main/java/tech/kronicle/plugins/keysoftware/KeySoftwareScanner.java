@@ -9,22 +9,16 @@ import tech.kronicle.pluginapi.scanners.LateComponentScanner;
 import tech.kronicle.pluginapi.scanners.models.Output;
 import tech.kronicle.plugins.keysoftware.config.KeySoftwareRuleConfig;
 import tech.kronicle.plugins.keysoftware.services.KeySoftwareRuleProvider;
-import tech.kronicle.sdk.models.Component;
-import tech.kronicle.sdk.models.KeySoftware;
-import tech.kronicle.sdk.models.Software;
+import tech.kronicle.sdk.models.*;
 
 import javax.inject.Inject;
 import java.time.Duration;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 import java.util.function.Function;
 import java.util.regex.Pattern;
-import java.util.stream.Collectors;
 
 import static java.util.Objects.isNull;
+import static java.util.stream.Collectors.toUnmodifiableList;
 
 @Extension
 @Slf4j
@@ -56,24 +50,43 @@ public class KeySoftwareScanner extends LateComponentScanner {
 
     @Override
     public Output<Void, Component> scan(Component input) {
-        if (rules.isEmpty() || isNull(input.getSoftware())) {
+        if (rules.isEmpty()) {
             return Output.empty(CACHE_TTL);
         }
 
-        List<KeySoftware> keySoftware = getKeySoftware(input);
-        return Output.ofTransformer(component -> component.withKeySoftware(keySoftware), CACHE_TTL);
+        List<Software> softwares = getSoftwares(input);
+
+        if (softwares.isEmpty()) {
+            return Output.empty(CACHE_TTL);
+        }
+
+        List<KeySoftware> keySoftware = getKeySoftware(softwares);
+        return Output.ofTransformer(
+                component -> component.addState(
+                    new KeySoftwaresState(KeySoftwarePlugin.ID, keySoftware)
+                ),
+                CACHE_TTL
+        );
     }
 
-    private List<KeySoftware> getKeySoftware(Component input) {
+    private List<Software> getSoftwares(Component input) {
+        List<SoftwaresState> states = input.getStates(SoftwaresState.TYPE);
+        return states.stream()
+                .map(SoftwaresState::getSoftwares)
+                .flatMap(Collection::stream)
+                .collect(toUnmodifiableList());
+    }
+
+    private List<KeySoftware> getKeySoftware(List<Software> softwares) {
         return rules.stream()
-                .map(applyRule(input))
+                .map(applyRule(softwares))
                 .filter(Objects::nonNull)
-                .collect(Collectors.toList());
+                .collect(toUnmodifiableList());
     }
 
-    private Function<KeySoftwareRuleConfig, KeySoftware> applyRule(Component component) {
+    private Function<KeySoftwareRuleConfig, KeySoftware> applyRule(List<Software> softwares) {
         return (KeySoftwareRuleConfig rule) -> {
-            List<String> versions = applyRule(component, rule);
+            List<String> versions = applyRule(softwares, rule);
 
             if (versions.isEmpty()) {
                 return null;
@@ -83,16 +96,16 @@ public class KeySoftwareScanner extends LateComponentScanner {
         };
     }
 
-    private List<String> applyRule(Component component, KeySoftwareRuleConfig rule) {
+    private List<String> applyRule(List<Software> softwares, KeySoftwareRuleConfig rule) {
         Pattern softwareNamePattern = getCachedPattern(rule.getSoftwareNamePattern());
-        return component.getSoftware().stream()
+        return softwares.stream()
                 .filter(software -> softwareNamePattern.matcher(software.getName()).find())
                 .map(Software::getVersion)
                 .map(versionParser::transform)
                 .sorted(versionComparator)
                 .map(Version::getSource)
                 .distinct()
-                .collect(Collectors.toList());
+                .collect(toUnmodifiableList());
     }
 
     private Pattern getCachedPattern(String pattern) {

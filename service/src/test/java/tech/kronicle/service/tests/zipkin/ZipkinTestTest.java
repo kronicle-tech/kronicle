@@ -5,7 +5,7 @@ import tech.kronicle.sdk.models.Component;
 import tech.kronicle.sdk.models.Priority;
 import tech.kronicle.sdk.models.TestOutcome;
 import tech.kronicle.sdk.models.TestResult;
-import tech.kronicle.sdk.models.zipkin.Zipkin;
+import tech.kronicle.sdk.models.zipkin.ZipkinState;
 import tech.kronicle.service.constants.CommonComponentTypeIds;
 import tech.kronicle.service.tests.zipkin.config.ZipkinTestConfig;
 
@@ -59,10 +59,11 @@ public class ZipkinTestTest {
     @Test
     public void testShouldReturnPassWhenComponentTypeIsRelevantForZipkinAndZipkinIsAlreadyUsed() {
         // Given
-        Component component = Component.builder()
-                .typeId(CommonComponentTypeIds.SERVICE)
-                .zipkin(Zipkin.builder().used(true).build())
-                .build();
+        Component component = createComponent(
+                ZipkinState.builder()
+                        .used(true)
+                        .build()
+        );
 
         // When
         TestResult returnValue = underTest.test(component, null);
@@ -80,10 +81,11 @@ public class ZipkinTestTest {
     @Test
     public void testShouldReturnFailWhenComponentTypeIsRelevantForZipkinAndZipkinIsNotUsed() {
         // Given
-        Component component = Component.builder()
-                .typeId(CommonComponentTypeIds.SERVICE)
-                .zipkin(Zipkin.builder().used(false).build())
-                .build();
+        Component component = createComponent(
+                ZipkinState.builder()
+                        .used(false)
+                        .build()
+        );
 
         // When
         TestResult returnValue = underTest.test(component, null);
@@ -98,5 +100,12 @@ public class ZipkinTestTest {
                                 + "because the component is not using [Zipkin](https://zipkin.io/) for\n"
                                 + "[distributed tracing](https://microservices.io/patterns/observability/distributed-tracing.html)")
                         .build());
+    }
+
+    private Component createComponent(ZipkinState zipkin) {
+        return Component.builder()
+                .typeId(CommonComponentTypeIds.SERVICE)
+                .states(List.of(zipkin))
+                .build();
     }
 }

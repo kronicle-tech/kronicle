@@ -9,6 +9,8 @@ import tech.kronicle.pluginapi.scanners.models.Output;
 import tech.kronicle.plugins.graphql.models.SchemaAndErrors;
 import tech.kronicle.plugins.graphql.services.SchemaFetcher;
 import tech.kronicle.sdk.models.Component;
+import tech.kronicle.sdk.models.ComponentState;
+import tech.kronicle.sdk.models.GraphQlSpecsState;
 import tech.kronicle.sdk.models.ScannerError;
 import tech.kronicle.sdk.models.graphql.GraphQlSchema;
 
@@ -42,9 +44,16 @@ public class GraphQlScanner extends ComponentAndCodebaseScanner {
     public Output<Void, Component> scan(ComponentAndCodebase input) {
         List<SchemaAndErrors> schemaAndErrors = fetcher.fetchSchemas(id(), input.getCodebase().getDir(), input.getComponent().getGraphQlSchemas());
         return Output.builder(CACHE_TTL)
-                .transformer((Component component) -> component.withGraphQlSchemas(getSchemas(schemaAndErrors)))
+                .transformer((Component component) -> component.addState(getSchemasState(schemaAndErrors)))
                 .errors(getErrors(schemaAndErrors))
                 .build();
+    }
+
+    private GraphQlSpecsState getSchemasState(List<SchemaAndErrors> schemaAndErrors) {
+        return new GraphQlSpecsState(
+                GraphQlPlugin.ID,
+                getSchemas(schemaAndErrors)
+        );
     }
 
     private List<GraphQlSchema> getSchemas(List<SchemaAndErrors> schemaAndErrors) {

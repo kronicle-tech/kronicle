@@ -12,9 +12,7 @@ import tech.kronicle.plugins.openapi.models.SpecAndErrors;
 import tech.kronicle.plugins.openapi.services.SpecDiscoverer;
 import tech.kronicle.plugins.openapi.services.SpecParser;
 import tech.kronicle.plugins.openapi.utils.OpenApiSpecUtils;
-import tech.kronicle.sdk.models.Component;
-import tech.kronicle.sdk.models.ComponentMetadata;
-import tech.kronicle.sdk.models.ScannerError;
+import tech.kronicle.sdk.models.*;
 import tech.kronicle.sdk.models.openapi.OpenApiSpec;
 
 import javax.inject.Inject;
@@ -57,9 +55,16 @@ public class OpenApiScanner extends ComponentAndCodebaseScanner {
     public Output<Void, Component> scan(ComponentAndCodebase input) {
         ScanOutput scanOutput = processComponentAndCodebase(input);
         return Output.builder(CACHE_TTL)
-                .transformer((Component component) -> component.withOpenApiSpecs(scanOutput.getSpecs()))
+                .transformer((Component component) -> component.addState(createState(scanOutput.getSpecs())))
                 .errors(scanOutput.getErrors())
                 .build();
+    }
+
+    private OpenApiSpecsState createState(List<OpenApiSpec> specs) {
+        return new OpenApiSpecsState(
+                OpenApiPlugin.ID,
+                specs
+        );
     }
 
     private ScanOutput processComponentAndCodebase(ComponentAndCodebase input) {

@@ -10,6 +10,8 @@ import java.util.List;
 
 public class GradlePlugin extends KronicleGuicePlugin {
 
+    public static final String ID = "gradle";
+
     public GradlePlugin(PluginWrapper wrapper) {
         super(wrapper);
     }

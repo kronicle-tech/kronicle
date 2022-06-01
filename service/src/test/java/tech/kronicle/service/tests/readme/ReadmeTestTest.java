@@ -5,7 +5,9 @@ import tech.kronicle.sdk.models.Component;
 import tech.kronicle.sdk.models.Priority;
 import tech.kronicle.sdk.models.TestOutcome;
 import tech.kronicle.sdk.models.TestResult;
-import tech.kronicle.sdk.models.readme.Readme;
+import tech.kronicle.sdk.models.readme.ReadmeState;
+
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -52,11 +54,11 @@ public class ReadmeTestTest {
     @Test
     public void testShouldReturnFailWhenAComponentHasAnEmptyReadme() {
         // Given
-        Component component = Component.builder()
-                .readme(Readme.builder()
+        Component component = createComponent(
+                ReadmeState.builder()
                         .content("")
-                        .build())
-                .build();
+                        .build()
+        );
 
         // When
         TestResult returnValue = underTest.test(component, null);
@@ -74,11 +76,11 @@ public class ReadmeTestTest {
     @Test
     public void testShouldReturnPassWhenAComponentHasANonEmptyReadme() {
         // Given
-        Component component = Component.builder()
-                .readme(Readme.builder()
+        Component component = createComponent(
+                ReadmeState.builder()
                         .content("# Read Me")
-                        .build())
-                .build();
+                        .build()
+        );
 
         // When
         TestResult returnValue = underTest.test(component, null);
@@ -91,5 +93,11 @@ public class ReadmeTestTest {
                         .priority(Priority.HIGH)
                         .message("Component has a README file")
                         .build());
+    }
+
+    private Component createComponent(ReadmeState readme) {
+        return Component.builder()
+                .states(List.of(readme))
+                .build();
     }
 }

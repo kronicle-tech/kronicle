@@ -10,6 +10,8 @@ import java.util.List;
 
 public class GitPlugin extends KronicleGuicePlugin {
 
+    public static final String ID = "git";
+
     public GitPlugin(PluginWrapper wrapper) {
         super(wrapper);
     }

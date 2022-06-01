@@ -1,6 +1,7 @@
 package tech.kronicle.sdk.models;
 
 import com.fasterxml.jackson.annotation.JsonAlias;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import lombok.Builder;
 import lombok.Value;
@@ -9,22 +10,16 @@ import lombok.extern.jackson.Jacksonized;
 import org.hibernate.validator.constraints.UniqueElements;
 import tech.kronicle.sdk.constants.PatternStrings;
 import tech.kronicle.sdk.jackson.TagOrStringDeserializer;
-import tech.kronicle.sdk.models.git.GitRepo;
-import tech.kronicle.sdk.models.gradle.Gradle;
 import tech.kronicle.sdk.models.graphql.GraphQlSchema;
-import tech.kronicle.sdk.models.linesofcode.LinesOfCodeState;
-import tech.kronicle.sdk.models.nodejs.NodeJs;
 import tech.kronicle.sdk.models.openapi.OpenApiSpec;
-import tech.kronicle.sdk.models.readme.Readme;
-import tech.kronicle.sdk.models.sonarqube.SonarQubeProject;
-import tech.kronicle.sdk.models.todos.ToDo;
-import tech.kronicle.sdk.models.zipkin.Zipkin;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 import java.util.List;
+import java.util.Objects;
 
+import static java.util.stream.Collectors.toUnmodifiableList;
 import static tech.kronicle.sdk.utils.ListUtils.createUnmodifiableList;
 import static tech.kronicle.sdk.utils.ListUtils.unmodifiableUnionOfLists;
 
@@ -62,21 +57,11 @@ public class Component implements ObjectWithId, ObjectWithReference {
     List<@Valid CrossFunctionalRequirement> crossFunctionalRequirements;
     List<@Valid TechDebt> techDebts;
 
-    List<@Valid ComponentState> states;
-    
-    @Valid GitRepo gitRepo;
-    @Valid Gradle gradle;
-    @Valid NodeJs nodeJs;
-    List<@Valid SoftwareRepository> softwareRepositories;
-    List<@Valid Software> software;
-    List<@Valid Import> imports;
-    List<@Valid KeySoftware> keySoftware;
-    @Valid List<ToDo> toDos;
-    @Valid Readme readme;
-    @Valid Zipkin zipkin;
     List<@Valid OpenApiSpec> openApiSpecs;
     List<@Valid GraphQlSchema> graphQlSchemas;
-    List<@Valid SonarQubeProject> sonarQubeProjects;
+
+    List<@Valid ComponentState> states;
+    
     List<@Valid ScannerError> scannerErrors;
     List<@Valid TestResult> testResults;
 
@@ -97,20 +82,9 @@ public class Component implements ObjectWithId, ObjectWithReference {
             List<ComponentDependency> dependencies,
             List<CrossFunctionalRequirement> crossFunctionalRequirements,
             List<TechDebt> techDebts,
-            List<ComponentState> states,
-            GitRepo gitRepo,
-            Gradle gradle,
-            NodeJs nodeJs,
-            List<SoftwareRepository> softwareRepositories,
-            List<Software> software,
-            List<Import> imports,
-            List<KeySoftware> keySoftware,
-            List<ToDo> toDos,
-            Readme readme,
-            Zipkin zipkin,
             List<OpenApiSpec> openApiSpecs,
-            List<@Valid GraphQlSchema> graphQlSchemas,
-            List<SonarQubeProject> sonarQubeProjects,
+            List<GraphQlSchema> graphQlSchemas,
+            List<ComponentState> states,
             List<ScannerError> scannerErrors,
             List<TestResult> testResults
     ) {
@@ -130,20 +104,9 @@ public class Component implements ObjectWithId, ObjectWithReference {
         this.dependencies = createUnmodifiableList(dependencies);
         this.crossFunctionalRequirements = createUnmodifiableList(crossFunctionalRequirements);
         this.techDebts = createUnmodifiableList(techDebts);
-        this.states = createUnmodifiableList(states);
-        this.gitRepo = gitRepo;
-        this.gradle = gradle;
-        this.nodeJs = nodeJs;
-        this.softwareRepositories = createUnmodifiableList(softwareRepositories);
-        this.software = createUnmodifiableList(software);
-        this.imports = createUnmodifiableList(imports);
-        this.keySoftware = createUnmodifiableList(keySoftware);
-        this.toDos = createUnmodifiableList(toDos);
-        this.readme = readme;
-        this.zipkin = zipkin;
         this.openApiSpecs = createUnmodifiableList(openApiSpecs);
         this.graphQlSchemas = createUnmodifiableList(graphQlSchemas);
-        this.sonarQubeProjects = createUnmodifiableList(sonarQubeProjects);
+        this.states = createUnmodifiableList(states);
         this.scannerErrors = createUnmodifiableList(scannerErrors);
         this.testResults = createUnmodifiableList(testResults);
     }
@@ -165,21 +128,23 @@ public class Component implements ObjectWithId, ObjectWithReference {
         );
     }
 
-    public Component addImports(List<Import> imports) {
-        return withImports(
-                unmodifiableUnionOfLists(List.of(this.imports, imports))
-        );
+    @JsonIgnore
+    public <T extends ComponentState> List<T> getStates(String type) {
+        return states.stream()
+                .filter(state -> Objects.equals(state.getType(), type))
+                .map(state -> (T) state)
+                .collect(toUnmodifiableList());
     }
 
-    public Component addSoftwareRepositories(List<SoftwareRepository> softwareRepositories) {
-        return withSoftwareRepositories(
-                unmodifiableUnionOfLists(List.of(this.softwareRepositories, softwareRepositories))
-        );
-    }
-
-    public Component addSoftware(List<Software> software) {
-        return withSoftware(
-                unmodifiableUnionOfLists(List.of(this.software, software))
-        );
+    @JsonIgnore
+    public <T extends ComponentState> T getState(String type) {
+        List<ComponentState> matches = getStates(type);
+        if (matches.size() > 1) {
+            throw new IllegalArgumentException("There are more than 1 states with type \"" + type + "\"");
+        } else if (matches.isEmpty()) {
+            return null;
+        } else {
+            return (T) matches.get(0);
+        }
     }
 }

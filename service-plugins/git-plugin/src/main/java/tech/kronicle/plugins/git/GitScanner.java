@@ -20,7 +20,7 @@ import tech.kronicle.plugins.git.config.GitConfig;
 import tech.kronicle.sdk.models.Component;
 import tech.kronicle.sdk.models.RepoReference;
 import tech.kronicle.sdk.models.ScannerError;
-import tech.kronicle.sdk.models.git.GitRepo;
+import tech.kronicle.sdk.models.git.GitRepoState;
 import tech.kronicle.sdk.models.git.Identity;
 import tech.kronicle.utils.ThrowableToScannerErrorMapper;
 
@@ -91,9 +91,17 @@ public class GitScanner extends RepoScanner {
             CommitStats commitStats = getCommitStats(git);
 
             Codebase codebase = new Codebase(input, repoDir);
-            GitRepo gitRepo = new GitRepo(firstCommitTimestamp, lastCommitTimestamp, commitStats.commitCount, commitStats.authors, commitStats.committers,
-                    commitStats.authors.size(), commitStats.committers.size());
-            return new Output<>(codebase, component -> component.withGitRepo(gitRepo), null, CACHE_TTL);
+            GitRepoState gitRepo = new GitRepoState(
+                    GitPlugin.ID,
+                    firstCommitTimestamp,
+                    lastCommitTimestamp,
+                    commitStats.commitCount,
+                    commitStats.authors,
+                    commitStats.committers,
+                    commitStats.authors.size(),
+                    commitStats.committers.size()
+            );
+            return new Output<>(codebase, component -> component.addState(gitRepo), null, CACHE_TTL);
         } catch (Exception e) {
             return new Output<>(
                     null,

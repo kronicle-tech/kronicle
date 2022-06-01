@@ -14,9 +14,9 @@ import tech.kronicle.plugins.git.testutils.GitRepoHelper;
 import tech.kronicle.plugins.git.testutils.RepoOperationOption;
 import tech.kronicle.plugins.git.testutils.UpdateRemoteRepoOutcome;
 import tech.kronicle.plugintestutils.scanners.BaseScannerTest;
+import tech.kronicle.sdk.models.*;
+import tech.kronicle.sdk.models.git.GitRepoState;
 import tech.kronicle.utils.ThrowableToScannerErrorMapper;
-import tech.kronicle.sdk.models.Component;
-import tech.kronicle.sdk.models.RepoReference;
 import tech.kronicle.sdk.models.git.Identity;
 
 import java.nio.file.Path;
@@ -86,20 +86,21 @@ public class GitScannerTest extends BaseScannerTest {
         assertThat(codebase).isNotNull();
         assertThat(codebase.getRepo()).isEqualTo(testRepo);
         assertThat(codebase.getDir()).isNotEmptyDirectory();
-        assertThat(component.getGitRepo()).isNotNull();
-        assertThat(component.getGitRepo().getFirstCommitTimestamp()).isBetween(createOutcome.getBeforeCommit(), createOutcome.getAfterCommit());
-        assertThat(component.getGitRepo().getLastCommitTimestamp()).isEqualTo(component.getGitRepo().getFirstCommitTimestamp());
-        assertThat(component.getGitRepo().getCommitCount()).isEqualTo(1);
-        assertThat(component.getGitRepo().getCommitters()).hasSize(1);
+        GitRepoState gitRepo = getGitRepo(component);
+        assertThat(gitRepo).isNotNull();
+        assertThat(gitRepo.getFirstCommitTimestamp()).isBetween(createOutcome.getBeforeCommit(), createOutcome.getAfterCommit());
+        assertThat(gitRepo.getLastCommitTimestamp()).isEqualTo(gitRepo.getFirstCommitTimestamp());
+        assertThat(gitRepo.getCommitCount()).isEqualTo(1);
+        assertThat(gitRepo.getCommitters()).hasSize(1);
         Identity identity;
-        identity = component.getGitRepo().getCommitters().get(0);
+        identity = gitRepo.getCommitters().get(0);
         assertThat(identity.getNames()).containsExactly("Test Person 1");
         assertThat(identity.getEmailAddress()).isEqualTo("test_person_1@example.com");
         assertThat(identity.getCommitCount()).isEqualTo(1);
         assertThat(identity.getFirstCommitTimestamp()).isBetween(createOutcome.getBeforeCommit(), createOutcome.getAfterCommit());
         assertThat(identity.getLastCommitTimestamp()).isEqualTo(identity.getFirstCommitTimestamp());
-        assertThat(component.getGitRepo().getAuthorCount()).isEqualTo(1);
-        assertThat(component.getGitRepo().getCommitCount()).isEqualTo(1);
+        assertThat(gitRepo.getAuthorCount()).isEqualTo(1);
+        assertThat(gitRepo.getCommitCount()).isEqualTo(1);
 
         // When
         waitForNextCommitTimestampToBeForDifferentSecond();
@@ -107,26 +108,27 @@ public class GitScannerTest extends BaseScannerTest {
         returnValue = underTest.scan(testRepo);
 
         // Then
+        component = getMutatedComponent(returnValue);
         assertThat(returnValue.getErrors()).isEmpty();
         codebase = returnValue.getOutput();
-        component = getMutatedComponent(returnValue);
         assertThat(codebase).isNotNull();
         assertThat(codebase).isNotNull();
         assertThat(codebase.getRepo()).isEqualTo(testRepo);
         assertThat(codebase.getDir()).isNotEmptyDirectory();
-        assertThat(component.getGitRepo()).isNotNull();
-        assertThat(component.getGitRepo().getFirstCommitTimestamp()).isBetween(createOutcome.getBeforeCommit(), createOutcome.getAfterCommit());
-        assertThat(component.getGitRepo().getLastCommitTimestamp()).isBetween(updateOutcome.getBeforeCommit(), updateOutcome.getAfterCommit());
-        assertThat(component.getGitRepo().getCommitCount()).isEqualTo(2);
-        assertThat(component.getGitRepo().getCommitters()).hasSize(1);
-        identity = component.getGitRepo().getCommitters().get(0);
+        gitRepo = getGitRepo(component);
+        assertThat(gitRepo).isNotNull();
+        assertThat(gitRepo.getFirstCommitTimestamp()).isBetween(createOutcome.getBeforeCommit(), createOutcome.getAfterCommit());
+        assertThat(gitRepo.getLastCommitTimestamp()).isBetween(updateOutcome.getBeforeCommit(), updateOutcome.getAfterCommit());
+        assertThat(gitRepo.getCommitCount()).isEqualTo(2);
+        assertThat(gitRepo.getCommitters()).hasSize(1);
+        identity = gitRepo.getCommitters().get(0);
         assertThat(identity.getNames()).containsExactly("Test Person 1");
         assertThat(identity.getEmailAddress()).isEqualTo("test_person_1@example.com");
         assertThat(identity.getCommitCount()).isEqualTo(2);
         assertThat(identity.getFirstCommitTimestamp()).isBetween(createOutcome.getBeforeCommit(), createOutcome.getAfterCommit());
         assertThat(identity.getLastCommitTimestamp()).isBetween(updateOutcome.getBeforeCommit(), updateOutcome.getAfterCommit());
-        assertThat(component.getGitRepo().getAuthorCount()).isEqualTo(1);
-        assertThat(component.getGitRepo().getCommitterCount()).isEqualTo(1);
+        assertThat(gitRepo.getAuthorCount()).isEqualTo(1);
+        assertThat(gitRepo.getCommitterCount()).isEqualTo(1);
     }
 
     @ParameterizedTest
@@ -152,13 +154,14 @@ public class GitScannerTest extends BaseScannerTest {
         assertThat(codebase).isNotNull();
         assertThat(codebase.getRepo()).isEqualTo(testRepo);
         assertThat(codebase.getDir()).isNotEmptyDirectory();
-        assertThat(component.getGitRepo()).isNotNull();
-        assertThat(component.getGitRepo().getFirstCommitTimestamp()).isBetween(createOutcome.getBeforeCommit(), createOutcome.getAfterCommit());
-        assertThat(component.getGitRepo().getLastCommitTimestamp()).isBetween(updateOutcome2.getBeforeCommit(), updateOutcome2.getAfterCommit());
-        assertThat(component.getGitRepo().getCommitCount()).isEqualTo(3);
+        GitRepoState gitRepo = getGitRepo(component);
+        assertThat(gitRepo).isNotNull();
+        assertThat(gitRepo.getFirstCommitTimestamp()).isBetween(createOutcome.getBeforeCommit(), createOutcome.getAfterCommit());
+        assertThat(gitRepo.getLastCommitTimestamp()).isBetween(updateOutcome2.getBeforeCommit(), updateOutcome2.getAfterCommit());
+        assertThat(gitRepo.getCommitCount()).isEqualTo(3);
         Identity identity;
 
-        List<Identity> mainIdentities = getMainIdentityList(identityType, component);
+        List<Identity> mainIdentities = getMainIdentityList(identityType, gitRepo);
         assertThat(mainIdentities).hasSize(2);
         identity = mainIdentities.get(0);
         assertThat(identity.getNames()).containsExactly("Test Person 2");
@@ -173,7 +176,7 @@ public class GitScannerTest extends BaseScannerTest {
         assertThat(identity.getFirstCommitTimestamp()).isBetween(createOutcome.getBeforeCommit(), createOutcome.getAfterCommit());
         assertThat(identity.getLastCommitTimestamp()).isEqualTo(identity.getFirstCommitTimestamp());
 
-        List<Identity> otherIdentities = getOtherIdentityList(identityType, component);
+        List<Identity> otherIdentities = getOtherIdentityList(identityType, gitRepo);
         assertThat(otherIdentities).hasSize(1);
         identity = otherIdentities.get(0);
         assertThat(identity.getNames()).containsExactly("Test Person 1");
@@ -182,8 +185,8 @@ public class GitScannerTest extends BaseScannerTest {
         assertThat(identity.getFirstCommitTimestamp()).isBetween(createOutcome.getBeforeCommit(), createOutcome.getAfterCommit());
         assertThat(identity.getLastCommitTimestamp()).isBetween(updateOutcome2.getBeforeCommit(), updateOutcome2.getAfterCommit());
 
-        assertThat(component.getGitRepo().getAuthorCount()).isEqualTo(component.getGitRepo().getAuthors().size());
-        assertThat(component.getGitRepo().getCommitterCount()).isEqualTo(component.getGitRepo().getCommitters().size());
+        assertThat(gitRepo.getAuthorCount()).isEqualTo(gitRepo.getAuthors().size());
+        assertThat(gitRepo.getCommitterCount()).isEqualTo(gitRepo.getCommitters().size());
     }
 
     @ParameterizedTest
@@ -207,13 +210,14 @@ public class GitScannerTest extends BaseScannerTest {
         assertThat(codebase).isNotNull();
         assertThat(codebase.getRepo()).isEqualTo(testRepo);
         assertThat(codebase.getDir()).isNotEmptyDirectory();
-        assertThat(component.getGitRepo()).isNotNull();
-        assertThat(component.getGitRepo().getFirstCommitTimestamp()).isBetween(createOutcome.getBeforeCommit(), createOutcome.getAfterCommit());
-        assertThat(component.getGitRepo().getLastCommitTimestamp()).isBetween(updateOutcome.getBeforeCommit(), updateOutcome.getAfterCommit());
-        assertThat(component.getGitRepo().getCommitCount()).isEqualTo(2);
+        GitRepoState gitRepo = getGitRepo(component);
+        assertThat(gitRepo).isNotNull();
+        assertThat(gitRepo.getFirstCommitTimestamp()).isBetween(createOutcome.getBeforeCommit(), createOutcome.getAfterCommit());
+        assertThat(gitRepo.getLastCommitTimestamp()).isBetween(updateOutcome.getBeforeCommit(), updateOutcome.getAfterCommit());
+        assertThat(gitRepo.getCommitCount()).isEqualTo(2);
         Identity identity;
 
-        List<Identity> mainIdentities = getMainIdentityList(identityType, component);
+        List<Identity> mainIdentities = getMainIdentityList(identityType, gitRepo);
         assertThat(mainIdentities).hasSize(1);
         identity = mainIdentities.get(0);
         assertThat(identity.getNames()).containsExactly("Alternate Test Person 1", "Test Person 1");
@@ -222,7 +226,7 @@ public class GitScannerTest extends BaseScannerTest {
         assertThat(identity.getFirstCommitTimestamp()).isBetween(createOutcome.getBeforeCommit(), createOutcome.getAfterCommit());
         assertThat(identity.getLastCommitTimestamp()).isBetween(updateOutcome.getBeforeCommit(), updateOutcome.getAfterCommit());
 
-        List<Identity> otherIdentities = getOtherIdentityList(identityType, component);
+        List<Identity> otherIdentities = getOtherIdentityList(identityType, gitRepo);
         assertThat(otherIdentities).hasSize(1);
         identity = otherIdentities.get(0);
         assertThat(identity.getNames()).containsExactly("Test Person 1");
@@ -231,8 +235,8 @@ public class GitScannerTest extends BaseScannerTest {
         assertThat(identity.getFirstCommitTimestamp()).isBetween(createOutcome.getBeforeCommit(), createOutcome.getAfterCommit());
         assertThat(identity.getLastCommitTimestamp()).isBetween(updateOutcome.getBeforeCommit(), updateOutcome.getAfterCommit());
 
-        assertThat(component.getGitRepo().getAuthorCount()).isEqualTo(component.getGitRepo().getAuthors().size());
-        assertThat(component.getGitRepo().getCommitterCount()).isEqualTo(component.getGitRepo().getCommitters().size());
+        assertThat(gitRepo.getAuthorCount()).isEqualTo(gitRepo.getAuthors().size());
+        assertThat(gitRepo.getCommitterCount()).isEqualTo(gitRepo.getCommitters().size());
     }
 
     private static List<IdentityType> provideIdentityTypes() {
@@ -242,6 +246,12 @@ public class GitScannerTest extends BaseScannerTest {
     @SneakyThrows
     private void waitForNextCommitTimestampToBeForDifferentSecond() {
         Thread.sleep(TimeUnit.SECONDS.toMillis(2));
+    }
+
+    private GitRepoState getGitRepo(Component component) {
+        GitRepoState state = component.getState(GitRepoState.TYPE);
+        assertThat(state).isNotNull();
+        return state;
     }
 
     private RepoOperationOption getDifferentIdentityOption(IdentityType identityType) {
@@ -256,16 +266,16 @@ public class GitScannerTest extends BaseScannerTest {
                 : RepoOperationOption.DIFFERENT_COMMITTER_NAME;
     }
 
-    private List<Identity> getMainIdentityList(IdentityType identityType, Component component) {
+    private List<Identity> getMainIdentityList(IdentityType identityType, GitRepoState gitRepo) {
         return identityType == IdentityType.AUTHOR
-                ? component.getGitRepo().getAuthors()
-                : component.getGitRepo().getCommitters();
+                ? gitRepo.getAuthors()
+                : gitRepo.getCommitters();
     }
 
-    private List<Identity> getOtherIdentityList(IdentityType identityType, Component component) {
+    private List<Identity> getOtherIdentityList(IdentityType identityType, GitRepoState gitRepo) {
         return identityType == IdentityType.AUTHOR
-                ? component.getGitRepo().getCommitters()
-                : component.getGitRepo().getAuthors();
+                ? gitRepo.getCommitters()
+                : gitRepo.getAuthors();
     }
 
     private enum IdentityType {
