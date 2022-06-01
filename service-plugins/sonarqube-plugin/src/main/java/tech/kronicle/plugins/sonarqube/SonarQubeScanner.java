@@ -42,7 +42,13 @@ public class SonarQubeScanner extends ComponentAndCodebaseScanner {
     @Override
     public Output<Void, Component> scan(ComponentAndCodebase input) {
         try {
-            return createOutput(service.findProjects(input.getCodebase().getDir()));
+            List<SonarQubeProject> projects = service.findProjects(input.getCodebase().getDir());
+
+            if (projects.isEmpty()) {
+                return Output.empty(CACHE_TTL);
+            }
+
+            return createOutput(projects);
         } catch (SonarQubeScannerException e) {
             return createOutput(e);
         }

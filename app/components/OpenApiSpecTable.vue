@@ -7,8 +7,8 @@
       <tr>
         <th class="component">Component</th>
         <th class="teams">Teams</th>
-        <th class="location">Location</th>
         <th class="action">Action</th>
+        <th class="location">Location</th>
         <th class="description">Description</th>
       </tr>
     </thead>
@@ -22,9 +22,6 @@
         </td>
         <td class="teams">
           <ComponentTeams :component-teams="openApiSpec.component.teams" />
-        </td>
-        <td class="location">
-          {{ openApiSpec.url ? openApiSpec.url : openApiSpec.file }}
         </td>
         <td class="action table-secondary">
           <b-button
@@ -40,6 +37,9 @@
             <b-badge variant="danger">OpenAPI spec not found</b-badge>
           </div>
         </td>
+        <td class="location">
+          {{ openApiSpec.url ? openApiSpec.url : openApiSpec.file }}
+        </td>
         <td class="description">
           <Markdown :markdown="openApiSpec.description" />
         </td>
@@ -51,11 +51,12 @@
 <script lang="ts">
 import Vue, { PropType } from 'vue'
 import {BBadge, BButton} from 'bootstrap-vue'
-import { Component, OpenApiSpec } from '~/types/kronicle-service'
+import {Component, OpenApiSpec, OpenApiSpecsState} from '~/types/kronicle-service'
 import { compareOpenApiSpecs } from '~/src/openApiSpecComparator'
 import ComponentName from '~/components/ComponentName.vue'
 import ComponentTeams from '~/components/ComponentTeams.vue'
 import Markdown from '~/components/Markdown.vue'
+import {findComponentState} from "~/src/componentStateUtils";
 
 interface OpenApiSpecWithIndexAndComponent extends OpenApiSpec {
   index: number
@@ -81,7 +82,8 @@ export default Vue.extend({
       const that = this
       return that.components
         .flatMap((component) => {
-          return (component.openApiSpecs ?? []).map((openApiSpec, index) => {
+          const openApiSpecs: OpenApiSpecsState | undefined = findComponentState(component, 'openapi-specs')
+          return (openApiSpecs?.openApiSpecs ?? []).map((openApiSpec, index) => {
             return {
               ...openApiSpec,
               index,

@@ -1,6 +1,7 @@
 package tech.kronicle.plugins.nodejs;
 
 import org.slf4j.Logger;
+import tech.kronicle.pluginapi.scanners.models.Output;
 import tech.kronicle.plugintestutils.scanners.BaseCodebaseScannerTest;
 import tech.kronicle.sdk.models.*;
 import tech.kronicle.sdk.models.nodejs.NodeJsState;
@@ -24,6 +25,10 @@ public abstract class BaseNodeJsScannerTest extends BaseCodebaseScannerTest {
     protected void assertThatNodeJsIsUsed(Component component) {
         NodeJsState nodeJs = getNodeJs(component);
         assertThat(nodeJs.getUsed()).isTrue();
+    }
+
+    protected void assertNoState(Output<Void, Component> returnValue) {
+        assertThat(getMutatedComponent(returnValue).getStates()).isEmpty();
     }
 
     protected NodeJsState getNodeJs(Component component) {

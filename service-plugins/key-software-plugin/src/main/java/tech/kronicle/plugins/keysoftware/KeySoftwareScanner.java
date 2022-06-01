@@ -61,6 +61,11 @@ public class KeySoftwareScanner extends LateComponentScanner {
         }
 
         List<KeySoftware> keySoftware = getKeySoftware(softwares);
+
+        if (keySoftware.isEmpty()) {
+            return Output.empty(CACHE_TTL);
+        }
+
         return Output.ofTransformer(
                 component -> component.addState(
                     new KeySoftwaresState(KeySoftwarePlugin.ID, keySoftware)

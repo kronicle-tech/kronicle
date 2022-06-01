@@ -3,5 +3,5 @@
 exports[`TeamTabs renders the component 1`] = `
 "<div class=\\"my-3\\"><a href=\\"/teams/test-team-id\\" target=\\"_self\\" class=\\"btn my-1 btn-secondary\\">Info</a> <a href=\\"/teams/test-team-id/dependencies\\" target=\\"_self\\" class=\\"btn my-1 btn-secondary\\">Visualizations</a> <a href=\\"/teams/test-team-id/components\\" target=\\"_self\\" class=\\"btn my-1 btn-secondary\\">Components</a> <a href=\\"/teams/test-team-id/cross-functional-requirements\\" target=\\"_self\\" class=\\"btn my-1 btn-secondary\\">
     Cross Functional Requirements
-  </a> <a href=\\"/teams/test-team-id/tech-debts\\" target=\\"_self\\" class=\\"btn my-1 btn-secondary\\">Tech Debts</a> <a href=\\"/teams/test-team-id/tests\\" target=\\"_self\\" class=\\"btn my-1 btn-secondary\\">Tests</a> <a href=\\"/teams/test-team-id/errors\\" target=\\"_self\\" class=\\"btn my-1 btn-secondary\\">Errors</a> <a href=\\"/teams/test-team-id/openapi-specs\\" target=\\"_self\\" class=\\"btn my-1 btn-secondary\\">OpenAPI Specs</a></div>"
+  </a> <a href=\\"/teams/test-team-id/tech-debts\\" target=\\"_self\\" class=\\"btn my-1 btn-secondary\\">Tech Debts</a> <a href=\\"/teams/test-team-id/tests\\" target=\\"_self\\" class=\\"btn my-1 btn-secondary\\">Tests</a> <a href=\\"/teams/test-team-id/errors\\" target=\\"_self\\" class=\\"btn my-1 btn-secondary\\">Errors</a></div>"
 `;

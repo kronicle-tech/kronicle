@@ -65,8 +65,7 @@ public class JavaImportScannerTest extends BaseCodebaseScannerTest {
 
         // Then
         assertThat(maskTransformer(returnValue)).isEqualTo(maskTransformer(Output.empty(CACHE_TTL)));
-        List<Import> imports = getImports(returnValue);
-        assertThat(imports).isEmpty();
+        assertNoState(returnValue);
     }
 
     @Test
@@ -120,5 +119,9 @@ public class JavaImportScannerTest extends BaseCodebaseScannerTest {
         ImportsState state = getMutatedComponent(returnValue).getState(ImportsState.TYPE);
         assertThat(state).isNotNull();
         return state.getImports();
+    }
+
+    private void assertNoState(Output<Void, Component> returnValue) {
+        assertThat(getMutatedComponent(returnValue).getStates()).isEmpty();
     }
 }

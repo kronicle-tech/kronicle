@@ -6,8 +6,8 @@ exports[`OpenApiSpecTable when an OpenAPI spec has a URL but no spec renders the
     <tr>
       <th class=\\"component\\">Component</th>
       <th class=\\"teams\\">Teams</th>
-      <th class=\\"location\\">Location</th>
       <th class=\\"action\\">Action</th>
+      <th class=\\"location\\">Location</th>
       <th class=\\"description\\">Description</th>
     </tr>
   </thead>
@@ -17,11 +17,11 @@ exports[`OpenApiSpecTable when an OpenAPI spec has a URL but no spec renders the
       <td class=\\"teams\\">
         <!---->
       </td>
-      <td class=\\"location\\">
-        https://example.com/openapi-spec-1-1
-      </td>
       <td class=\\"action table-secondary\\">
         <div><span class=\\"badge badge-danger\\">OpenAPI spec not found</span></div>
+      </td>
+      <td class=\\"location\\">
+        https://example.com/openapi-spec-1-1
       </td>
       <td class=\\"description\\">
         <div>
@@ -39,8 +39,8 @@ exports[`OpenApiSpecTable when an OpenAPI spec has a file but no spec renders th
     <tr>
       <th class=\\"component\\">Component</th>
       <th class=\\"teams\\">Teams</th>
-      <th class=\\"location\\">Location</th>
       <th class=\\"action\\">Action</th>
+      <th class=\\"location\\">Location</th>
       <th class=\\"description\\">Description</th>
     </tr>
   </thead>
@@ -50,11 +50,11 @@ exports[`OpenApiSpecTable when an OpenAPI spec has a file but no spec renders th
       <td class=\\"teams\\">
         <!---->
       </td>
-      <td class=\\"location\\">
-        /openapi-spec-1-1.yaml
-      </td>
       <td class=\\"action table-secondary\\">
         <div><span class=\\"badge badge-danger\\">OpenAPI spec not found</span></div>
+      </td>
+      <td class=\\"location\\">
+        /openapi-spec-1-1.yaml
       </td>
       <td class=\\"description\\">
         <div>
@@ -72,8 +72,8 @@ exports[`OpenApiSpecTable when an OpenAPI spec has a spec and a URL renders the 
     <tr>
       <th class=\\"component\\">Component</th>
       <th class=\\"teams\\">Teams</th>
-      <th class=\\"location\\">Location</th>
       <th class=\\"action\\">Action</th>
+      <th class=\\"location\\">Location</th>
       <th class=\\"description\\">Description</th>
     </tr>
   </thead>
@@ -83,12 +83,12 @@ exports[`OpenApiSpecTable when an OpenAPI spec has a spec and a URL renders the 
       <td class=\\"teams\\">
         <!---->
       </td>
-      <td class=\\"location\\">
-        https://example.com/openapi-spec-1-1
-      </td>
       <td class=\\"action table-secondary\\"><a href=\\"/components/test-id-1/openapi-specs/1\\" target=\\"_self\\" class=\\"btn btn-info\\">
           View OpenAPI spec
         </a></td>
+      <td class=\\"location\\">
+        https://example.com/openapi-spec-1-1
+      </td>
       <td class=\\"description\\">
         <div>
           <p>Test OpenAPI Spec Description 1 1</p>
@@ -105,8 +105,8 @@ exports[`OpenApiSpecTable when an OpenAPI spec has a spec and a file renders the
     <tr>
       <th class=\\"component\\">Component</th>
       <th class=\\"teams\\">Teams</th>
-      <th class=\\"location\\">Location</th>
       <th class=\\"action\\">Action</th>
+      <th class=\\"location\\">Location</th>
       <th class=\\"description\\">Description</th>
     </tr>
   </thead>
@@ -116,12 +116,12 @@ exports[`OpenApiSpecTable when an OpenAPI spec has a spec and a file renders the
       <td class=\\"teams\\">
         <!---->
       </td>
-      <td class=\\"location\\">
-        /openapi-spec-1-1.yaml
-      </td>
       <td class=\\"action table-secondary\\"><a href=\\"/components/test-id-1/openapi-specs/1\\" target=\\"_self\\" class=\\"btn btn-info\\">
           View OpenAPI spec
         </a></td>
+      <td class=\\"location\\">
+        /openapi-spec-1-1.yaml
+      </td>
       <td class=\\"description\\">
         <div>
           <p>Test OpenAPI Spec Description 1 1</p>
@@ -138,8 +138,8 @@ exports[`OpenApiSpecTable when components is set to multiple components with mul
     <tr>
       <th class=\\"component\\">Component</th>
       <th class=\\"teams\\">Teams</th>
-      <th class=\\"location\\">Location</th>
       <th class=\\"action\\">Action</th>
+      <th class=\\"location\\">Location</th>
       <th class=\\"description\\">Description</th>
     </tr>
   </thead>
@@ -149,12 +149,12 @@ exports[`OpenApiSpecTable when components is set to multiple components with mul
       <td class=\\"teams\\">
         <!---->
       </td>
-      <td class=\\"location\\">
-        https://example.com/openapi-spec-1-1
-      </td>
       <td class=\\"action table-secondary\\"><a href=\\"/components/test-id-1/openapi-specs/1\\" target=\\"_self\\" class=\\"btn btn-info\\">
           View OpenAPI spec
         </a></td>
+      <td class=\\"location\\">
+        https://example.com/openapi-spec-1-1
+      </td>
       <td class=\\"description\\">
         <div>
           <p>Test OpenAPI Spec Description 1 1</p>
@@ -166,12 +166,12 @@ exports[`OpenApiSpecTable when components is set to multiple components with mul
       <td class=\\"teams\\">
         <!---->
       </td>
-      <td class=\\"location\\">
-        https://example.com/openapi-spec-1-2
-      </td>
       <td class=\\"action table-secondary\\"><a href=\\"/components/test-id-1/openapi-specs/2\\" target=\\"_self\\" class=\\"btn btn-info\\">
           View OpenAPI spec
         </a></td>
+      <td class=\\"location\\">
+        https://example.com/openapi-spec-1-2
+      </td>
       <td class=\\"description\\">
         <div>
           <p>Test OpenAPI Spec Description 1 2</p>
@@ -183,12 +183,12 @@ exports[`OpenApiSpecTable when components is set to multiple components with mul
       <td class=\\"teams\\">
         <!---->
       </td>
-      <td class=\\"location\\">
-        https://example.com/openapi-spec-2-1
-      </td>
       <td class=\\"action table-secondary\\"><a href=\\"/components/test-id-2/openapi-specs/1\\" target=\\"_self\\" class=\\"btn btn-info\\">
           View OpenAPI spec
         </a></td>
+      <td class=\\"location\\">
+        https://example.com/openapi-spec-2-1
+      </td>
       <td class=\\"description\\">
         <div>
           <p>Test OpenAPI Spec Description 2 1</p>
@@ -200,12 +200,12 @@ exports[`OpenApiSpecTable when components is set to multiple components with mul
       <td class=\\"teams\\">
         <!---->
       </td>
-      <td class=\\"location\\">
-        https://example.com/openapi-spec-2-2
-      </td>
       <td class=\\"action table-secondary\\"><a href=\\"/components/test-id-2/openapi-specs/2\\" target=\\"_self\\" class=\\"btn btn-info\\">
           View OpenAPI spec
         </a></td>
+      <td class=\\"location\\">
+        https://example.com/openapi-spec-2-2
+      </td>
       <td class=\\"description\\">
         <div>
           <p>Test OpenAPI Spec Description 2 2</p>

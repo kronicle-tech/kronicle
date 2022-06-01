@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.catchThrowable;
 
-public class GraphQlSpecsStateTest {
+public class GraphQlSchemasStateTest {
 
     @Test
     public void constructorShouldSupportDeserializationWithJackson() throws JsonProcessingException {
@@ -18,16 +18,16 @@ public class GraphQlSpecsStateTest {
         String json = "{}";
 
         // When
-        GraphQlSpecsState returnValue = new ObjectMapper().readValue(json, GraphQlSpecsState.class);
+        GraphQlSchemasState returnValue = new ObjectMapper().readValue(json, GraphQlSchemasState.class);
 
         // Then
         assertThat(returnValue).isNotNull();
     }
 
     @Test
-    public void constructorShouldMakeGraphQlSpecsAnUnmodifiableList() {
+    public void constructorShouldMakeGraphQlSchemasAnUnmodifiableList() {
         // Given
-        GraphQlSpecsState underTest = GraphQlSpecsState.builder().graphQlSchemas(new ArrayList<>()).build();
+        GraphQlSchemasState underTest = GraphQlSchemasState.builder().graphQlSchemas(new ArrayList<>()).build();
 
         // When
         Throwable thrown = catchThrowable(() -> underTest.getGraphQlSchemas().add(

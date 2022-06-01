@@ -95,8 +95,7 @@ public class KeySoftwareScannerTest extends BaseScannerTest {
 
         // Then
         assertThat(maskTransformer(returnValue)).isEqualTo(maskTransformer(Output.empty(CACHE_TTL)));
-        List<KeySoftware> keySoftware = getKeySoftwares(returnValue);
-        assertThat(keySoftware).isEmpty();
+        assertNoState(returnValue);
     }
 
     @Test
@@ -256,5 +255,9 @@ public class KeySoftwareScannerTest extends BaseScannerTest {
 
     private KeySoftwaresState getKeySoftwaresState(Output<Void, Component> returnValue) {
         return getMutatedComponent(returnValue).getState(KeySoftwaresState.TYPE);
+    }
+
+    private void assertNoState(Output<Void, Component> returnValue) {
+        assertThat(getMutatedComponent(returnValue).getStates()).isEmpty();
     }
 }

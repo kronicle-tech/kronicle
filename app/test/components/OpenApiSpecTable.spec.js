@@ -34,33 +34,45 @@ describe('OpenApiSpecTable', () => {
           {
             id: 'test-id-1',
             name: 'Test Name 1',
-            openApiSpecs: [
+            states: [
               {
-                spec: {},
-                url: 'https://example.com/openapi-spec-1-1',
-                description: 'Test OpenAPI Spec Description 1 1',
-              },
-              {
-                spec: {},
-                url: 'https://example.com/openapi-spec-1-2',
-                description: 'Test OpenAPI Spec Description 1 2',
-              },
+                pluginId: 'test-plugin-id',
+                type: 'openapi-specs',
+                openApiSpecs: [
+                  {
+                    spec: {},
+                    url: 'https://example.com/openapi-spec-1-1',
+                    description: 'Test OpenAPI Spec Description 1 1',
+                  },
+                  {
+                    spec: {},
+                    url: 'https://example.com/openapi-spec-1-2',
+                    description: 'Test OpenAPI Spec Description 1 2',
+                  },
+                ],
+              }
             ],
           },
           {
             id: 'test-id-2',
             name: 'Test Name 2',
-            openApiSpecs: [
+            states: [
               {
-                spec: {},
-                url: 'https://example.com/openapi-spec-2-1',
-                description: 'Test OpenAPI Spec Description 2 1',
-              },
-              {
-                spec: {},
-                url: 'https://example.com/openapi-spec-2-2',
-                description: 'Test OpenAPI Spec Description 2 2',
-              },
+                pluginId: 'test-plugin-id',
+                type: 'openapi-specs',
+                openApiSpecs: [
+                  {
+                    spec: {},
+                    url: 'https://example.com/openapi-spec-2-1',
+                    description: 'Test OpenAPI Spec Description 2 1',
+                  },
+                  {
+                    spec: {},
+                    url: 'https://example.com/openapi-spec-2-2',
+                    description: 'Test OpenAPI Spec Description 2 2',
+                  },
+                ],
+              }
             ],
           },
         ],
@@ -86,12 +98,18 @@ describe('OpenApiSpecTable', () => {
           {
             id: 'test-id-1',
             name: 'Test Name 1',
-            openApiSpecs: [
+            states: [
               {
-                spec: {},
-                url: 'https://example.com/openapi-spec-1-1',
-                description: 'Test OpenAPI Spec Description 1 1',
-              },
+                pluginId: 'test-plugin-id',
+                type: 'openapi-specs',
+                openApiSpecs: [
+                  {
+                    spec: {},
+                    url: 'https://example.com/openapi-spec-1-1',
+                    description: 'Test OpenAPI Spec Description 1 1',
+                  },
+                ],
+              }
             ],
           },
         ],
@@ -111,12 +129,18 @@ describe('OpenApiSpecTable', () => {
           {
             id: 'test-id-1',
             name: 'Test Name 1',
-            openApiSpecs: [
+            states: [
               {
-                spec: {},
-                file: '/openapi-spec-1-1.yaml',
-                description: 'Test OpenAPI Spec Description 1 1',
-              },
+                pluginId: 'test-plugin-id',
+                type: 'openapi-specs',
+                openApiSpecs: [
+                  {
+                    spec: {},
+                    file: '/openapi-spec-1-1.yaml',
+                    description: 'Test OpenAPI Spec Description 1 1',
+                  },
+                ],
+              }
             ],
           },
         ],
@@ -136,11 +160,17 @@ describe('OpenApiSpecTable', () => {
           {
             id: 'test-id-1',
             name: 'Test Name 1',
-            openApiSpecs: [
+            states: [
               {
-                url: 'https://example.com/openapi-spec-1-1',
-                description: 'Test OpenAPI Spec Description 1 1',
-              },
+                pluginId: 'test-plugin-id',
+                type: 'openapi-specs',
+                openApiSpecs: [
+                  {
+                    url: 'https://example.com/openapi-spec-1-1',
+                    description: 'Test OpenAPI Spec Description 1 1',
+                  },
+                ],
+              }
             ],
           },
         ],
@@ -160,11 +190,17 @@ describe('OpenApiSpecTable', () => {
           {
             id: 'test-id-1',
             name: 'Test Name 1',
-            openApiSpecs: [
+            states: [
               {
-                file: '/openapi-spec-1-1.yaml',
-                description: 'Test OpenAPI Spec Description 1 1',
-              },
+                pluginId: 'test-plugin-id',
+                type: 'openapi-specs',
+                openApiSpecs: [
+                  {
+                    file: '/openapi-spec-1-1.yaml',
+                    description: 'Test OpenAPI Spec Description 1 1',
+                  },
+                ],
+              }
             ],
           },
         ],

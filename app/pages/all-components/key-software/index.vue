@@ -49,10 +49,11 @@
 <script lang="ts">
 import Vue from 'vue'
 import { MetaInfo } from 'vue-meta'
-import { Component } from '~/types/kronicle-service'
+import {Component, KeySoftwaresState} from '~/types/kronicle-service'
 import AllComponentsTabs from '~/components/AllComponentsTabs.vue'
 import ComponentFilters from '~/components/ComponentFilters.vue'
 import ComponentName from '~/components/ComponentName.vue'
+import {findComponentState} from "~/src/componentStateUtils";
 
 export default Vue.extend({
   components: {
@@ -62,7 +63,7 @@ export default Vue.extend({
   },
   async asyncData({ $config, route, store }) {
     const components = await fetch(
-      `${$config.serviceBaseUrl}/v1/components?fields=components(id,name,typeId,tags,teams,platformId,keySoftware)`
+      `${$config.serviceBaseUrl}/v1/components?stateType=key-softwares&fields=components(id,name,typeId,tags,teams,platformId,states)`
     )
       .then((res) => res.json())
       .then((json) => json.components as Component[])
@@ -93,11 +94,13 @@ export default Vue.extend({
     keySoftwareNames(): string[] | undefined {
       const names = this.filteredComponents
         .map((component) => {
-          if (!component.keySoftware) {
+          const keySoftwares: KeySoftwaresState | undefined = findComponentState(component, 'key-softwares')
+
+          if (!keySoftwares) {
             return undefined
           }
 
-          return component.keySoftware.map((keySoftware) => keySoftware.name)
+          return keySoftwares.keySoftwares.map((keySoftware) => keySoftware.name)
         })
         .flat()
         .sort()
@@ -106,7 +109,8 @@ export default Vue.extend({
   },
   methods: {
     getKeySoftwareVersions(component: Component, keySoftwareName: string) {
-      const keySoftware = component.keySoftware?.find(
+      const keySoftwares: KeySoftwaresState | undefined = findComponentState(component, 'key-softwares')
+      const keySoftware = keySoftwares?.keySoftwares.find(
         (keySoftware) => keySoftware.name === keySoftwareName
       )
 

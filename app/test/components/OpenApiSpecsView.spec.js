@@ -52,15 +52,19 @@ describe('OpenApiSpecsView', () => {
         components: [
           createComponent({
             componentNumber: 1,
-            additionalFields: {
-              openApiSpecs: [
-                {
-                  spec: {},
-                  url: 'https://example.com/openapi-spec-1-1',
-                  description: 'Test OpenAPI Spec Description 1 1',
-                },
-              ],
-            },
+            additionalStates: [
+              {
+                pluginId: 'test-plugin-id',
+                type: 'openapi-specs',
+                openApiSpecs: [
+                  {
+                    spec: {},
+                    url: 'https://example.com/openapi-spec-1-1',
+                    description: 'Test OpenAPI Spec Description 1 1',
+                  },
+                ],
+              },
+            ],
           }),
         ],
       }
@@ -78,20 +82,24 @@ describe('OpenApiSpecsView', () => {
         components: [
           createComponent({
             componentNumber: 1,
-            additionalFields: {
-              openApiSpecs: [
-                {
-                  spec: {},
-                  url: 'https://example.com/openapi-spec-1-1',
-                  description: 'Test OpenAPI Spec Description 1 1',
-                },
-                {
-                  spec: {},
-                  url: 'https://example.com/openapi-spec-1-2',
-                  description: 'Test OpenAPI Spec Description 1 2',
-                },
-              ],
-            },
+            additionalStates: [
+              {
+                pluginId: 'test-plugin-id',
+                type: 'openapi-specs',
+                openApiSpecs: [
+                  {
+                    spec: {},
+                    url: 'https://example.com/openapi-spec-1-1',
+                    description: 'Test OpenAPI Spec Description 1 1',
+                  },
+                  {
+                    spec: {},
+                    url: 'https://example.com/openapi-spec-1-2',
+                    description: 'Test OpenAPI Spec Description 1 2',
+                  },
+                ],
+              },
+            ],
           }),
         ],
       }
@@ -109,37 +117,45 @@ describe('OpenApiSpecsView', () => {
         components: [
           createComponent({
             componentNumber: 1,
-            additionalFields: {
-              openApiSpecs: [
-                {
-                  spec: {},
-                  url: 'https://example.com/openapi-spec-1-1',
-                  description: 'Test OpenAPI Spec Description 1 1',
-                },
-                {
-                  spec: {},
-                  url: 'https://example.com/openapi-spec-1-2',
-                  description: 'Test OpenAPI Spec Description 1 2',
-                },
-              ],
-            },
+            additionalStates: [
+              {
+                pluginId: 'test-plugin-id',
+                type: 'openapi-specs',
+                openApiSpecs: [
+                  {
+                    spec: {},
+                    url: 'https://example.com/openapi-spec-1-1',
+                    description: 'Test OpenAPI Spec Description 1 1',
+                  },
+                  {
+                    spec: {},
+                    url: 'https://example.com/openapi-spec-1-2',
+                    description: 'Test OpenAPI Spec Description 1 2',
+                  },
+                ],
+              },
+            ],
           }),
           createComponent({
             componentNumber: 2,
-            additionalFields: {
-              openApiSpecs: [
-                {
-                  spec: {},
-                  url: 'https://example.com/openapi-spec-2-1',
-                  description: 'Test OpenAPI Spec Description 2 1',
-                },
-                {
-                  spec: {},
-                  url: 'https://example.com/openapi-spec-2-2',
-                  description: 'Test OpenAPI Spec Description 2 2',
-                },
-              ],
-            },
+            additionalStates: [
+              {
+                pluginId: 'test-plugin-id',
+                type: 'openapi-specs',
+                openApiSpecs: [
+                  {
+                    spec: {},
+                    url: 'https://example.com/openapi-spec-2-1',
+                    description: 'Test OpenAPI Spec Description 2 1',
+                  },
+                  {
+                    spec: {},
+                    url: 'https://example.com/openapi-spec-2-2',
+                    description: 'Test OpenAPI Spec Description 2 2',
+                  },
+                ],
+              },
+            ],
           }),
         ],
       }
@@ -180,15 +196,19 @@ describe('OpenApiSpecsView', () => {
         components: [
           createComponent({
             componentNumber: 1,
-            additionalFields: {
-              openApiSpecs: [
-                {
-                  spec: {},
-                  url: 'https://example.com/openapi-spec-1-1',
-                  description: 'Test OpenAPI Spec Description 1 1',
-                },
-              ],
-            },
+            additionalStates: [
+              {
+                pluginId: 'test-plugin-id',
+                type: 'openapi-specs',
+                openApiSpecs: [
+                  {
+                    spec: {},
+                    url: 'https://example.com/openapi-spec-1-1',
+                    description: 'Test OpenAPI Spec Description 1 1',
+                  },
+                ],
+              },
+            ],
           }),
         ],
       }
@@ -207,15 +227,19 @@ describe('OpenApiSpecsView', () => {
         components: [
           createComponent({
             componentNumber: 1,
-            additionalFields: {
-              openApiSpecs: [
-                {
-                  spec: {},
-                  file: '/openapi-spec-1-1.yaml',
-                  description: 'Test OpenAPI Spec Description 1 1',
-                },
-              ],
-            },
+            additionalStates: [
+              {
+                pluginId: 'test-plugin-id',
+                type: 'openapi-specs',
+                openApiSpecs: [
+                  {
+                    spec: {},
+                    file: '/openapi-spec-1-1.yaml',
+                    description: 'Test OpenAPI Spec Description 1 1',
+                  },
+                ],
+              },
+            ],
           }),
         ],
       }
@@ -234,14 +258,18 @@ describe('OpenApiSpecsView', () => {
         components: [
           createComponent({
             componentNumber: 1,
-            additionalFields: {
-              openApiSpecs: [
-                {
-                  url: 'https://example.com/openapi-spec-1-1',
-                  description: 'Test OpenAPI Spec Description 1 1',
-                },
-              ],
-            },
+            additionalStates: [
+              {
+                pluginId: 'test-plugin-id',
+                type: 'openapi-specs',
+                openApiSpecs: [
+                  {
+                    url: 'https://example.com/openapi-spec-1-1',
+                    description: 'Test OpenAPI Spec Description 1 1',
+                  },
+                ],
+              },
+            ],
           }),
         ],
       }
@@ -260,14 +288,18 @@ describe('OpenApiSpecsView', () => {
         components: [
           createComponent({
             componentNumber: 1,
-            additionalFields: {
-              openApiSpecs: [
-                {
-                  file: '/openapi-spec-1-1.yaml',
-                  description: 'Test OpenAPI Spec Description 1 1',
-                },
-              ],
-            },
+            additionalStates: [
+              {
+                pluginId: 'test-plugin-id',
+                type: 'openapi-specs',
+                openApiSpecs: [
+                  {
+                    file: '/openapi-spec-1-1.yaml',
+                    description: 'Test OpenAPI Spec Description 1 1',
+                  },
+                ],
+              },
+            ],
           }),
         ],
       }

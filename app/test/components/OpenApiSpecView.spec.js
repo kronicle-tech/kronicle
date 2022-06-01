@@ -21,16 +21,22 @@ describe('OpenApiSpecView', () => {
   beforeEach(() => {
     propsData = {
       component: {
-        openApiSpecs: [
+        states: [
           {
-            scannerId: 'test-scanner-1',
-            url: 'https://example.com/test-1',
-            description: 'Text Description 1',
-            spec: {
-              testField: 'test-value-1',
-            },
-          },
-        ],
+            pluginId: 'test-plugin-id',
+            type: 'openapi-specs',
+            openApiSpecs: [
+              {
+                scannerId: 'test-scanner-1',
+                url: 'https://example.com/test-1',
+                description: 'Text Description 1',
+                spec: {
+                  testField: 'test-value-1',
+                },
+              },
+            ],
+          }
+        ]
       },
       openApiSpecIndex: 1,
     }
@@ -61,7 +67,7 @@ describe('OpenApiSpecView', () => {
     await createWrapper()
     expect(window.Redoc.init).toBeCalledTimes(1)
     expect(window.Redoc.init.mock.calls[0][0]).toEqual(
-      propsData.component.openApiSpecs[0].spec
+      propsData.component.states[0].openApiSpecs[0].spec
     )
   })
 })

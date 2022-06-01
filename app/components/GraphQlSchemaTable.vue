@@ -7,8 +7,8 @@
       <tr>
         <th class="component">Component</th>
         <th class="teams">Teams</th>
-        <th class="location">Location</th>
         <th class="action">Action</th>
+        <th class="location">Location</th>
         <th class="description">Description</th>
       </tr>
     </thead>
@@ -22,9 +22,6 @@
         </td>
         <td class="teams">
           <ComponentTeams :component-teams="graphQlSchema.component.teams" />
-        </td>
-        <td class="location">
-          {{ graphQlSchema.url ? graphQlSchema.url : graphQlSchema.file }}
         </td>
         <td class="action table-secondary">
           <b-button
@@ -40,6 +37,9 @@
             <b-badge variant="danger">GraphQL schema not found</b-badge>
           </div>
         </td>
+        <td class="location">
+          {{ graphQlSchema.url ? graphQlSchema.url : graphQlSchema.file }}
+        </td>
         <td class="description">
           <Markdown :markdown="graphQlSchema.description" />
         </td>
@@ -51,11 +51,12 @@
 <script lang="ts">
 import Vue, { PropType } from 'vue'
 import {BBadge, BButton} from 'bootstrap-vue'
-import { Component, GraphQlSchema } from '~/types/kronicle-service'
+import {Component, GraphQlSchema, GraphQlSchemasState} from '~/types/kronicle-service'
 import { compareGraphQlSchemas } from '~/src/graphQlSchemaComparator'
 import ComponentName from '~/components/ComponentName.vue'
 import ComponentTeams from '~/components/ComponentTeams.vue'
 import Markdown from '~/components/Markdown.vue'
+import {findComponentState} from "~/src/componentStateUtils";
 
 interface GraphQlSchemaWithIndexAndComponent extends GraphQlSchema {
   index: number
@@ -81,7 +82,8 @@ export default Vue.extend({
       const that = this
       return that.components
         .flatMap((component) => {
-          return (component.graphQlSchemas ?? []).map((graphQlSchema, index) => {
+          const graphQlSchemas: GraphQlSchemasState | undefined = findComponentState(component, 'graphql-schemas')
+          return (graphQlSchemas?.graphQlSchemas ?? []).map((graphQlSchema, index) => {
             return {
               ...graphQlSchema,
               index,

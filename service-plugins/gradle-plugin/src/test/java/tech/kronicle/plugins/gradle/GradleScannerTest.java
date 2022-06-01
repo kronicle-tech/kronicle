@@ -87,8 +87,8 @@ public class GradleScannerTest extends BaseCodebaseScannerTest {
         assertThat(maskTransformer(returnValue)).isEqualTo(maskTransformer(Output.empty(CACHE_TTL)));
         Component component = getMutatedComponent(returnValue);
         assertThat(getGradle(component).getUsed()).isTrue();
-        assertThat(getSoftwareRepositories(component)).isEmpty();
-        assertThat(getSoftwares(component)).isEmpty();
+        assertNoSoftwareRepositoriesState(component);
+        assertNoSoftwaresState(component);
     }
 
     @Test
@@ -110,8 +110,8 @@ public class GradleScannerTest extends BaseCodebaseScannerTest {
         assertThat(maskTransformer(returnValue)).isEqualTo(maskTransformer(Output.empty(CACHE_TTL)));
         Component component = getMutatedComponent(returnValue);
         assertThat(getGradle(component).getUsed()).isFalse();
-        assertThat(getSoftwareRepositories(component)).isEmpty();
-        assertThat(getSoftwares(component)).isEmpty();
+        assertNoSoftwareRepositoriesState(component);
+        assertNoSoftwaresState(component);
     }
 
     @Test
@@ -142,7 +142,7 @@ public class GradleScannerTest extends BaseCodebaseScannerTest {
                 softwareRepository1.withScannerId(SCANNER_ID),
                 softwareRepository2.withScannerId(SCANNER_ID)
         );
-        assertThat(getSoftwares(component)).isEmpty();
+        assertNoSoftwaresState(component);
     }
 
     @Test
@@ -169,7 +169,7 @@ public class GradleScannerTest extends BaseCodebaseScannerTest {
         assertThat(maskTransformer(returnValue)).isEqualTo(maskTransformer(Output.empty(CACHE_TTL)));
         Component component = getMutatedComponent(returnValue);
         assertThat(getGradle(component).getUsed()).isTrue();
-        assertThat(getSoftwareRepositories(component)).isEmpty();
+        assertNoSoftwareRepositoriesState(component);
         assertThat(getSoftwares(component)).containsExactly(
                 software1.withScannerId(SCANNER_ID),
                 software2.withScannerId(SCANNER_ID)
@@ -192,5 +192,15 @@ public class GradleScannerTest extends BaseCodebaseScannerTest {
         SoftwaresState state = component.getState(SoftwaresState.TYPE);
         assertThat(state).isNotNull();
         return state.getSoftwares();
+    }
+
+    private void assertNoSoftwareRepositoriesState(Component component) {
+        SoftwaresState state = component.getState("software-repositories");
+        assertThat(state).isNull();
+    }
+
+    private void assertNoSoftwaresState(Component component) {
+        SoftwaresState state = component.getState("softwares");
+        assertThat(state).isNull();
     }
 }

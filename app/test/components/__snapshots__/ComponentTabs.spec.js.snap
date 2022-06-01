@@ -13,15 +13,17 @@ exports[`ComponentTabs when there are no state types renders the component with 
     Cross Functional Requirements
   </a> <a href=\\"/components/test-component-id-1/tech-debts\\" target=\\"_self\\" class=\\"btn my-1 btn-secondary\\">
     Tech Debts
-  </a> <a href=\\"/components/test-component-id-1/tests\\" target=\\"_self\\" class=\\"btn my-1 btn-secondary\\">Tests</a> <a href=\\"/components/test-component-id-1/errors\\" target=\\"_self\\" class=\\"btn my-1 btn-secondary\\">Errors</a> <a href=\\"/components/test-component-id-1/openapi-specs\\" target=\\"_self\\" class=\\"btn my-1 btn-secondary\\">
-    OpenAPI
-  </a> <a href=\\"/components/test-component-id-1/graphql-schemas\\" target=\\"_self\\" class=\\"btn my-1 btn-secondary\\">
-    GraphQL
-  </a> <a href=\\"/components/test-component-id-1/repo\\" target=\\"_self\\" class=\\"btn my-1 btn-secondary\\">Repo</a> <a href=\\"/components/test-component-id-1/readme\\" target=\\"_self\\" class=\\"btn my-1 btn-secondary\\">README</a> <a href=\\"/components/test-component-id-1/to-dos\\" target=\\"_self\\" class=\\"btn my-1 btn-secondary\\">To Dos</a> <a href=\\"/components/test-component-id-1/lines-of-code\\" target=\\"_self\\" class=\\"btn my-1 btn-secondary\\">
+  </a> <a href=\\"/components/test-component-id-1/errors\\" target=\\"_self\\" class=\\"btn my-1 btn-secondary\\">Errors</a>
+  <!---->
+  <!---->
+  <!---->
+  <!---->
+  <!----> <a href=\\"/components/test-component-id-1/lines-of-code\\" target=\\"_self\\" class=\\"btn my-1 btn-secondary\\">
     Lines of Code
-  </a> <a href=\\"/components/test-component-id-1/software-repositories\\" target=\\"_self\\" class=\\"btn my-1 btn-secondary\\">
-    Software Repositories
-  </a> <a href=\\"/components/test-component-id-1/software\\" target=\\"_self\\" class=\\"btn my-1 btn-secondary\\">Software</a> <a href=\\"/components/test-component-id-1/imports\\" target=\\"_self\\" class=\\"btn my-1 btn-secondary\\">Imports</a></div>"
+  </a>
+  <!---->
+  <!---->
+  <!----> <a href=\\"/components/test-component-id-1/tests\\" target=\\"_self\\" class=\\"btn my-1 btn-secondary\\">Tests</a></div>"
 `;
 
 exports[`ComponentTabs when there are no state types renders the component with less tabs 1`] = `
@@ -37,12 +39,14 @@ exports[`ComponentTabs when there are no state types renders the component with 
     Cross Functional Requirements
   </a> <a href=\\"/components/test-component-id-1/tech-debts\\" target=\\"_self\\" class=\\"btn my-1 btn-secondary\\">
     Tech Debts
-  </a> <a href=\\"/components/test-component-id-1/tests\\" target=\\"_self\\" class=\\"btn my-1 btn-secondary\\">Tests</a> <a href=\\"/components/test-component-id-1/errors\\" target=\\"_self\\" class=\\"btn my-1 btn-secondary\\">Errors</a> <a href=\\"/components/test-component-id-1/openapi-specs\\" target=\\"_self\\" class=\\"btn my-1 btn-secondary\\">
-    OpenAPI
-  </a> <a href=\\"/components/test-component-id-1/graphql-schemas\\" target=\\"_self\\" class=\\"btn my-1 btn-secondary\\">
-    GraphQL
-  </a> <a href=\\"/components/test-component-id-1/repo\\" target=\\"_self\\" class=\\"btn my-1 btn-secondary\\">Repo</a> <a href=\\"/components/test-component-id-1/readme\\" target=\\"_self\\" class=\\"btn my-1 btn-secondary\\">README</a> <a href=\\"/components/test-component-id-1/to-dos\\" target=\\"_self\\" class=\\"btn my-1 btn-secondary\\">To Dos</a>
-  <!----> <a href=\\"/components/test-component-id-1/software-repositories\\" target=\\"_self\\" class=\\"btn my-1 btn-secondary\\">
-    Software Repositories
-  </a> <a href=\\"/components/test-component-id-1/software\\" target=\\"_self\\" class=\\"btn my-1 btn-secondary\\">Software</a> <a href=\\"/components/test-component-id-1/imports\\" target=\\"_self\\" class=\\"btn my-1 btn-secondary\\">Imports</a></div>"
+  </a> <a href=\\"/components/test-component-id-1/errors\\" target=\\"_self\\" class=\\"btn my-1 btn-secondary\\">Errors</a>
+  <!---->
+  <!---->
+  <!---->
+  <!---->
+  <!---->
+  <!---->
+  <!---->
+  <!---->
+  <!----> <a href=\\"/components/test-component-id-1/tests\\" target=\\"_self\\" class=\\"btn my-1 btn-secondary\\">Tests</a></div>"
 `;

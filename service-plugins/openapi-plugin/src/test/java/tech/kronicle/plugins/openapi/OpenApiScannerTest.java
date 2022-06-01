@@ -141,8 +141,7 @@ public class OpenApiScannerTest extends BaseCodebaseScannerTest {
 
         // Then
         assertThat(maskTransformer(returnValue)).isEqualTo(maskTransformer(Output.empty(CACHE_TTL)));
-        List<OpenApiSpec> openApiSpecs = getSpecs(returnValue);
-        assertThat(openApiSpecs).isEmpty();
+        assertNoState(returnValue);
     }
 
     @Test
@@ -190,9 +189,9 @@ public class OpenApiScannerTest extends BaseCodebaseScannerTest {
 
         // Then
         assertThat(maskTransformer(returnValue)).isEqualTo(maskTransformer(Output.empty(CACHE_TTL)));
-        List<OpenApiSpec> returnOpenApiSpecs = new ArrayList<>(getSpecs(returnValue));
 
         if (scanCodebases) {
+            List<OpenApiSpec> returnOpenApiSpecs = new ArrayList<>(getSpecs(returnValue));
             assertThat(returnOpenApiSpecs).hasSize(3);
             returnOpenApiSpecs.sort(Comparator.comparing(OpenApiSpec::getFile));
             OpenApiSpec returnOpenApiSpec;
@@ -215,7 +214,7 @@ public class OpenApiScannerTest extends BaseCodebaseScannerTest {
             assertThat(returnOpenApiSpec.getSpec()).isNotNull();
             assertThat(getSpecAsJsonTree(returnOpenApiSpec).has("openapi")).isTrue();
         } else {
-            assertThat(returnOpenApiSpecs).isEmpty();
+            assertNoState(returnValue);
         }
     }
 
@@ -403,8 +402,7 @@ public class OpenApiScannerTest extends BaseCodebaseScannerTest {
 
         // Then
         assertThat(maskTransformer(returnValue)).isEqualTo(maskTransformer(Output.empty(CACHE_TTL)));
-        List<OpenApiSpec> returnOpenApiSpecs = getSpecs(returnValue);
-        assertThat(returnOpenApiSpecs).isEmpty();
+        assertNoState(returnValue);
     }
 
     private OpenApiScanner createOpenApiScanner(boolean scanCodebases) {
@@ -479,5 +477,9 @@ public class OpenApiScannerTest extends BaseCodebaseScannerTest {
         OpenApiSpecsState state = getMutatedComponentIgnoringErrors(returnValue)
                 .getState(OpenApiSpecsState.TYPE);
         return state.getOpenApiSpecs();
+    }
+
+    private void assertNoState(Output<Void, Component> returnValue) {
+        assertThat(getMutatedComponent(returnValue).getStates()).isEmpty();
     }
 }

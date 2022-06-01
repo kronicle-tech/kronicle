@@ -55,10 +55,11 @@
 import Vue from 'vue'
 import { MetaInfo } from 'vue-meta'
 import {BCard, BListGroup, BListGroupItem} from 'bootstrap-vue'
-import {Component, Software} from '~/types/kronicle-service'
+import {Component, Software, SoftwaresState} from '~/types/kronicle-service'
 import ComponentTabs from '~/components/ComponentTabs.vue'
 import FormattedNumber from '~/components/FormattedNumber.vue'
 import {fetchComponentStateTypes} from "~/src/fetchComponentStateTypes";
+import {findComponentState} from "~/src/componentStateUtils";
 
 export default Vue.extend({
   components: {
@@ -72,7 +73,7 @@ export default Vue.extend({
     const stateTypes = await fetchComponentStateTypes($config, route)
 
     const component = await fetch(
-      `${$config.serviceBaseUrl}/v1/components/${route.params.componentId}?fields=component(id,name,software)`
+      `${$config.serviceBaseUrl}/v1/components/${route.params.componentId}?stateType=softwares&fields=component(id,name,teams,states)`
     )
       .then((res) => res.json())
       .then((json) => json.component as Component)
@@ -95,8 +96,11 @@ export default Vue.extend({
   },
   computed: {
     softwareItems(): Software[] {
-      return [...(this.component.software ?? [])]
-      .sort((a: Software, b: Software) =>
+      const softwares: SoftwaresState | undefined = findComponentState(this.component, 'softwares')
+      if (!softwares) {
+        return []
+      }
+      return softwares.softwares.sort((a: Software, b: Software) =>
         a.scannerId.localeCompare(b.scannerId) || a.name.localeCompare((b.name)) || a.version.localeCompare(b.version)
       )
     },

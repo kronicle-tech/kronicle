@@ -25,7 +25,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr v-for="(toDo, toDoIndex) in component.toDos" :key="toDoIndex">
+        <tr v-for="(toDo, toDoIndex) in toDos" :key="toDoIndex">
           <td>{{ toDo.file }}</td>
           <td>{{ toDo.description }}</td>
         </tr>
@@ -40,8 +40,9 @@ import Vue from 'vue'
 import { MetaInfo } from 'vue-meta'
 import {BCard, BListGroup, BListGroupItem} from 'bootstrap-vue'
 import ComponentTabs from '~/components/ComponentTabs.vue'
-import { Component } from '~/types/kronicle-service'
+import {Component, ToDo, ToDosState} from '~/types/kronicle-service'
 import {fetchComponentStateTypes} from "~/src/fetchComponentStateTypes";
+import {findComponentState} from "~/src/componentStateUtils";
 
 export default Vue.extend({
   components: {
@@ -54,7 +55,7 @@ export default Vue.extend({
     const stateTypes = await fetchComponentStateTypes($config, route)
 
     const component = await fetch(
-      `${$config.serviceBaseUrl}/v1/components/${route.params.componentId}?fields=component(id,name,toDos)`
+      `${$config.serviceBaseUrl}/v1/components/${route.params.componentId}?stateType=to-dos&fields=component(id,name,teams,states)`
     )
       .then((res) => res.json())
       .then((json) => json.component as Component)
@@ -76,8 +77,12 @@ export default Vue.extend({
     }
   },
   computed: {
+    toDos(): ToDo[] {
+      const toDos: ToDosState | undefined = findComponentState(this.component, 'to-dos')
+      return toDos?.toDos ?? []
+    },
     toDoCount(): number {
-      return this.component.toDos?.length ?? 0
+      return this.toDos.length
     },
     toDoCountVariant(): string {
       return this.toDoCount > 0 ? 'danger' : 'success'

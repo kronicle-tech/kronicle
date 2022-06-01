@@ -19,6 +19,7 @@ import javax.inject.Inject;
 import java.time.Duration;
 import java.util.Collection;
 import java.util.List;
+import java.util.function.UnaryOperator;
 import java.util.stream.Collectors;
 
 import static java.util.Objects.nonNull;
@@ -54,8 +55,17 @@ public class OpenApiScanner extends ComponentAndCodebaseScanner {
     @Override
     public Output<Void, Component> scan(ComponentAndCodebase input) {
         ScanOutput scanOutput = processComponentAndCodebase(input);
+        List<OpenApiSpec> specs = scanOutput.getSpecs();
+        UnaryOperator<Component> transformer;
+
+        if (specs.isEmpty()) {
+            transformer = null;
+        } else {
+            transformer = (Component component) -> component.addState(createState(specs));
+        }
+
         return Output.builder(CACHE_TTL)
-                .transformer((Component component) -> component.addState(createState(scanOutput.getSpecs())))
+                .transformer(transformer)
                 .errors(scanOutput.getErrors())
                 .build();
     }

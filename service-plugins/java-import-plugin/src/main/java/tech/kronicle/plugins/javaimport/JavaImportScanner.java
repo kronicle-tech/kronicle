@@ -47,6 +47,11 @@ public class JavaImportScanner extends CodebaseScanner {
                 .distinct()
                 .sorted(Comparators.IMPORTS)
                 .collect(Collectors.toList());
+
+        if (imports.isEmpty()) {
+            return Output.empty(CACHE_TTL);
+        }
+
         return Output.ofTransformer(
                 component -> component.addState(new ImportsState(JavaImportPlugin.ID, imports)),
                 CACHE_TTL

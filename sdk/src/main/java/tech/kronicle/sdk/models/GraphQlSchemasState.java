@@ -19,9 +19,9 @@ import static tech.kronicle.sdk.utils.ListUtils.createUnmodifiableList;
 @With
 @Builder(toBuilder = true)
 @Jacksonized
-public class GraphQlSpecsState implements ComponentState {
+public class GraphQlSchemasState implements ComponentState {
 
-    public static final String TYPE = "graphql-specs";
+    public static final String TYPE = "graphql-schemas";
 
     String type = TYPE;
     @NotBlank
@@ -30,7 +30,7 @@ public class GraphQlSpecsState implements ComponentState {
     @NotNull
     List<@Valid GraphQlSchema> graphQlSchemas;
 
-    public GraphQlSpecsState(String pluginId, List<@Valid GraphQlSchema> graphQlSchemas) {
+    public GraphQlSchemasState(String pluginId, List<@Valid GraphQlSchema> graphQlSchemas) {
         this.pluginId = pluginId;
         this.graphQlSchemas = createUnmodifiableList(graphQlSchemas);
     }

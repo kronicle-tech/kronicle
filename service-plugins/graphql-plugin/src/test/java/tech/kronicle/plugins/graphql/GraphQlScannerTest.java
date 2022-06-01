@@ -15,12 +15,10 @@ import tech.kronicle.plugins.graphql.services.SchemaFileReader;
 import tech.kronicle.plugins.graphql.services.SchemaTransformer;
 import tech.kronicle.plugintestutils.scanners.BaseCodebaseScannerTest;
 import tech.kronicle.sdk.models.Component;
-import tech.kronicle.sdk.models.GraphQlSpecsState;
+import tech.kronicle.sdk.models.GraphQlSchemasState;
 import tech.kronicle.sdk.models.graphql.GraphQlSchema;
 import tech.kronicle.utils.ThrowableToScannerErrorMapper;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
 import java.time.Duration;
 import java.util.List;
 
@@ -297,8 +295,8 @@ public class GraphQlScannerTest extends BaseCodebaseScannerTest {
     }
 
     private List<GraphQlSchema> getSchemas(Output<Void, Component> returnValue) {
-        GraphQlSpecsState state = getMutatedComponent(returnValue)
-                .getState(GraphQlSpecsState.TYPE);
+        GraphQlSchemasState state = getMutatedComponent(returnValue)
+                .getState(GraphQlSchemasState.TYPE);
         return state.getGraphQlSchemas();
     }
 }

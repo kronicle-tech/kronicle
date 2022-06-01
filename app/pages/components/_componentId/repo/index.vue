@@ -10,7 +10,7 @@
         <Repo :repo="component.repo" />
       </b-card>
 
-      <b-card v-if="component.gitRepo" title="Stats">
+      <b-card v-if="gitRepo" title="Stats">
         <b-list-group>
           <b-list-group-item
             variant="secondary"
@@ -20,8 +20,8 @@
             <b-badge variant="primary" pill>
               <FormattedAge
                 :value="
-              component.gitRepo
-                ? component.gitRepo.firstCommitTimestamp
+              gitRepo
+                ? gitRepo.firstCommitTimestamp
                 : null
             "
               />
@@ -36,8 +36,8 @@
             <b-badge variant="primary" pill>
               <FormattedAge
                 :value="
-              component.gitRepo
-                ? component.gitRepo.lastCommitTimestamp
+              gitRepo
+                ? gitRepo.lastCommitTimestamp
                 : null
             "
               />
@@ -52,7 +52,7 @@
             <b-badge variant="primary" pill>
               <FormattedNumber
                 :value="
-              component.gitRepo ? component.gitRepo.commitCount : null
+              gitRepo ? gitRepo.commitCount : null
             "
               />
             </b-badge>
@@ -66,7 +66,7 @@
             <b-badge variant="primary" pill>
               <FormattedNumber
                 :value="
-              component.gitRepo ? component.gitRepo.authorCount : null
+              gitRepo ? gitRepo.authorCount : null
             "
               />
             </b-badge>
@@ -80,7 +80,7 @@
             <b-badge variant="primary" pill>
               <FormattedNumber
                 :value="
-              component.gitRepo ? component.gitRepo.committerCount : null
+              gitRepo ? gitRepo.committerCount : null
             "
               />
             </b-badge>
@@ -92,7 +92,7 @@
 
     <b-card-group deck>
 
-      <b-card v-if="component.gitRepo" title="Authors">
+      <b-card v-if="gitRepo" title="Authors">
         <table class="table table-dark">
           <thead>
           <tr>
@@ -131,7 +131,7 @@
         </table>
       </b-card>
 
-      <b-card v-if="!component.gitRepo" title="No Git information">
+      <b-card v-if="!gitRepo" title="No Git information">
         <b-card-text>
           Not git-based information is available for this component
         </b-card-text>
@@ -142,15 +142,9 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import { MetaInfo } from 'vue-meta'
-import {
-  BBadge,
-  BCard, BCardGroup,
-  BCardText,
-  BListGroup,
-  BListGroupItem,
-} from 'bootstrap-vue'
-import { Component, Identity } from '~/types/kronicle-service'
+import {MetaInfo} from 'vue-meta'
+import {BBadge, BCard, BCardGroup, BCardText, BListGroup, BListGroupItem,} from 'bootstrap-vue'
+import {Component, GitRepoState, Identity} from '~/types/kronicle-service'
 import ComponentTabs from '~/components/ComponentTabs.vue'
 import EmailAddress from '~/components/EmailAddress.vue'
 import FormattedAge from '~/components/FormattedAge.vue'
@@ -158,6 +152,7 @@ import FormattedNumber from '~/components/FormattedNumber.vue'
 import FormattedDate from '~/components/FormattedDate.vue'
 import Repo from '~/components/Repo.vue'
 import {fetchComponentStateTypes} from "~/src/fetchComponentStateTypes";
+import {findComponentState} from "~/src/componentStateUtils";
 
 export default Vue.extend({
   components: {
@@ -178,7 +173,7 @@ export default Vue.extend({
     const stateTypes = await fetchComponentStateTypes($config, route)
 
     const component = await fetch(
-      `${$config.serviceBaseUrl}/v1/components/${route.params.componentId}?fields=component(id,name,repo,gitRepo)`
+      `${$config.serviceBaseUrl}/v1/components/${route.params.componentId}?stateType=git-repo&fields=component(id,name,teams,states)`
     )
       .then((res) => res.json())
       .then((json) => json.component as Component)
@@ -200,8 +195,14 @@ export default Vue.extend({
     }
   },
   computed: {
+    gitRepo(): GitRepoState | undefined {
+      return findComponentState(this.component, 'git-repo')
+    },
     authors(): Identity[] {
-      return this.component.gitRepo.authors.slice().sort((a, b) => {
+      if (!this.gitRepo) {
+        return []
+      }
+      return this.gitRepo.authors.slice().sort((a, b) => {
         return -a.lastCommitTimestamp.localeCompare(b.lastCommitTimestamp)
       })
     },

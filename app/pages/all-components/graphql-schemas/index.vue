@@ -15,7 +15,7 @@ export default Vue.extend({
   },
   async asyncData({ $config, route, store }) {
     const components = await fetch(
-      `${$config.serviceBaseUrl}/v1/components?fields=components(id,name,typeId,tags,teams,platformId,graphQlSchemas)`
+      `${$config.serviceBaseUrl}/v1/components?stateType=graphql&fields=components(id,name,typeId,tags,teams,platformId,states)`
     )
       .then((res) => res.json())
       .then((json) => json.components)

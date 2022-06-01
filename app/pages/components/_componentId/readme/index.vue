@@ -4,8 +4,8 @@
 
     <ComponentTabs :component-id="component.id" :state-types="stateTypes" />
 
-    <b-card v-if="component.readme" :title="component.readme.fileName">
-      <ReadmeContent :readme="component.readme" />
+    <b-card v-if="readme" :title="readme.fileName">
+      <ReadmeContent :readme="readme" />
     </b-card>
 
     <b-card v-else title="No README">
@@ -18,10 +18,11 @@
 import Vue from 'vue'
 import { MetaInfo } from 'vue-meta'
 import {BCard, BCardText} from 'bootstrap-vue'
-import { Component } from '~/types/kronicle-service'
+import {Component, ReadmeState} from '~/types/kronicle-service'
 import ComponentTabs from '~/components/ComponentTabs.vue'
 import ReadmeContent from '~/components/ReadmeContent.vue'
 import {fetchComponentStateTypes} from "~/src/fetchComponentStateTypes";
+import {findComponentState} from "~/src/componentStateUtils";
 
 export default Vue.extend({
   components: {
@@ -34,7 +35,7 @@ export default Vue.extend({
     const stateTypes = await fetchComponentStateTypes($config, route)
 
     const component = await fetch(
-      `${$config.serviceBaseUrl}/v1/components/${route.params.componentId}?fields=component(id,name,readme)`
+      `${$config.serviceBaseUrl}/v1/components/${route.params.componentId}?stateType=readme&fields=component(id,name,teams,states)`
     )
       .then((res) => res.json())
       .then((json) => json.component as Component)
@@ -49,6 +50,11 @@ export default Vue.extend({
       stateTypes: [] as string[],
       component: {} as Component,
     }
+  },
+  computed: {
+    readme(): ReadmeState | undefined {
+      return findComponentState(this.component, 'readme')
+    },
   },
   head(): MetaInfo {
     return {

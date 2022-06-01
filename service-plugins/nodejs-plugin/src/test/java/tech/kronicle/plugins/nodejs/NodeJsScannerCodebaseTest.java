@@ -43,10 +43,7 @@ public class NodeJsScannerCodebaseTest extends BaseNodeJsScannerTest {
 
         // Then
         assertThat(maskTransformer(returnValue)).isEqualTo(maskTransformer(Output.empty(CACHE_TTL)));
-        Component component = getMutatedComponent(returnValue);
-        assertThatNodeJsIsNotUsed(component);
-        List<Software> software = getSoftware(component);
-        assertThat(software).isEmpty();
+        assertNoState(returnValue);
     }
 
     @Test

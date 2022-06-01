@@ -46,6 +46,11 @@ public class ToDoScanner extends CodebaseScanner {
                         .map(toDo -> new ToDo(getRelativeFilePath(input, fileContent.getFile()), toDo)))
                 .collect(Collectors.toList());
         log.info("Found {} To Dos in codebase \"{}\"", toDos.size(), input.getDir());
+
+        if (toDos.isEmpty()) {
+            return Output.empty(CACHE_TTL);
+        }
+
         return Output.ofTransformer(component -> component.addState(createState(toDos)), CACHE_TTL);
     }
 

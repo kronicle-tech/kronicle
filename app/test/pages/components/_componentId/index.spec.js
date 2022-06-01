@@ -20,7 +20,7 @@ describe('Index', () => {
       route,
       serviceRequests: {
         '/v1/components/test-component-id-1?fields=component(id,name,states(type))': createComponentResponseWithStateTypes(1),
-        '/v1/components/test-component-id-1?fields=component(id,name,typeId,platformId,tags,teams,links,description,notes,responsibilities,keySoftware)':
+        '/v1/components/test-component-id-1?stateType=key-softwares&fields=component(id,name,typeId,platformId,tags,teams,links,description,notes,responsibilities,states)':
           {
             responseBody: { component },
           },

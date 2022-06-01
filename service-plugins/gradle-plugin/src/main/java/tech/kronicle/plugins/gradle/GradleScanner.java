@@ -15,6 +15,7 @@ import tech.kronicle.utils.ThrowableToScannerErrorMapper;
 
 import javax.inject.Inject;
 import java.time.Duration;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -65,17 +66,25 @@ public class GradleScanner extends CodebaseScanner {
             );
         }
 
+        List<ComponentState> states = new ArrayList<>();
+        states.add(new GradleState(GradlePlugin.ID, gradleAnalysis.getGradleIsUsed()));
+
+        if (!gradleAnalysis.getSoftwareRepositories().isEmpty()) {
+            states.add(new SoftwareRepositoriesState(
+                    GradlePlugin.ID,
+                    setScannerIdOnSoftwareRepositories(gradleAnalysis.getSoftwareRepositories())
+            ));
+        }
+
+        if (!gradleAnalysis.getSoftware().isEmpty()) {
+            states.add(new SoftwaresState(
+                    GradlePlugin.ID,
+                    setScannerIdOnSoftware(gradleAnalysis.getSoftware())
+            ));
+        }
+
         return Output.ofTransformer(
-                component -> component
-                        .addState(new GradleState(GradlePlugin.ID, gradleAnalysis.getGradleIsUsed()))
-                        .addState(new SoftwareRepositoriesState(
-                                GradlePlugin.ID,
-                                setScannerIdOnSoftwareRepositories(gradleAnalysis.getSoftwareRepositories())
-                        ))
-                        .addState(new SoftwaresState(
-                                GradlePlugin.ID,
-                                setScannerIdOnSoftware(gradleAnalysis.getSoftware())
-                        )),
+                component -> component.addStates(states),
                 CACHE_TTL
         );
     }

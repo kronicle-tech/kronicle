@@ -11,7 +11,8 @@
 <script lang="ts">
 import Vue, { PropType } from 'vue'
 import {MetaInfo} from "vue-meta";
-import { Component, OpenApiSpec } from '~/types/kronicle-service'
+import {Component, OpenApiSpec, OpenApiSpecsState} from '~/types/kronicle-service'
+import {findComponentState} from "~/src/componentStateUtils";
 
 export default Vue.extend({
   props: {
@@ -34,10 +35,11 @@ export default Vue.extend({
     }
   },
   mounted() {
-    this.initRedoc(this.component.openApiSpecs[this.openApiSpecIndex - 1])
+    const openApiSpecs: OpenApiSpecsState | undefined = findComponentState(this.component, 'openapi-specs')
+    this.load(openApiSpecs!.openApiSpecs[this.openApiSpecIndex - 1])
   },
   methods: {
-    initRedoc(openApiSpec: OpenApiSpec) {
+    load(openApiSpec: OpenApiSpec) {
       const windowAny = window as any
       windowAny.Redoc.init(openApiSpec.spec, {}, this.$el)
     },

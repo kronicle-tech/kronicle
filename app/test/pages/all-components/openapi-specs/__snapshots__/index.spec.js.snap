@@ -625,15 +625,15 @@ exports[`Index when Get Components service endpoint returns an array of multiple
           </th>
            
           <th
-            class="location"
-          >
-            Location
-          </th>
-           
-          <th
             class="action"
           >
             Action
+          </th>
+           
+          <th
+            class="location"
+          >
+            Location
           </th>
            
           <th
@@ -688,14 +688,6 @@ exports[`Index when Get Components service endpoint returns an array of multiple
           </td>
            
           <td
-            class="location"
-          >
-            
-        https://example.com/test-openapi-spec-1-1
-      
-          </td>
-           
-          <td
             class="action table-secondary"
           >
             <a
@@ -707,6 +699,14 @@ exports[`Index when Get Components service endpoint returns an array of multiple
           View OpenAPI spec
         
             </a>
+          </td>
+           
+          <td
+            class="location"
+          >
+            
+        https://example.com/test-openapi-spec-1-1
+      
           </td>
            
           <td
@@ -764,14 +764,6 @@ exports[`Index when Get Components service endpoint returns an array of multiple
           </td>
            
           <td
-            class="location"
-          >
-            
-        https://example.com/test-openapi-spec-1-2
-      
-          </td>
-           
-          <td
             class="action table-secondary"
           >
             <a
@@ -783,6 +775,14 @@ exports[`Index when Get Components service endpoint returns an array of multiple
           View OpenAPI spec
         
             </a>
+          </td>
+           
+          <td
+            class="location"
+          >
+            
+        https://example.com/test-openapi-spec-1-2
+      
           </td>
            
           <td
@@ -840,14 +840,6 @@ exports[`Index when Get Components service endpoint returns an array of multiple
           </td>
            
           <td
-            class="location"
-          >
-            
-        https://example.com/test-openapi-spec-3-1
-      
-          </td>
-           
-          <td
             class="action table-secondary"
           >
             <a
@@ -859,6 +851,14 @@ exports[`Index when Get Components service endpoint returns an array of multiple
           View OpenAPI spec
         
             </a>
+          </td>
+           
+          <td
+            class="location"
+          >
+            
+        https://example.com/test-openapi-spec-3-1
+      
           </td>
            
           <td
@@ -916,14 +916,6 @@ exports[`Index when Get Components service endpoint returns an array of multiple
           </td>
            
           <td
-            class="location"
-          >
-            
-        https://example.com/test-openapi-spec-3-2
-      
-          </td>
-           
-          <td
             class="action table-secondary"
           >
             <a
@@ -935,6 +927,14 @@ exports[`Index when Get Components service endpoint returns an array of multiple
           View OpenAPI spec
         
             </a>
+          </td>
+           
+          <td
+            class="location"
+          >
+            
+        https://example.com/test-openapi-spec-3-2
+      
           </td>
            
           <td

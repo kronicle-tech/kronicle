@@ -1,4 +1,4 @@
-import { intRange } from '~/src/arrayUtils'
+import {intRange} from '~/src/arrayUtils'
 
 export function createArea({
   areaNumber,
@@ -33,6 +33,7 @@ export function createComponent({
   additionalStates = []
 }) {
   const fields = {}
+  const states = []
   if (hasMainDetails) {
     fields.description = `Test Component Description ${componentNumber}`
     fields.notes = `Test Component Notes ${componentNumber}`
@@ -44,10 +45,16 @@ export function createComponent({
       createResponsibility({ componentNumber, responsibilityNumber: 1 }),
       createResponsibility({ componentNumber, responsibilityNumber: 2 }),
     ]
-    fields.keySoftware = [
-      createKeySoftware({ componentNumber, keySoftwareItemNumber: 1 }),
-      createKeySoftware({ componentNumber, keySoftwareItemNumber: 2 }),
-    ]
+    states.push(
+      {
+        pluginId: 'test-plugin-id',
+        type: 'key-softwares',
+        keySoftware: [
+          createKeySoftware({ componentNumber, keySoftwareItemNumber: 1 }),
+          createKeySoftware({ componentNumber, keySoftwareItemNumber: 2 }),
+        ],
+      }
+    )
     if (platformNumber === undefined) {
       platformNumber = componentNumber
     }
@@ -82,7 +89,7 @@ export function createComponent({
         teamId: `test-team-id-${componentNumber}-2`,
       },
     ],
-    states: additionalStates,
+    states: [].concat(states, additionalStates),
     ...fields,
     ...additionalFields,
   }
@@ -101,7 +108,7 @@ export function createComponentResponseWithStateTypes(componentNumber) {
 }
 
 export function createComponentWithStateTypes(componentNumber) {
-  const component = {
+  return {
     id: `test-component-id-${componentNumber}`,
     name: `Test Component Name ${componentNumber}`,
     states: [
@@ -110,7 +117,6 @@ export function createComponentWithStateTypes(componentNumber) {
       },
     ],
   }
-  return component
 }
 
 function createCrossFunctionalRequirements(componentNumber) {
@@ -141,9 +147,13 @@ export function createComponentWithCrossFunctionalRequirements({
 export function createComponentWithGitRepo({ componentNumber }) {
   return createComponent({
     componentNumber,
-    additionalFields: {
-      gitRepo: createGitRepo({ componentNumber }),
-    },
+    additionalStates: [
+      {
+        pluginId: 'test-plugin-id',
+        type: 'git-repo',
+        ...createGitRepo({ componentNumber }),
+      },
+    ],
   })
 }
 
@@ -157,9 +167,13 @@ function createImports(componentNumber) {
 export function createComponentWithImports({ componentNumber }) {
   return createComponent({
     componentNumber,
-    additionalFields: {
-      imports: createImports(componentNumber),
-    },
+    additionalStates: [
+      {
+        pluginId: 'test-plugin-id',
+        type: 'imports',
+        imports: createImports(componentNumber),
+      },
+    ],
   })
 }
 
@@ -167,8 +181,12 @@ export function createComponentWithLinesOfCode({ componentNumber }) {
   return createComponent({
     componentNumber,
     additionalStates: [
-      createLinesOfCode({ componentNumber, importNumber: 1 })
-    ]
+      {
+        pluginId: 'test-plugin-id',
+        type: 'lines-of-code',
+        ...createLinesOfCode({ componentNumber, importNumber: 1 }),
+      },
+    ],
   })
 }
 
@@ -182,18 +200,26 @@ function createOpenApiSpecs(componentNumber) {
 export function createComponentWithOpenApiSpecs({ componentNumber }) {
   return createComponent({
     componentNumber,
-    additionalFields: {
-      openApiSpecs: createOpenApiSpecs(componentNumber),
-    },
+    additionalStates: [
+      {
+        pluginId: 'test-plugin-id',
+        type: 'openapi-specs',
+        openApiSpecs: createOpenApiSpecs(componentNumber),
+      },
+    ],
   })
 }
 
 export function createComponentWithReadme({ componentNumber }) {
   return createComponent({
     componentNumber,
-    additionalFields: {
-      readme: createReadme({ componentNumber }),
-    },
+    additionalStates: [
+      {
+        pluginId: 'test-plugin-id',
+        type: 'readme',
+        ...createReadme({ componentNumber }),
+      },
+    ],
   })
 }
 
@@ -219,7 +245,7 @@ export function createComponentWithScannerErrors({ componentNumber }) {
   })
 }
 
-function CreateSoftwareItems(componentNumber) {
+function createSoftwareItems(componentNumber) {
   return [
     createSoftwareItem({ componentNumber, softwareItemNumber: 1 }),
     createSoftwareItem({ componentNumber, softwareItemNumber: 2 }),
@@ -230,9 +256,13 @@ function CreateSoftwareItems(componentNumber) {
 export function createComponentWithSoftwareItems({ componentNumber }) {
   return createComponent({
     componentNumber,
-    additionalFields: {
-      software: CreateSoftwareItems(componentNumber),
-    },
+    additionalStates: [
+      {
+        pluginId: 'test-plugin-id',
+        type: 'softwares',
+        softwares: createSoftwareItems(componentNumber),
+      },
+    ],
   })
 }
 
@@ -256,9 +286,13 @@ function createSoftwareRepositories(componentNumber) {
 export function createComponentWithSoftwareRepositories({ componentNumber }) {
   return createComponent({
     componentNumber,
-    additionalFields: {
-      softwareRepositories: createSoftwareRepositories(componentNumber),
-    },
+    additionalStates: [
+      {
+        pluginId: 'test-plugin-id',
+        type: 'softwares',
+        softwareRepositories: createSoftwareRepositories(componentNumber),
+      },
+    ],
   })
 }
 
@@ -317,9 +351,13 @@ function createToDos(componentNumber) {
 export function createComponentWithToDos({ componentNumber }) {
   return createComponent({
     componentNumber,
-    additionalFields: {
-      toDos: createToDos(componentNumber),
-    },
+    additionalStates: [
+      {
+        pluginId: 'test-plugin-id',
+        type: 'to-dos',
+        toDos: createToDos(componentNumber),
+      },
+    ],
   })
 }
 
