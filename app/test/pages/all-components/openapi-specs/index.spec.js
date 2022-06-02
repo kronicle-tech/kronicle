@@ -11,7 +11,7 @@ describe('Index', () => {
   async function createWrapper() {
     wrapper = await createPageWrapper(Index, {
       serviceRequests: {
-        '/v1/components?fields=components(id,name,typeId,tags,teams,platformId,openApiSpecs)':
+        '/v1/components?stateType=openapi-specs&fields=components(id,name,typeId,tags,teams,platformId,states)':
           {
             responseBody: { components },
           },
