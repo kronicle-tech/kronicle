@@ -2,7 +2,10 @@
   <div class="m-3">
     <h1 class="text-info my-3">{{ component.name }} - To Dos</h1>
 
-    <ComponentTabs :component-id="component.id" :component-available-data="componentAvailableData" />
+    <ComponentTabs
+      :component-id="component.id"
+      :component-available-data="componentAvailableData"
+    />
 
     <b-card title="To Dos" class="my-3">
       <b-list-group>
@@ -19,16 +22,16 @@
         style="width: 100%"
       >
         <thead>
-        <tr>
-          <th>File</th>
-          <th>Description</th>
-        </tr>
+          <tr>
+            <th>File</th>
+            <th>Description</th>
+          </tr>
         </thead>
         <tbody>
-        <tr v-for="(toDo, toDoIndex) in toDos" :key="toDoIndex">
-          <td>{{ toDo.file }}</td>
-          <td>{{ toDo.description }}</td>
-        </tr>
+          <tr v-for="(toDo, toDoIndex) in toDos" :key="toDoIndex">
+            <td>{{ toDo.file }}</td>
+            <td>{{ toDo.description }}</td>
+          </tr>
         </tbody>
       </table>
     </b-card>
@@ -38,11 +41,11 @@
 <script lang="ts">
 import Vue from 'vue'
 import { MetaInfo } from 'vue-meta'
-import {BCard, BListGroup, BListGroupItem} from 'bootstrap-vue'
+import { BCard, BListGroup, BListGroupItem } from 'bootstrap-vue'
 import ComponentTabs from '~/components/ComponentTabs.vue'
-import {Component, ToDo, ToDosState} from '~/types/kronicle-service'
-import {fetchComponentAvailableData} from "~/src/fetchComponentAvailableData";
-import {findComponentState} from "~/src/componentStateUtils";
+import { Component, ToDo, ToDosState } from '~/types/kronicle-service'
+import { fetchComponentAvailableData } from '~/src/fetchComponentAvailableData'
+import { findComponentState } from '~/src/componentStateUtils'
 
 export default Vue.extend({
   components: {
@@ -52,7 +55,10 @@ export default Vue.extend({
     ComponentTabs,
   },
   async asyncData({ $config, route }) {
-    const componentAvailableData = await fetchComponentAvailableData($config, route)
+    const componentAvailableData = await fetchComponentAvailableData(
+      $config,
+      route
+    )
 
     const component = await fetch(
       `${$config.serviceBaseUrl}/v1/components/${route.params.componentId}?stateType=to-dos&fields=component(id,name,teams,states)`
@@ -78,7 +84,10 @@ export default Vue.extend({
   },
   computed: {
     toDos(): ToDo[] {
-      const toDos: ToDosState | undefined = findComponentState(this.component, 'to-dos')
+      const toDos: ToDosState | undefined = findComponentState(
+        this.component,
+        'to-dos'
+      )
       return toDos?.toDos ?? []
     },
     toDoCount(): number {

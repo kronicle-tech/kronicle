@@ -149,7 +149,8 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
           ×
         </button>
         
-    Click a dot in the dependencies diagram to see more information about that component
+    Click a dot in the dependencies diagram to see more information about that
+    component
   
       </div>
     </transition-stub>
@@ -1237,7 +1238,8 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
           ×
         </button>
         
-    Click a dot in the dependencies diagram to see more information about that component
+    Click a dot in the dependencies diagram to see more information about that
+    component
   
       </div>
     </transition-stub>
@@ -2325,7 +2327,8 @@ exports[`Index when Get Summary service endpoint returns no dependencies renders
           ×
         </button>
         
-    Click a dot in the dependencies diagram to see more information about that component
+    Click a dot in the dependencies diagram to see more information about that
+    component
   
       </div>
     </transition-stub>

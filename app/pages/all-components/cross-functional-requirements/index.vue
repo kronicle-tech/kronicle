@@ -41,8 +41,7 @@ export default Vue.extend({
   },
   head(): MetaInfo {
     return {
-      title:
-        'Kronicle - All Components - Cross Functional Requirements',
+      title: 'Kronicle - All Components - Cross Functional Requirements',
     }
   },
 })

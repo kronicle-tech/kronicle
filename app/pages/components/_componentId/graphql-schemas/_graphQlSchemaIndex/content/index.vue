@@ -1,12 +1,15 @@
 <template>
-  <GraphQlSchemaView :component="component" :graph-ql-schema-index="graphQlSchemaIndex" />
+  <GraphQlSchemaView
+    :component="component"
+    :graph-ql-schema-index="graphQlSchemaIndex"
+  />
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
 import { MetaInfo } from 'vue-meta'
 import { Component } from '~/types/kronicle-service'
-import GraphQlSchemaView from "~/components/GraphQlSchemaView.vue";
+import GraphQlSchemaView from '~/components/GraphQlSchemaView.vue'
 
 export default Vue.extend({
   components: {
@@ -34,7 +37,10 @@ export default Vue.extend({
     return {
       title: `Kronicle - ${
         this.$route.params.componentId
-      } - GraphQL Schema ${parseInt(this.$route.params.graphQlSchemaIndex, 10)}`,
+      } - GraphQL Schema ${parseInt(
+        this.$route.params.graphQlSchemaIndex,
+        10
+      )}`,
     }
   },
 })

@@ -1,7 +1,8 @@
 import Index from '@/pages/components/_componentId/openapi-specs/index.vue'
 import { createPageWrapper } from '~/test/pages/pageUtils'
 import {
-  createComponent, createComponentAvailableDataRequests,
+  createComponent,
+  createComponentAvailableDataRequests,
   createComponentWithOpenApiSpecs,
 } from '~/test/testDataUtils'
 

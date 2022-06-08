@@ -2,14 +2,17 @@
   <div class="m-3">
     <h1 class="text-info my-3">{{ component.name }} - Lines of Code</h1>
 
-    <ComponentTabs :component-id="component.id" :component-available-data="componentAvailableData" />
+    <ComponentTabs
+      :component-id="component.id"
+      :component-available-data="componentAvailableData"
+    />
 
     <b-card title="Total Lines of Code" class="my-3">
       <b-list-group>
         <b-list-group-item :variant="linesOfCodeCountVariant">
-        <span class="display-1">
-          <FormattedNumber :value="linesOfCodeCount" />
-        </span>
+          <span class="display-1">
+            <FormattedNumber :value="linesOfCodeCount" />
+          </span>
           lines of code{{ linesOfCodeCount === 1 ? '' : 's' }}
         </b-list-group-item>
       </b-list-group>
@@ -35,14 +38,15 @@
 <script lang="ts">
 import Vue from 'vue'
 import { MetaInfo } from 'vue-meta'
-import {BBadge, BCard, BListGroup, BListGroupItem} from 'bootstrap-vue'
+import { BBadge, BCard, BListGroup, BListGroupItem } from 'bootstrap-vue'
 import {
   Component,
-  FileExtensionCount, LinesOfCodeState,
+  FileExtensionCount,
+  LinesOfCodeState,
 } from '~/types/kronicle-service'
 import ComponentTabs from '~/components/ComponentTabs.vue'
 import FormattedNumber from '~/components/FormattedNumber.vue'
-import {fetchComponentAvailableData} from "~/src/fetchComponentAvailableData";
+import { fetchComponentAvailableData } from '~/src/fetchComponentAvailableData'
 
 export default Vue.extend({
   components: {
@@ -54,14 +58,16 @@ export default Vue.extend({
     FormattedNumber,
   },
   async asyncData({ $config, route }) {
-    const componentAvailableData = await fetchComponentAvailableData($config, route)
+    const componentAvailableData = await fetchComponentAvailableData(
+      $config,
+      route
+    )
 
     const component = await fetch(
       `${$config.serviceBaseUrl}/v1/components/${route.params.componentId}?stateType=lines-of-code&fields=component(id,name,states)`
     )
       .then((res) => res.json())
       .then((json) => json.component as Component)
-
 
     return {
       componentAvailableData,
@@ -81,7 +87,9 @@ export default Vue.extend({
   },
   computed: {
     linesOfCode(): LinesOfCodeState | undefined {
-      return this.component.states.find(state => state.type === 'lines-of-code') as LinesOfCodeState | undefined
+      return this.component.states.find(
+        (state) => state.type === 'lines-of-code'
+      ) as LinesOfCodeState | undefined
     },
     linesOfCodeCount(): number {
       return this.linesOfCode?.count ?? 0

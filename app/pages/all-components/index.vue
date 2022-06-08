@@ -8,7 +8,6 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import {BAlert} from 'bootstrap-vue'
 import { MetaInfo } from 'vue-meta'
 import { Component } from '~/types/kronicle-service'
 import AllComponentsTabs from '~/components/AllComponentsTabs.vue'
@@ -17,7 +16,6 @@ import ComponentsView from '~/components/ComponentsView.vue'
 export default Vue.extend({
   components: {
     AllComponentsTabs,
-    'b-alert': BAlert,
     ComponentsView,
   },
   async asyncData({ $config, route, store }) {

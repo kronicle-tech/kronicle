@@ -4,16 +4,6 @@
   <!-- eslint-enable -->
 </template>
 
-<style scoped>
-div >>> h1#user-content-table-of-contents {
-  display: none;
-}
-
-div >>> p:last-child {
-  margin-bottom: 0;
-}
-</style>
-
 <script lang="ts">
 import Vue from 'vue'
 import remarkParse from 'remark-parse'
@@ -38,9 +28,7 @@ const rehypeSanitizeSchema = deepmerge(rehypeSanitizeGitHubSchema, {
 })
 
 function generateMarkdownHtml(markdown: String, toc: Boolean): VFile {
-  let processor = unified()
-    .use(remarkParse)
-    .use(remarkGfm)
+  let processor = unified().use(remarkParse).use(remarkGfm)
   if (toc) {
     processor = processor.use(remarkToc, {
       maxDepth: 3,
@@ -50,7 +38,7 @@ function generateMarkdownHtml(markdown: String, toc: Boolean): VFile {
   }
   return processor
     .use(remarkHighlightJs)
-    .use(remarkRehype, {allowDangerousHtml: true})
+    .use(remarkRehype, { allowDangerousHtml: true })
     .use(rehypeRaw)
     .use(rehypeStringify)
     .processSync(markdown)
@@ -103,12 +91,23 @@ export default Vue.extend({
           String(sanitizedHtml)
         return output
       } catch (e) {
-        const text = (typeof e === 'object' && e !== null && 'toString' in e)
-          ? e.toString()
-          : 'Error: ' + JSON.stringify(e)
+        const text =
+          typeof e === 'object' && e !== null && 'toString' in e
+            ? e.toString()
+            : 'Error: ' + JSON.stringify(e)
         return String(createReportPreTagHtml(text))
       }
     },
   },
 })
 </script>
+
+<style scoped>
+div >>> h1#user-content-table-of-contents {
+  display: none;
+}
+
+div >>> p:last-child {
+  margin-bottom: 0;
+}
+</style>

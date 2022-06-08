@@ -3,7 +3,15 @@ import { mount } from '@vue/test-utils'
 // See https://github.com/testing-library/vue-testing-library/issues/92
 export async function mountWithAsyncData(
   component,
-  { mountFunction, hasAsyncData, asyncDataGlobal, config, route, store, ...options } = {}
+  {
+    mountFunction,
+    hasAsyncData,
+    asyncDataGlobal,
+    config,
+    route,
+    store,
+    ...options
+  } = {}
 ) {
   if (!mountFunction) {
     mountFunction = mount
@@ -19,7 +27,7 @@ export async function mountWithAsyncData(
       originalGlobal[key] = global[key]
       global[key] = asyncDataGlobal[key]
     }
-    data = await asyncData({$config: config, route, store})
+    data = await asyncData({ $config: config, route, store })
     for (const key of Object.keys(asyncDataGlobal)) {
       global[key] = originalGlobal[key]
     }

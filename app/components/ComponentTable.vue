@@ -35,12 +35,6 @@
   </table>
 </template>
 
-<style scoped>
-.name {
-  width: 30%;
-}
-</style>
-
 <script lang="ts">
 import Vue, { PropType } from 'vue'
 import { compareComponents } from '~/src/componentComparator'
@@ -70,3 +64,9 @@ export default Vue.extend({
   },
 })
 </script>
+
+<style scoped>
+.name {
+  width: 30%;
+}
+</style>

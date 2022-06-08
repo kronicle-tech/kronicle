@@ -44,24 +44,6 @@
   </table>
 </template>
 
-<style scoped>
-.test-id {
-  width: 15%;
-}
-
-.test-component {
-  width: 15%;
-}
-
-.test-priority {
-  width: 10%;
-}
-
-.test-outcome {
-  width: 10%;
-}
-</style>
-
 <script lang="ts">
 import Vue, { PropType } from 'vue'
 import { BBadge } from 'bootstrap-vue'
@@ -138,3 +120,21 @@ export default Vue.extend({
   },
 })
 </script>
+
+<style scoped>
+.test-id {
+  width: 15%;
+}
+
+.test-component {
+  width: 15%;
+}
+
+.test-priority {
+  width: 10%;
+}
+
+.test-outcome {
+  width: 10%;
+}
+</style>

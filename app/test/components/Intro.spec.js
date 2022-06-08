@@ -24,7 +24,9 @@ describe('Intro', () => {
         expect.stringContaining('<h1 class="display-3">Kronicle</h1>')
       )
       expect(wrapper.html()).toEqual(
-        expect.stringContaining('<p>Kronicle contains information on the organisation\'s components, teams and areas.</p>')
+        expect.stringContaining(
+          "<p>Kronicle contains information on the organisation's components, teams and areas.</p>"
+        )
       )
       expect(wrapper.html()).toMatchSnapshot()
     })
@@ -41,7 +43,9 @@ describe('Intro', () => {
         expect.stringContaining('<h1 class="display-3">Test Title</h1>')
       )
       expect(wrapper.html()).toEqual(
-        expect.stringContaining('<p>Kronicle contains information on the organisation\'s components, teams and areas.</p>')
+        expect.stringContaining(
+          "<p>Kronicle contains information on the organisation's components, teams and areas.</p>"
+        )
       )
       expect(wrapper.html()).toMatchSnapshot()
     })

@@ -22,7 +22,7 @@
               v-b-toggle="`accordion-${rowIndex}-${itemIndex}-${component.id}`"
               block
               variant="info"
-            >{{ component.name }}</b-button
+              >{{ component.name }}</b-button
             >
           </b-card-header>
           <b-collapse

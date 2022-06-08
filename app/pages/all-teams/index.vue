@@ -34,7 +34,7 @@
 <script lang="ts">
 import Vue from 'vue'
 import { MetaInfo } from 'vue-meta'
-import {BAlert} from 'bootstrap-vue'
+import { BAlert } from 'bootstrap-vue'
 import { Team } from '~/types/kronicle-service'
 import AllTeamsTabs from '~/components/AllTeamsTabs.vue'
 import TeamName from '~/components/TeamName.vue'

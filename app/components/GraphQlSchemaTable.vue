@@ -50,13 +50,17 @@
 
 <script lang="ts">
 import Vue, { PropType } from 'vue'
-import {BBadge, BButton} from 'bootstrap-vue'
-import {Component, GraphQlSchema, GraphQlSchemasState} from '~/types/kronicle-service'
+import { BBadge, BButton } from 'bootstrap-vue'
+import {
+  Component,
+  GraphQlSchema,
+  GraphQlSchemasState,
+} from '~/types/kronicle-service'
 import { compareGraphQlSchemas } from '~/src/graphQlSchemaComparator'
 import ComponentName from '~/components/ComponentName.vue'
 import ComponentTeams from '~/components/ComponentTeams.vue'
 import Markdown from '~/components/Markdown.vue'
-import {findComponentState} from "~/src/componentStateUtils";
+import { findComponentState } from '~/src/componentStateUtils'
 
 interface GraphQlSchemaWithIndexAndComponent extends GraphQlSchema {
   index: number
@@ -82,14 +86,17 @@ export default Vue.extend({
       const that = this
       return that.components
         .flatMap((component) => {
-          const graphQlSchemas: GraphQlSchemasState | undefined = findComponentState(component, 'graphql-schemas')
-          return (graphQlSchemas?.graphQlSchemas ?? []).map((graphQlSchema, index) => {
-            return {
-              ...graphQlSchema,
-              index,
-              component,
-            } as GraphQlSchemaWithIndexAndComponent
-          })
+          const graphQlSchemas: GraphQlSchemasState | undefined =
+            findComponentState(component, 'graphql-schemas')
+          return (graphQlSchemas?.graphQlSchemas ?? []).map(
+            (graphQlSchema, index) => {
+              return {
+                ...graphQlSchema,
+                index,
+                component,
+              } as GraphQlSchemaWithIndexAndComponent
+            }
+          )
         })
         .sort(compareGraphQlSchemas)
     },

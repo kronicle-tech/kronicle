@@ -19,12 +19,6 @@
   </ul>
 </template>
 
-<style>
-.team-name + .badge {
-  margin-left: 0.6em;
-}
-</style>
-
 <script lang="ts">
 import Vue, { PropType } from 'vue'
 import { BBadge } from 'bootstrap-vue'
@@ -46,3 +40,9 @@ export default Vue.extend({
   },
 })
 </script>
+
+<style>
+.team-name + .badge {
+  margin-left: 0.6em;
+}
+</style>

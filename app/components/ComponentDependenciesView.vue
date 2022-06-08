@@ -1,7 +1,8 @@
 <template>
   <div>
     <b-alert show dismissible variant="info">
-      Click a dot in the dependencies diagram to see more information about that component
+      Click a dot in the dependencies diagram to see more information about that
+      component
     </b-alert>
 
     <ComponentFilters
@@ -10,9 +11,7 @@
       :plugin-id-filter-enabled="true"
     >
       <b-card bg-variant="secondary">
-        <b-form-group
-          label="Dependency Types"
-        >
+        <b-form-group label="Dependency Types">
           <b-form-checkbox-group
             v-model="selectedDependencyTypeIds"
             :options="dependencyTypeIdOptions"
@@ -99,15 +98,6 @@
   </div>
 </template>
 
-<style scoped>
-.graph {
-  overflow-x: scroll;
-  height: 1000px;
-  height: calc(100vh - 200px);
-  scrollbar-color: #444 #111;
-}
-</style>
-
 <script lang="ts">
 import Vue, { PropType } from 'vue'
 import {
@@ -117,7 +107,7 @@ import {
   BFormCheckboxGroup,
   BFormGroup,
   BFormSelect,
-  BSidebar
+  BSidebar,
 } from 'bootstrap-vue'
 import {
   Component,
@@ -203,11 +193,14 @@ export default Vue.extend({
         : this.componentDependencies
     },
     dependencyTypeIdOptions(): Option[] {
-      return [...new Set(this.dependencies.dependencies.map(dependency => dependency.typeId))]
-        .map(dependencyTypeId => ({
-          value: dependencyTypeId,
-          text: dependencyTypeId,
-        }))
+      return [
+        ...new Set(
+          this.dependencies.dependencies.map((dependency) => dependency.typeId)
+        ),
+      ].map((dependencyTypeId) => ({
+        value: dependencyTypeId,
+        text: dependencyTypeId,
+      }))
     },
     scopeRelatedRadiusOptions(): Option[] {
       return intRange(0, 11).map((value) => ({
@@ -218,8 +211,8 @@ export default Vue.extend({
     zoomOptions(): Option[] {
       const zoomOptions = [25, 50, 75, 100, 125, 150, 200, 400]
       return zoomOptions.map((zoomOption) => ({
-          value: zoomOption.toString(),
-          text: `${zoomOption}%`,
+        value: zoomOption.toString(),
+        text: `${zoomOption}%`,
       }))
     },
   },
@@ -230,13 +223,14 @@ export default Vue.extend({
     networkChange(network: Network): void {
       this.network = network
     },
-    nodeClick(
-      { node }: {
-        node: SummaryComponentDependencyNode
-          | SummarySubComponentDependencyNode
-          | undefined
-      }
-    ): void {
+    nodeClick({
+      node,
+    }: {
+      node:
+        | SummaryComponentDependencyNode
+        | SummarySubComponentDependencyNode
+        | undefined
+    }): void {
       if (node) {
         this.componentSidebarVisible = true
         this.node = node
@@ -250,3 +244,12 @@ export default Vue.extend({
   },
 })
 </script>
+
+<style scoped>
+.graph {
+  overflow-x: scroll;
+  height: 1000px;
+  height: calc(100vh - 200px);
+  scrollbar-color: #444 #111;
+}
+</style>

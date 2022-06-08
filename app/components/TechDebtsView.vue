@@ -2,10 +2,7 @@
   <div>
     <b-card no-body class="my-3">
       <b-list-group>
-        <b-list-group-item
-          v-if="priorityCounts.length === 0"
-          variant="success"
-        >
+        <b-list-group-item v-if="priorityCounts.length === 0" variant="success">
           <span class="display-1">0</span> tech debts
         </b-list-group-item>
         <b-list-group-item
@@ -33,12 +30,8 @@
 
 <script lang="ts">
 import Vue, { PropType } from 'vue'
-import {BCard, BListGroup, BListGroupItem} from 'bootstrap-vue'
-import {
-  Component,
-  Priority,
-  TechDebt,
-} from '~/types/kronicle-service'
+import { BCard, BListGroup, BListGroupItem } from 'bootstrap-vue'
+import { Component, Priority, TechDebt } from '~/types/kronicle-service'
 import {
   getPriorityCountClass,
   getPriorityText,

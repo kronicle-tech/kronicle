@@ -36,8 +36,8 @@ exports[`Index when Get Scanners service endpoint returns an array of multiple s
           class="scanner-id"
         >
           
-        test-scanner-id-1
-      
+          test-scanner-id-1
+        
         </td>
          
         <td
@@ -69,8 +69,8 @@ exports[`Index when Get Scanners service endpoint returns an array of multiple s
           class="scanner-id"
         >
           
-        test-scanner-id-2
-      
+          test-scanner-id-2
+        
         </td>
          
         <td

@@ -2,17 +2,15 @@
   <div class="openapi-spec"></div>
 </template>
 
-<style scoped>
-.openapi-spec {
-  background-color: #FFF;
-}
-</style>
-
 <script lang="ts">
 import Vue, { PropType } from 'vue'
-import {MetaInfo} from "vue-meta";
-import {Component, OpenApiSpec, OpenApiSpecsState} from '~/types/kronicle-service'
-import {findComponentState} from "~/src/componentStateUtils";
+import { MetaInfo } from 'vue-meta'
+import {
+  Component,
+  OpenApiSpec,
+  OpenApiSpecsState,
+} from '~/types/kronicle-service'
+import { findComponentState } from '~/src/componentStateUtils'
 
 export default Vue.extend({
   props: {
@@ -35,7 +33,10 @@ export default Vue.extend({
     }
   },
   mounted() {
-    const openApiSpecs: OpenApiSpecsState | undefined = findComponentState(this.component, 'openapi-specs')
+    const openApiSpecs: OpenApiSpecsState | undefined = findComponentState(
+      this.component,
+      'openapi-specs'
+    )
     this.load(openApiSpecs!.openApiSpecs[this.openApiSpecIndex - 1])
   },
   methods: {
@@ -46,3 +47,9 @@ export default Vue.extend({
   },
 })
 </script>
+
+<style scoped>
+.openapi-spec {
+  background-color: #fff;
+}
+</style>

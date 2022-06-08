@@ -2,7 +2,7 @@ import Index from '@/pages/components/_componentId/cross-functional-requirements
 import { createPageWrapper } from '~/test/pages/pageUtils'
 import {
   createComponent,
-    createComponentAvailableDataRequests,
+  createComponentAvailableDataRequests,
   createComponentWithCrossFunctionalRequirements,
 } from '~/test/testDataUtils'
 

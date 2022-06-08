@@ -1,11 +1,10 @@
+import { NuxtRuntimeConfig } from '@nuxt/types/config/runtime'
+import { Route } from 'vue-router'
 import {
-  Component,
   GetComponentCallGraphsResponse,
   GetComponentNodesResponse,
-  GetComponentResponse
-} from "~/types/kronicle-service";
-import {NuxtRuntimeConfig} from "@nuxt/types/config/runtime";
-import {Route} from "vue-router";
+  GetComponentResponse,
+} from '~/types/kronicle-service'
 
 export interface ComponentAvailableData {
   readonly metadataTypes: string[]
@@ -14,8 +13,10 @@ export interface ComponentAvailableData {
   readonly hasNodes: boolean
 }
 
-export async function fetchComponentAvailableData($config: NuxtRuntimeConfig, route: Route): Promise<ComponentAvailableData> {
-
+export async function fetchComponentAvailableData(
+  $config: NuxtRuntimeConfig,
+  route: Route
+): Promise<ComponentAvailableData> {
   const component = await fetch(
     `${$config.serviceBaseUrl}/v1/components/${route.params.componentId}?fields=component(id,name,crossFunctionalRequirements(fake),techDebts(fake),states(type),scannerErrors(fake),testResults(fake))`
   )
@@ -34,8 +35,12 @@ export async function fetchComponentAvailableData($config: NuxtRuntimeConfig, ro
     .then((res) => res.json())
     .then((json) => (json as GetComponentNodesResponse).nodes)
 
-  const metadataTypes = new Array<string>()
-  checkMetadataType(metadataTypes, component.crossFunctionalRequirements, 'cross-functional-requirement')
+  const metadataTypes: string[] = []
+  checkMetadataType(
+    metadataTypes,
+    component.crossFunctionalRequirements,
+    'cross-functional-requirement'
+  )
   checkMetadataType(metadataTypes, component.techDebts, 'tech-debt')
   checkMetadataType(metadataTypes, component.scannerErrors, 'scanner-error')
   checkMetadataType(metadataTypes, component.testResults, 'test-result')
@@ -50,7 +55,11 @@ export async function fetchComponentAvailableData($config: NuxtRuntimeConfig, ro
   }
 }
 
-function checkMetadataType(metadataTypes: string[], items: unknown[], metadataType: string): void {
+function checkMetadataType(
+  metadataTypes: string[],
+  items: unknown[],
+  metadataType: string
+): void {
   if (items.length > 0) {
     metadataTypes.push(metadataType)
   }

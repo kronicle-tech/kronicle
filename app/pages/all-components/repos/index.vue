@@ -9,66 +9,60 @@
       style="width: 100%"
     >
       <thead>
-      <tr>
-        <th class="component-type">Type</th>
-        <th class="component-name">Name</th>
-        <th>Repo</th>
-        <th>Repo Age</th>
-        <th>Time Since Last Commit</th>
-        <th>Commit Count</th>
-        <th>Author Count</th>
-        <th>Committer Count</th>
-      </tr>
+        <tr>
+          <th class="component-type">Type</th>
+          <th class="component-name">Name</th>
+          <th>Repo</th>
+          <th>Repo Age</th>
+          <th>Time Since Last Commit</th>
+          <th>Commit Count</th>
+          <th>Author Count</th>
+          <th>Committer Count</th>
+        </tr>
       </thead>
       <tbody>
-      <tr v-for="component in filteredComponents" :key="component.id">
-        <td>{{ component.typeId }}</td>
-        <td class="component-name table-primary">
-          <ComponentName :component="component" />
-        </td>
-        <td>
-          <Repo :repo="component.repo" />
-        </td>
-        <td>
-          <FormattedAge
-            :value="
-            component.gitRepo
-              ? component.gitRepo.firstCommitTimestamp
-              : null
-          "
-          />
-        </td>
-        <td>
-          <FormattedAge
-            :value="
-            component.gitRepo
-              ? component.gitRepo.lastCommitTimestamp
-              : null
-          "
-          />
-        </td>
-        <td>
-          <FormattedNumber
-            :value="
-            component.gitRepo ? component.gitRepo.commitCount : null
-          "
-          />
-        </td>
-        <td>
-          <FormattedNumber
-            :value="
-            component.gitRepo ? component.gitRepo.authorCount : null
-          "
-          />
-        </td>
-        <td>
-          <FormattedNumber
-            :value="
-            component.gitRepo ? component.gitRepo.committerCount : null
-          "
-          />
-        </td>
-      </tr>
+        <tr v-for="component in filteredComponents" :key="component.id">
+          <td>{{ component.typeId }}</td>
+          <td class="component-name table-primary">
+            <ComponentName :component="component" />
+          </td>
+          <td>
+            <Repo :repo="component.repo" />
+          </td>
+          <td>
+            <FormattedAge
+              :value="
+                component.gitRepo
+                  ? component.gitRepo.firstCommitTimestamp
+                  : null
+              "
+            />
+          </td>
+          <td>
+            <FormattedAge
+              :value="
+                component.gitRepo ? component.gitRepo.lastCommitTimestamp : null
+              "
+            />
+          </td>
+          <td>
+            <FormattedNumber
+              :value="component.gitRepo ? component.gitRepo.commitCount : null"
+            />
+          </td>
+          <td>
+            <FormattedNumber
+              :value="component.gitRepo ? component.gitRepo.authorCount : null"
+            />
+          </td>
+          <td>
+            <FormattedNumber
+              :value="
+                component.gitRepo ? component.gitRepo.committerCount : null
+              "
+            />
+          </td>
+        </tr>
       </tbody>
     </table>
   </div>

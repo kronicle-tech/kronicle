@@ -1,7 +1,8 @@
 import Index from '~/pages/components/_componentId/call-graphs/index.vue'
 import { createPageWrapper } from '~/test/pages/pageUtils'
 import {
-  createComponent, createComponentAvailableDataRequests,
+  createComponent,
+  createComponentAvailableDataRequests,
   createDependency,
   createSubComponentNode,
 } from '~/test/testDataUtils'

@@ -43,10 +43,7 @@
 
 <script lang="ts">
 import Vue, { PropType } from 'vue'
-import {
-  Component,
-  CrossFunctionalRequirement,
-} from '~/types/kronicle-service'
+import { Component, CrossFunctionalRequirement } from '~/types/kronicle-service'
 import ComponentName from '~/components/ComponentName.vue'
 import Links from '~/components/Links.vue'
 import Markdown from '~/components/Markdown.vue'

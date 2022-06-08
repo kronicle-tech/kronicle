@@ -71,27 +71,6 @@
   </div>
 </template>
 
-<style scoped>
-.call-graphs {
-  float: left;
-  width: calc(100% - 320px);
-}
-
-.call-graph {
-  overflow-x: scroll;
-  scrollbar-color: #444 #111;
-}
-
-.nodes {
-  float: right;
-  width: 300px;
-}
-
-.nodes button {
-  text-align: left;
-}
-</style>
-
 <script lang="ts">
 import Vue, { PropType } from 'vue'
 import { BAlert, BBadge, BButton } from 'bootstrap-vue'
@@ -189,3 +168,24 @@ export default Vue.extend({
   },
 })
 </script>
+
+<style scoped>
+.call-graphs {
+  float: left;
+  width: calc(100% - 320px);
+}
+
+.call-graph {
+  overflow-x: scroll;
+  scrollbar-color: #444 #111;
+}
+
+.nodes {
+  float: right;
+  width: 300px;
+}
+
+.nodes button {
+  text-align: left;
+}
+</style>

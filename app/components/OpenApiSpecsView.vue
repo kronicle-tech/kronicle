@@ -17,11 +17,15 @@
 
 <script lang="ts">
 import Vue, { PropType } from 'vue'
-import {BCard, BListGroup, BListGroupItem} from 'bootstrap-vue'
-import {Component, OpenApiSpec, OpenApiSpecsState} from '~/types/kronicle-service'
+import { BCard, BListGroup, BListGroupItem } from 'bootstrap-vue'
+import {
+  Component,
+  OpenApiSpec,
+  OpenApiSpecsState,
+} from '~/types/kronicle-service'
 import ComponentFilters from '~/components/ComponentFilters.vue'
 import OpenApiSpecTable from '~/components/OpenApiSpecTable.vue'
-import {findComponentState} from "~/src/componentStateUtils";
+import { findComponentState } from '~/src/componentStateUtils'
 
 export default Vue.extend({
   components: {
@@ -42,12 +46,13 @@ export default Vue.extend({
       return this.$store.state.componentFilters.filteredComponents
     },
     openApiSpecs(): OpenApiSpec[] {
-      return this.filteredComponents.flatMap(
-        (component) => {
-          const openApiSpecs: OpenApiSpecsState | undefined = findComponentState(component, 'openapi-specs')
-          return openApiSpecs?.openApiSpecs ?? []
-        }
-      )
+      return this.filteredComponents.flatMap((component) => {
+        const openApiSpecs: OpenApiSpecsState | undefined = findComponentState(
+          component,
+          'openapi-specs'
+        )
+        return openApiSpecs?.openApiSpecs ?? []
+      })
     },
     count(): number {
       return this.openApiSpecs.length

@@ -1,16 +1,26 @@
 <template>
   <div class="m-3">
-    <h1 class="text-info my-3">{{ component.name }} - GraphQL Schema {{ graphQlSchemaIndex }}</h1>
+    <h1 class="text-info my-3">
+      {{ component.name }} - GraphQL Schema {{ graphQlSchemaIndex }}
+    </h1>
 
-    <ComponentTabs :component-id="component.id" :component-available-data="componentAvailableData" />
+    <ComponentTabs
+      :component-id="component.id"
+      :component-available-data="componentAvailableData"
+    />
 
     <div class="text-center mb-3">
-      <NuxtLink :to="`/components/${component.id}/graphql-schemas/${graphQlSchemaIndex}/content`">
+      <NuxtLink
+        :to="`/components/${component.id}/graphql-schemas/${graphQlSchemaIndex}/content`"
+      >
         View Full Screen
       </NuxtLink>
     </div>
 
-    <GraphQlSchemaView :component="component" :graph-ql-schema-index="graphQlSchemaIndex" />
+    <GraphQlSchemaView
+      :component="component"
+      :graph-ql-schema-index="graphQlSchemaIndex"
+    />
   </div>
 </template>
 
@@ -18,15 +28,18 @@
 import Vue from 'vue'
 import { MetaInfo } from 'vue-meta'
 import { Component } from '~/types/kronicle-service'
-import GraphQlSchemaView from "~/components/GraphQlSchemaView.vue";
-import {fetchComponentAvailableData} from "~/src/fetchComponentAvailableData";
+import GraphQlSchemaView from '~/components/GraphQlSchemaView.vue'
+import { fetchComponentAvailableData } from '~/src/fetchComponentAvailableData'
 
 export default Vue.extend({
   components: {
     GraphQlSchemaView,
   },
   async asyncData({ $config, route }) {
-    const componentAvailableData = await fetchComponentAvailableData($config, route)
+    const componentAvailableData = await fetchComponentAvailableData(
+      $config,
+      route
+    )
 
     const component = await fetch(
       `${$config.serviceBaseUrl}/v1/components/${route.params.componentId}?stateType=graphql-schemas&fields=component(id,name,teams,states)`
@@ -48,9 +61,10 @@ export default Vue.extend({
   },
   head(): MetaInfo {
     return {
-      title: `Kronicle - ${
-        this.$route.params.componentId
-      } - GraphQL ${parseInt(this.$route.params.graphQlSchemaIndex, 10)}`,
+      title: `Kronicle - ${this.$route.params.componentId} - GraphQL ${parseInt(
+        this.$route.params.graphQlSchemaIndex,
+        10
+      )}`,
     }
   },
 })

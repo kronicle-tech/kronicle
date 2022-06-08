@@ -1,7 +1,5 @@
 <template>
-  <div v-if="components && components.length > 0"
-       class="mt-3 mb-4">
-
+  <div v-if="components && components.length > 0" class="mt-3 mb-4">
     <slot name="top"></slot>
 
     <b-button
@@ -13,27 +11,19 @@
       <b-icon icon="filter" aria-hidden="true" /> {{ toggleName }}
     </b-button>
 
-    <b-collapse
-      id="filters"
-      class="mt-3"
-    >
-      <b-card-group
-        columns
-        :style="cardGroupStyle"
-      >
+    <b-collapse id="filters" class="mt-3">
+      <b-card-group columns :style="cardGroupStyle">
         <slot></slot>
 
         <b-card
           v-if="
-                environmentIdFilterEnabled &&
-                environmentIdOptions &&
-                environmentIdOptions.length > 0
-              "
+            environmentIdFilterEnabled &&
+            environmentIdOptions &&
+            environmentIdOptions.length > 0
+          "
           bg-variant="secondary"
         >
-          <b-form-group
-            label="Environments"
-          >
+          <b-form-group label="Environments">
             <b-form-checkbox-group
               v-model="environmentIds"
               :options="environmentIdOptions"
@@ -45,15 +35,13 @@
 
         <b-card
           v-if="
-                pluginIdFilterEnabled &&
-                pluginIdOptions &&
-                pluginIdOptions.length > 0
-              "
+            pluginIdFilterEnabled &&
+            pluginIdOptions &&
+            pluginIdOptions.length > 0
+          "
           bg-variant="secondary"
         >
-          <b-form-group
-            label="Plugins"
-          >
+          <b-form-group label="Plugins">
             <b-form-checkbox-group
               v-model="pluginIds"
               :options="pluginIdOptions"
@@ -65,15 +53,13 @@
 
         <b-card
           v-if="
-                testOutcomesFilterEnabled &&
-                testOutcomeOptions &&
-                testOutcomeOptions.length > 0
-              "
+            testOutcomesFilterEnabled &&
+            testOutcomeOptions &&
+            testOutcomeOptions.length > 0
+          "
           bg-variant="secondary"
         >
-          <b-form-group
-            label="Test Outcomes"
-          >
+          <b-form-group label="Test Outcomes">
             <b-form-checkbox-group
               v-model="testOutcomes"
               :options="testOutcomeOptions"
@@ -87,9 +73,7 @@
           v-if="teamIdOptions && teamIdOptions.length > 0"
           bg-variant="secondary"
         >
-          <b-form-group
-            label="Teams"
-          >
+          <b-form-group label="Teams">
             <b-form-checkbox-group
               v-model="teamIds"
               :options="teamIdOptions"
@@ -117,9 +101,7 @@
           v-if="componentTypeIdOptions && componentTypeIdOptions.length > 0"
           bg-variant="secondary"
         >
-          <b-form-group
-            label="Component Types"
-          >
+          <b-form-group label="Component Types">
             <b-form-checkbox-group
               v-model="componentTypeIds"
               :options="componentTypeIdOptions"
@@ -133,9 +115,7 @@
           v-if="platformIdOptions && platformIdOptions.length > 0"
           bg-variant="secondary"
         >
-          <b-form-group
-            label="Platforms"
-          >
+          <b-form-group label="Platforms">
             <b-form-checkbox-group
               v-model="platformIds"
               :options="platformIdOptions"
@@ -153,10 +133,7 @@
           "
           bg-variant="secondary"
         >
-          <b-form-group
-            label="Component"
-            label-for="component-filter"
-          >
+          <b-form-group label="Component" label-for="component-filter">
             <b-form-select
               id="component-filter"
               v-model="componentId"
@@ -179,10 +156,11 @@ import {
   BCollapse,
   BFormCheckboxGroup,
   BFormGroup,
-  BFormSelect, BIcon,
-  VBToggle
+  BFormSelect,
+  BIcon,
+  VBToggle,
 } from 'bootstrap-vue'
-import {Component, ComponentEnvironmentState} from '~/types/kronicle-service'
+import { Component, ComponentEnvironmentState } from '~/types/kronicle-service'
 import { distinctArrayElements } from '~/src/arrayUtils'
 
 interface Option {
@@ -203,7 +181,7 @@ interface Option {
   },
   directives: {
     'b-toggle': VBToggle,
-  }
+  },
 })
 export default class ComponentFilters extends Vue {
   @Prop({ default: 'Filters' }) readonly toggleName!: string
@@ -254,8 +232,8 @@ export default class ComponentFilters extends Vue {
   get allPluginIds(): string[] {
     return distinctArrayElements(
       this.components
-        .flatMap((component) => (component.states ?? []))
-        .flatMap(state => state.pluginId)
+        .flatMap((component) => component.states ?? [])
+        .flatMap((state) => state.pluginId)
     )
   }
 
@@ -328,7 +306,9 @@ export default class ComponentFilters extends Vue {
 
   get allTags(): string[] {
     return distinctArrayElements(
-      this.components.flatMap((component) => (component.tags ?? []).map(tag => tag.key))
+      this.components.flatMap((component) =>
+        (component.tags ?? []).map((tag) => tag.key)
+      )
     )
   }
 

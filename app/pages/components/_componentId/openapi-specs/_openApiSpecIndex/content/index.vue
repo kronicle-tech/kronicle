@@ -1,12 +1,15 @@
 <template>
-  <OpenApiSpecView :component="component" :open-api-spec-index="openApiSpecIndex" />
+  <OpenApiSpecView
+    :component="component"
+    :open-api-spec-index="openApiSpecIndex"
+  />
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
 import { MetaInfo } from 'vue-meta'
 import { Component } from '~/types/kronicle-service'
-import OpenApiSpecView from "~/components/OpenApiSpecView.vue";
+import OpenApiSpecView from '~/components/OpenApiSpecView.vue'
 
 export default Vue.extend({
   components: {

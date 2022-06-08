@@ -10,11 +10,8 @@
 
 <script lang="ts">
 import Vue, { PropType } from 'vue'
-import {BCard} from 'bootstrap-vue'
-import {
-  Component,
-  CrossFunctionalRequirement,
-} from '~/types/kronicle-service'
+import { BCard } from 'bootstrap-vue'
+import { Component, CrossFunctionalRequirement } from '~/types/kronicle-service'
 import ComponentFilters from '~/components/ComponentFilters.vue'
 import CrossFunctionalRequirementTable from '~/components/CrossFunctionalRequirementTable.vue'
 

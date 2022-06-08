@@ -3,7 +3,7 @@ import VueMeta from 'vue-meta'
 import flushPromises from 'flush-promises'
 import Index from '~/pages/components/_componentId/openapi-specs/_openApiSpecIndex/content'
 import { createPageWrapper } from '~/test/pages/pageUtils'
-import {createComponentAvailableDataRequests} from "~/test/testDataUtils";
+import { createComponentAvailableDataRequests } from '~/test/testDataUtils'
 
 const localVue = createLocalVue()
 localVue.use(VueMeta, { keyName: 'head' })
@@ -66,8 +66,8 @@ describe('Index', () => {
                   testField: 'test-value-2',
                 },
               },
-            ]
-          }
+            ],
+          },
         ],
       }
     })

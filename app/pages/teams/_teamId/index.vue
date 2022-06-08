@@ -13,10 +13,7 @@
         <AreaName :area="{ id: team.areaId }" />
       </b-card>
 
-      <b-card
-        v-if="team.links && team.links.length > 0"
-        title="Links"
-      >
+      <b-card v-if="team.links && team.links.length > 0" title="Links">
         <Links :links="team.links" />
       </b-card>
 
@@ -38,7 +35,7 @@
 <script lang="ts">
 import Vue from 'vue'
 import { MetaInfo } from 'vue-meta'
-import {BCard, BCardGroup} from 'bootstrap-vue'
+import { BCard, BCardGroup } from 'bootstrap-vue'
 import { Team } from '~/types/kronicle-service'
 import AreaName from '~/components/AreaName.vue'
 import EmailAddress from '~/components/EmailAddress.vue'

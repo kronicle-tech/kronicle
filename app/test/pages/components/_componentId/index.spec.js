@@ -4,7 +4,7 @@ import Index from '@/pages/components/_componentId/index.vue'
 import { createPageWrapper } from '~/test/pages/pageUtils'
 import {
   createComponent,
-  createComponentAvailableDataRequests
+  createComponentAvailableDataRequests,
 } from '~/test/testDataUtils'
 
 const localVue = createLocalVue()
