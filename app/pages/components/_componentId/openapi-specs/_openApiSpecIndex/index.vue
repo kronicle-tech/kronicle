@@ -2,7 +2,7 @@
   <div class="m-3">
     <h1 class="text-info my-3">{{ component.name }} - OpenAPI Spec {{ openApiSpecIndex }}</h1>
 
-    <ComponentTabs :component-id="component.id" :state-types="stateTypes" />
+    <ComponentTabs :component-id="component.id" :component-available-data="componentAvailableData" />
 
     <div class="text-center mb-3">
       <NuxtLink :to="`/components/${component.id}/openapi-specs/${openApiSpecIndex}/content`">
@@ -19,14 +19,14 @@ import Vue from 'vue'
 import { MetaInfo } from 'vue-meta'
 import { Component } from '~/types/kronicle-service'
 import OpenApiSpecView from "~/components/OpenApiSpecView.vue";
-import {fetchComponentStateTypes} from "~/src/fetchComponentStateTypes";
+import {fetchComponentAvailableData} from "~/src/fetchComponentAvailableData";
 
 export default Vue.extend({
   components: {
     OpenApiSpecView,
   },
   async asyncData({ $config, route }) {
-    const stateTypes = await fetchComponentStateTypes($config, route)
+    const componentAvailableData = await fetchComponentAvailableData($config, route)
 
     const component = await fetch(
       `${$config.serviceBaseUrl}/v1/components/${route.params.componentId}?stateType=openapi-specs&fields=component(id,name,teams,states)`
@@ -35,13 +35,13 @@ export default Vue.extend({
       .then((json) => json.component as Component)
 
     return {
-      stateTypes,
+      componentAvailableData,
       component,
     }
   },
   data() {
     return {
-      stateTypes: [] as string[],
+      componentAvailableData: [] as string[],
       component: {} as Component,
       openApiSpecIndex: parseInt(this.$route.params.openApiSpecIndex, 10),
     }

@@ -2,7 +2,7 @@
   <div class="m-3">
     <h1 class="text-info my-3">{{ component.name }} - Call Graphs</h1>
 
-    <ComponentTabs :component-id="component.id" :state-types="stateTypes" />
+    <ComponentTabs :component-id="component.id" :component-available-data="componentAvailableData" />
 
     <ComponentCallGraphsView
       :component="component"
@@ -22,7 +22,7 @@ import {
 } from '~/types/kronicle-service'
 import ComponentTabs from '~/components/ComponentTabs.vue'
 import ComponentCallGraphsView from '~/components/ComponentCallGraphsView.vue'
-import {fetchComponentStateTypes} from "~/src/fetchComponentStateTypes";
+import {fetchComponentAvailableData} from "~/src/fetchComponentAvailableData";
 
 export default Vue.extend({
   components: {
@@ -30,7 +30,7 @@ export default Vue.extend({
     ComponentTabs,
   },
   async asyncData({ $config, route }) {
-    const stateTypes = await fetchComponentStateTypes($config, route)
+    const componentAvailableData = await fetchComponentAvailableData($config, route)
 
     const component = await fetch(
       `${$config.serviceBaseUrl}/v1/components/${route.params.componentId}?fields=component(id,name)`
@@ -51,7 +51,7 @@ export default Vue.extend({
       .then((json) => json.callGraphs as SummarySubComponentDependencies[])
 
     return {
-      stateTypes,
+      componentAvailableData,
       component,
       nodes,
       callGraphs,
@@ -59,7 +59,7 @@ export default Vue.extend({
   },
   data() {
     return {
-      stateTypes: [] as string[],
+      componentAvailableData: [] as string[],
       component: {} as Component,
       nodes: [] as SummarySubComponentDependencyNode[],
       callGraphs: [] as SummarySubComponentDependencies[],

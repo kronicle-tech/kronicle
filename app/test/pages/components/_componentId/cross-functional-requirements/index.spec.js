@@ -2,8 +2,8 @@ import Index from '@/pages/components/_componentId/cross-functional-requirements
 import { createPageWrapper } from '~/test/pages/pageUtils'
 import {
   createComponent,
+    createComponentAvailableDataRequests,
   createComponentWithCrossFunctionalRequirements,
-  createComponentResponseWithStateTypes,
 } from '~/test/testDataUtils'
 
 describe('Index', () => {
@@ -18,7 +18,7 @@ describe('Index', () => {
     wrapper = await createPageWrapper(Index, {
       route,
       serviceRequests: {
-        '/v1/components/test-component-id-1?fields=component(id,name,states(type))': createComponentResponseWithStateTypes(1),
+        ...createComponentAvailableDataRequests(),
         '/v1/components/test-component-id-1?fields=component(id,name,typeId,tags,teams,platformId,crossFunctionalRequirements)':
           {
             responseBody: { component },

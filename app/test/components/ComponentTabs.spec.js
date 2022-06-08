@@ -1,5 +1,6 @@
 import { mount } from '@vue/test-utils'
 import ComponentTabs from '@/components/ComponentTabs.vue'
+import {ComponentAvailableData} from "~/src/fetchComponentAvailableData";
 
 describe('ComponentTabs', () => {
   let propsData
@@ -11,7 +12,27 @@ describe('ComponentTabs', () => {
   beforeEach(() => {
     propsData = {
       componentId: 'test-component-id-1',
-      stateTypes: [],
+      componentAvailableData: {
+        metadataTypes: [
+          'cross-functional-requirement',
+          'tech-debt',
+          'scanner-error',
+          'test-result',
+        ],
+        stateTypes: [
+          'openapi-specs',
+          'graphql-schemas',
+          'git-repo',
+          'readme',
+          'to-dos',
+          'lines-of-code',
+          'software-repositories',
+          'softwares',
+          'imports',
+        ],
+        hasCallGraphs: true,
+        hasNodes: true,
+      },
     }
   })
 

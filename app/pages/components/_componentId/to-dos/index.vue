@@ -2,7 +2,7 @@
   <div class="m-3">
     <h1 class="text-info my-3">{{ component.name }} - To Dos</h1>
 
-    <ComponentTabs :component-id="component.id" :state-types="stateTypes" />
+    <ComponentTabs :component-id="component.id" :component-available-data="componentAvailableData" />
 
     <b-card title="To Dos" class="my-3">
       <b-list-group>
@@ -41,7 +41,7 @@ import { MetaInfo } from 'vue-meta'
 import {BCard, BListGroup, BListGroupItem} from 'bootstrap-vue'
 import ComponentTabs from '~/components/ComponentTabs.vue'
 import {Component, ToDo, ToDosState} from '~/types/kronicle-service'
-import {fetchComponentStateTypes} from "~/src/fetchComponentStateTypes";
+import {fetchComponentAvailableData} from "~/src/fetchComponentAvailableData";
 import {findComponentState} from "~/src/componentStateUtils";
 
 export default Vue.extend({
@@ -52,7 +52,7 @@ export default Vue.extend({
     ComponentTabs,
   },
   async asyncData({ $config, route }) {
-    const stateTypes = await fetchComponentStateTypes($config, route)
+    const componentAvailableData = await fetchComponentAvailableData($config, route)
 
     const component = await fetch(
       `${$config.serviceBaseUrl}/v1/components/${route.params.componentId}?stateType=to-dos&fields=component(id,name,teams,states)`
@@ -61,13 +61,13 @@ export default Vue.extend({
       .then((json) => json.component as Component)
 
     return {
-      stateTypes,
+      componentAvailableData,
       component,
     }
   },
   data() {
     return {
-      stateTypes: [] as string[],
+      componentAvailableData: [] as string[],
       component: {} as Component,
     }
   },

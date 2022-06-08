@@ -2,7 +2,7 @@
   <div class="m-3">
     <h1 class="text-info my-3">{{ component.name }} - Visualizations</h1>
 
-    <ComponentTabs :component-id="component.id" :state-types="stateTypes" />
+    <ComponentTabs :component-id="component.id" :component-available-data="componentAvailableData" />
 
     <ComponentDependenciesView
       :all-components="allComponents"
@@ -21,7 +21,7 @@ import { MetaInfo } from 'vue-meta'
 import { Component, Summary } from '~/types/kronicle-service'
 import ComponentTabs from '~/components/ComponentTabs.vue'
 import ComponentDependenciesView from '~/components/ComponentDependenciesView.vue'
-import {fetchComponentStateTypes} from "~/src/fetchComponentStateTypes";
+import {fetchComponentAvailableData} from "~/src/fetchComponentAvailableData";
 
 export default Vue.extend({
   components: {
@@ -29,7 +29,7 @@ export default Vue.extend({
     ComponentTabs,
   },
   async asyncData({ $config, route, store }) {
-    const stateTypes = await fetchComponentStateTypes($config, route)
+    const componentAvailableData = await fetchComponentAvailableData($config, route)
 
     const component = await fetch(
       `${$config.serviceBaseUrl}/v1/components/${route.params.componentId}?fields=component(id,name,typeId,tags,description,notes,responsibilities,teams,platformId,states(environmentId,pluginId))`
@@ -55,7 +55,7 @@ export default Vue.extend({
       .then((json) => json.summary as Summary)
 
     return {
-      stateTypes,
+      componentAvailableData,
       component,
       allComponents,
       summary,
@@ -63,7 +63,7 @@ export default Vue.extend({
   },
   data() {
     return {
-      stateTypes: [] as string[],
+      componentAvailableData: [] as string[],
       component: {} as Component,
       allComponents: [] as Component[],
       summary: {} as Summary,
