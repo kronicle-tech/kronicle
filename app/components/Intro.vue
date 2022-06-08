@@ -27,8 +27,9 @@ export default Vue.extend({
   data() {
     return {
       effectiveTitle: this.title || 'Kronicle',
-      effectiveMarkdown: this.markdown
-        || 'Kronicle contains information on the organisation\'s components, teams and areas.',
+      effectiveMarkdown:
+        this.markdown ||
+        "Kronicle contains information on the organisation's components, teams and areas.",
     }
   },
 })

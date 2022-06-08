@@ -26,7 +26,9 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
       href="/areas/test-area-id-1/dependencies"
       target="_self"
     >
-      Visualizations
+      
+    Visualizations
+  
     </a>
      
     <a
@@ -34,7 +36,9 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
       href="/areas/test-area-id-1/components"
       target="_self"
     >
-      Components
+      
+    Components
+  
     </a>
      
     <a
@@ -52,7 +56,9 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
       href="/areas/test-area-id-1/tech-debts"
       target="_self"
     >
-      Tech Debts
+      
+    Tech Debts
+  
     </a>
      
     <a
@@ -76,7 +82,9 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
       href="/areas/test-area-id-1/openapi-specs"
       target="_self"
     >
-      OpenAPI Specs
+      
+    OpenAPI Specs
+  
     </a>
   </div>
    
@@ -105,7 +113,8 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
           ×
         </button>
         
-    Click a dot in the dependencies diagram to see more information about that component
+    Click a dot in the dependencies diagram to see more information about that
+    component
   
       </div>
     </transition-stub>
@@ -1298,7 +1307,9 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
       href="/areas/test-area-id-1/dependencies"
       target="_self"
     >
-      Visualizations
+      
+    Visualizations
+  
     </a>
      
     <a
@@ -1306,7 +1317,9 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
       href="/areas/test-area-id-1/components"
       target="_self"
     >
-      Components
+      
+    Components
+  
     </a>
      
     <a
@@ -1324,7 +1337,9 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
       href="/areas/test-area-id-1/tech-debts"
       target="_self"
     >
-      Tech Debts
+      
+    Tech Debts
+  
     </a>
      
     <a
@@ -1348,7 +1363,9 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
       href="/areas/test-area-id-1/openapi-specs"
       target="_self"
     >
-      OpenAPI Specs
+      
+    OpenAPI Specs
+  
     </a>
   </div>
    
@@ -1377,7 +1394,8 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
           ×
         </button>
         
-    Click a dot in the dependencies diagram to see more information about that component
+    Click a dot in the dependencies diagram to see more information about that
+    component
   
       </div>
     </transition-stub>
@@ -2570,7 +2588,9 @@ exports[`Index when Get Summary service endpoint returns no dependencies renders
       href="/areas/test-area-id-1/dependencies"
       target="_self"
     >
-      Visualizations
+      
+    Visualizations
+  
     </a>
      
     <a
@@ -2578,7 +2598,9 @@ exports[`Index when Get Summary service endpoint returns no dependencies renders
       href="/areas/test-area-id-1/components"
       target="_self"
     >
-      Components
+      
+    Components
+  
     </a>
      
     <a
@@ -2596,7 +2618,9 @@ exports[`Index when Get Summary service endpoint returns no dependencies renders
       href="/areas/test-area-id-1/tech-debts"
       target="_self"
     >
-      Tech Debts
+      
+    Tech Debts
+  
     </a>
      
     <a
@@ -2620,7 +2644,9 @@ exports[`Index when Get Summary service endpoint returns no dependencies renders
       href="/areas/test-area-id-1/openapi-specs"
       target="_self"
     >
-      OpenAPI Specs
+      
+    OpenAPI Specs
+  
     </a>
   </div>
    
@@ -2649,7 +2675,8 @@ exports[`Index when Get Summary service endpoint returns no dependencies renders
           ×
         </button>
         
-    Click a dot in the dependencies diagram to see more information about that component
+    Click a dot in the dependencies diagram to see more information about that
+    component
   
       </div>
     </transition-stub>

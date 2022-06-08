@@ -17,11 +17,15 @@
 
 <script lang="ts">
 import Vue, { PropType } from 'vue'
-import {BCard, BListGroup, BListGroupItem} from 'bootstrap-vue'
-import {Component, GraphQlSchema, GraphQlSchemasState} from '~/types/kronicle-service'
+import { BCard, BListGroup, BListGroupItem } from 'bootstrap-vue'
+import {
+  Component,
+  GraphQlSchema,
+  GraphQlSchemasState,
+} from '~/types/kronicle-service'
 import ComponentFilters from '~/components/ComponentFilters.vue'
 import GraphQlSchemaTable from '~/components/GraphQlSchemaTable.vue'
-import {findComponentState} from "~/src/componentStateUtils";
+import { findComponentState } from '~/src/componentStateUtils'
 
 export default Vue.extend({
   components: {
@@ -42,12 +46,11 @@ export default Vue.extend({
       return this.$store.state.componentFilters.filteredComponents
     },
     graphQlSchemas(): GraphQlSchema[] {
-      return this.filteredComponents.flatMap(
-        (component) => {
-          const graphQlSchemas: GraphQlSchemasState | undefined = findComponentState(component, 'graphql-schemas')
-          return graphQlSchemas?.graphQlSchemas ?? []
-        }
-      )
+      return this.filteredComponents.flatMap((component) => {
+        const graphQlSchemas: GraphQlSchemasState | undefined =
+          findComponentState(component, 'graphql-schemas')
+        return graphQlSchemas?.graphQlSchemas ?? []
+      })
     },
     count(): number {
       return this.graphQlSchemas.length

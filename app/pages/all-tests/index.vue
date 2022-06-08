@@ -49,7 +49,7 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import {BAlert} from 'bootstrap-vue'
+import { BAlert } from 'bootstrap-vue'
 import { MetaInfo } from 'vue-meta'
 import { Component, Test, TestOutcome } from '~/types/kronicle-service'
 import AllTestsTabs from '~/components/AllTestsTabs.vue'

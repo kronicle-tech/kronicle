@@ -2,7 +2,10 @@
   <div class="m-3">
     <h1 class="text-info my-3">{{ component.name }}</h1>
 
-    <ComponentTabs :component-id="component.id" :component-available-data="componentAvailableData" />
+    <ComponentTabs
+      :component-id="component.id"
+      :component-available-data="componentAvailableData"
+    />
 
     <b-card-group columns>
       <b-card title="Component Name">
@@ -23,10 +26,7 @@
         </b-card-text>
       </b-card>
 
-      <b-card
-        v-if="component.tags && component.tags > 0"
-        title="Tags"
-      >
+      <b-card v-if="component.tags && component.tags > 0" title="Tags">
         <Links :tags="component.tags" />
       </b-card>
 
@@ -57,7 +57,9 @@
       </b-card>
 
       <b-card
-        v-if="component.responsibilities && component.responsibilities.length > 0"
+        v-if="
+          component.responsibilities && component.responsibilities.length > 0
+        "
         title="Responsibilities"
       >
         <Responsibilities :responsibilities="component.responsibilities" />
@@ -69,16 +71,20 @@
 <script lang="ts">
 import Vue from 'vue'
 import { MetaInfo } from 'vue-meta'
-import {BCard, BCardGroup, BCardText} from 'bootstrap-vue'
-import {Component, KeySoftware, KeySoftwaresState} from '~/types/kronicle-service'
+import { BCard, BCardGroup, BCardText } from 'bootstrap-vue'
+import {
+  Component,
+  KeySoftware,
+  KeySoftwaresState,
+} from '~/types/kronicle-service'
 import ComponentTabs from '~/components/ComponentTabs.vue'
-import KeySoftwareBadges from "~/components/KeySoftwareBadges.vue";
+import KeySoftwareBadges from '~/components/KeySoftwareBadges.vue'
 import Links from '~/components/Links.vue'
 import Markdown from '~/components/Markdown.vue'
 import ComponentTeams from '~/components/ComponentTeams.vue'
 import Responsibilities from '~/components/Responsibilities.vue'
-import {fetchComponentAvailableData} from "~/src/fetchComponentAvailableData";
-import {findComponentState} from "~/src/componentStateUtils";
+import { fetchComponentAvailableData } from '~/src/fetchComponentAvailableData'
+import { findComponentState } from '~/src/componentStateUtils'
 
 export default Vue.extend({
   components: {
@@ -93,7 +99,10 @@ export default Vue.extend({
     Responsibilities,
   },
   async asyncData({ $config, route }) {
-    const componentAvailableData = await fetchComponentAvailableData($config, route)
+    const componentAvailableData = await fetchComponentAvailableData(
+      $config,
+      route
+    )
 
     const component = await fetch(
       `${$config.serviceBaseUrl}/v1/components/${route.params.componentId}?stateType=key-softwares&fields=component(id,name,typeId,platformId,tags,teams,links,description,notes,responsibilities,states)`
@@ -112,16 +121,19 @@ export default Vue.extend({
       component: {} as Component,
     }
   },
-  computed: {
-    keySoftwares(): KeySoftware[] {
-      const keySoftwares: KeySoftwaresState | undefined = findComponentState(this.component, 'key-softwares')
-      return keySoftwares?.keySoftwares ?? []
-    }
-  },
   head(): MetaInfo {
     return {
       title: `Kronicle - ${this.component.name}`,
     }
+  },
+  computed: {
+    keySoftwares(): KeySoftware[] {
+      const keySoftwares: KeySoftwaresState | undefined = findComponentState(
+        this.component,
+        'key-softwares'
+      )
+      return keySoftwares?.keySoftwares ?? []
+    },
   },
 })
 </script>

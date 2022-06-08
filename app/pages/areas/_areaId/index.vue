@@ -16,10 +16,7 @@
         <Markdown :markdown="area.notes" :toc="true" />
       </b-card>
 
-      <b-card
-        v-if="area.links && area.links.length > 0"
-        title="Links"
-      >
+      <b-card v-if="area.links && area.links.length > 0" title="Links">
         <Links :links="area.links" />
       </b-card>
     </b-card-group>
@@ -35,7 +32,7 @@
 <script lang="ts">
 import Vue from 'vue'
 import { MetaInfo } from 'vue-meta'
-import {BCard, BCardGroup} from 'bootstrap-vue'
+import { BCard, BCardGroup } from 'bootstrap-vue'
 import { Area } from '~/types/kronicle-service'
 import AreaTabs from '~/components/AreaTabs.vue'
 import Links from '~/components/Links.vue'

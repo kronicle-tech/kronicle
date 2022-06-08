@@ -20,11 +20,11 @@
           <b-card-header header-tag="header" class="p-1" role="tab">
             <b-button
               v-b-toggle="
-          `accordion-${rowIndex}-${itemIndex}-${itemPriority.priority}`
-        "
+                `accordion-${rowIndex}-${itemIndex}-${itemPriority.priority}`
+              "
               block
               variant="info"
-            >{{
+              >{{
                 `${priorityName(
                   itemPriority.priority
                 )} (${getItemPriorityTestResultCount(itemPriority)})`
@@ -40,8 +40,8 @@
             <b-card-body>
               <ComponentTestResultTable
                 :components-and-test-results="
-            itemPriority.componentsAndTestResults
-          "
+                  itemPriority.componentsAndTestResults
+                "
                 :teams-visible="false"
               />
             </b-card-body>

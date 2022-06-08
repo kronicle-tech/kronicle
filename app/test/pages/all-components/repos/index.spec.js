@@ -33,9 +33,7 @@ describe('Index', () => {
 
   test('has the right page title', async () => {
     await createWrapper()
-    expect(wrapper.vm.$metaInfo.title).toBe(
-      'Kronicle - All Components - Repos'
-    )
+    expect(wrapper.vm.$metaInfo.title).toBe('Kronicle - All Components - Repos')
   })
 
   describe('when Get Components service endpoint returns an empty array', () => {

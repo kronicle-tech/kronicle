@@ -2,7 +2,10 @@
   <div class="m-3">
     <h1 class="text-info my-3">{{ component.name }} - Software Repositories</h1>
 
-    <ComponentTabs :component-id="component.id" :component-available-data="componentAvailableData" />
+    <ComponentTabs
+      :component-id="component.id"
+      :component-available-data="componentAvailableData"
+    />
 
     <b-card title="Total Software Repositories" class="my-3">
       <b-list-group>
@@ -10,9 +13,7 @@
           <span class="display-1">
             <FormattedNumber :value="softwareRepositoryCount" />
           </span>
-          software repositor{{
-            softwareRepositoryCount === 1 ? 'y' : 'ies'
-          }}
+          software repositor{{ softwareRepositoryCount === 1 ? 'y' : 'ies' }}
         </b-list-group-item>
       </b-list-group>
     </b-card>
@@ -23,31 +24,31 @@
         style="width: 100%"
       >
         <thead>
-        <tr>
-          <th>Scanner</th>
-          <th>Type</th>
-          <th>URL</th>
-          <th>Safe</th>
-          <th>Scope</th>
-        </tr>
+          <tr>
+            <th>Scanner</th>
+            <th>Type</th>
+            <th>URL</th>
+            <th>Safe</th>
+            <th>Scope</th>
+          </tr>
         </thead>
         <tbody>
-        <tr
-          v-for="(
-        softwareRepository, softwareRepositoryIndex
-      ) in softwareRepositories"
-          :key="softwareRepositoryIndex"
-        >
-          <td>{{ softwareRepository.scannerId }}</td>
-          <td>{{ softwareRepository.type }}</td>
-          <td>
-            <a :href="softwareRepository.url">
-              {{ softwareRepository.url }}
-            </a>
-          </td>
-          <td>{{ softwareRepository.safe }}</td>
-          <td>{{ softwareRepository.scope }}</td>
-        </tr>
+          <tr
+            v-for="(
+              softwareRepository, softwareRepositoryIndex
+            ) in softwareRepositories"
+            :key="softwareRepositoryIndex"
+          >
+            <td>{{ softwareRepository.scannerId }}</td>
+            <td>{{ softwareRepository.type }}</td>
+            <td>
+              <a :href="softwareRepository.url">
+                {{ softwareRepository.url }}
+              </a>
+            </td>
+            <td>{{ softwareRepository.safe }}</td>
+            <td>{{ softwareRepository.scope }}</td>
+          </tr>
         </tbody>
       </table>
     </b-card>
@@ -57,12 +58,16 @@
 <script lang="ts">
 import Vue from 'vue'
 import { MetaInfo } from 'vue-meta'
-import {BCard, BListGroup, BListGroupItem} from 'bootstrap-vue'
-import {Component, SoftwareRepositoriesState, SoftwareRepository} from '~/types/kronicle-service'
+import { BCard, BListGroup, BListGroupItem } from 'bootstrap-vue'
+import {
+  Component,
+  SoftwareRepositoriesState,
+  SoftwareRepository,
+} from '~/types/kronicle-service'
 import ComponentTabs from '~/components/ComponentTabs.vue'
 import FormattedNumber from '~/components/FormattedNumber.vue'
-import {fetchComponentAvailableData} from "~/src/fetchComponentAvailableData";
-import {findComponentState} from "~/src/componentStateUtils";
+import { fetchComponentAvailableData } from '~/src/fetchComponentAvailableData'
+import { findComponentState } from '~/src/componentStateUtils'
 
 export default Vue.extend({
   components: {
@@ -73,7 +78,10 @@ export default Vue.extend({
     FormattedNumber,
   },
   async asyncData({ $config, route }) {
-    const componentAvailableData = await fetchComponentAvailableData($config, route)
+    const componentAvailableData = await fetchComponentAvailableData(
+      $config,
+      route
+    )
 
     const component = await fetch(
       `${$config.serviceBaseUrl}/v1/components/${route.params.componentId}?stateType=software-repositories&fields=component(id,name,teams,states)`
@@ -99,7 +107,8 @@ export default Vue.extend({
   },
   computed: {
     softwareRepositories(): SoftwareRepository[] {
-      const softwareRepositories: SoftwareRepositoriesState | undefined = findComponentState(this.component, 'software-repositories')
+      const softwareRepositories: SoftwareRepositoriesState | undefined =
+        findComponentState(this.component, 'software-repositories')
       return softwareRepositories?.softwareRepositories ?? []
     },
     softwareRepositoryCount(): number {

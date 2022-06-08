@@ -19,9 +19,10 @@ describe('Index', () => {
       route,
       serviceRequests: {
         ...createComponentAvailableDataRequests(),
-        '/v1/components/test-component-id-1?stateType=to-dos&fields=component(id,name,teams,states)': {
-          responseBody: { component },
-        },
+        '/v1/components/test-component-id-1?stateType=to-dos&fields=component(id,name,teams,states)':
+          {
+            responseBody: { component },
+          },
       },
     })
   }

@@ -19,7 +19,7 @@
 
 <script lang="ts">
 import Vue, { PropType } from 'vue'
-import {BCard, BListGroup, BListGroupItem} from 'bootstrap-vue'
+import { BCard, BListGroup, BListGroupItem } from 'bootstrap-vue'
 import { Component, ScannerError } from '~/types/kronicle-service'
 import ComponentFilters from '~/components/ComponentFilters.vue'
 import ScannerErrorTable from '~/components/ScannerErrorTable.vue'

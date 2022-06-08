@@ -34,7 +34,7 @@
 <script lang="ts">
 import Vue from 'vue'
 import { MetaInfo } from 'vue-meta'
-import {BAlert} from 'bootstrap-vue'
+import { BAlert } from 'bootstrap-vue'
 import { Area } from '~/types/kronicle-service'
 import AllAreasTabs from '~/components/AllAreasTabs.vue'
 import AreaName from '~/components/AreaName.vue'

@@ -1,4 +1,4 @@
-import {intRange} from '~/src/arrayUtils'
+import { intRange } from '~/src/arrayUtils'
 
 export function createArea({
   areaNumber,
@@ -24,7 +24,7 @@ export function createArea({
 }
 
 function createComponentId(componentNumber) {
-  return `test-component-id-${componentNumber}`;
+  return `test-component-id-${componentNumber}`
 }
 
 export function createComponent({
@@ -34,7 +34,7 @@ export function createComponent({
   hasTechDebts = false,
   hasTestResults = false,
   additionalFields = {},
-  additionalStates = []
+  additionalStates = [],
 }) {
   const fields = {}
   const states = []
@@ -49,16 +49,14 @@ export function createComponent({
       createResponsibility({ componentNumber, responsibilityNumber: 1 }),
       createResponsibility({ componentNumber, responsibilityNumber: 2 }),
     ]
-    states.push(
-      {
-        pluginId: 'test-plugin-id',
-        type: 'key-softwares',
-        keySoftware: [
-          createKeySoftware({ componentNumber, keySoftwareItemNumber: 1 }),
-          createKeySoftware({ componentNumber, keySoftwareItemNumber: 2 }),
-        ],
-      }
-    )
+    states.push({
+      pluginId: 'test-plugin-id',
+      type: 'key-softwares',
+      keySoftware: [
+        createKeySoftware({ componentNumber, keySoftwareItemNumber: 1 }),
+        createKeySoftware({ componentNumber, keySoftwareItemNumber: 2 }),
+      ],
+    })
     if (platformNumber === undefined) {
       platformNumber = componentNumber
     }
@@ -107,27 +105,15 @@ export function createComponentWithAvailableData(componentNumber) {
   return {
     id: createComponentId(componentNumber),
     name: `Test Component Name ${componentNumber}`,
-    crossFunctionalRequirements: [
-      {},
-      {},
-    ],
-    techDebts: [
-      {},
-      {},
-    ],
+    crossFunctionalRequirements: [{}, {}],
+    techDebts: [{}, {}],
     states: [
       {
         type: 'lines-of-code',
       },
     ],
-    scannerErrors: [
-      {},
-      {},
-    ],
-    testResults: [
-      {},
-      {},
-    ],
+    scannerErrors: [{}, {}],
+    testResults: [{}, {}],
   }
 }
 
@@ -752,27 +738,22 @@ export function createDependency({ sourceIndex, targetIndex }) {
 }
 
 export function createComponentAvailableDataRequests() {
-  const componentNumber = 1;
+  const componentNumber = 1
   return {
-    '/v1/components/test-component-id-1?fields=component(id,name,crossFunctionalRequirements(fake),techDebts(fake),states(type),scannerErrors(fake),testResults(fake))': {
-      responseBody: {
-        component: createComponentWithAvailableData(componentNumber),
+    '/v1/components/test-component-id-1?fields=component(id,name,crossFunctionalRequirements(fake),techDebts(fake),states(type),scannerErrors(fake),testResults(fake))':
+      {
+        responseBody: {
+          component: createComponentWithAvailableData(componentNumber),
+        },
       },
-    },
     '/v1/components/test-component-id-1/call-graphs?fields=callGraphs(fake)': {
       responseBody: {
-        callGraphs: [
-          {},
-          {},
-        ],
+        callGraphs: [{}, {}],
       },
     },
     '/v1/components/test-component-id-1/nodes?fields=nodes(fake)': {
       responseBody: {
-        nodes: [
-          {},
-          {},
-        ],
+        nodes: [{}, {}],
       },
     },
   }

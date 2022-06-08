@@ -1,6 +1,5 @@
 import { mount } from '@vue/test-utils'
 import ComponentTabs from '@/components/ComponentTabs.vue'
-import {ComponentAvailableData} from "~/src/fetchComponentAvailableData";
 
 describe('ComponentTabs', () => {
   let propsData
@@ -54,9 +53,7 @@ describe('ComponentTabs', () => {
 
   describe('when there are no state types', () => {
     beforeEach(() => {
-      propsData.stateTypes = [
-        'lines-of-code',
-      ]
+      propsData.stateTypes = ['lines-of-code']
     })
 
     test('renders the component with all tabs', () => {

@@ -20,11 +20,11 @@
           <b-card-header header-tag="header" class="p-1" role="tab">
             <b-button
               v-b-toggle="
-          `accordion-${rowIndex}-${itemIndex}-${itemPriority.priority}`
-        "
+                `accordion-${rowIndex}-${itemIndex}-${itemPriority.priority}`
+              "
               block
               variant="info"
-            >{{
+              >{{
                 `${priorityName(
                   itemPriority.priority
                 )} (${getItemPriorityTechDebtCount(itemPriority)})`

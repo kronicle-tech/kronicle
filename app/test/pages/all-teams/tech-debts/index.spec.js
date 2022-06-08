@@ -30,9 +30,7 @@ describe('Index', () => {
 
   test('has the right page title', async () => {
     await createWrapper()
-    expect(wrapper.vm.$metaInfo.title).toBe(
-      'Kronicle - All Teams - Tech Debts'
-    )
+    expect(wrapper.vm.$metaInfo.title).toBe('Kronicle - All Teams - Tech Debts')
   })
 
   describe('when Get Teams service endpoint returns an empty array', () => {

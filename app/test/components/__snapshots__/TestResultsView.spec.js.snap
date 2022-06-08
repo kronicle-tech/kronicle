@@ -8,12 +8,12 @@ exports[`TestResultsView when areaId prop is set renders the test hrefs pointing
     <div class=\\"list-group\\">
       <!---->
       <div class=\\"list-group-item list-group-item-danger fail-count\\"><span class=\\"display-1\\">
-      3
-    </span> <b>failing</b> tests
+          3
+        </span> <b>failing</b> tests
       </div>
       <div class=\\"list-group-item list-group-item-light not-applicable-count\\"><span class=\\"display-4\\">
-      3
-    </span> <b>not applicable</b> tests
+          3
+        </span> <b>not applicable</b> tests
       </div>
     </div>
     <!---->
@@ -369,12 +369,12 @@ exports[`TestResultsView when components is set to multiple components with mult
     <div class=\\"list-group\\">
       <!---->
       <div class=\\"list-group-item list-group-item-danger fail-count\\"><span class=\\"display-1\\">
-      3
-    </span> <b>failing</b> tests
+          3
+        </span> <b>failing</b> tests
       </div>
       <div class=\\"list-group-item list-group-item-light not-applicable-count\\"><span class=\\"display-4\\">
-      3
-    </span> <b>not applicable</b> tests
+          3
+        </span> <b>not applicable</b> tests
       </div>
     </div>
     <!---->
@@ -730,12 +730,12 @@ exports[`TestResultsView when components is set to multiple components with mult
     <div class=\\"list-group\\">
       <!---->
       <div class=\\"list-group-item list-group-item-danger fail-count\\"><span class=\\"display-1\\">
-      3
-    </span> <b>failing</b> tests
+          3
+        </span> <b>failing</b> tests
       </div>
       <div class=\\"list-group-item list-group-item-light not-applicable-count\\"><span class=\\"display-4\\">
-      3
-    </span> <b>not applicable</b> tests
+          3
+        </span> <b>not applicable</b> tests
       </div>
     </div>
     <!---->
@@ -1091,12 +1091,12 @@ exports[`TestResultsView when components is set to multiple components with mult
     <div class=\\"list-group\\">
       <!---->
       <div class=\\"list-group-item list-group-item-danger fail-count\\"><span class=\\"display-1\\">
-      1
-    </span> <b>failing</b> test
+          1
+        </span> <b>failing</b> test
       </div>
       <div class=\\"list-group-item list-group-item-light not-applicable-count\\"><span class=\\"display-4\\">
-      1
-    </span> <b>not applicable</b> test
+          1
+        </span> <b>not applicable</b> test
       </div>
     </div>
     <!---->
@@ -1344,8 +1344,8 @@ exports[`TestResultsView when components prop is set a component with 1 fail tes
     <div class=\\"list-group\\">
       <!---->
       <div class=\\"list-group-item list-group-item-danger fail-count\\"><span class=\\"display-1\\">
-      1
-    </span> <b>failing</b> test
+          1
+        </span> <b>failing</b> test
       </div>
     </div>
     <!---->
@@ -1502,8 +1502,8 @@ exports[`TestResultsView when components prop is set a component with 1 not-appl
     <div class=\\"list-group\\">
       <!---->
       <div class=\\"list-group-item list-group-item-light not-applicable-count\\"><span class=\\"display-4\\">
-      1
-    </span> <b>not applicable</b> test
+          1
+        </span> <b>not applicable</b> test
       </div>
     </div>
     <!---->
@@ -1660,8 +1660,8 @@ exports[`TestResultsView when components prop is set a component with 1 pass tes
     <div class=\\"list-group\\">
       <!---->
       <div class=\\"list-group-item list-group-item-success pass-count\\"><span class=\\"display-4\\">
-      1
-    </span> <b>passing</b> test
+          1
+        </span> <b>passing</b> test
       </div>
     </div>
     <!---->
@@ -1950,12 +1950,12 @@ exports[`TestResultsView when teamId prop is set renders the test hrefs pointing
     <div class=\\"list-group\\">
       <!---->
       <div class=\\"list-group-item list-group-item-danger fail-count\\"><span class=\\"display-1\\">
-      3
-    </span> <b>failing</b> tests
+          3
+        </span> <b>failing</b> tests
       </div>
       <div class=\\"list-group-item list-group-item-light not-applicable-count\\"><span class=\\"display-4\\">
-      3
-    </span> <b>not applicable</b> tests
+          3
+        </span> <b>not applicable</b> tests
       </div>
     </div>
     <!---->
@@ -2311,12 +2311,12 @@ exports[`TestResultsView when testId prop is set renders only the test results t
     <div class=\\"list-group\\">
       <!---->
       <div class=\\"list-group-item list-group-item-danger fail-count\\"><span class=\\"display-1\\">
-      1
-    </span> <b>failing</b> test
+          1
+        </span> <b>failing</b> test
       </div>
       <div class=\\"list-group-item list-group-item-success pass-count\\"><span class=\\"display-4\\">
-      1
-    </span> <b>passing</b> test
+          1
+        </span> <b>passing</b> test
       </div>
     </div>
     <!---->

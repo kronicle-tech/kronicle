@@ -2,10 +2,12 @@
   <div class="m-3">
     <h1 class="text-info my-3">{{ component.name }} - Repo</h1>
 
-    <ComponentTabs :component-id="component.id" :component-available-data="componentAvailableData" />
+    <ComponentTabs
+      :component-id="component.id"
+      :component-available-data="componentAvailableData"
+    />
 
     <b-card-group deck class="my-3">
-
       <b-card title="Repo">
         <Repo :repo="component.repo" />
       </b-card>
@@ -19,11 +21,7 @@
             Repo Age
             <b-badge variant="primary" pill>
               <FormattedAge
-                :value="
-              gitRepo
-                ? gitRepo.firstCommitTimestamp
-                : null
-            "
+                :value="gitRepo ? gitRepo.firstCommitTimestamp : null"
               />
             </b-badge>
           </b-list-group-item>
@@ -35,11 +33,7 @@
             Time Since Last Commit
             <b-badge variant="primary" pill>
               <FormattedAge
-                :value="
-              gitRepo
-                ? gitRepo.lastCommitTimestamp
-                : null
-            "
+                :value="gitRepo ? gitRepo.lastCommitTimestamp : null"
               />
             </b-badge>
           </b-list-group-item>
@@ -50,11 +44,7 @@
           >
             Commit Count
             <b-badge variant="primary" pill>
-              <FormattedNumber
-                :value="
-              gitRepo ? gitRepo.commitCount : null
-            "
-              />
+              <FormattedNumber :value="gitRepo ? gitRepo.commitCount : null" />
             </b-badge>
           </b-list-group-item>
 
@@ -64,11 +54,7 @@
           >
             Author Count
             <b-badge variant="primary" pill>
-              <FormattedNumber
-                :value="
-              gitRepo ? gitRepo.authorCount : null
-            "
-              />
+              <FormattedNumber :value="gitRepo ? gitRepo.authorCount : null" />
             </b-badge>
           </b-list-group-item>
 
@@ -79,54 +65,50 @@
             Committer Count
             <b-badge variant="primary" pill>
               <FormattedNumber
-                :value="
-              gitRepo ? gitRepo.committerCount : null
-            "
+                :value="gitRepo ? gitRepo.committerCount : null"
               />
             </b-badge>
           </b-list-group-item>
         </b-list-group>
       </b-card>
-
     </b-card-group>
 
     <b-card-group deck>
-
       <b-card v-if="gitRepo" title="Authors">
         <table class="table table-dark">
           <thead>
-          <tr>
-            <th>Names</th>
-            <th>Email Address</th>
-            <th>Commits</th>
-            <th>First Commit</th>
-            <th>Last Commit</th>
-          </tr>
+            <tr>
+              <th>Names</th>
+              <th>Email Address</th>
+              <th>Commits</th>
+              <th>First Commit</th>
+              <th>Last Commit</th>
+            </tr>
           </thead>
           <tbody>
-          <tr v-for="(author, authorIndex) in authors" :key="authorIndex">
-            <td>
-            <span
-              v-for="(authorName, authorNameIndex) in author.names"
-              :key="authorNameIndex"
-            >
-              {{ authorName }}
-              <br />
-            </span>
-            </td>
-            <td>
-              <EmailAddress :email-address="author.emailAddress" />
-            </td>
-            <td>
-              <FormattedNumber :value="author.commitCount" />
-            </td>
-            <td>
-              <FormattedDate :value="author.firstCommitTimestamp" />
-            </td>
-            <td>
-              <FormattedDate :value="author.lastCommitTimestamp" />
-            </td>
-          </tr>
+            <tr v-for="(author, authorIndex) in authors" :key="authorIndex">
+              <td>
+                <span
+                  v-for="(authorName, authorNameIndex) in author.names"
+                  :key="authorNameIndex"
+                >
+                  {{ authorName }}
+                  <br />
+                </span>
+              </td>
+              <td>
+                <EmailAddress :email-address="author.emailAddress" />
+              </td>
+              <td>
+                <FormattedNumber :value="author.commitCount" />
+              </td>
+              <td>
+                <FormattedDate :value="author.firstCommitTimestamp" />
+              </td>
+              <td>
+                <FormattedDate :value="author.lastCommitTimestamp" />
+              </td>
+            </tr>
           </tbody>
         </table>
       </b-card>
@@ -142,17 +124,24 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import {MetaInfo} from 'vue-meta'
-import {BBadge, BCard, BCardGroup, BCardText, BListGroup, BListGroupItem,} from 'bootstrap-vue'
-import {Component, GitRepoState, Identity} from '~/types/kronicle-service'
+import { MetaInfo } from 'vue-meta'
+import {
+  BBadge,
+  BCard,
+  BCardGroup,
+  BCardText,
+  BListGroup,
+  BListGroupItem,
+} from 'bootstrap-vue'
+import { Component, GitRepoState, Identity } from '~/types/kronicle-service'
 import ComponentTabs from '~/components/ComponentTabs.vue'
 import EmailAddress from '~/components/EmailAddress.vue'
 import FormattedAge from '~/components/FormattedAge.vue'
 import FormattedNumber from '~/components/FormattedNumber.vue'
 import FormattedDate from '~/components/FormattedDate.vue'
 import Repo from '~/components/Repo.vue'
-import {fetchComponentAvailableData} from "~/src/fetchComponentAvailableData";
-import {findComponentState} from "~/src/componentStateUtils";
+import { fetchComponentAvailableData } from '~/src/fetchComponentAvailableData'
+import { findComponentState } from '~/src/componentStateUtils'
 
 export default Vue.extend({
   components: {
@@ -170,7 +159,10 @@ export default Vue.extend({
     Repo,
   },
   async asyncData({ $config, route }) {
-    const componentAvailableData = await fetchComponentAvailableData($config, route)
+    const componentAvailableData = await fetchComponentAvailableData(
+      $config,
+      route
+    )
 
     const component = await fetch(
       `${$config.serviceBaseUrl}/v1/components/${route.params.componentId}?stateType=git-repo&fields=component(id,name,teams,states)`

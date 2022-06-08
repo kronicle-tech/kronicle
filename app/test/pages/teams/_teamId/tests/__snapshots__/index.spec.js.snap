@@ -26,7 +26,9 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
       href="/teams/test-team-id-1/dependencies"
       target="_self"
     >
-      Visualizations
+      
+    Visualizations
+  
     </a>
      
     <a
@@ -34,7 +36,9 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
       href="/teams/test-team-id-1/components"
       target="_self"
     >
-      Components
+      
+    Components
+  
     </a>
      
     <a
@@ -52,7 +56,9 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
       href="/teams/test-team-id-1/tech-debts"
       target="_self"
     >
-      Tech Debts
+      
+    Tech Debts
+  
     </a>
      
     <a
@@ -90,8 +96,8 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
             class="display-1"
           >
             
-      2
-    
+          2
+        
           </span>
            
           <b>
@@ -107,8 +113,8 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
             class="display-4"
           >
             
-      2
-    
+          2
+        
           </span>
            
           <b>
@@ -1109,7 +1115,9 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
       href="/teams/test-team-id-1/dependencies"
       target="_self"
     >
-      Visualizations
+      
+    Visualizations
+  
     </a>
      
     <a
@@ -1117,7 +1125,9 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
       href="/teams/test-team-id-1/components"
       target="_self"
     >
-      Components
+      
+    Components
+  
     </a>
      
     <a
@@ -1135,7 +1145,9 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
       href="/teams/test-team-id-1/tech-debts"
       target="_self"
     >
-      Tech Debts
+      
+    Tech Debts
+  
     </a>
      
     <a
@@ -1807,7 +1819,9 @@ exports[`Index when Get Team service endpoint returns a team when the team has n
       href="/teams/test-team-id-1/dependencies"
       target="_self"
     >
-      Visualizations
+      
+    Visualizations
+  
     </a>
      
     <a
@@ -1815,7 +1829,9 @@ exports[`Index when Get Team service endpoint returns a team when the team has n
       href="/teams/test-team-id-1/components"
       target="_self"
     >
-      Components
+      
+    Components
+  
     </a>
      
     <a
@@ -1833,7 +1849,9 @@ exports[`Index when Get Team service endpoint returns a team when the team has n
       href="/teams/test-team-id-1/tech-debts"
       target="_self"
     >
-      Tech Debts
+      
+    Tech Debts
+  
     </a>
      
     <a

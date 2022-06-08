@@ -2,7 +2,10 @@
   <div class="m-3">
     <h1 class="text-info my-3">{{ component.name }} - Software</h1>
 
-    <ComponentTabs :component-id="component.id" :component-available-data="componentAvailableData" />
+    <ComponentTabs
+      :component-id="component.id"
+      :component-available-data="componentAvailableData"
+    />
 
     <b-card title="Total Software" class="my-3">
       <b-list-group>
@@ -20,31 +23,31 @@
         style="width: 100%"
       >
         <thead>
-        <tr>
-          <th>Scanner</th>
-          <th>Type</th>
-          <th>Dependency Type</th>
-          <th>Name</th>
-          <th>Version</th>
-          <th>Version Selector</th>
-          <th>Packaging</th>
-          <th>Scope</th>
-        </tr>
+          <tr>
+            <th>Scanner</th>
+            <th>Type</th>
+            <th>Dependency Type</th>
+            <th>Name</th>
+            <th>Version</th>
+            <th>Version Selector</th>
+            <th>Packaging</th>
+            <th>Scope</th>
+          </tr>
         </thead>
         <tbody>
-        <tr
-          v-for="(softwareItem, softwareIndex) in softwareItems"
-          :key="softwareIndex"
-        >
-          <td>{{ softwareItem.scannerId }}</td>
-          <td>{{ softwareItem.type }}</td>
-          <td>{{ softwareItem.dependencyRelationType }}</td>
-          <td>{{ softwareItem.name }}</td>
-          <td>{{ softwareItem.version }}</td>
-          <td>{{ softwareItem.versionSelector }}</td>
-          <td>{{ softwareItem.packaging }}</td>
-          <td>{{ softwareItem.scope }}</td>
-        </tr>
+          <tr
+            v-for="(softwareItem, softwareIndex) in softwareItems"
+            :key="softwareIndex"
+          >
+            <td>{{ softwareItem.scannerId }}</td>
+            <td>{{ softwareItem.type }}</td>
+            <td>{{ softwareItem.dependencyRelationType }}</td>
+            <td>{{ softwareItem.name }}</td>
+            <td>{{ softwareItem.version }}</td>
+            <td>{{ softwareItem.versionSelector }}</td>
+            <td>{{ softwareItem.packaging }}</td>
+            <td>{{ softwareItem.scope }}</td>
+          </tr>
         </tbody>
       </table>
     </b-card>
@@ -54,12 +57,12 @@
 <script lang="ts">
 import Vue from 'vue'
 import { MetaInfo } from 'vue-meta'
-import {BCard, BListGroup, BListGroupItem} from 'bootstrap-vue'
-import {Component, Software, SoftwaresState} from '~/types/kronicle-service'
+import { BCard, BListGroup, BListGroupItem } from 'bootstrap-vue'
+import { Component, Software, SoftwaresState } from '~/types/kronicle-service'
 import ComponentTabs from '~/components/ComponentTabs.vue'
 import FormattedNumber from '~/components/FormattedNumber.vue'
-import {fetchComponentAvailableData} from "~/src/fetchComponentAvailableData";
-import {findComponentState} from "~/src/componentStateUtils";
+import { fetchComponentAvailableData } from '~/src/fetchComponentAvailableData'
+import { findComponentState } from '~/src/componentStateUtils'
 
 export default Vue.extend({
   components: {
@@ -70,7 +73,10 @@ export default Vue.extend({
     FormattedNumber,
   },
   async asyncData({ $config, route }) {
-    const componentAvailableData = await fetchComponentAvailableData($config, route)
+    const componentAvailableData = await fetchComponentAvailableData(
+      $config,
+      route
+    )
 
     const component = await fetch(
       `${$config.serviceBaseUrl}/v1/components/${route.params.componentId}?stateType=softwares&fields=component(id,name,teams,states)`
@@ -96,12 +102,18 @@ export default Vue.extend({
   },
   computed: {
     softwareItems(): Software[] {
-      const softwares: SoftwaresState | undefined = findComponentState(this.component, 'softwares')
+      const softwares: SoftwaresState | undefined = findComponentState(
+        this.component,
+        'softwares'
+      )
       if (!softwares) {
         return []
       }
-      return softwares.softwares.sort((a: Software, b: Software) =>
-        a.scannerId.localeCompare(b.scannerId) || a.name.localeCompare((b.name)) || a.version.localeCompare(b.version)
+      return softwares.softwares.sort(
+        (a: Software, b: Software) =>
+          a.scannerId.localeCompare(b.scannerId) ||
+          a.name.localeCompare(b.name) ||
+          a.version.localeCompare(b.version)
       )
     },
     softwareItemCount(): number {

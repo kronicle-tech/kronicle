@@ -18,7 +18,7 @@ frontend {
   nodeDistributionProvided = true
   assembleScript = "run build"
   cleanScript = "run clean"
-  checkScript = "run test"
+  checkScript = "run check"
 }
 
 dependencies {

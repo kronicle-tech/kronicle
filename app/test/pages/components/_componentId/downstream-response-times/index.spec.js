@@ -1,6 +1,6 @@
 import Index from '@/pages/components/_componentId/downstream-response-times/index.vue'
 import { createPageWrapper } from '~/test/pages/pageUtils'
-import {createComponentAvailableDataRequests} from "~/test/testDataUtils";
+import { createComponentAvailableDataRequests } from '~/test/testDataUtils'
 
 describe('Index', () => {
   const route = {

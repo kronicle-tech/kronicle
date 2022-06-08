@@ -23,8 +23,8 @@
             <b>Areas</b>
             <span class="lead">
               <b-badge class="area-count" variant="primary" pill>{{
-                  areaCount
-                }}</b-badge>
+                areaCount
+              }}</b-badge>
             </span>
           </b-list-group-item>
 
@@ -35,8 +35,8 @@
             <b>Teams</b>
             <span class="lead">
               <b-badge class="team-count" variant="primary" pill>{{
-                  teamCount
-                }}</b-badge>
+                teamCount
+              }}</b-badge>
             </span>
           </b-list-group-item>
 
@@ -47,8 +47,8 @@
             <b>Components</b>
             <span class="lead">
               <b-badge class="component-count" variant="primary" pill>{{
-                  componentCount
-                }}</b-badge>
+                componentCount
+              }}</b-badge>
             </span>
           </b-list-group-item>
 
@@ -59,8 +59,8 @@
             <b>Tech Debts</b>
             <span class="lead">
               <b-badge class="tech-debt-count" variant="primary" pill>{{
-                  techDebtCount
-                }}</b-badge>
+                techDebtCount
+              }}</b-badge>
             </span>
           </b-list-group-item>
 
@@ -71,8 +71,8 @@
             <b>Test Results</b>
             <span class="lead">
               <b-badge class="test-result-count" variant="primary" pill>{{
-                  testResultCount
-                }}</b-badge>
+                testResultCount
+              }}</b-badge>
             </span>
           </b-list-group-item>
         </b-list-group>
@@ -227,18 +227,6 @@
   </div>
 </template>
 
-<style scoped>
-.description {
-  display: inline-block;
-  color: white;
-  text-decoration: none;
-}
-
-.description >>> p {
-  margin-bottom: 0;
-}
-</style>
-
 <script lang="ts">
 import Vue from 'vue'
 import {
@@ -339,7 +327,9 @@ export default Vue.extend({
     },
     tagCounts(): ItemCount<string>[] {
       return itemCounts(
-        this.components.flatMap((component) => (component.tags ?? []).map(tag => tag.key))
+        this.components.flatMap((component) =>
+          (component.tags ?? []).map((tag) => tag.key)
+        )
       )
     },
     techDebtCount(): number {
@@ -353,3 +343,15 @@ export default Vue.extend({
   },
 })
 </script>
+
+<style scoped>
+.description {
+  display: inline-block;
+  color: white;
+  text-decoration: none;
+}
+
+.description >>> p {
+  margin-bottom: 0;
+}
+</style>

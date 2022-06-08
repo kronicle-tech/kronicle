@@ -6,38 +6,62 @@
     />
 
     <b-alert v-if="items.length === 0" show variant="info">
-      This page is empty as there are currently no environment status items to show on this page
+      This page is empty as there are currently no environment status items to
+      show on this page
     </b-alert>
 
     <b-card-group v-if="items.length > 0" columns>
       <template v-for="item in items">
         <template v-if="item.itemType === 'check'">
           <b-card :key="item.key" :class="`border-${item.statusVariant}`">
-            <h5>{{ item.environmentId }} <span class="text-muted">//</span> {{ item.pluginId }} <span class="text-muted">//</span> {{ item.component.name }}</h5>
+            <h5>
+              {{ item.environmentId }} <span class="text-muted">//</span>
+              {{ item.pluginId }} <span class="text-muted">//</span>
+              {{ item.component.name }}
+            </h5>
             <h4 :class="`text-${item.statusVariant}`">
-              <b-avatar v-if="item.firstCheck.avatarUrl" :src="item.firstCheck.avatarUrl" />
-              <span v-for="(check, checkIndex) in item.allChecks" :key="checkIndex">
-                <span v-if="checkIndex > 0"><br></span>
+              <b-avatar
+                v-if="item.firstCheck.avatarUrl"
+                :src="item.firstCheck.avatarUrl"
+              />
+              <span
+                v-for="(check, checkIndex) in item.allChecks"
+                :key="checkIndex"
+              >
+                <span v-if="checkIndex > 0"><br /></span>
                 {{ check.name }}
                 <b-badge>{{ check.description }}</b-badge>
               </span>
             </h4>
 
-            <div><span class="text-muted">Status:</span> <b-badge :variant="item.statusVariant">{{ item.firstCheck.status }}</b-badge></div>
-            <div><span class="text-muted">Status Message:</span> <b>{{ item.firstCheck.statusMessage }}</b></div>
-            <div><span class="text-muted">Updated At:</span> <b><FormattedDateTime :value="item.firstCheck.updateTimestamp" /></b></div>
+            <div>
+              <span class="text-muted">Status:</span>
+              <b-badge :variant="item.statusVariant">{{
+                item.firstCheck.status
+              }}</b-badge>
+            </div>
+            <div>
+              <span class="text-muted">Status Message:</span>
+              <b>{{ item.firstCheck.statusMessage }}</b>
+            </div>
+            <div>
+              <span class="text-muted">Updated At:</span>
+              <b
+                ><FormattedDateTime :value="item.firstCheck.updateTimestamp"
+              /></b>
+            </div>
 
             <div
               v-for="link in item.allLinks"
               :key="link.link.url"
               class="mt-2"
             >
-              <b-link
-                :href="link.link.url"
-                target="_blank"
-                class="card-link"
-              >
-                {{ getLinkDescription(link) }} <b-icon icon="box-arrow-up-right" aria-label="opens in new window" />
+              <b-link :href="link.link.url" target="_blank" class="card-link">
+                {{ getLinkDescription(link) }}
+                <b-icon
+                  icon="box-arrow-up-right"
+                  aria-label="opens in new window"
+                />
               </b-link>
             </div>
           </b-card>
@@ -45,37 +69,72 @@
         <template v-if="item.itemType === 'log-summary'">
           <b-card :key="item.key">
             <h5>
-              {{ item.environmentId }} <span class="text-muted">//</span> {{ item.component.name }} <span class="text-muted">//</span> {{ item.pluginId }} <span class="text-muted">//</span> Logs
+              {{ item.environmentId }} <span class="text-muted">//</span>
+              {{ item.component.name }} <span class="text-muted">//</span>
+              {{ item.pluginId }} <span class="text-muted">//</span> Logs
             </h5>
             <h4 class="text-info">{{ item.logSummary.name }}</h4>
 
             <div v-for="level in item.logSummary.levels" :key="level.level">
-              <span class="text-muted">{{ level.level || '{blank}' }}:</span> <b><FormattedNumber :value="level.count"/></b>
+              <span class="text-muted">{{ level.level || '{blank}' }}:</span>
+              <b><FormattedNumber :value="level.count" /></b>
             </div>
 
-            <div v-for="comparison in item.logSummary.comparisons" :key="comparison.name" class="mt-2">
+            <div
+              v-for="comparison in item.logSummary.comparisons"
+              :key="comparison.name"
+              class="mt-2"
+            >
               <h5 class="text-info">{{ comparison.name }}</h5>
 
               <div v-for="level in comparison.levels" :key="level.level">
-                <span class="text-muted">{{ level.level || '{blank}' }}:</span> <b><FormattedNumber :value="level.count"/></b>
+                <span class="text-muted">{{ level.level || '{blank}' }}:</span>
+                <b><FormattedNumber :value="level.count" /></b>
               </div>
             </div>
 
-            <div class="mt-2"><span class="text-muted">Updated At:</span> <b><FormattedDateTime :value="item.logSummary.updateTimestamp" /></b></div>
+            <div class="mt-2">
+              <span class="text-muted">Updated At:</span>
+              <b
+                ><FormattedDateTime :value="item.logSummary.updateTimestamp"
+              /></b>
+            </div>
           </b-card>
-          <b-card v-for="level in item.logSummary.levels.filter(it => it.topMessages.length > 0)" :key="`${item.key}-${level.level}`">
+          <b-card
+            v-for="level in item.logSummary.levels.filter(
+              (it) => it.topMessages.length > 0
+            )"
+            :key="`${item.key}-${level.level}`"
+          >
             <h5>
-              {{ item.environmentId }} <span class="text-muted">//</span> {{ item.component.name }} <span class="text-muted">//</span> {{ item.pluginId }} <span class="text-muted">//</span> Logs
+              {{ item.environmentId }} <span class="text-muted">//</span>
+              {{ item.component.name }} <span class="text-muted">//</span>
+              {{ item.pluginId }} <span class="text-muted">//</span> Logs
             </h5>
-            <h4>{{ level.level || '{blank}' }} - Top Messages - {{ item.logSummary.name }}</h4>
+            <h4>
+              {{ level.level || '{blank}' }} - Top Messages -
+              {{ item.logSummary.name }}
+            </h4>
 
             <ol>
-              <li v-for="topMessage in level.topMessages" :key="topMessage.message">
-                <span class="text-muted">{{ topMessage.message || '{blank}' }}</span> <b class="h5">x<FormattedNumber :value="topMessage.count"/></b><br>
+              <li
+                v-for="topMessage in level.topMessages"
+                :key="topMessage.message"
+              >
+                <span class="text-muted">{{
+                  topMessage.message || '{blank}'
+                }}</span>
+                <b class="h5">x<FormattedNumber :value="topMessage.count" /></b
+                ><br />
               </li>
             </ol>
 
-            <div class="mt-2"><span class="text-muted">Updated At:</span> <b><FormattedDateTime :value="item.logSummary.updateTimestamp" /></b></div>
+            <div class="mt-2">
+              <span class="text-muted">Updated At:</span>
+              <b
+                ><FormattedDateTime :value="item.logSummary.updateTimestamp"
+              /></b>
+            </div>
           </b-card>
         </template>
       </template>
@@ -84,61 +143,62 @@
 </template>
 
 <script lang="ts">
-import Vue, {PropType} from 'vue'
-import {
-  BAvatar,
-  BCard,
-  BCardGroup,
-  BLink
-} from 'bootstrap-vue'
+import Vue, { PropType } from 'vue'
+import { BAvatar, BCard, BCardGroup, BLink } from 'bootstrap-vue'
 import {
   CheckState,
-  Component, ComponentState,
+  Component,
+  ComponentState,
   ComponentStateCheckStatus,
   Link,
   LogSummaryState,
 } from '~/types/kronicle-service'
 import ComponentFilters from '~/components/ComponentFilters.vue'
-import FormattedDateTime from "~/components/FormattedDateTime.vue";
-import FormattedNumber from "~/components/FormattedNumber.vue";
+import FormattedDateTime from '~/components/FormattedDateTime.vue'
+import FormattedNumber from '~/components/FormattedNumber.vue'
 
 type ItemType = 'check' | 'log-summary'
 const ITEM_TYPE_ORDER: ItemType[] = ['check', 'log-summary']
-const CHECK_STATUS_ORDER: ComponentStateCheckStatus[] =
-  ["critical", "warning", "pending", "unknown", "ok"]
+const CHECK_STATUS_ORDER: ComponentStateCheckStatus[] = [
+  'critical',
+  'warning',
+  'pending',
+  'unknown',
+  'ok',
+]
 
 interface BaseItem {
-  readonly itemType: ItemType;
-  readonly environmentId: string;
-  readonly pluginId: string;
-  readonly key: string;
-  readonly component: Component;
+  readonly itemType: ItemType
+  readonly environmentId: string
+  readonly pluginId: string
+  readonly key: string
+  readonly component: Component
 }
 
 interface LinkAndCheck {
-  readonly link: Link;
-  readonly check: CheckState;
+  readonly link: Link
+  readonly check: CheckState
 }
 
 interface CheckItem extends BaseItem {
-  readonly itemType: 'check';
-  readonly classifier: string;
-  readonly firstCheck: CheckState;
-  readonly allChecks: CheckState[];
-  readonly allLinks: LinkAndCheck[];
-  readonly statusVariant: string;
+  readonly itemType: 'check'
+  readonly classifier: string
+  readonly firstCheck: CheckState
+  readonly allChecks: CheckState[]
+  readonly allLinks: LinkAndCheck[]
+  readonly statusVariant: string
 }
 
 interface LogSummaryItem extends BaseItem {
-  readonly itemType: 'log-summary';
-  readonly logSummary: LogSummaryState;
+  readonly itemType: 'log-summary'
+  readonly logSummary: LogSummaryState
 }
 
-type Item = CheckItem | LogSummaryItem;
+type Item = CheckItem | LogSummaryItem
 
 interface ClassifierIndex {
-  readonly classifier: string;
-  readonly index: number;
+  readonly classifier: string
+  readonly index: number
 }
 
 export default Vue.extend({
@@ -170,53 +230,62 @@ export default Vue.extend({
   },
   methods: {
     mapComponents(components: Component[]): Item[] {
-      const that = this;
-      const items = components.flatMap(component => that.mapComponent(component));
+      const that = this
+      const items = components.flatMap((component) =>
+        that.mapComponent(component)
+      )
       const classifierIndexes = new Map<string, ClassifierIndex>()
       const groupedItems: Item[] = []
-      items.forEach(item => {
+      items.forEach((item) => {
         if (item.itemType === 'check') {
-          let classifierIndex = classifierIndexes.get(item.classifier);
+          let classifierIndex = classifierIndexes.get(item.classifier)
           if (classifierIndex) {
-            const existingItem = groupedItems[classifierIndex.index] as CheckItem;
-            existingItem.allChecks.push(item.firstCheck);
-            existingItem.allLinks.push(...item.firstCheck.links.map(link => ({ link, check: item.firstCheck })));
+            const existingItem = groupedItems[
+              classifierIndex.index
+            ] as CheckItem
+            existingItem.allChecks.push(item.firstCheck)
+            existingItem.allLinks.push(
+              ...item.firstCheck.links.map((link) => ({
+                link,
+                check: item.firstCheck,
+              }))
+            )
           } else {
             classifierIndex = {
               classifier: item.classifier,
               index: groupedItems.length,
-            };
-            classifierIndexes.set(item.classifier, classifierIndex);
-            groupedItems.push(item);
+            }
+            classifierIndexes.set(item.classifier, classifierIndex)
+            groupedItems.push(item)
           }
         } else {
-          groupedItems.push(item);
+          groupedItems.push(item)
         }
-      });
-      return groupedItems.sort(that.compareItems);
+      })
+      return groupedItems.sort(that.compareItems)
     },
     mapComponent(component: Component): Item[] {
-      const that = this;
+      const that = this
       if (!component.states) {
-        return [];
+        return []
       }
       return component.states
-        .map(state => that.mapState(component, state))
-        .filter(item => item !== undefined) as Item[];
+        .map((state) => that.mapState(component, state))
+        .filter((item) => item !== undefined) as Item[]
     },
     mapState(component: Component, state: ComponentState): Item | undefined {
-      const that = this;
+      const that = this
       switch (state.type) {
         case 'check':
-          return that.mapCheck(component, state as CheckState);
+          return that.mapCheck(component, state as CheckState)
         case 'log-summary':
-          return that.mapLogSummary(component, state as LogSummaryState);
+          return that.mapLogSummary(component, state as LogSummaryState)
         default:
-          return undefined;
+          return undefined
       }
     },
     mapCheck(component: Component, check: CheckState): Item {
-      const that = this;
+      const that = this
       return {
         itemType: 'check',
         environmentId: check.environmentId,
@@ -226,9 +295,9 @@ export default Vue.extend({
         component,
         firstCheck: check,
         allChecks: [check],
-        allLinks: check.links.map(link => ({ link, check })),
+        allLinks: check.links.map((link) => ({ link, check })),
         statusVariant: that.getStatusVariant(check.status),
-      };
+      }
     },
     mapLogSummary(component: Component, logSummary: LogSummaryState): Item {
       return {
@@ -238,43 +307,47 @@ export default Vue.extend({
         key: `${component.id}_${logSummary.environmentId}_${logSummary.pluginId}_${logSummary.name}`,
         component,
         logSummary,
-      };
+      }
     },
     getStatusVariant(status: ComponentStateCheckStatus): string {
       switch (status) {
-        case "critical":
-          return "danger";
-        case "ok":
-          return "success";
-        case "pending":
-          return "primary";
-        case "unknown":
-          return "info";
-        case "warning":
-          return "warning";
+        case 'critical':
+          return 'danger'
+        case 'ok':
+          return 'success'
+        case 'pending':
+          return 'primary'
+        case 'unknown':
+          return 'info'
+        case 'warning':
+          return 'warning'
       }
     },
     compareItems(a: Item, b: Item) {
       let result: number
-      result = ITEM_TYPE_ORDER.indexOf(a.itemType) - ITEM_TYPE_ORDER.indexOf(b.itemType)
+      result =
+        ITEM_TYPE_ORDER.indexOf(a.itemType) -
+        ITEM_TYPE_ORDER.indexOf(b.itemType)
       if (result !== 0) {
-        return result;
+        return result
       }
       if (a.itemType === 'check' && b.itemType === 'check') {
-        result = CHECK_STATUS_ORDER.indexOf(a.firstCheck.status) - CHECK_STATUS_ORDER.indexOf(b.firstCheck.status)
+        result =
+          CHECK_STATUS_ORDER.indexOf(a.firstCheck.status) -
+          CHECK_STATUS_ORDER.indexOf(b.firstCheck.status)
         if (result !== 0) {
-          return result;
+          return result
         }
       }
       result = a.environmentId.localeCompare(b.environmentId)
       if (result !== 0) {
-        return result;
+        return result
       }
       result = a.component.id.localeCompare(b.component.id)
       if (result !== 0) {
-        return result;
+        return result
       }
-      return 0;
+      return 0
     },
     getLinkDescription(linkAndCheck: LinkAndCheck): string {
       if (linkAndCheck.link.description) {

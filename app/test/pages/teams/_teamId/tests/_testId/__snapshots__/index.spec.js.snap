@@ -28,7 +28,9 @@ exports[`Index when Get Test service endpoint returns a test and the Get Team se
       href="/teams/test-team-id-1/dependencies"
       target="_self"
     >
-      Visualizations
+      
+    Visualizations
+  
     </a>
      
     <a
@@ -36,7 +38,9 @@ exports[`Index when Get Test service endpoint returns a test and the Get Team se
       href="/teams/test-team-id-1/components"
       target="_self"
     >
-      Components
+      
+    Components
+  
     </a>
      
     <a
@@ -54,7 +58,9 @@ exports[`Index when Get Test service endpoint returns a test and the Get Team se
       href="/teams/test-team-id-1/tech-debts"
       target="_self"
     >
-      Tech Debts
+      
+    Tech Debts
+  
     </a>
      
     <a
@@ -229,7 +235,9 @@ exports[`Index when Get Test service endpoint returns a test and the Get Team se
       href="/teams/test-team-id-1/dependencies"
       target="_self"
     >
-      Visualizations
+      
+    Visualizations
+  
     </a>
      
     <a
@@ -237,7 +245,9 @@ exports[`Index when Get Test service endpoint returns a test and the Get Team se
       href="/teams/test-team-id-1/components"
       target="_self"
     >
-      Components
+      
+    Components
+  
     </a>
      
     <a
@@ -255,7 +265,9 @@ exports[`Index when Get Test service endpoint returns a test and the Get Team se
       href="/teams/test-team-id-1/tech-debts"
       target="_self"
     >
-      Tech Debts
+      
+    Tech Debts
+  
     </a>
      
     <a

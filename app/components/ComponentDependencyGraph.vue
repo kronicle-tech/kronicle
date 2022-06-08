@@ -81,83 +81,6 @@
   </svg>
 </template>
 
-<style scoped>
-.dependency {
-  fill: none;
-  stroke: #888;
-  stroke-width: 2px;
-}
-
-.dependency-marker {
-  stroke: #888;
-  stroke-width: 2px;
-}
-
-.node {
-  fill: #ccc;
-  stroke: #fff;
-  stroke-width: 2px;
-}
-
-.node-label {
-  fill: #fff;
-}
-
-.manual-dependency,
-.manual-dependency-marker {
-  stroke: #e74c3c;
-}
-
-.manual-node,
-.manual-node-label {
-  fill: #e74c3c;
-}
-
-.scoped-dependency,
-.scoped-dependency-marker {
-  stroke: #3498db;
-}
-
-.scoped-node,
-.scoped-node-label {
-  fill: #3498db;
-}
-
-.related-dependency,
-.related-dependency-marker {
-  stroke: #3498db;
-}
-
-.related-node,
-.related-node-label {
-  fill: #3498db;
-}
-
-.direct-dependency,
-.direct-dependency-marker {
-  stroke: #f39c12;
-}
-
-.direct-node,
-.direct-node-label {
-  fill: #f39c12;
-}
-
-.selected-node,
-.selected-node-label {
-  fill: #00bc8c;
-}
-
-.selected-node-label {
-  font-weight: bold;
-}
-
-.related-dependency,
-.direct-dependency {
-  stroke-width: 3px;
-}
-</style>
-
 <script lang="ts">
 import Vue, { PropType } from 'vue'
 import {
@@ -189,7 +112,7 @@ export default Vue.extend({
     },
     dependencyTypeIds: {
       type: Array as PropType<string[]>,
-      default: () => ([] as string[]),
+      default: () => [] as string[],
     },
     dependencyRelationType: {
       type: String as PropType<
@@ -365,14 +288,21 @@ export default Vue.extend({
             text.push(` ${key}=${node.tags[key]}`)
           )
         }
-        const maxLineLength = 30;
-        return text.map(line => line.length > maxLineLength ? line.substr(0, maxLineLength) + '…' : line)
+        const maxLineLength = 30
+        return text.map((line) =>
+          line.length > maxLineLength
+            ? line.substr(0, maxLineLength) + '…'
+            : line
+        )
       }
 
       function addDependencies() {
         that.dependencies.dependencies.forEach(
           (dependency, dependencyIndex) => {
-            if (dependency.sourceIndex !== undefined && filterDependencyType(dependency)) {
+            if (
+              dependency.sourceIndex !== undefined &&
+              filterDependencyType(dependency)
+            ) {
               addDependency(
                 dependency as SummaryComponentDependencyWithMandatorySourceIndex,
                 dependencyIndex
@@ -385,9 +315,11 @@ export default Vue.extend({
       function filterDependencyType(
         componentDependency: SummaryComponentDependencyWithMandatorySourceIndex
       ) {
-        return that.dependencyTypeIds === undefined ||
+        return (
+          that.dependencyTypeIds === undefined ||
           that.dependencyTypeIds.length === 0 ||
           that.dependencyTypeIds.includes(componentDependency.typeId)
+        )
       }
 
       function addDependency(
@@ -416,7 +348,8 @@ export default Vue.extend({
             dependency,
             that.scopeRelatedRadius
           )
-          dependency.dependencyRelationType = getDependencyRelationTypeForDependency(dependency)
+          dependency.dependencyRelationType =
+            getDependencyRelationTypeForDependency(dependency)
         })
       }
 
@@ -518,6 +451,8 @@ export default Vue.extend({
               radius,
               visitedDependencies
             )
+          } else {
+            return false
           }
         })
       }
@@ -551,16 +486,15 @@ export default Vue.extend({
         dependencyRelationTypes.some((dependencyRelationType) => {
           acceptableDependencyRelationTypes.push(dependencyRelationType)
 
-          if (dependencyRelationType === selectedDependencyRelationType) {
-            return true
-          }
+          return dependencyRelationType === selectedDependencyRelationType
         })
 
         return acceptableDependencyRelationTypes
       }
 
       function filterNodesAndDependencies() {
-        const acceptableDependencyRelationTypes = getAcceptableDependencyRelationTypes()
+        const acceptableDependencyRelationTypes =
+          getAcceptableDependencyRelationTypes()
 
         const dependencyToRemove = [] as Dependency[]
         network.dependencies.forEach((dependency) => {
@@ -617,10 +551,15 @@ export default Vue.extend({
         dependency: Dependency,
         acceptableDependencyRelationTypes: DependencyRelationType[]
       ) {
-        return !acceptableDependencyRelationTypes.includes(dependency.dependencyRelationType)
+        return !acceptableDependencyRelationTypes.includes(
+          dependency.dependencyRelationType
+        )
       }
 
-      function maxDependencyRelationType(a: DependencyRelationType, b: DependencyRelationType) {
+      function maxDependencyRelationType(
+        a: DependencyRelationType,
+        b: DependencyRelationType
+      ) {
         if (a === 'direct' || b === 'direct') {
           return 'direct'
         } else if (a === 'related' || b === 'related') {
@@ -907,12 +846,9 @@ export default Vue.extend({
     selectedNodeChange(node: Node) {
       this.selectedNodeIndex =
         this.selectedNodeIndex === node.index ? undefined : node.index
-      this.$emit(
-        'nodeClick',
-        {
-          node: this.getNodeByIndex(this.selectedNodeIndex)?.node,
-        }
-      )
+      this.$emit('nodeClick', {
+        node: this.getNodeByIndex(this.selectedNodeIndex)?.node,
+      })
     },
     backgroundClick() {
       if (this.selectedNodeIndex) {
@@ -925,3 +861,80 @@ export default Vue.extend({
   },
 })
 </script>
+
+<style scoped>
+.dependency {
+  fill: none;
+  stroke: #888;
+  stroke-width: 2px;
+}
+
+.dependency-marker {
+  stroke: #888;
+  stroke-width: 2px;
+}
+
+.node {
+  fill: #ccc;
+  stroke: #fff;
+  stroke-width: 2px;
+}
+
+.node-label {
+  fill: #fff;
+}
+
+.manual-dependency,
+.manual-dependency-marker {
+  stroke: #e74c3c;
+}
+
+.manual-node,
+.manual-node-label {
+  fill: #e74c3c;
+}
+
+.scoped-dependency,
+.scoped-dependency-marker {
+  stroke: #3498db;
+}
+
+.scoped-node,
+.scoped-node-label {
+  fill: #3498db;
+}
+
+.related-dependency,
+.related-dependency-marker {
+  stroke: #3498db;
+}
+
+.related-node,
+.related-node-label {
+  fill: #3498db;
+}
+
+.direct-dependency,
+.direct-dependency-marker {
+  stroke: #f39c12;
+}
+
+.direct-node,
+.direct-node-label {
+  fill: #f39c12;
+}
+
+.selected-node,
+.selected-node-label {
+  fill: #00bc8c;
+}
+
+.selected-node-label {
+  font-weight: bold;
+}
+
+.related-dependency,
+.direct-dependency {
+  stroke-width: 3px;
+}
+</style>

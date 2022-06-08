@@ -9,38 +9,38 @@
       style="width: 100%"
     >
       <thead>
-      <tr>
-        <th class="component-type">Type</th>
-        <th class="component-name">Name</th>
-        <!-- eslint-disable vue/require-v-for-key -->
-        <template v-for="keySoftwareName in keySoftwareNames">
-          <th>{{ keySoftwareName }}</th>
-        </template>
-        <!-- eslint-enable -->
-      </tr>
+        <tr>
+          <th class="component-type">Type</th>
+          <th class="component-name">Name</th>
+          <!-- eslint-disable vue/require-v-for-key -->
+          <template v-for="keySoftwareName in keySoftwareNames">
+            <th>{{ keySoftwareName }}</th>
+          </template>
+          <!-- eslint-enable -->
+        </tr>
       </thead>
       <tbody>
-      <tr v-for="component in filteredComponents" :key="component.id">
-        <td>{{ component.typeId }}</td>
-        <td class="component-name table-primary">
-          <ComponentName :component="component" />
-        </td>
-        <!-- eslint-disable vue/require-v-for-key -->
-        <template v-for="keySoftwareName in keySoftwareNames">
-          <td>
-          <span
-            v-for="(version, versionIndex) in getKeySoftwareVersions(
-              component,
-              keySoftwareName
-            )"
-            :key="versionIndex"
-          >
-            {{ version }}<br />
-          </span>
+        <tr v-for="component in filteredComponents" :key="component.id">
+          <td>{{ component.typeId }}</td>
+          <td class="component-name table-primary">
+            <ComponentName :component="component" />
           </td>
-        </template>
-        <!-- eslint-enable -->
-      </tr>
+          <!-- eslint-disable vue/require-v-for-key -->
+          <template v-for="keySoftwareName in keySoftwareNames">
+            <td>
+              <span
+                v-for="(version, versionIndex) in getKeySoftwareVersions(
+                  component,
+                  keySoftwareName
+                )"
+                :key="versionIndex"
+              >
+                {{ version }}<br />
+              </span>
+            </td>
+          </template>
+          <!-- eslint-enable -->
+        </tr>
       </tbody>
     </table>
   </div>
@@ -49,11 +49,11 @@
 <script lang="ts">
 import Vue from 'vue'
 import { MetaInfo } from 'vue-meta'
-import {Component, KeySoftwaresState} from '~/types/kronicle-service'
+import { Component, KeySoftwaresState } from '~/types/kronicle-service'
 import AllComponentsTabs from '~/components/AllComponentsTabs.vue'
 import ComponentFilters from '~/components/ComponentFilters.vue'
 import ComponentName from '~/components/ComponentName.vue'
-import {findComponentState} from "~/src/componentStateUtils";
+import { findComponentState } from '~/src/componentStateUtils'
 
 export default Vue.extend({
   components: {
@@ -94,13 +94,16 @@ export default Vue.extend({
     keySoftwareNames(): string[] | undefined {
       const names = this.filteredComponents
         .map((component) => {
-          const keySoftwares: KeySoftwaresState | undefined = findComponentState(component, 'key-softwares')
+          const keySoftwares: KeySoftwaresState | undefined =
+            findComponentState(component, 'key-softwares')
 
           if (!keySoftwares) {
             return undefined
           }
 
-          return keySoftwares.keySoftwares.map((keySoftware) => keySoftware.name)
+          return keySoftwares.keySoftwares.map(
+            (keySoftware) => keySoftware.name
+          )
         })
         .flat()
         .sort()
@@ -109,7 +112,10 @@ export default Vue.extend({
   },
   methods: {
     getKeySoftwareVersions(component: Component, keySoftwareName: string) {
-      const keySoftwares: KeySoftwaresState | undefined = findComponentState(component, 'key-softwares')
+      const keySoftwares: KeySoftwaresState | undefined = findComponentState(
+        component,
+        'key-softwares'
+      )
       const keySoftware = keySoftwares?.keySoftwares.find(
         (keySoftware) => keySoftware.name === keySoftwareName
       )

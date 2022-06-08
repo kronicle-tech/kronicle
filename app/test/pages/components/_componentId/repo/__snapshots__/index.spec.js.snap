@@ -86,7 +86,9 @@ exports[`Index when Get Component service endpoint returns a component when the 
       href="/components/test-component-id-1/errors"
       target="_self"
     >
-      Errors
+      
+    Errors
+  
     </a>
      
     <!---->
@@ -120,7 +122,9 @@ exports[`Index when Get Component service endpoint returns a component when the 
       href="/components/test-component-id-1/tests"
       target="_self"
     >
-      Tests
+      
+    Tests
+  
     </a>
   </div>
    
@@ -299,8 +303,8 @@ exports[`Index when Get Component service endpoint returns a component when the 
               <td>
                 <span>
                   
-            Test Identity Name 1 1 1
-            
+                Test Identity Name 1 1 1
+                
                   <br />
                 </span>
               </td>
@@ -335,14 +339,14 @@ exports[`Index when Get Component service endpoint returns a component when the 
               <td>
                 <span>
                   
-            Test Identity Name 1 2 1
-            
+                Test Identity Name 1 2 1
+                
                   <br />
                 </span>
                 <span>
                   
-            Test Identity Name 1 2 2
-            
+                Test Identity Name 1 2 2
+                
                   <br />
                 </span>
               </td>
@@ -377,20 +381,20 @@ exports[`Index when Get Component service endpoint returns a component when the 
               <td>
                 <span>
                   
-            Test Identity Name 1 3 1
-            
+                Test Identity Name 1 3 1
+                
                   <br />
                 </span>
                 <span>
                   
-            Test Identity Name 1 3 2
-            
+                Test Identity Name 1 3 2
+                
                   <br />
                 </span>
                 <span>
                   
-            Test Identity Name 1 3 3
-            
+                Test Identity Name 1 3 3
+                
                   <br />
                 </span>
               </td>
@@ -425,26 +429,26 @@ exports[`Index when Get Component service endpoint returns a component when the 
               <td>
                 <span>
                   
-            Test Identity Name 1 4 1
-            
+                Test Identity Name 1 4 1
+                
                   <br />
                 </span>
                 <span>
                   
-            Test Identity Name 1 4 2
-            
+                Test Identity Name 1 4 2
+                
                   <br />
                 </span>
                 <span>
                   
-            Test Identity Name 1 4 3
-            
+                Test Identity Name 1 4 3
+                
                   <br />
                 </span>
                 <span>
                   
-            Test Identity Name 1 4 4
-            
+                Test Identity Name 1 4 4
+                
                   <br />
                 </span>
               </td>
@@ -573,7 +577,9 @@ exports[`Index when Get Component service endpoint returns a component when the 
       href="/components/test-component-id-1/errors"
       target="_self"
     >
-      Errors
+      
+    Errors
+  
     </a>
      
     <!---->
@@ -607,7 +613,9 @@ exports[`Index when Get Component service endpoint returns a component when the 
       href="/components/test-component-id-1/tests"
       target="_self"
     >
-      Tests
+      
+    Tests
+  
     </a>
   </div>
    

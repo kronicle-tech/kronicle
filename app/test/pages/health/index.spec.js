@@ -1,7 +1,7 @@
 import { createLocalVue } from '@vue/test-utils'
 import VueMeta from 'vue-meta'
 import Index from '~/pages/health'
-import { createPageWrapper } from "~/test/pages/pageUtils";
+import { createPageWrapper } from '~/test/pages/pageUtils'
 
 const localVue = createLocalVue()
 localVue.use(VueMeta, { keyName: 'head' })
@@ -22,9 +22,7 @@ describe('Index', () => {
 
   test('has the right page title', async () => {
     await createWrapper()
-    expect(wrapper.vm.$metaInfo.title).toBe(
-      'Kronicle - Health'
-    )
+    expect(wrapper.vm.$metaInfo.title).toBe('Kronicle - Health')
   })
 
   test('renders an empty page', async () => {

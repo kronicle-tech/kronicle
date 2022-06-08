@@ -35,8 +35,8 @@ describe('OpenApiSpecView', () => {
                 },
               },
             ],
-          }
-        ]
+          },
+        ],
       },
       openApiSpecIndex: 1,
     }

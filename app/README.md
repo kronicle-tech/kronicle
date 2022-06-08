@@ -27,7 +27,7 @@ For detailed explanation on how things work, check out [Nuxt.js docs](https://nu
 
 ## Running Jest unit tests in dev
 
-The following command will run Jest in watch mode, automatically re-running relevant tests when you change code: 
+The following command will run Jest in watch mode, automatically re-running relevant tests when you change code:
 
 ```bash
 $ ../gradlew generateTypeScript && npm run jest-watch
@@ -35,7 +35,7 @@ $ ../gradlew generateTypeScript && npm run jest-watch
 
 ## Running Jest unit tests without watching for changes
 
-The following command will run Jest just once: 
+The following command will run Jest just once:
 
 ```bash
 $ ../gradlew generateTypeScript && npm run test
@@ -43,11 +43,11 @@ $ ../gradlew generateTypeScript && npm run test
 
 ## Running Jest unit tests without watching for changes
 
-The following command is similar the one above, except it will automatically update any 
-[Jest snapshots](https://jestjs.io/docs/en/snapshot-testing) that have changed: 
+The following command is similar the one above, except it will automatically update any
+[Jest snapshots](https://jestjs.io/docs/en/snapshot-testing) that have changed:
 
 ```bash
 $ ../gradlew generateTypeScript && npm run test -u
 ```
 
-Make you check the changes in any updated Jest snapshot files before committing them.  
+Make you check the changes in any updated Jest snapshot files before committing them.

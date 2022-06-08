@@ -86,7 +86,9 @@ exports[`Index when Get Component service endpoint returns a component when the 
       href="/components/test-component-id-1/errors"
       target="_self"
     >
-      Errors
+      
+    Errors
+  
     </a>
      
     <!---->
@@ -120,7 +122,9 @@ exports[`Index when Get Component service endpoint returns a component when the 
       href="/components/test-component-id-1/tests"
       target="_self"
     >
-      Tests
+      
+    Tests
+  
     </a>
   </div>
    
@@ -636,7 +640,9 @@ exports[`Index when Get Component service endpoint returns a component when the 
       href="/components/test-component-id-1/errors"
       target="_self"
     >
-      Errors
+      
+    Errors
+  
     </a>
      
     <!---->
@@ -670,7 +676,9 @@ exports[`Index when Get Component service endpoint returns a component when the 
       href="/components/test-component-id-1/tests"
       target="_self"
     >
-      Tests
+      
+    Tests
+  
     </a>
   </div>
    
@@ -692,8 +700,8 @@ exports[`Index when Get Component service endpoint returns a component when the 
             class="display-1"
           >
             
-      1
-    
+          1
+        
           </span>
            
           <b>
@@ -709,8 +717,8 @@ exports[`Index when Get Component service endpoint returns a component when the 
             class="display-4"
           >
             
-      1
-    
+          1
+        
           </span>
            
           <b>

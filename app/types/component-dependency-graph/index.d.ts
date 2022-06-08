@@ -1,8 +1,36 @@
+/* eslint-disable no-use-before-define */
+
 import {
   SummaryComponentDependency,
   SummaryComponentDependencyNode,
   SummarySubComponentDependencyNode,
 } from '~/types/kronicle-service'
+
+export interface NodeLabel {
+  x: number
+  y: number
+}
+
+export type DependencyRelationType =
+  | 'all'
+  | 'manual'
+  | 'scope-related'
+  | 'scoped'
+  | 'related'
+  | 'direct'
+  | 'selected'
+
+export interface Dependency {
+  index: number
+  sourceNode: Node
+  targetNode: Node
+  relatedNodes: Node[]
+  manual: boolean
+  d: string
+  scopeRelated: boolean
+  dependencyRelationType: DependencyRelationType
+  dependency: SummaryComponentDependency
+}
 
 export interface Node {
   index: number
@@ -17,32 +45,6 @@ export interface Node {
   node: SummaryComponentDependencyNode | SummarySubComponentDependencyNode
   dependencies: Dependency[]
 }
-
-export interface NodeLabel {
-  x: number
-  y: number
-}
-
-export interface Dependency {
-  index: number
-  sourceNode: Node
-  targetNode: Node
-  relatedNodes: Node[]
-  manual: boolean
-  d: string
-  scopeRelated: boolean
-  dependencyRelationType: DependencyRelationType
-  dependency: SummaryComponentDependency
-}
-
-export type DependencyRelationType =
-  | 'all'
-  | 'manual'
-  | 'scope-related'
-  | 'scoped'
-  | 'related'
-  | 'direct'
-  | 'selected'
 
 export interface Network {
   nodes: Node[]

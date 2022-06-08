@@ -15,9 +15,9 @@
           :class="`${outcomeCount.outcome}-count`"
           :variant="outcomeCount.variant"
         >
-      <span :class="outcomeCount.countClass">
-        {{ outcomeCount.count }}
-      </span>
+          <span :class="outcomeCount.countClass">
+            {{ outcomeCount.count }}
+          </span>
           <b>{{ outcomeCount.text }}</b> test{{
             outcomeCount.count === 1 ? '' : 's'
           }}
@@ -43,12 +43,8 @@
 
 <script lang="ts">
 import Vue, { PropType } from 'vue'
-import {BCard, BListGroup, BListGroupItem} from 'bootstrap-vue'
-import {
-  Component,
-  TestOutcome,
-  TestResult,
-} from '~/types/kronicle-service'
+import { BCard, BListGroup, BListGroupItem } from 'bootstrap-vue'
+import { Component, TestOutcome, TestResult } from '~/types/kronicle-service'
 import {
   getTestOutcomeCountClass,
   getTestOutcomeText,

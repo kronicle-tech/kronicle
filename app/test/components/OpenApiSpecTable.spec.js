@@ -50,7 +50,7 @@ describe('OpenApiSpecTable', () => {
                     description: 'Test OpenAPI Spec Description 1 2',
                   },
                 ],
-              }
+              },
             ],
           },
           {
@@ -72,7 +72,7 @@ describe('OpenApiSpecTable', () => {
                     description: 'Test OpenAPI Spec Description 2 2',
                   },
                 ],
-              }
+              },
             ],
           },
         ],
@@ -109,7 +109,7 @@ describe('OpenApiSpecTable', () => {
                     description: 'Test OpenAPI Spec Description 1 1',
                   },
                 ],
-              }
+              },
             ],
           },
         ],
@@ -140,7 +140,7 @@ describe('OpenApiSpecTable', () => {
                     description: 'Test OpenAPI Spec Description 1 1',
                   },
                 ],
-              }
+              },
             ],
           },
         ],
@@ -170,7 +170,7 @@ describe('OpenApiSpecTable', () => {
                     description: 'Test OpenAPI Spec Description 1 1',
                   },
                 ],
-              }
+              },
             ],
           },
         ],
@@ -200,7 +200,7 @@ describe('OpenApiSpecTable', () => {
                     description: 'Test OpenAPI Spec Description 1 1',
                   },
                 ],
-              }
+              },
             ],
           },
         ],

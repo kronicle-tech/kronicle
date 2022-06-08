@@ -5,24 +5,24 @@
       style="width: 100%"
     >
       <thead>
-      <tr>
-        <th class="scanner-id">Id</th>
-        <th class="scanner-description">Description</th>
-        <th class="scanner-notes">Notes</th>
-      </tr>
+        <tr>
+          <th class="scanner-id">Id</th>
+          <th class="scanner-description">Description</th>
+          <th class="scanner-notes">Notes</th>
+        </tr>
       </thead>
       <tbody>
-      <tr v-for="scanner in scanners" :key="scanner.id">
-        <td class="scanner-id">
-          {{ scanner.id }}
-        </td>
-        <td class="scanner-description">
-          <Markdown :markdown="scanner.description" />
-        </td>
-        <td class="scanner-notes">
-          <Markdown :markdown="scanner.notes" />
-        </td>
-      </tr>
+        <tr v-for="scanner in scanners" :key="scanner.id">
+          <td class="scanner-id">
+            {{ scanner.id }}
+          </td>
+          <td class="scanner-description">
+            <Markdown :markdown="scanner.description" />
+          </td>
+          <td class="scanner-notes">
+            <Markdown :markdown="scanner.notes" />
+          </td>
+        </tr>
       </tbody>
     </table>
   </div>

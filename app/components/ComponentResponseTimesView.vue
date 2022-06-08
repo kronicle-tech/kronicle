@@ -139,6 +139,20 @@ import FormattedDateTime from '~/components/FormattedDateTime.vue'
 
 type Direction = 'upstream' | 'downstream'
 
+interface Tag {
+  key: string
+  value: string
+}
+
+interface Duration {
+  min: number
+  max: number
+  p50: number
+  p90: number
+  p99: number
+  p99Point9: number
+}
+
 interface Row {
   sourceNode: SummarySubComponentDependencyNode
   sourceTags: Tag[]
@@ -152,20 +166,6 @@ interface Row {
   startTimestamp: string
   endTimestamp: string
   duration: Duration
-}
-
-interface Tag {
-  key: string
-  value: string
-}
-
-interface Duration {
-  min: number
-  max: number
-  p50: number
-  p90: number
-  p99: number
-  p99Point9: number
 }
 
 export default Vue.extend({

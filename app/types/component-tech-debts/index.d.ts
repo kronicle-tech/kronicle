@@ -1,6 +1,6 @@
 import { Component, TechDebt } from '~/types/kronicle-service'
 
-interface ComponentAndTechDebts {
+export interface ComponentAndTechDebts {
   component: Component
   techDebts: TechDebt[]
 }
