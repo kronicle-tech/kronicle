@@ -1,6 +1,8 @@
 ###
 # Place your Prettier ignore content here
 
+types/kronicle-service/index.d.ts
+
 ###
 # .gitignore content is duplicated here due to https://github.com/prettier/prettier/issues/8506
 
