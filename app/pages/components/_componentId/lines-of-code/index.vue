@@ -2,7 +2,7 @@
   <div class="m-3">
     <h1 class="text-info my-3">{{ component.name }} - Lines of Code</h1>
 
-    <ComponentTabs :component-id="component.id" :state-types="stateTypes" />
+    <ComponentTabs :component-id="component.id" :component-available-data="componentAvailableData" />
 
     <b-card title="Total Lines of Code" class="my-3">
       <b-list-group>
@@ -42,7 +42,7 @@ import {
 } from '~/types/kronicle-service'
 import ComponentTabs from '~/components/ComponentTabs.vue'
 import FormattedNumber from '~/components/FormattedNumber.vue'
-import {fetchComponentStateTypes} from "~/src/fetchComponentStateTypes";
+import {fetchComponentAvailableData} from "~/src/fetchComponentAvailableData";
 
 export default Vue.extend({
   components: {
@@ -54,7 +54,7 @@ export default Vue.extend({
     FormattedNumber,
   },
   async asyncData({ $config, route }) {
-    const stateTypes = await fetchComponentStateTypes($config, route)
+    const componentAvailableData = await fetchComponentAvailableData($config, route)
 
     const component = await fetch(
       `${$config.serviceBaseUrl}/v1/components/${route.params.componentId}?stateType=lines-of-code&fields=component(id,name,states)`
@@ -64,13 +64,13 @@ export default Vue.extend({
 
 
     return {
-      stateTypes,
+      componentAvailableData,
       component,
     }
   },
   data() {
     return {
-      stateTypes: [] as string[],
+      componentAvailableData: [] as string[],
       component: {} as Component,
     }
   },

@@ -3,7 +3,7 @@ import VueMeta from 'vue-meta'
 import flushPromises from 'flush-promises'
 import Index from '~/pages/components/_componentId/openapi-specs/_openApiSpecIndex/content'
 import { createPageWrapper } from '~/test/pages/pageUtils'
-import {createComponentResponseWithStateTypes} from "~/test/testDataUtils";
+import {createComponentAvailableDataRequests} from "~/test/testDataUtils";
 
 const localVue = createLocalVue()
 localVue.use(VueMeta, { keyName: 'head' })
@@ -22,7 +22,7 @@ describe('Index', () => {
       localVue,
       route,
       serviceRequests: {
-        '/v1/components/test-component-id-1?fields=component(id,name,states(type))': createComponentResponseWithStateTypes(1),
+        ...createComponentAvailableDataRequests(),
         '/v1/components/test-component-id-1?stateType=openapi-specs&fields=component(id,name,teams,states)':
           {
             responseBody: { component },

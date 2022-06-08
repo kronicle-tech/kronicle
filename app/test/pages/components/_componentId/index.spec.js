@@ -2,7 +2,10 @@ import { createLocalVue } from '@vue/test-utils'
 import VueMeta from 'vue-meta'
 import Index from '@/pages/components/_componentId/index.vue'
 import { createPageWrapper } from '~/test/pages/pageUtils'
-import {createComponent, createComponentResponseWithStateTypes} from '~/test/testDataUtils'
+import {
+  createComponent,
+  createComponentAvailableDataRequests
+} from '~/test/testDataUtils'
 
 const localVue = createLocalVue()
 localVue.use(VueMeta, { keyName: 'head' })
@@ -19,7 +22,7 @@ describe('Index', () => {
     wrapper = await createPageWrapper(Index, {
       route,
       serviceRequests: {
-        '/v1/components/test-component-id-1?fields=component(id,name,states(type))': createComponentResponseWithStateTypes(1),
+        ...createComponentAvailableDataRequests(),
         '/v1/components/test-component-id-1?stateType=key-softwares&fields=component(id,name,typeId,platformId,tags,teams,links,description,notes,responsibilities,states)':
           {
             responseBody: { component },

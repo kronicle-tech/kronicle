@@ -2,8 +2,8 @@ import Index from '~/pages/components/_componentId/dependencies/index.vue'
 import { createPageWrapper } from '~/test/pages/pageUtils'
 import {
   createComponent,
+  createComponentAvailableDataRequests,
   createComponentDependencies,
-  createComponentResponseWithStateTypes,
   createSubComponentDependencies,
   createSummaryWithEmptyComponentAndSubComponentDependencies,
 } from '~/test/testDataUtils'
@@ -23,7 +23,7 @@ describe('Index', () => {
     wrapper = await createPageWrapper(Index, {
       route,
       serviceRequests: {
-        '/v1/components/test-component-id-1?fields=component(id,name,states(type))': createComponentResponseWithStateTypes(1),
+        ...createComponentAvailableDataRequests(),
         '/v1/components/test-component-id-1?fields=component(id,name,typeId,tags,description,notes,responsibilities,teams,platformId,states(environmentId,pluginId))':
           {
             responseBody: { component },

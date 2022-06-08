@@ -2,7 +2,7 @@
   <div class="m-3">
     <h1 class="text-info my-3">{{ component.name }} - Repo</h1>
 
-    <ComponentTabs :component-id="component.id" :state-types="stateTypes" />
+    <ComponentTabs :component-id="component.id" :component-available-data="componentAvailableData" />
 
     <b-card-group deck class="my-3">
 
@@ -151,7 +151,7 @@ import FormattedAge from '~/components/FormattedAge.vue'
 import FormattedNumber from '~/components/FormattedNumber.vue'
 import FormattedDate from '~/components/FormattedDate.vue'
 import Repo from '~/components/Repo.vue'
-import {fetchComponentStateTypes} from "~/src/fetchComponentStateTypes";
+import {fetchComponentAvailableData} from "~/src/fetchComponentAvailableData";
 import {findComponentState} from "~/src/componentStateUtils";
 
 export default Vue.extend({
@@ -170,7 +170,7 @@ export default Vue.extend({
     Repo,
   },
   async asyncData({ $config, route }) {
-    const stateTypes = await fetchComponentStateTypes($config, route)
+    const componentAvailableData = await fetchComponentAvailableData($config, route)
 
     const component = await fetch(
       `${$config.serviceBaseUrl}/v1/components/${route.params.componentId}?stateType=git-repo&fields=component(id,name,teams,states)`
@@ -179,13 +179,13 @@ export default Vue.extend({
       .then((json) => json.component as Component)
 
     return {
-      stateTypes,
+      componentAvailableData,
       component,
     }
   },
   data() {
     return {
-      stateTypes: [] as string[],
+      componentAvailableData: [] as string[],
       component: {} as Component,
     }
   },

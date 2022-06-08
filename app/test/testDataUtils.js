@@ -23,6 +23,10 @@ export function createArea({
   }
 }
 
+function createComponentId(componentNumber) {
+  return `test-component-id-${componentNumber}`;
+}
+
 export function createComponent({
   componentNumber,
   hasMainDetails = false,
@@ -66,7 +70,7 @@ export function createComponent({
     fields.testResults = createTestResults(componentNumber)
   }
   const component = {
-    id: `test-component-id-${componentNumber}`,
+    id: createComponentId(componentNumber),
     name: `Test Component Name ${componentNumber}`,
     typeId: `test-component-type-id-${componentNumber}`,
     description: `Test Component Description ${componentNumber}`,
@@ -99,22 +103,30 @@ export function createComponent({
   return component
 }
 
-export function createComponentResponseWithStateTypes(componentNumber) {
+export function createComponentWithAvailableData(componentNumber) {
   return {
-    responseBody: {
-      component: createComponentWithStateTypes(componentNumber),
-    },
-  }
-}
-
-export function createComponentWithStateTypes(componentNumber) {
-  return {
-    id: `test-component-id-${componentNumber}`,
+    id: createComponentId(componentNumber),
     name: `Test Component Name ${componentNumber}`,
+    crossFunctionalRequirements: [
+      {},
+      {},
+    ],
+    techDebts: [
+      {},
+      {},
+    ],
     states: [
       {
         type: 'lines-of-code',
       },
+    ],
+    scannerErrors: [
+      {},
+      {},
+    ],
+    testResults: [
+      {},
+      {},
     ],
   }
 }
@@ -735,6 +747,33 @@ export function createDependency({ sourceIndex, targetIndex }) {
       p90: 1_000_000,
       p99: 1_000_000,
       p99Point9: 1_000_000,
+    },
+  }
+}
+
+export function createComponentAvailableDataRequests() {
+  const componentNumber = 1;
+  return {
+    '/v1/components/test-component-id-1?fields=component(id,name,crossFunctionalRequirements(fake),techDebts(fake),states(type),scannerErrors(fake),testResults(fake))': {
+      responseBody: {
+        component: createComponentWithAvailableData(componentNumber),
+      },
+    },
+    '/v1/components/test-component-id-1/call-graphs?fields=callGraphs(fake)': {
+      responseBody: {
+        callGraphs: [
+          {},
+          {},
+        ],
+      },
+    },
+    '/v1/components/test-component-id-1/nodes?fields=nodes(fake)': {
+      responseBody: {
+        nodes: [
+          {},
+          {},
+        ],
+      },
     },
   }
 }

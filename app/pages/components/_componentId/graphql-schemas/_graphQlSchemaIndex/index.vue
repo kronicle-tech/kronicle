@@ -2,7 +2,7 @@
   <div class="m-3">
     <h1 class="text-info my-3">{{ component.name }} - GraphQL Schema {{ graphQlSchemaIndex }}</h1>
 
-    <ComponentTabs :component-id="component.id" :state-types="stateTypes" />
+    <ComponentTabs :component-id="component.id" :component-available-data="componentAvailableData" />
 
     <div class="text-center mb-3">
       <NuxtLink :to="`/components/${component.id}/graphql-schemas/${graphQlSchemaIndex}/content`">
@@ -19,14 +19,14 @@ import Vue from 'vue'
 import { MetaInfo } from 'vue-meta'
 import { Component } from '~/types/kronicle-service'
 import GraphQlSchemaView from "~/components/GraphQlSchemaView.vue";
-import {fetchComponentStateTypes} from "~/src/fetchComponentStateTypes";
+import {fetchComponentAvailableData} from "~/src/fetchComponentAvailableData";
 
 export default Vue.extend({
   components: {
     GraphQlSchemaView,
   },
   async asyncData({ $config, route }) {
-    const stateTypes = await fetchComponentStateTypes($config, route)
+    const componentAvailableData = await fetchComponentAvailableData($config, route)
 
     const component = await fetch(
       `${$config.serviceBaseUrl}/v1/components/${route.params.componentId}?stateType=graphql-schemas&fields=component(id,name,teams,states)`
@@ -35,13 +35,13 @@ export default Vue.extend({
       .then((json) => json.component as Component)
 
     return {
-      stateTypes,
+      componentAvailableData,
       component,
     }
   },
   data() {
     return {
-      stateTypes: [] as string[],
+      componentAvailableData: [] as string[],
       component: {} as Component,
       graphQlSchemaIndex: parseInt(this.$route.params.graphQlSchemaIndex, 10),
     }
