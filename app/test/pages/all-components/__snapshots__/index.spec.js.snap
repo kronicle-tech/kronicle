@@ -12,7 +12,9 @@ exports[`Index when Get Components service endpoint returns an array of multiple
       href="#"
       target="_self"
     >
-      Components
+      
+    Components
+  
     </a>
      
     <a
@@ -40,7 +42,9 @@ exports[`Index when Get Components service endpoint returns an array of multiple
       href="#"
       target="_self"
     >
-      Tech Debts
+      
+    Tech Debts
+  
     </a>
      
     <a
@@ -78,7 +82,9 @@ exports[`Index when Get Components service endpoint returns an array of multiple
       href="#"
       target="_self"
     >
-      Repos
+      
+    Repos
+  
     </a>
      
     <a
@@ -86,7 +92,9 @@ exports[`Index when Get Components service endpoint returns an array of multiple
       href="#"
       target="_self"
     >
-      Errors
+      
+    Errors
+  
     </a>
   </div>
    
@@ -1006,7 +1014,9 @@ exports[`Index when Get Components service endpoint returns an empty array rende
       href="#"
       target="_self"
     >
-      Components
+      
+    Components
+  
     </a>
      
     <a
@@ -1034,7 +1044,9 @@ exports[`Index when Get Components service endpoint returns an empty array rende
       href="#"
       target="_self"
     >
-      Tech Debts
+      
+    Tech Debts
+  
     </a>
      
     <a
@@ -1072,7 +1084,9 @@ exports[`Index when Get Components service endpoint returns an empty array rende
       href="#"
       target="_self"
     >
-      Repos
+      
+    Repos
+  
     </a>
      
     <a
@@ -1080,7 +1094,9 @@ exports[`Index when Get Components service endpoint returns an empty array rende
       href="#"
       target="_self"
     >
-      Errors
+      
+    Errors
+  
     </a>
   </div>
    

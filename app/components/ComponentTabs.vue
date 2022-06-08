@@ -47,8 +47,9 @@
       v-if="hasMetadataType('scanner-error')"
       class="my-1"
       :to="`/components/${componentId}/errors`"
-      >Errors</b-button
     >
+      Errors
+    </b-button>
     <b-button
       v-if="hasStateType('openapi-specs')"
       class="my-1"
@@ -67,20 +68,23 @@
       v-if="hasStateType('git-repo')"
       class="my-1"
       :to="`/components/${componentId}/repo`"
-      >Repo</b-button
     >
+      Repo
+    </b-button>
     <b-button
       v-if="hasStateType('readme')"
       class="my-1"
       :to="`/components/${componentId}/readme`"
-      >README</b-button
     >
+      README
+    </b-button>
     <b-button
       v-if="hasStateType('to-dos')"
       class="my-1"
       :to="`/components/${componentId}/to-dos`"
-      >To Dos</b-button
     >
+      To Dos
+    </b-button>
     <b-button
       v-if="hasStateType('lines-of-code')"
       class="my-1"
@@ -99,20 +103,23 @@
       v-if="hasStateType('softwares')"
       class="my-1"
       :to="`/components/${componentId}/software`"
-      >Software</b-button
     >
+      Software
+    </b-button>
     <b-button
       v-if="hasStateType('imports')"
       class="my-1"
       :to="`/components/${componentId}/imports`"
-      >Imports</b-button
     >
+      Imports
+    </b-button>
     <b-button
       v-if="hasMetadataType('test-result')"
       class="my-1"
       :to="`/components/${componentId}/tests`"
-      >Tests</b-button
     >
+      Tests
+    </b-button>
   </div>
 </template>
 

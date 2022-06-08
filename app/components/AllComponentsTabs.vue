@@ -1,8 +1,8 @@
 <template>
   <div class="my-3">
-    <b-button class="my-1" :to="{ name: 'all-components' }"
-      >Components</b-button
-    >
+    <b-button class="my-1" :to="{ name: 'all-components' }">
+      Components
+    </b-button>
     <b-button
       :to="{ name: 'all-components-tests', query: { testOutcome: 'fail' } }"
     >
@@ -14,9 +14,9 @@
     >
       Cross Functional Requirements
     </b-button>
-    <b-button class="my-1" :to="{ name: 'all-components-tech-debts' }"
-      >Tech Debts</b-button
-    >
+    <b-button class="my-1" :to="{ name: 'all-components-tech-debts' }">
+      Tech Debts
+    </b-button>
     <b-button class="my-1" :to="{ name: 'all-components-openapi-specs' }">
       OpenAPI Specs
     </b-button>
@@ -26,12 +26,12 @@
     <b-button class="my-1" :to="{ name: 'all-components-key-software' }">
       Key Software
     </b-button>
-    <b-button class="my-1" :to="{ name: 'all-components-repos' }"
-      >Repos</b-button
-    >
-    <b-button class="my-1" :to="{ name: 'all-components-errors' }"
-      >Errors</b-button
-    >
+    <b-button class="my-1" :to="{ name: 'all-components-repos' }">
+      Repos
+    </b-button>
+    <b-button class="my-1" :to="{ name: 'all-components-errors' }">
+      Errors
+    </b-button>
   </div>
 </template>
 

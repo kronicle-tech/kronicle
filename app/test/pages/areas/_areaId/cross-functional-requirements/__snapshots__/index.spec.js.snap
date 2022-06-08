@@ -28,7 +28,9 @@ exports[`Index when Get Area service endpoint returns an area when the area has 
       href="/areas/test-area-id-1/dependencies"
       target="_self"
     >
-      Visualizations
+      
+    Visualizations
+  
     </a>
      
     <a
@@ -36,7 +38,9 @@ exports[`Index when Get Area service endpoint returns an area when the area has 
       href="/areas/test-area-id-1/components"
       target="_self"
     >
-      Components
+      
+    Components
+  
     </a>
      
     <a
@@ -54,7 +58,9 @@ exports[`Index when Get Area service endpoint returns an area when the area has 
       href="/areas/test-area-id-1/tech-debts"
       target="_self"
     >
-      Tech Debts
+      
+    Tech Debts
+  
     </a>
      
     <a
@@ -78,7 +84,9 @@ exports[`Index when Get Area service endpoint returns an area when the area has 
       href="/areas/test-area-id-1/openapi-specs"
       target="_self"
     >
-      OpenAPI Specs
+      
+    OpenAPI Specs
+  
     </a>
   </div>
    
@@ -1186,7 +1194,9 @@ exports[`Index when Get Area service endpoint returns an area when the area has 
       href="/areas/test-area-id-1/dependencies"
       target="_self"
     >
-      Visualizations
+      
+    Visualizations
+  
     </a>
      
     <a
@@ -1194,7 +1204,9 @@ exports[`Index when Get Area service endpoint returns an area when the area has 
       href="/areas/test-area-id-1/components"
       target="_self"
     >
-      Components
+      
+    Components
+  
     </a>
      
     <a
@@ -1212,7 +1224,9 @@ exports[`Index when Get Area service endpoint returns an area when the area has 
       href="/areas/test-area-id-1/tech-debts"
       target="_self"
     >
-      Tech Debts
+      
+    Tech Debts
+  
     </a>
      
     <a
@@ -1236,7 +1250,9 @@ exports[`Index when Get Area service endpoint returns an area when the area has 
       href="/areas/test-area-id-1/openapi-specs"
       target="_self"
     >
-      OpenAPI Specs
+      
+    OpenAPI Specs
+  
     </a>
   </div>
    
@@ -1869,7 +1885,9 @@ exports[`Index when Get Area service endpoint returns an area when the area has 
       href="/areas/test-area-id-1/dependencies"
       target="_self"
     >
-      Visualizations
+      
+    Visualizations
+  
     </a>
      
     <a
@@ -1877,7 +1895,9 @@ exports[`Index when Get Area service endpoint returns an area when the area has 
       href="/areas/test-area-id-1/components"
       target="_self"
     >
-      Components
+      
+    Components
+  
     </a>
      
     <a
@@ -1895,7 +1915,9 @@ exports[`Index when Get Area service endpoint returns an area when the area has 
       href="/areas/test-area-id-1/tech-debts"
       target="_self"
     >
-      Tech Debts
+      
+    Tech Debts
+  
     </a>
      
     <a
@@ -1919,7 +1941,9 @@ exports[`Index when Get Area service endpoint returns an area when the area has 
       href="/areas/test-area-id-1/openapi-specs"
       target="_self"
     >
-      OpenAPI Specs
+      
+    OpenAPI Specs
+  
     </a>
   </div>
    

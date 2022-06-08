@@ -86,7 +86,9 @@ exports[`Index when Get Component Nodes service endpoint returns no nodes render
       href="/components/test-component-id-1/errors"
       target="_self"
     >
-      Errors
+      
+    Errors
+  
     </a>
      
     <!---->
@@ -120,7 +122,9 @@ exports[`Index when Get Component Nodes service endpoint returns no nodes render
       href="/components/test-component-id-1/tests"
       target="_self"
     >
-      Tests
+      
+    Tests
+  
     </a>
   </div>
    
@@ -309,7 +313,9 @@ exports[`Index when Get Component Nodes service endpoints returns nodes and Get 
       href="/components/test-component-id-1/errors"
       target="_self"
     >
-      Errors
+      
+    Errors
+  
     </a>
      
     <!---->
@@ -343,7 +349,9 @@ exports[`Index when Get Component Nodes service endpoints returns nodes and Get 
       href="/components/test-component-id-1/tests"
       target="_self"
     >
-      Tests
+      
+    Tests
+  
     </a>
   </div>
    
