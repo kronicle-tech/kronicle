@@ -17,7 +17,7 @@ jobs:
   ci-build:
     runs-on: ubuntu-latest
     env:
-      BUILD_TASKS: {{ inputs.build_tasks }}
+      BUILD_TASKS: ${{ inputs.build_tasks }}
 
     steps:
       - uses: actions/checkout@v2
