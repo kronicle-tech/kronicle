@@ -12,7 +12,7 @@ exports[`Index when Get Tests service endpoint returns an array of multiple test
       href="/all-tests"
       target="_self"
     >
-      Tests
+       Tests 
     </a>
   </div>
    
@@ -197,7 +197,7 @@ exports[`Index when Get Tests service endpoint returns an empty array renders th
       href="/all-tests"
       target="_self"
     >
-      Tests
+       Tests 
     </a>
   </div>
    
@@ -283,7 +283,7 @@ exports[`Index when there are tests with different amounts of outcome counts ren
       href="/all-tests"
       target="_self"
     >
-      Tests
+       Tests 
     </a>
   </div>
    
@@ -517,7 +517,7 @@ exports[`Index when there is a test and a component with no test results renders
       href="/all-tests"
       target="_self"
     >
-      Tests
+       Tests 
     </a>
   </div>
    

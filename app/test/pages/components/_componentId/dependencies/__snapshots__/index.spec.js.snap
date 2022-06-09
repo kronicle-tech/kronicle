@@ -18,7 +18,7 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
       href="/components/test-component-id-1"
       target="_self"
     >
-      Info
+       Info 
     </a>
      
     <a
@@ -1111,7 +1111,7 @@ exports[`Index when Get Summary service endpoint returns an array of multiple co
       href="/components/test-component-id-1"
       target="_self"
     >
-      Info
+       Info 
     </a>
      
     <a
@@ -2204,7 +2204,7 @@ exports[`Index when Get Summary service endpoint returns no dependencies renders
       href="/components/test-component-id-1"
       target="_self"
     >
-      Info
+       Info 
     </a>
      
     <a

@@ -20,7 +20,7 @@ exports[`Index when Get Component service endpoint returns a component renders t
       href="/components/test-component-id-1"
       target="_self"
     >
-      Info
+       Info 
     </a>
      
     <a
@@ -181,7 +181,7 @@ exports[`Index when Get Component service endpoint returns a component when Get 
       href="/components/test-component-id-3"
       target="_self"
     >
-      Info
+       Info 
     </a>
      
     <a
@@ -342,7 +342,7 @@ exports[`Index when Get Component service endpoint returns a component when Get 
       href="/components/test-component-id-1"
       target="_self"
     >
-      Info
+       Info 
     </a>
      
     <a
