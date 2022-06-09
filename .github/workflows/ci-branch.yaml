@@ -12,14 +12,14 @@ jobs:
     uses: ./.github/workflows/ci-shared.yaml
     with:
       uses_nodejs: true
-      build_tasks: app:build -x check -x dependencyCheckAnalyze
+      build_tasks: app:build -x checkFrontend -x dependencyCheckAnalyze
     secrets: inherit
 
   ci-branch-app-test:
     uses: ./.github/workflows/ci-shared.yaml
     with:
       uses_nodejs: true
-      build_tasks: app:check
+      build_tasks: app:checkFrontend
     secrets: inherit
 
   ci-branch-app-dependency-check:
