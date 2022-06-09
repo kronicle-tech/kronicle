@@ -20,7 +20,7 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
       href="/teams/test-team-id-1"
       target="_self"
     >
-      Info
+       Info 
     </a>
      
     <a
@@ -68,7 +68,7 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
       href="/teams/test-team-id-1/tests"
       target="_self"
     >
-      Tests
+       Tests 
     </a>
      
     <a
@@ -76,7 +76,7 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
       href="/teams/test-team-id-1/errors"
       target="_self"
     >
-      Errors
+       Errors 
     </a>
   </div>
    
@@ -1176,7 +1176,7 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
       href="/teams/test-team-id-1"
       target="_self"
     >
-      Info
+       Info 
     </a>
      
     <a
@@ -1224,7 +1224,7 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
       href="/teams/test-team-id-1/tests"
       target="_self"
     >
-      Tests
+       Tests 
     </a>
      
     <a
@@ -1232,7 +1232,7 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
       href="/teams/test-team-id-1/errors"
       target="_self"
     >
-      Errors
+       Errors 
     </a>
   </div>
    
@@ -1857,7 +1857,7 @@ exports[`Index when Get Team service endpoint returns a team when the team has n
       href="/teams/test-team-id-1"
       target="_self"
     >
-      Info
+       Info 
     </a>
      
     <a
@@ -1905,7 +1905,7 @@ exports[`Index when Get Team service endpoint returns a team when the team has n
       href="/teams/test-team-id-1/tests"
       target="_self"
     >
-      Tests
+       Tests 
     </a>
      
     <a
@@ -1913,7 +1913,7 @@ exports[`Index when Get Team service endpoint returns a team when the team has n
       href="/teams/test-team-id-1/errors"
       target="_self"
     >
-      Errors
+       Errors 
     </a>
   </div>
    

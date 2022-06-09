@@ -18,7 +18,7 @@ exports[`Index when Get Component Nodes service endpoint returns no nodes render
       href="/components/test-component-id-1"
       target="_self"
     >
-      Info
+       Info 
     </a>
      
     <a
@@ -245,7 +245,7 @@ exports[`Index when Get Component Nodes service endpoints returns nodes and Get 
       href="/components/test-component-id-1"
       target="_self"
     >
-      Info
+       Info 
     </a>
      
     <a

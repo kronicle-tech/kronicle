@@ -20,7 +20,7 @@ exports[`Index when Get Test service endpoint returns a test and the Get Area se
       href="/areas/test-area-id-1"
       target="_self"
     >
-      Info
+       Info 
     </a>
      
     <a
@@ -68,7 +68,7 @@ exports[`Index when Get Test service endpoint returns a test and the Get Area se
       href="/areas/test-area-id-1/tests"
       target="_self"
     >
-      Tests
+       Tests 
     </a>
      
     <a
@@ -76,7 +76,7 @@ exports[`Index when Get Test service endpoint returns a test and the Get Area se
       href="/areas/test-area-id-1/errors"
       target="_self"
     >
-      Errors
+       Errors 
     </a>
      
     <a
@@ -237,7 +237,7 @@ exports[`Index when Get Test service endpoint returns a test and the Get Area se
       href="/areas/test-area-id-1"
       target="_self"
     >
-      Info
+       Info 
     </a>
      
     <a
@@ -285,7 +285,7 @@ exports[`Index when Get Test service endpoint returns a test and the Get Area se
       href="/areas/test-area-id-1/tests"
       target="_self"
     >
-      Tests
+       Tests 
     </a>
      
     <a
@@ -293,7 +293,7 @@ exports[`Index when Get Test service endpoint returns a test and the Get Area se
       href="/areas/test-area-id-1/errors"
       target="_self"
     >
-      Errors
+       Errors 
     </a>
      
     <a

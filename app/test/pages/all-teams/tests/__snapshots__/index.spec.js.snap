@@ -12,7 +12,7 @@ exports[`Index when Get Teams service endpoint returns a component with no test 
       href="/all-teams"
       target="_self"
     >
-      Teams
+       Teams 
     </a>
      
     <a
@@ -20,7 +20,7 @@ exports[`Index when Get Teams service endpoint returns a component with no test 
       href="/all-teams/components"
       target="_self"
     >
-      Components
+       Components 
     </a>
      
     <a
@@ -28,7 +28,7 @@ exports[`Index when Get Teams service endpoint returns a component with no test 
       href="/all-teams/tech-debts"
       target="_self"
     >
-      Tech Debts
+       Tech Debts 
     </a>
      
     <a
@@ -36,7 +36,7 @@ exports[`Index when Get Teams service endpoint returns a component with no test 
       href="/all-teams/tests"
       target="_self"
     >
-      Tests
+       Tests 
     </a>
   </div>
    
@@ -73,7 +73,7 @@ exports[`Index when Get Teams service endpoint returns an array of multiple team
       href="/all-teams"
       target="_self"
     >
-      Teams
+       Teams 
     </a>
      
     <a
@@ -81,7 +81,7 @@ exports[`Index when Get Teams service endpoint returns an array of multiple team
       href="/all-teams/components"
       target="_self"
     >
-      Components
+       Components 
     </a>
      
     <a
@@ -89,7 +89,7 @@ exports[`Index when Get Teams service endpoint returns an array of multiple team
       href="/all-teams/tech-debts"
       target="_self"
     >
-      Tech Debts
+       Tech Debts 
     </a>
      
     <a
@@ -97,7 +97,7 @@ exports[`Index when Get Teams service endpoint returns an array of multiple team
       href="/all-teams/tests"
       target="_self"
     >
-      Tests
+       Tests 
     </a>
   </div>
    
@@ -758,7 +758,7 @@ exports[`Index when Get Teams service endpoint returns an empty array renders th
       href="/all-teams"
       target="_self"
     >
-      Teams
+       Teams 
     </a>
      
     <a
@@ -766,7 +766,7 @@ exports[`Index when Get Teams service endpoint returns an empty array renders th
       href="/all-teams/components"
       target="_self"
     >
-      Components
+       Components 
     </a>
      
     <a
@@ -774,7 +774,7 @@ exports[`Index when Get Teams service endpoint returns an empty array renders th
       href="/all-teams/tech-debts"
       target="_self"
     >
-      Tech Debts
+       Tech Debts 
     </a>
      
     <a
@@ -782,7 +782,7 @@ exports[`Index when Get Teams service endpoint returns an empty array renders th
       href="/all-teams/tests"
       target="_self"
     >
-      Tests
+       Tests 
     </a>
   </div>
    
@@ -801,7 +801,7 @@ exports[`Index when Get Teams service endpoint returns failed test results for a
       href="/all-teams"
       target="_self"
     >
-      Teams
+       Teams 
     </a>
      
     <a
@@ -809,7 +809,7 @@ exports[`Index when Get Teams service endpoint returns failed test results for a
       href="/all-teams/components"
       target="_self"
     >
-      Components
+       Components 
     </a>
      
     <a
@@ -817,7 +817,7 @@ exports[`Index when Get Teams service endpoint returns failed test results for a
       href="/all-teams/tech-debts"
       target="_self"
     >
-      Tech Debts
+       Tech Debts 
     </a>
      
     <a
@@ -825,7 +825,7 @@ exports[`Index when Get Teams service endpoint returns failed test results for a
       href="/all-teams/tests"
       target="_self"
     >
-      Tests
+       Tests 
     </a>
   </div>
    
@@ -1449,7 +1449,7 @@ exports[`Index when Get Teams service endpoint returns more than 3 teams renders
       href="/all-teams"
       target="_self"
     >
-      Teams
+       Teams 
     </a>
      
     <a
@@ -1457,7 +1457,7 @@ exports[`Index when Get Teams service endpoint returns more than 3 teams renders
       href="/all-teams/components"
       target="_self"
     >
-      Components
+       Components 
     </a>
      
     <a
@@ -1465,7 +1465,7 @@ exports[`Index when Get Teams service endpoint returns more than 3 teams renders
       href="/all-teams/tech-debts"
       target="_self"
     >
-      Tech Debts
+       Tech Debts 
     </a>
      
     <a
@@ -1473,7 +1473,7 @@ exports[`Index when Get Teams service endpoint returns more than 3 teams renders
       href="/all-teams/tests"
       target="_self"
     >
-      Tests
+       Tests 
     </a>
   </div>
    
@@ -1556,7 +1556,7 @@ exports[`Index when there are test results for each outcome renders only failed 
       href="/all-teams"
       target="_self"
     >
-      Teams
+       Teams 
     </a>
      
     <a
@@ -1564,7 +1564,7 @@ exports[`Index when there are test results for each outcome renders only failed 
       href="/all-teams/components"
       target="_self"
     >
-      Components
+       Components 
     </a>
      
     <a
@@ -1572,7 +1572,7 @@ exports[`Index when there are test results for each outcome renders only failed 
       href="/all-teams/tech-debts"
       target="_self"
     >
-      Tech Debts
+       Tech Debts 
     </a>
      
     <a
@@ -1580,7 +1580,7 @@ exports[`Index when there are test results for each outcome renders only failed 
       href="/all-teams/tests"
       target="_self"
     >
-      Tests
+       Tests 
     </a>
   </div>
    

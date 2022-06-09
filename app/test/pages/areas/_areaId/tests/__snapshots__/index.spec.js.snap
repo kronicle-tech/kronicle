@@ -18,7 +18,7 @@ exports[`Index when Get Area service endpoint returns an area when the area has 
       href="/areas/test-area-id-1"
       target="_self"
     >
-      Info
+       Info 
     </a>
      
     <a
@@ -66,7 +66,7 @@ exports[`Index when Get Area service endpoint returns an area when the area has 
       href="/areas/test-area-id-1/tests"
       target="_self"
     >
-      Tests
+       Tests 
     </a>
      
     <a
@@ -74,7 +74,7 @@ exports[`Index when Get Area service endpoint returns an area when the area has 
       href="/areas/test-area-id-1/errors"
       target="_self"
     >
-      Errors
+       Errors 
     </a>
      
     <a
@@ -1117,7 +1117,7 @@ exports[`Index when Get Area service endpoint returns an area when the area has 
       href="/areas/test-area-id-1"
       target="_self"
     >
-      Info
+       Info 
     </a>
      
     <a
@@ -1165,7 +1165,7 @@ exports[`Index when Get Area service endpoint returns an area when the area has 
       href="/areas/test-area-id-1/tests"
       target="_self"
     >
-      Tests
+       Tests 
     </a>
      
     <a
@@ -1173,7 +1173,7 @@ exports[`Index when Get Area service endpoint returns an area when the area has 
       href="/areas/test-area-id-1/errors"
       target="_self"
     >
-      Errors
+       Errors 
     </a>
      
     <a
@@ -1831,7 +1831,7 @@ exports[`Index when Get Area service endpoint returns an area when the area has 
       href="/areas/test-area-id-1"
       target="_self"
     >
-      Info
+       Info 
     </a>
      
     <a
@@ -1879,7 +1879,7 @@ exports[`Index when Get Area service endpoint returns an area when the area has 
       href="/areas/test-area-id-1/tests"
       target="_self"
     >
-      Tests
+       Tests 
     </a>
      
     <a
@@ -1887,7 +1887,7 @@ exports[`Index when Get Area service endpoint returns an area when the area has 
       href="/areas/test-area-id-1/errors"
       target="_self"
     >
-      Errors
+       Errors 
     </a>
      
     <a

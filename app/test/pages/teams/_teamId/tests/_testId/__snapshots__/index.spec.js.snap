@@ -20,7 +20,7 @@ exports[`Index when Get Test service endpoint returns a test and the Get Team se
       href="/teams/test-team-id-1"
       target="_self"
     >
-      Info
+       Info 
     </a>
      
     <a
@@ -68,7 +68,7 @@ exports[`Index when Get Test service endpoint returns a test and the Get Team se
       href="/teams/test-team-id-1/tests"
       target="_self"
     >
-      Tests
+       Tests 
     </a>
      
     <a
@@ -76,7 +76,7 @@ exports[`Index when Get Test service endpoint returns a test and the Get Team se
       href="/teams/test-team-id-1/errors"
       target="_self"
     >
-      Errors
+       Errors 
     </a>
   </div>
    
@@ -227,7 +227,7 @@ exports[`Index when Get Test service endpoint returns a test and the Get Team se
       href="/teams/test-team-id-1"
       target="_self"
     >
-      Info
+       Info 
     </a>
      
     <a
@@ -275,7 +275,7 @@ exports[`Index when Get Test service endpoint returns a test and the Get Team se
       href="/teams/test-team-id-1/tests"
       target="_self"
     >
-      Tests
+       Tests 
     </a>
      
     <a
@@ -283,7 +283,7 @@ exports[`Index when Get Test service endpoint returns a test and the Get Team se
       href="/teams/test-team-id-1/errors"
       target="_self"
     >
-      Errors
+       Errors 
     </a>
   </div>
    
