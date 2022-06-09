@@ -34,7 +34,7 @@ jobs:
           distribution: 'adopt'
 
       - name: Cache Gradle packages
-        if: ${{ inputs.caching == 'true' }}
+        if: ${{ inputs.caching }}
         uses: actions/cache@v2
         with:
           path: |
@@ -45,27 +45,27 @@ jobs:
             ${{ runner.os }}-gradle-
 
       - name: Set up Node.js
-        if: ${{ inputs.nodejs == 'true' }}
+        if: ${{ inputs.nodejs }}
         uses: actions/setup-node@v2
         with:
           node-version: '12'
 
       - name: Upgrade npm
-        if: ${{ inputs.nodejs == 'true' }}
+        if: ${{ inputs.nodejs }}
         run: npm install -g npm@latest
 
       - name: Get Node.js version
-        if: ${{ inputs.nodejs == 'true' }}
+        if: ${{ inputs.nodejs }}
         run: |
           echo "$(node -v)" > node-version.txt
 
       - name: Get npm version
-        if: ${{ inputs.nodejs == 'true' }}
+        if: ${{ inputs.nodejs }}
         run: |
           echo "$(npm -v)" > npm-version.txt
 
       - name: Cache the NPM Cache
-        if: ${{ inputs.nodejs == 'true' && inputs.caching == 'true' }}
+        if: ${{ inputs.nodejs && inputs.caching }}
         uses: actions/cache@v2
         with:
           path: ~/.npm
@@ -95,7 +95,7 @@ jobs:
           path: '**/build/reports/tests/test/**'
 
       - name: Clean up Gradle Cache
-        if: ${{ inputs.caching == 'true' }}
+        if: ${{ inputs.caching }}
         # Remove some files from the Gradle cache, so they aren't cached by GitHub Actions.
         # Restoring these files from a GitHub Actions cache might cause problems for future builds.
         run: |

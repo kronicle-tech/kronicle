@@ -7,7 +7,7 @@ on:
 
 jobs:
 
-  ci-main-tag:
+  ci-tag:
     runs-on: ubuntu-latest
     environment: publish
     permissions:
@@ -33,9 +33,9 @@ jobs:
         # Based on https://axion-release-plugin.readthedocs.io/en/latest/configuration/ci_servers/#github-actions
         run: ./gradlew release -Prelease.customUsername=${{ github.actor }} -Prelease.customPassword=${{ github.token }}
 
-  ci-main-app-build:
+  ci-app-build:
     uses: ./.github/workflows/ci-shared-build-and-docker-push.yaml
-    needs: ci-main-tag
+    needs: ci-tag
     permissions:
       packages: write
       contents: write
@@ -46,7 +46,7 @@ jobs:
       docker_image_name: kronicle-app
     secrets: inherit
 
-  ci-main-app-test:
+  ci-app-test:
     uses: ./.github/workflows/ci-shared-build.yaml
     with:
       nodejs: true
@@ -54,7 +54,7 @@ jobs:
       build_tasks: app:checkFrontend
     secrets: inherit
 
-  ci-main-app-dependency-check:
+  ci-app-dependency-check:
     uses: ./.github/workflows/ci-shared-build.yaml
     with:
       nodejs: true
@@ -62,9 +62,9 @@ jobs:
       build_tasks: app:dependencyCheckAnalyze
     secrets: inherit
 
-  ci-main-service-build:
+  ci-service-build:
     uses: ./.github/workflows/ci-shared-build-and-docker-push.yaml
-    needs: ci-main-tag
+    needs: ci-tag
     permissions:
       packages: write
       contents: write
@@ -75,7 +75,7 @@ jobs:
       docker_image_name: kronicle-service
     secrets: inherit
 
-  ci-main-service-test:
+  ci-service-test:
     uses: ./.github/workflows/ci-shared-build.yaml
     with:
       nodejs: false
@@ -83,7 +83,7 @@ jobs:
       build_tasks: test -x app:test
     secrets: inherit
 
-  ci-main-service-dependency-check:
+  ci-service-dependency-check:
     uses: ./.github/workflows/ci-shared-build.yaml
     with:
       nodejs: false
