@@ -16,6 +16,8 @@ jobs:
 
   ci-build:
     runs-on: ubuntu-latest
+    env:
+      BUILD_TASKS: {{ inputs.build_tasks }}
 
     steps:
       - uses: actions/checkout@v2
@@ -73,7 +75,7 @@ jobs:
 
       - name: Build
         run: |
-          ./gradlew $INPUT_BUILD_TASKS
+          ./gradlew $BUILD_TASKS
 
       - name: Archive Dependency Check report 🗄️
         uses: actions/upload-artifact@v2
