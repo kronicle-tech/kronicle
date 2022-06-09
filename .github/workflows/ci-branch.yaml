@@ -8,7 +8,7 @@ on:
 
 jobs:
 
-  ci-branch-app-build:
+  ci-app-build:
     uses: ./.github/workflows/ci-shared-build.yaml
     with:
       nodejs: true
@@ -16,7 +16,7 @@ jobs:
       build_tasks: app:build -x checkFrontend -x dependencyCheckAnalyze
     secrets: inherit
 
-  ci-branch-app-test:
+  ci-app-test:
     uses: ./.github/workflows/ci-shared-build.yaml
     with:
       nodejs: true
@@ -24,7 +24,7 @@ jobs:
       build_tasks: app:checkFrontend
     secrets: inherit
 
-  ci-branch-app-dependency-check:
+  ci-app-dependency-check:
     uses: ./.github/workflows/ci-shared-build.yaml
     with:
       nodejs: true
@@ -32,7 +32,7 @@ jobs:
       build_tasks: app:dependencyCheckAnalyze
     secrets: inherit
 
-  ci-branch-service-build:
+  ci-service-build:
     uses: ./.github/workflows/ci-shared-build.yaml
     with:
       nodejs: false
@@ -40,7 +40,7 @@ jobs:
       build_tasks: build -x app:build -x test -x dependencyCheckAnalyze
     secrets: inherit
 
-  ci-branch-service-test:
+  ci-service-test:
     uses: ./.github/workflows/ci-shared-build.yaml
     with:
       nodejs: false
@@ -48,7 +48,7 @@ jobs:
       build_tasks: test -x app:test
     secrets: inherit
 
-  ci-branch-service-dependency-check:
+  ci-service-dependency-check:
     uses: ./.github/workflows/ci-shared-build.yaml
     with:
       nodejs: false
