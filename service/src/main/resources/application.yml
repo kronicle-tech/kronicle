@@ -80,6 +80,9 @@ plugins:
       one-hour-summaries: true
       twenty-four-hour-summaries: false
 
+  base:
+    enabled: true
+
   bitbucket-server:
     enabled: false
     timeout: 30s

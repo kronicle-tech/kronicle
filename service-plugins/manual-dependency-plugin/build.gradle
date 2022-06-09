@@ -17,6 +17,8 @@ dependencies {
     testCompileOnly "com.github.spotbugs:spotbugs-annotations:$spotBugsVersion"
 
     implementation project(":service-plugin-guice")
+    shadow project(":service-plugins:base-plugin")
+    testImplementation project(":service-plugins:base-plugin")
 
     testImplementation project(":service-plugin-test-utils")
     testImplementation "org.junit.jupiter:junit-jupiter"

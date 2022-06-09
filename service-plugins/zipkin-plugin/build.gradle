@@ -17,11 +17,10 @@ dependencies {
     testCompileOnly "com.github.spotbugs:spotbugs-annotations:$spotBugsVersion"
 
     implementation project(":service-plugin-guice")
-    implementation project(":service-utils")
-    implementation "io.github.resilience4j:resilience4j-retry:$resilience4jVersion"
+    shadow project(":service-plugins:base-plugin")
+    testImplementation project(":service-plugins:base-plugin")
 
-    implementation "com.fasterxml.jackson.core:jackson-core"
-    implementation "com.fasterxml.jackson.core:jackson-databind"
+    implementation "io.github.resilience4j:resilience4j-retry:$resilience4jVersion"
 
     testImplementation project(":service-plugin-test-utils")
     testImplementation "org.junit.jupiter:junit-jupiter"

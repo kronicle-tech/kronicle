@@ -17,12 +17,10 @@ dependencies {
     testCompileOnly "com.github.spotbugs:spotbugs-annotations:$spotBugsVersion"
 
     implementation project(":service-plugin-guice")
-    implementation project(":service-utils")
-    implementation "com.graphql-java:graphql-java"
+    shadow project(":service-plugins:base-plugin")
+    testImplementation project(":service-plugins:base-plugin")
 
-    implementation "com.fasterxml.jackson.core:jackson-core"
-    implementation "com.fasterxml.jackson.core:jackson-databind"
-    implementation "com.fasterxml.jackson.datatype:jackson-datatype-jsr310"
+    implementation "com.graphql-java:graphql-java"
 
     testImplementation project(":service-plugin-test-utils")
     testImplementation "org.junit.jupiter:junit-jupiter"

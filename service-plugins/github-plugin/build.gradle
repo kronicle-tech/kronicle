@@ -17,11 +17,8 @@ dependencies {
     testCompileOnly "com.github.spotbugs:spotbugs-annotations:$spotBugsVersion"
 
     implementation project(":service-plugin-guice")
-    implementation project(":service-utils")
-
-    implementation "com.fasterxml.jackson.core:jackson-core"
-    implementation "com.fasterxml.jackson.core:jackson-databind"
-    implementation "com.fasterxml.jackson.datatype:jackson-datatype-jsr310"
+    shadow project(":service-plugins:base-plugin")
+    testImplementation project(":service-plugins:base-plugin")
 
     testImplementation project(":service-plugin-test-utils")
     testImplementation "org.junit.jupiter:junit-jupiter"
@@ -33,10 +30,16 @@ dependencies {
 }
 
 shadowJar {
-  minimize {
-      exclude(dependency("org.hibernate.validator:hibernate-validator:"))
-      exclude(dependency("com.fasterxml.jackson.core:jackson-databind:"))
-  }
+    dependencies {
+        exclude(dependency("com.fasterxml.jackson.core:jackson-core"))
+        exclude(dependency("com.fasterxml.jackson.core:jackson-databind"))
+        exclude(dependency("com.fasterxml.jackson.datatype:jackson-datatype-jsr310"))
+    }
+
+    minimize {
+        exclude(dependency("org.hibernate.validator:hibernate-validator:"))
+        exclude(dependency("com.fasterxml.jackson.core:jackson-databind:"))
+    }
 }
 
 tasks.register("copyPlugin", Copy) {

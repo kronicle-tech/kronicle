@@ -16,12 +16,10 @@ dependencies {
     compileOnly "com.github.spotbugs:spotbugs-annotations:$spotBugsVersion"
     testCompileOnly "com.github.spotbugs:spotbugs-annotations:$spotBugsVersion"
 
-    implementation "com.fasterxml.jackson.core:jackson-core"
-    implementation "com.fasterxml.jackson.core:jackson-databind"
-    implementation "com.fasterxml.jackson.datatype:jackson-datatype-jsr310"
-
     implementation project(":service-plugin-guice")
-    implementation project(":service-utils")
+    shadow project(":service-plugins:base-plugin")
+    testImplementation project(":service-plugins:base-plugin")
+
     implementation "commons-io:commons-io:$commonsIoVersion"
     implementation("io.swagger.parser.v3:swagger-parser:$swaggerParserVersion") {
         exclude group: "javax.validation", module: "validation-api"

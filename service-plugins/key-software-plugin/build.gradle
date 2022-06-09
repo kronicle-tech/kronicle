@@ -17,6 +17,9 @@ dependencies {
     testCompileOnly "com.github.spotbugs:spotbugs-annotations:$spotBugsVersion"
 
     implementation project(":service-plugin-guice")
+    shadow project(":service-plugins:base-plugin")
+    testImplementation project(":service-plugins:base-plugin")
+
     implementation "tech.kronicle:gradle-version-logic:$gradleVersionLogicVersion"
 
     testImplementation project(":service-plugin-test-utils")

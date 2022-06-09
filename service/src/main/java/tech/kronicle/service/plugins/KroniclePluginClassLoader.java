@@ -6,6 +6,8 @@ import org.pf4j.PluginManager;
 
 import java.util.List;
 
+import static java.util.Objects.nonNull;
+
 public class KroniclePluginClassLoader extends PluginClassLoader {
 
     private static final List<String> PREFIXES_FOR_PARENT = List.of(
@@ -27,7 +29,13 @@ public class KroniclePluginClassLoader extends PluginClassLoader {
                 return getParent().loadClass(className);
             }
 
-            return super.loadClass(className);
+            Class<?> c = super.loadClass(className);
+
+            if (nonNull(c)) {
+                return c;
+            }
+
+            return loadClassFromDependencies(className);
         }
     }
 

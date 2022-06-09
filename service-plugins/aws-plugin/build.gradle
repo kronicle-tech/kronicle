@@ -18,11 +18,10 @@ dependencies {
     compileOnly "com.github.spotbugs:spotbugs-annotations:$spotBugsVersion"
     testCompileOnly "com.github.spotbugs:spotbugs-annotations:$spotBugsVersion"
 
-    implementation "com.fasterxml.jackson.core:jackson-core"
-    implementation "com.fasterxml.jackson.core:jackson-databind"
-
     implementation project(":service-plugin-guice")
-    implementation project(":service-utils")
+    shadow project(":service-plugins:base-plugin")
+    testImplementation project(":service-plugins:base-plugin")
+
     implementation "software.amazon.awssdk:url-connection-client"
     implementation "software.amazon.awssdk:resourcegroupstaggingapi"
     implementation "software.amazon.awssdk:xray"

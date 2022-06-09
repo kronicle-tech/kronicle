@@ -17,8 +17,11 @@ dependencies {
     testCompileOnly "com.github.spotbugs:spotbugs-annotations:$spotBugsVersion"
 
     implementation project(":service-plugin-guice")
-    shadow project(":service-plugins:base-plugin")
-    testImplementation project(":service-plugins:base-plugin")
+    api project(":service-utils")
+
+    api "com.fasterxml.jackson.core:jackson-core"
+    api "com.fasterxml.jackson.core:jackson-databind"
+    api "com.fasterxml.jackson.datatype:jackson-datatype-jsr310"
 
     testImplementation project(":service-plugin-test-utils")
     testImplementation "org.junit.jupiter:junit-jupiter"
@@ -26,7 +29,6 @@ dependencies {
     testImplementation "org.assertj:assertj-core"
     testImplementation "org.mockito:mockito-core"
     testImplementation "org.mockito:mockito-junit-jupiter"
-    testImplementation "com.github.tomakehurst:wiremock-jre8:$wireMockVersion"
 }
 
 shadowJar {
