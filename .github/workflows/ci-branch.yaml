@@ -9,43 +9,49 @@ on:
 jobs:
 
   ci-branch-app-build:
-    uses: ./.github/workflows/ci-shared.yaml
+    uses: ./.github/workflows/ci-shared-build.yaml
     with:
-      uses_nodejs: true
+      nodejs: true
+      caching: true
       build_tasks: app:build -x checkFrontend -x dependencyCheckAnalyze
     secrets: inherit
 
   ci-branch-app-test:
-    uses: ./.github/workflows/ci-shared.yaml
+    uses: ./.github/workflows/ci-shared-build.yaml
     with:
-      uses_nodejs: true
+      nodejs: true
+      caching: true
       build_tasks: app:checkFrontend
     secrets: inherit
 
   ci-branch-app-dependency-check:
-    uses: ./.github/workflows/ci-shared.yaml
+    uses: ./.github/workflows/ci-shared-build.yaml
     with:
-      uses_nodejs: true
+      nodejs: true
+      caching: true
       build_tasks: app:dependencyCheckAnalyze
     secrets: inherit
 
   ci-branch-service-build:
-    uses: ./.github/workflows/ci-shared.yaml
+    uses: ./.github/workflows/ci-shared-build.yaml
     with:
-      uses_nodejs: false
+      nodejs: false
+      caching: true
       build_tasks: build -x app:build -x test -x dependencyCheckAnalyze
     secrets: inherit
 
   ci-branch-service-test:
-    uses: ./.github/workflows/ci-shared.yaml
+    uses: ./.github/workflows/ci-shared-build.yaml
     with:
-      uses_nodejs: false
+      nodejs: false
+      caching: true
       build_tasks: test -x app:test
     secrets: inherit
 
   ci-branch-service-dependency-check:
-    uses: ./.github/workflows/ci-shared.yaml
+    uses: ./.github/workflows/ci-shared-build.yaml
     with:
-      uses_nodejs: false
+      nodejs: false
+      caching: true
       build_tasks: dependencyCheckAnalyze -x app:dependencyCheckAnalyze
     secrets: inherit
