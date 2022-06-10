@@ -634,4 +634,12 @@
         <packageUrl regex="true">^pkg:maven/org\.springframework\.security/spring\-security\-rsa@.*$</packageUrl>
         <cve>CVE-2022-22976</cve>
     </suppress>
+    <!-- Suppress a vulnerability that is incorrectly flagged against spring-security-rsa -->
+    <suppress>
+        <notes><![CDATA[
+   file name: spring-security-rsa-1.0.10.RELEASE.jar
+   ]]></notes>
+        <packageUrl regex="true">^pkg:maven/org\.springframework\.security/spring\-security\-rsa@.*$</packageUrl>
+        <cve>CVE-2022-22978</cve>
+    </suppress>
 </suppressions>

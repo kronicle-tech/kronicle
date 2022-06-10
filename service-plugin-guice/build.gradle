@@ -63,6 +63,5 @@ tasks.register("syncAllPluginLibs", Sync) {
 }
 
 project(":service").tasks.named("copyPlugins") {
-    dependsOn(syncPluginLibs)
-    dependsOn(syncAllPluginLibs)
+    dependsOn(syncPluginLibs, syncAllPluginLibs)
 }
