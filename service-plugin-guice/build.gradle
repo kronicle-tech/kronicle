@@ -14,7 +14,12 @@ dependencies {
     testCompileOnly "com.github.spotbugs:spotbugs-annotations:$spotBugsVersion"
 
     api project(":service-plugin-api")
+    api project(":service-utils")
+    api "com.google.guava:guava:$guavaVersion"
     api "com.google.inject:guice:$guiceVersion"
+    api "com.fasterxml.jackson.core:jackson-core"
+    api "com.fasterxml.jackson.core:jackson-databind"
+    api "com.fasterxml.jackson.datatype:jackson-datatype-jsr310"
 
     testImplementation "org.junit.jupiter:junit-jupiter"
     testImplementation "org.junit.jupiter:junit-jupiter-params"
@@ -27,4 +32,39 @@ dependencies {
 tasks.withType(Test).configureEach {
     useJUnitPlatform()
     maxParallelForks = Math.min(2, Runtime.runtime.availableProcessors().intdiv(2) ?: 1)
+}
+
+project(":service-plugin-guice").configurations.forEach(configuration -> println("${configuration.name} ${configuration.canBeResolved}"))
+
+tasks.register("syncPluginLibs", Sync) {
+    into project(':service').file('plugin-libs')
+    from configurations.compileClasspath {
+        transitive true
+        include "guava-*.jar"
+        include "guice-*.jar"
+        include "hibernate-validator-*.jar"
+        include "jackson-core-*.jar"
+        include "jackson-databind-*.jar"
+        include "jackson-datatype-jsr310-*.jar"
+        include "kronicle-common-*.jar"
+        include "kronicle-plugin-api-*.jar"
+        include "kronicle-sdk-*.jar"
+        include "kronicle-utils-*.jar"
+        include "pf4j-*.jar"
+    }
+}
+
+tasks.register("syncAllPluginLibs", Sync) {
+    description "Sync all dependencies to help with choosing which ones to include in syncPluginLibs task"
+
+    into project(':service').file('all-plugin-libs')
+    from configurations.compileClasspath {
+        transitive true
+        include "*.jar"
+    }
+}
+
+project(":service").tasks.named("copyPlugins") {
+    dependsOn(syncPluginLibs)
+    dependsOn(syncAllPluginLibs)
 }

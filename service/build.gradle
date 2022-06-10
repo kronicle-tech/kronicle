@@ -31,6 +31,8 @@ dependencies {
     compileOnly "com.github.spotbugs:spotbugs-annotations:$spotBugsVersion"
     testCompileOnly "com.github.spotbugs:spotbugs-annotations:$spotBugsVersion"
 
+    runtimeOnly("io.netty:netty-resolver-dns-native-macos::osx-aarch_64")
+
     implementation project(":service-plugin-guice")
     implementation project(":service-utils")
     implementation project(":tracing-processor")

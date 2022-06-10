@@ -17,8 +17,6 @@ dependencies {
     testCompileOnly "com.github.spotbugs:spotbugs-annotations:$spotBugsVersion"
 
     implementation project(":service-plugin-guice")
-    shadow project(":service-plugins:base-plugin")
-    testImplementation project(":service-plugins:base-plugin")
 
     implementation "com.google.guava:guava:$guavaVersion"
     implementation "org.eclipse.jgit:org.eclipse.jgit:$jgitVersion"
@@ -32,10 +30,21 @@ dependencies {
 }
 
 shadowJar {
-  minimize {
-      exclude(dependency("org.hibernate.validator:hibernate-validator:"))
-      exclude(dependency("com.fasterxml.jackson.core:jackson-databind:"))
-  }
+    dependencies {
+        exclude(dependency("com.fasterxml.jackson.core:jackson-annotations:"))
+        exclude(dependency("com.fasterxml.jackson.core:jackson-core:"))
+        exclude(dependency("com.fasterxml.jackson.core:jackson-databind:"))
+        exclude(dependency("com.fasterxml.jackson.datatype:jackson-datatype-jsr310:"))
+        exclude(dependency("com.google.guava:guava:"))
+        exclude(dependency("com.google.inject:guice:"))
+        exclude(dependency("org.hibernate.validator:hibernate-validator:"))
+        exclude(dependency("org.pf4j:pf4j:"))
+    }
+
+    minimize {
+        exclude(dependency("org.hibernate.validator:hibernate-validator:"))
+        exclude(dependency("com.fasterxml.jackson.core:jackson-databind:"))
+    }
 }
 
 tasks.register("copyPlugin", Copy) {
