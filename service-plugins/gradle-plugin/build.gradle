@@ -33,6 +33,30 @@ dependencies {
     testImplementation "org.mockito:mockito-junit-jupiter"
 }
 
+shadowJar {
+    dependencies {
+        exclude(project(":common"))
+        exclude(project(":sdk"))
+        exclude(project(":service-plugin-api"))
+        exclude(project(":service-utils"))
+        exclude(dependency("tech.kronicle:kronicle-common:"))
+        exclude(dependency("tech.kronicle:kronicle-sdk:"))
+        exclude(dependency("tech.kronicle:kronicle-utils:"))
+        exclude(dependency("com.fasterxml.jackson.core:jackson-annotations:"))
+        exclude(dependency("com.fasterxml.jackson.core:jackson-core:"))
+        exclude(dependency("com.fasterxml.jackson.core:jackson-databind:"))
+        exclude(dependency("com.fasterxml.jackson.datatype:jackson-datatype-jsr310:"))
+        exclude(dependency("com.google.guava:guava:"))
+        exclude(dependency("com.google.inject:guice:"))
+        exclude(dependency("org.hibernate.validator:hibernate-validator:"))
+        exclude(dependency("org.pf4j:pf4j:"))
+    }
+
+    minimize {
+        exclude(dependency("org.codehaus.groovy:groovy:"))
+    }
+}
+
 tasks.register("copyPlugin", Copy) {
     dependsOn(shadowJar)
 
