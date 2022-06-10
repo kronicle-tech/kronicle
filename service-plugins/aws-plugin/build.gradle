@@ -18,11 +18,8 @@ dependencies {
     compileOnly "com.github.spotbugs:spotbugs-annotations:$spotBugsVersion"
     testCompileOnly "com.github.spotbugs:spotbugs-annotations:$spotBugsVersion"
 
-    implementation "com.fasterxml.jackson.core:jackson-core"
-    implementation "com.fasterxml.jackson.core:jackson-databind"
-
     implementation project(":service-plugin-guice")
-    implementation project(":service-utils")
+
     implementation "software.amazon.awssdk:url-connection-client"
     implementation "software.amazon.awssdk:resourcegroupstaggingapi"
     implementation "software.amazon.awssdk:xray"
@@ -39,11 +36,22 @@ dependencies {
 }
 
 shadowJar {
-  minimize {
-      exclude(dependency("org.hibernate.validator:hibernate-validator:"))
-      exclude(dependency("com.fasterxml.jackson.core:jackson-databind:"))
-      exclude(dependency("software.amazon.awssdk:url-connection-client:"))
-  }
+    dependencies {
+        exclude(dependency("com.fasterxml.jackson.core:jackson-annotations:"))
+        exclude(dependency("com.fasterxml.jackson.core:jackson-core:"))
+        exclude(dependency("com.fasterxml.jackson.core:jackson-databind:"))
+        exclude(dependency("com.fasterxml.jackson.datatype:jackson-datatype-jsr310:"))
+        exclude(dependency("com.google.guava:guava:"))
+        exclude(dependency("com.google.inject:guice:"))
+        exclude(dependency("org.hibernate.validator:hibernate-validator:"))
+        exclude(dependency("org.pf4j:pf4j:"))
+    }
+
+    minimize {
+        exclude(dependency("org.hibernate.validator:hibernate-validator:"))
+        exclude(dependency("com.fasterxml.jackson.core:jackson-databind:"))
+        exclude(dependency("software.amazon.awssdk:url-connection-client:"))
+    }
 }
 
 tasks.register("copyPlugin", Copy) {

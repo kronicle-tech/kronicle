@@ -18,7 +18,7 @@ dependencies {
     testCompileOnly "com.github.spotbugs:spotbugs-annotations:$spotBugsVersion"
 
     implementation project(":service-plugin-guice")
-    implementation project(":service-utils")
+
     implementation("tech.kronicle:gradle-static-analyzer:$gradleStaticAnalyzerVersion") {
         exclude group: 'tech.kronicle', module: 'kronicle-common'
         exclude group: 'tech.kronicle', module: 'kronicle-sdk'
