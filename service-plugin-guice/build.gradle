@@ -15,6 +15,8 @@ dependencies {
 
     api project(":service-plugin-api")
     api project(":service-utils")
+    api "jakarta.xml.bind:jakarta.xml.bind-api:$jakartaXmlBindingVersion"
+    api "com.sun.xml.bind:jaxb-impl:$jaxbImplVersion"
     api "com.google.guava:guava:$guavaVersion"
     api "com.google.inject:guice:$guiceVersion"
     api "com.fasterxml.jackson.core:jackson-core"
@@ -44,12 +46,19 @@ tasks.register("syncPluginLibs", Sync) {
         include "jackson-core-*.jar"
         include "jackson-databind-*.jar"
         include "jackson-datatype-jsr310-*.jar"
+        include "jakarta.validation-api-*.jar"
+        include "jakarta.xml.bind-api-*.jar"
+        include "jaxb-impl-*.jar"
         include "kronicle-common-*.jar"
         include "kronicle-plugin-api-*.jar"
         include "kronicle-sdk-*.jar"
         include "kronicle-utils-*.jar"
         include "pf4j-*.jar"
     }
+    from project(":common").jar
+    from project(":sdk").jar
+    from project(":service-plugin-api").jar
+    from project(":service-utils").jar
 }
 
 tasks.register("syncAllPluginLibs", Sync) {

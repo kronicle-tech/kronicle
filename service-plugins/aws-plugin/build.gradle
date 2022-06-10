@@ -37,6 +37,13 @@ dependencies {
 
 shadowJar {
     dependencies {
+        exclude(project(":common"))
+        exclude(project(":sdk"))
+        exclude(project(":service-plugin-api"))
+        exclude(project(":service-utils"))
+        exclude(dependency("tech.kronicle:kronicle-common:"))
+        exclude(dependency("tech.kronicle:kronicle-sdk:"))
+        exclude(dependency("tech.kronicle:kronicle-utils:"))
         exclude(dependency("com.fasterxml.jackson.core:jackson-annotations:"))
         exclude(dependency("com.fasterxml.jackson.core:jackson-core:"))
         exclude(dependency("com.fasterxml.jackson.core:jackson-databind:"))
