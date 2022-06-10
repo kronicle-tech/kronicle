@@ -34,8 +34,6 @@ tasks.withType(Test).configureEach {
     maxParallelForks = Math.min(2, Runtime.runtime.availableProcessors().intdiv(2) ?: 1)
 }
 
-project(":service-plugin-guice").configurations.forEach(configuration -> println("${configuration.name} ${configuration.canBeResolved}"))
-
 tasks.register("syncPluginLibs", Sync) {
     into project(':service').file('plugin-libs')
     from configurations.compileClasspath {
