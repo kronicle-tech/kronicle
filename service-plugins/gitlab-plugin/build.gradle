@@ -42,8 +42,6 @@ shadowJar {
     }
 
     minimize {
-        exclude(dependency("org.hibernate.validator:hibernate-validator:"))
-        exclude(dependency("com.fasterxml.jackson.core:jackson-databind:"))
         exclude(dependency("com.github.ben-manes.caffeine:caffeine:"))
     }
 }

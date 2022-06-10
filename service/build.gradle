@@ -86,6 +86,10 @@ docker {
             .from("src/test/java") {
                 include("Healthcheck.java")
             }
+            .from("plugin-libs") {
+                include("*.jar")
+                into("plugin-libs")
+            }
             .from("plugins") {
                 include("*-${version}-all.jar")
                 into("plugins")

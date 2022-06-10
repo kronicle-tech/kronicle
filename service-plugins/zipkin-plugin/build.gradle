@@ -41,10 +41,7 @@ shadowJar {
         exclude(dependency("org.pf4j:pf4j:"))
     }
 
-    minimize {
-        exclude(dependency("org.hibernate.validator:hibernate-validator:"))
-        exclude(dependency("com.fasterxml.jackson.core:jackson-databind:"))
-    }
+    minimize()
 }
 
 tasks.register("copyPlugin", Copy) {
