@@ -2,6 +2,7 @@ FROM gcr.io/distroless/java11-debian11 as build
 
 WORKDIR /app
 COPY app.jar Healthcheck.java ./
+COPY plugin-libs/ plugin-libs/
 COPY plugins/ plugins/
 
 FROM gcr.io/distroless/java11-debian11
