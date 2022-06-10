@@ -1,11 +1,7 @@
 <template>
   <div class="my-3">
     <b-button class="my-1" :to="`/components/${componentId}`"> Info </b-button>
-    <b-button
-      v-if="componentAvailableData.hasNodes"
-      class="my-1"
-      :to="`/components/${componentId}/dependencies`"
-    >
+    <b-button class="my-1" :to="`/components/${componentId}/dependencies`">
       Visualizations
     </b-button>
     <b-button

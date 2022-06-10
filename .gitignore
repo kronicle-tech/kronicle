@@ -1,9 +1,10 @@
-.gradle/
-.idea/
-build/
-out/
+.gradle
+.idea
+build
+out
 dependencies.txt
 *.log
+.DS_Store
 
 # Files produced by GitHub Actions workflows
 *-version.txt
