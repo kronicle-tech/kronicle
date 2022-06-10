@@ -78,22 +78,31 @@ docker {
 
     buildArgs([VERSION: version])
     tag "latest", name
-    copySpec
-            .from("build/libs") {
+    copySpec.with(
+        copySpec {
+            from("build/libs") {
                 include("service-${version}.jar")
                 rename("service-${version}.jar", "app.jar")
             }
-            .from("src/test/java") {
+        },
+        copySpec {
+            from("src/test/java") {
                 include("Healthcheck.java")
             }
-            .from("plugin-libs") {
+        },
+        copySpec {
+            from("plugin-libs") {
                 include("*.jar")
                 into("plugin-libs")
             }
-            .from("plugins") {
+        },
+        copySpec {
+            from("plugins") {
                 include("*-${version}-all.jar")
                 into("plugins")
             }
+        }
+    )
     network "host"
 }
 
