@@ -55,7 +55,9 @@ public class ComponentMetadataLoaderTest {
                 new SimplifiedLogEvent(Level.INFO, "Loaded 0 platforms"),
                 new SimplifiedLogEvent(Level.INFO, "Loaded 2 areas"),
                 new SimplifiedLogEvent(Level.INFO, "Loaded 0 teams"),
-                new SimplifiedLogEvent(Level.INFO, "Loaded 0 components"));
+                new SimplifiedLogEvent(Level.INFO, "Loaded 0 components"),
+                new SimplifiedLogEvent(Level.INFO, "Loaded 0 diagrams")
+        );
         assertThat(returnValue.getAreas()).containsOnly(
                 Map.entry(area1.getId(), area1),
                 Map.entry(area2.getId(), area2));
@@ -81,7 +83,9 @@ public class ComponentMetadataLoaderTest {
                 new SimplifiedLogEvent(Level.INFO, "Loaded 0 platforms"),
                 new SimplifiedLogEvent(Level.INFO, "Loaded 0 areas"),
                 new SimplifiedLogEvent(Level.INFO, "Loaded 2 teams"),
-                new SimplifiedLogEvent(Level.INFO, "Loaded 0 components"));
+                new SimplifiedLogEvent(Level.INFO, "Loaded 0 components"),
+                new SimplifiedLogEvent(Level.INFO, "Loaded 0 diagrams")
+        );
         assertThat(returnValue.getAreas()).isEmpty();
         assertThat(returnValue.getTeams()).containsOnly(
                 Map.entry(team1.getId(), team1),
@@ -108,7 +112,9 @@ public class ComponentMetadataLoaderTest {
                 new SimplifiedLogEvent(Level.INFO, "Loaded 0 platforms"),
                 new SimplifiedLogEvent(Level.INFO, "Loaded 0 areas"),
                 new SimplifiedLogEvent(Level.INFO, "Loaded 0 teams"),
-                new SimplifiedLogEvent(Level.INFO, "Loaded 2 components"));
+                new SimplifiedLogEvent(Level.INFO, "Loaded 2 components"),
+                new SimplifiedLogEvent(Level.INFO, "Loaded 0 diagrams")
+        );
         assertThat(returnValue.getAreas()).isEmpty();
         assertThat(returnValue.getTeams()).isEmpty();
         assertThat(returnValue.getComponents()).containsOnly(
@@ -142,7 +148,9 @@ public class ComponentMetadataLoaderTest {
                 new SimplifiedLogEvent(Level.INFO, "Loaded 2 platforms"),
                 new SimplifiedLogEvent(Level.INFO, "Loaded 2 areas"),
                 new SimplifiedLogEvent(Level.INFO, "Loaded 2 teams"),
-                new SimplifiedLogEvent(Level.INFO, "Loaded 2 components"));
+                new SimplifiedLogEvent(Level.INFO, "Loaded 2 components"),
+                new SimplifiedLogEvent(Level.INFO, "Loaded 0 diagrams")
+        );
         assertThat(returnValue.getAreas()).containsOnly(
                 Map.entry(area1.getId(), area1),
                 Map.entry(area2.getId(), area2));
@@ -173,7 +181,9 @@ public class ComponentMetadataLoaderTest {
                 new SimplifiedLogEvent(Level.ERROR, "Area id test-area-id-1 is defined at least twice and will be skipped this time"),
                 new SimplifiedLogEvent(Level.INFO, "Loaded 1 areas"),
                 new SimplifiedLogEvent(Level.INFO, "Loaded 0 teams"),
-                new SimplifiedLogEvent(Level.INFO, "Loaded 0 components"));
+                new SimplifiedLogEvent(Level.INFO, "Loaded 0 components"),
+                new SimplifiedLogEvent(Level.INFO, "Loaded 0 diagrams")
+        );
         assertThat(returnValue.getAreas()).containsOnly(
                 Map.entry(area1.getId(), area1));
         assertThat(returnValue.getTeams()).isEmpty();
@@ -199,7 +209,9 @@ public class ComponentMetadataLoaderTest {
                 new SimplifiedLogEvent(Level.INFO, "Loaded 0 areas"),
                 new SimplifiedLogEvent(Level.ERROR, "Team id test-team-id-1 is defined at least twice and will be skipped this time"),
                 new SimplifiedLogEvent(Level.INFO, "Loaded 1 teams"),
-                new SimplifiedLogEvent(Level.INFO, "Loaded 0 components"));
+                new SimplifiedLogEvent(Level.INFO, "Loaded 0 components"),
+                new SimplifiedLogEvent(Level.INFO, "Loaded 0 diagrams")
+        );
         assertThat(returnValue.getAreas()).isEmpty();
         assertThat(returnValue.getTeams()).containsOnly(
                 Map.entry(team1.getId(), team1));
@@ -226,7 +238,9 @@ public class ComponentMetadataLoaderTest {
                 new SimplifiedLogEvent(Level.INFO, "Loaded 0 areas"),
                 new SimplifiedLogEvent(Level.INFO, "Loaded 0 teams"),
                 new SimplifiedLogEvent(Level.ERROR, "Component id test-component-id-1 is defined at least twice and will be skipped this time"),
-                new SimplifiedLogEvent(Level.INFO, "Loaded 1 components"));
+                new SimplifiedLogEvent(Level.INFO, "Loaded 1 components"),
+                new SimplifiedLogEvent(Level.INFO, "Loaded 0 diagrams")
+        );
         assertThat(returnValue.getAreas()).isEmpty();
         assertThat(returnValue.getTeams()).isEmpty();
         assertThat(returnValue.getComponents()).containsOnly(
@@ -252,7 +266,9 @@ public class ComponentMetadataLoaderTest {
                 new SimplifiedLogEvent(Level.ERROR, "Area id test-area-id-1 failed validation and will be skipped"),
                 new SimplifiedLogEvent(Level.INFO, "Loaded 1 areas"),
                 new SimplifiedLogEvent(Level.INFO, "Loaded 0 teams"),
-                new SimplifiedLogEvent(Level.INFO, "Loaded 0 components"));
+                new SimplifiedLogEvent(Level.INFO, "Loaded 0 components"),
+                new SimplifiedLogEvent(Level.INFO, "Loaded 0 diagrams")
+        );
         assertThat(logCaptor.getEvents().get(2).getThrowableProxy().getMessage()).isEqualTo(""
             + "Failed to validate tech.kronicle.sdk.models.Area with reference \"test-area-id-1\". Violations:\n"
             + "- name with value \"null\" must not be blank");
@@ -281,7 +297,9 @@ public class ComponentMetadataLoaderTest {
                 new SimplifiedLogEvent(Level.INFO, "Loaded 0 areas"),
                 new SimplifiedLogEvent(Level.ERROR, "Team id test-team-id-1 failed validation and will be skipped"),
                 new SimplifiedLogEvent(Level.INFO, "Loaded 1 teams"),
-                new SimplifiedLogEvent(Level.INFO, "Loaded 0 components"));
+                new SimplifiedLogEvent(Level.INFO, "Loaded 0 components"),
+                new SimplifiedLogEvent(Level.INFO, "Loaded 0 diagrams")
+        );
         assertThat(logCaptor.getEvents().get(3).getThrowableProxy().getMessage()).isEqualTo(""
                 + "Failed to validate tech.kronicle.sdk.models.Team with reference \"test-team-id-1\". Violations:\n"
                 + "- name with value \"null\" must not be blank");
@@ -311,7 +329,9 @@ public class ComponentMetadataLoaderTest {
                 new SimplifiedLogEvent(Level.INFO, "Loaded 0 areas"),
                 new SimplifiedLogEvent(Level.INFO, "Loaded 0 teams"),
                 new SimplifiedLogEvent(Level.ERROR, "Component id test-component-id-1 failed validation and will be skipped"),
-                new SimplifiedLogEvent(Level.INFO, "Loaded 1 components"));
+                new SimplifiedLogEvent(Level.INFO, "Loaded 1 components"),
+                new SimplifiedLogEvent(Level.INFO, "Loaded 0 diagrams")
+        );
         assertThat(logCaptor.getEvents().get(4).getThrowableProxy().getMessage()).isEqualTo(""
                 + "Failed to validate tech.kronicle.sdk.models.Component with reference \"test-component-id-1\". Violations:\n"
                 + "- name with value \"null\" must not be blank\n"
@@ -342,7 +362,9 @@ public class ComponentMetadataLoaderTest {
                 new SimplifiedLogEvent(Level.INFO, "Loaded 0 areas"),
                 new SimplifiedLogEvent(Level.ERROR, "Cannot find area test-area-id-1 for team test-team-id-1"),
                 new SimplifiedLogEvent(Level.INFO, "Loaded 1 teams"),
-                new SimplifiedLogEvent(Level.INFO, "Loaded 0 components"));
+                new SimplifiedLogEvent(Level.INFO, "Loaded 0 components"),
+                new SimplifiedLogEvent(Level.INFO, "Loaded 0 diagrams")
+        );
         assertThat(returnValue.getAreas()).isEmpty();
         assertThat(returnValue.getTeams()).containsOnly(
                 Map.entry(team1.getId(), team1));
@@ -369,7 +391,9 @@ public class ComponentMetadataLoaderTest {
                 new SimplifiedLogEvent(Level.INFO, "Loaded 0 areas"),
                 new SimplifiedLogEvent(Level.INFO, "Loaded 0 teams"),
                 new SimplifiedLogEvent(Level.ERROR, "Cannot find component type test-component-type-id-1 for component test-component-id-1"),
-                new SimplifiedLogEvent(Level.INFO, "Loaded 1 components"));
+                new SimplifiedLogEvent(Level.INFO, "Loaded 1 components"),
+                new SimplifiedLogEvent(Level.INFO, "Loaded 0 diagrams")
+        );
         assertThat(returnValue.getAreas()).isEmpty();
         assertThat(returnValue.getTeams()).isEmpty();
         assertThat(returnValue.getComponents()).containsOnly(
@@ -397,7 +421,9 @@ public class ComponentMetadataLoaderTest {
                 new SimplifiedLogEvent(Level.INFO, "Loaded 0 areas"),
                 new SimplifiedLogEvent(Level.INFO, "Loaded 0 teams"),
                 new SimplifiedLogEvent(Level.ERROR, "Cannot find team test-team-id-1 for component test-component-id-1"),
-                new SimplifiedLogEvent(Level.INFO, "Loaded 1 components"));
+                new SimplifiedLogEvent(Level.INFO, "Loaded 1 components"),
+                new SimplifiedLogEvent(Level.INFO, "Loaded 0 diagrams")
+        );
         assertThat(returnValue.getAreas()).isEmpty();
         assertThat(returnValue.getTeams()).isEmpty();
         assertThat(returnValue.getComponents()).containsOnly(
@@ -426,7 +452,9 @@ public class ComponentMetadataLoaderTest {
                 new SimplifiedLogEvent(Level.INFO, "Loaded 0 areas"),
                 new SimplifiedLogEvent(Level.INFO, "Loaded 0 teams"),
                 new SimplifiedLogEvent(Level.ERROR, "Cannot find platform test-platform-id-1 for component test-component-id-1"),
-                new SimplifiedLogEvent(Level.INFO, "Loaded 1 components"));
+                new SimplifiedLogEvent(Level.INFO, "Loaded 1 components"),
+                new SimplifiedLogEvent(Level.INFO, "Loaded 0 diagrams")
+        );
         assertThat(returnValue.getAreas()).isEmpty();
         assertThat(returnValue.getTeams()).isEmpty();
         assertThat(returnValue.getComponents()).containsOnly(
@@ -455,7 +483,9 @@ public class ComponentMetadataLoaderTest {
                 new SimplifiedLogEvent(Level.INFO, "Loaded 0 teams"),
                 new SimplifiedLogEvent(Level.ERROR,
                         "Cannot find target component test-component-id-2 for dependency of component test-component-id-1"),
-                new SimplifiedLogEvent(Level.INFO, "Loaded 1 components"));
+                new SimplifiedLogEvent(Level.INFO, "Loaded 1 components"),
+                new SimplifiedLogEvent(Level.INFO, "Loaded 0 diagrams")
+        );
         assertThat(returnValue.getAreas()).isEmpty();
         assertThat(returnValue.getTeams()).isEmpty();
         assertThat(returnValue.getComponents()).containsOnly(

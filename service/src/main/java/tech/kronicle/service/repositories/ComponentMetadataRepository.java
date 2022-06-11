@@ -43,7 +43,8 @@ public class ComponentMetadataRepository {
                 getItems(componentMetadataList, ComponentMetadata::getPlatforms),
                 getItems(componentMetadataList, ComponentMetadata::getAreas),
                 getItems(componentMetadataList, ComponentMetadata::getTeams),
-                getItems(componentMetadataList, ComponentMetadata::getComponents));
+                getItems(componentMetadataList, ComponentMetadata::getComponents),
+                getItems(componentMetadataList, ComponentMetadata::getDiagrams));
     }
 
     private <T> List<T> getItems(List<ComponentMetadata> componentMetadataList, Function<ComponentMetadata, List<T>> itemsGetter) {

@@ -5,13 +5,7 @@ import lombok.Value;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import tech.kronicle.common.CaseUtils;
-import tech.kronicle.sdk.models.ComponentMetadata;
-import tech.kronicle.sdk.models.Area;
-import tech.kronicle.sdk.models.Component;
-import tech.kronicle.sdk.models.ComponentType;
-import tech.kronicle.sdk.models.ObjectWithId;
-import tech.kronicle.sdk.models.Platform;
-import tech.kronicle.sdk.models.Team;
+import tech.kronicle.sdk.models.*;
 import tech.kronicle.service.exceptions.ValidationException;
 
 import java.util.List;
@@ -19,9 +13,9 @@ import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.function.Consumer;
 import java.util.function.Function;
-import java.util.stream.Collectors;
 
 import static java.util.Objects.nonNull;
+import static java.util.stream.Collectors.toUnmodifiableSet;
 
 /**
  * This class takes a merged/combined `ComponentMetadata` object and uses it to load maps of areas, teams and components. It performs various bits of
@@ -37,13 +31,38 @@ public class ComponentMetadataLoader {
     public Output loadComponentMetadata(ComponentMetadata componentMetadata) {
         ConcurrentHashMap<String, ComponentType> componentTypes = loadMapItems("component type", componentMetadata,
                 ComponentMetadata::getComponentTypes, validatorService::validate);
-        ConcurrentHashMap<String, Platform> platforms = loadMapItems("platform", componentMetadata, ComponentMetadata::getPlatforms,
-                validatorService::validate);
-        ConcurrentHashMap<String, Area> areas = loadMapItems("area", componentMetadata, ComponentMetadata::getAreas, validatorService::validate);
-        ConcurrentHashMap<String, Team> teams = loadMapItems("team", componentMetadata, ComponentMetadata::getTeams, validateTeam(areas));
-        ConcurrentHashMap<String, Component> components = loadMapItems("component", componentMetadata, ComponentMetadata::getComponents,
-                validateComponent(componentTypes, platforms, teams, componentMetadata.getComponents()));
-        return new Output(areas, teams, components);
+        ConcurrentHashMap<String, Platform> platforms = loadMapItems(
+                "platform",
+                componentMetadata,
+                ComponentMetadata::getPlatforms,
+                validatorService::validate
+        );
+        ConcurrentHashMap<String, Area> areas = loadMapItems(
+                "area",
+                componentMetadata,
+                ComponentMetadata::getAreas,
+                validatorService::validate
+        );
+        ConcurrentHashMap<String, Team> teams = loadMapItems(
+                "team",
+                componentMetadata,
+                ComponentMetadata::getTeams,
+                validateTeam(areas)
+        );
+        Set<String> componentIds = getComponentIds(componentMetadata.getComponents());
+        ConcurrentHashMap<String, Component> components = loadMapItems(
+                "component",
+                componentMetadata,
+                ComponentMetadata::getComponents,
+                validateComponent(componentTypes, platforms, teams, componentIds)
+        );
+        ConcurrentHashMap<String, Diagram> diagrams = loadMapItems(
+                "diagram",
+                componentMetadata,
+                ComponentMetadata::getDiagrams,
+                validateDiagram(componentIds)
+        );
+        return new Output(areas, teams, components, diagrams);
     }
 
     private <T extends ObjectWithId> ConcurrentHashMap<String, T> loadMapItems(String itemType, ComponentMetadata componentMetadataItem,
@@ -82,9 +101,8 @@ public class ComponentMetadataLoader {
         };
     }
 
-    private Consumer<Component> validateComponent(ConcurrentHashMap<String, ComponentType> componentTypes, ConcurrentHashMap<String, Platform> platforms, 
-            ConcurrentHashMap<String, Team> teams, List<Component> components) {
-        Set<String> componentIds = getComponentIds(components);
+    private Consumer<Component> validateComponent(ConcurrentHashMap<String, ComponentType> componentTypes, ConcurrentHashMap<String, Platform> platforms,
+                                                  ConcurrentHashMap<String, Team> teams, Set<String> componentIds) {
         return component -> {
             validatorService.validate(component);
             if (!componentTypes.containsKey(component.getTypeId())) {
@@ -106,10 +124,41 @@ public class ComponentMetadataLoader {
         };
     }
 
+    private Consumer<Diagram> validateDiagram(Set<String> componentIds) {
+        return diagram -> {
+            validatorService.validate(diagram);
+            diagram.getConnections().forEach(connection -> {
+                validationDiagramConnectionNode(
+                        componentIds,
+                        "source",
+                        connection.getSourceComponentId(),
+                        diagram
+                );
+                validationDiagramConnectionNode(
+                        componentIds,
+                        "target",
+                        connection.getTargetComponentId(),
+                        diagram
+                );
+            });
+        };
+    }
+
+    private void validationDiagramConnectionNode(
+            Set<String> componentIds,
+            String connectionComponentId,
+            String nodeType,
+            Diagram diagram
+    ) {
+        if (!componentIds.contains(connectionComponentId)) {
+            log.error("Cannot find {} component {} for connection of diagram {}", nodeType, connectionComponentId, diagram.getId());
+        }
+    }
+
     private Set<String> getComponentIds(List<Component> components) {
         return components.stream()
                 .map(Component::getId)
-                .collect(Collectors.toSet());
+                .collect(toUnmodifiableSet());
     }
 
     @Value
@@ -118,5 +167,6 @@ public class ComponentMetadataLoader {
         ConcurrentHashMap<String, Area> areas;
         ConcurrentHashMap<String, Team> teams;
         ConcurrentHashMap<String, Component> components;
+        ConcurrentHashMap<String, Diagram> diagrams;
     }
 }

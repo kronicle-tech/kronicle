@@ -94,4 +94,16 @@ public class ComponentMetadataTest {
         // Then
         assertThat(thrown).isInstanceOf(UnsupportedOperationException.class);
     }
+
+    @Test
+    public void constructorShouldMakeDiagramsAnUnmodifiableList() {
+        // Given
+        ComponentMetadata underTest = ComponentMetadata.builder().diagrams(new ArrayList<>()).build();
+
+        // When
+        Throwable thrown = catchThrowable(() -> underTest.getDiagrams().add(Diagram.builder().build()));
+
+        // Then
+        assertThat(thrown).isInstanceOf(UnsupportedOperationException.class);
+    }
 }
