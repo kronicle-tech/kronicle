@@ -4,17 +4,9 @@ import ch.qos.logback.classic.Level;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import tech.kronicle.sdk.models.ComponentMetadata;
+import tech.kronicle.sdk.models.*;
 import tech.kronicle.testutils.LogCaptor;
 import tech.kronicle.testutils.SimplifiedLogEvent;
-import tech.kronicle.sdk.models.Area;
-import tech.kronicle.sdk.models.Component;
-import tech.kronicle.sdk.models.ComponentDependency;
-import tech.kronicle.sdk.models.ComponentTeam;
-import tech.kronicle.sdk.models.ComponentType;
-import tech.kronicle.sdk.models.Platform;
-import tech.kronicle.sdk.models.RepoReference;
-import tech.kronicle.sdk.models.Team;
 
 import java.util.List;
 import java.util.Map;
@@ -63,6 +55,7 @@ public class ComponentMetadataLoaderTest {
                 Map.entry(area2.getId(), area2));
         assertThat(returnValue.getTeams()).isEmpty();
         assertThat(returnValue.getComponents()).isEmpty();
+        assertThat(returnValue.getDiagrams()).isEmpty();
     }
 
     @Test
@@ -91,6 +84,7 @@ public class ComponentMetadataLoaderTest {
                 Map.entry(team1.getId(), team1),
                 Map.entry(team2.getId(), team2));
         assertThat(returnValue.getComponents()).isEmpty();
+        assertThat(returnValue.getDiagrams()).isEmpty();
     }
 
     @Test
@@ -120,6 +114,36 @@ public class ComponentMetadataLoaderTest {
         assertThat(returnValue.getComponents()).containsOnly(
                 Map.entry(component1.getId(), component1),
                 Map.entry(component2.getId(), component2));
+        assertThat(returnValue.getDiagrams()).isEmpty();
+    }
+
+    @Test
+    public void loadComponentMetadataShouldLoadDiagrams() {
+        // Given
+        Diagram diagram1 = createTestDiagram(1);
+        Diagram diagram2 = createTestDiagram(2);
+        ComponentMetadata componentMetadata = ComponentMetadata.builder()
+                .diagrams(List.of(diagram1, diagram2))
+                .build();
+
+        // When
+        ComponentMetadataLoader.Output returnValue = underTest.loadComponentMetadata(componentMetadata);
+
+        // Then
+        assertThat(logCaptor.getSimplifiedEvents()).containsExactly(
+                new SimplifiedLogEvent(Level.INFO, "Loaded 0 component types"),
+                new SimplifiedLogEvent(Level.INFO, "Loaded 0 platforms"),
+                new SimplifiedLogEvent(Level.INFO, "Loaded 0 areas"),
+                new SimplifiedLogEvent(Level.INFO, "Loaded 0 teams"),
+                new SimplifiedLogEvent(Level.INFO, "Loaded 0 components"),
+                new SimplifiedLogEvent(Level.INFO, "Loaded 2 diagrams")
+        );
+        assertThat(returnValue.getAreas()).isEmpty();
+        assertThat(returnValue.getTeams()).isEmpty();
+        assertThat(returnValue.getComponents()).isEmpty();
+        assertThat(returnValue.getDiagrams()).containsOnly(
+                Map.entry(diagram1.getId(), diagram1),
+                Map.entry(diagram2.getId(), diagram2));
     }
 
     @Test
@@ -131,12 +155,15 @@ public class ComponentMetadataLoaderTest {
         Team team2 = createTestTeam(2);
         Component component1 = createTestComponent(1);
         Component component2 = createTestComponent(2);
+        Diagram diagram1 = createTestDiagram(1);
+        Diagram diagram2 = createTestDiagram(2);
         ComponentMetadata componentMetadata = ComponentMetadata.builder()
                 .componentTypes(List.of(createTestComponentType(1), createTestComponentType(2)))
                 .platforms(List.of(createTestPlatform(1), createTestPlatform(2)))
                 .areas(List.of(area1, area2))
                 .teams(List.of(team1, team2))
                 .components(List.of(component1, component2))
+                .diagrams(List.of(diagram1, diagram2))
                 .build();
 
         // When
@@ -149,7 +176,7 @@ public class ComponentMetadataLoaderTest {
                 new SimplifiedLogEvent(Level.INFO, "Loaded 2 areas"),
                 new SimplifiedLogEvent(Level.INFO, "Loaded 2 teams"),
                 new SimplifiedLogEvent(Level.INFO, "Loaded 2 components"),
-                new SimplifiedLogEvent(Level.INFO, "Loaded 0 diagrams")
+                new SimplifiedLogEvent(Level.INFO, "Loaded 2 diagrams")
         );
         assertThat(returnValue.getAreas()).containsOnly(
                 Map.entry(area1.getId(), area1),
@@ -160,6 +187,9 @@ public class ComponentMetadataLoaderTest {
         assertThat(returnValue.getComponents()).containsOnly(
                 Map.entry(component1.getId(), component1),
                 Map.entry(component2.getId(), component2));
+        assertThat(returnValue.getDiagrams()).containsOnly(
+                Map.entry(diagram1.getId(), diagram1),
+                Map.entry(diagram2.getId(), diagram2));
     }
 
     @Test
@@ -188,6 +218,7 @@ public class ComponentMetadataLoaderTest {
                 Map.entry(area1.getId(), area1));
         assertThat(returnValue.getTeams()).isEmpty();
         assertThat(returnValue.getComponents()).isEmpty();
+        assertThat(returnValue.getDiagrams()).isEmpty();
     }
 
     @Test
@@ -216,6 +247,7 @@ public class ComponentMetadataLoaderTest {
         assertThat(returnValue.getTeams()).containsOnly(
                 Map.entry(team1.getId(), team1));
         assertThat(returnValue.getComponents()).isEmpty();
+        assertThat(returnValue.getDiagrams()).isEmpty();
     }
 
     @Test
@@ -245,6 +277,36 @@ public class ComponentMetadataLoaderTest {
         assertThat(returnValue.getTeams()).isEmpty();
         assertThat(returnValue.getComponents()).containsOnly(
                 Map.entry(component1.getId(), component1));
+        assertThat(returnValue.getDiagrams()).isEmpty();
+    }
+
+    @Test
+    public void loadComponentMetadataShouldSkipADiagramWithADuplicateId() {
+        // Given
+        Diagram diagram1 = createTestDiagram(1, 1);
+        Diagram diagram2 = createTestDiagram(1, 2);
+        ComponentMetadata componentMetadata = ComponentMetadata.builder()
+                .diagrams(List.of(diagram1, diagram2))
+                .build();
+
+        // When
+        ComponentMetadataLoader.Output returnValue = underTest.loadComponentMetadata(componentMetadata);
+
+        // Then
+        assertThat(logCaptor.getSimplifiedEvents()).containsExactly(
+                new SimplifiedLogEvent(Level.INFO, "Loaded 0 component types"),
+                new SimplifiedLogEvent(Level.INFO, "Loaded 0 platforms"),
+                new SimplifiedLogEvent(Level.INFO, "Loaded 0 areas"),
+                new SimplifiedLogEvent(Level.INFO, "Loaded 0 teams"),
+                new SimplifiedLogEvent(Level.INFO, "Loaded 0 components"),
+                new SimplifiedLogEvent(Level.ERROR, "Diagram id test-diagram-id-1 is defined at least twice and will be skipped this time"),
+                new SimplifiedLogEvent(Level.INFO, "Loaded 1 diagrams")
+        );
+        assertThat(returnValue.getAreas()).isEmpty();
+        assertThat(returnValue.getTeams()).isEmpty();
+        assertThat(returnValue.getComponents()).isEmpty();
+        assertThat(returnValue.getDiagrams()).containsOnly(
+                Map.entry(diagram1.getId(), diagram1));
     }
 
     @Test
@@ -276,6 +338,7 @@ public class ComponentMetadataLoaderTest {
                 Map.entry(area2.getId(), area2));
         assertThat(returnValue.getTeams()).isEmpty();
         assertThat(returnValue.getComponents()).isEmpty();
+        assertThat(returnValue.getDiagrams()).isEmpty();
     }
 
     @Test
@@ -307,6 +370,7 @@ public class ComponentMetadataLoaderTest {
         assertThat(returnValue.getTeams()).containsOnly(
                 Map.entry(team2.getId(), team2));
         assertThat(returnValue.getComponents()).isEmpty();
+        assertThat(returnValue.getDiagrams()).isEmpty();
     }
 
     @Test
@@ -340,6 +404,39 @@ public class ComponentMetadataLoaderTest {
         assertThat(returnValue.getTeams()).isEmpty();
         assertThat(returnValue.getComponents()).containsOnly(
                 Map.entry(component2.getId(), component2));
+        assertThat(returnValue.getDiagrams()).isEmpty();
+    }
+
+    @Test
+    public void loadComponentMetadataShouldSkipADiagramThatFailsValidation() {
+        // Given
+        Diagram diagram1 = createInvalidTestDiagram(1);
+        Diagram diagram2 = createTestDiagram(2);
+        ComponentMetadata componentMetadata = ComponentMetadata.builder()
+                .diagrams(List.of(diagram1, diagram2))
+                .build();
+
+        // When
+        ComponentMetadataLoader.Output returnValue = underTest.loadComponentMetadata(componentMetadata);
+
+        // Then
+        assertThat(logCaptor.getSimplifiedEvents()).containsExactly(
+                new SimplifiedLogEvent(Level.INFO, "Loaded 0 component types"),
+                new SimplifiedLogEvent(Level.INFO, "Loaded 0 platforms"),
+                new SimplifiedLogEvent(Level.INFO, "Loaded 0 areas"),
+                new SimplifiedLogEvent(Level.INFO, "Loaded 0 teams"),
+                new SimplifiedLogEvent(Level.INFO, "Loaded 0 components"),
+                new SimplifiedLogEvent(Level.ERROR, "Diagram id test-diagram-id-1 failed validation and will be skipped"),
+                new SimplifiedLogEvent(Level.INFO, "Loaded 1 diagrams")
+        );
+        assertThat(logCaptor.getEvents().get(5).getThrowableProxy().getMessage()).isEqualTo(""
+                + "Failed to validate tech.kronicle.sdk.models.Diagram with reference \"test-diagram-id-1\". Violations:\n"
+                + "- name with value \"null\" must not be blank");
+        assertThat(returnValue.getAreas()).isEmpty();
+        assertThat(returnValue.getTeams()).isEmpty();
+        assertThat(returnValue.getComponents()).isEmpty();
+        assertThat(returnValue.getDiagrams()).containsOnly(
+                Map.entry(diagram2.getId(), diagram2));
     }
 
     @Test
@@ -369,6 +466,7 @@ public class ComponentMetadataLoaderTest {
         assertThat(returnValue.getTeams()).containsOnly(
                 Map.entry(team1.getId(), team1));
         assertThat(returnValue.getComponents()).isEmpty();
+        assertThat(returnValue.getDiagrams()).isEmpty();
     }
 
     @Test
@@ -398,6 +496,7 @@ public class ComponentMetadataLoaderTest {
         assertThat(returnValue.getTeams()).isEmpty();
         assertThat(returnValue.getComponents()).containsOnly(
                 Map.entry(component1.getId(), component1));
+        assertThat(returnValue.getDiagrams()).isEmpty();
     }
 
     @Test
@@ -428,6 +527,7 @@ public class ComponentMetadataLoaderTest {
         assertThat(returnValue.getTeams()).isEmpty();
         assertThat(returnValue.getComponents()).containsOnly(
                 Map.entry(component1.getId(), component1));
+        assertThat(returnValue.getDiagrams()).isEmpty();
     }
 
     @Test
@@ -459,6 +559,7 @@ public class ComponentMetadataLoaderTest {
         assertThat(returnValue.getTeams()).isEmpty();
         assertThat(returnValue.getComponents()).containsOnly(
                 Map.entry(component1.getId(), component1));
+        assertThat(returnValue.getDiagrams()).isEmpty();
     }
 
     @Test
@@ -490,6 +591,83 @@ public class ComponentMetadataLoaderTest {
         assertThat(returnValue.getTeams()).isEmpty();
         assertThat(returnValue.getComponents()).containsOnly(
                 Map.entry(component1.getId(), component1));
+        assertThat(returnValue.getDiagrams()).isEmpty();
+    }
+
+    @Test
+    public void loadComponentMetadataShouldLogAnErrorForADiagramWithANonExistentConnectionSourceComponent() {
+        // Given
+        Component component1 = createTestComponent(1);
+        Diagram diagram1 = createTestDiagramBuilder(1, 1)
+                .connections(List.of(DiagramConnection.builder()
+                        .sourceComponentId("test-component-id-2")
+                        .targetComponentId("test-component-id-1")
+                        .build())
+                )
+                .build();
+        ComponentMetadata componentMetadata = ComponentMetadata.builder()
+                .componentTypes(List.of(createTestComponentType(1)))
+                .components(List.of(component1))
+                .diagrams(List.of(diagram1))
+                .build();
+
+        // When
+        ComponentMetadataLoader.Output returnValue = underTest.loadComponentMetadata(componentMetadata);
+
+        // Then
+        assertThat(logCaptor.getSimplifiedEvents()).containsExactly(
+                new SimplifiedLogEvent(Level.INFO, "Loaded 1 component types"),
+                new SimplifiedLogEvent(Level.INFO, "Loaded 0 platforms"),
+                new SimplifiedLogEvent(Level.INFO, "Loaded 0 areas"),
+                new SimplifiedLogEvent(Level.INFO, "Loaded 0 teams"),
+                new SimplifiedLogEvent(Level.INFO, "Loaded 1 components"),
+                new SimplifiedLogEvent(Level.ERROR, "Cannot find source component test-component-id-2 for connection of diagram test-diagram-id-1"),
+                new SimplifiedLogEvent(Level.INFO, "Loaded 1 diagrams")
+        );
+        assertThat(returnValue.getAreas()).isEmpty();
+        assertThat(returnValue.getTeams()).isEmpty();
+        assertThat(returnValue.getComponents()).containsOnly(
+                Map.entry(component1.getId(), component1));
+        assertThat(returnValue.getDiagrams()).containsOnly(
+                Map.entry(diagram1.getId(), diagram1));
+    }
+
+    @Test
+    public void loadComponentMetadataShouldLogAnErrorForADiagramWithANonExistentConnectionTargetComponent() {
+        // Given
+        Component component1 = createTestComponent(1);
+        Diagram diagram1 = createTestDiagramBuilder(1, 1)
+                .connections(List.of(DiagramConnection.builder()
+                        .sourceComponentId("test-component-id-1")
+                        .targetComponentId("test-component-id-2")
+                        .build())
+                )
+                .build();
+        ComponentMetadata componentMetadata = ComponentMetadata.builder()
+                .componentTypes(List.of(createTestComponentType(1)))
+                .components(List.of(component1))
+                .diagrams(List.of(diagram1))
+                .build();
+
+        // When
+        ComponentMetadataLoader.Output returnValue = underTest.loadComponentMetadata(componentMetadata);
+
+        // Then
+        assertThat(logCaptor.getSimplifiedEvents()).containsExactly(
+                new SimplifiedLogEvent(Level.INFO, "Loaded 1 component types"),
+                new SimplifiedLogEvent(Level.INFO, "Loaded 0 platforms"),
+                new SimplifiedLogEvent(Level.INFO, "Loaded 0 areas"),
+                new SimplifiedLogEvent(Level.INFO, "Loaded 0 teams"),
+                new SimplifiedLogEvent(Level.INFO, "Loaded 1 components"),
+                new SimplifiedLogEvent(Level.ERROR, "Cannot find target component test-component-id-2 for connection of diagram test-diagram-id-1"),
+                new SimplifiedLogEvent(Level.INFO, "Loaded 1 diagrams")
+        );
+        assertThat(returnValue.getAreas()).isEmpty();
+        assertThat(returnValue.getTeams()).isEmpty();
+        assertThat(returnValue.getComponents()).containsOnly(
+                Map.entry(component1.getId(), component1));
+        assertThat(returnValue.getDiagrams()).containsOnly(
+                Map.entry(diagram1.getId(), diagram1));
     }
 
     private ComponentType createTestComponentType(int idNumber) {
@@ -574,6 +752,28 @@ public class ComponentMetadataLoaderTest {
     private Component createInvalidTestComponent(int number) {
         return Component.builder()
                 .id("test-component-id-" + number)
+                .build();
+    }
+
+    private Diagram createTestDiagram(int number) {
+        return createTestDiagram(number, number);
+    }
+
+    private Diagram createTestDiagram(int idNumber, int othersNumber) {
+        return createTestDiagramBuilder(idNumber, othersNumber)
+                .build();
+    }
+
+    private Diagram.DiagramBuilder createTestDiagramBuilder(int idNumber, int othersNumber) {
+        return Diagram
+                .builder()
+                .id("test-diagram-id-" + idNumber)
+                .name("Test Diagram Name " + othersNumber);
+    }
+
+    private Diagram createInvalidTestDiagram(int number) {
+        return Diagram.builder()
+                .id("test-diagram-id-" + number)
                 .build();
     }
 }

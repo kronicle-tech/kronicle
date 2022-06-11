@@ -129,26 +129,23 @@ public class ComponentMetadataLoader {
             validatorService.validate(diagram);
             diagram.getConnections().forEach(connection -> {
                 validationDiagramConnectionNode(
-                        componentIds,
+                        diagram,
                         "source",
                         connection.getSourceComponentId(),
-                        diagram
+                        componentIds
                 );
                 validationDiagramConnectionNode(
-                        componentIds,
+                        diagram,
                         "target",
                         connection.getTargetComponentId(),
-                        diagram
+                        componentIds
                 );
             });
         };
     }
 
     private void validationDiagramConnectionNode(
-            Set<String> componentIds,
-            String connectionComponentId,
-            String nodeType,
-            Diagram diagram
+            Diagram diagram, String nodeType, String connectionComponentId, Set<String> componentIds
     ) {
         if (!componentIds.contains(connectionComponentId)) {
             log.error("Cannot find {} component {} for connection of diagram {}", nodeType, connectionComponentId, diagram.getId());
