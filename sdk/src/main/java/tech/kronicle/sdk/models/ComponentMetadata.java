@@ -22,6 +22,7 @@ public class ComponentMetadata implements ObjectWithReference {
     List<@Valid Area> areas;
     List<@Valid Team> teams;
     List<@Valid Component> components;
+    List<@Valid Diagram> diagrams;
 
     public ComponentMetadata(
             List<Repo> repos,
@@ -29,7 +30,8 @@ public class ComponentMetadata implements ObjectWithReference {
             List<Platform> platforms,
             List<Area> areas,
             List<Team> teams,
-            List<Component> components
+            List<Component> components,
+            List<Diagram> diagrams
     ) {
         this.repos = createUnmodifiableList(repos);
         this.componentTypes = createUnmodifiableList(componentTypes);
@@ -37,6 +39,7 @@ public class ComponentMetadata implements ObjectWithReference {
         this.areas = createUnmodifiableList(areas);
         this.teams = createUnmodifiableList(teams);
         this.components = createUnmodifiableList(components);
+        this.diagrams = createUnmodifiableList(diagrams);
     }
 
     @Override
