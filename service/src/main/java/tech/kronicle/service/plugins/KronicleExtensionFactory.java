@@ -22,7 +22,7 @@ public class KronicleExtensionFactory implements ExtensionFactory {
     public <T> T create(Class<T> extensionClass) {
         PluginAndGuiceInjector pluginAndGuiceInjector = getGuiceInjectorByExtensionClass(extensionClass);
 
-        if (isNull(pluginAndGuiceInjector.guiceInjector)) {
+        if (isNull(pluginAndGuiceInjector)) {
             return null;
         }
 
@@ -50,20 +50,27 @@ public class KronicleExtensionFactory implements ExtensionFactory {
 
     @SneakyThrows
     private Object getExtensionFromGuiceInjector(PluginAndGuiceInjector pluginAndGuiceInjector, Class<?> extensionClass) {
-        Class<?> guiceInjectorInterfaceClass = Arrays.stream(pluginAndGuiceInjector.guiceInjector.getClass().getInterfaces())
-                .filter(it -> it.getName().equals("com.google.inject.Injector"))
-                .findFirst().orElse(null);
+        Class<?> guiceInjectorInterfaceClass = getGuiceInjectorInterfaceClass(pluginAndGuiceInjector);
         if (isNull(guiceInjectorInterfaceClass)) {
             return null;
         }
         Method method = guiceInjectorInterfaceClass.getMethod("getInstance", Class.class);
-        ClassLoader contextClassLoader = Thread.currentThread().getContextClassLoader();
-        try {
-            Thread.currentThread().setContextClassLoader(pluginAndGuiceInjector.plugin.getWrapper().getPluginClassLoader());
+        // The current thread's ContextClassLoader needs to be temporarily overwritten to avoid the following error
+        // when using JAXB:
+        //
+        //     javax.xml.bind.JAXBContextFactory: com.sun.xml.bind.v2.JAXBContextFactory not a subtype
+        //
+        // The error is due to java.util.ServiceLoader using the current thread's ContextClassLoader when finding
+        // an implementation of the JAXB API when it should be using the plugin's ClassLoader.
+        try (AutoCloseable ignored = new TemporaryThreadContextClassLoader(pluginAndGuiceInjector.getPluginClassLoader())) {
             return method.invoke(pluginAndGuiceInjector.guiceInjector, extensionClass);
-        } finally {
-            Thread.currentThread().setContextClassLoader(contextClassLoader);
         }
+    }
+
+    private Class<?> getGuiceInjectorInterfaceClass(PluginAndGuiceInjector pluginAndGuiceInjector) {
+        return Arrays.stream(pluginAndGuiceInjector.guiceInjector.getClass().getInterfaces())
+                .filter(it -> it.getName().equals("com.google.inject.Injector"))
+                .findFirst().orElse(null);
     }
 
     @Value
@@ -71,5 +78,24 @@ public class KronicleExtensionFactory implements ExtensionFactory {
 
         Plugin plugin;
         Object guiceInjector;
+
+        public ClassLoader getPluginClassLoader() {
+            return plugin.getWrapper().getPluginClassLoader();
+        }
+    }
+
+    private static class TemporaryThreadContextClassLoader implements AutoCloseable {
+
+        private final ClassLoader originalContextClassLoader;
+
+        public TemporaryThreadContextClassLoader(ClassLoader newThreadContextClassLoader) {
+            originalContextClassLoader = Thread.currentThread().getContextClassLoader();
+            Thread.currentThread().setContextClassLoader(newThreadContextClassLoader);
+        }
+
+        @Override
+        public void close() {
+            Thread.currentThread().setContextClassLoader(originalContextClassLoader);
+        }
     }
 }
