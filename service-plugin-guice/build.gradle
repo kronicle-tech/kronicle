@@ -16,7 +16,7 @@ dependencies {
     api project(":service-plugin-api")
     api project(":service-utils")
     api "jakarta.xml.bind:jakarta.xml.bind-api:$jakartaXmlBindingVersion"
-    api "com.sun.xml.bind:jaxb-impl:$jaxbImplVersion"
+    api "com.sun.xml.bind:jaxb-impl:$jakartaXmlBindingVersion"
     api "com.google.guava:guava:$guavaVersion"
     api "com.google.inject:guice:$guiceVersion"
     api "com.fasterxml.jackson.core:jackson-core"
