@@ -2,6 +2,7 @@ package tech.kronicle.service.plugins;
 
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
+import lombok.Value;
 import org.pf4j.ExtensionFactory;
 import org.pf4j.Plugin;
 import org.pf4j.PluginWrapper;
@@ -19,16 +20,16 @@ public class KronicleExtensionFactory implements ExtensionFactory {
 
     @Override
     public <T> T create(Class<T> extensionClass) {
-        Object guiceInjector = getGuiceInjectorByExtensionClass(extensionClass);
+        PluginAndGuiceInjector pluginAndGuiceInjector = getGuiceInjectorByExtensionClass(extensionClass);
 
-        if (isNull(guiceInjector)) {
+        if (isNull(pluginAndGuiceInjector.guiceInjector)) {
             return null;
         }
 
-        return (T) getExtensionFromGuiceInjector(guiceInjector, extensionClass);
+        return (T) getExtensionFromGuiceInjector(pluginAndGuiceInjector, extensionClass);
     }
 
-    private Object getGuiceInjectorByExtensionClass(final Class<?> extensionClass) {
+    private PluginAndGuiceInjector getGuiceInjectorByExtensionClass(final Class<?> extensionClass) {
         Plugin plugin = Optional.ofNullable(this.pluginManager.whichPlugin(extensionClass))
                 .map(PluginWrapper::getPlugin)
                 .orElse(null);
@@ -38,7 +39,7 @@ public class KronicleExtensionFactory implements ExtensionFactory {
         }
 
         Class<?> pluginClass = plugin.getClass();
-        return getGuiceInjectorFromPlugin(plugin, pluginClass);
+        return new PluginAndGuiceInjector(plugin, getGuiceInjectorFromPlugin(plugin, pluginClass));
     }
 
     @SneakyThrows
@@ -48,14 +49,27 @@ public class KronicleExtensionFactory implements ExtensionFactory {
     }
 
     @SneakyThrows
-    private Object getExtensionFromGuiceInjector(Object guiceInjector, Class<?> extensionClass) {
-        Class<?> guiceInjectorInterfaceClass = Arrays.stream(guiceInjector.getClass().getInterfaces())
+    private Object getExtensionFromGuiceInjector(PluginAndGuiceInjector pluginAndGuiceInjector, Class<?> extensionClass) {
+        Class<?> guiceInjectorInterfaceClass = Arrays.stream(pluginAndGuiceInjector.guiceInjector.getClass().getInterfaces())
                 .filter(it -> it.getName().equals("com.google.inject.Injector"))
                 .findFirst().orElse(null);
         if (isNull(guiceInjectorInterfaceClass)) {
             return null;
         }
         Method method = guiceInjectorInterfaceClass.getMethod("getInstance", Class.class);
-        return method.invoke(guiceInjector, extensionClass);
+        ClassLoader contextClassLoader = Thread.currentThread().getContextClassLoader();
+        try {
+            Thread.currentThread().setContextClassLoader(pluginAndGuiceInjector.plugin.getWrapper().getPluginClassLoader());
+            return method.invoke(pluginAndGuiceInjector.guiceInjector, extensionClass);
+        } finally {
+            Thread.currentThread().setContextClassLoader(contextClassLoader);
+        }
+    }
+
+    @Value
+    private static class PluginAndGuiceInjector {
+
+        Plugin plugin;
+        Object guiceInjector;
     }
 }
