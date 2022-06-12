@@ -28,7 +28,8 @@ public class LogSummaryState implements ComponentEnvironmentState {
     @NotBlank
     @Pattern(regexp = PatternStrings.ID)
     String pluginId;
-    @NotEmpty
+    @NotBlank
+    @Pattern(regexp = PatternStrings.ID)
     String environmentId;
     @NotEmpty
     String name;

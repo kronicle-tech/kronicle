@@ -19,10 +19,10 @@ public class ComponentAliasResolver {
     }
 
     private TracingData tracingData(TracingData tracingData, Map<String, String> componentAliasMap) {
-        return new TracingData(
-                dependencies(tracingData.getDependencies(), componentAliasMap),
-                traces(tracingData.getTraces(), componentAliasMap)
-        );
+        return tracingData.toBuilder()
+                .dependencies(dependencies(tracingData.getDependencies(), componentAliasMap))
+                .traces(traces(tracingData.getTraces(), componentAliasMap))
+                .build();
     }
 
     private List<Dependency> dependencies(List<Dependency> dependencies, Map<String, String> componentAliasMap) {

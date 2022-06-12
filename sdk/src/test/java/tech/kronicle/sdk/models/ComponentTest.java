@@ -385,4 +385,83 @@ public class ComponentTest {
                 state4
         );
     }
+
+    @Test
+    public void getStateShouldReturnNullWhenThereAreNoStates() {
+        // Given
+        Component underTest = Component.builder()
+                .id("test-component-id")
+                .build();
+
+        // When
+        ComponentState returnValue = underTest.getState("test-state-type");
+
+        // Then
+        assertThat(returnValue).isNull();
+    }
+
+    @Test
+    public void getStateShouldReturnNullWhenThereAreNoMatchingStates() {
+        // Given
+        Component underTest = Component.builder()
+                .id("test-component-id")
+                .states(List.of(
+                        createComponentState(1),
+                        createComponentState(2)
+                ))
+                .build();
+
+        // When
+        ComponentState returnValue = underTest.getState("test-state-type");
+
+        // Then
+        assertThat(returnValue).isNull();
+    }
+
+    @Test
+    public void getStateShouldReturnStateWithMatchingTypeWhenThereIsExactlyOneMatchingState() {
+        // Given
+        ComponentState state1 = createComponentState(1, "test-state-type-1");
+        ComponentState state2 = createComponentState(2, "test-state-type-2");
+        ComponentState state3 = createComponentState(3, "test-state-type-3");
+        Component underTest = Component.builder()
+                .id("test-component-id")
+                .states(List.of(
+                        state1,
+                        state2,
+                        state3
+                ))
+                .build();
+
+        // When
+        ComponentState returnValue = underTest.getState("test-state-type-2");
+
+        // Then
+        assertThat(returnValue).isEqualTo(state2);
+    }
+
+    @Test
+    public void getStateShouldThrowAnExceptionWhenThereIsMoreThanOneMatchingState() {
+        // Given
+        ComponentState state1 = createComponentState(1, "test-state-type-1");
+        ComponentState state2 = createComponentState(2, "test-state-type-2");
+        ComponentState state3 = createComponentState(3, "test-state-type-2");
+        ComponentState state4 = createComponentState(4, "test-state-type-3");
+        Component underTest = Component.builder()
+                .id("test-component-id")
+                .states(List.of(
+                        state1,
+                        state2,
+                        state3,
+                        state4
+                ))
+                .build();
+
+        // When
+        Throwable thrown = catchThrowable(() -> underTest.getState("test-state-type-2"));
+
+        // Then
+        assertThat(thrown).isInstanceOf(IllegalArgumentException.class);
+        assertThat(thrown).hasMessage("There are more than 1 states with type \"test-state-type-2\"");
+    }
 }

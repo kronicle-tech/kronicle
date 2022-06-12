@@ -17,7 +17,7 @@ import static tech.kronicle.sdk.utils.ListUtils.createUnmodifiableList;
 @With
 @Builder(toBuilder = true)
 @Jacksonized
-public class SummaryComponentDependency implements DependencyWithIdentity {
+public class GraphEdge {
 
     @Min(0)
     Integer sourceIndex;
@@ -27,36 +27,32 @@ public class SummaryComponentDependency implements DependencyWithIdentity {
     @NotNull
     List<@NotNull @Min(0) Integer> relatedIndexes;
     @NotBlank
-    String typeId;
+    String type;
     String label;
     String description;
-    @NotNull
-    Boolean manual;
     Integer sampleSize;
     LocalDateTime startTimestamp;
     LocalDateTime endTimestamp;
-    SummaryComponentDependencyDuration duration;
+    GraphEdgeDuration duration;
 
-    public SummaryComponentDependency(
+    public GraphEdge(
             Integer sourceIndex,
             Integer targetIndex,
             List<Integer> relatedIndexes,
-            String typeId,
+            String type,
             String label,
             String description,
-            Boolean manual,
             Integer sampleSize,
             LocalDateTime startTimestamp,
             LocalDateTime endTimestamp,
-            SummaryComponentDependencyDuration duration
+            GraphEdgeDuration duration
     ) {
         this.sourceIndex = sourceIndex;
         this.targetIndex = targetIndex;
         this.relatedIndexes = createUnmodifiableList(relatedIndexes);
-        this.typeId = typeId;
+        this.type = type;
         this.label = label;
         this.description = description;
-        this.manual = manual;
         this.sampleSize = sampleSize;
         this.startTimestamp = startTimestamp;
         this.endTimestamp = endTimestamp;
