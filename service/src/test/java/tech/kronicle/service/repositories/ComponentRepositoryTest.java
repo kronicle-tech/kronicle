@@ -12,25 +12,11 @@ import org.mockito.Mockito;
 import org.mockito.invocation.InvocationOnMock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.scheduling.annotation.Scheduled;
-import tech.kronicle.sdk.models.ComponentMetadata;
+import tech.kronicle.sdk.models.*;
 import tech.kronicle.pluginapi.scanners.models.Output;
-import tech.kronicle.sdk.models.Tag;
+import tech.kronicle.service.testutils.DiagramUtils;
 import tech.kronicle.testutils.LogCaptor;
 import tech.kronicle.utils.ObjectReference;
-import tech.kronicle.sdk.models.Area;
-import tech.kronicle.sdk.models.Component;
-import tech.kronicle.sdk.models.ComponentTeam;
-import tech.kronicle.sdk.models.ObjectWithReference;
-import tech.kronicle.sdk.models.Priority;
-import tech.kronicle.sdk.models.RepoReference;
-import tech.kronicle.sdk.models.Scanner;
-import tech.kronicle.sdk.models.Summary;
-import tech.kronicle.sdk.models.SummaryCallGraph;
-import tech.kronicle.sdk.models.SummaryMissingComponent;
-import tech.kronicle.sdk.models.SummarySubComponentDependencies;
-import tech.kronicle.sdk.models.SummarySubComponentDependencyNode;
-import tech.kronicle.sdk.models.Team;
-import tech.kronicle.sdk.models.TestResult;
 import tech.kronicle.service.services.ComponentMetadataAssembler;
 import tech.kronicle.service.services.ComponentMetadataLoader;
 import tech.kronicle.service.services.ScanEngine;
@@ -58,6 +44,7 @@ import static org.mockito.Mockito.doAnswer;
 import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
+import static tech.kronicle.service.testutils.DiagramUtils.createDiagram;
 
 @ExtendWith(MockitoExtension.class)
 public class ComponentRepositoryTest {
@@ -587,6 +574,37 @@ public class ComponentRepositoryTest {
 
         // Then
         assertThat(returnValue).containsExactly(callGraph1, callGraph2);
+    }
+
+    @Test
+    public void getComponentDiagramsShouldReturnTheDiagramsWithAnyMatchingNodesWithMatchingComponentId() {
+        // Given
+        when(mockComponentMetadataRepository.getComponentMetadata()).thenReturn(ComponentMetadata.builder().build());
+        Diagram diagram1 = createDiagram(1, List.of(
+                new DiagramUtils.ComponentNumbersForConnection(1, 2)
+        ));
+        Diagram diagram2 = createDiagram(2, List.of(
+                new DiagramUtils.ComponentNumbersForConnection(2, 3)
+        ));
+        Diagram diagram3 = createDiagram(3, List.of(
+                new DiagramUtils.ComponentNumbersForConnection(3, 4)
+        ));
+        when(mockComponentMetadataRepository.getComponentMetadata()).thenReturn(
+                ComponentMetadata.builder()
+                        .diagrams(List.of(
+                                diagram1,
+                                diagram2,
+                                diagram3
+                        ))
+                        .build()
+        );
+        initializeAndWaitForRefreshToFinish(underTest);
+
+        // When
+        List<Diagram> returnValue = underTest.getComponentDiagrams("test-component-id-2");
+
+        // Then
+        assertThat(returnValue).containsExactly(diagram1, diagram2);
     }
 
     @Test

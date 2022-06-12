@@ -43,6 +43,10 @@ public class ComponentService {
         return componentRepository.getComponentCallGraphs(componentId);
     }
 
+    public List<Diagram> getComponentDiagrams(String componentId) {
+        return componentRepository.getComponentDiagrams(componentId);
+    }
+
     public List<Team> getTeams(List<TestOutcome> testOutcomes) {
         return filterComponentsForTeams(componentRepository.getTeams(), testOutcomes);
     }

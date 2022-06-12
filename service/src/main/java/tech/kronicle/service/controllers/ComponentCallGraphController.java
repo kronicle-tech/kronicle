@@ -13,7 +13,7 @@ import tech.kronicle.service.springdoc.Texts;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/v1/components/{componentId}")
+@RequestMapping("/v1/components/{componentId}/call-graphs")
 public class ComponentCallGraphController {
 
     private final ComponentService componentService;
@@ -24,7 +24,7 @@ public class ComponentCallGraphController {
             description = "Retrieves a list of all call graphs for a component.  " + Texts.USING_FIELDS_QUERY_PARAM,
             operationId = "get-call-graphs-for-component"
     )
-    @GetMapping("/call-graphs")
+    @GetMapping
     @PartialResponse
     public GetComponentCallGraphsResponse getComponentCallGraphs(@PathVariable String componentId) {
         return new GetComponentCallGraphsResponse(componentService.getComponentCallGraphs(componentId));
