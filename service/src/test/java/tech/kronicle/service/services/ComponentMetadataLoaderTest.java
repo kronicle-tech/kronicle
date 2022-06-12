@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static tech.kronicle.service.testutils.DiagramUtils.*;
 import static tech.kronicle.service.testutils.ValidatorServiceFactory.createValidationService;
 
 public class ComponentMetadataLoaderTest {
@@ -120,8 +121,8 @@ public class ComponentMetadataLoaderTest {
     @Test
     public void loadComponentMetadataShouldLoadDiagrams() {
         // Given
-        Diagram diagram1 = createTestDiagram(1);
-        Diagram diagram2 = createTestDiagram(2);
+        Diagram diagram1 = createDiagram(1);
+        Diagram diagram2 = createDiagram(2);
         ComponentMetadata componentMetadata = ComponentMetadata.builder()
                 .diagrams(List.of(diagram1, diagram2))
                 .build();
@@ -155,8 +156,8 @@ public class ComponentMetadataLoaderTest {
         Team team2 = createTestTeam(2);
         Component component1 = createTestComponent(1);
         Component component2 = createTestComponent(2);
-        Diagram diagram1 = createTestDiagram(1);
-        Diagram diagram2 = createTestDiagram(2);
+        Diagram diagram1 = createDiagram(1);
+        Diagram diagram2 = createDiagram(2);
         ComponentMetadata componentMetadata = ComponentMetadata.builder()
                 .componentTypes(List.of(createTestComponentType(1), createTestComponentType(2)))
                 .platforms(List.of(createTestPlatform(1), createTestPlatform(2)))
@@ -283,8 +284,8 @@ public class ComponentMetadataLoaderTest {
     @Test
     public void loadComponentMetadataShouldSkipADiagramWithADuplicateId() {
         // Given
-        Diagram diagram1 = createTestDiagram(1, 1);
-        Diagram diagram2 = createTestDiagram(1, 2);
+        Diagram diagram1 = createDiagram(1, 1);
+        Diagram diagram2 = createDiagram(1, 2);
         ComponentMetadata componentMetadata = ComponentMetadata.builder()
                 .diagrams(List.of(diagram1, diagram2))
                 .build();
@@ -410,8 +411,8 @@ public class ComponentMetadataLoaderTest {
     @Test
     public void loadComponentMetadataShouldSkipADiagramThatFailsValidation() {
         // Given
-        Diagram diagram1 = createInvalidTestDiagram(1);
-        Diagram diagram2 = createTestDiagram(2);
+        Diagram diagram1 = createInvalidDiagram(1);
+        Diagram diagram2 = createDiagram(2);
         ComponentMetadata componentMetadata = ComponentMetadata.builder()
                 .diagrams(List.of(diagram1, diagram2))
                 .build();
@@ -431,7 +432,8 @@ public class ComponentMetadataLoaderTest {
         );
         assertThat(logCaptor.getEvents().get(5).getThrowableProxy().getMessage()).isEqualTo(""
                 + "Failed to validate tech.kronicle.sdk.models.Diagram with reference \"test-diagram-id-1\". Violations:\n"
-                + "- name with value \"null\" must not be blank");
+                + "- name with value \"null\" must not be blank\n"
+                + "- type with value \"null\" must not be blank");
         assertThat(returnValue.getAreas()).isEmpty();
         assertThat(returnValue.getTeams()).isEmpty();
         assertThat(returnValue.getComponents()).isEmpty();
@@ -598,13 +600,9 @@ public class ComponentMetadataLoaderTest {
     public void loadComponentMetadataShouldLogAnErrorForADiagramWithANonExistentConnectionSourceComponent() {
         // Given
         Component component1 = createTestComponent(1);
-        Diagram diagram1 = createTestDiagramBuilder(1, 1)
-                .connections(List.of(DiagramConnection.builder()
-                        .sourceComponentId("test-component-id-2")
-                        .targetComponentId("test-component-id-1")
-                        .build())
-                )
-                .build();
+        Diagram diagram1 = createDiagram(1, 1, List.of(
+                new ComponentNumbersForConnection(2, 1)
+        ));
         ComponentMetadata componentMetadata = ComponentMetadata.builder()
                 .componentTypes(List.of(createTestComponentType(1)))
                 .components(List.of(component1))
@@ -636,13 +634,9 @@ public class ComponentMetadataLoaderTest {
     public void loadComponentMetadataShouldLogAnErrorForADiagramWithANonExistentConnectionTargetComponent() {
         // Given
         Component component1 = createTestComponent(1);
-        Diagram diagram1 = createTestDiagramBuilder(1, 1)
-                .connections(List.of(DiagramConnection.builder()
-                        .sourceComponentId("test-component-id-1")
-                        .targetComponentId("test-component-id-2")
-                        .build())
-                )
-                .build();
+        Diagram diagram1 = createDiagram(1, 1, List.of(
+                new ComponentNumbersForConnection(1, 2)
+        ));
         ComponentMetadata componentMetadata = ComponentMetadata.builder()
                 .componentTypes(List.of(createTestComponentType(1)))
                 .components(List.of(component1))
@@ -752,28 +746,6 @@ public class ComponentMetadataLoaderTest {
     private Component createInvalidTestComponent(int number) {
         return Component.builder()
                 .id("test-component-id-" + number)
-                .build();
-    }
-
-    private Diagram createTestDiagram(int number) {
-        return createTestDiagram(number, number);
-    }
-
-    private Diagram createTestDiagram(int idNumber, int othersNumber) {
-        return createTestDiagramBuilder(idNumber, othersNumber)
-                .build();
-    }
-
-    private Diagram.DiagramBuilder createTestDiagramBuilder(int idNumber, int othersNumber) {
-        return Diagram
-                .builder()
-                .id("test-diagram-id-" + idNumber)
-                .name("Test Diagram Name " + othersNumber);
-    }
-
-    private Diagram createInvalidTestDiagram(int number) {
-        return Diagram.builder()
-                .id("test-diagram-id-" + number)
                 .build();
     }
 }

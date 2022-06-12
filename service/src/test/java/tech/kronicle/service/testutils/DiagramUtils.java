@@ -11,12 +11,24 @@ import static tech.kronicle.service.testutils.ComponentUtils.createComponentId;
 
 public final class DiagramUtils {
 
-    public static Diagram createDiagram(int diagramId) {
-        return createDiagram(diagramId, List.of());
+    public static Diagram createDiagram(int diagramNumber) {
+        return createDiagram(diagramNumber, diagramNumber, List.of());
+    }
+
+    public static Diagram createDiagram(int diagramIdNumber, int diagramOthersNumber) {
+        return createDiagram(diagramIdNumber, diagramOthersNumber, List.of());
     }
 
     public static Diagram createDiagram(
-            int diagramId,
+            int diagramNumber,
+            List<ComponentNumbersForConnection> componentNumbersForConnections
+    ) {
+        return createDiagram(diagramNumber, diagramNumber, componentNumbersForConnections);
+    }
+
+    public static Diagram createDiagram(
+            int diagramIdNumber,
+            int diagramOthersNumber,
             List<ComponentNumbersForConnection> componentNumbersForConnections
     ) {
         List<DiagramConnection> connections = componentNumbersForConnections.stream()
@@ -28,9 +40,16 @@ public final class DiagramUtils {
                 )
                 .collect(toUnmodifiableList());
         return Diagram.builder()
-                .id("test-diagram-id-" + diagramId)
-                .name("Test Diagram " + diagramId)
+                .id("test-diagram-id-" + diagramIdNumber)
+                .name("Test Diagram " + diagramOthersNumber)
+                .type("test-type-" + diagramOthersNumber)
                 .connections(connections)
+                .build();
+    }
+
+    public static Diagram createInvalidDiagram(int number) {
+        return Diagram.builder()
+                .id("test-diagram-id-" + number)
                 .build();
     }
 

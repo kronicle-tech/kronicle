@@ -51,7 +51,12 @@ public class ZipkinTracingDataFinder extends TracingDataFinder {
         log.info("Getting Zipkin component dependencies");
 
         return Output.ofOutput(
-                new TracingData(null, traceMapper.mapTraces(traces)),
+                TracingData.builder()
+                        .pluginId(ZipkinPlugin.ID)
+                        .id("zipkin-tracing")
+                        .name("Zipkin Tracing")
+                        .traces(traceMapper.mapTraces(traces))
+                        .build(),
                 CACHE_TTL
         );
     }

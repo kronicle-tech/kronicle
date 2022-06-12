@@ -142,7 +142,12 @@ public class ZipkinTracingDataFinderTest {
         assertThat(returnValue.getOutput().getDependencies()).isEmpty();
         assertThat(returnValue.getOutput().getTraces()).containsExactlyElementsOf(expectedTraces);
         assertThat(returnValue).isEqualTo(Output.ofOutput(
-                new TracingData(List.of(), expectedTraces),
+                TracingData.builder()
+                        .pluginId("zipkin")
+                        .id("zipkin-tracing")
+                        .name("Zipkin Tracing")
+                        .traces(expectedTraces)
+                        .build(),
                 CACHE_TTL
         ));
     }

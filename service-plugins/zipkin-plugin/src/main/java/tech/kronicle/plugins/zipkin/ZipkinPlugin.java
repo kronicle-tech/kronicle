@@ -10,6 +10,8 @@ import java.util.List;
 
 public class ZipkinPlugin extends KronicleGuicePlugin {
 
+    public static final String ID = "zipkin";
+
     public ZipkinPlugin(PluginWrapper wrapper) {
         super(wrapper);
     }
