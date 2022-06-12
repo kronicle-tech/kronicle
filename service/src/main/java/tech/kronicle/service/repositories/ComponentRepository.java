@@ -5,17 +5,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Repository;
-import tech.kronicle.sdk.models.ComponentMetadata;
+import tech.kronicle.sdk.models.*;
 import tech.kronicle.utils.ObjectReference;
-import tech.kronicle.sdk.models.Area;
-import tech.kronicle.sdk.models.Component;
-import tech.kronicle.sdk.models.Scanner;
-import tech.kronicle.sdk.models.Summary;
-import tech.kronicle.sdk.models.SummaryCallGraph;
-import tech.kronicle.sdk.models.SummarySubComponentDependencies;
-import tech.kronicle.sdk.models.SummarySubComponentDependencyNode;
-import tech.kronicle.sdk.models.Team;
-import tech.kronicle.sdk.models.Test;
 import tech.kronicle.service.services.ComponentMetadataAssembler;
 import tech.kronicle.service.services.ComponentMetadataLoader;
 import tech.kronicle.service.services.ScanEngine;
@@ -33,6 +24,7 @@ import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 import static java.util.Objects.isNull;
+import static java.util.stream.Collectors.toUnmodifiableList;
 
 @Repository
 @RequiredArgsConstructor
@@ -49,6 +41,7 @@ public class ComponentRepository extends RefreshingRepository {
     private volatile ConcurrentHashMap<String, Area> areas = new ConcurrentHashMap<>();
     private volatile ConcurrentHashMap<String, Team> teams = new ConcurrentHashMap<>();
     private volatile ConcurrentHashMap<String, Component> components = new ConcurrentHashMap<>();
+    private volatile ConcurrentHashMap<String, Diagram> diagrams = new ConcurrentHashMap<>();
     private volatile Summary summary = Summary.EMPTY;
 
     @Override
@@ -93,6 +86,7 @@ public class ComponentRepository extends RefreshingRepository {
         areas = loaderOutput.getAreas();
         teams = loaderOutput.getTeams();
         components = loaderOutput.getComponents();
+        diagrams = loaderOutput.getDiagrams();
     }
 
     public List<Area> getAreas() {
@@ -122,13 +116,20 @@ public class ComponentRepository extends RefreshingRepository {
     public List<SummarySubComponentDependencyNode> getComponentNodes(String componentId) {
         return summary.getSubComponentDependencies().getNodes().stream()
                 .filter(nodeBelongsToComponent(componentId))
-                .collect(Collectors.toUnmodifiableList());
+                .collect(toUnmodifiableList());
     }
 
     public List<SummaryCallGraph> getComponentCallGraphs(String componentId) {
         return summary.getCallGraphs().stream()
                 .filter(callGraphIncludesComponent(componentId))
-                .collect(Collectors.toUnmodifiableList());
+                .collect(toUnmodifiableList());
+    }
+
+    public List<Diagram> getComponentDiagrams(String componentId) {
+        return diagrams.values().stream()
+                .filter(diagramIncludesComponent(componentId))
+                .sorted(Comparator.comparing(Diagram::getId))
+                .collect(toUnmodifiableList());
     }
 
     public Summary getSummary() {
@@ -139,7 +140,7 @@ public class ComponentRepository extends RefreshingRepository {
         return scannerRegistry.getAllItems().stream()
                 .map(this::mapScanner)
                 .sorted(Comparator.comparing(Scanner::getId))
-                .collect(Collectors.toList());
+                .collect(toUnmodifiableList());
     }
 
     public Scanner getScanner(String scannerId) {
@@ -150,7 +151,7 @@ public class ComponentRepository extends RefreshingRepository {
         return testFinder.getAllTests().stream()
                 .map(this::mapTest)
                 .sorted(Comparator.comparing(Test::getId))
-                .collect(Collectors.toUnmodifiableList());
+                .collect(toUnmodifiableList());
     }
 
     public Test getTest(String testId) {
@@ -177,6 +178,15 @@ public class ComponentRepository extends RefreshingRepository {
 
     private Predicate<SummarySubComponentDependencyNode> nodeBelongsToComponent(String componentId) {
         return node -> Objects.equals(node.getComponentId(), componentId);
+    }
+
+    private Predicate<Diagram> diagramIncludesComponent(String componentId) {
+        return diagram -> diagram.getConnections().stream().anyMatch(connectionIncludesComponent(componentId));
+    }
+
+    private Predicate<DiagramConnection> connectionIncludesComponent(String componentId) {
+        return connection -> Objects.equals(connection.getSourceComponentId(), componentId) ||
+                Objects.equals(connection.getTargetComponentId(), componentId);
     }
 
     private Test mapTest(tech.kronicle.service.tests.Test<?> test) {

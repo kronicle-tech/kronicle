@@ -17,6 +17,7 @@ import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.when;
+import static tech.kronicle.service.testutils.DiagramUtils.createDiagram;
 
 @ExtendWith(MockitoExtension.class)
 public class ComponentServiceTest {
@@ -302,6 +303,22 @@ public class ComponentServiceTest {
 
         // Then
         assertThat(returnValue).isSameAs(callGraphs);
+    }
+
+    @Test
+    public void getComponentDiagramsShouldReturnTheComponentDiagramsForAComponent() {
+        // Given
+        String componentId = "test-component-id-1";
+        Diagram diagram1 = createDiagram(1);
+        Diagram diagram2 = createDiagram(2);
+        List<Diagram> diagrams = List.of(diagram1, diagram2);
+        when(mockComponentRepository.getComponentDiagrams(componentId)).thenReturn(diagrams);
+
+        // When
+        List<Diagram> returnValue = underTest.getComponentDiagrams(componentId);
+
+        // Then
+        assertThat(returnValue).isSameAs(diagrams);
     }
 
     @Test
