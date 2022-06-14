@@ -20,6 +20,7 @@ public class ComponentGraphCollatorTest {
     private final TracingTestHelper testHelper = new TracingTestHelper();
     private final ComponentGraphCollator underTest = new ComponentGraphCollator(
             new GenericGraphCollator(),
+            new NodeHelper(),
             new EdgeHelper()
     );
 

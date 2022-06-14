@@ -19,8 +19,10 @@ import static tech.kronicle.tracingprocessor.internal.testutils.CollatorGraphUti
 import static tech.kronicle.tracingprocessor.testutils.TestDataHelper.createTracingData;
 
 @ExtendWith(MockitoExtension.class)
-public class TracingProcessorTest {
+public class GraphProcessorTest {
 
+    @Mock
+    private DiagramGraphCollator diagramGraphCollator;
     @Mock
     private ComponentGraphCollator componentGraphCollator;
     @Mock
@@ -33,9 +35,10 @@ public class TracingProcessorTest {
     private EdgeDurationCalculator edgeDurationCalculator;
 
     @Test
-    public void processShouldProduceComponentDependenciesAndSubComponentDependenciesAndCallGraphs() {
+    public void processTracingDataShouldProduceComponentDependenciesAndSubComponentDependenciesAndCallGraphs() {
         // Given
-        TracingProcessor underTest = new TracingProcessor(
+        GraphProcessor underTest = new GraphProcessor(
+                diagramGraphCollator,
                 componentGraphCollator,
                 subComponentGraphCollator,
                 callGraphCollator,
@@ -63,7 +66,7 @@ public class TracingProcessorTest {
         )).thenReturn(graphs1);
 
         // When
-        List<Diagram> returnValue = underTest.process(tracingData);
+        List<Diagram> returnValue = underTest.processTracingData(tracingData);
 
         // Then
         assertThat(returnValue).containsExactly(

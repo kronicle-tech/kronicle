@@ -2,13 +2,15 @@ package tech.kronicle.tracingprocessor;
 
 import tech.kronicle.tracingprocessor.internal.services.*;
 
-public final class TracingProcessorFactory {
+public final class GraphProcessorFactory {
 
-    public static TracingProcessor createTracingProcessor() {
+    public static GraphProcessor createTracingProcessor() {
         GenericGraphCollator genericGraphCollator = new GenericGraphCollator();
+        NodeHelper nodeHelper = new NodeHelper();
         EdgeHelper edgeHelper = new EdgeHelper();
-        return new TracingProcessor(
-                new ComponentGraphCollator(genericGraphCollator, edgeHelper),
+        return new GraphProcessor(
+                new DiagramGraphCollator(nodeHelper),
+                new ComponentGraphCollator(genericGraphCollator, nodeHelper, edgeHelper),
                 new SubComponentGraphCollator(genericGraphCollator, edgeHelper),
                 new CallGraphCollator(genericGraphCollator, edgeHelper),
                 edgeHelper,
@@ -16,6 +18,6 @@ public final class TracingProcessorFactory {
         );
     }
 
-    private TracingProcessorFactory() {
+    private GraphProcessorFactory() {
     }
 }

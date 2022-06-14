@@ -21,7 +21,7 @@ import tech.kronicle.pluginapi.scanners.models.Output;
 import tech.kronicle.sdk.models.*;
 import tech.kronicle.service.exceptions.ValidationException;
 import tech.kronicle.tracingprocessor.internal.services.ComponentAliasResolver;
-import tech.kronicle.tracingprocessor.TracingProcessor;
+import tech.kronicle.tracingprocessor.GraphProcessor;
 import tech.kronicle.utils.ThrowableToScannerErrorMapper;
 
 import java.nio.file.Path;
@@ -57,7 +57,7 @@ public class ScanEngineTest {
     @Mock
     private MasterTracingDataFinder masterTracingDataFinder;
     @Mock
-    private TracingProcessor tracingProcessor;
+    private GraphProcessor graphProcessor;
     @Mock
     private ComponentAliasMapCreator componentAliasMapCreator;
     @Mock
@@ -75,7 +75,7 @@ public class ScanEngineTest {
         underTest = new ScanEngine(
                 masterComponentFinder,
                 masterTracingDataFinder,
-                tracingProcessor,
+                graphProcessor,
                 componentAliasMapCreator,
                 componentAliasResolver,
                 scannerRegistry,
@@ -443,8 +443,8 @@ public class ScanEngineTest {
         Diagram diagram2 = createDiagram(2);
         Diagram diagram3 = createDiagram(3);
         Diagram diagram4 = createDiagram(4);
-        when(tracingProcessor.process(updatedTracingDataList.get(0))).thenReturn(List.of(diagram1, diagram2));
-        when(tracingProcessor.process(updatedTracingDataList.get(1))).thenReturn(List.of(diagram3, diagram4));
+        when(graphProcessor.processTracingData(updatedTracingDataList.get(0))).thenReturn(List.of(diagram1, diagram2));
+        when(graphProcessor.processTracingData(updatedTracingDataList.get(1))).thenReturn(List.of(diagram3, diagram4));
         List<Diagram> diagrams = List.of(diagram1, diagram2, diagram3, diagram4);
         return componentMetadata.withDiagrams(diagrams);
     }
