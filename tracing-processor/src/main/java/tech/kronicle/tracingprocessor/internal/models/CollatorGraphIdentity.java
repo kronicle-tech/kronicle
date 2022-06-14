@@ -17,7 +17,6 @@ public class CollatorGraphIdentity {
                 graph.getNodes(),
                 graph.getEdges().stream()
                         .map(CollatorGraphEdgeIdentity::new)
-                        // TODO: Test this
                         .distinct()
                         .collect(Collectors.toList())
         );

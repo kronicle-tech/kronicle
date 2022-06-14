@@ -5,7 +5,6 @@ import tech.kronicle.pluginapi.finders.models.GenericSpan;
 import tech.kronicle.pluginapi.finders.models.GenericTrace;
 import tech.kronicle.sdk.constants.GraphEdgeTypeIds;
 import tech.kronicle.sdk.models.Dependency;
-import tech.kronicle.sdk.models.GraphNode;
 import tech.kronicle.tracingprocessor.internal.models.CollatorGraph;
 import tech.kronicle.tracingprocessor.internal.models.CollatorGraphEdge;
 
@@ -13,6 +12,7 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static tech.kronicle.tracingprocessor.internal.services.TracingTestHelper.createTrace;
+import static tech.kronicle.tracingprocessor.internal.testutils.GraphNodeUtils.createNode;
 import static tech.kronicle.tracingprocessor.testutils.TestDataHelper.createTracingData;
 
 public class ComponentGraphCollatorTest {
@@ -57,12 +57,6 @@ public class ComponentGraphCollatorTest {
                 createNode("test-service-1"));
         assertThat(returnValue.getEdges()).containsExactly(
                 new CollatorGraphEdge(null, 0, List.of(), GraphEdgeTypeIds.TRACE, null, null, 1, List.of(1_000L), List.of(1_000L)));
-    }
-
-    private GraphNode createNode(String componentId) {
-        return GraphNode.builder()
-                .componentId(componentId)
-                .build();
     }
 
     @Test

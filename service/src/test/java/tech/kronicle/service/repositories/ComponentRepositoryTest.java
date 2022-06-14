@@ -32,9 +32,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.function.Consumer;
+import java.util.function.Function;
 import java.util.stream.Stream;
 
 import static java.util.concurrent.TimeUnit.SECONDS;
+import static java.util.stream.Collectors.toUnmodifiableList;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.catchThrowable;
 import static org.awaitility.Awaitility.await;
@@ -44,7 +46,9 @@ import static org.mockito.Mockito.doAnswer;
 import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
+import static tech.kronicle.service.testutils.ComponentUtils.*;
 import static tech.kronicle.service.testutils.DiagramUtils.createDiagram;
+import static tech.kronicle.service.testutils.DiagramUtils.createDiagramId;
 
 @ExtendWith(MockitoExtension.class)
 public class ComponentRepositoryTest {
@@ -146,8 +150,11 @@ public class ComponentRepositoryTest {
         ComponentMetadata componentMetadata = ComponentMetadata
                 .builder()
                 .components(List.of(
-                        createTestComponent("1"),
-                        createTestComponent("2")))
+                        createComponent(1),
+                        createComponent(2)))
+                .diagrams(List.of(
+                        createDiagram(1),
+                        createDiagram(2)))
                 .build();
         when(mockComponentMetadataRepository.getComponentMetadata()).thenReturn(componentMetadata);
         ObjectReference<ComponentMetadataLoader.Output> loaderOutput = new ObjectReference<>();
@@ -157,15 +164,24 @@ public class ComponentRepositoryTest {
             return returnValue;
         });
         doAnswer(invocation -> {
-            assertDuringInitializeTheComponentsAndSummaryAreUpdatedStraightAway(getComponentMapArgument(invocation), getSummaryConsumerArgument(invocation));
+            assertDuringInitializeTheComponentsAndSummaryAreUpdatedStraightAway(
+                    getComponentMapArgument(invocation),
+                    getDiagramMapArgument(invocation),
+                    getSummaryConsumerArgument(invocation)
+            );
             return null;
-        }).when(mockScanEngine).scan(eq(componentMetadata), any(), any());
+        }).when(mockScanEngine).scan(eq(componentMetadata), any(), any(), any());
 
         // When
         initializeAndWaitForRefreshToFinish(underTest);
 
         // Then
-        verify(mockScanEngine).scan(eq(componentMetadata), eq(loaderOutput.get().getComponents()), any());
+        verify(mockScanEngine).scan(
+                eq(componentMetadata),
+                eq(loaderOutput.get().getComponents()),
+                eq(loaderOutput.get().getDiagrams()),
+                any()
+        );
         verify(mockTestEngine).test(eq(loaderOutput.get().getComponents()));
         assertThat(underTest.getComponents()).hasSize(4);
         assertThat(underTest.getComponents().stream().map(Component::getId)).containsExactly(
@@ -179,20 +195,24 @@ public class ComponentRepositoryTest {
         componentMetadata = ComponentMetadata
                 .builder()
                 .components(List.of(
-                        createTestComponent("5"),
-                        createTestComponent("6")))
+                        createComponent(5),
+                        createComponent(6)))
                 .build();
         when(mockComponentMetadataRepository.getComponentMetadata()).thenReturn(componentMetadata);
         doAnswer(invocation -> {
-            assertDuringRefreshTheComponentsAndSummaryAreUpdatedOnlyAtTheEnd(getComponentMapArgument(invocation), getSummaryConsumerArgument(invocation));
+            assertDuringRefreshTheComponentsAndSummaryAreUpdatedOnlyAtTheEnd(
+                    getComponentMapArgument(invocation),
+                    getDiagramMapArgument(invocation),
+                    getSummaryConsumerArgument(invocation)
+            );
             return null;
-        }).when(mockScanEngine).scan(eq(componentMetadata), any(), any());
+        }).when(mockScanEngine).scan(eq(componentMetadata), any(), any(), any());
 
         // When
         underTest.refresh();
 
         // Then
-        verify(mockScanEngine).scan(eq(componentMetadata), any(), any());
+        verify(mockScanEngine).scan(eq(componentMetadata), any(), any(), any());
         verify(mockTestEngine).test(eq(loaderOutput.get().getComponents()));
         assertThat(underTest.getComponents()).hasSize(4);
         assertThat(underTest.getComponents().stream().map(Component::getId)).containsExactly(
@@ -225,7 +245,7 @@ public class ComponentRepositoryTest {
     @Test
     public void getAreasShouldReturnAllAreas() {
         // Given
-        when(mockComponentMetadataRepository.getComponentMetadata()).thenReturn(createTestComponentMetadata());
+        when(mockComponentMetadataRepository.getComponentMetadata()).thenReturn(createComponentMetadata());
         initializeAndWaitForRefreshToFinish(underTest);
 
         // When
@@ -280,7 +300,7 @@ public class ComponentRepositoryTest {
     @Test
     public void getAreasShouldReturnAnUnmodifiableList() {
         // Given
-        when(mockComponentMetadataRepository.getComponentMetadata()).thenReturn(createTestComponentMetadata());
+        when(mockComponentMetadataRepository.getComponentMetadata()).thenReturn(createComponentMetadata());
         initializeAndWaitForRefreshToFinish(underTest);
         initializeAndWaitForRefreshToFinish(underTest);
 
@@ -294,7 +314,7 @@ public class ComponentRepositoryTest {
     @Test
     public void getAreaShouldReturnTheAreaWithMatchingAreaId() {
         // Given
-        when(mockComponentMetadataRepository.getComponentMetadata()).thenReturn(createTestComponentMetadata());
+        when(mockComponentMetadataRepository.getComponentMetadata()).thenReturn(createComponentMetadata());
         String areaId = "test-area-id-2";
         initializeAndWaitForRefreshToFinish(underTest);
 
@@ -317,7 +337,7 @@ public class ComponentRepositoryTest {
     @Test
     public void getTeamsShouldReturnAllTeams() {
         // Given
-        when(mockComponentMetadataRepository.getComponentMetadata()).thenReturn(createTestComponentMetadata());
+        when(mockComponentMetadataRepository.getComponentMetadata()).thenReturn(createComponentMetadata());
         initializeAndWaitForRefreshToFinish(underTest);
 
         // When
@@ -365,7 +385,7 @@ public class ComponentRepositoryTest {
     @Test
     public void getTeamsShouldReturnAnUnmodifiableList() {
         // Given
-        when(mockComponentMetadataRepository.getComponentMetadata()).thenReturn(createTestComponentMetadata());
+        when(mockComponentMetadataRepository.getComponentMetadata()).thenReturn(createComponentMetadata());
         initializeAndWaitForRefreshToFinish(underTest);
         initializeAndWaitForRefreshToFinish(underTest);
 
@@ -379,7 +399,7 @@ public class ComponentRepositoryTest {
     @Test
     public void getTeamShouldReturnTheTeamWithMatchingTeamId() {
         // Given
-        when(mockComponentMetadataRepository.getComponentMetadata()).thenReturn(createTestComponentMetadata());
+        when(mockComponentMetadataRepository.getComponentMetadata()).thenReturn(createComponentMetadata());
         String teamId = "test-team-id-2";
         initializeAndWaitForRefreshToFinish(underTest);
 
@@ -398,7 +418,7 @@ public class ComponentRepositoryTest {
     @Test
     public void getComponentsShouldReturnAllComponents() {
         // Given
-        when(mockComponentMetadataRepository.getComponentMetadata()).thenReturn(createTestComponentMetadata());
+        when(mockComponentMetadataRepository.getComponentMetadata()).thenReturn(createComponentMetadata());
         initializeAndWaitForRefreshToFinish(underTest);
 
         // When
@@ -419,9 +439,9 @@ public class ComponentRepositoryTest {
         ComponentMetadata componentMetadata = ComponentMetadata.builder()
                 .components(List.of(
                         // Component names are deliberately not in alphabetical order
-                        createTestComponent("1"),
-                        createTestComponent("3"),
-                        createTestComponent("2")))
+                        createComponent(1),
+                        createComponent(3),
+                        createComponent(2)))
                 .build();
         when(mockComponentMetadataRepository.getComponentMetadata()).thenReturn(componentMetadata);
         initializeAndWaitForRefreshToFinish(underTest);
@@ -439,7 +459,7 @@ public class ComponentRepositoryTest {
     @Test
     public void getComponentsShouldReturnAnUnmodifiableList() {
         // Given
-        when(mockComponentMetadataRepository.getComponentMetadata()).thenReturn(createTestComponentMetadata());
+        when(mockComponentMetadataRepository.getComponentMetadata()).thenReturn(createComponentMetadata());
         initializeAndWaitForRefreshToFinish(underTest);
         initializeAndWaitForRefreshToFinish(underTest);
 
@@ -453,7 +473,7 @@ public class ComponentRepositoryTest {
     @Test
     public void getComponentShouldReturnTheComponentWithMatchingComponentId() {
         // Given
-        when(mockComponentMetadataRepository.getComponentMetadata()).thenReturn(createTestComponentMetadata());
+        when(mockComponentMetadataRepository.getComponentMetadata()).thenReturn(createComponentMetadata());
         String componentId = "test-component-id-2";
         initializeAndWaitForRefreshToFinish(underTest);
 
@@ -471,7 +491,7 @@ public class ComponentRepositoryTest {
         // Given
         when(mockComponentMetadataRepository.getComponentMetadata()).thenReturn(ComponentMetadata.builder().build());
         when(mockComponentMetadataRepository.getComponentMetadata()).thenReturn(ComponentMetadata.builder()
-                .components(List.of(createTestComponent("only-needed-to-trigger-use-of-scanner")))
+                .components(List.of(createComponent(1, "only-needed-to-trigger-use-of-scanner")))
                 .build());
         SummarySubComponentDependencyNode node1 = SummarySubComponentDependencyNode
                 .builder()
@@ -503,7 +523,7 @@ public class ComponentRepositoryTest {
             Consumer<Summary> summaryConsumer = getSummaryConsumerArgument(invocation);
             summaryConsumer.accept(summary);
             return null;
-        }).when(mockScanEngine).scan(any(), any(), any());
+        }).when(mockScanEngine).scan(any(), any(), any(), any());
         initializeAndWaitForRefreshToFinish(underTest);
 
         // When
@@ -566,7 +586,7 @@ public class ComponentRepositoryTest {
             Consumer<Summary> summaryConsumer = getSummaryConsumerArgument(invocation);
             summaryConsumer.accept(summary);
             return null;
-        }).when(mockScanEngine).scan(any(), any(), any());
+        }).when(mockScanEngine).scan(any(), any(), any(), any());
         initializeAndWaitForRefreshToFinish(underTest);
 
         // When
@@ -605,6 +625,61 @@ public class ComponentRepositoryTest {
 
         // Then
         assertThat(returnValue).containsExactly(diagram1, diagram2);
+    }
+
+    @Test
+    public void getDiagramsShouldReturnAllDiagrams() {
+        // Given
+        when(mockComponentMetadataRepository.getComponentMetadata()).thenReturn(createComponentMetadata());
+        initializeAndWaitForRefreshToFinish(underTest);
+
+        // When
+        List<Diagram> diagrams = underTest.getDiagrams();
+
+        // Then
+        assertThat(diagrams).hasSize(2);
+        Diagram diagram;
+        diagram = diagrams.get(0);
+        assertThat(diagram.getId()).isEqualTo("test-diagram-id-1");
+        diagram = diagrams.get(1);
+        assertThat(diagram.getId()).isEqualTo("test-diagram-id-2");
+    }
+
+    @Test
+    public void getDiagramsShouldReturnDiagramsSortedByName() {
+        // Given
+        ComponentMetadata componentMetadata = ComponentMetadata.builder()
+                .diagrams(List.of(
+                        // Diagram names are deliberately not in alphabetical order
+                        createDiagram(1),
+                        createDiagram(3),
+                        createDiagram(2)))
+                .build();
+        when(mockComponentMetadataRepository.getComponentMetadata()).thenReturn(componentMetadata);
+        initializeAndWaitForRefreshToFinish(underTest);
+
+        // When
+        List<Diagram> diagrams = underTest.getDiagrams();
+
+        // Then
+        assertThat(diagrams).hasSize(3);
+        assertThat(diagrams.get(0).getName()).isEqualTo("Test Diagram Name 1");
+        assertThat(diagrams.get(1).getName()).isEqualTo("Test Diagram Name 2");
+        assertThat(diagrams.get(2).getName()).isEqualTo("Test Diagram Name 3");
+    }
+
+    @Test
+    public void getDiagramsShouldReturnAnUnmodifiableList() {
+        // Given
+        when(mockComponentMetadataRepository.getComponentMetadata()).thenReturn(createComponentMetadata());
+        initializeAndWaitForRefreshToFinish(underTest);
+        initializeAndWaitForRefreshToFinish(underTest);
+
+        // When
+        Throwable thrown = catchThrowable(() -> underTest.getDiagrams().add(Diagram.builder().build()));
+
+        // Then
+        assertThat(thrown).isInstanceOf(UnsupportedOperationException.class);
     }
 
     @Test
@@ -788,7 +863,7 @@ public class ComponentRepositoryTest {
                 .anyMatch(event -> Objects.equals(event.getMessage(), message));
     }
 
-    private ComponentMetadata createTestComponentMetadata() {
+    private ComponentMetadata createComponentMetadata() {
         return ComponentMetadata
                 .builder()
                 .areas(List.of(Area.builder().id("test-area-id-1").name("Test Area Name 1").build(),
@@ -797,12 +872,16 @@ public class ComponentRepositoryTest {
                         Team.builder().id("test-team-id-1").name("Test Team Name 1").areaId("test-area-id-1").emailAddress("test-team-1@example.com").build(),
                         Team.builder().id("test-team-id-2").name("Test Team Name 2").areaId("test-area-id-2").emailAddress("test-team-2@example.com").build()))
                 .components(List.of(
-                        createTestComponentBuilder("1")
+                        createComponentBuilder(1)
                                 .teams(List.of(ComponentTeam.builder().teamId("test-team-id-1").build()))
                                 .build(),
-                        createTestComponentBuilder("2")
+                        createComponentBuilder(2)
                                 .teams(List.of(ComponentTeam.builder().teamId("test-team-id-2").build()))
                                 .build()))
+                .diagrams(List.of(
+                        createDiagram(1),
+                        createDiagram(2)
+                ))
                 .build();
     }
 
@@ -810,65 +889,92 @@ public class ComponentRepositoryTest {
         return invocation.getArgument(1);
     }
 
-    private Consumer<Summary> getSummaryConsumerArgument(InvocationOnMock invocation) {
+    private Map<String, Diagram> getDiagramMapArgument(InvocationOnMock invocation) {
         return invocation.getArgument(2);
     }
 
-    private void assertDuringInitializeTheComponentsAndSummaryAreUpdatedStraightAway(Map<String, Component> componentMap, Consumer<Summary> summaryConsumer) {
+    private Consumer<Summary> getSummaryConsumerArgument(InvocationOnMock invocation) {
+        return invocation.getArgument(3);
+    }
+
+    private void assertDuringInitializeTheComponentsAndSummaryAreUpdatedStraightAway(
+            Map<String, Component> componentMap,
+            Map<String, Diagram> diagramMap,
+            Consumer<Summary> summaryConsumer
+    ) {
         assertThat(underTest.getSummary()).isEqualTo(Summary.EMPTY);
-        componentMap.put(createTestComponentId("3"), createTestComponent("3"));
+        componentMap.put(createComponentId(3), createComponent(3));
+        diagramMap.put(createDiagramId(3), createDiagram(3));
         assertThat(underTest.getComponents()).hasSize(3);
-        assertThat(underTest.getComponents().stream().map(Component::getId)).containsExactly(
+        assertItemIds(ComponentRepository::getComponents, List.of(
                 "test-component-id-1",
                 "test-component-id-2",
-                "test-component-id-3");
+                "test-component-id-3"
+        ));
+        assertItemIds(ComponentRepository::getDiagrams, List.of(
+                "test-diagram-id-1",
+                "test-diagram-id-2",
+                "test-diagram-id-3"
+        ));
         summaryConsumer.accept(createTestSummary("initialize-1"));
         assertThat(underTest.getSummary()).isEqualTo(createTestSummary("initialize-1"));
-        componentMap.put(createTestComponentId("4"), createTestComponent("4"));
+        componentMap.put(createComponentId(4), createComponent(4));
+        diagramMap.put(createDiagramId(4), createDiagram(4));
         assertThat(underTest.getComponents()).hasSize(4);
-        assertThat(underTest.getComponents().stream().map(Component::getId)).containsExactly(
+        assertItemIds(ComponentRepository::getComponents, List.of(
                 "test-component-id-1",
                 "test-component-id-2",
                 "test-component-id-3",
-                "test-component-id-4");
+                "test-component-id-4"
+        ));
+        assertItemIds(ComponentRepository::getDiagrams, List.of(
+                "test-diagram-id-1",
+                "test-diagram-id-2",
+                "test-diagram-id-3",
+                "test-diagram-id-4"
+        ));
         summaryConsumer.accept(createTestSummary("initialize-2"));
         assertThat(underTest.getSummary()).isEqualTo(createTestSummary("initialize-2"));
     }
 
-    private void assertDuringRefreshTheComponentsAndSummaryAreUpdatedOnlyAtTheEnd(Map<String, Component> componentMap, Consumer<Summary> summaryConsumer) {
+    private void assertDuringRefreshTheComponentsAndSummaryAreUpdatedOnlyAtTheEnd(
+            Map<String, Component> componentMap,
+            Map<String, Diagram> diagramMap,
+            Consumer<Summary> summaryConsumer
+    ) {
         assertThat(underTest.getSummary()).isEqualTo(createTestSummary("initialize-2"));
-        componentMap.put(createTestComponentId("7"), createTestComponent("7"));
-        assertThat(underTest.getComponents().stream().map(Component::getId)).containsExactly(
+        componentMap.put(createComponentId(7), createComponent(7));
+        diagramMap.put(createDiagramId(7), createDiagram(7));
+        assertItemIds(ComponentRepository::getComponents, List.of(
                 "test-component-id-1",
                 "test-component-id-2",
                 "test-component-id-3",
-                "test-component-id-4");
+                "test-component-id-4"
+        ));
         summaryConsumer.accept(createTestSummary("refresh-1"));
         assertThat(underTest.getSummary()).isEqualTo(createTestSummary("initialize-2"));
-        componentMap.put(createTestComponentId("8"), createTestComponent("8"));
-        assertThat(underTest.getComponents().stream().map(Component::getId)).containsExactly(
-                "test-component-id-1",
-                "test-component-id-2",
-                "test-component-id-3",
-                "test-component-id-4");
+        componentMap.put(createComponentId(8), createComponent(8));
+        diagramMap.put(createDiagramId(8), createDiagram(8));
+        assertItemIds(ComponentRepository::getDiagrams, List.of(
+                "test-diagram-id-1",
+                "test-diagram-id-2",
+                "test-diagram-id-3",
+                "test-diagram-id-4"
+        ));
         summaryConsumer.accept(createTestSummary("refresh-2"));
         assertThat(underTest.getSummary()).isEqualTo(createTestSummary("initialize-2"));
     }
 
-    private Component createTestComponent(String uniquePart) {
-        return createTestComponentBuilder(uniquePart).build();
-    }
-
-    private Component.ComponentBuilder createTestComponentBuilder(String uniquePart) {
-        return Component.builder()
-                .id(createTestComponentId(uniquePart))
-                .name("Test Component Name " + uniquePart)
-                .typeId("test-component-type-id-" + uniquePart)
-                .repo(RepoReference.builder().url("https://example.com/example-" + uniquePart.toLowerCase() + ".git").build());
-    }
-
-    private String createTestComponentId(String uniquePart) {
-        return "test-component-id-" + uniquePart.toLowerCase();
+    private <T extends ObjectWithId> void assertItemIds(
+            Function<ComponentRepository, List<T>> itemsGetter,
+            List<String> expectedItemIds
+    ) {
+        List<T> items = itemsGetter.apply(underTest);
+        List<String> itemIds = items.stream()
+                .map(ObjectWithId::getId)
+                .sorted()
+                .collect(toUnmodifiableList());
+        assertThat(itemIds).containsExactlyElementsOf(expectedItemIds);
     }
 
     private Summary createTestSummary(String missingComponentId) {

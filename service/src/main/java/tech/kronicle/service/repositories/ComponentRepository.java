@@ -132,6 +132,10 @@ public class ComponentRepository extends RefreshingRepository {
                 .collect(toUnmodifiableList());
     }
 
+    public List<Diagram> getDiagrams() {
+        return assembler.toSortedUnmodifiableDiagramList(diagrams.values().stream());
+    }
+
     public Summary getSummary() {
         return summary;
     }
