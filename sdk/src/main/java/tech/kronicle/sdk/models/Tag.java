@@ -1,5 +1,6 @@
 package tech.kronicle.sdk.models;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Value;
 import lombok.With;
@@ -13,6 +14,7 @@ import javax.validation.constraints.Pattern;
 @With
 @Builder(toBuilder = true)
 @Jacksonized
+@AllArgsConstructor
 public class Tag {
 
     @NotBlank

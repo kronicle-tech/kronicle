@@ -1,15 +1,18 @@
 package tech.kronicle.tracingprocessor;
 
+import tech.kronicle.tracingprocessor.internal.services.*;
+
 public final class TracingProcessorFactory {
 
     public static TracingProcessor createTracingProcessor() {
-        GenericDependencyCollator genericDependencyCollator = new GenericDependencyCollator();
-        DependencyDurationCalculator dependencyDurationCalculator = new DependencyDurationCalculator();
-        DependencyHelper dependencyHelper = new DependencyHelper(dependencyDurationCalculator);
+        GenericGraphCollator genericGraphCollator = new GenericGraphCollator();
+        EdgeHelper edgeHelper = new EdgeHelper();
         return new TracingProcessor(
-                new ComponentDependencyCollator(genericDependencyCollator, dependencyHelper),
-                new SubComponentDependencyCollator(genericDependencyCollator, dependencyHelper),
-                new CallGraphCollator(genericDependencyCollator, dependencyHelper, dependencyDurationCalculator)
+                new ComponentGraphCollator(genericGraphCollator, edgeHelper),
+                new SubComponentGraphCollator(genericGraphCollator, edgeHelper),
+                new CallGraphCollator(genericGraphCollator, edgeHelper),
+                edgeHelper,
+                new EdgeDurationCalculator()
         );
     }
 

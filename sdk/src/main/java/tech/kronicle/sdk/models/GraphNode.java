@@ -1,6 +1,5 @@
 package tech.kronicle.sdk.models;
 
-import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Value;
 import lombok.With;
@@ -20,11 +19,12 @@ public class GraphNode implements ObjectWithComponentId {
 
     @NotBlank
     String componentId;
-    String spanName;
+    String name;
     List<@Valid Tag> tags;
 
-    public GraphNode(String componentId, String spanName, List<@Valid Tag> tags) {
+    public GraphNode(String componentId, String name, List<@Valid Tag> tags) {
         this.componentId = componentId;
-        this.spanName = spanName;
-        this.tags = createUnmodifiableList(tags);    }
+        this.name = name;
+        this.tags = createUnmodifiableList(tags);
+    }
 }

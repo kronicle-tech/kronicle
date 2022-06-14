@@ -17,7 +17,7 @@ import static tech.kronicle.sdk.utils.ListUtils.createUnmodifiableList;
 @With
 @Builder(toBuilder = true)
 @Jacksonized
-public class SummaryComponentDependency implements DependencyWithIdentity {
+public class SummaryComponentDependency {
 
     @Min(0)
     Integer sourceIndex;

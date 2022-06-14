@@ -1,11 +1,7 @@
 package tech.kronicle.service.services;
 
 import org.springframework.stereotype.Service;
-import tech.kronicle.sdk.models.Area;
-import tech.kronicle.sdk.models.Component;
-import tech.kronicle.sdk.models.ComponentTeam;
-import tech.kronicle.sdk.models.ComponentTeamType;
-import tech.kronicle.sdk.models.Team;
+import tech.kronicle.sdk.models.*;
 
 import java.util.Comparator;
 import java.util.List;
@@ -26,6 +22,11 @@ public class ComponentMetadataAssembler {
 
     public List<Component> toSortedUnmodifiableComponentList(Stream<Component> componentStream) {
         return componentStream.sorted(Comparator.comparing(Component::getName))
+                .collect(Collectors.toUnmodifiableList());
+    }
+
+    public List<Diagram> toSortedUnmodifiableDiagramList(Stream<Diagram> diagramStream) {
+        return diagramStream.sorted(Comparator.comparing(Diagram::getName))
                 .collect(Collectors.toUnmodifiableList());
     }
 

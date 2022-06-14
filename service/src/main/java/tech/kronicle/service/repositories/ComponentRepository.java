@@ -73,7 +73,7 @@ public class ComponentRepository extends RefreshingRepository {
             summaryUpdater = newSummary::set;
         }
 
-        scanEngine.scan(componentMetadata, loaderOutput.getComponents(), summaryUpdater);
+        scanEngine.scan(componentMetadata, loaderOutput.getComponents(), loaderOutput.getDiagrams(), summaryUpdater);
         testEngine.test(loaderOutput.getComponents());
 
         if (!firstTime) {
@@ -130,6 +130,10 @@ public class ComponentRepository extends RefreshingRepository {
                 .filter(diagramIncludesComponent(componentId))
                 .sorted(Comparator.comparing(Diagram::getId))
                 .collect(toUnmodifiableList());
+    }
+
+    public List<Diagram> getDiagrams() {
+        return assembler.toSortedUnmodifiableDiagramList(diagrams.values().stream());
     }
 
     public Summary getSummary() {

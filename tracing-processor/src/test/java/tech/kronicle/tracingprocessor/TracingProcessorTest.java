@@ -4,84 +4,101 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import tech.kronicle.pluginapi.finders.models.GenericTrace;
 import tech.kronicle.pluginapi.finders.models.TracingData;
-import tech.kronicle.sdk.models.Dependency;
-import tech.kronicle.sdk.models.SummaryCallGraph;
-import tech.kronicle.sdk.models.SummaryComponentDependencies;
-import tech.kronicle.sdk.models.SummarySubComponentDependencies;
+import tech.kronicle.sdk.models.Diagram;
+import tech.kronicle.sdk.models.GraphNode;
+import tech.kronicle.sdk.models.GraphState;
+import tech.kronicle.tracingprocessor.internal.models.CollatorGraph;
+import tech.kronicle.tracingprocessor.internal.services.*;
 
-import java.util.Collection;
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.when;
-import static tech.kronicle.tracingprocessor.testutils.TestDataHelper.createCallGraphs;
-import static tech.kronicle.tracingprocessor.testutils.TestDataHelper.createComponentDependencies;
-import static tech.kronicle.tracingprocessor.testutils.TestDataHelper.createSubComponentDependencies;
+import static tech.kronicle.tracingprocessor.internal.testutils.CollatorGraphUtils.createCollatorGraph;
 import static tech.kronicle.tracingprocessor.testutils.TestDataHelper.createTracingData;
 
 @ExtendWith(MockitoExtension.class)
 public class TracingProcessorTest {
 
     @Mock
-    private ComponentDependencyCollator componentDependencyCollator;
+    private ComponentGraphCollator componentGraphCollator;
     @Mock
-    private SubComponentDependencyCollator subComponentDependencyCollator;
+    private SubComponentGraphCollator subComponentGraphCollator;
     @Mock
     private CallGraphCollator callGraphCollator;
+    @Mock
+    private EdgeHelper edgeHelper;
+    @Mock
+    private EdgeDurationCalculator edgeDurationCalculator;
 
     @Test
     public void processShouldProduceComponentDependenciesAndSubComponentDependenciesAndCallGraphs() {
         // Given
         TracingProcessor underTest = new TracingProcessor(
-                componentDependencyCollator,
-                subComponentDependencyCollator,
-                callGraphCollator
+                componentGraphCollator,
+                subComponentGraphCollator,
+                callGraphCollator,
+                edgeHelper,
+                edgeDurationCalculator
         );
 
-        TracingData tracingData1 = createTracingData(1);
-        TracingData tracingData2 = createTracingData(2);
-        List<TracingData> tracingData = List.of(
-                tracingData1,
-                tracingData2
+        TracingData tracingData = createTracingData(1);
+
+        CollatorGraph graph1 = createCollatorGraph(1);
+        CollatorGraph graph2 = createCollatorGraph(2);
+        List<CollatorGraph> graphs1 = List.of(
+                createCollatorGraph(3),
+                createCollatorGraph(4)
         );
-        List<Dependency> dependencies = Stream.of(tracingData1, tracingData2)
-                .map(TracingData::getDependencies)
-                .flatMap(Collection::stream)
-                .collect(Collectors.toList());
-        List<GenericTrace> traces = Stream.of(tracingData1, tracingData2)
-                .map(TracingData::getTraces)
-                .flatMap(Collection::stream)
-                .collect(Collectors.toList());
 
-        SummaryComponentDependencies componentDependencies = createComponentDependencies();
-        SummarySubComponentDependencies subComponentDependencies = createSubComponentDependencies();
-        List<SummaryCallGraph> callGraphs = createCallGraphs();
-
-        when(subComponentDependencyCollator.collateDependencies(
-                traces
-        )).thenReturn(subComponentDependencies);
-        when(componentDependencyCollator.collateDependencies(
-                traces,
-                dependencies
-        )).thenReturn(componentDependencies);
+        when(subComponentGraphCollator.collateGraph(
+                tracingData
+        )).thenReturn(graph1);
+        when(componentGraphCollator.collateGraph(
+                tracingData
+        )).thenReturn(graph2);
         when(callGraphCollator.collateCallGraphs(
-                traces
-        )).thenReturn(callGraphs);
+                tracingData
+        )).thenReturn(graphs1);
 
         // When
-        ProcessedTracingData returnValue = underTest.process(tracingData);
+        List<Diagram> returnValue = underTest.process(tracingData);
 
         // Then
-        assertThat(returnValue).isEqualTo(
-                new ProcessedTracingData(
-                        componentDependencies,
-                        subComponentDependencies,
-                        callGraphs
-                )
+        assertThat(returnValue).containsExactly(
+                Diagram.builder()
+                        .id("test-tracing-data-id-1")
+                        .name("Test Tracing Data 1")
+                        .discovered(true).type("tracing")
+                        .states(List.of(
+                                GraphState.builder().pluginId("test-plugin-id-1").environmentId("test-environment-id-1").nodes(List.of(GraphNode.builder().componentId("test-component-id-2").build())).build()
+                        ))
+                        .build(),
+                Diagram.builder()
+                        .id("test-tracing-data-id-1")
+                        .name("Test Tracing Data 1")
+                        .discovered(true).type("tracing")
+                        .states(List.of(
+                                GraphState.builder().pluginId("test-plugin-id-1").environmentId("test-environment-id-1").nodes(List.of(GraphNode.builder().componentId("test-component-id-1").build())).build()
+                        ))
+                        .build(),
+                Diagram.builder()
+                        .id("test-tracing-data-id-1")
+                        .name("Test Tracing Data 1")
+                        .discovered(true).type("tracing")
+                        .states(List.of(
+                                GraphState.builder().pluginId("test-plugin-id-1").environmentId("test-environment-id-1").nodes(List.of(GraphNode.builder().componentId("test-component-id-3").build())).build()
+                        ))
+                        .build(),
+                Diagram.builder()
+                        .id("test-tracing-data-id-1")
+                        .name("Test Tracing Data 1")
+                        .discovered(true).type("tracing")
+                        .states(List.of(
+                                GraphState.builder().pluginId("test-plugin-id-1").environmentId("test-environment-id-1").nodes(List.of(GraphNode.builder().componentId("test-component-id-4").build())).build()
+                        ))
+                        .build()
         );
     }
 }

@@ -40,16 +40,20 @@ public final class DiagramUtils {
                 )
                 .collect(toUnmodifiableList());
         return Diagram.builder()
-                .id("test-diagram-id-" + diagramIdNumber)
-                .name("Test Diagram " + diagramOthersNumber)
+                .id(createDiagramId(diagramIdNumber))
+                .name("Test Diagram Name " + diagramOthersNumber)
                 .type("test-type-" + diagramOthersNumber)
                 .connections(connections)
                 .build();
     }
 
+    public static String createDiagramId(int diagramNumber) {
+        return "test-diagram-id-" + diagramNumber;
+    }
+
     public static Diagram createInvalidDiagram(int number) {
         return Diagram.builder()
-                .id("test-diagram-id-" + number)
+                .id(createDiagramId(number))
                 .build();
     }
 
