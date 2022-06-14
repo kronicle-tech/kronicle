@@ -1,17 +1,18 @@
-package tech.kronicle.tracingprocessor;
+package tech.kronicle.tracingprocessor.internal.services;
 
 import org.junit.jupiter.api.Test;
 import tech.kronicle.pluginapi.finders.models.GenericSpan;
 import tech.kronicle.pluginapi.finders.models.GenericTrace;
-import tech.kronicle.sdk.constants.DependencyTypeIds;
-import tech.kronicle.sdk.models.SummaryCallGraph;
-import tech.kronicle.sdk.models.SummaryComponentDependency;
-import tech.kronicle.sdk.models.SummarySubComponentDependencyNode;
+import tech.kronicle.sdk.constants.GraphEdgeTypeIds;
+import tech.kronicle.sdk.models.GraphNode;
+import tech.kronicle.tracingprocessor.internal.models.CollatorGraph;
+import tech.kronicle.tracingprocessor.internal.models.CollatorGraphEdge;
 
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static tech.kronicle.tracingprocessor.TracingTestHelper.createTrace;
+import static tech.kronicle.tracingprocessor.internal.services.TracingTestHelper.createTrace;
+import static tech.kronicle.tracingprocessor.testutils.TestDataHelper.createTracingData;
 
 public class CallGraphCollatorTest {
 
@@ -24,12 +25,12 @@ public class CallGraphCollatorTest {
         List<GenericTrace> traces = List.of();
 
         // When
-        List<SummaryCallGraph> returnValue = underTest.collateCallGraphs(traces);
+        List<CollatorGraph> returnValue = underTest.collateCallGraphs(createTracingData(traces));
 
         // Then
         assertThat(returnValue).isEmpty();
     }
-
+    
     @Test
     public void collateCallGraphsShouldReturnACallGraphWhenThereIsASingleTraceWithOneSpan() {
         GenericSpan trace1Span1 = testHelper.spanBuilder()
@@ -41,25 +42,23 @@ public class CallGraphCollatorTest {
         List<GenericTrace> traces = List.of(createTrace(trace1Span1));
 
         // When
-        List<SummaryCallGraph> returnValue = underTest.collateCallGraphs(traces);
+        List<CollatorGraph> returnValue = underTest.collateCallGraphs(createTracingData(traces));
 
         // Then
-        assertThat(returnValue).containsExactly(SummaryCallGraph.builder()
-                .traceCount(1)
+        assertThat(returnValue).containsExactly(CollatorGraph.builder()
+                .sampleSize(1)
                 .nodes(List.of(
-                        SummarySubComponentDependencyNode.builder()
+                        GraphNode.builder()
                                 .componentId("test-service-1")
-                                .spanName("test-span-1")
+                                .name("test-span-1")
                                 .build()))
-                .dependencies(List.of(
-                        SummaryComponentDependency.builder()
+                .edges(List.of(
+                        CollatorGraphEdge.builder()
                                 .targetIndex(0)
-                                .typeId(DependencyTypeIds.TRACE)
-                                .manual(false)
+                                .type(GraphEdgeTypeIds.TRACE)
                                 .sampleSize(1)
-                                .startTimestamp(testHelper.getTimestamp(1))
-                                .endTimestamp(testHelper.getTimestamp(1))
-                                .duration(testHelper.createDuration(1000L, 1000L, 1000L, 1000L, 1000L, 1000L))
+                                .timestamps(List.of(1_000L))
+                                .durations(List.of(1_000L))
                                 .build()))
                 .build());
     }
@@ -82,46 +81,42 @@ public class CallGraphCollatorTest {
         List<GenericTrace> traces = List.of(createTrace(trace1Span1, trace1Span2));
 
         // When
-        List<SummaryCallGraph> returnValue = underTest.collateCallGraphs(traces);
+        List<CollatorGraph> returnValue = underTest.collateCallGraphs(createTracingData(traces));
 
         // Then
-        assertThat(returnValue).containsExactly(SummaryCallGraph.builder()
-                .traceCount(1)
+        assertThat(returnValue).containsExactly(CollatorGraph.builder()
+                .sampleSize(1)
                 .nodes(List.of(
-                        SummarySubComponentDependencyNode.builder()
+                        GraphNode.builder()
                                 .componentId("test-service-1")
-                                .spanName("test-span-1")
+                                .name("test-span-1")
                                 .build(),
-                        SummarySubComponentDependencyNode.builder()
+                        GraphNode.builder()
                                 .componentId("test-service-2")
-                                .spanName("test-span-2")
+                                .name("test-span-2")
                                 .build()))
-                .dependencies(List.of(
-                        SummaryComponentDependency.builder()
+                .edges(List.of(
+                        CollatorGraphEdge.builder()
                                 .targetIndex(0)
                                 .relatedIndexes(List.of(1))
-                                .typeId(DependencyTypeIds.TRACE)
-                                .manual(false)
+                                .type(GraphEdgeTypeIds.TRACE)
                                 .sampleSize(1)
-                                .startTimestamp(testHelper.getTimestamp(1))
-                                .endTimestamp(testHelper.getTimestamp(1))
-                                .duration(testHelper.createDuration(1000L, 1000L, 1000L, 1000L, 1000L, 1000L))
+                                .timestamps(List.of(1_000L))
+                                .durations(List.of(1_000L))
                                 .build(),
-                        SummaryComponentDependency.builder()
+                        CollatorGraphEdge.builder()
                                 .sourceIndex(0)
                                 .targetIndex(1)
-                                .typeId(DependencyTypeIds.TRACE)
-                                .manual(false)
+                                .type(GraphEdgeTypeIds.TRACE)
                                 .sampleSize(1)
-                                .startTimestamp(testHelper.getTimestamp(2))
-                                .endTimestamp(testHelper.getTimestamp(2))
-                                .duration(testHelper.createDuration(2000L, 2000L, 2000L, 2000L, 2000L, 2000L))
+                                .timestamps(List.of(2_000L))
+                                .durations(List.of(2_000L))
                                 .build()))
                 .build());
     }
 
     @Test
-    public void collateCallGraphsShouldMergeDuplicateDependenciesInTheSameTraceAndSetSampleSizeToIncludeAllDuplicates() {
+    public void collateCallGraphsShouldMergeDuplicateEdgesInTheSameTraceAndSetSampleSizeToIncludeAllDuplicates() {
         GenericSpan trace1Span1 = testHelper.spanBuilder()
                 .name("test-span-1")
                 .timestamp(testHelper.getNextTimestampInMicroseconds())
@@ -145,40 +140,36 @@ public class CallGraphCollatorTest {
         List<GenericTrace> traces = List.of(createTrace(trace1Span1, trace1Span2a, trace1Span2b));
 
         // When
-        List<SummaryCallGraph> returnValue = underTest.collateCallGraphs(traces);
+        List<CollatorGraph> returnValue = underTest.collateCallGraphs(createTracingData(traces));
 
         // Then
-        assertThat(returnValue).containsExactly(SummaryCallGraph.builder()
-                .traceCount(1)
+         assertThat(returnValue).containsExactly(CollatorGraph.builder()
+                .sampleSize(1)
                 .nodes(List.of(
-                        SummarySubComponentDependencyNode.builder()
+                        GraphNode.builder()
                                 .componentId("test-service-1")
-                                .spanName("test-span-1")
+                                .name("test-span-1")
                                 .build(),
-                        SummarySubComponentDependencyNode.builder()
+                        GraphNode.builder()
                                 .componentId("test-service-2")
-                                .spanName("test-span-2")
+                                .name("test-span-2")
                                 .build()))
-                .dependencies(List.of(
-                        SummaryComponentDependency.builder()
+                .edges(List.of(
+                        CollatorGraphEdge.builder()
                                 .targetIndex(0)
                                 .relatedIndexes(List.of(1))
-                                .typeId(DependencyTypeIds.TRACE)
-                                .manual(false)
+                                .type(GraphEdgeTypeIds.TRACE)
                                 .sampleSize(1)
-                                .startTimestamp(testHelper.getTimestamp(1))
-                                .endTimestamp(testHelper.getTimestamp(1))
-                                .duration(testHelper.createDuration(1000L, 1000L, 1000L, 1000L, 1000L, 1000L))
+                                .timestamps(List.of(1_000L))
+                                .durations(List.of(1_000L))
                                 .build(),
-                        SummaryComponentDependency.builder()
+                        CollatorGraphEdge.builder()
                                 .sourceIndex(0)
                                 .targetIndex(1)
-                                .typeId(DependencyTypeIds.TRACE)
-                                .manual(false)
+                                .type(GraphEdgeTypeIds.TRACE)
                                 .sampleSize(2)
-                                .startTimestamp(testHelper.getTimestamp(2))
-                                .endTimestamp(testHelper.getTimestamp(3))
-                                .duration(testHelper.createDuration(2000L, 3000L, 2000L, 3000L, 3000L, 3000L))
+                                .timestamps(List.of(2_000L, 3_000L))
+                                .durations(List.of(2_000L, 3_000L))
                                 .build()))
                 .build());
     }
@@ -216,74 +207,66 @@ public class CallGraphCollatorTest {
                 createTrace(trace2Span1, trace2Span2));
 
         // When
-        List<SummaryCallGraph> returnValue = underTest.collateCallGraphs(traces);
+        List<CollatorGraph> returnValue = underTest.collateCallGraphs(createTracingData(traces));
 
         // Then
         assertThat(returnValue).containsExactly(
-                SummaryCallGraph.builder()
-                        .traceCount(1)
+                CollatorGraph.builder()
+                        .sampleSize(1)
                         .nodes(List.of(
-                                SummarySubComponentDependencyNode.builder()
+                                GraphNode.builder()
                                         .componentId("test-service-3")
-                                        .spanName("test-span-3")
+                                        .name("test-span-3")
                                         .build(),
-                                SummarySubComponentDependencyNode.builder()
+                                GraphNode.builder()
                                         .componentId("test-service-4")
-                                        .spanName("test-span-4")
+                                        .name("test-span-4")
                                         .build()))
-                        .dependencies(List.of(
-                                SummaryComponentDependency.builder()
+                        .edges(List.of(
+                                CollatorGraphEdge.builder()
                                         .targetIndex(0)
                                         .relatedIndexes(List.of(1))
-                                        .typeId(DependencyTypeIds.TRACE)
-                                        .manual(false)
+                                        .type(GraphEdgeTypeIds.TRACE)
                                         .sampleSize(1)
-                                        .startTimestamp(testHelper.getTimestamp(3))
-                                        .endTimestamp(testHelper.getTimestamp(3))
-                                        .duration(testHelper.createDuration(3000L, 3000L, 3000L, 3000L, 3000L, 3000L))
+                                        .timestamps(List.of(3_000L))
+                                        .durations(List.of(3_000L))
                                         .build(),
-                                SummaryComponentDependency.builder()
+                                CollatorGraphEdge.builder()
                                         .sourceIndex(0)
                                         .targetIndex(1)
-                                        .typeId(DependencyTypeIds.TRACE)
-                                        .manual(false)
+                                        .type(GraphEdgeTypeIds.TRACE)
                                         .sampleSize(1)
-                                        .startTimestamp(testHelper.getTimestamp(4))
-                                        .endTimestamp(testHelper.getTimestamp(4))
-                                        .duration(testHelper.createDuration(4000L, 4000L, 4000L, 4000L, 4000L, 4000L))
+                                        .timestamps(List.of(4_000L))
+                                        .durations(List.of(4_000L))
                                         .build()))
                         .build(),
-                SummaryCallGraph.builder()
-                        .traceCount(1)
+                CollatorGraph.builder()
+                        .sampleSize(1)
                         .nodes(List.of(
-                                SummarySubComponentDependencyNode.builder()
+                                GraphNode.builder()
                                         .componentId("test-service-1")
-                                        .spanName("test-span-1")
+                                        .name("test-span-1")
                                         .build(),
-                                SummarySubComponentDependencyNode.builder()
+                                GraphNode.builder()
                                         .componentId("test-service-2")
-                                        .spanName("test-span-2")
+                                        .name("test-span-2")
                                         .build()))
-                        .dependencies(List.of(
-                                SummaryComponentDependency.builder()
+                        .edges(List.of(
+                                CollatorGraphEdge.builder()
                                         .targetIndex(0)
                                         .relatedIndexes(List.of(1))
-                                        .typeId(DependencyTypeIds.TRACE)
-                                        .manual(false)
+                                        .type(GraphEdgeTypeIds.TRACE)
                                         .sampleSize(1)
-                                        .startTimestamp(testHelper.getTimestamp(1))
-                                        .endTimestamp(testHelper.getTimestamp(1))
-                                        .duration(testHelper.createDuration(1000L, 1000L, 1000L, 1000L, 1000L, 1000L))
+                                        .timestamps(List.of(1_000L))
+                                        .durations(List.of(1_000L))
                                         .build(),
-                                SummaryComponentDependency.builder()
+                                CollatorGraphEdge.builder()
                                         .sourceIndex(0)
                                         .targetIndex(1)
-                                        .typeId(DependencyTypeIds.TRACE)
-                                        .manual(false)
+                                        .type(GraphEdgeTypeIds.TRACE)
                                         .sampleSize(1)
-                                        .startTimestamp(testHelper.getTimestamp(2))
-                                        .endTimestamp(testHelper.getTimestamp(2))
-                                        .duration(testHelper.createDuration(2000L, 2000L, 2000L, 2000L, 2000L, 2000L))
+                                        .timestamps(List.of(2_000L))
+                                        .durations(List.of(2_000L))
                                         .build()))
                         .build());
     }
@@ -321,51 +304,45 @@ public class CallGraphCollatorTest {
                 createTrace(trace2Span1, trace2Span2));
 
         // When
-        List<SummaryCallGraph> returnValue = underTest.collateCallGraphs(traces);
+        List<CollatorGraph> returnValue = underTest.collateCallGraphs(createTracingData(traces));
 
         // Then
         assertThat(returnValue).containsExactly(
-                SummaryCallGraph.builder()
-                        .traceCount(2)
+                CollatorGraph.builder()
+                        .sampleSize(2)
                         .nodes(List.of(
-                                SummarySubComponentDependencyNode.builder()
+                                GraphNode.builder()
                                         .componentId("test-service-1")
-                                        .spanName("test-span-1")
+                                        .name("test-span-1")
                                         .build(),
-                                SummarySubComponentDependencyNode.builder()
+                                GraphNode.builder()
                                         .componentId("test-service-2")
-                                        .spanName("test-span-2")
+                                        .name("test-span-2")
                                         .build()))
-                        .dependencies(List.of(
-                                SummaryComponentDependency.builder()
+                        .edges(List.of(
+                                CollatorGraphEdge.builder()
                                         .targetIndex(0)
                                         .relatedIndexes(List.of(1))
-                                        .typeId(DependencyTypeIds.TRACE)
-                                        .manual(false)
+                                        .type(GraphEdgeTypeIds.TRACE)
                                         .sampleSize(2)
-                                        .startTimestamp(testHelper.getTimestamp(1))
-                                        .endTimestamp(testHelper.getTimestamp(3))
-                                        .duration(testHelper.createDuration(1000L, 3000L, 1000L, 3000L, 3000L, 3000L))
+                                        .timestamps(List.of(1_000L, 3_000L))
+                                        .durations(List.of(1_000L, 3_000L))
                                         .build(),
-                                SummaryComponentDependency.builder()
+                                CollatorGraphEdge.builder()
                                         .sourceIndex(0)
                                         .targetIndex(1)
-                                        .typeId(DependencyTypeIds.TRACE)
-                                        .manual(false)
+                                        .type(GraphEdgeTypeIds.TRACE)
                                         .sampleSize(2)
-                                        .startTimestamp(testHelper.getTimestamp(2))
-                                        .endTimestamp(testHelper.getTimestamp(4))
-                                        .duration(testHelper.createDuration(2000L, 4000L, 2000L, 4000L, 4000L, 4000L))
+                                        .timestamps(List.of(2_000L, 4_000L))
+                                        .durations(List.of(2_000L, 4_000L))
                                         .build()))
                         .build());
     }
-
+    
     private CallGraphCollator createCallGraphCollator() {
-        DependencyDurationCalculator dependencyDurationCalculator = new DependencyDurationCalculator();
         return new CallGraphCollator(
-                new GenericDependencyCollator(),
-                new DependencyHelper(dependencyDurationCalculator),
-                dependencyDurationCalculator
+                new GenericGraphCollator(),
+                new EdgeHelper()
         );
     }
 }

@@ -1,6 +1,8 @@
-package tech.kronicle.tracingprocessor;
+package tech.kronicle.tracingprocessor.internal.services;
 
 import org.junit.jupiter.api.Test;
+import tech.kronicle.tracingprocessor.internal.services.ComponentAliasResolver;
+import tech.kronicle.tracingprocessor.internal.services.ComponentAliasResolverFactory;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

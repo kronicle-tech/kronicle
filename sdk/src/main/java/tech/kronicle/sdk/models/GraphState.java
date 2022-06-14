@@ -25,12 +25,24 @@ public class GraphState implements DiagramState {
     @NotBlank
     @Pattern(regexp = PatternStrings.ID)
     String pluginId;
+    @NotBlank
+    @Pattern(regexp = PatternStrings.ID)
+    String environmentId;
     List<@Valid GraphNode> nodes;
     List<@Valid GraphEdge> edges;
+    Integer sampleSize;
 
-    public GraphState(String pluginId, List<GraphNode> nodes, List<GraphEdge> edges) {
+    public GraphState(
+            String pluginId,
+            String environmentId,
+            List<GraphNode> nodes,
+            List<GraphEdge> edges,
+            Integer sampleSize
+    ) {
         this.pluginId = pluginId;
+        this.environmentId = environmentId;
         this.nodes = createUnmodifiableList(nodes);
         this.edges = createUnmodifiableList(edges);
+        this.sampleSize = sampleSize;
     }
 }

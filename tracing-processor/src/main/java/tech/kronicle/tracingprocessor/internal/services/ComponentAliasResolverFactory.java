@@ -1,4 +1,4 @@
-package tech.kronicle.tracingprocessor;
+package tech.kronicle.tracingprocessor.internal.services;
 
 public final class ComponentAliasResolverFactory {
 

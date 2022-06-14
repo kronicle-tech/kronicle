@@ -28,8 +28,7 @@ import tech.kronicle.sdk.models.SummaryMissingComponent;
 import tech.kronicle.sdk.models.Tag;
 import tech.kronicle.sdk.models.TechDebt;
 import tech.kronicle.service.exceptions.ValidationException;
-import tech.kronicle.tracingprocessor.ComponentAliasResolver;
-import tech.kronicle.tracingprocessor.ProcessedTracingData;
+import tech.kronicle.tracingprocessor.internal.services.ComponentAliasResolver;
 import tech.kronicle.tracingprocessor.TracingProcessor;
 import tech.kronicle.utils.ThrowableToScannerErrorMapper;
 
@@ -52,7 +51,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.doAnswer;
 import static org.mockito.Mockito.when;
-import static tech.kronicle.tracingprocessor.testutils.TestDataHelper.createProcessedTracingData;
 import static tech.kronicle.tracingprocessor.testutils.TestDataHelper.createTracingDataList;
 
 @ExtendWith(MockitoExtension.class)

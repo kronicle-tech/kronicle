@@ -1,4 +1,4 @@
-package tech.kronicle.tracingprocessor;
+package tech.kronicle.tracingprocessor.internal.services;
 
 import tech.kronicle.pluginapi.finders.models.GenericSpan;
 import tech.kronicle.pluginapi.finders.models.GenericTrace;

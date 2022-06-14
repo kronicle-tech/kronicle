@@ -73,7 +73,7 @@ public class ComponentRepository extends RefreshingRepository {
             summaryUpdater = newSummary::set;
         }
 
-        scanEngine.scan(componentMetadata, loaderOutput.getComponents(), summaryUpdater);
+        scanEngine.scan(componentMetadata, loaderOutput.getComponents(), loaderOutput.getDiagrams(), summaryUpdater);
         testEngine.test(loaderOutput.getComponents());
 
         if (!firstTime) {

@@ -3,8 +3,9 @@ package tech.kronicle.pluginapi.finders.models;
 import lombok.Builder;
 import lombok.Value;
 import tech.kronicle.sdk.constants.PatternStrings;
-import tech.kronicle.sdk.models.Dependency;
+import tech.kronicle.sdk.models.*;
 
+import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 import java.util.List;
@@ -45,5 +46,23 @@ public class TracingData {
         this.name = name;
         this.dependencies = createUnmodifiableList(dependencies);
         this.traces = createUnmodifiableList(traces);
+    }
+
+    public Diagram toDiagram(List<GraphNode> nodes, List<GraphEdge> edges, Integer sampleSize) {
+        return Diagram.builder()
+                .id(this.getId())
+                .name(this.getName())
+                .discovered(true)
+                .type("tracing")
+                .states(List.of(
+                        GraphState.builder()
+                                .pluginId(this.getPluginId())
+                                .environmentId(this.getEnvironmentId())
+                                .nodes(nodes)
+                                .edges(edges)
+                                .sampleSize(sampleSize)
+                                .build()
+                ))
+                .build();
     }
 }

@@ -1,4 +1,4 @@
-package tech.kronicle.tracingprocessor;
+package tech.kronicle.tracingprocessor.internal.services;
 
 import org.junit.jupiter.api.Test;
 import tech.kronicle.pluginapi.finders.models.GenericSpan;
@@ -6,6 +6,7 @@ import tech.kronicle.pluginapi.finders.models.GenericTrace;
 import tech.kronicle.pluginapi.finders.models.TracingData;
 import tech.kronicle.sdk.constants.DependencyTypeIds;
 import tech.kronicle.sdk.models.Dependency;
+import tech.kronicle.tracingprocessor.internal.services.ComponentAliasResolver;
 
 import java.util.List;
 import java.util.Map;

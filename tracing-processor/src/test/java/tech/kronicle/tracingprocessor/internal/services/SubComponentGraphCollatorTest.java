@@ -1,25 +1,26 @@
-package tech.kronicle.tracingprocessor;
+package tech.kronicle.tracingprocessor.internal.services;
 
 import org.junit.jupiter.api.Test;
 import tech.kronicle.pluginapi.finders.models.GenericSpan;
 import tech.kronicle.pluginapi.finders.models.GenericTag;
 import tech.kronicle.pluginapi.finders.models.GenericTrace;
-import tech.kronicle.sdk.constants.DependencyTypeIds;
-import tech.kronicle.sdk.models.SummaryComponentDependency;
-import tech.kronicle.sdk.models.SummarySubComponentDependencies;
-import tech.kronicle.sdk.models.SummarySubComponentDependencyNode;
+import tech.kronicle.sdk.constants.GraphEdgeTypeIds;
+import tech.kronicle.sdk.models.GraphNode;
+import tech.kronicle.sdk.models.Tag;
+import tech.kronicle.tracingprocessor.internal.models.CollatorGraph;
+import tech.kronicle.tracingprocessor.internal.models.CollatorGraphEdge;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static tech.kronicle.tracingprocessor.TracingTestHelper.createTrace;
+import static tech.kronicle.tracingprocessor.internal.services.TracingTestHelper.createTrace;
+import static tech.kronicle.tracingprocessor.testutils.TestDataHelper.createTracingData;
 
-public class SubComponentDependencyCollatorTest {
+public class SubComponentGraphCollatorTest {
 
     private final TracingTestHelper testHelper = new TracingTestHelper();
-    private final SubComponentDependencyCollator underTest = createSubComponentDependencyCollator();
+    private final SubComponentGraphCollator underTest = createSubComponentDependencyCollator();
 
     @Test
     public void collateDependenciesWhenThereIsNoTracesShouldReturnNoDependencies() {
@@ -27,11 +28,11 @@ public class SubComponentDependencyCollatorTest {
         List<GenericTrace> traces = List.of();
 
         // When
-        SummarySubComponentDependencies returnValue = underTest.collateDependencies(traces);
+        CollatorGraph returnValue = underTest.collateGraph(createTracingData(traces));
 
         // Then
         assertThat(returnValue.getNodes()).isEmpty();
-        assertThat(returnValue.getDependencies()).isEmpty();
+        assertThat(returnValue.getEdges()).isEmpty();
     }
 
     @Test
@@ -48,13 +49,13 @@ public class SubComponentDependencyCollatorTest {
         );
 
         // When
-        SummarySubComponentDependencies returnValue = underTest.collateDependencies(traces);
+        CollatorGraph returnValue = underTest.collateGraph(createTracingData(traces));
 
         // Then
         assertThat(returnValue.getNodes()).containsExactly(
-                new SummarySubComponentDependencyNode("test-service-1", "test-span-1", Map.of()));
-        assertThat(returnValue.getDependencies()).containsExactly(
-                new SummaryComponentDependency(null, 0, List.of(), DependencyTypeIds.TRACE, null, null, false, 1, testHelper.getTimestamp(1), testHelper.getTimestamp(1), testHelper.createDuration(1_000, 1_000, 1_000, 1_000, 1_000, 1_000)));
+                new GraphNode("test-service-1", "test-span-1", List.of()));
+        assertThat(returnValue.getEdges()).containsExactly(
+                new CollatorGraphEdge(null, 0, List.of(), GraphEdgeTypeIds.TRACE, null, null, 1, List.of(1_000L), List.of(1_000L)));
     }
 
     @Test
@@ -78,15 +79,15 @@ public class SubComponentDependencyCollatorTest {
         );
 
         // When
-        SummarySubComponentDependencies returnValue = underTest.collateDependencies(traces);
+        CollatorGraph returnValue = underTest.collateGraph(createTracingData(traces));
 
         // Then
         assertThat(returnValue.getNodes()).containsExactly(
-                new SummarySubComponentDependencyNode("test-service-1", "test-span-1", Map.of()),
-                new SummarySubComponentDependencyNode("test-service-2", "test-span-2", Map.of()));
-        assertThat(returnValue.getDependencies()).containsExactly(
-                new SummaryComponentDependency(null, 0, List.of(1), DependencyTypeIds.TRACE, null, null, false, 1, testHelper.getTimestamp(1), testHelper.getTimestamp(1), testHelper.createDuration(1_000, 1_000, 1_000, 1_000, 1_000, 1_000)),
-                new SummaryComponentDependency(0, 1, List.of(), DependencyTypeIds.TRACE, null, null, false, 1, testHelper.getTimestamp(2), testHelper.getTimestamp(2), testHelper.createDuration(2_000, 2_000, 2_000, 2_000, 2_000, 2_000)));
+                new GraphNode("test-service-1", "test-span-1", List.of()),
+                new GraphNode("test-service-2", "test-span-2", List.of()));
+        assertThat(returnValue.getEdges()).containsExactly(
+                new CollatorGraphEdge(null, 0, List.of(1), GraphEdgeTypeIds.TRACE, null, null, 1, List.of(1_000L), List.of(1_000L)),
+                new CollatorGraphEdge(0, 1, List.of(), GraphEdgeTypeIds.TRACE, null, null, 1, List.of(2_000L), List.of(2_000L)));
     }
 
     @Test
@@ -124,19 +125,19 @@ public class SubComponentDependencyCollatorTest {
         );
 
         // When
-        SummarySubComponentDependencies returnValue = underTest.collateDependencies(traces);
+        CollatorGraph returnValue = underTest.collateGraph(createTracingData(traces));
 
         // Then
         assertThat(returnValue.getNodes()).containsExactly(
-                new SummarySubComponentDependencyNode("test-service-1", "test-span-1", Map.of()),
-                new SummarySubComponentDependencyNode("test-service-2", "test-span-2", Map.of()),
-                new SummarySubComponentDependencyNode("test-service-3", "test-span-3", Map.of()),
-                new SummarySubComponentDependencyNode("test-service-4", "test-span-4", Map.of()));
-        assertThat(returnValue.getDependencies()).containsExactly(
-                new SummaryComponentDependency(null, 0, List.of(1), DependencyTypeIds.TRACE, null, null, false, 1, testHelper.getTimestamp(1), testHelper.getTimestamp(1), testHelper.createDuration(1_000, 1_000, 1_000, 1_000, 1_000, 1_000)),
-                new SummaryComponentDependency(null, 2, List.of(3), DependencyTypeIds.TRACE, null, null, false, 1, testHelper.getTimestamp(3), testHelper.getTimestamp(3), testHelper.createDuration(3_000, 3_000, 3_000, 3_000, 3_000, 3_000)),
-                new SummaryComponentDependency(0, 1, List.of(), DependencyTypeIds.TRACE, null, null, false, 1, testHelper.getTimestamp(2), testHelper.getTimestamp(2), testHelper.createDuration(2_000, 2_000, 2_000, 2_000, 2_000, 2_000)),
-                new SummaryComponentDependency(2, 3, List.of(), DependencyTypeIds.TRACE, null, null, false, 1, testHelper.getTimestamp(4), testHelper.getTimestamp(4), testHelper.createDuration(4_000, 4_000, 4_000, 4_000, 4_000, 4_000)));
+                new GraphNode("test-service-1", "test-span-1", List.of()),
+                new GraphNode("test-service-2", "test-span-2", List.of()),
+                new GraphNode("test-service-3", "test-span-3", List.of()),
+                new GraphNode("test-service-4", "test-span-4", List.of()));
+        assertThat(returnValue.getEdges()).containsExactly(
+                new CollatorGraphEdge(null, 0, List.of(1), GraphEdgeTypeIds.TRACE, null, null, 1, List.of(1_000L), List.of(1_000L)),
+                new CollatorGraphEdge(null, 2, List.of(3), GraphEdgeTypeIds.TRACE, null, null, 1, List.of(3_000L), List.of(3_000L)),
+                new CollatorGraphEdge(0, 1, List.of(), GraphEdgeTypeIds.TRACE, null, null, 1, List.of(2_000L), List.of(2_000L)),
+                new CollatorGraphEdge(2, 3, List.of(), GraphEdgeTypeIds.TRACE, null, null, 1, List.of(4_000L), List.of(4_000L)));
     }
 
     @Test
@@ -174,19 +175,19 @@ public class SubComponentDependencyCollatorTest {
         );
 
         // When
-        SummarySubComponentDependencies returnValue = underTest.collateDependencies(traces);
+        CollatorGraph returnValue = underTest.collateGraph(createTracingData(traces));
 
         // Then
         assertThat(returnValue.getNodes()).containsExactly(
-                new SummarySubComponentDependencyNode("test-service-1", "test-span-1", Map.of()),
-                new SummarySubComponentDependencyNode("test-service-2", "test-span-2", Map.of()),
-                new SummarySubComponentDependencyNode("test-service-3", "test-span-3", Map.of()),
-                new SummarySubComponentDependencyNode("test-service-4", "test-span-4", Map.of()));
-        assertThat(returnValue.getDependencies()).containsExactly(
-                new SummaryComponentDependency(null, 0, List.of(1, 2, 3), DependencyTypeIds.TRACE, null, null, false, 1, testHelper.getTimestamp(1), testHelper.getTimestamp(1), testHelper.createDuration(1_000, 1_000, 1_000, 1_000, 1_000, 1_000)),
-                new SummaryComponentDependency(0, 1, List.of(2, 3), DependencyTypeIds.TRACE, null, null, false, 1, testHelper.getTimestamp(2), testHelper.getTimestamp(2), testHelper.createDuration(2_000, 2_000, 2_000, 2_000, 2_000, 2_000)),
-                new SummaryComponentDependency(1, 2, List.of(0, 3), DependencyTypeIds.TRACE, null, null, false, 1, testHelper.getTimestamp(3), testHelper.getTimestamp(3), testHelper.createDuration(3_000, 3_000, 3_000, 3_000, 3_000, 3_000)),
-                new SummaryComponentDependency(2, 3, List.of(0, 1), DependencyTypeIds.TRACE, null, null, false, 1, testHelper.getTimestamp(4), testHelper.getTimestamp(4), testHelper.createDuration(4_000, 4_000, 4_000, 4_000, 4_000, 4_000)));
+                new GraphNode("test-service-1", "test-span-1", List.of()),
+                new GraphNode("test-service-2", "test-span-2", List.of()),
+                new GraphNode("test-service-3", "test-span-3", List.of()),
+                new GraphNode("test-service-4", "test-span-4", List.of()));
+        assertThat(returnValue.getEdges()).containsExactly(
+                new CollatorGraphEdge(null, 0, List.of(1, 2, 3), GraphEdgeTypeIds.TRACE, null, null, 1, List.of(1_000L), List.of(1_000L)),
+                new CollatorGraphEdge(0, 1, List.of(2, 3), GraphEdgeTypeIds.TRACE, null, null, 1, List.of(2_000L), List.of(2_000L)),
+                new CollatorGraphEdge(1, 2, List.of(0, 3), GraphEdgeTypeIds.TRACE, null, null, 1, List.of(3_000L), List.of(3_000L)),
+                new CollatorGraphEdge(2, 3, List.of(0, 1), GraphEdgeTypeIds.TRACE, null, null, 1, List.of(4_000L), List.of(4_000L)));
     }
 
     @Test
@@ -224,17 +225,17 @@ public class SubComponentDependencyCollatorTest {
         );
 
         // When
-        SummarySubComponentDependencies returnValue = underTest.collateDependencies(traces);
+        CollatorGraph returnValue = underTest.collateGraph(createTracingData(traces));
 
         // Then
         assertThat(returnValue.getNodes()).containsExactly(
-                new SummarySubComponentDependencyNode("test-service-1", "test-span-1", Map.of()),
-                new SummarySubComponentDependencyNode("test-service-2", "test-span-2", Map.of()),
-                new SummarySubComponentDependencyNode("test-service-3", "test-span-3", Map.of()));
-        assertThat(returnValue.getDependencies()).containsExactly(
-                new SummaryComponentDependency(null, 0, List.of(1, 2), DependencyTypeIds.TRACE, null, null, false, 1, testHelper.getTimestamp(1), testHelper.getTimestamp(1), testHelper.createDuration(1_000, 1_000, 1_000, 1_000, 1_000, 1_000)),
-                new SummaryComponentDependency(0, 1, List.of(2), DependencyTypeIds.TRACE, null, null, false, 1, testHelper.getTimestamp(2), testHelper.getTimestamp(2), testHelper.createDuration(2_000, 2_000, 2_000, 2_000, 2_000, 2_000)),
-                new SummaryComponentDependency(1, 2, List.of(0), DependencyTypeIds.TRACE, null, null, false, 2, testHelper.getTimestamp(3), testHelper.getTimestamp(4), testHelper.createDuration(3_000, 4_000, 3_000, 4_000, 4_000, 4_000)));
+                new GraphNode("test-service-1", "test-span-1", List.of()),
+                new GraphNode("test-service-2", "test-span-2", List.of()),
+                new GraphNode("test-service-3", "test-span-3", List.of()));
+        assertThat(returnValue.getEdges()).containsExactly(
+                new CollatorGraphEdge(null, 0, List.of(1, 2), GraphEdgeTypeIds.TRACE, null, null, 1, List.of(1_000L), List.of(1_000L)),
+                new CollatorGraphEdge(0, 1, List.of(2), GraphEdgeTypeIds.TRACE, null, null, 1, List.of(2_000L), List.of(2_000L)),
+                new CollatorGraphEdge(1, 2, List.of(0), GraphEdgeTypeIds.TRACE, null, null, 2, List.of(3_000L, 4_000L), List.of(3_000L, 4_000L)));
     }
 
     @Test
@@ -271,15 +272,15 @@ public class SubComponentDependencyCollatorTest {
         );
 
         // When
-        SummarySubComponentDependencies returnValue = underTest.collateDependencies(traces);
+        CollatorGraph returnValue = underTest.collateGraph(createTracingData(traces));
 
         // Then
         assertThat(returnValue.getNodes()).containsExactly(
-                new SummarySubComponentDependencyNode("test-service-1", "test-span-1", Map.of()),
-                new SummarySubComponentDependencyNode("test-service-2", "test-span-2", Map.of()));
-        assertThat(returnValue.getDependencies()).containsExactly(
-                new SummaryComponentDependency(null, 0, List.of(1), DependencyTypeIds.TRACE, null, null, false, 2, testHelper.getTimestamp(1), testHelper.getTimestamp(3), testHelper.createDuration(1_000, 3_000, 1_000, 3_000, 3_000, 3_000)),
-                new SummaryComponentDependency(0, 1, List.of(), DependencyTypeIds.TRACE, null, null, false, 2, testHelper.getTimestamp(2), testHelper.getTimestamp(4), testHelper.createDuration(2_000, 4_000, 2_000, 4_000, 4_000, 4_000)));
+                new GraphNode("test-service-1", "test-span-1", List.of()),
+                new GraphNode("test-service-2", "test-span-2", List.of()));
+        assertThat(returnValue.getEdges()).containsExactly(
+                new CollatorGraphEdge(null, 0, List.of(1), GraphEdgeTypeIds.TRACE, null, null, 2, List.of(1_000L, 3_000L), List.of(1_000L, 3_000L)),
+                new CollatorGraphEdge(0, 1, List.of(), GraphEdgeTypeIds.TRACE, null, null, 2, List.of(2_000L, 4_000L), List.of(2_000L, 4_000L)));
     }
 
     @Test
@@ -317,15 +318,15 @@ public class SubComponentDependencyCollatorTest {
         );
 
         // When
-        SummarySubComponentDependencies returnValue = underTest.collateDependencies(traces);
+        CollatorGraph returnValue = underTest.collateGraph(createTracingData(traces));
 
         // Then
         assertThat(returnValue.getNodes()).containsExactly(
-                new SummarySubComponentDependencyNode("test-service-1", "test-span-1", Map.of()),
-                new SummarySubComponentDependencyNode("test-service-2", "test-span-2", Map.of()));
-        assertThat(returnValue.getDependencies()).containsExactly(
-                new SummaryComponentDependency(null, 0, List.of(1), DependencyTypeIds.TRACE, null, null, false, 2, testHelper.getTimestamp(1), testHelper.getTimestamp(3), testHelper.createDuration(1_000, 3_000, 1_000, 3_000, 3_000, 3_000)),
-                new SummaryComponentDependency(0, 1, List.of(), DependencyTypeIds.TRACE, null, null, false, 2, testHelper.getTimestamp(2), testHelper.getTimestamp(4), testHelper.createDuration(2_000, 4_000, 2_000, 4_000, 4_000, 4_000)));
+                new GraphNode("test-service-1", "test-span-1", List.of()),
+                new GraphNode("test-service-2", "test-span-2", List.of()));
+        assertThat(returnValue.getEdges()).containsExactly(
+                new CollatorGraphEdge(null, 0, List.of(1), GraphEdgeTypeIds.TRACE, null, null, 2, List.of(1_000L, 3_000L), List.of(1_000L, 3_000L)),
+                new CollatorGraphEdge(0, 1, List.of(), GraphEdgeTypeIds.TRACE, null, null, 2, List.of(2_000L, 4_000L), List.of(2_000L, 4_000L)));
     }
 
     @Test
@@ -362,17 +363,17 @@ public class SubComponentDependencyCollatorTest {
         );
 
         // When
-        SummarySubComponentDependencies returnValue = underTest.collateDependencies(traces);
+        CollatorGraph returnValue = underTest.collateGraph(createTracingData(traces));
 
         // Then
         assertThat(returnValue.getNodes()).containsExactly(
-                new SummarySubComponentDependencyNode("test-service-1", "test-span-1", Map.of()),
-                new SummarySubComponentDependencyNode("test-service-2", "test-span-2", Map.of()));
-        assertThat(returnValue.getDependencies()).containsExactly(
-                new SummaryComponentDependency(null, 0, List.of(1), DependencyTypeIds.TRACE, null, null, false, 1, testHelper.getTimestamp(1), testHelper.getTimestamp(1), testHelper.createDuration(1_000, 1_000, 1_000, 1_000, 1_000, 1_000)),
-                new SummaryComponentDependency(null, 1, List.of(0), DependencyTypeIds.TRACE, null, null, false, 1, testHelper.getTimestamp(3), testHelper.getTimestamp(3), testHelper.createDuration(3_000, 3_000, 3_000, 3_000, 3_000, 3_000)),
-                new SummaryComponentDependency(0, 1, List.of(), DependencyTypeIds.TRACE, null, null, false, 1, testHelper.getTimestamp(2), testHelper.getTimestamp(2), testHelper.createDuration(2_000, 2_000, 2_000, 2_000, 2_000, 2_000)),
-                new SummaryComponentDependency(1, 0, List.of(), DependencyTypeIds.TRACE, null, null, false, 1, testHelper.getTimestamp(4), testHelper.getTimestamp(4), testHelper.createDuration(4_000, 4_000, 4_000, 4_000, 4_000, 4_000)));
+                new GraphNode("test-service-1", "test-span-1", List.of()),
+                new GraphNode("test-service-2", "test-span-2", List.of()));
+        assertThat(returnValue.getEdges()).containsExactly(
+                new CollatorGraphEdge(null, 0, List.of(1), GraphEdgeTypeIds.TRACE, null, null, 1, List.of(1_000L), List.of(1_000L)),
+                new CollatorGraphEdge(null, 1, List.of(0), GraphEdgeTypeIds.TRACE, null, null, 1, List.of(3_000L), List.of(3_000L)),
+                new CollatorGraphEdge(0, 1, List.of(), GraphEdgeTypeIds.TRACE, null, null, 1, List.of(2_000L), List.of(2_000L)),
+                new CollatorGraphEdge(1, 0, List.of(), GraphEdgeTypeIds.TRACE, null, null, 1, List.of(4_000L), List.of(4_000L)));
     }
 
     @Test
@@ -396,13 +397,13 @@ public class SubComponentDependencyCollatorTest {
         );
 
         // When
-        SummarySubComponentDependencies returnValue = underTest.collateDependencies(traces);
+        CollatorGraph returnValue = underTest.collateGraph(createTracingData(traces));
 
         // Then
         assertThat(returnValue.getNodes()).containsExactly(
-                new SummarySubComponentDependencyNode("test-service-1", "test-span-1", Map.of()));
-        assertThat(returnValue.getDependencies()).containsExactly(
-                new SummaryComponentDependency(null, 0, List.of(), DependencyTypeIds.TRACE, null, null, false, 1, testHelper.getTimestamp(1), testHelper.getTimestamp(1), testHelper.createDuration(1_000, 1_000, 1_000, 1_000, 1_000, 1_000)));
+                new GraphNode("test-service-1", "test-span-1", List.of()));
+        assertThat(returnValue.getEdges()).containsExactly(
+                new CollatorGraphEdge(null, 0, List.of(), GraphEdgeTypeIds.TRACE, null, null, 1, List.of(1_000L), List.of(1_000L)));
     }
 
     @Test
@@ -424,15 +425,15 @@ public class SubComponentDependencyCollatorTest {
         List<GenericTrace> traces = List.of(createTrace(trace1Span1, trace1Span2));
 
         // When
-        SummarySubComponentDependencies returnValue = underTest.collateDependencies(traces);
+        CollatorGraph returnValue = underTest.collateGraph(createTracingData(traces));
 
         // Then
         assertThat(returnValue.getNodes()).containsExactly(
-                new SummarySubComponentDependencyNode("test-service-1", "test-span-1", Map.of()),
-                new SummarySubComponentDependencyNode("test-service-1", "test-span-2", Map.of()));
-        assertThat(returnValue.getDependencies()).containsExactly(
-                new SummaryComponentDependency(null, 0, List.of(1), DependencyTypeIds.TRACE, null, null, false, 1, testHelper.getTimestamp(1), testHelper.getTimestamp(1), testHelper.createDuration(1_000, 1_000, 1_000, 1_000, 1_000, 1_000)),
-                new SummaryComponentDependency(0, 1, List.of(), DependencyTypeIds.TRACE, null, null, false, 1, testHelper.getTimestamp(2), testHelper.getTimestamp(2), testHelper.createDuration(2_000, 2_000, 2_000, 2_000, 2_000, 2_000)));
+                new GraphNode("test-service-1", "test-span-1", List.of()),
+                new GraphNode("test-service-1", "test-span-2", List.of()));
+        assertThat(returnValue.getEdges()).containsExactly(
+                new CollatorGraphEdge(null, 0, List.of(1), GraphEdgeTypeIds.TRACE, null, null, 1, List.of(1_000L), List.of(1_000L)),
+                new CollatorGraphEdge(0, 1, List.of(), GraphEdgeTypeIds.TRACE, null, null, 1, List.of(2_000L), List.of(2_000L)));
     }
 
     @Test
@@ -456,15 +457,15 @@ public class SubComponentDependencyCollatorTest {
         List<GenericTrace> traces = List.of(createTrace(trace1Span1, trace1Span2));
 
         // When
-        SummarySubComponentDependencies returnValue = underTest.collateDependencies(traces);
+        CollatorGraph returnValue = underTest.collateGraph(createTracingData(traces));
 
         // Then
         assertThat(returnValue.getNodes()).containsExactly(
-                new SummarySubComponentDependencyNode("test-service-1", "test-span-1", Map.of("http.path_template", "test-value-1")),
-                new SummarySubComponentDependencyNode("test-service-1", "test-span-1", Map.of("http.path_template", "test-value-2")));
-        assertThat(returnValue.getDependencies()).containsExactly(
-                new SummaryComponentDependency(null, 0, List.of(1), DependencyTypeIds.TRACE, null, null, false, 1, testHelper.getTimestamp(1), testHelper.getTimestamp(1), testHelper.createDuration(1_000, 1_000, 1_000, 1_000, 1_000, 1_000)),
-                new SummaryComponentDependency(0, 1, List.of(), DependencyTypeIds.TRACE, null, null, false, 1, testHelper.getTimestamp(2), testHelper.getTimestamp(2), testHelper.createDuration(2_000, 2_000, 2_000, 2_000, 2_000, 2_000)));
+                new GraphNode("test-service-1", "test-span-1", List.of(new Tag("http.path_template", "test-value-1"))),
+                new GraphNode("test-service-1", "test-span-1", List.of(new Tag("http.path_template", "test-value-2"))));
+        assertThat(returnValue.getEdges()).containsExactly(
+                new CollatorGraphEdge(null, 0, List.of(1), GraphEdgeTypeIds.TRACE, null, null, 1, List.of(1_000L), List.of(1_000L)),
+                new CollatorGraphEdge(0, 1, List.of(), GraphEdgeTypeIds.TRACE, null, null, 1, List.of(2_000L), List.of(2_000L)));
     }
     
     @Test
@@ -509,30 +510,30 @@ public class SubComponentDependencyCollatorTest {
                 createTrace(trace2Span1, trace2Span2));
 
         // When
-        SummarySubComponentDependencies returnValue = underTest.collateDependencies(traces);
+        CollatorGraph returnValue = underTest.collateGraph(createTracingData(traces));
 
         // Then
         assertThat(returnValue.getNodes()).containsExactly(
-                new SummarySubComponentDependencyNode(
+                new GraphNode(
                         "test-service-1",
                         "test-span-1",
-                        Map.of(
-                                "http.path_template", "test-value-1a",
-                                "event.organisationId", "test-value-1b"
+                        List.of(
+                                new Tag("event.organisationId", "test-value-1b"),
+                                new Tag("http.path_template", "test-value-1a")
                         )
                 ),
-                new SummarySubComponentDependencyNode(
+                new GraphNode(
                         "test-service-2",
                         "test-span-2",
-                        Map.of(
-                                "http.path_template", "test-value-2a",
-                                "event.organisationId", "test-value-2b"
+                        List.of(
+                                new Tag("event.organisationId", "test-value-2b"),
+                                new Tag("http.path_template", "test-value-2a")
                         )
                 )
         );
-        assertThat(returnValue.getDependencies()).containsExactly(
-                new SummaryComponentDependency(null, 0, List.of(1), DependencyTypeIds.TRACE, null, null, false, 2, testHelper.getTimestamp(1), testHelper.getTimestamp(3), testHelper.createDuration(1_000, 3_000, 1_000, 3_000, 3_000, 3_000)),
-                new SummaryComponentDependency(0, 1, List.of(), DependencyTypeIds.TRACE, null, null, false, 2, testHelper.getTimestamp(2), testHelper.getTimestamp(4), testHelper.createDuration(2_000, 4_000, 2_000, 4_000, 4_000, 4_000)));
+        assertThat(returnValue.getEdges()).containsExactly(
+                new CollatorGraphEdge(null, 0, List.of(1), GraphEdgeTypeIds.TRACE, null, null, 2, List.of(1_000L, 3_000L), List.of(1_000L, 3_000L)),
+                new CollatorGraphEdge(0, 1, List.of(), GraphEdgeTypeIds.TRACE, null, null, 2, List.of(2_000L, 4_000L), List.of(2_000L, 4_000L)));
     }
 
     @Test
@@ -568,30 +569,30 @@ public class SubComponentDependencyCollatorTest {
         List<GenericTrace> traces = List.of(createTrace(trace1Span1, trace1Span3, trace1Span2));
 
         // When
-        SummarySubComponentDependencies returnValue = underTest.collateDependencies(traces);
+        CollatorGraph returnValue = underTest.collateGraph(createTracingData(traces));
 
         // Then
         assertThat(returnValue.getNodes()).containsExactly(
-                new SummarySubComponentDependencyNode(
+                new GraphNode(
                         "test-service-1",
                         "test-span-1",
-                        Map.of(
-                            "http.path_template", "test-value-1a",
-                            "event.organisationId", "test-value-1b"
+                        List.of(
+                                new Tag("event.organisationId", "test-value-1b"),
+                                new Tag("http.path_template", "test-value-1a")
                         )
                 ),
-                new SummarySubComponentDependencyNode(
+                new GraphNode(
                         "test-service-2",
                         "test-span-2",
-                        Map.of(
-                            "http.path_template", "test-value-2a",
-                                "event.organisationId", "test-value-2b"
+                        List.of(
+                                new Tag("event.organisationId", "test-value-2b"),
+                                new Tag("http.path_template", "test-value-2a")
                         )
                 )
         );
-        assertThat(returnValue.getDependencies()).containsExactly(
-                new SummaryComponentDependency(null, 0, List.of(1), DependencyTypeIds.TRACE, null, null, false, 1, testHelper.getTimestamp(1), testHelper.getTimestamp(1), testHelper.createDuration(1_000, 1_000, 1_000, 1_000, 1_000, 1_000)),
-                new SummaryComponentDependency(0, 1, List.of(), DependencyTypeIds.TRACE, null, null, false, 2, testHelper.getTimestamp(2), testHelper.getTimestamp(3), testHelper.createDuration(2_000, 3_000, 2_000, 3_000, 3_000, 3_000)));
+        assertThat(returnValue.getEdges()).containsExactly(
+                new CollatorGraphEdge(null, 0, List.of(1), GraphEdgeTypeIds.TRACE, null, null, 1, List.of(1_000L), List.of(1_000L)),
+                new CollatorGraphEdge(0, 1, List.of(), GraphEdgeTypeIds.TRACE, null, null, 2, List.of(2_000L, 3_000L), List.of(2_000L, 3_000L)));
     }
 
     @Test
@@ -621,15 +622,15 @@ public class SubComponentDependencyCollatorTest {
         List<GenericTrace> traces = List.of(createTrace(trace1Span1, trace1Span3, trace1Span2));
 
         // When
-        SummarySubComponentDependencies returnValue = underTest.collateDependencies(traces);
+        CollatorGraph returnValue = underTest.collateGraph(createTracingData(traces));
 
         // Then
         assertThat(returnValue.getNodes()).containsExactly(
-                new SummarySubComponentDependencyNode("test-service-1", "test-span-1", Map.of()),
-                new SummarySubComponentDependencyNode("test-service-2", "test-span-2", Map.of()));
-        assertThat(returnValue.getDependencies()).containsExactly(
-                new SummaryComponentDependency(null, 0, List.of(1), DependencyTypeIds.TRACE, null, null, false, 1, testHelper.getTimestamp(1), testHelper.getTimestamp(1), testHelper.createDuration(1_000, 1_000, 1_000, 1_000, 1_000, 1_000)),
-                new SummaryComponentDependency(0, 1, List.of(), DependencyTypeIds.TRACE, null, null, false, 2, testHelper.getTimestamp(2), testHelper.getTimestamp(2), testHelper.createDuration(2_000, 3_000, 2_000, 3_000, 3_000, 3_000)));
+                new GraphNode("test-service-1", "test-span-1", List.of()),
+                new GraphNode("test-service-2", "test-span-2", List.of()));
+        assertThat(returnValue.getEdges()).containsExactly(
+                new CollatorGraphEdge(null, 0, List.of(1), GraphEdgeTypeIds.TRACE, null, null, 1, List.of(1_000L), List.of(1_000L)),
+                new CollatorGraphEdge(0, 1, List.of(), GraphEdgeTypeIds.TRACE, null, null, 2, List.of(2_000L), List.of(2_000L, 3_000L)));
     }
 
     @Test
@@ -659,15 +660,15 @@ public class SubComponentDependencyCollatorTest {
         List<GenericTrace> traces = List.of(createTrace(trace1Span1, trace1Span3, trace1Span2));
 
         // When
-        SummarySubComponentDependencies returnValue = underTest.collateDependencies(traces);
+        CollatorGraph returnValue = underTest.collateGraph(createTracingData(traces));
 
         // Then
         assertThat(returnValue.getNodes()).containsExactly(
-                new SummarySubComponentDependencyNode("test-service-1", "test-span-1", Map.of()),
-                new SummarySubComponentDependencyNode("test-service-2", "test-span-2", Map.of()));
-        assertThat(returnValue.getDependencies()).containsExactly(
-                new SummaryComponentDependency(null, 0, List.of(1), DependencyTypeIds.TRACE, null, null, false, 1, null, null, testHelper.createDuration(1_000, 1_000, 1_000, 1_000, 1_000, 1_000)),
-                new SummaryComponentDependency(0, 1, List.of(), DependencyTypeIds.TRACE, null, null, false, 2, null, null, testHelper.createDuration(2_000, 3_000, 2_000, 3_000, 3_000, 3_000)));
+                new GraphNode("test-service-1", "test-span-1", List.of()),
+                new GraphNode("test-service-2", "test-span-2", List.of()));
+        assertThat(returnValue.getEdges()).containsExactly(
+                new CollatorGraphEdge(null, 0, List.of(1), GraphEdgeTypeIds.TRACE, null, null, 1, null, List.of(1_000L)),
+                new CollatorGraphEdge(0, 1, List.of(), GraphEdgeTypeIds.TRACE, null, null, 2, null, List.of(2_000L, 3_000L)));
     }
 
     @Test
@@ -697,15 +698,15 @@ public class SubComponentDependencyCollatorTest {
         List<GenericTrace> traces = List.of(createTrace(trace1Span1, trace1Span3, trace1Span2));
 
         // When
-        SummarySubComponentDependencies returnValue = underTest.collateDependencies(traces);
+        CollatorGraph returnValue = underTest.collateGraph(createTracingData(traces));
 
         // Then
         assertThat(returnValue.getNodes()).containsExactly(
-                new SummarySubComponentDependencyNode("test-service-1", "test-span-1", Map.of()),
-                new SummarySubComponentDependencyNode("test-service-2", "test-span-2", Map.of()));
-        assertThat(returnValue.getDependencies()).containsExactly(
-                new SummaryComponentDependency(null, 0, List.of(1), DependencyTypeIds.TRACE, null, null, false, 1, testHelper.getTimestamp(1), testHelper.getTimestamp(1), testHelper.createDuration(1_000, 1_000, 1_000, 1_000, 1_000, 1_000)),
-                new SummaryComponentDependency(0, 1, List.of(), DependencyTypeIds.TRACE, null, null, false, 2, testHelper.getTimestamp(2), testHelper.getTimestamp(3), testHelper.createDuration(2_000, 2_000, 2_000, 2_000, 2_000, 2_000)));
+                new GraphNode("test-service-1", "test-span-1", List.of()),
+                new GraphNode("test-service-2", "test-span-2", List.of()));
+        assertThat(returnValue.getEdges()).containsExactly(
+                new CollatorGraphEdge(null, 0, List.of(1), GraphEdgeTypeIds.TRACE, null, null, 1, List.of(1_000L), List.of(1_000L)),
+                new CollatorGraphEdge(0, 1, List.of(), GraphEdgeTypeIds.TRACE, null, null, 2, List.of(2_000L, 3_000L), List.of(2_000L)));
     }
 
     @Test
@@ -735,15 +736,15 @@ public class SubComponentDependencyCollatorTest {
         List<GenericTrace> traces = List.of(createTrace(trace1Span1, trace1Span3, trace1Span2));
 
         // When
-        SummarySubComponentDependencies returnValue = underTest.collateDependencies(traces);
+        CollatorGraph returnValue = underTest.collateGraph(createTracingData(traces));
 
         // Then
         assertThat(returnValue.getNodes()).containsExactly(
-                new SummarySubComponentDependencyNode("test-service-1", "test-span-1", Map.of()),
-                new SummarySubComponentDependencyNode("test-service-2", "test-span-2", Map.of()));
-        assertThat(returnValue.getDependencies()).containsExactly(
-                new SummaryComponentDependency(null, 0, List.of(1), DependencyTypeIds.TRACE, null, null, false, 1, testHelper.getTimestamp(1), testHelper.getTimestamp(1), null),
-                new SummaryComponentDependency(0, 1, List.of(), DependencyTypeIds.TRACE, null, null, false, 2, testHelper.getTimestamp(2), testHelper.getTimestamp(3), null));
+                new GraphNode("test-service-1", "test-span-1", List.of()),
+                new GraphNode("test-service-2", "test-span-2", List.of()));
+        assertThat(returnValue.getEdges()).containsExactly(
+                new CollatorGraphEdge(null, 0, List.of(1), GraphEdgeTypeIds.TRACE, null, null, 1, List.of(1_000L), null),
+                new CollatorGraphEdge(0, 1, List.of(), GraphEdgeTypeIds.TRACE, null, null, 2, List.of(2_000L, 3_000L), null));
     }
 
     private List<GenericTag> createTags(String... args) {
@@ -754,10 +755,10 @@ public class SubComponentDependencyCollatorTest {
         return tags;
     }
 
-    private SubComponentDependencyCollator createSubComponentDependencyCollator() {
-        return new SubComponentDependencyCollator(
-                new GenericDependencyCollator(),
-                new DependencyHelper(new DependencyDurationCalculator())
+    private SubComponentGraphCollator createSubComponentDependencyCollator() {
+        return new SubComponentGraphCollator(
+                new GenericGraphCollator(),
+                new EdgeHelper()
         );
     }
 }
