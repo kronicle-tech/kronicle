@@ -10,6 +10,8 @@ import java.util.List;
 
 public class DatadogPlugin extends KronicleGuicePlugin {
 
+    public static final String ID = "datadog";
+
     public DatadogPlugin(PluginWrapper wrapper) {
         super(wrapper);
     }

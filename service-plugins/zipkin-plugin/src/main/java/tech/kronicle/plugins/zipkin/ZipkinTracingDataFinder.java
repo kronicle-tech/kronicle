@@ -41,7 +41,7 @@ public class ZipkinTracingDataFinder extends TracingDataFinder {
     }
 
     @Override
-    public Output<TracingData, Void> find(ComponentMetadata input) {
+    public Output<List<TracingData>, Void> find(ComponentMetadata input) {
         log.info("Getting Zipkin services");
         List<Service> services = zipkinService.getServices();
         log.info("Retrieved {} Zipkin services", services.size());
@@ -51,12 +51,14 @@ public class ZipkinTracingDataFinder extends TracingDataFinder {
         log.info("Getting Zipkin component dependencies");
 
         return Output.ofOutput(
-                TracingData.builder()
-                        .pluginId(ZipkinPlugin.ID)
-                        .id("zipkin-tracing")
-                        .name("Zipkin Tracing")
-                        .traces(traceMapper.mapTraces(traces))
-                        .build(),
+                List.of(
+                        TracingData.builder()
+                                .pluginId(ZipkinPlugin.ID)
+                                .id("zipkin-tracing")
+                                .name("Zipkin Tracing")
+                                .traces(traceMapper.mapTraces(traces))
+                                .build()
+                ),
                 CACHE_TTL
         );
     }

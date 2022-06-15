@@ -10,9 +10,11 @@ import tech.kronicle.tracingprocessor.internal.models.CollatorGraph;
 import tech.kronicle.tracingprocessor.internal.models.CollatorGraphEdge;
 
 import javax.inject.Inject;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 import static java.util.Objects.isNull;
 import static java.util.Objects.nonNull;
@@ -23,6 +25,7 @@ import static java.util.stream.Collectors.toUnmodifiableList;
 public class ComponentGraphCollator {
 
     private final GenericGraphCollator genericGraphCollator;
+    private final NodeHelper nodeHelper;
     private final EdgeHelper edgeHelper;
     
     public CollatorGraph collateGraph(TracingData tracingData) {
@@ -85,8 +88,8 @@ public class ComponentGraphCollator {
 
     private CollatorGraphEdge createEdgeForDependency(List<GraphNode> nodes, Dependency dependency) {
         return new CollatorGraphEdge(
-                getOrAddNode(nodes, dependency.getSourceComponentId()),
-                getOrAddNode(nodes, dependency.getTargetComponentId()),
+                nodeHelper.getOrAddNode(nodes, dependency.getSourceComponentId()),
+                nodeHelper.getOrAddNode(nodes, dependency.getTargetComponentId()),
                 List.of(),
                 dependency.getTypeId(),
                 dependency.getLabel(),
@@ -95,19 +98,6 @@ public class ComponentGraphCollator {
                 null,
                 null
         );
-    }
-
-    private int getOrAddNode(List<GraphNode> nodes, String componentId) {
-        OptionalInt nodeIndexMatch = IntStream.range(0, nodes.size())
-                .filter(nodeIndex -> Objects.equals(nodes.get(nodeIndex).getComponentId(), componentId))
-                .findFirst();
-
-        if (nodeIndexMatch.isPresent()) {
-            return nodeIndexMatch.getAsInt();
-        }
-
-        nodes.add(GraphNode.builder().componentId(componentId).build());
-        return nodes.size() - 1;
     }
 
     private boolean dependencyAlreadyExistsAsEdge(

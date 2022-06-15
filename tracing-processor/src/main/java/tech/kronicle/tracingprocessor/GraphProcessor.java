@@ -17,20 +17,25 @@ import java.util.List;
 import static java.util.stream.Collectors.toUnmodifiableList;
 
 @RequiredArgsConstructor(onConstructor = @__({@Inject}))
-public class TracingProcessor {
+public class GraphProcessor {
 
+    private final DiagramGraphCollator diagramGraphCollator;
     private final ComponentGraphCollator componentGraphCollator;
     private final SubComponentGraphCollator subComponentGraphCollator;
     private final CallGraphCollator callGraphCollator;
     private final EdgeHelper edgeHelper;
     private final EdgeDurationCalculator edgeDurationCalculator;
 
-    public List<Diagram> process(TracingData tracingData) {
+    public List<Diagram> processTracingData(TracingData tracingData) {
         List<Diagram> diagrams = new ArrayList<>();
         diagrams.add(toDiagram(tracingData, componentGraphCollator.collateGraph(tracingData)));
         diagrams.add(toDiagram(tracingData, subComponentGraphCollator.collateGraph(tracingData)));
         diagrams.addAll(toDiagrams(tracingData, callGraphCollator.collateCallGraphs(tracingData)));
         return diagrams;
+    }
+
+    public Diagram processDiagram(Diagram diagram) {
+        return diagramGraphCollator.collateGraph(diagram);
     }
 
     private Collection<Diagram> toDiagrams(TracingData tracingData, List<CollatorGraph> graphs) {

@@ -12,10 +12,11 @@ import tech.kronicle.sdk.models.Dependency;
 
 import javax.inject.Inject;
 import java.time.Duration;
-import java.util.Collection;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
-import java.util.stream.Collectors;
+
+import static java.util.stream.Collectors.toUnmodifiableList;
 
 @Extension
 @RequiredArgsConstructor(onConstructor = @__({@Inject}))
@@ -32,21 +33,30 @@ public class DatadogTracingDataFinder extends TracingDataFinder {
     }
 
     @Override
-    public Output<TracingData, Void> find(ComponentMetadata componentMetadata) {
+    public Output<List<TracingData>, Void> find(ComponentMetadata componentMetadata) {
+        List<Map.Entry<String, List<Dependency>>> dependenciesByEnvironment = getDependencies();
+        List<TracingData> tracingDatas = dependenciesByEnvironment.stream()
+                .map(entry -> {
+                    String environmentId = entry.getKey();
+                    return TracingData.builder()
+                            .id("datadog-service-dependencies-" + environmentId)
+                            .name("Datadog Service Dependencies - " + environmentId)
+                            .pluginId(DatadogPlugin.ID)
+                            .environmentId(environmentId)
+                            .dependencies(entry.getValue())
+                            .build();
+                })
+                .collect(toUnmodifiableList());
         return Output.ofOutput(
-                TracingData.builder()
-                        .dependencies(getDependencies())
-                        .build(),
+                tracingDatas,
                 CACHE_TTL
         );
     }
 
-    private List<Dependency> getDependencies() {
+    private List<Map.Entry<String, List<Dependency>>> getDependencies() {
         return getEnvironments().stream()
-                .map(client::getDependencies)
-                .flatMap(Collection::stream)
-                .distinct()
-                .collect(Collectors.toList());
+                .map(environment -> Map.entry(environment, client.getDependencies(environment)))
+                .collect(toUnmodifiableList());
     }
 
     private List<String> getEnvironments() {

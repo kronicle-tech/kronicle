@@ -4,14 +4,14 @@ import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class TracingProcessorFactoryTest {
+public class GraphProcessorFactoryTest {
 
     @Test
     public void createTracingProcessor() {
         // When
-        TracingProcessor tracingProcessor = TracingProcessorFactory.createTracingProcessor();
+        GraphProcessor graphProcessor = GraphProcessorFactory.createTracingProcessor();
 
         // Then
-        assertThat(tracingProcessor).isNotNull();
+        assertThat(graphProcessor).isNotNull();
     }
 }
