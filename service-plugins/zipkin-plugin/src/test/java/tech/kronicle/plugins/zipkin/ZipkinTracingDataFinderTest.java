@@ -102,7 +102,7 @@ public class ZipkinTracingDataFinderTest {
         ComponentMetadata componentMetadata = ComponentMetadata.builder().components(List.of(component)).build();
 
         // When
-        Output<TracingData, Void> returnValue = underTest.find(componentMetadata);
+        Output<List<TracingData>, Void> returnValue = underTest.find(componentMetadata);
 
         // Then
         List<GenericTrace> expectedTraces = List.of(
@@ -139,15 +139,19 @@ public class ZipkinTracingDataFinderTest {
                         createSpan("2", "2")
                 )
         );
-        assertThat(returnValue.getOutput().getDependencies()).isEmpty();
-        assertThat(returnValue.getOutput().getTraces()).containsExactlyElementsOf(expectedTraces);
+        assertThat(returnValue.getOutput()).hasSize(1);
+        TracingData tracingData = returnValue.getOutput().get(0);
+        assertThat(tracingData.getTraces()).containsExactlyElementsOf(expectedTraces);
+        assertThat(tracingData.getDependencies()).isEmpty();
         assertThat(returnValue).isEqualTo(Output.ofOutput(
-                TracingData.builder()
-                        .pluginId("zipkin")
-                        .id("zipkin-tracing")
-                        .name("Zipkin Tracing")
-                        .traces(expectedTraces)
-                        .build(),
+                List.of(
+                    TracingData.builder()
+                            .pluginId("zipkin")
+                            .id("zipkin-tracing")
+                            .name("Zipkin Tracing")
+                            .traces(expectedTraces)
+                            .build()
+                ),
                 CACHE_TTL
         ));
     }

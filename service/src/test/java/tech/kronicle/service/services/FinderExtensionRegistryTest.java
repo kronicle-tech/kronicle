@@ -125,7 +125,7 @@ public class FinderExtensionRegistryTest {
         }
 
         @Override
-        public Output<TracingData, Void> find(ComponentMetadata componentMetadata) {
+        public Output<List<TracingData>, Void> find(ComponentMetadata componentMetadata) {
             return null;
         }
     }

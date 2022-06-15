@@ -56,15 +56,29 @@ public class MasterTracingDataFinderTest {
         when(finderRegistry.getTracingDataFinders()).thenReturn(List.of(tracingDataFinder1, tracingDataFinder2));
         ComponentMetadata componentMetadata = ComponentMetadata.builder().build();
         TracingData tracingData1 = createTracingData(1);
-        when(tracingDataFinder1.find(componentMetadata)).thenReturn(Output.ofOutput(tracingData1, CACHE_TTL));
         TracingData tracingData2 = createTracingData(2);
-        when(tracingDataFinder2.find(componentMetadata)).thenReturn(Output.ofOutput(tracingData2, CACHE_TTL));
+        TracingData tracingData3 = createTracingData(3);
+        TracingData tracingData4 = createTracingData(4);
+        when(tracingDataFinder1.find(componentMetadata)).thenReturn(Output.ofOutput(
+                List.of(
+                        tracingData1,
+                        tracingData2
+                ),
+                CACHE_TTL
+        ));
+        when(tracingDataFinder2.find(componentMetadata)).thenReturn(Output.ofOutput(
+                List.of(
+                        tracingData3,
+                        tracingData4
+                ),
+                CACHE_TTL
+        ));
 
         // When
         List<TracingData> returnValue = underTest.findTracingData(componentMetadata);
 
         // Then
-        assertThat(returnValue).containsExactly(tracingData1, tracingData2);
+        assertThat(returnValue).containsExactly(tracingData1, tracingData2, tracingData3, tracingData4);
     }
 
     @Test
@@ -77,19 +91,27 @@ public class MasterTracingDataFinderTest {
         when(tracingDataFinder1.find(componentMetadata)).thenThrow(new RuntimeException("Fake exception"));
         when(tracingDataFinder2.id()).thenReturn("test-tracing-data-finder-2");
         TracingData tracingData1 = createTracingData(1);
-        when(tracingDataFinder2.find(componentMetadata)).thenReturn(Output.ofOutput(tracingData1, CACHE_TTL));
+        TracingData tracingData2 = createTracingData(2);
+        when(tracingDataFinder2.find(componentMetadata)).thenReturn(Output.ofOutput(
+                List.of(
+                        tracingData1,
+                        tracingData2
+                ),
+                CACHE_TTL
+        ));
 
         // When
         List<TracingData> returnValue = underTest.findTracingData(componentMetadata);
 
         // Then
         assertThat(returnValue).containsExactly(
-                TracingData.builder().build(),
-                tracingData1
+                tracingData1,
+                tracingData2
         );
         assertThat(logCaptor.getSimplifiedEvents()).containsExactly(
-                new SimplifiedLogEvent(Level.INFO, "Tracing data finder test-tracing-data-finder-2 found 2 dependencies"),
-                new SimplifiedLogEvent(Level.INFO, "Tracing data finder test-tracing-data-finder-2 found 3 traces")
+                new SimplifiedLogEvent(Level.INFO, "Tracing data finder test-tracing-data-finder-2 found 2 trace datas"),
+                new SimplifiedLogEvent(Level.INFO, "Tracing data finder test-tracing-data-finder-2 found 4 dependencies"),
+                new SimplifiedLogEvent(Level.INFO, "Tracing data finder test-tracing-data-finder-2 found 6 traces")
         );
         assertThat(taskExecutorLogCaptor.getSimplifiedEvents()).containsExactly(
                 new SimplifiedLogEvent(Level.INFO, "Executing finder test-tracing-data-finder-1"),
