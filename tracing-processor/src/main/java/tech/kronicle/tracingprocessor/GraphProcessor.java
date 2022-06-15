@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import tech.kronicle.pluginapi.finders.models.TracingData;
 import tech.kronicle.sdk.models.Diagram;
 import tech.kronicle.sdk.models.GraphEdge;
+import tech.kronicle.tracingprocessor.internal.constants.DiagramTypes;
 import tech.kronicle.tracingprocessor.internal.models.CollatorGraph;
 import tech.kronicle.tracingprocessor.internal.models.CollatorGraphEdge;
 import tech.kronicle.tracingprocessor.internal.models.TimestampsForEdge;
@@ -28,9 +29,9 @@ public class GraphProcessor {
 
     public List<Diagram> processTracingData(TracingData tracingData) {
         List<Diagram> diagrams = new ArrayList<>();
-        diagrams.add(toDiagram(tracingData, componentGraphCollator.collateGraph(tracingData)));
-        diagrams.add(toDiagram(tracingData, subComponentGraphCollator.collateGraph(tracingData)));
-        diagrams.addAll(toDiagrams(tracingData, callGraphCollator.collateCallGraphs(tracingData)));
+        diagrams.add(toDiagram(tracingData, componentGraphCollator.collateGraph(tracingData), DiagramTypes.TRACING));
+        diagrams.add(toDiagram(tracingData, subComponentGraphCollator.collateGraph(tracingData), DiagramTypes.TRACING));
+        diagrams.addAll(toDiagrams(tracingData, callGraphCollator.collateCallGraphs(tracingData), DiagramTypes.CALL_GRAPH));
         return diagrams;
     }
 
@@ -38,14 +39,19 @@ public class GraphProcessor {
         return diagramGraphCollator.collateGraph(diagram);
     }
 
-    private Collection<Diagram> toDiagrams(TracingData tracingData, List<CollatorGraph> graphs) {
+    private Collection<Diagram> toDiagrams(TracingData tracingData, List<CollatorGraph> graphs, String diagramType) {
         return graphs.stream()
-                .map(graph -> toDiagram(tracingData, graph))
+                .map(graph -> toDiagram(tracingData, graph, diagramType))
                 .collect(toUnmodifiableList());
     }
 
-    private Diagram toDiagram(TracingData tracingData, CollatorGraph graph) {
-        return tracingData.toDiagram(graph.getNodes(), toGraphEdges(graph.getEdges()), graph.getSampleSize());
+    private Diagram toDiagram(TracingData tracingData, CollatorGraph graph, String diagramType) {
+        return tracingData.toDiagram(
+                diagramType,
+                graph.getNodes(),
+                toGraphEdges(graph.getEdges()),
+                graph.getSampleSize()
+        );
     }
 
     private List<GraphEdge> toGraphEdges(List<CollatorGraphEdge> edges) {

@@ -48,12 +48,17 @@ public class TracingData {
         this.traces = createUnmodifiableList(traces);
     }
 
-    public Diagram toDiagram(List<GraphNode> nodes, List<GraphEdge> edges, Integer sampleSize) {
+    public Diagram toDiagram(
+            String diagramType,
+            List<GraphNode> nodes,
+            List<GraphEdge> edges,
+            Integer sampleSize
+    ) {
         return Diagram.builder()
                 .id(this.getId())
                 .name(this.getName())
                 .discovered(true)
-                .type("tracing")
+                .type(diagramType)
                 .states(List.of(
                         GraphState.builder()
                                 .pluginId(this.getPluginId())

@@ -89,7 +89,7 @@ public class GraphProcessorTest {
                 Diagram.builder()
                         .id("test-tracing-data-id-1")
                         .name("Test Tracing Data 1")
-                        .discovered(true).type("tracing")
+                        .discovered(true).type("call-graph")
                         .states(List.of(
                                 GraphState.builder().pluginId("test-plugin-id-1").environmentId("test-environment-id-1").nodes(List.of(GraphNode.builder().componentId("test-component-id-3").build())).build()
                         ))
@@ -97,7 +97,7 @@ public class GraphProcessorTest {
                 Diagram.builder()
                         .id("test-tracing-data-id-1")
                         .name("Test Tracing Data 1")
-                        .discovered(true).type("tracing")
+                        .discovered(true).type("call-graph")
                         .states(List.of(
                                 GraphState.builder().pluginId("test-plugin-id-1").environmentId("test-environment-id-1").nodes(List.of(GraphNode.builder().componentId("test-component-id-4").build())).build()
                         ))
