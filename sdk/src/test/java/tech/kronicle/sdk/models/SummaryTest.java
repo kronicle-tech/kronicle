@@ -37,18 +37,6 @@ public class SummaryTest {
     }
 
     @Test
-    public void constructorShouldMakeCallGraphsAnUnmodifiableList() {
-        // Given
-        Summary underTest = Summary.builder().callGraphs(new ArrayList<>()).build();
-
-        // When
-        Throwable thrown = catchThrowable(() -> underTest.getCallGraphs().add(SummaryCallGraph.builder().build()));
-
-        // Then
-        assertThat(thrown).isInstanceOf(UnsupportedOperationException.class);
-    }
-
-    @Test
     public void constructorShouldMakeSonarQubeMetricsAnUnmodifiableList() {
         // Given
         Summary underTest = Summary.builder().sonarQubeMetrics(new ArrayList<>()).build();

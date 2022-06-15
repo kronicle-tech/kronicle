@@ -264,48 +264,6 @@ public class ComponentServiceTest {
     }
 
     @Test
-    public void getComponentNodesShouldReturnTheComponentNodesForAComponent() {
-        // Given
-        String componentId = "test-component-id-1";
-        SummarySubComponentDependencyNode node1 = SummarySubComponentDependencyNode.builder()
-                .componentId(componentId)
-                .spanName("test-span-name-1")
-                .build();
-        SummarySubComponentDependencyNode node2 = SummarySubComponentDependencyNode.builder()
-                .componentId(componentId)
-                .spanName("test-span-name-2")
-                .build();
-        List<SummarySubComponentDependencyNode> nodes = List.of(node1, node2);
-        when(mockComponentRepository.getComponentNodes(componentId)).thenReturn(nodes);
-
-        // When
-        List<SummarySubComponentDependencyNode> returnValue = underTest.getComponentNodes(componentId);
-
-        // Then
-        assertThat(returnValue).isSameAs(nodes);
-    }
-
-    @Test
-    public void getComponentCallGraphsShouldReturnTheComponentCallGraphsForAComponent() {
-        // Given
-        String componentId = "test-component-id-1";
-        SummaryCallGraph callGraph1 = SummaryCallGraph.builder()
-                .traceCount(1)
-                .build();
-        SummaryCallGraph callGraph2 = SummaryCallGraph.builder()
-                .traceCount(2)
-                .build();
-        List<SummaryCallGraph> callGraphs = List.of(callGraph1, callGraph2);
-        when(mockComponentRepository.getComponentCallGraphs(componentId)).thenReturn(callGraphs);
-
-        // When
-        List<SummaryCallGraph> returnValue = underTest.getComponentCallGraphs(componentId);
-
-        // Then
-        assertThat(returnValue).isSameAs(callGraphs);
-    }
-
-    @Test
     public void getComponentDiagramsShouldReturnTheComponentDiagramsForAComponent() {
         // Given
         String componentId = "test-component-id-1";

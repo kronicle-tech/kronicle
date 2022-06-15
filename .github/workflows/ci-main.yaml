@@ -34,7 +34,7 @@ jobs:
         run: ./gradlew release -Prelease.customUsername=${{ github.actor }} -Prelease.customPassword=${{ github.token }}
 
   ci-app-build:
-    uses: ./.github/workflows/ci-shared-build-and-docker-push.yaml
+    uses: ./.github/workflows/ci-shared-build-and-publish.yaml
     needs: ci-tag
     permissions:
       packages: write
@@ -44,6 +44,7 @@ jobs:
       caching: false
       build_tasks: app:build app:dockerPush -x checkFrontend -x dependencyCheckAnalyze
       docker_image_name: kronicle-app
+      publish_jars: false
     secrets: inherit
 
   ci-app-test:
@@ -63,7 +64,7 @@ jobs:
     secrets: inherit
 
   ci-service-build:
-    uses: ./.github/workflows/ci-shared-build-and-docker-push.yaml
+    uses: ./.github/workflows/ci-shared-build-and-publish.yaml
     needs: ci-tag
     permissions:
       packages: write
@@ -73,6 +74,7 @@ jobs:
       caching: false
       build_tasks: build service:dockerPush -x app:build -x test -x dependencyCheckAnalyze
       docker_image_name: kronicle-service
+      publish_jars: true
     secrets: inherit
 
   ci-service-test:

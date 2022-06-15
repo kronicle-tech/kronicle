@@ -107,18 +107,6 @@ public class ComponentRepository extends RefreshingRepository {
         return components.get(componentId);
     }
 
-    public List<SummarySubComponentDependencyNode> getComponentNodes(String componentId) {
-        return summary.getSubComponentDependencies().getNodes().stream()
-                .filter(nodeBelongsToComponent(componentId))
-                .collect(toUnmodifiableList());
-    }
-
-    public List<SummaryCallGraph> getComponentCallGraphs(String componentId) {
-        return summary.getCallGraphs().stream()
-                .filter(callGraphIncludesComponent(componentId))
-                .collect(toUnmodifiableList());
-    }
-
     public List<Diagram> getComponentDiagrams(String componentId) {
         return diagrams.values().stream()
                 .filter(diagramIncludesComponent(componentId))
@@ -168,14 +156,6 @@ public class ComponentRepository extends RefreshingRepository {
                 .description(scanner.description())
                 .notes(scanner.notes())
                 .build();
-    }
-
-    private Predicate<SummarySubComponentDependencies> callGraphIncludesComponent(String componentId) {
-        return callGraph -> callGraph.getNodes().stream().anyMatch(nodeBelongsToComponent(componentId));
-    }
-
-    private Predicate<SummarySubComponentDependencyNode> nodeBelongsToComponent(String componentId) {
-        return node -> Objects.equals(node.getComponentId(), componentId);
     }
 
     private Predicate<Diagram> diagramIncludesComponent(String componentId) {

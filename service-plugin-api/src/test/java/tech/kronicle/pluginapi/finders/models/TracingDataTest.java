@@ -1,11 +1,7 @@
 package tech.kronicle.pluginapi.finders.models;
 
 import org.junit.jupiter.api.Test;
-import tech.kronicle.sdk.models.Area;
 import tech.kronicle.sdk.models.Dependency;
-import tech.kronicle.sdk.models.SummaryCallGraph;
-import tech.kronicle.sdk.models.SummaryComponentDependencies;
-import tech.kronicle.sdk.models.SummarySubComponentDependencies;
 
 import java.util.ArrayList;
 

@@ -35,14 +35,6 @@ public class ComponentService {
         return component.withStates(getFilteredStates(component.getStates(), stateTypes));
     }
 
-    public List<SummarySubComponentDependencyNode> getComponentNodes(String componentId) {
-        return componentRepository.getComponentNodes(componentId);
-    }
-
-    public List<SummaryCallGraph> getComponentCallGraphs(String componentId) {
-        return componentRepository.getComponentCallGraphs(componentId);
-    }
-
     public List<Diagram> getComponentDiagrams(String componentId) {
         return componentRepository.getComponentDiagrams(componentId);
     }
