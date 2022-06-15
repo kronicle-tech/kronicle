@@ -127,11 +127,11 @@ import Vue, { PropType } from 'vue'
 import { BAlert, BBadge } from 'bootstrap-vue'
 import {
   Component,
-  SummaryComponentDependency,
-  SummaryComponentDependencyDuration,
-  SummaryComponentDependencyNode,
-  SummarySubComponentDependencies,
-  SummarySubComponentDependencyNode,
+  Diagram,
+  GraphEdge,
+  GraphEdgeDuration,
+  GraphNode,
+  GraphState,
 } from '~/types/kronicle-service'
 import ComponentName from '~/components/ComponentName.vue'
 import FormattedNumber from '~/components/FormattedNumber.vue'
@@ -154,11 +154,11 @@ interface Duration {
 }
 
 interface Row {
-  sourceNode: SummarySubComponentDependencyNode
+  sourceNode: GraphNode
   sourceTags: Tag[]
   sourceComponent: Component
   isSource: boolean
-  targetNode: SummarySubComponentDependencyNode
+  targetNode: GraphNode
   targetTags: Tag[]
   targetComponent: Component
   isTarget: boolean
@@ -189,19 +189,25 @@ export default Vue.extend({
       type: Array as PropType<Component[]>,
       required: true,
     },
-    subComponentDependencies: {
-      type: Object as PropType<SummarySubComponentDependencies>,
+    diagram: {
+      type: Object as PropType<Diagram>,
       default: undefined,
     },
   },
   computed: {
-    rows(): Row[] {
-      const that = this
-      if (!that.subComponentDependencies) {
-        return []
+    graph(): GraphState | undefined {
+      if (!this.diagram || this.diagram.states.length === 0) {
+        return undefined
       }
 
-      const componentNodeIndexes = that.subComponentDependencies.nodes
+      return this.diagram.states[0] as GraphState
+    },
+    rows(): Row[] {
+      const that = this
+      if (!that.graph) {
+        return []
+      }
+      const componentNodeIndexes = that.graph.nodes
         .map((node, nodeIndex) =>
           node.componentId === that.componentId ? nodeIndex : undefined
         )
@@ -211,7 +217,7 @@ export default Vue.extend({
         return []
       }
 
-      return that.subComponentDependencies.dependencies
+      return that.graph.edges
         .filter(
           that.dependencyMatchesThisComponentAndDirection(
             that.direction,
@@ -248,7 +254,7 @@ export default Vue.extend({
       direction: Direction,
       componentNodeIndexes: number[]
     ) {
-      return (dependency: SummaryComponentDependency) => {
+      return (dependency: GraphEdge) => {
         return (
           (direction === 'downstream' &&
             dependency.sourceIndex !== undefined &&
@@ -260,36 +266,25 @@ export default Vue.extend({
         )
       }
     },
-    getNodeByIndex(
-      index?: number
-    ): SummarySubComponentDependencyNode | undefined {
-      return index !== undefined
-        ? this.subComponentDependencies.nodes[index]
-        : undefined
+    getNodeByIndex(index?: number): GraphNode | undefined {
+      if (this.graph === undefined || index === undefined) {
+        return undefined
+      }
+      return this.graph.nodes[index]
     },
     getComponentById(id?: string): Component | undefined {
       return id !== undefined
         ? this.allComponents.find((component) => component.id === id)
         : undefined
     },
-    getTags(
-      node?: SummaryComponentDependencyNode | SummarySubComponentDependencyNode
-    ): Tag[] {
+    getTags(node?: GraphNode): Tag[] {
       if (node === undefined || !('tags' in node)) {
         return []
       }
 
-      return Object.keys(node.tags)
-        .map(
-          (key) =>
-            ({
-              key,
-              value: node.tags[key],
-            } as Tag)
-        )
-        .sort((a, b) => a.key.localeCompare(b.key))
+      return node.tags.sort((a, b) => a.key.localeCompare(b.key))
     },
-    mapDuration(duration: SummaryComponentDependencyDuration) {
+    mapDuration(duration: GraphEdgeDuration) {
       if (!duration) {
         return undefined
       }

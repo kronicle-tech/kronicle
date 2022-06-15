@@ -74,14 +74,17 @@
 <script lang="ts">
 import Vue, { PropType } from 'vue'
 import { BAlert, BBadge, BButton } from 'bootstrap-vue'
+import eq from 'lodash.eq'
+import uniq from 'lodash.uniq'
 import {
   Component,
-  SummaryCallGraph,
-  SummarySubComponentDependencyNode,
+  Diagram,
+  GraphNode,
+  GraphState,
 } from '~/types/kronicle-service'
 import ComponentDependencyGraph from '~/components/ComponentDependencyGraph.vue'
 
-interface ExtendedNode extends SummarySubComponentDependencyNode {
+interface ExtendedNode extends GraphNode {
   selected: boolean
 }
 
@@ -97,12 +100,8 @@ export default Vue.extend({
       type: Object as PropType<Component>,
       required: true,
     },
-    nodes: {
-      type: Array as PropType<SummarySubComponentDependencyNode[]>,
-      required: true,
-    },
-    callGraphs: {
-      type: Array as PropType<SummaryCallGraph[]>,
+    diagrams: {
+      type: Array as PropType<Diagram[]>,
       required: true,
     },
   },
@@ -113,6 +112,16 @@ export default Vue.extend({
     }
   },
   computed: {
+    graphs(): GraphState[] {
+      const that = this
+      return that.diagrams
+        .map((diagram) => that.getDiagramGraph(diagram))
+        .filter((graph) => graph !== undefined)
+        .map((graph) => graph as GraphState)
+    },
+    nodes(): GraphNode[] {
+      return uniq(this.graphs.flatMap((graph) => graph.nodes))
+    },
     extendedNodes(): ExtendedNode[] {
       const that = this
       return that.nodes.map(
@@ -123,44 +132,33 @@ export default Vue.extend({
           } as ExtendedNode)
       )
     },
-    filteredCallGraphs(): SummaryCallGraph[] {
+    filteredDiagrams(): Diagram[] {
       const that = this
-      if (that.nodes.length === 0) {
+      if (that.diagrams.length === 0) {
         return []
       }
       const selectedNode = that.nodes[that.selectedNodeIndex]
-      return this.callGraphs
-        .filter((callGraph) =>
-          callGraph.nodes.some((node) => that.nodeEquals(node, selectedNode))
+      return that.diagrams
+        .filter((diagram) => {
+          const graph = that.getDiagramGraph(diagram)
+          if (!graph) {
+            return false
+          }
+          return graph.nodes.some((node) => eq(node, selectedNode))
+        })
+        .sort(
+          (a, b) =>
+            (that.getDiagramGraph(a)?.sampleSize ?? 0) -
+            (that.getDiagramGraph(b)?.sampleSize ?? 0)
         )
-        .sort((a, b) => b.traceCount - a.traceCount)
         .slice(0, that.maxCallGraphCount)
     },
   },
   methods: {
-    nodeEquals(
-      a: SummarySubComponentDependencyNode,
-      b: SummarySubComponentDependencyNode
-    ): boolean {
-      if (a.componentId !== b.componentId) {
-        return false
-      }
-
-      if (a.spanName !== b.spanName) {
-        return false
-      }
-
-      if (Object.keys(a.tags).length !== Object.keys(b.tags).length) {
-        return false
-      }
-
-      for (const tagKey in a.tags) {
-        if (a.tags[tagKey] !== b.tags[tagKey]) {
-          return false
-        }
-      }
-
-      return true
+    getDiagramGraph(diagram: Diagram): GraphState | undefined {
+      return diagram.states.find((state) => state.type === 'graph') as
+        | GraphState
+        | undefined
     },
     nodeClick(nodeIndex: number): void {
       this.selectedNodeIndex = nodeIndex

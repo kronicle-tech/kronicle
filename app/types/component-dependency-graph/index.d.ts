@@ -1,10 +1,6 @@
 /* eslint-disable no-use-before-define */
 
-import {
-  SummaryComponentDependency,
-  SummaryComponentDependencyNode,
-  SummarySubComponentDependencyNode,
-} from '~/types/kronicle-service'
+import { GraphEdge, GraphNode } from '~/types/kronicle-service'
 
 export interface NodeLabel {
   x: number
@@ -13,7 +9,7 @@ export interface NodeLabel {
 
 export type DependencyRelationType =
   | 'all'
-  | 'manual'
+  | 'other'
   | 'scope-related'
   | 'scoped'
   | 'related'
@@ -25,11 +21,10 @@ export interface Dependency {
   sourceNode: Node
   targetNode: Node
   relatedNodes: Node[]
-  manual: boolean
   d: string
   scopeRelated: boolean
   dependencyRelationType: DependencyRelationType
-  dependency: SummaryComponentDependency
+  dependency: GraphEdge
 }
 
 export interface Node {
@@ -42,7 +37,7 @@ export interface Node {
   y: number
   label: NodeLabel
   dependencyRelationType: DependencyRelationType
-  node: SummaryComponentDependencyNode | SummarySubComponentDependencyNode
+  node: GraphNode
   dependencies: Dependency[]
 }
 

@@ -746,15 +746,5 @@ export function createComponentAvailableDataRequests() {
           component: createComponentWithAvailableData(componentNumber),
         },
       },
-    '/v1/components/test-component-id-1/call-graphs?fields=callGraphs(fake)': {
-      responseBody: {
-        callGraphs: [{}, {}],
-      },
-    },
-    '/v1/components/test-component-id-1/nodes?fields=nodes(fake)': {
-      responseBody: {
-        nodes: [{}, {}],
-      },
-    },
   }
 }

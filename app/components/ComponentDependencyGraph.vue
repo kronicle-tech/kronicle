@@ -84,11 +84,10 @@
 <script lang="ts">
 import Vue, { PropType } from 'vue'
 import {
-  SummaryComponentDependencies,
-  SummaryComponentDependency,
-  SummaryComponentDependencyNode,
-  SummarySubComponentDependencies,
-  SummarySubComponentDependencyNode,
+  Diagram,
+  GraphEdge,
+  GraphNode,
+  GraphState,
 } from '~/types/kronicle-service'
 import {
   Dependency,
@@ -97,17 +96,10 @@ import {
   Node,
 } from '~/types/component-dependency-graph'
 
-interface SummaryComponentDependencyWithMandatorySourceIndex
-  extends SummaryComponentDependency {
-  sourceIndex: number
-}
-
 export default Vue.extend({
   props: {
-    dependencies: {
-      type: Object as PropType<
-        SummaryComponentDependencies | SummarySubComponentDependencies
-      >,
+    diagram: {
+      type: Object as PropType<Diagram>,
       default: undefined,
     },
     dependencyTypeIds: {
@@ -164,7 +156,7 @@ export default Vue.extend({
       labelOffset: 20,
       groups: [
         'all',
-        'manual',
+        'other',
         'scope-related',
         'scoped',
         'related',
@@ -184,14 +176,30 @@ export default Vue.extend({
         !['related', 'direct'].includes(this.dependencyRelationType)
       )
     },
+    graph(): GraphState | undefined {
+      if (!this.diagram || this.diagram.states.length === 0) {
+        return undefined
+      }
+
+      return this.diagram.states.find((state) => state.type === 'graph') as
+        | GraphState
+        | undefined
+    },
     network(): Network {
       const that = this
+
       const network = {
         nodes: [],
         nodeGroups: new Map<DependencyRelationType, Node[]>(),
         dependencies: [],
         dependencyGroups: new Map<DependencyRelationType, Dependency[]>(),
       } as Network
+
+      if (!that.graph) {
+        return network
+      }
+
+      const graph = that.graph
 
       addNodes()
       const effectiveSelectedNodeIndexes = getEffectiveSelectedNodeIndexes()
@@ -211,7 +219,7 @@ export default Vue.extend({
       return network
 
       function addNodes() {
-        that.dependencies.nodes.forEach((node, nodeIndex) => {
+        graph.nodes.forEach((node, nodeIndex) => {
           addNode(node, nodeIndex)
         })
       }
@@ -254,12 +262,7 @@ export default Vue.extend({
         return undefined
       }
 
-      function addNode(
-        dependencyNode:
-          | SummaryComponentDependencyNode
-          | SummarySubComponentDependencyNode,
-        index: number
-      ) {
+      function addNode(dependencyNode: GraphNode, index: number) {
         const node = {
           index,
           text: getNodeText(dependencyNode),
@@ -278,15 +281,11 @@ export default Vue.extend({
         network.nodes.push(node)
       }
 
-      function getNodeText(
-        node: SummaryComponentDependencyNode | SummarySubComponentDependencyNode
-      ) {
+      function getNodeText(node: GraphNode) {
         const text = [node.componentId]
         if ('spanName' in node) {
-          text.push(node.spanName)
-          Object.keys(node.tags).forEach((key) =>
-            text.push(` ${key}=${node.tags[key]}`)
-          )
+          text.push(node.name)
+          node.tags.forEach((tag) => text.push(` ${tag.key}=${tag.value}`))
         }
         const maxLineLength = 30
         return text.map((line) =>
@@ -297,41 +296,30 @@ export default Vue.extend({
       }
 
       function addDependencies() {
-        that.dependencies.dependencies.forEach(
-          (dependency, dependencyIndex) => {
-            if (
-              dependency.sourceIndex !== undefined &&
-              filterDependencyType(dependency)
-            ) {
-              addDependency(
-                dependency as SummaryComponentDependencyWithMandatorySourceIndex,
-                dependencyIndex
-              )
-            }
+        graph.edges.forEach((dependency, dependencyIndex) => {
+          if (
+            dependency.sourceIndex !== undefined &&
+            filterDependencyType(dependency)
+          ) {
+            addDependency(dependency, dependencyIndex)
           }
-        )
+        })
       }
 
-      function filterDependencyType(
-        componentDependency: SummaryComponentDependencyWithMandatorySourceIndex
-      ) {
+      function filterDependencyType(componentDependency: GraphEdge) {
         return (
           that.dependencyTypeIds === undefined ||
           that.dependencyTypeIds.length === 0 ||
-          that.dependencyTypeIds.includes(componentDependency.typeId)
+          that.dependencyTypeIds.includes(componentDependency.type)
         )
       }
 
-      function addDependency(
-        componentDependency: SummaryComponentDependencyWithMandatorySourceIndex,
-        index: number
-      ) {
+      function addDependency(componentDependency: GraphEdge, index: number) {
         const dependency = {
           index,
           sourceNode: network.nodes[componentDependency.sourceIndex],
           targetNode: network.nodes[componentDependency.targetIndex],
           relatedNodes: getRelatedNodes(componentDependency.relatedIndexes),
-          manual: componentDependency.manual,
           d: '',
           scopeRelated: false,
           dependencyRelationType: 'all',
@@ -364,8 +352,6 @@ export default Vue.extend({
           return 'scoped'
         } else if (dependency.scopeRelated) {
           return 'scope-related'
-        } else if (dependency.manual) {
-          return 'manual'
         } else {
           return 'all'
         }
@@ -463,7 +449,6 @@ export default Vue.extend({
           'related',
           'scoped',
           'scope-related',
-          'manual',
           'all',
         ] as DependencyRelationType[]
         const acceptableDependencyRelationTypes = [] as DependencyRelationType[]
@@ -523,7 +508,7 @@ export default Vue.extend({
           ) {
             node.dependencyRelationType = 'scoped'
           } else {
-            let dependencyRelationType = 'manual' as DependencyRelationType
+            let dependencyRelationType = 'other' as DependencyRelationType
             node.dependencies.some((dependency) => {
               dependencyRelationType = maxDependencyRelationType(
                 dependencyRelationType,
@@ -571,7 +556,7 @@ export default Vue.extend({
         } else if (a === 'all' || b === 'all') {
           return 'all'
         } else {
-          return 'manual'
+          return 'other'
         }
       }
 
@@ -884,13 +869,13 @@ export default Vue.extend({
   fill: #fff;
 }
 
-.manual-dependency,
-.manual-dependency-marker {
+.other-dependency,
+.other-dependency-marker {
   stroke: #e74c3c;
 }
 
-.manual-node,
-.manual-node-label {
+.other-node,
+.other-node-label {
   fill: #e74c3c;
 }
 

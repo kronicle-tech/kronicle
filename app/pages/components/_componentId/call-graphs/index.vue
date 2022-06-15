@@ -18,11 +18,7 @@
 <script lang="ts">
 import Vue from 'vue'
 import { MetaInfo } from 'vue-meta'
-import {
-  Component,
-  SummarySubComponentDependencies,
-  SummarySubComponentDependencyNode,
-} from '~/types/kronicle-service'
+import { Component } from '~/types/kronicle-service'
 import ComponentTabs from '~/components/ComponentTabs.vue'
 import ComponentCallGraphsView from '~/components/ComponentCallGraphsView.vue'
 import { fetchComponentAvailableData } from '~/src/fetchComponentAvailableData'
