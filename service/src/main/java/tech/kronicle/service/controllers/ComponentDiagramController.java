@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import tech.kronicle.sdk.models.GetComponentDiagramsResponse;
-import tech.kronicle.sdk.models.GetComponentNodesResponse;
 import tech.kronicle.service.partialresponse.PartialResponse;
 import tech.kronicle.service.services.ComponentService;
 import tech.kronicle.service.springdoc.Texts;
