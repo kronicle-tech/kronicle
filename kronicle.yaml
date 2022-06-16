@@ -199,3 +199,19 @@ components:
     teams:
       - teamId: kronicle-project
     platform: third-party-platform
+
+diagrams:
+  - id: kronicle
+    name: Kronicle
+    description: |
+      Architecture diagram for Kronicle
+    connections:
+      - sourceComponentId: kronicle-app
+        targetComponentId: kronicle-service
+        label: calls the service's REST API
+      - sourceComponentId: kronicle-service
+        targetComponentId: aws-plugin
+        label: contains the plugin
+      - sourceComponentId: kronicle-service
+        targetComponentId: amazon-aws
+        label: calls APIs
