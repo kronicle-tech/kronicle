@@ -4,7 +4,7 @@ buildscript {
     }
 
     dependencies {
-        classpath "tech.kronicle:kronicle-metadata:0.1.250"
+        classpath "tech.kronicle:kronicle-metadata:0.1.290"
     }
 }
 
