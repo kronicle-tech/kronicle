@@ -203,6 +203,7 @@ components:
 diagrams:
   - id: kronicle
     name: Kronicle
+    type: architecture
     description: |
       Architecture diagram for Kronicle
     connections:
