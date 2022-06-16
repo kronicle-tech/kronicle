@@ -1,0 +1,148 @@
+name: CI Shared
+
+on:
+  workflow_call:
+    inputs:
+      nodejs:
+        description: Whether the job will need node.js to be installed
+        required: true
+        type: boolean
+      caching:
+        description: Whether the job should use caching for Gradle and npm dependencies
+        required: true
+        type: boolean
+      build_tasks:
+        description: The space separated names of the Gradle tasks to execute
+        required: true
+        type: string
+      docker_image_name:
+        description: Name of the docker image to publish
+        required: true
+        type: string        
+      publish_jars:
+        description: Whether the job should publish JARs
+        required: true
+        type: boolean
+
+jobs:
+
+  ci-build-and-docker-push:
+    runs-on: ubuntu-latest
+    environment: publish
+
+    steps:
+      - uses: actions/checkout@v2
+        # Based on https://axion-release-plugin.readthedocs.io/en/latest/configuration/ci_servers/#github-actions
+        with:
+          fetch-depth: 0
+
+      - name: Set up JDK 11
+        uses: actions/setup-java@v2
+        with:
+          java-version: '11'
+          distribution: 'adopt'
+
+      - name: Cache Gradle packages
+        if: ${{ inputs.caching }}
+        uses: actions/cache@v2
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
+          restore-keys: |
+            ${{ runner.os }}-gradle-
+
+      - name: Set up Node.js
+        if: ${{ inputs.nodejs }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: '12'
+
+      - name: Upgrade npm
+        if: ${{ inputs.nodejs }}
+        run: npm install -g npm@latest
+
+      - name: Get Node.js version
+        if: ${{ inputs.nodejs }}
+        run: |
+          echo "$(node -v)" > node-version.txt
+
+      - name: Get npm version
+        if: ${{ inputs.nodejs }}
+        run: |
+          echo "$(npm -v)" > npm-version.txt
+
+      - name: Cache the NPM Cache
+        if: ${{ inputs.nodejs && inputs.caching }}
+        uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('node-version.txt', 'npm-version.txt', '**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      - name: Validate Gradle wrapper
+        uses: gradle/wrapper-validation-action@e6e38bacfdf1a337459f332974bb2327a31aaf4b
+
+      - name: Log in to GitHub Container Registry
+        uses: docker/login-action@f054a8b539a109f9f41c372932f1ae047eff08c9
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build and push Docker images to GitHub Container Registry
+        run: |
+          ./gradlew -PdockerPushImage=true -PdockerRegistry=ghcr.io/kronicle-tech -PdockerTagSuffix=-pre-release\
+            ${{ inputs.build_tasks }}
+
+      - name: Archive Dependency Check report 🗄️
+        uses: actions/upload-artifact@v2
+        if: success() || failure()
+        with:
+          name: dependency-check-report
+          path: '**/build/reports/dependency-check-report.html'
+
+      - name: Archive JUnit test reports 🗄️
+        uses: actions/upload-artifact@v2
+        if: success() || failure()
+        with:
+          name: junit-test-reports
+          path: '**/build/reports/tests/test/**'
+
+      - name: Clean up Gradle Cache
+        if: ${{ inputs.caching }}
+        # Remove some files from the Gradle cache, so they aren't cached by GitHub Actions.
+        # Restoring these files from a GitHub Actions cache might cause problems for future builds.
+        run: |
+          rm -f ~/.gradle/caches/modules-2/modules-2.lock
+          rm -f ~/.gradle/caches/modules-2/gc.properties
+
+      - name: Get version
+        id: get_version
+        run: echo ::set-output name=VERSION::$(./gradlew currentVersion -q -Prelease.quiet)
+
+      - name: Publish JARs to Maven Central
+        if: ${{ inputs.publish_jars }}
+        run: ./gradlew --no-parallel publish
+        env:
+          OSSRH_USERNAME: ${{ secrets.OSSRH_USERNAME }}
+          OSSRH_PASSWORD: ${{ secrets.OSSRH_PASSWORD }}
+          SIGNING_KEY: ${{ secrets.SIGNING_KEY }}
+          SIGNING_PASSWORD: ${{ secrets.SIGNING_PASSWORD }}
+
+      - name: Log in to Amazon ECR Public
+        uses: docker/login-action@v1
+        with:
+          registry: public.ecr.aws
+          username: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          password: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        env:
+          AWS_REGION: ${{ secrets.AWS_REGION }}
+
+      - name: Push Docker images to Amazon ECR Public
+        run: |
+          docker pull ghcr.io/kronicle-tech/${{ inputs.docker_image_name }}:${{ steps.get_version.outputs.VERSION }}-pre-release
+          docker tag ghcr.io/kronicle-tech/${{ inputs.docker_image_name }}:${{ steps.get_version.outputs.VERSION }}-pre-release ${{ secrets.AMAZON_ECR_REGISTRY }}/${{ inputs.docker_image_name }}:${{ steps.get_version.outputs.VERSION }}-pre-release
+          docker push ${{ secrets.AMAZON_ECR_REGISTRY }}/${{ inputs.docker_image_name }}:${{ steps.get_version.outputs.VERSION }}-pre-release
