@@ -280,6 +280,20 @@ public class ComponentServiceTest {
     }
 
     @Test
+    public void getDiagramsShouldReturnAllDiagrams() {
+        // Given
+        Diagram diagram1 = createDiagram(1);
+        Diagram diagram2 = createDiagram(2);
+        when(mockComponentRepository.getDiagrams()).thenReturn(List.of(diagram1, diagram2));
+
+        // When
+        List<Diagram> returnValue = underTest.getDiagrams();
+
+        // Then
+        assertThat(returnValue).containsExactly(diagram1, diagram2);
+    }
+
+    @Test
     public void getTeamsShouldReturnAllTeams() {
         // Given
         Team team1 = Team.builder()

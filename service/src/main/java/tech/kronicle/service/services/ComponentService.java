@@ -35,6 +35,10 @@ public class ComponentService {
         return component.withStates(getFilteredStates(component.getStates(), stateTypes));
     }
 
+    public List<Diagram> getDiagrams() {
+        return componentRepository.getDiagrams();
+    }
+
     public List<Diagram> getComponentDiagrams(String componentId) {
         return componentRepository.getComponentDiagrams(componentId);
     }
