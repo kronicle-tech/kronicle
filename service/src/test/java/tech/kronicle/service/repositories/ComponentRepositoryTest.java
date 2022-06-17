@@ -573,6 +573,22 @@ public class ComponentRepositoryTest {
     }
 
     @Test
+    public void getDiagramShouldReturnTheDiagramWithMatchingDiagramId() {
+        // Given
+        when(mockComponentMetadataRepository.getComponentMetadata()).thenReturn(createComponentMetadata());
+        String diagramId = "test-diagram-id-2";
+        initializeAndWaitForRefreshToFinish(underTest);
+
+        // When
+        Diagram diagram = underTest.getDiagram(diagramId);
+
+        // Then
+        assertThat(diagram).isNotNull();
+        assertThat(diagram.getId()).isEqualTo("test-diagram-id-2");
+        assertThat(diagram.getName()).isEqualTo("Test Diagram Name 2");
+    }
+
+    @Test
     public void getScannersShouldHandleAnEmptyListOfScanners() {
         // Given
         when(mockScannerRegistry.getAllItems()).thenReturn(List.of());

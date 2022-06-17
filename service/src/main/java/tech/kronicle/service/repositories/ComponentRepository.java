@@ -118,6 +118,10 @@ public class ComponentRepository extends RefreshingRepository {
         return assembler.toSortedUnmodifiableDiagramList(diagrams.values().stream());
     }
 
+    public Diagram getDiagram(String diagramId) {
+        return diagrams.get(diagramId);
+    }
+
     public Summary getSummary() {
         return summary;
     }

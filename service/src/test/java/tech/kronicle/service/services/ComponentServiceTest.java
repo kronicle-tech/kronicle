@@ -10,6 +10,7 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import tech.kronicle.sdk.models.*;
 import tech.kronicle.service.repositories.ComponentRepository;
+import tech.kronicle.service.testutils.FakeDiagramState;
 
 import java.util.List;
 import java.util.Optional;
@@ -17,6 +18,7 @@ import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.when;
+import static tech.kronicle.service.testutils.DiagramStateUtils.createDiagramState;
 import static tech.kronicle.service.testutils.DiagramUtils.createDiagram;
 
 @ExtendWith(MockitoExtension.class)
@@ -291,6 +293,108 @@ public class ComponentServiceTest {
 
         // Then
         assertThat(returnValue).containsExactly(diagram1, diagram2);
+    }
+
+    @Test
+    public void getDiagramShouldReturnTheDiagramWithMatchingId() {
+        // Given
+        Diagram diagram1 = Diagram.builder()
+                .id("test-diagram-id")
+                .build();
+        when(mockComponentRepository.getDiagram(diagram1.getId())).thenReturn(diagram1);
+
+        // When
+        Diagram returnValue = underTest.getDiagram(diagram1.getId(), List.of());
+
+        // Then
+        assertThat(returnValue).isSameAs(diagram1);
+    }
+
+    @Test
+    public void getDiagramShouldReturnNullIfNoDiagramMatchesId() {
+        // Given
+        String diagramId = "test-diagram-id";
+        when(mockComponentRepository.getDiagram(diagramId)).thenReturn(null);
+
+        // When
+        Diagram returnValue = underTest.getDiagram(diagramId, List.of());
+
+        // Then
+        assertThat(returnValue).isNull();
+    }
+
+    @Test
+    public void getDiagramShouldReturnAllStatesIfStateTypesListIsNull() {
+        // Given
+        String diagramId = "test-diagram-id";
+        Diagram diagram = Diagram.builder()
+                .id(diagramId)
+                .states(List.of(
+                        createDiagramState(1),
+                        createDiagramState(1)
+                ))
+                .build();
+        when(mockComponentRepository.getDiagram(diagramId)).thenReturn(diagram);
+
+        // When
+        Diagram returnValue = underTest.getDiagram(diagramId, null);
+
+        // Then
+        assertThat(returnValue).isEqualTo(diagram);
+    }
+
+    @Test
+    public void getDiagramShouldReturnAllStatesIfStateTypesListIsEmpty() {
+        // Given
+        String diagramId = "test-diagram-id";
+        Diagram diagram = Diagram.builder()
+                .id(diagramId)
+                .states(List.of(
+                        createDiagramState(1),
+                        createDiagramState(2)
+                ))
+                .build();
+        when(mockComponentRepository.getDiagram(diagramId)).thenReturn(diagram);
+
+        // When
+        Diagram returnValue = underTest.getDiagram(diagramId, List.of());
+
+        // Then
+        assertThat(returnValue).isEqualTo(diagram);
+    }
+
+    @Test
+    public void getDiagramShouldFilterByStateTypesIfAtLeastOneStateTypeIsSpecified() {
+        // Given
+        String diagramId = "test-diagram-id";
+        FakeDiagramState state1 = createDiagramState(1);
+        FakeDiagramState state2 = createDiagramState(2);
+        FakeDiagramState state3 = createDiagramState(3);
+        FakeDiagramState state4 = createDiagramState(4);
+        Diagram diagram = Diagram.builder()
+                .id(diagramId)
+                .states(List.of(
+                        state1,
+                        state2,
+                        state3,
+                        state4
+                ))
+                .build();
+        when(mockComponentRepository.getDiagram(diagramId)).thenReturn(diagram);
+
+        // When
+        Diagram returnValue = underTest.getDiagram(diagramId, List.of(
+                state1.getType(),
+                state3.getType()
+        ));
+
+        // Then
+        assertThat(returnValue).isEqualTo(
+                diagram.withStates(List.of(
+                        state1,
+                        state3
+                ))
+        );
     }
 
     @Test

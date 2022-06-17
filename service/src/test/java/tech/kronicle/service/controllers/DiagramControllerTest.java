@@ -6,6 +6,8 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import tech.kronicle.sdk.models.Diagram;
+import tech.kronicle.sdk.models.GetComponentResponse;
+import tech.kronicle.sdk.models.GetDiagramResponse;
 import tech.kronicle.sdk.models.GetDiagramsResponse;
 import tech.kronicle.service.services.ComponentService;
 
@@ -42,5 +44,47 @@ public class DiagramControllerTest {
         // Then
         assertThat(returnValue).isNotNull();
         assertThat(returnValue.getDiagrams()).containsExactlyElementsOf(DIAGRAMS);
+    }
+
+    @Test
+    public void getDiagramShouldReturnADiagram() {
+        // Given
+        when(mockComponentService.getDiagram(DIAGRAM_1.getId(), List.of())).thenReturn(DIAGRAM_1);
+
+        // When
+        GetDiagramResponse returnValue = underTest.getDiagram(DIAGRAM_1.getId(), List.of());
+
+        // Then
+        assertThat(returnValue).isNotNull();
+        assertThat(returnValue.getDiagram()).isSameAs(DIAGRAM_1);
+    }
+
+    @Test
+    public void getDiagramShouldNotReturnADiagramWhenDiagramIdIsUnknown() {
+        // Given
+        String diagramId = "unknown";
+        when(mockComponentService.getDiagram(diagramId, List.of())).thenReturn(null);
+
+        // When
+        GetDiagramResponse returnValue = underTest.getDiagram(diagramId, List.of());
+
+        // Then
+        assertThat(returnValue).isNotNull();
+        assertThat(returnValue.getDiagram()).isNull();
+    }
+
+    @Test
+    public void getDiagramShouldFilterStateTypes() {
+        // Given
+        String diagramId = "unknown";
+        List<String> stateTypes = List.of("test-state-type-1", "test-state-type-2");
+        when(mockComponentService.getDiagram(diagramId, stateTypes)).thenReturn(DIAGRAM_1);
+
+        // When
+        GetDiagramResponse returnValue = underTest.getDiagram(diagramId, stateTypes);
+
+        // Then
+        assertThat(returnValue).isNotNull();
+        assertThat(returnValue.getDiagram()).isEqualTo(DIAGRAM_1);
     }
 }

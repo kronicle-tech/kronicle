@@ -5,7 +5,7 @@ import tech.kronicle.sdk.constants.PatternStrings;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Pattern;
 
-public interface DiagramState {
+public interface DiagramState extends ObjectWithType {
 
     @NotEmpty
     @Pattern(regexp = PatternStrings.ID)

@@ -4,7 +4,7 @@
       <b-list-group>
         <b-list-group-item :variant="countVariant">
           <span :class="countClass">{{ count }}</span>
-          OpenAPI spec{{ count === 1 ? '' : 's' }}
+          Diagram{{ count === 1 ? '' : 's' }}
         </b-list-group-item>
       </b-list-group>
     </b-card>

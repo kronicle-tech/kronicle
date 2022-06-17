@@ -35,12 +35,20 @@ public class ComponentService {
         return component.withStates(getFilteredStates(component.getStates(), stateTypes));
     }
 
+    public List<Diagram> getComponentDiagrams(String componentId) {
+        return componentRepository.getComponentDiagrams(componentId);
+    }
+
     public List<Diagram> getDiagrams() {
         return componentRepository.getDiagrams();
     }
 
-    public List<Diagram> getComponentDiagrams(String componentId) {
-        return componentRepository.getComponentDiagrams(componentId);
+    public Diagram getDiagram(String diagramId, List<String> stateTypes) {
+        Diagram diagram = componentRepository.getDiagram(diagramId);
+        if (isNull(diagram)) {
+            return null;
+        }
+        return diagram.withStates(getFilteredStates(diagram.getStates(), stateTypes));
     }
 
     public List<Team> getTeams(List<TestOutcome> testOutcomes) {
@@ -142,7 +150,7 @@ public class ComponentService {
         };
     }
 
-    private List<ComponentState> getFilteredStates(List<ComponentState> states, List<String> stateTypes) {
+    private <T extends ObjectWithType> List<T> getFilteredStates(List<T> states, List<String> stateTypes) {
         if (isNull(stateTypes) || stateTypes.isEmpty()) {
             return states;
         }
