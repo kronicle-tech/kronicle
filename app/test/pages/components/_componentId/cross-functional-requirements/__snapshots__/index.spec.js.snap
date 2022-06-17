@@ -33,35 +33,11 @@ exports[`Index when Get Component service endpoint returns a component when the 
   
     </a>
      
-    <a
-      class="btn my-1 btn-secondary"
-      href="/components/test-component-id-1/response-times"
-      target="_self"
-    >
-      
-    Response Times
-  
-    </a>
+    <!---->
      
-    <a
-      class="btn my-1 btn-secondary"
-      href="/components/test-component-id-1/downstream-response-times"
-      target="_self"
-    >
-      
-    Downstream Response Times
-  
-    </a>
+    <!---->
      
-    <a
-      class="btn my-1 btn-secondary"
-      href="/components/test-component-id-1/call-graphs"
-      target="_self"
-    >
-      
-    Call Graphs
-  
-    </a>
+    <!---->
      
     <a
       class="btn my-1 btn-secondary"
@@ -198,11 +174,11 @@ exports[`Index when Get Component service endpoint returns a component when the 
                 <!---->
                 <fieldset
                   class="form-group"
-                  id="__BVID__93"
+                  id="__BVID__84"
                 >
                   <legend
                     class="bv-no-focus-ring col-form-label pt-0"
-                    id="__BVID__93__BV_label_"
+                    id="__BVID__84__BV_label_"
                     tabindex="-1"
                   >
                     Teams
@@ -210,7 +186,7 @@ exports[`Index when Get Component service endpoint returns a component when the 
                   <div>
                     <div
                       class="bv-no-focus-ring"
-                      id="__BVID__94"
+                      id="__BVID__85"
                       role="group"
                       tabindex="-1"
                     >
@@ -219,14 +195,14 @@ exports[`Index when Get Component service endpoint returns a component when the 
                       >
                         <input
                           class="custom-control-input"
-                          id="__BVID__94_BV_option_0"
+                          id="__BVID__85_BV_option_0"
                           name="team"
                           type="checkbox"
                           value="test-team-id-1-1"
                         />
                         <label
                           class="custom-control-label"
-                          for="__BVID__94_BV_option_0"
+                          for="__BVID__85_BV_option_0"
                         >
                           <span>
                             test-team-id-1-1
@@ -238,14 +214,14 @@ exports[`Index when Get Component service endpoint returns a component when the 
                       >
                         <input
                           class="custom-control-input"
-                          id="__BVID__94_BV_option_1"
+                          id="__BVID__85_BV_option_1"
                           name="team"
                           type="checkbox"
                           value="test-team-id-1-2"
                         />
                         <label
                           class="custom-control-label"
-                          for="__BVID__94_BV_option_1"
+                          for="__BVID__85_BV_option_1"
                         >
                           <span>
                             test-team-id-1-2
@@ -275,11 +251,11 @@ exports[`Index when Get Component service endpoint returns a component when the 
                 <!---->
                 <fieldset
                   class="form-group"
-                  id="__BVID__97"
+                  id="__BVID__88"
                 >
                   <legend
                     class="bv-no-focus-ring col-form-label pt-0"
-                    id="__BVID__97__BV_label_"
+                    id="__BVID__88__BV_label_"
                     tabindex="-1"
                   >
                     Tags
@@ -287,7 +263,7 @@ exports[`Index when Get Component service endpoint returns a component when the 
                   <div>
                     <div
                       class="bv-no-focus-ring"
-                      id="__BVID__98"
+                      id="__BVID__89"
                       role="group"
                       tabindex="-1"
                     >
@@ -296,14 +272,14 @@ exports[`Index when Get Component service endpoint returns a component when the 
                       >
                         <input
                           class="custom-control-input"
-                          id="__BVID__98_BV_option_0"
+                          id="__BVID__89_BV_option_0"
                           name="tag"
                           type="checkbox"
                           value="test-tag-1-1"
                         />
                         <label
                           class="custom-control-label"
-                          for="__BVID__98_BV_option_0"
+                          for="__BVID__89_BV_option_0"
                         >
                           <span>
                             test-tag-1-1
@@ -315,14 +291,14 @@ exports[`Index when Get Component service endpoint returns a component when the 
                       >
                         <input
                           class="custom-control-input"
-                          id="__BVID__98_BV_option_1"
+                          id="__BVID__89_BV_option_1"
                           name="tag"
                           type="checkbox"
                           value="test-tag-1-2"
                         />
                         <label
                           class="custom-control-label"
-                          for="__BVID__98_BV_option_1"
+                          for="__BVID__89_BV_option_1"
                         >
                           <span>
                             test-tag-1-2
@@ -352,11 +328,11 @@ exports[`Index when Get Component service endpoint returns a component when the 
                 <!---->
                 <fieldset
                   class="form-group"
-                  id="__BVID__101"
+                  id="__BVID__92"
                 >
                   <legend
                     class="bv-no-focus-ring col-form-label pt-0"
-                    id="__BVID__101__BV_label_"
+                    id="__BVID__92__BV_label_"
                     tabindex="-1"
                   >
                     Component Types
@@ -364,7 +340,7 @@ exports[`Index when Get Component service endpoint returns a component when the 
                   <div>
                     <div
                       class="bv-no-focus-ring"
-                      id="__BVID__102"
+                      id="__BVID__93"
                       role="group"
                       tabindex="-1"
                     >
@@ -373,14 +349,14 @@ exports[`Index when Get Component service endpoint returns a component when the 
                       >
                         <input
                           class="custom-control-input"
-                          id="__BVID__102_BV_option_0"
+                          id="__BVID__93_BV_option_0"
                           name="componentTypeId"
                           type="checkbox"
                           value="test-component-type-id-1"
                         />
                         <label
                           class="custom-control-label"
-                          for="__BVID__102_BV_option_0"
+                          for="__BVID__93_BV_option_0"
                         >
                           <span>
                             test-component-type-id-1
@@ -410,11 +386,11 @@ exports[`Index when Get Component service endpoint returns a component when the 
                 <!---->
                 <fieldset
                   class="form-group"
-                  id="__BVID__104"
+                  id="__BVID__95"
                 >
                   <legend
                     class="bv-no-focus-ring col-form-label pt-0"
-                    id="__BVID__104__BV_label_"
+                    id="__BVID__95__BV_label_"
                     tabindex="-1"
                   >
                     Platforms
@@ -422,7 +398,7 @@ exports[`Index when Get Component service endpoint returns a component when the 
                   <div>
                     <div
                       class="bv-no-focus-ring"
-                      id="__BVID__105"
+                      id="__BVID__96"
                       role="group"
                       tabindex="-1"
                     >
@@ -431,14 +407,14 @@ exports[`Index when Get Component service endpoint returns a component when the 
                       >
                         <input
                           class="custom-control-input"
-                          id="__BVID__105_BV_option_0"
+                          id="__BVID__96_BV_option_0"
                           name="platformId"
                           type="checkbox"
                           value="undefined"
                         />
                         <label
                           class="custom-control-label"
-                          for="__BVID__105_BV_option_0"
+                          for="__BVID__96_BV_option_0"
                         >
                           <span>
                             undefined
@@ -468,13 +444,13 @@ exports[`Index when Get Component service endpoint returns a component when the 
                 <!---->
                 <div
                   class="form-group"
-                  id="__BVID__107"
+                  id="__BVID__98"
                   role="group"
                 >
                   <label
                     class="d-block"
                     for="component-filter"
-                    id="__BVID__107__BV_label_"
+                    id="__BVID__98__BV_label_"
                   >
                     Component
                   </label>
@@ -821,35 +797,11 @@ exports[`Index when Get Component service endpoint returns a component when the 
   
     </a>
      
-    <a
-      class="btn my-1 btn-secondary"
-      href="/components/test-component-id-1/response-times"
-      target="_self"
-    >
-      
-    Response Times
-  
-    </a>
+    <!---->
      
-    <a
-      class="btn my-1 btn-secondary"
-      href="/components/test-component-id-1/downstream-response-times"
-      target="_self"
-    >
-      
-    Downstream Response Times
-  
-    </a>
+    <!---->
      
-    <a
-      class="btn my-1 btn-secondary"
-      href="/components/test-component-id-1/call-graphs"
-      target="_self"
-    >
-      
-    Call Graphs
-  
-    </a>
+    <!---->
      
     <a
       class="btn my-1 btn-secondary"
@@ -986,11 +938,11 @@ exports[`Index when Get Component service endpoint returns a component when the 
                 <!---->
                 <fieldset
                   class="form-group"
-                  id="__BVID__57"
+                  id="__BVID__51"
                 >
                   <legend
                     class="bv-no-focus-ring col-form-label pt-0"
-                    id="__BVID__57__BV_label_"
+                    id="__BVID__51__BV_label_"
                     tabindex="-1"
                   >
                     Teams
@@ -998,7 +950,7 @@ exports[`Index when Get Component service endpoint returns a component when the 
                   <div>
                     <div
                       class="bv-no-focus-ring"
-                      id="__BVID__58"
+                      id="__BVID__52"
                       role="group"
                       tabindex="-1"
                     >
@@ -1007,14 +959,14 @@ exports[`Index when Get Component service endpoint returns a component when the 
                       >
                         <input
                           class="custom-control-input"
-                          id="__BVID__58_BV_option_0"
+                          id="__BVID__52_BV_option_0"
                           name="team"
                           type="checkbox"
                           value="test-team-id-1-1"
                         />
                         <label
                           class="custom-control-label"
-                          for="__BVID__58_BV_option_0"
+                          for="__BVID__52_BV_option_0"
                         >
                           <span>
                             test-team-id-1-1
@@ -1026,14 +978,14 @@ exports[`Index when Get Component service endpoint returns a component when the 
                       >
                         <input
                           class="custom-control-input"
-                          id="__BVID__58_BV_option_1"
+                          id="__BVID__52_BV_option_1"
                           name="team"
                           type="checkbox"
                           value="test-team-id-1-2"
                         />
                         <label
                           class="custom-control-label"
-                          for="__BVID__58_BV_option_1"
+                          for="__BVID__52_BV_option_1"
                         >
                           <span>
                             test-team-id-1-2
@@ -1063,11 +1015,11 @@ exports[`Index when Get Component service endpoint returns a component when the 
                 <!---->
                 <fieldset
                   class="form-group"
-                  id="__BVID__61"
+                  id="__BVID__55"
                 >
                   <legend
                     class="bv-no-focus-ring col-form-label pt-0"
-                    id="__BVID__61__BV_label_"
+                    id="__BVID__55__BV_label_"
                     tabindex="-1"
                   >
                     Tags
@@ -1075,7 +1027,7 @@ exports[`Index when Get Component service endpoint returns a component when the 
                   <div>
                     <div
                       class="bv-no-focus-ring"
-                      id="__BVID__62"
+                      id="__BVID__56"
                       role="group"
                       tabindex="-1"
                     >
@@ -1084,14 +1036,14 @@ exports[`Index when Get Component service endpoint returns a component when the 
                       >
                         <input
                           class="custom-control-input"
-                          id="__BVID__62_BV_option_0"
+                          id="__BVID__56_BV_option_0"
                           name="tag"
                           type="checkbox"
                           value="test-tag-1-1"
                         />
                         <label
                           class="custom-control-label"
-                          for="__BVID__62_BV_option_0"
+                          for="__BVID__56_BV_option_0"
                         >
                           <span>
                             test-tag-1-1
@@ -1103,14 +1055,14 @@ exports[`Index when Get Component service endpoint returns a component when the 
                       >
                         <input
                           class="custom-control-input"
-                          id="__BVID__62_BV_option_1"
+                          id="__BVID__56_BV_option_1"
                           name="tag"
                           type="checkbox"
                           value="test-tag-1-2"
                         />
                         <label
                           class="custom-control-label"
-                          for="__BVID__62_BV_option_1"
+                          for="__BVID__56_BV_option_1"
                         >
                           <span>
                             test-tag-1-2
@@ -1140,11 +1092,11 @@ exports[`Index when Get Component service endpoint returns a component when the 
                 <!---->
                 <fieldset
                   class="form-group"
-                  id="__BVID__65"
+                  id="__BVID__59"
                 >
                   <legend
                     class="bv-no-focus-ring col-form-label pt-0"
-                    id="__BVID__65__BV_label_"
+                    id="__BVID__59__BV_label_"
                     tabindex="-1"
                   >
                     Component Types
@@ -1152,7 +1104,7 @@ exports[`Index when Get Component service endpoint returns a component when the 
                   <div>
                     <div
                       class="bv-no-focus-ring"
-                      id="__BVID__66"
+                      id="__BVID__60"
                       role="group"
                       tabindex="-1"
                     >
@@ -1161,14 +1113,14 @@ exports[`Index when Get Component service endpoint returns a component when the 
                       >
                         <input
                           class="custom-control-input"
-                          id="__BVID__66_BV_option_0"
+                          id="__BVID__60_BV_option_0"
                           name="componentTypeId"
                           type="checkbox"
                           value="test-component-type-id-1"
                         />
                         <label
                           class="custom-control-label"
-                          for="__BVID__66_BV_option_0"
+                          for="__BVID__60_BV_option_0"
                         >
                           <span>
                             test-component-type-id-1
@@ -1198,11 +1150,11 @@ exports[`Index when Get Component service endpoint returns a component when the 
                 <!---->
                 <fieldset
                   class="form-group"
-                  id="__BVID__68"
+                  id="__BVID__62"
                 >
                   <legend
                     class="bv-no-focus-ring col-form-label pt-0"
-                    id="__BVID__68__BV_label_"
+                    id="__BVID__62__BV_label_"
                     tabindex="-1"
                   >
                     Platforms
@@ -1210,7 +1162,7 @@ exports[`Index when Get Component service endpoint returns a component when the 
                   <div>
                     <div
                       class="bv-no-focus-ring"
-                      id="__BVID__69"
+                      id="__BVID__63"
                       role="group"
                       tabindex="-1"
                     >
@@ -1219,14 +1171,14 @@ exports[`Index when Get Component service endpoint returns a component when the 
                       >
                         <input
                           class="custom-control-input"
-                          id="__BVID__69_BV_option_0"
+                          id="__BVID__63_BV_option_0"
                           name="platformId"
                           type="checkbox"
                           value="undefined"
                         />
                         <label
                           class="custom-control-label"
-                          for="__BVID__69_BV_option_0"
+                          for="__BVID__63_BV_option_0"
                         >
                           <span>
                             undefined
@@ -1256,13 +1208,13 @@ exports[`Index when Get Component service endpoint returns a component when the 
                 <!---->
                 <div
                   class="form-group"
-                  id="__BVID__71"
+                  id="__BVID__65"
                   role="group"
                 >
                   <label
                     class="d-block"
                     for="component-filter"
-                    id="__BVID__71__BV_label_"
+                    id="__BVID__65__BV_label_"
                   >
                     Component
                   </label>

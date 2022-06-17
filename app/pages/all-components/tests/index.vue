@@ -44,7 +44,7 @@ export default Vue.extend({
   },
   head(): MetaInfo {
     return {
-      title: 'Kronicle - All Components - Tests',
+      title: 'Kronicle - Tests',
     }
   },
 })

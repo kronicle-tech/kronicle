@@ -36,7 +36,7 @@ export default Vue.extend({
   },
   head() {
     return {
-      title: 'Kronicle - All Components - GraphQL Schemas',
+      title: 'Kronicle - GraphQL Schemas',
     }
   },
 })

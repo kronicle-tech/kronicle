@@ -7,8 +7,7 @@
     <ComponentDependenciesView
       :all-components="allComponents"
       :components="area.components"
-      :component-dependencies="summary.componentDependencies"
-      :sub-component-dependencies="summary.subComponentDependencies"
+      :diagrams="diagrams"
     />
   </div>
 </template>
@@ -18,7 +17,7 @@ import Vue from 'vue'
 import { MetaInfo } from 'vue-meta'
 import AreaTabs from '~/components/AreaTabs.vue'
 import ComponentDependenciesView from '~/components/ComponentDependenciesView.vue'
-import { Area, Component, Summary } from '~/types/kronicle-service'
+import { Area, Component, Diagram } from '~/types/kronicle-service'
 
 export default Vue.extend({
   components: {
@@ -43,23 +42,23 @@ export default Vue.extend({
       .then((res) => res.json())
       .then((json) => json.components as Component[])
 
-    const summary = await fetch(
-      `${$config.serviceBaseUrl}/v1/summary?fields=summary(componentDependencies,subComponentDependencies)`
+    const diagrams = await fetch(
+      `${$config.serviceBaseUrl}/v1/components/diagrams`
     )
       .then((res) => res.json())
-      .then((json) => json.summary as Summary)
+      .then((json) => json.diagrams as Diagram[])
 
     return {
       area,
       allComponents,
-      summary,
+      diagrams,
     }
   },
   data() {
     return {
       area: {} as Area,
       allComponents: [] as Component[],
-      summary: {} as Summary,
+      diagrams: [] as Diagram[],
     }
   },
   head(): MetaInfo {

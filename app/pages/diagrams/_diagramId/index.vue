@@ -3,8 +3,7 @@
     <ComponentDependenciesView
       :all-components="components"
       :components="components"
-      :component-dependencies="summary.componentDependencies"
-      :sub-component-dependencies="summary.subComponentDependencies"
+      :diagram="diagram"
     />
   </div>
 </template>
@@ -12,7 +11,7 @@
 <script lang="ts">
 import Vue from 'vue'
 import { MetaInfo } from 'vue-meta'
-import { Component, Summary } from '~/types/kronicle-service'
+import { Component, Diagram } from '~/types/kronicle-service'
 import ComponentDependenciesView from '~/components/ComponentDependenciesView.vue'
 
 export default Vue.extend({
@@ -26,31 +25,31 @@ export default Vue.extend({
       .then((res) => res.json())
       .then((json) => json.components as Component[])
 
-    const summary = await fetch(
-      `${$config.serviceBaseUrl}/v1/summary?fields=summary(componentDependencies,subComponentDependencies)`
-    )
-      .then((res) => res.json())
-      .then((json) => json.summary as Summary)
-
     store.commit('componentFilters/initialize', {
       components,
       route,
     })
 
+    const diagram = await fetch(
+      `${$config.serviceBaseUrl}/v1/diagrams/${route.params.diagramId}`
+    )
+      .then((res) => res.json())
+      .then((json) => json.diagram as Diagram)
+
     return {
       components,
-      summary,
+      diagram,
     }
   },
   data() {
     return {
       components: [] as Array<Component>,
-      summary: {} as Summary,
+      diagram: {} as Diagram,
     }
   },
   head(): MetaInfo {
     return {
-      title: 'Kronicle - All Components - Visualizations',
+      title: `Kronicle - Diagrams - ${this.diagram.name}`,
     }
   },
 })

@@ -57,7 +57,7 @@
     <div class="graph">
       <ComponentDependencyGraph
         id="component-dependency-graph"
-        :dependencies="dependencies"
+        :diagram="diagram"
         :dependency-type-ids="selectedDependencyTypeIds"
         dependency-relation-type="scope-related"
         :zoom="zoom"
@@ -116,9 +116,9 @@ interface Option {
 }
 
 interface Connection {
-  source: GraphNode
-  target: GraphNode
-  edge: GraphEdge
+  readonly source: GraphNode
+  readonly target: GraphNode
+  readonly edge: GraphEdge
 }
 
 export default Vue.extend({
@@ -138,8 +138,8 @@ export default Vue.extend({
       type: Array as PropType<Component[]>,
       required: true,
     },
-    diagrams: {
-      type: Object as PropType<Diagram[]>,
+    diagram: {
+      type: Object as PropType<Diagram>,
       required: true,
     },
     allComponents: {
@@ -171,8 +171,7 @@ export default Vue.extend({
       return this.$store.state.componentFilters.filteredComponentIds
     },
     connections(): Connection[] {
-      return this.diagrams
-        .flatMap((diagram) => diagram.states)
+      return this.diagram.states
         .filter((state) => state.type === 'graph')
         .map((state) => state as GraphState)
         .flatMap((state) =>

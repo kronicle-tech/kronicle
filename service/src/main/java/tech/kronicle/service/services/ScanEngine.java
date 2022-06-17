@@ -109,7 +109,7 @@ public class ScanEngine {
                 .map(graphProcessor::processDiagram)
                 .collect(toList());
         diagrams.addAll(extraDiagrams);
-        extraDiagrams.forEach(diagram -> diagramMap.put(diagram.getId(), diagram));
+        diagrams.forEach(diagram -> diagramMap.put(diagram.getId(), diagram));
         return componentMetadata.withDiagrams(diagrams);
     }
 

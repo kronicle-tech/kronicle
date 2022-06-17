@@ -36,7 +36,7 @@ export default Vue.extend({
   },
   head() {
     return {
-      title: 'Kronicle - All Components - OpenAPI Specs',
+      title: 'Kronicle - OpenAPI Specs',
     }
   },
 })

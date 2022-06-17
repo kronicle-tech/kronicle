@@ -7,18 +7,14 @@
       :component-available-data="componentAvailableData"
     />
 
-    <ComponentCallGraphsView
-      :component="component"
-      :nodes="nodes"
-      :call-graphs="callGraphs"
-    />
+    <ComponentCallGraphsView :component="component" :diagrams="diagrams" />
   </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
 import { MetaInfo } from 'vue-meta'
-import { Component } from '~/types/kronicle-service'
+import { Component, Diagram } from '~/types/kronicle-service'
 import ComponentTabs from '~/components/ComponentTabs.vue'
 import ComponentCallGraphsView from '~/components/ComponentCallGraphsView.vue'
 import { fetchComponentAvailableData } from '~/src/fetchComponentAvailableData'
@@ -40,31 +36,23 @@ export default Vue.extend({
       .then((res) => res.json())
       .then((json) => json.component as Component)
 
-    const nodes = await fetch(
-      `${$config.serviceBaseUrl}/v1/components/${route.params.componentId}/nodes`
+    const diagrams = await fetch(
+      `${$config.serviceBaseUrl}/v1/components/${route.params.componentId}/diagrams`
     )
       .then((res) => res.json())
-      .then((json) => json.nodes as SummarySubComponentDependencyNode[])
-
-    const callGraphs = await fetch(
-      `${$config.serviceBaseUrl}/v1/components/${route.params.componentId}/call-graphs`
-    )
-      .then((res) => res.json())
-      .then((json) => json.callGraphs as SummarySubComponentDependencies[])
+      .then((json) => json.diagrams as Diagram[])
 
     return {
       componentAvailableData,
       component,
-      nodes,
-      callGraphs,
+      diagrams,
     }
   },
   data() {
     return {
       componentAvailableData: [] as string[],
       component: {} as Component,
-      nodes: [] as SummarySubComponentDependencyNode[],
-      callGraphs: [] as SummarySubComponentDependencies[],
+      diagrams: [] as Diagram[],
     }
   },
   head(): MetaInfo {

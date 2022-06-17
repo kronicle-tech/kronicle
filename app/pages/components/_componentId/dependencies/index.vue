@@ -10,8 +10,7 @@
     <ComponentDependenciesView
       :all-components="allComponents"
       :components="[component]"
-      :component-dependencies="summary.componentDependencies"
-      :sub-component-dependencies="summary.subComponentDependencies"
+      :diagrams="diagrams"
       :selected-component-id="component.id"
       :scope-related-radius="1"
     />
@@ -21,7 +20,7 @@
 <script lang="ts">
 import Vue from 'vue'
 import { MetaInfo } from 'vue-meta'
-import { Component, Summary } from '~/types/kronicle-service'
+import { Component, Diagram } from '~/types/kronicle-service'
 import ComponentTabs from '~/components/ComponentTabs.vue'
 import ComponentDependenciesView from '~/components/ComponentDependenciesView.vue'
 import { fetchComponentAvailableData } from '~/src/fetchComponentAvailableData'
@@ -54,17 +53,17 @@ export default Vue.extend({
       .then((res) => res.json())
       .then((json) => json.components as Component[])
 
-    const summary = await fetch(
-      `${$config.serviceBaseUrl}/v1/summary?fields=summary(componentDependencies,subComponentDependencies)`
+    const diagrams = await fetch(
+      `${$config.serviceBaseUrl}/v1/components/diagrams`
     )
       .then((res) => res.json())
-      .then((json) => json.summary as Summary)
+      .then((json) => json.diagrams as Diagram[])
 
     return {
       componentAvailableData,
       component,
       allComponents,
-      summary,
+      diagrams,
     }
   },
   data() {
@@ -72,7 +71,7 @@ export default Vue.extend({
       componentAvailableData: [] as string[],
       component: {} as Component,
       allComponents: [] as Component[],
-      summary: {} as Summary,
+      diagrams: [] as Diagram[],
     }
   },
   head(): MetaInfo {
