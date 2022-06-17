@@ -7,7 +7,7 @@ export interface NodeLabel {
   y: number
 }
 
-export type DependencyRelationType =
+export type EdgeRelationType =
   | 'all'
   | 'other'
   | 'scope-related'
@@ -16,15 +16,15 @@ export type DependencyRelationType =
   | 'direct'
   | 'selected'
 
-export interface Dependency {
+export interface Edge {
   index: number
   sourceNode: Node
   targetNode: Node
   relatedNodes: Node[]
   d: string
   scopeRelated: boolean
-  dependencyRelationType: DependencyRelationType
-  dependency: GraphEdge
+  edgeRelationType: EdgeRelationType
+  edge: GraphEdge
 }
 
 export interface Node {
@@ -36,14 +36,14 @@ export interface Node {
   x: number
   y: number
   label: NodeLabel
-  dependencyRelationType: DependencyRelationType
+  edgeRelationType: EdgeRelationType
   node: GraphNode
-  dependencies: Dependency[]
+  edges: Edge[]
 }
 
 export interface Network {
   nodes: Node[]
-  nodeGroups: Map<DependencyRelationType, Node[]>
-  dependencies: Dependency[]
-  dependencyGroups: Map<DependencyRelationType, Dependency[]>
+  nodeGroups: Map<EdgeRelationType, Node[]>
+  edges: Edge[]
+  edgeGroups: Map<EdgeRelationType, Edge[]>
 }

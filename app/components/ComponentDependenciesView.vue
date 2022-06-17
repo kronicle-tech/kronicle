@@ -1,8 +1,7 @@
 <template>
   <div>
     <b-alert show dismissible variant="info">
-      Click a dot in the dependencies diagram to see more information about that
-      component
+      Click a dot in the diagram to see more information about that component
     </b-alert>
 
     <ComponentFilters
@@ -13,7 +12,7 @@
       <b-card bg-variant="secondary">
         <b-form-group label="Dependency Types">
           <b-form-checkbox-group
-            v-model="selectedDependencyTypeIds"
+            v-model="selectedEdgeTypes"
             :options="dependencyTypeIdOptions"
             name="dependencyTypeId"
             stacked
@@ -58,7 +57,7 @@
       <ComponentDependencyGraph
         id="component-dependency-graph"
         :diagram="diagram"
-        :dependency-type-ids="selectedDependencyTypeIds"
+        :edge-types="selectedEdgeTypes"
         dependency-relation-type="scope-related"
         :zoom="zoom"
         :selected-component-id="selectedComponentId"
@@ -160,7 +159,7 @@ export default Vue.extend({
       componentSidebarVisible: false as boolean,
       node: undefined as GraphNode | undefined,
       component: undefined as Component | undefined,
-      selectedDependencyTypeIds: [] as string[],
+      selectedEdgeTypes: [] as string[],
       selectedScopeRelatedRadius: this.scopeRelatedRadius,
       zoom: 100,
       network: undefined as Network | undefined,

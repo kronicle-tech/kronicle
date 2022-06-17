@@ -14,8 +14,10 @@ import javax.inject.Inject;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.IntStream;
 
+import static java.util.Objects.nonNull;
 import static java.util.stream.Collectors.toUnmodifiableList;
 
 @RequiredArgsConstructor(onConstructor = @__({@Inject}))
@@ -30,14 +32,14 @@ public class GraphProcessor {
 
     public List<Diagram> processTracingData(TracingData tracingData) {
         List<Diagram> diagrams = new ArrayList<>();
-        diagrams.add(toDiagram(
+        addDiagramIfNonNull(diagrams, toDiagram(
                 tracingData,
                 componentGraphCollator.collateGraph(tracingData),
                 "",
                 "",
                 DiagramTypes.TRACING
         ));
-        diagrams.add(toDiagram(
+        addDiagramIfNonNull(diagrams, toDiagram(
                 tracingData,
                 subComponentGraphCollator.collateGraph(tracingData),
                 "-subcomponents",
@@ -54,6 +56,12 @@ public class GraphProcessor {
         return diagrams;
     }
 
+    private void addDiagramIfNonNull(List<Diagram> diagrams, Diagram newDiagram) {
+        if (nonNull(newDiagram)) {
+            diagrams.add(newDiagram);
+        }
+    }
+
     public Diagram processDiagram(Diagram diagram) {
         return diagramGraphCollator.collateGraph(diagram);
     }
@@ -67,10 +75,14 @@ public class GraphProcessor {
                         nameSuffix + " " + (graphIndex + 1),
                         diagramType
                 ))
+                .filter(Objects::nonNull)
                 .collect(toUnmodifiableList());
     }
 
     private Diagram toDiagram(TracingData tracingData, CollatorGraph graph, String idSuffix, String nameSuffix, String diagramType) {
+        if (graph.getEdges().isEmpty()) {
+            return null;
+        }
         Diagram diagram = tracingData.toDiagram(
                 diagramType,
                 graph.getNodes(),

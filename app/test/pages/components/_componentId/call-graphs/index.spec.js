@@ -19,8 +19,7 @@ describe('Index', () => {
     },
   }
   let component
-  let nodes
-  let callGraphs
+  let diagrams
   let wrapperActions
   let wrapper
   async function createWrapper() {
@@ -31,11 +30,8 @@ describe('Index', () => {
         '/v1/components/test-component-id-1?fields=component(id,name)': {
           responseBody: { component },
         },
-        '/v1/components/test-component-id-1/nodes': {
-          responseBody: { nodes },
-        },
-        '/v1/components/test-component-id-1/call-graphs': {
-          responseBody: { callGraphs },
+        '/v1/components/test-component-id-1/diagrams': {
+          responseBody: { diagrams },
         },
       },
     })
@@ -46,8 +42,7 @@ describe('Index', () => {
 
   beforeEach(() => {
     component = createComponent({ componentNumber: 1 })
-    nodes = []
-    callGraphs = []
+    diagrams = []
     wrapperActions = []
   })
 
@@ -63,7 +58,7 @@ describe('Index', () => {
     )
   })
 
-  describe('when Get Component Nodes service endpoint returns no nodes', () => {
+  describe('when Get Component Diagrams service endpoint returns no diagrams', () => {
     test('renders a message saying there are no call graphs available', async () => {
       await createWrapper()
       expect(wrapper.element).toMatchSnapshot()
@@ -75,51 +70,50 @@ describe('Index', () => {
     })
   })
 
-  describe('when Get Component Nodes service endpoints returns nodes and Get Component Call Graphs service endpoint returns call graphs', () => {
+  describe('when Get Diagrams service endpoints returns a call graph', () => {
     beforeEach(() => {
-      nodes = [
-        createSubComponentNode({
-          componentNodeNumber: 1,
-          subComponentNodeNumber: 1,
-        }),
-        createSubComponentNode({
-          componentNodeNumber: 1,
-          subComponentNodeNumber: 2,
-        }),
-      ]
-      callGraphs = [
+      diagrams = [
         {
-          nodes: [
-            createSubComponentNode({
-              componentNodeNumber: 1,
-              subComponentNodeNumber: 1,
-            }),
-            createSubComponentNode({ componentNodeNumber: 2 }),
-          ],
-          dependencies: [createDependency({ sourceIndex: 0, targetIndex: 1 })],
-          traceCount: 1,
+          states: {
+            nodes: [
+              createSubComponentNode({
+                componentNodeNumber: 1,
+                subComponentNodeNumber: 1,
+              }),
+              createSubComponentNode({
+                componentNodeNumber: 1,
+                subComponentNodeNumber: 2,
+              }),
+            ],
+            edges: [createDependency({ sourceIndex: 0, targetIndex: 1 })],
+            sampleSize: 1,
+          },
         },
         {
-          nodes: [
-            createSubComponentNode({
-              componentNodeNumber: 1,
-              subComponentNodeNumber: 2,
-            }),
-            createSubComponentNode({ componentNodeNumber: 2 }),
-          ],
-          dependencies: [createDependency({ sourceIndex: 0, targetIndex: 1 })],
-          traceCount: 1,
+          states: {
+            nodes: [
+              createSubComponentNode({
+                componentNodeNumber: 1,
+                subComponentNodeNumber: 2,
+              }),
+              createSubComponentNode({ componentNodeNumber: 2 }),
+            ],
+            edges: [createDependency({ sourceIndex: 0, targetIndex: 1 })],
+            sampleSize: 1,
+          },
         },
         {
-          nodes: [
-            createSubComponentNode({
-              componentNodeNumber: 1,
-              subComponentNodeNumber: 2,
-            }),
-            createSubComponentNode({ componentNodeNumber: 3 }),
-          ],
-          dependencies: [createDependency({ sourceIndex: 0, targetIndex: 1 })],
-          traceCount: 1,
+          states: {
+            nodes: [
+              createSubComponentNode({
+                componentNodeNumber: 1,
+                subComponentNodeNumber: 2,
+              }),
+              createSubComponentNode({ componentNodeNumber: 3 }),
+            ],
+            edges: [createDependency({ sourceIndex: 0, targetIndex: 1 })],
+            sampleSize: 1,
+          },
         },
       ]
     })

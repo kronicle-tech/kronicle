@@ -30,9 +30,7 @@ describe('Index', () => {
 
   test('has the right page title', async () => {
     await createWrapper()
-    expect(wrapper.vm.$metaInfo.title).toBe(
-      'Kronicle - All Components - OpenAPI Specs'
-    )
+    expect(wrapper.vm.$metaInfo.title).toBe('Kronicle - OpenAPI Specs')
   })
 
   describe('when Get Components service endpoint returns an empty array', () => {

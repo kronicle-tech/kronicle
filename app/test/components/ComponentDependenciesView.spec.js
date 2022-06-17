@@ -1,4 +1,4 @@
-import DiagramView from '@/components/DiagramView.vue'
+import ComponentDependenciesView from '@/components/ComponentDependenciesView'
 import { createViewComponentWrapper } from '~/test/components/viewUtils'
 import { createComponent } from '~/test/testDataUtils'
 
@@ -28,12 +28,12 @@ function createComponentNode(nodeNumber) {
   }
 }
 
-describe('DiagramView', () => {
+describe('ComponentDependenciesView', () => {
   let propsData
   let wrapper
 
   async function createWrapper() {
-    wrapper = await createViewComponentWrapper(DiagramView, {
+    wrapper = await createViewComponentWrapper(ComponentDependenciesView, {
       propsData,
     })
   }

@@ -60,10 +60,10 @@
         class="node my-1"
         @click="nodeClick(nodeIndex)"
       >
-        {{ node.spanName }}
-        <ul v-if="Object.keys(node.tags).length > 0">
-          <li v-for="(tagValue, tagKey) in node.tags" :key="tagKey">
-            {{ tagKey }}: {{ tagValue }}
+        {{ node.name }}
+        <ul v-if="node.tags.length > 0">
+          <li v-for="tag in node.tags" :key="tag.key">
+            {{ tag.key }}: {{ tag.value }}
           </li>
         </ul>
       </b-button>
