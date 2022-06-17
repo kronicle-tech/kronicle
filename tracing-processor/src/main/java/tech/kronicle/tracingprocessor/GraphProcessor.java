@@ -14,6 +14,7 @@ import javax.inject.Inject;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.stream.IntStream;
 
 import static java.util.stream.Collectors.toUnmodifiableList;
 
@@ -29,9 +30,27 @@ public class GraphProcessor {
 
     public List<Diagram> processTracingData(TracingData tracingData) {
         List<Diagram> diagrams = new ArrayList<>();
-        diagrams.add(toDiagram(tracingData, componentGraphCollator.collateGraph(tracingData), DiagramTypes.TRACING));
-        diagrams.add(toDiagram(tracingData, subComponentGraphCollator.collateGraph(tracingData), DiagramTypes.TRACING));
-        diagrams.addAll(toDiagrams(tracingData, callGraphCollator.collateCallGraphs(tracingData), DiagramTypes.CALL_GRAPH));
+        diagrams.add(toDiagram(
+                tracingData,
+                componentGraphCollator.collateGraph(tracingData),
+                "",
+                "",
+                DiagramTypes.TRACING
+        ));
+        diagrams.add(toDiagram(
+                tracingData,
+                subComponentGraphCollator.collateGraph(tracingData),
+                "-subcomponents",
+                " - Subcomponents",
+                DiagramTypes.TRACING
+        ));
+        diagrams.addAll(toDiagrams(
+                tracingData,
+                callGraphCollator.collateCallGraphs(tracingData),
+                "-call-graph",
+                " - Call Graph",
+                DiagramTypes.CALL_GRAPH
+        ));
         return diagrams;
     }
 
@@ -39,19 +58,29 @@ public class GraphProcessor {
         return diagramGraphCollator.collateGraph(diagram);
     }
 
-    private Collection<Diagram> toDiagrams(TracingData tracingData, List<CollatorGraph> graphs, String diagramType) {
-        return graphs.stream()
-                .map(graph -> toDiagram(tracingData, graph, diagramType))
+    private Collection<Diagram> toDiagrams(TracingData tracingData, List<CollatorGraph> graphs, String idSuffix, String nameSuffix, String diagramType) {
+        return IntStream.range(0, graphs.size())
+                .mapToObj(graphIndex -> toDiagram(
+                        tracingData,
+                        graphs.get(graphIndex),
+                        idSuffix + "-" + (graphIndex + 1),
+                        nameSuffix + " " + (graphIndex + 1),
+                        diagramType
+                ))
                 .collect(toUnmodifiableList());
     }
 
-    private Diagram toDiagram(TracingData tracingData, CollatorGraph graph, String diagramType) {
-        return tracingData.toDiagram(
+    private Diagram toDiagram(TracingData tracingData, CollatorGraph graph, String idSuffix, String nameSuffix, String diagramType) {
+        Diagram diagram = tracingData.toDiagram(
                 diagramType,
                 graph.getNodes(),
                 toGraphEdges(graph.getEdges()),
                 graph.getSampleSize()
         );
+        return diagram.toBuilder()
+                .id(diagram.getId() + idSuffix)
+                .name(diagram.getName() + nameSuffix)
+                .build();
     }
 
     private List<GraphEdge> toGraphEdges(List<CollatorGraphEdge> edges) {

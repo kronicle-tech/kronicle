@@ -80,8 +80,8 @@ public class GraphProcessorTest {
                         ))
                         .build(),
                 Diagram.builder()
-                        .id("test-tracing-data-id-1")
-                        .name("Test Tracing Data 1")
+                        .id("test-tracing-data-id-1-subcomponents")
+                        .name("Test Tracing Data 1 - Subcomponents")
                         .discovered(true)
                         .type("tracing")
                         .states(List.of(
@@ -89,8 +89,8 @@ public class GraphProcessorTest {
                         ))
                         .build(),
                 Diagram.builder()
-                        .id("test-tracing-data-id-1")
-                        .name("Test Tracing Data 1")
+                        .id("test-tracing-data-id-1-call-graph-1")
+                        .name("Test Tracing Data 1 - Call Graph 1")
                         .discovered(true)
                         .type("call-graph")
                         .states(List.of(
@@ -98,8 +98,8 @@ public class GraphProcessorTest {
                         ))
                         .build(),
                 Diagram.builder()
-                        .id("test-tracing-data-id-1")
-                        .name("Test Tracing Data 1")
+                        .id("test-tracing-data-id-1-call-graph-2")
+                        .name("Test Tracing Data 1 - Call Graph 2")
                         .discovered(true)
                         .type("call-graph")
                         .states(List.of(
