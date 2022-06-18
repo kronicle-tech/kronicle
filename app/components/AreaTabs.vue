@@ -19,7 +19,7 @@
     <b-button class="my-1" :to="`/areas/${areaId}/tests`"> Tests </b-button>
     <b-button class="my-1" :to="`/areas/${areaId}/errors`"> Errors </b-button>
     <b-button class="my-1" :to="`/areas/${areaId}/openapi-specs`">
-      OpenAPI Specs
+      OpenAPI
     </b-button>
   </div>
 </template>
