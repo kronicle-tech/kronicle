@@ -1,19 +1,13 @@
 <template>
   <div class="m-3">
-    <h1 class="text-info my-3">{{ component.name }} - Visualizations</h1>
+    <h1 class="text-info my-3">{{ component.name }} - Diagrams</h1>
 
     <ComponentTabs
       :component-id="component.id"
       :component-available-data="componentAvailableData"
     />
 
-    <ComponentDependenciesView
-      :all-components="allComponents"
-      :components="[component]"
-      :diagrams="diagrams"
-      :selected-component-id="component.id"
-      :scope-related-radius="1"
-    />
+    <DiagramsView :diagrams="diagrams" :components="components" />
   </div>
 </template>
 
@@ -22,13 +16,16 @@ import Vue from 'vue'
 import { MetaInfo } from 'vue-meta'
 import { Component, Diagram } from '~/types/kronicle-service'
 import ComponentTabs from '~/components/ComponentTabs.vue'
-import ComponentDependenciesView from '~/components/ComponentDependenciesView.vue'
-import { fetchComponentAvailableData } from '~/src/fetchComponentAvailableData'
+import DiagramsView from '~/components/DiagramsView.vue'
+import {
+  ComponentAvailableData,
+  fetchComponentAvailableData,
+} from '~/src/fetchComponentAvailableData'
 
 export default Vue.extend({
   components: {
-    ComponentDependenciesView,
     ComponentTabs,
+    DiagramsView,
   },
   async asyncData({ $config, route, store }) {
     const componentAvailableData = await fetchComponentAvailableData(
@@ -53,11 +50,9 @@ export default Vue.extend({
       .then((res) => res.json())
       .then((json) => json.components as Component[])
 
-    const diagrams = await fetch(
-      `${$config.serviceBaseUrl}/v1/components/diagrams`
-    )
+    const diagrams = await fetch(`${$config.serviceBaseUrl}/v1/diagrams`)
       .then((res) => res.json())
-      .then((json) => json.diagrams as Diagram[])
+      .then((json) => json.diagrams)
 
     return {
       componentAvailableData,
@@ -68,7 +63,7 @@ export default Vue.extend({
   },
   data() {
     return {
-      componentAvailableData: [] as string[],
+      componentAvailableData: {} as ComponentAvailableData,
       component: {} as Component,
       allComponents: [] as Component[],
       diagrams: [] as Diagram[],
@@ -76,7 +71,7 @@ export default Vue.extend({
   },
   head(): MetaInfo {
     return {
-      title: `Kronicle - ${this.component.name} - Visualizations`,
+      title: `Kronicle - ${this.component.name} - Diagrams`,
     }
   },
 })

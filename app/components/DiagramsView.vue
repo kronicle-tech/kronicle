@@ -9,6 +9,8 @@
       </b-list-group>
     </b-card>
 
+    <ComponentFilters :components="components" />
+
     <DiagramTable :diagrams="diagrams" />
   </div>
 </template>
@@ -16,7 +18,7 @@
 <script lang="ts">
 import Vue, { PropType } from 'vue'
 import { BCard, BListGroup, BListGroupItem } from 'bootstrap-vue'
-import { Diagram } from '~/types/kronicle-service'
+import { Component, Diagram } from '~/types/kronicle-service'
 import DiagramTable from '~/components/DiagramTable.vue'
 
 export default Vue.extend({
@@ -27,6 +29,10 @@ export default Vue.extend({
     DiagramTable,
   },
   props: {
+    components: {
+      type: Array as PropType<Component[]>,
+      required: true,
+    },
     diagrams: {
       type: Array as PropType<Diagram[]>,
       required: true,

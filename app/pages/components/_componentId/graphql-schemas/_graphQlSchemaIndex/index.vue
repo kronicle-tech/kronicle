@@ -29,7 +29,10 @@ import Vue from 'vue'
 import { MetaInfo } from 'vue-meta'
 import { Component } from '~/types/kronicle-service'
 import GraphQlSchemaView from '~/components/GraphQlSchemaView.vue'
-import { fetchComponentAvailableData } from '~/src/fetchComponentAvailableData'
+import {
+  ComponentAvailableData,
+  fetchComponentAvailableData,
+} from '~/src/fetchComponentAvailableData'
 
 export default Vue.extend({
   components: {
@@ -54,7 +57,7 @@ export default Vue.extend({
   },
   data() {
     return {
-      componentAvailableData: [] as string[],
+      componentAvailableData: {} as ComponentAvailableData,
       component: {} as Component,
       graphQlSchemaIndex: parseInt(this.$route.params.graphQlSchemaIndex, 10),
     }

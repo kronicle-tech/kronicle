@@ -1,6 +1,6 @@
 <template>
   <div class="m-3">
-    <h1 class="text-info my-3">{{ area.name }} Area - OpenAPI Specs</h1>
+    <h1 class="text-info my-3">{{ area.name }} - OpenAPI Specs</h1>
 
     <AreaTabs :area-id="area.id" />
 
@@ -22,7 +22,7 @@ export default Vue.extend({
   },
   async asyncData({ $config, route, store }) {
     const area = await fetch(
-      `${$config.serviceBaseUrl}/v1/areas/${route.params.areaId}?fields=area(id,name,components(id,name,typeId,tags,teams,platformId,openApiSpecs))`
+      `${$config.serviceBaseUrl}/v1/areas/${route.params.areaId}?fields=area(id,name,components(id,name,typeId,tags,teams,platformId,states(environmentId,pluginId)))`
     )
       .then((res) => res.json())
       .then((json) => json.area as Area)
@@ -43,7 +43,7 @@ export default Vue.extend({
   },
   head(): MetaInfo {
     return {
-      title: `Kronicle - ${this.area.name} Area - OpenAPI Specs`,
+      title: `Kronicle - ${this.area.name} - OpenAPI Specs`,
     }
   },
 })

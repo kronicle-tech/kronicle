@@ -1,24 +1,28 @@
 <template>
   <div class="m-3">
-    <h1 class="text-info my-3">{{ area.name }} - Diagrams</h1>
+    <h1 class="text-info my-3">
+      {{ area.name }} - Diagrams - ${this.diagram.name}
+    </h1>
 
     <AreaTabs :area-id="area.id" />
 
-    <DiagramsView :diagrams="diagrams" :components="components" />
+    <ComponentDependenciesView
+      :all-components="allComponents"
+      :components="area.components"
+      :diagram="diagram"
+    />
   </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
 import { MetaInfo } from 'vue-meta'
-import { Area, Diagram } from '~/types/kronicle-service'
+import { Area, Component, Diagram } from '~/types/kronicle-service'
 import AreaTabs from '~/components/AreaTabs.vue'
-import DiagramsView from '~/components/DiagramsView.vue'
 
 export default Vue.extend({
   components: {
     AreaTabs,
-    DiagramsView,
   },
   async asyncData({ $config, route, store }) {
     const area = await fetch(
@@ -32,24 +36,27 @@ export default Vue.extend({
       route,
     })
 
-    const diagrams = await fetch(`${$config.serviceBaseUrl}/v1/diagrams`)
+    const diagram = await fetch(
+      `${$config.serviceBaseUrl}/v1/diagrams/${route.params.diagramId}`
+    )
       .then((res) => res.json())
-      .then((json) => json.diagrams)
+      .then((json) => json.diagram)
 
     return {
       area,
-      diagrams,
+      diagram,
     }
   },
   data() {
     return {
       area: {} as Area,
-      diagrams: [] as Diagram[],
+      allComponents: [] as Component[],
+      diagram: {} as Diagram,
     }
   },
   head(): MetaInfo {
     return {
-      title: `Kronicle - ${this.area.name} - Diagrams`,
+      title: `Kronicle - ${this.area.name} - Diagrams - ${this.diagram.name}`,
     }
   },
 })

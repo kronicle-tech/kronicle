@@ -1,6 +1,6 @@
 <template>
   <div class="m-3">
-    <h1 class="text-info my-3">{{ team.name }} Team - Visualizations</h1>
+    <h1 class="text-info my-3">{{ team.name }} - Visualizations</h1>
 
     <TeamTabs :team-id="team.id" />
 
@@ -42,9 +42,7 @@ export default Vue.extend({
       .then((res) => res.json())
       .then((json) => json.components as Component[])
 
-    const diagrams = await fetch(
-      `${$config.serviceBaseUrl}/v1/components/diagrams`
-    )
+    const diagrams = await fetch(`${$config.serviceBaseUrl}/v1/diagrams`)
       .then((res) => res.json())
       .then((json) => json.diagrams as Diagram[])
 
@@ -63,7 +61,7 @@ export default Vue.extend({
   },
   head(): MetaInfo {
     return {
-      title: `Kronicle - ${this.team.name} Team - Visualizations`,
+      title: `Kronicle - ${this.team.name} - Visualizations`,
     }
   },
 })

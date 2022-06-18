@@ -22,7 +22,10 @@ import { MetaInfo } from 'vue-meta'
 import { Component, Summary } from '~/types/kronicle-service'
 import ComponentTabs from '~/components/ComponentTabs.vue'
 import ComponentResponseTimesView from '~/components/ComponentResponseTimesView.vue'
-import { fetchComponentAvailableData } from '~/src/fetchComponentAvailableData'
+import {
+  ComponentAvailableData,
+  fetchComponentAvailableData,
+} from '~/src/fetchComponentAvailableData'
 
 export default Vue.extend({
   components: {
@@ -62,7 +65,7 @@ export default Vue.extend({
   },
   data() {
     return {
-      componentAvailableData: [] as string[],
+      componentAvailableData: {} as ComponentAvailableData,
       component: {} as Component,
       allComponents: [] as Component[],
       summary: {} as Summary,

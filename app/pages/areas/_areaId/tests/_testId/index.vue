@@ -1,7 +1,7 @@
 <template>
   <div class="m-3">
     <h1 class="text-info my-3">
-      {{ area.name }} Area - {{ $route.params.testId }} Test
+      {{ area.name }} - {{ $route.params.testId }} Test
     </h1>
 
     <AreaTabs :area-id="area.id" />
@@ -53,7 +53,7 @@ export default Vue.extend({
   },
   head(): MetaInfo {
     return {
-      title: `Kronicle - ${this.area.name} Area - ${this.$route.params.testId} Test`,
+      title: `Kronicle - ${this.area.name} - ${this.$route.params.testId} Test`,
     }
   },
 })
