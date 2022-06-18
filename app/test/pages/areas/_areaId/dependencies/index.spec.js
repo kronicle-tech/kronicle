@@ -1,4 +1,4 @@
-import Index from '~/pages/areas/_areaId/dependencies/index.vue'
+import Index from '~/pages/areas/_areaId/diagrams/index.vue'
 import { createPageWrapper } from '~/test/pages/pageUtils'
 import {
   createArea,

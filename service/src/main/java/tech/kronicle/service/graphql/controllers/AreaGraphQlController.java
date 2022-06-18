@@ -17,7 +17,7 @@ public class AreaGraphQlController {
     @QueryMapping
     public AreasOutput areas() {
         return new AreasOutput(
-                componentService.getAreas(List.of())
+                componentService.getAreas(List.of(), List.of())
         );
     }
 }

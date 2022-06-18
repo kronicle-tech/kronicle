@@ -2,12 +2,7 @@ package tech.kronicle.service.controllers;
 
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
-import tech.kronicle.utils.EnumUtils;
+import org.springframework.web.bind.annotation.*;
 import tech.kronicle.sdk.models.GetTeamResponse;
 import tech.kronicle.sdk.models.GetTeamsResponse;
 import tech.kronicle.sdk.models.TestOutcome;
@@ -16,6 +11,9 @@ import tech.kronicle.service.services.ComponentService;
 import tech.kronicle.service.springdoc.Texts;
 
 import java.util.List;
+
+import static tech.kronicle.sdk.utils.ListUtils.createUnmodifiableList;
+import static tech.kronicle.utils.EnumUtils.getEnumListFromJsonValues;
 
 @RestController
 @RequiredArgsConstructor
@@ -32,8 +30,14 @@ public class TeamController {
     )
     @GetMapping
     @PartialResponse
-    public GetTeamsResponse getTeams(@RequestParam(required = false) List<String> testOutcome) {
-        return new GetTeamsResponse(componentService.getTeams(EnumUtils.getEnumListFromJsonValues(TestOutcome.class, testOutcome)));
+    public GetTeamsResponse getTeams(
+            @RequestParam(required = false) List<String> stateType,
+            @RequestParam(required = false) List<String> testOutcome
+    ) {
+        return new GetTeamsResponse(componentService.getTeams(
+                createUnmodifiableList(stateType),
+                getEnumListFromJsonValues(TestOutcome.class, testOutcome)
+        ));
     }
 
     @Operation(
@@ -44,7 +48,15 @@ public class TeamController {
     )
     @GetMapping("/{teamId}")
     @PartialResponse
-    public GetTeamResponse getTeam(@PathVariable String teamId, @RequestParam(required = false) List<String> testOutcome) {
-        return new GetTeamResponse(componentService.getTeam(teamId, EnumUtils.getEnumListFromJsonValues(TestOutcome.class, testOutcome)));
+    public GetTeamResponse getTeam(
+            @PathVariable String teamId,
+            @RequestParam(required = false) List<String> stateType,
+            @RequestParam(required = false) List<String> testOutcome
+    ) {
+        return new GetTeamResponse(componentService.getTeam(
+                teamId,
+                createUnmodifiableList(stateType),
+                getEnumListFromJsonValues(TestOutcome.class, testOutcome)
+        ));
     }
 }

@@ -5,10 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import tech.kronicle.sdk.models.Area;
-import tech.kronicle.sdk.models.GetAreaResponse;
-import tech.kronicle.sdk.models.GetAreasResponse;
-import tech.kronicle.sdk.models.TestOutcome;
+import tech.kronicle.sdk.models.*;
 import tech.kronicle.service.services.ComponentService;
 
 import java.util.List;
@@ -35,10 +32,10 @@ public class AreaControllerTest {
     @Test
     public void getAreasShouldReturnAreas() {
         // Given
-        when(mockComponentService.getAreas(List.of())).thenReturn(AREAS);
+        when(mockComponentService.getAreas(List.of(), List.of())).thenReturn(AREAS);
 
         // When
-        GetAreasResponse returnValue = underTest.getAreas(List.of());
+        GetAreasResponse returnValue = underTest.getAreas(List.of(), List.of());
 
         // Then
         assertThat(returnValue).isNotNull();
@@ -48,10 +45,10 @@ public class AreaControllerTest {
     @Test
     public void getAreasShouldHandleNullFilter() {
         // Given
-        when(mockComponentService.getAreas(List.of())).thenReturn(AREAS);
+        when(mockComponentService.getAreas(List.of(), List.of())).thenReturn(AREAS);
 
         // When
-        GetAreasResponse returnValue = underTest.getAreas(null);
+        GetAreasResponse returnValue = underTest.getAreas(null, null);
 
         // Then
         assertThat(returnValue).isNotNull();
@@ -61,10 +58,10 @@ public class AreaControllerTest {
     @Test
     public void getAreasShouldPassFilterToAreaService() {
         // Given
-        when(mockComponentService.getAreas(List.of(TestOutcome.FAIL))).thenReturn(AREAS);
+        when(mockComponentService.getAreas(List.of("test-state-type-1"), List.of(TestOutcome.FAIL))).thenReturn(AREAS);
 
         // When
-        GetAreasResponse returnValue = underTest.getAreas(List.of(TestOutcome.FAIL.value()));
+        GetAreasResponse returnValue = underTest.getAreas(List.of("test-state-type-1"), List.of(TestOutcome.FAIL.value()));
 
         // Then
         assertThat(returnValue).isNotNull();
@@ -74,10 +71,10 @@ public class AreaControllerTest {
     @Test
     public void getAreaShouldReturnAnArea() {
         // Given
-        when(mockComponentService.getArea(AREA_1.getId(), List.of())).thenReturn(AREA_1);
+        when(mockComponentService.getArea(AREA_1.getId(), List.of(), List.of())).thenReturn(AREA_1);
 
         // When
-        GetAreaResponse returnValue = underTest.getArea(AREA_1.getId(), List.of());
+        GetAreaResponse returnValue = underTest.getArea(AREA_1.getId(), List.of(), List.of());
 
         // Then
         assertThat(returnValue).isNotNull();
@@ -88,10 +85,10 @@ public class AreaControllerTest {
     public void getAreaShouldNotReturnAnAreaWhenAreaIdIsUnknown() {
         // Given
         String areaId = "unknown";
-        when(mockComponentService.getArea(areaId, List.of())).thenReturn(null);
+        when(mockComponentService.getArea(areaId, List.of(), List.of())).thenReturn(null);
 
         // When
-        GetAreaResponse returnValue = underTest.getArea(areaId, List.of());
+        GetAreaResponse returnValue = underTest.getArea(areaId, List.of(), List.of());
 
         // Then
         assertThat(returnValue).isNotNull();
@@ -101,10 +98,10 @@ public class AreaControllerTest {
     @Test
     public void getAreaShouldHandleNullFilter() {
         // Given
-        when(mockComponentService.getArea(AREA_1.getId(), List.of())).thenReturn(AREA_1);
+        when(mockComponentService.getArea(AREA_1.getId(), List.of(), List.of())).thenReturn(AREA_1);
 
         // When
-        GetAreaResponse returnValue = underTest.getArea(AREA_1.getId(), null);
+        GetAreaResponse returnValue = underTest.getArea(AREA_1.getId(), null, null);
 
         // Then
         assertThat(returnValue).isNotNull();
@@ -114,13 +111,26 @@ public class AreaControllerTest {
     @Test
     public void getAreaShouldPassFilterToAreaService() {
         // Given
-        when(mockComponentService.getArea(AREA_1.getId(), List.of(TestOutcome.FAIL))).thenReturn(AREA_1);
+        when(mockComponentService.getArea(AREA_1.getId(), List.of("test-state-type-1"), List.of(TestOutcome.FAIL))).thenReturn(AREA_1);
 
         // When
-        GetAreaResponse returnValue = underTest.getArea(AREA_1.getId(), List.of(TestOutcome.FAIL.value()));
+        GetAreaResponse returnValue = underTest.getArea(AREA_1.getId(), List.of("test-state-type-1"), List.of(TestOutcome.FAIL.value()));
 
         // Then
         assertThat(returnValue).isNotNull();
         assertThat(returnValue.getArea()).isEqualTo(AREA_1);
+    }
+
+    @Test
+    public void getAreaShouldPassFiltersToComponentService() {
+        // Given
+        when(mockComponentService.getArea(AREA_1.getId(), List.of("test-state-type-1"), List.of(TestOutcome.FAIL))).thenReturn(AREA_1);
+
+        // When
+        GetAreaResponse returnValue = underTest.getArea(AREA_1.getId(), List.of("test-state-type-1"), List.of(TestOutcome.FAIL.value()));
+
+        // Then
+        assertThat(returnValue).isNotNull();
+        assertThat(returnValue.getArea()).isSameAs(AREA_1);
     }
 }

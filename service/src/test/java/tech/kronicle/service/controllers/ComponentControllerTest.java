@@ -5,10 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import tech.kronicle.sdk.models.Component;
-import tech.kronicle.sdk.models.GetComponentResponse;
-import tech.kronicle.sdk.models.GetComponentsResponse;
-import tech.kronicle.sdk.models.TestOutcome;
+import tech.kronicle.sdk.models.*;
 import tech.kronicle.service.services.ComponentService;
 
 import java.util.List;
@@ -36,10 +33,10 @@ public class ComponentControllerTest {
     @Test
     public void getComponentsShouldReturnComponents() {
         // Given
-        when(mockComponentService.getComponents(Optional.empty(), Optional.empty(), List.of())).thenReturn(COMPONENTS);
+        when(mockComponentService.getComponents(Optional.empty(), Optional.empty(), List.of(), List.of())).thenReturn(COMPONENTS);
 
         // When
-        GetComponentsResponse returnValue = underTest.getComponents(Optional.empty(), Optional.empty(), List.of());
+        GetComponentsResponse returnValue = underTest.getComponents(Optional.empty(), Optional.empty(), List.of(), List.of());
 
         // Then
         assertThat(returnValue).isNotNull();
@@ -49,10 +46,10 @@ public class ComponentControllerTest {
     @Test
     public void getComponentsShouldHandleNullFilters() {
         // Given
-        when(mockComponentService.getComponents(null, null, List.of())).thenReturn(COMPONENTS);
+        when(mockComponentService.getComponents(null, null, List.of(), List.of())).thenReturn(COMPONENTS);
 
         // When
-        GetComponentsResponse returnValue = underTest.getComponents(null, null, null);
+        GetComponentsResponse returnValue = underTest.getComponents(null, null, null, null);
 
         // Then
         assertThat(returnValue).isNotNull();
@@ -60,12 +57,12 @@ public class ComponentControllerTest {
     }
 
     @Test
-    public void getComponentsShouldPassAllFiltersToComponentService() {
+    public void getComponentsShouldPassFiltersToComponentService() {
         // Given
-        when(mockComponentService.getComponents(Optional.of(1), Optional.of(2), List.of(TestOutcome.FAIL))).thenReturn(COMPONENTS);
+        when(mockComponentService.getComponents(Optional.of(1), Optional.of(2), List.of("test-state-type-1"), List.of(TestOutcome.FAIL))).thenReturn(COMPONENTS);
 
         // When
-        GetComponentsResponse returnValue = underTest.getComponents(Optional.of(1), Optional.of(2), List.of(TestOutcome.FAIL.value()));
+        GetComponentsResponse returnValue = underTest.getComponents(Optional.of(1), Optional.of(2), List.of("test-state-type-1"), List.of(TestOutcome.FAIL.value()));
 
         // Then
         assertThat(returnValue).isNotNull();
@@ -75,10 +72,10 @@ public class ComponentControllerTest {
     @Test
     public void getComponentShouldReturnAComponent() {
         // Given
-        when(mockComponentService.getComponent(COMPONENT_1.getId(), List.of())).thenReturn(COMPONENT_1);
+        when(mockComponentService.getComponent(COMPONENT_1.getId(), List.of(), List.of())).thenReturn(COMPONENT_1);
 
         // When
-        GetComponentResponse returnValue = underTest.getComponent(COMPONENT_1.getId(), List.of());
+        GetComponentResponse returnValue = underTest.getComponent(COMPONENT_1.getId(), List.of(), List.of());
 
         // Then
         assertThat(returnValue).isNotNull();
@@ -89,10 +86,10 @@ public class ComponentControllerTest {
     public void getComponentShouldNotReturnAComponentWhenComponentIdIsUnknown() {
         // Given
         String componentId = "unknown";
-        when(mockComponentService.getComponent(componentId, List.of())).thenReturn(null);
+        when(mockComponentService.getComponent(componentId, List.of(), List.of())).thenReturn(null);
 
         // When
-        GetComponentResponse returnValue = underTest.getComponent(componentId, List.of());
+        GetComponentResponse returnValue = underTest.getComponent(componentId, List.of(), List.of());
 
         // Then
         assertThat(returnValue).isNotNull();
@@ -100,17 +97,28 @@ public class ComponentControllerTest {
     }
 
     @Test
-    public void getComponentShouldFilterStateTypes() {
+    public void getComponentShouldHandleNullFilters() {
         // Given
-        String componentId = "unknown";
-        List<String> stateTypes = List.of("test-state-type-1", "test-state-type-2");
-        when(mockComponentService.getComponent(componentId, stateTypes)).thenReturn(COMPONENT_1);
+        when(mockComponentService.getComponent(null, List.of(), List.of())).thenReturn(COMPONENT_1);
 
         // When
-        GetComponentResponse returnValue = underTest.getComponent(componentId, stateTypes);
+        GetComponentResponse returnValue = underTest.getComponent(null, null, null);
 
         // Then
         assertThat(returnValue).isNotNull();
-        assertThat(returnValue.getComponent()).isEqualTo(COMPONENT_1);
+        assertThat(returnValue.getComponent()).isSameAs(COMPONENT_1);
+    }
+
+    @Test
+    public void getComponentShouldPassFiltersToComponentService() {
+        // Given
+        when(mockComponentService.getComponent(COMPONENT_1.getId(), List.of("test-state-type-1"), List.of(TestOutcome.FAIL))).thenReturn(COMPONENT_1);
+
+        // When
+        GetComponentResponse returnValue = underTest.getComponent(COMPONENT_1.getId(), List.of("test-state-type-1"), List.of(TestOutcome.FAIL.value()));
+
+        // Then
+        assertThat(returnValue).isNotNull();
+        assertThat(returnValue.getComponent()).isSameAs(COMPONENT_1);
     }
 }

@@ -1,4 +1,4 @@
-import Index from '~/pages/teams/_teamId/dependencies/index.vue'
+import Index from '~/pages/teams/_teamId/diagrams/index.vue'
 import { createPageWrapper } from '~/test/pages/pageUtils'
 import {
   createTeam,

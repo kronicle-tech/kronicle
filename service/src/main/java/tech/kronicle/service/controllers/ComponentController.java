@@ -2,12 +2,7 @@ package tech.kronicle.service.controllers;
 
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
-import tech.kronicle.utils.EnumUtils;
+import org.springframework.web.bind.annotation.*;
 import tech.kronicle.sdk.models.GetComponentResponse;
 import tech.kronicle.sdk.models.GetComponentsResponse;
 import tech.kronicle.sdk.models.TestOutcome;
@@ -17,6 +12,9 @@ import tech.kronicle.service.springdoc.Texts;
 
 import java.util.List;
 import java.util.Optional;
+
+import static tech.kronicle.sdk.utils.ListUtils.createUnmodifiableList;
+import static tech.kronicle.utils.EnumUtils.getEnumListFromJsonValues;
 
 @RestController
 @RequiredArgsConstructor
@@ -36,9 +34,15 @@ public class ComponentController {
     public GetComponentsResponse getComponents(
             @RequestParam(required = false) Optional<Integer> offset,
             @RequestParam(required = false) Optional<Integer> limit,
+            @RequestParam(required = false) List<String> stateType,
             @RequestParam(required = false) List<String> testOutcome
     ) {
-        return new GetComponentsResponse(componentService.getComponents(offset, limit, EnumUtils.getEnumListFromJsonValues(TestOutcome.class, testOutcome)));
+        return new GetComponentsResponse(componentService.getComponents(
+                offset,
+                limit,
+                createUnmodifiableList(stateType),
+                getEnumListFromJsonValues(TestOutcome.class, testOutcome)
+        ));
     }
 
     @Operation(
@@ -51,8 +55,13 @@ public class ComponentController {
     @PartialResponse
     public GetComponentResponse getComponent(
             @PathVariable String componentId,
-            @RequestParam(required = false) List<String> stateType
+            @RequestParam(required = false) List<String> stateType,
+            @RequestParam(required = false) List<String> testOutcome
     ) {
-        return new GetComponentResponse(componentService.getComponent(componentId, stateType));
+        return new GetComponentResponse(componentService.getComponent(
+                componentId,
+                createUnmodifiableList(stateType),
+                getEnumListFromJsonValues(TestOutcome.class, testOutcome)
+        ));
     }
 }

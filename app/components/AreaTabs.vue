@@ -1,8 +1,8 @@
 <template>
   <div class="my-3">
     <b-button class="my-1" :to="`/areas/${areaId}`"> Info </b-button>
-    <b-button class="my-1" :to="`/areas/${areaId}/dependencies`">
-      Visualizations
+    <b-button class="my-1" :to="`/areas/${areaId}/diagrams`">
+      Diagrams
     </b-button>
     <b-button class="my-1" :to="`/areas/${areaId}/components`">
       Components

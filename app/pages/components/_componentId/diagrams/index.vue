@@ -7,7 +7,7 @@
       :component-available-data="componentAvailableData"
     />
 
-    <DiagramsView :diagrams="diagrams" :components="components" />
+    <DiagramsView :diagrams="diagrams" :components="[component]" />
   </div>
 </template>
 

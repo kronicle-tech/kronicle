@@ -1,4 +1,4 @@
-import Index from '~/pages/components/_componentId/dependencies/index.vue'
+import Index from '~/pages/components/_componentId/diagrams/index.vue'
 import { createPageWrapper } from '~/test/pages/pageUtils'
 import {
   createComponent,
