@@ -174,18 +174,18 @@ export default Vue.extend({
       const componentId = this.component.id
       return [
         {
-          name: 'Self Connections',
-          connections: connections.filter(
-            (connection) =>
-              connection.source.componentId === componentId &&
-              connection.target.componentId === componentId
-          ),
-        },
-        {
           name: 'Incoming Connections',
           connections: connections.filter(
             (connection) =>
               connection.source.componentId !== componentId &&
+              connection.target.componentId === componentId
+          ),
+        },
+        {
+          name: 'Self Connections',
+          connections: connections.filter(
+            (connection) =>
+              connection.source.componentId === componentId &&
               connection.target.componentId === componentId
           ),
         },
