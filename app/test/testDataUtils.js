@@ -693,6 +693,20 @@ export function createGraphNode({ componentNodeNumber }) {
   }
 }
 
+export function createSubComponentGraphNode({
+  componentNodeNumber,
+  subComponentNodeNumber,
+}) {
+  if (subComponentNodeNumber === undefined) {
+    subComponentNodeNumber = componentNodeNumber
+  }
+  return {
+    componentId: `test-component-id-${componentNodeNumber}`,
+    name: `test-span-name-${subComponentNodeNumber}-${subComponentNodeNumber}`,
+    tags: [],
+  }
+}
+
 export function createGraphEdge({ sourceIndex, targetIndex }) {
   return {
     sourceIndex,

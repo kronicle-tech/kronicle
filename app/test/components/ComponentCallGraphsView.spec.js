@@ -1,6 +1,10 @@
 import { mount } from '@vue/test-utils'
 import ComponentCallGraphsView from '@/components/ComponentCallGraphsView.vue'
-import { createComponent, createGraphEdge } from '~/test/testDataUtils'
+import {
+  createComponent,
+  createGraphEdge,
+  createSubComponentGraphNode,
+} from '~/test/testDataUtils'
 import {
   expectCallGraphCount,
   expectNodeCount,
@@ -49,14 +53,17 @@ describe('ComponentCallGraphsView', () => {
     beforeEach(() => {
       propsData.diagrams = [
         {
-          states: {
-            nodes: [
-              createSubComponentNode({ componentNodeNumber: 1 }),
-              createSubComponentNode({ componentNodeNumber: 2 }),
-            ],
-            edges: [createGraphEdge({ sourceIndex: 0, targetIndex: 1 })],
-            sampleSize: 1,
-          },
+          states: [
+            {
+              type: 'graph',
+              nodes: [
+                createSubComponentGraphNode({ componentNodeNumber: 1 }),
+                createSubComponentGraphNode({ componentNodeNumber: 2 }),
+              ],
+              edges: [createGraphEdge({ sourceIndex: 0, targetIndex: 1 })],
+              sampleSize: 1,
+            },
+          ],
         },
       ]
     })
@@ -74,43 +81,52 @@ describe('ComponentCallGraphsView', () => {
     beforeEach(() => {
       propsData.diagrams = [
         {
-          states: {
-            nodes: [
-              createSubComponentNode({
-                componentNodeNumber: 1,
-                subComponentNodeNumber: 1,
-              }),
-              createSubComponentNode({ componentNodeNumber: 2 }),
-            ],
-            edges: [createGraphEdge({ sourceIndex: 0, targetIndex: 1 })],
-            sampleSize: 1,
-          },
+          states: [
+            {
+              type: 'graph',
+              nodes: [
+                createSubComponentGraphNode({
+                  componentNodeNumber: 1,
+                  subComponentNodeNumber: 1,
+                }),
+                createSubComponentGraphNode({ componentNodeNumber: 2 }),
+              ],
+              edges: [createGraphEdge({ sourceIndex: 0, targetIndex: 1 })],
+              sampleSize: 1,
+            },
+          ],
         },
         {
-          states: {
-            nodes: [
-              createSubComponentNode({
-                componentNodeNumber: 1,
-                subComponentNodeNumber: 2,
-              }),
-              createSubComponentNode({ componentNodeNumber: 2 }),
-            ],
-            edges: [createGraphEdge({ sourceIndex: 0, targetIndex: 1 })],
-            sampleSize: 1,
-          },
+          states: [
+            {
+              type: 'graph',
+              nodes: [
+                createSubComponentGraphNode({
+                  componentNodeNumber: 1,
+                  subComponentNodeNumber: 2,
+                }),
+                createSubComponentGraphNode({ componentNodeNumber: 2 }),
+              ],
+              edges: [createGraphEdge({ sourceIndex: 0, targetIndex: 1 })],
+              sampleSize: 1,
+            },
+          ],
         },
         {
-          states: {
-            nodes: [
-              createSubComponentNode({
-                componentNodeNumber: 1,
-                subComponentNodeNumber: 2,
-              }),
-              createSubComponentNode({ componentNodeNumber: 3 }),
-            ],
-            edges: [createGraphEdge({ sourceIndex: 0, targetIndex: 1 })],
-            sampleSize: 1,
-          },
+          states: [
+            {
+              type: 'graph',
+              nodes: [
+                createSubComponentGraphNode({
+                  componentNodeNumber: 1,
+                  subComponentNodeNumber: 2,
+                }),
+                createSubComponentGraphNode({ componentNodeNumber: 3 }),
+              ],
+              edges: [createGraphEdge({ sourceIndex: 0, targetIndex: 1 })],
+              sampleSize: 1,
+            },
+          ],
         },
       ]
     })
@@ -142,45 +158,60 @@ describe('ComponentCallGraphsView', () => {
     beforeEach(() => {
       propsData.diagrams = [
         {
-          states: {
-            nodes: [
-              {
-                componentId: 'test-component-id-1',
-                spanName: 'test-span-name-1-1',
-                tags: {
-                  testName1: 'test-value-1',
+          states: [
+            {
+              type: 'graph',
+              nodes: [
+                {
+                  componentId: 'test-component-id-1',
+                  spanName: 'test-span-name-1-1',
+                  tags: [
+                    {
+                      key: 'testName1',
+                      value: 'test-value-1',
+                    },
+                  ],
                 },
-              },
-              {
-                componentId: 'test-component-id-2',
-                spanName: 'test-span-name-2-1',
-                tags: {},
-              },
-            ],
-            edges: [createGraphEdge({ sourceIndex: 0, targetIndex: 1 })],
-            sampleSize: 1,
-          },
+                {
+                  componentId: 'test-component-id-2',
+                  spanName: 'test-span-name-2-1',
+                  tags: [],
+                },
+              ],
+              edges: [createGraphEdge({ sourceIndex: 0, targetIndex: 1 })],
+              sampleSize: 1,
+            },
+          ],
         },
         {
-          states: {
-            nodes: [
-              {
-                componentId: 'test-component-id-1',
-                spanName: 'test-span-name-1-1',
-                tags: {
-                  testName1: 'test-value-1',
-                  testName2: 'test-value-2',
+          states: [
+            {
+              type: 'graph',
+              nodes: [
+                {
+                  componentId: 'test-component-id-1',
+                  spanName: 'test-span-name-1-1',
+                  tags: [
+                    {
+                      key: 'testName1',
+                      value: 'test-value-1',
+                    },
+                    {
+                      key: 'testName2',
+                      value: 'test-value-2',
+                    },
+                  ],
                 },
-              },
-              {
-                componentId: 'test-component-id-2',
-                spanName: 'test-span-name-2-1',
-                tags: {},
-              },
-            ],
-            edges: [createGraphEdge({ sourceIndex: 0, targetIndex: 1 })],
-            sampleSize: 1,
-          },
+                {
+                  componentId: 'test-component-id-2',
+                  spanName: 'test-span-name-2-1',
+                  tags: [],
+                },
+              ],
+              edges: [createGraphEdge({ sourceIndex: 0, targetIndex: 1 })],
+              sampleSize: 1,
+            },
+          ],
         },
       ]
     })
@@ -198,46 +229,64 @@ describe('ComponentCallGraphsView', () => {
     beforeEach(() => {
       propsData.diagrams = [
         {
-          states: {
-            nodes: [
-              {
-                componentId: 'test-component-id-1',
-                spanName: 'test-span-name-1-1',
-                tags: {
-                  testName1: 'test-value-1',
-                  testName2: 'test-value-2',
+          states: [
+            {
+              type: 'graph',
+              nodes: [
+                {
+                  componentId: 'test-component-id-1',
+                  spanName: 'test-span-name-1-1',
+                  tags: [
+                    {
+                      key: 'testName1',
+                      value: 'test-value-1',
+                    },
+                    {
+                      key: 'testName2',
+                      value: 'test-value-2',
+                    },
+                  ],
                 },
-              },
-              {
-                componentId: 'test-component-id-2',
-                spanName: 'test-span-name-2-1',
-                tags: {},
-              },
-            ],
-            edges: [createGraphEdge({ sourceIndex: 0, targetIndex: 1 })],
-            sampleSize: 1,
-          },
+                {
+                  componentId: 'test-component-id-2',
+                  spanName: 'test-span-name-2-1',
+                  tags: [],
+                },
+              ],
+              edges: [createGraphEdge({ sourceIndex: 0, targetIndex: 1 })],
+              sampleSize: 1,
+            },
+          ],
         },
         {
-          states: {
-            nodes: [
-              {
-                componentId: 'test-component-id-1',
-                spanName: 'test-span-name-1-1',
-                tags: {
-                  testName1: 'different-value-1',
-                  testName2: 'different-value-2',
+          states: [
+            {
+              type: 'graph',
+              nodes: [
+                {
+                  componentId: 'test-component-id-1',
+                  spanName: 'test-span-name-1-1',
+                  tags: [
+                    {
+                      key: 'testName1',
+                      value: 'test-value-1',
+                    },
+                    {
+                      key: 'testName2',
+                      value: 'test-value-2',
+                    },
+                  ],
                 },
-              },
-              {
-                componentId: 'test-component-id-2',
-                spanName: 'test-span-name-2-1',
-                tags: {},
-              },
-            ],
-            edges: [createGraphEdge({ sourceIndex: 0, targetIndex: 1 })],
-            sampleSize: 1,
-          },
+                {
+                  componentId: 'test-component-id-2',
+                  spanName: 'test-span-name-2-1',
+                  tags: [],
+                },
+              ],
+              edges: [createGraphEdge({ sourceIndex: 0, targetIndex: 1 })],
+              sampleSize: 1,
+            },
+          ],
         },
       ]
     })
@@ -245,8 +294,8 @@ describe('ComponentCallGraphsView', () => {
     test('the call graph is not shown for the selected node', () => {
       createWrapper()
       expect(wrapper.html()).toMatchSnapshot()
-      expectCallGraphCount(wrapper, 1)
-      expectNodeCount(wrapper, 2)
+      expectCallGraphCount(wrapper, 2)
+      expectNodeCount(wrapper, 1)
       expectNodeVariants(wrapper, ['success', 'secondary'])
     })
   })

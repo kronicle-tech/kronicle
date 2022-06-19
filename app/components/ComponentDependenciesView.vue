@@ -10,11 +10,11 @@
       :plugin-id-filter-enabled="true"
     >
       <b-card bg-variant="secondary">
-        <b-form-group label="Dependency Types">
+        <b-form-group label="Connection Types">
           <b-form-checkbox-group
             v-model="selectedEdgeTypes"
-            :options="dependencyTypeIdOptions"
-            name="dependencyTypeId"
+            :options="connectionTypeIdOptions"
+            name="connectionTypeId"
             stacked
           ></b-form-checkbox-group>
         </b-form-group>
@@ -58,12 +58,12 @@
         id="component-dependency-graph"
         :diagram="diagram"
         :edge-types="selectedEdgeTypes"
-        dependency-relation-type="scope-related"
+        edge-relation-type="scope-related"
         :zoom="zoom"
         :selected-component-id="selectedComponentId"
         :scoped-component-ids="filteredComponentIds"
         :fixed-scope="true"
-        :scope-related-radius="parseInt(selectedScopeRelatedRadius, 10)"
+        :scope-related-radius="selectedScopeRelatedRadius"
         @networkChange="networkChange"
         @nodeClick="nodeClick"
       />
@@ -166,7 +166,7 @@ export default Vue.extend({
     }
   },
   computed: {
-    filteredComponentIds(): Component[] {
+    filteredComponentIds(): string[] {
       return this.$store.state.componentFilters.filteredComponentIds
     },
     connections(): Connection[] {
@@ -181,12 +181,12 @@ export default Vue.extend({
           }))
         )
     },
-    dependencyTypeIdOptions(): Option[] {
+    edgeTypeIdOptions(): Option[] {
       return [
         ...new Set(this.connections.map((connection) => connection.edge.type)),
-      ].map((dependencyTypeId) => ({
-        value: dependencyTypeId,
-        text: dependencyTypeId,
+      ].map((edgeTypeId) => ({
+        value: edgeTypeId,
+        text: edgeTypeId,
       }))
     },
     scopeRelatedRadiusOptions(): Option[] {

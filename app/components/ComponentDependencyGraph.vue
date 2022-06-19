@@ -283,7 +283,7 @@ export default Vue.extend({
 
       function getNodeText(node: GraphNode) {
         const text = [node.componentId]
-        if ('spanName' in node) {
+        if ('name' in node) {
           text.push(node.name)
           node.tags.forEach((tag) => text.push(` ${tag.key}=${tag.value}`))
         }

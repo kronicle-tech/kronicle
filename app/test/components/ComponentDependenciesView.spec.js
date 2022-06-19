@@ -7,7 +7,6 @@ function createEdge(sourceIndex, targetIndex) {
     sourceIndex,
     targetIndex,
     relatedIndexes: [],
-    manual: false,
     sampleSize: 1,
     startTimestamp: '2021-01-01T00:00:00.000Z',
     endTimestamp: '2021-01-01T00:00:01.000Z',
@@ -46,9 +45,9 @@ describe('ComponentDependenciesView', () => {
     expect(wrapper.findAll('.edge')).toHaveLength(count)
   }
 
-  function expectNodeClasses(dependencies) {
-    expect(wrapper.findAll('.node')).toHaveLength(dependencies.length)
-    dependencies.forEach((node) =>
+  function expectNodeClasses(edges) {
+    expect(wrapper.findAll('.node')).toHaveLength(edges.length)
+    edges.forEach((node) =>
       expect(
         wrapper
           .get(`#component-dependency-graph-node-${node.nodeIndex}`)
@@ -57,9 +56,9 @@ describe('ComponentDependenciesView', () => {
     )
   }
 
-  function expectEdgeClasses(dependencies) {
-    expect(wrapper.findAll('.edge')).toHaveLength(dependencies.length)
-    dependencies.forEach((edge) =>
+  function expectEdgeClasses(edges) {
+    expect(wrapper.findAll('.edge')).toHaveLength(edges.length)
+    edges.forEach((edge) =>
       expect(
         wrapper
           .get(`#component-dependency-graph-edge-${edge.edgeIndex}`)
@@ -87,7 +86,7 @@ describe('ComponentDependenciesView', () => {
       propsData.components = []
     })
 
-    test('renders no dependencies', async () => {
+    test('renders no edges', async () => {
       await createWrapper()
       expect(wrapper.html()).toMatchSnapshot()
     })
@@ -122,7 +121,6 @@ describe('ComponentDependenciesView', () => {
           states: [
             {
               type: 'graph',
-              pluginId: 'test-plugin-id',
               nodes: [
                 createComponentNode(1),
                 createComponentNode(2),
@@ -168,7 +166,7 @@ describe('ComponentDependenciesView', () => {
             .trigger('click')
         })
 
-        test('renders the connention directly related to the first node with the style of a direct edge', () => {
+        test('renders the connection directly related to the first node with the style of a direct edge', () => {
           expect(wrapper.html()).toMatchSnapshot()
           expectNodeClasses([
             { nodeIndex: 0, nodeClass: 'selected-node' },

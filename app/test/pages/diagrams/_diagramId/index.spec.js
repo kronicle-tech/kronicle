@@ -77,18 +77,5 @@ describe('Index', () => {
       await createWrapper()
       expect(wrapper.element).toMatchSnapshot()
     })
-
-    describe('when the detailed checkbox is checked', () => {
-      beforeEach(() => {
-        wrapperActions.push(async (wrapper) => {
-          await wrapper.get('#detailed-edges').trigger('click')
-        })
-      })
-
-      test('shows detailed edges in graph', async () => {
-        await createWrapper()
-        expect(wrapper.element).toMatchSnapshot()
-      })
-    })
   })
 })

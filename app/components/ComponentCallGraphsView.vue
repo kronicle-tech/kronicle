@@ -13,7 +13,7 @@
       </p>
     </b-alert>
 
-    <div v-if="filteredCallGraphs.length === 0">
+    <div v-if="filteredDiagrams.length === 0">
       <b-alert show variant="warning" class="my-3">
         No call graphs are available for this component. Possibly:
 
@@ -29,19 +29,19 @@
 
     <div class="call-graphs">
       <div
-        v-for="(callGraph, callGraphIndex) in filteredCallGraphs"
-        :key="callGraphIndex"
+        v-for="(diagram, diagramIndex) in filteredDiagrams"
+        :key="diagramIndex"
         class="call-graph my-2"
       >
         <h5>
-          Call Graph {{ callGraphIndex + 1 }}
+          Call Graph {{ diagramIndex + 1 }}
           <b-badge variant="primary" class="ml-2">
-            {{ callGraph.traceCount }} Traces
+            {{ getDiagramGraph(diagram).sampleSize }} Traces
           </b-badge>
         </h5>
 
         <ComponentDependencyGraph
-          :dependencies="callGraph"
+          :diagram="diagram"
           :selected-component-id="component.id"
           :node-spacing-x="400"
           :node-spacing-y="200"
@@ -74,8 +74,6 @@
 <script lang="ts">
 import Vue, { PropType } from 'vue'
 import { BAlert, BBadge, BButton } from 'bootstrap-vue'
-import eq from 'lodash.eq'
-import uniq from 'lodash.uniq'
 import {
   Component,
   Diagram,
@@ -120,7 +118,11 @@ export default Vue.extend({
         .map((graph) => graph as GraphState)
     },
     nodes(): GraphNode[] {
-      return uniq(this.graphs.flatMap((graph) => graph.nodes))
+      const that = this
+      const nodes = that.graphs
+        .flatMap((graph) => graph.nodes)
+        .filter((node) => node.componentId === that.component.id)
+      return this.uniqueNodes(nodes)
     },
     extendedNodes(): ExtendedNode[] {
       const that = this
@@ -144,7 +146,7 @@ export default Vue.extend({
           if (!graph) {
             return false
           }
-          return graph.nodes.some((node) => eq(node, selectedNode))
+          return graph.nodes.some((node) => this.nodeEquals(node, selectedNode))
         })
         .sort(
           (a, b) =>
@@ -159,6 +161,42 @@ export default Vue.extend({
       return diagram.states.find((state) => state.type === 'graph') as
         | GraphState
         | undefined
+    },
+    nodeEquals(a: GraphNode, b: GraphNode): boolean {
+      if (a.componentId !== b.componentId) {
+        return false
+      }
+      if (a.name !== b.name) {
+        return false
+      }
+      if (a.tags.length !== b.tags.length) {
+        return false
+      }
+      for (let tagIndex = 0; tagIndex < a.tags.length; tagIndex++) {
+        const tagA = a.tags[tagIndex]
+        const tagB = b.tags[tagIndex]
+        if (tagA.key !== tagB.key || tagA.value !== tagB.value) {
+          return false
+        }
+      }
+      return true
+    },
+    uniqueNodes(values: GraphNode[]): GraphNode[] {
+      const uniqueValues: GraphNode[] = []
+      for (const value of values) {
+        let isUnique = true
+        for (const uniqueValue of uniqueValues) {
+          if (this.nodeEquals(value, uniqueValue)) {
+            isUnique = false
+            break
+          }
+        }
+
+        if (isUnique) {
+          uniqueValues.push(value)
+        }
+      }
+      return uniqueValues
     },
     nodeClick(nodeIndex: number): void {
       this.selectedNodeIndex = nodeIndex

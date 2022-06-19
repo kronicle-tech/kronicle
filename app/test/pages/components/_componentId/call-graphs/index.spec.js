@@ -4,6 +4,7 @@ import {
   createComponent,
   createComponentAvailableDataRequests,
   createGraphEdge,
+  createSubComponentGraphNode,
 } from '~/test/testDataUtils'
 import {
   expectCallGraphCount,
@@ -73,46 +74,55 @@ describe('Index', () => {
     beforeEach(() => {
       diagrams = [
         {
-          states: {
-            nodes: [
-              createSubComponentNode({
-                componentNodeNumber: 1,
-                subComponentNodeNumber: 1,
-              }),
-              createSubComponentNode({
-                componentNodeNumber: 1,
-                subComponentNodeNumber: 2,
-              }),
-            ],
-            edges: [createGraphEdge({ sourceIndex: 0, targetIndex: 1 })],
-            sampleSize: 1,
-          },
+          states: [
+            {
+              type: 'graph',
+              nodes: [
+                createSubComponentGraphNode({
+                  componentNodeNumber: 1,
+                  subComponentNodeNumber: 1,
+                }),
+                createSubComponentGraphNode({
+                  componentNodeNumber: 1,
+                  subComponentNodeNumber: 2,
+                }),
+              ],
+              edges: [createGraphEdge({ sourceIndex: 0, targetIndex: 1 })],
+              sampleSize: 1,
+            },
+          ],
         },
         {
-          states: {
-            nodes: [
-              createSubComponentNode({
-                componentNodeNumber: 1,
-                subComponentNodeNumber: 2,
-              }),
-              createSubComponentNode({ componentNodeNumber: 2 }),
-            ],
-            edges: [createGraphEdge({ sourceIndex: 0, targetIndex: 1 })],
-            sampleSize: 1,
-          },
+          states: [
+            {
+              type: 'graph',
+              nodes: [
+                createSubComponentGraphNode({
+                  componentNodeNumber: 1,
+                  subComponentNodeNumber: 2,
+                }),
+                createSubComponentGraphNode({ componentNodeNumber: 2 }),
+              ],
+              edges: [createGraphEdge({ sourceIndex: 0, targetIndex: 1 })],
+              sampleSize: 1,
+            },
+          ],
         },
         {
-          states: {
-            nodes: [
-              createSubComponentNode({
-                componentNodeNumber: 1,
-                subComponentNodeNumber: 2,
-              }),
-              createSubComponentNode({ componentNodeNumber: 3 }),
-            ],
-            edges: [createGraphEdge({ sourceIndex: 0, targetIndex: 1 })],
-            sampleSize: 1,
-          },
+          states: [
+            {
+              type: 'graph',
+              nodes: [
+                createSubComponentGraphNode({
+                  componentNodeNumber: 1,
+                  subComponentNodeNumber: 2,
+                }),
+                createSubComponentGraphNode({ componentNodeNumber: 3 }),
+              ],
+              edges: [createGraphEdge({ sourceIndex: 0, targetIndex: 1 })],
+              sampleSize: 1,
+            },
+          ],
         },
       ]
     })
