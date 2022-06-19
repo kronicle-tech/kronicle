@@ -13,17 +13,17 @@
       </b-navbar-toggle>
       <b-collapse id="nav-collapse" is-nav>
         <b-navbar-nav>
-          <b-nav-item to="/all-environments">Environments</b-nav-item>
-          <b-nav-item to="/all-components">Components</b-nav-item>
-          <b-nav-item to="/all-components/dependencies"
-            >Visualizations</b-nav-item
-          >
-          <b-nav-item to="/all-components/openapi-specs">OpenAPI</b-nav-item>
-          <b-nav-item to="/all-components/graphql-schemas">GraphQL</b-nav-item>
-          <b-nav-item to="/all-teams">Teams</b-nav-item>
-          <b-nav-item to="/all-areas">Areas</b-nav-item>
-          <b-nav-item to="/all-tests">Tests</b-nav-item>
-          <b-nav-item :to="{ name: 'all-scanners' }">Scanners</b-nav-item>
+          <b-nav-item to="/all-environments"> Environments </b-nav-item>
+          <b-nav-item to="/all-components"> Components </b-nav-item>
+          <b-nav-item to="/diagrams"> Diagrams </b-nav-item>
+          <b-nav-item to="/all-components/openapi-specs"> OpenAPI </b-nav-item>
+          <b-nav-item to="/all-components/graphql-schemas">
+            GraphQL
+          </b-nav-item>
+          <b-nav-item to="/all-teams"> Teams </b-nav-item>
+          <b-nav-item to="/all-areas"> Areas </b-nav-item>
+          <b-nav-item to="/all-tests"> Tests </b-nav-item>
+          <b-nav-item :to="{ name: 'all-scanners' }"> Scanners </b-nav-item>
         </b-navbar-nav>
       </b-collapse>
     </b-navbar>

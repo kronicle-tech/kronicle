@@ -1,7 +1,7 @@
 <template>
   <div class="m-3">
     <h1 class="text-info my-3">
-      {{ area.name }} Area - Cross Functional Requirements
+      {{ area.name }} - Cross Functional Requirements
     </h1>
 
     <AreaTabs :area-id="area.id" />
@@ -45,7 +45,7 @@ export default Vue.extend({
   },
   head(): MetaInfo {
     return {
-      title: `Kronicle - ${this.area.name} Area - Cross Functional Requirements`,
+      title: `Kronicle - ${this.area.name} - Cross Functional Requirements`,
     }
   },
 })

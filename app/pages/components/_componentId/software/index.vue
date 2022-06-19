@@ -61,7 +61,10 @@ import { BCard, BListGroup, BListGroupItem } from 'bootstrap-vue'
 import { Component, Software, SoftwaresState } from '~/types/kronicle-service'
 import ComponentTabs from '~/components/ComponentTabs.vue'
 import FormattedNumber from '~/components/FormattedNumber.vue'
-import { fetchComponentAvailableData } from '~/src/fetchComponentAvailableData'
+import {
+  ComponentAvailableData,
+  fetchComponentAvailableData,
+} from '~/src/fetchComponentAvailableData'
 import { findComponentState } from '~/src/componentStateUtils'
 
 export default Vue.extend({
@@ -91,7 +94,7 @@ export default Vue.extend({
   },
   data() {
     return {
-      componentAvailableData: [] as string[],
+      componentAvailableData: {} as ComponentAvailableData,
       component: {} as Component,
     }
   },

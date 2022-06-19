@@ -46,7 +46,10 @@ import {
 } from '~/types/kronicle-service'
 import ComponentTabs from '~/components/ComponentTabs.vue'
 import FormattedNumber from '~/components/FormattedNumber.vue'
-import { fetchComponentAvailableData } from '~/src/fetchComponentAvailableData'
+import {
+  ComponentAvailableData,
+  fetchComponentAvailableData,
+} from '~/src/fetchComponentAvailableData'
 
 export default Vue.extend({
   components: {
@@ -76,7 +79,7 @@ export default Vue.extend({
   },
   data() {
     return {
-      componentAvailableData: [] as string[],
+      componentAvailableData: {} as ComponentAvailableData,
       component: {} as Component,
     }
   },

@@ -1,13 +1,12 @@
-import ComponentDependenciesView from '@/components/ComponentDependenciesView.vue'
+import ComponentDependenciesView from '@/components/ComponentDependenciesView'
 import { createViewComponentWrapper } from '~/test/components/viewUtils'
 import { createComponent } from '~/test/testDataUtils'
 
-function createDependency(sourceIndex, targetIndex) {
+function createEdge(sourceIndex, targetIndex) {
   return {
     sourceIndex,
     targetIndex,
     relatedIndexes: [],
-    manual: false,
     sampleSize: 1,
     startTimestamp: '2021-01-01T00:00:00.000Z',
     endTimestamp: '2021-01-01T00:00:01.000Z',
@@ -28,14 +27,6 @@ function createComponentNode(nodeNumber) {
   }
 }
 
-function createSubComponentNode(nodeNumber) {
-  return {
-    componentId: `test-component-id-${nodeNumber}`,
-    spanName: `test-span-name-${nodeNumber}`,
-    tags: {},
-  }
-}
-
 describe('ComponentDependenciesView', () => {
   let propsData
   let wrapper
@@ -50,13 +41,13 @@ describe('ComponentDependenciesView', () => {
     expect(wrapper.findAll('.node')).toHaveLength(count)
   }
 
-  function expectDependencyCount(count) {
-    expect(wrapper.findAll('.dependency')).toHaveLength(count)
+  function expectEdgeCount(count) {
+    expect(wrapper.findAll('.edge')).toHaveLength(count)
   }
 
-  function expectNodeClasses(dependencies) {
-    expect(wrapper.findAll('.node')).toHaveLength(dependencies.length)
-    dependencies.forEach((node) =>
+  function expectNodeClasses(edges) {
+    expect(wrapper.findAll('.node')).toHaveLength(edges.length)
+    edges.forEach((node) =>
       expect(
         wrapper
           .get(`#component-dependency-graph-node-${node.nodeIndex}`)
@@ -65,28 +56,21 @@ describe('ComponentDependenciesView', () => {
     )
   }
 
-  function expectDependencyClasses(dependencies) {
-    expect(wrapper.findAll('.dependency')).toHaveLength(dependencies.length)
-    dependencies.forEach((dependency) =>
+  function expectEdgeClasses(edges) {
+    expect(wrapper.findAll('.edge')).toHaveLength(edges.length)
+    edges.forEach((edge) =>
       expect(
         wrapper
-          .get(
-            `#component-dependency-graph-dependency-${dependency.dependencyIndex}`
-          )
+          .get(`#component-dependency-graph-edge-${edge.edgeIndex}`)
           .classes()
-      ).toContain(dependency.dependencyClass)
+      ).toContain(edge.edgeClass)
     )
   }
 
   beforeEach(() => {
     propsData = {
-      componentDependencies: {
-        nodes: [],
-        dependencies: [],
-      },
-      subComponentDependencies: {
-        nodes: [],
-        dependencies: [],
+      diagram: {
+        states: [],
       },
       allComponents: [],
     }
@@ -102,7 +86,7 @@ describe('ComponentDependenciesView', () => {
       propsData.components = []
     })
 
-    test('renders no dependencies', async () => {
+    test('renders no edges', async () => {
       await createWrapper()
       expect(wrapper.html()).toMatchSnapshot()
     })
@@ -122,45 +106,43 @@ describe('ComponentDependenciesView', () => {
       )
     })
 
-    describe('and componentDependencies prop contains an empty dependencies array', () => {
-      beforeEach(() => {
-        propsData.componentDependencies = {
-          nodes: [],
-          dependencies: [],
-        }
-      })
-
-      test('renders no dependencies', async () => {
+    describe('and diagram prop contains an empty edges array', () => {
+      test('renders no connections', async () => {
         await createWrapper()
         expect(wrapper.html()).toMatchSnapshot()
         expectNodeCount(0)
-        expectDependencyCount(0)
+        expectEdgeCount(0)
       })
     })
 
-    describe('and componentDependencies prop contains multiple dependencies', () => {
+    describe('and diagram prop contains multiple edges', () => {
       beforeEach(() => {
-        propsData.componentDependencies = {
-          nodes: [
-            createComponentNode(1),
-            createComponentNode(2),
-            createComponentNode(3),
-            createComponentNode(4),
-          ],
-          dependencies: [
-            createDependency(undefined, 0),
-            createDependency(0, 1),
-            createDependency(1, 2),
-            createDependency(1, 3),
+        propsData.diagram = {
+          states: [
+            {
+              type: 'graph',
+              nodes: [
+                createComponentNode(1),
+                createComponentNode(2),
+                createComponentNode(3),
+                createComponentNode(4),
+              ],
+              edges: [
+                createEdge(undefined, 0),
+                createEdge(0, 1),
+                createEdge(1, 2),
+                createEdge(1, 3),
+              ],
+            },
           ],
         }
       })
 
-      test('renders the dependencies', async () => {
+      test('renders the connections', async () => {
         await createWrapper()
         expect(wrapper.html()).toMatchSnapshot()
         expectNodeCount(4)
-        expectDependencyCount(3)
+        expectEdgeCount(3)
       })
 
       describe('and first platform is checked in platform filter', () => {
@@ -169,10 +151,10 @@ describe('ComponentDependenciesView', () => {
           await wrapper.get('input[value="test-platform-id-1"]').setChecked()
         })
 
-        test('renders the dependencies directly related to the first component using the first platform', () => {
+        test('renders the connections directly related to the first component using the first platform', () => {
           expect(wrapper.html()).toMatchSnapshot()
           expectNodeCount(2)
-          expectDependencyCount(1)
+          expectEdgeCount(1)
         })
       })
 
@@ -184,7 +166,7 @@ describe('ComponentDependenciesView', () => {
             .trigger('click')
         })
 
-        test('renders the dependency directly related to the first node with the style of a direct dependency', () => {
+        test('renders the connection directly related to the first node with the style of a direct edge', () => {
           expect(wrapper.html()).toMatchSnapshot()
           expectNodeClasses([
             { nodeIndex: 0, nodeClass: 'selected-node' },
@@ -192,10 +174,10 @@ describe('ComponentDependenciesView', () => {
             { nodeIndex: 2, nodeClass: 'scoped-node' },
             { nodeIndex: 3, nodeClass: 'scoped-node' },
           ])
-          expectDependencyClasses([
-            { dependencyIndex: 1, dependencyClass: 'direct-dependency' },
-            { dependencyIndex: 2, dependencyClass: 'scoped-dependency' },
-            { dependencyIndex: 3, dependencyClass: 'scoped-dependency' },
+          expectEdgeClasses([
+            { edgeIndex: 1, edgeClass: 'direct-edge' },
+            { edgeIndex: 2, edgeClass: 'scoped-edge' },
+            { edgeIndex: 3, edgeClass: 'scoped-edge' },
           ])
         })
       })
@@ -208,7 +190,7 @@ describe('ComponentDependenciesView', () => {
             .trigger('mouseover')
         })
 
-        test('renders the dependency directly related to the first node with the style of a direct dependency', () => {
+        test('renders the connection directly related to the first node with the style of a direct connection', () => {
           expect(wrapper.html()).toMatchSnapshot()
           expectNodeClasses([
             { nodeIndex: 0, nodeClass: 'selected-node' },
@@ -216,10 +198,10 @@ describe('ComponentDependenciesView', () => {
             { nodeIndex: 2, nodeClass: 'scoped-node' },
             { nodeIndex: 3, nodeClass: 'scoped-node' },
           ])
-          expectDependencyClasses([
-            { dependencyIndex: 1, dependencyClass: 'direct-dependency' },
-            { dependencyIndex: 2, dependencyClass: 'scoped-dependency' },
-            { dependencyIndex: 3, dependencyClass: 'scoped-dependency' },
+          expectEdgeClasses([
+            { edgeIndex: 1, edgeClass: 'direct-edge' },
+            { edgeIndex: 2, edgeClass: 'scoped-edge' },
+            { edgeIndex: 3, edgeClass: 'scoped-edge' },
           ])
         })
 
@@ -231,7 +213,7 @@ describe('ComponentDependenciesView', () => {
               .trigger('mouseout')
           })
 
-          test('renders all the dependencies as scoped dependencies', () => {
+          test('renders all the connections as scoped connections', () => {
             expect(wrapper.html()).toMatchSnapshot()
             expectNodeClasses([
               { nodeIndex: 0, nodeClass: 'scoped-node' },
@@ -239,65 +221,11 @@ describe('ComponentDependenciesView', () => {
               { nodeIndex: 2, nodeClass: 'scoped-node' },
               { nodeIndex: 3, nodeClass: 'scoped-node' },
             ])
-            expectDependencyClasses([
-              { dependencyIndex: 1, dependencyClass: 'scoped-dependency' },
-              { dependencyIndex: 2, dependencyClass: 'scoped-dependency' },
-              { dependencyIndex: 3, dependencyClass: 'scoped-dependency' },
+            expectEdgeClasses([
+              { edgeIndex: 1, edgeClass: 'scoped-edge' },
+              { edgeIndex: 2, edgeClass: 'scoped-edge' },
+              { edgeIndex: 3, edgeClass: 'scoped-edge' },
             ])
-          })
-        })
-      })
-
-      describe('and subComponentDependencies prop contains an empty dependencies array', () => {
-        beforeEach(() => {
-          propsData.subComponentDependencies = {
-            nodes: [],
-            dependencies: [],
-          }
-        })
-
-        describe('and detailed dependencies checkbox is checked', () => {
-          beforeEach(async () => {
-            await createWrapper()
-            await wrapper.get('#detailed-dependencies').setChecked()
-          })
-
-          test('renders no dependencies', () => {
-            expect(wrapper.html()).toMatchSnapshot()
-            expectNodeCount(0)
-            expectDependencyCount(0)
-          })
-        })
-      })
-
-      describe('and subComponentDependencies prop contains multiple dependencies', () => {
-        beforeEach(() => {
-          propsData.subComponentDependencies = {
-            nodes: [
-              createSubComponentNode(1),
-              createSubComponentNode(2),
-              createSubComponentNode(3),
-              createSubComponentNode(4),
-            ],
-            dependencies: [
-              createDependency(undefined, 0),
-              createDependency(0, 1),
-              createDependency(1, 2),
-              createDependency(1, 3),
-            ],
-          }
-        })
-
-        describe('and detailed dependencies checkbox is checked', () => {
-          beforeEach(async () => {
-            await createWrapper()
-            await wrapper.get('#detailed-dependencies').setChecked()
-          })
-
-          test('renders the dependencies', () => {
-            expect(wrapper.html()).toMatchSnapshot()
-            expectNodeCount(4)
-            expectDependencyCount(3)
           })
         })
       })

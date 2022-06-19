@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ComponentCallGraphsView when a call graph's node has a different number of tags to the selected node the call graph is not shown for the selected node 1`] = `
-"<div>
+"<div callgraphs=\\"\\">
   <transition-stub name=\\"\\" css=\\"true\\" enterclass=\\"\\" leaveclass=\\"show\\" entertoclass=\\"show\\" leavetoclass=\\"\\" enteractiveclass=\\"\\" leaveactiveclass=\\"\\" class=\\"my-3\\">
     <div role=\\"alert\\" aria-live=\\"polite\\" aria-atomic=\\"true\\" class=\\"alert alert-dismissible alert-info\\"><button type=\\"button\\" aria-label=\\"Close\\" class=\\"close\\">×</button>
       <p>
@@ -25,25 +25,25 @@ exports[`ComponentCallGraphsView when a call graph's node has a different number
         </span></h5> <svg xmlns=\\"http://www.w3.org/2000/svg\\" overflow=\\"auto\\" width=\\"100%\\" height=\\"1200\\">
         <rect fill-opacity=\\"0\\" class=\\"component-dependency-graph-background\\"></rect>
         <defs>
-          <marker id=\\"component-dependency-graph-dependency-marker-all\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"20\\" refY=\\"5.75\\" class=\\"dependency-marker all-dependency-marker\\">
+          <marker id=\\"component-dependency-graph-all-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker all-edge-marker\\">
             <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
           </marker>
-          <marker id=\\"component-dependency-graph-dependency-marker-manual\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"20\\" refY=\\"5.75\\" class=\\"dependency-marker manual-dependency-marker\\">
+          <marker id=\\"component-dependency-graph-other-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker other-edge-marker\\">
             <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
           </marker>
-          <marker id=\\"component-dependency-graph-dependency-marker-scope-related\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"20\\" refY=\\"5.75\\" class=\\"dependency-marker scope-related-dependency-marker\\">
+          <marker id=\\"component-dependency-graph-scope-related-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker scope-related-edge-marker\\">
             <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
           </marker>
-          <marker id=\\"component-dependency-graph-dependency-marker-scoped\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"20\\" refY=\\"5.75\\" class=\\"dependency-marker scoped-dependency-marker\\">
+          <marker id=\\"component-dependency-graph-scoped-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker scoped-edge-marker\\">
             <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
           </marker>
-          <marker id=\\"component-dependency-graph-dependency-marker-related\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"20\\" refY=\\"5.75\\" class=\\"dependency-marker related-dependency-marker\\">
+          <marker id=\\"component-dependency-graph-related-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker related-edge-marker\\">
             <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
           </marker>
-          <marker id=\\"component-dependency-graph-dependency-marker-direct\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"20\\" refY=\\"5.75\\" class=\\"dependency-marker direct-dependency-marker\\">
+          <marker id=\\"component-dependency-graph-direct-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker direct-edge-marker\\">
             <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
           </marker>
-          <marker id=\\"component-dependency-graph-dependency-marker-selected\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"20\\" refY=\\"5.75\\" class=\\"dependency-marker selected-dependency-marker\\">
+          <marker id=\\"component-dependency-graph-selected-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker selected-edge-marker\\">
             <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
           </marker>
         </defs>
@@ -53,7 +53,7 @@ exports[`ComponentCallGraphsView when a call graph's node has a different number
         <g></g>
         <g></g>
         <g>
-          <path id=\\"component-dependency-graph-dependency-0\\" d=\\"M50,50L50,250\\" marker-end=\\"url(#component-dependencies-direct-dependency-marker)\\" class=\\"dependency direct-dependency\\"></path>
+          <path id=\\"component-dependency-graph-edge-0\\" d=\\"M50,50L50,250\\" marker-end=\\"url(#component-dependency-graph-direct-edge-marker)\\" class=\\"edge direct-edge\\"></path>
         </g>
         <g></g>
         <g></g>
@@ -62,10 +62,10 @@ exports[`ComponentCallGraphsView when a call graph's node has a different number
         <g></g>
         <g></g>
         <g>
-          <circle id=\\"component-dependency-graph-node-1\\" r=\\"10\\" cx=\\"50\\" cy=\\"250\\" title=\\"test-component-id-2, test-span-name-2-1\\" class=\\"node direct-node\\"></circle>
+          <circle id=\\"component-dependency-graph-node-1\\" r=\\"10\\" cx=\\"50\\" cy=\\"250\\" title=\\"test-component-id-2\\" class=\\"node direct-node\\"></circle>
         </g>
         <g>
-          <circle id=\\"component-dependency-graph-node-0\\" r=\\"10\\" cx=\\"50\\" cy=\\"50\\" title=\\"test-component-id-1, test-span-name-1-1,  testName1=test-value-1\\" class=\\"node selected-node\\"></circle>
+          <circle id=\\"component-dependency-graph-node-0\\" r=\\"10\\" cx=\\"50\\" cy=\\"50\\" title=\\"test-component-id-1\\" class=\\"node selected-node\\"></circle>
         </g>
         <g></g>
         <g></g>
@@ -76,19 +76,10 @@ exports[`ComponentCallGraphsView when a call graph's node has a different number
             <tspan x=\\"67\\" y=\\"270\\">
               test-component-id-2
             </tspan>
-            <tspan x=\\"67\\" y=\\"286.8\\">
-              test-span-name-2-1
-            </tspan>
           </text></g>
         <g><text x=\\"67\\" y=\\"70\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label selected-node-label\\">
             <tspan x=\\"67\\" y=\\"70\\">
               test-component-id-1
-            </tspan>
-            <tspan x=\\"67\\" y=\\"86.8\\">
-              test-span-name-1-1
-            </tspan>
-            <tspan x=\\"67\\" y=\\"103.6\\">
-              testName1=test-value-1
             </tspan>
           </text></g>
       </svg>
@@ -96,13 +87,14 @@ exports[`ComponentCallGraphsView when a call graph's node has a different number
   </div>
   <div class=\\"nodes\\">
     <h4>Component Nodes</h4> <button type=\\"button\\" class=\\"btn node my-1 btn-success btn-block\\">
-      test-span-name-1-1
+
       <ul>
         <li>
           testName1: test-value-1
         </li>
-      </ul></button><button type=\\"button\\" class=\\"btn node my-1 btn-secondary btn-block\\">
-      test-span-name-1-1
+      </ul>
+    </button><button type=\\"button\\" class=\\"btn node my-1 btn-secondary btn-block\\">
+
       <ul>
         <li>
           testName1: test-value-1
@@ -110,13 +102,14 @@ exports[`ComponentCallGraphsView when a call graph's node has a different number
         <li>
           testName2: test-value-2
         </li>
-      </ul></button>
+      </ul>
+    </button>
   </div>
 </div>"
 `;
 
 exports[`ComponentCallGraphsView when a call graph's node has the same number of tags to the selected node but different values the call graph is not shown for the selected node 1`] = `
-"<div>
+"<div callgraphs=\\"\\">
   <transition-stub name=\\"\\" css=\\"true\\" enterclass=\\"\\" leaveclass=\\"show\\" entertoclass=\\"show\\" leavetoclass=\\"\\" enteractiveclass=\\"\\" leaveactiveclass=\\"\\" class=\\"my-3\\">
     <div role=\\"alert\\" aria-live=\\"polite\\" aria-atomic=\\"true\\" class=\\"alert alert-dismissible alert-info\\"><button type=\\"button\\" aria-label=\\"Close\\" class=\\"close\\">×</button>
       <p>
@@ -140,25 +133,25 @@ exports[`ComponentCallGraphsView when a call graph's node has the same number of
         </span></h5> <svg xmlns=\\"http://www.w3.org/2000/svg\\" overflow=\\"auto\\" width=\\"100%\\" height=\\"1200\\">
         <rect fill-opacity=\\"0\\" class=\\"component-dependency-graph-background\\"></rect>
         <defs>
-          <marker id=\\"component-dependency-graph-dependency-marker-all\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"20\\" refY=\\"5.75\\" class=\\"dependency-marker all-dependency-marker\\">
+          <marker id=\\"component-dependency-graph-all-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker all-edge-marker\\">
             <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
           </marker>
-          <marker id=\\"component-dependency-graph-dependency-marker-manual\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"20\\" refY=\\"5.75\\" class=\\"dependency-marker manual-dependency-marker\\">
+          <marker id=\\"component-dependency-graph-other-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker other-edge-marker\\">
             <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
           </marker>
-          <marker id=\\"component-dependency-graph-dependency-marker-scope-related\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"20\\" refY=\\"5.75\\" class=\\"dependency-marker scope-related-dependency-marker\\">
+          <marker id=\\"component-dependency-graph-scope-related-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker scope-related-edge-marker\\">
             <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
           </marker>
-          <marker id=\\"component-dependency-graph-dependency-marker-scoped\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"20\\" refY=\\"5.75\\" class=\\"dependency-marker scoped-dependency-marker\\">
+          <marker id=\\"component-dependency-graph-scoped-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker scoped-edge-marker\\">
             <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
           </marker>
-          <marker id=\\"component-dependency-graph-dependency-marker-related\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"20\\" refY=\\"5.75\\" class=\\"dependency-marker related-dependency-marker\\">
+          <marker id=\\"component-dependency-graph-related-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker related-edge-marker\\">
             <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
           </marker>
-          <marker id=\\"component-dependency-graph-dependency-marker-direct\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"20\\" refY=\\"5.75\\" class=\\"dependency-marker direct-dependency-marker\\">
+          <marker id=\\"component-dependency-graph-direct-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker direct-edge-marker\\">
             <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
           </marker>
-          <marker id=\\"component-dependency-graph-dependency-marker-selected\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"20\\" refY=\\"5.75\\" class=\\"dependency-marker selected-dependency-marker\\">
+          <marker id=\\"component-dependency-graph-selected-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker selected-edge-marker\\">
             <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
           </marker>
         </defs>
@@ -168,7 +161,7 @@ exports[`ComponentCallGraphsView when a call graph's node has the same number of
         <g></g>
         <g></g>
         <g>
-          <path id=\\"component-dependency-graph-dependency-0\\" d=\\"M50,50L50,250\\" marker-end=\\"url(#component-dependencies-direct-dependency-marker)\\" class=\\"dependency direct-dependency\\"></path>
+          <path id=\\"component-dependency-graph-edge-0\\" d=\\"M50,50L50,250\\" marker-end=\\"url(#component-dependency-graph-direct-edge-marker)\\" class=\\"edge direct-edge\\"></path>
         </g>
         <g></g>
         <g></g>
@@ -177,10 +170,10 @@ exports[`ComponentCallGraphsView when a call graph's node has the same number of
         <g></g>
         <g></g>
         <g>
-          <circle id=\\"component-dependency-graph-node-1\\" r=\\"10\\" cx=\\"50\\" cy=\\"250\\" title=\\"test-component-id-2, test-span-name-2-1\\" class=\\"node direct-node\\"></circle>
+          <circle id=\\"component-dependency-graph-node-1\\" r=\\"10\\" cx=\\"50\\" cy=\\"250\\" title=\\"test-component-id-2\\" class=\\"node direct-node\\"></circle>
         </g>
         <g>
-          <circle id=\\"component-dependency-graph-node-0\\" r=\\"10\\" cx=\\"50\\" cy=\\"50\\" title=\\"test-component-id-1, test-span-name-1-1,  testName1=test-value-1,  testName2=test-value-2\\" class=\\"node selected-node\\"></circle>
+          <circle id=\\"component-dependency-graph-node-0\\" r=\\"10\\" cx=\\"50\\" cy=\\"50\\" title=\\"test-component-id-1\\" class=\\"node selected-node\\"></circle>
         </g>
         <g></g>
         <g></g>
@@ -191,22 +184,77 @@ exports[`ComponentCallGraphsView when a call graph's node has the same number of
             <tspan x=\\"67\\" y=\\"270\\">
               test-component-id-2
             </tspan>
-            <tspan x=\\"67\\" y=\\"286.8\\">
-              test-span-name-2-1
-            </tspan>
           </text></g>
         <g><text x=\\"67\\" y=\\"70\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label selected-node-label\\">
             <tspan x=\\"67\\" y=\\"70\\">
               test-component-id-1
             </tspan>
-            <tspan x=\\"67\\" y=\\"86.8\\">
-              test-span-name-1-1
+          </text></g>
+      </svg>
+    </div>
+    <div class=\\"call-graph my-2\\">
+      <h5>
+        Call Graph 2
+        <span class=\\"badge ml-2 badge-primary\\">
+          1 Traces
+        </span></h5> <svg xmlns=\\"http://www.w3.org/2000/svg\\" overflow=\\"auto\\" width=\\"100%\\" height=\\"1200\\">
+        <rect fill-opacity=\\"0\\" class=\\"component-dependency-graph-background\\"></rect>
+        <defs>
+          <marker id=\\"component-dependency-graph-all-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker all-edge-marker\\">
+            <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
+          </marker>
+          <marker id=\\"component-dependency-graph-other-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker other-edge-marker\\">
+            <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
+          </marker>
+          <marker id=\\"component-dependency-graph-scope-related-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker scope-related-edge-marker\\">
+            <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
+          </marker>
+          <marker id=\\"component-dependency-graph-scoped-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker scoped-edge-marker\\">
+            <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
+          </marker>
+          <marker id=\\"component-dependency-graph-related-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker related-edge-marker\\">
+            <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
+          </marker>
+          <marker id=\\"component-dependency-graph-direct-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker direct-edge-marker\\">
+            <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
+          </marker>
+          <marker id=\\"component-dependency-graph-selected-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker selected-edge-marker\\">
+            <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
+          </marker>
+        </defs>
+        <g></g>
+        <g></g>
+        <g></g>
+        <g></g>
+        <g></g>
+        <g>
+          <path id=\\"component-dependency-graph-edge-0\\" d=\\"M50,50L50,250\\" marker-end=\\"url(#component-dependency-graph-direct-edge-marker)\\" class=\\"edge direct-edge\\"></path>
+        </g>
+        <g></g>
+        <g></g>
+        <g></g>
+        <g></g>
+        <g></g>
+        <g></g>
+        <g>
+          <circle id=\\"component-dependency-graph-node-1\\" r=\\"10\\" cx=\\"50\\" cy=\\"250\\" title=\\"test-component-id-2\\" class=\\"node direct-node\\"></circle>
+        </g>
+        <g>
+          <circle id=\\"component-dependency-graph-node-0\\" r=\\"10\\" cx=\\"50\\" cy=\\"50\\" title=\\"test-component-id-1\\" class=\\"node selected-node\\"></circle>
+        </g>
+        <g></g>
+        <g></g>
+        <g></g>
+        <g></g>
+        <g></g>
+        <g><text x=\\"67\\" y=\\"270\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label direct-node-label\\">
+            <tspan x=\\"67\\" y=\\"270\\">
+              test-component-id-2
             </tspan>
-            <tspan x=\\"67\\" y=\\"103.6\\">
-              testName1=test-value-1
-            </tspan>
-            <tspan x=\\"67\\" y=\\"120.4\\">
-              testName2=test-value-2
+          </text></g>
+        <g><text x=\\"67\\" y=\\"70\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label selected-node-label\\">
+            <tspan x=\\"67\\" y=\\"70\\">
+              test-component-id-1
             </tspan>
           </text></g>
       </svg>
@@ -214,7 +262,7 @@ exports[`ComponentCallGraphsView when a call graph's node has the same number of
   </div>
   <div class=\\"nodes\\">
     <h4>Component Nodes</h4> <button type=\\"button\\" class=\\"btn node my-1 btn-success btn-block\\">
-      test-span-name-1-1
+
       <ul>
         <li>
           testName1: test-value-1
@@ -222,22 +270,14 @@ exports[`ComponentCallGraphsView when a call graph's node has the same number of
         <li>
           testName2: test-value-2
         </li>
-      </ul></button><button type=\\"button\\" class=\\"btn node my-1 btn-secondary btn-block\\">
-      test-span-name-1-1
-      <ul>
-        <li>
-          testName1: different-value-1
-        </li>
-        <li>
-          testName2: different-value-2
-        </li>
-      </ul></button>
+      </ul>
+    </button>
   </div>
 </div>"
 `;
 
-exports[`ComponentCallGraphsView when nodes prop is set to an empty array renders a message saying there are no call graphs available 1`] = `
-"<div>
+exports[`ComponentCallGraphsView when diagrams prop is set to an empty array renders a message saying there are no call graphs available 1`] = `
+"<div callgraphs=\\"\\">
   <transition-stub name=\\"\\" css=\\"true\\" enterclass=\\"\\" leaveclass=\\"show\\" entertoclass=\\"show\\" leavetoclass=\\"\\" enteractiveclass=\\"\\" leaveactiveclass=\\"\\" class=\\"my-3\\">
     <div role=\\"alert\\" aria-live=\\"polite\\" aria-atomic=\\"true\\" class=\\"alert alert-dismissible alert-info\\"><button type=\\"button\\" aria-label=\\"Close\\" class=\\"close\\">×</button>
       <p>
@@ -275,7 +315,7 @@ exports[`ComponentCallGraphsView when nodes prop is set to an empty array render
 `;
 
 exports[`ComponentCallGraphsView when there are 2 nodes and the first node has 1 call graph and the second node has 2 call graphs renders the page with 1 call graph on the left and 2 nodes on the right and the first node should be selected 1`] = `
-"<div>
+"<div callgraphs=\\"\\">
   <transition-stub name=\\"\\" css=\\"true\\" enterclass=\\"\\" leaveclass=\\"show\\" entertoclass=\\"show\\" leavetoclass=\\"\\" enteractiveclass=\\"\\" leaveactiveclass=\\"\\" class=\\"my-3\\">
     <div role=\\"alert\\" aria-live=\\"polite\\" aria-atomic=\\"true\\" class=\\"alert alert-dismissible alert-info\\"><button type=\\"button\\" aria-label=\\"Close\\" class=\\"close\\">×</button>
       <p>
@@ -299,25 +339,25 @@ exports[`ComponentCallGraphsView when there are 2 nodes and the first node has 1
         </span></h5> <svg xmlns=\\"http://www.w3.org/2000/svg\\" overflow=\\"auto\\" width=\\"100%\\" height=\\"1200\\">
         <rect fill-opacity=\\"0\\" class=\\"component-dependency-graph-background\\"></rect>
         <defs>
-          <marker id=\\"component-dependency-graph-dependency-marker-all\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"20\\" refY=\\"5.75\\" class=\\"dependency-marker all-dependency-marker\\">
+          <marker id=\\"component-dependency-graph-all-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker all-edge-marker\\">
             <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
           </marker>
-          <marker id=\\"component-dependency-graph-dependency-marker-manual\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"20\\" refY=\\"5.75\\" class=\\"dependency-marker manual-dependency-marker\\">
+          <marker id=\\"component-dependency-graph-other-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker other-edge-marker\\">
             <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
           </marker>
-          <marker id=\\"component-dependency-graph-dependency-marker-scope-related\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"20\\" refY=\\"5.75\\" class=\\"dependency-marker scope-related-dependency-marker\\">
+          <marker id=\\"component-dependency-graph-scope-related-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker scope-related-edge-marker\\">
             <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
           </marker>
-          <marker id=\\"component-dependency-graph-dependency-marker-scoped\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"20\\" refY=\\"5.75\\" class=\\"dependency-marker scoped-dependency-marker\\">
+          <marker id=\\"component-dependency-graph-scoped-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker scoped-edge-marker\\">
             <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
           </marker>
-          <marker id=\\"component-dependency-graph-dependency-marker-related\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"20\\" refY=\\"5.75\\" class=\\"dependency-marker related-dependency-marker\\">
+          <marker id=\\"component-dependency-graph-related-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker related-edge-marker\\">
             <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
           </marker>
-          <marker id=\\"component-dependency-graph-dependency-marker-direct\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"20\\" refY=\\"5.75\\" class=\\"dependency-marker direct-dependency-marker\\">
+          <marker id=\\"component-dependency-graph-direct-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker direct-edge-marker\\">
             <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
           </marker>
-          <marker id=\\"component-dependency-graph-dependency-marker-selected\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"20\\" refY=\\"5.75\\" class=\\"dependency-marker selected-dependency-marker\\">
+          <marker id=\\"component-dependency-graph-selected-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker selected-edge-marker\\">
             <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
           </marker>
         </defs>
@@ -327,7 +367,7 @@ exports[`ComponentCallGraphsView when there are 2 nodes and the first node has 1
         <g></g>
         <g></g>
         <g>
-          <path id=\\"component-dependency-graph-dependency-0\\" d=\\"M50,50L50,250\\" marker-end=\\"url(#component-dependencies-direct-dependency-marker)\\" class=\\"dependency direct-dependency\\"></path>
+          <path id=\\"component-dependency-graph-edge-0\\" d=\\"M50,50L50,250\\" marker-end=\\"url(#component-dependency-graph-direct-edge-marker)\\" class=\\"edge direct-edge\\"></path>
         </g>
         <g></g>
         <g></g>
@@ -376,7 +416,7 @@ exports[`ComponentCallGraphsView when there are 2 nodes and the first node has 1
 `;
 
 exports[`ComponentCallGraphsView when there are 2 nodes and the first node has 1 call graph and the second node has 2 call graphs when the second node is clicked changes the selected node to be the second node and shows the call graphs for the second node 1`] = `
-"<div>
+"<div callgraphs=\\"\\">
   <transition-stub name=\\"\\" css=\\"true\\" enterclass=\\"\\" leaveclass=\\"show\\" entertoclass=\\"show\\" leavetoclass=\\"\\" enteractiveclass=\\"\\" leaveactiveclass=\\"\\" class=\\"my-3\\">
     <div role=\\"alert\\" aria-live=\\"polite\\" aria-atomic=\\"true\\" class=\\"alert alert-dismissible alert-info\\"><button type=\\"button\\" aria-label=\\"Close\\" class=\\"close\\">×</button>
       <p>
@@ -400,25 +440,25 @@ exports[`ComponentCallGraphsView when there are 2 nodes and the first node has 1
         </span></h5> <svg xmlns=\\"http://www.w3.org/2000/svg\\" overflow=\\"auto\\" width=\\"100%\\" height=\\"1200\\">
         <rect fill-opacity=\\"0\\" class=\\"component-dependency-graph-background\\"></rect>
         <defs>
-          <marker id=\\"component-dependency-graph-dependency-marker-all\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"20\\" refY=\\"5.75\\" class=\\"dependency-marker all-dependency-marker\\">
+          <marker id=\\"component-dependency-graph-all-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker all-edge-marker\\">
             <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
           </marker>
-          <marker id=\\"component-dependency-graph-dependency-marker-manual\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"20\\" refY=\\"5.75\\" class=\\"dependency-marker manual-dependency-marker\\">
+          <marker id=\\"component-dependency-graph-other-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker other-edge-marker\\">
             <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
           </marker>
-          <marker id=\\"component-dependency-graph-dependency-marker-scope-related\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"20\\" refY=\\"5.75\\" class=\\"dependency-marker scope-related-dependency-marker\\">
+          <marker id=\\"component-dependency-graph-scope-related-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker scope-related-edge-marker\\">
             <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
           </marker>
-          <marker id=\\"component-dependency-graph-dependency-marker-scoped\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"20\\" refY=\\"5.75\\" class=\\"dependency-marker scoped-dependency-marker\\">
+          <marker id=\\"component-dependency-graph-scoped-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker scoped-edge-marker\\">
             <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
           </marker>
-          <marker id=\\"component-dependency-graph-dependency-marker-related\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"20\\" refY=\\"5.75\\" class=\\"dependency-marker related-dependency-marker\\">
+          <marker id=\\"component-dependency-graph-related-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker related-edge-marker\\">
             <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
           </marker>
-          <marker id=\\"component-dependency-graph-dependency-marker-direct\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"20\\" refY=\\"5.75\\" class=\\"dependency-marker direct-dependency-marker\\">
+          <marker id=\\"component-dependency-graph-direct-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker direct-edge-marker\\">
             <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
           </marker>
-          <marker id=\\"component-dependency-graph-dependency-marker-selected\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"20\\" refY=\\"5.75\\" class=\\"dependency-marker selected-dependency-marker\\">
+          <marker id=\\"component-dependency-graph-selected-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker selected-edge-marker\\">
             <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
           </marker>
         </defs>
@@ -428,7 +468,7 @@ exports[`ComponentCallGraphsView when there are 2 nodes and the first node has 1
         <g></g>
         <g></g>
         <g>
-          <path id=\\"component-dependency-graph-dependency-0\\" d=\\"M50,50L50,250\\" marker-end=\\"url(#component-dependencies-direct-dependency-marker)\\" class=\\"dependency direct-dependency\\"></path>
+          <path id=\\"component-dependency-graph-edge-0\\" d=\\"M50,50L50,250\\" marker-end=\\"url(#component-dependency-graph-direct-edge-marker)\\" class=\\"edge direct-edge\\"></path>
         </g>
         <g></g>
         <g></g>
@@ -473,25 +513,25 @@ exports[`ComponentCallGraphsView when there are 2 nodes and the first node has 1
         </span></h5> <svg xmlns=\\"http://www.w3.org/2000/svg\\" overflow=\\"auto\\" width=\\"100%\\" height=\\"1200\\">
         <rect fill-opacity=\\"0\\" class=\\"component-dependency-graph-background\\"></rect>
         <defs>
-          <marker id=\\"component-dependency-graph-dependency-marker-all\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"20\\" refY=\\"5.75\\" class=\\"dependency-marker all-dependency-marker\\">
+          <marker id=\\"component-dependency-graph-all-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker all-edge-marker\\">
             <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
           </marker>
-          <marker id=\\"component-dependency-graph-dependency-marker-manual\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"20\\" refY=\\"5.75\\" class=\\"dependency-marker manual-dependency-marker\\">
+          <marker id=\\"component-dependency-graph-other-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker other-edge-marker\\">
             <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
           </marker>
-          <marker id=\\"component-dependency-graph-dependency-marker-scope-related\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"20\\" refY=\\"5.75\\" class=\\"dependency-marker scope-related-dependency-marker\\">
+          <marker id=\\"component-dependency-graph-scope-related-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker scope-related-edge-marker\\">
             <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
           </marker>
-          <marker id=\\"component-dependency-graph-dependency-marker-scoped\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"20\\" refY=\\"5.75\\" class=\\"dependency-marker scoped-dependency-marker\\">
+          <marker id=\\"component-dependency-graph-scoped-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker scoped-edge-marker\\">
             <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
           </marker>
-          <marker id=\\"component-dependency-graph-dependency-marker-related\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"20\\" refY=\\"5.75\\" class=\\"dependency-marker related-dependency-marker\\">
+          <marker id=\\"component-dependency-graph-related-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker related-edge-marker\\">
             <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
           </marker>
-          <marker id=\\"component-dependency-graph-dependency-marker-direct\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"20\\" refY=\\"5.75\\" class=\\"dependency-marker direct-dependency-marker\\">
+          <marker id=\\"component-dependency-graph-direct-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker direct-edge-marker\\">
             <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
           </marker>
-          <marker id=\\"component-dependency-graph-dependency-marker-selected\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"20\\" refY=\\"5.75\\" class=\\"dependency-marker selected-dependency-marker\\">
+          <marker id=\\"component-dependency-graph-selected-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker selected-edge-marker\\">
             <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
           </marker>
         </defs>
@@ -501,7 +541,7 @@ exports[`ComponentCallGraphsView when there are 2 nodes and the first node has 1
         <g></g>
         <g></g>
         <g>
-          <path id=\\"component-dependency-graph-dependency-0\\" d=\\"M50,50L50,250\\" marker-end=\\"url(#component-dependencies-direct-dependency-marker)\\" class=\\"dependency direct-dependency\\"></path>
+          <path id=\\"component-dependency-graph-edge-0\\" d=\\"M50,50L50,250\\" marker-end=\\"url(#component-dependency-graph-direct-edge-marker)\\" class=\\"edge direct-edge\\"></path>
         </g>
         <g></g>
         <g></g>
@@ -549,8 +589,8 @@ exports[`ComponentCallGraphsView when there are 2 nodes and the first node has 1
 </div>"
 `;
 
-exports[`ComponentCallGraphsView when there is 1 node and the node has a call graph renders the page with 1 call graph on the left and 1 node on the right and the node should be selected 1`] = `
-"<div>
+exports[`ComponentCallGraphsView when there is 1 diagram renders the page with 1 call graph on the left and 1 node on the right and the node should be selected 1`] = `
+"<div callgraphs=\\"\\">
   <transition-stub name=\\"\\" css=\\"true\\" enterclass=\\"\\" leaveclass=\\"show\\" entertoclass=\\"show\\" leavetoclass=\\"\\" enteractiveclass=\\"\\" leaveactiveclass=\\"\\" class=\\"my-3\\">
     <div role=\\"alert\\" aria-live=\\"polite\\" aria-atomic=\\"true\\" class=\\"alert alert-dismissible alert-info\\"><button type=\\"button\\" aria-label=\\"Close\\" class=\\"close\\">×</button>
       <p>
@@ -574,25 +614,25 @@ exports[`ComponentCallGraphsView when there is 1 node and the node has a call gr
         </span></h5> <svg xmlns=\\"http://www.w3.org/2000/svg\\" overflow=\\"auto\\" width=\\"100%\\" height=\\"1200\\">
         <rect fill-opacity=\\"0\\" class=\\"component-dependency-graph-background\\"></rect>
         <defs>
-          <marker id=\\"component-dependency-graph-dependency-marker-all\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"20\\" refY=\\"5.75\\" class=\\"dependency-marker all-dependency-marker\\">
+          <marker id=\\"component-dependency-graph-all-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker all-edge-marker\\">
             <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
           </marker>
-          <marker id=\\"component-dependency-graph-dependency-marker-manual\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"20\\" refY=\\"5.75\\" class=\\"dependency-marker manual-dependency-marker\\">
+          <marker id=\\"component-dependency-graph-other-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker other-edge-marker\\">
             <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
           </marker>
-          <marker id=\\"component-dependency-graph-dependency-marker-scope-related\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"20\\" refY=\\"5.75\\" class=\\"dependency-marker scope-related-dependency-marker\\">
+          <marker id=\\"component-dependency-graph-scope-related-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker scope-related-edge-marker\\">
             <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
           </marker>
-          <marker id=\\"component-dependency-graph-dependency-marker-scoped\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"20\\" refY=\\"5.75\\" class=\\"dependency-marker scoped-dependency-marker\\">
+          <marker id=\\"component-dependency-graph-scoped-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker scoped-edge-marker\\">
             <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
           </marker>
-          <marker id=\\"component-dependency-graph-dependency-marker-related\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"20\\" refY=\\"5.75\\" class=\\"dependency-marker related-dependency-marker\\">
+          <marker id=\\"component-dependency-graph-related-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker related-edge-marker\\">
             <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
           </marker>
-          <marker id=\\"component-dependency-graph-dependency-marker-direct\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"20\\" refY=\\"5.75\\" class=\\"dependency-marker direct-dependency-marker\\">
+          <marker id=\\"component-dependency-graph-direct-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker direct-edge-marker\\">
             <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
           </marker>
-          <marker id=\\"component-dependency-graph-dependency-marker-selected\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"20\\" refY=\\"5.75\\" class=\\"dependency-marker selected-dependency-marker\\">
+          <marker id=\\"component-dependency-graph-selected-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker selected-edge-marker\\">
             <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
           </marker>
         </defs>
@@ -602,7 +642,7 @@ exports[`ComponentCallGraphsView when there is 1 node and the node has a call gr
         <g></g>
         <g></g>
         <g>
-          <path id=\\"component-dependency-graph-dependency-0\\" d=\\"M50,50L50,250\\" marker-end=\\"url(#component-dependencies-direct-dependency-marker)\\" class=\\"dependency direct-dependency\\"></path>
+          <path id=\\"component-dependency-graph-edge-0\\" d=\\"M50,50L50,250\\" marker-end=\\"url(#component-dependency-graph-direct-edge-marker)\\" class=\\"edge direct-edge\\"></path>
         </g>
         <g></g>
         <g></g>

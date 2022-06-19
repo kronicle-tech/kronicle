@@ -17,102 +17,48 @@ describe('ComponentDependencyGraph', () => {
     wrapper = null
   })
 
-  describe('when dependencies prop is not set', () => {
+  describe('when diagram prop is not set', () => {
     test('renders nothing', () => {
       createWrapper()
       expect(wrapper.html()).toEqual(``)
     })
   })
 
-  describe('when dependencies prop is set to multiple nodes and dependencies for component dependencies', () => {
+  describe('when diagram prop is set to multiple nodes and dependencies', () => {
     beforeEach(() => {
-      propsData.dependencies = {
-        nodes: [
+      propsData.diagram = {
+        states: [
           {
-            componentId: 'test-id-1',
-          },
-          {
-            componentId: 'test-id-2',
-          },
-          {
-            componentId: 'test-id-3',
-          },
-        ],
-        dependencies: [
-          {
-            sourceIndex: 0,
-            targetIndex: 1,
-            relatedIndexes: [],
-            manual: false,
-          },
-          {
-            sourceIndex: 1,
-            targetIndex: 2,
-            relatedIndexes: [],
-            manual: false,
+            type: 'graph',
+            nodes: [
+              {
+                componentId: 'test-id-1',
+              },
+              {
+                componentId: 'test-id-2',
+              },
+              {
+                componentId: 'test-id-3',
+              },
+            ],
+            edges: [
+              {
+                sourceIndex: 0,
+                targetIndex: 1,
+                relatedIndexes: [],
+              },
+              {
+                sourceIndex: 1,
+                targetIndex: 2,
+                relatedIndexes: [],
+              },
+            ],
           },
         ],
       }
     })
 
-    test('renders dependencies, dependency markers, nodes and node labels', () => {
-      createWrapper()
-      expect(wrapper.html()).toMatchSnapshot()
-    })
-
-    describe('when there is a manual dependency', () => {
-      beforeEach(() => {
-        propsData.dependencies.dependencies[0].manual = true
-      })
-
-      test('renders the manual dependency as a manual dependency, the none shared node of the manual dependency as a manual node and the other dependency as a normal dependency', async () => {
-        await createWrapper()
-        expect(wrapper.html()).toMatchSnapshot()
-      })
-    })
-  })
-
-  describe('when dependencies prop is set to multiple nodes and dependencies for sub component dependencies', () => {
-    beforeEach(() => {
-      propsData.dependencies = {
-        nodes: [
-          {
-            componentId: 'test-id-1',
-            spanName: 'test span 1',
-            tags: {
-              'test.tag.1': 'test-tag-value-1',
-              'test.tag.2': 'test-tag-value-2',
-            },
-          },
-          {
-            componentId: 'test-id-2',
-            spanName: 'test span 2',
-            tags: {},
-          },
-          {
-            componentId: 'test-id-3',
-            spanName: 'test span 3',
-            tags: {},
-          },
-        ],
-        dependencies: [
-          {
-            sourceIndex: 0,
-            targetIndex: 1,
-            relatedIndexes: [],
-            manual: false,
-          },
-          {
-            sourceIndex: 1,
-            targetIndex: 2,
-            relatedIndexes: [],
-            manual: false,
-          },
-        ],
-      }
-    })
-
-    test('renders dependencies, dependency markers, nodes and node labels', () => {
+    test('renders edges, dependency markers, nodes and node labels', () => {
       createWrapper()
       expect(wrapper.html()).toMatchSnapshot()
     })
@@ -120,57 +66,57 @@ describe('ComponentDependencyGraph', () => {
 
   describe('when there are multiple nodes at the same depth', () => {
     beforeEach(() => {
-      propsData.dependencies = {
-        nodes: [
+      propsData.diagram = {
+        states: [
           {
-            componentId: 'test-id-1',
-          },
-          {
-            componentId: 'test-id-2',
-          },
-          {
-            componentId: 'test-id-3',
-          },
-          {
-            componentId: 'test-id-4',
-          },
-          {
-            componentId: 'test-id-5',
-          },
-          {
-            componentId: 'test-id-6',
-          },
-        ],
-        dependencies: [
-          {
-            sourceIndex: 0,
-            targetIndex: 1,
-            relatedIndexes: [],
-            manual: false,
-          },
-          {
-            sourceIndex: 1,
-            targetIndex: 2,
-            relatedIndexes: [],
-            manual: false,
-          },
-          {
-            sourceIndex: 0,
-            targetIndex: 3,
-            relatedIndexes: [],
-            manual: false,
-          },
-          {
-            sourceIndex: 3,
-            targetIndex: 4,
-            relatedIndexes: [],
-            manual: false,
-          },
-          {
-            sourceIndex: 4,
-            targetIndex: 5,
-            relatedIndexes: [],
-            manual: false,
+            type: 'graph',
+            nodes: [
+              {
+                componentId: 'test-id-1',
+              },
+              {
+                componentId: 'test-id-2',
+              },
+              {
+                componentId: 'test-id-3',
+              },
+              {
+                componentId: 'test-id-4',
+              },
+              {
+                componentId: 'test-id-5',
+              },
+              {
+                componentId: 'test-id-6',
+              },
+            ],
+            edges: [
+              {
+                sourceIndex: 0,
+                targetIndex: 1,
+                relatedIndexes: [],
+              },
+              {
+                sourceIndex: 1,
+                targetIndex: 2,
+                relatedIndexes: [],
+              },
+              {
+                sourceIndex: 0,
+                targetIndex: 3,
+                relatedIndexes: [],
+              },
+              {
+                sourceIndex: 3,
+                targetIndex: 4,
+                relatedIndexes: [],
+              },
+              {
+                sourceIndex: 4,
+                targetIndex: 5,
+                relatedIndexes: [],
+              },
+            ],
           },
         ],
       }
@@ -184,39 +130,41 @@ describe('ComponentDependencyGraph', () => {
 
   describe('when the selectedComponentId is specified', () => {
     beforeEach(() => {
-      propsData.dependencies = {
-        nodes: [
+      propsData.diagram = {
+        states: [
           {
-            componentId: 'test-id-1',
-          },
-          {
-            componentId: 'test-id-2',
-          },
-          {
-            componentId: 'test-id-3',
-          },
-          {
-            componentId: 'test-id-4',
-          },
-        ],
-        dependencies: [
-          {
-            sourceIndex: 0,
-            targetIndex: 1,
-            relatedIndexes: [],
-            manual: false,
-          },
-          {
-            sourceIndex: 1,
-            targetIndex: 2,
-            relatedIndexes: [],
-            manual: false,
-          },
-          {
-            sourceIndex: 2,
-            targetIndex: 3,
-            relatedIndexes: [],
-            manual: false,
+            type: 'graph',
+            nodes: [
+              {
+                componentId: 'test-id-1',
+              },
+              {
+                componentId: 'test-id-2',
+              },
+              {
+                componentId: 'test-id-3',
+              },
+              {
+                componentId: 'test-id-4',
+              },
+            ],
+            edges: [
+              {
+                sourceIndex: 0,
+                targetIndex: 1,
+                relatedIndexes: [],
+              },
+              {
+                sourceIndex: 1,
+                targetIndex: 2,
+                relatedIndexes: [],
+              },
+              {
+                sourceIndex: 2,
+                targetIndex: 3,
+                relatedIndexes: [],
+              },
+            ],
           },
         ],
       }
@@ -232,57 +180,57 @@ describe('ComponentDependencyGraph', () => {
 
   describe('when a node is clicked', () => {
     beforeEach(() => {
-      propsData.dependencies = {
-        nodes: [
+      propsData.diagram = {
+        states: [
           {
-            componentId: 'test-id-1',
-          },
-          {
-            componentId: 'test-id-2',
-          },
-          {
-            componentId: 'test-id-3',
-          },
-          {
-            componentId: 'test-id-4',
-          },
-          {
-            componentId: 'test-id-5',
-          },
-          {
-            componentId: 'test-id-6',
-          },
-        ],
-        dependencies: [
-          {
-            sourceIndex: 0,
-            targetIndex: 1,
-            relatedIndexes: [],
-            manual: false,
-          },
-          {
-            sourceIndex: 1,
-            targetIndex: 2,
-            relatedIndexes: [],
-            manual: false,
-          },
-          {
-            sourceIndex: 2,
-            targetIndex: 3,
-            relatedIndexes: [],
-            manual: false,
-          },
-          {
-            sourceIndex: 3,
-            targetIndex: 4,
-            relatedIndexes: [],
-            manual: false,
-          },
-          {
-            sourceIndex: 4,
-            targetIndex: 5,
-            relatedIndexes: [],
-            manual: false,
+            type: 'graph',
+            nodes: [
+              {
+                componentId: 'test-id-1',
+              },
+              {
+                componentId: 'test-id-2',
+              },
+              {
+                componentId: 'test-id-3',
+              },
+              {
+                componentId: 'test-id-4',
+              },
+              {
+                componentId: 'test-id-5',
+              },
+              {
+                componentId: 'test-id-6',
+              },
+            ],
+            edges: [
+              {
+                sourceIndex: 0,
+                targetIndex: 1,
+                relatedIndexes: [],
+              },
+              {
+                sourceIndex: 1,
+                targetIndex: 2,
+                relatedIndexes: [],
+              },
+              {
+                sourceIndex: 2,
+                targetIndex: 3,
+                relatedIndexes: [],
+              },
+              {
+                sourceIndex: 3,
+                targetIndex: 4,
+                relatedIndexes: [],
+              },
+              {
+                sourceIndex: 4,
+                targetIndex: 5,
+                relatedIndexes: [],
+              },
+            ],
           },
         ],
       }
@@ -314,21 +262,9 @@ describe('ComponentDependencyGraph', () => {
       })
     })
 
-    describe('when one of the direct dependencies is also a manual dependency', () => {
+    describe('when a none direct edge is a related edge', () => {
       beforeEach(() => {
-        propsData.dependencies.dependencies[1].manual = true
-      })
-
-      test('still renders the direct dependency as a direct dependency', async () => {
-        await createWrapper()
-        await wrapper.get('#component-dependency-graph-node-1').trigger('click')
-        expect(wrapper.html()).toMatchSnapshot()
-      })
-    })
-
-    describe('when a none direct dependency is a related dependency', () => {
-      beforeEach(() => {
-        propsData.dependencies.dependencies[2].relatedIndexes = [1]
+        propsData.diagram.states[0].edges[2].relatedIndexes = [1]
       })
 
       test('renders the related dependency as a related dependency', async () => {
@@ -336,90 +272,62 @@ describe('ComponentDependencyGraph', () => {
         await wrapper.get('#component-dependency-graph-node-1').trigger('click')
         expect(wrapper.html()).toMatchSnapshot()
       })
-
-      describe('when the related dependencies is also a manual dependency', () => {
-        beforeEach(() => {
-          propsData.dependencies.dependencies[2].manual = true
-        })
-
-        test('still renders the related dependency as a related dependency', async () => {
-          await createWrapper()
-          await wrapper
-            .get('#component-dependency-graph-node-1')
-            .trigger('click')
-          expect(wrapper.html()).toMatchSnapshot()
-        })
-      })
-
-      describe('when a none direct and none related dependency is a manual dependency', () => {
-        beforeEach(() => {
-          propsData.dependencies.dependencies[4].manual = true
-        })
-
-        test('renders the manual dependency as a manual dependency', async () => {
-          await createWrapper()
-          await wrapper
-            .get('#component-dependency-graph-node-1')
-            .trigger('click')
-          expect(wrapper.html()).toMatchSnapshot()
-        })
-      })
     })
   })
 
   describe('when the mouse hovers over a node', () => {
     beforeEach(() => {
-      propsData.dependencies = {
-        nodes: [
+      propsData.diagram = {
+        states: [
           {
-            componentId: 'test-id-1',
-          },
-          {
-            componentId: 'test-id-2',
-          },
-          {
-            componentId: 'test-id-3',
-          },
-          {
-            componentId: 'test-id-4',
-          },
-          {
-            componentId: 'test-id-5',
-          },
-          {
-            componentId: 'test-id-6',
-          },
-        ],
-        dependencies: [
-          {
-            sourceIndex: 0,
-            targetIndex: 1,
-            relatedIndexes: [],
-            manual: false,
-          },
-          {
-            sourceIndex: 1,
-            targetIndex: 2,
-            relatedIndexes: [],
-            manual: false,
-          },
-          {
-            sourceIndex: 2,
-            targetIndex: 3,
-            relatedIndexes: [],
-            manual: false,
-          },
-          {
-            sourceIndex: 3,
-            targetIndex: 4,
-            relatedIndexes: [],
-            manual: false,
-          },
-          {
-            sourceIndex: 4,
-            targetIndex: 5,
-            relatedIndexes: [],
-            manual: false,
+            type: 'graph',
+            nodes: [
+              {
+                componentId: 'test-id-1',
+              },
+              {
+                componentId: 'test-id-2',
+              },
+              {
+                componentId: 'test-id-3',
+              },
+              {
+                componentId: 'test-id-4',
+              },
+              {
+                componentId: 'test-id-5',
+              },
+              {
+                componentId: 'test-id-6',
+              },
+            ],
+            edges: [
+              {
+                sourceIndex: 0,
+                targetIndex: 1,
+                relatedIndexes: [],
+              },
+              {
+                sourceIndex: 1,
+                targetIndex: 2,
+                relatedIndexes: [],
+              },
+              {
+                sourceIndex: 2,
+                targetIndex: 3,
+                relatedIndexes: [],
+              },
+              {
+                sourceIndex: 3,
+                targetIndex: 4,
+                relatedIndexes: [],
+              },
+              {
+                sourceIndex: 4,
+                targetIndex: 5,
+                relatedIndexes: [],
+              },
+            ],
           },
         ],
       }
@@ -447,63 +355,63 @@ describe('ComponentDependencyGraph', () => {
     })
   })
 
-  describe('when dependencyType prop is set to related', () => {
+  describe('when edgeType prop is set to related', () => {
     beforeEach(() => {
-      propsData.dependencies = {
-        nodes: [
+      propsData.diagram = {
+        states: [
           {
-            componentId: 'test-id-1',
-          },
-          {
-            componentId: 'test-id-2',
-          },
-          {
-            componentId: 'test-id-3',
-          },
-          {
-            componentId: 'test-id-4',
-          },
-          {
-            componentId: 'test-id-5',
-          },
-          {
-            componentId: 'test-id-6',
-          },
-        ],
-        dependencies: [
-          {
-            sourceIndex: 0,
-            targetIndex: 1,
-            relatedIndexes: [],
-            manual: false,
-          },
-          {
-            sourceIndex: 1,
-            targetIndex: 2,
-            relatedIndexes: [],
-            manual: false,
-          },
-          {
-            sourceIndex: 2,
-            targetIndex: 3,
-            relatedIndexes: [1],
-            manual: false,
-          },
-          {
-            sourceIndex: 3,
-            targetIndex: 4,
-            relatedIndexes: [],
-            manual: false,
-          },
-          {
-            sourceIndex: 4,
-            targetIndex: 5,
-            relatedIndexes: [],
-            manual: true,
+            type: 'graph',
+            nodes: [
+              {
+                componentId: 'test-id-1',
+              },
+              {
+                componentId: 'test-id-2',
+              },
+              {
+                componentId: 'test-id-3',
+              },
+              {
+                componentId: 'test-id-4',
+              },
+              {
+                componentId: 'test-id-5',
+              },
+              {
+                componentId: 'test-id-6',
+              },
+            ],
+            edges: [
+              {
+                sourceIndex: 0,
+                targetIndex: 1,
+                relatedIndexes: [],
+              },
+              {
+                sourceIndex: 1,
+                targetIndex: 2,
+                relatedIndexes: [],
+              },
+              {
+                sourceIndex: 2,
+                targetIndex: 3,
+                relatedIndexes: [1],
+              },
+              {
+                sourceIndex: 3,
+                targetIndex: 4,
+                relatedIndexes: [],
+              },
+              {
+                sourceIndex: 4,
+                targetIndex: 5,
+                relatedIndexes: [],
+              },
+            ],
           },
         ],
       }
-      propsData.dependencyType = 'related'
+      propsData.edgeType = 'related'
     })
 
     describe('when a node has not been clicked', () => {
@@ -522,63 +430,63 @@ describe('ComponentDependencyGraph', () => {
     })
   })
 
-  describe('when dependencyType prop is set to direct', () => {
+  describe('when edgeType prop is set to direct', () => {
     beforeEach(() => {
-      propsData.dependencies = {
-        nodes: [
+      propsData.diagram = {
+        states: [
           {
-            componentId: 'test-id-1',
-          },
-          {
-            componentId: 'test-id-2',
-          },
-          {
-            componentId: 'test-id-3',
-          },
-          {
-            componentId: 'test-id-4',
-          },
-          {
-            componentId: 'test-id-5',
-          },
-          {
-            componentId: 'test-id-6',
-          },
-        ],
-        dependencies: [
-          {
-            sourceIndex: 0,
-            targetIndex: 1,
-            relatedIndexes: [],
-            manual: false,
-          },
-          {
-            sourceIndex: 1,
-            targetIndex: 2,
-            relatedIndexes: [],
-            manual: false,
-          },
-          {
-            sourceIndex: 2,
-            targetIndex: 3,
-            relatedIndexes: [1],
-            manual: false,
-          },
-          {
-            sourceIndex: 3,
-            targetIndex: 4,
-            relatedIndexes: [],
-            manual: false,
-          },
-          {
-            sourceIndex: 4,
-            targetIndex: 5,
-            relatedIndexes: [],
-            manual: true,
+            type: 'graph',
+            nodes: [
+              {
+                componentId: 'test-id-1',
+              },
+              {
+                componentId: 'test-id-2',
+              },
+              {
+                componentId: 'test-id-3',
+              },
+              {
+                componentId: 'test-id-4',
+              },
+              {
+                componentId: 'test-id-5',
+              },
+              {
+                componentId: 'test-id-6',
+              },
+            ],
+            edges: [
+              {
+                sourceIndex: 0,
+                targetIndex: 1,
+                relatedIndexes: [],
+              },
+              {
+                sourceIndex: 1,
+                targetIndex: 2,
+                relatedIndexes: [],
+              },
+              {
+                sourceIndex: 2,
+                targetIndex: 3,
+                relatedIndexes: [1],
+              },
+              {
+                sourceIndex: 3,
+                targetIndex: 4,
+                relatedIndexes: [],
+              },
+              {
+                sourceIndex: 4,
+                targetIndex: 5,
+                relatedIndexes: [],
+              },
+            ],
           },
         ],
       }
-      propsData.dependencyType = 'direct'
+      propsData.edgeType = 'direct'
     })
 
     describe('when a node has not been clicked', () => {

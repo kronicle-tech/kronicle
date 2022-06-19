@@ -1,10 +1,6 @@
 import { NuxtRuntimeConfig } from '@nuxt/types/config/runtime'
 import { Route } from 'vue-router'
-import {
-  GetComponentCallGraphsResponse,
-  GetComponentNodesResponse,
-  GetComponentResponse,
-} from '~/types/kronicle-service'
+import { GetComponentResponse } from '~/types/kronicle-service'
 
 export interface ComponentAvailableData {
   readonly metadataTypes: string[]
@@ -23,18 +19,6 @@ export async function fetchComponentAvailableData(
     .then((res) => res.json())
     .then((json) => (json as GetComponentResponse).component)
 
-  const callGraphs = await fetch(
-    `${$config.serviceBaseUrl}/v1/components/${route.params.componentId}/call-graphs?fields=callGraphs(fake)`
-  )
-    .then((res) => res.json())
-    .then((json) => (json as GetComponentCallGraphsResponse).callGraphs)
-
-  const nodes = await fetch(
-    `${$config.serviceBaseUrl}/v1/components/${route.params.componentId}/nodes?fields=nodes(fake)`
-  )
-    .then((res) => res.json())
-    .then((json) => (json as GetComponentNodesResponse).nodes)
-
   const metadataTypes: string[] = []
   checkMetadataType(
     metadataTypes,
@@ -50,8 +34,8 @@ export async function fetchComponentAvailableData(
   return {
     metadataTypes,
     stateTypes,
-    hasCallGraphs: callGraphs.length > 0,
-    hasNodes: nodes.length > 0,
+    hasCallGraphs: false,
+    hasNodes: false,
   }
 }
 

@@ -39,9 +39,7 @@ describe('Index', () => {
 
     test('has the right page title', async () => {
       await createWrapper()
-      expect(wrapper.vm.$metaInfo.title).toBe(
-        'Kronicle - Test Team Name 1 Team'
-      )
+      expect(wrapper.vm.$metaInfo.title).toBe('Kronicle - Test Team Name 1')
     })
 
     test('renders the page', async () => {

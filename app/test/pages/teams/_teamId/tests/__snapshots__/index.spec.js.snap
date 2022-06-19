@@ -7,7 +7,7 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
   <h1
     class="text-info my-3"
   >
-    Test Team Name 1 Team - Tests
+    Test Team Name 1 - Tests
   </h1>
    
   <div
@@ -23,11 +23,11 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
      
     <a
       class="btn my-1 btn-secondary"
-      href="/teams/test-team-id-1/dependencies"
+      href="/teams/test-team-id-1/diagrams"
       target="_self"
     >
       
-    Visualizations
+    Diagrams
   
     </a>
      
@@ -1096,7 +1096,7 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
   <h1
     class="text-info my-3"
   >
-    Test Team Name 1 Team - Tests
+    Test Team Name 1 - Tests
   </h1>
    
   <div
@@ -1112,11 +1112,11 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
      
     <a
       class="btn my-1 btn-secondary"
-      href="/teams/test-team-id-1/dependencies"
+      href="/teams/test-team-id-1/diagrams"
       target="_self"
     >
       
-    Visualizations
+    Diagrams
   
     </a>
      
@@ -1800,7 +1800,7 @@ exports[`Index when Get Team service endpoint returns a team when the team has n
   <h1
     class="text-info my-3"
   >
-    Test Team Name 1 Team - Tests
+    Test Team Name 1 - Tests
   </h1>
    
   <div
@@ -1816,11 +1816,11 @@ exports[`Index when Get Team service endpoint returns a team when the team has n
      
     <a
       class="btn my-1 btn-secondary"
-      href="/teams/test-team-id-1/dependencies"
+      href="/teams/test-team-id-1/diagrams"
       target="_self"
     >
       
-    Visualizations
+    Diagrams
   
     </a>
      

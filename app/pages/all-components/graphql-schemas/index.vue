@@ -1,5 +1,7 @@
 <template>
   <div class="m-3">
+    <AllComponentsTabs />
+
     <GraphQlSchemasView :components="components" />
   </div>
 </template>
@@ -7,10 +9,12 @@
 <script lang="ts">
 import Vue from 'vue'
 import { Component } from '~/types/kronicle-service'
+import AllComponentsTabs from '~/components/AllComponentsTabs.vue'
 import GraphQlSchemasView from '~/components/GraphQlSchemasView.vue'
 
 export default Vue.extend({
   components: {
+    AllComponentsTabs,
     GraphQlSchemasView,
   },
   async asyncData({ $config, route, store }) {
@@ -36,7 +40,7 @@ export default Vue.extend({
   },
   head() {
     return {
-      title: 'Kronicle - All Components - GraphQL Schemas',
+      title: 'Kronicle - GraphQL Schemas',
     }
   },
 })

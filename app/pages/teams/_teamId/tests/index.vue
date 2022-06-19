@@ -1,6 +1,6 @@
 <template>
   <div class="m-3">
-    <h1 class="text-info my-3">{{ team.name }} Team - Tests</h1>
+    <h1 class="text-info my-3">{{ team.name }} - Tests</h1>
 
     <TeamTabs :team-id="team.id" />
 
@@ -47,7 +47,7 @@ export default Vue.extend({
   },
   head(): MetaInfo {
     return {
-      title: `Kronicle - ${this.team.name} Team - Tests`,
+      title: `Kronicle - ${this.team.name} - Tests`,
     }
   },
 })

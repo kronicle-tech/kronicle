@@ -4,6 +4,9 @@ export function findComponentState<T>(
   component: Component,
   type: string
 ): T | undefined {
+  if (!component.states) {
+    return undefined
+  }
   return component.states.find((state) => state.type === type) as T | undefined
 }
 

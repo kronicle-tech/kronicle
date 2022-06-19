@@ -111,7 +111,7 @@ export default Vue.extend({
   },
   head(): MetaInfo {
     return {
-      title: 'Kronicle - All Components - Repos',
+      title: 'Kronicle - Repos',
     }
   },
   computed: {

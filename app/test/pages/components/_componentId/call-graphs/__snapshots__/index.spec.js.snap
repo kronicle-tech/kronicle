@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Index when Get Component Nodes service endpoint returns no nodes renders a message saying there are no call graphs available 1`] = `
+exports[`Index when Get Component Diagrams service endpoint returns no diagrams renders a message saying there are no call graphs available 1`] = `
 <div
   class="m-3"
 >
@@ -23,43 +23,19 @@ exports[`Index when Get Component Nodes service endpoint returns no nodes render
      
     <a
       class="btn my-1 btn-secondary"
-      href="/components/test-component-id-1/dependencies"
+      href="/components/test-component-id-1/diagrams"
       target="_self"
     >
       
-    Visualizations
+    Diagrams
   
     </a>
      
-    <a
-      class="btn my-1 btn-secondary"
-      href="/components/test-component-id-1/response-times"
-      target="_self"
-    >
-      
-    Response Times
-  
-    </a>
+    <!---->
      
-    <a
-      class="btn my-1 btn-secondary"
-      href="/components/test-component-id-1/downstream-response-times"
-      target="_self"
-    >
-      
-    Downstream Response Times
-  
-    </a>
+    <!---->
      
-    <a
-      class="btn my-1 btn-secondary"
-      href="/components/test-component-id-1/call-graphs"
-      target="_self"
-    >
-      
-    Call Graphs
-  
-    </a>
+    <!---->
      
     <a
       class="btn my-1 btn-secondary"
@@ -227,7 +203,7 @@ exports[`Index when Get Component Nodes service endpoint returns no nodes render
 </div>
 `;
 
-exports[`Index when Get Component Nodes service endpoints returns nodes and Get Component Call Graphs service endpoint returns call graphs renders the nodes and call graphs 1`] = `
+exports[`Index when Get Diagrams service endpoints returns a call graph renders the nodes and call graphs 1`] = `
 <div
   class="m-3"
 >
@@ -250,43 +226,19 @@ exports[`Index when Get Component Nodes service endpoints returns nodes and Get 
      
     <a
       class="btn my-1 btn-secondary"
-      href="/components/test-component-id-1/dependencies"
+      href="/components/test-component-id-1/diagrams"
       target="_self"
     >
       
-    Visualizations
+    Diagrams
   
     </a>
      
-    <a
-      class="btn my-1 btn-secondary"
-      href="/components/test-component-id-1/response-times"
-      target="_self"
-    >
-      
-    Response Times
-  
-    </a>
+    <!---->
      
-    <a
-      class="btn my-1 btn-secondary"
-      href="/components/test-component-id-1/downstream-response-times"
-      target="_self"
-    >
-      
-    Downstream Response Times
-  
-    </a>
+    <!---->
      
-    <a
-      class="btn my-1 btn-secondary"
-      href="/components/test-component-id-1/call-graphs"
-      target="_self"
-    >
-      
-    Call Graphs
-  
-    </a>
+    <!---->
      
     <a
       class="btn my-1 btn-secondary"
@@ -433,13 +385,13 @@ exports[`Index when Get Component Nodes service endpoints returns nodes and Get 
            
           <defs>
             <marker
-              class="dependency-marker all-dependency-marker"
-              id="component-dependency-graph-dependency-marker-all"
+              class="edge-marker all-edge-marker"
+              id="component-dependency-graph-all-edge-marker"
               markerHeight="11.5"
               markerUnits="userSpaceOnUse"
               markerWidth="7.1"
               orient="auto-start-reverse"
-              refX="20"
+              refX="18"
               refY="5.75"
               viewBox="0 0 7.1 11.5"
             >
@@ -448,13 +400,13 @@ exports[`Index when Get Component Nodes service endpoints returns nodes and Get 
               />
             </marker>
             <marker
-              class="dependency-marker manual-dependency-marker"
-              id="component-dependency-graph-dependency-marker-manual"
+              class="edge-marker other-edge-marker"
+              id="component-dependency-graph-other-edge-marker"
               markerHeight="11.5"
               markerUnits="userSpaceOnUse"
               markerWidth="7.1"
               orient="auto-start-reverse"
-              refX="20"
+              refX="18"
               refY="5.75"
               viewBox="0 0 7.1 11.5"
             >
@@ -463,13 +415,13 @@ exports[`Index when Get Component Nodes service endpoints returns nodes and Get 
               />
             </marker>
             <marker
-              class="dependency-marker scope-related-dependency-marker"
-              id="component-dependency-graph-dependency-marker-scope-related"
+              class="edge-marker scope-related-edge-marker"
+              id="component-dependency-graph-scope-related-edge-marker"
               markerHeight="11.5"
               markerUnits="userSpaceOnUse"
               markerWidth="7.1"
               orient="auto-start-reverse"
-              refX="20"
+              refX="18"
               refY="5.75"
               viewBox="0 0 7.1 11.5"
             >
@@ -478,13 +430,13 @@ exports[`Index when Get Component Nodes service endpoints returns nodes and Get 
               />
             </marker>
             <marker
-              class="dependency-marker scoped-dependency-marker"
-              id="component-dependency-graph-dependency-marker-scoped"
+              class="edge-marker scoped-edge-marker"
+              id="component-dependency-graph-scoped-edge-marker"
               markerHeight="11.5"
               markerUnits="userSpaceOnUse"
               markerWidth="7.1"
               orient="auto-start-reverse"
-              refX="20"
+              refX="18"
               refY="5.75"
               viewBox="0 0 7.1 11.5"
             >
@@ -493,13 +445,13 @@ exports[`Index when Get Component Nodes service endpoints returns nodes and Get 
               />
             </marker>
             <marker
-              class="dependency-marker related-dependency-marker"
-              id="component-dependency-graph-dependency-marker-related"
+              class="edge-marker related-edge-marker"
+              id="component-dependency-graph-related-edge-marker"
               markerHeight="11.5"
               markerUnits="userSpaceOnUse"
               markerWidth="7.1"
               orient="auto-start-reverse"
-              refX="20"
+              refX="18"
               refY="5.75"
               viewBox="0 0 7.1 11.5"
             >
@@ -508,13 +460,13 @@ exports[`Index when Get Component Nodes service endpoints returns nodes and Get 
               />
             </marker>
             <marker
-              class="dependency-marker direct-dependency-marker"
-              id="component-dependency-graph-dependency-marker-direct"
+              class="edge-marker direct-edge-marker"
+              id="component-dependency-graph-direct-edge-marker"
               markerHeight="11.5"
               markerUnits="userSpaceOnUse"
               markerWidth="7.1"
               orient="auto-start-reverse"
-              refX="20"
+              refX="18"
               refY="5.75"
               viewBox="0 0 7.1 11.5"
             >
@@ -523,13 +475,13 @@ exports[`Index when Get Component Nodes service endpoints returns nodes and Get 
               />
             </marker>
             <marker
-              class="dependency-marker selected-dependency-marker"
-              id="component-dependency-graph-dependency-marker-selected"
+              class="edge-marker selected-edge-marker"
+              id="component-dependency-graph-selected-edge-marker"
               markerHeight="11.5"
               markerUnits="userSpaceOnUse"
               markerWidth="7.1"
               orient="auto-start-reverse"
-              refX="20"
+              refX="18"
               refY="5.75"
               viewBox="0 0 7.1 11.5"
             >
@@ -546,10 +498,10 @@ exports[`Index when Get Component Nodes service endpoints returns nodes and Get 
           <g />
           <g>
             <path
-              class="dependency direct-dependency"
+              class="edge direct-edge"
               d="M50,50L50,250"
-              id="component-dependency-graph-dependency-0"
-              marker-end="url(#component-dependencies-direct-dependency-marker)"
+              id="component-dependency-graph-edge-0"
+              marker-end="url(#component-dependency-graph-direct-edge-marker)"
             />
           </g>
           <g />
@@ -559,16 +511,7 @@ exports[`Index when Get Component Nodes service endpoints returns nodes and Get 
           <g />
           <g />
           <g />
-          <g>
-            <circle
-              class="node direct-node"
-              cx="50"
-              cy="250"
-              id="component-dependency-graph-node-1"
-              r="10"
-              title="test-component-id-2, test-span-name-2-2"
-            />
-          </g>
+          <g />
           <g>
             <circle
               class="node selected-node"
@@ -578,6 +521,14 @@ exports[`Index when Get Component Nodes service endpoints returns nodes and Get 
               r="10"
               title="test-component-id-1, test-span-name-1-1"
             />
+            <circle
+              class="node selected-node"
+              cx="50"
+              cy="250"
+              id="component-dependency-graph-node-1"
+              r="10"
+              title="test-component-id-1, test-span-name-2-2"
+            />
           </g>
            
           <g />
@@ -585,32 +536,7 @@ exports[`Index when Get Component Nodes service endpoints returns nodes and Get 
           <g />
           <g />
           <g />
-          <g>
-            <text
-              class="node-label direct-node-label"
-              font-size="14"
-              stroke-width="1.75"
-              x="67"
-              y="270"
-            >
-              <tspan
-                x="67"
-                y="270"
-              >
-                
-        test-component-id-2
-      
-              </tspan>
-              <tspan
-                x="67"
-                y="286.8"
-              >
-                
-        test-span-name-2-2
-      
-              </tspan>
-            </text>
-          </g>
+          <g />
           <g>
             <text
               class="node-label selected-node-label"
@@ -633,6 +559,30 @@ exports[`Index when Get Component Nodes service endpoints returns nodes and Get 
               >
                 
         test-span-name-1-1
+      
+              </tspan>
+            </text>
+            <text
+              class="node-label selected-node-label"
+              font-size="14"
+              stroke-width="1.75"
+              x="67"
+              y="270"
+            >
+              <tspan
+                x="67"
+                y="270"
+              >
+                
+        test-component-id-1
+      
+              </tspan>
+              <tspan
+                x="67"
+                y="286.8"
+              >
+                
+        test-span-name-2-2
       
               </tspan>
             </text>

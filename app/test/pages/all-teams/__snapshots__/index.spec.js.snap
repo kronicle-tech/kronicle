@@ -14,30 +14,6 @@ exports[`Index when Get Teams service endpoint returns an array of multiple team
     >
        Teams 
     </a>
-     
-    <a
-      class="btn my-1 btn-secondary"
-      href="/all-teams/components"
-      target="_self"
-    >
-       Components 
-    </a>
-     
-    <a
-      class="btn my-1 btn-secondary"
-      href="/all-teams/tech-debts"
-      target="_self"
-    >
-       Tech Debts 
-    </a>
-     
-    <a
-      class="btn my-1 btn-secondary"
-      href="/all-teams/tests"
-      target="_self"
-    >
-       Tests 
-    </a>
   </div>
    
   <transition-stub
@@ -146,30 +122,6 @@ exports[`Index when Get Teams service endpoint returns an empty array renders th
       target="_self"
     >
        Teams 
-    </a>
-     
-    <a
-      class="btn my-1 btn-secondary"
-      href="/all-teams/components"
-      target="_self"
-    >
-       Components 
-    </a>
-     
-    <a
-      class="btn my-1 btn-secondary"
-      href="/all-teams/tech-debts"
-      target="_self"
-    >
-       Tech Debts 
-    </a>
-     
-    <a
-      class="btn my-1 btn-secondary"
-      href="/all-teams/tests"
-      target="_self"
-    >
-       Tests 
     </a>
   </div>
    

@@ -20,17 +20,13 @@ public class Summary {
     public static final Summary EMPTY = Summary.builder().build();
 
     List<SummaryMissingComponent> missingComponents;
-    SummaryComponentDependencies componentDependencies;
-    SummarySubComponentDependencies subComponentDependencies;
-    List<SummaryCallGraph> callGraphs;
     List<SummarySonarQubeMetric> sonarQubeMetrics;
 
-    public Summary(List<SummaryMissingComponent> missingComponents, SummaryComponentDependencies componentDependencies,
-            SummarySubComponentDependencies subComponentDependencies, List<SummaryCallGraph> callGraphs, List<SummarySonarQubeMetric> sonarQubeMetrics) {
+    public Summary(
+            List<SummaryMissingComponent> missingComponents,
+            List<SummarySonarQubeMetric> sonarQubeMetrics
+    ) {
         this.missingComponents = createUnmodifiableList(missingComponents);
-        this.componentDependencies = componentDependencies;
-        this.subComponentDependencies = subComponentDependencies;
-        this.callGraphs = createUnmodifiableList(callGraphs);
         this.sonarQubeMetrics = createUnmodifiableList(sonarQubeMetrics);
     }
 }

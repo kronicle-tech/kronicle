@@ -83,7 +83,10 @@ import Links from '~/components/Links.vue'
 import Markdown from '~/components/Markdown.vue'
 import ComponentTeams from '~/components/ComponentTeams.vue'
 import Responsibilities from '~/components/Responsibilities.vue'
-import { fetchComponentAvailableData } from '~/src/fetchComponentAvailableData'
+import {
+  ComponentAvailableData,
+  fetchComponentAvailableData,
+} from '~/src/fetchComponentAvailableData'
 import { findComponentState } from '~/src/componentStateUtils'
 
 export default Vue.extend({
@@ -117,7 +120,7 @@ export default Vue.extend({
   },
   data() {
     return {
-      componentAvailableData: [] as string[],
+      componentAvailableData: {} as ComponentAvailableData,
       component: {} as Component,
     }
   },

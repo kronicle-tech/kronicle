@@ -23,43 +23,19 @@ exports[`Index when Get Component service endpoint returns a component renders t
      
     <a
       class="btn my-1 btn-secondary"
-      href="/components/test-component-id-1/dependencies"
+      href="/components/test-component-id-1/diagrams"
       target="_self"
     >
       
-    Visualizations
+    Diagrams
   
     </a>
      
-    <a
-      class="btn my-1 btn-secondary"
-      href="/components/test-component-id-1/response-times"
-      target="_self"
-    >
-      
-    Response Times
-  
-    </a>
+    <!---->
      
-    <a
-      class="btn my-1 btn-secondary"
-      href="/components/test-component-id-1/downstream-response-times"
-      target="_self"
-    >
-      
-    Downstream Response Times
-  
-    </a>
+    <!---->
      
-    <a
-      class="btn my-1 btn-secondary"
-      href="/components/test-component-id-1/call-graphs"
-      target="_self"
-    >
-      
-    Call Graphs
-  
-    </a>
+    <!---->
      
     <a
       class="btn my-1 btn-secondary"
@@ -182,43 +158,19 @@ exports[`Index when Get Component service endpoint returns a component when Get 
      
     <a
       class="btn my-1 btn-secondary"
-      href="/components/test-component-id-3/dependencies"
+      href="/components/test-component-id-3/diagrams"
       target="_self"
     >
       
-    Visualizations
+    Diagrams
   
     </a>
      
-    <a
-      class="btn my-1 btn-secondary"
-      href="/components/test-component-id-3/response-times"
-      target="_self"
-    >
-      
-    Response Times
-  
-    </a>
+    <!---->
      
-    <a
-      class="btn my-1 btn-secondary"
-      href="/components/test-component-id-3/downstream-response-times"
-      target="_self"
-    >
-      
-    Downstream Response Times
-  
-    </a>
+    <!---->
      
-    <a
-      class="btn my-1 btn-secondary"
-      href="/components/test-component-id-3/call-graphs"
-      target="_self"
-    >
-      
-    Call Graphs
-  
-    </a>
+    <!---->
      
     <a
       class="btn my-1 btn-secondary"
@@ -287,7 +239,9 @@ exports[`Index when Get Component service endpoint returns a component when Get 
     </a>
   </div>
    
-  <div>
+  <div
+    sub-component-dependencies="[object Object]"
+  >
     <div>
       <transition-stub
         class="my-3"
@@ -341,43 +295,19 @@ exports[`Index when Get Component service endpoint returns a component when Get 
      
     <a
       class="btn my-1 btn-secondary"
-      href="/components/test-component-id-1/dependencies"
+      href="/components/test-component-id-1/diagrams"
       target="_self"
     >
       
-    Visualizations
+    Diagrams
   
     </a>
      
-    <a
-      class="btn my-1 btn-secondary"
-      href="/components/test-component-id-1/response-times"
-      target="_self"
-    >
-      
-    Response Times
-  
-    </a>
+    <!---->
      
-    <a
-      class="btn my-1 btn-secondary"
-      href="/components/test-component-id-1/downstream-response-times"
-      target="_self"
-    >
-      
-    Downstream Response Times
-  
-    </a>
+    <!---->
      
-    <a
-      class="btn my-1 btn-secondary"
-      href="/components/test-component-id-1/call-graphs"
-      target="_self"
-    >
-      
-    Call Graphs
-  
-    </a>
+    <!---->
      
     <a
       class="btn my-1 btn-secondary"
@@ -446,7 +376,9 @@ exports[`Index when Get Component service endpoint returns a component when Get 
     </a>
   </div>
    
-  <div>
+  <div
+    sub-component-dependencies="[object Object]"
+  >
     <div>
       <transition-stub
         class="my-3"
@@ -462,377 +394,16 @@ exports[`Index when Get Component service endpoint returns a component when Get 
         <div
           aria-atomic="true"
           aria-live="polite"
-          class="alert alert-dismissible alert-info"
+          class="alert alert-info"
           role="alert"
         >
-          <button
-            aria-label="Close"
-            class="close"
-            type="button"
-          >
-            ×
-          </button>
+          <!---->
           
-      The dependencies on this page come from Zipkin. The visualisation is not
-      out-of-the-box Zipkin functionality and is bespoke to Kronicle.
+      No response times are available for this component. Possibly the
+      component may not have been integrated with Zipkin yet.
     
         </div>
       </transition-stub>
-       
-      <table
-        class="table table-dark"
-      >
-        <thead>
-          <tr>
-            <th>
-              Source Component
-            </th>
-             
-            <th>
-              Source Span
-            </th>
-             
-            <th>
-              Source Tags
-            </th>
-             
-            <th>
-              Target Component
-            </th>
-             
-            <th>
-              Target Span
-            </th>
-             
-            <th>
-              Target Tags
-            </th>
-             
-            <th>
-              Sample Size
-            </th>
-             
-            <th>
-              Sample Start
-            </th>
-             
-            <th>
-              Sample End
-            </th>
-             
-            <th>
-              Min
-            </th>
-             
-            <th>
-              p50
-            </th>
-             
-            <th>
-              p90
-            </th>
-             
-            <th>
-              p99
-            </th>
-             
-            <th>
-              p99.9
-            </th>
-             
-            <th>
-              Max
-            </th>
-          </tr>
-        </thead>
-         
-        <tbody>
-          <tr>
-            <td
-              class=""
-            >
-              <a
-                href="/components/test-component-id-2"
-              >
-                Test Component Name 2
-              </a>
-            </td>
-             
-            <td>
-              <span>
-                test-component-2-span-id-2
-              </span>
-            </td>
-             
-            <td>
-              <ul>
-                <li>
-                  
-                test-component-2-tag-name-1: test-tag-value-1
-              
-                </li>
-                <li>
-                  
-                test-component-2-tag-name-2: test-tag-value-2
-              
-                </li>
-              </ul>
-            </td>
-             
-            <td
-              class="table-primary"
-            >
-              <a
-                href="/components/test-component-id-1"
-              >
-                Test Component Name 1
-              </a>
-            </td>
-             
-            <td>
-              
-            test-component-1-span-id-2
-          
-            </td>
-             
-            <td>
-              <ul>
-                <li>
-                  
-                test-component-1-tag-name-1: test-tag-value-1
-              
-                </li>
-                <li>
-                  
-                test-component-1-tag-name-2: test-tag-value-2
-              
-                </li>
-              </ul>
-            </td>
-             
-            <td>
-              <span>
-                2
-              </span>
-               spans
-            </td>
-             
-            <td>
-              <span>
-                
-              </span>
-            </td>
-             
-            <td>
-              <span>
-                
-              </span>
-            </td>
-             
-            <td>
-              <span>
-                <span>
-                  2
-                </span>
-                ms
-            
-              </span>
-            </td>
-             
-            <td>
-              <span>
-                <span>
-                  2
-                </span>
-                ms
-            
-              </span>
-            </td>
-             
-            <td>
-              <span>
-                <span>
-                  2
-                </span>
-                ms
-            
-              </span>
-            </td>
-             
-            <td>
-              <span>
-                <span>
-                  2
-                </span>
-                ms
-            
-              </span>
-            </td>
-             
-            <td>
-              <span>
-                <span>
-                  2
-                </span>
-                ms
-            
-              </span>
-            </td>
-             
-            <td>
-              <span>
-                <span>
-                  2
-                </span>
-                ms
-            
-              </span>
-            </td>
-          </tr>
-          <tr>
-            <td
-              class=""
-            >
-              <a
-                href="/components/test-component-id-2"
-              >
-                Test Component Name 2
-              </a>
-            </td>
-             
-            <td>
-              <span>
-                test-component-2-span-id-1
-              </span>
-            </td>
-             
-            <td>
-              <ul>
-                <li>
-                  
-                test-component-2-tag-name-1: test-tag-value-1
-              
-                </li>
-                <li>
-                  
-                test-component-2-tag-name-2: test-tag-value-2
-              
-                </li>
-              </ul>
-            </td>
-             
-            <td
-              class="table-primary"
-            >
-              <a
-                href="/components/test-component-id-1"
-              >
-                Test Component Name 1
-              </a>
-            </td>
-             
-            <td>
-              
-            test-component-1-span-id-1
-          
-            </td>
-             
-            <td>
-              <ul>
-                <li>
-                  
-                test-component-1-tag-name-1: test-tag-value-1
-              
-                </li>
-                <li>
-                  
-                test-component-1-tag-name-2: test-tag-value-2
-              
-                </li>
-              </ul>
-            </td>
-             
-            <td>
-              <span>
-                1
-              </span>
-               spans
-            </td>
-             
-            <td>
-              <span>
-                
-              </span>
-            </td>
-             
-            <td>
-              <span>
-                
-              </span>
-            </td>
-             
-            <td>
-              <span>
-                <span>
-                  1
-                </span>
-                ms
-            
-              </span>
-            </td>
-             
-            <td>
-              <span>
-                <span>
-                  1
-                </span>
-                ms
-            
-              </span>
-            </td>
-             
-            <td>
-              <span>
-                <span>
-                  1
-                </span>
-                ms
-            
-              </span>
-            </td>
-             
-            <td>
-              <span>
-                <span>
-                  1
-                </span>
-                ms
-            
-              </span>
-            </td>
-             
-            <td>
-              <span>
-                <span>
-                  1
-                </span>
-                ms
-            
-              </span>
-            </td>
-             
-            <td>
-              <span>
-                <span>
-                  1
-                </span>
-                ms
-            
-              </span>
-            </td>
-          </tr>
-        </tbody>
-      </table>
     </div>
   </div>
 </div>

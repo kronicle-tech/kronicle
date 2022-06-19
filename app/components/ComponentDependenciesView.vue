@@ -1,8 +1,7 @@
 <template>
   <div>
     <b-alert show dismissible variant="info">
-      Click a dot in the dependencies diagram to see more information about that
-      component
+      Click a dot in the diagram to see more information about that component
     </b-alert>
 
     <ComponentFilters
@@ -11,11 +10,11 @@
       :plugin-id-filter-enabled="true"
     >
       <b-card bg-variant="secondary">
-        <b-form-group label="Dependency Types">
+        <b-form-group label="Connection Types">
           <b-form-checkbox-group
-            v-model="selectedDependencyTypeIds"
-            :options="dependencyTypeIdOptions"
-            name="dependencyTypeId"
+            v-model="selectedEdgeTypes"
+            :options="connectionTypeIdOptions"
+            name="connectionTypeId"
             stacked
           ></b-form-checkbox-group>
         </b-form-group>
@@ -52,30 +51,19 @@
           />
         </b-form-group>
       </b-card>
-
-      <b-card bg-variant="secondary">
-        <b-form-checkbox
-          id="detailed-dependencies"
-          v-model="detailed"
-          :value="true"
-          :unchecked-value="false"
-        >
-          Detailed dependencies
-        </b-form-checkbox>
-      </b-card>
     </ComponentFilters>
 
     <div class="graph">
       <ComponentDependencyGraph
         id="component-dependency-graph"
-        :dependencies="dependencies"
-        :dependency-type-ids="selectedDependencyTypeIds"
-        dependency-relation-type="scope-related"
+        :diagram="diagram"
+        :edge-types="selectedEdgeTypes"
+        edge-relation-type="scope-related"
         :zoom="zoom"
         :selected-component-id="selectedComponentId"
         :scoped-component-ids="filteredComponentIds"
         :fixed-scope="true"
-        :scope-related-radius="parseInt(selectedScopeRelatedRadius, 10)"
+        :scope-related-radius="selectedScopeRelatedRadius"
         @networkChange="networkChange"
         @nodeClick="nodeClick"
       />
@@ -103,7 +91,6 @@ import Vue, { PropType } from 'vue'
 import {
   BAlert,
   BCard,
-  BFormCheckbox,
   BFormCheckboxGroup,
   BFormGroup,
   BFormSelect,
@@ -111,10 +98,10 @@ import {
 } from 'bootstrap-vue'
 import {
   Component,
-  SummaryComponentDependencies,
-  SummaryComponentDependencyNode,
-  SummarySubComponentDependencies,
-  SummarySubComponentDependencyNode,
+  Diagram,
+  GraphEdge,
+  GraphNode,
+  GraphState,
 } from '~/types/kronicle-service'
 import { Network } from '~/types/component-dependency-graph'
 import { intRange } from '~/src/arrayUtils'
@@ -127,11 +114,16 @@ interface Option {
   text: string
 }
 
+interface Connection {
+  readonly source: GraphNode
+  readonly target: GraphNode
+  readonly edge: GraphEdge
+}
+
 export default Vue.extend({
   components: {
     'b-alert': BAlert,
     'b-card': BCard,
-    'b-form-checkbox': BFormCheckbox,
     'b-form-checkbox-group': BFormCheckboxGroup,
     'b-form-group': BFormGroup,
     'b-form-select': BFormSelect,
@@ -145,12 +137,8 @@ export default Vue.extend({
       type: Array as PropType<Component[]>,
       required: true,
     },
-    componentDependencies: {
-      type: Object as PropType<SummaryComponentDependencies>,
-      required: true,
-    },
-    subComponentDependencies: {
-      type: Object as PropType<SummarySubComponentDependencies>,
+    diagram: {
+      type: Object as PropType<Diagram>,
       required: true,
     },
     allComponents: {
@@ -169,37 +157,36 @@ export default Vue.extend({
   data() {
     return {
       componentSidebarVisible: false as boolean,
-      node: undefined as
-        | SummaryComponentDependencyNode
-        | SummarySubComponentDependencyNode
-        | undefined,
+      node: undefined as GraphNode | undefined,
       component: undefined as Component | undefined,
-      selectedDependencyTypeIds: [] as string[],
+      selectedEdgeTypes: [] as string[],
       selectedScopeRelatedRadius: this.scopeRelatedRadius,
       zoom: 100,
-      detailed: false,
       network: undefined as Network | undefined,
     }
   },
   computed: {
-    filteredComponentIds(): Component[] {
+    filteredComponentIds(): string[] {
       return this.$store.state.componentFilters.filteredComponentIds
     },
-    dependencies():
-      | SummaryComponentDependencies
-      | SummarySubComponentDependencies {
-      return this.detailed
-        ? this.subComponentDependencies
-        : this.componentDependencies
+    connections(): Connection[] {
+      return this.diagram.states
+        .filter((state) => state.type === 'graph')
+        .map((state) => state as GraphState)
+        .flatMap((state) =>
+          state.edges.map((edge) => ({
+            source: state.nodes[edge.sourceIndex] as GraphNode,
+            target: state.nodes[edge.sourceIndex] as GraphNode,
+            edge,
+          }))
+        )
     },
-    dependencyTypeIdOptions(): Option[] {
+    edgeTypeIdOptions(): Option[] {
       return [
-        ...new Set(
-          this.dependencies.dependencies.map((dependency) => dependency.typeId)
-        ),
-      ].map((dependencyTypeId) => ({
-        value: dependencyTypeId,
-        text: dependencyTypeId,
+        ...new Set(this.connections.map((connection) => connection.edge.type)),
+      ].map((edgeTypeId) => ({
+        value: edgeTypeId,
+        text: edgeTypeId,
       }))
     },
     scopeRelatedRadiusOptions(): Option[] {
@@ -223,14 +210,7 @@ export default Vue.extend({
     networkChange(network: Network): void {
       this.network = network
     },
-    nodeClick({
-      node,
-    }: {
-      node:
-        | SummaryComponentDependencyNode
-        | SummarySubComponentDependencyNode
-        | undefined
-    }): void {
+    nodeClick({ node }: { node: GraphNode | undefined }): void {
       if (node) {
         this.componentSidebarVisible = true
         this.node = node

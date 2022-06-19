@@ -23,43 +23,19 @@ exports[`Index when Get Component service endpoint returns a component when the 
      
     <a
       class="btn my-1 btn-secondary"
-      href="/components/test-component-id-1/dependencies"
+      href="/components/test-component-id-1/diagrams"
       target="_self"
     >
       
-    Visualizations
+    Diagrams
   
     </a>
      
-    <a
-      class="btn my-1 btn-secondary"
-      href="/components/test-component-id-1/response-times"
-      target="_self"
-    >
-      
-    Response Times
-  
-    </a>
+    <!---->
      
-    <a
-      class="btn my-1 btn-secondary"
-      href="/components/test-component-id-1/downstream-response-times"
-      target="_self"
-    >
-      
-    Downstream Response Times
-  
-    </a>
+    <!---->
      
-    <a
-      class="btn my-1 btn-secondary"
-      href="/components/test-component-id-1/call-graphs"
-      target="_self"
-    >
-      
-    Call Graphs
-  
-    </a>
+    <!---->
      
     <a
       class="btn my-1 btn-secondary"
@@ -225,43 +201,19 @@ exports[`Index when Get Component service endpoint returns a component when the 
      
     <a
       class="btn my-1 btn-secondary"
-      href="/components/test-component-id-1/dependencies"
+      href="/components/test-component-id-1/diagrams"
       target="_self"
     >
       
-    Visualizations
+    Diagrams
   
     </a>
      
-    <a
-      class="btn my-1 btn-secondary"
-      href="/components/test-component-id-1/response-times"
-      target="_self"
-    >
-      
-    Response Times
-  
-    </a>
+    <!---->
      
-    <a
-      class="btn my-1 btn-secondary"
-      href="/components/test-component-id-1/downstream-response-times"
-      target="_self"
-    >
-      
-    Downstream Response Times
-  
-    </a>
+    <!---->
      
-    <a
-      class="btn my-1 btn-secondary"
-      href="/components/test-component-id-1/call-graphs"
-      target="_self"
-    >
-      
-    Call Graphs
-  
-    </a>
+    <!---->
      
     <a
       class="btn my-1 btn-secondary"

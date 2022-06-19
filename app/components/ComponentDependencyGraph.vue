@@ -1,6 +1,6 @@
 <template>
   <svg
-    v-if="dependencies"
+    v-if="diagram"
     xmlns="http://www.w3.org/2000/svg"
     overflow="auto"
     width="100%"
@@ -15,29 +15,29 @@
     <defs>
       <marker
         v-for="group in groups"
-        :id="`component-dependency-graph-dependency-marker-${group}`"
+        :id="`component-dependency-graph-${group}-edge-marker`"
         :key="group"
-        :class="`dependency-marker ${group}-dependency-marker`"
+        :class="`edge-marker ${group}-edge-marker`"
         orient="auto-start-reverse"
         viewBox="0 0 7.1 11.5"
         markerWidth="7.1"
         markerHeight="11.5"
         markerUnits="userSpaceOnUse"
-        :refX="nodeSize"
+        :refX="nodeSize - 2"
         refY="5.75"
       >
         <path d="M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5"></path>
       </marker>
     </defs>
 
-    <g v-for="group in groups" :key="`dependency-${group}`">
+    <g v-for="group in groups" :key="`edge-${group}`">
       <path
-        v-for="dependency in network.dependencyGroups.get(group)"
-        :id="`component-dependency-graph-dependency-${dependency.index}`"
-        :key="dependency.index"
-        :class="`dependency ${group}-dependency`"
-        :d="dependency.d"
-        :marker-end="`url(#component-dependencies-${group}-dependency-marker)`"
+        v-for="edge in network.edgeGroups.get(group)"
+        :id="`component-dependency-graph-edge-${edge.index}`"
+        :key="edge.index"
+        :class="`edge ${group}-edge`"
+        :d="edge.d"
+        :marker-end="`url(#component-dependency-graph-${group}-edge-marker)`"
       />
     </g>
 
@@ -84,37 +84,29 @@
 <script lang="ts">
 import Vue, { PropType } from 'vue'
 import {
-  SummaryComponentDependencies,
-  SummaryComponentDependency,
-  SummaryComponentDependencyNode,
-  SummarySubComponentDependencies,
-  SummarySubComponentDependencyNode,
+  Diagram,
+  GraphEdge,
+  GraphNode,
+  GraphState,
 } from '~/types/kronicle-service'
 import {
-  Dependency,
-  DependencyRelationType,
+  Edge,
+  EdgeRelationType,
   Network,
   Node,
 } from '~/types/component-dependency-graph'
 
-interface SummaryComponentDependencyWithMandatorySourceIndex
-  extends SummaryComponentDependency {
-  sourceIndex: number
-}
-
 export default Vue.extend({
   props: {
-    dependencies: {
-      type: Object as PropType<
-        SummaryComponentDependencies | SummarySubComponentDependencies
-      >,
+    diagram: {
+      type: Object as PropType<Diagram>,
       default: undefined,
     },
-    dependencyTypeIds: {
+    edgeTypes: {
       type: Array as PropType<string[]>,
       default: () => [] as string[],
     },
-    dependencyRelationType: {
+    edgeRelationType: {
       type: String as PropType<
         'all' | 'scope-related' | 'scoped' | 'related' | 'direct'
       >,
@@ -164,7 +156,7 @@ export default Vue.extend({
       labelOffset: 20,
       groups: [
         'all',
-        'manual',
+        'other',
         'scope-related',
         'scoped',
         'related',
@@ -181,37 +173,53 @@ export default Vue.extend({
         this.scopedComponentIds &&
         this.scopedComponentIds.length > 0 &&
         this.fixedScope &&
-        !['related', 'direct'].includes(this.dependencyRelationType)
+        !['related', 'direct'].includes(this.edgeRelationType)
       )
+    },
+    graph(): GraphState | undefined {
+      if (!this.diagram || this.diagram.states.length === 0) {
+        return undefined
+      }
+
+      return this.diagram.states.find((state) => state.type === 'graph') as
+        | GraphState
+        | undefined
     },
     network(): Network {
       const that = this
+
       const network = {
         nodes: [],
-        nodeGroups: new Map<DependencyRelationType, Node[]>(),
-        dependencies: [],
-        dependencyGroups: new Map<DependencyRelationType, Dependency[]>(),
+        nodeGroups: new Map<EdgeRelationType, Node[]>(),
+        edges: [],
+        edgeGroups: new Map<EdgeRelationType, Edge[]>(),
       } as Network
+
+      if (!that.graph) {
+        return network
+      }
+
+      const graph = that.graph
 
       addNodes()
       const effectiveSelectedNodeIndexes = getEffectiveSelectedNodeIndexes()
       const scopedNodeIndexes = getScopedNodeIndexes()
-      addDependencies()
-      classifyDependencies()
-      filterNodesAndDependencies()
-      const reverseDependencyMap = createReverseDependencyMap()
+      addEdges()
+      classifyEdges()
+      filterNodesAndEdges()
+      const reverseEdgeMap = createReverseEdgeMap()
       const depths = assignNodesToDepths()
       removeUndefinedEntriesInDepths()
       optimizeNodePlacements()
       setNodePositions()
-      setDependencyPositions()
+      setEdgePositions()
       splitNodes()
-      splitDependencies()
+      splitEdges()
       emitNetworkChange()
       return network
 
       function addNodes() {
-        that.dependencies.nodes.forEach((node, nodeIndex) => {
+        graph.nodes.forEach((node, nodeIndex) => {
           addNode(node, nodeIndex)
         })
       }
@@ -254,15 +262,10 @@ export default Vue.extend({
         return undefined
       }
 
-      function addNode(
-        dependencyNode:
-          | SummaryComponentDependencyNode
-          | SummarySubComponentDependencyNode,
-        index: number
-      ) {
+      function addNode(edgeNode: GraphNode, index: number) {
         const node = {
           index,
-          text: getNodeText(dependencyNode),
+          text: getNodeText(edgeNode),
           row: 0,
           column: 0,
           x: 0,
@@ -271,22 +274,18 @@ export default Vue.extend({
             x: 0,
             y: 0,
           },
-          dependencyRelationType: 'all',
-          node: dependencyNode,
-          dependencies: [] as Dependency[],
+          edgeRelationType: 'all',
+          node: edgeNode,
+          edges: [] as Edge[],
         } as Node
         network.nodes.push(node)
       }
 
-      function getNodeText(
-        node: SummaryComponentDependencyNode | SummarySubComponentDependencyNode
-      ) {
+      function getNodeText(node: GraphNode) {
         const text = [node.componentId]
-        if ('spanName' in node) {
-          text.push(node.spanName)
-          Object.keys(node.tags).forEach((key) =>
-            text.push(` ${key}=${node.tags[key]}`)
-          )
+        if ('name' in node) {
+          text.push(node.name)
+          node.tags.forEach((tag) => text.push(` ${tag.key}=${tag.value}`))
         }
         const maxLineLength = 30
         return text.map((line) =>
@@ -296,97 +295,76 @@ export default Vue.extend({
         )
       }
 
-      function addDependencies() {
-        that.dependencies.dependencies.forEach(
-          (dependency, dependencyIndex) => {
-            if (
-              dependency.sourceIndex !== undefined &&
-              filterDependencyType(dependency)
-            ) {
-              addDependency(
-                dependency as SummaryComponentDependencyWithMandatorySourceIndex,
-                dependencyIndex
-              )
-            }
+      function addEdges() {
+        graph.edges.forEach((edge, edgeIndex) => {
+          if (edge.sourceIndex !== undefined && filterEdgeType(edge)) {
+            addEdge(edge, edgeIndex)
           }
-        )
-      }
-
-      function filterDependencyType(
-        componentDependency: SummaryComponentDependencyWithMandatorySourceIndex
-      ) {
-        return (
-          that.dependencyTypeIds === undefined ||
-          that.dependencyTypeIds.length === 0 ||
-          that.dependencyTypeIds.includes(componentDependency.typeId)
-        )
-      }
-
-      function addDependency(
-        componentDependency: SummaryComponentDependencyWithMandatorySourceIndex,
-        index: number
-      ) {
-        const dependency = {
-          index,
-          sourceNode: network.nodes[componentDependency.sourceIndex],
-          targetNode: network.nodes[componentDependency.targetIndex],
-          relatedNodes: getRelatedNodes(componentDependency.relatedIndexes),
-          manual: componentDependency.manual,
-          d: '',
-          scopeRelated: false,
-          dependencyRelationType: 'all',
-          dependency: componentDependency,
-        } as Dependency
-        dependency.sourceNode.dependencies.push(dependency)
-        dependency.targetNode.dependencies.push(dependency)
-        network.dependencies.push(dependency)
-      }
-
-      function classifyDependencies() {
-        network.dependencies.forEach((dependency) => {
-          dependency.scopeRelated = dependencyIsScopeRelatedDependency(
-            dependency,
-            that.scopeRelatedRadius
-          )
-          dependency.dependencyRelationType =
-            getDependencyRelationTypeForDependency(dependency)
         })
       }
 
-      function getDependencyRelationTypeForDependency(
-        dependency: Dependency
-      ): DependencyRelationType {
-        if (dependencyIsDirectDependency(dependency)) {
+      function filterEdgeType(componentEdge: GraphEdge) {
+        return (
+          that.edgeTypes === undefined ||
+          that.edgeTypes.length === 0 ||
+          that.edgeTypes.includes(componentEdge.type)
+        )
+      }
+
+      function addEdge(componentEdge: GraphEdge, index: number) {
+        const edge = {
+          index,
+          sourceNode: network.nodes[componentEdge.sourceIndex],
+          targetNode: network.nodes[componentEdge.targetIndex],
+          relatedNodes: getRelatedNodes(componentEdge.relatedIndexes),
+          d: '',
+          scopeRelated: false,
+          edgeRelationType: 'all',
+          edge: componentEdge,
+        } as Edge
+        edge.sourceNode.edges.push(edge)
+        edge.targetNode.edges.push(edge)
+        network.edges.push(edge)
+      }
+
+      function classifyEdges() {
+        network.edges.forEach((edge) => {
+          edge.scopeRelated = edgeIsScopeRelatedEdge(
+            edge,
+            that.scopeRelatedRadius
+          )
+          edge.edgeRelationType = getEdgeRelationTypeForEdge(edge)
+        })
+      }
+
+      function getEdgeRelationTypeForEdge(edge: Edge): EdgeRelationType {
+        if (edgeIsDirectEdge(edge)) {
           return 'direct'
-        } else if (dependencyIsRelatedDependency(dependency)) {
+        } else if (edgeIsRelatedEdge(edge)) {
           return 'related'
-        } else if (dependencyIsScopedDependency(dependency)) {
+        } else if (edgeIsScopedEdge(edge)) {
           return 'scoped'
-        } else if (dependency.scopeRelated) {
+        } else if (edge.scopeRelated) {
           return 'scope-related'
-        } else if (dependency.manual) {
-          return 'manual'
         } else {
           return 'all'
         }
       }
 
-      function dependencyIsDirectDependency(dependency: Dependency) {
+      function edgeIsDirectEdge(edge: Edge) {
         if (effectiveSelectedNodeIndexes.length > 0) {
           return (
-            effectiveSelectedNodeIndexes.includes(
-              dependency.sourceNode.index
-            ) ||
-            effectiveSelectedNodeIndexes.includes(dependency.targetNode.index)
+            effectiveSelectedNodeIndexes.includes(edge.sourceNode.index) ||
+            effectiveSelectedNodeIndexes.includes(edge.targetNode.index)
           )
         }
 
         return false
       }
 
-      function dependencyIsRelatedDependency(dependency: Dependency) {
+      function edgeIsRelatedEdge(edge: Edge) {
         if (effectiveSelectedNodeIndexes.length > 0) {
-          return dependency.relatedNodes.some((node) =>
+          return edge.relatedNodes.some((node) =>
             effectiveSelectedNodeIndexes.includes(node.index)
           )
         }
@@ -394,32 +372,32 @@ export default Vue.extend({
         return false
       }
 
-      function dependencyIsScopedDependency(dependency: Dependency) {
+      function edgeIsScopedEdge(edge: Edge) {
         if (scopedNodeIndexes) {
           return (
-            scopedNodeIndexes.includes(dependency.sourceNode.index) &&
-            scopedNodeIndexes.includes(dependency.targetNode.index)
+            scopedNodeIndexes.includes(edge.sourceNode.index) &&
+            scopedNodeIndexes.includes(edge.targetNode.index)
           )
         }
 
         return false
       }
 
-      function dependencyIsScopeRelatedDependency(
-        dependency: Dependency,
+      function edgeIsScopeRelatedEdge(
+        edge: Edge,
         radius: number,
-        visitedDependencies = new Set() as Set<Dependency>
+        visitedEdges = new Set() as Set<Edge>
       ): boolean {
         if (!scopedNodeIndexes) {
           return false
         }
 
-        if (visitedDependencies.size === 0) {
-          visitedDependencies.add(dependency)
+        if (visitedEdges.size === 0) {
+          visitedEdges.add(edge)
 
           if (
-            scopedNodeIndexes.includes(dependency.sourceNode.index) &&
-            scopedNodeIndexes.includes(dependency.targetNode.index)
+            scopedNodeIndexes.includes(edge.sourceNode.index) &&
+            scopedNodeIndexes.includes(edge.targetNode.index)
           ) {
             return true
           }
@@ -430,136 +408,121 @@ export default Vue.extend({
         }
 
         if (
-          scopedNodeIndexes.includes(dependency.sourceNode.index) ||
-          scopedNodeIndexes.includes(dependency.targetNode.index)
+          scopedNodeIndexes.includes(edge.sourceNode.index) ||
+          scopedNodeIndexes.includes(edge.targetNode.index)
         ) {
           return true
         }
 
         radius--
 
-        const peerDependencies = new Set() as Set<Dependency>
-        dependency.sourceNode.dependencies
-          .concat(dependency.targetNode.dependencies)
-          .forEach((peerDependency) => peerDependencies.add(peerDependency))
+        const peerEdges = new Set() as Set<Edge>
+        edge.sourceNode.edges
+          .concat(edge.targetNode.edges)
+          .forEach((peerEdge) => peerEdges.add(peerEdge))
 
-        return Array.from(peerDependencies).some((peerDependency) => {
-          if (!visitedDependencies.has(peerDependency)) {
-            visitedDependencies.add(peerDependency)
-            return dependencyIsScopeRelatedDependency(
-              peerDependency,
-              radius,
-              visitedDependencies
-            )
+        return Array.from(peerEdges).some((peerEdge) => {
+          if (!visitedEdges.has(peerEdge)) {
+            visitedEdges.add(peerEdge)
+            return edgeIsScopeRelatedEdge(peerEdge, radius, visitedEdges)
           } else {
             return false
           }
         })
       }
 
-      function getAcceptableDependencyRelationTypes() {
-        const dependencyRelationTypes = [
+      function getAcceptableEdgeRelationTypes() {
+        const edgeRelationTypes = [
           'direct',
           'related',
           'scoped',
           'scope-related',
-          'manual',
           'all',
-        ] as DependencyRelationType[]
-        const acceptableDependencyRelationTypes = [] as DependencyRelationType[]
-        let selectedDependencyRelationType = that.dependencyRelationType
+        ] as EdgeRelationType[]
+        const acceptableEdgeRelationTypes = [] as EdgeRelationType[]
+        let selectedEdgeRelationType = that.edgeRelationType
 
         if (
           effectiveSelectedNodeIndexes.length === 0 &&
-          ['direct', 'related'].includes(selectedDependencyRelationType)
+          ['direct', 'related'].includes(selectedEdgeRelationType)
         ) {
-          selectedDependencyRelationType = 'scope-related'
+          selectedEdgeRelationType = 'scope-related'
         }
 
         if (
           !that.scopedComponentIds &&
-          ['scoped', 'scope-related'].includes(selectedDependencyRelationType)
+          ['scoped', 'scope-related'].includes(selectedEdgeRelationType)
         ) {
-          selectedDependencyRelationType = 'all'
+          selectedEdgeRelationType = 'all'
         }
 
-        dependencyRelationTypes.some((dependencyRelationType) => {
-          acceptableDependencyRelationTypes.push(dependencyRelationType)
+        edgeRelationTypes.some((edgeRelationType) => {
+          acceptableEdgeRelationTypes.push(edgeRelationType)
 
-          return dependencyRelationType === selectedDependencyRelationType
+          return edgeRelationType === selectedEdgeRelationType
         })
 
-        return acceptableDependencyRelationTypes
+        return acceptableEdgeRelationTypes
       }
 
-      function filterNodesAndDependencies() {
-        const acceptableDependencyRelationTypes =
-          getAcceptableDependencyRelationTypes()
+      function filterNodesAndEdges() {
+        const acceptableEdgeRelationTypes = getAcceptableEdgeRelationTypes()
 
-        const dependencyToRemove = [] as Dependency[]
-        network.dependencies.forEach((dependency) => {
+        const edgeToRemove = [] as Edge[]
+        network.edges.forEach((edge) => {
           if (
-            isFixedScopeAndDependencyIsNotScopeRelated(dependency) ||
-            dependencyRelationTypeOfDependencyIsNotAcceptable(
-              dependency,
-              acceptableDependencyRelationTypes
+            isFixedScopeAndEdgeIsNotScopeRelated(edge) ||
+            edgeRelationTypeOfEdgeIsNotAcceptable(
+              edge,
+              acceptableEdgeRelationTypes
             )
           ) {
-            dependencyToRemove.push(dependency)
-            arrayRemove(dependency.sourceNode.dependencies, dependency)
-            arrayRemove(dependency.targetNode.dependencies, dependency)
+            edgeToRemove.push(edge)
+            arrayRemove(edge.sourceNode.edges, edge)
+            arrayRemove(edge.targetNode.edges, edge)
           }
         })
 
         const nodesToRemove = [] as Node[]
         network.nodes.forEach((node) => {
           if (effectiveSelectedNodeIndexes.includes(node.index)) {
-            node.dependencyRelationType = 'selected'
-          } else if (node.dependencies.length === 0) {
+            node.edgeRelationType = 'selected'
+          } else if (node.edges.length === 0) {
             nodesToRemove.push(node)
           } else if (
             scopedNodeIndexes &&
             scopedNodeIndexes.includes(node.index)
           ) {
-            node.dependencyRelationType = 'scoped'
+            node.edgeRelationType = 'scoped'
           } else {
-            let dependencyRelationType = 'manual' as DependencyRelationType
-            node.dependencies.some((dependency) => {
-              dependencyRelationType = maxDependencyRelationType(
-                dependencyRelationType,
-                dependency.dependencyRelationType
+            let edgeRelationType = 'other' as EdgeRelationType
+            node.edges.some((edge) => {
+              edgeRelationType = maxEdgeRelationType(
+                edgeRelationType,
+                edge.edgeRelationType
               )
-              return dependencyRelationType === 'direct'
+              return edgeRelationType === 'direct'
             })
-            node.dependencyRelationType = dependencyRelationType
+            node.edgeRelationType = edgeRelationType
           }
         })
 
-        arrayRemoveIf(network.dependencies, (dependency) =>
-          dependencyToRemove.includes(dependency)
-        )
+        arrayRemoveIf(network.edges, (edge) => edgeToRemove.includes(edge))
         arrayRemoveIf(network.nodes, (node) => nodesToRemove.includes(node))
       }
 
-      function isFixedScopeAndDependencyIsNotScopeRelated(
-        dependency: Dependency
-      ) {
-        return that.effectiveFixedScope && !dependency.scopeRelated
+      function isFixedScopeAndEdgeIsNotScopeRelated(edge: Edge) {
+        return that.effectiveFixedScope && !edge.scopeRelated
       }
 
-      function dependencyRelationTypeOfDependencyIsNotAcceptable(
-        dependency: Dependency,
-        acceptableDependencyRelationTypes: DependencyRelationType[]
+      function edgeRelationTypeOfEdgeIsNotAcceptable(
+        edge: Edge,
+        acceptableEdgeRelationTypes: EdgeRelationType[]
       ) {
-        return !acceptableDependencyRelationTypes.includes(
-          dependency.dependencyRelationType
-        )
+        return !acceptableEdgeRelationTypes.includes(edge.edgeRelationType)
       }
 
-      function maxDependencyRelationType(
-        a: DependencyRelationType,
-        b: DependencyRelationType
-      ) {
+      function maxEdgeRelationType(a: EdgeRelationType, b: EdgeRelationType) {
         if (a === 'direct' || b === 'direct') {
           return 'direct'
         } else if (a === 'related' || b === 'related') {
@@ -571,28 +534,23 @@ export default Vue.extend({
         } else if (a === 'all' || b === 'all') {
           return 'all'
         } else {
-          return 'manual'
+          return 'other'
         }
       }
 
-      function createReverseDependencyMap() {
-        const reverseDependencyMap = new Map<Number, Dependency[]>()
-        network.dependencies.forEach((dependency) => {
-          let reverseDependencies = reverseDependencyMap.get(
-            dependency.targetNode.index
-          )
+      function createReverseEdgeMap() {
+        const reverseEdgeMap = new Map<Number, Edge[]>()
+        network.edges.forEach((edge) => {
+          let reverseEdges = reverseEdgeMap.get(edge.targetNode.index)
 
-          if (!reverseDependencies) {
-            reverseDependencies = []
-            reverseDependencyMap.set(
-              dependency.targetNode.index,
-              reverseDependencies
-            )
+          if (!reverseEdges) {
+            reverseEdges = []
+            reverseEdgeMap.set(edge.targetNode.index, reverseEdges)
           }
 
-          reverseDependencies.push(dependency)
+          reverseEdges.push(edge)
         })
-        return reverseDependencyMap
+        return reverseEdgeMap
       }
 
       function getRelatedNodes(relatedIndexes: number[]) {
@@ -622,8 +580,8 @@ export default Vue.extend({
       ) {
         visitedIndexes.push(index)
         let maxDepth = currentDepth
-        reverseDependencyMap.get(index)?.forEach((dependency) => {
-          const upstreamIndex = dependency.sourceNode.index
+        reverseEdgeMap.get(index)?.forEach((edge) => {
+          const upstreamIndex = edge.sourceNode.index
           if (
             !visitedIndexes.includes(upstreamIndex) &&
             upstreamIndex !== index
@@ -693,11 +651,9 @@ export default Vue.extend({
 
       function calculateNodeSpread(node: Node) {
         let spread = 0
-        node.dependencies.forEach((dependency) => {
+        node.edges.forEach((edge) => {
           const otherNode =
-            dependency.sourceNode === node
-              ? dependency.targetNode
-              : dependency.sourceNode
+            edge.sourceNode === node ? edge.targetNode : edge.sourceNode
 
           spread += otherNode.column - node.column
         })
@@ -715,10 +671,10 @@ export default Vue.extend({
         })
       }
 
-      function setDependencyPositions() {
-        network.dependencies.forEach((dependency) => {
-          const sourceNode = dependency.sourceNode
-          const targetNode = dependency.targetNode
+      function setEdgePositions() {
+        network.edges.forEach((edge) => {
+          const sourceNode = edge.sourceNode
+          const targetNode = edge.targetNode
 
           const sourceX = sourceNode?.x ?? 0
           const sourceY = sourceNode?.y ?? 0
@@ -726,9 +682,9 @@ export default Vue.extend({
           const targetY = targetNode?.y ?? 0
 
           if (sourceX === targetX || sourceY === targetY) {
-            dependency.d = `M${sourceX},${sourceY}L${targetX},${targetY}`
+            edge.d = `M${sourceX},${sourceY}L${targetX},${targetY}`
           } else {
-            dependency.d = `M${sourceX},${sourceY}C${sourceX},${targetY} ${targetX},${sourceY} ${targetX},${targetY}`
+            edge.d = `M${sourceX},${sourceY}C${sourceX},${targetY} ${targetX},${sourceY} ${targetX},${targetY}`
           }
         })
       }
@@ -737,26 +693,26 @@ export default Vue.extend({
         addItemsToItemTypes(network.nodeGroups, network.nodes)
       }
 
-      function splitDependencies() {
-        addItemsToItemTypes(network.dependencyGroups, network.dependencies)
+      function splitEdges() {
+        addItemsToItemTypes(network.edgeGroups, network.edges)
       }
 
-      function addItemsToItemTypes<I extends Node | Dependency>(
-        itemTypes: Map<DependencyRelationType, I[]>,
+      function addItemsToItemTypes<I extends Node | Edge>(
+        itemTypes: Map<EdgeRelationType, I[]>,
         items: I[]
       ) {
         items.forEach((item) => addItemToItemTypes(itemTypes, item))
       }
 
-      function addItemToItemTypes<I extends Node | Dependency>(
-        itemTypes: Map<DependencyRelationType, I[]>,
+      function addItemToItemTypes<I extends Node | Edge>(
+        itemTypes: Map<EdgeRelationType, I[]>,
         item: I
       ) {
-        let itemType = itemTypes.get(item.dependencyRelationType)
+        let itemType = itemTypes.get(item.edgeRelationType)
 
         if (!itemType) {
           itemType = []
-          itemTypes.set(item.dependencyRelationType, itemType)
+          itemTypes.set(item.edgeRelationType, itemType)
         }
 
         itemType.push(item)
@@ -863,13 +819,13 @@ export default Vue.extend({
 </script>
 
 <style scoped>
-.dependency {
+.edge {
   fill: none;
   stroke: #888;
   stroke-width: 2px;
 }
 
-.dependency-marker {
+.edge-marker {
   stroke: #888;
   stroke-width: 2px;
 }
@@ -884,18 +840,18 @@ export default Vue.extend({
   fill: #fff;
 }
 
-.manual-dependency,
-.manual-dependency-marker {
+.other-edge,
+.other-edge-marker {
   stroke: #e74c3c;
 }
 
-.manual-node,
-.manual-node-label {
+.other-node,
+.other-node-label {
   fill: #e74c3c;
 }
 
-.scoped-dependency,
-.scoped-dependency-marker {
+.scoped-edge,
+.scoped-edge-marker {
   stroke: #3498db;
 }
 
@@ -904,8 +860,8 @@ export default Vue.extend({
   fill: #3498db;
 }
 
-.related-dependency,
-.related-dependency-marker {
+.related-edge,
+.related-edge-marker {
   stroke: #3498db;
 }
 
@@ -914,8 +870,8 @@ export default Vue.extend({
   fill: #3498db;
 }
 
-.direct-dependency,
-.direct-dependency-marker {
+.direct-edge,
+.direct-edge-marker {
   stroke: #f39c12;
 }
 
@@ -933,8 +889,8 @@ export default Vue.extend({
   font-weight: bold;
 }
 
-.related-dependency,
-.direct-dependency {
+.related-edge,
+.direct-edge {
   stroke-width: 3px;
 }
 </style>

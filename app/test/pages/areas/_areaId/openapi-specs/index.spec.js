@@ -18,7 +18,7 @@ describe('Index', () => {
     wrapper = await createPageWrapper(Index, {
       route,
       serviceRequests: {
-        '/v1/areas/test-area-id-1?fields=area(id,name,components(id,name,typeId,tags,teams,platformId,openApiSpecs))':
+        '/v1/areas/test-area-id-1?stateType=openapi-specs&fields=area(id,name,components(id,name,typeId,tags,teams,platformId,states(environmentId,pluginId)))':
           {
             responseBody: { area },
           },
@@ -39,7 +39,7 @@ describe('Index', () => {
     test('has the right page title', async () => {
       await createWrapper()
       expect(wrapper.vm.$metaInfo.title).toBe(
-        'Kronicle - Test Area Name 1 Area - OpenAPI Specs'
+        'Kronicle - Test Area Name 1 - OpenAPI Specs'
       )
     })
 

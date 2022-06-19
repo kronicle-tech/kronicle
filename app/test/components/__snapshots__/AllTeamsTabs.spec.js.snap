@@ -1,3 +1,3 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`AllTeamsTabs renders the component 1`] = `"<div class=\\"my-3\\"><a href=\\"/all-teams\\" target=\\"_self\\" class=\\"btn my-1 btn-secondary\\"> Teams </a> <a href=\\"/all-teams/components\\" target=\\"_self\\" class=\\"btn my-1 btn-secondary\\"> Components </a> <a href=\\"/all-teams/tech-debts\\" target=\\"_self\\" class=\\"btn my-1 btn-secondary\\"> Tech Debts </a> <a href=\\"/all-teams/tests\\" target=\\"_self\\" class=\\"btn my-1 btn-secondary\\"> Tests </a></div>"`;
+exports[`AllTeamsTabs renders the component 1`] = `"<div class=\\"my-3\\"><a href=\\"/all-teams\\" target=\\"_self\\" class=\\"btn my-1 btn-secondary\\"> Teams </a></div>"`;

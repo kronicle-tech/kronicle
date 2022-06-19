@@ -1,6 +1,6 @@
 <template>
   <div class="m-3">
-    <h1 class="text-info my-3">{{ area.name }} Area</h1>
+    <h1 class="text-info my-3">{{ area.name }}</h1>
 
     <AreaTabs :area-id="area.id" />
     <b-card-group columns>
@@ -66,7 +66,7 @@ export default Vue.extend({
   },
   head(): MetaInfo {
     return {
-      title: `Kronicle - ${this.area.name} Area`,
+      title: `Kronicle - ${this.area.name}`,
     }
   },
 })

@@ -8,7 +8,7 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
     class="text-info my-3"
   >
     
-    Test Team Name 1 Team - Cross Functional Requirements
+    Test Team Name 1 - Cross Functional Requirements
   
   </h1>
    
@@ -25,11 +25,11 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
      
     <a
       class="btn my-1 btn-secondary"
-      href="/teams/test-team-id-1/dependencies"
+      href="/teams/test-team-id-1/diagrams"
       target="_self"
     >
       
-    Visualizations
+    Diagrams
   
     </a>
      
@@ -1164,7 +1164,7 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
     class="text-info my-3"
   >
     
-    Test Team Name 1 Team - Cross Functional Requirements
+    Test Team Name 1 - Cross Functional Requirements
   
   </h1>
    
@@ -1181,11 +1181,11 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
      
     <a
       class="btn my-1 btn-secondary"
-      href="/teams/test-team-id-1/dependencies"
+      href="/teams/test-team-id-1/diagrams"
       target="_self"
     >
       
-    Visualizations
+    Diagrams
   
     </a>
      
@@ -1845,7 +1845,7 @@ exports[`Index when Get Team service endpoint returns a team when the team has n
     class="text-info my-3"
   >
     
-    Test Team Name 1 Team - Cross Functional Requirements
+    Test Team Name 1 - Cross Functional Requirements
   
   </h1>
    
@@ -1862,11 +1862,11 @@ exports[`Index when Get Team service endpoint returns a team when the team has n
      
     <a
       class="btn my-1 btn-secondary"
-      href="/teams/test-team-id-1/dependencies"
+      href="/teams/test-team-id-1/diagrams"
       target="_self"
     >
       
-    Visualizations
+    Diagrams
   
     </a>
      

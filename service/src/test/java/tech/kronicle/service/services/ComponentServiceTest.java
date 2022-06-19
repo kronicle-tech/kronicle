@@ -10,6 +10,7 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import tech.kronicle.sdk.models.*;
 import tech.kronicle.service.repositories.ComponentRepository;
+import tech.kronicle.service.testutils.FakeDiagramState;
 
 import java.util.List;
 import java.util.Optional;
@@ -17,6 +18,7 @@ import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.when;
+import static tech.kronicle.service.testutils.DiagramStateUtils.createDiagramState;
 import static tech.kronicle.service.testutils.DiagramUtils.createDiagram;
 
 @ExtendWith(MockitoExtension.class)
@@ -43,7 +45,7 @@ public class ComponentServiceTest {
         when(mockComponentRepository.getComponents()).thenReturn(List.of(component1, component2));
 
         // When
-        List<Component> returnValue = underTest.getComponents(Optional.empty(), Optional.empty(), List.of());
+        List<Component> returnValue = underTest.getComponents(Optional.empty(), Optional.empty(), List.of(), List.of());
 
         // Then
         assertThat(returnValue).containsExactly(component1, component2);
@@ -65,7 +67,7 @@ public class ComponentServiceTest {
         when(mockComponentRepository.getComponents()).thenReturn(List.of(component1, component2, component3));
 
         // When
-        List<Component> returnValue = underTest.getComponents(Optional.of(1), Optional.empty(), List.of());
+        List<Component> returnValue = underTest.getComponents(Optional.of(1), Optional.empty(), List.of(), List.of());
 
         // Then
         assertThat(returnValue).containsExactly(component2, component3);
@@ -84,7 +86,7 @@ public class ComponentServiceTest {
         when(mockComponentRepository.getComponents()).thenReturn(components);
 
         // When
-        List<Component> returnValue = underTest.getComponents(Optional.of(components.size() + 1), Optional.empty(), List.of());
+        List<Component> returnValue = underTest.getComponents(Optional.of(components.size() + 1), Optional.empty(), List.of(), List.of());
 
         // Then
         assertThat(returnValue).isEmpty();
@@ -105,7 +107,7 @@ public class ComponentServiceTest {
         when(mockComponentRepository.getComponents()).thenReturn(List.of(component1, component2, component3));
 
         // When
-        List<Component> returnValue = underTest.getComponents(Optional.empty(), Optional.of(2), List.of());
+        List<Component> returnValue = underTest.getComponents(Optional.empty(), Optional.of(2), List.of(), List.of());
 
         // Then
         assertThat(returnValue).containsExactly(component1, component2);
@@ -129,38 +131,12 @@ public class ComponentServiceTest {
         when(mockComponentRepository.getComponents()).thenReturn(List.of(component1, component2, component3, component4));
 
         // When
-        List<Component> returnValue = underTest.getComponents(Optional.of(1), Optional.of(2), List.of());
+        List<Component> returnValue = underTest.getComponents(Optional.of(1), Optional.of(2), List.of(), List.of());
 
         // Then
         assertThat(returnValue).containsExactly(component2, component3);
     }
-
-    @Test
-    public void getComponentsShouldReturnComponentsFilteredByAllFilters() {
-        // Given
-        Component component1 = Component.builder()
-                .id("test-component-id-1")
-                .build();
-        Component component2 = Component.builder()
-                .id("test-component-id-2")
-                .testResults(List.of(new TestResult(null, TestOutcome.FAIL, null, null)))
-                .build();
-        Component component3 = Component.builder()
-                .id("test-component-id-3")
-                .testResults(List.of(new TestResult(null, TestOutcome.PASS, null, null)))
-                .build();
-        Component component4 = Component.builder()
-                .id("test-component-id-4")
-                .build();
-        when(mockComponentRepository.getComponents()).thenReturn(List.of(component1, component2, component3, component4));
-
-        // When
-        List<Component> returnValue = underTest.getComponents(Optional.of(1), Optional.of(2), List.of(TestOutcome.FAIL));
-
-        // Then
-        assertThat(returnValue).containsExactly(component2);
-    }
-
+    
     @Test
     public void getComponentShouldReturnTheComponentWithMatchingId() {
         // Given
@@ -170,7 +146,7 @@ public class ComponentServiceTest {
         when(mockComponentRepository.getComponent(component1.getId())).thenReturn(component1);
 
         // When
-        Component returnValue = underTest.getComponent(component1.getId(), List.of());
+        Component returnValue = underTest.getComponent(component1.getId(), List.of(), List.of());
 
         // Then
         assertThat(returnValue).isSameAs(component1);
@@ -183,10 +159,98 @@ public class ComponentServiceTest {
         when(mockComponentRepository.getComponent(componentId)).thenReturn(null);
 
         // When
-        Component returnValue = underTest.getComponent(componentId, List.of());
+        Component returnValue = underTest.getComponent(componentId, List.of(), List.of());
 
         // Then
         assertThat(returnValue).isNull();
+    }
+
+    @Test
+    public void getComponentShouldReturnComponentWhenNoTestResultFilterIsSpecified() {
+        // Given
+        Component component = Component.builder()
+                .id("test-component-id-1")
+                .testResults(List.of(TestResult.builder().outcome(TestOutcome.FAIL).build()))
+                .build();
+        when(mockComponentRepository.getComponent(component.getId())).thenReturn(component);
+
+        // When
+        Component returnValue = underTest.getComponent(component.getId(), List.of(), List.of());
+
+        // Then
+        assertThat(returnValue).isSameAs(component);
+    }
+
+    @Test
+    public void getComponentShouldNotReturnComponentWithEmptyTestResultsWhenTestResultFilterIsSpecified() {
+        // Given
+        Component component = Component.builder()
+                .id("test-component-id-1")
+                .testResults(List.of())
+                .build();
+        when(mockComponentRepository.getComponent(component.getId())).thenReturn(component);
+
+        // When
+        Component returnValue = underTest.getComponent(component.getId(), List.of(), List.of(TestOutcome.PASS));
+
+        // Then
+        assertThat(returnValue).isNull();
+    }
+
+    @Test
+    public void getComponentShouldNotReturnComponentWithAnUnwantedTestResultWhenTestResultFilterIsSpecified() {
+        // Given
+        Component component = Component.builder()
+                .id("test-component-id-1")
+                .testResults(List.of(new TestResult("test-id-1", TestOutcome.FAIL, null, null)))
+                .build();
+        when(mockComponentRepository.getComponent(component.getId())).thenReturn(component);
+
+        // When
+        Component returnValue = underTest.getComponent(component.getId(), List.of(), List.of(TestOutcome.PASS));
+
+        // Then
+        assertThat(returnValue).isNull();
+    }
+
+    @Test
+    public void getComponentShouldReturnOnlyTestResultsOfAComponentThatMatchTestOutcomeFilter() {
+        // Given
+        Component component = Component.builder()
+                .id("test-component-id-1")
+                .testResults(List.of(
+                        new TestResult("test-id-1", TestOutcome.FAIL, null, null),
+                        new TestResult("test-id-2", TestOutcome.PASS, null, null),
+                        new TestResult("test-id-3", TestOutcome.NOT_APPLICABLE, null, null)))
+                .build();
+        when(mockComponentRepository.getComponent(component.getId())).thenReturn(component);
+
+        // When
+        Component returnValue = underTest.getComponent(component.getId(), List.of(), List.of(TestOutcome.PASS));
+
+        // Then
+        assertThat(returnValue).isEqualTo(Component.builder()
+                .id("test-component-id-1")
+                .testResults(List.of(
+                        new TestResult("test-id-2", TestOutcome.PASS, null, null)))
+                .build());
+    }
+
+    @Test
+    public void getComponentShouldReturnComponentWithEitherTestOutcomeWhenFilteringBy2TestOutcomes() {
+        // Given
+        Component component = Component.builder()
+                .id("test-component-id-1")
+                .testResults(List.of(
+                        new TestResult("test-id-1", TestOutcome.FAIL, null, null)))
+                .build();
+        when(mockComponentRepository.getComponent(component.getId())).thenReturn(component);
+
+        // When
+        Component returnValue = underTest.getComponent(component.getId(), List.of(), List.of(TestOutcome.FAIL, TestOutcome.PASS));
+
+        // Then
+        assertThat(returnValue).isEqualTo(component);
     }
 
     @Test
@@ -203,7 +267,7 @@ public class ComponentServiceTest {
         when(mockComponentRepository.getComponent(componentId)).thenReturn(component);
 
         // When
-        Component returnValue = underTest.getComponent(componentId, null);
+        Component returnValue = underTest.getComponent(componentId, null, null);
 
         // Then
         assertThat(returnValue).isEqualTo(component);
@@ -223,7 +287,7 @@ public class ComponentServiceTest {
         when(mockComponentRepository.getComponent(componentId)).thenReturn(component);
 
         // When
-        Component returnValue = underTest.getComponent(componentId, List.of());
+        Component returnValue = underTest.getComponent(componentId, List.of(), List.of());
 
         // Then
         assertThat(returnValue).isEqualTo(component);
@@ -249,10 +313,14 @@ public class ComponentServiceTest {
         when(mockComponentRepository.getComponent(componentId)).thenReturn(component);
 
         // When
-        Component returnValue = underTest.getComponent(componentId, List.of(
-                state1.type,
-                state3.type
-        ));
+        Component returnValue = underTest.getComponent(
+                componentId,
+                List.of(
+                        state1.type,
+                        state3.type
+                ),
+                List.of()
+        );
 
         // Then
         assertThat(returnValue).isEqualTo(
@@ -261,48 +329,6 @@ public class ComponentServiceTest {
                         state3
                 ))
         );
-    }
-
-    @Test
-    public void getComponentNodesShouldReturnTheComponentNodesForAComponent() {
-        // Given
-        String componentId = "test-component-id-1";
-        SummarySubComponentDependencyNode node1 = SummarySubComponentDependencyNode.builder()
-                .componentId(componentId)
-                .spanName("test-span-name-1")
-                .build();
-        SummarySubComponentDependencyNode node2 = SummarySubComponentDependencyNode.builder()
-                .componentId(componentId)
-                .spanName("test-span-name-2")
-                .build();
-        List<SummarySubComponentDependencyNode> nodes = List.of(node1, node2);
-        when(mockComponentRepository.getComponentNodes(componentId)).thenReturn(nodes);
-
-        // When
-        List<SummarySubComponentDependencyNode> returnValue = underTest.getComponentNodes(componentId);
-
-        // Then
-        assertThat(returnValue).isSameAs(nodes);
-    }
-
-    @Test
-    public void getComponentCallGraphsShouldReturnTheComponentCallGraphsForAComponent() {
-        // Given
-        String componentId = "test-component-id-1";
-        SummaryCallGraph callGraph1 = SummaryCallGraph.builder()
-                .traceCount(1)
-                .build();
-        SummaryCallGraph callGraph2 = SummaryCallGraph.builder()
-                .traceCount(2)
-                .build();
-        List<SummaryCallGraph> callGraphs = List.of(callGraph1, callGraph2);
-        when(mockComponentRepository.getComponentCallGraphs(componentId)).thenReturn(callGraphs);
-
-        // When
-        List<SummaryCallGraph> returnValue = underTest.getComponentCallGraphs(componentId);
-
-        // Then
-        assertThat(returnValue).isSameAs(callGraphs);
     }
 
     @Test
@@ -322,6 +348,122 @@ public class ComponentServiceTest {
     }
 
     @Test
+    public void getDiagramsShouldReturnAllDiagrams() {
+        // Given
+        Diagram diagram1 = createDiagram(1);
+        Diagram diagram2 = createDiagram(2);
+        when(mockComponentRepository.getDiagrams()).thenReturn(List.of(diagram1, diagram2));
+
+        // When
+        List<Diagram> returnValue = underTest.getDiagrams();
+
+        // Then
+        assertThat(returnValue).containsExactly(diagram1, diagram2);
+    }
+
+    @Test
+    public void getDiagramShouldReturnTheDiagramWithMatchingId() {
+        // Given
+        Diagram diagram1 = Diagram.builder()
+                .id("test-diagram-id")
+                .build();
+        when(mockComponentRepository.getDiagram(diagram1.getId())).thenReturn(diagram1);
+
+        // When
+        Diagram returnValue = underTest.getDiagram(diagram1.getId(), List.of());
+
+        // Then
+        assertThat(returnValue).isSameAs(diagram1);
+    }
+
+    @Test
+    public void getDiagramShouldReturnNullIfNoDiagramMatchesId() {
+        // Given
+        String diagramId = "test-diagram-id";
+        when(mockComponentRepository.getDiagram(diagramId)).thenReturn(null);
+
+        // When
+        Diagram returnValue = underTest.getDiagram(diagramId, List.of());
+
+        // Then
+        assertThat(returnValue).isNull();
+    }
+
+    @Test
+    public void getDiagramShouldReturnAllStatesIfStateTypesListIsNull() {
+        // Given
+        String diagramId = "test-diagram-id";
+        Diagram diagram = Diagram.builder()
+                .id(diagramId)
+                .states(List.of(
+                        createDiagramState(1),
+                        createDiagramState(1)
+                ))
+                .build();
+        when(mockComponentRepository.getDiagram(diagramId)).thenReturn(diagram);
+
+        // When
+        Diagram returnValue = underTest.getDiagram(diagramId, null);
+
+        // Then
+        assertThat(returnValue).isEqualTo(diagram);
+    }
+
+    @Test
+    public void getDiagramShouldReturnAllStatesIfStateTypesListIsEmpty() {
+        // Given
+        String diagramId = "test-diagram-id";
+        Diagram diagram = Diagram.builder()
+                .id(diagramId)
+                .states(List.of(
+                        createDiagramState(1),
+                        createDiagramState(2)
+                ))
+                .build();
+        when(mockComponentRepository.getDiagram(diagramId)).thenReturn(diagram);
+
+        // When
+        Diagram returnValue = underTest.getDiagram(diagramId, List.of());
+
+        // Then
+        assertThat(returnValue).isEqualTo(diagram);
+    }
+
+    @Test
+    public void getDiagramShouldFilterByStateTypesIfAtLeastOneStateTypeIsSpecified() {
+        // Given
+        String diagramId = "test-diagram-id";
+        FakeDiagramState state1 = createDiagramState(1);
+        FakeDiagramState state2 = createDiagramState(2);
+        FakeDiagramState state3 = createDiagramState(3);
+        FakeDiagramState state4 = createDiagramState(4);
+        Diagram diagram = Diagram.builder()
+                .id(diagramId)
+                .states(List.of(
+                        state1,
+                        state2,
+                        state3,
+                        state4
+                ))
+                .build();
+        when(mockComponentRepository.getDiagram(diagramId)).thenReturn(diagram);
+
+        // When
+        Diagram returnValue = underTest.getDiagram(diagramId, List.of(
+                state1.getType(),
+                state3.getType()
+        ));
+
+        // Then
+        assertThat(returnValue).isEqualTo(
+                diagram.withStates(List.of(
+                        state1,
+                        state3
+                ))
+        );
+    }
+
+    @Test
     public void getTeamsShouldReturnAllTeams() {
         // Given
         Team team1 = Team.builder()
@@ -334,7 +476,7 @@ public class ComponentServiceTest {
         when(mockComponentRepository.getTeams()).thenReturn(teams);
 
         // When
-        List<Team> returnValue = underTest.getTeams(List.of());
+        List<Team> returnValue = underTest.getTeams(List.of(), List.of());
 
         // Then
         assertThat(returnValue).containsExactly(team1, team2);
@@ -349,7 +491,7 @@ public class ComponentServiceTest {
         when(mockComponentRepository.getTeam(team1.getId())).thenReturn(team1);
 
         // When
-        Team returnValue = underTest.getTeam(team1.getId(), List.of());
+        Team returnValue = underTest.getTeam(team1.getId(), List.of(), List.of());
 
         // Then
         assertThat(returnValue).isEqualTo(team1);
@@ -362,7 +504,7 @@ public class ComponentServiceTest {
         when(mockComponentRepository.getTeam(teamId)).thenReturn(null);
 
         // When
-        Team returnValue = underTest.getTeam(teamId, List.of());
+        Team returnValue = underTest.getTeam(teamId, List.of(), List.of());
 
         // Then
         assertThat(returnValue).isNull();
@@ -381,7 +523,7 @@ public class ComponentServiceTest {
         when(mockComponentRepository.getAreas()).thenReturn(areas);
 
         // When
-        List<Area> returnValue = underTest.getAreas(List.of());
+        List<Area> returnValue = underTest.getAreas(List.of(), List.of());
 
         // Then
         assertThat(returnValue).containsExactly(area1, area2);
@@ -396,7 +538,7 @@ public class ComponentServiceTest {
         when(mockComponentRepository.getArea(area1.getId())).thenReturn(area1);
 
         // When
-        Area returnValue = underTest.getArea(area1.getId(), List.of());
+        Area returnValue = underTest.getArea(area1.getId(), List.of(), List.of());
 
         // Then
         assertThat(returnValue).isEqualTo(area1);
@@ -409,7 +551,7 @@ public class ComponentServiceTest {
         when(mockComponentRepository.getArea(areaId)).thenReturn(null);
 
         // When
-        Area returnValue = underTest.getArea(areaId, List.of());
+        Area returnValue = underTest.getArea(areaId, List.of(), List.of());
 
         // Then
         assertThat(returnValue).isNull();
@@ -429,7 +571,7 @@ public class ComponentServiceTest {
         List<Component> components = List.of(component1, component2);
 
         // When
-        List<Component> returnValue = methodWrapper.call(underTest, mockComponentRepository, components, List.of());
+        List<Component> returnValue = methodWrapper.call(underTest, mockComponentRepository, components, List.of(), List.of());
 
         // Then
         assertThat(returnValue).containsExactly(component1, component2);
@@ -450,7 +592,7 @@ public class ComponentServiceTest {
         List<Component> components = List.of(component1, component2);
 
         // When
-        List<Component> returnValue = methodWrapper.call(underTest, mockComponentRepository, components, List.of(TestOutcome.PASS));
+        List<Component> returnValue = methodWrapper.call(underTest, mockComponentRepository, components, List.of(), List.of(TestOutcome.PASS));
 
         // Then
         assertThat(returnValue).containsExactly(component2);
@@ -471,7 +613,7 @@ public class ComponentServiceTest {
         List<Component> components = List.of(component1, component2);
 
         // When
-        List<Component> returnValue = methodWrapper.call(underTest, mockComponentRepository, components, List.of(TestOutcome.PASS));
+        List<Component> returnValue = methodWrapper.call(underTest, mockComponentRepository, components, List.of(), List.of(TestOutcome.PASS));
 
         // Then
         assertThat(returnValue).containsExactly(component2);
@@ -491,7 +633,7 @@ public class ComponentServiceTest {
         List<Component> components = List.of(component1);
 
         // When
-        List<Component> returnValue = methodWrapper.call(underTest, mockComponentRepository, components, List.of(TestOutcome.PASS));
+        List<Component> returnValue = methodWrapper.call(underTest, mockComponentRepository, components, List.of(), List.of(TestOutcome.PASS));
 
         // Then
         assertThat(returnValue).containsExactly(Component.builder()
@@ -523,10 +665,93 @@ public class ComponentServiceTest {
         List<Component> components = List.of(component1, component2, component3);
 
         // When
-        List<Component> returnValue = methodWrapper.call(underTest, mockComponentRepository, components, List.of(TestOutcome.FAIL, TestOutcome.PASS));
+        List<Component> returnValue = methodWrapper.call(underTest, mockComponentRepository, components, List.of(), List.of(TestOutcome.FAIL, TestOutcome.PASS));
 
         // Then
         assertThat(returnValue).containsExactly(component1, component2);
+    }
+
+    @ParameterizedTest
+    @MethodSource("provideComponentsReturningMethods")
+    public void componentsReturningMethodsShouldReturnAllStatesIfStateTypesListIsNull(ComponentsReturningMethod methodWrapper) {
+        // Given
+        String componentId = "test-component-id";
+        Component component = Component.builder()
+                .id(componentId)
+                .states(List.of(
+                        new TestComponentState(1),
+                        new TestComponentState(2)
+                ))
+                .build();
+        List<Component> components = List.of(component);
+
+        // When
+        List<Component> returnValue = methodWrapper.call(underTest, mockComponentRepository, components, null, null);
+
+        // Then
+        assertThat(returnValue).containsExactly(component);
+    }
+
+    @ParameterizedTest
+    @MethodSource("provideComponentsReturningMethods")
+    public void componentsReturningMethodsShouldReturnAllStatesIfStateTypesListIsEmpty(ComponentsReturningMethod methodWrapper) {
+        // Given
+        String componentId = "test-component-id";
+        Component component = Component.builder()
+                .id(componentId)
+                .states(List.of(
+                        new TestComponentState(1),
+                        new TestComponentState(2)
+                ))
+                .build();
+        List<Component> components = List.of(component);
+
+        // When
+        List<Component> returnValue = methodWrapper.call(underTest, mockComponentRepository, components, List.of(), List.of());
+
+        // Then
+        assertThat(returnValue).containsExactly(component);
+    }
+
+    @ParameterizedTest
+    @MethodSource("provideComponentsReturningMethods")
+    public void componentsReturningMethodsShouldFilterByStateTypesIfAtLeastOneStateTypeIsSpecified(ComponentsReturningMethod methodWrapper) {
+        // Given
+        String componentId = "test-component-id";
+        TestComponentState state1 = new TestComponentState(1);
+        TestComponentState state2 = new TestComponentState(2);
+        TestComponentState state3 = new TestComponentState(3);
+        TestComponentState state4 = new TestComponentState(4);
+        Component component = Component.builder()
+                .id(componentId)
+                .states(List.of(
+                        state1,
+                        state2,
+                        state3,
+                        state4
+                ))
+                .build();
+        List<Component> components = List.of(component);
+
+        // When
+        List<Component> returnValue = methodWrapper.call(
+                underTest,
+                mockComponentRepository,
+                components,
+                List.of(
+                        state1.type,
+                        state3.type
+                ),
+                List.of()
+        );
+
+        // Then
+        assertThat(returnValue).containsExactly(
+                component.withStates(List.of(
+                        state1,
+                        state3
+                ))
+        );
     }
 
     @Test
@@ -631,32 +856,32 @@ public class ComponentServiceTest {
 
     private static Stream<ComponentsReturningMethod> provideComponentsReturningMethods() {
         return Stream.of(
-                (underTest, mockComponentRepository, components, testOutcomes) -> {
+                (underTest, mockComponentRepository, components, stateTypes, testOutcomes) -> {
                     when(mockComponentRepository.getComponents()).thenReturn(components);
-                    return underTest.getComponents(Optional.empty(), Optional.empty(), testOutcomes);
+                    return underTest.getComponents(Optional.empty(), Optional.empty(), stateTypes, testOutcomes);
                 },
-                (underTest, mockComponentRepository, components, testOutcomes) -> {
+                (underTest, mockComponentRepository, components, stateTypes, testOutcomes) -> {
                     when(mockComponentRepository.getTeams()).thenReturn(List.of(createTeam(components)));
-                    List<Team> returnValue = underTest.getTeams(testOutcomes);
+                    List<Team> returnValue = underTest.getTeams(stateTypes, testOutcomes);
                     assertThat(returnValue).hasSize(1);
                     return returnValue.get(0).getComponents();
                 },
-                (underTest, mockComponentRepository, components, testOutcomes) -> {
+                (underTest, mockComponentRepository, components, stateTypes, testOutcomes) -> {
                     Team team = createTeam(components);
                     when(mockComponentRepository.getTeam(team.getId())).thenReturn(team);
-                    Team returnValue = underTest.getTeam(team.getId(), testOutcomes);
+                    Team returnValue = underTest.getTeam(team.getId(), stateTypes, testOutcomes);
                     return returnValue.getComponents();
                 },
-                (underTest, mockComponentRepository, components, testOutcomes) -> {
+                (underTest, mockComponentRepository, components, stateTypes, testOutcomes) -> {
                     when(mockComponentRepository.getAreas()).thenReturn(List.of(createArea(components)));
-                    List<Area> returnValue = underTest.getAreas(testOutcomes);
+                    List<Area> returnValue = underTest.getAreas(stateTypes, testOutcomes);
                     assertThat(returnValue).hasSize(1);
                     return returnValue.get(0).getComponents();
                 },
-                (underTest, mockComponentRepository, components, testOutcomes) -> {
+                (underTest, mockComponentRepository, components, stateTypes, testOutcomes) -> {
                     Area area = createArea(components);
                     when(mockComponentRepository.getArea(area.getId())).thenReturn(area);
-                    Area returnValue = underTest.getArea(area.getId(), testOutcomes);
+                    Area returnValue = underTest.getArea(area.getId(), stateTypes, testOutcomes);
                     return returnValue.getComponents();
                 });
     }
@@ -678,7 +903,13 @@ public class ComponentServiceTest {
     @FunctionalInterface
     private interface ComponentsReturningMethod {
         
-        List<Component> call(ComponentService underTest, ComponentRepository mockComponentRepository, List<Component> components, List<TestOutcome> testOutcomes);
+        List<Component> call(
+                ComponentService underTest,
+                ComponentRepository mockComponentRepository,
+                List<Component> components,
+                List<String> stateTypes,
+                List<TestOutcome> testOutcomes
+        );
     }
 
     @Value

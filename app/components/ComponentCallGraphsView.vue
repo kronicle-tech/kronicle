@@ -13,7 +13,7 @@
       </p>
     </b-alert>
 
-    <div v-if="filteredCallGraphs.length === 0">
+    <div v-if="filteredDiagrams.length === 0">
       <b-alert show variant="warning" class="my-3">
         No call graphs are available for this component. Possibly:
 
@@ -29,19 +29,19 @@
 
     <div class="call-graphs">
       <div
-        v-for="(callGraph, callGraphIndex) in filteredCallGraphs"
-        :key="callGraphIndex"
+        v-for="(diagram, diagramIndex) in filteredDiagrams"
+        :key="diagramIndex"
         class="call-graph my-2"
       >
         <h5>
-          Call Graph {{ callGraphIndex + 1 }}
+          Call Graph {{ diagramIndex + 1 }}
           <b-badge variant="primary" class="ml-2">
-            {{ callGraph.traceCount }} Traces
+            {{ getDiagramGraph(diagram).sampleSize }} Traces
           </b-badge>
         </h5>
 
         <ComponentDependencyGraph
-          :dependencies="callGraph"
+          :diagram="diagram"
           :selected-component-id="component.id"
           :node-spacing-x="400"
           :node-spacing-y="200"
@@ -60,10 +60,10 @@
         class="node my-1"
         @click="nodeClick(nodeIndex)"
       >
-        {{ node.spanName }}
-        <ul v-if="Object.keys(node.tags).length > 0">
-          <li v-for="(tagValue, tagKey) in node.tags" :key="tagKey">
-            {{ tagKey }}: {{ tagValue }}
+        {{ node.name }}
+        <ul v-if="node.tags.length > 0">
+          <li v-for="tag in node.tags" :key="tag.key">
+            {{ tag.key }}: {{ tag.value }}
           </li>
         </ul>
       </b-button>
@@ -76,12 +76,13 @@ import Vue, { PropType } from 'vue'
 import { BAlert, BBadge, BButton } from 'bootstrap-vue'
 import {
   Component,
-  SummaryCallGraph,
-  SummarySubComponentDependencyNode,
+  Diagram,
+  GraphNode,
+  GraphState,
 } from '~/types/kronicle-service'
 import ComponentDependencyGraph from '~/components/ComponentDependencyGraph.vue'
 
-interface ExtendedNode extends SummarySubComponentDependencyNode {
+interface ExtendedNode extends GraphNode {
   selected: boolean
 }
 
@@ -97,12 +98,8 @@ export default Vue.extend({
       type: Object as PropType<Component>,
       required: true,
     },
-    nodes: {
-      type: Array as PropType<SummarySubComponentDependencyNode[]>,
-      required: true,
-    },
-    callGraphs: {
-      type: Array as PropType<SummaryCallGraph[]>,
+    diagrams: {
+      type: Array as PropType<Diagram[]>,
       required: true,
     },
   },
@@ -113,6 +110,20 @@ export default Vue.extend({
     }
   },
   computed: {
+    graphs(): GraphState[] {
+      const that = this
+      return that.diagrams
+        .map((diagram) => that.getDiagramGraph(diagram))
+        .filter((graph) => graph !== undefined)
+        .map((graph) => graph as GraphState)
+    },
+    nodes(): GraphNode[] {
+      const that = this
+      const nodes = that.graphs
+        .flatMap((graph) => graph.nodes)
+        .filter((node) => node.componentId === that.component.id)
+      return this.uniqueNodes(nodes)
+    },
     extendedNodes(): ExtendedNode[] {
       const that = this
       return that.nodes.map(
@@ -123,44 +134,69 @@ export default Vue.extend({
           } as ExtendedNode)
       )
     },
-    filteredCallGraphs(): SummaryCallGraph[] {
+    filteredDiagrams(): Diagram[] {
       const that = this
-      if (that.nodes.length === 0) {
+      if (that.diagrams.length === 0) {
         return []
       }
       const selectedNode = that.nodes[that.selectedNodeIndex]
-      return this.callGraphs
-        .filter((callGraph) =>
-          callGraph.nodes.some((node) => that.nodeEquals(node, selectedNode))
+      return that.diagrams
+        .filter((diagram) => {
+          const graph = that.getDiagramGraph(diagram)
+          if (!graph) {
+            return false
+          }
+          return graph.nodes.some((node) => this.nodeEquals(node, selectedNode))
+        })
+        .sort(
+          (a, b) =>
+            (that.getDiagramGraph(a)?.sampleSize ?? 0) -
+            (that.getDiagramGraph(b)?.sampleSize ?? 0)
         )
-        .sort((a, b) => b.traceCount - a.traceCount)
         .slice(0, that.maxCallGraphCount)
     },
   },
   methods: {
-    nodeEquals(
-      a: SummarySubComponentDependencyNode,
-      b: SummarySubComponentDependencyNode
-    ): boolean {
+    getDiagramGraph(diagram: Diagram): GraphState | undefined {
+      return diagram.states.find((state) => state.type === 'graph') as
+        | GraphState
+        | undefined
+    },
+    nodeEquals(a: GraphNode, b: GraphNode): boolean {
       if (a.componentId !== b.componentId) {
         return false
       }
-
-      if (a.spanName !== b.spanName) {
+      if (a.name !== b.name) {
         return false
       }
-
-      if (Object.keys(a.tags).length !== Object.keys(b.tags).length) {
+      if (a.tags.length !== b.tags.length) {
         return false
       }
-
-      for (const tagKey in a.tags) {
-        if (a.tags[tagKey] !== b.tags[tagKey]) {
+      for (let tagIndex = 0; tagIndex < a.tags.length; tagIndex++) {
+        const tagA = a.tags[tagIndex]
+        const tagB = b.tags[tagIndex]
+        if (tagA.key !== tagB.key || tagA.value !== tagB.value) {
           return false
         }
       }
-
       return true
+    },
+    uniqueNodes(values: GraphNode[]): GraphNode[] {
+      const uniqueValues: GraphNode[] = []
+      for (const value of values) {
+        let isUnique = true
+        for (const uniqueValue of uniqueValues) {
+          if (this.nodeEquals(value, uniqueValue)) {
+            isUnique = false
+            break
+          }
+        }
+
+        if (isUnique) {
+          uniqueValues.push(value)
+        }
+      }
+      return uniqueValues
     },
     nodeClick(nodeIndex: number): void {
       this.selectedNodeIndex = nodeIndex
