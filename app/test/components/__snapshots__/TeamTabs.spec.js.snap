@@ -9,5 +9,9 @@ exports[`TeamTabs renders the component 1`] = `
     Cross Functional Requirements
   </a> <a href=\\"/teams/test-team-id/tech-debts\\" target=\\"_self\\" class=\\"btn my-1 btn-secondary\\">
     Tech Debts
+  </a> <a href=\\"/teams/test-team-id/openapi-specs\\" target=\\"_self\\" class=\\"btn my-1 btn-secondary\\">
+    OpenAPI
+  </a> <a href=\\"/teams/test-team-id/graphql-schemas\\" target=\\"_self\\" class=\\"btn my-1 btn-secondary\\">
+    GraphQL
   </a> <a href=\\"/teams/test-team-id/tests\\" target=\\"_self\\" class=\\"btn my-1 btn-secondary\\"> Tests </a> <a href=\\"/teams/test-team-id/errors\\" target=\\"_self\\" class=\\"btn my-1 btn-secondary\\"> Errors </a></div>"
 `;

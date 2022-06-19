@@ -9,7 +9,9 @@ exports[`AreaTabs renders the component 1`] = `
     Cross Functional Requirements
   </a> <a href=\\"/areas/test-area-id/tech-debts\\" target=\\"_self\\" class=\\"btn my-1 btn-secondary\\">
     Tech Debts
-  </a> <a href=\\"/areas/test-area-id/tests\\" target=\\"_self\\" class=\\"btn my-1 btn-secondary\\"> Tests </a> <a href=\\"/areas/test-area-id/errors\\" target=\\"_self\\" class=\\"btn my-1 btn-secondary\\"> Errors </a> <a href=\\"/areas/test-area-id/openapi-specs\\" target=\\"_self\\" class=\\"btn my-1 btn-secondary\\">
+  </a> <a href=\\"/areas/test-area-id/openapi-specs\\" target=\\"_self\\" class=\\"btn my-1 btn-secondary\\">
     OpenAPI
-  </a></div>"
+  </a> <a href=\\"/areas/test-area-id/graphql-schemas\\" target=\\"_self\\" class=\\"btn my-1 btn-secondary\\">
+    GraphQL
+  </a> <a href=\\"/areas/test-area-id/tests\\" target=\\"_self\\" class=\\"btn my-1 btn-secondary\\"> Tests </a> <a href=\\"/areas/test-area-id/errors\\" target=\\"_self\\" class=\\"btn my-1 btn-secondary\\"> Errors </a></div>"
 `;

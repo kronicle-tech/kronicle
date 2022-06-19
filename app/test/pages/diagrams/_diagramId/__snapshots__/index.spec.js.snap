@@ -1379,7 +1379,7 @@ exports[`Index when Get Diagram service endpoint returns an array of multiple co
           class="b-sidebar b-sidebar-right bg-dark text-light"
           id="component"
           role="dialog"
-          style="width: 600px; display: none;"
+          style="width: 800px; display: none;"
           tabindex="-1"
         >
           <header
@@ -2735,7 +2735,7 @@ exports[`Index when Get Diagram service endpoint returns no edges renders the pa
           class="b-sidebar b-sidebar-right bg-dark text-light"
           id="component"
           role="dialog"
-          style="width: 600px; display: none;"
+          style="width: 800px; display: none;"
           tabindex="-1"
         >
           <header

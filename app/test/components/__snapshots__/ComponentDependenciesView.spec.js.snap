@@ -272,7 +272,7 @@ exports[`ComponentDependenciesView when components prop contains multiple compon
   <div tabindex=\\"-1\\" class=\\"b-sidebar-outer\\">
     <!---->
     <transition-stub css=\\"true\\" enterclass=\\"\\" leaveclass=\\"show\\" entertoclass=\\"show\\" leavetoclass=\\"\\" enteractiveclass=\\"slide\\" leaveactiveclass=\\"slide\\">
-      <div id=\\"component\\" tabindex=\\"-1\\" role=\\"dialog\\" aria-modal=\\"true\\" aria-hidden=\\"true\\" class=\\"b-sidebar b-sidebar-right bg-dark text-light\\" style=\\"width: 600px; display: none;\\">
+      <div id=\\"component\\" tabindex=\\"-1\\" role=\\"dialog\\" aria-modal=\\"true\\" aria-hidden=\\"true\\" class=\\"b-sidebar b-sidebar-right bg-dark text-light\\" style=\\"width: 800px; display: none;\\">
         <header class=\\"b-sidebar-header\\"><button type=\\"button\\" aria-label=\\"Close\\" class=\\"close text-light\\"><svg viewBox=\\"0 0 16 16\\" width=\\"1em\\" height=\\"1em\\" focusable=\\"false\\" role=\\"img\\" aria-label=\\"x\\" xmlns=\\"http://www.w3.org/2000/svg\\" fill=\\"currentColor\\" class=\\"bi-x b-icon bi\\">
               <g>
                 <path d=\\"M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z\\"></path>
@@ -580,7 +580,7 @@ exports[`ComponentDependenciesView when components prop contains multiple compon
   <div tabindex=\\"-1\\" class=\\"b-sidebar-outer\\">
     <!---->
     <transition-stub css=\\"true\\" enterclass=\\"\\" leaveclass=\\"show\\" entertoclass=\\"show\\" leavetoclass=\\"\\" enteractiveclass=\\"slide\\" leaveactiveclass=\\"slide\\">
-      <div id=\\"component\\" tabindex=\\"-1\\" role=\\"dialog\\" aria-modal=\\"true\\" aria-hidden=\\"true\\" class=\\"b-sidebar b-sidebar-right bg-dark text-light\\" style=\\"width: 600px; display: none;\\">
+      <div id=\\"component\\" tabindex=\\"-1\\" role=\\"dialog\\" aria-modal=\\"true\\" aria-hidden=\\"true\\" class=\\"b-sidebar b-sidebar-right bg-dark text-light\\" style=\\"width: 800px; display: none;\\">
         <header class=\\"b-sidebar-header\\"><button type=\\"button\\" aria-label=\\"Close\\" class=\\"close text-light\\"><svg viewBox=\\"0 0 16 16\\" width=\\"1em\\" height=\\"1em\\" focusable=\\"false\\" role=\\"img\\" aria-label=\\"x\\" xmlns=\\"http://www.w3.org/2000/svg\\" fill=\\"currentColor\\" class=\\"bi-x b-icon bi\\">
               <g>
                 <path d=\\"M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z\\"></path>
@@ -899,7 +899,7 @@ exports[`ComponentDependenciesView when components prop contains multiple compon
   <div tabindex=\\"-1\\" class=\\"b-sidebar-outer\\">
     <!---->
     <transition-stub css=\\"true\\" enterclass=\\"\\" leaveclass=\\"show\\" entertoclass=\\"show\\" leavetoclass=\\"\\" enteractiveclass=\\"slide\\" leaveactiveclass=\\"slide\\">
-      <div id=\\"component\\" tabindex=\\"-1\\" role=\\"dialog\\" aria-modal=\\"true\\" aria-hidden=\\"true\\" class=\\"b-sidebar b-sidebar-right bg-dark text-light\\" style=\\"width: 600px; display: none;\\">
+      <div id=\\"component\\" tabindex=\\"-1\\" role=\\"dialog\\" aria-modal=\\"true\\" aria-hidden=\\"true\\" class=\\"b-sidebar b-sidebar-right bg-dark text-light\\" style=\\"width: 800px; display: none;\\">
         <header class=\\"b-sidebar-header\\"><button type=\\"button\\" aria-label=\\"Close\\" class=\\"close text-light\\"><svg viewBox=\\"0 0 16 16\\" width=\\"1em\\" height=\\"1em\\" focusable=\\"false\\" role=\\"img\\" aria-label=\\"x\\" xmlns=\\"http://www.w3.org/2000/svg\\" fill=\\"currentColor\\" class=\\"bi-x b-icon bi\\">
               <g>
                 <path d=\\"M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z\\"></path>
@@ -1220,7 +1220,7 @@ exports[`ComponentDependenciesView when components prop contains multiple compon
   <div tabindex=\\"-1\\" class=\\"b-sidebar-outer\\">
     <!---->
     <transition-stub css=\\"true\\" enterclass=\\"\\" leaveclass=\\"show\\" entertoclass=\\"show\\" leavetoclass=\\"\\" enteractiveclass=\\"slide\\" leaveactiveclass=\\"slide\\">
-      <div id=\\"component\\" tabindex=\\"-1\\" role=\\"dialog\\" aria-modal=\\"true\\" aria-hidden=\\"true\\" class=\\"b-sidebar b-sidebar-right bg-dark text-light\\" style=\\"width: 600px; display: none;\\">
+      <div id=\\"component\\" tabindex=\\"-1\\" role=\\"dialog\\" aria-modal=\\"true\\" aria-hidden=\\"true\\" class=\\"b-sidebar b-sidebar-right bg-dark text-light\\" style=\\"width: 800px; display: none;\\">
         <header class=\\"b-sidebar-header\\"><button type=\\"button\\" aria-label=\\"Close\\" class=\\"close text-light\\"><svg viewBox=\\"0 0 16 16\\" width=\\"1em\\" height=\\"1em\\" focusable=\\"false\\" role=\\"img\\" aria-label=\\"x\\" xmlns=\\"http://www.w3.org/2000/svg\\" fill=\\"currentColor\\" class=\\"bi-x b-icon bi\\">
               <g>
                 <path d=\\"M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z\\"></path>
@@ -1539,7 +1539,7 @@ exports[`ComponentDependenciesView when components prop contains multiple compon
   <div tabindex=\\"-1\\" class=\\"b-sidebar-outer\\">
     <!---->
     <transition-stub css=\\"true\\" enterclass=\\"\\" leaveclass=\\"show\\" entertoclass=\\"show\\" leavetoclass=\\"\\" enteractiveclass=\\"slide\\" leaveactiveclass=\\"slide\\">
-      <div id=\\"component\\" tabindex=\\"-1\\" role=\\"dialog\\" aria-modal=\\"true\\" aria-hidden=\\"true\\" class=\\"b-sidebar b-sidebar-right bg-dark text-light\\" style=\\"width: 600px; display: none;\\">
+      <div id=\\"component\\" tabindex=\\"-1\\" role=\\"dialog\\" aria-modal=\\"true\\" aria-hidden=\\"true\\" class=\\"b-sidebar b-sidebar-right bg-dark text-light\\" style=\\"width: 800px; display: none;\\">
         <header class=\\"b-sidebar-header\\"><button type=\\"button\\" aria-label=\\"Close\\" class=\\"close text-light\\"><svg viewBox=\\"0 0 16 16\\" width=\\"1em\\" height=\\"1em\\" focusable=\\"false\\" role=\\"img\\" aria-label=\\"x\\" xmlns=\\"http://www.w3.org/2000/svg\\" fill=\\"currentColor\\" class=\\"bi-x b-icon bi\\">
               <g>
                 <path d=\\"M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z\\"></path>
@@ -1860,7 +1860,7 @@ exports[`ComponentDependenciesView when components prop contains multiple compon
   <div tabindex=\\"-1\\" class=\\"b-sidebar-outer\\">
     <div tabindex=\\"0\\"></div>
     <transition-stub css=\\"true\\" enterclass=\\"\\" leaveclass=\\"show\\" entertoclass=\\"show\\" leavetoclass=\\"\\" enteractiveclass=\\"slide\\" leaveactiveclass=\\"slide\\">
-      <div id=\\"component\\" tabindex=\\"-1\\" role=\\"dialog\\" aria-modal=\\"true\\" class=\\"b-sidebar b-sidebar-right bg-dark text-light\\" style=\\"width: 600px;\\">
+      <div id=\\"component\\" tabindex=\\"-1\\" role=\\"dialog\\" aria-modal=\\"true\\" class=\\"b-sidebar b-sidebar-right bg-dark text-light\\" style=\\"width: 800px;\\">
         <header class=\\"b-sidebar-header\\"><button type=\\"button\\" aria-label=\\"Close\\" class=\\"close text-light\\"><svg viewBox=\\"0 0 16 16\\" width=\\"1em\\" height=\\"1em\\" focusable=\\"false\\" role=\\"img\\" aria-label=\\"x\\" xmlns=\\"http://www.w3.org/2000/svg\\" fill=\\"currentColor\\" class=\\"bi-x b-icon bi\\">
               <g>
                 <path d=\\"M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z\\"></path>
@@ -1940,7 +1940,7 @@ exports[`ComponentDependenciesView when components prop is set to an empty array
   <div tabindex=\\"-1\\" class=\\"b-sidebar-outer\\">
     <!---->
     <transition-stub css=\\"true\\" enterclass=\\"\\" leaveclass=\\"show\\" entertoclass=\\"show\\" leavetoclass=\\"\\" enteractiveclass=\\"slide\\" leaveactiveclass=\\"slide\\">
-      <div id=\\"component\\" tabindex=\\"-1\\" role=\\"dialog\\" aria-modal=\\"true\\" aria-hidden=\\"true\\" class=\\"b-sidebar b-sidebar-right bg-dark text-light\\" style=\\"width: 600px; display: none;\\">
+      <div id=\\"component\\" tabindex=\\"-1\\" role=\\"dialog\\" aria-modal=\\"true\\" aria-hidden=\\"true\\" class=\\"b-sidebar b-sidebar-right bg-dark text-light\\" style=\\"width: 800px; display: none;\\">
         <header class=\\"b-sidebar-header\\"><button type=\\"button\\" aria-label=\\"Close\\" class=\\"close text-light\\"><svg viewBox=\\"0 0 16 16\\" width=\\"1em\\" height=\\"1em\\" focusable=\\"false\\" role=\\"img\\" aria-label=\\"x\\" xmlns=\\"http://www.w3.org/2000/svg\\" fill=\\"currentColor\\" class=\\"bi-x b-icon bi\\">
               <g>
                 <path d=\\"M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z\\"></path>

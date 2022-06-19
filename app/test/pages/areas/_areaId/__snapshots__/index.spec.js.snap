@@ -63,6 +63,26 @@ exports[`Index when Get Area service endpoint returns an area renders the page 1
      
     <a
       class="btn my-1 btn-secondary"
+      href="/areas/test-area-id-1/openapi-specs"
+      target="_self"
+    >
+      
+    OpenAPI
+  
+    </a>
+     
+    <a
+      class="btn my-1 btn-secondary"
+      href="/areas/test-area-id-1/graphql-schemas"
+      target="_self"
+    >
+      
+    GraphQL
+  
+    </a>
+     
+    <a
+      class="btn my-1 btn-secondary"
       href="/areas/test-area-id-1/tests"
       target="_self"
     >
@@ -75,16 +95,6 @@ exports[`Index when Get Area service endpoint returns an area renders the page 1
       target="_self"
     >
        Errors 
-    </a>
-     
-    <a
-      class="btn my-1 btn-secondary"
-      href="/areas/test-area-id-1/openapi-specs"
-      target="_self"
-    >
-      
-    OpenAPI
-  
     </a>
   </div>
    
