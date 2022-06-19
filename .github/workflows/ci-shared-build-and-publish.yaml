@@ -44,7 +44,7 @@ jobs:
 
       - name: Cache Gradle packages
         if: ${{ inputs.caching }}
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: |
             ~/.gradle/caches
@@ -75,7 +75,7 @@ jobs:
 
       - name: Cache the NPM Cache
         if: ${{ inputs.nodejs && inputs.caching }}
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: ~/.npm
           key: ${{ runner.os }}-node-${{ hashFiles('node-version.txt', 'npm-version.txt', '**/package-lock.json') }}
