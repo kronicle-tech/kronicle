@@ -16,11 +16,14 @@
     <b-button class="my-1" :to="`/areas/${areaId}/tech-debts`">
       Tech Debts
     </b-button>
-    <b-button class="my-1" :to="`/areas/${areaId}/tests`"> Tests </b-button>
-    <b-button class="my-1" :to="`/areas/${areaId}/errors`"> Errors </b-button>
     <b-button class="my-1" :to="`/areas/${areaId}/openapi-specs`">
       OpenAPI
     </b-button>
+    <b-button class="my-1" :to="`/areas/${areaId}/graphql-schemas`">
+      GraphQL
+    </b-button>
+    <b-button class="my-1" :to="`/areas/${areaId}/tests`"> Tests </b-button>
+    <b-button class="my-1" :to="`/areas/${areaId}/errors`"> Errors </b-button>
   </div>
 </template>
 

@@ -1,13 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Index when Get Team service endpoint returns a team when the team has components and the components have tech debts renders the details of the tech debts 1`] = `
+exports[`Index when Get Area service endpoint returns an area when the area has components and the components have GraphQL Schemas renders the details of the GraphQL Schemas 1`] = `
 <div
   class="m-3"
 >
   <h1
     class="text-info my-3"
   >
-    Test Team Name 1 - Tech Debts
+    Test Area Name 1 - GraphQL Schemas
   </h1>
    
   <div
@@ -15,7 +15,7 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
   >
     <a
       class="btn my-1 btn-secondary"
-      href="/teams/test-team-id-1"
+      href="/areas/test-area-id-1"
       target="_self"
     >
        Info 
@@ -23,7 +23,7 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
      
     <a
       class="btn my-1 btn-secondary"
-      href="/teams/test-team-id-1/diagrams"
+      href="/areas/test-area-id-1/diagrams"
       target="_self"
     >
       
@@ -33,7 +33,7 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
      
     <a
       class="btn my-1 btn-secondary"
-      href="/teams/test-team-id-1/components"
+      href="/areas/test-area-id-1/components"
       target="_self"
     >
       
@@ -43,7 +43,7 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
      
     <a
       class="btn my-1 btn-secondary"
-      href="/teams/test-team-id-1/cross-functional-requirements"
+      href="/areas/test-area-id-1/cross-functional-requirements"
       target="_self"
     >
       
@@ -53,7 +53,7 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
      
     <a
       class="btn my-1 btn-secondary"
-      href="/teams/test-team-id-1/tech-debts"
+      href="/areas/test-area-id-1/tech-debts"
       target="_self"
     >
       
@@ -63,7 +63,7 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
      
     <a
       class="btn my-1 btn-secondary"
-      href="/teams/test-team-id-1/openapi-specs"
+      href="/areas/test-area-id-1/openapi-specs"
       target="_self"
     >
       
@@ -73,7 +73,7 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
      
     <a
       class="btn my-1 btn-secondary"
-      href="/teams/test-team-id-1/graphql-schemas"
+      href="/areas/test-area-id-1/graphql-schemas"
       target="_self"
     >
       
@@ -83,7 +83,7 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
      
     <a
       class="btn my-1 btn-secondary"
-      href="/teams/test-team-id-1/tests"
+      href="/areas/test-area-id-1/tests"
       target="_self"
     >
        Tests 
@@ -91,7 +91,7 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
      
     <a
       class="btn my-1 btn-secondary"
-      href="/teams/test-team-id-1/errors"
+      href="/areas/test-area-id-1/errors"
       target="_self"
     >
        Errors 
@@ -100,43 +100,23 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
    
   <div>
     <div
-      class="card my-3"
+      class="card"
     >
       <!---->
       <!---->
       <div
         class="list-group"
       >
-        <!---->
-         
         <div
-          class="list-group-item list-group-item-warning"
+          class="list-group-item list-group-item-danger"
         >
           <span
-            class="display-2"
+            class="display-1"
           >
-            2
+            0
           </span>
-           
-          <b>
-            High
-          </b>
-           tech debts
-      
-        </div>
-        <div
-          class="list-group-item list-group-item-info"
-        >
-          <span
-            class="display-3"
-          >
-            2
-          </span>
-           
-          <b>
-            Medium
-          </b>
-           tech debts
+          
+        GraphQL schemas
       
         </div>
       </div>
@@ -721,566 +701,19 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
       </transition-stub>
     </div>
      
-    <div
-      class="card my-3"
-    >
-      <!---->
-      <!---->
-      <div
-        class="card-body"
-      >
-        <h4
-          class="card-title"
-        >
-          4 Tech Debts
-        </h4>
-        <!---->
-        <table
-          class="table table-dark"
-        >
-          <thead>
-            <tr>
-              <th
-                class="component"
-              >
-                Component
-              </th>
-               
-              <th
-                class="priority"
-              >
-                Priority
-              </th>
-               
-              <th
-                class="teams"
-              >
-                Teams
-              </th>
-               
-              <th
-                class="description"
-              >
-                Description
-              </th>
-               
-              <th
-                class="notes"
-              >
-                Notes
-              </th>
-               
-              <th
-                class="links"
-              >
-                Links
-              </th>
-            </tr>
-          </thead>
-           
-          <tbody>
-            <tr>
-              <td
-                class="component table-primary"
-              >
-                <a
-                  href="/components/test-component-id-1"
-                >
-                  Test Component Name 1
-                </a>
-              </td>
-               
-              <td
-                class="priority"
-              >
-                <span
-                  class="badge badge-warning"
-                >
-                  
-          High
-        
-                </span>
-              </td>
-               
-              <td
-                class="teams"
-              >
-                <ul>
-                  <li>
-                    <a
-                      class="team-name"
-                      href="/teams/test-team-id-1-1"
-                    >
-                      test-team-id-1-1
-                    </a>
-                     
-                    <!---->
-                     
-                    <!---->
-                  </li>
-                  <li>
-                    <a
-                      class="team-name"
-                      href="/teams/test-team-id-1-2"
-                    >
-                      test-team-id-1-2
-                    </a>
-                     
-                    <!---->
-                     
-                    <!---->
-                  </li>
-                </ul>
-              </td>
-               
-              <td
-                class="description"
-              >
-                <div>
-                  
-
-                  <p>
-                    Test Tech Debt Description 1 2
-                  </p>
-                </div>
-              </td>
-               
-              <td
-                class="notes"
-              >
-                <div>
-                  
-
-                  <p>
-                    Test Tech Debt Notes 1 2
-                  </p>
-                </div>
-              </td>
-               
-              <td
-                class="links"
-              >
-                <ul>
-                  <li>
-                    <a
-                      href="https://example.com/test-tech-debt-link-1-2-1"
-                      target="_blank"
-                    >
-                      https://example.com/test-tech-debt-link-1-2-1
-                    </a>
-                     
-                    <br />
-                     
-                    <div>
-                      
-
-                      <p>
-                        Test Tech Debt Link Description 1 2 1
-                      </p>
-                    </div>
-                  </li>
-                  <li>
-                    <a
-                      href="https://example.com/test-tech-debt-link-1-2-2"
-                      target="_blank"
-                    >
-                      https://example.com/test-tech-debt-link-1-2-2
-                    </a>
-                     
-                    <br />
-                     
-                    <div>
-                      
-
-                      <p>
-                        Test Tech Debt Link Description 1 2 2
-                      </p>
-                    </div>
-                  </li>
-                </ul>
-              </td>
-            </tr>
-            <tr>
-              <td
-                class="component table-primary"
-              >
-                <a
-                  href="/components/test-component-id-3"
-                >
-                  Test Component Name 3
-                </a>
-              </td>
-               
-              <td
-                class="priority"
-              >
-                <span
-                  class="badge badge-warning"
-                >
-                  
-          High
-        
-                </span>
-              </td>
-               
-              <td
-                class="teams"
-              >
-                <ul>
-                  <li>
-                    <a
-                      class="team-name"
-                      href="/teams/test-team-id-3-1"
-                    >
-                      test-team-id-3-1
-                    </a>
-                     
-                    <!---->
-                     
-                    <!---->
-                  </li>
-                  <li>
-                    <a
-                      class="team-name"
-                      href="/teams/test-team-id-3-2"
-                    >
-                      test-team-id-3-2
-                    </a>
-                     
-                    <!---->
-                     
-                    <!---->
-                  </li>
-                </ul>
-              </td>
-               
-              <td
-                class="description"
-              >
-                <div>
-                  
-
-                  <p>
-                    Test Tech Debt Description 3 2
-                  </p>
-                </div>
-              </td>
-               
-              <td
-                class="notes"
-              >
-                <div>
-                  
-
-                  <p>
-                    Test Tech Debt Notes 3 2
-                  </p>
-                </div>
-              </td>
-               
-              <td
-                class="links"
-              >
-                <ul>
-                  <li>
-                    <a
-                      href="https://example.com/test-tech-debt-link-3-2-1"
-                      target="_blank"
-                    >
-                      https://example.com/test-tech-debt-link-3-2-1
-                    </a>
-                     
-                    <br />
-                     
-                    <div>
-                      
-
-                      <p>
-                        Test Tech Debt Link Description 3 2 1
-                      </p>
-                    </div>
-                  </li>
-                  <li>
-                    <a
-                      href="https://example.com/test-tech-debt-link-3-2-2"
-                      target="_blank"
-                    >
-                      https://example.com/test-tech-debt-link-3-2-2
-                    </a>
-                     
-                    <br />
-                     
-                    <div>
-                      
-
-                      <p>
-                        Test Tech Debt Link Description 3 2 2
-                      </p>
-                    </div>
-                  </li>
-                </ul>
-              </td>
-            </tr>
-            <tr>
-              <td
-                class="component table-primary"
-              >
-                <a
-                  href="/components/test-component-id-1"
-                >
-                  Test Component Name 1
-                </a>
-              </td>
-               
-              <td
-                class="priority"
-              >
-                <span
-                  class="badge badge-info"
-                >
-                  
-          Medium
-        
-                </span>
-              </td>
-               
-              <td
-                class="teams"
-              >
-                <ul>
-                  <li>
-                    <a
-                      class="team-name"
-                      href="/teams/test-team-id-1-1"
-                    >
-                      test-team-id-1-1
-                    </a>
-                     
-                    <!---->
-                     
-                    <!---->
-                  </li>
-                  <li>
-                    <a
-                      class="team-name"
-                      href="/teams/test-team-id-1-2"
-                    >
-                      test-team-id-1-2
-                    </a>
-                     
-                    <!---->
-                     
-                    <!---->
-                  </li>
-                </ul>
-              </td>
-               
-              <td
-                class="description"
-              >
-                <div>
-                  
-
-                  <p>
-                    Test Tech Debt Description 1 1
-                  </p>
-                </div>
-              </td>
-               
-              <td
-                class="notes"
-              >
-                <div>
-                  
-
-                  <p>
-                    Test Tech Debt Notes 1 1
-                  </p>
-                </div>
-              </td>
-               
-              <td
-                class="links"
-              >
-                <ul>
-                  <li>
-                    <a
-                      href="https://example.com/test-tech-debt-link-1-1-1"
-                      target="_blank"
-                    >
-                      https://example.com/test-tech-debt-link-1-1-1
-                    </a>
-                     
-                    <br />
-                     
-                    <div>
-                      
-
-                      <p>
-                        Test Tech Debt Link Description 1 1 1
-                      </p>
-                    </div>
-                  </li>
-                  <li>
-                    <a
-                      href="https://example.com/test-tech-debt-link-1-1-2"
-                      target="_blank"
-                    >
-                      https://example.com/test-tech-debt-link-1-1-2
-                    </a>
-                     
-                    <br />
-                     
-                    <div>
-                      
-
-                      <p>
-                        Test Tech Debt Link Description 1 1 2
-                      </p>
-                    </div>
-                  </li>
-                </ul>
-              </td>
-            </tr>
-            <tr>
-              <td
-                class="component table-primary"
-              >
-                <a
-                  href="/components/test-component-id-3"
-                >
-                  Test Component Name 3
-                </a>
-              </td>
-               
-              <td
-                class="priority"
-              >
-                <span
-                  class="badge badge-info"
-                >
-                  
-          Medium
-        
-                </span>
-              </td>
-               
-              <td
-                class="teams"
-              >
-                <ul>
-                  <li>
-                    <a
-                      class="team-name"
-                      href="/teams/test-team-id-3-1"
-                    >
-                      test-team-id-3-1
-                    </a>
-                     
-                    <!---->
-                     
-                    <!---->
-                  </li>
-                  <li>
-                    <a
-                      class="team-name"
-                      href="/teams/test-team-id-3-2"
-                    >
-                      test-team-id-3-2
-                    </a>
-                     
-                    <!---->
-                     
-                    <!---->
-                  </li>
-                </ul>
-              </td>
-               
-              <td
-                class="description"
-              >
-                <div>
-                  
-
-                  <p>
-                    Test Tech Debt Description 3 1
-                  </p>
-                </div>
-              </td>
-               
-              <td
-                class="notes"
-              >
-                <div>
-                  
-
-                  <p>
-                    Test Tech Debt Notes 3 1
-                  </p>
-                </div>
-              </td>
-               
-              <td
-                class="links"
-              >
-                <ul>
-                  <li>
-                    <a
-                      href="https://example.com/test-tech-debt-link-3-1-1"
-                      target="_blank"
-                    >
-                      https://example.com/test-tech-debt-link-3-1-1
-                    </a>
-                     
-                    <br />
-                     
-                    <div>
-                      
-
-                      <p>
-                        Test Tech Debt Link Description 3 1 1
-                      </p>
-                    </div>
-                  </li>
-                  <li>
-                    <a
-                      href="https://example.com/test-tech-debt-link-3-1-2"
-                      target="_blank"
-                    >
-                      https://example.com/test-tech-debt-link-3-1-2
-                    </a>
-                     
-                    <br />
-                     
-                    <div>
-                      
-
-                      <p>
-                        Test Tech Debt Link Description 3 1 2
-                      </p>
-                    </div>
-                  </li>
-                </ul>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <!---->
-      <!---->
-    </div>
+    <!---->
   </div>
 </div>
 `;
 
-exports[`Index when Get Team service endpoint returns a team when the team has components but the components have no tech debts renders no tech debts 1`] = `
+exports[`Index when Get Area service endpoint returns an area when the area has components but the components have no GraphQL Schemas renders no GraphQL Schemas 1`] = `
 <div
   class="m-3"
 >
   <h1
     class="text-info my-3"
   >
-    Test Team Name 1 - Tech Debts
+    Test Area Name 1 - GraphQL Schemas
   </h1>
    
   <div
@@ -1288,7 +721,7 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
   >
     <a
       class="btn my-1 btn-secondary"
-      href="/teams/test-team-id-1"
+      href="/areas/test-area-id-1"
       target="_self"
     >
        Info 
@@ -1296,7 +729,7 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
      
     <a
       class="btn my-1 btn-secondary"
-      href="/teams/test-team-id-1/diagrams"
+      href="/areas/test-area-id-1/diagrams"
       target="_self"
     >
       
@@ -1306,7 +739,7 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
      
     <a
       class="btn my-1 btn-secondary"
-      href="/teams/test-team-id-1/components"
+      href="/areas/test-area-id-1/components"
       target="_self"
     >
       
@@ -1316,7 +749,7 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
      
     <a
       class="btn my-1 btn-secondary"
-      href="/teams/test-team-id-1/cross-functional-requirements"
+      href="/areas/test-area-id-1/cross-functional-requirements"
       target="_self"
     >
       
@@ -1326,7 +759,7 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
      
     <a
       class="btn my-1 btn-secondary"
-      href="/teams/test-team-id-1/tech-debts"
+      href="/areas/test-area-id-1/tech-debts"
       target="_self"
     >
       
@@ -1336,7 +769,7 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
      
     <a
       class="btn my-1 btn-secondary"
-      href="/teams/test-team-id-1/openapi-specs"
+      href="/areas/test-area-id-1/openapi-specs"
       target="_self"
     >
       
@@ -1346,7 +779,7 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
      
     <a
       class="btn my-1 btn-secondary"
-      href="/teams/test-team-id-1/graphql-schemas"
+      href="/areas/test-area-id-1/graphql-schemas"
       target="_self"
     >
       
@@ -1356,7 +789,7 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
      
     <a
       class="btn my-1 btn-secondary"
-      href="/teams/test-team-id-1/tests"
+      href="/areas/test-area-id-1/tests"
       target="_self"
     >
        Tests 
@@ -1364,7 +797,7 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
      
     <a
       class="btn my-1 btn-secondary"
-      href="/teams/test-team-id-1/errors"
+      href="/areas/test-area-id-1/errors"
       target="_self"
     >
        Errors 
@@ -1373,7 +806,7 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
    
   <div>
     <div
-      class="card my-3"
+      class="card"
     >
       <!---->
       <!---->
@@ -1381,17 +814,17 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
         class="list-group"
       >
         <div
-          class="list-group-item list-group-item-success"
+          class="list-group-item list-group-item-danger"
         >
           <span
             class="display-1"
           >
             0
           </span>
-           tech debts
+          
+        GraphQL schemas
       
         </div>
-         
       </div>
       <!---->
       <!---->
@@ -1974,37 +1407,19 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
       </transition-stub>
     </div>
      
-    <div
-      class="card my-3"
-    >
-      <!---->
-      <!---->
-      <div
-        class="card-body"
-      >
-        <h4
-          class="card-title"
-        >
-          0 Tech Debts
-        </h4>
-        <!---->
-        <!---->
-      </div>
-      <!---->
-      <!---->
-    </div>
+    <!---->
   </div>
 </div>
 `;
 
-exports[`Index when Get Team service endpoint returns a team when the team has no components renders no tech debts 1`] = `
+exports[`Index when Get Area service endpoint returns an area when the area has no components renders no GraphQL Schemas 1`] = `
 <div
   class="m-3"
 >
   <h1
     class="text-info my-3"
   >
-    Test Team Name 1 - Tech Debts
+    Test Area Name 1 - GraphQL Schemas
   </h1>
    
   <div
@@ -2012,7 +1427,7 @@ exports[`Index when Get Team service endpoint returns a team when the team has n
   >
     <a
       class="btn my-1 btn-secondary"
-      href="/teams/test-team-id-1"
+      href="/areas/test-area-id-1"
       target="_self"
     >
        Info 
@@ -2020,7 +1435,7 @@ exports[`Index when Get Team service endpoint returns a team when the team has n
      
     <a
       class="btn my-1 btn-secondary"
-      href="/teams/test-team-id-1/diagrams"
+      href="/areas/test-area-id-1/diagrams"
       target="_self"
     >
       
@@ -2030,7 +1445,7 @@ exports[`Index when Get Team service endpoint returns a team when the team has n
      
     <a
       class="btn my-1 btn-secondary"
-      href="/teams/test-team-id-1/components"
+      href="/areas/test-area-id-1/components"
       target="_self"
     >
       
@@ -2040,7 +1455,7 @@ exports[`Index when Get Team service endpoint returns a team when the team has n
      
     <a
       class="btn my-1 btn-secondary"
-      href="/teams/test-team-id-1/cross-functional-requirements"
+      href="/areas/test-area-id-1/cross-functional-requirements"
       target="_self"
     >
       
@@ -2050,7 +1465,7 @@ exports[`Index when Get Team service endpoint returns a team when the team has n
      
     <a
       class="btn my-1 btn-secondary"
-      href="/teams/test-team-id-1/tech-debts"
+      href="/areas/test-area-id-1/tech-debts"
       target="_self"
     >
       
@@ -2060,7 +1475,7 @@ exports[`Index when Get Team service endpoint returns a team when the team has n
      
     <a
       class="btn my-1 btn-secondary"
-      href="/teams/test-team-id-1/openapi-specs"
+      href="/areas/test-area-id-1/openapi-specs"
       target="_self"
     >
       
@@ -2070,7 +1485,7 @@ exports[`Index when Get Team service endpoint returns a team when the team has n
      
     <a
       class="btn my-1 btn-secondary"
-      href="/teams/test-team-id-1/graphql-schemas"
+      href="/areas/test-area-id-1/graphql-schemas"
       target="_self"
     >
       
@@ -2080,7 +1495,7 @@ exports[`Index when Get Team service endpoint returns a team when the team has n
      
     <a
       class="btn my-1 btn-secondary"
-      href="/teams/test-team-id-1/tests"
+      href="/areas/test-area-id-1/tests"
       target="_self"
     >
        Tests 
@@ -2088,7 +1503,7 @@ exports[`Index when Get Team service endpoint returns a team when the team has n
      
     <a
       class="btn my-1 btn-secondary"
-      href="/teams/test-team-id-1/errors"
+      href="/areas/test-area-id-1/errors"
       target="_self"
     >
        Errors 
@@ -2097,7 +1512,7 @@ exports[`Index when Get Team service endpoint returns a team when the team has n
    
   <div>
     <div
-      class="card my-3"
+      class="card"
     >
       <!---->
       <!---->
@@ -2105,17 +1520,17 @@ exports[`Index when Get Team service endpoint returns a team when the team has n
         class="list-group"
       >
         <div
-          class="list-group-item list-group-item-success"
+          class="list-group-item list-group-item-danger"
         >
           <span
             class="display-1"
           >
             0
           </span>
-           tech debts
+          
+        GraphQL schemas
       
         </div>
-         
       </div>
       <!---->
       <!---->
@@ -2123,25 +1538,7 @@ exports[`Index when Get Team service endpoint returns a team when the team has n
      
     <!---->
      
-    <div
-      class="card my-3"
-    >
-      <!---->
-      <!---->
-      <div
-        class="card-body"
-      >
-        <h4
-          class="card-title"
-        >
-          0 Tech Debts
-        </h4>
-        <!---->
-        <!---->
-      </div>
-      <!---->
-      <!---->
-    </div>
+    <!---->
   </div>
 </div>
 `;

@@ -1,10 +1,10 @@
 <template>
   <div class="m-3">
-    <h1 class="text-info my-3">{{ area.name }} - OpenAPI Specs</h1>
+    <h1 class="text-info my-3">{{ area.name }} - GraphQL Schemas</h1>
 
     <AreaTabs :area-id="area.id" />
 
-    <OpenApiSpecsView :components="area.components" />
+    <GraphQlSchemasView :components="area.components" />
   </div>
 </template>
 
@@ -13,16 +13,16 @@ import Vue from 'vue'
 import { MetaInfo } from 'vue-meta'
 import { Area } from '~/types/kronicle-service'
 import AreaTabs from '~/components/AreaTabs.vue'
-import OpenApiSpecsView from '~/components/OpenApiSpecsView.vue'
+import GraphQlSchemasView from '~/components/GraphQlSchemasView.vue'
 
 export default Vue.extend({
   components: {
     AreaTabs,
-    OpenApiSpecsView,
+    GraphQlSchemasView,
   },
   async asyncData({ $config, route, store }) {
     const area = await fetch(
-      `${$config.serviceBaseUrl}/v1/areas/${route.params.areaId}?stateType=openapi-specs&fields=area(id,name,components(id,name,typeId,tags,teams,platformId,states))`
+      `${$config.serviceBaseUrl}/v1/areas/${route.params.areaId}?stateType=graphql-schemas&fields=area(id,name,components(id,name,typeId,tags,teams,platformId,states))`
     )
       .then((res) => res.json())
       .then((json) => json.area as Area)
@@ -43,7 +43,7 @@ export default Vue.extend({
   },
   head(): MetaInfo {
     return {
-      title: `Kronicle - ${this.area.name} - OpenAPI Specs`,
+      title: `Kronicle - ${this.area.name} - GraphQL Schemas`,
     }
   },
 })

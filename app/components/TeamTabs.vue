@@ -16,6 +16,12 @@
     <b-button class="my-1" :to="`/teams/${teamId}/tech-debts`">
       Tech Debts
     </b-button>
+    <b-button class="my-1" :to="`/teams/${teamId}/openapi-specs`">
+      OpenAPI
+    </b-button>
+    <b-button class="my-1" :to="`/teams/${teamId}/graphql-schemas`">
+      GraphQL
+    </b-button>
     <b-button class="my-1" :to="`/teams/${teamId}/tests`"> Tests </b-button>
     <b-button class="my-1" :to="`/teams/${teamId}/errors`"> Errors </b-button>
   </div>

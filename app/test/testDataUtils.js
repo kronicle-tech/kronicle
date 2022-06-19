@@ -155,6 +155,26 @@ export function createComponentWithGitRepo({ componentNumber }) {
   })
 }
 
+function createGraphQlSchemas(componentNumber) {
+  return [
+    createGraphQlSchema({ componentNumber, graphQlSchemaNumber: 1 }),
+    createGraphQlSchema({ componentNumber, graphQlSchemaNumber: 2 }),
+  ]
+}
+
+export function createComponentWithGraphQlSchemas({ componentNumber }) {
+  return createComponent({
+    componentNumber,
+    additionalStates: [
+      {
+        pluginId: 'test-plugin-id',
+        type: 'openapi-specs',
+        graphQlSchemas: createGraphQlSchemas(componentNumber),
+      },
+    ],
+  })
+}
+
 function createImports(componentNumber) {
   return [
     createImport({ componentNumber, importNumber: 1 }),
@@ -549,6 +569,14 @@ function createFileExtensionCount({
   }
 }
 
+function createGraphQlSchema({ componentNumber, graphQlSchemaNumber }) {
+  return {
+    spec: '',
+    url: `https://example.com/test-graphql-schema-${componentNumber}-${graphQlSchemaNumber}`,
+    description: `Test GraphQL Schema Description ${componentNumber} ${graphQlSchemaNumber}`,
+  }
+}
+
 function createKeySoftware({ componentNumber, keySoftwareItemNumber }) {
   return {
     name: `Test Key Software ${componentNumber} ${keySoftwareItemNumber}`,
@@ -558,7 +586,7 @@ function createKeySoftware({ componentNumber, keySoftwareItemNumber }) {
 
 function createOpenApiSpec({ componentNumber, openApiSpecNumber }) {
   return {
-    spec: {},
+    spec: '',
     url: `https://example.com/test-openapi-spec-${componentNumber}-${openApiSpecNumber}`,
     description: `Test OpenAPI Spec Description ${componentNumber} ${openApiSpecNumber}`,
   }

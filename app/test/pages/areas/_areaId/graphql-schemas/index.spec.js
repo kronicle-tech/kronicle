@@ -1,9 +1,9 @@
-import Index from '@/pages/areas/_areaId/openapi-specs/index.vue'
+import Index from '@/pages/areas/_areaId/graphql-schemas/index.vue'
 import { createPageWrapper } from '~/test/pages/pageUtils'
 import {
   createArea,
   createComponent,
-  createComponentWithOpenApiSpecs,
+  createComponentWithGraphQlSchemas,
 } from '~/test/testDataUtils'
 
 describe('Index', () => {
@@ -18,7 +18,7 @@ describe('Index', () => {
     wrapper = await createPageWrapper(Index, {
       route,
       serviceRequests: {
-        '/v1/areas/test-area-id-1?stateType=openapi-specs&fields=area(id,name,components(id,name,typeId,tags,teams,platformId,states))':
+        '/v1/areas/test-area-id-1?stateType=graphql-schemas&fields=area(id,name,components(id,name,typeId,tags,teams,platformId,states))':
           {
             responseBody: { area },
           },
@@ -39,18 +39,18 @@ describe('Index', () => {
     test('has the right page title', async () => {
       await createWrapper()
       expect(wrapper.vm.$metaInfo.title).toBe(
-        'Kronicle - Test Area Name 1 - OpenAPI Specs'
+        'Kronicle - Test Area Name 1 - GraphQL Schemas'
       )
     })
 
     describe('when the area has no components', () => {
-      test('renders no OpenAPI specs', async () => {
+      test('renders no GraphQL Schemas', async () => {
         await createWrapper()
         expect(wrapper.element).toMatchSnapshot()
       })
     })
 
-    describe('when the area has components but the components have no OpenAPI specs', () => {
+    describe('when the area has components but the components have no GraphQL Schemas', () => {
       beforeEach(() => {
         area.components = [
           createComponent({ componentNumber: 1 }),
@@ -59,22 +59,22 @@ describe('Index', () => {
         ]
       })
 
-      test('renders no OpenAPI specs', async () => {
+      test('renders no GraphQL Schemas', async () => {
         await createWrapper()
         expect(wrapper.element).toMatchSnapshot()
       })
     })
 
-    describe('when the area has components and the components have OpenAPI specs', () => {
+    describe('when the area has components and the components have GraphQL Schemas', () => {
       beforeEach(() => {
         area.components = [
-          createComponentWithOpenApiSpecs({ componentNumber: 1 }),
+          createComponentWithGraphQlSchemas({ componentNumber: 1 }),
           createComponent({ componentNumber: 2 }),
-          createComponentWithOpenApiSpecs({ componentNumber: 3 }),
+          createComponentWithGraphQlSchemas({ componentNumber: 3 }),
         ]
       })
 
-      test('renders the details of the OpenAPI specs', async () => {
+      test('renders the details of the GraphQL Schemas', async () => {
         await createWrapper()
         expect(wrapper.element).toMatchSnapshot()
       })

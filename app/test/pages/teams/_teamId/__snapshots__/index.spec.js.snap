@@ -63,6 +63,26 @@ exports[`Index when Get Team service endpoint returns an team renders the page 1
      
     <a
       class="btn my-1 btn-secondary"
+      href="/teams/test-team-id-1/openapi-specs"
+      target="_self"
+    >
+      
+    OpenAPI
+  
+    </a>
+     
+    <a
+      class="btn my-1 btn-secondary"
+      href="/teams/test-team-id-1/graphql-schemas"
+      target="_self"
+    >
+      
+    GraphQL
+  
+    </a>
+     
+    <a
+      class="btn my-1 btn-secondary"
       href="/teams/test-team-id-1/tests"
       target="_self"
     >

@@ -1,7 +1,7 @@
-import Index from '@/pages/areas/_areaId/openapi-specs/index.vue'
+import Index from '@/pages/teams/_teamId/openapi-specs/index.vue'
 import { createPageWrapper } from '~/test/pages/pageUtils'
 import {
-  createArea,
+  createTeam,
   createComponent,
   createComponentWithOpenApiSpecs,
 } from '~/test/testDataUtils'
@@ -9,18 +9,18 @@ import {
 describe('Index', () => {
   const route = {
     params: {
-      areaId: 'test-area-id-1',
+      teamId: 'test-team-id-1',
     },
   }
-  let area
+  let team
   let wrapper
   async function createWrapper() {
     wrapper = await createPageWrapper(Index, {
       route,
       serviceRequests: {
-        '/v1/areas/test-area-id-1?stateType=openapi-specs&fields=area(id,name,components(id,name,typeId,tags,teams,platformId,states))':
+        '/v1/teams/test-team-id-1?stateType=openapi-specs&fields=team(id,name,components(id,name,typeId,tags,teams,platformId,states))':
           {
-            responseBody: { area },
+            responseBody: { team },
           },
       },
     })
@@ -31,28 +31,28 @@ describe('Index', () => {
     wrapper = null
   })
 
-  describe('when Get Area service endpoint returns an area', () => {
+  describe('when Get Team service endpoint returns an team', () => {
     beforeEach(() => {
-      area = createArea({ areaNumber: 1 })
+      team = createTeam({ teamNumber: 1 })
     })
 
     test('has the right page title', async () => {
       await createWrapper()
       expect(wrapper.vm.$metaInfo.title).toBe(
-        'Kronicle - Test Area Name 1 - OpenAPI Specs'
+        'Kronicle - Test Team Name 1 - OpenAPI Specs'
       )
     })
 
-    describe('when the area has no components', () => {
+    describe('when the team has no components', () => {
       test('renders no OpenAPI specs', async () => {
         await createWrapper()
         expect(wrapper.element).toMatchSnapshot()
       })
     })
 
-    describe('when the area has components but the components have no OpenAPI specs', () => {
+    describe('when the team has components but the components have no OpenAPI specs', () => {
       beforeEach(() => {
-        area.components = [
+        team.components = [
           createComponent({ componentNumber: 1 }),
           createComponent({ componentNumber: 2 }),
           createComponent({ componentNumber: 3 }),
@@ -65,9 +65,9 @@ describe('Index', () => {
       })
     })
 
-    describe('when the area has components and the components have OpenAPI specs', () => {
+    describe('when the team has components and the components have OpenAPI specs', () => {
       beforeEach(() => {
-        area.components = [
+        team.components = [
           createComponentWithOpenApiSpecs({ componentNumber: 1 }),
           createComponent({ componentNumber: 2 }),
           createComponentWithOpenApiSpecs({ componentNumber: 3 }),

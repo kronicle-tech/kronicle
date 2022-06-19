@@ -73,14 +73,14 @@
       id="component"
       v-model="componentSidebarVisible"
       right
-      width="600px"
+      width="800px"
       bg-variant="dark"
       text-variant="light"
       backdrop-variant="dark"
       backdrop
     >
       <div class="m-3">
-        <ComponentPanel :component="component" />
+        <ComponentPanel :component="component" :diagram="diagram" />
       </div>
     </b-sidebar>
   </div>

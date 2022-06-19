@@ -784,15 +784,13 @@ exports[`Index when Get Components service endpoint returns an array of multiple
           <td
             class="action table-secondary"
           >
-            <a
-              class="btn btn-info"
-              href="/components/test-component-id-1/openapi-specs/1"
-              target="_self"
-            >
-              
-          View OpenAPI spec
-        
-            </a>
+            <div>
+              <span
+                class="badge badge-danger"
+              >
+                OpenAPI spec not found
+              </span>
+            </div>
           </td>
            
           <td
@@ -860,15 +858,13 @@ exports[`Index when Get Components service endpoint returns an array of multiple
           <td
             class="action table-secondary"
           >
-            <a
-              class="btn btn-info"
-              href="/components/test-component-id-1/openapi-specs/2"
-              target="_self"
-            >
-              
-          View OpenAPI spec
-        
-            </a>
+            <div>
+              <span
+                class="badge badge-danger"
+              >
+                OpenAPI spec not found
+              </span>
+            </div>
           </td>
            
           <td
@@ -936,15 +932,13 @@ exports[`Index when Get Components service endpoint returns an array of multiple
           <td
             class="action table-secondary"
           >
-            <a
-              class="btn btn-info"
-              href="/components/test-component-id-3/openapi-specs/1"
-              target="_self"
-            >
-              
-          View OpenAPI spec
-        
-            </a>
+            <div>
+              <span
+                class="badge badge-danger"
+              >
+                OpenAPI spec not found
+              </span>
+            </div>
           </td>
            
           <td
@@ -1012,15 +1006,13 @@ exports[`Index when Get Components service endpoint returns an array of multiple
           <td
             class="action table-secondary"
           >
-            <a
-              class="btn btn-info"
-              href="/components/test-component-id-3/openapi-specs/2"
-              target="_self"
-            >
-              
-          View OpenAPI spec
-        
-            </a>
+            <div>
+              <span
+                class="badge badge-danger"
+              >
+                OpenAPI spec not found
+              </span>
+            </div>
           </td>
            
           <td
