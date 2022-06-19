@@ -1,40 +1,34 @@
-import Index from '~/pages/areas/_areaId/diagrams/index.vue'
+import Index from '~/pages/diagrams/_diagramId'
 import { createPageWrapper } from '~/test/pages/pageUtils'
 import {
-  createArea,
   createComponent,
-  createComponentDependencies,
-  createSubComponentDependencies,
-  createSummaryWithEmptyComponentAndSubComponentDependencies,
+  createComponentAvailableDataRequests,
+  createDiagramWithEmptyGraph,
+  createGraph,
 } from '~/test/testDataUtils'
 
 describe('Index', () => {
   const route = {
     params: {
-      areaId: 'test-area-id-1',
+      diagramId: 'test-diagram-id-1',
     },
   }
-  let area
-  let allComponents
-  let summary
+  let components
+  let diagram
   let wrapperActions
   let wrapper
   async function createWrapper() {
     wrapper = await createPageWrapper(Index, {
       route,
       serviceRequests: {
-        '/v1/areas/test-area-id-1?fields=area(id,name,components(id,name,typeId,tags,description,notes,responsibilities,teams,platformId,states(environmentId,pluginId)))':
+        ...createComponentAvailableDataRequests(),
+        '/v1/components?fields=components(id,name,typeId,tags,description,notes,responsibilities,teams,platformId,states(environmentId,pluginId))':
           {
-            responseBody: { area },
+            responseBody: { components },
           },
-        '/v1/components?fields=components(id,name,typeId,tags,description,notes,responsibilities,teams,platformId)':
-          {
-            responseBody: { components: allComponents },
-          },
-        '/v1/summary?fields=summary(componentDependencies,subComponentDependencies)':
-          {
-            responseBody: { summary },
-          },
+        '/v1/diagrams/test-diagram-id-1': {
+          responseBody: { diagram },
+        },
       },
     })
     for (const wrapperAction of wrapperActions) {
@@ -43,18 +37,15 @@ describe('Index', () => {
   }
 
   beforeEach(() => {
-    area = createArea({ areaNumber: 1 })
-    area.components = [
+    components = [
       createComponent({ componentNumber: 1 }),
       createComponent({ componentNumber: 2 }),
       createComponent({ componentNumber: 3 }),
-    ]
-    allComponents = [].concat(area.components, [
       createComponent({ componentNumber: 4 }),
       createComponent({ componentNumber: 5 }),
       createComponent({ componentNumber: 6 }),
-    ])
-    summary = createSummaryWithEmptyComponentAndSubComponentDependencies()
+    ]
+    diagram = createDiagramWithEmptyGraph()
     wrapperActions = []
   })
 
@@ -66,21 +57,20 @@ describe('Index', () => {
   test('has the right page title', async () => {
     await createWrapper()
     expect(wrapper.vm.$metaInfo.title).toBe(
-      'Kronicle - Test Area Name 1 - Visualizations'
+      'Kronicle - Test Component Name 1 - Diagrams'
     )
   })
 
-  describe('when Get Summary service endpoint returns no dependencies', () => {
+  describe('when Get Diagram service endpoint returns no edges', () => {
     test('renders the page', async () => {
       await createWrapper()
       expect(wrapper.element).toMatchSnapshot()
     })
   })
 
-  describe('when Get Summary service endpoint returns an array of multiple component dependencies', () => {
+  describe('when Get Diagram service endpoint returns an array of multiple component edges', () => {
     beforeEach(() => {
-      summary.componentDependencies = createComponentDependencies()
-      summary.subComponentDependencies = createSubComponentDependencies()
+      diagram.states[0] = createGraph()
     })
 
     test('renders the page', async () => {
@@ -91,11 +81,11 @@ describe('Index', () => {
     describe('when the detailed checkbox is checked', () => {
       beforeEach(() => {
         wrapperActions.push(async (wrapper) => {
-          await wrapper.get('#detailed-dependencies').trigger('click')
+          await wrapper.get('#detailed-edges').trigger('click')
         })
       })
 
-      test('shows detailed dependencies in graph', async () => {
+      test('shows detailed edges in graph', async () => {
         await createWrapper()
         expect(wrapper.element).toMatchSnapshot()
       })

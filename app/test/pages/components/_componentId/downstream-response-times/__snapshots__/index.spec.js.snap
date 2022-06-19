@@ -25,11 +25,11 @@ exports[`Index when Get Component service endpoint returns a component renders t
      
     <a
       class="btn my-1 btn-secondary"
-      href="/components/test-component-id-1/dependencies"
+      href="/components/test-component-id-1/diagrams"
       target="_self"
     >
       
-    Visualizations
+    Diagrams
   
     </a>
      
@@ -162,11 +162,11 @@ exports[`Index when Get Component service endpoint returns a component when Get 
      
     <a
       class="btn my-1 btn-secondary"
-      href="/components/test-component-id-3/dependencies"
+      href="/components/test-component-id-3/diagrams"
       target="_self"
     >
       
-    Visualizations
+    Diagrams
   
     </a>
      
@@ -301,11 +301,11 @@ exports[`Index when Get Component service endpoint returns a component when Get 
      
     <a
       class="btn my-1 btn-secondary"
-      href="/components/test-component-id-1/dependencies"
+      href="/components/test-component-id-1/diagrams"
       target="_self"
     >
       
-    Visualizations
+    Diagrams
   
     </a>
      

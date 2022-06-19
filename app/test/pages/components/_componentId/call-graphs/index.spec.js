@@ -3,8 +3,7 @@ import { createPageWrapper } from '~/test/pages/pageUtils'
 import {
   createComponent,
   createComponentAvailableDataRequests,
-  createDependency,
-  createSubComponentNode,
+  createGraphEdge,
 } from '~/test/testDataUtils'
 import {
   expectCallGraphCount,
@@ -85,7 +84,7 @@ describe('Index', () => {
                 subComponentNodeNumber: 2,
               }),
             ],
-            edges: [createDependency({ sourceIndex: 0, targetIndex: 1 })],
+            edges: [createGraphEdge({ sourceIndex: 0, targetIndex: 1 })],
             sampleSize: 1,
           },
         },
@@ -98,7 +97,7 @@ describe('Index', () => {
               }),
               createSubComponentNode({ componentNodeNumber: 2 }),
             ],
-            edges: [createDependency({ sourceIndex: 0, targetIndex: 1 })],
+            edges: [createGraphEdge({ sourceIndex: 0, targetIndex: 1 })],
             sampleSize: 1,
           },
         },
@@ -111,7 +110,7 @@ describe('Index', () => {
               }),
               createSubComponentNode({ componentNodeNumber: 3 }),
             ],
-            edges: [createDependency({ sourceIndex: 0, targetIndex: 1 })],
+            edges: [createGraphEdge({ sourceIndex: 0, targetIndex: 1 })],
             sampleSize: 1,
           },
         },

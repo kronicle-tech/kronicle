@@ -8,7 +8,7 @@ exports[`Index when Get Test service endpoint returns a test and the Get Team se
     class="text-info my-3"
   >
     
-    Test Team Name 1 Team - test-test-id-1 Test
+    Test Team Name 1 - test-test-id-1 Test
   
   </h1>
    
@@ -25,11 +25,11 @@ exports[`Index when Get Test service endpoint returns a test and the Get Team se
      
     <a
       class="btn my-1 btn-secondary"
-      href="/teams/test-team-id-1/dependencies"
+      href="/teams/test-team-id-1/diagrams"
       target="_self"
     >
       
-    Visualizations
+    Diagrams
   
     </a>
      
@@ -215,7 +215,7 @@ exports[`Index when Get Test service endpoint returns a test and the Get Team se
     class="text-info my-3"
   >
     
-    Test Team Name 1 Team - test-test-id-1 Test
+    Test Team Name 1 - test-test-id-1 Test
   
   </h1>
    
@@ -232,11 +232,11 @@ exports[`Index when Get Test service endpoint returns a test and the Get Team se
      
     <a
       class="btn my-1 btn-secondary"
-      href="/teams/test-team-id-1/dependencies"
+      href="/teams/test-team-id-1/diagrams"
       target="_self"
     >
       
-    Visualizations
+    Diagrams
   
     </a>
      

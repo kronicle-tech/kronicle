@@ -73,8 +73,7 @@ describe('ComponentDependenciesView', () => {
   beforeEach(() => {
     propsData = {
       diagram: {
-        nodes: [],
-        edges: [],
+        states: [],
       },
       allComponents: [],
     }
@@ -122,17 +121,23 @@ describe('ComponentDependenciesView', () => {
     describe('and diagram prop contains multiple edges', () => {
       beforeEach(() => {
         propsData.diagram = {
-          nodes: [
-            createComponentNode(1),
-            createComponentNode(2),
-            createComponentNode(3),
-            createComponentNode(4),
-          ],
-          edges: [
-            createDependency(undefined, 0),
-            createDependency(0, 1),
-            createDependency(1, 2),
-            createDependency(1, 3),
+          states: [
+            {
+              type: 'graph',
+              pluginId: 'test-plugin-id',
+              nodes: [
+                createComponentNode(1),
+                createComponentNode(2),
+                createComponentNode(3),
+                createComponentNode(4),
+              ],
+              edges: [
+                createDependency(undefined, 0),
+                createDependency(0, 1),
+                createDependency(1, 2),
+                createDependency(1, 3),
+              ],
+            },
           ],
         }
       })

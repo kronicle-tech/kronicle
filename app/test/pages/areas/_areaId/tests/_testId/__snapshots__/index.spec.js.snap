@@ -8,7 +8,7 @@ exports[`Index when Get Test service endpoint returns a test and the Get Area se
     class="text-info my-3"
   >
     
-    Test Area Name 1 Area - test-test-id-1 Test
+    Test Area Name 1 - test-test-id-1 Test
   
   </h1>
    
@@ -25,11 +25,11 @@ exports[`Index when Get Test service endpoint returns a test and the Get Area se
      
     <a
       class="btn my-1 btn-secondary"
-      href="/areas/test-area-id-1/dependencies"
+      href="/areas/test-area-id-1/diagrams"
       target="_self"
     >
       
-    Visualizations
+    Diagrams
   
     </a>
      
@@ -85,7 +85,7 @@ exports[`Index when Get Test service endpoint returns a test and the Get Area se
       target="_self"
     >
       
-    OpenAPI Specs
+    OpenAPI
   
     </a>
   </div>
@@ -225,7 +225,7 @@ exports[`Index when Get Test service endpoint returns a test and the Get Area se
     class="text-info my-3"
   >
     
-    Test Area Name 1 Area - test-test-id-1 Test
+    Test Area Name 1 - test-test-id-1 Test
   
   </h1>
    
@@ -242,11 +242,11 @@ exports[`Index when Get Test service endpoint returns a test and the Get Area se
      
     <a
       class="btn my-1 btn-secondary"
-      href="/areas/test-area-id-1/dependencies"
+      href="/areas/test-area-id-1/diagrams"
       target="_self"
     >
       
-    Visualizations
+    Diagrams
   
     </a>
      
@@ -302,7 +302,7 @@ exports[`Index when Get Test service endpoint returns a test and the Get Area se
       target="_self"
     >
       
-    OpenAPI Specs
+    OpenAPI
   
     </a>
   </div>

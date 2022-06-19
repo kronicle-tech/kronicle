@@ -1,8 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`TeamTabs renders the component 1`] = `
-"<div class=\\"my-3\\"><a href=\\"/teams/test-team-id\\" target=\\"_self\\" class=\\"btn my-1 btn-secondary\\"> Info </a> <a href=\\"/teams/test-team-id/dependencies\\" target=\\"_self\\" class=\\"btn my-1 btn-secondary\\">
-    Visualizations
+"<div class=\\"my-3\\"><a href=\\"/teams/test-team-id\\" target=\\"_self\\" class=\\"btn my-1 btn-secondary\\"> Info </a> <a href=\\"/teams/test-team-id/diagrams\\" target=\\"_self\\" class=\\"btn my-1 btn-secondary\\">
+    Diagrams
   </a> <a href=\\"/teams/test-team-id/components\\" target=\\"_self\\" class=\\"btn my-1 btn-secondary\\">
     Components
   </a> <a href=\\"/teams/test-team-id/cross-functional-requirements\\" target=\\"_self\\" class=\\"btn my-1 btn-secondary\\">

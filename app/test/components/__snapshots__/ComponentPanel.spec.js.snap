@@ -2,7 +2,9 @@
 
 exports[`ComponentPanel when component is set to a component renders a h3 tag containing the component id and a link to the component's page 1`] = `
 "<div>
-  <h4><a href=\\"/components/test-id\\">Test Name</a></h4>
+  <h4 class=\\"text-info\\">Test Name</h4> <a href=\\"/components/test-id\\" target=\\"_self\\" class=\\"btn my-1 btn-secondary\\">
+    More Info
+  </a>
   <!---->
   <!---->
   <!---->
@@ -16,11 +18,13 @@ exports[`ComponentPanel when component is set to a component renders a h3 tag co
 
 exports[`ComponentPanel when description is set renders the description 1`] = `
 "<div>
-  <h4><a href=\\"/components/test-id\\">Test Name</a></h4>
+  <h4 class=\\"text-info\\">Test Name</h4> <a href=\\"/components/test-id\\" target=\\"_self\\" class=\\"btn my-1 btn-secondary\\">
+    More Info
+  </a>
   <!---->
   <!---->
-  <div>
-    <h5>Description</h5>
+  <div class=\\"my-4\\">
+    <h5 class=\\"text-primary\\">Description</h5>
     <div>
       <p>Description</p>
     </div>
@@ -35,7 +39,9 @@ exports[`ComponentPanel when description is set renders the description 1`] = `
 
 exports[`ComponentPanel when links is set renders the links 1`] = `
 "<div>
-  <h4><a href=\\"/components/test-id\\">Test Name</a></h4>
+  <h4 class=\\"text-info\\">Test Name</h4> <a href=\\"/components/test-id\\" target=\\"_self\\" class=\\"btn my-1 btn-secondary\\">
+    More Info
+  </a>
   <!---->
   <!---->
   <!---->
@@ -43,8 +49,8 @@ exports[`ComponentPanel when links is set renders the links 1`] = `
   <!---->
   <!---->
   <!---->
-  <div>
-    <h5>Links</h5>
+  <div class=\\"my-4\\">
+    <h5 class=\\"text-primary\\">Links</h5>
     <ul>
       <li><a href=\\"https://example.org/test-1\\" target=\\"_blank\\">https://example.org/test-1</a> <br>
         <!---->
@@ -59,12 +65,14 @@ exports[`ComponentPanel when links is set renders the links 1`] = `
 
 exports[`ComponentPanel when notes is set renders the notes 1`] = `
 "<div>
-  <h4><a href=\\"/components/test-id\\">Test Name</a></h4>
+  <h4 class=\\"text-info\\">Test Name</h4> <a href=\\"/components/test-id\\" target=\\"_self\\" class=\\"btn my-1 btn-secondary\\">
+    More Info
+  </a>
   <!---->
   <!---->
   <!---->
-  <div>
-    <h5>Notes</h5>
+  <div class=\\"my-4\\">
+    <h5 class=\\"text-primary\\">Notes</h5>
     <div>
       <p>Notes</p>
     </div>
@@ -78,13 +86,15 @@ exports[`ComponentPanel when notes is set renders the notes 1`] = `
 
 exports[`ComponentPanel when responsibilities is set renders the responsibilities 1`] = `
 "<div>
-  <h4><a href=\\"/components/test-id\\">Test Name</a></h4>
+  <h4 class=\\"text-info\\">Test Name</h4> <a href=\\"/components/test-id\\" target=\\"_self\\" class=\\"btn my-1 btn-secondary\\">
+    More Info
+  </a>
   <!---->
   <!---->
   <!---->
   <!---->
-  <div>
-    <h5>Responsibilities</h5>
+  <div class=\\"my-4\\">
+    <h5 class=\\"text-primary\\">Responsibilities</h5>
     <ul>
       <li>
         <div>
@@ -106,10 +116,12 @@ exports[`ComponentPanel when responsibilities is set renders the responsibilitie
 
 exports[`ComponentPanel when tags is set renders the tags 1`] = `
 "<div>
-  <h4><a href=\\"/components/test-id\\">Test Name</a></h4>
+  <h4 class=\\"text-info\\">Test Name</h4> <a href=\\"/components/test-id\\" target=\\"_self\\" class=\\"btn my-1 btn-secondary\\">
+    More Info
+  </a>
   <!---->
-  <div>
-    <h5>Tags</h5>
+  <div class=\\"my-4\\">
+    <h5 class=\\"text-primary\\">Tags</h5>
     <ul>
       <li>
         <!---->
@@ -130,9 +142,11 @@ exports[`ComponentPanel when tags is set renders the tags 1`] = `
 
 exports[`ComponentPanel when teams is set renders the teams 1`] = `
 "<div>
-  <h4><a href=\\"/components/test-id\\">Test Name</a></h4>
-  <div>
-    <h5>Teams</h5>
+  <h4 class=\\"text-info\\">Test Name</h4> <a href=\\"/components/test-id\\" target=\\"_self\\" class=\\"btn my-1 btn-secondary\\">
+    More Info
+  </a>
+  <div class=\\"my-4\\">
+    <h5 class=\\"text-primary\\">Teams</h5>
     <ul>
       <li><a href=\\"/teams/test-team-id-1\\" class=\\"team-name\\">test-team-id-1</a>
         <!---->
@@ -156,14 +170,16 @@ exports[`ComponentPanel when teams is set renders the teams 1`] = `
 
 exports[`ComponentPanel when techDebts is set renders the techDebts 1`] = `
 "<div>
-  <h4><a href=\\"/components/test-id\\">Test Name</a></h4>
+  <h4 class=\\"text-info\\">Test Name</h4> <a href=\\"/components/test-id\\" target=\\"_self\\" class=\\"btn my-1 btn-secondary\\">
+    More Info
+  </a>
   <!---->
   <!---->
   <!---->
   <!---->
   <!---->
-  <div>
-    <h5>Tech Debts</h5>
+  <div class=\\"my-4\\">
+    <h5 class=\\"text-primary\\">Tech Debts</h5>
     <ul>
       <li><span><span class=\\"badge badge-success\\">Missing Priority</span></span>
         <div>

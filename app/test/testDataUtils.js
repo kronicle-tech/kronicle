@@ -418,16 +418,16 @@ export function createTest({ testNumber, additionalFields = {} }) {
   }
 }
 
-export function createSummaryWithEmptyComponentAndSubComponentDependencies() {
+export function createDiagramWithEmptyGraph() {
   return {
-    componentDependencies: {
-      nodes: [],
-      dependencies: [],
-    },
-    subComponentDependencies: {
-      nodes: [],
-      dependencies: [],
-    },
+    states: [
+      {
+        type: 'graph',
+        pluginId: 'test-plugin-id',
+        nodes: [],
+        edges: [],
+      },
+    ],
   }
 }
 
@@ -669,55 +669,29 @@ function createToDo({ componentNumber, toDoNumber }) {
   }
 }
 
-export function createComponentDependencies() {
+export function createGraph() {
   return {
+    type: 'graph',
+    pluginId: 'test-plugin-id',
     nodes: [
-      createComponentNode({ componentNodeNumber: 1 }),
-      createComponentNode({ componentNodeNumber: 2 }),
-      createComponentNode({ componentNodeNumber: 3 }),
+      createGraphNode({ componentNodeNumber: 1 }),
+      createGraphNode({ componentNodeNumber: 2 }),
+      createGraphNode({ componentNodeNumber: 3 }),
     ],
-    dependencies: [
-      createDependency({ sourceIndex: 0, targetIndex: 1 }),
-      createDependency({ sourceIndex: 1, targetIndex: 2 }),
+    edges: [
+      createGraphEdge({ sourceIndex: 0, targetIndex: 1 }),
+      createGraphEdge({ sourceIndex: 1, targetIndex: 2 }),
     ],
   }
 }
 
-export function createSubComponentDependencies() {
-  return {
-    nodes: [
-      createSubComponentNode({ componentNodeNumber: 1 }),
-      createSubComponentNode({ componentNodeNumber: 2 }),
-      createSubComponentNode({ componentNodeNumber: 3 }),
-    ],
-    dependencies: [
-      createDependency({ sourceIndex: 0, targetIndex: 1 }),
-      createDependency({ sourceIndex: 1, targetIndex: 2 }),
-    ],
-  }
-}
-
-export function createComponentNode({ componentNodeNumber }) {
+export function createGraphNode({ componentNodeNumber }) {
   return {
     componentId: `test-component-id-${componentNodeNumber}`,
   }
 }
 
-export function createSubComponentNode({
-  componentNodeNumber,
-  subComponentNodeNumber,
-}) {
-  if (subComponentNodeNumber === undefined) {
-    subComponentNodeNumber = componentNodeNumber
-  }
-  return {
-    componentId: `test-component-id-${componentNodeNumber}`,
-    spanName: `test-span-name-${subComponentNodeNumber}-${subComponentNodeNumber}`,
-    tags: {},
-  }
-}
-
-export function createDependency({ sourceIndex, targetIndex }) {
+export function createGraphEdge({ sourceIndex, targetIndex }) {
   return {
     sourceIndex,
     targetIndex,

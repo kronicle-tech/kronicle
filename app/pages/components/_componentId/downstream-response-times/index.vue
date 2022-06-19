@@ -53,7 +53,8 @@ export default Vue.extend({
       .then((json) => json.components as Component[])
 
     const summary = await fetch(
-      `${$config.serviceBaseUrl}/v1/summary?fields=summary(subComponentDependencies)`
+      `${$config.serviceBaseUrl}/v1/summary?fields=summary(subComponent      componentAvailableData: {} as ComponentAvailableData,
+)`
     )
       .then((res) => res.json())
       .then((json) => json.summary as Summary)

@@ -8,7 +8,7 @@ exports[`Index when Get Area service endpoint returns an area when the area has 
     class="text-info my-3"
   >
     
-    Test Area Name 1 Area - Cross Functional Requirements
+    Test Area Name 1 - Cross Functional Requirements
   
   </h1>
    
@@ -25,11 +25,11 @@ exports[`Index when Get Area service endpoint returns an area when the area has 
      
     <a
       class="btn my-1 btn-secondary"
-      href="/areas/test-area-id-1/dependencies"
+      href="/areas/test-area-id-1/diagrams"
       target="_self"
     >
       
-    Visualizations
+    Diagrams
   
     </a>
      
@@ -85,7 +85,7 @@ exports[`Index when Get Area service endpoint returns an area when the area has 
       target="_self"
     >
       
-    OpenAPI Specs
+    OpenAPI
   
     </a>
   </div>
@@ -1174,7 +1174,7 @@ exports[`Index when Get Area service endpoint returns an area when the area has 
     class="text-info my-3"
   >
     
-    Test Area Name 1 Area - Cross Functional Requirements
+    Test Area Name 1 - Cross Functional Requirements
   
   </h1>
    
@@ -1191,11 +1191,11 @@ exports[`Index when Get Area service endpoint returns an area when the area has 
      
     <a
       class="btn my-1 btn-secondary"
-      href="/areas/test-area-id-1/dependencies"
+      href="/areas/test-area-id-1/diagrams"
       target="_self"
     >
       
-    Visualizations
+    Diagrams
   
     </a>
      
@@ -1251,7 +1251,7 @@ exports[`Index when Get Area service endpoint returns an area when the area has 
       target="_self"
     >
       
-    OpenAPI Specs
+    OpenAPI
   
     </a>
   </div>
@@ -1865,7 +1865,7 @@ exports[`Index when Get Area service endpoint returns an area when the area has 
     class="text-info my-3"
   >
     
-    Test Area Name 1 Area - Cross Functional Requirements
+    Test Area Name 1 - Cross Functional Requirements
   
   </h1>
    
@@ -1882,11 +1882,11 @@ exports[`Index when Get Area service endpoint returns an area when the area has 
      
     <a
       class="btn my-1 btn-secondary"
-      href="/areas/test-area-id-1/dependencies"
+      href="/areas/test-area-id-1/diagrams"
       target="_self"
     >
       
-    Visualizations
+    Diagrams
   
     </a>
      
@@ -1942,7 +1942,7 @@ exports[`Index when Get Area service endpoint returns an area when the area has 
       target="_self"
     >
       
-    OpenAPI Specs
+    OpenAPI
   
     </a>
   </div>
