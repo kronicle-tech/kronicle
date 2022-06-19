@@ -113,7 +113,10 @@ export default {
     },
   },
 
-  redirect: [{ from: '^/components/?$', to: '/all-components' }],
+  redirect: [
+    { from: '^/components/?$', to: '/all-components' },
+    { from: '^/all-components/dependencies/?$', to: '/diagrams' },
+  ],
 
   proxy: {
     '/api': {
