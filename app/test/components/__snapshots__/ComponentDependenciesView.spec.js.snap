@@ -1,36 +1,1927 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`ComponentDependenciesView when components prop contains multiple components and diagram prop contains an empty edges array renders no connections 1`] = `
+"<div>
+  <transition-stub name=\\"\\" css=\\"true\\" enterclass=\\"\\" leaveclass=\\"show\\" entertoclass=\\"show\\" leavetoclass=\\"\\" enteractiveclass=\\"\\" leaveactiveclass=\\"\\">
+    <div role=\\"alert\\" aria-live=\\"polite\\" aria-atomic=\\"true\\" class=\\"alert alert-dismissible alert-info\\"><button type=\\"button\\" aria-label=\\"Close\\" class=\\"close\\">×</button>
+      Click a dot in the diagram to see more information about that component
+    </div>
+  </transition-stub>
+  <div class=\\"mt-3 mb-4\\" components=\\"[object Object],[object Object],[object Object],[object Object]\\"> <button id=\\"toggleFilters\\" type=\\"button\\" class=\\"btn btn-primary collapsed\\" aria-expanded=\\"false\\" aria-controls=\\"filters\\"><svg viewBox=\\"0 0 16 16\\" width=\\"1em\\" height=\\"1em\\" focusable=\\"false\\" role=\\"img\\" aria-label=\\"blank\\" aria-hidden=\\"true\\" xmlns=\\"http://www.w3.org/2000/svg\\" fill=\\"currentColor\\" class=\\"bi-blank b-icon bi\\">
+        <g></g>
+      </svg> Filters
+    </button>
+    <transition-stub css=\\"true\\" enterclass=\\"\\" leaveclass=\\"collapse show\\" entertoclass=\\"collapse show\\" leavetoclass=\\"collapse\\" enteractiveclass=\\"collapsing\\" leaveactiveclass=\\"collapsing\\" class=\\"mt-3\\">
+      <div id=\\"filters\\" class=\\"collapse\\" style=\\"display: none;\\">
+        <div class=\\"card-columns\\">
+          <div class=\\"card bg-secondary\\">
+            <!---->
+            <!---->
+            <div class=\\"card-body\\">
+              <!---->
+              <!---->
+              <fieldset class=\\"form-group\\" id=\\"__BVID__23\\">
+                <legend tabindex=\\"-1\\" class=\\"bv-no-focus-ring col-form-label pt-0\\" id=\\"__BVID__23__BV_label_\\">Dependency Types</legend>
+                <div>
+                  <div role=\\"group\\" tabindex=\\"-1\\" class=\\"bv-no-focus-ring\\" id=\\"__BVID__24\\"></div>
+                  <!---->
+                  <!---->
+                  <!---->
+                </div>
+              </fieldset>
+            </div>
+            <!---->
+            <!---->
+          </div>
+          <div class=\\"card bg-secondary\\">
+            <!---->
+            <!---->
+            <div class=\\"card-body\\">
+              <!---->
+              <!---->
+              <div role=\\"group\\" class=\\"form-row form-group\\" id=\\"__BVID__25\\"><label for=\\"graph-scope-related-radius\\" class=\\"col-6 col-form-label col-form-label-sm\\" id=\\"__BVID__25__BV_label_\\">Radius:</label>
+                <div class=\\"col\\"><select id=\\"graph-scope-related-radius\\" class=\\"custom-select custom-select-sm\\">
+                    <option value=\\"0\\">0</option>
+                    <option value=\\"1\\">1</option>
+                    <option value=\\"2\\">2</option>
+                    <option value=\\"3\\">3</option>
+                    <option value=\\"4\\">4</option>
+                    <option value=\\"5\\">5</option>
+                    <option value=\\"6\\">6</option>
+                    <option value=\\"7\\">7</option>
+                    <option value=\\"8\\">8</option>
+                    <option value=\\"9\\">9</option>
+                    <option value=\\"10\\">10</option>
+                  </select>
+                  <!---->
+                  <!---->
+                  <!---->
+                </div>
+              </div>
+            </div>
+            <!---->
+            <!---->
+          </div>
+          <div class=\\"card bg-secondary\\">
+            <!---->
+            <!---->
+            <div class=\\"card-body\\">
+              <!---->
+              <!---->
+              <div role=\\"group\\" class=\\"form-row form-group\\" id=\\"__BVID__27\\"><label for=\\"graph-zoom\\" class=\\"col-6 col-form-label col-form-label-sm\\" id=\\"__BVID__27__BV_label_\\">Zoom:</label>
+                <div class=\\"col\\"><select id=\\"graph-zoom\\" class=\\"custom-select custom-select-sm\\">
+                    <option value=\\"25\\">25%</option>
+                    <option value=\\"50\\">50%</option>
+                    <option value=\\"75\\">75%</option>
+                    <option value=\\"100\\">100%</option>
+                    <option value=\\"125\\">125%</option>
+                    <option value=\\"150\\">150%</option>
+                    <option value=\\"200\\">200%</option>
+                    <option value=\\"400\\">400%</option>
+                  </select>
+                  <!---->
+                  <!---->
+                  <!---->
+                </div>
+              </div>
+            </div>
+            <!---->
+            <!---->
+          </div>
+          <!---->
+          <!---->
+          <!---->
+          <div class=\\"card bg-secondary\\">
+            <!---->
+            <!---->
+            <div class=\\"card-body\\">
+              <!---->
+              <!---->
+              <fieldset class=\\"form-group\\" id=\\"__BVID__29\\">
+                <legend tabindex=\\"-1\\" class=\\"bv-no-focus-ring col-form-label pt-0\\" id=\\"__BVID__29__BV_label_\\">Teams</legend>
+                <div>
+                  <div role=\\"group\\" tabindex=\\"-1\\" class=\\"bv-no-focus-ring\\" id=\\"__BVID__30\\">
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"team\\" class=\\"custom-control-input\\" value=\\"test-team-id-1-1\\" id=\\"__BVID__30_BV_option_0\\"><label class=\\"custom-control-label\\" for=\\"__BVID__30_BV_option_0\\"><span>test-team-id-1-1</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"team\\" class=\\"custom-control-input\\" value=\\"test-team-id-1-2\\" id=\\"__BVID__30_BV_option_1\\"><label class=\\"custom-control-label\\" for=\\"__BVID__30_BV_option_1\\"><span>test-team-id-1-2</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"team\\" class=\\"custom-control-input\\" value=\\"test-team-id-2-1\\" id=\\"__BVID__30_BV_option_2\\"><label class=\\"custom-control-label\\" for=\\"__BVID__30_BV_option_2\\"><span>test-team-id-2-1</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"team\\" class=\\"custom-control-input\\" value=\\"test-team-id-2-2\\" id=\\"__BVID__30_BV_option_3\\"><label class=\\"custom-control-label\\" for=\\"__BVID__30_BV_option_3\\"><span>test-team-id-2-2</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"team\\" class=\\"custom-control-input\\" value=\\"test-team-id-3-1\\" id=\\"__BVID__30_BV_option_4\\"><label class=\\"custom-control-label\\" for=\\"__BVID__30_BV_option_4\\"><span>test-team-id-3-1</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"team\\" class=\\"custom-control-input\\" value=\\"test-team-id-3-2\\" id=\\"__BVID__30_BV_option_5\\"><label class=\\"custom-control-label\\" for=\\"__BVID__30_BV_option_5\\"><span>test-team-id-3-2</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"team\\" class=\\"custom-control-input\\" value=\\"test-team-id-4-1\\" id=\\"__BVID__30_BV_option_6\\"><label class=\\"custom-control-label\\" for=\\"__BVID__30_BV_option_6\\"><span>test-team-id-4-1</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"team\\" class=\\"custom-control-input\\" value=\\"test-team-id-4-2\\" id=\\"__BVID__30_BV_option_7\\"><label class=\\"custom-control-label\\" for=\\"__BVID__30_BV_option_7\\"><span>test-team-id-4-2</span></label></div>
+                  </div>
+                  <!---->
+                  <!---->
+                  <!---->
+                </div>
+              </fieldset>
+            </div>
+            <!---->
+            <!---->
+          </div>
+          <div class=\\"card bg-secondary\\">
+            <!---->
+            <!---->
+            <div class=\\"card-body\\">
+              <!---->
+              <!---->
+              <fieldset class=\\"form-group\\" id=\\"__BVID__39\\">
+                <legend tabindex=\\"-1\\" class=\\"bv-no-focus-ring col-form-label pt-0\\" id=\\"__BVID__39__BV_label_\\">Tags</legend>
+                <div>
+                  <div role=\\"group\\" tabindex=\\"-1\\" class=\\"bv-no-focus-ring\\" id=\\"__BVID__40\\">
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"tag\\" class=\\"custom-control-input\\" value=\\"test-tag-1-1\\" id=\\"__BVID__40_BV_option_0\\"><label class=\\"custom-control-label\\" for=\\"__BVID__40_BV_option_0\\"><span>test-tag-1-1</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"tag\\" class=\\"custom-control-input\\" value=\\"test-tag-1-2\\" id=\\"__BVID__40_BV_option_1\\"><label class=\\"custom-control-label\\" for=\\"__BVID__40_BV_option_1\\"><span>test-tag-1-2</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"tag\\" class=\\"custom-control-input\\" value=\\"test-tag-2-1\\" id=\\"__BVID__40_BV_option_2\\"><label class=\\"custom-control-label\\" for=\\"__BVID__40_BV_option_2\\"><span>test-tag-2-1</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"tag\\" class=\\"custom-control-input\\" value=\\"test-tag-2-2\\" id=\\"__BVID__40_BV_option_3\\"><label class=\\"custom-control-label\\" for=\\"__BVID__40_BV_option_3\\"><span>test-tag-2-2</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"tag\\" class=\\"custom-control-input\\" value=\\"test-tag-3-1\\" id=\\"__BVID__40_BV_option_4\\"><label class=\\"custom-control-label\\" for=\\"__BVID__40_BV_option_4\\"><span>test-tag-3-1</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"tag\\" class=\\"custom-control-input\\" value=\\"test-tag-3-2\\" id=\\"__BVID__40_BV_option_5\\"><label class=\\"custom-control-label\\" for=\\"__BVID__40_BV_option_5\\"><span>test-tag-3-2</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"tag\\" class=\\"custom-control-input\\" value=\\"test-tag-4-1\\" id=\\"__BVID__40_BV_option_6\\"><label class=\\"custom-control-label\\" for=\\"__BVID__40_BV_option_6\\"><span>test-tag-4-1</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"tag\\" class=\\"custom-control-input\\" value=\\"test-tag-4-2\\" id=\\"__BVID__40_BV_option_7\\"><label class=\\"custom-control-label\\" for=\\"__BVID__40_BV_option_7\\"><span>test-tag-4-2</span></label></div>
+                  </div>
+                  <!---->
+                  <!---->
+                  <!---->
+                </div>
+              </fieldset>
+            </div>
+            <!---->
+            <!---->
+          </div>
+          <div class=\\"card bg-secondary\\">
+            <!---->
+            <!---->
+            <div class=\\"card-body\\">
+              <!---->
+              <!---->
+              <fieldset class=\\"form-group\\" id=\\"__BVID__49\\">
+                <legend tabindex=\\"-1\\" class=\\"bv-no-focus-ring col-form-label pt-0\\" id=\\"__BVID__49__BV_label_\\">Component Types</legend>
+                <div>
+                  <div role=\\"group\\" tabindex=\\"-1\\" class=\\"bv-no-focus-ring\\" id=\\"__BVID__50\\">
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"componentTypeId\\" class=\\"custom-control-input\\" value=\\"test-component-type-id-1\\" id=\\"__BVID__50_BV_option_0\\"><label class=\\"custom-control-label\\" for=\\"__BVID__50_BV_option_0\\"><span>test-component-type-id-1</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"componentTypeId\\" class=\\"custom-control-input\\" value=\\"test-component-type-id-2\\" id=\\"__BVID__50_BV_option_1\\"><label class=\\"custom-control-label\\" for=\\"__BVID__50_BV_option_1\\"><span>test-component-type-id-2</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"componentTypeId\\" class=\\"custom-control-input\\" value=\\"test-component-type-id-3\\" id=\\"__BVID__50_BV_option_2\\"><label class=\\"custom-control-label\\" for=\\"__BVID__50_BV_option_2\\"><span>test-component-type-id-3</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"componentTypeId\\" class=\\"custom-control-input\\" value=\\"test-component-type-id-4\\" id=\\"__BVID__50_BV_option_3\\"><label class=\\"custom-control-label\\" for=\\"__BVID__50_BV_option_3\\"><span>test-component-type-id-4</span></label></div>
+                  </div>
+                  <!---->
+                  <!---->
+                  <!---->
+                </div>
+              </fieldset>
+            </div>
+            <!---->
+            <!---->
+          </div>
+          <div class=\\"card bg-secondary\\">
+            <!---->
+            <!---->
+            <div class=\\"card-body\\">
+              <!---->
+              <!---->
+              <fieldset class=\\"form-group\\" id=\\"__BVID__55\\">
+                <legend tabindex=\\"-1\\" class=\\"bv-no-focus-ring col-form-label pt-0\\" id=\\"__BVID__55__BV_label_\\">Platforms</legend>
+                <div>
+                  <div role=\\"group\\" tabindex=\\"-1\\" class=\\"bv-no-focus-ring\\" id=\\"__BVID__56\\">
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"platformId\\" class=\\"custom-control-input\\" value=\\"test-platform-id-1\\" id=\\"__BVID__56_BV_option_0\\"><label class=\\"custom-control-label\\" for=\\"__BVID__56_BV_option_0\\"><span>test-platform-id-1</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"platformId\\" class=\\"custom-control-input\\" value=\\"test-platform-id-2\\" id=\\"__BVID__56_BV_option_1\\"><label class=\\"custom-control-label\\" for=\\"__BVID__56_BV_option_1\\"><span>test-platform-id-2</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"platformId\\" class=\\"custom-control-input\\" value=\\"test-platform-id-3\\" id=\\"__BVID__56_BV_option_2\\"><label class=\\"custom-control-label\\" for=\\"__BVID__56_BV_option_2\\"><span>test-platform-id-3</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"platformId\\" class=\\"custom-control-input\\" value=\\"test-platform-id-4\\" id=\\"__BVID__56_BV_option_3\\"><label class=\\"custom-control-label\\" for=\\"__BVID__56_BV_option_3\\"><span>test-platform-id-4</span></label></div>
+                  </div>
+                  <!---->
+                  <!---->
+                  <!---->
+                </div>
+              </fieldset>
+            </div>
+            <!---->
+            <!---->
+          </div>
+          <div class=\\"card bg-secondary\\">
+            <!---->
+            <!---->
+            <div class=\\"card-body\\">
+              <!---->
+              <!---->
+              <div role=\\"group\\" class=\\"form-group\\" id=\\"__BVID__61\\"><label for=\\"component-filter\\" class=\\"d-block\\" id=\\"__BVID__61__BV_label_\\">Component</label>
+                <div><select id=\\"component-filter\\" class=\\"custom-select custom-select-sm\\">
+                    <option value=\\"\\">Please select a component</option>
+                    <option value=\\"test-component-id-1\\">test-component-id-1</option>
+                    <option value=\\"test-component-id-2\\">test-component-id-2</option>
+                    <option value=\\"test-component-id-3\\">test-component-id-3</option>
+                    <option value=\\"test-component-id-4\\">test-component-id-4</option>
+                  </select>
+                  <!---->
+                  <!---->
+                  <!---->
+                </div>
+              </div>
+            </div>
+            <!---->
+            <!---->
+          </div>
+        </div>
+      </div>
+    </transition-stub>
+  </div>
+  <div class=\\"graph\\"><svg xmlns=\\"http://www.w3.org/2000/svg\\" overflow=\\"auto\\" width=\\"100%\\" height=\\"1200\\" id=\\"component-dependency-graph\\" dependency-relation-type=\\"scope-related\\">
+      <rect fill-opacity=\\"0\\" class=\\"component-dependency-graph-background\\"></rect>
+      <defs>
+        <marker id=\\"component-dependency-graph-all-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker all-edge-marker\\">
+          <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
+        </marker>
+        <marker id=\\"component-dependency-graph-other-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker other-edge-marker\\">
+          <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
+        </marker>
+        <marker id=\\"component-dependency-graph-scope-related-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker scope-related-edge-marker\\">
+          <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
+        </marker>
+        <marker id=\\"component-dependency-graph-scoped-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker scoped-edge-marker\\">
+          <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
+        </marker>
+        <marker id=\\"component-dependency-graph-related-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker related-edge-marker\\">
+          <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
+        </marker>
+        <marker id=\\"component-dependency-graph-direct-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker direct-edge-marker\\">
+          <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
+        </marker>
+        <marker id=\\"component-dependency-graph-selected-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker selected-edge-marker\\">
+          <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
+        </marker>
+      </defs>
+      <g></g>
+      <g></g>
+      <g></g>
+      <g></g>
+      <g></g>
+      <g></g>
+      <g></g>
+      <g></g>
+      <g></g>
+      <g></g>
+      <g></g>
+      <g></g>
+      <g></g>
+      <g></g>
+      <g></g>
+      <g></g>
+      <g></g>
+      <g></g>
+      <g></g>
+      <g></g>
+      <g></g>
+    </svg></div>
+  <div tabindex=\\"-1\\" class=\\"b-sidebar-outer\\">
+    <!---->
+    <transition-stub css=\\"true\\" enterclass=\\"\\" leaveclass=\\"show\\" entertoclass=\\"show\\" leavetoclass=\\"\\" enteractiveclass=\\"slide\\" leaveactiveclass=\\"slide\\">
+      <div id=\\"component\\" tabindex=\\"-1\\" role=\\"dialog\\" aria-modal=\\"true\\" aria-hidden=\\"true\\" class=\\"b-sidebar b-sidebar-right bg-dark text-light\\" style=\\"width: 600px; display: none;\\">
+        <header class=\\"b-sidebar-header\\"><button type=\\"button\\" aria-label=\\"Close\\" class=\\"close text-light\\"><svg viewBox=\\"0 0 16 16\\" width=\\"1em\\" height=\\"1em\\" focusable=\\"false\\" role=\\"img\\" aria-label=\\"x\\" xmlns=\\"http://www.w3.org/2000/svg\\" fill=\\"currentColor\\" class=\\"bi-x b-icon bi\\">
+              <g>
+                <path d=\\"M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z\\"></path>
+              </g>
+            </svg></button><span></span></header>
+        <div class=\\"b-sidebar-body\\">
+          <div class=\\"m-3\\">
+            <!---->
+          </div>
+        </div>
+        <!---->
+      </div>
+    </transition-stub>
+    <!---->
+    <transition-stub name=\\"\\" css=\\"true\\" enterclass=\\"\\" leaveclass=\\"show\\" entertoclass=\\"show\\" leavetoclass=\\"\\" enteractiveclass=\\"fade\\" leaveactiveclass=\\"fade\\">
+      <div class=\\"b-sidebar-backdrop bg-dark\\" style=\\"display: none;\\"></div>
+    </transition-stub>
+  </div>
+</div>"
+`;
+
+exports[`ComponentDependenciesView when components prop contains multiple components and diagram prop contains multiple edges and first platform is checked in platform filter renders the connections directly related to the first component using the first platform 1`] = `
+"<div>
+  <transition-stub name=\\"\\" css=\\"true\\" enterclass=\\"\\" leaveclass=\\"show\\" entertoclass=\\"show\\" leavetoclass=\\"\\" enteractiveclass=\\"\\" leaveactiveclass=\\"\\">
+    <div role=\\"alert\\" aria-live=\\"polite\\" aria-atomic=\\"true\\" class=\\"alert alert-dismissible alert-info\\"><button type=\\"button\\" aria-label=\\"Close\\" class=\\"close\\">×</button>
+      Click a dot in the diagram to see more information about that component
+    </div>
+  </transition-stub>
+  <div class=\\"mt-3 mb-4\\" components=\\"[object Object],[object Object],[object Object],[object Object]\\"> <button id=\\"toggleFilters\\" type=\\"button\\" class=\\"btn btn-primary collapsed\\" aria-expanded=\\"false\\" aria-controls=\\"filters\\"><svg viewBox=\\"0 0 16 16\\" width=\\"1em\\" height=\\"1em\\" focusable=\\"false\\" role=\\"img\\" aria-label=\\"blank\\" aria-hidden=\\"true\\" xmlns=\\"http://www.w3.org/2000/svg\\" fill=\\"currentColor\\" class=\\"bi-blank b-icon bi\\">
+        <g></g>
+      </svg> Filters
+    </button>
+    <transition-stub css=\\"true\\" enterclass=\\"\\" leaveclass=\\"collapse show\\" entertoclass=\\"collapse show\\" leavetoclass=\\"collapse\\" enteractiveclass=\\"collapsing\\" leaveactiveclass=\\"collapsing\\" class=\\"mt-3\\">
+      <div id=\\"filters\\" class=\\"collapse\\" style=\\"display: none;\\">
+        <div class=\\"card-columns\\">
+          <div class=\\"card bg-secondary\\">
+            <!---->
+            <!---->
+            <div class=\\"card-body\\">
+              <!---->
+              <!---->
+              <fieldset class=\\"form-group\\" id=\\"__BVID__132\\">
+                <legend tabindex=\\"-1\\" class=\\"bv-no-focus-ring col-form-label pt-0\\" id=\\"__BVID__132__BV_label_\\">Dependency Types</legend>
+                <div>
+                  <div role=\\"group\\" tabindex=\\"-1\\" class=\\"bv-no-focus-ring\\" id=\\"__BVID__133\\">
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"dependencyTypeId\\" class=\\"custom-control-input\\" value=\\"\\" id=\\"__BVID__133_BV_option_0\\"><label class=\\"custom-control-label\\" for=\\"__BVID__133_BV_option_0\\"><span>null</span></label></div>
+                  </div>
+                  <!---->
+                  <!---->
+                  <!---->
+                </div>
+              </fieldset>
+            </div>
+            <!---->
+            <!---->
+          </div>
+          <div class=\\"card bg-secondary\\">
+            <!---->
+            <!---->
+            <div class=\\"card-body\\">
+              <!---->
+              <!---->
+              <div role=\\"group\\" class=\\"form-row form-group\\" id=\\"__BVID__135\\"><label for=\\"graph-scope-related-radius\\" class=\\"col-6 col-form-label col-form-label-sm\\" id=\\"__BVID__135__BV_label_\\">Radius:</label>
+                <div class=\\"col\\"><select id=\\"graph-scope-related-radius\\" class=\\"custom-select custom-select-sm\\">
+                    <option value=\\"0\\">0</option>
+                    <option value=\\"1\\">1</option>
+                    <option value=\\"2\\">2</option>
+                    <option value=\\"3\\">3</option>
+                    <option value=\\"4\\">4</option>
+                    <option value=\\"5\\">5</option>
+                    <option value=\\"6\\">6</option>
+                    <option value=\\"7\\">7</option>
+                    <option value=\\"8\\">8</option>
+                    <option value=\\"9\\">9</option>
+                    <option value=\\"10\\">10</option>
+                  </select>
+                  <!---->
+                  <!---->
+                  <!---->
+                </div>
+              </div>
+            </div>
+            <!---->
+            <!---->
+          </div>
+          <div class=\\"card bg-secondary\\">
+            <!---->
+            <!---->
+            <div class=\\"card-body\\">
+              <!---->
+              <!---->
+              <div role=\\"group\\" class=\\"form-row form-group\\" id=\\"__BVID__137\\"><label for=\\"graph-zoom\\" class=\\"col-6 col-form-label col-form-label-sm\\" id=\\"__BVID__137__BV_label_\\">Zoom:</label>
+                <div class=\\"col\\"><select id=\\"graph-zoom\\" class=\\"custom-select custom-select-sm\\">
+                    <option value=\\"25\\">25%</option>
+                    <option value=\\"50\\">50%</option>
+                    <option value=\\"75\\">75%</option>
+                    <option value=\\"100\\">100%</option>
+                    <option value=\\"125\\">125%</option>
+                    <option value=\\"150\\">150%</option>
+                    <option value=\\"200\\">200%</option>
+                    <option value=\\"400\\">400%</option>
+                  </select>
+                  <!---->
+                  <!---->
+                  <!---->
+                </div>
+              </div>
+            </div>
+            <!---->
+            <!---->
+          </div>
+          <!---->
+          <!---->
+          <!---->
+          <div class=\\"card bg-secondary\\">
+            <!---->
+            <!---->
+            <div class=\\"card-body\\">
+              <!---->
+              <!---->
+              <fieldset class=\\"form-group\\" id=\\"__BVID__139\\">
+                <legend tabindex=\\"-1\\" class=\\"bv-no-focus-ring col-form-label pt-0\\" id=\\"__BVID__139__BV_label_\\">Teams</legend>
+                <div>
+                  <div role=\\"group\\" tabindex=\\"-1\\" class=\\"bv-no-focus-ring\\" id=\\"__BVID__140\\">
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"team\\" class=\\"custom-control-input\\" value=\\"test-team-id-1-1\\" id=\\"__BVID__140_BV_option_0\\"><label class=\\"custom-control-label\\" for=\\"__BVID__140_BV_option_0\\"><span>test-team-id-1-1</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"team\\" class=\\"custom-control-input\\" value=\\"test-team-id-1-2\\" id=\\"__BVID__140_BV_option_1\\"><label class=\\"custom-control-label\\" for=\\"__BVID__140_BV_option_1\\"><span>test-team-id-1-2</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"team\\" class=\\"custom-control-input\\" value=\\"test-team-id-2-1\\" id=\\"__BVID__140_BV_option_2\\"><label class=\\"custom-control-label\\" for=\\"__BVID__140_BV_option_2\\"><span>test-team-id-2-1</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"team\\" class=\\"custom-control-input\\" value=\\"test-team-id-2-2\\" id=\\"__BVID__140_BV_option_3\\"><label class=\\"custom-control-label\\" for=\\"__BVID__140_BV_option_3\\"><span>test-team-id-2-2</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"team\\" class=\\"custom-control-input\\" value=\\"test-team-id-3-1\\" id=\\"__BVID__140_BV_option_4\\"><label class=\\"custom-control-label\\" for=\\"__BVID__140_BV_option_4\\"><span>test-team-id-3-1</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"team\\" class=\\"custom-control-input\\" value=\\"test-team-id-3-2\\" id=\\"__BVID__140_BV_option_5\\"><label class=\\"custom-control-label\\" for=\\"__BVID__140_BV_option_5\\"><span>test-team-id-3-2</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"team\\" class=\\"custom-control-input\\" value=\\"test-team-id-4-1\\" id=\\"__BVID__140_BV_option_6\\"><label class=\\"custom-control-label\\" for=\\"__BVID__140_BV_option_6\\"><span>test-team-id-4-1</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"team\\" class=\\"custom-control-input\\" value=\\"test-team-id-4-2\\" id=\\"__BVID__140_BV_option_7\\"><label class=\\"custom-control-label\\" for=\\"__BVID__140_BV_option_7\\"><span>test-team-id-4-2</span></label></div>
+                  </div>
+                  <!---->
+                  <!---->
+                  <!---->
+                </div>
+              </fieldset>
+            </div>
+            <!---->
+            <!---->
+          </div>
+          <div class=\\"card bg-secondary\\">
+            <!---->
+            <!---->
+            <div class=\\"card-body\\">
+              <!---->
+              <!---->
+              <fieldset class=\\"form-group\\" id=\\"__BVID__149\\">
+                <legend tabindex=\\"-1\\" class=\\"bv-no-focus-ring col-form-label pt-0\\" id=\\"__BVID__149__BV_label_\\">Tags</legend>
+                <div>
+                  <div role=\\"group\\" tabindex=\\"-1\\" class=\\"bv-no-focus-ring\\" id=\\"__BVID__150\\">
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"tag\\" class=\\"custom-control-input\\" value=\\"test-tag-1-1\\" id=\\"__BVID__150_BV_option_0\\"><label class=\\"custom-control-label\\" for=\\"__BVID__150_BV_option_0\\"><span>test-tag-1-1</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"tag\\" class=\\"custom-control-input\\" value=\\"test-tag-1-2\\" id=\\"__BVID__150_BV_option_1\\"><label class=\\"custom-control-label\\" for=\\"__BVID__150_BV_option_1\\"><span>test-tag-1-2</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"tag\\" class=\\"custom-control-input\\" value=\\"test-tag-2-1\\" id=\\"__BVID__150_BV_option_2\\"><label class=\\"custom-control-label\\" for=\\"__BVID__150_BV_option_2\\"><span>test-tag-2-1</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"tag\\" class=\\"custom-control-input\\" value=\\"test-tag-2-2\\" id=\\"__BVID__150_BV_option_3\\"><label class=\\"custom-control-label\\" for=\\"__BVID__150_BV_option_3\\"><span>test-tag-2-2</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"tag\\" class=\\"custom-control-input\\" value=\\"test-tag-3-1\\" id=\\"__BVID__150_BV_option_4\\"><label class=\\"custom-control-label\\" for=\\"__BVID__150_BV_option_4\\"><span>test-tag-3-1</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"tag\\" class=\\"custom-control-input\\" value=\\"test-tag-3-2\\" id=\\"__BVID__150_BV_option_5\\"><label class=\\"custom-control-label\\" for=\\"__BVID__150_BV_option_5\\"><span>test-tag-3-2</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"tag\\" class=\\"custom-control-input\\" value=\\"test-tag-4-1\\" id=\\"__BVID__150_BV_option_6\\"><label class=\\"custom-control-label\\" for=\\"__BVID__150_BV_option_6\\"><span>test-tag-4-1</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"tag\\" class=\\"custom-control-input\\" value=\\"test-tag-4-2\\" id=\\"__BVID__150_BV_option_7\\"><label class=\\"custom-control-label\\" for=\\"__BVID__150_BV_option_7\\"><span>test-tag-4-2</span></label></div>
+                  </div>
+                  <!---->
+                  <!---->
+                  <!---->
+                </div>
+              </fieldset>
+            </div>
+            <!---->
+            <!---->
+          </div>
+          <div class=\\"card bg-secondary\\">
+            <!---->
+            <!---->
+            <div class=\\"card-body\\">
+              <!---->
+              <!---->
+              <fieldset class=\\"form-group\\" id=\\"__BVID__159\\">
+                <legend tabindex=\\"-1\\" class=\\"bv-no-focus-ring col-form-label pt-0\\" id=\\"__BVID__159__BV_label_\\">Component Types</legend>
+                <div>
+                  <div role=\\"group\\" tabindex=\\"-1\\" class=\\"bv-no-focus-ring\\" id=\\"__BVID__160\\">
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"componentTypeId\\" class=\\"custom-control-input\\" value=\\"test-component-type-id-1\\" id=\\"__BVID__160_BV_option_0\\"><label class=\\"custom-control-label\\" for=\\"__BVID__160_BV_option_0\\"><span>test-component-type-id-1</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"componentTypeId\\" class=\\"custom-control-input\\" value=\\"test-component-type-id-2\\" id=\\"__BVID__160_BV_option_1\\"><label class=\\"custom-control-label\\" for=\\"__BVID__160_BV_option_1\\"><span>test-component-type-id-2</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"componentTypeId\\" class=\\"custom-control-input\\" value=\\"test-component-type-id-3\\" id=\\"__BVID__160_BV_option_2\\"><label class=\\"custom-control-label\\" for=\\"__BVID__160_BV_option_2\\"><span>test-component-type-id-3</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"componentTypeId\\" class=\\"custom-control-input\\" value=\\"test-component-type-id-4\\" id=\\"__BVID__160_BV_option_3\\"><label class=\\"custom-control-label\\" for=\\"__BVID__160_BV_option_3\\"><span>test-component-type-id-4</span></label></div>
+                  </div>
+                  <!---->
+                  <!---->
+                  <!---->
+                </div>
+              </fieldset>
+            </div>
+            <!---->
+            <!---->
+          </div>
+          <div class=\\"card bg-secondary\\">
+            <!---->
+            <!---->
+            <div class=\\"card-body\\">
+              <!---->
+              <!---->
+              <fieldset class=\\"form-group\\" id=\\"__BVID__165\\">
+                <legend tabindex=\\"-1\\" class=\\"bv-no-focus-ring col-form-label pt-0\\" id=\\"__BVID__165__BV_label_\\">Platforms</legend>
+                <div>
+                  <div role=\\"group\\" tabindex=\\"-1\\" class=\\"bv-no-focus-ring\\" id=\\"__BVID__166\\">
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"platformId\\" class=\\"custom-control-input\\" value=\\"test-platform-id-1\\" id=\\"__BVID__166_BV_option_0\\"><label class=\\"custom-control-label\\" for=\\"__BVID__166_BV_option_0\\"><span>test-platform-id-1</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"platformId\\" class=\\"custom-control-input\\" value=\\"test-platform-id-2\\" id=\\"__BVID__166_BV_option_1\\"><label class=\\"custom-control-label\\" for=\\"__BVID__166_BV_option_1\\"><span>test-platform-id-2</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"platformId\\" class=\\"custom-control-input\\" value=\\"test-platform-id-3\\" id=\\"__BVID__166_BV_option_2\\"><label class=\\"custom-control-label\\" for=\\"__BVID__166_BV_option_2\\"><span>test-platform-id-3</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"platformId\\" class=\\"custom-control-input\\" value=\\"test-platform-id-4\\" id=\\"__BVID__166_BV_option_3\\"><label class=\\"custom-control-label\\" for=\\"__BVID__166_BV_option_3\\"><span>test-platform-id-4</span></label></div>
+                  </div>
+                  <!---->
+                  <!---->
+                  <!---->
+                </div>
+              </fieldset>
+            </div>
+            <!---->
+            <!---->
+          </div>
+          <div class=\\"card bg-secondary\\">
+            <!---->
+            <!---->
+            <div class=\\"card-body\\">
+              <!---->
+              <!---->
+              <div role=\\"group\\" class=\\"form-group\\" id=\\"__BVID__171\\"><label for=\\"component-filter\\" class=\\"d-block\\" id=\\"__BVID__171__BV_label_\\">Component</label>
+                <div><select id=\\"component-filter\\" class=\\"custom-select custom-select-sm\\">
+                    <option value=\\"\\">Please select a component</option>
+                    <option value=\\"test-component-id-1\\">test-component-id-1</option>
+                    <option value=\\"test-component-id-2\\">test-component-id-2</option>
+                    <option value=\\"test-component-id-3\\">test-component-id-3</option>
+                    <option value=\\"test-component-id-4\\">test-component-id-4</option>
+                  </select>
+                  <!---->
+                  <!---->
+                  <!---->
+                </div>
+              </div>
+            </div>
+            <!---->
+            <!---->
+          </div>
+        </div>
+      </div>
+    </transition-stub>
+  </div>
+  <div class=\\"graph\\"><svg xmlns=\\"http://www.w3.org/2000/svg\\" overflow=\\"auto\\" width=\\"100%\\" height=\\"1200\\" id=\\"component-dependency-graph\\" dependency-relation-type=\\"scope-related\\">
+      <rect fill-opacity=\\"0\\" class=\\"component-dependency-graph-background\\"></rect>
+      <defs>
+        <marker id=\\"component-dependency-graph-all-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker all-edge-marker\\">
+          <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
+        </marker>
+        <marker id=\\"component-dependency-graph-other-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker other-edge-marker\\">
+          <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
+        </marker>
+        <marker id=\\"component-dependency-graph-scope-related-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker scope-related-edge-marker\\">
+          <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
+        </marker>
+        <marker id=\\"component-dependency-graph-scoped-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker scoped-edge-marker\\">
+          <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
+        </marker>
+        <marker id=\\"component-dependency-graph-related-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker related-edge-marker\\">
+          <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
+        </marker>
+        <marker id=\\"component-dependency-graph-direct-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker direct-edge-marker\\">
+          <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
+        </marker>
+        <marker id=\\"component-dependency-graph-selected-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker selected-edge-marker\\">
+          <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
+        </marker>
+      </defs>
+      <g></g>
+      <g></g>
+      <g>
+        <path id=\\"component-dependency-graph-edge-1\\" d=\\"M50,50L50,150\\" marker-end=\\"url(#component-dependency-graph-scope-related-edge-marker)\\" class=\\"edge scope-related-edge\\"></path>
+      </g>
+      <g></g>
+      <g></g>
+      <g></g>
+      <g></g>
+      <g></g>
+      <g></g>
+      <g>
+        <circle id=\\"component-dependency-graph-node-1\\" r=\\"10\\" cx=\\"50\\" cy=\\"150\\" title=\\"test-component-id-2\\" class=\\"node scope-related-node\\"></circle>
+      </g>
+      <g>
+        <circle id=\\"component-dependency-graph-node-0\\" r=\\"10\\" cx=\\"50\\" cy=\\"50\\" title=\\"test-component-id-1\\" class=\\"node scoped-node\\"></circle>
+      </g>
+      <g></g>
+      <g></g>
+      <g></g>
+      <g></g>
+      <g></g>
+      <g><text x=\\"67\\" y=\\"170\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label scope-related-node-label\\">
+          <tspan x=\\"67\\" y=\\"170\\">
+            test-component-id-2
+          </tspan>
+        </text></g>
+      <g><text x=\\"67\\" y=\\"70\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label scoped-node-label\\">
+          <tspan x=\\"67\\" y=\\"70\\">
+            test-component-id-1
+          </tspan>
+        </text></g>
+      <g></g>
+      <g></g>
+      <g></g>
+    </svg></div>
+  <div tabindex=\\"-1\\" class=\\"b-sidebar-outer\\">
+    <!---->
+    <transition-stub css=\\"true\\" enterclass=\\"\\" leaveclass=\\"show\\" entertoclass=\\"show\\" leavetoclass=\\"\\" enteractiveclass=\\"slide\\" leaveactiveclass=\\"slide\\">
+      <div id=\\"component\\" tabindex=\\"-1\\" role=\\"dialog\\" aria-modal=\\"true\\" aria-hidden=\\"true\\" class=\\"b-sidebar b-sidebar-right bg-dark text-light\\" style=\\"width: 600px; display: none;\\">
+        <header class=\\"b-sidebar-header\\"><button type=\\"button\\" aria-label=\\"Close\\" class=\\"close text-light\\"><svg viewBox=\\"0 0 16 16\\" width=\\"1em\\" height=\\"1em\\" focusable=\\"false\\" role=\\"img\\" aria-label=\\"x\\" xmlns=\\"http://www.w3.org/2000/svg\\" fill=\\"currentColor\\" class=\\"bi-x b-icon bi\\">
+              <g>
+                <path d=\\"M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z\\"></path>
+              </g>
+            </svg></button><span></span></header>
+        <div class=\\"b-sidebar-body\\">
+          <div class=\\"m-3\\">
+            <!---->
+          </div>
+        </div>
+        <!---->
+      </div>
+    </transition-stub>
+    <!---->
+    <transition-stub name=\\"\\" css=\\"true\\" enterclass=\\"\\" leaveclass=\\"show\\" entertoclass=\\"show\\" leavetoclass=\\"\\" enteractiveclass=\\"fade\\" leaveactiveclass=\\"fade\\">
+      <div class=\\"b-sidebar-backdrop bg-dark\\" style=\\"display: none;\\"></div>
+    </transition-stub>
+  </div>
+</div>"
+`;
+
+exports[`ComponentDependenciesView when components prop contains multiple components and diagram prop contains multiple edges and the mouse hovers over the first node and the mouse hovers away from the first node renders all the connections as scoped connections 1`] = `
+"<div>
+  <transition-stub name=\\"\\" css=\\"true\\" enterclass=\\"\\" leaveclass=\\"show\\" entertoclass=\\"show\\" leavetoclass=\\"\\" enteractiveclass=\\"\\" leaveactiveclass=\\"\\">
+    <div role=\\"alert\\" aria-live=\\"polite\\" aria-atomic=\\"true\\" class=\\"alert alert-dismissible alert-info\\"><button type=\\"button\\" aria-label=\\"Close\\" class=\\"close\\">×</button>
+      Click a dot in the diagram to see more information about that component
+    </div>
+  </transition-stub>
+  <div class=\\"mt-3 mb-4\\" components=\\"[object Object],[object Object],[object Object],[object Object]\\"> <button id=\\"toggleFilters\\" type=\\"button\\" class=\\"btn btn-primary collapsed\\" aria-expanded=\\"false\\" aria-controls=\\"filters\\"><svg viewBox=\\"0 0 16 16\\" width=\\"1em\\" height=\\"1em\\" focusable=\\"false\\" role=\\"img\\" aria-label=\\"blank\\" aria-hidden=\\"true\\" xmlns=\\"http://www.w3.org/2000/svg\\" fill=\\"currentColor\\" class=\\"bi-blank b-icon bi\\">
+        <g></g>
+      </svg> Filters
+    </button>
+    <transition-stub css=\\"true\\" enterclass=\\"\\" leaveclass=\\"collapse show\\" entertoclass=\\"collapse show\\" leavetoclass=\\"collapse\\" enteractiveclass=\\"collapsing\\" leaveactiveclass=\\"collapsing\\" class=\\"mt-3\\">
+      <div id=\\"filters\\" class=\\"collapse\\" style=\\"display: none;\\">
+        <div class=\\"card-columns\\">
+          <div class=\\"card bg-secondary\\">
+            <!---->
+            <!---->
+            <div class=\\"card-body\\">
+              <!---->
+              <!---->
+              <fieldset class=\\"form-group\\" id=\\"__BVID__352\\">
+                <legend tabindex=\\"-1\\" class=\\"bv-no-focus-ring col-form-label pt-0\\" id=\\"__BVID__352__BV_label_\\">Dependency Types</legend>
+                <div>
+                  <div role=\\"group\\" tabindex=\\"-1\\" class=\\"bv-no-focus-ring\\" id=\\"__BVID__353\\">
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"dependencyTypeId\\" class=\\"custom-control-input\\" value=\\"\\" id=\\"__BVID__353_BV_option_0\\"><label class=\\"custom-control-label\\" for=\\"__BVID__353_BV_option_0\\"><span>null</span></label></div>
+                  </div>
+                  <!---->
+                  <!---->
+                  <!---->
+                </div>
+              </fieldset>
+            </div>
+            <!---->
+            <!---->
+          </div>
+          <div class=\\"card bg-secondary\\">
+            <!---->
+            <!---->
+            <div class=\\"card-body\\">
+              <!---->
+              <!---->
+              <div role=\\"group\\" class=\\"form-row form-group\\" id=\\"__BVID__355\\"><label for=\\"graph-scope-related-radius\\" class=\\"col-6 col-form-label col-form-label-sm\\" id=\\"__BVID__355__BV_label_\\">Radius:</label>
+                <div class=\\"col\\"><select id=\\"graph-scope-related-radius\\" class=\\"custom-select custom-select-sm\\">
+                    <option value=\\"0\\">0</option>
+                    <option value=\\"1\\">1</option>
+                    <option value=\\"2\\">2</option>
+                    <option value=\\"3\\">3</option>
+                    <option value=\\"4\\">4</option>
+                    <option value=\\"5\\">5</option>
+                    <option value=\\"6\\">6</option>
+                    <option value=\\"7\\">7</option>
+                    <option value=\\"8\\">8</option>
+                    <option value=\\"9\\">9</option>
+                    <option value=\\"10\\">10</option>
+                  </select>
+                  <!---->
+                  <!---->
+                  <!---->
+                </div>
+              </div>
+            </div>
+            <!---->
+            <!---->
+          </div>
+          <div class=\\"card bg-secondary\\">
+            <!---->
+            <!---->
+            <div class=\\"card-body\\">
+              <!---->
+              <!---->
+              <div role=\\"group\\" class=\\"form-row form-group\\" id=\\"__BVID__357\\"><label for=\\"graph-zoom\\" class=\\"col-6 col-form-label col-form-label-sm\\" id=\\"__BVID__357__BV_label_\\">Zoom:</label>
+                <div class=\\"col\\"><select id=\\"graph-zoom\\" class=\\"custom-select custom-select-sm\\">
+                    <option value=\\"25\\">25%</option>
+                    <option value=\\"50\\">50%</option>
+                    <option value=\\"75\\">75%</option>
+                    <option value=\\"100\\">100%</option>
+                    <option value=\\"125\\">125%</option>
+                    <option value=\\"150\\">150%</option>
+                    <option value=\\"200\\">200%</option>
+                    <option value=\\"400\\">400%</option>
+                  </select>
+                  <!---->
+                  <!---->
+                  <!---->
+                </div>
+              </div>
+            </div>
+            <!---->
+            <!---->
+          </div>
+          <!---->
+          <!---->
+          <!---->
+          <div class=\\"card bg-secondary\\">
+            <!---->
+            <!---->
+            <div class=\\"card-body\\">
+              <!---->
+              <!---->
+              <fieldset class=\\"form-group\\" id=\\"__BVID__359\\">
+                <legend tabindex=\\"-1\\" class=\\"bv-no-focus-ring col-form-label pt-0\\" id=\\"__BVID__359__BV_label_\\">Teams</legend>
+                <div>
+                  <div role=\\"group\\" tabindex=\\"-1\\" class=\\"bv-no-focus-ring\\" id=\\"__BVID__360\\">
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"team\\" class=\\"custom-control-input\\" value=\\"test-team-id-1-1\\" id=\\"__BVID__360_BV_option_0\\"><label class=\\"custom-control-label\\" for=\\"__BVID__360_BV_option_0\\"><span>test-team-id-1-1</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"team\\" class=\\"custom-control-input\\" value=\\"test-team-id-1-2\\" id=\\"__BVID__360_BV_option_1\\"><label class=\\"custom-control-label\\" for=\\"__BVID__360_BV_option_1\\"><span>test-team-id-1-2</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"team\\" class=\\"custom-control-input\\" value=\\"test-team-id-2-1\\" id=\\"__BVID__360_BV_option_2\\"><label class=\\"custom-control-label\\" for=\\"__BVID__360_BV_option_2\\"><span>test-team-id-2-1</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"team\\" class=\\"custom-control-input\\" value=\\"test-team-id-2-2\\" id=\\"__BVID__360_BV_option_3\\"><label class=\\"custom-control-label\\" for=\\"__BVID__360_BV_option_3\\"><span>test-team-id-2-2</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"team\\" class=\\"custom-control-input\\" value=\\"test-team-id-3-1\\" id=\\"__BVID__360_BV_option_4\\"><label class=\\"custom-control-label\\" for=\\"__BVID__360_BV_option_4\\"><span>test-team-id-3-1</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"team\\" class=\\"custom-control-input\\" value=\\"test-team-id-3-2\\" id=\\"__BVID__360_BV_option_5\\"><label class=\\"custom-control-label\\" for=\\"__BVID__360_BV_option_5\\"><span>test-team-id-3-2</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"team\\" class=\\"custom-control-input\\" value=\\"test-team-id-4-1\\" id=\\"__BVID__360_BV_option_6\\"><label class=\\"custom-control-label\\" for=\\"__BVID__360_BV_option_6\\"><span>test-team-id-4-1</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"team\\" class=\\"custom-control-input\\" value=\\"test-team-id-4-2\\" id=\\"__BVID__360_BV_option_7\\"><label class=\\"custom-control-label\\" for=\\"__BVID__360_BV_option_7\\"><span>test-team-id-4-2</span></label></div>
+                  </div>
+                  <!---->
+                  <!---->
+                  <!---->
+                </div>
+              </fieldset>
+            </div>
+            <!---->
+            <!---->
+          </div>
+          <div class=\\"card bg-secondary\\">
+            <!---->
+            <!---->
+            <div class=\\"card-body\\">
+              <!---->
+              <!---->
+              <fieldset class=\\"form-group\\" id=\\"__BVID__369\\">
+                <legend tabindex=\\"-1\\" class=\\"bv-no-focus-ring col-form-label pt-0\\" id=\\"__BVID__369__BV_label_\\">Tags</legend>
+                <div>
+                  <div role=\\"group\\" tabindex=\\"-1\\" class=\\"bv-no-focus-ring\\" id=\\"__BVID__370\\">
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"tag\\" class=\\"custom-control-input\\" value=\\"test-tag-1-1\\" id=\\"__BVID__370_BV_option_0\\"><label class=\\"custom-control-label\\" for=\\"__BVID__370_BV_option_0\\"><span>test-tag-1-1</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"tag\\" class=\\"custom-control-input\\" value=\\"test-tag-1-2\\" id=\\"__BVID__370_BV_option_1\\"><label class=\\"custom-control-label\\" for=\\"__BVID__370_BV_option_1\\"><span>test-tag-1-2</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"tag\\" class=\\"custom-control-input\\" value=\\"test-tag-2-1\\" id=\\"__BVID__370_BV_option_2\\"><label class=\\"custom-control-label\\" for=\\"__BVID__370_BV_option_2\\"><span>test-tag-2-1</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"tag\\" class=\\"custom-control-input\\" value=\\"test-tag-2-2\\" id=\\"__BVID__370_BV_option_3\\"><label class=\\"custom-control-label\\" for=\\"__BVID__370_BV_option_3\\"><span>test-tag-2-2</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"tag\\" class=\\"custom-control-input\\" value=\\"test-tag-3-1\\" id=\\"__BVID__370_BV_option_4\\"><label class=\\"custom-control-label\\" for=\\"__BVID__370_BV_option_4\\"><span>test-tag-3-1</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"tag\\" class=\\"custom-control-input\\" value=\\"test-tag-3-2\\" id=\\"__BVID__370_BV_option_5\\"><label class=\\"custom-control-label\\" for=\\"__BVID__370_BV_option_5\\"><span>test-tag-3-2</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"tag\\" class=\\"custom-control-input\\" value=\\"test-tag-4-1\\" id=\\"__BVID__370_BV_option_6\\"><label class=\\"custom-control-label\\" for=\\"__BVID__370_BV_option_6\\"><span>test-tag-4-1</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"tag\\" class=\\"custom-control-input\\" value=\\"test-tag-4-2\\" id=\\"__BVID__370_BV_option_7\\"><label class=\\"custom-control-label\\" for=\\"__BVID__370_BV_option_7\\"><span>test-tag-4-2</span></label></div>
+                  </div>
+                  <!---->
+                  <!---->
+                  <!---->
+                </div>
+              </fieldset>
+            </div>
+            <!---->
+            <!---->
+          </div>
+          <div class=\\"card bg-secondary\\">
+            <!---->
+            <!---->
+            <div class=\\"card-body\\">
+              <!---->
+              <!---->
+              <fieldset class=\\"form-group\\" id=\\"__BVID__379\\">
+                <legend tabindex=\\"-1\\" class=\\"bv-no-focus-ring col-form-label pt-0\\" id=\\"__BVID__379__BV_label_\\">Component Types</legend>
+                <div>
+                  <div role=\\"group\\" tabindex=\\"-1\\" class=\\"bv-no-focus-ring\\" id=\\"__BVID__380\\">
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"componentTypeId\\" class=\\"custom-control-input\\" value=\\"test-component-type-id-1\\" id=\\"__BVID__380_BV_option_0\\"><label class=\\"custom-control-label\\" for=\\"__BVID__380_BV_option_0\\"><span>test-component-type-id-1</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"componentTypeId\\" class=\\"custom-control-input\\" value=\\"test-component-type-id-2\\" id=\\"__BVID__380_BV_option_1\\"><label class=\\"custom-control-label\\" for=\\"__BVID__380_BV_option_1\\"><span>test-component-type-id-2</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"componentTypeId\\" class=\\"custom-control-input\\" value=\\"test-component-type-id-3\\" id=\\"__BVID__380_BV_option_2\\"><label class=\\"custom-control-label\\" for=\\"__BVID__380_BV_option_2\\"><span>test-component-type-id-3</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"componentTypeId\\" class=\\"custom-control-input\\" value=\\"test-component-type-id-4\\" id=\\"__BVID__380_BV_option_3\\"><label class=\\"custom-control-label\\" for=\\"__BVID__380_BV_option_3\\"><span>test-component-type-id-4</span></label></div>
+                  </div>
+                  <!---->
+                  <!---->
+                  <!---->
+                </div>
+              </fieldset>
+            </div>
+            <!---->
+            <!---->
+          </div>
+          <div class=\\"card bg-secondary\\">
+            <!---->
+            <!---->
+            <div class=\\"card-body\\">
+              <!---->
+              <!---->
+              <fieldset class=\\"form-group\\" id=\\"__BVID__385\\">
+                <legend tabindex=\\"-1\\" class=\\"bv-no-focus-ring col-form-label pt-0\\" id=\\"__BVID__385__BV_label_\\">Platforms</legend>
+                <div>
+                  <div role=\\"group\\" tabindex=\\"-1\\" class=\\"bv-no-focus-ring\\" id=\\"__BVID__386\\">
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"platformId\\" class=\\"custom-control-input\\" value=\\"test-platform-id-1\\" id=\\"__BVID__386_BV_option_0\\"><label class=\\"custom-control-label\\" for=\\"__BVID__386_BV_option_0\\"><span>test-platform-id-1</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"platformId\\" class=\\"custom-control-input\\" value=\\"test-platform-id-2\\" id=\\"__BVID__386_BV_option_1\\"><label class=\\"custom-control-label\\" for=\\"__BVID__386_BV_option_1\\"><span>test-platform-id-2</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"platformId\\" class=\\"custom-control-input\\" value=\\"test-platform-id-3\\" id=\\"__BVID__386_BV_option_2\\"><label class=\\"custom-control-label\\" for=\\"__BVID__386_BV_option_2\\"><span>test-platform-id-3</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"platformId\\" class=\\"custom-control-input\\" value=\\"test-platform-id-4\\" id=\\"__BVID__386_BV_option_3\\"><label class=\\"custom-control-label\\" for=\\"__BVID__386_BV_option_3\\"><span>test-platform-id-4</span></label></div>
+                  </div>
+                  <!---->
+                  <!---->
+                  <!---->
+                </div>
+              </fieldset>
+            </div>
+            <!---->
+            <!---->
+          </div>
+          <div class=\\"card bg-secondary\\">
+            <!---->
+            <!---->
+            <div class=\\"card-body\\">
+              <!---->
+              <!---->
+              <div role=\\"group\\" class=\\"form-group\\" id=\\"__BVID__391\\"><label for=\\"component-filter\\" class=\\"d-block\\" id=\\"__BVID__391__BV_label_\\">Component</label>
+                <div><select id=\\"component-filter\\" class=\\"custom-select custom-select-sm\\">
+                    <option value=\\"\\">Please select a component</option>
+                    <option value=\\"test-component-id-1\\">test-component-id-1</option>
+                    <option value=\\"test-component-id-2\\">test-component-id-2</option>
+                    <option value=\\"test-component-id-3\\">test-component-id-3</option>
+                    <option value=\\"test-component-id-4\\">test-component-id-4</option>
+                  </select>
+                  <!---->
+                  <!---->
+                  <!---->
+                </div>
+              </div>
+            </div>
+            <!---->
+            <!---->
+          </div>
+        </div>
+      </div>
+    </transition-stub>
+  </div>
+  <div class=\\"graph\\"><svg xmlns=\\"http://www.w3.org/2000/svg\\" overflow=\\"auto\\" width=\\"100%\\" height=\\"1200\\" id=\\"component-dependency-graph\\" dependency-relation-type=\\"scope-related\\">
+      <rect fill-opacity=\\"0\\" class=\\"component-dependency-graph-background\\"></rect>
+      <defs>
+        <marker id=\\"component-dependency-graph-all-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker all-edge-marker\\">
+          <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
+        </marker>
+        <marker id=\\"component-dependency-graph-other-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker other-edge-marker\\">
+          <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
+        </marker>
+        <marker id=\\"component-dependency-graph-scope-related-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker scope-related-edge-marker\\">
+          <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
+        </marker>
+        <marker id=\\"component-dependency-graph-scoped-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker scoped-edge-marker\\">
+          <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
+        </marker>
+        <marker id=\\"component-dependency-graph-related-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker related-edge-marker\\">
+          <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
+        </marker>
+        <marker id=\\"component-dependency-graph-direct-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker direct-edge-marker\\">
+          <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
+        </marker>
+        <marker id=\\"component-dependency-graph-selected-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker selected-edge-marker\\">
+          <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
+        </marker>
+      </defs>
+      <g></g>
+      <g></g>
+      <g></g>
+      <g>
+        <path id=\\"component-dependency-graph-edge-1\\" d=\\"M350,50C350,150 50,50 50,150\\" marker-end=\\"url(#component-dependency-graph-scoped-edge-marker)\\" class=\\"edge scoped-edge\\"></path>
+        <path id=\\"component-dependency-graph-edge-2\\" d=\\"M50,150L50,250\\" marker-end=\\"url(#component-dependency-graph-scoped-edge-marker)\\" class=\\"edge scoped-edge\\"></path>
+        <path id=\\"component-dependency-graph-edge-3\\" d=\\"M50,150C50,250 350,150 350,250\\" marker-end=\\"url(#component-dependency-graph-scoped-edge-marker)\\" class=\\"edge scoped-edge\\"></path>
+      </g>
+      <g></g>
+      <g></g>
+      <g></g>
+      <g></g>
+      <g></g>
+      <g></g>
+      <g>
+        <circle id=\\"component-dependency-graph-node-0\\" r=\\"10\\" cx=\\"350\\" cy=\\"50\\" title=\\"test-component-id-1\\" class=\\"node scoped-node\\"></circle>
+        <circle id=\\"component-dependency-graph-node-1\\" r=\\"10\\" cx=\\"50\\" cy=\\"150\\" title=\\"test-component-id-2\\" class=\\"node scoped-node\\"></circle>
+        <circle id=\\"component-dependency-graph-node-2\\" r=\\"10\\" cx=\\"50\\" cy=\\"250\\" title=\\"test-component-id-3\\" class=\\"node scoped-node\\"></circle>
+        <circle id=\\"component-dependency-graph-node-3\\" r=\\"10\\" cx=\\"350\\" cy=\\"250\\" title=\\"test-component-id-4\\" class=\\"node scoped-node\\"></circle>
+      </g>
+      <g></g>
+      <g></g>
+      <g></g>
+      <g></g>
+      <g></g>
+      <g></g>
+      <g><text x=\\"367\\" y=\\"70\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label scoped-node-label\\">
+          <tspan x=\\"367\\" y=\\"70\\">
+            test-component-id-1
+          </tspan>
+        </text><text x=\\"67\\" y=\\"170\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label scoped-node-label\\">
+          <tspan x=\\"67\\" y=\\"170\\">
+            test-component-id-2
+          </tspan>
+        </text><text x=\\"67\\" y=\\"270\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label scoped-node-label\\">
+          <tspan x=\\"67\\" y=\\"270\\">
+            test-component-id-3
+          </tspan>
+        </text><text x=\\"367\\" y=\\"270\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label scoped-node-label\\">
+          <tspan x=\\"367\\" y=\\"270\\">
+            test-component-id-4
+          </tspan>
+        </text></g>
+      <g></g>
+      <g></g>
+      <g></g>
+    </svg></div>
+  <div tabindex=\\"-1\\" class=\\"b-sidebar-outer\\">
+    <!---->
+    <transition-stub css=\\"true\\" enterclass=\\"\\" leaveclass=\\"show\\" entertoclass=\\"show\\" leavetoclass=\\"\\" enteractiveclass=\\"slide\\" leaveactiveclass=\\"slide\\">
+      <div id=\\"component\\" tabindex=\\"-1\\" role=\\"dialog\\" aria-modal=\\"true\\" aria-hidden=\\"true\\" class=\\"b-sidebar b-sidebar-right bg-dark text-light\\" style=\\"width: 600px; display: none;\\">
+        <header class=\\"b-sidebar-header\\"><button type=\\"button\\" aria-label=\\"Close\\" class=\\"close text-light\\"><svg viewBox=\\"0 0 16 16\\" width=\\"1em\\" height=\\"1em\\" focusable=\\"false\\" role=\\"img\\" aria-label=\\"x\\" xmlns=\\"http://www.w3.org/2000/svg\\" fill=\\"currentColor\\" class=\\"bi-x b-icon bi\\">
+              <g>
+                <path d=\\"M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z\\"></path>
+              </g>
+            </svg></button><span></span></header>
+        <div class=\\"b-sidebar-body\\">
+          <div class=\\"m-3\\">
+            <!---->
+          </div>
+        </div>
+        <!---->
+      </div>
+    </transition-stub>
+    <!---->
+    <transition-stub name=\\"\\" css=\\"true\\" enterclass=\\"\\" leaveclass=\\"show\\" entertoclass=\\"show\\" leavetoclass=\\"\\" enteractiveclass=\\"fade\\" leaveactiveclass=\\"fade\\">
+      <div class=\\"b-sidebar-backdrop bg-dark\\" style=\\"display: none;\\"></div>
+    </transition-stub>
+  </div>
+</div>"
+`;
+
+exports[`ComponentDependenciesView when components prop contains multiple components and diagram prop contains multiple edges and the mouse hovers over the first node renders the connection directly related to the first node with the style of a direct connection 1`] = `
+"<div>
+  <transition-stub name=\\"\\" css=\\"true\\" enterclass=\\"\\" leaveclass=\\"show\\" entertoclass=\\"show\\" leavetoclass=\\"\\" enteractiveclass=\\"\\" leaveactiveclass=\\"\\">
+    <div role=\\"alert\\" aria-live=\\"polite\\" aria-atomic=\\"true\\" class=\\"alert alert-dismissible alert-info\\"><button type=\\"button\\" aria-label=\\"Close\\" class=\\"close\\">×</button>
+      Click a dot in the diagram to see more information about that component
+    </div>
+  </transition-stub>
+  <div class=\\"mt-3 mb-4\\" components=\\"[object Object],[object Object],[object Object],[object Object]\\"> <button id=\\"toggleFilters\\" type=\\"button\\" class=\\"btn btn-primary collapsed\\" aria-expanded=\\"false\\" aria-controls=\\"filters\\"><svg viewBox=\\"0 0 16 16\\" width=\\"1em\\" height=\\"1em\\" focusable=\\"false\\" role=\\"img\\" aria-label=\\"blank\\" aria-hidden=\\"true\\" xmlns=\\"http://www.w3.org/2000/svg\\" fill=\\"currentColor\\" class=\\"bi-blank b-icon bi\\">
+        <g></g>
+      </svg> Filters
+    </button>
+    <transition-stub css=\\"true\\" enterclass=\\"\\" leaveclass=\\"collapse show\\" entertoclass=\\"collapse show\\" leavetoclass=\\"collapse\\" enteractiveclass=\\"collapsing\\" leaveactiveclass=\\"collapsing\\" class=\\"mt-3\\">
+      <div id=\\"filters\\" class=\\"collapse\\" style=\\"display: none;\\">
+        <div class=\\"card-columns\\">
+          <div class=\\"card bg-secondary\\">
+            <!---->
+            <!---->
+            <div class=\\"card-body\\">
+              <!---->
+              <!---->
+              <fieldset class=\\"form-group\\" id=\\"__BVID__242\\">
+                <legend tabindex=\\"-1\\" class=\\"bv-no-focus-ring col-form-label pt-0\\" id=\\"__BVID__242__BV_label_\\">Dependency Types</legend>
+                <div>
+                  <div role=\\"group\\" tabindex=\\"-1\\" class=\\"bv-no-focus-ring\\" id=\\"__BVID__243\\">
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"dependencyTypeId\\" class=\\"custom-control-input\\" value=\\"\\" id=\\"__BVID__243_BV_option_0\\"><label class=\\"custom-control-label\\" for=\\"__BVID__243_BV_option_0\\"><span>null</span></label></div>
+                  </div>
+                  <!---->
+                  <!---->
+                  <!---->
+                </div>
+              </fieldset>
+            </div>
+            <!---->
+            <!---->
+          </div>
+          <div class=\\"card bg-secondary\\">
+            <!---->
+            <!---->
+            <div class=\\"card-body\\">
+              <!---->
+              <!---->
+              <div role=\\"group\\" class=\\"form-row form-group\\" id=\\"__BVID__245\\"><label for=\\"graph-scope-related-radius\\" class=\\"col-6 col-form-label col-form-label-sm\\" id=\\"__BVID__245__BV_label_\\">Radius:</label>
+                <div class=\\"col\\"><select id=\\"graph-scope-related-radius\\" class=\\"custom-select custom-select-sm\\">
+                    <option value=\\"0\\">0</option>
+                    <option value=\\"1\\">1</option>
+                    <option value=\\"2\\">2</option>
+                    <option value=\\"3\\">3</option>
+                    <option value=\\"4\\">4</option>
+                    <option value=\\"5\\">5</option>
+                    <option value=\\"6\\">6</option>
+                    <option value=\\"7\\">7</option>
+                    <option value=\\"8\\">8</option>
+                    <option value=\\"9\\">9</option>
+                    <option value=\\"10\\">10</option>
+                  </select>
+                  <!---->
+                  <!---->
+                  <!---->
+                </div>
+              </div>
+            </div>
+            <!---->
+            <!---->
+          </div>
+          <div class=\\"card bg-secondary\\">
+            <!---->
+            <!---->
+            <div class=\\"card-body\\">
+              <!---->
+              <!---->
+              <div role=\\"group\\" class=\\"form-row form-group\\" id=\\"__BVID__247\\"><label for=\\"graph-zoom\\" class=\\"col-6 col-form-label col-form-label-sm\\" id=\\"__BVID__247__BV_label_\\">Zoom:</label>
+                <div class=\\"col\\"><select id=\\"graph-zoom\\" class=\\"custom-select custom-select-sm\\">
+                    <option value=\\"25\\">25%</option>
+                    <option value=\\"50\\">50%</option>
+                    <option value=\\"75\\">75%</option>
+                    <option value=\\"100\\">100%</option>
+                    <option value=\\"125\\">125%</option>
+                    <option value=\\"150\\">150%</option>
+                    <option value=\\"200\\">200%</option>
+                    <option value=\\"400\\">400%</option>
+                  </select>
+                  <!---->
+                  <!---->
+                  <!---->
+                </div>
+              </div>
+            </div>
+            <!---->
+            <!---->
+          </div>
+          <!---->
+          <!---->
+          <!---->
+          <div class=\\"card bg-secondary\\">
+            <!---->
+            <!---->
+            <div class=\\"card-body\\">
+              <!---->
+              <!---->
+              <fieldset class=\\"form-group\\" id=\\"__BVID__249\\">
+                <legend tabindex=\\"-1\\" class=\\"bv-no-focus-ring col-form-label pt-0\\" id=\\"__BVID__249__BV_label_\\">Teams</legend>
+                <div>
+                  <div role=\\"group\\" tabindex=\\"-1\\" class=\\"bv-no-focus-ring\\" id=\\"__BVID__250\\">
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"team\\" class=\\"custom-control-input\\" value=\\"test-team-id-1-1\\" id=\\"__BVID__250_BV_option_0\\"><label class=\\"custom-control-label\\" for=\\"__BVID__250_BV_option_0\\"><span>test-team-id-1-1</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"team\\" class=\\"custom-control-input\\" value=\\"test-team-id-1-2\\" id=\\"__BVID__250_BV_option_1\\"><label class=\\"custom-control-label\\" for=\\"__BVID__250_BV_option_1\\"><span>test-team-id-1-2</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"team\\" class=\\"custom-control-input\\" value=\\"test-team-id-2-1\\" id=\\"__BVID__250_BV_option_2\\"><label class=\\"custom-control-label\\" for=\\"__BVID__250_BV_option_2\\"><span>test-team-id-2-1</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"team\\" class=\\"custom-control-input\\" value=\\"test-team-id-2-2\\" id=\\"__BVID__250_BV_option_3\\"><label class=\\"custom-control-label\\" for=\\"__BVID__250_BV_option_3\\"><span>test-team-id-2-2</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"team\\" class=\\"custom-control-input\\" value=\\"test-team-id-3-1\\" id=\\"__BVID__250_BV_option_4\\"><label class=\\"custom-control-label\\" for=\\"__BVID__250_BV_option_4\\"><span>test-team-id-3-1</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"team\\" class=\\"custom-control-input\\" value=\\"test-team-id-3-2\\" id=\\"__BVID__250_BV_option_5\\"><label class=\\"custom-control-label\\" for=\\"__BVID__250_BV_option_5\\"><span>test-team-id-3-2</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"team\\" class=\\"custom-control-input\\" value=\\"test-team-id-4-1\\" id=\\"__BVID__250_BV_option_6\\"><label class=\\"custom-control-label\\" for=\\"__BVID__250_BV_option_6\\"><span>test-team-id-4-1</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"team\\" class=\\"custom-control-input\\" value=\\"test-team-id-4-2\\" id=\\"__BVID__250_BV_option_7\\"><label class=\\"custom-control-label\\" for=\\"__BVID__250_BV_option_7\\"><span>test-team-id-4-2</span></label></div>
+                  </div>
+                  <!---->
+                  <!---->
+                  <!---->
+                </div>
+              </fieldset>
+            </div>
+            <!---->
+            <!---->
+          </div>
+          <div class=\\"card bg-secondary\\">
+            <!---->
+            <!---->
+            <div class=\\"card-body\\">
+              <!---->
+              <!---->
+              <fieldset class=\\"form-group\\" id=\\"__BVID__259\\">
+                <legend tabindex=\\"-1\\" class=\\"bv-no-focus-ring col-form-label pt-0\\" id=\\"__BVID__259__BV_label_\\">Tags</legend>
+                <div>
+                  <div role=\\"group\\" tabindex=\\"-1\\" class=\\"bv-no-focus-ring\\" id=\\"__BVID__260\\">
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"tag\\" class=\\"custom-control-input\\" value=\\"test-tag-1-1\\" id=\\"__BVID__260_BV_option_0\\"><label class=\\"custom-control-label\\" for=\\"__BVID__260_BV_option_0\\"><span>test-tag-1-1</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"tag\\" class=\\"custom-control-input\\" value=\\"test-tag-1-2\\" id=\\"__BVID__260_BV_option_1\\"><label class=\\"custom-control-label\\" for=\\"__BVID__260_BV_option_1\\"><span>test-tag-1-2</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"tag\\" class=\\"custom-control-input\\" value=\\"test-tag-2-1\\" id=\\"__BVID__260_BV_option_2\\"><label class=\\"custom-control-label\\" for=\\"__BVID__260_BV_option_2\\"><span>test-tag-2-1</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"tag\\" class=\\"custom-control-input\\" value=\\"test-tag-2-2\\" id=\\"__BVID__260_BV_option_3\\"><label class=\\"custom-control-label\\" for=\\"__BVID__260_BV_option_3\\"><span>test-tag-2-2</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"tag\\" class=\\"custom-control-input\\" value=\\"test-tag-3-1\\" id=\\"__BVID__260_BV_option_4\\"><label class=\\"custom-control-label\\" for=\\"__BVID__260_BV_option_4\\"><span>test-tag-3-1</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"tag\\" class=\\"custom-control-input\\" value=\\"test-tag-3-2\\" id=\\"__BVID__260_BV_option_5\\"><label class=\\"custom-control-label\\" for=\\"__BVID__260_BV_option_5\\"><span>test-tag-3-2</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"tag\\" class=\\"custom-control-input\\" value=\\"test-tag-4-1\\" id=\\"__BVID__260_BV_option_6\\"><label class=\\"custom-control-label\\" for=\\"__BVID__260_BV_option_6\\"><span>test-tag-4-1</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"tag\\" class=\\"custom-control-input\\" value=\\"test-tag-4-2\\" id=\\"__BVID__260_BV_option_7\\"><label class=\\"custom-control-label\\" for=\\"__BVID__260_BV_option_7\\"><span>test-tag-4-2</span></label></div>
+                  </div>
+                  <!---->
+                  <!---->
+                  <!---->
+                </div>
+              </fieldset>
+            </div>
+            <!---->
+            <!---->
+          </div>
+          <div class=\\"card bg-secondary\\">
+            <!---->
+            <!---->
+            <div class=\\"card-body\\">
+              <!---->
+              <!---->
+              <fieldset class=\\"form-group\\" id=\\"__BVID__269\\">
+                <legend tabindex=\\"-1\\" class=\\"bv-no-focus-ring col-form-label pt-0\\" id=\\"__BVID__269__BV_label_\\">Component Types</legend>
+                <div>
+                  <div role=\\"group\\" tabindex=\\"-1\\" class=\\"bv-no-focus-ring\\" id=\\"__BVID__270\\">
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"componentTypeId\\" class=\\"custom-control-input\\" value=\\"test-component-type-id-1\\" id=\\"__BVID__270_BV_option_0\\"><label class=\\"custom-control-label\\" for=\\"__BVID__270_BV_option_0\\"><span>test-component-type-id-1</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"componentTypeId\\" class=\\"custom-control-input\\" value=\\"test-component-type-id-2\\" id=\\"__BVID__270_BV_option_1\\"><label class=\\"custom-control-label\\" for=\\"__BVID__270_BV_option_1\\"><span>test-component-type-id-2</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"componentTypeId\\" class=\\"custom-control-input\\" value=\\"test-component-type-id-3\\" id=\\"__BVID__270_BV_option_2\\"><label class=\\"custom-control-label\\" for=\\"__BVID__270_BV_option_2\\"><span>test-component-type-id-3</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"componentTypeId\\" class=\\"custom-control-input\\" value=\\"test-component-type-id-4\\" id=\\"__BVID__270_BV_option_3\\"><label class=\\"custom-control-label\\" for=\\"__BVID__270_BV_option_3\\"><span>test-component-type-id-4</span></label></div>
+                  </div>
+                  <!---->
+                  <!---->
+                  <!---->
+                </div>
+              </fieldset>
+            </div>
+            <!---->
+            <!---->
+          </div>
+          <div class=\\"card bg-secondary\\">
+            <!---->
+            <!---->
+            <div class=\\"card-body\\">
+              <!---->
+              <!---->
+              <fieldset class=\\"form-group\\" id=\\"__BVID__275\\">
+                <legend tabindex=\\"-1\\" class=\\"bv-no-focus-ring col-form-label pt-0\\" id=\\"__BVID__275__BV_label_\\">Platforms</legend>
+                <div>
+                  <div role=\\"group\\" tabindex=\\"-1\\" class=\\"bv-no-focus-ring\\" id=\\"__BVID__276\\">
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"platformId\\" class=\\"custom-control-input\\" value=\\"test-platform-id-1\\" id=\\"__BVID__276_BV_option_0\\"><label class=\\"custom-control-label\\" for=\\"__BVID__276_BV_option_0\\"><span>test-platform-id-1</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"platformId\\" class=\\"custom-control-input\\" value=\\"test-platform-id-2\\" id=\\"__BVID__276_BV_option_1\\"><label class=\\"custom-control-label\\" for=\\"__BVID__276_BV_option_1\\"><span>test-platform-id-2</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"platformId\\" class=\\"custom-control-input\\" value=\\"test-platform-id-3\\" id=\\"__BVID__276_BV_option_2\\"><label class=\\"custom-control-label\\" for=\\"__BVID__276_BV_option_2\\"><span>test-platform-id-3</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"platformId\\" class=\\"custom-control-input\\" value=\\"test-platform-id-4\\" id=\\"__BVID__276_BV_option_3\\"><label class=\\"custom-control-label\\" for=\\"__BVID__276_BV_option_3\\"><span>test-platform-id-4</span></label></div>
+                  </div>
+                  <!---->
+                  <!---->
+                  <!---->
+                </div>
+              </fieldset>
+            </div>
+            <!---->
+            <!---->
+          </div>
+          <div class=\\"card bg-secondary\\">
+            <!---->
+            <!---->
+            <div class=\\"card-body\\">
+              <!---->
+              <!---->
+              <div role=\\"group\\" class=\\"form-group\\" id=\\"__BVID__281\\"><label for=\\"component-filter\\" class=\\"d-block\\" id=\\"__BVID__281__BV_label_\\">Component</label>
+                <div><select id=\\"component-filter\\" class=\\"custom-select custom-select-sm\\">
+                    <option value=\\"\\">Please select a component</option>
+                    <option value=\\"test-component-id-1\\">test-component-id-1</option>
+                    <option value=\\"test-component-id-2\\">test-component-id-2</option>
+                    <option value=\\"test-component-id-3\\">test-component-id-3</option>
+                    <option value=\\"test-component-id-4\\">test-component-id-4</option>
+                  </select>
+                  <!---->
+                  <!---->
+                  <!---->
+                </div>
+              </div>
+            </div>
+            <!---->
+            <!---->
+          </div>
+        </div>
+      </div>
+    </transition-stub>
+  </div>
+  <div class=\\"graph\\"><svg xmlns=\\"http://www.w3.org/2000/svg\\" overflow=\\"auto\\" width=\\"100%\\" height=\\"1200\\" id=\\"component-dependency-graph\\" dependency-relation-type=\\"scope-related\\">
+      <rect fill-opacity=\\"0\\" class=\\"component-dependency-graph-background\\"></rect>
+      <defs>
+        <marker id=\\"component-dependency-graph-all-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker all-edge-marker\\">
+          <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
+        </marker>
+        <marker id=\\"component-dependency-graph-other-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker other-edge-marker\\">
+          <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
+        </marker>
+        <marker id=\\"component-dependency-graph-scope-related-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker scope-related-edge-marker\\">
+          <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
+        </marker>
+        <marker id=\\"component-dependency-graph-scoped-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker scoped-edge-marker\\">
+          <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
+        </marker>
+        <marker id=\\"component-dependency-graph-related-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker related-edge-marker\\">
+          <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
+        </marker>
+        <marker id=\\"component-dependency-graph-direct-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker direct-edge-marker\\">
+          <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
+        </marker>
+        <marker id=\\"component-dependency-graph-selected-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker selected-edge-marker\\">
+          <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
+        </marker>
+      </defs>
+      <g></g>
+      <g></g>
+      <g></g>
+      <g>
+        <path id=\\"component-dependency-graph-edge-2\\" d=\\"M50,150L50,250\\" marker-end=\\"url(#component-dependency-graph-scoped-edge-marker)\\" class=\\"edge scoped-edge\\"></path>
+        <path id=\\"component-dependency-graph-edge-3\\" d=\\"M50,150C50,250 350,150 350,250\\" marker-end=\\"url(#component-dependency-graph-scoped-edge-marker)\\" class=\\"edge scoped-edge\\"></path>
+      </g>
+      <g></g>
+      <g>
+        <path id=\\"component-dependency-graph-edge-1\\" d=\\"M350,50C350,150 50,50 50,150\\" marker-end=\\"url(#component-dependency-graph-direct-edge-marker)\\" class=\\"edge direct-edge\\"></path>
+      </g>
+      <g></g>
+      <g></g>
+      <g></g>
+      <g></g>
+      <g>
+        <circle id=\\"component-dependency-graph-node-1\\" r=\\"10\\" cx=\\"50\\" cy=\\"150\\" title=\\"test-component-id-2\\" class=\\"node scoped-node\\"></circle>
+        <circle id=\\"component-dependency-graph-node-2\\" r=\\"10\\" cx=\\"50\\" cy=\\"250\\" title=\\"test-component-id-3\\" class=\\"node scoped-node\\"></circle>
+        <circle id=\\"component-dependency-graph-node-3\\" r=\\"10\\" cx=\\"350\\" cy=\\"250\\" title=\\"test-component-id-4\\" class=\\"node scoped-node\\"></circle>
+      </g>
+      <g></g>
+      <g></g>
+      <g>
+        <circle id=\\"component-dependency-graph-node-0\\" r=\\"10\\" cx=\\"350\\" cy=\\"50\\" title=\\"test-component-id-1\\" class=\\"node selected-node\\"></circle>
+      </g>
+      <g></g>
+      <g></g>
+      <g></g>
+      <g><text x=\\"67\\" y=\\"170\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label scoped-node-label\\">
+          <tspan x=\\"67\\" y=\\"170\\">
+            test-component-id-2
+          </tspan>
+        </text><text x=\\"67\\" y=\\"270\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label scoped-node-label\\">
+          <tspan x=\\"67\\" y=\\"270\\">
+            test-component-id-3
+          </tspan>
+        </text><text x=\\"367\\" y=\\"270\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label scoped-node-label\\">
+          <tspan x=\\"367\\" y=\\"270\\">
+            test-component-id-4
+          </tspan>
+        </text></g>
+      <g></g>
+      <g></g>
+      <g><text x=\\"367\\" y=\\"70\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label selected-node-label\\">
+          <tspan x=\\"367\\" y=\\"70\\">
+            test-component-id-1
+          </tspan>
+        </text></g>
+    </svg></div>
+  <div tabindex=\\"-1\\" class=\\"b-sidebar-outer\\">
+    <!---->
+    <transition-stub css=\\"true\\" enterclass=\\"\\" leaveclass=\\"show\\" entertoclass=\\"show\\" leavetoclass=\\"\\" enteractiveclass=\\"slide\\" leaveactiveclass=\\"slide\\">
+      <div id=\\"component\\" tabindex=\\"-1\\" role=\\"dialog\\" aria-modal=\\"true\\" aria-hidden=\\"true\\" class=\\"b-sidebar b-sidebar-right bg-dark text-light\\" style=\\"width: 600px; display: none;\\">
+        <header class=\\"b-sidebar-header\\"><button type=\\"button\\" aria-label=\\"Close\\" class=\\"close text-light\\"><svg viewBox=\\"0 0 16 16\\" width=\\"1em\\" height=\\"1em\\" focusable=\\"false\\" role=\\"img\\" aria-label=\\"x\\" xmlns=\\"http://www.w3.org/2000/svg\\" fill=\\"currentColor\\" class=\\"bi-x b-icon bi\\">
+              <g>
+                <path d=\\"M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z\\"></path>
+              </g>
+            </svg></button><span></span></header>
+        <div class=\\"b-sidebar-body\\">
+          <div class=\\"m-3\\">
+            <!---->
+          </div>
+        </div>
+        <!---->
+      </div>
+    </transition-stub>
+    <!---->
+    <transition-stub name=\\"\\" css=\\"true\\" enterclass=\\"\\" leaveclass=\\"show\\" entertoclass=\\"show\\" leavetoclass=\\"\\" enteractiveclass=\\"fade\\" leaveactiveclass=\\"fade\\">
+      <div class=\\"b-sidebar-backdrop bg-dark\\" style=\\"display: none;\\"></div>
+    </transition-stub>
+  </div>
+</div>"
+`;
+
+exports[`ComponentDependenciesView when components prop contains multiple components and diagram prop contains multiple edges renders the connections 1`] = `
+"<div>
+  <transition-stub name=\\"\\" css=\\"true\\" enterclass=\\"\\" leaveclass=\\"show\\" entertoclass=\\"show\\" leavetoclass=\\"\\" enteractiveclass=\\"\\" leaveactiveclass=\\"\\">
+    <div role=\\"alert\\" aria-live=\\"polite\\" aria-atomic=\\"true\\" class=\\"alert alert-dismissible alert-info\\"><button type=\\"button\\" aria-label=\\"Close\\" class=\\"close\\">×</button>
+      Click a dot in the diagram to see more information about that component
+    </div>
+  </transition-stub>
+  <div class=\\"mt-3 mb-4\\" components=\\"[object Object],[object Object],[object Object],[object Object]\\"> <button id=\\"toggleFilters\\" type=\\"button\\" class=\\"btn btn-primary collapsed\\" aria-expanded=\\"false\\" aria-controls=\\"filters\\"><svg viewBox=\\"0 0 16 16\\" width=\\"1em\\" height=\\"1em\\" focusable=\\"false\\" role=\\"img\\" aria-label=\\"blank\\" aria-hidden=\\"true\\" xmlns=\\"http://www.w3.org/2000/svg\\" fill=\\"currentColor\\" class=\\"bi-blank b-icon bi\\">
+        <g></g>
+      </svg> Filters
+    </button>
+    <transition-stub css=\\"true\\" enterclass=\\"\\" leaveclass=\\"collapse show\\" entertoclass=\\"collapse show\\" leavetoclass=\\"collapse\\" enteractiveclass=\\"collapsing\\" leaveactiveclass=\\"collapsing\\" class=\\"mt-3\\">
+      <div id=\\"filters\\" class=\\"collapse\\" style=\\"display: none;\\">
+        <div class=\\"card-columns\\">
+          <div class=\\"card bg-secondary\\">
+            <!---->
+            <!---->
+            <div class=\\"card-body\\">
+              <!---->
+              <!---->
+              <fieldset class=\\"form-group\\" id=\\"__BVID__77\\">
+                <legend tabindex=\\"-1\\" class=\\"bv-no-focus-ring col-form-label pt-0\\" id=\\"__BVID__77__BV_label_\\">Dependency Types</legend>
+                <div>
+                  <div role=\\"group\\" tabindex=\\"-1\\" class=\\"bv-no-focus-ring\\" id=\\"__BVID__78\\">
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"dependencyTypeId\\" class=\\"custom-control-input\\" value=\\"\\" id=\\"__BVID__78_BV_option_0\\"><label class=\\"custom-control-label\\" for=\\"__BVID__78_BV_option_0\\"><span>null</span></label></div>
+                  </div>
+                  <!---->
+                  <!---->
+                  <!---->
+                </div>
+              </fieldset>
+            </div>
+            <!---->
+            <!---->
+          </div>
+          <div class=\\"card bg-secondary\\">
+            <!---->
+            <!---->
+            <div class=\\"card-body\\">
+              <!---->
+              <!---->
+              <div role=\\"group\\" class=\\"form-row form-group\\" id=\\"__BVID__80\\"><label for=\\"graph-scope-related-radius\\" class=\\"col-6 col-form-label col-form-label-sm\\" id=\\"__BVID__80__BV_label_\\">Radius:</label>
+                <div class=\\"col\\"><select id=\\"graph-scope-related-radius\\" class=\\"custom-select custom-select-sm\\">
+                    <option value=\\"0\\">0</option>
+                    <option value=\\"1\\">1</option>
+                    <option value=\\"2\\">2</option>
+                    <option value=\\"3\\">3</option>
+                    <option value=\\"4\\">4</option>
+                    <option value=\\"5\\">5</option>
+                    <option value=\\"6\\">6</option>
+                    <option value=\\"7\\">7</option>
+                    <option value=\\"8\\">8</option>
+                    <option value=\\"9\\">9</option>
+                    <option value=\\"10\\">10</option>
+                  </select>
+                  <!---->
+                  <!---->
+                  <!---->
+                </div>
+              </div>
+            </div>
+            <!---->
+            <!---->
+          </div>
+          <div class=\\"card bg-secondary\\">
+            <!---->
+            <!---->
+            <div class=\\"card-body\\">
+              <!---->
+              <!---->
+              <div role=\\"group\\" class=\\"form-row form-group\\" id=\\"__BVID__82\\"><label for=\\"graph-zoom\\" class=\\"col-6 col-form-label col-form-label-sm\\" id=\\"__BVID__82__BV_label_\\">Zoom:</label>
+                <div class=\\"col\\"><select id=\\"graph-zoom\\" class=\\"custom-select custom-select-sm\\">
+                    <option value=\\"25\\">25%</option>
+                    <option value=\\"50\\">50%</option>
+                    <option value=\\"75\\">75%</option>
+                    <option value=\\"100\\">100%</option>
+                    <option value=\\"125\\">125%</option>
+                    <option value=\\"150\\">150%</option>
+                    <option value=\\"200\\">200%</option>
+                    <option value=\\"400\\">400%</option>
+                  </select>
+                  <!---->
+                  <!---->
+                  <!---->
+                </div>
+              </div>
+            </div>
+            <!---->
+            <!---->
+          </div>
+          <!---->
+          <!---->
+          <!---->
+          <div class=\\"card bg-secondary\\">
+            <!---->
+            <!---->
+            <div class=\\"card-body\\">
+              <!---->
+              <!---->
+              <fieldset class=\\"form-group\\" id=\\"__BVID__84\\">
+                <legend tabindex=\\"-1\\" class=\\"bv-no-focus-ring col-form-label pt-0\\" id=\\"__BVID__84__BV_label_\\">Teams</legend>
+                <div>
+                  <div role=\\"group\\" tabindex=\\"-1\\" class=\\"bv-no-focus-ring\\" id=\\"__BVID__85\\">
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"team\\" class=\\"custom-control-input\\" value=\\"test-team-id-1-1\\" id=\\"__BVID__85_BV_option_0\\"><label class=\\"custom-control-label\\" for=\\"__BVID__85_BV_option_0\\"><span>test-team-id-1-1</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"team\\" class=\\"custom-control-input\\" value=\\"test-team-id-1-2\\" id=\\"__BVID__85_BV_option_1\\"><label class=\\"custom-control-label\\" for=\\"__BVID__85_BV_option_1\\"><span>test-team-id-1-2</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"team\\" class=\\"custom-control-input\\" value=\\"test-team-id-2-1\\" id=\\"__BVID__85_BV_option_2\\"><label class=\\"custom-control-label\\" for=\\"__BVID__85_BV_option_2\\"><span>test-team-id-2-1</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"team\\" class=\\"custom-control-input\\" value=\\"test-team-id-2-2\\" id=\\"__BVID__85_BV_option_3\\"><label class=\\"custom-control-label\\" for=\\"__BVID__85_BV_option_3\\"><span>test-team-id-2-2</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"team\\" class=\\"custom-control-input\\" value=\\"test-team-id-3-1\\" id=\\"__BVID__85_BV_option_4\\"><label class=\\"custom-control-label\\" for=\\"__BVID__85_BV_option_4\\"><span>test-team-id-3-1</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"team\\" class=\\"custom-control-input\\" value=\\"test-team-id-3-2\\" id=\\"__BVID__85_BV_option_5\\"><label class=\\"custom-control-label\\" for=\\"__BVID__85_BV_option_5\\"><span>test-team-id-3-2</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"team\\" class=\\"custom-control-input\\" value=\\"test-team-id-4-1\\" id=\\"__BVID__85_BV_option_6\\"><label class=\\"custom-control-label\\" for=\\"__BVID__85_BV_option_6\\"><span>test-team-id-4-1</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"team\\" class=\\"custom-control-input\\" value=\\"test-team-id-4-2\\" id=\\"__BVID__85_BV_option_7\\"><label class=\\"custom-control-label\\" for=\\"__BVID__85_BV_option_7\\"><span>test-team-id-4-2</span></label></div>
+                  </div>
+                  <!---->
+                  <!---->
+                  <!---->
+                </div>
+              </fieldset>
+            </div>
+            <!---->
+            <!---->
+          </div>
+          <div class=\\"card bg-secondary\\">
+            <!---->
+            <!---->
+            <div class=\\"card-body\\">
+              <!---->
+              <!---->
+              <fieldset class=\\"form-group\\" id=\\"__BVID__94\\">
+                <legend tabindex=\\"-1\\" class=\\"bv-no-focus-ring col-form-label pt-0\\" id=\\"__BVID__94__BV_label_\\">Tags</legend>
+                <div>
+                  <div role=\\"group\\" tabindex=\\"-1\\" class=\\"bv-no-focus-ring\\" id=\\"__BVID__95\\">
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"tag\\" class=\\"custom-control-input\\" value=\\"test-tag-1-1\\" id=\\"__BVID__95_BV_option_0\\"><label class=\\"custom-control-label\\" for=\\"__BVID__95_BV_option_0\\"><span>test-tag-1-1</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"tag\\" class=\\"custom-control-input\\" value=\\"test-tag-1-2\\" id=\\"__BVID__95_BV_option_1\\"><label class=\\"custom-control-label\\" for=\\"__BVID__95_BV_option_1\\"><span>test-tag-1-2</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"tag\\" class=\\"custom-control-input\\" value=\\"test-tag-2-1\\" id=\\"__BVID__95_BV_option_2\\"><label class=\\"custom-control-label\\" for=\\"__BVID__95_BV_option_2\\"><span>test-tag-2-1</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"tag\\" class=\\"custom-control-input\\" value=\\"test-tag-2-2\\" id=\\"__BVID__95_BV_option_3\\"><label class=\\"custom-control-label\\" for=\\"__BVID__95_BV_option_3\\"><span>test-tag-2-2</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"tag\\" class=\\"custom-control-input\\" value=\\"test-tag-3-1\\" id=\\"__BVID__95_BV_option_4\\"><label class=\\"custom-control-label\\" for=\\"__BVID__95_BV_option_4\\"><span>test-tag-3-1</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"tag\\" class=\\"custom-control-input\\" value=\\"test-tag-3-2\\" id=\\"__BVID__95_BV_option_5\\"><label class=\\"custom-control-label\\" for=\\"__BVID__95_BV_option_5\\"><span>test-tag-3-2</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"tag\\" class=\\"custom-control-input\\" value=\\"test-tag-4-1\\" id=\\"__BVID__95_BV_option_6\\"><label class=\\"custom-control-label\\" for=\\"__BVID__95_BV_option_6\\"><span>test-tag-4-1</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"tag\\" class=\\"custom-control-input\\" value=\\"test-tag-4-2\\" id=\\"__BVID__95_BV_option_7\\"><label class=\\"custom-control-label\\" for=\\"__BVID__95_BV_option_7\\"><span>test-tag-4-2</span></label></div>
+                  </div>
+                  <!---->
+                  <!---->
+                  <!---->
+                </div>
+              </fieldset>
+            </div>
+            <!---->
+            <!---->
+          </div>
+          <div class=\\"card bg-secondary\\">
+            <!---->
+            <!---->
+            <div class=\\"card-body\\">
+              <!---->
+              <!---->
+              <fieldset class=\\"form-group\\" id=\\"__BVID__104\\">
+                <legend tabindex=\\"-1\\" class=\\"bv-no-focus-ring col-form-label pt-0\\" id=\\"__BVID__104__BV_label_\\">Component Types</legend>
+                <div>
+                  <div role=\\"group\\" tabindex=\\"-1\\" class=\\"bv-no-focus-ring\\" id=\\"__BVID__105\\">
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"componentTypeId\\" class=\\"custom-control-input\\" value=\\"test-component-type-id-1\\" id=\\"__BVID__105_BV_option_0\\"><label class=\\"custom-control-label\\" for=\\"__BVID__105_BV_option_0\\"><span>test-component-type-id-1</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"componentTypeId\\" class=\\"custom-control-input\\" value=\\"test-component-type-id-2\\" id=\\"__BVID__105_BV_option_1\\"><label class=\\"custom-control-label\\" for=\\"__BVID__105_BV_option_1\\"><span>test-component-type-id-2</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"componentTypeId\\" class=\\"custom-control-input\\" value=\\"test-component-type-id-3\\" id=\\"__BVID__105_BV_option_2\\"><label class=\\"custom-control-label\\" for=\\"__BVID__105_BV_option_2\\"><span>test-component-type-id-3</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"componentTypeId\\" class=\\"custom-control-input\\" value=\\"test-component-type-id-4\\" id=\\"__BVID__105_BV_option_3\\"><label class=\\"custom-control-label\\" for=\\"__BVID__105_BV_option_3\\"><span>test-component-type-id-4</span></label></div>
+                  </div>
+                  <!---->
+                  <!---->
+                  <!---->
+                </div>
+              </fieldset>
+            </div>
+            <!---->
+            <!---->
+          </div>
+          <div class=\\"card bg-secondary\\">
+            <!---->
+            <!---->
+            <div class=\\"card-body\\">
+              <!---->
+              <!---->
+              <fieldset class=\\"form-group\\" id=\\"__BVID__110\\">
+                <legend tabindex=\\"-1\\" class=\\"bv-no-focus-ring col-form-label pt-0\\" id=\\"__BVID__110__BV_label_\\">Platforms</legend>
+                <div>
+                  <div role=\\"group\\" tabindex=\\"-1\\" class=\\"bv-no-focus-ring\\" id=\\"__BVID__111\\">
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"platformId\\" class=\\"custom-control-input\\" value=\\"test-platform-id-1\\" id=\\"__BVID__111_BV_option_0\\"><label class=\\"custom-control-label\\" for=\\"__BVID__111_BV_option_0\\"><span>test-platform-id-1</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"platformId\\" class=\\"custom-control-input\\" value=\\"test-platform-id-2\\" id=\\"__BVID__111_BV_option_1\\"><label class=\\"custom-control-label\\" for=\\"__BVID__111_BV_option_1\\"><span>test-platform-id-2</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"platformId\\" class=\\"custom-control-input\\" value=\\"test-platform-id-3\\" id=\\"__BVID__111_BV_option_2\\"><label class=\\"custom-control-label\\" for=\\"__BVID__111_BV_option_2\\"><span>test-platform-id-3</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"platformId\\" class=\\"custom-control-input\\" value=\\"test-platform-id-4\\" id=\\"__BVID__111_BV_option_3\\"><label class=\\"custom-control-label\\" for=\\"__BVID__111_BV_option_3\\"><span>test-platform-id-4</span></label></div>
+                  </div>
+                  <!---->
+                  <!---->
+                  <!---->
+                </div>
+              </fieldset>
+            </div>
+            <!---->
+            <!---->
+          </div>
+          <div class=\\"card bg-secondary\\">
+            <!---->
+            <!---->
+            <div class=\\"card-body\\">
+              <!---->
+              <!---->
+              <div role=\\"group\\" class=\\"form-group\\" id=\\"__BVID__116\\"><label for=\\"component-filter\\" class=\\"d-block\\" id=\\"__BVID__116__BV_label_\\">Component</label>
+                <div><select id=\\"component-filter\\" class=\\"custom-select custom-select-sm\\">
+                    <option value=\\"\\">Please select a component</option>
+                    <option value=\\"test-component-id-1\\">test-component-id-1</option>
+                    <option value=\\"test-component-id-2\\">test-component-id-2</option>
+                    <option value=\\"test-component-id-3\\">test-component-id-3</option>
+                    <option value=\\"test-component-id-4\\">test-component-id-4</option>
+                  </select>
+                  <!---->
+                  <!---->
+                  <!---->
+                </div>
+              </div>
+            </div>
+            <!---->
+            <!---->
+          </div>
+        </div>
+      </div>
+    </transition-stub>
+  </div>
+  <div class=\\"graph\\"><svg xmlns=\\"http://www.w3.org/2000/svg\\" overflow=\\"auto\\" width=\\"100%\\" height=\\"1200\\" id=\\"component-dependency-graph\\" dependency-relation-type=\\"scope-related\\">
+      <rect fill-opacity=\\"0\\" class=\\"component-dependency-graph-background\\"></rect>
+      <defs>
+        <marker id=\\"component-dependency-graph-all-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker all-edge-marker\\">
+          <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
+        </marker>
+        <marker id=\\"component-dependency-graph-other-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker other-edge-marker\\">
+          <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
+        </marker>
+        <marker id=\\"component-dependency-graph-scope-related-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker scope-related-edge-marker\\">
+          <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
+        </marker>
+        <marker id=\\"component-dependency-graph-scoped-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker scoped-edge-marker\\">
+          <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
+        </marker>
+        <marker id=\\"component-dependency-graph-related-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker related-edge-marker\\">
+          <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
+        </marker>
+        <marker id=\\"component-dependency-graph-direct-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker direct-edge-marker\\">
+          <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
+        </marker>
+        <marker id=\\"component-dependency-graph-selected-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker selected-edge-marker\\">
+          <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
+        </marker>
+      </defs>
+      <g></g>
+      <g></g>
+      <g></g>
+      <g>
+        <path id=\\"component-dependency-graph-edge-1\\" d=\\"M350,50C350,150 50,50 50,150\\" marker-end=\\"url(#component-dependency-graph-scoped-edge-marker)\\" class=\\"edge scoped-edge\\"></path>
+        <path id=\\"component-dependency-graph-edge-2\\" d=\\"M50,150L50,250\\" marker-end=\\"url(#component-dependency-graph-scoped-edge-marker)\\" class=\\"edge scoped-edge\\"></path>
+        <path id=\\"component-dependency-graph-edge-3\\" d=\\"M50,150C50,250 350,150 350,250\\" marker-end=\\"url(#component-dependency-graph-scoped-edge-marker)\\" class=\\"edge scoped-edge\\"></path>
+      </g>
+      <g></g>
+      <g></g>
+      <g></g>
+      <g></g>
+      <g></g>
+      <g></g>
+      <g>
+        <circle id=\\"component-dependency-graph-node-0\\" r=\\"10\\" cx=\\"350\\" cy=\\"50\\" title=\\"test-component-id-1\\" class=\\"node scoped-node\\"></circle>
+        <circle id=\\"component-dependency-graph-node-1\\" r=\\"10\\" cx=\\"50\\" cy=\\"150\\" title=\\"test-component-id-2\\" class=\\"node scoped-node\\"></circle>
+        <circle id=\\"component-dependency-graph-node-2\\" r=\\"10\\" cx=\\"50\\" cy=\\"250\\" title=\\"test-component-id-3\\" class=\\"node scoped-node\\"></circle>
+        <circle id=\\"component-dependency-graph-node-3\\" r=\\"10\\" cx=\\"350\\" cy=\\"250\\" title=\\"test-component-id-4\\" class=\\"node scoped-node\\"></circle>
+      </g>
+      <g></g>
+      <g></g>
+      <g></g>
+      <g></g>
+      <g></g>
+      <g></g>
+      <g><text x=\\"367\\" y=\\"70\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label scoped-node-label\\">
+          <tspan x=\\"367\\" y=\\"70\\">
+            test-component-id-1
+          </tspan>
+        </text><text x=\\"67\\" y=\\"170\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label scoped-node-label\\">
+          <tspan x=\\"67\\" y=\\"170\\">
+            test-component-id-2
+          </tspan>
+        </text><text x=\\"67\\" y=\\"270\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label scoped-node-label\\">
+          <tspan x=\\"67\\" y=\\"270\\">
+            test-component-id-3
+          </tspan>
+        </text><text x=\\"367\\" y=\\"270\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label scoped-node-label\\">
+          <tspan x=\\"367\\" y=\\"270\\">
+            test-component-id-4
+          </tspan>
+        </text></g>
+      <g></g>
+      <g></g>
+      <g></g>
+    </svg></div>
+  <div tabindex=\\"-1\\" class=\\"b-sidebar-outer\\">
+    <!---->
+    <transition-stub css=\\"true\\" enterclass=\\"\\" leaveclass=\\"show\\" entertoclass=\\"show\\" leavetoclass=\\"\\" enteractiveclass=\\"slide\\" leaveactiveclass=\\"slide\\">
+      <div id=\\"component\\" tabindex=\\"-1\\" role=\\"dialog\\" aria-modal=\\"true\\" aria-hidden=\\"true\\" class=\\"b-sidebar b-sidebar-right bg-dark text-light\\" style=\\"width: 600px; display: none;\\">
+        <header class=\\"b-sidebar-header\\"><button type=\\"button\\" aria-label=\\"Close\\" class=\\"close text-light\\"><svg viewBox=\\"0 0 16 16\\" width=\\"1em\\" height=\\"1em\\" focusable=\\"false\\" role=\\"img\\" aria-label=\\"x\\" xmlns=\\"http://www.w3.org/2000/svg\\" fill=\\"currentColor\\" class=\\"bi-x b-icon bi\\">
+              <g>
+                <path d=\\"M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z\\"></path>
+              </g>
+            </svg></button><span></span></header>
+        <div class=\\"b-sidebar-body\\">
+          <div class=\\"m-3\\">
+            <!---->
+          </div>
+        </div>
+        <!---->
+      </div>
+    </transition-stub>
+    <!---->
+    <transition-stub name=\\"\\" css=\\"true\\" enterclass=\\"\\" leaveclass=\\"show\\" entertoclass=\\"show\\" leavetoclass=\\"\\" enteractiveclass=\\"fade\\" leaveactiveclass=\\"fade\\">
+      <div class=\\"b-sidebar-backdrop bg-dark\\" style=\\"display: none;\\"></div>
+    </transition-stub>
+  </div>
+</div>"
+`;
+
+exports[`ComponentDependenciesView when components prop contains multiple components and diagram prop contains multiple edges when a node is clicked renders the connention directly related to the first node with the style of a direct edge 1`] = `
+"<div>
+  <transition-stub name=\\"\\" css=\\"true\\" enterclass=\\"\\" leaveclass=\\"show\\" entertoclass=\\"show\\" leavetoclass=\\"\\" enteractiveclass=\\"\\" leaveactiveclass=\\"\\">
+    <div role=\\"alert\\" aria-live=\\"polite\\" aria-atomic=\\"true\\" class=\\"alert alert-dismissible alert-info\\"><button type=\\"button\\" aria-label=\\"Close\\" class=\\"close\\">×</button>
+      Click a dot in the diagram to see more information about that component
+    </div>
+  </transition-stub>
+  <div class=\\"mt-3 mb-4\\" components=\\"[object Object],[object Object],[object Object],[object Object]\\"> <button id=\\"toggleFilters\\" type=\\"button\\" class=\\"btn btn-primary collapsed\\" aria-expanded=\\"false\\" aria-controls=\\"filters\\"><svg viewBox=\\"0 0 16 16\\" width=\\"1em\\" height=\\"1em\\" focusable=\\"false\\" role=\\"img\\" aria-label=\\"blank\\" aria-hidden=\\"true\\" xmlns=\\"http://www.w3.org/2000/svg\\" fill=\\"currentColor\\" class=\\"bi-blank b-icon bi\\">
+        <g></g>
+      </svg> Filters
+    </button>
+    <transition-stub css=\\"true\\" enterclass=\\"\\" leaveclass=\\"collapse show\\" entertoclass=\\"collapse show\\" leavetoclass=\\"collapse\\" enteractiveclass=\\"collapsing\\" leaveactiveclass=\\"collapsing\\" class=\\"mt-3\\">
+      <div id=\\"filters\\" class=\\"collapse\\" style=\\"display: none;\\">
+        <div class=\\"card-columns\\">
+          <div class=\\"card bg-secondary\\">
+            <!---->
+            <!---->
+            <div class=\\"card-body\\">
+              <!---->
+              <!---->
+              <fieldset class=\\"form-group\\" id=\\"__BVID__187\\">
+                <legend tabindex=\\"-1\\" class=\\"bv-no-focus-ring col-form-label pt-0\\" id=\\"__BVID__187__BV_label_\\">Dependency Types</legend>
+                <div>
+                  <div role=\\"group\\" tabindex=\\"-1\\" class=\\"bv-no-focus-ring\\" id=\\"__BVID__188\\">
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"dependencyTypeId\\" class=\\"custom-control-input\\" value=\\"\\" id=\\"__BVID__188_BV_option_0\\"><label class=\\"custom-control-label\\" for=\\"__BVID__188_BV_option_0\\"><span>null</span></label></div>
+                  </div>
+                  <!---->
+                  <!---->
+                  <!---->
+                </div>
+              </fieldset>
+            </div>
+            <!---->
+            <!---->
+          </div>
+          <div class=\\"card bg-secondary\\">
+            <!---->
+            <!---->
+            <div class=\\"card-body\\">
+              <!---->
+              <!---->
+              <div role=\\"group\\" class=\\"form-row form-group\\" id=\\"__BVID__190\\"><label for=\\"graph-scope-related-radius\\" class=\\"col-6 col-form-label col-form-label-sm\\" id=\\"__BVID__190__BV_label_\\">Radius:</label>
+                <div class=\\"col\\"><select id=\\"graph-scope-related-radius\\" class=\\"custom-select custom-select-sm\\">
+                    <option value=\\"0\\">0</option>
+                    <option value=\\"1\\">1</option>
+                    <option value=\\"2\\">2</option>
+                    <option value=\\"3\\">3</option>
+                    <option value=\\"4\\">4</option>
+                    <option value=\\"5\\">5</option>
+                    <option value=\\"6\\">6</option>
+                    <option value=\\"7\\">7</option>
+                    <option value=\\"8\\">8</option>
+                    <option value=\\"9\\">9</option>
+                    <option value=\\"10\\">10</option>
+                  </select>
+                  <!---->
+                  <!---->
+                  <!---->
+                </div>
+              </div>
+            </div>
+            <!---->
+            <!---->
+          </div>
+          <div class=\\"card bg-secondary\\">
+            <!---->
+            <!---->
+            <div class=\\"card-body\\">
+              <!---->
+              <!---->
+              <div role=\\"group\\" class=\\"form-row form-group\\" id=\\"__BVID__192\\"><label for=\\"graph-zoom\\" class=\\"col-6 col-form-label col-form-label-sm\\" id=\\"__BVID__192__BV_label_\\">Zoom:</label>
+                <div class=\\"col\\"><select id=\\"graph-zoom\\" class=\\"custom-select custom-select-sm\\">
+                    <option value=\\"25\\">25%</option>
+                    <option value=\\"50\\">50%</option>
+                    <option value=\\"75\\">75%</option>
+                    <option value=\\"100\\">100%</option>
+                    <option value=\\"125\\">125%</option>
+                    <option value=\\"150\\">150%</option>
+                    <option value=\\"200\\">200%</option>
+                    <option value=\\"400\\">400%</option>
+                  </select>
+                  <!---->
+                  <!---->
+                  <!---->
+                </div>
+              </div>
+            </div>
+            <!---->
+            <!---->
+          </div>
+          <!---->
+          <!---->
+          <!---->
+          <div class=\\"card bg-secondary\\">
+            <!---->
+            <!---->
+            <div class=\\"card-body\\">
+              <!---->
+              <!---->
+              <fieldset class=\\"form-group\\" id=\\"__BVID__194\\">
+                <legend tabindex=\\"-1\\" class=\\"bv-no-focus-ring col-form-label pt-0\\" id=\\"__BVID__194__BV_label_\\">Teams</legend>
+                <div>
+                  <div role=\\"group\\" tabindex=\\"-1\\" class=\\"bv-no-focus-ring\\" id=\\"__BVID__195\\">
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"team\\" class=\\"custom-control-input\\" value=\\"test-team-id-1-1\\" id=\\"__BVID__195_BV_option_0\\"><label class=\\"custom-control-label\\" for=\\"__BVID__195_BV_option_0\\"><span>test-team-id-1-1</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"team\\" class=\\"custom-control-input\\" value=\\"test-team-id-1-2\\" id=\\"__BVID__195_BV_option_1\\"><label class=\\"custom-control-label\\" for=\\"__BVID__195_BV_option_1\\"><span>test-team-id-1-2</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"team\\" class=\\"custom-control-input\\" value=\\"test-team-id-2-1\\" id=\\"__BVID__195_BV_option_2\\"><label class=\\"custom-control-label\\" for=\\"__BVID__195_BV_option_2\\"><span>test-team-id-2-1</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"team\\" class=\\"custom-control-input\\" value=\\"test-team-id-2-2\\" id=\\"__BVID__195_BV_option_3\\"><label class=\\"custom-control-label\\" for=\\"__BVID__195_BV_option_3\\"><span>test-team-id-2-2</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"team\\" class=\\"custom-control-input\\" value=\\"test-team-id-3-1\\" id=\\"__BVID__195_BV_option_4\\"><label class=\\"custom-control-label\\" for=\\"__BVID__195_BV_option_4\\"><span>test-team-id-3-1</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"team\\" class=\\"custom-control-input\\" value=\\"test-team-id-3-2\\" id=\\"__BVID__195_BV_option_5\\"><label class=\\"custom-control-label\\" for=\\"__BVID__195_BV_option_5\\"><span>test-team-id-3-2</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"team\\" class=\\"custom-control-input\\" value=\\"test-team-id-4-1\\" id=\\"__BVID__195_BV_option_6\\"><label class=\\"custom-control-label\\" for=\\"__BVID__195_BV_option_6\\"><span>test-team-id-4-1</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"team\\" class=\\"custom-control-input\\" value=\\"test-team-id-4-2\\" id=\\"__BVID__195_BV_option_7\\"><label class=\\"custom-control-label\\" for=\\"__BVID__195_BV_option_7\\"><span>test-team-id-4-2</span></label></div>
+                  </div>
+                  <!---->
+                  <!---->
+                  <!---->
+                </div>
+              </fieldset>
+            </div>
+            <!---->
+            <!---->
+          </div>
+          <div class=\\"card bg-secondary\\">
+            <!---->
+            <!---->
+            <div class=\\"card-body\\">
+              <!---->
+              <!---->
+              <fieldset class=\\"form-group\\" id=\\"__BVID__204\\">
+                <legend tabindex=\\"-1\\" class=\\"bv-no-focus-ring col-form-label pt-0\\" id=\\"__BVID__204__BV_label_\\">Tags</legend>
+                <div>
+                  <div role=\\"group\\" tabindex=\\"-1\\" class=\\"bv-no-focus-ring\\" id=\\"__BVID__205\\">
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"tag\\" class=\\"custom-control-input\\" value=\\"test-tag-1-1\\" id=\\"__BVID__205_BV_option_0\\"><label class=\\"custom-control-label\\" for=\\"__BVID__205_BV_option_0\\"><span>test-tag-1-1</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"tag\\" class=\\"custom-control-input\\" value=\\"test-tag-1-2\\" id=\\"__BVID__205_BV_option_1\\"><label class=\\"custom-control-label\\" for=\\"__BVID__205_BV_option_1\\"><span>test-tag-1-2</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"tag\\" class=\\"custom-control-input\\" value=\\"test-tag-2-1\\" id=\\"__BVID__205_BV_option_2\\"><label class=\\"custom-control-label\\" for=\\"__BVID__205_BV_option_2\\"><span>test-tag-2-1</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"tag\\" class=\\"custom-control-input\\" value=\\"test-tag-2-2\\" id=\\"__BVID__205_BV_option_3\\"><label class=\\"custom-control-label\\" for=\\"__BVID__205_BV_option_3\\"><span>test-tag-2-2</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"tag\\" class=\\"custom-control-input\\" value=\\"test-tag-3-1\\" id=\\"__BVID__205_BV_option_4\\"><label class=\\"custom-control-label\\" for=\\"__BVID__205_BV_option_4\\"><span>test-tag-3-1</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"tag\\" class=\\"custom-control-input\\" value=\\"test-tag-3-2\\" id=\\"__BVID__205_BV_option_5\\"><label class=\\"custom-control-label\\" for=\\"__BVID__205_BV_option_5\\"><span>test-tag-3-2</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"tag\\" class=\\"custom-control-input\\" value=\\"test-tag-4-1\\" id=\\"__BVID__205_BV_option_6\\"><label class=\\"custom-control-label\\" for=\\"__BVID__205_BV_option_6\\"><span>test-tag-4-1</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"tag\\" class=\\"custom-control-input\\" value=\\"test-tag-4-2\\" id=\\"__BVID__205_BV_option_7\\"><label class=\\"custom-control-label\\" for=\\"__BVID__205_BV_option_7\\"><span>test-tag-4-2</span></label></div>
+                  </div>
+                  <!---->
+                  <!---->
+                  <!---->
+                </div>
+              </fieldset>
+            </div>
+            <!---->
+            <!---->
+          </div>
+          <div class=\\"card bg-secondary\\">
+            <!---->
+            <!---->
+            <div class=\\"card-body\\">
+              <!---->
+              <!---->
+              <fieldset class=\\"form-group\\" id=\\"__BVID__214\\">
+                <legend tabindex=\\"-1\\" class=\\"bv-no-focus-ring col-form-label pt-0\\" id=\\"__BVID__214__BV_label_\\">Component Types</legend>
+                <div>
+                  <div role=\\"group\\" tabindex=\\"-1\\" class=\\"bv-no-focus-ring\\" id=\\"__BVID__215\\">
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"componentTypeId\\" class=\\"custom-control-input\\" value=\\"test-component-type-id-1\\" id=\\"__BVID__215_BV_option_0\\"><label class=\\"custom-control-label\\" for=\\"__BVID__215_BV_option_0\\"><span>test-component-type-id-1</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"componentTypeId\\" class=\\"custom-control-input\\" value=\\"test-component-type-id-2\\" id=\\"__BVID__215_BV_option_1\\"><label class=\\"custom-control-label\\" for=\\"__BVID__215_BV_option_1\\"><span>test-component-type-id-2</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"componentTypeId\\" class=\\"custom-control-input\\" value=\\"test-component-type-id-3\\" id=\\"__BVID__215_BV_option_2\\"><label class=\\"custom-control-label\\" for=\\"__BVID__215_BV_option_2\\"><span>test-component-type-id-3</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"componentTypeId\\" class=\\"custom-control-input\\" value=\\"test-component-type-id-4\\" id=\\"__BVID__215_BV_option_3\\"><label class=\\"custom-control-label\\" for=\\"__BVID__215_BV_option_3\\"><span>test-component-type-id-4</span></label></div>
+                  </div>
+                  <!---->
+                  <!---->
+                  <!---->
+                </div>
+              </fieldset>
+            </div>
+            <!---->
+            <!---->
+          </div>
+          <div class=\\"card bg-secondary\\">
+            <!---->
+            <!---->
+            <div class=\\"card-body\\">
+              <!---->
+              <!---->
+              <fieldset class=\\"form-group\\" id=\\"__BVID__220\\">
+                <legend tabindex=\\"-1\\" class=\\"bv-no-focus-ring col-form-label pt-0\\" id=\\"__BVID__220__BV_label_\\">Platforms</legend>
+                <div>
+                  <div role=\\"group\\" tabindex=\\"-1\\" class=\\"bv-no-focus-ring\\" id=\\"__BVID__221\\">
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"platformId\\" class=\\"custom-control-input\\" value=\\"test-platform-id-1\\" id=\\"__BVID__221_BV_option_0\\"><label class=\\"custom-control-label\\" for=\\"__BVID__221_BV_option_0\\"><span>test-platform-id-1</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"platformId\\" class=\\"custom-control-input\\" value=\\"test-platform-id-2\\" id=\\"__BVID__221_BV_option_1\\"><label class=\\"custom-control-label\\" for=\\"__BVID__221_BV_option_1\\"><span>test-platform-id-2</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"platformId\\" class=\\"custom-control-input\\" value=\\"test-platform-id-3\\" id=\\"__BVID__221_BV_option_2\\"><label class=\\"custom-control-label\\" for=\\"__BVID__221_BV_option_2\\"><span>test-platform-id-3</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"platformId\\" class=\\"custom-control-input\\" value=\\"test-platform-id-4\\" id=\\"__BVID__221_BV_option_3\\"><label class=\\"custom-control-label\\" for=\\"__BVID__221_BV_option_3\\"><span>test-platform-id-4</span></label></div>
+                  </div>
+                  <!---->
+                  <!---->
+                  <!---->
+                </div>
+              </fieldset>
+            </div>
+            <!---->
+            <!---->
+          </div>
+          <div class=\\"card bg-secondary\\">
+            <!---->
+            <!---->
+            <div class=\\"card-body\\">
+              <!---->
+              <!---->
+              <div role=\\"group\\" class=\\"form-group\\" id=\\"__BVID__226\\"><label for=\\"component-filter\\" class=\\"d-block\\" id=\\"__BVID__226__BV_label_\\">Component</label>
+                <div><select id=\\"component-filter\\" class=\\"custom-select custom-select-sm\\">
+                    <option value=\\"\\">Please select a component</option>
+                    <option value=\\"test-component-id-1\\">test-component-id-1</option>
+                    <option value=\\"test-component-id-2\\">test-component-id-2</option>
+                    <option value=\\"test-component-id-3\\">test-component-id-3</option>
+                    <option value=\\"test-component-id-4\\">test-component-id-4</option>
+                  </select>
+                  <!---->
+                  <!---->
+                  <!---->
+                </div>
+              </div>
+            </div>
+            <!---->
+            <!---->
+          </div>
+        </div>
+      </div>
+    </transition-stub>
+  </div>
+  <div class=\\"graph\\"><svg xmlns=\\"http://www.w3.org/2000/svg\\" overflow=\\"auto\\" width=\\"100%\\" height=\\"1200\\" id=\\"component-dependency-graph\\" dependency-relation-type=\\"scope-related\\">
+      <rect fill-opacity=\\"0\\" class=\\"component-dependency-graph-background\\"></rect>
+      <defs>
+        <marker id=\\"component-dependency-graph-all-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker all-edge-marker\\">
+          <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
+        </marker>
+        <marker id=\\"component-dependency-graph-other-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker other-edge-marker\\">
+          <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
+        </marker>
+        <marker id=\\"component-dependency-graph-scope-related-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker scope-related-edge-marker\\">
+          <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
+        </marker>
+        <marker id=\\"component-dependency-graph-scoped-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker scoped-edge-marker\\">
+          <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
+        </marker>
+        <marker id=\\"component-dependency-graph-related-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker related-edge-marker\\">
+          <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
+        </marker>
+        <marker id=\\"component-dependency-graph-direct-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker direct-edge-marker\\">
+          <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
+        </marker>
+        <marker id=\\"component-dependency-graph-selected-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker selected-edge-marker\\">
+          <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
+        </marker>
+      </defs>
+      <g></g>
+      <g></g>
+      <g></g>
+      <g>
+        <path id=\\"component-dependency-graph-edge-2\\" d=\\"M50,150L50,250\\" marker-end=\\"url(#component-dependency-graph-scoped-edge-marker)\\" class=\\"edge scoped-edge\\"></path>
+        <path id=\\"component-dependency-graph-edge-3\\" d=\\"M50,150C50,250 350,150 350,250\\" marker-end=\\"url(#component-dependency-graph-scoped-edge-marker)\\" class=\\"edge scoped-edge\\"></path>
+      </g>
+      <g></g>
+      <g>
+        <path id=\\"component-dependency-graph-edge-1\\" d=\\"M350,50C350,150 50,50 50,150\\" marker-end=\\"url(#component-dependency-graph-direct-edge-marker)\\" class=\\"edge direct-edge\\"></path>
+      </g>
+      <g></g>
+      <g></g>
+      <g></g>
+      <g></g>
+      <g>
+        <circle id=\\"component-dependency-graph-node-1\\" r=\\"10\\" cx=\\"50\\" cy=\\"150\\" title=\\"test-component-id-2\\" class=\\"node scoped-node\\"></circle>
+        <circle id=\\"component-dependency-graph-node-2\\" r=\\"10\\" cx=\\"50\\" cy=\\"250\\" title=\\"test-component-id-3\\" class=\\"node scoped-node\\"></circle>
+        <circle id=\\"component-dependency-graph-node-3\\" r=\\"10\\" cx=\\"350\\" cy=\\"250\\" title=\\"test-component-id-4\\" class=\\"node scoped-node\\"></circle>
+      </g>
+      <g></g>
+      <g></g>
+      <g>
+        <circle id=\\"component-dependency-graph-node-0\\" r=\\"10\\" cx=\\"350\\" cy=\\"50\\" title=\\"test-component-id-1\\" class=\\"node selected-node\\"></circle>
+      </g>
+      <g></g>
+      <g></g>
+      <g></g>
+      <g><text x=\\"67\\" y=\\"170\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label scoped-node-label\\">
+          <tspan x=\\"67\\" y=\\"170\\">
+            test-component-id-2
+          </tspan>
+        </text><text x=\\"67\\" y=\\"270\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label scoped-node-label\\">
+          <tspan x=\\"67\\" y=\\"270\\">
+            test-component-id-3
+          </tspan>
+        </text><text x=\\"367\\" y=\\"270\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label scoped-node-label\\">
+          <tspan x=\\"367\\" y=\\"270\\">
+            test-component-id-4
+          </tspan>
+        </text></g>
+      <g></g>
+      <g></g>
+      <g><text x=\\"367\\" y=\\"70\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label selected-node-label\\">
+          <tspan x=\\"367\\" y=\\"70\\">
+            test-component-id-1
+          </tspan>
+        </text></g>
+    </svg></div>
+  <div tabindex=\\"-1\\" class=\\"b-sidebar-outer\\">
+    <div tabindex=\\"0\\"></div>
+    <transition-stub css=\\"true\\" enterclass=\\"\\" leaveclass=\\"show\\" entertoclass=\\"show\\" leavetoclass=\\"\\" enteractiveclass=\\"slide\\" leaveactiveclass=\\"slide\\">
+      <div id=\\"component\\" tabindex=\\"-1\\" role=\\"dialog\\" aria-modal=\\"true\\" class=\\"b-sidebar b-sidebar-right bg-dark text-light\\" style=\\"width: 600px;\\">
+        <header class=\\"b-sidebar-header\\"><button type=\\"button\\" aria-label=\\"Close\\" class=\\"close text-light\\"><svg viewBox=\\"0 0 16 16\\" width=\\"1em\\" height=\\"1em\\" focusable=\\"false\\" role=\\"img\\" aria-label=\\"x\\" xmlns=\\"http://www.w3.org/2000/svg\\" fill=\\"currentColor\\" class=\\"bi-x b-icon bi\\">
+              <g>
+                <path d=\\"M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z\\"></path>
+              </g>
+            </svg></button><span></span></header>
+        <div class=\\"b-sidebar-body\\">
+          <div class=\\"m-3\\">
+            <!---->
+          </div>
+        </div>
+        <!---->
+      </div>
+    </transition-stub>
+    <div tabindex=\\"0\\"></div>
+    <transition-stub name=\\"\\" css=\\"true\\" enterclass=\\"\\" leaveclass=\\"show\\" entertoclass=\\"show\\" leavetoclass=\\"\\" enteractiveclass=\\"fade\\" leaveactiveclass=\\"fade\\">
+      <div class=\\"b-sidebar-backdrop bg-dark\\" style=\\"\\"></div>
+    </transition-stub>
+  </div>
+</div>"
+`;
+
 exports[`ComponentDependenciesView when components prop is set to an empty array renders no dependencies 1`] = `
 "<div>
   <transition-stub name=\\"\\" css=\\"true\\" enterclass=\\"\\" leaveclass=\\"show\\" entertoclass=\\"show\\" leavetoclass=\\"\\" enteractiveclass=\\"\\" leaveactiveclass=\\"\\">
     <div role=\\"alert\\" aria-live=\\"polite\\" aria-atomic=\\"true\\" class=\\"alert alert-dismissible alert-info\\"><button type=\\"button\\" aria-label=\\"Close\\" class=\\"close\\">×</button>
-      Click a dot in the dependencies diagram to see more information about that
-      component
+      Click a dot in the diagram to see more information about that component
     </div>
   </transition-stub>
   <!---->
-  <div class=\\"graph\\"><svg xmlns=\\"http://www.w3.org/2000/svg\\" overflow=\\"auto\\" width=\\"100%\\" height=\\"1200\\" id=\\"component-dependency-graph\\">
+  <div class=\\"graph\\"><svg xmlns=\\"http://www.w3.org/2000/svg\\" overflow=\\"auto\\" width=\\"100%\\" height=\\"1200\\" id=\\"component-dependency-graph\\" dependency-relation-type=\\"scope-related\\">
       <rect fill-opacity=\\"0\\" class=\\"component-dependency-graph-background\\"></rect>
       <defs>
-        <marker id=\\"component-dependency-graph-dependency-marker-all\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"20\\" refY=\\"5.75\\" class=\\"dependency-marker all-dependency-marker\\">
+        <marker id=\\"component-dependency-graph-all-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker all-edge-marker\\">
           <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
         </marker>
-        <marker id=\\"component-dependency-graph-dependency-marker-manual\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"20\\" refY=\\"5.75\\" class=\\"dependency-marker manual-dependency-marker\\">
+        <marker id=\\"component-dependency-graph-other-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker other-edge-marker\\">
           <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
         </marker>
-        <marker id=\\"component-dependency-graph-dependency-marker-scope-related\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"20\\" refY=\\"5.75\\" class=\\"dependency-marker scope-related-dependency-marker\\">
+        <marker id=\\"component-dependency-graph-scope-related-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker scope-related-edge-marker\\">
           <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
         </marker>
-        <marker id=\\"component-dependency-graph-dependency-marker-scoped\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"20\\" refY=\\"5.75\\" class=\\"dependency-marker scoped-dependency-marker\\">
+        <marker id=\\"component-dependency-graph-scoped-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker scoped-edge-marker\\">
           <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
         </marker>
-        <marker id=\\"component-dependency-graph-dependency-marker-related\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"20\\" refY=\\"5.75\\" class=\\"dependency-marker related-dependency-marker\\">
+        <marker id=\\"component-dependency-graph-related-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker related-edge-marker\\">
           <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
         </marker>
-        <marker id=\\"component-dependency-graph-dependency-marker-direct\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"20\\" refY=\\"5.75\\" class=\\"dependency-marker direct-dependency-marker\\">
+        <marker id=\\"component-dependency-graph-direct-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker direct-edge-marker\\">
           <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
         </marker>
-        <marker id=\\"component-dependency-graph-dependency-marker-selected\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"20\\" refY=\\"5.75\\" class=\\"dependency-marker selected-dependency-marker\\">
+        <marker id=\\"component-dependency-graph-selected-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker selected-edge-marker\\">
           <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
         </marker>
       </defs>

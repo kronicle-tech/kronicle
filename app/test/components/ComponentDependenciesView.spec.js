@@ -2,7 +2,7 @@ import ComponentDependenciesView from '@/components/ComponentDependenciesView'
 import { createViewComponentWrapper } from '~/test/components/viewUtils'
 import { createComponent } from '~/test/testDataUtils'
 
-function createDependency(sourceIndex, targetIndex) {
+function createEdge(sourceIndex, targetIndex) {
   return {
     sourceIndex,
     targetIndex,
@@ -42,8 +42,8 @@ describe('ComponentDependenciesView', () => {
     expect(wrapper.findAll('.node')).toHaveLength(count)
   }
 
-  function expectDependencyCount(count) {
-    expect(wrapper.findAll('.dependency')).toHaveLength(count)
+  function expectEdgeCount(count) {
+    expect(wrapper.findAll('.edge')).toHaveLength(count)
   }
 
   function expectNodeClasses(dependencies) {
@@ -57,16 +57,14 @@ describe('ComponentDependenciesView', () => {
     )
   }
 
-  function expectDependencyClasses(dependencies) {
-    expect(wrapper.findAll('.dependency')).toHaveLength(dependencies.length)
-    dependencies.forEach((dependency) =>
+  function expectEdgeClasses(dependencies) {
+    expect(wrapper.findAll('.edge')).toHaveLength(dependencies.length)
+    dependencies.forEach((edge) =>
       expect(
         wrapper
-          .get(
-            `#component-dependency-graph-dependency-${dependency.dependencyIndex}`
-          )
+          .get(`#component-dependency-graph-edge-${edge.edgeIndex}`)
           .classes()
-      ).toContain(dependency.dependencyClass)
+      ).toContain(edge.edgeClass)
     )
   }
 
@@ -114,7 +112,7 @@ describe('ComponentDependenciesView', () => {
         await createWrapper()
         expect(wrapper.html()).toMatchSnapshot()
         expectNodeCount(0)
-        expectDependencyCount(0)
+        expectEdgeCount(0)
       })
     })
 
@@ -132,10 +130,10 @@ describe('ComponentDependenciesView', () => {
                 createComponentNode(4),
               ],
               edges: [
-                createDependency(undefined, 0),
-                createDependency(0, 1),
-                createDependency(1, 2),
-                createDependency(1, 3),
+                createEdge(undefined, 0),
+                createEdge(0, 1),
+                createEdge(1, 2),
+                createEdge(1, 3),
               ],
             },
           ],
@@ -146,7 +144,7 @@ describe('ComponentDependenciesView', () => {
         await createWrapper()
         expect(wrapper.html()).toMatchSnapshot()
         expectNodeCount(4)
-        expectDependencyCount(3)
+        expectEdgeCount(3)
       })
 
       describe('and first platform is checked in platform filter', () => {
@@ -158,7 +156,7 @@ describe('ComponentDependenciesView', () => {
         test('renders the connections directly related to the first component using the first platform', () => {
           expect(wrapper.html()).toMatchSnapshot()
           expectNodeCount(2)
-          expectDependencyCount(1)
+          expectEdgeCount(1)
         })
       })
 
@@ -170,7 +168,7 @@ describe('ComponentDependenciesView', () => {
             .trigger('click')
         })
 
-        test('renders the connention directly related to the first node with the style of a direct dependency', () => {
+        test('renders the connention directly related to the first node with the style of a direct edge', () => {
           expect(wrapper.html()).toMatchSnapshot()
           expectNodeClasses([
             { nodeIndex: 0, nodeClass: 'selected-node' },
@@ -178,10 +176,10 @@ describe('ComponentDependenciesView', () => {
             { nodeIndex: 2, nodeClass: 'scoped-node' },
             { nodeIndex: 3, nodeClass: 'scoped-node' },
           ])
-          expectDependencyClasses([
-            { dependencyIndex: 1, dependencyClass: 'direct-dependency' },
-            { dependencyIndex: 2, dependencyClass: 'scoped-dependency' },
-            { dependencyIndex: 3, dependencyClass: 'scoped-dependency' },
+          expectEdgeClasses([
+            { edgeIndex: 1, edgeClass: 'direct-edge' },
+            { edgeIndex: 2, edgeClass: 'scoped-edge' },
+            { edgeIndex: 3, edgeClass: 'scoped-edge' },
           ])
         })
       })
@@ -202,10 +200,10 @@ describe('ComponentDependenciesView', () => {
             { nodeIndex: 2, nodeClass: 'scoped-node' },
             { nodeIndex: 3, nodeClass: 'scoped-node' },
           ])
-          expectDependencyClasses([
-            { dependencyIndex: 1, dependencyClass: 'direct-dependency' },
-            { dependencyIndex: 2, dependencyClass: 'scoped-dependency' },
-            { dependencyIndex: 3, dependencyClass: 'scoped-dependency' },
+          expectEdgeClasses([
+            { edgeIndex: 1, edgeClass: 'direct-edge' },
+            { edgeIndex: 2, edgeClass: 'scoped-edge' },
+            { edgeIndex: 3, edgeClass: 'scoped-edge' },
           ])
         })
 
@@ -225,10 +223,10 @@ describe('ComponentDependenciesView', () => {
               { nodeIndex: 2, nodeClass: 'scoped-node' },
               { nodeIndex: 3, nodeClass: 'scoped-node' },
             ])
-            expectDependencyClasses([
-              { dependencyIndex: 1, dependencyClass: 'scoped-dependency' },
-              { dependencyIndex: 2, dependencyClass: 'scoped-dependency' },
-              { dependencyIndex: 3, dependencyClass: 'scoped-dependency' },
+            expectEdgeClasses([
+              { edgeIndex: 1, edgeClass: 'scoped-edge' },
+              { edgeIndex: 2, edgeClass: 'scoped-edge' },
+              { edgeIndex: 3, edgeClass: 'scoped-edge' },
             ])
           })
         })

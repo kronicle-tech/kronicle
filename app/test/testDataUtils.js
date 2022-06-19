@@ -420,6 +420,8 @@ export function createTest({ testNumber, additionalFields = {} }) {
 
 export function createDiagramWithEmptyGraph() {
   return {
+    id: 'test-diagram-id-1',
+    name: 'Test Diagram Name 1',
     states: [
       {
         type: 'graph',
