@@ -57,7 +57,7 @@ describe('ComponentFilters', () => {
   describe('when components prop is not set', () => {
     test('renders nothing', async () => {
       await createWrapper()
-      expect(wrapper.html()).toEqual(``)
+      expect(wrapper.html()).toEqual('')
     })
   })
 

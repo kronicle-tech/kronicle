@@ -32,7 +32,7 @@ describe('TestResults', () => {
   describe('when testResults prop is not set', () => {
     test('renders nothing', () => {
       createWrapper()
-      expect(wrapper.html()).toEqual(``)
+      expect(wrapper.html()).toEqual('')
     })
   })
 
@@ -43,7 +43,7 @@ describe('TestResults', () => {
 
     test('renders nothing', () => {
       createWrapper()
-      expect(wrapper.html()).toEqual(``)
+      expect(wrapper.html()).toEqual('')
     })
   })
 

@@ -283,7 +283,14 @@ exports[`ComponentDependenciesView when components prop contains multiple compon
             </svg></button><span></span></header>
         <div class=\\"b-sidebar-body\\">
           <div class=\\"m-3\\">
-            <!---->
+            <div>
+              <div>
+                <h3 class=\\"text-info\\">Unknown Component</h3>
+                <p>
+                  The software catalog does not contain an entry for
+                  <span>this component</span></p>
+              </div>
+            </div>
           </div>
         </div>
         <!---->
@@ -596,7 +603,14 @@ exports[`ComponentDependenciesView when components prop contains multiple compon
             </svg></button><span></span></header>
         <div class=\\"b-sidebar-body\\">
           <div class=\\"m-3\\">
-            <!---->
+            <div>
+              <div>
+                <h3 class=\\"text-info\\">Unknown Component</h3>
+                <p>
+                  The software catalog does not contain an entry for
+                  <span>this component</span></p>
+              </div>
+            </div>
           </div>
         </div>
         <!---->
@@ -920,7 +934,14 @@ exports[`ComponentDependenciesView when components prop contains multiple compon
             </svg></button><span></span></header>
         <div class=\\"b-sidebar-body\\">
           <div class=\\"m-3\\">
-            <!---->
+            <div>
+              <div>
+                <h3 class=\\"text-info\\">Unknown Component</h3>
+                <p>
+                  The software catalog does not contain an entry for
+                  <span>this component</span></p>
+              </div>
+            </div>
           </div>
         </div>
         <!---->
@@ -1246,7 +1267,14 @@ exports[`ComponentDependenciesView when components prop contains multiple compon
             </svg></button><span></span></header>
         <div class=\\"b-sidebar-body\\">
           <div class=\\"m-3\\">
-            <!---->
+            <div>
+              <div>
+                <h3 class=\\"text-info\\">Unknown Component</h3>
+                <p>
+                  The software catalog does not contain an entry for
+                  <span>this component</span></p>
+              </div>
+            </div>
           </div>
         </div>
         <!---->
@@ -1570,7 +1598,14 @@ exports[`ComponentDependenciesView when components prop contains multiple compon
             </svg></button><span></span></header>
         <div class=\\"b-sidebar-body\\">
           <div class=\\"m-3\\">
-            <!---->
+            <div>
+              <div>
+                <h3 class=\\"text-info\\">Unknown Component</h3>
+                <p>
+                  The software catalog does not contain an entry for
+                  <span>this component</span></p>
+              </div>
+            </div>
           </div>
         </div>
         <!---->
@@ -1896,7 +1931,14 @@ exports[`ComponentDependenciesView when components prop contains multiple compon
             </svg></button><span></span></header>
         <div class=\\"b-sidebar-body\\">
           <div class=\\"m-3\\">
-            <!---->
+            <div>
+              <div>
+                <h3 class=\\"text-info\\">Unknown Component</h3>
+                <p>
+                  The software catalog does not contain an entry for
+                  <span class=\\"text-warning\\">test-component-id-1</span></p>
+              </div>
+            </div>
           </div>
         </div>
         <!---->
@@ -1979,7 +2021,14 @@ exports[`ComponentDependenciesView when components prop is set to an empty array
             </svg></button><span></span></header>
         <div class=\\"b-sidebar-body\\">
           <div class=\\"m-3\\">
-            <!---->
+            <div>
+              <div>
+                <h3 class=\\"text-info\\">Unknown Component</h3>
+                <p>
+                  The software catalog does not contain an entry for
+                  <span>this component</span></p>
+              </div>
+            </div>
           </div>
         </div>
         <!---->

@@ -1442,7 +1442,24 @@ exports[`Index when Get Diagram service endpoint returns an array of multiple co
             <div
               class="m-3"
             >
-              <!---->
+              <div>
+                <div>
+                  <h3
+                    class="text-info"
+                  >
+                    Unknown Component
+                  </h3>
+                   
+                  <p>
+                    
+      The software catalog does not contain an entry for
+      
+                    <span>
+                      this component
+                    </span>
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
           <!---->
@@ -2804,7 +2821,24 @@ exports[`Index when Get Diagram service endpoint returns no edges renders the pa
             <div
               class="m-3"
             >
-              <!---->
+              <div>
+                <div>
+                  <h3
+                    class="text-info"
+                  >
+                    Unknown Component
+                  </h3>
+                   
+                  <p>
+                    
+      The software catalog does not contain an entry for
+      
+                    <span>
+                      this component
+                    </span>
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
           <!---->

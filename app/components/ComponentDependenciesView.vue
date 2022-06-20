@@ -84,7 +84,11 @@
       backdrop
     >
       <div class="m-3">
-        <ComponentPanel :component="component" :diagram="diagram" />
+        <ComponentPanel
+          :component="component"
+          :component-id="componentId"
+          :diagram="diagram"
+        />
       </div>
     </b-sidebar>
   </div>
@@ -165,6 +169,7 @@ export default Vue.extend({
       componentSidebarVisible: false as boolean,
       node: undefined as GraphNode | undefined,
       component: undefined as Component | undefined,
+      componentId: undefined as string | undefined,
       selectedEdgeTypes: [] as string[],
       selectedScopeRelatedRadius: this.scopeRelatedRadius,
       zoom: 100,
@@ -221,10 +226,12 @@ export default Vue.extend({
         this.componentSidebarVisible = true
         this.node = node
         this.component = this.findComponent(node.componentId)
+        this.componentId = node.componentId
       } else {
         this.componentSidebarVisible = false
         this.node = undefined
         this.component = undefined
+        this.componentId = undefined
       }
     },
   },

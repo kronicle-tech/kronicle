@@ -20,7 +20,7 @@ describe('ComponentDependencyGraph', () => {
   describe('when diagram prop is not set', () => {
     test('renders nothing', () => {
       createWrapper()
-      expect(wrapper.html()).toEqual(``)
+      expect(wrapper.html()).toEqual('')
     })
   })
 
