@@ -1,8 +1,8 @@
 <template>
   <div>
-    <b-alert show dismissible variant="info">
-      Click a dot in the diagram to see more information about that component
-    </b-alert>
+    <h1>{{ diagram.name }}</h1>
+
+    <Markdown :markdown="diagram.description" />
 
     <ComponentFilters
       :components="components"
@@ -13,7 +13,7 @@
         <b-form-group label="Connection Types">
           <b-form-checkbox-group
             v-model="selectedEdgeTypes"
-            :options="connectionTypeIdOptions"
+            :options="edgeTypeIdOptions"
             name="connectionTypeId"
             stacked
           ></b-form-checkbox-group>
@@ -54,6 +54,10 @@
     </ComponentFilters>
 
     <div class="graph">
+      <b-alert show="60" dismissible variant="info">
+        Click a dot in the diagram to see more information about that component
+      </b-alert>
+
       <ComponentDependencyGraph
         id="component-dependency-graph"
         :diagram="diagram"
@@ -108,6 +112,7 @@ import { intRange } from '~/src/arrayUtils'
 import ComponentDependencyGraph from '~/components/ComponentDependencyGraph.vue'
 import ComponentPanel from '~/components/ComponentPanel.vue'
 import ComponentFilters from '~/components/ComponentFilters.vue'
+import Markdown from '~/components/Markdown.vue'
 
 interface Option {
   value: string | undefined
@@ -131,6 +136,7 @@ export default Vue.extend({
     ComponentDependencyGraph,
     ComponentFilters,
     ComponentPanel,
+    Markdown,
   },
   props: {
     components: {
