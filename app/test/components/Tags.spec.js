@@ -20,7 +20,7 @@ describe('Tags', () => {
   describe('when tags prop is not set', () => {
     test('renders nothing', () => {
       createWrapper()
-      expect(wrapper.html()).toEqual(``)
+      expect(wrapper.html()).toEqual('')
     })
   })
 
@@ -31,7 +31,7 @@ describe('Tags', () => {
 
     test('renders nothing', () => {
       createWrapper()
-      expect(wrapper.html()).toEqual(``)
+      expect(wrapper.html()).toEqual('')
     })
   })
 

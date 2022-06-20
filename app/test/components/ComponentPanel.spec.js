@@ -18,9 +18,10 @@ describe('ComponentPanel', () => {
   })
 
   describe('when component prop is undefined', () => {
-    test('renders nothing', () => {
+    test('renders a message to say component is unknown', () => {
       createWrapper()
-      expect(wrapper.html()).toEqual(``)
+      expect(wrapper.html()).toContain('Unknown Component')
+      expect(wrapper.html()).toMatchSnapshot()
     })
   })
 
@@ -127,28 +128,6 @@ describe('ComponentPanel', () => {
     })
   })
 
-  describe('when techDebts is set', () => {
-    beforeEach(() => {
-      propsData.component = {
-        id: 'test-id',
-        name: 'Test Name',
-        techDebts: [
-          {
-            description: 'Test Description 1',
-          },
-          {
-            description: 'Test Description 2',
-          },
-        ],
-      }
-    })
-
-    test('renders the techDebts', () => {
-      createWrapper()
-      expect(wrapper.html()).toMatchSnapshot()
-    })
-  })
-
   describe('when links is set', () => {
     beforeEach(() => {
       propsData.component = {
@@ -166,6 +145,28 @@ describe('ComponentPanel', () => {
     })
 
     test('renders the links', () => {
+      createWrapper()
+      expect(wrapper.html()).toMatchSnapshot()
+    })
+  })
+
+  describe('when techDebts is set', () => {
+    beforeEach(() => {
+      propsData.component = {
+        id: 'test-id',
+        name: 'Test Name',
+        techDebts: [
+          {
+            description: 'Test Description 1',
+          },
+          {
+            description: 'Test Description 2',
+          },
+        ],
+      }
+    })
+
+    test('renders the techDebts', () => {
       createWrapper()
       expect(wrapper.html()).toMatchSnapshot()
     })

@@ -20,7 +20,7 @@ describe('TechDebts', () => {
   describe('when techDebts prop is not set', () => {
     test('renders nothing', () => {
       createWrapper()
-      expect(wrapper.html()).toEqual(``)
+      expect(wrapper.html()).toEqual('')
     })
   })
 
@@ -31,7 +31,7 @@ describe('TechDebts', () => {
 
     test('renders nothing', () => {
       createWrapper()
-      expect(wrapper.html()).toEqual(``)
+      expect(wrapper.html()).toEqual('')
     })
   })
 

@@ -20,7 +20,7 @@ describe('Teams', () => {
   describe('when teams prop is not set', () => {
     test('renders nothing', () => {
       createWrapper()
-      expect(wrapper.html()).toEqual(``)
+      expect(wrapper.html()).toEqual('')
     })
   })
 
@@ -31,7 +31,7 @@ describe('Teams', () => {
 
     test('renders nothing', () => {
       createWrapper()
-      expect(wrapper.html()).toEqual(``)
+      expect(wrapper.html()).toEqual('')
     })
   })
 

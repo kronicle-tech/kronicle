@@ -20,7 +20,7 @@ describe('EmailAddress', () => {
   describe('when emailAddress prop is undefined', () => {
     test('renders nothing', () => {
       createWrapper()
-      expect(wrapper.html()).toEqual(``)
+      expect(wrapper.html()).toEqual('')
     })
   })
 
