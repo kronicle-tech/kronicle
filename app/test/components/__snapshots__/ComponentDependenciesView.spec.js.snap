@@ -558,7 +558,9 @@ exports[`ComponentDependenciesView when components prop contains multiple compon
       <g></g>
       <g></g>
       <g>
-        <path id=\\"component-dependency-graph-edge-1\\" d=\\"M50,50L50,150\\" marker-end=\\"url(#component-dependency-graph-scope-related-edge-marker)\\" class=\\"edge scope-related-edge\\"></path>
+        <path id=\\"component-dependency-graph-edge-1\\" d=\\"M350,50C350,150 50,50 50,150\\" marker-end=\\"url(#component-dependency-graph-scope-related-edge-marker)\\" class=\\"edge scope-related-edge\\"></path>
+        <path id=\\"component-dependency-graph-edge-2\\" d=\\"M50,150L50,250\\" marker-end=\\"url(#component-dependency-graph-scope-related-edge-marker)\\" class=\\"edge scope-related-edge\\"></path>
+        <path id=\\"component-dependency-graph-edge-3\\" d=\\"M50,150C50,250 350,150 350,250\\" marker-end=\\"url(#component-dependency-graph-scope-related-edge-marker)\\" class=\\"edge scope-related-edge\\"></path>
       </g>
       <g></g>
       <g></g>
@@ -568,9 +570,11 @@ exports[`ComponentDependenciesView when components prop contains multiple compon
       <g></g>
       <g>
         <circle id=\\"component-dependency-graph-node-1\\" r=\\"10\\" cx=\\"50\\" cy=\\"150\\" title=\\"test-component-id-2\\" class=\\"node scope-related-node\\"></circle>
+        <circle id=\\"component-dependency-graph-node-2\\" r=\\"10\\" cx=\\"50\\" cy=\\"250\\" title=\\"test-component-id-3\\" class=\\"node scope-related-node\\"></circle>
+        <circle id=\\"component-dependency-graph-node-3\\" r=\\"10\\" cx=\\"350\\" cy=\\"250\\" title=\\"test-component-id-4\\" class=\\"node scope-related-node\\"></circle>
       </g>
       <g>
-        <circle id=\\"component-dependency-graph-node-0\\" r=\\"10\\" cx=\\"50\\" cy=\\"50\\" title=\\"test-component-id-1\\" class=\\"node scoped-node\\"></circle>
+        <circle id=\\"component-dependency-graph-node-0\\" r=\\"10\\" cx=\\"350\\" cy=\\"50\\" title=\\"test-component-id-1\\" class=\\"node scoped-node\\"></circle>
       </g>
       <g></g>
       <g></g>
@@ -581,9 +585,17 @@ exports[`ComponentDependenciesView when components prop contains multiple compon
           <tspan x=\\"67\\" y=\\"170\\">
             test-component-id-2
           </tspan>
+        </text><text x=\\"67\\" y=\\"270\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label scope-related-node-label\\">
+          <tspan x=\\"67\\" y=\\"270\\">
+            test-component-id-3
+          </tspan>
+        </text><text x=\\"367\\" y=\\"270\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label scope-related-node-label\\">
+          <tspan x=\\"367\\" y=\\"270\\">
+            test-component-id-4
+          </tspan>
         </text></g>
-      <g><text x=\\"67\\" y=\\"70\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label scoped-node-label\\">
-          <tspan x=\\"67\\" y=\\"70\\">
+      <g><text x=\\"367\\" y=\\"70\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label scoped-node-label\\">
+          <tspan x=\\"367\\" y=\\"70\\">
             test-component-id-1
           </tspan>
         </text></g>
