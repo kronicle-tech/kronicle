@@ -56,7 +56,7 @@ public class Component implements ObjectWithId, ObjectWithReference {
     List<@Valid ComponentDependency> dependencies;
     List<@Valid CrossFunctionalRequirement> crossFunctionalRequirements;
     List<@Valid TechDebt> techDebts;
-
+    List<@Valid Doc> docs;
     List<@Valid OpenApiSpec> openApiSpecs;
     List<@Valid GraphQlSchema> graphQlSchemas;
 
@@ -82,6 +82,7 @@ public class Component implements ObjectWithId, ObjectWithReference {
             List<ComponentDependency> dependencies,
             List<CrossFunctionalRequirement> crossFunctionalRequirements,
             List<TechDebt> techDebts,
+            List<Doc> docs,
             List<OpenApiSpec> openApiSpecs,
             List<GraphQlSchema> graphQlSchemas,
             List<ComponentState> states,
@@ -104,6 +105,7 @@ public class Component implements ObjectWithId, ObjectWithReference {
         this.dependencies = createUnmodifiableList(dependencies);
         this.crossFunctionalRequirements = createUnmodifiableList(crossFunctionalRequirements);
         this.techDebts = createUnmodifiableList(techDebts);
+        this.docs = docs;
         this.openApiSpecs = createUnmodifiableList(openApiSpecs);
         this.graphQlSchemas = createUnmodifiableList(graphQlSchemas);
         this.states = createUnmodifiableList(states);

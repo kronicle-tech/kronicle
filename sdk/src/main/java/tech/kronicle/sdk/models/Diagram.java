@@ -33,6 +33,7 @@ public class Diagram implements ObjectWithId, ObjectWithReference {
     @Pattern(regexp = PatternStrings.ID)
     String type;
     String description;
+    String notes;
     List<@Valid Tag> tags;
     List<@Valid DiagramConnection> connections;
 
@@ -44,6 +45,7 @@ public class Diagram implements ObjectWithId, ObjectWithReference {
             Boolean discovered,
             String type,
             String description,
+            String notes,
             List<@Valid Tag> tags,
             List<@Valid DiagramConnection> connections,
             List<@Valid DiagramState> states
@@ -53,6 +55,7 @@ public class Diagram implements ObjectWithId, ObjectWithReference {
         this.discovered = discovered;
         this.type = type;
         this.description = description;
+        this.notes = notes;
         this.tags = createUnmodifiableList(tags);
         this.connections = createUnmodifiableList(connections);
         this.states = createUnmodifiableList(states);

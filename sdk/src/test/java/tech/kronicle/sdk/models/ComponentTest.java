@@ -118,6 +118,20 @@ public class ComponentTest {
     }
 
     @Test
+    public void constructorShouldMakeDocsAnUnmodifiableList() {
+        // Given
+        Component underTest = Component.builder().docs(new ArrayList<>()).build();
+
+        // When
+        Throwable thrown = catchThrowable(() -> underTest.getDocs().add(
+                Doc.builder().build()
+        ));
+
+        // Then
+        assertThat(thrown).isInstanceOf(UnsupportedOperationException.class);
+    }
+
+    @Test
     public void constructorShouldMakeOpenApiSpecsAnUnmodifiableList() {
         // Given
         Component underTest = Component.builder().openApiSpecs(new ArrayList<>()).build();
