@@ -80,7 +80,7 @@ import {
   GraphNode,
   GraphState,
 } from '~/types/kronicle-service'
-import ComponentDependencyGraph from '~/components/ComponentDependencyGraph.vue'
+import ComponentDependencyGraph from '~/components/DiagramGraph.vue'
 
 interface ExtendedNode extends GraphNode {
   selected: boolean

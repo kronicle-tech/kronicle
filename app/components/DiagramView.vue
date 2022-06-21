@@ -116,7 +116,7 @@ import {
 } from '~/types/kronicle-service'
 import { Network } from '~/types/component-dependency-graph'
 import { intRange } from '~/src/arrayUtils'
-import ComponentDependencyGraph from '~/components/ComponentDependencyGraph.vue'
+import ComponentDependencyGraph from '~/components/DiagramGraph.vue'
 import ComponentPanel from '~/components/ComponentPanel.vue'
 import ComponentFilters from '~/components/ComponentFilters.vue'
 import Markdown from '~/components/Markdown.vue'

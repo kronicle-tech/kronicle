@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ComponentDependenciesView when components prop contains multiple components and diagram prop contains an empty edges array renders no connections 1`] = `
+exports[`DiagramView when components prop contains multiple components and diagram prop contains an empty edges array renders no connections 1`] = `
 "<div>
   <h1></h1>
   <div></div>
@@ -288,7 +288,7 @@ exports[`ComponentDependenciesView when components prop contains multiple compon
 </div>"
 `;
 
-exports[`ComponentDependenciesView when components prop contains multiple components and diagram prop contains multiple edges and first platform is checked in platform filter renders the connections directly related to the first component using the first platform 1`] = `
+exports[`DiagramView when components prop contains multiple components and diagram prop contains multiple edges and first platform is checked in platform filter renders the connections directly related to the first component using the first platform 1`] = `
 "<div>
   <h1></h1>
   <div></div>
@@ -602,7 +602,7 @@ exports[`ComponentDependenciesView when components prop contains multiple compon
 </div>"
 `;
 
-exports[`ComponentDependenciesView when components prop contains multiple components and diagram prop contains multiple edges and the mouse hovers over the first node and the mouse hovers away from the first node renders all the connections as scoped connections 1`] = `
+exports[`DiagramView when components prop contains multiple components and diagram prop contains multiple edges and the mouse hovers over the first node and the mouse hovers away from the first node renders all the connections as scoped connections 1`] = `
 "<div>
   <h1></h1>
   <div></div>
@@ -915,7 +915,7 @@ exports[`ComponentDependenciesView when components prop contains multiple compon
 </div>"
 `;
 
-exports[`ComponentDependenciesView when components prop contains multiple components and diagram prop contains multiple edges and the mouse hovers over the first node renders the connection directly related to the first node with the style of a direct connection 1`] = `
+exports[`DiagramView when components prop contains multiple components and diagram prop contains multiple edges and the mouse hovers over the first node renders the connection directly related to the first node with the style of a direct connection 1`] = `
 "<div>
   <h1></h1>
   <div></div>
@@ -1230,7 +1230,7 @@ exports[`ComponentDependenciesView when components prop contains multiple compon
 </div>"
 `;
 
-exports[`ComponentDependenciesView when components prop contains multiple components and diagram prop contains multiple edges renders the connections 1`] = `
+exports[`DiagramView when components prop contains multiple components and diagram prop contains multiple edges renders the connections 1`] = `
 "<div>
   <h1></h1>
   <div></div>
@@ -1543,7 +1543,7 @@ exports[`ComponentDependenciesView when components prop contains multiple compon
 </div>"
 `;
 
-exports[`ComponentDependenciesView when components prop contains multiple components and diagram prop contains multiple edges when a node is clicked renders the connection directly related to the first node with the style of a direct edge 1`] = `
+exports[`DiagramView when components prop contains multiple components and diagram prop contains multiple edges when a node is clicked renders the connection directly related to the first node with the style of a direct edge 1`] = `
 "<div>
   <h1></h1>
   <div></div>
@@ -1858,7 +1858,7 @@ exports[`ComponentDependenciesView when components prop contains multiple compon
 </div>"
 `;
 
-exports[`ComponentDependenciesView when components prop is set to an empty array renders no edges 1`] = `
+exports[`DiagramView when components prop is set to an empty array renders no edges 1`] = `
 "<div>
   <h1></h1>
   <div></div>
