@@ -105,7 +105,7 @@ public class Component implements ObjectWithId, ObjectWithReference {
         this.dependencies = createUnmodifiableList(dependencies);
         this.crossFunctionalRequirements = createUnmodifiableList(crossFunctionalRequirements);
         this.techDebts = createUnmodifiableList(techDebts);
-        this.docs = docs;
+        this.docs = createUnmodifiableList(docs);
         this.openApiSpecs = createUnmodifiableList(openApiSpecs);
         this.graphQlSchemas = createUnmodifiableList(graphQlSchemas);
         this.states = createUnmodifiableList(states);

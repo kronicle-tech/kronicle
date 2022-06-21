@@ -1,0 +1,65 @@
+plugins {
+    id "java-library"
+    id "io.freefair.lombok"
+    id "com.github.johnrengelman.shadow"
+}
+
+dependencies {
+    annotationProcessor platform("org.springframework.boot:spring-boot-dependencies:$springBootVersion")
+    implementation platform("org.springframework.boot:spring-boot-dependencies:$springBootVersion")
+    compileOnly platform("org.springframework.boot:spring-boot-dependencies:$springBootVersion")
+    testAnnotationProcessor platform("org.springframework.boot:spring-boot-dependencies:$springBootVersion")
+    testImplementation platform("org.springframework.boot:spring-boot-dependencies:$springBootVersion")
+
+    annotationProcessor "org.pf4j:pf4j:$pf4jVersion"
+
+    compileOnly "com.github.spotbugs:spotbugs-annotations:$spotBugsVersion"
+    testCompileOnly "com.github.spotbugs:spotbugs-annotations:$spotBugsVersion"
+
+    implementation project(":service-plugin-guice")
+
+    testImplementation project(":service-plugin-test-utils")
+    testImplementation "org.junit.jupiter:junit-jupiter"
+    testImplementation "org.junit.jupiter:junit-jupiter-params"
+    testImplementation "org.assertj:assertj-core"
+    testImplementation "org.mockito:mockito-core"
+    testImplementation "org.mockito:mockito-junit-jupiter"
+}
+
+shadowJar {
+    dependencies {
+        exclude(project(":common"))
+        exclude(project(":sdk"))
+        exclude(project(":service-plugin-api"))
+        exclude(project(":service-utils"))
+        exclude(dependency("tech.kronicle:kronicle-common:"))
+        exclude(dependency("tech.kronicle:kronicle-sdk:"))
+        exclude(dependency("tech.kronicle:kronicle-utils:"))
+        exclude(dependency("com.fasterxml.jackson.core:jackson-annotations:"))
+        exclude(dependency("com.fasterxml.jackson.core:jackson-core:"))
+        exclude(dependency("com.fasterxml.jackson.core:jackson-databind:"))
+        exclude(dependency("com.fasterxml.jackson.datatype:jackson-datatype-jsr310:"))
+        exclude(dependency("com.google.guava:guava:"))
+        exclude(dependency("com.google.inject:guice:"))
+        exclude(dependency("org.hibernate.validator:hibernate-validator:"))
+        exclude(dependency("org.pf4j:pf4j:"))
+    }
+
+    minimize()
+}
+
+tasks.register("copyPlugin", Copy) {
+    dependsOn(shadowJar)
+
+    from shadowJar
+    into project(':service').file('plugins')
+}
+
+project(":service").tasks.named("copyPlugins") {
+    dependsOn(copyPlugin)
+}
+
+tasks.withType(Test).configureEach {
+    useJUnitPlatform()
+    maxParallelForks = Math.min(2, Runtime.runtime.availableProcessors().intdiv(2) ?: 1)
+}
