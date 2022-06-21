@@ -100,7 +100,7 @@ exports[`Index when Get Components service endpoint returns an array of multiple
    
   <div>
     <div
-      class="card"
+      class="card my-3"
     >
       <!---->
       <!---->
@@ -1141,7 +1141,7 @@ exports[`Index when Get Components service endpoint returns an empty array rende
    
   <div>
     <div
-      class="card"
+      class="card my-3"
     >
       <!---->
       <!---->

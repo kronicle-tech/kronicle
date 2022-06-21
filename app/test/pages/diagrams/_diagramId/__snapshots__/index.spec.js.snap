@@ -59,63 +59,7 @@ exports[`Index when Get Diagram service endpoint returns an array of multiple co
           <div
             class="card-columns"
           >
-            <div
-              class="card bg-secondary"
-            >
-              <!---->
-              <!---->
-              <div
-                class="card-body"
-              >
-                <!---->
-                <!---->
-                <fieldset
-                  class="form-group"
-                  id="__BVID__137"
-                >
-                  <legend
-                    class="bv-no-focus-ring col-form-label pt-0"
-                    id="__BVID__137__BV_label_"
-                    tabindex="-1"
-                  >
-                    Connection Types
-                  </legend>
-                  <div>
-                    <div
-                      class="bv-no-focus-ring"
-                      id="__BVID__138"
-                      role="group"
-                      tabindex="-1"
-                    >
-                      <div
-                        class="custom-control custom-checkbox"
-                      >
-                        <input
-                          class="custom-control-input"
-                          id="__BVID__138_BV_option_0"
-                          name="connectionTypeId"
-                          type="checkbox"
-                          value=""
-                        />
-                        <label
-                          class="custom-control-label"
-                          for="__BVID__138_BV_option_0"
-                        >
-                          <span>
-                            null
-                          </span>
-                        </label>
-                      </div>
-                    </div>
-                    <!---->
-                    <!---->
-                    <!---->
-                  </div>
-                </fieldset>
-              </div>
-              <!---->
-              <!---->
-            </div>
+            <!---->
              
             <div
               class="card bg-secondary"
@@ -129,13 +73,13 @@ exports[`Index when Get Diagram service endpoint returns an array of multiple co
                 <!---->
                 <div
                   class="form-row form-group"
-                  id="__BVID__140"
+                  id="__BVID__133"
                   role="group"
                 >
                   <label
                     class="col-6 col-form-label col-form-label-sm"
                     for="graph-scope-related-radius"
-                    id="__BVID__140__BV_label_"
+                    id="__BVID__133__BV_label_"
                   >
                     Radius:
                   </label>
@@ -212,86 +156,6 @@ exports[`Index when Get Diagram service endpoint returns an array of multiple co
               <!---->
             </div>
              
-            <div
-              class="card bg-secondary"
-            >
-              <!---->
-              <!---->
-              <div
-                class="card-body"
-              >
-                <!---->
-                <!---->
-                <div
-                  class="form-row form-group"
-                  id="__BVID__142"
-                  role="group"
-                >
-                  <label
-                    class="col-6 col-form-label col-form-label-sm"
-                    for="graph-zoom"
-                    id="__BVID__142__BV_label_"
-                  >
-                    Zoom:
-                  </label>
-                  <div
-                    class="col"
-                  >
-                    <select
-                      class="custom-select custom-select-sm"
-                      id="graph-zoom"
-                    >
-                      <option
-                        value="25"
-                      >
-                        25%
-                      </option>
-                      <option
-                        value="50"
-                      >
-                        50%
-                      </option>
-                      <option
-                        value="75"
-                      >
-                        75%
-                      </option>
-                      <option
-                        value="100"
-                      >
-                        100%
-                      </option>
-                      <option
-                        value="125"
-                      >
-                        125%
-                      </option>
-                      <option
-                        value="150"
-                      >
-                        150%
-                      </option>
-                      <option
-                        value="200"
-                      >
-                        200%
-                      </option>
-                      <option
-                        value="400"
-                      >
-                        400%
-                      </option>
-                    </select>
-                    <!---->
-                    <!---->
-                    <!---->
-                  </div>
-                </div>
-              </div>
-              <!---->
-              <!---->
-            </div>
-             
             <!---->
              
             <!---->
@@ -310,11 +174,11 @@ exports[`Index when Get Diagram service endpoint returns an array of multiple co
                 <!---->
                 <fieldset
                   class="form-group"
-                  id="__BVID__144"
+                  id="__BVID__135"
                 >
                   <legend
                     class="bv-no-focus-ring col-form-label pt-0"
-                    id="__BVID__144__BV_label_"
+                    id="__BVID__135__BV_label_"
                     tabindex="-1"
                   >
                     Teams
@@ -322,7 +186,7 @@ exports[`Index when Get Diagram service endpoint returns an array of multiple co
                   <div>
                     <div
                       class="bv-no-focus-ring"
-                      id="__BVID__145"
+                      id="__BVID__136"
                       role="group"
                       tabindex="-1"
                     >
@@ -331,14 +195,14 @@ exports[`Index when Get Diagram service endpoint returns an array of multiple co
                       >
                         <input
                           class="custom-control-input"
-                          id="__BVID__145_BV_option_0"
+                          id="__BVID__136_BV_option_0"
                           name="team"
                           type="checkbox"
                           value="test-team-id-1-1"
                         />
                         <label
                           class="custom-control-label"
-                          for="__BVID__145_BV_option_0"
+                          for="__BVID__136_BV_option_0"
                         >
                           <span>
                             test-team-id-1-1
@@ -350,14 +214,14 @@ exports[`Index when Get Diagram service endpoint returns an array of multiple co
                       >
                         <input
                           class="custom-control-input"
-                          id="__BVID__145_BV_option_1"
+                          id="__BVID__136_BV_option_1"
                           name="team"
                           type="checkbox"
                           value="test-team-id-1-2"
                         />
                         <label
                           class="custom-control-label"
-                          for="__BVID__145_BV_option_1"
+                          for="__BVID__136_BV_option_1"
                         >
                           <span>
                             test-team-id-1-2
@@ -369,14 +233,14 @@ exports[`Index when Get Diagram service endpoint returns an array of multiple co
                       >
                         <input
                           class="custom-control-input"
-                          id="__BVID__145_BV_option_2"
+                          id="__BVID__136_BV_option_2"
                           name="team"
                           type="checkbox"
                           value="test-team-id-2-1"
                         />
                         <label
                           class="custom-control-label"
-                          for="__BVID__145_BV_option_2"
+                          for="__BVID__136_BV_option_2"
                         >
                           <span>
                             test-team-id-2-1
@@ -388,14 +252,14 @@ exports[`Index when Get Diagram service endpoint returns an array of multiple co
                       >
                         <input
                           class="custom-control-input"
-                          id="__BVID__145_BV_option_3"
+                          id="__BVID__136_BV_option_3"
                           name="team"
                           type="checkbox"
                           value="test-team-id-2-2"
                         />
                         <label
                           class="custom-control-label"
-                          for="__BVID__145_BV_option_3"
+                          for="__BVID__136_BV_option_3"
                         >
                           <span>
                             test-team-id-2-2
@@ -407,14 +271,14 @@ exports[`Index when Get Diagram service endpoint returns an array of multiple co
                       >
                         <input
                           class="custom-control-input"
-                          id="__BVID__145_BV_option_4"
+                          id="__BVID__136_BV_option_4"
                           name="team"
                           type="checkbox"
                           value="test-team-id-3-1"
                         />
                         <label
                           class="custom-control-label"
-                          for="__BVID__145_BV_option_4"
+                          for="__BVID__136_BV_option_4"
                         >
                           <span>
                             test-team-id-3-1
@@ -426,14 +290,14 @@ exports[`Index when Get Diagram service endpoint returns an array of multiple co
                       >
                         <input
                           class="custom-control-input"
-                          id="__BVID__145_BV_option_5"
+                          id="__BVID__136_BV_option_5"
                           name="team"
                           type="checkbox"
                           value="test-team-id-3-2"
                         />
                         <label
                           class="custom-control-label"
-                          for="__BVID__145_BV_option_5"
+                          for="__BVID__136_BV_option_5"
                         >
                           <span>
                             test-team-id-3-2
@@ -445,14 +309,14 @@ exports[`Index when Get Diagram service endpoint returns an array of multiple co
                       >
                         <input
                           class="custom-control-input"
-                          id="__BVID__145_BV_option_6"
+                          id="__BVID__136_BV_option_6"
                           name="team"
                           type="checkbox"
                           value="test-team-id-4-1"
                         />
                         <label
                           class="custom-control-label"
-                          for="__BVID__145_BV_option_6"
+                          for="__BVID__136_BV_option_6"
                         >
                           <span>
                             test-team-id-4-1
@@ -464,14 +328,14 @@ exports[`Index when Get Diagram service endpoint returns an array of multiple co
                       >
                         <input
                           class="custom-control-input"
-                          id="__BVID__145_BV_option_7"
+                          id="__BVID__136_BV_option_7"
                           name="team"
                           type="checkbox"
                           value="test-team-id-4-2"
                         />
                         <label
                           class="custom-control-label"
-                          for="__BVID__145_BV_option_7"
+                          for="__BVID__136_BV_option_7"
                         >
                           <span>
                             test-team-id-4-2
@@ -483,14 +347,14 @@ exports[`Index when Get Diagram service endpoint returns an array of multiple co
                       >
                         <input
                           class="custom-control-input"
-                          id="__BVID__145_BV_option_8"
+                          id="__BVID__136_BV_option_8"
                           name="team"
                           type="checkbox"
                           value="test-team-id-5-1"
                         />
                         <label
                           class="custom-control-label"
-                          for="__BVID__145_BV_option_8"
+                          for="__BVID__136_BV_option_8"
                         >
                           <span>
                             test-team-id-5-1
@@ -502,14 +366,14 @@ exports[`Index when Get Diagram service endpoint returns an array of multiple co
                       >
                         <input
                           class="custom-control-input"
-                          id="__BVID__145_BV_option_9"
+                          id="__BVID__136_BV_option_9"
                           name="team"
                           type="checkbox"
                           value="test-team-id-5-2"
                         />
                         <label
                           class="custom-control-label"
-                          for="__BVID__145_BV_option_9"
+                          for="__BVID__136_BV_option_9"
                         >
                           <span>
                             test-team-id-5-2
@@ -521,14 +385,14 @@ exports[`Index when Get Diagram service endpoint returns an array of multiple co
                       >
                         <input
                           class="custom-control-input"
-                          id="__BVID__145_BV_option_10"
+                          id="__BVID__136_BV_option_10"
                           name="team"
                           type="checkbox"
                           value="test-team-id-6-1"
                         />
                         <label
                           class="custom-control-label"
-                          for="__BVID__145_BV_option_10"
+                          for="__BVID__136_BV_option_10"
                         >
                           <span>
                             test-team-id-6-1
@@ -540,14 +404,14 @@ exports[`Index when Get Diagram service endpoint returns an array of multiple co
                       >
                         <input
                           class="custom-control-input"
-                          id="__BVID__145_BV_option_11"
+                          id="__BVID__136_BV_option_11"
                           name="team"
                           type="checkbox"
                           value="test-team-id-6-2"
                         />
                         <label
                           class="custom-control-label"
-                          for="__BVID__145_BV_option_11"
+                          for="__BVID__136_BV_option_11"
                         >
                           <span>
                             test-team-id-6-2
@@ -577,11 +441,11 @@ exports[`Index when Get Diagram service endpoint returns an array of multiple co
                 <!---->
                 <fieldset
                   class="form-group"
-                  id="__BVID__158"
+                  id="__BVID__149"
                 >
                   <legend
                     class="bv-no-focus-ring col-form-label pt-0"
-                    id="__BVID__158__BV_label_"
+                    id="__BVID__149__BV_label_"
                     tabindex="-1"
                   >
                     Tags
@@ -589,7 +453,7 @@ exports[`Index when Get Diagram service endpoint returns an array of multiple co
                   <div>
                     <div
                       class="bv-no-focus-ring"
-                      id="__BVID__159"
+                      id="__BVID__150"
                       role="group"
                       tabindex="-1"
                     >
@@ -598,14 +462,14 @@ exports[`Index when Get Diagram service endpoint returns an array of multiple co
                       >
                         <input
                           class="custom-control-input"
-                          id="__BVID__159_BV_option_0"
+                          id="__BVID__150_BV_option_0"
                           name="tag"
                           type="checkbox"
                           value="test-tag-1-1"
                         />
                         <label
                           class="custom-control-label"
-                          for="__BVID__159_BV_option_0"
+                          for="__BVID__150_BV_option_0"
                         >
                           <span>
                             test-tag-1-1
@@ -617,14 +481,14 @@ exports[`Index when Get Diagram service endpoint returns an array of multiple co
                       >
                         <input
                           class="custom-control-input"
-                          id="__BVID__159_BV_option_1"
+                          id="__BVID__150_BV_option_1"
                           name="tag"
                           type="checkbox"
                           value="test-tag-1-2"
                         />
                         <label
                           class="custom-control-label"
-                          for="__BVID__159_BV_option_1"
+                          for="__BVID__150_BV_option_1"
                         >
                           <span>
                             test-tag-1-2
@@ -636,14 +500,14 @@ exports[`Index when Get Diagram service endpoint returns an array of multiple co
                       >
                         <input
                           class="custom-control-input"
-                          id="__BVID__159_BV_option_2"
+                          id="__BVID__150_BV_option_2"
                           name="tag"
                           type="checkbox"
                           value="test-tag-2-1"
                         />
                         <label
                           class="custom-control-label"
-                          for="__BVID__159_BV_option_2"
+                          for="__BVID__150_BV_option_2"
                         >
                           <span>
                             test-tag-2-1
@@ -655,14 +519,14 @@ exports[`Index when Get Diagram service endpoint returns an array of multiple co
                       >
                         <input
                           class="custom-control-input"
-                          id="__BVID__159_BV_option_3"
+                          id="__BVID__150_BV_option_3"
                           name="tag"
                           type="checkbox"
                           value="test-tag-2-2"
                         />
                         <label
                           class="custom-control-label"
-                          for="__BVID__159_BV_option_3"
+                          for="__BVID__150_BV_option_3"
                         >
                           <span>
                             test-tag-2-2
@@ -674,14 +538,14 @@ exports[`Index when Get Diagram service endpoint returns an array of multiple co
                       >
                         <input
                           class="custom-control-input"
-                          id="__BVID__159_BV_option_4"
+                          id="__BVID__150_BV_option_4"
                           name="tag"
                           type="checkbox"
                           value="test-tag-3-1"
                         />
                         <label
                           class="custom-control-label"
-                          for="__BVID__159_BV_option_4"
+                          for="__BVID__150_BV_option_4"
                         >
                           <span>
                             test-tag-3-1
@@ -693,14 +557,14 @@ exports[`Index when Get Diagram service endpoint returns an array of multiple co
                       >
                         <input
                           class="custom-control-input"
-                          id="__BVID__159_BV_option_5"
+                          id="__BVID__150_BV_option_5"
                           name="tag"
                           type="checkbox"
                           value="test-tag-3-2"
                         />
                         <label
                           class="custom-control-label"
-                          for="__BVID__159_BV_option_5"
+                          for="__BVID__150_BV_option_5"
                         >
                           <span>
                             test-tag-3-2
@@ -712,14 +576,14 @@ exports[`Index when Get Diagram service endpoint returns an array of multiple co
                       >
                         <input
                           class="custom-control-input"
-                          id="__BVID__159_BV_option_6"
+                          id="__BVID__150_BV_option_6"
                           name="tag"
                           type="checkbox"
                           value="test-tag-4-1"
                         />
                         <label
                           class="custom-control-label"
-                          for="__BVID__159_BV_option_6"
+                          for="__BVID__150_BV_option_6"
                         >
                           <span>
                             test-tag-4-1
@@ -731,14 +595,14 @@ exports[`Index when Get Diagram service endpoint returns an array of multiple co
                       >
                         <input
                           class="custom-control-input"
-                          id="__BVID__159_BV_option_7"
+                          id="__BVID__150_BV_option_7"
                           name="tag"
                           type="checkbox"
                           value="test-tag-4-2"
                         />
                         <label
                           class="custom-control-label"
-                          for="__BVID__159_BV_option_7"
+                          for="__BVID__150_BV_option_7"
                         >
                           <span>
                             test-tag-4-2
@@ -750,14 +614,14 @@ exports[`Index when Get Diagram service endpoint returns an array of multiple co
                       >
                         <input
                           class="custom-control-input"
-                          id="__BVID__159_BV_option_8"
+                          id="__BVID__150_BV_option_8"
                           name="tag"
                           type="checkbox"
                           value="test-tag-5-1"
                         />
                         <label
                           class="custom-control-label"
-                          for="__BVID__159_BV_option_8"
+                          for="__BVID__150_BV_option_8"
                         >
                           <span>
                             test-tag-5-1
@@ -769,14 +633,14 @@ exports[`Index when Get Diagram service endpoint returns an array of multiple co
                       >
                         <input
                           class="custom-control-input"
-                          id="__BVID__159_BV_option_9"
+                          id="__BVID__150_BV_option_9"
                           name="tag"
                           type="checkbox"
                           value="test-tag-5-2"
                         />
                         <label
                           class="custom-control-label"
-                          for="__BVID__159_BV_option_9"
+                          for="__BVID__150_BV_option_9"
                         >
                           <span>
                             test-tag-5-2
@@ -788,14 +652,14 @@ exports[`Index when Get Diagram service endpoint returns an array of multiple co
                       >
                         <input
                           class="custom-control-input"
-                          id="__BVID__159_BV_option_10"
+                          id="__BVID__150_BV_option_10"
                           name="tag"
                           type="checkbox"
                           value="test-tag-6-1"
                         />
                         <label
                           class="custom-control-label"
-                          for="__BVID__159_BV_option_10"
+                          for="__BVID__150_BV_option_10"
                         >
                           <span>
                             test-tag-6-1
@@ -807,14 +671,14 @@ exports[`Index when Get Diagram service endpoint returns an array of multiple co
                       >
                         <input
                           class="custom-control-input"
-                          id="__BVID__159_BV_option_11"
+                          id="__BVID__150_BV_option_11"
                           name="tag"
                           type="checkbox"
                           value="test-tag-6-2"
                         />
                         <label
                           class="custom-control-label"
-                          for="__BVID__159_BV_option_11"
+                          for="__BVID__150_BV_option_11"
                         >
                           <span>
                             test-tag-6-2
@@ -844,11 +708,11 @@ exports[`Index when Get Diagram service endpoint returns an array of multiple co
                 <!---->
                 <fieldset
                   class="form-group"
-                  id="__BVID__172"
+                  id="__BVID__163"
                 >
                   <legend
                     class="bv-no-focus-ring col-form-label pt-0"
-                    id="__BVID__172__BV_label_"
+                    id="__BVID__163__BV_label_"
                     tabindex="-1"
                   >
                     Component Types
@@ -856,7 +720,7 @@ exports[`Index when Get Diagram service endpoint returns an array of multiple co
                   <div>
                     <div
                       class="bv-no-focus-ring"
-                      id="__BVID__173"
+                      id="__BVID__164"
                       role="group"
                       tabindex="-1"
                     >
@@ -865,14 +729,14 @@ exports[`Index when Get Diagram service endpoint returns an array of multiple co
                       >
                         <input
                           class="custom-control-input"
-                          id="__BVID__173_BV_option_0"
+                          id="__BVID__164_BV_option_0"
                           name="componentTypeId"
                           type="checkbox"
                           value="test-component-type-id-1"
                         />
                         <label
                           class="custom-control-label"
-                          for="__BVID__173_BV_option_0"
+                          for="__BVID__164_BV_option_0"
                         >
                           <span>
                             test-component-type-id-1
@@ -884,14 +748,14 @@ exports[`Index when Get Diagram service endpoint returns an array of multiple co
                       >
                         <input
                           class="custom-control-input"
-                          id="__BVID__173_BV_option_1"
+                          id="__BVID__164_BV_option_1"
                           name="componentTypeId"
                           type="checkbox"
                           value="test-component-type-id-2"
                         />
                         <label
                           class="custom-control-label"
-                          for="__BVID__173_BV_option_1"
+                          for="__BVID__164_BV_option_1"
                         >
                           <span>
                             test-component-type-id-2
@@ -903,14 +767,14 @@ exports[`Index when Get Diagram service endpoint returns an array of multiple co
                       >
                         <input
                           class="custom-control-input"
-                          id="__BVID__173_BV_option_2"
+                          id="__BVID__164_BV_option_2"
                           name="componentTypeId"
                           type="checkbox"
                           value="test-component-type-id-3"
                         />
                         <label
                           class="custom-control-label"
-                          for="__BVID__173_BV_option_2"
+                          for="__BVID__164_BV_option_2"
                         >
                           <span>
                             test-component-type-id-3
@@ -922,14 +786,14 @@ exports[`Index when Get Diagram service endpoint returns an array of multiple co
                       >
                         <input
                           class="custom-control-input"
-                          id="__BVID__173_BV_option_3"
+                          id="__BVID__164_BV_option_3"
                           name="componentTypeId"
                           type="checkbox"
                           value="test-component-type-id-4"
                         />
                         <label
                           class="custom-control-label"
-                          for="__BVID__173_BV_option_3"
+                          for="__BVID__164_BV_option_3"
                         >
                           <span>
                             test-component-type-id-4
@@ -941,14 +805,14 @@ exports[`Index when Get Diagram service endpoint returns an array of multiple co
                       >
                         <input
                           class="custom-control-input"
-                          id="__BVID__173_BV_option_4"
+                          id="__BVID__164_BV_option_4"
                           name="componentTypeId"
                           type="checkbox"
                           value="test-component-type-id-5"
                         />
                         <label
                           class="custom-control-label"
-                          for="__BVID__173_BV_option_4"
+                          for="__BVID__164_BV_option_4"
                         >
                           <span>
                             test-component-type-id-5
@@ -960,14 +824,14 @@ exports[`Index when Get Diagram service endpoint returns an array of multiple co
                       >
                         <input
                           class="custom-control-input"
-                          id="__BVID__173_BV_option_5"
+                          id="__BVID__164_BV_option_5"
                           name="componentTypeId"
                           type="checkbox"
                           value="test-component-type-id-6"
                         />
                         <label
                           class="custom-control-label"
-                          for="__BVID__173_BV_option_5"
+                          for="__BVID__164_BV_option_5"
                         >
                           <span>
                             test-component-type-id-6
@@ -997,11 +861,11 @@ exports[`Index when Get Diagram service endpoint returns an array of multiple co
                 <!---->
                 <fieldset
                   class="form-group"
-                  id="__BVID__180"
+                  id="__BVID__171"
                 >
                   <legend
                     class="bv-no-focus-ring col-form-label pt-0"
-                    id="__BVID__180__BV_label_"
+                    id="__BVID__171__BV_label_"
                     tabindex="-1"
                   >
                     Platforms
@@ -1009,7 +873,7 @@ exports[`Index when Get Diagram service endpoint returns an array of multiple co
                   <div>
                     <div
                       class="bv-no-focus-ring"
-                      id="__BVID__181"
+                      id="__BVID__172"
                       role="group"
                       tabindex="-1"
                     >
@@ -1018,14 +882,14 @@ exports[`Index when Get Diagram service endpoint returns an array of multiple co
                       >
                         <input
                           class="custom-control-input"
-                          id="__BVID__181_BV_option_0"
+                          id="__BVID__172_BV_option_0"
                           name="platformId"
                           type="checkbox"
                           value="undefined"
                         />
                         <label
                           class="custom-control-label"
-                          for="__BVID__181_BV_option_0"
+                          for="__BVID__172_BV_option_0"
                         >
                           <span>
                             undefined
@@ -1055,13 +919,13 @@ exports[`Index when Get Diagram service endpoint returns an array of multiple co
                 <!---->
                 <div
                   class="form-group"
-                  id="__BVID__183"
+                  id="__BVID__174"
                   role="group"
                 >
                   <label
                     class="d-block"
                     for="component-filter"
-                    id="__BVID__183__BV_label_"
+                    id="__BVID__174__BV_label_"
                   >
                     Component
                   </label>
@@ -1118,6 +982,91 @@ exports[`Index when Get Diagram service endpoint returns an array of multiple co
           </div>
         </div>
       </transition-stub>
+    </div>
+     
+    <div
+      class="card-columns"
+      style="column-count: 3;"
+    >
+      <div
+        class="card bg-secondary"
+      >
+        <!---->
+        <!---->
+        <div
+          class="card-body"
+        >
+          <!---->
+          <!---->
+          <div
+            class="form-row form-group"
+            id="__BVID__176"
+            role="group"
+          >
+            <label
+              class="col-6 col-form-label col-form-label-sm"
+              for="graph-zoom"
+              id="__BVID__176__BV_label_"
+            >
+              Zoom:
+            </label>
+            <div
+              class="col"
+            >
+              <select
+                class="custom-select custom-select-sm"
+                id="graph-zoom"
+              >
+                <option
+                  value="25"
+                >
+                  25%
+                </option>
+                <option
+                  value="50"
+                >
+                  50%
+                </option>
+                <option
+                  value="75"
+                >
+                  75%
+                </option>
+                <option
+                  value="100"
+                >
+                  100%
+                </option>
+                <option
+                  value="125"
+                >
+                  125%
+                </option>
+                <option
+                  value="150"
+                >
+                  150%
+                </option>
+                <option
+                  value="200"
+                >
+                  200%
+                </option>
+                <option
+                  value="400"
+                >
+                  400%
+                </option>
+              </select>
+              <!---->
+              <!---->
+              <!---->
+            </div>
+          </div>
+        </div>
+        <!---->
+        <!---->
+      </div>
     </div>
      
     <div
@@ -1545,43 +1494,7 @@ exports[`Index when Get Diagram service endpoint returns no edges renders the pa
           <div
             class="card-columns"
           >
-            <div
-              class="card bg-secondary"
-            >
-              <!---->
-              <!---->
-              <div
-                class="card-body"
-              >
-                <!---->
-                <!---->
-                <fieldset
-                  class="form-group"
-                  id="__BVID__74"
-                >
-                  <legend
-                    class="bv-no-focus-ring col-form-label pt-0"
-                    id="__BVID__74__BV_label_"
-                    tabindex="-1"
-                  >
-                    Connection Types
-                  </legend>
-                  <div>
-                    <div
-                      class="bv-no-focus-ring"
-                      id="__BVID__75"
-                      role="group"
-                      tabindex="-1"
-                    />
-                    <!---->
-                    <!---->
-                    <!---->
-                  </div>
-                </fieldset>
-              </div>
-              <!---->
-              <!---->
-            </div>
+            <!---->
              
             <div
               class="card bg-secondary"
@@ -1595,13 +1508,13 @@ exports[`Index when Get Diagram service endpoint returns no edges renders the pa
                 <!---->
                 <div
                   class="form-row form-group"
-                  id="__BVID__76"
+                  id="__BVID__72"
                   role="group"
                 >
                   <label
                     class="col-6 col-form-label col-form-label-sm"
                     for="graph-scope-related-radius"
-                    id="__BVID__76__BV_label_"
+                    id="__BVID__72__BV_label_"
                   >
                     Radius:
                   </label>
@@ -1678,86 +1591,6 @@ exports[`Index when Get Diagram service endpoint returns no edges renders the pa
               <!---->
             </div>
              
-            <div
-              class="card bg-secondary"
-            >
-              <!---->
-              <!---->
-              <div
-                class="card-body"
-              >
-                <!---->
-                <!---->
-                <div
-                  class="form-row form-group"
-                  id="__BVID__78"
-                  role="group"
-                >
-                  <label
-                    class="col-6 col-form-label col-form-label-sm"
-                    for="graph-zoom"
-                    id="__BVID__78__BV_label_"
-                  >
-                    Zoom:
-                  </label>
-                  <div
-                    class="col"
-                  >
-                    <select
-                      class="custom-select custom-select-sm"
-                      id="graph-zoom"
-                    >
-                      <option
-                        value="25"
-                      >
-                        25%
-                      </option>
-                      <option
-                        value="50"
-                      >
-                        50%
-                      </option>
-                      <option
-                        value="75"
-                      >
-                        75%
-                      </option>
-                      <option
-                        value="100"
-                      >
-                        100%
-                      </option>
-                      <option
-                        value="125"
-                      >
-                        125%
-                      </option>
-                      <option
-                        value="150"
-                      >
-                        150%
-                      </option>
-                      <option
-                        value="200"
-                      >
-                        200%
-                      </option>
-                      <option
-                        value="400"
-                      >
-                        400%
-                      </option>
-                    </select>
-                    <!---->
-                    <!---->
-                    <!---->
-                  </div>
-                </div>
-              </div>
-              <!---->
-              <!---->
-            </div>
-             
             <!---->
              
             <!---->
@@ -1776,11 +1609,11 @@ exports[`Index when Get Diagram service endpoint returns no edges renders the pa
                 <!---->
                 <fieldset
                   class="form-group"
-                  id="__BVID__80"
+                  id="__BVID__74"
                 >
                   <legend
                     class="bv-no-focus-ring col-form-label pt-0"
-                    id="__BVID__80__BV_label_"
+                    id="__BVID__74__BV_label_"
                     tabindex="-1"
                   >
                     Teams
@@ -1788,7 +1621,7 @@ exports[`Index when Get Diagram service endpoint returns no edges renders the pa
                   <div>
                     <div
                       class="bv-no-focus-ring"
-                      id="__BVID__81"
+                      id="__BVID__75"
                       role="group"
                       tabindex="-1"
                     >
@@ -1797,14 +1630,14 @@ exports[`Index when Get Diagram service endpoint returns no edges renders the pa
                       >
                         <input
                           class="custom-control-input"
-                          id="__BVID__81_BV_option_0"
+                          id="__BVID__75_BV_option_0"
                           name="team"
                           type="checkbox"
                           value="test-team-id-1-1"
                         />
                         <label
                           class="custom-control-label"
-                          for="__BVID__81_BV_option_0"
+                          for="__BVID__75_BV_option_0"
                         >
                           <span>
                             test-team-id-1-1
@@ -1816,14 +1649,14 @@ exports[`Index when Get Diagram service endpoint returns no edges renders the pa
                       >
                         <input
                           class="custom-control-input"
-                          id="__BVID__81_BV_option_1"
+                          id="__BVID__75_BV_option_1"
                           name="team"
                           type="checkbox"
                           value="test-team-id-1-2"
                         />
                         <label
                           class="custom-control-label"
-                          for="__BVID__81_BV_option_1"
+                          for="__BVID__75_BV_option_1"
                         >
                           <span>
                             test-team-id-1-2
@@ -1835,14 +1668,14 @@ exports[`Index when Get Diagram service endpoint returns no edges renders the pa
                       >
                         <input
                           class="custom-control-input"
-                          id="__BVID__81_BV_option_2"
+                          id="__BVID__75_BV_option_2"
                           name="team"
                           type="checkbox"
                           value="test-team-id-2-1"
                         />
                         <label
                           class="custom-control-label"
-                          for="__BVID__81_BV_option_2"
+                          for="__BVID__75_BV_option_2"
                         >
                           <span>
                             test-team-id-2-1
@@ -1854,14 +1687,14 @@ exports[`Index when Get Diagram service endpoint returns no edges renders the pa
                       >
                         <input
                           class="custom-control-input"
-                          id="__BVID__81_BV_option_3"
+                          id="__BVID__75_BV_option_3"
                           name="team"
                           type="checkbox"
                           value="test-team-id-2-2"
                         />
                         <label
                           class="custom-control-label"
-                          for="__BVID__81_BV_option_3"
+                          for="__BVID__75_BV_option_3"
                         >
                           <span>
                             test-team-id-2-2
@@ -1873,14 +1706,14 @@ exports[`Index when Get Diagram service endpoint returns no edges renders the pa
                       >
                         <input
                           class="custom-control-input"
-                          id="__BVID__81_BV_option_4"
+                          id="__BVID__75_BV_option_4"
                           name="team"
                           type="checkbox"
                           value="test-team-id-3-1"
                         />
                         <label
                           class="custom-control-label"
-                          for="__BVID__81_BV_option_4"
+                          for="__BVID__75_BV_option_4"
                         >
                           <span>
                             test-team-id-3-1
@@ -1892,14 +1725,14 @@ exports[`Index when Get Diagram service endpoint returns no edges renders the pa
                       >
                         <input
                           class="custom-control-input"
-                          id="__BVID__81_BV_option_5"
+                          id="__BVID__75_BV_option_5"
                           name="team"
                           type="checkbox"
                           value="test-team-id-3-2"
                         />
                         <label
                           class="custom-control-label"
-                          for="__BVID__81_BV_option_5"
+                          for="__BVID__75_BV_option_5"
                         >
                           <span>
                             test-team-id-3-2
@@ -1911,14 +1744,14 @@ exports[`Index when Get Diagram service endpoint returns no edges renders the pa
                       >
                         <input
                           class="custom-control-input"
-                          id="__BVID__81_BV_option_6"
+                          id="__BVID__75_BV_option_6"
                           name="team"
                           type="checkbox"
                           value="test-team-id-4-1"
                         />
                         <label
                           class="custom-control-label"
-                          for="__BVID__81_BV_option_6"
+                          for="__BVID__75_BV_option_6"
                         >
                           <span>
                             test-team-id-4-1
@@ -1930,14 +1763,14 @@ exports[`Index when Get Diagram service endpoint returns no edges renders the pa
                       >
                         <input
                           class="custom-control-input"
-                          id="__BVID__81_BV_option_7"
+                          id="__BVID__75_BV_option_7"
                           name="team"
                           type="checkbox"
                           value="test-team-id-4-2"
                         />
                         <label
                           class="custom-control-label"
-                          for="__BVID__81_BV_option_7"
+                          for="__BVID__75_BV_option_7"
                         >
                           <span>
                             test-team-id-4-2
@@ -1949,14 +1782,14 @@ exports[`Index when Get Diagram service endpoint returns no edges renders the pa
                       >
                         <input
                           class="custom-control-input"
-                          id="__BVID__81_BV_option_8"
+                          id="__BVID__75_BV_option_8"
                           name="team"
                           type="checkbox"
                           value="test-team-id-5-1"
                         />
                         <label
                           class="custom-control-label"
-                          for="__BVID__81_BV_option_8"
+                          for="__BVID__75_BV_option_8"
                         >
                           <span>
                             test-team-id-5-1
@@ -1968,14 +1801,14 @@ exports[`Index when Get Diagram service endpoint returns no edges renders the pa
                       >
                         <input
                           class="custom-control-input"
-                          id="__BVID__81_BV_option_9"
+                          id="__BVID__75_BV_option_9"
                           name="team"
                           type="checkbox"
                           value="test-team-id-5-2"
                         />
                         <label
                           class="custom-control-label"
-                          for="__BVID__81_BV_option_9"
+                          for="__BVID__75_BV_option_9"
                         >
                           <span>
                             test-team-id-5-2
@@ -1987,14 +1820,14 @@ exports[`Index when Get Diagram service endpoint returns no edges renders the pa
                       >
                         <input
                           class="custom-control-input"
-                          id="__BVID__81_BV_option_10"
+                          id="__BVID__75_BV_option_10"
                           name="team"
                           type="checkbox"
                           value="test-team-id-6-1"
                         />
                         <label
                           class="custom-control-label"
-                          for="__BVID__81_BV_option_10"
+                          for="__BVID__75_BV_option_10"
                         >
                           <span>
                             test-team-id-6-1
@@ -2006,14 +1839,14 @@ exports[`Index when Get Diagram service endpoint returns no edges renders the pa
                       >
                         <input
                           class="custom-control-input"
-                          id="__BVID__81_BV_option_11"
+                          id="__BVID__75_BV_option_11"
                           name="team"
                           type="checkbox"
                           value="test-team-id-6-2"
                         />
                         <label
                           class="custom-control-label"
-                          for="__BVID__81_BV_option_11"
+                          for="__BVID__75_BV_option_11"
                         >
                           <span>
                             test-team-id-6-2
@@ -2043,11 +1876,11 @@ exports[`Index when Get Diagram service endpoint returns no edges renders the pa
                 <!---->
                 <fieldset
                   class="form-group"
-                  id="__BVID__94"
+                  id="__BVID__88"
                 >
                   <legend
                     class="bv-no-focus-ring col-form-label pt-0"
-                    id="__BVID__94__BV_label_"
+                    id="__BVID__88__BV_label_"
                     tabindex="-1"
                   >
                     Tags
@@ -2055,7 +1888,7 @@ exports[`Index when Get Diagram service endpoint returns no edges renders the pa
                   <div>
                     <div
                       class="bv-no-focus-ring"
-                      id="__BVID__95"
+                      id="__BVID__89"
                       role="group"
                       tabindex="-1"
                     >
@@ -2064,14 +1897,14 @@ exports[`Index when Get Diagram service endpoint returns no edges renders the pa
                       >
                         <input
                           class="custom-control-input"
-                          id="__BVID__95_BV_option_0"
+                          id="__BVID__89_BV_option_0"
                           name="tag"
                           type="checkbox"
                           value="test-tag-1-1"
                         />
                         <label
                           class="custom-control-label"
-                          for="__BVID__95_BV_option_0"
+                          for="__BVID__89_BV_option_0"
                         >
                           <span>
                             test-tag-1-1
@@ -2083,14 +1916,14 @@ exports[`Index when Get Diagram service endpoint returns no edges renders the pa
                       >
                         <input
                           class="custom-control-input"
-                          id="__BVID__95_BV_option_1"
+                          id="__BVID__89_BV_option_1"
                           name="tag"
                           type="checkbox"
                           value="test-tag-1-2"
                         />
                         <label
                           class="custom-control-label"
-                          for="__BVID__95_BV_option_1"
+                          for="__BVID__89_BV_option_1"
                         >
                           <span>
                             test-tag-1-2
@@ -2102,14 +1935,14 @@ exports[`Index when Get Diagram service endpoint returns no edges renders the pa
                       >
                         <input
                           class="custom-control-input"
-                          id="__BVID__95_BV_option_2"
+                          id="__BVID__89_BV_option_2"
                           name="tag"
                           type="checkbox"
                           value="test-tag-2-1"
                         />
                         <label
                           class="custom-control-label"
-                          for="__BVID__95_BV_option_2"
+                          for="__BVID__89_BV_option_2"
                         >
                           <span>
                             test-tag-2-1
@@ -2121,14 +1954,14 @@ exports[`Index when Get Diagram service endpoint returns no edges renders the pa
                       >
                         <input
                           class="custom-control-input"
-                          id="__BVID__95_BV_option_3"
+                          id="__BVID__89_BV_option_3"
                           name="tag"
                           type="checkbox"
                           value="test-tag-2-2"
                         />
                         <label
                           class="custom-control-label"
-                          for="__BVID__95_BV_option_3"
+                          for="__BVID__89_BV_option_3"
                         >
                           <span>
                             test-tag-2-2
@@ -2140,14 +1973,14 @@ exports[`Index when Get Diagram service endpoint returns no edges renders the pa
                       >
                         <input
                           class="custom-control-input"
-                          id="__BVID__95_BV_option_4"
+                          id="__BVID__89_BV_option_4"
                           name="tag"
                           type="checkbox"
                           value="test-tag-3-1"
                         />
                         <label
                           class="custom-control-label"
-                          for="__BVID__95_BV_option_4"
+                          for="__BVID__89_BV_option_4"
                         >
                           <span>
                             test-tag-3-1
@@ -2159,14 +1992,14 @@ exports[`Index when Get Diagram service endpoint returns no edges renders the pa
                       >
                         <input
                           class="custom-control-input"
-                          id="__BVID__95_BV_option_5"
+                          id="__BVID__89_BV_option_5"
                           name="tag"
                           type="checkbox"
                           value="test-tag-3-2"
                         />
                         <label
                           class="custom-control-label"
-                          for="__BVID__95_BV_option_5"
+                          for="__BVID__89_BV_option_5"
                         >
                           <span>
                             test-tag-3-2
@@ -2178,14 +2011,14 @@ exports[`Index when Get Diagram service endpoint returns no edges renders the pa
                       >
                         <input
                           class="custom-control-input"
-                          id="__BVID__95_BV_option_6"
+                          id="__BVID__89_BV_option_6"
                           name="tag"
                           type="checkbox"
                           value="test-tag-4-1"
                         />
                         <label
                           class="custom-control-label"
-                          for="__BVID__95_BV_option_6"
+                          for="__BVID__89_BV_option_6"
                         >
                           <span>
                             test-tag-4-1
@@ -2197,14 +2030,14 @@ exports[`Index when Get Diagram service endpoint returns no edges renders the pa
                       >
                         <input
                           class="custom-control-input"
-                          id="__BVID__95_BV_option_7"
+                          id="__BVID__89_BV_option_7"
                           name="tag"
                           type="checkbox"
                           value="test-tag-4-2"
                         />
                         <label
                           class="custom-control-label"
-                          for="__BVID__95_BV_option_7"
+                          for="__BVID__89_BV_option_7"
                         >
                           <span>
                             test-tag-4-2
@@ -2216,14 +2049,14 @@ exports[`Index when Get Diagram service endpoint returns no edges renders the pa
                       >
                         <input
                           class="custom-control-input"
-                          id="__BVID__95_BV_option_8"
+                          id="__BVID__89_BV_option_8"
                           name="tag"
                           type="checkbox"
                           value="test-tag-5-1"
                         />
                         <label
                           class="custom-control-label"
-                          for="__BVID__95_BV_option_8"
+                          for="__BVID__89_BV_option_8"
                         >
                           <span>
                             test-tag-5-1
@@ -2235,14 +2068,14 @@ exports[`Index when Get Diagram service endpoint returns no edges renders the pa
                       >
                         <input
                           class="custom-control-input"
-                          id="__BVID__95_BV_option_9"
+                          id="__BVID__89_BV_option_9"
                           name="tag"
                           type="checkbox"
                           value="test-tag-5-2"
                         />
                         <label
                           class="custom-control-label"
-                          for="__BVID__95_BV_option_9"
+                          for="__BVID__89_BV_option_9"
                         >
                           <span>
                             test-tag-5-2
@@ -2254,14 +2087,14 @@ exports[`Index when Get Diagram service endpoint returns no edges renders the pa
                       >
                         <input
                           class="custom-control-input"
-                          id="__BVID__95_BV_option_10"
+                          id="__BVID__89_BV_option_10"
                           name="tag"
                           type="checkbox"
                           value="test-tag-6-1"
                         />
                         <label
                           class="custom-control-label"
-                          for="__BVID__95_BV_option_10"
+                          for="__BVID__89_BV_option_10"
                         >
                           <span>
                             test-tag-6-1
@@ -2273,14 +2106,14 @@ exports[`Index when Get Diagram service endpoint returns no edges renders the pa
                       >
                         <input
                           class="custom-control-input"
-                          id="__BVID__95_BV_option_11"
+                          id="__BVID__89_BV_option_11"
                           name="tag"
                           type="checkbox"
                           value="test-tag-6-2"
                         />
                         <label
                           class="custom-control-label"
-                          for="__BVID__95_BV_option_11"
+                          for="__BVID__89_BV_option_11"
                         >
                           <span>
                             test-tag-6-2
@@ -2310,11 +2143,11 @@ exports[`Index when Get Diagram service endpoint returns no edges renders the pa
                 <!---->
                 <fieldset
                   class="form-group"
-                  id="__BVID__108"
+                  id="__BVID__102"
                 >
                   <legend
                     class="bv-no-focus-ring col-form-label pt-0"
-                    id="__BVID__108__BV_label_"
+                    id="__BVID__102__BV_label_"
                     tabindex="-1"
                   >
                     Component Types
@@ -2322,7 +2155,7 @@ exports[`Index when Get Diagram service endpoint returns no edges renders the pa
                   <div>
                     <div
                       class="bv-no-focus-ring"
-                      id="__BVID__109"
+                      id="__BVID__103"
                       role="group"
                       tabindex="-1"
                     >
@@ -2331,14 +2164,14 @@ exports[`Index when Get Diagram service endpoint returns no edges renders the pa
                       >
                         <input
                           class="custom-control-input"
-                          id="__BVID__109_BV_option_0"
+                          id="__BVID__103_BV_option_0"
                           name="componentTypeId"
                           type="checkbox"
                           value="test-component-type-id-1"
                         />
                         <label
                           class="custom-control-label"
-                          for="__BVID__109_BV_option_0"
+                          for="__BVID__103_BV_option_0"
                         >
                           <span>
                             test-component-type-id-1
@@ -2350,14 +2183,14 @@ exports[`Index when Get Diagram service endpoint returns no edges renders the pa
                       >
                         <input
                           class="custom-control-input"
-                          id="__BVID__109_BV_option_1"
+                          id="__BVID__103_BV_option_1"
                           name="componentTypeId"
                           type="checkbox"
                           value="test-component-type-id-2"
                         />
                         <label
                           class="custom-control-label"
-                          for="__BVID__109_BV_option_1"
+                          for="__BVID__103_BV_option_1"
                         >
                           <span>
                             test-component-type-id-2
@@ -2369,14 +2202,14 @@ exports[`Index when Get Diagram service endpoint returns no edges renders the pa
                       >
                         <input
                           class="custom-control-input"
-                          id="__BVID__109_BV_option_2"
+                          id="__BVID__103_BV_option_2"
                           name="componentTypeId"
                           type="checkbox"
                           value="test-component-type-id-3"
                         />
                         <label
                           class="custom-control-label"
-                          for="__BVID__109_BV_option_2"
+                          for="__BVID__103_BV_option_2"
                         >
                           <span>
                             test-component-type-id-3
@@ -2388,14 +2221,14 @@ exports[`Index when Get Diagram service endpoint returns no edges renders the pa
                       >
                         <input
                           class="custom-control-input"
-                          id="__BVID__109_BV_option_3"
+                          id="__BVID__103_BV_option_3"
                           name="componentTypeId"
                           type="checkbox"
                           value="test-component-type-id-4"
                         />
                         <label
                           class="custom-control-label"
-                          for="__BVID__109_BV_option_3"
+                          for="__BVID__103_BV_option_3"
                         >
                           <span>
                             test-component-type-id-4
@@ -2407,14 +2240,14 @@ exports[`Index when Get Diagram service endpoint returns no edges renders the pa
                       >
                         <input
                           class="custom-control-input"
-                          id="__BVID__109_BV_option_4"
+                          id="__BVID__103_BV_option_4"
                           name="componentTypeId"
                           type="checkbox"
                           value="test-component-type-id-5"
                         />
                         <label
                           class="custom-control-label"
-                          for="__BVID__109_BV_option_4"
+                          for="__BVID__103_BV_option_4"
                         >
                           <span>
                             test-component-type-id-5
@@ -2426,14 +2259,14 @@ exports[`Index when Get Diagram service endpoint returns no edges renders the pa
                       >
                         <input
                           class="custom-control-input"
-                          id="__BVID__109_BV_option_5"
+                          id="__BVID__103_BV_option_5"
                           name="componentTypeId"
                           type="checkbox"
                           value="test-component-type-id-6"
                         />
                         <label
                           class="custom-control-label"
-                          for="__BVID__109_BV_option_5"
+                          for="__BVID__103_BV_option_5"
                         >
                           <span>
                             test-component-type-id-6
@@ -2463,11 +2296,11 @@ exports[`Index when Get Diagram service endpoint returns no edges renders the pa
                 <!---->
                 <fieldset
                   class="form-group"
-                  id="__BVID__116"
+                  id="__BVID__110"
                 >
                   <legend
                     class="bv-no-focus-ring col-form-label pt-0"
-                    id="__BVID__116__BV_label_"
+                    id="__BVID__110__BV_label_"
                     tabindex="-1"
                   >
                     Platforms
@@ -2475,7 +2308,7 @@ exports[`Index when Get Diagram service endpoint returns no edges renders the pa
                   <div>
                     <div
                       class="bv-no-focus-ring"
-                      id="__BVID__117"
+                      id="__BVID__111"
                       role="group"
                       tabindex="-1"
                     >
@@ -2484,14 +2317,14 @@ exports[`Index when Get Diagram service endpoint returns no edges renders the pa
                       >
                         <input
                           class="custom-control-input"
-                          id="__BVID__117_BV_option_0"
+                          id="__BVID__111_BV_option_0"
                           name="platformId"
                           type="checkbox"
                           value="undefined"
                         />
                         <label
                           class="custom-control-label"
-                          for="__BVID__117_BV_option_0"
+                          for="__BVID__111_BV_option_0"
                         >
                           <span>
                             undefined
@@ -2521,13 +2354,13 @@ exports[`Index when Get Diagram service endpoint returns no edges renders the pa
                 <!---->
                 <div
                   class="form-group"
-                  id="__BVID__119"
+                  id="__BVID__113"
                   role="group"
                 >
                   <label
                     class="d-block"
                     for="component-filter"
-                    id="__BVID__119__BV_label_"
+                    id="__BVID__113__BV_label_"
                   >
                     Component
                   </label>
@@ -2584,6 +2417,91 @@ exports[`Index when Get Diagram service endpoint returns no edges renders the pa
           </div>
         </div>
       </transition-stub>
+    </div>
+     
+    <div
+      class="card-columns"
+      style="column-count: 3;"
+    >
+      <div
+        class="card bg-secondary"
+      >
+        <!---->
+        <!---->
+        <div
+          class="card-body"
+        >
+          <!---->
+          <!---->
+          <div
+            class="form-row form-group"
+            id="__BVID__115"
+            role="group"
+          >
+            <label
+              class="col-6 col-form-label col-form-label-sm"
+              for="graph-zoom"
+              id="__BVID__115__BV_label_"
+            >
+              Zoom:
+            </label>
+            <div
+              class="col"
+            >
+              <select
+                class="custom-select custom-select-sm"
+                id="graph-zoom"
+              >
+                <option
+                  value="25"
+                >
+                  25%
+                </option>
+                <option
+                  value="50"
+                >
+                  50%
+                </option>
+                <option
+                  value="75"
+                >
+                  75%
+                </option>
+                <option
+                  value="100"
+                >
+                  100%
+                </option>
+                <option
+                  value="125"
+                >
+                  125%
+                </option>
+                <option
+                  value="150"
+                >
+                  150%
+                </option>
+                <option
+                  value="200"
+                >
+                  200%
+                </option>
+                <option
+                  value="400"
+                >
+                  400%
+                </option>
+              </select>
+              <!---->
+              <!---->
+              <!---->
+            </div>
+          </div>
+        </div>
+        <!---->
+        <!---->
+      </div>
     </div>
      
     <div

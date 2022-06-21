@@ -402,3 +402,9 @@ export default class ComponentFilters extends Vue {
   }
 }
 </script>
+
+<style scoped>
+.form-group {
+  margin-bottom: 0;
+}
+</style>

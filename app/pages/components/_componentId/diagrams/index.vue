@@ -7,7 +7,7 @@
       :component-available-data="componentAvailableData"
     />
 
-    <DiagramsView :diagrams="diagrams" :components="[component]" />
+    <DiagramsView :diagrams="diagrams" :components="[]" />
   </div>
 </template>
 
@@ -27,7 +27,7 @@ export default Vue.extend({
     ComponentTabs,
     DiagramsView,
   },
-  async asyncData({ $config, route, store }) {
+  async asyncData({ $config, route }) {
     const componentAvailableData = await fetchComponentAvailableData(
       $config,
       route
@@ -39,25 +39,15 @@ export default Vue.extend({
       .then((res) => res.json())
       .then((json) => json.component as Component)
 
-    store.commit('componentFilters/initialize', {
-      components: [component],
-      route,
-    })
-
-    const allComponents = await fetch(
-      `${$config.serviceBaseUrl}/v1/components?fields=components(id,name,typeId,tags,description,notes,responsibilities,teams,platformId)`
+    const diagrams = await fetch(
+      `${$config.serviceBaseUrl}/v1/components/${route.params.componentId}/diagrams?fields=diagrams(id,name,description)`
     )
-      .then((res) => res.json())
-      .then((json) => json.components as Component[])
-
-    const diagrams = await fetch(`${$config.serviceBaseUrl}/v1/diagrams`)
       .then((res) => res.json())
       .then((json) => json.diagrams)
 
     return {
       componentAvailableData,
       component,
-      allComponents,
       diagrams,
     }
   },
@@ -65,7 +55,6 @@ export default Vue.extend({
     return {
       componentAvailableData: {} as ComponentAvailableData,
       component: {} as Component,
-      allComponents: [] as Component[],
       diagrams: [] as Diagram[],
     }
   },

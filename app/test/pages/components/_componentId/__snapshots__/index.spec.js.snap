@@ -406,6 +406,115 @@ exports[`Index when Get Component service endpoint returns a component renders t
       <!---->
       <!---->
     </div>
+     
+    <div
+      class="card"
+    >
+      <!---->
+      <!---->
+      <div
+        class="card-body"
+      >
+        <h4
+          class="card-title"
+        >
+          Diagrams
+        </h4>
+        <!---->
+        <table
+          class="table table-dark"
+        >
+          <thead>
+            <tr>
+              <th
+                class="diagram"
+              >
+                Diagram
+              </th>
+               
+              <th
+                class="action"
+              >
+                Action
+              </th>
+               
+              <th
+                class="description"
+              >
+                Description
+              </th>
+            </tr>
+          </thead>
+           
+          <tbody>
+            <tr>
+              <td
+                class="diagram"
+              >
+                <a
+                  href="/diagrams/test-diagram-id-1"
+                >
+                  Test Diagram Name 1
+                </a>
+              </td>
+               
+              <td
+                class="action table-secondary"
+              >
+                <a
+                  class="btn btn-info"
+                  href="/diagrams/test-diagram-id-1"
+                  target="_self"
+                >
+                  
+          View Diagram
+        
+                </a>
+              </td>
+               
+              <td
+                class="description"
+              >
+                <div />
+              </td>
+            </tr>
+            <tr>
+              <td
+                class="diagram"
+              >
+                <a
+                  href="/diagrams/test-diagram-id-2"
+                >
+                  Test Diagram Name 2
+                </a>
+              </td>
+               
+              <td
+                class="action table-secondary"
+              >
+                <a
+                  class="btn btn-info"
+                  href="/diagrams/test-diagram-id-2"
+                  target="_self"
+                >
+                  
+          View Diagram
+        
+                </a>
+              </td>
+               
+              <td
+                class="description"
+              >
+                <div />
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <!---->
+      <!---->
+    </div>
   </div>
 </div>
 `;

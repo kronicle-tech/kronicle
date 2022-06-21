@@ -100,7 +100,7 @@ exports[`Index when Get Area service endpoint returns an area when the area has 
    
   <div>
     <div
-      class="card"
+      class="card my-3"
     >
       <!---->
       <!---->
@@ -1141,7 +1141,7 @@ exports[`Index when Get Area service endpoint returns an area when the area has 
    
   <div>
     <div
-      class="card"
+      class="card my-3"
     >
       <!---->
       <!---->
@@ -1847,7 +1847,7 @@ exports[`Index when Get Area service endpoint returns an area when the area has 
    
   <div>
     <div
-      class="card"
+      class="card my-3"
     >
       <!---->
       <!---->

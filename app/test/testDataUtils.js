@@ -453,6 +453,14 @@ export function createDiagramWithEmptyGraph() {
   }
 }
 
+export function createDiagramWithGraph(graphNumber) {
+  return {
+    id: `test-diagram-id-${graphNumber}`,
+    name: `Test Diagram Name ${graphNumber}`,
+    states: [createGraph()],
+  }
+}
+
 function createCrossFunctionalRequirement({
   componentNumber,
   crossFunctionalRequirementNumber,

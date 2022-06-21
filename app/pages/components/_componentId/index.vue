@@ -64,6 +64,10 @@
       >
         <Responsibilities :responsibilities="component.responsibilities" />
       </b-card>
+
+      <b-card v-if="diagrams.length > 0" title="Diagrams">
+        <DiagramTable :diagrams="diagrams" />
+      </b-card>
     </b-card-group>
   </div>
 </template>
@@ -74,14 +78,16 @@ import { MetaInfo } from 'vue-meta'
 import { BCard, BCardGroup, BCardText } from 'bootstrap-vue'
 import {
   Component,
+  Diagram,
   KeySoftware,
   KeySoftwaresState,
 } from '~/types/kronicle-service'
 import ComponentTabs from '~/components/ComponentTabs.vue'
+import ComponentTeams from '~/components/ComponentTeams.vue'
+import DiagramTable from '~/components/DiagramTable.vue'
 import KeySoftwareBadges from '~/components/KeySoftwareBadges.vue'
 import Links from '~/components/Links.vue'
 import Markdown from '~/components/Markdown.vue'
-import ComponentTeams from '~/components/ComponentTeams.vue'
 import Responsibilities from '~/components/Responsibilities.vue'
 import {
   ComponentAvailableData,
@@ -95,6 +101,7 @@ export default Vue.extend({
     'b-card-group': BCardGroup,
     'b-card-text': BCardText,
     ComponentTabs,
+    DiagramTable,
     KeySoftwareBadges,
     Links,
     Markdown,
@@ -113,15 +120,23 @@ export default Vue.extend({
       .then((res) => res.json())
       .then((json) => json.component)
 
+    const diagrams = await fetch(
+      `${$config.serviceBaseUrl}/v1/components/${route.params.componentId}/diagrams?fields=diagrams(id,name,description)`
+    )
+      .then((res) => res.json())
+      .then((json) => json.diagrams)
+
     return {
       componentAvailableData,
       component,
+      diagrams,
     }
   },
   data() {
     return {
       componentAvailableData: {} as ComponentAvailableData,
       component: {} as Component,
+      diagrams: [] as Diagram[],
     }
   },
   head(): MetaInfo {

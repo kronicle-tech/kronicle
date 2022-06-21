@@ -9,12 +9,12 @@
       :environment-id-filter-enabled="true"
       :plugin-id-filter-enabled="true"
     >
-      <b-card bg-variant="secondary">
+      <b-card v-if="edgeTypeOptions.length > 0" bg-variant="secondary">
         <b-form-group label="Connection Types">
           <b-form-checkbox-group
             v-model="selectedEdgeTypes"
-            :options="edgeTypeIdOptions"
-            name="connectionTypeId"
+            :options="edgeTypeOptions"
+            name="connectionType"
             stacked
           ></b-form-checkbox-group>
         </b-form-group>
@@ -35,7 +35,9 @@
           />
         </b-form-group>
       </b-card>
+    </ComponentFilters>
 
+    <b-card-group columns style="column-count: 3">
       <b-card bg-variant="secondary">
         <b-form-group
           label-cols="6"
@@ -51,7 +53,7 @@
           />
         </b-form-group>
       </b-card>
-    </ComponentFilters>
+    </b-card-group>
 
     <div class="graph">
       <b-alert show="60" dismissible variant="info">
@@ -99,6 +101,7 @@ import Vue, { PropType } from 'vue'
 import {
   BAlert,
   BCard,
+  BCardGroup,
   BFormCheckboxGroup,
   BFormGroup,
   BFormSelect,
@@ -133,6 +136,7 @@ export default Vue.extend({
   components: {
     'b-alert': BAlert,
     'b-card': BCard,
+    'b-card-group': BCardGroup,
     'b-form-checkbox-group': BFormCheckboxGroup,
     'b-form-group': BFormGroup,
     'b-form-select': BFormSelect,
@@ -192,12 +196,16 @@ export default Vue.extend({
           }))
         )
     },
-    edgeTypeIdOptions(): Option[] {
+    edgeTypeOptions(): Option[] {
       return [
-        ...new Set(this.connections.map((connection) => connection.edge.type)),
-      ].map((edgeTypeId) => ({
-        value: edgeTypeId,
-        text: edgeTypeId,
+        ...new Set(
+          this.connections
+            .map((connection) => connection.edge.type)
+            .filter((edgeType) => !!edgeType)
+        ),
+      ].map((edgeType) => ({
+        value: edgeType ?? '',
+        text: edgeType ?? 'none',
       }))
     },
     scopeRelatedRadiusOptions(): Option[] {
@@ -242,7 +250,11 @@ export default Vue.extend({
 .graph {
   overflow-x: scroll;
   height: 1000px;
-  height: calc(100vh - 200px);
+  height: calc(100vh - 300px);
   scrollbar-color: #444 #111;
+}
+
+.form-group {
+  margin-bottom: 0;
 }
 </style>
