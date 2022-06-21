@@ -153,8 +153,8 @@ describe('ComponentDependenciesView', () => {
 
         test('renders the connections directly related to the first component using the first platform', () => {
           expect(wrapper.html()).toMatchSnapshot()
-          expectNodeCount(2)
-          expectEdgeCount(1)
+          expectNodeCount(4)
+          expectEdgeCount(3)
         })
       })
 
