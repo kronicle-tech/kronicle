@@ -12,7 +12,7 @@
 import Vue from 'vue'
 import { MetaInfo } from 'vue-meta'
 import { Component, Diagram } from '~/types/kronicle-service'
-import ComponentDependenciesView from '~/components/ComponentDependenciesView.vue'
+import ComponentDependenciesView from '~/components/DiagramView.vue'
 
 export default Vue.extend({
   components: {

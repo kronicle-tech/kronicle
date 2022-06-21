@@ -1,11 +1,11 @@
 import { mount } from '@vue/test-utils'
-import ComponentDependencyGraph from '@/components/ComponentDependencyGraph.vue'
+import DiagramGraph from '~/components/DiagramGraph.vue'
 
-describe('ComponentDependencyGraph', () => {
+describe('DiagramGraph', () => {
   let propsData
   let wrapper
   const createWrapper = () => {
-    wrapper = mount(ComponentDependencyGraph, { propsData })
+    wrapper = mount(DiagramGraph, { propsData })
   }
 
   beforeEach(() => {
