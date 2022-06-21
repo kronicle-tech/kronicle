@@ -1,6 +1,6 @@
 <template>
   <div>
-    <b-card no-body>
+    <b-card no-body class="my-3">
       <b-list-group>
         <b-list-group-item :variant="countVariant">
           <span :class="countClass">{{ count }}</span>

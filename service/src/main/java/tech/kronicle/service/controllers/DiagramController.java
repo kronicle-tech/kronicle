@@ -28,8 +28,10 @@ public class DiagramController {
     )
     @GetMapping
     @PartialResponse
-    public GetDiagramsResponse getDiagrams() {
-        return new GetDiagramsResponse(componentService.getDiagrams());
+    public GetDiagramsResponse getDiagrams(
+            @RequestParam(required = false) List<String> stateType
+    ) {
+        return new GetDiagramsResponse(componentService.getDiagrams(stateType));
     }
 
     @Operation(

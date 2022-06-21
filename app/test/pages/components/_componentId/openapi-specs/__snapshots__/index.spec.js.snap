@@ -106,7 +106,7 @@ exports[`Index when Get Component service endpoint returns a component when the 
    
   <div>
     <div
-      class="card"
+      class="card my-3"
     >
       <!---->
       <!---->
@@ -805,7 +805,7 @@ exports[`Index when Get Component service endpoint returns a component when the 
    
   <div>
     <div
-      class="card"
+      class="card my-3"
     >
       <!---->
       <!---->

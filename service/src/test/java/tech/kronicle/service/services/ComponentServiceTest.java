@@ -355,10 +355,84 @@ public class ComponentServiceTest {
         when(mockComponentRepository.getDiagrams()).thenReturn(List.of(diagram1, diagram2));
 
         // When
-        List<Diagram> returnValue = underTest.getDiagrams();
+        List<Diagram> returnValue = underTest.getDiagrams(List.of());
 
         // Then
         assertThat(returnValue).containsExactly(diagram1, diagram2);
+    }
+
+    @Test
+    public void getDiagramsShouldReturnAllStatesIfStateTypesListIsNull() {
+        // Given
+        String diagramId = "test-diagram-id";
+        Diagram diagram = Diagram.builder()
+                .id(diagramId)
+                .states(List.of(
+                        createDiagramState(1),
+                        createDiagramState(1)
+                ))
+                .build();
+        when(mockComponentRepository.getDiagrams()).thenReturn(List.of(diagram));
+
+        // When
+        List<Diagram> returnValue = underTest.getDiagrams(null);
+
+        // Then
+        assertThat(returnValue).containsExactly(diagram);
+    }
+
+    @Test
+    public void getDiagramsShouldReturnAllStatesIfStateTypesListIsEmpty() {
+        // Given
+        String diagramId = "test-diagram-id";
+        Diagram diagram = Diagram.builder()
+                .id(diagramId)
+                .states(List.of(
+                        createDiagramState(1),
+                        createDiagramState(2)
+                ))
+                .build();
+        when(mockComponentRepository.getDiagrams()).thenReturn(List.of(diagram));
+
+        // When
+        List<Diagram> returnValue = underTest.getDiagrams(List.of());
+
+        // Then
+        assertThat(returnValue).containsExactly(diagram);
+    }
+
+    @Test
+    public void getDiagramsShouldFilterByStateTypesIfAtLeastOneStateTypeIsSpecified() {
+        // Given
+        String diagramId = "test-diagram-id";
+        FakeDiagramState state1 = createDiagramState(1);
+        FakeDiagramState state2 = createDiagramState(2);
+        FakeDiagramState state3 = createDiagramState(3);
+        FakeDiagramState state4 = createDiagramState(4);
+        Diagram diagram = Diagram.builder()
+                .id(diagramId)
+                .states(List.of(
+                        state1,
+                        state2,
+                        state3,
+                        state4
+                ))
+                .build();
+        when(mockComponentRepository.getDiagrams()).thenReturn(List.of(diagram));
+
+        // When
+        List<Diagram> returnValue = underTest.getDiagrams(List.of(
+                state1.getType(),
+                state3.getType()
+        ));
+
+        // Then
+        assertThat(returnValue).containsExactly(
+                diagram.withStates(List.of(
+                        state1,
+                        state3
+                ))
+        );
     }
 
     @Test

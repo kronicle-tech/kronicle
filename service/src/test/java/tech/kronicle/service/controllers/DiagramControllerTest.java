@@ -6,7 +6,6 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import tech.kronicle.sdk.models.Diagram;
-import tech.kronicle.sdk.models.GetComponentResponse;
 import tech.kronicle.sdk.models.GetDiagramResponse;
 import tech.kronicle.sdk.models.GetDiagramsResponse;
 import tech.kronicle.service.services.ComponentService;
@@ -36,10 +35,24 @@ public class DiagramControllerTest {
     @Test
     public void getDiagramsShouldReturnDiagrams() {
         // Given
-        when(mockComponentService.getDiagrams()).thenReturn(DIAGRAMS);
+        when(mockComponentService.getDiagrams(List.of())).thenReturn(DIAGRAMS);
 
         // When
-        GetDiagramsResponse returnValue = underTest.getDiagrams();
+        GetDiagramsResponse returnValue = underTest.getDiagrams(List.of());
+
+        // Then
+        assertThat(returnValue).isNotNull();
+        assertThat(returnValue.getDiagrams()).containsExactlyElementsOf(DIAGRAMS);
+    }
+
+    @Test
+    public void getDiagramsShouldFilterStateTypes() {
+        // Given
+        List<String> stateTypes = List.of("test-state-type-1", "test-state-type-2");
+        when(mockComponentService.getDiagrams(stateTypes)).thenReturn(DIAGRAMS);
+
+        // When
+        GetDiagramsResponse returnValue = underTest.getDiagrams(stateTypes);
 
         // Then
         assertThat(returnValue).isNotNull();

@@ -1,13 +1,13 @@
 <template>
   <div class="m-3">
-    <DiagramsView :diagrams="diagrams" :components="components" />
+    <DiagramsView :diagrams="filteredDiagrams" :components="components" />
   </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
 import { MetaInfo } from 'vue-meta'
-import { Component, Diagram } from '~/types/kronicle-service'
+import { Component, Diagram, GraphState } from '~/types/kronicle-service'
 import DiagramsView from '~/components/DiagramsView.vue'
 
 export default Vue.extend({
@@ -27,7 +27,7 @@ export default Vue.extend({
     })
 
     const diagrams = await fetch(
-      `${$config.serviceBaseUrl}/v1/diagrams?fields=diagrams(id,name,type,tags)`
+      `${$config.serviceBaseUrl}/v1/diagrams?stateType=graph&fields=diagrams(id,name,description,states(type,nodes(componentId)))`
     )
       .then((res) => res.json())
       .then((json) => json.diagrams)
@@ -47,6 +47,36 @@ export default Vue.extend({
     return {
       title: 'Kronicle - Diagrams',
     }
+  },
+  computed: {
+    filteredComponents(): Component[] {
+      return this.$store.state.componentFilters.filteredComponents
+    },
+    filteredDiagrams(): Diagram[] {
+      const filteredComponentIds = new Set(
+        this.filteredComponents.map((component) => component.id)
+      )
+      return this.diagrams.filter((diagram) =>
+        this.diagramIncludesSomeOfComponentIds(diagram, filteredComponentIds)
+      )
+    },
+  },
+  methods: {
+    getDiagramGraph(diagram: Diagram): GraphState | undefined {
+      return diagram.states.find((state) => state.type === 'graph') as
+        | GraphState
+        | undefined
+    },
+    diagramIncludesSomeOfComponentIds(
+      diagram: Diagram,
+      componentIds: ReadonlySet<string>
+    ) {
+      const graph = this.getDiagramGraph(diagram)
+      if (!graph) {
+        return false
+      }
+      return graph.nodes.some((node) => componentIds.has(node.componentId))
+    },
   },
 })
 </script>

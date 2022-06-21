@@ -100,7 +100,7 @@ exports[`Index when Get Team service endpoint returns an team when the team has 
    
   <div>
     <div
-      class="card"
+      class="card my-3"
     >
       <!---->
       <!---->
@@ -806,7 +806,7 @@ exports[`Index when Get Team service endpoint returns an team when the team has 
    
   <div>
     <div
-      class="card"
+      class="card my-3"
     >
       <!---->
       <!---->
@@ -1512,7 +1512,7 @@ exports[`Index when Get Team service endpoint returns an team when the team has 
    
   <div>
     <div
-      class="card"
+      class="card my-3"
     >
       <!---->
       <!---->

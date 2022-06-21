@@ -26,7 +26,7 @@ public class ComponentService {
             List<String> stateTypes,
             List<TestOutcome> testOutcomes
     ) {
-        return filteredComponents(
+        return filterComponents(
                 componentRepository.getComponents(),
                 offset,
                 limit,
@@ -54,8 +54,8 @@ public class ComponentService {
         return componentRepository.getComponentDiagrams(componentId);
     }
 
-    public List<Diagram> getDiagrams() {
-        return componentRepository.getDiagrams();
+    public List<Diagram> getDiagrams(List<String> stateTypes) {
+        return filterDiagrams(componentRepository.getDiagrams(), stateTypes);
     }
 
     public Diagram getDiagram(String diagramId, List<String> stateTypes) {
@@ -63,10 +63,7 @@ public class ComponentService {
         if (isNull(diagram)) {
             return null;
         }
-        return diagram.withStates(filterStates(
-                diagram.getStates(),
-                stateTypes
-        ));
+        return filterDiagram(diagram, stateTypes);
     }
 
     public List<Team> getTeams(
@@ -155,7 +152,7 @@ public class ComponentService {
             return null;
         }
 
-        return team.withComponents(filteredComponents(
+        return team.withComponents(filterComponents(
                 team.getComponents(),
                 stateTypes,
                 testOutcomes
@@ -182,19 +179,19 @@ public class ComponentService {
             return null;
         }
 
-        return area.withComponents(filteredComponents(
+        return area.withComponents(filterComponents(
                 area.getComponents(),
                 stateTypes,
                 testOutcomes
         ));
     }
 
-    private List<Component> filteredComponents(
+    private List<Component> filterComponents(
             List<Component> components,
             List<String> stateTypes,
             List<TestOutcome> testOutcomes
     ) {
-        return filteredComponents(
+        return filterComponents(
                 components,
                 Optional.empty(),
                 Optional.empty(),
@@ -203,7 +200,7 @@ public class ComponentService {
         );
     }
 
-    private List<Component> filteredComponents(
+    private List<Component> filterComponents(
             List<Component> components,
             Optional<Integer> offset,
             Optional<Integer> limit,
@@ -242,6 +239,18 @@ public class ComponentService {
         }
 
         return component.withStates(filterStates(component.getStates(), stateTypes));
+    }
+
+    private List<Diagram> filterDiagrams(List<Diagram> diagrams, List<String> stateTypes) {
+        return diagrams.stream()
+                .map(diagram -> filterDiagram(diagram, stateTypes))
+                .collect(toUnmodifiableList());
+    }
+
+    private Diagram filterDiagram(Diagram diagram, List<String> stateTypes) {
+        return diagram.withStates(filterStates(
+                diagram.getStates(),
+                stateTypes));
     }
 
     private <T extends ObjectWithType> List<T> filterStates(List<T> states, List<String> stateTypes) {
