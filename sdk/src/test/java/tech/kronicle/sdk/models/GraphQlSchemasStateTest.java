@@ -4,6 +4,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 import tech.kronicle.sdk.models.graphql.GraphQlSchema;
+import tech.kronicle.sdk.models.graphql.GraphQlSchemasState;
 
 import java.util.ArrayList;
 

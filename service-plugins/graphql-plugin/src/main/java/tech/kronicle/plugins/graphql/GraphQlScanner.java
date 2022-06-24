@@ -9,7 +9,7 @@ import tech.kronicle.pluginapi.scanners.models.Output;
 import tech.kronicle.plugins.graphql.models.SchemaAndErrors;
 import tech.kronicle.plugins.graphql.services.SchemaFetcher;
 import tech.kronicle.sdk.models.Component;
-import tech.kronicle.sdk.models.GraphQlSchemasState;
+import tech.kronicle.sdk.models.graphql.GraphQlSchemasState;
 import tech.kronicle.sdk.models.ScannerError;
 import tech.kronicle.sdk.models.graphql.GraphQlSchema;
 

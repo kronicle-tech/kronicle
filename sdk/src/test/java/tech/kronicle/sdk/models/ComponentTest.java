@@ -63,7 +63,7 @@ public class ComponentTest {
         Component underTest = Component.builder().tags(new ArrayList<>()).build();
 
         // When
-        Throwable thrown = catchThrowable(() -> underTest.getTags().add(new Tag(null, null)));
+        Throwable thrown = catchThrowable(() -> underTest.getTags().add(Tag.builder().build()));
 
         // Then
         assertThat(thrown).isInstanceOf(UnsupportedOperationException.class);

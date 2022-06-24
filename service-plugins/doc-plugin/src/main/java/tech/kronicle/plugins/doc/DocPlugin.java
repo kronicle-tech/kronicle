@@ -10,6 +10,8 @@ import java.util.List;
 
 public class DocPlugin extends KronicleGuicePlugin {
 
+    public static final String ID = "doc";
+
     public DocPlugin(PluginWrapper wrapper) {
         super(wrapper);
     }
