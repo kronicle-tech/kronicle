@@ -58,7 +58,7 @@ public class DocProcessor {
             return List.of();
         }
         return fileUtils.findFiles(dirPath)
-                .map(filePath -> processFile(codebaseDir, dir))
+                .map(filePath -> processFile(codebaseDir, filePath))
                 .filter(Objects::nonNull)
                 .collect(toUnmodifiableList());
     }

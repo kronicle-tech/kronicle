@@ -19,7 +19,7 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.when;
-import static tech.kronicle.plugins.doc.testutils.DocStateUtils.createDocState;
+import static tech.kronicle.plugins.doc.testutils.DocStateUtils.createDocStateWithDir;
 
 @ExtendWith(MockitoExtension.class)
 public class DocScannerTest extends BaseCodebaseScannerTest {
@@ -92,8 +92,8 @@ public class DocScannerTest extends BaseCodebaseScannerTest {
         );
         DocScanner underTest = createUnderTest();
         List<DocState> docStates = List.of(
-                createDocState(1),
-                createDocState(2)
+                createDocStateWithDir(1),
+                createDocStateWithDir(2)
         );
         when(mockDocProcessor.processDocs(codebaseDir, docs)).thenReturn(docStates);
 

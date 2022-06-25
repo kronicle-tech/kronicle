@@ -1,5 +1,6 @@
 package tech.kronicle.sdk.models;
 
+import com.fasterxml.jackson.annotation.JsonAlias;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Value;
@@ -22,9 +23,11 @@ public class DiagramConnection implements ObjectWithReference {
 
     @NotBlank
     @Pattern(regexp = PatternStrings.ID)
+    @JsonAlias("source")
     String sourceComponentId;
     @NotBlank
     @Pattern(regexp = PatternStrings.ID)
+    @JsonAlias("target")
     String targetComponentId;
     @Pattern(regexp = PatternStrings.ID)
     String type;
