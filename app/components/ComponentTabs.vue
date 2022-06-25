@@ -5,6 +5,13 @@
       Diagrams
     </b-button>
     <b-button
+      v-if="hasStateType('doc')"
+      class="my-1"
+      :to="`/components/${componentId}/docs`"
+    >
+      Docs
+    </b-button>
+    <b-button
       v-if="componentAvailableData.hasNodes"
       class="my-1"
       :to="`/components/${componentId}/response-times`"
