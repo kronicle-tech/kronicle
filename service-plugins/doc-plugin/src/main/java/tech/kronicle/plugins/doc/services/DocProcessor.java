@@ -1,6 +1,7 @@
 package tech.kronicle.plugins.doc.services;
 
 import lombok.RequiredArgsConstructor;
+import tech.kronicle.plugins.doc.DocPlugin;
 import tech.kronicle.plugins.doc.models.FileType;
 import tech.kronicle.sdk.models.Doc;
 import tech.kronicle.sdk.models.doc.DocFile;
@@ -30,6 +31,7 @@ public class DocProcessor {
 
     private DocState processDoc(Path codebaseDir, Doc doc) {
         return DocState.builder()
+                .pluginId(DocPlugin.ID)
                 .id(doc.getId())
                 .dir(doc.getDir())
                 .file(doc.getFile())
