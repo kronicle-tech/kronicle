@@ -131,6 +131,10 @@ components:
       - url: https://demo.kronicle.tech/graphql
         description: |
           GraphQL schema for the Kronicle Service
+    docs:
+      - id: example-docs
+        dir: example-docs
+        name: Example Docs
 
   - id: amazon-aws
     name: Amazon AWS
