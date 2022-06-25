@@ -1,11 +1,12 @@
-package tech.kronicle.sdk.models;
+package tech.kronicle.sdk.models.openapi;
 
 import lombok.Builder;
 import lombok.Value;
 import lombok.With;
 import lombok.extern.jackson.Jacksonized;
 import tech.kronicle.sdk.constants.PatternStrings;
-import tech.kronicle.sdk.models.graphql.GraphQlSchema;
+import tech.kronicle.sdk.models.ComponentState;
+import tech.kronicle.sdk.models.openapi.OpenApiSpec;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
@@ -19,19 +20,19 @@ import static tech.kronicle.sdk.utils.ListUtils.createUnmodifiableList;
 @With
 @Builder(toBuilder = true)
 @Jacksonized
-public class GraphQlSchemasState implements ComponentState {
+public class OpenApiSpecsState implements ComponentState {
 
-    public static final String TYPE = "graphql-schemas";
+    public static final String TYPE = "openapi-specs";
 
     String type = TYPE;
     @NotBlank
     @Pattern(regexp = PatternStrings.ID)
     String pluginId;
     @NotNull
-    List<@Valid GraphQlSchema> graphQlSchemas;
+    List<@Valid OpenApiSpec> openApiSpecs;
 
-    public GraphQlSchemasState(String pluginId, List<@Valid GraphQlSchema> graphQlSchemas) {
+    public OpenApiSpecsState(String pluginId, List<OpenApiSpec> openApiSpecs) {
         this.pluginId = pluginId;
-        this.graphQlSchemas = createUnmodifiableList(graphQlSchemas);
+        this.openApiSpecs = createUnmodifiableList(openApiSpecs);
     }
 }

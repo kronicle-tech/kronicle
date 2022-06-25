@@ -19,7 +19,7 @@ import tech.kronicle.plugins.openapi.services.SpecParser;
 import tech.kronicle.plugintestutils.scanners.BaseCodebaseScannerTest;
 import tech.kronicle.sdk.models.Component;
 import tech.kronicle.sdk.models.ComponentMetadata;
-import tech.kronicle.sdk.models.OpenApiSpecsState;
+import tech.kronicle.sdk.models.openapi.OpenApiSpecsState;
 import tech.kronicle.sdk.models.ScannerError;
 import tech.kronicle.sdk.models.openapi.OpenApiSpec;
 import tech.kronicle.utils.ThrowableToScannerErrorMapper;

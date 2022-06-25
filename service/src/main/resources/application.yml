@@ -92,6 +92,9 @@ plugins:
     base-url: "https://api.datadoghq.com"
     timeout: 30s
 
+  doc:
+    enabled: true
+
   example:
     enabled: false
 

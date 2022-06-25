@@ -15,7 +15,7 @@ import tech.kronicle.plugins.graphql.services.SchemaFileReader;
 import tech.kronicle.plugins.graphql.services.SchemaTransformer;
 import tech.kronicle.plugintestutils.scanners.BaseCodebaseScannerTest;
 import tech.kronicle.sdk.models.Component;
-import tech.kronicle.sdk.models.GraphQlSchemasState;
+import tech.kronicle.sdk.models.graphql.GraphQlSchemasState;
 import tech.kronicle.sdk.models.graphql.GraphQlSchema;
 import tech.kronicle.utils.ThrowableToScannerErrorMapper;
 

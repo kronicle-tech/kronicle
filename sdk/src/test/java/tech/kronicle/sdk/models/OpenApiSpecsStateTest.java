@@ -4,6 +4,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 import tech.kronicle.sdk.models.openapi.OpenApiSpec;
+import tech.kronicle.sdk.models.openapi.OpenApiSpecsState;
 
 import java.util.ArrayList;
 
