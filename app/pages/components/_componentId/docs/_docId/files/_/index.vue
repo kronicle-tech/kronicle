@@ -1,5 +1,5 @@
 <template>
-  <div class="m-3">
+  <div v-if="render" class="m-3">
     <h1 class="text-info my-3">
       {{ component.name }} - {{ doc.name }} - {{ docFile.path }}
     </h1>
@@ -29,31 +29,33 @@
 <script lang="ts">
 import Vue from 'vue'
 import { MetaInfo } from 'vue-meta'
-import { promisify } from 'es6-promisify'
 import { BBreadcrumb, BBreadcrumbItem } from 'bootstrap-vue'
+import { promisify } from 'es6-promisify'
 import { Component, DocFile, DocState } from '~/types/kronicle-service'
 import {
   ComponentAvailableData,
   fetchComponentAvailableData,
 } from '~/src/fetchComponentAvailableData'
-import { findComponentState } from '~/src/componentStateUtils'
 import Markdown from '~/components/Markdown.vue'
+import { findComponentState } from '~/src/componentStateUtils'
 import { NuxtError } from '~/src/nuxtError'
+import ComponentTabs from '~/components/ComponentTabs.vue'
 
 export default Vue.extend({
   components: {
     'b-breadcrumb': BBreadcrumb,
     'b-breadcrumb-item': BBreadcrumbItem,
+    ComponentTabs,
     Markdown,
   },
-  async asyncData({ $config, route, res }) {
+  async asyncData({ $config, params, res, route }) {
     const componentAvailableData = await fetchComponentAvailableData(
       $config,
       route
     )
 
     const component = await fetch(
-      `${$config.serviceBaseUrl}/v1/components/${route.params.componentId}?stateType=doc&stateId=${route.params.docId}&fields=component(id,name,teams,states)`
+      `${$config.serviceBaseUrl}/v1/components/${params.componentId}?stateType=doc&stateId=${params.docId}&fields=component(id,name,teams,states)`
     )
       .then((res) => res.json())
       .then((json) => json.component as Component)
@@ -65,10 +67,10 @@ export default Vue.extend({
     }
 
     const docFile = await fetch(
-      `${$config.serviceBaseUrl}/v1/components/${
-        route.params.componentId
-      }/docs/${route.params.docId}/files/file?docFilePath=${encodeURIComponent(
-        route.params.pathMatch
+      `${$config.serviceBaseUrl}/v1/components/${params.componentId}/docs/${
+        params.docId
+      }/files/file?docFilePath=${encodeURIComponent(
+        params.pathMatch
       )}&fields=docFile`
     )
       .then((res) => res.json())
@@ -78,10 +80,14 @@ export default Vue.extend({
       throw new NuxtError('Doc File not found', 404)
     }
 
+    let render = true
+
     if (docFile.contentType === 'Binary') {
-      res.writeHead(200, { 'Content-Type': docFile.contentType })
-      const responseWrite = promisify<boolean, any>(res.write)
-      await responseWrite(atob(docFile.content))
+      const resEnd = promisify<void, any>(res.end).bind(res)
+
+      res.setHeader('Content-Type', docFile.mediaType)
+      await resEnd(Buffer.from(docFile.content, 'base64'))
+      render = false
     }
 
     let content
@@ -96,6 +102,7 @@ export default Vue.extend({
     }
 
     return {
+      render,
       componentAvailableData,
       component,
       doc,
@@ -106,6 +113,7 @@ export default Vue.extend({
   },
   data() {
     return {
+      render: true as boolean,
       componentAvailableData: {} as ComponentAvailableData,
       component: {} as Component,
       doc: {} as DocState,
