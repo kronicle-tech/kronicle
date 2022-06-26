@@ -14,6 +14,8 @@ jobs:
       nodejs: true
       caching: true
       build_tasks: app:build -x checkFrontend -x dependencyCheckAnalyze
+      dependency_check_reports: false
+      test_reports: false
     secrets: inherit
 
   ci-app-test:
@@ -22,6 +24,8 @@ jobs:
       nodejs: true
       caching: true
       build_tasks: app:checkFrontend
+      dependency_check_reports: false
+      test_reports: true
     secrets: inherit
 
   ci-app-dependency-check:
@@ -30,6 +34,8 @@ jobs:
       nodejs: true
       caching: true
       build_tasks: app:dependencyCheckAnalyze
+      dependency_check_reports: true
+      test_reports: false
     secrets: inherit
 
   ci-service-build:
@@ -38,6 +44,8 @@ jobs:
       nodejs: false
       caching: true
       build_tasks: build -x app:build -x test -x dependencyCheckAnalyze
+      dependency_check_reports: false
+      test_reports: false
     secrets: inherit
 
   ci-service-test:
@@ -46,6 +54,8 @@ jobs:
       nodejs: false
       caching: true
       build_tasks: test -x app:test
+      dependency_check_reports: false
+      test_reports: true
     secrets: inherit
 
   ci-service-dependency-check:
@@ -54,4 +64,6 @@ jobs:
       nodejs: false
       caching: true
       build_tasks: dependencyCheckAnalyze -x app:dependencyCheckAnalyze
+      dependency_check_reports: true
+      test_reports: false
     secrets: inherit
