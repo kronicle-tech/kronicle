@@ -1,28 +1,28 @@
 <template>
   <div class="m-3">
-    <h1 class="text-info my-3">{{ team.name }} - Diagrams</h1>
+    <h1 class="text-info my-3">{{ team.name }} - Docs</h1>
 
     <TeamTabs :team-id="team.id" />
 
-    <DiagramsView :diagrams="diagrams" :components="team.components" />
+    <DocsView :components="team.components" />
   </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
 import { MetaInfo } from 'vue-meta'
-import { Diagram, Team } from '~/types/kronicle-service'
+import { Team } from '~/types/kronicle-service'
+import DocsView from '~/components/DocsView.vue'
 import TeamTabs from '~/components/TeamTabs.vue'
-import DiagramsView from '~/components/DiagramsView.vue'
 
 export default Vue.extend({
   components: {
-    DiagramsView,
+    DocsView,
     TeamTabs,
   },
   async asyncData({ $config, route, store }) {
     const team = await fetch(
-      `${$config.serviceBaseUrl}/v1/teams/${route.params.teamId}?fields=team(id,name,components(id,name,typeId,tags,description,notes,responsibilities,teams,platformId))`
+      `${$config.serviceBaseUrl}/v1/teams/${route.params.teamId}?stateType=doc&fields=team(id,name,components(id,name,typeId,tags,description,notes,responsibilities,teams,platformId,states))`
     )
       .then((res) => res.json())
       .then((json) => json.team as Team)
@@ -32,24 +32,18 @@ export default Vue.extend({
       route,
     })
 
-    const diagrams = await fetch(`${$config.serviceBaseUrl}/v1/diagrams`)
-      .then((res) => res.json())
-      .then((json) => json.diagrams)
-
     return {
       team,
-      diagrams,
     }
   },
   data() {
     return {
       team: {} as Team,
-      diagrams: [] as Diagram[],
     }
   },
   head(): MetaInfo {
     return {
-      title: `Kronicle - ${this.team.name} - Diagrams`,
+      title: `Kronicle - ${this.team.name} - Docs`,
     }
   },
 })

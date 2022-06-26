@@ -9,18 +9,32 @@
       </b-list-group>
     </b-card>
 
+    <b-breadcrumb>
+      <b-breadcrumb-item :to="`/components/${component.id}/docs`">
+        Docs
+      </b-breadcrumb-item>
+    </b-breadcrumb>
+
     <DocFileTable :component="component" :doc="doc" />
   </div>
 </template>
 
 <script lang="ts">
 import Vue, { PropType } from 'vue'
-import { BCard, BListGroup, BListGroupItem } from 'bootstrap-vue'
+import {
+  BBreadcrumb,
+  BBreadcrumbItem,
+  BCard,
+  BListGroup,
+  BListGroupItem,
+} from 'bootstrap-vue'
 import { Component, DocState } from '~/types/kronicle-service'
 import DocFileTable from '~/components/DocFileTable.vue'
 
 export default Vue.extend({
   components: {
+    'b-breadcrumb': BBreadcrumb,
+    'b-breadcrumb-item': BBreadcrumbItem,
     'b-card': BCard,
     'b-list-group': BListGroup,
     'b-list-group-item': BListGroupItem,
@@ -28,11 +42,11 @@ export default Vue.extend({
   },
   props: {
     component: {
-      type: {} as PropType<Component>,
+      type: Object as PropType<Component>,
       required: true,
     },
     doc: {
-      type: {} as PropType<DocState>,
+      type: Object as PropType<DocState>,
       required: true,
     },
   },

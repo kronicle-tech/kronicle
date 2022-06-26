@@ -4,6 +4,7 @@
     <b-button class="my-1" :to="`/areas/${areaId}/diagrams`">
       Diagrams
     </b-button>
+    <b-button class="my-1" :to="`/areas/${areaId}/docs`"> Docs </b-button>
     <b-button class="my-1" :to="`/areas/${areaId}/components`">
       Components
     </b-button>

@@ -6,6 +6,7 @@ import {
   createComponent,
   createComponentAvailableDataRequests,
   createDiagramWithGraph,
+  createDocs,
 } from '~/test/testDataUtils'
 
 const localVue = createLocalVue()
@@ -25,7 +26,7 @@ describe('Index', () => {
       route,
       serviceRequests: {
         ...createComponentAvailableDataRequests(),
-        '/v1/components/test-component-id-1?stateType=key-softwares&fields=component(id,name,typeId,platformId,tags,teams,links,description,notes,responsibilities,states)':
+        '/v1/components/test-component-id-1?stateType=key-softwares&stateType=doc&fields=component(id,name,typeId,platformId,tags,teams,links,description,notes,responsibilities,states)':
           {
             responseBody: { component },
           },
@@ -44,7 +45,11 @@ describe('Index', () => {
 
   describe('when Get Component service endpoint returns a component', () => {
     beforeEach(() => {
-      component = createComponent({ componentNumber: 1, hasMainDetails: true })
+      component = createComponent({
+        componentNumber: 1,
+        hasMainDetails: true,
+        additionalStates: [...createDocs(1)],
+      })
       diagrams = [createDiagramWithGraph(1), createDiagramWithGraph(2)]
     })
 

@@ -4,6 +4,7 @@
     <b-button class="my-1" :to="`/teams/${teamId}/diagrams`">
       Diagrams
     </b-button>
+    <b-button class="my-1" :to="`/teams/${teamId}/docs`"> Docs </b-button>
     <b-button class="my-1" :to="`/teams/${teamId}/components`">
       Components
     </b-button>

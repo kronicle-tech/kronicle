@@ -7,12 +7,6 @@
       :component-available-data="componentAvailableData"
     />
 
-    <b-breadcrumb>
-      <b-breadcrumb-item :to="`/components/${component.id}/docs`">
-        Docs
-      </b-breadcrumb-item>
-    </b-breadcrumb>
-
     <DocFilesView :component="component" :doc="doc" />
   </div>
 </template>
