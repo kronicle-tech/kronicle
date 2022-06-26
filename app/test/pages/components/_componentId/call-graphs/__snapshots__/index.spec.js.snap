@@ -383,14 +383,14 @@ exports[`Index when Get Diagrams service endpoints returns a call graph renders 
           xmlns="http://www.w3.org/2000/svg"
         >
           <rect
-            class="component-dependency-graph-background"
+            class="graph-background"
             fill-opacity="0"
           />
            
           <defs>
             <marker
               class="edge-marker all-edge-marker"
-              id="component-dependency-graph-all-edge-marker"
+              id="graph-all-edge-marker"
               markerHeight="11.5"
               markerUnits="userSpaceOnUse"
               markerWidth="7.1"
@@ -405,7 +405,7 @@ exports[`Index when Get Diagrams service endpoints returns a call graph renders 
             </marker>
             <marker
               class="edge-marker other-edge-marker"
-              id="component-dependency-graph-other-edge-marker"
+              id="graph-other-edge-marker"
               markerHeight="11.5"
               markerUnits="userSpaceOnUse"
               markerWidth="7.1"
@@ -420,7 +420,7 @@ exports[`Index when Get Diagrams service endpoints returns a call graph renders 
             </marker>
             <marker
               class="edge-marker scope-related-edge-marker"
-              id="component-dependency-graph-scope-related-edge-marker"
+              id="graph-scope-related-edge-marker"
               markerHeight="11.5"
               markerUnits="userSpaceOnUse"
               markerWidth="7.1"
@@ -435,7 +435,7 @@ exports[`Index when Get Diagrams service endpoints returns a call graph renders 
             </marker>
             <marker
               class="edge-marker scoped-edge-marker"
-              id="component-dependency-graph-scoped-edge-marker"
+              id="graph-scoped-edge-marker"
               markerHeight="11.5"
               markerUnits="userSpaceOnUse"
               markerWidth="7.1"
@@ -450,7 +450,7 @@ exports[`Index when Get Diagrams service endpoints returns a call graph renders 
             </marker>
             <marker
               class="edge-marker related-edge-marker"
-              id="component-dependency-graph-related-edge-marker"
+              id="graph-related-edge-marker"
               markerHeight="11.5"
               markerUnits="userSpaceOnUse"
               markerWidth="7.1"
@@ -465,7 +465,7 @@ exports[`Index when Get Diagrams service endpoints returns a call graph renders 
             </marker>
             <marker
               class="edge-marker direct-edge-marker"
-              id="component-dependency-graph-direct-edge-marker"
+              id="graph-direct-edge-marker"
               markerHeight="11.5"
               markerUnits="userSpaceOnUse"
               markerWidth="7.1"
@@ -480,7 +480,7 @@ exports[`Index when Get Diagrams service endpoints returns a call graph renders 
             </marker>
             <marker
               class="edge-marker selected-edge-marker"
-              id="component-dependency-graph-selected-edge-marker"
+              id="graph-selected-edge-marker"
               markerHeight="11.5"
               markerUnits="userSpaceOnUse"
               markerWidth="7.1"
@@ -504,8 +504,8 @@ exports[`Index when Get Diagrams service endpoints returns a call graph renders 
             <path
               class="edge direct-edge"
               d="M50,50L50,250"
-              id="component-dependency-graph-edge-0"
-              marker-end="url(#component-dependency-graph-direct-edge-marker)"
+              id="graph-edge-0"
+              marker-end="url(#graph-direct-edge-marker)"
             />
           </g>
           <g />
@@ -521,7 +521,7 @@ exports[`Index when Get Diagrams service endpoints returns a call graph renders 
               class="node selected-node"
               cx="50"
               cy="50"
-              id="component-dependency-graph-node-0"
+              id="graph-node-0"
               r="10"
               title="test-component-id-1, test-span-name-1-1"
             />
@@ -529,7 +529,7 @@ exports[`Index when Get Diagrams service endpoints returns a call graph renders 
               class="node selected-node"
               cx="50"
               cy="250"
-              id="component-dependency-graph-node-1"
+              id="graph-node-1"
               r="10"
               title="test-component-id-1, test-span-name-2-2"
             />

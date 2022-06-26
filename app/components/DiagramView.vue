@@ -86,11 +86,7 @@
       backdrop
     >
       <div class="m-3">
-        <ComponentPanel
-          :component="component"
-          :component-id="componentId"
-          :diagram="diagram"
-        />
+        <ComponentPanel :component="component" :diagram="diagram" />
       </div>
     </b-sidebar>
   </div>
@@ -120,6 +116,10 @@ import ComponentDependencyGraph from '~/components/DiagramGraph.vue'
 import ComponentPanel from '~/components/ComponentPanel.vue'
 import ComponentFilters from '~/components/ComponentFilters.vue'
 import Markdown from '~/components/Markdown.vue'
+
+interface ComponentWithOnlyId {
+  id: string
+}
 
 interface Option {
   value: string | undefined
@@ -172,8 +172,7 @@ export default Vue.extend({
     return {
       componentSidebarVisible: false as boolean,
       node: undefined as GraphNode | undefined,
-      component: undefined as Component | undefined,
-      componentId: undefined as string | undefined,
+      component: undefined as Component | ComponentWithOnlyId | undefined,
       selectedEdgeTypes: [] as string[],
       selectedScopeRelatedRadius: this.scopeRelatedRadius,
       zoom: 100,
@@ -233,13 +232,13 @@ export default Vue.extend({
       if (node) {
         this.componentSidebarVisible = true
         this.node = node
-        this.component = this.findComponent(node.componentId)
-        this.componentId = node.componentId
+        this.component = this.findComponent(node.componentId) ?? {
+          id: node.componentId,
+        }
       } else {
         this.componentSidebarVisible = false
         this.node = undefined
         this.component = undefined
-        this.componentId = undefined
       }
     },
   },

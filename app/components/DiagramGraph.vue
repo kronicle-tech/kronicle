@@ -7,7 +7,7 @@
     height="1200"
   >
     <rect
-      class="component-dependency-graph-background"
+      class="graph-background"
       fill-opacity="0"
       @click="backgroundClick()"
       @touchend.passive="backgroundClick()"
@@ -15,7 +15,7 @@
     <defs>
       <marker
         v-for="group in groups"
-        :id="`component-dependency-graph-${group}-edge-marker`"
+        :id="`graph-${group}-edge-marker`"
         :key="group"
         :class="`edge-marker ${group}-edge-marker`"
         orient="auto-start-reverse"
@@ -33,18 +33,18 @@
     <g v-for="group in groups" :key="`edge-${group}`">
       <path
         v-for="edge in network.edgeGroups.get(group)"
-        :id="`component-dependency-graph-edge-${edge.index}`"
+        :id="`graph-edge-${edge.index}`"
         :key="edge.index"
         :class="`edge ${group}-edge`"
         :d="edge.d"
-        :marker-end="`url(#component-dependency-graph-${group}-edge-marker)`"
+        :marker-end="`url(#graph-${group}-edge-marker)`"
       />
     </g>
 
     <g v-for="group in groups" :key="`${group}-node`">
       <circle
         v-for="node in network.nodeGroups.get(group)"
-        :id="`component-dependency-graph-node-${node.index}`"
+        :id="`graph-node-${node.index}`"
         :key="node.index"
         :class="`node ${group}-node`"
         :r="nodeSize / 2"
@@ -768,9 +768,7 @@ export default Vue.extend({
           return
         }
 
-        const background = svg.querySelector(
-          '.component-dependency-graph-background'
-        )
+        const background = svg.querySelector('.graph-background')
 
         if (!background) {
           return

@@ -48,22 +48,18 @@ describe('DiagramView', () => {
   function expectNodeClasses(edges) {
     expect(wrapper.findAll('.node')).toHaveLength(edges.length)
     edges.forEach((node) =>
-      expect(
-        wrapper
-          .get(`#component-dependency-graph-node-${node.nodeIndex}`)
-          .classes()
-      ).toContain(node.nodeClass)
+      expect(wrapper.get(`#graph-node-${node.nodeIndex}`).classes()).toContain(
+        node.nodeClass
+      )
     )
   }
 
   function expectEdgeClasses(edges) {
     expect(wrapper.findAll('.edge')).toHaveLength(edges.length)
     edges.forEach((edge) =>
-      expect(
-        wrapper
-          .get(`#component-dependency-graph-edge-${edge.edgeIndex}`)
-          .classes()
-      ).toContain(edge.edgeClass)
+      expect(wrapper.get(`#graph-edge-${edge.edgeIndex}`).classes()).toContain(
+        edge.edgeClass
+      )
     )
   }
 
@@ -127,12 +123,7 @@ describe('DiagramView', () => {
                 createComponentNode(3),
                 createComponentNode(4),
               ],
-              edges: [
-                createEdge(undefined, 0),
-                createEdge(0, 1),
-                createEdge(1, 2),
-                createEdge(1, 3),
-              ],
+              edges: [createEdge(0, 1), createEdge(1, 2), createEdge(1, 3)],
             },
           ],
         }
@@ -161,9 +152,7 @@ describe('DiagramView', () => {
       describe('when a node is clicked', () => {
         beforeEach(async () => {
           await createWrapper()
-          await wrapper
-            .get('#component-dependency-graph-node-0')
-            .trigger('click')
+          await wrapper.get('#graph-node-0').trigger('click')
         })
 
         test('renders the connection directly related to the first node with the style of a direct edge', () => {
@@ -175,9 +164,9 @@ describe('DiagramView', () => {
             { nodeIndex: 3, nodeClass: 'scoped-node' },
           ])
           expectEdgeClasses([
-            { edgeIndex: 1, edgeClass: 'direct-edge' },
+            { edgeIndex: 0, edgeClass: 'direct-edge' },
+            { edgeIndex: 1, edgeClass: 'scoped-edge' },
             { edgeIndex: 2, edgeClass: 'scoped-edge' },
-            { edgeIndex: 3, edgeClass: 'scoped-edge' },
           ])
         })
       })
@@ -185,9 +174,7 @@ describe('DiagramView', () => {
       describe('and the mouse hovers over the first node', () => {
         beforeEach(async () => {
           await createWrapper()
-          await wrapper
-            .get('#component-dependency-graph-node-0')
-            .trigger('mouseover')
+          await wrapper.get('#graph-node-0').trigger('mouseover')
         })
 
         test('renders the connection directly related to the first node with the style of a direct connection', () => {
@@ -199,18 +186,16 @@ describe('DiagramView', () => {
             { nodeIndex: 3, nodeClass: 'scoped-node' },
           ])
           expectEdgeClasses([
-            { edgeIndex: 1, edgeClass: 'direct-edge' },
+            { edgeIndex: 0, edgeClass: 'direct-edge' },
+            { edgeIndex: 1, edgeClass: 'scoped-edge' },
             { edgeIndex: 2, edgeClass: 'scoped-edge' },
-            { edgeIndex: 3, edgeClass: 'scoped-edge' },
           ])
         })
 
         describe('and the mouse hovers away from the first node', () => {
           beforeEach(async () => {
             await createWrapper()
-            await wrapper
-              .get('#component-dependency-graph-node-0')
-              .trigger('mouseout')
+            await wrapper.get('#graph-node-0').trigger('mouseout')
           })
 
           test('renders all the connections as scoped connections', () => {
@@ -222,9 +207,9 @@ describe('DiagramView', () => {
               { nodeIndex: 3, nodeClass: 'scoped-node' },
             ])
             expectEdgeClasses([
+              { edgeIndex: 0, edgeClass: 'scoped-edge' },
               { edgeIndex: 1, edgeClass: 'scoped-edge' },
               { edgeIndex: 2, edgeClass: 'scoped-edge' },
-              { edgeIndex: 3, edgeClass: 'scoped-edge' },
             ])
           })
         })

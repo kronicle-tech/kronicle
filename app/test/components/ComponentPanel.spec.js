@@ -18,9 +18,9 @@ describe('ComponentPanel', () => {
   })
 
   describe('when component prop is undefined', () => {
-    test('renders a message to say component is unknown', () => {
+    test('renders nothing', () => {
       createWrapper()
-      expect(wrapper.html()).toContain('Unknown Component')
+      expect(wrapper.html()).toEqual('')
       expect(wrapper.html()).toMatchSnapshot()
     })
   })
@@ -33,7 +33,20 @@ describe('ComponentPanel', () => {
       }
     })
 
-    test("renders a h3 tag containing the component id and a link to the component's page", () => {
+    test("renders a h3 tag containing the component name and a link to the component's page", () => {
+      createWrapper()
+      expect(wrapper.html()).toMatchSnapshot()
+    })
+  })
+
+  describe('when component is set to just a component id', () => {
+    beforeEach(() => {
+      propsData.component = {
+        id: 'test-id',
+      }
+    })
+
+    test('renders a h3 tag containing the component id', () => {
       createWrapper()
       expect(wrapper.html()).toMatchSnapshot()
     })
