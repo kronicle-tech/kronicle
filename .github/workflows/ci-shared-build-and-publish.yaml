@@ -107,17 +107,21 @@ jobs:
 
       - name: Archive Dependency Check report 🗄️
         uses: actions/upload-artifact@v2
-        if: ${{ inputs.dependency_check_reports }} && (success() || failure())
+        if: always()
         with:
           name: dependency-check-report
           path: '**/build/reports/dependency-check-report.html'
+          # See https://github.com/actions/runner/issues/409#issuecomment-727565588 for explanation of syntax
+          if-no-files-found: ${{ inputs.dependency_check_reports && 'error' || 'ignore' }}
 
       - name: Archive JUnit test reports 🗄️
         uses: actions/upload-artifact@v2
-        if: ${{ inputs.test_reports }} && (success() || failure())
+        if: always()
         with:
           name: junit-test-reports
           path: '**/build/reports/tests/test/**'
+          # See https://github.com/actions/runner/issues/409#issuecomment-727565588 for explanation of syntax
+          if-no-files-found: ${{ inputs.test_reports && 'error' || 'ignore' }}
 
       - name: Clean up Gradle Cache
         if: ${{ inputs.caching }}
