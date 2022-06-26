@@ -77,7 +77,7 @@ export default Vue.extend({
 
     if (docFile.contentType === 'Binary') {
       res.writeHead(200, { 'Content-Type': docFile.contentType })
-      const responseWrite = promisify(res.write)
+      const responseWrite = promisify<boolean, any>(res.write)
       await responseWrite(atob(docFile.content))
     }
 
