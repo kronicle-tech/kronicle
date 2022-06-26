@@ -155,6 +155,13 @@ export function createComponentWithGitRepo({ componentNumber }) {
   })
 }
 
+export function createDocs(componentNumber) {
+  return [
+    createDoc({ componentNumber, docNumber: 1 }),
+    createDoc({ componentNumber, docNumber: 2 }),
+  ]
+}
+
 function createGraphQlSchemas(componentNumber) {
   return [
     createGraphQlSchema({ componentNumber, graphQlSchemaNumber: 1 }),
@@ -435,6 +442,29 @@ export function createTest({ testNumber, additionalFields = {} }) {
     notes: `Test Test Notes ${testNumber}`,
     priority: createPriority(testNumber),
     ...additionalFields,
+  }
+}
+
+function createDocFile({ componentNumber, docNumber, docFileNumber }) {
+  return {
+    path: `test-file-path-${componentNumber}-${docNumber}-${docFileNumber}`,
+    mediaType: `test-file-media-type-${componentNumber}-${docNumber}-${docFileNumber}`,
+    contentType: `test-file-content-type-${componentNumber}-${docNumber}-${docFileNumber}`,
+    content: `test-file-content-${componentNumber}-${docNumber}-${docFileNumber}`,
+  }
+}
+
+function createDoc({ componentNumber, docNumber }) {
+  return {
+    type: 'doc',
+    pluginId: 'test-plugin-id',
+    id: `test-doc-id-${docNumber}`,
+    name: `Test Doc Name ${docNumber}`,
+    files: [
+      createDocFile({ componentNumber, docNumber, docFileNumber: 1 }),
+      createDocFile({ componentNumber, docNumber, docFileNumber: 2 }),
+      createDocFile({ componentNumber, docNumber, docFileNumber: 3 }),
+    ],
   }
 }
 

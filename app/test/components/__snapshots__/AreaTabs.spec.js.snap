@@ -3,7 +3,7 @@
 exports[`AreaTabs renders the component 1`] = `
 "<div class=\\"my-3\\"><a href=\\"/areas/test-area-id\\" target=\\"_self\\" class=\\"btn my-1 btn-secondary\\"> Info </a> <a href=\\"/areas/test-area-id/diagrams\\" target=\\"_self\\" class=\\"btn my-1 btn-secondary\\">
     Diagrams
-  </a> <a href=\\"/areas/test-area-id/components\\" target=\\"_self\\" class=\\"btn my-1 btn-secondary\\">
+  </a> <a href=\\"/areas/test-area-id/docs\\" target=\\"_self\\" class=\\"btn my-1 btn-secondary\\"> Docs </a> <a href=\\"/areas/test-area-id/components\\" target=\\"_self\\" class=\\"btn my-1 btn-secondary\\">
     Components
   </a> <a href=\\"/areas/test-area-id/cross-functional-requirements\\" target=\\"_self\\" class=\\"btn my-1 btn-secondary\\">
     Cross Functional Requirements

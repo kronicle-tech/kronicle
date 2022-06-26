@@ -33,6 +33,14 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
      
     <a
       class="btn my-1 btn-secondary"
+      href="/teams/test-team-id-1/docs"
+      target="_self"
+    >
+       Docs 
+    </a>
+     
+    <a
+      class="btn my-1 btn-secondary"
       href="/teams/test-team-id-1/components"
       target="_self"
     >
@@ -215,11 +223,11 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
                 <!---->
                 <fieldset
                   class="form-group"
-                  id="__BVID__99"
+                  id="__BVID__103"
                 >
                   <legend
                     class="bv-no-focus-ring col-form-label pt-0"
-                    id="__BVID__99__BV_label_"
+                    id="__BVID__103__BV_label_"
                     tabindex="-1"
                   >
                     Teams
@@ -227,7 +235,7 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
                   <div>
                     <div
                       class="bv-no-focus-ring"
-                      id="__BVID__100"
+                      id="__BVID__104"
                       role="group"
                       tabindex="-1"
                     >
@@ -236,14 +244,14 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
                       >
                         <input
                           class="custom-control-input"
-                          id="__BVID__100_BV_option_0"
+                          id="__BVID__104_BV_option_0"
                           name="team"
                           type="checkbox"
                           value="test-team-id-1-1"
                         />
                         <label
                           class="custom-control-label"
-                          for="__BVID__100_BV_option_0"
+                          for="__BVID__104_BV_option_0"
                         >
                           <span>
                             test-team-id-1-1
@@ -255,14 +263,14 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
                       >
                         <input
                           class="custom-control-input"
-                          id="__BVID__100_BV_option_1"
+                          id="__BVID__104_BV_option_1"
                           name="team"
                           type="checkbox"
                           value="test-team-id-1-2"
                         />
                         <label
                           class="custom-control-label"
-                          for="__BVID__100_BV_option_1"
+                          for="__BVID__104_BV_option_1"
                         >
                           <span>
                             test-team-id-1-2
@@ -274,14 +282,14 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
                       >
                         <input
                           class="custom-control-input"
-                          id="__BVID__100_BV_option_2"
+                          id="__BVID__104_BV_option_2"
                           name="team"
                           type="checkbox"
                           value="test-team-id-2-1"
                         />
                         <label
                           class="custom-control-label"
-                          for="__BVID__100_BV_option_2"
+                          for="__BVID__104_BV_option_2"
                         >
                           <span>
                             test-team-id-2-1
@@ -293,14 +301,14 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
                       >
                         <input
                           class="custom-control-input"
-                          id="__BVID__100_BV_option_3"
+                          id="__BVID__104_BV_option_3"
                           name="team"
                           type="checkbox"
                           value="test-team-id-2-2"
                         />
                         <label
                           class="custom-control-label"
-                          for="__BVID__100_BV_option_3"
+                          for="__BVID__104_BV_option_3"
                         >
                           <span>
                             test-team-id-2-2
@@ -312,14 +320,14 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
                       >
                         <input
                           class="custom-control-input"
-                          id="__BVID__100_BV_option_4"
+                          id="__BVID__104_BV_option_4"
                           name="team"
                           type="checkbox"
                           value="test-team-id-3-1"
                         />
                         <label
                           class="custom-control-label"
-                          for="__BVID__100_BV_option_4"
+                          for="__BVID__104_BV_option_4"
                         >
                           <span>
                             test-team-id-3-1
@@ -331,14 +339,14 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
                       >
                         <input
                           class="custom-control-input"
-                          id="__BVID__100_BV_option_5"
+                          id="__BVID__104_BV_option_5"
                           name="team"
                           type="checkbox"
                           value="test-team-id-3-2"
                         />
                         <label
                           class="custom-control-label"
-                          for="__BVID__100_BV_option_5"
+                          for="__BVID__104_BV_option_5"
                         >
                           <span>
                             test-team-id-3-2
@@ -368,11 +376,11 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
                 <!---->
                 <fieldset
                   class="form-group"
-                  id="__BVID__107"
+                  id="__BVID__111"
                 >
                   <legend
                     class="bv-no-focus-ring col-form-label pt-0"
-                    id="__BVID__107__BV_label_"
+                    id="__BVID__111__BV_label_"
                     tabindex="-1"
                   >
                     Tags
@@ -380,7 +388,7 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
                   <div>
                     <div
                       class="bv-no-focus-ring"
-                      id="__BVID__108"
+                      id="__BVID__112"
                       role="group"
                       tabindex="-1"
                     >
@@ -389,14 +397,14 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
                       >
                         <input
                           class="custom-control-input"
-                          id="__BVID__108_BV_option_0"
+                          id="__BVID__112_BV_option_0"
                           name="tag"
                           type="checkbox"
                           value="test-tag-1-1"
                         />
                         <label
                           class="custom-control-label"
-                          for="__BVID__108_BV_option_0"
+                          for="__BVID__112_BV_option_0"
                         >
                           <span>
                             test-tag-1-1
@@ -408,14 +416,14 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
                       >
                         <input
                           class="custom-control-input"
-                          id="__BVID__108_BV_option_1"
+                          id="__BVID__112_BV_option_1"
                           name="tag"
                           type="checkbox"
                           value="test-tag-1-2"
                         />
                         <label
                           class="custom-control-label"
-                          for="__BVID__108_BV_option_1"
+                          for="__BVID__112_BV_option_1"
                         >
                           <span>
                             test-tag-1-2
@@ -427,14 +435,14 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
                       >
                         <input
                           class="custom-control-input"
-                          id="__BVID__108_BV_option_2"
+                          id="__BVID__112_BV_option_2"
                           name="tag"
                           type="checkbox"
                           value="test-tag-2-1"
                         />
                         <label
                           class="custom-control-label"
-                          for="__BVID__108_BV_option_2"
+                          for="__BVID__112_BV_option_2"
                         >
                           <span>
                             test-tag-2-1
@@ -446,14 +454,14 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
                       >
                         <input
                           class="custom-control-input"
-                          id="__BVID__108_BV_option_3"
+                          id="__BVID__112_BV_option_3"
                           name="tag"
                           type="checkbox"
                           value="test-tag-2-2"
                         />
                         <label
                           class="custom-control-label"
-                          for="__BVID__108_BV_option_3"
+                          for="__BVID__112_BV_option_3"
                         >
                           <span>
                             test-tag-2-2
@@ -465,14 +473,14 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
                       >
                         <input
                           class="custom-control-input"
-                          id="__BVID__108_BV_option_4"
+                          id="__BVID__112_BV_option_4"
                           name="tag"
                           type="checkbox"
                           value="test-tag-3-1"
                         />
                         <label
                           class="custom-control-label"
-                          for="__BVID__108_BV_option_4"
+                          for="__BVID__112_BV_option_4"
                         >
                           <span>
                             test-tag-3-1
@@ -484,14 +492,14 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
                       >
                         <input
                           class="custom-control-input"
-                          id="__BVID__108_BV_option_5"
+                          id="__BVID__112_BV_option_5"
                           name="tag"
                           type="checkbox"
                           value="test-tag-3-2"
                         />
                         <label
                           class="custom-control-label"
-                          for="__BVID__108_BV_option_5"
+                          for="__BVID__112_BV_option_5"
                         >
                           <span>
                             test-tag-3-2
@@ -521,11 +529,11 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
                 <!---->
                 <fieldset
                   class="form-group"
-                  id="__BVID__115"
+                  id="__BVID__119"
                 >
                   <legend
                     class="bv-no-focus-ring col-form-label pt-0"
-                    id="__BVID__115__BV_label_"
+                    id="__BVID__119__BV_label_"
                     tabindex="-1"
                   >
                     Component Types
@@ -533,7 +541,7 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
                   <div>
                     <div
                       class="bv-no-focus-ring"
-                      id="__BVID__116"
+                      id="__BVID__120"
                       role="group"
                       tabindex="-1"
                     >
@@ -542,14 +550,14 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
                       >
                         <input
                           class="custom-control-input"
-                          id="__BVID__116_BV_option_0"
+                          id="__BVID__120_BV_option_0"
                           name="componentTypeId"
                           type="checkbox"
                           value="test-component-type-id-1"
                         />
                         <label
                           class="custom-control-label"
-                          for="__BVID__116_BV_option_0"
+                          for="__BVID__120_BV_option_0"
                         >
                           <span>
                             test-component-type-id-1
@@ -561,14 +569,14 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
                       >
                         <input
                           class="custom-control-input"
-                          id="__BVID__116_BV_option_1"
+                          id="__BVID__120_BV_option_1"
                           name="componentTypeId"
                           type="checkbox"
                           value="test-component-type-id-2"
                         />
                         <label
                           class="custom-control-label"
-                          for="__BVID__116_BV_option_1"
+                          for="__BVID__120_BV_option_1"
                         >
                           <span>
                             test-component-type-id-2
@@ -580,14 +588,14 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
                       >
                         <input
                           class="custom-control-input"
-                          id="__BVID__116_BV_option_2"
+                          id="__BVID__120_BV_option_2"
                           name="componentTypeId"
                           type="checkbox"
                           value="test-component-type-id-3"
                         />
                         <label
                           class="custom-control-label"
-                          for="__BVID__116_BV_option_2"
+                          for="__BVID__120_BV_option_2"
                         >
                           <span>
                             test-component-type-id-3
@@ -617,11 +625,11 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
                 <!---->
                 <fieldset
                   class="form-group"
-                  id="__BVID__120"
+                  id="__BVID__124"
                 >
                   <legend
                     class="bv-no-focus-ring col-form-label pt-0"
-                    id="__BVID__120__BV_label_"
+                    id="__BVID__124__BV_label_"
                     tabindex="-1"
                   >
                     Platforms
@@ -629,7 +637,7 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
                   <div>
                     <div
                       class="bv-no-focus-ring"
-                      id="__BVID__121"
+                      id="__BVID__125"
                       role="group"
                       tabindex="-1"
                     >
@@ -638,14 +646,14 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
                       >
                         <input
                           class="custom-control-input"
-                          id="__BVID__121_BV_option_0"
+                          id="__BVID__125_BV_option_0"
                           name="platformId"
                           type="checkbox"
                           value="undefined"
                         />
                         <label
                           class="custom-control-label"
-                          for="__BVID__121_BV_option_0"
+                          for="__BVID__125_BV_option_0"
                         >
                           <span>
                             undefined
@@ -675,13 +683,13 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
                 <!---->
                 <div
                   class="form-group"
-                  id="__BVID__123"
+                  id="__BVID__127"
                   role="group"
                 >
                   <label
                     class="d-block"
                     for="component-filter"
-                    id="__BVID__123__BV_label_"
+                    id="__BVID__127__BV_label_"
                   >
                     Component
                   </label>
@@ -1142,6 +1150,14 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
      
     <a
       class="btn my-1 btn-secondary"
+      href="/teams/test-team-id-1/docs"
+      target="_self"
+    >
+       Docs 
+    </a>
+     
+    <a
+      class="btn my-1 btn-secondary"
       href="/teams/test-team-id-1/components"
       target="_self"
     >
@@ -1300,11 +1316,11 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
                 <!---->
                 <fieldset
                   class="form-group"
-                  id="__BVID__54"
+                  id="__BVID__57"
                 >
                   <legend
                     class="bv-no-focus-ring col-form-label pt-0"
-                    id="__BVID__54__BV_label_"
+                    id="__BVID__57__BV_label_"
                     tabindex="-1"
                   >
                     Teams
@@ -1312,7 +1328,7 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
                   <div>
                     <div
                       class="bv-no-focus-ring"
-                      id="__BVID__55"
+                      id="__BVID__58"
                       role="group"
                       tabindex="-1"
                     >
@@ -1321,14 +1337,14 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
                       >
                         <input
                           class="custom-control-input"
-                          id="__BVID__55_BV_option_0"
+                          id="__BVID__58_BV_option_0"
                           name="team"
                           type="checkbox"
                           value="test-team-id-1-1"
                         />
                         <label
                           class="custom-control-label"
-                          for="__BVID__55_BV_option_0"
+                          for="__BVID__58_BV_option_0"
                         >
                           <span>
                             test-team-id-1-1
@@ -1340,14 +1356,14 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
                       >
                         <input
                           class="custom-control-input"
-                          id="__BVID__55_BV_option_1"
+                          id="__BVID__58_BV_option_1"
                           name="team"
                           type="checkbox"
                           value="test-team-id-1-2"
                         />
                         <label
                           class="custom-control-label"
-                          for="__BVID__55_BV_option_1"
+                          for="__BVID__58_BV_option_1"
                         >
                           <span>
                             test-team-id-1-2
@@ -1359,14 +1375,14 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
                       >
                         <input
                           class="custom-control-input"
-                          id="__BVID__55_BV_option_2"
+                          id="__BVID__58_BV_option_2"
                           name="team"
                           type="checkbox"
                           value="test-team-id-2-1"
                         />
                         <label
                           class="custom-control-label"
-                          for="__BVID__55_BV_option_2"
+                          for="__BVID__58_BV_option_2"
                         >
                           <span>
                             test-team-id-2-1
@@ -1378,14 +1394,14 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
                       >
                         <input
                           class="custom-control-input"
-                          id="__BVID__55_BV_option_3"
+                          id="__BVID__58_BV_option_3"
                           name="team"
                           type="checkbox"
                           value="test-team-id-2-2"
                         />
                         <label
                           class="custom-control-label"
-                          for="__BVID__55_BV_option_3"
+                          for="__BVID__58_BV_option_3"
                         >
                           <span>
                             test-team-id-2-2
@@ -1397,14 +1413,14 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
                       >
                         <input
                           class="custom-control-input"
-                          id="__BVID__55_BV_option_4"
+                          id="__BVID__58_BV_option_4"
                           name="team"
                           type="checkbox"
                           value="test-team-id-3-1"
                         />
                         <label
                           class="custom-control-label"
-                          for="__BVID__55_BV_option_4"
+                          for="__BVID__58_BV_option_4"
                         >
                           <span>
                             test-team-id-3-1
@@ -1416,14 +1432,14 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
                       >
                         <input
                           class="custom-control-input"
-                          id="__BVID__55_BV_option_5"
+                          id="__BVID__58_BV_option_5"
                           name="team"
                           type="checkbox"
                           value="test-team-id-3-2"
                         />
                         <label
                           class="custom-control-label"
-                          for="__BVID__55_BV_option_5"
+                          for="__BVID__58_BV_option_5"
                         >
                           <span>
                             test-team-id-3-2
@@ -1453,11 +1469,11 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
                 <!---->
                 <fieldset
                   class="form-group"
-                  id="__BVID__62"
+                  id="__BVID__65"
                 >
                   <legend
                     class="bv-no-focus-ring col-form-label pt-0"
-                    id="__BVID__62__BV_label_"
+                    id="__BVID__65__BV_label_"
                     tabindex="-1"
                   >
                     Tags
@@ -1465,7 +1481,7 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
                   <div>
                     <div
                       class="bv-no-focus-ring"
-                      id="__BVID__63"
+                      id="__BVID__66"
                       role="group"
                       tabindex="-1"
                     >
@@ -1474,14 +1490,14 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
                       >
                         <input
                           class="custom-control-input"
-                          id="__BVID__63_BV_option_0"
+                          id="__BVID__66_BV_option_0"
                           name="tag"
                           type="checkbox"
                           value="test-tag-1-1"
                         />
                         <label
                           class="custom-control-label"
-                          for="__BVID__63_BV_option_0"
+                          for="__BVID__66_BV_option_0"
                         >
                           <span>
                             test-tag-1-1
@@ -1493,14 +1509,14 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
                       >
                         <input
                           class="custom-control-input"
-                          id="__BVID__63_BV_option_1"
+                          id="__BVID__66_BV_option_1"
                           name="tag"
                           type="checkbox"
                           value="test-tag-1-2"
                         />
                         <label
                           class="custom-control-label"
-                          for="__BVID__63_BV_option_1"
+                          for="__BVID__66_BV_option_1"
                         >
                           <span>
                             test-tag-1-2
@@ -1512,14 +1528,14 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
                       >
                         <input
                           class="custom-control-input"
-                          id="__BVID__63_BV_option_2"
+                          id="__BVID__66_BV_option_2"
                           name="tag"
                           type="checkbox"
                           value="test-tag-2-1"
                         />
                         <label
                           class="custom-control-label"
-                          for="__BVID__63_BV_option_2"
+                          for="__BVID__66_BV_option_2"
                         >
                           <span>
                             test-tag-2-1
@@ -1531,14 +1547,14 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
                       >
                         <input
                           class="custom-control-input"
-                          id="__BVID__63_BV_option_3"
+                          id="__BVID__66_BV_option_3"
                           name="tag"
                           type="checkbox"
                           value="test-tag-2-2"
                         />
                         <label
                           class="custom-control-label"
-                          for="__BVID__63_BV_option_3"
+                          for="__BVID__66_BV_option_3"
                         >
                           <span>
                             test-tag-2-2
@@ -1550,14 +1566,14 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
                       >
                         <input
                           class="custom-control-input"
-                          id="__BVID__63_BV_option_4"
+                          id="__BVID__66_BV_option_4"
                           name="tag"
                           type="checkbox"
                           value="test-tag-3-1"
                         />
                         <label
                           class="custom-control-label"
-                          for="__BVID__63_BV_option_4"
+                          for="__BVID__66_BV_option_4"
                         >
                           <span>
                             test-tag-3-1
@@ -1569,14 +1585,14 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
                       >
                         <input
                           class="custom-control-input"
-                          id="__BVID__63_BV_option_5"
+                          id="__BVID__66_BV_option_5"
                           name="tag"
                           type="checkbox"
                           value="test-tag-3-2"
                         />
                         <label
                           class="custom-control-label"
-                          for="__BVID__63_BV_option_5"
+                          for="__BVID__66_BV_option_5"
                         >
                           <span>
                             test-tag-3-2
@@ -1606,11 +1622,11 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
                 <!---->
                 <fieldset
                   class="form-group"
-                  id="__BVID__70"
+                  id="__BVID__73"
                 >
                   <legend
                     class="bv-no-focus-ring col-form-label pt-0"
-                    id="__BVID__70__BV_label_"
+                    id="__BVID__73__BV_label_"
                     tabindex="-1"
                   >
                     Component Types
@@ -1618,7 +1634,7 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
                   <div>
                     <div
                       class="bv-no-focus-ring"
-                      id="__BVID__71"
+                      id="__BVID__74"
                       role="group"
                       tabindex="-1"
                     >
@@ -1627,14 +1643,14 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
                       >
                         <input
                           class="custom-control-input"
-                          id="__BVID__71_BV_option_0"
+                          id="__BVID__74_BV_option_0"
                           name="componentTypeId"
                           type="checkbox"
                           value="test-component-type-id-1"
                         />
                         <label
                           class="custom-control-label"
-                          for="__BVID__71_BV_option_0"
+                          for="__BVID__74_BV_option_0"
                         >
                           <span>
                             test-component-type-id-1
@@ -1646,14 +1662,14 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
                       >
                         <input
                           class="custom-control-input"
-                          id="__BVID__71_BV_option_1"
+                          id="__BVID__74_BV_option_1"
                           name="componentTypeId"
                           type="checkbox"
                           value="test-component-type-id-2"
                         />
                         <label
                           class="custom-control-label"
-                          for="__BVID__71_BV_option_1"
+                          for="__BVID__74_BV_option_1"
                         >
                           <span>
                             test-component-type-id-2
@@ -1665,14 +1681,14 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
                       >
                         <input
                           class="custom-control-input"
-                          id="__BVID__71_BV_option_2"
+                          id="__BVID__74_BV_option_2"
                           name="componentTypeId"
                           type="checkbox"
                           value="test-component-type-id-3"
                         />
                         <label
                           class="custom-control-label"
-                          for="__BVID__71_BV_option_2"
+                          for="__BVID__74_BV_option_2"
                         >
                           <span>
                             test-component-type-id-3
@@ -1702,11 +1718,11 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
                 <!---->
                 <fieldset
                   class="form-group"
-                  id="__BVID__75"
+                  id="__BVID__78"
                 >
                   <legend
                     class="bv-no-focus-ring col-form-label pt-0"
-                    id="__BVID__75__BV_label_"
+                    id="__BVID__78__BV_label_"
                     tabindex="-1"
                   >
                     Platforms
@@ -1714,7 +1730,7 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
                   <div>
                     <div
                       class="bv-no-focus-ring"
-                      id="__BVID__76"
+                      id="__BVID__79"
                       role="group"
                       tabindex="-1"
                     >
@@ -1723,14 +1739,14 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
                       >
                         <input
                           class="custom-control-input"
-                          id="__BVID__76_BV_option_0"
+                          id="__BVID__79_BV_option_0"
                           name="platformId"
                           type="checkbox"
                           value="undefined"
                         />
                         <label
                           class="custom-control-label"
-                          for="__BVID__76_BV_option_0"
+                          for="__BVID__79_BV_option_0"
                         >
                           <span>
                             undefined
@@ -1760,13 +1776,13 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
                 <!---->
                 <div
                   class="form-group"
-                  id="__BVID__78"
+                  id="__BVID__81"
                   role="group"
                 >
                   <label
                     class="d-block"
                     for="component-filter"
-                    id="__BVID__78__BV_label_"
+                    id="__BVID__81__BV_label_"
                   >
                     Component
                   </label>
@@ -1862,6 +1878,14 @@ exports[`Index when Get Team service endpoint returns a team when the team has n
       
     Diagrams
   
+    </a>
+     
+    <a
+      class="btn my-1 btn-secondary"
+      href="/teams/test-team-id-1/docs"
+      target="_self"
+    >
+       Docs 
     </a>
      
     <a

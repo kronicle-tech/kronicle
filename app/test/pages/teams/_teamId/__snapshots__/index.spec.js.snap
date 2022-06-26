@@ -33,6 +33,14 @@ exports[`Index when Get Team service endpoint returns an team renders the page 1
      
     <a
       class="btn my-1 btn-secondary"
+      href="/teams/test-team-id-1/docs"
+      target="_self"
+    >
+       Docs 
+    </a>
+     
+    <a
+      class="btn my-1 btn-secondary"
       href="/teams/test-team-id-1/components"
       target="_self"
     >

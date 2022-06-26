@@ -10,11 +10,12 @@
     />
 
     <div class="text-center mb-3">
-      <NuxtLink
+      <b-button
         :to="`/components/${component.id}/openapi-specs/${openApiSpecIndex}/content`"
+        variant="info"
       >
         View Full Screen
-      </NuxtLink>
+      </b-button>
     </div>
 
     <OpenApiSpecView
@@ -27,6 +28,7 @@
 <script lang="ts">
 import Vue from 'vue'
 import { MetaInfo } from 'vue-meta'
+import { BButton } from 'bootstrap-vue'
 import { Component } from '~/types/kronicle-service'
 import OpenApiSpecView from '~/components/OpenApiSpecView.vue'
 import {
@@ -36,6 +38,7 @@ import {
 
 export default Vue.extend({
   components: {
+    'b-button': BButton,
     OpenApiSpecView,
   },
   async asyncData({ $config, route }) {

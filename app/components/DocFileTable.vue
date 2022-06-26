@@ -40,11 +40,11 @@ export default Vue.extend({
   },
   props: {
     component: {
-      type: {} as PropType<Component>,
+      type: Object as PropType<Component>,
       required: true,
     },
     doc: {
-      type: {} as PropType<DocState>,
+      type: Object as PropType<DocState>,
       required: true,
     },
   },

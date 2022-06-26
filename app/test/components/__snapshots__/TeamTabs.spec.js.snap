@@ -3,7 +3,7 @@
 exports[`TeamTabs renders the component 1`] = `
 "<div class=\\"my-3\\"><a href=\\"/teams/test-team-id\\" target=\\"_self\\" class=\\"btn my-1 btn-secondary\\"> Info </a> <a href=\\"/teams/test-team-id/diagrams\\" target=\\"_self\\" class=\\"btn my-1 btn-secondary\\">
     Diagrams
-  </a> <a href=\\"/teams/test-team-id/components\\" target=\\"_self\\" class=\\"btn my-1 btn-secondary\\">
+  </a> <a href=\\"/teams/test-team-id/docs\\" target=\\"_self\\" class=\\"btn my-1 btn-secondary\\"> Docs </a> <a href=\\"/teams/test-team-id/components\\" target=\\"_self\\" class=\\"btn my-1 btn-secondary\\">
     Components
   </a> <a href=\\"/teams/test-team-id/cross-functional-requirements\\" target=\\"_self\\" class=\\"btn my-1 btn-secondary\\">
     Cross Functional Requirements

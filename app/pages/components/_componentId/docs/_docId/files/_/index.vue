@@ -30,6 +30,7 @@
 import Vue from 'vue'
 import { MetaInfo } from 'vue-meta'
 import { promisify } from 'es6-promisify'
+import { BBreadcrumb, BBreadcrumbItem } from 'bootstrap-vue'
 import { Component, DocFile, DocState } from '~/types/kronicle-service'
 import {
   ComponentAvailableData,
@@ -41,6 +42,8 @@ import { NuxtError } from '~/src/nuxtError'
 
 export default Vue.extend({
   components: {
+    'b-breadcrumb': BBreadcrumb,
+    'b-breadcrumb-item': BBreadcrumbItem,
     Markdown,
   },
   async asyncData({ $config, route, res }) {

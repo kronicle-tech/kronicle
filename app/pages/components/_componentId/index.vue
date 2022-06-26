@@ -68,6 +68,10 @@
       <b-card v-if="diagrams.length > 0" title="Diagrams">
         <DiagramTable :diagrams="diagrams" />
       </b-card>
+
+      <b-card v-if="docs.length > 0" title="Docs">
+        <DocTable :components="[component]" />
+      </b-card>
     </b-card-group>
   </div>
 </template>
@@ -79,6 +83,7 @@ import { BCard, BCardGroup, BCardText } from 'bootstrap-vue'
 import {
   Component,
   Diagram,
+  DocState,
   KeySoftware,
   KeySoftwaresState,
 } from '~/types/kronicle-service'
@@ -93,7 +98,11 @@ import {
   ComponentAvailableData,
   fetchComponentAvailableData,
 } from '~/src/fetchComponentAvailableData'
-import { findComponentState } from '~/src/componentStateUtils'
+import {
+  findComponentState,
+  findComponentStates,
+} from '~/src/componentStateUtils'
+import DocTable from '~/components/DocTable.vue'
 
 export default Vue.extend({
   components: {
@@ -102,6 +111,7 @@ export default Vue.extend({
     'b-card-text': BCardText,
     ComponentTabs,
     DiagramTable,
+    DocTable,
     KeySoftwareBadges,
     Links,
     Markdown,
@@ -115,7 +125,7 @@ export default Vue.extend({
     )
 
     const component = await fetch(
-      `${$config.serviceBaseUrl}/v1/components/${route.params.componentId}?stateType=key-softwares&fields=component(id,name,typeId,platformId,tags,teams,links,description,notes,responsibilities,states)`
+      `${$config.serviceBaseUrl}/v1/components/${route.params.componentId}?stateType=key-softwares&stateType=doc&fields=component(id,name,typeId,platformId,tags,teams,links,description,notes,responsibilities,states)`
     )
       .then((res) => res.json())
       .then((json) => json.component)
@@ -145,12 +155,15 @@ export default Vue.extend({
     }
   },
   computed: {
-    keySoftwares(): KeySoftware[] {
+    keySoftwares(): ReadonlyArray<KeySoftware> {
       const keySoftwares: KeySoftwaresState | undefined = findComponentState(
         this.component,
         'key-softwares'
       )
       return keySoftwares?.keySoftwares ?? []
+    },
+    docs(): ReadonlyArray<DocState> {
+      return findComponentStates(this.component, 'doc')
     },
   },
 })
