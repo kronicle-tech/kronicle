@@ -43,6 +43,8 @@ jobs:
       nodejs: true
       caching: false
       build_tasks: app:build app:dockerPush -x checkFrontend -x dependencyCheckAnalyze
+      dependency_check_reports: false
+      test_reports: false
       docker_image_name: kronicle-app
       publish_jars: false
     secrets: inherit
@@ -53,6 +55,8 @@ jobs:
       nodejs: true
       caching: false
       build_tasks: app:checkFrontend
+      dependency_check_reports: false
+      test_reports: true
     secrets: inherit
 
   ci-app-dependency-check:
@@ -61,6 +65,8 @@ jobs:
       nodejs: true
       caching: false
       build_tasks: app:dependencyCheckAnalyze
+      dependency_check_reports: true
+      test_reports: false
     secrets: inherit
 
   ci-service-build:
@@ -73,6 +79,8 @@ jobs:
       nodejs: false
       caching: false
       build_tasks: build service:dockerPush -x app:build -x test -x dependencyCheckAnalyze
+      dependency_check_reports: false
+      test_reports: false
       docker_image_name: kronicle-service
       publish_jars: true
     secrets: inherit
@@ -83,6 +91,8 @@ jobs:
       nodejs: false
       caching: false
       build_tasks: test -x app:test
+      dependency_check_reports: false
+      test_reports: true
     secrets: inherit
 
   ci-service-dependency-check:
@@ -91,4 +101,6 @@ jobs:
       nodejs: false
       caching: false
       build_tasks: dependencyCheckAnalyze -x app:dependencyCheckAnalyze
+      dependency_check_reports: true
+      test_reports: false
     secrets: inherit
