@@ -2,59 +2,59 @@
 
 exports[`DiagramGraph when a node is clicked renders the direct dependencies as direct dependencies 1`] = `
 "<svg xmlns=\\"http://www.w3.org/2000/svg\\" overflow=\\"auto\\" width=\\"100%\\" height=\\"1200\\">
-  <rect fill-opacity=\\"0\\" class=\\"component-dependency-graph-background\\"></rect>
+  <rect fill-opacity=\\"0\\" class=\\"graph-background\\"></rect>
   <defs>
-    <marker id=\\"component-dependency-graph-all-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker all-edge-marker\\">
+    <marker id=\\"graph-all-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker all-edge-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-other-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker other-edge-marker\\">
+    <marker id=\\"graph-other-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker other-edge-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-scope-related-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker scope-related-edge-marker\\">
+    <marker id=\\"graph-scope-related-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker scope-related-edge-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-scoped-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker scoped-edge-marker\\">
+    <marker id=\\"graph-scoped-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker scoped-edge-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-related-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker related-edge-marker\\">
+    <marker id=\\"graph-related-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker related-edge-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-direct-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker direct-edge-marker\\">
+    <marker id=\\"graph-direct-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker direct-edge-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-selected-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker selected-edge-marker\\">
+    <marker id=\\"graph-selected-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker selected-edge-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
   </defs>
   <g>
-    <path id=\\"component-dependency-graph-edge-2\\" d=\\"M50,250L50,350\\" marker-end=\\"url(#component-dependency-graph-all-edge-marker)\\" class=\\"edge all-edge\\"></path>
-    <path id=\\"component-dependency-graph-edge-3\\" d=\\"M50,350L50,450\\" marker-end=\\"url(#component-dependency-graph-all-edge-marker)\\" class=\\"edge all-edge\\"></path>
-    <path id=\\"component-dependency-graph-edge-4\\" d=\\"M50,450L50,550\\" marker-end=\\"url(#component-dependency-graph-all-edge-marker)\\" class=\\"edge all-edge\\"></path>
+    <path id=\\"graph-edge-2\\" d=\\"M50,250L50,350\\" marker-end=\\"url(#graph-all-edge-marker)\\" class=\\"edge all-edge\\"></path>
+    <path id=\\"graph-edge-3\\" d=\\"M50,350L50,450\\" marker-end=\\"url(#graph-all-edge-marker)\\" class=\\"edge all-edge\\"></path>
+    <path id=\\"graph-edge-4\\" d=\\"M50,450L50,550\\" marker-end=\\"url(#graph-all-edge-marker)\\" class=\\"edge all-edge\\"></path>
   </g>
   <g></g>
   <g></g>
   <g></g>
   <g></g>
   <g>
-    <path id=\\"component-dependency-graph-edge-0\\" d=\\"M50,50L50,150\\" marker-end=\\"url(#component-dependency-graph-direct-edge-marker)\\" class=\\"edge direct-edge\\"></path>
-    <path id=\\"component-dependency-graph-edge-1\\" d=\\"M50,150L50,250\\" marker-end=\\"url(#component-dependency-graph-direct-edge-marker)\\" class=\\"edge direct-edge\\"></path>
+    <path id=\\"graph-edge-0\\" d=\\"M50,50L50,150\\" marker-end=\\"url(#graph-direct-edge-marker)\\" class=\\"edge direct-edge\\"></path>
+    <path id=\\"graph-edge-1\\" d=\\"M50,150L50,250\\" marker-end=\\"url(#graph-direct-edge-marker)\\" class=\\"edge direct-edge\\"></path>
   </g>
   <g></g>
   <g>
-    <circle id=\\"component-dependency-graph-node-3\\" r=\\"10\\" cx=\\"50\\" cy=\\"350\\" title=\\"test-id-4\\" class=\\"node all-node\\"></circle>
-    <circle id=\\"component-dependency-graph-node-4\\" r=\\"10\\" cx=\\"50\\" cy=\\"450\\" title=\\"test-id-5\\" class=\\"node all-node\\"></circle>
-    <circle id=\\"component-dependency-graph-node-5\\" r=\\"10\\" cx=\\"50\\" cy=\\"550\\" title=\\"test-id-6\\" class=\\"node all-node\\"></circle>
+    <circle id=\\"graph-node-3\\" r=\\"10\\" cx=\\"50\\" cy=\\"350\\" title=\\"test-id-4\\" class=\\"node all-node\\"></circle>
+    <circle id=\\"graph-node-4\\" r=\\"10\\" cx=\\"50\\" cy=\\"450\\" title=\\"test-id-5\\" class=\\"node all-node\\"></circle>
+    <circle id=\\"graph-node-5\\" r=\\"10\\" cx=\\"50\\" cy=\\"550\\" title=\\"test-id-6\\" class=\\"node all-node\\"></circle>
   </g>
   <g></g>
   <g></g>
   <g></g>
   <g></g>
   <g>
-    <circle id=\\"component-dependency-graph-node-0\\" r=\\"10\\" cx=\\"50\\" cy=\\"50\\" title=\\"test-id-1\\" class=\\"node direct-node\\"></circle>
-    <circle id=\\"component-dependency-graph-node-2\\" r=\\"10\\" cx=\\"50\\" cy=\\"250\\" title=\\"test-id-3\\" class=\\"node direct-node\\"></circle>
+    <circle id=\\"graph-node-0\\" r=\\"10\\" cx=\\"50\\" cy=\\"50\\" title=\\"test-id-1\\" class=\\"node direct-node\\"></circle>
+    <circle id=\\"graph-node-2\\" r=\\"10\\" cx=\\"50\\" cy=\\"250\\" title=\\"test-id-3\\" class=\\"node direct-node\\"></circle>
   </g>
   <g>
-    <circle id=\\"component-dependency-graph-node-1\\" r=\\"10\\" cx=\\"50\\" cy=\\"150\\" title=\\"test-id-2\\" class=\\"node selected-node\\"></circle>
+    <circle id=\\"graph-node-1\\" r=\\"10\\" cx=\\"50\\" cy=\\"150\\" title=\\"test-id-2\\" class=\\"node selected-node\\"></circle>
   </g>
   <g><text x=\\"67\\" y=\\"370\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label all-node-label\\">
       <tspan x=\\"67\\" y=\\"370\\">
@@ -92,61 +92,61 @@ exports[`DiagramGraph when a node is clicked renders the direct dependencies as 
 
 exports[`DiagramGraph when a node is clicked when a none direct edge is a related edge renders the related dependency as a related dependency 1`] = `
 "<svg xmlns=\\"http://www.w3.org/2000/svg\\" overflow=\\"auto\\" width=\\"100%\\" height=\\"1200\\">
-  <rect fill-opacity=\\"0\\" class=\\"component-dependency-graph-background\\"></rect>
+  <rect fill-opacity=\\"0\\" class=\\"graph-background\\"></rect>
   <defs>
-    <marker id=\\"component-dependency-graph-all-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker all-edge-marker\\">
+    <marker id=\\"graph-all-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker all-edge-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-other-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker other-edge-marker\\">
+    <marker id=\\"graph-other-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker other-edge-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-scope-related-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker scope-related-edge-marker\\">
+    <marker id=\\"graph-scope-related-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker scope-related-edge-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-scoped-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker scoped-edge-marker\\">
+    <marker id=\\"graph-scoped-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker scoped-edge-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-related-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker related-edge-marker\\">
+    <marker id=\\"graph-related-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker related-edge-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-direct-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker direct-edge-marker\\">
+    <marker id=\\"graph-direct-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker direct-edge-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-selected-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker selected-edge-marker\\">
+    <marker id=\\"graph-selected-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker selected-edge-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
   </defs>
   <g>
-    <path id=\\"component-dependency-graph-edge-3\\" d=\\"M50,350L50,450\\" marker-end=\\"url(#component-dependency-graph-all-edge-marker)\\" class=\\"edge all-edge\\"></path>
-    <path id=\\"component-dependency-graph-edge-4\\" d=\\"M50,450L50,550\\" marker-end=\\"url(#component-dependency-graph-all-edge-marker)\\" class=\\"edge all-edge\\"></path>
+    <path id=\\"graph-edge-3\\" d=\\"M50,350L50,450\\" marker-end=\\"url(#graph-all-edge-marker)\\" class=\\"edge all-edge\\"></path>
+    <path id=\\"graph-edge-4\\" d=\\"M50,450L50,550\\" marker-end=\\"url(#graph-all-edge-marker)\\" class=\\"edge all-edge\\"></path>
   </g>
   <g></g>
   <g></g>
   <g></g>
   <g>
-    <path id=\\"component-dependency-graph-edge-2\\" d=\\"M50,250L50,350\\" marker-end=\\"url(#component-dependency-graph-related-edge-marker)\\" class=\\"edge related-edge\\"></path>
+    <path id=\\"graph-edge-2\\" d=\\"M50,250L50,350\\" marker-end=\\"url(#graph-related-edge-marker)\\" class=\\"edge related-edge\\"></path>
   </g>
   <g>
-    <path id=\\"component-dependency-graph-edge-0\\" d=\\"M50,50L50,150\\" marker-end=\\"url(#component-dependency-graph-direct-edge-marker)\\" class=\\"edge direct-edge\\"></path>
-    <path id=\\"component-dependency-graph-edge-1\\" d=\\"M50,150L50,250\\" marker-end=\\"url(#component-dependency-graph-direct-edge-marker)\\" class=\\"edge direct-edge\\"></path>
-  </g>
-  <g></g>
-  <g>
-    <circle id=\\"component-dependency-graph-node-4\\" r=\\"10\\" cx=\\"50\\" cy=\\"450\\" title=\\"test-id-5\\" class=\\"node all-node\\"></circle>
-    <circle id=\\"component-dependency-graph-node-5\\" r=\\"10\\" cx=\\"50\\" cy=\\"550\\" title=\\"test-id-6\\" class=\\"node all-node\\"></circle>
+    <path id=\\"graph-edge-0\\" d=\\"M50,50L50,150\\" marker-end=\\"url(#graph-direct-edge-marker)\\" class=\\"edge direct-edge\\"></path>
+    <path id=\\"graph-edge-1\\" d=\\"M50,150L50,250\\" marker-end=\\"url(#graph-direct-edge-marker)\\" class=\\"edge direct-edge\\"></path>
   </g>
   <g></g>
+  <g>
+    <circle id=\\"graph-node-4\\" r=\\"10\\" cx=\\"50\\" cy=\\"450\\" title=\\"test-id-5\\" class=\\"node all-node\\"></circle>
+    <circle id=\\"graph-node-5\\" r=\\"10\\" cx=\\"50\\" cy=\\"550\\" title=\\"test-id-6\\" class=\\"node all-node\\"></circle>
+  </g>
   <g></g>
   <g></g>
+  <g></g>
   <g>
-    <circle id=\\"component-dependency-graph-node-3\\" r=\\"10\\" cx=\\"50\\" cy=\\"350\\" title=\\"test-id-4\\" class=\\"node related-node\\"></circle>
+    <circle id=\\"graph-node-3\\" r=\\"10\\" cx=\\"50\\" cy=\\"350\\" title=\\"test-id-4\\" class=\\"node related-node\\"></circle>
   </g>
   <g>
-    <circle id=\\"component-dependency-graph-node-0\\" r=\\"10\\" cx=\\"50\\" cy=\\"50\\" title=\\"test-id-1\\" class=\\"node direct-node\\"></circle>
-    <circle id=\\"component-dependency-graph-node-2\\" r=\\"10\\" cx=\\"50\\" cy=\\"250\\" title=\\"test-id-3\\" class=\\"node direct-node\\"></circle>
+    <circle id=\\"graph-node-0\\" r=\\"10\\" cx=\\"50\\" cy=\\"50\\" title=\\"test-id-1\\" class=\\"node direct-node\\"></circle>
+    <circle id=\\"graph-node-2\\" r=\\"10\\" cx=\\"50\\" cy=\\"250\\" title=\\"test-id-3\\" class=\\"node direct-node\\"></circle>
   </g>
   <g>
-    <circle id=\\"component-dependency-graph-node-1\\" r=\\"10\\" cx=\\"50\\" cy=\\"150\\" title=\\"test-id-2\\" class=\\"node selected-node\\"></circle>
+    <circle id=\\"graph-node-1\\" r=\\"10\\" cx=\\"50\\" cy=\\"150\\" title=\\"test-id-2\\" class=\\"node selected-node\\"></circle>
   </g>
   <g><text x=\\"67\\" y=\\"470\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label all-node-label\\">
       <tspan x=\\"67\\" y=\\"470\\">
@@ -190,14 +190,14 @@ exports[`DiagramGraph when a node is clicked when the background is clicked the 
   xmlns="http://www.w3.org/2000/svg"
 >
   <rect
-    class="component-dependency-graph-background"
+    class="graph-background"
     fill-opacity="0"
   />
    
   <defs>
     <marker
       class="edge-marker all-edge-marker"
-      id="component-dependency-graph-all-edge-marker"
+      id="graph-all-edge-marker"
       markerHeight="11.5"
       markerUnits="userSpaceOnUse"
       markerWidth="7.1"
@@ -212,7 +212,7 @@ exports[`DiagramGraph when a node is clicked when the background is clicked the 
     </marker>
     <marker
       class="edge-marker other-edge-marker"
-      id="component-dependency-graph-other-edge-marker"
+      id="graph-other-edge-marker"
       markerHeight="11.5"
       markerUnits="userSpaceOnUse"
       markerWidth="7.1"
@@ -227,7 +227,7 @@ exports[`DiagramGraph when a node is clicked when the background is clicked the 
     </marker>
     <marker
       class="edge-marker scope-related-edge-marker"
-      id="component-dependency-graph-scope-related-edge-marker"
+      id="graph-scope-related-edge-marker"
       markerHeight="11.5"
       markerUnits="userSpaceOnUse"
       markerWidth="7.1"
@@ -242,7 +242,7 @@ exports[`DiagramGraph when a node is clicked when the background is clicked the 
     </marker>
     <marker
       class="edge-marker scoped-edge-marker"
-      id="component-dependency-graph-scoped-edge-marker"
+      id="graph-scoped-edge-marker"
       markerHeight="11.5"
       markerUnits="userSpaceOnUse"
       markerWidth="7.1"
@@ -257,7 +257,7 @@ exports[`DiagramGraph when a node is clicked when the background is clicked the 
     </marker>
     <marker
       class="edge-marker related-edge-marker"
-      id="component-dependency-graph-related-edge-marker"
+      id="graph-related-edge-marker"
       markerHeight="11.5"
       markerUnits="userSpaceOnUse"
       markerWidth="7.1"
@@ -272,7 +272,7 @@ exports[`DiagramGraph when a node is clicked when the background is clicked the 
     </marker>
     <marker
       class="edge-marker direct-edge-marker"
-      id="component-dependency-graph-direct-edge-marker"
+      id="graph-direct-edge-marker"
       markerHeight="11.5"
       markerUnits="userSpaceOnUse"
       markerWidth="7.1"
@@ -287,7 +287,7 @@ exports[`DiagramGraph when a node is clicked when the background is clicked the 
     </marker>
     <marker
       class="edge-marker selected-edge-marker"
-      id="component-dependency-graph-selected-edge-marker"
+      id="graph-selected-edge-marker"
       markerHeight="11.5"
       markerUnits="userSpaceOnUse"
       markerWidth="7.1"
@@ -306,32 +306,32 @@ exports[`DiagramGraph when a node is clicked when the background is clicked the 
     <path
       class="edge all-edge"
       d="M50,50L50,150"
-      id="component-dependency-graph-edge-0"
-      marker-end="url(#component-dependency-graph-all-edge-marker)"
+      id="graph-edge-0"
+      marker-end="url(#graph-all-edge-marker)"
     />
     <path
       class="edge all-edge"
       d="M50,150L50,250"
-      id="component-dependency-graph-edge-1"
-      marker-end="url(#component-dependency-graph-all-edge-marker)"
+      id="graph-edge-1"
+      marker-end="url(#graph-all-edge-marker)"
     />
     <path
       class="edge all-edge"
       d="M50,250L50,350"
-      id="component-dependency-graph-edge-2"
-      marker-end="url(#component-dependency-graph-all-edge-marker)"
+      id="graph-edge-2"
+      marker-end="url(#graph-all-edge-marker)"
     />
     <path
       class="edge all-edge"
       d="M50,350L50,450"
-      id="component-dependency-graph-edge-3"
-      marker-end="url(#component-dependency-graph-all-edge-marker)"
+      id="graph-edge-3"
+      marker-end="url(#graph-all-edge-marker)"
     />
     <path
       class="edge all-edge"
       d="M50,450L50,550"
-      id="component-dependency-graph-edge-4"
-      marker-end="url(#component-dependency-graph-all-edge-marker)"
+      id="graph-edge-4"
+      marker-end="url(#graph-all-edge-marker)"
     />
   </g>
   <g />
@@ -346,7 +346,7 @@ exports[`DiagramGraph when a node is clicked when the background is clicked the 
       class="node all-node"
       cx="50"
       cy="50"
-      id="component-dependency-graph-node-0"
+      id="graph-node-0"
       r="10"
       title="test-id-1"
     />
@@ -354,7 +354,7 @@ exports[`DiagramGraph when a node is clicked when the background is clicked the 
       class="node all-node"
       cx="50"
       cy="150"
-      id="component-dependency-graph-node-1"
+      id="graph-node-1"
       r="10"
       title="test-id-2"
     />
@@ -362,7 +362,7 @@ exports[`DiagramGraph when a node is clicked when the background is clicked the 
       class="node all-node"
       cx="50"
       cy="250"
-      id="component-dependency-graph-node-2"
+      id="graph-node-2"
       r="10"
       title="test-id-3"
     />
@@ -370,7 +370,7 @@ exports[`DiagramGraph when a node is clicked when the background is clicked the 
       class="node all-node"
       cx="50"
       cy="350"
-      id="component-dependency-graph-node-3"
+      id="graph-node-3"
       r="10"
       title="test-id-4"
     />
@@ -378,7 +378,7 @@ exports[`DiagramGraph when a node is clicked when the background is clicked the 
       class="node all-node"
       cx="50"
       cy="450"
-      id="component-dependency-graph-node-4"
+      id="graph-node-4"
       r="10"
       title="test-id-5"
     />
@@ -386,7 +386,7 @@ exports[`DiagramGraph when a node is clicked when the background is clicked the 
       class="node all-node"
       cx="50"
       cy="550"
-      id="component-dependency-graph-node-5"
+      id="graph-node-5"
       r="10"
       title="test-id-6"
     />
@@ -507,36 +507,36 @@ exports[`DiagramGraph when a node is clicked when the background is clicked the 
 
 exports[`DiagramGraph when a node is clicked when the node is clicked a second time the node is unselected 1`] = `
 "<svg xmlns=\\"http://www.w3.org/2000/svg\\" overflow=\\"auto\\" width=\\"100%\\" height=\\"1200\\">
-  <rect fill-opacity=\\"0\\" class=\\"component-dependency-graph-background\\"></rect>
+  <rect fill-opacity=\\"0\\" class=\\"graph-background\\"></rect>
   <defs>
-    <marker id=\\"component-dependency-graph-all-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker all-edge-marker\\">
+    <marker id=\\"graph-all-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker all-edge-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-other-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker other-edge-marker\\">
+    <marker id=\\"graph-other-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker other-edge-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-scope-related-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker scope-related-edge-marker\\">
+    <marker id=\\"graph-scope-related-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker scope-related-edge-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-scoped-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker scoped-edge-marker\\">
+    <marker id=\\"graph-scoped-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker scoped-edge-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-related-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker related-edge-marker\\">
+    <marker id=\\"graph-related-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker related-edge-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-direct-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker direct-edge-marker\\">
+    <marker id=\\"graph-direct-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker direct-edge-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-selected-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker selected-edge-marker\\">
+    <marker id=\\"graph-selected-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker selected-edge-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
   </defs>
   <g>
-    <path id=\\"component-dependency-graph-edge-0\\" d=\\"M50,50L50,150\\" marker-end=\\"url(#component-dependency-graph-all-edge-marker)\\" class=\\"edge all-edge\\"></path>
-    <path id=\\"component-dependency-graph-edge-1\\" d=\\"M50,150L50,250\\" marker-end=\\"url(#component-dependency-graph-all-edge-marker)\\" class=\\"edge all-edge\\"></path>
-    <path id=\\"component-dependency-graph-edge-2\\" d=\\"M50,250L50,350\\" marker-end=\\"url(#component-dependency-graph-all-edge-marker)\\" class=\\"edge all-edge\\"></path>
-    <path id=\\"component-dependency-graph-edge-3\\" d=\\"M50,350L50,450\\" marker-end=\\"url(#component-dependency-graph-all-edge-marker)\\" class=\\"edge all-edge\\"></path>
-    <path id=\\"component-dependency-graph-edge-4\\" d=\\"M50,450L50,550\\" marker-end=\\"url(#component-dependency-graph-all-edge-marker)\\" class=\\"edge all-edge\\"></path>
+    <path id=\\"graph-edge-0\\" d=\\"M50,50L50,150\\" marker-end=\\"url(#graph-all-edge-marker)\\" class=\\"edge all-edge\\"></path>
+    <path id=\\"graph-edge-1\\" d=\\"M50,150L50,250\\" marker-end=\\"url(#graph-all-edge-marker)\\" class=\\"edge all-edge\\"></path>
+    <path id=\\"graph-edge-2\\" d=\\"M50,250L50,350\\" marker-end=\\"url(#graph-all-edge-marker)\\" class=\\"edge all-edge\\"></path>
+    <path id=\\"graph-edge-3\\" d=\\"M50,350L50,450\\" marker-end=\\"url(#graph-all-edge-marker)\\" class=\\"edge all-edge\\"></path>
+    <path id=\\"graph-edge-4\\" d=\\"M50,450L50,550\\" marker-end=\\"url(#graph-all-edge-marker)\\" class=\\"edge all-edge\\"></path>
   </g>
   <g></g>
   <g></g>
@@ -545,12 +545,12 @@ exports[`DiagramGraph when a node is clicked when the node is clicked a second t
   <g></g>
   <g></g>
   <g>
-    <circle id=\\"component-dependency-graph-node-0\\" r=\\"10\\" cx=\\"50\\" cy=\\"50\\" title=\\"test-id-1\\" class=\\"node all-node\\"></circle>
-    <circle id=\\"component-dependency-graph-node-1\\" r=\\"10\\" cx=\\"50\\" cy=\\"150\\" title=\\"test-id-2\\" class=\\"node all-node\\"></circle>
-    <circle id=\\"component-dependency-graph-node-2\\" r=\\"10\\" cx=\\"50\\" cy=\\"250\\" title=\\"test-id-3\\" class=\\"node all-node\\"></circle>
-    <circle id=\\"component-dependency-graph-node-3\\" r=\\"10\\" cx=\\"50\\" cy=\\"350\\" title=\\"test-id-4\\" class=\\"node all-node\\"></circle>
-    <circle id=\\"component-dependency-graph-node-4\\" r=\\"10\\" cx=\\"50\\" cy=\\"450\\" title=\\"test-id-5\\" class=\\"node all-node\\"></circle>
-    <circle id=\\"component-dependency-graph-node-5\\" r=\\"10\\" cx=\\"50\\" cy=\\"550\\" title=\\"test-id-6\\" class=\\"node all-node\\"></circle>
+    <circle id=\\"graph-node-0\\" r=\\"10\\" cx=\\"50\\" cy=\\"50\\" title=\\"test-id-1\\" class=\\"node all-node\\"></circle>
+    <circle id=\\"graph-node-1\\" r=\\"10\\" cx=\\"50\\" cy=\\"150\\" title=\\"test-id-2\\" class=\\"node all-node\\"></circle>
+    <circle id=\\"graph-node-2\\" r=\\"10\\" cx=\\"50\\" cy=\\"250\\" title=\\"test-id-3\\" class=\\"node all-node\\"></circle>
+    <circle id=\\"graph-node-3\\" r=\\"10\\" cx=\\"50\\" cy=\\"350\\" title=\\"test-id-4\\" class=\\"node all-node\\"></circle>
+    <circle id=\\"graph-node-4\\" r=\\"10\\" cx=\\"50\\" cy=\\"450\\" title=\\"test-id-5\\" class=\\"node all-node\\"></circle>
+    <circle id=\\"graph-node-5\\" r=\\"10\\" cx=\\"50\\" cy=\\"550\\" title=\\"test-id-6\\" class=\\"node all-node\\"></circle>
   </g>
   <g></g>
   <g></g>
@@ -594,33 +594,33 @@ exports[`DiagramGraph when a node is clicked when the node is clicked a second t
 
 exports[`DiagramGraph when diagram prop is set to multiple nodes and dependencies renders edges, dependency markers, nodes and node labels 1`] = `
 "<svg xmlns=\\"http://www.w3.org/2000/svg\\" overflow=\\"auto\\" width=\\"100%\\" height=\\"1200\\">
-  <rect fill-opacity=\\"0\\" class=\\"component-dependency-graph-background\\"></rect>
+  <rect fill-opacity=\\"0\\" class=\\"graph-background\\"></rect>
   <defs>
-    <marker id=\\"component-dependency-graph-all-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker all-edge-marker\\">
+    <marker id=\\"graph-all-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker all-edge-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-other-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker other-edge-marker\\">
+    <marker id=\\"graph-other-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker other-edge-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-scope-related-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker scope-related-edge-marker\\">
+    <marker id=\\"graph-scope-related-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker scope-related-edge-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-scoped-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker scoped-edge-marker\\">
+    <marker id=\\"graph-scoped-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker scoped-edge-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-related-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker related-edge-marker\\">
+    <marker id=\\"graph-related-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker related-edge-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-direct-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker direct-edge-marker\\">
+    <marker id=\\"graph-direct-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker direct-edge-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-selected-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker selected-edge-marker\\">
+    <marker id=\\"graph-selected-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker selected-edge-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
   </defs>
   <g>
-    <path id=\\"component-dependency-graph-edge-0\\" d=\\"M50,50L50,150\\" marker-end=\\"url(#component-dependency-graph-all-edge-marker)\\" class=\\"edge all-edge\\"></path>
-    <path id=\\"component-dependency-graph-edge-1\\" d=\\"M50,150L50,250\\" marker-end=\\"url(#component-dependency-graph-all-edge-marker)\\" class=\\"edge all-edge\\"></path>
+    <path id=\\"graph-edge-0\\" d=\\"M50,50L50,150\\" marker-end=\\"url(#graph-all-edge-marker)\\" class=\\"edge all-edge\\"></path>
+    <path id=\\"graph-edge-1\\" d=\\"M50,150L50,250\\" marker-end=\\"url(#graph-all-edge-marker)\\" class=\\"edge all-edge\\"></path>
   </g>
   <g></g>
   <g></g>
@@ -629,9 +629,9 @@ exports[`DiagramGraph when diagram prop is set to multiple nodes and dependencie
   <g></g>
   <g></g>
   <g>
-    <circle id=\\"component-dependency-graph-node-0\\" r=\\"10\\" cx=\\"50\\" cy=\\"50\\" title=\\"test-id-1\\" class=\\"node all-node\\"></circle>
-    <circle id=\\"component-dependency-graph-node-1\\" r=\\"10\\" cx=\\"50\\" cy=\\"150\\" title=\\"test-id-2\\" class=\\"node all-node\\"></circle>
-    <circle id=\\"component-dependency-graph-node-2\\" r=\\"10\\" cx=\\"50\\" cy=\\"250\\" title=\\"test-id-3\\" class=\\"node all-node\\"></circle>
+    <circle id=\\"graph-node-0\\" r=\\"10\\" cx=\\"50\\" cy=\\"50\\" title=\\"test-id-1\\" class=\\"node all-node\\"></circle>
+    <circle id=\\"graph-node-1\\" r=\\"10\\" cx=\\"50\\" cy=\\"150\\" title=\\"test-id-2\\" class=\\"node all-node\\"></circle>
+    <circle id=\\"graph-node-2\\" r=\\"10\\" cx=\\"50\\" cy=\\"250\\" title=\\"test-id-3\\" class=\\"node all-node\\"></circle>
   </g>
   <g></g>
   <g></g>
@@ -663,61 +663,61 @@ exports[`DiagramGraph when diagram prop is set to multiple nodes and dependencie
 
 exports[`DiagramGraph when edgeType prop is set to direct when a node has been clicked renders only the direct dependencies 1`] = `
 "<svg xmlns=\\"http://www.w3.org/2000/svg\\" overflow=\\"auto\\" width=\\"100%\\" height=\\"1200\\" edgeType=\\"direct\\">
-  <rect fill-opacity=\\"0\\" class=\\"component-dependency-graph-background\\"></rect>
+  <rect fill-opacity=\\"0\\" class=\\"graph-background\\"></rect>
   <defs>
-    <marker id=\\"component-dependency-graph-all-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker all-edge-marker\\">
+    <marker id=\\"graph-all-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker all-edge-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-other-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker other-edge-marker\\">
+    <marker id=\\"graph-other-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker other-edge-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-scope-related-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker scope-related-edge-marker\\">
+    <marker id=\\"graph-scope-related-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker scope-related-edge-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-scoped-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker scoped-edge-marker\\">
+    <marker id=\\"graph-scoped-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker scoped-edge-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-related-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker related-edge-marker\\">
+    <marker id=\\"graph-related-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker related-edge-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-direct-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker direct-edge-marker\\">
+    <marker id=\\"graph-direct-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker direct-edge-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-selected-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker selected-edge-marker\\">
+    <marker id=\\"graph-selected-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker selected-edge-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
   </defs>
   <g>
-    <path id=\\"component-dependency-graph-edge-3\\" d=\\"M50,350L50,450\\" marker-end=\\"url(#component-dependency-graph-all-edge-marker)\\" class=\\"edge all-edge\\"></path>
-    <path id=\\"component-dependency-graph-edge-4\\" d=\\"M50,450L50,550\\" marker-end=\\"url(#component-dependency-graph-all-edge-marker)\\" class=\\"edge all-edge\\"></path>
+    <path id=\\"graph-edge-3\\" d=\\"M50,350L50,450\\" marker-end=\\"url(#graph-all-edge-marker)\\" class=\\"edge all-edge\\"></path>
+    <path id=\\"graph-edge-4\\" d=\\"M50,450L50,550\\" marker-end=\\"url(#graph-all-edge-marker)\\" class=\\"edge all-edge\\"></path>
   </g>
   <g></g>
   <g></g>
   <g></g>
   <g>
-    <path id=\\"component-dependency-graph-edge-2\\" d=\\"M50,250L50,350\\" marker-end=\\"url(#component-dependency-graph-related-edge-marker)\\" class=\\"edge related-edge\\"></path>
+    <path id=\\"graph-edge-2\\" d=\\"M50,250L50,350\\" marker-end=\\"url(#graph-related-edge-marker)\\" class=\\"edge related-edge\\"></path>
   </g>
   <g>
-    <path id=\\"component-dependency-graph-edge-0\\" d=\\"M50,50L50,150\\" marker-end=\\"url(#component-dependency-graph-direct-edge-marker)\\" class=\\"edge direct-edge\\"></path>
-    <path id=\\"component-dependency-graph-edge-1\\" d=\\"M50,150L50,250\\" marker-end=\\"url(#component-dependency-graph-direct-edge-marker)\\" class=\\"edge direct-edge\\"></path>
-  </g>
-  <g></g>
-  <g>
-    <circle id=\\"component-dependency-graph-node-4\\" r=\\"10\\" cx=\\"50\\" cy=\\"450\\" title=\\"test-id-5\\" class=\\"node all-node\\"></circle>
-    <circle id=\\"component-dependency-graph-node-5\\" r=\\"10\\" cx=\\"50\\" cy=\\"550\\" title=\\"test-id-6\\" class=\\"node all-node\\"></circle>
+    <path id=\\"graph-edge-0\\" d=\\"M50,50L50,150\\" marker-end=\\"url(#graph-direct-edge-marker)\\" class=\\"edge direct-edge\\"></path>
+    <path id=\\"graph-edge-1\\" d=\\"M50,150L50,250\\" marker-end=\\"url(#graph-direct-edge-marker)\\" class=\\"edge direct-edge\\"></path>
   </g>
   <g></g>
+  <g>
+    <circle id=\\"graph-node-4\\" r=\\"10\\" cx=\\"50\\" cy=\\"450\\" title=\\"test-id-5\\" class=\\"node all-node\\"></circle>
+    <circle id=\\"graph-node-5\\" r=\\"10\\" cx=\\"50\\" cy=\\"550\\" title=\\"test-id-6\\" class=\\"node all-node\\"></circle>
+  </g>
   <g></g>
   <g></g>
+  <g></g>
   <g>
-    <circle id=\\"component-dependency-graph-node-3\\" r=\\"10\\" cx=\\"50\\" cy=\\"350\\" title=\\"test-id-4\\" class=\\"node related-node\\"></circle>
+    <circle id=\\"graph-node-3\\" r=\\"10\\" cx=\\"50\\" cy=\\"350\\" title=\\"test-id-4\\" class=\\"node related-node\\"></circle>
   </g>
   <g>
-    <circle id=\\"component-dependency-graph-node-0\\" r=\\"10\\" cx=\\"50\\" cy=\\"50\\" title=\\"test-id-1\\" class=\\"node direct-node\\"></circle>
-    <circle id=\\"component-dependency-graph-node-2\\" r=\\"10\\" cx=\\"50\\" cy=\\"250\\" title=\\"test-id-3\\" class=\\"node direct-node\\"></circle>
+    <circle id=\\"graph-node-0\\" r=\\"10\\" cx=\\"50\\" cy=\\"50\\" title=\\"test-id-1\\" class=\\"node direct-node\\"></circle>
+    <circle id=\\"graph-node-2\\" r=\\"10\\" cx=\\"50\\" cy=\\"250\\" title=\\"test-id-3\\" class=\\"node direct-node\\"></circle>
   </g>
   <g>
-    <circle id=\\"component-dependency-graph-node-1\\" r=\\"10\\" cx=\\"50\\" cy=\\"150\\" title=\\"test-id-2\\" class=\\"node selected-node\\"></circle>
+    <circle id=\\"graph-node-1\\" r=\\"10\\" cx=\\"50\\" cy=\\"150\\" title=\\"test-id-2\\" class=\\"node selected-node\\"></circle>
   </g>
   <g><text x=\\"67\\" y=\\"470\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label all-node-label\\">
       <tspan x=\\"67\\" y=\\"470\\">
@@ -755,36 +755,36 @@ exports[`DiagramGraph when edgeType prop is set to direct when a node has been c
 
 exports[`DiagramGraph when edgeType prop is set to direct when a node has not been clicked renders everything 1`] = `
 "<svg xmlns=\\"http://www.w3.org/2000/svg\\" overflow=\\"auto\\" width=\\"100%\\" height=\\"1200\\" edgeType=\\"direct\\">
-  <rect fill-opacity=\\"0\\" class=\\"component-dependency-graph-background\\"></rect>
+  <rect fill-opacity=\\"0\\" class=\\"graph-background\\"></rect>
   <defs>
-    <marker id=\\"component-dependency-graph-all-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker all-edge-marker\\">
+    <marker id=\\"graph-all-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker all-edge-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-other-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker other-edge-marker\\">
+    <marker id=\\"graph-other-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker other-edge-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-scope-related-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker scope-related-edge-marker\\">
+    <marker id=\\"graph-scope-related-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker scope-related-edge-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-scoped-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker scoped-edge-marker\\">
+    <marker id=\\"graph-scoped-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker scoped-edge-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-related-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker related-edge-marker\\">
+    <marker id=\\"graph-related-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker related-edge-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-direct-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker direct-edge-marker\\">
+    <marker id=\\"graph-direct-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker direct-edge-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-selected-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker selected-edge-marker\\">
+    <marker id=\\"graph-selected-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker selected-edge-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
   </defs>
   <g>
-    <path id=\\"component-dependency-graph-edge-0\\" d=\\"M50,50L50,150\\" marker-end=\\"url(#component-dependency-graph-all-edge-marker)\\" class=\\"edge all-edge\\"></path>
-    <path id=\\"component-dependency-graph-edge-1\\" d=\\"M50,150L50,250\\" marker-end=\\"url(#component-dependency-graph-all-edge-marker)\\" class=\\"edge all-edge\\"></path>
-    <path id=\\"component-dependency-graph-edge-2\\" d=\\"M50,250L50,350\\" marker-end=\\"url(#component-dependency-graph-all-edge-marker)\\" class=\\"edge all-edge\\"></path>
-    <path id=\\"component-dependency-graph-edge-3\\" d=\\"M50,350L50,450\\" marker-end=\\"url(#component-dependency-graph-all-edge-marker)\\" class=\\"edge all-edge\\"></path>
-    <path id=\\"component-dependency-graph-edge-4\\" d=\\"M50,450L50,550\\" marker-end=\\"url(#component-dependency-graph-all-edge-marker)\\" class=\\"edge all-edge\\"></path>
+    <path id=\\"graph-edge-0\\" d=\\"M50,50L50,150\\" marker-end=\\"url(#graph-all-edge-marker)\\" class=\\"edge all-edge\\"></path>
+    <path id=\\"graph-edge-1\\" d=\\"M50,150L50,250\\" marker-end=\\"url(#graph-all-edge-marker)\\" class=\\"edge all-edge\\"></path>
+    <path id=\\"graph-edge-2\\" d=\\"M50,250L50,350\\" marker-end=\\"url(#graph-all-edge-marker)\\" class=\\"edge all-edge\\"></path>
+    <path id=\\"graph-edge-3\\" d=\\"M50,350L50,450\\" marker-end=\\"url(#graph-all-edge-marker)\\" class=\\"edge all-edge\\"></path>
+    <path id=\\"graph-edge-4\\" d=\\"M50,450L50,550\\" marker-end=\\"url(#graph-all-edge-marker)\\" class=\\"edge all-edge\\"></path>
   </g>
   <g></g>
   <g></g>
@@ -793,12 +793,12 @@ exports[`DiagramGraph when edgeType prop is set to direct when a node has not be
   <g></g>
   <g></g>
   <g>
-    <circle id=\\"component-dependency-graph-node-0\\" r=\\"10\\" cx=\\"50\\" cy=\\"50\\" title=\\"test-id-1\\" class=\\"node all-node\\"></circle>
-    <circle id=\\"component-dependency-graph-node-1\\" r=\\"10\\" cx=\\"50\\" cy=\\"150\\" title=\\"test-id-2\\" class=\\"node all-node\\"></circle>
-    <circle id=\\"component-dependency-graph-node-2\\" r=\\"10\\" cx=\\"50\\" cy=\\"250\\" title=\\"test-id-3\\" class=\\"node all-node\\"></circle>
-    <circle id=\\"component-dependency-graph-node-3\\" r=\\"10\\" cx=\\"50\\" cy=\\"350\\" title=\\"test-id-4\\" class=\\"node all-node\\"></circle>
-    <circle id=\\"component-dependency-graph-node-4\\" r=\\"10\\" cx=\\"50\\" cy=\\"450\\" title=\\"test-id-5\\" class=\\"node all-node\\"></circle>
-    <circle id=\\"component-dependency-graph-node-5\\" r=\\"10\\" cx=\\"50\\" cy=\\"550\\" title=\\"test-id-6\\" class=\\"node all-node\\"></circle>
+    <circle id=\\"graph-node-0\\" r=\\"10\\" cx=\\"50\\" cy=\\"50\\" title=\\"test-id-1\\" class=\\"node all-node\\"></circle>
+    <circle id=\\"graph-node-1\\" r=\\"10\\" cx=\\"50\\" cy=\\"150\\" title=\\"test-id-2\\" class=\\"node all-node\\"></circle>
+    <circle id=\\"graph-node-2\\" r=\\"10\\" cx=\\"50\\" cy=\\"250\\" title=\\"test-id-3\\" class=\\"node all-node\\"></circle>
+    <circle id=\\"graph-node-3\\" r=\\"10\\" cx=\\"50\\" cy=\\"350\\" title=\\"test-id-4\\" class=\\"node all-node\\"></circle>
+    <circle id=\\"graph-node-4\\" r=\\"10\\" cx=\\"50\\" cy=\\"450\\" title=\\"test-id-5\\" class=\\"node all-node\\"></circle>
+    <circle id=\\"graph-node-5\\" r=\\"10\\" cx=\\"50\\" cy=\\"550\\" title=\\"test-id-6\\" class=\\"node all-node\\"></circle>
   </g>
   <g></g>
   <g></g>
@@ -842,61 +842,61 @@ exports[`DiagramGraph when edgeType prop is set to direct when a node has not be
 
 exports[`DiagramGraph when edgeType prop is set to related when a node has been clicked renders only the related and direct dependencies 1`] = `
 "<svg xmlns=\\"http://www.w3.org/2000/svg\\" overflow=\\"auto\\" width=\\"100%\\" height=\\"1200\\" edgeType=\\"related\\">
-  <rect fill-opacity=\\"0\\" class=\\"component-dependency-graph-background\\"></rect>
+  <rect fill-opacity=\\"0\\" class=\\"graph-background\\"></rect>
   <defs>
-    <marker id=\\"component-dependency-graph-all-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker all-edge-marker\\">
+    <marker id=\\"graph-all-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker all-edge-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-other-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker other-edge-marker\\">
+    <marker id=\\"graph-other-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker other-edge-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-scope-related-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker scope-related-edge-marker\\">
+    <marker id=\\"graph-scope-related-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker scope-related-edge-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-scoped-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker scoped-edge-marker\\">
+    <marker id=\\"graph-scoped-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker scoped-edge-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-related-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker related-edge-marker\\">
+    <marker id=\\"graph-related-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker related-edge-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-direct-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker direct-edge-marker\\">
+    <marker id=\\"graph-direct-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker direct-edge-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-selected-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker selected-edge-marker\\">
+    <marker id=\\"graph-selected-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker selected-edge-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
   </defs>
   <g>
-    <path id=\\"component-dependency-graph-edge-3\\" d=\\"M50,350L50,450\\" marker-end=\\"url(#component-dependency-graph-all-edge-marker)\\" class=\\"edge all-edge\\"></path>
-    <path id=\\"component-dependency-graph-edge-4\\" d=\\"M50,450L50,550\\" marker-end=\\"url(#component-dependency-graph-all-edge-marker)\\" class=\\"edge all-edge\\"></path>
+    <path id=\\"graph-edge-3\\" d=\\"M50,350L50,450\\" marker-end=\\"url(#graph-all-edge-marker)\\" class=\\"edge all-edge\\"></path>
+    <path id=\\"graph-edge-4\\" d=\\"M50,450L50,550\\" marker-end=\\"url(#graph-all-edge-marker)\\" class=\\"edge all-edge\\"></path>
   </g>
   <g></g>
   <g></g>
   <g></g>
   <g>
-    <path id=\\"component-dependency-graph-edge-2\\" d=\\"M50,250L50,350\\" marker-end=\\"url(#component-dependency-graph-related-edge-marker)\\" class=\\"edge related-edge\\"></path>
+    <path id=\\"graph-edge-2\\" d=\\"M50,250L50,350\\" marker-end=\\"url(#graph-related-edge-marker)\\" class=\\"edge related-edge\\"></path>
   </g>
   <g>
-    <path id=\\"component-dependency-graph-edge-0\\" d=\\"M50,50L50,150\\" marker-end=\\"url(#component-dependency-graph-direct-edge-marker)\\" class=\\"edge direct-edge\\"></path>
-    <path id=\\"component-dependency-graph-edge-1\\" d=\\"M50,150L50,250\\" marker-end=\\"url(#component-dependency-graph-direct-edge-marker)\\" class=\\"edge direct-edge\\"></path>
-  </g>
-  <g></g>
-  <g>
-    <circle id=\\"component-dependency-graph-node-4\\" r=\\"10\\" cx=\\"50\\" cy=\\"450\\" title=\\"test-id-5\\" class=\\"node all-node\\"></circle>
-    <circle id=\\"component-dependency-graph-node-5\\" r=\\"10\\" cx=\\"50\\" cy=\\"550\\" title=\\"test-id-6\\" class=\\"node all-node\\"></circle>
+    <path id=\\"graph-edge-0\\" d=\\"M50,50L50,150\\" marker-end=\\"url(#graph-direct-edge-marker)\\" class=\\"edge direct-edge\\"></path>
+    <path id=\\"graph-edge-1\\" d=\\"M50,150L50,250\\" marker-end=\\"url(#graph-direct-edge-marker)\\" class=\\"edge direct-edge\\"></path>
   </g>
   <g></g>
+  <g>
+    <circle id=\\"graph-node-4\\" r=\\"10\\" cx=\\"50\\" cy=\\"450\\" title=\\"test-id-5\\" class=\\"node all-node\\"></circle>
+    <circle id=\\"graph-node-5\\" r=\\"10\\" cx=\\"50\\" cy=\\"550\\" title=\\"test-id-6\\" class=\\"node all-node\\"></circle>
+  </g>
   <g></g>
   <g></g>
+  <g></g>
   <g>
-    <circle id=\\"component-dependency-graph-node-3\\" r=\\"10\\" cx=\\"50\\" cy=\\"350\\" title=\\"test-id-4\\" class=\\"node related-node\\"></circle>
+    <circle id=\\"graph-node-3\\" r=\\"10\\" cx=\\"50\\" cy=\\"350\\" title=\\"test-id-4\\" class=\\"node related-node\\"></circle>
   </g>
   <g>
-    <circle id=\\"component-dependency-graph-node-0\\" r=\\"10\\" cx=\\"50\\" cy=\\"50\\" title=\\"test-id-1\\" class=\\"node direct-node\\"></circle>
-    <circle id=\\"component-dependency-graph-node-2\\" r=\\"10\\" cx=\\"50\\" cy=\\"250\\" title=\\"test-id-3\\" class=\\"node direct-node\\"></circle>
+    <circle id=\\"graph-node-0\\" r=\\"10\\" cx=\\"50\\" cy=\\"50\\" title=\\"test-id-1\\" class=\\"node direct-node\\"></circle>
+    <circle id=\\"graph-node-2\\" r=\\"10\\" cx=\\"50\\" cy=\\"250\\" title=\\"test-id-3\\" class=\\"node direct-node\\"></circle>
   </g>
   <g>
-    <circle id=\\"component-dependency-graph-node-1\\" r=\\"10\\" cx=\\"50\\" cy=\\"150\\" title=\\"test-id-2\\" class=\\"node selected-node\\"></circle>
+    <circle id=\\"graph-node-1\\" r=\\"10\\" cx=\\"50\\" cy=\\"150\\" title=\\"test-id-2\\" class=\\"node selected-node\\"></circle>
   </g>
   <g><text x=\\"67\\" y=\\"470\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label all-node-label\\">
       <tspan x=\\"67\\" y=\\"470\\">
@@ -934,36 +934,36 @@ exports[`DiagramGraph when edgeType prop is set to related when a node has been 
 
 exports[`DiagramGraph when edgeType prop is set to related when a node has not been clicked renders everything 1`] = `
 "<svg xmlns=\\"http://www.w3.org/2000/svg\\" overflow=\\"auto\\" width=\\"100%\\" height=\\"1200\\" edgeType=\\"related\\">
-  <rect fill-opacity=\\"0\\" class=\\"component-dependency-graph-background\\"></rect>
+  <rect fill-opacity=\\"0\\" class=\\"graph-background\\"></rect>
   <defs>
-    <marker id=\\"component-dependency-graph-all-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker all-edge-marker\\">
+    <marker id=\\"graph-all-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker all-edge-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-other-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker other-edge-marker\\">
+    <marker id=\\"graph-other-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker other-edge-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-scope-related-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker scope-related-edge-marker\\">
+    <marker id=\\"graph-scope-related-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker scope-related-edge-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-scoped-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker scoped-edge-marker\\">
+    <marker id=\\"graph-scoped-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker scoped-edge-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-related-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker related-edge-marker\\">
+    <marker id=\\"graph-related-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker related-edge-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-direct-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker direct-edge-marker\\">
+    <marker id=\\"graph-direct-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker direct-edge-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-selected-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker selected-edge-marker\\">
+    <marker id=\\"graph-selected-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker selected-edge-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
   </defs>
   <g>
-    <path id=\\"component-dependency-graph-edge-0\\" d=\\"M50,50L50,150\\" marker-end=\\"url(#component-dependency-graph-all-edge-marker)\\" class=\\"edge all-edge\\"></path>
-    <path id=\\"component-dependency-graph-edge-1\\" d=\\"M50,150L50,250\\" marker-end=\\"url(#component-dependency-graph-all-edge-marker)\\" class=\\"edge all-edge\\"></path>
-    <path id=\\"component-dependency-graph-edge-2\\" d=\\"M50,250L50,350\\" marker-end=\\"url(#component-dependency-graph-all-edge-marker)\\" class=\\"edge all-edge\\"></path>
-    <path id=\\"component-dependency-graph-edge-3\\" d=\\"M50,350L50,450\\" marker-end=\\"url(#component-dependency-graph-all-edge-marker)\\" class=\\"edge all-edge\\"></path>
-    <path id=\\"component-dependency-graph-edge-4\\" d=\\"M50,450L50,550\\" marker-end=\\"url(#component-dependency-graph-all-edge-marker)\\" class=\\"edge all-edge\\"></path>
+    <path id=\\"graph-edge-0\\" d=\\"M50,50L50,150\\" marker-end=\\"url(#graph-all-edge-marker)\\" class=\\"edge all-edge\\"></path>
+    <path id=\\"graph-edge-1\\" d=\\"M50,150L50,250\\" marker-end=\\"url(#graph-all-edge-marker)\\" class=\\"edge all-edge\\"></path>
+    <path id=\\"graph-edge-2\\" d=\\"M50,250L50,350\\" marker-end=\\"url(#graph-all-edge-marker)\\" class=\\"edge all-edge\\"></path>
+    <path id=\\"graph-edge-3\\" d=\\"M50,350L50,450\\" marker-end=\\"url(#graph-all-edge-marker)\\" class=\\"edge all-edge\\"></path>
+    <path id=\\"graph-edge-4\\" d=\\"M50,450L50,550\\" marker-end=\\"url(#graph-all-edge-marker)\\" class=\\"edge all-edge\\"></path>
   </g>
   <g></g>
   <g></g>
@@ -972,12 +972,12 @@ exports[`DiagramGraph when edgeType prop is set to related when a node has not b
   <g></g>
   <g></g>
   <g>
-    <circle id=\\"component-dependency-graph-node-0\\" r=\\"10\\" cx=\\"50\\" cy=\\"50\\" title=\\"test-id-1\\" class=\\"node all-node\\"></circle>
-    <circle id=\\"component-dependency-graph-node-1\\" r=\\"10\\" cx=\\"50\\" cy=\\"150\\" title=\\"test-id-2\\" class=\\"node all-node\\"></circle>
-    <circle id=\\"component-dependency-graph-node-2\\" r=\\"10\\" cx=\\"50\\" cy=\\"250\\" title=\\"test-id-3\\" class=\\"node all-node\\"></circle>
-    <circle id=\\"component-dependency-graph-node-3\\" r=\\"10\\" cx=\\"50\\" cy=\\"350\\" title=\\"test-id-4\\" class=\\"node all-node\\"></circle>
-    <circle id=\\"component-dependency-graph-node-4\\" r=\\"10\\" cx=\\"50\\" cy=\\"450\\" title=\\"test-id-5\\" class=\\"node all-node\\"></circle>
-    <circle id=\\"component-dependency-graph-node-5\\" r=\\"10\\" cx=\\"50\\" cy=\\"550\\" title=\\"test-id-6\\" class=\\"node all-node\\"></circle>
+    <circle id=\\"graph-node-0\\" r=\\"10\\" cx=\\"50\\" cy=\\"50\\" title=\\"test-id-1\\" class=\\"node all-node\\"></circle>
+    <circle id=\\"graph-node-1\\" r=\\"10\\" cx=\\"50\\" cy=\\"150\\" title=\\"test-id-2\\" class=\\"node all-node\\"></circle>
+    <circle id=\\"graph-node-2\\" r=\\"10\\" cx=\\"50\\" cy=\\"250\\" title=\\"test-id-3\\" class=\\"node all-node\\"></circle>
+    <circle id=\\"graph-node-3\\" r=\\"10\\" cx=\\"50\\" cy=\\"350\\" title=\\"test-id-4\\" class=\\"node all-node\\"></circle>
+    <circle id=\\"graph-node-4\\" r=\\"10\\" cx=\\"50\\" cy=\\"450\\" title=\\"test-id-5\\" class=\\"node all-node\\"></circle>
+    <circle id=\\"graph-node-5\\" r=\\"10\\" cx=\\"50\\" cy=\\"550\\" title=\\"test-id-6\\" class=\\"node all-node\\"></circle>
   </g>
   <g></g>
   <g></g>
@@ -1021,59 +1021,59 @@ exports[`DiagramGraph when edgeType prop is set to related when a node has not b
 
 exports[`DiagramGraph when the mouse hovers over a node renders the direct dependencies as direct dependencies 1`] = `
 "<svg xmlns=\\"http://www.w3.org/2000/svg\\" overflow=\\"auto\\" width=\\"100%\\" height=\\"1200\\">
-  <rect fill-opacity=\\"0\\" class=\\"component-dependency-graph-background\\"></rect>
+  <rect fill-opacity=\\"0\\" class=\\"graph-background\\"></rect>
   <defs>
-    <marker id=\\"component-dependency-graph-all-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker all-edge-marker\\">
+    <marker id=\\"graph-all-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker all-edge-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-other-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker other-edge-marker\\">
+    <marker id=\\"graph-other-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker other-edge-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-scope-related-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker scope-related-edge-marker\\">
+    <marker id=\\"graph-scope-related-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker scope-related-edge-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-scoped-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker scoped-edge-marker\\">
+    <marker id=\\"graph-scoped-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker scoped-edge-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-related-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker related-edge-marker\\">
+    <marker id=\\"graph-related-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker related-edge-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-direct-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker direct-edge-marker\\">
+    <marker id=\\"graph-direct-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker direct-edge-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-selected-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker selected-edge-marker\\">
+    <marker id=\\"graph-selected-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker selected-edge-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
   </defs>
   <g>
-    <path id=\\"component-dependency-graph-edge-2\\" d=\\"M50,250L50,350\\" marker-end=\\"url(#component-dependency-graph-all-edge-marker)\\" class=\\"edge all-edge\\"></path>
-    <path id=\\"component-dependency-graph-edge-3\\" d=\\"M50,350L50,450\\" marker-end=\\"url(#component-dependency-graph-all-edge-marker)\\" class=\\"edge all-edge\\"></path>
-    <path id=\\"component-dependency-graph-edge-4\\" d=\\"M50,450L50,550\\" marker-end=\\"url(#component-dependency-graph-all-edge-marker)\\" class=\\"edge all-edge\\"></path>
+    <path id=\\"graph-edge-2\\" d=\\"M50,250L50,350\\" marker-end=\\"url(#graph-all-edge-marker)\\" class=\\"edge all-edge\\"></path>
+    <path id=\\"graph-edge-3\\" d=\\"M50,350L50,450\\" marker-end=\\"url(#graph-all-edge-marker)\\" class=\\"edge all-edge\\"></path>
+    <path id=\\"graph-edge-4\\" d=\\"M50,450L50,550\\" marker-end=\\"url(#graph-all-edge-marker)\\" class=\\"edge all-edge\\"></path>
   </g>
   <g></g>
   <g></g>
   <g></g>
   <g></g>
   <g>
-    <path id=\\"component-dependency-graph-edge-0\\" d=\\"M50,50L50,150\\" marker-end=\\"url(#component-dependency-graph-direct-edge-marker)\\" class=\\"edge direct-edge\\"></path>
-    <path id=\\"component-dependency-graph-edge-1\\" d=\\"M50,150L50,250\\" marker-end=\\"url(#component-dependency-graph-direct-edge-marker)\\" class=\\"edge direct-edge\\"></path>
+    <path id=\\"graph-edge-0\\" d=\\"M50,50L50,150\\" marker-end=\\"url(#graph-direct-edge-marker)\\" class=\\"edge direct-edge\\"></path>
+    <path id=\\"graph-edge-1\\" d=\\"M50,150L50,250\\" marker-end=\\"url(#graph-direct-edge-marker)\\" class=\\"edge direct-edge\\"></path>
   </g>
   <g></g>
   <g>
-    <circle id=\\"component-dependency-graph-node-3\\" r=\\"10\\" cx=\\"50\\" cy=\\"350\\" title=\\"test-id-4\\" class=\\"node all-node\\"></circle>
-    <circle id=\\"component-dependency-graph-node-4\\" r=\\"10\\" cx=\\"50\\" cy=\\"450\\" title=\\"test-id-5\\" class=\\"node all-node\\"></circle>
-    <circle id=\\"component-dependency-graph-node-5\\" r=\\"10\\" cx=\\"50\\" cy=\\"550\\" title=\\"test-id-6\\" class=\\"node all-node\\"></circle>
+    <circle id=\\"graph-node-3\\" r=\\"10\\" cx=\\"50\\" cy=\\"350\\" title=\\"test-id-4\\" class=\\"node all-node\\"></circle>
+    <circle id=\\"graph-node-4\\" r=\\"10\\" cx=\\"50\\" cy=\\"450\\" title=\\"test-id-5\\" class=\\"node all-node\\"></circle>
+    <circle id=\\"graph-node-5\\" r=\\"10\\" cx=\\"50\\" cy=\\"550\\" title=\\"test-id-6\\" class=\\"node all-node\\"></circle>
   </g>
   <g></g>
   <g></g>
   <g></g>
   <g></g>
   <g>
-    <circle id=\\"component-dependency-graph-node-0\\" r=\\"10\\" cx=\\"50\\" cy=\\"50\\" title=\\"test-id-1\\" class=\\"node direct-node\\"></circle>
-    <circle id=\\"component-dependency-graph-node-2\\" r=\\"10\\" cx=\\"50\\" cy=\\"250\\" title=\\"test-id-3\\" class=\\"node direct-node\\"></circle>
+    <circle id=\\"graph-node-0\\" r=\\"10\\" cx=\\"50\\" cy=\\"50\\" title=\\"test-id-1\\" class=\\"node direct-node\\"></circle>
+    <circle id=\\"graph-node-2\\" r=\\"10\\" cx=\\"50\\" cy=\\"250\\" title=\\"test-id-3\\" class=\\"node direct-node\\"></circle>
   </g>
   <g>
-    <circle id=\\"component-dependency-graph-node-1\\" r=\\"10\\" cx=\\"50\\" cy=\\"150\\" title=\\"test-id-2\\" class=\\"node selected-node\\"></circle>
+    <circle id=\\"graph-node-1\\" r=\\"10\\" cx=\\"50\\" cy=\\"150\\" title=\\"test-id-2\\" class=\\"node selected-node\\"></circle>
   </g>
   <g><text x=\\"67\\" y=\\"370\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label all-node-label\\">
       <tspan x=\\"67\\" y=\\"370\\">
@@ -1111,36 +1111,36 @@ exports[`DiagramGraph when the mouse hovers over a node renders the direct depen
 
 exports[`DiagramGraph when the mouse hovers over a node when the mouse moves off the node the node is unselected 1`] = `
 "<svg xmlns=\\"http://www.w3.org/2000/svg\\" overflow=\\"auto\\" width=\\"100%\\" height=\\"1200\\">
-  <rect fill-opacity=\\"0\\" class=\\"component-dependency-graph-background\\"></rect>
+  <rect fill-opacity=\\"0\\" class=\\"graph-background\\"></rect>
   <defs>
-    <marker id=\\"component-dependency-graph-all-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker all-edge-marker\\">
+    <marker id=\\"graph-all-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker all-edge-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-other-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker other-edge-marker\\">
+    <marker id=\\"graph-other-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker other-edge-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-scope-related-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker scope-related-edge-marker\\">
+    <marker id=\\"graph-scope-related-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker scope-related-edge-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-scoped-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker scoped-edge-marker\\">
+    <marker id=\\"graph-scoped-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker scoped-edge-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-related-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker related-edge-marker\\">
+    <marker id=\\"graph-related-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker related-edge-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-direct-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker direct-edge-marker\\">
+    <marker id=\\"graph-direct-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker direct-edge-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-selected-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker selected-edge-marker\\">
+    <marker id=\\"graph-selected-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker selected-edge-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
   </defs>
   <g>
-    <path id=\\"component-dependency-graph-edge-0\\" d=\\"M50,50L50,150\\" marker-end=\\"url(#component-dependency-graph-all-edge-marker)\\" class=\\"edge all-edge\\"></path>
-    <path id=\\"component-dependency-graph-edge-1\\" d=\\"M50,150L50,250\\" marker-end=\\"url(#component-dependency-graph-all-edge-marker)\\" class=\\"edge all-edge\\"></path>
-    <path id=\\"component-dependency-graph-edge-2\\" d=\\"M50,250L50,350\\" marker-end=\\"url(#component-dependency-graph-all-edge-marker)\\" class=\\"edge all-edge\\"></path>
-    <path id=\\"component-dependency-graph-edge-3\\" d=\\"M50,350L50,450\\" marker-end=\\"url(#component-dependency-graph-all-edge-marker)\\" class=\\"edge all-edge\\"></path>
-    <path id=\\"component-dependency-graph-edge-4\\" d=\\"M50,450L50,550\\" marker-end=\\"url(#component-dependency-graph-all-edge-marker)\\" class=\\"edge all-edge\\"></path>
+    <path id=\\"graph-edge-0\\" d=\\"M50,50L50,150\\" marker-end=\\"url(#graph-all-edge-marker)\\" class=\\"edge all-edge\\"></path>
+    <path id=\\"graph-edge-1\\" d=\\"M50,150L50,250\\" marker-end=\\"url(#graph-all-edge-marker)\\" class=\\"edge all-edge\\"></path>
+    <path id=\\"graph-edge-2\\" d=\\"M50,250L50,350\\" marker-end=\\"url(#graph-all-edge-marker)\\" class=\\"edge all-edge\\"></path>
+    <path id=\\"graph-edge-3\\" d=\\"M50,350L50,450\\" marker-end=\\"url(#graph-all-edge-marker)\\" class=\\"edge all-edge\\"></path>
+    <path id=\\"graph-edge-4\\" d=\\"M50,450L50,550\\" marker-end=\\"url(#graph-all-edge-marker)\\" class=\\"edge all-edge\\"></path>
   </g>
   <g></g>
   <g></g>
@@ -1149,12 +1149,12 @@ exports[`DiagramGraph when the mouse hovers over a node when the mouse moves off
   <g></g>
   <g></g>
   <g>
-    <circle id=\\"component-dependency-graph-node-0\\" r=\\"10\\" cx=\\"50\\" cy=\\"50\\" title=\\"test-id-1\\" class=\\"node all-node\\"></circle>
-    <circle id=\\"component-dependency-graph-node-1\\" r=\\"10\\" cx=\\"50\\" cy=\\"150\\" title=\\"test-id-2\\" class=\\"node all-node\\"></circle>
-    <circle id=\\"component-dependency-graph-node-2\\" r=\\"10\\" cx=\\"50\\" cy=\\"250\\" title=\\"test-id-3\\" class=\\"node all-node\\"></circle>
-    <circle id=\\"component-dependency-graph-node-3\\" r=\\"10\\" cx=\\"50\\" cy=\\"350\\" title=\\"test-id-4\\" class=\\"node all-node\\"></circle>
-    <circle id=\\"component-dependency-graph-node-4\\" r=\\"10\\" cx=\\"50\\" cy=\\"450\\" title=\\"test-id-5\\" class=\\"node all-node\\"></circle>
-    <circle id=\\"component-dependency-graph-node-5\\" r=\\"10\\" cx=\\"50\\" cy=\\"550\\" title=\\"test-id-6\\" class=\\"node all-node\\"></circle>
+    <circle id=\\"graph-node-0\\" r=\\"10\\" cx=\\"50\\" cy=\\"50\\" title=\\"test-id-1\\" class=\\"node all-node\\"></circle>
+    <circle id=\\"graph-node-1\\" r=\\"10\\" cx=\\"50\\" cy=\\"150\\" title=\\"test-id-2\\" class=\\"node all-node\\"></circle>
+    <circle id=\\"graph-node-2\\" r=\\"10\\" cx=\\"50\\" cy=\\"250\\" title=\\"test-id-3\\" class=\\"node all-node\\"></circle>
+    <circle id=\\"graph-node-3\\" r=\\"10\\" cx=\\"50\\" cy=\\"350\\" title=\\"test-id-4\\" class=\\"node all-node\\"></circle>
+    <circle id=\\"graph-node-4\\" r=\\"10\\" cx=\\"50\\" cy=\\"450\\" title=\\"test-id-5\\" class=\\"node all-node\\"></circle>
+    <circle id=\\"graph-node-5\\" r=\\"10\\" cx=\\"50\\" cy=\\"550\\" title=\\"test-id-6\\" class=\\"node all-node\\"></circle>
   </g>
   <g></g>
   <g></g>
@@ -1198,55 +1198,55 @@ exports[`DiagramGraph when the mouse hovers over a node when the mouse moves off
 
 exports[`DiagramGraph when the selectedComponentId is specified renders the scope related dependencies as scope related dependencies 1`] = `
 "<svg xmlns=\\"http://www.w3.org/2000/svg\\" overflow=\\"auto\\" width=\\"100%\\" height=\\"1200\\">
-  <rect fill-opacity=\\"0\\" class=\\"component-dependency-graph-background\\"></rect>
+  <rect fill-opacity=\\"0\\" class=\\"graph-background\\"></rect>
   <defs>
-    <marker id=\\"component-dependency-graph-all-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker all-edge-marker\\">
+    <marker id=\\"graph-all-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker all-edge-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-other-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker other-edge-marker\\">
+    <marker id=\\"graph-other-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker other-edge-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-scope-related-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker scope-related-edge-marker\\">
+    <marker id=\\"graph-scope-related-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker scope-related-edge-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-scoped-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker scoped-edge-marker\\">
+    <marker id=\\"graph-scoped-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker scoped-edge-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-related-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker related-edge-marker\\">
+    <marker id=\\"graph-related-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker related-edge-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-direct-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker direct-edge-marker\\">
+    <marker id=\\"graph-direct-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker direct-edge-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-selected-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker selected-edge-marker\\">
+    <marker id=\\"graph-selected-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker selected-edge-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
   </defs>
   <g>
-    <path id=\\"component-dependency-graph-edge-2\\" d=\\"M50,250L50,350\\" marker-end=\\"url(#component-dependency-graph-all-edge-marker)\\" class=\\"edge all-edge\\"></path>
+    <path id=\\"graph-edge-2\\" d=\\"M50,250L50,350\\" marker-end=\\"url(#graph-all-edge-marker)\\" class=\\"edge all-edge\\"></path>
   </g>
   <g></g>
   <g></g>
   <g></g>
   <g></g>
   <g>
-    <path id=\\"component-dependency-graph-edge-0\\" d=\\"M50,50L50,150\\" marker-end=\\"url(#component-dependency-graph-direct-edge-marker)\\" class=\\"edge direct-edge\\"></path>
-    <path id=\\"component-dependency-graph-edge-1\\" d=\\"M50,150L50,250\\" marker-end=\\"url(#component-dependency-graph-direct-edge-marker)\\" class=\\"edge direct-edge\\"></path>
+    <path id=\\"graph-edge-0\\" d=\\"M50,50L50,150\\" marker-end=\\"url(#graph-direct-edge-marker)\\" class=\\"edge direct-edge\\"></path>
+    <path id=\\"graph-edge-1\\" d=\\"M50,150L50,250\\" marker-end=\\"url(#graph-direct-edge-marker)\\" class=\\"edge direct-edge\\"></path>
   </g>
   <g></g>
   <g>
-    <circle id=\\"component-dependency-graph-node-3\\" r=\\"10\\" cx=\\"50\\" cy=\\"350\\" title=\\"test-id-4\\" class=\\"node all-node\\"></circle>
+    <circle id=\\"graph-node-3\\" r=\\"10\\" cx=\\"50\\" cy=\\"350\\" title=\\"test-id-4\\" class=\\"node all-node\\"></circle>
   </g>
   <g></g>
   <g></g>
   <g></g>
   <g></g>
   <g>
-    <circle id=\\"component-dependency-graph-node-0\\" r=\\"10\\" cx=\\"50\\" cy=\\"50\\" title=\\"test-id-1\\" class=\\"node direct-node\\"></circle>
-    <circle id=\\"component-dependency-graph-node-2\\" r=\\"10\\" cx=\\"50\\" cy=\\"250\\" title=\\"test-id-3\\" class=\\"node direct-node\\"></circle>
+    <circle id=\\"graph-node-0\\" r=\\"10\\" cx=\\"50\\" cy=\\"50\\" title=\\"test-id-1\\" class=\\"node direct-node\\"></circle>
+    <circle id=\\"graph-node-2\\" r=\\"10\\" cx=\\"50\\" cy=\\"250\\" title=\\"test-id-3\\" class=\\"node direct-node\\"></circle>
   </g>
   <g>
-    <circle id=\\"component-dependency-graph-node-1\\" r=\\"10\\" cx=\\"50\\" cy=\\"150\\" title=\\"test-id-2\\" class=\\"node selected-node\\"></circle>
+    <circle id=\\"graph-node-1\\" r=\\"10\\" cx=\\"50\\" cy=\\"150\\" title=\\"test-id-2\\" class=\\"node selected-node\\"></circle>
   </g>
   <g><text x=\\"67\\" y=\\"370\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label all-node-label\\">
       <tspan x=\\"67\\" y=\\"370\\">
@@ -1276,36 +1276,36 @@ exports[`DiagramGraph when the selectedComponentId is specified renders the scop
 
 exports[`DiagramGraph when there are multiple nodes at the same depth sorts the nodes by their number of dependencies 1`] = `
 "<svg xmlns=\\"http://www.w3.org/2000/svg\\" overflow=\\"auto\\" width=\\"100%\\" height=\\"1200\\">
-  <rect fill-opacity=\\"0\\" class=\\"component-dependency-graph-background\\"></rect>
+  <rect fill-opacity=\\"0\\" class=\\"graph-background\\"></rect>
   <defs>
-    <marker id=\\"component-dependency-graph-all-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker all-edge-marker\\">
+    <marker id=\\"graph-all-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker all-edge-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-other-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker other-edge-marker\\">
+    <marker id=\\"graph-other-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker other-edge-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-scope-related-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker scope-related-edge-marker\\">
+    <marker id=\\"graph-scope-related-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker scope-related-edge-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-scoped-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker scoped-edge-marker\\">
+    <marker id=\\"graph-scoped-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker scoped-edge-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-related-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker related-edge-marker\\">
+    <marker id=\\"graph-related-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker related-edge-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-direct-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker direct-edge-marker\\">
+    <marker id=\\"graph-direct-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker direct-edge-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
-    <marker id=\\"component-dependency-graph-selected-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker selected-edge-marker\\">
+    <marker id=\\"graph-selected-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker selected-edge-marker\\">
       <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
     </marker>
   </defs>
   <g>
-    <path id=\\"component-dependency-graph-edge-0\\" d=\\"M50,50L50,150\\" marker-end=\\"url(#component-dependency-graph-all-edge-marker)\\" class=\\"edge all-edge\\"></path>
-    <path id=\\"component-dependency-graph-edge-1\\" d=\\"M50,150L50,250\\" marker-end=\\"url(#component-dependency-graph-all-edge-marker)\\" class=\\"edge all-edge\\"></path>
-    <path id=\\"component-dependency-graph-edge-2\\" d=\\"M50,50C50,150 350,50 350,150\\" marker-end=\\"url(#component-dependency-graph-all-edge-marker)\\" class=\\"edge all-edge\\"></path>
-    <path id=\\"component-dependency-graph-edge-3\\" d=\\"M350,150L350,250\\" marker-end=\\"url(#component-dependency-graph-all-edge-marker)\\" class=\\"edge all-edge\\"></path>
-    <path id=\\"component-dependency-graph-edge-4\\" d=\\"M350,250L350,350\\" marker-end=\\"url(#component-dependency-graph-all-edge-marker)\\" class=\\"edge all-edge\\"></path>
+    <path id=\\"graph-edge-0\\" d=\\"M50,50L50,150\\" marker-end=\\"url(#graph-all-edge-marker)\\" class=\\"edge all-edge\\"></path>
+    <path id=\\"graph-edge-1\\" d=\\"M50,150L50,250\\" marker-end=\\"url(#graph-all-edge-marker)\\" class=\\"edge all-edge\\"></path>
+    <path id=\\"graph-edge-2\\" d=\\"M50,50C50,150 350,50 350,150\\" marker-end=\\"url(#graph-all-edge-marker)\\" class=\\"edge all-edge\\"></path>
+    <path id=\\"graph-edge-3\\" d=\\"M350,150L350,250\\" marker-end=\\"url(#graph-all-edge-marker)\\" class=\\"edge all-edge\\"></path>
+    <path id=\\"graph-edge-4\\" d=\\"M350,250L350,350\\" marker-end=\\"url(#graph-all-edge-marker)\\" class=\\"edge all-edge\\"></path>
   </g>
   <g></g>
   <g></g>
@@ -1314,12 +1314,12 @@ exports[`DiagramGraph when there are multiple nodes at the same depth sorts the 
   <g></g>
   <g></g>
   <g>
-    <circle id=\\"component-dependency-graph-node-0\\" r=\\"10\\" cx=\\"50\\" cy=\\"50\\" title=\\"test-id-1\\" class=\\"node all-node\\"></circle>
-    <circle id=\\"component-dependency-graph-node-1\\" r=\\"10\\" cx=\\"50\\" cy=\\"150\\" title=\\"test-id-2\\" class=\\"node all-node\\"></circle>
-    <circle id=\\"component-dependency-graph-node-2\\" r=\\"10\\" cx=\\"50\\" cy=\\"250\\" title=\\"test-id-3\\" class=\\"node all-node\\"></circle>
-    <circle id=\\"component-dependency-graph-node-3\\" r=\\"10\\" cx=\\"350\\" cy=\\"150\\" title=\\"test-id-4\\" class=\\"node all-node\\"></circle>
-    <circle id=\\"component-dependency-graph-node-4\\" r=\\"10\\" cx=\\"350\\" cy=\\"250\\" title=\\"test-id-5\\" class=\\"node all-node\\"></circle>
-    <circle id=\\"component-dependency-graph-node-5\\" r=\\"10\\" cx=\\"350\\" cy=\\"350\\" title=\\"test-id-6\\" class=\\"node all-node\\"></circle>
+    <circle id=\\"graph-node-0\\" r=\\"10\\" cx=\\"50\\" cy=\\"50\\" title=\\"test-id-1\\" class=\\"node all-node\\"></circle>
+    <circle id=\\"graph-node-1\\" r=\\"10\\" cx=\\"50\\" cy=\\"150\\" title=\\"test-id-2\\" class=\\"node all-node\\"></circle>
+    <circle id=\\"graph-node-2\\" r=\\"10\\" cx=\\"50\\" cy=\\"250\\" title=\\"test-id-3\\" class=\\"node all-node\\"></circle>
+    <circle id=\\"graph-node-3\\" r=\\"10\\" cx=\\"350\\" cy=\\"150\\" title=\\"test-id-4\\" class=\\"node all-node\\"></circle>
+    <circle id=\\"graph-node-4\\" r=\\"10\\" cx=\\"350\\" cy=\\"250\\" title=\\"test-id-5\\" class=\\"node all-node\\"></circle>
+    <circle id=\\"graph-node-5\\" r=\\"10\\" cx=\\"350\\" cy=\\"350\\" title=\\"test-id-6\\" class=\\"node all-node\\"></circle>
   </g>
   <g></g>
   <g></g>

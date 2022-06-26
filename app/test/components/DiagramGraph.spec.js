@@ -173,7 +173,7 @@ describe('DiagramGraph', () => {
 
     test('renders the scope related dependencies as scope related dependencies', async () => {
       await createWrapper()
-      await wrapper.get('#component-dependency-graph-node-1').trigger('click')
+      await wrapper.get('#graph-node-1').trigger('click')
       expect(wrapper.html()).toMatchSnapshot()
     })
   })
@@ -238,15 +238,15 @@ describe('DiagramGraph', () => {
 
     test('renders the direct dependencies as direct dependencies', async () => {
       await createWrapper()
-      await wrapper.get('#component-dependency-graph-node-1').trigger('click')
+      await wrapper.get('#graph-node-1').trigger('click')
       expect(wrapper.html()).toMatchSnapshot()
     })
 
     describe('when the node is clicked a second time', () => {
       test('the node is unselected', async () => {
         await createWrapper()
-        await wrapper.get('#component-dependency-graph-node-1').trigger('click')
-        await wrapper.get('#component-dependency-graph-node-1').trigger('click')
+        await wrapper.get('#graph-node-1').trigger('click')
+        await wrapper.get('#graph-node-1').trigger('click')
         expect(wrapper.html()).toMatchSnapshot()
       })
     })
@@ -254,10 +254,8 @@ describe('DiagramGraph', () => {
     describe('when the background is clicked', () => {
       test('the node is unselected', async () => {
         await createWrapper()
-        await wrapper.get('#component-dependency-graph-node-1').trigger('click')
-        await wrapper
-          .get('.component-dependency-graph-background')
-          .trigger('click')
+        await wrapper.get('#graph-node-1').trigger('click')
+        await wrapper.get('.graph-background').trigger('click')
         expect(wrapper.element).toMatchSnapshot()
       })
     })
@@ -269,7 +267,7 @@ describe('DiagramGraph', () => {
 
       test('renders the related dependency as a related dependency', async () => {
         await createWrapper()
-        await wrapper.get('#component-dependency-graph-node-1').trigger('click')
+        await wrapper.get('#graph-node-1').trigger('click')
         expect(wrapper.html()).toMatchSnapshot()
       })
     })
@@ -335,21 +333,15 @@ describe('DiagramGraph', () => {
 
     test('renders the direct dependencies as direct dependencies', async () => {
       await createWrapper()
-      await wrapper
-        .get('#component-dependency-graph-node-1')
-        .trigger('mouseover')
+      await wrapper.get('#graph-node-1').trigger('mouseover')
       expect(wrapper.html()).toMatchSnapshot()
     })
 
     describe('when the mouse moves off the node', () => {
       test('the node is unselected', async () => {
         await createWrapper()
-        await wrapper
-          .get('#component-dependency-graph-node-1')
-          .trigger('mouseover')
-        await wrapper
-          .get('#component-dependency-graph-node-1')
-          .trigger('mouseout')
+        await wrapper.get('#graph-node-1').trigger('mouseover')
+        await wrapper.get('#graph-node-1').trigger('mouseout')
         expect(wrapper.html()).toMatchSnapshot()
       })
     })
@@ -424,7 +416,7 @@ describe('DiagramGraph', () => {
     describe('when a node has been clicked', () => {
       test('renders only the related and direct dependencies', async () => {
         createWrapper()
-        await wrapper.get('#component-dependency-graph-node-1').trigger('click')
+        await wrapper.get('#graph-node-1').trigger('click')
         expect(wrapper.html()).toMatchSnapshot()
       })
     })
@@ -499,7 +491,7 @@ describe('DiagramGraph', () => {
     describe('when a node has been clicked', () => {
       test('renders only the direct dependencies', async () => {
         createWrapper()
-        await wrapper.get('#component-dependency-graph-node-1').trigger('click')
+        await wrapper.get('#graph-node-1').trigger('click')
         expect(wrapper.html()).toMatchSnapshot()
       })
     })

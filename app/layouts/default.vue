@@ -16,6 +16,7 @@
           <b-nav-item to="/all-environments"> Environments </b-nav-item>
           <b-nav-item to="/all-components"> Components </b-nav-item>
           <b-nav-item to="/diagrams"> Diagrams </b-nav-item>
+          <b-nav-item to="/docs"> Docs </b-nav-item>
           <b-nav-item to="/all-components/openapi-specs"> OpenAPI </b-nav-item>
           <b-nav-item to="/all-components/graphql-schemas">
             GraphQL
