@@ -35,12 +35,14 @@ public class ComponentController {
             @RequestParam(required = false) Optional<Integer> offset,
             @RequestParam(required = false) Optional<Integer> limit,
             @RequestParam(required = false) List<String> stateType,
+            @RequestParam(required = false) List<String> stateId,
             @RequestParam(required = false) List<String> testOutcome
     ) {
         return new GetComponentsResponse(componentService.getComponents(
                 offset,
                 limit,
                 createUnmodifiableList(stateType),
+                createUnmodifiableList(stateId),
                 getEnumListFromJsonValues(TestOutcome.class, testOutcome)
         ));
     }
@@ -56,11 +58,13 @@ public class ComponentController {
     public GetComponentResponse getComponent(
             @PathVariable String componentId,
             @RequestParam(required = false) List<String> stateType,
+            @RequestParam(required = false) List<String> stateId,
             @RequestParam(required = false) List<String> testOutcome
     ) {
         return new GetComponentResponse(componentService.getComponent(
                 componentId,
                 createUnmodifiableList(stateType),
+                createUnmodifiableList(stateId),
                 getEnumListFromJsonValues(TestOutcome.class, testOutcome)
         ));
     }

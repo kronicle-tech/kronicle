@@ -133,6 +133,10 @@ export default {
     },
   },
 
+  render: {
+    fallback: false,
+  },
+
   privateRuntimeConfig: {
     serviceBaseUrl: serverSideServiceBaseUrl,
   },

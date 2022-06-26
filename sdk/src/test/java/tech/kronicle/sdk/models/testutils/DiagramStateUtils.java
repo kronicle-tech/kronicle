@@ -11,7 +11,8 @@ public final class DiagramStateUtils {
     public static DiagramState createDiagramState(int stateNumber, String type) {
         return new FakeDiagramState(
                 type,
-                "test-plugin-id-" + stateNumber
+                "test-plugin-id-" + stateNumber,
+                "test-id-" + stateNumber
         );
     }
 

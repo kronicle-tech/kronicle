@@ -27,6 +27,7 @@ public class ToDosState implements ComponentState {
     @NotBlank
     @Pattern(regexp = PatternStrings.ID)
     String pluginId;
+    String id = null;
     @NotNull
     @Valid List<ToDo> toDos;
 

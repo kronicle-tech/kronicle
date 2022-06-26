@@ -17,7 +17,7 @@ public class TeamGraphQlController {
     @QueryMapping
     public TeamsOutput teams() {
         return new TeamsOutput(
-                componentService.getTeams(List.of(), List.of())
+                componentService.getTeams(List.of(), List.of(), List.of())
         );
     }
 }

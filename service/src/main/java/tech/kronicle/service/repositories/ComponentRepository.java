@@ -6,6 +6,7 @@ import org.slf4j.Logger;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Repository;
 import tech.kronicle.sdk.models.*;
+import tech.kronicle.sdk.models.doc.DocFile;
 import tech.kronicle.service.services.*;
 import tech.kronicle.utils.ObjectReference;
 

@@ -32,10 +32,12 @@ public class TeamController {
     @PartialResponse
     public GetTeamsResponse getTeams(
             @RequestParam(required = false) List<String> stateType,
+            @RequestParam(required = false) List<String> stateId,
             @RequestParam(required = false) List<String> testOutcome
     ) {
         return new GetTeamsResponse(componentService.getTeams(
                 createUnmodifiableList(stateType),
+                createUnmodifiableList(stateId),
                 getEnumListFromJsonValues(TestOutcome.class, testOutcome)
         ));
     }
@@ -51,11 +53,13 @@ public class TeamController {
     public GetTeamResponse getTeam(
             @PathVariable String teamId,
             @RequestParam(required = false) List<String> stateType,
+            @RequestParam(required = false) List<String> stateId,
             @RequestParam(required = false) List<String> testOutcome
     ) {
         return new GetTeamResponse(componentService.getTeam(
                 teamId,
                 createUnmodifiableList(stateType),
+                createUnmodifiableList(stateId),
                 getEnumListFromJsonValues(TestOutcome.class, testOutcome)
         ));
     }

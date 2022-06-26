@@ -25,6 +25,7 @@ public class GraphState implements DiagramState {
     @NotBlank
     @Pattern(regexp = PatternStrings.ID)
     String pluginId;
+    String id = null;
     @NotBlank
     @Pattern(regexp = PatternStrings.ID)
     String environmentId;

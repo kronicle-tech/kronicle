@@ -23,6 +23,7 @@ public class NodeJsState implements ComponentState {
     @NotBlank
     @Pattern(regexp = PatternStrings.ID)
     String pluginId;
+    String id = null;
     @NotNull
     Boolean used;
 }

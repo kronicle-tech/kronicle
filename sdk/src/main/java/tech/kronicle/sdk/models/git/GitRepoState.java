@@ -26,6 +26,7 @@ public class GitRepoState implements ComponentState {
     @NotBlank
     @Pattern(regexp = PatternStrings.ID)
     String pluginId;
+    String id = null;
     LocalDateTime firstCommitTimestamp;
     LocalDateTime lastCommitTimestamp;
     Integer commitCount;

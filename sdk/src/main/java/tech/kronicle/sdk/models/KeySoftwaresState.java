@@ -26,6 +26,7 @@ public class KeySoftwaresState implements ComponentState {
     @NotBlank
     @Pattern(regexp = PatternStrings.ID)
     String pluginId;
+    String id = null;
     @NotNull
     List<@Valid KeySoftware> keySoftwares;
 
