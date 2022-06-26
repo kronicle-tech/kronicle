@@ -43,7 +43,7 @@ public class AreaControllerTest {
     }
 
     @Test
-    public void getAreasShouldHandleNullFilter() {
+    public void getAreasShouldHandleNullFilters() {
         // Given
         when(mockComponentService.getAreas(List.of(), List.of(), List.of())).thenReturn(AREAS);
 
@@ -96,7 +96,7 @@ public class AreaControllerTest {
     }
 
     @Test
-    public void getAreaShouldHandleNullFilter() {
+    public void getAreaShouldHandleNullFilters() {
         // Given
         when(mockComponentService.getArea(AREA_1.getId(), List.of(), List.of(), List.of())).thenReturn(AREA_1);
 

@@ -11,6 +11,8 @@ import tech.kronicle.service.springdoc.Texts;
 
 import java.util.List;
 
+import static tech.kronicle.sdk.utils.ListUtils.createUnmodifiableList;
+
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/v1/diagrams")
@@ -30,7 +32,10 @@ public class DiagramController {
             @RequestParam(required = false) List<String> stateType,
             @RequestParam(required = false) List<String> stateId
     ) {
-        return new GetDiagramsResponse(componentService.getDiagrams(stateType, stateId));
+        return new GetDiagramsResponse(componentService.getDiagrams(
+                createUnmodifiableList(stateType),
+                createUnmodifiableList(stateId)
+        ));
     }
 
     @Operation(
@@ -46,6 +51,10 @@ public class DiagramController {
             @RequestParam(required = false) List<String> stateType,
             @RequestParam(required = false) List<String> stateId
     ) {
-        return new GetDiagramResponse(componentService.getDiagram(diagramId, stateType, stateId));
+        return new GetDiagramResponse(componentService.getDiagram(
+                diagramId,
+                createUnmodifiableList(stateType),
+                createUnmodifiableList(stateId)
+        ));
     }
 }

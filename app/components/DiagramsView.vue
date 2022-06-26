@@ -20,12 +20,14 @@ import Vue, { PropType } from 'vue'
 import { BCard, BListGroup, BListGroupItem } from 'bootstrap-vue'
 import { Component, Diagram } from '~/types/kronicle-service'
 import DiagramTable from '~/components/DiagramTable.vue'
+import ComponentFilters from '~/components/ComponentFilters.vue'
 
 export default Vue.extend({
   components: {
     'b-card': BCard,
     'b-list-group': BListGroup,
     'b-list-group-item': BListGroupItem,
+    ComponentFilters,
     DiagramTable,
   },
   props: {

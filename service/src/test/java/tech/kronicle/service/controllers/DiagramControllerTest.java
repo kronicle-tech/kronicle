@@ -46,7 +46,20 @@ public class DiagramControllerTest {
     }
 
     @Test
-    public void getComponentsShouldPassFiltersToComponentService() {
+    public void getDiagramsShouldHandleNullFilters() {
+        // Given
+        when(mockComponentService.getDiagrams(List.of(), List.of())).thenReturn(DIAGRAMS);
+
+        // When
+        GetDiagramsResponse returnValue = underTest.getDiagrams(null, null);
+
+        // Then
+        assertThat(returnValue).isNotNull();
+        assertThat(returnValue.getDiagrams()).containsExactlyElementsOf(DIAGRAMS);
+    }
+
+    @Test
+    public void getDiagramsShouldPassFiltersToComponentService() {
         // Given
         when(mockComponentService.getDiagrams(List.of("test-state-type-1"), List.of("test-state-id-1"))).thenReturn(DIAGRAMS);
 
@@ -83,6 +96,20 @@ public class DiagramControllerTest {
         // Then
         assertThat(returnValue).isNotNull();
         assertThat(returnValue.getDiagram()).isNull();
+    }
+
+    @Test
+    public void getDiagramShouldHandleNullFilters() {
+        // Given
+        String diagramId = "unknown";
+        when(mockComponentService.getDiagram(diagramId, List.of(), List.of())).thenReturn(DIAGRAM_1);
+
+        // When
+        GetDiagramResponse returnValue = underTest.getDiagram(diagramId, null, null);
+
+        // Then
+        assertThat(returnValue).isNotNull();
+        assertThat(returnValue.getDiagram()).isEqualTo(DIAGRAM_1);
     }
 
     @Test
