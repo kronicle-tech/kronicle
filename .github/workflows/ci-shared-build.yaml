@@ -89,7 +89,7 @@ jobs:
           ./gradlew ${{ inputs.build_tasks }}
 
       - name: Archive Dependency Check report 🗄️
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         if: always()
         with:
           name: dependency-check-report
@@ -98,7 +98,7 @@ jobs:
           if-no-files-found: ${{ inputs.dependency_check_reports && 'error' || 'ignore' }}
 
       - name: Archive JUnit test reports 🗄️
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         if: always()
         with:
           name: junit-test-reports
