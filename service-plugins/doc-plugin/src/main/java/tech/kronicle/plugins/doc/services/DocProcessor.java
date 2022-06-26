@@ -5,11 +5,13 @@ import tech.kronicle.plugins.doc.DocPlugin;
 import tech.kronicle.plugins.doc.models.FileType;
 import tech.kronicle.sdk.models.Doc;
 import tech.kronicle.sdk.models.doc.DocFile;
+import tech.kronicle.sdk.models.doc.DocFileContentType;
 import tech.kronicle.sdk.models.doc.DocState;
 import tech.kronicle.utils.FileUtils;
 
 import javax.inject.Inject;
 import java.nio.file.Path;
+import java.util.Base64;
 import java.util.List;
 import java.util.Objects;
 
@@ -19,6 +21,8 @@ import static java.util.stream.Collectors.toUnmodifiableList;
 
 @RequiredArgsConstructor(onConstructor = @__({@Inject}))
 public class DocProcessor {
+
+    private static final Base64.Encoder BASE_64_ENCODER = Base64.getEncoder();
 
     private final FileTypeRegistry fileTypeRegistry;
     private final FileUtils fileUtils;
@@ -80,7 +84,17 @@ public class DocProcessor {
                 .path(codebaseDir.relativize(filePath).toString())
                 .mediaType(fileType.getMediaType())
                 .contentType(fileType.getContentType())
-                .content(fileUtils.readFileContent(filePath))
+                .content(readFileContent(filePath, fileType.getContentType()))
                 .build();
+    }
+
+    private String readFileContent(Path filePath, DocFileContentType contentType) {
+        if (contentType == DocFileContentType.Binary) {
+            return BASE_64_ENCODER.encodeToString(
+                    fileUtils.readFileBinaryContent(filePath)
+            );
+        } else {
+            return fileUtils.readFileContent(filePath);
+        }
     }
 }
