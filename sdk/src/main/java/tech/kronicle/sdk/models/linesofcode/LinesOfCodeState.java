@@ -27,6 +27,7 @@ public class LinesOfCodeState implements ComponentState {
     @NotBlank
     @Pattern(regexp = PatternStrings.ID)
     String pluginId;
+    String id = null;
     Integer count;
     @NotNull
     List<@Valid FileExtensionCount> fileExtensionCounts;

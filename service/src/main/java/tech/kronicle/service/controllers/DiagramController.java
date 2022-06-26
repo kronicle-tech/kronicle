@@ -3,8 +3,6 @@ package tech.kronicle.service.controllers;
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
-import tech.kronicle.sdk.models.GetComponentDiagramsResponse;
-import tech.kronicle.sdk.models.GetComponentResponse;
 import tech.kronicle.sdk.models.GetDiagramResponse;
 import tech.kronicle.sdk.models.GetDiagramsResponse;
 import tech.kronicle.service.partialresponse.PartialResponse;
@@ -29,9 +27,10 @@ public class DiagramController {
     @GetMapping
     @PartialResponse
     public GetDiagramsResponse getDiagrams(
-            @RequestParam(required = false) List<String> stateType
+            @RequestParam(required = false) List<String> stateType,
+            @RequestParam(required = false) List<String> stateId
     ) {
-        return new GetDiagramsResponse(componentService.getDiagrams(stateType));
+        return new GetDiagramsResponse(componentService.getDiagrams(stateType, stateId));
     }
 
     @Operation(
@@ -44,8 +43,9 @@ public class DiagramController {
     @PartialResponse
     public GetDiagramResponse getDiagram(
             @PathVariable String diagramId,
-            @RequestParam(required = false) List<String> stateType
+            @RequestParam(required = false) List<String> stateType,
+            @RequestParam(required = false) List<String> stateId
     ) {
-        return new GetDiagramResponse(componentService.getDiagram(diagramId, stateType));
+        return new GetDiagramResponse(componentService.getDiagram(diagramId, stateType, stateId));
     }
 }

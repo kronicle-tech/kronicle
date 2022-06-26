@@ -8,4 +8,5 @@ public class FakeComponentState implements ComponentState {
 
     String type;
     String pluginId;
+    String id;
 }

@@ -10,7 +10,9 @@
     <tbody>
       <tr v-for="(diagram, diagramIndex) in diagrams" :key="diagramIndex">
         <td class="diagram">
-          <DiagramName :diagram="diagram" />
+          <a v-if="diagram" :href="`/diagrams/${diagram.id}`">{{
+            diagram.name
+          }}</a>
         </td>
         <td class="action table-secondary">
           <b-button :href="`/diagrams/${diagram.id}`" variant="info">
@@ -29,13 +31,11 @@
 import Vue, { PropType } from 'vue'
 import { BButton } from 'bootstrap-vue'
 import { Diagram } from '~/types/kronicle-service'
-import DiagramName from '~/components/DiagramName.vue'
 import Markdown from '~/components/Markdown.vue'
 
 export default Vue.extend({
   components: {
     'b-button': BButton,
-    DiagramName,
     Markdown,
   },
   props: {

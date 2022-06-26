@@ -5,7 +5,7 @@ import tech.kronicle.sdk.constants.PatternStrings;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Pattern;
 
-public interface ComponentState extends ObjectWithType {
+public interface ComponentState extends State, ObjectWithId {
 
     @NotEmpty
     @Pattern(regexp = PatternStrings.ID)
@@ -14,5 +14,8 @@ public interface ComponentState extends ObjectWithType {
     @NotEmpty
     @Pattern(regexp = PatternStrings.ID)
     String getPluginId();
+
+    @Pattern(regexp = PatternStrings.ID)
+    String getId();
 
 }

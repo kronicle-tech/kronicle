@@ -32,10 +32,10 @@ public class TeamControllerTest {
     @Test
     public void getTeamsShouldReturnTeams() {
         // Given
-        when(mockComponentService.getTeams(List.of(), List.of())).thenReturn(TEAMS);
+        when(mockComponentService.getTeams(List.of(), List.of(), List.of())).thenReturn(TEAMS);
 
         // When
-        GetTeamsResponse returnValue = underTest.getTeams(List.of(), List.of());
+        GetTeamsResponse returnValue = underTest.getTeams(List.of(), List.of(), List.of());
 
         // Then
         assertThat(returnValue).isNotNull();
@@ -45,10 +45,10 @@ public class TeamControllerTest {
     @Test
     public void getTeamsShouldHandleNullFilters() {
         // Given
-        when(mockComponentService.getTeams(List.of(), List.of())).thenReturn(TEAMS);
+        when(mockComponentService.getTeams(List.of(), List.of(), List.of())).thenReturn(TEAMS);
 
         // When
-        GetTeamsResponse returnValue = underTest.getTeams(null, null);
+        GetTeamsResponse returnValue = underTest.getTeams(null, null, null);
 
         // Then
         assertThat(returnValue).isNotNull();
@@ -58,10 +58,10 @@ public class TeamControllerTest {
     @Test
     public void getTeamsShouldPassFiltersToComponentService() {
         // Given
-        when(mockComponentService.getTeams(List.of("test-state-type-1"), List.of(TestOutcome.FAIL))).thenReturn(TEAMS);
+        when(mockComponentService.getTeams(List.of("test-state-type-1"), List.of("test-state-id-1"), List.of(TestOutcome.FAIL))).thenReturn(TEAMS);
 
         // When
-        GetTeamsResponse returnValue = underTest.getTeams(List.of("test-state-type-1"), List.of(TestOutcome.FAIL.value()));
+        GetTeamsResponse returnValue = underTest.getTeams(List.of("test-state-type-1"), List.of("test-state-id-1"), List.of(TestOutcome.FAIL.value()));
 
         // Then
         assertThat(returnValue).isNotNull();
@@ -71,10 +71,10 @@ public class TeamControllerTest {
     @Test
     public void getTeamShouldReturnATeam() {
         // Given
-        when(mockComponentService.getTeam(TEAM_1.getId(), List.of(), List.of())).thenReturn(TEAM_1);
+        when(mockComponentService.getTeam(TEAM_1.getId(), List.of(), List.of(), List.of())).thenReturn(TEAM_1);
 
         // When
-        GetTeamResponse returnValue = underTest.getTeam(TEAM_1.getId(), List.of(), List.of());
+        GetTeamResponse returnValue = underTest.getTeam(TEAM_1.getId(), List.of(), List.of(), List.of());
 
         // Then
         assertThat(returnValue).isNotNull();
@@ -85,10 +85,10 @@ public class TeamControllerTest {
     public void getTeamShouldNotReturnATeamWhenTeamIdIsUnknown() {
         // Given
         String teamId = "unknown";
-        when(mockComponentService.getTeam(teamId, List.of(), List.of())).thenReturn(null);
+        when(mockComponentService.getTeam(teamId, List.of(), List.of(), List.of())).thenReturn(null);
 
         // When
-        GetTeamResponse returnValue = underTest.getTeam(teamId, List.of(), List.of());
+        GetTeamResponse returnValue = underTest.getTeam(teamId, List.of(), List.of(), List.of());
 
         // Then
         assertThat(returnValue).isNotNull();
@@ -98,36 +98,23 @@ public class TeamControllerTest {
     @Test
     public void getTeamShouldHandleNullFilters() {
         // Given
-        when(mockComponentService.getTeam(TEAM_1.getId(), List.of(), List.of())).thenReturn(TEAM_1);
+        when(mockComponentService.getTeam(TEAM_1.getId(), List.of(), List.of(), List.of())).thenReturn(TEAM_1);
 
         // When
-        GetTeamResponse returnValue = underTest.getTeam(TEAM_1.getId(), null, null);
+        GetTeamResponse returnValue = underTest.getTeam(TEAM_1.getId(), null, null, null);
 
         // Then
         assertThat(returnValue).isNotNull();
         assertThat(returnValue.getTeam()).isEqualTo(TEAM_1);
     }
 
-    @Test
-    public void getTeamShouldPassFiltersToTeamService() {
-        // Given
-        when(mockComponentService.getTeam(TEAM_1.getId(), List.of("test-state-type-1"), List.of(TestOutcome.FAIL))).thenReturn(TEAM_1);
-
-        // When
-        GetTeamResponse returnValue = underTest.getTeam(TEAM_1.getId(), List.of("test-state-type-1"), List.of(TestOutcome.FAIL.value()));
-
-        // Then
-        assertThat(returnValue).isNotNull();
-        assertThat(returnValue.getTeam()).isEqualTo(TEAM_1);
-    }
-    
     @Test
     public void getTeamShouldPassFiltersToComponentService() {
         // Given
-        when(mockComponentService.getTeam(TEAM_1.getId(), List.of("test-state-type-1"), List.of(TestOutcome.FAIL))).thenReturn(TEAM_1);
+        when(mockComponentService.getTeam(TEAM_1.getId(), List.of("test-state-type-1"), List.of("test-state-id-1"), List.of(TestOutcome.FAIL))).thenReturn(TEAM_1);
 
         // When
-        GetTeamResponse returnValue = underTest.getTeam(TEAM_1.getId(), List.of("test-state-type-1"), List.of(TestOutcome.FAIL.value()));
+        GetTeamResponse returnValue = underTest.getTeam(TEAM_1.getId(), List.of("test-state-type-1"), List.of("test-state-id-1"), List.of(TestOutcome.FAIL.value()));
 
         // Then
         assertThat(returnValue).isNotNull();

@@ -11,7 +11,8 @@ public final class ComponentStateUtils {
     public static ComponentState createComponentState(int stateNumber, String type) {
         return new FakeComponentState(
                 type,
-                "test-plugin-id-" + stateNumber
+                "test-plugin-id-" + stateNumber,
+                "test-id-" + stateNumber
         );
     }
 

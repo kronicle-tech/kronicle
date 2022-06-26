@@ -35,10 +35,10 @@ public class DiagramControllerTest {
     @Test
     public void getDiagramsShouldReturnDiagrams() {
         // Given
-        when(mockComponentService.getDiagrams(List.of())).thenReturn(DIAGRAMS);
+        when(mockComponentService.getDiagrams(List.of(), List.of())).thenReturn(DIAGRAMS);
 
         // When
-        GetDiagramsResponse returnValue = underTest.getDiagrams(List.of());
+        GetDiagramsResponse returnValue = underTest.getDiagrams(List.of(), List.of());
 
         // Then
         assertThat(returnValue).isNotNull();
@@ -46,13 +46,12 @@ public class DiagramControllerTest {
     }
 
     @Test
-    public void getDiagramsShouldFilterStateTypes() {
+    public void getComponentsShouldPassFiltersToComponentService() {
         // Given
-        List<String> stateTypes = List.of("test-state-type-1", "test-state-type-2");
-        when(mockComponentService.getDiagrams(stateTypes)).thenReturn(DIAGRAMS);
+        when(mockComponentService.getDiagrams(List.of("test-state-type-1"), List.of("test-state-id-1"))).thenReturn(DIAGRAMS);
 
         // When
-        GetDiagramsResponse returnValue = underTest.getDiagrams(stateTypes);
+        GetDiagramsResponse returnValue = underTest.getDiagrams(List.of("test-state-type-1"), List.of("test-state-id-1"));
 
         // Then
         assertThat(returnValue).isNotNull();
@@ -62,10 +61,10 @@ public class DiagramControllerTest {
     @Test
     public void getDiagramShouldReturnADiagram() {
         // Given
-        when(mockComponentService.getDiagram(DIAGRAM_1.getId(), List.of())).thenReturn(DIAGRAM_1);
+        when(mockComponentService.getDiagram(DIAGRAM_1.getId(), List.of(), List.of())).thenReturn(DIAGRAM_1);
 
         // When
-        GetDiagramResponse returnValue = underTest.getDiagram(DIAGRAM_1.getId(), List.of());
+        GetDiagramResponse returnValue = underTest.getDiagram(DIAGRAM_1.getId(), List.of(), List.of());
 
         // Then
         assertThat(returnValue).isNotNull();
@@ -76,10 +75,10 @@ public class DiagramControllerTest {
     public void getDiagramShouldNotReturnADiagramWhenDiagramIdIsUnknown() {
         // Given
         String diagramId = "unknown";
-        when(mockComponentService.getDiagram(diagramId, List.of())).thenReturn(null);
+        when(mockComponentService.getDiagram(diagramId, List.of(), List.of())).thenReturn(null);
 
         // When
-        GetDiagramResponse returnValue = underTest.getDiagram(diagramId, List.of());
+        GetDiagramResponse returnValue = underTest.getDiagram(diagramId, List.of(), List.of());
 
         // Then
         assertThat(returnValue).isNotNull();
@@ -90,11 +89,10 @@ public class DiagramControllerTest {
     public void getDiagramShouldFilterStateTypes() {
         // Given
         String diagramId = "unknown";
-        List<String> stateTypes = List.of("test-state-type-1", "test-state-type-2");
-        when(mockComponentService.getDiagram(diagramId, stateTypes)).thenReturn(DIAGRAM_1);
+        when(mockComponentService.getDiagram(diagramId, List.of("test-state-type-1"), List.of("test-state-id-1"))).thenReturn(DIAGRAM_1);
 
         // When
-        GetDiagramResponse returnValue = underTest.getDiagram(diagramId, stateTypes);
+        GetDiagramResponse returnValue = underTest.getDiagram(diagramId, List.of("test-state-type-1"), List.of("test-state-id-1"));
 
         // Then
         assertThat(returnValue).isNotNull();

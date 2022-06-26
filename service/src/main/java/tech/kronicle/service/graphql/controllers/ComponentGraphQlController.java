@@ -18,7 +18,7 @@ public class ComponentGraphQlController {
     @QueryMapping
     public ComponentsOutput components() {
         return new ComponentsOutput(
-                componentService.getComponents(Optional.empty(), Optional.empty(), List.of(), List.of())
+                componentService.getComponents(Optional.empty(), Optional.empty(), List.of(), List.of(), List.of())
         );
     }
 }

@@ -32,10 +32,12 @@ public class AreaController {
     @PartialResponse
     public GetAreasResponse getAreas(
             @RequestParam(required = false) List<String> stateType,
+            @RequestParam(required = false) List<String> stateId,
             @RequestParam(required = false) List<String> testOutcome
     ) {
         return new GetAreasResponse(componentService.getAreas(
                 createUnmodifiableList(stateType),
+                createUnmodifiableList(stateId),
                 getEnumListFromJsonValues(TestOutcome.class, testOutcome)
         ));
     }
@@ -51,11 +53,13 @@ public class AreaController {
     public GetAreaResponse getArea(
             @PathVariable String areaId,
             @RequestParam(required = false) List<String> stateType,
+            @RequestParam(required = false) List<String> stateId,
             @RequestParam(required = false) List<String> testOutcome
     ) {
         return new GetAreaResponse(componentService.getArea(
                 areaId,
                 createUnmodifiableList(stateType),
+                createUnmodifiableList(stateId),
                 getEnumListFromJsonValues(TestOutcome.class, testOutcome)
         ));
     }

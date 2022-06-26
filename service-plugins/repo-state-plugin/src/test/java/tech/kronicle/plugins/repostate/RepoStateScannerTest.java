@@ -140,7 +140,10 @@ public class RepoStateScannerTest extends BaseScannerTest {
     }
 
     private ComponentState createComponentState(int componentStateNumber) {
-        return new TestComponentState("test-component-state-" + componentStateNumber);
+        return new TestComponentState(
+                "test-component-state-plugin-id-" + componentStateNumber,
+                "test-component-state-id-" + componentStateNumber
+        );
     }
 
     private ComponentMetadata createComponentMetadata() {
@@ -182,5 +185,6 @@ public class RepoStateScannerTest extends BaseScannerTest {
 
         String type = "test";
         String pluginId;
+        String id;
     }
 }

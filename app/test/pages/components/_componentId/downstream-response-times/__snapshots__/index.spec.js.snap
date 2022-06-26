@@ -39,6 +39,8 @@ exports[`Index when Get Component service endpoint returns a component renders t
      
     <!---->
      
+    <!---->
+     
     <a
       class="btn my-1 btn-secondary"
       href="/components/test-component-id-1/cross-functional-requirements"
@@ -169,6 +171,8 @@ exports[`Index when Get Component service endpoint returns a component when Get 
     Diagrams
   
     </a>
+     
+    <!---->
      
     <!---->
      
@@ -308,6 +312,8 @@ exports[`Index when Get Component service endpoint returns a component when Get 
     Diagrams
   
     </a>
+     
+    <!---->
      
     <!---->
      

@@ -2,7 +2,10 @@ package tech.kronicle.service.services;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import tech.kronicle.sdk.constants.ComponentStateTypes;
 import tech.kronicle.sdk.models.*;
+import tech.kronicle.sdk.models.doc.DocFile;
+import tech.kronicle.sdk.models.doc.DocState;
 import tech.kronicle.service.repositories.ComponentRepository;
 
 import java.util.List;
@@ -24,6 +27,7 @@ public class ComponentService {
             Optional<Integer> offset,
             Optional<Integer> limit,
             List<String> stateTypes,
+            List<String> stateIds,
             List<TestOutcome> testOutcomes
     ) {
         return filterComponents(
@@ -31,6 +35,7 @@ public class ComponentService {
                 offset,
                 limit,
                 stateTypes,
+                stateIds,
                 testOutcomes
         );
     }
@@ -38,6 +43,7 @@ public class ComponentService {
     public Component getComponent(
             String componentId,
             List<String> stateTypes,
+            List<String> stateIds,
             List<TestOutcome> testOutcomes
     ) {
         Component component = componentRepository.getComponent(componentId);
@@ -47,6 +53,7 @@ public class ComponentService {
         return filterComponent(
                 component,
                 stateTypes,
+                stateIds,
                 testOutcomes
         );
     }
@@ -54,25 +61,34 @@ public class ComponentService {
         return componentRepository.getComponentDiagrams(componentId);
     }
 
-    public List<Diagram> getDiagrams(List<String> stateTypes) {
-        return filterDiagrams(componentRepository.getDiagrams(), stateTypes);
+    public List<Diagram> getDiagrams(
+            List<String> stateTypes,
+            List<String> stateIds
+    ) {
+        return filterDiagrams(componentRepository.getDiagrams(), stateTypes, stateIds);
     }
 
-    public Diagram getDiagram(String diagramId, List<String> stateTypes) {
+    public Diagram getDiagram(
+            String diagramId,
+            List<String> stateTypes,
+            List<String> stateIds
+    ) {
         Diagram diagram = componentRepository.getDiagram(diagramId);
         if (isNull(diagram)) {
             return null;
         }
-        return filterDiagram(diagram, stateTypes);
+        return filterDiagram(diagram, stateTypes, stateIds);
     }
 
     public List<Team> getTeams(
             List<String> stateTypes,
+            List<String> stateIds,
             List<TestOutcome> testOutcomes
     ) {
         return filterComponentsForTeams(
                 componentRepository.getTeams(),
                 stateTypes,
+                stateIds,
                 testOutcomes
         );
     }
@@ -80,22 +96,26 @@ public class ComponentService {
     public Team getTeam(
             String teamId,
             List<String> stateTypes,
+            List<String> stateIds,
             List<TestOutcome> testOutcomes
     ) {
         return filterComponentsForTeam(
                 componentRepository.getTeam(teamId),
                 stateTypes,
+                stateIds,
                 testOutcomes
         );
     }
 
     public List<Area> getAreas(
             List<String> stateTypes,
+            List<String> stateIds,
             List<TestOutcome> testOutcomes
     ) {
         return filterComponentsForAreas(
                 componentRepository.getAreas(),
                 stateTypes,
+                stateIds,
                 testOutcomes
         );
     }
@@ -103,11 +123,13 @@ public class ComponentService {
     public Area getArea(
             String areaId,
             List<String> stateTypes,
+            List<String> stateIds,
             List<TestOutcome> testOutcomes
     ) {
         return filterComponentsForArea(
                 componentRepository.getArea(areaId),
                 stateTypes,
+                stateIds,
                 testOutcomes
         );
     }
@@ -135,10 +157,11 @@ public class ComponentService {
     private List<Team> filterComponentsForTeams(
             List<Team> teams,
             List<String> stateTypes,
+            List<String> stateIds,
             List<TestOutcome> testOutcomes
     ) {
         return teams.stream()
-                .map(team -> filterComponentsForTeam(team, stateTypes, testOutcomes))
+                .map(team -> filterComponentsForTeam(team, stateTypes, stateIds, testOutcomes))
                 .filter(Objects::nonNull)
                 .collect(toUnmodifiableList());
     }
@@ -146,6 +169,7 @@ public class ComponentService {
     private Team filterComponentsForTeam(
             Team team,
             List<String> stateTypes,
+            List<String> stateIds,
             List<TestOutcome> testOutcomes
     ) {
         if (isNull(team)) {
@@ -155,6 +179,7 @@ public class ComponentService {
         return team.withComponents(filterComponents(
                 team.getComponents(),
                 stateTypes,
+                stateIds,
                 testOutcomes
         ));
     }
@@ -162,10 +187,11 @@ public class ComponentService {
     private List<Area> filterComponentsForAreas(
             List<Area> areas,
             List<String> stateTypes,
+            List<String> stateIds,
             List<TestOutcome> testOutcomes
     ) {
         return areas.stream()
-                .map(area -> filterComponentsForArea(area, stateTypes, testOutcomes))
+                .map(area -> filterComponentsForArea(area, stateTypes, stateIds, testOutcomes))
                 .filter(Objects::nonNull)
                 .collect(toUnmodifiableList());
     }
@@ -173,6 +199,7 @@ public class ComponentService {
     private Area filterComponentsForArea(
             Area area,
             List<String> stateTypes,
+            List<String> stateIds,
             List<TestOutcome> testOutcomes
     ) {
         if (isNull(area)) {
@@ -182,6 +209,7 @@ public class ComponentService {
         return area.withComponents(filterComponents(
                 area.getComponents(),
                 stateTypes,
+                stateIds,
                 testOutcomes
         ));
     }
@@ -189,6 +217,7 @@ public class ComponentService {
     private List<Component> filterComponents(
             List<Component> components,
             List<String> stateTypes,
+            List<String> stateIds,
             List<TestOutcome> testOutcomes
     ) {
         return filterComponents(
@@ -196,6 +225,7 @@ public class ComponentService {
                 Optional.empty(),
                 Optional.empty(),
                 stateTypes,
+                stateIds,
                 testOutcomes
         );
     }
@@ -205,20 +235,21 @@ public class ComponentService {
             Optional<Integer> offset,
             Optional<Integer> limit,
             List<String> stateTypes,
+            List<String> stateIds,
             List<TestOutcome> testOutcomes
     ) {
-        Stream<Component> componentStream = components.stream();
+        Stream<Component> stream = components.stream();
 
         if (offset.isPresent()) {
-            componentStream = componentStream.skip(offset.get());
+            stream = stream.skip(offset.get());
         }
 
         if (limit.isPresent()) {
-            componentStream = componentStream.limit(limit.get());
+            stream = stream.limit(limit.get());
         }
 
-        return componentStream
-                .map(component -> filterComponent(component, stateTypes, testOutcomes))
+        return stream
+                .map(component -> filterComponent(component, stateTypes, stateIds, testOutcomes))
                 .filter(Objects::nonNull)
                 .collect(toUnmodifiableList());
     }
@@ -226,6 +257,7 @@ public class ComponentService {
     private Component filterComponent(
             Component component,
             List<String> stateTypes,
+            List<String> stateIds,
             List<TestOutcome> testOutcomes
     ) {
         if (nonNull(testOutcomes) && !testOutcomes.isEmpty()) {
@@ -238,33 +270,71 @@ public class ComponentService {
             component = component.withTestResults(testResults);
         }
 
-        return component.withStates(filterStates(component.getStates(), stateTypes));
+        return component.withStates(filterStates(component.getStates(), stateTypes, stateIds));
     }
 
-    private List<Diagram> filterDiagrams(List<Diagram> diagrams, List<String> stateTypes) {
+    private List<Diagram> filterDiagrams(
+            List<Diagram> diagrams,
+            List<String> stateTypes,
+            List<String> stateIds
+    ) {
         return diagrams.stream()
-                .map(diagram -> filterDiagram(diagram, stateTypes))
+                .map(diagram -> filterDiagram(diagram, stateTypes, stateIds))
                 .collect(toUnmodifiableList());
     }
 
-    private Diagram filterDiagram(Diagram diagram, List<String> stateTypes) {
+    private Diagram filterDiagram(
+            Diagram diagram,
+            List<String> stateTypes,
+            List<String> stateIds
+    ) {
         return diagram.withStates(filterStates(
                 diagram.getStates(),
-                stateTypes));
+                stateTypes,
+                stateIds
+        ));
     }
 
-    private <T extends ObjectWithType> List<T> filterStates(List<T> states, List<String> stateTypes) {
-        if (isNull(stateTypes) || stateTypes.isEmpty()) {
-            return states;
+    private <T extends State> List<T> filterStates(
+            List<T> states,
+            List<String> stateTypes,
+            List<String> stateIds
+    ) {
+        Stream<T> stream = states.stream();
+
+        if (!stateTypes.isEmpty()) {
+            stream = stream.filter(state -> stateTypes.contains(state.getType()));
         }
-        return states.stream()
-                .filter(state -> stateTypes.contains(state.getType()))
-                .collect(toUnmodifiableList());
+
+        if (!stateIds.isEmpty()) {
+            stream = stream.filter(state -> nonNull(state.getId()) && stateIds.contains(state.getId()));
+        }
+
+        return stream.collect(toUnmodifiableList());
     }
     
     private List<TestResult> filterTestResults(List<TestResult> testResults, List<TestOutcome> testOutcomes) {
         return testResults.stream()
                 .filter(testResult -> testOutcomes.contains(testResult.getOutcome()))
                 .collect(toUnmodifiableList());
+    }
+
+    public DocFile getComponentDocFile(String componentId, String docId, String docFilePath) {
+        Component component = getComponent(componentId, List.of(ComponentStateTypes.DOC), List.of(docId), List.of());
+        if (isNull(component)) {
+            return null;
+        }
+        List<DocState> docs = component.getStates(ComponentStateTypes.DOC);
+        if (docs.size() != 1) {
+            return null;
+        }
+        DocState doc = docs.get(0);
+        List<DocFile> docFiles = doc.getFiles().stream()
+                .filter(docFile -> Objects.equals(docFile.getPath(), docFilePath))
+                .collect(toUnmodifiableList());
+        if (docFiles.size() != 1) {
+            return null;
+        }
+        return docFiles.get(0);
     }
 }

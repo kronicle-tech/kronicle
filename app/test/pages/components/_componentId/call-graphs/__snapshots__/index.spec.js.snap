@@ -37,6 +37,8 @@ exports[`Index when Get Component Diagrams service endpoint returns no diagrams 
      
     <!---->
      
+    <!---->
+     
     <a
       class="btn my-1 btn-secondary"
       href="/components/test-component-id-1/cross-functional-requirements"
@@ -233,6 +235,8 @@ exports[`Index when Get Diagrams service endpoints returns a call graph renders 
     Diagrams
   
     </a>
+     
+    <!---->
      
     <!---->
      

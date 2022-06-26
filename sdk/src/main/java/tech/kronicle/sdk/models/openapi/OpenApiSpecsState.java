@@ -28,6 +28,7 @@ public class OpenApiSpecsState implements ComponentState {
     @NotBlank
     @Pattern(regexp = PatternStrings.ID)
     String pluginId;
+    String id = null;
     @NotNull
     List<@Valid OpenApiSpec> openApiSpecs;
 

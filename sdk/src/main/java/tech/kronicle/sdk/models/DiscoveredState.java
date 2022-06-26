@@ -13,5 +13,6 @@ public class DiscoveredState implements ComponentEnvironmentState {
 
     String type = "discovered";
     String pluginId;
+    String id = null;
     String environmentId;
 }

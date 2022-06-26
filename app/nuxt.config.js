@@ -84,7 +84,8 @@ export default {
   plugins: [],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
-  components: true,
+  // Note: Auto import of components is disabled as it is not supported by `@vue/test-utils` which is used in the tests
+  components: false,
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
@@ -131,6 +132,10 @@ export default {
     '/openapi': {
       target: serverSideServiceBaseUrl,
     },
+  },
+
+  render: {
+    fallback: false,
   },
 
   privateRuntimeConfig: {

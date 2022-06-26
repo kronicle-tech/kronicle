@@ -8,4 +8,5 @@ public class FakeDiagramState implements DiagramState {
 
     String type;
     String pluginId;
+    String id;
 }

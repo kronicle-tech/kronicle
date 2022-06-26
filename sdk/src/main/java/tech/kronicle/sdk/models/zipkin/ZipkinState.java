@@ -27,6 +27,7 @@ public class ZipkinState implements ComponentState {
     @NotBlank
     @Pattern(regexp = PatternStrings.ID)
     String pluginId;
+    String id = null;
     @NotBlank
     String serviceName;
     @NotNull
