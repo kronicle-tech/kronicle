@@ -43,6 +43,14 @@ public class FileUtils {
         }
     }
 
+    public byte[] readFileBinaryContent(Path file) {
+        try {
+            return Files.readAllBytes(file);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     public InputStream openFile(Path file) {
         try {
             return Files.newInputStream(file);

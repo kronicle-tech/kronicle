@@ -86,6 +86,32 @@ public class FileUtilsTest extends BaseTest {
     }
 
     @Test
+    public void readFileBinaryContentsShouldReadFileContents() throws IOException {
+        // Given
+        Path file = tempDir.resolve("file.txt");
+        Files.write(file, new byte[] { 1, 2, 3 });
+
+        // When
+        byte[] returnValue = underTest.readFileBinaryContent(file);
+
+        // Then
+        assertThat(returnValue).isEqualTo(new byte[] { 1, 2, 3 });
+    }
+
+    @Test
+    public void readFileBinaryContentsShouldWrapIOException() {
+        // Given
+        Path file = tempDir.resolve("file.txt");
+
+        // When
+        Throwable thrown = catchThrowable(() -> underTest.readFileBinaryContent(file));
+
+        // Then
+        assertThat(thrown).isInstanceOf(RuntimeException.class);
+        assertThat(thrown).hasCauseInstanceOf(IOException.class);
+    }
+
+    @Test
     public void openFileShouldOpenAnInputStream() throws IOException {
         // Given
         Path file = tempDir.resolve("file.txt");

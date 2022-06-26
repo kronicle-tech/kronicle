@@ -13,7 +13,6 @@ import tech.kronicle.utils.FileUtils;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static tech.kronicle.plugins.doc.testutils.DocStateUtils.createDocStateWithDir;
 import static tech.kronicle.plugins.doc.testutils.DocUtils.createDocWithDir;
 import static tech.kronicle.plugins.doc.testutils.DocUtils.createDocWithFile;
 
@@ -118,6 +117,29 @@ public class DocProcessorTest extends BaseCodebaseScannerTest {
                                                 "\n" +
                                                 "Example 2\n"
                                 )
+                                .build()
+                ))
+        );
+    }
+
+    @Test
+    public void processDocsShouldHandleABinaryFile() {
+        // Given
+        Doc doc1 = createDocWithFile(1, "test.png");
+        DocProcessor underTest = createUnderTest();
+
+        // When
+        List<DocState> returnValue = underTest.processDocs(getCodebaseDir("BinaryContent"), List.of(doc1));
+
+        // Then
+        String base64Content = "iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAOFJREFUOE/d07ErBVAUx/HPz/JKFr2QYrAblcVbyCarXZRZyWqV5B+wyOQvMTAaDQYDI6GUOrp6TI/lbc50h3u+99f3nBtDVobs9x8AVfXU9zCKN3wk6f7lpqo2sJhk98dBVb0n6VTVGG7QILdYwDG2MYJDbGEar4MAe+glWa+qaxzhFGu4wjyWsZJkdRDgsn/pla8pnWAWO3hAi7/0F6C92E2yWVUt8gQ6eMQZ5nDeQEl6gxJMoaVoNYl9HPQFN9HtfIE7PP+6SFXVJL4keW+kqppJcv89nX668f+wicP+xk8mg1fzwuFtGgAAAABJRU5ErkJggg==";
+        assertThat(returnValue).containsExactly(
+                DocStateUtils.createDocStateWithFile(1, "test.png", List.of(
+                        DocFile.builder()
+                                .path("test.png")
+                                .mediaType("image/png")
+                                .contentType(DocFileContentType.Binary)
+                                .content(base64Content)
                                 .build()
                 ))
         );
