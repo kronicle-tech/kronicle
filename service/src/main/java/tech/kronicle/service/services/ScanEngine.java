@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import tech.kronicle.common.StringEscapeUtils;
+import tech.kronicle.pluginapi.finders.models.ComponentsAndDiagrams;
 import tech.kronicle.pluginapi.finders.models.TracingData;
 import tech.kronicle.pluginapi.scanners.Scanner;
 import tech.kronicle.pluginapi.scanners.models.Codebase;
@@ -51,7 +52,7 @@ public class ScanEngine {
     ) {
         Consumer<UnaryOperator<Summary>> summaryTransformerConsumer = createSummaryTransformerConsumer(summaryConsumer);
 
-        componentMetadata = findAndProcessExtraComponents(componentMetadata, componentMap);
+        componentMetadata = findAndProcessExtraComponents(componentMetadata, componentMap, diagramMap);
 
         componentMetadata = findAndProcessExtraDiagrams(componentMetadata, diagramMap);
 
@@ -75,16 +76,47 @@ public class ScanEngine {
         };
     }
 
-    private ComponentMetadata findAndProcessExtraComponents(ComponentMetadata componentMetadata, ConcurrentHashMap<String, Component> componentMap) {
-        List<Component> extraComponents = masterComponentFinder.findComponents(componentMetadata);
-        return addExtraComponents(componentMetadata, componentMap, extraComponents);
+    private ComponentMetadata findAndProcessExtraComponents(
+            ComponentMetadata componentMetadata, 
+            ConcurrentHashMap<String, Component> componentMap,
+            ConcurrentHashMap<String, Diagram> diagramMap
+    ) {
+        ComponentsAndDiagrams extraComponentsAndDiagrams = masterComponentFinder.findComponents(componentMetadata);
+        return addExtraComponentsAndDiagrams(componentMetadata, componentMap, diagramMap, extraComponentsAndDiagrams);
     }
 
-    private ComponentMetadata addExtraComponents(ComponentMetadata componentMetadata, ConcurrentHashMap<String, Component> componentMap, List<Component> extraComponents) {
+    private ComponentMetadata addExtraComponentsAndDiagrams(
+            ComponentMetadata componentMetadata, 
+            ConcurrentHashMap<String, Component> componentMap,
+            ConcurrentHashMap<String, Diagram> diagramMap,
+            ComponentsAndDiagrams extraComponentsAndDiagrams
+    ) {
+        List<Component> components = addExtraComponents(componentMetadata, componentMap, extraComponentsAndDiagrams);
+        List<Diagram> diagrams = addExtraDiagrams(componentMetadata, diagramMap, extraComponentsAndDiagrams);
+        return componentMetadata.withComponents(components)
+                .withDiagrams(diagrams);
+    }
+
+    private List<Component> addExtraComponents(
+            ComponentMetadata componentMetadata,
+            ConcurrentHashMap<String, Component> componentMap,
+            ComponentsAndDiagrams extraComponentsAndDiagrams
+    ) {
         List<Component> components = new ArrayList<>(componentMetadata.getComponents());
-        components.addAll(extraComponents);
-        extraComponents.forEach(component -> componentMap.put(component.getId(), component));
-        return componentMetadata.withComponents(components);
+        components.addAll(extraComponentsAndDiagrams.getComponents());
+        extraComponentsAndDiagrams.getComponents().forEach(component -> componentMap.put(component.getId(), component));
+        return components;
+    }
+
+    private List<Diagram> addExtraDiagrams(
+            ComponentMetadata diagramMetadata,
+            ConcurrentHashMap<String, Diagram> diagramMap,
+            ComponentsAndDiagrams extraDiagramsAndDiagrams
+    ) {
+        List<Diagram> diagrams = new ArrayList<>(diagramMetadata.getDiagrams());
+        diagrams.addAll(extraDiagramsAndDiagrams.getDiagrams());
+        extraDiagramsAndDiagrams.getDiagrams().forEach(diagram -> diagramMap.put(diagram.getId(), diagram));
+        return diagrams;
     }
 
     private ComponentMetadata findAndProcessExtraDiagrams(ComponentMetadata componentMetadata, ConcurrentHashMap<String, Diagram> diagramMap) {

@@ -38,7 +38,7 @@ public class ResourceMapperTest {
         ResourceMapper underTest = createUnderTest();
 
         // When
-        List<Component> components = underTest.mapResourcesToComponents(TEST_ENVIRONMENT_ID, List.of());
+        List<Component> components = underTest.mapResourcesToComponentsAndConnections(TEST_ENVIRONMENT_ID, List.of());
 
         // Then
         assertThat(components).isEmpty();
@@ -72,7 +72,7 @@ public class ResourceMapperTest {
         );
 
         // When
-        List<Component> returnValue = underTest.mapResourcesToComponents(TEST_ENVIRONMENT_ID, resources);
+        List<Component> returnValue = underTest.mapResourcesToComponentsAndConnections(TEST_ENVIRONMENT_ID, resources);
 
         // Then
         assertThat(returnValue).isEqualTo(List.of(
