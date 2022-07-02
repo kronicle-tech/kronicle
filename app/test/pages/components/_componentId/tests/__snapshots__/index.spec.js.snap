@@ -193,7 +193,7 @@ exports[`Index when Get Component service endpoint returns a component when the 
               <!---->
               <!---->
               <div
-                class="card-body"
+                class="card-body p-2"
               >
                 <!---->
                 <!---->
@@ -270,7 +270,7 @@ exports[`Index when Get Component service endpoint returns a component when the 
               <!---->
               <!---->
               <div
-                class="card-body"
+                class="card-body p-2"
               >
                 <!---->
                 <!---->
@@ -347,7 +347,7 @@ exports[`Index when Get Component service endpoint returns a component when the 
               <!---->
               <!---->
               <div
-                class="card-body"
+                class="card-body p-2"
               >
                 <!---->
                 <!---->
@@ -405,7 +405,7 @@ exports[`Index when Get Component service endpoint returns a component when the 
               <!---->
               <!---->
               <div
-                class="card-body"
+                class="card-body p-2"
               >
                 <!---->
                 <!---->
@@ -463,7 +463,7 @@ exports[`Index when Get Component service endpoint returns a component when the 
               <!---->
               <!---->
               <div
-                class="card-body"
+                class="card-body p-2"
               >
                 <!---->
                 <!---->
@@ -747,7 +747,7 @@ exports[`Index when Get Component service endpoint returns a component when the 
               <!---->
               <!---->
               <div
-                class="card-body"
+                class="card-body p-2"
               >
                 <!---->
                 <!---->
@@ -824,7 +824,7 @@ exports[`Index when Get Component service endpoint returns a component when the 
               <!---->
               <!---->
               <div
-                class="card-body"
+                class="card-body p-2"
               >
                 <!---->
                 <!---->
@@ -901,7 +901,7 @@ exports[`Index when Get Component service endpoint returns a component when the 
               <!---->
               <!---->
               <div
-                class="card-body"
+                class="card-body p-2"
               >
                 <!---->
                 <!---->
@@ -978,7 +978,7 @@ exports[`Index when Get Component service endpoint returns a component when the 
               <!---->
               <!---->
               <div
-                class="card-body"
+                class="card-body p-2"
               >
                 <!---->
                 <!---->
@@ -1036,7 +1036,7 @@ exports[`Index when Get Component service endpoint returns a component when the 
               <!---->
               <!---->
               <div
-                class="card-body"
+                class="card-body p-2"
               >
                 <!---->
                 <!---->
@@ -1094,7 +1094,7 @@ exports[`Index when Get Component service endpoint returns a component when the 
               <!---->
               <!---->
               <div
-                class="card-body"
+                class="card-body p-2"
               >
                 <!---->
                 <!---->

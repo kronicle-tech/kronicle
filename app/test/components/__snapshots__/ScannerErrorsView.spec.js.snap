@@ -54,7 +54,7 @@ exports[`ScannerErrorsView when components prop is set to multiple components wi
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
-            <div class=\\"card-body\\">
+            <div class=\\"card-body p-2\\">
               <!---->
               <!---->
               <fieldset class=\\"form-group\\" id=\\"__BVID__15\\">
@@ -80,7 +80,7 @@ exports[`ScannerErrorsView when components prop is set to multiple components wi
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
-            <div class=\\"card-body\\">
+            <div class=\\"card-body p-2\\">
               <!---->
               <!---->
               <fieldset class=\\"form-group\\" id=\\"__BVID__23\\">
@@ -106,7 +106,7 @@ exports[`ScannerErrorsView when components prop is set to multiple components wi
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
-            <div class=\\"card-body\\">
+            <div class=\\"card-body p-2\\">
               <!---->
               <!---->
               <fieldset class=\\"form-group\\" id=\\"__BVID__31\\">
@@ -129,7 +129,7 @@ exports[`ScannerErrorsView when components prop is set to multiple components wi
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
-            <div class=\\"card-body\\">
+            <div class=\\"card-body p-2\\">
               <!---->
               <!---->
               <fieldset class=\\"form-group\\" id=\\"__BVID__36\\">
@@ -150,7 +150,7 @@ exports[`ScannerErrorsView when components prop is set to multiple components wi
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
-            <div class=\\"card-body\\">
+            <div class=\\"card-body p-2\\">
               <!---->
               <!---->
               <div role=\\"group\\" class=\\"form-group\\" id=\\"__BVID__39\\"><label for=\\"component-filter\\" class=\\"d-block\\" id=\\"__BVID__39__BV_label_\\">Component</label>
@@ -380,7 +380,7 @@ exports[`ScannerErrorsView when components prop is set to multiple components wi
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
-            <div class=\\"card-body\\">
+            <div class=\\"card-body p-2\\">
               <!---->
               <!---->
               <fieldset class=\\"form-group\\" id=\\"__BVID__73\\">
@@ -406,7 +406,7 @@ exports[`ScannerErrorsView when components prop is set to multiple components wi
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
-            <div class=\\"card-body\\">
+            <div class=\\"card-body p-2\\">
               <!---->
               <!---->
               <fieldset class=\\"form-group\\" id=\\"__BVID__81\\">
@@ -432,7 +432,7 @@ exports[`ScannerErrorsView when components prop is set to multiple components wi
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
-            <div class=\\"card-body\\">
+            <div class=\\"card-body p-2\\">
               <!---->
               <!---->
               <fieldset class=\\"form-group\\" id=\\"__BVID__89\\">
@@ -455,7 +455,7 @@ exports[`ScannerErrorsView when components prop is set to multiple components wi
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
-            <div class=\\"card-body\\">
+            <div class=\\"card-body p-2\\">
               <!---->
               <!---->
               <fieldset class=\\"form-group\\" id=\\"__BVID__94\\">
@@ -476,7 +476,7 @@ exports[`ScannerErrorsView when components prop is set to multiple components wi
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
-            <div class=\\"card-body\\">
+            <div class=\\"card-body p-2\\">
               <!---->
               <!---->
               <div role=\\"group\\" class=\\"form-group\\" id=\\"__BVID__97\\"><label for=\\"component-filter\\" class=\\"d-block\\" id=\\"__BVID__97__BV_label_\\">Component</label>
@@ -706,7 +706,7 @@ exports[`ScannerErrorsView when components prop is set to multiple components wi
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
-            <div class=\\"card-body\\">
+            <div class=\\"card-body p-2\\">
               <!---->
               <!---->
               <fieldset class=\\"form-group\\" id=\\"__BVID__73\\">
@@ -732,7 +732,7 @@ exports[`ScannerErrorsView when components prop is set to multiple components wi
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
-            <div class=\\"card-body\\">
+            <div class=\\"card-body p-2\\">
               <!---->
               <!---->
               <fieldset class=\\"form-group\\" id=\\"__BVID__81\\">
@@ -758,7 +758,7 @@ exports[`ScannerErrorsView when components prop is set to multiple components wi
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
-            <div class=\\"card-body\\">
+            <div class=\\"card-body p-2\\">
               <!---->
               <!---->
               <fieldset class=\\"form-group\\" id=\\"__BVID__89\\">
@@ -781,7 +781,7 @@ exports[`ScannerErrorsView when components prop is set to multiple components wi
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
-            <div class=\\"card-body\\">
+            <div class=\\"card-body p-2\\">
               <!---->
               <!---->
               <fieldset class=\\"form-group\\" id=\\"__BVID__94\\">
@@ -802,7 +802,7 @@ exports[`ScannerErrorsView when components prop is set to multiple components wi
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
-            <div class=\\"card-body\\">
+            <div class=\\"card-body p-2\\">
               <!---->
               <!---->
               <div role=\\"group\\" class=\\"form-group\\" id=\\"__BVID__97\\"><label for=\\"component-filter\\" class=\\"d-block\\" id=\\"__BVID__97__BV_label_\\">Component</label>

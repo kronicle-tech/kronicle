@@ -15,7 +15,7 @@ exports[`DiagramView when components prop contains multiple components and diagr
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
-            <div class=\\"card-body\\">
+            <div class=\\"card-body p-2\\">
               <!---->
               <!---->
               <div role=\\"group\\" class=\\"form-row form-group\\" id=\\"__BVID__25\\"><label for=\\"graph-scope-related-radius\\" class=\\"col-6 col-form-label col-form-label-sm\\" id=\\"__BVID__25__BV_label_\\">Radius:</label>
@@ -47,7 +47,7 @@ exports[`DiagramView when components prop contains multiple components and diagr
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
-            <div class=\\"card-body\\">
+            <div class=\\"card-body p-2\\">
               <!---->
               <!---->
               <fieldset class=\\"form-group\\" id=\\"__BVID__27\\">
@@ -75,7 +75,7 @@ exports[`DiagramView when components prop contains multiple components and diagr
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
-            <div class=\\"card-body\\">
+            <div class=\\"card-body p-2\\">
               <!---->
               <!---->
               <fieldset class=\\"form-group\\" id=\\"__BVID__37\\">
@@ -103,7 +103,7 @@ exports[`DiagramView when components prop contains multiple components and diagr
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
-            <div class=\\"card-body\\">
+            <div class=\\"card-body p-2\\">
               <!---->
               <!---->
               <fieldset class=\\"form-group\\" id=\\"__BVID__47\\">
@@ -127,7 +127,7 @@ exports[`DiagramView when components prop contains multiple components and diagr
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
-            <div class=\\"card-body\\">
+            <div class=\\"card-body p-2\\">
               <!---->
               <!---->
               <fieldset class=\\"form-group\\" id=\\"__BVID__53\\">
@@ -151,7 +151,7 @@ exports[`DiagramView when components prop contains multiple components and diagr
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
-            <div class=\\"card-body\\">
+            <div class=\\"card-body p-2\\">
               <!---->
               <!---->
               <div role=\\"group\\" class=\\"form-group\\" id=\\"__BVID__59\\"><label for=\\"component-filter\\" class=\\"d-block\\" id=\\"__BVID__59__BV_label_\\">Component</label>
@@ -295,7 +295,7 @@ exports[`DiagramView when components prop contains multiple components and diagr
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
-            <div class=\\"card-body\\">
+            <div class=\\"card-body p-2\\">
               <!---->
               <!---->
               <div role=\\"group\\" class=\\"form-row form-group\\" id=\\"__BVID__131\\"><label for=\\"graph-scope-related-radius\\" class=\\"col-6 col-form-label col-form-label-sm\\" id=\\"__BVID__131__BV_label_\\">Radius:</label>
@@ -327,7 +327,7 @@ exports[`DiagramView when components prop contains multiple components and diagr
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
-            <div class=\\"card-body\\">
+            <div class=\\"card-body p-2\\">
               <!---->
               <!---->
               <fieldset class=\\"form-group\\" id=\\"__BVID__133\\">
@@ -355,7 +355,7 @@ exports[`DiagramView when components prop contains multiple components and diagr
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
-            <div class=\\"card-body\\">
+            <div class=\\"card-body p-2\\">
               <!---->
               <!---->
               <fieldset class=\\"form-group\\" id=\\"__BVID__143\\">
@@ -383,7 +383,7 @@ exports[`DiagramView when components prop contains multiple components and diagr
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
-            <div class=\\"card-body\\">
+            <div class=\\"card-body p-2\\">
               <!---->
               <!---->
               <fieldset class=\\"form-group\\" id=\\"__BVID__153\\">
@@ -407,7 +407,7 @@ exports[`DiagramView when components prop contains multiple components and diagr
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
-            <div class=\\"card-body\\">
+            <div class=\\"card-body p-2\\">
               <!---->
               <!---->
               <fieldset class=\\"form-group\\" id=\\"__BVID__159\\">
@@ -431,7 +431,7 @@ exports[`DiagramView when components prop contains multiple components and diagr
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
-            <div class=\\"card-body\\">
+            <div class=\\"card-body p-2\\">
               <!---->
               <!---->
               <div role=\\"group\\" class=\\"form-group\\" id=\\"__BVID__165\\"><label for=\\"component-filter\\" class=\\"d-block\\" id=\\"__BVID__165__BV_label_\\">Component</label>
@@ -600,7 +600,7 @@ exports[`DiagramView when components prop contains multiple components and diagr
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
-            <div class=\\"card-body\\">
+            <div class=\\"card-body p-2\\">
               <!---->
               <!---->
               <div role=\\"group\\" class=\\"form-row form-group\\" id=\\"__BVID__346\\"><label for=\\"graph-scope-related-radius\\" class=\\"col-6 col-form-label col-form-label-sm\\" id=\\"__BVID__346__BV_label_\\">Radius:</label>
@@ -632,7 +632,7 @@ exports[`DiagramView when components prop contains multiple components and diagr
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
-            <div class=\\"card-body\\">
+            <div class=\\"card-body p-2\\">
               <!---->
               <!---->
               <fieldset class=\\"form-group\\" id=\\"__BVID__348\\">
@@ -660,7 +660,7 @@ exports[`DiagramView when components prop contains multiple components and diagr
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
-            <div class=\\"card-body\\">
+            <div class=\\"card-body p-2\\">
               <!---->
               <!---->
               <fieldset class=\\"form-group\\" id=\\"__BVID__358\\">
@@ -688,7 +688,7 @@ exports[`DiagramView when components prop contains multiple components and diagr
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
-            <div class=\\"card-body\\">
+            <div class=\\"card-body p-2\\">
               <!---->
               <!---->
               <fieldset class=\\"form-group\\" id=\\"__BVID__368\\">
@@ -712,7 +712,7 @@ exports[`DiagramView when components prop contains multiple components and diagr
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
-            <div class=\\"card-body\\">
+            <div class=\\"card-body p-2\\">
               <!---->
               <!---->
               <fieldset class=\\"form-group\\" id=\\"__BVID__374\\">
@@ -736,7 +736,7 @@ exports[`DiagramView when components prop contains multiple components and diagr
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
-            <div class=\\"card-body\\">
+            <div class=\\"card-body p-2\\">
               <!---->
               <!---->
               <div role=\\"group\\" class=\\"form-group\\" id=\\"__BVID__380\\"><label for=\\"component-filter\\" class=\\"d-block\\" id=\\"__BVID__380__BV_label_\\">Component</label>
@@ -905,7 +905,7 @@ exports[`DiagramView when components prop contains multiple components and diagr
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
-            <div class=\\"card-body\\">
+            <div class=\\"card-body p-2\\">
               <!---->
               <!---->
               <div role=\\"group\\" class=\\"form-row form-group\\" id=\\"__BVID__240\\"><label for=\\"graph-scope-related-radius\\" class=\\"col-6 col-form-label col-form-label-sm\\" id=\\"__BVID__240__BV_label_\\">Radius:</label>
@@ -937,7 +937,7 @@ exports[`DiagramView when components prop contains multiple components and diagr
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
-            <div class=\\"card-body\\">
+            <div class=\\"card-body p-2\\">
               <!---->
               <!---->
               <fieldset class=\\"form-group\\" id=\\"__BVID__242\\">
@@ -965,7 +965,7 @@ exports[`DiagramView when components prop contains multiple components and diagr
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
-            <div class=\\"card-body\\">
+            <div class=\\"card-body p-2\\">
               <!---->
               <!---->
               <fieldset class=\\"form-group\\" id=\\"__BVID__252\\">
@@ -993,7 +993,7 @@ exports[`DiagramView when components prop contains multiple components and diagr
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
-            <div class=\\"card-body\\">
+            <div class=\\"card-body p-2\\">
               <!---->
               <!---->
               <fieldset class=\\"form-group\\" id=\\"__BVID__262\\">
@@ -1017,7 +1017,7 @@ exports[`DiagramView when components prop contains multiple components and diagr
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
-            <div class=\\"card-body\\">
+            <div class=\\"card-body p-2\\">
               <!---->
               <!---->
               <fieldset class=\\"form-group\\" id=\\"__BVID__268\\">
@@ -1041,7 +1041,7 @@ exports[`DiagramView when components prop contains multiple components and diagr
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
-            <div class=\\"card-body\\">
+            <div class=\\"card-body p-2\\">
               <!---->
               <!---->
               <div role=\\"group\\" class=\\"form-group\\" id=\\"__BVID__274\\"><label for=\\"component-filter\\" class=\\"d-block\\" id=\\"__BVID__274__BV_label_\\">Component</label>
@@ -1213,7 +1213,7 @@ exports[`DiagramView when components prop contains multiple components and diagr
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
-            <div class=\\"card-body\\">
+            <div class=\\"card-body p-2\\">
               <!---->
               <!---->
               <div role=\\"group\\" class=\\"form-row form-group\\" id=\\"__BVID__78\\"><label for=\\"graph-scope-related-radius\\" class=\\"col-6 col-form-label col-form-label-sm\\" id=\\"__BVID__78__BV_label_\\">Radius:</label>
@@ -1245,7 +1245,7 @@ exports[`DiagramView when components prop contains multiple components and diagr
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
-            <div class=\\"card-body\\">
+            <div class=\\"card-body p-2\\">
               <!---->
               <!---->
               <fieldset class=\\"form-group\\" id=\\"__BVID__80\\">
@@ -1273,7 +1273,7 @@ exports[`DiagramView when components prop contains multiple components and diagr
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
-            <div class=\\"card-body\\">
+            <div class=\\"card-body p-2\\">
               <!---->
               <!---->
               <fieldset class=\\"form-group\\" id=\\"__BVID__90\\">
@@ -1301,7 +1301,7 @@ exports[`DiagramView when components prop contains multiple components and diagr
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
-            <div class=\\"card-body\\">
+            <div class=\\"card-body p-2\\">
               <!---->
               <!---->
               <fieldset class=\\"form-group\\" id=\\"__BVID__100\\">
@@ -1325,7 +1325,7 @@ exports[`DiagramView when components prop contains multiple components and diagr
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
-            <div class=\\"card-body\\">
+            <div class=\\"card-body p-2\\">
               <!---->
               <!---->
               <fieldset class=\\"form-group\\" id=\\"__BVID__106\\">
@@ -1349,7 +1349,7 @@ exports[`DiagramView when components prop contains multiple components and diagr
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
-            <div class=\\"card-body\\">
+            <div class=\\"card-body p-2\\">
               <!---->
               <!---->
               <div role=\\"group\\" class=\\"form-group\\" id=\\"__BVID__112\\"><label for=\\"component-filter\\" class=\\"d-block\\" id=\\"__BVID__112__BV_label_\\">Component</label>
@@ -1518,7 +1518,7 @@ exports[`DiagramView when components prop contains multiple components and diagr
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
-            <div class=\\"card-body\\">
+            <div class=\\"card-body p-2\\">
               <!---->
               <!---->
               <div role=\\"group\\" class=\\"form-row form-group\\" id=\\"__BVID__184\\"><label for=\\"graph-scope-related-radius\\" class=\\"col-6 col-form-label col-form-label-sm\\" id=\\"__BVID__184__BV_label_\\">Radius:</label>
@@ -1550,7 +1550,7 @@ exports[`DiagramView when components prop contains multiple components and diagr
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
-            <div class=\\"card-body\\">
+            <div class=\\"card-body p-2\\">
               <!---->
               <!---->
               <fieldset class=\\"form-group\\" id=\\"__BVID__186\\">
@@ -1578,7 +1578,7 @@ exports[`DiagramView when components prop contains multiple components and diagr
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
-            <div class=\\"card-body\\">
+            <div class=\\"card-body p-2\\">
               <!---->
               <!---->
               <fieldset class=\\"form-group\\" id=\\"__BVID__196\\">
@@ -1606,7 +1606,7 @@ exports[`DiagramView when components prop contains multiple components and diagr
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
-            <div class=\\"card-body\\">
+            <div class=\\"card-body p-2\\">
               <!---->
               <!---->
               <fieldset class=\\"form-group\\" id=\\"__BVID__206\\">
@@ -1630,7 +1630,7 @@ exports[`DiagramView when components prop contains multiple components and diagr
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
-            <div class=\\"card-body\\">
+            <div class=\\"card-body p-2\\">
               <!---->
               <!---->
               <fieldset class=\\"form-group\\" id=\\"__BVID__212\\">
@@ -1654,7 +1654,7 @@ exports[`DiagramView when components prop contains multiple components and diagr
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
-            <div class=\\"card-body\\">
+            <div class=\\"card-body p-2\\">
               <!---->
               <!---->
               <div role=\\"group\\" class=\\"form-group\\" id=\\"__BVID__218\\"><label for=\\"component-filter\\" class=\\"d-block\\" id=\\"__BVID__218__BV_label_\\">Component</label>

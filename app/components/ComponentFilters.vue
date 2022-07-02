@@ -22,6 +22,7 @@
             environmentIdOptions.length > 0
           "
           bg-variant="secondary"
+          body-class="p-2"
         >
           <b-form-group label="Environments">
             <b-form-checkbox-group
@@ -40,6 +41,7 @@
             pluginIdOptions.length > 0
           "
           bg-variant="secondary"
+          body-class="p-2"
         >
           <b-form-group label="Plugins">
             <b-form-checkbox-group
@@ -58,6 +60,7 @@
             testOutcomeOptions.length > 0
           "
           bg-variant="secondary"
+          body-class="p-2"
         >
           <b-form-group label="Test Outcomes">
             <b-form-checkbox-group
@@ -72,6 +75,7 @@
         <b-card
           v-if="teamIdOptions && teamIdOptions.length > 0"
           bg-variant="secondary"
+          body-class="p-2"
         >
           <b-form-group label="Teams">
             <b-form-checkbox-group
@@ -86,6 +90,7 @@
         <b-card
           v-if="tagOptions && tagOptions.length > 0"
           bg-variant="secondary"
+          body-class="p-2"
         >
           <b-form-group label="Tags">
             <b-form-checkbox-group
@@ -100,6 +105,7 @@
         <b-card
           v-if="componentTypeIdOptions && componentTypeIdOptions.length > 0"
           bg-variant="secondary"
+          body-class="p-2"
         >
           <b-form-group label="Component Types">
             <b-form-checkbox-group
@@ -114,6 +120,7 @@
         <b-card
           v-if="platformIdOptions && platformIdOptions.length > 0"
           bg-variant="secondary"
+          body-class="p-2"
         >
           <b-form-group label="Platforms">
             <b-form-checkbox-group
@@ -132,6 +139,7 @@
             componentIdOptions.length > 0
           "
           bg-variant="secondary"
+          body-class="p-2"
         >
           <b-form-group label="Component" label-for="component-filter">
             <b-form-select

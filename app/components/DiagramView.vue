@@ -9,7 +9,11 @@
       :environment-id-filter-enabled="true"
       :plugin-id-filter-enabled="true"
     >
-      <b-card v-if="edgeTypeOptions.length > 0" bg-variant="secondary">
+      <b-card
+        v-if="edgeTypeOptions.length > 0"
+        bg-variant="secondary"
+        body-class="p-2"
+      >
         <b-form-group label="Connection Types">
           <b-form-checkbox-group
             v-model="selectedEdgeTypes"
@@ -20,7 +24,7 @@
         </b-form-group>
       </b-card>
 
-      <b-card bg-variant="secondary">
+      <b-card bg-variant="secondary" body-class="p-2">
         <b-form-group
           label-cols="6"
           label-size="sm"

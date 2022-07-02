@@ -67,7 +67,7 @@ exports[`Index when Get Diagram service endpoint returns an array of multiple co
               <!---->
               <!---->
               <div
-                class="card-body"
+                class="card-body p-2"
               >
                 <!---->
                 <!---->
@@ -168,7 +168,7 @@ exports[`Index when Get Diagram service endpoint returns an array of multiple co
               <!---->
               <!---->
               <div
-                class="card-body"
+                class="card-body p-2"
               >
                 <!---->
                 <!---->
@@ -435,7 +435,7 @@ exports[`Index when Get Diagram service endpoint returns an array of multiple co
               <!---->
               <!---->
               <div
-                class="card-body"
+                class="card-body p-2"
               >
                 <!---->
                 <!---->
@@ -702,7 +702,7 @@ exports[`Index when Get Diagram service endpoint returns an array of multiple co
               <!---->
               <!---->
               <div
-                class="card-body"
+                class="card-body p-2"
               >
                 <!---->
                 <!---->
@@ -855,7 +855,7 @@ exports[`Index when Get Diagram service endpoint returns an array of multiple co
               <!---->
               <!---->
               <div
-                class="card-body"
+                class="card-body p-2"
               >
                 <!---->
                 <!---->
@@ -913,7 +913,7 @@ exports[`Index when Get Diagram service endpoint returns an array of multiple co
               <!---->
               <!---->
               <div
-                class="card-body"
+                class="card-body p-2"
               >
                 <!---->
                 <!---->
@@ -1485,7 +1485,7 @@ exports[`Index when Get Diagram service endpoint returns no edges renders the pa
               <!---->
               <!---->
               <div
-                class="card-body"
+                class="card-body p-2"
               >
                 <!---->
                 <!---->
@@ -1586,7 +1586,7 @@ exports[`Index when Get Diagram service endpoint returns no edges renders the pa
               <!---->
               <!---->
               <div
-                class="card-body"
+                class="card-body p-2"
               >
                 <!---->
                 <!---->
@@ -1853,7 +1853,7 @@ exports[`Index when Get Diagram service endpoint returns no edges renders the pa
               <!---->
               <!---->
               <div
-                class="card-body"
+                class="card-body p-2"
               >
                 <!---->
                 <!---->
@@ -2120,7 +2120,7 @@ exports[`Index when Get Diagram service endpoint returns no edges renders the pa
               <!---->
               <!---->
               <div
-                class="card-body"
+                class="card-body p-2"
               >
                 <!---->
                 <!---->
@@ -2273,7 +2273,7 @@ exports[`Index when Get Diagram service endpoint returns no edges renders the pa
               <!---->
               <!---->
               <div
-                class="card-body"
+                class="card-body p-2"
               >
                 <!---->
                 <!---->
@@ -2331,7 +2331,7 @@ exports[`Index when Get Diagram service endpoint returns no edges renders the pa
               <!---->
               <!---->
               <div
-                class="card-body"
+                class="card-body p-2"
               >
                 <!---->
                 <!---->

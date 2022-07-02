@@ -193,7 +193,7 @@ exports[`Index when Get Area service endpoint returns an area when the area has 
               <!---->
               <!---->
               <div
-                class="card-body"
+                class="card-body p-2"
               >
                 <!---->
                 <!---->
@@ -346,7 +346,7 @@ exports[`Index when Get Area service endpoint returns an area when the area has 
               <!---->
               <!---->
               <div
-                class="card-body"
+                class="card-body p-2"
               >
                 <!---->
                 <!---->
@@ -499,7 +499,7 @@ exports[`Index when Get Area service endpoint returns an area when the area has 
               <!---->
               <!---->
               <div
-                class="card-body"
+                class="card-body p-2"
               >
                 <!---->
                 <!---->
@@ -595,7 +595,7 @@ exports[`Index when Get Area service endpoint returns an area when the area has 
               <!---->
               <!---->
               <div
-                class="card-body"
+                class="card-body p-2"
               >
                 <!---->
                 <!---->
@@ -653,7 +653,7 @@ exports[`Index when Get Area service endpoint returns an area when the area has 
               <!---->
               <!---->
               <div
-                class="card-body"
+                class="card-body p-2"
               >
                 <!---->
                 <!---->
@@ -1218,7 +1218,7 @@ exports[`Index when Get Area service endpoint returns an area when the area has 
               <!---->
               <!---->
               <div
-                class="card-body"
+                class="card-body p-2"
               >
                 <!---->
                 <!---->
@@ -1371,7 +1371,7 @@ exports[`Index when Get Area service endpoint returns an area when the area has 
               <!---->
               <!---->
               <div
-                class="card-body"
+                class="card-body p-2"
               >
                 <!---->
                 <!---->
@@ -1524,7 +1524,7 @@ exports[`Index when Get Area service endpoint returns an area when the area has 
               <!---->
               <!---->
               <div
-                class="card-body"
+                class="card-body p-2"
               >
                 <!---->
                 <!---->
@@ -1620,7 +1620,7 @@ exports[`Index when Get Area service endpoint returns an area when the area has 
               <!---->
               <!---->
               <div
-                class="card-body"
+                class="card-body p-2"
               >
                 <!---->
                 <!---->
@@ -1678,7 +1678,7 @@ exports[`Index when Get Area service endpoint returns an area when the area has 
               <!---->
               <!---->
               <div
-                class="card-body"
+                class="card-body p-2"
               >
                 <!---->
                 <!---->
