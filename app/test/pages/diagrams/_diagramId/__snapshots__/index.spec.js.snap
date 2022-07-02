@@ -1069,41 +1069,41 @@ exports[`Index when Get Diagram service endpoint returns an array of multiple co
       </div>
     </div>
      
-    <div
-      class="graph"
+    <transition-stub
+      class="my-3"
+      css="true"
+      enteractiveclass=""
+      enterclass=""
+      entertoclass="show"
+      leaveactiveclass=""
+      leaveclass="show"
+      leavetoclass=""
+      name=""
     >
-      <transition-stub
-        css="true"
-        enteractiveclass=""
-        enterclass=""
-        entertoclass="show"
-        leaveactiveclass=""
-        leaveclass="show"
-        leavetoclass=""
-        name=""
+      <div
+        aria-atomic="true"
+        aria-live="polite"
+        class="alert alert-dismissible alert-info"
+        role="alert"
       >
-        <div
-          aria-atomic="true"
-          aria-live="polite"
-          class="alert alert-dismissible alert-info"
-          role="alert"
+        <button
+          aria-label="Close"
+          class="close"
+          type="button"
         >
-          <button
-            aria-label="Close"
-            class="close"
-            type="button"
-          >
-            ×
-          </button>
-          
-      Click a dot in the diagram to see more information about that component
-    
-        </div>
-      </transition-stub>
-       
+          ×
+        </button>
+        
+    Click a dot in the diagram to see more information about that component
+  
+      </div>
+    </transition-stub>
+     
+    <div
+      class="diagram-graph"
+    >
       <svg
         height="1200"
-        id="component-dependency-graph"
         overflow="auto"
         width="100%"
         xmlns="http://www.w3.org/2000/svg"
@@ -1121,7 +1121,7 @@ exports[`Index when Get Diagram service endpoint returns an array of multiple co
             markerUnits="userSpaceOnUse"
             markerWidth="7.1"
             orient="auto-start-reverse"
-            refX="23.1"
+            refX="7.1"
             refY="5.75"
             viewBox="0 0 7.1 11.5"
           >
@@ -1136,7 +1136,7 @@ exports[`Index when Get Diagram service endpoint returns an array of multiple co
             markerUnits="userSpaceOnUse"
             markerWidth="7.1"
             orient="auto-start-reverse"
-            refX="23.1"
+            refX="7.1"
             refY="5.75"
             viewBox="0 0 7.1 11.5"
           >
@@ -1151,7 +1151,7 @@ exports[`Index when Get Diagram service endpoint returns an array of multiple co
             markerUnits="userSpaceOnUse"
             markerWidth="7.1"
             orient="auto-start-reverse"
-            refX="23.1"
+            refX="7.1"
             refY="5.75"
             viewBox="0 0 7.1 11.5"
           >
@@ -1166,7 +1166,7 @@ exports[`Index when Get Diagram service endpoint returns an array of multiple co
             markerUnits="userSpaceOnUse"
             markerWidth="7.1"
             orient="auto-start-reverse"
-            refX="23.1"
+            refX="7.1"
             refY="5.75"
             viewBox="0 0 7.1 11.5"
           >
@@ -1181,7 +1181,7 @@ exports[`Index when Get Diagram service endpoint returns an array of multiple co
             markerUnits="userSpaceOnUse"
             markerWidth="7.1"
             orient="auto-start-reverse"
-            refX="23.1"
+            refX="7.1"
             refY="5.75"
             viewBox="0 0 7.1 11.5"
           >
@@ -1196,7 +1196,7 @@ exports[`Index when Get Diagram service endpoint returns an array of multiple co
             markerUnits="userSpaceOnUse"
             markerWidth="7.1"
             orient="auto-start-reverse"
-            refX="23.1"
+            refX="7.1"
             refY="5.75"
             viewBox="0 0 7.1 11.5"
           >
@@ -1211,7 +1211,7 @@ exports[`Index when Get Diagram service endpoint returns an array of multiple co
             markerUnits="userSpaceOnUse"
             markerWidth="7.1"
             orient="auto-start-reverse"
-            refX="23.1"
+            refX="7.1"
             refY="5.75"
             viewBox="0 0 7.1 11.5"
           >
@@ -1227,13 +1227,13 @@ exports[`Index when Get Diagram service endpoint returns an array of multiple co
         <g>
           <path
             class="edge scoped-edge"
-            d="M50,50L50,150"
+            d="M50,66L50,134"
             id="graph-edge-0"
             marker-end="url(#graph-scoped-edge-marker)"
           />
           <path
             class="edge scoped-edge"
-            d="M50,150L50,250"
+            d="M50,166L50,234"
             id="graph-edge-1"
             marker-end="url(#graph-scoped-edge-marker)"
           />
@@ -2487,41 +2487,41 @@ exports[`Index when Get Diagram service endpoint returns no edges renders the pa
       </div>
     </div>
      
-    <div
-      class="graph"
+    <transition-stub
+      class="my-3"
+      css="true"
+      enteractiveclass=""
+      enterclass=""
+      entertoclass="show"
+      leaveactiveclass=""
+      leaveclass="show"
+      leavetoclass=""
+      name=""
     >
-      <transition-stub
-        css="true"
-        enteractiveclass=""
-        enterclass=""
-        entertoclass="show"
-        leaveactiveclass=""
-        leaveclass="show"
-        leavetoclass=""
-        name=""
+      <div
+        aria-atomic="true"
+        aria-live="polite"
+        class="alert alert-dismissible alert-info"
+        role="alert"
       >
-        <div
-          aria-atomic="true"
-          aria-live="polite"
-          class="alert alert-dismissible alert-info"
-          role="alert"
+        <button
+          aria-label="Close"
+          class="close"
+          type="button"
         >
-          <button
-            aria-label="Close"
-            class="close"
-            type="button"
-          >
-            ×
-          </button>
-          
-      Click a dot in the diagram to see more information about that component
-    
-        </div>
-      </transition-stub>
-       
+          ×
+        </button>
+        
+    Click a dot in the diagram to see more information about that component
+  
+      </div>
+    </transition-stub>
+     
+    <div
+      class="diagram-graph"
+    >
       <svg
         height="1200"
-        id="component-dependency-graph"
         overflow="auto"
         width="100%"
         xmlns="http://www.w3.org/2000/svg"
@@ -2539,7 +2539,7 @@ exports[`Index when Get Diagram service endpoint returns no edges renders the pa
             markerUnits="userSpaceOnUse"
             markerWidth="7.1"
             orient="auto-start-reverse"
-            refX="23.1"
+            refX="7.1"
             refY="5.75"
             viewBox="0 0 7.1 11.5"
           >
@@ -2554,7 +2554,7 @@ exports[`Index when Get Diagram service endpoint returns no edges renders the pa
             markerUnits="userSpaceOnUse"
             markerWidth="7.1"
             orient="auto-start-reverse"
-            refX="23.1"
+            refX="7.1"
             refY="5.75"
             viewBox="0 0 7.1 11.5"
           >
@@ -2569,7 +2569,7 @@ exports[`Index when Get Diagram service endpoint returns no edges renders the pa
             markerUnits="userSpaceOnUse"
             markerWidth="7.1"
             orient="auto-start-reverse"
-            refX="23.1"
+            refX="7.1"
             refY="5.75"
             viewBox="0 0 7.1 11.5"
           >
@@ -2584,7 +2584,7 @@ exports[`Index when Get Diagram service endpoint returns no edges renders the pa
             markerUnits="userSpaceOnUse"
             markerWidth="7.1"
             orient="auto-start-reverse"
-            refX="23.1"
+            refX="7.1"
             refY="5.75"
             viewBox="0 0 7.1 11.5"
           >
@@ -2599,7 +2599,7 @@ exports[`Index when Get Diagram service endpoint returns no edges renders the pa
             markerUnits="userSpaceOnUse"
             markerWidth="7.1"
             orient="auto-start-reverse"
-            refX="23.1"
+            refX="7.1"
             refY="5.75"
             viewBox="0 0 7.1 11.5"
           >
@@ -2614,7 +2614,7 @@ exports[`Index when Get Diagram service endpoint returns no edges renders the pa
             markerUnits="userSpaceOnUse"
             markerWidth="7.1"
             orient="auto-start-reverse"
-            refX="23.1"
+            refX="7.1"
             refY="5.75"
             viewBox="0 0 7.1 11.5"
           >
@@ -2629,7 +2629,7 @@ exports[`Index when Get Diagram service endpoint returns no edges renders the pa
             markerUnits="userSpaceOnUse"
             markerWidth="7.1"
             orient="auto-start-reverse"
-            refX="23.1"
+            refX="7.1"
             refY="5.75"
             viewBox="0 0 7.1 11.5"
           >

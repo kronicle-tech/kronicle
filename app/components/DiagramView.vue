@@ -55,13 +55,12 @@
       </b-card>
     </b-card-group>
 
-    <div class="graph">
-      <b-alert show="60" dismissible variant="info">
-        Click a dot in the diagram to see more information about that component
-      </b-alert>
+    <b-alert show="60" dismissible variant="info" class="my-3">
+      Click a dot in the diagram to see more information about that component
+    </b-alert>
 
+    <div class="diagram-graph">
       <DiagramGraph
-        id="component-dependency-graph"
         :diagram="diagram"
         :components="allComponents"
         :edge-types="selectedEdgeTypes"
@@ -111,7 +110,7 @@ import {
   GraphNode,
   GraphState,
 } from '~/types/kronicle-service'
-import { Network } from '~/types/component-dependency-graph'
+import { Network } from '~/types/diagram-graph'
 import { intRange } from '~/src/arrayUtils'
 import DiagramGraph from '~/components/DiagramGraph.vue'
 import ComponentPanel from '~/components/ComponentPanel.vue'
@@ -247,7 +246,8 @@ export default Vue.extend({
 </script>
 
 <style scoped>
-.graph {
+.diagram-graph {
+  background-color: white;
   overflow-x: scroll;
   height: 1000px;
   height: calc(100vh - 300px);

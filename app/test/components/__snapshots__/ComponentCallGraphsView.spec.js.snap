@@ -25,25 +25,25 @@ exports[`ComponentCallGraphsView when a call graph's node has a different number
         </span></h5> <svg xmlns=\\"http://www.w3.org/2000/svg\\" overflow=\\"auto\\" width=\\"100%\\" height=\\"1200\\">
         <rect fill-opacity=\\"0\\" class=\\"graph-background\\"></rect>
         <defs>
-          <marker id=\\"graph-all-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"23.1\\" refY=\\"5.75\\" class=\\"edge-marker all-edge-marker\\">
+          <marker id=\\"graph-all-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"7.1\\" refY=\\"5.75\\" class=\\"edge-marker all-edge-marker\\">
             <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
           </marker>
-          <marker id=\\"graph-other-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"23.1\\" refY=\\"5.75\\" class=\\"edge-marker other-edge-marker\\">
+          <marker id=\\"graph-other-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"7.1\\" refY=\\"5.75\\" class=\\"edge-marker other-edge-marker\\">
             <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
           </marker>
-          <marker id=\\"graph-scope-related-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"23.1\\" refY=\\"5.75\\" class=\\"edge-marker scope-related-edge-marker\\">
+          <marker id=\\"graph-scope-related-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"7.1\\" refY=\\"5.75\\" class=\\"edge-marker scope-related-edge-marker\\">
             <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
           </marker>
-          <marker id=\\"graph-scoped-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"23.1\\" refY=\\"5.75\\" class=\\"edge-marker scoped-edge-marker\\">
+          <marker id=\\"graph-scoped-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"7.1\\" refY=\\"5.75\\" class=\\"edge-marker scoped-edge-marker\\">
             <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
           </marker>
-          <marker id=\\"graph-related-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"23.1\\" refY=\\"5.75\\" class=\\"edge-marker related-edge-marker\\">
+          <marker id=\\"graph-related-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"7.1\\" refY=\\"5.75\\" class=\\"edge-marker related-edge-marker\\">
             <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
           </marker>
-          <marker id=\\"graph-direct-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"23.1\\" refY=\\"5.75\\" class=\\"edge-marker direct-edge-marker\\">
+          <marker id=\\"graph-direct-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"7.1\\" refY=\\"5.75\\" class=\\"edge-marker direct-edge-marker\\">
             <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
           </marker>
-          <marker id=\\"graph-selected-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"23.1\\" refY=\\"5.75\\" class=\\"edge-marker selected-edge-marker\\">
+          <marker id=\\"graph-selected-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"7.1\\" refY=\\"5.75\\" class=\\"edge-marker selected-edge-marker\\">
             <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
           </marker>
         </defs>
@@ -53,7 +53,7 @@ exports[`ComponentCallGraphsView when a call graph's node has a different number
         <g></g>
         <g></g>
         <g>
-          <path id=\\"graph-edge-0\\" d=\\"M50,50L50,250\\" marker-end=\\"url(#graph-direct-edge-marker)\\" class=\\"edge direct-edge\\"></path>
+          <path id=\\"graph-edge-0\\" d=\\"M50,66L50,234\\" marker-end=\\"url(#graph-direct-edge-marker)\\" class=\\"edge direct-edge\\"></path>
         </g>
         <g></g>
         <g></g>
@@ -133,25 +133,25 @@ exports[`ComponentCallGraphsView when a call graph's node has the same number of
         </span></h5> <svg xmlns=\\"http://www.w3.org/2000/svg\\" overflow=\\"auto\\" width=\\"100%\\" height=\\"1200\\">
         <rect fill-opacity=\\"0\\" class=\\"graph-background\\"></rect>
         <defs>
-          <marker id=\\"graph-all-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"23.1\\" refY=\\"5.75\\" class=\\"edge-marker all-edge-marker\\">
+          <marker id=\\"graph-all-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"7.1\\" refY=\\"5.75\\" class=\\"edge-marker all-edge-marker\\">
             <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
           </marker>
-          <marker id=\\"graph-other-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"23.1\\" refY=\\"5.75\\" class=\\"edge-marker other-edge-marker\\">
+          <marker id=\\"graph-other-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"7.1\\" refY=\\"5.75\\" class=\\"edge-marker other-edge-marker\\">
             <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
           </marker>
-          <marker id=\\"graph-scope-related-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"23.1\\" refY=\\"5.75\\" class=\\"edge-marker scope-related-edge-marker\\">
+          <marker id=\\"graph-scope-related-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"7.1\\" refY=\\"5.75\\" class=\\"edge-marker scope-related-edge-marker\\">
             <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
           </marker>
-          <marker id=\\"graph-scoped-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"23.1\\" refY=\\"5.75\\" class=\\"edge-marker scoped-edge-marker\\">
+          <marker id=\\"graph-scoped-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"7.1\\" refY=\\"5.75\\" class=\\"edge-marker scoped-edge-marker\\">
             <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
           </marker>
-          <marker id=\\"graph-related-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"23.1\\" refY=\\"5.75\\" class=\\"edge-marker related-edge-marker\\">
+          <marker id=\\"graph-related-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"7.1\\" refY=\\"5.75\\" class=\\"edge-marker related-edge-marker\\">
             <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
           </marker>
-          <marker id=\\"graph-direct-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"23.1\\" refY=\\"5.75\\" class=\\"edge-marker direct-edge-marker\\">
+          <marker id=\\"graph-direct-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"7.1\\" refY=\\"5.75\\" class=\\"edge-marker direct-edge-marker\\">
             <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
           </marker>
-          <marker id=\\"graph-selected-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"23.1\\" refY=\\"5.75\\" class=\\"edge-marker selected-edge-marker\\">
+          <marker id=\\"graph-selected-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"7.1\\" refY=\\"5.75\\" class=\\"edge-marker selected-edge-marker\\">
             <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
           </marker>
         </defs>
@@ -161,7 +161,7 @@ exports[`ComponentCallGraphsView when a call graph's node has the same number of
         <g></g>
         <g></g>
         <g>
-          <path id=\\"graph-edge-0\\" d=\\"M50,50L50,250\\" marker-end=\\"url(#graph-direct-edge-marker)\\" class=\\"edge direct-edge\\"></path>
+          <path id=\\"graph-edge-0\\" d=\\"M50,66L50,234\\" marker-end=\\"url(#graph-direct-edge-marker)\\" class=\\"edge direct-edge\\"></path>
         </g>
         <g></g>
         <g></g>
@@ -200,25 +200,25 @@ exports[`ComponentCallGraphsView when a call graph's node has the same number of
         </span></h5> <svg xmlns=\\"http://www.w3.org/2000/svg\\" overflow=\\"auto\\" width=\\"100%\\" height=\\"1200\\">
         <rect fill-opacity=\\"0\\" class=\\"graph-background\\"></rect>
         <defs>
-          <marker id=\\"graph-all-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"23.1\\" refY=\\"5.75\\" class=\\"edge-marker all-edge-marker\\">
+          <marker id=\\"graph-all-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"7.1\\" refY=\\"5.75\\" class=\\"edge-marker all-edge-marker\\">
             <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
           </marker>
-          <marker id=\\"graph-other-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"23.1\\" refY=\\"5.75\\" class=\\"edge-marker other-edge-marker\\">
+          <marker id=\\"graph-other-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"7.1\\" refY=\\"5.75\\" class=\\"edge-marker other-edge-marker\\">
             <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
           </marker>
-          <marker id=\\"graph-scope-related-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"23.1\\" refY=\\"5.75\\" class=\\"edge-marker scope-related-edge-marker\\">
+          <marker id=\\"graph-scope-related-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"7.1\\" refY=\\"5.75\\" class=\\"edge-marker scope-related-edge-marker\\">
             <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
           </marker>
-          <marker id=\\"graph-scoped-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"23.1\\" refY=\\"5.75\\" class=\\"edge-marker scoped-edge-marker\\">
+          <marker id=\\"graph-scoped-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"7.1\\" refY=\\"5.75\\" class=\\"edge-marker scoped-edge-marker\\">
             <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
           </marker>
-          <marker id=\\"graph-related-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"23.1\\" refY=\\"5.75\\" class=\\"edge-marker related-edge-marker\\">
+          <marker id=\\"graph-related-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"7.1\\" refY=\\"5.75\\" class=\\"edge-marker related-edge-marker\\">
             <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
           </marker>
-          <marker id=\\"graph-direct-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"23.1\\" refY=\\"5.75\\" class=\\"edge-marker direct-edge-marker\\">
+          <marker id=\\"graph-direct-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"7.1\\" refY=\\"5.75\\" class=\\"edge-marker direct-edge-marker\\">
             <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
           </marker>
-          <marker id=\\"graph-selected-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"23.1\\" refY=\\"5.75\\" class=\\"edge-marker selected-edge-marker\\">
+          <marker id=\\"graph-selected-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"7.1\\" refY=\\"5.75\\" class=\\"edge-marker selected-edge-marker\\">
             <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
           </marker>
         </defs>
@@ -228,7 +228,7 @@ exports[`ComponentCallGraphsView when a call graph's node has the same number of
         <g></g>
         <g></g>
         <g>
-          <path id=\\"graph-edge-0\\" d=\\"M50,50L50,250\\" marker-end=\\"url(#graph-direct-edge-marker)\\" class=\\"edge direct-edge\\"></path>
+          <path id=\\"graph-edge-0\\" d=\\"M50,66L50,234\\" marker-end=\\"url(#graph-direct-edge-marker)\\" class=\\"edge direct-edge\\"></path>
         </g>
         <g></g>
         <g></g>
@@ -339,25 +339,25 @@ exports[`ComponentCallGraphsView when there are 2 nodes and the first node has 1
         </span></h5> <svg xmlns=\\"http://www.w3.org/2000/svg\\" overflow=\\"auto\\" width=\\"100%\\" height=\\"1200\\">
         <rect fill-opacity=\\"0\\" class=\\"graph-background\\"></rect>
         <defs>
-          <marker id=\\"graph-all-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"23.1\\" refY=\\"5.75\\" class=\\"edge-marker all-edge-marker\\">
+          <marker id=\\"graph-all-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"7.1\\" refY=\\"5.75\\" class=\\"edge-marker all-edge-marker\\">
             <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
           </marker>
-          <marker id=\\"graph-other-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"23.1\\" refY=\\"5.75\\" class=\\"edge-marker other-edge-marker\\">
+          <marker id=\\"graph-other-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"7.1\\" refY=\\"5.75\\" class=\\"edge-marker other-edge-marker\\">
             <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
           </marker>
-          <marker id=\\"graph-scope-related-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"23.1\\" refY=\\"5.75\\" class=\\"edge-marker scope-related-edge-marker\\">
+          <marker id=\\"graph-scope-related-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"7.1\\" refY=\\"5.75\\" class=\\"edge-marker scope-related-edge-marker\\">
             <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
           </marker>
-          <marker id=\\"graph-scoped-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"23.1\\" refY=\\"5.75\\" class=\\"edge-marker scoped-edge-marker\\">
+          <marker id=\\"graph-scoped-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"7.1\\" refY=\\"5.75\\" class=\\"edge-marker scoped-edge-marker\\">
             <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
           </marker>
-          <marker id=\\"graph-related-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"23.1\\" refY=\\"5.75\\" class=\\"edge-marker related-edge-marker\\">
+          <marker id=\\"graph-related-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"7.1\\" refY=\\"5.75\\" class=\\"edge-marker related-edge-marker\\">
             <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
           </marker>
-          <marker id=\\"graph-direct-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"23.1\\" refY=\\"5.75\\" class=\\"edge-marker direct-edge-marker\\">
+          <marker id=\\"graph-direct-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"7.1\\" refY=\\"5.75\\" class=\\"edge-marker direct-edge-marker\\">
             <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
           </marker>
-          <marker id=\\"graph-selected-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"23.1\\" refY=\\"5.75\\" class=\\"edge-marker selected-edge-marker\\">
+          <marker id=\\"graph-selected-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"7.1\\" refY=\\"5.75\\" class=\\"edge-marker selected-edge-marker\\">
             <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
           </marker>
         </defs>
@@ -367,7 +367,7 @@ exports[`ComponentCallGraphsView when there are 2 nodes and the first node has 1
         <g></g>
         <g></g>
         <g>
-          <path id=\\"graph-edge-0\\" d=\\"M50,50L50,250\\" marker-end=\\"url(#graph-direct-edge-marker)\\" class=\\"edge direct-edge\\"></path>
+          <path id=\\"graph-edge-0\\" d=\\"M50,66L50,234\\" marker-end=\\"url(#graph-direct-edge-marker)\\" class=\\"edge direct-edge\\"></path>
         </g>
         <g></g>
         <g></g>
@@ -440,25 +440,25 @@ exports[`ComponentCallGraphsView when there are 2 nodes and the first node has 1
         </span></h5> <svg xmlns=\\"http://www.w3.org/2000/svg\\" overflow=\\"auto\\" width=\\"100%\\" height=\\"1200\\">
         <rect fill-opacity=\\"0\\" class=\\"graph-background\\"></rect>
         <defs>
-          <marker id=\\"graph-all-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"23.1\\" refY=\\"5.75\\" class=\\"edge-marker all-edge-marker\\">
+          <marker id=\\"graph-all-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"7.1\\" refY=\\"5.75\\" class=\\"edge-marker all-edge-marker\\">
             <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
           </marker>
-          <marker id=\\"graph-other-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"23.1\\" refY=\\"5.75\\" class=\\"edge-marker other-edge-marker\\">
+          <marker id=\\"graph-other-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"7.1\\" refY=\\"5.75\\" class=\\"edge-marker other-edge-marker\\">
             <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
           </marker>
-          <marker id=\\"graph-scope-related-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"23.1\\" refY=\\"5.75\\" class=\\"edge-marker scope-related-edge-marker\\">
+          <marker id=\\"graph-scope-related-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"7.1\\" refY=\\"5.75\\" class=\\"edge-marker scope-related-edge-marker\\">
             <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
           </marker>
-          <marker id=\\"graph-scoped-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"23.1\\" refY=\\"5.75\\" class=\\"edge-marker scoped-edge-marker\\">
+          <marker id=\\"graph-scoped-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"7.1\\" refY=\\"5.75\\" class=\\"edge-marker scoped-edge-marker\\">
             <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
           </marker>
-          <marker id=\\"graph-related-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"23.1\\" refY=\\"5.75\\" class=\\"edge-marker related-edge-marker\\">
+          <marker id=\\"graph-related-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"7.1\\" refY=\\"5.75\\" class=\\"edge-marker related-edge-marker\\">
             <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
           </marker>
-          <marker id=\\"graph-direct-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"23.1\\" refY=\\"5.75\\" class=\\"edge-marker direct-edge-marker\\">
+          <marker id=\\"graph-direct-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"7.1\\" refY=\\"5.75\\" class=\\"edge-marker direct-edge-marker\\">
             <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
           </marker>
-          <marker id=\\"graph-selected-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"23.1\\" refY=\\"5.75\\" class=\\"edge-marker selected-edge-marker\\">
+          <marker id=\\"graph-selected-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"7.1\\" refY=\\"5.75\\" class=\\"edge-marker selected-edge-marker\\">
             <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
           </marker>
         </defs>
@@ -468,7 +468,7 @@ exports[`ComponentCallGraphsView when there are 2 nodes and the first node has 1
         <g></g>
         <g></g>
         <g>
-          <path id=\\"graph-edge-0\\" d=\\"M50,50L50,250\\" marker-end=\\"url(#graph-direct-edge-marker)\\" class=\\"edge direct-edge\\"></path>
+          <path id=\\"graph-edge-0\\" d=\\"M50,66L50,234\\" marker-end=\\"url(#graph-direct-edge-marker)\\" class=\\"edge direct-edge\\"></path>
         </g>
         <g></g>
         <g></g>
@@ -513,25 +513,25 @@ exports[`ComponentCallGraphsView when there are 2 nodes and the first node has 1
         </span></h5> <svg xmlns=\\"http://www.w3.org/2000/svg\\" overflow=\\"auto\\" width=\\"100%\\" height=\\"1200\\">
         <rect fill-opacity=\\"0\\" class=\\"graph-background\\"></rect>
         <defs>
-          <marker id=\\"graph-all-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"23.1\\" refY=\\"5.75\\" class=\\"edge-marker all-edge-marker\\">
+          <marker id=\\"graph-all-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"7.1\\" refY=\\"5.75\\" class=\\"edge-marker all-edge-marker\\">
             <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
           </marker>
-          <marker id=\\"graph-other-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"23.1\\" refY=\\"5.75\\" class=\\"edge-marker other-edge-marker\\">
+          <marker id=\\"graph-other-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"7.1\\" refY=\\"5.75\\" class=\\"edge-marker other-edge-marker\\">
             <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
           </marker>
-          <marker id=\\"graph-scope-related-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"23.1\\" refY=\\"5.75\\" class=\\"edge-marker scope-related-edge-marker\\">
+          <marker id=\\"graph-scope-related-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"7.1\\" refY=\\"5.75\\" class=\\"edge-marker scope-related-edge-marker\\">
             <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
           </marker>
-          <marker id=\\"graph-scoped-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"23.1\\" refY=\\"5.75\\" class=\\"edge-marker scoped-edge-marker\\">
+          <marker id=\\"graph-scoped-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"7.1\\" refY=\\"5.75\\" class=\\"edge-marker scoped-edge-marker\\">
             <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
           </marker>
-          <marker id=\\"graph-related-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"23.1\\" refY=\\"5.75\\" class=\\"edge-marker related-edge-marker\\">
+          <marker id=\\"graph-related-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"7.1\\" refY=\\"5.75\\" class=\\"edge-marker related-edge-marker\\">
             <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
           </marker>
-          <marker id=\\"graph-direct-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"23.1\\" refY=\\"5.75\\" class=\\"edge-marker direct-edge-marker\\">
+          <marker id=\\"graph-direct-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"7.1\\" refY=\\"5.75\\" class=\\"edge-marker direct-edge-marker\\">
             <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
           </marker>
-          <marker id=\\"graph-selected-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"23.1\\" refY=\\"5.75\\" class=\\"edge-marker selected-edge-marker\\">
+          <marker id=\\"graph-selected-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"7.1\\" refY=\\"5.75\\" class=\\"edge-marker selected-edge-marker\\">
             <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
           </marker>
         </defs>
@@ -541,7 +541,7 @@ exports[`ComponentCallGraphsView when there are 2 nodes and the first node has 1
         <g></g>
         <g></g>
         <g>
-          <path id=\\"graph-edge-0\\" d=\\"M50,50L50,250\\" marker-end=\\"url(#graph-direct-edge-marker)\\" class=\\"edge direct-edge\\"></path>
+          <path id=\\"graph-edge-0\\" d=\\"M50,66L50,234\\" marker-end=\\"url(#graph-direct-edge-marker)\\" class=\\"edge direct-edge\\"></path>
         </g>
         <g></g>
         <g></g>
@@ -614,25 +614,25 @@ exports[`ComponentCallGraphsView when there is 1 diagram renders the page with 1
         </span></h5> <svg xmlns=\\"http://www.w3.org/2000/svg\\" overflow=\\"auto\\" width=\\"100%\\" height=\\"1200\\">
         <rect fill-opacity=\\"0\\" class=\\"graph-background\\"></rect>
         <defs>
-          <marker id=\\"graph-all-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"23.1\\" refY=\\"5.75\\" class=\\"edge-marker all-edge-marker\\">
+          <marker id=\\"graph-all-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"7.1\\" refY=\\"5.75\\" class=\\"edge-marker all-edge-marker\\">
             <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
           </marker>
-          <marker id=\\"graph-other-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"23.1\\" refY=\\"5.75\\" class=\\"edge-marker other-edge-marker\\">
+          <marker id=\\"graph-other-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"7.1\\" refY=\\"5.75\\" class=\\"edge-marker other-edge-marker\\">
             <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
           </marker>
-          <marker id=\\"graph-scope-related-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"23.1\\" refY=\\"5.75\\" class=\\"edge-marker scope-related-edge-marker\\">
+          <marker id=\\"graph-scope-related-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"7.1\\" refY=\\"5.75\\" class=\\"edge-marker scope-related-edge-marker\\">
             <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
           </marker>
-          <marker id=\\"graph-scoped-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"23.1\\" refY=\\"5.75\\" class=\\"edge-marker scoped-edge-marker\\">
+          <marker id=\\"graph-scoped-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"7.1\\" refY=\\"5.75\\" class=\\"edge-marker scoped-edge-marker\\">
             <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
           </marker>
-          <marker id=\\"graph-related-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"23.1\\" refY=\\"5.75\\" class=\\"edge-marker related-edge-marker\\">
+          <marker id=\\"graph-related-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"7.1\\" refY=\\"5.75\\" class=\\"edge-marker related-edge-marker\\">
             <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
           </marker>
-          <marker id=\\"graph-direct-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"23.1\\" refY=\\"5.75\\" class=\\"edge-marker direct-edge-marker\\">
+          <marker id=\\"graph-direct-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"7.1\\" refY=\\"5.75\\" class=\\"edge-marker direct-edge-marker\\">
             <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
           </marker>
-          <marker id=\\"graph-selected-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"23.1\\" refY=\\"5.75\\" class=\\"edge-marker selected-edge-marker\\">
+          <marker id=\\"graph-selected-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"7.1\\" refY=\\"5.75\\" class=\\"edge-marker selected-edge-marker\\">
             <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
           </marker>
         </defs>
@@ -642,7 +642,7 @@ exports[`ComponentCallGraphsView when there is 1 diagram renders the page with 1
         <g></g>
         <g></g>
         <g>
-          <path id=\\"graph-edge-0\\" d=\\"M50,50L50,250\\" marker-end=\\"url(#graph-direct-edge-marker)\\" class=\\"edge direct-edge\\"></path>
+          <path id=\\"graph-edge-0\\" d=\\"M50,66L50,234\\" marker-end=\\"url(#graph-direct-edge-marker)\\" class=\\"edge direct-edge\\"></path>
         </g>
         <g></g>
         <g></g>

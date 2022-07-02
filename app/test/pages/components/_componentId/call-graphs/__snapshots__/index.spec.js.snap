@@ -395,7 +395,7 @@ exports[`Index when Get Diagrams service endpoints returns a call graph renders 
               markerUnits="userSpaceOnUse"
               markerWidth="7.1"
               orient="auto-start-reverse"
-              refX="23.1"
+              refX="7.1"
               refY="5.75"
               viewBox="0 0 7.1 11.5"
             >
@@ -410,7 +410,7 @@ exports[`Index when Get Diagrams service endpoints returns a call graph renders 
               markerUnits="userSpaceOnUse"
               markerWidth="7.1"
               orient="auto-start-reverse"
-              refX="23.1"
+              refX="7.1"
               refY="5.75"
               viewBox="0 0 7.1 11.5"
             >
@@ -425,7 +425,7 @@ exports[`Index when Get Diagrams service endpoints returns a call graph renders 
               markerUnits="userSpaceOnUse"
               markerWidth="7.1"
               orient="auto-start-reverse"
-              refX="23.1"
+              refX="7.1"
               refY="5.75"
               viewBox="0 0 7.1 11.5"
             >
@@ -440,7 +440,7 @@ exports[`Index when Get Diagrams service endpoints returns a call graph renders 
               markerUnits="userSpaceOnUse"
               markerWidth="7.1"
               orient="auto-start-reverse"
-              refX="23.1"
+              refX="7.1"
               refY="5.75"
               viewBox="0 0 7.1 11.5"
             >
@@ -455,7 +455,7 @@ exports[`Index when Get Diagrams service endpoints returns a call graph renders 
               markerUnits="userSpaceOnUse"
               markerWidth="7.1"
               orient="auto-start-reverse"
-              refX="23.1"
+              refX="7.1"
               refY="5.75"
               viewBox="0 0 7.1 11.5"
             >
@@ -470,7 +470,7 @@ exports[`Index when Get Diagrams service endpoints returns a call graph renders 
               markerUnits="userSpaceOnUse"
               markerWidth="7.1"
               orient="auto-start-reverse"
-              refX="23.1"
+              refX="7.1"
               refY="5.75"
               viewBox="0 0 7.1 11.5"
             >
@@ -485,7 +485,7 @@ exports[`Index when Get Diagrams service endpoints returns a call graph renders 
               markerUnits="userSpaceOnUse"
               markerWidth="7.1"
               orient="auto-start-reverse"
-              refX="23.1"
+              refX="7.1"
               refY="5.75"
               viewBox="0 0 7.1 11.5"
             >
@@ -503,7 +503,7 @@ exports[`Index when Get Diagrams service endpoints returns a call graph renders 
           <g>
             <path
               class="edge direct-edge"
-              d="M50,50L50,250"
+              d="M50,66L50,234"
               id="graph-edge-0"
               marker-end="url(#graph-direct-edge-marker)"
             />
