@@ -213,7 +213,7 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
               <!---->
               <!---->
               <div
-                class="card-body"
+                class="card-body p-2"
               >
                 <!---->
                 <!---->
@@ -366,7 +366,7 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
               <!---->
               <!---->
               <div
-                class="card-body"
+                class="card-body p-2"
               >
                 <!---->
                 <!---->
@@ -519,7 +519,7 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
               <!---->
               <!---->
               <div
-                class="card-body"
+                class="card-body p-2"
               >
                 <!---->
                 <!---->
@@ -615,7 +615,7 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
               <!---->
               <!---->
               <div
-                class="card-body"
+                class="card-body p-2"
               >
                 <!---->
                 <!---->
@@ -673,7 +673,7 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
               <!---->
               <!---->
               <div
-                class="card-body"
+                class="card-body p-2"
               >
                 <!---->
                 <!---->
@@ -1474,7 +1474,7 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
               <!---->
               <!---->
               <div
-                class="card-body"
+                class="card-body p-2"
               >
                 <!---->
                 <!---->
@@ -1627,7 +1627,7 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
               <!---->
               <!---->
               <div
-                class="card-body"
+                class="card-body p-2"
               >
                 <!---->
                 <!---->
@@ -1780,7 +1780,7 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
               <!---->
               <!---->
               <div
-                class="card-body"
+                class="card-body p-2"
               >
                 <!---->
                 <!---->
@@ -1876,7 +1876,7 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
               <!---->
               <!---->
               <div
-                class="card-body"
+                class="card-body p-2"
               >
                 <!---->
                 <!---->
@@ -1934,7 +1934,7 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
               <!---->
               <!---->
               <div
-                class="card-body"
+                class="card-body p-2"
               >
                 <!---->
                 <!---->

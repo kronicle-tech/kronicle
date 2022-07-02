@@ -1,6 +1,8 @@
 <template>
   <div v-if="component">
-    <h3 class="text-info">{{ component.name || component.id }}</h3>
+    <h3 class="text-info">
+      {{ component.name || component.id }}
+    </h3>
     <b-button
       v-if="component.name"
       class="my-1"
@@ -9,6 +11,11 @@
     >
       More Info
     </b-button>
+
+    <div v-if="component.typeId" class="my-4">
+      <h5 class="text-info">Type</h5>
+      {{ component.typeId }}
+    </div>
 
     <div
       v-for="connectionGroup in connectionGroups"

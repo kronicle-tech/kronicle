@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-if="diagram">
     <h1>{{ diagram.name }}</h1>
 
     <Markdown :markdown="diagram.description" />
@@ -9,7 +9,11 @@
       :environment-id-filter-enabled="true"
       :plugin-id-filter-enabled="true"
     >
-      <b-card v-if="edgeTypeOptions.length > 0" bg-variant="secondary">
+      <b-card
+        v-if="edgeTypeOptions.length > 0"
+        bg-variant="secondary"
+        body-class="p-2"
+      >
         <b-form-group label="Connection Types">
           <b-form-checkbox-group
             v-model="selectedEdgeTypes"
@@ -20,7 +24,7 @@
         </b-form-group>
       </b-card>
 
-      <b-card bg-variant="secondary">
+      <b-card bg-variant="secondary" body-class="p-2">
         <b-form-group
           label-cols="6"
           label-size="sm"
@@ -38,7 +42,7 @@
     </ComponentFilters>
 
     <b-card-group columns style="column-count: 3">
-      <b-card bg-variant="secondary">
+      <b-card bg-variant="secondary" body-class="p-2">
         <b-form-group
           label-cols="6"
           label-size="sm"
@@ -55,14 +59,14 @@
       </b-card>
     </b-card-group>
 
-    <div class="graph">
-      <b-alert show="60" dismissible variant="info">
-        Click a dot in the diagram to see more information about that component
-      </b-alert>
+    <b-alert show="60" dismissible variant="info" class="my-3">
+      Click a dot in the diagram to see more information about that component
+    </b-alert>
 
-      <ComponentDependencyGraph
-        id="component-dependency-graph"
+    <div class="diagram-graph">
+      <DiagramGraph
         :diagram="diagram"
+        :components="allComponents"
         :edge-types="selectedEdgeTypes"
         edge-relation-type="scope-related"
         :zoom="zoom"
@@ -110,9 +114,9 @@ import {
   GraphNode,
   GraphState,
 } from '~/types/kronicle-service'
-import { Network } from '~/types/component-dependency-graph'
+import { Network } from '~/types/diagram-graph'
 import { intRange } from '~/src/arrayUtils'
-import ComponentDependencyGraph from '~/components/DiagramGraph.vue'
+import DiagramGraph from '~/components/DiagramGraph.vue'
 import ComponentPanel from '~/components/ComponentPanel.vue'
 import ComponentFilters from '~/components/ComponentFilters.vue'
 import Markdown from '~/components/Markdown.vue'
@@ -141,9 +145,9 @@ export default Vue.extend({
     'b-form-group': BFormGroup,
     'b-form-select': BFormSelect,
     'b-sidebar': BSidebar,
-    ComponentDependencyGraph,
     ComponentFilters,
     ComponentPanel,
+    DiagramGraph,
     Markdown,
   },
   props: {
@@ -153,7 +157,7 @@ export default Vue.extend({
     },
     diagram: {
       type: Object as PropType<Diagram>,
-      required: true,
+      default: undefined,
     },
     allComponents: {
       type: Array as PropType<Component[]>,
@@ -246,7 +250,8 @@ export default Vue.extend({
 </script>
 
 <style scoped>
-.graph {
+.diagram-graph {
+  background-color: white;
   overflow-x: scroll;
   height: 1000px;
   height: calc(100vh - 300px);

@@ -26,7 +26,7 @@ exports[`OpenApiSpecsView when an OpenAPI spec has a URL but no spec renders the
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
-            <div class=\\"card-body\\">
+            <div class=\\"card-body p-2\\">
               <!---->
               <!---->
               <fieldset class=\\"form-group\\" id=\\"__BVID__276\\">
@@ -48,7 +48,7 @@ exports[`OpenApiSpecsView when an OpenAPI spec has a URL but no spec renders the
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
-            <div class=\\"card-body\\">
+            <div class=\\"card-body p-2\\">
               <!---->
               <!---->
               <fieldset class=\\"form-group\\" id=\\"__BVID__280\\">
@@ -70,7 +70,7 @@ exports[`OpenApiSpecsView when an OpenAPI spec has a URL but no spec renders the
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
-            <div class=\\"card-body\\">
+            <div class=\\"card-body p-2\\">
               <!---->
               <!---->
               <fieldset class=\\"form-group\\" id=\\"__BVID__284\\">
@@ -91,7 +91,7 @@ exports[`OpenApiSpecsView when an OpenAPI spec has a URL but no spec renders the
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
-            <div class=\\"card-body\\">
+            <div class=\\"card-body p-2\\">
               <!---->
               <!---->
               <fieldset class=\\"form-group\\" id=\\"__BVID__287\\">
@@ -112,7 +112,7 @@ exports[`OpenApiSpecsView when an OpenAPI spec has a URL but no spec renders the
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
-            <div class=\\"card-body\\">
+            <div class=\\"card-body p-2\\">
               <!---->
               <!---->
               <div role=\\"group\\" class=\\"form-group\\" id=\\"__BVID__290\\"><label for=\\"component-filter\\" class=\\"d-block\\" id=\\"__BVID__290__BV_label_\\">Component</label>
@@ -201,7 +201,7 @@ exports[`OpenApiSpecsView when an OpenAPI spec has a file but no spec renders th
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
-            <div class=\\"card-body\\">
+            <div class=\\"card-body p-2\\">
               <!---->
               <!---->
               <fieldset class=\\"form-group\\" id=\\"__BVID__305\\">
@@ -223,7 +223,7 @@ exports[`OpenApiSpecsView when an OpenAPI spec has a file but no spec renders th
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
-            <div class=\\"card-body\\">
+            <div class=\\"card-body p-2\\">
               <!---->
               <!---->
               <fieldset class=\\"form-group\\" id=\\"__BVID__309\\">
@@ -245,7 +245,7 @@ exports[`OpenApiSpecsView when an OpenAPI spec has a file but no spec renders th
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
-            <div class=\\"card-body\\">
+            <div class=\\"card-body p-2\\">
               <!---->
               <!---->
               <fieldset class=\\"form-group\\" id=\\"__BVID__313\\">
@@ -266,7 +266,7 @@ exports[`OpenApiSpecsView when an OpenAPI spec has a file but no spec renders th
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
-            <div class=\\"card-body\\">
+            <div class=\\"card-body p-2\\">
               <!---->
               <!---->
               <fieldset class=\\"form-group\\" id=\\"__BVID__316\\">
@@ -287,7 +287,7 @@ exports[`OpenApiSpecsView when an OpenAPI spec has a file but no spec renders th
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
-            <div class=\\"card-body\\">
+            <div class=\\"card-body p-2\\">
               <!---->
               <!---->
               <div role=\\"group\\" class=\\"form-group\\" id=\\"__BVID__319\\"><label for=\\"component-filter\\" class=\\"d-block\\" id=\\"__BVID__319__BV_label_\\">Component</label>
@@ -376,7 +376,7 @@ exports[`OpenApiSpecsView when an OpenAPI spec has a spec and a URL renders the 
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
-            <div class=\\"card-body\\">
+            <div class=\\"card-body p-2\\">
               <!---->
               <!---->
               <fieldset class=\\"form-group\\" id=\\"__BVID__216\\">
@@ -398,7 +398,7 @@ exports[`OpenApiSpecsView when an OpenAPI spec has a spec and a URL renders the 
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
-            <div class=\\"card-body\\">
+            <div class=\\"card-body p-2\\">
               <!---->
               <!---->
               <fieldset class=\\"form-group\\" id=\\"__BVID__220\\">
@@ -420,7 +420,7 @@ exports[`OpenApiSpecsView when an OpenAPI spec has a spec and a URL renders the 
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
-            <div class=\\"card-body\\">
+            <div class=\\"card-body p-2\\">
               <!---->
               <!---->
               <fieldset class=\\"form-group\\" id=\\"__BVID__224\\">
@@ -441,7 +441,7 @@ exports[`OpenApiSpecsView when an OpenAPI spec has a spec and a URL renders the 
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
-            <div class=\\"card-body\\">
+            <div class=\\"card-body p-2\\">
               <!---->
               <!---->
               <fieldset class=\\"form-group\\" id=\\"__BVID__227\\">
@@ -462,7 +462,7 @@ exports[`OpenApiSpecsView when an OpenAPI spec has a spec and a URL renders the 
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
-            <div class=\\"card-body\\">
+            <div class=\\"card-body p-2\\">
               <!---->
               <!---->
               <div role=\\"group\\" class=\\"form-group\\" id=\\"__BVID__230\\"><label for=\\"component-filter\\" class=\\"d-block\\" id=\\"__BVID__230__BV_label_\\">Component</label>
@@ -551,7 +551,7 @@ exports[`OpenApiSpecsView when an OpenAPI spec has a spec and a file renders the
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
-            <div class=\\"card-body\\">
+            <div class=\\"card-body p-2\\">
               <!---->
               <!---->
               <fieldset class=\\"form-group\\" id=\\"__BVID__246\\">
@@ -573,7 +573,7 @@ exports[`OpenApiSpecsView when an OpenAPI spec has a spec and a file renders the
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
-            <div class=\\"card-body\\">
+            <div class=\\"card-body p-2\\">
               <!---->
               <!---->
               <fieldset class=\\"form-group\\" id=\\"__BVID__250\\">
@@ -595,7 +595,7 @@ exports[`OpenApiSpecsView when an OpenAPI spec has a spec and a file renders the
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
-            <div class=\\"card-body\\">
+            <div class=\\"card-body p-2\\">
               <!---->
               <!---->
               <fieldset class=\\"form-group\\" id=\\"__BVID__254\\">
@@ -616,7 +616,7 @@ exports[`OpenApiSpecsView when an OpenAPI spec has a spec and a file renders the
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
-            <div class=\\"card-body\\">
+            <div class=\\"card-body p-2\\">
               <!---->
               <!---->
               <fieldset class=\\"form-group\\" id=\\"__BVID__257\\">
@@ -637,7 +637,7 @@ exports[`OpenApiSpecsView when an OpenAPI spec has a spec and a file renders the
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
-            <div class=\\"card-body\\">
+            <div class=\\"card-body p-2\\">
               <!---->
               <!---->
               <div role=\\"group\\" class=\\"form-group\\" id=\\"__BVID__260\\"><label for=\\"component-filter\\" class=\\"d-block\\" id=\\"__BVID__260__BV_label_\\">Component</label>
@@ -726,7 +726,7 @@ exports[`OpenApiSpecsView when components is set to multiple components with mul
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
-            <div class=\\"card-body\\">
+            <div class=\\"card-body p-2\\">
               <!---->
               <!---->
               <fieldset class=\\"form-group\\" id=\\"__BVID__110\\">
@@ -750,7 +750,7 @@ exports[`OpenApiSpecsView when components is set to multiple components with mul
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
-            <div class=\\"card-body\\">
+            <div class=\\"card-body p-2\\">
               <!---->
               <!---->
               <fieldset class=\\"form-group\\" id=\\"__BVID__116\\">
@@ -774,7 +774,7 @@ exports[`OpenApiSpecsView when components is set to multiple components with mul
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
-            <div class=\\"card-body\\">
+            <div class=\\"card-body p-2\\">
               <!---->
               <!---->
               <fieldset class=\\"form-group\\" id=\\"__BVID__122\\">
@@ -796,7 +796,7 @@ exports[`OpenApiSpecsView when components is set to multiple components with mul
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
-            <div class=\\"card-body\\">
+            <div class=\\"card-body p-2\\">
               <!---->
               <!---->
               <fieldset class=\\"form-group\\" id=\\"__BVID__126\\">
@@ -817,7 +817,7 @@ exports[`OpenApiSpecsView when components is set to multiple components with mul
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
-            <div class=\\"card-body\\">
+            <div class=\\"card-body p-2\\">
               <!---->
               <!---->
               <div role=\\"group\\" class=\\"form-group\\" id=\\"__BVID__129\\"><label for=\\"component-filter\\" class=\\"d-block\\" id=\\"__BVID__129__BV_label_\\">Component</label>
@@ -985,7 +985,7 @@ exports[`OpenApiSpecsView when components is set to multiple components with mul
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
-            <div class=\\"card-body\\">
+            <div class=\\"card-body p-2\\">
               <!---->
               <!---->
               <fieldset class=\\"form-group\\" id=\\"__BVID__163\\">
@@ -1009,7 +1009,7 @@ exports[`OpenApiSpecsView when components is set to multiple components with mul
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
-            <div class=\\"card-body\\">
+            <div class=\\"card-body p-2\\">
               <!---->
               <!---->
               <fieldset class=\\"form-group\\" id=\\"__BVID__169\\">
@@ -1033,7 +1033,7 @@ exports[`OpenApiSpecsView when components is set to multiple components with mul
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
-            <div class=\\"card-body\\">
+            <div class=\\"card-body p-2\\">
               <!---->
               <!---->
               <fieldset class=\\"form-group\\" id=\\"__BVID__175\\">
@@ -1055,7 +1055,7 @@ exports[`OpenApiSpecsView when components is set to multiple components with mul
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
-            <div class=\\"card-body\\">
+            <div class=\\"card-body p-2\\">
               <!---->
               <!---->
               <fieldset class=\\"form-group\\" id=\\"__BVID__179\\">
@@ -1076,7 +1076,7 @@ exports[`OpenApiSpecsView when components is set to multiple components with mul
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
-            <div class=\\"card-body\\">
+            <div class=\\"card-body p-2\\">
               <!---->
               <!---->
               <div role=\\"group\\" class=\\"form-group\\" id=\\"__BVID__182\\"><label for=\\"component-filter\\" class=\\"d-block\\" id=\\"__BVID__182__BV_label_\\">Component</label>
@@ -1244,7 +1244,7 @@ exports[`OpenApiSpecsView when components is set to multiple components with mul
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
-            <div class=\\"card-body\\">
+            <div class=\\"card-body p-2\\">
               <!---->
               <!---->
               <fieldset class=\\"form-group\\" id=\\"__BVID__163\\">
@@ -1268,7 +1268,7 @@ exports[`OpenApiSpecsView when components is set to multiple components with mul
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
-            <div class=\\"card-body\\">
+            <div class=\\"card-body p-2\\">
               <!---->
               <!---->
               <fieldset class=\\"form-group\\" id=\\"__BVID__169\\">
@@ -1292,7 +1292,7 @@ exports[`OpenApiSpecsView when components is set to multiple components with mul
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
-            <div class=\\"card-body\\">
+            <div class=\\"card-body p-2\\">
               <!---->
               <!---->
               <fieldset class=\\"form-group\\" id=\\"__BVID__175\\">
@@ -1314,7 +1314,7 @@ exports[`OpenApiSpecsView when components is set to multiple components with mul
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
-            <div class=\\"card-body\\">
+            <div class=\\"card-body p-2\\">
               <!---->
               <!---->
               <fieldset class=\\"form-group\\" id=\\"__BVID__179\\">
@@ -1335,7 +1335,7 @@ exports[`OpenApiSpecsView when components is set to multiple components with mul
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
-            <div class=\\"card-body\\">
+            <div class=\\"card-body p-2\\">
               <!---->
               <!---->
               <div role=\\"group\\" class=\\"form-group\\" id=\\"__BVID__182\\"><label for=\\"component-filter\\" class=\\"d-block\\" id=\\"__BVID__182__BV_label_\\">Component</label>
@@ -1451,7 +1451,7 @@ exports[`OpenApiSpecsView when components prop is set a component with 1 OpenAPI
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
-            <div class=\\"card-body\\">
+            <div class=\\"card-body p-2\\">
               <!---->
               <!---->
               <fieldset class=\\"form-group\\" id=\\"__BVID__44\\">
@@ -1473,7 +1473,7 @@ exports[`OpenApiSpecsView when components prop is set a component with 1 OpenAPI
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
-            <div class=\\"card-body\\">
+            <div class=\\"card-body p-2\\">
               <!---->
               <!---->
               <fieldset class=\\"form-group\\" id=\\"__BVID__48\\">
@@ -1495,7 +1495,7 @@ exports[`OpenApiSpecsView when components prop is set a component with 1 OpenAPI
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
-            <div class=\\"card-body\\">
+            <div class=\\"card-body p-2\\">
               <!---->
               <!---->
               <fieldset class=\\"form-group\\" id=\\"__BVID__52\\">
@@ -1516,7 +1516,7 @@ exports[`OpenApiSpecsView when components prop is set a component with 1 OpenAPI
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
-            <div class=\\"card-body\\">
+            <div class=\\"card-body p-2\\">
               <!---->
               <!---->
               <fieldset class=\\"form-group\\" id=\\"__BVID__55\\">
@@ -1537,7 +1537,7 @@ exports[`OpenApiSpecsView when components prop is set a component with 1 OpenAPI
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
-            <div class=\\"card-body\\">
+            <div class=\\"card-body p-2\\">
               <!---->
               <!---->
               <div role=\\"group\\" class=\\"form-group\\" id=\\"__BVID__58\\"><label for=\\"component-filter\\" class=\\"d-block\\" id=\\"__BVID__58__BV_label_\\">Component</label>
@@ -1626,7 +1626,7 @@ exports[`OpenApiSpecsView when components prop is set a component with 2 OpenAPI
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
-            <div class=\\"card-body\\">
+            <div class=\\"card-body p-2\\">
               <!---->
               <!---->
               <fieldset class=\\"form-group\\" id=\\"__BVID__74\\">
@@ -1648,7 +1648,7 @@ exports[`OpenApiSpecsView when components prop is set a component with 2 OpenAPI
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
-            <div class=\\"card-body\\">
+            <div class=\\"card-body p-2\\">
               <!---->
               <!---->
               <fieldset class=\\"form-group\\" id=\\"__BVID__78\\">
@@ -1670,7 +1670,7 @@ exports[`OpenApiSpecsView when components prop is set a component with 2 OpenAPI
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
-            <div class=\\"card-body\\">
+            <div class=\\"card-body p-2\\">
               <!---->
               <!---->
               <fieldset class=\\"form-group\\" id=\\"__BVID__82\\">
@@ -1691,7 +1691,7 @@ exports[`OpenApiSpecsView when components prop is set a component with 2 OpenAPI
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
-            <div class=\\"card-body\\">
+            <div class=\\"card-body p-2\\">
               <!---->
               <!---->
               <fieldset class=\\"form-group\\" id=\\"__BVID__85\\">
@@ -1712,7 +1712,7 @@ exports[`OpenApiSpecsView when components prop is set a component with 2 OpenAPI
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
-            <div class=\\"card-body\\">
+            <div class=\\"card-body p-2\\">
               <!---->
               <!---->
               <div role=\\"group\\" class=\\"form-group\\" id=\\"__BVID__88\\"><label for=\\"component-filter\\" class=\\"d-block\\" id=\\"__BVID__88__BV_label_\\">Component</label>
@@ -1827,7 +1827,7 @@ exports[`OpenApiSpecsView when components prop is set components with no OpenAPI
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
-            <div class=\\"card-body\\">
+            <div class=\\"card-body p-2\\">
               <!---->
               <!---->
               <fieldset class=\\"form-group\\" id=\\"__BVID__15\\">
@@ -1851,7 +1851,7 @@ exports[`OpenApiSpecsView when components prop is set components with no OpenAPI
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
-            <div class=\\"card-body\\">
+            <div class=\\"card-body p-2\\">
               <!---->
               <!---->
               <fieldset class=\\"form-group\\" id=\\"__BVID__21\\">
@@ -1875,7 +1875,7 @@ exports[`OpenApiSpecsView when components prop is set components with no OpenAPI
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
-            <div class=\\"card-body\\">
+            <div class=\\"card-body p-2\\">
               <!---->
               <!---->
               <fieldset class=\\"form-group\\" id=\\"__BVID__27\\">
@@ -1897,7 +1897,7 @@ exports[`OpenApiSpecsView when components prop is set components with no OpenAPI
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
-            <div class=\\"card-body\\">
+            <div class=\\"card-body p-2\\">
               <!---->
               <!---->
               <fieldset class=\\"form-group\\" id=\\"__BVID__31\\">
@@ -1918,7 +1918,7 @@ exports[`OpenApiSpecsView when components prop is set components with no OpenAPI
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
-            <div class=\\"card-body\\">
+            <div class=\\"card-body p-2\\">
               <!---->
               <!---->
               <div role=\\"group\\" class=\\"form-group\\" id=\\"__BVID__34\\"><label for=\\"component-filter\\" class=\\"d-block\\" id=\\"__BVID__34__BV_label_\\">Component</label>

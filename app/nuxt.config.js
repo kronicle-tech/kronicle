@@ -136,6 +136,18 @@ export default {
 
   render: {
     fallback: false,
+
+    // static: {
+    //   setHeaders: (res, path) => {
+    //     console.log(path)
+    //     console.log(path.endsWith('.svg'))
+    //     if (path.endsWith('.svg')) {
+    //       console.log(JSON.stringify(res.getHeaders()))
+    //       res.setHeader('Content-Type', 'image/svg')
+    //       console.log(JSON.stringify(res.getHeaders()))
+    //     }
+    //   },
+    // },
   },
 
   privateRuntimeConfig: {

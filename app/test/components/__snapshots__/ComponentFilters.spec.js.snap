@@ -16,7 +16,7 @@ exports[`ComponentFilters when components prop is set to multiple components ren
         <div class=\\"card bg-secondary\\">
           <!---->
           <!---->
-          <div class=\\"card-body\\">
+          <div class=\\"card-body p-2\\">
             <!---->
             <!---->
             <fieldset class=\\"form-group\\" id=\\"__BVID__12\\">
@@ -39,7 +39,7 @@ exports[`ComponentFilters when components prop is set to multiple components ren
         <div class=\\"card bg-secondary\\">
           <!---->
           <!---->
-          <div class=\\"card-body\\">
+          <div class=\\"card-body p-2\\">
             <!---->
             <!---->
             <fieldset class=\\"form-group\\" id=\\"__BVID__17\\">
@@ -60,7 +60,7 @@ exports[`ComponentFilters when components prop is set to multiple components ren
         <div class=\\"card bg-secondary\\">
           <!---->
           <!---->
-          <div class=\\"card-body\\">
+          <div class=\\"card-body p-2\\">
             <!---->
             <!---->
             <div role=\\"group\\" class=\\"form-group\\" id=\\"__BVID__20\\"><label for=\\"component-filter\\" class=\\"d-block\\" id=\\"__BVID__20__BV_label_\\">Component</label>
@@ -99,7 +99,7 @@ exports[`ComponentFilters when components prop is set to multiple components wit
         <div class=\\"card bg-secondary\\">
           <!---->
           <!---->
-          <div class=\\"card-body\\">
+          <div class=\\"card-body p-2\\">
             <!---->
             <!---->
             <fieldset class=\\"form-group\\" id=\\"__BVID__28\\">
@@ -125,7 +125,7 @@ exports[`ComponentFilters when components prop is set to multiple components wit
         <div class=\\"card bg-secondary\\">
           <!---->
           <!---->
-          <div class=\\"card-body\\">
+          <div class=\\"card-body p-2\\">
             <!---->
             <!---->
             <fieldset class=\\"form-group\\" id=\\"__BVID__36\\">
@@ -151,7 +151,7 @@ exports[`ComponentFilters when components prop is set to multiple components wit
         <div class=\\"card bg-secondary\\">
           <!---->
           <!---->
-          <div class=\\"card-body\\">
+          <div class=\\"card-body p-2\\">
             <!---->
             <!---->
             <fieldset class=\\"form-group\\" id=\\"__BVID__44\\">
@@ -174,7 +174,7 @@ exports[`ComponentFilters when components prop is set to multiple components wit
         <div class=\\"card bg-secondary\\">
           <!---->
           <!---->
-          <div class=\\"card-body\\">
+          <div class=\\"card-body p-2\\">
             <!---->
             <!---->
             <fieldset class=\\"form-group\\" id=\\"__BVID__49\\">
@@ -197,7 +197,7 @@ exports[`ComponentFilters when components prop is set to multiple components wit
         <div class=\\"card bg-secondary\\">
           <!---->
           <!---->
-          <div class=\\"card-body\\">
+          <div class=\\"card-body p-2\\">
             <!---->
             <!---->
             <div role=\\"group\\" class=\\"form-group\\" id=\\"__BVID__54\\"><label for=\\"component-filter\\" class=\\"d-block\\" id=\\"__BVID__54__BV_label_\\">Component</label>
@@ -236,7 +236,7 @@ exports[`ComponentFilters when components prop is set to multiple components wit
         <div class=\\"card bg-secondary\\">
           <!---->
           <!---->
-          <div class=\\"card-body\\">
+          <div class=\\"card-body p-2\\">
             <!---->
             <!---->
             <fieldset class=\\"form-group\\" id=\\"__BVID__451\\">
@@ -262,7 +262,7 @@ exports[`ComponentFilters when components prop is set to multiple components wit
         <div class=\\"card bg-secondary\\">
           <!---->
           <!---->
-          <div class=\\"card-body\\">
+          <div class=\\"card-body p-2\\">
             <!---->
             <!---->
             <fieldset class=\\"form-group\\" id=\\"__BVID__459\\">
@@ -288,7 +288,7 @@ exports[`ComponentFilters when components prop is set to multiple components wit
         <div class=\\"card bg-secondary\\">
           <!---->
           <!---->
-          <div class=\\"card-body\\">
+          <div class=\\"card-body p-2\\">
             <!---->
             <!---->
             <fieldset class=\\"form-group\\" id=\\"__BVID__467\\">
@@ -311,7 +311,7 @@ exports[`ComponentFilters when components prop is set to multiple components wit
         <div class=\\"card bg-secondary\\">
           <!---->
           <!---->
-          <div class=\\"card-body\\">
+          <div class=\\"card-body p-2\\">
             <!---->
             <!---->
             <fieldset class=\\"form-group\\" id=\\"__BVID__472\\">
@@ -351,7 +351,7 @@ exports[`ComponentFilters when components prop is set to multiple components wit
         <div class=\\"card bg-secondary\\">
           <!---->
           <!---->
-          <div class=\\"card-body\\">
+          <div class=\\"card-body p-2\\">
             <!---->
             <!---->
             <fieldset class=\\"form-group\\" id=\\"__BVID__62\\">
@@ -374,7 +374,7 @@ exports[`ComponentFilters when components prop is set to multiple components wit
         <div class=\\"card bg-secondary\\">
           <!---->
           <!---->
-          <div class=\\"card-body\\">
+          <div class=\\"card-body p-2\\">
             <!---->
             <!---->
             <fieldset class=\\"form-group\\" id=\\"__BVID__67\\">
@@ -400,7 +400,7 @@ exports[`ComponentFilters when components prop is set to multiple components wit
         <div class=\\"card bg-secondary\\">
           <!---->
           <!---->
-          <div class=\\"card-body\\">
+          <div class=\\"card-body p-2\\">
             <!---->
             <!---->
             <fieldset class=\\"form-group\\" id=\\"__BVID__75\\">
@@ -426,7 +426,7 @@ exports[`ComponentFilters when components prop is set to multiple components wit
         <div class=\\"card bg-secondary\\">
           <!---->
           <!---->
-          <div class=\\"card-body\\">
+          <div class=\\"card-body p-2\\">
             <!---->
             <!---->
             <fieldset class=\\"form-group\\" id=\\"__BVID__83\\">
@@ -449,7 +449,7 @@ exports[`ComponentFilters when components prop is set to multiple components wit
         <div class=\\"card bg-secondary\\">
           <!---->
           <!---->
-          <div class=\\"card-body\\">
+          <div class=\\"card-body p-2\\">
             <!---->
             <!---->
             <fieldset class=\\"form-group\\" id=\\"__BVID__88\\">
@@ -472,7 +472,7 @@ exports[`ComponentFilters when components prop is set to multiple components wit
         <div class=\\"card bg-secondary\\">
           <!---->
           <!---->
-          <div class=\\"card-body\\">
+          <div class=\\"card-body p-2\\">
             <!---->
             <!---->
             <div role=\\"group\\" class=\\"form-group\\" id=\\"__BVID__93\\"><label for=\\"component-filter\\" class=\\"d-block\\" id=\\"__BVID__93__BV_label_\\">Component</label>
@@ -510,7 +510,7 @@ exports[`ComponentFilters when components prop is set to multiple components wit
         <div class=\\"card bg-secondary\\">
           <!---->
           <!---->
-          <div class=\\"card-body\\">
+          <div class=\\"card-body p-2\\">
             <!---->
             <!---->
             <fieldset class=\\"form-group\\" id=\\"__BVID__517\\">
@@ -533,7 +533,7 @@ exports[`ComponentFilters when components prop is set to multiple components wit
         <div class=\\"card bg-secondary\\">
           <!---->
           <!---->
-          <div class=\\"card-body\\">
+          <div class=\\"card-body p-2\\">
             <!---->
             <!---->
             <fieldset class=\\"form-group\\" id=\\"__BVID__522\\">
@@ -555,7 +555,7 @@ exports[`ComponentFilters when components prop is set to multiple components wit
         <div class=\\"card bg-secondary\\">
           <!---->
           <!---->
-          <div class=\\"card-body\\">
+          <div class=\\"card-body p-2\\">
             <!---->
             <!---->
             <fieldset class=\\"form-group\\" id=\\"__BVID__526\\">
@@ -577,7 +577,7 @@ exports[`ComponentFilters when components prop is set to multiple components wit
         <div class=\\"card bg-secondary\\">
           <!---->
           <!---->
-          <div class=\\"card-body\\">
+          <div class=\\"card-body p-2\\">
             <!---->
             <!---->
             <fieldset class=\\"form-group\\" id=\\"__BVID__530\\">
@@ -598,7 +598,7 @@ exports[`ComponentFilters when components prop is set to multiple components wit
         <div class=\\"card bg-secondary\\">
           <!---->
           <!---->
-          <div class=\\"card-body\\">
+          <div class=\\"card-body p-2\\">
             <!---->
             <!---->
             <fieldset class=\\"form-group\\" id=\\"__BVID__533\\">
@@ -619,7 +619,7 @@ exports[`ComponentFilters when components prop is set to multiple components wit
         <div class=\\"card bg-secondary\\">
           <!---->
           <!---->
-          <div class=\\"card-body\\">
+          <div class=\\"card-body p-2\\">
             <!---->
             <!---->
             <div role=\\"group\\" class=\\"form-group\\" id=\\"__BVID__536\\"><label for=\\"component-filter\\" class=\\"d-block\\" id=\\"__BVID__536__BV_label_\\">Component</label>

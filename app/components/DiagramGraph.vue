@@ -23,7 +23,7 @@
         markerWidth="7.1"
         markerHeight="11.5"
         markerUnits="userSpaceOnUse"
-        :refX="nodeSize - 2"
+        :refX="7.1"
         refY="5.75"
       >
         <path d="M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5"></path>
@@ -42,20 +42,38 @@
     </g>
 
     <g v-for="group in groups" :key="`${group}-node`">
-      <circle
-        v-for="node in network.nodeGroups.get(group)"
-        :id="`graph-node-${node.index}`"
-        :key="node.index"
-        :class="`node ${group}-node`"
-        :r="nodeSize / 2"
-        :cx="node.x"
-        :cy="node.y"
-        :title="node.text.join(', ')"
-        @click="selectedNodeChange(node)"
-        @touchend.passive="selectedNodeChange(node)"
-        @mouseover="hoverNodeChange(node)"
-        @mouseout="hoverNodeChange(undefined)"
-      />
+      <template v-for="node in network.nodeGroups.get(group)">
+        <image
+          v-if="node.iconPath"
+          :id="`graph-node-${node.index}`"
+          :key="node.index"
+          :href="node.iconPath"
+          :x="node.x - nodeSize / 2"
+          :y="node.y - nodeSize / 2"
+          :width="nodeSize"
+          :height="nodeSize"
+          :title="node.text.join(', ')"
+          @click="selectedNodeChange(node)"
+          @touchend.passive="selectedNodeChange(node)"
+          @mouseover="hoverNodeChange(node)"
+          @mouseout="hoverNodeChange(undefined)"
+        />
+
+        <circle
+          v-else
+          :id="`graph-node-${node.index}`"
+          :key="node.index"
+          :class="`node ${group}-node`"
+          :r="nodeSize / 2"
+          :cx="node.x"
+          :cy="node.y"
+          :title="node.text.join(', ')"
+          @click="selectedNodeChange(node)"
+          @touchend.passive="selectedNodeChange(node)"
+          @mouseover="hoverNodeChange(node)"
+          @mouseout="hoverNodeChange(undefined)"
+        />
+      </template>
     </g>
 
     <g v-for="group in groups" :key="`${group}-node-label`">
@@ -84,22 +102,22 @@
 <script lang="ts">
 import Vue, { PropType } from 'vue'
 import {
+  Component,
   Diagram,
   GraphEdge,
   GraphNode,
   GraphState,
 } from '~/types/kronicle-service'
-import {
-  Edge,
-  EdgeRelationType,
-  Network,
-  Node,
-} from '~/types/component-dependency-graph'
+import { Edge, EdgeRelationType, Network, Node } from '~/types/diagram-graph'
 
 export default Vue.extend({
   props: {
     diagram: {
       type: Object as PropType<Diagram>,
+      default: undefined,
+    },
+    components: {
+      type: Array as PropType<Component[]>,
       default: undefined,
     },
     edgeTypes: {
@@ -150,8 +168,22 @@ export default Vue.extend({
     },
   },
   data() {
+    const nodeIcons = new Map<string, string>()
+    nodeIcons.set(
+      'aws-lambda-function',
+      '/aws-architecture-icons/Architecture-Service-Icons/Arch_Compute/64/Arch_AWS-Lambda_64.svg'
+    )
+    nodeIcons.set(
+      'aws-apigateway-restapi-stage',
+      '/aws-architecture-icons/Architecture-Service-Icons/Arch_App-Integration/Arch_64/Arch_Amazon-API-Gateway_64.svg'
+    )
+    nodeIcons.set(
+      'aws-dynamodb-table',
+      '/aws-architecture-icons/Architecture-Service-Icons/Arch_Database/64/Arch_Amazon-DynamoDB_64.svg'
+    )
+
     return {
-      nodeSize: 20,
+      nodeSize: 32,
       fontSize: 14,
       labelOffset: 20,
       groups: [
@@ -165,6 +197,7 @@ export default Vue.extend({
       ],
       selectedNodeIndex: undefined as number | undefined,
       hoverNodeIndex: undefined as number | undefined,
+      nodeIcons,
     }
   },
   computed: {
@@ -263,9 +296,12 @@ export default Vue.extend({
       }
 
       function addNode(edgeNode: GraphNode, index: number) {
-        const node = {
+        const component = getNodeComponent(edgeNode)
+        const node: Node = {
           index,
-          text: getNodeText(edgeNode),
+          text: getNodeText(edgeNode, component),
+          iconPath: getNodeIconPath(component),
+          depth: 0,
           row: 0,
           column: 0,
           x: 0,
@@ -277,12 +313,22 @@ export default Vue.extend({
           edgeRelationType: 'all',
           node: edgeNode,
           edges: [] as Edge[],
-        } as Node
+          component,
+        }
         network.nodes.push(node)
       }
 
-      function getNodeText(node: GraphNode) {
-        const text = [node.componentId]
+      function getNodeComponent(node: GraphNode) {
+        if (!that.components) {
+          return undefined
+        }
+        return that.components.find(
+          (component) => component.id === node.componentId
+        )
+      }
+
+      function getNodeText(node: GraphNode, component: Component | undefined) {
+        const text = [component ? component.name : node.componentId]
         if ('name' in node) {
           text.push(node.name)
           node.tags.forEach((tag) => text.push(` ${tag.key}=${tag.value}`))
@@ -293,6 +339,15 @@ export default Vue.extend({
             ? line.substr(0, maxLineLength) + '…'
             : line
         )
+      }
+
+      function getNodeIconPath(
+        component: Component | undefined
+      ): string | undefined {
+        if (!component || !component.typeId) {
+          return undefined
+        }
+        return that.nodeIcons.get(component.typeId)
       }
 
       function addEdges() {
@@ -489,11 +544,6 @@ export default Vue.extend({
             node.edgeRelationType = 'selected'
           } else if (node.edges.length === 0) {
             nodesToRemove.push(node)
-          } else if (
-            scopedNodeIndexes &&
-            scopedNodeIndexes.includes(node.index)
-          ) {
-            node.edgeRelationType = 'scoped'
           } else {
             let edgeRelationType = 'other' as EdgeRelationType
             node.edges.some((edge) => {
@@ -677,9 +727,9 @@ export default Vue.extend({
           const targetNode = edge.targetNode
 
           const sourceX = sourceNode?.x ?? 0
-          const sourceY = sourceNode?.y ?? 0
+          const sourceY = (sourceNode?.y ?? 0) + that.nodeSize / 2
           const targetX = targetNode?.x ?? 0
-          const targetY = targetNode?.y ?? 0
+          const targetY = (targetNode?.y ?? 0) - that.nodeSize / 2
 
           if (sourceX === targetX || sourceY === targetY) {
             edge.d = `M${sourceX},${sourceY}L${targetX},${targetY}`
@@ -775,6 +825,7 @@ export default Vue.extend({
         }
 
         background.setAttribute('width', '0')
+        background.setAttribute('width', '0')
         background.setAttribute('height', '0')
         const bBox = svg.getBBox()
         const zoomFactor = this.zoom / 100
@@ -830,12 +881,13 @@ export default Vue.extend({
 
 .node {
   fill: #ccc;
-  stroke: #fff;
-  stroke-width: 2px;
+  stroke: #000;
+  stroke-width: 3px;
 }
 
 .node-label {
-  fill: #fff;
+  fill: #000;
+  font-weight: bold;
 }
 
 .other-edge,
@@ -846,26 +898,6 @@ export default Vue.extend({
 .other-node,
 .other-node-label {
   fill: #e74c3c;
-}
-
-.scoped-edge,
-.scoped-edge-marker {
-  stroke: #3498db;
-}
-
-.scoped-node,
-.scoped-node-label {
-  fill: #3498db;
-}
-
-.related-edge,
-.related-edge-marker {
-  stroke: #3498db;
-}
-
-.related-node,
-.related-node-label {
-  fill: #3498db;
 }
 
 .direct-edge,

@@ -76,7 +76,7 @@ public class CloudWatchLogsServiceTest {
                         null,
                         null,
                         null,
-                        new AwsTagKeysConfig("component", null, null, null),
+                        new AwsTagKeysConfig(null, "component", null, null, null),
                         new AwsLogFieldsConfig("test-level-field", "test-message-field"),
                         logSummariesConfig
                 )

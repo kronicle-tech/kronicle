@@ -69,6 +69,7 @@ plugins:
     create-dependencies-for-resources: true
     load-xray-trace-data: true
     tag-keys:
+      aliases: aliases
       component: component
       description: description
       environment: environment

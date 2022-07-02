@@ -159,7 +159,7 @@ describe('DiagramView', () => {
           expect(wrapper.html()).toMatchSnapshot()
           expectNodeClasses([
             { nodeIndex: 0, nodeClass: 'selected-node' },
-            { nodeIndex: 1, nodeClass: 'scoped-node' },
+            { nodeIndex: 1, nodeClass: 'direct-node' },
             { nodeIndex: 2, nodeClass: 'scoped-node' },
             { nodeIndex: 3, nodeClass: 'scoped-node' },
           ])
@@ -181,7 +181,7 @@ describe('DiagramView', () => {
           expect(wrapper.html()).toMatchSnapshot()
           expectNodeClasses([
             { nodeIndex: 0, nodeClass: 'selected-node' },
-            { nodeIndex: 1, nodeClass: 'scoped-node' },
+            { nodeIndex: 1, nodeClass: 'direct-node' },
             { nodeIndex: 2, nodeClass: 'scoped-node' },
             { nodeIndex: 3, nodeClass: 'scoped-node' },
           ])

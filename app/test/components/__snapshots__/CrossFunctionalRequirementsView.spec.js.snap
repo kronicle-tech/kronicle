@@ -32,7 +32,7 @@ exports[`CrossFunctionalRequirementsView when components prop is set to multiple
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
-            <div class=\\"card-body\\">
+            <div class=\\"card-body p-2\\">
               <!---->
               <!---->
               <fieldset class=\\"form-group\\" id=\\"__BVID__15\\">
@@ -58,7 +58,7 @@ exports[`CrossFunctionalRequirementsView when components prop is set to multiple
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
-            <div class=\\"card-body\\">
+            <div class=\\"card-body p-2\\">
               <!---->
               <!---->
               <fieldset class=\\"form-group\\" id=\\"__BVID__23\\">
@@ -84,7 +84,7 @@ exports[`CrossFunctionalRequirementsView when components prop is set to multiple
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
-            <div class=\\"card-body\\">
+            <div class=\\"card-body p-2\\">
               <!---->
               <!---->
               <fieldset class=\\"form-group\\" id=\\"__BVID__31\\">
@@ -107,7 +107,7 @@ exports[`CrossFunctionalRequirementsView when components prop is set to multiple
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
-            <div class=\\"card-body\\">
+            <div class=\\"card-body p-2\\">
               <!---->
               <!---->
               <fieldset class=\\"form-group\\" id=\\"__BVID__36\\">
@@ -128,7 +128,7 @@ exports[`CrossFunctionalRequirementsView when components prop is set to multiple
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
-            <div class=\\"card-body\\">
+            <div class=\\"card-body p-2\\">
               <!---->
               <!---->
               <div role=\\"group\\" class=\\"form-group\\" id=\\"__BVID__39\\"><label for=\\"component-filter\\" class=\\"d-block\\" id=\\"__BVID__39__BV_label_\\">Component</label>
@@ -426,7 +426,7 @@ exports[`CrossFunctionalRequirementsView when components prop is set to multiple
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
-            <div class=\\"card-body\\">
+            <div class=\\"card-body p-2\\">
               <!---->
               <!---->
               <fieldset class=\\"form-group\\" id=\\"__BVID__103\\">
@@ -452,7 +452,7 @@ exports[`CrossFunctionalRequirementsView when components prop is set to multiple
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
-            <div class=\\"card-body\\">
+            <div class=\\"card-body p-2\\">
               <!---->
               <!---->
               <fieldset class=\\"form-group\\" id=\\"__BVID__111\\">
@@ -478,7 +478,7 @@ exports[`CrossFunctionalRequirementsView when components prop is set to multiple
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
-            <div class=\\"card-body\\">
+            <div class=\\"card-body p-2\\">
               <!---->
               <!---->
               <fieldset class=\\"form-group\\" id=\\"__BVID__119\\">
@@ -501,7 +501,7 @@ exports[`CrossFunctionalRequirementsView when components prop is set to multiple
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
-            <div class=\\"card-body\\">
+            <div class=\\"card-body p-2\\">
               <!---->
               <!---->
               <fieldset class=\\"form-group\\" id=\\"__BVID__124\\">
@@ -522,7 +522,7 @@ exports[`CrossFunctionalRequirementsView when components prop is set to multiple
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
-            <div class=\\"card-body\\">
+            <div class=\\"card-body p-2\\">
               <!---->
               <!---->
               <div role=\\"group\\" class=\\"form-group\\" id=\\"__BVID__127\\"><label for=\\"component-filter\\" class=\\"d-block\\" id=\\"__BVID__127__BV_label_\\">Component</label>
@@ -820,7 +820,7 @@ exports[`CrossFunctionalRequirementsView when components prop is set to multiple
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
-            <div class=\\"card-body\\">
+            <div class=\\"card-body p-2\\">
               <!---->
               <!---->
               <fieldset class=\\"form-group\\" id=\\"__BVID__103\\">
@@ -846,7 +846,7 @@ exports[`CrossFunctionalRequirementsView when components prop is set to multiple
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
-            <div class=\\"card-body\\">
+            <div class=\\"card-body p-2\\">
               <!---->
               <!---->
               <fieldset class=\\"form-group\\" id=\\"__BVID__111\\">
@@ -872,7 +872,7 @@ exports[`CrossFunctionalRequirementsView when components prop is set to multiple
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
-            <div class=\\"card-body\\">
+            <div class=\\"card-body p-2\\">
               <!---->
               <!---->
               <fieldset class=\\"form-group\\" id=\\"__BVID__119\\">
@@ -895,7 +895,7 @@ exports[`CrossFunctionalRequirementsView when components prop is set to multiple
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
-            <div class=\\"card-body\\">
+            <div class=\\"card-body p-2\\">
               <!---->
               <!---->
               <fieldset class=\\"form-group\\" id=\\"__BVID__124\\">
@@ -916,7 +916,7 @@ exports[`CrossFunctionalRequirementsView when components prop is set to multiple
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
-            <div class=\\"card-body\\">
+            <div class=\\"card-body p-2\\">
               <!---->
               <!---->
               <div role=\\"group\\" class=\\"form-group\\" id=\\"__BVID__127\\"><label for=\\"component-filter\\" class=\\"d-block\\" id=\\"__BVID__127__BV_label_\\">Component</label>

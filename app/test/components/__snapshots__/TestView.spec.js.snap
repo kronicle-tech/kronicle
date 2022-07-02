@@ -65,7 +65,7 @@ exports[`TestView when components is set to multiple components with multiple te
             <div class=\\"card bg-secondary\\">
               <!---->
               <!---->
-              <div class=\\"card-body\\">
+              <div class=\\"card-body p-2\\">
                 <!---->
                 <!---->
                 <fieldset class=\\"form-group\\" id=\\"__BVID__12\\">
@@ -89,7 +89,7 @@ exports[`TestView when components is set to multiple components with multiple te
             <div class=\\"card bg-secondary\\">
               <!---->
               <!---->
-              <div class=\\"card-body\\">
+              <div class=\\"card-body p-2\\">
                 <!---->
                 <!---->
                 <fieldset class=\\"form-group\\" id=\\"__BVID__16\\">
@@ -110,7 +110,7 @@ exports[`TestView when components is set to multiple components with multiple te
             <div class=\\"card bg-secondary\\">
               <!---->
               <!---->
-              <div class=\\"card-body\\">
+              <div class=\\"card-body p-2\\">
                 <!---->
                 <!---->
                 <fieldset class=\\"form-group\\" id=\\"__BVID__19\\">
@@ -131,7 +131,7 @@ exports[`TestView when components is set to multiple components with multiple te
             <div class=\\"card bg-secondary\\">
               <!---->
               <!---->
-              <div class=\\"card-body\\">
+              <div class=\\"card-body p-2\\">
                 <!---->
                 <!---->
                 <div role=\\"group\\" class=\\"form-group\\" id=\\"__BVID__22\\"><label for=\\"component-filter\\" class=\\"d-block\\" id=\\"__BVID__22__BV_label_\\">Component</label>

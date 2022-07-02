@@ -32,7 +32,7 @@ exports[`ComponentsView when components prop is set to multiple components rende
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
-            <div class=\\"card-body\\">
+            <div class=\\"card-body p-2\\">
               <!---->
               <!---->
               <fieldset class=\\"form-group\\" id=\\"__BVID__15\\">
@@ -58,7 +58,7 @@ exports[`ComponentsView when components prop is set to multiple components rende
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
-            <div class=\\"card-body\\">
+            <div class=\\"card-body p-2\\">
               <!---->
               <!---->
               <fieldset class=\\"form-group\\" id=\\"__BVID__23\\">
@@ -84,7 +84,7 @@ exports[`ComponentsView when components prop is set to multiple components rende
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
-            <div class=\\"card-body\\">
+            <div class=\\"card-body p-2\\">
               <!---->
               <!---->
               <fieldset class=\\"form-group\\" id=\\"__BVID__31\\">
@@ -107,7 +107,7 @@ exports[`ComponentsView when components prop is set to multiple components rende
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
-            <div class=\\"card-body\\">
+            <div class=\\"card-body p-2\\">
               <!---->
               <!---->
               <fieldset class=\\"form-group\\" id=\\"__BVID__36\\">
@@ -128,7 +128,7 @@ exports[`ComponentsView when components prop is set to multiple components rende
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
-            <div class=\\"card-body\\">
+            <div class=\\"card-body p-2\\">
               <!---->
               <!---->
               <div role=\\"group\\" class=\\"form-group\\" id=\\"__BVID__39\\"><label for=\\"component-filter\\" class=\\"d-block\\" id=\\"__BVID__39__BV_label_\\">Component</label>
@@ -291,7 +291,7 @@ exports[`ComponentsView when components prop is set to multiple components when 
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
-            <div class=\\"card-body\\">
+            <div class=\\"card-body p-2\\">
               <!---->
               <!---->
               <fieldset class=\\"form-group\\" id=\\"__BVID__67\\">
@@ -317,7 +317,7 @@ exports[`ComponentsView when components prop is set to multiple components when 
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
-            <div class=\\"card-body\\">
+            <div class=\\"card-body p-2\\">
               <!---->
               <!---->
               <fieldset class=\\"form-group\\" id=\\"__BVID__75\\">
@@ -343,7 +343,7 @@ exports[`ComponentsView when components prop is set to multiple components when 
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
-            <div class=\\"card-body\\">
+            <div class=\\"card-body p-2\\">
               <!---->
               <!---->
               <fieldset class=\\"form-group\\" id=\\"__BVID__83\\">
@@ -366,7 +366,7 @@ exports[`ComponentsView when components prop is set to multiple components when 
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
-            <div class=\\"card-body\\">
+            <div class=\\"card-body p-2\\">
               <!---->
               <!---->
               <fieldset class=\\"form-group\\" id=\\"__BVID__88\\">
@@ -387,7 +387,7 @@ exports[`ComponentsView when components prop is set to multiple components when 
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
-            <div class=\\"card-body\\">
+            <div class=\\"card-body p-2\\">
               <!---->
               <!---->
               <div role=\\"group\\" class=\\"form-group\\" id=\\"__BVID__91\\"><label for=\\"component-filter\\" class=\\"d-block\\" id=\\"__BVID__91__BV_label_\\">Component</label>
@@ -550,7 +550,7 @@ exports[`ComponentsView when components prop is set to multiple components when 
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
-            <div class=\\"card-body\\">
+            <div class=\\"card-body p-2\\">
               <!---->
               <!---->
               <fieldset class=\\"form-group\\" id=\\"__BVID__67\\">
@@ -576,7 +576,7 @@ exports[`ComponentsView when components prop is set to multiple components when 
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
-            <div class=\\"card-body\\">
+            <div class=\\"card-body p-2\\">
               <!---->
               <!---->
               <fieldset class=\\"form-group\\" id=\\"__BVID__75\\">
@@ -602,7 +602,7 @@ exports[`ComponentsView when components prop is set to multiple components when 
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
-            <div class=\\"card-body\\">
+            <div class=\\"card-body p-2\\">
               <!---->
               <!---->
               <fieldset class=\\"form-group\\" id=\\"__BVID__83\\">
@@ -625,7 +625,7 @@ exports[`ComponentsView when components prop is set to multiple components when 
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
-            <div class=\\"card-body\\">
+            <div class=\\"card-body p-2\\">
               <!---->
               <!---->
               <fieldset class=\\"form-group\\" id=\\"__BVID__88\\">
@@ -646,7 +646,7 @@ exports[`ComponentsView when components prop is set to multiple components when 
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
-            <div class=\\"card-body\\">
+            <div class=\\"card-body p-2\\">
               <!---->
               <!---->
               <div role=\\"group\\" class=\\"form-group\\" id=\\"__BVID__91\\"><label for=\\"component-filter\\" class=\\"d-block\\" id=\\"__BVID__91__BV_label_\\">Component</label>

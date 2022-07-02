@@ -682,4 +682,36 @@
         <packageUrl regex="true">^pkg:maven/org\.springframework\.graphql/spring\-graphql@.*$</packageUrl>
         <cve>CVE-2022-22950</cve>
     </suppress>
+    <!-- Suppress a vulnerability that is incorrectly flagged against log4j -->
+    <suppress>
+        <notes><![CDATA[
+   file name: log4j-api-2.17.2.jar
+   ]]></notes>
+        <packageUrl regex="true">^pkg:maven/org\.apache\.logging\.log4j/log4j\-api@.*$</packageUrl>
+        <cve>CVE-2022-33915</cve>
+    </suppress>
+    <!-- Suppress a vulnerability that is incorrectly flagged against log4j -->
+    <suppress>
+        <notes><![CDATA[
+   file name: log4j-to-slf4j-2.17.2.jar
+   ]]></notes>
+        <packageUrl regex="true">^pkg:maven/org\.apache\.logging\.log4j/log4j\-to\-slf4j@.*$</packageUrl>
+        <cve>CVE-2022-33915</cve>
+    </suppress>
+    <!-- Suppress irrelevant vulnerability -->
+    <suppress>
+        <notes><![CDATA[
+   file name: tomcat-embed-core-9.0.64.jar
+   ]]></notes>
+        <packageUrl regex="true">^pkg:maven/org\.apache\.tomcat\.embed/tomcat\-embed\-core@.*$</packageUrl>
+        <cve>CVE-2022-34305</cve>
+    </suppress>
+    <!-- Suppress irrelevant vulnerability -->
+    <suppress>
+        <notes><![CDATA[
+   file name: tomcat-embed-websocket-9.0.64.jar
+   ]]></notes>
+        <packageUrl regex="true">^pkg:maven/org\.apache\.tomcat\.embed/tomcat\-embed\-websocket@.*$</packageUrl>
+        <cve>CVE-2022-34305</cve>
+    </suppress>
 </suppressions>

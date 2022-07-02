@@ -9,6 +9,8 @@ import javax.validation.constraints.NotEmpty;
 public class AwsTagKeysConfig {
 
     @NotEmpty
+    String aliases;
+    @NotEmpty
     String component;
     @NotEmpty
     String description;

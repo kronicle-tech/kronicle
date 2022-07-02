@@ -15,7 +15,7 @@ exports[`DiagramView when components prop contains multiple components and diagr
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
-            <div class=\\"card-body\\">
+            <div class=\\"card-body p-2\\">
               <!---->
               <!---->
               <div role=\\"group\\" class=\\"form-row form-group\\" id=\\"__BVID__25\\"><label for=\\"graph-scope-related-radius\\" class=\\"col-6 col-form-label col-form-label-sm\\" id=\\"__BVID__25__BV_label_\\">Radius:</label>
@@ -47,7 +47,7 @@ exports[`DiagramView when components prop contains multiple components and diagr
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
-            <div class=\\"card-body\\">
+            <div class=\\"card-body p-2\\">
               <!---->
               <!---->
               <fieldset class=\\"form-group\\" id=\\"__BVID__27\\">
@@ -75,7 +75,7 @@ exports[`DiagramView when components prop contains multiple components and diagr
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
-            <div class=\\"card-body\\">
+            <div class=\\"card-body p-2\\">
               <!---->
               <!---->
               <fieldset class=\\"form-group\\" id=\\"__BVID__37\\">
@@ -103,7 +103,7 @@ exports[`DiagramView when components prop contains multiple components and diagr
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
-            <div class=\\"card-body\\">
+            <div class=\\"card-body p-2\\">
               <!---->
               <!---->
               <fieldset class=\\"form-group\\" id=\\"__BVID__47\\">
@@ -127,7 +127,7 @@ exports[`DiagramView when components prop contains multiple components and diagr
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
-            <div class=\\"card-body\\">
+            <div class=\\"card-body p-2\\">
               <!---->
               <!---->
               <fieldset class=\\"form-group\\" id=\\"__BVID__53\\">
@@ -151,7 +151,7 @@ exports[`DiagramView when components prop contains multiple components and diagr
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
-            <div class=\\"card-body\\">
+            <div class=\\"card-body p-2\\">
               <!---->
               <!---->
               <div role=\\"group\\" class=\\"form-group\\" id=\\"__BVID__59\\"><label for=\\"component-filter\\" class=\\"d-block\\" id=\\"__BVID__59__BV_label_\\">Component</label>
@@ -179,7 +179,7 @@ exports[`DiagramView when components prop contains multiple components and diagr
     <div class=\\"card bg-secondary\\">
       <!---->
       <!---->
-      <div class=\\"card-body\\">
+      <div class=\\"card-body p-2\\">
         <!---->
         <!---->
         <div role=\\"group\\" class=\\"form-row form-group\\" id=\\"__BVID__61\\"><label for=\\"graph-zoom\\" class=\\"col-6 col-form-label col-form-label-sm\\" id=\\"__BVID__61__BV_label_\\">Zoom:</label>
@@ -203,33 +203,33 @@ exports[`DiagramView when components prop contains multiple components and diagr
       <!---->
     </div>
   </div>
-  <div class=\\"graph\\">
-    <transition-stub name=\\"\\" css=\\"true\\" enterclass=\\"\\" leaveclass=\\"show\\" entertoclass=\\"show\\" leavetoclass=\\"\\" enteractiveclass=\\"\\" leaveactiveclass=\\"\\">
-      <div role=\\"alert\\" aria-live=\\"polite\\" aria-atomic=\\"true\\" class=\\"alert alert-dismissible alert-info\\"><button type=\\"button\\" aria-label=\\"Close\\" class=\\"close\\">×</button>
-        Click a dot in the diagram to see more information about that component
-      </div>
-    </transition-stub> <svg xmlns=\\"http://www.w3.org/2000/svg\\" overflow=\\"auto\\" width=\\"100%\\" height=\\"1200\\" id=\\"component-dependency-graph\\">
+  <transition-stub name=\\"\\" css=\\"true\\" enterclass=\\"\\" leaveclass=\\"show\\" entertoclass=\\"show\\" leavetoclass=\\"\\" enteractiveclass=\\"\\" leaveactiveclass=\\"\\" class=\\"my-3\\">
+    <div role=\\"alert\\" aria-live=\\"polite\\" aria-atomic=\\"true\\" class=\\"alert alert-dismissible alert-info\\"><button type=\\"button\\" aria-label=\\"Close\\" class=\\"close\\">×</button>
+      Click a dot in the diagram to see more information about that component
+    </div>
+  </transition-stub>
+  <div class=\\"diagram-graph\\"><svg xmlns=\\"http://www.w3.org/2000/svg\\" overflow=\\"auto\\" width=\\"100%\\" height=\\"1200\\">
       <rect fill-opacity=\\"0\\" class=\\"graph-background\\"></rect>
       <defs>
-        <marker id=\\"graph-all-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker all-edge-marker\\">
+        <marker id=\\"graph-all-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"7.1\\" refY=\\"5.75\\" class=\\"edge-marker all-edge-marker\\">
           <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
         </marker>
-        <marker id=\\"graph-other-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker other-edge-marker\\">
+        <marker id=\\"graph-other-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"7.1\\" refY=\\"5.75\\" class=\\"edge-marker other-edge-marker\\">
           <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
         </marker>
-        <marker id=\\"graph-scope-related-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker scope-related-edge-marker\\">
+        <marker id=\\"graph-scope-related-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"7.1\\" refY=\\"5.75\\" class=\\"edge-marker scope-related-edge-marker\\">
           <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
         </marker>
-        <marker id=\\"graph-scoped-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker scoped-edge-marker\\">
+        <marker id=\\"graph-scoped-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"7.1\\" refY=\\"5.75\\" class=\\"edge-marker scoped-edge-marker\\">
           <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
         </marker>
-        <marker id=\\"graph-related-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker related-edge-marker\\">
+        <marker id=\\"graph-related-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"7.1\\" refY=\\"5.75\\" class=\\"edge-marker related-edge-marker\\">
           <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
         </marker>
-        <marker id=\\"graph-direct-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker direct-edge-marker\\">
+        <marker id=\\"graph-direct-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"7.1\\" refY=\\"5.75\\" class=\\"edge-marker direct-edge-marker\\">
           <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
         </marker>
-        <marker id=\\"graph-selected-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker selected-edge-marker\\">
+        <marker id=\\"graph-selected-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"7.1\\" refY=\\"5.75\\" class=\\"edge-marker selected-edge-marker\\">
           <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
         </marker>
       </defs>
@@ -254,8 +254,7 @@ exports[`DiagramView when components prop contains multiple components and diagr
       <g></g>
       <g></g>
       <g></g>
-    </svg>
-  </div>
+    </svg></div>
   <div tabindex=\\"-1\\" class=\\"b-sidebar-outer\\">
     <!---->
     <transition-stub css=\\"true\\" enterclass=\\"\\" leaveclass=\\"show\\" entertoclass=\\"show\\" leavetoclass=\\"\\" enteractiveclass=\\"slide\\" leaveactiveclass=\\"slide\\">
@@ -296,7 +295,7 @@ exports[`DiagramView when components prop contains multiple components and diagr
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
-            <div class=\\"card-body\\">
+            <div class=\\"card-body p-2\\">
               <!---->
               <!---->
               <div role=\\"group\\" class=\\"form-row form-group\\" id=\\"__BVID__131\\"><label for=\\"graph-scope-related-radius\\" class=\\"col-6 col-form-label col-form-label-sm\\" id=\\"__BVID__131__BV_label_\\">Radius:</label>
@@ -328,7 +327,7 @@ exports[`DiagramView when components prop contains multiple components and diagr
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
-            <div class=\\"card-body\\">
+            <div class=\\"card-body p-2\\">
               <!---->
               <!---->
               <fieldset class=\\"form-group\\" id=\\"__BVID__133\\">
@@ -356,7 +355,7 @@ exports[`DiagramView when components prop contains multiple components and diagr
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
-            <div class=\\"card-body\\">
+            <div class=\\"card-body p-2\\">
               <!---->
               <!---->
               <fieldset class=\\"form-group\\" id=\\"__BVID__143\\">
@@ -384,7 +383,7 @@ exports[`DiagramView when components prop contains multiple components and diagr
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
-            <div class=\\"card-body\\">
+            <div class=\\"card-body p-2\\">
               <!---->
               <!---->
               <fieldset class=\\"form-group\\" id=\\"__BVID__153\\">
@@ -408,7 +407,7 @@ exports[`DiagramView when components prop contains multiple components and diagr
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
-            <div class=\\"card-body\\">
+            <div class=\\"card-body p-2\\">
               <!---->
               <!---->
               <fieldset class=\\"form-group\\" id=\\"__BVID__159\\">
@@ -432,7 +431,7 @@ exports[`DiagramView when components prop contains multiple components and diagr
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
-            <div class=\\"card-body\\">
+            <div class=\\"card-body p-2\\">
               <!---->
               <!---->
               <div role=\\"group\\" class=\\"form-group\\" id=\\"__BVID__165\\"><label for=\\"component-filter\\" class=\\"d-block\\" id=\\"__BVID__165__BV_label_\\">Component</label>
@@ -460,7 +459,7 @@ exports[`DiagramView when components prop contains multiple components and diagr
     <div class=\\"card bg-secondary\\">
       <!---->
       <!---->
-      <div class=\\"card-body\\">
+      <div class=\\"card-body p-2\\">
         <!---->
         <!---->
         <div role=\\"group\\" class=\\"form-row form-group\\" id=\\"__BVID__167\\"><label for=\\"graph-zoom\\" class=\\"col-6 col-form-label col-form-label-sm\\" id=\\"__BVID__167__BV_label_\\">Zoom:</label>
@@ -484,42 +483,42 @@ exports[`DiagramView when components prop contains multiple components and diagr
       <!---->
     </div>
   </div>
-  <div class=\\"graph\\">
-    <transition-stub name=\\"\\" css=\\"true\\" enterclass=\\"\\" leaveclass=\\"show\\" entertoclass=\\"show\\" leavetoclass=\\"\\" enteractiveclass=\\"\\" leaveactiveclass=\\"\\">
-      <div role=\\"alert\\" aria-live=\\"polite\\" aria-atomic=\\"true\\" class=\\"alert alert-dismissible alert-info\\"><button type=\\"button\\" aria-label=\\"Close\\" class=\\"close\\">×</button>
-        Click a dot in the diagram to see more information about that component
-      </div>
-    </transition-stub> <svg xmlns=\\"http://www.w3.org/2000/svg\\" overflow=\\"auto\\" width=\\"100%\\" height=\\"1200\\" id=\\"component-dependency-graph\\">
+  <transition-stub name=\\"\\" css=\\"true\\" enterclass=\\"\\" leaveclass=\\"show\\" entertoclass=\\"show\\" leavetoclass=\\"\\" enteractiveclass=\\"\\" leaveactiveclass=\\"\\" class=\\"my-3\\">
+    <div role=\\"alert\\" aria-live=\\"polite\\" aria-atomic=\\"true\\" class=\\"alert alert-dismissible alert-info\\"><button type=\\"button\\" aria-label=\\"Close\\" class=\\"close\\">×</button>
+      Click a dot in the diagram to see more information about that component
+    </div>
+  </transition-stub>
+  <div class=\\"diagram-graph\\"><svg xmlns=\\"http://www.w3.org/2000/svg\\" overflow=\\"auto\\" width=\\"100%\\" height=\\"1200\\">
       <rect fill-opacity=\\"0\\" class=\\"graph-background\\"></rect>
       <defs>
-        <marker id=\\"graph-all-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker all-edge-marker\\">
+        <marker id=\\"graph-all-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"7.1\\" refY=\\"5.75\\" class=\\"edge-marker all-edge-marker\\">
           <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
         </marker>
-        <marker id=\\"graph-other-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker other-edge-marker\\">
+        <marker id=\\"graph-other-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"7.1\\" refY=\\"5.75\\" class=\\"edge-marker other-edge-marker\\">
           <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
         </marker>
-        <marker id=\\"graph-scope-related-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker scope-related-edge-marker\\">
+        <marker id=\\"graph-scope-related-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"7.1\\" refY=\\"5.75\\" class=\\"edge-marker scope-related-edge-marker\\">
           <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
         </marker>
-        <marker id=\\"graph-scoped-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker scoped-edge-marker\\">
+        <marker id=\\"graph-scoped-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"7.1\\" refY=\\"5.75\\" class=\\"edge-marker scoped-edge-marker\\">
           <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
         </marker>
-        <marker id=\\"graph-related-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker related-edge-marker\\">
+        <marker id=\\"graph-related-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"7.1\\" refY=\\"5.75\\" class=\\"edge-marker related-edge-marker\\">
           <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
         </marker>
-        <marker id=\\"graph-direct-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker direct-edge-marker\\">
+        <marker id=\\"graph-direct-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"7.1\\" refY=\\"5.75\\" class=\\"edge-marker direct-edge-marker\\">
           <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
         </marker>
-        <marker id=\\"graph-selected-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker selected-edge-marker\\">
+        <marker id=\\"graph-selected-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"7.1\\" refY=\\"5.75\\" class=\\"edge-marker selected-edge-marker\\">
           <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
         </marker>
       </defs>
       <g></g>
       <g></g>
       <g>
-        <path id=\\"graph-edge-0\\" d=\\"M350,50C350,150 50,50 50,150\\" marker-end=\\"url(#graph-scope-related-edge-marker)\\" class=\\"edge scope-related-edge\\"></path>
-        <path id=\\"graph-edge-1\\" d=\\"M50,150L50,250\\" marker-end=\\"url(#graph-scope-related-edge-marker)\\" class=\\"edge scope-related-edge\\"></path>
-        <path id=\\"graph-edge-2\\" d=\\"M50,150C50,250 350,150 350,250\\" marker-end=\\"url(#graph-scope-related-edge-marker)\\" class=\\"edge scope-related-edge\\"></path>
+        <path id=\\"graph-edge-0\\" d=\\"M350,66C350,134 50,66 50,134\\" marker-end=\\"url(#graph-scope-related-edge-marker)\\" class=\\"edge scope-related-edge\\"></path>
+        <path id=\\"graph-edge-1\\" d=\\"M50,166L50,234\\" marker-end=\\"url(#graph-scope-related-edge-marker)\\" class=\\"edge scope-related-edge\\"></path>
+        <path id=\\"graph-edge-2\\" d=\\"M50,166C50,234 350,166 350,234\\" marker-end=\\"url(#graph-scope-related-edge-marker)\\" class=\\"edge scope-related-edge\\"></path>
       </g>
       <g></g>
       <g></g>
@@ -528,41 +527,39 @@ exports[`DiagramView when components prop contains multiple components and diagr
       <g></g>
       <g></g>
       <g>
-        <circle id=\\"graph-node-1\\" r=\\"10\\" cx=\\"50\\" cy=\\"150\\" title=\\"test-component-id-2\\" class=\\"node scope-related-node\\"></circle>
-        <circle id=\\"graph-node-2\\" r=\\"10\\" cx=\\"50\\" cy=\\"250\\" title=\\"test-component-id-3\\" class=\\"node scope-related-node\\"></circle>
-        <circle id=\\"graph-node-3\\" r=\\"10\\" cx=\\"350\\" cy=\\"250\\" title=\\"test-component-id-4\\" class=\\"node scope-related-node\\"></circle>
-      </g>
-      <g>
-        <circle id=\\"graph-node-0\\" r=\\"10\\" cx=\\"350\\" cy=\\"50\\" title=\\"test-component-id-1\\" class=\\"node scoped-node\\"></circle>
+        <circle id=\\"graph-node-0\\" r=\\"16\\" cx=\\"350\\" cy=\\"50\\" title=\\"test-component-id-1\\" class=\\"node scope-related-node\\"></circle>
+        <circle id=\\"graph-node-1\\" r=\\"16\\" cx=\\"50\\" cy=\\"150\\" title=\\"test-component-id-2\\" class=\\"node scope-related-node\\"></circle>
+        <circle id=\\"graph-node-2\\" r=\\"16\\" cx=\\"50\\" cy=\\"250\\" title=\\"test-component-id-3\\" class=\\"node scope-related-node\\"></circle>
+        <circle id=\\"graph-node-3\\" r=\\"16\\" cx=\\"350\\" cy=\\"250\\" title=\\"test-component-id-4\\" class=\\"node scope-related-node\\"></circle>
       </g>
       <g></g>
       <g></g>
       <g></g>
       <g></g>
       <g></g>
-      <g><text x=\\"67\\" y=\\"170\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label scope-related-node-label\\">
-          <tspan x=\\"67\\" y=\\"170\\">
+      <g></g>
+      <g><text x=\\"373\\" y=\\"70\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label scope-related-node-label\\">
+          <tspan x=\\"373\\" y=\\"70\\">
+            test-component-id-1
+          </tspan>
+        </text><text x=\\"73\\" y=\\"170\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label scope-related-node-label\\">
+          <tspan x=\\"73\\" y=\\"170\\">
             test-component-id-2
           </tspan>
-        </text><text x=\\"67\\" y=\\"270\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label scope-related-node-label\\">
-          <tspan x=\\"67\\" y=\\"270\\">
+        </text><text x=\\"73\\" y=\\"270\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label scope-related-node-label\\">
+          <tspan x=\\"73\\" y=\\"270\\">
             test-component-id-3
           </tspan>
-        </text><text x=\\"367\\" y=\\"270\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label scope-related-node-label\\">
-          <tspan x=\\"367\\" y=\\"270\\">
+        </text><text x=\\"373\\" y=\\"270\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label scope-related-node-label\\">
+          <tspan x=\\"373\\" y=\\"270\\">
             test-component-id-4
           </tspan>
         </text></g>
-      <g><text x=\\"367\\" y=\\"70\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label scoped-node-label\\">
-          <tspan x=\\"367\\" y=\\"70\\">
-            test-component-id-1
-          </tspan>
-        </text></g>
       <g></g>
       <g></g>
       <g></g>
-    </svg>
-  </div>
+      <g></g>
+    </svg></div>
   <div tabindex=\\"-1\\" class=\\"b-sidebar-outer\\">
     <!---->
     <transition-stub css=\\"true\\" enterclass=\\"\\" leaveclass=\\"show\\" entertoclass=\\"show\\" leavetoclass=\\"\\" enteractiveclass=\\"slide\\" leaveactiveclass=\\"slide\\">
@@ -603,7 +600,7 @@ exports[`DiagramView when components prop contains multiple components and diagr
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
-            <div class=\\"card-body\\">
+            <div class=\\"card-body p-2\\">
               <!---->
               <!---->
               <div role=\\"group\\" class=\\"form-row form-group\\" id=\\"__BVID__346\\"><label for=\\"graph-scope-related-radius\\" class=\\"col-6 col-form-label col-form-label-sm\\" id=\\"__BVID__346__BV_label_\\">Radius:</label>
@@ -635,7 +632,7 @@ exports[`DiagramView when components prop contains multiple components and diagr
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
-            <div class=\\"card-body\\">
+            <div class=\\"card-body p-2\\">
               <!---->
               <!---->
               <fieldset class=\\"form-group\\" id=\\"__BVID__348\\">
@@ -663,7 +660,7 @@ exports[`DiagramView when components prop contains multiple components and diagr
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
-            <div class=\\"card-body\\">
+            <div class=\\"card-body p-2\\">
               <!---->
               <!---->
               <fieldset class=\\"form-group\\" id=\\"__BVID__358\\">
@@ -691,7 +688,7 @@ exports[`DiagramView when components prop contains multiple components and diagr
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
-            <div class=\\"card-body\\">
+            <div class=\\"card-body p-2\\">
               <!---->
               <!---->
               <fieldset class=\\"form-group\\" id=\\"__BVID__368\\">
@@ -715,7 +712,7 @@ exports[`DiagramView when components prop contains multiple components and diagr
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
-            <div class=\\"card-body\\">
+            <div class=\\"card-body p-2\\">
               <!---->
               <!---->
               <fieldset class=\\"form-group\\" id=\\"__BVID__374\\">
@@ -739,7 +736,7 @@ exports[`DiagramView when components prop contains multiple components and diagr
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
-            <div class=\\"card-body\\">
+            <div class=\\"card-body p-2\\">
               <!---->
               <!---->
               <div role=\\"group\\" class=\\"form-group\\" id=\\"__BVID__380\\"><label for=\\"component-filter\\" class=\\"d-block\\" id=\\"__BVID__380__BV_label_\\">Component</label>
@@ -767,7 +764,7 @@ exports[`DiagramView when components prop contains multiple components and diagr
     <div class=\\"card bg-secondary\\">
       <!---->
       <!---->
-      <div class=\\"card-body\\">
+      <div class=\\"card-body p-2\\">
         <!---->
         <!---->
         <div role=\\"group\\" class=\\"form-row form-group\\" id=\\"__BVID__382\\"><label for=\\"graph-zoom\\" class=\\"col-6 col-form-label col-form-label-sm\\" id=\\"__BVID__382__BV_label_\\">Zoom:</label>
@@ -791,33 +788,33 @@ exports[`DiagramView when components prop contains multiple components and diagr
       <!---->
     </div>
   </div>
-  <div class=\\"graph\\">
-    <transition-stub name=\\"\\" css=\\"true\\" enterclass=\\"\\" leaveclass=\\"show\\" entertoclass=\\"show\\" leavetoclass=\\"\\" enteractiveclass=\\"\\" leaveactiveclass=\\"\\">
-      <div role=\\"alert\\" aria-live=\\"polite\\" aria-atomic=\\"true\\" class=\\"alert alert-dismissible alert-info\\"><button type=\\"button\\" aria-label=\\"Close\\" class=\\"close\\">×</button>
-        Click a dot in the diagram to see more information about that component
-      </div>
-    </transition-stub> <svg xmlns=\\"http://www.w3.org/2000/svg\\" overflow=\\"auto\\" width=\\"100%\\" height=\\"1200\\" id=\\"component-dependency-graph\\">
+  <transition-stub name=\\"\\" css=\\"true\\" enterclass=\\"\\" leaveclass=\\"show\\" entertoclass=\\"show\\" leavetoclass=\\"\\" enteractiveclass=\\"\\" leaveactiveclass=\\"\\" class=\\"my-3\\">
+    <div role=\\"alert\\" aria-live=\\"polite\\" aria-atomic=\\"true\\" class=\\"alert alert-dismissible alert-info\\"><button type=\\"button\\" aria-label=\\"Close\\" class=\\"close\\">×</button>
+      Click a dot in the diagram to see more information about that component
+    </div>
+  </transition-stub>
+  <div class=\\"diagram-graph\\"><svg xmlns=\\"http://www.w3.org/2000/svg\\" overflow=\\"auto\\" width=\\"100%\\" height=\\"1200\\">
       <rect fill-opacity=\\"0\\" class=\\"graph-background\\"></rect>
       <defs>
-        <marker id=\\"graph-all-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker all-edge-marker\\">
+        <marker id=\\"graph-all-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"7.1\\" refY=\\"5.75\\" class=\\"edge-marker all-edge-marker\\">
           <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
         </marker>
-        <marker id=\\"graph-other-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker other-edge-marker\\">
+        <marker id=\\"graph-other-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"7.1\\" refY=\\"5.75\\" class=\\"edge-marker other-edge-marker\\">
           <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
         </marker>
-        <marker id=\\"graph-scope-related-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker scope-related-edge-marker\\">
+        <marker id=\\"graph-scope-related-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"7.1\\" refY=\\"5.75\\" class=\\"edge-marker scope-related-edge-marker\\">
           <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
         </marker>
-        <marker id=\\"graph-scoped-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker scoped-edge-marker\\">
+        <marker id=\\"graph-scoped-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"7.1\\" refY=\\"5.75\\" class=\\"edge-marker scoped-edge-marker\\">
           <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
         </marker>
-        <marker id=\\"graph-related-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker related-edge-marker\\">
+        <marker id=\\"graph-related-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"7.1\\" refY=\\"5.75\\" class=\\"edge-marker related-edge-marker\\">
           <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
         </marker>
-        <marker id=\\"graph-direct-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker direct-edge-marker\\">
+        <marker id=\\"graph-direct-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"7.1\\" refY=\\"5.75\\" class=\\"edge-marker direct-edge-marker\\">
           <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
         </marker>
-        <marker id=\\"graph-selected-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker selected-edge-marker\\">
+        <marker id=\\"graph-selected-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"7.1\\" refY=\\"5.75\\" class=\\"edge-marker selected-edge-marker\\">
           <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
         </marker>
       </defs>
@@ -825,9 +822,9 @@ exports[`DiagramView when components prop contains multiple components and diagr
       <g></g>
       <g></g>
       <g>
-        <path id=\\"graph-edge-0\\" d=\\"M350,50C350,150 50,50 50,150\\" marker-end=\\"url(#graph-scoped-edge-marker)\\" class=\\"edge scoped-edge\\"></path>
-        <path id=\\"graph-edge-1\\" d=\\"M50,150L50,250\\" marker-end=\\"url(#graph-scoped-edge-marker)\\" class=\\"edge scoped-edge\\"></path>
-        <path id=\\"graph-edge-2\\" d=\\"M50,150C50,250 350,150 350,250\\" marker-end=\\"url(#graph-scoped-edge-marker)\\" class=\\"edge scoped-edge\\"></path>
+        <path id=\\"graph-edge-0\\" d=\\"M350,66C350,134 50,66 50,134\\" marker-end=\\"url(#graph-scoped-edge-marker)\\" class=\\"edge scoped-edge\\"></path>
+        <path id=\\"graph-edge-1\\" d=\\"M50,166L50,234\\" marker-end=\\"url(#graph-scoped-edge-marker)\\" class=\\"edge scoped-edge\\"></path>
+        <path id=\\"graph-edge-2\\" d=\\"M50,166C50,234 350,166 350,234\\" marker-end=\\"url(#graph-scoped-edge-marker)\\" class=\\"edge scoped-edge\\"></path>
       </g>
       <g></g>
       <g></g>
@@ -836,10 +833,10 @@ exports[`DiagramView when components prop contains multiple components and diagr
       <g></g>
       <g></g>
       <g>
-        <circle id=\\"graph-node-0\\" r=\\"10\\" cx=\\"350\\" cy=\\"50\\" title=\\"test-component-id-1\\" class=\\"node scoped-node\\"></circle>
-        <circle id=\\"graph-node-1\\" r=\\"10\\" cx=\\"50\\" cy=\\"150\\" title=\\"test-component-id-2\\" class=\\"node scoped-node\\"></circle>
-        <circle id=\\"graph-node-2\\" r=\\"10\\" cx=\\"50\\" cy=\\"250\\" title=\\"test-component-id-3\\" class=\\"node scoped-node\\"></circle>
-        <circle id=\\"graph-node-3\\" r=\\"10\\" cx=\\"350\\" cy=\\"250\\" title=\\"test-component-id-4\\" class=\\"node scoped-node\\"></circle>
+        <circle id=\\"graph-node-0\\" r=\\"16\\" cx=\\"350\\" cy=\\"50\\" title=\\"test-component-id-1\\" class=\\"node scoped-node\\"></circle>
+        <circle id=\\"graph-node-1\\" r=\\"16\\" cx=\\"50\\" cy=\\"150\\" title=\\"test-component-id-2\\" class=\\"node scoped-node\\"></circle>
+        <circle id=\\"graph-node-2\\" r=\\"16\\" cx=\\"50\\" cy=\\"250\\" title=\\"test-component-id-3\\" class=\\"node scoped-node\\"></circle>
+        <circle id=\\"graph-node-3\\" r=\\"16\\" cx=\\"350\\" cy=\\"250\\" title=\\"test-component-id-4\\" class=\\"node scoped-node\\"></circle>
       </g>
       <g></g>
       <g></g>
@@ -847,28 +844,27 @@ exports[`DiagramView when components prop contains multiple components and diagr
       <g></g>
       <g></g>
       <g></g>
-      <g><text x=\\"367\\" y=\\"70\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label scoped-node-label\\">
-          <tspan x=\\"367\\" y=\\"70\\">
+      <g><text x=\\"373\\" y=\\"70\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label scoped-node-label\\">
+          <tspan x=\\"373\\" y=\\"70\\">
             test-component-id-1
           </tspan>
-        </text><text x=\\"67\\" y=\\"170\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label scoped-node-label\\">
-          <tspan x=\\"67\\" y=\\"170\\">
+        </text><text x=\\"73\\" y=\\"170\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label scoped-node-label\\">
+          <tspan x=\\"73\\" y=\\"170\\">
             test-component-id-2
           </tspan>
-        </text><text x=\\"67\\" y=\\"270\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label scoped-node-label\\">
-          <tspan x=\\"67\\" y=\\"270\\">
+        </text><text x=\\"73\\" y=\\"270\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label scoped-node-label\\">
+          <tspan x=\\"73\\" y=\\"270\\">
             test-component-id-3
           </tspan>
-        </text><text x=\\"367\\" y=\\"270\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label scoped-node-label\\">
-          <tspan x=\\"367\\" y=\\"270\\">
+        </text><text x=\\"373\\" y=\\"270\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label scoped-node-label\\">
+          <tspan x=\\"373\\" y=\\"270\\">
             test-component-id-4
           </tspan>
         </text></g>
       <g></g>
       <g></g>
       <g></g>
-    </svg>
-  </div>
+    </svg></div>
   <div tabindex=\\"-1\\" class=\\"b-sidebar-outer\\">
     <!---->
     <transition-stub css=\\"true\\" enterclass=\\"\\" leaveclass=\\"show\\" entertoclass=\\"show\\" leavetoclass=\\"\\" enteractiveclass=\\"slide\\" leaveactiveclass=\\"slide\\">
@@ -909,7 +905,7 @@ exports[`DiagramView when components prop contains multiple components and diagr
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
-            <div class=\\"card-body\\">
+            <div class=\\"card-body p-2\\">
               <!---->
               <!---->
               <div role=\\"group\\" class=\\"form-row form-group\\" id=\\"__BVID__240\\"><label for=\\"graph-scope-related-radius\\" class=\\"col-6 col-form-label col-form-label-sm\\" id=\\"__BVID__240__BV_label_\\">Radius:</label>
@@ -941,7 +937,7 @@ exports[`DiagramView when components prop contains multiple components and diagr
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
-            <div class=\\"card-body\\">
+            <div class=\\"card-body p-2\\">
               <!---->
               <!---->
               <fieldset class=\\"form-group\\" id=\\"__BVID__242\\">
@@ -969,7 +965,7 @@ exports[`DiagramView when components prop contains multiple components and diagr
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
-            <div class=\\"card-body\\">
+            <div class=\\"card-body p-2\\">
               <!---->
               <!---->
               <fieldset class=\\"form-group\\" id=\\"__BVID__252\\">
@@ -997,7 +993,7 @@ exports[`DiagramView when components prop contains multiple components and diagr
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
-            <div class=\\"card-body\\">
+            <div class=\\"card-body p-2\\">
               <!---->
               <!---->
               <fieldset class=\\"form-group\\" id=\\"__BVID__262\\">
@@ -1021,7 +1017,7 @@ exports[`DiagramView when components prop contains multiple components and diagr
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
-            <div class=\\"card-body\\">
+            <div class=\\"card-body p-2\\">
               <!---->
               <!---->
               <fieldset class=\\"form-group\\" id=\\"__BVID__268\\">
@@ -1045,7 +1041,7 @@ exports[`DiagramView when components prop contains multiple components and diagr
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
-            <div class=\\"card-body\\">
+            <div class=\\"card-body p-2\\">
               <!---->
               <!---->
               <div role=\\"group\\" class=\\"form-group\\" id=\\"__BVID__274\\"><label for=\\"component-filter\\" class=\\"d-block\\" id=\\"__BVID__274__BV_label_\\">Component</label>
@@ -1073,7 +1069,7 @@ exports[`DiagramView when components prop contains multiple components and diagr
     <div class=\\"card bg-secondary\\">
       <!---->
       <!---->
-      <div class=\\"card-body\\">
+      <div class=\\"card-body p-2\\">
         <!---->
         <!---->
         <div role=\\"group\\" class=\\"form-row form-group\\" id=\\"__BVID__276\\"><label for=\\"graph-zoom\\" class=\\"col-6 col-form-label col-form-label-sm\\" id=\\"__BVID__276__BV_label_\\">Zoom:</label>
@@ -1097,33 +1093,33 @@ exports[`DiagramView when components prop contains multiple components and diagr
       <!---->
     </div>
   </div>
-  <div class=\\"graph\\">
-    <transition-stub name=\\"\\" css=\\"true\\" enterclass=\\"\\" leaveclass=\\"show\\" entertoclass=\\"show\\" leavetoclass=\\"\\" enteractiveclass=\\"\\" leaveactiveclass=\\"\\">
-      <div role=\\"alert\\" aria-live=\\"polite\\" aria-atomic=\\"true\\" class=\\"alert alert-dismissible alert-info\\"><button type=\\"button\\" aria-label=\\"Close\\" class=\\"close\\">×</button>
-        Click a dot in the diagram to see more information about that component
-      </div>
-    </transition-stub> <svg xmlns=\\"http://www.w3.org/2000/svg\\" overflow=\\"auto\\" width=\\"100%\\" height=\\"1200\\" id=\\"component-dependency-graph\\">
+  <transition-stub name=\\"\\" css=\\"true\\" enterclass=\\"\\" leaveclass=\\"show\\" entertoclass=\\"show\\" leavetoclass=\\"\\" enteractiveclass=\\"\\" leaveactiveclass=\\"\\" class=\\"my-3\\">
+    <div role=\\"alert\\" aria-live=\\"polite\\" aria-atomic=\\"true\\" class=\\"alert alert-dismissible alert-info\\"><button type=\\"button\\" aria-label=\\"Close\\" class=\\"close\\">×</button>
+      Click a dot in the diagram to see more information about that component
+    </div>
+  </transition-stub>
+  <div class=\\"diagram-graph\\"><svg xmlns=\\"http://www.w3.org/2000/svg\\" overflow=\\"auto\\" width=\\"100%\\" height=\\"1200\\">
       <rect fill-opacity=\\"0\\" class=\\"graph-background\\"></rect>
       <defs>
-        <marker id=\\"graph-all-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker all-edge-marker\\">
+        <marker id=\\"graph-all-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"7.1\\" refY=\\"5.75\\" class=\\"edge-marker all-edge-marker\\">
           <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
         </marker>
-        <marker id=\\"graph-other-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker other-edge-marker\\">
+        <marker id=\\"graph-other-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"7.1\\" refY=\\"5.75\\" class=\\"edge-marker other-edge-marker\\">
           <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
         </marker>
-        <marker id=\\"graph-scope-related-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker scope-related-edge-marker\\">
+        <marker id=\\"graph-scope-related-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"7.1\\" refY=\\"5.75\\" class=\\"edge-marker scope-related-edge-marker\\">
           <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
         </marker>
-        <marker id=\\"graph-scoped-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker scoped-edge-marker\\">
+        <marker id=\\"graph-scoped-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"7.1\\" refY=\\"5.75\\" class=\\"edge-marker scoped-edge-marker\\">
           <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
         </marker>
-        <marker id=\\"graph-related-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker related-edge-marker\\">
+        <marker id=\\"graph-related-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"7.1\\" refY=\\"5.75\\" class=\\"edge-marker related-edge-marker\\">
           <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
         </marker>
-        <marker id=\\"graph-direct-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker direct-edge-marker\\">
+        <marker id=\\"graph-direct-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"7.1\\" refY=\\"5.75\\" class=\\"edge-marker direct-edge-marker\\">
           <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
         </marker>
-        <marker id=\\"graph-selected-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker selected-edge-marker\\">
+        <marker id=\\"graph-selected-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"7.1\\" refY=\\"5.75\\" class=\\"edge-marker selected-edge-marker\\">
           <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
         </marker>
       </defs>
@@ -1131,52 +1127,52 @@ exports[`DiagramView when components prop contains multiple components and diagr
       <g></g>
       <g></g>
       <g>
-        <path id=\\"graph-edge-1\\" d=\\"M50,150L50,250\\" marker-end=\\"url(#graph-scoped-edge-marker)\\" class=\\"edge scoped-edge\\"></path>
-        <path id=\\"graph-edge-2\\" d=\\"M50,150C50,250 350,150 350,250\\" marker-end=\\"url(#graph-scoped-edge-marker)\\" class=\\"edge scoped-edge\\"></path>
+        <path id=\\"graph-edge-1\\" d=\\"M50,166L50,234\\" marker-end=\\"url(#graph-scoped-edge-marker)\\" class=\\"edge scoped-edge\\"></path>
+        <path id=\\"graph-edge-2\\" d=\\"M50,166C50,234 350,166 350,234\\" marker-end=\\"url(#graph-scoped-edge-marker)\\" class=\\"edge scoped-edge\\"></path>
       </g>
       <g></g>
       <g>
-        <path id=\\"graph-edge-0\\" d=\\"M350,50C350,150 50,50 50,150\\" marker-end=\\"url(#graph-direct-edge-marker)\\" class=\\"edge direct-edge\\"></path>
+        <path id=\\"graph-edge-0\\" d=\\"M350,66C350,134 50,66 50,134\\" marker-end=\\"url(#graph-direct-edge-marker)\\" class=\\"edge direct-edge\\"></path>
       </g>
       <g></g>
       <g></g>
       <g></g>
       <g></g>
       <g>
-        <circle id=\\"graph-node-1\\" r=\\"10\\" cx=\\"50\\" cy=\\"150\\" title=\\"test-component-id-2\\" class=\\"node scoped-node\\"></circle>
-        <circle id=\\"graph-node-2\\" r=\\"10\\" cx=\\"50\\" cy=\\"250\\" title=\\"test-component-id-3\\" class=\\"node scoped-node\\"></circle>
-        <circle id=\\"graph-node-3\\" r=\\"10\\" cx=\\"350\\" cy=\\"250\\" title=\\"test-component-id-4\\" class=\\"node scoped-node\\"></circle>
+        <circle id=\\"graph-node-2\\" r=\\"16\\" cx=\\"50\\" cy=\\"250\\" title=\\"test-component-id-3\\" class=\\"node scoped-node\\"></circle>
+        <circle id=\\"graph-node-3\\" r=\\"16\\" cx=\\"350\\" cy=\\"250\\" title=\\"test-component-id-4\\" class=\\"node scoped-node\\"></circle>
       </g>
-      <g></g>
       <g></g>
       <g>
-        <circle id=\\"graph-node-0\\" r=\\"10\\" cx=\\"350\\" cy=\\"50\\" title=\\"test-component-id-1\\" class=\\"node selected-node\\"></circle>
+        <circle id=\\"graph-node-1\\" r=\\"16\\" cx=\\"50\\" cy=\\"150\\" title=\\"test-component-id-2\\" class=\\"node direct-node\\"></circle>
+      </g>
+      <g>
+        <circle id=\\"graph-node-0\\" r=\\"16\\" cx=\\"350\\" cy=\\"50\\" title=\\"test-component-id-1\\" class=\\"node selected-node\\"></circle>
       </g>
       <g></g>
       <g></g>
       <g></g>
-      <g><text x=\\"67\\" y=\\"170\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label scoped-node-label\\">
-          <tspan x=\\"67\\" y=\\"170\\">
-            test-component-id-2
-          </tspan>
-        </text><text x=\\"67\\" y=\\"270\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label scoped-node-label\\">
-          <tspan x=\\"67\\" y=\\"270\\">
+      <g><text x=\\"73\\" y=\\"270\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label scoped-node-label\\">
+          <tspan x=\\"73\\" y=\\"270\\">
             test-component-id-3
           </tspan>
-        </text><text x=\\"367\\" y=\\"270\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label scoped-node-label\\">
-          <tspan x=\\"367\\" y=\\"270\\">
+        </text><text x=\\"373\\" y=\\"270\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label scoped-node-label\\">
+          <tspan x=\\"373\\" y=\\"270\\">
             test-component-id-4
           </tspan>
         </text></g>
       <g></g>
-      <g></g>
-      <g><text x=\\"367\\" y=\\"70\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label selected-node-label\\">
-          <tspan x=\\"367\\" y=\\"70\\">
+      <g><text x=\\"73\\" y=\\"170\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label direct-node-label\\">
+          <tspan x=\\"73\\" y=\\"170\\">
+            test-component-id-2
+          </tspan>
+        </text></g>
+      <g><text x=\\"373\\" y=\\"70\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label selected-node-label\\">
+          <tspan x=\\"373\\" y=\\"70\\">
             test-component-id-1
           </tspan>
         </text></g>
-    </svg>
-  </div>
+    </svg></div>
   <div tabindex=\\"-1\\" class=\\"b-sidebar-outer\\">
     <!---->
     <transition-stub css=\\"true\\" enterclass=\\"\\" leaveclass=\\"show\\" entertoclass=\\"show\\" leavetoclass=\\"\\" enteractiveclass=\\"slide\\" leaveactiveclass=\\"slide\\">
@@ -1217,7 +1213,7 @@ exports[`DiagramView when components prop contains multiple components and diagr
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
-            <div class=\\"card-body\\">
+            <div class=\\"card-body p-2\\">
               <!---->
               <!---->
               <div role=\\"group\\" class=\\"form-row form-group\\" id=\\"__BVID__78\\"><label for=\\"graph-scope-related-radius\\" class=\\"col-6 col-form-label col-form-label-sm\\" id=\\"__BVID__78__BV_label_\\">Radius:</label>
@@ -1249,7 +1245,7 @@ exports[`DiagramView when components prop contains multiple components and diagr
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
-            <div class=\\"card-body\\">
+            <div class=\\"card-body p-2\\">
               <!---->
               <!---->
               <fieldset class=\\"form-group\\" id=\\"__BVID__80\\">
@@ -1277,7 +1273,7 @@ exports[`DiagramView when components prop contains multiple components and diagr
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
-            <div class=\\"card-body\\">
+            <div class=\\"card-body p-2\\">
               <!---->
               <!---->
               <fieldset class=\\"form-group\\" id=\\"__BVID__90\\">
@@ -1305,7 +1301,7 @@ exports[`DiagramView when components prop contains multiple components and diagr
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
-            <div class=\\"card-body\\">
+            <div class=\\"card-body p-2\\">
               <!---->
               <!---->
               <fieldset class=\\"form-group\\" id=\\"__BVID__100\\">
@@ -1329,7 +1325,7 @@ exports[`DiagramView when components prop contains multiple components and diagr
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
-            <div class=\\"card-body\\">
+            <div class=\\"card-body p-2\\">
               <!---->
               <!---->
               <fieldset class=\\"form-group\\" id=\\"__BVID__106\\">
@@ -1353,7 +1349,7 @@ exports[`DiagramView when components prop contains multiple components and diagr
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
-            <div class=\\"card-body\\">
+            <div class=\\"card-body p-2\\">
               <!---->
               <!---->
               <div role=\\"group\\" class=\\"form-group\\" id=\\"__BVID__112\\"><label for=\\"component-filter\\" class=\\"d-block\\" id=\\"__BVID__112__BV_label_\\">Component</label>
@@ -1381,7 +1377,7 @@ exports[`DiagramView when components prop contains multiple components and diagr
     <div class=\\"card bg-secondary\\">
       <!---->
       <!---->
-      <div class=\\"card-body\\">
+      <div class=\\"card-body p-2\\">
         <!---->
         <!---->
         <div role=\\"group\\" class=\\"form-row form-group\\" id=\\"__BVID__114\\"><label for=\\"graph-zoom\\" class=\\"col-6 col-form-label col-form-label-sm\\" id=\\"__BVID__114__BV_label_\\">Zoom:</label>
@@ -1405,33 +1401,33 @@ exports[`DiagramView when components prop contains multiple components and diagr
       <!---->
     </div>
   </div>
-  <div class=\\"graph\\">
-    <transition-stub name=\\"\\" css=\\"true\\" enterclass=\\"\\" leaveclass=\\"show\\" entertoclass=\\"show\\" leavetoclass=\\"\\" enteractiveclass=\\"\\" leaveactiveclass=\\"\\">
-      <div role=\\"alert\\" aria-live=\\"polite\\" aria-atomic=\\"true\\" class=\\"alert alert-dismissible alert-info\\"><button type=\\"button\\" aria-label=\\"Close\\" class=\\"close\\">×</button>
-        Click a dot in the diagram to see more information about that component
-      </div>
-    </transition-stub> <svg xmlns=\\"http://www.w3.org/2000/svg\\" overflow=\\"auto\\" width=\\"100%\\" height=\\"1200\\" id=\\"component-dependency-graph\\">
+  <transition-stub name=\\"\\" css=\\"true\\" enterclass=\\"\\" leaveclass=\\"show\\" entertoclass=\\"show\\" leavetoclass=\\"\\" enteractiveclass=\\"\\" leaveactiveclass=\\"\\" class=\\"my-3\\">
+    <div role=\\"alert\\" aria-live=\\"polite\\" aria-atomic=\\"true\\" class=\\"alert alert-dismissible alert-info\\"><button type=\\"button\\" aria-label=\\"Close\\" class=\\"close\\">×</button>
+      Click a dot in the diagram to see more information about that component
+    </div>
+  </transition-stub>
+  <div class=\\"diagram-graph\\"><svg xmlns=\\"http://www.w3.org/2000/svg\\" overflow=\\"auto\\" width=\\"100%\\" height=\\"1200\\">
       <rect fill-opacity=\\"0\\" class=\\"graph-background\\"></rect>
       <defs>
-        <marker id=\\"graph-all-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker all-edge-marker\\">
+        <marker id=\\"graph-all-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"7.1\\" refY=\\"5.75\\" class=\\"edge-marker all-edge-marker\\">
           <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
         </marker>
-        <marker id=\\"graph-other-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker other-edge-marker\\">
+        <marker id=\\"graph-other-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"7.1\\" refY=\\"5.75\\" class=\\"edge-marker other-edge-marker\\">
           <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
         </marker>
-        <marker id=\\"graph-scope-related-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker scope-related-edge-marker\\">
+        <marker id=\\"graph-scope-related-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"7.1\\" refY=\\"5.75\\" class=\\"edge-marker scope-related-edge-marker\\">
           <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
         </marker>
-        <marker id=\\"graph-scoped-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker scoped-edge-marker\\">
+        <marker id=\\"graph-scoped-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"7.1\\" refY=\\"5.75\\" class=\\"edge-marker scoped-edge-marker\\">
           <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
         </marker>
-        <marker id=\\"graph-related-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker related-edge-marker\\">
+        <marker id=\\"graph-related-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"7.1\\" refY=\\"5.75\\" class=\\"edge-marker related-edge-marker\\">
           <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
         </marker>
-        <marker id=\\"graph-direct-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker direct-edge-marker\\">
+        <marker id=\\"graph-direct-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"7.1\\" refY=\\"5.75\\" class=\\"edge-marker direct-edge-marker\\">
           <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
         </marker>
-        <marker id=\\"graph-selected-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker selected-edge-marker\\">
+        <marker id=\\"graph-selected-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"7.1\\" refY=\\"5.75\\" class=\\"edge-marker selected-edge-marker\\">
           <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
         </marker>
       </defs>
@@ -1439,9 +1435,9 @@ exports[`DiagramView when components prop contains multiple components and diagr
       <g></g>
       <g></g>
       <g>
-        <path id=\\"graph-edge-0\\" d=\\"M350,50C350,150 50,50 50,150\\" marker-end=\\"url(#graph-scoped-edge-marker)\\" class=\\"edge scoped-edge\\"></path>
-        <path id=\\"graph-edge-1\\" d=\\"M50,150L50,250\\" marker-end=\\"url(#graph-scoped-edge-marker)\\" class=\\"edge scoped-edge\\"></path>
-        <path id=\\"graph-edge-2\\" d=\\"M50,150C50,250 350,150 350,250\\" marker-end=\\"url(#graph-scoped-edge-marker)\\" class=\\"edge scoped-edge\\"></path>
+        <path id=\\"graph-edge-0\\" d=\\"M350,66C350,134 50,66 50,134\\" marker-end=\\"url(#graph-scoped-edge-marker)\\" class=\\"edge scoped-edge\\"></path>
+        <path id=\\"graph-edge-1\\" d=\\"M50,166L50,234\\" marker-end=\\"url(#graph-scoped-edge-marker)\\" class=\\"edge scoped-edge\\"></path>
+        <path id=\\"graph-edge-2\\" d=\\"M50,166C50,234 350,166 350,234\\" marker-end=\\"url(#graph-scoped-edge-marker)\\" class=\\"edge scoped-edge\\"></path>
       </g>
       <g></g>
       <g></g>
@@ -1450,10 +1446,10 @@ exports[`DiagramView when components prop contains multiple components and diagr
       <g></g>
       <g></g>
       <g>
-        <circle id=\\"graph-node-0\\" r=\\"10\\" cx=\\"350\\" cy=\\"50\\" title=\\"test-component-id-1\\" class=\\"node scoped-node\\"></circle>
-        <circle id=\\"graph-node-1\\" r=\\"10\\" cx=\\"50\\" cy=\\"150\\" title=\\"test-component-id-2\\" class=\\"node scoped-node\\"></circle>
-        <circle id=\\"graph-node-2\\" r=\\"10\\" cx=\\"50\\" cy=\\"250\\" title=\\"test-component-id-3\\" class=\\"node scoped-node\\"></circle>
-        <circle id=\\"graph-node-3\\" r=\\"10\\" cx=\\"350\\" cy=\\"250\\" title=\\"test-component-id-4\\" class=\\"node scoped-node\\"></circle>
+        <circle id=\\"graph-node-0\\" r=\\"16\\" cx=\\"350\\" cy=\\"50\\" title=\\"test-component-id-1\\" class=\\"node scoped-node\\"></circle>
+        <circle id=\\"graph-node-1\\" r=\\"16\\" cx=\\"50\\" cy=\\"150\\" title=\\"test-component-id-2\\" class=\\"node scoped-node\\"></circle>
+        <circle id=\\"graph-node-2\\" r=\\"16\\" cx=\\"50\\" cy=\\"250\\" title=\\"test-component-id-3\\" class=\\"node scoped-node\\"></circle>
+        <circle id=\\"graph-node-3\\" r=\\"16\\" cx=\\"350\\" cy=\\"250\\" title=\\"test-component-id-4\\" class=\\"node scoped-node\\"></circle>
       </g>
       <g></g>
       <g></g>
@@ -1461,28 +1457,27 @@ exports[`DiagramView when components prop contains multiple components and diagr
       <g></g>
       <g></g>
       <g></g>
-      <g><text x=\\"367\\" y=\\"70\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label scoped-node-label\\">
-          <tspan x=\\"367\\" y=\\"70\\">
+      <g><text x=\\"373\\" y=\\"70\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label scoped-node-label\\">
+          <tspan x=\\"373\\" y=\\"70\\">
             test-component-id-1
           </tspan>
-        </text><text x=\\"67\\" y=\\"170\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label scoped-node-label\\">
-          <tspan x=\\"67\\" y=\\"170\\">
+        </text><text x=\\"73\\" y=\\"170\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label scoped-node-label\\">
+          <tspan x=\\"73\\" y=\\"170\\">
             test-component-id-2
           </tspan>
-        </text><text x=\\"67\\" y=\\"270\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label scoped-node-label\\">
-          <tspan x=\\"67\\" y=\\"270\\">
+        </text><text x=\\"73\\" y=\\"270\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label scoped-node-label\\">
+          <tspan x=\\"73\\" y=\\"270\\">
             test-component-id-3
           </tspan>
-        </text><text x=\\"367\\" y=\\"270\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label scoped-node-label\\">
-          <tspan x=\\"367\\" y=\\"270\\">
+        </text><text x=\\"373\\" y=\\"270\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label scoped-node-label\\">
+          <tspan x=\\"373\\" y=\\"270\\">
             test-component-id-4
           </tspan>
         </text></g>
       <g></g>
       <g></g>
       <g></g>
-    </svg>
-  </div>
+    </svg></div>
   <div tabindex=\\"-1\\" class=\\"b-sidebar-outer\\">
     <!---->
     <transition-stub css=\\"true\\" enterclass=\\"\\" leaveclass=\\"show\\" entertoclass=\\"show\\" leavetoclass=\\"\\" enteractiveclass=\\"slide\\" leaveactiveclass=\\"slide\\">
@@ -1523,7 +1518,7 @@ exports[`DiagramView when components prop contains multiple components and diagr
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
-            <div class=\\"card-body\\">
+            <div class=\\"card-body p-2\\">
               <!---->
               <!---->
               <div role=\\"group\\" class=\\"form-row form-group\\" id=\\"__BVID__184\\"><label for=\\"graph-scope-related-radius\\" class=\\"col-6 col-form-label col-form-label-sm\\" id=\\"__BVID__184__BV_label_\\">Radius:</label>
@@ -1555,7 +1550,7 @@ exports[`DiagramView when components prop contains multiple components and diagr
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
-            <div class=\\"card-body\\">
+            <div class=\\"card-body p-2\\">
               <!---->
               <!---->
               <fieldset class=\\"form-group\\" id=\\"__BVID__186\\">
@@ -1583,7 +1578,7 @@ exports[`DiagramView when components prop contains multiple components and diagr
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
-            <div class=\\"card-body\\">
+            <div class=\\"card-body p-2\\">
               <!---->
               <!---->
               <fieldset class=\\"form-group\\" id=\\"__BVID__196\\">
@@ -1611,7 +1606,7 @@ exports[`DiagramView when components prop contains multiple components and diagr
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
-            <div class=\\"card-body\\">
+            <div class=\\"card-body p-2\\">
               <!---->
               <!---->
               <fieldset class=\\"form-group\\" id=\\"__BVID__206\\">
@@ -1635,7 +1630,7 @@ exports[`DiagramView when components prop contains multiple components and diagr
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
-            <div class=\\"card-body\\">
+            <div class=\\"card-body p-2\\">
               <!---->
               <!---->
               <fieldset class=\\"form-group\\" id=\\"__BVID__212\\">
@@ -1659,7 +1654,7 @@ exports[`DiagramView when components prop contains multiple components and diagr
           <div class=\\"card bg-secondary\\">
             <!---->
             <!---->
-            <div class=\\"card-body\\">
+            <div class=\\"card-body p-2\\">
               <!---->
               <!---->
               <div role=\\"group\\" class=\\"form-group\\" id=\\"__BVID__218\\"><label for=\\"component-filter\\" class=\\"d-block\\" id=\\"__BVID__218__BV_label_\\">Component</label>
@@ -1687,7 +1682,7 @@ exports[`DiagramView when components prop contains multiple components and diagr
     <div class=\\"card bg-secondary\\">
       <!---->
       <!---->
-      <div class=\\"card-body\\">
+      <div class=\\"card-body p-2\\">
         <!---->
         <!---->
         <div role=\\"group\\" class=\\"form-row form-group\\" id=\\"__BVID__220\\"><label for=\\"graph-zoom\\" class=\\"col-6 col-form-label col-form-label-sm\\" id=\\"__BVID__220__BV_label_\\">Zoom:</label>
@@ -1711,33 +1706,33 @@ exports[`DiagramView when components prop contains multiple components and diagr
       <!---->
     </div>
   </div>
-  <div class=\\"graph\\">
-    <transition-stub name=\\"\\" css=\\"true\\" enterclass=\\"\\" leaveclass=\\"show\\" entertoclass=\\"show\\" leavetoclass=\\"\\" enteractiveclass=\\"\\" leaveactiveclass=\\"\\">
-      <div role=\\"alert\\" aria-live=\\"polite\\" aria-atomic=\\"true\\" class=\\"alert alert-dismissible alert-info\\"><button type=\\"button\\" aria-label=\\"Close\\" class=\\"close\\">×</button>
-        Click a dot in the diagram to see more information about that component
-      </div>
-    </transition-stub> <svg xmlns=\\"http://www.w3.org/2000/svg\\" overflow=\\"auto\\" width=\\"100%\\" height=\\"1200\\" id=\\"component-dependency-graph\\">
+  <transition-stub name=\\"\\" css=\\"true\\" enterclass=\\"\\" leaveclass=\\"show\\" entertoclass=\\"show\\" leavetoclass=\\"\\" enteractiveclass=\\"\\" leaveactiveclass=\\"\\" class=\\"my-3\\">
+    <div role=\\"alert\\" aria-live=\\"polite\\" aria-atomic=\\"true\\" class=\\"alert alert-dismissible alert-info\\"><button type=\\"button\\" aria-label=\\"Close\\" class=\\"close\\">×</button>
+      Click a dot in the diagram to see more information about that component
+    </div>
+  </transition-stub>
+  <div class=\\"diagram-graph\\"><svg xmlns=\\"http://www.w3.org/2000/svg\\" overflow=\\"auto\\" width=\\"100%\\" height=\\"1200\\">
       <rect fill-opacity=\\"0\\" class=\\"graph-background\\"></rect>
       <defs>
-        <marker id=\\"graph-all-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker all-edge-marker\\">
+        <marker id=\\"graph-all-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"7.1\\" refY=\\"5.75\\" class=\\"edge-marker all-edge-marker\\">
           <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
         </marker>
-        <marker id=\\"graph-other-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker other-edge-marker\\">
+        <marker id=\\"graph-other-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"7.1\\" refY=\\"5.75\\" class=\\"edge-marker other-edge-marker\\">
           <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
         </marker>
-        <marker id=\\"graph-scope-related-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker scope-related-edge-marker\\">
+        <marker id=\\"graph-scope-related-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"7.1\\" refY=\\"5.75\\" class=\\"edge-marker scope-related-edge-marker\\">
           <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
         </marker>
-        <marker id=\\"graph-scoped-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker scoped-edge-marker\\">
+        <marker id=\\"graph-scoped-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"7.1\\" refY=\\"5.75\\" class=\\"edge-marker scoped-edge-marker\\">
           <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
         </marker>
-        <marker id=\\"graph-related-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker related-edge-marker\\">
+        <marker id=\\"graph-related-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"7.1\\" refY=\\"5.75\\" class=\\"edge-marker related-edge-marker\\">
           <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
         </marker>
-        <marker id=\\"graph-direct-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker direct-edge-marker\\">
+        <marker id=\\"graph-direct-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"7.1\\" refY=\\"5.75\\" class=\\"edge-marker direct-edge-marker\\">
           <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
         </marker>
-        <marker id=\\"graph-selected-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker selected-edge-marker\\">
+        <marker id=\\"graph-selected-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"7.1\\" refY=\\"5.75\\" class=\\"edge-marker selected-edge-marker\\">
           <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
         </marker>
       </defs>
@@ -1745,52 +1740,52 @@ exports[`DiagramView when components prop contains multiple components and diagr
       <g></g>
       <g></g>
       <g>
-        <path id=\\"graph-edge-1\\" d=\\"M50,150L50,250\\" marker-end=\\"url(#graph-scoped-edge-marker)\\" class=\\"edge scoped-edge\\"></path>
-        <path id=\\"graph-edge-2\\" d=\\"M50,150C50,250 350,150 350,250\\" marker-end=\\"url(#graph-scoped-edge-marker)\\" class=\\"edge scoped-edge\\"></path>
+        <path id=\\"graph-edge-1\\" d=\\"M50,166L50,234\\" marker-end=\\"url(#graph-scoped-edge-marker)\\" class=\\"edge scoped-edge\\"></path>
+        <path id=\\"graph-edge-2\\" d=\\"M50,166C50,234 350,166 350,234\\" marker-end=\\"url(#graph-scoped-edge-marker)\\" class=\\"edge scoped-edge\\"></path>
       </g>
       <g></g>
       <g>
-        <path id=\\"graph-edge-0\\" d=\\"M350,50C350,150 50,50 50,150\\" marker-end=\\"url(#graph-direct-edge-marker)\\" class=\\"edge direct-edge\\"></path>
+        <path id=\\"graph-edge-0\\" d=\\"M350,66C350,134 50,66 50,134\\" marker-end=\\"url(#graph-direct-edge-marker)\\" class=\\"edge direct-edge\\"></path>
       </g>
       <g></g>
       <g></g>
       <g></g>
       <g></g>
       <g>
-        <circle id=\\"graph-node-1\\" r=\\"10\\" cx=\\"50\\" cy=\\"150\\" title=\\"test-component-id-2\\" class=\\"node scoped-node\\"></circle>
-        <circle id=\\"graph-node-2\\" r=\\"10\\" cx=\\"50\\" cy=\\"250\\" title=\\"test-component-id-3\\" class=\\"node scoped-node\\"></circle>
-        <circle id=\\"graph-node-3\\" r=\\"10\\" cx=\\"350\\" cy=\\"250\\" title=\\"test-component-id-4\\" class=\\"node scoped-node\\"></circle>
+        <circle id=\\"graph-node-2\\" r=\\"16\\" cx=\\"50\\" cy=\\"250\\" title=\\"test-component-id-3\\" class=\\"node scoped-node\\"></circle>
+        <circle id=\\"graph-node-3\\" r=\\"16\\" cx=\\"350\\" cy=\\"250\\" title=\\"test-component-id-4\\" class=\\"node scoped-node\\"></circle>
       </g>
-      <g></g>
       <g></g>
       <g>
-        <circle id=\\"graph-node-0\\" r=\\"10\\" cx=\\"350\\" cy=\\"50\\" title=\\"test-component-id-1\\" class=\\"node selected-node\\"></circle>
+        <circle id=\\"graph-node-1\\" r=\\"16\\" cx=\\"50\\" cy=\\"150\\" title=\\"test-component-id-2\\" class=\\"node direct-node\\"></circle>
+      </g>
+      <g>
+        <circle id=\\"graph-node-0\\" r=\\"16\\" cx=\\"350\\" cy=\\"50\\" title=\\"test-component-id-1\\" class=\\"node selected-node\\"></circle>
       </g>
       <g></g>
       <g></g>
       <g></g>
-      <g><text x=\\"67\\" y=\\"170\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label scoped-node-label\\">
-          <tspan x=\\"67\\" y=\\"170\\">
-            test-component-id-2
-          </tspan>
-        </text><text x=\\"67\\" y=\\"270\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label scoped-node-label\\">
-          <tspan x=\\"67\\" y=\\"270\\">
+      <g><text x=\\"73\\" y=\\"270\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label scoped-node-label\\">
+          <tspan x=\\"73\\" y=\\"270\\">
             test-component-id-3
           </tspan>
-        </text><text x=\\"367\\" y=\\"270\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label scoped-node-label\\">
-          <tspan x=\\"367\\" y=\\"270\\">
+        </text><text x=\\"373\\" y=\\"270\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label scoped-node-label\\">
+          <tspan x=\\"373\\" y=\\"270\\">
             test-component-id-4
           </tspan>
         </text></g>
       <g></g>
-      <g></g>
-      <g><text x=\\"367\\" y=\\"70\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label selected-node-label\\">
-          <tspan x=\\"367\\" y=\\"70\\">
+      <g><text x=\\"73\\" y=\\"170\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label direct-node-label\\">
+          <tspan x=\\"73\\" y=\\"170\\">
+            test-component-id-2
+          </tspan>
+        </text></g>
+      <g><text x=\\"373\\" y=\\"70\\" font-size=\\"14\\" stroke-width=\\"1.75\\" class=\\"node-label selected-node-label\\">
+          <tspan x=\\"373\\" y=\\"70\\">
             test-component-id-1
           </tspan>
         </text></g>
-    </svg>
-  </div>
+    </svg></div>
   <div tabindex=\\"-1\\" class=\\"b-sidebar-outer\\">
     <div tabindex=\\"0\\"></div>
     <transition-stub css=\\"true\\" enterclass=\\"\\" leaveclass=\\"show\\" entertoclass=\\"show\\" leavetoclass=\\"\\" enteractiveclass=\\"slide\\" leaveactiveclass=\\"slide\\">
@@ -1803,7 +1798,10 @@ exports[`DiagramView when components prop contains multiple components and diagr
         <div class=\\"b-sidebar-body\\">
           <div class=\\"m-3\\">
             <div>
-              <h3 class=\\"text-info\\">test-component-id-1</h3>
+              <h3 class=\\"text-info\\">
+                test-component-id-1
+              </h3>
+              <!---->
               <!---->
               <div class=\\"my-4\\">
                 <h5 class=\\"text-info\\">Outgoing Connections</h5>
@@ -1857,7 +1855,7 @@ exports[`DiagramView when components prop is set to an empty array renders no ed
     <div class=\\"card bg-secondary\\">
       <!---->
       <!---->
-      <div class=\\"card-body\\">
+      <div class=\\"card-body p-2\\">
         <!---->
         <!---->
         <div role=\\"group\\" class=\\"form-row form-group\\" id=\\"__BVID__8\\"><label for=\\"graph-zoom\\" class=\\"col-6 col-form-label col-form-label-sm\\" id=\\"__BVID__8__BV_label_\\">Zoom:</label>
@@ -1881,33 +1879,33 @@ exports[`DiagramView when components prop is set to an empty array renders no ed
       <!---->
     </div>
   </div>
-  <div class=\\"graph\\">
-    <transition-stub name=\\"\\" css=\\"true\\" enterclass=\\"\\" leaveclass=\\"show\\" entertoclass=\\"show\\" leavetoclass=\\"\\" enteractiveclass=\\"\\" leaveactiveclass=\\"\\">
-      <div role=\\"alert\\" aria-live=\\"polite\\" aria-atomic=\\"true\\" class=\\"alert alert-dismissible alert-info\\"><button type=\\"button\\" aria-label=\\"Close\\" class=\\"close\\">×</button>
-        Click a dot in the diagram to see more information about that component
-      </div>
-    </transition-stub> <svg xmlns=\\"http://www.w3.org/2000/svg\\" overflow=\\"auto\\" width=\\"100%\\" height=\\"1200\\" id=\\"component-dependency-graph\\">
+  <transition-stub name=\\"\\" css=\\"true\\" enterclass=\\"\\" leaveclass=\\"show\\" entertoclass=\\"show\\" leavetoclass=\\"\\" enteractiveclass=\\"\\" leaveactiveclass=\\"\\" class=\\"my-3\\">
+    <div role=\\"alert\\" aria-live=\\"polite\\" aria-atomic=\\"true\\" class=\\"alert alert-dismissible alert-info\\"><button type=\\"button\\" aria-label=\\"Close\\" class=\\"close\\">×</button>
+      Click a dot in the diagram to see more information about that component
+    </div>
+  </transition-stub>
+  <div class=\\"diagram-graph\\"><svg xmlns=\\"http://www.w3.org/2000/svg\\" overflow=\\"auto\\" width=\\"100%\\" height=\\"1200\\">
       <rect fill-opacity=\\"0\\" class=\\"graph-background\\"></rect>
       <defs>
-        <marker id=\\"graph-all-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker all-edge-marker\\">
+        <marker id=\\"graph-all-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"7.1\\" refY=\\"5.75\\" class=\\"edge-marker all-edge-marker\\">
           <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
         </marker>
-        <marker id=\\"graph-other-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker other-edge-marker\\">
+        <marker id=\\"graph-other-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"7.1\\" refY=\\"5.75\\" class=\\"edge-marker other-edge-marker\\">
           <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
         </marker>
-        <marker id=\\"graph-scope-related-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker scope-related-edge-marker\\">
+        <marker id=\\"graph-scope-related-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"7.1\\" refY=\\"5.75\\" class=\\"edge-marker scope-related-edge-marker\\">
           <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
         </marker>
-        <marker id=\\"graph-scoped-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker scoped-edge-marker\\">
+        <marker id=\\"graph-scoped-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"7.1\\" refY=\\"5.75\\" class=\\"edge-marker scoped-edge-marker\\">
           <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
         </marker>
-        <marker id=\\"graph-related-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker related-edge-marker\\">
+        <marker id=\\"graph-related-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"7.1\\" refY=\\"5.75\\" class=\\"edge-marker related-edge-marker\\">
           <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
         </marker>
-        <marker id=\\"graph-direct-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker direct-edge-marker\\">
+        <marker id=\\"graph-direct-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"7.1\\" refY=\\"5.75\\" class=\\"edge-marker direct-edge-marker\\">
           <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
         </marker>
-        <marker id=\\"graph-selected-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"18\\" refY=\\"5.75\\" class=\\"edge-marker selected-edge-marker\\">
+        <marker id=\\"graph-selected-edge-marker\\" orient=\\"auto-start-reverse\\" viewBox=\\"0 0 7.1 11.5\\" markerWidth=\\"7.1\\" markerHeight=\\"11.5\\" markerUnits=\\"userSpaceOnUse\\" refX=\\"7.1\\" refY=\\"5.75\\" class=\\"edge-marker selected-edge-marker\\">
           <path d=\\"M1 11.5L0 10.4L5.1 5.7L0 1L1 0L7.1 5.7L1 11.5\\"></path>
         </marker>
       </defs>
@@ -1932,8 +1930,7 @@ exports[`DiagramView when components prop is set to an empty array renders no ed
       <g></g>
       <g></g>
       <g></g>
-    </svg>
-  </div>
+    </svg></div>
   <div tabindex=\\"-1\\" class=\\"b-sidebar-outer\\">
     <!---->
     <transition-stub css=\\"true\\" enterclass=\\"\\" leaveclass=\\"show\\" entertoclass=\\"show\\" leavetoclass=\\"\\" enteractiveclass=\\"slide\\" leaveactiveclass=\\"slide\\">

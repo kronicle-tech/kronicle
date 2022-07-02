@@ -176,7 +176,7 @@ exports[`Index when Get Test service endpoint returns a test renders the page 1`
                 <!---->
                 <!---->
                 <div
-                  class="card-body"
+                  class="card-body p-2"
                 >
                   <!---->
                   <!---->
@@ -234,7 +234,7 @@ exports[`Index when Get Test service endpoint returns a test renders the page 1`
                 <!---->
                 <!---->
                 <div
-                  class="card-body"
+                  class="card-body p-2"
                 >
                   <!---->
                   <!---->
@@ -292,7 +292,7 @@ exports[`Index when Get Test service endpoint returns a test renders the page 1`
                 <!---->
                 <!---->
                 <div
-                  class="card-body"
+                  class="card-body p-2"
                 >
                   <!---->
                   <!---->
@@ -556,7 +556,7 @@ exports[`Index when Get Test service endpoint returns a test when there are test
                 <!---->
                 <!---->
                 <div
-                  class="card-body"
+                  class="card-body p-2"
                 >
                   <!---->
                   <!---->
@@ -656,7 +656,7 @@ exports[`Index when Get Test service endpoint returns a test when there are test
                 <!---->
                 <!---->
                 <div
-                  class="card-body"
+                  class="card-body p-2"
                 >
                   <!---->
                   <!---->
@@ -733,7 +733,7 @@ exports[`Index when Get Test service endpoint returns a test when there are test
                 <!---->
                 <!---->
                 <div
-                  class="card-body"
+                  class="card-body p-2"
                 >
                   <!---->
                   <!---->
@@ -791,7 +791,7 @@ exports[`Index when Get Test service endpoint returns a test when there are test
                 <!---->
                 <!---->
                 <div
-                  class="card-body"
+                  class="card-body p-2"
                 >
                   <!---->
                   <!---->

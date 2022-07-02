@@ -209,7 +209,7 @@ exports[`Index when Get Components service endpoint returns an array of multiple
               <!---->
               <!---->
               <div
-                class="card-body"
+                class="card-body p-2"
               >
                 <!---->
                 <!---->
@@ -362,7 +362,7 @@ exports[`Index when Get Components service endpoint returns an array of multiple
               <!---->
               <!---->
               <div
-                class="card-body"
+                class="card-body p-2"
               >
                 <!---->
                 <!---->
@@ -515,7 +515,7 @@ exports[`Index when Get Components service endpoint returns an array of multiple
               <!---->
               <!---->
               <div
-                class="card-body"
+                class="card-body p-2"
               >
                 <!---->
                 <!---->
@@ -611,7 +611,7 @@ exports[`Index when Get Components service endpoint returns an array of multiple
               <!---->
               <!---->
               <div
-                class="card-body"
+                class="card-body p-2"
               >
                 <!---->
                 <!---->
@@ -669,7 +669,7 @@ exports[`Index when Get Components service endpoint returns an array of multiple
               <!---->
               <!---->
               <div
-                class="card-body"
+                class="card-body p-2"
               >
                 <!---->
                 <!---->

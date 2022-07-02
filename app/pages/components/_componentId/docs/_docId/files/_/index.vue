@@ -48,7 +48,8 @@ export default Vue.extend({
     ComponentTabs,
     Markdown,
   },
-  async asyncData({ $config, params, res, route }) {
+  middleware: 'docFiles',
+  async asyncData({ $config, params, res, route, next }) {
     const componentAvailableData = await fetchComponentAvailableData(
       $config,
       route
@@ -88,6 +89,10 @@ export default Vue.extend({
       res.setHeader('Content-Type', docFile.mediaType)
       await resEnd(Buffer.from(docFile.content, 'base64'))
       render = false
+      if (next) {
+        next(false)
+        return
+      }
     }
 
     let content
