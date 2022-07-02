@@ -1,6 +1,6 @@
 <template>
   <div class="m-3">
-    <ComponentDependenciesView
+    <DiagramView
       :all-components="components"
       :components="components"
       :diagram="diagram"
@@ -12,11 +12,11 @@
 import Vue from 'vue'
 import { MetaInfo } from 'vue-meta'
 import { Component, Diagram } from '~/types/kronicle-service'
-import ComponentDependenciesView from '~/components/DiagramView.vue'
+import DiagramView from '~/components/DiagramView.vue'
 
 export default Vue.extend({
   components: {
-    ComponentDependenciesView,
+    DiagramView,
   },
   async asyncData({ $config, route, store }) {
     const components = await fetch(

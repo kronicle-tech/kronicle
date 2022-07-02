@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-if="diagram">
     <h1>{{ diagram.name }}</h1>
 
     <Markdown :markdown="diagram.description" />
@@ -38,7 +38,7 @@
     </ComponentFilters>
 
     <b-card-group columns style="column-count: 3">
-      <b-card bg-variant="secondary">
+      <b-card bg-variant="secondary" body-class="p-2">
         <b-form-group
           label-cols="6"
           label-size="sm"
@@ -60,9 +60,10 @@
         Click a dot in the diagram to see more information about that component
       </b-alert>
 
-      <ComponentDependencyGraph
+      <DiagramGraph
         id="component-dependency-graph"
         :diagram="diagram"
+        :components="allComponents"
         :edge-types="selectedEdgeTypes"
         edge-relation-type="scope-related"
         :zoom="zoom"
@@ -112,7 +113,7 @@ import {
 } from '~/types/kronicle-service'
 import { Network } from '~/types/component-dependency-graph'
 import { intRange } from '~/src/arrayUtils'
-import ComponentDependencyGraph from '~/components/DiagramGraph.vue'
+import DiagramGraph from '~/components/DiagramGraph.vue'
 import ComponentPanel from '~/components/ComponentPanel.vue'
 import ComponentFilters from '~/components/ComponentFilters.vue'
 import Markdown from '~/components/Markdown.vue'
@@ -141,9 +142,9 @@ export default Vue.extend({
     'b-form-group': BFormGroup,
     'b-form-select': BFormSelect,
     'b-sidebar': BSidebar,
-    ComponentDependencyGraph,
     ComponentFilters,
     ComponentPanel,
+    DiagramGraph,
     Markdown,
   },
   props: {
@@ -153,7 +154,7 @@ export default Vue.extend({
     },
     diagram: {
       type: Object as PropType<Diagram>,
-      required: true,
+      default: undefined,
     },
     allComponents: {
       type: Array as PropType<Component[]>,

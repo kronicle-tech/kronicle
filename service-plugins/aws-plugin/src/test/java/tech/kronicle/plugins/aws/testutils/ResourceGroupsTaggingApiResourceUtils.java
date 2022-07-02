@@ -6,11 +6,11 @@ import tech.kronicle.plugins.aws.resourcegroupstaggingapi.models.ResourceGroupsT
 import java.util.ArrayList;
 import java.util.List;
 
-import static java.util.Objects.isNull;
 import static java.util.Objects.nonNull;
 
 public final class ResourceGroupsTaggingApiResourceUtils {
 
+    public static final String TEST_ALIASES_TAG_KEY = "test-aliases-tag-key";
     public static final String TEST_COMPONENT_TAG_KEY = "test-component-tag-key";
     public static final String TEST_DESCRIPTION_TAG_KEY = "test-description-tag-key";
     public static final String TEST_ENVIRONMENT_TAG_KEY = "test-environment-tag-key";

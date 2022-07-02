@@ -38,6 +38,19 @@
   </div>
 </template>
 
+<script lang="ts">
+import Vue from 'vue'
+import Message from '~/components/Message.vue'
+import Version from '~/components/Version.vue'
+
+export default Vue.extend({
+  components: {
+    Message,
+    Version,
+  },
+})
+</script>
+
 <style>
 #content a {
   color: #3498db;

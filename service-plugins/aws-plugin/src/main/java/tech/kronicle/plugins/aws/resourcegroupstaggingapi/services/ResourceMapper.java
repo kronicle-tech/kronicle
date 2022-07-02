@@ -17,9 +17,7 @@ import tech.kronicle.sdk.models.DiscoveredState;
 import tech.kronicle.sdk.models.Tag;
 
 import javax.inject.Inject;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
@@ -47,7 +45,8 @@ public class ResourceMapper {
             AnalysedArn analysedArn = analyseArn(resource.getArn());
             Optional<String> nameTag = getNameTag(resource);
             String name = getName(nameTag, analysedArn);
-            List<Alias> aliases = getAliases(analysedArn, name);
+            Optional<String> aliasesTag = getAliasesTag(resource);
+            List<Alias> aliases = getAliases(analysedArn, name, aliasesTag);
             return Component.builder()
                     .id(toKebabCase(analysedArn.getDerivedResourceType() + "-" + analysedArn.getResourceId()))
                     .aliases(aliases)
@@ -85,15 +84,26 @@ public class ResourceMapper {
                 .build();
     }
 
-    private List<Alias> getAliases(AnalysedArn analysedArn, String name) {
+    private List<Alias> getAliases(AnalysedArn analysedArn, String name, Optional<String> aliasesTag) {
         List<String> aliases = new ArrayList<>();
         aliases.add(analysedArn.getResourceId());
         aliases.add(analysedArn.getResourceId().toLowerCase());
         aliases.add(name);
+        aliases.addAll(getAliasesFromTagValue(aliasesTag));
         return aliases.stream()
                 .map(alias -> Alias.builder().id(alias).build())
                 .distinct()
                 .collect(Collectors.toList());
+    }
+
+    private List<String> getAliasesFromTagValue(Optional<String> aliasesTag) {
+        return aliasesTag.map(value -> value.split(","))
+                .map(aliases -> Arrays.stream(aliases)
+                        .map(String::trim)
+                        .filter(alias -> !alias.isEmpty())
+                        .collect(toUnmodifiableList())
+                )
+                .orElse(List.of());
     }
 
     private String getName(Optional<String> nameTag, AnalysedArn analysedArn) {
@@ -102,6 +112,10 @@ public class ResourceMapper {
 
     private Optional<String> getNameTag(ResourceGroupsTaggingApiResource resource) {
         return getOptionalResourceTagValue(resource, TagKeys.PASCAL_CASE_NAME);
+    }
+
+    private Optional<String> getAliasesTag(ResourceGroupsTaggingApiResource resource) {
+        return getOptionalResourceTagValue(resource, config.getTagKeys().getAliases());
     }
 
     private List<ComponentTeam> getTeam(ResourceGroupsTaggingApiResource resource) {

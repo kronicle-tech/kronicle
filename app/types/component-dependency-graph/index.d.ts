@@ -1,6 +1,6 @@
 /* eslint-disable no-use-before-define */
 
-import { GraphEdge, GraphNode } from '~/types/kronicle-service'
+import { Component, GraphEdge, GraphNode } from '~/types/kronicle-service'
 
 export interface NodeLabel {
   x: number
@@ -30,6 +30,7 @@ export interface Edge {
 export interface Node {
   index: number
   text: Array<string>
+  iconPath?: string
   depth: number
   row: number
   column: number
@@ -39,6 +40,7 @@ export interface Node {
   edgeRelationType: EdgeRelationType
   node: GraphNode
   edges: Edge[]
+  component?: Component
 }
 
 export interface Network {

@@ -26,10 +26,7 @@ import java.util.stream.Stream;
 
 import static java.util.Objects.nonNull;
 import static org.assertj.core.api.Assertions.assertThat;
-import static tech.kronicle.plugins.aws.testutils.ResourceGroupsTaggingApiResourceUtils.TEST_COMPONENT_TAG_KEY;
-import static tech.kronicle.plugins.aws.testutils.ResourceGroupsTaggingApiResourceUtils.TEST_DESCRIPTION_TAG_KEY;
-import static tech.kronicle.plugins.aws.testutils.ResourceGroupsTaggingApiResourceUtils.TEST_ENVIRONMENT_TAG_KEY;
-import static tech.kronicle.plugins.aws.testutils.ResourceGroupsTaggingApiResourceUtils.TEST_TEAM_TAG_KEY;
+import static tech.kronicle.plugins.aws.testutils.ResourceGroupsTaggingApiResourceUtils.*;
 
 public class ResourceMapperTest {
 
@@ -65,6 +62,7 @@ public class ResourceMapperTest {
                                         new ResourceGroupsTaggingApiTag("Name", "Test name"),
                                         new ResourceGroupsTaggingApiTag("test-team-tag-key", "test-team-id"),
                                         new ResourceGroupsTaggingApiTag("test-component-tag-key", "test-component-id"),
+                                        new ResourceGroupsTaggingApiTag("test-aliases-tag-key", "test-alias-id-1, test-alias-id-2"),
                                         new ResourceGroupsTaggingApiTag("test-tag-key-1", "test-tag-value-1")
                                 ),
                                 new ResourceGroupsTaggingApiTag("test-description-tag-key", "Test description"),
@@ -104,7 +102,9 @@ public class ResourceMapperTest {
                         .aliases(List.of(
                                 Alias.builder().id("security-group/sg-12345678901ABCDEF").build(),
                                 Alias.builder().id("security-group/sg-12345678901abcdef").build(),
-                                Alias.builder().id("Test name").build()
+                                Alias.builder().id("Test name").build(),
+                                Alias.builder().id("test-alias-id-1").build(),
+                                Alias.builder().id("test-alias-id-2").build()
                         ))
                         .name("Test name")
                         .typeId("aws-ec2-security-group")
@@ -114,6 +114,7 @@ public class ResourceMapperTest {
                                         Tag.builder().key("name").value("Test name").build(),
                                         Tag.builder().key("test-team-tag-key").value("test-team-id").build(),
                                         Tag.builder().key("test-component-tag-key").value("test-component-id").build(),
+                                        Tag.builder().key("test-aliases-tag-key").value("test-alias-id-1, test-alias-id-2").build(),
                                         Tag.builder().key("test-tag-key-1").value("test-tag-value-1").build()
                                 ),
                                 Tag.builder().key("test-description-tag-key").value("Test description").build(),
@@ -134,6 +135,7 @@ public class ResourceMapperTest {
                                         + "* Name=Test name\n"
                                         + "* test-team-tag-key=test-team-id\n"
                                         + "* test-component-tag-key=test-component-id\n"
+                                        + "* test-aliases-tag-key=test-alias-id-1, test-alias-id-2\n"
                                         + "* test-tag-key-1=test-tag-value-1\n"
                                         + (mappingConfig.environmentTag ? "* test-environment-tag-key=test-override-environment-id\n" : "")
                                         + "\n"
@@ -142,6 +144,8 @@ public class ResourceMapperTest {
                                         + "* security-group/sg-12345678901ABCDEF\n"
                                         + "* security-group/sg-12345678901abcdef\n"
                                         + "* Test name\n"
+                                        + "* test-alias-id-1\n"
+                                        + "* test-alias-id-2\n"
                         ))
                         .platformId("aws-managed-service")
                         .dependencies(prepareExpectedDependencies(mappingConfig))
@@ -175,6 +179,7 @@ public class ResourceMapperTest {
                         mappingConfig.createDependenciesForResources,
                         null,
                         new AwsTagKeysConfig(
+                                TEST_ALIASES_TAG_KEY,
                                 TEST_COMPONENT_TAG_KEY,
                                 TEST_DESCRIPTION_TAG_KEY,
                                 TEST_ENVIRONMENT_TAG_KEY,

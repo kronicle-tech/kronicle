@@ -395,7 +395,7 @@ exports[`Index when Get Diagrams service endpoints returns a call graph renders 
               markerUnits="userSpaceOnUse"
               markerWidth="7.1"
               orient="auto-start-reverse"
-              refX="18"
+              refX="23.1"
               refY="5.75"
               viewBox="0 0 7.1 11.5"
             >
@@ -410,7 +410,7 @@ exports[`Index when Get Diagrams service endpoints returns a call graph renders 
               markerUnits="userSpaceOnUse"
               markerWidth="7.1"
               orient="auto-start-reverse"
-              refX="18"
+              refX="23.1"
               refY="5.75"
               viewBox="0 0 7.1 11.5"
             >
@@ -425,7 +425,7 @@ exports[`Index when Get Diagrams service endpoints returns a call graph renders 
               markerUnits="userSpaceOnUse"
               markerWidth="7.1"
               orient="auto-start-reverse"
-              refX="18"
+              refX="23.1"
               refY="5.75"
               viewBox="0 0 7.1 11.5"
             >
@@ -440,7 +440,7 @@ exports[`Index when Get Diagrams service endpoints returns a call graph renders 
               markerUnits="userSpaceOnUse"
               markerWidth="7.1"
               orient="auto-start-reverse"
-              refX="18"
+              refX="23.1"
               refY="5.75"
               viewBox="0 0 7.1 11.5"
             >
@@ -455,7 +455,7 @@ exports[`Index when Get Diagrams service endpoints returns a call graph renders 
               markerUnits="userSpaceOnUse"
               markerWidth="7.1"
               orient="auto-start-reverse"
-              refX="18"
+              refX="23.1"
               refY="5.75"
               viewBox="0 0 7.1 11.5"
             >
@@ -470,7 +470,7 @@ exports[`Index when Get Diagrams service endpoints returns a call graph renders 
               markerUnits="userSpaceOnUse"
               markerWidth="7.1"
               orient="auto-start-reverse"
-              refX="18"
+              refX="23.1"
               refY="5.75"
               viewBox="0 0 7.1 11.5"
             >
@@ -485,7 +485,7 @@ exports[`Index when Get Diagrams service endpoints returns a call graph renders 
               markerUnits="userSpaceOnUse"
               markerWidth="7.1"
               orient="auto-start-reverse"
-              refX="18"
+              refX="23.1"
               refY="5.75"
               viewBox="0 0 7.1 11.5"
             >
@@ -522,7 +522,7 @@ exports[`Index when Get Diagrams service endpoints returns a call graph renders 
               cx="50"
               cy="50"
               id="graph-node-0"
-              r="10"
+              r="16"
               title="test-component-id-1, test-span-name-1-1"
             />
             <circle
@@ -530,7 +530,7 @@ exports[`Index when Get Diagrams service endpoints returns a call graph renders 
               cx="50"
               cy="250"
               id="graph-node-1"
-              r="10"
+              r="16"
               title="test-component-id-1, test-span-name-2-2"
             />
           </g>
@@ -546,11 +546,11 @@ exports[`Index when Get Diagrams service endpoints returns a call graph renders 
               class="node-label selected-node-label"
               font-size="14"
               stroke-width="1.75"
-              x="67"
+              x="73"
               y="70"
             >
               <tspan
-                x="67"
+                x="73"
                 y="70"
               >
                 
@@ -558,7 +558,7 @@ exports[`Index when Get Diagrams service endpoints returns a call graph renders 
       
               </tspan>
               <tspan
-                x="67"
+                x="73"
                 y="86.8"
               >
                 
@@ -570,11 +570,11 @@ exports[`Index when Get Diagrams service endpoints returns a call graph renders 
               class="node-label selected-node-label"
               font-size="14"
               stroke-width="1.75"
-              x="67"
+              x="73"
               y="270"
             >
               <tspan
-                x="67"
+                x="73"
                 y="270"
               >
                 
@@ -582,7 +582,7 @@ exports[`Index when Get Diagrams service endpoints returns a call graph renders 
       
               </tspan>
               <tspan
-                x="67"
+                x="73"
                 y="286.8"
               >
                 
