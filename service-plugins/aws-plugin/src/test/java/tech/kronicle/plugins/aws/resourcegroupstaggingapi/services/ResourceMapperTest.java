@@ -171,6 +171,7 @@ public class ResourceMapperTest {
                                         null,
                                         null,
                                         null,
+                                        null,
                                         TEST_ENVIRONMENT_ID
                                 )
                         ),

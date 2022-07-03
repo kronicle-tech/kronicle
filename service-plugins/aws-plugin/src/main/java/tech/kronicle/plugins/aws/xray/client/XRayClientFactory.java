@@ -16,7 +16,7 @@ public class XRayClientFactory {
     public XRayClient createXRayClient(AwsProfileAndRegion profileAndRegion) {
         return XRayClient.builder()
                 .credentialsProvider(
-                        credentialsProviderFactory.createCredentialsProvider(profileAndRegion.getProfile())
+                        credentialsProviderFactory.createCredentialsProvider(profileAndRegion)
                 )
                 .region(Region.of(profileAndRegion.getRegion()))
                 .build();

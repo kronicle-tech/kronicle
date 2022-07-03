@@ -1,7 +1,6 @@
 package tech.kronicle.plugins.aws.config;
 
 import lombok.Value;
-import lombok.experimental.NonFinal;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
@@ -14,6 +13,7 @@ public class AwsProfileConfig {
 
     String accessKeyId;
     String secretAccessKey;
+    String roleArn;
     @NotEmpty
     List<@NotBlank String> regions;
     @NotBlank
@@ -22,11 +22,13 @@ public class AwsProfileConfig {
     public AwsProfileConfig(
             String accessKeyId,
             String secretAccessKey,
+            String roleArn,
             List<String> regions,
             String environmentId
     ) {
         this.accessKeyId = accessKeyId;
         this.secretAccessKey = secretAccessKey;
+        this.roleArn = roleArn;
         this.regions = createUnmodifiableList(regions);
         this.environmentId = environmentId;
     }
