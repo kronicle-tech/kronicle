@@ -170,12 +170,44 @@ export default Vue.extend({
   data() {
     const nodeIcons = new Map<string, string>()
     nodeIcons.set(
+      'aws-apigateway-restapi',
+      '/aws-architecture-icons/Architecture-Service-Icons/Arch_App-Integration/Arch_64/Arch_Amazon-API-Gateway_64.svg'
+    )
+    nodeIcons.set(
       'aws-apigateway-restapi-stage',
       '/aws-architecture-icons/Architecture-Service-Icons/Arch_App-Integration/Arch_64/Arch_Amazon-API-Gateway_64.svg'
     )
     nodeIcons.set(
+      'aws-cloudformation-stack',
+      '/aws-architecture-icons/Architecture-Service-Icons/Arch_Management-Governance/64/Arch_AWS-CloudFormation_64.svg'
+    )
+    nodeIcons.set(
       'aws-dynamodb-table',
       '/aws-architecture-icons/Architecture-Service-Icons/Arch_Database/64/Arch_Amazon-DynamoDB_64.svg'
+    )
+    nodeIcons.set(
+      'aws-ec2-internet-gateway',
+      '/aws-architecture-icons/Architecture-Service-Icons/Arch_Networking-Content-Delivery/64/Arch_Amazon-Virtual-Private-Cloud_64.svg'
+    )
+    nodeIcons.set(
+      'aws-ec2-route-table',
+      '/aws-architecture-icons/Architecture-Service-Icons/Arch_Networking-Content-Delivery/64/Arch_Amazon-Virtual-Private-Cloud_64.svg'
+    )
+    nodeIcons.set(
+      'aws-ec2-security-group',
+      '/aws-architecture-icons/Architecture-Service-Icons/Arch_Networking-Content-Delivery/64/Arch_Amazon-Virtual-Private-Cloud_64.svg'
+    )
+    nodeIcons.set(
+      'aws-ec2-subnet',
+      '/aws-architecture-icons/Architecture-Service-Icons/Arch_Networking-Content-Delivery/64/Arch_Amazon-Virtual-Private-Cloud_64.svg'
+    )
+    nodeIcons.set(
+      'aws-ec2-vpc',
+      '/aws-architecture-icons/Architecture-Service-Icons/Arch_Networking-Content-Delivery/64/Arch_Amazon-Virtual-Private-Cloud_64.svg'
+    )
+    nodeIcons.set(
+      'aws-ecs-cluster',
+      '/aws-architecture-icons/Architecture-Service-Icons/Arch_Containers/64/Arch_Amazon-Elastic-Container-Service_64.svg'
     )
     nodeIcons.set(
       'aws-lambda-function',
@@ -188,6 +220,14 @@ export default Vue.extend({
     nodeIcons.set(
       'aws-s3-bucket',
       '/aws-architecture-icons/Architecture-Service-Icons/Arch_Storage/64/Arch_Amazon-Simple-Storage-Service_64.svg'
+    )
+    nodeIcons.set(
+      'aws-secretsmanager-secret',
+      '/aws-architecture-icons/Architecture-Service-Icons/Arch_Security-Identity-Compliance/64/Arch_AWS-Secrets-Manager_64.svg'
+    )
+    nodeIcons.set(
+      'aws-ssm-parameter',
+      '/aws-architecture-icons/Architecture-Service-Icons/Arch_Management-Governance/64/Arch_AWS-Systems-Manager_64.svg'
     )
     nodeIcons.set(
       'aws-synthetics-canary',
