@@ -4,20 +4,18 @@ import lombok.RequiredArgsConstructor;
 import tech.kronicle.plugins.aws.AwsPlugin;
 import tech.kronicle.plugins.aws.config.AwsConfig;
 import tech.kronicle.plugins.aws.constants.TagKeys;
+import tech.kronicle.plugins.aws.resourcegroupstaggingapi.models.ComponentAndConnection;
 import tech.kronicle.plugins.aws.resourcegroupstaggingapi.models.ResourceGroupsTaggingApiResource;
 import tech.kronicle.plugins.aws.resourcegroupstaggingapi.models.ResourceGroupsTaggingApiTag;
 import tech.kronicle.plugins.aws.utils.AnalysedArn;
-import tech.kronicle.sdk.constants.DependencyTypeIds;
-import tech.kronicle.sdk.models.Alias;
-import tech.kronicle.sdk.models.Component;
-import tech.kronicle.sdk.models.ComponentDependency;
-import tech.kronicle.sdk.models.ComponentTeam;
-import tech.kronicle.sdk.models.DependencyDirection;
-import tech.kronicle.sdk.models.DiscoveredState;
-import tech.kronicle.sdk.models.Tag;
+import tech.kronicle.sdk.constants.DiagramConnectionTypes;
+import tech.kronicle.sdk.models.*;
 
 import javax.inject.Inject;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Optional;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
@@ -31,40 +29,63 @@ public class ResourceMapper {
 
     private final AwsConfig config;
 
-    public List<Component> mapResourcesToComponents(
+    public List<ComponentAndConnection> mapResourcesToComponentsAndConnections(
             String environmentId,
             List<ResourceGroupsTaggingApiResource> resources
     ) {
         return resources.stream()
-                .map(mapResourceToComponent(environmentId))
+                .map(mapResourceToComponentAndConnection(environmentId))
                 .collect(Collectors.toList());
     }
 
-    private Function<ResourceGroupsTaggingApiResource, Component> mapResourceToComponent(String environmentId) {
+    private Function<ResourceGroupsTaggingApiResource, ComponentAndConnection> mapResourceToComponentAndConnection(String environmentId) {
         return resource -> {
-            AnalysedArn analysedArn = analyseArn(resource.getArn());
-            Optional<String> nameTag = getNameTag(resource);
-            String name = getName(nameTag, analysedArn);
-            Optional<String> aliasesTag = getAliasesTag(resource);
-            List<Alias> aliases = getAliases(analysedArn, name, aliasesTag);
-            return Component.builder()
-                    .id(toKebabCase(analysedArn.getDerivedResourceType() + "-" + analysedArn.getResourceId()))
-                    .aliases(aliases)
-                    .name(name)
-                    .typeId(toKebabCase(analysedArn.getDerivedResourceType()))
-                    .tags(mapTags(resource))
-                    .teams(getTeam(resource))
-                    .description(getDescription(resource, analysedArn, aliases))
-                    .platformId("aws-managed-service")
-                    .dependencies(createDependencies(resource))
-                    .states(List.of(
-                            DiscoveredState.builder()
-                                    .environmentId(getEnvironmentId(resource, environmentId))
-                                    .pluginId(AwsPlugin.ID)
-                                    .build()
-                    ))
-                    .build();
+            Component component = mapResourceToComponent(environmentId, resource);
+            return new ComponentAndConnection(
+                    component,
+                    mapResourceToConnection(resource, component)
+            );
         };
+    }
+
+    private Component mapResourceToComponent(String environmentId, ResourceGroupsTaggingApiResource resource) {
+        AnalysedArn analysedArn = analyseArn(resource.getArn());
+        Optional<String> nameTag = getNameTag(resource);
+        String name = getName(nameTag, analysedArn);
+        Optional<String> aliasesTag = getAliasesTag(resource);
+        List<Alias> aliases = getAliases(analysedArn, name, aliasesTag);
+        return Component.builder()
+                .id(toKebabCase(analysedArn.getDerivedResourceType() + "-" + analysedArn.getResourceId()))
+                .aliases(aliases)
+                .name(name)
+                .typeId(toKebabCase(analysedArn.getDerivedResourceType()))
+                .tags(mapTags(resource))
+                .teams(getTeam(resource))
+                .description(getDescription(resource, analysedArn, aliases))
+                .platformId("aws-managed-service")
+                .states(List.of(
+                        DiscoveredState.builder()
+                                .environmentId(getEnvironmentId(resource, environmentId))
+                                .pluginId(AwsPlugin.ID)
+                                .build()
+                ))
+                .build();
+    }
+
+    private DiagramConnection mapResourceToConnection(ResourceGroupsTaggingApiResource resource, Component component) {
+        if (!config.getCreateDependenciesForResources()) {
+            return null;
+        }
+        Optional<String> componentTag = getComponentTag(resource);
+        if (componentTag.isEmpty()) {
+            return null;
+        }
+        return DiagramConnection.builder()
+                .sourceComponentId(componentTag.get())
+                .targetComponentId(component.getId())
+                .type(DiagramConnectionTypes.COMPOSITION)
+                .label("is composed of")
+                .build();
     }
 
     private List<Tag> mapTags(ResourceGroupsTaggingApiResource resource) {
@@ -172,25 +193,6 @@ public class ResourceMapper {
 
     private Optional<String> getDescriptionTag(ResourceGroupsTaggingApiResource resource) {
         return getOptionalResourceTagValue(resource, config.getTagKeys().getDescription());
-    }
-
-    private List<ComponentDependency> createDependencies(ResourceGroupsTaggingApiResource resource) {
-        if (config.getCreateDependenciesForResources()) {
-            Optional<String> componentTag = getComponentTag(resource);
-            return componentTag.map(this::createDependency).stream()
-                    .collect(toUnmodifiableList());
-        } else {
-            return List.of();
-        }
-    }
-
-    private ComponentDependency createDependency(String componentTag) {
-        return ComponentDependency.builder()
-                .targetComponentId(componentTag)
-                .direction(DependencyDirection.INBOUND)
-                .typeId(DependencyTypeIds.COMPOSITION)
-                .label("is composed of")
-                .build();
     }
 
     private Optional<String> getComponentTag(ResourceGroupsTaggingApiResource resource) {

@@ -4,11 +4,15 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import tech.kronicle.pluginapi.finders.models.ComponentsAndDiagrams;
 import tech.kronicle.plugins.aws.config.AwsConfig;
 import tech.kronicle.plugins.aws.config.AwsProfileConfig;
 import tech.kronicle.plugins.aws.models.AwsProfileAndRegion;
+import tech.kronicle.plugins.aws.resourcegroupstaggingapi.models.ComponentAndConnection;
 import tech.kronicle.plugins.aws.resourcegroupstaggingapi.models.ResourceGroupsTaggingApiResource;
 import tech.kronicle.sdk.models.Component;
+import tech.kronicle.sdk.models.Diagram;
+import tech.kronicle.sdk.models.DiagramConnection;
 
 import java.util.List;
 
@@ -28,7 +32,7 @@ public class ResourceServiceTest {
     public ResourceMapper mapper;
 
     @Test
-    public void getDependenciesShouldFetchResourcesForAProfileAndRegionAndMapResourcesToComponents() {
+    public void getDependenciesShouldFetchResourcesForAProfileAndRegionAndMapResourcesToComponentsAndADiagram() {
         // Given
         AwsProfileConfig profile = new AwsProfileConfig(
                 null,
@@ -42,25 +46,34 @@ public class ResourceServiceTest {
                 createResource(2)
         );
         when(fetcher.getResources(new AwsProfileAndRegion(profile, "test-region-1"))).thenReturn(services);
-        List<Component> components = List.of(
-                Component.builder()
-                        .id("test-component-id-1")
-                        .build(),
-                Component.builder()
-                        .id("test-component-id-2")
-                        .build()
+        Component component1 = createComponent(1);
+        Component component2 = createComponent(2);
+        DiagramConnection connection1 = createConnection(1);
+        DiagramConnection connection2 = createConnection(2);
+        List<ComponentAndConnection> componentsAndConnections = List.of(
+                new ComponentAndConnection(component1, connection1),
+                new ComponentAndConnection(component2, connection2)
         );
-        when(mapper.mapResourcesToComponents(profile.getEnvironmentId(), services)).thenReturn(components);
+        when(mapper.mapResourcesToComponentsAndConnections(profile.getEnvironmentId(), services)).thenReturn(componentsAndConnections);
 
         // When
-        List<Component> returnValue = underTest.getComponents();
+        ComponentsAndDiagrams returnValue = underTest.getComponentsAndDiagrams();
 
         // Then
-        assertThat(returnValue).isEqualTo(components);
+        assertThat(returnValue.getComponents()).isEqualTo(List.of(
+                component1,
+                component2
+        ));
+        assertThat(returnValue.getDiagrams()).isEqualTo(List.of(
+                createDiagram(List.of(
+                        connection1,
+                        connection2
+                ))
+        ));
     }
 
     @Test
-    public void getDependenciesShouldFetchResourcesForAProfileAndMultipleRegionsAndMapResourcesToComponents() {
+    public void getDependenciesShouldFetchResourcesForAProfileAndMultipleRegionsAndMapResourcesToComponentsAndDiagrams() {
         // Given
         AwsProfileConfig profile = new AwsProfileConfig(
                 null,
@@ -85,47 +98,61 @@ public class ResourceServiceTest {
         Component component2 = createComponent(2);
         Component component3 = createComponent(3);
         Component component4 = createComponent(4);
-        when(mapper.mapResourcesToComponents(profile.getEnvironmentId(), List.of(
+        DiagramConnection connection1 = createConnection(1);
+        DiagramConnection connection2 = createConnection(2);
+        DiagramConnection connection3 = createConnection(3);
+        DiagramConnection connection4 = createConnection(4);
+        when(mapper.mapResourcesToComponentsAndConnections(profile.getEnvironmentId(), List.of(
                 resource1,
                 resource2
         ))).thenReturn(List.of(
-                component1,
-                component2
+                new ComponentAndConnection(component1, connection1),
+                new ComponentAndConnection(component2, connection2)
         ));
-        when(mapper.mapResourcesToComponents(profile.getEnvironmentId(), List.of(
+        when(mapper.mapResourcesToComponentsAndConnections(profile.getEnvironmentId(), List.of(
                 resource3,
                 resource4
         ))).thenReturn(List.of(
-                component3,
-                component4
+                new ComponentAndConnection(component3, connection3),
+                new ComponentAndConnection(component4, connection4)
         ));
 
         // When
-        List<Component> returnValue = underTest.getComponents();
+        ComponentsAndDiagrams returnValue = underTest.getComponentsAndDiagrams();
 
         // Then
-        assertThat(returnValue).containsExactly(
+        assertThat(returnValue.getComponents()).containsExactly(
                 component1,
                 component2,
                 component3,
                 component4
         );
+        assertThat(returnValue.getDiagrams()).isEqualTo(List.of(
+                createDiagram(List.of(
+                        connection1,
+                        connection2,
+                        connection3,
+                        connection4
+                ))
+        ));
     }
 
     @Test
     public void getDependenciesShouldFetchResourcesForMultipleProfilesAndMultipleRegionsAndMapResourcesToComponents() {
         // Given
+        String environmentId1 = "test-environment-id-1";
+        String environmentId2 = "test-environment-id-2";
         AwsProfileConfig profile1 = new AwsProfileConfig(
                 null,
                 null,
                 List.of("test-region-1", "test-region-2"),
-                "test-environment-id-1"
+                environmentId1
         );
         AwsProfileConfig profile2 = new AwsProfileConfig(
                 null,
                 null,
                 List.of("test-region-3", "test-region-4"),
-                "test-environment-id-2"
+                environmentId2
         );
         underTest = createUnderTest(List.of(profile1, profile2));
         ResourceGroupsTaggingApiResource resource1 = createResource(1);
@@ -160,40 +187,48 @@ public class ResourceServiceTest {
         Component component6 = createComponent(6);
         Component component7 = createComponent(7);
         Component component8 = createComponent(8);
-        when(mapper.mapResourcesToComponents(profile1.getEnvironmentId(), List.of(
+        DiagramConnection connection1 = createConnection(1);
+        DiagramConnection connection2 = createConnection(2);
+        DiagramConnection connection3 = createConnection(3);
+        DiagramConnection connection4 = createConnection(4);
+        DiagramConnection connection5 = createConnection(5);
+        DiagramConnection connection6 = createConnection(6);
+        DiagramConnection connection7 = createConnection(7);
+        DiagramConnection connection8 = createConnection(8);
+        when(mapper.mapResourcesToComponentsAndConnections(profile1.getEnvironmentId(), List.of(
                 resource1,
                 resource2
         ))).thenReturn(List.of(
-                component1,
-                component2
+                new ComponentAndConnection(component1, connection1),
+                new ComponentAndConnection(component2, connection2)
         ));
-        when(mapper.mapResourcesToComponents(profile1.getEnvironmentId(), List.of(
+        when(mapper.mapResourcesToComponentsAndConnections(profile1.getEnvironmentId(), List.of(
                 resource3,
                 resource4
         ))).thenReturn(List.of(
-                component3,
-                component4
+                new ComponentAndConnection(component3, connection3),
+                new ComponentAndConnection(component4, connection4)
         ));
-        when(mapper.mapResourcesToComponents(profile2.getEnvironmentId(), List.of(
+        when(mapper.mapResourcesToComponentsAndConnections(profile2.getEnvironmentId(), List.of(
                 resource5,
                 resource6
         ))).thenReturn(List.of(
-                component5,
-                component6
+                new ComponentAndConnection(component5, connection5),
+                new ComponentAndConnection(component6, connection6)
         ));
-        when(mapper.mapResourcesToComponents(profile2.getEnvironmentId(), List.of(
+        when(mapper.mapResourcesToComponentsAndConnections(profile2.getEnvironmentId(), List.of(
                 resource7,
                 resource8
         ))).thenReturn(List.of(
-                component7,
-                component8
+                new ComponentAndConnection(component7, connection7),
+                new ComponentAndConnection(component8, connection8)
         ));
 
         // When
-        List<Component> returnValue = underTest.getComponents();
+        ComponentsAndDiagrams returnValue = underTest.getComponentsAndDiagrams();
 
         // Then
-        assertThat(returnValue).containsExactly(
+        assertThat(returnValue.getComponents()).containsExactly(
                 component1,
                 component2,
                 component3,
@@ -203,11 +238,48 @@ public class ResourceServiceTest {
                 component7,
                 component8
         );
+        assertThat(returnValue.getDiagrams()).isEqualTo(List.of(
+                createDiagram(List.of(
+                        connection1,
+                        connection2,
+                        connection3,
+                        connection4
+                ), environmentId1),
+                createDiagram(List.of(
+                        connection5,
+                        connection6,
+                        connection7,
+                        connection8
+                ), environmentId2)
+        ));
+
     }
 
     private Component createComponent(int componentNumber) {
         return Component.builder()
                 .id("test-component-id-" + componentNumber)
+                .build();
+    }
+
+    private DiagramConnection createConnection(int connectionNumber) {
+        return DiagramConnection.builder()
+                .sourceComponentId("test-component-id-" + connectionNumber + "-parent")
+                .targetComponentId("test-component-id-" + connectionNumber)
+                .build();
+    }
+
+    private Diagram createDiagram(List<DiagramConnection> connections) {
+        return createDiagram(connections, TEST_ENVIRONMENT_ID);
+    }
+
+    private Diagram createDiagram(List<DiagramConnection> connections, String environmentId) {
+        return Diagram.builder()
+                .id("aws-resources-" + environmentId)
+                .name("AWS Resources - " + environmentId)
+                .description("This diagram shows AWS resources that have associated components.  Any AWS " +
+                        "resources that are not associated with a component will not appear in the diagram")
+                .discovered(true)
+                .connections(connections)
                 .build();
     }
 

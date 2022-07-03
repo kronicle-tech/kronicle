@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import tech.kronicle.pluginapi.finders.models.ComponentsAndDiagrams;
 import tech.kronicle.pluginapi.finders.models.TracingData;
 import tech.kronicle.pluginapi.scanners.CodebaseScanner;
 import tech.kronicle.pluginapi.scanners.ComponentAndCodebaseScanner;
@@ -405,14 +406,30 @@ public class ScanEngineTest {
     private ComponentMetadata mockMasterComponentFinder(ComponentMetadata componentMetadata) {
         Component extraComponent1 = createExtraComponent("1");
         Component extraComponent2 = createExtraComponent("2");
-        when(masterComponentFinder.findComponents(componentMetadata)).thenReturn(List.of(
-                extraComponent1,
-                extraComponent2
-        ));
+        Diagram extraDiagram1 = createExtraDiagram("1");
+        Diagram extraDiagram2 = createExtraDiagram("2");
+        when(masterComponentFinder.findComponentsAndDiagrams(componentMetadata)).thenReturn(
+                new ComponentsAndDiagrams(
+                        List.of(
+                                extraComponent1,
+                                extraComponent2
+                        ),
+                        List.of(
+                                extraDiagram1,
+                                extraDiagram2
+                        )
+                )
+        );
+        when(graphProcessor.processDiagram(extraDiagram1)).thenReturn(extraDiagram1);
+        when(graphProcessor.processDiagram(extraDiagram2)).thenReturn(extraDiagram2);
         List<Component> components = new ArrayList<>(componentMetadata.getComponents());
         components.add(extraComponent1);
         components.add(extraComponent2);
-        return componentMetadata.withComponents(components);
+        List<Diagram> diagrams = new ArrayList<>(componentMetadata.getDiagrams());
+        diagrams.add(extraDiagram1);
+        diagrams.add(extraDiagram2);
+        return componentMetadata.withComponents(components)
+                .withDiagrams(diagrams);
     }
 
     private Component createExtraComponent(String componentUniquePart) {
@@ -428,7 +445,14 @@ public class ScanEngineTest {
                 .repo(new RepoReference("test-repo-url-" + componentUniquePart))
                 .build();
     }
-    
+
+    private Diagram createExtraDiagram(String diagramUniquePart) {
+        // Extra diagrams have no repo
+        return Diagram.builder()
+                .id("test-diagram-extra-" + diagramUniquePart)
+                .build();
+    }
+
     private ComponentMetadata mockMasterDependencyFinder(ComponentMetadata componentMetadata) {
         List<TracingData> tracingDataList = createTracingDataList(1);
         when(masterTracingDataFinder.findTracingData(componentMetadata)).thenReturn(tracingDataList);
@@ -445,7 +469,8 @@ public class ScanEngineTest {
         Diagram diagram4 = createDiagram(4);
         when(graphProcessor.processTracingData(updatedTracingDataList.get(0))).thenReturn(List.of(diagram1, diagram2));
         when(graphProcessor.processTracingData(updatedTracingDataList.get(1))).thenReturn(List.of(diagram3, diagram4));
-        List<Diagram> diagrams = List.of(diagram1, diagram2, diagram3, diagram4);
+        List<Diagram> diagrams = new ArrayList<>(componentMetadata.getDiagrams());
+        diagrams.addAll(List.of(diagram1, diagram2, diagram3, diagram4));
         return componentMetadata.withDiagrams(diagrams);
     }
     
