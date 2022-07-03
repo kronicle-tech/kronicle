@@ -27,7 +27,7 @@ public class MasterComponentFinder {
     private final FinderExtensionRegistry registry;
     private final ExtensionExecutor executor;
 
-    public ComponentsAndDiagrams findComponents(ComponentMetadata componentMetadata) {
+    public ComponentsAndDiagrams findComponentsAndDiagrams(ComponentMetadata componentMetadata) {
         List<ComponentsAndDiagrams> componentsAndDiagramsList = registry.getComponentFinders().stream()
                 .map(finder -> executeFinder(finder, componentMetadata))
                 .collect(toUnmodifiableList());

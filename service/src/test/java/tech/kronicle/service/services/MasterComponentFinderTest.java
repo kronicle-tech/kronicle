@@ -8,9 +8,11 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import tech.kronicle.pluginapi.finders.ComponentFinder;
+import tech.kronicle.pluginapi.finders.models.ComponentsAndDiagrams;
 import tech.kronicle.pluginapi.scanners.models.Output;
 import tech.kronicle.sdk.models.Component;
 import tech.kronicle.sdk.models.ComponentMetadata;
+import tech.kronicle.sdk.models.Diagram;
 import tech.kronicle.testutils.LogCaptor;
 import tech.kronicle.testutils.SimplifiedLogEvent;
 import tech.kronicle.utils.ThrowableToScannerErrorMapper;
@@ -57,19 +59,44 @@ public class MasterComponentFinderTest {
         Component component2 = createComponent(2);
         Component component3 = createComponent(3);
         Component component4 = createComponent(4);
+        Diagram diagram1 = createDiagram(1);
+        Diagram diagram2 = createDiagram(2);
+        Diagram diagram3 = createDiagram(3);
+        Diagram diagram4 = createDiagram(4);
         ComponentMetadata componentMetadata = ComponentMetadata.builder().build();
-        when(componentFinder1.find(componentMetadata)).thenReturn(Output.ofOutput(List.of(component1, component2), CACHE_TTL));
-        when(componentFinder2.find(componentMetadata)).thenReturn(Output.ofOutput(List.of(component3, component4), CACHE_TTL));
+        when(componentFinder1.find(componentMetadata)).thenReturn(createOutput(component1, component2, diagram1, diagram2));
+        when(componentFinder2.find(componentMetadata)).thenReturn(createOutput(component3, component4, diagram3, diagram4));
 
         // When
-        List<Component> returnValue = underTest.findComponents(componentMetadata);
+        ComponentsAndDiagrams returnValue = underTest.findComponentsAndDiagrams(componentMetadata);
 
         // Then
-        assertThat(returnValue).containsExactly(
+        assertThat(returnValue.getComponents()).containsExactly(
                 component1.withDiscovered(true),
                 component2.withDiscovered(true),
                 component3.withDiscovered(true),
                 component4.withDiscovered(true)
+        );
+        assertThat(returnValue.getDiagrams()).containsExactly(
+                diagram1.withDiscovered(true),
+                diagram2.withDiscovered(true),
+                diagram3.withDiscovered(true),
+                diagram4.withDiscovered(true)
+        );
+    }
+
+    private Output<ComponentsAndDiagrams, Void> createOutput(
+            Component component1, 
+            Component component2,
+            Diagram diagram1,
+            Diagram diagram2
+    ) {
+        return Output.ofOutput(
+                new ComponentsAndDiagrams(
+                        List.of(component1, component2),
+                        List.of(diagram1, diagram2)
+                ),
+                CACHE_TTL
         );
     }
 
@@ -81,24 +108,28 @@ public class MasterComponentFinderTest {
         Component component1 = createComponent(1);
         Component component2 = createComponent(2);
         Component component3 = createComponent(3);
+        Diagram diagram1 = createDiagram(1);
+        Diagram diagram2 = createDiagram(2);
+        Diagram diagram3 = createDiagram(3);
+        Diagram diagram4 = createDiagram(4);
         ComponentMetadata componentMetadata = ComponentMetadata.builder().build();
-        when(componentFinder1.find(componentMetadata)).thenReturn(Output.ofOutput(
-                List.of(component1, component2),
-                CACHE_TTL
-        ));
-        when(componentFinder2.find(componentMetadata)).thenReturn(Output.ofOutput(
-                List.of(withDifferentName(component2), component3),
-                CACHE_TTL
-        ));
+        when(componentFinder1.find(componentMetadata)).thenReturn(createOutput(component1, component2, diagram1, diagram2));
+        when(componentFinder2.find(componentMetadata)).thenReturn(createOutput(withDifferentName(component2), component3, diagram3, diagram4));
 
         // When
-        List<Component> returnValue = underTest.findComponents(componentMetadata);
+        ComponentsAndDiagrams returnValue = underTest.findComponentsAndDiagrams(componentMetadata);
 
         // Then
-        assertThat(returnValue).containsExactly(
+        assertThat(returnValue.getComponents()).containsExactly(
                 component1.withDiscovered(true),
                 component2.withDiscovered(true),
                 component3.withDiscovered(true)
+        );
+        assertThat(returnValue.getDiagrams()).containsExactly(
+                diagram1.withDiscovered(true),
+                diagram2.withDiscovered(true),
+                diagram3.withDiscovered(true),
+                diagram4.withDiscovered(true)
         );
     }
 
@@ -111,28 +142,32 @@ public class MasterComponentFinderTest {
         Component component2 = createComponent(2);
         Component component3 = createComponent(3);
         Component component4 = createComponent(4);
+        Diagram diagram1 = createDiagram(1);
+        Diagram diagram2 = createDiagram(2);
+        Diagram diagram3 = createDiagram(3);
+        Diagram diagram4 = createDiagram(4);
         ComponentMetadata componentMetadata = ComponentMetadata.builder()
                 .components(List.of(
                         component1,
                         component3
                 ))
                 .build();
-        when(componentFinder1.find(componentMetadata)).thenReturn(Output.ofOutput(
-                List.of(withDifferentName(component1), component2),
-                CACHE_TTL
-        ));
-        when(componentFinder2.find(componentMetadata)).thenReturn(Output.ofOutput(
-                List.of(withDifferentName(component3), component4),
-                CACHE_TTL
-        ));
+        when(componentFinder1.find(componentMetadata)).thenReturn(createOutput(withDifferentName(component1), component2, diagram1, diagram2));
+        when(componentFinder2.find(componentMetadata)).thenReturn(createOutput(withDifferentName(component3), component4, diagram3, diagram4));
 
         // When
-        List<Component> returnValue = underTest.findComponents(componentMetadata);
+        ComponentsAndDiagrams returnValue = underTest.findComponentsAndDiagrams(componentMetadata);
 
         // Then
-        assertThat(returnValue).containsExactly(
+        assertThat(returnValue.getComponents()).containsExactly(
                 component2.withDiscovered(true),
                 component4.withDiscovered(true)
+        );
+        assertThat(returnValue.getDiagrams()).containsExactly(
+                diagram1.withDiscovered(true),
+                diagram2.withDiscovered(true),
+                diagram3.withDiscovered(true),
+                diagram4.withDiscovered(true)
         );
     }
 
@@ -146,19 +181,25 @@ public class MasterComponentFinderTest {
         when(componentFinder1.find(componentMetadata)).thenThrow(new RuntimeException("Fake exception"));
         Component component1 = createComponent(1);
         Component component2 = createComponent(2);
+        Diagram diagram1 = createDiagram(1);
+        Diagram diagram2 = createDiagram(2);
         when(componentFinder2.id()).thenReturn("test-component-finder-2");
-        when(componentFinder2.find(componentMetadata)).thenReturn(Output.ofOutput(List.of(component1, component2), CACHE_TTL));
+        when(componentFinder2.find(componentMetadata)).thenReturn(createOutput(component1, component2, diagram1, diagram2));
 
         // When
-        List<Component> returnValue = underTest.findComponents(componentMetadata);
+        ComponentsAndDiagrams returnValue = underTest.findComponentsAndDiagrams(componentMetadata);
 
         // Then
-        assertThat(returnValue).containsExactly(
+        assertThat(returnValue.getComponents()).containsExactly(
                 component1.withDiscovered(true),
                 component2.withDiscovered(true)
         );
+        assertThat(returnValue.getDiagrams()).containsExactly(
+                diagram1.withDiscovered(true),
+                diagram2.withDiscovered(true)
+        );
         assertThat(logCaptor.getSimplifiedEvents()).containsExactly(
-                new SimplifiedLogEvent(Level.INFO, "Component finder test-component-finder-2 found 2 components")
+                new SimplifiedLogEvent(Level.INFO, "Component finder test-component-finder-2 found 2 components and 2 diagrams")
         );
         assertThat(taskExecutorLogCaptor.getSimplifiedEvents()).containsExactly(
                 new SimplifiedLogEvent(Level.INFO, "Executing finder test-component-finder-1"),
@@ -189,5 +230,11 @@ public class MasterComponentFinderTest {
 
     private Component withDifferentName(Component component) {
         return component.withName("Same id but different name");
+    }
+
+    private Diagram createDiagram(int diagramNumber) {
+        return Diagram.builder()
+                .id("test-diagram-id-" + diagramNumber)
+                .build();
     }
 }

@@ -81,7 +81,7 @@ public class ScanEngine {
             ConcurrentHashMap<String, Component> componentMap,
             ConcurrentHashMap<String, Diagram> diagramMap
     ) {
-        ComponentsAndDiagrams extraComponentsAndDiagrams = masterComponentFinder.findComponents(componentMetadata);
+        ComponentsAndDiagrams extraComponentsAndDiagrams = masterComponentFinder.findComponentsAndDiagrams(componentMetadata);
         return addExtraComponentsAndDiagrams(componentMetadata, componentMap, diagramMap, extraComponentsAndDiagrams);
     }
 
