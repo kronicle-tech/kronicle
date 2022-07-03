@@ -11,10 +11,7 @@ import tech.kronicle.sdk.models.DiagramConnection;
 
 import javax.inject.Inject;
 
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 import java.util.function.Function;
 
 import static java.util.stream.Collectors.groupingBy;
@@ -29,7 +26,23 @@ public class ResourceService {
     private final AwsConfig config;
 
     public ComponentsAndDiagrams getComponentsAndDiagrams() {
-        List<ComponentsAndDiagrams> componentsAndDiagramsList = getComponentAndConnectionEntries().stream()
+        List<ComponentsAndDiagrams> componentsAndDiagramsList = groupComponentsAndConnectionsByEnvironmentId(
+                getComponentAndConnectionEntries()
+        )
+                .stream()
+                .map(entry -> new ComponentsAndDiagrams(
+                        getComponents(entry),
+                        createDiagram(entry.getKey(), getConnections(entry))
+                ))
+                .collect(toUnmodifiableList());
+        return flattenComponentsAndDiagrams(componentsAndDiagramsList);
+    }
+
+    private List<Map.Entry<String, List<ComponentAndConnection>>> groupComponentsAndConnectionsByEnvironmentId(
+            List<Map.Entry<AwsProfileAndRegion,
+            List<ComponentAndConnection>>> componentAndConnectionEntries
+    ) {
+        return componentAndConnectionEntries.stream()
                 .map(entry -> Map.entry(
                         entry.getKey().getProfile().getEnvironmentId(),
                         entry.getValue()
@@ -43,12 +56,7 @@ public class ResourceService {
                                 .flatMap(Collection::stream)
                                 .collect(toUnmodifiableList())
                 ))
-                .map(entry -> new ComponentsAndDiagrams(
-                        getComponents(entry),
-                        createDiagram(entry.getKey(), getConnections(entry))
-                ))
                 .collect(toUnmodifiableList());
-        return flattenComponentsAndDiagrams(componentsAndDiagramsList);
     }
 
     private List<Component> getComponents(Map.Entry<String, List<ComponentAndConnection>> entry) {
