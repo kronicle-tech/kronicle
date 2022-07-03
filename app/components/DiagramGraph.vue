@@ -170,16 +170,28 @@ export default Vue.extend({
   data() {
     const nodeIcons = new Map<string, string>()
     nodeIcons.set(
-      'aws-lambda-function',
-      '/aws-architecture-icons/Architecture-Service-Icons/Arch_Compute/64/Arch_AWS-Lambda_64.svg'
-    )
-    nodeIcons.set(
       'aws-apigateway-restapi-stage',
       '/aws-architecture-icons/Architecture-Service-Icons/Arch_App-Integration/Arch_64/Arch_Amazon-API-Gateway_64.svg'
     )
     nodeIcons.set(
       'aws-dynamodb-table',
       '/aws-architecture-icons/Architecture-Service-Icons/Arch_Database/64/Arch_Amazon-DynamoDB_64.svg'
+    )
+    nodeIcons.set(
+      'aws-lambda-function',
+      '/aws-architecture-icons/Architecture-Service-Icons/Arch_Compute/64/Arch_AWS-Lambda_64.svg'
+    )
+    nodeIcons.set(
+      'aws-logs-log-group',
+      '/aws-architecture-icons/Architecture-Service-Icons/Arch_Management-Governance/64/Arch_Amazon-CloudWatch_64.svg'
+    )
+    nodeIcons.set(
+      'aws-s3-bucket',
+      '/aws-architecture-icons/Architecture-Service-Icons/Arch_Storage/64/Arch_Amazon-Simple-Storage-Service_64.svg'
+    )
+    nodeIcons.set(
+      'aws-synthetics-canary',
+      '/aws-architecture-icons/Architecture-Service-Icons/Arch_Management-Governance/64/Arch_Amazon-CloudWatch_64.svg'
     )
 
     return {
