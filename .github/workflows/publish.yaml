@@ -36,7 +36,7 @@ jobs:
           docker push ghcr.io/kronicle-tech/kronicle-service:${{ steps.get_version.outputs.VERSION }}
 
       - name: Checkout kronicle-docker-compose repo
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           repository: kronicle-tech/kronicle-docker-compose
           token: ${{ secrets.DEPLOY_GITHUB_TOKEN }}
@@ -58,7 +58,7 @@ jobs:
         working-directory: kronicle-docker-compose
 
 #      - name: Checkout kronicle-metadata-repo-template repo
-#        uses: actions/checkout@v2
+#        uses: actions/checkout@v3
 #        with:
 #          repository: kronicle-tech/kronicle-metadata-repo-template
 #          token: ${{ secrets.DEPLOY_GITHUB_TOKEN }}
@@ -79,7 +79,7 @@ jobs:
 #        working-directory: kronicle-metadata-repo-template
 #
 #      - name: Checkout kronicle-metadata-codebase-template repo
-#        uses: actions/checkout@v2
+#        uses: actions/checkout@v3
 #        with:
 #          repository: kronicle-tech/kronicle-metadata-codebase-template
 #          token: ${{ secrets.DEPLOY_GITHUB_TOKEN }}
