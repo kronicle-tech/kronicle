@@ -175,7 +175,7 @@ exports[`DiagramView when components prop contains multiple components and diagr
       </div>
     </transition-stub>
   </div>
-  <div class=\\"card-columns\\" style=\\"column-count: 3;\\">
+  <div class=\\"card-columns\\">
     <div class=\\"card bg-secondary\\">
       <!---->
       <!---->
@@ -455,7 +455,7 @@ exports[`DiagramView when components prop contains multiple components and diagr
       </div>
     </transition-stub>
   </div>
-  <div class=\\"card-columns\\" style=\\"column-count: 3;\\">
+  <div class=\\"card-columns\\">
     <div class=\\"card bg-secondary\\">
       <!---->
       <!---->
@@ -760,7 +760,7 @@ exports[`DiagramView when components prop contains multiple components and diagr
       </div>
     </transition-stub>
   </div>
-  <div class=\\"card-columns\\" style=\\"column-count: 3;\\">
+  <div class=\\"card-columns\\">
     <div class=\\"card bg-secondary\\">
       <!---->
       <!---->
@@ -1065,7 +1065,7 @@ exports[`DiagramView when components prop contains multiple components and diagr
       </div>
     </transition-stub>
   </div>
-  <div class=\\"card-columns\\" style=\\"column-count: 3;\\">
+  <div class=\\"card-columns\\">
     <div class=\\"card bg-secondary\\">
       <!---->
       <!---->
@@ -1373,7 +1373,7 @@ exports[`DiagramView when components prop contains multiple components and diagr
       </div>
     </transition-stub>
   </div>
-  <div class=\\"card-columns\\" style=\\"column-count: 3;\\">
+  <div class=\\"card-columns\\">
     <div class=\\"card bg-secondary\\">
       <!---->
       <!---->
@@ -1678,7 +1678,7 @@ exports[`DiagramView when components prop contains multiple components and diagr
       </div>
     </transition-stub>
   </div>
-  <div class=\\"card-columns\\" style=\\"column-count: 3;\\">
+  <div class=\\"card-columns\\">
     <div class=\\"card bg-secondary\\">
       <!---->
       <!---->
@@ -1851,7 +1851,7 @@ exports[`DiagramView when components prop is set to an empty array renders no ed
   <h1></h1>
   <div></div>
   <!---->
-  <div class=\\"card-columns\\" style=\\"column-count: 3;\\">
+  <div class=\\"card-columns\\">
     <div class=\\"card bg-secondary\\">
       <!---->
       <!---->
