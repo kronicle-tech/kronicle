@@ -34,7 +34,7 @@ on:
 
 jobs:
 
-  ci-build-and-docker-push:
+  ci-build-and-publish:
     runs-on: ubuntu-latest
     environment: publish
 
@@ -123,14 +123,6 @@ jobs:
           # See https://github.com/actions/runner/issues/409#issuecomment-727565588 for explanation of syntax
           if-no-files-found: ${{ inputs.test_reports && 'error' || 'ignore' }}
 
-      - name: Clean up Gradle Cache
-        if: ${{ inputs.caching }}
-        # Remove some files from the Gradle cache, so they aren't cached by GitHub Actions.
-        # Restoring these files from a GitHub Actions cache might cause problems for future builds.
-        run: |
-          rm -f ~/.gradle/caches/modules-2/modules-2.lock
-          rm -f ~/.gradle/caches/modules-2/gc.properties
-
       - name: Get version
         id: get_version
         run: echo ::set-output name=VERSION::$(./gradlew currentVersion -q -Prelease.quiet)
@@ -158,3 +150,11 @@ jobs:
           docker pull ghcr.io/kronicle-tech/${{ inputs.docker_image_name }}:${{ steps.get_version.outputs.VERSION }}-pre-release
           docker tag ghcr.io/kronicle-tech/${{ inputs.docker_image_name }}:${{ steps.get_version.outputs.VERSION }}-pre-release ${{ secrets.AMAZON_ECR_REGISTRY }}/${{ inputs.docker_image_name }}:${{ steps.get_version.outputs.VERSION }}-pre-release
           docker push ${{ secrets.AMAZON_ECR_REGISTRY }}/${{ inputs.docker_image_name }}:${{ steps.get_version.outputs.VERSION }}-pre-release
+
+      - name: Clean up Gradle Cache
+        if: ${{ inputs.caching }}
+        # Remove some files from the Gradle cache, so they aren't cached by GitHub Actions.
+        # Restoring these files from a GitHub Actions cache might cause problems for future builds.
+        run: |
+          rm -f ~/.gradle/caches/modules-2/modules-2.lock
+          rm -f ~/.gradle/caches/modules-2/gc.properties

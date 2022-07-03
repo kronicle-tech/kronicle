@@ -57,6 +57,7 @@ public class DependencyServiceTest {
         return new AwsProfileConfig(
                 null,
                 null,
+                null,
                 regions,
                 null);
     }

@@ -41,6 +41,7 @@ public class XRayServiceGraphFetcherTest {
                         "test-access-key-id",
                         "test-secret-access-key",
                         null,
+                        null,
                         null
                 ),
                 "test-region"

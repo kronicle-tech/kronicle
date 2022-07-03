@@ -17,7 +17,7 @@ public class CloudWatchLogsClientFactory implements ClientFactory<CloudWatchLogs
     public CloudWatchLogsClient createClient(AwsProfileAndRegion profileAndRegion) {
         return CloudWatchLogsClient.builder()
                 .credentialsProvider(
-                        credentialsProviderFactory.createCredentialsProvider(profileAndRegion.getProfile())
+                        credentialsProviderFactory.createCredentialsProvider(profileAndRegion)
                 )
                 .region(Region.of(profileAndRegion.getRegion()))
                 .build();

@@ -37,6 +37,7 @@ public class ResourceServiceTest {
         AwsProfileConfig profile = new AwsProfileConfig(
                 null,
                 null,
+                null,
                 List.of("test-region-1"),
                 TEST_ENVIRONMENT_ID
         );
@@ -76,6 +77,7 @@ public class ResourceServiceTest {
     public void getDependenciesShouldFetchResourcesForAProfileAndMultipleRegionsAndMapResourcesToComponentsAndDiagrams() {
         // Given
         AwsProfileConfig profile = new AwsProfileConfig(
+                null,
                 null,
                 null,
                 List.of("test-region-1", "test-region-2"),
@@ -145,10 +147,12 @@ public class ResourceServiceTest {
         AwsProfileConfig profile1 = new AwsProfileConfig(
                 null,
                 null,
+                null,
                 List.of("test-region-1", "test-region-2"),
                 environmentId1
         );
         AwsProfileConfig profile2 = new AwsProfileConfig(
+                null,
                 null,
                 null,
                 List.of("test-region-3", "test-region-4"),

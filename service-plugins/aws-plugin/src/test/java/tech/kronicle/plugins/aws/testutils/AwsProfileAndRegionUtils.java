@@ -11,6 +11,7 @@ public final class AwsProfileAndRegionUtils {
         return new AwsProfileConfig(
                 "test-access-key-id-" + profileNumber,
                 "test-secret-access-key-" + profileNumber,
+                null,
                 List.of(
                         createRegion(profileNumber, 1),
                         createRegion(profileNumber, 2)
