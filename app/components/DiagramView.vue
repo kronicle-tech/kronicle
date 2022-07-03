@@ -41,7 +41,7 @@
       </b-card>
     </ComponentFilters>
 
-    <b-card-group columns style="column-count: 3">
+    <b-card-group columns>
       <b-card bg-variant="secondary" body-class="p-2">
         <b-form-group
           label-cols="6"
