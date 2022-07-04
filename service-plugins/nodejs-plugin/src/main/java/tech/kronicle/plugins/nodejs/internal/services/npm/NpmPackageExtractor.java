@@ -13,7 +13,6 @@ import tech.kronicle.sdk.models.SoftwareType;
 import tech.kronicle.utils.FileUtils;
 import tech.kronicle.sdk.models.Software;
 import tech.kronicle.sdk.models.SoftwareDependencyType;
-import tech.kronicle.sdk.models.SoftwareScope;
 
 import javax.inject.Inject;
 import java.nio.file.Path;
@@ -99,7 +98,7 @@ public class NpmPackageExtractor {
                 : SoftwareDependencyType.TRANSITIVE;
     }
 
-    private SoftwareScope getScope(Boolean dev) {
-        return nonNull(dev) && dev ? SoftwareScope.DEV : null;
+    private String getScope(Boolean dev) {
+        return nonNull(dev) && dev ? "dev" : null;
     }
 }

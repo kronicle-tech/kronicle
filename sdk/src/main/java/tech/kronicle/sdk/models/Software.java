@@ -25,5 +25,5 @@ public class Software implements ObjectWithScannerId {
     String version;
     String versionSelector;
     String packaging;
-    SoftwareScope scope;
+    String scope;
 }

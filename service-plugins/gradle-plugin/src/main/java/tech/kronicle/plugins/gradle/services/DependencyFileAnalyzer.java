@@ -57,12 +57,14 @@ public class DependencyFileAnalyzer {
 
     private List<Software> getSoftwaresFromConfiguration(Configuration configuration) {
         return getSoftwaresFromResolvedDependencies(
+                configuration.getName(),
                 configuration.getResolvedDependencies(),
                 SoftwareDependencyType.DIRECT
         );
     }
 
     private List<Software> getSoftwaresFromResolvedDependencies(
+            String scope,
             List<ResolvedDependency> resolvedDependencies,
             SoftwareDependencyType dependencyType
     ) {
@@ -70,26 +72,33 @@ public class DependencyFileAnalyzer {
             return List.of();
         }
         return resolvedDependencies.stream()
-                .map(resolvedDependency -> getSoftwaresFromResolvedDependency(resolvedDependency, dependencyType))
+                .map(resolvedDependency -> getSoftwaresFromResolvedDependency(scope, resolvedDependency, dependencyType))
                 .flatMap(Collection::stream)
                 .collect(toUnmodifiableList());
     }
 
     private List<Software> getSoftwaresFromResolvedDependency(
+            String scope,
             ResolvedDependency resolvedDependency,
             SoftwareDependencyType dependencyType
     ) {
         List<Software> softwares = new ArrayList<>();
-        softwares.add(mapSoftware(resolvedDependency, dependencyType));
+        softwares.add(mapSoftware(scope, resolvedDependency, dependencyType));
         softwares.addAll(getSoftwaresFromResolvedDependencies(
+                scope,
                 resolvedDependency.getResolvedDependencies(),
                 SoftwareDependencyType.TRANSITIVE
         ));
         return softwares;
     }
 
-    private Software mapSoftware(ResolvedDependency resolvedDependency, SoftwareDependencyType dependencyType) {
+    private Software mapSoftware(
+            String scope,
+            ResolvedDependency resolvedDependency,
+            SoftwareDependencyType dependencyType
+    ) {
         return Software.builder()
+                .scope(scope)
                 .dependencyType(dependencyType)
                 .name(resolvedDependency.getModuleGroup() + ":" + resolvedDependency.getModuleName())
                 .version(resolvedDependency.getModuleVersion())
