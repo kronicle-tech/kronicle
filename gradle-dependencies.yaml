@@ -1,0 +1,53 @@
+---
+configurations:
+- name: "archives"
+  description: "Configuration for archive artifacts."
+  visible: true
+  canBeResolved: true
+  resolved: false
+- name: "default"
+  description: "Configuration for default artifacts."
+  visible: true
+  canBeResolved: true
+  resolved: false
+- name: "jacocoAgent"
+  description: "The Jacoco agent to use to get coverage data."
+  visible: false
+  canBeResolved: true
+  resolved: false
+  dependencies:
+  - name: "org.jacoco.agent"
+    group: "org.jacoco"
+    version: "0.8.7"
+- name: "jacocoAnt"
+  description: "The Jacoco ant tasks to use to get execute Gradle tasks."
+  visible: false
+  canBeResolved: true
+  resolved: false
+  dependencies:
+  - name: "org.jacoco.ant"
+    group: "org.jacoco"
+    version: "0.8.7"
+- name: "spotbugs"
+  description: "configuration for the SpotBugs engine"
+  visible: false
+  canBeResolved: true
+  resolved: false
+  dependencies:
+  - name: "spotbugs"
+    group: "com.github.spotbugs"
+    version: "4.5.3"
+- name: "spotbugsPlugins"
+  description: "configuration for the external SpotBugs plugins"
+  visible: false
+  canBeResolved: true
+  resolved: false
+- name: "spotbugsSlf4j"
+  description: "configuration for the SLF4J provider to run SpotBugs"
+  visible: false
+  canBeResolved: true
+  resolved: false
+  dependencies:
+  - name: "slf4j-simple"
+    group: "org.slf4j"
+    version: "1.8.0-beta4"

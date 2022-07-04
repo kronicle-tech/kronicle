@@ -1,5 +1,6 @@
 plugins {
     id "base"
+    id "tech.kronicle.dependencies-file"
     id "com.jfrog.artifactory" apply false
     id "org.sonarqube"
     id "jacoco"
@@ -17,6 +18,7 @@ subprojects {
     }
 
     apply plugin: "java"
+    apply plugin: "tech.kronicle.dependencies-file"
     apply from: "$rootDir/gradle/repos.gradle"
     apply from: "$rootDir/gradle/dependency-check.gradle"
     apply from: "$rootDir/gradle/jacoco.gradle"
