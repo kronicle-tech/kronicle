@@ -60,7 +60,7 @@ public abstract class BaseNodeJsScannerTest extends BaseCodebaseScannerTest {
                             .append(")");
                     if (nonNull(it.getScope())) {
                         builder.append(".scope(SoftwareScope.")
-                                .append(it.getScope().name())
+                                .append(it.getScope())
                                 .append(")");
                     }
                     return builder

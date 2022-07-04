@@ -41,7 +41,7 @@
           >
             <td>{{ softwareItem.scannerId }}</td>
             <td>{{ softwareItem.type }}</td>
-            <td>{{ softwareItem.dependencyRelationType }}</td>
+            <td>{{ softwareItem.dependencyType }}</td>
             <td>{{ softwareItem.name }}</td>
             <td>{{ softwareItem.version }}</td>
             <td>{{ softwareItem.versionSelector }}</td>
@@ -65,7 +65,7 @@ import {
   ComponentAvailableData,
   fetchComponentAvailableData,
 } from '~/src/fetchComponentAvailableData'
-import { findComponentState } from '~/src/componentStateUtils'
+import { findComponentStates } from '~/src/componentStateUtils'
 
 export default Vue.extend({
   components: {
@@ -105,19 +105,16 @@ export default Vue.extend({
   },
   computed: {
     softwareItems(): Software[] {
-      const softwares: SoftwaresState | undefined = findComponentState(
-        this.component,
-        'softwares'
-      )
-      if (!softwares) {
-        return []
-      }
-      return softwares.softwares.sort(
-        (a: Software, b: Software) =>
-          a.scannerId.localeCompare(b.scannerId) ||
-          a.name.localeCompare(b.name) ||
-          a.version.localeCompare(b.version)
-      )
+      const softwaresStates: ReadonlyArray<SoftwaresState> =
+        findComponentStates(this.component, 'softwares')
+      return softwaresStates
+        .flatMap((softwaresState) => softwaresState.softwares)
+        .sort(
+          (a: Software, b: Software) =>
+            a.scannerId.localeCompare(b.scannerId) ||
+            a.name.localeCompare(b.name) ||
+            a.version.localeCompare(b.version)
+        )
     },
     softwareItemCount(): number {
       return this.softwareItems.length

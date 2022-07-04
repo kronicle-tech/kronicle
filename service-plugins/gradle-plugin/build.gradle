@@ -18,6 +18,7 @@ dependencies {
     testCompileOnly "com.github.spotbugs:spotbugs-annotations:$spotBugsVersion"
 
     implementation project(":service-plugin-guice")
+    implementation "com.fasterxml.jackson.dataformat:jackson-dataformat-yaml"
 
     implementation("tech.kronicle:gradle-static-analyzer:$gradleStaticAnalyzerVersion") {
         exclude group: 'tech.kronicle', module: 'kronicle-common'
