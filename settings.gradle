@@ -14,6 +14,7 @@ pluginManagement {
         id "org.sonarqube" version sonarQubeVersion apply false
         id "org.springframework.boot" version springBootVersion apply false
         id "pl.allegro.tech.build.axion-release" version axionReleaseVersion apply false
+        id "tech.kronicle.dependencies-file" version dependenciesFilePluginVersion apply false
     }
 }
 
@@ -33,7 +34,6 @@ include "graphql-java-code-first"
 include "spring-graphql-code-first"
 include "service"
 include "service-plugins:aws-plugin"
-include "service-plugins:base-plugin"
 include "service-plugins:bitbucket-server-plugin"
 include "service-plugins:example-plugin"
 include "service-plugins:datadog-plugin"
