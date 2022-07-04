@@ -1,6 +1,0 @@
-package tech.kronicle.plugins.gradle.GradleScannerCodebaseTest.Import
-
-import org.gradle.internal.os.OperatingSystem
-
-// Ensure import is used so it does not get removed by an IDE
-println(OperatingSystem.current().isMacOsX())

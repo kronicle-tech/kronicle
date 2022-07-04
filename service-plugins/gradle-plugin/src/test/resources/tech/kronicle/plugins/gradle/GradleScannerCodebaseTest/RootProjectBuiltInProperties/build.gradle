@@ -1,4 +1,0 @@
-package tech.kronicle.plugins.gradle.GradleScannerCodebaseTest.RootProjectBuiltInProperties
-
-def variable1 = rootProject.name
-def variable2 = "$rootProject.name"

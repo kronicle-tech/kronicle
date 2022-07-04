@@ -1,5 +1,0 @@
-package tech.kronicle.plugins.gradle.GradleScannerCodebaseTest.PluginDefinedInSettingsFileWithApplyTrue
-
-repositories {
-    mavenCentral()
-}

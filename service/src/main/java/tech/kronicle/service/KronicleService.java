@@ -2,7 +2,6 @@ package tech.kronicle.service;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
 import com.fasterxml.jackson.dataformat.yaml.YAMLMapper;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -67,7 +66,7 @@ public class KronicleService {
 
     @Bean
     public YAMLMapper yamlMapper() {
-        YAMLMapper yamlMapper = new YAMLMapper(new YAMLFactory());
+        YAMLMapper yamlMapper = new YAMLMapper();
         yamlMapper.configure(DeserializationFeature. FAIL_ON_UNKNOWN_PROPERTIES, true);
         return yamlMapper;
     }
