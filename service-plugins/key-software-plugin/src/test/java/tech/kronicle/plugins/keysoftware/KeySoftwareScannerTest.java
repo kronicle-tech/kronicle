@@ -250,6 +250,42 @@ public class KeySoftwareScannerTest extends BaseScannerTest {
         );
     }
 
+    @Test
+    public void scanShouldUseKebabCaseForNewTagKeys() {
+        // Given
+        KeySoftwareRuleConfig rule1 = new KeySoftwareRuleConfig("Test Software Name 1", "Test Key Software Name 1");
+        KeySoftwareRuleConfig rule2 = new KeySoftwareRuleConfig("Test Software Name 2", "Test Key Software Name 2");
+        KeySoftwareScanner underTest = createUnderTest(List.of(rule1, rule2));
+        Software softwareItem1 = Software.builder()
+                .name("Test Software Name 1")
+                .version("1.2.3")
+                .build();
+        Software softwareItem2 = Software.builder()
+                .name("Test Software Name 2")
+                .version("4.5.6")
+                .build();
+
+        // When
+        Output<Void, Component> returnValue = underTest.scan(createComponent(List.of(softwareItem1, softwareItem2)));
+
+        // Then
+        assertThat(maskTransformer(returnValue)).isEqualTo(maskTransformer(Output.empty(CACHE_TTL)));
+        Component component = getMutatedComponent(returnValue);
+        List<KeySoftware> keySoftware = getKeySoftwares(component);
+        assertThat(keySoftware).hasSize(2);
+        KeySoftware keySoftwareItem;
+        keySoftwareItem = keySoftware.get(0);
+        assertThat(keySoftwareItem.getName()).isEqualTo("Test Key Software Name 1");
+        assertThat(keySoftwareItem.getVersions()).containsExactly("1.2.3");
+        keySoftwareItem = keySoftware.get(1);
+        assertThat(keySoftwareItem.getName()).isEqualTo("Test Key Software Name 2");
+        assertThat(keySoftwareItem.getVersions()).containsExactly("4.5.6");
+        assertThat(component.getTags()).containsExactly(
+                new Tag("test-key-software-name-1", "1.2.3"),
+                new Tag("test-key-software-name-2", "4.5.6")
+        );
+    }
+
     private KeySoftwareScanner createUnderTest(List<KeySoftwareRuleConfig> rules) {
         KeySoftwareRuleProvider mockRuleProvider = mock(KeySoftwareRuleProvider.class);
         when(mockRuleProvider.getRules()).thenReturn(rules);
