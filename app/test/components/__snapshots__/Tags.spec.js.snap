@@ -1,34 +1,18 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Tags when tags prop is set to multiple tags renders an unordered list showing the tags 1`] = `
-"<ul>
-  <li>
-    test-tag-key-1
-    <!---->
-  </li>
-  <li>
-    test-tag-key-2
-    <!---->
-  </li>
-  <li>
-    test-tag-key-3
-    <!---->
-  </li>
-</ul>"
+"<div class=\\"h5\\"><span class=\\"badge mr-2 mb-2 badge-info\\">
+    test-tag-key-1<!----></span><span class=\\"badge mr-2 mb-2 badge-info\\">
+    test-tag-key-2<!----></span><span class=\\"badge mr-2 mb-2 badge-info\\">
+    test-tag-key-3<!----></span></div>"
 `;
 
 exports[`Tags when tags prop is set to one tag renders an unordered list showing the tag 1`] = `
-"<ul>
-  <li>
-    test-tag-key-1
-    <!---->
-  </li>
-</ul>"
+"<div class=\\"h5\\"><span class=\\"badge mr-2 mb-2 badge-info\\">
+    test-tag-key-1<!----></span></div>"
 `;
 
 exports[`Tags when tags prop is set to one tag with a value renders an unordered list showing the tag 1`] = `
-"<ul>
-  <li>
-    test-tag-key-1<span>: test-tag-value-1</span></li>
-</ul>"
+"<div class=\\"h5\\"><span class=\\"badge mr-2 mb-2 badge-info\\">
+    test-tag-key-1<span>: test-tag-value-1</span></span></div>"
 `;
