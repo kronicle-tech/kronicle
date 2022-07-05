@@ -172,16 +172,9 @@ exports[`ComponentsView when components prop is set to multiple components rende
             <td class=\\"type\\">test-component-type-id-1</td>
             <td class=\\"name table-primary\\"><a href=\\"/components/test-component-id-1\\">Test Component Name 1</a></td>
             <td>
-              <ul>
-                <li>
-                  test-tag-1-1
-                  <!---->
-                </li>
-                <li>
-                  test-tag-1-2
-                  <!---->
-                </li>
-              </ul>
+              <div class=\\"h5\\"><span class=\\"badge mr-2 mb-2 badge-info\\">
+    test-tag-1-1<!----></span><span class=\\"badge mr-2 mb-2 badge-info\\">
+    test-tag-1-2<!----></span></div>
             </td>
             <td>
               <ul>
@@ -205,16 +198,9 @@ exports[`ComponentsView when components prop is set to multiple components rende
             <td class=\\"type\\">test-component-type-id-2</td>
             <td class=\\"name table-primary\\"><a href=\\"/components/test-component-id-2\\">Test Component Name 2</a></td>
             <td>
-              <ul>
-                <li>
-                  test-tag-2-1
-                  <!---->
-                </li>
-                <li>
-                  test-tag-2-2
-                  <!---->
-                </li>
-              </ul>
+              <div class=\\"h5\\"><span class=\\"badge mr-2 mb-2 badge-info\\">
+    test-tag-2-1<!----></span><span class=\\"badge mr-2 mb-2 badge-info\\">
+    test-tag-2-2<!----></span></div>
             </td>
             <td>
               <ul>
@@ -238,16 +224,9 @@ exports[`ComponentsView when components prop is set to multiple components rende
             <td class=\\"type\\">test-component-type-id-3</td>
             <td class=\\"name table-primary\\"><a href=\\"/components/test-component-id-3\\">Test Component Name 3</a></td>
             <td>
-              <ul>
-                <li>
-                  test-tag-3-1
-                  <!---->
-                </li>
-                <li>
-                  test-tag-3-2
-                  <!---->
-                </li>
-              </ul>
+              <div class=\\"h5\\"><span class=\\"badge mr-2 mb-2 badge-info\\">
+    test-tag-3-1<!----></span><span class=\\"badge mr-2 mb-2 badge-info\\">
+    test-tag-3-2<!----></span></div>
             </td>
             <td>
               <ul>
@@ -431,16 +410,9 @@ exports[`ComponentsView when components prop is set to multiple components when 
             <td class=\\"type\\">test-component-type-id-1</td>
             <td class=\\"name table-primary\\"><a href=\\"/components/test-component-id-1\\">Test Component Name 1</a></td>
             <td>
-              <ul>
-                <li>
-                  test-tag-1-1
-                  <!---->
-                </li>
-                <li>
-                  test-tag-1-2
-                  <!---->
-                </li>
-              </ul>
+              <div class=\\"h5\\"><span class=\\"badge mr-2 mb-2 badge-info\\">
+    test-tag-1-1<!----></span><span class=\\"badge mr-2 mb-2 badge-info\\">
+    test-tag-1-2<!----></span></div>
             </td>
             <td>
               <ul>
@@ -464,16 +436,9 @@ exports[`ComponentsView when components prop is set to multiple components when 
             <td class=\\"type\\">test-component-type-id-2</td>
             <td class=\\"name table-primary\\"><a href=\\"/components/test-component-id-2\\">Test Component Name 2</a></td>
             <td>
-              <ul>
-                <li>
-                  test-tag-2-1
-                  <!---->
-                </li>
-                <li>
-                  test-tag-2-2
-                  <!---->
-                </li>
-              </ul>
+              <div class=\\"h5\\"><span class=\\"badge mr-2 mb-2 badge-info\\">
+    test-tag-2-1<!----></span><span class=\\"badge mr-2 mb-2 badge-info\\">
+    test-tag-2-2<!----></span></div>
             </td>
             <td>
               <ul>
@@ -497,16 +462,9 @@ exports[`ComponentsView when components prop is set to multiple components when 
             <td class=\\"type\\">test-component-type-id-3</td>
             <td class=\\"name table-primary\\"><a href=\\"/components/test-component-id-3\\">Test Component Name 3</a></td>
             <td>
-              <ul>
-                <li>
-                  test-tag-3-1
-                  <!---->
-                </li>
-                <li>
-                  test-tag-3-2
-                  <!---->
-                </li>
-              </ul>
+              <div class=\\"h5\\"><span class=\\"badge mr-2 mb-2 badge-info\\">
+    test-tag-3-1<!----></span><span class=\\"badge mr-2 mb-2 badge-info\\">
+    test-tag-3-2<!----></span></div>
             </td>
             <td>
               <ul>
@@ -690,16 +648,9 @@ exports[`ComponentsView when components prop is set to multiple components when 
             <td class=\\"type\\">test-component-type-id-1</td>
             <td class=\\"name table-primary\\"><a href=\\"/components/test-component-id-1\\">Test Component Name 1</a></td>
             <td>
-              <ul>
-                <li>
-                  test-tag-1-1
-                  <!---->
-                </li>
-                <li>
-                  test-tag-1-2
-                  <!---->
-                </li>
-              </ul>
+              <div class=\\"h5\\"><span class=\\"badge mr-2 mb-2 badge-info\\">
+    test-tag-1-1<!----></span><span class=\\"badge mr-2 mb-2 badge-info\\">
+    test-tag-1-2<!----></span></div>
             </td>
             <td>
               <ul>

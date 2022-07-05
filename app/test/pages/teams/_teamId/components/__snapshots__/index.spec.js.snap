@@ -893,18 +893,24 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
               </td>
                
               <td>
-                <ul>
-                  <li>
+                <div
+                  class="h5"
+                >
+                  <span
+                    class="badge mr-2 mb-2 badge-info"
+                  >
                     
     test-tag-1-1
                     <!---->
-                  </li>
-                  <li>
+                  </span>
+                  <span
+                    class="badge mr-2 mb-2 badge-info"
+                  >
                     
     test-tag-1-2
                     <!---->
-                  </li>
-                </ul>
+                  </span>
+                </div>
               </td>
                
               <td>
@@ -966,18 +972,24 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
               </td>
                
               <td>
-                <ul>
-                  <li>
+                <div
+                  class="h5"
+                >
+                  <span
+                    class="badge mr-2 mb-2 badge-info"
+                  >
                     
     test-tag-2-1
                     <!---->
-                  </li>
-                  <li>
+                  </span>
+                  <span
+                    class="badge mr-2 mb-2 badge-info"
+                  >
                     
     test-tag-2-2
                     <!---->
-                  </li>
-                </ul>
+                  </span>
+                </div>
               </td>
                
               <td>
@@ -1039,18 +1051,24 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
               </td>
                
               <td>
-                <ul>
-                  <li>
+                <div
+                  class="h5"
+                >
+                  <span
+                    class="badge mr-2 mb-2 badge-info"
+                  >
                     
     test-tag-3-1
                     <!---->
-                  </li>
-                  <li>
+                  </span>
+                  <span
+                    class="badge mr-2 mb-2 badge-info"
+                  >
                     
     test-tag-3-2
                     <!---->
-                  </li>
-                </ul>
+                  </span>
+                </div>
               </td>
                
               <td>

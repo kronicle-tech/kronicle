@@ -157,14 +157,9 @@ exports[`ComponentPanel when tags is set renders the tags 1`] = `
   <!---->
   <div class=\\"my-4\\">
     <h5 class=\\"text-info\\">Tags</h5>
-    <ul>
-      <li>
-        <!---->
-      </li>
-      <li>
-        <!---->
-      </li>
-    </ul>
+    <div class=\\"h5\\"><span class=\\"badge mr-2 mb-2 badge-info\\">
+    <!----></span><span class=\\"badge mr-2 mb-2 badge-info\\">
+    <!----></span></div>
   </div>
   <!---->
   <!---->
