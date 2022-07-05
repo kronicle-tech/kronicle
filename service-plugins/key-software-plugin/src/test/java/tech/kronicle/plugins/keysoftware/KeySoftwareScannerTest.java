@@ -67,7 +67,7 @@ public class KeySoftwareScannerTest extends BaseScannerTest {
 
         // Then
         assertThat(maskTransformer(returnValue)).isEqualTo(maskTransformer(Output.empty(CACHE_TTL)));
-        KeySoftwaresState keySoftware = getKeySoftwaresState(returnValue);
+        KeySoftwaresState keySoftware = getKeySoftwaresState(getMutatedComponent(returnValue));
         assertThat(keySoftware).isNull();
     }
 
@@ -81,7 +81,7 @@ public class KeySoftwareScannerTest extends BaseScannerTest {
 
         // Then
         assertThat(maskTransformer(returnValue)).isEqualTo(maskTransformer(Output.empty(CACHE_TTL)));
-        KeySoftwaresState keySoftware = getKeySoftwaresState(returnValue);
+        KeySoftwaresState keySoftware = getKeySoftwaresState(getMutatedComponent(returnValue));
         assertThat(keySoftware).isNull();
     }
 
@@ -112,12 +112,16 @@ public class KeySoftwareScannerTest extends BaseScannerTest {
 
         // Then
         assertThat(maskTransformer(returnValue)).isEqualTo(maskTransformer(Output.empty(CACHE_TTL)));
-        List<KeySoftware> keySoftware = getKeySoftwares(returnValue);
+        Component component = getMutatedComponent(returnValue);
+        List<KeySoftware> keySoftware = getKeySoftwares(component);
         assertThat(keySoftware).hasSize(1);
         KeySoftware keySoftwareItem;
         keySoftwareItem = keySoftware.get(0);
         assertThat(keySoftwareItem.getName()).isEqualTo("test-key-software-name");
         assertThat(keySoftwareItem.getVersions()).containsExactly("1.2.3");
+        assertThat(component.getTags()).containsExactly(
+                new Tag("test-key-software-name", "1.2.3")
+        );
     }
 
     @Test
@@ -138,12 +142,16 @@ public class KeySoftwareScannerTest extends BaseScannerTest {
 
         // Then
         assertThat(maskTransformer(returnValue)).isEqualTo(maskTransformer(Output.empty(CACHE_TTL)));
-        List<KeySoftware> keySoftware = getKeySoftwares(returnValue);
+        Component component = getMutatedComponent(returnValue);
+        List<KeySoftware> keySoftware = getKeySoftwares(component);
         assertThat(keySoftware).hasSize(1);
         KeySoftware keySoftwareItem;
         keySoftwareItem = keySoftware.get(0);
         assertThat(keySoftwareItem.getName()).isEqualTo("test-key-software-name");
         assertThat(keySoftwareItem.getVersions()).containsExactly("4.5.6", "1.2.3");
+        assertThat(component.getTags()).containsExactly(
+                new Tag("test-key-software-name", "4.5.6, 1.2.3")
+        );
     }
 
     @Test
@@ -164,12 +172,16 @@ public class KeySoftwareScannerTest extends BaseScannerTest {
 
         // Then
         assertThat(maskTransformer(returnValue)).isEqualTo(maskTransformer(Output.empty(CACHE_TTL)));
-        List<KeySoftware> keySoftware = getKeySoftwares(returnValue);
+        Component component = getMutatedComponent(returnValue);
+        List<KeySoftware> keySoftware = getKeySoftwares(component);
         assertThat(keySoftware).hasSize(1);
         KeySoftware keySoftwareItem;
         keySoftwareItem = keySoftware.get(0);
         assertThat(keySoftwareItem.getName()).isEqualTo("test-key-software-name");
         assertThat(keySoftwareItem.getVersions()).containsExactly("4.5.6", "1.2.3");
+        assertThat(component.getTags()).containsExactly(
+                new Tag("test-key-software-name", "4.5.6, 1.2.3")
+        );
     }
 
     @Test
@@ -190,12 +202,16 @@ public class KeySoftwareScannerTest extends BaseScannerTest {
 
         // Then
         assertThat(maskTransformer(returnValue)).isEqualTo(maskTransformer(Output.empty(CACHE_TTL)));
-        List<KeySoftware> keySoftware = getKeySoftwares(returnValue);
+        Component component = getMutatedComponent(returnValue);
+        List<KeySoftware> keySoftware = getKeySoftwares(component);
         assertThat(keySoftware).hasSize(1);
         KeySoftware keySoftwareItem;
         keySoftwareItem = keySoftware.get(0);
         assertThat(keySoftwareItem.getName()).isEqualTo("test-key-software-name");
         assertThat(keySoftwareItem.getVersions()).containsExactly("1.2.3");
+        assertThat(component.getTags()).containsExactly(
+                new Tag("test-key-software-name", "1.2.3")
+        );
     }
 
     @Test
@@ -218,7 +234,8 @@ public class KeySoftwareScannerTest extends BaseScannerTest {
 
         // Then
         assertThat(maskTransformer(returnValue)).isEqualTo(maskTransformer(Output.empty(CACHE_TTL)));
-        List<KeySoftware> keySoftware = getKeySoftwares(returnValue);
+        Component component = getMutatedComponent(returnValue);
+        List<KeySoftware> keySoftware = getKeySoftwares(component);
         assertThat(keySoftware).hasSize(2);
         KeySoftware keySoftwareItem;
         keySoftwareItem = keySoftware.get(0);
@@ -227,6 +244,10 @@ public class KeySoftwareScannerTest extends BaseScannerTest {
         keySoftwareItem = keySoftware.get(1);
         assertThat(keySoftwareItem.getName()).isEqualTo("test-key-software-name-2");
         assertThat(keySoftwareItem.getVersions()).containsExactly("4.5.6");
+        assertThat(component.getTags()).containsExactly(
+                new Tag("test-key-software-name-1", "1.2.3"),
+                new Tag("test-key-software-name-2", "4.5.6")
+        );
     }
 
     private KeySoftwareScanner createUnderTest(List<KeySoftwareRuleConfig> rules) {
@@ -247,17 +268,19 @@ public class KeySoftwareScannerTest extends BaseScannerTest {
     }
 
 
-    private List<KeySoftware> getKeySoftwares(Output<Void, Component> returnValue) {
-        KeySoftwaresState state = getKeySoftwaresState(returnValue);
+    private List<KeySoftware> getKeySoftwares(Component mutatedComponent) {
+        KeySoftwaresState state = getKeySoftwaresState(mutatedComponent);
         assertThat(state).isNotNull();
         return state.getKeySoftwares();
     }
 
-    private KeySoftwaresState getKeySoftwaresState(Output<Void, Component> returnValue) {
-        return getMutatedComponent(returnValue).getState(KeySoftwaresState.TYPE);
+    private KeySoftwaresState getKeySoftwaresState(Component mutatedComponent) {
+        return mutatedComponent.getState(KeySoftwaresState.TYPE);
     }
 
     private void assertNoState(Output<Void, Component> returnValue) {
-        assertThat(getMutatedComponent(returnValue).getStates()).isEmpty();
+        Component component = getMutatedComponent(returnValue);
+        assertThat(component.getStates()).isEmpty();
+        assertThat(component.getTags()).isEmpty();
     }
 }

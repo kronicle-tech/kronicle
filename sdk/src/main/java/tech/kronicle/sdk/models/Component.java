@@ -118,6 +118,18 @@ public class Component implements ObjectWithId, ObjectWithReference {
         return id;
     }
 
+    public Component addTag(Tag tag) {
+        return withTags(
+                unmodifiableUnionOfLists(List.of(this.tags, List.of(tag)))
+        );
+    }
+
+    public Component addTags(List<Tag> tags) {
+        return withTags(
+                unmodifiableUnionOfLists(List.of(this.tags, tags))
+        );
+    }
+
     public Component addState(ComponentState state) {
         return withStates(
                 unmodifiableUnionOfLists(List.of(this.states, List.of(state)))

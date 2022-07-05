@@ -14,6 +14,7 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.catchThrowable;
 import static tech.kronicle.sdk.models.testutils.ComponentStateUtils.createComponentState;
+import static tech.kronicle.sdk.models.testutils.TagUtils.createTag;
 
 public class ComponentTest {
 
@@ -250,6 +251,91 @@ public class ComponentTest {
                         .build()
         );
         assertThat(returnValue.getTags().get(0)).isInstanceOf(Tag.class);
+    }
+
+    @Test
+    public void addTagWhenThereAreNoExistingTagsShouldAddTagToExistingTags() {
+        // Given
+        Tag newTag = createTag(1);
+        Component underTest = Component.builder().build();
+
+        // When
+        underTest = underTest.addTag(newTag);
+
+        // When
+        assertThat(underTest.getTags()).containsExactly(newTag);
+    }
+
+    @Test
+    public void addTagWhenThereAreExistingTagsShouldAddTagToExistingTags() {
+        // Given
+        Tag tag2 = createTag(2);
+        Tag tag3 = createTag(3);
+        List<Tag> existingTag = List.of(
+                tag2,
+                tag3
+        );
+        Tag tag1 = createTag(1);
+        Component underTest = Component.builder()
+                .tags(existingTag)
+                .build();
+
+        // When
+        underTest = underTest.addTag(tag1);
+
+        // When
+        assertThat(underTest.getTags()).containsExactly(
+                tag2,
+                tag3,
+                tag1
+        );
+    }
+
+    @Test
+    public void addTagsWhenThereAreNoExistingTagsShouldAddTagsToExistingTags() {
+        // Given
+        List<Tag> newTags = List.of(
+                createTag(1),
+                createTag(2)
+        );
+        Component underTest = Component.builder().build();
+
+        // When
+        underTest = underTest.addTags(newTags);
+
+        // When
+        assertThat(underTest.getTags()).containsExactlyElementsOf(newTags);
+    }
+
+    @Test
+    public void addTagsWhenThereAreExistingTagsShouldAddTagsToExistingTags() {
+        // Given
+        Tag tag3 = createTag(3);
+        Tag tag4 = createTag(4);
+        List<Tag> existingTag = List.of(
+                tag3,
+                tag4
+        );
+        Tag tag1 = createTag(1);
+        Tag tag2 = createTag(2);
+        List<Tag> newTag = List.of(
+                tag1,
+                tag2
+        );
+        Component underTest = Component.builder()
+                .tags(existingTag)
+                .build();
+
+        // When
+        underTest = underTest.addTags(newTag);
+
+        // When
+        assertThat(underTest.getTags()).containsExactly(
+                tag3,
+                tag4,
+                tag1,
+                tag2
+        );
     }
 
     @Test
