@@ -5,6 +5,7 @@ import org.gradle.api.internal.artifacts.ivyservice.ivyresolve.strategy.DefaultV
 import org.gradle.api.internal.artifacts.ivyservice.ivyresolve.strategy.Version;
 import org.gradle.api.internal.artifacts.ivyservice.ivyresolve.strategy.VersionParser;
 import org.pf4j.Extension;
+import tech.kronicle.common.CaseUtils;
 import tech.kronicle.pluginapi.scanners.LateComponentScanner;
 import tech.kronicle.pluginapi.scanners.models.Output;
 import tech.kronicle.plugins.keysoftware.config.KeySoftwareRuleConfig;
@@ -19,6 +20,7 @@ import java.util.regex.Pattern;
 
 import static java.util.Objects.isNull;
 import static java.util.stream.Collectors.toUnmodifiableList;
+import static tech.kronicle.common.CaseUtils.toKebabCase;
 
 @Extension
 @Slf4j
@@ -66,10 +68,11 @@ public class KeySoftwareScanner extends LateComponentScanner {
             return Output.empty(CACHE_TTL);
         }
 
+        List<Tag> keySoftwareTags = createKeySoftwareTags(keySoftware);
+
         return Output.ofTransformer(
-                component -> component.addState(
-                    new KeySoftwaresState(KeySoftwarePlugin.ID, keySoftware)
-                ),
+                component -> component.addState(new KeySoftwaresState(KeySoftwarePlugin.ID, keySoftware))
+                        .addTags(keySoftwareTags),
                 CACHE_TTL
         );
     }
@@ -122,5 +125,18 @@ public class KeySoftwareScanner extends LateComponentScanner {
         }
 
         return compiledPattern;
+    }
+
+    private List<Tag> createKeySoftwareTags(List<KeySoftware> keySoftware) {
+        return keySoftware.stream()
+                .map(this::mapKeySoftwareToTag)
+                .collect(toUnmodifiableList());
+    }
+
+    private Tag mapKeySoftwareToTag(KeySoftware keySoftware) {
+        return new Tag(
+                toKebabCase(keySoftware.getName()),
+                String.join(", ", keySoftware.getVersions())
+        );
     }
 }
