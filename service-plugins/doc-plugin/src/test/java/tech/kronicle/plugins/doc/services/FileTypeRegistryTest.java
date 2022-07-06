@@ -20,7 +20,7 @@ public class FileTypeRegistryTest {
 
         // Then
         assertThat(returnValue).isEqualTo(
-                new FileType(List.of("md", "markdown"), "text/markdown", DocFileContentType.Text)
+                new FileType(List.of("md", "markdown"), "text/markdown", DocFileContentType.TEXT)
         );
     }
 

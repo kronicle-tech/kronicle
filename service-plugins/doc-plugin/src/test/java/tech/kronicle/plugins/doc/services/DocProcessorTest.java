@@ -60,7 +60,7 @@ public class DocProcessorTest extends BaseCodebaseScannerTest {
                         DocFile.builder()
                                 .path("subdir/example-2.md")
                                 .mediaType("text/markdown")
-                                .contentType(DocFileContentType.Text)
+                                .contentType(DocFileContentType.TEXT)
                                 .content(
                                         "# Example 2\n" +
                                         "\n" +
@@ -70,7 +70,7 @@ public class DocProcessorTest extends BaseCodebaseScannerTest {
                         DocFile.builder()
                                 .path("subdir/example-3.md")
                                 .mediaType("text/markdown")
-                                .contentType(DocFileContentType.Text)
+                                .contentType(DocFileContentType.TEXT)
                                 .content(
                                         "# Example 3\n" +
                                                 "\n" +
@@ -111,7 +111,7 @@ public class DocProcessorTest extends BaseCodebaseScannerTest {
                         DocFile.builder()
                                 .path("subdir/example-2.md")
                                 .mediaType("text/markdown")
-                                .contentType(DocFileContentType.Text)
+                                .contentType(DocFileContentType.TEXT)
                                 .content(
                                         "# Example 2\n" +
                                                 "\n" +
@@ -138,7 +138,7 @@ public class DocProcessorTest extends BaseCodebaseScannerTest {
                         DocFile.builder()
                                 .path("test.png")
                                 .mediaType("image/png")
-                                .contentType(DocFileContentType.Binary)
+                                .contentType(DocFileContentType.BINARY)
                                 .content(base64Content)
                                 .build()
                 ))
