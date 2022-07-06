@@ -7,9 +7,8 @@ configurations:
   resolved: true
   resolvedDependencies:
   - name: "org.projectlombok:lombok:1.18.24"
-    moduleName: "lombok"
-    moduleGroup: "org.projectlombok"
-    moduleVersion: "1.18.24"
+    direct: true
+    dependencies: []
 - name: "api"
   description: "API dependencies for source set 'main'."
   visible: false
@@ -32,85 +31,32 @@ configurations:
   resolved: true
   resolvedDependencies:
   - name: "com.fasterxml.jackson.core:jackson-databind:2.13.3"
-    moduleName: "jackson-databind"
-    moduleGroup: "com.fasterxml.jackson.core"
-    moduleVersion: "2.13.3"
-    resolvedDependencies:
+    direct: true
+    dependencies:
     - name: "com.fasterxml.jackson.core:jackson-annotations:2.13.3"
-      moduleName: "jackson-annotations"
-      moduleGroup: "com.fasterxml.jackson.core"
-      moduleVersion: "2.13.3"
-      resolvedDependencies:
-      - name: "com.fasterxml.jackson:jackson-bom:2.13.3"
-        moduleName: "jackson-bom"
-        moduleGroup: "com.fasterxml.jackson"
-        moduleVersion: "2.13.3"
     - name: "com.fasterxml.jackson.core:jackson-core:2.13.3"
-      moduleName: "jackson-core"
-      moduleGroup: "com.fasterxml.jackson.core"
-      moduleVersion: "2.13.3"
-      resolvedDependencies:
-      - name: "com.fasterxml.jackson:jackson-bom:2.13.3"
-        moduleName: "jackson-bom"
-        moduleGroup: "com.fasterxml.jackson"
-        moduleVersion: "2.13.3"
     - name: "com.fasterxml.jackson:jackson-bom:2.13.3"
-      moduleName: "jackson-bom"
-      moduleGroup: "com.fasterxml.jackson"
-      moduleVersion: "2.13.3"
   - name: "com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.13.3"
-    moduleName: "jackson-dataformat-yaml"
-    moduleGroup: "com.fasterxml.jackson.dataformat"
-    moduleVersion: "2.13.3"
-    resolvedDependencies:
+    direct: true
+    dependencies:
     - name: "com.fasterxml.jackson.core:jackson-core:2.13.3"
-      moduleName: "jackson-core"
-      moduleGroup: "com.fasterxml.jackson.core"
-      moduleVersion: "2.13.3"
-      resolvedDependencies:
-      - name: "com.fasterxml.jackson:jackson-bom:2.13.3"
-        moduleName: "jackson-bom"
-        moduleGroup: "com.fasterxml.jackson"
-        moduleVersion: "2.13.3"
     - name: "com.fasterxml.jackson.core:jackson-databind:2.13.3"
-      moduleName: "jackson-databind"
-      moduleGroup: "com.fasterxml.jackson.core"
-      moduleVersion: "2.13.3"
-      resolvedDependencies:
-      - name: "com.fasterxml.jackson.core:jackson-annotations:2.13.3"
-        moduleName: "jackson-annotations"
-        moduleGroup: "com.fasterxml.jackson.core"
-        moduleVersion: "2.13.3"
-        resolvedDependencies:
-        - name: "com.fasterxml.jackson:jackson-bom:2.13.3"
-          moduleName: "jackson-bom"
-          moduleGroup: "com.fasterxml.jackson"
-          moduleVersion: "2.13.3"
-      - name: "com.fasterxml.jackson.core:jackson-core:2.13.3"
-        moduleName: "jackson-core"
-        moduleGroup: "com.fasterxml.jackson.core"
-        moduleVersion: "2.13.3"
-        resolvedDependencies:
-        - name: "com.fasterxml.jackson:jackson-bom:2.13.3"
-          moduleName: "jackson-bom"
-          moduleGroup: "com.fasterxml.jackson"
-          moduleVersion: "2.13.3"
-      - name: "com.fasterxml.jackson:jackson-bom:2.13.3"
-        moduleName: "jackson-bom"
-        moduleGroup: "com.fasterxml.jackson"
-        moduleVersion: "2.13.3"
     - name: "com.fasterxml.jackson:jackson-bom:2.13.3"
-      moduleName: "jackson-bom"
-      moduleGroup: "com.fasterxml.jackson"
-      moduleVersion: "2.13.3"
     - name: "org.yaml:snakeyaml:1.30"
-      moduleName: "snakeyaml"
-      moduleGroup: "org.yaml"
-      moduleVersion: "1.30"
   - name: "org.projectlombok:lombok:1.18.24"
-    moduleName: "lombok"
-    moduleGroup: "org.projectlombok"
-    moduleVersion: "1.18.24"
+    direct: true
+    dependencies: []
+  - name: "com.fasterxml.jackson.core:jackson-annotations:2.13.3"
+    dependencies:
+    - name: "com.fasterxml.jackson:jackson-bom:2.13.3"
+  - name: "com.fasterxml.jackson.core:jackson-core:2.13.3"
+    dependencies:
+    - name: "com.fasterxml.jackson:jackson-bom:2.13.3"
+  - name: "com.fasterxml.jackson.core:jackson-databind:2.13.3"
+    dependencies:
+    - name: "com.fasterxml.jackson.core:jackson-annotations:2.13.3"
+    - name: "com.fasterxml.jackson.core:jackson-core:2.13.3"
+    - name: "com.fasterxml.jackson:jackson-bom:2.13.3"
 - name: "compileOnly"
   description: "Compile only dependencies for source set 'main'."
   visible: false
@@ -128,93 +74,37 @@ configurations:
   resolved: true
   resolvedDependencies:
   - name: "com.fasterxml.jackson.core:jackson-databind:2.13.3"
-    moduleName: "jackson-databind"
-    moduleGroup: "com.fasterxml.jackson.core"
-    moduleVersion: "2.13.3"
-    resolvedDependencies:
+    direct: true
+    dependencies:
     - name: "com.fasterxml.jackson.core:jackson-annotations:2.13.3"
-      moduleName: "jackson-annotations"
-      moduleGroup: "com.fasterxml.jackson.core"
-      moduleVersion: "2.13.3"
-      resolvedDependencies:
-      - name: "com.fasterxml.jackson:jackson-bom:2.13.3"
-        moduleName: "jackson-bom"
-        moduleGroup: "com.fasterxml.jackson"
-        moduleVersion: "2.13.3"
     - name: "com.fasterxml.jackson.core:jackson-core:2.13.3"
-      moduleName: "jackson-core"
-      moduleGroup: "com.fasterxml.jackson.core"
-      moduleVersion: "2.13.3"
-      resolvedDependencies:
-      - name: "com.fasterxml.jackson:jackson-bom:2.13.3"
-        moduleName: "jackson-bom"
-        moduleGroup: "com.fasterxml.jackson"
-        moduleVersion: "2.13.3"
     - name: "com.fasterxml.jackson:jackson-bom:2.13.3"
-      moduleName: "jackson-bom"
-      moduleGroup: "com.fasterxml.jackson"
-      moduleVersion: "2.13.3"
   - name: "com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.13.3"
-    moduleName: "jackson-dataformat-yaml"
-    moduleGroup: "com.fasterxml.jackson.dataformat"
-    moduleVersion: "2.13.3"
-    resolvedDependencies:
+    direct: true
+    dependencies:
     - name: "com.fasterxml.jackson.core:jackson-core:2.13.3"
-      moduleName: "jackson-core"
-      moduleGroup: "com.fasterxml.jackson.core"
-      moduleVersion: "2.13.3"
-      resolvedDependencies:
-      - name: "com.fasterxml.jackson:jackson-bom:2.13.3"
-        moduleName: "jackson-bom"
-        moduleGroup: "com.fasterxml.jackson"
-        moduleVersion: "2.13.3"
     - name: "com.fasterxml.jackson.core:jackson-databind:2.13.3"
-      moduleName: "jackson-databind"
-      moduleGroup: "com.fasterxml.jackson.core"
-      moduleVersion: "2.13.3"
-      resolvedDependencies:
-      - name: "com.fasterxml.jackson.core:jackson-annotations:2.13.3"
-        moduleName: "jackson-annotations"
-        moduleGroup: "com.fasterxml.jackson.core"
-        moduleVersion: "2.13.3"
-        resolvedDependencies:
-        - name: "com.fasterxml.jackson:jackson-bom:2.13.3"
-          moduleName: "jackson-bom"
-          moduleGroup: "com.fasterxml.jackson"
-          moduleVersion: "2.13.3"
-      - name: "com.fasterxml.jackson.core:jackson-core:2.13.3"
-        moduleName: "jackson-core"
-        moduleGroup: "com.fasterxml.jackson.core"
-        moduleVersion: "2.13.3"
-        resolvedDependencies:
-        - name: "com.fasterxml.jackson:jackson-bom:2.13.3"
-          moduleName: "jackson-bom"
-          moduleGroup: "com.fasterxml.jackson"
-          moduleVersion: "2.13.3"
-      - name: "com.fasterxml.jackson:jackson-bom:2.13.3"
-        moduleName: "jackson-bom"
-        moduleGroup: "com.fasterxml.jackson"
-        moduleVersion: "2.13.3"
     - name: "com.fasterxml.jackson:jackson-bom:2.13.3"
-      moduleName: "jackson-bom"
-      moduleGroup: "com.fasterxml.jackson"
-      moduleVersion: "2.13.3"
     - name: "org.yaml:snakeyaml:1.30"
-      moduleName: "snakeyaml"
-      moduleGroup: "org.yaml"
-      moduleVersion: "1.30"
+  - name: "com.fasterxml.jackson.core:jackson-annotations:2.13.3"
+    dependencies:
+    - name: "com.fasterxml.jackson:jackson-bom:2.13.3"
+  - name: "com.fasterxml.jackson.core:jackson-core:2.13.3"
+    dependencies:
+    - name: "com.fasterxml.jackson:jackson-bom:2.13.3"
+  - name: "com.fasterxml.jackson.core:jackson-databind:2.13.3"
+    dependencies:
+    - name: "com.fasterxml.jackson.core:jackson-annotations:2.13.3"
+    - name: "com.fasterxml.jackson.core:jackson-core:2.13.3"
+    - name: "com.fasterxml.jackson:jackson-bom:2.13.3"
 - name: "implementation"
   description: "Implementation only dependencies for source set 'main'."
   visible: false
   canBeResolved: false
   resolved: false
   dependencies:
-  - name: "jackson-databind"
-    group: "com.fasterxml.jackson.core"
-    version: "2.13.3"
-  - name: "jackson-dataformat-yaml"
-    group: "com.fasterxml.jackson.dataformat"
-    version: "2.13.3"
+  - name: "com.fasterxml.jackson.core:jackson-databind:2.13.3"
+  - name: "com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.13.3"
 - name: "javadocElements"
   description: "javadoc elements for main."
   visible: false
@@ -225,14 +115,11 @@ configurations:
   canBeResolved: true
   resolved: true
   dependencies:
-  - name: "lombok"
-    group: "org.projectlombok"
-    version: "1.18.24"
+  - name: "org.projectlombok:lombok:1.18.24"
   resolvedDependencies:
   - name: "org.projectlombok:lombok:1.18.24"
-    moduleName: "lombok"
-    moduleGroup: "org.projectlombok"
-    moduleVersion: "1.18.24"
+    direct: true
+    dependencies: []
 - name: "mainSourceElements"
   description: "List of source directories contained in the Main SourceSet."
   visible: false
@@ -245,81 +132,29 @@ configurations:
   resolved: true
   resolvedDependencies:
   - name: "com.fasterxml.jackson.core:jackson-databind:2.13.3"
-    moduleName: "jackson-databind"
-    moduleGroup: "com.fasterxml.jackson.core"
-    moduleVersion: "2.13.3"
-    resolvedDependencies:
+    direct: true
+    dependencies:
     - name: "com.fasterxml.jackson.core:jackson-annotations:2.13.3"
-      moduleName: "jackson-annotations"
-      moduleGroup: "com.fasterxml.jackson.core"
-      moduleVersion: "2.13.3"
-      resolvedDependencies:
-      - name: "com.fasterxml.jackson:jackson-bom:2.13.3"
-        moduleName: "jackson-bom"
-        moduleGroup: "com.fasterxml.jackson"
-        moduleVersion: "2.13.3"
     - name: "com.fasterxml.jackson.core:jackson-core:2.13.3"
-      moduleName: "jackson-core"
-      moduleGroup: "com.fasterxml.jackson.core"
-      moduleVersion: "2.13.3"
-      resolvedDependencies:
-      - name: "com.fasterxml.jackson:jackson-bom:2.13.3"
-        moduleName: "jackson-bom"
-        moduleGroup: "com.fasterxml.jackson"
-        moduleVersion: "2.13.3"
     - name: "com.fasterxml.jackson:jackson-bom:2.13.3"
-      moduleName: "jackson-bom"
-      moduleGroup: "com.fasterxml.jackson"
-      moduleVersion: "2.13.3"
   - name: "com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.13.3"
-    moduleName: "jackson-dataformat-yaml"
-    moduleGroup: "com.fasterxml.jackson.dataformat"
-    moduleVersion: "2.13.3"
-    resolvedDependencies:
+    direct: true
+    dependencies:
     - name: "com.fasterxml.jackson.core:jackson-core:2.13.3"
-      moduleName: "jackson-core"
-      moduleGroup: "com.fasterxml.jackson.core"
-      moduleVersion: "2.13.3"
-      resolvedDependencies:
-      - name: "com.fasterxml.jackson:jackson-bom:2.13.3"
-        moduleName: "jackson-bom"
-        moduleGroup: "com.fasterxml.jackson"
-        moduleVersion: "2.13.3"
     - name: "com.fasterxml.jackson.core:jackson-databind:2.13.3"
-      moduleName: "jackson-databind"
-      moduleGroup: "com.fasterxml.jackson.core"
-      moduleVersion: "2.13.3"
-      resolvedDependencies:
-      - name: "com.fasterxml.jackson.core:jackson-annotations:2.13.3"
-        moduleName: "jackson-annotations"
-        moduleGroup: "com.fasterxml.jackson.core"
-        moduleVersion: "2.13.3"
-        resolvedDependencies:
-        - name: "com.fasterxml.jackson:jackson-bom:2.13.3"
-          moduleName: "jackson-bom"
-          moduleGroup: "com.fasterxml.jackson"
-          moduleVersion: "2.13.3"
-      - name: "com.fasterxml.jackson.core:jackson-core:2.13.3"
-        moduleName: "jackson-core"
-        moduleGroup: "com.fasterxml.jackson.core"
-        moduleVersion: "2.13.3"
-        resolvedDependencies:
-        - name: "com.fasterxml.jackson:jackson-bom:2.13.3"
-          moduleName: "jackson-bom"
-          moduleGroup: "com.fasterxml.jackson"
-          moduleVersion: "2.13.3"
-      - name: "com.fasterxml.jackson:jackson-bom:2.13.3"
-        moduleName: "jackson-bom"
-        moduleGroup: "com.fasterxml.jackson"
-        moduleVersion: "2.13.3"
     - name: "com.fasterxml.jackson:jackson-bom:2.13.3"
-      moduleName: "jackson-bom"
-      moduleGroup: "com.fasterxml.jackson"
-      moduleVersion: "2.13.3"
     - name: "org.yaml:snakeyaml:1.30"
-      moduleName: "snakeyaml"
-      moduleGroup: "org.yaml"
-      moduleVersion: "1.30"
+  - name: "com.fasterxml.jackson.core:jackson-annotations:2.13.3"
+    dependencies:
+    - name: "com.fasterxml.jackson:jackson-bom:2.13.3"
+  - name: "com.fasterxml.jackson.core:jackson-core:2.13.3"
+    dependencies:
+    - name: "com.fasterxml.jackson:jackson-bom:2.13.3"
+  - name: "com.fasterxml.jackson.core:jackson-databind:2.13.3"
+    dependencies:
+    - name: "com.fasterxml.jackson.core:jackson-annotations:2.13.3"
+    - name: "com.fasterxml.jackson.core:jackson-core:2.13.3"
+    - name: "com.fasterxml.jackson:jackson-bom:2.13.3"
 - name: "runtimeElements"
   description: "Elements of runtime for main."
   visible: false
@@ -335,7 +170,6 @@ configurations:
   canBeResolved: true
   resolved: false
   dependencies:
-  - name: "unspecified"
   - name: "unspecified"
 - name: "shadowRuntimeElements"
   visible: true
@@ -353,9 +187,8 @@ configurations:
   resolved: true
   resolvedDependencies:
   - name: "org.projectlombok:lombok:1.18.24"
-    moduleName: "lombok"
-    moduleGroup: "org.projectlombok"
-    moduleVersion: "1.18.24"
+    direct: true
+    dependencies: []
 - name: "testCompileClasspath"
   description: "Compile classpath for source set 'test'."
   visible: false
@@ -363,85 +196,32 @@ configurations:
   resolved: true
   resolvedDependencies:
   - name: "com.fasterxml.jackson.core:jackson-databind:2.13.3"
-    moduleName: "jackson-databind"
-    moduleGroup: "com.fasterxml.jackson.core"
-    moduleVersion: "2.13.3"
-    resolvedDependencies:
+    direct: true
+    dependencies:
     - name: "com.fasterxml.jackson.core:jackson-annotations:2.13.3"
-      moduleName: "jackson-annotations"
-      moduleGroup: "com.fasterxml.jackson.core"
-      moduleVersion: "2.13.3"
-      resolvedDependencies:
-      - name: "com.fasterxml.jackson:jackson-bom:2.13.3"
-        moduleName: "jackson-bom"
-        moduleGroup: "com.fasterxml.jackson"
-        moduleVersion: "2.13.3"
     - name: "com.fasterxml.jackson.core:jackson-core:2.13.3"
-      moduleName: "jackson-core"
-      moduleGroup: "com.fasterxml.jackson.core"
-      moduleVersion: "2.13.3"
-      resolvedDependencies:
-      - name: "com.fasterxml.jackson:jackson-bom:2.13.3"
-        moduleName: "jackson-bom"
-        moduleGroup: "com.fasterxml.jackson"
-        moduleVersion: "2.13.3"
     - name: "com.fasterxml.jackson:jackson-bom:2.13.3"
-      moduleName: "jackson-bom"
-      moduleGroup: "com.fasterxml.jackson"
-      moduleVersion: "2.13.3"
   - name: "com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.13.3"
-    moduleName: "jackson-dataformat-yaml"
-    moduleGroup: "com.fasterxml.jackson.dataformat"
-    moduleVersion: "2.13.3"
-    resolvedDependencies:
+    direct: true
+    dependencies:
     - name: "com.fasterxml.jackson.core:jackson-core:2.13.3"
-      moduleName: "jackson-core"
-      moduleGroup: "com.fasterxml.jackson.core"
-      moduleVersion: "2.13.3"
-      resolvedDependencies:
-      - name: "com.fasterxml.jackson:jackson-bom:2.13.3"
-        moduleName: "jackson-bom"
-        moduleGroup: "com.fasterxml.jackson"
-        moduleVersion: "2.13.3"
     - name: "com.fasterxml.jackson.core:jackson-databind:2.13.3"
-      moduleName: "jackson-databind"
-      moduleGroup: "com.fasterxml.jackson.core"
-      moduleVersion: "2.13.3"
-      resolvedDependencies:
-      - name: "com.fasterxml.jackson.core:jackson-annotations:2.13.3"
-        moduleName: "jackson-annotations"
-        moduleGroup: "com.fasterxml.jackson.core"
-        moduleVersion: "2.13.3"
-        resolvedDependencies:
-        - name: "com.fasterxml.jackson:jackson-bom:2.13.3"
-          moduleName: "jackson-bom"
-          moduleGroup: "com.fasterxml.jackson"
-          moduleVersion: "2.13.3"
-      - name: "com.fasterxml.jackson.core:jackson-core:2.13.3"
-        moduleName: "jackson-core"
-        moduleGroup: "com.fasterxml.jackson.core"
-        moduleVersion: "2.13.3"
-        resolvedDependencies:
-        - name: "com.fasterxml.jackson:jackson-bom:2.13.3"
-          moduleName: "jackson-bom"
-          moduleGroup: "com.fasterxml.jackson"
-          moduleVersion: "2.13.3"
-      - name: "com.fasterxml.jackson:jackson-bom:2.13.3"
-        moduleName: "jackson-bom"
-        moduleGroup: "com.fasterxml.jackson"
-        moduleVersion: "2.13.3"
     - name: "com.fasterxml.jackson:jackson-bom:2.13.3"
-      moduleName: "jackson-bom"
-      moduleGroup: "com.fasterxml.jackson"
-      moduleVersion: "2.13.3"
     - name: "org.yaml:snakeyaml:1.30"
-      moduleName: "snakeyaml"
-      moduleGroup: "org.yaml"
-      moduleVersion: "1.30"
   - name: "org.projectlombok:lombok:1.18.24"
-    moduleName: "lombok"
-    moduleGroup: "org.projectlombok"
-    moduleVersion: "1.18.24"
+    direct: true
+    dependencies: []
+  - name: "com.fasterxml.jackson.core:jackson-annotations:2.13.3"
+    dependencies:
+    - name: "com.fasterxml.jackson:jackson-bom:2.13.3"
+  - name: "com.fasterxml.jackson.core:jackson-core:2.13.3"
+    dependencies:
+    - name: "com.fasterxml.jackson:jackson-bom:2.13.3"
+  - name: "com.fasterxml.jackson.core:jackson-databind:2.13.3"
+    dependencies:
+    - name: "com.fasterxml.jackson.core:jackson-annotations:2.13.3"
+    - name: "com.fasterxml.jackson.core:jackson-core:2.13.3"
+    - name: "com.fasterxml.jackson:jackson-bom:2.13.3"
 - name: "testCompileOnly"
   description: "Compile only dependencies for source set 'test'."
   visible: false
@@ -467,81 +247,29 @@ configurations:
   resolved: true
   resolvedDependencies:
   - name: "com.fasterxml.jackson.core:jackson-databind:2.13.3"
-    moduleName: "jackson-databind"
-    moduleGroup: "com.fasterxml.jackson.core"
-    moduleVersion: "2.13.3"
-    resolvedDependencies:
+    direct: true
+    dependencies:
     - name: "com.fasterxml.jackson.core:jackson-annotations:2.13.3"
-      moduleName: "jackson-annotations"
-      moduleGroup: "com.fasterxml.jackson.core"
-      moduleVersion: "2.13.3"
-      resolvedDependencies:
-      - name: "com.fasterxml.jackson:jackson-bom:2.13.3"
-        moduleName: "jackson-bom"
-        moduleGroup: "com.fasterxml.jackson"
-        moduleVersion: "2.13.3"
     - name: "com.fasterxml.jackson.core:jackson-core:2.13.3"
-      moduleName: "jackson-core"
-      moduleGroup: "com.fasterxml.jackson.core"
-      moduleVersion: "2.13.3"
-      resolvedDependencies:
-      - name: "com.fasterxml.jackson:jackson-bom:2.13.3"
-        moduleName: "jackson-bom"
-        moduleGroup: "com.fasterxml.jackson"
-        moduleVersion: "2.13.3"
     - name: "com.fasterxml.jackson:jackson-bom:2.13.3"
-      moduleName: "jackson-bom"
-      moduleGroup: "com.fasterxml.jackson"
-      moduleVersion: "2.13.3"
   - name: "com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.13.3"
-    moduleName: "jackson-dataformat-yaml"
-    moduleGroup: "com.fasterxml.jackson.dataformat"
-    moduleVersion: "2.13.3"
-    resolvedDependencies:
+    direct: true
+    dependencies:
     - name: "com.fasterxml.jackson.core:jackson-core:2.13.3"
-      moduleName: "jackson-core"
-      moduleGroup: "com.fasterxml.jackson.core"
-      moduleVersion: "2.13.3"
-      resolvedDependencies:
-      - name: "com.fasterxml.jackson:jackson-bom:2.13.3"
-        moduleName: "jackson-bom"
-        moduleGroup: "com.fasterxml.jackson"
-        moduleVersion: "2.13.3"
     - name: "com.fasterxml.jackson.core:jackson-databind:2.13.3"
-      moduleName: "jackson-databind"
-      moduleGroup: "com.fasterxml.jackson.core"
-      moduleVersion: "2.13.3"
-      resolvedDependencies:
-      - name: "com.fasterxml.jackson.core:jackson-annotations:2.13.3"
-        moduleName: "jackson-annotations"
-        moduleGroup: "com.fasterxml.jackson.core"
-        moduleVersion: "2.13.3"
-        resolvedDependencies:
-        - name: "com.fasterxml.jackson:jackson-bom:2.13.3"
-          moduleName: "jackson-bom"
-          moduleGroup: "com.fasterxml.jackson"
-          moduleVersion: "2.13.3"
-      - name: "com.fasterxml.jackson.core:jackson-core:2.13.3"
-        moduleName: "jackson-core"
-        moduleGroup: "com.fasterxml.jackson.core"
-        moduleVersion: "2.13.3"
-        resolvedDependencies:
-        - name: "com.fasterxml.jackson:jackson-bom:2.13.3"
-          moduleName: "jackson-bom"
-          moduleGroup: "com.fasterxml.jackson"
-          moduleVersion: "2.13.3"
-      - name: "com.fasterxml.jackson:jackson-bom:2.13.3"
-        moduleName: "jackson-bom"
-        moduleGroup: "com.fasterxml.jackson"
-        moduleVersion: "2.13.3"
     - name: "com.fasterxml.jackson:jackson-bom:2.13.3"
-      moduleName: "jackson-bom"
-      moduleGroup: "com.fasterxml.jackson"
-      moduleVersion: "2.13.3"
     - name: "org.yaml:snakeyaml:1.30"
-      moduleName: "snakeyaml"
-      moduleGroup: "org.yaml"
-      moduleVersion: "1.30"
+  - name: "com.fasterxml.jackson.core:jackson-annotations:2.13.3"
+    dependencies:
+    - name: "com.fasterxml.jackson:jackson-bom:2.13.3"
+  - name: "com.fasterxml.jackson.core:jackson-core:2.13.3"
+    dependencies:
+    - name: "com.fasterxml.jackson:jackson-bom:2.13.3"
+  - name: "com.fasterxml.jackson.core:jackson-databind:2.13.3"
+    dependencies:
+    - name: "com.fasterxml.jackson.core:jackson-annotations:2.13.3"
+    - name: "com.fasterxml.jackson.core:jackson-core:2.13.3"
+    - name: "com.fasterxml.jackson:jackson-bom:2.13.3"
 - name: "testRuntimeOnly"
   description: "Runtime only dependencies for source set 'test'."
   visible: false
