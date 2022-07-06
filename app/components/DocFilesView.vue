@@ -9,13 +9,28 @@
       </b-list-group>
     </b-card>
 
+    <div v-if="count > 0" class="mt-3 mb-4">
+      <b-button
+        :variant="pagesOnly ? 'info' : 'secondary'"
+        class="mr-2 my-1"
+        @click="pagesOnly = true"
+        >Pages Only</b-button
+      >
+      <b-button
+        :variant="pagesOnly ? 'secondary' : 'info'"
+        class="mr-2 my-1"
+        @click="pagesOnly = false"
+        >All Files</b-button
+      >
+    </div>
+
     <b-breadcrumb>
       <b-breadcrumb-item :to="`/components/${component.id}/docs`">
         Docs
       </b-breadcrumb-item>
     </b-breadcrumb>
 
-    <DocFileTable :component="component" :doc="doc" />
+    <DocFileTable :component="component" :doc="filteredDoc" />
   </div>
 </template>
 
@@ -50,9 +65,23 @@ export default Vue.extend({
       required: true,
     },
   },
+  data() {
+    return {
+      pagesOnly: true,
+    }
+  },
   computed: {
+    filteredDoc(): DocState {
+      const files = this.pagesOnly
+        ? this.doc.files.filter((it) => it.contentType === 'Text')
+        : this.doc.files
+      return {
+        ...this.doc,
+        files,
+      }
+    },
     count(): number {
-      return this.doc.files.length
+      return this.filteredDoc.files.length
     },
     countVariant(): string {
       return this.count > 0 ? 'success' : 'danger'
