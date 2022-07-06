@@ -247,7 +247,7 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
         class="btn mr-2 my-1 btn-info"
         type="button"
       >
-        Documented Components
+        Documented Components Only
       </button>
        
       <button

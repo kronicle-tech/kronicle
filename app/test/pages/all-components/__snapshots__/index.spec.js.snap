@@ -107,7 +107,7 @@ exports[`Index when Get Components service endpoint returns an array of multiple
         class="btn mr-2 my-1 btn-info"
         type="button"
       >
-        Documented Components
+        Documented Components Only
       </button>
        
       <button
