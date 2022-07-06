@@ -7,13 +7,13 @@
     >
       <template #top>
         <b-button
-          :variant="documentedOnly ? 'info' : 'secondary'"
+          :variant="effectiveDocumentedOnly ? 'info' : 'secondary'"
           class="mr-2 my-1"
           @click="documentedOnly = true"
-          >Documented Components</b-button
+          >Documented Components Only</b-button
         >
         <b-button
-          :variant="documentedOnly ? 'secondary' : 'info'"
+          :variant="!effectiveDocumentedOnly ? 'info' : 'secondary'"
           class="mr-2 my-1"
           @click="documentedOnly = false"
           >All Components</b-button
@@ -58,9 +58,17 @@ export default Vue.extend({
     filteredComponents(): Component[] {
       const filteredComponents = this.$store.state.componentFilters
         .filteredComponents as Component[]
-      return this.documentedOnly
+      return this.documentedOnly &&
+        filteredComponents.length === this.components.length
         ? filteredComponents.filter((it) => !it.discovered)
         : filteredComponents
+    },
+    effectiveDocumentedOnly(): boolean {
+      return (
+        this.documentedOnly &&
+        this.$store.state.componentFilters.filteredComponents.length ===
+          this.components.length
+      )
     },
     componentCount(): number {
       return this.filteredComponents.length

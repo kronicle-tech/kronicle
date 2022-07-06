@@ -82,7 +82,7 @@ export default Vue.extend({
 
     let render = true
 
-    if (docFile.contentType === 'Binary') {
+    if (docFile.contentType === 'binary') {
       const resEnd = promisify<void, any>(res.end).bind(res)
 
       res.setHeader('Content-Type', docFile.mediaType)

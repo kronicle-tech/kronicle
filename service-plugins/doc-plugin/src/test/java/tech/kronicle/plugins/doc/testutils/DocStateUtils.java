@@ -46,7 +46,7 @@ public final class DocStateUtils {
         return DocFile.builder()
                 .path("test-path-" + docStateNumber + "-" + docFileNumber)
                 .mediaType("test-media-type-" + docStateNumber + "-" + docFileNumber)
-                .contentType(docFileNumber % 2 == 1 ? DocFileContentType.Text : DocFileContentType.Binary)
+                .contentType(docFileNumber % 2 == 1 ? DocFileContentType.TEXT : DocFileContentType.BINARY)
                 .content("test-content-" + docStateNumber + "-" + docFileNumber)
                 .build();
     }

@@ -115,7 +115,7 @@ exports[`Index when Get Area service endpoint returns an area when the area has 
         class="btn mr-2 my-1 btn-info"
         type="button"
       >
-        Documented Components
+        Documented Components Only
       </button>
        
       <button

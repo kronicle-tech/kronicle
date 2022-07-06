@@ -19,7 +19,7 @@ exports[`ComponentsView when components prop is set to an empty array renders no
 
 exports[`ComponentsView when components prop is set to multiple components renders all the components in a table 1`] = `
 "<div>
-  <div class=\\"mt-3 mb-4\\" components=\\"[object Object],[object Object],[object Object]\\"><button type=\\"button\\" class=\\"btn mr-2 my-1 btn-info\\">Documented Components</button> <button type=\\"button\\" class=\\"btn mr-2 my-1 btn-secondary\\">All Components</button> <button id=\\"toggleFilters\\" type=\\"button\\" class=\\"btn btn-primary collapsed\\" aria-expanded=\\"false\\" aria-controls=\\"filters\\"><svg viewBox=\\"0 0 16 16\\" width=\\"1em\\" height=\\"1em\\" focusable=\\"false\\" role=\\"img\\" aria-label=\\"blank\\" aria-hidden=\\"true\\" xmlns=\\"http://www.w3.org/2000/svg\\" fill=\\"currentColor\\" class=\\"bi-blank b-icon bi\\">
+  <div class=\\"mt-3 mb-4\\" components=\\"[object Object],[object Object],[object Object]\\"><button type=\\"button\\" class=\\"btn mr-2 my-1 btn-info\\">Documented Components Only</button> <button type=\\"button\\" class=\\"btn mr-2 my-1 btn-secondary\\">All Components</button> <button id=\\"toggleFilters\\" type=\\"button\\" class=\\"btn btn-primary collapsed\\" aria-expanded=\\"false\\" aria-controls=\\"filters\\"><svg viewBox=\\"0 0 16 16\\" width=\\"1em\\" height=\\"1em\\" focusable=\\"false\\" role=\\"img\\" aria-label=\\"blank\\" aria-hidden=\\"true\\" xmlns=\\"http://www.w3.org/2000/svg\\" fill=\\"currentColor\\" class=\\"bi-blank b-icon bi\\">
         <g></g>
       </svg> Other Filters
     </button>
@@ -257,7 +257,7 @@ exports[`ComponentsView when components prop is set to multiple components rende
 
 exports[`ComponentsView when components prop is set to multiple components when selecting a filter, the filter is applied to the components in the table 1`] = `
 "<div>
-  <div class=\\"mt-3 mb-4\\" components=\\"[object Object],[object Object],[object Object]\\"><button type=\\"button\\" class=\\"btn mr-2 my-1 btn-info\\">Documented Components</button> <button type=\\"button\\" class=\\"btn mr-2 my-1 btn-secondary\\">All Components</button> <button id=\\"toggleFilters\\" type=\\"button\\" class=\\"btn btn-primary collapsed\\" aria-expanded=\\"false\\" aria-controls=\\"filters\\"><svg viewBox=\\"0 0 16 16\\" width=\\"1em\\" height=\\"1em\\" focusable=\\"false\\" role=\\"img\\" aria-label=\\"blank\\" aria-hidden=\\"true\\" xmlns=\\"http://www.w3.org/2000/svg\\" fill=\\"currentColor\\" class=\\"bi-blank b-icon bi\\">
+  <div class=\\"mt-3 mb-4\\" components=\\"[object Object],[object Object],[object Object]\\"><button type=\\"button\\" class=\\"btn mr-2 my-1 btn-info\\">Documented Components Only</button> <button type=\\"button\\" class=\\"btn mr-2 my-1 btn-secondary\\">All Components</button> <button id=\\"toggleFilters\\" type=\\"button\\" class=\\"btn btn-primary collapsed\\" aria-expanded=\\"false\\" aria-controls=\\"filters\\"><svg viewBox=\\"0 0 16 16\\" width=\\"1em\\" height=\\"1em\\" focusable=\\"false\\" role=\\"img\\" aria-label=\\"blank\\" aria-hidden=\\"true\\" xmlns=\\"http://www.w3.org/2000/svg\\" fill=\\"currentColor\\" class=\\"bi-blank b-icon bi\\">
         <g></g>
       </svg> Other Filters
     </button>
@@ -495,7 +495,7 @@ exports[`ComponentsView when components prop is set to multiple components when 
 
 exports[`ComponentsView when components prop is set to multiple components when selecting a filter, the filter is applied to the components in the table 2`] = `
 "<div>
-  <div class=\\"mt-3 mb-4\\" components=\\"[object Object],[object Object],[object Object]\\"><button type=\\"button\\" class=\\"btn mr-2 my-1 btn-info\\">Documented Components</button> <button type=\\"button\\" class=\\"btn mr-2 my-1 btn-secondary\\">All Components</button> <button id=\\"toggleFilters\\" type=\\"button\\" class=\\"btn btn-primary collapsed\\" aria-expanded=\\"false\\" aria-controls=\\"filters\\"><svg viewBox=\\"0 0 16 16\\" width=\\"1em\\" height=\\"1em\\" focusable=\\"false\\" role=\\"img\\" aria-label=\\"blank\\" aria-hidden=\\"true\\" xmlns=\\"http://www.w3.org/2000/svg\\" fill=\\"currentColor\\" class=\\"bi-blank b-icon bi\\">
+  <div class=\\"mt-3 mb-4\\" components=\\"[object Object],[object Object],[object Object]\\"><button type=\\"button\\" class=\\"btn mr-2 my-1 btn-secondary\\">Documented Components Only</button> <button type=\\"button\\" class=\\"btn mr-2 my-1 btn-info\\">All Components</button> <button id=\\"toggleFilters\\" type=\\"button\\" class=\\"btn btn-primary collapsed\\" aria-expanded=\\"false\\" aria-controls=\\"filters\\"><svg viewBox=\\"0 0 16 16\\" width=\\"1em\\" height=\\"1em\\" focusable=\\"false\\" role=\\"img\\" aria-label=\\"blank\\" aria-hidden=\\"true\\" xmlns=\\"http://www.w3.org/2000/svg\\" fill=\\"currentColor\\" class=\\"bi-blank b-icon bi\\">
         <g></g>
       </svg> Other Filters
     </button>

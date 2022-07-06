@@ -89,7 +89,7 @@ public class DocProcessor {
     }
 
     private String readFileContent(Path filePath, DocFileContentType contentType) {
-        if (contentType == DocFileContentType.Binary) {
+        if (contentType == DocFileContentType.BINARY) {
             return BASE_64_ENCODER.encodeToString(
                     fileUtils.readFileBinaryContent(filePath)
             );
