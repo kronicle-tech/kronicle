@@ -48,7 +48,6 @@ export default Vue.extend({
     ComponentTabs,
     Markdown,
   },
-  middleware: 'docFiles',
   async asyncData({ $config, params, res, route, next }) {
     const componentAvailableData = await fetchComponentAvailableData(
       $config,
