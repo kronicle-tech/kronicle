@@ -47,138 +47,44 @@ configurations:
   canBeResolved: true
   resolved: true
   dependencies:
-  - name: "org.jacoco.agent"
-    group: "org.jacoco"
-    version: "0.8.7"
+  - name: "org.jacoco:org.jacoco.agent:0.8.7"
   resolvedDependencies:
   - name: "org.jacoco:org.jacoco.agent:0.8.7"
-    moduleName: "org.jacoco.agent"
-    moduleGroup: "org.jacoco"
-    moduleVersion: "0.8.7"
+    direct: true
+    dependencies: []
 - name: "jacocoAnt"
   description: "The Jacoco ant tasks to use to get execute Gradle tasks."
   visible: false
   canBeResolved: true
   resolved: true
   dependencies:
-  - name: "org.jacoco.ant"
-    group: "org.jacoco"
-    version: "0.8.7"
+  - name: "org.jacoco:org.jacoco.ant:0.8.7"
   resolvedDependencies:
   - name: "org.jacoco:org.jacoco.ant:0.8.7"
-    moduleName: "org.jacoco.ant"
-    moduleGroup: "org.jacoco"
-    moduleVersion: "0.8.7"
-    resolvedDependencies:
+    direct: true
+    dependencies:
     - name: "org.jacoco:org.jacoco.agent:0.8.7"
-      moduleName: "org.jacoco.agent"
-      moduleGroup: "org.jacoco"
-      moduleVersion: "0.8.7"
     - name: "org.jacoco:org.jacoco.core:0.8.7"
-      moduleName: "org.jacoco.core"
-      moduleGroup: "org.jacoco"
-      moduleVersion: "0.8.7"
-      resolvedDependencies:
-      - name: "org.ow2.asm:asm-commons:9.1"
-        moduleName: "asm-commons"
-        moduleGroup: "org.ow2.asm"
-        moduleVersion: "9.1"
-        resolvedDependencies:
-        - name: "org.ow2.asm:asm-analysis:9.1"
-          moduleName: "asm-analysis"
-          moduleGroup: "org.ow2.asm"
-          moduleVersion: "9.1"
-          resolvedDependencies:
-          - name: "org.ow2.asm:asm-tree:9.1"
-            moduleName: "asm-tree"
-            moduleGroup: "org.ow2.asm"
-            moduleVersion: "9.1"
-            resolvedDependencies:
-            - name: "org.ow2.asm:asm:9.1"
-              moduleName: "asm"
-              moduleGroup: "org.ow2.asm"
-              moduleVersion: "9.1"
-        - name: "org.ow2.asm:asm-tree:9.1"
-          moduleName: "asm-tree"
-          moduleGroup: "org.ow2.asm"
-          moduleVersion: "9.1"
-          resolvedDependencies:
-          - name: "org.ow2.asm:asm:9.1"
-            moduleName: "asm"
-            moduleGroup: "org.ow2.asm"
-            moduleVersion: "9.1"
-        - name: "org.ow2.asm:asm:9.1"
-          moduleName: "asm"
-          moduleGroup: "org.ow2.asm"
-          moduleVersion: "9.1"
-      - name: "org.ow2.asm:asm-tree:9.1"
-        moduleName: "asm-tree"
-        moduleGroup: "org.ow2.asm"
-        moduleVersion: "9.1"
-        resolvedDependencies:
-        - name: "org.ow2.asm:asm:9.1"
-          moduleName: "asm"
-          moduleGroup: "org.ow2.asm"
-          moduleVersion: "9.1"
-      - name: "org.ow2.asm:asm:9.1"
-        moduleName: "asm"
-        moduleGroup: "org.ow2.asm"
-        moduleVersion: "9.1"
     - name: "org.jacoco:org.jacoco.report:0.8.7"
-      moduleName: "org.jacoco.report"
-      moduleGroup: "org.jacoco"
-      moduleVersion: "0.8.7"
-      resolvedDependencies:
-      - name: "org.jacoco:org.jacoco.core:0.8.7"
-        moduleName: "org.jacoco.core"
-        moduleGroup: "org.jacoco"
-        moduleVersion: "0.8.7"
-        resolvedDependencies:
-        - name: "org.ow2.asm:asm-commons:9.1"
-          moduleName: "asm-commons"
-          moduleGroup: "org.ow2.asm"
-          moduleVersion: "9.1"
-          resolvedDependencies:
-          - name: "org.ow2.asm:asm-analysis:9.1"
-            moduleName: "asm-analysis"
-            moduleGroup: "org.ow2.asm"
-            moduleVersion: "9.1"
-            resolvedDependencies:
-            - name: "org.ow2.asm:asm-tree:9.1"
-              moduleName: "asm-tree"
-              moduleGroup: "org.ow2.asm"
-              moduleVersion: "9.1"
-              resolvedDependencies:
-              - name: "org.ow2.asm:asm:9.1"
-                moduleName: "asm"
-                moduleGroup: "org.ow2.asm"
-                moduleVersion: "9.1"
-          - name: "org.ow2.asm:asm-tree:9.1"
-            moduleName: "asm-tree"
-            moduleGroup: "org.ow2.asm"
-            moduleVersion: "9.1"
-            resolvedDependencies:
-            - name: "org.ow2.asm:asm:9.1"
-              moduleName: "asm"
-              moduleGroup: "org.ow2.asm"
-              moduleVersion: "9.1"
-          - name: "org.ow2.asm:asm:9.1"
-            moduleName: "asm"
-            moduleGroup: "org.ow2.asm"
-            moduleVersion: "9.1"
-        - name: "org.ow2.asm:asm-tree:9.1"
-          moduleName: "asm-tree"
-          moduleGroup: "org.ow2.asm"
-          moduleVersion: "9.1"
-          resolvedDependencies:
-          - name: "org.ow2.asm:asm:9.1"
-            moduleName: "asm"
-            moduleGroup: "org.ow2.asm"
-            moduleVersion: "9.1"
-        - name: "org.ow2.asm:asm:9.1"
-          moduleName: "asm"
-          moduleGroup: "org.ow2.asm"
-          moduleVersion: "9.1"
+  - name: "org.jacoco:org.jacoco.core:0.8.7"
+    dependencies:
+    - name: "org.ow2.asm:asm-commons:9.1"
+    - name: "org.ow2.asm:asm-tree:9.1"
+    - name: "org.ow2.asm:asm:9.1"
+  - name: "org.jacoco:org.jacoco.report:0.8.7"
+    dependencies:
+    - name: "org.jacoco:org.jacoco.core:0.8.7"
+  - name: "org.ow2.asm:asm-analysis:9.1"
+    dependencies:
+    - name: "org.ow2.asm:asm-tree:9.1"
+  - name: "org.ow2.asm:asm-commons:9.1"
+    dependencies:
+    - name: "org.ow2.asm:asm-analysis:9.1"
+    - name: "org.ow2.asm:asm-tree:9.1"
+    - name: "org.ow2.asm:asm:9.1"
+  - name: "org.ow2.asm:asm-tree:9.1"
+    dependencies:
+    - name: "org.ow2.asm:asm:9.1"
 - name: "mainSourceElements"
   description: "List of source directories contained in the Main SourceSet."
   visible: false
