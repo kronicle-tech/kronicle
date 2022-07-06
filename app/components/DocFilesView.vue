@@ -73,7 +73,7 @@ export default Vue.extend({
   computed: {
     filteredDoc(): DocState {
       const files = this.pagesOnly
-        ? this.doc.files.filter((it) => it.contentType === 'text')
+        ? this.doc.files.filter((it) => it.contentType === 'Text')
         : this.doc.files
       return {
         ...this.doc,
