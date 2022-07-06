@@ -16,27 +16,21 @@ configurations:
   canBeResolved: true
   resolved: false
   dependencies:
-  - name: "org.jacoco.agent"
-    group: "org.jacoco"
-    version: "0.8.7"
+  - name: "org.jacoco:org.jacoco.agent:0.8.7"
 - name: "jacocoAnt"
   description: "The Jacoco ant tasks to use to get execute Gradle tasks."
   visible: false
   canBeResolved: true
   resolved: false
   dependencies:
-  - name: "org.jacoco.ant"
-    group: "org.jacoco"
-    version: "0.8.7"
+  - name: "org.jacoco:org.jacoco.ant:0.8.7"
 - name: "spotbugs"
   description: "configuration for the SpotBugs engine"
   visible: false
   canBeResolved: true
   resolved: false
   dependencies:
-  - name: "spotbugs"
-    group: "com.github.spotbugs"
-    version: "4.5.3"
+  - name: "com.github.spotbugs:spotbugs:4.5.3"
 - name: "spotbugsPlugins"
   description: "configuration for the external SpotBugs plugins"
   visible: false
@@ -48,6 +42,4 @@ configurations:
   canBeResolved: true
   resolved: false
   dependencies:
-  - name: "slf4j-simple"
-    group: "org.slf4j"
-    version: "1.8.0-beta4"
+  - name: "org.slf4j:slf4j-simple:1.8.0-beta4"
