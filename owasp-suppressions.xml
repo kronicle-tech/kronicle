@@ -714,4 +714,84 @@
         <packageUrl regex="true">^pkg:maven/org\.apache\.tomcat\.embed/tomcat\-embed\-websocket@.*$</packageUrl>
         <cve>CVE-2022-34305</cve>
     </suppress>
+    <!-- Suppress irrelevant vulnerability -->
+    <suppress>
+        <notes><![CDATA[
+   file name: parse-path:4.0.4
+   ]]></notes>
+        <packageUrl regex="true">^pkg:npm/parse\-path@.*$</packageUrl>
+        <vulnerabilityName>1080923</vulnerabilityName>
+    </suppress>
+    <!-- Suppress irrelevant vulnerability -->
+    <suppress>
+        <notes><![CDATA[
+   file name: parse-path:4.0.4
+   ]]></notes>
+        <packageUrl regex="true">^pkg:npm/parse\-path@.*$</packageUrl>
+        <vulnerabilityName>CVE-2022-0624</vulnerabilityName>
+    </suppress>
+    <!-- Suppress irrelevant vulnerability -->
+    <suppress>
+        <notes><![CDATA[
+   file name: parse-path:4.0.4
+   ]]></notes>
+        <packageUrl regex="true">^pkg:npm/parse\-path@.*$</packageUrl>
+        <vulnerabilityName>CVE-2022-2218</vulnerabilityName>
+    </suppress>
+    <!-- Suppress irrelevant vulnerability -->
+    <suppress>
+        <notes><![CDATA[
+   file name: parse-url:6.0.0
+   ]]></notes>
+        <packageUrl regex="true">^pkg:npm/parse\-url@.*$</packageUrl>
+        <vulnerabilityName>1080924</vulnerabilityName>
+    </suppress>
+    <!-- Suppress irrelevant vulnerability -->
+    <suppress>
+        <notes><![CDATA[
+   file name: parse-url:6.0.0
+   ]]></notes>
+        <packageUrl regex="true">^pkg:npm/parse\-url@.*$</packageUrl>
+        <vulnerabilityName>1080925</vulnerabilityName>
+    </suppress>
+    <!-- Suppress irrelevant vulnerability -->
+    <suppress>
+        <notes><![CDATA[
+   file name: parse-url:6.0.0
+   ]]></notes>
+        <packageUrl regex="true">^pkg:npm/parse\-url@.*$</packageUrl>
+        <vulnerabilityName>1080926</vulnerabilityName>
+    </suppress>
+    <!-- Suppress irrelevant vulnerability -->
+    <suppress>
+        <notes><![CDATA[
+   file name: parse-url:6.0.0
+   ]]></notes>
+        <packageUrl regex="true">^pkg:npm/parse\-url@.*$</packageUrl>
+        <vulnerabilityName>1080927</vulnerabilityName>
+    </suppress>
+    <!-- Suppress irrelevant vulnerability -->
+    <suppress>
+        <notes><![CDATA[
+   file name: parse-url:6.0.0
+   ]]></notes>
+        <packageUrl regex="true">^pkg:npm/parse\-url@.*$</packageUrl>
+        <vulnerabilityName>CVE-2022-0722</vulnerabilityName>
+    </suppress>
+    <!-- Suppress irrelevant vulnerability -->
+    <suppress>
+        <notes><![CDATA[
+   file name: parse-url:6.0.0
+   ]]></notes>
+        <packageUrl regex="true">^pkg:npm/parse\-url@.*$</packageUrl>
+        <vulnerabilityName>CVE-2022-2216</vulnerabilityName>
+    </suppress>
+    <!-- Suppress irrelevant vulnerability -->
+    <suppress>
+        <notes><![CDATA[
+   file name: parse-url:6.0.0
+   ]]></notes>
+        <packageUrl regex="true">^pkg:npm/parse\-url@.*$</packageUrl>
+        <vulnerabilityName>CVE-2022-2217</vulnerabilityName>
+    </suppress>
 </suppressions>
