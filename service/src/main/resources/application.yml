@@ -173,6 +173,9 @@ plugins:
       - name: "Angular"
         software-name-pattern: "^@angular/core$$"
 
+  kubernetes:
+    enabled: false
+
   lines-of-code:
     enabled: true
 

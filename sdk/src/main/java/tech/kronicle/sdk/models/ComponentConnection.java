@@ -19,12 +19,8 @@ import static tech.kronicle.sdk.utils.ListUtils.createUnmodifiableList;
 @With
 @Builder(toBuilder = true)
 @Jacksonized
-public class DiagramConnection implements ObjectWithReference {
+public class ComponentConnection implements ObjectWithReference {
 
-    @NotBlank
-    @Pattern(regexp = PatternStrings.ID)
-    @JsonAlias("source")
-    String sourceComponentId;
     @NotBlank
     @Pattern(regexp = PatternStrings.ID)
     @JsonAlias("target")
@@ -35,14 +31,12 @@ public class DiagramConnection implements ObjectWithReference {
     String description;
     List<@Valid Tag> tags;
 
-    public DiagramConnection(
-            String sourceComponentId,
+    public ComponentConnection(
             String targetComponentId,
             String type, String label,
             String description,
             List<@Valid Tag> tags
     ) {
-        this.sourceComponentId = sourceComponentId;
         this.targetComponentId = targetComponentId;
         this.type = type;
         this.label = label;
@@ -52,6 +46,6 @@ public class DiagramConnection implements ObjectWithReference {
 
     @Override
     public String reference() {
-        return sourceComponentId + " ==" + (nonNull(type) ? type : "") + "==> " + targetComponentId;
+        return "==" + (nonNull(type) ? type : "") + "==> " + targetComponentId;
     }
 }
