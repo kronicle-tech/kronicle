@@ -1,6 +1,6 @@
 package tech.kronicle.plugins.kubernetes.constants;
 
-public class Platforms {
+public final class Platforms {
 
     public static final String KUBERNETES = "kubernetes";
 
