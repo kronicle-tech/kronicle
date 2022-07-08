@@ -38,7 +38,7 @@ public class ResourceMapper {
     }
 
     private String mapName(ClusterConfig cluster, ApiResource apiResource, ApiResourceItem item) {
-        return cluster.getEnvironmentId() + " - " + apiResource.getKind() + " - " + item.getName();
+        return "Kubernetes - " + cluster.getEnvironmentId() + " - " + apiResource.getKind() + " - " + item.getName();
     }
 
     private String mapType(ApiResource apiResource) {
