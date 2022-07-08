@@ -6,7 +6,7 @@ import tech.kronicle.pluginapi.finders.ComponentFinder;
 import tech.kronicle.pluginapi.finders.models.ComponentsAndDiagrams;
 import tech.kronicle.pluginapi.scanners.models.Output;
 import tech.kronicle.plugins.kubernetes.config.KubernetesConfig;
-import tech.kronicle.plugins.kubernetes.services.KubernetesResourceFinder;
+import tech.kronicle.plugins.kubernetes.services.ResourceFinder;
 import tech.kronicle.sdk.models.Component;
 import tech.kronicle.sdk.models.ComponentMetadata;
 
@@ -23,7 +23,7 @@ public class KubernetesComponentFinder extends ComponentFinder {
 
     private static final Duration CACHE_TTL = Duration.ofHours(1);
 
-    private final KubernetesResourceFinder resourceFinder;
+    private final ResourceFinder resourceFinder;
     private final KubernetesConfig config;
 
     @Override
@@ -34,7 +34,7 @@ public class KubernetesComponentFinder extends ComponentFinder {
     @Override
     public Output<ComponentsAndDiagrams, Void> find(ComponentMetadata input) {
         List<Component> components = config.getClusters().stream()
-                .map(resourceFinder::findResources)
+                .map(resourceFinder::findComponents)
                 .flatMap(Collection::stream)
                 .collect(toUnmodifiableList());
 

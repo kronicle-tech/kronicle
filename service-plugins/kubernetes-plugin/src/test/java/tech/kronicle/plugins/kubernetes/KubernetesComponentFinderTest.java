@@ -8,7 +8,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import tech.kronicle.pluginapi.finders.models.ComponentsAndDiagrams;
 import tech.kronicle.pluginapi.scanners.models.Output;
 import tech.kronicle.plugins.kubernetes.config.KubernetesConfig;
-import tech.kronicle.plugins.kubernetes.services.KubernetesResourceFinder;
+import tech.kronicle.plugins.kubernetes.services.ResourceFinder;
 import tech.kronicle.sdk.models.ComponentMetadata;
 
 import java.time.Duration;
@@ -22,7 +22,7 @@ public class KubernetesComponentFinderTest {
     private static final Duration CACHE_TTL = Duration.ofHours(1);
 
     @Mock
-    public KubernetesResourceFinder resourceFinder;
+    public ResourceFinder resourceFinder;
     public KubernetesComponentFinder underTest;
 
     @BeforeEach
