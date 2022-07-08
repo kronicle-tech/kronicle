@@ -42,7 +42,7 @@ public class ResourceMapper {
     }
 
     private String mapType(ApiResource apiResource) {
-        return "kubernetes." + apiResource.getGroup() + "." + toKebabCase(apiResource.getKind());
+        return "kubernetes." + toKebabCase(apiResource.getGroup()) + "." + toKebabCase(apiResource.getKind());
     }
 
     private List<ComponentConnection> mapConnections(String environmentId, ApiResourceItem item) {
