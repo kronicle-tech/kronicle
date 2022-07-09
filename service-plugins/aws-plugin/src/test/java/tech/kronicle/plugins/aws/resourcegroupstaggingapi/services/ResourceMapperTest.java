@@ -73,19 +73,19 @@ public class ResourceMapperTest {
         assertThat(returnValue).isEqualTo(List.of(
                 new ComponentAndConnection(
                         Component.builder()
-                                .id("aws-lambda-function-examplestack-examplefunction123abc-123456abcdef")
+                                .id("aws.lambda-function.examplestack-examplefunction123abc-123456abcdef")
                                 .aliases(List.of(
                                         Alias.builder().id("ExampleStack-exampleFunction123ABC-123456ABCDEF").build(),
                                         Alias.builder().id("examplestack-examplefunction123abc-123456abcdef").build()
                                 ))
                                 .name("ExampleStack-exampleFunction123ABC-123456ABCDEF")
-                                .typeId("aws-lambda-function")
+                                .typeId("aws.lambda-function")
                                 .description(prepareExpectedDescription(
                                         mappingConfig,
                                         null,
                                         "arn:aws:lambda:us-west-1:123456789012:function:ExampleStack-exampleFunction123ABC-123456ABCDEF\n"
                                 ))
-                                .platformId("aws-managed-service")
+                                .platformId("aws")
                                 .states(List.of(
                                         DiscoveredState.builder()
                                                 .environmentId(TEST_ENVIRONMENT_ID)
@@ -97,7 +97,7 @@ public class ResourceMapperTest {
                 ),
                 new ComponentAndConnection(
                         Component.builder()
-                                .id("aws-ec2-security-group-security-group-sg-12345678901abcdef")
+                                .id("aws.ec2-security-group.security-group-sg-12345678901abcdef")
                                 .aliases(List.of(
                                         Alias.builder().id("security-group/sg-12345678901ABCDEF").build(),
                                         Alias.builder().id("security-group/sg-12345678901abcdef").build(),
@@ -106,7 +106,7 @@ public class ResourceMapperTest {
                                         Alias.builder().id("test-alias-id-2").build()
                                 ))
                                 .name("Test name")
-                                .typeId("aws-ec2-security-group")
+                                .typeId("aws.ec2-security-group")
                                 .tags(prepareExpectedTags(
                                         mappingConfig,
                                         List.of(
@@ -146,7 +146,7 @@ public class ResourceMapperTest {
                                                 + "* test-alias-id-1\n"
                                                 + "* test-alias-id-2\n"
                                 ))
-                                .platformId("aws-managed-service")
+                                .platformId("aws")
                                 .states(List.of(
                                         DiscoveredState.builder()
                                                 .environmentId(prepareExpectedEnvironmentId(mappingConfig, TEST_ENVIRONMENT_ID))
@@ -260,7 +260,7 @@ public class ResourceMapperTest {
         if (mappingConfig.createDependenciesForResources) {
             return DiagramConnection.builder()
                     .sourceComponentId("test-component-id")
-                    .targetComponentId("aws-ec2-security-group-security-group-sg-12345678901abcdef")
+                    .targetComponentId("aws.ec2-security-group.security-group-sg-12345678901abcdef")
                     .type(DiagramConnectionTypes.COMPOSITION)
                     .label("is composed of")
                     .build();

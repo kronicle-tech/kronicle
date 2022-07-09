@@ -21,14 +21,14 @@ public class ArnAnalyser {
         if (!derivedResourceType.isEmpty()) {
             derivedResourceType = "-" + derivedResourceType;
         }
-        derivedResourceType = "aws-" + analysedArn.getService() + derivedResourceType;
-        if (derivedResourceType.equals("aws-s3")) {
-            derivedResourceType = "aws-s3-bucket";
-        } else if (derivedResourceType.equals("aws-apigateway")) {
+        derivedResourceType = analysedArn.getService() + derivedResourceType;
+        if (derivedResourceType.equals("s3")) {
+            derivedResourceType = "s3-bucket";
+        } else if (derivedResourceType.equals("apigateway")) {
             if (matchesPattern(analysedArn.getResourceId(), REST_API_PATTERN)) {
-                derivedResourceType = "aws-apigateway-restapi";
+                derivedResourceType = "apigateway-restapi";
             } else if (matchesPattern(analysedArn.getResourceId(), REST_API_STAGE_PATTERN)) {
-                derivedResourceType = "aws-apigateway-restapi-stage";
+                derivedResourceType = "apigateway-restapi-stage";
             }
         }
         String resourceId = analysedArn.getResourceId();

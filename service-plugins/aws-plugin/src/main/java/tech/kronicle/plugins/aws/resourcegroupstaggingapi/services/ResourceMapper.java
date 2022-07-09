@@ -55,14 +55,14 @@ public class ResourceMapper {
         Optional<String> aliasesTag = getAliasesTag(resource);
         List<Alias> aliases = getAliases(analysedArn, name, aliasesTag);
         return Component.builder()
-                .id(toKebabCase(analysedArn.getDerivedResourceType() + "-" + analysedArn.getResourceId()))
+                .id("aws." + toKebabCase(analysedArn.getDerivedResourceType()) + "." + toKebabCase(analysedArn.getResourceId()))
                 .aliases(aliases)
                 .name(name)
-                .typeId(toKebabCase(analysedArn.getDerivedResourceType()))
+                .typeId(mapType(analysedArn))
                 .tags(mapTags(resource))
                 .teams(getTeam(resource))
                 .description(getDescription(resource, analysedArn, aliases))
-                .platformId("aws-managed-service")
+                .platformId("aws")
                 .states(List.of(
                         DiscoveredState.builder()
                                 .environmentId(getEnvironmentId(resource, environmentId))
@@ -70,6 +70,10 @@ public class ResourceMapper {
                                 .build()
                 ))
                 .build();
+    }
+
+    private String mapType(AnalysedArn analysedArn) {
+        return "aws." + toKebabCase(analysedArn.getDerivedResourceType());
     }
 
     private DiagramConnection mapResourceToConnection(ResourceGroupsTaggingApiResource resource, Component component) {

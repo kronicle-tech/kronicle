@@ -22,7 +22,7 @@ public class ArnAnalyserTest {
                 .region("us-west-1")
                 .accountId("123456789012")
                 .resourceId("ExampleStack-exampleFunction123ABC-123456ABCDEF")
-                .derivedResourceType("aws-lambda-function")
+                .derivedResourceType("lambda-function")
                 .build());
     }
 
@@ -42,7 +42,7 @@ public class ArnAnalyserTest {
                 .region("us-west-1")
                 .accountId("123456789012")
                 .resourceId("security-group/sg-12345678901ABCDEF")
-                .derivedResourceType("aws-ec2-security-group")
+                .derivedResourceType("ec2-security-group")
                 .build());
     }
 
@@ -60,7 +60,7 @@ public class ArnAnalyserTest {
                 .partition("aws")
                 .service("s3")
                 .resourceId("example-resource-id-1234567ABCDEF")
-                .derivedResourceType("aws-s3-bucket")
+                .derivedResourceType("s3-bucket")
                 .build());
     }
 
@@ -79,7 +79,7 @@ public class ArnAnalyserTest {
                 .service("apigateway")
                 .region("us-west-1")
                 .resourceId("/restapis/1234abcdef")
-                .derivedResourceType("aws-apigateway-restapi")
+                .derivedResourceType("apigateway-restapi")
                 .build());
     }
 
@@ -98,7 +98,7 @@ public class ArnAnalyserTest {
                 .service("apigateway")
                 .region("us-west-1")
                 .resourceId("/restapis/1234abcdef/stages/prod")
-                .derivedResourceType("aws-apigateway-restapi-stage")
+                .derivedResourceType("apigateway-restapi-stage")
                 .build());
     }
 
@@ -118,7 +118,7 @@ public class ArnAnalyserTest {
                 .region("us-west-1")
                 .accountId("123456789012")
                 .resourceId("one/two/three-123ABC")
-                .derivedResourceType("aws-secretsmanager-secret")
+                .derivedResourceType("secretsmanager-secret")
                 .build());
     }
 }
