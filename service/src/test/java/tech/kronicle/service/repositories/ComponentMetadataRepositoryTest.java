@@ -271,7 +271,7 @@ public class ComponentMetadataRepositoryTest extends BaseTest {
         assertThat(event.getThrowableProxy().getClassName()).isEqualTo("tech.kronicle.service.exceptions.ValidationException");
         assertThat(event.getThrowableProxy().getMessage()).isEqualTo(""
                 + "Failed to validate tech.kronicle.sdk.models.ComponentMetadata with reference \"component-metadata\". Violations:\n"
-                + "- components[0].id with value \"Not-Valid-Id\" must match \"[a-z][a-z0-9]*(-[a-z0-9]+)*\"");
+                + "- components[0].id with value \"Not-Valid-Id\" must match \"[a-z][a-z0-9]*([.-][a-z0-9]+)*\"");
 
         assertThat(returnValue.getAreas()).hasSize(2);
         assertThat(returnValue.getAreas().stream().map(Area::getId).collect(toList())).containsExactly(

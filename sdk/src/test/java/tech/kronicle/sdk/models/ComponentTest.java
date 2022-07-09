@@ -173,6 +173,18 @@ public class ComponentTest {
     }
 
     @Test
+    public void constructorShouldMakeConnectionsAnUnmodifiableList() {
+        // Given
+        Component underTest = Component.builder().connections(new ArrayList<>()).build();
+
+        // When
+        Throwable thrown = catchThrowable(() -> underTest.getConnections().add(ComponentConnection.builder().build()));
+
+        // Then
+        assertThat(thrown).isInstanceOf(UnsupportedOperationException.class);
+    }
+
+    @Test
     public void constructorShouldMakeDependenciesAnUnmodifiableList() {
         // Given
         Component underTest = Component.builder().dependencies(new ArrayList<>()).build();
