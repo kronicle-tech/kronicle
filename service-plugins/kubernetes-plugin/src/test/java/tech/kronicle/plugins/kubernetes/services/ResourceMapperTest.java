@@ -1,8 +1,6 @@
 package tech.kronicle.plugins.kubernetes.services;
 
 import org.junit.jupiter.api.Test;
-import tech.kronicle.plugins.kubernetes.config.ClusterConfig;
-import tech.kronicle.plugins.kubernetes.models.ApiResource;
 import tech.kronicle.plugins.kubernetes.models.ApiResourceItem;
 import tech.kronicle.sdk.models.Component;
 import tech.kronicle.sdk.models.ComponentConnection;
@@ -12,6 +10,9 @@ import java.util.List;
 import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static tech.kronicle.plugins.kubernetes.testutils.ApiResourceItemUtils.createApiResourceItem;
+import static tech.kronicle.plugins.kubernetes.testutils.ApiResourceUtils.createApiResource;
+import static tech.kronicle.plugins.kubernetes.testutils.ClusterConfigUtils.createCluster;
 
 public class ResourceMapperTest {
 
@@ -28,11 +29,11 @@ public class ResourceMapperTest {
         // Then
         assertThat(returnValue).isEqualTo(
                 Component.builder()
-                        .id("test-environment-id.test-kind.test-name")
-                        .name("Kubernetes - test-environment-id - TestKind - Test Name")
+                        .id("test-environment-id-1.test-kind1.test-name-1")
+                        .name("Kubernetes - test-environment-id-1 - TestKind1 - Test Name 1")
                         .discovered(true)
-                        .typeId("kubernetes.test-group.test-kind")
-                        .tags(List.of(new Tag("environment", "test-environment-id")))
+                        .typeId("kubernetes.test-group-1.test-kind1")
+                        .tags(List.of(new Tag("environment", "test-environment-id-1")))
                         .platformId("kubernetes")
                         .build()
         );
@@ -51,11 +52,11 @@ public class ResourceMapperTest {
         // Then
         assertThat(returnValue).isEqualTo(
                 Component.builder()
-                        .id("test-environment-id.app.test-app-name")
-                        .name("Kubernetes - test-environment-id - TestKind - Test Name")
+                        .id("test-environment-id-1.app.test-app-name")
+                        .name("Kubernetes - test-environment-id-1 - TestKind1 - Test Name 1")
                         .discovered(true)
-                        .typeId("kubernetes.test-group.test-kind")
-                        .tags(List.of(new Tag("environment", "test-environment-id")))
+                        .typeId("kubernetes.test-group-1.test-kind1")
+                        .tags(List.of(new Tag("environment", "test-environment-id-1")))
                         .platformId("kubernetes")
                         .build()
         );
@@ -74,35 +75,19 @@ public class ResourceMapperTest {
         // Then
         assertThat(returnValue).isEqualTo(
                 Component.builder()
-                        .id("test-environment-id.test-kind.test-name")
-                        .name("Kubernetes - test-environment-id - TestKind - Test Name")
+                        .id("test-environment-id-1.test-kind1.test-name-1")
+                        .name("Kubernetes - test-environment-id-1 - TestKind1 - Test Name 1")
                         .discovered(true)
-                        .typeId("kubernetes.test-group.test-kind")
-                        .tags(List.of(new Tag("environment", "test-environment-id")))
+                        .typeId("kubernetes.test-group-1.test-kind1")
+                        .tags(List.of(new Tag("environment", "test-environment-id-1")))
                         .platformId("kubernetes")
                         .connections(List.of(
                                 ComponentConnection.builder()
-                                        .targetComponentId("test-environment-id.app.test-app-name")
+                                        .targetComponentId("test-environment-id-1.app.test-app-name")
                                         .type("super-component")
                                         .build()
                         ))
                         .build()
         );
-    }
-
-    private ClusterConfig createCluster() {
-        return new ClusterConfig("test-environment-id", null);
-    }
-
-    private ApiResource createApiResource() {
-        return new ApiResource("TestKind", "test.group", "v1", "test-kinds");
-    }
-
-    private ApiResourceItem createApiResourceItem() {
-        return createApiResourceItem(Map.of());
-    }
-
-    private ApiResourceItem createApiResourceItem(Map<String, String> annotations) {
-        return new ApiResourceItem("Test Name", annotations);
     }
 }

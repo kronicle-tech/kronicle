@@ -17,6 +17,7 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.when;
+import static tech.kronicle.plugins.kubernetes.testutils.ClusterConfigUtils.createCluster;
 import static tech.kronicle.plugins.kubernetes.testutils.ComponentUtils.createComponent;
 
 @ExtendWith(MockitoExtension.class)
@@ -94,9 +95,5 @@ public class KubernetesComponentFinderTest {
 
     private KubernetesComponentFinder createUnderTest(List<ClusterConfig> clusters) {
         return new KubernetesComponentFinder(resourceFinder, new KubernetesConfig(clusters));
-    }
-
-    private ClusterConfig createCluster(int clusterNumber) {
-        return new ClusterConfig("test-environment-id-" + clusterNumber, "test-kube-config-" + clusterNumber);
     }
 }

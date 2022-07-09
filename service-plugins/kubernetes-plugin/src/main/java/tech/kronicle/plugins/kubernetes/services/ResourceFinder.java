@@ -2,7 +2,6 @@ package tech.kronicle.plugins.kubernetes.services;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.jetbrains.annotations.NotNull;
 import tech.kronicle.plugins.kubernetes.client.ApiClientFacade;
 import tech.kronicle.plugins.kubernetes.config.ClusterConfig;
 import tech.kronicle.plugins.kubernetes.models.ApiResource;
@@ -27,7 +26,6 @@ public class ResourceFinder {
                 .collect(toUnmodifiableList());
     }
 
-    @NotNull
     private Stream<Component> findComponents(ClusterConfig cluster, ApiResource apiResource) {
         return clientFacade.getApiResourceItems(cluster, apiResource).stream()
                 .map(item -> resourceMapper.mapResource(cluster, apiResource, item));
