@@ -12,6 +12,9 @@ import tech.kronicle.sdk.models.ComponentConnection;
 import tech.kronicle.sdk.models.Tag;
 
 import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import static java.util.Objects.nonNull;
 import static tech.kronicle.common.CaseUtils.toKebabCase;
@@ -38,11 +41,26 @@ public class ResourceMapper {
     }
 
     private String mapName(ClusterConfig cluster, ApiResource apiResource, ApiResourceItem item) {
-        return "Kubernetes - " + cluster.getEnvironmentId() + " - " + apiResource.getKind() + " - " + item.getName();
+        return joinName("Kubernetes", cluster.getEnvironmentId(), apiResource.getKind(), item.getName());
     }
 
     private String mapType(ApiResource apiResource) {
-        return "kubernetes." + toKebabCase(apiResource.getGroup()) + "." + toKebabCase(apiResource.getKind());
+        return joinIdOrType("kubernetes", toKebabCase(apiResource.getGroup()), toKebabCase(apiResource.getKind()));
+    }
+
+    private String joinName(String... parts) {
+        return join(parts, " - ");
+    }
+
+    private String joinIdOrType(String... parts) {
+        return join(parts, ".");
+    }
+
+    private String join(String[] parts, String delimiter) {
+        return Stream.of(parts)
+                .filter(Objects::nonNull)
+                .filter(part -> !part.isBlank())
+                .collect(Collectors.joining(delimiter));
     }
 
     private List<ComponentConnection> mapConnections(String environmentId, ApiResourceItem item) {
