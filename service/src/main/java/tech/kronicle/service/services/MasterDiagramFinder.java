@@ -34,40 +34,6 @@ public class MasterDiagramFinder {
                 .collect(toUnmodifiableList());
     }
 
-    private List<Component> getComponents(
-            List<ComponentsAndDiagrams> componentsAndDiagramsList,
-            ComponentMetadata componentMetadata
-    ) {
-        return componentsAndDiagramsList.stream()
-                .map(ComponentsAndDiagrams::getComponents)
-                .flatMap(Collection::stream)
-                .filter(distinctByKey(Component::getId))
-                .filter(componentDoesNotAlreadyExist(componentMetadata))
-                .map(component -> component.withDiscovered(true))
-                .collect(Collectors.toList());
-    }
-
-    private List<Diagram> getDiagrams(List<ComponentsAndDiagrams> componentsAndDiagramsList) {
-        return componentsAndDiagramsList.stream()
-                .map(ComponentsAndDiagrams::getDiagrams)
-                .flatMap(Collection::stream)
-                .map(diagram -> diagram.withDiscovered(true))
-                .collect(Collectors.toList());
-    }
-
-    private static Predicate<Component> componentDoesNotAlreadyExist(ComponentMetadata componentMetadata) {
-        Set<String> existingComponentIdSet = getExistingComponentIdSet(componentMetadata);
-        return component -> !existingComponentIdSet.contains(component.getId());
-    }
-
-    private static Set<String> getExistingComponentIdSet(ComponentMetadata componentMetadata) {
-        return Set.copyOf(
-                componentMetadata.getComponents().stream()
-                        .map(Component::getId)
-                        .collect(Collectors.toList())
-        );
-    }
-
     private List<Diagram> executeFinder(DiagramFinder finder, ComponentMetadata componentMetadata) {
         Output<List<Diagram>, Void> output = executor.executeFinder(finder, null, componentMetadata);
         if (output.success()) {

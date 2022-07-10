@@ -24,6 +24,7 @@ import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.UnaryOperator;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import static java.util.Objects.nonNull;
 import static java.util.stream.Collectors.toList;
@@ -144,10 +145,10 @@ public class ScanEngine {
             ConcurrentHashMap<String, Diagram> diagramMap,
             List<Diagram> extraDiagrams
     ) {
-        List<Diagram> diagrams = componentMetadata.getDiagrams().stream()
+        List<Diagram> diagrams = Stream.of(componentMetadata.getDiagrams(), extraDiagrams)
+                .flatMap(Collection::stream)
                 .map(graphProcessor::processDiagram)
-                .collect(toList());
-        diagrams.addAll(extraDiagrams);
+                .collect(toUnmodifiableList());
         diagrams.forEach(diagram -> diagramMap.put(diagram.getId(), diagram));
         return componentMetadata.withDiagrams(diagrams);
     }

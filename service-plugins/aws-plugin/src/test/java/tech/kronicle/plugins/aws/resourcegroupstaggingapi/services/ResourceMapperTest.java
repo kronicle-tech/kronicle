@@ -9,10 +9,9 @@ import org.junit.jupiter.params.provider.MethodSource;
 import tech.kronicle.plugins.aws.config.AwsConfig;
 import tech.kronicle.plugins.aws.config.AwsProfileConfig;
 import tech.kronicle.plugins.aws.config.AwsTagKeysConfig;
-import tech.kronicle.plugins.aws.resourcegroupstaggingapi.models.ComponentAndConnection;
 import tech.kronicle.plugins.aws.resourcegroupstaggingapi.models.ResourceGroupsTaggingApiResource;
 import tech.kronicle.plugins.aws.resourcegroupstaggingapi.models.ResourceGroupsTaggingApiTag;
-import tech.kronicle.sdk.constants.DiagramConnectionTypes;
+import tech.kronicle.sdk.constants.ConnectionTypes;
 import tech.kronicle.sdk.models.*;
 
 import java.util.ArrayList;
@@ -33,7 +32,7 @@ public class ResourceMapperTest {
         ResourceMapper underTest = createUnderTest();
 
         // When
-        List<ComponentAndConnection> returnValue = underTest.mapResourcesToComponentsAndConnections(TEST_ENVIRONMENT_ID, List.of());
+        List<Component> returnValue = underTest.mapResourcesToComponents(TEST_ENVIRONMENT_ID, List.of());
 
         // Then
         assertThat(returnValue).isEmpty();
@@ -67,96 +66,92 @@ public class ResourceMapperTest {
         );
 
         // When
-        List<ComponentAndConnection> returnValue = underTest.mapResourcesToComponentsAndConnections(TEST_ENVIRONMENT_ID, resources);
+        List<Component> returnValue = underTest.mapResourcesToComponents(TEST_ENVIRONMENT_ID, resources);
 
         // Then
         assertThat(returnValue).isEqualTo(List.of(
-                new ComponentAndConnection(
-                        Component.builder()
-                                .id("aws.lambda-function.examplestack-examplefunction123abc-123456abcdef")
-                                .aliases(List.of(
-                                        Alias.builder().id("ExampleStack-exampleFunction123ABC-123456ABCDEF").build(),
-                                        Alias.builder().id("examplestack-examplefunction123abc-123456abcdef").build()
-                                ))
-                                .name("ExampleStack-exampleFunction123ABC-123456ABCDEF")
-                                .typeId("aws.lambda-function")
-                                .description(prepareExpectedDescription(
-                                        mappingConfig,
-                                        null,
-                                        "arn:aws:lambda:us-west-1:123456789012:function:ExampleStack-exampleFunction123ABC-123456ABCDEF\n"
-                                ))
-                                .platformId("aws")
-                                .states(List.of(
-                                        DiscoveredState.builder()
-                                                .environmentId(TEST_ENVIRONMENT_ID)
-                                                .pluginId("aws")
-                                                .build()
-                                ))
-                                .build(),
-                        null
-                ),
-                new ComponentAndConnection(
-                        Component.builder()
-                                .id("aws.ec2-security-group.security-group-sg-12345678901abcdef")
-                                .aliases(List.of(
-                                        Alias.builder().id("security-group/sg-12345678901ABCDEF").build(),
-                                        Alias.builder().id("security-group/sg-12345678901abcdef").build(),
-                                        Alias.builder().id("Test name").build(),
-                                        Alias.builder().id("test-alias-id-1").build(),
-                                        Alias.builder().id("test-alias-id-2").build()
-                                ))
-                                .name("Test name")
-                                .typeId("aws.ec2-security-group")
-                                .tags(prepareExpectedTags(
-                                        mappingConfig,
-                                        List.of(
-                                                Tag.builder().key("name").value("Test name").build(),
-                                                Tag.builder().key("test-team-tag-key").value("test-team-id").build(),
-                                                Tag.builder().key("test-component-tag-key").value("test-component-id").build(),
-                                                Tag.builder().key("test-aliases-tag-key").value("test-alias-id-1, test-alias-id-2").build(),
-                                                Tag.builder().key("test-tag-key-1").value("test-tag-value-1").build()
-                                        ),
-                                        Tag.builder().key("test-description-tag-key").value("Test description").build(),
-                                        Tag.builder().key("test-environment-tag-key").value("test-override-environment-id").build()
-                                ))
-                                .teams(List.of(
-                                        ComponentTeam.builder()
-                                                .teamId("test-team-id")
-                                                .build()
-                                ))
-                                .description(prepareExpectedDescription(
-                                        mappingConfig,
-                                        "Test description",
-                                        "arn:aws:ec2:us-west-1:123456789012:security-group/sg-12345678901ABCDEF\n"
-                                                + "\n"
-                                                + "Tags:\n"
-                                                + "\n"
-                                                + "* Name=Test name\n"
-                                                + "* test-team-tag-key=test-team-id\n"
-                                                + "* test-component-tag-key=test-component-id\n"
-                                                + "* test-aliases-tag-key=test-alias-id-1, test-alias-id-2\n"
-                                                + "* test-tag-key-1=test-tag-value-1\n"
-                                                + (mappingConfig.environmentTag ? "* test-environment-tag-key=test-override-environment-id\n" : "")
-                                                + "\n"
-                                                + "Aliases:\n"
-                                                + "\n"
-                                                + "* security-group/sg-12345678901ABCDEF\n"
-                                                + "* security-group/sg-12345678901abcdef\n"
-                                                + "* Test name\n"
-                                                + "* test-alias-id-1\n"
-                                                + "* test-alias-id-2\n"
-                                ))
-                                .platformId("aws")
-                                .states(List.of(
-                                        DiscoveredState.builder()
-                                                .environmentId(prepareExpectedEnvironmentId(mappingConfig, TEST_ENVIRONMENT_ID))
-                                                .pluginId("aws")
-                                                .build()
-                                ))
-                                .build(),
-                        prepareExpectedConnection(mappingConfig)
+                Component.builder()
+                        .id("aws.test-environment-id.lambda-function.examplestack-examplefunction123abc-123456abcdef")
+                        .aliases(List.of(
+                                Alias.builder().id("ExampleStack-exampleFunction123ABC-123456ABCDEF").build(),
+                                Alias.builder().id("examplestack-examplefunction123abc-123456abcdef").build()
+                        ))
+                        .name("AWS - test-environment-id - ExampleStack-exampleFunction123ABC-123456ABCDEF")
+                        .typeId("aws.lambda-function")
+                        .description(prepareExpectedDescription(
+                                mappingConfig,
+                                null,
+                                "arn:aws:lambda:us-west-1:123456789012:function:ExampleStack-exampleFunction123ABC-123456ABCDEF\n"
+                        ))
+                        .platformId("aws")
+                        .states(List.of(
+                                DiscoveredState.builder()
+                                        .environmentId(TEST_ENVIRONMENT_ID)
+                                        .pluginId("aws")
+                                        .build()
+                        ))
+                        .build(),
+                Component.builder()
+                        .id("aws.test-environment-id.ec2-security-group.security-group-sg-12345678901abcdef")
+                        .aliases(List.of(
+                                Alias.builder().id("security-group/sg-12345678901ABCDEF").build(),
+                                Alias.builder().id("security-group/sg-12345678901abcdef").build(),
+                                Alias.builder().id("Test name").build(),
+                                Alias.builder().id("test-alias-id-1").build(),
+                                Alias.builder().id("test-alias-id-2").build()
+                        ))
+                        .name("AWS - test-environment-id - Test name")
+                        .typeId("aws.ec2-security-group")
+                        .tags(prepareExpectedTags(
+                                mappingConfig,
+                                List.of(
+                                        Tag.builder().key("name").value("Test name").build(),
+                                        Tag.builder().key("test-team-tag-key").value("test-team-id").build(),
+                                        Tag.builder().key("test-component-tag-key").value("test-component-id").build(),
+                                        Tag.builder().key("test-aliases-tag-key").value("test-alias-id-1, test-alias-id-2").build(),
+                                        Tag.builder().key("test-tag-key-1").value("test-tag-value-1").build()
+                                ),
+                                Tag.builder().key("test-description-tag-key").value("Test description").build(),
+                                Tag.builder().key("test-environment-tag-key").value("test-override-environment-id").build()
+                        ))
+                        .teams(List.of(
+                                ComponentTeam.builder()
+                                        .teamId("test-team-id")
+                                        .build()
+                        ))
+                        .description(prepareExpectedDescription(
+                                mappingConfig,
+                                "Test description",
+                                "arn:aws:ec2:us-west-1:123456789012:security-group/sg-12345678901ABCDEF\n"
+                                        + "\n"
+                                        + "Tags:\n"
+                                        + "\n"
+                                        + "* Name=Test name\n"
+                                        + "* test-team-tag-key=test-team-id\n"
+                                        + "* test-component-tag-key=test-component-id\n"
+                                        + "* test-aliases-tag-key=test-alias-id-1, test-alias-id-2\n"
+                                        + "* test-tag-key-1=test-tag-value-1\n"
+                                        + (mappingConfig.environmentTag ? "* test-environment-tag-key=test-override-environment-id\n" : "")
+                                        + "\n"
+                                        + "Aliases:\n"
+                                        + "\n"
+                                        + "* security-group/sg-12345678901ABCDEF\n"
+                                        + "* security-group/sg-12345678901abcdef\n"
+                                        + "* Test name\n"
+                                        + "* test-alias-id-1\n"
+                                        + "* test-alias-id-2\n"
+                        ))
+                        .platformId("aws")
+                        .connections(prepareExpectedConnections(mappingConfig))
+                        .states(List.of(
+                                DiscoveredState.builder()
+                                        .environmentId(prepareExpectedEnvironmentId(mappingConfig, TEST_ENVIRONMENT_ID))
+                                        .pluginId("aws")
+                                        .build()
+                        ))
+                        .build()
                 )
-        ));
+        );
     }
 
     private ResourceMapper createUnderTest() {
@@ -256,16 +251,17 @@ public class ResourceMapperTest {
         }
     }
 
-    private DiagramConnection prepareExpectedConnection(MappingConfig mappingConfig) {
+    private List<ComponentConnection> prepareExpectedConnections(MappingConfig mappingConfig) {
         if (mappingConfig.createDependenciesForResources) {
-            return DiagramConnection.builder()
-                    .sourceComponentId("test-component-id")
-                    .targetComponentId("aws.ec2-security-group.security-group-sg-12345678901abcdef")
-                    .type(DiagramConnectionTypes.COMPOSITION)
-                    .label("is composed of")
-                    .build();
+            return List.of(
+                    ComponentConnection.builder()
+                            .targetComponentId("test-component-id")
+                            .type(ConnectionTypes.SUPER_COMPONENT)
+                            .label("is composed of")
+                            .build()
+            );
         } else {
-            return null;
+            return List.of();
         }
     }
 

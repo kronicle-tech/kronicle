@@ -39,7 +39,7 @@ public class StructureDiagramCreator {
             Diagram diagram = Diagram.builder()
                     .id("structure-" + String.join("-", ancestorComponentIds))
                     .name("Structure - " + String.join(" - ", ancestorComponentIds))
-                    .description("A diagram that shows the structure of the " + String.join(", ", ancestorComponentIds) + " component" + (ancestorComponentIds.size() != 1 ? "s" : ""))
+                    .description("An auto-generated diagram that shows the structure of the " + String.join(", ", ancestorComponentIds) + " component" + (ancestorComponentIds.size() != 1 ? "s" : ""))
                     .connections(diagramConnections)
                     .build();
             diagrams.add(diagram);
@@ -99,8 +99,9 @@ public class StructureDiagramCreator {
     }
 
     private List<String> getAncestorComponentIds(List<DiagramConnection> diagramConnections) {
-        Set<String> ancestorComponentIds = getSuperComponentIds(diagramConnections);
+        Set<String> superComponentIds = getSuperComponentIds(diagramConnections);
         Set<String> subComponentIds = getSubComponentIds(diagramConnections);
+        Set<String> ancestorComponentIds = new HashSet<>(superComponentIds);
         ancestorComponentIds.removeAll(subComponentIds);
         return ancestorComponentIds.stream()
                 .sorted()

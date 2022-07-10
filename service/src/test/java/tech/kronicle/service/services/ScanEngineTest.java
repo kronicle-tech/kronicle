@@ -58,6 +58,8 @@ public class ScanEngineTest {
     @Mock
     private MasterTracingDataFinder masterTracingDataFinder;
     @Mock
+    private MasterDiagramFinder masterDiagramFinder;
+    @Mock
     private GraphProcessor graphProcessor;
     @Mock
     private ComponentAliasMapCreator componentAliasMapCreator;
@@ -76,6 +78,7 @@ public class ScanEngineTest {
         underTest = new ScanEngine(
                 masterComponentFinder,
                 masterTracingDataFinder,
+                masterDiagramFinder,
                 graphProcessor,
                 componentAliasMapCreator,
                 componentAliasResolver,
