@@ -2,10 +2,7 @@ package tech.kronicle.service.services;
 
 import org.pf4j.PluginManager;
 import org.springframework.stereotype.Service;
-import tech.kronicle.pluginapi.finders.ComponentFinder;
-import tech.kronicle.pluginapi.finders.Finder;
-import tech.kronicle.pluginapi.finders.RepoFinder;
-import tech.kronicle.pluginapi.finders.TracingDataFinder;
+import tech.kronicle.pluginapi.finders.*;
 
 import java.util.List;
 
@@ -31,5 +28,9 @@ public class FinderExtensionRegistry extends BaseExtensionRegistry<Finder> {
 
     public List<TracingDataFinder> getTracingDataFinders() {
         return getItems(TracingDataFinder.class);
+    }
+
+    public List<DiagramFinder> getDiagramFinders() {
+        return getItems(DiagramFinder.class);
     }
 }
