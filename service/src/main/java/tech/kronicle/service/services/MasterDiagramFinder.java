@@ -4,20 +4,14 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import tech.kronicle.pluginapi.finders.DiagramFinder;
-import tech.kronicle.pluginapi.finders.models.ComponentsAndDiagrams;
 import tech.kronicle.pluginapi.scanners.models.Output;
-import tech.kronicle.sdk.models.Component;
 import tech.kronicle.sdk.models.ComponentMetadata;
 import tech.kronicle.sdk.models.Diagram;
 
 import java.util.Collection;
 import java.util.List;
-import java.util.Set;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
 
 import static java.util.stream.Collectors.toUnmodifiableList;
-import static tech.kronicle.utils.StreamUtils.distinctByKey;
 
 @Service
 @Slf4j
@@ -31,6 +25,7 @@ public class MasterDiagramFinder {
         return registry.getDiagramFinders().stream()
                 .map(finder -> executeFinder(finder, componentMetadata))
                 .flatMap(Collection::stream)
+                .map(diagram -> diagram.withDiscovered(true))
                 .collect(toUnmodifiableList());
     }
 
@@ -38,7 +33,7 @@ public class MasterDiagramFinder {
         Output<List<Diagram>, Void> output = executor.executeFinder(finder, null, componentMetadata);
         if (output.success()) {
             log.info(
-                    "Component finder {} found {} diagrams",
+                    "Diagram finder {} found {} diagrams",
                     finder.id(),
                     output.getOutput().size()
             );
