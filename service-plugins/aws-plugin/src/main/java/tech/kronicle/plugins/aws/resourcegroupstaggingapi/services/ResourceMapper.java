@@ -51,7 +51,7 @@ public class ResourceMapper {
                 .teams(getTeam(resource))
                 .description(getDescription(resource, analysedArn, aliases))
                 .platformId("aws")
-                .connections(mapResourceToConnections(resource))
+                .connections(mapResourceToConnections(environmentId, resource))
                 .states(List.of(
                         DiscoveredState.builder()
                                 .environmentId(getEnvironmentId(resource, environmentId))
@@ -65,7 +65,10 @@ public class ResourceMapper {
         return "aws." + toKebabCase(analysedArn.getDerivedResourceType());
     }
 
-    private List<ComponentConnection> mapResourceToConnections(ResourceGroupsTaggingApiResource resource) {
+    private List<ComponentConnection> mapResourceToConnections(
+            String environmentId,
+            ResourceGroupsTaggingApiResource resource
+    ) {
         if (!config.getCreateDependenciesForResources()) {
             return List.of();
         }
@@ -76,6 +79,7 @@ public class ResourceMapper {
         return List.of(ComponentConnection.builder()
                 .targetComponentId(componentTag.get())
                 .type(ConnectionTypes.SUPER_COMPONENT)
+                .environmentId(environmentId)
                 .label("is composed of")
                 .build());
     }

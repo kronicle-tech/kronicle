@@ -31,6 +31,8 @@ public class DiagramConnection implements ObjectWithReference {
     String targetComponentId;
     @Pattern(regexp = PatternStrings.ID)
     String type;
+    @Pattern(regexp = PatternStrings.ID)
+    String environmentId;
     String label;
     String description;
     List<@Valid Tag> tags;
@@ -38,13 +40,16 @@ public class DiagramConnection implements ObjectWithReference {
     public DiagramConnection(
             String sourceComponentId,
             String targetComponentId,
-            String type, String label,
+            String type,
+            String environmentId,
+            String label,
             String description,
             List<@Valid Tag> tags
     ) {
         this.sourceComponentId = sourceComponentId;
         this.targetComponentId = targetComponentId;
         this.type = type;
+        this.environmentId = environmentId;
         this.label = label;
         this.description = description;
         this.tags = createUnmodifiableList(tags);

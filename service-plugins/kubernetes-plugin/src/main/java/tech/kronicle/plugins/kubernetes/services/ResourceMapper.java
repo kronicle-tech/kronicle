@@ -71,6 +71,7 @@ public class ResourceMapper {
                     ComponentConnection.builder()
                             .targetComponentId(getAppId(environmentId, partOf))
                             .type(ComponentConnectionTypes.SUPER_COMPONENT)
+                            .environmentId(environmentId)
                             .build()
             );
         }
