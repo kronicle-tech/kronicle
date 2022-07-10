@@ -1,7 +1,6 @@
 package tech.kronicle.plugins.kubernetes.client;
 
-import io.kubernetes.client.extended.kubectl.Kubectl;
-import io.kubernetes.client.extended.kubectl.KubectlApiResources;
+import io.kubernetes.client.Discovery;
 import io.kubernetes.client.openapi.ApiClient;
 import io.kubernetes.client.openapi.models.V1ObjectMeta;
 import io.kubernetes.client.util.generic.KubernetesApiResponse;
@@ -30,9 +29,8 @@ public class ApiClientFacadeImpl implements ApiClientFacade {
     @SneakyThrows
     @Override
     public List<ApiResource> getApiResources(ClusterConfig cluster) {
-        KubectlApiResources kubectlApiResources = Kubectl.apiResources();
-        kubectlApiResources.apiClient(getApiClient(cluster));
-        return kubectlApiResources.execute().stream()
+        Discovery discovery = new Discovery(getApiClient(cluster));
+        return discovery.findAll().stream()
                 .map(apiResource -> new ApiResource(
                         apiResource.getKind(),
                         apiResource.getGroup(),
