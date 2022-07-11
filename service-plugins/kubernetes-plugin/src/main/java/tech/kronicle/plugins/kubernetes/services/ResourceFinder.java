@@ -5,6 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import tech.kronicle.plugins.kubernetes.client.ApiClientFacade;
 import tech.kronicle.plugins.kubernetes.config.ClusterConfig;
 import tech.kronicle.plugins.kubernetes.models.ApiResource;
+import tech.kronicle.plugins.kubernetes.models.ApiResourceItem;
 import tech.kronicle.sdk.models.Component;
 
 import javax.inject.Inject;
@@ -29,7 +30,9 @@ public class ResourceFinder {
     }
 
     private Stream<Component> findComponents(ClusterConfig cluster, ApiResource apiResource) {
-        return clientFacade.getApiResourceItems(cluster, apiResource).stream()
+        List<ApiResourceItem> apiResourceItems = clientFacade.getApiResourceItems(cluster, apiResource);
+        log.info("Found {} {}", apiResourceItems.size(), apiResource.getResourcePlural());
+        return apiResourceItems.stream()
                 .map(item -> resourceMapper.mapResource(cluster, apiResource, item));
     }
 }
