@@ -225,12 +225,6 @@ public class GradleScannerTest extends BaseCodebaseScannerTest {
         return state;
     }
 
-    private List<SoftwareRepository> getSoftwareRepositories(Component component) {
-        SoftwareRepositoriesState state = component.getState(SoftwareRepositoriesState.TYPE);
-        assertThat(state).isNotNull();
-        return state.getSoftwareRepositories();
-    }
-
     private List<Software> getSoftwares(Component component) {
         SoftwaresState state = component.getState(SoftwaresState.TYPE);
         assertThat(state).isNotNull();
