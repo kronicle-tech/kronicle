@@ -54,8 +54,6 @@ public class Component implements ObjectWithId, ObjectWithReference {
     @JsonAlias("platform")
     String platformId;
     List<@Valid ComponentConnection> connections;
-    @Deprecated
-    List<@Valid ComponentDependency> dependencies;
     List<@Valid CrossFunctionalRequirement> crossFunctionalRequirements;
     List<@Valid TechDebt> techDebts;
     List<@Valid Doc> docs;
@@ -82,7 +80,6 @@ public class Component implements ObjectWithId, ObjectWithReference {
             List<ComponentTeam> teams,
             String platformId,
             List<ComponentConnection> connections,
-            List<ComponentDependency> dependencies,
             List<CrossFunctionalRequirement> crossFunctionalRequirements,
             List<TechDebt> techDebts,
             List<Doc> docs,
@@ -106,7 +103,6 @@ public class Component implements ObjectWithId, ObjectWithReference {
         this.teams = createUnmodifiableList(teams);
         this.platformId = platformId;
         this.connections = createUnmodifiableList(connections);
-        this.dependencies = createUnmodifiableList(dependencies);
         this.crossFunctionalRequirements = createUnmodifiableList(crossFunctionalRequirements);
         this.techDebts = createUnmodifiableList(techDebts);
         this.docs = createUnmodifiableList(docs);

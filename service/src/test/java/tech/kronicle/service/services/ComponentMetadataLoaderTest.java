@@ -565,10 +565,10 @@ public class ComponentMetadataLoaderTest {
     }
 
     @Test
-    public void loadComponentMetadataShouldLogAnErrorForAComponentWithANonExistentDependency() {
+    public void loadComponentMetadataShouldLogAnErrorForAComponentWithANonExistentConnection() {
         // Given
         Component component1 = createTestComponentBuilder(1, 1)
-                .dependencies(List.of(ComponentDependency.builder().targetComponentId("test-component-id-2").build()))
+                .connections(List.of(ComponentConnection.builder().targetComponentId("test-component-id-2").build()))
                 .build();
         ComponentMetadata componentMetadata = ComponentMetadata.builder()
                 .componentTypes(List.of(createTestComponentType(1)))
@@ -585,7 +585,7 @@ public class ComponentMetadataLoaderTest {
                 new SimplifiedLogEvent(Level.INFO, "Loaded 0 areas"),
                 new SimplifiedLogEvent(Level.INFO, "Loaded 0 teams"),
                 new SimplifiedLogEvent(Level.ERROR,
-                        "Cannot find target component test-component-id-2 for dependency of component test-component-id-1"),
+                        "Cannot find target component test-component-id-2 for connection of component test-component-id-1"),
                 new SimplifiedLogEvent(Level.INFO, "Loaded 1 components"),
                 new SimplifiedLogEvent(Level.INFO, "Loaded 0 diagrams")
         );

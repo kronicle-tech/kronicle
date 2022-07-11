@@ -116,9 +116,9 @@ public class ComponentMetadataLoader {
             if (nonNull(component.getPlatformId()) && !platforms.containsKey(component.getPlatformId())) {
                 log.error("Cannot find platform {} for component {}", component.getPlatformId(), component.getId());
             }
-            component.getDependencies().forEach(dependency -> {
-                if (!componentIds.contains(dependency.getTargetComponentId())) {
-                    log.error("Cannot find target component {} for dependency of component {}", dependency.getTargetComponentId(), component.getId());
+            component.getConnections().forEach(connection -> {
+                if (!componentIds.contains(connection.getTargetComponentId())) {
+                    log.error("Cannot find target component {} for connection of component {}", connection.getTargetComponentId(), component.getId());
                 }
             });
         };

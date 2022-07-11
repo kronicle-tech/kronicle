@@ -185,18 +185,6 @@ public class ComponentTest {
     }
 
     @Test
-    public void constructorShouldMakeDependenciesAnUnmodifiableList() {
-        // Given
-        Component underTest = Component.builder().dependencies(new ArrayList<>()).build();
-
-        // When
-        Throwable thrown = catchThrowable(() -> underTest.getDependencies().add(ComponentDependency.builder().build()));
-
-        // Then
-        assertThat(thrown).isInstanceOf(UnsupportedOperationException.class);
-    }
-
-    @Test
     public void constructorShouldMakeScannerErrorsAnUnmodifiableList() {
         // Given
         Component underTest = Component.builder().scannerErrors(new ArrayList<>()).build();
