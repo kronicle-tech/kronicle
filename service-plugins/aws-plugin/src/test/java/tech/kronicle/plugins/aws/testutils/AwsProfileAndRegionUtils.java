@@ -16,8 +16,8 @@ public final class AwsProfileAndRegionUtils {
                         createRegion(profileNumber, 1),
                         createRegion(profileNumber, 2)
                 ),
-                "test-environment-id-" + profileNumber
-        );
+                "test-environment-id-" + profileNumber,
+                null);
     }
 
     public static String createRegion(int profileNumber, int regionNumber) {

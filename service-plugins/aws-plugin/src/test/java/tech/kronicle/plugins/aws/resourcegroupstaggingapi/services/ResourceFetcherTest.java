@@ -27,8 +27,8 @@ public class ResourceFetcherTest {
                         "test-secret-access-key",
                         null,
                         null,
-                        null
-                ),
+                        null,
+                        null),
                 "test-region"
         );
 
@@ -56,8 +56,8 @@ public class ResourceFetcherTest {
                         "test-secret-access-key",
                         null,
                         null,
-                        null
-                ),
+                        null,
+                        null),
                 "test-region"
         );
         List<String> resourceTypeFilters = List.of(

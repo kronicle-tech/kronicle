@@ -3,6 +3,7 @@ package tech.kronicle.plugins.aws.resourcegroupstaggingapi.services;
 import lombok.RequiredArgsConstructor;
 import tech.kronicle.plugins.aws.AwsPlugin;
 import tech.kronicle.plugins.aws.config.AwsConfig;
+import tech.kronicle.plugins.aws.config.AwsProfileConfig;
 import tech.kronicle.plugins.aws.constants.TagKeys;
 import tech.kronicle.plugins.aws.resourcegroupstaggingapi.models.ResourceGroupsTaggingApiResource;
 import tech.kronicle.plugins.aws.resourcegroupstaggingapi.models.ResourceGroupsTaggingApiTag;
@@ -14,10 +15,14 @@ import javax.inject.Inject;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
-import java.util.stream.Collectors;
+import java.util.Set;
 
+import static java.util.Objects.nonNull;
+import static java.util.stream.Collectors.toList;
 import static java.util.stream.Collectors.toUnmodifiableList;
+import static java.util.stream.Collectors.toUnmodifiableSet;
 import static tech.kronicle.common.CaseUtils.toKebabCase;
 import static tech.kronicle.plugins.aws.resourcegroupstaggingapi.utils.ResourceUtils.getOptionalResourceTagValue;
 import static tech.kronicle.plugins.aws.utils.ArnAnalyser.analyseArn;
@@ -28,21 +33,25 @@ public class ResourceMapper {
     private final AwsConfig config;
 
     public List<Component> mapResourcesToComponents(
-            String environmentId,
+            AwsProfileConfig profile,
             List<ResourceGroupsTaggingApiResource> resources
     ) {
         return resources.stream()
-                .map(resource -> mapResourceToComponent(environmentId, resource))
-                .collect(Collectors.toList());
+                .map(resource -> mapResourceToComponent(profile, resource))
+                .filter(Objects::nonNull)
+                .collect(toList());
     }
 
-    private Component mapResourceToComponent(String environmentId, ResourceGroupsTaggingApiResource resource) {
+    private Component mapResourceToComponent(AwsProfileConfig profile, ResourceGroupsTaggingApiResource resource) {
+        if (resourcesWithSupportedMetadataOnly(profile) && !resourceHasSupportedMetadata(resource)) {
+            return null;
+        }
         AnalysedArn analysedArn = analyseArn(resource.getArn());
         Optional<String> nameTag = getNameTag(resource);
         String name = getName(nameTag, analysedArn);
         Optional<String> aliasesTag = getAliasesTag(resource);
         List<Alias> aliases = getAliases(analysedArn, name, aliasesTag);
-        String updatedEnvironmentId1 = getEnvironmentId(resource, environmentId);
+        String updatedEnvironmentId1 = getEnvironmentId(resource, profile.getEnvironmentId());
         return Component.builder()
                 .id("aws." + updatedEnvironmentId1 + "." + toKebabCase(analysedArn.getDerivedResourceType()) + "." + toKebabCase(analysedArn.getResourceId()))
                 .aliases(aliases)
@@ -60,6 +69,26 @@ public class ResourceMapper {
                                 .build()
                 ))
                 .build();
+    }
+
+    private boolean resourcesWithSupportedMetadataOnly(AwsProfileConfig profile) {
+        Boolean value = profile.getApiResourcesWithSupportedMetadataOnly();
+        return nonNull(value) ? value : false;
+    }
+
+    private boolean resourceHasSupportedMetadata(ResourceGroupsTaggingApiResource resource) {
+        Set<String> tagKeys = resource.getTags().stream()
+                .map(ResourceGroupsTaggingApiTag::getKey)
+                .collect(toUnmodifiableSet());
+        Set<String> supportedTagKeys = Set.of(
+                config.getTagKeys().getAliases(),
+                config.getTagKeys().getComponent(),
+                config.getTagKeys().getDescription(),
+                config.getTagKeys().getEnvironment(),
+                config.getTagKeys().getTeam()
+        );
+        return supportedTagKeys.stream()
+                .anyMatch(tagKeys::contains);
     }
 
     private String mapType(AnalysedArn analysedArn) {
@@ -111,7 +140,7 @@ public class ResourceMapper {
         return aliases.stream()
                 .map(alias -> Alias.builder().id(alias).build())
                 .distinct()
-                .collect(Collectors.toList());
+                .collect(toList());
     }
 
     private List<String> getAliasesFromTagValue(Optional<String> aliasesTag) {

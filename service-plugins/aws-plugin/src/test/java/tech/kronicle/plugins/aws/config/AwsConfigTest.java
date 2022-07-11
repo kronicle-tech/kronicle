@@ -25,7 +25,7 @@ public class AwsConfigTest {
 
         // When
         Throwable thrown = catchThrowable(() -> underTest.getProfiles().add(
-                new AwsProfileConfig(null, null, null, null, null)
+                new AwsProfileConfig(null, null, null, null, null, null)
         ));
 
         // Then
