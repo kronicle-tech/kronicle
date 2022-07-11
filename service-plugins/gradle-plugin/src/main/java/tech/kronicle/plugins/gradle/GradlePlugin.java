@@ -2,7 +2,6 @@ package tech.kronicle.plugins.gradle;
 
 import com.google.inject.Module;
 import org.pf4j.PluginWrapper;
-import tech.kronicle.gradlestaticanalyzer.config.GradleStaticAnalyzerConfig;
 import tech.kronicle.pluginguice.KronicleGuicePlugin;
 import tech.kronicle.plugins.gradle.guice.GuiceModule;
 
@@ -23,6 +22,6 @@ public class GradlePlugin extends KronicleGuicePlugin {
 
     @Override
     public Class<?> getConfigType() {
-        return GradleStaticAnalyzerConfig.class;
+        return null;
     }
 }

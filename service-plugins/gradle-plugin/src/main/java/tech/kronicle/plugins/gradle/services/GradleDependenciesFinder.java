@@ -1,8 +1,6 @@
 package tech.kronicle.plugins.gradle.services;
 
 import lombok.RequiredArgsConstructor;
-import tech.kronicle.gradlestaticanalyzer.GradleAnalysis;
-import tech.kronicle.gradlestaticanalyzer.GradleStaticAnalyzer;
 import tech.kronicle.plugins.gradle.GradlePlugin;
 import tech.kronicle.plugins.gradle.GradleScanner;
 import tech.kronicle.sdk.models.*;
@@ -15,32 +13,30 @@ import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static java.util.Objects.nonNull;
 import static java.util.stream.Collectors.toUnmodifiableList;
 
 @RequiredArgsConstructor(onConstructor = @__({@Inject}))
 public class GradleDependenciesFinder {
 
     private final DependencyFileAnalyzer dependencyFileAnalyzer;
-    private final GradleStaticAnalyzer gradleStaticAnalyzer;
+    private final GradleWrapperFinder gradleWrapperFinder;
 
     public List<ComponentState> findDependencies(Path dir) {
-        GradleAnalysis gradleAnalysis = analyzeCodebase(dir);
-
-        return createStates(gradleAnalysis);
+        List<Software> softwares = analyzeCodebase(dir);
+        return createStates(softwares);
     }
 
-    private GradleAnalysis analyzeCodebase(Path dir) {
+    private List<Software> analyzeCodebase(Path dir) {
         List<Path> dependencyFiles = dependencyFileAnalyzer.findDependencyFiles(dir);
 
-        if (!dependencyFiles.isEmpty()) {
-            return new GradleAnalysis(
-                    true,
-                    List.of(),
-                    analyzeDependencyFiles(dependencyFiles)
-            );
-        } else {
-            return analyzeBuildScripts(dir);
+        List<Software> softwares = new ArrayList<>();
+        Software gradleWrapper = gradleWrapperFinder.findGradleWrapper(dir);
+        if (nonNull(gradleWrapper)) {
+            softwares.add(gradleWrapper);
         }
+        softwares.addAll(analyzeDependencyFiles(dependencyFiles));
+        return softwares;
     }
 
     private List<Software> analyzeDependencyFiles(List<Path> dependencyFiles) {
@@ -51,37 +47,20 @@ public class GradleDependenciesFinder {
                 .collect(toUnmodifiableList());
     }
 
-    private GradleAnalysis analyzeBuildScripts(Path dir) {
-        return gradleStaticAnalyzer.analyzeCodebase(dir);
-    }
-
-    private List<SoftwareRepository> setScannerIdOnSoftwareRepositories(List<SoftwareRepository> softwareRepositories) {
-        return softwareRepositories.stream()
-                .map(it -> it.withScannerId(GradleScanner.ID))
-                .collect(Collectors.toList());
-    }
-
     private List<Software> setScannerIdOnSoftware(List<Software> software) {
         return software.stream()
                 .map(it -> it.withScannerId(GradleScanner.ID))
                 .collect(Collectors.toList());
     }
 
-    private List<ComponentState> createStates(GradleAnalysis gradleAnalysis) {
+    private List<ComponentState> createStates(List<Software> softwares) {
         List<ComponentState> states = new ArrayList<>();
-        states.add(new GradleState(GradlePlugin.ID, gradleAnalysis.getGradleIsUsed()));
+        states.add(new GradleState(GradlePlugin.ID, !softwares.isEmpty()));
 
-        if (!gradleAnalysis.getSoftwareRepositories().isEmpty()) {
-            states.add(new SoftwareRepositoriesState(
-                    GradlePlugin.ID,
-                    setScannerIdOnSoftwareRepositories(gradleAnalysis.getSoftwareRepositories())
-            ));
-        }
-
-        if (!gradleAnalysis.getSoftware().isEmpty()) {
+        if (!softwares.isEmpty()) {
             states.add(new SoftwaresState(
                     GradlePlugin.ID,
-                    setScannerIdOnSoftware(gradleAnalysis.getSoftware())
+                    setScannerIdOnSoftware(softwares)
             ));
         }
         return states;

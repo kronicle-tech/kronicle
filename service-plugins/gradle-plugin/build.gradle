@@ -20,12 +20,6 @@ dependencies {
     implementation project(":service-plugin-guice")
     implementation "com.fasterxml.jackson.dataformat:jackson-dataformat-yaml"
 
-    implementation("tech.kronicle:gradle-static-analyzer:$gradleStaticAnalyzerVersion") {
-        exclude group: 'tech.kronicle', module: 'kronicle-common'
-        exclude group: 'tech.kronicle', module: 'kronicle-sdk'
-        exclude group: 'tech.kronicle', module: 'kronicle-utils'
-    }
-
     testImplementation project(":service-plugin-test-utils")
     testImplementation "org.junit.jupiter:junit-jupiter"
     testImplementation "org.junit.jupiter:junit-jupiter-params"
