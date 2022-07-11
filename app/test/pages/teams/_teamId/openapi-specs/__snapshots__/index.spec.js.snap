@@ -9,7 +9,7 @@ exports[`Index when Get Team service endpoint returns an team when the team has 
   >
     Test Team Name 1 - OpenAPI Specs
   </h1>
-
+   
   <div
     class="my-3"
   >
@@ -18,94 +18,94 @@ exports[`Index when Get Team service endpoint returns an team when the team has 
       href="/teams/test-team-id-1"
       target="_self"
     >
-       Info
+       Info 
     </a>
-
+     
     <a
       class="btn my-1 btn-secondary"
       href="/teams/test-team-id-1/diagrams"
       target="_self"
     >
-
+      
     Diagrams
-
+  
     </a>
-
+     
     <a
       class="btn my-1 btn-secondary"
       href="/teams/test-team-id-1/docs"
       target="_self"
     >
-       Docs
+       Docs 
     </a>
-
+     
     <a
       class="btn my-1 btn-secondary"
       href="/teams/test-team-id-1/components"
       target="_self"
     >
-
+      
     Components
-
+  
     </a>
-
+     
     <a
       class="btn my-1 btn-secondary"
       href="/teams/test-team-id-1/cross-functional-requirements"
       target="_self"
     >
-
+      
     Cross Functional Requirements
-
+  
     </a>
-
+     
     <a
       class="btn my-1 btn-secondary"
       href="/teams/test-team-id-1/tech-debts"
       target="_self"
     >
-
+      
     Tech Debts
-
+  
     </a>
-
+     
     <a
       class="btn my-1 btn-secondary"
       href="/teams/test-team-id-1/openapi-specs"
       target="_self"
     >
-
+      
     OpenAPI
-
+  
     </a>
-
+     
     <a
       class="btn my-1 btn-secondary"
       href="/teams/test-team-id-1/graphql-schemas"
       target="_self"
     >
-
+      
     GraphQL
-
+  
     </a>
-
+     
     <a
       class="btn my-1 btn-secondary"
       href="/teams/test-team-id-1/tests"
       target="_self"
     >
-       Tests
+       Tests 
     </a>
-
+     
     <a
       class="btn my-1 btn-secondary"
       href="/teams/test-team-id-1/errors"
       target="_self"
     >
-       Errors
+       Errors 
     </a>
   </div>
-
+   
   <div>
     <div
       class="card my-3"
@@ -123,20 +123,20 @@ exports[`Index when Get Team service endpoint returns an team when the team has 
           >
             4
           </span>
-
+          
         OpenAPI specs
-
+      
         </div>
       </div>
       <!---->
       <!---->
     </div>
-
+     
     <div
       class="mt-3 mb-4"
       components="[object Object],[object Object],[object Object]"
     >
-
+       
       <button
         aria-controls="filters"
         aria-expanded="false"
@@ -159,9 +159,9 @@ exports[`Index when Get Team service endpoint returns an team when the team has 
           <g />
         </svg>
          Filters
-
+  
       </button>
-
+       
       <transition-stub
         class="mt-3"
         css="true"
@@ -180,13 +180,13 @@ exports[`Index when Get Team service endpoint returns an team when the team has 
           <div
             class="card-columns"
           >
-
+             
             <!---->
-
+             
             <!---->
-
+             
             <!---->
-
+             
             <div
               class="card bg-secondary"
             >
@@ -339,7 +339,7 @@ exports[`Index when Get Team service endpoint returns an team when the team has 
               <!---->
               <!---->
             </div>
-
+             
             <div
               class="card bg-secondary"
             >
@@ -492,7 +492,7 @@ exports[`Index when Get Team service endpoint returns an team when the team has 
               <!---->
               <!---->
             </div>
-
+             
             <div
               class="card bg-secondary"
             >
@@ -588,7 +588,7 @@ exports[`Index when Get Team service endpoint returns an team when the team has 
               <!---->
               <!---->
             </div>
-
+             
             <div
               class="card bg-secondary"
             >
@@ -646,7 +646,7 @@ exports[`Index when Get Team service endpoint returns an team when the team has 
               <!---->
               <!---->
             </div>
-
+             
             <div
               class="card bg-secondary"
             >
@@ -708,7 +708,7 @@ exports[`Index when Get Team service endpoint returns an team when the team has 
         </div>
       </transition-stub>
     </div>
-
+     
     <table
       class="table table-dark"
     >
@@ -719,25 +719,25 @@ exports[`Index when Get Team service endpoint returns an team when the team has 
           >
             Component
           </th>
-
+           
           <th
             class="teams"
           >
             Teams
           </th>
-
+           
           <th
             class="action"
           >
             Action
           </th>
-
+           
           <th
             class="location"
           >
             Location
           </th>
-
+           
           <th
             class="description"
           >
@@ -745,7 +745,7 @@ exports[`Index when Get Team service endpoint returns an team when the team has 
           </th>
         </tr>
       </thead>
-
+       
       <tbody>
         <tr>
           <td
@@ -757,7 +757,7 @@ exports[`Index when Get Team service endpoint returns an team when the team has 
               Test Component Name 1
             </a>
           </td>
-
+           
           <td
             class="teams"
           >
@@ -769,9 +769,9 @@ exports[`Index when Get Team service endpoint returns an team when the team has 
                 >
                   test-team-id-1-1
                 </a>
-
+                 
                 <!---->
-
+                 
                 <!---->
               </li>
               <li>
@@ -781,14 +781,14 @@ exports[`Index when Get Team service endpoint returns an team when the team has 
                 >
                   test-team-id-1-2
                 </a>
-
+                 
                 <!---->
-
+                 
                 <!---->
               </li>
             </ul>
           </td>
-
+           
           <td
             class="action table-secondary"
           >
@@ -800,20 +800,20 @@ exports[`Index when Get Team service endpoint returns an team when the team has 
               </span>
             </div>
           </td>
-
+           
           <td
             class="location"
           >
-
+            
         https://example.com/test-openapi-spec-1-1
-
+      
           </td>
-
+           
           <td
             class="description"
           >
             <div>
-
+              
 
               <p>
                 Test OpenAPI Spec Description 1 1
@@ -831,7 +831,7 @@ exports[`Index when Get Team service endpoint returns an team when the team has 
               Test Component Name 1
             </a>
           </td>
-
+           
           <td
             class="teams"
           >
@@ -843,9 +843,9 @@ exports[`Index when Get Team service endpoint returns an team when the team has 
                 >
                   test-team-id-1-1
                 </a>
-
+                 
                 <!---->
-
+                 
                 <!---->
               </li>
               <li>
@@ -855,14 +855,14 @@ exports[`Index when Get Team service endpoint returns an team when the team has 
                 >
                   test-team-id-1-2
                 </a>
-
+                 
                 <!---->
-
+                 
                 <!---->
               </li>
             </ul>
           </td>
-
+           
           <td
             class="action table-secondary"
           >
@@ -874,20 +874,20 @@ exports[`Index when Get Team service endpoint returns an team when the team has 
               </span>
             </div>
           </td>
-
+           
           <td
             class="location"
           >
-
+            
         https://example.com/test-openapi-spec-1-2
-
+      
           </td>
-
+           
           <td
             class="description"
           >
             <div>
-
+              
 
               <p>
                 Test OpenAPI Spec Description 1 2
@@ -905,7 +905,7 @@ exports[`Index when Get Team service endpoint returns an team when the team has 
               Test Component Name 3
             </a>
           </td>
-
+           
           <td
             class="teams"
           >
@@ -917,9 +917,9 @@ exports[`Index when Get Team service endpoint returns an team when the team has 
                 >
                   test-team-id-3-1
                 </a>
-
+                 
                 <!---->
-
+                 
                 <!---->
               </li>
               <li>
@@ -929,14 +929,14 @@ exports[`Index when Get Team service endpoint returns an team when the team has 
                 >
                   test-team-id-3-2
                 </a>
-
+                 
                 <!---->
-
+                 
                 <!---->
               </li>
             </ul>
           </td>
-
+           
           <td
             class="action table-secondary"
           >
@@ -948,20 +948,20 @@ exports[`Index when Get Team service endpoint returns an team when the team has 
               </span>
             </div>
           </td>
-
+           
           <td
             class="location"
           >
-
+            
         https://example.com/test-openapi-spec-3-1
-
+      
           </td>
-
+           
           <td
             class="description"
           >
             <div>
-
+              
 
               <p>
                 Test OpenAPI Spec Description 3 1
@@ -979,7 +979,7 @@ exports[`Index when Get Team service endpoint returns an team when the team has 
               Test Component Name 3
             </a>
           </td>
-
+           
           <td
             class="teams"
           >
@@ -991,9 +991,9 @@ exports[`Index when Get Team service endpoint returns an team when the team has 
                 >
                   test-team-id-3-1
                 </a>
-
+                 
                 <!---->
-
+                 
                 <!---->
               </li>
               <li>
@@ -1003,14 +1003,14 @@ exports[`Index when Get Team service endpoint returns an team when the team has 
                 >
                   test-team-id-3-2
                 </a>
-
+                 
                 <!---->
-
+                 
                 <!---->
               </li>
             </ul>
           </td>
-
+           
           <td
             class="action table-secondary"
           >
@@ -1022,20 +1022,20 @@ exports[`Index when Get Team service endpoint returns an team when the team has 
               </span>
             </div>
           </td>
-
+           
           <td
             class="location"
           >
-
+            
         https://example.com/test-openapi-spec-3-2
-
+      
           </td>
-
+           
           <td
             class="description"
           >
             <div>
-
+              
 
               <p>
                 Test OpenAPI Spec Description 3 2
@@ -1058,7 +1058,7 @@ exports[`Index when Get Team service endpoint returns an team when the team has 
   >
     Test Team Name 1 - OpenAPI Specs
   </h1>
-
+   
   <div
     class="my-3"
   >
@@ -1067,94 +1067,94 @@ exports[`Index when Get Team service endpoint returns an team when the team has 
       href="/teams/test-team-id-1"
       target="_self"
     >
-       Info
+       Info 
     </a>
-
+     
     <a
       class="btn my-1 btn-secondary"
       href="/teams/test-team-id-1/diagrams"
       target="_self"
     >
-
+      
     Diagrams
-
+  
     </a>
-
+     
     <a
       class="btn my-1 btn-secondary"
       href="/teams/test-team-id-1/docs"
       target="_self"
     >
-       Docs
+       Docs 
     </a>
-
+     
     <a
       class="btn my-1 btn-secondary"
       href="/teams/test-team-id-1/components"
       target="_self"
     >
-
+      
     Components
-
+  
     </a>
-
+     
     <a
       class="btn my-1 btn-secondary"
       href="/teams/test-team-id-1/cross-functional-requirements"
       target="_self"
     >
-
+      
     Cross Functional Requirements
-
+  
     </a>
-
+     
     <a
       class="btn my-1 btn-secondary"
       href="/teams/test-team-id-1/tech-debts"
       target="_self"
     >
-
+      
     Tech Debts
-
+  
     </a>
-
+     
     <a
       class="btn my-1 btn-secondary"
       href="/teams/test-team-id-1/openapi-specs"
       target="_self"
     >
-
+      
     OpenAPI
-
+  
     </a>
-
+     
     <a
       class="btn my-1 btn-secondary"
       href="/teams/test-team-id-1/graphql-schemas"
       target="_self"
     >
-
+      
     GraphQL
-
+  
     </a>
-
+     
     <a
       class="btn my-1 btn-secondary"
       href="/teams/test-team-id-1/tests"
       target="_self"
     >
-       Tests
+       Tests 
     </a>
-
+     
     <a
       class="btn my-1 btn-secondary"
       href="/teams/test-team-id-1/errors"
       target="_self"
     >
-       Errors
+       Errors 
     </a>
   </div>
-
+   
   <div>
     <div
       class="card my-3"
@@ -1172,20 +1172,20 @@ exports[`Index when Get Team service endpoint returns an team when the team has 
           >
             0
           </span>
-
+          
         OpenAPI specs
-
+      
         </div>
       </div>
       <!---->
       <!---->
     </div>
-
+     
     <div
       class="mt-3 mb-4"
       components="[object Object],[object Object],[object Object]"
     >
-
+       
       <button
         aria-controls="filters"
         aria-expanded="false"
@@ -1208,9 +1208,9 @@ exports[`Index when Get Team service endpoint returns an team when the team has 
           <g />
         </svg>
          Filters
-
+  
       </button>
-
+       
       <transition-stub
         class="mt-3"
         css="true"
@@ -1229,13 +1229,13 @@ exports[`Index when Get Team service endpoint returns an team when the team has 
           <div
             class="card-columns"
           >
-
+             
             <!---->
-
+             
             <!---->
-
+             
             <!---->
-
+             
             <div
               class="card bg-secondary"
             >
@@ -1388,7 +1388,7 @@ exports[`Index when Get Team service endpoint returns an team when the team has 
               <!---->
               <!---->
             </div>
-
+             
             <div
               class="card bg-secondary"
             >
@@ -1541,7 +1541,7 @@ exports[`Index when Get Team service endpoint returns an team when the team has 
               <!---->
               <!---->
             </div>
-
+             
             <div
               class="card bg-secondary"
             >
@@ -1637,7 +1637,7 @@ exports[`Index when Get Team service endpoint returns an team when the team has 
               <!---->
               <!---->
             </div>
-
+             
             <div
               class="card bg-secondary"
             >
@@ -1695,7 +1695,7 @@ exports[`Index when Get Team service endpoint returns an team when the team has 
               <!---->
               <!---->
             </div>
-
+             
             <div
               class="card bg-secondary"
             >
@@ -1757,7 +1757,7 @@ exports[`Index when Get Team service endpoint returns an team when the team has 
         </div>
       </transition-stub>
     </div>
-
+     
     <!---->
   </div>
 </div>
@@ -1772,7 +1772,7 @@ exports[`Index when Get Team service endpoint returns an team when the team has 
   >
     Test Team Name 1 - OpenAPI Specs
   </h1>
-
+   
   <div
     class="my-3"
   >
@@ -1781,94 +1781,94 @@ exports[`Index when Get Team service endpoint returns an team when the team has 
       href="/teams/test-team-id-1"
       target="_self"
     >
-       Info
+       Info 
     </a>
-
+     
     <a
       class="btn my-1 btn-secondary"
       href="/teams/test-team-id-1/diagrams"
       target="_self"
     >
-
+      
     Diagrams
-
+  
     </a>
-
+     
     <a
       class="btn my-1 btn-secondary"
       href="/teams/test-team-id-1/docs"
       target="_self"
     >
-       Docs
+       Docs 
     </a>
-
+     
     <a
       class="btn my-1 btn-secondary"
       href="/teams/test-team-id-1/components"
       target="_self"
     >
-
+      
     Components
-
+  
     </a>
-
+     
     <a
       class="btn my-1 btn-secondary"
       href="/teams/test-team-id-1/cross-functional-requirements"
       target="_self"
     >
-
+      
     Cross Functional Requirements
-
+  
     </a>
-
+     
     <a
       class="btn my-1 btn-secondary"
       href="/teams/test-team-id-1/tech-debts"
       target="_self"
     >
-
+      
     Tech Debts
-
+  
     </a>
-
+     
     <a
       class="btn my-1 btn-secondary"
       href="/teams/test-team-id-1/openapi-specs"
       target="_self"
     >
-
+      
     OpenAPI
-
+  
     </a>
-
+     
     <a
       class="btn my-1 btn-secondary"
       href="/teams/test-team-id-1/graphql-schemas"
       target="_self"
     >
-
+      
     GraphQL
-
+  
     </a>
-
+     
     <a
       class="btn my-1 btn-secondary"
       href="/teams/test-team-id-1/tests"
       target="_self"
     >
-       Tests
+       Tests 
     </a>
-
+     
     <a
       class="btn my-1 btn-secondary"
       href="/teams/test-team-id-1/errors"
       target="_self"
     >
-       Errors
+       Errors 
     </a>
   </div>
-
+   
   <div>
     <div
       class="card my-3"
@@ -1886,17 +1886,17 @@ exports[`Index when Get Team service endpoint returns an team when the team has 
           >
             0
           </span>
-
+          
         OpenAPI specs
-
+      
         </div>
       </div>
       <!---->
       <!---->
     </div>
-
+     
     <!---->
-
+     
     <!---->
   </div>
 </div>

@@ -12,92 +12,92 @@ exports[`Index when Get Components service endpoint returns an array of multiple
       href="#"
       target="_self"
     >
-
+      
     Components
-
+  
     </a>
-
+     
     <a
       class="btn btn-secondary"
       href="?testOutcome=fail"
       target="_self"
     >
-
+      
     Tests
-
+  
     </a>
-
+     
     <a
       class="btn my-1 btn-secondary"
       href="#"
       target="_self"
     >
-
+      
     Cross Functional Requirements
-
+  
     </a>
-
+     
     <a
       class="btn my-1 btn-secondary"
       href="#"
       target="_self"
     >
-
+      
     Tech Debts
-
+  
     </a>
-
+     
     <a
       class="btn my-1 btn-secondary"
       href="#"
       target="_self"
     >
-
+      
     OpenAPI Specs
-
+  
     </a>
-
+     
     <a
       class="btn my-1 btn-secondary"
       href="#"
       target="_self"
     >
-
+      
     GraphQL Schemas
-
+  
     </a>
-
+     
     <a
       class="btn my-1 btn-secondary"
       href="#"
       target="_self"
     >
-
+      
     Key Software
-
+  
     </a>
-
+     
     <a
       class="btn my-1 btn-secondary"
       href="#"
       target="_self"
     >
-
+      
     Repos
-
+  
     </a>
-
+     
     <a
       class="btn my-1 btn-secondary"
       href="#"
       target="_self"
     >
-
+      
     Errors
-
+  
     </a>
   </div>
-
+   
   <div>
     <div
       class="card my-3"
@@ -108,7 +108,7 @@ exports[`Index when Get Components service endpoint returns an array of multiple
         class="list-group"
       >
         <!---->
-
+         
         <div
           class="list-group-item list-group-item-warning"
         >
@@ -117,12 +117,12 @@ exports[`Index when Get Components service endpoint returns an array of multiple
           >
             2
           </span>
-
+           
           <b>
             High
           </b>
            tech debts
-
+      
         </div>
         <div
           class="list-group-item list-group-item-info"
@@ -132,23 +132,23 @@ exports[`Index when Get Components service endpoint returns an array of multiple
           >
             2
           </span>
-
+           
           <b>
             Medium
           </b>
            tech debts
-
+      
         </div>
       </div>
       <!---->
       <!---->
     </div>
-
+     
     <div
       class="mt-3 mb-4"
       components="[object Object],[object Object],[object Object]"
     >
-
+       
       <button
         aria-controls="filters"
         aria-expanded="false"
@@ -171,9 +171,9 @@ exports[`Index when Get Components service endpoint returns an array of multiple
           <g />
         </svg>
          Filters
-
+  
       </button>
-
+       
       <transition-stub
         class="mt-3"
         css="true"
@@ -192,13 +192,13 @@ exports[`Index when Get Components service endpoint returns an array of multiple
           <div
             class="card-columns"
           >
-
+             
             <!---->
-
+             
             <!---->
-
+             
             <!---->
-
+             
             <div
               class="card bg-secondary"
             >
@@ -351,7 +351,7 @@ exports[`Index when Get Components service endpoint returns an array of multiple
               <!---->
               <!---->
             </div>
-
+             
             <div
               class="card bg-secondary"
             >
@@ -504,7 +504,7 @@ exports[`Index when Get Components service endpoint returns an array of multiple
               <!---->
               <!---->
             </div>
-
+             
             <div
               class="card bg-secondary"
             >
@@ -600,7 +600,7 @@ exports[`Index when Get Components service endpoint returns an array of multiple
               <!---->
               <!---->
             </div>
-
+             
             <div
               class="card bg-secondary"
             >
@@ -658,7 +658,7 @@ exports[`Index when Get Components service endpoint returns an array of multiple
               <!---->
               <!---->
             </div>
-
+             
             <div
               class="card bg-secondary"
             >
@@ -720,7 +720,7 @@ exports[`Index when Get Components service endpoint returns an array of multiple
         </div>
       </transition-stub>
     </div>
-
+     
     <div
       class="card my-3"
     >
@@ -745,31 +745,31 @@ exports[`Index when Get Components service endpoint returns an array of multiple
               >
                 Component
               </th>
-
+               
               <th
                 class="priority"
               >
                 Priority
               </th>
-
+               
               <th
                 class="teams"
               >
                 Teams
               </th>
-
+               
               <th
                 class="description"
               >
                 Description
               </th>
-
+               
               <th
                 class="notes"
               >
                 Notes
               </th>
-
+               
               <th
                 class="links"
               >
@@ -777,7 +777,7 @@ exports[`Index when Get Components service endpoint returns an array of multiple
               </th>
             </tr>
           </thead>
-
+           
           <tbody>
             <tr>
               <td
@@ -789,19 +789,19 @@ exports[`Index when Get Components service endpoint returns an array of multiple
                   Test Component Name 1
                 </a>
               </td>
-
+               
               <td
                 class="priority"
               >
                 <span
                   class="badge badge-warning"
                 >
-
+                  
           High
-
+        
                 </span>
               </td>
-
+               
               <td
                 class="teams"
               >
@@ -813,9 +813,9 @@ exports[`Index when Get Components service endpoint returns an array of multiple
                     >
                       test-team-id-1-1
                     </a>
-
+                     
                     <!---->
-
+                     
                     <!---->
                   </li>
                   <li>
@@ -825,38 +825,38 @@ exports[`Index when Get Components service endpoint returns an array of multiple
                     >
                       test-team-id-1-2
                     </a>
-
+                     
                     <!---->
-
+                     
                     <!---->
                   </li>
                 </ul>
               </td>
-
+               
               <td
                 class="description"
               >
                 <div>
-
+                  
 
                   <p>
                     Test Tech Debt Description 1 2
                   </p>
                 </div>
               </td>
-
+               
               <td
                 class="notes"
               >
                 <div>
-
+                  
 
                   <p>
                     Test Tech Debt Notes 1 2
                   </p>
                 </div>
               </td>
-
+               
               <td
                 class="links"
               >
@@ -868,11 +868,11 @@ exports[`Index when Get Components service endpoint returns an array of multiple
                     >
                       https://example.com/test-tech-debt-link-1-2-1
                     </a>
-
+                     
                     <br />
-
+                     
                     <div>
-
+                      
 
                       <p>
                         Test Tech Debt Link Description 1 2 1
@@ -886,11 +886,11 @@ exports[`Index when Get Components service endpoint returns an array of multiple
                     >
                       https://example.com/test-tech-debt-link-1-2-2
                     </a>
-
+                     
                     <br />
-
+                     
                     <div>
-
+                      
 
                       <p>
                         Test Tech Debt Link Description 1 2 2
@@ -910,19 +910,19 @@ exports[`Index when Get Components service endpoint returns an array of multiple
                   Test Component Name 3
                 </a>
               </td>
-
+               
               <td
                 class="priority"
               >
                 <span
                   class="badge badge-warning"
                 >
-
+                  
           High
-
+        
                 </span>
               </td>
-
+               
               <td
                 class="teams"
               >
@@ -934,9 +934,9 @@ exports[`Index when Get Components service endpoint returns an array of multiple
                     >
                       test-team-id-3-1
                     </a>
-
+                     
                     <!---->
-
+                     
                     <!---->
                   </li>
                   <li>
@@ -946,38 +946,38 @@ exports[`Index when Get Components service endpoint returns an array of multiple
                     >
                       test-team-id-3-2
                     </a>
-
+                     
                     <!---->
-
+                     
                     <!---->
                   </li>
                 </ul>
               </td>
-
+               
               <td
                 class="description"
               >
                 <div>
-
+                  
 
                   <p>
                     Test Tech Debt Description 3 2
                   </p>
                 </div>
               </td>
-
+               
               <td
                 class="notes"
               >
                 <div>
-
+                  
 
                   <p>
                     Test Tech Debt Notes 3 2
                   </p>
                 </div>
               </td>
-
+               
               <td
                 class="links"
               >
@@ -989,11 +989,11 @@ exports[`Index when Get Components service endpoint returns an array of multiple
                     >
                       https://example.com/test-tech-debt-link-3-2-1
                     </a>
-
+                     
                     <br />
-
+                     
                     <div>
-
+                      
 
                       <p>
                         Test Tech Debt Link Description 3 2 1
@@ -1007,11 +1007,11 @@ exports[`Index when Get Components service endpoint returns an array of multiple
                     >
                       https://example.com/test-tech-debt-link-3-2-2
                     </a>
-
+                     
                     <br />
-
+                     
                     <div>
-
+                      
 
                       <p>
                         Test Tech Debt Link Description 3 2 2
@@ -1031,19 +1031,19 @@ exports[`Index when Get Components service endpoint returns an array of multiple
                   Test Component Name 1
                 </a>
               </td>
-
+               
               <td
                 class="priority"
               >
                 <span
                   class="badge badge-info"
                 >
-
+                  
           Medium
-
+        
                 </span>
               </td>
-
+               
               <td
                 class="teams"
               >
@@ -1055,9 +1055,9 @@ exports[`Index when Get Components service endpoint returns an array of multiple
                     >
                       test-team-id-1-1
                     </a>
-
+                     
                     <!---->
-
+                     
                     <!---->
                   </li>
                   <li>
@@ -1067,38 +1067,38 @@ exports[`Index when Get Components service endpoint returns an array of multiple
                     >
                       test-team-id-1-2
                     </a>
-
+                     
                     <!---->
-
+                     
                     <!---->
                   </li>
                 </ul>
               </td>
-
+               
               <td
                 class="description"
               >
                 <div>
-
+                  
 
                   <p>
                     Test Tech Debt Description 1 1
                   </p>
                 </div>
               </td>
-
+               
               <td
                 class="notes"
               >
                 <div>
-
+                  
 
                   <p>
                     Test Tech Debt Notes 1 1
                   </p>
                 </div>
               </td>
-
+               
               <td
                 class="links"
               >
@@ -1110,11 +1110,11 @@ exports[`Index when Get Components service endpoint returns an array of multiple
                     >
                       https://example.com/test-tech-debt-link-1-1-1
                     </a>
-
+                     
                     <br />
-
+                     
                     <div>
-
+                      
 
                       <p>
                         Test Tech Debt Link Description 1 1 1
@@ -1128,11 +1128,11 @@ exports[`Index when Get Components service endpoint returns an array of multiple
                     >
                       https://example.com/test-tech-debt-link-1-1-2
                     </a>
-
+                     
                     <br />
-
+                     
                     <div>
-
+                      
 
                       <p>
                         Test Tech Debt Link Description 1 1 2
@@ -1152,19 +1152,19 @@ exports[`Index when Get Components service endpoint returns an array of multiple
                   Test Component Name 3
                 </a>
               </td>
-
+               
               <td
                 class="priority"
               >
                 <span
                   class="badge badge-info"
                 >
-
+                  
           Medium
-
+        
                 </span>
               </td>
-
+               
               <td
                 class="teams"
               >
@@ -1176,9 +1176,9 @@ exports[`Index when Get Components service endpoint returns an array of multiple
                     >
                       test-team-id-3-1
                     </a>
-
+                     
                     <!---->
-
+                     
                     <!---->
                   </li>
                   <li>
@@ -1188,38 +1188,38 @@ exports[`Index when Get Components service endpoint returns an array of multiple
                     >
                       test-team-id-3-2
                     </a>
-
+                     
                     <!---->
-
+                     
                     <!---->
                   </li>
                 </ul>
               </td>
-
+               
               <td
                 class="description"
               >
                 <div>
-
+                  
 
                   <p>
                     Test Tech Debt Description 3 1
                   </p>
                 </div>
               </td>
-
+               
               <td
                 class="notes"
               >
                 <div>
-
+                  
 
                   <p>
                     Test Tech Debt Notes 3 1
                   </p>
                 </div>
               </td>
-
+               
               <td
                 class="links"
               >
@@ -1231,11 +1231,11 @@ exports[`Index when Get Components service endpoint returns an array of multiple
                     >
                       https://example.com/test-tech-debt-link-3-1-1
                     </a>
-
+                     
                     <br />
-
+                     
                     <div>
-
+                      
 
                       <p>
                         Test Tech Debt Link Description 3 1 1
@@ -1249,11 +1249,11 @@ exports[`Index when Get Components service endpoint returns an array of multiple
                     >
                       https://example.com/test-tech-debt-link-3-1-2
                     </a>
-
+                     
                     <br />
-
+                     
                     <div>
-
+                      
 
                       <p>
                         Test Tech Debt Link Description 3 1 2
@@ -1285,92 +1285,92 @@ exports[`Index when Get Components service endpoint returns an empty array rende
       href="#"
       target="_self"
     >
-
+      
     Components
-
+  
     </a>
-
+     
     <a
       class="btn btn-secondary"
       href="?testOutcome=fail"
       target="_self"
     >
-
+      
     Tests
-
+  
     </a>
-
+     
     <a
       class="btn my-1 btn-secondary"
       href="#"
       target="_self"
     >
-
+      
     Cross Functional Requirements
-
+  
     </a>
-
+     
     <a
       class="btn my-1 btn-secondary"
       href="#"
       target="_self"
     >
-
+      
     Tech Debts
-
+  
     </a>
-
+     
     <a
       class="btn my-1 btn-secondary"
       href="#"
       target="_self"
     >
-
+      
     OpenAPI Specs
-
+  
     </a>
-
+     
     <a
       class="btn my-1 btn-secondary"
       href="#"
       target="_self"
     >
-
+      
     GraphQL Schemas
-
+  
     </a>
-
+     
     <a
       class="btn my-1 btn-secondary"
       href="#"
       target="_self"
     >
-
+      
     Key Software
-
+  
     </a>
-
+     
     <a
       class="btn my-1 btn-secondary"
       href="#"
       target="_self"
     >
-
+      
     Repos
-
+  
     </a>
-
+     
     <a
       class="btn my-1 btn-secondary"
       href="#"
       target="_self"
     >
-
+      
     Errors
-
+  
     </a>
   </div>
-
+   
   <div>
     <div
       class="card my-3"
@@ -1389,16 +1389,16 @@ exports[`Index when Get Components service endpoint returns an empty array rende
             0
           </span>
            tech debts
-
+      
         </div>
-
+         
       </div>
       <!---->
       <!---->
     </div>
-
+     
     <!---->
-
+     
     <div
       class="card my-3"
     >

@@ -9,7 +9,7 @@ exports[`Index when Get Area service endpoint returns an area when the area has 
   >
     Test Area Name 1 - GraphQL Schemas
   </h1>
-
+   
   <div
     class="my-3"
   >
@@ -18,94 +18,94 @@ exports[`Index when Get Area service endpoint returns an area when the area has 
       href="/areas/test-area-id-1"
       target="_self"
     >
-       Info
+       Info 
     </a>
-
+     
     <a
       class="btn my-1 btn-secondary"
       href="/areas/test-area-id-1/diagrams"
       target="_self"
     >
-
+      
     Diagrams
-
+  
     </a>
-
+     
     <a
       class="btn my-1 btn-secondary"
       href="/areas/test-area-id-1/docs"
       target="_self"
     >
-       Docs
+       Docs 
     </a>
-
+     
     <a
       class="btn my-1 btn-secondary"
       href="/areas/test-area-id-1/components"
       target="_self"
     >
-
+      
     Components
-
+  
     </a>
-
+     
     <a
       class="btn my-1 btn-secondary"
       href="/areas/test-area-id-1/cross-functional-requirements"
       target="_self"
     >
-
+      
     Cross Functional Requirements
-
+  
     </a>
-
+     
     <a
       class="btn my-1 btn-secondary"
       href="/areas/test-area-id-1/tech-debts"
       target="_self"
     >
-
+      
     Tech Debts
-
+  
     </a>
-
+     
     <a
       class="btn my-1 btn-secondary"
       href="/areas/test-area-id-1/openapi-specs"
       target="_self"
     >
-
+      
     OpenAPI
-
+  
     </a>
-
+     
     <a
       class="btn my-1 btn-secondary"
       href="/areas/test-area-id-1/graphql-schemas"
       target="_self"
     >
-
+      
     GraphQL
-
+  
     </a>
-
+     
     <a
       class="btn my-1 btn-secondary"
       href="/areas/test-area-id-1/tests"
       target="_self"
     >
-       Tests
+       Tests 
     </a>
-
+     
     <a
       class="btn my-1 btn-secondary"
       href="/areas/test-area-id-1/errors"
       target="_self"
     >
-       Errors
+       Errors 
     </a>
   </div>
-
+   
   <div>
     <div
       class="card my-3"
@@ -123,20 +123,20 @@ exports[`Index when Get Area service endpoint returns an area when the area has 
           >
             0
           </span>
-
+          
         GraphQL schemas
-
+      
         </div>
       </div>
       <!---->
       <!---->
     </div>
-
+     
     <div
       class="mt-3 mb-4"
       components="[object Object],[object Object],[object Object]"
     >
-
+       
       <button
         aria-controls="filters"
         aria-expanded="false"
@@ -159,9 +159,9 @@ exports[`Index when Get Area service endpoint returns an area when the area has 
           <g />
         </svg>
          Filters
-
+  
       </button>
-
+       
       <transition-stub
         class="mt-3"
         css="true"
@@ -180,13 +180,13 @@ exports[`Index when Get Area service endpoint returns an area when the area has 
           <div
             class="card-columns"
           >
-
+             
             <!---->
-
+             
             <!---->
-
+             
             <!---->
-
+             
             <div
               class="card bg-secondary"
             >
@@ -339,7 +339,7 @@ exports[`Index when Get Area service endpoint returns an area when the area has 
               <!---->
               <!---->
             </div>
-
+             
             <div
               class="card bg-secondary"
             >
@@ -492,7 +492,7 @@ exports[`Index when Get Area service endpoint returns an area when the area has 
               <!---->
               <!---->
             </div>
-
+             
             <div
               class="card bg-secondary"
             >
@@ -588,7 +588,7 @@ exports[`Index when Get Area service endpoint returns an area when the area has 
               <!---->
               <!---->
             </div>
-
+             
             <div
               class="card bg-secondary"
             >
@@ -646,7 +646,7 @@ exports[`Index when Get Area service endpoint returns an area when the area has 
               <!---->
               <!---->
             </div>
-
+             
             <div
               class="card bg-secondary"
             >
@@ -708,7 +708,7 @@ exports[`Index when Get Area service endpoint returns an area when the area has 
         </div>
       </transition-stub>
     </div>
-
+     
     <!---->
   </div>
 </div>
@@ -723,7 +723,7 @@ exports[`Index when Get Area service endpoint returns an area when the area has 
   >
     Test Area Name 1 - GraphQL Schemas
   </h1>
-
+   
   <div
     class="my-3"
   >
@@ -732,94 +732,94 @@ exports[`Index when Get Area service endpoint returns an area when the area has 
       href="/areas/test-area-id-1"
       target="_self"
     >
-       Info
+       Info 
     </a>
-
+     
     <a
       class="btn my-1 btn-secondary"
       href="/areas/test-area-id-1/diagrams"
       target="_self"
     >
-
+      
     Diagrams
-
+  
     </a>
-
+     
     <a
       class="btn my-1 btn-secondary"
       href="/areas/test-area-id-1/docs"
       target="_self"
     >
-       Docs
+       Docs 
     </a>
-
+     
     <a
       class="btn my-1 btn-secondary"
       href="/areas/test-area-id-1/components"
       target="_self"
     >
-
+      
     Components
-
+  
     </a>
-
+     
     <a
       class="btn my-1 btn-secondary"
       href="/areas/test-area-id-1/cross-functional-requirements"
       target="_self"
     >
-
+      
     Cross Functional Requirements
-
+  
     </a>
-
+     
     <a
       class="btn my-1 btn-secondary"
       href="/areas/test-area-id-1/tech-debts"
       target="_self"
     >
-
+      
     Tech Debts
-
+  
     </a>
-
+     
     <a
       class="btn my-1 btn-secondary"
       href="/areas/test-area-id-1/openapi-specs"
       target="_self"
     >
-
+      
     OpenAPI
-
+  
     </a>
-
+     
     <a
       class="btn my-1 btn-secondary"
       href="/areas/test-area-id-1/graphql-schemas"
       target="_self"
     >
-
+      
     GraphQL
-
+  
     </a>
-
+     
     <a
       class="btn my-1 btn-secondary"
       href="/areas/test-area-id-1/tests"
       target="_self"
     >
-       Tests
+       Tests 
     </a>
-
+     
     <a
       class="btn my-1 btn-secondary"
       href="/areas/test-area-id-1/errors"
       target="_self"
     >
-       Errors
+       Errors 
     </a>
   </div>
-
+   
   <div>
     <div
       class="card my-3"
@@ -837,20 +837,20 @@ exports[`Index when Get Area service endpoint returns an area when the area has 
           >
             0
           </span>
-
+          
         GraphQL schemas
-
+      
         </div>
       </div>
       <!---->
       <!---->
     </div>
-
+     
     <div
       class="mt-3 mb-4"
       components="[object Object],[object Object],[object Object]"
     >
-
+       
       <button
         aria-controls="filters"
         aria-expanded="false"
@@ -873,9 +873,9 @@ exports[`Index when Get Area service endpoint returns an area when the area has 
           <g />
         </svg>
          Filters
-
+  
       </button>
-
+       
       <transition-stub
         class="mt-3"
         css="true"
@@ -894,13 +894,13 @@ exports[`Index when Get Area service endpoint returns an area when the area has 
           <div
             class="card-columns"
           >
-
+             
             <!---->
-
+             
             <!---->
-
+             
             <!---->
-
+             
             <div
               class="card bg-secondary"
             >
@@ -1053,7 +1053,7 @@ exports[`Index when Get Area service endpoint returns an area when the area has 
               <!---->
               <!---->
             </div>
-
+             
             <div
               class="card bg-secondary"
             >
@@ -1206,7 +1206,7 @@ exports[`Index when Get Area service endpoint returns an area when the area has 
               <!---->
               <!---->
             </div>
-
+             
             <div
               class="card bg-secondary"
             >
@@ -1302,7 +1302,7 @@ exports[`Index when Get Area service endpoint returns an area when the area has 
               <!---->
               <!---->
             </div>
-
+             
             <div
               class="card bg-secondary"
             >
@@ -1360,7 +1360,7 @@ exports[`Index when Get Area service endpoint returns an area when the area has 
               <!---->
               <!---->
             </div>
-
+             
             <div
               class="card bg-secondary"
             >
@@ -1422,7 +1422,7 @@ exports[`Index when Get Area service endpoint returns an area when the area has 
         </div>
       </transition-stub>
     </div>
-
+     
     <!---->
   </div>
 </div>
@@ -1437,7 +1437,7 @@ exports[`Index when Get Area service endpoint returns an area when the area has 
   >
     Test Area Name 1 - GraphQL Schemas
   </h1>
-
+   
   <div
     class="my-3"
   >
@@ -1446,94 +1446,94 @@ exports[`Index when Get Area service endpoint returns an area when the area has 
       href="/areas/test-area-id-1"
       target="_self"
     >
-       Info
+       Info 
     </a>
-
+     
     <a
       class="btn my-1 btn-secondary"
       href="/areas/test-area-id-1/diagrams"
       target="_self"
     >
-
+      
     Diagrams
-
+  
     </a>
-
+     
     <a
       class="btn my-1 btn-secondary"
       href="/areas/test-area-id-1/docs"
       target="_self"
     >
-       Docs
+       Docs 
     </a>
-
+     
     <a
       class="btn my-1 btn-secondary"
       href="/areas/test-area-id-1/components"
       target="_self"
     >
-
+      
     Components
-
+  
     </a>
-
+     
     <a
       class="btn my-1 btn-secondary"
       href="/areas/test-area-id-1/cross-functional-requirements"
       target="_self"
     >
-
+      
     Cross Functional Requirements
-
+  
     </a>
-
+     
     <a
       class="btn my-1 btn-secondary"
       href="/areas/test-area-id-1/tech-debts"
       target="_self"
     >
-
+      
     Tech Debts
-
+  
     </a>
-
+     
     <a
       class="btn my-1 btn-secondary"
       href="/areas/test-area-id-1/openapi-specs"
       target="_self"
     >
-
+      
     OpenAPI
-
+  
     </a>
-
+     
     <a
       class="btn my-1 btn-secondary"
       href="/areas/test-area-id-1/graphql-schemas"
       target="_self"
     >
-
+      
     GraphQL
-
+  
     </a>
-
+     
     <a
       class="btn my-1 btn-secondary"
       href="/areas/test-area-id-1/tests"
       target="_self"
     >
-       Tests
+       Tests 
     </a>
-
+     
     <a
       class="btn my-1 btn-secondary"
       href="/areas/test-area-id-1/errors"
       target="_self"
     >
-       Errors
+       Errors 
     </a>
   </div>
-
+   
   <div>
     <div
       class="card my-3"
@@ -1551,17 +1551,17 @@ exports[`Index when Get Area service endpoint returns an area when the area has 
           >
             0
           </span>
-
+          
         GraphQL schemas
-
+      
         </div>
       </div>
       <!---->
       <!---->
     </div>
-
+     
     <!---->
-
+     
     <!---->
   </div>
 </div>

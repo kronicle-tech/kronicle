@@ -15,17 +15,17 @@ exports[`Index when Kronicle contains information renders the page showing the i
     </h1>
     <!---->
     <div>
-
+      
 
       <p>
-        Test Intro
+        Test Intro 
         <em>
           Markdown
         </em>
       </p>
     </div>
   </div>
-
+   
   <div
     class="card-columns"
   >
@@ -44,11 +44,11 @@ exports[`Index when Kronicle contains information renders the page showing the i
         <div
           class="list-group-item d-flex justify-content-between align-items-center text-muted"
         >
-
+          
           Kronicle contains the following:
-
+        
         </div>
-
+         
         <a
           class="list-group-item d-flex justify-content-between align-items-center list-group-item-action"
           href="#"
@@ -57,7 +57,7 @@ exports[`Index when Kronicle contains information renders the page showing the i
           <b>
             Areas
           </b>
-
+           
           <span
             class="lead"
           >
@@ -68,7 +68,7 @@ exports[`Index when Kronicle contains information renders the page showing the i
             </span>
           </span>
         </a>
-
+         
         <a
           class="list-group-item d-flex justify-content-between align-items-center list-group-item-action"
           href="#"
@@ -77,7 +77,7 @@ exports[`Index when Kronicle contains information renders the page showing the i
           <b>
             Teams
           </b>
-
+           
           <span
             class="lead"
           >
@@ -88,7 +88,7 @@ exports[`Index when Kronicle contains information renders the page showing the i
             </span>
           </span>
         </a>
-
+         
         <a
           class="list-group-item d-flex justify-content-between align-items-center list-group-item-action"
           href="#"
@@ -97,7 +97,7 @@ exports[`Index when Kronicle contains information renders the page showing the i
           <b>
             Components
           </b>
-
+           
           <span
             class="lead"
           >
@@ -108,7 +108,7 @@ exports[`Index when Kronicle contains information renders the page showing the i
             </span>
           </span>
         </a>
-
+         
         <a
           class="list-group-item d-flex justify-content-between align-items-center list-group-item-action"
           href="#"
@@ -117,7 +117,7 @@ exports[`Index when Kronicle contains information renders the page showing the i
           <b>
             Tech Debts
           </b>
-
+           
           <span
             class="lead"
           >
@@ -128,7 +128,7 @@ exports[`Index when Kronicle contains information renders the page showing the i
             </span>
           </span>
         </a>
-
+         
         <a
           class="list-group-item d-flex justify-content-between align-items-center list-group-item-action"
           href="#"
@@ -137,7 +137,7 @@ exports[`Index when Kronicle contains information renders the page showing the i
           <b>
             Test Results
           </b>
-
+           
           <span
             class="lead"
           >
@@ -152,7 +152,7 @@ exports[`Index when Kronicle contains information renders the page showing the i
       <!---->
       <!---->
     </div>
-
+     
     <div
       class="card"
     >
@@ -168,11 +168,11 @@ exports[`Index when Kronicle contains information renders the page showing the i
         <div
           class="list-group-item d-flex justify-content-between align-items-center text-muted"
         >
-
+          
           There are the following types of components in Kronicle:
-
+        
         </div>
-
+         
         <a
           class="list-group-item d-flex justify-content-between align-items-center list-group-item-action"
           href="?componentType=test-component-type-id-1"
@@ -183,16 +183,16 @@ exports[`Index when Kronicle contains information renders the page showing the i
           >
             test-component-type-id-1
           </b>
-
+           
           <span
             class="lead"
           >
             <span
               class="badge badge-primary badge-pill"
             >
-
+              
               1
-
+            
             </span>
           </span>
         </a>
@@ -206,16 +206,16 @@ exports[`Index when Kronicle contains information renders the page showing the i
           >
             test-component-type-id-2
           </b>
-
+           
           <span
             class="lead"
           >
             <span
               class="badge badge-primary badge-pill"
             >
-
+              
               1
-
+            
             </span>
           </span>
         </a>
@@ -229,16 +229,16 @@ exports[`Index when Kronicle contains information renders the page showing the i
           >
             test-component-type-id-3
           </b>
-
+           
           <span
             class="lead"
           >
             <span
               class="badge badge-primary badge-pill"
             >
-
+              
               1
-
+            
             </span>
           </span>
         </a>
@@ -246,7 +246,7 @@ exports[`Index when Kronicle contains information renders the page showing the i
       <!---->
       <!---->
     </div>
-
+     
     <div
       class="card"
     >
@@ -259,11 +259,11 @@ exports[`Index when Kronicle contains information renders the page showing the i
       <div
         class="list-group-item d-flex justify-content-between align-items-center text-muted"
       >
-
+        
         The following platforms are associated with components in Kronicle:
-
+      
       </div>
-
+       
       <div
         class="list-group list-group-flush"
       >
@@ -277,16 +277,16 @@ exports[`Index when Kronicle contains information renders the page showing the i
           >
             missing
           </b>
-
+           
           <span
             class="lead"
           >
             <span
               class="badge badge-primary badge-pill"
             >
-
+              
               1
-
+            
             </span>
           </span>
         </a>
@@ -300,16 +300,16 @@ exports[`Index when Kronicle contains information renders the page showing the i
           >
             test-platform-id-1
           </b>
-
+           
           <span
             class="lead"
           >
             <span
               class="badge badge-primary badge-pill"
             >
-
+              
               1
-
+            
             </span>
           </span>
         </a>
@@ -323,16 +323,16 @@ exports[`Index when Kronicle contains information renders the page showing the i
           >
             test-platform-id-3
           </b>
-
+           
           <span
             class="lead"
           >
             <span
               class="badge badge-primary badge-pill"
             >
-
+              
               1
-
+            
             </span>
           </span>
         </a>
@@ -340,7 +340,7 @@ exports[`Index when Kronicle contains information renders the page showing the i
       <!---->
       <!---->
     </div>
-
+     
     <div
       class="card"
     >
@@ -356,11 +356,11 @@ exports[`Index when Kronicle contains information renders the page showing the i
         <div
           class="list-group-item d-flex justify-content-between align-items-center text-muted"
         >
-
+          
           The components in Kronicle are tagged with the following:
-
+        
         </div>
-
+         
         <a
           class="list-group-item d-flex justify-content-between align-items-center list-group-item-action"
           href="?tag=test-tag-1-1"
@@ -371,16 +371,16 @@ exports[`Index when Kronicle contains information renders the page showing the i
           >
             test-tag-1-1
           </b>
-
+           
           <span
             class="lead"
           >
             <span
               class="badge badge-primary badge-pill"
             >
-
+              
               1
-
+            
             </span>
           </span>
         </a>
@@ -394,16 +394,16 @@ exports[`Index when Kronicle contains information renders the page showing the i
           >
             test-tag-1-2
           </b>
-
+           
           <span
             class="lead"
           >
             <span
               class="badge badge-primary badge-pill"
             >
-
+              
               1
-
+            
             </span>
           </span>
         </a>
@@ -417,16 +417,16 @@ exports[`Index when Kronicle contains information renders the page showing the i
           >
             test-tag-2-1
           </b>
-
+           
           <span
             class="lead"
           >
             <span
               class="badge badge-primary badge-pill"
             >
-
+              
               1
-
+            
             </span>
           </span>
         </a>
@@ -440,16 +440,16 @@ exports[`Index when Kronicle contains information renders the page showing the i
           >
             test-tag-2-2
           </b>
-
+           
           <span
             class="lead"
           >
             <span
               class="badge badge-primary badge-pill"
             >
-
+              
               1
-
+            
             </span>
           </span>
         </a>
@@ -463,16 +463,16 @@ exports[`Index when Kronicle contains information renders the page showing the i
           >
             test-tag-3-1
           </b>
-
+           
           <span
             class="lead"
           >
             <span
               class="badge badge-primary badge-pill"
             >
-
+              
               1
-
+            
             </span>
           </span>
         </a>
@@ -486,16 +486,16 @@ exports[`Index when Kronicle contains information renders the page showing the i
           >
             test-tag-3-2
           </b>
-
+           
           <span
             class="lead"
           >
             <span
               class="badge badge-primary badge-pill"
             >
-
+              
               1
-
+            
             </span>
           </span>
         </a>
@@ -503,7 +503,7 @@ exports[`Index when Kronicle contains information renders the page showing the i
       <!---->
       <!---->
     </div>
-
+     
     <div
       class="card"
     >
@@ -519,11 +519,11 @@ exports[`Index when Kronicle contains information renders the page showing the i
         <div
           class="list-group-item d-flex justify-content-between align-items-center text-muted"
         >
-
+          
           Scanners dynamically add data to Kronicle at runtime:
-
+        
         </div>
-
+         
         <div
           class="list-group-item"
         >
@@ -532,13 +532,13 @@ exports[`Index when Kronicle contains information renders the page showing the i
           >
             test-scanner-id-1
           </b>
-
+           
           <br />
-
+           
           <div
             class="description"
           >
-
+            
 
             <p>
               Test Scanner Description 1
@@ -553,13 +553,13 @@ exports[`Index when Kronicle contains information renders the page showing the i
           >
             test-scanner-id-2
           </b>
-
+           
           <br />
-
+           
           <div
             class="description"
           >
-
+            
 
             <p>
               Test Scanner Description 2
@@ -574,13 +574,13 @@ exports[`Index when Kronicle contains information renders the page showing the i
           >
             test-scanner-id-3
           </b>
-
+           
           <br />
-
+           
           <div
             class="description"
           >
-
+            
 
             <p>
               Test Scanner Description 3
@@ -591,7 +591,7 @@ exports[`Index when Kronicle contains information renders the page showing the i
       <!---->
       <!---->
     </div>
-
+     
     <div
       class="card"
     >
@@ -607,12 +607,12 @@ exports[`Index when Kronicle contains information renders the page showing the i
         <div
           class="list-group-item d-flex justify-content-between align-items-center text-muted"
         >
-
+          
           Tests evaluate the data associated with components in Kronicle and
           return outcomes of pass, fail and not applicable
-
+        
         </div>
-
+         
         <a
           class="list-group-item list-group-item-action"
           href="#"
@@ -623,13 +623,13 @@ exports[`Index when Kronicle contains information renders the page showing the i
           >
             test-test-id-1
           </b>
-
+           
           <br />
-
+           
           <div
             class="description"
           >
-
+            
 
             <p>
               Test Test Description 1
@@ -646,13 +646,13 @@ exports[`Index when Kronicle contains information renders the page showing the i
           >
             test-test-id-2
           </b>
-
+           
           <br />
-
+           
           <div
             class="description"
           >
-
+            
 
             <p>
               Test Test Description 2
@@ -669,13 +669,13 @@ exports[`Index when Kronicle contains information renders the page showing the i
           >
             test-test-id-3
           </b>
-
+           
           <br />
-
+           
           <div
             class="description"
           >
-
+            
 
             <p>
               Test Test Description 3
@@ -705,17 +705,17 @@ exports[`Index when Kronicle contains no information renders the page with no in
     </h1>
     <!---->
     <div>
-
+      
 
       <p>
-        Test Intro
+        Test Intro 
         <em>
           Markdown
         </em>
       </p>
     </div>
   </div>
-
+   
   <div
     class="card-columns"
   >
@@ -734,11 +734,11 @@ exports[`Index when Kronicle contains no information renders the page with no in
         <div
           class="list-group-item d-flex justify-content-between align-items-center text-muted"
         >
-
+          
           Kronicle contains the following:
-
+        
         </div>
-
+         
         <a
           class="list-group-item d-flex justify-content-between align-items-center list-group-item-action"
           href="#"
@@ -747,7 +747,7 @@ exports[`Index when Kronicle contains no information renders the page with no in
           <b>
             Areas
           </b>
-
+           
           <span
             class="lead"
           >
@@ -758,7 +758,7 @@ exports[`Index when Kronicle contains no information renders the page with no in
             </span>
           </span>
         </a>
-
+         
         <a
           class="list-group-item d-flex justify-content-between align-items-center list-group-item-action"
           href="#"
@@ -767,7 +767,7 @@ exports[`Index when Kronicle contains no information renders the page with no in
           <b>
             Teams
           </b>
-
+           
           <span
             class="lead"
           >
@@ -778,7 +778,7 @@ exports[`Index when Kronicle contains no information renders the page with no in
             </span>
           </span>
         </a>
-
+         
         <a
           class="list-group-item d-flex justify-content-between align-items-center list-group-item-action"
           href="#"
@@ -787,7 +787,7 @@ exports[`Index when Kronicle contains no information renders the page with no in
           <b>
             Components
           </b>
-
+           
           <span
             class="lead"
           >
@@ -798,7 +798,7 @@ exports[`Index when Kronicle contains no information renders the page with no in
             </span>
           </span>
         </a>
-
+         
         <a
           class="list-group-item d-flex justify-content-between align-items-center list-group-item-action"
           href="#"
@@ -807,7 +807,7 @@ exports[`Index when Kronicle contains no information renders the page with no in
           <b>
             Tech Debts
           </b>
-
+           
           <span
             class="lead"
           >
@@ -818,7 +818,7 @@ exports[`Index when Kronicle contains no information renders the page with no in
             </span>
           </span>
         </a>
-
+         
         <a
           class="list-group-item d-flex justify-content-between align-items-center list-group-item-action"
           href="#"
@@ -827,7 +827,7 @@ exports[`Index when Kronicle contains no information renders the page with no in
           <b>
             Test Results
           </b>
-
+           
           <span
             class="lead"
           >
@@ -842,7 +842,7 @@ exports[`Index when Kronicle contains no information renders the page with no in
       <!---->
       <!---->
     </div>
-
+     
     <div
       class="card"
     >
@@ -858,16 +858,16 @@ exports[`Index when Kronicle contains no information renders the page with no in
         <div
           class="list-group-item d-flex justify-content-between align-items-center text-muted"
         >
-
+          
           There are the following types of components in Kronicle:
-
+        
         </div>
-
+         
       </div>
       <!---->
       <!---->
     </div>
-
+     
     <div
       class="card"
     >
@@ -880,18 +880,18 @@ exports[`Index when Kronicle contains no information renders the page with no in
       <div
         class="list-group-item d-flex justify-content-between align-items-center text-muted"
       >
-
+        
         The following platforms are associated with components in Kronicle:
-
+      
       </div>
-
+       
       <div
         class="list-group list-group-flush"
       />
       <!---->
       <!---->
     </div>
-
+     
     <div
       class="card"
     >
@@ -907,16 +907,16 @@ exports[`Index when Kronicle contains no information renders the page with no in
         <div
           class="list-group-item d-flex justify-content-between align-items-center text-muted"
         >
-
+          
           The components in Kronicle are tagged with the following:
-
+        
         </div>
-
+         
       </div>
       <!---->
       <!---->
     </div>
-
+     
     <div
       class="card"
     >
@@ -932,16 +932,16 @@ exports[`Index when Kronicle contains no information renders the page with no in
         <div
           class="list-group-item d-flex justify-content-between align-items-center text-muted"
         >
-
+          
           Scanners dynamically add data to Kronicle at runtime:
-
+        
         </div>
-
+         
       </div>
       <!---->
       <!---->
     </div>
-
+     
     <div
       class="card"
     >
@@ -957,12 +957,12 @@ exports[`Index when Kronicle contains no information renders the page with no in
         <div
           class="list-group-item d-flex justify-content-between align-items-center text-muted"
         >
-
+          
           Tests evaluate the data associated with components in Kronicle and
           return outcomes of pass, fail and not applicable
-
+        
         </div>
-
+         
       </div>
       <!---->
       <!---->
