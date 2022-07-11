@@ -29,7 +29,7 @@ describe('Index', () => {
         '/v1/tests/test-test-id-1?fields=test(id,description,priority)': {
           responseBody: { test: testObject },
         },
-        '/v1/areas/test-area-id-1?fields=area(id,name,components(id,name,typeId,tags,teams,platformId,testResults))':
+        '/v1/areas/test-area-id-1?fields=area(id,name,components(id,name,type,tags,teams,platformId,testResults))':
           {
             responseBody: { area },
           },

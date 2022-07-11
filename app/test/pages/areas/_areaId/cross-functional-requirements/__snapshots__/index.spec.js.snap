@@ -7,11 +7,11 @@ exports[`Index when Get Area service endpoint returns an area when the area has 
   <h1
     class="text-info my-3"
   >
-    
+
     Test Area Name 1 - Cross Functional Requirements
-  
+
   </h1>
-   
+
   <div
     class="my-3"
   >
@@ -20,100 +20,100 @@ exports[`Index when Get Area service endpoint returns an area when the area has 
       href="/areas/test-area-id-1"
       target="_self"
     >
-       Info 
+       Info
     </a>
-     
+
     <a
       class="btn my-1 btn-secondary"
       href="/areas/test-area-id-1/diagrams"
       target="_self"
     >
-      
+
     Diagrams
-  
+
     </a>
-     
+
     <a
       class="btn my-1 btn-secondary"
       href="/areas/test-area-id-1/docs"
       target="_self"
     >
-       Docs 
+       Docs
     </a>
-     
+
     <a
       class="btn my-1 btn-secondary"
       href="/areas/test-area-id-1/components"
       target="_self"
     >
-      
+
     Components
-  
+
     </a>
-     
+
     <a
       class="btn my-1 btn-secondary"
       href="/areas/test-area-id-1/cross-functional-requirements"
       target="_self"
     >
-      
+
     Cross Functional Requirements
-  
+
     </a>
-     
+
     <a
       class="btn my-1 btn-secondary"
       href="/areas/test-area-id-1/tech-debts"
       target="_self"
     >
-      
+
     Tech Debts
-  
+
     </a>
-     
+
     <a
       class="btn my-1 btn-secondary"
       href="/areas/test-area-id-1/openapi-specs"
       target="_self"
     >
-      
+
     OpenAPI
-  
+
     </a>
-     
+
     <a
       class="btn my-1 btn-secondary"
       href="/areas/test-area-id-1/graphql-schemas"
       target="_self"
     >
-      
+
     GraphQL
-  
+
     </a>
-     
+
     <a
       class="btn my-1 btn-secondary"
       href="/areas/test-area-id-1/tests"
       target="_self"
     >
-       Tests 
+       Tests
     </a>
-     
+
     <a
       class="btn my-1 btn-secondary"
       href="/areas/test-area-id-1/errors"
       target="_self"
     >
-       Errors 
+       Errors
     </a>
   </div>
-   
+
   <div>
     <div
       class="mt-3 mb-4"
       components="[object Object],[object Object],[object Object]"
     >
-       
+
       <button
         aria-controls="filters"
         aria-expanded="false"
@@ -136,9 +136,9 @@ exports[`Index when Get Area service endpoint returns an area when the area has 
           <g />
         </svg>
          Filters
-  
+
       </button>
-       
+
       <transition-stub
         class="mt-3"
         css="true"
@@ -157,13 +157,13 @@ exports[`Index when Get Area service endpoint returns an area when the area has 
           <div
             class="card-columns"
           >
-             
+
             <!---->
-             
+
             <!---->
-             
+
             <!---->
-             
+
             <div
               class="card bg-secondary"
             >
@@ -316,7 +316,7 @@ exports[`Index when Get Area service endpoint returns an area when the area has 
               <!---->
               <!---->
             </div>
-             
+
             <div
               class="card bg-secondary"
             >
@@ -469,7 +469,7 @@ exports[`Index when Get Area service endpoint returns an area when the area has 
               <!---->
               <!---->
             </div>
-             
+
             <div
               class="card bg-secondary"
             >
@@ -504,7 +504,7 @@ exports[`Index when Get Area service endpoint returns an area when the area has 
                         <input
                           class="custom-control-input"
                           id="__BVID__120_BV_option_0"
-                          name="componentTypeId"
+                          name="componentType"
                           type="checkbox"
                           value="test-component-type-id-1"
                         />
@@ -523,7 +523,7 @@ exports[`Index when Get Area service endpoint returns an area when the area has 
                         <input
                           class="custom-control-input"
                           id="__BVID__120_BV_option_1"
-                          name="componentTypeId"
+                          name="componentType"
                           type="checkbox"
                           value="test-component-type-id-2"
                         />
@@ -542,7 +542,7 @@ exports[`Index when Get Area service endpoint returns an area when the area has 
                         <input
                           class="custom-control-input"
                           id="__BVID__120_BV_option_2"
-                          name="componentTypeId"
+                          name="componentType"
                           type="checkbox"
                           value="test-component-type-id-3"
                         />
@@ -565,7 +565,7 @@ exports[`Index when Get Area service endpoint returns an area when the area has 
               <!---->
               <!---->
             </div>
-             
+
             <div
               class="card bg-secondary"
             >
@@ -623,7 +623,7 @@ exports[`Index when Get Area service endpoint returns an area when the area has 
               <!---->
               <!---->
             </div>
-             
+
             <div
               class="card bg-secondary"
             >
@@ -685,7 +685,7 @@ exports[`Index when Get Area service endpoint returns an area when the area has 
         </div>
       </transition-stub>
     </div>
-     
+
     <div
       class="card my-3"
     >
@@ -710,25 +710,25 @@ exports[`Index when Get Area service endpoint returns an area when the area has 
               >
                 Component
               </th>
-               
+
               <th
                 class="teams"
               >
                 Teams
               </th>
-               
+
               <th
                 class="description"
               >
                 Description
               </th>
-               
+
               <th
                 class="notes"
               >
                 Notes
               </th>
-               
+
               <th
                 class="links"
               >
@@ -736,7 +736,7 @@ exports[`Index when Get Area service endpoint returns an area when the area has 
               </th>
             </tr>
           </thead>
-           
+
           <tbody>
             <tr>
               <td
@@ -748,7 +748,7 @@ exports[`Index when Get Area service endpoint returns an area when the area has 
                   Test Component Name 1
                 </a>
               </td>
-               
+
               <td
                 class="teams"
               >
@@ -760,9 +760,9 @@ exports[`Index when Get Area service endpoint returns an area when the area has 
                     >
                       test-team-id-1-1
                     </a>
-                     
+
                     <!---->
-                     
+
                     <!---->
                   </li>
                   <li>
@@ -772,38 +772,38 @@ exports[`Index when Get Area service endpoint returns an area when the area has 
                     >
                       test-team-id-1-2
                     </a>
-                     
+
                     <!---->
-                     
+
                     <!---->
                   </li>
                 </ul>
               </td>
-               
+
               <td
                 class="description"
               >
                 <div>
-                  
+
 
                   <p>
                     Test CFR Description 1 1
                   </p>
                 </div>
               </td>
-               
+
               <td
                 class="notes"
               >
                 <div>
-                  
+
 
                   <p>
                     Test CFR Notes 1 1
                   </p>
                 </div>
               </td>
-               
+
               <td
                 class="links"
               >
@@ -815,11 +815,11 @@ exports[`Index when Get Area service endpoint returns an area when the area has 
                     >
                       https://example.com/test-cfr-link-1-1-1
                     </a>
-                     
+
                     <br />
-                     
+
                     <div>
-                      
+
 
                       <p>
                         Test CFR Link Description 1 1 1
@@ -833,11 +833,11 @@ exports[`Index when Get Area service endpoint returns an area when the area has 
                     >
                       https://example.com/test-cfr-link-1-1-2
                     </a>
-                     
+
                     <br />
-                     
+
                     <div>
-                      
+
 
                       <p>
                         Test CFR Link Description 1 1 2
@@ -857,7 +857,7 @@ exports[`Index when Get Area service endpoint returns an area when the area has 
                   Test Component Name 1
                 </a>
               </td>
-               
+
               <td
                 class="teams"
               >
@@ -869,9 +869,9 @@ exports[`Index when Get Area service endpoint returns an area when the area has 
                     >
                       test-team-id-1-1
                     </a>
-                     
+
                     <!---->
-                     
+
                     <!---->
                   </li>
                   <li>
@@ -881,38 +881,38 @@ exports[`Index when Get Area service endpoint returns an area when the area has 
                     >
                       test-team-id-1-2
                     </a>
-                     
+
                     <!---->
-                     
+
                     <!---->
                   </li>
                 </ul>
               </td>
-               
+
               <td
                 class="description"
               >
                 <div>
-                  
+
 
                   <p>
                     Test CFR Description 1 2
                   </p>
                 </div>
               </td>
-               
+
               <td
                 class="notes"
               >
                 <div>
-                  
+
 
                   <p>
                     Test CFR Notes 1 2
                   </p>
                 </div>
               </td>
-               
+
               <td
                 class="links"
               >
@@ -924,11 +924,11 @@ exports[`Index when Get Area service endpoint returns an area when the area has 
                     >
                       https://example.com/test-cfr-link-1-2-1
                     </a>
-                     
+
                     <br />
-                     
+
                     <div>
-                      
+
 
                       <p>
                         Test CFR Link Description 1 2 1
@@ -942,11 +942,11 @@ exports[`Index when Get Area service endpoint returns an area when the area has 
                     >
                       https://example.com/test-cfr-link-1-2-2
                     </a>
-                     
+
                     <br />
-                     
+
                     <div>
-                      
+
 
                       <p>
                         Test CFR Link Description 1 2 2
@@ -966,7 +966,7 @@ exports[`Index when Get Area service endpoint returns an area when the area has 
                   Test Component Name 3
                 </a>
               </td>
-               
+
               <td
                 class="teams"
               >
@@ -978,9 +978,9 @@ exports[`Index when Get Area service endpoint returns an area when the area has 
                     >
                       test-team-id-3-1
                     </a>
-                     
+
                     <!---->
-                     
+
                     <!---->
                   </li>
                   <li>
@@ -990,38 +990,38 @@ exports[`Index when Get Area service endpoint returns an area when the area has 
                     >
                       test-team-id-3-2
                     </a>
-                     
+
                     <!---->
-                     
+
                     <!---->
                   </li>
                 </ul>
               </td>
-               
+
               <td
                 class="description"
               >
                 <div>
-                  
+
 
                   <p>
                     Test CFR Description 3 1
                   </p>
                 </div>
               </td>
-               
+
               <td
                 class="notes"
               >
                 <div>
-                  
+
 
                   <p>
                     Test CFR Notes 3 1
                   </p>
                 </div>
               </td>
-               
+
               <td
                 class="links"
               >
@@ -1033,11 +1033,11 @@ exports[`Index when Get Area service endpoint returns an area when the area has 
                     >
                       https://example.com/test-cfr-link-3-1-1
                     </a>
-                     
+
                     <br />
-                     
+
                     <div>
-                      
+
 
                       <p>
                         Test CFR Link Description 3 1 1
@@ -1051,11 +1051,11 @@ exports[`Index when Get Area service endpoint returns an area when the area has 
                     >
                       https://example.com/test-cfr-link-3-1-2
                     </a>
-                     
+
                     <br />
-                     
+
                     <div>
-                      
+
 
                       <p>
                         Test CFR Link Description 3 1 2
@@ -1075,7 +1075,7 @@ exports[`Index when Get Area service endpoint returns an area when the area has 
                   Test Component Name 3
                 </a>
               </td>
-               
+
               <td
                 class="teams"
               >
@@ -1087,9 +1087,9 @@ exports[`Index when Get Area service endpoint returns an area when the area has 
                     >
                       test-team-id-3-1
                     </a>
-                     
+
                     <!---->
-                     
+
                     <!---->
                   </li>
                   <li>
@@ -1099,38 +1099,38 @@ exports[`Index when Get Area service endpoint returns an area when the area has 
                     >
                       test-team-id-3-2
                     </a>
-                     
+
                     <!---->
-                     
+
                     <!---->
                   </li>
                 </ul>
               </td>
-               
+
               <td
                 class="description"
               >
                 <div>
-                  
+
 
                   <p>
                     Test CFR Description 3 2
                   </p>
                 </div>
               </td>
-               
+
               <td
                 class="notes"
               >
                 <div>
-                  
+
 
                   <p>
                     Test CFR Notes 3 2
                   </p>
                 </div>
               </td>
-               
+
               <td
                 class="links"
               >
@@ -1142,11 +1142,11 @@ exports[`Index when Get Area service endpoint returns an area when the area has 
                     >
                       https://example.com/test-cfr-link-3-2-1
                     </a>
-                     
+
                     <br />
-                     
+
                     <div>
-                      
+
 
                       <p>
                         Test CFR Link Description 3 2 1
@@ -1160,11 +1160,11 @@ exports[`Index when Get Area service endpoint returns an area when the area has 
                     >
                       https://example.com/test-cfr-link-3-2-2
                     </a>
-                     
+
                     <br />
-                     
+
                     <div>
-                      
+
 
                       <p>
                         Test CFR Link Description 3 2 2
@@ -1191,11 +1191,11 @@ exports[`Index when Get Area service endpoint returns an area when the area has 
   <h1
     class="text-info my-3"
   >
-    
+
     Test Area Name 1 - Cross Functional Requirements
-  
+
   </h1>
-   
+
   <div
     class="my-3"
   >
@@ -1204,100 +1204,100 @@ exports[`Index when Get Area service endpoint returns an area when the area has 
       href="/areas/test-area-id-1"
       target="_self"
     >
-       Info 
+       Info
     </a>
-     
+
     <a
       class="btn my-1 btn-secondary"
       href="/areas/test-area-id-1/diagrams"
       target="_self"
     >
-      
+
     Diagrams
-  
+
     </a>
-     
+
     <a
       class="btn my-1 btn-secondary"
       href="/areas/test-area-id-1/docs"
       target="_self"
     >
-       Docs 
+       Docs
     </a>
-     
+
     <a
       class="btn my-1 btn-secondary"
       href="/areas/test-area-id-1/components"
       target="_self"
     >
-      
+
     Components
-  
+
     </a>
-     
+
     <a
       class="btn my-1 btn-secondary"
       href="/areas/test-area-id-1/cross-functional-requirements"
       target="_self"
     >
-      
+
     Cross Functional Requirements
-  
+
     </a>
-     
+
     <a
       class="btn my-1 btn-secondary"
       href="/areas/test-area-id-1/tech-debts"
       target="_self"
     >
-      
+
     Tech Debts
-  
+
     </a>
-     
+
     <a
       class="btn my-1 btn-secondary"
       href="/areas/test-area-id-1/openapi-specs"
       target="_self"
     >
-      
+
     OpenAPI
-  
+
     </a>
-     
+
     <a
       class="btn my-1 btn-secondary"
       href="/areas/test-area-id-1/graphql-schemas"
       target="_self"
     >
-      
+
     GraphQL
-  
+
     </a>
-     
+
     <a
       class="btn my-1 btn-secondary"
       href="/areas/test-area-id-1/tests"
       target="_self"
     >
-       Tests 
+       Tests
     </a>
-     
+
     <a
       class="btn my-1 btn-secondary"
       href="/areas/test-area-id-1/errors"
       target="_self"
     >
-       Errors 
+       Errors
     </a>
   </div>
-   
+
   <div>
     <div
       class="mt-3 mb-4"
       components="[object Object],[object Object],[object Object]"
     >
-       
+
       <button
         aria-controls="filters"
         aria-expanded="false"
@@ -1320,9 +1320,9 @@ exports[`Index when Get Area service endpoint returns an area when the area has 
           <g />
         </svg>
          Filters
-  
+
       </button>
-       
+
       <transition-stub
         class="mt-3"
         css="true"
@@ -1341,13 +1341,13 @@ exports[`Index when Get Area service endpoint returns an area when the area has 
           <div
             class="card-columns"
           >
-             
+
             <!---->
-             
+
             <!---->
-             
+
             <!---->
-             
+
             <div
               class="card bg-secondary"
             >
@@ -1500,7 +1500,7 @@ exports[`Index when Get Area service endpoint returns an area when the area has 
               <!---->
               <!---->
             </div>
-             
+
             <div
               class="card bg-secondary"
             >
@@ -1653,7 +1653,7 @@ exports[`Index when Get Area service endpoint returns an area when the area has 
               <!---->
               <!---->
             </div>
-             
+
             <div
               class="card bg-secondary"
             >
@@ -1688,7 +1688,7 @@ exports[`Index when Get Area service endpoint returns an area when the area has 
                         <input
                           class="custom-control-input"
                           id="__BVID__74_BV_option_0"
-                          name="componentTypeId"
+                          name="componentType"
                           type="checkbox"
                           value="test-component-type-id-1"
                         />
@@ -1707,7 +1707,7 @@ exports[`Index when Get Area service endpoint returns an area when the area has 
                         <input
                           class="custom-control-input"
                           id="__BVID__74_BV_option_1"
-                          name="componentTypeId"
+                          name="componentType"
                           type="checkbox"
                           value="test-component-type-id-2"
                         />
@@ -1726,7 +1726,7 @@ exports[`Index when Get Area service endpoint returns an area when the area has 
                         <input
                           class="custom-control-input"
                           id="__BVID__74_BV_option_2"
-                          name="componentTypeId"
+                          name="componentType"
                           type="checkbox"
                           value="test-component-type-id-3"
                         />
@@ -1749,7 +1749,7 @@ exports[`Index when Get Area service endpoint returns an area when the area has 
               <!---->
               <!---->
             </div>
-             
+
             <div
               class="card bg-secondary"
             >
@@ -1807,7 +1807,7 @@ exports[`Index when Get Area service endpoint returns an area when the area has 
               <!---->
               <!---->
             </div>
-             
+
             <div
               class="card bg-secondary"
             >
@@ -1869,7 +1869,7 @@ exports[`Index when Get Area service endpoint returns an area when the area has 
         </div>
       </transition-stub>
     </div>
-     
+
     <div
       class="card my-3"
     >
@@ -1900,11 +1900,11 @@ exports[`Index when Get Area service endpoint returns an area when the area has 
   <h1
     class="text-info my-3"
   >
-    
+
     Test Area Name 1 - Cross Functional Requirements
-  
+
   </h1>
-   
+
   <div
     class="my-3"
   >
@@ -1913,97 +1913,97 @@ exports[`Index when Get Area service endpoint returns an area when the area has 
       href="/areas/test-area-id-1"
       target="_self"
     >
-       Info 
+       Info
     </a>
-     
+
     <a
       class="btn my-1 btn-secondary"
       href="/areas/test-area-id-1/diagrams"
       target="_self"
     >
-      
+
     Diagrams
-  
+
     </a>
-     
+
     <a
       class="btn my-1 btn-secondary"
       href="/areas/test-area-id-1/docs"
       target="_self"
     >
-       Docs 
+       Docs
     </a>
-     
+
     <a
       class="btn my-1 btn-secondary"
       href="/areas/test-area-id-1/components"
       target="_self"
     >
-      
+
     Components
-  
+
     </a>
-     
+
     <a
       class="btn my-1 btn-secondary"
       href="/areas/test-area-id-1/cross-functional-requirements"
       target="_self"
     >
-      
+
     Cross Functional Requirements
-  
+
     </a>
-     
+
     <a
       class="btn my-1 btn-secondary"
       href="/areas/test-area-id-1/tech-debts"
       target="_self"
     >
-      
+
     Tech Debts
-  
+
     </a>
-     
+
     <a
       class="btn my-1 btn-secondary"
       href="/areas/test-area-id-1/openapi-specs"
       target="_self"
     >
-      
+
     OpenAPI
-  
+
     </a>
-     
+
     <a
       class="btn my-1 btn-secondary"
       href="/areas/test-area-id-1/graphql-schemas"
       target="_self"
     >
-      
+
     GraphQL
-  
+
     </a>
-     
+
     <a
       class="btn my-1 btn-secondary"
       href="/areas/test-area-id-1/tests"
       target="_self"
     >
-       Tests 
+       Tests
     </a>
-     
+
     <a
       class="btn my-1 btn-secondary"
       href="/areas/test-area-id-1/errors"
       target="_self"
     >
-       Errors 
+       Errors
     </a>
   </div>
-   
+
   <div>
     <!---->
-     
+
     <div
       class="card my-3"
     >

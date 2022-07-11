@@ -28,7 +28,7 @@ public class BackendForFrontendDependencyTest extends ComponentTest {
 
     @Override
     public TestResult test(Component input, TestContext testContext) {
-        if (!Objects.equals(input.getTypeId(), CommonComponentTypeIds.BACKEND_FOR_FRONTEND)) {
+        if (!Objects.equals(input.getType(), CommonComponentTypeIds.BACKEND_FOR_FRONTEND)) {
             return createNotApplicableTestResult("Component is not a [backend for frontend (BFF)](https://samnewman.io/patterns/architectural/bff/)");
         }
 
@@ -62,6 +62,6 @@ public class BackendForFrontendDependencyTest extends ComponentTest {
     }
 
     private String getComponentTypeIdForComponentId(String componentId, TestContext testContext) {
-        return Optional.ofNullable(testContext.getComponentMap().get(componentId)).map(Component::getTypeId).orElse(null);
+        return Optional.ofNullable(testContext.getComponentMap().get(componentId)).map(Component::getType).orElse(null);
     }
 }

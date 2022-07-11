@@ -10,7 +10,7 @@ import java.util.Comparator;
 public final class Comparators {
 
     public static final Comparator<Component> COMPONENTS = Comparator
-            .comparing(Component::getTypeId, Comparator.nullsLast(Comparator.naturalOrder()))
+            .comparing(Component::getType, Comparator.nullsLast(Comparator.naturalOrder()))
             .thenComparing(Component::getName, Comparator.nullsLast(Comparator.naturalOrder()));
 
     public static final Comparator<Import> IMPORTS = Comparator

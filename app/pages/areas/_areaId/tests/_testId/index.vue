@@ -30,7 +30,7 @@ export default Vue.extend({
       .then((json) => json.test as Test)
 
     const area = await fetch(
-      `${$config.serviceBaseUrl}/v1/areas/${route.params.areaId}?fields=area(id,name,components(id,name,typeId,tags,teams,platformId,testResults))`
+      `${$config.serviceBaseUrl}/v1/areas/${route.params.areaId}?fields=area(id,name,components(id,name,type,tags,teams,platformId,testResults))`
     )
       .then((res) => res.json())
       .then((json) => json.area as Area)

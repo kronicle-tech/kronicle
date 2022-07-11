@@ -67,7 +67,7 @@ describe('ComponentFilters', () => {
         {
           id: 'test-component-id-1',
           name: 'Test Component Name 1',
-          typeId: 'test-component-type-id-1',
+          type: 'test-component-type-id-1',
           repo: {
             url: 'https://example.com/repo-1',
           },
@@ -75,7 +75,7 @@ describe('ComponentFilters', () => {
         {
           id: 'test-component-id-2',
           name: 'Test Component Name 2',
-          typeId: 'test-component-type-id-2',
+          type: 'test-component-type-id-2',
           repo: {
             url: 'https://example.com/repo-2',
           },
@@ -83,7 +83,7 @@ describe('ComponentFilters', () => {
         {
           id: 'test-component-id-3',
           name: 'Test Component Name 3',
-          typeId: 'test-component-type-id-3',
+          type: 'test-component-type-id-3',
           repo: {
             url: 'https://example.com/repo-3',
           },
@@ -104,7 +104,7 @@ describe('ComponentFilters', () => {
         {
           id: 'test-component-id-1',
           name: 'Test Component Name 1',
-          typeId: 'test-component-type-id-1',
+          type: 'test-component-type-id-1',
           tags: [
             {
               key: 'test-tag-1-a',
@@ -143,7 +143,7 @@ describe('ComponentFilters', () => {
         {
           id: 'test-component-id-2',
           name: 'Test Component Name 2',
-          typeId: 'test-component-type-id-2',
+          type: 'test-component-type-id-2',
           tags: [
             {
               key: 'test-tag-2-a',
@@ -182,7 +182,7 @@ describe('ComponentFilters', () => {
         {
           id: 'test-component-id-3',
           name: 'Test Component Name 3',
-          typeId: 'test-component-type-id-3',
+          type: 'test-component-type-id-3',
           tags: [
             {
               key: 'test-tag-3-a',
@@ -303,7 +303,7 @@ describe('ComponentFilters', () => {
       await createWrapper()
       await wrapper.get('#toggleFilters').trigger('click')
       await wrapper.get('input[value="test-component-type-id-1"]').setChecked()
-      expect(store.state.componentFilters.componentTypeIds).toEqual([
+      expect(store.state.componentFilters.componentTypes).toEqual([
         'test-component-type-id-1',
       ])
     })
@@ -314,7 +314,7 @@ describe('ComponentFilters', () => {
       await wrapper.get('input[value="test-component-type-id-1"]').setChecked()
       await wrapper.get('input[value="test-component-type-id-2"]').setChecked()
       await wrapper.get('input[value="test-component-type-id-3"]').setChecked()
-      expect(store.state.componentFilters.componentTypeIds).toEqual([
+      expect(store.state.componentFilters.componentTypes).toEqual([
         'test-component-type-id-1',
         'test-component-type-id-2',
         'test-component-type-id-3',
@@ -367,7 +367,7 @@ describe('ComponentFilters', () => {
         {
           id: 'test-component-id-1',
           name: 'Test Component Name 1',
-          typeId: 'test-component-type-id-1',
+          type: 'test-component-type-id-1',
           tags: [
             {
               key: 'test-tag-1-a',
@@ -406,7 +406,7 @@ describe('ComponentFilters', () => {
         {
           id: 'test-component-id-2',
           name: 'Test Component Name 1',
-          typeId: 'test-component-type-id-1',
+          type: 'test-component-type-id-1',
           tags: [
             {
               key: 'test-tag-1-a',
@@ -445,7 +445,7 @@ describe('ComponentFilters', () => {
         {
           id: 'test-component-id-3',
           name: 'Test Component Name 1',
-          typeId: 'test-component-type-id-1',
+          type: 'test-component-type-id-1',
           tags: [
             {
               key: 'test-tag-1-a',
@@ -502,11 +502,9 @@ describe('ComponentFilters', () => {
         'test-tag-1-a',
         'test-tag-1-b',
       ])
-      expectCheckboxGroupToHaveValues(
-        wrapper,
-        'input[name="componentTypeId"]',
-        ['test-component-type-id-1']
-      )
+      expectCheckboxGroupToHaveValues(wrapper, 'input[name="componentType"]', [
+        'test-component-type-id-1',
+      ])
       expectCheckboxGroupToHaveValues(wrapper, 'input[name="platformId"]', [
         'test-platform-id-1',
       ])

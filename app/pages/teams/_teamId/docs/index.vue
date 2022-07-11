@@ -22,7 +22,7 @@ export default Vue.extend({
   },
   async asyncData({ $config, route, store }) {
     const team = await fetch(
-      `${$config.serviceBaseUrl}/v1/teams/${route.params.teamId}?stateType=doc&fields=team(id,name,components(id,name,typeId,tags,description,notes,responsibilities,teams,platformId,states))`
+      `${$config.serviceBaseUrl}/v1/teams/${route.params.teamId}?stateType=doc&fields=team(id,name,components(id,name,type,tags,description,notes,responsibilities,teams,platformId,states))`
     )
       .then((res) => res.json())
       .then((json) => json.team as Team)

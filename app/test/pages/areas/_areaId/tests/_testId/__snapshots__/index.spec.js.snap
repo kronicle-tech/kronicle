@@ -7,11 +7,11 @@ exports[`Index when Get Test service endpoint returns a test and the Get Area se
   <h1
     class="text-info my-3"
   >
-    
+
     Test Area Name 1 - test-test-id-1 Test
-  
+
   </h1>
-   
+
   <div
     class="my-3"
   >
@@ -20,94 +20,94 @@ exports[`Index when Get Test service endpoint returns a test and the Get Area se
       href="/areas/test-area-id-1"
       target="_self"
     >
-       Info 
+       Info
     </a>
-     
+
     <a
       class="btn my-1 btn-secondary"
       href="/areas/test-area-id-1/diagrams"
       target="_self"
     >
-      
+
     Diagrams
-  
+
     </a>
-     
+
     <a
       class="btn my-1 btn-secondary"
       href="/areas/test-area-id-1/docs"
       target="_self"
     >
-       Docs 
+       Docs
     </a>
-     
+
     <a
       class="btn my-1 btn-secondary"
       href="/areas/test-area-id-1/components"
       target="_self"
     >
-      
+
     Components
-  
+
     </a>
-     
+
     <a
       class="btn my-1 btn-secondary"
       href="/areas/test-area-id-1/cross-functional-requirements"
       target="_self"
     >
-      
+
     Cross Functional Requirements
-  
+
     </a>
-     
+
     <a
       class="btn my-1 btn-secondary"
       href="/areas/test-area-id-1/tech-debts"
       target="_self"
     >
-      
+
     Tech Debts
-  
+
     </a>
-     
+
     <a
       class="btn my-1 btn-secondary"
       href="/areas/test-area-id-1/openapi-specs"
       target="_self"
     >
-      
+
     OpenAPI
-  
+
     </a>
-     
+
     <a
       class="btn my-1 btn-secondary"
       href="/areas/test-area-id-1/graphql-schemas"
       target="_self"
     >
-      
+
     GraphQL
-  
+
     </a>
-     
+
     <a
       class="btn my-1 btn-secondary"
       href="/areas/test-area-id-1/tests"
       target="_self"
     >
-       Tests 
+       Tests
     </a>
-     
+
     <a
       class="btn my-1 btn-secondary"
       href="/areas/test-area-id-1/errors"
       target="_self"
     >
-       Errors 
+       Errors
     </a>
   </div>
-   
+
   <div>
     <div
       class="card my-3"
@@ -124,7 +124,7 @@ exports[`Index when Get Test service endpoint returns a test and the Get Area se
         </h4>
         <!---->
         <div>
-          
+
 
           <p>
             Test Test Description 1
@@ -134,7 +134,7 @@ exports[`Index when Get Test service endpoint returns a test and the Get Area se
       <!---->
       <!---->
     </div>
-     
+
     <div
       class="card my-3"
     >
@@ -150,7 +150,7 @@ exports[`Index when Get Test service endpoint returns a test and the Get Area se
         </h4>
         <!---->
         <div>
-          
+
 
           <p>
             Test Test Notes 1
@@ -160,7 +160,7 @@ exports[`Index when Get Test service endpoint returns a test and the Get Area se
       <!---->
       <!---->
     </div>
-     
+
     <div
       class="card my-3"
     >
@@ -175,14 +175,14 @@ exports[`Index when Get Test service endpoint returns a test and the Get Area se
           Priority
         </h4>
         <!---->
-        
+
     Medium
-  
+
       </div>
       <!---->
       <!---->
     </div>
-     
+
     <div>
       <div
         class="card my-3"
@@ -201,16 +201,16 @@ exports[`Index when Get Test service endpoint returns a test and the Get Area se
               0
             </span>
              tests
-      
+
           </div>
-           
+
         </div>
         <!---->
         <!---->
       </div>
-       
+
       <!---->
-       
+
       <div
         class="card my-3"
       >
@@ -242,11 +242,11 @@ exports[`Index when Get Test service endpoint returns a test and the Get Area se
   <h1
     class="text-info my-3"
   >
-    
+
     Test Area Name 1 - test-test-id-1 Test
-  
+
   </h1>
-   
+
   <div
     class="my-3"
   >
@@ -255,94 +255,94 @@ exports[`Index when Get Test service endpoint returns a test and the Get Area se
       href="/areas/test-area-id-1"
       target="_self"
     >
-       Info 
+       Info
     </a>
-     
+
     <a
       class="btn my-1 btn-secondary"
       href="/areas/test-area-id-1/diagrams"
       target="_self"
     >
-      
+
     Diagrams
-  
+
     </a>
-     
+
     <a
       class="btn my-1 btn-secondary"
       href="/areas/test-area-id-1/docs"
       target="_self"
     >
-       Docs 
+       Docs
     </a>
-     
+
     <a
       class="btn my-1 btn-secondary"
       href="/areas/test-area-id-1/components"
       target="_self"
     >
-      
+
     Components
-  
+
     </a>
-     
+
     <a
       class="btn my-1 btn-secondary"
       href="/areas/test-area-id-1/cross-functional-requirements"
       target="_self"
     >
-      
+
     Cross Functional Requirements
-  
+
     </a>
-     
+
     <a
       class="btn my-1 btn-secondary"
       href="/areas/test-area-id-1/tech-debts"
       target="_self"
     >
-      
+
     Tech Debts
-  
+
     </a>
-     
+
     <a
       class="btn my-1 btn-secondary"
       href="/areas/test-area-id-1/openapi-specs"
       target="_self"
     >
-      
+
     OpenAPI
-  
+
     </a>
-     
+
     <a
       class="btn my-1 btn-secondary"
       href="/areas/test-area-id-1/graphql-schemas"
       target="_self"
     >
-      
+
     GraphQL
-  
+
     </a>
-     
+
     <a
       class="btn my-1 btn-secondary"
       href="/areas/test-area-id-1/tests"
       target="_self"
     >
-       Tests 
+       Tests
     </a>
-     
+
     <a
       class="btn my-1 btn-secondary"
       href="/areas/test-area-id-1/errors"
       target="_self"
     >
-       Errors 
+       Errors
     </a>
   </div>
-   
+
   <div>
     <div
       class="card my-3"
@@ -359,7 +359,7 @@ exports[`Index when Get Test service endpoint returns a test and the Get Area se
         </h4>
         <!---->
         <div>
-          
+
 
           <p>
             Test Test Description 1
@@ -369,7 +369,7 @@ exports[`Index when Get Test service endpoint returns a test and the Get Area se
       <!---->
       <!---->
     </div>
-     
+
     <div
       class="card my-3"
     >
@@ -385,7 +385,7 @@ exports[`Index when Get Test service endpoint returns a test and the Get Area se
         </h4>
         <!---->
         <div>
-          
+
 
           <p>
             Test Test Notes 1
@@ -395,7 +395,7 @@ exports[`Index when Get Test service endpoint returns a test and the Get Area se
       <!---->
       <!---->
     </div>
-     
+
     <div
       class="card my-3"
     >
@@ -410,14 +410,14 @@ exports[`Index when Get Test service endpoint returns a test and the Get Area se
           Priority
         </h4>
         <!---->
-        
+
     Medium
-  
+
       </div>
       <!---->
       <!---->
     </div>
-     
+
     <div>
       <div
         class="card my-3"
@@ -436,19 +436,19 @@ exports[`Index when Get Test service endpoint returns a test and the Get Area se
               0
             </span>
              tests
-      
+
           </div>
-           
+
         </div>
         <!---->
         <!---->
       </div>
-       
+
       <div
         class="mt-3 mb-4"
         components="[object Object],[object Object],[object Object]"
       >
-         
+
         <button
           aria-controls="filters"
           aria-expanded="false"
@@ -471,9 +471,9 @@ exports[`Index when Get Test service endpoint returns a test and the Get Area se
             <g />
           </svg>
            Filters
-  
+
         </button>
-         
+
         <transition-stub
           class="mt-3"
           css="true"
@@ -492,11 +492,11 @@ exports[`Index when Get Test service endpoint returns a test and the Get Area se
             <div
               class="card-columns"
             >
-               
+
               <!---->
-               
+
               <!---->
-               
+
               <div
                 class="card bg-secondary"
               >
@@ -573,7 +573,7 @@ exports[`Index when Get Test service endpoint returns a test and the Get Area se
                 <!---->
                 <!---->
               </div>
-               
+
               <div
                 class="card bg-secondary"
               >
@@ -726,7 +726,7 @@ exports[`Index when Get Test service endpoint returns a test and the Get Area se
                 <!---->
                 <!---->
               </div>
-               
+
               <div
                 class="card bg-secondary"
               >
@@ -879,7 +879,7 @@ exports[`Index when Get Test service endpoint returns a test and the Get Area se
                 <!---->
                 <!---->
               </div>
-               
+
               <div
                 class="card bg-secondary"
               >
@@ -914,7 +914,7 @@ exports[`Index when Get Test service endpoint returns a test and the Get Area se
                           <input
                             class="custom-control-input"
                             id="__BVID__87_BV_option_0"
-                            name="componentTypeId"
+                            name="componentType"
                             type="checkbox"
                             value="test-component-type-id-1"
                           />
@@ -933,7 +933,7 @@ exports[`Index when Get Test service endpoint returns a test and the Get Area se
                           <input
                             class="custom-control-input"
                             id="__BVID__87_BV_option_1"
-                            name="componentTypeId"
+                            name="componentType"
                             type="checkbox"
                             value="test-component-type-id-2"
                           />
@@ -952,7 +952,7 @@ exports[`Index when Get Test service endpoint returns a test and the Get Area se
                           <input
                             class="custom-control-input"
                             id="__BVID__87_BV_option_2"
-                            name="componentTypeId"
+                            name="componentType"
                             type="checkbox"
                             value="test-component-type-id-3"
                           />
@@ -975,7 +975,7 @@ exports[`Index when Get Test service endpoint returns a test and the Get Area se
                 <!---->
                 <!---->
               </div>
-               
+
               <div
                 class="card bg-secondary"
               >
@@ -1033,7 +1033,7 @@ exports[`Index when Get Test service endpoint returns a test and the Get Area se
                 <!---->
                 <!---->
               </div>
-               
+
               <div
                 class="card bg-secondary"
               >
@@ -1095,7 +1095,7 @@ exports[`Index when Get Test service endpoint returns a test and the Get Area se
           </div>
         </transition-stub>
       </div>
-       
+
       <div
         class="card my-3"
       >

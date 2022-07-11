@@ -9,7 +9,7 @@ exports[`Index when Get Team service endpoint returns a team when the area has n
   >
     Test Team Name 1 - Components
   </h1>
-   
+
   <div
     class="my-3"
   >
@@ -18,97 +18,97 @@ exports[`Index when Get Team service endpoint returns a team when the area has n
       href="/teams/test-team-id-1"
       target="_self"
     >
-       Info 
+       Info
     </a>
-     
+
     <a
       class="btn my-1 btn-secondary"
       href="/teams/test-team-id-1/diagrams"
       target="_self"
     >
-      
+
     Diagrams
-  
+
     </a>
-     
+
     <a
       class="btn my-1 btn-secondary"
       href="/teams/test-team-id-1/docs"
       target="_self"
     >
-       Docs 
+       Docs
     </a>
-     
+
     <a
       class="btn my-1 btn-secondary"
       href="/teams/test-team-id-1/components"
       target="_self"
     >
-      
+
     Components
-  
+
     </a>
-     
+
     <a
       class="btn my-1 btn-secondary"
       href="/teams/test-team-id-1/cross-functional-requirements"
       target="_self"
     >
-      
+
     Cross Functional Requirements
-  
+
     </a>
-     
+
     <a
       class="btn my-1 btn-secondary"
       href="/teams/test-team-id-1/tech-debts"
       target="_self"
     >
-      
+
     Tech Debts
-  
+
     </a>
-     
+
     <a
       class="btn my-1 btn-secondary"
       href="/teams/test-team-id-1/openapi-specs"
       target="_self"
     >
-      
+
     OpenAPI
-  
+
     </a>
-     
+
     <a
       class="btn my-1 btn-secondary"
       href="/teams/test-team-id-1/graphql-schemas"
       target="_self"
     >
-      
+
     GraphQL
-  
+
     </a>
-     
+
     <a
       class="btn my-1 btn-secondary"
       href="/teams/test-team-id-1/tests"
       target="_self"
     >
-       Tests 
+       Tests
     </a>
-     
+
     <a
       class="btn my-1 btn-secondary"
       href="/teams/test-team-id-1/errors"
       target="_self"
     >
-       Errors 
+       Errors
     </a>
   </div>
-   
+
   <div>
     <!---->
-     
+
     <div
       class="card"
     >
@@ -141,7 +141,7 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
   >
     Test Team Name 1 - Components
   </h1>
-   
+
   <div
     class="my-3"
   >
@@ -150,94 +150,94 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
       href="/teams/test-team-id-1"
       target="_self"
     >
-       Info 
+       Info
     </a>
-     
+
     <a
       class="btn my-1 btn-secondary"
       href="/teams/test-team-id-1/diagrams"
       target="_self"
     >
-      
+
     Diagrams
-  
+
     </a>
-     
+
     <a
       class="btn my-1 btn-secondary"
       href="/teams/test-team-id-1/docs"
       target="_self"
     >
-       Docs 
+       Docs
     </a>
-     
+
     <a
       class="btn my-1 btn-secondary"
       href="/teams/test-team-id-1/components"
       target="_self"
     >
-      
+
     Components
-  
+
     </a>
-     
+
     <a
       class="btn my-1 btn-secondary"
       href="/teams/test-team-id-1/cross-functional-requirements"
       target="_self"
     >
-      
+
     Cross Functional Requirements
-  
+
     </a>
-     
+
     <a
       class="btn my-1 btn-secondary"
       href="/teams/test-team-id-1/tech-debts"
       target="_self"
     >
-      
+
     Tech Debts
-  
+
     </a>
-     
+
     <a
       class="btn my-1 btn-secondary"
       href="/teams/test-team-id-1/openapi-specs"
       target="_self"
     >
-      
+
     OpenAPI
-  
+
     </a>
-     
+
     <a
       class="btn my-1 btn-secondary"
       href="/teams/test-team-id-1/graphql-schemas"
       target="_self"
     >
-      
+
     GraphQL
-  
+
     </a>
-     
+
     <a
       class="btn my-1 btn-secondary"
       href="/teams/test-team-id-1/tests"
       target="_self"
     >
-       Tests 
+       Tests
     </a>
-     
+
     <a
       class="btn my-1 btn-secondary"
       href="/teams/test-team-id-1/errors"
       target="_self"
     >
-       Errors 
+       Errors
     </a>
   </div>
-   
+
   <div>
     <div
       class="mt-3 mb-4"
@@ -249,14 +249,14 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
       >
         Documented Components Only
       </button>
-       
+
       <button
         class="btn mr-2 my-1 btn-secondary"
         type="button"
       >
         All Components
       </button>
-       
+
       <button
         aria-controls="filters"
         aria-expanded="false"
@@ -279,9 +279,9 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
           <g />
         </svg>
          Other Filters
-  
+
       </button>
-       
+
       <transition-stub
         class="mt-3"
         css="true"
@@ -300,13 +300,13 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
           <div
             class="card-columns"
           >
-             
+
             <!---->
-             
+
             <!---->
-             
+
             <!---->
-             
+
             <div
               class="card bg-secondary"
             >
@@ -459,7 +459,7 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
               <!---->
               <!---->
             </div>
-             
+
             <div
               class="card bg-secondary"
             >
@@ -612,7 +612,7 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
               <!---->
               <!---->
             </div>
-             
+
             <div
               class="card bg-secondary"
             >
@@ -647,7 +647,7 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
                         <input
                           class="custom-control-input"
                           id="__BVID__74_BV_option_0"
-                          name="componentTypeId"
+                          name="componentType"
                           type="checkbox"
                           value="test-component-type-id-1"
                         />
@@ -666,7 +666,7 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
                         <input
                           class="custom-control-input"
                           id="__BVID__74_BV_option_1"
-                          name="componentTypeId"
+                          name="componentType"
                           type="checkbox"
                           value="test-component-type-id-2"
                         />
@@ -685,7 +685,7 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
                         <input
                           class="custom-control-input"
                           id="__BVID__74_BV_option_2"
-                          name="componentTypeId"
+                          name="componentType"
                           type="checkbox"
                           value="test-component-type-id-3"
                         />
@@ -708,7 +708,7 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
               <!---->
               <!---->
             </div>
-             
+
             <div
               class="card bg-secondary"
             >
@@ -766,7 +766,7 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
               <!---->
               <!---->
             </div>
-             
+
             <div
               class="card bg-secondary"
             >
@@ -828,7 +828,7 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
         </div>
       </transition-stub>
     </div>
-     
+
     <div
       class="card"
     >
@@ -853,27 +853,27 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
               >
                 Type
               </th>
-               
+
               <th
                 class="name"
               >
                 Name
               </th>
-               
+
               <th>
                 Tags
               </th>
-               
+
               <th>
                 Teams
               </th>
-               
+
               <th>
                 Description
               </th>
             </tr>
           </thead>
-           
+
           <tbody>
             <tr>
               <td
@@ -881,7 +881,7 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
               >
                 test-component-type-id-1
               </td>
-               
+
               <td
                 class="name table-primary"
               >
@@ -891,7 +891,7 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
                   Test Component Name 1
                 </a>
               </td>
-               
+
               <td>
                 <div
                   class="h5"
@@ -899,20 +899,20 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
                   <span
                     class="badge mr-2 mb-2 badge-info"
                   >
-                    
+
     test-tag-1-1
                     <!---->
                   </span>
                   <span
                     class="badge mr-2 mb-2 badge-info"
                   >
-                    
+
     test-tag-1-2
                     <!---->
                   </span>
                 </div>
               </td>
-               
+
               <td>
                 <ul>
                   <li>
@@ -922,9 +922,9 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
                     >
                       test-team-id-1-1
                     </a>
-                     
+
                     <!---->
-                     
+
                     <!---->
                   </li>
                   <li>
@@ -934,19 +934,19 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
                     >
                       test-team-id-1-2
                     </a>
-                     
+
                     <!---->
-                     
+
                     <!---->
                   </li>
                 </ul>
               </td>
-               
+
               <td
                 class="description"
               >
                 <div>
-                  
+
 
                   <p>
                     Test Component Description 1
@@ -960,7 +960,7 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
               >
                 test-component-type-id-2
               </td>
-               
+
               <td
                 class="name table-primary"
               >
@@ -970,7 +970,7 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
                   Test Component Name 2
                 </a>
               </td>
-               
+
               <td>
                 <div
                   class="h5"
@@ -978,20 +978,20 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
                   <span
                     class="badge mr-2 mb-2 badge-info"
                   >
-                    
+
     test-tag-2-1
                     <!---->
                   </span>
                   <span
                     class="badge mr-2 mb-2 badge-info"
                   >
-                    
+
     test-tag-2-2
                     <!---->
                   </span>
                 </div>
               </td>
-               
+
               <td>
                 <ul>
                   <li>
@@ -1001,9 +1001,9 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
                     >
                       test-team-id-2-1
                     </a>
-                     
+
                     <!---->
-                     
+
                     <!---->
                   </li>
                   <li>
@@ -1013,19 +1013,19 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
                     >
                       test-team-id-2-2
                     </a>
-                     
+
                     <!---->
-                     
+
                     <!---->
                   </li>
                 </ul>
               </td>
-               
+
               <td
                 class="description"
               >
                 <div>
-                  
+
 
                   <p>
                     Test Component Description 2
@@ -1039,7 +1039,7 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
               >
                 test-component-type-id-3
               </td>
-               
+
               <td
                 class="name table-primary"
               >
@@ -1049,7 +1049,7 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
                   Test Component Name 3
                 </a>
               </td>
-               
+
               <td>
                 <div
                   class="h5"
@@ -1057,20 +1057,20 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
                   <span
                     class="badge mr-2 mb-2 badge-info"
                   >
-                    
+
     test-tag-3-1
                     <!---->
                   </span>
                   <span
                     class="badge mr-2 mb-2 badge-info"
                   >
-                    
+
     test-tag-3-2
                     <!---->
                   </span>
                 </div>
               </td>
-               
+
               <td>
                 <ul>
                   <li>
@@ -1080,9 +1080,9 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
                     >
                       test-team-id-3-1
                     </a>
-                     
+
                     <!---->
-                     
+
                     <!---->
                   </li>
                   <li>
@@ -1092,19 +1092,19 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
                     >
                       test-team-id-3-2
                     </a>
-                     
+
                     <!---->
-                     
+
                     <!---->
                   </li>
                 </ul>
               </td>
-               
+
               <td
                 class="description"
               >
                 <div>
-                  
+
 
                   <p>
                     Test Component Description 3

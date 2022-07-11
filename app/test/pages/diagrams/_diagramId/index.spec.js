@@ -22,7 +22,7 @@ describe('Index', () => {
       route,
       serviceRequests: {
         ...createComponentAvailableDataRequests(),
-        '/v1/components?fields=components(id,name,typeId,tags,description,notes,responsibilities,teams,platformId,states(environmentId,pluginId))':
+        '/v1/components?fields=components(id,name,type,tags,description,notes,responsibilities,teams,platformId,states(environmentId,pluginId))':
           {
             responseBody: { components },
           },

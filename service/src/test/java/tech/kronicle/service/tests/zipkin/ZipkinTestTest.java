@@ -40,7 +40,7 @@ public class ZipkinTestTest {
     public void testShouldReturnNotApplicableWhenComponentTypeIsNotRelevantForZipkin() {
         // Given
         Component component = Component.builder()
-                .typeId("not-relevant-component-type")
+                .type("not-relevant-component-type")
                 .build();
 
         // When
@@ -104,7 +104,7 @@ public class ZipkinTestTest {
 
     private Component createComponent(ZipkinState zipkin) {
         return Component.builder()
-                .typeId(CommonComponentTypeIds.SERVICE)
+                .type(CommonComponentTypeIds.SERVICE)
                 .states(List.of(zipkin))
                 .build();
     }

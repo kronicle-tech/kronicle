@@ -43,8 +43,8 @@ public class SonarQubeTest extends BaseSonarQubeTest {
                     null));
         }
 
-        if (componentTypeIdNotExpectedToUseSonarQube(input.getTypeId())) {
-            return createNotApplicableTestResult(String.format("Component type %s is not expected to have a SonarQube project", input.getTypeId()));
+        if (componentTypeIdNotExpectedToUseSonarQube(input.getType())) {
+            return createNotApplicableTestResult(String.format("Component type %s is not expected to have a SonarQube project", input.getType()));
         }
 
         return createFailTestResult(

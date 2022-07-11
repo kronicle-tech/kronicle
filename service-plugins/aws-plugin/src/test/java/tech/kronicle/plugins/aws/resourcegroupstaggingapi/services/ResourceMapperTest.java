@@ -3,7 +3,6 @@ package tech.kronicle.plugins.aws.resourcegroupstaggingapi.services;
 import lombok.RequiredArgsConstructor;
 import lombok.ToString;
 import lombok.With;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -81,7 +80,7 @@ public class ResourceMapperTest {
                                 Alias.builder().id("examplestack-examplefunction123abc-123456abcdef").build()
                         ))
                         .name("AWS - test-environment-id - ExampleStack-exampleFunction123ABC-123456ABCDEF")
-                        .typeId("aws.lambda-function")
+                        .type("aws.lambda-function")
                         .description(prepareExpectedDescription(
                                 mappingConfig,
                                 null,
@@ -105,7 +104,7 @@ public class ResourceMapperTest {
                                 Alias.builder().id("test-alias-id-2").build()
                         ))
                         .name("AWS - " + updatedEnvironmentId + " - Test name")
-                        .typeId("aws.ec2-security-group")
+                        .type("aws.ec2-security-group")
                         .tags(prepareExpectedTags(
                                 mappingConfig,
                                 List.of(
@@ -201,7 +200,7 @@ public class ResourceMapperTest {
                                         Alias.builder().id("test-alias-id-2").build()
                                 ))
                                 .name("AWS - " + updatedEnvironmentId + " - Test name")
-                                .typeId("aws.ec2-security-group")
+                                .type("aws.ec2-security-group")
                                 .tags(prepareExpectedTags(
                                         mappingConfig,
                                         List.of(

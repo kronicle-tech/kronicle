@@ -63,7 +63,7 @@ public class SonarQubeTestTest extends BaseSonarQubeTestTest {
     public void testShouldReturnNotApplicableWhenComponentHasNoSonarQubeProjectsAndComponentTypeIsNotExpectedToHaveSonarQubeProjects() {
         // Given
         Component component = Component.builder()
-                .typeId(COMPONENT_TEST_ID_NOT_EXPECTED_TO_USE_SONARQUBE)
+                .type(COMPONENT_TEST_ID_NOT_EXPECTED_TO_USE_SONARQUBE)
                 .build();
 
         // When
@@ -83,7 +83,7 @@ public class SonarQubeTestTest extends BaseSonarQubeTestTest {
     public void testShouldReturnFailWhenComponentHasNoSonarQubeProjectsAndComponentTypeIsExpectedToHaveSonarQubeProjects() {
         // Given
         Component component = Component.builder()
-                .typeId(COMPONENT_TEST_ID_EXPECTED_TO_USE_SONARQUBE)
+                .type(COMPONENT_TEST_ID_EXPECTED_TO_USE_SONARQUBE)
                 .build();
 
         // When

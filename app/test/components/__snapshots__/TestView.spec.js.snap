@@ -96,7 +96,7 @@ exports[`TestView when components is set to multiple components with multiple te
                   <legend tabindex=\\"-1\\" class=\\"bv-no-focus-ring col-form-label pt-0\\" id=\\"__BVID__16__BV_label_\\">Component Types</legend>
                   <div>
                     <div role=\\"group\\" tabindex=\\"-1\\" class=\\"bv-no-focus-ring\\" id=\\"__BVID__17\\">
-                      <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"componentTypeId\\" class=\\"custom-control-input\\" value=\\"\\" id=\\"__BVID__17_BV_option_0\\"><label class=\\"custom-control-label\\" for=\\"__BVID__17_BV_option_0\\"><span>null</span></label></div>
+                      <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"componentType\\" class=\\"custom-control-input\\" value=\\"\\" id=\\"__BVID__17_BV_option_0\\"><label class=\\"custom-control-label\\" for=\\"__BVID__17_BV_option_0\\"><span>null</span></label></div>
                     </div>
                     <!---->
                     <!---->

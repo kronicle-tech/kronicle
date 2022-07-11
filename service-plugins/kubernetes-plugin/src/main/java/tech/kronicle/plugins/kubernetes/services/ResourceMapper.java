@@ -31,7 +31,7 @@ public class ResourceMapper {
                 .id(mapId(cluster.getEnvironmentId(), apiResource, item))
                 .name(mapName(cluster, apiResource, item))
                 .discovered(true)
-                .typeId(mapType(apiResource))
+                .type(mapType(apiResource))
                 .platformId(Platforms.KUBERNETES)
                 .tags(mapTags(cluster.getEnvironmentId()))
                 .connections(mapConnections(cluster.getEnvironmentId(), item))

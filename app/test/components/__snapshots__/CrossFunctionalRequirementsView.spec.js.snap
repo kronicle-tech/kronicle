@@ -91,9 +91,9 @@ exports[`CrossFunctionalRequirementsView when components prop is set to multiple
                 <legend tabindex=\\"-1\\" class=\\"bv-no-focus-ring col-form-label pt-0\\" id=\\"__BVID__31__BV_label_\\">Component Types</legend>
                 <div>
                   <div role=\\"group\\" tabindex=\\"-1\\" class=\\"bv-no-focus-ring\\" id=\\"__BVID__32\\">
-                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"componentTypeId\\" class=\\"custom-control-input\\" value=\\"test-component-type-id-1\\" id=\\"__BVID__32_BV_option_0\\"><label class=\\"custom-control-label\\" for=\\"__BVID__32_BV_option_0\\"><span>test-component-type-id-1</span></label></div>
-                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"componentTypeId\\" class=\\"custom-control-input\\" value=\\"test-component-type-id-2\\" id=\\"__BVID__32_BV_option_1\\"><label class=\\"custom-control-label\\" for=\\"__BVID__32_BV_option_1\\"><span>test-component-type-id-2</span></label></div>
-                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"componentTypeId\\" class=\\"custom-control-input\\" value=\\"test-component-type-id-3\\" id=\\"__BVID__32_BV_option_2\\"><label class=\\"custom-control-label\\" for=\\"__BVID__32_BV_option_2\\"><span>test-component-type-id-3</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"componentType\\" class=\\"custom-control-input\\" value=\\"test-component-type-id-1\\" id=\\"__BVID__32_BV_option_0\\"><label class=\\"custom-control-label\\" for=\\"__BVID__32_BV_option_0\\"><span>test-component-type-id-1</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"componentType\\" class=\\"custom-control-input\\" value=\\"test-component-type-id-2\\" id=\\"__BVID__32_BV_option_1\\"><label class=\\"custom-control-label\\" for=\\"__BVID__32_BV_option_1\\"><span>test-component-type-id-2</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"componentType\\" class=\\"custom-control-input\\" value=\\"test-component-type-id-3\\" id=\\"__BVID__32_BV_option_2\\"><label class=\\"custom-control-label\\" for=\\"__BVID__32_BV_option_2\\"><span>test-component-type-id-3</span></label></div>
                   </div>
                   <!---->
                   <!---->
@@ -485,9 +485,9 @@ exports[`CrossFunctionalRequirementsView when components prop is set to multiple
                 <legend tabindex=\\"-1\\" class=\\"bv-no-focus-ring col-form-label pt-0\\" id=\\"__BVID__119__BV_label_\\">Component Types</legend>
                 <div>
                   <div role=\\"group\\" tabindex=\\"-1\\" class=\\"bv-no-focus-ring\\" id=\\"__BVID__120\\">
-                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"componentTypeId\\" class=\\"custom-control-input\\" value=\\"test-component-type-id-1\\" id=\\"__BVID__120_BV_option_0\\"><label class=\\"custom-control-label\\" for=\\"__BVID__120_BV_option_0\\"><span>test-component-type-id-1</span></label></div>
-                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"componentTypeId\\" class=\\"custom-control-input\\" value=\\"test-component-type-id-2\\" id=\\"__BVID__120_BV_option_1\\"><label class=\\"custom-control-label\\" for=\\"__BVID__120_BV_option_1\\"><span>test-component-type-id-2</span></label></div>
-                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"componentTypeId\\" class=\\"custom-control-input\\" value=\\"test-component-type-id-3\\" id=\\"__BVID__120_BV_option_2\\"><label class=\\"custom-control-label\\" for=\\"__BVID__120_BV_option_2\\"><span>test-component-type-id-3</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"componentType\\" class=\\"custom-control-input\\" value=\\"test-component-type-id-1\\" id=\\"__BVID__120_BV_option_0\\"><label class=\\"custom-control-label\\" for=\\"__BVID__120_BV_option_0\\"><span>test-component-type-id-1</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"componentType\\" class=\\"custom-control-input\\" value=\\"test-component-type-id-2\\" id=\\"__BVID__120_BV_option_1\\"><label class=\\"custom-control-label\\" for=\\"__BVID__120_BV_option_1\\"><span>test-component-type-id-2</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"componentType\\" class=\\"custom-control-input\\" value=\\"test-component-type-id-3\\" id=\\"__BVID__120_BV_option_2\\"><label class=\\"custom-control-label\\" for=\\"__BVID__120_BV_option_2\\"><span>test-component-type-id-3</span></label></div>
                   </div>
                   <!---->
                   <!---->
@@ -879,9 +879,9 @@ exports[`CrossFunctionalRequirementsView when components prop is set to multiple
                 <legend tabindex=\\"-1\\" class=\\"bv-no-focus-ring col-form-label pt-0\\" id=\\"__BVID__119__BV_label_\\">Component Types</legend>
                 <div>
                   <div role=\\"group\\" tabindex=\\"-1\\" class=\\"bv-no-focus-ring\\" id=\\"__BVID__120\\">
-                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"componentTypeId\\" class=\\"custom-control-input\\" value=\\"test-component-type-id-1\\" id=\\"__BVID__120_BV_option_0\\"><label class=\\"custom-control-label\\" for=\\"__BVID__120_BV_option_0\\"><span>test-component-type-id-1</span></label></div>
-                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"componentTypeId\\" class=\\"custom-control-input\\" value=\\"test-component-type-id-2\\" id=\\"__BVID__120_BV_option_1\\"><label class=\\"custom-control-label\\" for=\\"__BVID__120_BV_option_1\\"><span>test-component-type-id-2</span></label></div>
-                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"componentTypeId\\" class=\\"custom-control-input\\" value=\\"test-component-type-id-3\\" id=\\"__BVID__120_BV_option_2\\"><label class=\\"custom-control-label\\" for=\\"__BVID__120_BV_option_2\\"><span>test-component-type-id-3</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"componentType\\" class=\\"custom-control-input\\" value=\\"test-component-type-id-1\\" id=\\"__BVID__120_BV_option_0\\"><label class=\\"custom-control-label\\" for=\\"__BVID__120_BV_option_0\\"><span>test-component-type-id-1</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"componentType\\" class=\\"custom-control-input\\" value=\\"test-component-type-id-2\\" id=\\"__BVID__120_BV_option_1\\"><label class=\\"custom-control-label\\" for=\\"__BVID__120_BV_option_1\\"><span>test-component-type-id-2</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"componentType\\" class=\\"custom-control-input\\" value=\\"test-component-type-id-3\\" id=\\"__BVID__120_BV_option_2\\"><label class=\\"custom-control-label\\" for=\\"__BVID__120_BV_option_2\\"><span>test-component-type-id-3</span></label></div>
                   </div>
                   <!---->
                   <!---->

@@ -9,7 +9,7 @@ exports[`Index when Get Component service endpoint returns a component when the 
   >
     Test Component Name 1 - OpenAPI Specs
   </h1>
-   
+
   <div
     class="my-3"
   >
@@ -18,94 +18,94 @@ exports[`Index when Get Component service endpoint returns a component when the 
       href="/components/test-component-id-1"
       target="_self"
     >
-       Info 
+       Info
     </a>
-     
+
     <a
       class="btn my-1 btn-secondary"
       href="/components/test-component-id-1/diagrams"
       target="_self"
     >
-      
+
     Diagrams
-  
+
     </a>
-     
+
     <!---->
-     
+
     <!---->
-     
+
     <!---->
-     
+
     <!---->
-     
+
     <a
       class="btn my-1 btn-secondary"
       href="/components/test-component-id-1/cross-functional-requirements"
       target="_self"
     >
-      
+
     Cross Functional Requirements
-  
+
     </a>
-     
+
     <a
       class="btn my-1 btn-secondary"
       href="/components/test-component-id-1/tech-debts"
       target="_self"
     >
-      
+
     Tech Debts
-  
+
     </a>
-     
+
     <a
       class="btn my-1 btn-secondary"
       href="/components/test-component-id-1/errors"
       target="_self"
     >
-      
+
     Errors
-  
+
     </a>
-     
+
     <!---->
-     
+
     <!---->
-     
+
     <!---->
-     
+
     <!---->
-     
+
     <!---->
-     
+
     <a
       class="btn my-1 btn-secondary"
       href="/components/test-component-id-1/lines-of-code"
       target="_self"
     >
-      
+
     Lines of Code
-  
+
     </a>
-     
+
     <!---->
-     
+
     <!---->
-     
+
     <!---->
-     
+
     <a
       class="btn my-1 btn-secondary"
       href="/components/test-component-id-1/tests"
       target="_self"
     >
-      
+
     Tests
-  
+
     </a>
   </div>
-   
+
   <div>
     <div
       class="card my-3"
@@ -123,20 +123,20 @@ exports[`Index when Get Component service endpoint returns a component when the 
           >
             2
           </span>
-          
+
         OpenAPI specs
-      
+
         </div>
       </div>
       <!---->
       <!---->
     </div>
-     
+
     <div
       class="mt-3 mb-4"
       components="[object Object]"
     >
-       
+
       <button
         aria-controls="filters"
         aria-expanded="false"
@@ -159,9 +159,9 @@ exports[`Index when Get Component service endpoint returns a component when the 
           <g />
         </svg>
          Filters
-  
+
       </button>
-       
+
       <transition-stub
         class="mt-3"
         css="true"
@@ -180,13 +180,13 @@ exports[`Index when Get Component service endpoint returns a component when the 
           <div
             class="card-columns"
           >
-             
+
             <!---->
-             
+
             <!---->
-             
+
             <!---->
-             
+
             <div
               class="card bg-secondary"
             >
@@ -263,7 +263,7 @@ exports[`Index when Get Component service endpoint returns a component when the 
               <!---->
               <!---->
             </div>
-             
+
             <div
               class="card bg-secondary"
             >
@@ -340,7 +340,7 @@ exports[`Index when Get Component service endpoint returns a component when the 
               <!---->
               <!---->
             </div>
-             
+
             <div
               class="card bg-secondary"
             >
@@ -375,7 +375,7 @@ exports[`Index when Get Component service endpoint returns a component when the 
                         <input
                           class="custom-control-input"
                           id="__BVID__93_BV_option_0"
-                          name="componentTypeId"
+                          name="componentType"
                           type="checkbox"
                           value="test-component-type-id-1"
                         />
@@ -398,7 +398,7 @@ exports[`Index when Get Component service endpoint returns a component when the 
               <!---->
               <!---->
             </div>
-             
+
             <div
               class="card bg-secondary"
             >
@@ -456,7 +456,7 @@ exports[`Index when Get Component service endpoint returns a component when the 
               <!---->
               <!---->
             </div>
-             
+
             <div
               class="card bg-secondary"
             >
@@ -508,7 +508,7 @@ exports[`Index when Get Component service endpoint returns a component when the 
         </div>
       </transition-stub>
     </div>
-     
+
     <table
       class="table table-dark"
     >
@@ -519,25 +519,25 @@ exports[`Index when Get Component service endpoint returns a component when the 
           >
             Component
           </th>
-           
+
           <th
             class="teams"
           >
             Teams
           </th>
-           
+
           <th
             class="action"
           >
             Action
           </th>
-           
+
           <th
             class="location"
           >
             Location
           </th>
-           
+
           <th
             class="description"
           >
@@ -545,7 +545,7 @@ exports[`Index when Get Component service endpoint returns a component when the 
           </th>
         </tr>
       </thead>
-       
+
       <tbody>
         <tr>
           <td
@@ -557,7 +557,7 @@ exports[`Index when Get Component service endpoint returns a component when the 
               Test Component Name 1
             </a>
           </td>
-           
+
           <td
             class="teams"
           >
@@ -569,9 +569,9 @@ exports[`Index when Get Component service endpoint returns a component when the 
                 >
                   test-team-id-1-1
                 </a>
-                 
+
                 <!---->
-                 
+
                 <!---->
               </li>
               <li>
@@ -581,14 +581,14 @@ exports[`Index when Get Component service endpoint returns a component when the 
                 >
                   test-team-id-1-2
                 </a>
-                 
+
                 <!---->
-                 
+
                 <!---->
               </li>
             </ul>
           </td>
-           
+
           <td
             class="action table-secondary"
           >
@@ -600,20 +600,20 @@ exports[`Index when Get Component service endpoint returns a component when the 
               </span>
             </div>
           </td>
-           
+
           <td
             class="location"
           >
-            
+
         https://example.com/test-openapi-spec-1-1
-      
+
           </td>
-           
+
           <td
             class="description"
           >
             <div>
-              
+
 
               <p>
                 Test OpenAPI Spec Description 1 1
@@ -631,7 +631,7 @@ exports[`Index when Get Component service endpoint returns a component when the 
               Test Component Name 1
             </a>
           </td>
-           
+
           <td
             class="teams"
           >
@@ -643,9 +643,9 @@ exports[`Index when Get Component service endpoint returns a component when the 
                 >
                   test-team-id-1-1
                 </a>
-                 
+
                 <!---->
-                 
+
                 <!---->
               </li>
               <li>
@@ -655,14 +655,14 @@ exports[`Index when Get Component service endpoint returns a component when the 
                 >
                   test-team-id-1-2
                 </a>
-                 
+
                 <!---->
-                 
+
                 <!---->
               </li>
             </ul>
           </td>
-           
+
           <td
             class="action table-secondary"
           >
@@ -674,20 +674,20 @@ exports[`Index when Get Component service endpoint returns a component when the 
               </span>
             </div>
           </td>
-           
+
           <td
             class="location"
           >
-            
+
         https://example.com/test-openapi-spec-1-2
-      
+
           </td>
-           
+
           <td
             class="description"
           >
             <div>
-              
+
 
               <p>
                 Test OpenAPI Spec Description 1 2
@@ -710,7 +710,7 @@ exports[`Index when Get Component service endpoint returns a component when the 
   >
     Test Component Name 1 - OpenAPI Specs
   </h1>
-   
+
   <div
     class="my-3"
   >
@@ -719,94 +719,94 @@ exports[`Index when Get Component service endpoint returns a component when the 
       href="/components/test-component-id-1"
       target="_self"
     >
-       Info 
+       Info
     </a>
-     
+
     <a
       class="btn my-1 btn-secondary"
       href="/components/test-component-id-1/diagrams"
       target="_self"
     >
-      
+
     Diagrams
-  
+
     </a>
-     
+
     <!---->
-     
+
     <!---->
-     
+
     <!---->
-     
+
     <!---->
-     
+
     <a
       class="btn my-1 btn-secondary"
       href="/components/test-component-id-1/cross-functional-requirements"
       target="_self"
     >
-      
+
     Cross Functional Requirements
-  
+
     </a>
-     
+
     <a
       class="btn my-1 btn-secondary"
       href="/components/test-component-id-1/tech-debts"
       target="_self"
     >
-      
+
     Tech Debts
-  
+
     </a>
-     
+
     <a
       class="btn my-1 btn-secondary"
       href="/components/test-component-id-1/errors"
       target="_self"
     >
-      
+
     Errors
-  
+
     </a>
-     
+
     <!---->
-     
+
     <!---->
-     
+
     <!---->
-     
+
     <!---->
-     
+
     <!---->
-     
+
     <a
       class="btn my-1 btn-secondary"
       href="/components/test-component-id-1/lines-of-code"
       target="_self"
     >
-      
+
     Lines of Code
-  
+
     </a>
-     
+
     <!---->
-     
+
     <!---->
-     
+
     <!---->
-     
+
     <a
       class="btn my-1 btn-secondary"
       href="/components/test-component-id-1/tests"
       target="_self"
     >
-      
+
     Tests
-  
+
     </a>
   </div>
-   
+
   <div>
     <div
       class="card my-3"
@@ -824,20 +824,20 @@ exports[`Index when Get Component service endpoint returns a component when the 
           >
             0
           </span>
-          
+
         OpenAPI specs
-      
+
         </div>
       </div>
       <!---->
       <!---->
     </div>
-     
+
     <div
       class="mt-3 mb-4"
       components="[object Object]"
     >
-       
+
       <button
         aria-controls="filters"
         aria-expanded="false"
@@ -860,9 +860,9 @@ exports[`Index when Get Component service endpoint returns a component when the 
           <g />
         </svg>
          Filters
-  
+
       </button>
-       
+
       <transition-stub
         class="mt-3"
         css="true"
@@ -881,13 +881,13 @@ exports[`Index when Get Component service endpoint returns a component when the 
           <div
             class="card-columns"
           >
-             
+
             <!---->
-             
+
             <!---->
-             
+
             <!---->
-             
+
             <div
               class="card bg-secondary"
             >
@@ -964,7 +964,7 @@ exports[`Index when Get Component service endpoint returns a component when the 
               <!---->
               <!---->
             </div>
-             
+
             <div
               class="card bg-secondary"
             >
@@ -1041,7 +1041,7 @@ exports[`Index when Get Component service endpoint returns a component when the 
               <!---->
               <!---->
             </div>
-             
+
             <div
               class="card bg-secondary"
             >
@@ -1076,7 +1076,7 @@ exports[`Index when Get Component service endpoint returns a component when the 
                         <input
                           class="custom-control-input"
                           id="__BVID__60_BV_option_0"
-                          name="componentTypeId"
+                          name="componentType"
                           type="checkbox"
                           value="test-component-type-id-1"
                         />
@@ -1099,7 +1099,7 @@ exports[`Index when Get Component service endpoint returns a component when the 
               <!---->
               <!---->
             </div>
-             
+
             <div
               class="card bg-secondary"
             >
@@ -1157,7 +1157,7 @@ exports[`Index when Get Component service endpoint returns a component when the 
               <!---->
               <!---->
             </div>
-             
+
             <div
               class="card bg-secondary"
             >
@@ -1209,7 +1209,7 @@ exports[`Index when Get Component service endpoint returns a component when the 
         </div>
       </transition-stub>
     </div>
-     
+
     <!---->
   </div>
 </div>

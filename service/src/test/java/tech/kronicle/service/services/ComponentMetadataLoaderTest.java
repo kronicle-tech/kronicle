@@ -740,7 +740,7 @@ public class ComponentMetadataLoaderTest {
                 .id("test-component-id-" + idNumber)
                 .name("Test Component Name " + othersNumber)
                 .repo(RepoReference.builder().url("http://example.com/test-repo-" + othersNumber + ".git").build())
-                .typeId("test-component-type-id-" + othersNumber);
+                .type("test-component-type-id-" + othersNumber);
     }
 
     private Component createInvalidTestComponent(int number) {

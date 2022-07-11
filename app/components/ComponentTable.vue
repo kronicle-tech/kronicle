@@ -14,7 +14,7 @@
         v-for="(component, componentIndex) in sortedComponents"
         :key="componentIndex"
       >
-        <td class="type">{{ component.typeId }}</td>
+        <td class="type">{{ component.type }}</td>
         <td class="name table-primary">
           <ComponentName :component="component" />
         </td>

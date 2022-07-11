@@ -20,7 +20,7 @@ export default Vue.extend({
   },
   async asyncData({ $config, route, store }) {
     const components = await fetch(
-      `${$config.serviceBaseUrl}/v1/components?fields=components(id,name,typeId,tags,teams,platformId,techDebts)`
+      `${$config.serviceBaseUrl}/v1/components?fields=components(id,name,type,tags,teams,platformId,techDebts)`
     )
       .then((res) => res.json())
       .then((json) => json.components as Component[])

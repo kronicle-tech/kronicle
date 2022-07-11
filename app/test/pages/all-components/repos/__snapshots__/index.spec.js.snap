@@ -12,97 +12,97 @@ exports[`Index when Get Components service endpoint returns an array of multiple
       href="#"
       target="_self"
     >
-      
+
     Components
-  
+
     </a>
-     
+
     <a
       class="btn btn-secondary"
       href="?testOutcome=fail"
       target="_self"
     >
-      
+
     Tests
-  
+
     </a>
-     
+
     <a
       class="btn my-1 btn-secondary"
       href="#"
       target="_self"
     >
-      
+
     Cross Functional Requirements
-  
+
     </a>
-     
+
     <a
       class="btn my-1 btn-secondary"
       href="#"
       target="_self"
     >
-      
+
     Tech Debts
-  
+
     </a>
-     
+
     <a
       class="btn my-1 btn-secondary"
       href="#"
       target="_self"
     >
-      
+
     OpenAPI Specs
-  
+
     </a>
-     
+
     <a
       class="btn my-1 btn-secondary"
       href="#"
       target="_self"
     >
-      
+
     GraphQL Schemas
-  
+
     </a>
-     
+
     <a
       class="btn my-1 btn-secondary"
       href="#"
       target="_self"
     >
-      
+
     Key Software
-  
+
     </a>
-     
+
     <a
       class="btn my-1 btn-secondary"
       href="#"
       target="_self"
     >
-      
+
     Repos
-  
+
     </a>
-     
+
     <a
       class="btn my-1 btn-secondary"
       href="#"
       target="_self"
     >
-      
+
     Errors
-  
+
     </a>
   </div>
-   
+
   <div
     class="mt-3 mb-4"
     components="[object Object],[object Object],[object Object]"
   >
-     
+
     <button
       aria-controls="filters"
       aria-expanded="false"
@@ -125,9 +125,9 @@ exports[`Index when Get Components service endpoint returns an array of multiple
         <g />
       </svg>
        Filters
-  
+
     </button>
-     
+
     <transition-stub
       class="mt-3"
       css="true"
@@ -146,13 +146,13 @@ exports[`Index when Get Components service endpoint returns an array of multiple
         <div
           class="card-columns"
         >
-           
+
           <!---->
-           
+
           <!---->
-           
+
           <!---->
-           
+
           <div
             class="card bg-secondary"
           >
@@ -305,7 +305,7 @@ exports[`Index when Get Components service endpoint returns an array of multiple
             <!---->
             <!---->
           </div>
-           
+
           <div
             class="card bg-secondary"
           >
@@ -458,7 +458,7 @@ exports[`Index when Get Components service endpoint returns an array of multiple
             <!---->
             <!---->
           </div>
-           
+
           <div
             class="card bg-secondary"
           >
@@ -493,7 +493,7 @@ exports[`Index when Get Components service endpoint returns an array of multiple
                       <input
                         class="custom-control-input"
                         id="__BVID__66_BV_option_0"
-                        name="componentTypeId"
+                        name="componentType"
                         type="checkbox"
                         value="test-component-type-id-1"
                       />
@@ -512,7 +512,7 @@ exports[`Index when Get Components service endpoint returns an array of multiple
                       <input
                         class="custom-control-input"
                         id="__BVID__66_BV_option_1"
-                        name="componentTypeId"
+                        name="componentType"
                         type="checkbox"
                         value="test-component-type-id-2"
                       />
@@ -531,7 +531,7 @@ exports[`Index when Get Components service endpoint returns an array of multiple
                       <input
                         class="custom-control-input"
                         id="__BVID__66_BV_option_2"
-                        name="componentTypeId"
+                        name="componentType"
                         type="checkbox"
                         value="test-component-type-id-3"
                       />
@@ -554,7 +554,7 @@ exports[`Index when Get Components service endpoint returns an array of multiple
             <!---->
             <!---->
           </div>
-           
+
           <div
             class="card bg-secondary"
           >
@@ -612,7 +612,7 @@ exports[`Index when Get Components service endpoint returns an array of multiple
             <!---->
             <!---->
           </div>
-           
+
           <div
             class="card bg-secondary"
           >
@@ -674,7 +674,7 @@ exports[`Index when Get Components service endpoint returns an array of multiple
       </div>
     </transition-stub>
   </div>
-   
+
   <table
     class="table table-dark table-bordered table-striped mt-2"
     style="width: 100%;"
@@ -686,45 +686,45 @@ exports[`Index when Get Components service endpoint returns an array of multiple
         >
           Type
         </th>
-         
+
         <th
           class="component-name"
         >
           Name
         </th>
-         
+
         <th>
           Repo
         </th>
-         
+
         <th>
           Repo Age
         </th>
-         
+
         <th>
           Time Since Last Commit
         </th>
-         
+
         <th>
           Commit Count
         </th>
-         
+
         <th>
           Author Count
         </th>
-         
+
         <th>
           Committer Count
         </th>
       </tr>
     </thead>
-     
+
     <tbody>
       <tr>
         <td>
           test-component-type-id-1
         </td>
-         
+
         <td
           class="component-name table-primary"
         >
@@ -734,7 +734,7 @@ exports[`Index when Get Components service endpoint returns an array of multiple
             Test Component Name 1
           </a>
         </td>
-         
+
         <td>
           <a
             href="https://example.com/test-repo-1"
@@ -743,34 +743,34 @@ exports[`Index when Get Components service endpoint returns an array of multiple
             https://example.com/test-repo-1
           </a>
         </td>
-         
+
         <td>
           <span>
-            
+
           </span>
         </td>
-         
+
         <td>
           <span>
-            
+
           </span>
         </td>
-         
+
         <td>
           <span>
-            
+
           </span>
         </td>
-         
+
         <td>
           <span>
-            
+
           </span>
         </td>
-         
+
         <td>
           <span>
-            
+
           </span>
         </td>
       </tr>
@@ -778,7 +778,7 @@ exports[`Index when Get Components service endpoint returns an array of multiple
         <td>
           test-component-type-id-2
         </td>
-         
+
         <td
           class="component-name table-primary"
         >
@@ -788,7 +788,7 @@ exports[`Index when Get Components service endpoint returns an array of multiple
             Test Component Name 2
           </a>
         </td>
-         
+
         <td>
           <a
             href="https://example.com/test-repo-2"
@@ -797,34 +797,34 @@ exports[`Index when Get Components service endpoint returns an array of multiple
             https://example.com/test-repo-2
           </a>
         </td>
-         
+
         <td>
           <span>
-            
+
           </span>
         </td>
-         
+
         <td>
           <span>
-            
+
           </span>
         </td>
-         
+
         <td>
           <span>
-            
+
           </span>
         </td>
-         
+
         <td>
           <span>
-            
+
           </span>
         </td>
-         
+
         <td>
           <span>
-            
+
           </span>
         </td>
       </tr>
@@ -832,7 +832,7 @@ exports[`Index when Get Components service endpoint returns an array of multiple
         <td>
           test-component-type-id-3
         </td>
-         
+
         <td
           class="component-name table-primary"
         >
@@ -842,7 +842,7 @@ exports[`Index when Get Components service endpoint returns an array of multiple
             Test Component Name 3
           </a>
         </td>
-         
+
         <td>
           <a
             href="https://example.com/test-repo-3"
@@ -851,34 +851,34 @@ exports[`Index when Get Components service endpoint returns an array of multiple
             https://example.com/test-repo-3
           </a>
         </td>
-         
+
         <td>
           <span>
-            
+
           </span>
         </td>
-         
+
         <td>
           <span>
-            
+
           </span>
         </td>
-         
+
         <td>
           <span>
-            
+
           </span>
         </td>
-         
+
         <td>
           <span>
-            
+
           </span>
         </td>
-         
+
         <td>
           <span>
-            
+
           </span>
         </td>
       </tr>
@@ -899,94 +899,94 @@ exports[`Index when Get Components service endpoint returns an empty array rende
       href="#"
       target="_self"
     >
-      
+
     Components
-  
+
     </a>
-     
+
     <a
       class="btn btn-secondary"
       href="?testOutcome=fail"
       target="_self"
     >
-      
+
     Tests
-  
+
     </a>
-     
+
     <a
       class="btn my-1 btn-secondary"
       href="#"
       target="_self"
     >
-      
+
     Cross Functional Requirements
-  
+
     </a>
-     
+
     <a
       class="btn my-1 btn-secondary"
       href="#"
       target="_self"
     >
-      
+
     Tech Debts
-  
+
     </a>
-     
+
     <a
       class="btn my-1 btn-secondary"
       href="#"
       target="_self"
     >
-      
+
     OpenAPI Specs
-  
+
     </a>
-     
+
     <a
       class="btn my-1 btn-secondary"
       href="#"
       target="_self"
     >
-      
+
     GraphQL Schemas
-  
+
     </a>
-     
+
     <a
       class="btn my-1 btn-secondary"
       href="#"
       target="_self"
     >
-      
+
     Key Software
-  
+
     </a>
-     
+
     <a
       class="btn my-1 btn-secondary"
       href="#"
       target="_self"
     >
-      
+
     Repos
-  
+
     </a>
-     
+
     <a
       class="btn my-1 btn-secondary"
       href="#"
       target="_self"
     >
-      
+
     Errors
-  
+
     </a>
   </div>
-   
+
   <!---->
-   
+
   <table
     class="table table-dark table-bordered table-striped mt-2"
     style="width: 100%;"
@@ -998,39 +998,39 @@ exports[`Index when Get Components service endpoint returns an empty array rende
         >
           Type
         </th>
-         
+
         <th
           class="component-name"
         >
           Name
         </th>
-         
+
         <th>
           Repo
         </th>
-         
+
         <th>
           Repo Age
         </th>
-         
+
         <th>
           Time Since Last Commit
         </th>
-         
+
         <th>
           Commit Count
         </th>
-         
+
         <th>
           Author Count
         </th>
-         
+
         <th>
           Committer Count
         </th>
       </tr>
     </thead>
-     
+
     <tbody />
   </table>
 </div>

@@ -103,15 +103,15 @@
         </b-card>
 
         <b-card
-          v-if="componentTypeIdOptions && componentTypeIdOptions.length > 0"
+          v-if="componentTypeOptions && componentTypeOptions.length > 0"
           bg-variant="secondary"
           body-class="p-2"
         >
           <b-form-group label="Component Types">
             <b-form-checkbox-group
-              v-model="componentTypeIds"
-              :options="componentTypeIdOptions"
-              name="componentTypeId"
+              v-model="componentTypes"
+              :options="componentTypeOptions"
+              name="componentType"
               stacked
             ></b-form-checkbox-group>
           </b-form-group>
@@ -337,27 +337,27 @@ export default class ComponentFilters extends Vue {
     this.$store.commit('componentFilters/setTags', value)
   }
 
-  get allComponentTypeIds(): string[] {
+  get allComponentTypes(): string[] {
     return distinctArrayElements(
-      this.components.flatMap((component) => component.typeId)
+      this.components.flatMap((component) => component.type)
     )
   }
 
-  get componentTypeIdOptions(): Option[] {
-    return this.allComponentTypeIds.map((componentTypeId) => {
+  get componentTypeOptions(): Option[] {
+    return this.allComponentTypes.map((componentType) => {
       return {
-        value: componentTypeId,
-        text: componentTypeId,
+        value: componentType,
+        text: componentType,
       }
     })
   }
 
-  get componentTypeIds(): string[] {
-    return this.$store.state.componentFilters.componentTypeIds
+  get componentTypes(): string[] {
+    return this.$store.state.componentFilters.componentTypes
   }
 
-  set componentTypeIds(value) {
-    this.$store.commit('componentFilters/setComponentTypeIds', value)
+  set componentTypes(value) {
+    this.$store.commit('componentFilters/setComponentTypes', value)
   }
 
   get allPlatformIds(): string[] {

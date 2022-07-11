@@ -70,7 +70,7 @@ export function createComponent({
   const component = {
     id: createComponentId(componentNumber),
     name: `Test Component Name ${componentNumber}`,
-    typeId: `test-component-type-id-${componentNumber}`,
+    type: `test-component-type-id-${componentNumber}`,
     description: `Test Component Description ${componentNumber}`,
     tags: [
       {

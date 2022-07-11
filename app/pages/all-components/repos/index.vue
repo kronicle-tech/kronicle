@@ -22,7 +22,7 @@
       </thead>
       <tbody>
         <tr v-for="component in filteredComponents" :key="component.id">
-          <td>{{ component.typeId }}</td>
+          <td>{{ component.type }}</td>
           <td class="component-name table-primary">
             <ComponentName :component="component" />
           </td>
@@ -90,7 +90,7 @@ export default Vue.extend({
   },
   async asyncData({ $config, route, store }) {
     const components = await fetch(
-      `${$config.serviceBaseUrl}/v1/components?stateType=git-repo&fields=components(id,name,typeId,tags,teams,platformId,states)`
+      `${$config.serviceBaseUrl}/v1/components?stateType=git-repo&fields=components(id,name,type,tags,teams,platformId,states)`
     )
       .then((res) => res.json())
       .then((json) => json.components)

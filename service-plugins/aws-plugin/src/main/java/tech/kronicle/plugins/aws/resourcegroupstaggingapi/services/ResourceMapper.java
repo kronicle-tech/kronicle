@@ -56,7 +56,7 @@ public class ResourceMapper {
                 .id("aws." + updatedEnvironmentId1 + "." + toKebabCase(analysedArn.getDerivedResourceType()) + "." + toKebabCase(analysedArn.getResourceId()))
                 .aliases(aliases)
                 .name("AWS - " + updatedEnvironmentId1 + " - " + name)
-                .typeId(mapType(analysedArn))
+                .type(mapType(analysedArn))
                 .tags(mapTags(resource))
                 .teams(getTeam(resource))
                 .description(getDescription(resource, analysedArn, aliases))

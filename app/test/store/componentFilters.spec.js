@@ -42,7 +42,7 @@ describe('Component Filters Store', () => {
     const filterNames = [
       'testOutcomes',
       'teamIds',
-      'componentTypeIds',
+      'componentTypes',
       'tags',
       'platformIds',
       'componentId',
@@ -138,8 +138,8 @@ describe('Component Filters Store', () => {
     whenSettingAFilter({ ...options, name: 'teamIds' })
   }
 
-  function whenSettingComponentTypeIds(options) {
-    whenSettingAFilter({ ...options, name: 'componentTypeIds' })
+  function whenSettingComponentTypes(options) {
+    whenSettingAFilter({ ...options, name: 'componentTypes' })
   }
 
   function whenSettingTags(options) {
@@ -546,16 +546,16 @@ describe('Component Filters Store', () => {
     })
   })
 
-  test('when componentTypeIds is set to an empty array, filteredComponents and filteredComponentIds return all components', () => {
+  test('when componentTypes is set to an empty array, filteredComponents and filteredComponentIds return all components', () => {
     const component1 = {
       id: 'test-component-id-1',
-      typeId: 'test-component-type-id-1',
+      type: 'test-component-type-id-1',
     }
     const component2 = {
       id: 'test-component-id-2',
       type: 'test-component-type-id-2',
     }
-    whenSettingComponentTypeIds({
+    whenSettingComponentTypes({
       givenComponents: [component1, component2],
       givenValue: [],
       expectedFilteredComponents: [component1, component2],
@@ -563,73 +563,70 @@ describe('Component Filters Store', () => {
     })
   })
 
-  test('when componentTypeIds is set to an array of component type ids, filteredComponents and filteredComponentIds return only components with any of those component type ids', () => {
+  test('when componentTypes is set to an array of component type ids, filteredComponents and filteredComponentIds return only components with any of those component type ids', () => {
     const component1 = {
       id: 'test-component-id-1',
-      typeId: 'test-component-type-id-1',
+      type: 'test-component-type-id-1',
     }
     const component2 = {
       id: 'test-component-id-2',
-      typeId: 'test-component-type-id-2',
+      type: 'test-component-type-id-2',
     }
     const component3 = {
       id: 'test-component-id-3',
-      typeId: 'test-component-type-id-3',
+      type: 'test-component-type-id-3',
     }
-    whenSettingComponentTypeIds({
+    whenSettingComponentTypes({
       givenComponents: [component1, component2, component3],
       givenValue: ['test-component-type-id-2', 'test-component-type-id-3'],
       expectedFilteredComponents: [component2, component3],
       expectedQueryString:
-        'componentTypeId=test-component-type-id-2&componentTypeId=test-component-type-id-3',
+        'componentType=test-component-type-id-2&componentType=test-component-type-id-3',
     })
   })
 
-  test('when componentTypeIds is set  once via the query string, filteredComponents and filteredComponentIds return only components with that component type', () => {
+  test('when componentTypes is set  once via the query string, filteredComponents and filteredComponentIds return only components with that component type', () => {
     const component1 = {
       id: 'test-component-id-1',
-      typeId: 'test-component-type-id-1',
+      type: 'test-component-type-id-1',
     }
     const component2 = {
       id: 'test-component-id-2',
-      typeId: 'test-component-type-id-2',
+      type: 'test-component-type-id-2',
     }
     whenInitializing({
       givenComponents: [component1, component2],
       givenQuery: {
-        componentTypeId: 'test-component-type-id-2',
+        componentType: 'test-component-type-id-2',
       },
       expectedFilteredComponents: [component2],
       expectedFilters: {
-        componentTypeIds: ['test-component-type-id-2'],
+        componentTypes: ['test-component-type-id-2'],
       },
     })
   })
 
-  test('when componentTypeIds is set multiple times via the query string, filteredComponents and filteredComponentIds return only components with any of those component type ids', () => {
+  test('when componentTypes is set multiple times via the query string, filteredComponents and filteredComponentIds return only components with any of those component type ids', () => {
     const component1 = {
       id: 'test-component-id-1',
-      typeId: 'test-component-type-id-1',
+      type: 'test-component-type-id-1',
     }
     const component2 = {
       id: 'test-component-id-2',
-      typeId: 'test-component-type-id-2',
+      type: 'test-component-type-id-2',
     }
     const component3 = {
       id: 'test-component-id-3',
-      typeId: 'test-component-type-id-3',
+      type: 'test-component-type-id-3',
     }
     whenInitializing({
       givenComponents: [component1, component2, component3],
       givenQuery: {
-        componentTypeId: [
-          'test-component-type-id-2',
-          'test-component-type-id-3',
-        ],
+        componentType: ['test-component-type-id-2', 'test-component-type-id-3'],
       },
       expectedFilteredComponents: [component2, component3],
       expectedFilters: {
-        componentTypeIds: [
+        componentTypes: [
           'test-component-type-id-2',
           'test-component-type-id-3',
         ],

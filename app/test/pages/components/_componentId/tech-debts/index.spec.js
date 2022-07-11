@@ -19,7 +19,7 @@ describe('Index', () => {
       route,
       serviceRequests: {
         ...createComponentAvailableDataRequests(),
-        '/v1/components/test-component-id-1?fields=component(id,name,typeId,tags,teams,platformId,techDebts)':
+        '/v1/components/test-component-id-1?fields=component(id,name,type,tags,teams,platformId,techDebts)':
           {
             responseBody: { component },
           },

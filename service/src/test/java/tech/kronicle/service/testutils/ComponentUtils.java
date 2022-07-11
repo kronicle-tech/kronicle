@@ -19,7 +19,7 @@ public final class ComponentUtils {
         return Component.builder()
                 .id(createComponentId(componentNumber))
                 .name("Test Component Name " + componentNumber)
-                .typeId("test-component-type-id-" + componentNumber)
+                .type("test-component-type-id-" + componentNumber)
                 .repo(RepoReference.builder().url("https://example.com/example-" + componentNumber + ".git").build());
     }
 

@@ -8,7 +8,7 @@ describe('Index', () => {
   async function createWrapper() {
     wrapper = await createPageWrapper(Index, {
       serviceRequests: {
-        '/v1/components?fields=components(id,name,discovered,typeId,tags,description,notes,responsibilities,teams,platformId)':
+        '/v1/components?fields=components(id,name,discovered,type,tags,description,notes,responsibilities,teams,platformId)':
           {
             responseBody: { components },
           },

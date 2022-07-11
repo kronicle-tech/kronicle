@@ -9,7 +9,7 @@ exports[`Index when Get Test service endpoint returns a test renders the page 1`
   >
     test-test-id-1 Test
   </h1>
-   
+
   <div>
     <div
       class="card my-3"
@@ -26,7 +26,7 @@ exports[`Index when Get Test service endpoint returns a test renders the page 1`
         </h4>
         <!---->
         <div>
-          
+
 
           <p>
             Test Test Description 1
@@ -36,7 +36,7 @@ exports[`Index when Get Test service endpoint returns a test renders the page 1`
       <!---->
       <!---->
     </div>
-     
+
     <div
       class="card my-3"
     >
@@ -52,7 +52,7 @@ exports[`Index when Get Test service endpoint returns a test renders the page 1`
         </h4>
         <!---->
         <div>
-          
+
 
           <p>
             Test Test Notes 1
@@ -62,7 +62,7 @@ exports[`Index when Get Test service endpoint returns a test renders the page 1`
       <!---->
       <!---->
     </div>
-     
+
     <div
       class="card my-3"
     >
@@ -77,14 +77,14 @@ exports[`Index when Get Test service endpoint returns a test renders the page 1`
           Priority
         </h4>
         <!---->
-        
+
     Very High
-  
+
       </div>
       <!---->
       <!---->
     </div>
-     
+
     <div>
       <div
         class="card my-3"
@@ -103,19 +103,19 @@ exports[`Index when Get Test service endpoint returns a test renders the page 1`
               0
             </span>
              tests
-      
+
           </div>
-           
+
         </div>
         <!---->
         <!---->
       </div>
-       
+
       <div
         class="mt-3 mb-4"
         components="[object Object]"
       >
-         
+
         <button
           aria-controls="filters"
           aria-expanded="false"
@@ -138,9 +138,9 @@ exports[`Index when Get Test service endpoint returns a test renders the page 1`
             <g />
           </svg>
            Filters
-  
+
         </button>
-         
+
         <transition-stub
           class="mt-3"
           css="true"
@@ -159,17 +159,17 @@ exports[`Index when Get Test service endpoint returns a test renders the page 1`
             <div
               class="card-columns"
             >
-               
+
               <!---->
-               
+
               <!---->
-               
+
               <!---->
-               
+
               <!---->
-               
+
               <!---->
-               
+
               <div
                 class="card bg-secondary"
               >
@@ -204,7 +204,7 @@ exports[`Index when Get Test service endpoint returns a test renders the page 1`
                           <input
                             class="custom-control-input"
                             id="__BVID__34_BV_option_0"
-                            name="componentTypeId"
+                            name="componentType"
                             type="checkbox"
                             value="test-component-type-id-1"
                           />
@@ -227,7 +227,7 @@ exports[`Index when Get Test service endpoint returns a test renders the page 1`
                 <!---->
                 <!---->
               </div>
-               
+
               <div
                 class="card bg-secondary"
               >
@@ -285,7 +285,7 @@ exports[`Index when Get Test service endpoint returns a test renders the page 1`
                 <!---->
                 <!---->
               </div>
-               
+
               <div
                 class="card bg-secondary"
               >
@@ -337,7 +337,7 @@ exports[`Index when Get Test service endpoint returns a test renders the page 1`
           </div>
         </transition-stub>
       </div>
-       
+
       <div
         class="card my-3"
       >
@@ -371,7 +371,7 @@ exports[`Index when Get Test service endpoint returns a test when there are test
   >
     test-test-id-1 Test
   </h1>
-   
+
   <div>
     <div
       class="card my-3"
@@ -388,7 +388,7 @@ exports[`Index when Get Test service endpoint returns a test when there are test
         </h4>
         <!---->
         <div>
-          
+
 
           <p>
             Test Test Description 1
@@ -398,7 +398,7 @@ exports[`Index when Get Test service endpoint returns a test when there are test
       <!---->
       <!---->
     </div>
-     
+
     <div
       class="card my-3"
     >
@@ -414,7 +414,7 @@ exports[`Index when Get Test service endpoint returns a test when there are test
         </h4>
         <!---->
         <div>
-          
+
 
           <p>
             Test Test Notes 1
@@ -424,7 +424,7 @@ exports[`Index when Get Test service endpoint returns a test when there are test
       <!---->
       <!---->
     </div>
-     
+
     <div
       class="card my-3"
     >
@@ -439,14 +439,14 @@ exports[`Index when Get Test service endpoint returns a test when there are test
           Priority
         </h4>
         <!---->
-        
+
     Very High
-  
+
       </div>
       <!---->
       <!---->
     </div>
-     
+
     <div>
       <div
         class="card my-3"
@@ -457,23 +457,23 @@ exports[`Index when Get Test service endpoint returns a test when there are test
           class="list-group"
         >
           <!---->
-           
+
           <div
             class="list-group-item list-group-item-danger fail-count"
           >
             <span
               class="display-1"
             >
-              
+
           1
-        
+
             </span>
-             
+
             <b>
               failing
             </b>
              test
-      
+
           </div>
           <div
             class="list-group-item list-group-item-success pass-count"
@@ -481,27 +481,27 @@ exports[`Index when Get Test service endpoint returns a test when there are test
             <span
               class="display-4"
             >
-              
+
           1
-        
+
             </span>
-             
+
             <b>
               passing
             </b>
              test
-      
+
           </div>
         </div>
         <!---->
         <!---->
       </div>
-       
+
       <div
         class="mt-3 mb-4"
         components="[object Object],[object Object]"
       >
-         
+
         <button
           aria-controls="filters"
           aria-expanded="false"
@@ -524,9 +524,9 @@ exports[`Index when Get Test service endpoint returns a test when there are test
             <g />
           </svg>
            Filters
-  
+
         </button>
-         
+
         <transition-stub
           class="mt-3"
           css="true"
@@ -545,11 +545,11 @@ exports[`Index when Get Test service endpoint returns a test when there are test
             <div
               class="card-columns"
             >
-               
+
               <!---->
-               
+
               <!---->
-               
+
               <div
                 class="card bg-secondary"
               >
@@ -645,11 +645,11 @@ exports[`Index when Get Test service endpoint returns a test when there are test
                 <!---->
                 <!---->
               </div>
-               
+
               <!---->
-               
+
               <!---->
-               
+
               <div
                 class="card bg-secondary"
               >
@@ -684,7 +684,7 @@ exports[`Index when Get Test service endpoint returns a test when there are test
                           <input
                             class="custom-control-input"
                             id="__BVID__59_BV_option_0"
-                            name="componentTypeId"
+                            name="componentType"
                             type="checkbox"
                             value="test-component-type-id-1"
                           />
@@ -703,7 +703,7 @@ exports[`Index when Get Test service endpoint returns a test when there are test
                           <input
                             class="custom-control-input"
                             id="__BVID__59_BV_option_1"
-                            name="componentTypeId"
+                            name="componentType"
                             type="checkbox"
                             value=""
                           />
@@ -726,7 +726,7 @@ exports[`Index when Get Test service endpoint returns a test when there are test
                 <!---->
                 <!---->
               </div>
-               
+
               <div
                 class="card bg-secondary"
               >
@@ -784,7 +784,7 @@ exports[`Index when Get Test service endpoint returns a test when there are test
                 <!---->
                 <!---->
               </div>
-               
+
               <div
                 class="card bg-secondary"
               >
@@ -841,7 +841,7 @@ exports[`Index when Get Test service endpoint returns a test when there are test
           </div>
         </transition-stub>
       </div>
-       
+
       <div
         class="card my-3"
       >
@@ -864,29 +864,29 @@ exports[`Index when Get Test service endpoint returns a test when there are test
                 <th>
                   Component
                 </th>
-                 
+
                 <th>
                   Test
                 </th>
-                 
+
                 <th>
                   Teams
                 </th>
-                 
+
                 <th>
                   Priority
                 </th>
-                 
+
                 <th>
                   Outcome
                 </th>
-                 
+
                 <th>
                   Message
                 </th>
               </tr>
             </thead>
-             
+
             <tbody>
               <tr>
                 <td
@@ -898,7 +898,7 @@ exports[`Index when Get Test service endpoint returns a test when there are test
                     test-test-id-1
                   </a>
                 </td>
-                 
+
                 <td
                   class="test-component table-primary"
                 >
@@ -908,36 +908,36 @@ exports[`Index when Get Test service endpoint returns a test when there are test
                     Test Component Name 2
                   </a>
                 </td>
-                 
+
                 <td>
                   <!---->
                 </td>
-                 
+
                 <td
                   class="test-priority"
                 >
                   <span
                     class="badge badge-danger"
                   >
-                    
+
           Very High
-        
+
                   </span>
                 </td>
-                 
+
                 <td
                   class="test-outcome table-danger"
                 >
-                  
+
         failing
-      
+
                 </td>
-                 
+
                 <td
                   class="test-message"
                 >
                   <div>
-                    
+
 
                     <p>
                       Test Test Message 2a
@@ -955,7 +955,7 @@ exports[`Index when Get Test service endpoint returns a test when there are test
                     test-test-id-1
                   </a>
                 </td>
-                 
+
                 <td
                   class="test-component table-primary"
                 >
@@ -965,36 +965,36 @@ exports[`Index when Get Test service endpoint returns a test when there are test
                     Test Component Name 1
                   </a>
                 </td>
-                 
+
                 <td>
                   <!---->
                 </td>
-                 
+
                 <td
                   class="test-priority"
                 >
                   <span
                     class="badge badge-danger"
                   >
-                    
+
           Very High
-        
+
                   </span>
                 </td>
-                 
+
                 <td
                   class="test-outcome table-success"
                 >
-                  
+
         passing
-      
+
                 </td>
-                 
+
                 <td
                   class="test-message"
                 >
                   <div>
-                    
+
 
                     <p>
                       Test Test Message 1a

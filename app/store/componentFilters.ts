@@ -14,7 +14,7 @@ interface ReadOnlyState {
   pluginIds: string[]
   testOutcomes: string[]
   teamIds: string[]
-  componentTypeIds: string[]
+  componentTypes: string[]
   tags: string[]
   platformIds: string[]
   componentId: string | undefined
@@ -26,7 +26,7 @@ function updateQuery(state: ReadOnlyState) {
   addQueryParams(url, 'pluginId', state.pluginIds)
   addQueryParams(url, 'testOutcome', state.testOutcomes)
   addQueryParams(url, 'teamId', state.teamIds)
-  addQueryParams(url, 'componentTypeId', state.componentTypeIds)
+  addQueryParams(url, 'componentType', state.componentTypes)
   addQueryParams(url, 'tag', state.tags)
   addQueryParams(url, 'platformId', state.platformIds)
   addQueryParams(url, 'componentId', state.componentId)
@@ -157,9 +157,9 @@ function getFilteredComponents(state: ReadOnlyState): Component[] {
     )
   }
 
-  if (state.componentTypeIds.length > 0) {
+  if (state.componentTypes.length > 0) {
     filteredComponents = filteredComponents.filter((component) =>
-      state.componentTypeIds.includes(component.typeId)
+      state.componentTypes.includes(component.type)
     )
   }
 
@@ -220,7 +220,7 @@ export default class ComponentFilters extends VuexModule {
   pluginIds = [] as string[]
   testOutcomes = [] as string[]
   teamIds = [] as string[]
-  componentTypeIds = [] as string[]
+  componentTypes = [] as string[]
   tags = [] as string[]
   platformIds = [] as string[]
   componentId = undefined as string | undefined
@@ -237,8 +237,8 @@ export default class ComponentFilters extends VuexModule {
     this.pluginIds = ensureQueryParamValueIsAStringArray(query.pluginId)
     this.testOutcomes = ensureQueryParamValueIsAStringArray(query.testOutcome)
     this.teamIds = ensureQueryParamValueIsAStringArray(query.teamId)
-    this.componentTypeIds = ensureQueryParamValueIsAStringArray(
-      query.componentTypeId
+    this.componentTypes = ensureQueryParamValueIsAStringArray(
+      query.componentType
     )
     this.tags = ensureQueryParamValueIsAStringArray(query.tag)
     this.platformIds = ensureQueryParamValueIsAStringArray(query.platformId)
@@ -250,7 +250,7 @@ export default class ComponentFilters extends VuexModule {
       pluginIds: this.pluginIds,
       testOutcomes: this.testOutcomes,
       teamIds: this.teamIds,
-      componentTypeIds: this.componentTypeIds,
+      componentTypes: this.componentTypes,
       tags: this.tags,
       platformIds: this.platformIds,
       componentId: this.componentId,
@@ -268,7 +268,7 @@ export default class ComponentFilters extends VuexModule {
       pluginIds: this.pluginIds,
       testOutcomes: this.testOutcomes,
       teamIds: this.teamIds,
-      componentTypeIds: this.componentTypeIds,
+      componentTypes: this.componentTypes,
       tags: this.tags,
       platformIds: this.platformIds,
       componentId: this.componentId,
@@ -287,7 +287,7 @@ export default class ComponentFilters extends VuexModule {
       pluginIds: this.pluginIds,
       testOutcomes: this.testOutcomes,
       teamIds: this.teamIds,
-      componentTypeIds: this.componentTypeIds,
+      componentTypes: this.componentTypes,
       tags: this.tags,
       platformIds: this.platformIds,
       componentId: this.componentId,
@@ -306,7 +306,7 @@ export default class ComponentFilters extends VuexModule {
       pluginIds: this.pluginIds,
       testOutcomes: this.testOutcomes,
       teamIds: this.teamIds,
-      componentTypeIds: this.componentTypeIds,
+      componentTypes: this.componentTypes,
       tags: this.tags,
       platformIds: this.platformIds,
       componentId: this.componentId,
@@ -325,7 +325,7 @@ export default class ComponentFilters extends VuexModule {
       pluginIds: this.pluginIds,
       testOutcomes: this.testOutcomes,
       teamIds: this.teamIds,
-      componentTypeIds: this.componentTypeIds,
+      componentTypes: this.componentTypes,
       tags: this.tags,
       platformIds: this.platformIds,
       componentId: this.componentId,
@@ -336,15 +336,15 @@ export default class ComponentFilters extends VuexModule {
   }
 
   @Mutation
-  setComponentTypeIds(value: string[]) {
-    this.componentTypeIds = value
+  setComponentTypes(value: string[]) {
+    this.componentTypes = value
     const state = {
       components: this.components,
       environmentIds: this.environmentIds,
       pluginIds: this.pluginIds,
       testOutcomes: this.testOutcomes,
       teamIds: this.teamIds,
-      componentTypeIds: this.componentTypeIds,
+      componentTypes: this.componentTypes,
       tags: this.tags,
       platformIds: this.platformIds,
       componentId: this.componentId,
@@ -363,7 +363,7 @@ export default class ComponentFilters extends VuexModule {
       pluginIds: this.pluginIds,
       testOutcomes: this.testOutcomes,
       teamIds: this.teamIds,
-      componentTypeIds: this.componentTypeIds,
+      componentTypes: this.componentTypes,
       tags: this.tags,
       platformIds: this.platformIds,
       componentId: this.componentId,
@@ -382,7 +382,7 @@ export default class ComponentFilters extends VuexModule {
       pluginIds: this.pluginIds,
       testOutcomes: this.testOutcomes,
       teamIds: this.teamIds,
-      componentTypeIds: this.componentTypeIds,
+      componentTypes: this.componentTypes,
       tags: this.tags,
       platformIds: this.platformIds,
       componentId: this.componentId,
@@ -401,7 +401,7 @@ export default class ComponentFilters extends VuexModule {
       pluginIds: this.pluginIds,
       testOutcomes: this.testOutcomes,
       teamIds: this.teamIds,
-      componentTypeIds: this.componentTypeIds,
+      componentTypes: this.componentTypes,
       tags: this.tags,
       platformIds: this.platformIds,
       componentId: this.componentId,

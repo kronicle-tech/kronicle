@@ -24,7 +24,7 @@ export default Vue.extend({
       .then((json) => json.test as Test)
 
     const components = await fetch(
-      `${$config.serviceBaseUrl}/v1/components?fields=components(id,name,typeId,tags,teams,platformId,testResults)`
+      `${$config.serviceBaseUrl}/v1/components?fields=components(id,name,type,tags,teams,platformId,testResults)`
     )
       .then((res) => res.json())
       .then((json) => json.components as Component[])

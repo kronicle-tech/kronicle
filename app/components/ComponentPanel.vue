@@ -12,9 +12,9 @@
       More Info
     </b-button>
 
-    <div v-if="component.typeId" class="my-4">
+    <div v-if="component.type" class="my-4">
       <h5 class="text-info">Type</h5>
-      {{ component.typeId }}
+      {{ component.type }}
     </div>
 
     <div
