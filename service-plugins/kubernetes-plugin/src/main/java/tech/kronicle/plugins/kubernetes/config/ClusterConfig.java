@@ -14,4 +14,5 @@ public class ClusterConfig {
     String environmentId;
     @NotBlank
     String kubeConfig;
+    Boolean apiResourcesWithSupportedMetadataOnly;
 }

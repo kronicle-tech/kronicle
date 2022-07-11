@@ -12,16 +12,21 @@ import tech.kronicle.sdk.models.ComponentConnection;
 import tech.kronicle.sdk.models.Tag;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import static java.util.Objects.isNull;
 import static java.util.Objects.nonNull;
 import static tech.kronicle.common.CaseUtils.toKebabCase;
 
 public class ResourceMapper {
 
     public Component mapResource(ClusterConfig cluster, ApiResource apiResource, ApiResourceItem item) {
+        if (apiResourcesWithSupportedMetadataOnly(cluster) && !apiResourceItemHasSupportedMetadata(item)) {
+            return null;
+        }
         return Component.builder()
                 .id(mapId(cluster.getEnvironmentId(), apiResource, item))
                 .name(mapName(cluster, apiResource, item))
@@ -31,6 +36,21 @@ public class ResourceMapper {
                 .tags(mapTags(cluster.getEnvironmentId()))
                 .connections(mapConnections(cluster.getEnvironmentId(), item))
                 .build();
+    }
+
+    private boolean apiResourcesWithSupportedMetadataOnly(ClusterConfig cluster) {
+        Boolean value = cluster.getApiResourcesWithSupportedMetadataOnly();
+        return nonNull(value) ? value : false;
+    }
+
+    private boolean apiResourceItemHasSupportedMetadata(ApiResourceItem item) {
+        Map<String, String> annotations = item.getAnnotations();
+        if (isNull(annotations)) {
+            return false;
+        } else {
+            return AnnotationKeys.SUPPORTED_KEYS.stream()
+                    .anyMatch(annotations::containsKey);
+        }
     }
 
     private String mapId(String environmentId, ApiResource apiResource, ApiResourceItem item) {
