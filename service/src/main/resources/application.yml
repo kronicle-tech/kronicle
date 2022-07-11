@@ -78,7 +78,7 @@ plugins:
       level: level
       message: message
     log-summaries:
-      one-hour-summaries: true
+      one-hour-summaries: false
       twenty-four-hour-summaries: false
 
   base:
@@ -199,6 +199,9 @@ plugins:
     enabled: false
     base-url: http://localhost:9000
     timeout: 30s
+
+  structure-diagram:
+    enabled: true
 
   todo:
     enabled: true

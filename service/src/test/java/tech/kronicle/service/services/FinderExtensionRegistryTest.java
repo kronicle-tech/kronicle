@@ -2,14 +2,15 @@ package tech.kronicle.service.services;
 
 import org.junit.jupiter.api.Test;
 import tech.kronicle.pluginapi.finders.ComponentFinder;
+import tech.kronicle.pluginapi.finders.DiagramFinder;
+import tech.kronicle.pluginapi.finders.Finder;
+import tech.kronicle.pluginapi.finders.RepoFinder;
+import tech.kronicle.pluginapi.finders.TracingDataFinder;
 import tech.kronicle.pluginapi.finders.models.ComponentsAndDiagrams;
 import tech.kronicle.pluginapi.finders.models.TracingData;
 import tech.kronicle.pluginapi.scanners.models.Output;
-import tech.kronicle.sdk.models.Component;
 import tech.kronicle.sdk.models.ComponentMetadata;
-import tech.kronicle.pluginapi.finders.TracingDataFinder;
-import tech.kronicle.pluginapi.finders.Finder;
-import tech.kronicle.pluginapi.finders.RepoFinder;
+import tech.kronicle.sdk.models.Diagram;
 import tech.kronicle.sdk.models.Repo;
 import tech.kronicle.service.services.testutils.FakePluginManager;
 
@@ -103,6 +104,34 @@ public class FinderExtensionRegistryTest {
         assertThat(returnValue).containsExactly(repoFinder1);
     }
 
+    @Test
+    public void getDiagramFindersShouldReturnTheDiagramFinders() {
+        // Given
+        TestDiagramFinder diagramFinder1 = new TestDiagramFinder();
+        TestDiagramFinder diagramFinder2 = new TestDiagramFinder();
+        FinderExtensionRegistry underTest = createUnderTest(List.of(diagramFinder1, diagramFinder2));
+
+        // When
+        List<DiagramFinder> returnValue = underTest.getDiagramFinders();
+
+        // Then
+        assertThat(returnValue).containsExactly(diagramFinder1, diagramFinder2);
+    }
+
+    @Test
+    public void getDiagramFindersShouldIgnoreOtherTypesOfFinder() {
+        // Given
+        TestOtherFinder otherFinder1 = new TestOtherFinder();
+        TestDiagramFinder diagramFinder1 = new TestDiagramFinder();
+        FinderExtensionRegistry underTest = createUnderTest(List.of(otherFinder1, diagramFinder1));
+
+        // When
+        List<DiagramFinder> returnValue = underTest.getDiagramFinders();
+
+        // Then
+        assertThat(returnValue).containsExactly(diagramFinder1);
+    }
+
     private FinderExtensionRegistry createUnderTest(List<Finder> finders) {
         return new FinderExtensionRegistry(new FakePluginManager<>(finders, Finder.class));
     }
@@ -139,6 +168,18 @@ public class FinderExtensionRegistryTest {
 
         @Override
         public Output<List<Repo>, Void> find(Void ignored) {
+            return null;
+        }
+    }
+
+    private static class TestDiagramFinder extends DiagramFinder {
+        @Override
+        public String description() {
+            return null;
+        }
+
+        @Override
+        public Output<List<Diagram>, Void> find(ComponentMetadata componentMetadata) {
             return null;
         }
     }

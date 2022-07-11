@@ -74,4 +74,37 @@ public class ResourceFinderTest {
                 component4
         ));
     }
+
+    @Test
+    public void findComponentsShouldIgnoreANullComponent() {
+        // Given
+        ClusterConfig cluster = createCluster();
+        ResourceFinder underTest = new ResourceFinder(clientFacade, resourceMapper);
+        ApiResource apiResource1 = createApiResource(1);
+        when(clientFacade.getApiResources(cluster)).thenReturn(List.of(
+                apiResource1
+        ));
+        ApiResourceItem apiResourceItem1 = createApiResourceItem(1);
+        ApiResourceItem apiResourceItem2 = createApiResourceItem(2);
+        ApiResourceItem apiResourceItem3 = createApiResourceItem(3);
+        when(clientFacade.getApiResourceItems(cluster, apiResource1)).thenReturn(List.of(
+                apiResourceItem1,
+                apiResourceItem2,
+                apiResourceItem3
+        ));
+        Component component1 = createComponent(1);
+        Component component3 = createComponent(3);
+        when(resourceMapper.mapResource(cluster, apiResource1, apiResourceItem1)).thenReturn(component1);
+        when(resourceMapper.mapResource(cluster, apiResource1, apiResourceItem2)).thenReturn(null);
+        when(resourceMapper.mapResource(cluster, apiResource1, apiResourceItem3)).thenReturn(component3);
+
+        // When
+        List<Component> returnValue = underTest.findComponents(cluster);
+
+        // Then
+        assertThat(returnValue).isEqualTo(List.of(
+                component1,
+                component3
+        ));
+    }
 }

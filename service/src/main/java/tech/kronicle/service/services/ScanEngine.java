@@ -12,13 +12,18 @@ import tech.kronicle.pluginapi.scanners.models.ComponentAndCodebase;
 import tech.kronicle.pluginapi.scanners.models.Output;
 import tech.kronicle.sdk.models.*;
 import tech.kronicle.service.exceptions.ValidationException;
-import tech.kronicle.tracingprocessor.internal.services.ComponentAliasResolver;
 import tech.kronicle.tracingprocessor.GraphProcessor;
+import tech.kronicle.tracingprocessor.internal.services.ComponentAliasResolver;
 import tech.kronicle.utils.MapCollectors;
 import tech.kronicle.utils.ObjectReference;
 import tech.kronicle.utils.ThrowableToScannerErrorMapper;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.function.Consumer;
 import java.util.function.Function;
@@ -28,6 +33,7 @@ import java.util.stream.Collectors;
 import static java.util.Objects.nonNull;
 import static java.util.stream.Collectors.toList;
 import static java.util.stream.Collectors.toUnmodifiableList;
+import static tech.kronicle.sdk.utils.ListUtils.unmodifiableUnionOfLists;
 
 @Service
 @RequiredArgsConstructor
@@ -36,6 +42,7 @@ public class ScanEngine {
 
     private final MasterComponentFinder masterComponentFinder;
     private final MasterTracingDataFinder masterTracingDataFinder;
+    private final MasterDiagramFinder masterDiagramFinder;
     private final GraphProcessor graphProcessor;
     private final ComponentAliasMapCreator componentAliasMapCreator;
     private final ComponentAliasResolver componentAliasResolver;
@@ -54,8 +61,6 @@ public class ScanEngine {
 
         componentMetadata = findAndProcessExtraComponents(componentMetadata, componentMap, diagramMap);
 
-        componentMetadata = findAndProcessExtraDiagrams(componentMetadata, diagramMap);
-
         executeComponentScanners(componentMap, summaryTransformerConsumer, componentMetadata);
 
         Map<Codebase, List<String>> codebaseAndComponentIdsMap = executeRepoScanner(componentMap, summaryTransformerConsumer, componentMetadata);
@@ -63,6 +68,8 @@ public class ScanEngine {
         executeCodebaseScanners(componentMap, summaryTransformerConsumer, componentMetadata, codebaseAndComponentIdsMap);
 
         executeComponentAndCodebaseScanners(componentMap, summaryTransformerConsumer, componentMetadata, codebaseAndComponentIdsMap);
+
+        componentMetadata = findAndProcessExtraDiagrams(componentMetadata, diagramMap);
 
         executeLateComponentScanners(componentMap, summaryTransformerConsumer, componentMetadata);
     }
@@ -91,8 +98,16 @@ public class ScanEngine {
             ConcurrentHashMap<String, Diagram> diagramMap,
             ComponentsAndDiagrams extraComponentsAndDiagrams
     ) {
-        List<Component> components = addExtraComponents(componentMetadata, componentMap, extraComponentsAndDiagrams);
-        List<Diagram> diagrams = addExtraDiagrams(componentMetadata, diagramMap, extraComponentsAndDiagrams);
+        List<Component> components = addExtraComponents(
+                componentMetadata,
+                componentMap,
+                extraComponentsAndDiagrams.getComponents()
+        );
+        List<Diagram> diagrams = addExtraDiagrams(
+                componentMetadata,
+                diagramMap,
+                extraComponentsAndDiagrams.getDiagrams()
+        );
         return componentMetadata.withComponents(components)
                 .withDiagrams(diagrams);
     }
@@ -100,22 +115,25 @@ public class ScanEngine {
     private List<Component> addExtraComponents(
             ComponentMetadata componentMetadata,
             ConcurrentHashMap<String, Component> componentMap,
-            ComponentsAndDiagrams extraComponentsAndDiagrams
+            List<Component> extraComponents
     ) {
         List<Component> components = new ArrayList<>(componentMetadata.getComponents());
-        components.addAll(extraComponentsAndDiagrams.getComponents());
-        extraComponentsAndDiagrams.getComponents().forEach(component -> componentMap.put(component.getId(), component));
+        components.addAll(extraComponents);
+        extraComponents.forEach(component -> componentMap.put(component.getId(), component));
         return components;
     }
 
     private List<Diagram> addExtraDiagrams(
-            ComponentMetadata diagramMetadata,
+            ComponentMetadata componentMetadata,
             ConcurrentHashMap<String, Diagram> diagramMap,
-            ComponentsAndDiagrams extraDiagramsAndDiagrams
+            List<Diagram> extraDiagrams
     ) {
-        List<Diagram> diagrams = new ArrayList<>(diagramMetadata.getDiagrams());
-        diagrams.addAll(extraDiagramsAndDiagrams.getDiagrams());
-        extraDiagramsAndDiagrams.getDiagrams().forEach(diagram -> diagramMap.put(diagram.getId(), diagram));
+        extraDiagrams = extraDiagrams.stream()
+                .map(graphProcessor::processDiagram)
+                .collect(toUnmodifiableList());
+        List<Diagram> diagrams = new ArrayList<>(componentMetadata.getDiagrams());
+        diagrams.addAll(extraDiagrams);
+        extraDiagrams.forEach(diagram -> diagramMap.put(diagram.getId(), diagram));
         return diagrams;
     }
 
@@ -125,11 +143,16 @@ public class ScanEngine {
                 tracingData,
                 componentAliasMapCreator.createComponentAliasMap(componentMetadata)
         );
-        List<Diagram> extraDiagrams = updatedTracingData.stream()
+        List<Diagram> tracingDiagrams = updatedTracingData.stream()
                 .map(graphProcessor::processTracingData)
                 .flatMap(Collection::stream)
                 .collect(toUnmodifiableList());
-        return updateDiagrams(componentMetadata, diagramMap, extraDiagrams);
+        List<Diagram> foundDiagrams = masterDiagramFinder.findDiagrams(componentMetadata);
+        return updateDiagrams(
+                componentMetadata,
+                diagramMap,
+                unmodifiableUnionOfLists(List.of(tracingDiagrams, foundDiagrams))
+        );
     }
 
     private ComponentMetadata updateDiagrams(
@@ -137,10 +160,10 @@ public class ScanEngine {
             ConcurrentHashMap<String, Diagram> diagramMap,
             List<Diagram> extraDiagrams
     ) {
-        List<Diagram> diagrams = componentMetadata.getDiagrams().stream()
+        extraDiagrams = extraDiagrams.stream()
                 .map(graphProcessor::processDiagram)
-                .collect(toList());
-        diagrams.addAll(extraDiagrams);
+                .collect(toUnmodifiableList());
+        List<Diagram> diagrams = unmodifiableUnionOfLists(List.of(componentMetadata.getDiagrams(), extraDiagrams));
         diagrams.forEach(diagram -> diagramMap.put(diagram.getId(), diagram));
         return componentMetadata.withDiagrams(diagrams);
     }

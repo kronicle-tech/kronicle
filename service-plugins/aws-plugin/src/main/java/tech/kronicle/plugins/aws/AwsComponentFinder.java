@@ -6,10 +6,12 @@ import tech.kronicle.pluginapi.finders.ComponentFinder;
 import tech.kronicle.pluginapi.finders.models.ComponentsAndDiagrams;
 import tech.kronicle.pluginapi.scanners.models.Output;
 import tech.kronicle.plugins.aws.resourcegroupstaggingapi.services.ResourceService;
+import tech.kronicle.sdk.models.Component;
 import tech.kronicle.sdk.models.ComponentMetadata;
 
 import javax.inject.Inject;
 import java.time.Duration;
+import java.util.List;
 
 @Extension
 @RequiredArgsConstructor(onConstructor = @__({@Inject}))
@@ -27,8 +29,14 @@ public class AwsComponentFinder extends ComponentFinder {
     @Override
     public Output<ComponentsAndDiagrams, Void> find(ComponentMetadata input) {
         return Output.ofOutput(
-                resourceService.getComponentsAndDiagrams(),
+                wrapComponents(resourceService.getComponents()),
                 CACHE_TTL
         );
+    }
+
+    private ComponentsAndDiagrams wrapComponents(List<Component> components) {
+        return ComponentsAndDiagrams.builder()
+                .components(components)
+                .build();
     }
 }

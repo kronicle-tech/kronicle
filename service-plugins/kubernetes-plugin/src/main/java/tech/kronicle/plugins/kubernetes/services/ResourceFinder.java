@@ -9,6 +9,7 @@ import tech.kronicle.sdk.models.Component;
 
 import javax.inject.Inject;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Stream;
 
 import static java.util.stream.Collectors.toUnmodifiableList;
@@ -23,6 +24,7 @@ public class ResourceFinder {
     public List<Component> findComponents(ClusterConfig cluster) {
         return clientFacade.getApiResources(cluster).stream()
                 .flatMap(apiResource -> findComponents(cluster, apiResource))
+                .filter(Objects::nonNull)
                 .collect(toUnmodifiableList());
     }
 

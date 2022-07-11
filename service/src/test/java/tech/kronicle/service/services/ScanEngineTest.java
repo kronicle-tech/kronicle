@@ -44,6 +44,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.doAnswer;
 import static org.mockito.Mockito.when;
+import static tech.kronicle.sdk.utils.ListUtils.unmodifiableUnionOfLists;
 import static tech.kronicle.service.testutils.DiagramUtils.createDiagram;
 import static tech.kronicle.tracingprocessor.testutils.TestDataHelper.createTracingDataList;
 
@@ -57,6 +58,8 @@ public class ScanEngineTest {
     private MasterComponentFinder masterComponentFinder;
     @Mock
     private MasterTracingDataFinder masterTracingDataFinder;
+    @Mock
+    private MasterDiagramFinder masterDiagramFinder;
     @Mock
     private GraphProcessor graphProcessor;
     @Mock
@@ -76,6 +79,7 @@ public class ScanEngineTest {
         underTest = new ScanEngine(
                 masterComponentFinder,
                 masterTracingDataFinder,
+                masterDiagramFinder,
                 graphProcessor,
                 componentAliasMapCreator,
                 componentAliasResolver,
@@ -101,7 +105,7 @@ public class ScanEngineTest {
                 .components(List.of(component1, component2))
                 .build();
         ComponentMetadata updatedComponentMetadata = mockMasterComponentFinder(componentMetadata);
-        ComponentMetadata updatedComponentMetadata2 = mockMasterDependencyFinder(updatedComponentMetadata);
+        ComponentMetadata updatedComponentMetadata2 = mockMasterTracingDataFinderAndMasterDiagramFinder(updatedComponentMetadata);
         ConcurrentHashMap<String, Component> componentMap = createComponentMap(componentMetadata);
         ConcurrentHashMap<String, Diagram> diagramMap = createDiagramMap(componentMetadata);
         TestScannerConfig config = TestScannerConfig.builder().output(true).build();
@@ -135,13 +139,16 @@ public class ScanEngineTest {
         underTest.scan(componentMetadata, componentMap, diagramMap, summaries::add);
 
         // Then
-        assertThat(testComponentScanner1.componentMetadataItems).containsExactlyInAnyOrder(updatedComponentMetadata2);
-        assertThat(testComponentScanner2.componentMetadataItems).containsExactlyInAnyOrder(updatedComponentMetadata2);
-        assertThat(testRepoScanner.componentMetadataItems).containsExactlyInAnyOrder(updatedComponentMetadata2);
-        assertThat(testCodebaseScanner1.componentMetadataItems).containsExactlyInAnyOrder(updatedComponentMetadata2);
-        assertThat(testCodebaseScanner2.componentMetadataItems).containsExactlyInAnyOrder(updatedComponentMetadata2);
-        assertThat(testComponentAndCodebaseScanner1.componentMetadataItems).containsExactlyInAnyOrder(updatedComponentMetadata2);
-        assertThat(testComponentAndCodebaseScanner2.componentMetadataItems).containsExactlyInAnyOrder(updatedComponentMetadata2);
+        // Uses updatedComponentMetadata
+        assertThat(testComponentScanner1.componentMetadataItems).containsExactlyInAnyOrder(updatedComponentMetadata);
+        assertThat(testComponentScanner2.componentMetadataItems).containsExactlyInAnyOrder(updatedComponentMetadata);
+        assertThat(testRepoScanner.componentMetadataItems).containsExactlyInAnyOrder(updatedComponentMetadata);
+        assertThat(testCodebaseScanner1.componentMetadataItems).containsExactlyInAnyOrder(updatedComponentMetadata);
+        assertThat(testCodebaseScanner2.componentMetadataItems).containsExactlyInAnyOrder(updatedComponentMetadata);
+        assertThat(testComponentAndCodebaseScanner1.componentMetadataItems).containsExactlyInAnyOrder(updatedComponentMetadata);
+        assertThat(testComponentAndCodebaseScanner2.componentMetadataItems).containsExactlyInAnyOrder(updatedComponentMetadata);
+
+        // Uses updatedComponentMetadata2
         assertThat(testLateComponentScanner1.componentMetadataItems).containsExactlyInAnyOrder(updatedComponentMetadata2);
         assertThat(testLateComponentScanner2.componentMetadataItems).containsExactlyInAnyOrder(updatedComponentMetadata2);
         
@@ -202,7 +209,7 @@ public class ScanEngineTest {
                 .components(List.of(component1, component2))
                 .build();
         ComponentMetadata updatedComponentMetadata = mockMasterComponentFinder(componentMetadata);
-        mockMasterDependencyFinder(updatedComponentMetadata);
+        mockMasterTracingDataFinderAndMasterDiagramFinder(updatedComponentMetadata);
         ConcurrentHashMap<String, Component> componentMap = createComponentMap(componentMetadata);
         ConcurrentHashMap<String, Diagram> diagramMap = createDiagramMap(componentMetadata);
         TestScannerConfig config = TestScannerConfig.builder().output(true).build();
@@ -255,7 +262,7 @@ public class ScanEngineTest {
                 .components(List.of(component1, component2))
                 .build();
         ComponentMetadata updatedComponentMetadata = mockMasterComponentFinder(componentMetadata);
-        mockMasterDependencyFinder(updatedComponentMetadata);
+        mockMasterTracingDataFinderAndMasterDiagramFinder(updatedComponentMetadata);
         ConcurrentHashMap<String, Component> componentMap = createComponentMap(componentMetadata);
         ConcurrentHashMap<String, Diagram> diagramMap = createDiagramMap(componentMetadata);
         TestScannerConfig config = TestScannerConfig.builder().output(true).refreshException(true).build();
@@ -280,7 +287,7 @@ public class ScanEngineTest {
                 .components(List.of(component1, component2))
                 .build();
         ComponentMetadata updatedComponentMetadata = mockMasterComponentFinder(componentMetadata);
-        mockMasterDependencyFinder(updatedComponentMetadata);
+        mockMasterTracingDataFinderAndMasterDiagramFinder(updatedComponentMetadata);
         ConcurrentHashMap<String, Component> componentMap = createComponentMap(componentMetadata);
         ConcurrentHashMap<String, Diagram> diagramMap = createDiagramMap(componentMetadata);
         TestScannerConfig config = TestScannerConfig.builder().output(true).scanException(true).build();
@@ -305,7 +312,7 @@ public class ScanEngineTest {
                 .components(List.of(component1, component2))
                 .build();
         ComponentMetadata updatedComponentMetadata = mockMasterComponentFinder(componentMetadata);
-        mockMasterDependencyFinder(updatedComponentMetadata);
+        mockMasterTracingDataFinderAndMasterDiagramFinder(updatedComponentMetadata);
         ConcurrentHashMap<String, Component> componentMap = createComponentMap(componentMetadata);
         ConcurrentHashMap<String, Diagram> diagramMap = createDiagramMap(componentMetadata);
         TestScannerConfig config = TestScannerConfig.builder().outputScannerError(true).build();
@@ -330,7 +337,7 @@ public class ScanEngineTest {
                 .components(List.of(component1, component2))
                 .build();
         ComponentMetadata updatedComponentMetadata = mockMasterComponentFinder(componentMetadata);
-        mockMasterDependencyFinder(updatedComponentMetadata);
+        mockMasterTracingDataFinderAndMasterDiagramFinder(updatedComponentMetadata);
         ConcurrentHashMap<String, Component> componentMap = createComponentMap(componentMetadata);
         ConcurrentHashMap<String, Diagram> diagramMap = createDiagramMap(componentMetadata);
         TestScannerConfig config = TestScannerConfig.builder().output(true).outputScannerError(true).build();
@@ -356,7 +363,7 @@ public class ScanEngineTest {
                 .components(List.of(componentA, componentB, componentC))
                 .build();
         ComponentMetadata updatedComponentMetadata = mockMasterComponentFinder(componentMetadata);
-        mockMasterDependencyFinder(updatedComponentMetadata);
+        mockMasterTracingDataFinderAndMasterDiagramFinder(updatedComponentMetadata);
         // Components are deliberately in the order b, a, c which is not sorted alphabetically
         ConcurrentHashMap<String, Component> componentMap = createComponentMap(componentMetadata);
         ConcurrentHashMap<String, Diagram> diagramMap = createDiagramMap(componentMetadata);
@@ -404,39 +411,36 @@ public class ScanEngineTest {
     }
 
     private ComponentMetadata mockMasterComponentFinder(ComponentMetadata componentMetadata) {
-        Component extraComponent1 = createExtraComponent("1");
-        Component extraComponent2 = createExtraComponent("2");
-        Diagram extraDiagram1 = createExtraDiagram("1");
-        Diagram extraDiagram2 = createExtraDiagram("2");
+        Component component1 = createExtraComponent(1);
+        Component component2 = createExtraComponent(2);
+        String diagramIdSuffix = "master-component-finder";
+        Diagram diagram1 = createExtraDiagram(diagramIdSuffix, 1);
+        Diagram diagram2 = createExtraDiagram(diagramIdSuffix, 2);
         when(masterComponentFinder.findComponentsAndDiagrams(componentMetadata)).thenReturn(
                 new ComponentsAndDiagrams(
                         List.of(
-                                extraComponent1,
-                                extraComponent2
+                                component1,
+                                component2
                         ),
                         List.of(
-                                extraDiagram1,
-                                extraDiagram2
+                                diagram1,
+                                diagram2
                         )
                 )
         );
-        when(graphProcessor.processDiagram(extraDiagram1)).thenReturn(extraDiagram1);
-        when(graphProcessor.processDiagram(extraDiagram2)).thenReturn(extraDiagram2);
+
+        Diagram processedDiagram1 = createProcessedDiagram(diagram1);
+        Diagram processedDiagram2 = createProcessedDiagram(diagram2);
+        when(graphProcessor.processDiagram(diagram1)).thenReturn(processedDiagram1);
+        when(graphProcessor.processDiagram(diagram2)).thenReturn(processedDiagram2);
         List<Component> components = new ArrayList<>(componentMetadata.getComponents());
-        components.add(extraComponent1);
-        components.add(extraComponent2);
+        components.add(component1);
+        components.add(component2);
         List<Diagram> diagrams = new ArrayList<>(componentMetadata.getDiagrams());
-        diagrams.add(extraDiagram1);
-        diagrams.add(extraDiagram2);
+        diagrams.add(processedDiagram1);
+        diagrams.add(processedDiagram2);
         return componentMetadata.withComponents(components)
                 .withDiagrams(diagrams);
-    }
-
-    private Component createExtraComponent(String componentUniquePart) {
-        // Extra components have no repo
-        return Component.builder()
-                .id("test-component-extra-" + componentUniquePart)
-                .build();
     }
 
     private Component createComponent(String componentUniquePart) {
@@ -446,14 +450,35 @@ public class ScanEngineTest {
                 .build();
     }
 
-    private Diagram createExtraDiagram(String diagramUniquePart) {
-        // Extra diagrams have no repo
-        return Diagram.builder()
-                .id("test-diagram-extra-" + diagramUniquePart)
+    private Component createExtraComponent(int componentNumber) {
+        // Extra components have no repo
+        return Component.builder()
+                .id("test-component-extra-" + componentNumber)
                 .build();
     }
 
-    private ComponentMetadata mockMasterDependencyFinder(ComponentMetadata componentMetadata) {
+    private Diagram createExtraDiagram(String diagramIdSuffix, int diagramNumber) {
+        // Extra diagrams have no repo
+        return Diagram.builder()
+                .id("test-diagram-id-" + diagramIdSuffix + "-" + diagramNumber)
+                .build();
+    }
+
+    private Diagram createProcessedDiagram(Diagram diagram1) {
+        return diagram1.withDescription("processed");
+    }
+
+    private ComponentMetadata mockMasterTracingDataFinderAndMasterDiagramFinder(ComponentMetadata componentMetadata) {
+        List<Diagram> processedTracingDataDiagrams = mockMasterTracingDataFinder(componentMetadata);
+        List<Diagram> processedExtraDiagrams = mockMasterDiagramFinder(componentMetadata);
+        return componentMetadata.withDiagrams(unmodifiableUnionOfLists(List.of(
+                componentMetadata.getDiagrams(),
+                processedTracingDataDiagrams,
+                processedExtraDiagrams
+        )));
+    }
+
+    private List<Diagram> mockMasterTracingDataFinder(ComponentMetadata componentMetadata) {
         List<TracingData> tracingDataList = createTracingDataList(1);
         when(masterTracingDataFinder.findTracingData(componentMetadata)).thenReturn(tracingDataList);
         Map<String, String> componentAliasMap = Map.ofEntries(
@@ -463,17 +488,47 @@ public class ScanEngineTest {
         when(componentAliasMapCreator.createComponentAliasMap(componentMetadata)).thenReturn(componentAliasMap);
         List<TracingData> updatedTracingDataList = createTracingDataList(2);
         when(componentAliasResolver.tracingDataList(tracingDataList, componentAliasMap)).thenReturn(updatedTracingDataList);
-        Diagram diagram1 = createDiagram(1);
-        Diagram diagram2 = createDiagram(2);
-        Diagram diagram3 = createDiagram(3);
-        Diagram diagram4 = createDiagram(4);
+        String diagramIdSuffix = "master-tracing-data-finder";
+        Diagram diagram1 = createExtraDiagram(diagramIdSuffix, 1);
+        Diagram diagram2 = createExtraDiagram(diagramIdSuffix, 2);
+        Diagram diagram3 = createExtraDiagram(diagramIdSuffix, 3);
+        Diagram diagram4 = createExtraDiagram(diagramIdSuffix, 4);
         when(graphProcessor.processTracingData(updatedTracingDataList.get(0))).thenReturn(List.of(diagram1, diagram2));
         when(graphProcessor.processTracingData(updatedTracingDataList.get(1))).thenReturn(List.of(diagram3, diagram4));
-        List<Diagram> diagrams = new ArrayList<>(componentMetadata.getDiagrams());
-        diagrams.addAll(List.of(diagram1, diagram2, diagram3, diagram4));
-        return componentMetadata.withDiagrams(diagrams);
+        Diagram processedDiagram1 = createProcessedDiagram(diagram1);
+        Diagram processedDiagram2 = createProcessedDiagram(diagram2);
+        Diagram processedDiagram3 = createProcessedDiagram(diagram3);
+        Diagram processedDiagram4 = createProcessedDiagram(diagram4);
+        when(graphProcessor.processDiagram(diagram1)).thenReturn(processedDiagram1);
+        when(graphProcessor.processDiagram(diagram2)).thenReturn(processedDiagram2);
+        when(graphProcessor.processDiagram(diagram3)).thenReturn(processedDiagram3);
+        when(graphProcessor.processDiagram(diagram4)).thenReturn(processedDiagram4);
+        return List.of(
+                processedDiagram1,
+                processedDiagram2,
+                processedDiagram3,
+                processedDiagram4
+        );
     }
-    
+
+    private List<Diagram> mockMasterDiagramFinder(ComponentMetadata componentMetadata) {
+        String diagramIdSuffix = "master-diagram-finder";
+        Diagram diagram1 = createExtraDiagram(diagramIdSuffix, 1);
+        Diagram diagram2 = createExtraDiagram(diagramIdSuffix, 2);
+        when(masterDiagramFinder.findDiagrams(componentMetadata)).thenReturn(List.of(
+                diagram1,
+                diagram2
+        ));
+        Diagram processedDiagram1 = createProcessedDiagram(diagram1);
+        Diagram processedDiagram2 = createProcessedDiagram(diagram2);
+        when(graphProcessor.processDiagram(diagram1)).thenReturn(processedDiagram1);
+        when(graphProcessor.processDiagram(diagram2)).thenReturn(processedDiagram2);
+        return List.of(
+                processedDiagram1,
+                processedDiagram2
+        );
+    }
+
     private void assertRefreshScannerErrors(Component component) {
         List<ScannerError> scannerErrors = component.getScannerErrors();
         // There will only be 3 errors as the RepoScanner failed to produce any codebases

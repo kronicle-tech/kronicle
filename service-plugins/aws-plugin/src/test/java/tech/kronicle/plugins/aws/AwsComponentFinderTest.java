@@ -10,7 +10,6 @@ import tech.kronicle.pluginapi.scanners.models.Output;
 import tech.kronicle.plugins.aws.resourcegroupstaggingapi.services.ResourceService;
 import tech.kronicle.sdk.models.Component;
 import tech.kronicle.sdk.models.ComponentMetadata;
-import tech.kronicle.sdk.models.Diagram;
 
 import java.time.Duration;
 import java.util.List;
@@ -53,30 +52,25 @@ public class AwsComponentFinderTest {
     @Test
     public void findShouldReturnAllComponentsAndDiagrams() {
         // Given
-        ComponentsAndDiagrams componentsAndDiagrams = new ComponentsAndDiagrams(
-                List.of(
-                        Component.builder()
-                                .id("test-component-id-1")
-                                .build(),
-                        Component.builder()
-                                .id("test-component-id-2")
-                                .build()
-                ),
-                List.of(
-                        Diagram.builder()
-                                .id("test-diagram-id-1")
-                                .build(),
-                        Diagram.builder()
-                                .id("test-diagram-id-2")
-                                .build()
-                )
+        List<Component> components = List.of(
+                Component.builder()
+                        .id("test-component-id-1")
+                        .build(),
+                Component.builder()
+                        .id("test-component-id-2")
+                        .build()
         );
-        when(resourceService.getComponentsAndDiagrams()).thenReturn(componentsAndDiagrams);
+        when(resourceService.getComponents()).thenReturn(components);
 
         // When
         Output<ComponentsAndDiagrams, Void> returnValue = underTest.find(ComponentMetadata.builder().build());
 
         // Then
-        assertThat(returnValue).isEqualTo(Output.ofOutput(componentsAndDiagrams, CACHE_TTL));
+        assertThat(returnValue).isEqualTo(Output.ofOutput(
+                ComponentsAndDiagrams.builder()
+                        .components(components)
+                        .build(),
+                CACHE_TTL
+        ));
     }
 }
