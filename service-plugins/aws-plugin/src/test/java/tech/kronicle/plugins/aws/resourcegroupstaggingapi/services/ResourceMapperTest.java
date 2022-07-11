@@ -69,6 +69,7 @@ public class ResourceMapperTest {
         List<Component> returnValue = underTest.mapResourcesToComponents(TEST_ENVIRONMENT_ID, resources);
 
         // Then
+        String updatedEnvironmentId = prepareExpectedEnvironmentId(mappingConfig, TEST_ENVIRONMENT_ID);
         assertThat(returnValue).isEqualTo(List.of(
                 Component.builder()
                         .id("aws.test-environment-id.lambda-function.examplestack-examplefunction123abc-123456abcdef")
@@ -92,7 +93,7 @@ public class ResourceMapperTest {
                         ))
                         .build(),
                 Component.builder()
-                        .id("aws.test-environment-id.ec2-security-group.security-group-sg-12345678901abcdef")
+                        .id("aws." + updatedEnvironmentId + ".ec2-security-group.security-group-sg-12345678901abcdef")
                         .aliases(List.of(
                                 Alias.builder().id("security-group/sg-12345678901ABCDEF").build(),
                                 Alias.builder().id("security-group/sg-12345678901abcdef").build(),
@@ -100,7 +101,7 @@ public class ResourceMapperTest {
                                 Alias.builder().id("test-alias-id-1").build(),
                                 Alias.builder().id("test-alias-id-2").build()
                         ))
-                        .name("AWS - test-environment-id - Test name")
+                        .name("AWS - " + updatedEnvironmentId + " - Test name")
                         .typeId("aws.ec2-security-group")
                         .tags(prepareExpectedTags(
                                 mappingConfig,
@@ -142,10 +143,10 @@ public class ResourceMapperTest {
                                         + "* test-alias-id-2\n"
                         ))
                         .platformId("aws")
-                        .connections(prepareExpectedConnections(mappingConfig))
+                        .connections(prepareExpectedConnections(updatedEnvironmentId, mappingConfig))
                         .states(List.of(
                                 DiscoveredState.builder()
-                                        .environmentId(prepareExpectedEnvironmentId(mappingConfig, TEST_ENVIRONMENT_ID))
+                                        .environmentId(updatedEnvironmentId)
                                         .pluginId("aws")
                                         .build()
                         ))
@@ -251,12 +252,13 @@ public class ResourceMapperTest {
         }
     }
 
-    private List<ComponentConnection> prepareExpectedConnections(MappingConfig mappingConfig) {
+    private List<ComponentConnection> prepareExpectedConnections(String updatedEnvironmentId, MappingConfig mappingConfig) {
         if (mappingConfig.createDependenciesForResources) {
             return List.of(
                     ComponentConnection.builder()
                             .targetComponentId("test-component-id")
                             .type(ConnectionTypes.SUPER_COMPONENT)
+                            .environmentId(updatedEnvironmentId)
                             .label("is composed of")
                             .build()
             );

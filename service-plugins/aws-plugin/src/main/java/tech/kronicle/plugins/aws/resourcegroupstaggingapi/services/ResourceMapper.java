@@ -42,19 +42,20 @@ public class ResourceMapper {
         String name = getName(nameTag, analysedArn);
         Optional<String> aliasesTag = getAliasesTag(resource);
         List<Alias> aliases = getAliases(analysedArn, name, aliasesTag);
+        String updatedEnvironmentId1 = getEnvironmentId(resource, environmentId);
         return Component.builder()
-                .id("aws." + environmentId + "." + toKebabCase(analysedArn.getDerivedResourceType()) + "." + toKebabCase(analysedArn.getResourceId()))
+                .id("aws." + updatedEnvironmentId1 + "." + toKebabCase(analysedArn.getDerivedResourceType()) + "." + toKebabCase(analysedArn.getResourceId()))
                 .aliases(aliases)
-                .name("AWS - " + environmentId + " - " + name)
+                .name("AWS - " + updatedEnvironmentId1 + " - " + name)
                 .typeId(mapType(analysedArn))
                 .tags(mapTags(resource))
                 .teams(getTeam(resource))
                 .description(getDescription(resource, analysedArn, aliases))
                 .platformId("aws")
-                .connections(mapResourceToConnections(environmentId, resource))
+                .connections(mapResourceToConnections(updatedEnvironmentId1, resource))
                 .states(List.of(
                         DiscoveredState.builder()
-                                .environmentId(getEnvironmentId(resource, environmentId))
+                                .environmentId(updatedEnvironmentId1)
                                 .pluginId(AwsPlugin.ID)
                                 .build()
                 ))
