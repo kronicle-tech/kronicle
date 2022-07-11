@@ -24,7 +24,7 @@ export default Vue.extend({
   },
   async asyncData({ $config, route, store }) {
     const area = await fetch(
-      `${$config.serviceBaseUrl}/v1/areas/${route.params.areaId}?fields=area(id,name,components(id,name,typeId,tags,teams,platformId,crossFunctionalRequirements))`
+      `${$config.serviceBaseUrl}/v1/areas/${route.params.areaId}?fields=area(id,name,components(id,name,type,tags,teams,platformId,crossFunctionalRequirements))`
     )
       .then((res) => res.json())
       .then((json) => json.area as Area)

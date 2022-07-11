@@ -16,7 +16,7 @@
 
       <b-card title="Component Type">
         <b-card-text>
-          {{ component.typeId }}
+          {{ component.type }}
         </b-card-text>
       </b-card>
 
@@ -125,7 +125,7 @@ export default Vue.extend({
     )
 
     const component = await fetch(
-      `${$config.serviceBaseUrl}/v1/components/${route.params.componentId}?stateType=key-softwares&stateType=doc&fields=component(id,name,typeId,platformId,tags,teams,links,description,notes,responsibilities,states)`
+      `${$config.serviceBaseUrl}/v1/components/${route.params.componentId}?stateType=key-softwares&stateType=doc&fields=component(id,name,type,platformId,tags,teams,links,description,notes,responsibilities,states)`
     )
       .then((res) => res.json())
       .then((json) => json.component)

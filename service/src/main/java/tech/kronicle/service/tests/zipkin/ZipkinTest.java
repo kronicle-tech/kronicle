@@ -2,7 +2,6 @@ package tech.kronicle.service.tests.zipkin;
 
 import lombok.RequiredArgsConstructor;
 import tech.kronicle.sdk.models.Component;
-import tech.kronicle.sdk.models.ComponentState;
 import tech.kronicle.sdk.models.Priority;
 import tech.kronicle.sdk.models.TestResult;
 import tech.kronicle.sdk.models.zipkin.ZipkinState;
@@ -33,8 +32,8 @@ public class ZipkinTest extends ComponentTest {
 
     @Override
     public TestResult test(Component input, TestContext testContext) {
-        if (componentTypeIdNotExpectedToUseZipkin(input.getTypeId())) {
-            return createNotApplicableTestResult(String.format("Zipkin is not relevant for component type %s", input.getTypeId()));
+        if (componentTypeIdNotExpectedToUseZipkin(input.getType())) {
+            return createNotApplicableTestResult(String.format("Zipkin is not relevant for component type %s", input.getType()));
         }
 
         if (isZipkinUsed(input)) {

@@ -204,7 +204,7 @@ exports[`Index when Get Test service endpoint returns a test renders the page 1`
                           <input
                             class="custom-control-input"
                             id="__BVID__34_BV_option_0"
-                            name="componentTypeId"
+                            name="componentType"
                             type="checkbox"
                             value="test-component-type-id-1"
                           />
@@ -684,7 +684,7 @@ exports[`Index when Get Test service endpoint returns a test when there are test
                           <input
                             class="custom-control-input"
                             id="__BVID__59_BV_option_0"
-                            name="componentTypeId"
+                            name="componentType"
                             type="checkbox"
                             value="test-component-type-id-1"
                           />
@@ -703,16 +703,16 @@ exports[`Index when Get Test service endpoint returns a test when there are test
                           <input
                             class="custom-control-input"
                             id="__BVID__59_BV_option_1"
-                            name="componentTypeId"
+                            name="componentType"
                             type="checkbox"
-                            value=""
+                            value="test-component-type-id-2"
                           />
                           <label
                             class="custom-control-label"
                             for="__BVID__59_BV_option_1"
                           >
                             <span>
-                              null
+                              test-component-type-id-2
                             </span>
                           </label>
                         </div>

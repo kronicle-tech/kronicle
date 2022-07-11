@@ -77,7 +77,7 @@ exports[`OpenApiSpecsView when an OpenAPI spec has a URL but no spec renders the
                 <legend tabindex=\\"-1\\" class=\\"bv-no-focus-ring col-form-label pt-0\\" id=\\"__BVID__284__BV_label_\\">Component Types</legend>
                 <div>
                   <div role=\\"group\\" tabindex=\\"-1\\" class=\\"bv-no-focus-ring\\" id=\\"__BVID__285\\">
-                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"componentTypeId\\" class=\\"custom-control-input\\" value=\\"test-component-type-id-1\\" id=\\"__BVID__285_BV_option_0\\"><label class=\\"custom-control-label\\" for=\\"__BVID__285_BV_option_0\\"><span>test-component-type-id-1</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"componentType\\" class=\\"custom-control-input\\" value=\\"test-component-type-id-1\\" id=\\"__BVID__285_BV_option_0\\"><label class=\\"custom-control-label\\" for=\\"__BVID__285_BV_option_0\\"><span>test-component-type-id-1</span></label></div>
                   </div>
                   <!---->
                   <!---->
@@ -252,7 +252,7 @@ exports[`OpenApiSpecsView when an OpenAPI spec has a file but no spec renders th
                 <legend tabindex=\\"-1\\" class=\\"bv-no-focus-ring col-form-label pt-0\\" id=\\"__BVID__313__BV_label_\\">Component Types</legend>
                 <div>
                   <div role=\\"group\\" tabindex=\\"-1\\" class=\\"bv-no-focus-ring\\" id=\\"__BVID__314\\">
-                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"componentTypeId\\" class=\\"custom-control-input\\" value=\\"test-component-type-id-1\\" id=\\"__BVID__314_BV_option_0\\"><label class=\\"custom-control-label\\" for=\\"__BVID__314_BV_option_0\\"><span>test-component-type-id-1</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"componentType\\" class=\\"custom-control-input\\" value=\\"test-component-type-id-1\\" id=\\"__BVID__314_BV_option_0\\"><label class=\\"custom-control-label\\" for=\\"__BVID__314_BV_option_0\\"><span>test-component-type-id-1</span></label></div>
                   </div>
                   <!---->
                   <!---->
@@ -427,7 +427,7 @@ exports[`OpenApiSpecsView when an OpenAPI spec has a spec and a URL renders the 
                 <legend tabindex=\\"-1\\" class=\\"bv-no-focus-ring col-form-label pt-0\\" id=\\"__BVID__224__BV_label_\\">Component Types</legend>
                 <div>
                   <div role=\\"group\\" tabindex=\\"-1\\" class=\\"bv-no-focus-ring\\" id=\\"__BVID__225\\">
-                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"componentTypeId\\" class=\\"custom-control-input\\" value=\\"test-component-type-id-1\\" id=\\"__BVID__225_BV_option_0\\"><label class=\\"custom-control-label\\" for=\\"__BVID__225_BV_option_0\\"><span>test-component-type-id-1</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"componentType\\" class=\\"custom-control-input\\" value=\\"test-component-type-id-1\\" id=\\"__BVID__225_BV_option_0\\"><label class=\\"custom-control-label\\" for=\\"__BVID__225_BV_option_0\\"><span>test-component-type-id-1</span></label></div>
                   </div>
                   <!---->
                   <!---->
@@ -602,7 +602,7 @@ exports[`OpenApiSpecsView when an OpenAPI spec has a spec and a file renders the
                 <legend tabindex=\\"-1\\" class=\\"bv-no-focus-ring col-form-label pt-0\\" id=\\"__BVID__254__BV_label_\\">Component Types</legend>
                 <div>
                   <div role=\\"group\\" tabindex=\\"-1\\" class=\\"bv-no-focus-ring\\" id=\\"__BVID__255\\">
-                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"componentTypeId\\" class=\\"custom-control-input\\" value=\\"test-component-type-id-1\\" id=\\"__BVID__255_BV_option_0\\"><label class=\\"custom-control-label\\" for=\\"__BVID__255_BV_option_0\\"><span>test-component-type-id-1</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"componentType\\" class=\\"custom-control-input\\" value=\\"test-component-type-id-1\\" id=\\"__BVID__255_BV_option_0\\"><label class=\\"custom-control-label\\" for=\\"__BVID__255_BV_option_0\\"><span>test-component-type-id-1</span></label></div>
                   </div>
                   <!---->
                   <!---->
@@ -781,8 +781,8 @@ exports[`OpenApiSpecsView when components is set to multiple components with mul
                 <legend tabindex=\\"-1\\" class=\\"bv-no-focus-ring col-form-label pt-0\\" id=\\"__BVID__122__BV_label_\\">Component Types</legend>
                 <div>
                   <div role=\\"group\\" tabindex=\\"-1\\" class=\\"bv-no-focus-ring\\" id=\\"__BVID__123\\">
-                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"componentTypeId\\" class=\\"custom-control-input\\" value=\\"test-component-type-id-1\\" id=\\"__BVID__123_BV_option_0\\"><label class=\\"custom-control-label\\" for=\\"__BVID__123_BV_option_0\\"><span>test-component-type-id-1</span></label></div>
-                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"componentTypeId\\" class=\\"custom-control-input\\" value=\\"test-component-type-id-2\\" id=\\"__BVID__123_BV_option_1\\"><label class=\\"custom-control-label\\" for=\\"__BVID__123_BV_option_1\\"><span>test-component-type-id-2</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"componentType\\" class=\\"custom-control-input\\" value=\\"test-component-type-id-1\\" id=\\"__BVID__123_BV_option_0\\"><label class=\\"custom-control-label\\" for=\\"__BVID__123_BV_option_0\\"><span>test-component-type-id-1</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"componentType\\" class=\\"custom-control-input\\" value=\\"test-component-type-id-2\\" id=\\"__BVID__123_BV_option_1\\"><label class=\\"custom-control-label\\" for=\\"__BVID__123_BV_option_1\\"><span>test-component-type-id-2</span></label></div>
                   </div>
                   <!---->
                   <!---->
@@ -1040,8 +1040,8 @@ exports[`OpenApiSpecsView when components is set to multiple components with mul
                 <legend tabindex=\\"-1\\" class=\\"bv-no-focus-ring col-form-label pt-0\\" id=\\"__BVID__175__BV_label_\\">Component Types</legend>
                 <div>
                   <div role=\\"group\\" tabindex=\\"-1\\" class=\\"bv-no-focus-ring\\" id=\\"__BVID__176\\">
-                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"componentTypeId\\" class=\\"custom-control-input\\" value=\\"test-component-type-id-1\\" id=\\"__BVID__176_BV_option_0\\"><label class=\\"custom-control-label\\" for=\\"__BVID__176_BV_option_0\\"><span>test-component-type-id-1</span></label></div>
-                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"componentTypeId\\" class=\\"custom-control-input\\" value=\\"test-component-type-id-2\\" id=\\"__BVID__176_BV_option_1\\"><label class=\\"custom-control-label\\" for=\\"__BVID__176_BV_option_1\\"><span>test-component-type-id-2</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"componentType\\" class=\\"custom-control-input\\" value=\\"test-component-type-id-1\\" id=\\"__BVID__176_BV_option_0\\"><label class=\\"custom-control-label\\" for=\\"__BVID__176_BV_option_0\\"><span>test-component-type-id-1</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"componentType\\" class=\\"custom-control-input\\" value=\\"test-component-type-id-2\\" id=\\"__BVID__176_BV_option_1\\"><label class=\\"custom-control-label\\" for=\\"__BVID__176_BV_option_1\\"><span>test-component-type-id-2</span></label></div>
                   </div>
                   <!---->
                   <!---->
@@ -1299,8 +1299,8 @@ exports[`OpenApiSpecsView when components is set to multiple components with mul
                 <legend tabindex=\\"-1\\" class=\\"bv-no-focus-ring col-form-label pt-0\\" id=\\"__BVID__175__BV_label_\\">Component Types</legend>
                 <div>
                   <div role=\\"group\\" tabindex=\\"-1\\" class=\\"bv-no-focus-ring\\" id=\\"__BVID__176\\">
-                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"componentTypeId\\" class=\\"custom-control-input\\" value=\\"test-component-type-id-1\\" id=\\"__BVID__176_BV_option_0\\"><label class=\\"custom-control-label\\" for=\\"__BVID__176_BV_option_0\\"><span>test-component-type-id-1</span></label></div>
-                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"componentTypeId\\" class=\\"custom-control-input\\" value=\\"test-component-type-id-2\\" id=\\"__BVID__176_BV_option_1\\"><label class=\\"custom-control-label\\" for=\\"__BVID__176_BV_option_1\\"><span>test-component-type-id-2</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"componentType\\" class=\\"custom-control-input\\" value=\\"test-component-type-id-1\\" id=\\"__BVID__176_BV_option_0\\"><label class=\\"custom-control-label\\" for=\\"__BVID__176_BV_option_0\\"><span>test-component-type-id-1</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"componentType\\" class=\\"custom-control-input\\" value=\\"test-component-type-id-2\\" id=\\"__BVID__176_BV_option_1\\"><label class=\\"custom-control-label\\" for=\\"__BVID__176_BV_option_1\\"><span>test-component-type-id-2</span></label></div>
                   </div>
                   <!---->
                   <!---->
@@ -1502,7 +1502,7 @@ exports[`OpenApiSpecsView when components prop is set a component with 1 OpenAPI
                 <legend tabindex=\\"-1\\" class=\\"bv-no-focus-ring col-form-label pt-0\\" id=\\"__BVID__52__BV_label_\\">Component Types</legend>
                 <div>
                   <div role=\\"group\\" tabindex=\\"-1\\" class=\\"bv-no-focus-ring\\" id=\\"__BVID__53\\">
-                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"componentTypeId\\" class=\\"custom-control-input\\" value=\\"test-component-type-id-1\\" id=\\"__BVID__53_BV_option_0\\"><label class=\\"custom-control-label\\" for=\\"__BVID__53_BV_option_0\\"><span>test-component-type-id-1</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"componentType\\" class=\\"custom-control-input\\" value=\\"test-component-type-id-1\\" id=\\"__BVID__53_BV_option_0\\"><label class=\\"custom-control-label\\" for=\\"__BVID__53_BV_option_0\\"><span>test-component-type-id-1</span></label></div>
                   </div>
                   <!---->
                   <!---->
@@ -1677,7 +1677,7 @@ exports[`OpenApiSpecsView when components prop is set a component with 2 OpenAPI
                 <legend tabindex=\\"-1\\" class=\\"bv-no-focus-ring col-form-label pt-0\\" id=\\"__BVID__82__BV_label_\\">Component Types</legend>
                 <div>
                   <div role=\\"group\\" tabindex=\\"-1\\" class=\\"bv-no-focus-ring\\" id=\\"__BVID__83\\">
-                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"componentTypeId\\" class=\\"custom-control-input\\" value=\\"test-component-type-id-1\\" id=\\"__BVID__83_BV_option_0\\"><label class=\\"custom-control-label\\" for=\\"__BVID__83_BV_option_0\\"><span>test-component-type-id-1</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"componentType\\" class=\\"custom-control-input\\" value=\\"test-component-type-id-1\\" id=\\"__BVID__83_BV_option_0\\"><label class=\\"custom-control-label\\" for=\\"__BVID__83_BV_option_0\\"><span>test-component-type-id-1</span></label></div>
                   </div>
                   <!---->
                   <!---->
@@ -1882,8 +1882,8 @@ exports[`OpenApiSpecsView when components prop is set components with no OpenAPI
                 <legend tabindex=\\"-1\\" class=\\"bv-no-focus-ring col-form-label pt-0\\" id=\\"__BVID__27__BV_label_\\">Component Types</legend>
                 <div>
                   <div role=\\"group\\" tabindex=\\"-1\\" class=\\"bv-no-focus-ring\\" id=\\"__BVID__28\\">
-                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"componentTypeId\\" class=\\"custom-control-input\\" value=\\"test-component-type-id-1\\" id=\\"__BVID__28_BV_option_0\\"><label class=\\"custom-control-label\\" for=\\"__BVID__28_BV_option_0\\"><span>test-component-type-id-1</span></label></div>
-                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"componentTypeId\\" class=\\"custom-control-input\\" value=\\"test-component-type-id-2\\" id=\\"__BVID__28_BV_option_1\\"><label class=\\"custom-control-label\\" for=\\"__BVID__28_BV_option_1\\"><span>test-component-type-id-2</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"componentType\\" class=\\"custom-control-input\\" value=\\"test-component-type-id-1\\" id=\\"__BVID__28_BV_option_0\\"><label class=\\"custom-control-label\\" for=\\"__BVID__28_BV_option_0\\"><span>test-component-type-id-1</span></label></div>
+                    <div class=\\"custom-control custom-checkbox\\"><input type=\\"checkbox\\" name=\\"componentType\\" class=\\"custom-control-input\\" value=\\"test-component-type-id-2\\" id=\\"__BVID__28_BV_option_1\\"><label class=\\"custom-control-label\\" for=\\"__BVID__28_BV_option_1\\"><span>test-component-type-id-2</span></label></div>
                   </div>
                   <!---->
                   <!---->

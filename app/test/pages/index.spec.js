@@ -29,7 +29,7 @@ describe('Index', () => {
         '/v1/teams?fields=teams(id)': {
           responseBody: { teams },
         },
-        '/v1/components?fields=components(id,typeId,platformId,tags,techDebts(doesNotExist),testResults(doesNotExist))':
+        '/v1/components?fields=components(id,type,platformId,tags,techDebts(doesNotExist),testResults(doesNotExist))':
           {
             responseBody: { components },
           },

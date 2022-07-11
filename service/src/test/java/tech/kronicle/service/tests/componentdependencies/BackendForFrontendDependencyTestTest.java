@@ -42,7 +42,7 @@ public class BackendForFrontendDependencyTestTest {
     public void testShouldReturnNotApplicableWhenComponentTypeIsNotBackendForFrontend() {
         // Given
         Component component = Component.builder()
-                .typeId(CommonComponentTypeIds.SERVICE)
+                .type(CommonComponentTypeIds.SERVICE)
                 .build();
         TestContext testContext = TestContext.builder().build();
 
@@ -107,7 +107,7 @@ public class BackendForFrontendDependencyTestTest {
         );
         TestContext testContext = TestContext.builder()
                 .componentMap(Map.ofEntries(
-                        Map.entry("test-component-id-1", Component.builder().typeId(NOT_A_SERVICE).build())))
+                        Map.entry("test-component-id-1", Component.builder().type(NOT_A_SERVICE).build())))
                 .build();
 
         // When
@@ -134,7 +134,7 @@ public class BackendForFrontendDependencyTestTest {
         );
         TestContext testContext = TestContext.builder()
                 .componentMap(Map.ofEntries(
-                        Map.entry("test-component-id-1", Component.builder().typeId(CommonComponentTypeIds.SERVICE).build())))
+                        Map.entry("test-component-id-1", Component.builder().type(CommonComponentTypeIds.SERVICE).build())))
                 .build();
 
         // When
@@ -166,8 +166,8 @@ public class BackendForFrontendDependencyTestTest {
         );
         TestContext testContext = TestContext.builder()
                 .componentMap(Map.ofEntries(
-                        Map.entry("test-component-id-1", Component.builder().typeId(CommonComponentTypeIds.SERVICE).build()),
-                        Map.entry("test-component-id-2", Component.builder().typeId(CommonComponentTypeIds.SERVICE).build())))
+                        Map.entry("test-component-id-1", Component.builder().type(CommonComponentTypeIds.SERVICE).build()),
+                        Map.entry("test-component-id-2", Component.builder().type(CommonComponentTypeIds.SERVICE).build())))
                 .build();
 
         // When
@@ -199,8 +199,8 @@ public class BackendForFrontendDependencyTestTest {
         );
         TestContext testContext = TestContext.builder()
                 .componentMap(Map.ofEntries(
-                        Map.entry("test-component-id-1", Component.builder().typeId(NOT_A_SERVICE).build()),
-                        Map.entry("test-component-id-2", Component.builder().typeId(CommonComponentTypeIds.SERVICE).build())))
+                        Map.entry("test-component-id-1", Component.builder().type(NOT_A_SERVICE).build()),
+                        Map.entry("test-component-id-2", Component.builder().type(CommonComponentTypeIds.SERVICE).build())))
                 .build();
 
         // When
@@ -218,7 +218,7 @@ public class BackendForFrontendDependencyTestTest {
 
     private Component createComponent(ZipkinState zipkinState) {
         return Component.builder()
-                .typeId(CommonComponentTypeIds.BACKEND_FOR_FRONTEND)
+                .type(CommonComponentTypeIds.BACKEND_FOR_FRONTEND)
                 .states(createStates(zipkinState))
                 .build();
     }

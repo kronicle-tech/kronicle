@@ -96,7 +96,7 @@
             :key="componentTypeCount.item"
             :to="{
               name: 'all-components',
-              query: { componentTypeId: componentTypeCount.item },
+              query: { componentType: componentTypeCount.item },
             }"
             class="d-flex justify-content-between align-items-center"
           >
@@ -266,7 +266,7 @@ export default Vue.extend({
       .then((json) => json.teams as Team[])
 
     const components = await fetch(
-      `${$config.serviceBaseUrl}/v1/components?fields=components(id,typeId,platformId,tags,techDebts(doesNotExist),testResults(doesNotExist))`
+      `${$config.serviceBaseUrl}/v1/components?fields=components(id,type,platformId,tags,techDebts(doesNotExist),testResults(doesNotExist))`
     )
       .then((res) => res.json())
       .then((json) => json.components as Component[])
@@ -318,7 +318,7 @@ export default Vue.extend({
       return this.components.length
     },
     componentTypeCounts(): ItemCount<string>[] {
-      return itemCounts(this.components.map((component) => component.typeId))
+      return itemCounts(this.components.map((component) => component.type))
     },
     platformCounts(): ItemCount<string>[] {
       return itemCounts(

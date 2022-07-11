@@ -400,7 +400,7 @@ public class ComponentMetadataLoaderTest {
         assertThat(logCaptor.getEvents().get(4).getThrowableProxy().getMessage()).isEqualTo(""
                 + "Failed to validate tech.kronicle.sdk.models.Component with reference \"test-component-id-1\". Violations:\n"
                 + "- name with value \"null\" must not be blank\n"
-                + "- typeId with value \"null\" must not be blank");
+                + "- type with value \"null\" must not be blank");
         assertThat(returnValue.getAreas()).isEmpty();
         assertThat(returnValue.getTeams()).isEmpty();
         assertThat(returnValue.getComponents()).containsOnly(
@@ -740,7 +740,7 @@ public class ComponentMetadataLoaderTest {
                 .id("test-component-id-" + idNumber)
                 .name("Test Component Name " + othersNumber)
                 .repo(RepoReference.builder().url("http://example.com/test-repo-" + othersNumber + ".git").build())
-                .typeId("test-component-type-id-" + othersNumber);
+                .type("test-component-type-id-" + othersNumber);
     }
 
     private Component createInvalidTestComponent(int number) {

@@ -34,7 +34,7 @@ export default Vue.extend({
     )
 
     const component = await fetch(
-      `${$config.serviceBaseUrl}/v1/components/${route.params.componentId}?fields=component(id,name,typeId,tags,description,notes,responsibilities,teams,platformId,states(environmentId,pluginId))`
+      `${$config.serviceBaseUrl}/v1/components/${route.params.componentId}?fields=component(id,name,type,tags,description,notes,responsibilities,teams,platformId,states(environmentId,pluginId))`
     )
       .then((res) => res.json())
       .then((json) => json.component as Component)

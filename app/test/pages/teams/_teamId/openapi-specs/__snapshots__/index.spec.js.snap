@@ -527,7 +527,7 @@ exports[`Index when Get Team service endpoint returns an team when the team has 
                         <input
                           class="custom-control-input"
                           id="__BVID__120_BV_option_0"
-                          name="componentTypeId"
+                          name="componentType"
                           type="checkbox"
                           value="test-component-type-id-1"
                         />
@@ -546,7 +546,7 @@ exports[`Index when Get Team service endpoint returns an team when the team has 
                         <input
                           class="custom-control-input"
                           id="__BVID__120_BV_option_1"
-                          name="componentTypeId"
+                          name="componentType"
                           type="checkbox"
                           value="test-component-type-id-2"
                         />
@@ -565,7 +565,7 @@ exports[`Index when Get Team service endpoint returns an team when the team has 
                         <input
                           class="custom-control-input"
                           id="__BVID__120_BV_option_2"
-                          name="componentTypeId"
+                          name="componentType"
                           type="checkbox"
                           value="test-component-type-id-3"
                         />
@@ -1576,7 +1576,7 @@ exports[`Index when Get Team service endpoint returns an team when the team has 
                         <input
                           class="custom-control-input"
                           id="__BVID__74_BV_option_0"
-                          name="componentTypeId"
+                          name="componentType"
                           type="checkbox"
                           value="test-component-type-id-1"
                         />
@@ -1595,7 +1595,7 @@ exports[`Index when Get Team service endpoint returns an team when the team has 
                         <input
                           class="custom-control-input"
                           id="__BVID__74_BV_option_1"
-                          name="componentTypeId"
+                          name="componentType"
                           type="checkbox"
                           value="test-component-type-id-2"
                         />
@@ -1614,7 +1614,7 @@ exports[`Index when Get Team service endpoint returns an team when the team has 
                         <input
                           class="custom-control-input"
                           id="__BVID__74_BV_option_2"
-                          name="componentTypeId"
+                          name="componentType"
                           type="checkbox"
                           value="test-component-type-id-3"
                         />

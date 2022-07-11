@@ -27,7 +27,7 @@ async function loadData({
   store: Store<any>
 }): Promise<Data> {
   const components = await fetch(
-    `${$config.serviceBaseUrl}/v1/components?fields=components(id,name,typeId,tags,description,notes,responsibilities,teams,platformId,states)`
+    `${$config.serviceBaseUrl}/v1/components?fields=components(id,name,type,tags,description,notes,responsibilities,teams,platformId,states)`
   )
     .then((res) => res.json())
     .then((json) => json.components as Component[])

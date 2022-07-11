@@ -175,7 +175,7 @@ exports[`Index when Kronicle contains information renders the page showing the i
          
         <a
           class="list-group-item d-flex justify-content-between align-items-center list-group-item-action"
-          href="?componentTypeId=test-component-type-id-1"
+          href="?componentType=test-component-type-id-1"
           target="_self"
         >
           <b
@@ -198,7 +198,7 @@ exports[`Index when Kronicle contains information renders the page showing the i
         </a>
         <a
           class="list-group-item d-flex justify-content-between align-items-center list-group-item-action"
-          href="?componentTypeId=test-component-type-id-2"
+          href="?componentType=test-component-type-id-2"
           target="_self"
         >
           <b
@@ -221,7 +221,7 @@ exports[`Index when Kronicle contains information renders the page showing the i
         </a>
         <a
           class="list-group-item d-flex justify-content-between align-items-center list-group-item-action"
-          href="?componentTypeId=test-component-type-id-3"
+          href="?componentType=test-component-type-id-3"
           target="_self"
         >
           <b

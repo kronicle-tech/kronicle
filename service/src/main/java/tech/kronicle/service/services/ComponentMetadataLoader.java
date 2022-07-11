@@ -105,8 +105,8 @@ public class ComponentMetadataLoader {
                                                   ConcurrentHashMap<String, Team> teams, Set<String> componentIds) {
         return component -> {
             validatorService.validate(component);
-            if (!componentTypes.containsKey(component.getTypeId())) {
-                log.error("Cannot find component type {} for component {}", component.getTypeId(), component.getId());
+            if (!componentTypes.containsKey(component.getType())) {
+                log.error("Cannot find component type {} for component {}", component.getType(), component.getId());
             }
             component.getTeams().forEach(componentTeam -> {
                 if (!teams.containsKey(componentTeam.getTeamId())) {

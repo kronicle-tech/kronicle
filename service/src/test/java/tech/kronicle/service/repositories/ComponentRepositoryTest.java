@@ -93,7 +93,7 @@ public class ComponentRepositoryTest {
                         .components(List.of(Component.builder()
                                 .id("test-component-id")
                                 .name("Test Component Name")
-                                .typeId("test-component-type-id")
+                                .type("test-component-type-id")
                                 .tags(List.of(
                                         Tag.builder().key("test-component-tag-1").build(),
                                         Tag.builder().key("test-component-tag-2").build()
@@ -131,7 +131,7 @@ public class ComponentRepositoryTest {
         component = components.get(0);
         assertThat(component.getId()).isEqualTo("test-component-id");
         assertThat(component.getName()).isEqualTo("Test Component Name");
-        assertThat(component.getTypeId()).isEqualTo("test-component-type-id");
+        assertThat(component.getType()).isEqualTo("test-component-type-id");
         assertThat(component.getTags()).containsExactly(
                 Tag.builder().key("test-component-tag-1").build(),
                 Tag.builder().key("test-component-tag-2").build()

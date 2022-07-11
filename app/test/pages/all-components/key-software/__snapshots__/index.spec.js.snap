@@ -493,7 +493,7 @@ exports[`Index when Get Components service endpoint returns an array of multiple
                       <input
                         class="custom-control-input"
                         id="__BVID__112_BV_option_0"
-                        name="componentTypeId"
+                        name="componentType"
                         type="checkbox"
                         value="test-component-type-id-1"
                       />
@@ -512,7 +512,7 @@ exports[`Index when Get Components service endpoint returns an array of multiple
                       <input
                         class="custom-control-input"
                         id="__BVID__112_BV_option_1"
-                        name="componentTypeId"
+                        name="componentType"
                         type="checkbox"
                         value="test-component-type-id-2"
                       />
@@ -531,7 +531,7 @@ exports[`Index when Get Components service endpoint returns an array of multiple
                       <input
                         class="custom-control-input"
                         id="__BVID__112_BV_option_2"
-                        name="componentTypeId"
+                        name="componentType"
                         type="checkbox"
                         value="test-component-type-id-3"
                       />
@@ -1249,7 +1249,7 @@ exports[`Index when Get Components service endpoint returns an array of multiple
                       <input
                         class="custom-control-input"
                         id="__BVID__66_BV_option_0"
-                        name="componentTypeId"
+                        name="componentType"
                         type="checkbox"
                         value="test-component-type-id-1"
                       />
@@ -1268,7 +1268,7 @@ exports[`Index when Get Components service endpoint returns an array of multiple
                       <input
                         class="custom-control-input"
                         id="__BVID__66_BV_option_1"
-                        name="componentTypeId"
+                        name="componentType"
                         type="checkbox"
                         value="test-component-type-id-2"
                       />
@@ -1287,7 +1287,7 @@ exports[`Index when Get Components service endpoint returns an array of multiple
                       <input
                         class="custom-control-input"
                         id="__BVID__66_BV_option_2"
-                        name="componentTypeId"
+                        name="componentType"
                         type="checkbox"
                         value="test-component-type-id-3"
                       />
@@ -2005,7 +2005,7 @@ exports[`Index when Get Components service endpoint returns an array of multiple
                       <input
                         class="custom-control-input"
                         id="__BVID__158_BV_option_0"
-                        name="componentTypeId"
+                        name="componentType"
                         type="checkbox"
                         value="test-component-type-id-1"
                       />
@@ -2024,7 +2024,7 @@ exports[`Index when Get Components service endpoint returns an array of multiple
                       <input
                         class="custom-control-input"
                         id="__BVID__158_BV_option_1"
-                        name="componentTypeId"
+                        name="componentType"
                         type="checkbox"
                         value="test-component-type-id-2"
                       />
@@ -2043,7 +2043,7 @@ exports[`Index when Get Components service endpoint returns an array of multiple
                       <input
                         class="custom-control-input"
                         id="__BVID__158_BV_option_2"
-                        name="componentTypeId"
+                        name="componentType"
                         type="checkbox"
                         value="test-component-type-id-3"
                       />
@@ -2735,7 +2735,7 @@ exports[`Index when a key software has multiple versions renders all versions 1`
                       <input
                         class="custom-control-input"
                         id="__BVID__196_BV_option_0"
-                        name="componentTypeId"
+                        name="componentType"
                         type="checkbox"
                         value="test-component-type-id-1"
                       />

@@ -375,7 +375,7 @@ exports[`Index when Get Component service endpoint returns a component when the 
                         <input
                           class="custom-control-input"
                           id="__BVID__93_BV_option_0"
-                          name="componentTypeId"
+                          name="componentType"
                           type="checkbox"
                           value="test-component-type-id-1"
                         />
@@ -1076,7 +1076,7 @@ exports[`Index when Get Component service endpoint returns a component when the 
                         <input
                           class="custom-control-input"
                           id="__BVID__60_BV_option_0"
-                          name="componentTypeId"
+                          name="componentType"
                           type="checkbox"
                           value="test-component-type-id-1"
                         />

@@ -396,10 +396,10 @@ export default Vue.extend({
       function getNodeIconPath(
         component: Component | undefined
       ): string | undefined {
-        if (!component || !component.typeId) {
+        if (!component || !component.type) {
           return undefined
         }
-        return that.nodeIcons.get(component.typeId)
+        return that.nodeIcons.get(component.type)
       }
 
       function addEdges() {

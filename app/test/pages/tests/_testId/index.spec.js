@@ -22,7 +22,7 @@ describe('Index', () => {
         '/v1/tests/test-test-id-1?fields=test(id,description,priority)': {
           responseBody: { test: testObject },
         },
-        '/v1/components?fields=components(id,name,typeId,tags,teams,platformId,testResults)':
+        '/v1/components?fields=components(id,name,type,tags,teams,platformId,testResults)':
           {
             responseBody: { components },
           },
@@ -46,7 +46,7 @@ describe('Index', () => {
       components = [
         {
           id: 'test-component-id-1',
-          typeId: 'test-component-type-id-1',
+          type: 'test-component-type-id-1',
           name: 'Test Component Name 1',
         },
       ]
@@ -67,7 +67,7 @@ describe('Index', () => {
         components = [
           {
             id: 'test-component-id-1',
-            typeId: 'test-component-type-id-1',
+            type: 'test-component-type-id-1',
             name: 'Test Component Name 1',
             testResults: [
               {

@@ -26,7 +26,7 @@ describe('Index', () => {
       route,
       serviceRequests: {
         ...createComponentAvailableDataRequests(),
-        '/v1/components/test-component-id-1?stateType=key-softwares&stateType=doc&fields=component(id,name,typeId,platformId,tags,teams,links,description,notes,responsibilities,states)':
+        '/v1/components/test-component-id-1?stateType=key-softwares&stateType=doc&fields=component(id,name,type,platformId,tags,teams,links,description,notes,responsibilities,states)':
           {
             responseBody: { component },
           },
