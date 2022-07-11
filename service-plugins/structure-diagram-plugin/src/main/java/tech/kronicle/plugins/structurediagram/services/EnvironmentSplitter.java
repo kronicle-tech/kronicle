@@ -31,7 +31,10 @@ public class EnvironmentSplitter {
             String environmentId
     ) {
         if (isNull(environmentId)) {
-            return new EnvironmentIdAndDiagramConnections(null, diagramConnections);
+            return new EnvironmentIdAndDiagramConnections(
+                    null,
+                    getDiagramConnectionsWithNoEnvironmentId(diagramConnections)
+            );
         } else {
             return new EnvironmentIdAndDiagramConnections(
                     environmentId,
@@ -40,9 +43,16 @@ public class EnvironmentSplitter {
         }
     }
 
+    private List<DiagramConnection> getDiagramConnectionsWithNoEnvironmentId(List<DiagramConnection> diagramConnections) {
+        return diagramConnections.stream()
+                .filter(diagramConnection -> isNull(diagramConnection.getEnvironmentId()))
+                .collect(toUnmodifiableList());
+    }
+
     private List<DiagramConnection> getDiagramConnectionsForEnvironmentId(List<DiagramConnection> diagramConnections, String environmentId) {
         return diagramConnections.stream()
-                .filter(diagramConnection -> Objects.equals(diagramConnection.getEnvironmentId(), environmentId))
+                .filter(diagramConnection -> isNull(diagramConnection.getEnvironmentId())
+                        || Objects.equals(diagramConnection.getEnvironmentId(), environmentId))
                 .collect(toUnmodifiableList());
     }
 }

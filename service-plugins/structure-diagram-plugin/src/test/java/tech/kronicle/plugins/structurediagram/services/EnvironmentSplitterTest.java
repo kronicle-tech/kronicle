@@ -118,17 +118,17 @@ public class EnvironmentSplitterTest {
         assertThat(returnValue).containsExactly(
                 new EnvironmentIdAndDiagramConnections("test-environment-id-1", List.of(
                         diagramConnection1,
-                        diagramConnection2
+                        diagramConnection2,
+                        diagramConnection5,
+                        diagramConnection6
                 )),
                 new EnvironmentIdAndDiagramConnections("test-environment-id-2", List.of(
                         diagramConnection3,
-                        diagramConnection4
+                        diagramConnection4,
+                        diagramConnection5,
+                        diagramConnection6
                 )),
                 new EnvironmentIdAndDiagramConnections(null, List.of(
-                        diagramConnection1,
-                        diagramConnection2,
-                        diagramConnection3,
-                        diagramConnection4,
                         diagramConnection5,
                         diagramConnection6
                 ))
