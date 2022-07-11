@@ -42,8 +42,8 @@ public class XRayServiceGraphFetcherTest {
                         "test-secret-access-key",
                         null,
                         null,
-                        null
-                ),
+                        null,
+                        null),
                 "test-region"
         );
         FakeXRayClientFacade clientFacade = new FakeXRayClientFacade(2);

@@ -2,9 +2,7 @@ package tech.kronicle.plugins.kubernetes.services;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
-import org.junit.jupiter.params.provider.ValueSource;
 import tech.kronicle.plugins.kubernetes.models.ApiResourceItem;
 import tech.kronicle.sdk.models.Component;
 import tech.kronicle.sdk.models.ComponentConnection;
@@ -24,7 +22,7 @@ public class ResourceMapperTest {
     private final ResourceMapper underTest = new ResourceMapper();
 
     @ParameterizedTest
-    @MethodSource("provideNullAndFalseBooleans")
+    @MethodSource("provideDoNotIgnoreComponentsWithoutSupportedMetadata")
     public void mapResourceShouldMapAResourceToAComponent(Boolean apiResourcesWithSupportedMetadataOnly) {
         // Given
         ApiResourceItem apiResourceItem = createApiResourceItem(Map.of());
@@ -50,7 +48,7 @@ public class ResourceMapperTest {
     }
 
     @ParameterizedTest
-    @MethodSource("provideNullAndFalseBooleans")
+    @MethodSource("provideDoNotIgnoreComponentsWithoutSupportedMetadata")
     public void mapResourceShouldMapAppNameToComponentName(Boolean apiResourcesWithSupportedMetadataOnly) {
         // Given
         ApiResourceItem apiResourceItem = createApiResourceItem(Map.ofEntries(
@@ -78,7 +76,7 @@ public class ResourceMapperTest {
     }
 
     @ParameterizedTest
-    @MethodSource("provideNullAndFalseBooleans")
+    @MethodSource("provideDoNotIgnoreComponentsWithoutSupportedMetadata")
     public void mapResourceShouldMapAppPartOfToComponentConnection(Boolean apiResourcesWithSupportedMetadataOnly) {
         // Given
         ApiResourceItem apiResourceItem = createApiResourceItem(Map.ofEntries(
@@ -180,7 +178,7 @@ public class ResourceMapperTest {
         );
     }
 
-    private static Stream<Boolean> provideNullAndFalseBooleans() {
+    private static Stream<Boolean> provideDoNotIgnoreComponentsWithoutSupportedMetadata() {
         return Stream.of(null, false);
     }
 }

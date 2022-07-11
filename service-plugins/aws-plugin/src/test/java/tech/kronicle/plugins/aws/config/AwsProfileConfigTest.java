@@ -12,7 +12,7 @@ public class AwsProfileConfigTest {
     @Test
     public void constructorShouldMakeRegionsAnUnmodifiableList() {
         // Given
-        AwsProfileConfig underTest = new AwsProfileConfig(null, null, null, new ArrayList<>(), null);
+        AwsProfileConfig underTest = new AwsProfileConfig(null, null, null, new ArrayList<>(), null, null);
 
         // When
         Throwable thrown = catchThrowable(() -> underTest.getRegions().add("test-region"));

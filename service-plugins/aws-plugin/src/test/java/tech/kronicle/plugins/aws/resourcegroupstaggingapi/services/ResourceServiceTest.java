@@ -9,7 +9,6 @@ import tech.kronicle.plugins.aws.config.AwsProfileConfig;
 import tech.kronicle.plugins.aws.models.AwsProfileAndRegion;
 import tech.kronicle.plugins.aws.resourcegroupstaggingapi.models.ResourceGroupsTaggingApiResource;
 import tech.kronicle.sdk.models.Component;
-import tech.kronicle.sdk.models.DiagramConnection;
 
 import java.util.List;
 
@@ -36,8 +35,8 @@ public class ResourceServiceTest {
                 null,
                 null,
                 List.of("test-region-1"),
-                TEST_ENVIRONMENT_ID
-        );
+                TEST_ENVIRONMENT_ID,
+                null);
         underTest = createUnderTest(List.of(profile));
         List<ResourceGroupsTaggingApiResource> services = List.of(
                 createResource(1),
@@ -50,7 +49,7 @@ public class ResourceServiceTest {
                 component1,
                 component2
         );
-        when(mapper.mapResourcesToComponents(profile.getEnvironmentId(), services)).thenReturn(components);
+        when(mapper.mapResourcesToComponents(profile, services)).thenReturn(components);
 
         // When
         List<Component> returnValue = underTest.getComponents();
@@ -70,8 +69,8 @@ public class ResourceServiceTest {
                 null,
                 null,
                 List.of("test-region-1", "test-region-2"),
-                TEST_ENVIRONMENT_ID
-        );
+                TEST_ENVIRONMENT_ID,
+                null);
         underTest = createUnderTest(List.of(profile));
         ResourceGroupsTaggingApiResource resource1 = createResource(1);
         ResourceGroupsTaggingApiResource resource2 = createResource(2);
@@ -89,14 +88,14 @@ public class ResourceServiceTest {
         Component component2 = createComponent(2);
         Component component3 = createComponent(3);
         Component component4 = createComponent(4);
-        when(mapper.mapResourcesToComponents(profile.getEnvironmentId(), List.of(
+        when(mapper.mapResourcesToComponents(profile, List.of(
                 resource1,
                 resource2
         ))).thenReturn(List.of(
                 component1,
                 component2
         ));
-        when(mapper.mapResourcesToComponents(profile.getEnvironmentId(), List.of(
+        when(mapper.mapResourcesToComponents(profile, List.of(
                 resource3,
                 resource4
         ))).thenReturn(List.of(
@@ -126,15 +125,15 @@ public class ResourceServiceTest {
                 null,
                 null,
                 List.of("test-region-1", "test-region-2"),
-                environmentId1
-        );
+                environmentId1,
+                null);
         AwsProfileConfig profile2 = new AwsProfileConfig(
                 null,
                 null,
                 null,
                 List.of("test-region-3", "test-region-4"),
-                environmentId2
-        );
+                environmentId2,
+                null);
         underTest = createUnderTest(List.of(profile1, profile2));
         ResourceGroupsTaggingApiResource resource1 = createResource(1);
         ResourceGroupsTaggingApiResource resource2 = createResource(2);
@@ -168,28 +167,28 @@ public class ResourceServiceTest {
         Component component6 = createComponent(6);
         Component component7 = createComponent(7);
         Component component8 = createComponent(8);
-        when(mapper.mapResourcesToComponents(profile1.getEnvironmentId(), List.of(
+        when(mapper.mapResourcesToComponents(profile1, List.of(
                 resource1,
                 resource2
         ))).thenReturn(List.of(
                 component1,
                 component2
         ));
-        when(mapper.mapResourcesToComponents(profile1.getEnvironmentId(), List.of(
+        when(mapper.mapResourcesToComponents(profile1, List.of(
                 resource3,
                 resource4
         ))).thenReturn(List.of(
                 component3,
                 component4
         ));
-        when(mapper.mapResourcesToComponents(profile2.getEnvironmentId(), List.of(
+        when(mapper.mapResourcesToComponents(profile2, List.of(
                 resource5,
                 resource6
         ))).thenReturn(List.of(
                 component5,
                 component6
         ));
-        when(mapper.mapResourcesToComponents(profile2.getEnvironmentId(), List.of(
+        when(mapper.mapResourcesToComponents(profile2, List.of(
                 resource7,
                 resource8
         ))).thenReturn(List.of(

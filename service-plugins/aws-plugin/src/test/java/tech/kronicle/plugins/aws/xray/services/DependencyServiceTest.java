@@ -59,7 +59,7 @@ public class DependencyServiceTest {
                 null,
                 null,
                 regions,
-                null);
+                null, null);
     }
 
     @Test

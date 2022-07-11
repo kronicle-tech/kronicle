@@ -18,18 +18,21 @@ public class AwsProfileConfig {
     List<@NotBlank String> regions;
     @NotBlank
     String environmentId;
+    Boolean apiResourcesWithSupportedMetadataOnly;
 
     public AwsProfileConfig(
             String accessKeyId,
             String secretAccessKey,
             String roleArn,
             List<String> regions,
-            String environmentId
+            String environmentId,
+            Boolean apiResourcesWithSupportedMetadataOnly
     ) {
         this.accessKeyId = accessKeyId;
         this.secretAccessKey = secretAccessKey;
         this.roleArn = roleArn;
         this.regions = createUnmodifiableList(regions);
         this.environmentId = environmentId;
+        this.apiResourcesWithSupportedMetadataOnly = apiResourcesWithSupportedMetadataOnly;
     }
 }

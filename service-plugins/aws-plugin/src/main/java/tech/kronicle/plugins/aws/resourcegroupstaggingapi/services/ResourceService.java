@@ -20,7 +20,7 @@ public class ResourceService {
         return processProfilesToList(
                 config.getProfiles(),
                 profileAndRegion -> mapper.mapResourcesToComponents(
-                        profileAndRegion.getProfile().getEnvironmentId(),
+                        profileAndRegion.getProfile(),
                         fetcher.getResources(profileAndRegion)
                 )
         );
