@@ -65,7 +65,6 @@ public class StructureDiagramCreator {
                 }
             } while (additionalConnectionFound);
 
-
             Diagram diagram = createDiagram(environmentId, diagramConnections);
             diagrams.add(diagram);
         }
@@ -77,11 +76,11 @@ public class StructureDiagramCreator {
         List<String> ancestorComponentIds = getAncestorComponentIds(diagramConnections);
         return Diagram.builder()
                 .id("structure-"
-                        + (nonNull(environmentId) ? environmentId + "-" : "")
-                        + String.join("-", ancestorComponentIds))
+                        + String.join("-", ancestorComponentIds)
+                        + (nonNull(environmentId) ? "-" + environmentId : ""))
                 .name("Structure - "
-                        + (nonNull(environmentId) ? environmentId + " - " : "")
-                        + String.join(" - ", ancestorComponentIds))
+                        + String.join(" - ", ancestorComponentIds)
+                        + (nonNull(environmentId) ? " - " + environmentId : ""))
                 .discovered(true)
                 .description(
                         "An auto-generated diagram that shows the structure of the "
