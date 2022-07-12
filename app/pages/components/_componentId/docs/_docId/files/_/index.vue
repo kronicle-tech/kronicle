@@ -39,6 +39,7 @@ import {
 import Markdown from '~/components/Markdown.vue'
 import { findComponentState } from '~/src/componentStateUtils'
 import ComponentTabs from '~/components/ComponentTabs.vue'
+import { NuxtError } from '~/src/nuxtError'
 
 export default Vue.extend({
   components: {

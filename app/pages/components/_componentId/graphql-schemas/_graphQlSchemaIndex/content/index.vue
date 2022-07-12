@@ -10,6 +10,7 @@ import Vue from 'vue'
 import { MetaInfo } from 'vue-meta'
 import { Component } from '~/types/kronicle-service'
 import GraphQlSchemaView from '~/components/GraphQlSchemaView.vue'
+import { NuxtError } from '~/src/nuxtError'
 
 export default Vue.extend({
   components: {
