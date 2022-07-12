@@ -38,7 +38,6 @@ import {
 } from '~/src/fetchComponentAvailableData'
 import Markdown from '~/components/Markdown.vue'
 import { findComponentState } from '~/src/componentStateUtils'
-import { NuxtError } from '~/src/nuxtError'
 import ComponentTabs from '~/components/ComponentTabs.vue'
 
 export default Vue.extend({
@@ -59,10 +58,6 @@ export default Vue.extend({
     )
       .then((res) => res.json())
       .then((json) => json.component as Component | undefined)
-
-    if (!component) {
-      throw new NuxtError('Component not found', 404)
-    }
 
     const doc: DocState | undefined = findComponentState(component, 'doc')
 
