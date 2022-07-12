@@ -16,6 +16,7 @@ import { MetaInfo } from 'vue-meta'
 import { Area, Test } from '~/types/kronicle-service'
 import AreaTabs from '~/components/AreaTabs.vue'
 import TestView from '~/components/TestView.vue'
+import { NuxtError } from '~/src/nuxtError'
 
 export default Vue.extend({
   components: {
@@ -33,7 +34,11 @@ export default Vue.extend({
       `${$config.serviceBaseUrl}/v1/areas/${route.params.areaId}?fields=area(id,name,components(id,name,type,tags,teams,platformId,testResults))`
     )
       .then((res) => res.json())
-      .then((json) => json.area as Area)
+      .then((json) => json.area as Area | undefined)
+
+    if (!area) {
+      throw new NuxtError('Area not found', 404)
+    }
 
     store.commit('componentFilters/initialize', {
       components: area.components,

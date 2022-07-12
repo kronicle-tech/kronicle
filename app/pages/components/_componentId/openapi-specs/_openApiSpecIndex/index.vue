@@ -35,6 +35,7 @@ import {
   ComponentAvailableData,
   fetchComponentAvailableData,
 } from '~/src/fetchComponentAvailableData'
+import { NuxtError } from '~/src/nuxtError'
 
 export default Vue.extend({
   components: {
@@ -51,7 +52,11 @@ export default Vue.extend({
       `${$config.serviceBaseUrl}/v1/components/${route.params.componentId}?stateType=openapi-specs&fields=component(id,name,teams,states)`
     )
       .then((res) => res.json())
-      .then((json) => json.component as Component)
+      .then((json) => json.component as Component | undefined)
+
+    if (!component) {
+      throw new NuxtError('Component not found', 404)
+    }
 
     return {
       componentAvailableData,

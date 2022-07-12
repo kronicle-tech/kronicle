@@ -38,6 +38,7 @@ import AreaTabs from '~/components/AreaTabs.vue'
 import Links from '~/components/Links.vue'
 import Markdown from '~/components/Markdown.vue'
 import TeamTable from '~/components/TeamTable.vue'
+import { NuxtError } from '~/src/nuxtError'
 
 export default Vue.extend({
   components: {
@@ -53,7 +54,11 @@ export default Vue.extend({
       `${$config.serviceBaseUrl}/v1/areas/${route.params.areaId}?fields=area(id,name,description,notes,links,teams)`
     )
       .then((res) => res.json())
-      .then((json) => json.area as Area)
+      .then((json) => json.area as Area | undefined)
+
+    if (!area) {
+      throw new NuxtError('Area not found', 404)
+    }
 
     return {
       area,

@@ -14,6 +14,7 @@ import { MetaInfo } from 'vue-meta'
 import { Team } from '~/types/kronicle-service'
 import ComponentsView from '~/components/ComponentsView.vue'
 import TeamTabs from '~/components/TeamTabs.vue'
+import { NuxtError } from '~/src/nuxtError'
 
 export default Vue.extend({
   components: {
@@ -25,7 +26,11 @@ export default Vue.extend({
       `${$config.serviceBaseUrl}/v1/teams/${route.params.teamId}?fields=team(id,name,components(id,name,discovered,type,description,tags,teams,platformId))`
     )
       .then((res) => res.json())
-      .then((json) => json.team as Team)
+      .then((json) => json.team as Team | undefined)
+
+    if (!team) {
+      throw new NuxtError('Team not found', 404)
+    }
 
     store.commit('componentFilters/initialize', {
       components: team.components,
