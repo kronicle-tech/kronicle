@@ -120,7 +120,7 @@ public class ApiClientFacadeImpl implements ApiClientFacade {
                         JsonObject containerStateObject = getJsonObject(containerStatusObject, "state");
                         if (nonNull(containerStateObject)) {
                             List<String> containerStateNames = List.copyOf(containerStateObject.keySet());
-                            if (containerStateNames.size() != 1) {
+                            if (containerStateNames.size() == 1) {
                                 containerStateName = containerStateNames.get(0);
                                 JsonObject containerStateSubObject = getJsonObject(containerStateObject, containerStateName);
                                 if (nonNull(containerStateSubObject)) {
