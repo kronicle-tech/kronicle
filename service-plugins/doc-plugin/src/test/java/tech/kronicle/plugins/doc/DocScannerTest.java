@@ -103,7 +103,7 @@ public class DocScannerTest extends BaseCodebaseScannerTest {
         // Then
         assertThat(maskTransformer(returnValue)).isEqualTo(maskTransformer(Output.empty(CACHE_TTL)));
         List<DocState> returnDocStates = getDocStates(returnValue);
-        assertThat(returnDocStates).containsExactlyInAnyOrderElementsOf(docStates);
+        assertThat(returnDocStates).containsExactlyElementsOf(docStates);
     }
 
     private DocScanner createUnderTest() {

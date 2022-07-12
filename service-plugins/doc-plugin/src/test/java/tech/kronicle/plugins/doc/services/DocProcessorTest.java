@@ -40,7 +40,7 @@ public class DocProcessorTest extends BaseCodebaseScannerTest {
         List<DocState> returnValue = underTest.processDocs(getCodebaseDir("NoDocs"), List.of(doc1));
 
         // Then
-        assertThat(returnValue).containsExactlyInAnyOrder(
+        assertThat(returnValue).containsExactly(
                 DocStateUtils.createDocStateWithDir(1, "subdir", List.of())
         );
     }
@@ -55,7 +55,7 @@ public class DocProcessorTest extends BaseCodebaseScannerTest {
         List<DocState> returnValue = underTest.processDocs(getCodebaseDir("MultipleFiles"), List.of(doc1));
 
         // Then
-        assertThat(returnValue).containsExactlyInAnyOrder(
+        assertThat(returnValue).containsExactly(
                 DocStateUtils.createDocStateWithDir(1, "subdir", List.of(
                         DocFile.builder()
                                 .path("subdir/example-2.md")
@@ -91,7 +91,7 @@ public class DocProcessorTest extends BaseCodebaseScannerTest {
         List<DocState> returnValue = underTest.processDocs(getCodebaseDir("NoDocs"), List.of(doc1));
 
         // Then
-        assertThat(returnValue).containsExactlyInAnyOrder(
+        assertThat(returnValue).containsExactly(
                 DocStateUtils.createDocStateWithFile(1, "subdir/example-2.md", List.of())
         );
     }
@@ -106,7 +106,7 @@ public class DocProcessorTest extends BaseCodebaseScannerTest {
         List<DocState> returnValue = underTest.processDocs(getCodebaseDir("MultipleFiles"), List.of(doc1));
 
         // Then
-        assertThat(returnValue).containsExactlyInAnyOrder(
+        assertThat(returnValue).containsExactly(
                 DocStateUtils.createDocStateWithFile(1, "subdir/example-2.md", List.of(
                         DocFile.builder()
                                 .path("subdir/example-2.md")
@@ -133,7 +133,7 @@ public class DocProcessorTest extends BaseCodebaseScannerTest {
 
         // Then
         String base64Content = "iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAOFJREFUOE/d07ErBVAUx/HPz/JKFr2QYrAblcVbyCarXZRZyWqV5B+wyOQvMTAaDQYDI6GUOrp6TI/lbc50h3u+99f3nBtDVobs9x8AVfXU9zCKN3wk6f7lpqo2sJhk98dBVb0n6VTVGG7QILdYwDG2MYJDbGEar4MAe+glWa+qaxzhFGu4wjyWsZJkdRDgsn/pla8pnWAWO3hAi7/0F6C92E2yWVUt8gQ6eMQZ5nDeQEl6gxJMoaVoNYl9HPQFN9HtfIE7PP+6SFXVJL4keW+kqppJcv89nX668f+wicP+xk8mg1fzwuFtGgAAAABJRU5ErkJggg==";
-        assertThat(returnValue).containsExactlyInAnyOrder(
+        assertThat(returnValue).containsExactly(
                 DocStateUtils.createDocStateWithFile(1, "test.png", List.of(
                         DocFile.builder()
                                 .path("test.png")
