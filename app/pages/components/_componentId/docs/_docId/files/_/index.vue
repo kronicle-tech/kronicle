@@ -58,7 +58,7 @@ export default Vue.extend({
       `${$config.serviceBaseUrl}/v1/components/${params.componentId}?stateType=doc&stateId=${params.docId}&fields=component(id,name,teams,states)`
     )
       .then((res) => res.json())
-      .then((json) => json.component as Component | undefined)
+      .then((json) => json.component as Component)
 
     const doc: DocState | undefined = findComponentState(component, 'doc')
 

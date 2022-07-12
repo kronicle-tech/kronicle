@@ -21,6 +21,7 @@ import {
   fetchComponentAvailableData,
 } from '~/src/fetchComponentAvailableData'
 import { findComponentState } from '~/src/componentStateUtils'
+import { NuxtError } from '~/src/nuxtError'
 
 export default Vue.extend({
   components: {
@@ -36,7 +37,7 @@ export default Vue.extend({
       `${$config.serviceBaseUrl}/v1/components/${route.params.componentId}?stateType=doc&stateId=${route.params.docId}&fields=component(id,name,teams,states)`
     )
       .then((res) => res.json())
-      .then((json) => json.component as Component | undefined)
+      .then((json) => json.component as Component)
 
     const doc: DocState | undefined = findComponentState(component, 'doc')
 
