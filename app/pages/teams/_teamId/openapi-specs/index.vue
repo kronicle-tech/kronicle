@@ -14,6 +14,7 @@ import { MetaInfo } from 'vue-meta'
 import { Team } from '~/types/kronicle-service'
 import TeamTabs from '~/components/TeamTabs.vue'
 import OpenApiSpecsView from '~/components/OpenApiSpecsView.vue'
+import { NuxtError } from '~/src/nuxtError'
 
 export default Vue.extend({
   components: {
@@ -25,7 +26,11 @@ export default Vue.extend({
       `${$config.serviceBaseUrl}/v1/teams/${route.params.teamId}?stateType=openapi-specs&fields=team(id,name,components(id,name,type,tags,teams,platformId,states))`
     )
       .then((res) => res.json())
-      .then((json) => json.team as Team)
+      .then((json) => json.team as Team | undefined)
+
+    if (!team) {
+      throw new NuxtError('Team not found', 404)
+    }
 
     store.commit('componentFilters/initialize', {
       components: team.components,
