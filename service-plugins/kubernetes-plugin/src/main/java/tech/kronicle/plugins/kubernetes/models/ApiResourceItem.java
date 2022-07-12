@@ -13,15 +13,18 @@ public class ApiResourceItem {
 
     String name;
     Map<String, String> annotations;
+    Map<String, String> labels;
     List<ApiResourceItemContainerStatus> containerStatuses;
 
     public ApiResourceItem(
             String name,
             Map<String, String> annotations,
+            Map<String, String> labels,
             List<ApiResourceItemContainerStatus> containerStatuses
     ) {
         this.name = name;
         this.annotations = createUnmodifiableMap(annotations);
+        this.labels = createUnmodifiableMap(labels);
         this.containerStatuses = createUnmodifiableList(containerStatuses);
     }
 }

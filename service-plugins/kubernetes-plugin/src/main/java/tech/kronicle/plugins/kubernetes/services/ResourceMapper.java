@@ -3,7 +3,7 @@ package tech.kronicle.plugins.kubernetes.services;
 import lombok.RequiredArgsConstructor;
 import tech.kronicle.plugins.kubernetes.KubernetesPlugin;
 import tech.kronicle.plugins.kubernetes.config.ClusterConfig;
-import tech.kronicle.plugins.kubernetes.constants.AnnotationKeys;
+import tech.kronicle.plugins.kubernetes.constants.LabelKeys;
 import tech.kronicle.plugins.kubernetes.constants.ComponentConnectionTypes;
 import tech.kronicle.plugins.kubernetes.constants.Platforms;
 import tech.kronicle.plugins.kubernetes.constants.TagKeys;
@@ -61,17 +61,13 @@ public class ResourceMapper {
     }
 
     private boolean apiResourceItemHasSupportedMetadata(ApiResourceItem item) {
-        Map<String, String> annotations = item.getAnnotations();
-        if (isNull(annotations)) {
-            return false;
-        } else {
-            return AnnotationKeys.SUPPORTED_KEYS.stream()
-                    .anyMatch(annotations::containsKey);
-        }
+        Map<String, String> labels = item.getLabels();
+        return LabelKeys.SUPPORTED_KEYS.stream()
+                .anyMatch(labels::containsKey);
     }
 
     private String mapId(String environmentId, ApiResource apiResource, ApiResourceItem item) {
-        String name = getAnnotation(item, AnnotationKeys.APP_KUBERNETES_IO_NAME);
+        String name = getLabel(item, LabelKeys.APP_KUBERNETES_IO_NAME);
         if (nonNull(name)) {
             return getAppId(environmentId, name);
         }
@@ -102,7 +98,7 @@ public class ResourceMapper {
     }
 
     private List<ComponentConnection> mapConnections(String environmentId, ApiResourceItem item) {
-        String partOf = getAnnotation(item, AnnotationKeys.APP_KUBERNETES_IO_PART_OF);
+        String partOf = getLabel(item, LabelKeys.APP_KUBERNETES_IO_PART_OF);
         if (nonNull(partOf)) {
             return List.of(
                     ComponentConnection.builder()
@@ -115,8 +111,8 @@ public class ResourceMapper {
         return List.of();
     }
 
-    private String getAnnotation(ApiResourceItem item, String annotationKey) {
-        return item.getAnnotations().get(annotationKey);
+    private String getLabel(ApiResourceItem item, String labelKey) {
+        return item.getLabels().get(labelKey);
     }
 
     private String getAppId(String environmentId, String name) {

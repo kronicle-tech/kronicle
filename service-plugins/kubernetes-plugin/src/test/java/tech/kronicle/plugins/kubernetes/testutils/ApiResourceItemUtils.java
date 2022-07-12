@@ -13,10 +13,10 @@ public final class ApiResourceItemUtils {
     }
 
     public static ApiResourceItem createApiResourceItem(
-            Map<String, String> annotations,
+            Map<String, String> labels,
             List<ApiResourceItemContainerStatus> containerStatuses
     ) {
-        return createApiResourceItem(1, annotations, containerStatuses);
+        return createApiResourceItem(1, labels, containerStatuses);
     }
 
     public static ApiResourceItem createApiResourceItem(int apiResourceItemNumber) {
@@ -25,9 +25,15 @@ public final class ApiResourceItemUtils {
 
     public static ApiResourceItem createApiResourceItem(
             int apiResourceItemNumber,
-            Map<String, String> annotations,
-            List<ApiResourceItemContainerStatus> containerStatuses) {
-        return new ApiResourceItem("Test Name " + apiResourceItemNumber, annotations, containerStatuses);
+            Map<String, String> labels,
+            List<ApiResourceItemContainerStatus> containerStatuses
+    ) {
+        return new ApiResourceItem(
+                "Test Name " + apiResourceItemNumber,
+                Map.ofEntries(),
+                labels,
+                containerStatuses
+        );
     }
 
     private ApiResourceItemUtils() {
