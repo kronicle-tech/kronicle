@@ -99,6 +99,7 @@ public class ApiClientFacadeImpl implements ApiClientFacade {
         return new ApiResourceItem(
                 metadata.getName(),
                 metadata.getAnnotations(),
+                metadata.getLabels(),
                 containerStatuses
         );
     }

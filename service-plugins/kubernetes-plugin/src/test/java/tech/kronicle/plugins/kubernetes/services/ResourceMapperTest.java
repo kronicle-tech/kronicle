@@ -127,7 +127,7 @@ public class ResourceMapperTest {
     }
 
     @Test
-    public void mapResourceShouldReturnNullWhenConfigIsSetToIgnoreResourcesWithoutSupportedMetadataAndResourceAnnotationsListIsNull() {
+    public void mapResourceShouldReturnNullWhenConfigIsSetToIgnoreResourcesWithoutSupportedMetadataAndResourceLabelMapIsNull() {
         // Given
         ApiResourceItem apiResourceItem = createApiResourceItem(null, List.of());
 
@@ -139,7 +139,7 @@ public class ResourceMapperTest {
     }
 
     @Test
-    public void mapResourceShouldReturnNullWhenConfigIsSetToIgnoreResourcesWithoutSupportedMetadataAndResourceAnnotationsListIsEmpty() {
+    public void mapResourceShouldReturnNullWhenConfigIsSetToIgnoreResourcesWithoutSupportedMetadataAndResourceLabelMapIsEmpty() {
         // Given
         ApiResourceItem apiResourceItem = createApiResourceItem(Map.ofEntries(), List.of());
 
@@ -151,11 +151,11 @@ public class ResourceMapperTest {
     }
 
     @Test
-    public void mapResourceShouldReturnNullWhenConfigIsSetToIgnoreResourcesWithoutSupportedMetadataAndResourceAnnotationsListContainsAnUnsupportedAnnotation() {
+    public void mapResourceShouldReturnNullWhenConfigIsSetToIgnoreResourcesWithoutSupportedMetadataAndResourceLabelMapContainsAnUnsupportedLabel() {
         // Given
         ApiResourceItem apiResourceItem = createApiResourceItem(
                 Map.ofEntries(
-                        Map.entry("not-supported", "test-annotation-value")
+                        Map.entry("not-supported", "test-label-value")
                 ),
                 List.of()
         );
@@ -168,7 +168,7 @@ public class ResourceMapperTest {
     }
 
     @Test
-    public void mapResourceShouldReturnComponentWhenConfigIsSetToIgnoreResourcesWithoutSupportedMetadataAndResourceAnnotationsListContainsASupportedAnnotation() {
+    public void mapResourceShouldReturnComponentWhenConfigIsSetToIgnoreResourcesWithoutSupportedMetadataAndResourceLabelMapContainsASupportedLabel() {
         // Given
         ApiResourceItem apiResourceItem = createApiResourceItem(
                 Map.ofEntries(
