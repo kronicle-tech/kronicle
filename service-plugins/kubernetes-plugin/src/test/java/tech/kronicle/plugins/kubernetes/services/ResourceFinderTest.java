@@ -4,15 +4,11 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import tech.kronicle.pluginapi.finders.models.ComponentsAndDiagrams;
-import tech.kronicle.pluginapi.scanners.models.Output;
-import tech.kronicle.plugins.kubernetes.KubernetesComponentFinder;
 import tech.kronicle.plugins.kubernetes.client.ApiClientFacade;
 import tech.kronicle.plugins.kubernetes.config.ClusterConfig;
 import tech.kronicle.plugins.kubernetes.models.ApiResource;
 import tech.kronicle.plugins.kubernetes.models.ApiResourceItem;
 import tech.kronicle.sdk.models.Component;
-import tech.kronicle.sdk.models.ComponentMetadata;
 
 import java.util.List;
 
