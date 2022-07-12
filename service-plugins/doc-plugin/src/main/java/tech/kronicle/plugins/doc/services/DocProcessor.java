@@ -12,6 +12,7 @@ import tech.kronicle.utils.FileUtils;
 import javax.inject.Inject;
 import java.nio.file.Path;
 import java.util.Base64;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Objects;
 
@@ -64,6 +65,7 @@ public class DocProcessor {
         return fileUtils.findFiles(dirPath)
                 .map(filePath -> processFile(codebaseDir, filePath))
                 .filter(Objects::nonNull)
+                .sorted(Comparator.comparing(DocFile::getPath))
                 .collect(toUnmodifiableList());
     }
 

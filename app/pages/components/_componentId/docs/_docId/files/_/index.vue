@@ -38,8 +38,8 @@ import {
 } from '~/src/fetchComponentAvailableData'
 import Markdown from '~/components/Markdown.vue'
 import { findComponentState } from '~/src/componentStateUtils'
-import { NuxtError } from '~/src/nuxtError'
 import ComponentTabs from '~/components/ComponentTabs.vue'
+import { NuxtError } from '~/src/nuxtError'
 
 export default Vue.extend({
   components: {
@@ -58,11 +58,7 @@ export default Vue.extend({
       `${$config.serviceBaseUrl}/v1/components/${params.componentId}?stateType=doc&stateId=${params.docId}&fields=component(id,name,teams,states)`
     )
       .then((res) => res.json())
-      .then((json) => json.component as Component | undefined)
-
-    if (!component) {
-      throw new NuxtError('Component not found', 404)
-    }
+      .then((json) => json.component as Component)
 
     const doc: DocState | undefined = findComponentState(component, 'doc')
 

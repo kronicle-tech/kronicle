@@ -1,6 +1,7 @@
 import { NuxtRuntimeConfig } from '@nuxt/types/config/runtime'
 import { Route } from 'vue-router'
 import { GetComponentResponse } from '~/types/kronicle-service'
+import { NuxtError } from '~/src/nuxtError'
 
 export interface ComponentAvailableData {
   readonly metadataTypes: string[]
@@ -18,6 +19,10 @@ export async function fetchComponentAvailableData(
   )
     .then((res) => res.json())
     .then((json) => (json as GetComponentResponse).component)
+
+  if (!component) {
+    throw new NuxtError('Component not found', 404)
+  }
 
   const metadataTypes: string[] = []
   checkMetadataType(
