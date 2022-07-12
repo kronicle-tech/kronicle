@@ -8,19 +8,27 @@ public final class ClusterConfigUtils {
         return createCluster(1);
     }
 
-    public static ClusterConfig createCluster(Boolean apiResourcesWithSupportedMetadataOnly) {
-        return createCluster(1, apiResourcesWithSupportedMetadataOnly);
+    public static ClusterConfig createCluster(
+            Boolean apiResourcesWithSupportedMetadataOnly,
+            Boolean createContainerStatusChecks
+    ) {
+        return createCluster(1, apiResourcesWithSupportedMetadataOnly, createContainerStatusChecks);
     }
 
     public static ClusterConfig createCluster(int clusterNumber) {
-        return createCluster(clusterNumber, null);
+        return createCluster(clusterNumber, null, null);
     }
 
-    public static ClusterConfig createCluster(int clusterNumber, Boolean apiResourcesWithSupportedMetadataOnly) {
+    public static ClusterConfig createCluster(
+            int clusterNumber,
+            Boolean apiResourcesWithSupportedMetadataOnly,
+            Boolean createContainerStatusChecks
+    ) {
         return new ClusterConfig(
                 "test-environment-id-" + clusterNumber,
                 null,
-                apiResourcesWithSupportedMetadataOnly
+                apiResourcesWithSupportedMetadataOnly,
+                createContainerStatusChecks
         );
     }
 

@@ -15,4 +15,5 @@ public class ClusterConfig {
     @NotBlank
     String kubeConfig;
     Boolean apiResourcesWithSupportedMetadataOnly;
+    Boolean createContainerStatusChecks;
 }
