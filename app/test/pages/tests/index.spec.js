@@ -1,4 +1,4 @@
-import Index from '~/pages/all-tests/index.vue'
+import Index from '~/pages/tests'
 import { createPageWrapper } from '~/test/pages/pageUtils'
 
 describe('Index', () => {

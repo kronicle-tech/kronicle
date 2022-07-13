@@ -9,27 +9,23 @@ exports[`Index when Get Components service endpoint returns an array of multiple
   >
     <a
       class="btn my-1 btn-secondary"
-      href="#"
+      href="/components"
       target="_self"
     >
-      
-    Components
-  
+       Components 
     </a>
      
     <a
       class="btn btn-secondary"
-      href="?testOutcome=fail"
+      href="/all-components/tests?testOutcome=fail"
       target="_self"
     >
-      
-    Tests
-  
+       Tests 
     </a>
      
     <a
       class="btn my-1 btn-secondary"
-      href="#"
+      href="/all-components/cross-functional-requirements"
       target="_self"
     >
       
@@ -39,7 +35,7 @@ exports[`Index when Get Components service endpoint returns an array of multiple
      
     <a
       class="btn my-1 btn-secondary"
-      href="#"
+      href="/all-components/tech-debts"
       target="_self"
     >
       
@@ -49,27 +45,7 @@ exports[`Index when Get Components service endpoint returns an array of multiple
      
     <a
       class="btn my-1 btn-secondary"
-      href="#"
-      target="_self"
-    >
-      
-    OpenAPI Specs
-  
-    </a>
-     
-    <a
-      class="btn my-1 btn-secondary"
-      href="#"
-      target="_self"
-    >
-      
-    GraphQL Schemas
-  
-    </a>
-     
-    <a
-      class="btn my-1 btn-secondary"
-      href="#"
+      href="/all-components/key-software"
       target="_self"
     >
       
@@ -79,22 +55,18 @@ exports[`Index when Get Components service endpoint returns an array of multiple
      
     <a
       class="btn my-1 btn-secondary"
-      href="#"
+      href="/all-components/repos"
       target="_self"
     >
-      
-    Repos
-  
+       Repos 
     </a>
      
     <a
       class="btn my-1 btn-secondary"
-      href="#"
+      href="/all-components/errors"
       target="_self"
     >
-      
-    Errors
-  
+       Errors 
     </a>
   </div>
    
@@ -211,11 +183,11 @@ exports[`Index when Get Components service endpoint returns an array of multiple
                 <!---->
                 <fieldset
                   class="form-group"
-                  id="__BVID__54"
+                  id="__BVID__48"
                 >
                   <legend
                     class="bv-no-focus-ring col-form-label pt-0"
-                    id="__BVID__54__BV_label_"
+                    id="__BVID__48__BV_label_"
                     tabindex="-1"
                   >
                     Teams
@@ -223,7 +195,7 @@ exports[`Index when Get Components service endpoint returns an array of multiple
                   <div>
                     <div
                       class="bv-no-focus-ring"
-                      id="__BVID__55"
+                      id="__BVID__49"
                       role="group"
                       tabindex="-1"
                     >
@@ -232,14 +204,14 @@ exports[`Index when Get Components service endpoint returns an array of multiple
                       >
                         <input
                           class="custom-control-input"
-                          id="__BVID__55_BV_option_0"
+                          id="__BVID__49_BV_option_0"
                           name="team"
                           type="checkbox"
                           value="test-team-id-1-1"
                         />
                         <label
                           class="custom-control-label"
-                          for="__BVID__55_BV_option_0"
+                          for="__BVID__49_BV_option_0"
                         >
                           <span>
                             test-team-id-1-1
@@ -251,14 +223,14 @@ exports[`Index when Get Components service endpoint returns an array of multiple
                       >
                         <input
                           class="custom-control-input"
-                          id="__BVID__55_BV_option_1"
+                          id="__BVID__49_BV_option_1"
                           name="team"
                           type="checkbox"
                           value="test-team-id-1-2"
                         />
                         <label
                           class="custom-control-label"
-                          for="__BVID__55_BV_option_1"
+                          for="__BVID__49_BV_option_1"
                         >
                           <span>
                             test-team-id-1-2
@@ -270,14 +242,14 @@ exports[`Index when Get Components service endpoint returns an array of multiple
                       >
                         <input
                           class="custom-control-input"
-                          id="__BVID__55_BV_option_2"
+                          id="__BVID__49_BV_option_2"
                           name="team"
                           type="checkbox"
                           value="test-team-id-2-1"
                         />
                         <label
                           class="custom-control-label"
-                          for="__BVID__55_BV_option_2"
+                          for="__BVID__49_BV_option_2"
                         >
                           <span>
                             test-team-id-2-1
@@ -289,14 +261,14 @@ exports[`Index when Get Components service endpoint returns an array of multiple
                       >
                         <input
                           class="custom-control-input"
-                          id="__BVID__55_BV_option_3"
+                          id="__BVID__49_BV_option_3"
                           name="team"
                           type="checkbox"
                           value="test-team-id-2-2"
                         />
                         <label
                           class="custom-control-label"
-                          for="__BVID__55_BV_option_3"
+                          for="__BVID__49_BV_option_3"
                         >
                           <span>
                             test-team-id-2-2
@@ -308,14 +280,14 @@ exports[`Index when Get Components service endpoint returns an array of multiple
                       >
                         <input
                           class="custom-control-input"
-                          id="__BVID__55_BV_option_4"
+                          id="__BVID__49_BV_option_4"
                           name="team"
                           type="checkbox"
                           value="test-team-id-3-1"
                         />
                         <label
                           class="custom-control-label"
-                          for="__BVID__55_BV_option_4"
+                          for="__BVID__49_BV_option_4"
                         >
                           <span>
                             test-team-id-3-1
@@ -327,14 +299,14 @@ exports[`Index when Get Components service endpoint returns an array of multiple
                       >
                         <input
                           class="custom-control-input"
-                          id="__BVID__55_BV_option_5"
+                          id="__BVID__49_BV_option_5"
                           name="team"
                           type="checkbox"
                           value="test-team-id-3-2"
                         />
                         <label
                           class="custom-control-label"
-                          for="__BVID__55_BV_option_5"
+                          for="__BVID__49_BV_option_5"
                         >
                           <span>
                             test-team-id-3-2
@@ -364,11 +336,11 @@ exports[`Index when Get Components service endpoint returns an array of multiple
                 <!---->
                 <fieldset
                   class="form-group"
-                  id="__BVID__62"
+                  id="__BVID__56"
                 >
                   <legend
                     class="bv-no-focus-ring col-form-label pt-0"
-                    id="__BVID__62__BV_label_"
+                    id="__BVID__56__BV_label_"
                     tabindex="-1"
                   >
                     Tags
@@ -376,7 +348,7 @@ exports[`Index when Get Components service endpoint returns an array of multiple
                   <div>
                     <div
                       class="bv-no-focus-ring"
-                      id="__BVID__63"
+                      id="__BVID__57"
                       role="group"
                       tabindex="-1"
                     >
@@ -385,14 +357,14 @@ exports[`Index when Get Components service endpoint returns an array of multiple
                       >
                         <input
                           class="custom-control-input"
-                          id="__BVID__63_BV_option_0"
+                          id="__BVID__57_BV_option_0"
                           name="tag"
                           type="checkbox"
                           value="test-tag-1-1"
                         />
                         <label
                           class="custom-control-label"
-                          for="__BVID__63_BV_option_0"
+                          for="__BVID__57_BV_option_0"
                         >
                           <span>
                             test-tag-1-1
@@ -404,14 +376,14 @@ exports[`Index when Get Components service endpoint returns an array of multiple
                       >
                         <input
                           class="custom-control-input"
-                          id="__BVID__63_BV_option_1"
+                          id="__BVID__57_BV_option_1"
                           name="tag"
                           type="checkbox"
                           value="test-tag-1-2"
                         />
                         <label
                           class="custom-control-label"
-                          for="__BVID__63_BV_option_1"
+                          for="__BVID__57_BV_option_1"
                         >
                           <span>
                             test-tag-1-2
@@ -423,14 +395,14 @@ exports[`Index when Get Components service endpoint returns an array of multiple
                       >
                         <input
                           class="custom-control-input"
-                          id="__BVID__63_BV_option_2"
+                          id="__BVID__57_BV_option_2"
                           name="tag"
                           type="checkbox"
                           value="test-tag-2-1"
                         />
                         <label
                           class="custom-control-label"
-                          for="__BVID__63_BV_option_2"
+                          for="__BVID__57_BV_option_2"
                         >
                           <span>
                             test-tag-2-1
@@ -442,14 +414,14 @@ exports[`Index when Get Components service endpoint returns an array of multiple
                       >
                         <input
                           class="custom-control-input"
-                          id="__BVID__63_BV_option_3"
+                          id="__BVID__57_BV_option_3"
                           name="tag"
                           type="checkbox"
                           value="test-tag-2-2"
                         />
                         <label
                           class="custom-control-label"
-                          for="__BVID__63_BV_option_3"
+                          for="__BVID__57_BV_option_3"
                         >
                           <span>
                             test-tag-2-2
@@ -461,14 +433,14 @@ exports[`Index when Get Components service endpoint returns an array of multiple
                       >
                         <input
                           class="custom-control-input"
-                          id="__BVID__63_BV_option_4"
+                          id="__BVID__57_BV_option_4"
                           name="tag"
                           type="checkbox"
                           value="test-tag-3-1"
                         />
                         <label
                           class="custom-control-label"
-                          for="__BVID__63_BV_option_4"
+                          for="__BVID__57_BV_option_4"
                         >
                           <span>
                             test-tag-3-1
@@ -480,14 +452,14 @@ exports[`Index when Get Components service endpoint returns an array of multiple
                       >
                         <input
                           class="custom-control-input"
-                          id="__BVID__63_BV_option_5"
+                          id="__BVID__57_BV_option_5"
                           name="tag"
                           type="checkbox"
                           value="test-tag-3-2"
                         />
                         <label
                           class="custom-control-label"
-                          for="__BVID__63_BV_option_5"
+                          for="__BVID__57_BV_option_5"
                         >
                           <span>
                             test-tag-3-2
@@ -517,11 +489,11 @@ exports[`Index when Get Components service endpoint returns an array of multiple
                 <!---->
                 <fieldset
                   class="form-group"
-                  id="__BVID__70"
+                  id="__BVID__64"
                 >
                   <legend
                     class="bv-no-focus-ring col-form-label pt-0"
-                    id="__BVID__70__BV_label_"
+                    id="__BVID__64__BV_label_"
                     tabindex="-1"
                   >
                     Component Types
@@ -529,7 +501,7 @@ exports[`Index when Get Components service endpoint returns an array of multiple
                   <div>
                     <div
                       class="bv-no-focus-ring"
-                      id="__BVID__71"
+                      id="__BVID__65"
                       role="group"
                       tabindex="-1"
                     >
@@ -538,14 +510,14 @@ exports[`Index when Get Components service endpoint returns an array of multiple
                       >
                         <input
                           class="custom-control-input"
-                          id="__BVID__71_BV_option_0"
+                          id="__BVID__65_BV_option_0"
                           name="componentType"
                           type="checkbox"
                           value="test-component-type-id-1"
                         />
                         <label
                           class="custom-control-label"
-                          for="__BVID__71_BV_option_0"
+                          for="__BVID__65_BV_option_0"
                         >
                           <span>
                             test-component-type-id-1
@@ -557,14 +529,14 @@ exports[`Index when Get Components service endpoint returns an array of multiple
                       >
                         <input
                           class="custom-control-input"
-                          id="__BVID__71_BV_option_1"
+                          id="__BVID__65_BV_option_1"
                           name="componentType"
                           type="checkbox"
                           value="test-component-type-id-2"
                         />
                         <label
                           class="custom-control-label"
-                          for="__BVID__71_BV_option_1"
+                          for="__BVID__65_BV_option_1"
                         >
                           <span>
                             test-component-type-id-2
@@ -576,14 +548,14 @@ exports[`Index when Get Components service endpoint returns an array of multiple
                       >
                         <input
                           class="custom-control-input"
-                          id="__BVID__71_BV_option_2"
+                          id="__BVID__65_BV_option_2"
                           name="componentType"
                           type="checkbox"
                           value="test-component-type-id-3"
                         />
                         <label
                           class="custom-control-label"
-                          for="__BVID__71_BV_option_2"
+                          for="__BVID__65_BV_option_2"
                         >
                           <span>
                             test-component-type-id-3
@@ -613,11 +585,11 @@ exports[`Index when Get Components service endpoint returns an array of multiple
                 <!---->
                 <fieldset
                   class="form-group"
-                  id="__BVID__75"
+                  id="__BVID__69"
                 >
                   <legend
                     class="bv-no-focus-ring col-form-label pt-0"
-                    id="__BVID__75__BV_label_"
+                    id="__BVID__69__BV_label_"
                     tabindex="-1"
                   >
                     Platforms
@@ -625,7 +597,7 @@ exports[`Index when Get Components service endpoint returns an array of multiple
                   <div>
                     <div
                       class="bv-no-focus-ring"
-                      id="__BVID__76"
+                      id="__BVID__70"
                       role="group"
                       tabindex="-1"
                     >
@@ -634,14 +606,14 @@ exports[`Index when Get Components service endpoint returns an array of multiple
                       >
                         <input
                           class="custom-control-input"
-                          id="__BVID__76_BV_option_0"
+                          id="__BVID__70_BV_option_0"
                           name="platformId"
                           type="checkbox"
                           value="undefined"
                         />
                         <label
                           class="custom-control-label"
-                          for="__BVID__76_BV_option_0"
+                          for="__BVID__70_BV_option_0"
                         >
                           <span>
                             undefined
@@ -671,13 +643,13 @@ exports[`Index when Get Components service endpoint returns an array of multiple
                 <!---->
                 <div
                   class="form-group"
-                  id="__BVID__78"
+                  id="__BVID__72"
                   role="group"
                 >
                   <label
                     class="d-block"
                     for="component-filter"
-                    id="__BVID__78__BV_label_"
+                    id="__BVID__72__BV_label_"
                   >
                     Component
                   </label>
@@ -1282,27 +1254,23 @@ exports[`Index when Get Components service endpoint returns an empty array rende
   >
     <a
       class="btn my-1 btn-secondary"
-      href="#"
+      href="/components"
       target="_self"
     >
-      
-    Components
-  
+       Components 
     </a>
      
     <a
       class="btn btn-secondary"
-      href="?testOutcome=fail"
+      href="/all-components/tests?testOutcome=fail"
       target="_self"
     >
-      
-    Tests
-  
+       Tests 
     </a>
      
     <a
       class="btn my-1 btn-secondary"
-      href="#"
+      href="/all-components/cross-functional-requirements"
       target="_self"
     >
       
@@ -1312,7 +1280,7 @@ exports[`Index when Get Components service endpoint returns an empty array rende
      
     <a
       class="btn my-1 btn-secondary"
-      href="#"
+      href="/all-components/tech-debts"
       target="_self"
     >
       
@@ -1322,27 +1290,7 @@ exports[`Index when Get Components service endpoint returns an empty array rende
      
     <a
       class="btn my-1 btn-secondary"
-      href="#"
-      target="_self"
-    >
-      
-    OpenAPI Specs
-  
-    </a>
-     
-    <a
-      class="btn my-1 btn-secondary"
-      href="#"
-      target="_self"
-    >
-      
-    GraphQL Schemas
-  
-    </a>
-     
-    <a
-      class="btn my-1 btn-secondary"
-      href="#"
+      href="/all-components/key-software"
       target="_self"
     >
       
@@ -1352,22 +1300,18 @@ exports[`Index when Get Components service endpoint returns an empty array rende
      
     <a
       class="btn my-1 btn-secondary"
-      href="#"
+      href="/all-components/repos"
       target="_self"
     >
-      
-    Repos
-  
+       Repos 
     </a>
      
     <a
       class="btn my-1 btn-secondary"
-      href="#"
+      href="/all-components/errors"
       target="_self"
     >
-      
-    Errors
-  
+       Errors 
     </a>
   </div>
    

@@ -4,18 +4,6 @@ exports[`Index when Get Teams service endpoint returns an array of multiple team
 <div
   class="m-3"
 >
-  <div
-    class="my-3"
-  >
-    <a
-      class="btn my-1 btn-secondary"
-      href="/all-teams"
-      target="_self"
-    >
-       Teams 
-    </a>
-  </div>
-   
   <transition-stub
     class="my-3"
     css="true"
@@ -113,18 +101,6 @@ exports[`Index when Get Teams service endpoint returns an empty array renders th
 <div
   class="m-3"
 >
-  <div
-    class="my-3"
-  >
-    <a
-      class="btn my-1 btn-secondary"
-      href="/all-teams"
-      target="_self"
-    >
-       Teams 
-    </a>
-  </div>
-   
   <transition-stub
     class="my-3"
     css="true"

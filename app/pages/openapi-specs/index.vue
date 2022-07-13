@@ -1,7 +1,5 @@
 <template>
   <div class="m-3">
-    <AllComponentsTabs />
-
     <OpenApiSpecsView :components="components" />
   </div>
 </template>
@@ -9,12 +7,10 @@
 <script lang="ts">
 import Vue from 'vue'
 import { Component } from '~/types/kronicle-service'
-import AllComponentsTabs from '~/components/AllComponentsTabs.vue'
 import OpenApiSpecsView from '~/components/OpenApiSpecsView.vue'
 
 export default Vue.extend({
   components: {
-    AllComponentsTabs,
     OpenApiSpecsView,
   },
   async asyncData({ $config, route, store }) {

@@ -4,18 +4,6 @@ exports[`Index when Get Areas service endpoint returns an array of multiple area
 <div
   class="m-3"
 >
-  <div
-    class="my-3"
-  >
-    <a
-      class="btn my-1 btn-secondary"
-      href="/all-areas"
-      target="_self"
-    >
-       Areas 
-    </a>
-  </div>
-   
   <transition-stub
     class="my-3"
     css="true"
@@ -111,18 +99,6 @@ exports[`Index when Get Areas service endpoint returns an empty array renders th
 <div
   class="m-3"
 >
-  <div
-    class="my-3"
-  >
-    <a
-      class="btn my-1 btn-secondary"
-      href="/all-areas"
-      target="_self"
-    >
-       Areas 
-    </a>
-  </div>
-   
   <transition-stub
     class="my-3"
     css="true"

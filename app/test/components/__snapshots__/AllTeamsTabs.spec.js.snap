@@ -1,3 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`AllTeamsTabs renders the component 1`] = `"<div class=\\"my-3\\"><a href=\\"/all-teams\\" target=\\"_self\\" class=\\"btn my-1 btn-secondary\\"> Teams </a></div>"`;

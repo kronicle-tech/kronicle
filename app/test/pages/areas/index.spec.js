@@ -1,21 +1,21 @@
-import Index from '~/pages/all-teams/index.vue'
+import Index from '~/pages/areas'
 import { createPageWrapper } from '~/test/pages/pageUtils'
 
 describe('Index', () => {
-  let teams
+  let areas
   let wrapper
   async function createWrapper() {
     wrapper = await createPageWrapper(Index, {
       serviceRequests: {
-        '/v1/teams?fields=teams(id,name,emailAddress,description)': {
-          responseBody: { teams },
+        '/v1/areas?fields=areas(id,name,description)': {
+          responseBody: { areas },
         },
       },
     })
   }
 
   beforeEach(() => {
-    teams = []
+    areas = []
   })
 
   afterEach(() => {
@@ -25,28 +25,27 @@ describe('Index', () => {
 
   test('has the right page title', async () => {
     await createWrapper()
-    expect(wrapper.vm.$metaInfo.title).toBe('Kronicle - All Teams')
+    expect(wrapper.vm.$metaInfo.title).toBe('Kronicle - All Areas')
   })
 
-  describe('when Get Teams service endpoint returns an empty array', () => {
+  describe('when Get Areas service endpoint returns an empty array', () => {
     test('renders the page', async () => {
       await createWrapper()
       expect(wrapper.element).toMatchSnapshot()
     })
   })
 
-  describe('when Get Teams service endpoint returns an array of multiple teams', () => {
+  describe('when Get Areas service endpoint returns an array of multiple areas', () => {
     beforeEach(() => {
-      teams.push(
+      areas.push(
         {
-          id: 'test-team-id-1',
-          name: 'Test Team Name 1',
+          id: 'test-area-id-1',
+          name: 'Test Area Name 1',
         },
         {
-          id: 'test-team-id-2',
-          name: 'Test Team Name 2',
-          emailAddress: 'example@example.com',
-          description: 'Test Team Description 2',
+          id: 'test-area-id-2',
+          name: 'Test Area Name 2',
+          description: 'Test Area Description 2',
         }
       )
     })

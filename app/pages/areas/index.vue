@@ -1,7 +1,5 @@
 <template>
   <div class="m-3">
-    <AllAreasTabs />
-
     <b-alert show="10" dismissible variant="info" class="my-3">
       Click an area's name in the table below to view more information about
       that area
@@ -36,13 +34,11 @@ import Vue from 'vue'
 import { MetaInfo } from 'vue-meta'
 import { BAlert } from 'bootstrap-vue'
 import { Area } from '~/types/kronicle-service'
-import AllAreasTabs from '~/components/AllAreasTabs.vue'
 import AreaName from '~/components/AreaName.vue'
 import Markdown from '~/components/Markdown.vue'
 
 export default Vue.extend({
   components: {
-    AllAreasTabs,
     'b-alert': BAlert,
     AreaName,
     Markdown,
