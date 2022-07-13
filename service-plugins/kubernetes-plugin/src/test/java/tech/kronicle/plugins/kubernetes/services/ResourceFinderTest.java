@@ -13,6 +13,7 @@ import tech.kronicle.sdk.models.Component;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import static tech.kronicle.plugins.kubernetes.testutils.ApiResourceItemUtils.createApiResourceItem;
 import static tech.kronicle.plugins.kubernetes.testutils.ApiResourceUtils.createApiResource;
@@ -69,6 +70,7 @@ public class ResourceFinderTest {
                 component3,
                 component4
         ));
+        verify(clientFacade).discardApiClients();
     }
 
     @Test
@@ -102,5 +104,6 @@ public class ResourceFinderTest {
                 component1,
                 component3
         ));
+        verify(clientFacade).discardApiClients();
     }
 }
