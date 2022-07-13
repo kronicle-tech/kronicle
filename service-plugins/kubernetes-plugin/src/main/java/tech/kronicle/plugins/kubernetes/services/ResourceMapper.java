@@ -42,7 +42,7 @@ public class ResourceMapper {
             return null;
         }
         LocalDateTime updateTimestamp = LocalDateTime.now(clock);
-        String name = mapName(apiResource, item);
+        String name = mapName(item);
         return Component.builder()
                 .id(mapId(cluster.getEnvironmentId(), apiResource, item))
                 .name(name)
@@ -74,16 +74,12 @@ public class ResourceMapper {
         return environmentId + "." + toKebabCase(apiResource.getKind()) + "." + toKebabCase(item.getName());
     }
 
-    private String mapName(ApiResource apiResource, ApiResourceItem item) {
-        return joinName(apiResource.getKind(), item.getName());
+    private String mapName(ApiResourceItem item) {
+        return item.getName();
     }
 
     private String mapType(ApiResource apiResource) {
         return joinIdOrType("kubernetes", toKebabCase(apiResource.getGroup()), toKebabCase(apiResource.getKind()));
-    }
-
-    private String joinName(String... parts) {
-        return join(parts, " - ");
     }
 
     private String joinIdOrType(String... parts) {
