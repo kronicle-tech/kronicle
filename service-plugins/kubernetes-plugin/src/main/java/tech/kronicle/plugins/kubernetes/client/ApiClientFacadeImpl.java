@@ -77,6 +77,15 @@ public class ApiClientFacadeImpl implements ApiClientFacade {
         }
     }
 
+    /**
+     * Discard ApiClients as auth tokens can expire and not be renewed if clients are reused for too many minutes.
+     * This behaviour has been noted with AWS EKS.
+     */
+    @Override
+    public void discardApiClients() {
+        clients.clear();
+    }
+
     private KubernetesApiResponse<DynamicKubernetesListObject> getApiResourceItems(
             DynamicKubernetesApi dynamicKubernetesApi
     ) throws ApiException {

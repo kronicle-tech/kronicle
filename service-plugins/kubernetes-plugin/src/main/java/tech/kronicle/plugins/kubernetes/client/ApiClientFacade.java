@@ -12,4 +12,5 @@ public interface ApiClientFacade {
 
     List<ApiResourceItem> getApiResourceItems(ClusterConfig cluster, ApiResource apiResource);
 
+    void discardApiClients();
 }

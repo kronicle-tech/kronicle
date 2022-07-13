@@ -23,10 +23,12 @@ public class ResourceFinder {
     private final ResourceMapper resourceMapper;
 
     public List<Component> findComponents(ClusterConfig cluster) {
-        return clientFacade.getApiResources(cluster).stream()
+        List<Component> components = clientFacade.getApiResources(cluster).stream()
                 .flatMap(apiResource -> findComponents(cluster, apiResource))
                 .filter(Objects::nonNull)
                 .collect(toUnmodifiableList());
+        clientFacade.discardApiClients();
+        return components;
     }
 
     private Stream<Component> findComponents(ClusterConfig cluster, ApiResource apiResource) {
