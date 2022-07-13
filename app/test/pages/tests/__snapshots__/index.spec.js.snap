@@ -4,18 +4,6 @@ exports[`Index when Get Tests service endpoint returns an array of multiple test
 <div
   class="m-3"
 >
-  <div
-    class="my-3"
-  >
-    <a
-      class="btn my-1 btn-secondary"
-      href="/all-tests"
-      target="_self"
-    >
-       Tests 
-    </a>
-  </div>
-   
   <transition-stub
     class="my-3"
     css="true"
@@ -189,18 +177,6 @@ exports[`Index when Get Tests service endpoint returns an empty array renders th
 <div
   class="m-3"
 >
-  <div
-    class="my-3"
-  >
-    <a
-      class="btn my-1 btn-secondary"
-      href="/all-tests"
-      target="_self"
-    >
-       Tests 
-    </a>
-  </div>
-   
   <transition-stub
     class="my-3"
     css="true"
@@ -275,18 +251,6 @@ exports[`Index when there are tests with different amounts of outcome counts ren
 <div
   class="m-3"
 >
-  <div
-    class="my-3"
-  >
-    <a
-      class="btn my-1 btn-secondary"
-      href="/all-tests"
-      target="_self"
-    >
-       Tests 
-    </a>
-  </div>
-   
   <transition-stub
     class="my-3"
     css="true"
@@ -509,18 +473,6 @@ exports[`Index when there is a test and a component with no test results renders
 <div
   class="m-3"
 >
-  <div
-    class="my-3"
-  >
-    <a
-      class="btn my-1 btn-secondary"
-      href="/all-tests"
-      target="_self"
-    >
-       Tests 
-    </a>
-  </div>
-   
   <transition-stub
     class="my-3"
     css="true"

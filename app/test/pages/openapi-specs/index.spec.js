@@ -1,14 +1,17 @@
-import Index from '~/pages/all-components/index.vue'
+import Index from '~/pages/openapi-specs'
 import { createPageWrapper } from '~/test/pages/pageUtils'
-import { createComponent } from '~/test/testDataUtils'
+import {
+  createComponent,
+  createComponentWithOpenApiSpecs,
+} from '~/test/testDataUtils'
 
 describe('Index', () => {
-  let components
+  let components = []
   let wrapper
   async function createWrapper() {
     wrapper = await createPageWrapper(Index, {
       serviceRequests: {
-        '/v1/components?fields=components(id,name,discovered,type,tags,description,notes,responsibilities,teams,platformId)':
+        '/v1/components?stateType=openapi-specs&fields=components(id,name,type,tags,teams,platformId,states)':
           {
             responseBody: { components },
           },
@@ -27,7 +30,7 @@ describe('Index', () => {
 
   test('has the right page title', async () => {
     await createWrapper()
-    expect(wrapper.vm.$metaInfo.title).toBe('Kronicle - All Components')
+    expect(wrapper.vm.$metaInfo.title).toBe('Kronicle - OpenAPI Specs')
   })
 
   describe('when Get Components service endpoint returns an empty array', () => {
@@ -39,11 +42,11 @@ describe('Index', () => {
 
   describe('when Get Components service endpoint returns an array of multiple components', () => {
     beforeEach(() => {
-      components.push(
-        createComponent({ componentNumber: 1, hasMainDetails: true }),
+      components = [
+        createComponentWithOpenApiSpecs({ componentNumber: 1 }),
         createComponent({ componentNumber: 2 }),
-        createComponent({ componentNumber: 3, hasMainDetails: true })
-      )
+        createComponentWithOpenApiSpecs({ componentNumber: 3 }),
+      ]
     })
 
     test('renders the page', async () => {

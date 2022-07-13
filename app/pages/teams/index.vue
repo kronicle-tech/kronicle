@@ -1,7 +1,5 @@
 <template>
   <div class="m-3">
-    <AllTeamsTabs />
-
     <b-alert show="10" dismissible variant="info" class="my-3">
       Click a team's name in the table below to view more information about that
       team
@@ -36,13 +34,11 @@ import Vue from 'vue'
 import { MetaInfo } from 'vue-meta'
 import { BAlert } from 'bootstrap-vue'
 import { Team } from '~/types/kronicle-service'
-import AllTeamsTabs from '~/components/AllTeamsTabs.vue'
 import TeamName from '~/components/TeamName.vue'
 import Markdown from '~/components/Markdown.vue'
 
 export default Vue.extend({
   components: {
-    AllTeamsTabs,
     'b-alert': BAlert,
     TeamName,
     Markdown,

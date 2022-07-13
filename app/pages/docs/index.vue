@@ -1,7 +1,5 @@
 <template>
   <div class="m-3">
-    <h1 class="text-info my-3">Docs</h1>
-
     <DocsView :components="components" />
   </div>
 </template>

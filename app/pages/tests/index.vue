@@ -1,7 +1,5 @@
 <template>
   <div class="m-3">
-    <AllTestsTabs />
-
     <b-alert show="10" dismissible variant="info" class="my-3">
       Click a test's id in the table below to view more information about that
       test
@@ -52,7 +50,6 @@ import Vue from 'vue'
 import { BAlert } from 'bootstrap-vue'
 import { MetaInfo } from 'vue-meta'
 import { Component, Test, TestOutcome } from '~/types/kronicle-service'
-import AllTestsTabs from '~/components/AllTestsTabs.vue'
 import FormattedNumber from '~/components/FormattedNumber.vue'
 import Markdown from '~/components/Markdown.vue'
 import TestId from '~/components/TestId.vue'
@@ -67,7 +64,6 @@ interface TestSummary {
 
 export default Vue.extend({
   components: {
-    AllTestsTabs,
     'b-alert': BAlert,
     FormattedNumber,
     Markdown,

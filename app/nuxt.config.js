@@ -115,8 +115,16 @@ export default {
   },
 
   redirect: [
-    { from: '^/components/?$', to: '/all-components' },
+    { from: '^/all-areas/?$', to: '/areas' },
+    { from: '^/all-components/?$', to: '/components' },
     { from: '^/all-components/dependencies/?$', to: '/diagrams' },
+    { from: '^/all-components/dependencies/?$', to: '/diagrams' },
+    { from: '^/all-components/graphql-schemas/?$', to: '/graphql-schemas' },
+    { from: '^/all-components/openapi-specs/?$', to: '/openapi-specs' },
+    { from: '^/all-environments/?$', to: '/environments' },
+    { from: '^/all-scanners/?$', to: '/scanners' },
+    { from: '^/all-teams/?$', to: '/teams' },
+    { from: '^/all-tests/?$', to: '/tests' },
   ],
 
   proxy: {

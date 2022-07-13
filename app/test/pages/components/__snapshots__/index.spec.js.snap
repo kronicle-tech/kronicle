@@ -9,27 +9,23 @@ exports[`Index when Get Components service endpoint returns an array of multiple
   >
     <a
       class="btn my-1 btn-secondary"
-      href="#"
+      href="/components"
       target="_self"
     >
-      
-    Components
-  
+       Components 
     </a>
      
     <a
       class="btn btn-secondary"
-      href="?testOutcome=fail"
+      href="/all-components/tests?testOutcome=fail"
       target="_self"
     >
-      
-    Tests
-  
+       Tests 
     </a>
      
     <a
       class="btn my-1 btn-secondary"
-      href="#"
+      href="/all-components/cross-functional-requirements"
       target="_self"
     >
       
@@ -39,7 +35,7 @@ exports[`Index when Get Components service endpoint returns an array of multiple
      
     <a
       class="btn my-1 btn-secondary"
-      href="#"
+      href="/all-components/tech-debts"
       target="_self"
     >
       
@@ -49,27 +45,7 @@ exports[`Index when Get Components service endpoint returns an array of multiple
      
     <a
       class="btn my-1 btn-secondary"
-      href="#"
-      target="_self"
-    >
-      
-    OpenAPI Specs
-  
-    </a>
-     
-    <a
-      class="btn my-1 btn-secondary"
-      href="#"
-      target="_self"
-    >
-      
-    GraphQL Schemas
-  
-    </a>
-     
-    <a
-      class="btn my-1 btn-secondary"
-      href="#"
+      href="/all-components/key-software"
       target="_self"
     >
       
@@ -79,55 +55,39 @@ exports[`Index when Get Components service endpoint returns an array of multiple
      
     <a
       class="btn my-1 btn-secondary"
-      href="#"
+      href="/all-components/repos"
       target="_self"
     >
-      
-    Repos
-  
+       Repos 
     </a>
      
     <a
       class="btn my-1 btn-secondary"
-      href="#"
+      href="/all-components/errors"
       target="_self"
     >
-      
-    Errors
-  
+       Errors 
     </a>
   </div>
    
   <div>
     <div
-      class="card my-3"
-    >
-      <!---->
-      <!---->
-      <div
-        class="list-group"
-      >
-        <div
-          class="list-group-item list-group-item-success"
-        >
-          <span
-            class=""
-          >
-            4
-          </span>
-          
-        OpenAPI specs
-      
-        </div>
-      </div>
-      <!---->
-      <!---->
-    </div>
-     
-    <div
       class="mt-3 mb-4"
       components="[object Object],[object Object],[object Object]"
     >
+      <button
+        class="btn mr-2 my-1 btn-info"
+        type="button"
+      >
+        Documented Components Only
+      </button>
+       
+      <button
+        class="btn mr-2 my-1 btn-secondary"
+        type="button"
+      >
+        All Components
+      </button>
        
       <button
         aria-controls="filters"
@@ -150,7 +110,7 @@ exports[`Index when Get Components service endpoint returns an array of multiple
         >
           <g />
         </svg>
-         Filters
+         Other Filters
   
       </button>
        
@@ -191,11 +151,11 @@ exports[`Index when Get Components service endpoint returns an array of multiple
                 <!---->
                 <fieldset
                   class="form-group"
-                  id="__BVID__54"
+                  id="__BVID__48"
                 >
                   <legend
                     class="bv-no-focus-ring col-form-label pt-0"
-                    id="__BVID__54__BV_label_"
+                    id="__BVID__48__BV_label_"
                     tabindex="-1"
                   >
                     Teams
@@ -203,7 +163,7 @@ exports[`Index when Get Components service endpoint returns an array of multiple
                   <div>
                     <div
                       class="bv-no-focus-ring"
-                      id="__BVID__55"
+                      id="__BVID__49"
                       role="group"
                       tabindex="-1"
                     >
@@ -212,14 +172,14 @@ exports[`Index when Get Components service endpoint returns an array of multiple
                       >
                         <input
                           class="custom-control-input"
-                          id="__BVID__55_BV_option_0"
+                          id="__BVID__49_BV_option_0"
                           name="team"
                           type="checkbox"
                           value="test-team-id-1-1"
                         />
                         <label
                           class="custom-control-label"
-                          for="__BVID__55_BV_option_0"
+                          for="__BVID__49_BV_option_0"
                         >
                           <span>
                             test-team-id-1-1
@@ -231,14 +191,14 @@ exports[`Index when Get Components service endpoint returns an array of multiple
                       >
                         <input
                           class="custom-control-input"
-                          id="__BVID__55_BV_option_1"
+                          id="__BVID__49_BV_option_1"
                           name="team"
                           type="checkbox"
                           value="test-team-id-1-2"
                         />
                         <label
                           class="custom-control-label"
-                          for="__BVID__55_BV_option_1"
+                          for="__BVID__49_BV_option_1"
                         >
                           <span>
                             test-team-id-1-2
@@ -250,14 +210,14 @@ exports[`Index when Get Components service endpoint returns an array of multiple
                       >
                         <input
                           class="custom-control-input"
-                          id="__BVID__55_BV_option_2"
+                          id="__BVID__49_BV_option_2"
                           name="team"
                           type="checkbox"
                           value="test-team-id-2-1"
                         />
                         <label
                           class="custom-control-label"
-                          for="__BVID__55_BV_option_2"
+                          for="__BVID__49_BV_option_2"
                         >
                           <span>
                             test-team-id-2-1
@@ -269,14 +229,14 @@ exports[`Index when Get Components service endpoint returns an array of multiple
                       >
                         <input
                           class="custom-control-input"
-                          id="__BVID__55_BV_option_3"
+                          id="__BVID__49_BV_option_3"
                           name="team"
                           type="checkbox"
                           value="test-team-id-2-2"
                         />
                         <label
                           class="custom-control-label"
-                          for="__BVID__55_BV_option_3"
+                          for="__BVID__49_BV_option_3"
                         >
                           <span>
                             test-team-id-2-2
@@ -288,14 +248,14 @@ exports[`Index when Get Components service endpoint returns an array of multiple
                       >
                         <input
                           class="custom-control-input"
-                          id="__BVID__55_BV_option_4"
+                          id="__BVID__49_BV_option_4"
                           name="team"
                           type="checkbox"
                           value="test-team-id-3-1"
                         />
                         <label
                           class="custom-control-label"
-                          for="__BVID__55_BV_option_4"
+                          for="__BVID__49_BV_option_4"
                         >
                           <span>
                             test-team-id-3-1
@@ -307,14 +267,14 @@ exports[`Index when Get Components service endpoint returns an array of multiple
                       >
                         <input
                           class="custom-control-input"
-                          id="__BVID__55_BV_option_5"
+                          id="__BVID__49_BV_option_5"
                           name="team"
                           type="checkbox"
                           value="test-team-id-3-2"
                         />
                         <label
                           class="custom-control-label"
-                          for="__BVID__55_BV_option_5"
+                          for="__BVID__49_BV_option_5"
                         >
                           <span>
                             test-team-id-3-2
@@ -344,11 +304,11 @@ exports[`Index when Get Components service endpoint returns an array of multiple
                 <!---->
                 <fieldset
                   class="form-group"
-                  id="__BVID__62"
+                  id="__BVID__56"
                 >
                   <legend
                     class="bv-no-focus-ring col-form-label pt-0"
-                    id="__BVID__62__BV_label_"
+                    id="__BVID__56__BV_label_"
                     tabindex="-1"
                   >
                     Tags
@@ -356,7 +316,7 @@ exports[`Index when Get Components service endpoint returns an array of multiple
                   <div>
                     <div
                       class="bv-no-focus-ring"
-                      id="__BVID__63"
+                      id="__BVID__57"
                       role="group"
                       tabindex="-1"
                     >
@@ -365,14 +325,14 @@ exports[`Index when Get Components service endpoint returns an array of multiple
                       >
                         <input
                           class="custom-control-input"
-                          id="__BVID__63_BV_option_0"
+                          id="__BVID__57_BV_option_0"
                           name="tag"
                           type="checkbox"
                           value="test-tag-1-1"
                         />
                         <label
                           class="custom-control-label"
-                          for="__BVID__63_BV_option_0"
+                          for="__BVID__57_BV_option_0"
                         >
                           <span>
                             test-tag-1-1
@@ -384,14 +344,14 @@ exports[`Index when Get Components service endpoint returns an array of multiple
                       >
                         <input
                           class="custom-control-input"
-                          id="__BVID__63_BV_option_1"
+                          id="__BVID__57_BV_option_1"
                           name="tag"
                           type="checkbox"
                           value="test-tag-1-2"
                         />
                         <label
                           class="custom-control-label"
-                          for="__BVID__63_BV_option_1"
+                          for="__BVID__57_BV_option_1"
                         >
                           <span>
                             test-tag-1-2
@@ -403,14 +363,14 @@ exports[`Index when Get Components service endpoint returns an array of multiple
                       >
                         <input
                           class="custom-control-input"
-                          id="__BVID__63_BV_option_2"
+                          id="__BVID__57_BV_option_2"
                           name="tag"
                           type="checkbox"
                           value="test-tag-2-1"
                         />
                         <label
                           class="custom-control-label"
-                          for="__BVID__63_BV_option_2"
+                          for="__BVID__57_BV_option_2"
                         >
                           <span>
                             test-tag-2-1
@@ -422,14 +382,14 @@ exports[`Index when Get Components service endpoint returns an array of multiple
                       >
                         <input
                           class="custom-control-input"
-                          id="__BVID__63_BV_option_3"
+                          id="__BVID__57_BV_option_3"
                           name="tag"
                           type="checkbox"
                           value="test-tag-2-2"
                         />
                         <label
                           class="custom-control-label"
-                          for="__BVID__63_BV_option_3"
+                          for="__BVID__57_BV_option_3"
                         >
                           <span>
                             test-tag-2-2
@@ -441,14 +401,14 @@ exports[`Index when Get Components service endpoint returns an array of multiple
                       >
                         <input
                           class="custom-control-input"
-                          id="__BVID__63_BV_option_4"
+                          id="__BVID__57_BV_option_4"
                           name="tag"
                           type="checkbox"
                           value="test-tag-3-1"
                         />
                         <label
                           class="custom-control-label"
-                          for="__BVID__63_BV_option_4"
+                          for="__BVID__57_BV_option_4"
                         >
                           <span>
                             test-tag-3-1
@@ -460,14 +420,14 @@ exports[`Index when Get Components service endpoint returns an array of multiple
                       >
                         <input
                           class="custom-control-input"
-                          id="__BVID__63_BV_option_5"
+                          id="__BVID__57_BV_option_5"
                           name="tag"
                           type="checkbox"
                           value="test-tag-3-2"
                         />
                         <label
                           class="custom-control-label"
-                          for="__BVID__63_BV_option_5"
+                          for="__BVID__57_BV_option_5"
                         >
                           <span>
                             test-tag-3-2
@@ -497,11 +457,11 @@ exports[`Index when Get Components service endpoint returns an array of multiple
                 <!---->
                 <fieldset
                   class="form-group"
-                  id="__BVID__70"
+                  id="__BVID__64"
                 >
                   <legend
                     class="bv-no-focus-ring col-form-label pt-0"
-                    id="__BVID__70__BV_label_"
+                    id="__BVID__64__BV_label_"
                     tabindex="-1"
                   >
                     Component Types
@@ -509,7 +469,7 @@ exports[`Index when Get Components service endpoint returns an array of multiple
                   <div>
                     <div
                       class="bv-no-focus-ring"
-                      id="__BVID__71"
+                      id="__BVID__65"
                       role="group"
                       tabindex="-1"
                     >
@@ -518,14 +478,14 @@ exports[`Index when Get Components service endpoint returns an array of multiple
                       >
                         <input
                           class="custom-control-input"
-                          id="__BVID__71_BV_option_0"
+                          id="__BVID__65_BV_option_0"
                           name="componentType"
                           type="checkbox"
                           value="test-component-type-id-1"
                         />
                         <label
                           class="custom-control-label"
-                          for="__BVID__71_BV_option_0"
+                          for="__BVID__65_BV_option_0"
                         >
                           <span>
                             test-component-type-id-1
@@ -537,14 +497,14 @@ exports[`Index when Get Components service endpoint returns an array of multiple
                       >
                         <input
                           class="custom-control-input"
-                          id="__BVID__71_BV_option_1"
+                          id="__BVID__65_BV_option_1"
                           name="componentType"
                           type="checkbox"
                           value="test-component-type-id-2"
                         />
                         <label
                           class="custom-control-label"
-                          for="__BVID__71_BV_option_1"
+                          for="__BVID__65_BV_option_1"
                         >
                           <span>
                             test-component-type-id-2
@@ -556,14 +516,14 @@ exports[`Index when Get Components service endpoint returns an array of multiple
                       >
                         <input
                           class="custom-control-input"
-                          id="__BVID__71_BV_option_2"
+                          id="__BVID__65_BV_option_2"
                           name="componentType"
                           type="checkbox"
                           value="test-component-type-id-3"
                         />
                         <label
                           class="custom-control-label"
-                          for="__BVID__71_BV_option_2"
+                          for="__BVID__65_BV_option_2"
                         >
                           <span>
                             test-component-type-id-3
@@ -593,11 +553,11 @@ exports[`Index when Get Components service endpoint returns an array of multiple
                 <!---->
                 <fieldset
                   class="form-group"
-                  id="__BVID__75"
+                  id="__BVID__69"
                 >
                   <legend
                     class="bv-no-focus-ring col-form-label pt-0"
-                    id="__BVID__75__BV_label_"
+                    id="__BVID__69__BV_label_"
                     tabindex="-1"
                   >
                     Platforms
@@ -605,7 +565,7 @@ exports[`Index when Get Components service endpoint returns an array of multiple
                   <div>
                     <div
                       class="bv-no-focus-ring"
-                      id="__BVID__76"
+                      id="__BVID__70"
                       role="group"
                       tabindex="-1"
                     >
@@ -614,14 +574,52 @@ exports[`Index when Get Components service endpoint returns an array of multiple
                       >
                         <input
                           class="custom-control-input"
-                          id="__BVID__76_BV_option_0"
+                          id="__BVID__70_BV_option_0"
+                          name="platformId"
+                          type="checkbox"
+                          value="test-platform-id-1"
+                        />
+                        <label
+                          class="custom-control-label"
+                          for="__BVID__70_BV_option_0"
+                        >
+                          <span>
+                            test-platform-id-1
+                          </span>
+                        </label>
+                      </div>
+                      <div
+                        class="custom-control custom-checkbox"
+                      >
+                        <input
+                          class="custom-control-input"
+                          id="__BVID__70_BV_option_1"
+                          name="platformId"
+                          type="checkbox"
+                          value="test-platform-id-3"
+                        />
+                        <label
+                          class="custom-control-label"
+                          for="__BVID__70_BV_option_1"
+                        >
+                          <span>
+                            test-platform-id-3
+                          </span>
+                        </label>
+                      </div>
+                      <div
+                        class="custom-control custom-checkbox"
+                      >
+                        <input
+                          class="custom-control-input"
+                          id="__BVID__70_BV_option_2"
                           name="platformId"
                           type="checkbox"
                           value="undefined"
                         />
                         <label
                           class="custom-control-label"
-                          for="__BVID__76_BV_option_0"
+                          for="__BVID__70_BV_option_2"
                         >
                           <span>
                             undefined
@@ -651,13 +649,13 @@ exports[`Index when Get Components service endpoint returns an array of multiple
                 <!---->
                 <div
                   class="form-group"
-                  id="__BVID__78"
+                  id="__BVID__74"
                   role="group"
                 >
                   <label
                     class="d-block"
                     for="component-filter"
-                    id="__BVID__78__BV_label_"
+                    id="__BVID__74__BV_label_"
                   >
                     Component
                   </label>
@@ -701,342 +699,295 @@ exports[`Index when Get Components service endpoint returns an array of multiple
       </transition-stub>
     </div>
      
-    <table
-      class="table table-dark"
+    <div
+      class="card"
     >
-      <thead>
-        <tr>
-          <th
-            class="component"
-          >
-            Component
-          </th>
-           
-          <th
-            class="teams"
-          >
-            Teams
-          </th>
-           
-          <th
-            class="action"
-          >
-            Action
-          </th>
-           
-          <th
-            class="location"
-          >
-            Location
-          </th>
-           
-          <th
-            class="description"
-          >
-            Description
-          </th>
-        </tr>
-      </thead>
-       
-      <tbody>
-        <tr>
-          <td
-            class="component"
-          >
-            <a
-              href="/components/test-component-id-1"
-            >
-              Test Component Name 1
-            </a>
-          </td>
-           
-          <td
-            class="teams"
-          >
-            <ul>
-              <li>
-                <a
-                  class="team-name"
-                  href="/teams/test-team-id-1-1"
-                >
-                  test-team-id-1-1
-                </a>
-                 
-                <!---->
-                 
-                <!---->
-              </li>
-              <li>
-                <a
-                  class="team-name"
-                  href="/teams/test-team-id-1-2"
-                >
-                  test-team-id-1-2
-                </a>
-                 
-                <!---->
-                 
-                <!---->
-              </li>
-            </ul>
-          </td>
-           
-          <td
-            class="action table-secondary"
-          >
-            <div>
-              <span
-                class="badge badge-danger"
+      <!---->
+      <!---->
+      <div
+        class="card-body"
+      >
+        <h4
+          class="card-title"
+        >
+          3 Components
+        </h4>
+        <!---->
+        <table
+          class="table table-dark"
+        >
+          <thead>
+            <tr>
+              <th
+                class="type"
               >
-                OpenAPI spec not found
-              </span>
-            </div>
-          </td>
-           
-          <td
-            class="location"
-          >
-            
-        https://example.com/test-openapi-spec-1-1
-      
-          </td>
-           
-          <td
-            class="description"
-          >
-            <div>
-              
-
-              <p>
-                Test OpenAPI Spec Description 1 1
-              </p>
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <td
-            class="component"
-          >
-            <a
-              href="/components/test-component-id-1"
-            >
-              Test Component Name 1
-            </a>
-          </td>
-           
-          <td
-            class="teams"
-          >
-            <ul>
-              <li>
-                <a
-                  class="team-name"
-                  href="/teams/test-team-id-1-1"
-                >
-                  test-team-id-1-1
-                </a>
-                 
-                <!---->
-                 
-                <!---->
-              </li>
-              <li>
-                <a
-                  class="team-name"
-                  href="/teams/test-team-id-1-2"
-                >
-                  test-team-id-1-2
-                </a>
-                 
-                <!---->
-                 
-                <!---->
-              </li>
-            </ul>
-          </td>
-           
-          <td
-            class="action table-secondary"
-          >
-            <div>
-              <span
-                class="badge badge-danger"
+                Type
+              </th>
+               
+              <th
+                class="name"
               >
-                OpenAPI spec not found
-              </span>
-            </div>
-          </td>
+                Name
+              </th>
+               
+              <th>
+                Tags
+              </th>
+               
+              <th>
+                Teams
+              </th>
+               
+              <th>
+                Description
+              </th>
+            </tr>
+          </thead>
            
-          <td
-            class="location"
-          >
-            
-        https://example.com/test-openapi-spec-1-2
-      
-          </td>
-           
-          <td
-            class="description"
-          >
-            <div>
-              
-
-              <p>
-                Test OpenAPI Spec Description 1 2
-              </p>
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <td
-            class="component"
-          >
-            <a
-              href="/components/test-component-id-3"
-            >
-              Test Component Name 3
-            </a>
-          </td>
-           
-          <td
-            class="teams"
-          >
-            <ul>
-              <li>
-                <a
-                  class="team-name"
-                  href="/teams/test-team-id-3-1"
-                >
-                  test-team-id-3-1
-                </a>
-                 
-                <!---->
-                 
-                <!---->
-              </li>
-              <li>
-                <a
-                  class="team-name"
-                  href="/teams/test-team-id-3-2"
-                >
-                  test-team-id-3-2
-                </a>
-                 
-                <!---->
-                 
-                <!---->
-              </li>
-            </ul>
-          </td>
-           
-          <td
-            class="action table-secondary"
-          >
-            <div>
-              <span
-                class="badge badge-danger"
+          <tbody>
+            <tr>
+              <td
+                class="type"
               >
-                OpenAPI spec not found
-              </span>
-            </div>
-          </td>
-           
-          <td
-            class="location"
-          >
-            
-        https://example.com/test-openapi-spec-3-1
-      
-          </td>
-           
-          <td
-            class="description"
-          >
-            <div>
-              
-
-              <p>
-                Test OpenAPI Spec Description 3 1
-              </p>
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <td
-            class="component"
-          >
-            <a
-              href="/components/test-component-id-3"
-            >
-              Test Component Name 3
-            </a>
-          </td>
-           
-          <td
-            class="teams"
-          >
-            <ul>
-              <li>
-                <a
-                  class="team-name"
-                  href="/teams/test-team-id-3-1"
-                >
-                  test-team-id-3-1
-                </a>
-                 
-                <!---->
-                 
-                <!---->
-              </li>
-              <li>
-                <a
-                  class="team-name"
-                  href="/teams/test-team-id-3-2"
-                >
-                  test-team-id-3-2
-                </a>
-                 
-                <!---->
-                 
-                <!---->
-              </li>
-            </ul>
-          </td>
-           
-          <td
-            class="action table-secondary"
-          >
-            <div>
-              <span
-                class="badge badge-danger"
+                test-component-type-id-1
+              </td>
+               
+              <td
+                class="name table-primary"
               >
-                OpenAPI spec not found
-              </span>
-            </div>
-          </td>
-           
-          <td
-            class="location"
-          >
-            
-        https://example.com/test-openapi-spec-3-2
-      
-          </td>
-           
-          <td
-            class="description"
-          >
-            <div>
-              
+                <a
+                  href="/components/test-component-id-1"
+                >
+                  Test Component Name 1
+                </a>
+              </td>
+               
+              <td>
+                <div
+                  class="h5"
+                >
+                  <span
+                    class="badge mr-2 mb-2 badge-info"
+                  >
+                    
+    test-tag-1-1
+                    <!---->
+                  </span>
+                  <span
+                    class="badge mr-2 mb-2 badge-info"
+                  >
+                    
+    test-tag-1-2
+                    <!---->
+                  </span>
+                </div>
+              </td>
+               
+              <td>
+                <ul>
+                  <li>
+                    <a
+                      class="team-name"
+                      href="/teams/test-team-id-1-1"
+                    >
+                      test-team-id-1-1
+                    </a>
+                     
+                    <!---->
+                     
+                    <!---->
+                  </li>
+                  <li>
+                    <a
+                      class="team-name"
+                      href="/teams/test-team-id-1-2"
+                    >
+                      test-team-id-1-2
+                    </a>
+                     
+                    <!---->
+                     
+                    <!---->
+                  </li>
+                </ul>
+              </td>
+               
+              <td
+                class="description"
+              >
+                <div>
+                  
 
-              <p>
-                Test OpenAPI Spec Description 3 2
-              </p>
-            </div>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+                  <p>
+                    Test Component Description 1
+                  </p>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td
+                class="type"
+              >
+                test-component-type-id-2
+              </td>
+               
+              <td
+                class="name table-primary"
+              >
+                <a
+                  href="/components/test-component-id-2"
+                >
+                  Test Component Name 2
+                </a>
+              </td>
+               
+              <td>
+                <div
+                  class="h5"
+                >
+                  <span
+                    class="badge mr-2 mb-2 badge-info"
+                  >
+                    
+    test-tag-2-1
+                    <!---->
+                  </span>
+                  <span
+                    class="badge mr-2 mb-2 badge-info"
+                  >
+                    
+    test-tag-2-2
+                    <!---->
+                  </span>
+                </div>
+              </td>
+               
+              <td>
+                <ul>
+                  <li>
+                    <a
+                      class="team-name"
+                      href="/teams/test-team-id-2-1"
+                    >
+                      test-team-id-2-1
+                    </a>
+                     
+                    <!---->
+                     
+                    <!---->
+                  </li>
+                  <li>
+                    <a
+                      class="team-name"
+                      href="/teams/test-team-id-2-2"
+                    >
+                      test-team-id-2-2
+                    </a>
+                     
+                    <!---->
+                     
+                    <!---->
+                  </li>
+                </ul>
+              </td>
+               
+              <td
+                class="description"
+              >
+                <div>
+                  
+
+                  <p>
+                    Test Component Description 2
+                  </p>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td
+                class="type"
+              >
+                test-component-type-id-3
+              </td>
+               
+              <td
+                class="name table-primary"
+              >
+                <a
+                  href="/components/test-component-id-3"
+                >
+                  Test Component Name 3
+                </a>
+              </td>
+               
+              <td>
+                <div
+                  class="h5"
+                >
+                  <span
+                    class="badge mr-2 mb-2 badge-info"
+                  >
+                    
+    test-tag-3-1
+                    <!---->
+                  </span>
+                  <span
+                    class="badge mr-2 mb-2 badge-info"
+                  >
+                    
+    test-tag-3-2
+                    <!---->
+                  </span>
+                </div>
+              </td>
+               
+              <td>
+                <ul>
+                  <li>
+                    <a
+                      class="team-name"
+                      href="/teams/test-team-id-3-1"
+                    >
+                      test-team-id-3-1
+                    </a>
+                     
+                    <!---->
+                     
+                    <!---->
+                  </li>
+                  <li>
+                    <a
+                      class="team-name"
+                      href="/teams/test-team-id-3-2"
+                    >
+                      test-team-id-3-2
+                    </a>
+                     
+                    <!---->
+                     
+                    <!---->
+                  </li>
+                </ul>
+              </td>
+               
+              <td
+                class="description"
+              >
+                <div>
+                  
+
+                  <p>
+                    Test Component Description 3
+                  </p>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <!---->
+      <!---->
+    </div>
   </div>
 </div>
 `;
@@ -1050,27 +1001,23 @@ exports[`Index when Get Components service endpoint returns an empty array rende
   >
     <a
       class="btn my-1 btn-secondary"
-      href="#"
+      href="/components"
       target="_self"
     >
-      
-    Components
-  
+       Components 
     </a>
      
     <a
       class="btn btn-secondary"
-      href="?testOutcome=fail"
+      href="/all-components/tests?testOutcome=fail"
       target="_self"
     >
-      
-    Tests
-  
+       Tests 
     </a>
      
     <a
       class="btn my-1 btn-secondary"
-      href="#"
+      href="/all-components/cross-functional-requirements"
       target="_self"
     >
       
@@ -1080,7 +1027,7 @@ exports[`Index when Get Components service endpoint returns an empty array rende
      
     <a
       class="btn my-1 btn-secondary"
-      href="#"
+      href="/all-components/tech-debts"
       target="_self"
     >
       
@@ -1090,27 +1037,7 @@ exports[`Index when Get Components service endpoint returns an empty array rende
      
     <a
       class="btn my-1 btn-secondary"
-      href="#"
-      target="_self"
-    >
-      
-    OpenAPI Specs
-  
-    </a>
-     
-    <a
-      class="btn my-1 btn-secondary"
-      href="#"
-      target="_self"
-    >
-      
-    GraphQL Schemas
-  
-    </a>
-     
-    <a
-      class="btn my-1 btn-secondary"
-      href="#"
+      href="/all-components/key-software"
       target="_self"
     >
       
@@ -1120,54 +1047,43 @@ exports[`Index when Get Components service endpoint returns an empty array rende
      
     <a
       class="btn my-1 btn-secondary"
-      href="#"
+      href="/all-components/repos"
       target="_self"
     >
-      
-    Repos
-  
+       Repos 
     </a>
      
     <a
       class="btn my-1 btn-secondary"
-      href="#"
+      href="/all-components/errors"
       target="_self"
     >
-      
-    Errors
-  
+       Errors 
     </a>
   </div>
    
   <div>
+    <!---->
+     
     <div
-      class="card my-3"
+      class="card"
     >
       <!---->
       <!---->
       <div
-        class="list-group"
+        class="card-body"
       >
-        <div
-          class="list-group-item list-group-item-danger"
+        <h4
+          class="card-title"
         >
-          <span
-            class="display-1"
-          >
-            0
-          </span>
-          
-        OpenAPI specs
-      
-        </div>
+          0 Components
+        </h4>
+        <!---->
+        <!---->
       </div>
       <!---->
       <!---->
     </div>
-     
-    <!---->
-     
-    <!---->
   </div>
 </div>
 `;

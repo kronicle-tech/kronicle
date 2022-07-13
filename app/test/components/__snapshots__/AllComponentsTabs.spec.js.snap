@@ -1,23 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`AllComponentsTabs renders the component 1`] = `
-"<div class=\\"my-3\\"><a href=\\"#\\" target=\\"_self\\" class=\\"btn my-1 btn-secondary\\">
-    Components
-  </a> <a href=\\"?testOutcome=fail\\" target=\\"_self\\" class=\\"btn btn-secondary\\">
-    Tests
-  </a> <a href=\\"#\\" target=\\"_self\\" class=\\"btn my-1 btn-secondary\\">
+"<div class=\\"my-3\\"><a href=\\"/components\\" target=\\"_self\\" class=\\"btn my-1 btn-secondary\\"> Components </a> <a href=\\"/all-components/tests?testOutcome=fail\\" target=\\"_self\\" class=\\"btn btn-secondary\\"> Tests </a> <a href=\\"/all-components/cross-functional-requirements\\" target=\\"_self\\" class=\\"btn my-1 btn-secondary\\">
     Cross Functional Requirements
-  </a> <a href=\\"#\\" target=\\"_self\\" class=\\"btn my-1 btn-secondary\\">
+  </a> <a href=\\"/all-components/tech-debts\\" target=\\"_self\\" class=\\"btn my-1 btn-secondary\\">
     Tech Debts
-  </a> <a href=\\"#\\" target=\\"_self\\" class=\\"btn my-1 btn-secondary\\">
-    OpenAPI Specs
-  </a> <a href=\\"#\\" target=\\"_self\\" class=\\"btn my-1 btn-secondary\\">
-    GraphQL Schemas
-  </a> <a href=\\"#\\" target=\\"_self\\" class=\\"btn my-1 btn-secondary\\">
+  </a> <a href=\\"/all-components/key-software\\" target=\\"_self\\" class=\\"btn my-1 btn-secondary\\">
     Key Software
-  </a> <a href=\\"#\\" target=\\"_self\\" class=\\"btn my-1 btn-secondary\\">
-    Repos
-  </a> <a href=\\"#\\" target=\\"_self\\" class=\\"btn my-1 btn-secondary\\">
-    Errors
-  </a></div>"
+  </a> <a href=\\"/all-components/repos\\" target=\\"_self\\" class=\\"btn my-1 btn-secondary\\"> Repos </a> <a href=\\"/all-components/errors\\" target=\\"_self\\" class=\\"btn my-1 btn-secondary\\"> Errors </a></div>"
 `;
