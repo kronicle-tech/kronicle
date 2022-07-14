@@ -13,13 +13,12 @@ import Vue from 'vue'
 import { MetaInfo } from 'vue-meta'
 import { Component, Diagram } from '~/types/kronicle-service'
 import DiagramView from '~/components/DiagramView.vue'
-import { NuxtError } from '~/src/nuxtError'
 
 export default Vue.extend({
   components: {
     DiagramView,
   },
-  async asyncData({ $config, route, store }) {
+  async asyncData({ $config, route, store, error }) {
     const components = await fetch(
       `${$config.serviceBaseUrl}/v1/components?fields=components(id,name,type,tags,description,notes,responsibilities,teams,platformId,states(environmentId,pluginId))`
     )
@@ -38,7 +37,11 @@ export default Vue.extend({
       .then((json) => json.diagram as Diagram | undefined)
 
     if (!diagram) {
-      throw new NuxtError('Diagram not found', 404)
+      error({
+        message: 'Diagram not found',
+        statusCode: 404,
+      })
+      return
     }
 
     return {

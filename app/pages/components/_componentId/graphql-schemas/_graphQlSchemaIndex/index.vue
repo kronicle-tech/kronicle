@@ -41,11 +41,16 @@ export default Vue.extend({
     'b-button': BButton,
     GraphQlSchemaView,
   },
-  async asyncData({ $config, route }) {
+  async asyncData({ $config, route, error }) {
     const componentAvailableData = await fetchComponentAvailableData(
       $config,
-      route
+      route,
+      error
     )
+
+    if (!componentAvailableData) {
+      return
+    }
 
     const component = await fetch(
       `${$config.serviceBaseUrl}/v1/components/${route.params.componentId}?stateType=graphql-schemas&fields=component(id,name,teams,states)`

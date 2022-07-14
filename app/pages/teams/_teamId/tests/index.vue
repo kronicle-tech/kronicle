@@ -18,14 +18,13 @@ import { MetaInfo } from 'vue-meta'
 import { Team } from '~/types/kronicle-service'
 import TeamTabs from '~/components/TeamTabs.vue'
 import TestResultsView from '~/components/TestResultsView.vue'
-import { NuxtError } from '~/src/nuxtError'
 
 export default Vue.extend({
   components: {
     TeamTabs,
     TestResultsView,
   },
-  async asyncData({ $config, route, store }) {
+  async asyncData({ $config, route, store, error }) {
     const team = await fetch(
       `${$config.serviceBaseUrl}/v1/teams/${route.params.teamId}?testOutcome=fail&fields=team(id,name,components(id,name,type,tags,teams,platformId,testResults))`
     )
@@ -33,7 +32,11 @@ export default Vue.extend({
       .then((json) => json.team as Team | undefined)
 
     if (!team) {
-      throw new NuxtError('Team not found', 404)
+      error({
+        message: 'Team not found',
+        statusCode: 404,
+      })
+      return
     }
 
     store.commit('componentFilters/initialize', {

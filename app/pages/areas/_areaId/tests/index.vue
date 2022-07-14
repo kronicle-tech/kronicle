@@ -18,14 +18,13 @@ import { MetaInfo } from 'vue-meta'
 import { Area } from '~/types/kronicle-service'
 import AreaTabs from '~/components/AreaTabs.vue'
 import TestResultsView from '~/components/TestResultsView.vue'
-import { NuxtError } from '~/src/nuxtError'
 
 export default Vue.extend({
   components: {
     AreaTabs,
     TestResultsView,
   },
-  async asyncData({ $config, route, store }) {
+  async asyncData({ $config, route, store, error }) {
     const area = await fetch(
       `${$config.serviceBaseUrl}/v1/areas/${route.params.areaId}?testOutcome=fail&fields=area(id,name,components(id,name,type,tags,teams,platformId,testResults))`
     )
@@ -33,7 +32,11 @@ export default Vue.extend({
       .then((json) => json.area as Area | undefined)
 
     if (!area) {
-      throw new NuxtError('Area not found', 404)
+      error({
+        message: 'Area not found',
+        statusCode: 404,
+      })
+      return
     }
 
     store.commit('componentFilters/initialize', {

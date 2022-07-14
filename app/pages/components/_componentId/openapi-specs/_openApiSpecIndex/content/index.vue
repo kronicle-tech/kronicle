@@ -10,14 +10,13 @@ import Vue from 'vue'
 import { MetaInfo } from 'vue-meta'
 import { Component } from '~/types/kronicle-service'
 import OpenApiSpecView from '~/components/OpenApiSpecView.vue'
-import { NuxtError } from '~/src/nuxtError'
 
 export default Vue.extend({
   components: {
     OpenApiSpecView,
   },
   layout: 'Minimal',
-  async asyncData({ $config, route }) {
+  async asyncData({ $config, route, error }) {
     const component = await fetch(
       `${$config.serviceBaseUrl}/v1/components/${route.params.componentId}?stateType=openapi-specs&fields=component(id,name,teams,states)`
     )
@@ -25,7 +24,11 @@ export default Vue.extend({
       .then((json) => json.component as Component | undefined)
 
     if (!component) {
-      throw new NuxtError('Component not found', 404)
+      error({
+        message: 'Component not found',
+        statusCode: 404,
+      })
+      return
     }
 
     return {

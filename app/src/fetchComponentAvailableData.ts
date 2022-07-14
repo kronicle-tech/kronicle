@@ -1,7 +1,7 @@
 import { NuxtRuntimeConfig } from '@nuxt/types/config/runtime'
 import { Route } from 'vue-router'
+import { NuxtError } from '@nuxt/types'
 import { GetComponentResponse } from '~/types/kronicle-service'
-import { NuxtError } from '~/src/nuxtError'
 
 export interface ComponentAvailableData {
   readonly metadataTypes: string[]
@@ -12,8 +12,9 @@ export interface ComponentAvailableData {
 
 export async function fetchComponentAvailableData(
   $config: NuxtRuntimeConfig,
-  route: Route
-): Promise<ComponentAvailableData> {
+  route: Route,
+  error: (params: NuxtError) => void
+): Promise<ComponentAvailableData | undefined> {
   const component = await fetch(
     `${$config.serviceBaseUrl}/v1/components/${route.params.componentId}?fields=component(id,name,crossFunctionalRequirements(fake),techDebts(fake),states(type),scannerErrors(fake),testResults(fake))`
   )
@@ -21,7 +22,11 @@ export async function fetchComponentAvailableData(
     .then((json) => (json as GetComponentResponse).component)
 
   if (!component) {
-    throw new NuxtError('Component not found', 404)
+    error({
+      message: 'Component not found',
+      statusCode: 404,
+    })
+    return undefined
   }
 
   const metadataTypes: string[] = []
