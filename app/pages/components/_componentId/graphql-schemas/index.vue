@@ -27,11 +27,16 @@ export default Vue.extend({
     ComponentTabs,
     GraphQlSchemasView,
   },
-  async asyncData({ $config, route, store }) {
+  async asyncData({ $config, route, store, error }) {
     const componentAvailableData = await fetchComponentAvailableData(
       $config,
-      route
+      route,
+      error
     )
+
+    if (!componentAvailableData) {
+      return
+    }
 
     const component = await fetch(
       `${$config.serviceBaseUrl}/v1/components/${route.params.componentId}?stateType=graphql-schemas&fields=component(id,name,teams,states)`

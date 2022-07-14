@@ -21,17 +21,21 @@ import {
   fetchComponentAvailableData,
 } from '~/src/fetchComponentAvailableData'
 import { findComponentState } from '~/src/componentStateUtils'
-import { NuxtError } from '~/src/nuxtError'
 
 export default Vue.extend({
   components: {
     DocFilesView,
   },
-  async asyncData({ $config, route }) {
+  async asyncData({ $config, route, error }) {
     const componentAvailableData = await fetchComponentAvailableData(
       $config,
-      route
+      route,
+      error
     )
+
+    if (!componentAvailableData) {
+      return
+    }
 
     const component = await fetch(
       `${$config.serviceBaseUrl}/v1/components/${route.params.componentId}?stateType=doc&stateId=${route.params.docId}&fields=component(id,name,teams,states)`
@@ -42,7 +46,11 @@ export default Vue.extend({
     const doc: DocState | undefined = findComponentState(component, 'doc')
 
     if (!doc) {
-      throw new NuxtError('Doc not found', 404)
+      error({
+        message: 'Doc not found',
+        statusCode: 404,
+      })
+      return
     }
 
     return {

@@ -27,11 +27,16 @@ export default Vue.extend({
     ComponentTabs,
     DiagramsView,
   },
-  async asyncData({ $config, route }) {
+  async asyncData({ $config, route, error }) {
     const componentAvailableData = await fetchComponentAvailableData(
       $config,
-      route
+      route,
+      error
     )
+
+    if (!componentAvailableData) {
+      return
+    }
 
     const component = await fetch(
       `${$config.serviceBaseUrl}/v1/components/${route.params.componentId}?fields=component(id,name,type,tags,description,notes,responsibilities,teams,platformId,states(environmentId,pluginId))`

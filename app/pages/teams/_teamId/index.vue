@@ -42,7 +42,6 @@ import EmailAddress from '~/components/EmailAddress.vue'
 import Links from '~/components/Links.vue'
 import Markdown from '~/components/Markdown.vue'
 import TeamTabs from '~/components/TeamTabs.vue'
-import { NuxtError } from '~/src/nuxtError'
 
 export default Vue.extend({
   components: {
@@ -54,7 +53,7 @@ export default Vue.extend({
     Markdown,
     TeamTabs,
   },
-  async asyncData({ $config, route }) {
+  async asyncData({ $config, route, error }) {
     const team = await fetch(
       `${$config.serviceBaseUrl}/v1/teams/${route.params.teamId}?fields=team(id,areaId,name,emailAddress,description,notes,links)`
     )
@@ -62,7 +61,11 @@ export default Vue.extend({
       .then((json) => json.team as Team | undefined)
 
     if (!team) {
-      throw new NuxtError('Team not found', 404)
+      error({
+        message: 'Team not found',
+        statusCode: 404,
+      })
+      return
     }
 
     return {

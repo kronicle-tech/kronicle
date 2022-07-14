@@ -37,11 +37,16 @@ export default Vue.extend({
     ComponentTabs,
     ReadmeContent,
   },
-  async asyncData({ $config, route }) {
+  async asyncData({ $config, route, error }) {
     const componentAvailableData = await fetchComponentAvailableData(
       $config,
-      route
+      route,
+      error
     )
+
+    if (!componentAvailableData) {
+      return
+    }
 
     const component = await fetch(
       `${$config.serviceBaseUrl}/v1/components/${route.params.componentId}?stateType=readme&fields=component(id,name,teams,states)`

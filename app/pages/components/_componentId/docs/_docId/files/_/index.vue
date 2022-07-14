@@ -39,7 +39,6 @@ import {
 import Markdown from '~/components/Markdown.vue'
 import { findComponentState } from '~/src/componentStateUtils'
 import ComponentTabs from '~/components/ComponentTabs.vue'
-import { NuxtError } from '~/src/nuxtError'
 
 export default Vue.extend({
   components: {
@@ -48,10 +47,11 @@ export default Vue.extend({
     ComponentTabs,
     Markdown,
   },
-  async asyncData({ $config, params, res, route, next }) {
+  async asyncData({ $config, params, res, route, next, error }) {
     const componentAvailableData = await fetchComponentAvailableData(
       $config,
-      route
+      route,
+      error
     )
 
     const component = await fetch(
@@ -63,7 +63,11 @@ export default Vue.extend({
     const doc: DocState | undefined = findComponentState(component, 'doc')
 
     if (!doc) {
-      throw new NuxtError('Doc not found', 404)
+      error({
+        message: 'Doc not found',
+        statusCode: 404,
+      })
+      return
     }
 
     const docFile = await fetch(
@@ -77,7 +81,11 @@ export default Vue.extend({
       .then((json) => json.docFile as DocFile)
 
     if (!docFile) {
-      throw new NuxtError('Doc File not found', 404)
+      error({
+        message: 'Doc File not found',
+        statusCode: 404,
+      })
+      return
     }
 
     let render = true

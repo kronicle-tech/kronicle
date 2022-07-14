@@ -16,14 +16,13 @@ import { MetaInfo } from 'vue-meta'
 import { Area, Test } from '~/types/kronicle-service'
 import AreaTabs from '~/components/AreaTabs.vue'
 import TestView from '~/components/TestView.vue'
-import { NuxtError } from '~/src/nuxtError'
 
 export default Vue.extend({
   components: {
     AreaTabs,
     TestView,
   },
-  async asyncData({ $config, route, store }) {
+  async asyncData({ $config, route, store, error }) {
     const test = await fetch(
       `${$config.serviceBaseUrl}/v1/tests/${route.params.testId}?fields=test(id,description,priority)`
     )
@@ -37,7 +36,11 @@ export default Vue.extend({
       .then((json) => json.area as Area | undefined)
 
     if (!area) {
-      throw new NuxtError('Area not found', 404)
+      error({
+        message: 'Area not found',
+        statusCode: 404,
+      })
+      return
     }
 
     store.commit('componentFilters/initialize', {
