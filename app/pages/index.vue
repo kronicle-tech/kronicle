@@ -17,7 +17,7 @@
           </b-list-group-item>
 
           <b-list-group-item
-            :to="{ name: 'all-areas' }"
+            to="/areas"
             class="d-flex justify-content-between align-items-center"
           >
             <b>Areas</b>
@@ -29,7 +29,7 @@
           </b-list-group-item>
 
           <b-list-group-item
-            :to="{ name: 'all-teams' }"
+            to="teams"
             class="d-flex justify-content-between align-items-center"
           >
             <b>Teams</b>
@@ -41,7 +41,7 @@
           </b-list-group-item>
 
           <b-list-group-item
-            :to="{ name: 'all-components' }"
+            to="/components"
             class="d-flex justify-content-between align-items-center"
           >
             <b>Components</b>
@@ -53,7 +53,7 @@
           </b-list-group-item>
 
           <b-list-group-item
-            :to="{ name: 'all-components-tech-debts' }"
+            to="/all-components/tech-debts"
             class="d-flex justify-content-between align-items-center"
           >
             <b>Tech Debts</b>
@@ -65,7 +65,7 @@
           </b-list-group-item>
 
           <b-list-group-item
-            :to="{ name: 'all-components-tests' }"
+            to="/all-components/tests"
             class="d-flex justify-content-between align-items-center"
           >
             <b>Test Results</b>
@@ -94,10 +94,7 @@
           <b-list-group-item
             v-for="componentTypeCount in componentTypeCounts"
             :key="componentTypeCount.item"
-            :to="{
-              name: 'all-components',
-              query: { componentType: componentTypeCount.item },
-            }"
+            :to="`/components?componentType=${componentTypeCount.item}`"
             class="d-flex justify-content-between align-items-center"
           >
             <b class="component-type">{{ componentTypeCount.item }}</b>
@@ -126,10 +123,7 @@
           <b-list-group-item
             v-for="platformCount in platformCounts"
             :key="platformCount.item"
-            :to="{
-              name: 'all-components',
-              query: { platformId: platformCount.item || 'undefined' },
-            }"
+            :to="`/components?platformId=${platformCount.item || 'undefined'}`"
             class="d-flex justify-content-between align-items-center"
           >
             <b class="platform">{{ platformCount.item || 'missing' }}</b>
@@ -158,10 +152,7 @@
           <b-list-group-item
             v-for="tagCount in tagCounts"
             :key="tagCount.item"
-            :to="{
-              name: 'all-components',
-              query: { tag: tagCount.item },
-            }"
+            :to="`/components?tag=${tagCount.item}`"
             class="d-flex justify-content-between align-items-center"
           >
             <b class="tag">{{ tagCount.item }}</b>
@@ -212,10 +203,7 @@
           <b-list-group-item
             v-for="test in tests"
             :key="test.id"
-            :to="{
-              name: 'tests-testId',
-              params: { testId: test.id },
-            }"
+            :to="`/tests?testId=${test.id}`"
           >
             <b class="test-id text-info">{{ test.id }}</b>
             <br />
