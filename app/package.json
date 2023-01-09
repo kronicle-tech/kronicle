@@ -35,7 +35,7 @@
     "es6-promisify": "^7.0.0",
     "graphql": "^16.5.0",
     "hast-util-sanitize": "^3.0.2",
-    "luxon": "^2.0.2",
+    "luxon": "^2.5.2",
     "nuxt": "^2.15.8",
     "nuxt-healthcheck": "^1.0.1",
     "nuxt-winston-log": "^1.2.0",
