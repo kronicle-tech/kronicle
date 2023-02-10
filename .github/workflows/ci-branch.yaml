@@ -13,8 +13,7 @@ jobs:
     with:
       nodejs: true
       caching: true
-      build_tasks: app:build -x checkFrontend -x dependencyCheckAnalyze
-      dependency_check_reports: false
+      build_tasks: app:build -x checkFrontend
       test_reports: false
     secrets: inherit
 
@@ -24,18 +23,7 @@ jobs:
       nodejs: true
       caching: true
       build_tasks: app:checkFrontend
-      dependency_check_reports: false
       test_reports: true
-    secrets: inherit
-
-  ci-app-dependency-check:
-    uses: ./.github/workflows/ci-shared-build.yaml
-    with:
-      nodejs: true
-      caching: true
-      build_tasks: app:dependencyCheckAnalyze
-      dependency_check_reports: true
-      test_reports: false
     secrets: inherit
 
   ci-service-build:
@@ -43,8 +31,7 @@ jobs:
     with:
       nodejs: false
       caching: true
-      build_tasks: build -x app:build -x test -x dependencyCheckAnalyze
-      dependency_check_reports: false
+      build_tasks: build -x app:build -x test
       test_reports: false
     secrets: inherit
 
@@ -54,16 +41,5 @@ jobs:
       nodejs: false
       caching: true
       build_tasks: test -x app:test
-      dependency_check_reports: false
       test_reports: true
-    secrets: inherit
-
-  ci-service-dependency-check:
-    uses: ./.github/workflows/ci-shared-build.yaml
-    with:
-      nodejs: false
-      caching: true
-      build_tasks: dependencyCheckAnalyze -x app:dependencyCheckAnalyze
-      dependency_check_reports: true
-      test_reports: false
     secrets: inherit
