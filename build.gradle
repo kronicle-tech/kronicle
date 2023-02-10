@@ -5,7 +5,6 @@ plugins {
     id "org.sonarqube"
     id "jacoco"
     id "com.github.spotbugs"
-    id "org.owasp.dependencycheck"
     id "pl.allegro.tech.build.axion-release"
 }
 
@@ -20,7 +19,6 @@ subprojects {
     apply plugin: "java"
     apply plugin: "tech.kronicle.dependencies-file"
     apply from: "$rootDir/gradle/repos.gradle"
-    apply from: "$rootDir/gradle/dependency-check.gradle"
     apply from: "$rootDir/gradle/jacoco.gradle"
     apply from: "$rootDir/gradle/sonarqube.gradle"
 
