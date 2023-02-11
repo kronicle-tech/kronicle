@@ -101,7 +101,7 @@ jobs:
       - name: Run the Service 🚀
         if: ${{ inputs.run_service }}
         run: |
-          ./gradlew service:bootJar
+          ./gradlew service:bootJar service:copyPlugins
           cd service
           PLUGINS_GITHUB_ENABLED=true \
             PLUGINS_GITHUB_ORGANIZATIONS_0_ACCOUNT_NAME=kronicle-tech \
@@ -109,7 +109,7 @@ jobs:
             REPO_FINDERS_IGNORED_REPOS_1_URL=https://github.com/kronicle-tech/kronicle-metadata-codebase-template.git \
             REPO_FINDERS_IGNORED_REPOS_2_URL=https://github.com/kronicle-tech/kronicle-argocd-config.git \
             java -jar build/libs/service-*.jar &
-          npx wait-on -l --httpTimeout 10 -t 60 http://localhost:8090
+          npx wait-on -l --httpTimeout 10000 -t 60000 http://localhost:8090
 
       - name: Run the App 🚀
         if: ${{ inputs.run_app }}
@@ -117,7 +117,7 @@ jobs:
           ./gradlew app:build -x checkFrontend
           cd app
           npx nuxt start &
-          npx wait-on -l --httpTimeout 10 -t 60 http://localhost:3000
+          npx wait-on -l --httpTimeout 10000 -t 60000 http://localhost:3000
 
       - name: Build
         run: |
