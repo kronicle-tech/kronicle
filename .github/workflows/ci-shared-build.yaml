@@ -5,11 +5,23 @@ on:
     inputs:
       nodejs:
         description: Whether the job will need node.js to be installed
-        required: true
+        required: false
+        default: false
         type: boolean
       caching:
         description: Whether the job should use caching for Gradle and npm dependencies
-        required: true
+        required: false
+        default: true
+        type: boolean
+      run_app:
+        description: Whether the job should launch the frontend app
+        required: false
+        default: false
+        type: boolean
+      run_service:
+        description: Whether the job should launch the backend service
+        required: false
+        default: false
         type: boolean
       build_tasks:
         description: The space separated names of the Gradle tasks to execute
@@ -17,6 +29,11 @@ on:
         type: string
       test_reports:
         description: Whether the job should archive test reports
+        required: false
+        default: false
+        type: boolean
+      cypress:
+        description: Whether the job should archive cypress outputs
         required: true
         type: boolean
 
@@ -80,6 +97,22 @@ jobs:
       - name: Validate Gradle wrapper
         uses: gradle/wrapper-validation-action@55e685c48d84285a5b0418cd094606e199cca3b6
 
+      - name: Get version
+        id: get_version
+        run: echo ::set-output name=VERSION::$(./gradlew currentVersion -q -Prelease.quiet)
+
+      - name: Run the Service 🚀
+        if: ${{ inputs.run_service }}
+        run: |
+          ./gradlew service:build -x test
+          cd service && java -jar build/libs/service-${{ steps.get_version.outputs.VERSION }}.jar & wait-on http://localhost:8090
+
+      - name: Run the App 🚀
+        if: ${{ inputs.run_app }}
+        run: |
+          ./gradlew app:build -x checkFrontend
+          cd app && node_modules/.bin/nuxt start & wait-on http://localhost:3000
+
       - name: Build
         run: |
           ./gradlew ${{ inputs.build_tasks }}
@@ -92,6 +125,16 @@ jobs:
           path: '**/build/reports/tests/test/**'
           # See https://github.com/actions/runner/issues/409#issuecomment-727565588 for explanation of syntax
           if-no-files-found: ${{ inputs.test_reports && 'error' || 'ignore' }}
+
+      - name: Archive Cypress outputs 🗄️
+        uses: actions/upload-artifact@v3
+        if: ${{ inputs.cypress }}
+        with:
+          name: cypress-artifacts
+          path: |
+            app/cypress/screenshots/**
+            app/cypress/videos/**
+          if-no-files-found: error
 
       - name: Clean up Gradle Cache
         if: ${{ inputs.caching }}

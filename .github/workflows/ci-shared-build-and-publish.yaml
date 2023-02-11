@@ -5,11 +5,13 @@ on:
     inputs:
       nodejs:
         description: Whether the job will need node.js to be installed
-        required: true
+        required: false
+        default: false
         type: boolean
       caching:
         description: Whether the job should use caching for Gradle and npm dependencies
-        required: true
+        required: false
+        default: true
         type: boolean
       build_tasks:
         description: The space separated names of the Gradle tasks to execute
@@ -17,7 +19,8 @@ on:
         type: string
       test_reports:
         description: Whether the job should archive test reports
-        required: true
+        required: false
+        default: false
         type: boolean
       docker_image_name:
         description: Name of the docker image to publish
@@ -25,7 +28,8 @@ on:
         type: string        
       publish_jars:
         description: Whether the job should publish JARs
-        required: true
+        required: false
+        default: false
         type: boolean
 
 jobs:
