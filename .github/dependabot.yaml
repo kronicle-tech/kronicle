@@ -24,6 +24,8 @@ updates:
         update-types: ["version-update:semver-major"]
       - dependency-name: remark-parse
         update-types: ["version-update:semver-major"]
+      - dependency-name: remark-slug
+        update-types: ["version-update:semver-major"]
       - dependency-name: remark-toc
         update-types: ["version-update:semver-major"]
       - dependency-name: unified
