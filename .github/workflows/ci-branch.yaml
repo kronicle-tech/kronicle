@@ -3,7 +3,7 @@ name: CI Branch
 on:
   push:
     branches:
-      - '*'
+      - '**'
       - '!main'
 
 jobs:
