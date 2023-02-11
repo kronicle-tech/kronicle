@@ -102,13 +102,13 @@ jobs:
         if: ${{ inputs.run_service }}
         run: |
           ./gradlew service:bootJar
-          cd service && java -jar build/libs/service-*.jar & npx wait-on http://localhost:8090
+          cd service && java -jar build/libs/service-*.jar & npx wait-on -l --httpTimeout 10 -t 60 http://localhost:8090
 
       - name: Run the App 🚀
         if: ${{ inputs.run_app }}
         run: |
           ./gradlew app:build -x checkFrontend
-          cd app && npx nuxt start & npx wait-on http://localhost:3000
+          cd app && npx nuxt start & npx wait-on -l --httpTimeout 10 -t 60 http://localhost:3000
 
       - name: Build
         run: |
