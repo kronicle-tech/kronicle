@@ -1,3 +1,5 @@
+import org.siouan.frontendgradleplugin.infrastructure.gradle.RunNpx
+
 buildscript {
   repositories {
     mavenCentral()
@@ -21,6 +23,16 @@ frontend {
   checkScript = "run check"
 }
 
+// TODO: According to the plugin's documentation, this should not be needed
+cleanFrontend.dependsOn installFrontend
+assembleFrontend.dependsOn installFrontend
+checkFrontend.dependsOn assembleFrontend
+
+tasks.register('e2e', RunNpx) {
+  dependsOn tasks.named('installNode')
+  script = 'cypress run'
+}
+
 dependencies {
   implementation platform("org.springframework.boot:spring-boot-dependencies:$springBootVersion")
   implementation platform("org.springframework.cloud:spring-cloud-dependencies:$springCloudVersion")
@@ -37,11 +49,6 @@ generateTypeScript {
   outputFile = "types/kronicle-service/index.d.ts"
   outputKind = "module"
 }
-
-// TODO: According to the plugin's documentation, this should not be needed
-cleanFrontend.dependsOn installFrontend
-assembleFrontend.dependsOn installFrontend
-checkFrontend.dependsOn assembleFrontend
 
 assembleFrontend.dependsOn generateTypeScript
 

@@ -43,9 +43,7 @@ jobs:
       nodejs: true
       caching: false
       build_tasks: app:build app:dockerPush -x checkFrontend
-      test_reports: false
       docker_image_name: kronicle-app
-      publish_jars: false
     secrets: inherit
 
   ci-app-test:
@@ -64,10 +62,8 @@ jobs:
       packages: write
       contents: write
     with:
-      nodejs: false
       caching: false
       build_tasks: build service:dockerPush -x app:build -x test
-      test_reports: false
       docker_image_name: kronicle-service
       publish_jars: true
     secrets: inherit
@@ -75,8 +71,18 @@ jobs:
   ci-service-test:
     uses: ./.github/workflows/ci-shared-build.yaml
     with:
-      nodejs: false
       caching: false
       build_tasks: test -x app:test
       test_reports: true
+    secrets: inherit
+
+  ci-e2e-test:
+    uses: ./.github/workflows/ci-shared-build.yaml
+    with:
+      caching: false
+      nodejs: true
+      run_app: true
+      run_service: true
+      build_tasks: app:e2e
+      cypress_outputs: true
     secrets: inherit

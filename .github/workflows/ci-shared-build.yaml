@@ -5,11 +5,23 @@ on:
     inputs:
       nodejs:
         description: Whether the job will need node.js to be installed
-        required: true
+        required: false
+        default: false
         type: boolean
       caching:
         description: Whether the job should use caching for Gradle and npm dependencies
-        required: true
+        required: false
+        default: true
+        type: boolean
+      run_app:
+        description: Whether the job should launch the frontend app
+        required: false
+        default: false
+        type: boolean
+      run_service:
+        description: Whether the job should launch the backend service
+        required: false
+        default: false
         type: boolean
       build_tasks:
         description: The space separated names of the Gradle tasks to execute
@@ -17,7 +29,13 @@ on:
         type: string
       test_reports:
         description: Whether the job should archive test reports
-        required: true
+        required: false
+        default: false
+        type: boolean
+      cypress_outputs:
+        description: Whether the job should archive cypress outputs
+        required: false
+        default: false
         type: boolean
 
 jobs:
@@ -80,6 +98,27 @@ jobs:
       - name: Validate Gradle wrapper
         uses: gradle/wrapper-validation-action@55e685c48d84285a5b0418cd094606e199cca3b6
 
+      - name: Run the Service 🚀
+        if: ${{ inputs.run_service }}
+        run: |
+          ./gradlew service:bootJar service:copyPlugins
+          cd service
+          PLUGINS_GITHUB_ENABLED=true \
+            PLUGINS_GITHUB_ORGANIZATIONS_0_ACCOUNT_NAME=kronicle-tech \
+            REPO_FINDERS_IGNORED_REPOS_0_URL=https://github.com/kronicle-tech/kronicle-metadata-repo-template.git \
+            REPO_FINDERS_IGNORED_REPOS_1_URL=https://github.com/kronicle-tech/kronicle-metadata-codebase-template.git \
+            REPO_FINDERS_IGNORED_REPOS_2_URL=https://github.com/kronicle-tech/kronicle-argocd-config.git \
+            java -jar build/libs/service-*.jar &
+          npx wait-on -l --httpTimeout 10000 -t 60000 http://localhost:8090
+
+      - name: Run the App 🚀
+        if: ${{ inputs.run_app }}
+        run: |
+          ./gradlew app:build -x checkFrontend
+          cd app
+          npx nuxt start &
+          npx wait-on -l --httpTimeout 10000 -t 60000 http://localhost:3000
+
       - name: Build
         run: |
           ./gradlew ${{ inputs.build_tasks }}
@@ -92,6 +131,16 @@ jobs:
           path: '**/build/reports/tests/test/**'
           # See https://github.com/actions/runner/issues/409#issuecomment-727565588 for explanation of syntax
           if-no-files-found: ${{ inputs.test_reports && 'error' || 'ignore' }}
+
+      - name: Archive Cypress outputs 🗄️
+        uses: actions/upload-artifact@v3
+        if: ${{ inputs.cypress }}
+        with:
+          name: cypress-artifacts
+          path: |
+            app/cypress/screenshots/**
+            app/cypress/videos/**
+          if-no-files-found: error
 
       - name: Clean up Gradle Cache
         if: ${{ inputs.caching }}

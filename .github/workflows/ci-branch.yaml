@@ -12,16 +12,13 @@ jobs:
     uses: ./.github/workflows/ci-shared-build.yaml
     with:
       nodejs: true
-      caching: true
       build_tasks: app:build -x checkFrontend
-      test_reports: false
     secrets: inherit
 
   ci-app-test:
     uses: ./.github/workflows/ci-shared-build.yaml
     with:
       nodejs: true
-      caching: true
       build_tasks: app:checkFrontend
       test_reports: true
     secrets: inherit
@@ -29,17 +26,22 @@ jobs:
   ci-service-build:
     uses: ./.github/workflows/ci-shared-build.yaml
     with:
-      nodejs: false
-      caching: true
       build_tasks: build -x app:build -x test
-      test_reports: false
     secrets: inherit
 
   ci-service-test:
     uses: ./.github/workflows/ci-shared-build.yaml
     with:
-      nodejs: false
-      caching: true
       build_tasks: test -x app:test
       test_reports: true
+    secrets: inherit
+
+  ci-e2e-test:
+    uses: ./.github/workflows/ci-shared-build.yaml
+    with:
+      nodejs: true
+      run_app: true
+      run_service: true
+      build_tasks: app:e2e
+      cypress_outputs: true
     secrets: inherit
