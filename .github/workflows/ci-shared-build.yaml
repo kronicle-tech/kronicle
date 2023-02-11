@@ -34,7 +34,8 @@ on:
         type: boolean
       cypress:
         description: Whether the job should archive cypress outputs
-        required: true
+        required: false
+        default: false
         type: boolean
 
 jobs:
