@@ -3,7 +3,7 @@ name: CI Kronicle Metadata
 on:
   push:
     branches:
-      - '*'
+      - '**'
 
 jobs:
 
