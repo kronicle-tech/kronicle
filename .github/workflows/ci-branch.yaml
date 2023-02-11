@@ -43,5 +43,5 @@ jobs:
       run_app: true
       run_service: true
       build_tasks: app:e2e
-      test_reports: true
+      cypress_outputs: true
     secrets: inherit

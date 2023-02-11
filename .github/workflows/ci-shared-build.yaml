@@ -32,7 +32,7 @@ on:
         required: false
         default: false
         type: boolean
-      cypress:
+      cypress_outputs:
         description: Whether the job should archive cypress outputs
         required: false
         default: false
