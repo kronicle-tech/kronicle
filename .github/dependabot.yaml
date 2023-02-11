@@ -15,6 +15,23 @@ updates:
       prefix: fix
       prefix-development: chore
       include: scope
+    ignore:
+      - dependency-name: nuxt
+        update-types: ["version-update:semver-major"]
+      - dependency-name: rehype-sanitize
+        update-types: ["version-update:semver-major"]
+      - dependency-name: remark-gfm
+        update-types: ["version-update:semver-major"]
+      - dependency-name: remark-parse
+        update-types: ["version-update:semver-major"]
+      - dependency-name: remark-toc
+        update-types: ["version-update:semver-major"]
+      - dependency-name: unified
+        update-types: ["version-update:semver-major"]
+      - dependency-name: vfile
+        update-types: ["version-update:semver-major"]
+      - dependency-name: webpack
+        update-types: ["version-update:semver-major"]
 
   - package-ecosystem: github-actions
     directory: '/'
