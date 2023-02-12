@@ -6,7 +6,7 @@ updates:
     schedule:
       interval: daily
       time: '00:00'
-    open-pull-requests-limit: 10
+    open-pull-requests-limit: 20
     reviewers:
       - simondean
     assignees:
@@ -16,6 +16,8 @@ updates:
       prefix-development: chore
       include: scope
     ignore:
+      - dependency-name: bootstrap
+        update-types: ["version-update:semver-major"]
       - dependency-name: nuxt
         update-types: ["version-update:semver-major"]
       - dependency-name: rehype-sanitize
