@@ -90,7 +90,7 @@ public class NodeJsScannerCodebaseTest extends BaseNodeJsScannerTest {
         Component component = getMutatedComponent(returnValue);
         assertThatNodeJsIsUsed(component);
         List<Software> software = getSoftware(component);
-        assertThat(software).containsExactly(Software.builder().scannerId("nodejs").name("core-js").type(SoftwareType.NPM_PACKAGE).version("3.21.0").packaging("npm-package").dependencyType(SoftwareDependencyType.DIRECT).build());
+        assertThat(software).containsExactly(Software.builder().scannerId("nodejs").name("core-js").type(SoftwareType.NPM_PACKAGE).version("3.27.2").packaging("npm-package").dependencyType(SoftwareDependencyType.DIRECT).build());
     }
 
     @Test
