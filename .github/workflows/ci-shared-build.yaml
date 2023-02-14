@@ -114,7 +114,7 @@ jobs:
       - name: Run the App 🚀
         if: ${{ inputs.run_app }}
         run: |
-          ./gradlew app:build -x checkFrontend
+          ./gradlew app:assembleFrontend
           cd app
           npx nuxt start &
           npx wait-on -l --httpTimeout 10000 -t 60000 http://localhost:3000
