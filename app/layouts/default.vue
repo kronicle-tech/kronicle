@@ -14,7 +14,9 @@
       <b-collapse id="nav-collapse" is-nav>
         <b-navbar-nav>
           <b-nav-item to="/environments"> Environments </b-nav-item>
-          <b-nav-item to="/components"> Components </b-nav-item>
+          <b-nav-item to="/components" data-cy="nav-link-components">
+            Components
+          </b-nav-item>
           <b-nav-item to="/diagrams"> Diagrams </b-nav-item>
           <b-nav-item to="/docs"> Docs </b-nav-item>
           <b-nav-item to="/openapi-specs"> OpenAPI </b-nav-item>
