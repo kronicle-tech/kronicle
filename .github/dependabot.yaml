@@ -16,34 +16,46 @@ updates:
       prefix-development: chore
       include: scope
     ignore:
+        # The bootstrap package cannot be upgraded from v4 to v5 until bootstrap-vue supports bootstrap v5
       - dependency-name: bootstrap
         update-types: ["version-update:semver-major"]
+
+        # These packages are part of nuxt and have to be upgraded as a whole, as part of migrating from Nuxt v2 to Nuxt v3
       - dependency-name: nuxt
-        update-types: ["version-update:semver-major"]
-      - dependency-name: rehype
-        update-types: ["version-update:semver-major"]
-      - dependency-name: rehype-raw
-        update-types: ["version-update:semver-major"]
-      - dependency-name: rehype-sanitize
-        update-types: ["version-update:semver-major"]
-      - dependency-name: remark-gfm
-        update-types: ["version-update:semver-major"]
-      - dependency-name: remark-parse
-        update-types: ["version-update:semver-major"]
-      - dependency-name: remark-rehype
-        update-types: ["version-update:semver-major"]
-      - dependency-name: remark-slug
-        update-types: ["version-update:semver-major"]
-      - dependency-name: remark-toc
-        update-types: ["version-update:semver-major"]
-      - dependency-name: unified
-        update-types: ["version-update:semver-major"]
-      - dependency-name: vfile
-        update-types: ["version-update:semver-major"]
-      - dependency-name: vfile-reporter
         update-types: ["version-update:semver-major"]
       - dependency-name: webpack
         update-types: ["version-update:semver-major"]
+
+        # These packages are part the https://github.com/unifiedjs collective and the next major versions of these
+        # packages have been changed to be ESM only packages (https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c)
+        # which makes those next major versions incompatible with this codebase (and many other codebases)
+      - dependency-name: hast-util-sanitize
+        update-types: [ "version-update:semver-major" ]
+      - dependency-name: rehype
+        update-types: [ "version-update:semver-major" ]
+      - dependency-name: rehype-raw
+        update-types: [ "version-update:semver-major" ]
+      - dependency-name: rehype-sanitize
+        update-types: [ "version-update:semver-major" ]
+      - dependency-name: rehype-stringify
+        update-types: [ "version-update:semver-major" ]
+      - dependency-name: remark-gfm
+        update-types: [ "version-update:semver-major" ]
+      - dependency-name: remark-parse
+        update-types: [ "version-update:semver-major" ]
+      - dependency-name: remark-rehype
+        update-types: [ "version-update:semver-major" ]
+      - dependency-name: remark-slug
+        update-types: [ "version-update:semver-major" ]
+      - dependency-name: remark-toc
+        update-types: [ "version-update:semver-major" ]
+      - dependency-name: unified
+        update-types: [ "version-update:semver-major" ]
+      - dependency-name: vfile
+        update-types: [ "version-update:semver-major" ]
+      - dependency-name: vfile-reporter
+        update-types: [ "version-update:semver-major" ]
+
 
   - package-ecosystem: github-actions
     directory: '/'
