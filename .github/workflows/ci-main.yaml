@@ -63,7 +63,7 @@ jobs:
       contents: write
     with:
       caching: false
-      build_tasks: build service:dockerPush -x app:build -x test
+      build_tasks: build service:dockerPush snyk-monitor -x app:build -x test
       docker_image_name: kronicle-service
       publish_jars: true
     secrets: inherit
@@ -74,13 +74,6 @@ jobs:
       caching: false
       build_tasks: test -x app:test
       test_reports: true
-    secrets: inherit
-
-  ci-service-snyk:
-    uses: ./.github/workflows/ci-shared-build.yaml
-    environment: publish
-    with:
-      build_tasks: snyk-monitor
     secrets: inherit
 
   ci-e2e-test:
