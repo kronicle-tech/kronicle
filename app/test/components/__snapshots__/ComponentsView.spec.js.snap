@@ -168,7 +168,7 @@ exports[`ComponentsView when components prop is set to multiple components rende
           </tr>
         </thead>
         <tbody>
-          <tr>
+          <tr data-cy-component=\\"test-component-id-1\\">
             <td class=\\"type\\">test-component-type-id-1</td>
             <td class=\\"name table-primary\\"><a href=\\"/components/test-component-id-1\\">Test Component Name 1</a></td>
             <td>
@@ -194,7 +194,7 @@ exports[`ComponentsView when components prop is set to multiple components rende
               </div>
             </td>
           </tr>
-          <tr>
+          <tr data-cy-component=\\"test-component-id-2\\">
             <td class=\\"type\\">test-component-type-id-2</td>
             <td class=\\"name table-primary\\"><a href=\\"/components/test-component-id-2\\">Test Component Name 2</a></td>
             <td>
@@ -220,7 +220,7 @@ exports[`ComponentsView when components prop is set to multiple components rende
               </div>
             </td>
           </tr>
-          <tr>
+          <tr data-cy-component=\\"test-component-id-3\\">
             <td class=\\"type\\">test-component-type-id-3</td>
             <td class=\\"name table-primary\\"><a href=\\"/components/test-component-id-3\\">Test Component Name 3</a></td>
             <td>
@@ -406,7 +406,7 @@ exports[`ComponentsView when components prop is set to multiple components when 
           </tr>
         </thead>
         <tbody>
-          <tr>
+          <tr data-cy-component=\\"test-component-id-1\\">
             <td class=\\"type\\">test-component-type-id-1</td>
             <td class=\\"name table-primary\\"><a href=\\"/components/test-component-id-1\\">Test Component Name 1</a></td>
             <td>
@@ -432,7 +432,7 @@ exports[`ComponentsView when components prop is set to multiple components when 
               </div>
             </td>
           </tr>
-          <tr>
+          <tr data-cy-component=\\"test-component-id-2\\">
             <td class=\\"type\\">test-component-type-id-2</td>
             <td class=\\"name table-primary\\"><a href=\\"/components/test-component-id-2\\">Test Component Name 2</a></td>
             <td>
@@ -458,7 +458,7 @@ exports[`ComponentsView when components prop is set to multiple components when 
               </div>
             </td>
           </tr>
-          <tr>
+          <tr data-cy-component=\\"test-component-id-3\\">
             <td class=\\"type\\">test-component-type-id-3</td>
             <td class=\\"name table-primary\\"><a href=\\"/components/test-component-id-3\\">Test Component Name 3</a></td>
             <td>
@@ -644,7 +644,7 @@ exports[`ComponentsView when components prop is set to multiple components when 
           </tr>
         </thead>
         <tbody>
-          <tr>
+          <tr data-cy-component=\\"test-component-id-1\\">
             <td class=\\"type\\">test-component-type-id-1</td>
             <td class=\\"name table-primary\\"><a href=\\"/components/test-component-id-1\\">Test Component Name 1</a></td>
             <td>

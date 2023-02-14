@@ -875,7 +875,9 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
           </thead>
            
           <tbody>
-            <tr>
+            <tr
+              data-cy-component="test-component-id-1"
+            >
               <td
                 class="type"
               >
@@ -954,7 +956,9 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
                 </div>
               </td>
             </tr>
-            <tr>
+            <tr
+              data-cy-component="test-component-id-2"
+            >
               <td
                 class="type"
               >
@@ -1033,7 +1037,9 @@ exports[`Index when Get Team service endpoint returns a team when the team has c
                 </div>
               </td>
             </tr>
-            <tr>
+            <tr
+              data-cy-component="test-component-id-3"
+            >
               <td
                 class="type"
               >

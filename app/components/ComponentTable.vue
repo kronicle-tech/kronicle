@@ -13,6 +13,7 @@
       <tr
         v-for="(component, componentIndex) in sortedComponents"
         :key="componentIndex"
+        :data-cy-component="component.id"
       >
         <td class="type">{{ component.type }}</td>
         <td class="name table-primary">
