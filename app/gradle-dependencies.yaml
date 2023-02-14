@@ -21,16 +21,16 @@ configurations:
   canBeResolved: true
   resolved: true
   resolvedDependencies:
-  - name: "org.springframework.boot:spring-boot-dependencies:2.7.1"
+  - name: "org.springframework.boot:spring-boot-dependencies:3.0.2"
     direct: true
     dependencies: []
-  - name: "org.springframework.cloud:spring-cloud-dependencies:2021.0.3"
+  - name: "org.springframework.cloud:spring-cloud-dependencies:2022.0.1"
     direct: true
     dependencies: []
-  - name: "org.springframework:spring-core:5.3.21"
+  - name: "org.springframework:spring-core:6.0.4"
     direct: true
     dependencies:
-    - name: "org.springframework:spring-jcl:5.3.21"
+    - name: "org.springframework:spring-jcl:6.0.4"
   - name: "tech.kronicle:sdk:0.0.1"
     direct: true
     dependencies: []
@@ -51,44 +51,44 @@ configurations:
   canBeResolved: true
   resolved: true
   resolvedDependencies:
-  - name: "org.springframework.boot:spring-boot-dependencies:2.7.1"
+  - name: "org.springframework.boot:spring-boot-dependencies:3.0.2"
     direct: true
     dependencies: []
-  - name: "org.springframework.cloud:spring-cloud-dependencies:2021.0.3"
+  - name: "org.springframework.cloud:spring-cloud-dependencies:2022.0.1"
     direct: true
     dependencies: []
-  - name: "org.springframework:spring-core:5.3.21"
+  - name: "org.springframework:spring-core:6.0.4"
     direct: true
     dependencies:
-    - name: "org.springframework:spring-jcl:5.3.21"
+    - name: "org.springframework:spring-jcl:6.0.4"
   - name: "tech.kronicle:sdk:0.0.1"
     direct: true
     dependencies:
-    - name: "com.fasterxml.jackson.core:jackson-databind:2.13.3"
-    - name: "jakarta.validation:jakarta.validation-api:2.0.2"
-    - name: "org.hibernate.validator:hibernate-validator:6.2.3.Final"
-    - name: "org.springframework.boot:spring-boot-dependencies:2.7.1"
-    - name: "org.springframework.cloud:spring-cloud-dependencies:2021.0.3"
+    - name: "com.fasterxml.jackson.core:jackson-databind:2.14.1"
+    - name: "jakarta.validation:jakarta.validation-api:3.0.2"
+    - name: "org.hibernate.validator:hibernate-validator:8.0.0.Final"
+    - name: "org.springframework.boot:spring-boot-dependencies:3.0.2"
+    - name: "org.springframework.cloud:spring-cloud-dependencies:2022.0.1"
     - name: "tech.kronicle:graphql-java-code-first-annotations:0.0.1"
-  - name: "com.fasterxml.jackson.core:jackson-annotations:2.13.3"
+  - name: "com.fasterxml.jackson.core:jackson-annotations:2.14.1"
     dependencies:
-    - name: "com.fasterxml.jackson:jackson-bom:2.13.3"
-  - name: "com.fasterxml.jackson.core:jackson-core:2.13.3"
+    - name: "com.fasterxml.jackson:jackson-bom:2.14.1"
+  - name: "com.fasterxml.jackson.core:jackson-core:2.14.1"
     dependencies:
-    - name: "com.fasterxml.jackson:jackson-bom:2.13.3"
-  - name: "com.fasterxml.jackson.core:jackson-databind:2.13.3"
+    - name: "com.fasterxml.jackson:jackson-bom:2.14.1"
+  - name: "com.fasterxml.jackson.core:jackson-databind:2.14.1"
     dependencies:
-    - name: "com.fasterxml.jackson.core:jackson-annotations:2.13.3"
-    - name: "com.fasterxml.jackson.core:jackson-core:2.13.3"
-    - name: "com.fasterxml.jackson:jackson-bom:2.13.3"
-  - name: "org.hibernate.validator:hibernate-validator:6.2.3.Final"
+    - name: "com.fasterxml.jackson.core:jackson-annotations:2.14.1"
+    - name: "com.fasterxml.jackson.core:jackson-core:2.14.1"
+    - name: "com.fasterxml.jackson:jackson-bom:2.14.1"
+  - name: "org.hibernate.validator:hibernate-validator:8.0.0.Final"
     dependencies:
     - name: "com.fasterxml:classmate:1.5.1"
-    - name: "jakarta.validation:jakarta.validation-api:2.0.2"
-    - name: "org.jboss.logging:jboss-logging:3.4.3.Final"
+    - name: "jakarta.validation:jakarta.validation-api:3.0.2"
+    - name: "org.jboss.logging:jboss-logging:3.5.0.Final"
   - name: "tech.kronicle:graphql-java-code-first-annotations:0.0.1"
     dependencies:
-    - name: "org.springframework.boot:spring-boot-dependencies:2.7.1"
+    - name: "org.springframework.boot:spring-boot-dependencies:3.0.2"
 - name: "docker"
   visible: true
   canBeResolved: true
@@ -100,8 +100,8 @@ configurations:
   resolved: false
   dependencies:
   - name: "tech.kronicle:sdk:0.0.1"
-  - name: "org.springframework.boot:spring-boot-dependencies:2.7.1"
-  - name: "org.springframework.cloud:spring-cloud-dependencies:2021.0.3"
+  - name: "org.springframework.boot:spring-boot-dependencies:3.0.2"
+  - name: "org.springframework.cloud:spring-cloud-dependencies:2022.0.1"
   - name: "org.springframework:spring-core"
 - name: "jacocoAgent"
   description: "The Jacoco agent to use to get coverage data."
@@ -158,44 +158,44 @@ configurations:
   canBeResolved: true
   resolved: true
   resolvedDependencies:
-  - name: "org.springframework.boot:spring-boot-dependencies:2.7.1"
+  - name: "org.springframework.boot:spring-boot-dependencies:3.0.2"
     direct: true
     dependencies: []
-  - name: "org.springframework.cloud:spring-cloud-dependencies:2021.0.3"
+  - name: "org.springframework.cloud:spring-cloud-dependencies:2022.0.1"
     direct: true
     dependencies: []
-  - name: "org.springframework:spring-core:5.3.21"
+  - name: "org.springframework:spring-core:6.0.4"
     direct: true
     dependencies:
-    - name: "org.springframework:spring-jcl:5.3.21"
+    - name: "org.springframework:spring-jcl:6.0.4"
   - name: "tech.kronicle:sdk:0.0.1"
     direct: true
     dependencies:
-    - name: "com.fasterxml.jackson.core:jackson-databind:2.13.3"
-    - name: "jakarta.validation:jakarta.validation-api:2.0.2"
-    - name: "org.hibernate.validator:hibernate-validator:6.2.3.Final"
-    - name: "org.springframework.boot:spring-boot-dependencies:2.7.1"
-    - name: "org.springframework.cloud:spring-cloud-dependencies:2021.0.3"
+    - name: "com.fasterxml.jackson.core:jackson-databind:2.14.1"
+    - name: "jakarta.validation:jakarta.validation-api:3.0.2"
+    - name: "org.hibernate.validator:hibernate-validator:8.0.0.Final"
+    - name: "org.springframework.boot:spring-boot-dependencies:3.0.2"
+    - name: "org.springframework.cloud:spring-cloud-dependencies:2022.0.1"
     - name: "tech.kronicle:graphql-java-code-first-annotations:0.0.1"
-  - name: "com.fasterxml.jackson.core:jackson-annotations:2.13.3"
+  - name: "com.fasterxml.jackson.core:jackson-annotations:2.14.1"
     dependencies:
-    - name: "com.fasterxml.jackson:jackson-bom:2.13.3"
-  - name: "com.fasterxml.jackson.core:jackson-core:2.13.3"
+    - name: "com.fasterxml.jackson:jackson-bom:2.14.1"
+  - name: "com.fasterxml.jackson.core:jackson-core:2.14.1"
     dependencies:
-    - name: "com.fasterxml.jackson:jackson-bom:2.13.3"
-  - name: "com.fasterxml.jackson.core:jackson-databind:2.13.3"
+    - name: "com.fasterxml.jackson:jackson-bom:2.14.1"
+  - name: "com.fasterxml.jackson.core:jackson-databind:2.14.1"
     dependencies:
-    - name: "com.fasterxml.jackson.core:jackson-annotations:2.13.3"
-    - name: "com.fasterxml.jackson.core:jackson-core:2.13.3"
-    - name: "com.fasterxml.jackson:jackson-bom:2.13.3"
-  - name: "org.hibernate.validator:hibernate-validator:6.2.3.Final"
+    - name: "com.fasterxml.jackson.core:jackson-annotations:2.14.1"
+    - name: "com.fasterxml.jackson.core:jackson-core:2.14.1"
+    - name: "com.fasterxml.jackson:jackson-bom:2.14.1"
+  - name: "org.hibernate.validator:hibernate-validator:8.0.0.Final"
     dependencies:
     - name: "com.fasterxml:classmate:1.5.1"
-    - name: "jakarta.validation:jakarta.validation-api:2.0.2"
-    - name: "org.jboss.logging:jboss-logging:3.4.3.Final"
+    - name: "jakarta.validation:jakarta.validation-api:3.0.2"
+    - name: "org.jboss.logging:jboss-logging:3.5.0.Final"
   - name: "tech.kronicle:graphql-java-code-first-annotations:0.0.1"
     dependencies:
-    - name: "org.springframework.boot:spring-boot-dependencies:2.7.1"
+    - name: "org.springframework.boot:spring-boot-dependencies:3.0.2"
 - name: "runtimeElements"
   description: "Elements of runtime for main."
   visible: false
@@ -217,16 +217,16 @@ configurations:
   canBeResolved: true
   resolved: true
   resolvedDependencies:
-  - name: "org.springframework.boot:spring-boot-dependencies:2.7.1"
+  - name: "org.springframework.boot:spring-boot-dependencies:3.0.2"
     direct: true
     dependencies: []
-  - name: "org.springframework.cloud:spring-cloud-dependencies:2021.0.3"
+  - name: "org.springframework.cloud:spring-cloud-dependencies:2022.0.1"
     direct: true
     dependencies: []
-  - name: "org.springframework:spring-core:5.3.21"
+  - name: "org.springframework:spring-core:6.0.4"
     direct: true
     dependencies:
-    - name: "org.springframework:spring-jcl:5.3.21"
+    - name: "org.springframework:spring-jcl:6.0.4"
   - name: "tech.kronicle:sdk:0.0.1"
     direct: true
     dependencies: []
@@ -252,44 +252,44 @@ configurations:
   canBeResolved: true
   resolved: true
   resolvedDependencies:
-  - name: "org.springframework.boot:spring-boot-dependencies:2.7.1"
+  - name: "org.springframework.boot:spring-boot-dependencies:3.0.2"
     direct: true
     dependencies: []
-  - name: "org.springframework.cloud:spring-cloud-dependencies:2021.0.3"
+  - name: "org.springframework.cloud:spring-cloud-dependencies:2022.0.1"
     direct: true
     dependencies: []
-  - name: "org.springframework:spring-core:5.3.21"
+  - name: "org.springframework:spring-core:6.0.4"
     direct: true
     dependencies:
-    - name: "org.springframework:spring-jcl:5.3.21"
+    - name: "org.springframework:spring-jcl:6.0.4"
   - name: "tech.kronicle:sdk:0.0.1"
     direct: true
     dependencies:
-    - name: "com.fasterxml.jackson.core:jackson-databind:2.13.3"
-    - name: "jakarta.validation:jakarta.validation-api:2.0.2"
-    - name: "org.hibernate.validator:hibernate-validator:6.2.3.Final"
-    - name: "org.springframework.boot:spring-boot-dependencies:2.7.1"
-    - name: "org.springframework.cloud:spring-cloud-dependencies:2021.0.3"
+    - name: "com.fasterxml.jackson.core:jackson-databind:2.14.1"
+    - name: "jakarta.validation:jakarta.validation-api:3.0.2"
+    - name: "org.hibernate.validator:hibernate-validator:8.0.0.Final"
+    - name: "org.springframework.boot:spring-boot-dependencies:3.0.2"
+    - name: "org.springframework.cloud:spring-cloud-dependencies:2022.0.1"
     - name: "tech.kronicle:graphql-java-code-first-annotations:0.0.1"
-  - name: "com.fasterxml.jackson.core:jackson-annotations:2.13.3"
+  - name: "com.fasterxml.jackson.core:jackson-annotations:2.14.1"
     dependencies:
-    - name: "com.fasterxml.jackson:jackson-bom:2.13.3"
-  - name: "com.fasterxml.jackson.core:jackson-core:2.13.3"
+    - name: "com.fasterxml.jackson:jackson-bom:2.14.1"
+  - name: "com.fasterxml.jackson.core:jackson-core:2.14.1"
     dependencies:
-    - name: "com.fasterxml.jackson:jackson-bom:2.13.3"
-  - name: "com.fasterxml.jackson.core:jackson-databind:2.13.3"
+    - name: "com.fasterxml.jackson:jackson-bom:2.14.1"
+  - name: "com.fasterxml.jackson.core:jackson-databind:2.14.1"
     dependencies:
-    - name: "com.fasterxml.jackson.core:jackson-annotations:2.13.3"
-    - name: "com.fasterxml.jackson.core:jackson-core:2.13.3"
-    - name: "com.fasterxml.jackson:jackson-bom:2.13.3"
-  - name: "org.hibernate.validator:hibernate-validator:6.2.3.Final"
+    - name: "com.fasterxml.jackson.core:jackson-annotations:2.14.1"
+    - name: "com.fasterxml.jackson.core:jackson-core:2.14.1"
+    - name: "com.fasterxml.jackson:jackson-bom:2.14.1"
+  - name: "org.hibernate.validator:hibernate-validator:8.0.0.Final"
     dependencies:
     - name: "com.fasterxml:classmate:1.5.1"
-    - name: "jakarta.validation:jakarta.validation-api:2.0.2"
-    - name: "org.jboss.logging:jboss-logging:3.4.3.Final"
+    - name: "jakarta.validation:jakarta.validation-api:3.0.2"
+    - name: "org.jboss.logging:jboss-logging:3.5.0.Final"
   - name: "tech.kronicle:graphql-java-code-first-annotations:0.0.1"
     dependencies:
-    - name: "org.springframework.boot:spring-boot-dependencies:2.7.1"
+    - name: "org.springframework.boot:spring-boot-dependencies:3.0.2"
 - name: "testRuntimeOnly"
   description: "Runtime only dependencies for source set 'test'."
   visible: false

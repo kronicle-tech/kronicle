@@ -7,19 +7,19 @@ configurations:
   resolved: true
   dependencies:
   - name: "org.springframework.boot:spring-boot-configuration-processor"
-  - name: "org.springframework.boot:spring-boot-dependencies:2.7.1"
-  - name: "org.springframework.cloud:spring-cloud-dependencies:2021.0.3"
+  - name: "org.springframework.boot:spring-boot-dependencies:3.0.2"
+  - name: "org.springframework.cloud:spring-cloud-dependencies:2022.0.1"
   resolvedDependencies:
   - name: "org.projectlombok:lombok:1.18.24"
     direct: true
     dependencies: []
-  - name: "org.springframework.boot:spring-boot-configuration-processor:2.7.1"
+  - name: "org.springframework.boot:spring-boot-configuration-processor:3.0.2"
     direct: true
     dependencies: []
-  - name: "org.springframework.boot:spring-boot-dependencies:2.7.1"
+  - name: "org.springframework.boot:spring-boot-dependencies:3.0.2"
     direct: true
     dependencies: []
-  - name: "org.springframework.cloud:spring-cloud-dependencies:2021.0.3"
+  - name: "org.springframework.cloud:spring-cloud-dependencies:2022.0.1"
     direct: true
     dependencies: []
 - name: "api"
@@ -47,16 +47,16 @@ configurations:
     direct: true
     dependencies:
     - name: "com.google.code.findbugs:jsr305:3.0.2"
-  - name: "jakarta.validation:jakarta.validation-api:2.0.2"
+  - name: "jakarta.validation:jakarta.validation-api:3.0.2"
     direct: true
     dependencies: []
   - name: "org.projectlombok:lombok:1.18.24"
     direct: true
     dependencies: []
-  - name: "org.springframework.boot:spring-boot-dependencies:2.7.1"
+  - name: "org.springframework.boot:spring-boot-dependencies:3.0.2"
     direct: true
     dependencies: []
-  - name: "org.springframework.cloud:spring-cloud-dependencies:2021.0.3"
+  - name: "org.springframework.cloud:spring-cloud-dependencies:2022.0.1"
     direct: true
     dependencies: []
 - name: "compileOnly"
@@ -67,8 +67,8 @@ configurations:
   dependencies:
   - name: "com.github.spotbugs:spotbugs-annotations:4.5.3"
   - name: "com.github.spotbugs:spotbugs-annotations:4.1.3"
-  - name: "org.springframework.boot:spring-boot-dependencies:2.7.1"
-  - name: "org.springframework.cloud:spring-cloud-dependencies:2021.0.3"
+  - name: "org.springframework.boot:spring-boot-dependencies:3.0.2"
+  - name: "org.springframework.cloud:spring-cloud-dependencies:2022.0.1"
 - name: "compileOnlyApi"
   description: "Compile only API dependencies for source set 'main'."
   visible: false
@@ -86,13 +86,13 @@ configurations:
   canBeResolved: true
   resolved: true
   resolvedDependencies:
-  - name: "jakarta.validation:jakarta.validation-api:2.0.2"
+  - name: "jakarta.validation:jakarta.validation-api:3.0.2"
     direct: true
     dependencies: []
-  - name: "org.springframework.boot:spring-boot-dependencies:2.7.1"
+  - name: "org.springframework.boot:spring-boot-dependencies:3.0.2"
     direct: true
     dependencies: []
-  - name: "org.springframework.cloud:spring-cloud-dependencies:2021.0.3"
+  - name: "org.springframework.cloud:spring-cloud-dependencies:2022.0.1"
     direct: true
     dependencies: []
 - name: "implementation"
@@ -102,8 +102,8 @@ configurations:
   resolved: false
   dependencies:
   - name: "jakarta.validation:jakarta.validation-api"
-  - name: "org.springframework.boot:spring-boot-dependencies:2.7.1"
-  - name: "org.springframework.cloud:spring-cloud-dependencies:2021.0.3"
+  - name: "org.springframework.boot:spring-boot-dependencies:3.0.2"
+  - name: "org.springframework.cloud:spring-cloud-dependencies:2022.0.1"
 - name: "jacocoAgent"
   description: "The Jacoco agent to use to get coverage data."
   visible: false
@@ -174,13 +174,13 @@ configurations:
   canBeResolved: true
   resolved: true
   resolvedDependencies:
-  - name: "jakarta.validation:jakarta.validation-api:2.0.2"
+  - name: "jakarta.validation:jakarta.validation-api:3.0.2"
     direct: true
     dependencies: []
-  - name: "org.springframework.boot:spring-boot-dependencies:2.7.1"
+  - name: "org.springframework.boot:spring-boot-dependencies:3.0.2"
     direct: true
     dependencies: []
-  - name: "org.springframework.cloud:spring-cloud-dependencies:2021.0.3"
+  - name: "org.springframework.cloud:spring-cloud-dependencies:2022.0.1"
     direct: true
     dependencies: []
 - name: "runtimeElements"
@@ -208,16 +208,16 @@ configurations:
   canBeResolved: true
   resolved: true
   dependencies:
-  - name: "org.springframework.boot:spring-boot-dependencies:2.7.1"
-  - name: "org.springframework.cloud:spring-cloud-dependencies:2021.0.3"
+  - name: "org.springframework.boot:spring-boot-dependencies:3.0.2"
+  - name: "org.springframework.cloud:spring-cloud-dependencies:2022.0.1"
   resolvedDependencies:
   - name: "org.projectlombok:lombok:1.18.24"
     direct: true
     dependencies: []
-  - name: "org.springframework.boot:spring-boot-dependencies:2.7.1"
+  - name: "org.springframework.boot:spring-boot-dependencies:3.0.2"
     direct: true
     dependencies: []
-  - name: "org.springframework.cloud:spring-cloud-dependencies:2021.0.3"
+  - name: "org.springframework.cloud:spring-cloud-dependencies:2022.0.1"
     direct: true
     dependencies: []
 - name: "testCompileClasspath"
@@ -226,79 +226,80 @@ configurations:
   canBeResolved: true
   resolved: true
   resolvedDependencies:
-  - name: "ch.qos.logback:logback-classic:1.2.11"
+  - name: "ch.qos.logback:logback-classic:1.4.5"
     direct: true
     dependencies:
-    - name: "ch.qos.logback:logback-core:1.2.11"
-    - name: "org.slf4j:slf4j-api:1.7.36"
+    - name: "ch.qos.logback:logback-core:1.4.5"
+    - name: "org.slf4j:slf4j-api:2.0.6"
   - name: "com.github.spotbugs:spotbugs-annotations:4.5.3"
     direct: true
     dependencies:
     - name: "com.google.code.findbugs:jsr305:3.0.2"
-  - name: "jakarta.validation:jakarta.validation-api:2.0.2"
+  - name: "jakarta.validation:jakarta.validation-api:3.0.2"
     direct: true
     dependencies: []
-  - name: "org.assertj:assertj-core:3.22.0"
+  - name: "org.assertj:assertj-core:3.23.1"
     direct: true
-    dependencies: []
+    dependencies:
+    - name: "net.bytebuddy:byte-buddy:1.12.22"
   - name: "org.glassfish:javax.el:3.0.0"
     direct: true
     dependencies: []
-  - name: "org.hibernate.validator:hibernate-validator:6.2.3.Final"
+  - name: "org.hibernate.validator:hibernate-validator:8.0.0.Final"
     direct: true
     dependencies:
     - name: "com.fasterxml:classmate:1.5.1"
-    - name: "jakarta.validation:jakarta.validation-api:2.0.2"
-    - name: "org.jboss.logging:jboss-logging:3.4.3.Final"
-  - name: "org.junit.jupiter:junit-jupiter-params:5.8.2"
+    - name: "jakarta.validation:jakarta.validation-api:3.0.2"
+    - name: "org.jboss.logging:jboss-logging:3.5.0.Final"
+  - name: "org.junit.jupiter:junit-jupiter-params:5.9.2"
     direct: true
     dependencies:
     - name: "org.apiguardian:apiguardian-api:1.1.2"
-    - name: "org.junit.jupiter:junit-jupiter-api:5.8.2"
-    - name: "org.junit:junit-bom:5.8.2"
-  - name: "org.junit.jupiter:junit-jupiter:5.8.2"
+    - name: "org.junit.jupiter:junit-jupiter-api:5.9.2"
+    - name: "org.junit:junit-bom:5.9.2"
+  - name: "org.junit.jupiter:junit-jupiter:5.9.2"
     direct: true
     dependencies:
-    - name: "org.junit.jupiter:junit-jupiter-api:5.8.2"
-    - name: "org.junit.jupiter:junit-jupiter-params:5.8.2"
-    - name: "org.junit:junit-bom:5.8.2"
-  - name: "org.mockito:mockito-core:4.5.1"
+    - name: "org.junit.jupiter:junit-jupiter-api:5.9.2"
+    - name: "org.junit.jupiter:junit-jupiter-params:5.9.2"
+    - name: "org.junit:junit-bom:5.9.2"
+  - name: "org.mockito:mockito-core:4.8.1"
     direct: true
     dependencies:
-    - name: "net.bytebuddy:byte-buddy-agent:1.12.11"
-    - name: "net.bytebuddy:byte-buddy:1.12.11"
-  - name: "org.mockito:mockito-junit-jupiter:4.5.1"
+    - name: "net.bytebuddy:byte-buddy-agent:1.12.22"
+    - name: "net.bytebuddy:byte-buddy:1.12.22"
+  - name: "org.mockito:mockito-junit-jupiter:4.8.1"
     direct: true
     dependencies:
-    - name: "org.mockito:mockito-core:4.5.1"
+    - name: "org.mockito:mockito-core:4.8.1"
   - name: "org.projectlombok:lombok:1.18.24"
     direct: true
     dependencies: []
-  - name: "org.springframework.boot:spring-boot-dependencies:2.7.1"
+  - name: "org.springframework.boot:spring-boot-dependencies:3.0.2"
     direct: true
     dependencies: []
-  - name: "org.springframework.cloud:spring-cloud-dependencies:2021.0.3"
+  - name: "org.springframework.cloud:spring-cloud-dependencies:2022.0.1"
     direct: true
     dependencies: []
-  - name: "org.junit.jupiter:junit-jupiter-api:5.8.2"
+  - name: "org.junit.jupiter:junit-jupiter-api:5.9.2"
     dependencies:
     - name: "org.apiguardian:apiguardian-api:1.1.2"
-    - name: "org.junit.platform:junit-platform-commons:1.8.2"
-    - name: "org.junit:junit-bom:5.8.2"
+    - name: "org.junit.platform:junit-platform-commons:1.9.2"
+    - name: "org.junit:junit-bom:5.9.2"
     - name: "org.opentest4j:opentest4j:1.2.0"
-  - name: "org.junit.jupiter:junit-jupiter-params:5.8.2"
+  - name: "org.junit.jupiter:junit-jupiter-params:5.9.2"
     dependencies:
     - name: "org.apiguardian:apiguardian-api:1.1.2"
-    - name: "org.junit.jupiter:junit-jupiter-api:5.8.2"
-    - name: "org.junit:junit-bom:5.8.2"
-  - name: "org.junit.platform:junit-platform-commons:1.8.2"
+    - name: "org.junit.jupiter:junit-jupiter-api:5.9.2"
+    - name: "org.junit:junit-bom:5.9.2"
+  - name: "org.junit.platform:junit-platform-commons:1.9.2"
     dependencies:
     - name: "org.apiguardian:apiguardian-api:1.1.2"
-    - name: "org.junit:junit-bom:5.8.2"
-  - name: "org.mockito:mockito-core:4.5.1"
+    - name: "org.junit:junit-bom:5.9.2"
+  - name: "org.mockito:mockito-core:4.8.1"
     dependencies:
-    - name: "net.bytebuddy:byte-buddy-agent:1.12.11"
-    - name: "net.bytebuddy:byte-buddy:1.12.11"
+    - name: "net.bytebuddy:byte-buddy-agent:1.12.22"
+    - name: "net.bytebuddy:byte-buddy:1.12.22"
 - name: "testCompileOnly"
   description: "Compile only dependencies for source set 'test'."
   visible: false
@@ -321,8 +322,8 @@ configurations:
   - name: "ch.qos.logback:logback-classic"
   - name: "org.mockito:mockito-core"
   - name: "org.mockito:mockito-junit-jupiter"
-  - name: "org.springframework.boot:spring-boot-dependencies:2.7.1"
-  - name: "org.springframework.cloud:spring-cloud-dependencies:2021.0.3"
+  - name: "org.springframework.boot:spring-boot-dependencies:3.0.2"
+  - name: "org.springframework.cloud:spring-cloud-dependencies:2022.0.1"
 - name: "testResultsElementsForTest"
   description: "Directory containing binary results of running tests for the test\
     \ Test Suite's test target."
@@ -335,81 +336,82 @@ configurations:
   canBeResolved: true
   resolved: true
   resolvedDependencies:
-  - name: "ch.qos.logback:logback-classic:1.2.11"
+  - name: "ch.qos.logback:logback-classic:1.4.5"
     direct: true
     dependencies:
-    - name: "ch.qos.logback:logback-core:1.2.11"
-    - name: "org.slf4j:slf4j-api:1.7.36"
-  - name: "jakarta.validation:jakarta.validation-api:2.0.2"
+    - name: "ch.qos.logback:logback-core:1.4.5"
+    - name: "org.slf4j:slf4j-api:2.0.6"
+  - name: "jakarta.validation:jakarta.validation-api:3.0.2"
     direct: true
     dependencies: []
-  - name: "org.assertj:assertj-core:3.22.0"
+  - name: "org.assertj:assertj-core:3.23.1"
     direct: true
-    dependencies: []
+    dependencies:
+    - name: "net.bytebuddy:byte-buddy:1.12.22"
   - name: "org.glassfish:javax.el:3.0.0"
     direct: true
     dependencies: []
-  - name: "org.hibernate.validator:hibernate-validator:6.2.3.Final"
+  - name: "org.hibernate.validator:hibernate-validator:8.0.0.Final"
     direct: true
     dependencies:
     - name: "com.fasterxml:classmate:1.5.1"
-    - name: "jakarta.validation:jakarta.validation-api:2.0.2"
-    - name: "org.jboss.logging:jboss-logging:3.4.3.Final"
-  - name: "org.junit.jupiter:junit-jupiter-params:5.8.2"
+    - name: "jakarta.validation:jakarta.validation-api:3.0.2"
+    - name: "org.jboss.logging:jboss-logging:3.5.0.Final"
+  - name: "org.junit.jupiter:junit-jupiter-params:5.9.2"
     direct: true
     dependencies:
-    - name: "org.junit.jupiter:junit-jupiter-api:5.8.2"
-    - name: "org.junit:junit-bom:5.8.2"
-  - name: "org.junit.jupiter:junit-jupiter:5.8.2"
+    - name: "org.junit.jupiter:junit-jupiter-api:5.9.2"
+    - name: "org.junit:junit-bom:5.9.2"
+  - name: "org.junit.jupiter:junit-jupiter:5.9.2"
     direct: true
     dependencies:
-    - name: "org.junit.jupiter:junit-jupiter-api:5.8.2"
-    - name: "org.junit.jupiter:junit-jupiter-engine:5.8.2"
-    - name: "org.junit.jupiter:junit-jupiter-params:5.8.2"
-    - name: "org.junit:junit-bom:5.8.2"
-  - name: "org.mockito:mockito-core:4.5.1"
+    - name: "org.junit.jupiter:junit-jupiter-api:5.9.2"
+    - name: "org.junit.jupiter:junit-jupiter-engine:5.9.2"
+    - name: "org.junit.jupiter:junit-jupiter-params:5.9.2"
+    - name: "org.junit:junit-bom:5.9.2"
+  - name: "org.mockito:mockito-core:4.8.1"
     direct: true
     dependencies:
-    - name: "net.bytebuddy:byte-buddy-agent:1.12.11"
-    - name: "net.bytebuddy:byte-buddy:1.12.11"
+    - name: "net.bytebuddy:byte-buddy-agent:1.12.22"
+    - name: "net.bytebuddy:byte-buddy:1.12.22"
     - name: "org.objenesis:objenesis:3.2"
-  - name: "org.mockito:mockito-junit-jupiter:4.5.1"
+  - name: "org.mockito:mockito-junit-jupiter:4.8.1"
     direct: true
     dependencies:
-    - name: "org.junit.jupiter:junit-jupiter-api:5.8.2"
-    - name: "org.mockito:mockito-core:4.5.1"
-  - name: "org.springframework.boot:spring-boot-dependencies:2.7.1"
-    direct: true
-    dependencies: []
-  - name: "org.springframework.cloud:spring-cloud-dependencies:2021.0.3"
+    - name: "org.junit.jupiter:junit-jupiter-api:5.9.2"
+    - name: "org.mockito:mockito-core:4.8.1"
+  - name: "org.springframework.boot:spring-boot-dependencies:3.0.2"
     direct: true
     dependencies: []
-  - name: "org.junit.jupiter:junit-jupiter-api:5.8.2"
+  - name: "org.springframework.cloud:spring-cloud-dependencies:2022.0.1"
+    direct: true
+    dependencies: []
+  - name: "org.junit.jupiter:junit-jupiter-api:5.9.2"
     dependencies:
-    - name: "org.junit.platform:junit-platform-commons:1.8.2"
-    - name: "org.junit:junit-bom:5.8.2"
+    - name: "org.junit.platform:junit-platform-commons:1.9.2"
+    - name: "org.junit:junit-bom:5.9.2"
     - name: "org.opentest4j:opentest4j:1.2.0"
-  - name: "org.junit.jupiter:junit-jupiter-engine:5.8.2"
+  - name: "org.junit.jupiter:junit-jupiter-engine:5.9.2"
     dependencies:
-    - name: "org.junit.jupiter:junit-jupiter-api:5.8.2"
-    - name: "org.junit.platform:junit-platform-engine:1.8.2"
-    - name: "org.junit:junit-bom:5.8.2"
-  - name: "org.junit.jupiter:junit-jupiter-params:5.8.2"
+    - name: "org.junit.jupiter:junit-jupiter-api:5.9.2"
+    - name: "org.junit.platform:junit-platform-engine:1.9.2"
+    - name: "org.junit:junit-bom:5.9.2"
+  - name: "org.junit.jupiter:junit-jupiter-params:5.9.2"
     dependencies:
-    - name: "org.junit.jupiter:junit-jupiter-api:5.8.2"
-    - name: "org.junit:junit-bom:5.8.2"
-  - name: "org.junit.platform:junit-platform-commons:1.8.2"
+    - name: "org.junit.jupiter:junit-jupiter-api:5.9.2"
+    - name: "org.junit:junit-bom:5.9.2"
+  - name: "org.junit.platform:junit-platform-commons:1.9.2"
     dependencies:
-    - name: "org.junit:junit-bom:5.8.2"
-  - name: "org.junit.platform:junit-platform-engine:1.8.2"
+    - name: "org.junit:junit-bom:5.9.2"
+  - name: "org.junit.platform:junit-platform-engine:1.9.2"
     dependencies:
-    - name: "org.junit.platform:junit-platform-commons:1.8.2"
-    - name: "org.junit:junit-bom:5.8.2"
+    - name: "org.junit.platform:junit-platform-commons:1.9.2"
+    - name: "org.junit:junit-bom:5.9.2"
     - name: "org.opentest4j:opentest4j:1.2.0"
-  - name: "org.mockito:mockito-core:4.5.1"
+  - name: "org.mockito:mockito-core:4.8.1"
     dependencies:
-    - name: "net.bytebuddy:byte-buddy-agent:1.12.11"
-    - name: "net.bytebuddy:byte-buddy:1.12.11"
+    - name: "net.bytebuddy:byte-buddy-agent:1.12.22"
+    - name: "net.bytebuddy:byte-buddy:1.12.22"
     - name: "org.objenesis:objenesis:3.2"
 - name: "testRuntimeOnly"
   description: "Runtime only dependencies for source set 'test'."
