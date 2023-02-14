@@ -78,6 +78,7 @@ jobs:
 
   ci-service-snyk:
     uses: ./.github/workflows/ci-shared-build.yaml
+    environment: publish
     with:
       build_tasks: snyk-monitor
     secrets: inherit
