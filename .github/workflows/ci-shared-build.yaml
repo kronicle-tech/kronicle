@@ -134,13 +134,13 @@ jobs:
 
       - name: Archive Cypress outputs 🗄️
         uses: actions/upload-artifact@v3
-        if: ${{ inputs.cypress_outputs }}
+        if: always()
         with:
           name: cypress-artifacts
           path: |
             app/cypress/screenshots/**
             app/cypress/videos/**
-          if-no-files-found: error
+          if-no-files-found: ${{ inputs.cypress_outputs && 'error' || 'ignore' }}
 
       - name: Clean up Gradle Cache
         if: ${{ inputs.caching }}
