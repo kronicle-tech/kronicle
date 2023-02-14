@@ -23,6 +23,10 @@ public class ComponentService {
 
     private final ComponentRepository componentRepository;
 
+    public boolean hasComponents() {
+        return componentRepository.hasComponents();
+    }
+
     public List<Component> getComponents(
             Optional<Integer> offset,
             Optional<Integer> limit,

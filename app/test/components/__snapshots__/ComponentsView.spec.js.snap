@@ -3,7 +3,7 @@
 exports[`ComponentsView when components prop is set to an empty array renders no table 1`] = `
 "<div>
   <!---->
-  <div class=\\"card\\">
+  <div data-cy-component-count=\\"0\\" class=\\"card\\">
     <!---->
     <!---->
     <div class=\\"card-body\\">
@@ -151,7 +151,7 @@ exports[`ComponentsView when components prop is set to multiple components rende
       </div>
     </transition-stub>
   </div>
-  <div class=\\"card\\">
+  <div data-cy-component-count=\\"3\\" class=\\"card\\">
     <!---->
     <!---->
     <div class=\\"card-body\\">
@@ -389,7 +389,7 @@ exports[`ComponentsView when components prop is set to multiple components when 
       </div>
     </transition-stub>
   </div>
-  <div class=\\"card\\">
+  <div data-cy-component-count=\\"3\\" class=\\"card\\">
     <!---->
     <!---->
     <div class=\\"card-body\\">
@@ -627,7 +627,7 @@ exports[`ComponentsView when components prop is set to multiple components when 
       </div>
     </transition-stub>
   </div>
-  <div class=\\"card\\">
+  <div data-cy-component-count=\\"1\\" class=\\"card\\">
     <!---->
     <!---->
     <div class=\\"card-body\\">

@@ -701,6 +701,7 @@ exports[`Index when Get Components service endpoint returns an array of multiple
      
     <div
       class="card"
+      data-cy-component-count="3"
     >
       <!---->
       <!---->
@@ -1073,6 +1074,7 @@ exports[`Index when Get Components service endpoint returns an empty array rende
      
     <div
       class="card"
+      data-cy-component-count="0"
     >
       <!---->
       <!---->

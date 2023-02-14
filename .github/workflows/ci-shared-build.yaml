@@ -109,7 +109,7 @@ jobs:
             REPO_FINDERS_IGNORED_REPOS_1_URL=https://github.com/kronicle-tech/kronicle-metadata-codebase-template.git \
             REPO_FINDERS_IGNORED_REPOS_2_URL=https://github.com/kronicle-tech/kronicle-argocd-config.git \
             java -jar build/libs/service-*.jar &
-          npx wait-on -l --httpTimeout 10000 -t 60000 http://localhost:8090
+          npx wait-on -l --httpTimeout 10000 -t 60000 http://localhost:8090/populated
 
       - name: Run the App 🚀
         if: ${{ inputs.run_app }}

@@ -416,6 +416,32 @@ public class ComponentRepositoryTest {
     }
 
     @Test
+    public void hasComponentsShouldReturnTrueWhenThereAreComponents() {
+        // Given
+        when(mockComponentMetadataRepository.getComponentMetadata()).thenReturn(createComponentMetadata());
+        initializeAndWaitForRefreshToFinish(underTest);
+
+        // When
+        boolean returnValue = underTest.hasComponents();
+
+        // Then
+        assertThat(returnValue).isTrue();
+    }
+
+    @Test
+    public void hasComponentsShouldReturnFalseWhenThereAreNoComponents() {
+        // Given
+        when(mockComponentMetadataRepository.getComponentMetadata()).thenReturn(createEmptyComponentMetadata());
+        initializeAndWaitForRefreshToFinish(underTest);
+
+        // When
+        boolean returnValue = underTest.hasComponents();
+
+        // Then
+        assertThat(returnValue).isFalse();
+    }
+
+    @Test
     public void getComponentsShouldReturnAllComponents() {
         // Given
         when(mockComponentMetadataRepository.getComponentMetadata()).thenReturn(createComponentMetadata());
@@ -767,6 +793,12 @@ public class ComponentRepositoryTest {
     private static boolean eventWithMessageHasBeenLogged(LogCaptor logCaptor, String message) {
         return logCaptor.getEvents().stream()
                 .anyMatch(event -> Objects.equals(event.getMessage(), message));
+    }
+
+    private ComponentMetadata createEmptyComponentMetadata() {
+        return ComponentMetadata
+                .builder()
+                .build();
     }
 
     private ComponentMetadata createComponentMetadata() {

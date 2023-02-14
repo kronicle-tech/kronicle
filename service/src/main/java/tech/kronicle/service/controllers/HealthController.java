@@ -5,7 +5,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import tech.kronicle.service.partialresponse.PartialResponse;
 
 @RestController
 @RequiredArgsConstructor
@@ -19,7 +18,6 @@ public class HealthController {
             operationId = "get-health"
     )
     @GetMapping
-    @PartialResponse
     public String getHealth() {
         return "OK";
     }
