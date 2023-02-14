@@ -1,0 +1,5 @@
+snyk {
+    autoDownload = true
+    autoUpdate = true
+    arguments = '--all-sub-projects'
+}

@@ -76,6 +76,12 @@ jobs:
       test_reports: true
     secrets: inherit
 
+  ci-service-snyk:
+    uses: ./.github/workflows/ci-shared-build.yaml
+    with:
+      build_tasks: snyk-monitor
+    secrets: inherit
+
   ci-e2e-test:
     uses: ./.github/workflows/ci-shared-build.yaml
     with:

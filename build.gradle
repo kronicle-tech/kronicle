@@ -6,10 +6,12 @@ plugins {
     id "jacoco"
     id "com.github.spotbugs"
     id "pl.allegro.tech.build.axion-release"
+    id "io.snyk.gradle.plugin.snykplugin"
 }
 
 apply from: "gradle/kronicle-metadata.gradle"
 apply from: "gradle/sonarqube.gradle"
+apply from: "gradle/snyk.gradle"
 
 subprojects {
     buildscript {
