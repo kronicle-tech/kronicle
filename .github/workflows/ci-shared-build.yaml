@@ -104,10 +104,7 @@ jobs:
           ./gradlew service:bootJar service:copyPlugins
           cd service
           PLUGINS_GITHUB_ENABLED=true \
-            PLUGINS_GITHUB_ORGANIZATIONS_0_ACCOUNT_NAME=kronicle-tech \
-            REPO_FINDERS_IGNORED_REPOS_0_URL=https://github.com/kronicle-tech/kronicle-metadata-repo-template.git \
-            REPO_FINDERS_IGNORED_REPOS_1_URL=https://github.com/kronicle-tech/kronicle-metadata-codebase-template.git \
-            REPO_FINDERS_IGNORED_REPOS_2_URL=https://github.com/kronicle-tech/kronicle-argocd-config.git \
+            PLUGINS_GITHUB_ORGANIZATIONS_0_ACCOUNT_NAME=example-small-organisation \
             java -jar build/libs/service-*.jar &
           npx wait-on -l --httpTimeout 10000 -t 60000 http://localhost:8090/populated
 
