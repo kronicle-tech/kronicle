@@ -6,8 +6,8 @@ import lombok.With;
 import lombok.extern.jackson.Jacksonized;
 import tech.kronicle.sdk.constants.PatternStrings;
 
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Pattern;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
 
 @Value
 @With

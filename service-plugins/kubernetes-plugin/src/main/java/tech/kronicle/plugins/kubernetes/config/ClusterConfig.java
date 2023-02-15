@@ -3,8 +3,8 @@ package tech.kronicle.plugins.kubernetes.config;
 import lombok.Value;
 import tech.kronicle.sdk.constants.PatternStrings;
 
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Pattern;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
 
 @Value
 public class ClusterConfig {

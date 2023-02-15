@@ -3,9 +3,9 @@ package tech.kronicle.common;
 import lombok.Value;
 import org.junit.jupiter.api.Test;
 
-import javax.validation.Validation;
-import javax.validation.Validator;
-import javax.validation.constraints.NotNull;
+import jakarta.validation.Validation;
+import jakarta.validation.Validator;
+import jakarta.validation.constraints.NotNull;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.catchThrowable;

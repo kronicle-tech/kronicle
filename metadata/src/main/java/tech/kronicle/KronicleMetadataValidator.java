@@ -6,8 +6,8 @@ import tech.kronicle.common.ValidationConstraintViolationTransformer;
 import tech.kronicle.common.ValidatorService;
 import tech.kronicle.sdk.models.ComponentMetadata;
 
-import javax.validation.Validation;
-import javax.validation.Validator;
+import jakarta.validation.Validation;
+import jakarta.validation.Validator;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;

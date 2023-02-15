@@ -2,7 +2,7 @@ package tech.kronicle.plugins.graphql.config;
 
 import lombok.Value;
 
-import javax.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotNull;
 import java.time.Duration;
 
 @Value

@@ -2,8 +2,8 @@ package tech.kronicle.common;
 
 import lombok.RequiredArgsConstructor;
 
-import javax.validation.ConstraintViolation;
-import javax.validation.Validator;
+import jakarta.validation.ConstraintViolation;
+import jakarta.validation.Validator;
 import java.util.Set;
 
 @RequiredArgsConstructor

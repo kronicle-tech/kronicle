@@ -14,7 +14,7 @@ import tech.kronicle.sdk.models.*;
 import tech.kronicle.sdk.models.sonarqube.SonarQubeProject;
 import tech.kronicle.sdk.models.sonarqube.SummarySonarQubeMetric;
 
-import javax.validation.Valid;
+import jakarta.validation.Valid;
 import java.nio.file.Path;
 import java.time.Duration;
 import java.util.List;

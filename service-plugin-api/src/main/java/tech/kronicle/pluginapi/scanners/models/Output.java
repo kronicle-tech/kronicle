@@ -5,7 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Value;
 import tech.kronicle.sdk.models.ScannerError;
 
-import javax.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotNull;
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;

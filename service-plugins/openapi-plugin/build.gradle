@@ -20,7 +20,7 @@ dependencies {
 
     implementation "commons-io:commons-io:$commonsIoVersion"
     implementation("io.swagger.parser.v3:swagger-parser:$swaggerParserVersion") {
-        exclude group: "javax.validation", module: "validation-api"
+        exclude group: "jakarta.validation", module: "validation-api"
     }
 
     testImplementation project(":service-plugin-test-utils")

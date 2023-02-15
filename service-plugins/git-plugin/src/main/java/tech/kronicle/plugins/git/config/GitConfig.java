@@ -3,7 +3,7 @@ package tech.kronicle.plugins.git.config;
 import lombok.Value;
 import lombok.experimental.NonFinal;
 
-import javax.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotEmpty;
 import java.util.List;
 
 @Value

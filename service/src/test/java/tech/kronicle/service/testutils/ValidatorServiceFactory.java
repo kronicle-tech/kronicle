@@ -4,7 +4,7 @@ import tech.kronicle.common.ValidationConstraintViolationTransformer;
 import tech.kronicle.service.services.ValidationConstraintViolationChecker;
 import tech.kronicle.service.services.ValidatorService;
 
-import javax.validation.Validation;
+import jakarta.validation.Validation;
 
 public class ValidatorServiceFactory {
 

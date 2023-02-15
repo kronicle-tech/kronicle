@@ -29,7 +29,7 @@ import tech.kronicle.utils.HttpStatuses;
 import tech.kronicle.utils.UriVariablesBuilder;
 
 import javax.inject.Inject;
-import javax.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotEmpty;
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;

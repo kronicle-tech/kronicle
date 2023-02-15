@@ -9,7 +9,7 @@ import org.pf4j.RuntimeMode;
 import org.springframework.context.ConfigurableApplicationContext;
 import tech.kronicle.service.plugins.config.PluginManagerConfig;
 
-import javax.annotation.PostConstruct;
+import jakarta.annotation.PostConstruct;
 import java.nio.file.Path;
 import java.util.List;
 import java.util.stream.Collectors;

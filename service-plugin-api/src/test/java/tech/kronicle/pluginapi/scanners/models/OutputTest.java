@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 import tech.kronicle.sdk.models.Component;
 import tech.kronicle.sdk.models.ScannerError;
 
-import javax.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotNull;
 import java.time.Duration;
 import java.util.List;
 import java.util.Optional;

@@ -7,7 +7,7 @@ import tech.kronicle.sdk.models.zipkin.ZipkinDependency;
 import tech.kronicle.service.constants.CommonComponentTypeIds;
 import tech.kronicle.service.tests.models.TestContext;
 
-import javax.validation.Valid;
+import jakarta.validation.Valid;
 import java.util.List;
 import java.util.Map;
 

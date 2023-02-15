@@ -2,8 +2,8 @@ package tech.kronicle.plugins.aws.config;
 
 import lombok.Value;
 
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
 import java.util.List;
 
 import static tech.kronicle.sdk.utils.ListUtils.createUnmodifiableList;

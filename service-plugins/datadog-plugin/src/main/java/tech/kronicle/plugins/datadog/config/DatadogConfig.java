@@ -4,7 +4,7 @@ import lombok.Value;
 import lombok.experimental.NonFinal;
 import tech.kronicle.plugins.datadog.dependencies.config.DatadogDependenciesConfig;
 
-import javax.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotNull;
 import java.time.Duration;
 
 @Value

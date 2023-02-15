@@ -5,8 +5,8 @@ import graphql.schema.GraphQLType;
 import org.slf4j.Logger;
 import tech.kronicle.graphql.codefirst.annotation.CodeFirstGraphQlIgnore;
 
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import java.lang.reflect.AccessibleObject;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;

@@ -13,9 +13,9 @@ import tech.kronicle.sdk.jackson.TagOrStringDeserializer;
 import tech.kronicle.sdk.models.graphql.GraphQlSchema;
 import tech.kronicle.sdk.models.openapi.OpenApiSpec;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Pattern;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
 import java.util.List;
 import java.util.Objects;
 

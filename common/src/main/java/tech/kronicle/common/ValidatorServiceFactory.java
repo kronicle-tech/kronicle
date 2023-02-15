@@ -1,6 +1,6 @@
 package tech.kronicle.common;
 
-import javax.validation.Validation;
+import jakarta.validation.Validation;
 
 public final class ValidatorServiceFactory {
 

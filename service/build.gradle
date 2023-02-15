@@ -42,11 +42,10 @@ dependencies {
     implementation "org.springframework.boot:spring-boot-starter-actuator"
     implementation "org.springframework.boot:spring-boot-starter-webflux"
     implementation "org.springframework.boot:spring-boot-starter-graphql"
-    implementation "org.springframework.cloud:spring-cloud-starter-sleuth"
-    implementation "org.springframework.cloud:spring-cloud-sleuth-zipkin"
     implementation "io.micrometer:micrometer-registry-prometheus"
     implementation "org.springdoc:springdoc-openapi-webmvc-core:$springdocVersion"
 
+    implementation "jakarta.annotation:jakarta.annotation-api:$jakartaAnnotationVersion"
     implementation "com.fasterxml.jackson.datatype:jackson-datatype-jsr310"
     implementation "com.fasterxml.jackson.dataformat:jackson-dataformat-yaml"
     implementation "org.simondean.partial-response:matcher:$partialResponseVersion"

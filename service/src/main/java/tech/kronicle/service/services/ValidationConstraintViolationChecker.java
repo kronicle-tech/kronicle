@@ -7,7 +7,7 @@ import tech.kronicle.common.StringEscapeUtils;
 import tech.kronicle.sdk.models.ObjectWithReference;
 import tech.kronicle.service.exceptions.ValidationException;
 
-import javax.validation.ConstraintViolation;
+import jakarta.validation.ConstraintViolation;
 import java.util.Set;
 
 @Service
