@@ -5,7 +5,6 @@ import org.gradle.api.internal.artifacts.ivyservice.ivyresolve.strategy.DefaultV
 import org.gradle.api.internal.artifacts.ivyservice.ivyresolve.strategy.Version;
 import org.gradle.api.internal.artifacts.ivyservice.ivyresolve.strategy.VersionParser;
 import org.pf4j.Extension;
-import tech.kronicle.common.CaseUtils;
 import tech.kronicle.pluginapi.scanners.LateComponentScanner;
 import tech.kronicle.pluginapi.scanners.models.Output;
 import tech.kronicle.plugins.keysoftware.config.KeySoftwareRuleConfig;
