@@ -350,8 +350,7 @@ public class OpenApiScannerTest extends BaseCodebaseScannerTest {
         ScannerError error;
         error = returnValue.getErrors().get(0);
         assertThat(error.getScannerId()).isEqualTo("openapi");
-        assertThat(sanitizeErrorMessage(error.getMessage())).isEqualTo("Issue while parsing OpenAPI spec \"InvalidYamlFile/test-openapi.yaml\": "
-                + "Expected a field name (Scalar value in YAML), got this instead: <org.yaml.snakeyaml.events.MappingStartEvent(anchor=null, tag=null, implicit=true)>");
+        assertThat(sanitizeErrorMessage(error.getMessage())).isEqualTo("Issue while parsing OpenAPI spec \"InvalidYamlFile/test-openapi.yaml\": attribute openapi is not of type `string`");
         List<OpenApiSpec> returnOpenApiSpecs = getSpecs(returnValue);
         assertThat(returnOpenApiSpecs).hasSize(1);
         OpenApiSpec returnOpenApiSpec;
