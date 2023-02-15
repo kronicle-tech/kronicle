@@ -87,7 +87,7 @@ public class GraphQlScannerTest extends BaseCodebaseScannerTest {
             "    if: Boolean!\n" +
             "  ) on FIELD | FRAGMENT_SPREAD | INLINE_FRAGMENT\n" +
             "\n" +
-            "\"Directs the executor to skip this field or fragment when the `if`'argument is true.\"\n" +
+            "\"Directs the executor to skip this field or fragment when the `if` argument is true.\"\n" +
             "directive @skip(\n" +
             "    \"Skipped when true.\"\n" +
             "    if: Boolean!\n" +
