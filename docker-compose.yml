@@ -1,9 +1,0 @@
-version: '2.3'
-services:
-  zipkin:
-    image: openzipkin/zipkin:latest
-    environment:
-      - JAVA_OPTS=-Xms1g -Xmx1g
-      - ZIPKIN_UI_ENVIRONMENT=localhost
-    ports:
-      - 9411:9411

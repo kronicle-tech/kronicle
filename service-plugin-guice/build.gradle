@@ -28,7 +28,7 @@ dependencies {
     testImplementation "org.assertj:assertj-core"
     testImplementation "org.mockito:mockito-core"
     testImplementation "org.mockito:mockito-junit-jupiter"
-    testImplementation "org.glassfish:javax.el:$expressionLanguageVersion"
+    testImplementation "org.glassfish:jakarta.el:$expressionLanguageVersion"
 }
 
 tasks.withType(Test).configureEach {

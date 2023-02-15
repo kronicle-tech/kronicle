@@ -35,7 +35,7 @@ dependencies {
     testImplementation "org.mockito:mockito-junit-jupiter"
     testImplementation "ch.qos.logback:logback-classic"
     testImplementation "org.hibernate.validator:hibernate-validator"
-    testImplementation "org.glassfish:javax.el:$expressionLanguageVersion"
+    testImplementation "org.glassfish:jakarta.el:$expressionLanguageVersion"
 }
 
 tasks.withType(Test).configureEach {

@@ -3,7 +3,7 @@ package tech.kronicle.plugins.bitbucketserver.config;
 import lombok.Value;
 import lombok.experimental.NonFinal;
 
-import javax.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotNull;
 import java.time.Duration;
 import java.util.List;
 

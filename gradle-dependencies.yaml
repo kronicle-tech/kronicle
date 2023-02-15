@@ -5,6 +5,13 @@ configurations:
   visible: true
   canBeResolved: true
   resolved: false
+- name: "dataFiles"
+  description: "The data artifacts to be processed for this plugin."
+  visible: false
+  canBeResolved: true
+  resolved: false
+  dependencies:
+  - name: "org.json:json:20200518"
 - name: "default"
   description: "Configuration for default artifacts."
   visible: true

@@ -1,8 +1,3 @@
-spring:
-  sleuth:
-    sampler:
-      probability: ${ZIPKIN_SAMPLE_RATE:1.0}
-
 plugins:
   git:
     repos-dir: ${TMPDIR}kronicle-service/data/git/repos

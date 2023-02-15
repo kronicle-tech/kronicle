@@ -7,8 +7,8 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.web.method.HandlerMethod;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.catchThrowable;
@@ -122,7 +122,7 @@ public class PartialResponseHandlerInterceptorTest {
 
         // Then
         assertThat(thrown).isInstanceOf(InvalidFieldsQueryParamException.class);
-        assertThat(thrown).hasMessage("400 BAD_REQUEST \"Invalid value \"a/\" for \"fields\" query param\"; nested exception is java.lang.IllegalArgumentException: Was expecting at least one of CharMatcher.and(CharMatcher.whitespace().negate(), CharMatcher.anyOf(\"\\u0028\\u0029\\u002A\\u002C\\u002F\").negate())");
+        assertThat(thrown).hasMessage("400 BAD_REQUEST \"Invalid value \"a/\" for \"fields\" query param\"");
         assertThat(thrown).hasCauseInstanceOf(IllegalArgumentException.class);
     }
 
@@ -137,7 +137,7 @@ public class PartialResponseHandlerInterceptorTest {
 
         // Then
         assertThat(thrown).isInstanceOf(InvalidFieldsQueryParamException.class);
-        assertThat(thrown).hasMessage("400 BAD_REQUEST \"Invalid value \"a/,b/\" for \"fields\" query param\"; nested exception is java.lang.IllegalArgumentException: Was expecting at least one of CharMatcher.and(CharMatcher.whitespace().negate(), CharMatcher.anyOf(\"\\u0028\\u0029\\u002A\\u002C\\u002F\").negate())");
+        assertThat(thrown).hasMessage("400 BAD_REQUEST \"Invalid value \"a/,b/\" for \"fields\" query param\"");
         assertThat(thrown).hasCauseInstanceOf(IllegalArgumentException.class);
     }
 }

@@ -8,14 +8,14 @@ import org.springframework.web.servlet.HandlerInterceptor;
 import tech.kronicle.service.partialresponse.internal.QueryParamNames;
 import tech.kronicle.service.partialresponse.internal.RequestAttributeNames;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 @Component
 public class PartialResponseHandlerInterceptor implements HandlerInterceptor {
 
     @Override
-    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) {
+     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) {
         if (isPartialResponseHandler(handler)) {
             Matcher matcher = validateFieldsQueryParameter(request);
             storeMatcher(request, matcher);

@@ -1,6 +1,6 @@
 package tech.kronicle.common;
 
-import javax.validation.ConstraintViolation;
+import jakarta.validation.ConstraintViolation;
 import java.util.Comparator;
 import java.util.Set;
 import java.util.stream.Collectors;

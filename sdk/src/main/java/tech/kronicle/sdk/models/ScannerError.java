@@ -5,7 +5,7 @@ import lombok.Builder;
 import lombok.Value;
 import lombok.With;
 
-import javax.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotBlank;
 
 import static java.util.Objects.nonNull;
 

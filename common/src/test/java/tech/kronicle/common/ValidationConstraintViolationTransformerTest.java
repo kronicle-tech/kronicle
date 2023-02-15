@@ -6,7 +6,7 @@ import org.hibernate.validator.internal.engine.path.PathImpl;
 import org.junit.jupiter.api.Test;
 import tech.kronicle.common.ValidationConstraintViolationTransformer;
 
-import javax.validation.ConstraintViolation;
+import jakarta.validation.ConstraintViolation;
 import java.util.Set;
 
 import static org.assertj.core.api.Assertions.assertThat;

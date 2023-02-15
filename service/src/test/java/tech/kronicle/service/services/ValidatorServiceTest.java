@@ -6,10 +6,10 @@ import tech.kronicle.common.ValidationConstraintViolationTransformer;
 import tech.kronicle.sdk.models.ObjectWithReference;
 import tech.kronicle.service.exceptions.ValidationException;
 
-import javax.validation.Validation;
-import javax.validation.Validator;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Pattern;
+import jakarta.validation.Validation;
+import jakarta.validation.Validator;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Pattern;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.catchThrowable;

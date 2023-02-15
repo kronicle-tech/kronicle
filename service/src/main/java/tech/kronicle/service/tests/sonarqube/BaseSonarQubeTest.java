@@ -9,7 +9,7 @@ import tech.kronicle.sdk.models.sonarqube.SonarQubeProject;
 import tech.kronicle.service.tests.ComponentTest;
 import tech.kronicle.service.tests.models.TestContext;
 
-import javax.validation.Valid;
+import jakarta.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Function;

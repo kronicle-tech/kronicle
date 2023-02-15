@@ -3,7 +3,7 @@ package tech.kronicle.plugins.openapi.config;
 import lombok.Value;
 import lombok.experimental.NonFinal;
 
-import javax.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotNull;
 
 @Value
 public class OpenApiConfig {

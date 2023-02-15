@@ -60,7 +60,7 @@ public class ZipkinClientRetriesTest extends BaseZipkinClientTest {
     }
 
     protected static Stream<ZipkinClientMethod> provideZipkinClientMethods() {
-        return provideZipkinClientMethods(PORT);
+        return baseProvideZipkinClientMethods(PORT);
     }
 
     private void ensureRetriesDoNotSlowDownTestExecution(Timer timer) {

@@ -5,7 +5,7 @@ import lombok.Value;
 import lombok.With;
 import lombok.extern.jackson.Jacksonized;
 
-import javax.validation.Valid;
+import jakarta.validation.Valid;
 import java.util.List;
 
 import static tech.kronicle.sdk.utils.ListUtils.createUnmodifiableList;

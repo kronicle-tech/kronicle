@@ -64,7 +64,7 @@ public class BaseZipkinClientTest {
         return Clock.fixed(LocalDateTime.of(2021, 1, 1, 0, 0).toInstant(ZoneOffset.UTC), ZoneOffset.UTC);
     }
 
-    protected static Stream<ZipkinClientMethod> provideZipkinClientMethods(int port) {
+    protected static Stream<ZipkinClientMethod> baseProvideZipkinClientMethods(int port) {
         return Stream.of(
                 new ZipkinClientMethod(ZipkinClient::getServiceNames, "http://localhost:" + port + "/zipkin/api/v2/services"),
                 new ZipkinClientMethod(underTest -> underTest.getSpanNames("test-service-1"), "http://localhost:" + port + "/zipkin/api/v2/spans?serviceName=test-service-1"),

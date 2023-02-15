@@ -2,7 +2,7 @@ package tech.kronicle.service.repositories;
 
 import org.slf4j.Logger;
 
-import javax.annotation.PostConstruct;
+import jakarta.annotation.PostConstruct;
 import java.util.concurrent.Semaphore;
 
 public abstract class RefreshingRepository {
