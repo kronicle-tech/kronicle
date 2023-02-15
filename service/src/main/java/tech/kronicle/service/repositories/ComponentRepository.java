@@ -100,6 +100,10 @@ public class ComponentRepository extends RefreshingRepository {
         return assembler.addNestedItemsToTeam(teams.get(teamId), components);
     }
 
+    public boolean hasComponents() {
+        return !components.isEmpty();
+    }
+
     public List<Component> getComponents() {
         return assembler.toSortedUnmodifiableComponentList(components.values().stream());
     }

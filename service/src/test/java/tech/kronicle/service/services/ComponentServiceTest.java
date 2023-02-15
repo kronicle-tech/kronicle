@@ -32,7 +32,31 @@ public class ComponentServiceTest {
     public void beforeEach() {
         underTest = new ComponentService(mockComponentRepository);
     }
-    
+
+    @Test
+    public void hasComponentsShouldReturnTrueWhenThereAreComponents() {
+        // Given
+        when(mockComponentRepository.hasComponents()).thenReturn(true);
+
+        // When
+        boolean returnValue = underTest.hasComponents();
+
+        // Then
+        assertThat(returnValue).isTrue();
+    }
+
+    @Test
+    public void hasComponentsShouldReturnFalseWhenThereAreNoComponents() {
+        // Given
+        when(mockComponentRepository.hasComponents()).thenReturn(false);
+
+        // When
+        boolean returnValue = underTest.hasComponents();
+
+        // Then
+        assertThat(returnValue).isFalse();
+    }
+
     @Test
     public void getComponentsShouldReturnAllComponents() {
         // Given

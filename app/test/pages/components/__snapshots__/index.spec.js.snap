@@ -701,6 +701,7 @@ exports[`Index when Get Components service endpoint returns an array of multiple
      
     <div
       class="card"
+      data-cy-component-count="3"
     >
       <!---->
       <!---->
@@ -745,7 +746,9 @@ exports[`Index when Get Components service endpoint returns an array of multiple
           </thead>
            
           <tbody>
-            <tr>
+            <tr
+              data-cy-component="test-component-id-1"
+            >
               <td
                 class="type"
               >
@@ -824,7 +827,9 @@ exports[`Index when Get Components service endpoint returns an array of multiple
                 </div>
               </td>
             </tr>
-            <tr>
+            <tr
+              data-cy-component="test-component-id-2"
+            >
               <td
                 class="type"
               >
@@ -903,7 +908,9 @@ exports[`Index when Get Components service endpoint returns an array of multiple
                 </div>
               </td>
             </tr>
-            <tr>
+            <tr
+              data-cy-component="test-component-id-3"
+            >
               <td
                 class="type"
               >
@@ -1067,6 +1074,7 @@ exports[`Index when Get Components service endpoint returns an empty array rende
      
     <div
       class="card"
+      data-cy-component-count="0"
     >
       <!---->
       <!---->

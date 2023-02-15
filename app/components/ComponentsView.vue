@@ -23,6 +23,7 @@
 
     <b-card
       :title="`${componentCount} Component${componentCount === 1 ? '' : 's'}`"
+      :data-cy-component-count="componentCount"
     >
       <ComponentTable :components="filteredComponents" />
     </b-card>

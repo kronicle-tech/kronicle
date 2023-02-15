@@ -12,7 +12,7 @@ exports[`ComponentTable when a component has no description renders the componen
     </tr>
   </thead>
   <tbody>
-    <tr>
+    <tr data-cy-component=\\"test-component-id-undefined\\">
       <td class=\\"type\\">test-component-type-id-undefined</td>
       <td class=\\"name table-primary\\"><a href=\\"/components/test-component-id-undefined\\">Test Component Name undefined</a></td>
       <td>
@@ -36,7 +36,7 @@ exports[`ComponentTable when a component has no description renders the componen
         <!---->
       </td>
     </tr>
-    <tr>
+    <tr data-cy-component=\\"test-component-id-undefined\\">
       <td class=\\"type\\">test-component-type-id-undefined</td>
       <td class=\\"name table-primary\\"><a href=\\"/components/test-component-id-undefined\\">Test Component Name undefined</a></td>
       <td>
@@ -78,7 +78,7 @@ exports[`ComponentTable when components is set to multiple components renders th
     </tr>
   </thead>
   <tbody>
-    <tr>
+    <tr data-cy-component=\\"test-component-id-1\\">
       <td class=\\"type\\">test-component-type-id-1</td>
       <td class=\\"name table-primary\\"><a href=\\"/components/test-component-id-1\\">Test Component Name 1</a></td>
       <td>
@@ -104,7 +104,7 @@ exports[`ComponentTable when components is set to multiple components renders th
         </div>
       </td>
     </tr>
-    <tr>
+    <tr data-cy-component=\\"test-component-id-2\\">
       <td class=\\"type\\">test-component-type-id-2</td>
       <td class=\\"name table-primary\\"><a href=\\"/components/test-component-id-2\\">Test Component Name 2</a></td>
       <td>

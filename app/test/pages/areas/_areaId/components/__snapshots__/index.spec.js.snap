@@ -699,6 +699,7 @@ exports[`Index when Get Area service endpoint returns an area when the area has 
      
     <div
       class="card"
+      data-cy-component-count="3"
     >
       <!---->
       <!---->
@@ -743,7 +744,9 @@ exports[`Index when Get Area service endpoint returns an area when the area has 
           </thead>
            
           <tbody>
-            <tr>
+            <tr
+              data-cy-component="test-component-id-1"
+            >
               <td
                 class="type"
               >
@@ -822,7 +825,9 @@ exports[`Index when Get Area service endpoint returns an area when the area has 
                 </div>
               </td>
             </tr>
-            <tr>
+            <tr
+              data-cy-component="test-component-id-2"
+            >
               <td
                 class="type"
               >
@@ -901,7 +906,9 @@ exports[`Index when Get Area service endpoint returns an area when the area has 
                 </div>
               </td>
             </tr>
-            <tr>
+            <tr
+              data-cy-component="test-component-id-3"
+            >
               <td
                 class="type"
               >
@@ -1101,6 +1108,7 @@ exports[`Index when Get Area service endpoint returns an area when the area has 
      
     <div
       class="card"
+      data-cy-component-count="0"
     >
       <!---->
       <!---->
