@@ -22,6 +22,9 @@ dependencies {
     implementation("io.swagger.parser.v3:swagger-parser:$swaggerParserVersion") {
         exclude group: "jakarta.validation", module: "validation-api"
     }
+    // Use a newer version of Rhino than the one "io.swagger.parser.v3:swagger-parser" and
+    // "com.github.java-json-tools:json-schema-core" include by default
+    implementation "org.mozilla:rhino:$rhinoVersion"
 
     testImplementation project(":service-plugin-test-utils")
     testImplementation "org.junit.jupiter:junit-jupiter"
