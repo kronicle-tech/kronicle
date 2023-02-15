@@ -5,7 +5,7 @@ COPY app.jar Healthcheck.java ./
 COPY plugin-libs/ plugin-libs/
 COPY plugins/ plugins/
 
-FROM eclipse-temurin:17-jre
+FROM eclipse-temurin:17-jdk
 
 ARG VERSION
 ENV VERSION=$VERSION
