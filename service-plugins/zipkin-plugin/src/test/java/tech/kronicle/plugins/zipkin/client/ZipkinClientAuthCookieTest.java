@@ -56,6 +56,6 @@ public class ZipkinClientAuthCookieTest extends BaseZipkinClientTest {
     }
 
     protected static Stream<ZipkinClientMethod> provideZipkinClientMethods() {
-        return provideZipkinClientMethods(PORT);
+        return baseProvideZipkinClientMethods(PORT);
     }
 }

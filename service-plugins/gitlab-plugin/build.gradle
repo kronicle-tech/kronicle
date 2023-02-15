@@ -18,7 +18,9 @@ dependencies {
 
     implementation project(":service-plugin-guice")
 
-    implementation "com.github.ben-manes.caffeine:caffeine:$caffeineVersion"
+    implementation "com.github.ben-manes.caffeine:caffeine:$caffeineVersion", {
+        exclude group: "org.junit", module: "junit-bom"
+    }
 
     testImplementation project(":service-plugin-test-utils")
     testImplementation "org.junit.jupiter:junit-jupiter"
@@ -26,7 +28,7 @@ dependencies {
     testImplementation "org.assertj:assertj-core"
     testImplementation "org.mockito:mockito-core"
     testImplementation "org.mockito:mockito-junit-jupiter"
-    testImplementation "com.github.tomakehurst:wiremock-jre8:$wireMockVersion"
+    testImplementation "com.github.tomakehurst:wiremock:$wireMockVersion"
 }
 
 shadowJar {

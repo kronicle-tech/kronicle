@@ -51,7 +51,9 @@ dependencies {
     implementation "org.simondean.partial-response:matcher:$partialResponseVersion"
     implementation "net.logstash.logback:logstash-logback-encoder:$logstashLogbackEncoder"
     implementation "tech.kronicle:gradle-version-logic:$gradleVersionLogicVersion"
-    implementation "com.github.ben-manes.caffeine:caffeine:$caffeineVersion"
+    implementation "com.github.ben-manes.caffeine:caffeine:$caffeineVersion", {
+        exclude group: "org.junit", module: "junit-bom"
+    }
     implementation project(":spring-graphql-code-first")
 
     testImplementation project(":service-test-utils")
