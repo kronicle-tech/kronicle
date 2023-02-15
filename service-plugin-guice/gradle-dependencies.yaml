@@ -555,7 +555,7 @@ configurations:
     direct: true
     dependencies:
     - name: "net.bytebuddy:byte-buddy:1.12.22"
-  - name: "org.glassfish:javax.el:3.0.0"
+  - name: "org.glassfish:jakarta.el:3.0.0"
     direct: true
     dependencies: []
   - name: "org.junit.jupiter:junit-jupiter-params:5.9.2"
@@ -667,7 +667,7 @@ configurations:
   resolved: false
   dependencies:
   - name: "org.assertj:assertj-core"
-  - name: "org.glassfish:javax.el:3.0.0"
+  - name: "org.glassfish:jakarta.el:3.0.0"
   - name: "org.junit.jupiter:junit-jupiter"
   - name: "org.junit.jupiter:junit-jupiter-params"
   - name: "org.mockito:mockito-core"
@@ -729,7 +729,7 @@ configurations:
     direct: true
     dependencies:
     - name: "net.bytebuddy:byte-buddy:1.12.22"
-  - name: "org.glassfish:javax.el:3.0.0"
+  - name: "org.glassfish:jakarta.el:3.0.0"
     direct: true
     dependencies: []
   - name: "org.junit.jupiter:junit-jupiter-params:5.9.2"

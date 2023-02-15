@@ -66,7 +66,7 @@ configurations:
     direct: true
     dependencies:
     - name: "com.google.code.findbugs:jsr305:3.0.2"
-  - name: "org.glassfish:javax.el:3.0.0"
+  - name: "org.glassfish:jakarta.el:3.0.0"
     direct: true
     dependencies: []
   - name: "org.hibernate.validator:hibernate-validator:8.0.0.Final"
@@ -144,7 +144,7 @@ configurations:
     - name: "com.fasterxml.jackson.core:jackson-databind:2.14.1"
     - name: "com.fasterxml.jackson:jackson-bom:2.14.1"
     - name: "org.yaml:snakeyaml:1.33"
-  - name: "org.glassfish:javax.el:3.0.0"
+  - name: "org.glassfish:jakarta.el:3.0.0"
     direct: true
     dependencies: []
   - name: "org.hibernate.validator:hibernate-validator:8.0.0.Final"
@@ -203,7 +203,7 @@ configurations:
   - name: "com.fasterxml.jackson.core:jackson-annotations"
   - name: "com.fasterxml.jackson.core:jackson-databind"
   - name: "com.fasterxml.jackson.dataformat:jackson-dataformat-yaml"
-  - name: "org.glassfish:javax.el:3.0.0"
+  - name: "org.glassfish:jakarta.el:3.0.0"
   - name: "org.springframework.boot:spring-boot-dependencies:3.0.2"
   - name: "org.springframework.cloud:spring-cloud-dependencies:2022.0.1"
 - name: "jacocoAgent"
@@ -292,7 +292,7 @@ configurations:
     - name: "com.fasterxml.jackson.core:jackson-databind:2.14.1"
     - name: "com.fasterxml.jackson:jackson-bom:2.14.1"
     - name: "org.yaml:snakeyaml:1.33"
-  - name: "org.glassfish:javax.el:3.0.0"
+  - name: "org.glassfish:jakarta.el:3.0.0"
     direct: true
     dependencies: []
   - name: "org.hibernate.validator:hibernate-validator:8.0.0.Final"
@@ -408,7 +408,7 @@ configurations:
     direct: true
     dependencies:
     - name: "net.bytebuddy:byte-buddy:1.12.22"
-  - name: "org.glassfish:javax.el:3.0.0"
+  - name: "org.glassfish:jakarta.el:3.0.0"
     direct: true
     dependencies: []
   - name: "org.hibernate.validator:hibernate-validator:8.0.0.Final"
@@ -536,7 +536,7 @@ configurations:
     direct: true
     dependencies:
     - name: "net.bytebuddy:byte-buddy:1.12.22"
-  - name: "org.glassfish:javax.el:3.0.0"
+  - name: "org.glassfish:jakarta.el:3.0.0"
     direct: true
     dependencies: []
   - name: "org.hibernate.validator:hibernate-validator:8.0.0.Final"

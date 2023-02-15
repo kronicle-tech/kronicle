@@ -242,7 +242,7 @@ configurations:
     direct: true
     dependencies:
     - name: "net.bytebuddy:byte-buddy:1.12.22"
-  - name: "org.glassfish:javax.el:3.0.0"
+  - name: "org.glassfish:jakarta.el:3.0.0"
     direct: true
     dependencies: []
   - name: "org.hibernate.validator:hibernate-validator:8.0.0.Final"
@@ -316,7 +316,7 @@ configurations:
   dependencies:
   - name: "org.assertj:assertj-core"
   - name: "org.hibernate.validator:hibernate-validator"
-  - name: "org.glassfish:javax.el:3.0.0"
+  - name: "org.glassfish:jakarta.el:3.0.0"
   - name: "org.junit.jupiter:junit-jupiter"
   - name: "org.junit.jupiter:junit-jupiter-params"
   - name: "ch.qos.logback:logback-classic"
@@ -348,7 +348,7 @@ configurations:
     direct: true
     dependencies:
     - name: "net.bytebuddy:byte-buddy:1.12.22"
-  - name: "org.glassfish:javax.el:3.0.0"
+  - name: "org.glassfish:jakarta.el:3.0.0"
     direct: true
     dependencies: []
   - name: "org.hibernate.validator:hibernate-validator:8.0.0.Final"
