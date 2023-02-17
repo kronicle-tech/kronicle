@@ -102,6 +102,12 @@ docker {
                 include("*-${version}-all.jar")
                 into("plugins")
             }
+        },
+        copySpec {
+            from("${project(":service-health-check").buildDir}/libs") {
+                include("service-health-check-${version}.jar")
+                rename("service-health-check-${version}.jar", "health-check.jar")
+            }
         }
     )
     network "host"
@@ -116,6 +122,7 @@ tasks.named("bootRun") {
 tasks.named("dockerPrepare") {
     dependsOn tasks.named("bootJar")
     dependsOn tasks.named("copyPlugins")
+    dependsOn project(":service-health-check").tasks.named("assemble")
 }
 
 tasks.named("build") {

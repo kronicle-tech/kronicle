@@ -5,7 +5,7 @@ import java.net.http.HttpResponse;
 
 import static java.util.Optional.ofNullable;
 
-public class Healthcheck {
+public class HealthCheck {
     public static void main(String[] args) {
         var host = ofNullable(System.getenv("HOST"))
                 .orElse("0.0.0.0");
@@ -20,12 +20,12 @@ public class Healthcheck {
         try {
             response = client.send(request, HttpResponse.BodyHandlers.ofString());
         } catch (Exception e) {
-            System.err.println("Healthcheck failed with exception: " + e);
+            System.err.println("Health check failed with exception: " + e);
             System.exit(1);
             return;
         }
         if (response.statusCode() != 200) {
-            System.err.println("Healthcheck failed with status code: " + response.statusCode());
+            System.err.println("Health check failed with status code: " + response.statusCode());
             System.exit(1);
         }
     }
