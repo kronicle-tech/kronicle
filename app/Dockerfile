@@ -1,4 +1,4 @@
-FROM node:16-alpine as build
+FROM node:16 as build
 
 ARG VERSION
 ENV VERSION=$VERSION
@@ -11,7 +11,7 @@ RUN npm run build --ignore-scripts
 RUN rm -rf node_modules/
 RUN npm ci --production --ignore-scripts
 
-FROM node:16-alpine
+FROM node:16
 
 ARG VERSION
 ENV VERSION=$VERSION
