@@ -1,7 +1,7 @@
 FROM eclipse-temurin:17-jdk as build
 
 WORKDIR /app
-COPY app.jar Healthcheck.java ./
+COPY app.jar health-check.jar ./
 COPY plugin-libs/ plugin-libs/
 COPY plugins/ plugins/
 
@@ -29,6 +29,6 @@ COPY --from=build /app  .
 
 EXPOSE $PORT
 HEALTHCHECK --interval=60s --timeout=15s \
-  CMD ["java", "Healthcheck.java"]
+  CMD ["java", "-jar", "health-check.jar"]
 
 ENTRYPOINT ["java", "-XX:MaxRAMPercentage=80", "-jar", "app.jar"]

@@ -1,0 +1,8 @@
+plugins {
+    id "java"
+}
+
+tasks.withType(Test).configureEach {
+    useJUnitPlatform()
+    maxParallelForks = Math.min(2, Runtime.runtime.availableProcessors().intdiv(2) ?: 1)
+}
