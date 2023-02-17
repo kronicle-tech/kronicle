@@ -1,11 +1,11 @@
-FROM eclipse-temurin:17-jdk as build
+FROM eclipse-temurin:17-jdk-alpine as build
 
 WORKDIR /app
 COPY app.jar health-check.jar ./
 COPY plugin-libs/ plugin-libs/
 COPY plugins/ plugins/
 
-FROM eclipse-temurin:17-jdk
+FROM eclipse-temurin:17-jdk-alpine
 
 ARG VERSION
 ENV VERSION=$VERSION
