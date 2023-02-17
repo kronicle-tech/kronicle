@@ -1,4 +1,4 @@
-FROM node:16 as build
+FROM node:16-alpine as build
 
 ARG VERSION
 ENV VERSION=$VERSION
@@ -11,7 +11,7 @@ RUN npm run build --ignore-scripts
 RUN rm -rf node_modules/
 RUN npm ci --production --ignore-scripts
 
-FROM gcr.io/distroless/nodejs:16
+FROM node:16-alpine
 
 ARG VERSION
 ENV VERSION=$VERSION
@@ -23,6 +23,6 @@ COPY --from=build /app  .
 
 EXPOSE $PORT
 HEALTHCHECK --interval=60s --timeout=15s \
-  CMD ["/nodejs/bin/node", "bin/healthcheck.js"]
+  CMD ["/usr/local/bin/node", "bin/healthcheck.js"]
 
 CMD ["node_modules/.bin/nuxt", "start"]
