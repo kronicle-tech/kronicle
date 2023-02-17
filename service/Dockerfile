@@ -1,7 +1,7 @@
 FROM eclipse-temurin:17-jdk as build
 
 WORKDIR /app
-COPY app.jar HealthCheck.java ./
+COPY app.jar health-check.jar ./
 COPY plugin-libs/ plugin-libs/
 COPY plugins/ plugins/
 
