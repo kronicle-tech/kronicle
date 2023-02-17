@@ -2,6 +2,14 @@ plugins {
     id "java"
 }
 
+jar {
+    manifest {
+        attributes(
+                'Main-Class': 'HealthCheck'
+        )
+    }
+}
+
 tasks.withType(Test).configureEach {
     useJUnitPlatform()
     maxParallelForks = Math.min(2, Runtime.runtime.availableProcessors().intdiv(2) ?: 1)
