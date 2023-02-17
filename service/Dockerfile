@@ -14,7 +14,9 @@ ENV HOST=0.0.0.0
 ENV PORT=8090
 
 # Install AWS CLI for use with Kubernetes plugin when connecting to an AWS EKS cluster
-RUN apk add --no-cache aws-cli
+RUN apt-get update && \
+    apt-get install -y awscli && \
+    apt-get clean
 
 WORKDIR /app
 COPY --from=build /app  .
