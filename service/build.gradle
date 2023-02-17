@@ -87,11 +87,6 @@ docker {
             }
         },
         copySpec {
-            from("src/test/java") {
-                include("Healthcheck.java")
-            }
-        },
-        copySpec {
             from("plugin-libs") {
                 include("*.jar")
                 into("plugin-libs")
