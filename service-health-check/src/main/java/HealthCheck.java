@@ -27,7 +27,6 @@ public class HealthCheck {
         } catch (Exception e) {
             System.err.println("Health check FAIL with exception: " + e);
             System.exit(1);
-            return;
         }
     }
 }
