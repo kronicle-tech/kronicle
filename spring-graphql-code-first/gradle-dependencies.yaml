@@ -118,12 +118,6 @@ configurations:
   visible: false
   canBeResolved: false
   resolved: false
-- name: "coverageDataElementsForTest"
-  description: "Binary data file containing results of Jacoco test coverage reporting\
-    \ for the test Test Suite's test target."
-  visible: false
-  canBeResolved: false
-  resolved: false
 - name: "default"
   description: "Configuration for default artifacts."
   visible: true
@@ -187,50 +181,6 @@ configurations:
   - name: "tech.kronicle:graphql-java-code-first:0.0.1"
   - name: "org.springframework.boot:spring-boot-dependencies:3.0.2"
   - name: "org.springframework.graphql:spring-graphql"
-- name: "jacocoAgent"
-  description: "The Jacoco agent to use to get coverage data."
-  visible: false
-  canBeResolved: true
-  resolved: true
-  dependencies:
-  - name: "org.jacoco:org.jacoco.agent:0.8.7"
-  resolvedDependencies:
-  - name: "org.jacoco:org.jacoco.agent:0.8.7"
-    direct: true
-    dependencies: []
-- name: "jacocoAnt"
-  description: "The Jacoco ant tasks to use to get execute Gradle tasks."
-  visible: false
-  canBeResolved: true
-  resolved: true
-  dependencies:
-  - name: "org.jacoco:org.jacoco.ant:0.8.7"
-  resolvedDependencies:
-  - name: "org.jacoco:org.jacoco.ant:0.8.7"
-    direct: true
-    dependencies:
-    - name: "org.jacoco:org.jacoco.agent:0.8.7"
-    - name: "org.jacoco:org.jacoco.core:0.8.7"
-    - name: "org.jacoco:org.jacoco.report:0.8.7"
-  - name: "org.jacoco:org.jacoco.core:0.8.7"
-    dependencies:
-    - name: "org.ow2.asm:asm-commons:9.1"
-    - name: "org.ow2.asm:asm-tree:9.1"
-    - name: "org.ow2.asm:asm:9.1"
-  - name: "org.jacoco:org.jacoco.report:0.8.7"
-    dependencies:
-    - name: "org.jacoco:org.jacoco.core:0.8.7"
-  - name: "org.ow2.asm:asm-analysis:9.1"
-    dependencies:
-    - name: "org.ow2.asm:asm-tree:9.1"
-  - name: "org.ow2.asm:asm-commons:9.1"
-    dependencies:
-    - name: "org.ow2.asm:asm-analysis:9.1"
-    - name: "org.ow2.asm:asm-tree:9.1"
-    - name: "org.ow2.asm:asm:9.1"
-  - name: "org.ow2.asm:asm-tree:9.1"
-    dependencies:
-    - name: "org.ow2.asm:asm:9.1"
 - name: "lombok"
   visible: true
   canBeResolved: true
