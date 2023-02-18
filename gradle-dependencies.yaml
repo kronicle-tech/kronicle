@@ -23,14 +23,14 @@ configurations:
   canBeResolved: true
   resolved: false
   dependencies:
-  - name: "org.jacoco:org.jacoco.agent:0.8.7"
+  - name: "org.jacoco:org.jacoco.agent:0.8.8"
 - name: "jacocoAnt"
   description: "The Jacoco ant tasks to use to get execute Gradle tasks."
   visible: false
   canBeResolved: true
   resolved: false
   dependencies:
-  - name: "org.jacoco:org.jacoco.ant:0.8.7"
+  - name: "org.jacoco:org.jacoco.ant:0.8.8"
 - name: "spotbugs"
   description: "configuration for the SpotBugs engine"
   visible: false
