@@ -20,6 +20,8 @@ WORKDIR /app
 COPY --from=build /app  .
 
 EXPOSE $PORT
+# NOTE: This health check config is only used by Docker and Docker Compose. If this config is changed, the health check
+# config for platforms like Kuberneters and AWS ECS will need to be changed seperately
 HEALTHCHECK --interval=60s --timeout=15s \
   CMD ["java", "-jar", "health-check.jar"]
 
