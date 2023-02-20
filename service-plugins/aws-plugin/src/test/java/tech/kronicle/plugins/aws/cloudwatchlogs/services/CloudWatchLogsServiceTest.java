@@ -659,7 +659,7 @@ public class CloudWatchLogsServiceTest {
         }
 
         @Override
-        public io.vavr.collection.Map<String, String> getTags() {
+        public Map<String, String> getTags() {
             return null;
         }
 

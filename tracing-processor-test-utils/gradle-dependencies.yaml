@@ -8,7 +8,7 @@ configurations:
   dependencies:
   - name: "org.springframework.boot:spring-boot-dependencies:3.0.2"
   resolvedDependencies:
-  - name: "org.projectlombok:lombok:1.18.24"
+  - name: "org.projectlombok:lombok:1.18.26"
     direct: true
     dependencies: []
   - name: "org.springframework.boot:spring-boot-dependencies:3.0.2"
@@ -35,7 +35,7 @@ configurations:
   canBeResolved: true
   resolved: true
   resolvedDependencies:
-  - name: "com.github.spotbugs:spotbugs-annotations:4.5.3"
+  - name: "com.github.spotbugs:spotbugs-annotations:4.7.3"
     direct: true
     dependencies:
     - name: "com.google.code.findbugs:jsr305:3.0.2"
@@ -45,7 +45,7 @@ configurations:
   - name: "kronicle:tracing-processor:0.0.1"
     direct: true
     dependencies: []
-  - name: "org.projectlombok:lombok:1.18.24"
+  - name: "org.projectlombok:lombok:1.18.26"
     direct: true
     dependencies: []
   - name: "org.springframework.boot:spring-boot-dependencies:3.0.2"
@@ -57,7 +57,7 @@ configurations:
     - name: "com.fasterxml.jackson.core:jackson-annotations:2.14.1"
     - name: "jakarta.validation:jakarta.validation-api:3.0.2"
     - name: "org.hibernate.validator:hibernate-validator:8.0.0.Final"
-    - name: "org.pf4j:pf4j:3.6.0"
+    - name: "org.pf4j:pf4j:3.9.0"
     - name: "tech.kronicle:common:0.0.1"
     - name: "tech.kronicle:sdk:0.0.1"
   - name: "tech.kronicle:service-utils:0.0.1"
@@ -73,7 +73,7 @@ configurations:
     - name: "com.fasterxml:classmate:1.5.1"
     - name: "jakarta.validation:jakarta.validation-api:3.0.2"
     - name: "org.jboss.logging:jboss-logging:3.5.0.Final"
-  - name: "org.pf4j:pf4j:3.6.0"
+  - name: "org.pf4j:pf4j:3.9.0"
     dependencies:
     - name: "com.github.zafarkhaja:java-semver:0.9.0"
     - name: "org.slf4j:slf4j-api:2.0.6"
@@ -84,8 +84,7 @@ configurations:
   resolved: false
   dependencies:
   - name: "javax.inject:javax.inject:1"
-  - name: "com.github.spotbugs:spotbugs-annotations:4.5.3"
-  - name: "com.github.spotbugs:spotbugs-annotations:4.1.3"
+  - name: "com.github.spotbugs:spotbugs-annotations:4.7.3"
   - name: "org.springframework.boot:spring-boot-dependencies:3.0.2"
 - name: "compileOnlyApi"
   description: "Compile only API dependencies for source set 'main'."
@@ -115,7 +114,7 @@ configurations:
     - name: "com.fasterxml.jackson.core:jackson-annotations:2.14.1"
     - name: "jakarta.validation:jakarta.validation-api:3.0.2"
     - name: "org.hibernate.validator:hibernate-validator:8.0.0.Final"
-    - name: "org.pf4j:pf4j:3.6.0"
+    - name: "org.pf4j:pf4j:3.9.0"
     - name: "org.springframework.boot:spring-boot-dependencies:3.0.2"
     - name: "tech.kronicle:common:0.0.1"
     - name: "tech.kronicle:sdk:0.0.1"
@@ -143,7 +142,7 @@ configurations:
     - name: "com.fasterxml:classmate:1.5.1"
     - name: "jakarta.validation:jakarta.validation-api:3.0.2"
     - name: "org.jboss.logging:jboss-logging:3.5.0.Final"
-  - name: "org.pf4j:pf4j:3.6.0"
+  - name: "org.pf4j:pf4j:3.9.0"
     dependencies:
     - name: "com.github.zafarkhaja:java-semver:0.9.0"
     - name: "org.slf4j:slf4j-api:2.0.6"
@@ -171,7 +170,7 @@ configurations:
     - name: "com.fasterxml.jackson.core:jackson-annotations:2.14.1"
     - name: "jakarta.validation:jakarta.validation-api:3.0.2"
     - name: "org.hibernate.validator:hibernate-validator:8.0.0.Final"
-    - name: "org.pf4j:pf4j:3.6.0"
+    - name: "org.pf4j:pf4j:3.9.0"
     - name: "org.springframework.boot:spring-boot-dependencies:3.0.2"
     - name: "tech.kronicle:common:0.0.1"
     - name: "tech.kronicle:sdk:0.0.1"
@@ -197,9 +196,9 @@ configurations:
   canBeResolved: true
   resolved: true
   dependencies:
-  - name: "org.projectlombok:lombok:1.18.22"
+  - name: "org.projectlombok:lombok:1.18.26"
   resolvedDependencies:
-  - name: "org.projectlombok:lombok:1.18.22"
+  - name: "org.projectlombok:lombok:1.18.26"
     direct: true
     dependencies: []
 - name: "mainSourceElements"
@@ -230,7 +229,7 @@ configurations:
     - name: "com.fasterxml.jackson.core:jackson-annotations:2.14.1"
     - name: "jakarta.validation:jakarta.validation-api:3.0.2"
     - name: "org.hibernate.validator:hibernate-validator:8.0.0.Final"
-    - name: "org.pf4j:pf4j:3.6.0"
+    - name: "org.pf4j:pf4j:3.9.0"
     - name: "org.springframework.boot:spring-boot-dependencies:3.0.2"
     - name: "tech.kronicle:common:0.0.1"
     - name: "tech.kronicle:sdk:0.0.1"
@@ -258,7 +257,7 @@ configurations:
     - name: "com.fasterxml:classmate:1.5.1"
     - name: "jakarta.validation:jakarta.validation-api:3.0.2"
     - name: "org.jboss.logging:jboss-logging:3.5.0.Final"
-  - name: "org.pf4j:pf4j:3.6.0"
+  - name: "org.pf4j:pf4j:3.9.0"
     dependencies:
     - name: "com.github.zafarkhaja:java-semver:0.9.0"
     - name: "org.slf4j:slf4j-api:2.0.6"
@@ -286,7 +285,7 @@ configurations:
     - name: "com.fasterxml.jackson.core:jackson-annotations:2.14.1"
     - name: "jakarta.validation:jakarta.validation-api:3.0.2"
     - name: "org.hibernate.validator:hibernate-validator:8.0.0.Final"
-    - name: "org.pf4j:pf4j:3.6.0"
+    - name: "org.pf4j:pf4j:3.9.0"
     - name: "org.springframework.boot:spring-boot-dependencies:3.0.2"
     - name: "tech.kronicle:common:0.0.1"
     - name: "tech.kronicle:sdk:0.0.1"
@@ -315,7 +314,7 @@ configurations:
   dependencies:
   - name: "org.springframework.boot:spring-boot-dependencies:3.0.2"
   resolvedDependencies:
-  - name: "org.projectlombok:lombok:1.18.24"
+  - name: "org.projectlombok:lombok:1.18.26"
     direct: true
     dependencies: []
   - name: "org.springframework.boot:spring-boot-dependencies:3.0.2"
@@ -327,7 +326,7 @@ configurations:
   canBeResolved: true
   resolved: true
   resolvedDependencies:
-  - name: "com.github.spotbugs:spotbugs-annotations:4.5.3"
+  - name: "com.github.spotbugs:spotbugs-annotations:4.7.3"
     direct: true
     dependencies:
     - name: "com.google.code.findbugs:jsr305:3.0.2"
@@ -362,7 +361,7 @@ configurations:
     direct: true
     dependencies:
     - name: "org.mockito:mockito-core:4.8.1"
-  - name: "org.projectlombok:lombok:1.18.24"
+  - name: "org.projectlombok:lombok:1.18.26"
     direct: true
     dependencies: []
   - name: "org.springframework.boot:spring-boot-dependencies:3.0.2"
@@ -374,7 +373,7 @@ configurations:
     - name: "com.fasterxml.jackson.core:jackson-annotations:2.14.1"
     - name: "jakarta.validation:jakarta.validation-api:3.0.2"
     - name: "org.hibernate.validator:hibernate-validator:8.0.0.Final"
-    - name: "org.pf4j:pf4j:3.6.0"
+    - name: "org.pf4j:pf4j:3.9.0"
     - name: "tech.kronicle:common:0.0.1"
     - name: "tech.kronicle:sdk:0.0.1"
   - name: "tech.kronicle:service-test-utils:0.0.1"
@@ -418,7 +417,7 @@ configurations:
     dependencies:
     - name: "net.bytebuddy:byte-buddy-agent:1.12.22"
     - name: "net.bytebuddy:byte-buddy:1.12.22"
-  - name: "org.pf4j:pf4j:3.6.0"
+  - name: "org.pf4j:pf4j:3.9.0"
     dependencies:
     - name: "com.github.zafarkhaja:java-semver:0.9.0"
     - name: "org.slf4j:slf4j-api:2.0.6"
@@ -433,8 +432,7 @@ configurations:
   resolved: false
   dependencies:
   - name: "javax.inject:javax.inject:1"
-  - name: "com.github.spotbugs:spotbugs-annotations:4.5.3"
-  - name: "com.github.spotbugs:spotbugs-annotations:4.1.3"
+  - name: "com.github.spotbugs:spotbugs-annotations:4.7.3"
 - name: "testImplementation"
   description: "Implementation only dependencies for source set 'test'."
   visible: false
@@ -504,7 +502,7 @@ configurations:
     - name: "com.fasterxml.jackson.core:jackson-annotations:2.14.1"
     - name: "jakarta.validation:jakarta.validation-api:3.0.2"
     - name: "org.hibernate.validator:hibernate-validator:8.0.0.Final"
-    - name: "org.pf4j:pf4j:3.6.0"
+    - name: "org.pf4j:pf4j:3.9.0"
     - name: "org.springframework.boot:spring-boot-dependencies:3.0.2"
     - name: "tech.kronicle:common:0.0.1"
     - name: "tech.kronicle:sdk:0.0.1"
@@ -573,7 +571,7 @@ configurations:
     - name: "net.bytebuddy:byte-buddy-agent:1.12.22"
     - name: "net.bytebuddy:byte-buddy:1.12.22"
     - name: "org.objenesis:objenesis:3.2"
-  - name: "org.pf4j:pf4j:3.6.0"
+  - name: "org.pf4j:pf4j:3.9.0"
     dependencies:
     - name: "com.github.zafarkhaja:java-semver:0.9.0"
     - name: "org.slf4j:slf4j-api:2.0.6"
@@ -601,7 +599,7 @@ configurations:
     - name: "com.fasterxml.jackson.core:jackson-annotations:2.14.1"
     - name: "jakarta.validation:jakarta.validation-api:3.0.2"
     - name: "org.hibernate.validator:hibernate-validator:8.0.0.Final"
-    - name: "org.pf4j:pf4j:3.6.0"
+    - name: "org.pf4j:pf4j:3.9.0"
     - name: "org.springframework.boot:spring-boot-dependencies:3.0.2"
     - name: "tech.kronicle:common:0.0.1"
     - name: "tech.kronicle:sdk:0.0.1"
