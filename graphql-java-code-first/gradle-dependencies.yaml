@@ -8,7 +8,7 @@ configurations:
   dependencies:
   - name: "org.springframework.boot:spring-boot-dependencies:3.0.2"
   resolvedDependencies:
-  - name: "org.projectlombok:lombok:1.18.24"
+  - name: "org.projectlombok:lombok:1.18.26"
     direct: true
     dependencies: []
   - name: "org.springframework.boot:spring-boot-dependencies:3.0.2"
@@ -35,7 +35,7 @@ configurations:
   canBeResolved: true
   resolved: true
   resolvedDependencies:
-  - name: "com.github.spotbugs:spotbugs-annotations:4.5.3"
+  - name: "com.github.spotbugs:spotbugs-annotations:4.7.3"
     direct: true
     dependencies:
     - name: "com.google.code.findbugs:jsr305:3.0.2"
@@ -50,7 +50,7 @@ configurations:
   - name: "javax.inject:javax.inject:1"
     direct: true
     dependencies: []
-  - name: "org.projectlombok:lombok:1.18.24"
+  - name: "org.projectlombok:lombok:1.18.26"
     direct: true
     dependencies: []
   - name: "org.springframework.boot:spring-boot-dependencies:3.0.2"
@@ -70,8 +70,7 @@ configurations:
   dependencies:
   - name: "jakarta.validation:jakarta.validation-api"
   - name: "javax.inject:javax.inject:1"
-  - name: "com.github.spotbugs:spotbugs-annotations:4.5.3"
-  - name: "com.github.spotbugs:spotbugs-annotations:4.1.3"
+  - name: "com.github.spotbugs:spotbugs-annotations:4.7.3"
   - name: "org.springframework.boot:spring-boot-dependencies:3.0.2"
 - name: "compileOnlyApi"
   description: "Compile only API dependencies for source set 'main'."
@@ -114,9 +113,9 @@ configurations:
   canBeResolved: true
   resolved: true
   dependencies:
-  - name: "org.projectlombok:lombok:1.18.22"
+  - name: "org.projectlombok:lombok:1.18.26"
   resolvedDependencies:
-  - name: "org.projectlombok:lombok:1.18.22"
+  - name: "org.projectlombok:lombok:1.18.26"
     direct: true
     dependencies: []
 - name: "mainSourceElements"
@@ -164,7 +163,7 @@ configurations:
   dependencies:
   - name: "org.springframework.boot:spring-boot-dependencies:3.0.2"
   resolvedDependencies:
-  - name: "org.projectlombok:lombok:1.18.24"
+  - name: "org.projectlombok:lombok:1.18.26"
     direct: true
     dependencies: []
   - name: "org.springframework.boot:spring-boot-dependencies:3.0.2"
@@ -176,7 +175,7 @@ configurations:
   canBeResolved: true
   resolved: true
   resolvedDependencies:
-  - name: "com.github.spotbugs:spotbugs-annotations:4.5.3"
+  - name: "com.github.spotbugs:spotbugs-annotations:4.7.3"
     direct: true
     dependencies:
     - name: "com.google.code.findbugs:jsr305:3.0.2"
@@ -213,7 +212,7 @@ configurations:
     direct: true
     dependencies:
     - name: "org.mockito:mockito-core:4.8.1"
-  - name: "org.projectlombok:lombok:1.18.24"
+  - name: "org.projectlombok:lombok:1.18.26"
     direct: true
     dependencies: []
   - name: "org.springframework.boot:spring-boot-dependencies:3.0.2"
@@ -251,8 +250,7 @@ configurations:
   resolved: false
   dependencies:
   - name: "javax.inject:javax.inject:1"
-  - name: "com.github.spotbugs:spotbugs-annotations:4.5.3"
-  - name: "com.github.spotbugs:spotbugs-annotations:4.1.3"
+  - name: "com.github.spotbugs:spotbugs-annotations:4.7.3"
 - name: "testImplementation"
   description: "Implementation only dependencies for source set 'test'."
   visible: false

@@ -37,7 +37,7 @@ configurations:
   canBeResolved: true
   resolved: false
   dependencies:
-  - name: "com.github.spotbugs:spotbugs:4.5.3"
+  - name: "com.github.spotbugs:spotbugs:4.7.3"
 - name: "spotbugsPlugins"
   description: "configuration for the external SpotBugs plugins"
   visible: false
@@ -49,4 +49,4 @@ configurations:
   canBeResolved: true
   resolved: false
   dependencies:
-  - name: "org.slf4j:slf4j-simple:1.8.0-beta4"
+  - name: "org.slf4j:slf4j-simple:2.0.0"
