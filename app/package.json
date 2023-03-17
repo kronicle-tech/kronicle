@@ -31,7 +31,7 @@
     "bootstrap": "^4.6.2",
     "bootstrap-vue": "^2.23.1",
     "core-js": "^3.28.0",
-    "deepmerge": "^4.3.0",
+    "deepmerge": "^4.3.1",
     "es6-promisify": "^7.0.0",
     "graphql": "^16.6.0",
     "hast-util-sanitize": "^3.0.2",
