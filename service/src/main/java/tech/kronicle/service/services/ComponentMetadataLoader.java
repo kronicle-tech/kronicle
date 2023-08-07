@@ -80,12 +80,12 @@ public class ComponentMetadataLoader {
         try {
             itemValidator.accept(item);
         } catch (ValidationException e) {
-            log.error("{} id {} failed validation and will be skipped", CaseUtils.toTitleCase(itemType), item.getId(), e);
+            log.warn("{} id {} failed validation and will be skipped", CaseUtils.toTitleCase(itemType), item.getId(), e);
             return;
         }
 
         if (itemMap.containsKey(item.getId())) {
-            log.error("{} id {} is defined at least twice and will be skipped this time", CaseUtils.toTitleCase(itemType), item.getId());
+            log.warn("{} id {} is defined at least twice and will be skipped this time", CaseUtils.toTitleCase(itemType), item.getId());
             return;
         }
 
@@ -96,7 +96,7 @@ public class ComponentMetadataLoader {
         return team -> {
             validatorService.validate(team);
             if (nonNull(team.getAreaId()) && !areas.containsKey(team.getAreaId())) {
-                log.error("Cannot find area {} for team {}", team.getAreaId(), team.getId());
+                log.warn("Cannot find area {} for team {}", team.getAreaId(), team.getId());
             }
         };
     }
@@ -106,19 +106,19 @@ public class ComponentMetadataLoader {
         return component -> {
             validatorService.validate(component);
             if (!componentTypes.containsKey(component.getType())) {
-                log.error("Cannot find component type {} for component {}", component.getType(), component.getId());
+                log.warn("Cannot find component type {} for component {}", component.getType(), component.getId());
             }
             component.getTeams().forEach(componentTeam -> {
                 if (!teams.containsKey(componentTeam.getTeamId())) {
-                    log.error("Cannot find team {} for component {}", componentTeam.getTeamId(), component.getId());
+                    log.warn("Cannot find team {} for component {}", componentTeam.getTeamId(), component.getId());
                 }
             });
             if (nonNull(component.getPlatformId()) && !platforms.containsKey(component.getPlatformId())) {
-                log.error("Cannot find platform {} for component {}", component.getPlatformId(), component.getId());
+                log.warn("Cannot find platform {} for component {}", component.getPlatformId(), component.getId());
             }
             component.getConnections().forEach(connection -> {
                 if (!componentIds.contains(connection.getTargetComponentId())) {
-                    log.error("Cannot find target component {} for connection of component {}", connection.getTargetComponentId(), component.getId());
+                    log.warn("Cannot find target component {} for connection of component {}", connection.getTargetComponentId(), component.getId());
                 }
             });
         };
@@ -148,7 +148,7 @@ public class ComponentMetadataLoader {
             Diagram diagram, String nodeType, String connectionComponentId, Set<String> componentIds
     ) {
         if (!componentIds.contains(connectionComponentId)) {
-            log.error("Cannot find {} component {} for connection of diagram {}", nodeType, connectionComponentId, diagram.getId());
+            log.warn("Cannot find {} component {} for connection of diagram {}", nodeType, connectionComponentId, diagram.getId());
         }
     }
 

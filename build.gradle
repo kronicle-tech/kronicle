@@ -21,7 +21,7 @@ subprojects {
     apply plugin: "java"
     apply plugin: "tech.kronicle.dependencies-file"
     apply from: "$rootDir/gradle/repos.gradle"
-//    apply from: "$rootDir/gradle/jacoco.gradle"
+    apply from: "$rootDir/gradle/jacoco.gradle"
     apply from: "$rootDir/gradle/sonarqube.gradle"
 
     version = System.getenv("CI") != null ? scmVersion.version : "0.0.1"

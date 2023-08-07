@@ -209,7 +209,7 @@ public class ComponentMetadataLoaderTest {
         assertThat(logCaptor.getSimplifiedEvents()).containsExactly(
                 new SimplifiedLogEvent(Level.INFO, "Loaded 0 component types"),
                 new SimplifiedLogEvent(Level.INFO, "Loaded 0 platforms"),
-                new SimplifiedLogEvent(Level.ERROR, "Area id test-area-id-1 is defined at least twice and will be skipped this time"),
+                new SimplifiedLogEvent(Level.WARN, "Area id test-area-id-1 is defined at least twice and will be skipped this time"),
                 new SimplifiedLogEvent(Level.INFO, "Loaded 1 areas"),
                 new SimplifiedLogEvent(Level.INFO, "Loaded 0 teams"),
                 new SimplifiedLogEvent(Level.INFO, "Loaded 0 components"),
@@ -239,7 +239,7 @@ public class ComponentMetadataLoaderTest {
                 new SimplifiedLogEvent(Level.INFO, "Loaded 0 component types"),
                 new SimplifiedLogEvent(Level.INFO, "Loaded 0 platforms"),
                 new SimplifiedLogEvent(Level.INFO, "Loaded 0 areas"),
-                new SimplifiedLogEvent(Level.ERROR, "Team id test-team-id-1 is defined at least twice and will be skipped this time"),
+                new SimplifiedLogEvent(Level.WARN, "Team id test-team-id-1 is defined at least twice and will be skipped this time"),
                 new SimplifiedLogEvent(Level.INFO, "Loaded 1 teams"),
                 new SimplifiedLogEvent(Level.INFO, "Loaded 0 components"),
                 new SimplifiedLogEvent(Level.INFO, "Loaded 0 diagrams")
@@ -270,7 +270,7 @@ public class ComponentMetadataLoaderTest {
                 new SimplifiedLogEvent(Level.INFO, "Loaded 0 platforms"),
                 new SimplifiedLogEvent(Level.INFO, "Loaded 0 areas"),
                 new SimplifiedLogEvent(Level.INFO, "Loaded 0 teams"),
-                new SimplifiedLogEvent(Level.ERROR, "Component id test-component-id-1 is defined at least twice and will be skipped this time"),
+                new SimplifiedLogEvent(Level.WARN, "Component id test-component-id-1 is defined at least twice and will be skipped this time"),
                 new SimplifiedLogEvent(Level.INFO, "Loaded 1 components"),
                 new SimplifiedLogEvent(Level.INFO, "Loaded 0 diagrams")
         );
@@ -300,7 +300,7 @@ public class ComponentMetadataLoaderTest {
                 new SimplifiedLogEvent(Level.INFO, "Loaded 0 areas"),
                 new SimplifiedLogEvent(Level.INFO, "Loaded 0 teams"),
                 new SimplifiedLogEvent(Level.INFO, "Loaded 0 components"),
-                new SimplifiedLogEvent(Level.ERROR, "Diagram id test-diagram-id-1 is defined at least twice and will be skipped this time"),
+                new SimplifiedLogEvent(Level.WARN, "Diagram id test-diagram-id-1 is defined at least twice and will be skipped this time"),
                 new SimplifiedLogEvent(Level.INFO, "Loaded 1 diagrams")
         );
         assertThat(returnValue.getAreas()).isEmpty();
@@ -326,7 +326,7 @@ public class ComponentMetadataLoaderTest {
         assertThat(logCaptor.getSimplifiedEvents()).containsExactly(
                 new SimplifiedLogEvent(Level.INFO, "Loaded 0 component types"),
                 new SimplifiedLogEvent(Level.INFO, "Loaded 0 platforms"),
-                new SimplifiedLogEvent(Level.ERROR, "Area id test-area-id-1 failed validation and will be skipped"),
+                new SimplifiedLogEvent(Level.WARN, "Area id test-area-id-1 failed validation and will be skipped"),
                 new SimplifiedLogEvent(Level.INFO, "Loaded 1 areas"),
                 new SimplifiedLogEvent(Level.INFO, "Loaded 0 teams"),
                 new SimplifiedLogEvent(Level.INFO, "Loaded 0 components"),
@@ -359,7 +359,7 @@ public class ComponentMetadataLoaderTest {
                 new SimplifiedLogEvent(Level.INFO, "Loaded 0 component types"),
                 new SimplifiedLogEvent(Level.INFO, "Loaded 0 platforms"),
                 new SimplifiedLogEvent(Level.INFO, "Loaded 0 areas"),
-                new SimplifiedLogEvent(Level.ERROR, "Team id test-team-id-1 failed validation and will be skipped"),
+                new SimplifiedLogEvent(Level.WARN, "Team id test-team-id-1 failed validation and will be skipped"),
                 new SimplifiedLogEvent(Level.INFO, "Loaded 1 teams"),
                 new SimplifiedLogEvent(Level.INFO, "Loaded 0 components"),
                 new SimplifiedLogEvent(Level.INFO, "Loaded 0 diagrams")
@@ -393,7 +393,7 @@ public class ComponentMetadataLoaderTest {
                 new SimplifiedLogEvent(Level.INFO, "Loaded 0 platforms"),
                 new SimplifiedLogEvent(Level.INFO, "Loaded 0 areas"),
                 new SimplifiedLogEvent(Level.INFO, "Loaded 0 teams"),
-                new SimplifiedLogEvent(Level.ERROR, "Component id test-component-id-1 failed validation and will be skipped"),
+                new SimplifiedLogEvent(Level.WARN, "Component id test-component-id-1 failed validation and will be skipped"),
                 new SimplifiedLogEvent(Level.INFO, "Loaded 1 components"),
                 new SimplifiedLogEvent(Level.INFO, "Loaded 0 diagrams")
         );
@@ -427,7 +427,7 @@ public class ComponentMetadataLoaderTest {
                 new SimplifiedLogEvent(Level.INFO, "Loaded 0 areas"),
                 new SimplifiedLogEvent(Level.INFO, "Loaded 0 teams"),
                 new SimplifiedLogEvent(Level.INFO, "Loaded 0 components"),
-                new SimplifiedLogEvent(Level.ERROR, "Diagram id test-diagram-id-1 failed validation and will be skipped"),
+                new SimplifiedLogEvent(Level.WARN, "Diagram id test-diagram-id-1 failed validation and will be skipped"),
                 new SimplifiedLogEvent(Level.INFO, "Loaded 1 diagrams")
         );
         assertThat(logCaptor.getEvents().get(5).getThrowableProxy().getMessage()).isEqualTo(""
@@ -442,7 +442,7 @@ public class ComponentMetadataLoaderTest {
     }
 
     @Test
-    public void loadComponentMetadataShouldLogAnErrorForATeamWithANonExistentArea() {
+    public void loadComponentMetadataShouldLogAWarningForATeamWithANonExistentArea() {
         // Given
         Team team1 = createTestTeamBuilder(1, 1)
                 .areaId("test-area-id-1")
@@ -459,7 +459,7 @@ public class ComponentMetadataLoaderTest {
                 new SimplifiedLogEvent(Level.INFO, "Loaded 0 component types"),
                 new SimplifiedLogEvent(Level.INFO, "Loaded 0 platforms"),
                 new SimplifiedLogEvent(Level.INFO, "Loaded 0 areas"),
-                new SimplifiedLogEvent(Level.ERROR, "Cannot find area test-area-id-1 for team test-team-id-1"),
+                new SimplifiedLogEvent(Level.WARN, "Cannot find area test-area-id-1 for team test-team-id-1"),
                 new SimplifiedLogEvent(Level.INFO, "Loaded 1 teams"),
                 new SimplifiedLogEvent(Level.INFO, "Loaded 0 components"),
                 new SimplifiedLogEvent(Level.INFO, "Loaded 0 diagrams")
@@ -472,7 +472,7 @@ public class ComponentMetadataLoaderTest {
     }
 
     @Test
-    public void loadComponentMetadataShouldLogAnErrorForAComponentWithANonExistentComponentType() {
+    public void loadComponentMetadataShouldLogAWarningForAComponentWithANonExistentComponentType() {
         // Given
         Component component1 = createTestComponentBuilder(1, 1)
                 .build();
@@ -490,7 +490,7 @@ public class ComponentMetadataLoaderTest {
                 new SimplifiedLogEvent(Level.INFO, "Loaded 0 platforms"),
                 new SimplifiedLogEvent(Level.INFO, "Loaded 0 areas"),
                 new SimplifiedLogEvent(Level.INFO, "Loaded 0 teams"),
-                new SimplifiedLogEvent(Level.ERROR, "Cannot find component type test-component-type-id-1 for component test-component-id-1"),
+                new SimplifiedLogEvent(Level.WARN, "Cannot find component type test-component-type-id-1 for component test-component-id-1"),
                 new SimplifiedLogEvent(Level.INFO, "Loaded 1 components"),
                 new SimplifiedLogEvent(Level.INFO, "Loaded 0 diagrams")
         );
@@ -502,7 +502,7 @@ public class ComponentMetadataLoaderTest {
     }
 
     @Test
-    public void loadComponentMetadataShouldLogAnErrorForAComponentWithANonExistentTeam() {
+    public void loadComponentMetadataShouldLogAWarningForAComponentWithANonExistentTeam() {
         // Given
         Component component1 = createTestComponentBuilder(1, 1)
                 .teams(List.of(ComponentTeam.builder().teamId("test-team-id-1").build()))
@@ -521,7 +521,7 @@ public class ComponentMetadataLoaderTest {
                 new SimplifiedLogEvent(Level.INFO, "Loaded 0 platforms"),
                 new SimplifiedLogEvent(Level.INFO, "Loaded 0 areas"),
                 new SimplifiedLogEvent(Level.INFO, "Loaded 0 teams"),
-                new SimplifiedLogEvent(Level.ERROR, "Cannot find team test-team-id-1 for component test-component-id-1"),
+                new SimplifiedLogEvent(Level.WARN, "Cannot find team test-team-id-1 for component test-component-id-1"),
                 new SimplifiedLogEvent(Level.INFO, "Loaded 1 components"),
                 new SimplifiedLogEvent(Level.INFO, "Loaded 0 diagrams")
         );
@@ -533,7 +533,7 @@ public class ComponentMetadataLoaderTest {
     }
 
     @Test
-    public void loadComponentMetadataShouldLogAnErrorForAComponentWithANonExistentPlatform() {
+    public void loadComponentMetadataShouldLogAWarningForAComponentWithANonExistentPlatform() {
         // Given
         Component component1 = createTestComponentBuilder(1, 1)
                 .platformId("test-platform-id-1")
@@ -553,7 +553,7 @@ public class ComponentMetadataLoaderTest {
                 new SimplifiedLogEvent(Level.INFO, "Loaded 1 platforms"),
                 new SimplifiedLogEvent(Level.INFO, "Loaded 0 areas"),
                 new SimplifiedLogEvent(Level.INFO, "Loaded 0 teams"),
-                new SimplifiedLogEvent(Level.ERROR, "Cannot find platform test-platform-id-1 for component test-component-id-1"),
+                new SimplifiedLogEvent(Level.WARN, "Cannot find platform test-platform-id-1 for component test-component-id-1"),
                 new SimplifiedLogEvent(Level.INFO, "Loaded 1 components"),
                 new SimplifiedLogEvent(Level.INFO, "Loaded 0 diagrams")
         );
@@ -565,7 +565,7 @@ public class ComponentMetadataLoaderTest {
     }
 
     @Test
-    public void loadComponentMetadataShouldLogAnErrorForAComponentWithANonExistentConnection() {
+    public void loadComponentMetadataShouldLogAWarningForAComponentWithANonExistentConnection() {
         // Given
         Component component1 = createTestComponentBuilder(1, 1)
                 .connections(List.of(ComponentConnection.builder().targetComponentId("test-component-id-2").build()))
@@ -584,7 +584,7 @@ public class ComponentMetadataLoaderTest {
                 new SimplifiedLogEvent(Level.INFO, "Loaded 0 platforms"),
                 new SimplifiedLogEvent(Level.INFO, "Loaded 0 areas"),
                 new SimplifiedLogEvent(Level.INFO, "Loaded 0 teams"),
-                new SimplifiedLogEvent(Level.ERROR,
+                new SimplifiedLogEvent(Level.WARN,
                         "Cannot find target component test-component-id-2 for connection of component test-component-id-1"),
                 new SimplifiedLogEvent(Level.INFO, "Loaded 1 components"),
                 new SimplifiedLogEvent(Level.INFO, "Loaded 0 diagrams")
@@ -597,7 +597,7 @@ public class ComponentMetadataLoaderTest {
     }
 
     @Test
-    public void loadComponentMetadataShouldLogAnErrorForADiagramWithANonExistentConnectionSourceComponent() {
+    public void loadComponentMetadataShouldLogAWarningForADiagramWithANonExistentConnectionSourceComponent() {
         // Given
         Component component1 = createTestComponent(1);
         Diagram diagram1 = createDiagram(1, 1, List.of(
@@ -619,7 +619,7 @@ public class ComponentMetadataLoaderTest {
                 new SimplifiedLogEvent(Level.INFO, "Loaded 0 areas"),
                 new SimplifiedLogEvent(Level.INFO, "Loaded 0 teams"),
                 new SimplifiedLogEvent(Level.INFO, "Loaded 1 components"),
-                new SimplifiedLogEvent(Level.ERROR, "Cannot find source component test-component-id-2 for connection of diagram test-diagram-id-1"),
+                new SimplifiedLogEvent(Level.WARN, "Cannot find source component test-component-id-2 for connection of diagram test-diagram-id-1"),
                 new SimplifiedLogEvent(Level.INFO, "Loaded 1 diagrams")
         );
         assertThat(returnValue.getAreas()).isEmpty();
@@ -631,7 +631,7 @@ public class ComponentMetadataLoaderTest {
     }
 
     @Test
-    public void loadComponentMetadataShouldLogAnErrorForADiagramWithANonExistentConnectionTargetComponent() {
+    public void loadComponentMetadataShouldLogAWarningForADiagramWithANonExistentConnectionTargetComponent() {
         // Given
         Component component1 = createTestComponent(1);
         Diagram diagram1 = createDiagram(1, 1, List.of(
@@ -653,7 +653,7 @@ public class ComponentMetadataLoaderTest {
                 new SimplifiedLogEvent(Level.INFO, "Loaded 0 areas"),
                 new SimplifiedLogEvent(Level.INFO, "Loaded 0 teams"),
                 new SimplifiedLogEvent(Level.INFO, "Loaded 1 components"),
-                new SimplifiedLogEvent(Level.ERROR, "Cannot find target component test-component-id-2 for connection of diagram test-diagram-id-1"),
+                new SimplifiedLogEvent(Level.WARN, "Cannot find target component test-component-id-2 for connection of diagram test-diagram-id-1"),
                 new SimplifiedLogEvent(Level.INFO, "Loaded 1 diagrams")
         );
         assertThat(returnValue.getAreas()).isEmpty();
