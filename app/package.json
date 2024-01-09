@@ -36,7 +36,7 @@
     "graphql": "^16.6.0",
     "hast-util-sanitize": "^3.0.2",
     "luxon": "^3.2.1",
-    "nuxt": "^2.15.8",
+    "nuxt": "^3.0.0",
     "nuxt-healthcheck": "^1.0.1",
     "nuxt-winston-log": "^1.2.0",
     "rehype": "^11.0.0",
@@ -55,11 +55,11 @@
     "vue": "^2.6.14",
     "vue-class-component": "^7.2.6",
     "vue-property-decorator": "^9.1.2",
-    "vue-server-renderer": "^2.6.14",
+    "vue-server-renderer": "^2.7.0",
     "vue-template-compiler": "^2.6.14",
     "vuex": "^3.6.2",
     "vuex-module-decorators": "^1.0.1",
-    "webpack": "^4.46.0"
+    "webpack": "^5.1.1"
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.19.1",
